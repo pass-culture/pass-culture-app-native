@@ -29,6 +29,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 const title = 'Monsieur'
 const firstName = 'Jean'
 const givenName = 'Dupont'
+const commonName = 'Dubois'
 const birthDate = '1975-10-10T00:00:00.000Z'
 const birthCountry: InseeCountry = { LIBCOG: 'Belgique', COG: 99131 }
 
@@ -39,7 +40,7 @@ describe('BonificationRecap', () => {
   })
 
   it('should navigate to name screen when pressing "Modifier mes informations"', async () => {
-    prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+    prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
 
     const button = screen.getByText('Modifier mes informations')
     await userEvent.press(button)
@@ -51,19 +52,27 @@ describe('BonificationRecap', () => {
   })
 
   it('should show previously saved data', () => {
-    prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+    prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
 
-    const nameField = screen.getByText('Monsieur Jean DUPONT')
-    const countryField = screen.getByText(birthCountry.LIBCOG)
-    const birthDateField = screen.getByText(new Date(birthDate).toLocaleDateString())
+    expect(screen.getByText('Civilité')).toBeTruthy()
+    expect(screen.getByText(title)).toBeTruthy()
 
-    expect(nameField).toBeTruthy()
-    expect(countryField).toBeTruthy()
-    expect(birthDateField).toBeTruthy()
+    expect(screen.getByText('Nom de naissance')).toBeTruthy()
+    expect(screen.getByText(givenName.toUpperCase())).toBeTruthy()
+
+    expect(screen.getByText('Prénom(s)')).toBeTruthy()
+    expect(screen.getByText(firstName)).toBeTruthy()
+
+    expect(screen.getByText('Nom d’usage')).toBeTruthy()
+    expect(screen.getByText(commonName.toUpperCase())).toBeTruthy()
+
+    expect(screen.getByText('Pays de naissance')).toBeTruthy()
+    expect(screen.getByText(birthCountry.libcog)).toBeTruthy()
+    expect(screen.getByText(new Date(birthDate).toLocaleDateString())).toBeTruthy()
   })
 
   it('should navigate to error screen when pressing "Envoyer" and data is missing', async () => {
-    prepareDataAndRender(undefined, undefined, undefined, undefined, undefined)
+    prepareDataAndRender(undefined, undefined, undefined, undefined, undefined, undefined)
 
     await validateAndSubmitForm()
 
@@ -81,7 +90,7 @@ describe('BonificationRecap', () => {
     })
 
     it('should navigate to home', async () => {
-      prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+      prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
 
       await validateAndSubmitForm()
 
@@ -89,7 +98,7 @@ describe('BonificationRecap', () => {
     })
 
     it('should show snackbar', async () => {
-      prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+      prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
 
       await validateAndSubmitForm()
 
@@ -100,7 +109,7 @@ describe('BonificationRecap', () => {
     })
 
     it('should refresh the user', async () => {
-      prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+      prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
 
       await validateAndSubmitForm()
 
@@ -113,7 +122,7 @@ describe('BonificationRecap', () => {
         'resetLegalRepresentative'
       )
 
-      prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+      prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
 
       await validateAndSubmitForm()
 
@@ -129,7 +138,7 @@ describe('BonificationRecap', () => {
     })
 
     it('should navigate to error screen when pressing "Confirmer"', async () => {
-      prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+      prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
 
       await validateAndSubmitForm()
 
@@ -158,12 +167,13 @@ async function validateAndSubmitForm() {
   await userEvent.press(button)
 }
 
-function prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry) {
-  const { setTitle, setFirstNames, setGivenName, setBirthDate, setBirthCountry } =
+function prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry) {
+  const { setTitle, setFirstNames, setGivenName, setCommonName, setBirthDate, setBirthCountry } =
     legalRepresentativeActions
   setTitle(title)
   setFirstNames([firstName])
   setGivenName(givenName)
+  setCommonName(commonName)
   setBirthDate(new Date(birthDate))
   setBirthCountry(birthCountry)
   render(reactQueryProviderHOC(<BonificationRecap />))

@@ -30,7 +30,11 @@ export function BonificationGranted() {
         navigateToHomeWithReset()
         void refetchUser()
       },
-      onError: () => showErrorSnackBar({ message: 'Une erreur est survenue' }),
+      onError: () => {
+        showErrorSnackBar({ message: 'Une erreur est survenue' })
+        navigateToHomeWithReset()
+        void refetchUser()
+      },
     })
 
   const { data: settings } = useSettingsContext()

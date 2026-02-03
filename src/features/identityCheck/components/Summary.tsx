@@ -5,7 +5,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
-type InfoListItemProps = {
+export type InfoListItemProps = {
   title: string
   value?: string | null
   testID?: string
