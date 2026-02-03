@@ -7,6 +7,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { Artist } from 'features/artist/pages/Artist'
+import { ArtistWebview } from 'features/artist/pages/ArtistWebview'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
@@ -277,6 +278,7 @@ const rootScreens: RouteConfig[] = [
   },
   { name: 'Artist', component: Artist, options: { title: 'Artiste' } },
   { name: '_DeeplinkOnlyArtist1', component: Artist, options: { title: 'Artiste' } },
+  { name: 'ArtistWebview', component: ArtistWebview, options: { title: 'Artiste sur Wikipédia' } },
   {
     name: 'Chronicles',
     component: Chronicles,
