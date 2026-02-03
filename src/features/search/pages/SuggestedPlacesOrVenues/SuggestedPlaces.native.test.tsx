@@ -89,5 +89,5 @@ const renderSuggestedPlaces = (query: string) => {
 }
 
 const mockApiAdresse = (mockResponse: Record<string, unknown>) => {
-  mockServer.universalGet('https://api-adresse.data.gouv.fr/search', mockResponse)
+  mockServer.universalGet('https://data.geopf.fr/geocodage/search', mockResponse)
 }
