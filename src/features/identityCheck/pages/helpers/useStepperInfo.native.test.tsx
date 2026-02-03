@@ -1,6 +1,6 @@
 import { UseQueryResult } from '@tanstack/react-query'
 
-import { SubscriptionStepperResponseV2 } from 'api/gen'
+import { ActivityIdEnum, SubscriptionStepperResponseV2 } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import {
   SubscriptionStepperResponseFixture as mockSubscriptionStepper,
@@ -22,6 +22,16 @@ const mockRemainingAttempts = {
 }
 
 jest.mock('features/auth/context/AuthContext')
+
+const mockUseStoredProfileInfos = {
+  name: 'Jeanne',
+  city: 'Aubervilliers',
+  address: '7 rue des Lilas ',
+  status: ActivityIdEnum.STUDENT,
+}
+jest.mock('features/identityCheck/pages/helpers/useStoredProfileInfos', () => ({
+  useStoredProfileInfos: jest.fn(() => mockUseStoredProfileInfos),
+}))
 
 jest.mock('features/identityCheck/queries/useGetStepperInfoQuery', () => ({
   useGetStepperInfoQuery: jest.fn(() => mockUseGetStepperInfo),
@@ -65,6 +75,36 @@ describe('useStepperInfo', () => {
     setSettingsMock({ patchSettingsWith: { enablePhoneValidation: true } })
   })
 
+  it('should return empty stepsDetails and empty title if no data', () => {
+    mockUseGetStepperInfo.mockReturnValueOnce({ data: undefined })
+    const { stepsDetails, title } = useStepperInfo()
+
+    expect(stepsDetails).toEqual([])
+    expect(title).toBe('')
+  })
+
+  it('should return errorMessage if subscriptionMessage is present', () => {
+    mockUseGetStepperInfo.mockReturnValueOnce({
+      data: {
+        ...mockSubscriptionStepper,
+        subscriptionMessage: { messageSummary: 'Erreur test', userMessage: '' },
+      },
+    })
+    const { errorMessage } = useStepperInfo()
+
+    expect(errorMessage).toBe('Erreur test')
+  })
+
+  it('should use fallback subtitle if shouldCreditAmountBeOverriden and no amount', () => {
+    mockOverrideCreditActivationAmount.mockReturnValueOnce({
+      shouldBeOverriden: true,
+      amount: undefined,
+    })
+    const { subtitle } = useStepperInfo()
+
+    expect(subtitle).toBe('Pour débloquer ton crédit tu dois suivre les étapes suivantes\u00a0:')
+  })
+
   it('should convert subtitle amount from € to CPF', () => {
     mockOverrideCreditActivationAmount.mockReturnValueOnce({
       shouldBeOverriden: true,
@@ -103,7 +143,7 @@ describe('useStepperInfo', () => {
   })
 
   describe('profile step', () => {
-    it('should show subtitle if user has already filled their profile', () => {
+    it('should show subtitle when given', () => {
       const { stepsDetails } = useStepperInfo()
       const confirmationStep = stepsDetails.find((step) => step.name === IdentityCheckStep.PROFILE)
 
