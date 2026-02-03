@@ -3,7 +3,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { TryAgain } from 'ui/svg/icons/TryAgain'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing } from 'ui/theme'
 
 interface IconStepRetryProps {
   Icon: FunctionComponent<
@@ -33,7 +32,7 @@ const IconContainer = styled.View({
 })
 
 const Container = styled.View(({ theme }) => ({
-  width: getSpacing(9),
+  width: theme.designSystem.size.spacing.xxxl,
   height: theme.designSystem.size.spacing.xxl,
 }))
 

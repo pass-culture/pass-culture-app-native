@@ -12,7 +12,6 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Offer } from 'shared/offer/types'
 import { LineSeparator } from 'ui/components/LineSeparator'
-import { getSpacing } from 'ui/theme'
 
 const keyExtractor = (item: Offer) => item.objectID
 
@@ -38,7 +37,7 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
     },
     ref
   ) => {
-    const { tabBar } = useTheme()
+    const { tabBar, designSystem } = useTheme()
     const isEnabledVenuesFromOfferIndex = useFeatureFlag(
       RemoteStoreFeatureFlags.ENABLE_VENUES_FROM_OFFER_INDEX
     )
@@ -73,7 +72,9 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
         onEndReached={autoScrollEnabled ? onEndReached : undefined}
         scrollEnabled={nbHits > 0}
         onScroll={onScroll}
-        contentContainerStyle={{ paddingBottom: tabBar.height + getSpacing(10) }}
+        contentContainerStyle={{
+          paddingBottom: tabBar.height + designSystem.size.spacing.xxxl,
+        }}
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
         onViewableItemsChanged={onViewableItemsChanged}

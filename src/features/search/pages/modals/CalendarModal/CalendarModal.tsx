@@ -337,11 +337,11 @@ const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme })
   locations: [0, 0.5, 1],
   start: { x: 0, y: 0 },
   end: { x: 0, y: 1 },
-}))({
+}))(({ theme }) => ({
   position: 'absolute',
-  bottom: getSpacing(10),
+  bottom: theme.designSystem.size.spacing.xxxl,
   left: 0,
   right: 0,
   height: getSpacing(23),
   zIndex: 1,
-})
+}))

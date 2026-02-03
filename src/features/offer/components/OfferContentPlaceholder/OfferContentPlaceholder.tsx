@@ -61,7 +61,7 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
         <SkeletonTile
           borderRadius={designSystem.size.borderRadius.xl}
           width={getSpacing(82)}
-          height={getSpacing(10)}
+          height={designSystem.size.spacing.xxxl}
           fullWidth
         />
       </BodyContainer>

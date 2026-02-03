@@ -113,7 +113,7 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
             ...(isDesktopViewport
               ? { paddingBottom: headerHeight }
               : {
-                  paddingBottom: getSpacing(10),
+                  paddingBottom: designSystem.size.spacing.xxxl,
                   marginTop: designSystem.size.spacing.l,
                   marginHorizontal: contentPage.marginHorizontal,
                 }),

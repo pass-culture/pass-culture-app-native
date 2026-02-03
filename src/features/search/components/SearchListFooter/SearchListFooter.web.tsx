@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { Li } from 'ui/components/Li'
 import { More } from 'ui/svg/icons/More'
-import { getSpacing } from 'ui/theme'
 
 export interface SearchListFooterProps {
   isFetchingNextPage: boolean
@@ -51,7 +50,7 @@ export const SearchListFooter = ({
 SearchListFooter.displayName = 'SearchListFooter'
 
 const Footer = styled.View(({ theme }) => ({
-  height: theme.tabBar.height + getSpacing(10),
+  height: theme.tabBar.height + theme.designSystem.size.spacing.xxxl,
   alignItems: 'center',
 }))
 
