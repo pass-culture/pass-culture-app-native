@@ -5,6 +5,7 @@ import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useAnonymizeAccountMutation } from 'features/profile/queries/useAnonymizeAccountMutation'
+import { Adjust } from 'libs/adjust/adjust'
 import { env } from 'libs/environment/env'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
@@ -38,7 +39,10 @@ export const DeleteProfileConfirmation = () => {
       title="Ta demande de suppression de compte"
       buttonPrimary={{
         wording: 'Supprimer mon compte',
-        onPress: anonymizeAccount,
+        onPress: () => {
+          Adjust.gdprForgetMe()
+          anonymizeAccount()
+        },
       }}
       buttonTertiary={{
         wording: 'Annuler',

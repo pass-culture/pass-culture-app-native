@@ -1,13 +1,15 @@
 PODS:
+  - Adjust (5.5.0):
+    - Adjust/Adjust (= 5.5.0)
+  - Adjust/Adjust (5.5.0):
+    - AdjustSignature (= 3.62.0)
+  - AdjustSignature (3.62.0)
   - AppAuth (1.7.6):
     - AppAuth/Core (= 1.7.6)
     - AppAuth/ExternalUserAgent (= 1.7.6)
   - AppAuth/Core (1.7.6)
   - AppAuth/ExternalUserAgent (1.7.6):
     - AppAuth/Core
-  - AppsFlyerFramework (6.16.2):
-    - AppsFlyerFramework/Main (= 6.16.2)
-  - AppsFlyerFramework/Main (6.16.2)
   - Batch (2.1.1)
   - BatchFirebaseDispatcher (3.2.0):
     - Batch (>= 1.19)
@@ -1920,9 +1922,9 @@ PODS:
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
     - SocketRocket
-  - react-native-appsflyer (6.16.2):
-    - AppsFlyerFramework (= 6.16.2)
-    - React
+  - react-native-adjust (5.5.0):
+    - Adjust (= 5.5.0)
+    - React-Core
   - react-native-blur (4.4.1):
     - boost
     - DoubleConversion
@@ -2177,8 +2179,6 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-tracking-transparency (0.1.2):
-    - React
   - react-native-webview (13.15.0):
     - boost
     - DoubleConversion
@@ -3316,7 +3316,7 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
-  - react-native-appsflyer (from `../node_modules/react-native-appsflyer`)
+  - react-native-adjust (from `../node_modules/react-native-adjust`)
   - "react-native-blur (from `../node_modules/@react-native-community/blur`)"
   - "react-native-config (from `../node_modules/@bam.tech/react-native-config`)"
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
@@ -3329,7 +3329,6 @@ DEPENDENCIES:
   - react-native-orientation-locker (from `../node_modules/react-native-orientation-locker`)
   - react-native-performance (from `../node_modules/react-native-performance`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
-  - react-native-tracking-transparency (from `../node_modules/react-native-tracking-transparency`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-oscompat (from `../node_modules/react-native/ReactCommon/oscompat`)
@@ -3387,8 +3386,9 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Adjust
+    - AdjustSignature
     - AppAuth
-    - AppsFlyerFramework
     - Batch
     - BatchFirebaseDispatcher
     - Firebase
@@ -3522,8 +3522,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   React-microtasksnativemodule:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/microtasks"
-  react-native-appsflyer:
-    :path: "../node_modules/react-native-appsflyer"
+  react-native-adjust:
+    :path: "../node_modules/react-native-adjust"
   react-native-blur:
     :path: "../node_modules/@react-native-community/blur"
   react-native-config:
@@ -3548,8 +3548,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-performance"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
-  react-native-tracking-transparency:
-    :path: "../node_modules/react-native-tracking-transparency"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
   React-NativeModulesApple:
@@ -3663,8 +3661,9 @@ CHECKOUT OPTIONS:
     :tag: 11.13.0
 
 SPEC CHECKSUMS:
+  Adjust: a0095eda439b925f809b0efbf64923c05701e937
+  AdjustSignature: 682d788005a6e21557913a9dc0381ae8d943ca0a
   AppAuth: d4f13a8fe0baf391b2108511793e4b479691fb73
-  AppsFlyerFramework: fe5303bffcdfd941d5f570c2d21eaaea982e7bdc
   Batch: fe0c88b2182a8d0f6ca3b0ed725694206b2e3e44
   BatchFirebaseDispatcher: 1711b32884f4b6b3513553beab4c766056794ae1
   boost: 7e761d76ca2ce687f7cc98e698152abd03a18f90
@@ -3743,7 +3742,7 @@ SPEC CHECKSUMS:
   React-logger: ea80169d826e0cd112fa4d68f58b2b3b968f1ecb
   React-Mapbuffer: 230c34b1cabd1c4815726c711b9df221c3d3fbfb
   React-microtasksnativemodule: 29d62f132e4aba34ebb7f2b936dde754eb08971b
-  react-native-appsflyer: d52a08a5e687e4c2aca78519b0e258e1a82fad0a
+  react-native-adjust: e3947ac3bb1a6600902fa574beb911e21082f847
   react-native-blur: 92cc889e5515dcb0746d5a24207a28eea2f6bb65
   react-native-config: 5e2fe7217716b5472ed7901477620b1370335d67
   react-native-date-picker: 01ffc52e9d487c6f1b313185dd7477508f27e8bf
@@ -3756,7 +3755,6 @@ SPEC CHECKSUMS:
   react-native-orientation-locker: 5819fd23ca89cbac0d736fb4314745f62716d517
   react-native-performance: c9fdad2f052f5ca8e2205eb865bc9e8aa5a08cbe
   react-native-safe-area-context: 8ee5d09f0dbb3ed3749878784ea7d6cc23e69ba2
-  react-native-tracking-transparency: 25ff1ff866e338c137c818bdec20526bb05ffcc1
   react-native-webview: d90a817ab0aeae10c1047fe2a6601765ce69fde0
   React-NativeModulesApple: d061f458c3febdf0ac99b1b0faf23b7305974b25
   React-oscompat: 56d6de59f9ae95cd006a1c40be2cde83bc06a4e1

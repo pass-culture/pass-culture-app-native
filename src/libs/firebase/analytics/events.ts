@@ -137,7 +137,6 @@ export enum AnalyticsEvent {
   OFFER_SEEN_DURATION = 'OfferSeenDuration',
   ONBOARDING_GEOLOCATION_CLICKED = 'OnboardingGeolocationClicked',
   ONBOARDING_STARTED = 'OnboardingStarted',
-  OPEN_APP = 'OpenApp',
   OPEN_DMS_FOREIGN_CITIZEN_URL = 'OpenDMSForeignCitizenURL',
   OPEN_DMS_FRENCH_CITIZEN_URL = 'OpenDMSFrenchCitizenURL',
   OPEN_EXTERNAL_URL = 'OpenExternalURL',

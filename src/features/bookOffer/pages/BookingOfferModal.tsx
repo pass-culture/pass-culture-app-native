@@ -17,10 +17,11 @@ import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
+import { Adjust } from 'libs/adjust/adjust'
+import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import { logOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
 import { algoliaAnalyticsSelectors } from 'libs/algolia/store/algoliaAnalyticsStore'
 import { analytics } from 'libs/analytics/provider'
-import { CampaignEvents, campaignTracker } from 'libs/campaign/campaign'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
@@ -90,12 +91,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
         })
       }
       if (!!selectedStock && !!offer?.subcategoryId) {
-        void campaignTracker.logEvent(CampaignEvents.COMPLETE_BOOK_OFFER, {
-          af_offer_id: offerId,
-          af_booking_id: selectedStock.id,
-          af_price: selectedStock.price,
-          af_category: offer.subcategoryId,
-        })
+        void Adjust.logEvent(AdjustEvents.BOOK_OFFER)
       }
       runAfterInteractionsMobile(() => {
         navigate('BookingConfirmation', { offerId, bookingId })

@@ -19,7 +19,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
-jest.mock('libs/campaign/campaign')
 jest.mock('libs/react-native-device-info/getDeviceId')
 const buildVersion = 10010005
 jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)

@@ -1,9 +1,7 @@
 import { CookieNameEnum } from 'features/cookies/enums'
 import { removeGeneratedStorageKey } from 'features/cookies/helpers/removeGeneratedStorageKey'
 import { Cookies } from 'features/cookies/types'
-// eslint-disable-next-line no-restricted-imports
-import { campaignTracker } from 'libs/campaign/campaign'
-// eslint-disable-next-line no-restricted-imports
+import { Adjust } from 'libs/adjust/adjust'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { Batch } from 'libs/react-native-batch'
 
@@ -21,15 +19,17 @@ export const generateUTMKeys = [
   'campaign_date',
 ]
 
-export const startTrackingAcceptedCookies = (acceptedCookies: Cookies) => {
+export const startTrackingAcceptedCookies = (
+  acceptedCookies: Cookies,
+  calledFromConsentChange = true
+) => {
   const acceptedGoogleAnalytics = acceptedCookies.includes(CookieNameEnum.GOOGLE_ANALYTICS)
   acceptedGoogleAnalytics
     ? firebaseAnalytics.enableCollection()
     : firebaseAnalytics.disableCollection()
 
-  const acceptedAppsFlyers = acceptedCookies.includes(CookieNameEnum.APPSFLYER)
-  campaignTracker.init(acceptedAppsFlyers)
-  campaignTracker.startAppsFlyer(acceptedAppsFlyers)
+  const acceptedAdjust = acceptedCookies.includes(CookieNameEnum.ADJUST)
+  acceptedAdjust ? Adjust.initOrEnable(calledFromConsentChange) : Adjust.disable()
 
   const acceptedBatch = acceptedCookies.includes(CookieNameEnum.BATCH)
   acceptedBatch ? Batch.optIn() : Batch.optOut()

@@ -522,8 +522,6 @@ export const logEventAnalytics = {
       },
       params
     ),
-  logOpenApp: (params: { appsFlyerUserId?: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.OPEN_APP }, params),
   logOpenDMSForeignCitizenURL: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.OPEN_DMS_FOREIGN_CITIZEN_URL }),
   logOpenDMSFrenchCitizenURL: () =>

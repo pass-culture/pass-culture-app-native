@@ -9,8 +9,8 @@ import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTracking
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
-import { campaignTracker } from 'libs/campaign/__mocks__/campaign'
 import { EmptyResponse } from 'libs/fetch'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as PackageJson from 'libs/packageJson'
@@ -19,7 +19,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
-jest.mock('libs/campaign/campaign')
+jest.mock('libs/adjust/adjust')
 jest.mock('libs/react-native-device-info/getDeviceId')
 const buildVersion = 10010005
 jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
@@ -133,12 +133,12 @@ describe('<CookiesConsent/>', () => {
       expect(analytics.logHasAcceptedAllCookies).toHaveBeenCalledTimes(1)
     })
 
-    it('should init AppsFlyer', async () => {
+    it('should init Adjust', async () => {
       renderCookiesConsent()
 
       await user.press(screen.getByText('Tout accepter'))
 
-      expect(campaignTracker.init).toHaveBeenNthCalledWith(1, true)
+      expect(Adjust.initOrEnable).toHaveBeenCalledWith()
     })
 
     it('should save UTM params', async () => {
@@ -186,12 +186,12 @@ describe('<CookiesConsent/>', () => {
       expect(mockStartTracking).toHaveBeenCalledWith(false)
     })
 
-    it('should not init AppsFlyer', async () => {
+    it('should disable Adjust', async () => {
       renderCookiesConsent()
 
       await user.press(screen.getByText('Tout refuser'))
 
-      expect(campaignTracker.init).not.toHaveBeenCalled()
+      expect(Adjust.disable).toHaveBeenCalledWith()
     })
 
     it('should not set marketing params', async () => {

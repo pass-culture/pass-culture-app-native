@@ -1,19 +1,18 @@
 // eslint-disable-next-line no-restricted-imports
-import { campaignTracker } from 'libs/campaign/campaign'
+import { Adjust } from 'libs/adjust/adjust'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { Batch } from 'libs/react-native-batch'
 
 const enableTracking = () => {
   firebaseAnalytics.enableCollection()
-  campaignTracker.init(true)
-  campaignTracker.startAppsFlyer(true)
+  Adjust.initOrEnable()
   Batch.optIn()
 }
 
 const disableTracking = () => {
   firebaseAnalytics.disableCollection()
-  campaignTracker.startAppsFlyer(false)
+  Adjust.disable()
   Batch.optOut()
 }
 

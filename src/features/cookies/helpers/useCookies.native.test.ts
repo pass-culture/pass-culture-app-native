@@ -24,7 +24,6 @@ import { waitForPromiseResolution } from 'tests/waitForPromiseResolution'
 const buildVersion = 10010005
 jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
 
-jest.mock('libs/campaign/campaign')
 jest.mock('libs/monitoring/services')
 jest.mock('libs/react-native-device-info/getDeviceId')
 
@@ -176,7 +175,7 @@ describe('useCookies', () => {
       renderUseCookies()
 
       await waitFor(() => {
-        expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(ALL_OPTIONAL_COOKIES)
+        expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(ALL_OPTIONAL_COOKIES, false)
       })
     })
 

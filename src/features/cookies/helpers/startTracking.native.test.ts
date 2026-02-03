@@ -1,10 +1,10 @@
 /* eslint-disable no-restricted-imports */
 import { startTracking } from 'features/cookies/helpers/startTracking'
-import { campaignTracker } from 'libs/campaign/campaign'
+import { Adjust } from 'libs/adjust/adjust'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { Batch } from 'libs/react-native-batch'
 
-jest.mock('libs/campaign/campaign')
+jest.mock('libs/adjust/adjust')
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -13,7 +13,7 @@ describe('startTracking', () => {
     startTracking(false)
 
     expect(firebaseAnalytics.disableCollection).toHaveBeenCalledTimes(1)
-    expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(false)
+    expect(Adjust.disable).toHaveBeenCalledTimes(1)
     expect(Batch.optOut).toHaveBeenCalledTimes(1)
   })
 
@@ -21,8 +21,7 @@ describe('startTracking', () => {
     startTracking(true)
 
     expect(firebaseAnalytics.enableCollection).toHaveBeenCalledTimes(1)
-    expect(campaignTracker.init).toHaveBeenCalledWith(true)
-    expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
+    expect(Adjust.initOrEnable).toHaveBeenCalledWith()
     expect(Batch.optIn).toHaveBeenCalledTimes(1)
   })
 })

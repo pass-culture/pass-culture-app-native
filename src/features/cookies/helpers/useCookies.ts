@@ -111,7 +111,7 @@ const setConsentAndChoiceDateTime = (cookies: CookiesConsent) => {
       state: ConsentState.HAS_CONSENT,
       value: cookies.consent,
     })
-    startTrackingAcceptedCookies(cookies.consent.accepted)
+    startTrackingAcceptedCookies(cookies.consent.accepted, false)
   } else {
     setCookiesConsentState({ state: ConsentState.UNKNOWN })
   }

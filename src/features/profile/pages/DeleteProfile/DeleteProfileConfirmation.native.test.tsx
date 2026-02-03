@@ -5,6 +5,7 @@ import * as API from 'api/api'
 import * as Auth from 'features/auth/context/AuthContext'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import { nonBeneficiaryUser } from 'fixtures/user'
+import { Adjust } from 'libs/adjust/adjust'
 import { env } from 'libs/environment/fixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -12,6 +13,8 @@ import { render, screen, userEvent } from 'tests/utils'
 import { DeleteProfileConfirmation } from './DeleteProfileConfirmation'
 
 jest.mock('libs/firebase/analytics/analytics')
+
+jest.mock('libs/adjust/adjust')
 
 const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
 
@@ -73,6 +76,14 @@ describe('DeleteProfileConfirmation', () => {
       params: undefined,
       screen: 'DeleteProfileReason',
     })
+  })
+
+  it('should call Adjust.gdprForgetMe when pressing account anonymization button', async () => {
+    renderDeleteProfileConfirmation()
+
+    await user.press(screen.getByText('Supprimer mon compte'))
+
+    expect(Adjust.gdprForgetMe).toHaveBeenCalledTimes(1)
   })
 
   it('should navigate to DeleteProfileSuccess when account is anonymized', async () => {

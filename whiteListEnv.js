@@ -19,7 +19,6 @@ export const whiteListEnv = (env, commitHash) => {
     'APP_DISPLAY_NAME',
     'APP_PUBLIC_URL',
     'APPLE_STORE_URL',
-    'APPS_FLYER_DEV_PUBLIC_KEY',
     'APPS_FLYER_WEB_PUBLIC_KEY',
     'BATCH_API_PUBLIC_KEY_ANDROID',
     'BATCH_API_PUBLIC_KEY_IOS',
