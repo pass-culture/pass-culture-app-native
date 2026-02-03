@@ -1,10 +1,11 @@
-import { useFocusEffect } from '@react-navigation/native'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import { View } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { BookingButton } from 'features/offer/components/BookingButton/BookingButton'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { StickyBookingButton } from 'features/offer/components/StickyBookingButton/StickyBookingButton'
@@ -28,14 +29,16 @@ export const OfferCTAButton: FunctionComponent<OfferCTAButtonProps> = ({
   const { isLoggedIn } = useAuthContext()
   const { isDesktopViewport } = useTheme()
   const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
+  const { setParams } = useNavigation<UseNavigationType>()
 
   useFocusEffect(
     useCallback(() => {
       trackEventHasSeenOfferOnce()
       if (openModalOnNavigation) {
         showOfferModal()
+        setParams({ openModalOnNavigation: undefined })
       }
-    }, [trackEventHasSeenOfferOnce, openModalOnNavigation, showOfferModal])
+    }, [trackEventHasSeenOfferOnce, openModalOnNavigation, showOfferModal, setParams])
   )
   return (
     <View>

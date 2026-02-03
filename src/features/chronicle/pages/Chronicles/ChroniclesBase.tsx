@@ -1,4 +1,4 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, PropsWithChildren, useCallback, useRef } from 'react'
 import { FlatList } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -11,7 +11,8 @@ import { ChroniclesHeader } from 'features/chronicle/components/ChroniclesHeader
 import { ChroniclesWebMetaHeader } from 'features/chronicle/components/ChroniclesWebMetaHeader/ChroniclesWebMetaHeader'
 import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
 import { ChronicleCardData } from 'features/chronicle/type'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { analytics } from 'libs/analytics/provider'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
@@ -39,10 +40,10 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
 }) => {
   const route = useRoute<UseRouteType<'Chronicles'>>()
   const chronicleId = route.params?.chronicleId
-  const { navigate } = useNavigation<UseNavigationType>()
   const { contentPage, appBarHeight, isDesktopViewport, designSystem } = useTheme()
   const { top } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
+  const { goBack } = useGoBack('Offer')
 
   const { headerTransition, onScroll } = useOpacityTransition()
   const { visible, showModal, hideModal } = useModal(false)
@@ -65,10 +66,6 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
 
   const title = `Tous les avis sur "${offerName}"`
 
-  const handleGoBack = () => {
-    navigate('Offer', { id: offerId, openModalOnNavigation: undefined })
-  }
-
   const handleOnShowRecoButtonPress = () => {
     hideModal()
     runAfterInteractionsMobile(() => {
@@ -77,7 +74,7 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
   }
 
   const handleOnShowChroniclesWritersModal = () => {
-    analytics.logClickWhatsClub({
+    void analytics.logClickWhatsClub({
       offerId: offerId.toString(),
       from: 'chronicles',
       categoryName: offerCategoryId,
@@ -88,11 +85,7 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
   return (
     <React.Fragment>
       <ChroniclesWebMetaHeader title={title} />
-      <ChroniclesHeader
-        headerTransition={headerTransition}
-        title={title}
-        handleGoBack={handleGoBack}
-      />
+      <ChroniclesHeader headerTransition={headerTransition} title={title} handleGoBack={goBack} />
       <FullFlexRow>
         {children}
 
