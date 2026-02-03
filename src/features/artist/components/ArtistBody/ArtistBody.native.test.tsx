@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { mockArtist } from 'features/artist/fixtures/mockArtist'
@@ -140,11 +140,7 @@ describe('<ArtistBody />', () => {
     render(
       reactQueryProviderHOC(
         <ArtistBody
-          artist={{
-            ...mockArtist,
-            descriptionCredit: '© Contenu généré par IA',
-            descriptionSource: 'https://fr.wikipedia.org/wiki/Avril_Lavigne',
-          }}
+          artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
           onViewableItemsChanged={jest.fn()}
@@ -161,11 +157,7 @@ describe('<ArtistBody />', () => {
     render(
       reactQueryProviderHOC(
         <ArtistBody
-          artist={{
-            ...mockArtist,
-            descriptionCredit: '© Contenu généré par IA',
-            descriptionSource: 'https://fr.wikipedia.org/wiki/Avril_Lavigne',
-          }}
+          artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
           onViewableItemsChanged={jest.fn()}
@@ -178,5 +170,25 @@ describe('<ArtistBody />', () => {
 
     expect(screen.getByText('© Contenu généré par IA')).toBeOnTheScreen()
     expect(screen.getByText('Source : Wikipédia')).toBeOnTheScreen()
+  })
+
+  it('should navigate to artist webview page when pressing Wikipedia button', async () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={mockArtist}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    await user.press(screen.getByText('Voir plus'))
+
+    await user.press(screen.getByText('Source : Wikipédia'))
+
+    expect(navigate).toHaveBeenCalledWith('ArtistWebview', { id: mockArtist.id })
   })
 })

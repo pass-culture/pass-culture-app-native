@@ -214,6 +214,7 @@ export type RootStackParamList = {
   AfterSignupEmailValidationBuffer: AfterSignupEmailValidationBufferParams
   _DeeplinkOnlyAfterSignupEmailValidationBuffer1: AfterSignupEmailValidationBufferParams
   Artist: ArtistParams
+  ArtistWebview: ArtistParams
   _DeeplinkOnlyArtist1: ArtistParams
   BannedCountryError: undefined
   BookingConfirmation: BookingConfirmationParams

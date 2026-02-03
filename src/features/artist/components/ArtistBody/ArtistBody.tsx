@@ -18,6 +18,7 @@ import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBla
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -87,14 +88,25 @@ export const ArtistBody: FunctionComponent<Props> = ({
                   {artist.descriptionSource ? (
                     <ViewGap gap={1}>
                       <Credit>{artist.descriptionCredit}</Credit>
-                      <ExternalTouchableLink
-                        as={ButtonQuaternaryBlack}
-                        wording="Source&nbsp;: Wikipédia"
-                        externalNav={{ url: artist.descriptionSource }}
-                        justifyContent="flex-start"
-                        inline
-                        icon={ExternalSiteFilled}
-                      />
+                      {isWeb ? (
+                        <ExternalTouchableLink
+                          as={ButtonQuaternaryBlack}
+                          wording="Source&nbsp;: Wikipédia"
+                          externalNav={{ url: artist.descriptionSource }}
+                          justifyContent="flex-start"
+                          inline
+                          icon={ExternalSiteFilled}
+                        />
+                      ) : (
+                        <InternalTouchableLink
+                          as={ButtonQuaternaryBlack}
+                          wording="Source&nbsp;: Wikipédia"
+                          navigateTo={{ screen: 'ArtistWebview', params: { id: artist.id } }}
+                          justifyContent="flex-start"
+                          inline
+                          icon={ExternalSiteFilled}
+                        />
+                      )}
                     </ViewGap>
                   ) : null}
                 </CollapsibleText>

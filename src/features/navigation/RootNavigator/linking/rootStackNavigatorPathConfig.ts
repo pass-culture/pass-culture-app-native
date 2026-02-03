@@ -378,6 +378,9 @@ export const rootStackNavigatorPathConfig = {
   Artist: {
     path: 'artiste/:id',
   },
+  ArtistWebview: {
+    path: 'artiste/wikipedia/:id',
+  },
   _DeeplinkOnlyArtist1: {
     path: 'artist/:id',
   },
