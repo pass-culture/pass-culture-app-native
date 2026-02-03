@@ -10,6 +10,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
 import { CreateHistoryItem } from 'features/search/types'
+import Animated, { FadeIn, FadeOut } from 'libs/react-native-reanimated/index.web'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { Spacer } from 'ui/theme'
 
@@ -54,7 +55,7 @@ export const SearchHeader: FC<Props> = ({
       <Spacer.TopScreen />
       <HeaderContainer>
         {shouldDisplayHeader ? (
-          <RowContainer>
+          <RowContainer entering={FadeIn} exiting={FadeOut}>
             {withArrow ? (
               <StyledView>
                 <BackButton onGoBack={onGoBack} />
@@ -102,7 +103,7 @@ const StyledView = styled.View(({ theme }) => ({
   height: theme.designSystem.size.spacing.xxxl,
 }))
 
-const RowContainer = styled.View(({ theme }) => ({
+const RowContainer = styled(Animated.View)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   paddingBottom: theme.designSystem.size.spacing.l,
