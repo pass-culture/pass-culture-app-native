@@ -21,7 +21,10 @@ export type OfferPlaceProps = {
   distance?: string | null
 }
 
-type PartialVenue = Pick<VenueResponse, 'id' | 'name' | 'description' | 'isOpenToPublic'>
+type PartialVenue = Pick<
+  VenueResponse,
+  'id' | 'name' | 'description' | 'isOpenToPublic' | 'isPermanent'
+>
 
 const mergeVenueData =
   (venue: PartialVenue) =>
@@ -31,10 +34,10 @@ const mergeVenueData =
     // Info not available in OfferVenueResponse so we fallback to OTHER
     activity: Activity.OTHER,
     description: venue.description,
-    accessibility: {},
-    contact: {},
+    accessibilityData: {},
     timezone: '',
     isOpenToPublic: venue.isOpenToPublic,
+    isPermanent: venue.isPermanent,
     ...(prevData ?? {}),
   })
 

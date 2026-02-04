@@ -43,7 +43,7 @@ describe('PracticalInformation', () => {
       externalAccessibilityUrl: undefined,
       externalAccessibilityData: undefined,
       openingHours: undefined,
-      accessibility: {
+      accessibilityData: {
         audioDisability: null,
         mentalDisability: null,
         motorDisability: null,
@@ -148,7 +148,7 @@ describe('PracticalInformation', () => {
               ...venueOpenToPublic,
               externalAccessibilityUrl: undefined,
               externalAccessibilityData: undefined,
-              accessibility: {
+              accessibilityData: {
                 audioDisability: null,
                 mentalDisability: null,
                 motorDisability: null,
