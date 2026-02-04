@@ -22,7 +22,7 @@ export const OfferArtists: FunctionComponent<Props> = ({
   onPressArtistLink,
 }) => {
   const artistLinkEnabled = !!onPressArtistLink
-  const artistsLines = getArtistsLines(artists)
+  const artistsLines = artists.length === 1 ? [{ prefix: 'de', artists }] : getArtistsLines(artists)
 
   return (
     <ViewGap gap={2}>

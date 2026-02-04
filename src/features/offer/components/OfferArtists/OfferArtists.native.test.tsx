@@ -70,4 +70,10 @@ describe('<OfferArtists />', () => {
 
     expect(screen.getByLabelText('Ouvrir la liste des artistes')).toBeOnTheScreen()
   })
+
+  it('should use "de" prefix if there is only one artist', () => {
+    render(<OfferArtists artists={[mockArtist]} />)
+
+    expect(screen.getByText('de')).toBeOnTheScreen()
+  })
 })
