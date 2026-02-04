@@ -21,7 +21,6 @@ import {
   getInteractiveColors,
   getLabelStyle,
   getLabelText,
-  getPrimaryDisabledOpacity,
   getSpacingGap,
   getTypographyForSize,
 } from './Button.layout'
@@ -42,7 +41,6 @@ type ButtonContainerProps = {
   backgroundColor?: ButtonColorValue
   borderColor?: ColorsType
   borderWidth?: number
-  opacity?: number
   paddingVertical: number
   paddingHorizontal: number
 }
@@ -93,8 +91,6 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
     isHoverActive
   )
   const borderWidth = getBorderWidth(borderColor)
-  const opacity = getPrimaryDisabledOpacity(variant, isDisabled)
-
   const labelText = getLabelText(iconButton, wording)
   const computedA11yLabel = getComputedAccessibilityLabel(
     iconButton ? accessibilityLabel : (accessibilityLabel ?? wording ?? ''),
@@ -157,7 +153,6 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
     backgroundColor,
     borderColor,
     borderWidth,
-    opacity,
     paddingVertical,
     paddingHorizontal,
   })

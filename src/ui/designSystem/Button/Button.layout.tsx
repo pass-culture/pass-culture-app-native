@@ -25,9 +25,6 @@ export const getInteractiveColors = (colors: ButtonColors, isHoverActive: boolea
 
 export const getBorderWidth = (borderColor?: ColorsType) => (borderColor ? 1 : 0)
 
-export const getPrimaryDisabledOpacity = (variant: ButtonVariant, isDisabled: boolean) =>
-  variant === 'primary' && isDisabled ? 0.4 : 1
-
 export const getLabelText = (iconButton: boolean, wording?: string) =>
   iconButton ? undefined : wording
 

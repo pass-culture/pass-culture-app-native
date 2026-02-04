@@ -38,7 +38,6 @@ type ContainerStyleProps = {
   borderColor?: ColorsType
   borderWidth?: number
   fullWidth?: boolean
-  opacity?: number
   paddingVertical: number
   paddingHorizontal: number
 }
@@ -49,7 +48,6 @@ const ButtonContainer = styled(TouchableOpacity)<ContainerStyleProps>(
     borderColor,
     borderWidth,
     backgroundColor,
-    opacity,
     fullWidth,
     paddingVertical,
     paddingHorizontal,
@@ -68,6 +66,5 @@ const ButtonContainer = styled(TouchableOpacity)<ContainerStyleProps>(
     borderColor: borderColor,
     borderWidth: borderColor ? borderWidth : 0,
     backgroundColor: backgroundColor,
-    opacity: opacity ?? 1,
   })
 )

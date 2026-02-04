@@ -54,7 +54,6 @@ export const Button = (props: ButtonWebProps) => {
             backgroundColor={containerProps.backgroundColor}
             borderColor={containerProps.borderColor}
             borderWidth={containerProps.borderWidth}
-            opacity={containerProps.opacity}
             paddingVertical={containerProps.paddingVertical}
             paddingHorizontal={containerProps.paddingHorizontal}
             type={href ? undefined : type}
@@ -73,7 +72,6 @@ type ContainerStyleProps = {
   borderColor?: ColorsType
   borderWidth?: number
   fullWidth?: boolean
-  opacity?: number
   paddingVertical: number
   paddingHorizontal: number
 }
@@ -83,7 +81,6 @@ const buttonContainerStyles = ({
   borderColor,
   borderWidth,
   backgroundColor,
-  opacity,
   fullWidth,
   paddingVertical,
   paddingHorizontal,
@@ -102,7 +99,6 @@ const buttonContainerStyles = ({
   borderColor: borderColor,
   borderWidth: borderColor ? borderWidth : 0,
   backgroundColor: backgroundColor,
-  opacity: opacity ?? 1,
   cursor: 'pointer',
   outline: 'none',
   display: 'inline-flex',
