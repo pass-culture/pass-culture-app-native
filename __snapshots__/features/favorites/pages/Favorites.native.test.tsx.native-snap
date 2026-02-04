@@ -116,7 +116,6 @@ exports[`<Favorites/> should render correctly 1`] = `
               "borderWidth": 1,
               "flexDirection": "row",
               "justifyContent": "center",
-              "opacity": 1,
               "paddingBottom": 8,
               "paddingLeft": 12,
               "paddingRight": 12,
@@ -144,8 +143,8 @@ exports[`<Favorites/> should render correctly 1`] = `
       >
         <View
           fill="#6123df"
-          height={20}
-          width={20}
+          height={22}
+          width={22}
         >
           <Text>
             undefined-SVG-Mock
