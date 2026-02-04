@@ -167,8 +167,6 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const hasVenuePage = offer.venue.isPermanent
 
-  const artistsNames = artists.map((artist) => artist.name)
-
   return (
     <Container>
       <MarginContainer gap={6}>
@@ -179,7 +177,7 @@ export const OfferBody: FunctionComponent<Props> = ({
               <OfferTitle offerName={offer.name} />
               {artists.length > 0 ? (
                 <OfferArtists
-                  artistsNames={artistsNames}
+                  artists={artists}
                   isMultiArtistsEnabled={isMultiArtistsEnabled}
                   onPressArtistLink={hasAccessToArtistPage ? handleArtistLinkPress : undefined}
                 />
