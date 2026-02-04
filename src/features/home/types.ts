@@ -1,6 +1,6 @@
 import { Animated, ViewToken } from 'react-native'
 
-import { Activity, VenueAccessibilityModel, VenueContactModel } from 'api/gen'
+import { AccessibilityData, Activity, VenueContact } from 'api/gen'
 import { PlaylistOffersParams, VenueHit } from 'libs/algolia/types'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes, ContentfulLabelCategories, Layout } from 'libs/contentful/types'
@@ -237,9 +237,9 @@ export type ModuleData = {
 }
 
 export type Venue = {
-  accessibility: VenueAccessibilityModel
+  accessibility: AccessibilityData
   description: string
-  contact: VenueContactModel
+  contact: VenueContact
   publicName: string
   bannerUrl?: string
   id: number

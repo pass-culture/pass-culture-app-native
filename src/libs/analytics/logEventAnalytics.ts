@@ -7,7 +7,7 @@ import {
   NativeCategoryIdEnumv2,
   ReactionTypeEnum,
   RecommendationApiParams,
-  VenueContactModel,
+  VenueContact,
 } from 'api/gen'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { PreValidationSignupStep } from 'features/auth/enums'
@@ -710,7 +710,7 @@ export const logEventAnalytics = {
     from: ReactionFromEnum
     userId?: number
   }) => analytics.logEvent({ firebase: AnalyticsEvent.VALIDATE_REACTION }, params),
-  logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>
+  logVenueContact: (params: { type: keyof VenueContact; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_CONTACT }, params),
   logVenueMapSeenDuration: (duration: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_MAP_SEEN_DURATION }, { duration }),

@@ -31,10 +31,10 @@ const buildVenue = (venue: AlgoliaVenue): Venue => {
 
   return {
     accessibility: {
-      audioDisability: venue.audio_disability,
-      mentalDisability: venue.mental_disability,
-      motorDisability: venue.motor_disability,
-      visualDisability: venue.visual_disability,
+      isAccessibleAudioDisability: venue.audio_disability ?? undefined,
+      isAccessibleMentalDisability: venue.mental_disability ?? undefined,
+      isAccessibleMotorDisability: venue.motor_disability ?? undefined,
+      isAccessibleVisualDisability: venue.visual_disability ?? undefined,
     },
     bannerUrl: venue.banner_url ?? undefined,
     contact: {

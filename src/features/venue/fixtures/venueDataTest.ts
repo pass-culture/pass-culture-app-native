@@ -1,13 +1,13 @@
 import { Activity, VenueResponse } from 'api/gen'
 
 export const venueDataTest: Omit<VenueResponse, 'isVirtual'> = {
-  accessibility: {
-    audioDisability: false,
-    mentalDisability: false,
-    motorDisability: false,
-    visualDisability: true,
+  accessibilityData: {
+    isAccessibleAudioDisability: false,
+    isAccessibleMentalDisability: false,
+    isAccessibleMotorDisability: false,
+    isAccessibleVisualDisability: true,
   },
-  address: '1 boulevard Poissonnière',
+  street: '1 boulevard Poissonnière',
   city: 'Paris',
   contact: {
     email: 'contact@venue.com',
@@ -68,7 +68,6 @@ export const venueDataTest: Omit<VenueResponse, 'isVirtual'> = {
     SUNDAY: undefined,
   },
   postalCode: '75000',
-  publicName: 'Le Petit Rintintin 1',
   activity: Activity.BOOKSTORE,
   withdrawalDetails: 'How to withdraw, https://test.com',
   timezone: 'UTC',

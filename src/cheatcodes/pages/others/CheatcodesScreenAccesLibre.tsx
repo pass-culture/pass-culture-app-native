@@ -19,7 +19,7 @@ export const CheatcodesScreenAccesLibre = () => {
 
   const { data: venue } = useVenueQuery(venueId || 0, { enabled: !!venueId })
 
-  const details = getDetailedAccessibilityInfo(venue?.externalAccessibilityData)
+  const details = getDetailedAccessibilityInfo(venue?.accessibilityData)
 
   const onPress = () => {
     const parsedId = parseInt(value, 10)
@@ -44,7 +44,7 @@ export const CheatcodesScreenAccesLibre = () => {
       />
 
       {venue ? (
-        venue.externalAccessibilityData ? (
+        venue.accessibilityData ? (
           details?.map((detail, index) => (
             <View key={index}>
               <StyledViewGap gap={5}>
