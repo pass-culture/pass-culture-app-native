@@ -46,23 +46,17 @@ export const getSpacingGap = (hasLabel: boolean, spacing: number) => (hasLabel ?
 
 export const getTypographyForSize = (size: ButtonSize) => (size === 'small' ? 'ButtonS' : 'Button')
 
-export const getIconSizeKeyForButton = (size: ButtonSize) =>
-  size === 'small' ? 'extraSmall' : 'smaller'
-
 export const getContentPadding = ({
   variant,
-  size,
   iconButton,
   theme,
 }: {
   variant: ButtonVariant
-  size: ButtonSize
   iconButton: boolean
   theme: DefaultTheme
 }) => {
   if (iconButton) {
-    const padding =
-      size === 'small' ? theme.designSystem.size.spacing.s : theme.designSystem.size.spacing.m
+    const padding = theme.designSystem.size.spacing.s
     return { vertical: padding, horizontal: padding }
   }
 

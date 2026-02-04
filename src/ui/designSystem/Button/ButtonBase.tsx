@@ -17,7 +17,6 @@ import {
   getBorderWidth,
   getContentPadding,
   getIconElement,
-  getIconSizeKeyForButton,
   getInteractiveColors,
   getLabelStyle,
   getLabelText,
@@ -102,8 +101,7 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
   const typographyKey = getTypographyForSize(size)
   const LabelTypo = Typo[typographyKey]
 
-  const iconSizeKey = getIconSizeKeyForButton(size)
-  const iconSize = iconButton ? (size === 'small' ? 16 : 22) : theme.icons.sizes[iconSizeKey]
+  const iconSize = size === 'small' ? theme.icons.sizes.buttonSmall : theme.icons.sizes.button
   const getPositionedIcon = (position: 'left' | 'right') =>
     iconPosition === position ? getIconElement({ icon, color: iconColor, size: iconSize }) : null
 
@@ -114,7 +112,6 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
 
   const { vertical: paddingVertical, horizontal: paddingHorizontal } = getContentPadding({
     variant,
-    size,
     iconButton,
     theme,
   })
