@@ -1,11 +1,9 @@
 import React, { ReactElement, useCallback, useState } from 'react'
-import { StyleProp, ViewStyle, useWindowDimensions } from 'react-native'
+import { StyleProp, useWindowDimensions, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { SubcategoryIdEnum } from 'api/gen'
 import { RATIO169 } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { YoutubePlayer } from 'features/home/components/modules/video/YoutubePlayer/YoutubePlayer'
-import { FeedBackVideo } from 'features/offer/components/OfferContent/VideoSection/FeedBackVideo'
 import { GatedVideoSection } from 'features/offer/components/OfferContent/VideoSection/GatedVideoSection'
 import { MAX_WIDTH_VIDEO } from 'features/offer/constant'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
@@ -19,7 +17,6 @@ import { Typo } from 'ui/theme'
 type VideoSectionProps = {
   title: string
   offerId: number
-  offerSubcategory: SubcategoryIdEnum
   onManageCookiesPress: VoidFunction
   onVideoConsentPress: VoidFunction
   videoId?: string
@@ -28,7 +25,6 @@ type VideoSectionProps = {
   style?: StyleProp<ViewStyle>
   maxWidth?: number
   playerRatio?: number
-  userId?: number
   duration?: number | null
   hasVideoCookiesConsent?: boolean
 }
@@ -42,8 +38,6 @@ export const VideoSection = ({
   maxWidth = MAX_WIDTH_VIDEO,
   playerRatio = RATIO169,
   offerId,
-  offerSubcategory,
-  userId,
   duration,
   hasVideoCookiesConsent,
   onManageCookiesPress,
@@ -75,19 +69,15 @@ export const VideoSection = ({
           onPlayPress={handleOnPlayPress}
           play={playVideo}
         />
-        <FeedBackVideo offerId={offerId} offerSubcategory={offerSubcategory} userId={userId} />
       </React.Fragment>
     )
   }, [
     duration,
     handleOnPlayPress,
     maxWidth,
-    offerId,
-    offerSubcategory,
     playVideo,
     subtitle,
     title,
-    userId,
     videoHeight,
     videoId,
     videoThumbnail,
