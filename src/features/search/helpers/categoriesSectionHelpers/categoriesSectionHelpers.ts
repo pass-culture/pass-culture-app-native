@@ -10,7 +10,6 @@ export type CategoriesMapping = MappingTree | MappedNativeCategories | MappedGen
 
 type CategoriesMappingItem = {
   label: string
-  nbResultsFacet?: number
   children?: CategoriesMapping
 }
 
