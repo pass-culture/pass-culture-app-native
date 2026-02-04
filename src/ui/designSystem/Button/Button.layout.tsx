@@ -5,6 +5,7 @@
 
 import React from 'react'
 import { StyleProp, TextStyle } from 'react-native'
+import { DefaultTheme } from 'styled-components/native'
 
 import { ColorsType } from 'theme/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -50,6 +51,29 @@ export const getTypographyForSize = (size: ButtonSize) => (size === 'small' ? 'B
 
 export const getIconSizeKeyForButton = (size: ButtonSize) =>
   size === 'small' ? 'extraSmall' : 'smaller'
+
+export const getContentPadding = ({
+  variant,
+  size,
+  iconButton,
+  theme,
+}: {
+  variant: ButtonVariant
+  size: ButtonSize
+  iconButton: boolean
+  theme: DefaultTheme
+}) => {
+  if (iconButton) {
+    const padding =
+      size === 'small' ? theme.designSystem.size.spacing.s : theme.designSystem.size.spacing.m
+    return { vertical: padding, horizontal: padding }
+  }
+
+  return {
+    vertical: variant === 'tertiary' ? 0 : theme.designSystem.size.spacing.s,
+    horizontal: variant === 'tertiary' ? 0 : theme.designSystem.size.spacing.m,
+  }
+}
 
 export const getIconElement = ({
   icon: Icon,

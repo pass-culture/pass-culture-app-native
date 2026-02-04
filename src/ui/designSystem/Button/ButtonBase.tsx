@@ -15,6 +15,7 @@ import { Typo } from 'ui/theme'
 import { getButtonColors } from './Button.colors'
 import {
   getBorderWidth,
+  getContentPadding,
   getIconElement,
   getIconSizeKeyForButton,
   getInteractiveColors,
@@ -42,6 +43,8 @@ type ButtonContainerProps = {
   borderColor?: ColorsType
   borderWidth?: number
   opacity?: number
+  paddingVertical: number
+  paddingHorizontal: number
 }
 
 type ButtonBaseProps = (ButtonNativeProps | ButtonWebProps) & {
@@ -104,7 +107,7 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
   const LabelTypo = Typo[typographyKey]
 
   const iconSizeKey = getIconSizeKeyForButton(size)
-  const iconSize = theme.icons.sizes[iconSizeKey]
+  const iconSize = iconButton ? (size === 'small' ? 16 : 22) : theme.icons.sizes[iconSizeKey]
   const getPositionedIcon = (position: 'left' | 'right') =>
     iconPosition === position ? getIconElement({ icon, color: iconColor, size: iconSize }) : null
 
@@ -113,6 +116,12 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
 
   const resolvedAccessibilityRole = accessibilityRole ?? defaultAccessibilityRole
 
+  const { vertical: paddingVertical, horizontal: paddingHorizontal } = getContentPadding({
+    variant,
+    size,
+    iconButton,
+    theme,
+  })
   const content = (
     <Content gap={gap} fullWidth={fullWidth} isMultiline={isMultiline}>
       {isLoading ? (
@@ -149,6 +158,8 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
     borderColor,
     borderWidth,
     opacity,
+    paddingVertical,
+    paddingHorizontal,
   })
 }
 
