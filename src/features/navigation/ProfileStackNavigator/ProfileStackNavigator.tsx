@@ -19,6 +19,7 @@ import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
+import { Chatbot } from 'features/profile/pages/Chatbot/Chatbot'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { DebugScreen } from 'features/profile/pages/DebugScreen/DebugScreen'
@@ -67,6 +68,11 @@ const profileScreens: ProfileRouteConfig[] = [
     name: 'AccessibilityDeclarationWeb',
     component: AccessibilityDeclarationWeb,
     options: { title: 'Déclaration d’accessibilité - web' },
+  },
+  {
+    name: 'Chatbot',
+    component: Chatbot,
+    options: { title: 'Chatbot' },
   },
   {
     name: 'RecommendedPaths',

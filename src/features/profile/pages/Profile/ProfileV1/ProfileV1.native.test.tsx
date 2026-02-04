@@ -525,6 +525,22 @@ describe('<ProfileV1 />', () => {
       expect(analytics.logShareApp).toHaveBeenNthCalledWith(1, { from: 'profile' })
     })
   })
+
+  describe('chatbot CTA', () => {
+    it('should display chatbot CTA when FF enableChatbot is activated', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CHATBOT])
+      renderProfile()
+
+      expect(await screen.findByText('Poser une question')).toBeOnTheScreen()
+    })
+
+    it('should not display chatbot CTA when FF enableChatbot is deactivated', async () => {
+      setFeatureFlags([])
+      renderProfile()
+
+      expect(screen.queryByText('Poser une question')).not.toBeOnTheScreen()
+    })
+  })
 })
 
 interface Options {
