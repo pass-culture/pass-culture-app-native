@@ -6,6 +6,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2, SubcategoryIdEnum } from 'api/gen'
 import { offerChroniclesFixture } from 'features/chronicle/fixtures/offerChronicles.fixture'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -47,6 +48,12 @@ jest.mock('queries/subcategories/useSubcategoriesQuery', () => ({
 
 const mockShowModal = jest.fn()
 const mockCloseModal = jest.fn()
+
+const mockGoBack = jest.fn()
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: mockGoBack,
+  canGoBack: jest.fn(() => true),
+})
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -154,15 +161,12 @@ describe('Chronicles', () => {
       expect(await screen.findByText('Tous les avis du Ciné Club')).toBeOnTheScreen()
     })
 
-    it('should navigate to offer page without openModalOnNavigation param when pressing back button', async () => {
+    it('should execute goBack when pressing back button', async () => {
       render(reactQueryProviderHOC(<Chronicles />))
 
       await user.press(await screen.findByLabelText('Revenir en arrière'))
 
-      expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Offer', {
-        id: offerResponseSnap.id,
-        openModalOnNavigation: undefined,
-      })
+      expect(mockGoBack).toHaveBeenCalledTimes(1)
     })
 
     it('should not scroll to selected chronicle on layout', async () => {
