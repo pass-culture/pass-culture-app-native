@@ -6,7 +6,7 @@ import { buttonWidthStyle } from 'ui/components/buttons/buttonWithLinearGradient
 import { ButtonWithLinearGradientDeprecatedPropsProps } from 'ui/components/buttons/buttonWithLinearGradient/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Rectangle as InitialRectangle } from 'ui/svg/Rectangle'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const ButtonWithLinearGradientDeprecated: React.FC<
   ButtonWithLinearGradientDeprecatedPropsProps
@@ -36,10 +36,10 @@ export const ButtonWithLinearGradientDeprecated: React.FC<
   )
 }
 
-const Rectangle = styled(InitialRectangle).attrs({
-  height: getSpacing(12),
+const Rectangle = styled(InitialRectangle).attrs(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xxxxl,
   size: '100%',
-})``
+}))``
 
 const Container = styled(TouchableOpacity)<{ fitContentWidth: boolean }>(({
   theme,
@@ -69,6 +69,6 @@ const LegendContainer = styled.View<{ reverse?: boolean }>(({ reverse }) => ({
 
 const DisabledRectangle = styled.View(({ theme }) => ({
   width: '100%',
-  height: getSpacing(12),
+  height: theme.designSystem.size.spacing.xxxxl,
   backgroundColor: theme.designSystem.color.background.disabled,
 }))

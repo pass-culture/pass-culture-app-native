@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { mapSubscriptionThemeToIllustration } from 'features/subscription/helpers/mapSubscriptionThemeToIllustration'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { BackgroundColorKey } from 'theme/types'
-import { getSpacing } from 'ui/theme'
 
 interface Props {
   thematic: SubscriptionTheme
@@ -26,8 +25,10 @@ export const SubscriptionThematicIllustration = ({ thematic, size = 'medium' }: 
 }
 
 const IllustrationContainer = styled.View<{ size: 'medium' | 'small' }>(({ theme, size }) => ({
-  height: size === 'medium' ? getSpacing(12) : theme.designSystem.size.spacing.xxl,
-  width: size === 'medium' ? getSpacing(12) : theme.designSystem.size.spacing.xxl,
+  height:
+    size === 'medium' ? theme.designSystem.size.spacing.xxxxl : theme.designSystem.size.spacing.xxl,
+  width:
+    size === 'medium' ? theme.designSystem.size.spacing.xxxxl : theme.designSystem.size.spacing.xxl,
   borderRadius:
     size === 'medium'
       ? theme.designSystem.size.borderRadius.m

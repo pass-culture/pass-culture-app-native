@@ -4,7 +4,6 @@ import { Platform, StyleProp, View, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { HEADER_HEIGHT } from 'shared/header/useGetHeaderHeight'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -83,14 +82,17 @@ const Title = styled(Typo.Title4).attrs(() => ({
   textAlign: 'center',
 })
 
-const Container = styled.View(({ theme }) => ({
-  alignItems: 'center',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  minHeight: HEADER_HEIGHT,
-  width: '100%',
-  paddingHorizontal: theme.contentPage.marginHorizontal,
-}))
+const Container = styled.View(({ theme }) => {
+  const HEADER_HEIGHT = theme.designSystem.size.spacing.xxxxl
+  return {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    minHeight: HEADER_HEIGHT,
+    width: '100%',
+    paddingHorizontal: theme.contentPage.marginHorizontal,
+  }
+})
 
 const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
   ({ positionInHeader = 'left', theme }) => {
