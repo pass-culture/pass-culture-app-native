@@ -4,7 +4,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ChronicleCard } from 'features/chronicle/components/ChronicleCard/ChronicleCard'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { Button } from 'ui/designSystem/Button/Button'
 import { VariantsTemplate, type Variants } from 'ui/storybook/VariantsTemplate'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
 
@@ -42,7 +42,7 @@ const variantConfig: Variants<typeof ChronicleCard> = [
       shouldTruncate: true,
       children: (
         <View>
-          <ButtonTertiaryBlack wording="Voir plus" />
+          <Button wording="Voir plus" variant="tertiary" color="neutral" />
         </View>
       ),
     },

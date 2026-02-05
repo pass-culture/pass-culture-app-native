@@ -12,8 +12,8 @@ import { FlatList, FlatListProps, ListRenderItem, StyleProp, View, ViewStyle } f
 import styled from 'styled-components/native'
 
 import { ChronicleCardData } from 'features/chronicle/type'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { getSpacing } from 'ui/theme'
 
@@ -102,10 +102,12 @@ export const ChronicleCardListBase = forwardRef<
           shouldTruncate={shouldTruncate}>
           {onSeeMoreButtonPress ? (
             <View>
-              <StyledButtonTertiaryBlack
+              <StyledButton
                 wording="Voir plus"
                 accessibilityLabel={`Voir plus à propos de ${item.title}`}
                 onPress={() => onSeeMoreButtonPress(item.id)}
+                variant="tertiary"
+                color="neutral"
               />
             </View>
           ) : null}
@@ -142,8 +144,7 @@ const StyledPlainMore = styled(PlainMore).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
 }))``
 
-const StyledButtonTertiaryBlack = styledButton(ButtonTertiaryBlack).attrs({
+const StyledButton = styledButton(Button).attrs({
   icon: StyledPlainMore,
   iconPosition: 'right',
-  buttonHeight: 'extraSmall',
 })``
