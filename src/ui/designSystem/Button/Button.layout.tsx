@@ -31,16 +31,22 @@ export const getLabelText = (iconButton: boolean, wording?: string) =>
 export const getLabelStyle = (
   textColor: ColorsType,
   fullWidth?: boolean,
-  isMultiline?: boolean
-): StyleProp<TextStyle> => ({
-  color: textColor,
-  maxWidth: '100%',
-  minWidth: 0,
-  flexShrink: 1,
-  flexGrow: fullWidth || isMultiline ? 1 : undefined,
-  flexBasis: fullWidth || isMultiline ? 0 : undefined,
-  textAlign: fullWidth ? 'center' : undefined,
-})
+  isMultiline?: boolean,
+  hasIcon?: boolean
+): StyleProp<TextStyle> => {
+  const shouldExpand = (fullWidth || isMultiline) && !hasIcon
+  const shouldCenter = fullWidth && !hasIcon
+
+  return {
+    color: textColor,
+    maxWidth: '100%',
+    minWidth: 0,
+    flexShrink: 1,
+    flexGrow: shouldExpand ? 1 : undefined,
+    flexBasis: shouldExpand ? 0 : undefined,
+    textAlign: shouldCenter ? 'center' : undefined,
+  }
+}
 
 export const getSpacingGap = (hasLabel: boolean, spacing: number) => (hasLabel ? spacing : 0)
 

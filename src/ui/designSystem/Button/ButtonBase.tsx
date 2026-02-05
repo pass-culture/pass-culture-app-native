@@ -97,7 +97,7 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
   )
   const gap = getSpacingGap(!!labelText, theme.designSystem.size.spacing.s)
   const isMultiline = typeof numberOfLines === 'number' && numberOfLines > 1
-  const labelStyle = getLabelStyle(textColor, fullWidth, isMultiline)
+  const labelStyle = getLabelStyle(textColor, fullWidth, isMultiline, !!icon)
   const typographyKey = getTypographyForSize(size)
   const LabelTypo = Typo[typographyKey]
 
@@ -116,7 +116,7 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
     theme,
   })
   const content = (
-    <Content gap={gap} fullWidth={fullWidth} isMultiline={isMultiline}>
+    <Content gap={gap} fullWidth={fullWidth} isMultiline={isMultiline} hasIcon={!!icon}>
       {isLoading ? (
         <ButtonLoadingIndicator color={iconColor} size={iconSize} testID="button-loading" />
       ) : (
@@ -159,11 +159,12 @@ const Content = styled.View<{
   gap: number
   fullWidth?: boolean
   isMultiline?: boolean
-}>(({ gap, fullWidth, isMultiline }) => ({
+  hasIcon?: boolean
+}>(({ gap, fullWidth, isMultiline, hasIcon }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   columnGap: gap,
-  flexWrap: isMultiline ? 'wrap' : undefined,
+  flexWrap: isMultiline && !hasIcon ? 'wrap' : undefined,
   width: fullWidth ? '100%' : undefined,
   justifyContent: fullWidth ? 'center' : undefined,
 }))

@@ -50,6 +50,25 @@ const primaryCases: Variants<typeof Button> = [
     },
   },
   {
+    label: 'Primary fullWidth with icon',
+    props: {
+      wording: baseLabel,
+      variant: 'primary',
+      icon: Invalidate,
+      fullWidth: true,
+    },
+  },
+  {
+    label: 'Primary icon numberOfLines=2',
+    props: {
+      wording: 'Ouvrir le catalogue et profiter des offres culturelles',
+      variant: 'primary',
+      icon: Invalidate,
+      numberOfLines: 2,
+      fullWidth: true,
+    },
+  },
+  {
     label: 'Primary icon button',
     props: {
       variant: 'primary',
