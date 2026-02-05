@@ -15,10 +15,10 @@ import { changePasswordSchema } from 'features/profile/pages/ChangePassword/sche
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Button } from 'ui/designSystem/Button/Button'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 
@@ -155,7 +155,8 @@ export function ChangePassword() {
               requiredIndicator="explicit"
             />
           </RepeatPasswordContainer>
-          <ButtonPrimary
+          <Button
+            variant="primary"
             wording="Enregistrer"
             accessibilityLabel="Enregistrer les modifications"
             onPress={onSubmit}

@@ -14,11 +14,11 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { CheckboxController } from 'shared/forms/controllers/CheckboxController'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -79,7 +79,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
     },
     [goToNextStep, onSSOEmailNotFoundError, showErrorSnackBar]
   )
-
+  const disabled = watch('email').trim() === ''
   return (
     <Form.MaxWidth>
       <Typo.Title3 {...getHeadingAttrs(2)}>Crée-toi un compte</Typo.Title3>
@@ -98,12 +98,14 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
           name="marketingEmailSubscription"
         />
       </ControllersContainer>
-      <ButtonPrimary
+      <Button
+        variant="primary"
+        fullWidth
         wording="Continuer"
         accessibilityLabel={accessibilityLabelForNextStep}
         onPress={handleSubmit(goToNextStepCallback)}
         isLoading={false}
-        disabled={watch('email').trim() === ''}
+        disabled={disabled}
       />
       {enableGoogleSSO ? (
         <SSOViewGap gap={4}>

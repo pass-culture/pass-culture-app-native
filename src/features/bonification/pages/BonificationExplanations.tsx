@@ -14,12 +14,12 @@ import {
 } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Form } from 'ui/components/Form'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Speaker } from 'ui/svg/icons/Speaker'
@@ -82,10 +82,12 @@ export const BonificationExplanations = () => {
       }
       fixedBottomChildren={
         <ViewGap gap={4}>
-          <ButtonPrimary
+          <Button
+            variant="primary"
+            fullWidth
+            type="submit"
             wording="Continuer"
             isLoading={false}
-            type="submit"
             accessibilityLabel="Continuer vers les informations requises"
             onPress={() =>
               navigate(...getSubscriptionHookConfig('BonificationRequiredInformation'))

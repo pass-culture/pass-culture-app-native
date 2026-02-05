@@ -14,8 +14,8 @@ import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStack
 import { QueryKeys } from 'libs/queryKeys'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Button } from 'ui/designSystem/Button/Button'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Page } from 'ui/pages/Page'
 import { Spacer, Typo } from 'ui/theme'
@@ -88,7 +88,9 @@ export const IdentityCheckHonor = () => {
           fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées.
         </StyledBody>
         <Spacer.Column numberOfSpaces={15} />
-        <ButtonPrimary
+        <Button
+          variant="primary"
+          fullWidth
           type="submit"
           onPress={postHonorStatement}
           wording="Valider et continuer"

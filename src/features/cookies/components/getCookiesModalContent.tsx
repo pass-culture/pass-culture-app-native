@@ -5,8 +5,8 @@ import { CookiesConsentExplanations } from 'features/cookies/components/CookiesC
 import { CookiesSteps } from 'features/cookies/enums'
 import { CookiesDetails } from 'features/cookies/pages/CookiesDetails'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
+import { Button } from 'ui/designSystem/Button/Button'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 
 interface Props {
@@ -46,7 +46,14 @@ export const getCookiesModalContent = ({
         leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
         leftIcon: ArrowPrevious,
         onLeftIconPress: () => setCookiesStep(CookiesSteps.COOKIES_CONSENT),
-        fixedModalBottom: <ButtonPrimary wording="Enregistrer mes choix" onPress={customChoice} />,
+        fixedModalBottom: (
+          <Button
+            variant="primary"
+            fullWidth
+            wording="Enregistrer mes choix"
+            onPress={customChoice}
+          />
+        ),
         title: 'Réglages des cookies',
       }
     }

@@ -13,11 +13,10 @@ import { openUrl } from 'features/navigation/helpers/openUrl'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { env } from 'libs/environment/env'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { Form } from 'ui/components/Form'
 import { DynamicInputList } from 'ui/components/inputs/DynamicInputList/DynamicInputList'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -125,21 +124,23 @@ export const BonificationNames = () => {
                 />
               )}
             />
-            <ButtonTertiaryPrimary
-              numberOfLines={2}
-              icon={InfoPlain}
-              wording="Je ne connais pas son nom de naissance"
-              onPress={async () => {
-                await openUrl(env.FAQ_BONIFICATION)
-              }}
-              justifyContent="flex-start"
-              inline
-            />
+            <Container>
+              <Button
+                variant="tertiary"
+                numberOfLines={2}
+                icon={InfoPlain}
+                wording="Je ne connais pas son nom de naissance"
+                onPress={async () => {
+                  await openUrl(env.FAQ_BONIFICATION)
+                }}
+              />
+            </Container>
           </ViewGap>
         </Form.MaxWidth>
       }
       fixedBottomChildren={
-        <ButtonPrimary
+        <Button
+          variant="primary"
           type="submit"
           wording="Continuer"
           accessibilityLabel="Continuer vers la civilité"
@@ -150,6 +151,9 @@ export const BonificationNames = () => {
     />
   )
 }
+const Container = styled.View({
+  alignSelf: 'flex-start',
+})
 
 export const StyledBodyXsSteps = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.disabled,

@@ -17,10 +17,10 @@ import {
 } from 'features/identityCheck/pages/phoneValidation/helpers/phoneNumberSchema'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
@@ -126,9 +126,10 @@ export const SetPhoneNumberWithoutValidation = () => {
         </ViewGap>
       }
       fixedBottomChildren={
-        <ButtonPrimary
-          disabled={!formState.isValid}
+        <Button
+          variant="primary"
           type="submit"
+          disabled={!formState.isValid}
           wording="Continuer"
           accessibilityLabel="Continuer vers l’étape suivante"
           onPress={submit}

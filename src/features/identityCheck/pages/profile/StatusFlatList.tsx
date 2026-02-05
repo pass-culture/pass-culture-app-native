@@ -12,10 +12,10 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedViewRefType, createAnimatableComponent } from 'libs/react-native-animatable'
 // eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Li } from 'ui/components/Li'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { Spinner } from 'ui/components/Spinner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Page } from 'ui/pages/Page'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -114,8 +114,10 @@ export function StatusFlatList({
       )}
       <Gradient ref={gradientRef} bottomViewHeight={bottomViewHeight} />
       <BottomView onLayout={onBottomViewLayout}>
-        <ButtonPrimary
+        <Button
           type="submit"
+          variant="primary"
+          fullWidth
           onPress={handleSubmit(submitStatus)}
           wording={isChangeStatus ? 'Valider mes informations' : 'Continuer'}
           accessibilityLabel={

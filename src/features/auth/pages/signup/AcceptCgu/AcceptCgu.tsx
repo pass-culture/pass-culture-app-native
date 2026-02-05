@@ -9,11 +9,11 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { useIsRecaptchaEnabled } from 'queries/settings/useSettings'
 import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
@@ -159,7 +159,9 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
         />
       </LinksContainer>
       <ButtonContainer>
-        <ButtonPrimary
+        <Button
+          variant="primary"
+          fullWidth
           wording="S’inscrire"
           accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
           // Token needs to be a non-empty string even when ReCaptcha validation is deactivated

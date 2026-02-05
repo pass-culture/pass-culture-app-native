@@ -6,8 +6,8 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Spacer, Typo } from 'ui/theme'
 
 const onBeforeNavigate = () => {
@@ -30,7 +30,9 @@ export const LoggedOutHeader = ({ featureFlags }: ProfileFeatureFlagsProps) => {
       <Spacer.Column numberOfSpaces={5} />
       <Container>
         <InternalTouchableLink
-          as={ButtonPrimary}
+          as={Button}
+          variant="primary"
+          fullWidth
           wording="Créer un compte"
           navigateTo={{
             screen: 'SignupForm',

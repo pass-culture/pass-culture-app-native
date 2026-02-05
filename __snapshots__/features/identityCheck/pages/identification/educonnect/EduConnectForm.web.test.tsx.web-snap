@@ -36,10 +36,6 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
   text-decoration: none;
 }
 
-.c3:disabled {
-  background-color: #f1f1f4;
-}
-
 .c0 {
   flex-direction: column;
   cursor: pointer;
@@ -77,6 +73,10 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
   height: 40px;
   justify-content: center;
   align-items: center;
+}
+
+.c3:disabled {
+  background-color: #f1f1f4;
 }
 
 <div>

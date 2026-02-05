@@ -11,9 +11,9 @@ import {
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -69,8 +69,9 @@ export const BonificationTitle = () => {
         </React.Fragment>
       }
       fixedBottomChildren={
-        <ButtonPrimary
+        <Button
           type="submit"
+          variant="primary"
           wording="Continuer"
           accessibilityLabel="Continuer vers la date de naissance"
           onPress={saveTitleAndNavigate}

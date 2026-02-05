@@ -6,8 +6,8 @@ import styled from 'styled-components/native'
 import { setPasswordSchema } from 'features/auth/pages/signup/SetPassword/schema/setPasswordSchema'
 import { PreValidationSignupNormalStepProps } from 'features/auth/types'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -50,11 +50,13 @@ export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> 
         />
       </PasswordInputContainer>
       <ButtonPrimaryContainer>
-        <ButtonPrimary
+        <Button
+          variant="primary"
           wording="Continuer"
           accessibilityLabel={accessibilityLabelForNextStep}
           onPress={handleSubmit(onGoToNextStep)}
           disabled={!isValid}
+          fullWidth
         />
       </ButtonPrimaryContainer>
     </Form.MaxWidth>

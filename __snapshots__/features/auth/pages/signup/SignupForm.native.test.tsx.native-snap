@@ -534,22 +534,23 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                 },
                 {
                   "alignItems": "center",
+                  "alignSelf": "center",
                   "backgroundColor": "#f1f1f4",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#cbcdd2",
+                  "borderStyle": "solid",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
                   "width": "100%",
                 },
-                {},
               ],
               {
                 "opacity": 1,
@@ -559,24 +560,39 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
           testID="Continuer vers l’étape Mot de passe"
         >
           <View
+            fullWidth={true}
+            gap={8}
+            hasIcon={false}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
               }
             }
           >
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#696a6f",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#696a6f",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": "center",
+                  },
+                ]
               }
             >
               Continuer
@@ -1492,22 +1508,23 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
                   },
                   {
                     "alignItems": "center",
+                    "alignSelf": "center",
                     "backgroundColor": "#f1f1f4",
-                    "borderBottomLeftRadius": 24,
-                    "borderBottomRightRadius": 24,
-                    "borderTopLeftRadius": 24,
-                    "borderTopRightRadius": 24,
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderColor": "#cbcdd2",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 1,
                     "flexDirection": "row",
                     "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
+                    "paddingBottom": 8,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 8,
                     "width": "100%",
                   },
-                  {},
                 ],
                 {
                   "opacity": 1,
@@ -1517,24 +1534,39 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             testID="Continuer vers l’étape Date de naissance"
           >
             <View
+              fullWidth={true}
+              gap={8}
+              hasIcon={false}
+              isMultiline={false}
               style={
                 {
                   "alignItems": "center",
+                  "columnGap": 8,
                   "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
                 }
               }
             >
               <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
                 style={
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                    "maxWidth": "100%",
-                  }
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#696a6f",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": "100%",
+                      "minWidth": 0,
+                      "textAlign": "center",
+                    },
+                  ]
                 }
               >
                 Continuer
@@ -2637,22 +2669,23 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                     },
                     {
                       "alignItems": "center",
+                      "alignSelf": "center",
                       "backgroundColor": "#f1f1f4",
-                      "borderBottomLeftRadius": 24,
-                      "borderBottomRightRadius": 24,
-                      "borderTopLeftRadius": 24,
-                      "borderTopRightRadius": 24,
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#cbcdd2",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
                       "flexDirection": "row",
                       "justifyContent": "center",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "paddingBottom": 2,
-                      "paddingLeft": 20,
-                      "paddingRight": 20,
-                      "paddingTop": 2,
+                      "paddingBottom": 8,
+                      "paddingLeft": 12,
+                      "paddingRight": 12,
+                      "paddingTop": 8,
                       "width": "100%",
                     },
-                    {},
                   ],
                   {
                     "opacity": 1,
@@ -2662,24 +2695,39 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
               testID="Continuer vers l’étape CGU & Données"
             >
               <View
+                fullWidth={true}
+                gap={8}
+                hasIcon={false}
+                isMultiline={false}
                 style={
                   {
                     "alignItems": "center",
+                    "columnGap": 8,
                     "flexDirection": "row",
+                    "justifyContent": "center",
+                    "width": "100%",
                   }
                 }
               >
                 <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
                   style={
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 22,
-                      "maxWidth": "100%",
-                    }
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
+                      },
+                      {
+                        "color": "#696a6f",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": "center",
+                      },
+                    ]
                   }
                 >
                   Continuer
@@ -3562,7 +3610,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
         >
           <View
             accessibilityHint="Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes données et pour exercer tes droits (ex : demander l’accès à tes données ou leur suppression), tu peux te reporter à la charte des données personnelles. Tu peux également gérer certaines préférences concernant tes données depuis les paramètres de ton compte, comme par exemple le fait de ne plus souhaiter recevoir notre newsletter."
-            accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
+            accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité - Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes données et pour exercer tes droits (ex : demander l’accès à tes données ou leur suppression), tu peux te reporter à la charte des données personnelles. Tu peux également gérer certaines préférences concernant tes données depuis les paramètres de ton compte, comme par exemple le fait de ne plus souhaiter recevoir notre newsletter."
             accessibilityRole="button"
             accessibilityState={
               {
@@ -3598,49 +3646,65 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   },
                   {
                     "alignItems": "center",
+                    "alignSelf": "center",
                     "backgroundColor": "#f1f1f4",
-                    "borderBottomLeftRadius": 24,
-                    "borderBottomRightRadius": 24,
-                    "borderTopLeftRadius": 24,
-                    "borderTopRightRadius": 24,
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderColor": "#cbcdd2",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 1,
                     "flexDirection": "row",
                     "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
+                    "paddingBottom": 8,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 8,
                     "width": "100%",
                   },
-                  {},
                 ],
                 {
                   "opacity": 1,
                 },
               ]
             }
-            testID="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
+            testID="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité - Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes données et pour exercer tes droits (ex : demander l’accès à tes données ou leur suppression), tu peux te reporter à la charte des données personnelles. Tu peux également gérer certaines préférences concernant tes données depuis les paramètres de ton compte, comme par exemple le fait de ne plus souhaiter recevoir notre newsletter."
           >
             <View
+              fullWidth={true}
+              gap={8}
+              hasIcon={false}
+              isMultiline={false}
               style={
                 {
                   "alignItems": "center",
+                  "columnGap": 8,
                   "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
                 }
               }
             >
               <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
                 style={
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                    "maxWidth": "100%",
-                  }
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#696a6f",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": "100%",
+                      "minWidth": 0,
+                      "textAlign": "center",
+                    },
+                  ]
                 }
               >
                 S’inscrire

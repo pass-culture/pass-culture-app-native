@@ -6,10 +6,10 @@ import { AlreadyChangedEmailDisclaimer } from 'features/profile/components/Discl
 import { ChangeEmailDisclaimer } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimer'
 import { useChangeEmailMutation } from 'features/profile/queries/useChangeEmailMutation'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 
 export function ChangeEmailContent({
   hasCurrentEmailChange,
@@ -50,7 +50,9 @@ export function ChangeEmailContent({
             <Banner label="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h." />
           </InfoBannerContainer>
           <ButtonContainer paddingBottom={bottom}>
-            <ButtonPrimary
+            <Button
+              variant="primary"
+              fullWidth
               wording="Envoyer la demande"
               accessibilityLabel="Valider la demande de modification de mon e-mail"
               onPress={submitEmailChange}

@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import styled from 'styled-components/native'
 
 import { MINIMUM_DATE } from 'features/auth/constants'
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
@@ -15,11 +16,10 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { env } from 'libs/environment/env'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { Form } from 'ui/components/Form'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo } from 'ui/theme'
@@ -90,21 +90,23 @@ export const BonificationBirthDate = () => {
                 />
               )}
             />
-            <ButtonTertiaryPrimary
-              numberOfLines={2}
-              icon={InfoPlain}
-              wording="Je ne connais pas sa date de naissance"
-              onPress={async () => {
-                await openUrl(env.FAQ_BONIFICATION)
-              }}
-              justifyContent="flex-start"
-              inline
-            />
+            <ButtonContainer>
+              <Button
+                variant="tertiary"
+                icon={InfoPlain}
+                wording="Je ne connais pas sa date de naissance"
+                onPress={async () => {
+                  await openUrl(env.FAQ_BONIFICATION)
+                }}
+              />
+            </ButtonContainer>
           </ViewGap>
         </Form.MaxWidth>
       }
       fixedBottomChildren={
-        <ButtonPrimary
+        <Button
+          variant="primary"
+          fullWidth
           type="submit"
           wording="Continuer"
           accessibilityLabel="Continuer vers le lieu de naissance"
@@ -115,3 +117,7 @@ export const BonificationBirthDate = () => {
     />
   )
 }
+
+const ButtonContainer = styled.View({
+  alignSelf: 'flex-start',
+})

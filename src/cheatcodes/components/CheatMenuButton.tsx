@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { env } from 'libs/environment/env'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const CheatMenuButton: React.FC = () => {
@@ -12,7 +12,8 @@ export const CheatMenuButton: React.FC = () => {
   return env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING ? (
     <CheatMenuButtonContainer topSafeInsets={top}>
       <InternalTouchableLink
-        as={ButtonSecondary}
+        as={Button}
+        variant="secondary"
         buttonHeight="extraSmall"
         wording="Cheatcodes"
         navigateTo={{ screen: 'CheatcodesStackNavigator' }}
