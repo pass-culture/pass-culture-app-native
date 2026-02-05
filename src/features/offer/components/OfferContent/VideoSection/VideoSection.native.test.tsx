@@ -2,7 +2,6 @@ import React, { ComponentProps, createRef } from 'react'
 import { ScrollView } from 'react-native'
 
 import FastImage from '__mocks__/@d11/react-native-fast-image'
-import { SubcategoryIdEnum } from 'api/gen'
 import { VideoSection } from 'features/offer/components/OfferContent/VideoSection/VideoSection'
 import { analytics } from 'libs/analytics/provider'
 import { render, screen, userEvent } from 'tests/utils'
@@ -12,7 +11,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const defaultProps: ComponentProps<typeof VideoSection> = {
   offerId: 123,
-  offerSubcategory: SubcategoryIdEnum.SEANCE_CINE,
   videoId: 'abc123',
   title: 'Peppa Pig',
   subtitle: 'le cochon rose',

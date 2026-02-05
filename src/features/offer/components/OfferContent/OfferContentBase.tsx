@@ -327,7 +327,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               distance={distance}
               headlineOffersCount={headlineOffersCount}
               chronicleVariantInfo={chronicleVariantInfo}
-              userId={userId}
               isVideoSectionEnabled={isVideoSectionEnabled}
               hasVideoCookiesConsent={hasVideoCookiesConsent}
               onVideoConsentPress={onVideoConsentPress}

@@ -27,6 +27,8 @@ const defaultConfig: KnipConfig = {
     'src/**/__mocks__/**',
     'src/features/offerRefacto/**',
     'src/shared/useABSegment/**',
+    // Deadcode for the moment but it will be reused for professional recommendations
+    'src/features/reactions/components/FeedBack.tsx',
   ],
   ignoreDependencies: ['@sentry/vite-plugin'],
   rules: {
