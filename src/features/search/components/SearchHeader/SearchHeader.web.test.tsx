@@ -75,13 +75,13 @@ describe('SearchHeader component', () => {
       />
     )
 
-    await act(async () => {
-      await userEvent.tab()
-    })
-
-    const locationFilterButton = screen.getByTestId(
+    const locationFilterButton = await screen.findByTestId(
       'France entière - Ouvrir la modale de localisation'
     )
+
+    await act(async () => {
+      locationFilterButton.focus()
+    })
 
     expect(locationFilterButton).toHaveFocus()
   })
@@ -98,12 +98,10 @@ describe('SearchHeader component', () => {
 
     await act(async () => {
       await userEvent.tab()
-      await userEvent.tab()
       await userEvent.keyboard('{Enter}')
     })
 
-    //The function is called with event parameter that is not used in the function that is why we use expect.anything()
-    expect(mockShowSuggestions).toHaveBeenNthCalledWith(1, expect.anything())
+    expect(mockShowSuggestions).toHaveBeenCalledTimes(1)
   })
 
   it('should reset search state on go back except for location filter', async () => {

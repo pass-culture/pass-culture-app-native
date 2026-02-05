@@ -33,12 +33,35 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
     }
   >
     <View
-      style={
+      collapsable={false}
+      entering={[Function]}
+      exiting={[Function]}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
         {
           "alignItems": "center",
           "flexDirection": "row",
           "paddingBottom": 16,
         }
+      }
+      nativeID="0"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "paddingBottom": 16,
+          },
+        ]
       }
     >
       <View
@@ -372,7 +395,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "reduceMotionV": "system",
                   }
                 }
-                nativeID="0"
+                nativeID="1"
                 style={
                   [
                     {
