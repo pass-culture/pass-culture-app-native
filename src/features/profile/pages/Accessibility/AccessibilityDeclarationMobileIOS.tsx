@@ -6,33 +6,24 @@ import { env } from 'libs/environment/env'
 export function AccessibilityDeclarationMobileIOS() {
   return (
     <AccessibilityDeclarationMobileBase
-      appVersion="1.368.1"
+      appVersion="1.374.0"
       platformName="iOS"
       osVersion="18.5"
       storeLink={{ url: `https://apps.apple.com/fr/app/pass-culture/id${env.IOS_APP_STORE_ID}` }}
-      auditDate="28/11/2025"
-      conformityEN="54,17%"
-      conformityRAAM="72,09%"
-      averageConformityRAAM="91.21%"
+      auditDate="02/02/2026"
+      conformityEN="56,25%"
+      conformityRAAM="76,74%"
+      averageConformityRAAM="95.68%"
       nonAccessibleContent={[
-        'Des images porteuses d’information ne disposent pas d’alternative pertinente accessible aux technologies d’assistance.',
-        'Des éléments graphiques ou composants d’interface présentent des contrastes insuffisants.',
-        'Certains contenus audio/vidéo pré-enregistrés ne disposent pas d’alternative textuelle.',
-        'Certains contenus audio/vidéo ne sont pas sous-titrés ou leurs sous-titres ne sont pas pertinents.',
-        'Certains médias ne sont pas clairement identifiés par un texte adjacent.',
-        'Certains composants d’interface ne sont pas accessibles aux technologies d’assistance (nom, rôle, état non restitués).',
-        'Certains intitulés visibles ne sont pas cohérents ou présents dans l’alternative accessible.',
-        'Certains champs de formulaire ne sont pas correctement étiquetés ou leur étiquette n’est pas accessible.',
-        'Certains champs de formulaire ne sont pas groupés ou ne sont pas reliés à leurs légendes.',
-        'Les messages d’erreur ne sont pas toujours annoncés aux technologies d’assistance.',
-        'Certains messages de statut (comme les retours de validation) ne sont pas restitués aux lecteurs d’écran.',
-        'Certains éléments ne sont pas accessibles au clavier ou au pointage.',
-        'Certains contenus ne sont pas lus dans la bonne langue par les technologies d’assistance.',
-        'Certaines listes ne sont pas reconnues comme telles par les lecteurs d’écran.',
-        'Certains écrans ne sont pas du tout accessibles avec les technologies d’assistance.',
-        'L’agrandissement du texte jusqu’à 200 % entraîne parfois des pertes de contenu ou de fonctionnalités.',
-        'Certains contenus nécessitent des gestes complexes (comme le balayage) sans méthode alternative simple proposée.',
-        'L’affichage en mode paysage n’est pas toujours correctement géré.',
+        'Critère 3.5 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, une alternative\u00a0?',
+        'Critère 3.7 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, des sous-titres synchronisés\u00a0?',
+        'Critère 3.8.a - Pour chaque média temporel synchronisé pré-enregistré ayant des sous-titres synchronisés, ceux-ci sont-ils pertinents\u00a0?',
+        'Critère 5.1.a - a) Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance\u00a0?',
+        'Critère 5.4 - Dans chaque écran, les messages de statut sont-ils correctement restitués par les technologies d’assistance\u00a0?',
+        'Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins\u00a0?',
+        'Critère 9.11 - Pour chaque formulaire qui modifie ou supprime des données, ou qui transmet des réponses à un test ou à un examen, ou dont la validation a des conséquences financières ou juridiques, les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur\u00a0?',
+        'Critère 10.2 - Dans chaque écran, l’ordre de restitution par les technologies d’assistance est-il cohérent\u00a0?',
+        'Critère 11.10 - Dans chaque écran, les fonctionnalités activables au moyen d’un geste complexe sont-elles activables au moyen d’un geste simple\u00a0?',
       ]}
       toolsUsed={[
         'VoiceOver (lecteur d’écran)',

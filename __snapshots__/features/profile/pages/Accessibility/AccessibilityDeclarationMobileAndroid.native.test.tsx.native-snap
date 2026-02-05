@@ -245,7 +245,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           </Text>
            
           version 
-          1.368.1
+          1.374.0
            du pass Culture.
         </Text>
       </View>
@@ -352,7 +352,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           }
         >
           L’audit de conformité réalisé le 
-          28/11/2025
+          02/02/2026
            par la société Access42 révèle que l’application est conforme à 
           <Text
             style={
@@ -364,7 +364,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               }
             }
           >
-            72,09%
+            76,74%
           </Text>
            au Référentiel d’Accessibilité des Applications Mobiles (RAAM 1.1). Le taux de conformité moyen des pages est de 
           <Text
@@ -377,7 +377,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               }
             }
           >
-            91.75%
+            95.25%
           </Text>
           .
         </Text>
@@ -402,7 +402,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               }
             }
           >
-            54,17%
+            56,25%
           </Text>
            à la norme européenne EN 301 549 v.3.2.1.
         </Text>
@@ -473,7 +473,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 1 sur 18 - Des images porteuses d’information ne disposent pas d’alternative pertinente accessible aux technologies d’assistance."
+            accessibilityLabel="Non conformité – Liste - Élément 1 sur 9 - Critère 3.5 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, une alternative ?"
             accessible={true}
             style={
               {
@@ -523,12 +523,12 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   }
                 }
               >
-                Des images porteuses d’information ne disposent pas d’alternative pertinente accessible aux technologies d’assistance.
+                Critère 3.5 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, une alternative ?
               </Text>
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 2 sur 18 - Des éléments graphiques ou composants d’interface présentent des contrastes insuffisants."
+            accessibilityLabel="Non conformité – Liste - Élément 2 sur 9 - Critère 3.7 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, des sous-titres synchronisés ?"
             accessible={true}
             style={
               {
@@ -578,12 +578,12 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   }
                 }
               >
-                Des éléments graphiques ou composants d’interface présentent des contrastes insuffisants.
+                Critère 3.7 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, des sous-titres synchronisés ?
               </Text>
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 3 sur 18 - Certains contenus audio/vidéo pré-enregistrés ne disposent pas d’alternative textuelle."
+            accessibilityLabel="Non conformité – Liste - Élément 3 sur 9 - Critère 3.8.a - Pour chaque média temporel synchronisé pré-enregistré ayant des sous-titres synchronisés, ceux-ci sont-ils pertinents ?"
             accessible={true}
             style={
               {
@@ -633,12 +633,12 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   }
                 }
               >
-                Certains contenus audio/vidéo pré-enregistrés ne disposent pas d’alternative textuelle.
+                Critère 3.8.a - Pour chaque média temporel synchronisé pré-enregistré ayant des sous-titres synchronisés, ceux-ci sont-ils pertinents ?
               </Text>
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 4 sur 18 - Certains contenus audio/vidéo ne sont pas sous-titrés ou leurs sous-titres ne sont pas pertinents."
+            accessibilityLabel="Non conformité – Liste - Élément 4 sur 9 - Critère 5.1.a - a) Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance ?"
             accessible={true}
             style={
               {
@@ -688,12 +688,12 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   }
                 }
               >
-                Certains contenus audio/vidéo ne sont pas sous-titrés ou leurs sous-titres ne sont pas pertinents.
+                Critère 5.1.a - a) Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance ?
               </Text>
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 5 sur 18 - Certains médias ne sont pas clairement identifiés par un texte adjacent."
+            accessibilityLabel="Non conformité – Liste - Élément 5 sur 9 - Critère 5.4 - Dans chaque écran, les messages de statut sont-ils correctement restitués par les technologies d’assistance ?"
             accessible={true}
             style={
               {
@@ -743,12 +743,12 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   }
                 }
               >
-                Certains médias ne sont pas clairement identifiés par un texte adjacent.
+                Critère 5.4 - Dans chaque écran, les messages de statut sont-ils correctement restitués par les technologies d’assistance ?
               </Text>
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 6 sur 18 - Certains composants d’interface ne sont pas accessibles aux technologies d’assistance (nom, rôle, état non restitués)."
+            accessibilityLabel="Non conformité – Liste - Élément 6 sur 9 - Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ?"
             accessible={true}
             style={
               {
@@ -798,12 +798,12 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   }
                 }
               >
-                Certains composants d’interface ne sont pas accessibles aux technologies d’assistance (nom, rôle, état non restitués).
+                Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ?
               </Text>
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 7 sur 18 - Certains intitulés visibles ne sont pas cohérents ou présents dans l’alternative accessible."
+            accessibilityLabel="Non conformité – Liste - Élément 7 sur 9 - Critère 9.11 - Pour chaque formulaire qui modifie ou supprime des données, ou qui transmet des réponses à un test ou à un examen, ou dont la validation a des conséquences financières ou juridiques, les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur ?"
             accessible={true}
             style={
               {
@@ -853,12 +853,12 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   }
                 }
               >
-                Certains intitulés visibles ne sont pas cohérents ou présents dans l’alternative accessible.
+                Critère 9.11 - Pour chaque formulaire qui modifie ou supprime des données, ou qui transmet des réponses à un test ou à un examen, ou dont la validation a des conséquences financières ou juridiques, les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur ?
               </Text>
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 8 sur 18 - Certains champs de formulaire ne sont pas correctement étiquetés ou leur étiquette n’est pas accessible."
+            accessibilityLabel="Non conformité – Liste - Élément 8 sur 9 - Critère 10.2 - Dans chaque écran, l’ordre de restitution par les technologies d’assistance est-il cohérent ?"
             accessible={true}
             style={
               {
@@ -908,12 +908,12 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   }
                 }
               >
-                Certains champs de formulaire ne sont pas correctement étiquetés ou leur étiquette n’est pas accessible.
+                Critère 10.2 - Dans chaque écran, l’ordre de restitution par les technologies d’assistance est-il cohérent ?
               </Text>
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 9 sur 18 - Certains champs de formulaire ne sont pas groupés ou ne sont pas reliés à leurs légendes."
+            accessibilityLabel="Non conformité – Liste - Élément 9 sur 9 - Critère 11.10 - Dans chaque écran, les fonctionnalités activables au moyen d’un geste complexe sont-elles activables au moyen d’un geste simple ?"
             accessible={true}
             style={
               {
@@ -963,502 +963,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   }
                 }
               >
-                Certains champs de formulaire ne sont pas groupés ou ne sont pas reliés à leurs légendes.
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 10 sur 18 - Les messages d’erreur ne sont pas toujours annoncés aux technologies d’assistance."
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                Les messages d’erreur ne sont pas toujours annoncés aux technologies d’assistance.
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 11 sur 18 - Certains messages de statut (comme les retours de validation) ne sont pas restitués aux lecteurs d’écran."
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                Certains messages de statut (comme les retours de validation) ne sont pas restitués aux lecteurs d’écran.
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 12 sur 18 - Certains éléments ne sont pas accessibles au clavier ou au pointage."
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                Certains éléments ne sont pas accessibles au clavier ou au pointage.
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 13 sur 18 - Certains contenus ne sont pas lus dans la bonne langue par les technologies d’assistance."
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                Certains contenus ne sont pas lus dans la bonne langue par les technologies d’assistance.
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 14 sur 18 - Certaines listes ne sont pas reconnues comme telles par les lecteurs d’écran."
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                Certaines listes ne sont pas reconnues comme telles par les lecteurs d’écran.
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 15 sur 18 - Certains écrans ne sont pas du tout accessibles avec les technologies d’assistance."
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                Certains écrans ne sont pas du tout accessibles avec les technologies d’assistance.
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 16 sur 18 - L’agrandissement du texte jusqu’à 200 % entraîne parfois des pertes de contenu ou de fonctionnalités."
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                L’agrandissement du texte jusqu’à 200 % entraîne parfois des pertes de contenu ou de fonctionnalités.
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 17 sur 18 - Certains contenus nécessitent des gestes complexes (comme le balayage) sans méthode alternative simple proposée."
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                Certains contenus nécessitent des gestes complexes (comme le balayage) sans méthode alternative simple proposée.
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 18 sur 18 - L’affichage en mode paysage n’est pas toujours correctement géré."
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                L’affichage en mode paysage n’est pas toujours correctement géré.
+                Critère 11.10 - Dans chaque écran, les fonctionnalités activables au moyen d’un geste complexe sont-elles activables au moyen d’un geste simple ?
               </Text>
             </View>
           </View>
