@@ -2,13 +2,12 @@ import * as React from 'react'
 import { Circle, ClipPath, Defs, FeGaussianBlur, Filter, G, Rect } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
-import { ColorsType } from 'theme/types'
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
 
 export interface HomeGradientProps extends AccessibleIcon {
-  colors: ColorsType[]
+  colors: string[]
   width?: number | string
   height?: number | string
 }

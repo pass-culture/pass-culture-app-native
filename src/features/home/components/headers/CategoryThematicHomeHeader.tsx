@@ -6,11 +6,11 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { CategoryThematicHeader } from 'features/home/types'
-import { ColorsType } from 'theme/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { HomeGradient } from 'ui/svg/HomeGradient'
 import { getSpacing, Typo } from 'ui/theme'
 import { gradientImagesMapping } from 'ui/theme/gradientImagesMapping'
+import { isBackgroundColorKey } from 'ui/theme/isBackgroundColorKey'
 
 const HEADER_HEIGHT = getSpacing(45)
 
@@ -19,13 +19,17 @@ type CategoryThematicHeaderProps = Omit<CategoryThematicHeader, 'type'>
 type AppHeaderProps = Omit<CategoryThematicHeaderProps, 'imageUrl'>
 
 const AppHeader: FunctionComponent<AppHeaderProps> = ({ title, subtitle, color }) => {
-  const { breakpoints } = useTheme()
+  const { breakpoints, designSystem } = useTheme()
   const { width } = useWindowDimensions()
 
   const alpha = 0.5
-  const gradientWithAlpha = gradientImagesMapping[color].map((color: ColorsType) =>
-    colorAlpha(color, alpha)
+  const gradientRaw = gradientImagesMapping[color] ?? gradientImagesMapping.Gold
+  const gradientColors: string[] = gradientRaw.map((colorValue) =>
+    isBackgroundColorKey(colorValue, designSystem.color.background)
+      ? designSystem.color.background[colorValue]
+      : colorValue
   )
+  const gradientWithAlpha = gradientColors.map((colorValue) => colorAlpha(colorValue, alpha))
 
   return (
     <Container testID="CategoryThematicHomeHeaderV2">
@@ -33,7 +37,7 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({ title, subtitle, color }
         <Gradient colors={gradientWithAlpha} />
       ) : (
         <HomeGradient
-          colors={gradientImagesMapping[color]}
+          colors={gradientColors}
           testID="HomeGradient"
           width={Math.min(width, breakpoints.lg)}
         />
