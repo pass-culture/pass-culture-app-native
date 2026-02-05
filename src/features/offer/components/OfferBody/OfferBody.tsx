@@ -54,7 +54,6 @@ type Props = {
   distance?: string | null
   headlineOffersCount?: number
   chronicles?: ChronicleCardData[]
-  userId?: number
   isVideoSectionEnabled?: boolean
   hasVideoCookiesConsent?: boolean
   isMultiArtistsEnabled?: boolean
@@ -70,7 +69,6 @@ export const OfferBody: FunctionComponent<Props> = ({
   headlineOffersCount,
   chronicleVariantInfo,
   chronicles,
-  userId,
   isVideoSectionEnabled,
   hasVideoCookiesConsent,
   isMultiArtistsEnabled,
@@ -230,8 +228,6 @@ export const OfferBody: FunctionComponent<Props> = ({
           }
           title={offer.video?.title ?? offer.name}
           offerId={offer.id}
-          offerSubcategory={offer.subcategoryId}
-          userId={userId}
           duration={offer.video?.durationSeconds}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
           onManageCookiesPress={handleManageCookiesPress}
