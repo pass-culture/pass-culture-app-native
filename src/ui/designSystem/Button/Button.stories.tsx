@@ -69,6 +69,27 @@ const primaryCases: Variants<typeof Button> = [
     },
   },
   {
+    label: 'Primary fullWidth icon left (web wrap)',
+    props: {
+      wording: 'Découvrir les offres culturelles près de chez toi et réserver en un clin d’œil',
+      variant: 'primary',
+      icon: Invalidate,
+      numberOfLines: 2,
+      fullWidth: true,
+    },
+  },
+  {
+    label: 'Primary fullWidth icon right (web wrap)',
+    props: {
+      wording: 'Découvrir les offres culturelles près de chez toi et réserver en un clin d’œil',
+      variant: 'primary',
+      icon: Invalidate,
+      iconPosition: 'right',
+      numberOfLines: 2,
+      fullWidth: true,
+    },
+  },
+  {
     label: 'Primary icon button',
     props: {
       variant: 'primary',

@@ -121,7 +121,7 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
         <ButtonLoadingIndicator color={iconColor} size={iconSize} testID="button-loading" />
       ) : (
         <React.Fragment>
-          {leftIcon}
+          {leftIcon ? <IconWrapper>{leftIcon}</IconWrapper> : null}
           {labelText ? (
             <LabelTypo
               style={labelStyle}
@@ -130,7 +130,7 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
               {labelText}
             </LabelTypo>
           ) : null}
-          {rightIcon}
+          {rightIcon ? <IconWrapper>{rightIcon}</IconWrapper> : null}
         </React.Fragment>
       )}
     </Content>
@@ -168,3 +168,7 @@ const Content = styled.View<{
   width: fullWidth ? '100%' : undefined,
   justifyContent: fullWidth ? 'center' : undefined,
 }))
+
+const IconWrapper = styled.View({
+  flexShrink: 0,
+})
