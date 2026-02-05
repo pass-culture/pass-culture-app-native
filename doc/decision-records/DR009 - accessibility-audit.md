@@ -2,16 +2,17 @@
 
 | Plateforme | Conformité | 07 juillet 2025 | 26 septembre 2025 | 31 octobre 2025 | 28 novembre 2025 | 2 février 2026 |
 | ---------- | ---------- | --------------- | ----------------- | --------------- | ---------------- | -------------- |
-| Android    | RAAM 1.1   | 35.71%          | 44.19%            | 62.79%          | 72.09%           | ⏳             |
-|            | EN 301-549 | 35.42%          | 37.50%            | 41.67%          | 54.17%           | ⏳             |
-| iOS        | RAAM 1.1   | 28.57%          | 41.86%            | 58.14%          | 72.09%           | ⏳             |
-|            | EN 301-549 | 20.83%          | 25.00%            | 29.17%          | 54.17%           | ⏳             |
+| Android    | RAAM 1.1   | 35.71%          | 44.19%            | 62.79%          | 72.09%           | 76.74%         |
+|            | EN 301-549 | 35.42%          | 37.50%            | 41.67%          | 54.17%           | 56.25%         |
+| iOS        | RAAM 1.1   | 28.57%          | 41.86%            | 58.14%          | 72.09%           | 76.74%         |
+|            | EN 301-549 | 20.83%          | 25.00%            | 29.17%          | 54.17%           | 56.25%         |
 
 <br>
 
 ## 📱 Échantillon
 
 ### Écrans
+
 **E01** : Cookies  
 **E02** : Accueil (et localisation)  
 **E03** : Mention légales  
@@ -20,15 +21,16 @@
 **E06** : Plan du site  
 **E07** : Authentification  
 **E08** : Profil connecté et déconnectéokies  
-**E09** : Lieu  
+**E09** : Lieu
 
 ### Parcours
+
 **E10** : Onboarding  
 **E11** : Processus d’inscription  
 **E13** : Processus de déblocage du crédit (Identification)  
 **E14** : Recherche d’une offre  
 **E15** : Réservation d’une offre  
-**E16** : Réservation d’une offre (détails avant et après confirmation)  
+**E16** : Réservation d’une offre (détails avant et après confirmation)
 
 <br>
 
@@ -40,7 +42,6 @@
 ⏳ : Questions en attente de réponse
 
 <br>
-
 
 ## ✅ Corrections 26 août 2025 → 26 septembre 2025
 
@@ -910,7 +911,7 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 5.1 - a) Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance ?</summary>
+<summary> 🔴🔴 Critère 5.1 - a) Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance ?</summary>
 
 **RAAM** : [Critère 5.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-5-1)  
 **Ticket** : [PC-37473](https://passculture.atlassian.net/browse/PC-37473)  
@@ -931,33 +932,37 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ?</summary>
+<summary> 🔴🔴 Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ?</summary>
 
 **RAAM** : [Critère 8.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-2)  
 **Ticket** : [PC-38649](https://passculture.atlassian.net/browse/PC-38649)  
 **PR** : [#9040](https://github.com/pass-culture/pass-culture-app-native/pull/9040)
 
-**Problème** 😱  
+**Problème** 😱
+
 - **(Tous les écrans)** Certains textes sont tronqués car on limite le nombre de ligne (via `numberOfLines`)
 
-**Correction** 💡  
-- **(Tous les écrans)** Adaptation du nombre de lignes des textes (`numberOfLines`) en fonction du zoom que l'utilisateur a défini dans ses paramètres. 
+**Correction** 💡
+
+- **(Tous les écrans)** Adaptation du nombre de lignes des textes (`numberOfLines`) en fonction du zoom que l'utilisateur a défini dans ses paramètres.
 
 </details>
 
 <br>
 <details>
 
-<summary> 🟠 Critère 9.12 -Pour chaque champ qui attend une donnée personnelle de l’utilisateur, la saisie est-elle facilitée ?</summary>
+<summary> 🟢🟢 Critère 9.12 -Pour chaque champ qui attend une donnée personnelle de l’utilisateur, la saisie est-elle facilitée ?</summary>
 
 **RAAM** : [Critère 8.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-2)  
 **Ticket** : [PC-37497](https://passculture.atlassian.net/browse/PC-37497)  
 **PR** : [#9102](https://github.com/pass-culture/pass-culture-app-native/pull/9102)
 
-**Problème** 😱  
+**Problème** 😱
+
 - **(Tous les écrans)** Pour au moins un champ qui attend une donnée personnelle de l'utilisateur, la nature de la saisie n'est pas identifiée correctement.
 
-**Correction** 💡  
+**Correction** 💡
+
 - **E07, E11, E12** Ajout de la propriété autocomplete et suppression de la propriété textContentType qui entrait en concurrence.
 
 </details>
@@ -965,19 +970,21 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 10.1 - Dans chaque écran, l’ordre de tabulation au clavier est-il cohérent ?</summary>
+<summary> 🟢🟢 Critère 10.1 - Dans chaque écran, l’ordre de tabulation au clavier est-il cohérent ?</summary>
 
 **RAAM** : [Critère 10.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-10-1)  
-**Ticket** : [PC-37499](https://passculture.atlassian.net/browse/PC-37499)&  [PC-PC-39448)](https://passculture.atlassian.net/browse/PC-PC-39448)
+**Ticket** : [PC-37499](https://passculture.atlassian.net/browse/PC-37499)& [PC-PC-39448)](https://passculture.atlassian.net/browse/PC-PC-39448)
 **PR** : [#9045](https://github.com/pass-culture/pass-culture-app-native/pull/9045) & [#9085](https://github.com/pass-culture/pass-culture-app-native/pull/9085)
 
-**Problème** 😱  
-- **(Tous les écrans)** Plusieurs composants interactifs ne sont pas correctement exposés aux technologies d’assistance, ce qui empêche leur accès au clavier ou via un lecteur d’écran (rôle manquant ou inapproprié).
-- Lors de la soumission d'un formulaire, lorsqu’une ou plusieurs erreurs sont détectées  le focus doit être placé sur le premier champ en erreur.
+**Problème** 😱
 
-**Correction** 💡  
+- **(Tous les écrans)** Plusieurs composants interactifs ne sont pas correctement exposés aux technologies d’assistance, ce qui empêche leur accès au clavier ou via un lecteur d’écran (rôle manquant ou inapproprié).
+- Lors de la soumission d'un formulaire, lorsqu’une ou plusieurs erreurs sont détectées le focus doit être placé sur le premier champ en erreur.
+
+**Correction** 💡
+
 - **(Tous les écrans)** Les composants interactifs sont maintenant correctement exposés aux technologies d’assistance grâce à l'ajout de rôle et labels accessibles, ce qui permet leur accès au clavier ou via un lecteur d’écran.
-- pour les champs uniques, focus à l'erreur. Dans le cas de l'inscription, pour des raisons de sécurité, le message d'erreur est général, le focus est donc toujours sur le mail. 
+- pour les champs uniques, focus à l'erreur. Dans le cas de l'inscription, pour des raisons de sécurité, le message d'erreur est général, le focus est donc toujours sur le mail.
 
 **Retours audit** 🔥  
 Texte
@@ -988,22 +995,24 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 10.2 - Dans chaque écran, l’ordre de restitution par les technologies d’assistance est-il cohérent ?</summary>
+<summary> 🔴🔴 Critère 10.2 - Dans chaque écran, l’ordre de restitution par les technologies d’assistance est-il cohérent ?</summary>
 
 **RAAM** : [Critère 10.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-10-2)  
 **Ticket** : [PC-37500](https://passculture.atlassian.net/browse/PC-37500)  
 **PR** : [#9050](https://github.com/pass-culture/pass-culture-app-native/pull/9050)
 
-**Problème** 😱  
-- **(E02)** Avec TalkBack, le balayage (swipe) ne permet pas d’atteindre certains éléments hors écran. ex. Lorsque l’on effectue un balayage avec TalkBack, l’écran ne défile pas automatiquement pour révéler les éléments suivants. Résultat : certains contenus ne sont jamais atteints par la navigation gestuelle. 
-- **(E09|E15)** L'accès aux textes "Les films à l'affiche" et "Les autres offres" ne suit pas un ordre logique. Le lecteur d'écran devrait accéder à la première section puis ensuite la seconde. Le bouton de retour à l'écran précédent et le bouton de partage (en haut de l'écran) sont atteints en fin de parcours.
-- **(E11)**  L'accès au texte "Lors de ton utilisation [...] newsletter." ne suit pas un ordre logique. Le lecteur d'écran devrait accéder au texte puis ensuite au bouton "S'inscrire".
-- **(E12)** Entre chaque étape, le focus est directement sur le champ, plutôt que sur le premier élément de la page, cela oblige à un retour manuel vers le haut de la page.
-- **(E14)**  Les composants « Catégories » affichés sur deux lignes ne sont pas tous atteignables avec la navigation par balayage (swipe) : certains éléments sont sautés si l’utilisateur ne les explore pas manuellement à l’écran.
+**Problème** 😱
 
-**Correction** 💡  
-- **(E02|E09|E14|E15)** Utilisation d'`accessibilityRole` pour rendre accessible des éléments qui ne l'étaient pas. 
-- **(E11)**  Ajout du texte "Lors de ton utilisation [...] newsletter." dans le `accessibilityHint` du bouton "S'inscrire" pour qu'il soit lu en même temps. 
+- **(E02)** Avec TalkBack, le balayage (swipe) ne permet pas d’atteindre certains éléments hors écran. ex. Lorsque l’on effectue un balayage avec TalkBack, l’écran ne défile pas automatiquement pour révéler les éléments suivants. Résultat : certains contenus ne sont jamais atteints par la navigation gestuelle.
+- **(E09|E15)** L'accès aux textes "Les films à l'affiche" et "Les autres offres" ne suit pas un ordre logique. Le lecteur d'écran devrait accéder à la première section puis ensuite la seconde. Le bouton de retour à l'écran précédent et le bouton de partage (en haut de l'écran) sont atteints en fin de parcours.
+- **(E11)** L'accès au texte "Lors de ton utilisation [...] newsletter." ne suit pas un ordre logique. Le lecteur d'écran devrait accéder au texte puis ensuite au bouton "S'inscrire".
+- **(E12)** Entre chaque étape, le focus est directement sur le champ, plutôt que sur le premier élément de la page, cela oblige à un retour manuel vers le haut de la page.
+- **(E14)** Les composants « Catégories » affichés sur deux lignes ne sont pas tous atteignables avec la navigation par balayage (swipe) : certains éléments sont sautés si l’utilisateur ne les explore pas manuellement à l’écran.
+
+**Correction** 💡
+
+- **(E02|E09|E14|E15)** Utilisation d'`accessibilityRole` pour rendre accessible des éléments qui ne l'étaient pas.
+- **(E11)** Ajout du texte "Lors de ton utilisation [...] newsletter." dans le `accessibilityHint` du bouton "S'inscrire" pour qu'il soit lu en même temps.
 - **(E12)** Suppression du `autoFocus` automatique sur les champs qui obligait à un retour manuel vers le haut de la page.
 
 **Retours audit** 🔥  
@@ -1015,7 +1024,7 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ? </summary>
+<summary> 🔴🔴 Critère 11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ? </summary>
 
 **RAAM** : [Critère 11.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-11-9)  
 **Ticket** : [PC-38765](https://passculture.atlassian.net/browse/PC-38765) & [PC-39267](https://passculture.atlassian.net/browse/PC-39267)
@@ -1037,8 +1046,6 @@ Texte
 
 <br>
 
-
-
 ## ✅ Corrections 02 février 2026 → xxx
 
 <br>
@@ -1048,7 +1055,7 @@ Texte
 <summary> 🟠 Critère 3.7 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, des sous-titres synchronisés ?</summary>
 
 **RAAM** : [Critère 3.7](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-3-7)  
-**Ticket** : [PC-37469](https://passculture.atlassian.net/browse/PC-37469)  
+**Ticket** : [PC-37469](https://passculture.atlassian.net/browse/PC-37469)
 
 **Problème** 😱  
 E02 : La vidéo du bloc "Lujipeka répond à vos questions sur la tournée[...]" n'a pas de sous-titres synchronisés
@@ -1056,7 +1063,7 @@ E15 : Non-conformité de typologie similaire à celle décrite sur l'écran "E02
 
 **Correction** 💡  
 E02 : Ajout de la vidéo de l'interview Orelsan et Clara Choï qui a des sous-titres syncronisées. Les sous-titres sont fait manuellement et non générés par IA.
-E15 : Ce sont des vidéos qui seront ajoutées par les partenaires culturels 
+E15 : Ce sont des vidéos qui seront ajoutées par les partenaires culturels
 
 **Retours audit** 🔥  
 Texte
@@ -1070,7 +1077,7 @@ Texte
 <summary> 🟠 Critère 3.8 - Pour chaque média temporel synchronisé pré-enregistré ayant des sous-titres synchronisés, ceux-ci sont-ils pertinents ?</summary>
 
 **RAAM** : [Critère 3.8](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-3-8)  
-**Ticket** : [37470](https://passculture.atlassian.net/browse/PC-37470)  
+**Ticket** : [37470](https://passculture.atlassian.net/browse/PC-37470)
 
 **Problème** 😱  
 E02 : Les sous-titres de la vidéo du bloc "Le festival de rock" ne sont pas pertinents. Il faut compléter les sous-titres et les corriger avec les informations sonores manquantes présentes dans la vidéo.
@@ -1080,83 +1087,6 @@ E02 : Ajout de la vidéo de l'interview Orelsan et Clara Choï qui a des sous-ti
 
 **Retours audit** 🔥  
 Texte
-
-</details>
-
-<br>
-
-## 💡 Questions
-
-</details>
-
-<br>
-
-<details>
-
-<summary> ⏳ Critère 1.1 - Android - Chaque élément graphique de décoration est-il ignoré par les technologies d’assistance ?</summary>
-
-**RAAM** : [Critère 1.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-1-1)  
-**Ticket** : [PC-37377](https://passculture.atlassian.net/browse/PC-37377)  
-**PR** : [#XXXX](https://github.com/pass-culture/pass-culture-app-native/pull/XXXX)
-
-**Problème** 😱  
-Lorsque je démarre TalkBack sur la home, toute la home est restitué en Français.
-Si je vais dans `HomeModule.tsx` et que je retire `BusinessModule` de l'array de modules, lorsque je démarre Talkback, cette fois-ci il ne restitura que "Bienvenue" et ça sera lu comme si c'était de l'anglais.
-Dans tous les cas (si la home est restitué en entièrété en français, ou juste le titre es restitué), lorsque j'appuies manuellement sur un élément de la home, c'est restitué comme si c'était de l'anglais.
-
-En ce qui concerne la restitution non-voulu des emojis contenus dans les titres des divers modules, pour constater ce problème, il faut que l'entièrété de la page soit restitué.
-
-J'ai remarqué qu'il semble y avoir 2 modes de restitution par TalkBack:
-
-- Une automatique qui se déclenche au démarrage de TalkBack quand on est sur la Home
-- Une manuelle lorsqu'on appuies sur un élément
-
-C'est dans le premier mode seulement que j'arrive à reproduire la lecture non-voulue des emojis.
-
-Pourquoi la lecture automatique se déclenche seulement sur certaines écrans?
-
-J'ai remarqué que c'était sur les écrans sans entête `headerShown: false` que tout la page est lu. Ou autre hypothèse: la liste de la home est un composant et est lu enitèrement et que le TalkBack ne lit que le premier élément lors de son activation. Peut être que le header prévient la lecture de la liste de la home.
-
-Lors d'une lecture manuelle des éléments de la home, les emojis ne sont pas lus grâce au code existant dans `AccessibleTitle` ou le titre est séparé des emojis qu'il pourrait contenir, et le `accessibilityLabel` est défini à `titleText` (sans l'emoji).
-
-Si je supprime ce `accessibilityLabel`, les emojis dans le titre sont lus, même en lecture manuelle, ce qui me permet de conclure que ce code fonctionne correctement.
-
-**Correction** 💡  
-En réalité, nous n'avions pas testé correctement le plan du site avec le TalkBack. En plus de la restitution de toute la page lors de l'activation du TalkBack, de la restitution en appuyant un élément, on peut utiliser le swipe pour "naviguer" à travers les éléments. En swipant, on arrive bien a reproduire le problème qu'avait constaté l'auditeur. On endend bien un "click" entre les éléments. Mais ce n'était pas la restitution du svg "point" comme le pensait l'auditeur.
-
-Le son que nous entendions entre les éléments du plan du site était la restitution d'un texte vide. Ce texte vide était dû à la mauvaise utilisation d'un composant texte, utilisé comme conteneur, alors qu'il fallait utilisé une simple `View`. Une fois le composant texte remplacé par une `View`, nous n'avions plus le bruit parasite entre chaque element.
-
-</details>
-
-<br>
-
-<details>
-
-<summary> ⏳ Critère 9.12 - Pour chaque champ qui attend une donnée personnelle de l’utilisateur, la saisie est-elle facilitée ?</summary>
-
-**RAAM** : [Critère 9.12](https://accessibilite.public.lu/fr/raam1/referentiel-technique.html#crit-9-12)  
-**Ticket** : [PC-37497](https://passculture.atlassian.net/browse/PC-37497)  
-**PR** : [#XXXX](https://github.com/pass-culture/pass-culture-app-native/pull/XXXX)
-
-| iOS Version | TextInput Type | Contact Menu AutoFill | Direct Email Suggestion AutoFill | Typing Contact Name AutoFill |
-| ----------- | -------------- | --------------------- | -------------------------------- | ---------------------------- |
-| 16.4        | Multi-layer    | ❌ Doesn't work       | ❌ Doesn't work                  | ❌ Doesn't work              |
-| 16.4        | Basic          | ❌ Doesn't work       | ✅ Works                         | ❌ Doesn't work              |
-| 18.3.1      | Multi-layer    | ✅ Works              | ❌ Doesn't work                  | ✅ Works                     |
-| 18.3.1      | Basic          | ✅ Works              | ❌ Doesn't work                  | ✅ Works                     |
-
-Legend:
-`TextInput` Type Basic = a generic `TextInput` imported directly from `react-native`, with accessibility props:
-
-```ts
-<TextInput
- style={{ backgroundColor: 'yellow', height: 40 }}
- textContentType="emailAddress"
- autoComplete="email"
-/>
-```
-
-`TextInput` Type Multi-layer = our custom input component `EmailInputController`.
 
 </details>
 
