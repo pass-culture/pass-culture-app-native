@@ -398,9 +398,6 @@ export const rootStackNavigatorPathConfig = {
     path: 'thematic-home',
     parse: screenParamsParser['ThematicHome'],
   },
-  Achievements: {
-    path: 'profil/succes',
-  },
   Chronicles: {
     path: 'avis-du-book-club/:offerId/:chronicleId',
     parse: screenParamsParser['Chronicles'],

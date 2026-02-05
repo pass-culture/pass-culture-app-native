@@ -67,6 +67,7 @@ export const BrowserNotSupportedPage: React.FC<{
           <Typo.Body {...getHeadingAttrs(2)}>{message?.description}</Typo.Body>
 
           <AccessibleUnorderedList
+            withPadding
             Separator={<Spacer.Column numberOfSpaces={2} />}
             items={Object.entries(supportedBrowsers).map(([browser, version]) => {
               let displayedMessage = `${browser}`

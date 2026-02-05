@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useCallback } from 'react'
 import { NativeScrollEvent, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -14,16 +14,26 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { Main } from 'shared/Main/Main'
 import { Spacer } from 'ui/components/spacer/Spacer'
+import { useDebounce } from 'ui/hooks/useDebounce'
 import { Page } from 'ui/pages/Page'
 
 export const ProfileOnline = () => {
   const { isLoggedIn, user } = useAuthContext()
   const isUserLoggedIn = isLoggedIn && user
 
+  const scrollRef = useRef<ScrollView | null>(null)
+  const scrollToTop = useCallback(() => scrollRef.current?.scrollTo({ y: 0, animated: true }), [])
+  const debouncedScrollToTop = useDebounce(scrollToTop, 400)
+
+  useEffect(() => {
+    if (!isLoggedIn) debouncedScrollToTop()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoggedIn])
+
   const featureFlags = {
-    enableProfileV2: useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PROFILE_V2),
-    enablePassForAll: useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL),
     disableActivation: useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION),
+    enablePassForAll: useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL),
+    enableProfileV2: useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PROFILE_V2),
   }
 
   const logProfileScrolledToBottom = useFunctionOnce(analytics.logProfilScrolledToBottom)
@@ -33,14 +43,14 @@ export const ProfileOnline = () => {
 
   return (
     <Page testID="profile-V2">
-      <ScrollContainer onScroll={onScroll}>
+      <ScrollContainer ref={scrollRef} onScroll={onScroll}>
         <CheatMenuButton />
         <Main>
           <Spacer.TopScreen />
           {isUserLoggedIn ? (
             <ProfileLoggedIn featureFlags={featureFlags} user={user} />
           ) : (
-            <ProfileLoggedOut featureFlags={featureFlags} />
+            <ProfileLoggedOut featureFlags={featureFlags} user={user} />
           )}
         </Main>
         <Footer />

@@ -4,10 +4,21 @@
 graph TD
     Profile --> ProfileV1
     Profile --> ProfileV2
+
     ProfileV2 --> ProfileOnline
     ProfileV2 --> ProfileOffline
+
     ProfileOnline --> ProfileLoggedOut
     ProfileOnline --> ProfileLoggedIn
+
+    ProfileLoggedIn --> LoggedInContent
+    ProfileLoggedIn --> LoggedInHeader
+
+    LoggedInContent --> LoggedInBeneficiaryContent
+    LoggedInContent --> LoggedInNonBeneficiaryContent
+
+    ProfileLoggedOut --> LoggedOutHeader
+    ProfileLoggedOut --> LoggedOutContent
 
     subgraph pages
         Profile
@@ -18,6 +29,15 @@ graph TD
     subgraph containers
         ProfileOnline
         ProfileOffline
-        ProfileLoggedOut
         ProfileLoggedIn
+        ProfileLoggedOut
+        LoggedOutContent
+        LoggedInContent
+        LoggedInBeneficiaryContent
+        LoggedInNonBeneficiaryContent
+    end
+
+    subgraph components
+        LoggedOutHeader
+        LoggedInHeader
     end

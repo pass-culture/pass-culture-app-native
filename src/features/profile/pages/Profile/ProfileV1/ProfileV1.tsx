@@ -293,7 +293,7 @@ const OnlineProfile: React.FC = () => {
                       <Row
                         title="Mes succès"
                         type="navigable"
-                        navigateTo={{ screen: 'Achievements', params: { from: 'profile' } }}
+                        navigateTo={getProfilePropConfig('Achievements', { from: 'profile' })}
                         icon={Trophy}
                       />
                     </Li>
@@ -303,7 +303,7 @@ const OnlineProfile: React.FC = () => {
                       <Row
                         title="Apparence"
                         type="navigable"
-                        navigateTo={getProfilePropConfig('DisplayPreference')}
+                        navigateTo={getProfilePropConfig('Appearance')}
                         accessibilityLabel={
                           enableDarkModeGtm && !hasSeenAppearanceTag
                             ? accessibilityLabel
@@ -377,7 +377,9 @@ const OnlineProfile: React.FC = () => {
                   <Spacer.Column numberOfSpaces={4} />
                 </Section>
               )}
-              <SocialNetwork />
+              <Section title="Suivre le pass Culture">
+                <SocialNetwork />
+              </Section>
               {isLoggedIn ? (
                 <Section>
                   <Spacer.Column numberOfSpaces={4} />

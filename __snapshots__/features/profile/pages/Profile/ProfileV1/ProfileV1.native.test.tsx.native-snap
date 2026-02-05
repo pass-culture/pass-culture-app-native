@@ -1877,427 +1877,420 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
               <View
                 style={
                   {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
                     "marginBottom": "auto",
                     "marginLeft": "auto",
                     "marginRight": "auto",
                     "marginTop": "auto",
                     "maxWidth": 500,
+                    "paddingVertical": 16,
                     "width": "100%",
                   }
                 }
               >
                 <View
+                  accessibilityRole="list"
                   style={
                     {
+                      "flexBasis": 0,
                       "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "justifyContent": "space-between",
-                      "paddingVertical": 16,
+                      "paddingLeft": 0,
                     }
                   }
                 >
                   <View
-                    accessibilityRole="list"
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexDirection": "row",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "justifyContent": "space-between",
-                        "paddingLeft": 0,
+                        "display": "flex",
                       }
                     }
                   >
                     <View
-                      style={
+                      accessibilityLabel="Partager Instagram - Ouvre dans une nouvelle fenêtre"
+                      accessibilityRole="link"
+                      accessibilityState={
                         {
-                          "display": "flex",
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {},
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Partager Instagram - Ouvre dans une nouvelle fenêtre"
                     >
                       <View
-                        accessibilityLabel="Partager Instagram - Ouvre dans une nouvelle fenêtre"
-                        accessibilityRole="link"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
+                        gap={1}
                         style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {},
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "column",
+                            "gap": 4,
+                            "justifyContent": "center",
+                            "maxWidth": 80,
+                          }
                         }
-                        testID="Partager Instagram - Ouvre dans une nouvelle fenêtre"
                       >
                         <View
-                          gap={1}
                           style={
                             {
                               "alignItems": "center",
-                              "flexDirection": "column",
-                              "gap": 4,
+                              "height": 32,
                               "justifyContent": "center",
-                              "maxWidth": 80,
+                              "width": 32,
                             }
                           }
                         >
                           <View
-                            style={
-                              {
-                                "alignItems": "center",
-                                "height": 32,
-                                "justifyContent": "center",
-                                "width": 32,
-                              }
-                            }
+                            height={24}
+                            width={24}
                           >
-                            <View
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
                           </View>
-                          <Text
-                            numberOfLines={2}
-                            style={
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              }
-                            }
-                          >
-                            Instagram
-                          </Text>
                         </View>
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Instagram
+                        </Text>
                       </View>
                     </View>
+                  </View>
+                  <View
+                    style={
+                      {
+                        "display": "flex",
+                      }
+                    }
+                  >
                     <View
-                      style={
+                      accessibilityLabel="Partager X - Ouvre dans une nouvelle fenêtre"
+                      accessibilityRole="link"
+                      accessibilityState={
                         {
-                          "display": "flex",
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {},
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Partager X - Ouvre dans une nouvelle fenêtre"
                     >
                       <View
-                        accessibilityLabel="Partager X - Ouvre dans une nouvelle fenêtre"
-                        accessibilityRole="link"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
+                        gap={1}
                         style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {},
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "column",
+                            "gap": 4,
+                            "justifyContent": "center",
+                            "maxWidth": 80,
+                          }
                         }
-                        testID="Partager X - Ouvre dans une nouvelle fenêtre"
                       >
                         <View
-                          gap={1}
                           style={
                             {
                               "alignItems": "center",
-                              "flexDirection": "column",
-                              "gap": 4,
+                              "height": 32,
                               "justifyContent": "center",
-                              "maxWidth": 80,
+                              "width": 32,
                             }
                           }
                         >
                           <View
-                            style={
-                              {
-                                "alignItems": "center",
-                                "height": 32,
-                                "justifyContent": "center",
-                                "width": 32,
-                              }
-                            }
+                            height={24}
+                            width={24}
                           >
-                            <View
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
                           </View>
-                          <Text
-                            numberOfLines={2}
-                            style={
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              }
-                            }
-                          >
-                            X
-                          </Text>
                         </View>
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          X
+                        </Text>
                       </View>
                     </View>
+                  </View>
+                  <View
+                    style={
+                      {
+                        "display": "flex",
+                      }
+                    }
+                  >
                     <View
-                      style={
+                      accessibilityLabel="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
+                      accessibilityRole="link"
+                      accessibilityState={
                         {
-                          "display": "flex",
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {},
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
                     >
                       <View
-                        accessibilityLabel="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
-                        accessibilityRole="link"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
+                        gap={1}
                         style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {},
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "column",
+                            "gap": 4,
+                            "justifyContent": "center",
+                            "maxWidth": 80,
+                          }
                         }
-                        testID="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
                       >
                         <View
-                          gap={1}
                           style={
                             {
                               "alignItems": "center",
-                              "flexDirection": "column",
-                              "gap": 4,
+                              "height": 32,
                               "justifyContent": "center",
-                              "maxWidth": 80,
+                              "width": 32,
                             }
                           }
                         >
                           <View
-                            style={
-                              {
-                                "alignItems": "center",
-                                "height": 32,
-                                "justifyContent": "center",
-                                "width": 32,
-                              }
-                            }
+                            height={24}
+                            width={24}
                           >
-                            <View
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
                           </View>
-                          <Text
-                            numberOfLines={2}
-                            style={
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              }
-                            }
-                          >
-                            Tiktok
-                          </Text>
                         </View>
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Tiktok
+                        </Text>
                       </View>
                     </View>
+                  </View>
+                  <View
+                    style={
+                      {
+                        "display": "flex",
+                      }
+                    }
+                  >
                     <View
-                      style={
+                      accessibilityLabel="Partager Facebook - Ouvre dans une nouvelle fenêtre"
+                      accessibilityRole="link"
+                      accessibilityState={
                         {
-                          "display": "flex",
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {},
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Partager Facebook - Ouvre dans une nouvelle fenêtre"
                     >
                       <View
-                        accessibilityLabel="Partager Facebook - Ouvre dans une nouvelle fenêtre"
-                        accessibilityRole="link"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
+                        gap={1}
                         style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {},
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "column",
+                            "gap": 4,
+                            "justifyContent": "center",
+                            "maxWidth": 80,
+                          }
                         }
-                        testID="Partager Facebook - Ouvre dans une nouvelle fenêtre"
                       >
                         <View
-                          gap={1}
                           style={
                             {
                               "alignItems": "center",
-                              "flexDirection": "column",
-                              "gap": 4,
+                              "height": 32,
                               "justifyContent": "center",
-                              "maxWidth": 80,
+                              "width": 32,
                             }
                           }
                         >
                           <View
-                            style={
-                              {
-                                "alignItems": "center",
-                                "height": 32,
-                                "justifyContent": "center",
-                                "width": 32,
-                              }
-                            }
+                            height={24}
+                            width={24}
                           >
-                            <View
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
                           </View>
-                          <Text
-                            numberOfLines={2}
-                            style={
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              }
-                            }
-                          >
-                            Facebook
-                          </Text>
                         </View>
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Facebook
+                        </Text>
                       </View>
                     </View>
                   </View>

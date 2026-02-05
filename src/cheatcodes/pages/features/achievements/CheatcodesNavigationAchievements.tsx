@@ -11,6 +11,7 @@ import {
 } from 'features/achievements/data/AchievementData'
 import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
 import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
+import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useModal } from 'ui/components/modals/useModal'
 
@@ -24,10 +25,8 @@ const achievementCheatcodeCategory: CheatcodeCategory = {
   subscreens: [
     {
       id: uuidv4(),
-      title: 'Liste des achievements',
-      navigationTarget: {
-        screen: 'Achievements',
-      },
+      title: 'Achievements',
+      navigationTarget: getProfilePropConfig('Achievements'),
     },
     // These are "ContainerButtons". They exist for search but have no action here.
     // Their action is implemented manually on the destination screen below.
