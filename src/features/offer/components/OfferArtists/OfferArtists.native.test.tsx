@@ -9,51 +9,48 @@ const user = userEvent.setup()
 
 jest.useFakeTimers()
 
+const mockArtist = { id: '1', name: 'Edith Piaf' }
+const mockMultiArtists = [
+  { id: '1', name: 'Sam Worthington' },
+  { id: '2', name: 'Zoe Saldana' },
+  { id: '3', name: 'Sigourney Weaver' },
+]
+
 describe('<OfferArtists />', () => {
   it('should display artists', () => {
-    render(<OfferArtists artistsNames={['Edith Piaf']} />)
+    render(<OfferArtists artists={[mockArtist]} />)
 
     expect(screen.getByText('Edith Piaf')).toBeOnTheScreen()
   })
 
   it('should use wording with "et X autre" when isMultiArtistsEnabled FF activated and artists names are more than 2', () => {
-    render(
-      <OfferArtists
-        artistsNames={['Sam Worthington', 'Zoe Saldana', 'Sigourney Weaver']}
-        isMultiArtistsEnabled
-      />
-    )
+    render(<OfferArtists artists={mockMultiArtists} isMultiArtistsEnabled />)
 
     expect(screen.getByText('Sam Worthington, Zoe Saldana et 1 autre')).toBeOnTheScreen()
   })
 
   it('should not use wording with "et X autre" when isMultiArtistsEnabled FF deactivated and artists names are more than 2', () => {
-    render(
-      <OfferArtists
-        artistsNames={['Sam Worthington', 'Zoe Saldana', 'Sigourney Weaver']}
-        isMultiArtistsEnabled={false}
-      />
-    )
+    render(<OfferArtists artists={mockMultiArtists} isMultiArtistsEnabled={false} />)
 
     expect(screen.getByText('Sam Worthington, Zoe Saldana, Sigourney Weaver')).toBeOnTheScreen()
   })
 
   it('should display right icon when onPressArtistLink callback is defined', () => {
     const handlePressLink = jest.fn()
-    render(<OfferArtists artistsNames={['Edith Piaf']} onPressArtistLink={handlePressLink} />)
+    render(<OfferArtists artists={[mockArtist]} onPressArtistLink={handlePressLink} />)
 
     expect(screen.getByTestId('right-icon')).toBeOnTheScreen()
   })
 
   it('should not display right icon when onPressArtistLink callback not defined', () => {
-    render(<OfferArtists artistsNames={['Edith Piaf']} />)
+    render(<OfferArtists artists={[mockArtist]} />)
 
     expect(screen.queryByTestId('right-icon')).not.toBeOnTheScreen()
   })
 
   it('should display clickable artist button when onPressArtistLink callback is defined', async () => {
     const handlePressLink = jest.fn()
-    render(<OfferArtists artistsNames={['Edith Piaf']} onPressArtistLink={handlePressLink} />)
+    render(<OfferArtists artists={[mockArtist]} onPressArtistLink={handlePressLink} />)
 
     await user.press(screen.getByLabelText('Accéder à la page de Edith Piaf'))
 
@@ -61,7 +58,7 @@ describe('<OfferArtists />', () => {
   })
 
   it('should not display clickable artist button when onPressArtistLink callback is not defined', () => {
-    render(<OfferArtists artistsNames={['Edith Piaf']} />)
+    render(<OfferArtists artists={[mockArtist]} />)
 
     expect(
       screen.queryByRole('button', { name: 'Accéder à la page de Edith Piaf' })
@@ -69,13 +66,14 @@ describe('<OfferArtists />', () => {
   })
 
   it('should use an accessibility label specifying that a list of artists is being opened when there are several artists', () => {
-    render(
-      <OfferArtists
-        artistsNames={['Sam Worthington', 'Zoe Saldana', 'Sigourney Weaver']}
-        onPressArtistLink={jest.fn()}
-      />
-    )
+    render(<OfferArtists artists={mockMultiArtists} onPressArtistLink={jest.fn()} />)
 
     expect(screen.getByLabelText('Ouvrir la liste des artistes')).toBeOnTheScreen()
+  })
+
+  it('should use "de" prefix if there is only one artist', () => {
+    render(<OfferArtists artists={[mockArtist]} />)
+
+    expect(screen.getByText('de')).toBeOnTheScreen()
   })
 })

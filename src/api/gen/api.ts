@@ -355,6 +355,16 @@ export interface ArtistResponse {
   name: string
 }
 /**
+ * A link Artist <> Product also bears a type An artist can be an author or a musician for different products
+ * @export
+ * @enum {string}
+ */
+export enum ArtistType {
+  'author' = 'author',
+  'performer' = 'performer',
+  'stage_director' = 'stage_director',
+}
+/**
  * @export
  * @interface AudioDisability
  */
@@ -2856,6 +2866,11 @@ export interface OfferArtist {
    * @memberof OfferArtist
    */
   name: string
+  /**
+   * @type {ArtistType}
+   * @memberof OfferArtist
+   */
+  role?: ArtistType | null
 }
 /**
  * @export
