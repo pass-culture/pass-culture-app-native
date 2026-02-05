@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
 
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Close } from 'ui/svg/icons/Close'
 import { Typo } from 'ui/theme'
 
@@ -31,7 +31,12 @@ export const ChroniclesWritersModal: FunctionComponent<Props> = ({
       <ViewGap gap={6}>
         <Typo.Body>{variantInfo.modalWording}</Typo.Body>
 
-        <ButtonPrimary wording={variantInfo.modalButtonLabel} onPress={onShowRecoButtonPress} />
+        <Button
+          wording={variantInfo.modalButtonLabel}
+          onPress={onShowRecoButtonPress}
+          variant="primary"
+          color="brand"
+        />
       </ViewGap>
     </AppModal>
   )
