@@ -83,6 +83,7 @@ const SelectIDStatusContent: FunctionComponent = () => {
       <AccessibleUnorderedList
         items={[FirstOtherOption, SecondOtherOption]}
         Separator={buttonListSeparator}
+        withPadding
       />
     </Container>
   )

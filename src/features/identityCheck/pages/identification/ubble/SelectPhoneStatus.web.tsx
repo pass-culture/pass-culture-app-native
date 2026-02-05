@@ -47,6 +47,7 @@ const SelectPhoneStatusContent: FunctionComponent = () => {
       <AccessibleUnorderedList
         items={buttonList}
         Separator={<Spacer.Column numberOfSpaces={6} />}
+        withPadding
       />
     </Container>
   )

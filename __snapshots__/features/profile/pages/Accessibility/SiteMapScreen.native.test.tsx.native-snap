@@ -3423,7 +3423,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityLabel="Profil – Liste - Élément 7 sur 12 - Préférence d’affichage"
+          accessibilityLabel="Profil – Liste - Élément 7 sur 12 - Apparence"
           accessibilityRole="button"
           accessible={true}
           style={
@@ -3471,7 +3471,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Préférence d’affichage"
+                accessibilityLabel="Apparence"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -3521,7 +3521,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     "width": "100%",
                   }
                 }
-                testID="Préférence d’affichage"
+                testID="Apparence"
               >
                 <View
                   style={
@@ -3544,7 +3544,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       }
                     }
                   >
-                    Préférence d’affichage
+                    Apparence
                   </Text>
                 </View>
               </View>

@@ -6,6 +6,7 @@ interface PersonalDataType {
 }
 
 export type ProfileStackParamList = {
+  Achievements: { from: 'profile' | 'success' } | undefined
   ChangeAddress: PersonalDataType | undefined
   ChangeCity: PersonalDataType | undefined
   ChangeEmail: { showModal: boolean } | undefined
@@ -27,7 +28,7 @@ export type ProfileStackParamList = {
   DeleteProfileEmailHacked: undefined
   DeleteProfileReason: undefined
   DeleteProfileSuccess: undefined
-  DisplayPreference: undefined
+  Appearance: undefined
   FeedbackInApp: undefined
   LegalNotices: undefined
   NotificationsSettings: undefined

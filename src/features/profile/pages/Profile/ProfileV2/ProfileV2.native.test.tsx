@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { ProfileV2 } from 'features/profile/pages/Profile/ProfileV2/ProfileV2'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -9,6 +10,11 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
+
+const mockFavoritesState = initialFavoritesState
+jest.mock('features/favorites/context/FavoritesWrapper', () => ({
+  useFavoritesState: () => ({ ...mockFavoritesState, dispatch: jest.fn() }),
+}))
 
 describe('<ProfileV2/>', () => {
   it('should display ProfileOnline when user is connected to internet', async () => {

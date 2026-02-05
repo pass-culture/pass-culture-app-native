@@ -52,7 +52,7 @@ export const Accessibility = () => {
 
   return (
     <SecondaryPageWithBlurHeader title="Accessibilité" enableMaxWidth={false}>
-      <AccessibleUnorderedList items={items} Separator={<Separator.Horizontal />} />
+      <AccessibleUnorderedList items={items} Separator={<Separator.Horizontal />} withPadding />
     </SecondaryPageWithBlurHeader>
   )
 }

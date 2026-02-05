@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { AchievementEnum, AchievementResponse } from 'api/gen'
 import { useAchievementsMarkAsSeenMutation } from 'features/achievements/queries/useMarkAchievementsAsSeenMutation'
+import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { analytics } from 'libs/analytics/provider'
 import LottieView from 'libs/lottie'
 import success from 'ui/animations/achievements_success.json'
@@ -75,7 +76,7 @@ export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow
         <InternalTouchableLink
           as={ButtonPrimary}
           wording="Accéder à mes succès"
-          navigateTo={{ screen: 'Achievements', params: { from: 'success' } }}
+          navigateTo={getProfilePropConfig('Achievements', { from: 'success' })}
           onBeforeNavigate={hideModalAndMarkAsSeen}
         />
 

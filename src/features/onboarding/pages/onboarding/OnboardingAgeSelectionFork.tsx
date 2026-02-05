@@ -75,6 +75,7 @@ export const OnboardingAgeSelectionFork: FunctionComponent = () => {
           </AgeButton>
         ))}
         Separator={<Spacer.Column numberOfSpaces={4} />}
+        withPadding
       />
     </TutorialPage>
   )
