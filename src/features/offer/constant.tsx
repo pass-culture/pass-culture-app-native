@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { SubcategoryIdEnum } from 'api/gen'
+import { ArtistType, SubcategoryIdEnum } from 'api/gen'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { CineClubCertification } from 'ui/svg/CineClubCertification'
 
@@ -67,3 +67,7 @@ export const CHRONICLE_VARIANT_CONFIG = [
 ] as const
 
 export const MAX_WIDTH_VIDEO = 540
+
+export const OF_ROLES = [ArtistType.author, ArtistType.stage_director]
+
+export const WITH_ROLES = [ArtistType.performer]
