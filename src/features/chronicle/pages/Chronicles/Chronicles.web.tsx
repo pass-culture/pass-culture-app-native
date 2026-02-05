@@ -27,7 +27,7 @@ import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Button } from 'ui/designSystem/Button/Button'
 
 export const Chronicles: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'Chronicles'>>()
@@ -112,7 +112,12 @@ export const Chronicles: FunctionComponent = () => {
                 trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
               />
             ) : (
-              <ButtonPrimary wording="Trouve ta séance" onPress={onPress} />
+              <Button
+                wording="Trouve ta séance"
+                onPress={onPress}
+                variant="primary"
+                color="brand"
+              />
             )}
           </StyledChronicleOfferInfo>
         ) : null}

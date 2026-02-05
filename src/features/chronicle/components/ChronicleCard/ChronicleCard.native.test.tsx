@@ -3,7 +3,7 @@ import { View } from 'react-native'
 
 import { chroniclesSnap } from 'features/chronicle/fixtures/chroniclesSnap'
 import { act, render, screen, userEvent } from 'tests/utils'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { Button } from 'ui/designSystem/Button/Button'
 
 import { ChronicleCard } from './ChronicleCard'
 
@@ -32,9 +32,11 @@ describe('ChronicleCard (Mobile)', () => {
     render(
       <ChronicleCard {...chroniclesSnap[0]} shouldTruncate>
         <View>
-          <ButtonTertiaryBlack
+          <Button
             wording="Voir plus"
             onPress={() => mockOnSeeMoreButtonPress(chroniclesSnap[0].id)}
+            variant="tertiary"
+            color="neutral"
           />
         </View>
       </ChronicleCard>
@@ -47,9 +49,11 @@ describe('ChronicleCard (Mobile)', () => {
     render(
       <ChronicleCard {...chroniclesSnap[0]} shouldTruncate>
         <View>
-          <ButtonTertiaryBlack
+          <Button
             wording="Voir plus"
             onPress={() => mockOnSeeMoreButtonPress(chroniclesSnap[0].id)}
+            variant="tertiary"
+            color="neutral"
           />
         </View>
       </ChronicleCard>
@@ -68,9 +72,11 @@ describe('ChronicleCard (Mobile)', () => {
     render(
       <ChronicleCard {...chroniclesSnap[0]} shouldTruncate>
         <View>
-          <ButtonTertiaryBlack
+          <Button
             wording="Voir plus"
             onPress={() => mockOnSeeMoreButtonPress(chroniclesSnap[0].id)}
+            variant="tertiary"
+            color="neutral"
           />
         </View>
       </ChronicleCard>
@@ -89,9 +95,11 @@ describe('ChronicleCard (Mobile)', () => {
     render(
       <ChronicleCard {...chroniclesSnap[0]} shouldTruncate>
         <View>
-          <ButtonTertiaryBlack
+          <Button
             wording="Voir plus"
             onPress={() => mockOnSeeMoreButtonPress(chroniclesSnap[0].id)}
+            variant="tertiary"
+            color="neutral"
           />
         </View>
       </ChronicleCard>
