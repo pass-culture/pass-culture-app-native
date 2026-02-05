@@ -15,12 +15,11 @@ import { Typo } from 'ui/theme'
 import { getButtonColors } from './Button.colors'
 import {
   getBorderWidth,
+  getContentPadding,
   getIconElement,
-  getIconSizeKeyForButton,
   getInteractiveColors,
   getLabelStyle,
   getLabelText,
-  getPrimaryDisabledOpacity,
   getSpacingGap,
   getTypographyForSize,
 } from './Button.layout'
@@ -41,7 +40,8 @@ type ButtonContainerProps = {
   backgroundColor?: ButtonColorValue
   borderColor?: ColorsType
   borderWidth?: number
-  opacity?: number
+  paddingVertical: number
+  paddingHorizontal: number
 }
 
 type ButtonBaseProps = (ButtonNativeProps | ButtonWebProps) & {
@@ -90,8 +90,6 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
     isHoverActive
   )
   const borderWidth = getBorderWidth(borderColor)
-  const opacity = getPrimaryDisabledOpacity(variant, isDisabled)
-
   const labelText = getLabelText(iconButton, wording)
   const computedA11yLabel = getComputedAccessibilityLabel(
     iconButton ? accessibilityLabel : (accessibilityLabel ?? wording ?? ''),
@@ -103,8 +101,7 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
   const typographyKey = getTypographyForSize(size)
   const LabelTypo = Typo[typographyKey]
 
-  const iconSizeKey = getIconSizeKeyForButton(size)
-  const iconSize = theme.icons.sizes[iconSizeKey]
+  const iconSize = size === 'small' ? theme.icons.sizes.buttonSmall : theme.icons.sizes.button
   const getPositionedIcon = (position: 'left' | 'right') =>
     iconPosition === position ? getIconElement({ icon, color: iconColor, size: iconSize }) : null
 
@@ -113,6 +110,11 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
 
   const resolvedAccessibilityRole = accessibilityRole ?? defaultAccessibilityRole
 
+  const { vertical: paddingVertical, horizontal: paddingHorizontal } = getContentPadding({
+    variant,
+    iconButton,
+    theme,
+  })
   const content = (
     <Content gap={gap} fullWidth={fullWidth} isMultiline={isMultiline}>
       {isLoading ? (
@@ -148,7 +150,8 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
     backgroundColor,
     borderColor,
     borderWidth,
-    opacity,
+    paddingVertical,
+    paddingHorizontal,
   })
 }
 

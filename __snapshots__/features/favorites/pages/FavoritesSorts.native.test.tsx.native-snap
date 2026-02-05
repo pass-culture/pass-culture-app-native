@@ -670,7 +670,6 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                   "borderWidth": 1,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "opacity": 1,
                   "paddingBottom": 8,
                   "paddingLeft": 12,
                   "paddingRight": 12,

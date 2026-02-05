@@ -5,6 +5,7 @@
 
 import React from 'react'
 import { StyleProp, TextStyle } from 'react-native'
+import { DefaultTheme } from 'styled-components/native'
 
 import { ColorsType } from 'theme/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -23,9 +24,6 @@ export const getInteractiveColors = (colors: ButtonColors, isHoverActive: boolea
 })
 
 export const getBorderWidth = (borderColor?: ColorsType) => (borderColor ? 1 : 0)
-
-export const getPrimaryDisabledOpacity = (variant: ButtonVariant, isDisabled: boolean) =>
-  variant === 'primary' && isDisabled ? 0.4 : 1
 
 export const getLabelText = (iconButton: boolean, wording?: string) =>
   iconButton ? undefined : wording
@@ -48,8 +46,25 @@ export const getSpacingGap = (hasLabel: boolean, spacing: number) => (hasLabel ?
 
 export const getTypographyForSize = (size: ButtonSize) => (size === 'small' ? 'ButtonS' : 'Button')
 
-export const getIconSizeKeyForButton = (size: ButtonSize) =>
-  size === 'small' ? 'extraSmall' : 'smaller'
+export const getContentPadding = ({
+  variant,
+  iconButton,
+  theme,
+}: {
+  variant: ButtonVariant
+  iconButton: boolean
+  theme: DefaultTheme
+}) => {
+  if (iconButton) {
+    const padding = theme.designSystem.size.spacing.s
+    return { vertical: padding, horizontal: padding }
+  }
+
+  return {
+    vertical: variant === 'tertiary' ? 0 : theme.designSystem.size.spacing.s,
+    horizontal: variant === 'tertiary' ? 0 : theme.designSystem.size.spacing.m,
+  }
+}
 
 export const getIconElement = ({
   icon: Icon,

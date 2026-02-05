@@ -551,6 +551,8 @@ exports[`<SetBirthday /> should render correctly 1`] = `
           },
           "icons": {
             "sizes": {
+              "button": 22,
+              "buttonSmall": 14,
               "extraSmall": 16,
               "small": 24,
               "smaller": 20,
@@ -1395,6 +1397,8 @@ exports[`<SetBirthday /> should render correctly when account creation token and
           },
           "icons": {
             "sizes": {
+              "button": 22,
+              "buttonSmall": 14,
               "extraSmall": 16,
               "small": 24,
               "smaller": 20,

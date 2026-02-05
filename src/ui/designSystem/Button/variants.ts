@@ -47,6 +47,12 @@ export const variantBaseKeys: Record<ButtonVariant, VariantKeys> = {
 }
 
 export const variantDisabledKeys: Partial<Record<ButtonVariant, VariantKeys>> = {
+  primary: {
+    background: 'disabled',
+    text: 'disabled',
+    icon: 'disabled',
+    border: 'disabled',
+  },
   secondary: {
     background: 'disabled',
     text: 'disabled',

@@ -59,8 +59,28 @@ const primaryCases: Variants<typeof Button> = [
     },
   },
   {
+    label: 'Primary icon button disabled',
+    props: {
+      variant: 'primary',
+      icon: Invalidate,
+      iconButton: true,
+      accessibilityLabel: 'Fermer',
+      disabled: true,
+    },
+  },
+  {
     label: 'Primary small',
     props: { wording: baseLabel, variant: 'primary', size: 'small' },
+  },
+  {
+    label: 'Primary small Icon button',
+    props: {
+      variant: 'primary',
+      size: 'small',
+      icon: Invalidate,
+      iconButton: true,
+      accessibilityLabel: 'Fermer',
+    },
   },
   {
     label: 'Primary default full width',

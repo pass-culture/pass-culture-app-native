@@ -39,10 +39,10 @@ describe('getButtonColors', () => {
       disabled: true,
     })
 
-    expect(result.backgroundColor).toBe(theme.designSystem.color.background.brandPrimary)
-    expect(result.borderColor).toBe(theme.designSystem.color.border.brandPrimary)
-    expect(result.textColor).toBe(theme.designSystem.color.text.inverted)
-    expect(result.iconColor).toBe(theme.designSystem.color.icon.inverted)
+    expect(result.backgroundColor).toBe(theme.designSystem.color.background.disabled)
+    expect(result.borderColor).toBe(theme.designSystem.color.border.disabled)
+    expect(result.textColor).toBe(theme.designSystem.color.text.disabled)
+    expect(result.iconColor).toBe(theme.designSystem.color.icon.disabled)
     expect(result.hoverBackgroundColor).toBeUndefined()
     expect(result.hoverBorderColor).toBeUndefined()
   })

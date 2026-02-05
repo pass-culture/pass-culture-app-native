@@ -54,7 +54,8 @@ export const Button = (props: ButtonWebProps) => {
             backgroundColor={containerProps.backgroundColor}
             borderColor={containerProps.borderColor}
             borderWidth={containerProps.borderWidth}
-            opacity={containerProps.opacity}
+            paddingVertical={containerProps.paddingVertical}
+            paddingHorizontal={containerProps.paddingHorizontal}
             type={href ? undefined : type}
             tabIndex={isDisabled || isLoading ? undefined : 0}
             {...buttonLinkProps}>
@@ -71,7 +72,8 @@ type ContainerStyleProps = {
   borderColor?: ColorsType
   borderWidth?: number
   fullWidth?: boolean
-  opacity?: number
+  paddingVertical: number
+  paddingHorizontal: number
 }
 
 const buttonContainerStyles = ({
@@ -79,24 +81,24 @@ const buttonContainerStyles = ({
   borderColor,
   borderWidth,
   backgroundColor,
-  opacity,
   fullWidth,
+  paddingVertical,
+  paddingHorizontal,
 }: ContainerStyleProps & { theme: DefaultTheme }): CSSObject => ({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: theme.designSystem.size.borderRadius.m,
-  paddingTop: theme.designSystem.size.spacing.s,
-  paddingBottom: theme.designSystem.size.spacing.s,
-  paddingLeft: theme.designSystem.size.spacing.m,
-  paddingRight: theme.designSystem.size.spacing.m,
+  paddingTop: paddingVertical,
+  paddingBottom: paddingVertical,
+  paddingLeft: paddingHorizontal,
+  paddingRight: paddingHorizontal,
   width: fullWidth ? '100%' : 'auto',
   alignSelf: fullWidth ? 'center' : undefined,
   borderStyle: borderColor ? 'solid' : undefined,
   borderColor: borderColor,
   borderWidth: borderColor ? borderWidth : 0,
   backgroundColor: backgroundColor,
-  opacity: opacity ?? 1,
   cursor: 'pointer',
   outline: 'none',
   display: 'inline-flex',

@@ -158,7 +158,6 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
                   "borderWidth": 1,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "opacity": 1,
                   "paddingBottom": 8,
                   "paddingLeft": 12,
                   "paddingRight": 12,
