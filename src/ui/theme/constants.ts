@@ -34,6 +34,10 @@ export const SMALL_ICON_SIZE = getSpacing(6)
 export const SMALLER_ICON_SIZE = getSpacing(5)
 // icons used for quaternary buttons or smaller should be imported with XXS_SMALLER_ICON_SIZE
 export const EXTRA_SMALL_ICON_SIZE = getSpacing(4)
+// icons used for design system Button iconButton (default)
+export const BUTTON_ICON_SIZE = getSpacing(5.5)
+// icons used for design system Button iconButton (small)
+export const BUTTON_ICON_SIZE_SMALL = getSpacing(3.5)
 // icons used for illustrations should be imported with ILLUSTRATION_ICON_SIZE
 export const ILLUSTRATION_ICON_SIZE = getSpacing(35) // 140
 // icons used for full page illustrations should be imported with FULLPAGE_ILLUSTRATION_ICON_SIZE
