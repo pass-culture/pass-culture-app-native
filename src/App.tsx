@@ -36,7 +36,7 @@ import { SplashScreenProvider } from 'libs/splashscreen/splashscreen'
 import { ThemeWrapper } from 'libs/styled/ThemeWrapper'
 import { useLaunchPerformanceObserver } from 'performance/useLaunchPerformanceObserver'
 import { useOrientationLocked } from 'shared/hook/useOrientationLocked'
-import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
+import { SnackBarWrapper } from 'ui/designSystem/Snackbar/SnackBarWrapper'
 
 LogBox.ignoreLogs([
   'Setting a timer',
@@ -82,7 +82,7 @@ const App: FunctionComponent = function () {
                       <AccessibilityFiltersWrapper>
                         <FavoritesWrapper>
                           <SearchWrapper>
-                            <SnackBarProvider>
+                            <SnackBarWrapper>
                               <CulturalSurveyContextProvider>
                                 <SubscriptionContextProvider>
                                   <SplashScreenProvider>
@@ -96,7 +96,7 @@ const App: FunctionComponent = function () {
                                   </SplashScreenProvider>
                                 </SubscriptionContextProvider>
                               </CulturalSurveyContextProvider>
-                            </SnackBarProvider>
+                            </SnackBarWrapper>
                           </SearchWrapper>
                         </FavoritesWrapper>
                       </AccessibilityFiltersWrapper>

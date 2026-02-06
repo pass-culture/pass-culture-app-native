@@ -19,7 +19,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import * as useBookOfferMutation from 'queries/bookOffer/useBookOfferMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
 
@@ -81,14 +80,6 @@ const mockUseMutationError = (error?: ApiError) => {
 }
 
 const logOfferConversionSpy = jest.spyOn(logOfferConversionAPI, 'logOfferConversion')
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
-  SNACK_BAR_TIME_OUT: 5000,
-}))
 
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
@@ -478,7 +469,8 @@ describe('<BookingOfferModalComponent />', () => {
 
           await user.press(screen.getByText('Confirmer la réservation'))
 
-          expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, { timeout: 5000, message })
+          expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+          expect(screen.getByText(message)).toBeOnTheScreen()
         }
       )
     })

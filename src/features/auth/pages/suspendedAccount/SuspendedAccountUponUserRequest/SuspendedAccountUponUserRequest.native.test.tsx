@@ -7,7 +7,6 @@ import { EmptyResponse } from 'libs/fetch'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
 import { SuspendedAccountUponUserRequest } from './SuspendedAccountUponUserRequest'
 
@@ -23,14 +22,6 @@ const mockSignOut = jest.fn()
 jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
-
-const mockShowErrorSnackBar = jest.fn()
-jest.spyOn(SnackBarContextModule, 'useSnackBarContext').mockReturnValue({
-  showErrorSnackBar: mockShowErrorSnackBar,
-  showInfoSnackBar: jest.fn(),
-  showSuccessSnackBar: jest.fn(),
-  hideSnackBar: jest.fn(),
-})
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -76,10 +67,8 @@ describe('<SuspendedAccountUponUserRequest />', () => {
 
     await user.press(screen.getByText('Réactiver mon compte'))
 
-    expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
-      message: 'Une erreur s’est produite pendant la réactivation.',
-      timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(screen.getByText('Une erreur s’est produite pendant la réactivation.')).toBeOnTheScreen()
   })
 
   it('should log analytics on error', async () => {

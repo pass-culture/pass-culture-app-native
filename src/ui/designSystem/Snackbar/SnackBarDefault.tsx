@@ -22,6 +22,7 @@ export const SnackBarDefault: FC<SnackBarProps & { Icon: FC<AccessibleIcon> }> =
 }) => {
   return (
     <SnackbarContainer
+      testID={`snackbar-${type}`}
       entering={FadeInUp.withCallback(() => setTimeout(onClose, animationDuration))}
       exiting={FadeOutUp}
       layout={LinearTransition.duration(500).springify()}>

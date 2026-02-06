@@ -10,7 +10,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { formatToCompleteFrenchDateTime } from 'libs/parsers/formatDates'
 import { useAccountUnsuspensionLimit } from 'queries/settings/useSettings'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
@@ -26,17 +26,9 @@ export const SuspendedAccountUponUserRequest = () => {
   const { data: accountUnsuspensionLimit } = useAccountUnsuspensionLimit()
   const { data: accountSuspensionDate } = useAccountSuspensionDateQuery()
   const signOut = useLogoutRoutine()
-  const { showErrorSnackBar } = useSnackBarContext()
 
   function onAccountUnsuspendSuccess() {
     replace('AccountReactivationSuccess')
-  }
-
-  function onAccountUnsuspendFailure() {
-    showErrorSnackBar({
-      message: 'Une erreur s’est produite pendant la réactivation.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
   }
 
   const { mutate: unsuspendAccount, isPending: unsuspendIsLoading } = useAccountUnsuspendMutation(
@@ -45,7 +37,7 @@ export const SuspendedAccountUponUserRequest = () => {
   )
 
   const onReactivationPress = () => {
-    analytics.logAccountReactivation('suspendedaccountuponuserrequest')
+    void analytics.logAccountReactivation('suspendedaccountuponuserrequest')
     unsuspendAccount()
   }
 
@@ -82,6 +74,10 @@ export const SuspendedAccountUponUserRequest = () => {
       </StyledBody>
     </GenericInfoPage>
   )
+}
+
+const onAccountUnsuspendFailure = () => {
+  showErrorSnackBar('Une erreur s’est produite pendant la réactivation.')
 }
 
 const StyledBody = styled(Typo.Body)({

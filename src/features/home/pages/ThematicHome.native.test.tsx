@@ -93,13 +93,6 @@ jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () =>
   })),
 }))
 
-const mockShowSuccessSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: mockShowSuccessSnackBar,
-  }),
-}))
-
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 const modules = [formattedVenuesModule]

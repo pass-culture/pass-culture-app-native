@@ -11,7 +11,7 @@ import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
+import { snackBarActions } from 'ui/designSystem/Snackbar/snackBar.store'
 
 jest.useFakeTimers()
 jest.mock('libs/jwt/jwt')
@@ -21,12 +21,7 @@ jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () =>
   })),
 }))
 
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackBar,
-  }),
-}))
+const mockOpenSnackBar = jest.spyOn(snackBarActions, 'open')
 
 jest
   .spyOn(useMapSubscriptionHomeIdsToThematic, 'useMapSubscriptionHomeIdsToThematic')
@@ -305,10 +300,10 @@ describe('useThematicSubscription', () => {
         })
       })
 
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message: 'Une erreur est survenue, veuillez réessayer',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(mockOpenSnackBar).toHaveBeenCalledWith(
+        'Une erreur est survenue, veuillez réessayer',
+        'error'
+      )
     })
 
     it('should call onSuccess when subscription update succeeds', async () => {

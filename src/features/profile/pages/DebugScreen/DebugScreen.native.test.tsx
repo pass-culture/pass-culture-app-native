@@ -2,7 +2,8 @@ import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/provider'
-import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
+import * as copyToClipboardModule from 'libs/copyToClipboard/copyToClipboard'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { DebugScreen } from './DebugScreen'
 
@@ -33,13 +34,7 @@ jest.mock('libs/environment/env', () => ({
   env: { COMMIT_HASH: 'abcdef', SUPPORT_EMAIL_ADDRESS: 'support@example.com' },
 }))
 
-const mockCopyToClipboard = jest.fn()
-jest.mock('libs/useCopyToClipboard/useCopyToClipboard', () => ({
-  useCopyToClipboard: ({ onCopy }) => {
-    onCopy?.()
-    return mockCopyToClipboard
-  },
-}))
+const mockCopyToClipboard = jest.spyOn(copyToClipboardModule, 'copyToClipboard')
 
 jest.useFakeTimers()
 
@@ -88,7 +83,9 @@ describe('DebugScreen', () => {
     const copyButton = screen.getByLabelText('Copier dans le presse-papier')
     await userEvent.press(copyButton)
 
-    expect(analytics.logClickCopyDebugInfo).toHaveBeenNthCalledWith(1, '1234')
+    await waitFor(() => {
+      expect(analytics.logClickCopyDebugInfo).toHaveBeenNthCalledWith(1, '1234')
+    })
   })
 
   it('should log ClickMailDebugInfo event when press "Envoyer mon bug au support" button', async () => {

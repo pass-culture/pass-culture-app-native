@@ -33,10 +33,10 @@ import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { getSpacing, Typo } from 'ui/theme'
@@ -76,8 +76,6 @@ export const BookingDetailsContent = ({
   const { data: bookings } = useBookingsQuery()
   const { ended_bookings: endedBookings = emptyBookings } = bookings ?? {}
 
-  const { showInfoSnackBar, showErrorSnackBar } = useSnackBarContext()
-
   const { navigate } = useNavigation<UseNavigationType>()
 
   // Allows to display a message in case of refresh specifying the cancellation
@@ -91,13 +89,10 @@ export const BookingDetailsContent = ({
   useEffect(() => {
     if (!nameCanceledBooking) return
 
-    showInfoSnackBar({
-      message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    showSuccessSnackBar(`Ta réservation "${nameCanceledBooking}" a été annulée`)
 
     navigate('Bookings')
-  }, [nameCanceledBooking, navigate, showInfoSnackBar])
+  }, [nameCanceledBooking, navigate])
 
   const logConsultWholeBooking = useFunctionOnce(
     () => offerId && analytics.logBookingDetailsScrolledToBottom(offerId)
@@ -117,10 +112,10 @@ export const BookingDetailsContent = ({
 
   const cancelBooking = () => {
     showCancelModal()
-    analytics.logCancelBooking(offer.id)
+    void analytics.logCancelBooking(offer.id)
   }
   const onEmailPress = () => {
-    analytics.logClickEmailOrganizer()
+    void analytics.logClickEmailOrganizer()
   }
   const onNavigateToOfferPress = () => {
     if (netInfo.isConnected) {
@@ -134,11 +129,9 @@ export const BookingDetailsContent = ({
 
       triggerConsultOfferLog({ offerId: offer.id, from: 'bookings' })
     } else {
-      showErrorSnackBar({
-        message:
-          'Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(
+        'Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.'
+      )
     }
   }
 

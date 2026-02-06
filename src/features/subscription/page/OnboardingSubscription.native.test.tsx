@@ -13,26 +13,16 @@ import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
 const patchProfileSpy = jest.spyOn(API.api, 'patchNativeV1Profile')
-
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: mockGoBack,
   canGoBack: jest.fn(() => true),
 })
-
-const mockShowSuccessSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSuccessSnackBar(props)),
-  }),
-}))
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -145,10 +135,10 @@ describe('OnboardingSubscription', () => {
     await user.press(screen.getByText('Activités créatives'))
     await user.press(screen.getByText('Suivre la sélection'))
 
-    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-      message: 'Thèmes suivis\u00a0! Tu peux gérer tes alertes depuis ton profil.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
+    expect(
+      screen.getByText('Thèmes suivis\u00a0! Tu peux gérer tes alertes depuis ton profil.')
+    ).toBeOnTheScreen()
   })
 
   it('should log analytics on subscription success', async () => {

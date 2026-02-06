@@ -11,7 +11,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { SnackBar } from 'ui/designSystem/Snackbar/SnackBar'
-import { snackBarActions } from 'ui/designSystem/Snackbar/SnackBarStore'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { SnackBarWrapper } from 'ui/designSystem/Snackbar/SnackBarWrapper'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 
@@ -68,7 +68,7 @@ const SnackBarWrapperDemo = () => {
   const [snackbarType, setSnackbarType] = useState<'success' | 'error'>('success')
 
   const handleShowSnackbar = () => {
-    snackBarActions.open(message, snackbarType)
+    snackbarType === 'success' ? showSuccessSnackBar(message) : showErrorSnackBar(message)
   }
 
   return (

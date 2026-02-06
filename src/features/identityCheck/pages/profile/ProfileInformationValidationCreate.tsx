@@ -23,7 +23,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Again } from 'ui/svg/icons/Again'
@@ -35,7 +34,6 @@ export const ProfileInformationValidationCreate = () => {
 
   const { refetchUser, user } = useAuthContext()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
-  const { showErrorSnackBar } = useSnackBarContext()
 
   const { navigate, reset } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'ProfileInformationValidationCreate'>>()
@@ -103,8 +101,6 @@ export const ProfileInformationValidationCreate = () => {
         enableBookingFreeOfferFifteenSixteen,
         storedFreeOfferId,
         reset,
-        showErrorSnackBar,
-        SNACK_BAR_TIME_OUT,
       }),
   })
 

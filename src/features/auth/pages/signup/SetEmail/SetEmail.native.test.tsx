@@ -11,7 +11,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
-import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 
 import { SetEmail } from './SetEmail'
 
@@ -45,13 +44,6 @@ jest.useFakeTimers()
 
 const INCORRECT_EMAIL_MESSAGE =
   'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackBar,
-  }),
-}))
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -299,11 +291,12 @@ describe('<SetEmail />', () => {
 
       await user.press(screen.getByText('S’inscrire avec Google'))
 
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message:
-          'Ton compte Google semble ne pas être valide. Pour pouvoir t’inscrire, confirme d’abord ton adresse e-mail Google.',
-        timeout: SNACK_BAR_TIME_OUT_LONG,
-      })
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(
+        screen.getByText(
+          'Ton compte Google semble ne pas être valide. Pour pouvoir t’inscrire, confirme d’abord ton adresse e-mail Google.'
+        )
+      ).toBeOnTheScreen()
     })
   })
 })

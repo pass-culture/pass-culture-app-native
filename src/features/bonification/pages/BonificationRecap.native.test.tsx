@@ -7,8 +7,6 @@ import { legalRepresentativeActions } from 'features/bonification/store/legalRep
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/jwt/jwt')
@@ -16,14 +14,6 @@ jest.mock('libs/jwt/jwt')
 const mockRefetchUser = jest.fn()
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ refetchUser: mockRefetchUser })),
-}))
-
-const mockShowSuccessSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSuccessSnackBar(props)),
-    showErrorSnackBar: jest.fn(),
-  }),
 }))
 
 const title = 'Monsieur'
@@ -102,10 +92,8 @@ describe('BonificationRecap', () => {
 
       await validateAndSubmitForm()
 
-      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-        message: 'Tes informations ont été envoyées\u00a0!',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
+      expect(screen.getByText('Tes informations ont été envoyées\u00a0!')).toBeOnTheScreen()
     })
 
     it('should refresh the user', async () => {

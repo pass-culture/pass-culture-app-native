@@ -16,9 +16,9 @@ import { CheckboxController } from 'shared/forms/controllers/CheckboxController'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { Form } from 'ui/components/Form'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
-import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -34,8 +34,6 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
   onSSOEmailNotFoundError,
   onDefaultEmailSignup,
 }) => {
-  const { showErrorSnackBar } = useSnackBarContext()
-
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
   const { designSystem } = useTheme()
@@ -70,14 +68,12 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         onSSOEmailNotFoundError()
         goToNextStep({ accountCreationToken: errorResponse.content.accountCreationToken })
       } else {
-        showErrorSnackBar({
-          message:
-            'Ton compte Google semble ne pas être valide. Pour pouvoir t’inscrire, confirme d’abord ton adresse e-mail Google.',
-          timeout: SNACK_BAR_TIME_OUT_LONG,
-        })
+        showErrorSnackBar(
+          'Ton compte Google semble ne pas être valide. Pour pouvoir t’inscrire, confirme d’abord ton adresse e-mail Google.'
+        )
       }
     },
-    [goToNextStep, onSSOEmailNotFoundError, showErrorSnackBar]
+    [goToNextStep, onSSOEmailNotFoundError]
   )
   const disabled = watch('email').trim() === ''
   return (

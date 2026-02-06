@@ -13,7 +13,6 @@ import { CitiesResponse } from 'libs/place/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
@@ -21,14 +20,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const patchProfileSpy = jest.spyOn(API.api, 'patchNativeV1Profile')
 
-const mockShowSuccessSnackBar = jest.fn()
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: mockShowSuccessSnackBar,
-    showErrorSnackBar: mockShowErrorSnackBar,
-  }),
-}))
 jest.mock('libs/firebase/analytics/analytics')
 
 const POSTAL_CODE = '83570'
@@ -98,10 +89,8 @@ describe('ChangeCity', () => {
       await user.press(await screen.findByText(city.nom))
       await user.press(await screen.findByText('Valider ma ville de résidence'))
 
-      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-        message: 'Ta ville de résidence a bien été modifiée\u00a0!',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
+      expect(screen.getByText('Ta ville de résidence a bien été modifiée\u00a0!')).toBeOnTheScreen()
     })
 
     it('should send analytics when success', async () => {
@@ -133,10 +122,8 @@ describe('ChangeCity', () => {
       await user.press(await screen.findByText(city.nom))
       await user.press(await screen.findByText('Valider ma ville de résidence'))
 
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message: 'Une erreur est survenue',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(screen.getByText('Une erreur est survenue')).toBeOnTheScreen()
     })
   })
 
@@ -192,7 +179,7 @@ describe('ChangeCity', () => {
       await user.press(await screen.findByText(city.nom))
       await user.press(await screen.findByText('Continuer'))
 
-      expect(mockShowSuccessSnackBar).not.toHaveBeenCalled()
+      expect(screen.queryByTestId('snackbar-success')).toBeNull()
     })
   })
 
@@ -250,7 +237,7 @@ describe('ChangeCity', () => {
       await user.press(await screen.findByText(city.nom))
       await user.press(await screen.findByText('Continuer'))
 
-      expect(mockShowSuccessSnackBar).not.toHaveBeenCalled()
+      expect(screen.queryByTestId('snackbar-success')).toBeNull()
     })
   })
 })

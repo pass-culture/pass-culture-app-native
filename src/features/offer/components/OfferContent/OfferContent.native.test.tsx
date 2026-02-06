@@ -51,7 +51,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, cleanup, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { OfferContent } from './OfferContent'
 
@@ -61,15 +60,6 @@ jest.mock('libs/jwt/jwt')
 
 const useFavoriteSpy = jest.spyOn(useFavorite, 'useFavorite')
 const spyApiDeleteFavorite = jest.spyOn(api, 'deleteNativeV1MeFavoritesfavoriteId')
-
-const mockShowErrorSnackBar = jest.fn()
-const mockShowInfoSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackBar,
-    showInfoSnackBar: mockShowInfoSnackBar,
-  }),
-}))
 
 const consentState: ConsentStatus = { state: ConsentState.LOADING }
 
@@ -274,9 +264,8 @@ describe('<OfferContent />', () => {
       await user.press(button)
 
       expect(spyApiDeleteFavorite).toHaveBeenCalledWith(favoriteResponseSnap.id)
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith(
-        expect.objectContaining({ message: 'L’offre n’a pas été retirée de tes favoris' })
-      )
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(screen.getByText('L’offre n’a pas été retirée de tes favoris')).toBeOnTheScreen()
     })
   })
 
@@ -830,11 +819,12 @@ describe('<OfferContent />', () => {
 
       await user.press(screen.getByText('Voir la vidéo'))
 
-      expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
-        message:
-          'Pour lire la vidéo, tu dois accepter les cookies vidéo depuis ton profil dans la partie “Confidentialité"',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(
+        screen.getByText(
+          'Pour lire la vidéo, tu dois accepter les cookies vidéo depuis ton profil dans la partie “Confidentialité"'
+        )
+      ).toBeOnTheScreen()
     })
   })
 

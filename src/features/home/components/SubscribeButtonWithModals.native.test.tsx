@@ -9,19 +9,11 @@ import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthC
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { SubscribeButtonWithModals } from './SubscribeButtonWithModals'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
-
-const mockShowSuccessSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: mockShowSuccessSnackBar,
-  }),
-}))
 
 jest
   .spyOn(useMapSubscriptionHomeIdsToThematic, 'useMapSubscriptionHomeIdsToThematic')
@@ -135,10 +127,12 @@ describe('SubscribeButtonWithModals', () => {
     // eslint-disable-next-line local-rules/no-fireEvent
     await act(async () => fireEvent.press(screen.getByText('Suivre')))
 
-    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-      message: 'Tu suis le thème “Cinéma”\u00a0! Tu peux gérer tes alertes depuis ton profil.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
+    expect(
+      screen.getByText(
+        'Tu suis le thème “Cinéma”\u00a0! Tu peux gérer tes alertes depuis ton profil.'
+      )
+    ).toBeOnTheScreen()
   })
 
   it.skip('should not show anything when user is not eligible', async () => {

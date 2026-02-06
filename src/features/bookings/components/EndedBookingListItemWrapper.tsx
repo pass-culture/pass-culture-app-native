@@ -11,7 +11,6 @@ import { getEndedBookingItemProperties } from 'features/bookings/helpers/v2/getE
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useSubcategory } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 
 type EndedBookingProps = {
@@ -30,7 +29,6 @@ export const EndedBookingListItemWrapper: FunctionComponent<EndedBookingProps> =
 
   const prePopulateOffer = usePrePopulateOffer()
   const netInfo = useNetInfoContext()
-  const { showErrorSnackBar } = useSnackBarContext()
   const { isEvent, categoryId } = useSubcategory(subcategoryId)
 
   const { accessibilityLabel, isBookingEligibleForArchive, handlePressOffer, navigateTo } =
@@ -39,7 +37,6 @@ export const EndedBookingListItemWrapper: FunctionComponent<EndedBookingProps> =
       categoryId,
       netInfo,
       prePopulateOffer,
-      showErrorSnackBar,
     })
 
   const { title } =
