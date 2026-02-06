@@ -94,6 +94,7 @@ const buttonContainerStyles = ({
   paddingLeft: paddingHorizontal,
   paddingRight: paddingHorizontal,
   width: fullWidth ? '100%' : 'auto',
+  maxWidth: theme.contentPage.maxWidth,
   alignSelf: fullWidth ? 'center' : undefined,
   borderStyle: borderColor ? 'solid' : undefined,
   borderColor: borderColor,

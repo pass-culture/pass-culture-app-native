@@ -132,6 +132,7 @@ exports[`<Favorites/> should render correctly 1`] = `
     >
       <View
         gap={8}
+        hasIcon={true}
         isMultiline={false}
         style={
           {
@@ -142,13 +143,21 @@ exports[`<Favorites/> should render correctly 1`] = `
         }
       >
         <View
-          fill="#6123df"
-          height={22}
-          width={22}
+          style={
+            {
+              "flexShrink": 0,
+            }
+          }
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            fill="#6123df"
+            height={22}
+            width={22}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
         </View>
         <Text
           style={
