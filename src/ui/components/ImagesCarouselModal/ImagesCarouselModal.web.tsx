@@ -50,7 +50,7 @@ export const ImagesCarouselModal = ({
 
   const [title, setTitle] = useState(getTitleLabel(progressValue.value))
 
-  const CAROUSEL_ITEM_PADDING = isDesktopViewport ? getSpacing(20) : getSpacing(12)
+  const CAROUSEL_ITEM_PADDING = isDesktopViewport ? getSpacing(20) : designSystem.size.spacing.xxxxl
 
   const handleCloseModal = () => {
     hideModal()

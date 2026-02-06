@@ -39,6 +39,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",

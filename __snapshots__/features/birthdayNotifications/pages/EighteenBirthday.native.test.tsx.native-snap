@@ -44,6 +44,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",

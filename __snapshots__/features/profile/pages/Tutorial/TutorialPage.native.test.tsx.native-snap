@@ -15,6 +15,7 @@ exports[`TutorialPage should render correctly 1`] = `
   }
 >
   <View
+    headerHeight={48}
     style={
       {
         "height": 64,
@@ -42,6 +43,7 @@ exports[`TutorialPage should render correctly 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "height": 48,

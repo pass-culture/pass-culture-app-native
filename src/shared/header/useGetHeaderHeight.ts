@@ -1,9 +1,14 @@
-import { getSpacing } from 'ui/theme'
+import { useTheme } from 'styled-components/native'
+
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-export const HEADER_HEIGHT = getSpacing(12)
+export const useGetHeaderHeightDS = () => {
+  const { designSystem } = useTheme()
+  return designSystem.size.spacing.xxxxl
+}
 
 export const useGetHeaderHeight = () => {
   const { top } = useCustomSafeInsets()
+  const HEADER_HEIGHT = useGetHeaderHeightDS()
   return HEADER_HEIGHT + top + 1
 }

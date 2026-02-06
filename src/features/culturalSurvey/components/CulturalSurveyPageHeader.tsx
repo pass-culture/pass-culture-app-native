@@ -6,7 +6,7 @@ import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -34,12 +34,12 @@ const HeaderContainer = styled.View(({ theme }) => ({
   height: theme.appBarHeight,
 }))
 
-const BarAndTitle = styled.View({
+const BarAndTitle = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  marginLeft: getSpacing(11),
+  marginLeft: theme.designSystem.size.spacing.xxxxl,
   justifyContent: 'space-between',
   flex: 1,
-})
+}))
 
 const Title = styled(Typo.Title4).attrs(() => ({ ...getHeadingAttrs(1), numberOfLines: 1 }))(
   ({ theme }) => ({

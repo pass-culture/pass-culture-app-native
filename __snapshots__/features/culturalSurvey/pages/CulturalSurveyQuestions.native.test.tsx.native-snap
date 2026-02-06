@@ -97,7 +97,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           "flexGrow": 1,
           "flexShrink": 1,
           "justifyContent": "space-between",
-          "marginLeft": 44,
+          "marginLeft": 48,
         }
       }
     >

@@ -44,6 +44,7 @@ exports[`<DisableActivation/> should render correctly 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -421,6 +422,7 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",

@@ -107,7 +107,7 @@ const StyledWrapper = styled.View<{ headerHeight: number }>(
       return {
         flexDirection: 'row',
         paddingHorizontal: getSpacing(16),
-        paddingTop: getSpacing(12) + headerHeight,
+        paddingTop: designSystem.size.spacing.xxxxl + headerHeight,
         paddingBottom: designSystem.size.spacing.xxxxl,
         gap: getSpacing(16),
       }

@@ -27,6 +27,7 @@ exports[`ChatbotContainer should render webview correctly 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",

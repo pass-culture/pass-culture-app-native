@@ -39,6 +39,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -2109,6 +2110,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",

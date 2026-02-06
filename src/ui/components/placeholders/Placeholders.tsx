@@ -136,7 +136,7 @@ export const FavoriteHitPlaceholder = () => {
         <FirstButtonContainer>
           <BasePlaceholder
             radius={designSystem.size.borderRadius.xl}
-            height={getSpacing(12)}
+            height={designSystem.size.spacing.xxxxl}
             width={getSpacing(40)}
             fullWidth
           />
@@ -144,7 +144,7 @@ export const FavoriteHitPlaceholder = () => {
         <ButtonContainer>
           <BasePlaceholder
             radius={designSystem.size.borderRadius.xl}
-            height={getSpacing(12)}
+            height={designSystem.size.spacing.xxxxl}
             width={getSpacing(40)}
             fullWidth
           />
