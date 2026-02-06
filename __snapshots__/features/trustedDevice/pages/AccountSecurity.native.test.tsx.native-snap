@@ -44,6 +44,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -679,6 +680,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -1224,6 +1226,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",

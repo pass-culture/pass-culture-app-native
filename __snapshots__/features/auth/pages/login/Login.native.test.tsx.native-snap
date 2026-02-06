@@ -39,6 +39,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",

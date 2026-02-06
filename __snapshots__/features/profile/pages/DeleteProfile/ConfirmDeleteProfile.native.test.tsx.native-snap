@@ -44,6 +44,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",

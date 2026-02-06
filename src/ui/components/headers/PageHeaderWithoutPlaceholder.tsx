@@ -4,6 +4,7 @@ import { Platform, StyleProp, View, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useGetHeaderHeightDS } from 'shared/header/useGetHeaderHeight'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -33,10 +34,11 @@ export const PageHeaderWithoutPlaceholder: FunctionComponent<Props> = ({
   style,
 }) => {
   const { designSystem } = useTheme()
+  const headerHeight = useGetHeaderHeightDS()
   return (
     <Header testID={testID} accessibilityRole={AccessibilityRole.HEADER} style={style}>
       <Spacer.TopScreen />
-      <Container>
+      <Container headerHeight={headerHeight}>
         <ButtonContainer positionInHeader="left" testID="back-button-container">
           {shouldDisplayBackButton ? (
             <BackButton onGoBack={onGoBack} color={designSystem.color.icon.default} />
@@ -82,13 +84,12 @@ const Title = styled(Typo.Title4).attrs(() => ({
   textAlign: 'center',
 })
 
-const Container = styled.View(({ theme }) => {
-  const HEADER_HEIGHT = theme.designSystem.size.spacing.xxxxl
+const Container = styled.View<{ headerHeight: number }>(({ theme, headerHeight }) => {
   return {
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    minHeight: HEADER_HEIGHT,
+    minHeight: headerHeight,
     width: '100%',
     paddingHorizontal: theme.contentPage.marginHorizontal,
   }

@@ -39,6 +39,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
