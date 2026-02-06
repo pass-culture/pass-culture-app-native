@@ -53,6 +53,7 @@ export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element | 
     <InternalTouchableLink
       as={Button}
       key={2}
+      fullWidth
       variant="tertiary"
       color="neutral"
       wording="Plus tard"
