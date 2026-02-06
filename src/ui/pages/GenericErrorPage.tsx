@@ -101,7 +101,6 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
                   isLoading={buttonPrimary.isLoading}
                   disabled={buttonPrimary.disabled}
                   icon={buttonPrimary.icon}
-                  variant="primary"
                   color="brand"
                   fullWidth
                 />

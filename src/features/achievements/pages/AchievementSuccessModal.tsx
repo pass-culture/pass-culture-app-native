@@ -73,7 +73,6 @@ export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow
         </StyledTitle>
         <InternalTouchableLink
           as={Button}
-          variant="primary"
           wording="Accéder à mes succès"
           navigateTo={getProfilePropConfig('Achievements', { from: 'success' })}
           onBeforeNavigate={hideModalAndMarkAsSeen}

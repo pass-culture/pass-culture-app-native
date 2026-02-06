@@ -246,7 +246,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
             />
           </ButtonContainer>
           <Button
-            variant="primary"
             fullWidth
             wording="Se connecter"
             onPress={handleSubmit(onSubmit)}

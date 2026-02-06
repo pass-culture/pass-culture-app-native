@@ -156,7 +156,6 @@ export function ChangePassword() {
             />
           </RepeatPasswordContainer>
           <Button
-            variant="primary"
             wording="Enregistrer"
             accessibilityLabel="Enregistrer les modifications"
             onPress={onSubmit}

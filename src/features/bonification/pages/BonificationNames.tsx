@@ -138,7 +138,6 @@ export const BonificationNames = () => {
       }
       fixedBottomChildren={
         <Button
-          variant="primary"
           type="submit"
           wording="Continuer"
           accessibilityLabel="Continuer vers la civilité"

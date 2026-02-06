@@ -10,13 +10,5 @@ export const OpenInboxButton = ({ onAdditionalPress }: { onAdditionalPress?: () 
     onAdditionalPress?.()
   }
 
-  return (
-    <Button
-      variant="primary"
-      fullWidth
-      wording="Consulter mes e-mails"
-      onPress={onPress}
-      icon={EmailFilled}
-    />
-  )
+  return <Button fullWidth wording="Consulter mes e-mails" onPress={onPress} icon={EmailFilled} />
 }

@@ -51,7 +51,6 @@ export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> 
       </PasswordInputContainer>
       <ButtonPrimaryContainer>
         <Button
-          variant="primary"
           wording="Continuer"
           accessibilityLabel={accessibilityLabelForNextStep}
           onPress={handleSubmit(onGoToNextStep)}

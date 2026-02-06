@@ -60,7 +60,6 @@ export const BonificationRequiredInformation = () => {
       fixedBottomChildren={
         <ViewGap gap={3}>
           <Button
-            variant="primary"
             fullWidth
             type="submit"
             wording="Commencer"

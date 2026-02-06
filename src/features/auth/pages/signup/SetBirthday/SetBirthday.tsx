@@ -126,7 +126,6 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
             disabled={!isValid}
             onPress={handleSubmit(onGoToNextStep)}
             fullWidth
-            variant="primary"
           />
         </ButtonContainer>
       </InnerContainer>

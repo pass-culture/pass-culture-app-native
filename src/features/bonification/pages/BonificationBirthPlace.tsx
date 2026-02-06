@@ -131,7 +131,6 @@ export const BonificationBirthPlace = () => {
       }
       fixedBottomChildren={
         <Button
-          variant="primary"
           wording="Continuer"
           type="submit"
           accessibilityLabel="Continuer vers le résumé"

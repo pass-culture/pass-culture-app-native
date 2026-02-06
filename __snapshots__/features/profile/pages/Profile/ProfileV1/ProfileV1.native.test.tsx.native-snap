@@ -125,8 +125,8 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                       {
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 22,
+                        "fontSize": 14,
+                        "lineHeight": 14,
                       },
                       {
                         "color": "#6123df",

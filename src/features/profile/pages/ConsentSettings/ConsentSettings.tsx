@@ -211,7 +211,6 @@ export const ConsentSettings = () => {
             wording="Enregistrer mes choix"
             accessibilityRole={AccessibilityRole.BUTTON}
             onPress={handleSaveChoices}
-            variant="primary"
           />
         </SecondaryPageWithBlurHeader>
       </AnchorProvider>

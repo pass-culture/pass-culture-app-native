@@ -74,7 +74,6 @@ export const SetCity = () => {
       }
       fixedBottomChildren={
         <Button
-          variant="primary"
           type="submit"
           onPress={handleSubmit(onSubmit)}
           wording="Continuer"

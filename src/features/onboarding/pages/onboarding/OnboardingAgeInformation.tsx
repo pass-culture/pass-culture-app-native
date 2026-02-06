@@ -42,7 +42,6 @@ export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element | 
       as={Button}
       key={1}
       fullWidth
-      variant="primary"
       wording="Créer un compte"
       onBeforeNavigate={onSignupPress}
       navigateTo={{

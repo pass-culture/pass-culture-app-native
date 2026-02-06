@@ -99,7 +99,6 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         />
       </ControllersContainer>
       <Button
-        variant="primary"
         fullWidth
         wording="Continuer"
         accessibilityLabel={accessibilityLabelForNextStep}

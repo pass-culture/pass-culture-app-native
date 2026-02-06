@@ -46,7 +46,6 @@ export const OnboardingWelcome: FunctionComponent = () => {
           <InternalTouchableLink
             as={Button}
             fullWidth
-            variant="primary"
             wording="C’est parti&nbsp;!"
             icon={PlainArrowNext}
             iconAfterWording

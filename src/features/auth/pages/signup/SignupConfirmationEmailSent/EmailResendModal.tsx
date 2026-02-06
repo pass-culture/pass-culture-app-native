@@ -115,7 +115,6 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
         )}
         <Button
           fullWidth
-          variant="primary"
           accessibilityRole={AccessibilityRole.BUTTON}
           wording="Demander un nouveau lien"
           onPress={onResendPress}

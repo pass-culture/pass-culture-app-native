@@ -116,7 +116,6 @@ export function StatusFlatList({
       <BottomView onLayout={onBottomViewLayout}>
         <Button
           type="submit"
-          variant="primary"
           fullWidth
           onPress={handleSubmit(submitStatus)}
           wording={isChangeStatus ? 'Valider mes informations' : 'Continuer'}

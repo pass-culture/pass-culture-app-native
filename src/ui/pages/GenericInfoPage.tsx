@@ -156,7 +156,6 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
           {buttonPrimary.onPress ? (
             <Button
               fullWidth
-              variant="primary"
               color="brand"
               key={1}
               wording={buttonPrimary.wording}
@@ -173,7 +172,6 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
             <InternalTouchableLink
               key={1}
               as={Button}
-              variant="primary"
               color="brand"
               fullWidth
               wording={buttonPrimary.wording}
@@ -191,7 +189,6 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
             <ExternalTouchableLink
               key={1}
               as={Button}
-              variant="primary"
               color="brand"
               fullWidth
               wording={buttonPrimary.wording}

@@ -32,13 +32,7 @@ export const ShareAppModal: FunctionComponent<Props> = ({ visible, close, share 
           Fais découvrir le pass à tes amis&nbsp;!
         </StyledBody>
         <ViewGap gap={4}>
-          <Button
-            variant="primary"
-            fullWidth
-            wording="Partager l’appli"
-            icon={Share}
-            onPress={share}
-          />
+          <Button fullWidth wording="Partager l’appli" icon={Share} onPress={share} />
           <Button
             fullWidth
             variant="tertiary"

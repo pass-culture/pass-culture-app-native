@@ -15,11 +15,11 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { env } from 'libs/environment/env'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
-import { ButtonContainerFlexStart } from 'ui/components/buttons/ButtonContainerFlexStart'
 import { Form } from 'ui/components/Form'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo } from 'ui/theme'
@@ -105,7 +105,6 @@ export const BonificationBirthDate = () => {
       }
       fixedBottomChildren={
         <Button
-          variant="primary"
           fullWidth
           type="submit"
           wording="Continuer"

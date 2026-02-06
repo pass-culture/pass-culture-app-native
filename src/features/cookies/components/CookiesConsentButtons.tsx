@@ -18,11 +18,11 @@ export const CookiesConsentButtons = ({
   <React.Fragment>
     <Container>
       <Row>
-        <Button variant="primary" wording="Tout refuser" onPress={onPressDeclineAll} fullWidth />
+        <Button wording="Tout refuser" onPress={onPressDeclineAll} fullWidth />
       </Row>
       <ButtonSpacer />
       <Row>
-        <Button variant="primary" wording="Tout accepter" onPress={onPressAcceptAll} fullWidth />
+        <Button wording="Tout accepter" onPress={onPressAcceptAll} fullWidth />
       </Row>
     </Container>
     <Spacer.Column numberOfSpaces={4} />

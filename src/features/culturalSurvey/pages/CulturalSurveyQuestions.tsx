@@ -240,7 +240,6 @@ export function CulturalSurveyQuestions() {
 
       <FixedBottomChildrenView onLayout={onFixedBottomChildrenViewLayout}>
         <Button
-          variant="primary"
           fullWidth
           onPress={navigateToNextQuestion}
           disabled={!currentAnswers.length}

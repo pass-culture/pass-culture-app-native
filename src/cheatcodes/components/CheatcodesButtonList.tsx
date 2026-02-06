@@ -16,13 +16,12 @@ export const CheatcodesButtonList: React.FC<Props> = ({ buttons }) => (
   <React.Fragment>
     {buttons.map((category) => (
       <React.Fragment key={category.id}>
-        <LinkToCheatcodesScreen button={category} variant="primary" />
+        <LinkToCheatcodesScreen button={category} />
 
         {category.subscreens.map((subscreen) => (
           <LinkToCheatcodesScreen
             key={subscreen.id}
             button={{ ...subscreen, title: `↳ ${subscreen.title}` }}
-            variant="primary"
           />
         ))}
       </React.Fragment>

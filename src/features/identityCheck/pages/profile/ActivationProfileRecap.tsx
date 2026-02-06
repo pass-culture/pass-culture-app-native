@@ -136,15 +136,10 @@ export const ActivationProfileRecap = () => {
       }
       fixedBottomChildren={
         hasMissingData ? (
-          <Button
-            variant="primary"
-            wording="Compléter les informations"
-            onPress={updateInformation}
-          />
+          <Button wording="Compléter les informations" onPress={updateInformation} />
         ) : (
           <ViewGap gap={4}>
             <Button
-              variant="primary"
               isLoading={isPending}
               wording="Confirmer"
               accessibilityLabel="Confirmer et envoyer les informations"

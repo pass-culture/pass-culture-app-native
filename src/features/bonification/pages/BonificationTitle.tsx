@@ -71,7 +71,6 @@ export const BonificationTitle = () => {
       fixedBottomChildren={
         <Button
           type="submit"
-          variant="primary"
           wording="Continuer"
           accessibilityLabel="Continuer vers la date de naissance"
           onPress={saveTitleAndNavigate}

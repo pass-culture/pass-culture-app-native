@@ -34,7 +34,6 @@ export const ChroniclesWritersModal: FunctionComponent<Props> = ({
         <Button
           wording={variantInfo.modalButtonLabel}
           onPress={onShowRecoButtonPress}
-          variant="primary"
           color="brand"
         />
       </ViewGap>

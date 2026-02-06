@@ -120,7 +120,6 @@ export const SetName = () => {
       }
       fixedBottomChildren={
         <Button
-          variant="primary"
           type="submit"
           wording="Continuer"
           accessibilityLabel="Continuer vers la ville de résidence"

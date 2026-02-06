@@ -31,7 +31,6 @@ export const LoggedOutHeader = ({ featureFlags }: ProfileFeatureFlagsProps) => {
       <Container>
         <InternalTouchableLink
           as={Button}
-          variant="primary"
           fullWidth
           wording="Créer un compte"
           navigateTo={{

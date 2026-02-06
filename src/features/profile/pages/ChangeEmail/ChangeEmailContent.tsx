@@ -51,7 +51,6 @@ export function ChangeEmailContent({
           </InfoBannerContainer>
           <ButtonContainer paddingBottom={bottom}>
             <Button
-              variant="primary"
               fullWidth
               wording="Envoyer la demande"
               accessibilityLabel="Valider la demande de modification de mon e-mail"

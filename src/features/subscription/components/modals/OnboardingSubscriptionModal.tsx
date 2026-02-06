@@ -26,7 +26,6 @@ export const OnboardingSubscriptionModal = ({ visible, dismissModal }: Props) =>
       </StyledBody>
       <InternalTouchableLink
         as={Button}
-        variant="primary"
         wording="Choisir des thèmes à suivre"
         navigateTo={{ screen: 'OnboardingSubscription' }}
         onBeforeNavigate={dismissModal}

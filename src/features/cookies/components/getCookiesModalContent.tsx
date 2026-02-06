@@ -47,12 +47,7 @@ export const getCookiesModalContent = ({
         leftIcon: ArrowPrevious,
         onLeftIconPress: () => setCookiesStep(CookiesSteps.COOKIES_CONSENT),
         fixedModalBottom: (
-          <Button
-            variant="primary"
-            fullWidth
-            wording="Enregistrer mes choix"
-            onPress={customChoice}
-          />
+          <Button fullWidth wording="Enregistrer mes choix" onPress={customChoice} />
         ),
         title: 'Réglages des cookies',
       }

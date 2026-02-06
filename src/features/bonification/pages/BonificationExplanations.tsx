@@ -83,7 +83,6 @@ export const BonificationExplanations = () => {
       fixedBottomChildren={
         <ViewGap gap={4}>
           <Button
-            variant="primary"
             fullWidth
             type="submit"
             wording="Continuer"

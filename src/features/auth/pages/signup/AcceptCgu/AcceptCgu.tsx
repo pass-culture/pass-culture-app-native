@@ -160,7 +160,6 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       </LinksContainer>
       <ButtonContainer>
         <Button
-          variant="primary"
           fullWidth
           wording="S’inscrire"
           accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"

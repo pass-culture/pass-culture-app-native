@@ -89,7 +89,6 @@ export const IdentityCheckHonor = () => {
         </StyledBody>
         <Spacer.Column numberOfSpaces={15} />
         <Button
-          variant="primary"
           fullWidth
           type="submit"
           onPress={postHonorStatement}

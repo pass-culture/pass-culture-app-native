@@ -127,7 +127,6 @@ export const SetPhoneNumberWithoutValidation = () => {
       }
       fixedBottomChildren={
         <Button
-          variant="primary"
           type="submit"
           disabled={!formState.isValid}
           wording="Continuer"

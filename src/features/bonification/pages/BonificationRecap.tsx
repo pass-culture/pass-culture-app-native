@@ -141,7 +141,6 @@ export const BonificationRecap = () => {
       fixedBottomChildren={
         <ViewGap gap={4}>
           <Button
-            variant="primary"
             isLoading={isPending}
             type="submit"
             fullWidth

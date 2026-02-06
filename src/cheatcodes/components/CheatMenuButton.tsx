@@ -14,7 +14,7 @@ export const CheatMenuButton: React.FC = () => {
       <InternalTouchableLink
         as={Button}
         variant="secondary"
-        buttonHeight="extraSmall"
+        size="small"
         wording="Cheatcodes"
         navigateTo={{ screen: 'CheatcodesStackNavigator' }}
       />
