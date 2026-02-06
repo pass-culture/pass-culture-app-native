@@ -175,6 +175,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
           <View
             fullWidth={true}
             gap={8}
+            hasIcon={false}
             isMultiline={false}
             style={
               {

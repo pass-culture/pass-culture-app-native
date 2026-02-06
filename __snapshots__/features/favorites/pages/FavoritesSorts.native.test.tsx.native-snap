@@ -686,6 +686,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
         >
           <View
             gap={8}
+            hasIcon={false}
             isMultiline={false}
             style={
               {
