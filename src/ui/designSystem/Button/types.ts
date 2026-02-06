@@ -35,6 +35,7 @@ type ButtonBaseProps = {
   accessibilityRole?: AccessibilityRole
   testID?: string
   fullWidth?: boolean
+  type?: 'button' | 'submit' | 'reset'
   numberOfLines?: TextProps['numberOfLines']
   ellipsizeMode?: TextProps['ellipsizeMode']
 }
@@ -73,7 +74,6 @@ type ButtonWebEvents = {
   onLongPress?: AppButtonEventWeb
   href?: string
   target?: string
-  type?: 'button' | 'submit' | 'reset'
 }
 
 export type ButtonNativeProps = (IconButtonProps | TextButtonProps) & ButtonNativeEvents
