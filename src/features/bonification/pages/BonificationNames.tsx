@@ -124,17 +124,15 @@ export const BonificationNames = () => {
                 />
               )}
             />
-            <Container>
-              <Button
-                variant="tertiary"
-                numberOfLines={2}
-                icon={InfoPlain}
-                wording="Je ne connais pas son nom de naissance"
-                onPress={async () => {
-                  await openUrl(env.FAQ_BONIFICATION)
-                }}
-              />
-            </Container>
+            <Button
+              variant="tertiary"
+              numberOfLines={2}
+              icon={InfoPlain}
+              wording="Je ne connais pas son nom de naissance"
+              onPress={async () => {
+                await openUrl(env.FAQ_BONIFICATION)
+              }}
+            />
           </ViewGap>
         </Form.MaxWidth>
       }
@@ -151,9 +149,6 @@ export const BonificationNames = () => {
     />
   )
 }
-const Container = styled.View({
-  alignSelf: 'flex-start',
-})
 
 export const StyledBodyXsSteps = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.disabled,

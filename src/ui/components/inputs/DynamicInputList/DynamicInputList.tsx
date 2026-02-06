@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { ButtonContainerFlexStart } from 'ui/components/buttons/ButtonContainerFlexStart'
 import { TextInputProps, RequiredIndicator } from 'ui/components/inputs/types'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -139,7 +140,7 @@ export const DynamicInputList = ({
         </InputWrapper>
       ))}
       {displayCanAddMoreButton ? (
-        <ButtonContainer>
+        <ButtonContainerFlexStart>
           <Button
             variant="secondary"
             size="small"
@@ -147,14 +148,12 @@ export const DynamicInputList = ({
             wording={addMoreInputWording}
             onPress={handleAddInput}
           />
-        </ButtonContainer>
+        </ButtonContainerFlexStart>
       ) : null}
     </Container>
   )
 }
-const ButtonContainer = styled.View({
-  alignSelf: 'flex-start',
-})
+
 const Container = styled(ViewGap)({
   width: '100%',
 })

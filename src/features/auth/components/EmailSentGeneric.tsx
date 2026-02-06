@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { OpenInboxButton } from 'features/auth/components/OpenInboxButton'
 import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailable'
+import { ButtonContainerFlexStart } from 'ui/components/buttons/ButtonContainerFlexStart'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalTouchableLinkProps } from 'ui/components/touchableLink/types'
@@ -44,7 +45,7 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
       <Typo.Body>L’e-mail peut prendre quelques minutes pour arriver.</Typo.Body>
       <Separator.Horizontal />
       <Typo.Body>Tu n‘as pas reçu de lien&nbsp;? Tu peux&nbsp;:</Typo.Body>
-      <ButtonWrapper>
+      <ButtonContainerFlexStart>
         <ExternalTouchableLink
           as={Button}
           variant="tertiary"
@@ -54,8 +55,7 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
           onBeforeNavigate={consultFaqAnalytics}
           icon={ExternalSiteFilled}
         />
-      </ButtonWrapper>
-
+      </ButtonContainerFlexStart>
       <StyledView
         marginBottom={additionalCTA ? designSystem.size.spacing.s : designSystem.size.spacing.xl}>
         {additionalCTA}
@@ -64,9 +64,6 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
     </ViewGap>
   )
 }
-const ButtonWrapper = styled.View({
-  alignSelf: 'flex-start',
-})
 
 const IllustrationContainer = styled.View(() => ({
   alignItems: 'center',

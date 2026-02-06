@@ -2,7 +2,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import styled from 'styled-components/native'
 
 import { MINIMUM_DATE } from 'features/auth/constants'
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
@@ -16,6 +15,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { env } from 'libs/environment/env'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
+import { ButtonContainerFlexStart } from 'ui/components/buttons/ButtonContainerFlexStart'
 import { Form } from 'ui/components/Form'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -90,7 +90,7 @@ export const BonificationBirthDate = () => {
                 />
               )}
             />
-            <ButtonContainer>
+            <ButtonContainerFlexStart>
               <Button
                 variant="tertiary"
                 icon={InfoPlain}
@@ -99,7 +99,7 @@ export const BonificationBirthDate = () => {
                   await openUrl(env.FAQ_BONIFICATION)
                 }}
               />
-            </ButtonContainer>
+            </ButtonContainerFlexStart>
           </ViewGap>
         </Form.MaxWidth>
       }
@@ -117,7 +117,3 @@ export const BonificationBirthDate = () => {
     />
   )
 }
-
-const ButtonContainer = styled.View({
-  alignSelf: 'flex-start',
-})
