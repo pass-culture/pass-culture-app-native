@@ -77,7 +77,6 @@ Pathname not found for getNativeV1AccountSuspensionDate
 - /native/v1/profile/email_update/validate
 ## Unused routes:
 - /native/v1/categories
-- /native/v1/offer/report/reasons
 - /native/v1/offerer/{offerer_id}/headline-offer
 - /native/v1/offer/{offer_id}
 - /native/v1/venue/{venue_id}
