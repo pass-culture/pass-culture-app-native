@@ -24,8 +24,6 @@ import { Offer } from 'shared/offer/types'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing } from 'ui/theme'
 
-const VENUE_THUMBNAIL_SIZE = getSpacing(12)
-
 const FLING_GESTURE = Gesture.Fling()
   .withTestId('flingGesture')
   .runOnJS(true)
@@ -60,6 +58,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
   ) {
     const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
     const { designSystem } = useTheme()
+    const VENUE_THUMBNAIL_SIZE = designSystem.size.spacing.xxxxl
 
     const distanceToVenue = getDistance(
       {
@@ -125,7 +124,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
         )
       }
       return null
-    }, [venue, onClose, venueTags, designSystem.size.spacing.l])
+    }, [venue, onClose, VENUE_THUMBNAIL_SIZE, venueTags, designSystem.size.spacing.l])
 
     const flingRef = useRef<FlingGesture | undefined>(undefined)
 

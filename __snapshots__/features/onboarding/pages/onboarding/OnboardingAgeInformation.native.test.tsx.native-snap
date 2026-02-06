@@ -15,6 +15,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
   }
 >
   <View
+    headerHeight={48}
     style={
       {
         "height": 64,
@@ -42,6 +43,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "height": 48,
@@ -921,6 +923,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
   }
 >
   <View
+    headerHeight={48}
     style={
       {
         "height": 64,
@@ -948,6 +951,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "height": 48,

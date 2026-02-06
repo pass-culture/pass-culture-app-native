@@ -27,6 +27,7 @@ exports[`FAQVebview page should render the page with correct layout 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",

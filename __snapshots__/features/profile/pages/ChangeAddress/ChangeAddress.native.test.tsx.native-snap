@@ -39,6 +39,7 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -651,6 +652,7 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",

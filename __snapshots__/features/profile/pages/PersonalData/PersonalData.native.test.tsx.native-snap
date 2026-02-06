@@ -39,6 +39,7 @@ exports[`PersonalData should render personal data success 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",

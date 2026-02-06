@@ -44,6 +44,7 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -471,6 +472,7 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",

@@ -6,9 +6,8 @@ import { theme } from 'theme'
 import { Show } from 'ui/svg/icons/Show'
 import { Sort } from 'ui/svg/icons/Sort'
 import { Store } from 'ui/svg/icons/venueAndCategories/Store'
-import { getSpacing } from 'ui/theme'
 
-export const FILTER_BANNER_HEIGHT = getSpacing(12)
+export const FILTER_BANNER_HEIGHT = theme.designSystem.size.spacing.xxxxl
 export const MARKER_LABEL_MARGIN_TOP = theme.designSystem.size.spacing.xs
 export const MARKER_SIZE = { width: 44, height: 50 }
 export const MARKER_LABEL_VISIBILITY_LIMIT = {

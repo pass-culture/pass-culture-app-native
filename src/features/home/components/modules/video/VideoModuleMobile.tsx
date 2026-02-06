@@ -17,7 +17,6 @@ import { videoModuleColorsMapping } from 'ui/theme/videoModuleColorsMapping'
 const THUMBNAIL_HEIGHT = getSpacing(52.5)
 // We do not center the player icon, because when the title is 2-line long,
 // the title is to close to the player. So the player is closer to the top.
-const PLAYER_TOP_MARGIN = getSpacing(12.5)
 const PLAYER_SIZE = getSpacing(24)
 const COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER = getSpacing(38.5)
 
@@ -146,13 +145,13 @@ const VideoTitle = styled(Typo.Title4)(({ theme }) => ({
   padding: theme.designSystem.size.spacing.l,
 }))
 
-const PlayerContainer = styled.View({
+const PlayerContainer = styled.View(({ theme }) => ({
   position: 'absolute',
-  top: PLAYER_TOP_MARGIN,
+  top: theme.designSystem.size.spacing.xxxxl,
   left: 0,
   right: 0,
   alignItems: 'center',
-})
+}))
 
 const Player = styled(Play).attrs({
   size: PLAYER_SIZE,

@@ -44,6 +44,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",

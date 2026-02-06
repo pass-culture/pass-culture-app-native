@@ -44,6 +44,7 @@ exports[`DeactivateProfileSuccess component should render delete profile success
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",

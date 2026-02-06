@@ -1,12 +1,12 @@
 import React, { ComponentProps, FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { CloseButton } from 'ui/components/headers/CloseButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VenueInfoHeader } from 'ui/components/VenueInfoHeader/VenueInfoHeader'
 import { GroupTags } from 'ui/GroupTags/GroupTags'
-import { getShadow, getSpacing } from 'ui/theme'
+import { getShadow } from 'ui/theme'
 
 type Props = {
   venueName: string
@@ -19,8 +19,6 @@ type Props = {
   withRightArrow?: boolean
 } & ComponentProps<typeof InternalTouchableLink>
 
-const VENUE_THUMBNAIL_SIZE = getSpacing(12)
-
 export const VenueMapPreview: FunctionComponent<Props> = ({
   venueName,
   address,
@@ -32,7 +30,10 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
   withRightArrow,
   ...touchableProps
 }) => {
+  const { designSystem } = useTheme()
   const Wrapper = noBorder ? InternalTouchableLink : Container
+  const VENUE_THUMBNAIL_SIZE = designSystem.size.spacing.xxxxl
+
   return (
     <Wrapper {...touchableProps}>
       <Row>

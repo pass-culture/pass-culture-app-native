@@ -29,7 +29,7 @@ import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 LocaleConfig.locales['fr'] = {
   monthNames: [...CAPITALIZED_MONTHS],
@@ -268,7 +268,7 @@ const Container = styled(TouchableOpacity).attrs({ hitSlop })(({ theme }) => ({
   width:
     theme.appContentWidth < theme.breakpoints.xs
       ? theme.designSystem.size.spacing.xxxl
-      : getSpacing(11),
+      : theme.designSystem.size.spacing.xxxxl,
 }))
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({

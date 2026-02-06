@@ -44,6 +44,7 @@ exports[`<SuspiciousLoginSuspendedAccount/> should match snapshot 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",

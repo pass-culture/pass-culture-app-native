@@ -11,7 +11,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const DARK_MODE_BADGE_STORAGE_KEY = 'darkModeGtmProfileBadgeSeen'
 
@@ -112,7 +112,7 @@ const StyledTouchableLink = styled(InternalTouchableLink).attrs<{ isSelected?: b
   flexDirection: 'row',
   alignItems: 'center',
   alignSelf: 'center',
-  height: getSpacing(11),
+  height: theme.designSystem.size.spacing.xxxxl,
   paddingHorizontal: theme.designSystem.size.spacing.l,
   borderWidth: 1,
   borderColor: isSelected
