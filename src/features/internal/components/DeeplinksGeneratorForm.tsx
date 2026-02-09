@@ -27,11 +27,11 @@ import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { Accordion } from 'ui/components/Accordion'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Slider } from 'ui/components/inputs/Slider'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
@@ -342,7 +342,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           <Warning />
           <ErrorText>{errorText}</ErrorText>
         </ErrorContainer>
-        <ButtonPrimary wording="Générer le lien" disabled={disabled} onPress={onPress} />
+        <Button wording="Générer le lien" disabled={disabled} onPress={onPress} fullWidth />
       </BottomContainer>
     </React.Fragment>
   )
