@@ -29,6 +29,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   onVideoConsentPress,
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
+  HeaderComponent,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -62,7 +63,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         hasVideoCookiesConsent={hasVideoCookiesConsent}
         onVideoConsentPress={onVideoConsentPress}
         onShowOfferArtistsModal={onShowOfferArtistsModal}
-        isMultiArtistsEnabled={isMultiArtistsEnabled}>
+        isMultiArtistsEnabled={isMultiArtistsEnabled}
+        HeaderComponent={HeaderComponent}>
         {comingSoonFooterHeight ? (
           <ComingSoonFooterOffset
             testID="coming-soon-footer-offset"

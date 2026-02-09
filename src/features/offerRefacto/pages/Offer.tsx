@@ -10,6 +10,7 @@ import { useCookies } from 'features/cookies/helpers/useCookies'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
+import { OfferHeader as RefactoOfferHeader } from 'features/offerRefacto/components/OfferHeader/OfferHeader'
 import { OfferContentPlaceholder } from 'features/offer/components/OfferContentPlaceholder/OfferContentPlaceholder'
 import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chronicleVariant'
 import { OfferArtistsModal } from 'features/offer/pages/OfferArtistsModal/OfferArtistsModal'
@@ -185,6 +186,7 @@ export function Offer() {
         onVideoConsentPress={handleOnVideoConsentPress}
         isMultiArtistsEnabled={isMultiArtistsEnabled}
         onShowOfferArtistsModal={showOfferArtistsModal}
+        HeaderComponent={RefactoOfferHeader}
       />
     </Page>
   )
