@@ -21,7 +21,7 @@ import { MARKER_LABEL_VISIBILITY_LIMIT } from 'features/venueMap/constant'
 import { getClusterColorByDominantActivity } from 'features/venueMap/helpers/venueMapCluster/getClusterColorByDominantActivity'
 import { zoomOutIfMapEmpty } from 'features/venueMap/helpers/zoomOutIfMapEmpty'
 import MapView, { Map, MapViewProps } from 'libs/maps/maps'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Button } from 'ui/designSystem/Button/Button'
 
 import { Marker } from './Marker/Marker'
 
@@ -155,7 +155,7 @@ export const VenueMapView = forwardRef<Map, VenueMapViewProps>(function VenueMap
       </StyledMapView>
       {onSearch ? (
         <ButtonContainer>
-          <ButtonPrimary wording="Rechercher dans cette zone" onPress={onSearch} />
+          <Button wording="Rechercher dans cette zone" onPress={onSearch} />
         </ButtonContainer>
       ) : null}
     </Fragment>
