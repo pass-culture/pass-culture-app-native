@@ -180,7 +180,7 @@ const useForgottenPasswordForm = (isRecaptchaEnabled: boolean) => {
       requestPasswordReset,
       shouldDisableValidateButton: isValueEmpty(email) || isFetching,
       hasError: Boolean(errorValues.length),
-      lastError: errorValues[errorValues.length - 1]?.message,
+      lastError: errorValues.at(-1)?.message,
       isFetching,
       isDoingReCaptchaChallenge,
       async onReCaptchaSuccess(token: string) {
