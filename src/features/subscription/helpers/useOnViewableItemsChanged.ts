@@ -11,7 +11,7 @@ export const useOnViewableItemsChanged = (
     ({ viewableItems, changed }: { viewableItems: ViewToken[]; changed: ViewToken[] }) => {
       if (!gradientRef.current) return
 
-      const lastItem = listItems[listItems.length - 1]
+      const lastItem = listItems.at(-1)
       const lastItemVisibilityChanged = changed.some((view) => view.item === lastItem)
 
       if (!lastItemVisibilityChanged) return
