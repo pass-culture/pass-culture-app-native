@@ -40,7 +40,6 @@ export const BonificationRecap = () => {
     },
     onError: (_error) => {
       navigate(...getSubscriptionHookConfig('BonificationError'))
-      // LOG TO SENTRY?
     },
   })
 
