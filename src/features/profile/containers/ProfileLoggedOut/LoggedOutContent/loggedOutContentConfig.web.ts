@@ -1,29 +1,40 @@
 import React from 'react'
 
-import { ShareBanner } from 'features/profile/components/ShareBanner/ShareBanner'
-import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
-import {
-  LoggedInContentConfig,
-  LoggedInNonBeneficiaryContentParams,
-} from 'features/profile/containers/ProfileLoggedIn/LoggedInContent/types'
+import { SectionItem } from 'features/profile/helpers/createProfileContent'
 import { env } from 'libs/environment/env'
 import { Bell } from 'ui/svg/icons/Bell'
+import { Bulb } from 'ui/svg/icons/Bulb'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
-import { Profile } from 'ui/svg/icons/Profile'
 
-export const loggedInNonBeneficiaryContentConfig = ({
+type LoggedOutContentConfig = {
+  section: string
+  items: SectionItem[]
+}
+
+type LoggedOutContentParams = {
+  ChatbotButton: React.ReactNode
+} & {
+  HelpButton: React.ReactNode
+} & {
+  AppearanceButton: React.ReactNode
+} & {
+  LocationButton: React.ReactNode
+} & {
+  SocialNetwork: React.ReactNode
+}
+
+export const loggedOutContentConfig = ({
   AppearanceButton,
   ChatbotButton,
-  FeedbackInAppButton,
   HelpButton,
   LocationButton,
-}: LoggedInNonBeneficiaryContentParams): LoggedInContentConfig[] => [
+  SocialNetwork,
+}: LoggedOutContentParams): LoggedOutContentConfig[] => [
   {
-    section: 'Paramètres du compte',
+    section: 'Paramètres de l’application',
     items: [
-      { title: 'Informations personnelles', screen: 'PersonalData', icon: Profile },
       { title: 'Notifications', screen: 'NotificationsSettings', icon: Bell },
       { component: LocationButton, key: 'LocationButton' },
     ],
@@ -41,17 +52,13 @@ export const loggedInNonBeneficiaryContentConfig = ({
     items: [
       { component: AppearanceButton, key: 'AppearanceButton' },
       { title: 'Accessibilité', screen: 'Accessibility', icon: HandicapMental },
-      { component: FeedbackInAppButton, key: 'FeedbackInAppButton' },
+      { title: 'Faire une suggestion', screen: 'FeedbackInApp', icon: Bulb },
       { title: 'Informations légales', screen: 'LegalNotices', icon: LegalNotices },
       { title: 'Confidentialité', screen: 'ConsentSettings', icon: Confidentiality },
     ],
   },
   {
-    section: 'Partager le pass Culture',
-    items: [{ component: <ShareBanner />, key: 'ShareBanner' }],
-  },
-  {
     section: 'Suivre le pass Culture',
-    items: [{ component: <SocialNetwork />, key: 'SocialNetwork' }],
+    items: [{ component: SocialNetwork, key: 'SocialNetwork' }],
   },
 ]
