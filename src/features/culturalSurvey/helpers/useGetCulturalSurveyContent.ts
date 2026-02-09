@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'

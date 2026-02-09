@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
+import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfilePropConfig'
 import { StyledSectionRow } from 'features/profile/components/SectionRowWithPaddingVertical/SectionRowWithPaddingVertical'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'

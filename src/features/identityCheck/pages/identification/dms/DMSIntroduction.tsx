@@ -2,7 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { InformationWithIcon } from 'ui/components/InformationWithIcon'

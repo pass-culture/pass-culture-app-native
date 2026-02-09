@@ -3,7 +3,10 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 
 import { useSignupConfirmationExpiredLinkQuery } from 'features/auth/queries/signup/useSignupConfirmationExpiredLinkQuery'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  RootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/navigators/RootNavigator/types'
 import { env } from 'libs/environment/env'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 

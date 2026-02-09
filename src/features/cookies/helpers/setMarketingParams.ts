@@ -1,6 +1,6 @@
 import { CookieNameEnum } from 'features/cookies/enums'
 import { Cookies, UTMParams } from 'features/cookies/types'
-import { setUtmParameters } from 'features/navigation/RootNavigator/linking/getStateFromPath'
+import { setUtmParameters } from 'features/navigation/navigators/RootNavigator/linking/getStateFromPath'
 import { setFirebaseParams } from 'libs/firebase/analytics/useInit'
 import { getCampaignDate } from 'libs/utm/useUtmParams'
 

@@ -3,10 +3,10 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { TabScreens } from 'features/navigation/TabBar/isTabNavigatorScreen'
 import { mapTabRouteToIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { menu } from 'features/navigation/TabBar/menu'
 import { TabBarInnerComponent } from 'features/navigation/TabBar/TabBarInnerComponent'
-import { TabRouteName } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -18,7 +18,7 @@ interface Props {
   navigateTo: InternalNavigationProps['navigateTo']
   enableNavigate?: boolean
   onPress?: () => void
-  tabName: TabRouteName
+  tabName: TabScreens
 }
 
 const isWeb = Platform.OS === 'web'
@@ -65,7 +65,7 @@ export const TabBarComponent: React.FC<Props> = ({
   const accessibilityLabelSelected = isSelected ? 'actif' : 'inactif'
   const showProfileBadge =
     enableDarkModeGtm && tabName === 'Profile' && hasSeenProfileBadge === false
-  const accessibilityLabel = `${menu[tabName].accessibilityLabel} - ${accessibilityLabelSelected}${
+  const accessibilityLabel = `${menu[tabName].accessibilityLabel ?? ''} - ${accessibilityLabelSelected}${
     showProfileBadge ? ' - nouvelle fonctionnalité disponible' : ''
   }`
 

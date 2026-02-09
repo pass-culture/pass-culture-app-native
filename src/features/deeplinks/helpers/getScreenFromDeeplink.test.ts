@@ -1,6 +1,6 @@
 import { getScreenFromDeeplink } from 'features/deeplinks/helpers'
-import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
+import { getScreenPath } from 'features/navigation/navigators/RootNavigator/linking/getScreenPath'
+import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'

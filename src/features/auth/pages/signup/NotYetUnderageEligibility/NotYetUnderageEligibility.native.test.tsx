@@ -3,7 +3,7 @@ import React from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { NotYetUnderageEligibility } from './NotYetUnderageEligibility'

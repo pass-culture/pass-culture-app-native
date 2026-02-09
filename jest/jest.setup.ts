@@ -4,6 +4,10 @@ import 'cross-fetch/polyfill'
 // @ts-ignore jest can have access to this file but typescript does not know it
 // We can see it
 import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-info-mock'
+// Include this line for mocking react-native-gesture-handler
+import 'react-native-gesture-handler/jestSetup'
+// Include this section for mocking react-native-reanimated
+import { setUpTests } from 'react-native-reanimated'
 
 /* See the corresponding mocks in libs/analytics/__mocks__ */
 /* Tests passed but there is a console error in web files */
@@ -31,6 +35,9 @@ jest.unmock('react-native-modal')
 // The issue comes from Jest trying to parse a module (react-native-orientation-locker) that uses ESModule syntax (import/export) without being processed by Babel
 // A common problem with some React Native libraries not properly packaged for Node.
 jest.mock('react-native-orientation-locker')
+
+// Include this section for mocking react-native-reanimated
+setUpTests()
 
 // useGetFontScale is used in AppButton, so it impacts all buttons like ButtonPrimary, ButtonSecondary, etc.
 jest.mock('shared/accessibility/useGetFontScale', () => ({

@@ -2,7 +2,7 @@ import React from 'react'
 import { DefaultTheme } from 'styled-components/native'
 
 import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
-import { Referrals } from 'features/navigation/RootNavigator/types'
+import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 import { Activity } from 'api/gen'
-import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
+import { RootNavigateParams } from 'features/navigation/navigators/RootNavigator/types'
 import { Geoloc } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'

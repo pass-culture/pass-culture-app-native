@@ -3,7 +3,7 @@ import React from 'react'
 
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { SignInResponseFailure } from 'features/auth/types'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 
 import { SSOButtonBase } from './SSOButtonBase'
 

@@ -3,7 +3,7 @@ import React from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { DeviceInformationsBanner } from 'features/trustedDevice/components/DeviceInformationsBanner'
 import { formatTokenInfo } from 'features/trustedDevice/helpers/formatTokenInfo'
 import { getTokenInfo } from 'features/trustedDevice/helpers/getTokenInfo'

@@ -18,7 +18,7 @@ import {
   ScreensUsedByMarketing,
 } from 'features/internal/config/deeplinksExportConfig'
 import { getScreenForLabel, SCREEN_OPTIONS } from 'features/internal/helpers/screenOptionsHelpers'
-import { getUniversalLink } from 'features/navigation/RootNavigator/linking/getUniversalLink'
+import { getUniversalLink } from 'features/navigation/navigators/RootNavigator/linking/getUniversalLink'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter } from 'features/search/types'
 import { env } from 'libs/environment/env'
@@ -277,14 +277,10 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 
     const appAndMarketingParams = { ...appParams, ...marketingParams }
 
-    let universalLink = getUniversalLink(
-      selectedScreen,
-      appAndMarketingParams,
-      env.WEBAPP_V2_DOMAIN
-    )
-    if (selectedScreen === 'SearchResults' && appParams.URL) {
-      universalLink = appParams.URL as string
-    }
+    const universalLink =
+      selectedScreen === 'SearchResults' && appParams.URL
+        ? (appParams.URL as string)
+        : getUniversalLink(selectedScreen, appAndMarketingParams, env.WEBAPP_V2_DOMAIN)
 
     onCreate(universalLink)
   }

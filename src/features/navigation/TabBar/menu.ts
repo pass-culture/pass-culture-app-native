@@ -1,7 +1,7 @@
-import { TabRouteName } from 'features/navigation/TabBar/TabStackNavigatorTypes'
+import { TabScreens } from 'features/navigation/TabBar/isTabNavigatorScreen'
 
 export const menu: Record<
-  Exclude<TabRouteName, '_DeeplinkOnlyHome1' | '_DeeplinkOnlyBookings1'>,
+  Exclude<TabScreens, '_DeeplinkOnlyHome1' | '_DeeplinkOnlyBookings1'>,
   { displayName: string; accessibilityLabel?: string }
 > = {
   Home: { displayName: 'Accueil', accessibilityLabel: 'Accueil' },

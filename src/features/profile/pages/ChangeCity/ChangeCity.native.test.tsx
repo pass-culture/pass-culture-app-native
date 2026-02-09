@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
-import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
+import { PersonalDataTypes } from 'features/navigation/navigators/ProfileStackNavigator/enums'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'

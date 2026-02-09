@@ -11,8 +11,8 @@ import {
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
 import { InfoListItemProps, Summary } from 'features/identityCheck/components/Summary'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'

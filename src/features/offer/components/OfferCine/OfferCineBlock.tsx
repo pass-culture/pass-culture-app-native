@@ -5,7 +5,7 @@ import { InView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { MovieCalendarProvider } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { OfferCineContent } from 'features/offer/components/OfferCine/OfferCineContent'
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'

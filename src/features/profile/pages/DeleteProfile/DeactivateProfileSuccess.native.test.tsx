@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import * as LogoutRoutine from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { render, screen, userEvent } from 'tests/utils'
 

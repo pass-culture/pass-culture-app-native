@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 
-import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
-import { ProfileStackRouteName } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
+import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfilePropConfig'
+import { ProfileStackRouteName } from 'features/navigation/navigators/ProfileStackNavigator/types'
 import { StyledSectionRow } from 'features/profile/components/SectionRowWithPaddingVertical/SectionRowWithPaddingVertical'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { AccessibleIcon } from 'ui/svg/icons/types'

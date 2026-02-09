@@ -5,7 +5,7 @@ import { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { BookingButton } from 'features/offer/components/BookingButton/BookingButton'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { StickyBookingButton } from 'features/offer/components/StickyBookingButton/StickyBookingButton'

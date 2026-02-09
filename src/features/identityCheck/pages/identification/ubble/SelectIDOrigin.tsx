@@ -3,7 +3,7 @@ import { Platform, Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
-import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'

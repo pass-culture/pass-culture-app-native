@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { timeDiffInHours } from 'libs/dates'
 import { plural } from 'libs/plural'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'

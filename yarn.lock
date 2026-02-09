@@ -8578,21 +8578,41 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-navigation/native-stack@npm:^7.6.3":
-  version: 7.6.3
-  resolution: "@react-navigation/native-stack@npm:7.6.3"
+"@react-navigation/elements@npm:^2.9.5":
+  version: 2.9.5
+  resolution: "@react-navigation/elements@npm:2.9.5"
   dependencies:
-    "@react-navigation/elements": ^2.8.2
+    color: ^4.2.3
+    use-latest-callback: ^0.2.4
+    use-sync-external-store: ^1.5.0
+  peerDependencies:
+    "@react-native-masked-view/masked-view": ">= 0.2.0"
+    "@react-navigation/native": ^7.1.28
+    react: ">= 18.2.0"
+    react-native: "*"
+    react-native-safe-area-context: ">= 4.0.0"
+  peerDependenciesMeta:
+    "@react-native-masked-view/masked-view":
+      optional: true
+  checksum: 05756cea0510d5d3058edb6da60b44ae6d029f50da90ed4a6405ebfcea534fa838a359bab183377036f33616b08998e23edc6974a5796d5e07678e45a9c9b514
+  languageName: node
+  linkType: hard
+
+"@react-navigation/native-stack@npm:^7.12.0":
+  version: 7.12.0
+  resolution: "@react-navigation/native-stack@npm:7.12.0"
+  dependencies:
+    "@react-navigation/elements": ^2.9.5
     color: ^4.2.3
     sf-symbols-typescript: ^2.1.0
     warn-once: ^0.1.1
   peerDependencies:
-    "@react-navigation/native": ^7.1.20
+    "@react-navigation/native": ^7.1.28
     react: ">= 18.2.0"
     react-native: "*"
     react-native-safe-area-context: ">= 4.0.0"
     react-native-screens: ">= 4.0.0"
-  checksum: be6bc86fb226681246d80749b44212d5a1a53a8fa81a5c09150383ce464f36350e1d297dc6d14f10b0c60e96af975b54c532c9dd3445f60454724199ac8c75e5
+  checksum: aa11a8bc708c011691fdf960fccac0aac5c4f072d11f5e19487f567e38916db467ca89d05226a4a199b1975d077f7950bab3dd48fbb85eb9f368572fdd98d327
   languageName: node
   linkType: hard
 
@@ -11322,7 +11342,7 @@ __metadata:
     "@react-navigation/bottom-tabs": ^7.8.5
     "@react-navigation/devtools": ^7.0.40
     "@react-navigation/native": ^7.1.20
-    "@react-navigation/native-stack": ^7.6.3
+    "@react-navigation/native-stack": ^7.12.0
     "@react-oauth/google": ^0.11.1
     "@rollup/plugin-commonjs": ^28.0.3
     "@sentry/react": ^8.55.0

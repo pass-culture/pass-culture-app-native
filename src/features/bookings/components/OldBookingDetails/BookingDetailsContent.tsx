@@ -13,7 +13,7 @@ import { TicketSwiper } from 'features/bookings/components/OldBookingDetails/Tic
 import { getOfferRules } from 'features/bookings/helpers'
 import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { Booking, BookingProperties } from 'features/bookings/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { blurImageHeight } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { isCloseToBottom } from 'libs/analytics'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'

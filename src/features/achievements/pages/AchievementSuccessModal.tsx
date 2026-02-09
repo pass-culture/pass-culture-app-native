@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { AchievementEnum, AchievementResponse } from 'api/gen'
 import { useAchievementsMarkAsSeenMutation } from 'features/achievements/queries/useMarkAchievementsAsSeenMutation'
-import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
+import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfilePropConfig'
 import { analytics } from 'libs/analytics/provider'
 import LottieView from 'libs/lottie'
 import success from 'ui/animations/achievements_success.json'

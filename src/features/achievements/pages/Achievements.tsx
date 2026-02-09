@@ -12,7 +12,7 @@ import {
 } from 'features/achievements/data/AchievementData'
 import { getAchievements } from 'features/achievements/helpers/getAchievements'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
@@ -28,7 +28,7 @@ const emptyAchievement = {
   description: '',
 }
 
-export const Achievements = () => {
+const Achievements = () => {
   const { params } = useRoute<UseRouteType<'Achievements'>>()
   const { user } = useAuthContext()
   const { categories, track } = getAchievements({
@@ -125,3 +125,5 @@ const ProgressBarContainer = styled.View({
   flex: 1,
   maxWidth: getSpacing(20),
 })
+
+export default Achievements

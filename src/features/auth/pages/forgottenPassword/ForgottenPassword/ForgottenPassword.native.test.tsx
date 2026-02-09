@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { captureMonitoringError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
