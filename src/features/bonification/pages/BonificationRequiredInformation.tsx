@@ -7,13 +7,12 @@ import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStack
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Form } from 'ui/components/Form'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
@@ -60,15 +59,18 @@ export const BonificationRequiredInformation = () => {
       }
       fixedBottomChildren={
         <ViewGap gap={3}>
-          <ButtonPrimary
+          <Button
+            fullWidth
+            type="submit"
             wording="Commencer"
             isLoading={false}
-            type="submit"
             accessibilityLabel="Commencer la demande"
             onPress={() => navigate(...getSubscriptionHookConfig('BonificationNames'))}
           />
           <ExternalTouchableLink
-            as={ButtonTertiaryBlack}
+            as={Button}
+            variant="tertiary"
+            color="neutral"
             wording="Consulter l’article d’aide"
             externalNav={{ url: env.FAQ_BONIFICATION }}
             icon={ExternalSiteFilled}

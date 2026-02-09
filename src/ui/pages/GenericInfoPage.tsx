@@ -8,15 +8,13 @@ import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
 import { AnimationObject, LottieColoringMode } from 'ui/animations/type'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ButtonTertiaryNeutralInfo } from 'ui/components/buttons/ButtonTertiaryNeutralInfo'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Page } from 'ui/pages/Page'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
@@ -156,7 +154,9 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
         <ButtonContainer gap={4} isLandscape={isLandscape}>
           {buttonsSurtitle}
           {buttonPrimary.onPress ? (
-            <ButtonPrimary
+            <Button
+              fullWidth
+              color="brand"
               key={1}
               wording={buttonPrimary.wording}
               onPress={buttonPrimary.onPress}
@@ -171,7 +171,9 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
           {buttonPrimary.navigateTo ? (
             <InternalTouchableLink
               key={1}
-              as={ButtonPrimary}
+              as={Button}
+              color="brand"
+              fullWidth
               wording={buttonPrimary.wording}
               navigateTo={buttonPrimary.navigateTo}
               onBeforeNavigate={buttonPrimary.onBeforeNavigate}
@@ -186,7 +188,9 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
           {buttonPrimary.externalNav ? (
             <ExternalTouchableLink
               key={1}
-              as={ButtonPrimary}
+              as={Button}
+              color="brand"
+              fullWidth
               wording={buttonPrimary.wording}
               externalNav={buttonPrimary.externalNav}
               onBeforeNavigate={buttonPrimary.onBeforeNavigate}
@@ -199,8 +203,11 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
           ) : null}
 
           {buttonSecondary?.onPress ? (
-            <ButtonSecondary
+            <Button
+              fullWidth
               key={2}
+              variant="secondary"
+              color="neutral"
               wording={buttonSecondary.wording}
               onPress={buttonSecondary.onPress}
               isLoading={buttonSecondary.isLoading}
@@ -214,7 +221,9 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
           {buttonSecondary?.navigateTo ? (
             <InternalTouchableLink
               key={2}
-              as={ButtonSecondary}
+              as={Button}
+              fullWidth
+              variant="secondary"
               wording={buttonSecondary.wording}
               navigateTo={buttonSecondary.navigateTo}
               onBeforeNavigate={buttonSecondary.onBeforeNavigate}
@@ -229,7 +238,9 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
           {buttonSecondary?.externalNav ? (
             <ExternalTouchableLink
               key={2}
-              as={ButtonSecondary}
+              as={Button}
+              fullWidth
+              variant="secondary"
               wording={buttonSecondary.wording}
               externalNav={buttonSecondary.externalNav}
               onBeforeNavigate={buttonSecondary.onBeforeNavigate}
@@ -242,7 +253,9 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
           ) : null}
 
           {buttonTertiary?.onPress ? (
-            <ButtonTertiaryBlack
+            <Button
+              variant="tertiary"
+              color="neutral"
               key={buttonTertiary ? 3 : 2}
               wording={buttonTertiary.wording}
               onPress={buttonTertiary.onPress}
@@ -257,7 +270,9 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
           {buttonTertiary?.navigateTo ? (
             <InternalTouchableLink
               key={buttonTertiary ? 3 : 2}
-              as={ButtonTertiaryBlack}
+              as={Button}
+              variant="tertiary"
+              color="neutral"
               wording={buttonTertiary.wording}
               navigateTo={buttonTertiary.navigateTo}
               onBeforeNavigate={buttonTertiary.onBeforeNavigate}
@@ -272,7 +287,9 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
           {buttonTertiary?.externalNav ? (
             <ExternalTouchableLink
               key={buttonTertiary ? 3 : 2}
-              as={ButtonTertiaryBlack}
+              as={Button}
+              variant="tertiary"
+              color="neutral"
               wording={buttonTertiary.wording}
               externalNav={buttonTertiary.externalNav}
               onBeforeNavigate={buttonTertiary.onBeforeNavigate}
@@ -332,9 +349,9 @@ const ChildrenContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,
 }))
 
-const ButtonContainer = styled(ViewGap)<{ isLandscape: boolean }>(({ isLandscape }) => ({
+const ButtonContainer = styled(ViewGap)<{ isLandscape: boolean }>(({ isLandscape, theme }) => ({
   alignItems: 'center',
-  marginBottom: isLandscape ? getSpacing(40) : 0,
+  marginBottom: isLandscape ? getSpacing(40) : theme.designSystem.size.spacing.xxxl,
 }))
 
 const SkipButton = ({ withSkipAction }: { withSkipAction?: () => void }) => {

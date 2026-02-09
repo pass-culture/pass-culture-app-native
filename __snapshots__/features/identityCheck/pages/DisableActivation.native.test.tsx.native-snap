@@ -183,7 +183,7 @@ Reviens lundi pour débloquer ton crédit !
           {
             "alignItems": "center",
             "gap": 16,
-            "marginBottom": 0,
+            "marginBottom": 40,
           }
         }
       >
@@ -194,7 +194,7 @@ Reviens lundi pour débloquer ton crédit !
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -220,20 +220,22 @@ Reviens lundi pour débloquer ton crédit !
           style={
             {
               "alignItems": "center",
+              "alignSelf": "center",
               "backgroundColor": "#6123df",
-              "borderBottomLeftRadius": 24,
-              "borderBottomRightRadius": 24,
-              "borderTopLeftRadius": 24,
-              "borderTopRightRadius": 24,
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderColor": "#6123df",
+              "borderStyle": "solid",
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "borderWidth": 1,
               "flexDirection": "row",
               "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
               "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
+              "paddingBottom": 8,
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "paddingTop": 8,
               "userSelect": "auto",
               "width": "100%",
             }
@@ -241,24 +243,39 @@ Reviens lundi pour débloquer ton crédit !
           testID="Retourner à l’accueil"
         >
           <View
+            fullWidth={true}
+            gap={8}
+            hasIcon={false}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
               }
             }
           >
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#ffffff",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": "center",
+                  },
+                ]
               }
             >
               Retourner à l’accueil
@@ -272,7 +289,7 @@ Reviens lundi pour débloquer ton crédit !
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -299,29 +316,32 @@ Reviens lundi pour débloquer ton crédit !
             {
               "alignItems": "center",
               "backgroundColor": "transparent",
-              "borderBottomLeftRadius": 24,
-              "borderBottomRightRadius": 24,
-              "borderTopLeftRadius": 24,
-              "borderTopRightRadius": 24,
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "borderWidth": 0,
               "flexDirection": "row",
               "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
               "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 2,
-              "paddingRight": 2,
-              "paddingTop": 2,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
               "userSelect": "auto",
-              "width": "100%",
+              "width": "auto",
             }
           }
           testID="Plus d’infos dans notre FAQ"
         >
           <View
+            gap={8}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
               }
             }
@@ -329,34 +349,39 @@ Reviens lundi pour débloquer ton crédit !
             <View
               style={
                 {
-                  "flexDirection": "row",
                   "flexShrink": 0,
-                  "marginRight": 8,
                 }
               }
             >
               <View
                 accessibilityLabel="Nouvelle fenêtre"
-                height={20}
-                testID="button-icon-left"
-                width={20}
+                height={22}
+                width={22}
               >
                 <Text>
-                  button-icon-left-SVG-Mock
+                  undefined-SVG-Mock
                 </Text>
               </View>
             </View>
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#161617",
+                    "flexBasis": undefined,
+                    "flexGrow": undefined,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": undefined,
+                  },
+                ]
               }
             >
               Plus d’infos dans notre FAQ
@@ -560,7 +585,7 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
           {
             "alignItems": "center",
             "gap": 16,
-            "marginBottom": 0,
+            "marginBottom": 40,
           }
         }
       >
@@ -571,7 +596,7 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -597,20 +622,22 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
           style={
             {
               "alignItems": "center",
+              "alignSelf": "center",
               "backgroundColor": "#6123df",
-              "borderBottomLeftRadius": 24,
-              "borderBottomRightRadius": 24,
-              "borderTopLeftRadius": 24,
-              "borderTopRightRadius": 24,
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderColor": "#6123df",
+              "borderStyle": "solid",
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "borderWidth": 1,
               "flexDirection": "row",
               "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
               "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
+              "paddingBottom": 8,
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "paddingTop": 8,
               "userSelect": "auto",
               "width": "100%",
             }
@@ -618,24 +645,39 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
           testID="Retourner à l’accueil"
         >
           <View
+            fullWidth={true}
+            gap={8}
+            hasIcon={false}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
               }
             }
           >
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#ffffff",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": "center",
+                  },
+                ]
               }
             >
               Retourner à l’accueil
@@ -649,7 +691,7 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -676,29 +718,32 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
             {
               "alignItems": "center",
               "backgroundColor": "transparent",
-              "borderBottomLeftRadius": 24,
-              "borderBottomRightRadius": 24,
-              "borderTopLeftRadius": 24,
-              "borderTopRightRadius": 24,
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "borderWidth": 0,
               "flexDirection": "row",
               "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
               "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 2,
-              "paddingRight": 2,
-              "paddingTop": 2,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
               "userSelect": "auto",
-              "width": "100%",
+              "width": "auto",
             }
           }
           testID="subtitleMobile"
         >
           <View
+            gap={8}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
               }
             }
@@ -706,34 +751,39 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
             <View
               style={
                 {
-                  "flexDirection": "row",
                   "flexShrink": 0,
-                  "marginRight": 8,
                 }
               }
             >
               <View
                 accessibilityLabel="Nouvelle fenêtre"
-                height={20}
-                testID="button-icon-left"
-                width={20}
+                height={22}
+                width={22}
               >
                 <Text>
-                  button-icon-left-SVG-Mock
+                  undefined-SVG-Mock
                 </Text>
               </View>
             </View>
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#161617",
+                    "flexBasis": undefined,
+                    "flexGrow": undefined,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": undefined,
+                  },
+                ]
               }
             >
               subtitleMobile

@@ -495,7 +495,7 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
           {
             "alignItems": "center",
             "gap": 16,
-            "marginBottom": 0,
+            "marginBottom": 40,
           }
         }
       >
@@ -506,7 +506,7 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -536,22 +536,23 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                 },
                 {
                   "alignItems": "center",
+                  "alignSelf": "center",
                   "backgroundColor": "#6123df",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#6123df",
+                  "borderStyle": "solid",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
                   "width": "100%",
                 },
-                {},
               ],
               {
                 "opacity": 1,
@@ -561,44 +562,56 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
           testID="Aller sur le site de demarche.numerique.gouv.fr"
         >
           <View
+            fullWidth={true}
+            gap={8}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
               }
             }
           >
             <View
               style={
                 {
-                  "flexDirection": "row",
                   "flexShrink": 0,
-                  "marginRight": 8,
                 }
               }
             >
               <View
                 accessibilityLabel="Nouvelle fenêtre"
-                height={24}
-                testID="button-icon-left"
-                width={24}
+                height={22}
+                width={22}
               >
                 <Text>
-                  button-icon-left-SVG-Mock
+                  undefined-SVG-Mock
                 </Text>
               </View>
             </View>
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#ffffff",
+                    "flexBasis": undefined,
+                    "flexGrow": undefined,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": undefined,
+                  },
+                ]
               }
             >
               Aller sur le site
@@ -1068,7 +1081,7 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
           {
             "alignItems": "center",
             "gap": 16,
-            "marginBottom": 0,
+            "marginBottom": 40,
           }
         }
       >
@@ -1079,7 +1092,7 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -1109,22 +1122,23 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                 },
                 {
                   "alignItems": "center",
+                  "alignSelf": "center",
                   "backgroundColor": "#6123df",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#6123df",
+                  "borderStyle": "solid",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
                   "width": "100%",
                 },
-                {},
               ],
               {
                 "opacity": 1,
@@ -1134,44 +1148,56 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
           testID="Aller sur le site de demarche.numerique.gouv.fr"
         >
           <View
+            fullWidth={true}
+            gap={8}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
               }
             }
           >
             <View
               style={
                 {
-                  "flexDirection": "row",
                   "flexShrink": 0,
-                  "marginRight": 8,
                 }
               }
             >
               <View
                 accessibilityLabel="Nouvelle fenêtre"
-                height={24}
-                testID="button-icon-left"
-                width={24}
+                height={22}
+                width={22}
               >
                 <Text>
-                  button-icon-left-SVG-Mock
+                  undefined-SVG-Mock
                 </Text>
               </View>
             </View>
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#ffffff",
+                    "flexBasis": undefined,
+                    "flexGrow": undefined,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": undefined,
+                  },
+                ]
               }
             >
               Aller sur le site

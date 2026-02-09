@@ -28,8 +28,8 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Button } from 'ui/designSystem/Button/Button'
 import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
 import { CheckboxGroupOption } from 'ui/designSystem/CheckboxGroup/types'
 import { Page } from 'ui/pages/Page'
@@ -239,7 +239,8 @@ export function CulturalSurveyQuestions() {
       </ChildrenScrollView>
 
       <FixedBottomChildrenView onLayout={onFixedBottomChildrenViewLayout}>
-        <ButtonPrimary
+        <Button
+          fullWidth
           onPress={navigateToNextQuestion}
           disabled={!currentAnswers.length}
           wording={isCurrentQuestionLastQuestion ? 'Valider' : 'Continuer'}

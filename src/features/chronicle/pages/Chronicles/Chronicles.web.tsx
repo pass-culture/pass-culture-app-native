@@ -112,12 +112,7 @@ export const Chronicles: FunctionComponent = () => {
                 trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
               />
             ) : (
-              <Button
-                wording="Trouve ta séance"
-                onPress={onPress}
-                variant="primary"
-                color="brand"
-              />
+              <Button wording="Trouve ta séance" onPress={onPress} color="brand" />
             )}
           </StyledChronicleOfferInfo>
         ) : null}

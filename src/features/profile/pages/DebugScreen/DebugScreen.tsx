@@ -11,12 +11,12 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput/LargeTextInput'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
+import { Button } from 'ui/designSystem/Button/Button'
 import { useVersion } from 'ui/hooks/useVersion'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
@@ -96,12 +96,16 @@ export const DebugScreen = () => {
                 {item.label}&nbsp;: <Typo.Body>{item.value}</Typo.Body>
               </Typo.Button>
             ))}
-            <ClipboardButton
-              accessibilityRole={AccessibilityRole.BUTTON}
-              accessibilityLabel="Copier dans le presse-papier"
-              onPress={copyToClipboard}>
-              <StyledDuplicate />
-            </ClipboardButton>
+            <ClipboardButtonContainer>
+              <Button
+                variant="secondary"
+                iconButton
+                icon={StyledDuplicate}
+                accessibilityRole={AccessibilityRole.BUTTON}
+                accessibilityLabel="Copier dans le presse-papier"
+                onPress={copyToClipboard}
+              />
+            </ClipboardButtonContainer>
           </View>
           <Banner
             type={BannerType.DEFAULT}
@@ -138,8 +142,10 @@ export const DebugScreen = () => {
       fixedBottomChildren={
         <ViewGap gap={4}>
           <ExternalTouchableLink
+            fullWidth
+            variant="secondary"
             disabled={!isValid}
-            as={ButtonSecondary}
+            as={Button}
             wording="Envoyer mon bug au support"
             externalNav={{ url: mailtoUrl }}
             icon={EmailFilled}
@@ -155,17 +161,11 @@ const StyledDuplicate = styled(Duplicate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
-const ClipboardButton = styled.TouchableOpacity(({ theme }) => {
-  return {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: theme.designSystem.size.spacing.m,
-    borderColor: theme.designSystem.color.background.brandPrimary,
-    borderWidth: 1,
-    borderRadius: theme.designSystem.size.borderRadius.m,
-  }
+const ClipboardButtonContainer = styled(View)({
+  position: 'absolute',
+  top: 0,
+  right: 0,
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
 })

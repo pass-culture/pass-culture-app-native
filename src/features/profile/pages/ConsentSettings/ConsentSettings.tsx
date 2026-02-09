@@ -23,7 +23,6 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -212,7 +211,6 @@ export const ConsentSettings = () => {
             wording="Enregistrer mes choix"
             accessibilityRole={AccessibilityRole.BUTTON}
             onPress={handleSaveChoices}
-            center
           />
         </SecondaryPageWithBlurHeader>
       </AnchorProvider>
@@ -262,7 +260,7 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.l,
 }))
 
-const SaveButton = styledButton(ButtonPrimary)(({ theme }) => ({
+const SaveButton = styledButton(Button)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.l,
 }))
 

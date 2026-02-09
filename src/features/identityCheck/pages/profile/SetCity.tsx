@@ -10,8 +10,8 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { SuggestedCity } from 'libs/place/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -73,7 +73,7 @@ export const SetCity = () => {
         </ViewGap>
       }
       fixedBottomChildren={
-        <ButtonPrimary
+        <Button
           type="submit"
           onPress={handleSubmit(onSubmit)}
           wording="Continuer"

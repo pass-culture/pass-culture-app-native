@@ -2,8 +2,7 @@ import React from 'react'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useGoogleLogin } from 'libs/react-native-google-sso/useGoogleLogin'
-import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Google } from 'ui/svg/icons/socialNetwork/Google'
 
 type Props = {
@@ -26,15 +25,14 @@ export const SSOButtonBase = ({ type, onSuccess }: Props) => {
   const buttonWording = `${type === 'login' ? 'Se connecter' : 'S’inscrire'} avec Google`
 
   return (
-    <StyledButton
+    <Button
       accessibilityRole={AccessibilityRole.BUTTON}
       wording={buttonWording}
       icon={Google}
       onPress={googleLogin}
+      variant="secondary"
+      fullWidth
+      color="neutral"
     />
   )
 }
-
-const StyledButton = styledButton(ButtonSecondaryBlack)(({ theme }) => ({
-  borderColor: theme.designSystem.color.border.subtle,
-}))

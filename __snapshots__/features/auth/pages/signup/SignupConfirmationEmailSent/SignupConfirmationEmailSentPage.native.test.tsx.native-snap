@@ -291,128 +291,20 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
           Tu n‘as pas reçu de lien ? Tu peux :
         </Text>
         <View
-          accessibilityLabel="Consulter notre centre d’aide"
-          accessibilityRole="link"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 2,
-                  "width": "100%",
-                },
-                {
-                  "backgroundColor": "transparent",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Consulter notre centre d’aide"
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "flexShrink": 0,
-                  "marginRight": 8,
-                }
-              }
-            >
-              <View
-                accessibilityLabel="Nouvelle fenêtre"
-                height={20}
-                testID="button-icon-left"
-                width={20}
-              >
-                <Text>
-                  button-icon-left-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
-              }
-            >
-              Consulter notre centre d’aide
-            </Text>
-          </View>
-        </View>
-        <View
-          marginBottom={8}
           style={
             {
-              "marginBottom": 8,
+              "alignSelf": "flex-start",
             }
           }
         >
           <View
-            accessibilityLabel="Recevoir un nouveau lien"
-            accessibilityRole="button"
+            accessibilityLabel="Consulter notre centre d’aide"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -442,22 +334,19 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "borderBottomLeftRadius": 24,
-                    "borderBottomRightRadius": 24,
-                    "borderTopLeftRadius": 24,
-                    "borderTopRightRadius": 24,
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
                     "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "paddingBottom": 2,
+                    "justifyContent": "center",
+                    "paddingBottom": 0,
                     "paddingLeft": 0,
                     "paddingRight": 0,
-                    "paddingTop": 2,
-                    "width": "100%",
-                  },
-                  {
-                    "backgroundColor": "transparent",
+                    "paddingTop": 0,
+                    "width": "auto",
                   },
                 ],
                 {
@@ -465,12 +354,16 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                 },
               ]
             }
-            testID="Recevoir un nouveau lien"
+            testID="Consulter notre centre d’aide"
           >
             <View
+              gap={8}
+              hasIcon={true}
+              isMultiline={false}
               style={
                 {
                   "alignItems": "center",
+                  "columnGap": 8,
                   "flexDirection": "row",
                 }
               }
@@ -478,37 +371,172 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
               <View
                 style={
                   {
-                    "flexDirection": "row",
                     "flexShrink": 0,
-                    "marginRight": 8,
                   }
                 }
               >
                 <View
-                  height={20}
-                  testID="button-icon-left"
-                  width={20}
+                  accessibilityLabel="Nouvelle fenêtre"
+                  height={22}
+                  width={22}
                 >
                   <Text>
-                    button-icon-left-SVG-Mock
+                    undefined-SVG-Mock
                   </Text>
                 </View>
               </View>
               <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#161617",
+                      "flexBasis": undefined,
+                      "flexGrow": undefined,
+                      "flexShrink": 1,
+                      "maxWidth": "100%",
+                      "minWidth": 0,
+                      "textAlign": undefined,
+                    },
+                  ]
+                }
+              >
+                Consulter notre centre d’aide
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          marginBottom={8}
+          style={
+            {
+              "marginBottom": 8,
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "alignSelf": "flex-start",
+              }
+            }
+          >
+            <View
+              accessibilityLabel="Recevoir un nouveau lien"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "width": "auto",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Recevoir un nouveau lien"
+            >
+              <View
+                gap={8}
+                hasIcon={true}
+                isMultiline={false}
                 style={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                    "maxWidth": "100%",
+                    "alignItems": "center",
+                    "columnGap": 8,
+                    "flexDirection": "row",
                   }
                 }
               >
-                Recevoir un nouveau lien
-              </Text>
+                <View
+                  style={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                >
+                  <View
+                    height={22}
+                    width={22}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
+                      },
+                      {
+                        "color": "#161617",
+                        "flexBasis": undefined,
+                        "flexGrow": undefined,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": undefined,
+                      },
+                    ]
+                  }
+                >
+                  Recevoir un nouveau lien
+                </Text>
+              </View>
             </View>
           </View>
         </View>
@@ -519,7 +547,7 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -549,22 +577,23 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                 },
                 {
                   "alignItems": "center",
+                  "alignSelf": "center",
                   "backgroundColor": "#6123df",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#6123df",
+                  "borderStyle": "solid",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
                   "width": "100%",
                 },
-                {},
               ],
               {
                 "opacity": 1,
@@ -574,43 +603,55 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
           testID="Consulter mes e-mails"
         >
           <View
+            fullWidth={true}
+            gap={8}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
               }
             }
           >
             <View
               style={
                 {
-                  "flexDirection": "row",
                   "flexShrink": 0,
-                  "marginRight": 8,
                 }
               }
             >
               <View
-                height={24}
-                testID="button-icon-left"
-                width={24}
+                height={22}
+                width={22}
               >
                 <Text>
-                  button-icon-left-SVG-Mock
+                  undefined-SVG-Mock
                 </Text>
               </View>
             </View>
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#ffffff",
+                    "flexBasis": undefined,
+                    "flexGrow": undefined,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": undefined,
+                  },
+                ]
               }
             >
               Consulter mes e-mails

@@ -13,10 +13,10 @@ import { useTimer } from 'libs/hooks/useTimer'
 import { LogTypeEnum } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { formatToHour } from 'libs/parsers/formatDates'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -113,7 +113,8 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
             <Spacer.Column numberOfSpaces={6} />
           </React.Fragment>
         )}
-        <ButtonPrimary
+        <Button
+          fullWidth
           accessibilityRole={AccessibilityRole.BUTTON}
           wording="Demander un nouveau lien"
           onPress={onResendPress}

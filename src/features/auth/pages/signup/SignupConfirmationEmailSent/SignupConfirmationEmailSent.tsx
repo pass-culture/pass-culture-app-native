@@ -1,12 +1,13 @@
 import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
 
 import { EmailSentGeneric } from 'features/auth/components/EmailSentGeneric'
 import { EmailResendModal } from 'features/auth/pages/signup/SignupConfirmationEmailSent/EmailResendModal'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Again } from 'ui/svg/icons/Again'
 
 export type Props = {
@@ -22,13 +23,16 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ email })
   const { visible, showModal, hideModal } = useModal()
 
   const additionalCTA = (
-    <ButtonTertiaryBlack
-      accessibilityRole={AccessibilityRole.BUTTON}
-      wording="Recevoir un nouveau lien"
-      justifyContent="flex-start"
-      onPress={showModal}
-      icon={Again}
-    />
+    <ButtonWrapper>
+      <Button
+        variant="tertiary"
+        color="neutral"
+        accessibilityRole={AccessibilityRole.BUTTON}
+        wording="Recevoir un nouveau lien"
+        onPress={showModal}
+        icon={Again}
+      />
+    </ButtonWrapper>
   )
 
   return (
@@ -44,3 +48,6 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ email })
     </React.Fragment>
   )
 }
+const ButtonWrapper = styled.View({
+  alignSelf: 'flex-start',
+})

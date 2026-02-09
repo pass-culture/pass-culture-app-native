@@ -5,18 +5,20 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 16px;
-  padding-right: 16px;
-  min-height: 32px;
-  width: 100%;
-  background-color: transparent;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  width: auto;
   max-width: 500px;
+  border-style: solid;
+  border-color: #6123df;
+  border-width: 1px;
+  background-color: #ffffff;
   cursor: pointer;
   outline: none;
-  border-width: 0;
-  display: flex;
+  display: inline-flex;
   overflow: hidden;
   text-decoration: none;
   box-sizing: border-box;
@@ -24,54 +26,53 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
 
 .c0:disabled {
   cursor: initial;
-  background: none;
 }
 
-.c0:hover {
-  text-decoration: underline;
-  text-decoration-color: #6123df;
-}
-
-.c0:hover:disabled {
-  text-decoration: none;
-}
-
-.c2 {
+.c1 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 20px;
-  padding-right: 20px;
-  min-height: 40px;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
   width: 100%;
-  background-color: #6123df;
   max-width: 500px;
+  align-self: center;
+  border-style: solid;
+  border-color: #6123df;
+  border-width: 1px;
+  background-color: #6123df;
   cursor: pointer;
   outline: none;
-  border-width: 0;
-  display: flex;
+  display: inline-flex;
   overflow: hidden;
   text-decoration: none;
   box-sizing: border-box;
 }
 
-.c2:disabled {
+.c1:disabled {
   cursor: initial;
-  background: none;
 }
 
-.c2:hover {
+.c2 {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
   text-decoration: underline;
-  text-decoration-color: #ffffff;
+  color: #320096;
+  font-family: Montserrat-SemiBold;
+  font-size: 1rem;
+  line-height: 1.375rem;
 }
 
-.c2:hover:disabled {
-  text-decoration: none;
-}
-
-.c7 {
+.c5 {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
@@ -94,51 +95,21 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
   box-sizing: border-box;
 }
 
-.c7:disabled {
+.c5:disabled {
   cursor: initial;
   background: none;
 }
 
-.c7:hover {
+.c5:hover {
   text-decoration: underline;
   text-decoration-color: #696a6f;
 }
 
-.c7:hover:disabled {
+.c5:hover:disabled {
   text-decoration: none;
 }
 
-.c1 {
-  border-style: solid;
-  border-color: #6123df;
-  border-width: 2px;
-}
-
-.c1:disabled {
-  border-color: #cbcdd2;
-}
-
-.c4 {
-  border: none;
-  cursor: pointer;
-  outline: none;
-  box-sizing: border-box;
-  background-color: transparent;
-  width: fit-content;
-  margin: 0;
-  padding: 0;
-  text-decoration: underline;
-  color: #320096;
-  font-family: Montserrat-SemiBold;
-  font-size: 1rem;
-  line-height: 1.375rem;
-}
-
-.c3:disabled {
-  background-color: #f1f1f4;
-}
-
-.c5 {
+.c3 {
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
@@ -146,11 +117,11 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
   cursor: pointer;
 }
 
-.c8 {
+.c6 {
   background-color: transparent;
 }
 
-.c6 {
+.c4 {
   margin-right: 24px;
   margin-left: 24px;
 }
@@ -179,17 +150,18 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
             >
               <button
                 aria-label="Cheatcodes"
-                class="c0 c1"
+                class="c0"
                 data-testid="Cheatcodes"
                 tabindex="0"
                 type="button"
               >
                 <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                 >
                   <div
-                    class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1l73kk8 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv r-maxWidth-dnmrzs"
+                    class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                     dir="ltr"
+                    style="color: rgb(97, 35, 223); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                   >
                     Cheatcodes
                   </div>
@@ -242,17 +214,18 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
               >
                 <button
                   aria-label="Créer un compte"
-                  class="c2 c3"
+                  class="c1"
                   data-testid="Créer un compte"
                   tabindex="0"
                   type="button"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
                   >
                     <div
-                      class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv r-maxWidth-dnmrzs"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
                       dir="ltr"
+                      style="color: rgb(255, 255, 255); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px; text-align: center;"
                     >
                       Créer un compte
                     </div>
@@ -284,7 +257,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                       </div>
                     </div>
                     <button
-                      class="c4"
+                      class="c2"
                       color="#320096"
                       type="button"
                     >
@@ -395,7 +368,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                           </div>
                         </div>
                         <label
-                          class="c5"
+                          class="c3"
                           for="testUuidV4"
                         >
                           <div
@@ -945,7 +918,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
             </div>
           </main>
           <footer
-            class="c6"
+            class="c4"
           >
             <div
               class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
@@ -1012,7 +985,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 </div>
                 <a
                   aria-label="CGU utilisateurs"
-                  class="c7 c8"
+                  class="c5 c6"
                   data-testid="CGU utilisateurs"
                   href="https://passculture.cgu"
                   tabindex="0"
@@ -1047,7 +1020,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 </a>
                 <a
                   aria-label="Charte des données personnelles"
-                  class="c7 c8"
+                  class="c5 c6"
                   data-testid="Charte des données personnelles"
                   href="https://passculture.privacy"
                   tabindex="0"
@@ -1116,18 +1089,20 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 16px;
-  padding-right: 16px;
-  min-height: 32px;
-  width: 100%;
-  background-color: transparent;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  width: auto;
   max-width: 500px;
+  border-style: solid;
+  border-color: #6123df;
+  border-width: 1px;
+  background-color: #ffffff;
   cursor: pointer;
   outline: none;
-  border-width: 0;
-  display: flex;
+  display: inline-flex;
   overflow: hidden;
   text-decoration: none;
   box-sizing: border-box;
@@ -1135,54 +1110,53 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
 
 .c0:disabled {
   cursor: initial;
-  background: none;
 }
 
-.c0:hover {
-  text-decoration: underline;
-  text-decoration-color: #6123df;
-}
-
-.c0:hover:disabled {
-  text-decoration: none;
-}
-
-.c2 {
+.c1 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 20px;
-  padding-right: 20px;
-  min-height: 40px;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
   width: 100%;
-  background-color: #6123df;
   max-width: 500px;
+  align-self: center;
+  border-style: solid;
+  border-color: #6123df;
+  border-width: 1px;
+  background-color: #6123df;
   cursor: pointer;
   outline: none;
-  border-width: 0;
-  display: flex;
+  display: inline-flex;
   overflow: hidden;
   text-decoration: none;
   box-sizing: border-box;
 }
 
-.c2:disabled {
+.c1:disabled {
   cursor: initial;
-  background: none;
 }
 
-.c2:hover {
+.c2 {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
   text-decoration: underline;
-  text-decoration-color: #ffffff;
+  color: #320096;
+  font-family: Montserrat-SemiBold;
+  font-size: 1rem;
+  line-height: 1.375rem;
 }
 
-.c2:hover:disabled {
-  text-decoration: none;
-}
-
-.c7 {
+.c5 {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
@@ -1205,51 +1179,21 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
   box-sizing: border-box;
 }
 
-.c7:disabled {
+.c5:disabled {
   cursor: initial;
   background: none;
 }
 
-.c7:hover {
+.c5:hover {
   text-decoration: underline;
   text-decoration-color: #696a6f;
 }
 
-.c7:hover:disabled {
+.c5:hover:disabled {
   text-decoration: none;
 }
 
-.c1 {
-  border-style: solid;
-  border-color: #6123df;
-  border-width: 2px;
-}
-
-.c1:disabled {
-  border-color: #cbcdd2;
-}
-
-.c4 {
-  border: none;
-  cursor: pointer;
-  outline: none;
-  box-sizing: border-box;
-  background-color: transparent;
-  width: fit-content;
-  margin: 0;
-  padding: 0;
-  text-decoration: underline;
-  color: #320096;
-  font-family: Montserrat-SemiBold;
-  font-size: 1rem;
-  line-height: 1.375rem;
-}
-
-.c3:disabled {
-  background-color: #f1f1f4;
-}
-
-.c5 {
+.c3 {
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
@@ -1257,11 +1201,11 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
   cursor: pointer;
 }
 
-.c8 {
+.c6 {
   background-color: transparent;
 }
 
-.c6 {
+.c4 {
   margin-right: 24px;
   margin-left: 24px;
 }
@@ -1290,17 +1234,18 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
             >
               <button
                 aria-label="Cheatcodes"
-                class="c0 c1"
+                class="c0"
                 data-testid="Cheatcodes"
                 tabindex="0"
                 type="button"
               >
                 <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                 >
                   <div
-                    class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1l73kk8 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv r-maxWidth-dnmrzs"
+                    class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                     dir="ltr"
+                    style="color: rgb(97, 35, 223); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                   >
                     Cheatcodes
                   </div>
@@ -1353,17 +1298,18 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
               >
                 <button
                   aria-label="Créer un compte"
-                  class="c2 c3"
+                  class="c1"
                   data-testid="Créer un compte"
                   tabindex="0"
                   type="button"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
                   >
                     <div
-                      class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv r-maxWidth-dnmrzs"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
                       dir="ltr"
+                      style="color: rgb(255, 255, 255); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px; text-align: center;"
                     >
                       Créer un compte
                     </div>
@@ -1395,7 +1341,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                       </div>
                     </div>
                     <button
-                      class="c4"
+                      class="c2"
                       color="#320096"
                       type="button"
                     >
@@ -1506,7 +1452,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                           </div>
                         </div>
                         <label
-                          class="c5"
+                          class="c3"
                           for="testUuidV4"
                         >
                           <div
@@ -2056,7 +2002,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
             </div>
           </main>
           <footer
-            class="c6"
+            class="c4"
           >
             <div
               class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
@@ -2123,7 +2069,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 </div>
                 <a
                   aria-label="CGU utilisateurs"
-                  class="c7 c8"
+                  class="c5 c6"
                   data-testid="CGU utilisateurs"
                   href="https://passculture.cgu"
                   tabindex="0"
@@ -2158,7 +2104,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 </a>
                 <a
                   aria-label="Charte des données personnelles"
-                  class="c7 c8"
+                  class="c5 c6"
                   data-testid="Charte des données personnelles"
                   href="https://passculture.privacy"
                   tabindex="0"

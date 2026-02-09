@@ -1,11 +1,9 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { RingingBell } from 'ui/svg/RingingBell'
 import { Typo } from 'ui/theme'
@@ -27,12 +25,15 @@ export const OnboardingSubscriptionModal = ({ visible, dismissModal }: Props) =>
         thèmes préférés&nbsp;!
       </StyledBody>
       <InternalTouchableLink
-        as={ButtonPrimary}
+        as={Button}
         wording="Choisir des thèmes à suivre"
         navigateTo={{ screen: 'OnboardingSubscription' }}
         onBeforeNavigate={dismissModal}
+        fullWidth
       />
-      <StyledButtonTertiaryBlack
+      <StyledButton
+        variant="tertiary"
+        color="neutral"
         wording="Non merci"
         icon={Invalidate}
         onPress={dismissModal}
@@ -53,6 +54,6 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,
 }))
 
-const StyledButtonTertiaryBlack = styledButton(ButtonTertiaryBlack)(({ theme }) => ({
+const StyledButton = styled(Button)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
 }))

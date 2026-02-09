@@ -13,10 +13,9 @@ import {
 import { InfoListItemProps, Summary } from 'features/identityCheck/components/Summary'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
@@ -140,15 +139,17 @@ export const BonificationRecap = () => {
       }
       fixedBottomChildren={
         <ViewGap gap={4}>
-          <ButtonPrimary
+          <Button
             isLoading={isPending}
             type="submit"
+            fullWidth
             wording="Confirmer"
             onPress={submit}
             disabled={!accepted}
           />
-          <ButtonSecondary
-            type="button"
+          <Button
+            variant="secondary"
+            color="neutral"
             wording="Modifier mes informations"
             onPress={() => {
               navigate(...getSubscriptionHookConfig('BonificationNames'))

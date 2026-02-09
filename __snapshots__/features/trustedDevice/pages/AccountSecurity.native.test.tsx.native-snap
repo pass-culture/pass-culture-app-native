@@ -335,7 +335,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
           {
             "alignItems": "center",
             "gap": 16,
-            "marginBottom": 0,
+            "marginBottom": 40,
           }
         }
       >
@@ -346,7 +346,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -376,22 +376,23 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
                 },
                 {
                   "alignItems": "center",
+                  "alignSelf": "center",
                   "backgroundColor": "#6123df",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#6123df",
+                  "borderStyle": "solid",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
                   "width": "100%",
                 },
-                {},
               ],
               {
                 "opacity": 1,
@@ -401,24 +402,39 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
           testID="Modifier mon mot de passe"
         >
           <View
+            fullWidth={true}
+            gap={8}
+            hasIcon={false}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
               }
             }
           >
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#ffffff",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": "center",
+                  },
+                ]
               }
             >
               Modifier mon mot de passe
@@ -432,7 +448,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -462,25 +478,22 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
                 },
                 {
                   "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
-                  "width": "100%",
-                },
-                {
+                  "alignSelf": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
                   "borderColor": "#6123df",
                   "borderStyle": "solid",
-                  "borderWidth": 2,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
+                  "width": "100%",
                 },
               ],
               {
@@ -491,24 +504,39 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
           testID="Suspendre mon compte"
         >
           <View
+            fullWidth={true}
+            gap={8}
+            hasIcon={false}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
               }
             }
           >
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#6123df",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#6123df",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": "center",
+                  },
+                ]
               }
             >
               Suspendre mon compte
@@ -522,7 +550,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -552,22 +580,19 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
                 },
                 {
                   "alignItems": "center",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
-                  "width": "100%",
-                },
-                {
-                  "backgroundColor": "transparent",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "width": "auto",
                 },
               ],
               {
@@ -578,9 +603,13 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
           testID="Ne pas sécuriser mon compte"
         >
           <View
+            gap={8}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
               }
             }
@@ -588,33 +617,38 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
             <View
               style={
                 {
-                  "flexDirection": "row",
                   "flexShrink": 0,
-                  "marginRight": 8,
                 }
               }
             >
               <View
-                height={20}
-                testID="button-icon-left"
-                width={20}
+                height={22}
+                width={22}
               >
                 <Text>
-                  button-icon-left-SVG-Mock
+                  undefined-SVG-Mock
                 </Text>
               </View>
             </View>
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#161617",
+                    "flexBasis": undefined,
+                    "flexGrow": undefined,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": undefined,
+                  },
+                ]
               }
             >
               Ne pas sécuriser mon compte
@@ -971,7 +1005,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
           {
             "alignItems": "center",
             "gap": 16,
-            "marginBottom": 0,
+            "marginBottom": 40,
           }
         }
       >
@@ -982,7 +1016,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -1012,22 +1046,23 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
                 },
                 {
                   "alignItems": "center",
+                  "alignSelf": "center",
                   "backgroundColor": "#6123df",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#6123df",
+                  "borderStyle": "solid",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
                   "width": "100%",
                 },
-                {},
               ],
               {
                 "opacity": 1,
@@ -1037,24 +1072,39 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
           testID="Suspendre mon compte"
         >
           <View
+            fullWidth={true}
+            gap={8}
+            hasIcon={false}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
               }
             }
           >
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#ffffff",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": "center",
+                  },
+                ]
               }
             >
               Suspendre mon compte
@@ -1068,7 +1118,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -1098,22 +1148,19 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
                 },
                 {
                   "alignItems": "center",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
-                  "width": "100%",
-                },
-                {
-                  "backgroundColor": "transparent",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "width": "auto",
                 },
               ],
               {
@@ -1124,9 +1171,13 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
           testID="Ne pas sécuriser mon compte"
         >
           <View
+            gap={8}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
               }
             }
@@ -1134,33 +1185,38 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
             <View
               style={
                 {
-                  "flexDirection": "row",
                   "flexShrink": 0,
-                  "marginRight": 8,
                 }
               }
             >
               <View
-                height={20}
-                testID="button-icon-left"
-                width={20}
+                height={22}
+                width={22}
               >
                 <Text>
-                  button-icon-left-SVG-Mock
+                  undefined-SVG-Mock
                 </Text>
               </View>
             </View>
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#161617",
+                    "flexBasis": undefined,
+                    "flexGrow": undefined,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": undefined,
+                  },
+                ]
               }
             >
               Ne pas sécuriser mon compte
@@ -1517,7 +1573,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
           {
             "alignItems": "center",
             "gap": 16,
-            "marginBottom": 0,
+            "marginBottom": 40,
           }
         }
       >
@@ -1528,7 +1584,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -1558,22 +1614,23 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
                 },
                 {
                   "alignItems": "center",
+                  "alignSelf": "center",
                   "backgroundColor": "#6123df",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#6123df",
+                  "borderStyle": "solid",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
                   "width": "100%",
                 },
-                {},
               ],
               {
                 "opacity": 1,
@@ -1583,24 +1640,39 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
           testID="Modifier mon mot de passe"
         >
           <View
+            fullWidth={true}
+            gap={8}
+            hasIcon={false}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
               }
             }
           >
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#ffffff",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": "center",
+                  },
+                ]
               }
             >
               Modifier mon mot de passe
@@ -1614,7 +1686,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -1644,25 +1716,22 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
                 },
                 {
                   "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
-                  "width": "100%",
-                },
-                {
+                  "alignSelf": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
                   "borderColor": "#6123df",
                   "borderStyle": "solid",
-                  "borderWidth": 2,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
+                  "width": "100%",
                 },
               ],
               {
@@ -1673,24 +1742,39 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
           testID="Suspendre mon compte"
         >
           <View
+            fullWidth={true}
+            gap={8}
+            hasIcon={false}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
               }
             }
           >
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#6123df",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#6123df",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": "center",
+                  },
+                ]
               }
             >
               Suspendre mon compte
@@ -1704,7 +1788,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -1734,22 +1818,19 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
                 },
                 {
                   "alignItems": "center",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
-                  "width": "100%",
-                },
-                {
-                  "backgroundColor": "transparent",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "width": "auto",
                 },
               ],
               {
@@ -1760,9 +1841,13 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
           testID="Ne pas sécuriser mon compte"
         >
           <View
+            gap={8}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
               }
             }
@@ -1770,33 +1855,38 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
             <View
               style={
                 {
-                  "flexDirection": "row",
                   "flexShrink": 0,
-                  "marginRight": 8,
                 }
               }
             >
               <View
-                height={20}
-                testID="button-icon-left"
-                width={20}
+                height={22}
+                width={22}
               >
                 <Text>
-                  button-icon-left-SVG-Mock
+                  undefined-SVG-Mock
                 </Text>
               </View>
             </View>
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#161617",
+                    "flexBasis": undefined,
+                    "flexGrow": undefined,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": undefined,
+                  },
+                ]
               }
             >
               Ne pas sécuriser mon compte

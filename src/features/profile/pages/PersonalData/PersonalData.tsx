@@ -11,9 +11,10 @@ import { EditableField } from 'features/profile/components/EditableFiled/Editabl
 import { useCheckHasCurrentEmailChangeQuery } from 'features/profile/queries/useCheckHasCurrentEmailChangeQuery'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { SectionRow } from 'ui/components/SectionRow'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Trash } from 'ui/svg/icons/Trash'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
@@ -80,11 +81,14 @@ export function PersonalData() {
             },
           ]}
         />
-        <SectionRow
-          title="Supprimer mon compte"
+        <InternalTouchableLink
+          as={Button}
+          variant="secondary"
+          color="neutral"
           type="navigable"
+          wording="Supprimer mon compte"
           navigateTo={getProfilePropConfig('DeleteProfileReason')}
-          onPress={analytics.logAccountDeletion}
+          onBeforeNavigate={analytics.logAccountDeletion}
           icon={Trash}
           iconSize={SECTION_ROW_ICON_SIZE}
         />

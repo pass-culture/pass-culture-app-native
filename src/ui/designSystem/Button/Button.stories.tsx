@@ -355,5 +355,5 @@ export const Template: VariantsStory<typeof Button> = {
 export const Loading: StoryObj<typeof Button> = {
   name: 'Button loading',
   parameters: { chromatic: { disable: true } },
-  render: () => <AlignedButton wording={baseLabel} variant="primary" isLoading fullWidth />,
+  render: () => <AlignedButton wording={baseLabel} isLoading fullWidth />,
 }

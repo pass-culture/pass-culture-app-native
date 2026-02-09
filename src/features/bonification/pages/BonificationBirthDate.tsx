@@ -15,11 +15,11 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { env } from 'libs/environment/env'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { Form } from 'ui/components/Form'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo } from 'ui/theme'
@@ -90,21 +90,22 @@ export const BonificationBirthDate = () => {
                 />
               )}
             />
-            <ButtonTertiaryPrimary
-              numberOfLines={2}
-              icon={InfoPlain}
-              wording="Je ne connais pas sa date de naissance"
-              onPress={async () => {
-                await openUrl(env.FAQ_BONIFICATION)
-              }}
-              justifyContent="flex-start"
-              inline
-            />
+            <ButtonContainerFlexStart>
+              <Button
+                variant="tertiary"
+                icon={InfoPlain}
+                wording="Je ne connais pas sa date de naissance"
+                onPress={async () => {
+                  await openUrl(env.FAQ_BONIFICATION)
+                }}
+              />
+            </ButtonContainerFlexStart>
           </ViewGap>
         </Form.MaxWidth>
       }
       fixedBottomChildren={
-        <ButtonPrimary
+        <Button
+          fullWidth
           type="submit"
           wording="Continuer"
           accessibilityLabel="Continuer vers le lieu de naissance"

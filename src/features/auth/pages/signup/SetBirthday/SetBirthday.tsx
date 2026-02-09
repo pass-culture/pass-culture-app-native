@@ -12,10 +12,10 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { NonEligible } from 'features/onboarding/enums'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -120,11 +120,12 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
           )}
         />
         <ButtonContainer>
-          <ButtonPrimary
+          <Button
             wording="Continuer"
             accessibilityLabel={accessibilityLabelForNextStep}
             disabled={!isValid}
             onPress={handleSubmit(onGoToNextStep)}
+            fullWidth
           />
         </ButtonContainer>
       </InnerContainer>

@@ -8,11 +8,10 @@ import { analytics } from 'libs/analytics/provider'
 import LottieView from 'libs/lottie'
 import success from 'ui/animations/achievements_success.json'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -72,15 +71,17 @@ export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow
             ? 'Tu as débloqué plusieurs succès\u00a0!'
             : 'Tu as débloqué un succès\u00a0!'}
         </StyledTitle>
-
         <InternalTouchableLink
-          as={ButtonPrimary}
+          as={Button}
           wording="Accéder à mes succès"
           navigateTo={getProfilePropConfig('Achievements', { from: 'success' })}
           onBeforeNavigate={hideModalAndMarkAsSeen}
+          fullWidth
         />
 
-        <ButtonTertiaryBlack
+        <Button
+          variant="tertiary"
+          color="neutral"
           wording="Fermer"
           accessibilityLabel="Fermer la modale"
           icon={Invalidate}

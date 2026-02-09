@@ -16,7 +16,6 @@ import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStack
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { StepButton } from 'ui/components/StepButton/StepButton'
@@ -24,6 +23,7 @@ import { StepButtonState } from 'ui/components/StepButton/types'
 import { StepList } from 'ui/components/StepList/StepList'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Page } from 'ui/pages/Page'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -132,7 +132,9 @@ export const Stepper = () => {
         <Spacer.Flex flex={1} />
 
         <QuitButtonContainer>
-          <ButtonTertiaryBlack
+          <Button
+            variant="tertiary"
+            color="neutral"
             icon={Invalidate}
             wording="Abandonner"
             onPress={showQuitIdentityCheckModal}

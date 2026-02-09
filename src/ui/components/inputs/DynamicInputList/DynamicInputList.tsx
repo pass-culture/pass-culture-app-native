@@ -2,10 +2,11 @@ import React, { useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { TextInputProps, RequiredIndicator } from 'ui/components/inputs/types'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { Trash } from 'ui/svg/icons/Trash'
@@ -139,13 +140,15 @@ export const DynamicInputList = ({
         </InputWrapper>
       ))}
       {displayCanAddMoreButton ? (
-        <ButtonTertiaryPrimary
-          icon={PlainMore}
-          wording={addMoreInputWording}
-          onPress={handleAddInput}
-          justifyContent="flex-start"
-          inline
-        />
+        <ButtonContainerFlexStart>
+          <Button
+            variant="secondary"
+            size="small"
+            icon={PlainMore}
+            wording={addMoreInputWording}
+            onPress={handleAddInput}
+          />
+        </ButtonContainerFlexStart>
       ) : null}
     </Container>
   )

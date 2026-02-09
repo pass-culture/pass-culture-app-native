@@ -1095,7 +1095,24 @@ exports[`PersonalData should render personal data success 1`] = `
                 {
                   "userSelect": "auto",
                 },
-                {},
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#90949d",
+                  "borderStyle": "solid",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
+                  "width": "auto",
+                },
               ],
               {
                 "opacity": 1,
@@ -1105,75 +1122,57 @@ exports[`PersonalData should render personal data success 1`] = `
           testID="Supprimer mon compte"
         >
           <View
+            gap={8}
+            hasIcon={true}
+            isMultiline={false}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                },
-                undefined,
-              ]
+              {
+                "alignItems": "center",
+                "columnGap": 8,
+                "flexDirection": "row",
+              }
             }
           >
             <View
-              fill="#161617"
-              height={24}
-              width={24}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={2}
               style={
                 {
-                  "width": 8,
-                }
-              }
-            />
-            <View
-              style={
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "textAlign": "left",
-                }
-              }
-            >
-              <Text
-                numberOfLines={2}
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Supprimer mon compte
-              </Text>
-            </View>
-            <View
-              style={
-                {
-                  "alignItems": "flex-end",
+                  "flexShrink": 0,
                 }
               }
             >
               <View
-                height={20}
-                testID="section-row-navigable-icon"
-                width={20}
+                fill="#161617"
+                height={22}
+                width={22}
               >
                 <Text>
-                  section-row-navigable-icon-SVG-Mock
+                  undefined-SVG-Mock
                 </Text>
               </View>
             </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#161617",
+                    "flexBasis": undefined,
+                    "flexGrow": undefined,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": undefined,
+                  },
+                ]
+              }
+            >
+              Supprimer mon compte
+            </Text>
           </View>
         </View>
       </View>

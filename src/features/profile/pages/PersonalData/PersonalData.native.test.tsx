@@ -146,6 +146,18 @@ describe('PersonalData', () => {
     await user.press(screen.getByText('Supprimer mon compte'))
 
     expect(analytics.logAccountDeletion).toHaveBeenCalledTimes(1)
+  })
+
+  it('should  redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
+    mockedUseAuthContext.mockReturnValueOnce({
+      ...initialAuthContext,
+      user: { ...mockedUser, isBeneficiary: false },
+    })
+
+    render(reactQueryProviderHOC(<PersonalData />))
+
+    await user.press(screen.getByText('Supprimer mon compte'))
+
     expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: undefined,
       screen: 'DeleteProfileReason',
