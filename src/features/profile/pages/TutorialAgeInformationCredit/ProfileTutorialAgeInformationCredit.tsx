@@ -27,9 +27,10 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
-import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
 import { Page } from 'ui/pages/Page'
 import { Clock } from 'ui/svg/icons/Clock'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
@@ -120,26 +121,29 @@ export const ProfileTutorialAgeInformationCredit = () => {
           ]}
         />
         {!isLoggedIn || !isEligibleToBonification || wasBonificationReceived ? null : (
-          <ButtonTertiaryPrimary
-            icon={
-              bonificationStatus === QFBonificationStatus.started ? ClockFilled : PlainArrowNext
-            }
-            wording={getWording(bonificationStatus)}
-            disabled={getDisabled(bonificationStatus)}
-            onPress={() => {
-              if (bonificationTooManyRetries) {
-                navigate(
-                  ...getSubscriptionHookConfig('BonificationRefused', {
-                    bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES,
-                  })
-                )
-              } else {
-                navigate(...getSubscriptionHookConfig('BonificationExplanations'))
+          <StyledButtonContainerFlexStart>
+            <Button
+              variant="tertiary"
+              color="neutral"
+              icon={
+                bonificationStatus === QFBonificationStatus.started ? ClockFilled : PlainArrowNext
               }
-              resetBannerVisibility()
-            }}
-            justifyContent="flex-start"
-          />
+              wording={getWording(bonificationStatus)}
+              disabled={getDisabled(bonificationStatus)}
+              onPress={() => {
+                if (bonificationTooManyRetries) {
+                  navigate(
+                    ...getSubscriptionHookConfig('BonificationRefused', {
+                      bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES,
+                    })
+                  )
+                } else {
+                  navigate(...getSubscriptionHookConfig('BonificationExplanations'))
+                }
+                resetBannerVisibility()
+              }}
+            />
+          </StyledButtonContainerFlexStart>
         )}
       </React.Fragment>
     ),
@@ -281,3 +285,7 @@ const StyledPlainMore = styled(PlainMore).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.smaller,
 }))``
+
+const StyledButtonContainerFlexStart = styled(ButtonContainerFlexStart)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.m,
+}))
