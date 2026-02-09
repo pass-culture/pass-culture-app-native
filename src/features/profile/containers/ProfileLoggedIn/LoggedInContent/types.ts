@@ -20,6 +20,8 @@ export type LoggedInNonBeneficiaryContentParams = {
 export type LoggedInBeneficiaryContentParams = {
   ChatbotButton: React.ReactNode
 } & {
+  HelpButton: React.ReactNode
+} & {
   AppearanceButton: React.ReactNode
 } & {
   LocationButton: React.ReactNode
