@@ -13,11 +13,10 @@ import { openUrl } from 'features/navigation/helpers/openUrl'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { env } from 'libs/environment/env'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { Form } from 'ui/components/Form'
 import { DynamicInputList } from 'ui/components/inputs/DynamicInputList/DynamicInputList'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -125,21 +124,20 @@ export const BonificationNames = () => {
                 />
               )}
             />
-            <ButtonTertiaryPrimary
+            <Button
+              variant="tertiary"
               numberOfLines={2}
               icon={InfoPlain}
               wording="Je ne connais pas son nom de naissance"
               onPress={async () => {
                 await openUrl(env.FAQ_BONIFICATION)
               }}
-              justifyContent="flex-start"
-              inline
             />
           </ViewGap>
         </Form.MaxWidth>
       }
       fixedBottomChildren={
-        <ButtonPrimary
+        <Button
           type="submit"
           wording="Continuer"
           accessibilityLabel="Continuer vers la civilité"

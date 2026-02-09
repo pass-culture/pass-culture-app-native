@@ -27,14 +27,13 @@ import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureSc
 import { useIsRecaptchaEnabled } from 'queries/settings/useSettings'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Form } from 'ui/components/Form'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { InputError } from 'ui/components/inputs/InputError'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Key } from 'ui/svg/icons/Key'
 import { Typo } from 'ui/theme'
@@ -238,14 +237,16 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
             requiredIndicator="explicit"
           />
           <ButtonContainer>
-            <ButtonTertiaryBlack
+            <Button
+              variant="tertiary"
+              color="neutral"
               wording="Mot de passe oublié&nbsp;?"
               onPress={onForgottenPasswordClick}
               icon={Key}
-              inline
             />
           </ButtonContainer>
-          <ButtonPrimary
+          <Button
+            fullWidth
             wording="Se connecter"
             onPress={handleSubmit(onSubmit)}
             disabled={shouldDisableLoginButton}

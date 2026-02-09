@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Spacer } from 'ui/theme'
 
 interface Props {
@@ -19,15 +18,20 @@ export const CookiesConsentButtons = ({
   <React.Fragment>
     <Container>
       <Row>
-        <ButtonPrimary wording="Tout refuser" onPress={onPressDeclineAll} />
+        <Button wording="Tout refuser" onPress={onPressDeclineAll} fullWidth />
       </Row>
       <ButtonSpacer />
       <Row>
-        <ButtonPrimary wording="Tout accepter" onPress={onPressAcceptAll} />
+        <Button wording="Tout accepter" onPress={onPressAcceptAll} fullWidth />
       </Row>
     </Container>
     <Spacer.Column numberOfSpaces={4} />
-    <ButtonSecondary wording="Choisir les cookies" onPress={onPressChooseCookies} />
+    <Button
+      variant="secondary"
+      wording="Choisir les cookies"
+      onPress={onPressChooseCookies}
+      fullWidth
+    />
   </React.Fragment>
 )
 

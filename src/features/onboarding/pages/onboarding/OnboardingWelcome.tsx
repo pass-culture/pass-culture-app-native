@@ -10,8 +10,8 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { WELCOME_BACKGROUND_SOURCE } from 'features/onboarding/components/welcomeBackground'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Page } from 'ui/pages/Page'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -44,7 +44,8 @@ export const OnboardingWelcome: FunctionComponent = () => {
           </StyledBody>
           <Spacer.Column numberOfSpaces={6} />
           <InternalTouchableLink
-            as={ButtonPrimary}
+            as={Button}
+            fullWidth
             wording="C’est parti&nbsp;!"
             icon={PlainArrowNext}
             iconAfterWording

@@ -9,10 +9,9 @@ import { OnboardingTimeline } from 'features/onboarding/components/OnboardingTim
 import { TutorialPage } from 'features/profile/pages/Tutorial/TutorialPage'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -40,8 +39,9 @@ export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element | 
 
   const buttons = [
     <InternalTouchableLink
+      as={Button}
       key={1}
-      as={ButtonPrimary}
+      fullWidth
       wording="Créer un compte"
       onBeforeNavigate={onSignupPress}
       navigateTo={{
@@ -50,8 +50,11 @@ export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element | 
       }}
     />,
     <InternalTouchableLink
+      as={Button}
       key={2}
-      as={ButtonTertiaryBlack}
+      fullWidth
+      variant="tertiary"
+      color="neutral"
       wording="Plus tard"
       icon={ClockFilled}
       onBeforeNavigate={onLaterPress}
@@ -59,7 +62,6 @@ export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element | 
       // We disable navigation because we reset the navigation before,
       // but we still want to use a link (not just a button) for accessibility reason
       enableNavigate={false}
-      fullWidth
     />,
   ]
 

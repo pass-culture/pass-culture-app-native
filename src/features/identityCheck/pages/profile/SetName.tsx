@@ -10,10 +10,10 @@ import { setNameSchema } from 'features/identityCheck/pages/profile/schemas/setN
 import { nameActions, useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -119,7 +119,7 @@ export const SetName = () => {
         </Form.MaxWidth>
       }
       fixedBottomChildren={
-        <ButtonPrimary
+        <Button
           type="submit"
           wording="Continuer"
           accessibilityLabel="Continuer vers la ville de résidence"

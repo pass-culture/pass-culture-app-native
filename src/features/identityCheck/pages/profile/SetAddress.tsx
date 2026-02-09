@@ -15,12 +15,12 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useAddressesQuery } from 'libs/place/queries/useAddressesQuery'
 import { useIdCheckAddressAutocompletion } from 'queries/settings/useSettings'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { isAddressValid } from 'ui/components/inputs/addressCheck'
 import { InputError } from 'ui/components/inputs/InputError'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -154,7 +154,7 @@ export const SetAddress = () => {
         </React.Fragment>
       }
       fixedBottomChildren={
-        <ButtonPrimary
+        <Button
           type="submit"
           onPress={submitAddress}
           wording="Continuer"

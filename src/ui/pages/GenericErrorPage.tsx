@@ -5,9 +5,8 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { useColorScheme } from 'libs/styled/useColorScheme'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Page } from 'ui/pages/Page'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer, Typo } from 'ui/theme'
@@ -95,24 +94,29 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
           {buttonPrimary || buttonTertiary || buttonTertiaryExternalNav ? (
             <ButtonContainer gap={4}>
               {buttonPrimary?.onPress ? (
-                <ButtonPrimary
+                <Button
                   key={1}
                   wording={buttonPrimary.wording}
                   onPress={buttonPrimary.onPress}
                   isLoading={buttonPrimary.isLoading}
                   disabled={buttonPrimary.disabled}
                   icon={buttonPrimary.icon}
+                  color="brand"
+                  fullWidth
                 />
               ) : null}
 
               {buttonTertiary?.onPress ? (
-                <ButtonTertiaryBlack
+                <Button
                   key={2}
                   wording={buttonTertiary.wording}
                   onPress={buttonTertiary.onPress}
                   isLoading={buttonTertiary.isLoading}
                   disabled={buttonTertiary.disabled}
                   icon={buttonTertiary.icon}
+                  variant="tertiary"
+                  color="neutral"
+                  fullWidth
                 />
               ) : null}
 
