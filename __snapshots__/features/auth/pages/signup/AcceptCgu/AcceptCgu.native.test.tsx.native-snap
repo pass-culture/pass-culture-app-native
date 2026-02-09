@@ -324,220 +324,287 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
       En cochant ces 2 cases tu assures avoir lu :
     </Text>
     <View
-      accessibilityLabel="Nos conditions générales d’utilisation"
-      accessibilityRole="link"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "borderBottomLeftRadius": 24,
-              "borderBottomRightRadius": 24,
-              "borderTopLeftRadius": 24,
-              "borderTopRightRadius": 24,
-              "flexDirection": "row",
-              "height": "auto",
-              "justifyContent": "flex-start",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {
-              "backgroundColor": "transparent",
-            },
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "alignSelf": "flex-start",
+        }
       }
-      testID="Nos conditions générales d’utilisation"
     >
       <View
-        style={
+        accessibilityLabel="Nos conditions générales d’utilisation"
+        accessibilityRole="link"
+        accessibilityState={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
           }
         }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "width": "auto",
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        testID="Nos conditions générales d’utilisation"
       >
         <View
+          gap={8}
+          hasIcon={true}
+          isMultiline={true}
           style={
             {
+              "alignItems": "center",
+              "columnGap": 8,
               "flexDirection": "row",
-              "flexShrink": 0,
-              "marginRight": 8,
             }
           }
         >
           <View
-            accessibilityLabel="Nouvelle fenêtre"
-            height={16}
-            testID="button-icon-left"
-            width={16}
-          >
-            <Text>
-              button-icon-left-SVG-Mock
-            </Text>
-          </View>
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={2}
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-              "maxWidth": "100%",
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
             }
-          }
-        >
-          Nos conditions générales d’utilisation
-        </Text>
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              {
+                "flexShrink": 0,
+              }
+            }
+            nativeID="0"
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Nouvelle fenêtre"
+              height={22}
+              width={22}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Text
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 16,
+                  "lineHeight": 22,
+                },
+                {
+                  "color": "#161617",
+                  "flexBasis": undefined,
+                  "flexGrow": undefined,
+                  "flexShrink": 1,
+                  "maxWidth": "100%",
+                  "minWidth": 0,
+                  "textAlign": undefined,
+                },
+              ]
+            }
+          >
+            Nos conditions générales d’utilisation
+          </Text>
+        </View>
       </View>
     </View>
     <View
-      accessibilityLabel="La charte des données personnelles"
-      accessibilityRole="link"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "borderBottomLeftRadius": 24,
-              "borderBottomRightRadius": 24,
-              "borderTopLeftRadius": 24,
-              "borderTopRightRadius": 24,
-              "flexDirection": "row",
-              "height": "auto",
-              "justifyContent": "flex-start",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {
-              "backgroundColor": "transparent",
-            },
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "alignSelf": "flex-start",
+        }
       }
-      testID="La charte des données personnelles"
     >
       <View
-        style={
+        accessibilityLabel="La charte des données personnelles"
+        accessibilityRole="link"
+        accessibilityState={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
           }
         }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "width": "auto",
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        testID="La charte des données personnelles"
       >
         <View
+          gap={8}
+          hasIcon={true}
+          isMultiline={true}
           style={
             {
+              "alignItems": "center",
+              "columnGap": 8,
               "flexDirection": "row",
-              "flexShrink": 0,
-              "marginRight": 8,
             }
           }
         >
           <View
-            accessibilityLabel="Nouvelle fenêtre"
-            height={16}
-            testID="button-icon-left"
-            width={16}
-          >
-            <Text>
-              button-icon-left-SVG-Mock
-            </Text>
-          </View>
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={2}
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-              "maxWidth": "100%",
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
             }
-          }
-        >
-          La charte des données personnelles
-        </Text>
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              {
+                "flexShrink": 0,
+              }
+            }
+            nativeID="1"
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Nouvelle fenêtre"
+              height={22}
+              width={22}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Text
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 16,
+                  "lineHeight": 22,
+                },
+                {
+                  "color": "#161617",
+                  "flexBasis": undefined,
+                  "flexGrow": undefined,
+                  "flexShrink": 1,
+                  "maxWidth": "100%",
+                  "minWidth": 0,
+                  "textAlign": undefined,
+                },
+              ]
+            }
+          >
+            La charte des données personnelles
+          </Text>
+        </View>
       </View>
+       
     </View>
   </View>
   <View
@@ -1116,220 +1183,287 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
       En cochant ces 2 cases tu assures avoir lu :
     </Text>
     <View
-      accessibilityLabel="Nos conditions générales d’utilisation"
-      accessibilityRole="link"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "borderBottomLeftRadius": 24,
-              "borderBottomRightRadius": 24,
-              "borderTopLeftRadius": 24,
-              "borderTopRightRadius": 24,
-              "flexDirection": "row",
-              "height": "auto",
-              "justifyContent": "flex-start",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {
-              "backgroundColor": "transparent",
-            },
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "alignSelf": "flex-start",
+        }
       }
-      testID="Nos conditions générales d’utilisation"
     >
       <View
-        style={
+        accessibilityLabel="Nos conditions générales d’utilisation"
+        accessibilityRole="link"
+        accessibilityState={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
           }
         }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "width": "auto",
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        testID="Nos conditions générales d’utilisation"
       >
         <View
+          gap={8}
+          hasIcon={true}
+          isMultiline={true}
           style={
             {
+              "alignItems": "center",
+              "columnGap": 8,
               "flexDirection": "row",
-              "flexShrink": 0,
-              "marginRight": 8,
             }
           }
         >
           <View
-            accessibilityLabel="Nouvelle fenêtre"
-            height={16}
-            testID="button-icon-left"
-            width={16}
-          >
-            <Text>
-              button-icon-left-SVG-Mock
-            </Text>
-          </View>
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={2}
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-              "maxWidth": "100%",
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
             }
-          }
-        >
-          Nos conditions générales d’utilisation
-        </Text>
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              {
+                "flexShrink": 0,
+              }
+            }
+            nativeID="2"
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Nouvelle fenêtre"
+              height={22}
+              width={22}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Text
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 16,
+                  "lineHeight": 22,
+                },
+                {
+                  "color": "#161617",
+                  "flexBasis": undefined,
+                  "flexGrow": undefined,
+                  "flexShrink": 1,
+                  "maxWidth": "100%",
+                  "minWidth": 0,
+                  "textAlign": undefined,
+                },
+              ]
+            }
+          >
+            Nos conditions générales d’utilisation
+          </Text>
+        </View>
       </View>
     </View>
     <View
-      accessibilityLabel="La charte des données personnelles"
-      accessibilityRole="link"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "borderBottomLeftRadius": 24,
-              "borderBottomRightRadius": 24,
-              "borderTopLeftRadius": 24,
-              "borderTopRightRadius": 24,
-              "flexDirection": "row",
-              "height": "auto",
-              "justifyContent": "flex-start",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {
-              "backgroundColor": "transparent",
-            },
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "alignSelf": "flex-start",
+        }
       }
-      testID="La charte des données personnelles"
     >
       <View
-        style={
+        accessibilityLabel="La charte des données personnelles"
+        accessibilityRole="link"
+        accessibilityState={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
           }
         }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "width": "auto",
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        testID="La charte des données personnelles"
       >
         <View
+          gap={8}
+          hasIcon={true}
+          isMultiline={true}
           style={
             {
+              "alignItems": "center",
+              "columnGap": 8,
               "flexDirection": "row",
-              "flexShrink": 0,
-              "marginRight": 8,
             }
           }
         >
           <View
-            accessibilityLabel="Nouvelle fenêtre"
-            height={16}
-            testID="button-icon-left"
-            width={16}
-          >
-            <Text>
-              button-icon-left-SVG-Mock
-            </Text>
-          </View>
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={2}
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-              "maxWidth": "100%",
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
             }
-          }
-        >
-          La charte des données personnelles
-        </Text>
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              {
+                "flexShrink": 0,
+              }
+            }
+            nativeID="3"
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Nouvelle fenêtre"
+              height={22}
+              width={22}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Text
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 16,
+                  "lineHeight": 22,
+                },
+                {
+                  "color": "#161617",
+                  "flexBasis": undefined,
+                  "flexGrow": undefined,
+                  "flexShrink": 1,
+                  "maxWidth": "100%",
+                  "minWidth": 0,
+                  "textAlign": undefined,
+                },
+              ]
+            }
+          >
+            La charte des données personnelles
+          </Text>
+        </View>
       </View>
+       
     </View>
   </View>
   <View

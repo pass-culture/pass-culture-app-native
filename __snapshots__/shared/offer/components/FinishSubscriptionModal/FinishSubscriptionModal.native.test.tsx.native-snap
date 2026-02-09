@@ -400,7 +400,7 @@ pour réserver cette offre
                     {
                       "busy": undefined,
                       "checked": undefined,
-                      "disabled": undefined,
+                      "disabled": false,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -430,22 +430,23 @@ pour réserver cette offre
                         },
                         {
                           "alignItems": "center",
+                          "alignSelf": "center",
                           "backgroundColor": "#6123df",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#6123df",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
                           "flexDirection": "row",
                           "justifyContent": "center",
-                          "maxWidth": 500,
-                          "minHeight": 40,
-                          "paddingBottom": 2,
-                          "paddingLeft": 20,
-                          "paddingRight": 20,
-                          "paddingTop": 2,
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
                           "width": "100%",
                         },
-                        {},
                       ],
                       {
                         "opacity": 1,
@@ -455,24 +456,39 @@ pour réserver cette offre
                   testID="Aller vers la section profil"
                 >
                   <View
+                    fullWidth={true}
+                    gap={8}
+                    hasIcon={false}
+                    isMultiline={false}
                     style={
                       {
                         "alignItems": "center",
+                        "columnGap": 8,
                         "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
                       }
                     }
                   >
                     <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
                       style={
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 22,
-                          "maxWidth": "100%",
-                        }
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 22,
+                          },
+                          {
+                            "color": "#ffffff",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": "center",
+                          },
+                        ]
                       }
                     >
                       Vérifier mon identité
@@ -889,7 +905,7 @@ pour réserver cette offre
                     {
                       "busy": undefined,
                       "checked": undefined,
-                      "disabled": undefined,
+                      "disabled": false,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -919,22 +935,23 @@ pour réserver cette offre
                         },
                         {
                           "alignItems": "center",
+                          "alignSelf": "center",
                           "backgroundColor": "#6123df",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#6123df",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
                           "flexDirection": "row",
                           "justifyContent": "center",
-                          "maxWidth": 500,
-                          "minHeight": 40,
-                          "paddingBottom": 2,
-                          "paddingLeft": 20,
-                          "paddingRight": 20,
-                          "paddingTop": 2,
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
                           "width": "100%",
                         },
-                        {},
                       ],
                       {
                         "opacity": 1,
@@ -944,24 +961,39 @@ pour réserver cette offre
                   testID="Aller vers la section profil"
                 >
                   <View
+                    fullWidth={true}
+                    gap={8}
+                    hasIcon={false}
+                    isMultiline={false}
                     style={
                       {
                         "alignItems": "center",
+                        "columnGap": 8,
                         "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
                       }
                     }
                   >
                     <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
                       style={
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 22,
-                          "maxWidth": "100%",
-                        }
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 22,
+                          },
+                          {
+                            "color": "#ffffff",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": "center",
+                          },
+                        ]
                       }
                     >
                       Confirmer mes informations
@@ -1351,7 +1383,7 @@ pour réserver cette offre
                     {
                       "busy": undefined,
                       "checked": undefined,
-                      "disabled": undefined,
+                      "disabled": false,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -1381,22 +1413,23 @@ pour réserver cette offre
                         },
                         {
                           "alignItems": "center",
+                          "alignSelf": "center",
                           "backgroundColor": "#6123df",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#6123df",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
                           "flexDirection": "row",
                           "justifyContent": "center",
-                          "maxWidth": 500,
-                          "minHeight": 40,
-                          "paddingBottom": 2,
-                          "paddingLeft": 20,
-                          "paddingRight": 20,
-                          "paddingTop": 2,
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
                           "width": "100%",
                         },
-                        {},
                       ],
                       {
                         "opacity": 1,
@@ -1406,24 +1439,39 @@ pour réserver cette offre
                   testID="Aller vers la section profil"
                 >
                   <View
+                    fullWidth={true}
+                    gap={8}
+                    hasIcon={false}
+                    isMultiline={false}
                     style={
                       {
                         "alignItems": "center",
+                        "columnGap": 8,
                         "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
                       }
                     }
                   >
                     <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
                       style={
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 22,
-                          "maxWidth": "100%",
-                        }
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 22,
+                          },
+                          {
+                            "color": "#ffffff",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": "center",
+                          },
+                        ]
                       }
                     >
                       Confirmer mes informations

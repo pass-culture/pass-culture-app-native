@@ -2464,92 +2464,107 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Débuggage"
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "borderBottomLeftRadius": 0,
-                          "borderBottomRightRadius": 0,
-                          "borderTopLeftRadius": 0,
-                          "borderTopRightRadius": 0,
-                          "borderWidth": 0,
-                          "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "marginTop": 0,
-                          "maxWidth": 500,
-                          "minHeight": 24,
-                          "paddingBottom": 0,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
-                          "paddingTop": 0,
-                          "width": "auto",
-                        },
-                        {
-                          "backgroundColor": "transparent",
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
+                    {
+                      "alignSelf": "flex-start",
+                    }
                   }
-                  testID="Débuggage"
                 >
                   <View
-                    style={
+                    accessibilityLabel="Débuggage"
+                    accessibilityRole="button"
+                    accessibilityState={
                       {
-                        "alignItems": "center",
-                        "flexDirection": "row",
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
                       }
                     }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 0,
+                            "flexDirection": "row",
+                            "justifyContent": "center",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "width": "auto",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Débuggage"
                   >
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
+                    <View
+                      gap={8}
+                      hasIcon={false}
+                      isMultiline={false}
                       style={
                         {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                          "maxWidth": "100%",
+                          "alignItems": "center",
+                          "columnGap": 8,
+                          "flexDirection": "row",
                         }
                       }
                     >
-                      Débuggage
-                    </Text>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#161617",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
+                        }
+                      >
+                        Débuggage
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>

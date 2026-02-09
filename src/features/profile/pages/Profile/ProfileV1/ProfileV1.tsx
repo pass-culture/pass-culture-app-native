@@ -29,7 +29,6 @@ import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureSc
 import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { getAge } from 'shared/user/getAge'
-import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
@@ -39,6 +38,8 @@ import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlu
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 import { useDebounce } from 'ui/hooks/useDebounce'
@@ -399,13 +400,17 @@ const OnlineProfile: React.FC = () => {
                 </Version>
                 {enableDebugSection ? (
                   <DebugButtonContainer>
-                    <InternalTouchableLink
-                      as={ButtonQuaternaryBlack}
-                      wording="Débuggage"
-                      navigateTo={getProfilePropConfig('DebugScreen')}
-                      justifyContent="flex-start"
-                      inline
-                    />
+                    <ButtonContainerFlexStart>
+                      <InternalTouchableLink
+                        as={Button}
+                        variant="tertiary"
+                        color="neutral"
+                        wording="Débuggage"
+                        navigateTo={getProfilePropConfig('DebugScreen')}
+                        justifyContent="flex-start"
+                        inline
+                      />
+                    </ButtonContainerFlexStart>
                   </DebugButtonContainer>
                 ) : null}
                 {isWeb ? null : (

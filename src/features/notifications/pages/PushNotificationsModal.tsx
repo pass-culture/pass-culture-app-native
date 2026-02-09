@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { analytics } from 'libs/analytics/provider'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
+import { Button } from 'ui/designSystem/Button/Button'
 import { RingingBell } from 'ui/svg/RingingBell'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -35,7 +35,7 @@ export const PushNotificationsModal: React.FC<Props> = ({
         Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil.
       </InformationText>
       <Spacer.Column numberOfSpaces={6} />
-      <ButtonPrimary
+      <Button
         wording="Autoriser les notifications"
         onPress={() => {
           analytics.logOpenNotificationSettings()

@@ -4,10 +4,10 @@ import styled from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonWithLinearGradientDeprecated } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradientDeprecated'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { UserNotification } from 'ui/svg/UserNotification'
 import { Typo } from 'ui/theme'
 
@@ -34,7 +34,8 @@ export const NotificationsLoggedOutModal: FunctionComponent<Props> = ({
       </InformationText>
       <ButtonContainer gap={4}>
         <InternalTouchableLink
-          as={ButtonWithLinearGradientDeprecated}
+          as={Button}
+          fullWidth
           wording="Créer un compte"
           navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.THEMATIC_HOME } }}
           onBeforeNavigate={() => {

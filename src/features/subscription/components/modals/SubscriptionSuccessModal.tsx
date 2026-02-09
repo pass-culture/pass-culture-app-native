@@ -5,11 +5,9 @@ import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/
 import { mapSubscriptionThemeToDescription } from 'features/subscription/helpers/mapSubscriptionThemeToDescription'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { SubscriptionTheme } from 'features/subscription/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Parameters } from 'ui/svg/icons/Parameters'
 import { RingingBell } from 'ui/svg/RingingBell'
 import { Typo } from 'ui/theme'
@@ -36,7 +34,9 @@ export const SubscriptionSuccessModal: FunctionComponent<Props> = ({
       <StyledButtonContainer>
         <StyledButtonPrimary wording="Continuer sur l’app" onPress={dismissModal} />
         <InternalTouchableLink
-          as={ButtonTertiaryBlack}
+          as={Button}
+          variant="tertiary"
+          color="neutral"
           wording="Voir mes préférences"
           icon={Parameters}
           navigateTo={getProfilePropConfig('NotificationsSettings')}
@@ -52,7 +52,7 @@ const StyledButtonContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.l,
 }))
 
-const StyledButtonPrimary = styledButton(ButtonPrimary)(({ theme }) => ({
+const StyledButtonPrimary = styled(Button)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.s,
 }))
 

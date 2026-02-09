@@ -13,10 +13,10 @@ import { ReCaptchaError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { useIsRecaptchaEnabled } from 'queries/settings/useSettings'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
+import { Button } from 'ui/designSystem/Button/Button'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -70,7 +70,7 @@ export const ForgottenPassword = () => {
       <Form.MaxWidth>
         <EmailInputController label="Adresse e-mail" control={control} name="email" />
         <ButtonContainer>
-          <ButtonPrimary
+          <Button
             wording="Valider"
             onPress={isRecaptchaEnabled ? openReCaptchaChallenge : requestPasswordReset}
             isLoading={isDoingReCaptchaChallenge || isFetching || areSettingsLoading}

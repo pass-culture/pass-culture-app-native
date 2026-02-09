@@ -363,236 +363,245 @@ exports[`<OnboardingSubscriptionModal /> should display correctly 1`] = `
                   Du mal à trouver ce qui te plaît ? Reçois toutes les offres et actus en lien avec tes thèmes préférés !
                 </Text>
                 <View
-                  accessibilityLabel="Choisir des thèmes à suivre"
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": false,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
+                  gap={4}
                   style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "alignSelf": "center",
-                          "backgroundColor": "#6123df",
-                          "borderBottomLeftRadius": 8,
-                          "borderBottomRightRadius": 8,
-                          "borderColor": "#6123df",
-                          "borderStyle": "solid",
-                          "borderTopLeftRadius": 8,
-                          "borderTopRightRadius": 8,
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "justifyContent": "center",
-                          "paddingBottom": 8,
-                          "paddingLeft": 12,
-                          "paddingRight": 12,
-                          "paddingTop": 8,
-                          "width": "100%",
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
+                    {
+                      "gap": 16,
+                    }
                   }
-                  testID="Choisir des thèmes à suivre"
                 >
                   <View
-                    fullWidth={true}
-                    gap={8}
-                    hasIcon={false}
-                    isMultiline={false}
-                    style={
+                    accessibilityLabel="Choisir des thèmes à suivre"
+                    accessibilityRole="button"
+                    accessibilityState={
                       {
-                        "alignItems": "center",
-                        "columnGap": 8,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "width": "100%",
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
                       }
                     }
-                  >
-                    <Text
-                      style={
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
                         [
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 22,
+                            "userSelect": "auto",
                           },
                           {
-                            "color": "#ffffff",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
-                            "textAlign": "center",
+                            "alignItems": "center",
+                            "alignSelf": "center",
+                            "backgroundColor": "#6123df",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderColor": "#6123df",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "justifyContent": "center",
+                            "paddingBottom": 8,
+                            "paddingLeft": 12,
+                            "paddingRight": 12,
+                            "paddingTop": 8,
+                            "width": "100%",
                           },
-                        ]
-                      }
-                    >
-                      Choisir des thèmes à suivre
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Fermer la modale"
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": false,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
+                        ],
                         {
-                          "userSelect": "auto",
+                          "opacity": 1,
                         },
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 8,
-                          "borderBottomRightRadius": 8,
-                          "borderTopLeftRadius": 8,
-                          "borderTopRightRadius": 8,
-                          "borderWidth": 0,
-                          "flexDirection": "row",
-                          "justifyContent": "center",
-                          "paddingBottom": 0,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
-                          "paddingTop": 0,
-                          "width": "auto",
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="Fermer la modale"
-                >
-                  <View
-                    gap={8}
-                    hasIcon={true}
-                    isMultiline={false}
-                    style={
-                      {
-                        "alignItems": "center",
-                        "columnGap": 8,
-                        "flexDirection": "row",
-                      }
+                      ]
                     }
+                    testID="Choisir des thèmes à suivre"
                   >
                     <View
-                      collapsable={false}
-                      jestAnimatedProps={
-                        {
-                          "value": {},
-                        }
-                      }
-                      jestAnimatedStyle={
-                        {
-                          "value": {},
-                        }
-                      }
-                      jestInlineStyle={
-                        {
-                          "flexShrink": 0,
-                        }
-                      }
-                      nativeID="0"
+                      fullWidth={true}
+                      gap={8}
+                      hasIcon={false}
+                      isMultiline={false}
                       style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "width": "100%",
+                        }
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#ffffff",
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                      >
+                        Choisir des thèmes à suivre
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityLabel="Fermer la modale"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
                         [
                           {
-                            "flexShrink": 0,
+                            "userSelect": "auto",
                           },
-                        ]
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 0,
+                            "flexDirection": "row",
+                            "justifyContent": "center",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "width": "auto",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Fermer la modale"
+                  >
+                    <View
+                      gap={8}
+                      hasIcon={true}
+                      isMultiline={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                        }
                       }
                     >
                       <View
-                        height={22}
-                        width={22}
+                        collapsable={false}
+                        jestAnimatedProps={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestAnimatedStyle={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestInlineStyle={
+                          {
+                            "flexShrink": 0,
+                          }
+                        }
+                        nativeID="0"
+                        style={
+                          [
+                            {
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          height={22}
+                          width={22}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#161617",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
+                        }
+                      >
+                        Non merci
+                      </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 22,
-                          },
-                          {
-                            "color": "#161617",
-                            "flexBasis": undefined,
-                            "flexGrow": undefined,
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
-                            "textAlign": undefined,
-                          },
-                        ]
-                      }
-                    >
-                      Non merci
-                    </Text>
                   </View>
                 </View>
               </View>

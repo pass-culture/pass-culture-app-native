@@ -1,45 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`NotificationsSettings should render correctly 1`] = `
-.c4 {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 20px;
-  padding-right: 20px;
-  min-height: 40px;
-  width: 100%;
-  background-color: #f1f1f4;
-  max-width: 500px;
-  cursor: pointer;
-  outline: none;
-  border-width: 0;
-  display: flex;
-  overflow: hidden;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c4:disabled {
-  cursor: initial;
-  background: none;
-}
-
-.c4:hover {
-  text-decoration: underline;
-  text-decoration-color: #ffffff;
-}
-
-.c4:hover:disabled {
-  text-decoration: none;
-}
-
-.c5:disabled {
-  background-color: #f1f1f4;
-}
-
 .c0 {
   flex-direction: column;
   cursor: pointer;
@@ -69,6 +30,33 @@ exports[`NotificationsSettings should render correctly 1`] = `
 
 .c0:hover:disabled {
   text-decoration: none;
+}
+
+.c4 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  width: auto;
+  max-width: 500px;
+  border-style: solid;
+  border-color: #cbcdd2;
+  border-width: 1px;
+  background-color: #f1f1f4;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c4:disabled {
+  cursor: initial;
 }
 
 .c3 {
@@ -792,18 +780,19 @@ exports[`NotificationsSettings should render correctly 1`] = `
               class="css-view-175oi2r r-height-3da1kt"
             />
             <button
-              aria-label="Enregistrer"
-              class="c4 c5"
+              aria-label="Enregistrer les modifications"
+              class="c4"
               data-testid="Enregistrer les modifications"
               disabled=""
               type="button"
             >
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
               >
                 <div
-                  class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv r-maxWidth-dnmrzs"
+                  class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
                   dir="ltr"
+                  style="color: rgb(105, 106, 111); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                 >
                   Enregistrer
                 </div>

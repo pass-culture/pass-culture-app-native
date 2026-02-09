@@ -4,11 +4,11 @@ import styled from 'styled-components/native'
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
 import { Question } from 'ui/svg/icons/Question'
 import { Spacer } from 'ui/theme'
 
@@ -29,11 +29,15 @@ export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpi
     }
     return (
       <React.Fragment>
-        <StyledButtonQuaternaryBlack
-          icon={Question}
-          wording="Mon crédit est expiré, que&nbsp;faire&nbsp;?"
-          onPress={onPressExplanationButton}
-        />
+        <ButtonContainerFlexStart>
+          <StyledButton
+            variant="tertiary"
+            color="neutral"
+            icon={Question}
+            wording="Mon crédit est expiré, que&nbsp;faire&nbsp;?"
+            onPress={onPressExplanationButton}
+          />
+        </ButtonContainerFlexStart>
         <ExpiredCreditModal visible={visible} hideModal={hideModal} />
       </React.Fragment>
     )
@@ -44,18 +48,22 @@ export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpi
       <Spacer.Column numberOfSpaces={4} />
       <GreySeparator />
       <Spacer.Column numberOfSpaces={2.5} />
-      <InternalTouchableLink
-        as={StyledButtonQuaternaryBlack}
-        icon={Question}
-        wording="Comment ça marche&nbsp;?"
-        navigateTo={getProfilePropConfig('ProfileTutorialAgeInformationCredit')}
-        onBeforeNavigate={onTutorialClick}
-      />
+      <ButtonContainerFlexStart>
+        <InternalTouchableLink
+          as={StyledButton}
+          variant="tertiary"
+          color="neutral"
+          icon={Question}
+          wording="Comment ça marche&nbsp;?"
+          navigateTo={getProfilePropConfig('ProfileTutorialAgeInformationCredit')}
+          onBeforeNavigate={onTutorialClick}
+        />
+      </ButtonContainerFlexStart>
     </React.Fragment>
   )
 }
 
-const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack).attrs({
+const StyledButton = styled(Button).attrs({
   numberOfLines: 2,
   justifyContent: 'flex-start',
 })(({ theme }) => ({
