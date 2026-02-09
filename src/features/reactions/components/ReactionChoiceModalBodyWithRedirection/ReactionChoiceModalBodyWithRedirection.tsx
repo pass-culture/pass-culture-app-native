@@ -1,13 +1,12 @@
 import React, { FunctionComponent } from 'react'
 // eslint-disable-next-line no-restricted-imports
-import { Image } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import thumbs from 'features/reactions/images/thumbs.png'
 import { OfferImageBasicProps } from 'features/reactions/types'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { MultipleThumbs } from 'ui/svg/icons/MultipleThumbs'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -41,7 +40,7 @@ export const ReactionChoiceModalBodyWithRedirection: FunctionComponent<Props> = 
         </GradientContainer>
       ) : (
         <ThumbsImageContainer testID="thumbsImage">
-          <ThumbsImage source={thumbs} resizeMode="cover" />
+          <MultipleThumbs />
         </ThumbsImageContainer>
       )}
 
@@ -94,12 +93,6 @@ const ThumbsImageContainer = styled.View({
   justifyContent: 'center',
   alignItems: 'center',
 })
-
-const ThumbsImage = styled(Image)(({ theme }) => ({
-  width: 210,
-  height: '100%',
-  marginTop: theme.designSystem.size.spacing.l,
-}))
 
 const StyledTitle3 = styled(Typo.Title3)({
   textAlign: 'center',

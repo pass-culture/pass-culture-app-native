@@ -1,11 +1,11 @@
-import React, { FunctionComponent, useCallback, useMemo } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
 
 import { ReactionTypeEnum } from 'api/gen'
-import { ReactionToggleButton } from 'features/reactions/components/ReactionToggleButton/ReactionToggleButton'
-import { IconNames } from 'ui/components/icons/iconFactory'
-import { useIconFactory } from 'ui/components/icons/useIconFactory'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ThumbDownFilled } from 'ui/svg/icons/ThumbDownFilled'
+import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 
 type Props = {
   handleOnPressReactionButton: (reactionType: ReactionTypeEnum) => void
@@ -21,59 +21,36 @@ export const ReactionChoiceValidation: FunctionComponent<Props> = ({
   dislikeLabel,
   ...props
 }) => {
-  const iconFactory = useIconFactory()
-  const { designSystem } = useTheme()
-
-  const getStyledIcon = useCallback(
-    (name: IconNames, props?: object) =>
-      styled(iconFactory.getIcon(name)).attrs(({ theme }) => ({
-        size: theme.icons.sizes.small,
-        ...props,
-      }))``,
-    [iconFactory]
-  )
-
-  const ThumbUpIcon = useMemo(
-    () => ({
-      default: getStyledIcon('like', { testID: 'thumbUp' }),
-      pressed: getStyledIcon('like-filled', {
-        testID: 'thumbUpFilled',
-        color: designSystem.color.icon.brandPrimary,
-      }),
-    }),
-    [getStyledIcon, designSystem.color.icon.brandPrimary]
-  )
-
-  const ThumbDownIcon = useMemo(
-    () => ({
-      default: getStyledIcon('dislike', { testID: 'thumbDown' }),
-      pressed: getStyledIcon('dislike-filled', {
-        testID: 'thumbDownFilled',
-      }),
-    }),
-    [getStyledIcon]
-  )
-
   return (
     <ButtonsContainer gap={4} {...props}>
-      <ReactionToggleButton
-        active={reactionStatus === ReactionTypeEnum.LIKE}
-        label={likeLabel}
-        Icon={ThumbUpIcon.default}
-        FilledIcon={ThumbUpIcon.pressed}
-        onPress={() => handleOnPressReactionButton(ReactionTypeEnum.LIKE)}
-      />
-      <ReactionToggleButton
-        active={reactionStatus === ReactionTypeEnum.DISLIKE}
-        label={dislikeLabel}
-        Icon={ThumbDownIcon.default}
-        FilledIcon={ThumbDownIcon.pressed}
-        onPress={() => handleOnPressReactionButton(ReactionTypeEnum.DISLIKE)}
-      />
+      <ButtonContainer>
+        <Button
+          wording={likeLabel}
+          icon={ThumbUpFilled}
+          onPress={() => handleOnPressReactionButton(ReactionTypeEnum.LIKE)}
+          variant="secondary"
+          color={reactionStatus === ReactionTypeEnum.LIKE ? 'brand' : 'neutral'}
+          size="small"
+        />
+      </ButtonContainer>
+      <ButtonContainer>
+        <Button
+          wording={dislikeLabel}
+          icon={ThumbDownFilled}
+          onPress={() => handleOnPressReactionButton(ReactionTypeEnum.DISLIKE)}
+          variant="secondary"
+          color={reactionStatus === ReactionTypeEnum.DISLIKE ? 'brand' : 'neutral'}
+          size="small"
+        />
+      </ButtonContainer>
     </ButtonsContainer>
   )
 }
 
 const ButtonsContainer = styled(ViewGap)({
   flexDirection: 'row',
+})
+
+const ButtonContainer = styled.View({
+  flex: 1,
 })
