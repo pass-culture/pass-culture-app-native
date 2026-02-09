@@ -13,6 +13,7 @@ import {
 import { InfoListItemProps, Summary } from 'features/identityCheck/components/Summary'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -51,7 +52,7 @@ export const BonificationRecap = () => {
         firstNames,
         commonName,
         lastName: givenName,
-        birthDate: new Date(birthDate).toISOString().substring(0, 10),
+        birthDate: formatDateToISOStringWithoutTime(birthDate),
         birthCountryCogCode: birthCountry.cog.toString(),
         birthCityCogCode: birthCity?.code,
       })
