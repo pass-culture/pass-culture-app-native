@@ -70,7 +70,7 @@ export interface VenueDetail {
   distance?: string
 }
 
-export type OfferHeaderComponentProps = PropsWithChildren<{
+type OfferHeaderComponentProps = PropsWithChildren<{
   headerTransition: Animated.AnimatedInterpolation<string | number>
   title: string
   offer: OfferResponseV2

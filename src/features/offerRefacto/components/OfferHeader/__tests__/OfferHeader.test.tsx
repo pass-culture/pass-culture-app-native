@@ -77,10 +77,7 @@ describe('<OfferHeader /> (refacto wrapper)', () => {
 function renderOfferHeader(children?: React.ReactElement | null) {
   const animatedValue = new Animated.Value(0)
   render(
-    <OfferHeader
-      title="Ignored title"
-      headerTransition={animatedValue}
-      offer={offerResponseSnap}>
+    <OfferHeader title="Ignored title" headerTransition={animatedValue} offer={offerResponseSnap}>
       {children}
     </OfferHeader>
   )

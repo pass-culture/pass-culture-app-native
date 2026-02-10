@@ -42,7 +42,7 @@ describe('useOfferHeaderTracking', () => {
 
   it('should update offerId when prop changes', () => {
     const { result, rerender } = renderHook(
-      ({ offerId }) => useOfferHeaderTracking({ offerId }),
+      ({ offerId }: { offerId: number }) => useOfferHeaderTracking({ offerId }),
       { initialProps: { offerId: 100 } }
     )
 
@@ -50,9 +50,7 @@ describe('useOfferHeaderTracking', () => {
       result.current.trackShare()
     })
 
-    expect(analytics.logShare).toHaveBeenCalledWith(
-      expect.objectContaining({ offerId: 100 })
-    )
+    expect(analytics.logShare).toHaveBeenCalledWith(expect.objectContaining({ offerId: 100 }))
 
     rerender({ offerId: 200 })
 
@@ -60,8 +58,6 @@ describe('useOfferHeaderTracking', () => {
       result.current.trackShare()
     })
 
-    expect(analytics.logShare).toHaveBeenLastCalledWith(
-      expect.objectContaining({ offerId: 200 })
-    )
+    expect(analytics.logShare).toHaveBeenLastCalledWith(expect.objectContaining({ offerId: 200 }))
   })
 })
