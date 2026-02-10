@@ -10,7 +10,6 @@ import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { analytics } from 'libs/analytics/provider'
-import { LoadingPage } from 'ui/pages/LoadingPage'
 import { Spacer } from 'ui/theme'
 
 // To avoid [Error: Unable to open URL: about:srcdoc. Add about to LSApplicationQueriesSchemes in your Info.plist.]
@@ -44,10 +43,6 @@ export const UbbleWebview: React.FC = () => {
       void analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.ubble })
       navigate(...getSubscriptionHookConfig('IdentityCheckEnd'))
     }
-  }
-
-  if (!identificationUrl) {
-    return <LoadingPage />
   }
 
   return (

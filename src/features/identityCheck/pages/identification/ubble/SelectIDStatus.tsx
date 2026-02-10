@@ -31,15 +31,17 @@ export const SelectIDStatus: FunctionComponent = () => {
     try {
       const identificationSessionResponse = await mutateUbbleIdentification()
 
-      navigate(
-        ...getSubscriptionHookConfig('UbbleWebview', {
+      // We don't use the helper because it would require making the navigation param identificationUrl optional (in SubscriptionStackTypes.ts) to satisfy typing
+      navigate('SubscriptionStackNavigator', {
+        screen: 'UbbleWebview',
+        params: {
           identificationUrl: identificationSessionResponse.identificationUrl,
-        })
-      )
+        },
+      })
     } catch (err) {
       const error = (err as ApiError)?.content?.code
       if (error === 'IDCHECK_ALREADY_PROCESSED') {
-        navigate(...getSubscriptionHookConfig('IdentityCheckPending'))
+        replace(...getSubscriptionHookConfig('IdentityCheckPending'))
       } else {
         const withDMS = subscription?.maintenancePageType === MaintenancePageType['with-dms']
         replace(...getSubscriptionHookConfig('IdentityCheckUnavailable', { withDMS }))

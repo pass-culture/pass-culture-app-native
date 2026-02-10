@@ -31,7 +31,7 @@ export type SubscriptionStackParamList = {
   ComeBackLater: undefined
   DMSIntroduction?: { isForeignDMSInformation: boolean }
   ExpiredOrLostID: undefined
-  UbbleWebview?: { identificationUrl: string }
+  UbbleWebview: { identificationUrl: string }
   IdentityCheckEnd: undefined
   IdentityCheckUnavailable?: { withDMS?: boolean }
   EduConnectForm: undefined

@@ -8,7 +8,6 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { analytics } from 'libs/analytics/provider'
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { LoadingPage } from 'ui/pages/LoadingPage'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const Ubble: any
@@ -33,7 +32,6 @@ export const UbbleWebview: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   useEffect(() => {
-    if (!identificationUrl) return
     window.onUbbleReady = () => {
       const ubbleIDV = new Ubble.IDV(document.getElementById(ubbleIframeId), {
         width: '100%',
@@ -60,10 +58,6 @@ export const UbbleWebview: React.FC = () => {
       })
     }
   }, [identificationUrl, navigate])
-
-  if (!identificationUrl) {
-    return <LoadingPage />
-  }
 
   return (
     <React.Fragment>

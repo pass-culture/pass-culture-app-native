@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, replace } from '__mocks__/@react-navigation/native'
 import { IdentificationSessionResponse } from 'api/gen'
 import { SelectIDStatus } from 'features/identityCheck/pages/identification/ubble/SelectIDStatus'
 import { mockServer } from 'tests/mswServer'
@@ -58,7 +58,7 @@ describe('SelectIDStatus', () => {
     const button = screen.getByText('J’ai ma pièce d’identité en cours de validité')
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+    expect(replace).toHaveBeenCalledWith('SubscriptionStackNavigator', {
       params: undefined,
       screen: 'IdentityCheckPending',
     })
