@@ -43,19 +43,24 @@ import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 const keyExtractor = (item: FavoriteResponse) => item.id.toString()
 
 function applySortBy(list: Array<FavoriteResponse>, sortBy: FavoriteSortBy, position: Position) {
-  const copiedList = [...list]
   if (!list) {
     // fix concurrency sentry/issues/288586
     return []
-  } else if (sortBy === 'ASCENDING_PRICE') {
-    return copiedList.sort(sortByAscendingPrice)
-  } else if (sortBy === 'AROUND_ME') {
-    return copiedList.sort(sortByDistanceAroundMe(position))
-  } else if (sortBy === 'RECENTLY_ADDED') {
-    return copiedList.sort(sortByIdDesc)
-  } else {
-    return copiedList
   }
+
+  const copiedList = [...list]
+
+  if (sortBy === 'ASCENDING_PRICE') {
+    return copiedList.sort(sortByAscendingPrice)
+  }
+  if (sortBy === 'AROUND_ME') {
+    return copiedList.sort(sortByDistanceAroundMe(position))
+  }
+  if (sortBy === 'RECENTLY_ADDED') {
+    return copiedList.sort(sortByIdDesc)
+  }
+
+  return copiedList
 }
 
 const ANIMATION_DURATION = 700
