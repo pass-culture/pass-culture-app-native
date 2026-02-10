@@ -407,8 +407,6 @@ const OnlineProfile: React.FC = () => {
                         color="neutral"
                         wording="Débuggage"
                         navigateTo={getProfilePropConfig('DebugScreen')}
-                        justifyContent="flex-start"
-                        inline
                       />
                     </ButtonContainerFlexStart>
                   </DebugButtonContainer>

@@ -161,7 +161,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
             externalNav={{ url: env.PRIVACY_POLICY_LINK }}
             icon={ExternalSiteFilled}
             numberOfLines={2}
-          />{' '}
+          />
         </ButtonContainerFlexStart>
       </LinksContainer>
       <ButtonContainer>

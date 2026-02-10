@@ -377,8 +377,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
+                  gap={3}
                   style={
                     {
+                      "gap": 12,
                       "marginBottom": 16,
                       "width": "100%",
                     }
@@ -421,6 +423,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                           },
                           {
                             "alignItems": "center",
+                            "alignSelf": "center",
                             "backgroundColor": "#6123df",
                             "borderBottomLeftRadius": 8,
                             "borderBottomRightRadius": 8,
@@ -435,7 +438,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                             "paddingLeft": 12,
                             "paddingRight": 12,
                             "paddingTop": 8,
-                            "width": "auto",
+                            "width": "100%",
                           },
                         ],
                         {
@@ -446,6 +449,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                     testID="Continuer sur l’app"
                   >
                     <View
+                      fullWidth={true}
                       gap={8}
                       hasIcon={false}
                       isMultiline={false}
@@ -454,6 +458,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                           "alignItems": "center",
                           "columnGap": 8,
                           "flexDirection": "row",
+                          "justifyContent": "center",
+                          "width": "100%",
                         }
                       }
                     >
@@ -468,12 +474,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                             },
                             {
                               "color": "#ffffff",
-                              "flexBasis": undefined,
-                              "flexGrow": undefined,
+                              "flexBasis": 0,
+                              "flexGrow": 1,
                               "flexShrink": 1,
                               "maxWidth": "100%",
                               "minWidth": 0,
-                              "textAlign": undefined,
+                              "textAlign": "center",
                             },
                           ]
                         }
@@ -1002,8 +1008,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
+                  gap={3}
                   style={
                     {
+                      "gap": 12,
                       "marginBottom": 16,
                       "width": "100%",
                     }
@@ -1046,6 +1054,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                           },
                           {
                             "alignItems": "center",
+                            "alignSelf": "center",
                             "backgroundColor": "#6123df",
                             "borderBottomLeftRadius": 8,
                             "borderBottomRightRadius": 8,
@@ -1060,7 +1069,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                             "paddingLeft": 12,
                             "paddingRight": 12,
                             "paddingTop": 8,
-                            "width": "auto",
+                            "width": "100%",
                           },
                         ],
                         {
@@ -1071,6 +1080,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                     testID="Continuer sur l’app"
                   >
                     <View
+                      fullWidth={true}
                       gap={8}
                       hasIcon={false}
                       isMultiline={false}
@@ -1079,6 +1089,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                           "alignItems": "center",
                           "columnGap": 8,
                           "flexDirection": "row",
+                          "justifyContent": "center",
+                          "width": "100%",
                         }
                       }
                     >
@@ -1093,12 +1105,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                             },
                             {
                               "color": "#ffffff",
-                              "flexBasis": undefined,
-                              "flexGrow": undefined,
+                              "flexBasis": 0,
+                              "flexGrow": 1,
                               "flexShrink": 1,
                               "maxWidth": "100%",
                               "minWidth": 0,
-                              "textAlign": undefined,
+                              "textAlign": "center",
                             },
                           ]
                         }
@@ -1627,8 +1639,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
+                  gap={3}
                   style={
                     {
+                      "gap": 12,
                       "marginBottom": 16,
                       "width": "100%",
                     }
@@ -1671,6 +1685,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                           },
                           {
                             "alignItems": "center",
+                            "alignSelf": "center",
                             "backgroundColor": "#6123df",
                             "borderBottomLeftRadius": 8,
                             "borderBottomRightRadius": 8,
@@ -1685,7 +1700,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                             "paddingLeft": 12,
                             "paddingRight": 12,
                             "paddingTop": 8,
-                            "width": "auto",
+                            "width": "100%",
                           },
                         ],
                         {
@@ -1696,6 +1711,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                     testID="Continuer sur l’app"
                   >
                     <View
+                      fullWidth={true}
                       gap={8}
                       hasIcon={false}
                       isMultiline={false}
@@ -1704,6 +1720,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                           "alignItems": "center",
                           "columnGap": 8,
                           "flexDirection": "row",
+                          "justifyContent": "center",
+                          "width": "100%",
                         }
                       }
                     >
@@ -1718,12 +1736,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                             },
                             {
                               "color": "#ffffff",
-                              "flexBasis": undefined,
-                              "flexGrow": undefined,
+                              "flexBasis": 0,
+                              "flexGrow": 1,
                               "flexShrink": 1,
                               "maxWidth": "100%",
                               "minWidth": 0,
-                              "textAlign": undefined,
+                              "textAlign": "center",
                             },
                           ]
                         }
@@ -2252,8 +2270,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
+                  gap={3}
                   style={
                     {
+                      "gap": 12,
                       "marginBottom": 16,
                       "width": "100%",
                     }
@@ -2296,6 +2316,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                           },
                           {
                             "alignItems": "center",
+                            "alignSelf": "center",
                             "backgroundColor": "#6123df",
                             "borderBottomLeftRadius": 8,
                             "borderBottomRightRadius": 8,
@@ -2310,7 +2331,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                             "paddingLeft": 12,
                             "paddingRight": 12,
                             "paddingTop": 8,
-                            "width": "auto",
+                            "width": "100%",
                           },
                         ],
                         {
@@ -2321,6 +2342,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                     testID="Continuer sur l’app"
                   >
                     <View
+                      fullWidth={true}
                       gap={8}
                       hasIcon={false}
                       isMultiline={false}
@@ -2329,6 +2351,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                           "alignItems": "center",
                           "columnGap": 8,
                           "flexDirection": "row",
+                          "justifyContent": "center",
+                          "width": "100%",
                         }
                       }
                     >
@@ -2343,12 +2367,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                             },
                             {
                               "color": "#ffffff",
-                              "flexBasis": undefined,
-                              "flexGrow": undefined,
+                              "flexBasis": 0,
+                              "flexGrow": 1,
                               "flexShrink": 1,
                               "maxWidth": "100%",
                               "minWidth": 0,
-                              "textAlign": undefined,
+                              "textAlign": "center",
                             },
                           ]
                         }
@@ -2877,8 +2901,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
+                  gap={3}
                   style={
                     {
+                      "gap": 12,
                       "marginBottom": 16,
                       "width": "100%",
                     }
@@ -2921,6 +2947,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                           },
                           {
                             "alignItems": "center",
+                            "alignSelf": "center",
                             "backgroundColor": "#6123df",
                             "borderBottomLeftRadius": 8,
                             "borderBottomRightRadius": 8,
@@ -2935,7 +2962,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                             "paddingLeft": 12,
                             "paddingRight": 12,
                             "paddingTop": 8,
-                            "width": "auto",
+                            "width": "100%",
                           },
                         ],
                         {
@@ -2946,6 +2973,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                     testID="Continuer sur l’app"
                   >
                     <View
+                      fullWidth={true}
                       gap={8}
                       hasIcon={false}
                       isMultiline={false}
@@ -2954,6 +2982,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                           "alignItems": "center",
                           "columnGap": 8,
                           "flexDirection": "row",
+                          "justifyContent": "center",
+                          "width": "100%",
                         }
                       }
                     >
@@ -2968,12 +2998,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                             },
                             {
                               "color": "#ffffff",
-                              "flexBasis": undefined,
-                              "flexGrow": undefined,
+                              "flexBasis": 0,
+                              "flexGrow": 1,
                               "flexShrink": 1,
                               "maxWidth": "100%",
                               "minWidth": 0,
-                              "textAlign": undefined,
+                              "textAlign": "center",
                             },
                           ]
                         }
@@ -3502,8 +3532,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
+                  gap={3}
                   style={
                     {
+                      "gap": 12,
                       "marginBottom": 16,
                       "width": "100%",
                     }
@@ -3546,6 +3578,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                           },
                           {
                             "alignItems": "center",
+                            "alignSelf": "center",
                             "backgroundColor": "#6123df",
                             "borderBottomLeftRadius": 8,
                             "borderBottomRightRadius": 8,
@@ -3560,7 +3593,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                             "paddingLeft": 12,
                             "paddingRight": 12,
                             "paddingTop": 8,
-                            "width": "auto",
+                            "width": "100%",
                           },
                         ],
                         {
@@ -3571,6 +3604,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                     testID="Continuer sur l’app"
                   >
                     <View
+                      fullWidth={true}
                       gap={8}
                       hasIcon={false}
                       isMultiline={false}
@@ -3579,6 +3613,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                           "alignItems": "center",
                           "columnGap": 8,
                           "flexDirection": "row",
+                          "justifyContent": "center",
+                          "width": "100%",
                         }
                       }
                     >
@@ -3593,12 +3629,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                             },
                             {
                               "color": "#ffffff",
-                              "flexBasis": undefined,
-                              "flexGrow": undefined,
+                              "flexBasis": 0,
+                              "flexGrow": 1,
                               "flexShrink": 1,
                               "maxWidth": "100%",
                               "minWidth": 0,
-                              "textAlign": undefined,
+                              "textAlign": "center",
                             },
                           ]
                         }

@@ -30,10 +30,11 @@ export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpi
     return (
       <React.Fragment>
         <ButtonContainerFlexStart>
-          <StyledButton
+          <Button
             variant="tertiary"
             color="neutral"
             icon={Question}
+            numberOfLines={2}
             wording="Mon crédit est expiré, que&nbsp;faire&nbsp;?"
             onPress={onPressExplanationButton}
           />
@@ -50,10 +51,11 @@ export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpi
       <Spacer.Column numberOfSpaces={2.5} />
       <ButtonContainerFlexStart>
         <InternalTouchableLink
-          as={StyledButton}
+          as={Button}
           variant="tertiary"
           color="neutral"
           icon={Question}
+          numberOfLines={2}
           wording="Comment ça marche&nbsp;?"
           navigateTo={getProfilePropConfig('ProfileTutorialAgeInformationCredit')}
           onBeforeNavigate={onTutorialClick}
@@ -62,14 +64,6 @@ export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpi
     </React.Fragment>
   )
 }
-
-const StyledButton = styled(Button).attrs({
-  numberOfLines: 2,
-  justifyContent: 'flex-start',
-})(({ theme }) => ({
-  textAlign: 'left',
-  backgroundColor: theme.designSystem.color.background.default,
-}))
 
 const GreySeparator = styled(Separator.Horizontal).attrs(({ theme }) => ({
   // TODO(PC-36408): theme.designSystem.separator.default or subtle not visible in light mode because the parent background is grey

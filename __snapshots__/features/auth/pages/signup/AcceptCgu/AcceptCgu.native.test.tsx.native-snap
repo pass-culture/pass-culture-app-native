@@ -604,7 +604,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
           </Text>
         </View>
       </View>
-       
     </View>
   </View>
   <View
@@ -1463,7 +1462,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
           </Text>
         </View>
       </View>
-       
     </View>
   </View>
   <View
