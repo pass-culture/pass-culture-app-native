@@ -14,6 +14,7 @@ module.exports = async ({ github, context, core }) => {
   const dryRun = DRY_RUN === 'true'
   const processAll = PROCESS_ALL === 'true'
   const maxAlerts = parseInt(MAX_ALERTS || '0', 10)
+  const testMode = process.env.TEST_MODE === 'true'
 
   // Retry helper pour les appels Jira (max 2 retries, délais courts pour limiter le temps CI)
   const fetchWithRetry = async (url, options, maxRetries = 2) => {
@@ -39,6 +40,57 @@ module.exports = async ({ github, context, core }) => {
     }
 
     return { ok: false, text: async () => lastError.message }
+  }
+
+  // Mode test : créer un ticket fictif et sortir (sans appeler Dependabot)
+  if (testMode) {
+    console.log("🧪 Mode test activé - Création d'un ticket fictif dans Découverte")
+
+    const ticketSummary = '[Security][TEST] Dependabot #0: fake-package (high)'
+    const description = `h2. Alerte de sécurité Dependabot (TEST)
+
+*Package:* fake-package
+*Version vulnérable:* < 2.0.0
+*Version corrigée:* 2.0.0
+*Sévérité:* high (CVSS: 7.5)
+*CVE:* CVE-0000-00000
+*Manifest:* package.json
+
+h3. Vulnérabilité
+Ceci est un ticket de test pour valider le format Jira.
+
+----
+_Ticket de test créé automatiquement - Équipe assignée: Découverte_`
+
+    const response = await fetchWithRetry(`${JIRA_BASE_URL}/rest/api/2/issue`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Basic ${jiraAuth}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        fields: {
+          project: { key: JIRA_PROJECT_KEY },
+          issuetype: { name: 'Bug' },
+          summary: ticketSummary,
+          description: description,
+          priority: { name: 'Major' },
+          labels: ['dependabot', 'security', 'automated', 'test'],
+          components: [{ name: 'Découverte' }],
+        },
+      }),
+    })
+
+    if (response.ok) {
+      const ticket = await response.json()
+      console.log(`✅ Ticket test créé: ${ticket.key}`)
+      console.log(`🔗 ${JIRA_BASE_URL}/browse/${ticket.key}`)
+    } else {
+      const error = await response.text()
+      console.error(`❌ Erreur: ${error}`)
+      core.setFailed(`Impossible de créer le ticket test: ${error}`)
+    }
+    return
   }
 
   // Filtrer sur "hier" pour capturer toutes les alertes de la journée précédente

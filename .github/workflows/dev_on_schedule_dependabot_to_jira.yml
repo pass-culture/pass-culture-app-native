@@ -7,6 +7,9 @@ on:
   push:
     branches:
       - 'feat/dependabot-jira-alerts'
+  # TODO: Supprimer ce trigger avant merge
+  pull_request:
+    types: [labeled]
   workflow_dispatch:
     inputs:
       dry_run:
@@ -37,6 +40,10 @@ permissions:
 jobs:
   dependabot-to-jira:
     name: Dependabot alerts to Jira
+    # Ne pas lancer sur pull_request sauf si le label est test-jira
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.label.name == 'test-jira'
     runs-on: ubuntu-24.04
     timeout-minutes: 30
 
@@ -95,6 +102,7 @@ jobs:
           DRY_RUN: ${{ github.event_name == 'push' && 'true' || inputs.dry_run || 'false' }}
           PROCESS_ALL: ${{ github.event_name == 'push' && 'true' || inputs.process_all || 'false' }}
           MAX_ALERTS: ${{ github.event_name == 'push' && '3' || inputs.max_alerts || '0' }}
+          TEST_MODE: ${{ github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'test-jira') && 'true' || 'false' }}
         with:
           github-token: ${{ steps.github-app-token.outputs.token }}
           script: |
