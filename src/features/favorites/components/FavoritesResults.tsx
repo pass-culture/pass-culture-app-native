@@ -47,16 +47,13 @@ function applySortBy(list: Array<FavoriteResponse>, sortBy: FavoriteSortBy, posi
     // fix concurrency sentry/issues/288586
     return []
   } else if (sortBy === 'ASCENDING_PRICE') {
-    list.sort(sortByAscendingPrice)
-    return list
+    return [...list].sort(sortByAscendingPrice)
   } else if (sortBy === 'AROUND_ME') {
-    list.sort(sortByDistanceAroundMe(position))
-    return list
+    return [...list].sort(sortByDistanceAroundMe(position))
   } else if (sortBy === 'RECENTLY_ADDED') {
-    list.sort(sortByIdDesc)
-    return list
+    return [...list].sort(sortByIdDesc)
   } else {
-    return list
+    return [...list]
   }
 }
 
@@ -141,6 +138,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
           ref={flatListRef}
           testID="favoritesResultsFlatlist"
           data={sortedFavorites}
+          extraData={favoritesState.sortBy}
           contentContainerStyle={contentContainerStyle(theme)}
           keyExtractor={keyExtractor}
           ListHeaderComponent={ListHeaderComponent}
