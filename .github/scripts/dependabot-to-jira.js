@@ -222,7 +222,7 @@ _Ticket créé automatiquement - Équipe assignée: ${TEAM_NAME}_`
       continue
     }
 
-    // Création du ticket Jira (avec retry sur erreurs serveur)
+    // Étape 1 : Créer le ticket avec le parent (sans équipe ni labels pour éviter l'écrasement par l'automation Jira)
     const response = await fetchWithRetry(`${JIRA_BASE_URL}/rest/api/2/issue`, {
       method: 'POST',
       headers: {
@@ -236,8 +236,6 @@ _Ticket créé automatiquement - Équipe assignée: ${TEAM_NAME}_`
           summary: ticketSummary,
           description: description,
           priority: { name: priority },
-          labels: ['dependabot', 'security', 'automated'],
-          customfield_10049: { value: `JEUNES - ${TEAM_NAME}` },
           parent: { key: 'PC-39340' },
         },
       }),
@@ -247,6 +245,31 @@ _Ticket créé automatiquement - Équipe assignée: ${TEAM_NAME}_`
       const ticket = await response.json()
       console.log(`✅ Créé: ${ticket.key} - ${ticketSummary}`)
       created++
+
+      // Étape 2 : Attendre que l'automation Jira termine, puis setter l'équipe et les labels
+      console.log('⏳ Attente de 5s pour laisser l\'automation Jira terminer...')
+      await new Promise((resolve) => setTimeout(resolve, 5000))
+
+      const updateResponse = await fetchWithRetry(`${JIRA_BASE_URL}/rest/api/2/issue/${ticket.key}`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Basic ${jiraAuth}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fields: {
+            labels: ['dependabot', 'security', 'automated'],
+            customfield_10049: { value: `JEUNES - ${TEAM_NAME}` },
+          },
+        }),
+      })
+
+      if (updateResponse.ok) {
+        console.log(`✅ Équipe et labels mis à jour pour ${ticket.key}`)
+      } else {
+        const updateError = await updateResponse.text()
+        console.error(`⚠️ Erreur mise à jour équipe/labels pour ${ticket.key}: ${updateError}`)
+      }
     } else {
       const error = await response.text()
       console.error(`❌ Erreur création: ${error}`)
