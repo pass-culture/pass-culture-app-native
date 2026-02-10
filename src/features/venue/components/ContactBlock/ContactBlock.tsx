@@ -3,10 +3,9 @@ import React from 'react'
 import { VenueContact, VenueResponse } from 'api/gen'
 import { isValidFrenchPhoneNumber } from 'features/venue/components/ContactBlock/isValidFrenchPhoneNumber'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
@@ -37,33 +36,35 @@ export const ContactBlock: React.FC<{ venue: Omit<VenueResponse, 'isVirtual'> }>
         <ExternalTouchableLink
           externalNav={{ url: `mailto:${email}`, onError: onOpenUrlError }}
           onBeforeNavigate={() => logAnalytics('email')}
-          as={StyledButtonTertiaryBlack}
+          as={Button}
           wording={email}
           icon={EmailFilled}
+          variant="tertiary"
+          color="neutral"
         />
       ) : null}
       {phoneNumber && isValidFrenchPhoneNumber(phoneNumber) ? (
         <ExternalTouchableLink
           externalNav={{ url: `tel:${phoneNumber}`, onError: onOpenUrlError }}
           onBeforeNavigate={() => logAnalytics('phoneNumber')}
-          as={StyledButtonTertiaryBlack}
+          as={Button}
           wording={phoneNumber}
           icon={PhoneFilled}
+          variant="tertiary"
+          color="neutral"
         />
       ) : null}
       {website ? (
         <ExternalTouchableLink
           externalNav={{ url: website, onError: onOpenUrlError }}
           onBeforeNavigate={() => logAnalytics('website')}
-          as={StyledButtonTertiaryBlack}
+          as={Button}
           wording={website}
           icon={ExternalSiteFilled}
+          variant="tertiary"
+          color="neutral"
         />
       ) : null}
     </React.Fragment>
   )
 }
-
-const StyledButtonTertiaryBlack = styledButton(ButtonTertiaryBlack)({
-  justifyContent: 'flex-start',
-})
