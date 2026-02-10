@@ -347,10 +347,29 @@ Reviens lundi pour débloquer ton crédit !
             }
           >
             <View
-              style={
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
                 {
                   "flexShrink": 0,
                 }
+              }
+              nativeID="0"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
               }
             >
               <View
@@ -749,10 +768,29 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
             }
           >
             <View
-              style={
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
                 {
                   "flexShrink": 0,
                 }
+              }
+              nativeID="4"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
               }
             >
               <View

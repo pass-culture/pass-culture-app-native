@@ -261,10 +261,29 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
               }
             >
               <View
-                style={
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
                   {
                     "flexShrink": 0,
                   }
+                }
+                nativeID="0"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
                 }
               >
                 <View
@@ -499,10 +518,29 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
             }
           >
             <View
-              style={
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
                 {
                   "flexShrink": 0,
                 }
+              }
+              nativeID="1"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
               }
             >
               <View
@@ -950,10 +988,29 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
             }
           >
             <View
-              style={
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
                 {
                   "flexShrink": 0,
                 }
+              }
+              nativeID="12"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
               }
             >
               <View

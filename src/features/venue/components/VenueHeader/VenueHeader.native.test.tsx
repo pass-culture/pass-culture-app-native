@@ -30,13 +30,13 @@ describe('<VenueHeader />', () => {
   it('should render all icons', () => {
     renderVenueHeader()
 
-    expect(screen.getByTestId('animated-icon-back')).toBeOnTheScreen()
-    expect(screen.getByTestId('animated-icon-share')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Revenir en arrière')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Partager')).toBeOnTheScreen()
   })
 
   it('should goBack when we press on the back button', async () => {
     renderVenueHeader()
-    await user.press(screen.getByTestId('animated-icon-back'))
+    await user.press(screen.getByLabelText('Revenir en arrière'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })

@@ -16,7 +16,7 @@ describe('<ChroniclesHeader />', () => {
   it('should handle goBack when pressing back button', async () => {
     renderChroniclesHeader()
 
-    await user.press(screen.getByTestId('animated-icon-back'))
+    await user.press(screen.getByLabelText('Revenir en arrière'))
 
     expect(mockHandleGoBack).toHaveBeenCalledTimes(1)
   })

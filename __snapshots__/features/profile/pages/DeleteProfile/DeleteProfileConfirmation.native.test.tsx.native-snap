@@ -617,10 +617,29 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
             }
           >
             <View
-              style={
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
                 {
                   "flexShrink": 0,
                 }
+              }
+              nativeID="0"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
               }
             >
               <View

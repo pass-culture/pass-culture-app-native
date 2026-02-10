@@ -1230,7 +1230,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": undefined,
+            "disabled": false,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -1255,86 +1255,73 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
         onStartShouldSetResponder={[Function]}
         style={
           {
-            "borderBottomLeftRadius": 999,
-            "borderBottomRightRadius": 999,
-            "borderTopLeftRadius": 999,
-            "borderTopRightRadius": 999,
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderBottomLeftRadius": 8,
+            "borderBottomRightRadius": 8,
+            "borderColor": "#90949d",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 8,
+            "borderTopRightRadius": 8,
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
             "opacity": 1,
+            "paddingBottom": 8,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 8,
             "userSelect": "auto",
+            "width": "auto",
           }
         }
         testID="Revenir en arrière"
       >
         <View
-          collapsable={false}
+          gap={0}
+          hasIcon={true}
+          isMultiline={false}
           style={
             {
               "alignItems": "center",
-              "aspectRatio": 1,
-              "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderBottomLeftRadius": 999,
-              "borderBottomRightRadius": 999,
-              "borderColor": "rgba(255, 255, 255, 1)",
-              "borderStyle": "solid",
-              "borderTopLeftRadius": 999,
-              "borderTopRightRadius": 999,
-              "borderWidth": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "transform": undefined,
-              "width": 40,
+              "columnGap": 0,
+              "flexDirection": "row",
             }
           }
-          testID="AnimatedHeaderIconRoundContainer"
         >
           <View
-            size={24}
-            style={
+            collapsable={false}
+            jestAnimatedProps={
               {
-                "height": 24,
-                "width": 24,
+                "value": {},
               }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              {
+                "flexShrink": 0,
+              }
+            }
+            nativeID="0"
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
             }
           >
             <View
-              collapsable={false}
-              style={
-                {
-                  "opacity": 1,
-                  "position": "absolute",
-                }
-              }
-              testID="initial-icon-container"
+              height={22}
+              width={22}
             >
-              <View
-                height={24}
-                testID="animated-icon-back"
-                width={24}
-              >
-                <Text>
-                  animated-icon-back-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              collapsable={false}
-              style={
-                {
-                  "opacity": 0,
-                  "position": "absolute",
-                }
-              }
-              testID="final-icon-container"
-            >
-              <View
-                height={24}
-                testID="final-animated-icon-back"
-                width={24}
-              >
-                <Text>
-                  final-animated-icon-back-SVG-Mock
-                </Text>
-              </View>
+              <Text>
+                undefined-SVG-Mock
+              </Text>
             </View>
           </View>
         </View>

@@ -376,10 +376,29 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             }
           >
             <View
-              style={
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
                 {
                   "flexShrink": 0,
                 }
+              }
+              nativeID="0"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
               }
             >
               <View
@@ -807,10 +826,29 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             }
           >
             <View
-              style={
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
                 {
                   "flexShrink": 0,
                 }
+              }
+              nativeID="1"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
               }
             >
               <View

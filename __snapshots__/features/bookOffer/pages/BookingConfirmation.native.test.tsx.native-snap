@@ -477,10 +477,29 @@ Tu peux retrouver toutes les informations concernant ta réservation sur l’app
             }
           >
             <View
-              style={
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
                 {
                   "flexShrink": 0,
                 }
+              }
+              nativeID="0"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
               }
             >
               <View

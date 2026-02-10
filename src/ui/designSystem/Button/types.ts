@@ -4,7 +4,7 @@
  */
 
 import { FunctionComponent } from 'react'
-import { AccessibilityRole, TextProps } from 'react-native'
+import { AccessibilityRole, StyleProp, TextProps, ViewStyle } from 'react-native'
 
 import { BackgroundColorValue, ColorsType } from 'theme/types'
 import { AppButtonEventNative, AppButtonEventWeb } from 'ui/components/buttons/AppButton/types'
@@ -38,6 +38,7 @@ type ButtonBaseProps = {
   type?: 'button' | 'submit' | 'reset'
   numberOfLines?: TextProps['numberOfLines']
   ellipsizeMode?: TextProps['ellipsizeMode']
+  iconAnimatedStyle?: StyleProp<ViewStyle>
 }
 
 type ButtonVariantProps = {

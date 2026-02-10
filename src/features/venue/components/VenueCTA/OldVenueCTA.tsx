@@ -2,9 +2,9 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { SearchNavigationConfig } from 'features/venue/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { Spacer } from 'ui/theme'
 
@@ -23,9 +23,9 @@ export const OldVenueCTA: FunctionComponent<Props> = ({
         <InternalTouchableLink
           navigateTo={searchNavigationConfig}
           onBeforeNavigate={onBeforeNavigate}
-          as={ButtonPrimary}
+          as={Button}
           wording="Rechercher une offre"
-          icon={SmallMagnifyingGlass}
+          icon={MagnifyingGlassFilled}
           fullWidth
         />
       </CallToActionContainer>
@@ -33,10 +33,6 @@ export const OldVenueCTA: FunctionComponent<Props> = ({
     </StickyBottomWrapper>
   )
 }
-
-const SmallMagnifyingGlass = styled(MagnifyingGlassFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))``
 
 const CallToActionContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
