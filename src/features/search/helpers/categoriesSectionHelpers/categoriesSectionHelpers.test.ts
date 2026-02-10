@@ -66,10 +66,6 @@ describe('itemHasChildren', () => {
     expect(itemHasChildren({ children: {} })).toBe(false)
   })
 
-  it('should return false when item has empty children object', () => {
-    expect(itemHasChildren({ children: {} })).toBe(false)
-  })
-
   it('should return true when item has non-empty children', () => {
     expect(itemHasChildren({ children: { sub: { label: 'Sub' } } })).toBe(true)
   })

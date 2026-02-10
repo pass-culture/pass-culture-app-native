@@ -155,7 +155,6 @@ describe('<CategoriesModal/>', () => {
 
       await user.press(screen.getByText('Cartes jeunes'))
 
-      // Should stay on categories view - "Toutes les catégories" is only visible on the categories view
       expect(screen.getByText(ALL_CATEGORIES_LABEL)).toBeOnTheScreen()
     })
 
