@@ -76,7 +76,7 @@ _Ticket de test créé automatiquement - Équipe assignée: Découverte_`
           description: description,
           priority: { name: 'Majeur' },
           labels: ['dependabot', 'security', 'automated', 'test'],
-          components: [{ name: 'Découverte' }],
+          customfield_10049: { value: 'JEUNES - Découverte' },
         },
       }),
     })
@@ -212,7 +212,7 @@ _Ticket créé automatiquement - Équipe assignée: ${TEAM_NAME}_`
           description: description,
           priority: { name: priority },
           labels: ['dependabot', 'security', 'automated'],
-          components: [{ name: TEAM_NAME }],
+          customfield_10049: { value: `JEUNES - ${TEAM_NAME}` },
         },
       }),
     })
