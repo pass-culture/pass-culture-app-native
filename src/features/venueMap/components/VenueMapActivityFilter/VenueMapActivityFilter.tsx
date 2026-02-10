@@ -10,53 +10,69 @@ import { VenueMapFiltersModalStackParamList } from 'features/navigation/VenueMap
 import { FILTERS_ACTIVITY_MAPPING } from 'features/venueMap/constant'
 import { VenueMapFiltersModal } from 'features/venueMap/pages/modals/VenueMapFiltersModal/VenueMapFiltersModal'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
-// eslint-disable-next-line local-rules/no-theme-from-theme
 import { MAP_ACTIVITY_TO_LABEL } from 'libs/parsers/activity'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
-import { getSpacing, Typo } from 'ui/theme'
+import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
+import { getSpacing } from 'ui/theme'
 
 import { useVenueMapFilters } from '../../hook/useVenueMapFilters'
 
 type Props = NativeStackScreenProps<VenueMapFiltersModalStackParamList, 'VenueMapActivityFilter'>
 
 const titleId = uuidv4()
+const ALL_VALUE = 'ALL'
 
 export const VenueMapActivityFilter: FunctionComponent<Props> = ({ navigation, route }) => {
   const { title, filterGroup } = route.params
   const { popTo } = useNavigation<UseNavigationType>()
-  const { activeFilters: venueFilters, toggleMacroFilter } = useVenueMapFilters()
+  const { activeFilters: venueFilters } = useVenueMapFilters()
   const { addVenuesFilters, removeVenuesFilters } = venuesFilterActions
-
-  const hasAllFilters = FILTERS_ACTIVITY_MAPPING[filterGroup].every((filter) =>
-    venueFilters.includes(filter)
-  )
-
-  const onGoBack = () => {
-    navigation.goBack()
-  }
-
-  const onClose = () => {
-    popTo('VenueMap')
-  }
-
-  const toggleAll = () => {
-    toggleMacroFilter(filterGroup, true)
-  }
 
   const activities: Activity[] = FILTERS_ACTIVITY_MAPPING[filterGroup].filter(
     (item): item is Activity => item in MAP_ACTIVITY_TO_LABEL
   )
 
-  const handleCheckboxPress = (activity: Activity) => {
-    const hasFilter = venueFilters.includes(activity)
+  const hasAllFilters =
+    activities.length > 0 && activities.every((activity) => venueFilters.includes(activity))
 
-    if (hasFilter) {
-      removeVenuesFilters([activity])
-    } else {
-      addVenuesFilters([activity])
+  const someSelected =
+    activities.some((activity) => venueFilters.includes(activity)) && !hasAllFilters
+
+  const options = [
+    {
+      label: 'Tout sélectionner',
+      value: ALL_VALUE,
+      indeterminate: someSelected,
+    },
+    ...activities.map((activity) => ({
+      label: MAP_ACTIVITY_TO_LABEL[activity],
+      value: activity,
+    })),
+  ]
+
+  const handleChange = (newValues: string[]) => {
+    const wasAllSelected = hasAllFilters
+    const isAllSelectedNow = newValues.includes(ALL_VALUE)
+
+    if (!wasAllSelected && isAllSelectedNow) {
+      addVenuesFilters(activities.filter((activity) => !venueFilters.includes(activity)))
+      return
     }
+
+    if (wasAllSelected && !isAllSelectedNow) {
+      removeVenuesFilters(activities)
+      return
+    }
+
+    const selectedActivities = newValues.filter((value): value is Activity => value !== ALL_VALUE)
+    const toAdd = selectedActivities.filter((activity) => !venueFilters.includes(activity))
+    const toRemove = venueFilters.filter((activity) => !selectedActivities.includes(activity))
+
+    if (toAdd.length) addVenuesFilters(toAdd)
+    if (toRemove.length) removeVenuesFilters(toRemove)
   }
+
+  const onGoBack = () => navigation.goBack()
+  const onClose = () => popTo('VenueMap')
 
   return (
     <VenueMapFiltersModal
@@ -66,28 +82,20 @@ export const VenueMapActivityFilter: FunctionComponent<Props> = ({ navigation, r
       handleOnClose={onClose}
       shouldDisplayBackButton
       shouldDisplayCloseButton>
-      <Container gap={4}>
-        <Typo.Title1>{title}</Typo.Title1>
-        <Checkbox label="Tout sélectionner" isChecked={hasAllFilters} onPress={toggleAll} />
-        {activities.map((activity) => {
-          const isChecked = venueFilters.includes(activity)
-          return (
-            <Checkbox
-              key={activity}
-              label={MAP_ACTIVITY_TO_LABEL[activity]}
-              isChecked={isChecked}
-              onPress={() => {
-                handleCheckboxPress(activity)
-              }}
-            />
-          )
-        })}
+      <Container>
+        <CheckboxGroup<string>
+          labelTag="h1"
+          label={title}
+          options={options}
+          value={[...venueFilters, ...(hasAllFilters ? [ALL_VALUE] : [])]}
+          onChange={handleChange}
+        />
       </Container>
     </VenueMapFiltersModal>
   )
 }
 
-const Container = styled(ViewGap)(({ theme }) => ({
+const Container = styled.View(({ theme }) => ({
   paddingTop: theme.designSystem.size.spacing.xl,
   paddingBottom: getSpacing(26),
 }))
