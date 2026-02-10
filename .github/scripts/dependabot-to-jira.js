@@ -77,6 +77,7 @@ _Ticket de test créé automatiquement - Équipe assignée: Découverte_`
           priority: { name: 'Majeur' },
           labels: ['dependabot', 'security', 'automated', 'test'],
           customfield_10049: { value: 'JEUNES - Découverte' },
+          parent: { key: 'PC-39340' },
         },
       }),
     })
@@ -213,6 +214,7 @@ _Ticket créé automatiquement - Équipe assignée: ${TEAM_NAME}_`
           priority: { name: priority },
           labels: ['dependabot', 'security', 'automated'],
           customfield_10049: { value: `JEUNES - ${TEAM_NAME}` },
+          parent: { key: 'PC-39340' },
         },
       }),
     })
