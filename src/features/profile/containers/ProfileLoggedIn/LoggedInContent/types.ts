@@ -5,24 +5,18 @@ export type LoggedInContentConfig = {
   items: SectionItem[]
 }
 
-export type LoggedInNonBeneficiaryContentParams = {
+export type LoggedInContentParams = {
   ChatbotButton: React.ReactNode
 } & {
-  HelpButton: React.ReactNode
+  HelpButton: React.ReactNode | null
 } & {
   AppearanceButton: React.ReactNode
 } & {
   LocationButton: React.ReactNode
 } & {
   FeedbackInAppButton: React.ReactNode
-}
-
-export type LoggedInBeneficiaryContentParams = {
-  ChatbotButton: React.ReactNode
 } & {
-  AppearanceButton: React.ReactNode
+  ShareBanner: React.ReactNode | null
 } & {
-  LocationButton: React.ReactNode
-} & {
-  FeedbackInAppButton: React.ReactNode
+  SocialNetwork: React.ReactNode
 }

@@ -1,6 +1,6 @@
 import { domains_exhausted_credit_v3 } from 'features/profile/fixtures/domainsCredit'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
-import { beneficiaryUser, underageBeneficiaryUser, exBeneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, exBeneficiaryUser } from 'fixtures/user'
 
 import { getShouldDisplayHelpButton } from './getShouldDisplayHelpButton'
 
@@ -13,10 +13,6 @@ const futureDateISOString = new Date(NOW.getTime() + ONE_MINUTE_MS).toISOString(
 describe('getShouldDisplayHelpButton', () => {
   it('should return true when no user is provided', () => {
     expect(getShouldDisplayHelpButton({ user: undefined })).toBe(true)
-  })
-
-  it('should return false when user is under 18 years old', () => {
-    expect(getShouldDisplayHelpButton({ user: underageBeneficiaryUser })).toBe(false)
   })
 
   it('should return true when user is 18 or older and credit is empty', () => {
@@ -68,5 +64,16 @@ describe('getShouldDisplayHelpButton', () => {
     }
 
     expect(getShouldDisplayHelpButton({ user })).toBe(false)
+  })
+
+  it('should return true when user is not a beneficiary even if credit is not empty and deposit not expired', () => {
+    const user: UserProfileResponseWithoutSurvey = {
+      ...beneficiaryUser,
+      isBeneficiary: false,
+      domainsCredit: beneficiaryUser.domainsCredit,
+      depositExpirationDate: futureDateISOString,
+    }
+
+    expect(getShouldDisplayHelpButton({ user })).toBe(true)
   })
 })

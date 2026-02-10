@@ -7,6 +7,8 @@ import { ChatbotButton } from 'features/profile/components/Buttons/ChatbotButton
 import { HelpButton } from 'features/profile/components/Buttons/HelpButton/HelpButton'
 import { LocationButton } from 'features/profile/components/Buttons/LocationButton/LocationButton'
 import { ProfileContentLayout } from 'features/profile/components/ProfileContentLayout/ProfileContentLayout'
+import { ShareBanner } from 'features/profile/components/ShareBanner/ShareBanner'
+import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
 import { loggedOutContentConfig } from 'features/profile/containers/ProfileLoggedOut/LoggedOutContent/loggedOutContentConfig'
 import { getShouldDisplayHelpButton } from 'features/profile/helpers/getShouldDisplayHelpButton'
 import { useAppearanceTag } from 'features/profile/helpers/useAppearanceTag'
@@ -46,6 +48,8 @@ export const LoggedOutContent = ({ user }: Props) => {
         switchGeolocation={switchGeolocation}
       />
     ),
+    ShareBanner: <ShareBanner />,
+    SocialNetwork: <SocialNetwork />,
   })
 
   return <ProfileContentLayout config={config} testID="logged-out-content" />
