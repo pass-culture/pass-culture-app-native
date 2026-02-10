@@ -1,38 +1,26 @@
-import React from 'react'
-
-import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
-import { SectionItem } from 'features/profile/helpers/createProfileContent'
+import {
+  LoggedInContentConfig,
+  LoggedInContentParams,
+} from 'features/profile/containers/ProfileLoggedIn/LoggedInContent/types'
 import { env } from 'libs/environment/env'
 import { Bell } from 'ui/svg/icons/Bell'
-import { Bulb } from 'ui/svg/icons/Bulb'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
+import { Profile } from 'ui/svg/icons/Profile'
+import { Trophy } from 'ui/svg/icons/Trophy'
 
-type LoggedOutContentConfig = {
-  section: string
-  items: SectionItem[]
-}
-
-type LoggedOutContentParams = {
-  ChatbotButton: React.ReactNode
-} & {
-  HelpButton: React.ReactNode
-} & {
-  AppearanceButton: React.ReactNode
-} & {
-  LocationButton: React.ReactNode
-}
-
-export const loggedOutContentConfig = ({
+export const loggedInBeneficiaryContentConfig = ({
   AppearanceButton,
   ChatbotButton,
-  HelpButton,
+  FeedbackInAppButton,
   LocationButton,
-}: LoggedOutContentParams): LoggedOutContentConfig[] => [
+  SocialNetwork,
+}: LoggedInContentParams): LoggedInContentConfig[] => [
   {
-    section: 'Paramètres de l’application',
+    section: 'Paramètres du compte',
     items: [
+      { title: 'Informations personnelles', screen: 'PersonalData', icon: Profile },
       { title: 'Notifications', screen: 'NotificationsSettings', icon: Bell },
       { component: LocationButton, key: 'LocationButton' },
     ],
@@ -41,22 +29,22 @@ export const loggedOutContentConfig = ({
     section: 'Aides',
     items: [
       { component: ChatbotButton, key: 'ChatbotButton' },
-      { component: HelpButton, key: 'HelpButton' },
       { title: 'Centre d’aide', externalNav: { url: env.ACCESSIBILITY_PLAN } },
     ],
   },
   {
     section: 'Autres',
     items: [
+      { title: 'Mes succès', screen: 'Achievements', params: { from: 'profile' }, icon: Trophy },
       { component: AppearanceButton, key: 'AppearanceButton' },
       { title: 'Accessibilité', screen: 'Accessibility', icon: HandicapMental },
-      { title: 'Faire une suggestion', screen: 'FeedbackInApp', icon: Bulb },
+      { component: FeedbackInAppButton, key: 'FeedbackInAppButton' },
       { title: 'Informations légales', screen: 'LegalNotices', icon: LegalNotices },
       { title: 'Confidentialité', screen: 'ConsentSettings', icon: Confidentiality },
     ],
   },
   {
     section: 'Suivre le pass Culture',
-    items: [{ component: <SocialNetwork />, key: 'SocialNetwork' }],
+    items: [{ component: SocialNetwork, key: 'SocialNetwork' }],
   },
 ]

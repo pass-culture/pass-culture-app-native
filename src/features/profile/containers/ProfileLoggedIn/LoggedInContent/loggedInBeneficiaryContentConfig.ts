@@ -1,9 +1,6 @@
-import React from 'react'
-
-import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
 import {
-  LoggedInBeneficiaryContentParams,
   LoggedInContentConfig,
+  LoggedInContentParams,
 } from 'features/profile/containers/ProfileLoggedIn/LoggedInContent/types'
 import { env } from 'libs/environment/env'
 import { Bell } from 'ui/svg/icons/Bell'
@@ -18,7 +15,9 @@ export const loggedInBeneficiaryContentConfig = ({
   ChatbotButton,
   FeedbackInAppButton,
   LocationButton,
-}: LoggedInBeneficiaryContentParams): LoggedInContentConfig[] => [
+  ShareBanner,
+  SocialNetwork,
+}: LoggedInContentParams): LoggedInContentConfig[] => [
   {
     section: 'Paramètres du compte',
     items: [
@@ -46,7 +45,11 @@ export const loggedInBeneficiaryContentConfig = ({
     ],
   },
   {
+    section: 'Partager le pass Culture',
+    items: [{ component: ShareBanner, key: 'ShareBanner' }],
+  },
+  {
     section: 'Suivre le pass Culture',
-    items: [{ component: <SocialNetwork />, key: 'SocialNetwork' }],
+    items: [{ component: SocialNetwork, key: 'SocialNetwork' }],
   },
 ]
