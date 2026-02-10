@@ -22,7 +22,6 @@ export function BookCategoriesSection<
   descriptionContext,
   getIcon,
   onSelect,
-  onSubmit,
   value,
 }: Readonly<CategoriesSectionProps<T, N>>) {
   const handleGetIcon = (category: SearchGroupNameEnumv2) => {
@@ -35,9 +34,6 @@ export function BookCategoriesSection<
 
   const handleSelect = (key: N) => {
     onSelect(key)
-    if (onSubmit) {
-      onSubmit()
-    }
   }
 
   const categories = itemsMapping ? Object.entries(itemsMapping) : []

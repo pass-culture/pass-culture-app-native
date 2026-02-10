@@ -4,7 +4,10 @@ import styled from 'styled-components/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { getDescription } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
-import { CategoriesMapping } from 'features/search/helpers/categoriesSectionHelpers/categoriesSectionHelpers'
+import {
+  CategoriesMapping,
+  itemHasChildren,
+} from 'features/search/helpers/categoriesSectionHelpers/categoriesSectionHelpers'
 import { DescriptionContext } from 'features/search/types'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { Li } from 'ui/components/Li'
@@ -35,7 +38,7 @@ export const CategoriesSectionItem = <N,>({
 }: CategoriesSectionItemProps<N>) => {
   const { data: subcategoriesData } = useSubcategoriesQuery()
 
-  const shouldHideArrow = !Object.keys(item.children ?? {})?.length
+  const shouldHideArrow = !itemHasChildren(item)
   const itemKey = k as N
 
   return (

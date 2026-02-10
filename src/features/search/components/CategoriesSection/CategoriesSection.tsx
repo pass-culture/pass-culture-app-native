@@ -32,7 +32,6 @@ export interface CategoriesSectionProps<
     : undefined
   itemsMapping: T
   onSelect: (item: N) => void
-  onSubmit?: () => void
   shouldSortItems?: boolean
   value: N
 }
@@ -47,7 +46,6 @@ export function CategoriesSection<
   getIcon,
   itemsMapping,
   onSelect,
-  onSubmit,
   shouldSortItems = true,
   value,
 }: Readonly<CategoriesSectionProps<T, N>>) {
@@ -55,7 +53,6 @@ export function CategoriesSection<
 
   const handleSelect = (key: N) => {
     onSelect(key)
-    onSubmit?.()
   }
 
   const entries = getSortedCategoriesEntries(itemsMapping, shouldSortItems)

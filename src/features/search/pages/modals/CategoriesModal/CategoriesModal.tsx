@@ -21,6 +21,7 @@ import {
   MappedNativeCategories,
   createMappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
+import { itemHasChildren } from 'features/search/helpers/categoriesSectionHelpers/categoriesSectionHelpers'
 import { NativeCategoryEnum, SearchState } from 'features/search/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
@@ -82,46 +83,6 @@ export const CategoriesModal = ({
     return (nativeCategory && nativeCategories?.[nativeCategory]?.children) as MappedGenreTypes
   }, [nativeCategory, nativeCategories])
 
-  const handleCategorySelect = useCallback(
-    (categoryKey: SearchGroupNameEnumv2) => {
-      setValue('category', categoryKey)
-
-      if (categoryKey !== category) {
-        setValue('nativeCategory', null)
-        setValue('genreType', null)
-      }
-
-      if (tree[categoryKey]?.children) {
-        setValue('currentView', CategoriesModalView.NATIVE_CATEGORIES)
-      }
-    },
-    [category, setValue, tree]
-  )
-
-  const handleNativeCategorySelect = useCallback(
-    (nativeCategoryKey: NativeCategoryEnum | null) => {
-      if (!nativeCategories) return
-
-      setValue('nativeCategory', nativeCategoryKey)
-
-      if (nativeCategoryKey !== nativeCategory) {
-        setValue('genreType', null)
-      }
-
-      if (nativeCategoryKey && nativeCategories[nativeCategoryKey]?.children) {
-        setValue('currentView', CategoriesModalView.GENRES)
-      }
-    },
-    [nativeCategories, nativeCategory, setValue]
-  )
-
-  const handleGenreTypeSelect = useCallback(
-    (genreTypeKey: string | null) => {
-      setValue('genreType', genreTypeKey)
-    },
-    [setValue]
-  )
-
   const handleModalClose = useCallback(() => {
     reset(getDefaultFormValues(tree, searchState))
     hideModal()
@@ -171,6 +132,51 @@ export const CategoriesModal = ({
       hideModal()
     },
     [hideModal, triggerDispatch]
+  )
+
+  const handleCategorySelect = useCallback(
+    async (categoryKey: SearchGroupNameEnumv2) => {
+      setValue('category', categoryKey)
+
+      if (categoryKey !== category) {
+        setValue('nativeCategory', null)
+        setValue('genreType', null)
+      }
+
+      if (itemHasChildren(tree[categoryKey])) {
+        setValue('currentView', CategoriesModalView.NATIVE_CATEGORIES)
+      } else {
+        await handleSubmit(handleSearchPress)()
+      }
+    },
+    [category, handleSearchPress, handleSubmit, setValue, tree]
+  )
+
+  const handleNativeCategorySelect = useCallback(
+    async (nativeCategoryKey: NativeCategoryEnum | null) => {
+      if (!nativeCategories) return
+
+      setValue('nativeCategory', nativeCategoryKey)
+
+      if (nativeCategoryKey !== nativeCategory) {
+        setValue('genreType', null)
+      }
+
+      if (nativeCategoryKey && itemHasChildren(nativeCategories[nativeCategoryKey])) {
+        setValue('currentView', CategoriesModalView.GENRES)
+      } else {
+        await handleSubmit(handleSearchPress)()
+      }
+    },
+    [handleSearchPress, handleSubmit, nativeCategories, nativeCategory, setValue]
+  )
+
+  const handleGenreTypeSelect = useCallback(
+    async (genreTypeKey: string | null) => {
+      setValue('genreType', genreTypeKey)
+      await handleSubmit(handleSearchPress)()
+    },
+    [handleSearchPress, handleSubmit, setValue]
   )
 
   const handleReset = useCallback(() => {
@@ -286,7 +292,6 @@ export const CategoriesModal = ({
             allLabel="Tout"
             value={genreType}
             descriptionContext={descriptionContext}
-            onSubmit={handleSubmit(handleSearchPress)}
           />
         ) : null}
       </Form.MaxWidth>

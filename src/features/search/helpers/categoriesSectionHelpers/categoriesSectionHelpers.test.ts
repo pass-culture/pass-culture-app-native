@@ -5,6 +5,7 @@ import {
   getLabelForValue,
   getSortedCategoriesEntries,
   getValueForLabel,
+  itemHasChildren,
   toRadioButtonGroupOptions,
 } from 'features/search/helpers/categoriesSectionHelpers/categoriesSectionHelpers'
 
@@ -53,6 +54,24 @@ describe('getSortedCategoriesEntries', () => {
       ['cat_a', { label: 'Apple', position: 1 }],
       ['cat_z', { label: 'Zebra', position: 1 }],
     ])
+  })
+})
+
+describe('itemHasChildren', () => {
+  it('should return false when item is undefined', () => {
+    expect(itemHasChildren(undefined)).toBe(false)
+  })
+
+  it('should return false when item has no children property', () => {
+    expect(itemHasChildren({ label: 'Category' })).toBe(false)
+  })
+
+  it('should return false when item has empty children object', () => {
+    expect(itemHasChildren({ label: 'Category', children: {} })).toBe(false)
+  })
+
+  it('should return true when item has non-empty children', () => {
+    expect(itemHasChildren({ label: 'Category', children: { sub: { label: 'Sub' } } })).toBe(true)
   })
 })
 

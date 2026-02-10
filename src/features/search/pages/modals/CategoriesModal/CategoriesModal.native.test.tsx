@@ -117,14 +117,10 @@ describe('<CategoriesModal/>', () => {
       })
     })
 
-    it('should set the selected category filter when search button is pressed and no category was already set', async () => {
+    it('should auto-submit when selecting "Toutes les catégories"', async () => {
       renderCategories()
 
-      const someCategoryFilterCheckbox = screen.getByText(ALL_CATEGORIES_LABEL)
-      await user.press(someCategoryFilterCheckbox)
-
-      const button = screen.getByText('Rechercher')
-      await user.press(button)
+      await user.press(screen.getByText(ALL_CATEGORIES_LABEL))
 
       const expectedSearchParams: SearchState = {
         ...searchState,
@@ -137,6 +133,7 @@ describe('<CategoriesModal/>', () => {
         type: 'SET_STATE',
         payload: expectedSearchParams,
       })
+      expect(mockHideModal).toHaveBeenCalledTimes(1)
     })
 
     it('should select default filter when pressing the reset button', async () => {
@@ -148,6 +145,34 @@ describe('<CategoriesModal/>', () => {
       const defaultCategoryFilterRadioButton = screen.getByLabelText(ALL_CATEGORIES_LABEL)
 
       expect(defaultCategoryFilterRadioButton).toBeChecked()
+    })
+
+    it('should auto-submit and close modal when selecting a leaf category', async () => {
+      renderCategories()
+
+      await user.press(screen.getByText('Cartes jeunes'))
+
+      const expectedSearchParams: SearchState = {
+        ...searchState,
+        offerCategories: [SearchGroupNameEnumv2.CARTES_JEUNES],
+        offerNativeCategories: [],
+        offerGenreTypes: [],
+      }
+
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expectedSearchParams,
+      })
+      expect(mockHideModal).toHaveBeenCalledTimes(1)
+    })
+
+    it('should not auto-submit when selecting a category that navigates to subcategories', async () => {
+      renderCategories()
+
+      await user.press(screen.getByText('Cinéma'))
+
+      expect(mockDispatch).not.toHaveBeenCalled()
+      expect(mockHideModal).not.toHaveBeenCalled()
     })
 
     describe('should close the modal', () => {
@@ -197,11 +222,20 @@ describe('<CategoriesModal/>', () => {
       expect(screen.getByText('Catégories')).toBeOnTheScreen()
     })
 
-    it('should set search state when search button is pressed', async () => {
+    it('should navigate to genres view when selecting a native category with genre types', async () => {
       renderCategories()
 
-      const someCategoryFilterCheckbox = screen.getByText('Films à l’affiche')
-      await user.press(someCategoryFilterCheckbox)
+      await user.press(screen.getByText('Films à l’affiche'))
+
+      // Should not auto-submit since this native category has genre type children
+      expect(mockDispatch).not.toHaveBeenCalled()
+      expect(mockHideModal).not.toHaveBeenCalled()
+    })
+
+    it('should set search state when selecting a native category with genres and pressing search', async () => {
+      renderCategories()
+
+      await user.press(screen.getByText('Films à l’affiche'))
 
       const button = screen.getByText('Rechercher')
       await user.press(button)
@@ -219,14 +253,10 @@ describe('<CategoriesModal/>', () => {
       })
     })
 
-    it('should remove offerNativeCategories filter when none is set', async () => {
+    it('should auto-submit when selecting "Tout" at native categories level', async () => {
       renderCategories()
 
-      const someCategoryFilterCheckbox = screen.getByText('Tout')
-      await user.press(someCategoryFilterCheckbox)
-
-      const button = screen.getByText('Rechercher')
-      await user.press(button)
+      await user.press(screen.getByText('Tout'))
 
       const expectedSearchParams: SearchState = {
         ...searchState,
@@ -239,6 +269,7 @@ describe('<CategoriesModal/>', () => {
         type: 'SET_STATE',
         payload: expectedSearchParams,
       })
+      expect(mockHideModal).toHaveBeenCalledTimes(1)
     })
 
     it('should reset filters and come back on categories view', async () => {
@@ -319,12 +350,11 @@ describe('<CategoriesModal/>', () => {
       expect(screen.getByText('Livres')).toBeOnTheScreen()
     })
 
-    it('should set search state when search button is pressed', async () => {
+    it('should auto-submit when selecting a book genre type', async () => {
       renderCategories()
 
       await user.press(screen.getByText('Loisirs & Bien-être'))
       await user.press(screen.getByText('Cuisine'))
-      await user.press(screen.getByText('Rechercher'))
 
       const expectedSearchParams: SearchState = BOOKS_WELLNESS_CATEGORY_SEARCH_STATE
 
@@ -332,9 +362,10 @@ describe('<CategoriesModal/>', () => {
         type: 'SET_STATE',
         payload: expectedSearchParams,
       })
+      expect(mockHideModal).toHaveBeenCalled()
     })
 
-    it('should remove offerGenreTypes filter when none is set', async () => {
+    it('should auto-submit when selecting "Tout" at book native categories level', async () => {
       mockSearchState = BOOKS_WELLNESS_CATEGORY_SEARCH_STATE
 
       renderCategories()
@@ -343,9 +374,6 @@ describe('<CategoriesModal/>', () => {
       await user.press(goBackButton)
 
       await user.press(screen.getByText('Tout'))
-
-      const button = screen.getByText('Rechercher')
-      await user.press(button)
 
       const expectedSearchParams: SearchState = {
         ...mockSearchState,
@@ -359,6 +387,7 @@ describe('<CategoriesModal/>', () => {
         type: 'SET_STATE',
         payload: expectedSearchParams,
       })
+      expect(mockHideModal).toHaveBeenCalled()
     })
 
     it('should reset filters and come back on categories view', async () => {
