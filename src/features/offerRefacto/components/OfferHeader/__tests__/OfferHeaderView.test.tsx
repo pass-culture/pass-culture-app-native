@@ -50,7 +50,7 @@ describe('<OfferHeaderView />', () => {
   it('should render the back button', () => {
     renderOfferHeaderView()
 
-    expect(screen.getByTestId('animated-icon-back')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Revenir en arrière')).toBeOnTheScreen()
   })
 
   it('should call onSharePress when share button is pressed', async () => {
@@ -64,7 +64,7 @@ describe('<OfferHeaderView />', () => {
   it('should call onBackPress when back button is pressed', async () => {
     renderOfferHeaderView()
 
-    await user.press(screen.getByTestId('animated-icon-back'))
+    await user.press(screen.getByLabelText('Revenir en arrière'))
 
     expect(mockOnBackPress).toHaveBeenCalledTimes(1)
   })
@@ -87,12 +87,6 @@ describe('<OfferHeaderView />', () => {
     expect(screen.getByText('Test Offer')).toBeOnTheScreen()
   })
 
-  it('should render the share icon button with correct accessibility label', () => {
-    renderOfferHeaderView()
-
-    expect(screen.getByTestId('animated-icon-share')).toBeOnTheScreen()
-  })
-
   it('should render the header title', () => {
     renderOfferHeaderView()
 
@@ -103,7 +97,7 @@ describe('<OfferHeaderView />', () => {
     renderOfferHeaderView(defaultViewModel)
 
     expect(screen.getByLabelText('Partager')).toBeOnTheScreen()
-    expect(screen.getByTestId('animated-icon-back')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Revenir en arrière')).toBeOnTheScreen()
   })
 
   it('should render multiple children', () => {
