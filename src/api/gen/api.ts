@@ -3096,17 +3096,6 @@ export interface OfferPreviewResponse {
 }
 /**
  * @export
- * @interface OfferReportReasons
- */
-export interface OfferReportReasons {
-  /**
-   * @type {{ [key: string]: ReasonMeta; }}
-   * @memberof OfferReportReasons
-   */
-  reasons: { [key: string]: ReasonMeta; }
-}
-/**
- * @export
  * @interface OfferResponse
  */
 export interface OfferResponse {
@@ -3944,22 +3933,6 @@ export enum ReactionTypeEnum {
   'LIKE' = 'LIKE',
   'DISLIKE' = 'DISLIKE',
   'NO_REACTION' = 'NO_REACTION',
-}
-/**
- * @export
- * @interface ReasonMeta
- */
-export interface ReasonMeta {
-  /**
-   * @type {string}
-   * @memberof ReasonMeta
-   */
-  description: string
-  /**
-   * @type {string}
-   * @memberof ReasonMeta
-   */
-  title: string
 }
 /**
  * @export
@@ -5840,24 +5813,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary report_offer_reasons <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1OfferReportReasons(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/offer/report/reasons`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * @summary get_offerer_headline_offer <GET>
      * @param {number} offerer_id 
      * @param {*} [options] Override http request option.
@@ -7692,17 +7647,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
-     * @summary report_offer_reasons <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1OfferReportReasons(options?: any): Promise<OfferReportReasons> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OfferReportReasons(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
      * @summary get_offerer_headline_offer <GET>
      * @param {number} offerer_id 
      * @param {*} [options] Override http request option.
@@ -8640,17 +8584,6 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1OauthState(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1OauthState(options)
-  }
-  /**
-    * 
-    * @summary report_offer_reasons <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1OfferReportReasons(options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1OfferReportReasons(options)
   }
   /**
     * 
