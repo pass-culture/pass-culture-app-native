@@ -46,18 +46,21 @@ function applySortBy(list: Array<FavoriteResponse>, sortBy: FavoriteSortBy, posi
   if (!list) {
     // fix concurrency sentry/issues/288586
     return []
-  } else if (sortBy === 'ASCENDING_PRICE') {
-    list.sort(sortByAscendingPrice)
-    return list
-  } else if (sortBy === 'AROUND_ME') {
-    list.sort(sortByDistanceAroundMe(position))
-    return list
-  } else if (sortBy === 'RECENTLY_ADDED') {
-    list.sort(sortByIdDesc)
-    return list
-  } else {
-    return list
   }
+
+  const copiedList = [...list]
+
+  if (sortBy === 'ASCENDING_PRICE') {
+    return copiedList.sort(sortByAscendingPrice)
+  }
+  if (sortBy === 'AROUND_ME') {
+    return copiedList.sort(sortByDistanceAroundMe(position))
+  }
+  if (sortBy === 'RECENTLY_ADDED') {
+    return copiedList.sort(sortByIdDesc)
+  }
+
+  return copiedList
 }
 
 const ANIMATION_DURATION = 700
@@ -141,6 +144,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
           ref={flatListRef}
           testID="favoritesResultsFlatlist"
           data={sortedFavorites}
+          extraData={favoritesState.sortBy}
           contentContainerStyle={contentContainerStyle(theme)}
           keyExtractor={keyExtractor}
           ListHeaderComponent={ListHeaderComponent}
