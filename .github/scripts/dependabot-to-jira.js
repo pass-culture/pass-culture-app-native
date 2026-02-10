@@ -74,7 +74,7 @@ _Ticket de test créé automatiquement - Équipe assignée: Découverte_`
           issuetype: { name: 'Tech Task' },
           summary: ticketSummary,
           description: description,
-          priority: { name: 'Major' },
+          priority: { name: 'Majeur' },
           labels: ['dependabot', 'security', 'automated', 'test'],
           components: [{ name: 'Découverte' }],
         },
@@ -101,10 +101,10 @@ _Ticket de test créé automatiquement - Équipe assignée: Découverte_`
 
   // Mapping sévérité → priorité Jira
   const priorityMap = {
-    critical: 'Blocker',
-    high: 'Major',
-    medium: 'Minor',
-    low: 'Trivial',
+    critical: 'Bloquant',
+    high: 'Majeur',
+    medium: 'Mineur',
+    low: 'Mineur',
   }
 
   // 1. Récupérer les alertes Dependabot ouvertes
@@ -168,7 +168,7 @@ _Ticket de test créé automatiquement - Équipe assignée: Découverte_`
       manifest_path: alert.dependency?.manifest_path,
     }
 
-    const priority = priorityMap[alertData.severity] || 'Minor'
+    const priority = priorityMap[alertData.severity] || 'Mineur'
     const ticketSummary = `[Security] Dependabot #${alertData.number}: ${alertData.package} (${alertData.severity})`
 
     // Description au format wiki Jira
