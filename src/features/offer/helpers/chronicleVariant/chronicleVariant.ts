@@ -3,7 +3,7 @@ import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/Chr
 import { CHRONICLE_VARIANT_CONFIG } from 'features/offer/constant'
 
 export const chronicleVariant: Record<SubcategoryIdEnum, ChronicleVariantInfo> = Object.fromEntries(
-  CHRONICLE_VARIANT_CONFIG.map(({ subcategories, ...variant }) =>
+  CHRONICLE_VARIANT_CONFIG.flatMap(({ subcategories, ...variant }) =>
     subcategories.map((id) => [id, variant] as const)
-  ).flat()
+  )
 )

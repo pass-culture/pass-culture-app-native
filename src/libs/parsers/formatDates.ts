@@ -214,16 +214,14 @@ export function joinArrayElement(array: (string | number)[]): string {
 
 export function formatGroupedDates(grouped: GroupResult) {
   let arrayDays: MonthDays[] = []
-  const formatDates = Object.entries(grouped)
-    .map(([year, groupedMonths]) => {
-      return Object.entries(groupedMonths).map(([month, days]) => {
-        const prefix = days.length > 1 ? 'les' : 'le'
-        arrayDays = [...arrayDays, days]
-        const arrayElementJoined = joinArrayElement(days)
-        return arrayElementJoined ? `${prefix} ${arrayElementJoined} ${month} ${year}` : ''
-      })
+  const formatDates = Object.entries(grouped).flatMap(([year, groupedMonths]) => {
+    return Object.entries(groupedMonths).map(([month, days]) => {
+      const prefix = days.length > 1 ? 'les' : 'le'
+      arrayDays = [...arrayDays, days]
+      const arrayElementJoined = joinArrayElement(days)
+      return arrayElementJoined ? `${prefix} ${arrayElementJoined} ${month} ${year}` : ''
     })
-    .flat()
+  })
   return { formatDates, arrayDays }
 }
 
