@@ -52,7 +52,6 @@ import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMu
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { ImageWithCredit } from 'shared/types'
-import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
@@ -256,8 +255,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     />
   )
 
-  const { animationState } = getAnimationState(theme, headerTransition)
-
   const handleViewableItemsChanged = useCallback(
     (
       items: Pick<ViewToken, 'key' | 'index'>[],
@@ -285,11 +282,9 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             <OfferReactionHeaderButton
               onPress={onReactionButtonPress}
               defaultReaction={defaultReaction}
-              animationState={animationState}
             />
           ) : (
             <FavoriteButton
-              animationState={animationState}
               offerId={offer.id}
               addFavorite={addFavorite}
               isAddFavoriteLoading={isAddFavoriteLoading}

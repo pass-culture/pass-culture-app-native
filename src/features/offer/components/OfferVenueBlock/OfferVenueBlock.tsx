@@ -8,9 +8,8 @@ import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock
 import { getAddress, getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
-import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Separator } from 'ui/components/Separator'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Typo } from 'ui/theme'
@@ -66,10 +65,12 @@ export function OfferVenueBlock({
 
         {onChangeVenuePress ? (
           <Container>
-            <ButtonSecondaryBlack
+            <Button
               icon={EditPen}
               wording={isCinema ? 'Changer de cinéma' : 'Changer le lieu de retrait'}
               onPress={onChangeVenuePress}
+              variant="secondary"
+              color="neutral"
             />
           </Container>
         ) : null}
@@ -79,11 +80,12 @@ export function OfferVenueBlock({
         <Fragment>
           <StyledHorizontalSeparator />
           <TertiaryButtonWrapper>
-            <ButtonTertiaryBlack
-              inline
+            <Button
               wording="Copier l’adresse"
               onPress={onCopyAddressPress}
               icon={Duplicate}
+              variant="tertiary"
+              color="neutral"
             />
           </TertiaryButtonWrapper>
 

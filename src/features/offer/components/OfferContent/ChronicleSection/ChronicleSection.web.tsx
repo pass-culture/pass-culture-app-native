@@ -6,19 +6,17 @@ import styled from 'styled-components/native'
 import { ChronicleCardList } from 'features/chronicle/components/ChronicleCardList/ChronicleCardList'
 import { CHRONICLE_CARD_WIDTH } from 'features/chronicle/constant'
 import { ChronicleSectionBase } from 'features/offer/components/OfferContent/ChronicleSection/ChronicleSectionBase'
-import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
-import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Show } from 'ui/svg/icons/Show'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ChronicleSectionProps } from './types'
 
 export const ChronicleSection = (props: ChronicleSectionProps) => {
-  const { isDesktopViewport, designSystem } = useTheme()
+  const { isDesktopViewport } = useTheme()
   const {
     data,
     variantInfo,
@@ -42,20 +40,17 @@ export const ChronicleSection = (props: ChronicleSectionProps) => {
                 {variantInfo.titleSection}
               </StyledTitle3>
               {shouldDisplayAllReviewsButton ? (
-                <InternalTouchableLink
-                  as={ButtonSecondaryBlack}
-                  icon={Show}
-                  wording={ctaLabel}
-                  navigateTo={navigateTo}
-                  // If i use styled-component in that case (i.e using "as" prop), i have an error in web :'(
-                  // eslint-disable-next-line react-native/no-inline-styles
-                  style={{
-                    width: 'auto',
-                    borderWidth: 0,
-                    paddingLeft: designSystem.size.spacing.s,
-                  }}
-                  onBeforeNavigate={onBeforeNavigate}
-                />
+                <SeeAllReviewsContainer>
+                  <InternalTouchableLink
+                    as={Button}
+                    icon={Show}
+                    wording={ctaLabel}
+                    navigateTo={navigateTo}
+                    variant="tertiary"
+                    color="neutral"
+                    onBeforeNavigate={onBeforeNavigate}
+                  />
+                </SeeAllReviewsContainer>
               ) : null}
             </Row>
             {variantInfo.subtitleSection ? (
@@ -68,11 +63,16 @@ export const ChronicleSection = (props: ChronicleSectionProps) => {
             shouldTruncate
             cardIcon={variantInfo.Icon}
           />
-          <StyledButtonQuaternaryBlack
-            wording={variantInfo.modalTitle}
-            icon={InfoPlain}
-            onPress={onShowChroniclesWritersModal}
-          />
+          <ClubButtonContainer>
+            <Button
+              wording={variantInfo.modalTitle}
+              icon={InfoPlain}
+              onPress={onShowChroniclesWritersModal}
+              variant="tertiary"
+              color="neutral"
+              size="small"
+            />
+          </ClubButtonContainer>
         </View>
       ) : (
         <ChronicleSectionBase {...props} />
@@ -112,8 +112,13 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack)(({ theme }) => ({
-  width: getSpacing(45),
+const SeeAllReviewsContainer = styled.View(({ theme }) => ({
+  width: 'auto',
+  borderWidth: 0,
+  paddingLeft: theme.designSystem.size.spacing.s,
+}))
+
+const ClubButtonContainer = styled.View(({ theme }) => ({
   marginLeft: theme.designSystem.size.spacing.xl,
-  justifyContent: 'left',
+  alignSelf: 'flex-start',
 }))

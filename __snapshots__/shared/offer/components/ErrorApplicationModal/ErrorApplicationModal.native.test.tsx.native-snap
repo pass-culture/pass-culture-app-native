@@ -454,117 +454,143 @@ ton crédit
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={4}
                   style={
                     {
-                      "height": 16,
+                      "marginTop": 16,
+                      "width": "100%",
                     }
                   }
-                />
-                <View
-                  accessibilityLabel="Mettre en favori"
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
-                          "flexDirection": "row",
-                          "justifyContent": "center",
-                          "maxWidth": 500,
-                          "minHeight": 40,
-                          "paddingBottom": 2,
-                          "paddingLeft": 2,
-                          "paddingRight": 2,
-                          "paddingTop": 2,
-                          "width": "100%",
-                        },
-                        {
-                          "backgroundColor": "transparent",
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="Mettre en favori"
                 >
                   <View
-                    style={
+                    accessibilityLabel="Mettre en favori"
+                    accessibilityRole="button"
+                    accessibilityState={
                       {
-                        "alignItems": "center",
-                        "flexDirection": "row",
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
                       }
                     }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 0,
+                            "flexDirection": "row",
+                            "justifyContent": "center",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "width": "auto",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Mettre en favori"
                   >
                     <View
+                      gap={8}
+                      hasIcon={true}
+                      isMultiline={false}
                       style={
                         {
+                          "alignItems": "center",
+                          "columnGap": 8,
                           "flexDirection": "row",
-                          "flexShrink": 0,
-                          "marginRight": 8,
                         }
                       }
                     >
                       <View
-                        height={20}
-                        testID="button-icon-left"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-left-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        {
-                          "color": "#6123df",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 22,
-                          "maxWidth": "100%",
+                        collapsable={false}
+                        jestAnimatedProps={
+                          {
+                            "value": {},
+                          }
                         }
-                      }
-                    >
-                      Mettre en favori
-                    </Text>
+                        jestAnimatedStyle={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestInlineStyle={
+                          {
+                            "flexShrink": 0,
+                          }
+                        }
+                        nativeID="0"
+                        style={
+                          [
+                            {
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={20}
+                          width={20}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#6123df",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
+                        }
+                      >
+                        Mettre en favori
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>

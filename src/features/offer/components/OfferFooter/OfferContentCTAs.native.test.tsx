@@ -195,7 +195,7 @@ describe('OfferContentCTAs', () => {
 
       expect(screen.queryByText('Mettre en favori')).not.toBeOnTheScreen()
 
-      expect(await screen.findByLabelText('Chargement en cours')).toBeOnTheScreen()
+      expect(await screen.findByTestId('button-loading')).toBeOnTheScreen()
     })
 
     it('should display snackbar when addReminder fails', async () => {
