@@ -43,17 +43,18 @@ import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 const keyExtractor = (item: FavoriteResponse) => item.id.toString()
 
 function applySortBy(list: Array<FavoriteResponse>, sortBy: FavoriteSortBy, position: Position) {
+  const copiedList = [...list]
   if (!list) {
     // fix concurrency sentry/issues/288586
     return []
   } else if (sortBy === 'ASCENDING_PRICE') {
-    return [...list].sort(sortByAscendingPrice)
+    return copiedList.sort(sortByAscendingPrice)
   } else if (sortBy === 'AROUND_ME') {
-    return [...list].sort(sortByDistanceAroundMe(position))
+    return copiedList.sort(sortByDistanceAroundMe(position))
   } else if (sortBy === 'RECENTLY_ADDED') {
-    return [...list].sort(sortByIdDesc)
+    return copiedList.sort(sortByIdDesc)
   } else {
-    return [...list]
+    return copiedList
   }
 }
 
