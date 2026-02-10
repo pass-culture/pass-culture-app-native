@@ -874,7 +874,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKINGS_ENDED_ONGOI
           <View
             style={
               {
-                "alignItems": "flex-start",
+                "alignSelf": "flex-start",
               }
             }
           >
@@ -885,7 +885,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKINGS_ENDED_ONGOI
                 {
                   "busy": undefined,
                   "checked": undefined,
-                  "disabled": undefined,
+                  "disabled": false,
                   "expanded": undefined,
                   "selected": undefined,
                 }
@@ -912,16 +912,13 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKINGS_ENDED_ONGOI
                 {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 0,
-                  "borderBottomRightRadius": 0,
-                  "borderTopLeftRadius": 0,
-                  "borderTopRightRadius": 0,
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
                   "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "marginTop": 0,
-                  "maxWidth": 500,
-                  "minHeight": 24,
                   "opacity": 1,
                   "paddingBottom": 0,
                   "paddingLeft": 0,
@@ -934,44 +931,72 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKINGS_ENDED_ONGOI
               testID="Voir l’itinéraire"
             >
               <View
+                gap={8}
+                hasIcon={true}
+                isMultiline={false}
                 style={
                   {
                     "alignItems": "center",
+                    "columnGap": 8,
                     "flexDirection": "row",
                   }
                 }
               >
                 <View
-                  style={
+                  collapsable={false}
+                  jestAnimatedProps={
                     {
-                      "flexDirection": "row",
-                      "flexShrink": 0,
-                      "marginRight": 8,
+                      "value": {},
                     }
+                  }
+                  jestAnimatedStyle={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestInlineStyle={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                  nativeID="2"
+                  style={
+                    [
+                      {
+                        "flexShrink": 0,
+                      },
+                    ]
                   }
                 >
                   <View
                     accessibilityLabel="Nouvelle fenêtre"
-                    height={20}
-                    testID="button-icon-left"
-                    width={20}
+                    height={22}
+                    width={22}
                   >
                     <Text>
-                      button-icon-left-SVG-Mock
+                      undefined-SVG-Mock
                     </Text>
                   </View>
                 </View>
                 <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
                   style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 22,
-                      "maxWidth": "100%",
-                    }
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
+                      },
+                      {
+                        "color": "#161617",
+                        "flexBasis": undefined,
+                        "flexGrow": undefined,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": undefined,
+                      },
+                    ]
                   }
                 >
                   Voir l’itinéraire
@@ -1191,7 +1216,7 @@ Tu ne peux plus annuler ta réservation : elle devait être annulée avant le 1
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": undefined,
+            "disabled": false,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -1216,86 +1241,73 @@ Tu ne peux plus annuler ta réservation : elle devait être annulée avant le 1
         onStartShouldSetResponder={[Function]}
         style={
           {
-            "borderBottomLeftRadius": 999,
-            "borderBottomRightRadius": 999,
-            "borderTopLeftRadius": 999,
-            "borderTopRightRadius": 999,
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderBottomLeftRadius": 8,
+            "borderBottomRightRadius": 8,
+            "borderColor": "#90949d",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 8,
+            "borderTopRightRadius": 8,
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
             "opacity": 1,
+            "paddingBottom": 8,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 8,
             "userSelect": "auto",
+            "width": "auto",
           }
         }
         testID="Revenir en arrière"
       >
         <View
-          collapsable={false}
+          gap={0}
+          hasIcon={true}
+          isMultiline={false}
           style={
             {
               "alignItems": "center",
-              "aspectRatio": 1,
-              "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderBottomLeftRadius": 999,
-              "borderBottomRightRadius": 999,
-              "borderColor": "rgba(255, 255, 255, 1)",
-              "borderStyle": "solid",
-              "borderTopLeftRadius": 999,
-              "borderTopRightRadius": 999,
-              "borderWidth": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "transform": undefined,
-              "width": 40,
+              "columnGap": 0,
+              "flexDirection": "row",
             }
           }
-          testID="AnimatedHeaderIconRoundContainer"
         >
           <View
-            size={24}
-            style={
+            collapsable={false}
+            jestAnimatedProps={
               {
-                "height": 24,
-                "width": 24,
+                "value": {},
               }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              {
+                "flexShrink": 0,
+              }
+            }
+            nativeID="3"
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
             }
           >
             <View
-              collapsable={false}
-              style={
-                {
-                  "opacity": 1,
-                  "position": "absolute",
-                }
-              }
-              testID="initial-icon-container"
+              height={22}
+              width={22}
             >
-              <View
-                height={24}
-                testID="animated-icon-back"
-                width={24}
-              >
-                <Text>
-                  animated-icon-back-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              collapsable={false}
-              style={
-                {
-                  "opacity": 0,
-                  "position": "absolute",
-                }
-              }
-              testID="final-icon-container"
-            >
-              <View
-                height={24}
-                testID="final-animated-icon-back"
-                width={24}
-              >
-                <Text>
-                  final-animated-icon-back-SVG-Mock
-                </Text>
-              </View>
+              <Text>
+                undefined-SVG-Mock
+              </Text>
             </View>
           </View>
         </View>

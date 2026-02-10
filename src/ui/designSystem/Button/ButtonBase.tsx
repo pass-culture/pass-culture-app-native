@@ -5,6 +5,7 @@
 
 import React, { FunctionComponent } from 'react'
 import { AccessibilityRole } from 'react-native'
+import Animated from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useHandleHover } from 'libs/hooks/useHandleHover'
@@ -68,6 +69,7 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
   testID,
   fullWidth,
   isLoading,
+  iconAnimatedStyle,
   defaultAccessibilityRole,
   renderContainer,
 }: ButtonBaseProps) => {
@@ -121,7 +123,7 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
         <ButtonLoadingIndicator color={iconColor} size={iconSize} testID="button-loading" />
       ) : (
         <React.Fragment>
-          {leftIcon ? <IconWrapper>{leftIcon}</IconWrapper> : null}
+          {leftIcon ? <IconWrapper style={iconAnimatedStyle}>{leftIcon}</IconWrapper> : null}
           {labelText ? (
             <LabelTypo
               style={labelStyle}
@@ -130,7 +132,7 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
               {labelText}
             </LabelTypo>
           ) : null}
-          {rightIcon ? <IconWrapper>{rightIcon}</IconWrapper> : null}
+          {rightIcon ? <IconWrapper style={iconAnimatedStyle}>{rightIcon}</IconWrapper> : null}
         </React.Fragment>
       )}
     </Content>
@@ -169,6 +171,6 @@ const Content = styled.View<{
   justifyContent: fullWidth ? 'center' : undefined,
 }))
 
-const IconWrapper = styled.View({
+const IconWrapper = styled(Animated.View)({
   flexShrink: 0,
 })
