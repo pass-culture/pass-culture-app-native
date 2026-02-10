@@ -71,7 +71,7 @@ _Ticket de test créé automatiquement - Équipe assignée: Découverte_`
       body: JSON.stringify({
         fields: {
           project: { key: JIRA_PROJECT_KEY },
-          issuetype: { name: 'Bug' },
+          issuetype: { name: 'Tech Task' },
           summary: ticketSummary,
           description: description,
           priority: { name: 'Major' },
@@ -207,7 +207,7 @@ _Ticket créé automatiquement - Équipe assignée: ${TEAM_NAME}_`
       body: JSON.stringify({
         fields: {
           project: { key: JIRA_PROJECT_KEY },
-          issuetype: { name: 'Bug' },
+          issuetype: { name: 'Tech Task' },
           summary: ticketSummary,
           description: description,
           priority: { name: priority },
