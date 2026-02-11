@@ -167,9 +167,9 @@ export function getKeyFromStringLabel(input?: string | null): string | null {
   if (!input) return null
   return input
     .toUpperCase()
-    .replace('&', 'ET')
-    .replace('-', '_')
-    .replace(',', '')
+    .replaceAll('&', 'ET')
+    .replaceAll('-', '_')
+    .replaceAll(',', '')
     .replace(/ /g, '_')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')

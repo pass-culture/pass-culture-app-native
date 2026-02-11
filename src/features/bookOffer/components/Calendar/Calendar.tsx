@@ -110,8 +110,8 @@ export const getDayDescription = (
   hasSeveralPrices?: boolean
 ) => {
   let dayDescription = hasSeveralPrices ? 'dès ' : ''
-  dayDescription += formatCurrencyFromCents(price, currency, euroToPacificFrancRate).replace(
-    /\u00A0/g,
+  dayDescription += formatCurrencyFromCents(price, currency, euroToPacificFrancRate).replaceAll(
+    '\u00A0',
     ''
   )
 
