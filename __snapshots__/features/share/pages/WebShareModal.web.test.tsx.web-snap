@@ -39,21 +39,26 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
   text-decoration: none;
 }
 
+.c1 {
+  padding: 4px;
+}
+
 .c2 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 2px;
-  padding-right: 2px;
-  min-height: 40px;
-  width: 100%;
+  border-radius: 8px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: auto;
   max-width: 500px;
+  border-width: 0;
+  background-color: transparent;
   cursor: pointer;
   outline: none;
-  border-width: 0;
-  display: flex;
+  display: inline-flex;
   overflow: hidden;
   text-decoration: none;
   box-sizing: border-box;
@@ -61,68 +66,27 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
 
 .c2:disabled {
   cursor: initial;
-  background: none;
-}
-
-.c2:hover {
-  text-decoration: underline;
-  text-decoration-color: #161617;
-}
-
-.c2:hover:disabled {
-  text-decoration: none;
-}
-
-.c5 {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 20px;
-  padding-right: 20px;
-  min-height: 40px;
-  width: 100%;
-  background-color: #6123df;
-  max-width: 320px;
-  cursor: pointer;
-  outline: none;
-  border-width: 0;
-  display: flex;
-  overflow: hidden;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c5:disabled {
-  cursor: initial;
-  background: none;
-}
-
-.c5:hover {
-  text-decoration: underline;
-  text-decoration-color: #ffffff;
-}
-
-.c5:hover:disabled {
-  text-decoration: none;
 }
 
 .c4 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 2px;
-  padding-right: 2px;
-  min-height: 40px;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
   width: 100%;
   max-width: 500px;
+  align-self: center;
+  border-style: solid;
+  border-color: #6123df;
+  border-width: 1px;
+  background-color: #6123df;
   cursor: pointer;
   outline: none;
-  border-width: 0;
-  display: flex;
+  display: inline-flex;
   overflow: hidden;
   text-decoration: none;
   box-sizing: border-box;
@@ -130,28 +94,31 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
 
 .c4:disabled {
   cursor: initial;
-  background: none;
-}
-
-.c4:hover {
-  text-decoration: underline;
-  text-decoration-color: #161617;
-}
-
-.c4:hover:disabled {
-  text-decoration: none;
-}
-
-.c6:disabled {
-  background-color: #f1f1f4;
 }
 
 .c3 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
   background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
-.c1 {
-  padding: 4px;
+.c3:disabled {
+  cursor: initial;
 }
 
 <body>
@@ -273,33 +240,35 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                             class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci"
                           >
                             <button
-                              aria-label="Copier"
-                              class="c2 c3"
+                              aria-label="Copier le lien"
+                              class="c2"
                               data-testid="Copier le lien"
                               tabindex="0"
                               type="button"
                             >
                               <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                                class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                               >
                                 <div
-                                  class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx r-marginRight-1kb76zh"
+                                  class="css-view-175oi2r"
+                                  id="2"
+                                  style="flex-shrink: 0;"
                                 >
                                   <div
                                     class="css-view-175oi2r"
-                                    data-testid="button-icon-left"
                                   >
                                     <div
                                       class="css-text-146c3p1"
                                       dir="ltr"
                                     >
-                                      button-icon-left-SVG-Mock
+                                      undefined-SVG-Mock
                                     </div>
                                   </div>
                                 </div>
                                 <div
-                                  class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv r-maxWidth-dnmrzs"
+                                  class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
                                   dir="ltr"
+                                  style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                                 >
                                   Copier
                                 </div>
@@ -310,34 +279,36 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                             class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci"
                           >
                             <a
-                              aria-label="E-mail"
-                              class="c4 c3"
+                              aria-label="Ouvrir le gestionnaire mail"
+                              class="c3"
                               data-testid="Ouvrir le gestionnaire mail"
                               href="mailto:?subject=Je t’invite à découvrir une super offre sur le pass Culture !&body=Voici%20une%20super%20offre%C2%A0!%0Ahttps%3A%2F%2Furl.com%2Foffer"
                               tabindex="0"
                               target="_blank"
                             >
                               <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                                class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                               >
                                 <div
-                                  class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx r-marginRight-1kb76zh"
+                                  class="css-view-175oi2r"
+                                  id="3"
+                                  style="flex-shrink: 0;"
                                 >
                                   <div
                                     class="css-view-175oi2r"
-                                    data-testid="button-icon-left"
                                   >
                                     <div
                                       class="css-text-146c3p1"
                                       dir="ltr"
                                     >
-                                      button-icon-left-SVG-Mock
+                                      undefined-SVG-Mock
                                     </div>
                                   </div>
                                 </div>
                                 <div
-                                  class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv r-maxWidth-dnmrzs"
+                                  class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
                                   dir="ltr"
+                                  style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                                 >
                                   E-mail
                                 </div>
@@ -476,17 +447,18 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                         />
                         <button
                           aria-label="Annuler"
-                          class="c5 c6"
+                          class="c4"
                           data-testid="Annuler"
                           tabindex="0"
                           type="button"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
                           >
                             <div
-                              class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv r-maxWidth-dnmrzs"
+                              class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
                               dir="ltr"
+                              style="color: rgb(255, 255, 255); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px; text-align: center;"
                             >
                               Annuler
                             </div>

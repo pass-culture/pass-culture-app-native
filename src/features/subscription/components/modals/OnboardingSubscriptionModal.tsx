@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { RingingBell } from 'ui/svg/RingingBell'
@@ -24,21 +25,23 @@ export const OnboardingSubscriptionModal = ({ visible, dismissModal }: Props) =>
         Du mal à trouver ce qui te plaît&nbsp;? Reçois toutes les offres et actus en lien avec tes
         thèmes préférés&nbsp;!
       </StyledBody>
-      <InternalTouchableLink
-        as={Button}
-        wording="Choisir des thèmes à suivre"
-        navigateTo={{ screen: 'OnboardingSubscription' }}
-        onBeforeNavigate={dismissModal}
-        fullWidth
-      />
-      <StyledButton
-        variant="tertiary"
-        color="neutral"
-        wording="Non merci"
-        icon={Invalidate}
-        onPress={dismissModal}
-        accessibilityLabel="Fermer la modale"
-      />
+      <ViewGap gap={4}>
+        <InternalTouchableLink
+          as={Button}
+          wording="Choisir des thèmes à suivre"
+          navigateTo={{ screen: 'OnboardingSubscription' }}
+          onBeforeNavigate={dismissModal}
+          fullWidth
+        />
+        <StyledButton
+          variant="tertiary"
+          color="neutral"
+          wording="Non merci"
+          icon={Invalidate}
+          onPress={dismissModal}
+          accessibilityLabel="Fermer la modale"
+        />
+      </ViewGap>
     </AppModalWithIllustration>
   )
 }
