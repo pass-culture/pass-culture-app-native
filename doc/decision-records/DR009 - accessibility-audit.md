@@ -1091,6 +1091,27 @@ Texte
 </details>
 
 <br>
+<details>
+
+<summary> 🟠Critère 5.1.a - Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance ? </summary>
+
+**RAAM** : [Critère 5.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-5_1)  
+**Ticket** : [40211](https://passculture.atlassian.net/browse/PC-40211)
+**PR** : [#9228](https://github.com/pass-culture/pass-culture-app-native/pull/9228)
+
+**Problème** 😱  
+E09 : le composant « Accéder aux séances » devrait être implémenté comme un bouton
+E14 : les composants dans les historiques de recherche et dans les suggestions déclenchent des événements, mais n'ont pas de rôle présenté aux technologies d'assistance. 
+
+**Correction** 💡  
+Ajout du rôle bouton sur les composants 
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
 
 ## 📂 Template
 
