@@ -33,15 +33,6 @@ const emailUpdateCancelSpy = jest
   .spyOn(API.api, 'postNativeV1ProfileEmailUpdateCancel')
   .mockImplementation()
 
-const mockShowErrorSnackbar = jest.fn()
-
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackbar,
-  }),
-  SNACK_BAR_TIME_OUT: 5000,
-}))
-
 const navigation = {
   navigate: jest.fn(),
   reset: jest.fn(),
@@ -137,7 +128,7 @@ describe('<SuspendAccountConfirmation />', () => {
 
     await user.press(screen.getByText('Oui, suspendre mon compte'))
 
-    expect(mockShowErrorSnackbar).toHaveBeenCalledTimes(1)
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
   })
 
   it('should not display an error snackbar when pressing "Confirmer la demande" button and API response is a 401 error', async () => {
@@ -146,7 +137,7 @@ describe('<SuspendAccountConfirmation />', () => {
 
     await user.press(screen.getByText('Oui, suspendre mon compte'))
 
-    expect(mockShowErrorSnackbar).not.toHaveBeenCalled()
+    expect(screen.queryByTestId('snackbar-error')).toBeNull()
   })
 
   describe('should navigate to change email expired', () => {

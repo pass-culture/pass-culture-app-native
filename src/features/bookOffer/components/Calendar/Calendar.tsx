@@ -145,6 +145,7 @@ const CalendarDay: React.FC<CalendarDayProps> = ({
 }) => {
   const { price, status, selected } = marking as Marking
   const { designSystem } = useTheme()
+
   if (!date) {
     eventMonitoring.captureException('Calendar displayed without selectable day', {
       extra: { offerId, stocks, markedDates, minDate, selectDay, date, marking },

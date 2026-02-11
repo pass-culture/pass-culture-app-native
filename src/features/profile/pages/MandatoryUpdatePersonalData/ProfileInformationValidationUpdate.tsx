@@ -13,15 +13,14 @@ import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Again } from 'ui/svg/icons/Again'
 
 export const ProfileInformationValidationUpdate = () => {
   const { user, refetchUser } = useAuthContext()
   const { navigate, reset } = useNavigation<UseNavigationType>()
-  const { showErrorSnackBar } = useSnackBarContext()
   const [navigatorName, screenConfig] = getProfileHookConfig('UpdatePersonalDataConfirmation')
 
   // isPending from react-query is not support with mutateAsync
@@ -40,7 +39,7 @@ export const ProfileInformationValidationUpdate = () => {
       refetchUser()
     },
     onError: () => {
-      showErrorSnackBar({ message: 'Une erreur est survenue', timeout: SNACK_BAR_TIME_OUT })
+      showErrorSnackBar('Une erreur est survenue')
     },
   })
 

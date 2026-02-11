@@ -31,9 +31,9 @@ import { Form } from 'ui/components/Form'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { InputError } from 'ui/components/inputs/InputError'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
-import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Key } from 'ui/svg/icons/Key'
 import { Typo } from 'ui/theme'
@@ -54,7 +54,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const { data: isRecaptchaEnabled } = useIsRecaptchaEnabled()
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { showInfoSnackBar, showErrorSnackBar } = useSnackBarContext()
   const [isDoingReCaptchaChallenge, setIsDoingReCaptchaChallenge] = useState(false)
 
   const {
@@ -82,14 +81,12 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
 
   useEffect(() => {
     if (params?.displayForcedLoginHelpMessage) {
-      showInfoSnackBar({
-        message:
-          'Pour sécuriser ton pass Culture, tu dois régulièrement confirmer tes identifiants.',
-        timeout: SNACK_BAR_TIME_OUT_LONG,
-      })
+      showErrorSnackBar(
+        'Pour sécuriser ton pass Culture, tu dois régulièrement confirmer tes identifiants.'
+      )
       analytics.logDisplayForcedLoginHelpMessage()
     }
-  }, [params?.displayForcedLoginHelpMessage, showInfoSnackBar])
+  }, [params?.displayForcedLoginHelpMessage])
 
   const handleSigninFailure = useCallback(
     (response: SignInResponseFailure) => {
@@ -110,11 +107,9 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           'SSO_EMAIL_NOT_VALIDATED',
         ].includes(failureCode)
       ) {
-        showErrorSnackBar({
-          message:
-            'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.',
-          timeout: SNACK_BAR_TIME_OUT_LONG,
-        })
+        showErrorSnackBar(
+          'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.'
+        )
       } else if (failureCode === 'EMAIL_NOT_VALIDATED') {
         navigate('SignupConfirmationEmailSent', { email })
       } else if (failureCode === 'ACCOUNT_DELETED') {
@@ -127,7 +122,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         setErrorMessage('E-mail ou mot de passe incorrect')
       }
     },
-    [setFocus, navigate, showErrorSnackBar, email, setFormErrors, setErrorMessage]
+    [email, navigate, setErrorMessage, setFocus, setFormErrors]
   )
 
   const { mutate: signIn, isPending } = useSignInMutation({

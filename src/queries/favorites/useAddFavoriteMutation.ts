@@ -11,7 +11,7 @@ import {
 } from 'api/gen'
 import { FavoriteMutationContext } from 'features/favorites/queries/types'
 import { QueryKeys } from 'libs/queryKeys'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 export const useAddFavoriteMutation = ({
   onSuccess,
@@ -19,7 +19,6 @@ export const useAddFavoriteMutation = ({
   onSuccess?: (data?: FavoriteResponse) => void
 }) => {
   const queryClient = useQueryClient()
-  const { showErrorSnackBar } = useSnackBarContext()
   return useMutation({
     mutationFn: (body: FavoriteRequest) => api.postNativeV1MeFavorites(body),
     onSuccess: (data: FavoriteResponse) => {
@@ -75,13 +74,11 @@ export const useAddFavoriteMutation = ({
       _variables: FavoriteRequest,
       context: FavoriteMutationContext | undefined
     ) => {
-      showErrorSnackBar({
-        message:
-          isApiError(error) && error.content?.code === 'MAX_FAVORITES_REACHED'
-            ? 'Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.'
-            : 'L’offre n’a pas été ajoutée à tes favoris',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(
+        isApiError(error) && error.content?.code === 'MAX_FAVORITES_REACHED'
+          ? 'Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.'
+          : 'L’offre n’a pas été ajoutée à tes favoris'
+      )
       if (context?.previousFavorites) {
         queryClient.setQueryData([QueryKeys.FAVORITES], context.previousFavorites)
         queryClient.setQueryData([QueryKeys.FAVORITES_COUNT], {

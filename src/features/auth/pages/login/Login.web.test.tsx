@@ -11,7 +11,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
-import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
 import { Login } from './Login'
 
@@ -63,20 +62,18 @@ function renderLogin() {
   return render(
     reactQueryProviderHOC(
       <SafeAreaProvider>
-        <SnackBarProvider>
-          <AuthContext.Provider
-            value={{
-              isLoggedIn: true,
-              setIsLoggedIn: jest.fn(),
-              isUserLoading: false,
-              refetchUser: jest.fn(),
-            }}>
-            {/* @ts-expect-error - type incompatibility with React 19 */}
-            <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
-              <Login />
-            </GoogleOAuthProvider>
-          </AuthContext.Provider>
-        </SnackBarProvider>
+        <AuthContext.Provider
+          value={{
+            isLoggedIn: true,
+            setIsLoggedIn: jest.fn(),
+            isUserLoading: false,
+            refetchUser: jest.fn(),
+          }}>
+          {/* @ts-expect-error - type incompatibility with React 19 */}
+          <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
+            <Login />
+          </GoogleOAuthProvider>
+        </AuthContext.Provider>
       </SafeAreaProvider>
     )
   )

@@ -14,8 +14,8 @@ import { newPasswordSchema } from 'shared/forms/schemas/newPasswordSchema'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -28,7 +28,6 @@ type FormValues = {
 export const ChangeEmailSetPassword = () => {
   const { replace } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'ChangeEmailSetPassword'>>()
-  const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   useForHeightKeyboardEvents(setKeyboardHeight)
 
@@ -47,19 +46,14 @@ export const ChangeEmailSetPassword = () => {
 
   const { mutate: setPassword, isPending } = useChangeEmailSetPasswordMutation({
     onSuccess: () => {
-      showSuccessSnackBar({
-        message: 'Ton mot de passe a bien été créé.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showSuccessSnackBar('Ton mot de passe a bien été créé.')
       if (!params?.emailSelectionToken) return // emailSelectionToken should never be undefined if token is defined
       replace(...getProfileHookConfig('NewEmailSelection', { token: params?.emailSelectionToken }))
     },
     onError: () =>
-      showErrorSnackBar({
-        message:
-          'Une erreur s’est produite lors de la création du mot de passe. Réessaie plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      }),
+      showErrorSnackBar(
+        'Une erreur s’est produite lors de la création du mot de passe. Réessaie plus tard.'
+      ),
   })
 
   const onSubmit = handleSubmit(({ newPassword }) => {

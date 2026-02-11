@@ -29,10 +29,10 @@ import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { Accordion } from 'ui/components/Accordion'
 import { Slider } from 'ui/components/inputs/Slider'
 import { Separator } from 'ui/components/Separator'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Warning as WarningDefault } from 'ui/svg/icons/Warning'
@@ -67,8 +67,6 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     utm_gen: 'marketing',
   })
 
-  const { showErrorSnackBar } = useSnackBarContext()
-
   const handleScreenChange = useCallback((label: string) => {
     const screen = getScreenForLabel(label)
     if (!screen) return
@@ -84,10 +82,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       if (config.serverValidator) {
         config.serverValidator(value).catch((error) => {
           const errorMessage = getErrorMessage(error)
-          showErrorSnackBar({
-            message: `${name} invalide: ${errorMessage}`,
-            timeout: SNACK_BAR_TIME_OUT,
-          })
+          showErrorSnackBar(`${name} invalide: ${errorMessage}`)
         })
       }
     }

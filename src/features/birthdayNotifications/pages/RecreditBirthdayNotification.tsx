@@ -12,7 +12,7 @@ import { getAge } from 'shared/user/getAge'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { Typo } from 'ui/theme'
@@ -37,12 +37,11 @@ export const RecreditBirthdayNotification = () => {
     currency,
     euroToPacificFrancRate
   )
-  const { showErrorSnackBar } = useSnackBarContext()
 
   const { mutate: resetRecreditAmountToShow, isPending: isResetRecreditAmountToShowLoading } =
     useResetRecreditAmountToShowMutation({
       onSuccess: () => navigateToHome(),
-      onError: () => showErrorSnackBar({ message: 'Une erreur est survenue' }),
+      onError: () => showErrorSnackBar('Une erreur est survenue'),
     })
 
   useEffect(() => {

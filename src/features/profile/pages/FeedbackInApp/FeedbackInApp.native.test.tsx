@@ -6,7 +6,6 @@ import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { FeedbackInApp } from './FeedbackInApp'
 
@@ -14,15 +13,6 @@ jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
 jest.mock('libs/firebase/analytics/analytics')
-
-const mockShowSuccessSnackBar = jest.fn()
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: mockShowSuccessSnackBar,
-    showErrorSnackBar: mockShowErrorSnackBar,
-  }),
-}))
 
 const postFeedbackSpy = jest.spyOn(API.api, 'postNativeV1Feedback')
 
@@ -92,10 +82,8 @@ describe('<FeedbackInApp/>', () => {
 
       await submitWithFeedback('My feedback')
 
-      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-        message: 'Ta suggestion a bien été transmise\u00a0!',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
+      expect(screen.getByText('Ta suggestion a bien été transmise\u00a0!')).toBeOnTheScreen()
     })
   })
 
@@ -106,10 +94,12 @@ describe('<FeedbackInApp/>', () => {
 
       await submitWithFeedback('My feedback')
 
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message: 'Une erreur s’est produite lors de l’envoi de ta suggestion. Réessaie plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(
+        screen.getByText(
+          'Une erreur s’est produite lors de l’envoi de ta suggestion. Réessaie plus tard.'
+        )
+      ).toBeOnTheScreen()
     })
   })
 

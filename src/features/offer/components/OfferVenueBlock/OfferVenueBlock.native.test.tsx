@@ -1,15 +1,15 @@
 import React from 'react'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
+import { getVenueBlock } from 'features/offer/components/OfferVenueBlock/getVenueBlock'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { OfferVenueBlock } from './OfferVenueBlock'
 
-jest.mock('features/offer/components/OfferVenueBlock/useVenueBlock')
+jest.mock('features/offer/components/OfferVenueBlock/getVenueBlock')
 const mockOnCopyAddressPress = jest.fn()
-const mockUseVenueBlock = jest.mocked(useVenueBlock)
+const mockUseVenueBlock = jest.mocked(getVenueBlock)
 
 const cinemaOffer = { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE }
 

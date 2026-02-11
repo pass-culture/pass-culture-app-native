@@ -8,7 +8,6 @@ import { nonBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment/fixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { DeleteProfileConfirmation } from './DeleteProfileConfirmation'
 
@@ -33,13 +32,6 @@ jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
 const mockSignOut = jest.fn()
 jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
-}))
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackBar,
-  }),
 }))
 
 const postAnonymizeAccountSpy = jest.spyOn(API.api, 'postNativeV1AccountAnonymize')
@@ -110,11 +102,12 @@ describe('DeleteProfileConfirmation', () => {
 
     await user.press(screen.getByText('Supprimer mon compte'))
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message:
-        'Une erreur s’est produite lors de ta demande de suppression de compte. Réessaie plus tard.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(
+      screen.getByText(
+        'Une erreur s’est produite lors de ta demande de suppression de compte. Réessaie plus tard.'
+      )
+    ).toBeOnTheScreen()
   })
 
   function renderDeleteProfileConfirmation() {

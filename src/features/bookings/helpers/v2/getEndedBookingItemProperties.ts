@@ -8,15 +8,13 @@ import { analytics } from 'libs/analytics/provider'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { TileContentType, tileAccessibilityLabel } from 'libs/tileAccessibilityLabel'
 import { PartialOffer } from 'shared/offer/usePrePopulateOffer'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 type EndedBookingItem = {
   booking: BookingListItemResponse
   categoryId: CategoryIdEnum
   netInfo: NetInfoState
   prePopulateOffer: (offer: PartialOffer) => void
-  showErrorSnackBar: (props: SnackBarHelperSettings) => void
 }
 
 export const getEndedBookingItemProperties = ({
@@ -24,7 +22,6 @@ export const getEndedBookingItemProperties = ({
   categoryId,
   netInfo,
   prePopulateOffer,
-  showErrorSnackBar,
 }: EndedBookingItem) => {
   const { dateUsed, cancellationDate, cancellationReason, stock } = booking
   const { offer } = stock
@@ -61,11 +58,9 @@ export const getEndedBookingItemProperties = ({
         from: 'endedbookings',
       })
     } else {
-      showErrorSnackBar({
-        message:
-          'Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(
+        'Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.'
+      )
     }
   }
 

@@ -2,6 +2,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 import { resetProfileStores } from 'features/identityCheck/pages/profile/store/resetProfileStores'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 type OfferNavigation = NativeStackNavigationProp<RootStackParamList, 'Offer'>
 
@@ -15,11 +16,6 @@ type Params = {
 type SuccessParams = Params & {
   navigateForwardToStepper: () => void
   refetchUser: () => void
-}
-
-type ErrorParams = Params & {
-  showErrorSnackBar: (args: { message: string; timeout: number }) => void
-  SNACK_BAR_TIME_OUT: number
 }
 
 function handleFreeOfferProfileSuccess({
@@ -71,7 +67,7 @@ export function handlePostProfileSuccess(params: SuccessParams) {
 function handleFreeOfferProfileError({
   storedFreeOfferId,
   reset,
-}: Pick<ErrorParams, 'storedFreeOfferId' | 'reset'>) {
+}: Pick<Params, 'storedFreeOfferId' | 'reset'>) {
   if (storedFreeOfferId) {
     reset({
       routes: [
@@ -97,22 +93,13 @@ function handleFreeOfferProfileError({
   }
 }
 
-function handleStandardProfileError({
-  showErrorSnackBar,
-  SNACK_BAR_TIME_OUT,
-}: Pick<ErrorParams, 'showErrorSnackBar' | 'SNACK_BAR_TIME_OUT'>) {
-  showErrorSnackBar({
-    message: 'Une erreur est survenue lors de la mise à jour de ton profil',
-    timeout: SNACK_BAR_TIME_OUT,
-  })
-}
-
-export function handlePostProfileError(params: ErrorParams) {
-  const { isBookingFreeOffer, enableBookingFreeOfferFifteenSixteen, ...rest } = params
+export function handlePostProfileError(params: Params) {
+  const { isBookingFreeOffer, enableBookingFreeOfferFifteenSixteen, reset, storedFreeOfferId } =
+    params
 
   if (isBookingFreeOffer && enableBookingFreeOfferFifteenSixteen) {
-    handleFreeOfferProfileError(rest)
+    handleFreeOfferProfileError({ storedFreeOfferId, reset })
   } else {
-    handleStandardProfileError(rest)
+    showErrorSnackBar('Une erreur est survenue lors de la mise à jour de ton profil')
   }
 }

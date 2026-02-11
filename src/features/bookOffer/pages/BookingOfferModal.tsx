@@ -27,7 +27,7 @@ import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/ru
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { useModal } from 'ui/components/modals/useModal'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface BookingOfferModalComponentProps {
@@ -59,7 +59,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const { navigate } = useNavigation<UseNavigationType>()
   const route = useRoute<UseRouteType<'Offer'>>()
   const selectedStock = useBookingStock()
-  const { showErrorSnackBar } = useSnackBarContext()
   const isFromSearch = route.params?.from === 'searchresults'
   const fromOfferId = route.params?.fromOfferId
   const fromMultivenueOfferId = route.params?.fromMultivenueOfferId
@@ -119,9 +118,9 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
           }
         }
       }
-      showErrorSnackBar({ message, timeout: SNACK_BAR_TIME_OUT })
+      showErrorSnackBar(message)
     },
-    [dismissModal, offerId, showErrorSnackBar]
+    [dismissModal, offerId]
   )
 
   const { mutate, isPending } = useBookOfferMutation({

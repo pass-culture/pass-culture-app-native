@@ -14,11 +14,6 @@ jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({ showErrorSnackBar: mockShowErrorSnackBar }),
-}))
-
 const confirmationSuccessResponse = {
   accessToken: 'accessToken',
   refreshToken: 'refreshToken',
@@ -62,10 +57,12 @@ describe('SuspendAccountConfirmationWithoutAuthentication', () => {
     const suspendAccountButton = screen.getByText('Oui, suspendre mon compte')
     await user.press(suspendAccountButton)
 
-    expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
-      message:
-        'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.',
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(
+      screen.getByText(
+        'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.'
+      )
+    ).toBeOnTheScreen()
   })
 
   function renderSuspendAccountConfirmationWithoutAuthentication() {

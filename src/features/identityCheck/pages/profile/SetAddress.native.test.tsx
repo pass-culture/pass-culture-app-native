@@ -11,17 +11,8 @@ import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const QUERY_ADDRESS = '1 rue Poissonnière'
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
-  SNACK_BAR_TIME_OUT: 5000,
-}))
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 

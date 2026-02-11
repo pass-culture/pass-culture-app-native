@@ -49,8 +49,8 @@ import { useEndedBookingFromOfferIdQuery, useBookingsQuery } from 'queries/booki
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
 import { OfferModal } from 'shared/offer/enums'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 type UseGetCtaWordingAndActionProps = {
   offer: OfferResponseV2
@@ -422,7 +422,6 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
   const hasEnoughCredit = useHasEnoughCredit(offer)
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
   const { data: endedBooking } = useEndedBookingFromOfferIdQuery(offerId, false)
-  const { showErrorSnackBar } = useSnackBarContext()
   const route = useRoute<UseRouteType<'Offer'>>()
   const apiRecoParams: RecommendationApiParams = route.params.apiRecoParams
     ? JSON.parse(route.params.apiRecoParams)
@@ -474,7 +473,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     },
     onError() {
       const message = 'Désolé, il est impossible d’ouvrir le lien. Réessaie plus tard.'
-      showErrorSnackBar({ message, timeout: SNACK_BAR_TIME_OUT })
+      showErrorSnackBar(message)
     },
   })
   const { isBeneficiary = false, bookedOffers = {}, status } = user ?? {}

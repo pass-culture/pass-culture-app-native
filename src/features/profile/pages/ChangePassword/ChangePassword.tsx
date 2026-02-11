@@ -17,8 +17,8 @@ import { eventMonitoring } from 'libs/monitoring/services'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { Form } from 'ui/components/Form'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Button } from 'ui/designSystem/Button/Button'
+import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 
@@ -35,7 +35,6 @@ export function ChangePassword() {
     confirmedPassword: '',
   }
   const { navigate } = useNavigation<UseNavigationType>()
-  const { showSuccessSnackBar } = useSnackBarContext()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const { user, isUserLoading } = useAuthContext()
 
@@ -77,10 +76,7 @@ export function ChangePassword() {
           onSuccess() {
             clearErrors()
             reset()
-            showSuccessSnackBar({
-              message: 'Ton mot de passe est modifié',
-              timeout: SNACK_BAR_TIME_OUT,
-            })
+            showSuccessSnackBar('Ton mot de passe est modifié')
             navigate(...getTabHookConfig('Profile'))
             analytics.logHasChangedPassword({ from: 'personaldata', reason: 'changePassword' })
             resolve()

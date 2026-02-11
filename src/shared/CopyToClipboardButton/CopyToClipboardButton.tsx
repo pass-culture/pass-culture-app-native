@@ -1,26 +1,31 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
+import { copyToClipboard } from 'libs/copyToClipboard/copyToClipboard'
 import { Button } from 'ui/designSystem/Button/Button'
 import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 
-interface Props {
+type Props = {
   wording: string
   textToCopy: string
   onCopy?: () => void
   snackBarMessage?: string
 }
 
-export const CopyToClipboardButton = ({ wording, textToCopy, onCopy, snackBarMessage }: Props) => {
-  const copyToClipboard = useCopyToClipboard({ textToCopy, snackBarMessage, onCopy })
+export const CopyToClipboardButton: FC<Props> = ({
+  wording,
+  textToCopy,
+  onCopy,
+  snackBarMessage,
+}) => {
+  const copy = () => copyToClipboard({ textToCopy, snackBarMessage, onCopy })
 
   return (
     <ButtonContainerFlexStart>
       <Button
         wording={wording}
         icon={Duplicate}
-        onPress={copyToClipboard}
+        onPress={copy}
         variant="tertiary"
         color="neutral"
       />

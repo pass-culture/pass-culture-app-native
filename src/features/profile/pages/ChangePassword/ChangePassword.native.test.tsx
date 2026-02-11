@@ -7,22 +7,11 @@ import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
-import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { ChangePassword } from './ChangePassword'
 
 jest.mock('features/auth/context/AuthContext')
 mockAuthContextWithUser(beneficiaryUser, { persist: true })
-
-const mockedUseSnackBarContext = useSnackBarContext as jest.Mock
-
-const mockShowSuccessSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: jest.fn(() => ({
-    showSuccessSnackBar: mockShowSuccessSnackBar,
-  })),
-}))
 
 jest.mock('libs/jwt/jwt')
 
@@ -104,9 +93,7 @@ describe('ChangePassword', () => {
     mockServer.postApi('/v1/change_password', {
       responseOptions: { data: {} },
     })
-    mockedUseSnackBarContext.mockImplementationOnce(() => ({
-      showSuccessSnackBar,
-    }))
+
     renderChangePassword()
 
     const currentPasswordInput = screen.getByTestId('Mot de passe actuel')
@@ -123,10 +110,8 @@ describe('ChangePassword', () => {
 
     await user.press(screen.getByTestId('Enregistrer les modifications'))
 
-    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-      message: 'Ton mot de passe est modifié',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
+    expect(screen.getByText('Ton mot de passe est modifié')).toBeOnTheScreen()
     expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
     expect(analytics.logHasChangedPassword).toHaveBeenCalledWith({
       from: 'personaldata',

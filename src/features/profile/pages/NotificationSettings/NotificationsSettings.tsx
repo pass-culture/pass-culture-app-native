@@ -26,16 +26,15 @@ import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation
 import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const NotificationsSettings = () => {
   const { isLoggedIn, user } = useAuthContext()
-  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const initialState = user?.subscriptions
     ? {
@@ -59,19 +58,13 @@ export const NotificationsSettings = () => {
   const { pushPermission } = usePushPermission(updatePushPermissionFromSettings)
 
   const { mutate: patchProfile, isPending: isUpdatingProfile } = usePatchProfileMutation({
-    onSuccess: () => {
-      showSuccessSnackBar({
-        message: 'Tes modifications ont été enregistrées\u00a0!',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-      analytics.logNotificationToggle(!!state.allowEmails, state.allowPush)
+    onSuccess: async () => {
+      showSuccessSnackBar('Tes modifications ont été enregistrées\u00a0!')
+      await analytics.logNotificationToggle(!!state.allowEmails, state.allowPush)
     },
 
     onError: () => {
-      showErrorSnackBar({
-        message: 'Une erreur est survenue',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('Une erreur est survenue')
       dispatch({ type: 'reset', initialState })
     },
   })

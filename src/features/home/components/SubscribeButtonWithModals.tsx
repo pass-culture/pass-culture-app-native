@@ -14,7 +14,7 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { storage } from 'libs/storage'
 import { ToggleButtonSize } from 'ui/components/buttons/ToggleButton'
 import { useModal } from 'ui/components/modals/useModal'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 import { SubscribeButtonWithTooltip } from './SubscribeButtonWithTooltip'
 
@@ -24,7 +24,6 @@ interface Props {
 }
 
 export const SubscribeButtonWithModals = ({ homeId, size }: Props) => {
-  const { showSuccessSnackBar } = useSnackBarContext()
   const { user, isLoggedIn } = useAuthContext()
   const thematic = useMapSubscriptionHomeIdsToThematic(homeId)
 
@@ -57,10 +56,9 @@ export const SubscribeButtonWithModals = ({ homeId, size }: Props) => {
       showSubscriptionSuccessModal()
       await storage.saveObject('times_user_subscribed_to_a_theme', hasSubscribedTimes + 1)
     } else {
-      showSuccessSnackBar({
-        message: `Tu suis le thème “${mapSubscriptionThemeToName[thematic]}”\u00a0! Tu peux gérer tes alertes depuis ton profil.`,
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showSuccessSnackBar(
+        `Tu suis le thème “${mapSubscriptionThemeToName[thematic]}”\u00a0! Tu peux gérer tes alertes depuis ton profil.`
+      )
     }
   }
 

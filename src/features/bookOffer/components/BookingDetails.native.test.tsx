@@ -19,7 +19,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingDetails, BookingDetailsProps } from './BookingDetails'
 
@@ -51,14 +50,6 @@ jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
 
 const mockUseBookingOffer = jest.spyOn(BookingOfferAPI, 'useBookingOfferQuery')
 mockUseBookingOffer.mockReturnValue({ ...mockOffer, isDuo: false })
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
-  SNACK_BAR_TIME_OUT: 5000,
-}))
 
 const mockStocks = mockOffer.stocks
 const mockDigitalStocks = mockDigitalOffer.stocks

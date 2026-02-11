@@ -3,21 +3,18 @@ import React from 'react'
 import { VenueContact, VenueResponse } from 'api/gen'
 import { isValidFrenchPhoneNumber } from 'features/venue/components/ContactBlock/isValidFrenchPhoneNumber'
 import { analytics } from 'libs/analytics/provider'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 
 export const ContactBlock: React.FC<{ venue: Omit<VenueResponse, 'isVirtual'> }> = ({ venue }) => {
   const { email, phoneNumber, website } = venue.contact || {}
-  const { showErrorSnackBar } = useSnackBarContext()
 
   const onOpenUrlError = () => {
-    showErrorSnackBar({
-      message: 'Une erreur est survenue.',
-    })
+    showErrorSnackBar('Une erreur est survenue.')
   }
 
   if (

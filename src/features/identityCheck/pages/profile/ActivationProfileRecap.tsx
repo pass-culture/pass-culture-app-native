@@ -22,7 +22,6 @@ import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStack
 import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useSnackBarContext, SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -54,7 +53,6 @@ export const ActivationProfileRecap = () => {
     !storedStatus
 
   const saveStep = useSaveStep()
-  const { showErrorSnackBar } = useSnackBarContext()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
 
   const enableBookingFreeOfferFifteenSixteen = useFeatureFlag(
@@ -77,8 +75,6 @@ export const ActivationProfileRecap = () => {
         enableBookingFreeOfferFifteenSixteen,
         storedFreeOfferId,
         reset,
-        showErrorSnackBar,
-        SNACK_BAR_TIME_OUT,
       }),
   })
 

@@ -7,16 +7,6 @@ import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, renderAsync, screen, userEvent, waitFor } from 'tests/utils'
-import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
-
-const mockShowSuccessSnackBar = jest.fn()
-const mockShowErrorSnackBar = jest.fn()
-jest.spyOn(SnackBarContextModule, 'useSnackBarContext').mockReturnValue({
-  showSuccessSnackBar: mockShowSuccessSnackBar,
-  showErrorSnackBar: mockShowErrorSnackBar,
-  showInfoSnackBar: jest.fn(),
-  hideSnackBar: jest.fn(),
-})
 
 useRoute.mockReturnValue({
   params: { token: 'reset_password_token', emailSelectionToken: 'email_selection_token' },
@@ -137,10 +127,8 @@ describe('<ChangeEmailSetPassword />', () => {
 
     await user.press(screen.getByLabelText('Créer mon mot de passe'))
 
-    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-      message: 'Ton mot de passe a bien été créé.',
-      timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
+    expect(screen.getByText('Ton mot de passe a bien été créé.')).toBeOnTheScreen()
   })
 
   it('should log to sentry if the token is undefined', async () => {
@@ -168,10 +156,7 @@ describe('<ChangeEmailSetPassword />', () => {
 
     await user.press(screen.getByLabelText('Créer mon mot de passe'))
 
-    expect(mockShowSuccessSnackBar).not.toHaveBeenCalledWith({
-      message: 'Ton mot de passe a bien été créé.',
-      timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.queryByTestId('snackbar-success')).toBeNull()
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(
       new Error('Expected a string, but received undefined')
     )
@@ -195,9 +180,11 @@ describe('<ChangeEmailSetPassword />', () => {
 
     await user.press(screen.getByLabelText('Créer mon mot de passe'))
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message: 'Une erreur s’est produite lors de la création du mot de passe. Réessaie plus tard.',
-      timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(
+      screen.getByText(
+        'Une erreur s’est produite lors de la création du mot de passe. Réessaie plus tard.'
+      )
+    ).toBeOnTheScreen()
   })
 })

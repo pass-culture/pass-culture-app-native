@@ -16,7 +16,6 @@ import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 const mockStatus: ActivityIdEnum | null = null
 
@@ -48,15 +47,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
       status: mockStatus,
     },
   })),
-}))
-
-const mockShowSuccessSnackBar = jest.fn()
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: mockShowSuccessSnackBar,
-    showErrorSnackBar: mockShowErrorSnackBar,
-  }),
 }))
 
 let mockIsLoading = false
@@ -149,10 +139,8 @@ describe('<ChangeStatus/>', () => {
       await user.press(screen.getByText('Employé'))
       await user.press(screen.getByText('Valider mes informations'))
 
-      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-        message: 'Ton statut a bien été modifié\u00a0!',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
+      expect(screen.getByText('Ton statut a bien été modifié\u00a0!')).toBeOnTheScreen()
     })
   })
 
@@ -202,7 +190,7 @@ describe('<ChangeStatus/>', () => {
       await user.press(screen.getByText('Employé'))
       await user.press(screen.getByText('Valider mes informations'))
 
-      expect(mockShowSuccessSnackBar).not.toHaveBeenCalled()
+      expect(screen.queryByTestId('snackbar-success')).toBeNull()
     })
   })
 })

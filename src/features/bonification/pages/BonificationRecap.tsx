@@ -14,10 +14,10 @@ import { InfoListItemProps, Summary } from 'features/identityCheck/components/Su
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
+import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 export const BonificationRecap = () => {
@@ -26,15 +26,11 @@ export const BonificationRecap = () => {
     useLegalRepresentative()
   const { resetLegalRepresentative } = legalRepresentativeActions
   const { refetchUser } = useAuthContext()
-  const { showSuccessSnackBar } = useSnackBarContext()
 
   const { mutate, isPending } = usePostBonusQuotientFamilialMutation({
     onSuccess: () => {
       navigate('TabNavigator', { screen: 'Home' })
-      showSuccessSnackBar({
-        message: 'Tes informations ont été envoyées\u00a0!',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showSuccessSnackBar('Tes informations ont été envoyées\u00a0!')
       resetLegalRepresentative()
       void refetchUser()
     },

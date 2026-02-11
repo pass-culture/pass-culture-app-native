@@ -12,7 +12,7 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { mapActivityToCategory } from 'features/venue/helpers/mapActivityToCategory'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 interface Props {
   venue: Omit<VenueResponse, 'isVirtual'>
@@ -23,7 +23,6 @@ export const VenueThematicSection: FunctionComponent<Props> = ({ venue }: Props)
   const [hasUserSubscribed, setHasUserSubscribed] = React.useState(false)
   const { user, isLoggedIn } = useAuthContext()
 
-  const { showSuccessSnackBar } = useSnackBarContext()
   const {
     visible: visibleLoggedOutModal,
     showModal: showLoggedOutModal,
@@ -41,10 +40,9 @@ export const VenueThematicSection: FunctionComponent<Props> = ({ venue }: Props)
   } = useModal(false)
 
   const onUpdateSubscriptionSuccess = async (thematic: SubscriptionTheme) => {
-    showSuccessSnackBar({
-      message: `Tu suis le thème “${mapSubscriptionThemeToName[thematic]}”\u00a0! Tu peux gérer tes alertes depuis ton profil.`,
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    showSuccessSnackBar(
+      `Tu suis le thème “${mapSubscriptionThemeToName[thematic]}”\u00a0! Tu peux gérer tes alertes depuis ton profil.`
+    )
   }
 
   const {

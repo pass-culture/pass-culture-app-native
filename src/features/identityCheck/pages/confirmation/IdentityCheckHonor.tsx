@@ -14,8 +14,8 @@ import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStack
 import { QueryKeys } from 'libs/queryKeys'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Page } from 'ui/pages/Page'
 import { Spacer, Typo } from 'ui/theme'
@@ -23,7 +23,6 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const IdentityCheckHonor = () => {
   const headerHeight = useGetHeaderHeight()
-  const { showErrorSnackBar } = useSnackBarContext()
   const queryClient = useQueryClient()
   const { navigate } = useNavigation<UseNavigationType>()
   const { refetchUser } = useAuthContext()
@@ -46,10 +45,7 @@ export const IdentityCheckHonor = () => {
         const { data: user } = await refetchUser()
         userProfile = user
       } catch (error) {
-        showErrorSnackBar({
-          message: extractApiErrorMessage(error),
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+        showErrorSnackBar(extractApiErrorMessage(error))
       }
       const hasUserOngoingCredit = userProfile ? hasOngoingCredit(userProfile) : false
       if (hasUserOngoingCredit) {
@@ -59,11 +55,7 @@ export const IdentityCheckHonor = () => {
         navigate(...getSubscriptionHookConfig('BeneficiaryRequestSent'))
       }
     },
-    onError: (error) =>
-      showErrorSnackBar({
-        message: extractApiErrorMessage(error),
-        timeout: SNACK_BAR_TIME_OUT,
-      }),
+    onError: (error) => showErrorSnackBar(extractApiErrorMessage(error)),
   })
 
   // If the mutation is loading or is a success, we don't want the user to trigger the button again

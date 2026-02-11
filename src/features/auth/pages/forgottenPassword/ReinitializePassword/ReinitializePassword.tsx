@@ -16,8 +16,8 @@ import { PasswordInputController } from 'shared/forms/controllers/PasswordInputC
 import { newPasswordSchema } from 'shared/forms/schemas/newPasswordSchema'
 import { Form } from 'ui/components/Form'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Typo } from 'ui/theme'
@@ -36,7 +36,6 @@ export const ReinitializePassword = () => {
 
   const route = useRoute<UseRouteType<'ReinitializePassword'>>()
   const navigation = useNavigation<UseNavigationType>()
-  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const loginRoutine = useLoginRoutine()
   const deviceInfo = useDeviceInfo()
 
@@ -73,16 +72,13 @@ export const ReinitializePassword = () => {
   }, [password, trigger])
 
   const { mutate: resetPassword, isPending } = useResetPasswordMutation({
-    onSuccess: (response: ResetPasswordResponse) => {
-      showSuccessSnackBar({
-        message: 'Ton mot de passe est modifié\u00a0!',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-      analytics.logHasChangedPassword({
+    onSuccess: async (response: ResetPasswordResponse) => {
+      showSuccessSnackBar('Ton mot de passe est modifié\u00a0!')
+      await analytics.logHasChangedPassword({
         from: route.params.from ?? 'forgottenpassword',
         reason: 'resetPassword',
       })
-      loginRoutine(
+      await loginRoutine(
         {
           accessToken: response.accessToken,
           refreshToken: response.refreshToken,
@@ -93,10 +89,7 @@ export const ReinitializePassword = () => {
       navigateToHome()
     },
     onError: () => {
-      showErrorSnackBar({
-        message: 'Une erreur s’est produite pendant la modification de ton mot de passe.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('Une erreur s’est produite pendant la modification de ton mot de passe.')
     },
   })
 

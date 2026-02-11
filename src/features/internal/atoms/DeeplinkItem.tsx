@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
-import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
+import { copyToClipboard } from 'libs/copyToClipboard/copyToClipboard'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Share as DefaultShare } from 'ui/svg/icons/Share'
 import { Typo } from 'ui/theme'
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const DeeplinkItem: FC<Props> = ({ universalLink, before }) => {
-  const copyToClipboardUniversalLink = useCopyToClipboard({ textToCopy: universalLink })
+  const copyToClipboardUniversalLink = () => copyToClipboard({ textToCopy: universalLink })
 
   return (
     <React.Fragment>

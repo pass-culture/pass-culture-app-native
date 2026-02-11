@@ -8,7 +8,7 @@ import { View } from 'react-native'
 import { styled, useTheme } from 'styled-components/native'
 
 import { SnackBar } from 'ui/designSystem/Snackbar/SnackBar'
-import { useSnackbarProps } from 'ui/designSystem/Snackbar/SnackBarStore'
+import { useSnackbarProps } from 'ui/designSystem/Snackbar/snackBar.store'
 
 export const SnackBarWrapper: FC<PropsWithChildren> = ({ children }) => {
   const { isDesktopViewport } = useTheme()
@@ -16,30 +16,32 @@ export const SnackBarWrapper: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <React.Fragment>
-      <Container>
-        {snackbarsProps.map(({ onClose, label, animationDuration, type, id }, index) => (
-          <View style={{ zIndex: 1000 - index }} key={id}>
-            <SnackBar
-              variant={isDesktopViewport ? 'large' : 'default'}
-              id={id}
-              onClose={onClose}
-              label={label}
-              animationDuration={animationDuration}
-              type={type}
-            />
-          </View>
-        ))}
-      </Container>
+      {snackbarsProps.length > 0 ? (
+        <Container>
+          {snackbarsProps.map(({ onClose, label, animationDuration, type, id }, index) => (
+            <View style={{ zIndex: 1000 - index }} key={id}>
+              <SnackBar
+                variant={isDesktopViewport ? 'large' : 'default'}
+                id={id}
+                onClose={onClose}
+                label={label}
+                animationDuration={animationDuration}
+                type={type}
+              />
+            </View>
+          ))}
+        </Container>
+      ) : null}
       {children}
     </React.Fragment>
   )
 }
 
 const Container = styled.View(({ theme }) => ({
-  top: theme.isDesktopViewport ? undefined : 0,
-  bottom: theme.isDesktopViewport ? 0 : undefined,
-  left: theme.isDesktopViewport ? undefined : 0,
-  right: 0,
+  top: theme.isDesktopViewport ? undefined : theme.designSystem.size.spacing.xs,
+  bottom: theme.isDesktopViewport ? theme.designSystem.size.spacing.xs : undefined,
+  left: theme.isDesktopViewport ? undefined : theme.designSystem.size.spacing.xs,
+  right: theme.designSystem.size.spacing.xs,
   position: 'absolute',
   zIndex: 1000,
 }))

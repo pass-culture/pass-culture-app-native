@@ -13,18 +13,10 @@ import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { SuspensionChoice } from './SuspensionChoice'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackBar,
-  }),
-}))
 
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: jest.fn(),
@@ -70,11 +62,12 @@ describe('<SuspensionChoice/>', () => {
     const acceptSuspensionButton = screen.getByText('Oui, suspendre mon compte')
     await user.press(acceptSuspensionButton)
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message:
-        'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(
+      screen.getByText(
+        'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.'
+      )
+    ).toBeOnTheScreen()
   })
 
   describe('When shouldLogInfo remote config is false', () => {

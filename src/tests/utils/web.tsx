@@ -12,6 +12,7 @@ import { ThemeProvider } from 'styled-components/native'
 import { StylesheetManagerWrapper } from 'libs/styled/StyleSheetManagerWrapper'
 import { computedTheme } from 'tests/computedTheme'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
+import { SnackBarWrapper } from 'ui/designSystem/Snackbar/SnackBarWrapper'
 
 type PropsWithTheme = {
   theme?: Partial<DefaultTheme>
@@ -24,7 +25,9 @@ const DefaultWrapper = ({ children, theme }: PropsWithTheme) => {
     <ThemeProviderWeb theme={innerTheme}>
       <ThemeProvider theme={innerTheme}>
         <StylesheetManagerWrapper>
-          <IconFactoryProvider>{children}</IconFactoryProvider>
+          <SnackBarWrapper>
+            <IconFactoryProvider>{children}</IconFactoryProvider>
+          </SnackBarWrapper>
         </StylesheetManagerWrapper>
       </ThemeProvider>
     </ThemeProviderWeb>

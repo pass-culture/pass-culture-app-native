@@ -28,10 +28,10 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Button } from 'ui/designSystem/Button/Button'
 import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
 import { CheckboxGroupOption } from 'ui/designSystem/CheckboxGroup/types'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
 import { Spacer } from 'ui/theme'
 
@@ -49,7 +49,6 @@ export function CulturalSurveyQuestions() {
   const { nextQuestion, isCurrentQuestionLastQuestion } = useGetNextQuestion(params?.question)
   const culturalSurveyProgress = useCulturalSurveyProgress(params?.question)
 
-  const { showErrorSnackBar } = useSnackBarContext()
   const { refetchUser } = useAuthContext()
 
   const { goBack } = useGoBack(...homeNavigationConfig)
@@ -109,7 +108,7 @@ export function CulturalSurveyQuestions() {
 
   const onError = (error: unknown) => {
     navigateToHome()
-    showErrorSnackBar({ message: extractApiErrorMessage(error), timeout: SNACK_BAR_TIME_OUT })
+    showErrorSnackBar(extractApiErrorMessage(error))
   }
 
   const { mutate: postCulturalSurveyAnswers } = useCulturalSurveyAnswersMutation({

@@ -18,10 +18,10 @@ import { useIdCheckAddressAutocompletion } from 'queries/settings/useSettings'
 import { Form } from 'ui/components/Form'
 import { isAddressValid } from 'ui/components/inputs/addressCheck'
 import { InputError } from 'ui/components/inputs/InputError'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
 import { Button } from 'ui/designSystem/Button/Button'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
@@ -52,7 +52,6 @@ export const SetAddress = () => {
   const storedAddress = useAddress()
   const storedCity = useCity()
   const { setAddress: setStoreAddress } = addressActions
-  const { showErrorSnackBar } = useSnackBarContext()
   const { navigate } = useNavigation<UseNavigationType>()
   const [query, setQuery] = useState<string>(storedAddress ?? '')
   const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
@@ -73,7 +72,7 @@ export const SetAddress = () => {
 
   useEffect(() => {
     if (!isError) return
-    showErrorSnackBar({ message: snackbarMessage, timeout: SNACK_BAR_TIME_OUT })
+    showErrorSnackBar(snackbarMessage)
     eventMonitoring.captureException(new IdentityCheckError(exception))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError])

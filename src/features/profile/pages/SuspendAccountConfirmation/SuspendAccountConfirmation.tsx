@@ -9,7 +9,7 @@ import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { useEmailUpdateStatusQuery } from 'features/profile/queries/useEmailUpdateStatusQuery'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Clear } from 'ui/svg/icons/Clear'
 import { UserError } from 'ui/svg/UserError'
@@ -27,7 +27,6 @@ export function SuspendAccountConfirmation({
 }: SuspendAccountConfirmationProps) {
   const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } =
     useEmailUpdateStatusQuery()
-  const { showErrorSnackBar } = useSnackBarContext()
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -52,15 +51,14 @@ export function SuspendAccountConfirmation({
         navigation.reset({ routes: [{ name: 'ChangeEmailExpiredLink' }] })
         return
       }
-      showErrorSnackBar({
-        message: 'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(
+        'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.'
+      )
       navigateToHome()
     } finally {
       setIsLoading(false)
     }
-  }, [mutate, navigation, showErrorSnackBar])
+  }, [mutate, navigation])
 
   useEffect(() => {
     if (!isLoadingEmailUpdateStatus) {

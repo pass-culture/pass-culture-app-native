@@ -17,13 +17,13 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { useModal } from 'ui/components/modals/useModal'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { StepButton } from 'ui/components/StepButton/StepButton'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { StepList } from 'ui/components/StepList/StepList'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
 import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -49,7 +49,6 @@ export const Stepper = () => {
   const stepToComplete = steps[currentStepIndex]
 
   const { subscription } = useSetSubscriptionStepAndMethod()
-  const { showErrorSnackBar } = useSnackBarContext()
   const { refetchUser } = useAuthContext()
   useRehydrateProfile()
 
@@ -79,10 +78,7 @@ export const Stepper = () => {
           }
         })
         .catch((error) => {
-          showErrorSnackBar({
-            message: extractApiErrorMessage(error),
-            timeout: SNACK_BAR_TIME_OUT,
-          })
+          showErrorSnackBar(extractApiErrorMessage(error))
         })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -90,7 +86,7 @@ export const Stepper = () => {
 
   useEffect(() => {
     if (params?.from && stepToComplete?.name) {
-      analytics.logStepperDisplayed(params.from, stepToComplete.name)
+      void analytics.logStepperDisplayed(params.from, stepToComplete.name)
     }
   }, [params?.from, stepToComplete?.name])
 
@@ -104,7 +100,7 @@ export const Stepper = () => {
               type: step.firstScreenType,
             })}
             onPress={() => {
-              analytics.logIdentityCheckStep(step.name)
+              void analytics.logIdentityCheckStep(step.name)
             }}
           />
           {index === steps.length - 1 ? null : <Spacer.Column numberOfSpaces={2} />}

@@ -8,7 +8,7 @@ import { getEndedBookingItemProperties } from 'features/bookings/helpers/v2/getE
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
 import { SegmentResult } from 'shared/useABSegment/useABSegment'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
+import * as snackBarStoreModule from 'ui/designSystem/Snackbar/snackBar.store'
 
 jest.mock('libs/analytics/provider', () => ({
   analytics: {
@@ -149,6 +149,8 @@ describe('getEndedBookingItemProperties', () => {
     })
 
     it('should show error snackbar on press if disconnected', async () => {
+      const mockShowErrorSnackBar = jest.spyOn(snackBarStoreModule, 'showErrorSnackBar')
+
       const netInfo: NetInfoState = {
         isConnected: false,
         type: NetInfoStateType.none,
@@ -164,10 +166,9 @@ describe('getEndedBookingItemProperties', () => {
       await properties.handlePressOffer()
 
       expect(mockPrePopulateOffer).not.toHaveBeenCalled()
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message: expect.stringContaining('Impossible d’afficher'),
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith(
+        'Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.'
+      )
     })
   })
 })

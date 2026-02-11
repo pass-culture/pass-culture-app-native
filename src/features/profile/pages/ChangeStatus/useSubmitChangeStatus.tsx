@@ -13,7 +13,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics/provider'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 const schema = yup.object().shape({
   selectedStatus: yup.string().required(),
@@ -29,12 +29,11 @@ export const useSubmitChangeStatus = () => {
 
   const { user } = useAuthContext()
   const { navigate, reset } = useNavigation<UseNavigationType>()
-  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const storedStatus = useStatus()
   const [navigatorName, screenConfig] = getProfileHookConfig('UpdatePersonalDataConfirmation')
 
   const { mutate: patchProfile, isPending } = usePatchProfileMutation({
-    onSuccess: (_, variables) => {
+    onSuccess: async (_, variables) => {
       if (isMandatoryUpdatePersonalData) {
         reset({
           index: 1,
@@ -45,22 +44,15 @@ export const useSubmitChangeStatus = () => {
         })
       } else {
         navigate(...getProfileHookConfig('PersonalData'))
-        showSuccessSnackBar({
-          message: successSnackBarMessage,
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+        showSuccessSnackBar(successSnackBarMessage)
       }
-      analytics.logUpdateStatus({
+      await analytics.logUpdateStatus({
         oldStatus: user?.activityId ?? '',
         newStatus: variables.activityId ?? '',
       })
     },
-
     onError: () => {
-      showErrorSnackBar({
-        message: 'Une erreur est survenue',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('Une erreur est survenue')
     },
   })
   const {

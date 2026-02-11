@@ -11,7 +11,6 @@ import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthC
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { NotificationsSettings } from './NotificationsSettings'
 
@@ -30,15 +29,6 @@ const userWithoutNotificationsOn = {
 mockAuthContextWithUser(userWithoutNotificationsOn, { persist: true })
 
 const patchProfileSpy = jest.spyOn(API.api, 'patchNativeV1Profile')
-
-const mockShowSuccessSnackBar = jest.fn()
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: mockShowSuccessSnackBar,
-    showErrorSnackBar: mockShowErrorSnackBar,
-  }),
-}))
 
 const usePushPermissionSpy = jest.spyOn(usePushPermission, 'usePushPermission').mockReturnValue({
   pushPermission: 'granted',
@@ -275,10 +265,8 @@ describe('NotificationsSettings', () => {
       const saveButton = screen.getByText('Enregistrer')
       await user.press(saveButton)
 
-      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-        message: 'Tes modifications ont été enregistrées\u00a0!',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
+      expect(screen.getByText('Tes modifications ont été enregistrées\u00a0!')).toBeOnTheScreen()
     })
 
     it('should show snackbar on error', async () => {
@@ -294,10 +282,8 @@ describe('NotificationsSettings', () => {
       const saveButton = screen.getByText('Enregistrer')
       await user.press(saveButton)
 
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message: 'Une erreur est survenue',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(screen.getByText('Une erreur est survenue')).toBeOnTheScreen()
     })
 
     it('should reset settings on error', async () => {

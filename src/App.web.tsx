@@ -27,7 +27,7 @@ import { StylesheetManagerWrapper } from 'libs/styled/StyleSheetManagerWrapper'
 import { ThemeWrapper } from 'libs/styled/ThemeWrapper'
 import 'reset-css'
 import 'resize-observer-polyfill/dist/ResizeObserver.global'
-import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
+import { SnackBarWrapper } from 'ui/designSystem/Snackbar/SnackBarWrapper'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate.web'
 
@@ -65,7 +65,7 @@ export function App() {
                       <AccessibilityFiltersWrapper>
                         <FavoritesWrapper>
                           <SearchWrapper>
-                            <SnackBarProvider>
+                            <SnackBarWrapper>
                               <CulturalSurveyContextProvider>
                                 <SubscriptionContextProvider>
                                   <AppWebHead />
@@ -76,7 +76,7 @@ export function App() {
                                   </ScreenErrorProvider>
                                 </SubscriptionContextProvider>
                               </CulturalSurveyContextProvider>
-                            </SnackBarProvider>
+                            </SnackBarWrapper>
                           </SearchWrapper>
                         </FavoritesWrapper>
                       </AccessibilityFiltersWrapper>

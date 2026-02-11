@@ -6,20 +6,16 @@ import { Platform } from 'react-native'
 
 import { analytics } from 'libs/analytics/provider'
 import { useNetInfo } from 'libs/network/useNetInfo'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 export const NetInfoWrapper = memo(function NetInfoWrapper({ children }: PropsWithChildren) {
   const networkInfo = useNetInfo()
-  const { showInfoSnackBar } = useSnackBarContext()
 
   useEffect(() => {
     const isConnected = !!networkInfo.isConnected && !!networkInfo.isInternetReachable
     onlineManager.setOnline(isConnected)
     if (isConnected === false) {
-      showInfoSnackBar({
-        message: 'Aucune connexion internet. Réessaie plus tard',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('Aucune connexion internet. Réessaie plus tard.')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [networkInfo.isConnected, networkInfo.isInternetReachable])

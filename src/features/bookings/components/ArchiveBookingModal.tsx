@@ -8,7 +8,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Close } from 'ui/svg/icons/Close'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Spacer, Typo } from 'ui/theme'
@@ -22,24 +22,18 @@ export interface ArchiveBookingModalProps {
 
 export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
   const { goBack } = useGoBack(...getTabHookConfig('Bookings'))
-  const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
 
   const { mutate, isPending } = useArchiveBookingMutation({
     bookingId: props.bookingId,
     onSuccess: () => {
-      showSuccessSnackBar({
-        message:
-          'La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showSuccessSnackBar(
+        'La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées'
+      )
       goBack()
       props.onDismiss()
     },
     onError: (error) => {
-      showErrorSnackBar({
-        message: extractApiErrorMessage(error),
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(extractApiErrorMessage(error))
     },
   })
 

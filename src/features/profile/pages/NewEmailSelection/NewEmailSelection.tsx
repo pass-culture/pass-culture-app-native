@@ -13,12 +13,8 @@ import { EmailInputController } from 'shared/forms/controllers/EmailInputControl
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
-import {
-  SNACK_BAR_TIME_OUT,
-  SNACK_BAR_TIME_OUT_LONG,
-  useSnackBarContext,
-} from 'ui/components/snackBar/SnackBarContext'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 
 type FormValues = {
@@ -28,7 +24,6 @@ type FormValues = {
 export const NewEmailSelection = () => {
   const { replace } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'NewEmailSelection'>>()
-  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const {
     control,
@@ -45,18 +40,15 @@ export const NewEmailSelection = () => {
 
   const { mutate: selectNewEmail, isPending } = useNewEmailSelectionMutation({
     onSuccess: () => {
-      showSuccessSnackBar({
-        message:
-          'E-mail envoyé sur ta nouvelle adresse\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.',
-        timeout: SNACK_BAR_TIME_OUT_LONG,
-      })
+      showSuccessSnackBar(
+        'E-mail envoyé sur ta nouvelle adresse\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.'
+      )
       replace(...getProfileHookConfig('TrackEmailChange'))
     },
     onError: () =>
-      showErrorSnackBar({
-        message: 'Une erreur s’est produite lors du choix de l’adresse e-mail. Réessaie plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      }),
+      showErrorSnackBar(
+        'Une erreur s’est produite lors du choix de l’adresse e-mail. Réessaie plus tard.'
+      ),
   })
 
   const onSubmit = handleSubmit(({ newEmail }) => {

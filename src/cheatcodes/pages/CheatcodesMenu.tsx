@@ -26,8 +26,8 @@ import { CheatcodeCategory } from 'cheatcodes/types'
 import { env } from 'libs/environment/env'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 const isMatching = (searchValue: string, str: string): boolean =>
   str.toLowerCase().includes(searchValue.toLowerCase())
@@ -61,20 +61,13 @@ export function CheatcodesMenu(): React.JSX.Element {
   const [searchValue, setSearchValue] = useState('')
   const resetSearch = () => setSearchValue('')
 
-  const { showInfoSnackBar, showErrorSnackBar } = useSnackBarContext()
   const onPressSentry = () => {
     const message = `SENTRY_${env.ENV}_TEST_${uuidv4().slice(0, 5)}`.toUpperCase()
     eventMonitoring.captureException(new Error(message))
-    showInfoSnackBar({
-      message: `L’erreur ${message} a été envoyé sur Sentry`,
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    showSuccessSnackBar(`L’erreur ${message} a été envoyé sur Sentry`)
   }
   const onPressSnackbar = () => {
-    showErrorSnackBar({
-      message: 'Ceci est un test snackbar d’erreur',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    showErrorSnackBar('Ceci est un test snackbar d’erreur')
   }
 
   const featuresButtons: CheatcodeCategory[] = [

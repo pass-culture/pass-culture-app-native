@@ -57,7 +57,7 @@ import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 type OfferContentBaseProps = OfferContentProps &
   PropsWithChildren<{
@@ -117,7 +117,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   const apiRecoParams: RecommendationApiParams = params?.apiRecoParams
     ? JSON.parse(params?.apiRecoParams)
     : undefined
-  const { showErrorSnackBar } = useSnackBarContext()
 
   const {
     sameCategorySimilarOffers,
@@ -216,10 +215,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
 
   const { mutate: removeFavorite, isPending: isRemoveFavoriteLoading } = useRemoveFavoriteMutation({
     onError: () => {
-      showErrorSnackBar({
-        message: 'L’offre n’a pas été retirée de tes favoris',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('L’offre n’a pas été retirée de tes favoris')
     },
   })
 

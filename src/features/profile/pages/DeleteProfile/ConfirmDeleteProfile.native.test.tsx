@@ -7,18 +7,12 @@ import { env } from 'libs/environment/env'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { ConfirmDeleteProfile } from './ConfirmDeleteProfile'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-}))
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({ showErrorSnackBar: mockShowErrorSnackBar }),
 }))
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
@@ -72,10 +66,8 @@ describe('ConfirmDeleteProfile component', () => {
 
     await user.press(screen.getByText('Supprimer mon compte'))
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message: 'Une erreur s’est produite pendant le chargement.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(screen.getByText('Une erreur s’est produite pendant le chargement.')).toBeOnTheScreen()
   })
 
   it('should log analytics and redirect to FAQ when clicking on FAQ link', async () => {

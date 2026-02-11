@@ -8,7 +8,7 @@ import { DeeplinksResult } from 'features/internal/components/DeeplinksResult'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
 
 const linksInitialState: Array<string> = []
@@ -17,7 +17,6 @@ export const DeeplinksGenerator = () => {
   const [result, setResult] = useState(linksInitialState[0])
   const [links, setLinks] = useState<Array<string>>(linksInitialState)
   const [keepHistory, setKeepHistory] = useState(false)
-  const { showErrorSnackBar } = useSnackBarContext()
   const headerHeight = useGetHeaderHeight()
 
   const onGenerate = useCallback(
@@ -34,10 +33,9 @@ export const DeeplinksGenerator = () => {
             )
           } catch (error) {
             if (error instanceof Error)
-              showErrorSnackBar({
-                message: `Le lien ${generatedDeeplink} n’a pas été ajouté à l’historique\u00a0: ${error.message}`,
-                timeout: SNACK_BAR_TIME_OUT,
-              })
+              showErrorSnackBar(
+                `Le lien ${generatedDeeplink} n’a pas été ajouté à l’historique\u00a0: ${error.message}`
+              )
           }
         }
       }

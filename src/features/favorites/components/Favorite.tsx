@@ -25,12 +25,12 @@ import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
 import { LineSeparator } from 'ui/components/LineSeparator'
 import { useModal } from 'ui/components/modals/useModal'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useLayout } from 'ui/hooks/useLayout'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Share } from 'ui/svg/icons/Share'
@@ -69,7 +69,6 @@ export const Favorite: React.FC<Props> = (props) => {
     startPrice: offer.startPrice,
     price: offer.price,
   })
-  const { showErrorSnackBar } = useSnackBarContext()
   const { categoryId, appLabel } = useSubcategory(offer.subcategoryId)
   const formattedDate = useFavoriteFormattedDate({ offer })
   const { modalToDisplay, ...buttonProperties } =
@@ -87,10 +86,7 @@ export const Favorite: React.FC<Props> = (props) => {
 
   const { mutate: removeFavorite, isPending } = useRemoveFavoriteMutation({
     onError: () => {
-      showErrorSnackBar({
-        message: 'L’offre n’a pas été retirée de tes favoris',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('L’offre n’a pas été retirée de tes favoris')
     },
   })
 

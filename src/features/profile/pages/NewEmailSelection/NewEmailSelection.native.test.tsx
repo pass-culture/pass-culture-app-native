@@ -15,7 +15,6 @@ import {
   userEvent,
   waitForButtonToBePressable,
 } from 'tests/utils'
-import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -23,14 +22,6 @@ jest.useFakeTimers()
 
 useRoute.mockReturnValue({ params: { token: 'new_email_selection_token' } })
 
-const mockShowSuccessSnackBar = jest.fn()
-const mockShowErrorSnackBar = jest.fn()
-jest.spyOn(SnackBarContextModule, 'useSnackBarContext').mockReturnValue({
-  showSuccessSnackBar: mockShowSuccessSnackBar,
-  showErrorSnackBar: mockShowErrorSnackBar,
-  showInfoSnackBar: jest.fn(),
-  hideSnackBar: jest.fn(),
-})
 jest.mock('libs/jwt/jwt')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -106,11 +97,12 @@ describe('<NewEmailSelection />', () => {
 
     await user.press(screen.getByLabelText('Modifier mon adresse e-mail'))
 
-    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-      message:
-        'E-mail envoyé sur ta nouvelle adresse\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.',
-      timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT_LONG,
-    })
+    expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
+    expect(
+      screen.getByText(
+        'E-mail envoyé sur ta nouvelle adresse\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.'
+      )
+    ).toBeOnTheScreen()
   })
 
   it('should show log to sentry if token is undefined', async () => {
@@ -132,11 +124,7 @@ describe('<NewEmailSelection />', () => {
 
     await user.press(screen.getByLabelText('Modifier mon adresse e-mail'))
 
-    expect(mockShowSuccessSnackBar).not.toHaveBeenCalledWith({
-      message:
-        'E-mail envoyé sur ta nouvelle adresse\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.',
-      timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT_LONG,
-    })
+    expect(screen.queryByTestId('snackbar-success')).toBeNull()
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(
       new Error('Expected a string, but received undefined')
     )
@@ -157,10 +145,12 @@ describe('<NewEmailSelection />', () => {
 
     await user.press(screen.getByLabelText('Modifier mon adresse e-mail'))
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message: 'Une erreur s’est produite lors du choix de l’adresse e-mail. Réessaie plus tard.',
-      timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(
+      screen.getByText(
+        'Une erreur s’est produite lors du choix de l’adresse e-mail. Réessaie plus tard.'
+      )
+    ).toBeOnTheScreen()
   })
 
   describe('email format', () => {

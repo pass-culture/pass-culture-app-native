@@ -18,8 +18,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('libs/campaign/campaign')
 jest.mock('libs/react-native-device-info/getDeviceId')
@@ -55,13 +53,6 @@ jest.mock('@react-navigation/native', () => ({
 }))
 
 const mockStartTrackingAcceptedCookies = jest.spyOn(Tracking, 'startTrackingAcceptedCookies')
-
-const mockShowSuccessSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSuccessSnackBar(props)),
-  }),
-}))
 
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
@@ -247,10 +238,8 @@ describe('<ConsentSettings/>', () => {
     const saveChoice = screen.getByText('Enregistrer mes choix')
     await user.press(saveChoice)
 
-    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-      message: 'Ton choix a bien été enregistré.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
+    expect(screen.getByText('Ton choix a bien été enregistré.')).toBeOnTheScreen()
     expect(mockPopTo).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
   })
 
@@ -312,10 +301,8 @@ describe('<ConsentSettings/>', () => {
     await user.press(screen.getByText('Enregistrer mes choix'))
 
     expect(mockPopTo).toHaveBeenCalledWith('Offer', { id: 116656 })
-    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-      message: 'Ton choix a bien été enregistré.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
+    expect(screen.getByText('Ton choix a bien été enregistré.')).toBeOnTheScreen()
   })
 
   it('beforeRemove without changes: does not prevent or open modal', async () => {

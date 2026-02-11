@@ -9,7 +9,7 @@ import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import FrenchRepublicAnimation from 'ui/animations/french_republic_animation.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { Typo } from 'ui/theme'
@@ -20,8 +20,6 @@ export function BonificationGranted() {
   const { navigateToHomeWithReset } = useNavigateToHomeWithReset()
   const { refetchUser } = useAuthContext()
 
-  const { showErrorSnackBar } = useSnackBarContext()
-
   const { mutate: resetRecreditAmountToShow, isPending: isResetRecreditAmountToShowLoading } =
     useResetRecreditAmountToShowMutation({
       onSuccess: () => {
@@ -29,7 +27,7 @@ export function BonificationGranted() {
         void refetchUser()
       },
       onError: () => {
-        showErrorSnackBar({ message: 'Une erreur est survenue' })
+        showErrorSnackBar('Une erreur est survenue')
         navigateToHomeWithReset()
         void refetchUser()
       },

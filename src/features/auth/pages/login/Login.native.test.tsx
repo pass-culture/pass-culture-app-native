@@ -28,7 +28,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { setSettingsMock } from 'tests/settings/mockSettings'
 import { act, fireEvent, render, screen, simulateWebviewMessage, userEvent } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
-import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 
 import { Login } from './Login'
 
@@ -48,15 +47,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 
 const captureMonitoringError = jest.spyOn(monitoringErrorsModule, 'captureMonitoringError')
-
-const mockShowErrorSnackBar = jest.fn()
-const mockShowInfoSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackBar,
-    showInfoSnackBar: mockShowInfoSnackBar,
-  }),
-}))
 
 const mockUsePreviousRoute = usePreviousRoute as jest.Mock
 
@@ -175,11 +165,11 @@ describe('<Login/>', () => {
 
     await user.press(await screen.findByTestId('Se connecter avec Google'))
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message:
-        'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.',
-      timeout: SNACK_BAR_TIME_OUT_LONG,
-    })
+    expect(
+      screen.getByText(
+        'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.'
+      )
+    ).toBeOnTheScreen()
   })
 
   it('should redirect to signup form when SSO login fails because user does not exist', async () => {
@@ -511,10 +501,12 @@ describe('<Login/>', () => {
 
     await screen.findByText('Connecte-toi')
 
-    expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
-      message: 'Pour sécuriser ton pass Culture, tu dois régulièrement confirmer tes identifiants.',
-      timeout: SNACK_BAR_TIME_OUT_LONG,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(
+      screen.getByText(
+        'Pour sécuriser ton pass Culture, tu dois régulièrement confirmer tes identifiants.'
+      )
+    ).toBeOnTheScreen()
   })
 
   it('should log analytics when displaying forced login help message', async () => {
@@ -531,7 +523,7 @@ describe('<Login/>', () => {
 
     await screen.findByText('Connecte-toi')
 
-    expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
+    expect(screen.queryByTestId('snackbar-error')).not.toBeOnTheScreen()
   })
 
   describe('Login comes from adding an offer to favorite', () => {
