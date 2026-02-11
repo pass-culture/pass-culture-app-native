@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { WebShareModalProps } from 'features/share/types'
 // We are in a .web file, with a specific behavior depending on the device
+import { copyToClipboard } from 'libs/copyToClipboard/copyToClipboard'
 // eslint-disable-next-line no-restricted-imports
 import {
   isDesktopDeviceDetectOnWeb,
@@ -10,14 +11,12 @@ import {
   isMobileDeviceDetectOnWeb,
 } from 'libs/react-device-detect'
 import { SocialButton } from 'libs/share/SocialButton'
-import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Ul } from 'ui/components/Ul'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Close } from 'ui/svg/icons/Close'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -76,11 +75,12 @@ export const WebShareModal = ({
     },
   ]
 
-  const onCopyPress = useCopyToClipboard({
-    textToCopy: url,
-    snackBarMessage: 'Le lien a été copié dans le presse-papier\u00a0!',
-    onCopy: dismissModal,
-  })
+  const onCopyPress = () =>
+    copyToClipboard({
+      textToCopy: url,
+      snackBarMessage: 'Le lien a été copié dans le presse-papier\u00a0!',
+      onCopy: dismissModal,
+    })
 
   const chooseContact = 'Veuillez choisir un contact'
 
@@ -97,7 +97,9 @@ export const WebShareModal = ({
         <Spacer.Column numberOfSpaces={3} />
         <NonSocialButtonsContainer>
           <NonSocialButtonsItem>
-            <ButtonTertiaryBlack
+            <Button
+              variant="tertiary"
+              color="neutral"
               wording="Copier"
               accessibilityLabel="Copier le lien"
               icon={Duplicate}
@@ -106,7 +108,9 @@ export const WebShareModal = ({
           </NonSocialButtonsItem>
           <NonSocialButtonsItem>
             <ExternalTouchableLink
-              as={ButtonTertiaryBlack}
+              as={Button}
+              variant="tertiary"
+              color="neutral"
               externalNav={{
                 url: `mailto:?subject=${subject || body}&body=${encodeURIComponent(
                   `${body}\n${url}`
@@ -122,7 +126,9 @@ export const WebShareModal = ({
             isMobileDeviceDetectOnWeb || isMacOsDeviceDetectOnWeb ? (
               <NonSocialButtonsItem>
                 <ExternalTouchableLink
-                  as={ButtonTertiaryBlack}
+                  as={Button}
+                  variant="tertiary"
+                  color="neutral"
                   externalNav={{
                     url: `sms:${chooseContact}?&body=${body}: ${encodeURIComponent(url)}`,
                   }}
@@ -145,7 +151,7 @@ export const WebShareModal = ({
           ))}
         </SocialButtonsContainer>
         <Spacer.Column numberOfSpaces={8} />
-        <ButtonPrimary wording="Annuler" onPress={dismissModal} mediumWidth />
+        <Button wording="Annuler" onPress={dismissModal} fullWidth />
       </Container>
     </AppModal>
   )

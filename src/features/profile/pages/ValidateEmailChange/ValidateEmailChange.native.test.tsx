@@ -27,17 +27,6 @@ const useEmailUpdateStatusSpy = jest
 
 jest.mock('features/navigation/helpers/navigateToHome')
 
-const mockShowSuccessSnackbar = jest.fn()
-const mockShowErrorSnackbar = jest.fn()
-
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: mockShowSuccessSnackbar,
-    showErrorSnackBar: mockShowErrorSnackbar,
-  }),
-  SNACK_BAR_TIME_OUT: 5000,
-}))
-
 const mockSignOut = jest.fn()
 jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: () => mockSignOut,
@@ -132,7 +121,7 @@ describe('ValidateEmailChange', () => {
 
     await user.press(screen.getByText('Valider l’adresse e-mail'))
 
-    expect(mockShowSuccessSnackbar).toHaveBeenCalledTimes(1)
+    expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
   })
 
   it('should redirect to ChangeEmailExpiredLink if submit triggers a 401 error', async () => {
@@ -152,7 +141,7 @@ describe('ValidateEmailChange', () => {
 
     await user.press(screen.getByText('Valider l’adresse e-mail'))
 
-    expect(mockShowErrorSnackbar).toHaveBeenCalledTimes(1)
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
   })
 
   it('should not display an error message if submit triggers an error  401', async () => {
@@ -162,7 +151,7 @@ describe('ValidateEmailChange', () => {
 
     await user.press(screen.getByText('Valider l’adresse e-mail'))
 
-    expect(mockShowErrorSnackbar).not.toHaveBeenCalled()
+    expect(screen.queryByTestId('snackbar-error')).toBeNull()
   })
 
   it('should redirect to change email expired when status is expired', () => {
@@ -200,7 +189,7 @@ describe('ValidateEmailChange', () => {
       new Error('Expected a string, but received undefined')
     )
     expect(navigation.replace).toHaveBeenCalledWith(...homeNavigationConfig)
-    expect(mockShowErrorSnackbar).toHaveBeenCalledTimes(1)
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
   })
 })
 

@@ -6,8 +6,8 @@ import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useAnonymizeAccountMutation } from 'features/profile/queries/useAnonymizeAccountMutation'
 import { env } from 'libs/environment/env'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
@@ -16,18 +16,15 @@ import { Spacer, Typo } from 'ui/theme'
 export const DeleteProfileConfirmation = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const signOut = useLogoutRoutine()
-  const { showErrorSnackBar } = useSnackBarContext()
   const { anonymizeAccount } = useAnonymizeAccountMutation({
     onSuccess: async () => {
       await signOut()
       navigate(...getProfileHookConfig('DeleteProfileSuccess'))
     },
     onError: () => {
-      showErrorSnackBar({
-        message:
-          'Une erreur s’est produite lors de ta demande de suppression de compte. Réessaie plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(
+        'Une erreur s’est produite lors de ta demande de suppression de compte. Réessaie plus tard.'
+      )
     },
   })
 

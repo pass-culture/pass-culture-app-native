@@ -17,7 +17,7 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Close } from 'ui/svg/icons/Close'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Typo } from 'ui/theme'
@@ -44,21 +44,18 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
     user,
   })
   const { navigate } = useNavigation<UseNavigationType>()
-  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   function onSuccess() {
     navigate(...getTabHookConfig('Bookings'))
-    showSuccessSnackBar({
-      message:
-        'La réservation a bien été annulée. Tu pourras la retrouver dans tes réservations terminées',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    showSuccessSnackBar(
+      'La réservation a bien été annulée. Tu pourras la retrouver dans tes réservations terminées'
+    )
   }
 
   function onError(error: unknown) {
     dismissModal()
     navigate(...getTabHookConfig('Bookings'))
-    showErrorSnackBar({ message: extractApiErrorMessage(error), timeout: SNACK_BAR_TIME_OUT })
+    showErrorSnackBar(extractApiErrorMessage(error))
   }
 
   const { mutate: cancelBooking } = useCancelBookingMutation({
@@ -73,10 +70,9 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
       dismissModal()
     } else {
       dismissModal()
-      showErrorSnackBar({
-        message: 'Impossible d’annuler la réservation. Connecte-toi à internet avant de réessayer.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(
+        'Impossible d’annuler la réservation. Connecte-toi à internet avant de réessayer.'
+      )
     }
   }
 

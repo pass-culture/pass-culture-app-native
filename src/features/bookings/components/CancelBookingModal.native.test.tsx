@@ -12,8 +12,6 @@ import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const mockDismissModal = jest.fn()
 
@@ -22,15 +20,6 @@ jest.mock('libs/jwt/jwt')
 const mockUseAuthContext = jest.fn().mockReturnValue({ user: beneficiaryUser })
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: () => mockUseAuthContext(),
-}))
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: jest.fn(),
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
-  SNACK_BAR_TIME_OUT: 5000,
 }))
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
@@ -101,10 +90,12 @@ describe('<CancelBookingModal />', () => {
     await user.press(screen.getByText('Annuler ma réservation'))
 
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message: 'Impossible d’annuler la réservation. Connecte-toi à internet avant de réessayer.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(
+      screen.getByText(
+        'Impossible d’annuler la réservation. Connecte-toi à internet avant de réessayer.'
+      )
+    ).toBeOnTheScreen()
   })
 
   it('should display offer name', () => {
@@ -148,10 +139,8 @@ describe('<CancelBookingModal />', () => {
     await user.press(cancelButton)
 
     expect(navigate).toHaveBeenCalledWith(...getTabHookConfig('Bookings'))
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message: response.message,
-      timeout: 5000,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(screen.getByText(response.message)).toBeOnTheScreen()
   })
 })
 

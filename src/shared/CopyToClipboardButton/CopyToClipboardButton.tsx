@@ -1,23 +1,34 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
+import { copyToClipboard } from 'libs/copyToClipboard/copyToClipboard'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 
-interface Props {
+type Props = {
   wording: string
   textToCopy: string
   onCopy?: () => void
   snackBarMessage?: string
 }
 
-export const CopyToClipboardButton = ({ wording, textToCopy, onCopy, snackBarMessage }: Props) => {
-  const copyToClipboard = useCopyToClipboard({ textToCopy, snackBarMessage, onCopy })
+export const CopyToClipboardButton: FC<Props> = ({
+  wording,
+  textToCopy,
+  onCopy,
+  snackBarMessage,
+}) => {
+  const copy = () => copyToClipboard({ textToCopy, snackBarMessage, onCopy })
 
-  return <StyledButtonTertiary icon={Duplicate} wording={wording} onPress={copyToClipboard} />
+  return (
+    <ButtonContainerFlexStart>
+      <Button
+        wording={wording}
+        icon={Duplicate}
+        onPress={copy}
+        variant="tertiary"
+        color="neutral"
+      />
+    </ButtonContainerFlexStart>
+  )
 }
-
-const StyledButtonTertiary = styledButton(ButtonTertiaryBlack)({
-  justifyContent: 'flex-start',
-})

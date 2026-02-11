@@ -15,7 +15,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -28,7 +28,6 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
   const { phoneValidation } = useSubscriptionContext()
   const { remainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttemptsQuery()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { showErrorSnackBar } = useSnackBarContext()
 
   const requestsWording = plural(remainingAttempts ?? 0, {
     singular: '# demande',
@@ -46,10 +45,7 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
         navigate(...getSubscriptionHookConfig('PhoneValidationTooManySMSSent'))
       } else {
         const message = extractApiErrorMessage(error)
-        showErrorSnackBar({
-          message,
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+        showErrorSnackBar(message)
       }
     },
   })

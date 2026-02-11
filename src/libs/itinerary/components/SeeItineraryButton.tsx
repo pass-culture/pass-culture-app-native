@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalNavigationProps } from 'ui/components/touchableLink/types'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 
 interface Props {
@@ -13,23 +14,20 @@ interface Props {
 
 export function SeeItineraryButton(props: Props) {
   return (
-    <Container>
+    <ButtonContainerFlexStart>
       <ExternalTouchableLink
-        as={ButtonTertiaryBlack}
-        inline
+        as={Button}
         externalNav={props.externalNav}
         wording="Voir l’itinéraire"
         onBeforeNavigate={props.onPress}
         icon={Icon}
+        variant="tertiary"
+        color="neutral"
       />
-    </Container>
+    </ButtonContainerFlexStart>
   )
 }
 
 const Icon = styled(LocationPointer).attrs({
   accessibilityLabel: 'Nouvelle fenêtre',
 })``
-
-const Container = styled.View({
-  alignItems: 'flex-start',
-})

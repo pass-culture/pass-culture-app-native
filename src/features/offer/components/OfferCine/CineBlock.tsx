@@ -7,7 +7,7 @@ import { isDateNotWithinNextNbDays } from 'features/offer/components/MoviesScree
 import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { OfferEventCardList } from 'features/offer/components/OfferEventCardList/OfferEventCardList'
-import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
+import { getVenueBlock } from 'features/offer/components/OfferVenueBlock/getVenueBlock'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
 import { getAddress, getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { getDistance } from 'libs/location/getDistance'
@@ -49,7 +49,7 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
   const venueBlockVenue = getVenue(offer.venue)
   const venueBlockAddress = getAddress(offer.address)
 
-  const { venueName, venueAddress, isOfferAddressDifferent } = useVenueBlock({
+  const { venueName, venueAddress, isOfferAddressDifferent } = getVenueBlock({
     venue: venueBlockVenue,
     offerAddress: venueBlockAddress,
   })

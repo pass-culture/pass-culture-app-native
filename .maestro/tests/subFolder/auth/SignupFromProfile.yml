@@ -63,7 +63,7 @@ appId: ${MAESTRO_APP_ID}
 
 - tapOn: 'CGU & Données - J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire'
 - tapOn: 'CGU & Données - J’ai lu la charte des données personnelles - obligatoire'
-- tapOn: 'S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité'
+- tapOn: '.*S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité.*'
 
 - assertVisible: 'Confirme ton adresse e-mail'
 - tapOn: 'Fermer'

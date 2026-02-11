@@ -59,17 +59,15 @@ export function getBooksNativeCategories(data: SubcategoriesResponseModelv2) {
 export function getBooksGenreTypes(data: SubcategoriesResponseModelv2): OfferGenreType[] {
   const bookTree = data.genreTypes.find(({ name }) => name === GenreType.BOOK)?.trees as BookType[]
 
-  return bookTree
-    .map((bookCategory) =>
-      bookCategory.children.map((bookGenre) => {
-        return {
-          name: getKeyFromStringLabel(bookGenre.label),
-          value: bookGenre.label,
-          key: GenreType.BOOK,
-        } as OfferGenreType
-      })
-    )
-    .flat()
+  return bookTree.flatMap((bookCategory) =>
+    bookCategory.children.map((bookGenre) => {
+      return {
+        name: getKeyFromStringLabel(bookGenre.label),
+        value: bookGenre.label,
+        key: GenreType.BOOK,
+      } as OfferGenreType
+    })
+  )
 }
 
 function mapBookCategories(data: SubcategoriesResponseModelv2) {
@@ -169,9 +167,9 @@ export function getKeyFromStringLabel(input?: string | null): string | null {
   if (!input) return null
   return input
     .toUpperCase()
-    .replace('&', 'ET')
-    .replace('-', '_')
-    .replace(',', '')
+    .replaceAll('&', 'ET')
+    .replaceAll('-', '_')
+    .replaceAll(',', '')
     .replace(/ /g, '_')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')

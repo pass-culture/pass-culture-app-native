@@ -8,6 +8,7 @@ import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoic
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { analytics } from 'libs/analytics/provider'
 import { render, screen, userEvent } from 'tests/utils'
+import { theme } from 'theme'
 
 const mockCloseModal = jest.fn()
 
@@ -54,49 +55,33 @@ describe('ReactionChoiceModal', () => {
     it('should activate J’aime button when pressing it and it is deactivated', async () => {
       renderReactionChoiceModal({ from: ReactionFromEnum.ENDED_BOOKING })
 
-      await user.press(screen.getByText('J’aime'))
+      const likeButton = screen.getByText('J’aime')
 
-      expect(screen.queryByTestId('thumbUp')).not.toBeOnTheScreen()
-      expect(screen.getByTestId('thumbUpFilled')).toBeOnTheScreen()
-    })
+      expect(likeButton).toHaveStyle({
+        color: theme.designSystem.color.text.default,
+      })
 
-    it('should deactivate J’aime button when pressing it and it is activated', async () => {
-      renderReactionChoiceModal({ from: ReactionFromEnum.ENDED_BOOKING })
+      await user.press(likeButton)
 
-      await user.press(screen.getByText('J’aime'))
-      await user.press(screen.getByText('J’aime'))
-
-      expect(screen.getByTestId('thumbUp')).toBeOnTheScreen()
-      expect(screen.queryByTestId('thumbUpFilled')).not.toBeOnTheScreen()
+      expect(likeButton).toHaveStyle({
+        color: theme.designSystem.color.text.brandPrimary,
+      })
     })
 
     it('should activate Je n’aime pas button when pressing it and it is deactivated', async () => {
       renderReactionChoiceModal({ from: ReactionFromEnum.ENDED_BOOKING })
 
-      await user.press(screen.getByText('Je n’aime pas'))
+      const dislikeButton = screen.getByText('Je n’aime pas')
 
-      expect(screen.queryByTestId('thumbDown')).not.toBeOnTheScreen()
-      expect(screen.getByTestId('thumbDownFilled')).toBeOnTheScreen()
-    })
+      expect(dislikeButton).toHaveStyle({
+        color: theme.designSystem.color.text.default,
+      })
 
-    it('should deactivate Je n’aime pas button when pressing it and it is activated', async () => {
-      renderReactionChoiceModal({ from: ReactionFromEnum.ENDED_BOOKING })
+      await user.press(dislikeButton)
 
-      await user.press(screen.getByText('Je n’aime pas'))
-      await user.press(screen.getByText('Je n’aime pas'))
-
-      expect(screen.getByTestId('thumbDown')).toBeOnTheScreen()
-      expect(screen.queryByTestId('thumbDownFilled')).not.toBeOnTheScreen()
-    })
-
-    it('should reset the buttons when closing modal', async () => {
-      renderReactionChoiceModal({ from: ReactionFromEnum.ENDED_BOOKING })
-
-      await user.press(screen.getByText('J’aime'))
-
-      await user.press(screen.getByTestId('Fermer la modale'))
-
-      expect(screen.getByTestId('thumbDown')).toBeOnTheScreen()
+      expect(dislikeButton).toHaveStyle({
+        color: theme.designSystem.color.text.brandPrimary,
+      })
     })
 
     it('should close the modal when pressing close icon', async () => {

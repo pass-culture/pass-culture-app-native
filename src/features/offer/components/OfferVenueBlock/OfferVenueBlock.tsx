@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
-import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
+import { getVenueBlock } from 'features/offer/components/OfferVenueBlock/getVenueBlock'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
 import { getAddress, getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
@@ -43,7 +43,7 @@ export function OfferVenueBlock({
   const addressLabel = venueBlockAddress?.label ?? undefined
   const venueImageUrl = venueBlockVenue.bannerUrl ?? ''
 
-  const { venueName, venueAddress, isOfferAddressDifferent, onCopyAddressPress } = useVenueBlock({
+  const { venueName, venueAddress, isOfferAddressDifferent, onCopyAddressPress } = getVenueBlock({
     venue: venueBlockVenue,
     offerAddress: venueBlockAddress,
   })

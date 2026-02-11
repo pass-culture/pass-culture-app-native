@@ -14,7 +14,6 @@ import {
 } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Form } from 'ui/components/Form'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -93,7 +92,9 @@ export const BonificationExplanations = () => {
             }
           />
           <ExternalTouchableLink
-            as={ButtonTertiaryBlack}
+            as={Button}
+            variant="tertiary"
+            color="neutral"
             wording="Plus d’infos sur le quotient familial"
             externalNav={{ url: env.FAQ_LINK_CAF_QUOTIEN_FAMILIAL }}
             icon={ExternalSiteFilled}

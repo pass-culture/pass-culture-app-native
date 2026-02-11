@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react'
+import React, { FC } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -15,6 +15,7 @@ import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/ty
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { VenueOffers } from 'features/venue/types'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { EventCardList } from 'ui/components/eventCard/EventCardList'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
@@ -36,10 +37,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
   const movieScreenings = getMovieScreenings(offer.stocks)
   const { goToDate, selectedDate } = useMovieCalendar()
 
-  const selectedScreeningStock = useMemo(
-    () => movieScreenings[getDateString(String(selectedDate))],
-    [movieScreenings, selectedDate]
-  )
+  const selectedScreeningStock = movieScreenings[getDateString(String(selectedDate))]
 
   const subcategoriesMapping = useSubcategoriesMapping()
 
@@ -54,14 +52,21 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
     movieScreeningUserData,
   } = useOfferCTAButton(offer, subcategoriesMapping[offer.subcategoryId], bookingData)
 
-  const eventCardData = useMemo(
-    () => selectedDateScreenings(offer.venue.id, onPressOfferCTA, movieScreeningUserData),
-    [movieScreeningUserData, offer.venue.id, onPressOfferCTA, selectedDateScreenings]
+  const eventCardData = selectedDateScreenings(
+    offer.venue.id,
+    () => {
+      onPressOfferCTA()
+      triggerConsultOfferLog({
+        offerId: Number(offerScreeningOnSelectedDates?.objectID),
+        from: 'venue',
+        venueId: offer.venue.id,
+      })
+    },
+    movieScreeningUserData
   )
 
-  const offerScreeningOnSelectedDates = useMemo(
-    () => venueOffers.hits.find((item) => Number(item.objectID) === offer.id),
-    [offer.id, venueOffers.hits]
+  const offerScreeningOnSelectedDates = venueOffers.hits.find(
+    (item) => Number(item.objectID) === offer.id
   )
 
   return (
@@ -90,11 +95,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
           />
         </View>
       ) : (
-        <EventCardList
-          data={eventCardData}
-          analyticsFrom="venue"
-          offerId={Number(offerScreeningOnSelectedDates?.objectID)}
-        />
+        <EventCardList data={eventCardData} />
       )}
       <Spacer.Column numberOfSpaces={4} />
       {isLast ? null : <Divider />}

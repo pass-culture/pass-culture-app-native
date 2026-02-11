@@ -6,8 +6,8 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
 export const LinkToOffer = ({
@@ -19,7 +19,6 @@ export const LinkToOffer = ({
 }) => {
   const netInfo = useNetInfoContext()
   const prePopulateOffer = usePrePopulateOffer()
-  const { showErrorSnackBar } = useSnackBarContext()
 
   const onNavigateToOfferPress = () => {
     if (netInfo.isConnected) {
@@ -33,11 +32,9 @@ export const LinkToOffer = ({
 
       triggerConsultOfferLog({ offerId: offer.id, from: 'bookings' })
     } else {
-      showErrorSnackBar({
-        message:
-          'Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(
+        'Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.'
+      )
     }
   }
   return (

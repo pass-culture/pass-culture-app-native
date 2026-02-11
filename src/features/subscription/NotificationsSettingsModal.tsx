@@ -5,11 +5,10 @@ import styled from 'styled-components/native'
 import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { Close } from 'ui/svg/icons/Close'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -96,7 +95,7 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
 
         <StyledBodyAccentXs>Tu pourras gérer tes alertes depuis ton profil.</StyledBodyAccentXs>
 
-        <ButtonPrimary
+        <Button
           wording="Valider"
           disabled={
             Platform.OS === 'web'
@@ -109,11 +108,12 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
           }}
         />
 
-        <ButtonTertiaryBlack
+        <Button
+          variant="tertiary"
+          color="neutral"
           wording="Tout refuser et ne pas recevoir d’actus"
           icon={Invalidate}
           onPress={onDismiss}
-          inline
         />
       </ModalContent>
       <PushNotificationsModal

@@ -167,7 +167,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   })
 
   const showSkeleton = useShowSkeleton()
-  const initialNumToRender = 10
+  const initialNumToRender = Platform.OS === 'web' ? 30 : 10
   const maxToRenderPerBatch = 6
   const [maxIndex, setMaxIndex] = useState(initialNumToRender)
   const [isLoading, setIsLoading] = useState(false)

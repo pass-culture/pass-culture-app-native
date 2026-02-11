@@ -12,6 +12,7 @@ import { ThemeProvider as ThemeProviderWeb, DefaultTheme } from 'styled-componen
 import { ThemeProvider } from 'styled-components/native'
 
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
+import { SnackBarWrapper } from 'ui/designSystem/Snackbar/SnackBarWrapper'
 
 import { computedTheme } from './computedTheme'
 
@@ -34,12 +35,14 @@ type PropsWithTheme = {
   children?: ReactNode
 }
 
-const DefaultWrapper = ({ theme, children }: PropsWithTheme) => {
+export const DefaultWrapper = ({ theme, children }: PropsWithTheme) => {
   return (
     // ThemeProviderWeb is useful to recycle .test.tsx for both native and web
     <ThemeProviderWeb theme={deepmerge(computedTheme, theme || {})}>
       <ThemeProvider theme={deepmerge(computedTheme, theme || {})}>
-        <IconFactoryProvider>{children}</IconFactoryProvider>
+        <SnackBarWrapper>
+          <IconFactoryProvider>{children}</IconFactoryProvider>
+        </SnackBarWrapper>
       </ThemeProvider>
     </ThemeProviderWeb>
   )

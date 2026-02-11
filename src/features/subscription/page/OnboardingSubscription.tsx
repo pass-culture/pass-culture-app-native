@@ -15,13 +15,12 @@ import { SubscriptionTheme, SUSBCRIPTION_THEMES } from 'features/subscription/ty
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
 import { CheckboxGroupOption } from 'ui/designSystem/CheckboxGroup/types'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 
@@ -29,7 +28,6 @@ export const OnboardingSubscription = () => {
   const { replace } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavigationConfig)
   const { user } = useAuthContext()
-  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const {
     visible: isNotificationsModalVisible,
@@ -54,18 +52,12 @@ export const OnboardingSubscription = () => {
 
   const { mutate: patchProfile, isPending: isUpdatingProfile } = usePatchProfileMutation({
     onSuccess: () => {
-      analytics.logSubscriptionUpdate({ type: 'update', from: 'home' })
-      showSuccessSnackBar({
-        message: 'Thèmes suivis\u00a0! Tu peux gérer tes alertes depuis ton profil.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      void analytics.logSubscriptionUpdate({ type: 'update', from: 'home' })
+      showSuccessSnackBar('Thèmes suivis\u00a0! Tu peux gérer tes alertes depuis ton profil.')
       replace(...homeNavigationConfig)
     },
     onError: () => {
-      showErrorSnackBar({
-        message: 'Une erreur est survenue, tu peux réessayer plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('Une erreur est survenue, tu peux réessayer plus tard.')
     },
   })
 
@@ -144,12 +136,15 @@ export const OnboardingSubscription = () => {
       }
       fixedBottomChildren={
         <StyledView gap={5}>
-          <ButtonPrimary
+          <Button
             wording="Suivre la sélection"
             onPress={onSubmit}
             disabled={isValidateButtonDisabled}
+            fullWidth
           />
-          <ButtonTertiaryBlack
+          <Button
+            variant="tertiary"
+            color="neutral"
             wording="Non merci"
             accessibilityLabel="Ne pas suivre de thème"
             icon={Invalidate}

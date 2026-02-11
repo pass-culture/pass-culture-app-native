@@ -9,8 +9,8 @@ import { setFeedbackInAppSchema } from 'features/profile/pages/FeedbackInApp/set
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
+import { copyToClipboard } from 'libs/copyToClipboard/copyToClipboard'
 import { env } from 'libs/environment/env'
-import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput/LargeTextInput'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -70,11 +70,12 @@ export const DebugScreen = () => {
     .map((item) => `${item.label}\u00a0: ${String(item.value)}`)
     .join(LINE_BREAK)
 
-  const copyToClipboard = useCopyToClipboard({
-    textToCopy: debugText,
-    snackBarMessage: 'Copié dans le presse-papier\u00a0!',
-    onCopy: () => analytics.logClickCopyDebugInfo(user?.id),
-  })
+  const copy = () =>
+    copyToClipboard({
+      textToCopy: debugText,
+      snackBarMessage: 'Copié dans le presse-papier\u00a0!',
+      onCopy: () => analytics.logClickCopyDebugInfo(user?.id),
+    })
 
   const subject = encodeURI(`Informations de débuggage\u00a0: ${String(user?.id)}`)
   const body = encodeURI(
@@ -103,7 +104,7 @@ export const DebugScreen = () => {
                 icon={StyledDuplicate}
                 accessibilityRole={AccessibilityRole.BUTTON}
                 accessibilityLabel="Copier dans le presse-papier"
-                onPress={copyToClipboard}
+                onPress={copy}
               />
             </ClipboardButtonContainer>
           </View>
@@ -161,7 +162,7 @@ const StyledDuplicate = styled(Duplicate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
-const ClipboardButtonContainer = styled(View)({
+const ClipboardButtonContainer = styled.View({
   position: 'absolute',
   top: 0,
   right: 0,

@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -24,7 +24,7 @@ export const DeleteProfileReasonNewEmailModal: React.FC<Props> = ({ isVisible, h
         Pour modifier ton adresse e-mail, suis les instructions sur cette page.
       </StyledBody>
       <Spacer.Column numberOfSpaces={5} />
-      <ButtonPrimary wording="J’ai compris" onPress={hideModal} />
+      <Button wording="J’ai compris" onPress={hideModal} />
     </AppModal>
   )
 }

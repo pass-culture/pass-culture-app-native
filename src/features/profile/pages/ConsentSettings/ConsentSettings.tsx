@@ -28,10 +28,10 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Close } from 'ui/svg/icons/Close'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -48,7 +48,6 @@ export const ConsentSettings = () => {
   const scrollViewRef = useRef<ScrollView>(null)
   const scrollYRef = useRef<number>(0)
 
-  const { showSuccessSnackBar } = useSnackBarContext()
   const { cookiesConsent, setCookiesConsent } = useCookies()
   const { visible, showModal, hideModal } = useModal(false)
 
@@ -137,11 +136,8 @@ export const ConsentSettings = () => {
       popTo(...getTabHookConfig('Profile'))
     }
 
-    showSuccessSnackBar({
-      message: 'Ton choix a bien été enregistré.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
-  }, [currentCookieChoices, setCookiesConsent, showSuccessSnackBar, hideModal, offerId, popTo])
+    showSuccessSnackBar('Ton choix a bien été enregistré.')
+  }, [currentCookieChoices, hideModal, offerId, popTo, setCookiesConsent])
 
   const handleDiscardAndGoBack = useCallback(() => {
     setCurrentCookieChoices(originalCookieChoicesRef.current)

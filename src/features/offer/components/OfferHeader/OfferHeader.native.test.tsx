@@ -33,7 +33,7 @@ describe('<OfferHeader />', () => {
   it('should render all basic icons', async () => {
     renderOfferHeader()
 
-    expect(screen.getByTestId('animated-icon-back')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Revenir en arrière')).toBeOnTheScreen()
     expect(screen.getByTestId('animated-icon-share')).toBeOnTheScreen()
   })
 
@@ -55,7 +55,7 @@ describe('<OfferHeader />', () => {
       />
     )
 
-    expect(screen.getByTestId('animated-icon-back')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Revenir en arrière')).toBeOnTheScreen()
     expect(screen.getByTestId('animated-icon-share')).toBeOnTheScreen()
     expect(screen.getByTestId('animated-icon-favorite')).toBeOnTheScreen()
   })
@@ -63,7 +63,7 @@ describe('<OfferHeader />', () => {
   it('should goBack when we press on the back button', async () => {
     renderOfferHeader()
 
-    await user.press(await screen.findByTestId('animated-icon-back'))
+    await user.press(screen.getByLabelText('Revenir en arrière'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })

@@ -5,7 +5,8 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
-import { RoundedButton } from 'ui/components/buttons/RoundedButton'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -31,10 +32,7 @@ export const ContentHeader = ({
   const theme = useTheme()
   const { top } = useSafeAreaInsets()
   const headerHeight = theme.appBarHeight + top
-  const { animationState, containerStyle, blurContainerNative } = getAnimationState(
-    theme,
-    headerTransition
-  )
+  const { containerStyle, blurContainerNative } = getAnimationState(theme, headerTransition)
 
   const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
   headerTransition.addListener((opacity) => setAriaHiddenTitle(opacity.value !== 1))
@@ -55,13 +53,13 @@ export const ContentHeader = ({
       <Row
         marginRight={RightElement ? theme.designSystem.size.spacing.xl : getSpacing(16)}
         marginTop={marginTopHeader}>
-        <RoundedButton
-          animationState={animationState}
-          iconName="back"
+        <Button
+          iconButton
+          icon={ArrowPrevious}
           onPress={onBackPress}
           accessibilityLabel="Revenir en arrière"
-          finalColor={theme.designSystem.color.icon.default}
-          initialColor={theme.designSystem.color.icon.default}
+          variant="secondary"
+          color="neutral"
         />
         {LeftElement}
         <TitleContainer>

@@ -23,17 +23,8 @@ import { Credit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen, waitFor } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { Favorite } from './Favorite'
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
-}))
 
 const credit: Credit = { amount: 100, isExpired: false }
 
@@ -144,7 +135,7 @@ describe('<Favorite /> component', () => {
 
     await waitFor(() => {
       expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, favorite.id)
-      expect(mockShowErrorSnackBar).not.toHaveBeenCalled()
+      expect(screen.queryByTestId('snackbar-error')).not.toBeOnTheScreen()
     })
   })
 
@@ -161,10 +152,8 @@ describe('<Favorite /> component', () => {
 
     await waitFor(() => {
       expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, id)
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message: 'L’offre n’a pas été retirée de tes favoris',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(screen.getByText('L’offre n’a pas été retirée de tes favoris')).toBeOnTheScreen()
     })
   })
 

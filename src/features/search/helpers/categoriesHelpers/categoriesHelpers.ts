@@ -227,8 +227,7 @@ export function getNativeCategoryFromEnum(
 function getGenreTypeFromEnum(data: SubcategoriesResponseModelv2 | undefined, genreType?: string) {
   if (data && genreType) {
     const genre = data.genreTypes
-      .map((gt) => gt.values)
-      .flat()
+      .flatMap((gt) => gt.values)
       .find((genreTypeValue) => genreTypeValue.name === genreType)
 
     const bookGenre = getBooksGenreTypes(data).find(

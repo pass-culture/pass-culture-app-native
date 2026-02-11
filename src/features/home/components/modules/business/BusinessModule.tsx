@@ -13,7 +13,6 @@ import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
-import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 import { getSpacing, Typo } from 'ui/theme'
@@ -40,7 +39,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     callToAction,
   } = props
   const isDisabled = !url
-  const { isLoggedIn, user, isUserLoading } = useAuthContext()
+  const { isLoggedIn, user } = useAuthContext()
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const { width } = useWindowDimensions()
   const isLargeScreen = width > 700
@@ -49,8 +48,6 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
       setShouldRedirect(true)
     }
   }, [isDisabled])
-
-  const { showInfoSnackBar } = useSnackBarContext()
 
   const logAndOpenUrl = (finalUrl: string) => {
     setShouldRedirect(false)
@@ -62,9 +59,6 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     if (!url || !shouldRedirect) return
     const businessUrl = getBusinessUrl(url, user?.email)
     if (businessUrl) logAndOpenUrl(businessUrl)
-    else if (isUserLoading) {
-      showInfoSnackBar({ message: 'Redirection en cours', timeout: SNACK_BAR_TIME_OUT_LONG })
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url, user, shouldRedirect])
 

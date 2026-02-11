@@ -24,8 +24,8 @@ import Animated, { LinearTransition } from 'libs/react-native-reanimated'
 import { useAppEnableAutocomplete } from 'queries/settings/useSettings'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const SEARCH_DEBOUNCE_MS = 500
@@ -52,7 +52,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const { isDesktopViewport } = useTheme()
   const { searchState, dispatch, isFocusOnSuggestions, hideSuggestions, showSuggestions } =
     useSearch()
-  const { showErrorSnackBar } = useSnackBarContext()
   const [displayedQuery, setDisplayedQuery] = useState<string>(searchState.query)
   const inputRef = useRef<RNTextInput | null>(null)
   const route = useRoute()
@@ -158,10 +157,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
       const queryText = event.nativeEvent.text
       if (queryText.length > 150) {
-        showErrorSnackBar({
-          message: 'Ta recherche ne peut pas faire plus de 150 caractères.',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+        showErrorSnackBar('Ta recherche ne peut pas faire plus de 150 caractères.')
         return
       }
       if (queryText.length < 1 && Platform.OS !== 'android') return
@@ -236,7 +232,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       searchState.priceRange,
       pushWithSearch,
       hideSuggestions,
-      showErrorSnackBar,
       offerCategories,
     ]
   )

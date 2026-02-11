@@ -285,7 +285,7 @@ exports[`PersonalData should render personal data success 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -315,24 +315,19 @@ exports[`PersonalData should render personal data success 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "borderBottomLeftRadius": 0,
-                  "borderBottomRightRadius": 0,
-                  "borderTopLeftRadius": 0,
-                  "borderTopRightRadius": 0,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
                   "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "marginTop": 0,
-                  "maxWidth": 500,
-                  "minHeight": 24,
                   "paddingBottom": 0,
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
                   "width": "auto",
-                },
-                {
-                  "backgroundColor": "transparent",
                 },
               ],
               {
@@ -343,44 +338,72 @@ exports[`PersonalData should render personal data success 1`] = `
           testID="Modifier e-mail"
         >
           <View
+            gap={8}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
               }
             }
           >
             <View
-              style={
+              collapsable={false}
+              jestAnimatedProps={
                 {
-                  "flexDirection": "row",
-                  "flexShrink": 0,
-                  "marginRight": 8,
+                  "value": {},
                 }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="0"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
               }
             >
               <View
                 fill="#6123df"
-                height={16}
-                testID="button-icon-left"
-                width={16}
+                height={22}
+                width={22}
               >
                 <Text>
-                  button-icon-left-SVG-Mock
+                  undefined-SVG-Mock
                 </Text>
               </View>
             </View>
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#6123df",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#6123df",
+                    "flexBasis": undefined,
+                    "flexGrow": undefined,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": undefined,
+                  },
+                ]
               }
             >
               Modifier
@@ -488,7 +511,7 @@ exports[`PersonalData should render personal data success 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -518,24 +541,19 @@ exports[`PersonalData should render personal data success 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "borderBottomLeftRadius": 0,
-                  "borderBottomRightRadius": 0,
-                  "borderTopLeftRadius": 0,
-                  "borderTopRightRadius": 0,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
                   "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "marginTop": 0,
-                  "maxWidth": 500,
-                  "minHeight": 24,
                   "paddingBottom": 0,
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
                   "width": "auto",
-                },
-                {
-                  "backgroundColor": "transparent",
                 },
               ],
               {
@@ -546,44 +564,72 @@ exports[`PersonalData should render personal data success 1`] = `
           testID="Modifier mot de passe"
         >
           <View
+            gap={8}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
               }
             }
           >
             <View
-              style={
+              collapsable={false}
+              jestAnimatedProps={
                 {
-                  "flexDirection": "row",
-                  "flexShrink": 0,
-                  "marginRight": 8,
+                  "value": {},
                 }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="1"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
               }
             >
               <View
                 fill="#6123df"
-                height={16}
-                testID="button-icon-left"
-                width={16}
+                height={22}
+                width={22}
               >
                 <Text>
-                  button-icon-left-SVG-Mock
+                  undefined-SVG-Mock
                 </Text>
               </View>
             </View>
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#6123df",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#6123df",
+                    "flexBasis": undefined,
+                    "flexGrow": undefined,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": undefined,
+                  },
+                ]
               }
             >
               Modifier
@@ -644,7 +690,7 @@ exports[`PersonalData should render personal data success 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -674,24 +720,19 @@ exports[`PersonalData should render personal data success 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "borderBottomLeftRadius": 0,
-                  "borderBottomRightRadius": 0,
-                  "borderTopLeftRadius": 0,
-                  "borderTopRightRadius": 0,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
                   "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "marginTop": 0,
-                  "maxWidth": 500,
-                  "minHeight": 24,
                   "paddingBottom": 0,
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
                   "width": "auto",
-                },
-                {
-                  "backgroundColor": "transparent",
                 },
               ],
               {
@@ -702,44 +743,72 @@ exports[`PersonalData should render personal data success 1`] = `
           testID="Modifier le statut"
         >
           <View
+            gap={8}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
               }
             }
           >
             <View
-              style={
+              collapsable={false}
+              jestAnimatedProps={
                 {
-                  "flexDirection": "row",
-                  "flexShrink": 0,
-                  "marginRight": 8,
+                  "value": {},
                 }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="2"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
               }
             >
               <View
                 fill="#6123df"
-                height={16}
-                testID="button-icon-left"
-                width={16}
+                height={22}
+                width={22}
               >
                 <Text>
-                  button-icon-left-SVG-Mock
+                  undefined-SVG-Mock
                 </Text>
               </View>
             </View>
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#6123df",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#6123df",
+                    "flexBasis": undefined,
+                    "flexGrow": undefined,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": undefined,
+                  },
+                ]
               }
             >
               Modifier
@@ -800,7 +869,7 @@ exports[`PersonalData should render personal data success 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -830,24 +899,19 @@ exports[`PersonalData should render personal data success 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "borderBottomLeftRadius": 0,
-                  "borderBottomRightRadius": 0,
-                  "borderTopLeftRadius": 0,
-                  "borderTopRightRadius": 0,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
                   "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "marginTop": 0,
-                  "maxWidth": 500,
-                  "minHeight": 24,
                   "paddingBottom": 0,
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
                   "width": "auto",
-                },
-                {
-                  "backgroundColor": "transparent",
                 },
               ],
               {
@@ -858,44 +922,72 @@ exports[`PersonalData should render personal data success 1`] = `
           testID="Modifier mon adresse de résidence"
         >
           <View
+            gap={8}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
               }
             }
           >
             <View
-              style={
+              collapsable={false}
+              jestAnimatedProps={
                 {
-                  "flexDirection": "row",
-                  "flexShrink": 0,
-                  "marginRight": 8,
+                  "value": {},
                 }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="3"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
               }
             >
               <View
                 fill="#6123df"
-                height={16}
-                testID="button-icon-left"
-                width={16}
+                height={22}
+                width={22}
               >
                 <Text>
-                  button-icon-left-SVG-Mock
+                  undefined-SVG-Mock
                 </Text>
               </View>
             </View>
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#6123df",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#6123df",
+                    "flexBasis": undefined,
+                    "flexGrow": undefined,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": undefined,
+                  },
+                ]
               }
             >
               Modifier
@@ -1134,10 +1226,29 @@ exports[`PersonalData should render personal data success 1`] = `
             }
           >
             <View
-              style={
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
                 {
                   "flexShrink": 0,
                 }
+              }
+              nativeID="4"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
               }
             >
               <View

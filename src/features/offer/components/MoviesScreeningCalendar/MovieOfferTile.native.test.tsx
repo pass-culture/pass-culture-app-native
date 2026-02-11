@@ -15,6 +15,7 @@ import { MovieOfferTile } from 'features/offer/components/MoviesScreeningCalenda
 import { NEXT_SCREENING_WORDING } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
 import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/types'
 import { VenueOffers } from 'features/venue/types'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { getDates } from 'shared/date/getDates'
 import { mockBuilder } from 'tests/mockBuilder'
@@ -59,12 +60,14 @@ const MOCK_MOVIE_OFFER = {
     stocks: [
       mockBuilder.offerStockResponse({
         beginningDatetime: MOCK_TIMESTAMP,
+        features: ['VO'],
+        price: 570,
       }),
     ],
   }),
 }
 
-const mockSelectedDate = new Date('2024-05-02')
+const mockSelectedDate = new Date('2024-05-08')
 const mockDisplayCalendar = jest.fn()
 const mockGoToDate = jest.fn()
 jest.spyOn(MovieCalendarContext, 'useMovieCalendar').mockReturnValue({
@@ -126,6 +129,11 @@ describe('MovieOfferTile', () => {
   beforeEach(() => {
     jest.clearAllMocks()
     setFeatureFlags()
+    mockdate.set(MOCK_DATE)
+  })
+
+  afterEach(() => {
+    mockdate.reset()
   })
 
   describe('with screening on selected date', () => {
@@ -141,6 +149,24 @@ describe('MovieOfferTile', () => {
     })
   })
 
+  it('should send log ConsultOffer event when on venue page and user clicks on an eventCard', async () => {
+    const venueOffersHit = { ...VENUE_OFFERS_HIT, objectID: '1' }
+    const venueOffers = { ...VENUE_OFFERS_MOCK, hits: [venueOffersHit] }
+
+    renderMovieOfferTile({ movieOffer: MOCK_MOVIE_OFFER, venueOffers })
+    const eventCard = await screen.findByLabelText('12h50 - VO - 5,70 €')
+    await user.press(eventCard)
+
+    expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(
+      1,
+      expect.objectContaining({
+        offerId: '1',
+        from: 'venue',
+        venueId: MOCK_MOVIE_OFFER.offer.venue.id,
+      })
+    )
+  })
+
   describe('without screening on selected date', () => {
     const ID = '4321'
     const venueOffersHit = { ...VENUE_OFFERS_HIT, objectID: ID }
@@ -154,8 +180,6 @@ describe('MovieOfferTile', () => {
   })
 
   describe('with next screening date', () => {
-    beforeEach(() => mockdate.set(MOCK_DATE))
-
     const TODAY_PLUS_20_DAYS = addDays(MOCK_DATE, 20)
     const TODAY_PLUS_10_DAYS = addDays(MOCK_DATE, 10)
 
@@ -199,8 +223,6 @@ describe('MovieOfferTile', () => {
   })
 })
 
-const next15Dates = getDates(new Date(), 15)
-
 const renderMovieOfferTile = ({
   movieOffer,
   venueOffers,
@@ -212,6 +234,7 @@ const renderMovieOfferTile = ({
   nextScreeningDate?: Date
   isDesktopViewport?: boolean
 }) => {
+  const next15Dates = getDates(new Date(), 15)
   render(
     reactQueryProviderHOC(
       <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
