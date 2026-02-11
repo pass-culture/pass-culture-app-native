@@ -9,11 +9,11 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { useIsRecaptchaEnabled } from 'queries/settings/useSettings'
 import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
-import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Button } from 'ui/designSystem/Button/Button'
+import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
 import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
@@ -141,22 +141,28 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       />
       <LinksContainer>
         <CaptionNeutralInfo>En cochant ces 2 cases tu assures avoir lu&nbsp;:</CaptionNeutralInfo>
-        <ExternalTouchableLink
-          as={ButtonQuaternaryBlack}
-          wording="Nos conditions générales d’utilisation"
-          externalNav={{ url: env.CGU_LINK }}
-          icon={ExternalSiteFilled}
-          justifyContent="flex-start"
-          numberOfLines={2}
-        />
-        <ExternalTouchableLink
-          as={ButtonQuaternaryBlack}
-          wording="La charte des données personnelles"
-          externalNav={{ url: env.PRIVACY_POLICY_LINK }}
-          icon={ExternalSiteFilled}
-          justifyContent="flex-start"
-          numberOfLines={2}
-        />
+        <ButtonContainerFlexStart>
+          <ExternalTouchableLink
+            as={Button}
+            variant="tertiary"
+            color="neutral"
+            wording="Nos conditions générales d’utilisation"
+            externalNav={{ url: env.CGU_LINK }}
+            icon={ExternalSiteFilled}
+            numberOfLines={2}
+          />
+        </ButtonContainerFlexStart>
+        <ButtonContainerFlexStart>
+          <ExternalTouchableLink
+            as={Button}
+            variant="tertiary"
+            color="neutral"
+            wording="La charte des données personnelles"
+            externalNav={{ url: env.PRIVACY_POLICY_LINK }}
+            icon={ExternalSiteFilled}
+            numberOfLines={2}
+          />
+        </ButtonContainerFlexStart>
       </LinksContainer>
       <ButtonContainer>
         <Button

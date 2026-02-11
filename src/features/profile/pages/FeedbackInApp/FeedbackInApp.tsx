@@ -11,11 +11,11 @@ import { setFeedbackInAppSchema } from 'features/profile/pages/FeedbackInApp/set
 import { useFeedbackMutation } from 'features/profile/queries/useFeedbackMutation'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput/LargeTextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
@@ -105,7 +105,7 @@ export const FeedbackInApp = () => {
               )}
             />
           </InputContainer>
-          <ButtonPrimary
+          <Button
             type="submit"
             wording="Envoyer"
             accessibilityLabel="Envoyer ma suggestion"

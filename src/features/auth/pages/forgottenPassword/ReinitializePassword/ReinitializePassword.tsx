@@ -14,10 +14,10 @@ import { analytics } from 'libs/analytics/provider'
 import { isTimestampExpired } from 'libs/dates'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { newPasswordSchema } from 'shared/forms/schemas/newPasswordSchema'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Button } from 'ui/designSystem/Button/Button'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Typo } from 'ui/theme'
@@ -145,7 +145,7 @@ export const ReinitializePassword = () => {
           />
         </Container>
         <Container>
-          <ButtonPrimary
+          <Button
             wording="Se connecter"
             onPress={handleSubmit(submitPassword)}
             disabled={!isValid || isPending}

@@ -15,11 +15,10 @@ import { SubscriptionTheme, SUSBCRIPTION_THEMES } from 'features/subscription/ty
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
 import { CheckboxGroupOption } from 'ui/designSystem/CheckboxGroup/types'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -144,12 +143,15 @@ export const OnboardingSubscription = () => {
       }
       fixedBottomChildren={
         <StyledView gap={5}>
-          <ButtonPrimary
+          <Button
             wording="Suivre la sélection"
             onPress={onSubmit}
             disabled={isValidateButtonDisabled}
+            fullWidth
           />
-          <ButtonTertiaryBlack
+          <Button
+            variant="tertiary"
+            color="neutral"
             wording="Non merci"
             accessibilityLabel="Ne pas suivre de thème"
             icon={Invalidate}

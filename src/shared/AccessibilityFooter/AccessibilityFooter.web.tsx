@@ -4,11 +4,11 @@ import styled from 'styled-components/native'
 
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { env } from 'libs/environment/env'
-import { ButtonQuaternaryGrey } from 'ui/components/buttons/ButtonQuaternaryGrey'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
@@ -36,7 +36,9 @@ export const AccessibilityFooter = ({ withHorizontalMargin = false }: Accessibil
           <StyledBodyAccentXs>Informations légales</StyledBodyAccentXs>
         </InternalTouchableLink>
         <ExternalTouchableLink
-          as={ButtonQuaternaryGrey}
+          as={Button}
+          variant="tertiary"
+          color="neutral"
           wording="CGU utilisateurs"
           externalNav={{ url: env.CGU_LINK }}
           icon={ExternalSiteFilled}
@@ -44,7 +46,9 @@ export const AccessibilityFooter = ({ withHorizontalMargin = false }: Accessibil
           inline
         />
         <ExternalTouchableLink
-          as={ButtonQuaternaryGrey}
+          as={Button}
+          variant="tertiary"
+          color="neutral"
           wording="Charte des données personnelles"
           externalNav={{ url: env.PRIVACY_POLICY_LINK }}
           icon={ExternalSiteFilled}

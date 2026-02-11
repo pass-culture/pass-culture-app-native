@@ -4,8 +4,8 @@ import { Platform } from 'react-native'
 import { BUTTON_TEXT_SCREEN, DESCRIPTION, TITLE } from 'features/forceUpdate/constants'
 import { onPressStoreLink } from 'features/forceUpdate/helpers/onPressStoreLink'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { GenericErrorPage } from 'ui/pages/GenericErrorPage'
 import { AgainIllustration } from 'ui/svg/icons/AgainIllustration'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -20,7 +20,9 @@ export const ForceUpdateInfos = () => {
   const buttonTertiaryWithNav = isWeb ? undefined : (
     <ExternalTouchableLink
       key={2}
-      as={ButtonTertiaryBlack}
+      as={Button}
+      variant="tertiary"
+      color="neutral"
       wording="Utiliser la version web"
       externalNav={{ url: WEBAPP_V2_URL }}
       icon={ExternalSiteFilled}

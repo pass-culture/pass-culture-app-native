@@ -4,9 +4,9 @@ import styled from 'styled-components/native'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { BookingHold } from 'ui/svg/BookingHold'
 import { Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
@@ -49,7 +49,8 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({
         Pour en savoir plus, va sur ton profil.
       </StyledBody>
       <InternalTouchableLink
-        as={ButtonPrimary}
+        as={Button}
+        fullWidth
         wording="Aller sur mon profil"
         navigateTo={{ screen: 'TabNavigator', params: { screen: 'Profile' } }}
         onBeforeNavigate={goToProfil}

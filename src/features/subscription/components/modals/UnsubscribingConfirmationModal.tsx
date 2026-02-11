@@ -3,10 +3,9 @@ import styled from 'styled-components/native'
 
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { SubscriptionTheme } from 'features/subscription/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { RingingBellOff } from 'ui/svg/RingingBellOff'
 import { Typo } from 'ui/theme'
@@ -34,8 +33,14 @@ export const UnsubscribingConfirmationModal: FunctionComponent<Props> = ({
         {`Tu ne recevras plus toutes les dernières offres et l’actu liées au thème "${mapSubscriptionThemeToName[theme]}".`}
       </StyledBody>
       <StyledButtonContainer gap={2}>
-        <ButtonPrimary wording="Ne plus suivre ce thème" onPress={onUnsubscribePress} />
-        <ButtonTertiaryBlack wording="Annuler" icon={Invalidate} onPress={dismissModal} />
+        <Button wording="Ne plus suivre ce thème" onPress={onUnsubscribePress} fullWidth />
+        <Button
+          wording="Annuler"
+          variant="tertiary"
+          color="neutral"
+          icon={Invalidate}
+          onPress={dismissModal}
+        />
       </StyledButtonContainer>
     </AppModalWithIllustration>
   )

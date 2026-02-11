@@ -1,12 +1,14 @@
 import React from 'react'
 
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
-import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 
 export const DebugButton = () => (
   <InternalTouchableLink
-    as={ButtonQuaternaryBlack}
+    as={Button}
+    variant="tertiary"
+    color="neutral"
     wording="Débuggage"
     navigateTo={getProfilePropConfig('DebugScreen')}
     justifyContent="flex-start"

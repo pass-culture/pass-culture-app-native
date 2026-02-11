@@ -6,8 +6,8 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
+import { Button } from 'ui/designSystem/Button/Button'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
 import { Typo } from 'ui/theme'
 import { LINE_BREAK, SPACE } from 'ui/theme/constants'
@@ -41,7 +41,7 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
   return (
     <AppModalWithIllustration
       visible={visible}
-      title={'Débloque ton crédit' + LINE_BREAK + 'pour réserver cette offre'}
+      title={`Débloque ton crédit${LINE_BREAK}pour réserver cette offre`}
       Illustration={IdCardWithMagnifyingGlass}
       hideModal={hideModal}>
       {user?.requiresIdCheck ? (
@@ -54,10 +54,11 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
           offre.
         </StyledBody>
       )}
-      <ButtonPrimary
+      <Button
         wording={buttonLabel}
         accessibilityLabel="Aller vers la section profil"
         onPress={navigateToStepper}
+        fullWidth
       />
     </AppModalWithIllustration>
   )

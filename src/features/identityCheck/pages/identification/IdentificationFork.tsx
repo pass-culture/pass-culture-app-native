@@ -8,10 +8,10 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { ColorScheme } from 'libs/styled/useColorScheme'
-import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Marianne } from 'ui/svg/icons/Marianne'
@@ -47,7 +47,9 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
       />
       <StyledExternalTouchableLinkContainer>
         <ExternalTouchableLink
-          as={ButtonQuaternaryBlack}
+          as={Button}
+          variant="tertiary"
+          color="neutral"
           externalNav={{ url: env.FAQ_LINK_EDUCONNECT_URL }}
           icon={ExternalSiteFilled}
           wording="C’est quoi ÉduConnect&nbsp;?"

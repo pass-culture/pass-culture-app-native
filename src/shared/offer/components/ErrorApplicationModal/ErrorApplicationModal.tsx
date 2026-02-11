@@ -6,8 +6,8 @@ import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator/
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
+import { Button } from 'ui/designSystem/Button/Button'
 import { UserError } from 'ui/svg/UserError'
 import { Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
@@ -50,10 +50,11 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
         {DOUBLE_LINE_BREAK}
         Pour terminer ton inscription et obtenir ton crédit, va sur ton profil.
       </StyledBody>
-      <ButtonPrimary
+      <Button
         wording="Aller sur mon profil"
         accessibilityLabel="Aller vers la section profil"
         onPress={navigateToProfile}
+        fullWidth
       />
       <AddToFavoritesButton offerId={offerId} onFavoriteAdditionnalPress={addToFavorites} />
     </AppModalWithIllustration>

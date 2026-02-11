@@ -23,12 +23,12 @@ import {
 } from 'features/subscription/types'
 import { analytics } from 'libs/analytics/provider'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -217,7 +217,7 @@ export const NotificationsSettings = () => {
             </SectionWithSwitchContainer>
           ))}
           <Spacer.Column numberOfSpaces={2} />
-          <ButtonPrimary
+          <Button
             wording="Enregistrer"
             accessibilityLabel="Enregistrer les modifications"
             onPress={submitProfile}

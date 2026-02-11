@@ -1,10 +1,9 @@
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Close } from 'ui/svg/icons/Close'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Share } from 'ui/svg/icons/Share'
@@ -39,8 +38,14 @@ export const ShareAppModalVersionB: FC<Props> = ({ visible, close, share }) => {
           Fais découvrir le pass à tes amis&nbsp;!
         </StyledBody>
         <ViewGap gap={2}>
-          <ButtonPrimary wording="Partager l’app" icon={Share} onPress={share} />
-          <ButtonTertiaryBlack wording="Non merci" icon={Invalidate} onPress={close} />
+          <Button wording="Partager l’app" icon={Share} onPress={share} />
+          <Button
+            variant="tertiary"
+            color="neutral"
+            wording="Non merci"
+            icon={Invalidate}
+            onPress={close}
+          />
         </ViewGap>
       </ViewGap>
     </AppModal>

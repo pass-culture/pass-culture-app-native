@@ -5,11 +5,10 @@ import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/
 import { mapSubscriptionThemeToDescription } from 'features/subscription/helpers/mapSubscriptionThemeToDescription'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { SubscriptionTheme } from 'features/subscription/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Parameters } from 'ui/svg/icons/Parameters'
 import { RingingBell } from 'ui/svg/RingingBell'
 import { Typo } from 'ui/theme'
@@ -33,10 +32,12 @@ export const SubscriptionSuccessModal: FunctionComponent<Props> = ({
       hideModal={dismissModal}>
       <StyledBody>{mapSubscriptionThemeToDescription[theme]}</StyledBody>
       <StyledBodyAccentXs>Tu pourras gérer tes alertes depuis ton profil.</StyledBodyAccentXs>
-      <StyledButtonContainer>
-        <StyledButtonPrimary wording="Continuer sur l’app" onPress={dismissModal} />
+      <StyledButtonContainer gap={3}>
+        <Button fullWidth wording="Continuer sur l’app" onPress={dismissModal} />
         <InternalTouchableLink
-          as={ButtonTertiaryBlack}
+          as={Button}
+          variant="tertiary"
+          color="neutral"
           wording="Voir mes préférences"
           icon={Parameters}
           navigateTo={getProfilePropConfig('NotificationsSettings')}
@@ -47,13 +48,9 @@ export const SubscriptionSuccessModal: FunctionComponent<Props> = ({
   )
 }
 
-const StyledButtonContainer = styled.View(({ theme }) => ({
+const StyledButtonContainer = styled(ViewGap)(({ theme }) => ({
   width: '100%',
   marginBottom: theme.designSystem.size.spacing.l,
-}))
-
-const StyledButtonPrimary = styledButton(ButtonPrimary)(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.s,
 }))
 
 const StyledBody = styled(Typo.Body)({

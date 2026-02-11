@@ -373,7 +373,7 @@ exports[`<NotificationsLoggedOutModal /> should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Créer un compte"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -408,16 +408,22 @@ exports[`<NotificationsLoggedOutModal /> should render correctly 1`] = `
                           },
                           {
                             "alignItems": "center",
-                            "borderBottomLeftRadius": 24,
-                            "borderBottomRightRadius": 24,
-                            "borderTopLeftRadius": 24,
-                            "borderTopRightRadius": 24,
+                            "alignSelf": "center",
+                            "backgroundColor": "#6123df",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderColor": "#6123df",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 1,
+                            "flexDirection": "row",
                             "justifyContent": "center",
-                            "overflow": "hidden",
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
+                            "paddingBottom": 8,
+                            "paddingLeft": 12,
+                            "paddingRight": 12,
+                            "paddingTop": 8,
+                            "width": "100%",
                           },
                         ],
                         {
@@ -428,37 +434,39 @@ exports[`<NotificationsLoggedOutModal /> should render correctly 1`] = `
                     testID="Créer un compte"
                   >
                     <View
-                      height={48}
-                      width="100%"
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                    <View
+                      fullWidth={true}
+                      gap={8}
+                      hasIcon={false}
+                      isMultiline={false}
                       style={
                         {
                           "alignItems": "center",
+                          "columnGap": 8,
                           "flexDirection": "row",
-                          "position": "absolute",
+                          "justifyContent": "center",
+                          "width": "100%",
                         }
                       }
                     >
                       <Text
-                        adjustsFontSizeToFit={true}
-                        isDisabled={false}
-                        numberOfLines={1}
                         style={
-                          {
-                            "color": "#ffffff",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 22,
-                            "paddingBottom": 8,
-                            "paddingLeft": 8,
-                            "paddingRight": 8,
-                            "paddingTop": 8,
-                          }
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#ffffff",
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": "center",
+                            },
+                          ]
                         }
                       >
                         Créer un compte

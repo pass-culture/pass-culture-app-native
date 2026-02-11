@@ -8,9 +8,8 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { GenericOfficialPage } from 'ui/pages/GenericOfficialPage'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Typo } from 'ui/theme'
@@ -32,7 +31,7 @@ export const VerifyEligibility: FunctionComponent = () => {
       buttons={[
         <InternalTouchableLink
           key={1}
-          as={ButtonPrimary}
+          as={Button}
           wording="Commencer la vérification"
           navigateTo={getSubscriptionPropConfig('Stepper', {
             from: StepperOrigin.VERIFY_ELIGIBILITY,
@@ -40,7 +39,9 @@ export const VerifyEligibility: FunctionComponent = () => {
         />,
         <InternalTouchableLink
           key={2}
-          as={ButtonTertiaryBlack}
+          as={Button}
+          variant="tertiary"
+          color="neutral"
           icon={PlainArrowNext}
           wording="Vérifier mon identité plus tard"
           navigateTo={navigateToHomeConfig}
