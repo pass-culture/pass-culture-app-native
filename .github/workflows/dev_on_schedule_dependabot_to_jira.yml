@@ -3,13 +3,6 @@ name: '[on_schedule] Dependabot alerts to Jira'
 on:
   schedule:
     - cron: '0 7 * * *' # Tous les jours à 7h UTC (8h Paris)
-  # TODO: Supprimer ce trigger avant merge
-  push:
-    branches:
-      - 'feat/dependabot-jira-alerts'
-  # TODO: Supprimer ce trigger avant merge
-  pull_request:
-    types: [labeled]
   workflow_dispatch:
     inputs:
       dry_run:
@@ -40,10 +33,6 @@ permissions:
 jobs:
   dependabot-to-jira:
     name: Dependabot alerts to Jira
-    # Ne pas lancer sur pull_request sauf si le label est test-jira
-    if: >-
-      github.event_name != 'pull_request' ||
-      github.event.label.name == 'test-jira'
     runs-on: ubuntu-24.04
     timeout-minutes: 30
 
@@ -94,15 +83,10 @@ jobs:
           JIRA_API_TOKEN: ${{ steps.secrets.outputs.JIRA_API_TOKEN }}
           JIRA_BASE_URL: ${{ env.JIRA_BASE_URL }}
           JIRA_PROJECT_KEY: ${{ env.JIRA_PROJECT_KEY }}
-          # Push trigger = équipe fixe "Découverte" pour les tests
-          TEAM_NAME: ${{ github.event_name == 'push' && 'Découverte' || steps.rotation.outputs.team_name }}
-          # Push trigger = toujours dry_run + process_all pour tester
-          # Schedule = production (dry_run: false)
-          # workflow_dispatch = choix utilisateur
-          DRY_RUN: ${{ github.event_name == 'push' && 'true' || inputs.dry_run || 'false' }}
-          PROCESS_ALL: ${{ github.event_name == 'push' && 'true' || inputs.process_all || 'false' }}
-          MAX_ALERTS: ${{ github.event_name == 'push' && '3' || inputs.max_alerts || '0' }}
-          TEST_MODE: ${{ github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'test-jira') && 'true' || 'false' }}
+          TEAM_NAME: ${{ steps.rotation.outputs.team_name }}
+          DRY_RUN: ${{ inputs.dry_run || 'false' }}
+          PROCESS_ALL: ${{ inputs.process_all || 'false' }}
+          MAX_ALERTS: ${{ inputs.max_alerts || '0' }}
         with:
           github-token: ${{ steps.github-app-token.outputs.token }}
           script: |
