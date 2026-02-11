@@ -28,6 +28,12 @@ appId: ${MAESTRO_APP_ID}
 
 - waitForAnimationToEnd
 
+- runFlow: # Si apparition de l'écran de crédit (félicitations 18 ans)
+    when:
+      visible: ".*Bonne nouvelle.*"
+    commands:
+      - tapOn: ".*Continuer.*"
+
 - runFlow:
     when:
       visible: 'Plus tard'
