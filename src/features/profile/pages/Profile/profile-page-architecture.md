@@ -14,6 +14,9 @@ graph TD
     ProfileLoggedIn --> LoggedInContent
     ProfileLoggedIn --> LoggedInHeader
 
+    LoggedInHeader --> LoggedInNonBeneficiaryHeader
+    LoggedInHeader --> LoggedInBeneficiaryHeader
+
     LoggedInContent --> LoggedInBeneficiaryContent
     LoggedInContent --> LoggedInNonBeneficiaryContent
 
@@ -33,11 +36,10 @@ graph TD
         ProfileLoggedOut
         LoggedOutContent
         LoggedInContent
-        LoggedInBeneficiaryContent
-        LoggedInNonBeneficiaryContent
-    end
-
-    subgraph components
         LoggedOutHeader
         LoggedInHeader
+        LoggedInNonBeneficiaryHeader
+        LoggedInBeneficiaryHeader
+        LoggedInBeneficiaryContent
+        LoggedInNonBeneficiaryContent
     end
