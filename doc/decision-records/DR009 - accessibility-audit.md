@@ -1104,7 +1104,7 @@ Texte
 E07 : le texte "Obligatoire" du champ "Adresse e-mail" se retrouve partiellement hors écran
 
 **Correction** 💡  
-La mention obligaoire passe à la ligne lorsque lors d'un zoom egal ou supérieur à 200
+La mention obligatoire passe à la ligne lorsque lors d'un zoom egal ou supérieur à 200
 
 **Retours audit** 🔥  
 Texte
