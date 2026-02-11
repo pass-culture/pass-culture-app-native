@@ -11,6 +11,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
+import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { BaseTextInput } from 'ui/components/inputs/BaseTextInput'
@@ -77,18 +78,27 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
 
   const hiddenFromScreenReaderMobile = Platform.OS === 'web' ? {} : hiddenFromScreenReader()
 
+  const descriptionAndRequired = (
+    <React.Fragment>
+      <View>
+        <Typo.Body style={props.labelStyle}>{inputLabel}</Typo.Body>
+        {customProps.description ? <Description>{customProps.description}</Description> : null}
+      </View>
+      {customProps.requiredIndicator === 'explicit' ? (
+        <StyledBodyAccentXs>Obligatoire</StyledBodyAccentXs>
+      ) : null}
+    </React.Fragment>
+  )
+
+  const labels = useFontScaleValue({
+    default: descriptionAndRequired,
+    at200PercentZoom: <FlexView>{descriptionAndRequired}</FlexView>,
+  })
+
   return (
     <Container>
       <FlexInputLabel htmlFor={textInputID}>
-        <LabelContainer {...hiddenFromScreenReaderMobile}>
-          <View>
-            <Typo.Body style={props.labelStyle}>{inputLabel}</Typo.Body>
-            {customProps.description ? <Description>{customProps.description}</Description> : null}
-          </View>
-          {customProps.requiredIndicator === 'explicit' ? (
-            <StyledBodyAccentXs>Obligatoire</StyledBodyAccentXs>
-          ) : null}
-        </LabelContainer>
+        <LabelContainer {...hiddenFromScreenReaderMobile}>{labels}</LabelContainer>
       </FlexInputLabel>
 
       <TextInputContainer
@@ -140,6 +150,10 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
     </Container>
   )
 }
+
+const FlexView = styled.View({
+  flexDirection: 'column',
+})
 
 export const TextInput = forwardRef<RNTextInput, TextInputProps>(WithRefTextInput)
 
