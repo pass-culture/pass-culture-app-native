@@ -11,17 +11,8 @@ import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('libs/jwt/jwt')
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
-}))
 
 jest.mock('features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery', () => {
   return {
@@ -128,10 +119,8 @@ describe('<CodeNotReceivedModal />', () => {
 
     await user.press(screen.getByTestId('Demander un autre code'))
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message: 'some message',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(screen.getByText('some message')).toBeOnTheScreen()
   })
 
   it('should navigate to SetPhoneNumberTooManySMSSent page if request fails with TOO_MANY_SMS_SENT code', async () => {

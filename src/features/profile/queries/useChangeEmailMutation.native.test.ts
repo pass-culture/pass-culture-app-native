@@ -3,17 +3,11 @@ import { useChangeEmailMutation } from 'features/profile/queries/useChangeEmailM
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
-import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
+import * as snackBarStoreModule from 'ui/designSystem/Snackbar/snackBar.store'
 
-const mockShowSuccessSnackBar = jest.fn()
-const mockShowErrorSnackBar = jest.fn()
+const mockShowSuccessSnackBar = jest.spyOn(snackBarStoreModule, 'showSuccessSnackBar')
+const mockShowErrorSnackBar = jest.spyOn(snackBarStoreModule, 'showErrorSnackBar')
 
-jest.spyOn(SnackBarContextModule, 'useSnackBarContext').mockReturnValue({
-  showSuccessSnackBar: mockShowSuccessSnackBar,
-  showErrorSnackBar: mockShowErrorSnackBar,
-  showInfoSnackBar: jest.fn(),
-  hideSnackBar: jest.fn(),
-})
 jest.mock('libs/jwt/jwt')
 
 jest.useFakeTimers()
@@ -28,11 +22,9 @@ describe('useChangeEmailMutation', () => {
 
     await act(async () => changeEmail())
 
-    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-      message:
-        'E-mail envoyé sur ton adresse actuelle\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.',
-      timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT_LONG,
-    })
+    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith(
+      'E-mail envoyé sur ton adresse actuelle\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.'
+    )
   })
 
   it('should navigate on success', async () => {
@@ -59,11 +51,9 @@ describe('useChangeEmailMutation', () => {
 
     await act(async () => changeEmail())
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message:
-        'Une erreur s’est produite pendant la modification de ton e-mail. Réessaie plus tard.',
-      timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT,
-    })
+    expect(mockShowErrorSnackBar).toHaveBeenCalledWith(
+      'Une erreur s’est produite pendant la modification de ton e-mail. Réessaie plus tard.'
+    )
   })
 })
 

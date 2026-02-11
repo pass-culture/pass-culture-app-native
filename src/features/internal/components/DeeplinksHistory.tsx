@@ -4,9 +4,9 @@ import { FlatList } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { DeeplinkItem } from 'features/internal/atoms/DeeplinkItem'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { padding, Typo } from 'ui/theme'
 
 export interface DeeplinksHistoryProps {
@@ -24,7 +24,6 @@ export const DeeplinksHistory = ({
   setKeepHistory,
   rehydrateHistory,
 }: DeeplinksHistoryProps) => {
-  const { showErrorSnackBar } = useSnackBarContext()
   const { designSystem } = useTheme()
   const onToggleKeepHistory = useCallback(() => {
     async function toggle() {
@@ -48,9 +47,7 @@ export const DeeplinksHistory = ({
       await AsyncStorage.removeItem('mac_history')
     } catch (error) {
       if (error instanceof Error)
-        showErrorSnackBar({
-          message: `L’historique n’a pas pu supprimer les données locales: ${error.message}`,
-        })
+        showErrorSnackBar(`L’historique n’a pas pu supprimer les données locales: ${error.message}`)
     }
   }
 
@@ -69,7 +66,7 @@ export const DeeplinksHistory = ({
           clearLocalData()
         }
       } catch (error) {
-        showErrorSnackBar({ message: 'L’historique est indisponible' })
+        showErrorSnackBar('L’historique est indisponible')
         clearLocalData()
       }
     }

@@ -12,19 +12,13 @@ import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.c
 import { eventMonitoring } from 'libs/monitoring/services'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+import * as snackBarStoreModule from 'ui/designSystem/Snackbar/snackBar.store'
 
 const TODAY_DATE = new Date('2023-09-26T00:00:00.000Z')
 
 jest.mock('libs/monitoring/services')
 
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
-}))
+const mockShowErrorSnackBar = jest.spyOn(snackBarStoreModule, 'showErrorSnackBar')
 
 jest.mock('queries/subcategories/useSubcategoriesQuery')
 
@@ -262,7 +256,7 @@ describe('useSearchHistory', () => {
     expect(result.current.filteredHistory).toEqual([item])
 
     await act(async () => {
-      result.current.removeFromHistory(item)
+      await result.current.removeFromHistory(item)
     })
 
     expect(result.current.filteredHistory).toEqual([])
@@ -308,10 +302,9 @@ describe('useSearchHistory', () => {
       await result.current.removeFromHistory(item)
     })
 
-    expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
-      message: 'Impossible de supprimer l’entrée de l’historique',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(mockShowErrorSnackBar).toHaveBeenCalledWith(
+      'Impossible de supprimer l’entrée de l’historique'
+    )
   })
 
   it('should update the local storage when deleted an item from history', async () => {

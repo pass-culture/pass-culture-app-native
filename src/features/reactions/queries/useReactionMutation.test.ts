@@ -7,16 +7,10 @@ import { QueryKeys } from 'libs/queryKeys'
 import { mockServer } from 'tests/mswServer'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+import * as snackBarStoreModule from 'ui/designSystem/Snackbar/snackBar.store'
 
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: jest.fn(),
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
-  SNACK_BAR_TIME_OUT: 5000,
-}))
+const mockShowErrorSnackBar = jest.spyOn(snackBarStoreModule, 'showErrorSnackBar')
+
 jest.mock('libs/jwt/jwt')
 
 const setup = (queryClient: QueryClient) => {
@@ -49,10 +43,7 @@ describe('useReactionMutation', () => {
 
     await waitFor(() => {
       expect(result.current.isError).toBeTruthy()
-      expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
-        message: 'Une erreur s’est produite',
-        timeout: 5000,
-      })
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith('Une erreur s’est produite')
     })
   })
 

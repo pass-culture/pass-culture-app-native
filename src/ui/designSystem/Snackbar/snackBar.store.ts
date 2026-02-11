@@ -31,6 +31,12 @@ export const snackBarStore = createStore({
   name: 'snackbar-store',
   defaultState,
   actions: (set) => ({
+    showSuccessSnackBar: (label: string) => {
+      snackBarStore.actions.open(label, 'success')
+    },
+    showErrorSnackBar: (label: string) => {
+      snackBarStore.actions.open(label, 'error')
+    },
     open: (label: string, type: 'success' | 'error') => {
       const id = v4()
       const animationDuration = getAnimationDuration(label)
@@ -75,4 +81,5 @@ export const snackBarStore = createStore({
 })
 
 export const snackBarActions = snackBarStore.actions
+export const { showErrorSnackBar, showSuccessSnackBar } = snackBarActions
 export const { useSnackbarProps } = snackBarStore.hooks

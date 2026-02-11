@@ -8,7 +8,7 @@ import {
   LONG_TEXT_CHARACTER_LENGTH,
   SHORT_TEXT_ANIMATION_DURATION_IN_MS,
   snackBarStore,
-} from './SnackBarStore'
+} from './snackBar.store'
 
 jest.unmock('uuid')
 jest.useFakeTimers()

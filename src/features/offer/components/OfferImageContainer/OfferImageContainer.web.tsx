@@ -15,7 +15,7 @@ import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { ImageWithCredit } from 'shared/types'
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 import { OfferImageHeaderWrapper } from './OfferImageHeaderWrapper'
 
@@ -42,7 +42,6 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   const progressValue = useSharedValue<number>(0)
 
   const { navigate } = useNavigation<UseNavigationType>()
-  const { showInfoSnackBar } = useSnackBarContext()
   const { cookiesConsent } = useCookies()
   const scrollToAnchor = useScrollToAnchor()
   const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
@@ -54,11 +53,9 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
 
   const handleVideoPress = () => {
     if (!hasConsent) {
-      showInfoSnackBar({
-        message:
-          'Pour lire la vidéo, tu dois accepter les cookies vidéo depuis ton profil dans la partie “Confidentialité"',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(
+        'Pour lire la vidéo, tu dois accepter les cookies vidéo depuis ton profil dans la partie “Confidentialité"'
+      )
       scrollToAnchor(AnchorNames.VIDEO_PLAYBACK)
       return
     }

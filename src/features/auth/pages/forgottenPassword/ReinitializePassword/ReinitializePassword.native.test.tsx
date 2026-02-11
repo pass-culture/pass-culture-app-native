@@ -12,8 +12,6 @@ import * as datesLib from 'libs/dates'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, renderAsync, screen, userEvent, waitFor } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ReinitializePassword } from './ReinitializePassword'
 
@@ -31,15 +29,6 @@ const ROUTE_PARAMS: {
 }
 
 jest.mock('features/navigation/helpers/navigateToHome')
-
-const mockShowSuccessSnackBar = jest.fn()
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSuccessSnackBar(props)),
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
-}))
 
 const loginRoutine = jest.fn()
 const mockLoginRoutine = jest.spyOn(LoginRoutine, 'useLoginRoutine')
@@ -251,10 +240,7 @@ describe('ReinitializePassword Page', () => {
     })
     await user.press(screen.getByText('Se connecter'))
 
-    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-      message: 'Ton mot de passe est modifié\u00a0!',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByText('Ton mot de passe est modifié\u00a0!')).toBeOnTheScreen()
   })
 
   it('should show error snack bar when reinitialize password request fails', async () => {
@@ -270,10 +256,10 @@ describe('ReinitializePassword Page', () => {
     })
     await user.press(screen.getByText('Se connecter'))
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message: 'Une erreur s’est produite pendant la modification de ton mot de passe.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(
+      screen.getByText('Une erreur s’est produite pendant la modification de ton mot de passe.')
+    ).toBeOnTheScreen()
   })
 
   it('should redirect to ResetPasswordExpiredLink when expiration_timestamp is expired', async () => {

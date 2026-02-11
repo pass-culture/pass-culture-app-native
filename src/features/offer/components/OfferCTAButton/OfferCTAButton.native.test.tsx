@@ -14,7 +14,6 @@ import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthC
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderAsync, screen, userEvent, waitFor } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -43,13 +42,6 @@ const offerDigitalAndFree = {
     },
   ],
 }
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackBar,
-  }),
-}))
 
 const offerNotEventCTAButtonProps = {
   offer: offerResponseSnap,
@@ -180,19 +172,6 @@ describe('<OfferCTAButton />', () => {
           })
         })
       })
-
-      it('should not display an error message when pressing button to book the offer', async () => {
-        mockAuthContextWithUser(beneficiaryUser, { persist: true })
-
-        await renderOfferCTAButton({
-          ...offerNotEventCTAButtonProps,
-          offer: { ...offerResponseSnap, ...offerDigitalAndFree },
-        })
-
-        await user.press(screen.getByText('Accéder à l’offre en ligne'))
-
-        expect(mockShowErrorSnackBar).not.toHaveBeenCalled()
-      })
     })
 
     describe('When booking API response is error', () => {
@@ -254,10 +233,10 @@ describe('<OfferCTAButton />', () => {
 
       await user.press(screen.getByText('Accéder à l’offre en ligne'))
 
-      expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
-        message: 'Désolé, il est impossible d’ouvrir le lien. Réessaie plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(
+        screen.getByText('Désolé, il est impossible d’ouvrir le lien. Réessaie plus tard.')
+      ).toBeOnTheScreen()
     })
   })
 

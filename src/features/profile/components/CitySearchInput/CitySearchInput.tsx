@@ -17,11 +17,11 @@ import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { RequiredIndicator } from 'ui/components/inputs/types'
 import { Li } from 'ui/components/Li'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Error } from 'ui/svg/icons/Error'
 
 const keyExtractor = ({ name, code, postalCode }: SuggestedCity) => `${name}-${code}-${postalCode}`
@@ -41,7 +41,6 @@ export const CitySearchInput = ({
   label,
   requiredIndicator,
 }: CitySearchInputProps) => {
-  const { showErrorSnackBar } = useSnackBarContext()
   const { data: ineligiblePostalCodes } = useIneligiblePostalCodes()
   const [postalCodeQuery, setPostalCodeQuery] = useState<string>(city?.postalCode ?? '')
   const [isPostalCodeIneligible, setIsPostalCodeIneligible] = useState(false)
@@ -74,16 +73,14 @@ export const CitySearchInput = ({
         })
     }
     if (isError) {
-      showErrorSnackBar({
-        message:
-          'Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(
+        'Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard.'
+      )
       eventMonitoring.captureException(
         new IdentityCheckError('Failed to fetch data from API: https://geo.api.gouv.fr/communes')
       )
     }
-  }, [isSuccess, isError, cities.length, setError, showErrorSnackBar])
+  }, [isSuccess, isError, cities.length, setError])
 
   const onSubmit = useCallback(
     ({ postalCode }: PostalCodeForm) => {

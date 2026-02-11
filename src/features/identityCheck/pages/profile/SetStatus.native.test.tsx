@@ -15,7 +15,6 @@ import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 let mockStatus: ActivityIdEnum | null = null
 
@@ -64,13 +63,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
       status: mockStatus,
     },
   })),
-}))
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
 }))
 
 const mockActivities = ActivityTypesSnap.activities

@@ -19,7 +19,7 @@ import {
   NumberOfBookingsPlaceholder,
 } from 'ui/components/placeholders/Placeholders'
 import { Separator } from 'ui/components/Separator'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { getSpacing, Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT_V2 } from 'ui/theme/constants'
 
@@ -48,14 +48,12 @@ export const OnGoingBookingsList: FunctionComponent<Props> = ({ useOngoingBookin
   const { isLoading: subcategoriesIsLoading } = useSubcategoriesQuery()
   const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
-  const { showErrorSnackBar } = useSnackBarContext()
 
-  const refetchOffline = useCallback(() => {
-    showErrorSnackBar({
-      message: 'Impossible de recharger tes réservations, connecte-toi à internet pour réessayer.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
-  }, [showErrorSnackBar])
+  const refetchOffline = () => {
+    showErrorSnackBar(
+      'Impossible de recharger tes réservations, connecte-toi à internet pour réessayer.'
+    )
+  }
 
   const onRefetch = netInfo.isConnected && netInfo.isInternetReachable ? refetch : refetchOffline
   const hasBookings = ongoingBookings.length > 0

@@ -17,7 +17,7 @@ import { useAddressesQuery } from 'libs/place/queries/useAddressesQuery'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { useIdCheckAddressAutocompletion } from 'queries/settings/useSettings'
 import { isAddressValid } from 'ui/components/inputs/addressCheck'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 
 const snackbarMessage =
@@ -37,7 +37,6 @@ export const useSubmitChangeAddress = () => {
 
   const { user } = useAuthContext()
   const { data: idCheckAddressAutocompletion } = useIdCheckAddressAutocompletion()
-  const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
   const { setAddress: setStoreAddress } = addressActions
   const storedCity = useCity()
   const storedAddress = useAddress()
@@ -80,7 +79,7 @@ export const useSubmitChangeAddress = () => {
 
   useEffect(() => {
     if (isError) {
-      showErrorSnackBar({ message: snackbarMessage, timeout: SNACK_BAR_TIME_OUT })
+      showErrorSnackBar(snackbarMessage)
       eventMonitoring.captureException(new IdentityCheckError(exception))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -105,26 +104,20 @@ export const useSubmitChangeAddress = () => {
   }
 
   const { mutate: patchProfile } = usePatchProfileMutation({
-    onSuccess: (_, variables) => {
+    onSuccess: async (_, variables) => {
       if (isMandatoryUpdatePersonalData) {
         navigate(...getProfileHookConfig('ChangeStatus', { type }))
       } else {
         navigate(...getProfileHookConfig('PersonalData'))
-        showSuccessSnackBar({
-          message: 'Ton adresse de résidence a bien été modifiée\u00a0!',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+        showSuccessSnackBar('Ton adresse de résidence a bien été modifiée\u00a0!')
       }
-      analytics.logUpdateAddress({
+      await analytics.logUpdateAddress({
         newAddress: variables.address ?? '',
         oldAddress: user?.street ?? '',
       })
     },
     onError: () => {
-      showErrorSnackBar({
-        message: 'Une erreur est survenue',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('Une erreur est survenue')
     },
   })
 
