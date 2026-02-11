@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Referrals } from 'features/navigation/RootNavigator/types'
-import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -17,25 +15,16 @@ export type EventCardProps = {
   title: string
   subtitleLeft: string
   subtitleRight?: string
-  analyticsFrom?: Referrals
 }
 
-export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
+export const EventCard: React.FC<EventCardProps> = ({
   onPress,
   isDisabled,
   title,
   subtitleLeft,
   subtitleRight,
-  analyticsFrom,
-  offerId,
 }) => {
   const hasSubtitleRight = !!subtitleRight
-  const handleEventCardPress = () => {
-    if (analyticsFrom === 'venue' && offerId !== undefined) {
-      triggerConsultOfferLog({ offerId, from: analyticsFrom })
-    }
-    onPress()
-  }
 
   const computedAccessibilityLabel = getComputedAccessibilityLabel(
     title,
@@ -47,7 +36,7 @@ export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
     <StyledTouchableOpacity
       testID="event-card"
       disabled={isDisabled}
-      onPress={handleEventCardPress}
+      onPress={onPress}
       accessibilityLabel={computedAccessibilityLabel}>
       <Title numberOfLines={1} disabled={isDisabled}>
         {title}
