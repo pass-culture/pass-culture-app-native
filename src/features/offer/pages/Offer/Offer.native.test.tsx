@@ -6,6 +6,7 @@ import {
   PaginatedFavoritesResponse,
   SubcategoriesResponseModelv2,
 } from 'api/gen'
+import { mockArtists } from 'features/artist/fixtures/mockArtist'
 import { bookingsSnap } from 'features/bookings/fixtures'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
@@ -248,6 +249,18 @@ describe('<Offer />', () => {
       from: 'offer',
       offerId: '116656',
     })
+  })
+
+  it('should open artists modal when offer has several artists and wipArtistPage and wipOfferMultiArtists FFs', async () => {
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_ARTIST_PAGE,
+      RemoteStoreFeatureFlags.WIP_OFFER_MULTI_ARTISTS,
+    ])
+    renderOfferPage({ mockOffer: { ...offerResponseSnap, artists: mockArtists } })
+
+    await user.press(screen.getByLabelText('Ouvrir la liste des artistes'))
+
+    expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
 
   describe('video section', () => {

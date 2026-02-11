@@ -1,8 +1,8 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { View } from 'react-native'
 
-import { ReactionTypeEnum } from 'api/gen'
+import { OfferArtist, ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
@@ -80,6 +80,7 @@ export function Offer() {
   const categoryId = offer?.subcategoryId
     ? subcategoriesMapping[offer?.subcategoryId]?.categoryId
     : ''
+  const [selectedArtists, setSelectedArtists] = useState<OfferArtist[]>([])
 
   const handleSaveReaction = useCallback(
     ({ offerId, reactionType }: { offerId: number; reactionType: ReactionTypeEnum }) => {
@@ -118,6 +119,14 @@ export function Offer() {
       accepted: [...currentConsent.accepted, CookieNameEnum.VIDEO_PLAYBACK],
     })
   }
+
+  const handleShowOfferArtistsModal = useCallback(
+    (artistsToDisplay: OfferArtist[]) => {
+      setSelectedArtists(artistsToDisplay)
+      showOfferArtistsModal()
+    },
+    [showOfferArtistsModal]
+  )
 
   const { data } = useFetchHeadlineOffersCountQuery(offer)
 
@@ -160,11 +169,11 @@ export function Offer() {
             variantInfo={chronicleVariantInfo}
           />
         ) : null}
-        {offer.artists.length > 1 ? (
+        {selectedArtists.length > 1 ? (
           <OfferArtistsModal
             isVisible={offerArtistsModalVisible}
             closeModal={hideOfferArtistsModal}
-            artists={offer.artists}
+            artists={selectedArtists}
             navigateTo={{ screen: 'Artist' }}
           />
         ) : null}
@@ -184,7 +193,7 @@ export function Offer() {
         hasVideoCookiesConsent={hasVideoCookiesConsent}
         onVideoConsentPress={handleOnVideoConsentPress}
         isMultiArtistsEnabled={isMultiArtistsEnabled}
-        onShowOfferArtistsModal={showOfferArtistsModal}
+        onShowOfferArtistsModal={handleShowOfferArtistsModal}
       />
     </Page>
   )
