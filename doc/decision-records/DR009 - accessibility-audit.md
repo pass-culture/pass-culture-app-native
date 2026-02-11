@@ -1092,6 +1092,27 @@ Texte
 
 <br>
 
+<details>
+
+<summary> 🟠Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ? </summary>
+
+**RAAM** : [Critère 8.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-2)  
+**Ticket** : [40212](https://passculture.atlassian.net/browse/PC-40212)
+**PR** : [#9230](https://github.com/pass-culture/pass-culture-app-native/pull/9230)
+
+**Problème** 😱  
+E07 : le texte "Obligatoire" du champ "Adresse e-mail" se retrouve partiellement hors écran
+
+**Correction** 💡  
+La mention obligaoire passe à la ligne lorsque lors d'un zoom egal ou supérieur à 200
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
 ## 📂 Template
 
 <details>
