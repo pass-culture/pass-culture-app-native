@@ -18,6 +18,7 @@ import {
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { useSearchGroupLabel } from 'libs/subcategories'
@@ -219,7 +220,10 @@ const SuggestionContainer: FunctionComponent<{
   testID: string
   children: ReactNode
 }> = ({ hit, onPress, testID, children }) => (
-  <AutocompleteItemTouchable testID={testID} onPress={onPress}>
+  <AutocompleteItemTouchable
+    testID={testID}
+    onPress={onPress}
+    accessibilityRole={AccessibilityRole.BUTTON}>
     <MagnifyingGlassIconContainer>
       <MagnifyingGlassFilledIcon />
     </MagnifyingGlassIconContainer>

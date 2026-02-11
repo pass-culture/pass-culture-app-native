@@ -2,8 +2,8 @@ import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
-import { ButtonWithLinearGradientDeprecated } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradientDeprecated'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
+import { Button } from 'ui/designSystem/Button/Button'
 
 export const CineContentCTAID = 'cine-content-cta'
 
@@ -12,7 +12,7 @@ export const CineContentCTA: FC = () => {
   return (
     <StickyBottomWrapper>
       <CallToActionContainer testID={CineContentCTAID}>
-        <ButtonWithLinearGradientDeprecated wording={wording} onPress={onPress} />
+        <Button wording={wording} onPress={onPress} />
       </CallToActionContainer>
     </StickyBottomWrapper>
   )
