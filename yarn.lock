@@ -11499,7 +11499,7 @@ __metadata:
     type-fest: ^4.15.0
     typescript: 5.0.4
     uuid: ^8.3.2
-    vite: ^6.3.5
+    vite: ^6.3.6
     vite-bundle-analyzer: ^0.16.2
     vite-plugin-html: ^3.2.2
     yup: ^0.32.11
@@ -27476,9 +27476,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^6.3.5":
-  version: 6.3.5
-  resolution: "vite@npm:6.3.5"
+"vite@npm:^6.3.6":
+  version: 6.3.6
+  resolution: "vite@npm:6.3.6"
   dependencies:
     esbuild: ^0.25.0
     fdir: ^6.4.4
@@ -27527,7 +27527,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: b7f1ebaae483090441f17ca09ea2c9b803688d2a2ed9860fbd8b72271918776ea3ceca643e807a5ee00628d65b79656d32529a4b8dd388aa33e41bc3f38732d0
+  checksum: bf1e90cb31ea0bb8b13dd046fe9584cb6108dac59332cf56e3ea7a4a77fd4e795c0486957d3cc56a6179608d990110ec9569ed973d53f7adff1590401ebb8f55
   languageName: node
   linkType: hard
 
