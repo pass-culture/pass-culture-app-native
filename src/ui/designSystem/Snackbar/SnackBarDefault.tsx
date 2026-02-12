@@ -4,7 +4,7 @@
  */
 
 import React, { FC } from 'react'
-import Animated, { FadeInUp, FadeOutUp, Keyframe, LinearTransition } from 'react-native-reanimated'
+import Animated, { FadeInUp, FadeOutUp, Keyframe } from 'react-native-reanimated'
 import { styled } from 'styled-components/native'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -21,11 +21,7 @@ export const SnackBarDefault: FC<SnackBarProps & { Icon: FC<AccessibleIcon> }> =
   Icon,
 }) => {
   return (
-    <SnackbarContainer
-      testID={`snackbar-${type}`}
-      entering={FadeInUp.withCallback(() => setTimeout(onClose, animationDuration))}
-      exiting={FadeOutUp}
-      layout={LinearTransition.duration(500).springify()}>
+    <SnackbarContainer testID={`snackbar-${type}`} entering={FadeInUp} exiting={FadeOutUp}>
       <SnackBarContent type={type}>
         <Icon />
         <LabelContainer>
@@ -38,8 +34,8 @@ export const SnackBarDefault: FC<SnackBarProps & { Icon: FC<AccessibleIcon> }> =
       <ProgressBar
         type={type}
         entering={new Keyframe({
-          from: { width: '0%' },
-          to: { width: '100%' },
+          from: { transform: [{ scaleX: 0 }] },
+          to: { transform: [{ scaleX: 1 }] },
         }).duration(animationDuration)}
       />
     </SnackbarContainer>
@@ -62,6 +58,7 @@ const ProgressBar = styled(Animated.View)<{ type: SnackBarType }>(({ theme, type
   height: theme.designSystem.size.spacing.xs,
   borderBottomLeftRadius: theme.designSystem.size.spacing.xs,
   borderBottomRightRadius: theme.designSystem.size.spacing.xs,
+  transformOrigin: 'left',
 }))
 
 const SnackBarContent = styled.View<{ type: SnackBarType }>(({ theme, type }) => ({
