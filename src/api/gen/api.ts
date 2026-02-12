@@ -2852,12 +2852,12 @@ export interface OfferAddressResponse {
  */
 export interface OfferArtist {
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferArtist
    */
-  id: string
+  id?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferArtist
    */
   image?: string | null
@@ -2867,7 +2867,7 @@ export interface OfferArtist {
    */
   name: string
   /**
-   * @type {ArtistType}
+   * @type {ArtistType | null}
    * @memberof OfferArtist
    */
   role?: ArtistType | null
