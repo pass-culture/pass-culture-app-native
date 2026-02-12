@@ -45,7 +45,7 @@ jobs:
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
       - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
@@ -86,7 +86,7 @@ jobs:
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
       - name: Cache the node_modules
@@ -140,7 +140,7 @@ jobs:
         with:
           secrets: |-
             SONAR_TOKEN:passculture-metier-ehp/passculture-app-native-sonar-token
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
       - name: Set up Cloud SDK to get gsutils
@@ -173,7 +173,7 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
       - name: 'OpenID Connect Authentication'
@@ -227,7 +227,7 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
       - name: 'OpenID Connect Authentication'

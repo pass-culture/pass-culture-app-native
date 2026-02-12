@@ -43,7 +43,7 @@ jobs:
       - uses: actions/checkout@v4.2.1
         with:
           ref: ${{ inputs.REF }}
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
       - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
