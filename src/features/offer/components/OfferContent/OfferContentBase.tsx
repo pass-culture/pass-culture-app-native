@@ -20,7 +20,7 @@ import {
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
-import { OfferResponseV2, ReactionTypeEnum, RecommendationApiParams } from 'api/gen'
+import { OfferArtist, OfferResponseV2, ReactionTypeEnum, RecommendationApiParams } from 'api/gen'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -63,7 +63,7 @@ type OfferContentBaseProps = OfferContentProps &
     BodyWrapper: FunctionComponent
     onOfferPreviewPress: (index?: number) => void
     onShowChroniclesWritersModal: () => void
-    onShowOfferArtistsModal: () => void
+    onShowOfferArtistsModal: (artists: OfferArtist[]) => void
     onVideoConsentPress?: () => void
     chronicles?: ChronicleCardData[]
     likesCount?: number
