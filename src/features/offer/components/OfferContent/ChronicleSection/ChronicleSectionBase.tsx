@@ -4,10 +4,8 @@ import styled from 'styled-components/native'
 
 import { ChronicleCardList } from 'features/chronicle/components/ChronicleCardList/ChronicleCardList'
 import { CHRONICLE_CARD_WIDTH } from 'features/chronicle/constant'
-import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
-import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -43,23 +41,26 @@ export const ChronicleSectionBase = ({
       {shouldDisplayAllReviewsButton ? (
         <Gutter>
           <InternalTouchableLink
-            as={ButtonSecondaryBlack}
+            as={Button}
             wording={ctaLabel}
             navigateTo={navigateTo}
             onBeforeNavigate={onBeforeNavigate}
-            // If i use styled-component in that case (i.e using "as" prop), i have an error in web :'(
-            // eslint-disable-next-line react-native/no-inline-styles
-            style={{ alignSelf: 'center' }}
+            variant="secondary"
+            color="neutral"
           />
         </Gutter>
       ) : null}
       <Gutter>
-        <StyledButtonQuaternaryBlack
-          wording={variantInfo.modalTitle}
-          icon={InfoPlain}
-          onPress={onShowChroniclesWritersModal}
-          withMarginTop={shouldDisplayAllReviewsButton}
-        />
+        <ClubButtonContainer withMarginTop={shouldDisplayAllReviewsButton}>
+          <Button
+            wording={variantInfo.modalTitle}
+            icon={InfoPlain}
+            onPress={onShowChroniclesWritersModal}
+            variant="tertiary"
+            color="neutral"
+            size="small"
+          />
+        </ClubButtonContainer>
       </Gutter>
     </View>
   )
@@ -82,8 +83,6 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack)<{ withMarginTop: boolean }>(
-  ({ theme, withMarginTop }) => ({
-    marginTop: withMarginTop ? theme.designSystem.size.spacing.xl : undefined,
-  })
-)
+const ClubButtonContainer = styled.View<{ withMarginTop: boolean }>(({ theme, withMarginTop }) => ({
+  marginTop: withMarginTop ? theme.designSystem.size.spacing.l : undefined,
+}))

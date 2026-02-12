@@ -9,7 +9,7 @@ import { OfferImageCarousel } from 'features/offer/components/OfferImageCarousel
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
 import { OfferImageContainerDimensions } from 'features/offer/types'
 import { ImageWithCredit } from 'shared/types'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Play } from 'ui/svg/icons/Play'
 
 type Props = {
@@ -62,7 +62,13 @@ export const OfferImageRenderer: FunctionComponent<Props> = ({
       )}
       {onSeeVideoPress ? (
         <ButtonContainer>
-          <ButtonTertiaryBlack wording="Voir la vidéo" onPress={onSeeVideoPress} icon={Play} />
+          <Button
+            wording="Voir la vidéo"
+            onPress={onSeeVideoPress}
+            icon={Play}
+            variant="tertiary"
+            color="neutral"
+          />
         </ButtonContainer>
       ) : null}
     </Animated.View>

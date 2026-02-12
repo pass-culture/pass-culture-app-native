@@ -10,10 +10,10 @@ import {
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
 import { GeolocPermissionState, useLocation } from 'libs/location/location'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Close } from 'ui/svg/icons/Close'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -118,10 +118,11 @@ export function VenueSelectionModal({
       customModalHeader={customHeader}
       fixedModalBottom={
         <BottomWrapper>
-          <ButtonPrimary
+          <Button
             wording={validateButtonLabel}
             onPress={handleSubmit}
             disabled={!selectedVenue}
+            fullWidth
           />
         </BottomWrapper>
       }
