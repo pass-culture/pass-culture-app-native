@@ -30,7 +30,7 @@ jobs:
             echo "cloud_env=prod" >> $GITHUB_OUTPUT
           fi
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
       - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
