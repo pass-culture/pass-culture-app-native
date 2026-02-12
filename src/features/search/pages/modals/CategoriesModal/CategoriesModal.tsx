@@ -287,7 +287,6 @@ export const CategoriesModal = ({
             allLabel="Tout"
             value={genreType}
             descriptionContext={descriptionContext}
-            onSubmit={handleSubmit(handleSearchPress)}
           />
         ) : null}
       </Form.MaxWidth>
