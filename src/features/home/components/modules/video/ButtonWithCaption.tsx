@@ -1,11 +1,10 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { styledButton } from 'ui/components/buttons/styledButton'
-import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 
@@ -24,19 +23,25 @@ export const ButtonWithCaption: React.FC<ButtonWithCaptionProps> = ({
   accessibilityLabel,
   navigateTo,
 }) => {
+  const buttonProps = {
+    icon: Icon,
+    iconButton: true,
+    accessibilityLabel,
+    variant: 'tertiary',
+    color: 'neutral',
+  } as const
+
   return (
     <ButtonWithCaptionContainer gap={1.5}>
       {navigateTo ? (
-        <StyledTouchableLink
+        <InternalTouchableLink
+          as={Button}
           navigateTo={navigateTo}
           onBeforeNavigate={onPress}
-          accessibilityLabel={accessibilityLabel}>
-          <Icon />
-        </StyledTouchableLink>
+          {...buttonProps}
+        />
       ) : (
-        <StyledTouchable onPress={onPress} accessibilityLabel={accessibilityLabel}>
-          <Icon />
-        </StyledTouchable>
+        <Button onPress={onPress} {...buttonProps} />
       )}
       <ButtonCaption>{wording}</ButtonCaption>
     </ButtonWithCaptionContainer>
@@ -50,16 +55,4 @@ const ButtonWithCaptionContainer = styled(ViewGap)({
 const ButtonCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.lockedInverted,
   textAlign: 'center',
-}))
-
-const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
-  borderRadius: theme.designSystem.size.borderRadius.pill,
-  padding: theme.designSystem.size.spacing.m,
-  backgroundColor: theme.designSystem.color.background.locked,
-}))
-
-const StyledTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
-  borderRadius: theme.designSystem.size.borderRadius.pill,
-  padding: theme.designSystem.size.spacing.m,
-  backgroundColor: theme.designSystem.color.background.locked,
 }))
