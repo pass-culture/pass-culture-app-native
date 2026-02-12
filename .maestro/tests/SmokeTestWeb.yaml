@@ -1,6 +1,8 @@
 url: http://localhost:5173/
 tags:
   - web
+onFlowStart: 
+  - runScript: subFolder/commons/wording.js
 ---
 - launchApp
 - extendedWaitUntil:

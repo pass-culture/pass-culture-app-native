@@ -8,6 +8,7 @@ tags:
 onFlowStart:
   - runScript: subFolder/links/DeepLinks.js
   - runScript: subFolder/commons/Button.js
+  - runScript: subFolder/commons/wording.js
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
 - runFlow: subFolder/commons/StopApp.yml
