@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
+import { styled } from 'styled-components/native'
 
 import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
 import { CTAButton } from 'features/offer/components/CTAButton/CTAButton'
@@ -25,7 +25,7 @@ export const BookingButton: FunctionComponent<Props> = ({
 
   return (
     <React.Fragment>
-      <View testID="booking-button">
+      <ButtonContainer testID="booking-button">
         <CTAButton
           wording={wording}
           onPress={onPress}
@@ -35,8 +35,12 @@ export const BookingButton: FunctionComponent<Props> = ({
           isFreeDigitalOffer={isFreeDigitalOffer}
           isLoggedIn={isLoggedIn}
         />
-      </View>
+      </ButtonContainer>
       {bottomBannerText ? <BottomBanner text={bottomBannerText} /> : null}
     </React.Fragment>
   )
 }
+
+const ButtonContainer = styled.View({
+  width: '50%',
+})

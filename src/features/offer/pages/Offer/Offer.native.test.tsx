@@ -140,7 +140,7 @@ describe('<Offer />', () => {
 
     renderOfferPage({ mockOffer: offerResponseSnap })
 
-    await waitFor(() => expect(screen.getByTestId('animated-icon-like')).toBeOnTheScreen())
+    expect(await screen.findByLabelText('Réagir à cette offre')).toBeOnTheScreen()
   })
 
   it('should not display reaction button in header if booking has been cancelled', async () => {
@@ -162,7 +162,9 @@ describe('<Offer />', () => {
 
     await screen.findByTestId('offerv2-container')
 
-    await waitFor(() => expect(screen.queryByTestId('animated-icon-like')).not.toBeOnTheScreen())
+    await waitFor(() =>
+      expect(screen.queryByLabelText('Réagir à cette offre')).not.toBeOnTheScreen()
+    )
   })
 
   it('should not display reaction button in header when user is anonymous (not logged in)', async () => {
@@ -170,7 +172,9 @@ describe('<Offer />', () => {
 
     renderOfferPage({ mockOffer: offerResponseSnap })
 
-    await waitFor(() => expect(screen.queryByTestId('animated-icon-like')).not.toBeOnTheScreen())
+    await waitFor(() =>
+      expect(screen.queryByLabelText('Réagir à cette offre')).not.toBeOnTheScreen()
+    )
   })
 
   it('should open reaction modal when press on reaction button in header', async () => {
@@ -192,7 +196,7 @@ describe('<Offer />', () => {
 
     await screen.findByTestId('offerv2-container')
 
-    const reactionButton = await screen.findByTestId('animated-icon-like')
+    const reactionButton = await screen.findByLabelText('Réagir à cette offre')
 
     await user.press(reactionButton)
 

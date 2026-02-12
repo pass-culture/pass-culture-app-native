@@ -3,9 +3,8 @@ import { styled, useTheme } from 'styled-components/native'
 
 import { PlayerPreview } from 'features/home/components/modules/video/PlayerPreview/PlayerPreview'
 import { Duration } from 'features/offer/types'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Parameters } from 'ui/svg/icons/Parameters'
 import { Typo } from 'ui/theme'
 
@@ -28,7 +27,7 @@ export const GatedVideoSection = ({
   onManageCookiesPress,
   onVideoConsentPress,
 }: Props) => {
-  const { designSystem, isDesktopViewport } = useTheme()
+  const { isDesktopViewport } = useTheme()
 
   return (
     <Container gap={4} width={width}>
@@ -44,17 +43,20 @@ export const GatedVideoSection = ({
         En visionnant cette vidéo, tu t’engages à accepter les cookies liés à Youtube.
       </Typo.BodyAccentS>
       <ButtonContainer gap={2} isHorizontal={isDesktopViewport}>
-        <ButtonSecondary
+        <Button
           wording="Voir la vidéo"
-          color={designSystem.color.text.default}
-          mediumWidth={isDesktopViewport}
           onPress={onVideoConsentPress}
+          variant="secondary"
+          color="neutral"
+          fullWidth
         />
-        <ButtonTertiaryBlack
+        <Button
           wording="Gérer mes cookies"
-          mediumWidth={isDesktopViewport}
+          variant="tertiary"
+          color="neutral"
           icon={Parameters}
           onPress={onManageCookiesPress}
+          fullWidth
         />
       </ButtonContainer>
     </Container>

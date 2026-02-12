@@ -8,7 +8,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, userEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 
 import { OfferHeader } from '../OfferHeader/OfferHeader'
@@ -34,7 +34,7 @@ describe('<OfferHeader />', () => {
     renderOfferHeader()
 
     expect(screen.getByLabelText('Revenir en arrière')).toBeOnTheScreen()
-    expect(screen.getByTestId('animated-icon-share')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Partager')).toBeOnTheScreen()
   })
 
   it('should render basic icons + optional icons', async () => {
@@ -43,21 +43,14 @@ describe('<OfferHeader />', () => {
         offerId={123}
         addFavorite={jest.fn()}
         isAddFavoriteLoading
-        animationState={{
-          iconBackgroundColor: {} as Animated.AnimatedInterpolation<string>,
-          iconBorderColor: {} as Animated.AnimatedInterpolation<string>,
-          transition: {
-            interpolate: jest.fn(),
-          } as unknown as Animated.AnimatedInterpolation<number>,
-        }}
         removeFavorite={jest.fn()}
         isRemoveFavoriteLoading={false}
       />
     )
 
     expect(screen.getByLabelText('Revenir en arrière')).toBeOnTheScreen()
-    expect(screen.getByTestId('animated-icon-share')).toBeOnTheScreen()
-    expect(screen.getByTestId('animated-icon-favorite')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Partager')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Mettre en favori')).toBeOnTheScreen()
   })
 
   it('should goBack when we press on the back button', async () => {

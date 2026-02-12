@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
 import { View } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
 import { ExpandingFlatList } from 'features/offer/components/ExpandingFlatlist/ExpandingFlatList'
@@ -22,7 +22,7 @@ import {
   useGetVenuesByDay,
 } from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
 import { useOffersStocksFromOfferQuery } from 'features/offer/queries/useOffersStocksFromOfferQuery'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { Typo } from 'ui/theme'
 
@@ -32,8 +32,6 @@ type Props = {
 }
 
 export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress }) => {
-  const { designSystem } = useTheme()
-
   const { data: offers, isLoading } = useOffersStocksFromOfferQuery(offer)
   const { selectedDate, dates } = useMovieCalendar()
   const { movieOffers, hasStocksOnlyAfter15Days } = useGetVenuesByDay(selectedDate, offers.offers)
@@ -68,12 +66,13 @@ export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress }) => {
       {hasReachedEnd(movieOffers, displayedLen) ? null : (
         <SeeMoreContainer>
           <Text>Aucune séance ne te correspond&nbsp;?</Text>
-          <ButtonSecondary
-            mediumWidth
+          <Button
             icon={PlainMore}
             wording="Afficher plus de cinémas"
             onPress={() => setDisplayedLen(expandList(movieOffers, displayedLen))}
-            color={designSystem.color.text.default}
+            variant="secondary"
+            color="neutral"
+            fullWidth
           />
         </SeeMoreContainer>
       )}
@@ -85,6 +84,8 @@ const SeeMoreContainer = styled.View(({ theme }) => ({
   alignItems: theme.isMobileViewport ? 'center' : undefined,
   marginTop: theme.designSystem.size.spacing.xl,
   gap: theme.designSystem.size.spacing.l,
+  paddingHorizontal: theme.isMobileViewport ? theme.designSystem.size.spacing.xl : undefined,
+  alignSelf: theme.isDesktopViewport ? 'flex-start' : undefined,
 }))
 
 const Text = styled(Typo.Body)(({ theme }) => ({

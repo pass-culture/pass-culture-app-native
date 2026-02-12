@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, useCallback } from 'react'
 import { Animated } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
 import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
@@ -8,11 +8,11 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics/provider'
-import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
-import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
+import { Share } from 'ui/svg/icons/Share'
 
 type OfferHeaderProps = PropsWithChildren<{
   headerTransition: Animated.AnimatedInterpolation<string | number>
@@ -29,8 +29,6 @@ export function OfferHeader({
   offer,
   children,
 }: Readonly<OfferHeaderProps>) {
-  const theme = useTheme()
-
   const {
     visible: shareOfferModalVisible,
     showModal: showShareOfferModal,
@@ -44,11 +42,9 @@ export function OfferHeader({
     utmMedium: 'header',
   })
 
-  const { animationState } = getAnimationState(theme, headerTransition)
-
   const pressShareOffer = useCallback(() => {
-    analytics.logShare({ type: 'Offer', from: 'offer', offerId: offer.id })
-    shareOffer()
+    void analytics.logShare({ type: 'Offer', from: 'offer', offerId: offer.id })
+    void shareOffer()
     showShareOfferModal()
   }, [offer.id, shareOffer, showShareOfferModal])
 
@@ -61,12 +57,13 @@ export function OfferHeader({
         onBackPress={goBack}
         RightElement={
           <ButtonsWrapper gap={3}>
-            <RoundedButton
-              animationState={animationState}
-              iconName="share"
+            <Button
+              iconButton
+              icon={Share}
               onPress={pressShareOffer}
               accessibilityLabel="Partager"
-              finalColor={theme.designSystem.color.icon.default}
+              variant="secondary"
+              color="neutral"
             />
             {children}
           </ButtonsWrapper>
