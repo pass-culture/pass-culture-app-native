@@ -403,6 +403,7 @@ const OnlineProfile: React.FC = () => {
                     <ButtonContainerFlexStart>
                       <InternalTouchableLink
                         as={Button}
+                        size="small"
                         variant="tertiary"
                         color="neutral"
                         wording="Débuggage"

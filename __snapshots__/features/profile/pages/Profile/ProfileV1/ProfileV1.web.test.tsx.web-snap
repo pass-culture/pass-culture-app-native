@@ -81,6 +81,31 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
   cursor: initial;
 }
 
+.c6 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c6:disabled {
+  cursor: initial;
+}
+
 .c2 {
   border: none;
   cursor: pointer;
@@ -928,48 +953,66 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-flexWrap-1w6e6rj r-gap-f4gmv6 r-justifyContent-1777fci r-marginInline-1v74nt2"
               >
-                <div
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                  role="link"
-                  style="transition-duration: 0s;"
+                <button
+                  aria-label="Accessibilité : partiellement conforme"
+                  class="c5"
+                  data-testid="Accessibilité : partiellement conforme"
                   tabindex="0"
+                  type="button"
                 >
                   <div
-                    class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
-                    dir="ltr"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                   >
-                    Accessibilité : partiellement conforme
+                    <div
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      dir="ltr"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                    >
+                      Accessibilité : partiellement conforme
+                    </div>
                   </div>
-                </div>
-                <div
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                  role="link"
-                  style="transition-duration: 0s;"
+                </button>
+                <button
+                  aria-label="Plan du site"
+                  class="c5"
+                  data-testid="Plan du site"
                   tabindex="0"
+                  type="button"
                 >
                   <div
-                    class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
-                    dir="ltr"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                   >
-                    Plan du site
+                    <div
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      dir="ltr"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                    >
+                      Plan du site
+                    </div>
                   </div>
-                </div>
-                <div
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                  role="link"
-                  style="transition-duration: 0s;"
+                </button>
+                <button
+                  aria-label="Informations légales"
+                  class="c5"
+                  data-testid="Informations légales"
                   tabindex="0"
+                  type="button"
                 >
                   <div
-                    class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
-                    dir="ltr"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                   >
-                    Informations légales
+                    <div
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      dir="ltr"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                    >
+                      Informations légales
+                    </div>
                   </div>
-                </div>
+                </button>
                 <a
                   aria-label="CGU utilisateurs"
-                  class="c5"
+                  class="c6"
                   data-testid="CGU utilisateurs"
                   href="https://passculture.cgu"
                   tabindex="0"
@@ -996,7 +1039,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                       </div>
                     </div>
                     <div
-                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
                       style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
@@ -1006,7 +1049,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 </a>
                 <a
                   aria-label="Charte des données personnelles"
-                  class="c5"
+                  class="c6"
                   data-testid="Charte des données personnelles"
                   href="https://passculture.privacy"
                   tabindex="0"
@@ -1033,7 +1076,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                       </div>
                     </div>
                     <div
-                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
                       style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
@@ -1150,6 +1193,31 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
 }
 
 .c5:disabled {
+  cursor: initial;
+}
+
+.c6 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c6:disabled {
   cursor: initial;
 }
 
@@ -1998,50 +2066,68 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 </div>
               </div>
               <div
-                class="css-view-175oi2r r-flexDirection-eqz5dr r-flexWrap-1w6e6rj r-gap-f4gmv6 r-justifyContent-1777fci r-marginInline-1j93nrh"
+                class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-flexWrap-1w6e6rj r-gap-f4gmv6 r-justifyContent-1777fci r-marginInline-1j93nrh"
               >
-                <div
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                  role="link"
-                  style="transition-duration: 0s;"
+                <button
+                  aria-label="Accessibilité : partiellement conforme"
+                  class="c5"
+                  data-testid="Accessibilité : partiellement conforme"
                   tabindex="0"
+                  type="button"
                 >
                   <div
-                    class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
-                    dir="ltr"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                   >
-                    Accessibilité : partiellement conforme
+                    <div
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      dir="ltr"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                    >
+                      Accessibilité : partiellement conforme
+                    </div>
                   </div>
-                </div>
-                <div
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                  role="link"
-                  style="transition-duration: 0s;"
+                </button>
+                <button
+                  aria-label="Plan du site"
+                  class="c5"
+                  data-testid="Plan du site"
                   tabindex="0"
+                  type="button"
                 >
                   <div
-                    class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
-                    dir="ltr"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                   >
-                    Plan du site
+                    <div
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      dir="ltr"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                    >
+                      Plan du site
+                    </div>
                   </div>
-                </div>
-                <div
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                  role="link"
-                  style="transition-duration: 0s;"
+                </button>
+                <button
+                  aria-label="Informations légales"
+                  class="c5"
+                  data-testid="Informations légales"
                   tabindex="0"
+                  type="button"
                 >
                   <div
-                    class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
-                    dir="ltr"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                   >
-                    Informations légales
+                    <div
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      dir="ltr"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                    >
+                      Informations légales
+                    </div>
                   </div>
-                </div>
+                </button>
                 <a
                   aria-label="CGU utilisateurs"
-                  class="c5"
+                  class="c6"
                   data-testid="CGU utilisateurs"
                   href="https://passculture.cgu"
                   tabindex="0"
@@ -2068,7 +2154,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                       </div>
                     </div>
                     <div
-                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
                       style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
@@ -2078,7 +2164,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 </a>
                 <a
                   aria-label="Charte des données personnelles"
-                  class="c5"
+                  class="c6"
                   data-testid="Charte des données personnelles"
                   href="https://passculture.privacy"
                   tabindex="0"
@@ -2105,7 +2191,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                       </div>
                     </div>
                     <div
-                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
                       style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >

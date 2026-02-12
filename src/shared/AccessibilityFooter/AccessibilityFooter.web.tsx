@@ -3,6 +3,7 @@ import styledWeb from 'styled-components'
 import styled from 'styled-components/native'
 
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -12,7 +13,7 @@ import { Button } from 'ui/designSystem/Button/Button'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 export type AccessibilityFooterProps = {
   withHorizontalMargin?: boolean
@@ -26,34 +27,52 @@ export const AccessibilityFooter = ({ withHorizontalMargin = false }: Accessibil
         <ColoredPassCultureLogo />
       </LogoContainer>
       <LinksContainer gap={4}>
-        <InternalTouchableLink navigateTo={getProfilePropConfig('Accessibility')}>
-          <StyledBodyAccentXs>Accessibilité&nbsp;: partiellement conforme</StyledBodyAccentXs>
-        </InternalTouchableLink>
-        <InternalTouchableLink navigateTo={getProfilePropConfig('SiteMapScreen')}>
-          <StyledBodyAccentXs>Plan du site</StyledBodyAccentXs>
-        </InternalTouchableLink>
-        <InternalTouchableLink navigateTo={getProfilePropConfig('LegalNotices')}>
-          <StyledBodyAccentXs>Informations légales</StyledBodyAccentXs>
-        </InternalTouchableLink>
-        <ExternalTouchableLink
+        <InternalTouchableLink
+          navigateTo={getProfilePropConfig('Accessibility')}
           as={Button}
           variant="tertiary"
           color="neutral"
-          wording="CGU utilisateurs"
-          externalNav={{ url: env.CGU_LINK }}
-          icon={ExternalSiteFilled}
-          justifyContent="flex-start"
-          inline
+          size="small"
+          wording="Accessibilité&nbsp;: partiellement conforme"
+          accessibilityRole={AccessibilityRole.BUTTON}
+        />
+        <InternalTouchableLink
+          navigateTo={getProfilePropConfig('SiteMapScreen')}
+          as={Button}
+          variant="tertiary"
+          color="neutral"
+          size="small"
+          wording="Plan du site"
+          accessibilityRole={AccessibilityRole.BUTTON}
+        />
+        <InternalTouchableLink
+          navigateTo={getProfilePropConfig('LegalNotices')}
+          as={Button}
+          variant="tertiary"
+          color="neutral"
+          size="small"
+          wording="Informations légales"
+          accessibilityRole={AccessibilityRole.BUTTON}
         />
         <ExternalTouchableLink
           as={Button}
           variant="tertiary"
           color="neutral"
+          size="small"
+          wording="CGU utilisateurs"
+          externalNav={{ url: env.CGU_LINK }}
+          icon={ExternalSiteFilled}
+          accessibilityRole={AccessibilityRole.LINK}
+        />
+        <ExternalTouchableLink
+          as={Button}
+          size="small"
+          variant="tertiary"
+          color="neutral"
           wording="Charte des données personnelles"
           externalNav={{ url: env.PRIVACY_POLICY_LINK }}
           icon={ExternalSiteFilled}
-          justifyContent="flex-start"
-          inline
+          accessibilityRole={AccessibilityRole.LINK}
         />
       </LinksContainer>
       <LogoContainer>
@@ -78,7 +97,7 @@ const Container = styled(ViewGap)(({ theme }) => ({
 }))
 
 const LinksContainer = styled(ViewGap)(({ theme }) => ({
-  alignItems: theme.isDesktopViewport ? 'center' : undefined,
+  alignItems: theme.isDesktopViewport ? 'center' : 'flex-start',
   flexDirection: theme.isDesktopViewport ? 'row' : 'column',
   flexWrap: 'wrap',
   justifyContent: 'center',
@@ -93,7 +112,3 @@ const ColoredPassCultureLogo = styled(LogoPassCulture).attrs({
 const LogoContainer = styled.View({
   width: getSpacing(20),
 })
-
-const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.designSystem.color.text.subtle,
-}))
