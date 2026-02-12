@@ -13,7 +13,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 interface Props {
   artists: OfferArtist[]
   isMultiArtistsEnabled?: boolean
-  onPressArtistLink?: () => void
+  onPressArtistLink?: (artists: OfferArtist[]) => void
 }
 
 export const OfferArtists: FunctionComponent<Props> = ({
@@ -52,7 +52,7 @@ export const OfferArtists: FunctionComponent<Props> = ({
               key={line.artists[0]?.id}
               navigateTo={{ screen: 'Artist' }}
               enableNavigate={false}
-              onBeforeNavigate={onPressArtistLink}
+              onBeforeNavigate={() => onPressArtistLink(line.artists)}
               accessibilityLabel={
                 artistsNames.length === 1
                   ? `Accéder à la page de ${artistsLabel}`

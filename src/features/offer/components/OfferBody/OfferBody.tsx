@@ -3,7 +3,7 @@ import React, { FunctionComponent, ReactNode, useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryIdEnum, OfferResponseV2 } from 'api/gen'
+import { CategoryIdEnum, OfferArtist, OfferResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -48,7 +48,7 @@ type Props = {
   children: ReactNode
   chronicleVariantInfo: ChronicleVariantInfo
   onVideoConsentPress: () => void
-  onShowOfferArtistsModal: () => void
+  onShowOfferArtistsModal: (artists: OfferArtist[]) => void
   likesCount?: number
   chroniclesCount?: number | null
   distance?: string | null
@@ -129,21 +129,24 @@ export const OfferBody: FunctionComponent<Props> = ({
   const shouldDisplayAboutSection =
     shouldDisplayAccessibilitySection || !!offer.description || hasMetadata
 
-  const handleArtistLinkPress = () => {
-    if (!artists[0]) return
+  const handleArtistLinkPress = (artists: OfferArtist[]) => {
+    if (artists.length === 0) return
 
     if (artists.length === 1) {
-      void analytics.logConsultArtist({
-        offerId: offer.id.toString(),
-        artistId: artists[0].id,
-        artistName: artists[0].name,
-        from: 'offer',
-      })
-      navigate('Artist', { id: artists[0].id })
+      const artist = artists[0]
+      if (artist) {
+        void analytics.logConsultArtist({
+          offerId: offer.id.toString(),
+          artistId: artist.id,
+          artistName: artist.name,
+          from: 'offer',
+        })
+        navigate('Artist', { id: artist.id })
+      }
       return
     }
 
-    onShowOfferArtistsModal()
+    onShowOfferArtistsModal(artists)
   }
 
   const handleManageCookiesPress = () => {

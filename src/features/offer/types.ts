@@ -4,6 +4,7 @@ import { Animated } from 'react-native'
 import {
   CategoryIdEnum,
   FavoriteResponse,
+  OfferArtist,
   OfferResponseV2,
   ReactionTypeEnum,
   RecommendationApiParams,
@@ -82,7 +83,7 @@ export type OfferContentProps = {
   chronicleVariantInfo: ChronicleVariantInfo
   subcategory: Subcategory
   onShowChroniclesWritersModal: () => void
-  onShowOfferArtistsModal: () => void
+  onShowOfferArtistsModal: (artists: OfferArtist[]) => void
   chronicles?: ChronicleCardData[]
   headlineOffersCount?: number
   defaultReaction?: ReactionTypeEnum | null
