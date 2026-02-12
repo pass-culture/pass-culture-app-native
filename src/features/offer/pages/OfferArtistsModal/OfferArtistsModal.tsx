@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import { styled, useTheme } from 'styled-components/native'
 
+import { OfferArtist } from 'api/gen'
 import { OfferArtistItem } from 'features/offer/components/OfferArtistItem/OfferArtistItem'
-import { OfferArtist } from 'features/offer/types'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Separator } from 'ui/components/Separator'
