@@ -150,6 +150,33 @@ describe('<CategoriesModal/>', () => {
       expect(defaultCategoryFilterRadioButton).toBeChecked()
     })
 
+    it('should not navigate to native categories view when selecting a category without subcategories', async () => {
+      renderCategories()
+
+      await user.press(screen.getByText('Cartes jeunes'))
+
+      expect(screen.getByText(ALL_CATEGORIES_LABEL)).toBeOnTheScreen()
+    })
+
+    it('should set search state when selecting a category without subcategories and pressing search', async () => {
+      renderCategories()
+
+      await user.press(screen.getByText('Cartes jeunes'))
+      await user.press(screen.getByText('Rechercher'))
+
+      const expectedSearchParams: SearchState = {
+        ...searchState,
+        offerCategories: [SearchGroupNameEnumv2.CARTES_JEUNES],
+        offerNativeCategories: [],
+        offerGenreTypes: [],
+      }
+
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expectedSearchParams,
+      })
+    })
+
     describe('should close the modal', () => {
       it('when pressing the search button', async () => {
         renderCategories()

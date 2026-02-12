@@ -21,6 +21,7 @@ import {
   MappedNativeCategories,
   createMappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
+import { itemHasChildren } from 'features/search/helpers/categoriesSectionHelpers/categoriesSectionHelpers'
 import { NativeCategoryEnum, SearchState } from 'features/search/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
@@ -91,7 +92,7 @@ export const CategoriesModal = ({
         setValue('genreType', null)
       }
 
-      if (tree[categoryKey]?.children) {
+      if (itemHasChildren(tree[categoryKey])) {
         setValue('currentView', CategoriesModalView.NATIVE_CATEGORIES)
       }
     },
@@ -108,7 +109,7 @@ export const CategoriesModal = ({
         setValue('genreType', null)
       }
 
-      if (nativeCategoryKey && nativeCategories[nativeCategoryKey]?.children) {
+      if (nativeCategoryKey && itemHasChildren(nativeCategories[nativeCategoryKey])) {
         setValue('currentView', CategoriesModalView.GENRES)
       }
     },
@@ -286,7 +287,6 @@ export const CategoriesModal = ({
             allLabel="Tout"
             value={genreType}
             descriptionContext={descriptionContext}
-            onSubmit={handleSubmit(handleSearchPress)}
           />
         ) : null}
       </Form.MaxWidth>
