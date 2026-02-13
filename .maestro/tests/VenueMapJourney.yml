@@ -3,6 +3,8 @@ tags:
   - nightlyIOS
   - local
   - squad-decouverte
+onFlowStart:
+  - runScript: subFolder/commons/wording.js
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
 - runFlow: subFolder/cookies/AcceptCookies.yml
