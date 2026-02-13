@@ -537,79 +537,155 @@ exports[`ThematicHome should render correctly 1`] = `
       >
         <View>
           <View
-            accessibilityLabel="Suivre le thème"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            onLayout={[Function]}
             style={
               {
-                "alignItems": "center",
                 "alignSelf": "flex-start",
-                "backgroundColor": "#ffffff",
-                "borderBottomLeftRadius": 24,
-                "borderBottomRightRadius": 24,
-                "borderColor": "#90949d",
-                "borderTopLeftRadius": 24,
-                "borderTopRightRadius": 24,
-                "borderWidth": 2,
-                "flexDirection": "row",
-                "height": "auto",
-                "justifyContent": "center",
-                "opacity": 1,
-                "paddingHorizontal": 12,
-                "paddingVertical": 4,
-                "userSelect": "auto",
-                "width": "auto",
+                "position": "relative",
               }
             }
-            testID="Suivre le thème"
           >
             <View
-              height={24}
-              width={24}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
+              accessibilityLabel="Suivre le thème"
+              accessibilityRole="button"
+              accessibilityState={
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginLeft": 8,
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#90949d",
+                  "borderStyle": "solid",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
+                  "userSelect": "auto",
+                  "width": "auto",
+                }
+              }
+              testID="Suivre le thème"
             >
-              Suivre
-            </Text>
+              <View
+                gap={8}
+                hasIcon={true}
+                isMultiline={false}
+                style={
+                  {
+                    "alignItems": "center",
+                    "columnGap": 8,
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <View
+                  collapsable={false}
+                  jestAnimatedProps={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestAnimatedStyle={
+                    {
+                      "value": {
+                        "transform": [
+                          {
+                            "rotate": "0deg",
+                          },
+                        ],
+                      },
+                    }
+                  }
+                  jestInlineStyle={
+                    [
+                      {
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
+                  nativeID="1"
+                  style={
+                    [
+                      {
+                        "flexShrink": 0,
+                      },
+                      {
+                        "transform": [
+                          {
+                            "rotate": "0deg",
+                          },
+                        ],
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={14}
+                    width={14}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 14,
+                      },
+                      {
+                        "color": "#161617",
+                        "flexBasis": undefined,
+                        "flexGrow": undefined,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": undefined,
+                      },
+                    ]
+                  }
+                >
+                  Suivre
+                </Text>
+              </View>
+            </View>
           </View>
         </View>
       </View>
