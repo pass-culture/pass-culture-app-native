@@ -1,11 +1,18 @@
 import { useEffect } from 'react'
 
+import { BannerName } from 'api/gen'
 import { useBannerQuery } from 'features/home/queries/useBannerQuery'
 import { GeolocPermissionState, useLocation } from 'libs/location/location'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
 
-export function useActivationBanner() {
+export type ActivationBanner = {
+  title?: string
+  text?: string
+  name?: BannerName
+}
+
+export const useActivationBanner = (): { banner: ActivationBanner } => {
   const { shouldBeOverriden, amount: overriddenAmount } = useOverrideCreditActivationAmount()
   const { permissionState } = useLocation()
 
