@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useGoogleLogin } from 'libs/react-native-google-sso/useGoogleLogin'
+import { loginToGoogle } from 'libs/react-native-google-sso/loginToGoogle'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Google } from 'ui/svg/icons/socialNetwork/Google'
 
@@ -16,11 +16,12 @@ type Props = {
   }) => void
 }
 
-export const SSOButtonBase = ({ type, onSuccess }: Props) => {
-  const googleLogin = useGoogleLogin({
-    onSuccess: ({ code, state = '' }) =>
-      onSuccess({ authorizationCode: code, oauthStateToken: state }),
-  })
+export const SSOButtonBase: FC<Props> = ({ type, onSuccess }) => {
+  const handleLogin = async () =>
+    loginToGoogle({
+      onSuccess: ({ code, state = '' }) =>
+        onSuccess({ authorizationCode: code, oauthStateToken: state }),
+    })
 
   const buttonWording = `${type === 'login' ? 'Se connecter' : 'S’inscrire'} avec Google`
 
@@ -29,7 +30,7 @@ export const SSOButtonBase = ({ type, onSuccess }: Props) => {
       accessibilityRole={AccessibilityRole.BUTTON}
       wording={buttonWording}
       icon={Google}
-      onPress={googleLogin}
+      onPress={handleLogin}
       variant="secondary"
       fullWidth
       color="neutral"

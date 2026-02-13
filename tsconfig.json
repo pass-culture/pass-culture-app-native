@@ -34,6 +34,13 @@
     "removeComments": true,
     "downlevelIteration": true
   },
+  "files": [
+    "node_modules/@types/google.accounts/index.d.ts"
+  ],
+  "include": [
+    "src/**/*",
+    "node_modules/@types/google.accounts/index.d.ts"
+  ],
   "exclude": [
     "build/**",
     "dist/**",
