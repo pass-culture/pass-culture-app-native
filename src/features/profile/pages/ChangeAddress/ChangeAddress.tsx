@@ -5,10 +5,10 @@ import styled from 'styled-components/native'
 
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spinner } from 'ui/components/Spinner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
@@ -88,7 +88,7 @@ export const ChangeAddress = () => {
         </React.Fragment>
       }
       fixedBottomChildren={
-        <ButtonPrimary
+        <Button
           type="submit"
           onPress={handleSubmit(onSubmit)}
           wording={buttonWording}

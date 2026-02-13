@@ -57,7 +57,9 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
         />
       </ButtonContainerFlexStart>
       <StyledView
-        marginBottom={additionalCTA ? designSystem.size.spacing.s : designSystem.size.spacing.xl}>
+        marginBottom={
+          additionalCTA ? designSystem.size.spacing.xxxl : designSystem.size.spacing.xl
+        }>
         {additionalCTA}
       </StyledView>
       {isMailAppAvailable ? <OpenInboxButton onAdditionalPress={openInBoxAnalytics} /> : null}

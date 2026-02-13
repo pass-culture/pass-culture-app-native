@@ -32,7 +32,7 @@ export const UnsubscribingConfirmationModal: FunctionComponent<Props> = ({
       <StyledBody>
         {`Tu ne recevras plus toutes les dernières offres et l’actu liées au thème "${mapSubscriptionThemeToName[theme]}".`}
       </StyledBody>
-      <StyledButtonContainer gap={2}>
+      <StyledButtonContainer gap={4}>
         <Button wording="Ne plus suivre ce thème" onPress={onUnsubscribePress} fullWidth />
         <Button
           wording="Annuler"

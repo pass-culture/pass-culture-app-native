@@ -21,9 +21,8 @@ import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SuggestedCity } from 'libs/place/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Again } from 'ui/svg/icons/Again'
 
@@ -175,13 +174,15 @@ export const ProfileInformationValidationCreate = () => {
       }
       fixedBottomChildren={
         <ViewGap gap={4}>
-          <ButtonPrimary
+          <Button
             type="submit"
             wording="Continuer"
             onPress={onSubmitProfile}
             isLoading={isLoading}
           />
-          <ButtonTertiaryBlack
+          <Button
+            variant="tertiary"
+            color="neutral"
             wording="Modifier mes informations"
             onPress={onChangeInformation}
             icon={Again}

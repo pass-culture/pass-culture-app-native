@@ -11,10 +11,10 @@ import { useChangeEmailSetPasswordMutation } from 'features/profile/queries/useC
 import { eventMonitoring } from 'libs/monitoring/services'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { newPasswordSchema } from 'shared/forms/schemas/newPasswordSchema'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Typo } from 'ui/theme'
@@ -100,7 +100,7 @@ export const ChangeEmailSetPassword = () => {
             />
           </Container>
           <Container>
-            <ButtonPrimary
+            <Button
               wording="Créer mon mot de passe"
               disabled={!isValid}
               isLoading={isPending}

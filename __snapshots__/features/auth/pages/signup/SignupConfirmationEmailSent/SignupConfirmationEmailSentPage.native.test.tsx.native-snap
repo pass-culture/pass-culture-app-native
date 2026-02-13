@@ -431,10 +431,10 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
           </View>
         </View>
         <View
-          marginBottom={8}
+          marginBottom={40}
           style={
             {
-              "marginBottom": 8,
+              "marginBottom": 40,
             }
           }
         >

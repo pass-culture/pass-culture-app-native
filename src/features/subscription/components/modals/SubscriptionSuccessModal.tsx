@@ -32,7 +32,7 @@ export const SubscriptionSuccessModal: FunctionComponent<Props> = ({
       hideModal={dismissModal}>
       <StyledBody>{mapSubscriptionThemeToDescription[theme]}</StyledBody>
       <StyledBodyAccentXs>Tu pourras gérer tes alertes depuis ton profil.</StyledBodyAccentXs>
-      <StyledButtonContainer gap={3}>
+      <StyledButtonContainer gap={4}>
         <Button fullWidth wording="Continuer sur l’app" onPress={dismissModal} />
         <InternalTouchableLink
           as={Button}
