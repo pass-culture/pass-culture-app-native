@@ -8,7 +8,6 @@ import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
 import { AnimationObject, LottieColoringMode } from 'ui/animations/type'
-import { ButtonTertiaryNeutralInfo } from 'ui/components/buttons/ButtonTertiaryNeutralInfo'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -357,11 +356,12 @@ const ButtonContainer = styled(ViewGap)<{ isLandscape: boolean }>(({ isLandscape
 const SkipButton = ({ withSkipAction }: { withSkipAction?: () => void }) => {
   if (withSkipAction) {
     return (
-      <ButtonTertiaryNeutralInfo
+      <Button
         wording="Passer"
         accessibilityLabel="Passer à la page suivante"
         onPress={withSkipAction}
-        inline
+        variant="tertiary"
+        color="neutral"
       />
     )
   }
