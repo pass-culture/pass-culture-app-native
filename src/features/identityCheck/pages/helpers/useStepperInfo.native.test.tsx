@@ -8,18 +8,12 @@ import {
 } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
-import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
 import { setSettingsMock } from 'tests/settings/mockSettings'
 
 const mockIdentityCheckState = mockState
-const mockRemainingAttempts = {
-  remainingAttempts: 5,
-  counterResetDatetime: 'time',
-  isLastAttempt: false,
-}
 
 jest.mock('features/auth/context/AuthContext')
 
@@ -48,12 +42,6 @@ const mockUseGetStepperInfo = (
     subtitle: 'Subtitle',
   },
 })
-
-jest.mock('features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery')
-
-const mockUsePhoneValidationRemainingAttempts = (
-  usePhoneValidationRemainingAttemptsQuery as jest.Mock
-).mockReturnValue(mockRemainingAttempts)
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({
@@ -180,48 +168,6 @@ describe('useStepperInfo', () => {
       )
 
       expect(phoneValidationStep?.firstScreen).toEqual('SetPhoneNumberWithoutValidation')
-    })
-
-    it('should return "PhoneValidationTooManySMSSent" if no remaining attempts left', () => {
-      mockUseGetStepperInfo.mockReturnValueOnce({
-        data: {
-          subscriptionStepsToDisplay:
-            mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
-        },
-      })
-      mockUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
-        remainingAttempts: 0,
-        counterResetDatetime: 'time',
-        isLastAttempt: false,
-      })
-
-      const { stepsDetails } = useStepperInfo()
-      const phoneValidationStep = stepsDetails.find(
-        (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
-      )
-
-      expect(phoneValidationStep?.firstScreen).toEqual('PhoneValidationTooManySMSSent')
-    })
-
-    it('should not include only PhoneValidationTooManySMSSent if remaining attempts left', () => {
-      mockUseGetStepperInfo.mockReturnValueOnce({
-        data: {
-          subscriptionStepsToDisplay:
-            mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
-        },
-      })
-      mockUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
-        remainingAttempts: 1,
-        counterResetDatetime: 'time',
-        isLastAttempt: false,
-      })
-      const { stepsDetails } = useStepperInfo()
-
-      const phoneValidationStep = stepsDetails.find(
-        (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
-      )
-
-      expect(phoneValidationStep?.firstScreen).toEqual('SetPhoneNumber')
     })
   })
 
