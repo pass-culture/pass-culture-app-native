@@ -3,7 +3,6 @@ import { Animated } from 'react-native'
 
 import { SubscribeButtonWithModals } from 'features/home/components/SubscribeButtonWithModals'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
-import { ToggleButtonSize } from 'ui/components/buttons/ToggleButton'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 
 type Props = {
@@ -53,7 +52,7 @@ export const ThematicHomeHeader: FunctionComponent<Props> = ({
           <React.Fragment>
             {showSmallSubscriptionButton ? (
               <Animated.View style={{ opacity: smallSubscribeButtonOpacity }}>
-                <SubscribeButtonWithModals homeId={homeId} size={ToggleButtonSize.SMALL} />
+                <SubscribeButtonWithModals homeId={homeId} size="small" />
               </Animated.View>
             ) : (
               <Animated.View style={{ opacity: mediumSubscriptionButtonOpacity }}>

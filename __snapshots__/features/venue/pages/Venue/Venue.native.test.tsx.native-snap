@@ -2173,21 +2173,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 width={160}
                               >
                                 <View
-                                  numberOfSpaces={2}
-                                  style={
-                                    {
-                                      "height": 8,
-                                    }
-                                  }
-                                />
-                                <View
                                   accessibilityLabel="En voir plus"
                                   accessibilityRole="button"
                                   accessibilityState={
                                     {
                                       "busy": undefined,
                                       "checked": undefined,
-                                      "disabled": undefined,
+                                      "disabled": false,
                                       "expanded": undefined,
                                       "selected": undefined,
                                     }
@@ -2213,91 +2205,95 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   style={
                                     {
                                       "alignItems": "center",
+                                      "backgroundColor": "transparent",
+                                      "borderBottomLeftRadius": 8,
+                                      "borderBottomRightRadius": 8,
+                                      "borderTopLeftRadius": 8,
+                                      "borderTopRightRadius": 8,
+                                      "borderWidth": 0,
+                                      "flexDirection": "row",
+                                      "justifyContent": "center",
                                       "opacity": 1,
+                                      "paddingBottom": 0,
+                                      "paddingLeft": 0,
+                                      "paddingRight": 0,
+                                      "paddingTop": 0,
                                       "userSelect": "auto",
+                                      "width": "auto",
                                     }
                                   }
                                   testID="En voir plus"
                                 >
                                   <View
+                                    gap={8}
+                                    hasIcon={true}
+                                    isMultiline={false}
                                     style={
                                       {
-                                        "flexDirection": "row",
-                                      }
-                                    }
-                                  >
-                                    <View
-                                      numberOfSpaces={16}
-                                      style={
-                                        {
-                                          "width": 64,
-                                        }
-                                      }
-                                    />
-                                    <View
-                                      style={
-                                        {
-                                          "alignItems": "center",
-                                          "aspectRatio": 1,
-                                          "backgroundColor": "#ffffff",
-                                          "borderBottomLeftRadius": 32,
-                                          "borderBottomRightRadius": 32,
-                                          "borderColor": "#90949d",
-                                          "borderStyle": "solid",
-                                          "borderTopLeftRadius": 32,
-                                          "borderTopRightRadius": 32,
-                                          "borderWidth": 1,
-                                          "height": 64,
-                                          "justifyContent": "center",
-                                          "width": 64,
-                                        }
-                                      }
-                                    >
-                                      <View
-                                        height={32}
-                                        width={32}
-                                      >
-                                        <Text>
-                                          undefined-SVG-Mock
-                                        </Text>
-                                      </View>
-                                    </View>
-                                    <View
-                                      numberOfSpaces={16}
-                                      style={
-                                        {
-                                          "width": 64,
-                                        }
-                                      }
-                                    />
-                                  </View>
-                                  <View
-                                    numberOfSpaces={2}
-                                    style={
-                                      {
-                                        "height": 8,
-                                      }
-                                    }
-                                  />
-                                  <View
-                                    style={
-                                      {
+                                        "alignItems": "center",
+                                        "columnGap": 8,
                                         "flexDirection": "row",
                                       }
                                     }
                                   >
                                     <Text
                                       style={
-                                        {
-                                          "color": "#6123df",
-                                          "fontFamily": "Montserrat-SemiBold",
-                                          "fontSize": 16,
-                                          "lineHeight": 25.6,
-                                        }
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-SemiBold",
+                                            "fontSize": 16,
+                                            "lineHeight": 22,
+                                          },
+                                          {
+                                            "color": "#161617",
+                                            "flexBasis": undefined,
+                                            "flexGrow": undefined,
+                                            "flexShrink": 1,
+                                            "maxWidth": "100%",
+                                            "minWidth": 0,
+                                            "textAlign": undefined,
+                                          },
+                                        ]
                                       }
                                     >
                                       En voir plus
                                     </Text>
+                                    <View
+                                      collapsable={false}
+                                      jestAnimatedProps={
+                                        {
+                                          "value": {},
+                                        }
+                                      }
+                                      jestAnimatedStyle={
+                                        {
+                                          "value": {},
+                                        }
+                                      }
+                                      jestInlineStyle={
+                                        {
+                                          "flexShrink": 0,
+                                        }
+                                      }
+                                      nativeID="4"
+                                      style={
+                                        [
+                                          {
+                                            "flexShrink": 0,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      <View
+                                        height={22}
+                                        width={22}
+                                      >
+                                        <Text>
+                                          undefined-SVG-Mock
+                                        </Text>
+                                      </View>
+                                    </View>
                                   </View>
                                 </View>
                               </View>
@@ -2526,7 +2522,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             },
                           ]
                         }
-                        nativeID="4"
+                        nativeID="5"
                         style={
                           [
                             {
@@ -3297,7 +3293,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="5"
+            nativeID="6"
             style={
               [
                 {
@@ -3439,7 +3435,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="6"
+            nativeID="7"
             style={
               [
                 {
@@ -3568,7 +3564,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="7"
+            nativeID="8"
             style={
               [
                 {
@@ -3962,7 +3958,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             "flexShrink": 0,
                           }
                         }
-                        nativeID="19"
+                        nativeID="21"
                         style={
                           [
                             {
@@ -4094,7 +4090,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             "flexShrink": 0,
                           }
                         }
-                        nativeID="20"
+                        nativeID="22"
                         style={
                           [
                             {
@@ -4172,7 +4168,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               "reduceMotionV": "system",
             }
           }
-          nativeID="21"
+          nativeID="23"
         >
           <View
             gap={6}
@@ -4908,7 +4904,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     "flexShrink": 0,
                                   }
                                 }
-                                nativeID="22"
+                                nativeID="24"
                                 style={
                                   [
                                     {
@@ -5799,21 +5795,13 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 width={160}
                               >
                                 <View
-                                  numberOfSpaces={2}
-                                  style={
-                                    {
-                                      "height": 8,
-                                    }
-                                  }
-                                />
-                                <View
                                   accessibilityLabel="En voir plus"
                                   accessibilityRole="button"
                                   accessibilityState={
                                     {
                                       "busy": undefined,
                                       "checked": undefined,
-                                      "disabled": undefined,
+                                      "disabled": false,
                                       "expanded": undefined,
                                       "selected": undefined,
                                     }
@@ -5839,91 +5827,95 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   style={
                                     {
                                       "alignItems": "center",
+                                      "backgroundColor": "transparent",
+                                      "borderBottomLeftRadius": 8,
+                                      "borderBottomRightRadius": 8,
+                                      "borderTopLeftRadius": 8,
+                                      "borderTopRightRadius": 8,
+                                      "borderWidth": 0,
+                                      "flexDirection": "row",
+                                      "justifyContent": "center",
                                       "opacity": 1,
+                                      "paddingBottom": 0,
+                                      "paddingLeft": 0,
+                                      "paddingRight": 0,
+                                      "paddingTop": 0,
                                       "userSelect": "auto",
+                                      "width": "auto",
                                     }
                                   }
                                   testID="En voir plus"
                                 >
                                   <View
+                                    gap={8}
+                                    hasIcon={true}
+                                    isMultiline={false}
                                     style={
                                       {
-                                        "flexDirection": "row",
-                                      }
-                                    }
-                                  >
-                                    <View
-                                      numberOfSpaces={16}
-                                      style={
-                                        {
-                                          "width": 64,
-                                        }
-                                      }
-                                    />
-                                    <View
-                                      style={
-                                        {
-                                          "alignItems": "center",
-                                          "aspectRatio": 1,
-                                          "backgroundColor": "#ffffff",
-                                          "borderBottomLeftRadius": 32,
-                                          "borderBottomRightRadius": 32,
-                                          "borderColor": "#90949d",
-                                          "borderStyle": "solid",
-                                          "borderTopLeftRadius": 32,
-                                          "borderTopRightRadius": 32,
-                                          "borderWidth": 1,
-                                          "height": 64,
-                                          "justifyContent": "center",
-                                          "width": 64,
-                                        }
-                                      }
-                                    >
-                                      <View
-                                        height={32}
-                                        width={32}
-                                      >
-                                        <Text>
-                                          undefined-SVG-Mock
-                                        </Text>
-                                      </View>
-                                    </View>
-                                    <View
-                                      numberOfSpaces={16}
-                                      style={
-                                        {
-                                          "width": 64,
-                                        }
-                                      }
-                                    />
-                                  </View>
-                                  <View
-                                    numberOfSpaces={2}
-                                    style={
-                                      {
-                                        "height": 8,
-                                      }
-                                    }
-                                  />
-                                  <View
-                                    style={
-                                      {
+                                        "alignItems": "center",
+                                        "columnGap": 8,
                                         "flexDirection": "row",
                                       }
                                     }
                                   >
                                     <Text
                                       style={
-                                        {
-                                          "color": "#6123df",
-                                          "fontFamily": "Montserrat-SemiBold",
-                                          "fontSize": 16,
-                                          "lineHeight": 25.6,
-                                        }
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-SemiBold",
+                                            "fontSize": 16,
+                                            "lineHeight": 22,
+                                          },
+                                          {
+                                            "color": "#161617",
+                                            "flexBasis": undefined,
+                                            "flexGrow": undefined,
+                                            "flexShrink": 1,
+                                            "maxWidth": "100%",
+                                            "minWidth": 0,
+                                            "textAlign": undefined,
+                                          },
+                                        ]
                                       }
                                     >
                                       En voir plus
                                     </Text>
+                                    <View
+                                      collapsable={false}
+                                      jestAnimatedProps={
+                                        {
+                                          "value": {},
+                                        }
+                                      }
+                                      jestAnimatedStyle={
+                                        {
+                                          "value": {},
+                                        }
+                                      }
+                                      jestInlineStyle={
+                                        {
+                                          "flexShrink": 0,
+                                        }
+                                      }
+                                      nativeID="25"
+                                      style={
+                                        [
+                                          {
+                                            "flexShrink": 0,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      <View
+                                        height={22}
+                                        width={22}
+                                      >
+                                        <Text>
+                                          undefined-SVG-Mock
+                                        </Text>
+                                      </View>
+                                    </View>
                                   </View>
                                 </View>
                               </View>
@@ -6152,7 +6144,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             },
                           ]
                         }
-                        nativeID="23"
+                        nativeID="26"
                         style={
                           [
                             {
@@ -6923,7 +6915,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="24"
+            nativeID="27"
             style={
               [
                 {
@@ -7065,7 +7057,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="25"
+            nativeID="28"
             style={
               [
                 {
@@ -7194,7 +7186,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="26"
+            nativeID="29"
             style={
               [
                 {
@@ -7588,7 +7580,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "flexShrink": 0,
                           }
                         }
-                        nativeID="8"
+                        nativeID="9"
                         style={
                           [
                             {
@@ -7720,7 +7712,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "flexShrink": 0,
                           }
                         }
-                        nativeID="9"
+                        nativeID="10"
                         style={
                           [
                             {
@@ -7798,7 +7790,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               "reduceMotionV": "system",
             }
           }
-          nativeID="10"
+          nativeID="11"
         >
           <View
             gap={6}
@@ -8231,7 +8223,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               "flexShrink": 0,
                             }
                           }
-                          nativeID="16"
+                          nativeID="18"
                           style={
                             [
                               {
@@ -8355,7 +8347,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               "flexShrink": 0,
                             }
                           }
-                          nativeID="17"
+                          nativeID="19"
                           style={
                             [
                               {
@@ -8479,7 +8471,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               "flexShrink": 0,
                             }
                           }
-                          nativeID="18"
+                          nativeID="20"
                           style={
                             [
                               {
@@ -9511,7 +9503,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             },
                           ]
                         }
-                        nativeID="12"
+                        nativeID="14"
                         style={
                           [
                             {
@@ -10282,7 +10274,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="13"
+            nativeID="15"
             style={
               [
                 {
@@ -10424,7 +10416,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="14"
+            nativeID="16"
             style={
               [
                 {
@@ -10553,7 +10545,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="15"
+            nativeID="17"
             style={
               [
                 {

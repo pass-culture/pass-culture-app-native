@@ -12,15 +12,15 @@ import { NotificationsLoggedOutModal } from 'features/subscription/Notifications
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { storage } from 'libs/storage'
-import { ToggleButtonSize } from 'ui/components/buttons/ToggleButton'
 import { useModal } from 'ui/components/modals/useModal'
+import type { ButtonSize } from 'ui/designSystem/Button/types'
 import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 import { SubscribeButtonWithTooltip } from './SubscribeButtonWithTooltip'
 
 interface Props {
   homeId: string
-  size?: ToggleButtonSize
+  size?: ButtonSize
 }
 
 export const SubscribeButtonWithModals = ({ homeId, size }: Props) => {
