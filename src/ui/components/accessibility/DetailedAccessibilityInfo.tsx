@@ -60,8 +60,7 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities, acc
           </React.Fragment>
         ))}
       </FlexContainer>
-      <Spacer.Row numberOfSpaces={12} />
-      <FlexContainer>
+      <FlexContainerWithMargin>
         <Spacer.Column numberOfSpaces={2} />
         <Banner
           label="Tu peux retrouver des informations supplémentaires sur l’accessibilité de ce lieu sur le site d’acceslibre."
@@ -73,7 +72,7 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities, acc
             },
           ]}
         />
-      </FlexContainer>
+      </FlexContainerWithMargin>
       <Spacer.Column numberOfSpaces={2} />
     </Container>
   )
@@ -90,6 +89,11 @@ const Container = styled.View(({ theme }) => ({
 const FlexContainer = styled.View(({ theme }) => ({
   ...(theme.isDesktopViewport && {
     flex: 1,
+  }),
+}))
+const FlexContainerWithMargin = styled(FlexContainer)(({ theme }) => ({
+  ...(theme.isDesktopViewport && {
+    marginLeft: theme.designSystem.size.spacing.xxxxl,
   }),
 }))
 

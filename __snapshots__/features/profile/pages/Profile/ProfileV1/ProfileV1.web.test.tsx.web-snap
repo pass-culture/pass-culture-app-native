@@ -291,18 +291,19 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
-                          class="css-view-175oi2r"
+                          class="css-view-175oi2r r-marginRight-1kb76zh"
                         >
                           <div
-                            class="css-text-146c3p1"
-                            dir="ltr"
+                            class="css-view-175oi2r"
                           >
-                            undefined-SVG-Mock
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                         <div
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
@@ -437,18 +438,19 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
-                          class="css-view-175oi2r"
+                          class="css-view-175oi2r r-marginRight-1kb76zh"
                         >
                           <div
-                            class="css-text-146c3p1"
-                            dir="ltr"
+                            class="css-view-175oi2r"
                           >
-                            undefined-SVG-Mock
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                         <div
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
@@ -493,19 +495,20 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
-                          aria-label="Nouvelle fenêtre"
-                          class="css-view-175oi2r"
+                          class="css-view-175oi2r r-marginRight-1kb76zh"
                         >
                           <div
-                            class="css-text-146c3p1"
-                            dir="ltr"
+                            aria-label="Nouvelle fenêtre"
+                            class="css-view-175oi2r"
                           >
-                            undefined-SVG-Mock
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                         <div
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
@@ -555,18 +558,19 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
-                          class="css-view-175oi2r"
+                          class="css-view-175oi2r r-marginRight-1kb76zh"
                         >
                           <div
-                            class="css-text-146c3p1"
-                            dir="ltr"
+                            class="css-view-175oi2r"
                           >
-                            undefined-SVG-Mock
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                         <div
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
@@ -611,18 +615,19 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
-                          class="css-view-175oi2r"
+                          class="css-view-175oi2r r-marginRight-1kb76zh"
                         >
                           <div
-                            class="css-text-146c3p1"
-                            dir="ltr"
+                            class="css-view-175oi2r"
                           >
-                            undefined-SVG-Mock
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                         <div
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
@@ -667,18 +672,19 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
-                          class="css-view-175oi2r"
+                          class="css-view-175oi2r r-marginRight-1kb76zh"
                         >
                           <div
-                            class="css-text-146c3p1"
-                            dir="ltr"
+                            class="css-view-175oi2r"
                           >
-                            undefined-SVG-Mock
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                         <div
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
@@ -1363,18 +1369,19 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
-                          class="css-view-175oi2r"
+                          class="css-view-175oi2r r-marginRight-1kb76zh"
                         >
                           <div
-                            class="css-text-146c3p1"
-                            dir="ltr"
+                            class="css-view-175oi2r"
                           >
-                            undefined-SVG-Mock
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                         <div
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
@@ -1509,18 +1516,19 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
-                          class="css-view-175oi2r"
+                          class="css-view-175oi2r r-marginRight-1kb76zh"
                         >
                           <div
-                            class="css-text-146c3p1"
-                            dir="ltr"
+                            class="css-view-175oi2r"
                           >
-                            undefined-SVG-Mock
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                         <div
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
@@ -1565,19 +1573,20 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
-                          aria-label="Nouvelle fenêtre"
-                          class="css-view-175oi2r"
+                          class="css-view-175oi2r r-marginRight-1kb76zh"
                         >
                           <div
-                            class="css-text-146c3p1"
-                            dir="ltr"
+                            aria-label="Nouvelle fenêtre"
+                            class="css-view-175oi2r"
                           >
-                            undefined-SVG-Mock
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                         <div
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
@@ -1627,18 +1636,19 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
-                          class="css-view-175oi2r"
+                          class="css-view-175oi2r r-marginRight-1kb76zh"
                         >
                           <div
-                            class="css-text-146c3p1"
-                            dir="ltr"
+                            class="css-view-175oi2r"
                           >
-                            undefined-SVG-Mock
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                         <div
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
@@ -1683,18 +1693,19 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
-                          class="css-view-175oi2r"
+                          class="css-view-175oi2r r-marginRight-1kb76zh"
                         >
                           <div
-                            class="css-text-146c3p1"
-                            dir="ltr"
+                            class="css-view-175oi2r"
                           >
-                            undefined-SVG-Mock
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                         <div
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
@@ -1739,18 +1750,19 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
-                          class="css-view-175oi2r"
+                          class="css-view-175oi2r r-marginRight-1kb76zh"
                         >
                           <div
-                            class="css-text-146c3p1"
-                            dir="ltr"
+                            class="css-view-175oi2r"
                           >
-                            undefined-SVG-Mock
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                         <div
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
