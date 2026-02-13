@@ -8621,13 +8621,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-oauth/google@npm:^0.11.1":
-  version: 0.11.1
-  resolution: "@react-oauth/google@npm:0.11.1"
+"@react-oauth/google@npm:^0.13.4":
+  version: 0.13.4
+  resolution: "@react-oauth/google@npm:0.13.4"
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: b27031d55a82d70a32c5d15ca0c71caec70f766f5c118570bb6b273c0f2c4256d574fd59012716dbcdf7a8d0c909736846ed82c32458c792e60430957c32a1f4
+  checksum: 994540becd022049841cf96136a347fbefaf34cc9c1becc941926ef8c22b745d03b3997bd30e4b7533d029add2e63ddd05f452c18a43130efad23a638ddf600f
   languageName: node
   linkType: hard
 
@@ -10030,6 +10030,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/google.accounts@npm:^0.0.18":
+  version: 0.0.18
+  resolution: "@types/google.accounts@npm:0.0.18"
+  checksum: e8ce2703451e60bbba29fb524c3fc198a6ecd3633b7a35511409fed92246eb84443a6d0e8c98a6c98a0b600b546b89d2e999d50ce566a74a53f9dddd8039f6c1
+  languageName: node
+  linkType: hard
+
 "@types/google.maps@npm:^3.55.12":
   version: 3.58.1
   resolution: "@types/google.maps@npm:3.58.1"
@@ -11323,7 +11330,7 @@ __metadata:
     "@react-navigation/devtools": ^7.0.40
     "@react-navigation/native": ^7.1.20
     "@react-navigation/native-stack": ^7.6.3
-    "@react-oauth/google": ^0.11.1
+    "@react-oauth/google": ^0.13.4
     "@rollup/plugin-commonjs": ^28.0.3
     "@sentry/react": ^8.55.0
     "@sentry/react-native": ^6.22.0
@@ -11348,6 +11355,7 @@ __metadata:
     "@types/contentful-resolve-response": ^0.1.30
     "@types/geojson": ^7946.0.7
     "@types/globalthis": ^1.0.1
+    "@types/google.accounts": ^0.0.18
     "@types/highlight-words-core": ^1.2.0
     "@types/jest": ^29.5.13
     "@types/jest-axe": ^3.5.9
