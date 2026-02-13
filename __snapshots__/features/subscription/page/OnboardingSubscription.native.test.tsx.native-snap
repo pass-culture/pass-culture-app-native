@@ -1410,11 +1410,11 @@ exports[`OnboardingSubscription should render correctly 1`] = `
           }
         >
           <View
-            gap={5}
+            gap={4}
             style={
               {
                 "alignItems": "center",
-                "gap": 20,
+                "gap": 16,
               }
             }
           >

@@ -6052,7 +6052,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": false,
+            "disabled": true,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -6066,7 +6066,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
           }
         }
         accessible={true}
-        focusable={true}
+        focusable={false}
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -6083,10 +6083,10 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
               {
                 "alignItems": "center",
                 "alignSelf": "center",
-                "backgroundColor": "#6123df",
+                "backgroundColor": "#f1f1f4",
                 "borderBottomLeftRadius": 8,
                 "borderBottomRightRadius": 8,
-                "borderColor": "#6123df",
+                "borderColor": "#cbcdd2",
                 "borderStyle": "solid",
                 "borderTopLeftRadius": 8,
                 "borderTopRightRadius": 8,
@@ -6132,7 +6132,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                   "lineHeight": 22,
                 },
                 {
-                  "color": "#ffffff",
+                  "color": "#696a6f",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
