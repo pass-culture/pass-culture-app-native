@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react'
+import { View } from 'react-native'
 import { styled } from 'styled-components/native'
 
-import { ArtistResponse } from 'api/gen'
+import { OfferArtist } from 'api/gen'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Avatar } from 'ui/components/Avatar/Avatar'
@@ -13,41 +14,65 @@ import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { Typo } from 'ui/theme'
 
 type Props = {
-  artist: ArtistResponse
-  navigateTo: InternalNavigationProps['navigateTo']
-  onBeforeNavigate: () => void
+  artist: OfferArtist
+  navigateTo?: InternalNavigationProps['navigateTo']
+  onBeforeNavigate?: () => void
 }
+
+const hasArtistPage = (artist: OfferArtist): boolean => Boolean(artist.id)
 
 export const OfferArtistItem: FunctionComponent<Props> = ({
   artist,
   navigateTo,
   onBeforeNavigate,
 }) => {
-  return (
-    <InternalTouchableLink
-      navigateTo={navigateTo}
-      onBeforeNavigate={onBeforeNavigate}
-      accessibilityLabel={`Voir l’artiste ${artist.name}`}>
-      <Container gap={2}>
-        <Avatar>
-          {artist.image ? (
-            <StyledImage
-              url={artist.image}
-              accessibilityRole={AccessibilityRole.IMAGE}
-              accessibilityLabel="artist avatar"
-            />
-          ) : (
-            <DefaultAvatar testID="defaultAvatar" />
-          )}
-        </Avatar>
-        <SubContainer>
-          <LabelContainer>
+  const artistHasPage = hasArtistPage(artist)
+
+  const accessibilityLabel = artistHasPage
+    ? `${artist.name}, accéder à la page`
+    : `${artist.name}, page non disponible`
+
+  const content = (
+    <Container gap={2}>
+      <Avatar>
+        {artistHasPage && artist.image ? (
+          <StyledImage
+            url={artist.image}
+            accessibilityRole={AccessibilityRole.IMAGE}
+            accessibilityLabel="artist avatar"
+          />
+        ) : (
+          <DefaultAvatar testID="defaultAvatar" />
+        )}
+      </Avatar>
+      <SubContainer>
+        <LabelContainer>
+          {artistHasPage ? (
             <Typo.Button>{artist.name}</Typo.Button>
-          </LabelContainer>
-          <StyledRightFilled />
-        </SubContainer>
-      </Container>
-    </InternalTouchableLink>
+          ) : (
+            <Typo.Body>{artist.name}</Typo.Body>
+          )}
+        </LabelContainer>
+        {artistHasPage ? <StyledRightFilled testID="chevronIcon" /> : null}
+      </SubContainer>
+    </Container>
+  )
+
+  if (artistHasPage && navigateTo) {
+    return (
+      <InternalTouchableLink
+        navigateTo={navigateTo}
+        onBeforeNavigate={onBeforeNavigate}
+        accessibilityLabel={accessibilityLabel}>
+        {content}
+      </InternalTouchableLink>
+    )
+  }
+
+  return (
+    <View accessible accessibilityLabel={accessibilityLabel}>
+      {content}
+    </View>
   )
 }
 

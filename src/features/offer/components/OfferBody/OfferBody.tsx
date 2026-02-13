@@ -134,7 +134,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
     if (artists.length === 1) {
       const artist = artists[0]
-      if (artist) {
+      if (artist && artist.id) {
         void analytics.logConsultArtist({
           offerId: offer.id.toString(),
           artistId: artist.id,
