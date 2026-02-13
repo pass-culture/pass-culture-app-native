@@ -42,8 +42,6 @@ export enum QueryKeys {
   OAUTH_STATE = 'oauthState',
   OFFER = 'offer',
   OFFER_CHRONICLES = 'offerChronicles',
-  PHONE_VALIDATION_CODE = 'phoneValidationCode',
-  PHONE_VALIDATION_REMAINING_ATTEMPTS = 'phoneValidationRemainingAttempts',
   PLACES = 'places',
   RECOMMENDATION_HITS = 'recommendationHits',
   RECOMMENDATION_OFFER_IDS = 'recommendationOfferIds',

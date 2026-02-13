@@ -14,7 +14,7 @@ export const stepsDetailsFixture: StepExtendedDetails[] = [
       completed: Smartphone,
       retry: Smartphone,
     },
-    firstScreen: 'SetPhoneNumber',
+    firstScreen: 'SetPhoneNumberWithoutValidation',
     title: 'Numéro de téléphone',
     stepState: StepButtonState.COMPLETED,
     firstScreenType: ProfileTypes.IDENTITY_CHECK,

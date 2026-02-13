@@ -95,16 +95,6 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'PhoneValidationTooManyAttempts',
-      navigationTarget: getSubscriptionPropConfig('PhoneValidationTooManyAttempts'),
-    },
-    {
-      id: uuidv4(),
-      title: 'PhoneValidationTooManySMSSent',
-      navigationTarget: getSubscriptionPropConfig('PhoneValidationTooManySMSSent'),
-    },
-    {
-      id: uuidv4(),
       title: 'SelectIDOrigin',
       navigationTarget: getSubscriptionPropConfig('SelectIDOrigin'),
     },
@@ -158,18 +148,8 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'SetPhoneNumber',
-      navigationTarget: getSubscriptionPropConfig('SetPhoneNumber'),
-    },
-    {
-      id: uuidv4(),
       title: 'SetPhoneNumberWithoutValidation',
       navigationTarget: getSubscriptionPropConfig('SetPhoneNumberWithoutValidation'),
-    },
-    {
-      id: uuidv4(),
-      title: 'SetPhoneValidationCode',
-      navigationTarget: getSubscriptionPropConfig('SetPhoneValidationCode'),
     },
     {
       id: uuidv4(),

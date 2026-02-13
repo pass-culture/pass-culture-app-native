@@ -13,7 +13,6 @@ import {
   selectBonificationQfThreshold,
   selectDepositAmountsByAge,
   selectEnableFrontImageResizing,
-  selectEnablePhoneValidation,
   selectIdCheckAddressAutocompletion,
   selectIneligiblePostalCodes,
   selectIsRecaptchaEnabled,
@@ -54,11 +53,6 @@ export const useIsRecaptchaEnabled = () =>
 export const useAccountUnsuspensionLimit = () =>
   useSettingsQuery({
     select: selectAccountUnsuspensionLimit,
-  })
-
-export const useEnablePhoneValidation = () =>
-  useSettingsQuery({
-    select: selectEnablePhoneValidation,
   })
 
 export const useIdCheckAddressAutocompletion = () =>

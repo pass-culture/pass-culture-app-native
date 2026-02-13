@@ -11,11 +11,9 @@ import { useStoredProfileInfos } from 'features/identityCheck/pages/helpers/useS
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { ProfileType } from 'features/identityCheck/pages/profile/types'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
-import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useEnablePhoneValidation } from 'queries/settings/useSettings'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { IdCard } from 'ui/svg/icons/IdCard'
@@ -44,9 +42,7 @@ export const useStepperInfo = (): StepperInfo => {
   const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
   const storedProfileInfos = useStoredProfileInfos()
 
-  const { remainingAttempts } = usePhoneValidationRemainingAttemptsQuery()
   const { data } = useGetStepperInfoQuery()
-  const { data: enablePhoneValidation } = useEnablePhoneValidation()
   const { shouldBeOverriden: shouldCreditAmountBeOverriden, amount: overriddenCreditAmount } =
     useOverrideCreditActivationAmount()
 
@@ -64,12 +60,6 @@ export const useStepperInfo = (): StepperInfo => {
     subscriptionMessage,
     allowedIdentityCheckMethods,
   } = data
-  const getPhoneValidationFirstScreen = () => {
-    if (enablePhoneValidation) {
-      return remainingAttempts === 0 ? 'PhoneValidationTooManySMSSent' : 'SetPhoneNumber'
-    }
-    return 'SetPhoneNumberWithoutValidation'
-  }
 
   const hasUserCompletedInfo =
     !!user?.firstName &&
@@ -148,7 +138,7 @@ export const useStepperInfo = (): StepperInfo => {
         completed: () => <IconStepDone Icon={Smartphone} testID="phone-validation-step-done" />,
         retry: () => <IconStepRetry Icon={Smartphone} testID="phone-validation-retry-step" />,
       },
-      firstScreen: getPhoneValidationFirstScreen(),
+      firstScreen: 'SetPhoneNumberWithoutValidation',
       firstScreenType: ProfileTypes.IDENTITY_CHECK,
     },
   }

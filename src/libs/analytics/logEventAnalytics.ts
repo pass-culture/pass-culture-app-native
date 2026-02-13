@@ -388,14 +388,11 @@ export const logEventAnalytics = {
       | 'FeedbackInApp'
       | 'LegalNotices'
       | 'NotEligibleEduConnect'
-      | 'PhoneValidationTooManyAttempts'
       | 'SignupConfirmationEmailSent'
   ) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_CONTACT_FORM }, { from }),
   logHasClickedDuoStep: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_DUO_STEP }),
   logHasClickedGridListToggle: ({ fromLayout }: { fromLayout: GridListLayout }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_GRID_LIST_TOGGLE }, { fromLayout }),
-  logHasClickedMissingCode: () =>
-    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_MISSING_CODE }),
   logHasClickedRemoteActivationBanner: (from: RemoteBannerOrigin, options: RemoteBannerType) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.HAS_CLICKED_REMOTE_ACTIVATION_BANNER },
@@ -434,7 +431,6 @@ export const logEventAnalytics = {
   logHasOpenedCookiesAccordion: (type: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_OPENED_COOKIES_ACCORDION }, { type }),
   logHasRefusedCookie: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_REFUSED_COOKIE }),
-  logHasRequestedCode: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_REQUESTED_CODE }),
   logHasSearchedCinemaQuery: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_SEARCHED_CINEMA_QUERY }),
   logHasSeenAllVideo: (params: {
