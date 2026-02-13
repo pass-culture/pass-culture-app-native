@@ -89,7 +89,7 @@ exports[`OnboardingGeneralPublicWelcome should render correctly 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -116,16 +116,13 @@ exports[`OnboardingGeneralPublicWelcome should render correctly 1`] = `
             {
               "alignItems": "center",
               "backgroundColor": "transparent",
-              "borderBottomLeftRadius": 0,
-              "borderBottomRightRadius": 0,
-              "borderTopLeftRadius": 0,
-              "borderTopRightRadius": 0,
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
               "borderWidth": 0,
               "flexDirection": "row",
               "justifyContent": "center",
-              "marginTop": 0,
-              "maxWidth": 500,
-              "minHeight": 16,
               "opacity": 1,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -138,24 +135,36 @@ exports[`OnboardingGeneralPublicWelcome should render correctly 1`] = `
           testID="Passer à la page suivante"
         >
           <View
+            gap={8}
+            hasIcon={false}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
               }
             }
           >
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#696a6f",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#161617",
+                    "flexBasis": undefined,
+                    "flexGrow": undefined,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": undefined,
+                  },
+                ]
               }
             >
               Passer
