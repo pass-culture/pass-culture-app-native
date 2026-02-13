@@ -98,8 +98,10 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   onVideoConsentPress,
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
+  HeaderComponent,
   children,
 }) => {
+  const HeaderToRender = HeaderComponent || OfferHeader
   const theme = useTheme()
 
   const { navigate } = useNavigation<UseNavigationType>()
@@ -273,7 +275,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     <Container>
       <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
         <OfferWebMetaHeader offer={offer} />
-        <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer}>
+        <HeaderToRender title={offer.name} headerTransition={headerTransition} offer={offer}>
           {onReactionButtonPress ? (
             <OfferReactionHeaderButton
               onPress={onReactionButtonPress}
@@ -289,7 +291,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               favorite={favorite}
             />
           )}
-        </OfferHeader>
+        </HeaderToRender>
         <IntersectionObserverScrollView
           testID="offerv2-container"
           scrollEventThrottle={16}

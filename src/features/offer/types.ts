@@ -1,4 +1,5 @@
-import { ReactNode } from 'react'
+import { ComponentType, PropsWithChildren, ReactNode } from 'react'
+import { Animated } from 'react-native'
 
 import {
   CategoryIdEnum,
@@ -70,6 +71,12 @@ export interface VenueDetail {
   distance?: string
 }
 
+type OfferHeaderComponentProps = PropsWithChildren<{
+  headerTransition: Animated.AnimatedInterpolation<string | number>
+  title: string
+  offer: OfferResponseV2
+}>
+
 export type OfferContentProps = {
   offer: OfferResponseV2
   searchGroupList: SearchGroupResponseModelv2[]
@@ -85,6 +92,7 @@ export type OfferContentProps = {
   hasVideoCookiesConsent?: boolean
   onVideoConsentPress: VoidFunction
   isMultiArtistsEnabled?: boolean
+  HeaderComponent?: ComponentType<OfferHeaderComponentProps>
 }
 
 export type OfferImageContainerDimensions = {
