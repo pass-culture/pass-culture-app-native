@@ -135,7 +135,7 @@ export const OnboardingSubscription = () => {
         </React.Fragment>
       }
       fixedBottomChildren={
-        <StyledView gap={5}>
+        <StyledView gap={4}>
           <Button
             wording="Suivre la sélection"
             onPress={onSubmit}

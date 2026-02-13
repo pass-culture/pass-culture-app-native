@@ -333,10 +333,10 @@ exports[`ShareAppModalVersionB should match snapshot 1`] = `
                 Fais découvrir le pass à tes amis !
               </Text>
               <View
-                gap={2}
+                gap={4}
                 style={
                   {
-                    "gap": 8,
+                    "gap": 16,
                   }
                 }
               >

@@ -37,7 +37,7 @@ export const ShareAppModalVersionA: FC<Props> = ({ visible, close, share }) => {
           {LINE_BREAK}
           Fais découvrir le pass à tes amis&nbsp;!
         </StyledBody>
-        <ViewGap gap={2}>
+        <ViewGap gap={4}>
           <Button wording="Partager l’app" icon={Share} onPress={share} />
           <Button
             variant="tertiary"

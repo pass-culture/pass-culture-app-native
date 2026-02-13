@@ -58,7 +58,7 @@ export const BonificationRequiredInformation = () => {
         </Form.MaxWidth>
       }
       fixedBottomChildren={
-        <ViewGap gap={3}>
+        <ViewGap gap={4}>
           <Button
             fullWidth
             type="submit"
