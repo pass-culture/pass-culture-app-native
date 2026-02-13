@@ -5,9 +5,6 @@ export const selectAccountUnsuspensionLimit = (settings: SettingsResponse) =>
 
 export const selectIsRecaptchaEnabled = (settings: SettingsResponse) => settings.isRecaptchaEnabled
 
-export const selectEnablePhoneValidation = (settings: SettingsResponse) =>
-  settings.enablePhoneValidation
-
 export const selectIdCheckAddressAutocompletion = (settings: SettingsResponse) =>
   settings.idCheckAddressAutocompletion
 
