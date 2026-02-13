@@ -1,0 +1,94 @@
+name: '[on_schedule] Dependabot alerts to Jira'
+
+on:
+  schedule:
+    - cron: '0 7 * * *' # Tous les jours à 7h UTC (8h Paris)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Mode simulation (ne crée pas de tickets)'
+        required: false
+        default: 'false'
+        type: boolean
+      process_all:
+        description: 'Traiter TOUTES les alertes ouvertes (pas juste hier)'
+        required: false
+        default: 'false'
+        type: boolean
+      max_alerts:
+        description: 'Nombre max d alertes à traiter (0 = illimité)'
+        required: false
+        default: '0'
+        type: string
+
+env:
+  JIRA_BASE_URL: https://passculture.atlassian.net
+  JIRA_PROJECT_KEY: PC
+
+permissions:
+  contents: read
+  security-events: read
+  id-token: write
+
+jobs:
+  dependabot-to-jira:
+    name: Dependabot alerts to Jira
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+
+      - name: Get Jira Secrets
+        id: secrets
+        uses: 'google-github-actions/get-secretmanager-secrets@v3'
+        with:
+          secrets: |-
+            JIRA_USER_EMAIL:passculture-metier-ehp/passculture-app-native-jira-user-email
+            JIRA_API_TOKEN:passculture-metier-ehp/passculture-app-native-jira-api-token
+
+      - name: Determine Team Rotation
+        id: rotation
+        run: |
+          day_of_year=$(date +%j)
+          teams=("Activation" "Conversion" "Découverte")
+          team_index=$(( (10#$day_of_year - 1) % 3 ))
+          team_name=${teams[$team_index]}
+
+          echo "team_name=$team_name" >> $GITHUB_OUTPUT
+          echo "📅 Jour $day_of_year → Équipe: $team_name"
+
+      # Auth GitHub App pour accéder aux alertes Dependabot
+      - name: Authenticate through GitHub App
+        uses: actions/create-github-app-token@v2
+        id: github-app-token
+        with:
+          app-id: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
+          private-key: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: pass-culture-app-native
+          permission-vulnerability-alerts: read
+
+      - name: Create Jira tickets for yesterday's alerts
+        uses: actions/github-script@v7
+        env:
+          JIRA_USER_EMAIL: ${{ steps.secrets.outputs.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ steps.secrets.outputs.JIRA_API_TOKEN }}
+          JIRA_BASE_URL: ${{ env.JIRA_BASE_URL }}
+          JIRA_PROJECT_KEY: ${{ env.JIRA_PROJECT_KEY }}
+          TEAM_NAME: ${{ steps.rotation.outputs.team_name }}
+          DRY_RUN: ${{ inputs.dry_run || 'false' }}
+          PROCESS_ALL: ${{ inputs.process_all || 'false' }}
+          MAX_ALERTS: ${{ inputs.max_alerts || '0' }}
+        with:
+          github-token: ${{ steps.github-app-token.outputs.token }}
+          script: |
+            const script = require('./.github/scripts/dependabot-to-jira.js')
+            await script({ github, context, core })
