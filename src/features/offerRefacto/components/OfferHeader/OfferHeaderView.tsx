@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { WebShareModal } from 'features/share/pages/WebShareModal'
-import { Button } from 'ui/designSystem/Button/Button'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Share } from 'ui/svg/icons/Share'
 
 import { OfferHeaderViewProps } from './types'

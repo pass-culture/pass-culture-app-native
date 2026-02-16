@@ -8,9 +8,7 @@ import { OfferHeaderViewModel, UseOfferHeaderParams } from './types'
 
 const SHARE_MODAL_TITLE = 'Partager l\u2019offre'
 
-export const useOfferHeader = ({
-  offer,
-}: UseOfferHeaderParams): OfferHeaderViewModel => {
+export const useOfferHeader = ({ offer }: UseOfferHeaderParams): OfferHeaderViewModel => {
   const { goBack } = useGoBack(...getSearchHookConfig('SearchLanding'))
 
   const {
