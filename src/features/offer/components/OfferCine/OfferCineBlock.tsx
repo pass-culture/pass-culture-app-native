@@ -11,10 +11,10 @@ import { OfferCineContent } from 'features/offer/components/OfferCine/OfferCineC
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { getDates } from 'shared/date/getDates'
 import { AppThemeType } from 'theme'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Anchor } from 'ui/components/anchor/Anchor'
-import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
+import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 

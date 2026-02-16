@@ -106,10 +106,9 @@ export const OfferBody: FunctionComponent<Props> = ({
     { fractionDigits: 2 }
   )
 
-  const hasAccessToArtistPage = isMultiArtistsEnabled
-    ? hasArtistPage
-    : hasArtistPage && artists.length === 1
-
+  const hasAccessToArtistPage =
+    hasArtistPage &&
+    (artists.length > 1 ? isMultiArtistsEnabled : artists.length === 1 && !!artists[0]?.id)
   const isCinemaOffer = subcategory.categoryId === CategoryIdEnum.CINEMA
 
   const { summaryInfoItems } = useOfferSummaryInfoList({

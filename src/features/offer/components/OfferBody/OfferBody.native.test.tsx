@@ -491,6 +491,25 @@ describe('<OfferBody />', () => {
       expect(mockNavigate).toHaveBeenCalledWith('Artist', { id: '1' })
     })
 
+    it('should not redirect to artist page if artist has not id when FF is enabled', async () => {
+      const offer: OfferResponse = {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        artists: [{ name: 'Stephen King' }],
+      }
+
+      setFeatureFlags()
+
+      renderOfferBody({
+        offer,
+        subcategory: mockSubcategoryBook,
+      })
+
+      await user.press(await screen.findByText('Stephen King'))
+
+      expect(mockNavigate).not.toHaveBeenCalled()
+    })
+
     it('should log ConsultArtist when pressing artist name button and FF is enabled', async () => {
       const offer: OfferResponse = {
         ...offerResponseSnap,
