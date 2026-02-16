@@ -53,11 +53,7 @@ export function dateDiffInFullYears(oldDate: Date, newDate: Date) {
  * @param ISODate a string date in the ISO 8601 format %Y-%m-%dT%H:%M:%S
  */
 export const formatToSlashedFrenchDate = (ISODate: Date | string) => {
-  const date = new Date(ISODate)
-  const day = ('0' + date.getDate()).slice(-2)
-  const month = ('0' + (date.getMonth() + 1)).slice(-2)
-  const year = date.getFullYear()
-  return `${day}/${month}/${year}`
+  return new Date(ISODate).toLocaleDateString('fr-FR')
 }
 
 export const setDateOneDayEarlier = (ISODate: Date | string) => {
