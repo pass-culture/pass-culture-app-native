@@ -36,7 +36,7 @@ export const LocationSearchInput = ({
   return (
     <StyledView>
       <SearchInput
-        label="Recherche un ville, une adresse..."
+        label="Recherche une ville, une adresse..."
         onChangeText={onChangePlace}
         onClear={onResetPlace}
         value={placeQuery}
