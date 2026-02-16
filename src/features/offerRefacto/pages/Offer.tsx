@@ -18,6 +18,7 @@ import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoic
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { useReactionMutation } from 'features/reactions/queries/useReactionMutation'
 import { analytics } from 'libs/analytics/provider'
+import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
@@ -139,7 +140,7 @@ export function Offer() {
     <Page>
       <View>
         <ReactionChoiceModal
-          dateUsed={booking?.dateUsed ?? ''}
+          dateUsed={formatToSlashedFrenchDate(booking?.dateUsed ?? '')}
           offerId={offer.id}
           offerName={offer.name}
           imageUrl={offer.images?.url?.url}
