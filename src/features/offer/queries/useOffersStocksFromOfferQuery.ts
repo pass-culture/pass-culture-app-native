@@ -1,7 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query'
 import { Hit } from 'algoliasearch/lite'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { useUserLocation } from 'features/offer/helpers/useUserLocation/useUserLocation'
 import { useFetchOffersQuery } from 'features/offer/queries/useFetchOffersQuery'
 import { useOffersStocksQuery } from 'features/offer/queries/useOffersStocksQuery'
@@ -15,7 +15,7 @@ import { Offer } from 'shared/offer/types'
 const DEFAULT_RADIUS_KM = 50
 
 export const useOffersStocksFromOfferQuery = (
-  offer: OfferResponseV2,
+  offer: OfferResponse,
   radiusKm = DEFAULT_RADIUS_KM
 ) => {
   const userLocation = useUserLocation(offer)

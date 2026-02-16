@@ -3,7 +3,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import React, { FC, ReactNode } from 'react'
 import { useTheme } from 'styled-components/native'
 
-import { Activity, OfferResponseV2, SubcategoryIdEnum, VenueResponse } from 'api/gen'
+import { Activity, OfferResponse, SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferCineBlock } from 'features/offer/components/OfferCine/OfferCineBlock'
 import { OfferVenueContainer } from 'features/offer/components/OfferVenueContainer/OfferVenueContainer'
@@ -15,7 +15,7 @@ import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 export type OfferPlaceProps = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   subcategory: Subcategory
   isOfferAtSameAddressAsVenue: boolean
   distance?: string | null

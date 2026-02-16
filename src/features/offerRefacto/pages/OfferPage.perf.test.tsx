@@ -4,7 +4,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import {
   BookingsResponse,
   GetRemindersResponse,
-  OfferResponseV2,
+  OfferResponse,
   SimilarOffersResponse,
   SubcategoriesResponseModelv2,
 } from 'api/gen'
@@ -81,7 +81,7 @@ describe('<OfferPage />', () => {
   beforeEach(() => {
     setFeatureFlags()
     // We mock server instead of hooks to test the real behavior of the component.
-    mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, {
+    mockServer.getApi<OfferResponse>(`/v3/offer/${offerResponseSnap.id}`, {
       requestOptions: { persist: true },
       responseOptions: { data: offerResponseSnap },
     })

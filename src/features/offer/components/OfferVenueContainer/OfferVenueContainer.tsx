@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FC, Fragment } from 'react'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferVenueBlock } from 'features/offer/components/OfferVenueBlock/OfferVenueBlock'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
@@ -20,7 +20,7 @@ import { useModal } from 'ui/components/modals/useModal'
 const ANIMATION_DURATION = 500 //ms
 
 type Props = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   subcategory: Subcategory
   handleOnSeeVenuePress?: VoidFunction
   isOfferAtSameAddressAsVenue: boolean

@@ -4,23 +4,23 @@ import { ViewStyle } from 'react-native'
 import { InView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { MovieCalendarProvider } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { OfferCineContent } from 'features/offer/components/OfferCine/OfferCineContent'
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { getDates } from 'shared/date/getDates'
 import { AppThemeType } from 'theme'
-import { Anchor } from 'ui/components/anchor/Anchor'
-import { AnchorNames } from 'ui/components/anchor/anchor-name'
-import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Anchor } from 'ui/components/anchor/Anchor'
+import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
+import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   title: string
-  offer: OfferResponseV2
+  offer: OfferResponse
   onSeeVenuePress?: VoidFunction
 }
 

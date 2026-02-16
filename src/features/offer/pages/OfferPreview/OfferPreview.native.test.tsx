@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { renderAsync, screen } from 'tests/utils'
 
-const mockOffer = jest.fn((): { data: OfferResponseV2 } => ({
+const mockOffer = jest.fn((): { data: OfferResponse } => ({
   data: {
     ...offerResponseSnap,
     images: {

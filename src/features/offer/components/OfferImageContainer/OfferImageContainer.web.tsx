@@ -3,7 +3,7 @@ import React, { FunctionComponent, PropsWithChildren, useRef } from 'react'
 import { useSharedValue } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
-import { CategoryIdEnum, OfferResponseV2 } from 'api/gen'
+import { CategoryIdEnum, OfferResponse } from 'api/gen'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -22,7 +22,7 @@ import { OfferImageHeaderWrapper } from './OfferImageHeaderWrapper'
 type Props = {
   categoryId: CategoryIdEnum | null
   imageDimensions: OfferImageContainerDimensions
-  offer: OfferResponseV2
+  offer: OfferResponse
   images?: ImageWithCredit[]
   onPress?: (defaultIndex?: number) => void
   placeholderImage?: string

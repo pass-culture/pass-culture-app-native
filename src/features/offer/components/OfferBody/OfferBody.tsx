@@ -3,7 +3,7 @@ import React, { FunctionComponent, ReactNode, useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryIdEnum, OfferArtist, OfferResponseV2 } from 'api/gen'
+import { CategoryIdEnum, OfferArtist, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -43,7 +43,7 @@ import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   subcategory: Subcategory
   children: ReactNode
   chronicleVariantInfo: ChronicleVariantInfo

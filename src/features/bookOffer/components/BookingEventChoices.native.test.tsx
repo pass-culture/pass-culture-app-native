@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
@@ -51,7 +51,7 @@ jest.mock('queries/offer/useBookingOfferQuery', () => ({
 
 describe('<BookingEventChoices />', () => {
   beforeEach(() => {
-    mockServer.getApi<OfferResponseV2>(`/v2/offer/116656`, offerResponseSnap)
+    mockServer.getApi<OfferResponse>(`/v3/offer/116656`, offerResponseSnap)
     setFeatureFlags()
   })
 

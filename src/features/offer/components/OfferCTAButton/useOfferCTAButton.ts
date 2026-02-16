@@ -1,14 +1,14 @@
 import { useRoute } from '@react-navigation/native'
 
-import { OfferResponseV2 } from 'api/gen'
-import { UseRouteType, StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { OfferResponse } from 'api/gen'
+import { StepperOrigin, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
 import { Subcategory } from 'libs/subcategories/types'
 import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 
 export const useOfferCTAButton = (
-  offer: OfferResponseV2,
+  offer: OfferResponse,
   subcategory: Subcategory,
   bookingData?: MovieScreeningBookingData
 ) => {

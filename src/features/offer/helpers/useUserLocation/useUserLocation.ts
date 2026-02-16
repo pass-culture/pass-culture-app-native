@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { useLocation } from 'libs/location/location'
 
-export const useUserLocation = (offer?: OfferResponseV2) => {
+export const useUserLocation = (offer?: OfferResponse) => {
   const { userLocation } = useLocation()
 
   const location = useMemo(

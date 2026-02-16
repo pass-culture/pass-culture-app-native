@@ -5,7 +5,7 @@ import {
   BookingsListResponseV2,
   BookingsResponse,
   BookingsResponseV2,
-  OfferResponseV2,
+  OfferResponse,
   PostReactionRequest,
   ReactionTypeEnum,
 } from 'api/gen'
@@ -40,7 +40,7 @@ export const useReactionMutation = () => {
         previousBookingsList: queryClient.getQueryData([QueryKeys.BOOKINGSLIST]),
       }
 
-      queryClient.setQueryData<OfferResponseV2 | undefined>([QueryKeys.OFFER, offerId], (old) =>
+      queryClient.setQueryData<OfferResponse | undefined>([QueryKeys.OFFER, offerId], (old) =>
         old
           ? {
               ...old,

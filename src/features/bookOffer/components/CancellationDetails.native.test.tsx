@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { OfferResponseV2, OfferStockResponse } from 'api/gen'
+import { OfferResponse, OfferStockResponse } from 'api/gen'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -17,7 +17,7 @@ jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
   useBookingStock: jest.fn(() => mockStock),
 }))
 
-let mockOffer = { id: 1, isDuo: true } as unknown as OfferResponseV2
+let mockOffer = { id: 1, isDuo: true } as unknown as OfferResponse
 jest.mock('queries/offer/useBookingOfferQuery', () => ({
   useBookingOfferQuery: jest.fn(() => mockOffer),
 }))
@@ -33,7 +33,7 @@ describe('<CancellationDetails /> when isDigital = true', () => {
           cancellationLimitDatetime,
           activationCode: { expirationDate: '2030-02-05T00:00:00Z' },
         }
-        mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponseV2
+        mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
         render(reactQueryProviderHOC(<CancellationDetails />))
 
         expectNotCancellable()
@@ -51,7 +51,7 @@ describe('<CancellationDetails /> when isDigital = true', () => {
           cancellationLimitDatetime,
           activationCode: { expirationDate: null },
         }
-        mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponseV2
+        mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
         render(reactQueryProviderHOC(<CancellationDetails />))
 
         expectNotCancellable()
@@ -67,7 +67,7 @@ describe('<CancellationDetails /> when isDigital = true', () => {
         cancellationLimitDatetime: null,
         activationCode: null,
       }
-      mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponseV2
+      mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
       render(reactQueryProviderHOC(<CancellationDetails />))
 
       expectCancellable()
@@ -80,7 +80,7 @@ describe('<CancellationDetails /> when isDigital = true', () => {
         cancellationLimitDatetime: pastDate,
         activationCode: null,
       }
-      mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponseV2
+      mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
       render(reactQueryProviderHOC(<CancellationDetails />))
 
       expectNotCancellable()
@@ -93,7 +93,7 @@ describe('<CancellationDetails /> when isDigital = true', () => {
         cancellationLimitDatetime: futureDate,
         activationCode: null,
       }
-      mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponseV2
+      mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
       render(reactQueryProviderHOC(<CancellationDetails />))
 
       expectCancellableBefore()

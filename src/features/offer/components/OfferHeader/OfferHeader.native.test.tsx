@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import { Animated, Share } from 'react-native'
 
-import { OfferResponseV2, PaginatedFavoritesResponse } from 'api/gen'
+import { OfferResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -110,7 +110,7 @@ describe('<OfferHeader />', () => {
 
 function renderOfferHeader(children?: ReactElement | null) {
   mockServer.getApi<PaginatedFavoritesResponse>('/v1/me/favorites', paginatedFavoritesResponseSnap)
-  mockServer.getApi<OfferResponseV2>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
+  mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
 
   const animatedValue = new Animated.Value(0)
   render(

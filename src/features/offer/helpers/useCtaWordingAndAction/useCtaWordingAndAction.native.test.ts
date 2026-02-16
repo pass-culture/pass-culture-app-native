@@ -3,7 +3,7 @@ import mockdate from 'mockdate'
 import {
   ActivityIdEnum,
   EligibilityType,
-  OfferResponseV2,
+  OfferResponse,
   SearchGroupNameEnumv2,
   SubcategoryIdEnum,
   SubscriptionStatus,
@@ -384,7 +384,7 @@ describe('getCtaWordingAndAction', () => {
 
   describe('Beneficiary user', () => {
     const getCta = (
-      partialOffer: Partial<OfferResponseV2>,
+      partialOffer: Partial<OfferResponse>,
       parameters?: Partial<Parameters<typeof getCtaWordingAndAction>[0]>,
       partialSubcategory?: Partial<Subcategory>
     ) =>
@@ -1017,7 +1017,7 @@ describe('getCtaWordingAndAction', () => {
   })
 })
 
-const buildOffer = (partialOffer: Partial<OfferResponseV2>): OfferResponseV2 => ({
+const buildOffer = (partialOffer: Partial<OfferResponse>): OfferResponse => ({
   ...baseOffer,
   ...partialOffer,
 })

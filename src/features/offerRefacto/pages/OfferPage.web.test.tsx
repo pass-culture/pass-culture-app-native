@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { OfferResponseV2, SimilarOffersResponse } from 'api/gen'
+import { OfferResponse, SimilarOffersResponse } from 'api/gen'
 import { ConsentState } from 'features/cookies/enums'
 import * as Cookies from 'features/cookies/helpers/useCookies'
 import { ConsentStatus } from 'features/cookies/types'
@@ -16,7 +16,7 @@ import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 jest.setTimeout(20_000) // to avoid exceeded timeout
 
-const mockedOffer: Partial<OfferResponseV2> | undefined = offerResponseSnap
+const mockedOffer: Partial<OfferResponse> | undefined = offerResponseSnap
 jest.mock('queries/offer/useOfferQuery', () => ({
   useOfferQuery: () => ({
     data: mockedOffer,

@@ -1,4 +1,4 @@
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { Position } from 'libs/location/types'
 
 export const getRoundedPosition = (latitude?: number, longitude?: number): Position | undefined => {
@@ -10,7 +10,7 @@ export const getRoundedPosition = (latitude?: number, longitude?: number): Posit
   }
 }
 
-export const determineLocation = (userLocation: Position, offer?: OfferResponseV2) => {
+export const determineLocation = (userLocation: Position, offer?: OfferResponse) => {
   return (
     userLocation ?? {
       latitude: offer?.venue.coordinates.latitude ?? 0,

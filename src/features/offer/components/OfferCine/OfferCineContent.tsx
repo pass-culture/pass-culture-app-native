@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { ExpandingFlatList } from 'features/offer/components/ExpandingFlatlist/ExpandingFlatList'
 import {
   useDisableCalendarDates,
@@ -27,7 +27,7 @@ import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { Typo } from 'ui/theme'
 
 type Props = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   onSeeVenuePress?: VoidFunction
 }
 

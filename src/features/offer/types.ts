@@ -4,7 +4,7 @@ import {
   CategoryIdEnum,
   FavoriteResponse,
   OfferArtist,
-  OfferResponseV2,
+  OfferResponse,
   ReactionTypeEnum,
   RecommendationApiParams,
   SearchGroupResponseModelv2,
@@ -71,7 +71,7 @@ export interface VenueDetail {
 }
 
 export type OfferContentProps = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   searchGroupList: SearchGroupResponseModelv2[]
   chronicleVariantInfo: ChronicleVariantInfo
   subcategory: Subcategory

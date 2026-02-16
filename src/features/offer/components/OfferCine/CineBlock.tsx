@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { useMovieCalendar } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { isDateNotWithinNextNbDays } from 'features/offer/components/MoviesScreeningCalendar/moviesOffer.builder'
 import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
@@ -15,7 +15,7 @@ import { useLocation } from 'libs/location/location'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 
 export type CineBlockProps = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   onSeeVenuePress?: VoidFunction
   nextDate?: Date
   withDivider?: boolean

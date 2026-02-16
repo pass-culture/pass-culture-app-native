@@ -1,7 +1,7 @@
 import React, { FC, useMemo } from 'react'
 import { View } from 'react-native'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { useMovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/useMovieScreeningCalendar'
 import { useSelectedDateScreening } from 'features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
@@ -9,7 +9,7 @@ import { useSubcategoriesMapping } from 'libs/subcategories'
 import { EventCardList } from 'ui/components/eventCard/EventCardList'
 
 type Props = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   selectedDate?: Date
 }
 

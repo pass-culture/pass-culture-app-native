@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { env } from 'libs/environment/env'
@@ -11,7 +11,7 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Typo } from 'ui/theme'
 
-export function AlreadyBooked({ offer }: { offer: OfferResponseV2 }) {
+export function AlreadyBooked({ offer }: { offer: OfferResponse }) {
   const { bookingState, dismissModal, dispatch } = useBookingContext()
   const { designSystem } = useTheme()
   // Change step to confirmation

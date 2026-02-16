@@ -2,7 +2,7 @@ import React, { FunctionComponent, useCallback, useRef } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { ChronicleSection } from 'features/offer/components/OfferContent/ChronicleSection/ChronicleSection'
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
@@ -13,7 +13,7 @@ import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 type ChroniclesSectionWithAnchorProps = {
   chronicles?: ChronicleCardData[]
   chronicleVariantInfo: ChronicleVariantInfo
-  offer: OfferResponseV2
+  offer: OfferResponse
   onSeeMoreButtonPress: (chronicleId: number) => void
   onShowChroniclesWritersModal: () => void
   onSeeAllReviewsPress: () => void

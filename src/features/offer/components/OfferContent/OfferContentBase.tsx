@@ -20,7 +20,7 @@ import {
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
-import { OfferArtist, OfferResponseV2, ReactionTypeEnum, RecommendationApiParams } from 'api/gen'
+import { OfferArtist, OfferResponse, ReactionTypeEnum, RecommendationApiParams } from 'api/gen'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -149,7 +149,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   )
 
   const queryClient = useQueryClient()
-  const cachedOffer = queryClient.getQueryData<OfferResponseV2>([QueryKeys.OFFER, offer.id])
+  const cachedOffer = queryClient.getQueryData<OfferResponse>([QueryKeys.OFFER, offer.id])
 
   // Extract cached image before it's been updated by next offer query
   const placeholderImage = useRef(cachedOffer?.images?.recto?.url).current
