@@ -3,17 +3,11 @@ import { Animated, View } from 'react-native'
 
 import { render, screen, userEvent } from 'tests/utils'
 
-import { OfferHeaderView } from '../OfferHeaderView'
-import { OfferHeaderViewModel } from '../types'
+import { OfferHeaderView } from './OfferHeaderView'
+import { OfferHeaderViewModel } from './types'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.useFakeTimers()
-
-const mockAnimationState = {
-  iconBackgroundColor: new Animated.Value(0) as Animated.AnimatedInterpolation<string | number>,
-  iconBorderColor: new Animated.Value(0) as Animated.AnimatedInterpolation<string | number>,
-  transition: new Animated.Value(0) as Animated.AnimatedInterpolation<string | number>,
-}
 
 const mockOnBackPress = jest.fn()
 const mockOnSharePress = jest.fn()
@@ -21,7 +15,6 @@ const mockOnDismissShareModal = jest.fn()
 
 const defaultViewModel: OfferHeaderViewModel = {
   title: 'Test Offer',
-  animationState: mockAnimationState,
   shareModal: {
     isVisible: false,
     content: null,
@@ -114,10 +107,10 @@ describe('<OfferHeaderView />', () => {
   })
 })
 
-function renderOfferHeaderView(
+const renderOfferHeaderView = (
   viewModel: OfferHeaderViewModel = defaultViewModel,
   children?: React.ReactNode
-) {
+) => {
   render(
     <OfferHeaderView viewModel={viewModel} headerTransition={headerTransition}>
       {children}

@@ -12,18 +12,12 @@ type OfferHeaderProps = PropsWithChildren<{
   offer: OfferResponseV2
 }>
 
-/**
- * Wrapper d'intégration du header refactorisé.
- * Même API que l'ancien OfferHeader pour injection via HeaderComponent.
- *
- * @param props.headerTransition should be between animated between 0 and 1
- */
-export function OfferHeader({
+export const OfferHeader = ({
   headerTransition,
   title: _title,
   offer,
   children,
-}: Readonly<OfferHeaderProps>) {
+}: Readonly<OfferHeaderProps>) => {
   const viewModel = useOfferHeader({ offer, headerTransition })
 
   return (

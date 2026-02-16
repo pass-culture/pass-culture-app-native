@@ -1,24 +1,17 @@
+import React, { PropsWithChildren } from 'react'
 import { Animated } from 'react-native'
+import { ThemeProvider } from 'styled-components/native'
 
 import * as useGoBack from 'features/navigation/useGoBack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as getShareOfferModule from 'features/share/helpers/getShareOffer'
 import { analytics } from 'libs/analytics/provider'
+import { computedTheme } from 'tests/computedTheme'
 import { renderHook, act } from 'tests/utils'
 
-import { useOfferHeader } from '../useOfferHeader'
+import { useOfferHeader } from './useOfferHeader'
 
 jest.mock('libs/firebase/analytics/analytics')
-
-const mockAnimationState = {
-  iconBackgroundColor: new Animated.Value(0) as Animated.AnimatedInterpolation<string | number>,
-  iconBorderColor: new Animated.Value(0) as Animated.AnimatedInterpolation<string | number>,
-  transition: new Animated.Value(0) as Animated.AnimatedInterpolation<string | number>,
-}
-
-jest.mock('../useOfferHeaderAnimation', () => ({
-  useOfferHeaderAnimation: jest.fn(() => mockAnimationState),
-}))
 
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
@@ -39,22 +32,31 @@ jest.mock('features/navigation/SearchStackNavigator/getSearchHookConfig', () => 
 
 const headerTransition = new Animated.Value(0) as Animated.AnimatedInterpolation<number>
 
+const wrapper = ({ children }: PropsWithChildren) =>
+  React.createElement(ThemeProvider, { theme: computedTheme }, children)
+
 describe('useOfferHeader', () => {
   beforeEach(() => {
     jest.clearAllMocks()
   })
 
   it('should return the offer name as title', () => {
-    const { result } = renderHook(() =>
-      useOfferHeader({ offer: offerResponseSnap, headerTransition })
+    const { result } = renderHook(
+      () => useOfferHeader({ offer: offerResponseSnap, headerTransition }),
+      {
+        wrapper,
+      }
     )
 
     expect(result.current.title).toBe(offerResponseSnap.name)
   })
 
   it('should return share modal initially hidden', () => {
-    const { result } = renderHook(() =>
-      useOfferHeader({ offer: offerResponseSnap, headerTransition })
+    const { result } = renderHook(
+      () => useOfferHeader({ offer: offerResponseSnap, headerTransition }),
+      {
+        wrapper,
+      }
     )
 
     expect(result.current.shareModal.isVisible).toBe(false)
@@ -62,17 +64,12 @@ describe('useOfferHeader', () => {
     expect(result.current.shareModal.title).toBe('Partager l\u2019offre')
   })
 
-  it('should return animation state', () => {
-    const { result } = renderHook(() =>
-      useOfferHeader({ offer: offerResponseSnap, headerTransition })
-    )
-
-    expect(result.current.animationState).toBe(mockAnimationState)
-  })
-
   it('should log analytics and execute share on share press', () => {
-    const { result } = renderHook(() =>
-      useOfferHeader({ offer: offerResponseSnap, headerTransition })
+    const { result } = renderHook(
+      () => useOfferHeader({ offer: offerResponseSnap, headerTransition }),
+      {
+        wrapper,
+      }
     )
 
     act(() => {
@@ -88,8 +85,11 @@ describe('useOfferHeader', () => {
   })
 
   it('should call goBack on back press', () => {
-    const { result } = renderHook(() =>
-      useOfferHeader({ offer: offerResponseSnap, headerTransition })
+    const { result } = renderHook(
+      () => useOfferHeader({ offer: offerResponseSnap, headerTransition }),
+      {
+        wrapper,
+      }
     )
 
     act(() => {
@@ -100,8 +100,11 @@ describe('useOfferHeader', () => {
   })
 
   it('should show share modal after share press', () => {
-    const { result } = renderHook(() =>
-      useOfferHeader({ offer: offerResponseSnap, headerTransition })
+    const { result } = renderHook(
+      () => useOfferHeader({ offer: offerResponseSnap, headerTransition }),
+      {
+        wrapper,
+      }
     )
 
     expect(result.current.shareModal.isVisible).toBe(false)
@@ -114,8 +117,11 @@ describe('useOfferHeader', () => {
   })
 
   it('should hide share modal on dismiss', () => {
-    const { result } = renderHook(() =>
-      useOfferHeader({ offer: offerResponseSnap, headerTransition })
+    const { result } = renderHook(
+      () => useOfferHeader({ offer: offerResponseSnap, headerTransition }),
+      {
+        wrapper,
+      }
     )
 
     act(() => {
@@ -137,22 +143,27 @@ describe('useOfferHeader', () => {
       shareContent: null,
     })
 
-    const { result } = renderHook(() =>
-      useOfferHeader({ offer: offerResponseSnap, headerTransition })
+    const { result } = renderHook(
+      () => useOfferHeader({ offer: offerResponseSnap, headerTransition }),
+      {
+        wrapper,
+      }
     )
 
     expect(result.current.shareModal.content).toBeNull()
   })
 
   it('should return all expected ViewModel properties', () => {
-    const { result } = renderHook(() =>
-      useOfferHeader({ offer: offerResponseSnap, headerTransition })
+    const { result } = renderHook(
+      () => useOfferHeader({ offer: offerResponseSnap, headerTransition }),
+      {
+        wrapper,
+      }
     )
 
     expect(result.current).toEqual(
       expect.objectContaining({
         title: expect.any(String),
-        animationState: expect.any(Object),
         shareModal: expect.objectContaining({
           isVisible: expect.any(Boolean),
           title: expect.any(String),

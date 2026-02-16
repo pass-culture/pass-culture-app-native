@@ -4,12 +4,6 @@ import { Animated } from 'react-native'
 import { OfferResponseV2 } from 'api/gen'
 import { ShareContent } from 'libs/share/types'
 
-export type AnimationState = {
-  iconBackgroundColor: Animated.AnimatedInterpolation<string | number>
-  iconBorderColor: Animated.AnimatedInterpolation<string | number>
-  transition: Animated.AnimatedInterpolation<string | number>
-}
-
 export type UseOfferHeaderParams = {
   offer: OfferResponseV2
   headerTransition: Animated.AnimatedInterpolation<string | number>
@@ -17,7 +11,6 @@ export type UseOfferHeaderParams = {
 
 export type OfferHeaderViewModel = {
   title: string
-  animationState: AnimationState
   shareModal: {
     isVisible: boolean
     content: ShareContent | null

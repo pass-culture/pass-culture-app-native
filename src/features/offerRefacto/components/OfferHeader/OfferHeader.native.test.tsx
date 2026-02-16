@@ -6,7 +6,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
 import { render, screen, userEvent } from 'tests/utils'
 
-import { OfferHeader } from '../OfferHeader'
+import { OfferHeader } from './OfferHeader'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.spyOn(Share, 'share').mockImplementation(jest.fn())
@@ -36,7 +36,7 @@ describe('<OfferHeader /> (refacto wrapper)', () => {
   it('should render share and back buttons', () => {
     renderOfferHeader()
 
-    expect(screen.getByTestId('animated-icon-back')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Revenir en arrière')).toBeOnTheScreen()
     expect(screen.getByLabelText('Partager')).toBeOnTheScreen()
   })
 
@@ -50,7 +50,7 @@ describe('<OfferHeader /> (refacto wrapper)', () => {
   it('should call goBack when back button is pressed', async () => {
     renderOfferHeader()
 
-    await user.press(screen.getByTestId('animated-icon-back'))
+    await user.press(screen.getByLabelText('Revenir en arrière'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
@@ -74,7 +74,7 @@ describe('<OfferHeader /> (refacto wrapper)', () => {
   })
 })
 
-function renderOfferHeader(children?: React.ReactElement | null) {
+const renderOfferHeader = (children?: React.ReactElement | null) => {
   const animatedValue = new Animated.Value(0)
   render(
     <OfferHeader title="Ignored title" headerTransition={animatedValue} offer={offerResponseSnap}>

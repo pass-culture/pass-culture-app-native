@@ -1,26 +1,20 @@
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { WebShareModal } from 'features/share/pages/WebShareModal'
-import { RoundedButton } from 'ui/components/buttons/RoundedButton'
+import { Button } from 'ui/designSystem/Button/Button'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Share } from 'ui/svg/icons/Share'
 
 import { OfferHeaderViewProps } from './types'
 
-/**
- * Vue pure du header d'offre
- * DR014 : Responsabilité unique = affichage
- */
-export function OfferHeaderView({
+export const OfferHeaderView = ({
   viewModel,
   headerTransition,
   children,
-}: Readonly<OfferHeaderViewProps>) {
-  const theme = useTheme()
-
-  const { title, animationState, shareModal, onBackPress, onSharePress, onDismissShareModal } =
-    viewModel
+}: Readonly<OfferHeaderViewProps>) => {
+  const { title, shareModal, onBackPress, onSharePress, onDismissShareModal } = viewModel
 
   return (
     <React.Fragment>
@@ -31,12 +25,13 @@ export function OfferHeaderView({
         onBackPress={onBackPress}
         RightElement={
           <ButtonsWrapper gap={3}>
-            <RoundedButton
-              animationState={animationState}
-              iconName="share"
+            <Button
+              iconButton
+              icon={Share}
               onPress={onSharePress}
               accessibilityLabel="Partager"
-              finalColor={theme.designSystem.color.icon.default}
+              variant="secondary"
+              color="neutral"
             />
             {children}
           </ButtonsWrapper>
