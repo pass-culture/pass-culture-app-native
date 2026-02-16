@@ -1,8 +1,8 @@
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Info } from 'ui/svg/icons/Info'
 import { Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
@@ -28,10 +28,11 @@ export const BookingCloseInformation = ({ visible, hideModal }: Props) => {
           {LINE_BREAK}Si elle est éligible à une annulation, tu pourras lʼannuler depuis lʼonglet
           “Réservations”
         </ModalBodyText>
-        <ButtonPrimary
+        <Button
           wording="J’ai compris"
           accessibilityLabel="J’ai compris, je ferme la pop-up "
           onPress={hideModal}
+          fullWidth
         />
       </React.Fragment>
     </AppInformationModal>

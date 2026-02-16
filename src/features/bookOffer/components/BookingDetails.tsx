@@ -30,10 +30,10 @@ import { formatFullAddress } from 'shared/address/addressFormatter'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Loader } from 'ui/components/Loader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Error } from 'ui/svg/icons/Error'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { Spacer, Typo } from 'ui/theme'
@@ -266,11 +266,12 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
       ) : null}
 
       <ButtonContainer>
-        <ButtonPrimary
+        <Button
           disabled={isBookingConfirmationButtonDisabled}
           wording="Confirmer la réservation"
           onPress={onPressBookOffer}
           accessibilityHint={deductedAmount}
+          fullWidth
         />
       </ButtonContainer>
       {formattedPriceWithEuro && isNotUserFreeStatus ? (

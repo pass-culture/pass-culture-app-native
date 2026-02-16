@@ -10,11 +10,11 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { SadFace } from 'ui/svg/icons/SadFace'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const BookingImpossible: React.FC = () => {
   const { bookingState, dismissModal, dispatch } = useBookingContext()
@@ -61,19 +61,16 @@ export const BookingImpossible: React.FC = () => {
   return (
     <Container>
       <GreySadFace />
-      <Spacer.Column numberOfSpaces={6} />
 
-      <StyledBody>
+      <StyledBodyHeader>
         Les conditions générales d’utilisation de l’App Store iOS ne permettent pas de réserver
         cette offre sur l’application.
-      </StyledBody>
-      <Spacer.Column numberOfSpaces={6} />
+      </StyledBodyHeader>
 
       {favorite ? (
         <React.Fragment>
           <StyledBody>Rends-toi vite sur le site pass Culture afin de la réserver</StyledBody>
-          <Spacer.Column numberOfSpaces={6} />
-          <ButtonPrimary wording="Voir le détail de l’offre" onPress={navigateToOffer} />
+          <Button wording="Voir le détail de l’offre" onPress={navigateToOffer} fullWidth />
         </React.Fragment>
       ) : (
         <React.Fragment>
@@ -81,17 +78,19 @@ export const BookingImpossible: React.FC = () => {
             Mets cette offre en favoris&nbsp;: tu recevras une notification avec un lien pour la
             réserver sur notre application web&nbsp;!
           </StyledBody>
-          <Spacer.Column numberOfSpaces={6} />
-          <ButtonPrimary wording="Mettre en favori" onPress={addToFavourite} />
-          <Spacer.Column numberOfSpaces={4} />
-          <ButtonTertiaryPrimary
-            wording="Retourner à l’offre"
-            onPress={dismissModal}
-            icon={PlainArrowPrevious}
-          />
+          <ViewGap gap={4}>
+            <Button wording="Mettre en favori" onPress={addToFavourite} fullWidth />
+            <Button
+              wording="Retourner à l’offre"
+              onPress={dismissModal}
+              icon={PlainArrowPrevious}
+              variant="tertiary"
+              color="brand"
+              fullWidth
+            />
+          </ViewGap>
         </React.Fragment>
       )}
-      <Spacer.Column numberOfSpaces={4} />
     </Container>
   )
 }
@@ -101,13 +100,18 @@ const GreySadFace = styled(SadFace).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.medium,
 }))``
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   width: '100%',
   justifyContent: 'center',
   alignContent: 'center',
   alignItems: 'center',
-})
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   paddingHorizontal: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
+const StyledBodyHeader = styled(StyledBody)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
 }))

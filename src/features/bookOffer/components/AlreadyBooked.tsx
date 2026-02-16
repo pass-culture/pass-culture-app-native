@@ -5,10 +5,10 @@ import { OfferResponseV2 } from 'api/gen'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { env } from 'libs/environment/env'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Typo } from 'ui/theme'
 
 export function AlreadyBooked({ offer }: { offer: OfferResponseV2 }) {
@@ -38,10 +38,11 @@ export function AlreadyBooked({ offer }: { offer: OfferResponseV2 }) {
       />
       <Spacer.Column numberOfSpaces={designSystem.size.spacing.m} />
       <InternalTouchableLink
-        as={ButtonPrimary}
+        as={Button}
         wording="Mes réservations terminées"
         navigateTo={{ screen: 'Bookings' }}
         onBeforeNavigate={dismissModal}
+        fullWidth
       />
     </Container>
   )
