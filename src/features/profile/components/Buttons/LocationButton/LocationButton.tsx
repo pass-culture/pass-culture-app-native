@@ -36,11 +36,11 @@ export const LocationButton = ({
       <SectionWithSwitch
         icon={LocationPointer}
         iconSize={SECTION_ROW_ICON_SIZE}
-        title="Activer ma géolocalisation"
+        title="Géolocalisation"
         active={isGeolocSwitchActive}
         accessibilityHint={geolocPositionError?.message}
         toggle={toggle}
-        toggleLabel="Activer ma géolocalisation"
+        toggleLabel="Géolocalisation"
       />
       <InputError
         visible={!!geolocPositionError}

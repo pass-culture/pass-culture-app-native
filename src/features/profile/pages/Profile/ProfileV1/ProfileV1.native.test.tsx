@@ -57,7 +57,7 @@ jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 
-const GEOLOC_SWITCH = /Activer ma géolocalisation - Interrupteur à bascule/
+const GEOLOC_SWITCH = /Géolocalisation - Interrupteur à bascule/
 
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
 const mockPositionError = null as GeolocationError | null
@@ -147,7 +147,7 @@ describe('<ProfileV1 />', () => {
   it('should render correctly', async () => {
     renderProfile()
 
-    await screen.findByText('Centre d’aide')
+    await screen.findByText('Chercher une info')
 
     expect(screen).toMatchSnapshot()
   })
@@ -255,7 +255,7 @@ describe('<ProfileV1 />', () => {
     it('should navigate when the notifications row is clicked', async () => {
       renderProfile()
 
-      const notificationsButton = screen.getByText('Notifications')
+      const notificationsButton = screen.getByText('Notifications et thèmes suivis')
       await user.press(notificationsButton)
 
       expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
@@ -283,7 +283,7 @@ describe('<ProfileV1 />', () => {
       const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
       renderProfile()
 
-      const faqButton = screen.getByText('Centre d’aide')
+      const faqButton = screen.getByText('Chercher une info')
       await user.press(faqButton)
 
       expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK, undefined, true)
@@ -376,7 +376,7 @@ describe('<ProfileV1 />', () => {
     })
 
     it('should display achievement section when is beneficiary user', async () => {
-      mockedUseAuthContext.mockReturnValueOnce({ user: beneficiaryUser })
+      mockedUseAuthContext.mockReturnValueOnce({ isLoggedIn: true, user: beneficiaryUser })
       renderProfile()
 
       await act(() => {})
@@ -387,7 +387,7 @@ describe('<ProfileV1 />', () => {
     })
 
     it('should go to achievements when user clicks the banner', async () => {
-      mockedUseAuthContext.mockReturnValueOnce({ user: beneficiaryUser })
+      mockedUseAuthContext.mockReturnValueOnce({ isLoggedIn: true, user: beneficiaryUser })
 
       renderProfile()
 
@@ -403,7 +403,7 @@ describe('<ProfileV1 />', () => {
     it('should not display achievement section when is not beneficiary user', async () => {
       renderProfile()
 
-      await screen.findByText('Mon profil')
+      await screen.findByText('Informations personnelles')
 
       const achievementSectionTitle = screen.queryByText('Mes succès')
 
@@ -530,8 +530,12 @@ describe('<ProfileV1 />', () => {
   })
 
   describe('chatbot CTA', () => {
-    it('should display chatbot CTA when FF enableChatbot is activated', async () => {
+    it('should display chatbot CTA when FF enableChatbot is activated and user is eligible', async () => {
       setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CHATBOT])
+      mockedUseAuthContext.mockReturnValueOnce({
+        isLoggedIn: true,
+        user: beneficiaryUser,
+      })
       renderProfile()
 
       expect(await screen.findByText('Poser une question')).toBeOnTheScreen()
@@ -539,6 +543,17 @@ describe('<ProfileV1 />', () => {
 
     it('should not display chatbot CTA when FF enableChatbot is deactivated', async () => {
       setFeatureFlags([])
+      mockedUseAuthContext.mockReturnValueOnce({
+        isLoggedIn: true,
+        user: beneficiaryUser,
+      })
+      renderProfile()
+
+      expect(screen.queryByText('Poser une question')).not.toBeOnTheScreen()
+    })
+
+    it('should not display chatbot CTA when user is not eligible', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CHATBOT])
       renderProfile()
 
       expect(screen.queryByText('Poser une question')).not.toBeOnTheScreen()

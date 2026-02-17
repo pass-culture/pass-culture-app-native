@@ -14,8 +14,6 @@ type LoggedOutContentConfig = {
 }
 
 type LoggedOutContentParams = {
-  ChatbotButton: React.ReactNode
-} & {
   HelpButton: React.ReactNode
 } & {
   AppearanceButton: React.ReactNode
@@ -29,35 +27,37 @@ type LoggedOutContentParams = {
 
 export const loggedOutContentConfig = ({
   AppearanceButton,
-  ChatbotButton,
   HelpButton,
   LocationButton,
   ShareBanner,
   SocialNetwork,
 }: LoggedOutContentParams): LoggedOutContentConfig[] => [
   {
-    section: 'Paramètres de l’application',
+    section: 'Paramètres',
     items: [
-      { title: 'Notifications', screen: 'NotificationsSettings', icon: Bell },
       { component: LocationButton, key: 'LocationButton' },
+      { component: AppearanceButton, key: 'AppearanceButton' },
+      {
+        title: 'Notifications et thèmes et suivis',
+        screen: 'NotificationsSettings',
+        icon: Bell,
+      },
     ],
   },
   {
-    section: 'Aides',
+    section: 'Aide',
     items: [
-      { component: ChatbotButton, key: 'ChatbotButton' },
       { component: HelpButton, key: 'HelpButton' },
-      { title: 'Centre d’aide', externalNav: { url: env.ACCESSIBILITY_PLAN } },
+      { title: 'Chercher une info', externalNav: { url: env.ACCESSIBILITY_PLAN } },
     ],
   },
   {
     section: 'Autres',
     items: [
-      { component: AppearanceButton, key: 'AppearanceButton' },
-      { title: 'Accessibilité', screen: 'Accessibility', icon: HandicapMental },
-      { title: 'Faire une suggestion', screen: 'FeedbackInApp', icon: Bulb },
-      { title: 'Informations légales', screen: 'LegalNotices', icon: LegalNotices },
       { title: 'Confidentialité', screen: 'ConsentSettings', icon: Confidentiality },
+      { title: 'Accessibilité', screen: 'Accessibility', icon: HandicapMental },
+      { title: 'Informations légales', screen: 'LegalNotices', icon: LegalNotices },
+      { title: 'Faire une suggestion', screen: 'FeedbackInApp', icon: Bulb },
     ],
   },
   {
