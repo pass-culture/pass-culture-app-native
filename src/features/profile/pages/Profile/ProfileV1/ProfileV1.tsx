@@ -196,7 +196,6 @@ const OnlineProfile: React.FC = () => {
   const hidePreferenceSection = !enableDarkMode && isWeb
   const shouldShowAchievementsSection = user?.isBeneficiary
 
-  // Chatbot eligibility based on user status
   const userStatusType = user?.status?.statusType
   const isEligibleForChatbot =
     !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.includes(userStatusType)
