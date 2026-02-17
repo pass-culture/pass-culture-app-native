@@ -20,9 +20,7 @@ export const loggedInNonBeneficiaryContentConfig = ({
 }: LoggedInContentParams): LoggedInContentConfig[] => [
   {
     section: 'Profil',
-    items: [
-      { title: 'Informations personnelles', screen: 'PersonalData', icon: Profile },
-    ],
+    items: [{ title: 'Informations personnelles', screen: 'PersonalData', icon: Profile }],
   },
   {
     section: 'Paramètres',

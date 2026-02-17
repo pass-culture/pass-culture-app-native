@@ -33,14 +33,14 @@ describe('LoggedOutContent', () => {
 
   describe('HelpButton', () => {
     it('should not display HelpButton when getShouldDisplayHelpButton returns false', () => {
-      mockGetShouldDisplayHelpButton.mockReturnValue(false)
+      mockGetShouldDisplayHelpButton.mockReturnValueOnce(false)
       render(<LoggedOutContent user={undefined} />)
 
       expect(screen.queryByText('Comment ça marche\u00a0?')).toBeNull()
     })
 
     it('should display HelpButton when getShouldDisplayHelpButton returns true', () => {
-      mockGetShouldDisplayHelpButton.mockReturnValue(true)
+      mockGetShouldDisplayHelpButton.mockReturnValueOnce(true)
       render(<LoggedOutContent user={undefined} />)
 
       expect(screen.getByText('Comment ça marche\u00a0?')).toBeTruthy()
