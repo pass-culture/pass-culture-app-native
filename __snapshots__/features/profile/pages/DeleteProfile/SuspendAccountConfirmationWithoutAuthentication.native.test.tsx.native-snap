@@ -19,7 +19,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
     style={
       [
         {
-          "backgroundColor": "rgba(255,255,255,0)",
+          "backgroundColor": "#ffffff",
           "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,

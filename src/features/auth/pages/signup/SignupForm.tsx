@@ -21,7 +21,6 @@ import { campaignTracker } from 'libs/campaign/campaign'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { useModal } from 'ui/components/modals/useModal'
@@ -206,8 +205,6 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
           </React.Fragment>
         ) : null}
       </StyledScrollView>
-
-      <BlurHeader height={headerHeight} />
     </Page>
   )
 }

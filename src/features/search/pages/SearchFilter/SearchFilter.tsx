@@ -27,7 +27,7 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { Page } from 'ui/pages/Page'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 
 export const SearchFilter: React.FC = () => {
   const currency = useGetCurrencyToDisplay()
@@ -178,6 +178,6 @@ const StyledLi = styled(Li)<{ isFirstSectionItem?: boolean }>(({ isFirstSectionI
   marginTop: isFirstSectionItem ? theme.designSystem.size.spacing.xl : undefined,
 }))
 
-const StyledSecondaryPageWithBlurHeader = styled(SecondaryPageWithBlurHeader)(({ theme }) => ({
+const StyledSecondaryPageWithBlurHeader = styled(SecondaryPageWithNeutralHeader)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.l,
 }))

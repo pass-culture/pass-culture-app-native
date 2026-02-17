@@ -32,7 +32,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 import { Close } from 'ui/svg/icons/Close'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Typo } from 'ui/theme'
@@ -164,7 +164,7 @@ export const ConsentSettings = () => {
   return (
     <React.Fragment>
       <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
-        <SecondaryPageWithBlurHeader
+        <SecondaryPageWithNeutralHeader
           onGoBack={handleBack}
           title="Paramètres de confidentialité"
           scrollable
@@ -208,7 +208,7 @@ export const ConsentSettings = () => {
             accessibilityRole={AccessibilityRole.BUTTON}
             onPress={handleSaveChoices}
           />
-        </SecondaryPageWithBlurHeader>
+        </SecondaryPageWithNeutralHeader>
       </AnchorProvider>
 
       <AppModal

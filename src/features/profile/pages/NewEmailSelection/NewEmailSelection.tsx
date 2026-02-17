@@ -15,7 +15,7 @@ import { Form } from 'ui/components/Form'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 
 type FormValues = {
   newEmail: string
@@ -62,7 +62,7 @@ export const NewEmailSelection = () => {
   })
 
   return (
-    <SecondaryPageWithBlurHeader title="Modifier mon adresse e-mail">
+    <SecondaryPageWithNeutralHeader title="Modifier mon adresse e-mail">
       <Form.MaxWidth flex={1}>
         <EmailInputController control={control} name="newEmail" label="Nouvelle adresse e-mail" />
         <Container>
@@ -74,7 +74,7 @@ export const NewEmailSelection = () => {
           onPress={onSubmit}
         />
       </Form.MaxWidth>
-    </SecondaryPageWithBlurHeader>
+    </SecondaryPageWithNeutralHeader>
   )
 }
 

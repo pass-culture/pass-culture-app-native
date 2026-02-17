@@ -19,7 +19,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
     style={
       [
         {
-          "backgroundColor": "rgba(255,255,255,0)",
+          "backgroundColor": "#ffffff",
           "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
@@ -708,7 +708,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
     style={
       [
         {
-          "backgroundColor": "rgba(255,255,255,0)",
+          "backgroundColor": "#ffffff",
           "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
@@ -1295,7 +1295,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
     style={
       [
         {
-          "backgroundColor": "rgba(255,255,255,0)",
+          "backgroundColor": "#ffffff",
           "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,

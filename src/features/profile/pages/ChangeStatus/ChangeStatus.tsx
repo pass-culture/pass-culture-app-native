@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from 'uuid'
 import { StatusFlatList } from 'features/identityCheck/pages/profile/StatusFlatList'
 import { useSubmitChangeStatus } from 'features/profile/pages/ChangeStatus/useSubmitChangeStatus'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 
 export const ChangeStatus = () => {
@@ -26,7 +25,6 @@ export const ChangeStatus = () => {
         control={control}
         headerHeight={headerHeight}
       />
-      <BlurHeader height={headerHeight} />
     </React.Fragment>
   )
 }

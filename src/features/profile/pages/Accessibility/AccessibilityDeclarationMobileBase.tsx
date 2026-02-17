@@ -12,7 +12,7 @@ import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 import { Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -48,7 +48,7 @@ export function AccessibilityDeclarationMobileBase({
   const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
 
   return (
-    <SecondaryPageWithBlurHeader
+    <SecondaryPageWithNeutralHeader
       onGoBack={goBack}
       title={`Déclaration d’accessibilité - ${platformName}`}
       enableMaxWidth={false}>
@@ -258,7 +258,7 @@ export function AccessibilityDeclarationMobileBase({
         </ViewGap>
       </ViewGap>
       <Spacer.BottomScreen />
-    </SecondaryPageWithBlurHeader>
+    </SecondaryPageWithNeutralHeader>
   )
 }
 

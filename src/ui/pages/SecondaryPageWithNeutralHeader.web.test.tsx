@@ -3,7 +3,7 @@ import React from 'react'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 import { Typo } from 'ui/theme'
 
-import { SecondaryPageWithBlurHeader } from './SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from './SecondaryPageWithNeutralHeader'
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -14,12 +14,12 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 describe('<SecondaryPageWithBlurHeader />', () => {
   it('should not have basic accessibility issues', async () => {
     const { container } = render(
-      <SecondaryPageWithBlurHeader
+      <SecondaryPageWithNeutralHeader
         title="SecondaryPageWithBlurHeader"
         shouldDisplayBackButton
         onGoBack={jest.fn}>
         <Typo.Body>Children</Typo.Body>
-      </SecondaryPageWithBlurHeader>
+      </SecondaryPageWithNeutralHeader>
     )
 
     const results = await checkAccessibilityFor(container)

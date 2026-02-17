@@ -19,7 +19,7 @@ import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { LoadingPage } from 'ui/pages/LoadingPage'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -110,7 +110,7 @@ export const ReinitializePassword = () => {
     return <LoadingPage />
   }
   return (
-    <SecondaryPageWithBlurHeader
+    <SecondaryPageWithNeutralHeader
       title="Nouveau mot de passe"
       RightButton={<RightButtonText onClose={navigateToHome} wording="Quitter" />}>
       <Typo.Title3 {...getHeadingAttrs(2)}>Choisis un nouveau mot de passe</Typo.Title3>
@@ -147,7 +147,7 @@ export const ReinitializePassword = () => {
           />
         </Container>
       </Form.MaxWidth>
-    </SecondaryPageWithBlurHeader>
+    </SecondaryPageWithNeutralHeader>
   )
 }
 

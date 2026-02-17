@@ -10,7 +10,7 @@ import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
@@ -20,7 +20,7 @@ export function LegalNotices() {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
 
   return (
-    <SecondaryPageWithBlurHeader title="Informations légales" onGoBack={goBack} scrollable>
+    <SecondaryPageWithNeutralHeader title="Informations légales" onGoBack={goBack} scrollable>
       <ViewGap gap={4}>
         <Typo.Body>ÉDITEUR SAS pass Culture</Typo.Body>
         <Typo.Body>
@@ -78,6 +78,6 @@ export function LegalNotices() {
           iconSize={SECTION_ROW_ICON_SIZE}
         />
       </ViewGap>
-    </SecondaryPageWithBlurHeader>
+    </SecondaryPageWithNeutralHeader>
   )
 }

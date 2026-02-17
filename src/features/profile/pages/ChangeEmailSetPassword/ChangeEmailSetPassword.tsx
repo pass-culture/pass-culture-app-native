@@ -16,7 +16,7 @@ import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEv
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -67,7 +67,7 @@ export const ChangeEmailSetPassword = () => {
   })
 
   return (
-    <SecondaryPageWithBlurHeader title="Créer mon mot de passe">
+    <SecondaryPageWithNeutralHeader title="Créer mon mot de passe">
       <StyledView paddingBottom={Platform.OS === 'ios' ? keyboardHeight : 0}>
         <ViewGap gap={4}>
           <Typo.Title3 {...getHeadingAttrs(2)}>Crée ton mot de passe</Typo.Title3>
@@ -109,7 +109,7 @@ export const ChangeEmailSetPassword = () => {
           </Container>
         </Form.MaxWidth>
       </StyledView>
-    </SecondaryPageWithBlurHeader>
+    </SecondaryPageWithNeutralHeader>
   )
 }
 

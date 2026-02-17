@@ -86,7 +86,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
     class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginLeft-11wrixw r-marginRight-61z16t"
   >
     <header
-      class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-1nwnxgm r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
+      class="css-view-175oi2r r-backgroundColor-14lw9ot r-borderBottomColor-1nwnxgm r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
       role="banner"
     >
       <div
@@ -155,7 +155,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
           class="css-view-175oi2r r-height-17lwhjb"
         />
         <div
-          class="css-view-175oi2r r-alignSelf-1kihuf0 r-maxWidth-1ik5qf4 r-width-13qz1uu"
+          class="css-view-175oi2r r-alignSelf-1kihuf0 r-marginTop-2o02ov r-maxWidth-1ik5qf4 r-width-13qz1uu"
         >
           <div
             class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
@@ -802,9 +802,6 @@ exports[`NotificationsSettings should render correctly 1`] = `
         </div>
       </div>
     </div>
-    <div
-      class="css-view-175oi2r r-backdropFilter-1jy2u1p r-height-17lwhjb r-left-1d2f490 r-overflow-1udh08x r-position-u8s1d r-right-zchlnj r-top-ipm5af"
-    />
   </div>
 </div>
 `;

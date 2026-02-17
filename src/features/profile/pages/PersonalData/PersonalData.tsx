@@ -15,7 +15,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Button } from 'ui/designSystem/Button/Button'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 import { Trash } from 'ui/svg/icons/Trash'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
@@ -42,7 +42,7 @@ export function PersonalData() {
   }, [hasCurrentEmailChange])
 
   return (
-    <SecondaryPageWithBlurHeader onGoBack={goBack} title="Informations personnelles">
+    <SecondaryPageWithNeutralHeader onGoBack={goBack} title="Informations personnelles">
       <EditableField label="Prénom et nom" value={fullname} />
       <EditableField
         label="Adresse e-mail"
@@ -93,6 +93,6 @@ export function PersonalData() {
           iconSize={SECTION_ROW_ICON_SIZE}
         />
       </ViewGap>
-    </SecondaryPageWithBlurHeader>
+    </SecondaryPageWithNeutralHeader>
   )
 }

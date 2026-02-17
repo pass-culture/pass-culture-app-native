@@ -6,7 +6,7 @@ exports[`ChatbotContainer should render webview correctly 1`] = `
     accessibilityRole="header"
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,

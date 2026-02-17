@@ -3,7 +3,7 @@ import React from 'react'
 import { render, screen } from 'tests/utils'
 import { Typo } from 'ui/theme'
 
-import { SecondaryPageWithBlurHeader } from './SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from './SecondaryPageWithNeutralHeader'
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -14,12 +14,12 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 describe('<SecondaryPageWithBlurHeader />', () => {
   it('should render correctly', () => {
     render(
-      <SecondaryPageWithBlurHeader
+      <SecondaryPageWithNeutralHeader
         title="SecondaryPageWithBlurHeader"
         shouldDisplayBackButton
         onGoBack={jest.fn}>
         <Typo.Title2>Children</Typo.Title2>
-      </SecondaryPageWithBlurHeader>
+      </SecondaryPageWithNeutralHeader>
     )
 
     expect(screen).toMatchSnapshot()

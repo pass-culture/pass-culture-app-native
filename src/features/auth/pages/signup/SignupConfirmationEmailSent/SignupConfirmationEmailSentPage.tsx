@@ -3,14 +3,14 @@ import React, { FunctionComponent } from 'react'
 
 import { SignupConfirmationEmailSent } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 
 type Props = NativeStackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
 
 export const SignupConfirmationEmailSentPage: FunctionComponent<Props> = ({ route }) => {
   return (
-    <SecondaryPageWithBlurHeader title="Inscription">
+    <SecondaryPageWithNeutralHeader title="Inscription">
       <SignupConfirmationEmailSent email={route.params.email} />
-    </SecondaryPageWithBlurHeader>
+    </SecondaryPageWithNeutralHeader>
   )
 }

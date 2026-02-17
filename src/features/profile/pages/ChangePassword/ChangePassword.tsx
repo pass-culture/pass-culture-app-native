@@ -20,7 +20,7 @@ import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEv
 import { Button } from 'ui/designSystem/Button/Button'
 import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 
 type ChangePasswordFormData = {
   currentPassword: string
@@ -117,7 +117,7 @@ export function ChangePassword() {
   }
 
   return (
-    <SecondaryPageWithBlurHeader
+    <SecondaryPageWithNeutralHeader
       title="Mot de passe"
       scrollable
       scrollViewProps={{
@@ -159,7 +159,7 @@ export function ChangePassword() {
           />
         </Form.MaxWidth>
       </Container>
-    </SecondaryPageWithBlurHeader>
+    </SecondaryPageWithNeutralHeader>
   )
 }
 

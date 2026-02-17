@@ -14,7 +14,7 @@ import { analytics } from 'libs/analytics/provider'
 import { GeolocPermissionState, useLocation } from 'libs/location/location'
 import { Button } from 'ui/designSystem/Button/Button'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 
 const sortOptions = buildSortRadioOptions()
 
@@ -67,7 +67,7 @@ export const FavoritesSorts: React.FC = () => {
   }
 
   return (
-    <SecondaryPageWithBlurHeader title="Trier" onGoBack={goBack}>
+    <SecondaryPageWithNeutralHeader title="Trier" onGoBack={goBack}>
       <RadioButtonGroup
         label="Trier par"
         labelVariant="title2"
@@ -80,7 +80,7 @@ export const FavoritesSorts: React.FC = () => {
       <ButtonContainer>
         <Button wording="Valider" onPress={onValidation} />
       </ButtonContainer>
-    </SecondaryPageWithBlurHeader>
+    </SecondaryPageWithNeutralHeader>
   )
 }
 

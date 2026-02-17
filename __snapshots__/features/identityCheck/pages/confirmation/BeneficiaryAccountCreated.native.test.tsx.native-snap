@@ -19,7 +19,7 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
     style={
       [
         {
-          "backgroundColor": "rgba(255,255,255,0)",
+          "backgroundColor": "#ffffff",
           "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
@@ -463,7 +463,7 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
     style={
       [
         {
-          "backgroundColor": "rgba(255,255,255,0)",
+          "backgroundColor": "#ffffff",
           "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,

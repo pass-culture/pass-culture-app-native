@@ -10,7 +10,6 @@ import { statusActions, useStatus } from 'features/identityCheck/pages/profile/s
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 
 import { StatusFlatList, StatusForm } from './StatusFlatList'
@@ -82,7 +81,6 @@ export const SetStatus = () => {
         headerHeight={headerHeight}
         formIsValid={formIsValid}
       />
-      <BlurHeader height={headerHeight} />
     </React.Fragment>
   )
 }

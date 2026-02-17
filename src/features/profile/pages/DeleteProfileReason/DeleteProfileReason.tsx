@@ -12,7 +12,7 @@ import { getAge } from 'shared/user/getAge'
 import { theme } from 'theme'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -84,7 +84,7 @@ export function DeleteProfileReason() {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
 
   return (
-    <SecondaryPageWithBlurHeader onGoBack={goBack} title="Suppression de compte">
+    <SecondaryPageWithNeutralHeader onGoBack={goBack} title="Suppression de compte">
       <FlatList
         viewabilityConfig={VIEWABILITY_CONFIG}
         ListHeaderComponent={
@@ -118,7 +118,7 @@ export function DeleteProfileReason() {
           )
         }}
       />
-    </SecondaryPageWithBlurHeader>
+    </SecondaryPageWithNeutralHeader>
   )
 }
 

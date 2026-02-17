@@ -1,4 +1,3 @@
-import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
 import { useWindowDimensions } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
@@ -7,10 +6,8 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { PinchableBox } from 'features/offer/components/PinchableBox/PinchableBox'
-import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { CarouselDot } from 'ui/components/CarouselDot/CarouselDot'
 import { BlurFooter } from 'ui/components/headers/BlurFooter'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useGetFooterHeight } from 'ui/hooks/useGetFooterHeight/useGetFooterHeight'
@@ -29,7 +26,6 @@ export const ImagesCarousel: FunctionComponent<Props> = ({
   defaultIndex,
   goBack,
 }: Props) => {
-  const headerHeight = useGetHeaderHeight()
   const footerHeight = useGetFooterHeight(FOOTER_HEIGHT)
 
   const progressValue = useSharedValue<number>(defaultIndex)
@@ -43,7 +39,7 @@ export const ImagesCarousel: FunctionComponent<Props> = ({
 
   return (
     <Container>
-      <StyledHeader title={title} onGoBack={goBack} />
+      <PageHeaderWithoutPlaceholder title={title} onGoBack={goBack} />
       {/* @ts-expect-error - type incompatibility with React 19 */}
       <Carousel
         vertical={false}
@@ -77,8 +73,6 @@ export const ImagesCarousel: FunctionComponent<Props> = ({
           ) : null}
         </React.Fragment>
       ) : null}
-
-      <BlurHeader height={headerHeight} />
     </Container>
   )
 }
@@ -86,10 +80,6 @@ export const ImagesCarousel: FunctionComponent<Props> = ({
 const Container = styled.View(({ theme }) => ({
   flex: 1,
   backgroundColor: theme.designSystem.color.background.default,
-}))
-
-const StyledHeader = styled(PageHeaderWithoutPlaceholder)(({ theme }) => ({
-  backgroundColor: colorAlpha(theme.designSystem.color.background.default, 0.6),
 }))
 
 const Footer = styled.View<{ height: number }>(({ theme, height }) => ({

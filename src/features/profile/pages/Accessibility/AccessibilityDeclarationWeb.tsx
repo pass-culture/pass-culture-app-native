@@ -13,7 +13,7 @@ import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -37,7 +37,7 @@ const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/deleg
 export function AccessibilityDeclarationWeb() {
   const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
   return (
-    <SecondaryPageWithBlurHeader
+    <SecondaryPageWithNeutralHeader
       onGoBack={goBack}
       title="Déclaration d’accessibilité web"
       enableMaxWidth={false}>
@@ -468,7 +468,7 @@ export function AccessibilityDeclarationWeb() {
         </ViewGap>
       </ViewGap>
       <Spacer.BottomScreen />
-    </SecondaryPageWithBlurHeader>
+    </SecondaryPageWithNeutralHeader>
   )
 }
 

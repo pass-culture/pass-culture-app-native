@@ -19,7 +19,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
     style={
       [
         {
-          "backgroundColor": "rgba(255,255,255,0)",
+          "backgroundColor": "#ffffff",
           "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
@@ -611,7 +611,7 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
     style={
       [
         {
-          "backgroundColor": "rgba(255,255,255,0)",
+          "backgroundColor": "#ffffff",
           "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,

@@ -18,7 +18,7 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
     accessibilityRole="header"
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -646,37 +646,6 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
         </View>
       </View>
     </View>
-  </View>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;
@@ -699,7 +668,7 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
     accessibilityRole="header"
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -1328,37 +1297,6 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
       </View>
     </View>
   </View>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-  </View>
 </View>
 `;
 
@@ -1380,7 +1318,7 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
     accessibilityRole="header"
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -2008,37 +1946,6 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
         </View>
       </View>
     </View>
-  </View>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;

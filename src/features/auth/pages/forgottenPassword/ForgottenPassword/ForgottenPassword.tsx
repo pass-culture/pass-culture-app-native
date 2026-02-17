@@ -17,7 +17,7 @@ import { Form } from 'ui/components/Form'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { Button } from 'ui/designSystem/Button/Button'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -47,7 +47,7 @@ export const ForgottenPassword = () => {
   } = useForgottenPasswordForm(!!isRecaptchaEnabled)
 
   return (
-    <SecondaryPageWithBlurHeader
+    <SecondaryPageWithNeutralHeader
       title="Oubli de mot de passe"
       shouldDisplayBackButton
       onGoBack={onBackNavigation}>
@@ -78,7 +78,7 @@ export const ForgottenPassword = () => {
           />
         </ButtonContainer>
       </Form.MaxWidth>
-    </SecondaryPageWithBlurHeader>
+    </SecondaryPageWithNeutralHeader>
   )
 }
 const ButtonContainer = styled.View(({ theme }) => ({

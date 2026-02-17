@@ -12,7 +12,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Li } from 'ui/components/Li'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 import { Dot } from 'ui/svg/icons/Dot'
 
 export function SiteMapScreen() {
@@ -26,7 +26,7 @@ export function SiteMapScreen() {
   )
 
   return (
-    <SecondaryPageWithBlurHeader title="Plan du site" enableMaxWidth={false} onGoBack={goBack}>
+    <SecondaryPageWithNeutralHeader title="Plan du site" enableMaxWidth={false} onGoBack={goBack}>
       <StyledVerticalUl>
         {visibleSiteMapLinks.map((item, parentIndex) => {
           const visibleSubPages = item.subPages.filter(
@@ -84,7 +84,7 @@ export function SiteMapScreen() {
           return [parentJsx, ...childrenJsx]
         })}
       </StyledVerticalUl>
-    </SecondaryPageWithBlurHeader>
+    </SecondaryPageWithNeutralHeader>
   )
 }
 

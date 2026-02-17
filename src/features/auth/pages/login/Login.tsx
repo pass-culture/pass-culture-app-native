@@ -34,7 +34,7 @@ import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 import { Key } from 'ui/svg/icons/Key'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -205,7 +205,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           isVisible={isDoingReCaptchaChallenge}
         />
       ) : null}
-      <SecondaryPageWithBlurHeader title="Connexion" shouldDisplayBackButton>
+      <SecondaryPageWithNeutralHeader title="Connexion" shouldDisplayBackButton>
         <TitleContainer>
           <Typo.Title3 {...getHeadingAttrs(2)}>{titlePage}</Typo.Title3>
         </TitleContainer>
@@ -256,7 +256,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           )}
         </Form.MaxWidth>
         <SignUpButton type="signup" onAdditionalPress={onLogSignUpAnalytics} />
-      </SecondaryPageWithBlurHeader>
+      </SecondaryPageWithNeutralHeader>
     </React.Fragment>
   )
 })

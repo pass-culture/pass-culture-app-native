@@ -12,7 +12,7 @@ import { storage } from 'libs/storage'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 import { Typo } from 'ui/theme'
 
 const oldAccesstoken =
@@ -102,7 +102,7 @@ export const CheatcodesScreenDebugInformations: FunctionComponent = function () 
   }
 
   return (
-    <SecondaryPageWithBlurHeader title="CheatCodes">
+    <SecondaryPageWithNeutralHeader title="CheatCodes">
       <ViewGap gap={2}>
         <CrashTestButton />
         <Button title="Utiliser un ancien token" onPress={setOldToken} />
@@ -129,7 +129,7 @@ export const CheatcodesScreenDebugInformations: FunctionComponent = function () 
         <Button title="Check for App Update" onPress={handleCheckForAppUpdate} />
         <Typo.Body>Update Status: {updateStatus ?? 'unknown'}</Typo.Body>
       </ViewGap>
-    </SecondaryPageWithBlurHeader>
+    </SecondaryPageWithNeutralHeader>
   )
 }
 

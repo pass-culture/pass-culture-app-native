@@ -3,7 +3,7 @@ import React from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 import { Typo } from 'ui/theme'
 
 export const CheatcodesScreenSecondaryPageWithBlurHeader = () => {
@@ -12,7 +12,7 @@ export const CheatcodesScreenSecondaryPageWithBlurHeader = () => {
     navigate('CheatcodesStackNavigator', { screen: 'CheatcodesNavigationGenericPages' })
   }
   return (
-    <SecondaryPageWithBlurHeader
+    <SecondaryPageWithNeutralHeader
       title="Titre"
       shouldDisplayBackButton
       onGoBack={navigateToCheatcodesNavigationGenericPages}
@@ -20,6 +20,6 @@ export const CheatcodesScreenSecondaryPageWithBlurHeader = () => {
         <RightButtonText onClose={navigateToCheatcodesNavigationGenericPages} wording="Quitter" />
       }>
       <Typo.Body>Children...</Typo.Body>
-    </SecondaryPageWithBlurHeader>
+    </SecondaryPageWithNeutralHeader>
   )
 }

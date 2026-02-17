@@ -29,7 +29,7 @@ import { Separator } from 'ui/components/Separator'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -129,7 +129,7 @@ export const NotificationsSettings = () => {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
 
   return (
-    <SecondaryPageWithBlurHeader
+    <SecondaryPageWithNeutralHeader
       title="Suivi et notifications"
       scrollable
       onGoBack={() => {
@@ -228,7 +228,7 @@ export const NotificationsSettings = () => {
           onPressSaveChanges={submitProfile}
         />
       </Container>
-    </SecondaryPageWithBlurHeader>
+    </SecondaryPageWithNeutralHeader>
   )
 }
 
@@ -240,6 +240,7 @@ const Container = styled.View(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
   width: '100%',
   alignSelf: 'center',
+  marginTop: theme.designSystem.size.spacing.xxxl,
 }))
 
 type ToggleActions =

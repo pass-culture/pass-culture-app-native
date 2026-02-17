@@ -18,7 +18,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
     accessibilityRole="header"
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -679,37 +679,6 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
       </View>
     </View>
   </RCTScrollView>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-  </View>
 </View>
 `;
 
@@ -731,7 +700,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
     accessibilityRole="header"
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -1577,37 +1546,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
       </View>
     </View>
   </RCTScrollView>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-  </View>
 </View>
 `;
 
@@ -1629,7 +1567,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
     accessibilityRole="header"
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -2739,37 +2677,6 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
       </View>
     </View>
   </RCTScrollView>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-  </View>
 </View>
 `;
 
@@ -2791,7 +2698,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
     accessibilityRole="header"
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -3803,36 +3710,5 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
       </View>
     </View>
   </RCTScrollView>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-  </View>
 </View>
 `;

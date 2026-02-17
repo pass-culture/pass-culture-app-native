@@ -3,7 +3,6 @@ import { ScrollView, ScrollViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Page } from 'ui/pages/Page'
 
@@ -17,7 +16,7 @@ type Props = PropsWithChildren<{
   enableMaxWidth?: boolean
 }>
 
-export const SecondaryPageWithBlurHeader = forwardRef<ScrollView, Props>(
+export const SecondaryPageWithNeutralHeader = forwardRef<ScrollView, Props>(
   (
     {
       title,
@@ -49,12 +48,11 @@ export const SecondaryPageWithBlurHeader = forwardRef<ScrollView, Props>(
           <Placeholder height={headerHeight} />
           {children}
         </StyledScrollView>
-        <BlurHeader height={headerHeight} />
       </Page>
     )
   }
 )
-SecondaryPageWithBlurHeader.displayName = 'SecondaryPageWithBlurHeader'
+SecondaryPageWithNeutralHeader.displayName = 'SecondaryPageWithNeutralHeader'
 
 interface StyledScrollViewProps {
   enableMaxWidth: boolean

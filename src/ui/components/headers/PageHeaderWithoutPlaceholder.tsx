@@ -1,6 +1,5 @@
-import colorAlpha from 'color-alpha'
 import React, { FunctionComponent, ReactNode } from 'react'
-import { Platform, StyleProp, View, ViewStyle } from 'react-native'
+import { StyleProp, View, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -64,11 +63,7 @@ const Header = styled(View)(({ theme }) => ({
   top: 0,
   left: 0,
   right: 0,
-  // There is an issue with the blur on Android: we chose to render white background for the header
-  backgroundColor:
-    Platform.OS === 'android'
-      ? theme.designSystem.color.background.default
-      : colorAlpha(theme.designSystem.color.background.default, 0),
+  backgroundColor: theme.designSystem.color.background.default,
   borderBottomColor: theme.designSystem.separator.color.subtle,
   borderBottomWidth: 1,
 }))

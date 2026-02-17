@@ -15,7 +15,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -43,7 +43,7 @@ export const Achievements = () => {
   }, [params?.from, track])
 
   return (
-    <SecondaryPageWithBlurHeader title="Mes succès">
+    <SecondaryPageWithNeutralHeader title="Mes succès">
       <ViewGap gap={4}>
         {categories.map((category) => {
           const isOddAchievements = category.achievements.length % 2 !== 0
@@ -96,7 +96,7 @@ export const Achievements = () => {
           )
         })}
       </ViewGap>
-    </SecondaryPageWithBlurHeader>
+    </SecondaryPageWithNeutralHeader>
   )
 }
 
