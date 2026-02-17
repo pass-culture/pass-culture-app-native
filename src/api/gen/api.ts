@@ -6043,7 +6043,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter offer_id was null or undefined when calling getNativeV2OfferofferId.'
         )
       }
-      let pathname = `/native/v3/offer/{offer_id}`.replace(
+      let pathname = `/native/v2/offer/{offer_id}`.replace(
         `{${'offer_id'}}`,
         encodeURIComponent(String(offer_id))
       )

@@ -19,14 +19,12 @@ type Props = {
   onBeforeNavigate?: () => void
 }
 
-const hasArtistPage = (artist: OfferArtist): boolean => Boolean(artist.id)
-
 export const OfferArtistItem: FunctionComponent<Props> = ({
   artist,
   navigateTo,
   onBeforeNavigate,
 }) => {
-  const artistHasPage = hasArtistPage(artist)
+  const artistHasPage = !!artist.id
 
   const accessibilityLabel = artistHasPage
     ? `${artist.name}, accéder à la page`

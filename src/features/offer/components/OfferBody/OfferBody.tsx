@@ -84,7 +84,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     }
   }, [isVideoSectionEnabled, params])
 
-  const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
+  const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -107,7 +107,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   )
 
   const hasAccessToArtistPage =
-    hasArtistPage &&
+    enableArtistPage &&
     (artists.length > 1 ? isMultiArtistsEnabled : artists.length === 1 && !!artists[0]?.id)
   const isCinemaOffer = subcategory.categoryId === CategoryIdEnum.CINEMA
 
