@@ -384,63 +384,94 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKINGS_ENDED_ONGOI
                           style={
                             {
                               "alignItems": "center",
-                              "borderBottomLeftRadius": 24,
-                              "borderBottomRightRadius": 24,
-                              "borderTopLeftRadius": 24,
-                              "borderTopRightRadius": 24,
+                              "backgroundColor": "#6123df",
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderColor": "#6123df",
+                              "borderStyle": "solid",
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                              "borderWidth": 1,
+                              "flexDirection": "row",
                               "justifyContent": "center",
                               "opacity": 1,
-                              "overflow": "hidden",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
+                              "paddingBottom": 8,
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                              "paddingTop": 8,
                               "userSelect": "auto",
+                              "width": "auto",
                             }
                           }
                           testID="Accéder à l’offre en ligne"
                         >
                           <View
-                            height={48}
-                            width="100%"
-                          >
-                            <Text>
-                              undefined-SVG-Mock
-                            </Text>
-                          </View>
-                          <View
+                            gap={8}
+                            hasIcon={true}
+                            isMultiline={false}
                             style={
                               {
                                 "alignItems": "center",
+                                "columnGap": 8,
                                 "flexDirection": "row",
-                                "position": "absolute",
                               }
                             }
                           >
                             <View
-                              accessibilityLabel="Nouvelle fenêtre"
-                              height={24}
-                              width={24}
+                              collapsable={false}
+                              jestAnimatedProps={
+                                {
+                                  "value": {},
+                                }
+                              }
+                              jestAnimatedStyle={
+                                {
+                                  "value": {},
+                                }
+                              }
+                              jestInlineStyle={
+                                {
+                                  "flexShrink": 0,
+                                }
+                              }
+                              nativeID="2"
+                              style={
+                                [
+                                  {
+                                    "flexShrink": 0,
+                                  },
+                                ]
+                              }
                             >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
+                              <View
+                                accessibilityLabel="Nouvelle fenêtre"
+                                height={14}
+                                width={14}
+                              >
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
                             </View>
                             <Text
-                              adjustsFontSizeToFit={true}
-                              isDisabled={false}
-                              numberOfLines={1}
                               style={
-                                {
-                                  "color": "#ffffff",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 16,
-                                  "lineHeight": 22,
-                                  "paddingBottom": 8,
-                                  "paddingLeft": 8,
-                                  "paddingRight": 8,
-                                  "paddingTop": 8,
-                                }
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 14,
+                                    "lineHeight": 14,
+                                  },
+                                  {
+                                    "color": "#ffffff",
+                                    "flexBasis": undefined,
+                                    "flexGrow": undefined,
+                                    "flexShrink": 1,
+                                    "maxWidth": "100%",
+                                    "minWidth": 0,
+                                    "textAlign": undefined,
+                                  },
+                                ]
                               }
                             >
                               Accéder à l’offre en ligne
@@ -959,7 +990,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKINGS_ENDED_ONGOI
                       "flexShrink": 0,
                     }
                   }
-                  nativeID="2"
+                  nativeID="3"
                   style={
                     [
                       {
@@ -1022,7 +1053,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKINGS_ENDED_ONGOI
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1048,19 +1079,22 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKINGS_ENDED_ONGOI
             style={
               {
                 "alignItems": "center",
+                "alignSelf": "center",
                 "backgroundColor": "#6123df",
-                "borderBottomLeftRadius": 24,
-                "borderBottomRightRadius": 24,
-                "borderTopLeftRadius": 24,
-                "borderTopRightRadius": 24,
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
+                "borderColor": "#6123df",
+                "borderStyle": "solid",
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
+                "borderWidth": 1,
                 "flexDirection": "row",
                 "justifyContent": "center",
-                "minHeight": 40,
                 "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
+                "paddingBottom": 8,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 8,
                 "userSelect": "auto",
                 "width": "100%",
               }
@@ -1068,24 +1102,39 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKINGS_ENDED_ONGOI
             testID="Voir le détail de l’offre"
           >
             <View
+              fullWidth={true}
+              gap={8}
+              hasIcon={false}
+              isMultiline={false}
               style={
                 {
                   "alignItems": "center",
+                  "columnGap": 8,
                   "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
                 }
               }
             >
               <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
                 style={
-                  {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                    "maxWidth": "100%",
-                  }
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#ffffff",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": "100%",
+                      "minWidth": 0,
+                      "textAlign": "center",
+                    },
+                  ]
                 }
               >
                 Voir le détail de l’offre
@@ -1292,7 +1341,7 @@ Tu ne peux plus annuler ta réservation : elle devait être annulée avant le 1
                 "flexShrink": 0,
               }
             }
-            nativeID="3"
+            nativeID="4"
             style={
               [
                 {

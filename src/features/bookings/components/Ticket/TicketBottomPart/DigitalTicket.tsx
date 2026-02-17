@@ -3,8 +3,8 @@ import React from 'react'
 import { SubcategoryIdEnum } from 'api/gen'
 import { TicketCode } from 'features/bookings/components/Ticket/TicketBottomPart/TicketCode'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
-import { ButtonWithLinearGradientDeprecated } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradientDeprecated'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { ExternalSiteFilled as ExternalSiteFilledIcon } from 'ui/svg/icons/ExternalSiteFilled'
 
 export const DigitalTicket = ({
@@ -26,7 +26,7 @@ export const DigitalTicket = ({
     cta={
       <ExternalTouchableLink
         onBeforeNavigate={onBeforeNavigate}
-        as={ButtonWithLinearGradientDeprecated}
+        as={Button}
         wording={getDigitalOfferBookingWording(subcategoryId)}
         icon={ExternalSiteFilledIcon}
         externalNav={{ url: completedUrl, params: { analyticsData: { offerId } } }}

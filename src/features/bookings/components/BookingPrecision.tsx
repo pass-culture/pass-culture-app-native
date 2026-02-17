@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Typo } from 'ui/theme'
 
@@ -31,13 +31,15 @@ export const BookingPrecisions: React.FC<{
           <CaptionNeutralInfo numberOfLines={2}>{bookingContactEmail}</CaptionNeutralInfo>
         )}
         <ExternalTouchableLink
-          as={ButtonQuaternaryBlack}
-          inline
+          as={Button}
           wording="Contacter l’organisateur"
           accessibilityLabel="Ouvrir le gestionnaire mail pour contacter l’organisateur"
           externalNav={{ url: `mailto:${bookingContactEmail}` }}
           icon={EmailFilled}
           onBeforeNavigate={onEmailPress}
+          variant="tertiary"
+          color="neutral"
+          size="small"
         />
       </EmailContainer>
     ) : null}

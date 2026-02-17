@@ -27,8 +27,6 @@ import { useBookingsQuery } from 'queries/bookings'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -36,6 +34,7 @@ import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -170,13 +169,14 @@ export const BookingDetailsContent = ({
 
                   <SendEmailContainer>
                     <ExternalTouchableLink
-                      as={ButtonTertiaryBlack}
-                      inline
+                      as={Button}
                       wording={bookingContactEmail}
                       accessibilityLabel="Ouvrir le gestionnaire mail pour contacter l’organisateur"
                       externalNav={{ url: `mailto:${bookingContactEmail}` }}
                       icon={EmailFilled}
                       onBeforeNavigate={onEmailPress}
+                      variant="tertiary"
+                      color="neutral"
                     />
                   </SendEmailContainer>
                 </ViewGap>
@@ -213,7 +213,7 @@ export const BookingDetailsContent = ({
           <InfoButtonsContainer gap={4}>
             <InternalTouchableLink
               enableNavigate={!!netInfo.isConnected}
-              as={ButtonPrimary}
+              as={Button}
               wording="Voir le détail de l’offre"
               navigateTo={{ screen: 'Offer', params: { id: offer.id, from: 'bookingdetails' } }}
               onBeforeNavigate={onNavigateToOfferPress}

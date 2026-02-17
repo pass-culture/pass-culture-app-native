@@ -5,8 +5,8 @@ import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailab
 import { getEmailReceivedWithdrawalMessage } from 'features/bookings/components/Ticket/TicketBottomPart/EmailWithdrawal/getEmailReceivedWithdrawalMessage'
 import { TicketText } from 'features/bookings/components/Ticket/TicketBottomPart/TicketText'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { Email } from 'ui/svg/icons/Email'
+import { Button } from 'ui/designSystem/Button/Button'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 
 export const EmailReceived = ({
   isEventDay,
@@ -24,12 +24,14 @@ export const EmailReceived = ({
     <React.Fragment>
       <TicketText testID="withdrawal-email-received">{emailMessage}</TicketText>
       {isMailAppAvailable ? (
-        <ButtonTertiaryBlack
+        <Button
           wording="Consulter mes e-mails"
           onPress={() => {
-            openInbox()
+            void openInbox()
           }}
-          icon={Email}
+          icon={EmailFilled}
+          variant="tertiary"
+          color="neutral"
         />
       ) : null}
     </React.Fragment>
