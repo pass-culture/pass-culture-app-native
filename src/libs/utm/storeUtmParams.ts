@@ -8,8 +8,7 @@ export async function storeUtmParams({ campaign, content, gen, medium, source }:
   if (gen) multiString.push(['traffic_gen', gen])
   if (medium) multiString.push(['traffic_medium', medium])
   if (source) multiString.push(['traffic_source', source])
-  if (campaign || medium || source)
-    multiString.push(['campaign_date', new Date().valueOf().toString()])
+  if (campaign || medium || source) multiString.push(['campaign_date', Date.now().toString()])
   if (multiString.length) {
     await storage.saveMultiString(multiString)
   }

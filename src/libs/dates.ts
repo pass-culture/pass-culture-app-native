@@ -12,7 +12,7 @@ const TIMESTAMPS_COMPARE_MARGIN = 300 // seconds
  *@returns current timestamp expressed in seconds.
  */
 export function currentTimestamp() {
-  return Math.round(new Date().valueOf() / 1000)
+  return Math.round(Date.now() / 1000)
 }
 
 /**
