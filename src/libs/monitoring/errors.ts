@@ -11,7 +11,7 @@ export enum LogTypeEnum {
 }
 
 type ErrorInfo = {
-  logType: LogTypeEnum
+  logType?: LogTypeEnum
   name?: string
   captureContext?: Partial<ScopeContext>
 }
@@ -19,15 +19,21 @@ type ErrorInfo = {
 export class MonitoringError extends Error {
   constructor(
     message: string,
-    { logType, name, captureContext }: ErrorInfo = { logType: LogTypeEnum.ERROR }
+    { logType = LogTypeEnum.ERROR, name, captureContext }: ErrorInfo = {}
   ) {
     super(message)
-    if (name) {
-      this.name = name
+
+    this.name = name ?? this.constructor.name
+
+    if (logType === LogTypeEnum.IGNORED) {
+      return
     }
 
     if (logType === LogTypeEnum.INFO) {
-      eventMonitoring.captureException(this.message, { level: logType })
+      eventMonitoring.captureException(this.message, {
+        level: logType,
+      })
+      return
     }
 
     if (logType === LogTypeEnum.ERROR) {
@@ -49,12 +55,16 @@ type AsyncErrorInfo = ErrorInfo & {
 }
 
 export class AsyncError extends MonitoringError {
-  retry?: () => Promise<unknown> | void
+  public retry?: () => Promise<unknown> | void
+
   constructor(
     message: string,
-    { name = 'AsyncError', captureContext, retry, logType }: AsyncErrorInfo = {
-      logType: LogTypeEnum.IGNORED,
-    }
+    {
+      name = 'AsyncError',
+      captureContext,
+      retry,
+      logType = LogTypeEnum.IGNORED,
+    }: AsyncErrorInfo = {}
   ) {
     super(message, { name, captureContext, logType })
     this.retry = retry
