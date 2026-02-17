@@ -18,6 +18,20 @@ appId: ${MAESTRO_APP_ID}
     id: "Trier"
 
 - tapOn: ".*Proximité géographique.*"
+
+- runFlow:
+    when:
+      visible: "Activer la géolocalisation"
+    commands:
+    - tapOn: "Activer la géolocalisation"
+    - tapOn: "Autorisations"
+    - tapOn: "Position"
+    - tapOn: "Autoriser seulement si l'appli est utilisée"
+    - pressKey: back
+    - pressKey: back
+    - pressKey: back
+
+- tapOn: ".*Proximité géographique.*"
 - tapOn: "Valider"
 
 - assertVisible: "3 favoris"

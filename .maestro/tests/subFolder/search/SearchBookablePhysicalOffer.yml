@@ -33,6 +33,7 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: '.*Catégorie.*'
 
 - tapOn: '.*Romance.*'
+- tapOn: 'Appliquer le filtre'
 - tapOn: 'Rechercher'
 
 - swipe:
