@@ -1,11 +1,20 @@
 import { useEffect } from 'react'
 
+import { BannerName } from 'api/gen'
 import { useBannerQuery } from 'features/home/queries/useBannerQuery'
 import { GeolocPermissionState, useLocation } from 'libs/location/location'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
 
-export function useActivationBanner() {
+export type ActivationBanner = {
+  title: string
+  text?: string
+  name?: BannerName
+}
+
+const defaultTitle = 'Débloque ton crédit'
+
+export const useActivationBanner = (): { banner: ActivationBanner } => {
   const { shouldBeOverriden, amount: overriddenAmount } = useOverrideCreditActivationAmount()
   const { permissionState } = useLocation()
 
@@ -19,11 +28,18 @@ export function useActivationBanner() {
   if (shouldBeOverriden) {
     return {
       banner: {
-        title: overriddenAmount ? `Débloque tes ${overriddenAmount}` : `Débloque ton crédit`,
+        title: overriddenAmount ? `Débloque tes ${overriddenAmount}` : defaultTitle,
         text: data?.banner?.text,
         name: data?.banner?.name,
       },
     }
   }
-  return { banner: { ...data?.banner } }
+
+  return {
+    banner: {
+      title: data?.banner?.title ?? defaultTitle,
+      text: data?.banner?.text,
+      name: data?.banner?.name,
+    },
+  }
 }

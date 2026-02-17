@@ -1,7 +1,7 @@
 import React from 'react'
-import styled from 'styled-components/native'
 
 import { EligibilityType } from 'api/gen'
+import { HighlightedBody } from 'features/profile/components/HighlightedBody/HighlightedBody'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -59,7 +59,3 @@ export const EmptyCredit = ({
     </ViewGap>
   )
 }
-
-const HighlightedBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.designSystem.color.text.brandSecondary,
-}))
