@@ -5,13 +5,13 @@ import { extractApiErrorMessage } from 'api/apiHelpers'
 import { useArchiveBookingMutation } from 'features/bookings/queries'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Close } from 'ui/svg/icons/Close'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export interface ArchiveBookingModalProps {
   bookingId: number
@@ -50,32 +50,39 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
       <ModalContent>
         <Title>{props.bookingTitle}</Title>
         <StyledBody>Tu pourras retrouver l’offre dans tes réservations teminées</StyledBody>
-        <Spacer.Column numberOfSpaces={6} />
-        <ButtonPrimary
-          wording="Terminer ma réservation"
-          onPress={terminateCancel}
-          disabled={isPending}
-        />
-        <Spacer.Column numberOfSpaces={3} />
-        <ButtonTertiaryPrimary
-          wording="Retourner à ma réservation"
-          onPress={props.onDismiss}
-          icon={PlainArrowPrevious}
-        />
+        <ButtonsContainer gap={3}>
+          <Button
+            wording="Terminer ma réservation"
+            onPress={terminateCancel}
+            disabled={isPending}
+            fullWidth
+          />
+          <Button
+            wording="Retourner à ma réservation"
+            onPress={props.onDismiss}
+            icon={PlainArrowPrevious}
+            variant="tertiary"
+            color="brand"
+            fullWidth
+          />
+        </ButtonsContainer>
       </ModalContent>
     </AppModal>
   )
 }
 
-const ModalContent = styled.View(({ theme }) => ({
-  paddingHorizontal: theme.designSystem.size.spacing.xl,
+const ModalContent = styled.View({
   width: '100%',
   alignItems: 'center',
-}))
+})
 const Title = styled(Typo.BodyAccent)({
   textAlign: 'center',
 })
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   marginTop: theme.designSystem.size.spacing.s,
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))
+const ButtonsContainer = styled(ViewGap)({
+  width: '100%',
+})

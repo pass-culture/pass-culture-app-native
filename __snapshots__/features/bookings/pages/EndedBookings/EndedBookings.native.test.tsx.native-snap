@@ -352,23 +352,124 @@ exports[`EndedBookings should render correctly 1`] = `
           }
         >
           <View
-            style={
+            accessibilityLabel="Partager l’offre Harry Potter"
+            accessibilityRole="button"
+            accessibilityState={
               {
-                "borderBottomLeftRadius": 999,
-                "borderBottomRightRadius": 999,
-                "borderTopLeftRadius": 999,
-                "borderTopRightRadius": 999,
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Partager l’offre Harry Potter"
           >
             <View
-              accessibilityLabel="Partager l’offre Harry Potter"
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="0"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  width={22}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View>
+            <View
+              accessibilityLabel="Réagis à ta réservation"
               accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
                   "checked": undefined,
-                  "disabled": undefined,
+                  "disabled": false,
                   "expanded": undefined,
                   "selected": undefined,
                 }
@@ -397,10 +498,22 @@ exports[`EndedBookings should render correctly 1`] = `
                       "userSelect": "auto",
                     },
                     {
-                      "borderBottomLeftRadius": 999,
-                      "borderBottomRightRadius": 999,
-                      "borderTopLeftRadius": 999,
-                      "borderTopRightRadius": 999,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
+                      "width": "auto",
                     },
                   ],
                   {
@@ -408,148 +521,65 @@ exports[`EndedBookings should render correctly 1`] = `
                   },
                 ]
               }
-              testID="Partager l’offre Harry Potter"
+              testID="Réagis à ta réservation"
             >
               <View
+                gap={0}
+                hasIcon={true}
+                isMultiline={false}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "aspectRatio": 1,
-                      "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 999,
-                      "borderBottomRightRadius": 999,
-                      "borderColor": "#90949d",
-                      "borderStyle": "solid",
-                      "borderTopLeftRadius": 999,
-                      "borderTopRightRadius": 999,
-                      "borderWidth": 1,
-                      "height": 40,
-                      "justifyContent": "center",
-                      "width": 40,
-                    },
-                    {
-                      "transform": undefined,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "columnGap": 0,
+                    "flexDirection": "row",
+                  }
                 }
               >
                 <View
-                  height={24}
-                  testID="icon-share"
-                  width={24}
-                >
-                  <Text>
-                    icon-share-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-          <View
-            style={
-              {
-                "borderBottomLeftRadius": 999,
-                "borderBottomRightRadius": 999,
-                "borderTopLeftRadius": 999,
-                "borderTopRightRadius": 999,
-              }
-            }
-          >
-            <View>
-              <View
-                accessibilityLabel="Réagis à ta réservation"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderBottomLeftRadius": 999,
-                        "borderBottomRightRadius": 999,
-                        "borderTopLeftRadius": 999,
-                        "borderTopRightRadius": 999,
-                      },
-                    ],
+                  collapsable={false}
+                  jestAnimatedProps={
                     {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Réagis à ta réservation"
-              >
-                <View
+                      "value": {},
+                    }
+                  }
+                  jestAnimatedStyle={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestInlineStyle={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                  nativeID="1"
                   style={
                     [
                       {
-                        "alignItems": "center",
-                        "aspectRatio": 1,
-                        "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 999,
-                        "borderBottomRightRadius": 999,
-                        "borderColor": "#90949d",
-                        "borderStyle": "solid",
-                        "borderTopLeftRadius": 999,
-                        "borderTopRightRadius": 999,
-                        "borderWidth": 1,
-                        "height": 40,
-                        "justifyContent": "center",
-                        "width": 40,
-                      },
-                      {
-                        "transform": undefined,
+                        "flexShrink": 0,
                       },
                     ]
                   }
                 >
                   <View
-                    height={24}
-                    testID="icon-like"
-                    width={24}
+                    height={22}
+                    width={22}
                   >
                     <Text>
-                      icon-like-SVG-Mock
+                      undefined-SVG-Mock
                     </Text>
                   </View>
                 </View>
               </View>
-              <View
-                height={8}
-                testID="smallBadge"
-                width={8}
-              >
-                <Text>
-                  smallBadge-SVG-Mock
-                </Text>
-              </View>
+            </View>
+            <View
+              height={12}
+              testID="smallBadge"
+              width={12}
+            >
+              <Text>
+                smallBadge-SVG-Mock
+              </Text>
             </View>
           </View>
         </View>
