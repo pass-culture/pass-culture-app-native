@@ -62,6 +62,9 @@ export const DebugScreen = () => {
     { label: 'User ID', value: user?.id ?? undefinedValue },
     { label: 'Device font scale', value: deviceInfo?.fontScale ?? undefinedValue },
     { label: 'Description', value: description ?? undefinedValue },
+    { label: 'User CreditType', value: user?.creditType ?? undefinedValue },
+    { label: 'User StatusType', value: user?.statusType ?? undefinedValue },
+    { label: 'User EligibilityType', value: user?.eligibilityType ?? undefinedValue },
   ]
 
   const sortedDebugData = [...debugData].sort((a, b) => a.label.localeCompare(b.label))

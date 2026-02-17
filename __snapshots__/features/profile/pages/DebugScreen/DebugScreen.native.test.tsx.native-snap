@@ -435,6 +435,56 @@ exports[`DebugScreen should render correctly 1`] = `
                     }
                   }
                 >
+                  User CreditType
+                   : 
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    CREDIT_V3_18
+                  </Text>
+                </Text>
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    }
+                  }
+                >
+                  User EligibilityType
+                   : 
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    ELIGIBLE_CREDIT_V3_18
+                  </Text>
+                </Text>
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    }
+                  }
+                >
                   User ID
                    : 
                   <Text
@@ -448,6 +498,31 @@ exports[`DebugScreen should render correctly 1`] = `
                     }
                   >
                     1234
+                  </Text>
+                </Text>
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    }
+                  }
+                >
+                  User StatusType
+                   : 
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    BENEFICIARY
                   </Text>
                 </Text>
                 <View
