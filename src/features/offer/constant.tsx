@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ArtistType, SubcategoryIdEnum } from 'api/gen'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { CineClubCertification } from 'ui/svg/CineClubCertification'
 
@@ -42,27 +44,29 @@ export const CHRONICLE_VARIANT_CONFIG = [
     subcategories: BOOK_CLUB_SUBCATEGORIES,
     labelReaction: 'Book Club',
     titleSection: 'La reco du Book Club',
-    subtitleSection: 'Notre communauté de lecteurs te partagent leurs avis sur ce livre\u00a0!',
-    subtitleItem: 'Membre du Book Club',
+    subtitleSection: 'Notre communauté de lecteurs te partage leur avis sur ce livre\u00a0!',
+    subtitleItem: undefined,
     Icon: <BookClubIcon testID="bookClubIcon" />,
     SmallIcon: <SmallBookClubIcon />,
     modalTitle: 'C’est quoi le Book Club\u00a0?',
     modalWording:
       'C’est un groupe de jeunes passionnés de lecture choisi par le pass Culture. \n\nChaque mois, ils lisent, donnent leur avis, partagent leurs coups de cœur... pour t’aider à choisir ton prochain livre\u00a0!',
     modalButtonLabel: 'Voir toutes les recos du Book Club',
+    tag: <Tag variant={TagVariant.BOOKCLUB} label="Membre du book club" />,
   },
   {
     subcategories: CINE_CLUB_SUBCATEGORIES,
     labelReaction: 'Ciné Club',
     titleSection: 'La reco du Ciné Club',
     subtitleSection: 'Notre communauté de cinéphiles te partage leur avis sur ce film\u00a0!',
-    subtitleItem: 'Membre du Ciné Club',
+    subtitleItem: undefined,
     Icon: <CineClubIcon testID="cineClubIcon" />,
     SmallIcon: <SmallCineClubIcon />,
     modalTitle: 'C’est quoi le Ciné Club\u00a0?',
     modalWording:
       'C’est un groupe de jeunes cinéphiles choisi par le pass Culture. \n\nChaque mois, ils regardent des films, donnent leur avis et partagent ceux qui les ont fait vibrer… pour t’inspirer ta prochaine séance\u00a0!',
     modalButtonLabel: 'Voir toutes les recos du Ciné Club',
+    tag: <Tag variant={TagVariant.CINECLUB} label="Membre du ciné club" />,
   },
 ] as const
 

@@ -37,6 +37,7 @@ export const ChronicleSectionBase = ({
         onSeeMoreButtonPress={onSeeMoreButtonPress}
         shouldTruncate
         cardIcon={variantInfo.Icon}
+        tag={variantInfo.tag}
       />
       {shouldDisplayAllReviewsButton ? (
         <Gutter>

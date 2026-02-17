@@ -41,6 +41,7 @@ export type ChronicleCardListProps = Pick<
   onSeeMoreButtonPress?: (chronicleId: number) => void
   shouldTruncate?: boolean
   cardIcon?: ReactNode
+  tag?: ReactNode
 }
 
 export const ChronicleCardListBase = forwardRef<
@@ -63,6 +64,7 @@ export const ChronicleCardListBase = forwardRef<
     onLayout,
     shouldTruncate,
     cardIcon,
+    tag,
   },
   ref
 ) {
@@ -98,6 +100,7 @@ export const ChronicleCardListBase = forwardRef<
           subtitle={item.subtitle}
           description={item.description}
           date={item.date}
+          tag={tag}
           cardWidth={cardWidth}
           shouldTruncate={shouldTruncate}>
           {onSeeMoreButtonPress ? (
@@ -108,13 +111,14 @@ export const ChronicleCardListBase = forwardRef<
                 onPress={() => onSeeMoreButtonPress(item.id)}
                 variant="tertiary"
                 color="neutral"
+                size="small"
               />
             </View>
           ) : null}
         </ChronicleCard>
       )
     },
-    [cardWidth, onSeeMoreButtonPress, shouldTruncate, cardIcon]
+    [cardIcon, tag, cardWidth, shouldTruncate, onSeeMoreButtonPress]
   )
 
   return (
@@ -146,5 +150,5 @@ const StyledPlainMore = styled(PlainMore).attrs(({ theme }) => ({
 
 const StyledButton = styledButton(Button).attrs({
   icon: StyledPlainMore,
-  iconPosition: 'right',
+  iconPosition: 'left',
 })``

@@ -5,6 +5,8 @@ import styled from 'styled-components/native'
 
 import { ChronicleCard } from 'features/chronicle/components/ChronicleCard/ChronicleCard'
 import { Button } from 'ui/designSystem/Button/Button'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 import { VariantsTemplate, type Variants } from 'ui/storybook/VariantsTemplate'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
 
@@ -26,6 +28,7 @@ const baseProps = {
     'Pour moi, cette biographie n’est pas comme une autre. Cela concerne le créateur de Star Wars, le premier film de la saga qui a marqué des générations entières.',
   date: 'Juin 2024',
   icon: <BookClubIcon />,
+  tag: <Tag variant={TagVariant.BOOKCLUB} label="Membre du book club" />,
 }
 
 const variantConfig: Variants<typeof ChronicleCard> = [

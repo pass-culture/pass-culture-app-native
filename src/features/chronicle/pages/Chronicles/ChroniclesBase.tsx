@@ -113,6 +113,7 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
           }}
           onLayout={handleLayout}
           cardIcon={variantInfo.Icon}
+          tag={variantInfo.tag}
         />
       </FullFlexRow>
       <ChroniclesWritersModal

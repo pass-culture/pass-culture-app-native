@@ -62,6 +62,7 @@ export const ChronicleSection = (props: ChronicleSectionProps) => {
             onSeeMoreButtonPress={onSeeMoreButtonPress}
             shouldTruncate
             cardIcon={variantInfo.Icon}
+            tag={variantInfo.tag}
           />
           <ClubButtonContainer>
             <Button

@@ -5,7 +5,6 @@ import styled, { useTheme } from 'styled-components/native'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { getLineHeightPx } from 'libs/parsers/getLineHeightPx'
 import { InfoHeader } from 'ui/components/InfoHeader/InfoHeader'
-import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo, getSpacing } from 'ui/theme'
 
@@ -16,6 +15,7 @@ type Props = PropsWithChildren<
     cardWidth?: number
     shouldTruncate?: boolean
     icon?: ReactNode
+    tag?: ReactNode
   }
 >
 
@@ -31,6 +31,7 @@ export const ChronicleCard: FunctionComponent<Props> = ({
   cardWidth,
   children,
   icon,
+  tag,
   shouldTruncate = false,
 }) => {
   const { designSystem } = useTheme()
@@ -63,17 +64,17 @@ export const ChronicleCard: FunctionComponent<Props> = ({
         defaultThumbnailSize={CHRONICLE_THUMBNAIL_SIZE}
         thumbnailComponent={icon}
       />
-      <Separator.Horizontal />
       <DescriptionContainer defaultHeight={defaultHeight} shouldTruncate={shouldTruncate}>
         <Description
           testID="description"
           onLayout={shouldTruncate ? handleOnLayout : undefined}
           numberOfLines={currentNumberOfLines}>
-          {description}
+          {`“${description}”`}
         </Description>
       </DescriptionContainer>
+      <PublicationDate>{date}</PublicationDate>
       <BottomCardContainer>
-        <PublicationDate>{date}</PublicationDate>
+        {tag}
         {shouldDisplayButton && children}
       </BottomCardContainer>
     </Container>
@@ -97,17 +98,16 @@ const DescriptionContainer = styled.View<{ defaultHeight: number; shouldTruncate
     shouldTruncate ? { maxHeight: MAX_LINES * defaultHeight, overflow: 'hidden' } : {}
 )
 
-const Description = styled(Typo.BodyAccentS)(({ theme }) => ({
-  color: theme.designSystem.color.text.subtle,
+const Description = styled(Typo.BodyS)({
   flexGrow: 1,
-}))
+})
 
 const BottomCardContainer = styled.View({
   flexDirection: 'row',
   justifyContent: 'space-between',
+  alignItems: 'center',
 })
 
 const PublicationDate = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
-  alignSelf: 'center',
 }))
