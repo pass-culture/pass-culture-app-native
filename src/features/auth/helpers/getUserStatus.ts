@@ -1,0 +1,68 @@
+import { EligibilityType, UserProfileResponse } from 'api/gen'
+import { getAge } from 'shared/user/getAge'
+
+export enum UserStatus {
+  V3_FIFTEEN_NON_BENEFICIARY_ELIGIBLE_FREE = 'V3_FIFTEEN_NON_BENEFICIARY_ELIGIBLE_FREE',
+  V3_FIFTEEN_FREE_BENEFICIARY_NOT_ELIGIBLE = 'V3_FIFTEEN_FREE_BENEFICIARY_NOT_ELIGIBLE',
+  V3_SIXTEEN_NON_BENEFICIARY_ELIGIBLE_FREE = 'V3_SIXTEEN_NON_BENEFICIARY_ELIGIBLE_FREE',
+  V3_SIXTEEN_FREE_BENEFICIARY_NOT_ELIGIBLE = 'V3_SIXTEEN_FREE_BENEFICIARY_NOT_ELIGIBLE',
+  V3_SEVENTEEN_NON_BENEFICIARY_ELIGIBLE = 'V3_SEVENTEEN_NON_BENEFICIARY_ELIGIBLE',
+  V3_SEVENTEEN_FREE_BENEFICIARY_ELIGIBLE = 'V3_SEVENTEEN_FREE_BENEFICIARY_ELIGIBLE',
+  V3_EIGHTEEN_NON_BENEFICIARY_ELIGIBLE = 'V3_EIGHTEEN_NON_BENEFICIARY_ELIGIBLE',
+  V3_EIGHTEEN_FREE_BENEFICIARY_ELIGIBLE = 'V3_EIGHTEEN_FREE_BENEFICIARY_ELIGIBLE',
+  V3_EIGHTEEN_BENEFICIARY_NOT_ELIGIBLE = 'V3_EIGHTEEN_BENEFICIARY_NOT_ELIGIBLE',
+  GENERAL_PUBLIC = 'GENERAL_PUBLIC',
+  UNKNOWN = 'UNKNOWN',
+}
+
+export const getUserStatus = (user: UserProfileResponse): UserStatus => {
+  const age = getAge(user.birthDate)
+  const IS_ABOVE_EIGHTEEN = Boolean(age && age > 18)
+  const IS_UNDER_FIFTEEN = Boolean(age && age < 15)
+
+  const IS_BENEFICIARY = user.isBeneficiary
+  const IS_NOT_BENEFICIARY = !IS_BENEFICIARY
+  const IS_GENERAL_PUBLIC = IS_NOT_BENEFICIARY && (IS_ABOVE_EIGHTEEN || IS_UNDER_FIFTEEN)
+
+  const IS_ELIGIBLE_V3 = user.eligibility === EligibilityType['age-17-18']
+  const IS_ELIGIBLE_FREE_V3 = user.eligibility === EligibilityType['free']
+  const IS_NOT_ELIGIBLE_V3 = !IS_ELIGIBLE_V3 && !IS_ELIGIBLE_FREE_V3
+
+  if (IS_NOT_BENEFICIARY && IS_GENERAL_PUBLIC) {
+    return UserStatus.GENERAL_PUBLIC
+  }
+
+  switch (age) {
+    case 15:
+      if (IS_NOT_BENEFICIARY && IS_ELIGIBLE_FREE_V3) {
+        return UserStatus.V3_FIFTEEN_NON_BENEFICIARY_ELIGIBLE_FREE
+      }
+      break
+
+    case 16:
+      if (IS_NOT_BENEFICIARY && IS_ELIGIBLE_FREE_V3) {
+        return UserStatus.V3_SIXTEEN_NON_BENEFICIARY_ELIGIBLE_FREE
+      }
+      break
+
+    case 17:
+      if (IS_NOT_BENEFICIARY && IS_ELIGIBLE_V3) {
+        return UserStatus.V3_SEVENTEEN_NON_BENEFICIARY_ELIGIBLE
+      }
+      break
+
+    case 18:
+      if (IS_NOT_BENEFICIARY && IS_ELIGIBLE_V3) {
+        return UserStatus.V3_EIGHTEEN_NON_BENEFICIARY_ELIGIBLE
+      }
+      if (IS_BENEFICIARY && IS_NOT_ELIGIBLE_V3) {
+        return UserStatus.V3_EIGHTEEN_BENEFICIARY_NOT_ELIGIBLE
+      }
+      break
+
+    default:
+      return UserStatus.UNKNOWN
+  }
+
+  return UserStatus.UNKNOWN
+}
