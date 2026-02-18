@@ -4,13 +4,13 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-      - tapOn: 'Mon profil.*'
+      - tapOn: ${output.wording.profil.tabBar.profil}
 
 - runFlow:
     when:
       platform: iOS
     commands:
-      - tapOn: 'Mon profil.*'
+      - tapOn: ${output.wording.profil.tabBar.profil}
 
 - runFlow:
     when:

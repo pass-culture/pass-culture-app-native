@@ -1,18 +1,18 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- tapOn: 'Se connecter'
+- tapOn: ${output.wording.auth.login.button}
 
 - runFlow:
     when:
-      visible: 'Inscription'
+      visible: ${output.wording.auth.signup.title}
     commands:
       - pressKey: back
 
 - tapOn:
-    id: 'Entrée pour l’email'
+    id: ${output.wording.auth.login.emailId}
 - runFlow: InputEmail.yml
 - tapOn:
-    id: 'Mot de passe'
+    id: ${output.wording.auth.login.passwordId}
 - inputText: ${MAESTRO_PASSWORD}
 - runFlow:
     when:
@@ -23,25 +23,25 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-    - tapOn: 'Connecte-toi' # Pour fermer le clavier iOS
-- tapOn: 'Se connecter'
+    - tapOn: ${output.wording.auth.login.title} # Pour fermer le clavier iOS
+- tapOn: ${output.wording.auth.login.button}
 
 - waitForAnimationToEnd
 
 - runFlow: # Si apparition de l'écran de crédit (félicitations 18 ans)
     when:
-      visible: ".*Bonne nouvelle.*"
+      visible: ${output.wording.auth.modal.activationNews}
     commands:
-      - tapOn: ".*Continuer.*"
+      - tapOn: ${output.wording.auth.modal.continue}
 
 - runFlow:
     when:
-      visible: 'Plus tard'
+      visible: ${output.wording.auth.modal.later}
     commands:
-      - tapOn: 'Plus tard'
+      - tapOn: ${output.wording.auth.modal.later}
 
 - runFlow: # Si apparition de la modale de partage
     when:
-      visible: 'Partager l’appli'
+      visible: ${output.wording.auth.modal.share}
     commands:
-      - tapOn: 'Non merci'
+      - tapOn: ${output.wording.auth.modal.noThanks}

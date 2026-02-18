@@ -6,6 +6,9 @@ output.wording = {
       allow: "Autoriser",
     },
     back: "Revenir à l’étape précédente",
+    backButton: "Revenir en arrière",
+    createAccount: "Créer un compte",
+    welcome: "Bienvenue !",
   },
   cookies: {
     consent: {
@@ -42,7 +45,70 @@ output.wording = {
       },
     },
   },
+  onboarding: {
+    welcome: {
+      title: "Bienvenue sur le pass Culture",
+      button: "C’est parti !",
+    },
+    discover: {
+      title: "Découvre les offres près de chez toi",
+      continue: "Continuer.*",
+    },
+    location: {
+      allow: "Lorsque vous utilisez l'appli",
+      deny: "Ne pas autoriser",
+    },
+    age: {
+      question: "Pour commencer, peux-tu nous dire ton âge ?",
+      options: {
+        age16OrLess: "J’ai 16 ans ou moins",
+        age17: "J’ai 17 ans",
+        age18: "J’ai 18 ans",
+        age19OrMore: "J’ai 19 ans ou plus",
+      },
+    },
+    end: {
+      patience: "Encore un peu de patience !",
+      createAccount: "Créer un compte",
+      accessCatalogue: "Accéder au catalogue",
+      enjoy17: "À 17 ans, profite de ton pass Culture !",
+      enjoy18: "À 18 ans, profite de ton pass Culture !",
+      explore: "Explore, découvre, profite",
+      later: "Plus tard",
+    },
+  },
   booking: {
     wording: "Réserver l’offre",
+  },
+  auth: {
+    login: {
+      title: "Connecte-toi",
+      button: "Se connecter",
+      emailId: "Entrée pour l’email",
+      passwordId: "Mot de passe",
+      showPasswordId: "Afficher le mot de passe",
+      wrongCredentialsError: ".*E-mail ou mot de passe incorrect.*",
+    },
+    logout: {
+      button: "Déconnexion",
+      footer: "République Française - Liberté Égalité Fraternité",
+    },
+    signup: {
+      title: "Inscription",
+    },
+    modal: {
+      later: "Plus tard",
+      share: "Partager l’appli",
+      noThanks: "Non merci",
+      activationNews: ".*Bonne nouvelle.*",
+      continue: ".*Continuer.*",
+    },
+  },
+  profil: {
+    settings: "Paramètres du compte",
+    tabBar: {
+      profil: "Mon profil.*",
+      home: "Accueil.*",
+    },
   },
 }

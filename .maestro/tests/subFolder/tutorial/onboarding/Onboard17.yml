@@ -1,21 +1,21 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- assertVisible: "Bienvenue sur\_le\_pass\_Culture"
-- tapOn: "C’est parti\_!"
+- assertVisible: ${output.wording.onboarding.welcome.title}
+- tapOn: ${output.wording.onboarding.welcome.button}
 
-- assertVisible: 'Découvre les offres près de chez toi'
-- tapOn: 'Continuer.*'
+- assertVisible: ${output.wording.onboarding.discover.title}
+- tapOn: ${output.wording.onboarding.discover.continue}
 
 - runFlow:
     when:
-      visible: 'Ne pas autoriser'
+      visible: ${output.wording.onboarding.location.deny}
     commands:
-      - tapOn: "Lorsque vous utilisez l'appli"
+      - tapOn: ${output.wording.onboarding.location.allow}
 
-- assertVisible: "Pour commencer, peux-tu nous dire ton âge\_?"
-- tapOn: "J’ai 17 ans"
+- assertVisible: ${output.wording.onboarding.age.question}
+- tapOn: ${output.wording.onboarding.age.options.age17}
 
-- assertVisible: "À 17 ans, profite de ton pass Culture\_!"
-- tapOn: 'Plus tard'
+- assertVisible: ${output.wording.onboarding.end.enjoy17}
+- tapOn: ${output.wording.onboarding.end.later}
 
 - waitForAnimationToEnd

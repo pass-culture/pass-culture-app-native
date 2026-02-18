@@ -1,15 +1,15 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- tapOn: 'Se connecter'
+- tapOn: ${output.wording.auth.login.button}
 
-- assertVisible: 'Connecte-toi'
+- assertVisible: ${output.wording.auth.login.title}
 - tapOn:
-    id: 'Afficher le mot de passe'
+    id: ${output.wording.auth.login.showPasswordId}
 - tapOn:
-    id: 'Entrée pour l’email'
+    id: ${output.wording.auth.login.emailId}
 - inputRandomEmail
 - tapOn:
-    id: 'Mot de passe'
+    id: ${output.wording.auth.login.passwordId}
 - inputText: ${MAESTRO_PASSWORD}
 - runFlow:
     when:
@@ -20,14 +20,14 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-    - tapOn: 'Connecte-toi' # Pour fermer le clavier iOS
-- tapOn: 'Se connecter' # Android
-- assertVisible: '.*E-mail ou mot de passe incorrect.*'
+    - tapOn: ${output.wording.auth.login.title} # Pour fermer le clavier iOS
+- tapOn: ${output.wording.auth.login.button} # Android
+- assertVisible: ${output.wording.auth.login.wrongCredentialsError}
 
-- tapOn: 'Revenir en arrière' # Permet de réinitialiser les forms
+- tapOn: ${output.wording.common.backButton} # Permet de réinitialiser les forms
 
 - runFlow:
     when:
-      visible: 'Plus tard'
+      visible: ${output.wording.auth.modal.later}
     commands:
-      - tapOn: 'Plus tard'
+      - tapOn: ${output.wording.auth.modal.later}
