@@ -15,22 +15,12 @@ describe('getTagProps', () => {
       getTagProps({
         theme: computedTheme,
         chroniclesCount: 1,
-        headlinesCount: 10,
         likesCount: 10,
         subcategoryId,
       })
     ).toEqual({
       label: 'Reco du Book Club',
       variant: TagVariant.BOOKCLUB,
-    })
-  })
-
-  it('should return "Reco par les lieux" tag when headlinesCount > 0 and no chronicles', () => {
-    expect(
-      getTagProps({ theme: computedTheme, headlinesCount: 1, likesCount: 10, subcategoryId })
-    ).toEqual({
-      label: 'Reco par les lieux',
-      variant: TagVariant.HEADLINE,
     })
   })
 
@@ -43,15 +33,6 @@ describe('getTagProps', () => {
 
   it('should return null if all counts are 0 or undefined', () => {
     expect(getTagProps({ theme: computedTheme, subcategoryId })).toBeNull()
-  })
-
-  it('should use short label when hasSmallLayout is true — "Reco lieux"', () => {
-    expect(
-      getTagProps({ theme: computedTheme, headlinesCount: 1, hasSmallLayout: true, subcategoryId })
-    ).toEqual({
-      label: 'Reco lieux',
-      variant: TagVariant.HEADLINE,
-    })
   })
 
   it('should use short label when hasSmallLayout is true — "Reco Club"', () => {

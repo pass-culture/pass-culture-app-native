@@ -66,19 +66,6 @@ const variantConfig: Variants<typeof OfferTile> = [
       offerLocation: { lat: 48.94374, lng: 2.48171 },
     },
   },
-  {
-    label: 'OfferTile WithHeadlines',
-    props: {
-      date: 'le 18 juin 2024',
-      name: 'The Fall Guy',
-      price: 'dès 15,60\u00a0€',
-      categoryLabel: 'Cinéma',
-      width: 200,
-      height: 300,
-      interactionTag: <Tag variant={TagVariant.HEADLINE} label="Reco par les lieux" />,
-      offerLocation: { lat: 48.94374, lng: 2.48171 },
-    },
-  },
 ]
 
 export const Template: VariantsStory<typeof OfferTile> = {

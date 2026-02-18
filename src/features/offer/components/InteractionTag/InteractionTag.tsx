@@ -13,7 +13,6 @@ type InteractionTagParams = {
   subcategoryId: SubcategoryIdEnum
   likesCount?: number
   chroniclesCount?: number
-  headlinesCount?: number
   hasSmallLayout?: boolean
   isComingSoonOffer?: boolean
 }
@@ -28,7 +27,6 @@ export const renderInteractionTag = (params: InteractionTagParams): ReactNode | 
 export const getTagProps = ({
   likesCount = 0,
   chroniclesCount = 0,
-  headlinesCount = 0,
   hasSmallLayout,
   isComingSoonOffer,
   subcategoryId,
@@ -51,13 +49,6 @@ export const getTagProps = ({
     return {
       label: hasSmallLayout ? 'Reco Club' : 'Reco du Ciné Club',
       variant: TagVariant.CINECLUB,
-    }
-  }
-
-  if (headlinesCount > 0) {
-    return {
-      label: hasSmallLayout ? 'Reco lieux' : 'Reco par les lieux',
-      variant: TagVariant.HEADLINE,
     }
   }
 

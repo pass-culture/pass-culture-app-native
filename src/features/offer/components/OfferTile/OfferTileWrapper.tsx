@@ -34,17 +34,8 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
-  const {
-    subcategoryId,
-    dates,
-    releaseDate,
-    isDuo,
-    likes,
-    chroniclesCount,
-    headlineCount,
-    name,
-    thumbUrl,
-  } = item.offer
+  const { subcategoryId, dates, releaseDate, isDuo, likes, chroniclesCount, name, thumbUrl } =
+    item.offer
 
   const formattedDate = getOfferDates({
     subcategoryId,
@@ -66,7 +57,6 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
     theme,
     likesCount: likes,
     chroniclesCount: chroniclesCount,
-    headlinesCount: headlineCount,
     hasSmallLayout,
     isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
     subcategoryId: item.offer.subcategoryId,

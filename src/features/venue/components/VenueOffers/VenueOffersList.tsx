@@ -86,7 +86,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
       theme,
       likesCount: item.offer.likes,
       chroniclesCount: item.offer.chroniclesCount,
-      headlinesCount: item.offer.headlineCount,
       isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
       subcategoryId: item.offer.subcategoryId,
     })

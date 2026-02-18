@@ -59,7 +59,6 @@ export const OfferPlaylistItem = ({
       theme,
       likesCount: item.offer.likes,
       chroniclesCount: item.offer.chroniclesCount,
-      headlinesCount: item.offer.headlineCount,
       hasSmallLayout,
       isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
       subcategoryId: item.offer.subcategoryId,
