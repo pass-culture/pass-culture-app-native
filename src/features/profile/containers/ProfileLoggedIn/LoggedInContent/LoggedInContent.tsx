@@ -38,8 +38,7 @@ export const LoggedInContent = ({ user }: Props) => {
   const shouldDisplayHelpButton = getShouldDisplayHelpButton({ user })
 
   const userStatusType = user?.status?.statusType
-  const isEligibleForChatbot =
-    !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.has(userStatusType)
+  const isEligibleForChatbot = !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.has(userStatusType)
   const shouldDisplayChatbotButton = isChatbotFeatureEnabled && isEligibleForChatbot
 
   const { hasSeenAppearanceTag, markAppearanceTagSeen } = useAppearanceTag(enableDarkModeGtm)

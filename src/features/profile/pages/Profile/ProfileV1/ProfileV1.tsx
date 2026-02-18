@@ -197,8 +197,7 @@ const OnlineProfile: React.FC = () => {
   const shouldShowAchievementsSection = user?.isBeneficiary
 
   const userStatusType = user?.status?.statusType
-  const isEligibleForChatbot =
-    !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.has(userStatusType)
+  const isEligibleForChatbot = !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.has(userStatusType)
   const shouldDisplayChatbot = enableChatbot && isEligibleForChatbot
 
   const shareBannerTitle = 'Partage le pass Culture'
