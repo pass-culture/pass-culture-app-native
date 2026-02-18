@@ -11,6 +11,8 @@ import { styled, useTheme } from 'styled-components/native'
 import { SnackBar } from 'ui/designSystem/Snackbar/SnackBar'
 import { useSnackbarProps } from 'ui/designSystem/Snackbar/snackBar.store'
 
+const DESKTOP_BOTTOM_OFFSET = 72
+
 export const SnackBarWrapper: FC<PropsWithChildren> = ({ children }) => {
   const { isDesktopViewport } = useTheme()
   const snackbarsProps = useSnackbarProps()
@@ -19,9 +21,10 @@ export const SnackBarWrapper: FC<PropsWithChildren> = ({ children }) => {
   return (
     <React.Fragment>
       {snackbarsProps.length > 0 ? (
-        <Container top={top}>
+        <Container top={top} pointerEvents="box-none">
           {snackbarsProps.map(({ onClose, label, animationDuration, type, id }, index) => (
             <Animated.View
+              pointerEvents="box-none"
               style={{ zIndex: 1000 + index }}
               key={id}
               layout={LinearTransition.duration(500).springify()}>
@@ -43,11 +46,9 @@ export const SnackBarWrapper: FC<PropsWithChildren> = ({ children }) => {
 }
 
 const Container = styled.View<{ top: number }>(({ theme, top }) => ({
-  marginHorizontal: theme.designSystem.size.spacing.xs,
-  marginVertical: theme.designSystem.size.spacing.xs,
   top: theme.isDesktopViewport ? undefined : top,
-  bottom: theme.isDesktopViewport ? 0 : undefined,
-  left: theme.isDesktopViewport ? undefined : 0,
+  bottom: theme.isDesktopViewport ? DESKTOP_BOTTOM_OFFSET : undefined,
+  left: 0,
   right: 0,
   position: 'absolute',
   zIndex: 1000,
