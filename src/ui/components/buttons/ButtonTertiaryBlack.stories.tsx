@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { Email } from 'ui/svg/icons/Email'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 
 import { ButtonTertiaryBlack } from './ButtonTertiaryBlack'
 
@@ -27,11 +27,11 @@ const variantConfig: Variants<typeof ButtonTertiaryBlack> = [
   },
   {
     label: 'ButtonTertiaryBlack default with icon',
-    props: { wording: 'Confirmer', icon: Email },
+    props: { wording: 'Confirmer', icon: EmailFilled },
   },
   {
     label: 'ButtonTertiaryBlack default disabled with icon',
-    props: { wording: 'Confirmer', disabled: true, icon: Email },
+    props: { wording: 'Confirmer', disabled: true, icon: EmailFilled },
   },
 ]
 
