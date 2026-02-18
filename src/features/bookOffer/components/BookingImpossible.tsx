@@ -24,7 +24,7 @@ export const BookingImpossible: React.FC = () => {
   const { mutate: notifyWebappLinkSent } = useNotifyWebappLinkSentMutation()
 
   useEffect(() => {
-    if (typeof offerId == 'undefined') return
+    if (offerId === undefined) return
     analytics.logBookingImpossibleiOS(offerId)
   }, [offerId])
 
@@ -37,13 +37,13 @@ export const BookingImpossible: React.FC = () => {
 
   const { mutate: addFavorite } = useAddFavoriteMutation({
     onSuccess: () => {
-      if (typeof offerId == 'undefined') return
+      if (offerId === undefined) return
       analytics.logHasAddedOfferToFavorites({ from: 'bookingimpossible', offerId })
       notifyWebappLinkSent(offerId)
     },
   })
 
-  if (typeof offerId == 'undefined') return null
+  if (offerId === undefined) return null
 
   const addToFavourite = () => {
     addFavorite({ offerId })
