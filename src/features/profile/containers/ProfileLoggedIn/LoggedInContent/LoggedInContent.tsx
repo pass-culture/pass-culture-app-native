@@ -22,11 +22,11 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location/LocationWrapper'
 
-const CHATBOT_ELIGIBLE_STATUSES: YoungStatusType[] = [
+const CHATBOT_ELIGIBLE_STATUSES = new Set<YoungStatusType>([
   YoungStatusType.eligible,
   YoungStatusType.beneficiary,
   YoungStatusType.ex_beneficiary,
-]
+])
 
 type Props = { user: UserProfileResponseWithoutSurvey | undefined }
 
@@ -39,7 +39,7 @@ export const LoggedInContent = ({ user }: Props) => {
 
   const userStatusType = user?.status?.statusType
   const isEligibleForChatbot =
-    !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.includes(userStatusType)
+    !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.has(userStatusType)
   const shouldDisplayChatbotButton = isChatbotFeatureEnabled && isEligibleForChatbot
 
   const { hasSeenAppearanceTag, markAppearanceTagSeen } = useAppearanceTag(enableDarkModeGtm)

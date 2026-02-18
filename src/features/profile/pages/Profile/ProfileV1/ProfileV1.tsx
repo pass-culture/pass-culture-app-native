@@ -67,11 +67,11 @@ const isWeb = Platform.OS === 'web'
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 const DARK_MODE_GTM_APPEARANCE_TAG_KEY = 'darkModeGtmAppearanceTagSeen'
 
-const CHATBOT_ELIGIBLE_STATUSES: YoungStatusType[] = [
+const CHATBOT_ELIGIBLE_STATUSES = new Set<YoungStatusType>([
   YoungStatusType.eligible,
   YoungStatusType.beneficiary,
   YoungStatusType.ex_beneficiary,
-]
+])
 
 const OnlineProfile: React.FC = () => {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.PROFILE)
@@ -198,7 +198,7 @@ const OnlineProfile: React.FC = () => {
 
   const userStatusType = user?.status?.statusType
   const isEligibleForChatbot =
-    !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.includes(userStatusType)
+    !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.has(userStatusType)
   const shouldDisplayChatbot = enableChatbot && isEligibleForChatbot
 
   const shareBannerTitle = 'Partage le pass Culture'
