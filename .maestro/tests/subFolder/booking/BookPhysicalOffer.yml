@@ -47,7 +47,7 @@ appId: ${MAESTRO_APP_ID}
       - scroll
 
 - tapOn:
-    text: 'Confirmer la réservation'
+    text: '.*Confirmer la réservation.*'
     retryTapIfNoChange: false
 
 - assertVisible: "Réservation confirmée\_!"

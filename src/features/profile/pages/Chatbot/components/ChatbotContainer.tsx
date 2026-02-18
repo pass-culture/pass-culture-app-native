@@ -11,7 +11,7 @@ export const ChatbotContainer: React.FC = () => {
   const headerHeight = useGetHeaderHeight()
   return (
     <React.Fragment>
-      <PageHeaderWithoutPlaceholder title="J’ai une question" />
+      <PageHeaderWithoutPlaceholder title="Poser une question" />
       <Placeholder height={headerHeight} />
       <WebView
         source={{

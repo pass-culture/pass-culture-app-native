@@ -558,21 +558,21 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
               }
             >
               <View
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
                 style={
                   {
-                    "width": 8,
+                    "marginRight": 8,
                   }
                 }
-              />
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
               <View
                 style={
                   {
@@ -718,21 +718,21 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
                 }
               >
                 <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={2}
                   style={
                     {
-                      "width": 8,
+                      "marginRight": 8,
                     }
                   }
-                />
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
                 <View
                   style={
                     {
@@ -838,22 +838,22 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
               }
             >
               <View
-                accessibilityLabel="Nouvelle fenêtre"
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
                 style={
                   {
-                    "width": 8,
+                    "marginRight": 8,
                   }
                 }
-              />
+              >
+                <View
+                  accessibilityLabel="Nouvelle fenêtre"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
               <View
                 style={
                   {
@@ -981,21 +981,21 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
               }
             >
               <View
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
                 style={
                   {
-                    "width": 8,
+                    "marginRight": 8,
                   }
                 }
-              />
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
               <View
                 style={
                   {
@@ -1100,22 +1100,22 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
               }
             >
               <View
-                fill="#161617"
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
                 style={
                   {
-                    "width": 8,
+                    "marginRight": 8,
                   }
                 }
-              />
+              >
+                <View
+                  fill="#161617"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
               <View
                 style={
                   {
@@ -1220,21 +1220,21 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
               }
             >
               <View
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
                 style={
                   {
-                    "width": 8,
+                    "marginRight": 8,
                   }
                 }
-              />
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
               <View
                 style={
                   {
@@ -1339,21 +1339,21 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
               }
             >
               <View
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
                 style={
                   {
-                    "width": 8,
+                    "marginRight": 8,
                   }
                 }
-              />
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
               <View
                 style={
                   {

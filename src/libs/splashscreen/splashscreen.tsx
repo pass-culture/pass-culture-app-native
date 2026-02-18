@@ -16,7 +16,7 @@ export function useSplashScreenContext() {
 export const SplashScreenProvider = memo(function SplashScreenProvider(props: {
   children: React.ReactNode
 }) {
-  const splashScreenBeginningTime = new Date().getTime()
+  const splashScreenBeginningTime = Date.now()
   const [isSplashScreenHidden, setIsSplashScreenHidden] = useState<boolean>(false)
 
   const hideSplashscreenCallback = useCallback(() => {
@@ -25,7 +25,7 @@ export const SplashScreenProvider = memo(function SplashScreenProvider(props: {
   }, [])
 
   const hideSplashScreen = useCallback(() => {
-    const splashScreenDisplayDuration = new Date().getTime() - splashScreenBeginningTime
+    const splashScreenDisplayDuration = Date.now() - splashScreenBeginningTime
     if (splashScreenDisplayDuration < MIN_SPLASHSCREEN_DURATION_IN_MS) {
       setTimeout(
         hideSplashscreenCallback,

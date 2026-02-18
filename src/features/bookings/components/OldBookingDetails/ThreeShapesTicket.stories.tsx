@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
 import QRCode from 'react-native-qrcode-svg'
 
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Button } from 'ui/designSystem/Button/Button'
 import { VariantsTemplate, type Variants } from 'ui/storybook/VariantsTemplate'
 
 import { ThreeShapesTicket } from './ThreeShapesTicket'
@@ -24,7 +24,7 @@ const variantConfig: Variants<typeof ThreeShapesTicket> = [
   },
   {
     label: 'ThreeShapesTicket with button',
-    props: { children: <ButtonPrimary wording="Accéder à l’offre" /> },
+    props: { children: <Button wording="Accéder à l’offre" fullWidth /> },
   },
 ]
 

@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export type SectionRowContentProps = {
   title: string
@@ -46,10 +46,9 @@ export const SectionRowContent = ({
   return (
     <View style={[styles.container, style]}>
       {Icon ? (
-        <React.Fragment>
+        <IconWrapper>
           <Icon size={iconSize} />
-          <Spacer.Row numberOfSpaces={2} />
-        </React.Fragment>
+        </IconWrapper>
       ) : null}
       <TitleContainer>{Title}</TitleContainer>
       {props.type == 'navigable' ? (
@@ -82,3 +81,7 @@ const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
   color: theme.designSystem.color.icon.default,
 }))``
+
+const IconWrapper = styled.View(({ theme }) => ({
+  marginRight: theme.designSystem.size.spacing.s,
+}))

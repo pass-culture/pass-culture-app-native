@@ -12,9 +12,10 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { Touchable } from 'ui/components/touchable/Touchable'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ArrowDown as DefaultArrowDown } from 'ui/svg/icons/ArrowDown'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   selectedCountry: Country
@@ -43,9 +44,10 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
         hoverUnderlineColor={null}
         accessibilityLabel={accessibilityLabel}>
         <CallingCodeText>{callingCode}</CallingCodeText>
-        <ArrowDown />
-        <Spacer.Row numberOfSpaces={2} />
-        <VerticalSeparator />
+        <StyledViewGap gap={2}>
+          <ArrowDown />
+          <VerticalSeparator />
+        </StyledViewGap>
       </StyledTouchable>
       <AppModal
         title="Choix de l’indicatif téléphonique"
@@ -70,6 +72,10 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
   )
 }
 
+const StyledViewGap = styled(ViewGap)({
+  flexDirection: 'row',
+  alignItems: 'center',
+})
 const focusStyle =
   Platform.OS === 'web'
     ? {

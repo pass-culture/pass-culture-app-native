@@ -43,10 +43,10 @@ export const SnackBarLarge: FC<SnackBarProps & { Icon: FC<AccessibleIcon> }> = (
 }
 
 const SnackbarContainer = styled(Animated.View)(({ theme }) => ({
-  alignSelf: 'flex-end',
+  alignSelf: 'center',
   maxWidth: 560,
   overflow: 'hidden',
-  margin: theme.designSystem.size.spacing.xxs,
+  marginTop: theme.designSystem.size.spacing.xs,
 }))
 
 const LabelContainer = styled.View({

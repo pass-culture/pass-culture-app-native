@@ -64,7 +64,7 @@ appId: ${MAESTRO_APP_ID}
       platform: iOS
     commands:
       - scroll
-- doubleTapOn: 'Confirmer la réservation'
+- doubleTapOn: '.*Confirmer la réservation.*'
 
 - assertVisible: "Réservation confirmée\_!"
 - tapOn: 'Voir ma réservation'

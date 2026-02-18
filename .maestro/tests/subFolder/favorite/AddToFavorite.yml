@@ -1,9 +1,9 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - tapOn:
-    id: 'animated-icon-favorite'
+    id: 'Mettre en favori'
 - tapOn:
-    id: 'animated-icon-back'
+    id: 'Revenir en arrière'
 
 - scroll
 
@@ -27,10 +27,10 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
       visible:
-        id: 'animated-icon-favorite-filled'
+        id: 'Retirer des favoris'
     commands:
       - tapOn:
-          id: "animated-icon-back"
+          id: "Revenir en arrière"
       - scroll
       - tapOn:
           text: 'CD'
@@ -40,28 +40,28 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
       visible:
-        id: 'animated-icon-favorite-filled'
+        id: 'Retirer des favoris'
     commands:
       - tapOn:
-          id: "animated-icon-back"
+          id: "Revenir en arrière"
       - scroll
       - tapOn:
           text: "CD"
 
 - tapOn:
-    id: 'animated-icon-favorite'
+    id: 'Mettre en favori'
 - tapOn:
-    id: 'animated-icon-back'
+    id: 'Revenir en arrière'
 
 - scroll
 - runFlow:
     when:
       platform: Android
       visible:
-        id: 'animated-icon-favorite-filled'
+        id: 'Retirer des favoris'
     commands:
       - tapOn:
-          id: "animated-icon-back"
+          id: "Revenir en arrière"
       - scroll
       - tapOn:
           text: 'CD'
@@ -71,10 +71,10 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
       visible:
-        id: 'animated-icon-favorite-filled'
+        id: 'Retirer des favoris'
     commands:
       - tapOn:
-          id: "animated-icon-back"
+          id: "Revenir en arrière"
       - scroll
       - tapOn:
           text: "CD"
@@ -89,9 +89,9 @@ appId: ${MAESTRO_APP_ID}
         text: "CD"
         index: 3
     - tapOn:
-        id: 'animated-icon-favorite'
+        id: 'Mettre en favori'
     - tapOn:
-        id: "animated-icon-back"
+        id: "Revenir en arrière"
 
 - runFlow:
     when:
@@ -101,7 +101,7 @@ appId: ${MAESTRO_APP_ID}
         text: 'CD'
         index: 2
     - tapOn:
-        id: 'animated-icon-favorite'
+        id: 'Mettre en favori'
     - tapOn:
-        id: 'animated-icon-back'
+        id: 'Revenir en arrière'
         retryTapIfNoChange: false
