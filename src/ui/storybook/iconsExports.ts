@@ -38,7 +38,6 @@ import { Duo } from 'ui/svg/icons/Duo'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { Earth } from 'ui/svg/icons/Earth'
 import { EditPen } from 'ui/svg/icons/EditPen'
-import { Email } from 'ui/svg/icons/Email'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { EmailIcon } from 'ui/svg/icons/EmailIcon'
 import { Error } from 'ui/svg/icons/Error'
@@ -184,7 +183,6 @@ export const SecondaryAndBiggerIcons = {
   Confirmation,
   Duo,
   Earth,
-  Email,
   EmailIcon,
   Error,
   Everywhere,

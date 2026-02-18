@@ -4,16 +4,16 @@ import React from 'react'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { EditPen } from 'ui/svg/icons/EditPen'
-import { Email } from 'ui/svg/icons/Email'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 
 const meta: Meta<typeof SectionRow> = {
   title: 'ui/sections/SectionRow',
   component: SectionRow,
   argTypes: {
     icon: {
-      options: ['Email', 'EditPen'],
+      options: ['EmailFilled', 'EditPen'],
       mapping: {
-        Email,
+        EmailFilled,
         EditPen,
       },
       control: {
@@ -31,7 +31,7 @@ const variantConfig: Variants<typeof SectionRow> = [
   },
   {
     label: 'SectionRow NavigableWithIcon',
-    props: { title: 'Section row navigable', type: 'navigable', icon: Email },
+    props: { title: 'Section row navigable', type: 'navigable', icon: EmailFilled },
   },
   {
     label: 'SectionRow Clickable',
@@ -39,7 +39,7 @@ const variantConfig: Variants<typeof SectionRow> = [
   },
   {
     label: 'SectionRow ClickableWithIcon',
-    props: { title: 'Section row clickable', type: 'clickable', icon: Email },
+    props: { title: 'Section row clickable', type: 'clickable', icon: EmailFilled },
   },
 ]
 

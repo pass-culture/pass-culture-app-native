@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { Email } from 'ui/svg/icons/Email'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 
 import { ButtonSecondary } from './ButtonSecondary'
 
@@ -28,11 +28,11 @@ const variantConfig: Variants<typeof ButtonSecondary> = [
   },
   {
     label: 'ButtonSecondary default with icon',
-    props: { wording: 'Confirmer', icon: Email },
+    props: { wording: 'Confirmer', icon: EmailFilled },
   },
   {
     label: 'ButtonSecondary default disabled with icon',
-    props: { wording: 'Confirmer', disabled: true, icon: Email },
+    props: { wording: 'Confirmer', disabled: true, icon: EmailFilled },
   },
   // Tall
   {
@@ -49,11 +49,11 @@ const variantConfig: Variants<typeof ButtonSecondary> = [
   },
   {
     label: 'ButtonSecondary tall with icon',
-    props: { wording: 'Confirmer', buttonHeight: 'tall', icon: Email },
+    props: { wording: 'Confirmer', buttonHeight: 'tall', icon: EmailFilled },
   },
   {
     label: 'ButtonSecondary tall disabled with icon',
-    props: { wording: 'Confirmer', buttonHeight: 'tall', disabled: true, icon: Email },
+    props: { wording: 'Confirmer', buttonHeight: 'tall', disabled: true, icon: EmailFilled },
   },
   // Extra small
   {
@@ -70,11 +70,11 @@ const variantConfig: Variants<typeof ButtonSecondary> = [
   },
   {
     label: 'ButtonSecondary extra small with icon',
-    props: { wording: 'Confirmer', buttonHeight: 'extraSmall', icon: Email },
+    props: { wording: 'Confirmer', buttonHeight: 'extraSmall', icon: EmailFilled },
   },
   {
     label: 'ButtonSecondary extra small disabled with icon',
-    props: { wording: 'Confirmer', buttonHeight: 'extraSmall', disabled: true, icon: Email },
+    props: { wording: 'Confirmer', buttonHeight: 'extraSmall', disabled: true, icon: EmailFilled },
   },
 ]
 
