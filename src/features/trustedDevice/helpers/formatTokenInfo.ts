@@ -31,7 +31,7 @@ export const formatOsAndSource = (os?: string, source?: string) => {
 export const formatLoginDate = (dateCreated?: string) => {
   let formattedDatetime = UNKNOWN_VALUE_TEXT
 
-  if (dateCreated && !isNaN(Date.parse(dateCreated))) {
+  if (dateCreated && !Number.isNaN(Date.parse(dateCreated))) {
     const loginDate = new Date(dateCreated)
 
     const formattedDate = formatToSlashedFrenchDate(loginDate)

@@ -15,13 +15,13 @@ export const useReviewInAppInformation = () => {
       .readMultiString(['times_review_has_been_requested', 'first_time_review_has_been_requested'])
       // @ts-expect-error: because of noUncheckedIndexedAccess
       .then(([[, reviewsRequested], [, firstReview]]) => {
-        const timesReviewsRequested = parseInt(reviewsRequested ?? '0')
+        const timesReviewsRequested = Number.parseInt(reviewsRequested ?? '0')
         setTimesReviewHasBeenRequested(timesReviewsRequested)
         if (timesReviewsRequested === 0) {
           storage.saveObject('first_time_review_has_been_requested', currentDate)
         }
         // After one year we reset dateFirstReview and show review pop-up again
-        const dateFirstReview = parseInt(firstReview ?? currentDate.toString())
+        const dateFirstReview = Number.parseInt(firstReview ?? currentDate.toString())
         if (dateFirstReview + ONE_YEAR < currentDate) {
           setTimesReviewHasBeenRequested(0)
           storage.saveMultiString([

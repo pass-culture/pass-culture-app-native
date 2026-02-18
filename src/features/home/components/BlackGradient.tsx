@@ -9,7 +9,7 @@ const percentageRegex = /^\s*(100|(\d{1,2}([.,]\d+)?))\s*%$/
 
 const isValidPercentage = (value: string): boolean => {
   if (!percentageRegex.test(value)) return false
-  const numericValue = parseFloat(value.replace(',', '.'))
+  const numericValue = Number.parseFloat(value.replace(',', '.'))
   return numericValue >= 0 && numericValue <= 100
 }
 
