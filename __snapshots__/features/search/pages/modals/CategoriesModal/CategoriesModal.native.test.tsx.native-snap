@@ -2221,12 +2221,12 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
         >
           <View
             flexDirection="row"
-            gap={4}
+            gap={10}
             isModal={true}
             style={
               {
                 "flexDirection": "row",
-                "gap": 16,
+                "gap": 40,
                 "justifyContent": "center",
                 "paddingHorizontal": 24,
                 "paddingTop": 8,
@@ -2270,22 +2270,18 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     },
                     {
                       "alignItems": "center",
-                      "borderBottomLeftRadius": 24,
-                      "borderBottomRightRadius": 24,
-                      "borderTopLeftRadius": 24,
-                      "borderTopRightRadius": 24,
+                      "backgroundColor": "transparent",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 0,
                       "flexDirection": "row",
                       "justifyContent": "center",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "paddingBottom": 2,
-                      "paddingLeft": 2,
-                      "paddingRight": 2,
-                      "paddingTop": 2,
-                      "width": "100%",
-                    },
-                    {
-                      "backgroundColor": "transparent",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                       "width": "auto",
                     },
                   ],
@@ -2297,43 +2293,71 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               testID="Réinitialiser"
             >
               <View
+                gap={8}
+                hasIcon={true}
+                isMultiline={false}
                 style={
                   {
                     "alignItems": "center",
+                    "columnGap": 8,
                     "flexDirection": "row",
                   }
                 }
               >
                 <View
-                  style={
+                  collapsable={false}
+                  jestAnimatedProps={
                     {
-                      "flexDirection": "row",
-                      "flexShrink": 0,
-                      "marginRight": 8,
+                      "value": {},
                     }
+                  }
+                  jestAnimatedStyle={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestInlineStyle={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                  nativeID="0"
+                  style={
+                    [
+                      {
+                        "flexShrink": 0,
+                      },
+                    ]
                   }
                 >
                   <View
-                    height={16}
-                    testID="button-icon-left"
-                    width={16}
+                    height={14}
+                    width={14}
                   >
                     <Text>
-                      button-icon-left-SVG-Mock
+                      undefined-SVG-Mock
                     </Text>
                   </View>
                 </View>
                 <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
                   style={
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                      "maxWidth": "100%",
-                    }
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 14,
+                      },
+                      {
+                        "color": "#696a6f",
+                        "flexBasis": undefined,
+                        "flexGrow": undefined,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": undefined,
+                      },
+                    ]
                   }
                 >
                   Réinitialiser
@@ -2378,22 +2402,19 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     {
                       "alignItems": "center",
                       "backgroundColor": "#6123df",
-                      "borderBottomLeftRadius": 24,
-                      "borderBottomRightRadius": 24,
-                      "borderTopLeftRadius": 24,
-                      "borderTopRightRadius": 24,
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#6123df",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
                       "flexDirection": "row",
                       "justifyContent": "center",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "paddingBottom": 2,
-                      "paddingLeft": 20,
-                      "paddingRight": 20,
-                      "paddingTop": 2,
-                      "width": "100%",
-                    },
-                    {
-                      "flexGrow": 1,
+                      "paddingBottom": 8,
+                      "paddingLeft": 12,
+                      "paddingRight": 12,
+                      "paddingTop": 8,
                       "width": "auto",
                     },
                   ],
@@ -2405,24 +2426,36 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               testID="Rechercher"
             >
               <View
+                gap={8}
+                hasIcon={false}
+                isMultiline={false}
                 style={
                   {
                     "alignItems": "center",
+                    "columnGap": 8,
                     "flexDirection": "row",
                   }
                 }
               >
                 <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
                   style={
-                    {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 22,
-                      "maxWidth": "100%",
-                    }
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
+                      },
+                      {
+                        "color": "#ffffff",
+                        "flexBasis": undefined,
+                        "flexGrow": undefined,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": undefined,
+                      },
+                    ]
                   }
                 >
                   Rechercher
