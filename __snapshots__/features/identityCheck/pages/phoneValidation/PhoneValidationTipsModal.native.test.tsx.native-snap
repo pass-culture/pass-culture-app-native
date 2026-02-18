@@ -493,7 +493,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                 {
                   "busy": undefined,
                   "checked": undefined,
-                  "disabled": undefined,
+                  "disabled": false,
                   "expanded": undefined,
                   "selected": undefined,
                 }
@@ -524,21 +524,21 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                     {
                       "alignItems": "center",
                       "backgroundColor": "#6123df",
-                      "borderBottomLeftRadius": 24,
-                      "borderBottomRightRadius": 24,
-                      "borderTopLeftRadius": 24,
-                      "borderTopRightRadius": 24,
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#6123df",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
                       "flexDirection": "row",
                       "justifyContent": "center",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "paddingBottom": 2,
-                      "paddingLeft": 20,
-                      "paddingRight": 20,
-                      "paddingTop": 2,
-                      "width": "100%",
+                      "paddingBottom": 8,
+                      "paddingLeft": 12,
+                      "paddingRight": 12,
+                      "paddingTop": 8,
+                      "width": "auto",
                     },
-                    {},
                   ],
                   {
                     "opacity": 1,
@@ -548,24 +548,36 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
               testID="J’ai compris"
             >
               <View
+                gap={8}
+                hasIcon={false}
+                isMultiline={false}
                 style={
                   {
                     "alignItems": "center",
+                    "columnGap": 8,
                     "flexDirection": "row",
                   }
                 }
               >
                 <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
                   style={
-                    {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 22,
-                      "maxWidth": "100%",
-                    }
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
+                      },
+                      {
+                        "color": "#ffffff",
+                        "flexBasis": undefined,
+                        "flexGrow": undefined,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": undefined,
+                      },
+                    ]
                   }
                 >
                   J’ai compris

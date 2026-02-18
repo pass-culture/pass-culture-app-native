@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InformationWithIcon } from 'ui/components/InformationWithIcon'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { Button } from 'ui/designSystem/Button/Button'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Signal } from 'ui/svg/icons/Signal'
 import { Smartphone } from 'ui/svg/icons/Smartphone'
@@ -39,7 +39,7 @@ export const PhoneValidationTipsModal: FunctionComponent<Props> = (props) => {
           subtitle="Il ne peut être associé qu’à un seul compte"
         />
         <Spacer.Column numberOfSpaces={13} />
-        <ButtonPrimary wording="J’ai compris" onPress={props.dismissModal} />
+        <Button wording="J’ai compris" onPress={props.dismissModal} />
       </React.Fragment>
     </AppModal>
   )
