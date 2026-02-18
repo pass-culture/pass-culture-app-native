@@ -230,22 +230,22 @@ describe('<Offer />', () => {
     expect(await screen.findByText('La reco du Ciné Club')).toBeOnTheScreen()
   })
 
-  it('should open chronicles writers modal when pressing "C’est quoi le Ciné Club\u00a0?" button', async () => {
+  it('should open chronicles writers modal when pressing "Qui écrit les avis du Ciné Club\u00a0?" button', async () => {
     renderOfferPage({ mockOffer: offerResponseSnap })
 
     await screen.findByText('La reco du Ciné Club')
 
-    await user.press(screen.getByText('C’est quoi le Ciné Club\u00a0?'))
+    await user.press(screen.getByText('Qui écrit les avis du Ciné Club\u00a0?'))
 
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
 
-  it('should trigger ClickWhatsClub log when pressing "C’est quoi le Ciné Club\u00a0?" button', async () => {
+  it('should trigger ClickWhatsClub log when pressing "Qui écrit les avis du Ciné Club\u00a0?" button', async () => {
     renderOfferPage({ mockOffer: offerResponseSnap })
 
     await screen.findByText('La reco du Ciné Club')
 
-    await user.press(screen.getByText('C’est quoi le Ciné Club\u00a0?'))
+    await user.press(screen.getByText('Qui écrit les avis du Ciné Club\u00a0?'))
 
     expect(analytics.logClickWhatsClub).toHaveBeenNthCalledWith(1, {
       categoryName: 'CINEMA',

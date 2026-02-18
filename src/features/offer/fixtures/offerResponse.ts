@@ -66,6 +66,7 @@ export const offerResponseSnap = toMutable({
       author: null,
     },
   ],
+  chroniclesCount: 3,
   stocks: [
     {
       id: 118929,

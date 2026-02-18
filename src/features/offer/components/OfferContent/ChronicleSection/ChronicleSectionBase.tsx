@@ -48,6 +48,7 @@ export const ChronicleSectionBase = ({
             onBeforeNavigate={onBeforeNavigate}
             variant="secondary"
             color="neutral"
+            size="small"
           />
         </Gutter>
       ) : null}

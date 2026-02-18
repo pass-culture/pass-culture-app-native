@@ -112,7 +112,7 @@ describe('Chronicles', () => {
       await waitFor(() => expect(mockScrollToIndex).toHaveBeenCalledTimes(1))
     })
 
-    it('should open chronicle modal when pressing "C’est quoi le Ciné Club ?" button', async () => {
+    it('should open chronicle modal when pressing "Qui écrit les avis du Ciné Club ?" button', async () => {
       jest.spyOn(useModal, 'useModal').mockReturnValueOnce({
         visible: false,
         showModal: mockShowModal,
@@ -121,12 +121,12 @@ describe('Chronicles', () => {
       })
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await user.press(await screen.findByText('C’est quoi le Ciné Club ?'))
+      await user.press(await screen.findByText('Qui écrit les avis du Ciné Club ?'))
 
       expect(mockShowModal).toHaveBeenCalledTimes(1)
     })
 
-    it('should trigger ClickWhatsClub log when pressing "C’est quoi le Ciné Club ?" button', async () => {
+    it('should trigger ClickWhatsClub log when pressing "Qui écrit les avis du Ciné Club ?" button', async () => {
       jest.spyOn(useModal, 'useModal').mockReturnValueOnce({
         visible: false,
         showModal: jest.fn(),
@@ -135,7 +135,7 @@ describe('Chronicles', () => {
       })
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await user.press(await screen.findByText('C’est quoi le Ciné Club ?'))
+      await user.press(await screen.findByText('Qui écrit les avis du Ciné Club ?'))
 
       expect(analytics.logClickWhatsClub).toHaveBeenNthCalledWith(1, {
         categoryName: 'CINEMA',
@@ -202,7 +202,7 @@ describe('Chronicles', () => {
       it('should navigate to recommandation thematic home when pressing button', async () => {
         render(reactQueryProviderHOC(<Chronicles />))
 
-        await user.press(await screen.findByText('Voir toutes les recos du Ciné Club'))
+        await user.press(await screen.findByText('Voir tous les avis du club'))
 
         await waitFor(async () => {
           expect(mockNavigate).toHaveBeenNthCalledWith(1, 'ThematicHome', {
@@ -215,7 +215,7 @@ describe('Chronicles', () => {
       it('should trigger ClickAllClubRecos log when pressing button', async () => {
         render(reactQueryProviderHOC(<Chronicles />))
 
-        await user.press(await screen.findByText('Voir toutes les recos du Ciné Club'))
+        await user.press(await screen.findByText('Voir tous les avis du club'))
 
         await waitFor(() => {
           expect(analytics.logClickAllClubRecos).toHaveBeenNthCalledWith(1, {

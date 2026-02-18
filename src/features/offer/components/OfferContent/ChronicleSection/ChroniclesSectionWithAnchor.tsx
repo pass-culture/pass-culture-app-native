@@ -36,13 +36,13 @@ export const ChroniclesSectionWithAnchor: FunctionComponent<ChroniclesSectionWit
     }
   }, [registerAnchor])
 
-  if (!chronicles?.length) return null
+  if (!chronicles?.length || !offer.chroniclesCount) return null
 
   return (
     <StyledSectionWithDivider visible testID="chronicles-section" gap={8}>
       <View ref={chroniclesSectionRef} onLayout={handleLayout} testID="chronicles-section-anchor">
         <ChronicleSection
-          ctaLabel="Voir tous les avis"
+          ctaLabel={`Lire les ${offer.chroniclesCount} avis`}
           variantInfo={chronicleVariantInfo}
           data={chronicles}
           // It's dirty but necessary to use from parameter for the logs

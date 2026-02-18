@@ -654,20 +654,20 @@ describe('<OfferContent />', () => {
         expect(screen.queryByText("L'avis du book club")).not.toBeOnTheScreen()
       })
 
-      it('should display "Voir tous les avis" button', async () => {
+      it('should display "Lire les X avis" button', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
 
-        expect(await screen.findByText('Voir tous les avis')).toBeOnTheScreen()
+        expect(await screen.findByText('Lire les 3 avis')).toBeOnTheScreen()
       })
 
-      it('should navigate to chronicles page when pressing "Voir tous les avis" button', async () => {
+      it('should navigate to chronicles page when pressing "Lire les X avis" button', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
 
-        await user.press(await screen.findByText('Voir tous les avis'))
+        await user.press(await screen.findByText('Lire les 3 avis'))
 
         expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', {
           offerId: 116656,
@@ -675,12 +675,12 @@ describe('<OfferContent />', () => {
         })
       })
 
-      it('should trigger ClickInfoReview log when pressing "Voir tous les avis" button', async () => {
+      it('should trigger ClickInfoReview log when pressing "Lire les X avis" button', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
 
-        await user.press(await screen.findByText('Voir tous les avis'))
+        await user.press(await screen.findByText('Lire les 3 avis'))
 
         expect(analytics.logClickInfoReview).toHaveBeenNthCalledWith(1, {
           from: 'offer',

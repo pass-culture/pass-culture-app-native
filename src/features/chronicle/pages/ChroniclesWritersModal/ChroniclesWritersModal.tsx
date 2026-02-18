@@ -24,7 +24,7 @@ export const ChroniclesWritersModal: FunctionComponent<Props> = ({
     <AppModal
       animationOutTiming={1}
       visible={isVisible}
-      title={variantInfo.modalTitle}
+      title={'Qui écrit les avis\u00a0?'}
       rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}
       onRightIconPress={closeModal}>
