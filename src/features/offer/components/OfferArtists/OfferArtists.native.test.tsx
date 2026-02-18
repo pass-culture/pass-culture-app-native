@@ -35,11 +35,23 @@ describe('<OfferArtists />', () => {
     expect(screen.getByText('Sam Worthington, Zoe Saldana, Sigourney Weaver')).toBeOnTheScreen()
   })
 
-  it('should display right icon when onPressArtistLink callback is defined', () => {
+  it('should display right icon when onPressArtistLink callback is defined and there is one artist with id', () => {
     const handlePressLink = jest.fn()
     render(<OfferArtists artists={[mockArtist]} onPressArtistLink={handlePressLink} />)
 
     expect(screen.getByTestId('right-icon')).toBeOnTheScreen()
+  })
+
+  it('should not display right icon when onPressArtistLink callback is defined and there is one artist without id', () => {
+    const handlePressLink = jest.fn()
+    render(
+      <OfferArtists
+        artists={[{ ...mockArtist, id: undefined }]}
+        onPressArtistLink={handlePressLink}
+      />
+    )
+
+    expect(screen.queryByTestId('right-icon')).not.toBeOnTheScreen()
   })
 
   it('should not display right icon when onPressArtistLink callback not defined', () => {
@@ -48,13 +60,25 @@ describe('<OfferArtists />', () => {
     expect(screen.queryByTestId('right-icon')).not.toBeOnTheScreen()
   })
 
-  it('should display clickable artist button when onPressArtistLink callback is defined', async () => {
+  it('should display clickable artist button when onPressArtistLink callback is defined and there is one artist with id', async () => {
     const handlePressLink = jest.fn()
     render(<OfferArtists artists={[mockArtist]} onPressArtistLink={handlePressLink} />)
 
     await user.press(screen.getByLabelText('Accéder à la page de Edith Piaf'))
 
     expect(handlePressLink).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not display clickable artist button when onPressArtistLink callback is defined and there is one artist without id', () => {
+    const handlePressLink = jest.fn()
+    render(
+      <OfferArtists
+        artists={[{ ...mockArtist, id: undefined }]}
+        onPressArtistLink={handlePressLink}
+      />
+    )
+
+    expect(screen.queryByLabelText('Accéder à la page de Edith Piaf')).not.toBeOnTheScreen()
   })
 
   it('should not display clickable artist button when onPressArtistLink callback is not defined', () => {

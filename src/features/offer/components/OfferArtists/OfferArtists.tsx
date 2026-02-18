@@ -32,6 +32,10 @@ export const OfferArtists: FunctionComponent<Props> = ({
           ? getArtistsButtonLabel(artistsNames)
           : artistsNames.join(', ')
 
+        const hasArtistId = !!line.artists[0]?.id
+        const hasSeveralArtists = line.artists.length > 1
+        const isLineClickable = artistLinkEnabled && (hasSeveralArtists || hasArtistId)
+
         const artistsText = (
           <Container gap={2}>
             <Prefix>{line.prefix}</Prefix>
@@ -42,11 +46,11 @@ export const OfferArtists: FunctionComponent<Props> = ({
               {...accessibilityAndTestId(`Nom de l’artiste\u00a0: ${artistsLabel}`)}>
               {artistsLabel}
             </ArtistText>
-            {artistLinkEnabled ? <StyledRightFilled testID="right-icon" /> : null}
+            {isLineClickable ? <StyledRightFilled testID="right-icon" /> : null}
           </Container>
         )
 
-        if (artistLinkEnabled) {
+        if (isLineClickable) {
           return (
             <InternalTouchableLink
               key={line.artists[0]?.id}
