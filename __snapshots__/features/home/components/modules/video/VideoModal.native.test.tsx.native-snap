@@ -630,69 +630,123 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
           </View>
         </RCTScrollView>
         <View
-          accessibilityLabel="Fermer la modale vidéo"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
           style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "backgroundColor": "#ffffff",
-                  "borderBottomLeftRadius": 999,
-                  "borderBottomRightRadius": 999,
-                  "borderTopLeftRadius": 999,
-                  "borderTopRightRadius": 999,
-                  "paddingBottom": 12,
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                  "paddingTop": 12,
-                  "position": "absolute",
-                  "right": 16,
-                  "top": 16,
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
+            {
+              "position": "absolute",
+              "right": 16,
+              "top": 16,
+            }
           }
-          testID="Fermer la modale vidéo"
         >
           <View
-            height={20}
-            width={20}
+            accessibilityLabel="Fermer la modale vidéo"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Fermer la modale vidéo"
           >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
+            <View
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="0"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={14}
+                  width={14}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
       </View>

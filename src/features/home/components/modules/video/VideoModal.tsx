@@ -11,10 +11,9 @@ import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful/types'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalSwipeDirection } from 'ui/components/modals/types'
-import { Touchable } from 'ui/components/touchable/Touchable'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Close } from 'ui/svg/icons/Close'
@@ -119,20 +118,25 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
           </React.Fragment>
         ) : null}
       </StyledScrollView>
-      <StyledTouchable onPress={onCloseModal} accessibilityLabel="Fermer la modale vidéo">
-        <StyledCloseIcon />
-      </StyledTouchable>
+      <CloseButtonWrapper>
+        <Button
+          iconButton
+          icon={Close}
+          accessibilityLabel="Fermer la modale vidéo"
+          onPress={onCloseModal}
+          variant="secondary"
+          color="neutral"
+          size="small"
+        />
+      </CloseButtonWrapper>
     </AppModal>
   )
 }
 
-const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
+const CloseButtonWrapper = styled.View(({ theme }) => ({
   position: 'absolute',
   top: theme.designSystem.size.spacing.l,
   right: theme.designSystem.size.spacing.l,
-  borderRadius: theme.designSystem.size.borderRadius.pill,
-  padding: theme.designSystem.size.spacing.m,
-  backgroundColor: theme.designSystem.color.background.default,
 }))
 
 const StyledTagContainer = styled.View({
@@ -150,7 +154,3 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 const StyledScrollView = styled.ScrollView(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.xl,
 }))
-
-const StyledCloseIcon = styled(Close).attrs(({ theme }) => ({
-  size: theme.icons.sizes.smaller,
-}))``
