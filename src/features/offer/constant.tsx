@@ -42,31 +42,31 @@ export const CINE_CLUB_SUBCATEGORIES = [
 export const CHRONICLE_VARIANT_CONFIG = [
   {
     subcategories: BOOK_CLUB_SUBCATEGORIES,
-    labelReaction: 'Book Club',
-    titleSection: 'La reco du Book Club',
+    labelReaction: 'book club',
+    titleSection: 'Les avis du book club',
     subtitleSection: 'Notre communauté de lecteurs te partage leur avis sur ce livre\u00a0!',
     subtitleItem: undefined,
     Icon: <BookClubIcon testID="bookClubIcon" />,
     SmallIcon: <SmallBookClubIcon />,
-    modalTitle: 'Qui écrit les avis du Book Club\u00a0?',
+    modalTitle: 'Qui écrit les avis du book club\u00a0?',
     modalWording:
       'C’est un groupe de jeunes passionnés de lecture choisi par le pass Culture. \n\nChaque mois, ils lisent, donnent leur avis, partagent leurs coups de cœur... pour t’aider à choisir ton prochain livre\u00a0!',
     modalButtonLabel: 'Voir tous les avis du club',
-    tag: <Tag variant={TagVariant.BOOKCLUB} label="Membre du book club" />,
+    tag: <Tag variant={TagVariant.BOOKCLUB} label="membre du book club" />,
   },
   {
     subcategories: CINE_CLUB_SUBCATEGORIES,
-    labelReaction: 'Ciné Club',
-    titleSection: 'La reco du Ciné Club',
+    labelReaction: 'ciné club',
+    titleSection: 'Les avis du ciné club',
     subtitleSection: 'Notre communauté de cinéphiles te partage leur avis sur ce film\u00a0!',
     subtitleItem: undefined,
     Icon: <CineClubIcon testID="cineClubIcon" />,
     SmallIcon: <SmallCineClubIcon />,
-    modalTitle: 'Qui écrit les avis du Ciné Club\u00a0?',
+    modalTitle: 'Qui écrit les avis du ciné club\u00a0?',
     modalWording:
       'C’est un groupe de jeunes cinéphiles choisi par le pass Culture. \n\nChaque mois, ils regardent des films, donnent leur avis et partagent ceux qui les ont fait vibrer… pour t’inspirer ta prochaine séance\u00a0!',
     modalButtonLabel: 'Voir tous les avis du club',
-    tag: <Tag variant={TagVariant.CINECLUB} label="Membre du ciné club" />,
+    tag: <Tag variant={TagVariant.CINECLUB} label="membre du ciné club" />,
   },
 ] as const
 

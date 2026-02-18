@@ -16,7 +16,7 @@ describe('<ChroniclesWritersModal/>', () => {
     )
 
     expect(
-      screen.getByText('Les avis du Book Club sont écrits par des jeunes passionnés de lecture.')
+      screen.getByText('Les avis du book club sont écrits par des jeunes passionnés de lecture.')
     ).toBeOnTheScreen()
   })
 })

@@ -10,7 +10,7 @@ describe('chronicleVariant', () => {
     BOOK_CLUB_SUBCATEGORIES.forEach((subcategoryId) => {
       const variant = chronicleVariant[subcategoryId]
 
-      expect(variant.titleSection).toEqual('La reco du Book Club')
+      expect(variant.titleSection).toEqual('Les avis du book club')
     })
   })
 
@@ -18,7 +18,7 @@ describe('chronicleVariant', () => {
     CINE_CLUB_SUBCATEGORIES.forEach((subcategoryId) => {
       const variant = chronicleVariant[subcategoryId]
 
-      expect(variant.titleSection).toEqual('La reco du Ciné Club')
+      expect(variant.titleSection).toEqual('Les avis du ciné club')
     })
   })
 })

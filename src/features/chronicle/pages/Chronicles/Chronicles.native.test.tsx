@@ -82,7 +82,7 @@ describe('Chronicles', () => {
 
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await screen.findByText('Tous les avis du Book Club')
+      await screen.findByText('Tous les avis du book club')
 
       expect(screen.getAllByTestId('bookClubIcon')[0]).toBeOnTheScreen()
     })
@@ -95,7 +95,7 @@ describe('Chronicles', () => {
 
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await screen.findByText('Tous les avis du Ciné Club')
+      await screen.findByText('Tous les avis du ciné club')
 
       expect(screen.getAllByTestId('cineClubIcon')[0]).toBeOnTheScreen()
     })
@@ -103,7 +103,7 @@ describe('Chronicles', () => {
     it('should scroll to selected chronicle on layout', async () => {
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await screen.findByText('Tous les avis du Ciné Club')
+      await screen.findByText('Tous les avis du ciné club')
 
       await act(async () => {
         fireEvent(screen.getByTestId('chronicle-list'), 'onLayout', mockOnLayout)
@@ -112,7 +112,7 @@ describe('Chronicles', () => {
       await waitFor(() => expect(mockScrollToIndex).toHaveBeenCalledTimes(1))
     })
 
-    it('should open chronicle modal when pressing "Qui écrit les avis du Ciné Club ?" button', async () => {
+    it('should open chronicle modal when pressing "Qui écrit les avis du ciné club ?" button', async () => {
       jest.spyOn(useModal, 'useModal').mockReturnValueOnce({
         visible: false,
         showModal: mockShowModal,
@@ -121,12 +121,12 @@ describe('Chronicles', () => {
       })
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await user.press(await screen.findByText('Qui écrit les avis du Ciné Club ?'))
+      await user.press(await screen.findByText('Qui écrit les avis du ciné club ?'))
 
       expect(mockShowModal).toHaveBeenCalledTimes(1)
     })
 
-    it('should trigger ClickWhatsClub log when pressing "Qui écrit les avis du Ciné Club ?" button', async () => {
+    it('should trigger ClickWhatsClub log when pressing "Qui écrit les avis du ciné club ?" button', async () => {
       jest.spyOn(useModal, 'useModal').mockReturnValueOnce({
         visible: false,
         showModal: jest.fn(),
@@ -135,7 +135,7 @@ describe('Chronicles', () => {
       })
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await user.press(await screen.findByText('Qui écrit les avis du Ciné Club ?'))
+      await user.press(await screen.findByText('Qui écrit les avis du ciné club ?'))
 
       expect(analytics.logClickWhatsClub).toHaveBeenNthCalledWith(1, {
         categoryName: 'CINEMA',
@@ -158,7 +158,7 @@ describe('Chronicles', () => {
     it('should render correctly', async () => {
       render(reactQueryProviderHOC(<Chronicles />))
 
-      expect(await screen.findByText('Tous les avis du Ciné Club')).toBeOnTheScreen()
+      expect(await screen.findByText('Tous les avis du ciné club')).toBeOnTheScreen()
     })
 
     it('should execute goBack when pressing back button', async () => {
@@ -172,7 +172,7 @@ describe('Chronicles', () => {
     it('should not scroll to selected chronicle on layout', async () => {
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await screen.findByText('Tous les avis du Ciné Club')
+      await screen.findByText('Tous les avis du ciné club')
 
       await act(async () => {
         fireEvent(screen.getByTestId('chronicle-list'), 'onLayout', mockOnLayout)

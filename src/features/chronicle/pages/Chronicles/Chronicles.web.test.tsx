@@ -42,7 +42,7 @@ describe('Chronicles', () => {
           },
         })
 
-        expect(await screen.findByText('Tous les avis du Book Club')).toBeInTheDocument()
+        expect(await screen.findByText('Tous les avis du book club')).toBeInTheDocument()
         expect(screen.getAllByTestId(/chronicle-*/).length).toBeGreaterThan(0)
       })
 
@@ -53,7 +53,7 @@ describe('Chronicles', () => {
           },
         })
 
-        expect(await screen.findByText('Tous les avis du Book Club')).toBeInTheDocument()
+        expect(await screen.findByText('Tous les avis du book club')).toBeInTheDocument()
         expect(screen.queryByText("Réserver l'offre")).not.toBeInTheDocument()
       })
     })
@@ -73,7 +73,7 @@ describe('Chronicles', () => {
           },
         })
 
-        expect(await screen.findByText('Tous les avis du Ciné Club')).toBeInTheDocument()
+        expect(await screen.findByText('Tous les avis du ciné club')).toBeInTheDocument()
         expect(screen.queryByText('Trouve ta séance')).not.toBeInTheDocument()
       })
     })
@@ -95,7 +95,7 @@ describe('Chronicles', () => {
           },
         })
 
-        expect(await screen.findByText('Tous les avis du Ciné Club')).toBeInTheDocument()
+        expect(await screen.findByText('Tous les avis du ciné club')).toBeInTheDocument()
         expect(screen.getByText('Sous les étoiles de Paris - VF')).toBeInTheDocument()
         expect(screen.getByText('Dès 5,00 €')).toBeInTheDocument()
         expect(screen.getAllByTestId(/chronicle-*/).length).toBeGreaterThan(0)
@@ -108,7 +108,7 @@ describe('Chronicles', () => {
           },
         })
 
-        expect(await screen.findByText('Tous les avis du Ciné Club')).toBeInTheDocument()
+        expect(await screen.findByText('Tous les avis du ciné club')).toBeInTheDocument()
         expect(screen.getByText('Trouve ta séance')).toBeInTheDocument()
       })
 
@@ -119,7 +119,7 @@ describe('Chronicles', () => {
           },
         })
 
-        await screen.findByText('Tous les avis du Ciné Club')
+        await screen.findByText('Tous les avis du ciné club')
 
         fireEvent.click(screen.getByText('Trouve ta séance'))
 

@@ -46,7 +46,7 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
       return (
         <TouchableOpacity onPress={handleChroniclesPress} testID="chroniclesCounter">
           <ChroniclesInfoCounter
-            text={`${chroniclesCounter} avis`}
+            text={`${chroniclesCounter} avis ${chronicleVariantInfo.labelReaction}`}
             icon={chronicleVariantInfo.SmallIcon}
           />
         </TouchableOpacity>

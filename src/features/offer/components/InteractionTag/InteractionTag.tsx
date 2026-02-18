@@ -42,12 +42,12 @@ export const getTagProps = ({
   if (chroniclesCount > 0) {
     if (isBookClubSubcategory(subcategoryId)) {
       return {
-        label: hasSmallLayout ? 'Reco Club' : 'Reco du Book Club',
+        label: hasSmallLayout ? `${chroniclesCount} avis` : `${chroniclesCount} avis book club`,
         variant: TagVariant.BOOKCLUB,
       }
     }
     return {
-      label: hasSmallLayout ? 'Reco Club' : 'Reco du Ciné Club',
+      label: hasSmallLayout ? `${chroniclesCount} avis` : `${chroniclesCount} avis ciné club`,
       variant: TagVariant.CINECLUB,
     }
   }
