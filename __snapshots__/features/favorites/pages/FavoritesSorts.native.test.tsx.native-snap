@@ -172,558 +172,605 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
       />
     </View>
   </View>
-  <RCTScrollView
-    contentContainerStyle={
+  <View
+    style={
       {
-        "alignSelf": "center",
-        "maxWidth": 500,
-        "paddingHorizontal": 24,
-        "paddingVertical": 24,
-        "width": "100%",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
       }
     }
-    enableMaxWidth={true}
-    scrollEnabled={true}
-    style={{}}
   >
-    <View>
+    <View
+      onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
+          {
+            "paddingBottom": 0,
+          },
+        ]
+      }
+    >
       <View
-        height={65}
         style={
           {
-            "height": 65,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
+            "width": "100%",
           }
         }
-      />
-      <View
-        accessibilityRole="none"
-        style={
-          {
-            "gap": 8,
-          }
-        }
-        useFlatList={false}
       >
-        <View
-          style={
-            {
-              "gap": 4,
-            }
-          }
-        >
-          <Text
-            accessibilityRole="header"
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 21,
-                "lineHeight": 33.6,
-              }
-            }
-          >
-            Trier par
-          </Text>
-        </View>
-        <View
-          display="vertical"
-          style={
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
             {
               "flexDirection": "column",
-              "flexWrap": "nowrap",
-              "gap": 24,
+              "flexGrow": 1,
+              "paddingBottom": 0,
+              "paddingHorizontal": 24,
             }
           }
-          variant="default"
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          style={{}}
         >
-          <View
-            accessibilityLabel="Trier par - Liste - Élément 1 sur 3 - Ajouté récemment - sélectionné"
-            accessibilityRole="radio"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": true,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "cursor": "pointer",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Trier par - Liste - Élément 1 sur 3 - Ajouté récemment - sélectionné"
-          >
+          <View>
             <View
               style={
                 {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
+                  "height": 65,
                 }
               }
+            />
+            <View
+              accessibilityRole="none"
+              style={
+                {
+                  "gap": 8,
+                }
+              }
+              useFlatList={false}
             >
               <View
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                radioState={
-                  {
-                    "disabled": false,
-                    "error": false,
-                    "selected": true,
-                  }
-                }
                 style={
                   {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 20,
-                    "borderBottomRightRadius": 20,
-                    "borderColor": "#6123df",
-                    "borderTopLeftRadius": 20,
-                    "borderTopRightRadius": 20,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
+                    "gap": 4,
+                  }
+                }
+              >
+                <Text
+                  accessibilityRole="header"
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 21,
+                      "lineHeight": 33.6,
+                    }
+                  }
+                >
+                  Trier par
+                </Text>
+              </View>
+              <View
+                display="vertical"
+                style={
+                  {
+                    "flexDirection": "column",
+                    "flexWrap": "nowrap",
+                    "gap": 24,
                   }
                 }
                 variant="default"
               >
                 <View
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  radioState={
+                  accessibilityLabel="Trier par - Liste - Élément 1 sur 3 - Ajouté récemment - sélectionné"
+                  accessibilityRole="radio"
+                  accessibilityState={
                     {
-                      "disabled": false,
-                      "error": false,
-                      "selected": true,
+                      "busy": undefined,
+                      "checked": true,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
                     }
                   }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "cursor": "pointer",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Trier par - Liste - Élément 1 sur 3 - Ajouté récemment - sélectionné"
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "columnGap": 12,
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <View
+                      isHover={false}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
+                      radioState={
+                        {
+                          "disabled": false,
+                          "error": false,
+                          "selected": true,
+                        }
+                      }
+                      style={
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 20,
+                          "borderBottomRightRadius": 20,
+                          "borderColor": "#6123df",
+                          "borderTopLeftRadius": 20,
+                          "borderTopRightRadius": 20,
+                          "borderWidth": 2,
+                          "height": 20,
+                          "justifyContent": "center",
+                          "width": 20,
+                        }
+                      }
+                      variant="default"
+                    >
+                      <View
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        radioState={
+                          {
+                            "disabled": false,
+                            "error": false,
+                            "selected": true,
+                          }
+                        }
+                        style={
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#6123df",
+                            "borderBottomLeftRadius": 6,
+                            "borderBottomRightRadius": 6,
+                            "borderColor": "#6123df",
+                            "borderTopLeftRadius": 6,
+                            "borderTopRightRadius": 6,
+                            "height": 10,
+                            "justifyContent": "center",
+                            "width": 10,
+                          }
+                        }
+                        variant="default"
+                      />
+                    </View>
+                    <View
+                      style={
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
+                      }
+                    >
+                      <Text
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        radioState={
+                          {
+                            "disabled": false,
+                            "error": false,
+                            "selected": true,
+                          }
+                        }
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
+                      >
+                        Ajouté récemment
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Trier par - Liste - Élément 2 sur 3 - Prix croissant - non sélectionné"
+                  accessibilityRole="radio"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": false,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "cursor": "pointer",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Trier par - Liste - Élément 2 sur 3 - Prix croissant - non sélectionné"
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "columnGap": 12,
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <View
+                      isHover={false}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
+                      radioState={
+                        {
+                          "disabled": false,
+                          "error": false,
+                          "selected": false,
+                        }
+                      }
+                      style={
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 20,
+                          "borderBottomRightRadius": 20,
+                          "borderColor": "#90949d",
+                          "borderTopLeftRadius": 20,
+                          "borderTopRightRadius": 20,
+                          "borderWidth": 2,
+                          "height": 20,
+                          "justifyContent": "center",
+                          "width": 20,
+                        }
+                      }
+                      variant="default"
+                    />
+                    <View
+                      style={
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
+                      }
+                    >
+                      <Text
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        radioState={
+                          {
+                            "disabled": false,
+                            "error": false,
+                            "selected": false,
+                          }
+                        }
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
+                      >
+                        Prix croissant
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Trier par - Liste - Élément 3 sur 3 - Proximité géographique - non sélectionné"
+                  accessibilityRole="radio"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": false,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "cursor": "pointer",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Trier par - Liste - Élément 3 sur 3 - Proximité géographique - non sélectionné"
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "columnGap": 12,
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <View
+                      isHover={false}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
+                      radioState={
+                        {
+                          "disabled": false,
+                          "error": false,
+                          "selected": false,
+                        }
+                      }
+                      style={
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 20,
+                          "borderBottomRightRadius": 20,
+                          "borderColor": "#90949d",
+                          "borderTopLeftRadius": 20,
+                          "borderTopRightRadius": 20,
+                          "borderWidth": 2,
+                          "height": 20,
+                          "justifyContent": "center",
+                          "width": 20,
+                        }
+                      }
+                      variant="default"
+                    />
+                    <View
+                      style={
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
+                      }
+                    >
+                      <Text
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        radioState={
+                          {
+                            "disabled": false,
+                            "error": false,
+                            "selected": false,
+                          }
+                        }
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
+                      >
+                        Proximité géographique
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "marginTop": 24,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Valider"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#6123df",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#6123df",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "paddingBottom": 8,
+                        "paddingLeft": 12,
+                        "paddingRight": 12,
+                        "paddingTop": 8,
+                        "width": "auto",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Valider"
+              >
+                <View
+                  gap={8}
+                  hasIcon={false}
+                  isMultiline={false}
                   style={
                     {
                       "alignItems": "center",
-                      "backgroundColor": "#6123df",
-                      "borderBottomLeftRadius": 6,
-                      "borderBottomRightRadius": 6,
-                      "borderColor": "#6123df",
-                      "borderTopLeftRadius": 6,
-                      "borderTopRightRadius": 6,
-                      "height": 10,
-                      "justifyContent": "center",
-                      "width": 10,
-                    }
-                  }
-                  variant="default"
-                />
-              </View>
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  }
-                }
-              >
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  radioState={
-                    {
-                      "disabled": false,
-                      "error": false,
-                      "selected": true,
-                    }
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "columnGap": 8,
+                      "flexDirection": "row",
                     }
                   }
                 >
-                  Ajouté récemment
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 22,
+                        },
+                        {
+                          "color": "#ffffff",
+                          "flexBasis": undefined,
+                          "flexGrow": undefined,
+                          "flexShrink": 1,
+                          "maxWidth": "100%",
+                          "minWidth": 0,
+                          "textAlign": undefined,
+                        },
+                      ]
+                    }
+                  >
+                    Valider
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
-          <View
-            accessibilityLabel="Trier par - Liste - Élément 2 sur 3 - Prix croissant - non sélectionné"
-            accessibilityRole="radio"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "cursor": "pointer",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Trier par - Liste - Élément 2 sur 3 - Prix croissant - non sélectionné"
-          >
-            <View
-              style={
-                {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
-                }
-              }
-            >
-              <View
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                radioState={
-                  {
-                    "disabled": false,
-                    "error": false,
-                    "selected": false,
-                  }
-                }
-                style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 20,
-                    "borderBottomRightRadius": 20,
-                    "borderColor": "#90949d",
-                    "borderTopLeftRadius": 20,
-                    "borderTopRightRadius": 20,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="default"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  }
-                }
-              >
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  radioState={
-                    {
-                      "disabled": false,
-                      "error": false,
-                      "selected": false,
-                    }
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Prix croissant
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Trier par - Liste - Élément 3 sur 3 - Proximité géographique - non sélectionné"
-            accessibilityRole="radio"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "cursor": "pointer",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Trier par - Liste - Élément 3 sur 3 - Proximité géographique - non sélectionné"
-          >
-            <View
-              style={
-                {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
-                }
-              }
-            >
-              <View
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                radioState={
-                  {
-                    "disabled": false,
-                    "error": false,
-                    "selected": false,
-                  }
-                }
-                style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 20,
-                    "borderBottomRightRadius": 20,
-                    "borderColor": "#90949d",
-                    "borderTopLeftRadius": 20,
-                    "borderTopRightRadius": 20,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="default"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  }
-                }
-              >
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  radioState={
-                    {
-                      "disabled": false,
-                      "error": false,
-                      "selected": false,
-                    }
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Proximité géographique
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          {
-            "marginTop": 24,
-          }
-        }
-      >
-        <View
-          accessibilityLabel="Valider"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#6123df",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderColor": "#6123df",
-                  "borderStyle": "solid",
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingBottom": 8,
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                  "paddingTop": 8,
-                  "width": "auto",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Valider"
-        >
-          <View
-            gap={8}
-            hasIcon={false}
-            isMultiline={false}
-            style={
-              {
-                "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
-              }
-            }
-          >
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#ffffff",
-                    "flexBasis": undefined,
-                    "flexGrow": undefined,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": undefined,
-                  },
-                ]
-              }
-            >
-              Valider
-            </Text>
-          </View>
-        </View>
+        </RCTScrollView>
       </View>
     </View>
-  </RCTScrollView>
+  </View>
 </View>
 `;

@@ -32,7 +32,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
-import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Close } from 'ui/svg/icons/Close'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Typo } from 'ui/theme'
@@ -164,51 +164,49 @@ export const ConsentSettings = () => {
   return (
     <React.Fragment>
       <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
-        <SecondaryPageWithNeutralHeader
+        <PageWithHeader
           onGoBack={handleBack}
           title="Paramètres de confidentialité"
-          scrollable
-          ref={scrollViewRef}>
-          <Typo.Body>
-            L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer
-            ton expérience de navigation.
-          </Typo.Body>
-
-          <StyledBodyAccentXs>
-            Tu peux choisir d’accepter ou non l’activation de leur suivi.
-          </StyledBodyAccentXs>
-
-          <CookiesSettings
-            settingsCookiesChoice={currentCookieChoices}
-            setSettingsCookiesChoice={setCurrentCookieChoices}
-            offerId={offerId}
-          />
-
-          <StyledTitle4 {...getHeadingAttrs(2)}>Tu as la main dessus</StyledTitle4>
-          <StyledBody>
-            Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.
-          </StyledBody>
-          <Typo.Body>
-            On te redemandera bien sûr ton consentement si notre politique évolue.
-          </Typo.Body>
-
-          <StyledBodyAccentXs>
-            Pour plus d’informations, nous t’invitons à consulter notre {SPACE}
-            <ExternalTouchableLink
-              as={LinkInsideText}
-              wording="politique de gestion des cookies"
-              externalNav={{ url: env.COOKIES_POLICY_LINK }}
-              typography="BodyAccentXs"
-              accessibilityRole={AccessibilityRole.LINK}
-            />
-          </StyledBodyAccentXs>
-
-          <SaveButton
-            wording="Enregistrer mes choix"
-            accessibilityRole={AccessibilityRole.BUTTON}
-            onPress={handleSaveChoices}
-          />
-        </SecondaryPageWithNeutralHeader>
+          ref={scrollViewRef}
+          scrollChildren={
+            <React.Fragment>
+              <Typo.Body>
+                L’application pass Culture utilise des outils et traceurs appelés cookies pour
+                améliorer ton expérience de navigation.
+              </Typo.Body>
+              <StyledBodyAccentXs>
+                Tu peux choisir d’accepter ou non l’activation de leur suivi.
+              </StyledBodyAccentXs>
+              <CookiesSettings
+                settingsCookiesChoice={currentCookieChoices}
+                setSettingsCookiesChoice={setCurrentCookieChoices}
+                offerId={offerId}
+              />
+              <StyledTitle4 {...getHeadingAttrs(2)}>Tu as la main dessus</StyledTitle4>
+              <StyledBody>
+                Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.
+              </StyledBody>
+              <Typo.Body>
+                On te redemandera bien sûr ton consentement si notre politique évolue.
+              </Typo.Body>
+              <StyledBodyAccentXs>
+                Pour plus d’informations, nous t’invitons à consulter notre {SPACE}
+                <ExternalTouchableLink
+                  as={LinkInsideText}
+                  wording="politique de gestion des cookies"
+                  externalNav={{ url: env.COOKIES_POLICY_LINK }}
+                  typography="BodyAccentXs"
+                  accessibilityRole={AccessibilityRole.LINK}
+                />
+              </StyledBodyAccentXs>
+              <SaveButton
+                wording="Enregistrer mes choix"
+                accessibilityRole={AccessibilityRole.BUTTON}
+                onPress={handleSaveChoices}
+              />
+            </React.Fragment>
+          }
+        />
       </AnchorProvider>
 
       <AppModal

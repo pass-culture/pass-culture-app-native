@@ -172,406 +172,453 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
       />
     </View>
   </View>
-  <RCTScrollView
-    contentContainerStyle={
+  <View
+    style={
       {
-        "alignSelf": "center",
-        "maxWidth": 500,
-        "paddingHorizontal": 24,
-        "paddingVertical": 24,
-        "width": "100%",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
       }
     }
-    enableMaxWidth={true}
-    scrollEnabled={true}
-    style={{}}
   >
-    <View>
+    <View
+      onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
+          {
+            "paddingBottom": 0,
+          },
+        ]
+      }
+    >
       <View
-        height={65}
         style={
           {
-            "height": 65,
-          }
-        }
-      />
-      <View
-        style={
-          {
-            "marginTop": 24,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
+            "width": "100%",
           }
         }
       >
-        <View
-          style={
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
             {
-              "marginBottom": 16,
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "paddingBottom": 0,
+              "paddingHorizontal": 24,
             }
           }
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          style={{}}
         >
-          <View
-            gap={4}
-            style={
-              {
-                "gap": 16,
-              }
-            }
-          >
-            <Text
-              style={
-                {
-                  "color": "#696a6f",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                }
-              }
-            >
-              Pour modifier ton adresse e-mail, tu dois d’abord faire une demande de modification.
-            </Text>
-            <Text
-              style={
-                {
-                  "color": "#696a6f",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                }
-              }
-            >
-              Tu ne peux modifier ton adresse e-mail qu’une fois par jour.
-            </Text>
+          <View>
             <View
               style={
                 {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 1,
-                  "width": "100%",
+                  "height": 65,
                 }
               }
             />
-          </View>
-        </View>
-        <View
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "marginBottom": 24,
-            }
-          }
-        >
-          <View
-            flex={1}
-            style={
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "maxWidth": 500,
-                "width": "100%",
-              }
-            }
-          >
             <View
               style={
                 {
-                  "alignItems": "flex-start",
-                  "width": "100%",
+                  "marginTop": 24,
                 }
               }
             >
-              <View>
+              <View
+                style={
+                  {
+                    "marginBottom": 16,
+                  }
+                }
+              >
                 <View
-                  accessibilityElementsHidden={true}
-                  importantForAccessibility="no"
+                  gap={4}
                   style={
                     {
-                      "alignItems": "flex-end",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                      "width": "100%",
+                      "gap": 16,
                     }
                   }
                 >
-                  <View>
-                    <Text
-                      style={
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        }
+                  <Text
+                    style={
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
                       }
-                    >
-                      Adresse e-mail actuelle
-                    </Text>
-                    <Text
-                      style={
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                          "marginTop": 2,
-                        }
+                    }
+                  >
+                    Pour modifier ton adresse e-mail, tu dois d’abord faire une demande de modification.
+                  </Text>
+                  <Text
+                    style={
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
                       }
-                    >
-                      Exemple : tonadresse@email.com
-                    </Text>
-                  </View>
+                    }
+                  >
+                    Tu ne peux modifier ton adresse e-mail qu’une fois par jour.
+                  </Text>
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "#f1f1f4",
+                        "height": 1,
+                        "width": "100%",
+                      }
+                    }
+                  />
                 </View>
               </View>
               <View
-                isDisabled={true}
-                isError={false}
-                isFocused={false}
-                isHover={false}
-                size="small"
                 style={
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#f1f1f4",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#cbcdd2",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "height": 40,
-                    "marginTop": 4,
-                    "paddingBottom": 0,
-                    "paddingLeft": 9,
-                    "paddingRight": 9,
-                    "paddingTop": 0,
-                    "width": "100%",
-                  }
-                }
-                testID="styled-input-container"
-              >
-                <TextInput
-                  accessibilityLabel="Champs de texte - Adresse e-mail actuelle - Exemple : tonadresse@email.com"
-                  accessibilityRequired={false}
-                  autoCapitalize="none"
-                  autoComplete="email"
-                  disabled={true}
-                  editable={false}
-                  isEmpty={false}
-                  keyboardType="email-address"
-                  multiline={false}
-                  nativeID="Entrée pour l’email"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  placeholder=""
-                  placeholderTextColor="#696a6f"
-                  returnKeyType="next"
-                  style={
-                    {
-                      "color": "#696a6f",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "height": "100%",
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    }
-                  }
-                  testID="Entrée pour l’email"
-                  textAlignVertical="center"
-                  value="email@domain.ext"
-                />
-              </View>
-            </View>
-            <View
-              style={
-                {
-                  "marginBottom": 48,
-                  "marginTop": 16,
-                }
-              }
-            >
-              <View
-                background="#f3edff"
-                style={
-                  {
-                    "alignItems": "flex-start",
-                    "backgroundColor": "#f3edff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "flexDirection": "row",
-                    "gap": 12,
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginBottom": 24,
                   }
                 }
               >
                 <View
-                  fill="#320096"
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-                <View
-                  accessibilityLabel="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h."
-                  accessibilityRole="none"
+                  flex={1}
                   style={
                     {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
-                      "gap": 4,
-                    }
-                  }
-                >
-                  <Text
-                    style={
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 22.4,
-                      }
-                    }
-                  >
-                    Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h.
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              paddingBottom={16}
-              style={
-                {
-                  "alignItems": "center",
-                  "paddingBottom": 16,
-                  "width": "100%",
-                }
-              }
-            >
-              <View
-                accessibilityLabel="Valider la demande de modification de mon e-mail"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "alignSelf": "center",
-                        "backgroundColor": "#6123df",
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderColor": "#6123df",
-                        "borderStyle": "solid",
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "paddingBottom": 8,
-                        "paddingLeft": 12,
-                        "paddingRight": 12,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Valider la demande de modification de mon e-mail"
-              >
-                <View
-                  fullWidth={true}
-                  gap={8}
-                  hasIcon={false}
-                  isMultiline={false}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "columnGap": 8,
-                      "flexDirection": "row",
-                      "justifyContent": "center",
+                      "maxWidth": 500,
                       "width": "100%",
                     }
                   }
                 >
-                  <Text
+                  <View
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 22,
-                        },
-                        {
-                          "color": "#ffffff",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "maxWidth": "100%",
-                          "minWidth": 0,
-                          "textAlign": "center",
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-start",
+                        "width": "100%",
+                      }
                     }
                   >
-                    Envoyer la demande
-                  </Text>
+                    <View>
+                      <View
+                        accessibilityElementsHidden={true}
+                        importantForAccessibility="no"
+                        style={
+                          {
+                            "alignItems": "flex-end",
+                            "flexDirection": "row",
+                            "justifyContent": "space-between",
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        <View>
+                          <Text
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Adresse e-mail actuelle
+                          </Text>
+                          <Text
+                            style={
+                              {
+                                "color": "#696a6f",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                                "marginTop": 2,
+                              }
+                            }
+                          >
+                            Exemple : tonadresse@email.com
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View
+                      isDisabled={true}
+                      isError={false}
+                      isFocused={false}
+                      isHover={false}
+                      size="small"
+                      style={
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#f1f1f4",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#cbcdd2",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "height": 40,
+                          "marginTop": 4,
+                          "paddingBottom": 0,
+                          "paddingLeft": 9,
+                          "paddingRight": 9,
+                          "paddingTop": 0,
+                          "width": "100%",
+                        }
+                      }
+                      testID="styled-input-container"
+                    >
+                      <TextInput
+                        accessibilityLabel="Champs de texte - Adresse e-mail actuelle - Exemple : tonadresse@email.com"
+                        accessibilityRequired={false}
+                        autoCapitalize="none"
+                        autoComplete="email"
+                        disabled={true}
+                        editable={false}
+                        isEmpty={false}
+                        keyboardType="email-address"
+                        multiline={false}
+                        nativeID="Entrée pour l’email"
+                        onBlur={[Function]}
+                        onChangeText={[Function]}
+                        onFocus={[Function]}
+                        placeholder=""
+                        placeholderTextColor="#696a6f"
+                        returnKeyType="next"
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "height": "100%",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                          }
+                        }
+                        testID="Entrée pour l’email"
+                        textAlignVertical="center"
+                        value="email@domain.ext"
+                      />
+                    </View>
+                  </View>
+                  <View
+                    style={
+                      {
+                        "marginBottom": 48,
+                        "marginTop": 16,
+                      }
+                    }
+                  >
+                    <View
+                      background="#f3edff"
+                      style={
+                        {
+                          "alignItems": "flex-start",
+                          "backgroundColor": "#f3edff",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "flexDirection": "row",
+                          "gap": 12,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
+                        }
+                      }
+                    >
+                      <View
+                        fill="#320096"
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        accessibilityLabel="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h."
+                        accessibilityRole="none"
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "gap": 4,
+                          }
+                        }
+                      >
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 14,
+                              "lineHeight": 22.4,
+                            }
+                          }
+                        >
+                          Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h.
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    paddingBottom={16}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "paddingBottom": 16,
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    <View
+                      accessibilityLabel="Valider la demande de modification de mon e-mail"
+                      accessibilityRole="button"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": false,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "alignItems": "center",
+                              "alignSelf": "center",
+                              "backgroundColor": "#6123df",
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderColor": "#6123df",
+                              "borderStyle": "solid",
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "justifyContent": "center",
+                              "paddingBottom": 8,
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                              "paddingTop": 8,
+                              "width": "100%",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Valider la demande de modification de mon e-mail"
+                    >
+                      <View
+                        fullWidth={true}
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "columnGap": 8,
+                            "flexDirection": "row",
+                            "justifyContent": "center",
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        <Text
+                          style={
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#ffffff",
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": "center",
+                              },
+                            ]
+                          }
+                        >
+                          Envoyer la demande
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </View>
               </View>
             </View>
           </View>
-        </View>
+        </RCTScrollView>
       </View>
     </View>
-  </RCTScrollView>
+  </View>
 </View>
 `;

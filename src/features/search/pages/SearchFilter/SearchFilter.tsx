@@ -26,8 +26,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
-import { Page } from 'ui/pages/Page'
-import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 export const SearchFilter: React.FC = () => {
   const currency = useGetCurrencyToDisplay()
@@ -108,13 +107,12 @@ export const SearchFilter: React.FC = () => {
   }, [user?.isBeneficiary, user?.domainsCredit?.all?.remaining])
 
   const onClose = isMobileViewport ? onGoBack : undefined
-
   return (
-    <Page>
-      <StyledSecondaryPageWithBlurHeader
-        title="Filtres"
-        onGoBack={onGoBack}
-        scrollViewProps={{ keyboardShouldPersistTaps: 'always' }}>
+    <PageWithHeader
+      title="Filtres"
+      onGoBack={onGoBack}
+      scrollViewProps={{ keyboardShouldPersistTaps: 'always' }}
+      scrollChildren={
         <VerticalUl>
           <SectionWrapper isFirstSectionItem>
             <Section.CalendarFilter onClose={onClose} />
@@ -141,15 +139,17 @@ export const SearchFilter: React.FC = () => {
             <Section.Accessibility onClose={onClose} />
           </SectionWrapper>
         </VerticalUl>
-      </StyledSecondaryPageWithBlurHeader>
-      <FilterPageButtons
-        onResetPress={onResetPress}
-        onSearchPress={onSearchPress}
-        isModal={false}
-        filterBehaviour={FilterBehaviour.SEARCH}
-        isResetDisabled={hasDefaultValues}
-      />
-    </Page>
+      }
+      fixedBottomChildren={
+        <FilterPageButtons
+          onResetPress={onResetPress}
+          onSearchPress={onSearchPress}
+          isModal
+          filterBehaviour={FilterBehaviour.SEARCH}
+          isResetDisabled={hasDefaultValues}
+        />
+      }
+    />
   )
 }
 
@@ -176,8 +176,4 @@ const StyledLi = styled(Li)<{ isFirstSectionItem?: boolean }>(({ isFirstSectionI
   display: 'flex',
   marginBottom: theme.designSystem.size.spacing.xl,
   marginTop: isFirstSectionItem ? theme.designSystem.size.spacing.xl : undefined,
-}))
-
-const StyledSecondaryPageWithBlurHeader = styled(SecondaryPageWithNeutralHeader)(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.l,
 }))

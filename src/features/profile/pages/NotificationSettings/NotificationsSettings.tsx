@@ -29,7 +29,7 @@ import { Separator } from 'ui/components/Separator'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
-import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -129,106 +129,107 @@ export const NotificationsSettings = () => {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
 
   return (
-    <SecondaryPageWithNeutralHeader
+    <PageWithHeader
       title="Suivi et notifications"
-      scrollable
       onGoBack={() => {
         if (hasUserChanged) {
           showUnsavedModal()
         } else {
           goBack()
         }
-      }}>
-      <Container>
-        {isLoggedIn ? null : (
-          <React.Fragment>
-            <Banner label="Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture." />
-            <Spacer.Column numberOfSpaces={6} />
-          </React.Fragment>
-        )}
-        <Typo.Title4 {...getHeadingAttrs(2)}>Type d’alerte</Typo.Title4>
-        <Spacer.Column numberOfSpaces={4} />
-        <Typo.Body>
-          Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
-        </Typo.Body>
-        <Spacer.Column numberOfSpaces={2} />
-        <Form.Flex>
-          <SectionWithSwitchContainer>
-            <SectionWithSwitch
-              title="Autoriser l’envoi d’e-mails"
-              active={isLoggedIn && state.allowEmails}
-              toggle={() => dispatch({ type: 'email' })}
-              disabled={!isLoggedIn}
-            />
-          </SectionWithSwitchContainer>
-          {!state.allowEmails && isLoggedIn ? (
-            <Typo.BodyAccentXs>
-              Tu continueras à recevoir par e-mail des informations essentielles concernant ton
-              compte.
-            </Typo.BodyAccentXs>
-          ) : null}
-          {Platform.OS === 'web' ? null : (
+      }}
+      scrollChildren={
+        <Container>
+          {isLoggedIn ? null : (
+            <React.Fragment>
+              <Banner label="Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture." />
+              <Spacer.Column numberOfSpaces={6} />
+            </React.Fragment>
+          )}
+          <Typo.Title4 {...getHeadingAttrs(2)}>Type d’alerte</Typo.Title4>
+          <Spacer.Column numberOfSpaces={4} />
+          <Typo.Body>
+            Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
+          </Typo.Body>
+          <Spacer.Column numberOfSpaces={2} />
+          <Form.Flex>
             <SectionWithSwitchContainer>
               <SectionWithSwitch
-                title="Autoriser les notifications"
-                active={isLoggedIn && state.allowPush}
-                toggle={togglePush}
+                title="Autoriser l’envoi d’e-mails"
+                active={isLoggedIn && state.allowEmails}
+                toggle={() => dispatch({ type: 'email' })}
                 disabled={!isLoggedIn}
               />
             </SectionWithSwitchContainer>
-          )}
-          <Spacer.Column numberOfSpaces={4} />
-          <Separator.Horizontal />
-          <Spacer.Column numberOfSpaces={8} />
-          <Typo.Title4 {...getHeadingAttrs(2)}>Tes thèmes suivis</Typo.Title4>
-          {!isLoggedIn || areNotificationsEnabled ? null : (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={4} />
-              <Banner label="Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications." />
-            </React.Fragment>
-          )}
-          <Spacer.Column numberOfSpaces={6} />
-          <SectionWithSwitchContainer>
-            <SectionWithSwitch
-              title="Suivre tous les thèmes"
-              active={
-                areNotificationsEnabled && state.themePreferences.length === TOTAL_NUMBER_OF_THEME
-              }
-              toggle={() => dispatch({ type: 'allTheme' })}
-              disabled={areThemeTogglesDisabled}
-            />
-          </SectionWithSwitchContainer>
-          <Spacer.Column numberOfSpaces={2} />
-          {SUSBCRIPTION_THEMES.map((theme) => (
-            <SectionWithSwitchContainer key={theme}>
+            {!state.allowEmails && isLoggedIn ? (
+              <Typo.BodyAccentXs>
+                Tu continueras à recevoir par e-mail des informations essentielles concernant ton
+                compte.
+              </Typo.BodyAccentXs>
+            ) : null}
+            {Platform.OS === 'web' ? null : (
+              <SectionWithSwitchContainer>
+                <SectionWithSwitch
+                  title="Autoriser les notifications"
+                  active={isLoggedIn && state.allowPush}
+                  toggle={togglePush}
+                  disabled={!isLoggedIn}
+                />
+              </SectionWithSwitchContainer>
+            )}
+            <Spacer.Column numberOfSpaces={4} />
+            <Separator.Horizontal />
+            <Spacer.Column numberOfSpaces={8} />
+            <Typo.Title4 {...getHeadingAttrs(2)}>Tes thèmes suivis</Typo.Title4>
+            {!isLoggedIn || areNotificationsEnabled ? null : (
+              <React.Fragment>
+                <Spacer.Column numberOfSpaces={4} />
+                <Banner label="Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications." />
+              </React.Fragment>
+            )}
+            <Spacer.Column numberOfSpaces={6} />
+            <SectionWithSwitchContainer>
               <SectionWithSwitch
-                title={mapSubscriptionThemeToName[theme]}
-                active={isThemeToggled(theme)}
+                title="Suivre tous les thèmes"
+                active={
+                  areNotificationsEnabled && state.themePreferences.length === TOTAL_NUMBER_OF_THEME
+                }
+                toggle={() => dispatch({ type: 'allTheme' })}
                 disabled={areThemeTogglesDisabled}
-                toggle={() => dispatch({ type: 'toggleTheme', theme })}
               />
             </SectionWithSwitchContainer>
-          ))}
-          <Spacer.Column numberOfSpaces={2} />
-          <Button
-            wording="Enregistrer"
-            accessibilityLabel="Enregistrer les modifications"
-            onPress={submitProfile}
-            disabled={isSaveButtonDisabled}
+            <Spacer.Column numberOfSpaces={2} />
+            {SUSBCRIPTION_THEMES.map((theme) => (
+              <SectionWithSwitchContainer key={theme}>
+                <SectionWithSwitch
+                  title={mapSubscriptionThemeToName[theme]}
+                  active={isThemeToggled(theme)}
+                  disabled={areThemeTogglesDisabled}
+                  toggle={() => dispatch({ type: 'toggleTheme', theme })}
+                />
+              </SectionWithSwitchContainer>
+            ))}
+            <Spacer.Column numberOfSpaces={2} />
+            <Button
+              wording="Enregistrer"
+              accessibilityLabel="Enregistrer les modifications"
+              onPress={submitProfile}
+              disabled={isSaveButtonDisabled}
+            />
+          </Form.Flex>
+          <PushNotificationsModal
+            visible={isPushModalVisible}
+            onRequestPermission={onRequestNotificationPermissionFromModal}
+            onDismiss={hidePushModal}
           />
-        </Form.Flex>
-        <PushNotificationsModal
-          visible={isPushModalVisible}
-          onRequestPermission={onRequestNotificationPermissionFromModal}
-          onDismiss={hidePushModal}
-        />
-        <UnsavedSettingsModal
-          visible={isUnsavedModalVisible}
-          dismissModal={hideUnsavedModal}
-          onPressSaveChanges={submitProfile}
-        />
-      </Container>
-    </SecondaryPageWithNeutralHeader>
+          <UnsavedSettingsModal
+            visible={isUnsavedModalVisible}
+            dismissModal={hideUnsavedModal}
+            onPressSaveChanges={submitProfile}
+          />
+        </Container>
+      }
+    />
   )
 }
 
@@ -240,7 +241,7 @@ const Container = styled.View(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
   width: '100%',
   alignSelf: 'center',
-  marginTop: theme.designSystem.size.spacing.xxxl,
+  marginVertical: theme.designSystem.size.spacing.xxxl,
 }))
 
 type ToggleActions =

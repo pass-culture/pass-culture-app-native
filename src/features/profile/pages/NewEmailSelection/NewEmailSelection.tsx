@@ -15,7 +15,7 @@ import { Form } from 'ui/components/Form'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
-import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 type FormValues = {
   newEmail: string
@@ -62,19 +62,22 @@ export const NewEmailSelection = () => {
   })
 
   return (
-    <SecondaryPageWithNeutralHeader title="Modifier mon adresse e-mail">
-      <Form.MaxWidth flex={1}>
-        <EmailInputController control={control} name="newEmail" label="Nouvelle adresse e-mail" />
-        <Container>
-          <Banner label="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h." />
-        </Container>
-        <ButtonPrimary
-          wording="Modifier mon adresse e-mail"
-          disabled={!isValid || isPending}
-          onPress={onSubmit}
-        />
-      </Form.MaxWidth>
-    </SecondaryPageWithNeutralHeader>
+    <PageWithHeader
+      title="Modifier mon adresse e-mail"
+      scrollChildren={
+        <Form.MaxWidth flex={1}>
+          <EmailInputController control={control} name="newEmail" label="Nouvelle adresse e-mail" />
+          <Container>
+            <Banner label="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h." />
+          </Container>
+          <ButtonPrimary
+            wording="Modifier mon adresse e-mail"
+            disabled={!isValid || isPending}
+            onPress={onSubmit}
+          />
+        </Form.MaxWidth>
+      }
+    />
   )
 }
 

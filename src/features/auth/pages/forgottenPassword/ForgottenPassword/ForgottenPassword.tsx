@@ -17,7 +17,7 @@ import { Form } from 'ui/components/Form'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { Button } from 'ui/designSystem/Button/Button'
-import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -47,38 +47,42 @@ export const ForgottenPassword = () => {
   } = useForgottenPasswordForm(!!isRecaptchaEnabled)
 
   return (
-    <SecondaryPageWithNeutralHeader
+    <PageWithHeader
       title="Oubli de mot de passe"
       shouldDisplayBackButton
-      onGoBack={onBackNavigation}>
-      {isRecaptchaEnabled ? (
-        <ReCaptcha
-          onClose={onReCaptchaClose}
-          onError={onReCaptchaError}
-          onExpire={onReCaptchaExpire}
-          onSuccess={onReCaptchaSuccess}
-          isVisible={isDoingReCaptchaChallenge}
-        />
-      ) : null}
-      <Typo.Title3 {...getHeadingAttrs(2)}>Mot de passe oublié&nbsp;?</Typo.Title3>
-      <Container>
-        <Typo.Body>
-          Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot
-          de passe&nbsp;!
-        </Typo.Body>
-      </Container>
-      <Form.MaxWidth>
-        <EmailInputController label="Adresse e-mail" control={control} name="email" />
-        <ButtonContainer>
-          <Button
-            wording="Valider"
-            onPress={isRecaptchaEnabled ? openReCaptchaChallenge : requestPasswordReset}
-            isLoading={isDoingReCaptchaChallenge || isFetching || areSettingsLoading}
-            disabled={shouldDisableValidateButton}
-          />
-        </ButtonContainer>
-      </Form.MaxWidth>
-    </SecondaryPageWithNeutralHeader>
+      onGoBack={onBackNavigation}
+      scrollChildren={
+        <React.Fragment>
+          {isRecaptchaEnabled ? (
+            <ReCaptcha
+              onClose={onReCaptchaClose}
+              onError={onReCaptchaError}
+              onExpire={onReCaptchaExpire}
+              onSuccess={onReCaptchaSuccess}
+              isVisible={isDoingReCaptchaChallenge}
+            />
+          ) : null}
+          <Typo.Title3 {...getHeadingAttrs(2)}>Mot de passe oublié&nbsp;?</Typo.Title3>
+          <Container>
+            <Typo.Body>
+              Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton
+              mot de passe&nbsp;!
+            </Typo.Body>
+          </Container>
+          <Form.MaxWidth>
+            <EmailInputController label="Adresse e-mail" control={control} name="email" />
+            <ButtonContainer>
+              <Button
+                wording="Valider"
+                onPress={isRecaptchaEnabled ? openReCaptchaChallenge : requestPasswordReset}
+                isLoading={isDoingReCaptchaChallenge || isFetching || areSettingsLoading}
+                disabled={shouldDisableValidateButton}
+              />
+            </ButtonContainer>
+          </Form.MaxWidth>
+        </React.Fragment>
+      }
+    />
   )
 }
 const ButtonContainer = styled.View(({ theme }) => ({

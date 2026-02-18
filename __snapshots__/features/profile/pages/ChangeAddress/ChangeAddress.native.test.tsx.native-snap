@@ -183,6 +183,7 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
   >
     <View
       onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
       style={
         [
           {
@@ -777,6 +778,7 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
   >
     <View
       onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
       style={
         [
           {

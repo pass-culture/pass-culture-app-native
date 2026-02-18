@@ -41,7 +41,6 @@ import { CheatcodesScreenMandatoryUpdate } from 'cheatcodes/pages/others/Cheatco
 import { CheatcodesScreenNewCaledonia } from 'cheatcodes/pages/others/CheatcodesScreenNewCaledonia'
 import { CheatcodesScreenPageWithHeader } from 'cheatcodes/pages/others/CheatcodesScreenPageWithHeader'
 import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/others/CheatcodesScreenRemoteConfig'
-import { CheatcodesScreenSecondaryPageWithBlurHeader } from 'cheatcodes/pages/others/CheatcodesScreenSecondaryPageWithBlurHeader'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
@@ -207,10 +206,6 @@ const routes: CheatcodesStackRoute[] = [
   {
     name: 'CheatcodesScreenGenericInfoPage',
     component: CheatcodesScreenGenericInfoPage,
-  },
-  {
-    name: 'CheatcodesScreenSecondaryPageWithBlurHeader',
-    component: CheatcodesScreenSecondaryPageWithBlurHeader,
   },
   {
     name: 'CheatcodesScreenPageWithHeader',

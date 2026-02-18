@@ -14,7 +14,7 @@ import { analytics } from 'libs/analytics/provider'
 import { GeolocPermissionState, useLocation } from 'libs/location/location'
 import { Button } from 'ui/designSystem/Button/Button'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
-import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 const sortOptions = buildSortRadioOptions()
 
@@ -67,20 +67,26 @@ export const FavoritesSorts: React.FC = () => {
   }
 
   return (
-    <SecondaryPageWithNeutralHeader title="Trier" onGoBack={goBack}>
-      <RadioButtonGroup
-        label="Trier par"
-        labelVariant="title2"
-        options={sortOptions}
-        value={currentLabel}
-        onChange={handleSortChange}
-        error={hasGeolocError}
-        errorText={geolocPositionError?.message ?? ''}
-      />
-      <ButtonContainer>
-        <Button wording="Valider" onPress={onValidation} />
-      </ButtonContainer>
-    </SecondaryPageWithNeutralHeader>
+    <PageWithHeader
+      title="Trier"
+      onGoBack={goBack}
+      scrollChildren={
+        <React.Fragment>
+          <RadioButtonGroup
+            label="Trier par"
+            labelVariant="title2"
+            options={sortOptions}
+            value={currentLabel}
+            onChange={handleSortChange}
+            error={hasGeolocError}
+            errorText={geolocPositionError?.message ?? ''}
+          />
+          <ButtonContainer>
+            <Button wording="Valider" onPress={onValidation} />
+          </ButtonContainer>
+        </React.Fragment>
+      }
+    />
   )
 }
 

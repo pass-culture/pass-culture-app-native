@@ -113,6 +113,7 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
   >
     <View
       onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
       style={
         [
           {

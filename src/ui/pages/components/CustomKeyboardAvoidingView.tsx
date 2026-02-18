@@ -4,13 +4,14 @@ import styled from 'styled-components/native'
 
 type Props = {
   children?: ReactNode
+  shouldBeAlignedFlexStart?: boolean
 }
 
-export const CustomKeyboardAvoidingView = (props: Props) => {
+export const CustomKeyboardAvoidingView = ({ children, shouldBeAlignedFlexStart }: Props) => {
   return (
     <Container>
-      <StyledKeyboardAvoidingView>
-        <CenteredWebContainer>{props.children}</CenteredWebContainer>
+      <StyledKeyboardAvoidingView shouldBeAlignedFlexStart={shouldBeAlignedFlexStart}>
+        <CenteredWebContainer>{children}</CenteredWebContainer>
       </StyledKeyboardAvoidingView>
     </Container>
   )
@@ -22,7 +23,7 @@ const Container = styled.View({
 
 const StyledKeyboardAvoidingView = styled(KeyboardAvoidingView).attrs({
   behavior: Platform.OS === 'ios' ? 'padding' : undefined,
-})(({ theme }) => ({
+})<{ shouldBeAlignedFlexStart?: boolean }>(({ theme, shouldBeAlignedFlexStart }) => ({
   flexGrow: 1,
   flexBasis: 0,
   height: '100%',
@@ -32,7 +33,7 @@ const StyledKeyboardAvoidingView = styled(KeyboardAvoidingView).attrs({
   borderTopLeftRadius: 22,
   borderTopRightRadius: 22,
   paddingTop: theme.designSystem.size.spacing.xxl,
-  alignItems: 'center',
+  alignItems: shouldBeAlignedFlexStart ? 'flex-start' : 'center',
   overflow: 'scroll',
 }))
 

@@ -145,660 +145,673 @@ exports[`NotificationsSettings should render correctly 1`] = `
       </div>
     </header>
     <div
-      class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
+      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
     >
       <div
-        class="css-view-175oi2r"
-        style="padding: 24px 24px 24px 24px; max-width: 500px; width: 100%; align-self: center;"
+        class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-fd4yh7"
       >
         <div
-          class="css-view-175oi2r r-height-17lwhjb"
-        />
-        <div
-          class="css-view-175oi2r r-alignSelf-1kihuf0 r-marginTop-2o02ov r-maxWidth-1ik5qf4 r-width-13qz1uu"
+          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
         >
           <div
-            class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+            class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
           >
             <div
               class="css-view-175oi2r"
+              style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 24px; padding-left: 24px;"
             >
               <div
-                class="css-text-146c3p1"
-                dir="ltr"
-              >
-                undefined-SVG-Mock
-              </div>
-            </div>
-            <div
-              aria-label="Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture."
-              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
-              role="presentation"
-            >
+                class="css-view-175oi2r"
+                style="height: 65px;"
+              />
               <div
-                class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-kmu5yi"
-                dir="ltr"
-              >
-                Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture.
-              </div>
-            </div>
-          </div>
-          <div
-            class="css-view-175oi2r r-height-1472mwg"
-          />
-          <h2
-            aria-level="2"
-            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j"
-            dir="ltr"
-            role="heading"
-          >
-            Type d’alerte
-          </h2>
-          <div
-            class="css-view-175oi2r r-height-10ptun7"
-          />
-          <div
-            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
-            dir="ltr"
-          >
-            Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
-          </div>
-          <div
-            class="css-view-175oi2r r-height-3da1kt"
-          />
-          <form
-            class="c2"
-          >
-            <div
-              class="css-view-175oi2r r-paddingBlock-w7s2jr"
-            >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
+                class="css-view-175oi2r r-alignSelf-1kihuf0 r-marginBlock-140ww7k r-maxWidth-1ik5qf4 r-width-13qz1uu"
               >
                 <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
-                >
-                  <label
-                    class="c3"
-                    for="1"
-                  >
-                    <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                      dir="ltr"
-                    >
-                      Autoriser l’envoi d’e-mails
-                    </div>
-                  </label>
-                </div>
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
+                  class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                    class="css-view-175oi2r"
                   >
                     <div
-                      aria-checked="false"
-                      aria-disabled="true"
-                      aria-label="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
-                      aria-labelledby="0"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
-                      role="switch"
-                      style="transition-duration: 0s;"
-                      tabindex="-1"
-                    >
-                      <div
-                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
-                      >
-                        <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
-                          style="transform: translateX(2px);"
-                        >
-                          <div
-                            class="css-view-175oi2r"
-                          >
-                            <div
-                              class="css-text-146c3p1"
-                              dir="ltr"
-                            >
-                              undefined-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <input
-                      hidden=""
-                      id="1"
-                      readonly=""
-                      type="checkbox"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="css-view-175oi2r r-height-10ptun7"
-            />
-            <div
-              class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
-            />
-            <div
-              class="css-view-175oi2r r-height-mabqd8"
-            />
-            <h2
-              aria-level="2"
-              class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j"
-              dir="ltr"
-              role="heading"
-            >
-              Tes thèmes suivis
-            </h2>
-            <div
-              class="css-view-175oi2r r-height-1472mwg"
-            />
-            <div
-              class="css-view-175oi2r r-paddingBlock-w7s2jr"
-            >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
-              >
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
-                >
-                  <label
-                    class="c3"
-                    for="3"
-                  >
-                    <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                      class="css-text-146c3p1"
                       dir="ltr"
                     >
-                      Suivre tous les thèmes
+                      undefined-SVG-Mock
                     </div>
-                  </label>
-                </div>
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
-                >
-                  <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-                  >
-                    <div
-                      aria-checked="false"
-                      aria-disabled="true"
-                      aria-label="Suivre tous les thèmes - Interrupteur à bascule - non coché"
-                      aria-labelledby="2"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Suivre tous les thèmes - Interrupteur à bascule - non coché"
-                      role="switch"
-                      style="transition-duration: 0s;"
-                      tabindex="-1"
-                    >
-                      <div
-                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
-                      >
-                        <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
-                          style="transform: translateX(2px);"
-                        >
-                          <div
-                            class="css-view-175oi2r"
-                          >
-                            <div
-                              class="css-text-146c3p1"
-                              dir="ltr"
-                            >
-                              undefined-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <input
-                      hidden=""
-                      id="3"
-                      readonly=""
-                      type="checkbox"
-                    />
                   </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="css-view-175oi2r r-height-3da1kt"
-            />
-            <div
-              class="css-view-175oi2r r-paddingBlock-w7s2jr"
-            >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
-              >
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
-                >
-                  <label
-                    class="c3"
-                    for="5"
+                  <div
+                    aria-label="Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture."
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
+                    role="presentation"
                   >
                     <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-kmu5yi"
                       dir="ltr"
                     >
-                      Cinéma
+                      Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture.
                     </div>
-                  </label>
-                </div>
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
-                >
-                  <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-                  >
-                    <div
-                      aria-checked="false"
-                      aria-disabled="true"
-                      aria-label="Cinéma - Interrupteur à bascule - non coché"
-                      aria-labelledby="4"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Cinéma - Interrupteur à bascule - non coché"
-                      role="switch"
-                      style="transition-duration: 0s;"
-                      tabindex="-1"
-                    >
-                      <div
-                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
-                      >
-                        <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
-                          style="transform: translateX(2px);"
-                        >
-                          <div
-                            class="css-view-175oi2r"
-                          >
-                            <div
-                              class="css-text-146c3p1"
-                              dir="ltr"
-                            >
-                              undefined-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <input
-                      hidden=""
-                      id="5"
-                      readonly=""
-                      type="checkbox"
-                    />
                   </div>
                 </div>
-              </div>
-            </div>
-            <div
-              class="css-view-175oi2r r-paddingBlock-w7s2jr"
-            >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
-              >
                 <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
-                >
-                  <label
-                    class="c3"
-                    for="7"
-                  >
-                    <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                      dir="ltr"
-                    >
-                      Lecture
-                    </div>
-                  </label>
-                </div>
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
-                >
-                  <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-                  >
-                    <div
-                      aria-checked="false"
-                      aria-disabled="true"
-                      aria-label="Lecture - Interrupteur à bascule - non coché"
-                      aria-labelledby="6"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Lecture - Interrupteur à bascule - non coché"
-                      role="switch"
-                      style="transition-duration: 0s;"
-                      tabindex="-1"
-                    >
-                      <div
-                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
-                      >
-                        <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
-                          style="transform: translateX(2px);"
-                        >
-                          <div
-                            class="css-view-175oi2r"
-                          >
-                            <div
-                              class="css-text-146c3p1"
-                              dir="ltr"
-                            >
-                              undefined-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <input
-                      hidden=""
-                      id="7"
-                      readonly=""
-                      type="checkbox"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="css-view-175oi2r r-paddingBlock-w7s2jr"
-            >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
-              >
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
-                >
-                  <label
-                    class="c3"
-                    for="9"
-                  >
-                    <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                      dir="ltr"
-                    >
-                      Musique
-                    </div>
-                  </label>
-                </div>
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
-                >
-                  <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-                  >
-                    <div
-                      aria-checked="false"
-                      aria-disabled="true"
-                      aria-label="Musique - Interrupteur à bascule - non coché"
-                      aria-labelledby="8"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Musique - Interrupteur à bascule - non coché"
-                      role="switch"
-                      style="transition-duration: 0s;"
-                      tabindex="-1"
-                    >
-                      <div
-                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
-                      >
-                        <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
-                          style="transform: translateX(2px);"
-                        >
-                          <div
-                            class="css-view-175oi2r"
-                          >
-                            <div
-                              class="css-text-146c3p1"
-                              dir="ltr"
-                            >
-                              undefined-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <input
-                      hidden=""
-                      id="9"
-                      readonly=""
-                      type="checkbox"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="css-view-175oi2r r-paddingBlock-w7s2jr"
-            >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
-              >
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
-                >
-                  <label
-                    class="c3"
-                    for="11"
-                  >
-                    <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                      dir="ltr"
-                    >
-                      Spectacles
-                    </div>
-                  </label>
-                </div>
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
-                >
-                  <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-                  >
-                    <div
-                      aria-checked="false"
-                      aria-disabled="true"
-                      aria-label="Spectacles - Interrupteur à bascule - non coché"
-                      aria-labelledby="10"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Spectacles - Interrupteur à bascule - non coché"
-                      role="switch"
-                      style="transition-duration: 0s;"
-                      tabindex="-1"
-                    >
-                      <div
-                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
-                      >
-                        <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
-                          style="transform: translateX(2px);"
-                        >
-                          <div
-                            class="css-view-175oi2r"
-                          >
-                            <div
-                              class="css-text-146c3p1"
-                              dir="ltr"
-                            >
-                              undefined-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <input
-                      hidden=""
-                      id="11"
-                      readonly=""
-                      type="checkbox"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="css-view-175oi2r r-paddingBlock-w7s2jr"
-            >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
-              >
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
-                >
-                  <label
-                    class="c3"
-                    for="13"
-                  >
-                    <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                      dir="ltr"
-                    >
-                      Activités créatives
-                    </div>
-                  </label>
-                </div>
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
-                >
-                  <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-                  >
-                    <div
-                      aria-checked="false"
-                      aria-disabled="true"
-                      aria-label="Activités créatives - Interrupteur à bascule - non coché"
-                      aria-labelledby="12"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Activités créatives - Interrupteur à bascule - non coché"
-                      role="switch"
-                      style="transition-duration: 0s;"
-                      tabindex="-1"
-                    >
-                      <div
-                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
-                      >
-                        <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
-                          style="transform: translateX(2px);"
-                        >
-                          <div
-                            class="css-view-175oi2r"
-                          >
-                            <div
-                              class="css-text-146c3p1"
-                              dir="ltr"
-                            >
-                              undefined-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <input
-                      hidden=""
-                      id="13"
-                      readonly=""
-                      type="checkbox"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="css-view-175oi2r r-paddingBlock-w7s2jr"
-            >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
-              >
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
-                >
-                  <label
-                    class="c3"
-                    for="15"
-                  >
-                    <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                      dir="ltr"
-                    >
-                      Visites et sorties
-                    </div>
-                  </label>
-                </div>
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
-                >
-                  <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-                  >
-                    <div
-                      aria-checked="false"
-                      aria-disabled="true"
-                      aria-label="Visites et sorties - Interrupteur à bascule - non coché"
-                      aria-labelledby="14"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Visites et sorties - Interrupteur à bascule - non coché"
-                      role="switch"
-                      style="transition-duration: 0s;"
-                      tabindex="-1"
-                    >
-                      <div
-                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
-                      >
-                        <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
-                          style="transform: translateX(2px);"
-                        >
-                          <div
-                            class="css-view-175oi2r"
-                          >
-                            <div
-                              class="css-text-146c3p1"
-                              dir="ltr"
-                            >
-                              undefined-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <input
-                      hidden=""
-                      id="15"
-                      readonly=""
-                      type="checkbox"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="css-view-175oi2r r-height-3da1kt"
-            />
-            <button
-              aria-label="Enregistrer les modifications"
-              class="c4"
-              data-testid="Enregistrer les modifications"
-              disabled=""
-              type="button"
-            >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
-              >
-                <div
-                  class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
+                  class="css-view-175oi2r r-height-1472mwg"
+                />
+                <h2
+                  aria-level="2"
+                  class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j"
                   dir="ltr"
-                  style="color: rgb(105, 106, 111); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                  role="heading"
                 >
-                  Enregistrer
+                  Type d’alerte
+                </h2>
+                <div
+                  class="css-view-175oi2r r-height-10ptun7"
+                />
+                <div
+                  class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                  dir="ltr"
+                >
+                  Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
                 </div>
+                <div
+                  class="css-view-175oi2r r-height-3da1kt"
+                />
+                <form
+                  class="c2"
+                >
+                  <div
+                    class="css-view-175oi2r r-paddingBlock-w7s2jr"
+                  >
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
+                      >
+                        <label
+                          class="c3"
+                          for="1"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Autoriser l’envoi d’e-mails
+                          </div>
+                        </label>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
+                      >
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                        >
+                          <div
+                            aria-checked="false"
+                            aria-disabled="true"
+                            aria-label="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
+                            aria-labelledby="0"
+                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
+                            data-testid="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
+                            role="switch"
+                            style="transition-duration: 0s;"
+                            tabindex="-1"
+                          >
+                            <div
+                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
+                            >
+                              <div
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                                style="transform: translateX(2px);"
+                              >
+                                <div
+                                  class="css-view-175oi2r"
+                                >
+                                  <div
+                                    class="css-text-146c3p1"
+                                    dir="ltr"
+                                  >
+                                    undefined-SVG-Mock
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <input
+                            hidden=""
+                            id="1"
+                            readonly=""
+                            type="checkbox"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-height-10ptun7"
+                  />
+                  <div
+                    class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
+                  />
+                  <div
+                    class="css-view-175oi2r r-height-mabqd8"
+                  />
+                  <h2
+                    aria-level="2"
+                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j"
+                    dir="ltr"
+                    role="heading"
+                  >
+                    Tes thèmes suivis
+                  </h2>
+                  <div
+                    class="css-view-175oi2r r-height-1472mwg"
+                  />
+                  <div
+                    class="css-view-175oi2r r-paddingBlock-w7s2jr"
+                  >
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
+                      >
+                        <label
+                          class="c3"
+                          for="3"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Suivre tous les thèmes
+                          </div>
+                        </label>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
+                      >
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                        >
+                          <div
+                            aria-checked="false"
+                            aria-disabled="true"
+                            aria-label="Suivre tous les thèmes - Interrupteur à bascule - non coché"
+                            aria-labelledby="2"
+                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
+                            data-testid="Suivre tous les thèmes - Interrupteur à bascule - non coché"
+                            role="switch"
+                            style="transition-duration: 0s;"
+                            tabindex="-1"
+                          >
+                            <div
+                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
+                            >
+                              <div
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                                style="transform: translateX(2px);"
+                              >
+                                <div
+                                  class="css-view-175oi2r"
+                                >
+                                  <div
+                                    class="css-text-146c3p1"
+                                    dir="ltr"
+                                  >
+                                    undefined-SVG-Mock
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <input
+                            hidden=""
+                            id="3"
+                            readonly=""
+                            type="checkbox"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-height-3da1kt"
+                  />
+                  <div
+                    class="css-view-175oi2r r-paddingBlock-w7s2jr"
+                  >
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
+                      >
+                        <label
+                          class="c3"
+                          for="5"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Cinéma
+                          </div>
+                        </label>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
+                      >
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                        >
+                          <div
+                            aria-checked="false"
+                            aria-disabled="true"
+                            aria-label="Cinéma - Interrupteur à bascule - non coché"
+                            aria-labelledby="4"
+                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
+                            data-testid="Cinéma - Interrupteur à bascule - non coché"
+                            role="switch"
+                            style="transition-duration: 0s;"
+                            tabindex="-1"
+                          >
+                            <div
+                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
+                            >
+                              <div
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                                style="transform: translateX(2px);"
+                              >
+                                <div
+                                  class="css-view-175oi2r"
+                                >
+                                  <div
+                                    class="css-text-146c3p1"
+                                    dir="ltr"
+                                  >
+                                    undefined-SVG-Mock
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <input
+                            hidden=""
+                            id="5"
+                            readonly=""
+                            type="checkbox"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-paddingBlock-w7s2jr"
+                  >
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
+                      >
+                        <label
+                          class="c3"
+                          for="7"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Lecture
+                          </div>
+                        </label>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
+                      >
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                        >
+                          <div
+                            aria-checked="false"
+                            aria-disabled="true"
+                            aria-label="Lecture - Interrupteur à bascule - non coché"
+                            aria-labelledby="6"
+                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
+                            data-testid="Lecture - Interrupteur à bascule - non coché"
+                            role="switch"
+                            style="transition-duration: 0s;"
+                            tabindex="-1"
+                          >
+                            <div
+                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
+                            >
+                              <div
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                                style="transform: translateX(2px);"
+                              >
+                                <div
+                                  class="css-view-175oi2r"
+                                >
+                                  <div
+                                    class="css-text-146c3p1"
+                                    dir="ltr"
+                                  >
+                                    undefined-SVG-Mock
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <input
+                            hidden=""
+                            id="7"
+                            readonly=""
+                            type="checkbox"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-paddingBlock-w7s2jr"
+                  >
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
+                      >
+                        <label
+                          class="c3"
+                          for="9"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Musique
+                          </div>
+                        </label>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
+                      >
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                        >
+                          <div
+                            aria-checked="false"
+                            aria-disabled="true"
+                            aria-label="Musique - Interrupteur à bascule - non coché"
+                            aria-labelledby="8"
+                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
+                            data-testid="Musique - Interrupteur à bascule - non coché"
+                            role="switch"
+                            style="transition-duration: 0s;"
+                            tabindex="-1"
+                          >
+                            <div
+                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
+                            >
+                              <div
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                                style="transform: translateX(2px);"
+                              >
+                                <div
+                                  class="css-view-175oi2r"
+                                >
+                                  <div
+                                    class="css-text-146c3p1"
+                                    dir="ltr"
+                                  >
+                                    undefined-SVG-Mock
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <input
+                            hidden=""
+                            id="9"
+                            readonly=""
+                            type="checkbox"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-paddingBlock-w7s2jr"
+                  >
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
+                      >
+                        <label
+                          class="c3"
+                          for="11"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Spectacles
+                          </div>
+                        </label>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
+                      >
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                        >
+                          <div
+                            aria-checked="false"
+                            aria-disabled="true"
+                            aria-label="Spectacles - Interrupteur à bascule - non coché"
+                            aria-labelledby="10"
+                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
+                            data-testid="Spectacles - Interrupteur à bascule - non coché"
+                            role="switch"
+                            style="transition-duration: 0s;"
+                            tabindex="-1"
+                          >
+                            <div
+                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
+                            >
+                              <div
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                                style="transform: translateX(2px);"
+                              >
+                                <div
+                                  class="css-view-175oi2r"
+                                >
+                                  <div
+                                    class="css-text-146c3p1"
+                                    dir="ltr"
+                                  >
+                                    undefined-SVG-Mock
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <input
+                            hidden=""
+                            id="11"
+                            readonly=""
+                            type="checkbox"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-paddingBlock-w7s2jr"
+                  >
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
+                      >
+                        <label
+                          class="c3"
+                          for="13"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Activités créatives
+                          </div>
+                        </label>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
+                      >
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                        >
+                          <div
+                            aria-checked="false"
+                            aria-disabled="true"
+                            aria-label="Activités créatives - Interrupteur à bascule - non coché"
+                            aria-labelledby="12"
+                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
+                            data-testid="Activités créatives - Interrupteur à bascule - non coché"
+                            role="switch"
+                            style="transition-duration: 0s;"
+                            tabindex="-1"
+                          >
+                            <div
+                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
+                            >
+                              <div
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                                style="transform: translateX(2px);"
+                              >
+                                <div
+                                  class="css-view-175oi2r"
+                                >
+                                  <div
+                                    class="css-text-146c3p1"
+                                    dir="ltr"
+                                  >
+                                    undefined-SVG-Mock
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <input
+                            hidden=""
+                            id="13"
+                            readonly=""
+                            type="checkbox"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-paddingBlock-w7s2jr"
+                  >
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
+                      >
+                        <label
+                          class="c3"
+                          for="15"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Visites et sorties
+                          </div>
+                        </label>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
+                      >
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                        >
+                          <div
+                            aria-checked="false"
+                            aria-disabled="true"
+                            aria-label="Visites et sorties - Interrupteur à bascule - non coché"
+                            aria-labelledby="14"
+                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
+                            data-testid="Visites et sorties - Interrupteur à bascule - non coché"
+                            role="switch"
+                            style="transition-duration: 0s;"
+                            tabindex="-1"
+                          >
+                            <div
+                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
+                            >
+                              <div
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                                style="transform: translateX(2px);"
+                              >
+                                <div
+                                  class="css-view-175oi2r"
+                                >
+                                  <div
+                                    class="css-text-146c3p1"
+                                    dir="ltr"
+                                  >
+                                    undefined-SVG-Mock
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <input
+                            hidden=""
+                            id="15"
+                            readonly=""
+                            type="checkbox"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-height-3da1kt"
+                  />
+                  <button
+                    aria-label="Enregistrer les modifications"
+                    class="c4"
+                    data-testid="Enregistrer les modifications"
+                    disabled=""
+                    type="button"
+                  >
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
+                    >
+                      <div
+                        class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
+                        dir="ltr"
+                        style="color: rgb(105, 106, 111); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                      >
+                        Enregistrer
+                      </div>
+                    </div>
+                  </button>
+                </form>
               </div>
-            </button>
-          </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ import {
 } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment/env'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
-import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 type Props = Pick<NativeStackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>, 'route'>
 
@@ -22,15 +22,17 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
   }
 
   return (
-    <SecondaryPageWithNeutralHeader
+    <PageWithHeader
       title="Oubli de mot de passe"
       shouldDisplayBackButton={false}
-      RightButton={<RightButtonText onClose={onClose} wording="Quitter" />}>
-      <EmailSentGeneric
-        title="Clique sur le lien de réinitialisation reçu par e-mail"
-        consultFaq={{ url: env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED }}
-        email={route.params.email}
-      />
-    </SecondaryPageWithNeutralHeader>
+      RightButton={<RightButtonText onClose={onClose} wording="Quitter" />}
+      scrollChildren={
+        <EmailSentGeneric
+          title="Clique sur le lien de réinitialisation reçu par e-mail"
+          consultFaq={{ url: env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED }}
+          email={route.params.email}
+        />
+      }
+    />
   )
 }

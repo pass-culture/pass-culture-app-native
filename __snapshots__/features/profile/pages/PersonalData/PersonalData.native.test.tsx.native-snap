@@ -172,918 +172,164 @@ exports[`PersonalData should render personal data success 1`] = `
       />
     </View>
   </View>
-  <RCTScrollView
-    contentContainerStyle={
+  <View
+    style={
       {
-        "alignSelf": "center",
-        "maxWidth": 500,
-        "paddingHorizontal": 24,
-        "paddingVertical": 24,
-        "width": "100%",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
       }
     }
-    enableMaxWidth={true}
-    scrollEnabled={true}
-    style={{}}
   >
-    <View>
-      <View
-        height={65}
-        style={
+    <View
+      onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
+      style={
+        [
           {
-            "height": 65,
-          }
-        }
-      />
-      <Text
-        style={
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
           {
-            "color": "#696a6f",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 19.2,
-          }
-        }
-      >
-        Prénom et nom
-      </Text>
-      <View
-        style={
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginTop": 8,
-          }
-        }
-      >
-        <Text
-          numberOfLines={2}
-          style={
-            {
-              "color": "#161617",
-              "flexShrink": 1,
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "marginRight": 8,
-            }
-          }
-        >
-          Rosa Bonheur
-        </Text>
-      </View>
+            "paddingBottom": 0,
+          },
+        ]
+      }
+    >
       <View
         style={
           {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "marginVertical": 16,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
             "width": "100%",
           }
         }
-      />
-      <Text
-        style={
-          {
-            "color": "#696a6f",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 19.2,
-          }
-        }
       >
-        Adresse e-mail
-      </Text>
-      <View
-        style={
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginTop": 8,
-          }
-        }
-      >
-        <Text
-          numberOfLines={2}
-          style={
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
             {
-              "color": "#161617",
-              "flexShrink": 1,
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "marginRight": 8,
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "paddingBottom": 0,
+              "paddingHorizontal": 24,
             }
           }
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          style={{}}
         >
-          rosa.bonheur@gmail.com
-        </Text>
-        <View
-          accessibilityLabel="Modifier e-mail"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 0,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "width": "auto",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Modifier e-mail"
-        >
-          <View
-            gap={8}
-            hasIcon={true}
-            isMultiline={false}
-            style={
-              {
-                "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
-              }
-            }
-          >
+          <View>
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
-                {
-                  "flexShrink": 0,
-                }
-              }
-              nativeID="0"
               style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
-              }
-            >
-              <View
-                fill="#6123df"
-                height={22}
-                width={22}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#6123df",
-                    "flexBasis": undefined,
-                    "flexGrow": undefined,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": undefined,
-                  },
-                ]
-              }
-            >
-              Modifier
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "marginVertical": 16,
-            "width": "100%",
-          }
-        }
-      />
-      <Text
-        style={
-          {
-            "color": "#696a6f",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 19.2,
-          }
-        }
-      >
-        Numéro de téléphone
-      </Text>
-      <View
-        style={
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginTop": 8,
-          }
-        }
-      >
-        <Text
-          numberOfLines={2}
-          style={
-            {
-              "color": "#161617",
-              "flexShrink": 1,
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "marginRight": 8,
-            }
-          }
-        >
-          +33685974563
-        </Text>
-      </View>
-      <View
-        style={
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "marginVertical": 16,
-            "width": "100%",
-          }
-        }
-      />
-      <Text
-        style={
-          {
-            "color": "#696a6f",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 19.2,
-          }
-        }
-      >
-        Mot de passe
-      </Text>
-      <View
-        style={
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginTop": 8,
-          }
-        }
-      >
-        <Text
-          numberOfLines={2}
-          style={
-            {
-              "color": "#161617",
-              "flexShrink": 1,
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "marginRight": 8,
-            }
-          }
-        >
-          ************
-        </Text>
-        <View
-          accessibilityLabel="Modifier mot de passe"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
                 {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 0,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "width": "auto",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Modifier mot de passe"
-        >
-          <View
-            gap={8}
-            hasIcon={true}
-            isMultiline={false}
-            style={
-              {
-                "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
+                  "height": 65,
                 }
               }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
-                {
-                  "flexShrink": 0,
-                }
-              }
-              nativeID="1"
-              style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
-              }
-            >
-              <View
-                fill="#6123df"
-                height={22}
-                width={22}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#6123df",
-                    "flexBasis": undefined,
-                    "flexGrow": undefined,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": undefined,
-                  },
-                ]
-              }
-            >
-              Modifier
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "marginVertical": 16,
-            "width": "100%",
-          }
-        }
-      />
-      <Text
-        style={
-          {
-            "color": "#696a6f",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 19.2,
-          }
-        }
-      >
-        Statut
-      </Text>
-      <View
-        style={
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginTop": 8,
-          }
-        }
-      >
-        <Text
-          numberOfLines={2}
-          style={
-            {
-              "color": "#161617",
-              "flexShrink": 1,
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "marginRight": 8,
-            }
-          }
-        >
-          Étudiant
-        </Text>
-        <View
-          accessibilityLabel="Modifier le statut"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 0,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "width": "auto",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Modifier le statut"
-        >
-          <View
-            gap={8}
-            hasIcon={true}
-            isMultiline={false}
-            style={
-              {
-                "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
-                {
-                  "flexShrink": 0,
-                }
-              }
-              nativeID="2"
-              style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
-              }
-            >
-              <View
-                fill="#6123df"
-                height={22}
-                width={22}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#6123df",
-                    "flexBasis": undefined,
-                    "flexGrow": undefined,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": undefined,
-                  },
-                ]
-              }
-            >
-              Modifier
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "marginVertical": 16,
-            "width": "100%",
-          }
-        }
-      />
-      <Text
-        style={
-          {
-            "color": "#696a6f",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 19.2,
-          }
-        }
-      >
-        Adresse de résidence
-      </Text>
-      <View
-        style={
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginTop": 8,
-          }
-        }
-      >
-        <Text
-          numberOfLines={2}
-          style={
-            {
-              "color": "#161617",
-              "flexShrink": 1,
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "marginRight": 8,
-            }
-          }
-        >
-          10 rue de Bohneur, 75001, Paris
-        </Text>
-        <View
-          accessibilityLabel="Modifier mon adresse de résidence"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 0,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "width": "auto",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Modifier mon adresse de résidence"
-        >
-          <View
-            gap={8}
-            hasIcon={true}
-            isMultiline={false}
-            style={
-              {
-                "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
-                {
-                  "flexShrink": 0,
-                }
-              }
-              nativeID="3"
-              style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
-              }
-            >
-              <View
-                fill="#6123df"
-                height={22}
-                width={22}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#6123df",
-                    "flexBasis": undefined,
-                    "flexGrow": undefined,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": undefined,
-                  },
-                ]
-              }
-            >
-              Modifier
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "marginVertical": 16,
-            "width": "100%",
-          }
-        }
-      />
-      <View
-        gap={8}
-        style={
-          {
-            "gap": 32,
-          }
-        }
-      >
-        <View
-          background="#f3edff"
-          style={
-            {
-              "alignItems": "flex-start",
-              "backgroundColor": "#f3edff",
-              "borderBottomLeftRadius": 8,
-              "borderBottomRightRadius": 8,
-              "borderTopLeftRadius": 8,
-              "borderTopRightRadius": 8,
-              "flexDirection": "row",
-              "gap": 12,
-              "paddingBottom": 16,
-              "paddingLeft": 16,
-              "paddingRight": 16,
-              "paddingTop": 16,
-            }
-          }
-        >
-          <View
-            fill="#320096"
-            height={24}
-            width={24}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter."
-            accessibilityRole="none"
-            style={
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "gap": 4,
-              }
-            }
-          >
+            />
             <Text
               style={
                 {
-                  "color": "#161617",
+                  "color": "#696a6f",
                   "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 14,
-                  "lineHeight": 22.4,
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
                 }
               }
             >
-              Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.
+              Prénom et nom
             </Text>
             <View
-              gap={3}
               style={
                 {
-                  "alignItems": "flex-start",
-                  "gap": 12,
-                  "marginRight": 16,
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
                   "marginTop": 8,
                 }
               }
             >
+              <Text
+                numberOfLines={2}
+                style={
+                  {
+                    "color": "#161617",
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginRight": 8,
+                  }
+                }
+              >
+                Rosa Bonheur
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
+                  "marginVertical": 16,
+                  "width": "100%",
+                }
+              }
+            />
+            <Text
+              style={
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
+              }
+            >
+              Adresse e-mail
+            </Text>
+            <View
+              style={
+                {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "marginTop": 8,
+                }
+              }
+            >
+              <Text
+                numberOfLines={2}
+                style={
+                  {
+                    "color": "#161617",
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginRight": 8,
+                  }
+                }
+              >
+                rosa.bonheur@gmail.com
+              </Text>
               <View
-                accessibilityLabel="Lien externe - Comment gérer tes données personnelles ?"
-                accessibilityRole="link"
+                accessibilityLabel="Modifier e-mail"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
                     "checked": undefined,
-                    "disabled": undefined,
+                    "disabled": false,
                     "expanded": undefined,
                     "selected": undefined,
                   }
@@ -1107,187 +353,988 @@ exports[`PersonalData should render personal data success 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   [
-                    {
-                      "alignItems": "flex-start",
-                      "cursor": "pointer",
-                      "flexDirection": "row",
-                    },
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 0,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "width": "auto",
+                      },
+                    ],
                     {
                       "opacity": 1,
                     },
                   ]
                 }
+                testID="Modifier e-mail"
               >
                 <View
+                  gap={8}
+                  hasIcon={true}
+                  isMultiline={false}
                   style={
                     {
-                      "marginRight": 8,
-                      "marginTop": 2,
+                      "alignItems": "center",
+                      "columnGap": 8,
+                      "flexDirection": "row",
                     }
                   }
                 >
                   <View
-                    accessibilityLabel="Nouvelle fenêtre"
-                    height={16}
-                    width={16}
+                    collapsable={false}
+                    jestAnimatedProps={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestAnimatedStyle={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestInlineStyle={
+                      {
+                        "flexShrink": 0,
+                      }
+                    }
+                    nativeID="0"
+                    style={
+                      [
+                        {
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
                   >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
+                    <View
+                      fill="#6123df"
+                      height={22}
+                      width={22}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
                   </View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 22,
+                        },
+                        {
+                          "color": "#6123df",
+                          "flexBasis": undefined,
+                          "flexGrow": undefined,
+                          "flexShrink": 1,
+                          "maxWidth": "100%",
+                          "minWidth": 0,
+                          "textAlign": undefined,
+                        },
+                      ]
+                    }
+                  >
+                    Modifier
+                  </Text>
                 </View>
-                <Text
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
+                  "marginVertical": 16,
+                  "width": "100%",
+                }
+              }
+            />
+            <Text
+              style={
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
+              }
+            >
+              Numéro de téléphone
+            </Text>
+            <View
+              style={
+                {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "marginTop": 8,
+                }
+              }
+            >
+              <Text
+                numberOfLines={2}
+                style={
+                  {
+                    "color": "#161617",
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginRight": 8,
+                  }
+                }
+              >
+                +33685974563
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
+                  "marginVertical": 16,
+                  "width": "100%",
+                }
+              }
+            />
+            <Text
+              style={
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
+              }
+            >
+              Mot de passe
+            </Text>
+            <View
+              style={
+                {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "marginTop": 8,
+                }
+              }
+            >
+              <Text
+                numberOfLines={2}
+                style={
+                  {
+                    "color": "#161617",
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginRight": 8,
+                  }
+                }
+              >
+                ************
+              </Text>
+              <View
+                accessibilityLabel="Modifier mot de passe"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 0,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "width": "auto",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Modifier mot de passe"
+              >
+                <View
+                  gap={8}
+                  hasIcon={true}
+                  isMultiline={false}
                   style={
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
+                      "alignItems": "center",
+                      "columnGap": 8,
+                      "flexDirection": "row",
                     }
                   }
                 >
-                  Comment gérer tes données personnelles ?
-                </Text>
+                  <View
+                    collapsable={false}
+                    jestAnimatedProps={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestAnimatedStyle={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestInlineStyle={
+                      {
+                        "flexShrink": 0,
+                      }
+                    }
+                    nativeID="1"
+                    style={
+                      [
+                        {
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      fill="#6123df"
+                      height={22}
+                      width={22}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 22,
+                        },
+                        {
+                          "color": "#6123df",
+                          "flexBasis": undefined,
+                          "flexGrow": undefined,
+                          "flexShrink": 1,
+                          "maxWidth": "100%",
+                          "minWidth": 0,
+                          "textAlign": undefined,
+                        },
+                      ]
+                    }
+                  >
+                    Modifier
+                  </Text>
+                </View>
               </View>
             </View>
-          </View>
-        </View>
-        <View
-          accessibilityLabel="Supprimer mon compte"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderColor": "#90949d",
-                  "borderStyle": "solid",
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingBottom": 8,
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                  "paddingTop": 8,
-                  "width": "auto",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Supprimer mon compte"
-        >
-          <View
-            gap={8}
-            hasIcon={true}
-            isMultiline={false}
-            style={
-              {
-                "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
-              }
-            }
-          >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
-                {
-                  "flexShrink": 0,
-                }
-              }
-              nativeID="4"
               style={
-                [
+                {
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
+                  "marginVertical": 16,
+                  "width": "100%",
+                }
+              }
+            />
+            <Text
+              style={
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
+              }
+            >
+              Statut
+            </Text>
+            <View
+              style={
+                {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "marginTop": 8,
+                }
+              }
+            >
+              <Text
+                numberOfLines={2}
+                style={
                   {
-                    "flexShrink": 0,
-                  },
-                ]
+                    "color": "#161617",
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginRight": 8,
+                  }
+                }
+              >
+                Étudiant
+              </Text>
+              <View
+                accessibilityLabel="Modifier le statut"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 0,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "width": "auto",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Modifier le statut"
+              >
+                <View
+                  gap={8}
+                  hasIcon={true}
+                  isMultiline={false}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "columnGap": 8,
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <View
+                    collapsable={false}
+                    jestAnimatedProps={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestAnimatedStyle={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestInlineStyle={
+                      {
+                        "flexShrink": 0,
+                      }
+                    }
+                    nativeID="2"
+                    style={
+                      [
+                        {
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      fill="#6123df"
+                      height={22}
+                      width={22}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 22,
+                        },
+                        {
+                          "color": "#6123df",
+                          "flexBasis": undefined,
+                          "flexGrow": undefined,
+                          "flexShrink": 1,
+                          "maxWidth": "100%",
+                          "minWidth": 0,
+                          "textAlign": undefined,
+                        },
+                      ]
+                    }
+                  >
+                    Modifier
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
+                  "marginVertical": 16,
+                  "width": "100%",
+                }
+              }
+            />
+            <Text
+              style={
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
+              }
+            >
+              Adresse de résidence
+            </Text>
+            <View
+              style={
+                {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "marginTop": 8,
+                }
+              }
+            >
+              <Text
+                numberOfLines={2}
+                style={
+                  {
+                    "color": "#161617",
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginRight": 8,
+                  }
+                }
+              >
+                10 rue de Bohneur, 75001, Paris
+              </Text>
+              <View
+                accessibilityLabel="Modifier mon adresse de résidence"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 0,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "width": "auto",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Modifier mon adresse de résidence"
+              >
+                <View
+                  gap={8}
+                  hasIcon={true}
+                  isMultiline={false}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "columnGap": 8,
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <View
+                    collapsable={false}
+                    jestAnimatedProps={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestAnimatedStyle={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestInlineStyle={
+                      {
+                        "flexShrink": 0,
+                      }
+                    }
+                    nativeID="3"
+                    style={
+                      [
+                        {
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      fill="#6123df"
+                      height={22}
+                      width={22}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 22,
+                        },
+                        {
+                          "color": "#6123df",
+                          "flexBasis": undefined,
+                          "flexGrow": undefined,
+                          "flexShrink": 1,
+                          "maxWidth": "100%",
+                          "minWidth": 0,
+                          "textAlign": undefined,
+                        },
+                      ]
+                    }
+                  >
+                    Modifier
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
+                  "marginVertical": 16,
+                  "width": "100%",
+                }
+              }
+            />
+            <View
+              gap={8}
+              style={
+                {
+                  "gap": 32,
+                }
               }
             >
               <View
-                fill="#161617"
-                height={22}
-                width={22}
+                background="#f3edff"
+                style={
+                  {
+                    "alignItems": "flex-start",
+                    "backgroundColor": "#f3edff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "flexDirection": "row",
+                    "gap": 12,
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  }
+                }
               >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
+                <View
+                  fill="#320096"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  accessibilityLabel="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter."
+                  accessibilityRole="none"
+                  style={
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "gap": 4,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 22.4,
+                      }
+                    }
+                  >
+                    Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.
+                  </Text>
+                  <View
+                    gap={3}
+                    style={
+                      {
+                        "alignItems": "flex-start",
+                        "gap": 12,
+                        "marginRight": 16,
+                        "marginTop": 8,
+                      }
+                    }
+                  >
+                    <View
+                      accessibilityLabel="Lien externe - Comment gérer tes données personnelles ?"
+                      accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          {
+                            "alignItems": "flex-start",
+                            "cursor": "pointer",
+                            "flexDirection": "row",
+                          },
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "marginRight": 8,
+                            "marginTop": 2,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          }
+                        }
+                      >
+                        Comment gérer tes données personnelles ?
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                accessibilityLabel="Supprimer mon compte"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#90949d",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "paddingBottom": 8,
+                        "paddingLeft": 12,
+                        "paddingRight": 12,
+                        "paddingTop": 8,
+                        "width": "auto",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Supprimer mon compte"
+              >
+                <View
+                  gap={8}
+                  hasIcon={true}
+                  isMultiline={false}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "columnGap": 8,
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <View
+                    collapsable={false}
+                    jestAnimatedProps={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestAnimatedStyle={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestInlineStyle={
+                      {
+                        "flexShrink": 0,
+                      }
+                    }
+                    nativeID="4"
+                    style={
+                      [
+                        {
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      fill="#161617"
+                      height={22}
+                      width={22}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 22,
+                        },
+                        {
+                          "color": "#161617",
+                          "flexBasis": undefined,
+                          "flexGrow": undefined,
+                          "flexShrink": 1,
+                          "maxWidth": "100%",
+                          "minWidth": 0,
+                          "textAlign": undefined,
+                        },
+                      ]
+                    }
+                  >
+                    Supprimer mon compte
+                  </Text>
+                </View>
               </View>
             </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#161617",
-                    "flexBasis": undefined,
-                    "flexGrow": undefined,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": undefined,
-                  },
-                ]
-              }
-            >
-              Supprimer mon compte
-            </Text>
           </View>
-        </View>
+        </RCTScrollView>
       </View>
     </View>
-  </RCTScrollView>
+  </View>
 </View>
 `;

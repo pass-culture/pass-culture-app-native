@@ -183,6 +183,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
   >
     <View
       onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
       style={
         [
           {
@@ -460,6 +461,7 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
   >
     <View
       onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
       style={
         [
           {

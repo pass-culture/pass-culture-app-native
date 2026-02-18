@@ -19,7 +19,7 @@ import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { LoadingPage } from 'ui/pages/LoadingPage'
-import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -110,44 +110,48 @@ export const ReinitializePassword = () => {
     return <LoadingPage />
   }
   return (
-    <SecondaryPageWithNeutralHeader
+    <PageWithHeader
       title="Nouveau mot de passe"
-      RightButton={<RightButtonText onClose={navigateToHome} wording="Quitter" />}>
-      <Typo.Title3 {...getHeadingAttrs(2)}>Choisis un nouveau mot de passe</Typo.Title3>
-      <Form.MaxWidth>
-        <Container>
-          <PasswordInputController
-            name="newPassword"
-            label="Mot de passe"
-            control={control}
-            withSecurityRules
-            securityRulesAlwaysVisible
-            onSubmitEditing={handleSubmit(submitPassword)}
-            requiredIndicator="explicit"
-            autocomplete="new-password"
-          />
-        </Container>
-        <Container>
-          <PasswordInputController
-            name="confirmedPassword"
-            label="Confirmer le mot de passe"
-            control={control}
-            onSubmitEditing={handleSubmit(submitPassword)}
-            requiredIndicator="explicit"
-            autocomplete="new-password"
-          />
-        </Container>
-        <Container>
-          <Button
-            wording="Se connecter"
-            onPress={handleSubmit(submitPassword)}
-            disabled={!isValid || isPending}
-            isLoading={isPending}
-            accessibilityLabel="Valider le nouveau mot de passe et se connecter"
-          />
-        </Container>
-      </Form.MaxWidth>
-    </SecondaryPageWithNeutralHeader>
+      RightButton={<RightButtonText onClose={navigateToHome} wording="Quitter" />}
+      scrollChildren={
+        <React.Fragment>
+          <Typo.Title3 {...getHeadingAttrs(2)}>Choisis un nouveau mot de passe</Typo.Title3>
+          <Form.MaxWidth>
+            <Container>
+              <PasswordInputController
+                name="newPassword"
+                label="Mot de passe"
+                control={control}
+                withSecurityRules
+                securityRulesAlwaysVisible
+                onSubmitEditing={handleSubmit(submitPassword)}
+                requiredIndicator="explicit"
+                autocomplete="new-password"
+              />
+            </Container>
+            <Container>
+              <PasswordInputController
+                name="confirmedPassword"
+                label="Confirmer le mot de passe"
+                control={control}
+                onSubmitEditing={handleSubmit(submitPassword)}
+                requiredIndicator="explicit"
+                autocomplete="new-password"
+              />
+            </Container>
+            <Container>
+              <Button
+                wording="Se connecter"
+                onPress={handleSubmit(submitPassword)}
+                disabled={!isValid || isPending}
+                isLoading={isPending}
+                accessibilityLabel="Valider le nouveau mot de passe et se connecter"
+              />
+            </Container>
+          </Form.MaxWidth>
+        </React.Fragment>
+      }
+    />
   )
 }
 

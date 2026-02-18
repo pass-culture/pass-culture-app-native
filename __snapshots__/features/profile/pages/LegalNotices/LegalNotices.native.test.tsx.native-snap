@@ -172,400 +172,447 @@ exports[`LegalNotices should render correctly 1`] = `
       />
     </View>
   </View>
-  <RCTScrollView
-    contentContainerStyle={
+  <View
+    style={
       {
-        "alignSelf": "center",
-        "maxWidth": 500,
-        "paddingHorizontal": 24,
-        "paddingVertical": 24,
-        "width": "100%",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
       }
     }
-    enableMaxWidth={true}
-    scrollEnabled={true}
-    style={{}}
   >
-    <View>
+    <View
+      onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
+          {
+            "paddingBottom": 0,
+          },
+        ]
+      }
+    >
       <View
-        height={65}
         style={
           {
-            "height": 65,
-          }
-        }
-      />
-      <View
-        gap={4}
-        style={
-          {
-            "gap": 16,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
+            "width": "100%",
           }
         }
       >
-        <Text
-          style={
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "paddingBottom": 0,
+              "paddingHorizontal": 24,
             }
           }
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          style={{}}
         >
-          ÉDITEUR SAS pass Culture
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Éditeur du site :
-           
-          <Text
-            accessibilityLabel="https://passculture.app/accueil, lien externe"
-            accessibilityRole="link"
-            onPress={[Function]}
-            style={
-              {
-                "color": "#6123df",
-                "cursor": "pointer",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 16,
-                "lineHeight": 22,
-                "textDecorationLine": "underline",
+          <View>
+            <View
+              style={
+                {
+                  "height": 65,
+                }
               }
-            }
-          >
-            https://passculture.app/accueil
-          </Text>
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Société par actions simplifiée au capital de 1 000 000 €
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Siège social : 35 Boulevard de Sébastopol – 75001 Paris - France
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Immatriculée au RCS de Paris sous le numéro : 853 318 459
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          N° TVA intracommunautaire : FR65853318459
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Directrice de la publication : Laurence Tison-Vuillaume
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Hébergeur : Google Cloud Platform
-          
+            />
+            <View
+              gap={4}
+              style={
+                {
+                  "gap": 16,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                ÉDITEUR SAS pass Culture
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Éditeur du site :
+                 
+                <Text
+                  accessibilityLabel="https://passculture.app/accueil, lien externe"
+                  accessibilityRole="link"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#6123df",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                      "textDecorationLine": "underline",
+                    }
+                  }
+                >
+                  https://passculture.app/accueil
+                </Text>
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Société par actions simplifiée au capital de 1 000 000 €
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Siège social : 35 Boulevard de Sébastopol – 75001 Paris - France
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Immatriculée au RCS de Paris sous le numéro : 853 318 459
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                N° TVA intracommunautaire : FR65853318459
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Directrice de la publication : Laurence Tison-Vuillaume
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Hébergeur : Google Cloud Platform
+                
 
-          8 Rue de Londres - 75009 Paris - France
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          <Text
-            accessibilityLabel="Contacter le support, lien externe"
-            accessibilityRole="link"
-            onPress={[Function]}
-            style={
-              {
-                "color": "#6123df",
-                "cursor": "pointer",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 16,
-                "lineHeight": 22,
-                "textDecorationLine": "underline",
-              }
-            }
-          >
-            Contacter le support
-          </Text>
-        </Text>
-        <View
-          style={
-            {
-              "backgroundColor": "#f1f1f4",
-              "height": 1,
-              "width": "100%",
-            }
-          }
-        />
-        <View
-          accessibilityLabel="Nouvelle fenêtre : Conditions Générales d’Utilisation"
-          accessibilityRole="link"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {},
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Nouvelle fenêtre : Conditions Générales d’Utilisation"
-        >
-          <View
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                },
-                undefined,
-              ]
-            }
-          >
-            <View
-              style={
-                {
-                  "marginRight": 8,
-                }
-              }
-            >
-              <View
-                accessibilityLabel="Nouvelle fenêtre"
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              style={
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "textAlign": "left",
-                }
-              }
-            >
+                8 Rue de Londres - 75009 Paris - France
+              </Text>
               <Text
-                numberOfLines={2}
                 style={
                   {
                     "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
+                    "fontFamily": "Montserrat-Medium",
                     "fontSize": 16,
                     "lineHeight": 25.6,
                   }
                 }
               >
-                Conditions Générales d’Utilisation
-              </Text>
-            </View>
-          </View>
-        </View>
-        <View
-          style={
-            {
-              "backgroundColor": "#f1f1f4",
-              "height": 1,
-              "width": "100%",
-            }
-          }
-        />
-        <View
-          accessibilityLabel="Nouvelle fenêtre : Charte de protection des données personnelles"
-          accessibilityRole="link"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {},
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Nouvelle fenêtre : Charte de protection des données personnelles"
-        >
-          <View
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                },
-                undefined,
-              ]
-            }
-          >
-            <View
-              style={
-                {
-                  "marginRight": 8,
-                }
-              }
-            >
-              <View
-                accessibilityLabel="Nouvelle fenêtre"
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
+                <Text
+                  accessibilityLabel="Contacter le support, lien externe"
+                  accessibilityRole="link"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#6123df",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                      "textDecorationLine": "underline",
+                    }
+                  }
+                >
+                  Contacter le support
                 </Text>
-              </View>
-            </View>
-            <View
-              style={
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "textAlign": "left",
-                }
-              }
-            >
-              <Text
-                numberOfLines={2}
+              </Text>
+              <View
                 style={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "width": "100%",
                   }
                 }
+              />
+              <View
+                accessibilityLabel="Nouvelle fenêtre : Conditions Générales d’Utilisation"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Nouvelle fenêtre : Conditions Générales d’Utilisation"
               >
-                Charte de protection des données personnelles
-              </Text>
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "marginRight": 8,
+                      }
+                    }
+                  >
+                    <View
+                      accessibilityLabel="Nouvelle fenêtre"
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "textAlign": "left",
+                      }
+                    }
+                  >
+                    <Text
+                      numberOfLines={2}
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
+                      }
+                    >
+                      Conditions Générales d’Utilisation
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "width": "100%",
+                  }
+                }
+              />
+              <View
+                accessibilityLabel="Nouvelle fenêtre : Charte de protection des données personnelles"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Nouvelle fenêtre : Charte de protection des données personnelles"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "marginRight": 8,
+                      }
+                    }
+                  >
+                    <View
+                      accessibilityLabel="Nouvelle fenêtre"
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "textAlign": "left",
+                      }
+                    }
+                  >
+                    <Text
+                      numberOfLines={2}
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
+                      }
+                    >
+                      Charte de protection des données personnelles
+                    </Text>
+                  </View>
+                </View>
+              </View>
             </View>
           </View>
-        </View>
+        </RCTScrollView>
       </View>
     </View>
-  </RCTScrollView>
+  </View>
 </View>
 `;

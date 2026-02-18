@@ -172,875 +172,922 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
       />
     </View>
   </View>
-  <RCTScrollView
-    contentContainerStyle={
+  <View
+    style={
       {
-        "alignSelf": "center",
-        "maxWidth": 500,
-        "paddingHorizontal": 24,
-        "paddingVertical": 24,
-        "width": "100%",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
       }
     }
-    enableMaxWidth={true}
-    scrollEnabled={true}
-    style={{}}
   >
-    <View>
-      <View
-        height={65}
-        style={
+    <View
+      onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
+      style={
+        [
           {
-            "height": 65,
-          }
-        }
-      />
-      <View
-        style={
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
           {
-            "marginBottom": 8,
-          }
-        }
-      >
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 19,
-              "lineHeight": 30.4,
-            }
-          }
-        >
-          Connecte-toi
-        </Text>
-      </View>
+            "paddingBottom": 0,
+          },
+        ]
+      }
+    >
       <View
         style={
           {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "maxWidth": 500,
             "width": "100%",
           }
         }
       >
-        <View
-          style={
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
             {
-              "marginBottom": 24,
-              "marginTop": 32,
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "paddingBottom": 0,
+              "paddingHorizontal": 24,
             }
           }
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          style={{}}
         >
-          <View
-            style={
-              {
-                "alignItems": "flex-start",
-                "width": "100%",
+          <View>
+            <View
+              style={
+                {
+                  "height": 65,
+                }
               }
-            }
-          >
-            <View>
-              <View
-                accessibilityElementsHidden={true}
-                importantForAccessibility="no"
+            />
+            <View
+              style={
+                {
+                  "marginBottom": 8,
+                }
+              }
+            >
+              <Text
+                accessibilityRole="header"
                 style={
                   {
-                    "alignItems": "flex-end",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 19,
+                    "lineHeight": 30.4,
+                  }
+                }
+              >
+                Connecte-toi
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "maxWidth": 500,
+                  "width": "100%",
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "marginBottom": 24,
+                    "marginTop": 32,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "flex-start",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <View>
+                    <View
+                      accessibilityElementsHidden={true}
+                      importantForAccessibility="no"
+                      style={
+                        {
+                          "alignItems": "flex-end",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "width": "100%",
+                        }
+                      }
+                    >
+                      <View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Adresse e-mail
+                        </Text>
+                        <Text
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                              "marginTop": 2,
+                            }
+                          }
+                        >
+                          Exemple : tonadresse@email.com
+                        </Text>
+                      </View>
+                      <Text
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          }
+                        }
+                      >
+                        Obligatoire
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    isDisabled={false}
+                    isError={false}
+                    isFocused={false}
+                    isHover={false}
+                    size="small"
+                    style={
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#90949d",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "marginTop": 4,
+                        "paddingBottom": 0,
+                        "paddingLeft": 9,
+                        "paddingRight": 9,
+                        "paddingTop": 0,
+                        "width": "100%",
+                      }
+                    }
+                    testID="styled-input-container"
+                  >
+                    <TextInput
+                      accessibilityLabel="Champs de texte - Adresse e-mail - Exemple : tonadresse@email.com - Obligatoire"
+                      accessibilityRequired={true}
+                      autoCapitalize="none"
+                      autoComplete="email"
+                      editable={true}
+                      isEmpty={true}
+                      keyboardType="email-address"
+                      multiline={false}
+                      nativeID="Entrée pour l’email"
+                      onBlur={[Function]}
+                      onChangeText={[Function]}
+                      onFocus={[Function]}
+                      placeholder=""
+                      placeholderTextColor="#696a6f"
+                      returnKeyType="next"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat",
+                          "fontSize": 16,
+                          "fontStyle": "italic",
+                          "fontWeight": "500",
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        }
+                      }
+                      testID="Entrée pour l’email"
+                      textAlignVertical="center"
+                      value=""
+                    />
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "flex-start",
                     "width": "100%",
                   }
                 }
               >
                 <View>
+                  <View
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no"
+                    style={
+                      {
+                        "alignItems": "flex-end",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    <View>
+                      <Text
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
+                      >
+                        Mot de passe
+                      </Text>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
+                      }
+                    >
+                      Obligatoire
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  isDisabled={false}
+                  isError={false}
+                  isFocused={false}
+                  isHover={false}
+                  size="small"
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 40,
+                      "marginTop": 4,
+                      "paddingBottom": 0,
+                      "paddingLeft": 9,
+                      "paddingRight": 9,
+                      "paddingTop": 0,
+                      "width": "100%",
+                    }
+                  }
+                  testID="styled-input-container"
+                >
+                  <TextInput
+                    accessibilityLabel="Champs de texte - Mot de passe - Obligatoire"
+                    accessibilityRequired={true}
+                    autoCapitalize="none"
+                    autoComplete="current-password"
+                    editable={true}
+                    isEmpty={true}
+                    multiline={false}
+                    nativeID="Mot de passe"
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="#696a6f"
+                    returnKeyType="next"
+                    secureTextEntry={true}
+                    style={
+                      {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat",
+                        "fontSize": 16,
+                        "fontStyle": "italic",
+                        "fontWeight": "500",
+                        "height": "100%",
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                      }
+                    }
+                    testID="Mot de passe"
+                    textAlignVertical="center"
+                    value=""
+                  />
+                  <View
+                    accessibilityLabel="Afficher le mot de passe"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "maxWidth": 60,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Afficher le mot de passe"
+                  >
+                    <View
+                      fill="#161617"
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "flexDirection": "row",
+                    "marginBottom": 32,
+                    "marginTop": 16,
+                    "maxWidth": 500,
+                    "width": "100%",
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Mot de passe oublié ?"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "transparent",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "width": "auto",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Mot de passe oublié ?"
+                >
+                  <View
+                    gap={8}
+                    hasIcon={true}
+                    isMultiline={false}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "columnGap": 8,
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <View
+                      collapsable={false}
+                      jestAnimatedProps={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestAnimatedStyle={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestInlineStyle={
+                        {
+                          "flexShrink": 0,
+                        }
+                      }
+                      nativeID="0"
+                      style={
+                        [
+                          {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        height={22}
+                        width={22}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 22,
+                          },
+                          {
+                            "color": "#161617",
+                            "flexBasis": undefined,
+                            "flexGrow": undefined,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": undefined,
+                          },
+                        ]
+                      }
+                    >
+                      Mot de passe oublié ?
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                accessibilityLabel="Se connecter"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": true,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={false}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "center",
+                        "backgroundColor": "#f1f1f4",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#cbcdd2",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "paddingBottom": 8,
+                        "paddingLeft": 12,
+                        "paddingRight": 12,
+                        "paddingTop": 8,
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Se connecter"
+              >
+                <View
+                  fullWidth={true}
+                  gap={8}
+                  hasIcon={false}
+                  isMultiline={false}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "columnGap": 8,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 22,
+                        },
+                        {
+                          "color": "#696a6f",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "maxWidth": "100%",
+                          "minWidth": 0,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Se connecter
+                  </Text>
+                </View>
+              </View>
+              <View
+                gap={4}
+                style={
+                  {
+                    "gap": 16,
+                    "marginBottom": 40,
+                    "marginTop": 16,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "paddingHorizontal": 4,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "#cbcdd2",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "height": 1,
+                        "width": "100%",
+                      }
+                    }
+                  />
                   <Text
                     style={
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      }
-                    }
-                  >
-                    Adresse e-mail
-                  </Text>
-                  <Text
-                    style={
-                      {
-                        "color": "#696a6f",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
-                        "marginTop": 2,
+                        "marginHorizontal": 12,
                       }
                     }
                   >
-                    Exemple : tonadresse@email.com
+                    ou
                   </Text>
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "#cbcdd2",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "height": 1,
+                        "width": "100%",
+                      }
+                    }
+                  />
                 </View>
-                <Text
-                  style={
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Obligatoire
-                </Text>
-              </View>
-            </View>
-            <View
-              isDisabled={false}
-              isError={false}
-              isFocused={false}
-              isHover={false}
-              size="small"
-              style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderColor": "#90949d",
-                  "borderStyle": "solid",
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 40,
-                  "marginTop": 4,
-                  "paddingBottom": 0,
-                  "paddingLeft": 9,
-                  "paddingRight": 9,
-                  "paddingTop": 0,
-                  "width": "100%",
-                }
-              }
-              testID="styled-input-container"
-            >
-              <TextInput
-                accessibilityLabel="Champs de texte - Adresse e-mail - Exemple : tonadresse@email.com - Obligatoire"
-                accessibilityRequired={true}
-                autoCapitalize="none"
-                autoComplete="email"
-                editable={true}
-                isEmpty={true}
-                keyboardType="email-address"
-                multiline={false}
-                nativeID="Entrée pour l’email"
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onFocus={[Function]}
-                placeholder=""
-                placeholderTextColor="#696a6f"
-                returnKeyType="next"
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat",
-                    "fontSize": 16,
-                    "fontStyle": "italic",
-                    "fontWeight": "500",
-                    "height": "100%",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                  }
-                }
-                testID="Entrée pour l’email"
-                textAlignVertical="center"
-                value=""
-              />
-            </View>
-          </View>
-        </View>
-        <View
-          style={
-            {
-              "alignItems": "flex-start",
-              "width": "100%",
-            }
-          }
-        >
-          <View>
-            <View
-              accessibilityElementsHidden={true}
-              importantForAccessibility="no"
-              style={
-                {
-                  "alignItems": "flex-end",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "width": "100%",
-                }
-              }
-            >
-              <View>
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Mot de passe
-                </Text>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  }
-                }
-              >
-                Obligatoire
-              </Text>
-            </View>
-          </View>
-          <View
-            isDisabled={false}
-            isError={false}
-            isFocused={false}
-            isHover={false}
-            size="small"
-            style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderBottomLeftRadius": 8,
-                "borderBottomRightRadius": 8,
-                "borderColor": "#90949d",
-                "borderStyle": "solid",
-                "borderTopLeftRadius": 8,
-                "borderTopRightRadius": 8,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "height": 40,
-                "marginTop": 4,
-                "paddingBottom": 0,
-                "paddingLeft": 9,
-                "paddingRight": 9,
-                "paddingTop": 0,
-                "width": "100%",
-              }
-            }
-            testID="styled-input-container"
-          >
-            <TextInput
-              accessibilityLabel="Champs de texte - Mot de passe - Obligatoire"
-              accessibilityRequired={true}
-              autoCapitalize="none"
-              autoComplete="current-password"
-              editable={true}
-              isEmpty={true}
-              multiline={false}
-              nativeID="Mot de passe"
-              onBlur={[Function]}
-              onChangeText={[Function]}
-              onFocus={[Function]}
-              onSubmitEditing={[Function]}
-              placeholder=""
-              placeholderTextColor="#696a6f"
-              returnKeyType="next"
-              secureTextEntry={true}
-              style={
-                {
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat",
-                  "fontSize": 16,
-                  "fontStyle": "italic",
-                  "fontWeight": "500",
-                  "height": "100%",
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                }
-              }
-              testID="Mot de passe"
-              textAlignVertical="center"
-              value=""
-            />
-            <View
-              accessibilityLabel="Afficher le mot de passe"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "maxWidth": 60,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Afficher le mot de passe"
-            >
-              <View
-                fill="#161617"
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          style={
-            {
-              "flexDirection": "row",
-              "marginBottom": 32,
-              "marginTop": 16,
-              "maxWidth": 500,
-              "width": "100%",
-            }
-          }
-        >
-          <View
-            accessibilityLabel="Mot de passe oublié ?"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": false,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "transparent",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 0,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "width": "auto",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Mot de passe oublié ?"
-          >
-            <View
-              gap={8}
-              hasIcon={true}
-              isMultiline={false}
-              style={
-                {
-                  "alignItems": "center",
-                  "columnGap": 8,
-                  "flexDirection": "row",
-                }
-              }
-            >
-              <View
-                collapsable={false}
-                jestAnimatedProps={
-                  {
-                    "value": {},
-                  }
-                }
-                jestAnimatedStyle={
-                  {
-                    "value": {},
-                  }
-                }
-                jestInlineStyle={
-                  {
-                    "flexShrink": 0,
-                  }
-                }
-                nativeID="0"
-                style={
-                  [
-                    {
-                      "flexShrink": 0,
-                    },
-                  ]
-                }
-              >
                 <View
-                  height={22}
-                  width={22}
+                  accessibilityLabel="Se connecter avec Google"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "alignSelf": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                          "width": "100%",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Se connecter avec Google"
                 >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
+                  <View
+                    fullWidth={true}
+                    gap={8}
+                    hasIcon={true}
+                    isMultiline={false}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "columnGap": 8,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    <View
+                      collapsable={false}
+                      jestAnimatedProps={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestAnimatedStyle={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestInlineStyle={
+                        {
+                          "flexShrink": 0,
+                        }
+                      }
+                      nativeID="1"
+                      style={
+                        [
+                          {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        height={22}
+                        width={22}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 22,
+                          },
+                          {
+                            "color": "#161617",
+                            "flexBasis": undefined,
+                            "flexGrow": undefined,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": undefined,
+                          },
+                        ]
+                      }
+                    >
+                      Se connecter avec Google
+                    </Text>
+                  </View>
                 </View>
               </View>
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 22,
-                    },
-                    {
-                      "color": "#161617",
-                      "flexBasis": undefined,
-                      "flexGrow": undefined,
-                      "flexShrink": 1,
-                      "maxWidth": "100%",
-                      "minWidth": 0,
-                      "textAlign": undefined,
-                    },
-                  ]
-                }
-              >
-                Mot de passe oublié ?
-              </Text>
             </View>
-          </View>
-        </View>
-        <View
-          accessibilityLabel="Se connecter"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": true,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={false}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
+            <View
+              style={
                 {
                   "alignItems": "center",
-                  "alignSelf": "center",
-                  "backgroundColor": "#f1f1f4",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderColor": "#cbcdd2",
-                  "borderStyle": "solid",
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 1,
                   "flexDirection": "row",
+                  "flexWrap": "wrap",
+                  "gap": 4,
                   "justifyContent": "center",
-                  "paddingBottom": 8,
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                  "paddingTop": 8,
-                  "width": "100%",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Se connecter"
-        >
-          <View
-            fullWidth={true}
-            gap={8}
-            hasIcon={false}
-            isMultiline={false}
-            style={
-              {
-                "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "width": "100%",
+                }
               }
-            }
-          >
-            <Text
-              style={
-                [
+            >
+              <Text
+                style={
                   {
                     "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
+                    "fontFamily": "Montserrat-Medium",
                     "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#696a6f",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
+                    "lineHeight": 25.6,
                     "textAlign": "center",
-                  },
-                ]
-              }
-            >
-              Se connecter
-            </Text>
-          </View>
-        </View>
-        <View
-          gap={4}
-          style={
-            {
-              "gap": 16,
-              "marginBottom": 40,
-              "marginTop": 16,
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "paddingHorizontal": 4,
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "backgroundColor": "#cbcdd2",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "height": 1,
-                  "width": "100%",
+                  }
                 }
-              }
-            />
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginHorizontal": 12,
-                }
-              }
-            >
-              ou
-            </Text>
-            <View
-              style={
-                {
-                  "backgroundColor": "#cbcdd2",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "height": 1,
-                  "width": "100%",
-                }
-              }
-            />
-          </View>
-          <View
-            accessibilityLabel="Se connecter avec Google"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": false,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
+              >
+                Pas de compte ?
+              </Text>
+              <View
+                style={
                   {
                     "alignItems": "center",
-                    "alignSelf": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
                     "flexDirection": "row",
-                    "justifyContent": "center",
-                    "paddingBottom": 8,
-                    "paddingLeft": 12,
-                    "paddingRight": 12,
-                    "paddingTop": 8,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Se connecter avec Google"
-          >
-            <View
-              fullWidth={true}
-              gap={8}
-              hasIcon={true}
-              isMultiline={false}
-              style={
-                {
-                  "alignItems": "center",
-                  "columnGap": 8,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "width": "100%",
-                }
-              }
-            >
-              <View
-                collapsable={false}
-                jestAnimatedProps={
-                  {
-                    "value": {},
+                    "gap": 4,
                   }
-                }
-                jestAnimatedStyle={
-                  {
-                    "value": {},
-                  }
-                }
-                jestInlineStyle={
-                  {
-                    "flexShrink": 0,
-                  }
-                }
-                nativeID="1"
-                style={
-                  [
-                    {
-                      "flexShrink": 0,
-                    },
-                  ]
                 }
               >
                 <View
-                  height={22}
-                  width={22}
+                  fill="#320096"
+                  height={20}
+                  width={20}
                 >
                   <Text>
                     undefined-SVG-Mock
                   </Text>
                 </View>
-              </View>
-              <Text
-                style={
-                  [
+                <Text
+                  accessibilityLabel="Créer un compte"
+                  accessibilityRole="button"
+                  color="#320096"
+                  onPress={[Function]}
+                  style={
                     {
-                      "color": "#161617",
+                      "color": "#320096",
+                      "cursor": "pointer",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 16,
                       "lineHeight": 22,
-                    },
-                    {
-                      "color": "#161617",
-                      "flexBasis": undefined,
-                      "flexGrow": undefined,
-                      "flexShrink": 1,
-                      "maxWidth": "100%",
-                      "minWidth": 0,
-                      "textAlign": undefined,
-                    },
-                  ]
-                }
-              >
-                Se connecter avec Google
-              </Text>
+                      "textDecorationLine": "underline",
+                    }
+                  }
+                >
+                  Créer un compte
+                </Text>
+              </View>
             </View>
           </View>
-        </View>
-      </View>
-      <View
-        style={
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "flexWrap": "wrap",
-            "gap": 4,
-            "justifyContent": "center",
-          }
-        }
-      >
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
-            }
-          }
-        >
-          Pas de compte ?
-        </Text>
-        <View
-          style={
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "gap": 4,
-            }
-          }
-        >
-          <View
-            fill="#320096"
-            height={20}
-            width={20}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <Text
-            accessibilityLabel="Créer un compte"
-            accessibilityRole="button"
-            color="#320096"
-            onPress={[Function]}
-            style={
-              {
-                "color": "#320096",
-                "cursor": "pointer",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 16,
-                "lineHeight": 22,
-                "textDecorationLine": "underline",
-              }
-            }
-          >
-            Créer un compte
-          </Text>
-        </View>
+        </RCTScrollView>
       </View>
     </View>
-  </RCTScrollView>
+  </View>
 </View>
 `;

@@ -7,7 +7,7 @@ import { BulletListItem } from 'ui/components/BulletListItem'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
-import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 
@@ -15,56 +15,59 @@ export function RecommendedPaths() {
   const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
   const groupLabel = 'Méthodes pour obtenir le crédit'
   return (
-    <SecondaryPageWithNeutralHeader
+    <PageWithHeader
       title="Parcours recommandés web"
-      enableMaxWidth={false}
-      onGoBack={goBack}>
-      <Typo.Body>
-        En complément de la mise en conformité du pass Culture au regard des critères du RGAA qui
-        reste partielle, les équipes du pass Culture se sont attachées à travailler des parcours
-        critiques pour l’utilisation de son dispositif.
-        {DOUBLE_LINE_BREAK}
-        En particulier, l’obtention du crédit pass Culture peut se faire selon trois méthodes en
-        fonction de sa situation&nbsp;:
-      </Typo.Body>
-      <Spacer.Column numberOfSpaces={5} />
-      <VerticalUl>
-        <BulletListItem
-          groupLabel={groupLabel}
-          index={0}
-          total={3}
-          text="en indiquant ses identifiants EduConnect"
-        />
-        <BulletListItem
-          groupLabel={groupLabel}
-          index={1}
-          total={3}
-          text="en présentant sa carte d’identité"
-        />
-        <BulletListItem
-          groupLabel={groupLabel}
-          index={2}
-          total={3}
-          text="en remplissant un formulaire sur "
-          accessibilityRole={AccessibilityRole.LINK}>
-          <ExternalTouchableLink
-            as={LinkInsideText}
-            typography="BodyAccentXs"
-            wording="Démarche Numérique"
-            externalNav={{ url: 'https://demarche.numerique.gouv.fr/' }}
-            accessibilityRole={AccessibilityRole.LINK}
-          />
-        </BulletListItem>
-      </VerticalUl>
-      <Spacer.Column numberOfSpaces={5} />
-      <Typo.Body>
-        Pour les utilisateurs en situation de handicap, il est recommandé d’utiliser ses
-        identifiants EduConnect ou de passer par la plateforme Démarche Numérique.
-        {LINE_BREAK}
-        Ces sites étant gérés par la Direction Interministérielle du Numérique ou par le Ministère
-        de l’Éducation Nationale de la Jeunesse et des Sports, leur niveau d’accessibilité est
-        maintenu dans le temps.
-      </Typo.Body>
-    </SecondaryPageWithNeutralHeader>
+      onGoBack={goBack}
+      scrollChildren={
+        <React.Fragment>
+          <Typo.Body>
+            En complément de la mise en conformité du pass Culture au regard des critères du RGAA
+            qui reste partielle, les équipes du pass Culture se sont attachées à travailler des
+            parcours critiques pour l’utilisation de son dispositif.
+            {DOUBLE_LINE_BREAK}
+            En particulier, l’obtention du crédit pass Culture peut se faire selon trois méthodes en
+            fonction de sa situation&nbsp;:
+          </Typo.Body>
+          <Spacer.Column numberOfSpaces={5} />
+          <VerticalUl>
+            <BulletListItem
+              groupLabel={groupLabel}
+              index={0}
+              total={3}
+              text="en indiquant ses identifiants EduConnect"
+            />
+            <BulletListItem
+              groupLabel={groupLabel}
+              index={1}
+              total={3}
+              text="en présentant sa carte d’identité"
+            />
+            <BulletListItem
+              groupLabel={groupLabel}
+              index={2}
+              total={3}
+              text="en remplissant un formulaire sur "
+              accessibilityRole={AccessibilityRole.LINK}>
+              <ExternalTouchableLink
+                as={LinkInsideText}
+                typography="BodyAccentXs"
+                wording="Démarche Numérique"
+                externalNav={{ url: 'https://demarche.numerique.gouv.fr/' }}
+                accessibilityRole={AccessibilityRole.LINK}
+              />
+            </BulletListItem>
+          </VerticalUl>
+          <Spacer.Column numberOfSpaces={5} />
+          <Typo.Body>
+            Pour les utilisateurs en situation de handicap, il est recommandé d’utiliser ses
+            identifiants EduConnect ou de passer par la plateforme Démarche Numérique.
+            {LINE_BREAK}
+            Ces sites étant gérés par la Direction Interministérielle du Numérique ou par le
+            Ministère de l’Éducation Nationale de la Jeunesse et des Sports, leur niveau
+            d’accessibilité est maintenu dans le temps.
+          </Typo.Body>
+        </React.Fragment>
+      }
+    />
   )
 }

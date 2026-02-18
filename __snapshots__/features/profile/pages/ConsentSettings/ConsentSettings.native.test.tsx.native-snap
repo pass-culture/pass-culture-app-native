@@ -172,1310 +172,395 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
       />
     </View>
   </View>
-  <RCTScrollView
-    contentContainerStyle={
+  <View
+    style={
       {
-        "alignSelf": "center",
-        "maxWidth": 500,
-        "paddingHorizontal": 24,
-        "paddingVertical": 24,
-        "width": "100%",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
       }
     }
-    enableMaxWidth={true}
-    scrollEnabled={true}
-    style={{}}
   >
-    <View>
-      <View
-        height={65}
-        style={
-          {
-            "height": 65,
-          }
-        }
-      />
-      <Text
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          }
-        }
-      >
-        L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer ton expérience de navigation.
-      </Text>
-      <Text
-        style={
-          {
-            "color": "#696a6f",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 19.2,
-            "marginBottom": 32,
-            "marginTop": 16,
-          }
-        }
-      >
-        Tu peux choisir d’accepter ou non l’activation de leur suivi.
-      </Text>
-      <Text
-        accessibilityRole="header"
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 17,
-            "lineHeight": 27.2,
-          }
-        }
-      >
-        À quoi servent tes cookies et tes données ?
-      </Text>
-      <View
-        style={
+    <View
+      onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
+      style={
+        [
           {
             "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginTop": 24,
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
+          {
+            "paddingBottom": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
+            "width": "100%",
           }
         }
       >
-        <Text
-          style={
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
             {
-              "color": "#696a6f",
-              "flexShrink": 1,
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "paddingBottom": 0,
+              "paddingHorizontal": 24,
             }
           }
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          style={{}}
         >
-          Je choisis mes cookies
-        </Text>
-        <View
-          gap={2}
-          style={
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "gap": 8,
-            }
-          }
-        >
-          <Text
-            htmlFor="testUuidV4"
-            id="testUuidV4"
-            style={
-              [
+          <View>
+            <View
+              style={
+                {
+                  "height": 65,
+                }
+              }
+            />
+            <Text
+              style={
                 {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 16,
                   "lineHeight": 25.6,
-                },
+                }
+              }
+            >
+              L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer ton expérience de navigation.
+            </Text>
+            <Text
+              style={
                 {
                   "color": "#696a6f",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
-                },
-              ]
-            }
-          >
-            Tout accepter
-          </Text>
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              accessibilityLabel="Tout accepter - Interrupteur à bascule - non coché"
-              accessibilityRole="switch"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": false,
-                  "disabled": false,
-                  "expanded": undefined,
-                  "selected": undefined,
+                  "marginBottom": 32,
+                  "marginTop": 16,
                 }
               }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Tout accepter - Interrupteur à bascule - non coché"
             >
-              <View
-                active={false}
-                style={
-                  {
-                    "backgroundColor": "#696a6f",
-                    "borderBottomLeftRadius": 32,
-                    "borderBottomRightRadius": 32,
-                    "borderTopLeftRadius": 32,
-                    "borderTopRightRadius": 32,
-                    "height": 36,
-                    "justifyContent": "center",
-                    "width": 64,
-                  }
-                }
-                toggleSize={32}
-              >
-                <View
-                  disabled={false}
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "aspectRatio": 1,
-                        "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 32,
-                        "borderBottomRightRadius": 32,
-                        "borderTopLeftRadius": 32,
-                        "borderTopRightRadius": 32,
-                        "height": 32,
-                        "justifyContent": "center",
-                        "width": 32,
-                      },
-                      {
-                        "transform": [
-                          {
-                            "translateX": 2,
-                          },
-                        ],
-                      },
-                    ]
-                  }
-                  toggleSize={32}
-                />
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          }
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "marginRight": 8,
-                "paddingHorizontal": 24,
-                "paddingVertical": 24,
-              },
-              {
-                "paddingHorizontal": 0,
-                "paddingVertical": 16,
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              accessibilityLabel="Personnaliser ta navigation - Interrupteur à bascule - non coché"
-              accessibilityRole="switch"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": false,
-                  "disabled": false,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Personnaliser ta navigation - Interrupteur à bascule - non coché"
-            >
-              <View
-                active={false}
-                style={
-                  {
-                    "backgroundColor": "#696a6f",
-                    "borderBottomLeftRadius": 32,
-                    "borderBottomRightRadius": 32,
-                    "borderTopLeftRadius": 32,
-                    "borderTopRightRadius": 32,
-                    "height": 36,
-                    "justifyContent": "center",
-                    "width": 64,
-                  }
-                }
-                toggleSize={32}
-              >
-                <View
-                  disabled={false}
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "aspectRatio": 1,
-                        "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 32,
-                        "borderBottomRightRadius": 32,
-                        "borderTopLeftRadius": 32,
-                        "borderTopRightRadius": 32,
-                        "height": 32,
-                        "justifyContent": "center",
-                        "width": 32,
-                      },
-                      {
-                        "transform": [
-                          {
-                            "translateX": 2,
-                          },
-                        ],
-                      },
-                    ]
-                  }
-                  toggleSize={32}
-                />
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          accessibilityLabel="Personnaliser ta navigation - Accordéon - Développer l’accordéon"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": false,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Personnaliser ta navigation - Accordéon - Développer l’accordéon"
-        >
-          <View
-            nativeID="testUuidV4"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "paddingHorizontal": 24,
-                  "paddingVertical": 24,
-                },
-                {
-                  "paddingHorizontal": 0,
-                  "paddingVertical": 16,
-                },
-              ]
-            }
-          >
+              Tu peux choisir d’accepter ou non l’activation de leur suivi.
+            </Text>
             <Text
               accessibilityRole="header"
               style={
                 {
                   "color": "#161617",
-                  "flexShrink": 1,
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
                 }
               }
             >
+              À quoi servent tes cookies et tes données ?
+            </Text>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "marginTop": 24,
+                }
+              }
+            >
               <Text
                 style={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
+                    "color": "#696a6f",
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
                   }
                 }
               >
-                Personnaliser ta navigation
+                Je choisis mes cookies
               </Text>
-            </Text>
-            <View
-              style={
-                [
-                  {
-                    "marginLeft": 8,
-                  },
-                  {
-                    "transform": [
-                      {
-                        "rotateZ": "1.5707963267948966rad",
-                      },
-                    ],
-                  },
-                ]
-              }
-              testID="accordionArrow"
-            >
               <View
-                height={20}
-                width={20}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          [
-            {
-              "overflow": "hidden",
-            },
-            {
-              "height": 0,
-            },
-          ]
-        }
-        testID="accordionBody"
-      >
-        <View
-          accessibilityLabelledBy="testUuidV4"
-          hidden={true}
-          nativeID="testUuidV4"
-          onLayout={[Function]}
-          style={
-            [
-              {
-                "bottom": 0,
-                "display": "none",
-                "paddingBottom": 24,
-                "paddingHorizontal": 24,
-                "paddingTop": 0,
-                "position": "absolute",
-                "width": "100%",
-              },
-              {
-                "paddingBottom": 16,
-                "paddingHorizontal": 0,
-              },
-            ]
-          }
-          testID="accordionBodyContainer"
-        >
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            Ces cookies nous permettent, en fonction de ta navigation, de te proposer des contenus supposés pertinents et susceptibles de t’intéresser.
-          </Text>
-          <View
-            numberOfSpaces={4}
-            style={
-              {
-                "height": 16,
-              }
-            }
-          />
-          <View>
-            <View
-              style={
-                {
-                  "position": "absolute",
-                }
-              }
-            >
-              <View
-                fill="#6123df"
-                height={16}
-                width={16}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                {
-                  "color": "#696a6f",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                }
-              }
-            >
-              <View
+                gap={2}
                 style={
                   {
-                    "width": 20,
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 8,
                   }
                 }
-              />
-              Sans ces cookies, nous ne pourrons pas te proposer des recommandations adaptées.
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "width": "100%",
-          }
-        }
-      />
-      <View
-        style={
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          }
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "marginRight": 8,
-                "paddingHorizontal": 24,
-                "paddingVertical": 24,
-              },
-              {
-                "paddingHorizontal": 0,
-                "paddingVertical": 16,
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              accessibilityLabel="Enregistrer des statistiques de navigation - Interrupteur à bascule - non coché"
-              accessibilityRole="switch"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": false,
-                  "disabled": false,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Enregistrer des statistiques de navigation - Interrupteur à bascule - non coché"
-            >
-              <View
-                active={false}
-                style={
-                  {
-                    "backgroundColor": "#696a6f",
-                    "borderBottomLeftRadius": 32,
-                    "borderBottomRightRadius": 32,
-                    "borderTopLeftRadius": 32,
-                    "borderTopRightRadius": 32,
-                    "height": 36,
-                    "justifyContent": "center",
-                    "width": 64,
-                  }
-                }
-                toggleSize={32}
               >
-                <View
-                  disabled={false}
+                <Text
+                  htmlFor="testUuidV4"
+                  id="testUuidV4"
                   style={
                     [
                       {
-                        "alignItems": "center",
-                        "aspectRatio": 1,
-                        "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 32,
-                        "borderBottomRightRadius": 32,
-                        "borderTopLeftRadius": 32,
-                        "borderTopRightRadius": 32,
-                        "height": 32,
-                        "justifyContent": "center",
-                        "width": 32,
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                       {
-                        "transform": [
-                          {
-                            "translateX": 2,
-                          },
-                        ],
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
                       },
                     ]
                   }
-                  toggleSize={32}
-                />
+                >
+                  Tout accepter
+                </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Tout accepter - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Tout accepter - Interrupteur à bascule - non coché"
+                  >
+                    <View
+                      active={false}
+                      style={
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
+                          "justifyContent": "center",
+                          "width": 64,
+                        }
+                      }
+                      toggleSize={32}
+                    >
+                      <View
+                        disabled={false}
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "aspectRatio": 1,
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
+                              "height": 32,
+                              "justifyContent": "center",
+                              "width": 32,
+                            },
+                            {
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
+                            },
+                          ]
+                        }
+                        toggleSize={32}
+                      />
+                    </View>
+                  </View>
+                </View>
               </View>
             </View>
-          </View>
-        </View>
-        <View
-          accessibilityLabel="Enregistrer des statistiques de navigation - Accordéon - Développer l’accordéon"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": false,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Enregistrer des statistiques de navigation - Accordéon - Développer l’accordéon"
-        >
-          <View
-            nativeID="testUuidV4"
-            style={
-              [
+            <View
+              style={
                 {
                   "alignItems": "center",
                   "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "paddingHorizontal": 24,
-                  "paddingVertical": 24,
-                },
-                {
-                  "paddingHorizontal": 0,
-                  "paddingVertical": 16,
-                },
-              ]
-            }
-          >
-            <Text
-              accessibilityRole="header"
-              style={
-                {
-                  "color": "#161617",
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                }
-              }
-            >
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Enregistrer des statistiques de navigation
-              </Text>
-            </Text>
-            <View
-              style={
-                [
-                  {
-                    "marginLeft": 8,
-                  },
-                  {
-                    "transform": [
-                      {
-                        "rotateZ": "1.5707963267948966rad",
-                      },
-                    ],
-                  },
-                ]
-              }
-              testID="accordionArrow"
-            >
-              <View
-                height={20}
-                width={20}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          [
-            {
-              "overflow": "hidden",
-            },
-            {
-              "height": 0,
-            },
-          ]
-        }
-        testID="accordionBody"
-      >
-        <View
-          accessibilityLabelledBy="testUuidV4"
-          hidden={true}
-          nativeID="testUuidV4"
-          onLayout={[Function]}
-          style={
-            [
-              {
-                "bottom": 0,
-                "display": "none",
-                "paddingBottom": 24,
-                "paddingHorizontal": 24,
-                "paddingTop": 0,
-                "position": "absolute",
-                "width": "100%",
-              },
-              {
-                "paddingBottom": 16,
-                "paddingHorizontal": 0,
-              },
-            ]
-          }
-          testID="accordionBodyContainer"
-        >
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir des tendances et ainsi améliorer les résultats qui te sont proposés.
-          </Text>
-          <View
-            numberOfSpaces={4}
-            style={
-              {
-                "height": 16,
-              }
-            }
-          />
-          <View>
-            <View
-              style={
-                {
-                  "position": "absolute",
-                }
-              }
-            >
-              <View
-                fill="#6123df"
-                height={16}
-                width={16}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                {
-                  "color": "#696a6f",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
                 }
               }
             >
               <View
                 style={
-                  {
-                    "width": 20,
-                  }
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "marginRight": 8,
+                      "paddingHorizontal": 24,
+                      "paddingVertical": 24,
+                    },
+                    {
+                      "paddingHorizontal": 0,
+                      "paddingVertical": 16,
+                    },
+                  ]
                 }
-              />
-              Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs.
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "width": "100%",
-          }
-        }
-      />
-      <View
-        style={
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          }
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "marginRight": 8,
-                "paddingHorizontal": 24,
-                "paddingVertical": 24,
-              },
-              {
-                "paddingHorizontal": 0,
-                "paddingVertical": 16,
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              accessibilityLabel="Mesurer l’efficacité de nos publicités - Interrupteur à bascule - non coché"
-              accessibilityRole="switch"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": false,
-                  "disabled": false,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Mesurer l’efficacité de nos publicités - Interrupteur à bascule - non coché"
-            >
-              <View
-                active={false}
-                style={
-                  {
-                    "backgroundColor": "#696a6f",
-                    "borderBottomLeftRadius": 32,
-                    "borderBottomRightRadius": 32,
-                    "borderTopLeftRadius": 32,
-                    "borderTopRightRadius": 32,
-                    "height": 36,
-                    "justifyContent": "center",
-                    "width": 64,
-                  }
-                }
-                toggleSize={32}
               >
                 <View
-                  disabled={false}
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "aspectRatio": 1,
-                        "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 32,
-                        "borderBottomRightRadius": 32,
-                        "borderTopLeftRadius": 32,
-                        "borderTopRightRadius": 32,
-                        "height": 32,
-                        "justifyContent": "center",
-                        "width": 32,
-                      },
-                      {
-                        "transform": [
-                          {
-                            "translateX": 2,
-                          },
-                        ],
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
-                  toggleSize={32}
-                />
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          accessibilityLabel="Mesurer l’efficacité de nos publicités - Accordéon - Développer l’accordéon"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": false,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Mesurer l’efficacité de nos publicités - Accordéon - Développer l’accordéon"
-        >
-          <View
-            nativeID="testUuidV4"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "paddingHorizontal": 24,
-                  "paddingVertical": 24,
-                },
-                {
-                  "paddingHorizontal": 0,
-                  "paddingVertical": 16,
-                },
-              ]
-            }
-          >
-            <Text
-              accessibilityRole="header"
-              style={
-                {
-                  "color": "#161617",
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                }
-              }
-            >
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Mesurer l’efficacité de nos publicités
-              </Text>
-            </Text>
-            <View
-              style={
-                [
-                  {
-                    "marginLeft": 8,
-                  },
-                  {
-                    "transform": [
+                >
+                  <View
+                    accessibilityLabel="Personnaliser ta navigation - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
+                    accessibilityState={
                       {
-                        "rotateZ": "1.5707963267948966rad",
-                      },
-                    ],
-                  },
-                ]
-              }
-              testID="accordionArrow"
-            >
-              <View
-                height={20}
-                width={20}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Personnaliser ta navigation - Interrupteur à bascule - non coché"
+                  >
+                    <View
+                      active={false}
+                      style={
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
+                          "justifyContent": "center",
+                          "width": 64,
+                        }
+                      }
+                      toggleSize={32}
+                    >
+                      <View
+                        disabled={false}
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "aspectRatio": 1,
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
+                              "height": 32,
+                              "justifyContent": "center",
+                              "width": 32,
+                            },
+                            {
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
+                            },
+                          ]
+                        }
+                        toggleSize={32}
+                      />
+                    </View>
+                  </View>
+                </View>
               </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          [
-            {
-              "overflow": "hidden",
-            },
-            {
-              "height": 0,
-            },
-          ]
-        }
-        testID="accordionBody"
-      >
-        <View
-          accessibilityLabelledBy="testUuidV4"
-          hidden={true}
-          nativeID="testUuidV4"
-          onLayout={[Function]}
-          style={
-            [
-              {
-                "bottom": 0,
-                "display": "none",
-                "paddingBottom": 24,
-                "paddingHorizontal": 24,
-                "paddingTop": 0,
-                "position": "absolute",
-                "width": "100%",
-              },
-              {
-                "paddingBottom": 16,
-                "paddingHorizontal": 0,
-              },
-            ]
-          }
-          testID="accordionBodyContainer"
-        >
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            Tu ne verras pas de publicité de tiers sur notre site ou sur notre application.
-          </Text>
-          <View
-            numberOfSpaces={4}
-            style={
-              {
-                "height": 16,
-              }
-            }
-          />
-          <View>
-            <View
-              style={
-                {
-                  "position": "absolute",
-                }
-              }
-            >
               <View
-                fill="#6123df"
-                height={16}
-                width={16}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                {
-                  "color": "#696a6f",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "width": 20,
-                  }
-                }
-              />
-              En revanche, nous faisons de la publicité sur les réseaux sociaux pour faire connaître le pass Culture auprès du plus grand nombre. Grâce à ces cookies, nous pourrons en estimer l’efficacité.
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "width": "100%",
-          }
-        }
-      />
-      <View
-        onLayout={[Function]}
-      >
-        <View
-          style={
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            }
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "marginRight": 8,
-                  "paddingHorizontal": 24,
-                  "paddingVertical": 24,
-                },
-                {
-                  "paddingHorizontal": 0,
-                  "paddingVertical": 16,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                }
-              }
-            >
-              <View
-                accessibilityLabel="Lire les contenus vidéos - Interrupteur à bascule - non coché"
-                accessibilityRole="switch"
+                accessibilityLabel="Personnaliser ta navigation - Accordéon - Développer l’accordéon"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
-                    "checked": false,
-                    "disabled": false,
-                    "expanded": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": false,
                     "selected": undefined,
                   }
                 }
@@ -1498,140 +583,131 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   [
-                    {
-                      "userSelect": "auto",
-                    },
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
                     {
                       "opacity": 1,
                     },
                   ]
                 }
-                testID="Lire les contenus vidéos - Interrupteur à bascule - non coché"
+                testID="Personnaliser ta navigation - Accordéon - Développer l’accordéon"
               >
                 <View
-                  active={false}
+                  nativeID="testUuidV4"
                   style={
-                    {
-                      "backgroundColor": "#696a6f",
-                      "borderBottomLeftRadius": 32,
-                      "borderBottomRightRadius": 32,
-                      "borderTopLeftRadius": 32,
-                      "borderTopRightRadius": 32,
-                      "height": 36,
-                      "justifyContent": "center",
-                      "width": 64,
-                    }
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "paddingHorizontal": 24,
+                        "paddingVertical": 24,
+                      },
+                      {
+                        "paddingHorizontal": 0,
+                        "paddingVertical": 16,
+                      },
+                    ]
                   }
-                  toggleSize={32}
                 >
+                  <Text
+                    accessibilityRole="header"
+                    style={
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 17,
+                        "lineHeight": 27.2,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
+                      }
+                    >
+                      Personnaliser ta navigation
+                    </Text>
+                  </Text>
                   <View
-                    disabled={false}
                     style={
                       [
                         {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 32,
-                          "borderBottomRightRadius": 32,
-                          "borderTopLeftRadius": 32,
-                          "borderTopRightRadius": 32,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 32,
+                          "marginLeft": 8,
                         },
                         {
                           "transform": [
                             {
-                              "translateX": 2,
+                              "rotateZ": "1.5707963267948966rad",
                             },
                           ],
                         },
                       ]
                     }
-                    toggleSize={32}
-                  />
+                    testID="accordionArrow"
+                  >
+                    <View
+                      height={20}
+                      width={20}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
                 </View>
               </View>
             </View>
-          </View>
-          <View
-            accessibilityLabel="Lire les contenus vidéos - Accordéon - Développer l’accordéon"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": false,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Lire les contenus vidéos - Accordéon - Développer l’accordéon"
-          >
             <View
-              nativeID="testUuidV4"
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "paddingHorizontal": 24,
-                    "paddingVertical": 24,
+                    "overflow": "hidden",
                   },
                   {
-                    "paddingHorizontal": 0,
-                    "paddingVertical": 16,
+                    "height": 0,
                   },
                 ]
               }
+              testID="accordionBody"
             >
-              <Text
-                accessibilityRole="header"
+              <View
+                accessibilityLabelledBy="testUuidV4"
+                hidden={true}
+                nativeID="testUuidV4"
+                onLayout={[Function]}
                 style={
-                  {
-                    "color": "#161617",
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 17,
-                    "lineHeight": 27.2,
-                  }
+                  [
+                    {
+                      "bottom": 0,
+                      "display": "none",
+                      "paddingBottom": 24,
+                      "paddingHorizontal": 24,
+                      "paddingTop": 0,
+                      "position": "absolute",
+                      "width": "100%",
+                    },
+                    {
+                      "paddingBottom": 16,
+                      "paddingHorizontal": 0,
+                    },
+                  ]
                 }
+                testID="accordionBodyContainer"
               >
                 <Text
                   style={
@@ -1643,75 +719,1453 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                     }
                   }
                 >
-                  Lire les contenus vidéos
+                  Ces cookies nous permettent, en fonction de ta navigation, de te proposer des contenus supposés pertinents et susceptibles de t’intéresser.
                 </Text>
-              </Text>
+                <View
+                  numberOfSpaces={4}
+                  style={
+                    {
+                      "height": 16,
+                    }
+                  }
+                />
+                <View>
+                  <View
+                    style={
+                      {
+                        "position": "absolute",
+                      }
+                    }
+                  >
+                    <View
+                      fill="#6123df"
+                      height={16}
+                      width={16}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    style={
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "width": 20,
+                        }
+                      }
+                    />
+                    Sans ces cookies, nous ne pourrons pas te proposer des recommandations adaptées.
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
+                  "width": "100%",
+                }
+              }
+            />
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
+              }
+            >
               <View
                 style={
                   [
                     {
-                      "marginLeft": 8,
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "marginRight": 8,
+                      "paddingHorizontal": 24,
+                      "paddingVertical": 24,
                     },
                     {
-                      "transform": [
-                        {
-                          "rotateZ": "1.5707963267948966rad",
-                        },
-                      ],
+                      "paddingHorizontal": 0,
+                      "paddingVertical": 16,
                     },
                   ]
                 }
-                testID="accordionArrow"
               >
                 <View
-                  height={20}
-                  width={20}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Enregistrer des statistiques de navigation - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Enregistrer des statistiques de navigation - Interrupteur à bascule - non coché"
+                  >
+                    <View
+                      active={false}
+                      style={
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
+                          "justifyContent": "center",
+                          "width": 64,
+                        }
+                      }
+                      toggleSize={32}
+                    >
+                      <View
+                        disabled={false}
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "aspectRatio": 1,
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
+                              "height": 32,
+                              "justifyContent": "center",
+                              "width": 32,
+                            },
+                            {
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
+                            },
+                          ]
+                        }
+                        toggleSize={32}
+                      />
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                accessibilityLabel="Enregistrer des statistiques de navigation - Accordéon - Développer l’accordéon"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": false,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Enregistrer des statistiques de navigation - Accordéon - Développer l’accordéon"
+              >
+                <View
+                  nativeID="testUuidV4"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "paddingHorizontal": 24,
+                        "paddingVertical": 24,
+                      },
+                      {
+                        "paddingHorizontal": 0,
+                        "paddingVertical": 16,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessibilityRole="header"
+                    style={
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 17,
+                        "lineHeight": 27.2,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
+                      }
+                    >
+                      Enregistrer des statistiques de navigation
+                    </Text>
+                  </Text>
+                  <View
+                    style={
+                      [
+                        {
+                          "marginLeft": 8,
+                        },
+                        {
+                          "transform": [
+                            {
+                              "rotateZ": "1.5707963267948966rad",
+                            },
+                          ],
+                        },
+                      ]
+                    }
+                    testID="accordionArrow"
+                  >
+                    <View
+                      height={20}
+                      width={20}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": 0,
+                  },
+                ]
+              }
+              testID="accordionBody"
+            >
+              <View
+                accessibilityLabelledBy="testUuidV4"
+                hidden={true}
+                nativeID="testUuidV4"
+                onLayout={[Function]}
+                style={
+                  [
+                    {
+                      "bottom": 0,
+                      "display": "none",
+                      "paddingBottom": 24,
+                      "paddingHorizontal": 24,
+                      "paddingTop": 0,
+                      "position": "absolute",
+                      "width": "100%",
+                    },
+                    {
+                      "paddingBottom": 16,
+                      "paddingHorizontal": 0,
+                    },
+                  ]
+                }
+                testID="accordionBodyContainer"
+              >
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir des tendances et ainsi améliorer les résultats qui te sont proposés.
+                </Text>
+                <View
+                  numberOfSpaces={4}
+                  style={
+                    {
+                      "height": 16,
+                    }
+                  }
+                />
+                <View>
+                  <View
+                    style={
+                      {
+                        "position": "absolute",
+                      }
+                    }
+                  >
+                    <View
+                      fill="#6123df"
+                      height={16}
+                      width={16}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    style={
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "width": 20,
+                        }
+                      }
+                    />
+                    Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs.
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
+                  "width": "100%",
+                }
+              }
+            />
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "marginRight": 8,
+                      "paddingHorizontal": 24,
+                      "paddingVertical": 24,
+                    },
+                    {
+                      "paddingHorizontal": 0,
+                      "paddingVertical": 16,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Mesurer l’efficacité de nos publicités - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Mesurer l’efficacité de nos publicités - Interrupteur à bascule - non coché"
+                  >
+                    <View
+                      active={false}
+                      style={
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
+                          "justifyContent": "center",
+                          "width": 64,
+                        }
+                      }
+                      toggleSize={32}
+                    >
+                      <View
+                        disabled={false}
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "aspectRatio": 1,
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
+                              "height": 32,
+                              "justifyContent": "center",
+                              "width": 32,
+                            },
+                            {
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
+                            },
+                          ]
+                        }
+                        toggleSize={32}
+                      />
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                accessibilityLabel="Mesurer l’efficacité de nos publicités - Accordéon - Développer l’accordéon"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": false,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Mesurer l’efficacité de nos publicités - Accordéon - Développer l’accordéon"
+              >
+                <View
+                  nativeID="testUuidV4"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "paddingHorizontal": 24,
+                        "paddingVertical": 24,
+                      },
+                      {
+                        "paddingHorizontal": 0,
+                        "paddingVertical": 16,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessibilityRole="header"
+                    style={
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 17,
+                        "lineHeight": 27.2,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
+                      }
+                    >
+                      Mesurer l’efficacité de nos publicités
+                    </Text>
+                  </Text>
+                  <View
+                    style={
+                      [
+                        {
+                          "marginLeft": 8,
+                        },
+                        {
+                          "transform": [
+                            {
+                              "rotateZ": "1.5707963267948966rad",
+                            },
+                          ],
+                        },
+                      ]
+                    }
+                    testID="accordionArrow"
+                  >
+                    <View
+                      height={20}
+                      width={20}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": 0,
+                  },
+                ]
+              }
+              testID="accordionBody"
+            >
+              <View
+                accessibilityLabelledBy="testUuidV4"
+                hidden={true}
+                nativeID="testUuidV4"
+                onLayout={[Function]}
+                style={
+                  [
+                    {
+                      "bottom": 0,
+                      "display": "none",
+                      "paddingBottom": 24,
+                      "paddingHorizontal": 24,
+                      "paddingTop": 0,
+                      "position": "absolute",
+                      "width": "100%",
+                    },
+                    {
+                      "paddingBottom": 16,
+                      "paddingHorizontal": 0,
+                    },
+                  ]
+                }
+                testID="accordionBodyContainer"
+              >
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  Tu ne verras pas de publicité de tiers sur notre site ou sur notre application.
+                </Text>
+                <View
+                  numberOfSpaces={4}
+                  style={
+                    {
+                      "height": 16,
+                    }
+                  }
+                />
+                <View>
+                  <View
+                    style={
+                      {
+                        "position": "absolute",
+                      }
+                    }
+                  >
+                    <View
+                      fill="#6123df"
+                      height={16}
+                      width={16}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    style={
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "width": 20,
+                        }
+                      }
+                    />
+                    En revanche, nous faisons de la publicité sur les réseaux sociaux pour faire connaître le pass Culture auprès du plus grand nombre. Grâce à ces cookies, nous pourrons en estimer l’efficacité.
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
+                  "width": "100%",
+                }
+              }
+            />
+            <View
+              onLayout={[Function]}
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "marginRight": 8,
+                        "paddingHorizontal": 24,
+                        "paddingVertical": 24,
+                      },
+                      {
+                        "paddingHorizontal": 0,
+                        "paddingVertical": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <View
+                      accessibilityLabel="Lire les contenus vidéos - Interrupteur à bascule - non coché"
+                      accessibilityRole="switch"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": false,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Lire les contenus vidéos - Interrupteur à bascule - non coché"
+                    >
+                      <View
+                        active={false}
+                        style={
+                          {
+                            "backgroundColor": "#696a6f",
+                            "borderBottomLeftRadius": 32,
+                            "borderBottomRightRadius": 32,
+                            "borderTopLeftRadius": 32,
+                            "borderTopRightRadius": 32,
+                            "height": 36,
+                            "justifyContent": "center",
+                            "width": 64,
+                          }
+                        }
+                        toggleSize={32}
+                      >
+                        <View
+                          disabled={false}
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "aspectRatio": 1,
+                                "backgroundColor": "#ffffff",
+                                "borderBottomLeftRadius": 32,
+                                "borderBottomRightRadius": 32,
+                                "borderTopLeftRadius": 32,
+                                "borderTopRightRadius": 32,
+                                "height": 32,
+                                "justifyContent": "center",
+                                "width": 32,
+                              },
+                              {
+                                "transform": [
+                                  {
+                                    "translateX": 2,
+                                  },
+                                ],
+                              },
+                            ]
+                          }
+                          toggleSize={32}
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Lire les contenus vidéos - Accordéon - Développer l’accordéon"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": false,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Lire les contenus vidéos - Accordéon - Développer l’accordéon"
+                >
+                  <View
+                    nativeID="testUuidV4"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "paddingHorizontal": 24,
+                          "paddingVertical": 24,
+                        },
+                        {
+                          "paddingHorizontal": 0,
+                          "paddingVertical": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessibilityRole="header"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 17,
+                          "lineHeight": 27.2,
+                        }
+                      }
+                    >
+                      <Text
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
+                      >
+                        Lire les contenus vidéos
+                      </Text>
+                    </Text>
+                    <View
+                      style={
+                        [
+                          {
+                            "marginLeft": 8,
+                          },
+                          {
+                            "transform": [
+                              {
+                                "rotateZ": "1.5707963267948966rad",
+                              },
+                            ],
+                          },
+                        ]
+                      }
+                      testID="accordionArrow"
+                    >
+                      <View
+                        height={20}
+                        width={20}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "overflow": "hidden",
+                    },
+                    {
+                      "height": 0,
+                    },
+                  ]
+                }
+                testID="accordionBody"
+              >
+                <View
+                  accessibilityLabelledBy="testUuidV4"
+                  hidden={true}
+                  nativeID="testUuidV4"
+                  onLayout={[Function]}
+                  style={
+                    [
+                      {
+                        "bottom": 0,
+                        "display": "none",
+                        "paddingBottom": 24,
+                        "paddingHorizontal": 24,
+                        "paddingTop": 0,
+                        "position": "absolute",
+                        "width": "100%",
+                      },
+                      {
+                        "paddingBottom": 16,
+                        "paddingHorizontal": 0,
+                      },
+                    ]
+                  }
+                  testID="accordionBodyContainer"
+                >
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    Ces cookies sont nécessaires pour afficher les vidéos YouTube intégrées dans l’application.
+
+Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de collecter des statistiques d’utilisation et de personnaliser ton expérience.
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "width": "100%",
+                  }
+                }
+              />
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "marginRight": 8,
+                      "paddingHorizontal": 24,
+                      "paddingVertical": 24,
+                    },
+                    {
+                      "paddingHorizontal": 0,
+                      "paddingVertical": 16,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Assurer la sécurité, prévenir la fraude et corriger les bugs - Interrupteur à bascule - coché"
+                    accessibilityRole="switch"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": true,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={false}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Assurer la sécurité, prévenir la fraude et corriger les bugs - Interrupteur à bascule - coché"
+                  >
+                    <View
+                      active={true}
+                      style={
+                        {
+                          "backgroundColor": "#15884f",
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
+                          "justifyContent": "center",
+                          "width": 64,
+                        }
+                      }
+                      toggleSize={32}
+                    >
+                      <View
+                        disabled={true}
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "aspectRatio": 1,
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
+                              "height": 32,
+                              "justifyContent": "center",
+                              "width": 32,
+                            },
+                            {
+                              "transform": [
+                                {
+                                  "translateX": 30,
+                                },
+                              ],
+                            },
+                          ]
+                        }
+                        toggleSize={32}
+                      >
+                        <View
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                accessibilityLabel="Assurer la sécurité, prévenir la fraude et corriger les bugs - Accordéon - Développer l’accordéon"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": false,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Assurer la sécurité, prévenir la fraude et corriger les bugs - Accordéon - Développer l’accordéon"
+              >
+                <View
+                  nativeID="testUuidV4"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "paddingHorizontal": 24,
+                        "paddingVertical": 24,
+                      },
+                      {
+                        "paddingHorizontal": 0,
+                        "paddingVertical": 16,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessibilityRole="header"
+                    style={
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 17,
+                        "lineHeight": 27.2,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
+                      }
+                    >
+                      Assurer la sécurité, prévenir la fraude et corriger les bugs
+                    </Text>
+                  </Text>
+                  <View
+                    style={
+                      [
+                        {
+                          "marginLeft": 8,
+                        },
+                        {
+                          "transform": [
+                            {
+                              "rotateZ": "1.5707963267948966rad",
+                            },
+                          ],
+                        },
+                      ]
+                    }
+                    testID="accordionArrow"
+                  >
+                    <View
+                      height={20}
+                      width={20}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": 0,
+                  },
+                ]
+              }
+              testID="accordionBody"
+            >
+              <View
+                accessibilityLabelledBy="testUuidV4"
+                hidden={true}
+                nativeID="testUuidV4"
+                onLayout={[Function]}
+                style={
+                  [
+                    {
+                      "bottom": 0,
+                      "display": "none",
+                      "paddingBottom": 24,
+                      "paddingHorizontal": 24,
+                      "paddingTop": 0,
+                      "position": "absolute",
+                      "width": "100%",
+                    },
+                    {
+                      "paddingBottom": 16,
+                      "paddingHorizontal": 0,
+                    },
+                  ]
+                }
+                testID="accordionBodyContainer"
+              >
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  Nous enregistrons par exemple ton consentement ou non aux autres cookies pour ne pas te le redemander. Ils te permettent aussi de rester connecté et d’assurer la sécurité de l’application.
+                </Text>
+              </View>
+            </View>
+            <View>
+              <View
+                style={
+                  {
+                    "position": "absolute",
+                  }
+                }
+              >
+                <View
+                  fill="#6123df"
+                  height={16}
+                  width={16}
                 >
                   <Text>
                     undefined-SVG-Mock
                   </Text>
                 </View>
               </View>
+              <Text
+                style={
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "width": 20,
+                    }
+                  }
+                />
+                Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture.
+              </Text>
             </View>
-          </View>
-        </View>
-        <View
-          style={
-            [
-              {
-                "overflow": "hidden",
-              },
-              {
-                "height": 0,
-              },
-            ]
-          }
-          testID="accordionBody"
-        >
-          <View
-            accessibilityLabelledBy="testUuidV4"
-            hidden={true}
-            nativeID="testUuidV4"
-            onLayout={[Function]}
-            style={
-              [
+            <View
+              numberOfSpaces={4}
+              style={
                 {
-                  "bottom": 0,
-                  "display": "none",
-                  "paddingBottom": 24,
-                  "paddingHorizontal": 24,
-                  "paddingTop": 0,
-                  "position": "absolute",
+                  "height": 16,
+                }
+              }
+            />
+            <View
+              style={
+                {
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
                   "width": "100%",
-                },
+                }
+              }
+            />
+            <Text
+              accessibilityRole="header"
+              style={
                 {
-                  "paddingBottom": 16,
-                  "paddingHorizontal": 0,
-                },
-              ]
-            }
-            testID="accordionBodyContainer"
-          >
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                  "marginVertical": 16,
+                }
+              }
+            >
+              Tu as la main dessus
+            </Text>
+            <Text
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "marginBottom": 16,
+                }
+              }
+            >
+              Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.
+            </Text>
             <Text
               style={
                 {
@@ -1722,64 +2176,48 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 }
               }
             >
-              Ces cookies sont nécessaires pour afficher les vidéos YouTube intégrées dans l’application.
-
-Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de collecter des statistiques d’utilisation et de personnaliser ton expérience.
+              On te redemandera bien sûr ton consentement si notre politique évolue.
             </Text>
-          </View>
-        </View>
-        <View
-          style={
-            {
-              "backgroundColor": "#f1f1f4",
-              "height": 1,
-              "width": "100%",
-            }
-          }
-        />
-      </View>
-      <View
-        style={
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          }
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "marginRight": 8,
-                "paddingHorizontal": 24,
-                "paddingVertical": 24,
-              },
-              {
-                "paddingHorizontal": 0,
-                "paddingVertical": 16,
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
+            <Text
+              style={
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                  "marginBottom": 32,
+                  "marginTop": 16,
+                }
               }
-            }
-          >
+            >
+              Pour plus d’informations, nous t’invitons à consulter notre 
+               
+              <Text
+                accessibilityLabel="politique de gestion des cookies, lien externe"
+                accessibilityRole="link"
+                onPress={[Function]}
+                style={
+                  {
+                    "color": "#6123df",
+                    "cursor": "pointer",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                    "textDecorationLine": "underline",
+                  }
+                }
+              >
+                politique de gestion des cookies
+              </Text>
+            </Text>
             <View
-              accessibilityLabel="Assurer la sécurité, prévenir la fraude et corriger les bugs - Interrupteur à bascule - coché"
-              accessibilityRole="switch"
+              accessibilityLabel="Enregistrer mes choix"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
-                  "checked": true,
-                  "disabled": true,
+                  "checked": undefined,
+                  "disabled": false,
                   "expanded": undefined,
                   "selected": undefined,
                 }
@@ -1793,7 +2231,7 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
                 }
               }
               accessible={true}
-              focusable={false}
+              focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1803,468 +2241,77 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
               onStartShouldSetResponder={[Function]}
               style={
                 [
-                  {
-                    "userSelect": "auto",
-                  },
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#6123df",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#6123df",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "paddingBottom": 8,
+                      "paddingLeft": 12,
+                      "paddingRight": 12,
+                      "paddingTop": 8,
+                      "width": "auto",
+                    },
+                  ],
                   {
                     "opacity": 1,
                   },
                 ]
               }
-              testID="Assurer la sécurité, prévenir la fraude et corriger les bugs - Interrupteur à bascule - coché"
+              testID="Enregistrer mes choix"
             >
               <View
-                active={true}
+                gap={8}
+                hasIcon={false}
+                isMultiline={false}
                 style={
                   {
-                    "backgroundColor": "#15884f",
-                    "borderBottomLeftRadius": 32,
-                    "borderBottomRightRadius": 32,
-                    "borderTopLeftRadius": 32,
-                    "borderTopRightRadius": 32,
-                    "height": 36,
-                    "justifyContent": "center",
-                    "width": 64,
+                    "alignItems": "center",
+                    "columnGap": 8,
+                    "flexDirection": "row",
                   }
                 }
-                toggleSize={32}
               >
-                <View
-                  disabled={true}
+                <Text
                   style={
                     [
                       {
-                        "alignItems": "center",
-                        "aspectRatio": 1,
-                        "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 32,
-                        "borderBottomRightRadius": 32,
-                        "borderTopLeftRadius": 32,
-                        "borderTopRightRadius": 32,
-                        "height": 32,
-                        "justifyContent": "center",
-                        "width": 32,
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
                       },
                       {
-                        "transform": [
-                          {
-                            "translateX": 30,
-                          },
-                        ],
+                        "color": "#ffffff",
+                        "flexBasis": undefined,
+                        "flexGrow": undefined,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": undefined,
                       },
                     ]
                   }
-                  toggleSize={32}
                 >
-                  <View
-                    height={16}
-                    width={16}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          accessibilityLabel="Assurer la sécurité, prévenir la fraude et corriger les bugs - Accordéon - Développer l’accordéon"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": false,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Assurer la sécurité, prévenir la fraude et corriger les bugs - Accordéon - Développer l’accordéon"
-        >
-          <View
-            nativeID="testUuidV4"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "paddingHorizontal": 24,
-                  "paddingVertical": 24,
-                },
-                {
-                  "paddingHorizontal": 0,
-                  "paddingVertical": 16,
-                },
-              ]
-            }
-          >
-            <Text
-              accessibilityRole="header"
-              style={
-                {
-                  "color": "#161617",
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                }
-              }
-            >
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Assurer la sécurité, prévenir la fraude et corriger les bugs
-              </Text>
-            </Text>
-            <View
-              style={
-                [
-                  {
-                    "marginLeft": 8,
-                  },
-                  {
-                    "transform": [
-                      {
-                        "rotateZ": "1.5707963267948966rad",
-                      },
-                    ],
-                  },
-                ]
-              }
-              testID="accordionArrow"
-            >
-              <View
-                height={20}
-                width={20}
-              >
-                <Text>
-                  undefined-SVG-Mock
+                  Enregistrer mes choix
                 </Text>
               </View>
             </View>
           </View>
-        </View>
-      </View>
-      <View
-        style={
-          [
-            {
-              "overflow": "hidden",
-            },
-            {
-              "height": 0,
-            },
-          ]
-        }
-        testID="accordionBody"
-      >
-        <View
-          accessibilityLabelledBy="testUuidV4"
-          hidden={true}
-          nativeID="testUuidV4"
-          onLayout={[Function]}
-          style={
-            [
-              {
-                "bottom": 0,
-                "display": "none",
-                "paddingBottom": 24,
-                "paddingHorizontal": 24,
-                "paddingTop": 0,
-                "position": "absolute",
-                "width": "100%",
-              },
-              {
-                "paddingBottom": 16,
-                "paddingHorizontal": 0,
-              },
-            ]
-          }
-          testID="accordionBodyContainer"
-        >
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            Nous enregistrons par exemple ton consentement ou non aux autres cookies pour ne pas te le redemander. Ils te permettent aussi de rester connecté et d’assurer la sécurité de l’application.
-          </Text>
-        </View>
-      </View>
-      <View>
-        <View
-          style={
-            {
-              "position": "absolute",
-            }
-          }
-        >
-          <View
-            fill="#6123df"
-            height={16}
-            width={16}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-        </View>
-        <Text
-          style={
-            {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "width": 20,
-              }
-            }
-          />
-          Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture.
-        </Text>
-      </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          {
-            "height": 16,
-          }
-        }
-      />
-      <View
-        style={
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "width": "100%",
-          }
-        }
-      />
-      <Text
-        accessibilityRole="header"
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 17,
-            "lineHeight": 27.2,
-            "marginVertical": 16,
-          }
-        }
-      >
-        Tu as la main dessus
-      </Text>
-      <Text
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "marginBottom": 16,
-          }
-        }
-      >
-        Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.
-      </Text>
-      <Text
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          }
-        }
-      >
-        On te redemandera bien sûr ton consentement si notre politique évolue.
-      </Text>
-      <Text
-        style={
-          {
-            "color": "#696a6f",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 19.2,
-            "marginBottom": 32,
-            "marginTop": 16,
-          }
-        }
-      >
-        Pour plus d’informations, nous t’invitons à consulter notre 
-         
-        <Text
-          accessibilityLabel="politique de gestion des cookies, lien externe"
-          accessibilityRole="link"
-          onPress={[Function]}
-          style={
-            {
-              "color": "#6123df",
-              "cursor": "pointer",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-              "textDecorationLine": "underline",
-            }
-          }
-        >
-          politique de gestion des cookies
-        </Text>
-      </Text>
-      <View
-        accessibilityLabel="Enregistrer mes choix"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": false,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "backgroundColor": "#6123df",
-                "borderBottomLeftRadius": 8,
-                "borderBottomRightRadius": 8,
-                "borderColor": "#6123df",
-                "borderStyle": "solid",
-                "borderTopLeftRadius": 8,
-                "borderTopRightRadius": 8,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "paddingBottom": 8,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 8,
-                "width": "auto",
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
-        }
-        testID="Enregistrer mes choix"
-      >
-        <View
-          gap={8}
-          hasIcon={false}
-          isMultiline={false}
-          style={
-            {
-              "alignItems": "center",
-              "columnGap": 8,
-              "flexDirection": "row",
-            }
-          }
-        >
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                },
-                {
-                  "color": "#ffffff",
-                  "flexBasis": undefined,
-                  "flexGrow": undefined,
-                  "flexShrink": 1,
-                  "maxWidth": "100%",
-                  "minWidth": 0,
-                  "textAlign": undefined,
-                },
-              ]
-            }
-          >
-            Enregistrer mes choix
-          </Text>
-        </View>
+        </RCTScrollView>
       </View>
     </View>
-  </RCTScrollView>
+  </View>
 </View>
 `;

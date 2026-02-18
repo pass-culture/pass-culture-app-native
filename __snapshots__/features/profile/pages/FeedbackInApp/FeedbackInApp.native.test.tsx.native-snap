@@ -183,6 +183,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
   >
     <View
       onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
       style={
         [
           {

@@ -183,6 +183,7 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
   >
     <View
       onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
       style={
         [
           {
@@ -833,6 +834,7 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
   >
     <View
       onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
       style={
         [
           {
@@ -1483,6 +1485,7 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
   >
     <View
       onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
       style={
         [
           {

@@ -34,11 +34,10 @@ import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
-import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Key } from 'ui/svg/icons/Key'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
 type LoginFormData = {
   email: string
   password: string
@@ -205,58 +204,64 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           isVisible={isDoingReCaptchaChallenge}
         />
       ) : null}
-      <SecondaryPageWithNeutralHeader title="Connexion" shouldDisplayBackButton>
-        <TitleContainer>
-          <Typo.Title3 {...getHeadingAttrs(2)}>{titlePage}</Typo.Title3>
-        </TitleContainer>
-        <Form.MaxWidth>
-          <InputError
-            visible={!!errorMessage}
-            errorMessage={errorMessage}
-            numberOfSpacesTop={5}
-            centered
-          />
-          <Container>
-            <EmailInputController
-              label="Adresse e-mail"
-              name="email"
-              control={control}
-              requiredIndicator="explicit"
-            />
-          </Container>
-          <PasswordInputController
-            name="password"
-            control={control}
-            autocomplete="current-password"
-            onSubmitEditing={handleSubmit(onSubmit)}
-            requiredIndicator="explicit"
-          />
-          <ButtonContainer>
-            <Button
-              variant="tertiary"
-              color="neutral"
-              wording="Mot de passe oublié&nbsp;?"
-              onPress={onForgottenPasswordClick}
-              icon={Key}
-            />
-          </ButtonContainer>
-          <Button
-            fullWidth
-            wording="Se connecter"
-            onPress={handleSubmit(onSubmit)}
-            disabled={shouldDisableLoginButton}
-          />
-          {enableGoogleSSO ? (
-            <StyledViewGap gap={4}>
-              <SeparatorWithText label="ou" />
-              <SSOButtonBase type="login" onSuccess={signIn} />
-            </StyledViewGap>
-          ) : (
-            <NoSSOSpace />
-          )}
-        </Form.MaxWidth>
-        <SignUpButton type="signup" onAdditionalPress={onLogSignUpAnalytics} />
-      </SecondaryPageWithNeutralHeader>
+      <PageWithHeader
+        shouldDisplayBackButton
+        title="Connexion"
+        scrollChildren={
+          <React.Fragment>
+            <TitleContainer>
+              <Typo.Title3 {...getHeadingAttrs(2)}>{titlePage}</Typo.Title3>
+            </TitleContainer>
+            <Form.MaxWidth>
+              <InputError
+                visible={!!errorMessage}
+                errorMessage={errorMessage}
+                numberOfSpacesTop={5}
+                centered
+              />
+              <Container>
+                <EmailInputController
+                  label="Adresse e-mail"
+                  name="email"
+                  control={control}
+                  requiredIndicator="explicit"
+                />
+              </Container>
+              <PasswordInputController
+                name="password"
+                control={control}
+                autocomplete="current-password"
+                onSubmitEditing={handleSubmit(onSubmit)}
+                requiredIndicator="explicit"
+              />
+              <ButtonContainer>
+                <Button
+                  variant="tertiary"
+                  color="neutral"
+                  wording="Mot de passe oublié&nbsp;?"
+                  onPress={onForgottenPasswordClick}
+                  icon={Key}
+                />
+              </ButtonContainer>
+              <Button
+                fullWidth
+                wording="Se connecter"
+                onPress={handleSubmit(onSubmit)}
+                disabled={shouldDisableLoginButton}
+              />
+              {enableGoogleSSO ? (
+                <StyledViewGap gap={4}>
+                  <SeparatorWithText label="ou" />
+                  <SSOButtonBase type="login" onSuccess={signIn} />
+                </StyledViewGap>
+              ) : (
+                <NoSSOSpace />
+              )}
+            </Form.MaxWidth>
+            <SignUpButton type="signup" onAdditionalPress={onLogSignUpAnalytics} />
+          </React.Fragment>
+        }
+      />
     </React.Fragment>
   )
 })

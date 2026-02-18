@@ -172,1647 +172,1694 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
       />
     </View>
   </View>
-  <RCTScrollView
-    contentContainerStyle={
+  <View
+    style={
       {
-        "alignSelf": "center",
-        "maxWidth": "100%",
-        "paddingHorizontal": 24,
-        "paddingVertical": 24,
-        "width": "100%",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
       }
     }
-    enableMaxWidth={false}
-    scrollEnabled={true}
-    style={{}}
   >
-    <View>
-      <View
-        height={65}
-        style={
+    <View
+      onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
+      style={
+        [
           {
-            "height": 65,
-          }
-        }
-      />
-      <View
-        gap={6}
-        style={
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
           {
-            "gap": 24,
-          }
-        }
-      >
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Le pass Culture s’engage à rendre ses applications mobiles accessibles conformément à l’article 47 de la loi n° 2005-102 du 11 février 2005.
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          La présente déclaration d’accessibilité s’applique à
-           
-          <Text
-            accessibilityLabel="l’application Android, lien externe"
-            accessibilityRole="link"
-            onPress={[Function]}
-            style={
-              {
-                "color": "#6123df",
-                "cursor": "pointer",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 16,
-                "lineHeight": 22,
-                "textDecorationLine": "underline",
-              }
-            }
-          >
-            l’application Android
-          </Text>
-           
-          version 
-          1.374.0
-           du pass Culture.
-        </Text>
-      </View>
+            "paddingBottom": 0,
+          },
+        ]
+      }
+    >
       <View
         style={
           {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "marginVertical": 24,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
             "width": "100%",
           }
         }
-      />
-      <View
-        gap={6}
-        style={
-          {
-            "gap": 24,
-          }
-        }
       >
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 17,
-              "lineHeight": 27.2,
-            }
-          }
-        >
-          État de conformité
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          L’application pass Culture sur 
-          Android
-           est
-           
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            partiellement conforme
-          </Text>
-           
-          avec la norme européenne EN 301 549 v.3.2.1, la norme de référence en vigueur en France et en Europe, en raison des non-conformités énumérées dans la section « Résultats des tests ».
-        </Text>
-      </View>
-      <View
-        style={
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "marginVertical": 24,
-            "width": "100%",
-          }
-        }
-      />
-      <View
-        gap={6}
-        style={
-          {
-            "gap": 24,
-          }
-        }
-      >
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 17,
-              "lineHeight": 27.2,
-            }
-          }
-        >
-          Résultats des tests
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          L’audit de conformité réalisé le 
-          02/02/2026
-           par la société Access42 révèle que l’application est conforme à 
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            76,74%
-          </Text>
-           au Référentiel d’Accessibilité des Applications Mobiles (RAAM 1.1). Le taux de conformité moyen des pages est de 
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            95.25%
-          </Text>
-          .
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          L’application est conforme à 
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            56,25%
-          </Text>
-           à la norme européenne EN 301 549 v.3.2.1.
-        </Text>
-      </View>
-      <View
-        style={
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "marginVertical": 24,
-            "width": "100%",
-          }
-        }
-      />
-      <View
-        gap={6}
-        style={
-          {
-            "gap": 24,
-          }
-        }
-      >
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 17,
-              "lineHeight": 27.2,
-            }
-          }
-        >
-          Contenus inaccessibles
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
-        </Text>
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Non conformité
-        </Text>
-        <View
-          accessibilityRole="list"
-          style={
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
             {
               "flexDirection": "column",
-              "paddingLeft": 0,
+              "flexGrow": 1,
+              "paddingBottom": 0,
+              "paddingHorizontal": 24,
             }
           }
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          style={{}}
         >
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 1 sur 9 - Critère 3.5 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, une alternative ?"
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
+          <View>
             <View
               style={
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "height": 65,
+                }
+              }
+            />
+            <View
+              gap={6}
+              style={
+                {
+                  "gap": 24,
                 }
               }
             >
-              <View
+              <Text
                 style={
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Le pass Culture s’engage à rendre ses applications mobiles accessibles conformément à l’article 47 de la loi n° 2005-102 du 11 février 2005.
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                La présente déclaration d’accessibilité s’applique à
+                 
+                <Text
+                  accessibilityLabel="l’application Android, lien externe"
+                  accessibilityRole="link"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#6123df",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                      "textDecorationLine": "underline",
+                    }
+                  }
+                >
+                  l’application Android
+                </Text>
+                 
+                version 
+                1.374.0
+                 du pass Culture.
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
+                  "marginVertical": 24,
+                  "width": "100%",
+                }
+              }
+            />
+            <View
+              gap={6}
+              style={
+                {
+                  "gap": 24,
+                }
+              }
+            >
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 17,
+                    "lineHeight": 27.2,
+                  }
+                }
+              >
+                État de conformité
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                L’application pass Culture sur 
+                Android
+                 est
+                 
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  partiellement conforme
+                </Text>
+                 
+                avec la norme européenne EN 301 549 v.3.2.1, la norme de référence en vigueur en France et en Europe, en raison des non-conformités énumérées dans la section « Résultats des tests ».
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
+                  "marginVertical": 24,
+                  "width": "100%",
+                }
+              }
+            />
+            <View
+              gap={6}
+              style={
+                {
+                  "gap": 24,
+                }
+              }
+            >
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 17,
+                    "lineHeight": 27.2,
+                  }
+                }
+              >
+                Résultats des tests
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                L’audit de conformité réalisé le 
+                02/02/2026
+                 par la société Access42 révèle que l’application est conforme à 
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  76,74%
+                </Text>
+                 au Référentiel d’Accessibilité des Applications Mobiles (RAAM 1.1). Le taux de conformité moyen des pages est de 
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  95.25%
+                </Text>
+                .
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                L’application est conforme à 
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  56,25%
+                </Text>
+                 à la norme européenne EN 301 549 v.3.2.1.
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
+                  "marginVertical": 24,
+                  "width": "100%",
+                }
+              }
+            />
+            <View
+              gap={6}
+              style={
+                {
+                  "gap": 24,
+                }
+              }
+            >
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 17,
+                    "lineHeight": 27.2,
+                  }
+                }
+              >
+                Contenus inaccessibles
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
+              </Text>
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Non conformité
+              </Text>
+              <View
+                accessibilityRole="list"
+                style={
+                  {
+                    "flexDirection": "column",
+                    "paddingLeft": 0,
                   }
                 }
               >
                 <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
+                  accessibilityLabel="Non conformité – Liste - Élément 1 sur 9 - Critère 3.5 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, une alternative ?"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
                 >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Critère 3.5 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, une alternative ?
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 2 sur 9 - Critère 3.7 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, des sous-titres synchronisés ?"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Critère 3.7 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, des sous-titres synchronisés ?
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 3 sur 9 - Critère 3.8.a - Pour chaque média temporel synchronisé pré-enregistré ayant des sous-titres synchronisés, ceux-ci sont-ils pertinents ?"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Critère 3.8.a - Pour chaque média temporel synchronisé pré-enregistré ayant des sous-titres synchronisés, ceux-ci sont-ils pertinents ?
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 4 sur 9 - Critère 5.1.a - a) Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance ?"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Critère 5.1.a - a) Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance ?
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 5 sur 9 - Critère 5.4 - Dans chaque écran, les messages de statut sont-ils correctement restitués par les technologies d’assistance ?"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Critère 5.4 - Dans chaque écran, les messages de statut sont-ils correctement restitués par les technologies d’assistance ?
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 6 sur 9 - Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ?"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ?
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 7 sur 9 - Critère 9.11 - Pour chaque formulaire qui modifie ou supprime des données, ou qui transmet des réponses à un test ou à un examen, ou dont la validation a des conséquences financières ou juridiques, les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur ?"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Critère 9.11 - Pour chaque formulaire qui modifie ou supprime des données, ou qui transmet des réponses à un test ou à un examen, ou dont la validation a des conséquences financières ou juridiques, les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur ?
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 8 sur 9 - Critère 10.2 - Dans chaque écran, l’ordre de restitution par les technologies d’assistance est-il cohérent ?"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Critère 10.2 - Dans chaque écran, l’ordre de restitution par les technologies d’assistance est-il cohérent ?
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 9 sur 9 - Critère 11.10 - Dans chaque écran, les fonctionnalités activables au moyen d’un geste complexe sont-elles activables au moyen d’un geste simple ?"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Critère 11.10 - Dans chaque écran, les fonctionnalités activables au moyen d’un geste complexe sont-elles activables au moyen d’un geste simple ?
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Dérogations pour charge disproportionnée
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Aucune
+              </Text>
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Contenus non soumis à l’obligation d’accessibilité
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Les contenus suivants n’entrent pas dans le calcul de la conformité ni dans le périmètre des éléments à rendre accessible, ils sont dérogés :
+              </Text>
+              <View
+                accessibilityRole="list"
+                style={
+                  {
+                    "flexDirection": "column",
+                    "paddingLeft": 0,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Contenus non soumis à l’obligation d’accessibilité – Liste - Élément 1 sur 2 - Les cartes Goggle Maps (motif : service externe)"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Les cartes Goggle Maps (motif : service externe)
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Contenus non soumis à l’obligation d’accessibilité – Liste - Élément 2 sur 2 - La vérification d’identité (webview d’un prestataire externe)"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      La vérification d’identité (webview d’un prestataire externe)
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
+                  "marginVertical": 24,
+                  "width": "100%",
+                }
+              }
+            />
+            <View
+              gap={6}
+              style={
+                {
+                  "gap": 24,
+                }
+              }
+            >
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 17,
+                    "lineHeight": 27.2,
+                  }
+                }
+              >
+                Établissement de cette déclaration d’accessibilité
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat",
+                    "fontSize": 16,
+                    "fontStyle": "italic",
+                    "fontWeight": "500",
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Cette déclaration a été établie le lundi 8 décembre 2025.
+              </Text>
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Technologies utilisées pour la réalisation de l’application
+              </Text>
+              <View
+                accessibilityRole="list"
+                style={
+                  {
+                    "flexDirection": "column",
+                    "paddingLeft": 0,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Technologies utilisées pour l’application – Liste - Élément 1 sur 3 - react"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      react
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Technologies utilisées pour l’application – Liste - Élément 2 sur 3 - react-native"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      react-native
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Technologies utilisées pour l’application – Liste - Élément 3 sur 3 - react-native-web"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      react-native-web
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Agents utilisateurs, technologies d’assistance et outils utilisés pour vérifier l’accessibilité
+              </Text>
+              <View
+                accessibilityRole="list"
+                style={
+                  {
+                    "flexDirection": "column",
+                    "paddingLeft": 0,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 1 sur 3 - TalkBack (lecteur d’écran)"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      TalkBack (lecteur d’écran)
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 2 sur 3 - Switch Access (accès avec un périphérique externe)"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Switch Access (accès avec un périphérique externe)
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 3 sur 3 - Paramètres de présentation utilisateurs (taille de police etc.)"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Paramètres de présentation utilisateurs (taille de police etc.)
+                    </Text>
+                  </View>
                 </View>
               </View>
               <Text
                 style={
                   {
                     "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 16,
                     "lineHeight": 25.6,
-                    "marginLeft": 12,
                   }
                 }
               >
-                Critère 3.5 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, une alternative ?
+                L’audit a été réalisé avec la version de système d’exploitation 
+                Android
+                 : version 
+                15
               </Text>
             </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 2 sur 9 - Critère 3.7 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, des sous-titres synchronisés ?"
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
             <View
               style={
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
+                  "marginVertical": 24,
+                  "width": "100%",
+                }
+              }
+            />
+            <View
+              gap={6}
+              style={
+                {
+                  "gap": 24,
                 }
               }
             >
-              <View
+              <Text
+                accessibilityRole="header"
                 style={
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 17,
+                    "lineHeight": 27.2,
                   }
                 }
               >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
+                Retour d’information et contact
+              </Text>
               <Text
                 style={
                   {
                     "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 16,
                     "lineHeight": 25.6,
-                    "marginLeft": 12,
                   }
                 }
               >
-                Critère 3.7 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, des sous-titres synchronisés ?
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 3 sur 9 - Critère 3.8.a - Pour chaque média temporel synchronisé pré-enregistré ayant des sous-titres synchronisés, ceux-ci sont-ils pertinents ?"
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                Il est important de rappeler qu’en vertu de l’article 11 de la loi de février 2005 :
+                 
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 16,
+                      "fontStyle": "italic",
+                      "fontWeight": "500",
+                      "lineHeight": 25.6,
+                    }
                   }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
                 >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
+                  « la personne handicapée a droit à la compensation des conséquences de son handicap, quels que soient l’origine et la nature de sa déficience, son âge ou son mode de vie. »
+                </Text>
+              </Text>
               <Text
                 style={
                   {
                     "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 16,
                     "lineHeight": 25.6,
-                    "marginLeft": 12,
                   }
                 }
               >
-                Critère 3.8.a - Pour chaque média temporel synchronisé pré-enregistré ayant des sous-titres synchronisés, ceux-ci sont-ils pertinents ?
+                Le pass Culture s’engage à prendre les moyens nécessaires afin de donner accès, dans un délai raisonnable, aux informations et fonctionnalités recherchées par la personne handicapée, que le contenu fasse l’objet d’une dérogation ou non.
               </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 4 sur 9 - Critère 5.1.a - a) Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance ?"
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
               <Text
                 style={
                   {
                     "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 16,
                     "lineHeight": 25.6,
-                    "marginLeft": 12,
                   }
                 }
               >
-                Critère 5.1.a - a) Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance ?
+                Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter afin qu’une assistance puisse être apportée :
+                 
+                <Text
+                  accessibilityLabel="contacter le support, lien externe"
+                  accessibilityRole="link"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#6123df",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                      "textDecorationLine": "underline",
+                    }
+                  }
+                >
+                  contacter le support
+                </Text>
               </Text>
             </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 5 sur 9 - Critère 5.4 - Dans chaque écran, les messages de statut sont-ils correctement restitués par les technologies d’assistance ?"
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
             <View
               style={
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
+                  "marginVertical": 24,
+                  "width": "100%",
+                }
+              }
+            />
+            <View
+              gap={6}
+              style={
+                {
+                  "gap": 24,
                 }
               }
             >
-              <View
+              <Text
+                accessibilityRole="header"
                 style={
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 17,
+                    "lineHeight": 27.2,
                   }
                 }
               >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
+                Voie de recours
+              </Text>
               <Text
                 style={
                   {
                     "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 16,
                     "lineHeight": 25.6,
-                    "marginLeft": 12,
                   }
                 }
               >
-                Critère 5.4 - Dans chaque écran, les messages de statut sont-ils correctement restitués par les technologies d’assistance ?
+                Si vous constatez un défaut d’accessibilité vous empêchant d’accéder à un contenu ou une fonctionnalité de l’application, que vous nous le signalez et que vous ne parvenez pas à obtenir une réponse de notre part, vous êtes en droit de faire parvenir vos doléances ou une demande de saisine au Défenseur des droits.
               </Text>
+              <View
+                gap={3}
+                style={
+                  {
+                    "gap": 12,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  Écrire un message au
+                   
+                  <Text
+                    accessibilityLabel="Défenseur des droits, lien externe"
+                    accessibilityRole="link"
+                    onPress={[Function]}
+                    style={
+                      {
+                        "color": "#6123df",
+                        "cursor": "pointer",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
+                        "textDecorationLine": "underline",
+                      }
+                    }
+                  >
+                    Défenseur des droits
+                  </Text>
+                </Text>
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  Contacter le délégué du
+                   
+                  <Text
+                    accessibilityLabel="Défenseur des droits dans votre région, lien externe"
+                    accessibilityRole="link"
+                    onPress={[Function]}
+                    style={
+                      {
+                        "color": "#6123df",
+                        "cursor": "pointer",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
+                        "textDecorationLine": "underline",
+                      }
+                    }
+                  >
+                    Défenseur des droits dans votre région
+                  </Text>
+                </Text>
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des droits Libre réponse 71120 75342 Paris CEDEX 07
+                </Text>
+              </View>
             </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 6 sur 9 - Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ?"
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
             <View
+              customHeight={8}
+              enable={true}
               style={
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "height": 8,
                 }
               }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ?
-              </Text>
-            </View>
+            />
           </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 7 sur 9 - Critère 9.11 - Pour chaque formulaire qui modifie ou supprime des données, ou qui transmet des réponses à un test ou à un examen, ou dont la validation a des conséquences financières ou juridiques, les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur ?"
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                Critère 9.11 - Pour chaque formulaire qui modifie ou supprime des données, ou qui transmet des réponses à un test ou à un examen, ou dont la validation a des conséquences financières ou juridiques, les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur ?
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 8 sur 9 - Critère 10.2 - Dans chaque écran, l’ordre de restitution par les technologies d’assistance est-il cohérent ?"
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                Critère 10.2 - Dans chaque écran, l’ordre de restitution par les technologies d’assistance est-il cohérent ?
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 9 sur 9 - Critère 11.10 - Dans chaque écran, les fonctionnalités activables au moyen d’un geste complexe sont-elles activables au moyen d’un geste simple ?"
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                Critère 11.10 - Dans chaque écran, les fonctionnalités activables au moyen d’un geste complexe sont-elles activables au moyen d’un geste simple ?
-              </Text>
-            </View>
-          </View>
-        </View>
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Dérogations pour charge disproportionnée
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Aucune
-        </Text>
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Contenus non soumis à l’obligation d’accessibilité
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Les contenus suivants n’entrent pas dans le calcul de la conformité ni dans le périmètre des éléments à rendre accessible, ils sont dérogés :
-        </Text>
-        <View
-          accessibilityRole="list"
-          style={
-            {
-              "flexDirection": "column",
-              "paddingLeft": 0,
-            }
-          }
-        >
-          <View
-            accessibilityLabel="Contenus non soumis à l’obligation d’accessibilité – Liste - Élément 1 sur 2 - Les cartes Goggle Maps (motif : service externe)"
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                Les cartes Goggle Maps (motif : service externe)
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Contenus non soumis à l’obligation d’accessibilité – Liste - Élément 2 sur 2 - La vérification d’identité (webview d’un prestataire externe)"
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                La vérification d’identité (webview d’un prestataire externe)
-              </Text>
-            </View>
-          </View>
-        </View>
+        </RCTScrollView>
       </View>
-      <View
-        style={
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "marginVertical": 24,
-            "width": "100%",
-          }
-        }
-      />
-      <View
-        gap={6}
-        style={
-          {
-            "gap": 24,
-          }
-        }
-      >
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 17,
-              "lineHeight": 27.2,
-            }
-          }
-        >
-          Établissement de cette déclaration d’accessibilité
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat",
-              "fontSize": 16,
-              "fontStyle": "italic",
-              "fontWeight": "500",
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Cette déclaration a été établie le lundi 8 décembre 2025.
-        </Text>
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Technologies utilisées pour la réalisation de l’application
-        </Text>
-        <View
-          accessibilityRole="list"
-          style={
-            {
-              "flexDirection": "column",
-              "paddingLeft": 0,
-            }
-          }
-        >
-          <View
-            accessibilityLabel="Technologies utilisées pour l’application – Liste - Élément 1 sur 3 - react"
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                react
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Technologies utilisées pour l’application – Liste - Élément 2 sur 3 - react-native"
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                react-native
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Technologies utilisées pour l’application – Liste - Élément 3 sur 3 - react-native-web"
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                react-native-web
-              </Text>
-            </View>
-          </View>
-        </View>
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Agents utilisateurs, technologies d’assistance et outils utilisés pour vérifier l’accessibilité
-        </Text>
-        <View
-          accessibilityRole="list"
-          style={
-            {
-              "flexDirection": "column",
-              "paddingLeft": 0,
-            }
-          }
-        >
-          <View
-            accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 1 sur 3 - TalkBack (lecteur d’écran)"
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                TalkBack (lecteur d’écran)
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 2 sur 3 - Switch Access (accès avec un périphérique externe)"
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                Switch Access (accès avec un périphérique externe)
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 3 sur 3 - Paramètres de présentation utilisateurs (taille de police etc.)"
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                Paramètres de présentation utilisateurs (taille de police etc.)
-              </Text>
-            </View>
-          </View>
-        </View>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          L’audit a été réalisé avec la version de système d’exploitation 
-          Android
-           : version 
-          15
-        </Text>
-      </View>
-      <View
-        style={
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "marginVertical": 24,
-            "width": "100%",
-          }
-        }
-      />
-      <View
-        gap={6}
-        style={
-          {
-            "gap": 24,
-          }
-        }
-      >
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 17,
-              "lineHeight": 27.2,
-            }
-          }
-        >
-          Retour d’information et contact
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Il est important de rappeler qu’en vertu de l’article 11 de la loi de février 2005 :
-           
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat",
-                "fontSize": 16,
-                "fontStyle": "italic",
-                "fontWeight": "500",
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            « la personne handicapée a droit à la compensation des conséquences de son handicap, quels que soient l’origine et la nature de sa déficience, son âge ou son mode de vie. »
-          </Text>
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Le pass Culture s’engage à prendre les moyens nécessaires afin de donner accès, dans un délai raisonnable, aux informations et fonctionnalités recherchées par la personne handicapée, que le contenu fasse l’objet d’une dérogation ou non.
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter afin qu’une assistance puisse être apportée :
-           
-          <Text
-            accessibilityLabel="contacter le support, lien externe"
-            accessibilityRole="link"
-            onPress={[Function]}
-            style={
-              {
-                "color": "#6123df",
-                "cursor": "pointer",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 16,
-                "lineHeight": 22,
-                "textDecorationLine": "underline",
-              }
-            }
-          >
-            contacter le support
-          </Text>
-        </Text>
-      </View>
-      <View
-        style={
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "marginVertical": 24,
-            "width": "100%",
-          }
-        }
-      />
-      <View
-        gap={6}
-        style={
-          {
-            "gap": 24,
-          }
-        }
-      >
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 17,
-              "lineHeight": 27.2,
-            }
-          }
-        >
-          Voie de recours
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Si vous constatez un défaut d’accessibilité vous empêchant d’accéder à un contenu ou une fonctionnalité de l’application, que vous nous le signalez et que vous ne parvenez pas à obtenir une réponse de notre part, vous êtes en droit de faire parvenir vos doléances ou une demande de saisine au Défenseur des droits.
-        </Text>
-        <View
-          gap={3}
-          style={
-            {
-              "gap": 12,
-            }
-          }
-        >
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            Écrire un message au
-             
-            <Text
-              accessibilityLabel="Défenseur des droits, lien externe"
-              accessibilityRole="link"
-              onPress={[Function]}
-              style={
-                {
-                  "color": "#6123df",
-                  "cursor": "pointer",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "textDecorationLine": "underline",
-                }
-              }
-            >
-              Défenseur des droits
-            </Text>
-          </Text>
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            Contacter le délégué du
-             
-            <Text
-              accessibilityLabel="Défenseur des droits dans votre région, lien externe"
-              accessibilityRole="link"
-              onPress={[Function]}
-              style={
-                {
-                  "color": "#6123df",
-                  "cursor": "pointer",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                  "textDecorationLine": "underline",
-                }
-              }
-            >
-              Défenseur des droits dans votre région
-            </Text>
-          </Text>
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des droits Libre réponse 71120 75342 Paris CEDEX 07
-          </Text>
-        </View>
-      </View>
-      <View
-        customHeight={8}
-        enable={true}
-        style={
-          {
-            "height": 8,
-          }
-        }
-      />
     </View>
-  </RCTScrollView>
+  </View>
 </View>
 `;

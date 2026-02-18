@@ -20,7 +20,7 @@ import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEv
 import { Button } from 'ui/designSystem/Button/Button'
 import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 type ChangePasswordFormData = {
   currentPassword: string
@@ -117,49 +117,50 @@ export function ChangePassword() {
   }
 
   return (
-    <SecondaryPageWithNeutralHeader
+    <PageWithHeader
       title="Mot de passe"
-      scrollable
       scrollViewProps={{
         keyboardShouldPersistTaps: 'handled',
-      }}>
-      <Container paddingBottom={Platform.OS === 'ios' ? keyboardHeight : 0}>
-        <Form.MaxWidth flex={1}>
-          <OldPasswordContainer>
+      }}
+      scrollChildren={
+        <Container paddingBottom={Platform.OS === 'ios' ? keyboardHeight : 0}>
+          <Form.MaxWidth flex={1}>
+            <OldPasswordContainer>
+              <PasswordInputController
+                control={control}
+                name="currentPassword"
+                label="Mot de passe actuel"
+                requiredIndicator="explicit"
+                autocomplete="current-password"
+              />
+            </OldPasswordContainer>
             <PasswordInputController
               control={control}
-              name="currentPassword"
-              label="Mot de passe actuel"
-              requiredIndicator="explicit"
-              autocomplete="current-password"
-            />
-          </OldPasswordContainer>
-          <PasswordInputController
-            control={control}
-            name="newPassword"
-            label="Nouveau mot de passe"
-            autocomplete="new-password"
-            withSecurityRules
-            requiredIndicator="explicit"
-          />
-          <RepeatPasswordContainer keyboardHeight={keyboardHeight}>
-            <PasswordInputController
-              control={control}
-              name="confirmedPassword"
+              name="newPassword"
+              label="Nouveau mot de passe"
               autocomplete="new-password"
-              label="Confirmer le mot de passe"
+              withSecurityRules
               requiredIndicator="explicit"
             />
-          </RepeatPasswordContainer>
-          <Button
-            wording="Enregistrer"
-            accessibilityLabel="Enregistrer les modifications"
-            onPress={onSubmit}
-            disabled={disabled}
-          />
-        </Form.MaxWidth>
-      </Container>
-    </SecondaryPageWithNeutralHeader>
+            <RepeatPasswordContainer keyboardHeight={keyboardHeight}>
+              <PasswordInputController
+                control={control}
+                name="confirmedPassword"
+                autocomplete="new-password"
+                label="Confirmer le mot de passe"
+                requiredIndicator="explicit"
+              />
+            </RepeatPasswordContainer>
+            <Button
+              wording="Enregistrer"
+              accessibilityLabel="Enregistrer les modifications"
+              onPress={onSubmit}
+              disabled={disabled}
+            />
+          </Form.MaxWidth>
+        </Container>
+      }
+    />
   )
 }
 

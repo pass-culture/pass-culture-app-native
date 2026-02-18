@@ -9,7 +9,7 @@ import { createAccessibilityRow } from 'features/profile/pages/Accessibility/cre
 import { env } from 'libs/environment/env'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { Separator } from 'ui/components/Separator'
-import { SecondaryPageWithNeutralHeader } from 'ui/pages/SecondaryPageWithNeutralHeader'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 export type AccessibilityRowConfig =
   | { title: string; screen: keyof AccessibilityRootStackParamList }
@@ -51,8 +51,11 @@ export const Accessibility = () => {
   const items = sectionConfig.map((item, index) => createAccessibilityRow(item, index, navigate))
 
   return (
-    <SecondaryPageWithNeutralHeader title="Accessibilité" enableMaxWidth={false}>
-      <AccessibleUnorderedList items={items} Separator={<Separator.Horizontal />} withPadding />
-    </SecondaryPageWithNeutralHeader>
+    <PageWithHeader
+      title="Accessibilité"
+      scrollChildren={
+        <AccessibleUnorderedList items={items} Separator={<Separator.Horizontal />} withPadding />
+      }
+    />
   )
 }
