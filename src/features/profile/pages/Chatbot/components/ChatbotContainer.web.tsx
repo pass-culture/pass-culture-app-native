@@ -12,7 +12,7 @@ export const ChatbotContainer = () => {
 
   return (
     <Page>
-      <PageHeaderWithoutPlaceholder title="J’ai une question" />
+      <PageHeaderWithoutPlaceholder title="Poser une question" />
       <Placeholder height={headerHeight} />
       <StyledContainer>
         <StyledIframe srcDoc={chatbotWebviewHTML} title="Chatbot" id="chatbot-iframe" />
