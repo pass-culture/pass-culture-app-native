@@ -69,7 +69,7 @@ async function readMultiString(
 
 async function saveString(storageKey: StorageKey, value: string): Promise<void> {
   if (!value) {
-    throw Error('Aucune valeur à sauvegarder')
+    throw new Error('Aucune valeur à sauvegarder')
   }
   try {
     await AsyncStorage.setItem(storageKey, value)
@@ -80,7 +80,7 @@ async function saveString(storageKey: StorageKey, value: string): Promise<void> 
 
 async function saveMultiString(keyValuePairs: Array<[StorageKey, string]>): Promise<void> {
   if (!keyValuePairs.length) {
-    throw Error('Aucune valeur à sauvegarder')
+    throw new Error('Aucune valeur à sauvegarder')
   }
   try {
     await AsyncStorage.multiSet(keyValuePairs)

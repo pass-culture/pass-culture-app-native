@@ -4,12 +4,12 @@ const REFRESH_TOKEN_KEY = 'PASSCULTURE_REFRESH_TOKEN'
 
 function handleKeychainError(error: unknown, operation: string): never {
   const errorMessage = error instanceof Error ? error.message : 'unknown error'
-  throw Error(`[Keychain]: ${operation} error: ${errorMessage}`)
+  throw new Error(`[Keychain]: ${operation} error: ${errorMessage}`)
 }
 
 export async function saveRefreshToken(refreshToken: string | undefined): Promise<void> {
   if (!refreshToken) {
-    throw Error('[Keychain]: No refresh token to save')
+    throw new Error('[Keychain]: No refresh token to save')
   }
   try {
     await AsyncStorage.setItem(REFRESH_TOKEN_KEY, refreshToken)

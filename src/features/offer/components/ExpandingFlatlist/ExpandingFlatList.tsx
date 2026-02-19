@@ -24,7 +24,7 @@ export const ExpandingFlatList = <T,>({
     return (
       <FlatList
         {...props}
-        data={Array(skeletonListLength).fill(undefined)}
+        data={new Array(skeletonListLength).fill(undefined)}
         renderItem={renderSkeleton}
         onContentSizeChange={onContentSizeChange}
       />
