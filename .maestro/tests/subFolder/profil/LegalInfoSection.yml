@@ -46,14 +46,3 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: 'Revenir en arrière'
       - scrollUntilVisible:
           element: 'Partager le pass Culture'
-
-- runFlow:
-    when:
-      platform: Android
-    file: ../../subFolder/cloud/commands/TapOnBack.yml
-
-- runFlow: # Fallback si problème de retour
-    when:
-      visible: 'Bonjour Test-e2e.*'
-    commands:
-      - tapOn: 'Mon profil.*'
