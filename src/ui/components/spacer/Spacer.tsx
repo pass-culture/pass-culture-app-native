@@ -8,10 +8,6 @@ interface SpacerProps {
   numberOfSpaces: number
 }
 
-const RowSpacer = styled.View<SpacerProps>(({ numberOfSpaces }) => ({
-  width: getSpacing(numberOfSpaces),
-}))
-
 const ColumnSpacer = styled.View<SpacerProps>(({ numberOfSpaces }) => ({
   height: getSpacing(numberOfSpaces),
 }))
@@ -48,7 +44,6 @@ const FlexSpacer = styled.View<FlexSpacerProps>(({ flex }) => ({
 
 export const Spacer = {
   Flex: FlexSpacer,
-  Row: RowSpacer,
   Column: ColumnSpacer,
   TopScreen: TopScreenSpacer,
   TabBar: TabBarSpacer,

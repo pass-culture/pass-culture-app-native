@@ -21,13 +21,8 @@ ruleTester.run('no-spacer', rule, {
       errors: [{ messageId: 'noSpacerColumn' }],
     },
     {
-      code: '<Spacer.Row numberOfSpaces={4} />',
-      errors: [{ messageId: 'noSpacerRow' }],
-    },
-    {
       code: '<Spacer.Flex flex={1} />',
       errors: [{ messageId: 'noSpacerFlex' }],
     },
   ],
 })
-
