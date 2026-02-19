@@ -11,7 +11,7 @@ appId: ${MAESTRO_APP_ID}
       visible: "Utiliser l'appli sans compte"
     commands:
       - tapOn: "Utiliser l'appli sans compte"
-      - tapOn: "Non, merci'
+      - tapOn: "Non, merci"
       - pressKey: back
 
 - runFlow:
