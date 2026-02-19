@@ -152,7 +152,7 @@ describe('useStepperInfo', () => {
   })
 
   describe('phone validation step', () => {
-    it('should have firstScreen to "SetPhoneNumberWithoutValidation" when backend feature flag is disabled', () => {
+    it('should have firstScreen to "SetPhoneNumberWithoutValidation"', () => {
       mockUseGetStepperInfo.mockReturnValueOnce({
         data: {
           subscriptionStepsToDisplay:
