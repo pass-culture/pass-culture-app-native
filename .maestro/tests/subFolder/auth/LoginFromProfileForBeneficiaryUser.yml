@@ -1,14 +1,14 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- assertVisible: 'Mon profil'
-- tapOn: 'Se connecter'
+- assertVisible: ${output.wording.profil.tabBar.profil}
+- tapOn: ${output.wording.auth.login.button}
 
-- assertVisible: 'Connecte-toi'
+- assertVisible: ${output.wording.auth.login.title}
 - tapOn:
-    id: 'Entrée pour l’email'
+    id: ${output.wording.auth.login.emailId}
 - runFlow: InputEmail.yml
 - tapOn:
-    id: 'Mot de passe'
+    id: ${output.wording.auth.login.passwordId}
 - inputText: ${MAESTRO_PASSWORD}
 - runFlow:
     when:
@@ -19,42 +19,42 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-    - tapOn: 'Connecte-toi' # Pour fermer le clavier iOS
+    - tapOn: ${output.wording.auth.login.title} # Pour fermer le clavier iOS
 
 - tapOn:
-    text: 'Se connecter' # Android
+    text: ${output.wording.auth.login.button} # Android
     retryTapIfNoChange: true
 
 - waitForAnimationToEnd
 
 - runFlow: # Si apparition de l'écran de crédit (félicitations 18 ans)
     when:
-      visible: ".*Bonne nouvelle.*"
+      visible: ${output.wording.auth.modal.activationNews}
     commands:
-      - tapOn: ".*Continuer.*"
+      - tapOn: ${output.wording.auth.modal.continue}
 
 - runFlow: # Si apparition de la modale de suivi des thèmes
     when:
-      visible: 'Non merci'
+      visible: ${output.wording.auth.modal.noThanks}
     commands:
-      - tapOn: 'Non merci'
+      - tapOn: ${output.wording.auth.modal.noThanks}
 
 - runFlow: # Si apparition du QPI
     when:
-      visible: 'Prends 1 minute'
+      visible: ${output.wording.auth.modal.takeMinute}
     commands:
-      - tapOn: 'Plus tard'
+      - tapOn: ${output.wording.auth.modal.later}
 
 - waitForAnimationToEnd
 
 - runFlow: # Si apparition de la modale de partage
     when:
-      visible: 'Partager l’appli'
+      visible: ${output.wording.auth.modal.share}
     commands:
-      - tapOn: 'Non merci'
+      - tapOn: ${output.wording.auth.modal.noThanks}
 
 - runFlow: # Si apparition de la modale native iOS de sauvegarde du mot de passe
     when:
-      visible: 'Plus tard'
+      visible: ${output.wording.auth.modal.later}
     commands:
-      - tapOn: 'Plus tard'
+      - tapOn: ${output.wording.auth.modal.later}

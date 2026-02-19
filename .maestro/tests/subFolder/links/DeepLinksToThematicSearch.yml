@@ -16,4 +16,4 @@ appId: app.passculture.webapp
         autoVerify: true
 - waitForAnimationToEnd
 - runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
-- assertVisible: 'Cinéma'
+- assertVisible: ${output.wording.search.cinemaTitle}

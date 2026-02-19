@@ -16,4 +16,4 @@ appId: ${MAESTRO_APP_ID}
           autoVerify: true
 - waitForAnimationToEnd
 - runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
-- assertVisible: 'Mon profil'
+- assertVisible: ${output.wording.profil.tabBar.profil}

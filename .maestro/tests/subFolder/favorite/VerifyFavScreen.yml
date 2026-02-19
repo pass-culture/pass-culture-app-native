@@ -1,12 +1,12 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible:
-    text: "Mes favoris"
+    text: ${output.wording.favorite.title}
     index: 0
 - repeat:
     while:
-      notVisible: "Découvrir le catalogue"
+      notVisible: ${output.wording.favorite.emptyButton}
     commands:
-      - tapOn: "Supprimer.*"
+      - tapOn: ${output.wording.favorite.deleteButton}
       
-- tapOn: "Découvrir le catalogue"
+- tapOn: ${output.wording.favorite.emptyButton}
