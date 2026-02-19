@@ -26,6 +26,8 @@ const QrCodeContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledQRCode = styled(QRCode).attrs({
+const StyledQRCode = styled(QRCode).attrs(({ theme }) => ({
   size: QR_CODE_SIZE,
-})``
+  color: theme.designSystem.color.background.inverted,
+  backgroundColor: theme.designSystem.color.background.default,
+}))``
