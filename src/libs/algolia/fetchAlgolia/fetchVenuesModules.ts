@@ -44,7 +44,7 @@ const buildVenue = (venue: AlgoliaVenue): Venue => {
       socialMedias,
     },
     description: venue.description,
-    id: parseInt(venue.objectID),
+    id: Number.parseInt(venue.objectID),
     latitude: venue._geoloc.lat ?? undefined,
     longitude: venue._geoloc.lng ?? undefined,
     name: venue.name,

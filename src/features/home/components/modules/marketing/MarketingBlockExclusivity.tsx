@@ -24,7 +24,7 @@ const UnmemoizedMarketingBlockExclusivity = ({
 }: AttachedOfferCardProps) => {
   const logConsultOffer = () => {
     triggerConsultOfferLog({
-      offerId: parseInt(offer.objectID),
+      offerId: Number.parseInt(offer.objectID),
       from: 'home',
       homeEntryId,
       moduleName: offer.offer.name,

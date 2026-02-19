@@ -15,7 +15,7 @@ export const useGetFontScale = (): { fontScale: number } => {
     const fetchFontScale = async () => {
       try {
         const rawFontScale = isWeb ? PixelRatio.getFontScale() : await DeviceInfo.getFontScale()
-        setFontScale(parseFloat(rawFontScale.toFixed(3)))
+        setFontScale(Number.parseFloat(rawFontScale.toFixed(3)))
       } catch (error) {
         eventMonitoring.captureException(
           `Failed to get fontScale in useGetFontScale: ${getErrorMessage(error)}`,

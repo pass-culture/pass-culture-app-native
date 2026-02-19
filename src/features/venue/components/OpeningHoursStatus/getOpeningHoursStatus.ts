@@ -118,7 +118,7 @@ const createPeriod = ({ open, close }: OpeningHour, date: Date) => {
 }
 
 const getDateFromHour = (currentDate: Date, hourString: string): Date => {
-  const [hour, minute] = hourString.split(':').map((value) => parseInt(value))
+  const [hour, minute] = hourString.split(':').map((value) => Number.parseInt(value))
   const date = new Date(currentDate)
   date.setHours(hour || 0, minute, 0, 0)
   return date

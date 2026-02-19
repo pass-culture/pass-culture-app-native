@@ -11,7 +11,7 @@ export function parseThreshold(
   elementHeight?: number
 ): ThresholdConfig {
   if (typeof threshold === 'string' && threshold.endsWith('%')) {
-    const percentage = parseFloat(threshold.slice(0, -1))
+    const percentage = Number.parseFloat(threshold.slice(0, -1))
 
     // Use a default height for percentage calculation when element height is not available
     // This typically happens during initial render before layout measurement
