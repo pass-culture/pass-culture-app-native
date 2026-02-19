@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -6,15 +7,15 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
-import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
-import { LINE_BREAK, SECTION_ROW_ICON_SIZE, SPACE } from 'ui/theme/constants'
+import { LINE_BREAK, SPACE } from 'ui/theme/constants'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function LegalNotices() {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
@@ -24,8 +25,8 @@ export function LegalNotices() {
       title="Informations légales"
       onGoBack={goBack}
       scrollChildren={
-        <ViewGap gap={4}>
-          <Typo.Body>ÉDITEUR SAS pass Culture</Typo.Body>
+        <Container gap={5}>
+          <Typo.Title4 {...getHeadingAttrs(2)}>ÉDITEUR SAS pass Culture</Typo.Title4>
           <Typo.Body>
             Éditeur du site&nbsp;:
             {SPACE}
@@ -62,28 +63,40 @@ export function LegalNotices() {
               onBeforeNavigate={() => analytics.logHasClickedContactForm('LegalNotices')}
             />
           </Typo.Body>
-
           <Separator.Horizontal />
-
-          <SectionRow
-            title="Conditions Générales d’Utilisation"
-            type="clickable"
+          <ExternalTouchableLink
+            as={Button}
+            variant="tertiary"
+            color="neutral"
+            wording="Conditions Générales d’Utilisation"
             externalNav={{ url: env.CGU_LINK }}
-            icon={ExternalSite}
-            iconSize={SECTION_ROW_ICON_SIZE}
+            icon={ExternalSiteFilled}
+            numberOfLines={2}
           />
-
-          <Separator.Horizontal />
-
-          <SectionRow
-            title="Charte de protection des données personnelles"
-            type="clickable"
+          <ExternalTouchableLink
+            as={Button}
+            variant="tertiary"
+            color="neutral"
+            wording="Charte des données personnelles"
             externalNav={{ url: env.PRIVACY_POLICY_LINK }}
-            icon={ExternalSite}
-            iconSize={SECTION_ROW_ICON_SIZE}
+            icon={ExternalSiteFilled}
+            numberOfLines={2}
           />
-        </ViewGap>
+          <ExternalTouchableLink
+            as={Button}
+            variant="tertiary"
+            color="neutral"
+            wording="Charte d’utilisation et de bonne conduite"
+            externalNav={{ url: env.CODE_OF_CONDUCT_LINK }}
+            icon={ExternalSiteFilled}
+            numberOfLines={2}
+          />
+        </Container>
       }
     />
   )
 }
+
+const Container = styled(ViewGap)({
+  alignItems: 'flex-start',
+})

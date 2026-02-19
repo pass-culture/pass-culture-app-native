@@ -11,12 +11,12 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - hideKeyboard
+      - hideKeyboard
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: 'Crée-toi un compte' # Pour fermer le clavier iOS
+      - tapOn: 'Crée-toi un compte' # Pour fermer le clavier iOS
 - tapOn: 'J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.'
 - tapOn: 'Continuer vers l’étape Mot de passe'
 
@@ -28,12 +28,12 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - hideKeyboard
+      - hideKeyboard
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: 'Choisis un mot de passe' # Pour fermer le clavier iOS
+      - tapOn: 'Choisis un mot de passe' # Pour fermer le clavier iOS
 - tapOn: 'Continuer vers l’étape Date de naissance'
 
 - assertVisible: 'Renseigne ta date de naissance'
@@ -45,24 +45,24 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-    - swipe: # years
-        start: 67%, 59%
-        end: 67%, 70%
-    - tapOn: 'Continuer vers l’étape CGU & Données'
+      - swipe: # years
+          start: 67%, 59%
+          end: 67%, 70%
+      - tapOn: 'Continuer vers l’étape CGU & Données'
 
 - runFlow:
     when:
       platform: Android
     commands:
-    - swipe: # years
-        start: 67%, 59%
-        end: 67%, 75%
-    - tapOn: 'Continuer vers l’étape CGU & Données'
+      - swipe: # years
+          start: 67%, 59%
+          end: 67%, 75%
+      - tapOn: 'Continuer vers l’étape CGU & Données'
 
-- assertVisible: 'CGU & Données'
+- assertVisible: 'Conditions et confidentialité'
 
-- tapOn: 'CGU & Données - J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire'
-- tapOn: 'CGU & Données - J’ai lu la charte des données personnelles - obligatoire'
+- tapOn: 'Conditions et confidentialité - J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire'
+- tapOn: 'Conditions et confidentialité - J’ai lu les chartes des données personnelles - obligatoire'
 - tapOn: '.*S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité.*'
 
 - assertVisible: 'Confirme ton adresse e-mail'

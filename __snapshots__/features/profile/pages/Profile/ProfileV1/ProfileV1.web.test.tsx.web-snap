@@ -56,6 +56,31 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
   cursor: initial;
 }
 
+.c4 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c4:disabled {
+  cursor: initial;
+}
+
 .c5 {
   flex-direction: row;
   align-items: center;
@@ -81,31 +106,6 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
   cursor: initial;
 }
 
-.c6 {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  width: auto;
-  max-width: 500px;
-  border-width: 0;
-  background-color: transparent;
-  cursor: pointer;
-  outline: none;
-  display: inline-flex;
-  overflow: hidden;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c6:disabled {
-  cursor: initial;
-}
-
 .c2 {
   border: none;
   cursor: pointer;
@@ -128,11 +128,6 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
   line-height: 1.6rem;
   color: #161617;
   cursor: pointer;
-}
-
-.c4 {
-  margin-right: 24px;
-  margin-left: 24px;
 }
 
 <div>
@@ -933,7 +928,9 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
             </div>
           </main>
           <footer
-            class="c4"
+            class="css-view-175oi2r r-marginLeft-6uxfom r-marginRight-mbgqwd"
+            data-testid="accessibility-footer-container"
+            role="contentinfo"
           >
             <div
               class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
@@ -961,18 +958,18 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
               >
                 <button
                   aria-label="Accessibilité : partiellement conforme"
-                  class="c5"
+                  class="c4"
                   data-testid="Accessibilité : partiellement conforme"
                   tabindex="0"
                   type="button"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-flexWrap-1w6e6rj"
                   >
                     <div
-                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
-                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px;"
                     >
                       Accessibilité : partiellement conforme
                     </div>
@@ -980,18 +977,18 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 </button>
                 <button
                   aria-label="Plan du site"
-                  class="c5"
+                  class="c4"
                   data-testid="Plan du site"
                   tabindex="0"
                   type="button"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-flexWrap-1w6e6rj"
                   >
                     <div
-                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
-                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px;"
                     >
                       Plan du site
                     </div>
@@ -999,27 +996,27 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 </button>
                 <button
                   aria-label="Informations légales"
-                  class="c5"
+                  class="c4"
                   data-testid="Informations légales"
                   tabindex="0"
                   type="button"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-flexWrap-1w6e6rj"
                   >
                     <div
-                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
-                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px;"
                     >
                       Informations légales
                     </div>
                   </div>
                 </button>
                 <a
-                  aria-label="CGU utilisateurs"
-                  class="c6"
-                  data-testid="CGU utilisateurs"
+                  aria-label="Conditions Générales d’Utilisation"
+                  class="c5"
+                  data-testid="Conditions Générales d’Utilisation"
                   href="https://passculture.cgu"
                   tabindex="0"
                   target="_blank"
@@ -1029,7 +1026,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                   >
                     <div
                       class="css-view-175oi2r"
-                      id="4"
+                      id="6"
                       style="flex-shrink: 0;"
                     >
                       <div
@@ -1045,17 +1042,17 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                       </div>
                     </div>
                     <div
-                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
                       style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
-                      CGU utilisateurs
+                      Conditions Générales d’Utilisation
                     </div>
                   </div>
                 </a>
                 <a
                   aria-label="Charte des données personnelles"
-                  class="c6"
+                  class="c5"
                   data-testid="Charte des données personnelles"
                   href="https://passculture.privacy"
                   tabindex="0"
@@ -1066,7 +1063,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                   >
                     <div
                       class="css-view-175oi2r"
-                      id="5"
+                      id="7"
                       style="flex-shrink: 0;"
                     >
                       <div
@@ -1082,11 +1079,48 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                       </div>
                     </div>
                     <div
-                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
                       style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
                       Charte des données personnelles
+                    </div>
+                  </div>
+                </a>
+                <a
+                  aria-label="Charte d’utilisation et de bonne conduite"
+                  class="c5"
+                  data-testid="Charte d’utilisation et de bonne conduite"
+                  href="https://passculture.code-of-conduct"
+                  tabindex="0"
+                  target="_blank"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
+                  >
+                    <div
+                      class="css-view-175oi2r"
+                      id="8"
+                      style="flex-shrink: 0;"
+                    >
+                      <div
+                        aria-label="Nouvelle fenêtre"
+                        class="css-view-175oi2r"
+                      >
+                        <div
+                          class="css-text-146c3p1"
+                          dir="ltr"
+                        >
+                          undefined-SVG-Mock
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      dir="ltr"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                    >
+                      Charte d’utilisation et de bonne conduite
                     </div>
                   </div>
                 </a>
@@ -1177,6 +1211,31 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
   cursor: initial;
 }
 
+.c4 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c4:disabled {
+  cursor: initial;
+}
+
 .c5 {
   flex-direction: row;
   align-items: center;
@@ -1202,31 +1261,6 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
   cursor: initial;
 }
 
-.c6 {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  width: auto;
-  max-width: 500px;
-  border-width: 0;
-  background-color: transparent;
-  cursor: pointer;
-  outline: none;
-  display: inline-flex;
-  overflow: hidden;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c6:disabled {
-  cursor: initial;
-}
-
 .c2 {
   border: none;
   cursor: pointer;
@@ -1249,11 +1283,6 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
   line-height: 1.6rem;
   color: #161617;
   cursor: pointer;
-}
-
-.c4 {
-  margin-right: 24px;
-  margin-left: 24px;
 }
 
 <div>
@@ -2054,7 +2083,9 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
             </div>
           </main>
           <footer
-            class="c4"
+            class="css-view-175oi2r r-marginLeft-6uxfom r-marginRight-mbgqwd"
+            data-testid="accessibility-footer-container"
+            role="contentinfo"
           >
             <div
               class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
@@ -2082,18 +2113,18 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
               >
                 <button
                   aria-label="Accessibilité : partiellement conforme"
-                  class="c5"
+                  class="c4"
                   data-testid="Accessibilité : partiellement conforme"
                   tabindex="0"
                   type="button"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-flexWrap-1w6e6rj"
                   >
                     <div
-                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
-                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px;"
                     >
                       Accessibilité : partiellement conforme
                     </div>
@@ -2101,18 +2132,18 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 </button>
                 <button
                   aria-label="Plan du site"
-                  class="c5"
+                  class="c4"
                   data-testid="Plan du site"
                   tabindex="0"
                   type="button"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-flexWrap-1w6e6rj"
                   >
                     <div
-                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
-                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px;"
                     >
                       Plan du site
                     </div>
@@ -2120,27 +2151,27 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 </button>
                 <button
                   aria-label="Informations légales"
-                  class="c5"
+                  class="c4"
                   data-testid="Informations légales"
                   tabindex="0"
                   type="button"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-flexWrap-1w6e6rj"
                   >
                     <div
-                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
-                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px;"
                     >
                       Informations légales
                     </div>
                   </div>
                 </button>
                 <a
-                  aria-label="CGU utilisateurs"
-                  class="c6"
-                  data-testid="CGU utilisateurs"
+                  aria-label="Conditions Générales d’Utilisation"
+                  class="c5"
+                  data-testid="Conditions Générales d’Utilisation"
                   href="https://passculture.cgu"
                   tabindex="0"
                   target="_blank"
@@ -2150,7 +2181,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                   >
                     <div
                       class="css-view-175oi2r"
-                      id="6"
+                      id="9"
                       style="flex-shrink: 0;"
                     >
                       <div
@@ -2166,17 +2197,17 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                       </div>
                     </div>
                     <div
-                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
                       style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
-                      CGU utilisateurs
+                      Conditions Générales d’Utilisation
                     </div>
                   </div>
                 </a>
                 <a
                   aria-label="Charte des données personnelles"
-                  class="c6"
+                  class="c5"
                   data-testid="Charte des données personnelles"
                   href="https://passculture.privacy"
                   tabindex="0"
@@ -2187,7 +2218,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                   >
                     <div
                       class="css-view-175oi2r"
-                      id="7"
+                      id="10"
                       style="flex-shrink: 0;"
                     >
                       <div
@@ -2203,11 +2234,48 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                       </div>
                     </div>
                     <div
-                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
                       style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
                       Charte des données personnelles
+                    </div>
+                  </div>
+                </a>
+                <a
+                  aria-label="Charte d’utilisation et de bonne conduite"
+                  class="c5"
+                  data-testid="Charte d’utilisation et de bonne conduite"
+                  href="https://passculture.code-of-conduct"
+                  tabindex="0"
+                  target="_blank"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
+                  >
+                    <div
+                      class="css-view-175oi2r"
+                      id="11"
+                      style="flex-shrink: 0;"
+                    >
+                      <div
+                        aria-label="Nouvelle fenêtre"
+                        class="css-view-175oi2r"
+                      >
+                        <div
+                          class="css-text-146c3p1"
+                          dir="ltr"
+                        >
+                          undefined-SVG-Mock
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      dir="ltr"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                    >
+                      Charte d’utilisation et de bonne conduite
                     </div>
                   </div>
                 </a>

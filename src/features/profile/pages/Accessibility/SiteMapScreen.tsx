@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { getSiteMapLinks } from 'features/profile/helpers/getSiteMapLinks'
 import { useSortedSearchCategories } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -16,7 +14,6 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Dot } from 'ui/svg/icons/Dot'
 
 export function SiteMapScreen() {
-  const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
   const { isLoggedIn } = useAuthContext()
   const sortedCategories = useSortedSearchCategories()
   const siteMapLinks = getSiteMapLinks(sortedCategories)
@@ -29,7 +26,6 @@ export function SiteMapScreen() {
     <PageWithHeader
       title="Plan du site"
       shouldBeAlignedFlexStart
-      onGoBack={goBack}
       scrollChildren={
         <StyledVerticalUl>
           {visibleSiteMapLinks.map((item, parentIndex) => {
@@ -120,7 +116,6 @@ const BulletContainer = styled.View(({ theme }) => ({
 
 const ListText = styled.View(({ theme }) => ({
   marginLeft: theme.designSystem.size.spacing.m,
-  flex: 1,
 }))
 
 const StyledVerticalUl = styled(VerticalUl)({

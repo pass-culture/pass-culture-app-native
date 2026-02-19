@@ -279,9 +279,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -408,9 +405,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -537,9 +531,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -666,9 +657,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -795,9 +783,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -924,9 +909,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -1053,9 +1035,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -1182,9 +1161,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -1311,9 +1287,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -1440,9 +1413,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -1569,9 +1539,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -1698,9 +1665,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -1827,9 +1791,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -1956,9 +1917,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -2085,9 +2043,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -2214,9 +2169,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -2343,9 +2295,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -2472,9 +2421,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -2601,9 +2547,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -2730,9 +2673,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -2859,9 +2799,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -2988,9 +2925,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -3117,9 +3051,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -3246,9 +3177,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -3375,9 +3303,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -3504,9 +3429,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -3633,9 +3555,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -3762,9 +3681,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -3891,9 +3807,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -4020,9 +3933,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }
@@ -4149,9 +4059,6 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "marginLeft": 12,
                       }
                     }

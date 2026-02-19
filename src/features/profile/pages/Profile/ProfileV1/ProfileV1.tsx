@@ -58,8 +58,7 @@ import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { Trophy } from 'ui/svg/icons/Trophy'
 import { ArtMaterial } from 'ui/svg/icons/venueAndCategories/ArtMaterial'
-import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 const isWeb = Platform.OS === 'web'
@@ -427,16 +426,10 @@ const OnlineProfile: React.FC = () => {
                     </ButtonContainerFlexStart>
                   </DebugButtonContainer>
                 ) : null}
-                {isWeb ? null : (
-                  <LogoFrenchRepublicContainer>
-                    <LogoFrenchRepublic />
-                  </LogoFrenchRepublicContainer>
-                )}
               </Section>
-              {isWeb ? null : <Spacer.TabBar />}
             </ProfileContainer>
           </View>
-          {isWeb ? <AccessibilityFooter withHorizontalMargin /> : null}
+          <AccessibilityFooter withHorizontalMargin />
         </ScrollViewContentContainer>
       </ScrollView>
       <StatusBarBlurredBackground />
@@ -492,12 +485,6 @@ const Version = styled(Typo.BodyAccentXs)(({ theme }) => ({
 }))
 
 const DebugButtonContainer = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.l,
-}))
-
-const LogoFrenchRepublicContainer = styled.View(({ theme }) => ({
-  width: getSpacing(40),
-  height: getSpacing(28),
   marginBottom: theme.designSystem.size.spacing.l,
 }))
 
