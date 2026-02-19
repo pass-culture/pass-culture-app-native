@@ -11,7 +11,7 @@ export const OfferEventCardListSkeleton: React.FC = () => {
     <Container testID="offer-event-card-list-skeleton-container">
       <ScrollViewContainer horizontal showsHorizontalScrollIndicator={false}>
         <FlatList
-          data={new Array(2)}
+          data={Array.from({ length: 2 })}
           renderItem={({ index }) => (
             <SkeletonWrapper key={`event-card-skeleton-${index}`} index={index}>
               <SkeletonTile
