@@ -156,12 +156,8 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
           >
             <div
               class="css-view-175oi2r"
-              style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 24px; padding-left: 24px;"
+              style="flex-grow: 1; flex-direction: column; padding: 65px 24px 0px 24px;"
             >
-              <div
-                class="css-view-175oi2r"
-                style="height: 65px;"
-              />
               <div
                 class="css-view-175oi2r r-alignSelf-1kihuf0 r-paddingBottom-11rk87y r-paddingLeft-gu0qjt r-paddingRight-85oauj r-paddingTop-fd4yh7"
               >

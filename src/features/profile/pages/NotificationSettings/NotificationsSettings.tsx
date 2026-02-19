@@ -241,7 +241,7 @@ const Container = styled.View(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
   width: '100%',
   alignSelf: 'center',
-  marginVertical: theme.designSystem.size.spacing.xxxl,
+  marginBottom: theme.designSystem.size.spacing.xxxl,
 }))
 
 type ToggleActions =

@@ -1,11 +1,7 @@
 import React, { PropsWithChildren } from 'react'
-import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
-import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { Page } from 'ui/pages/Page'
-import { Spacer } from 'ui/theme'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 type Props = PropsWithChildren<{
   title: string
@@ -19,29 +15,16 @@ export const CheatcodesTemplateScreen: React.FC<Props> = ({
   children,
   onGoBack,
 }) => {
-  const headerHeight = useGetHeaderHeight()
-
   return (
-    <Page>
-      <PageHeaderWithoutPlaceholder title={title} onGoBack={onGoBack} />
-      <Placeholder height={headerHeight} />
-      <ScrollView>
-        <StyledContainer flexDirection={flexDirection}>{children}</StyledContainer>
-        <Spacer.BottomScreen />
-      </ScrollView>
-    </Page>
+    <PageWithHeader
+      title={title}
+      onGoBack={onGoBack}
+      scrollChildren={<StyledContainer flexDirection={flexDirection}>{children}</StyledContainer>}
+    />
   )
 }
 
-const Placeholder = styled.View<{ height: number }>(({ height }) => ({
-  height,
+const StyledContainer = styled.View<{ flexDirection: 'row' | 'column' }>(({ flexDirection }) => ({
+  flexDirection,
+  flexWrap: flexDirection === 'row' ? 'wrap' : 'nowrap',
 }))
-
-const StyledContainer = styled.View<{ flexDirection: 'row' | 'column' }>(
-  ({ theme, flexDirection }) => ({
-    flexDirection,
-    flexWrap: flexDirection === 'row' ? 'wrap' : 'nowrap',
-    paddingVertical: theme.contentPage.marginVertical,
-    paddingHorizontal: theme.contentPage.marginHorizontal,
-  })
-)

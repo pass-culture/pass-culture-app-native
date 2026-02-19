@@ -2,6 +2,7 @@ import React, { forwardRef, ReactNode, useState } from 'react'
 import { LayoutChangeEvent, Platform, ScrollView, ScrollViewProps, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { CustomKeyboardAvoidingView } from 'ui/pages/components/CustomKeyboardAvoidingView'
@@ -21,15 +22,23 @@ interface Props {
 }
 const isWeb = Platform.OS === 'web'
 export const PageWithHeader = forwardRef<ScrollView, Props>((props, ref) => {
+  const { onScrollViewLayout, onScrollViewContentSizeChange } = useShouldEnableScrollOnView()
+  const [measuredHeaderHeight, setMeasuredHeaderHeight] = useState(0)
   const headerHeight = useGetHeaderHeight()
 
-  const { onScrollViewLayout, onScrollViewContentSizeChange } = useShouldEnableScrollOnView()
-
+  function onHeaderLayout(event: LayoutChangeEvent) {
+    const { height } = event.nativeEvent.layout
+    setMeasuredHeaderHeight(height)
+  }
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
   function onFixedBottomChildrenViewLayout(event: LayoutChangeEvent) {
     const { height } = event.nativeEvent.layout
     setBottomChildrenViewHeight(height)
   }
+  const paddingHeaderHeight = useFontScaleValue({
+    default: headerHeight,
+    at200PercentZoom: measuredHeaderHeight,
+  })
 
   return (
     <Page>
@@ -38,6 +47,7 @@ export const PageWithHeader = forwardRef<ScrollView, Props>((props, ref) => {
         onGoBack={props.onGoBack}
         shouldDisplayBackButton={props.shouldDisplayBackButton}
         RightButton={props.RightButton}
+        onLayout={onHeaderLayout}
       />
       <CustomKeyboardAvoidingView
         shouldBeAlignedFlexStart={isWeb && props.shouldBeAlignedFlexStart}>
@@ -46,9 +56,9 @@ export const PageWithHeader = forwardRef<ScrollView, Props>((props, ref) => {
             ref={ref}
             {...props.scrollViewProps}
             bottomChildrenViewHeight={bottomChildrenViewHeight}
+            paddingHeaderHeight={paddingHeaderHeight}
             onContentSizeChange={onScrollViewContentSizeChange}
             onLayout={onScrollViewLayout}>
-            <View style={{ height: headerHeight }} />
             {props.scrollChildren}
           </ChildrenScrollView>
         ) : null}
@@ -64,13 +74,18 @@ export const PageWithHeader = forwardRef<ScrollView, Props>((props, ref) => {
 })
 PageWithHeader.displayName = 'PageWithHeader'
 
-type ChildrenScrollViewProps = { bottomChildrenViewHeight: number }
+type ChildrenScrollViewProps = {
+  bottomChildrenViewHeight: number
+  paddingHeaderHeight: number
+} & Omit<ScrollViewProps, 'contentContainerStyle'>
+
 const ChildrenScrollView = styled(ScrollView).attrs<ChildrenScrollViewProps>(
-  ({ theme, bottomChildrenViewHeight }) => ({
+  ({ theme, bottomChildrenViewHeight, paddingHeaderHeight }) => ({
     keyboardShouldPersistTaps: 'handled',
     contentContainerStyle: {
       flexGrow: 1,
       flexDirection: 'column',
+      paddingTop: paddingHeaderHeight,
       paddingBottom: bottomChildrenViewHeight,
       paddingHorizontal: theme.contentPage.marginHorizontal,
     },

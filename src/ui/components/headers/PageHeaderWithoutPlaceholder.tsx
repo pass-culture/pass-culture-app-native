@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react'
+import React, { ReactNode, forwardRef } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -18,44 +18,62 @@ interface Props {
   RightButton?: ReactNode
   children?: ReactNode
   style?: StyleProp<ViewStyle>
+  onLayout?: (event) => void
 }
 
 // Component naming: this component needs to be used with a PlaceHolder component
 // that has the height of the header as it is an absolute view
-export const PageHeaderWithoutPlaceholder: FunctionComponent<Props> = ({
-  title,
-  titleID,
-  onGoBack,
-  testID,
-  shouldDisplayBackButton = true,
-  RightButton = null,
-  children,
-  style,
-}) => {
-  const { designSystem } = useTheme()
-  const headerHeight = useGetHeaderHeightDS()
-  return (
-    <Header testID={testID} accessibilityRole={AccessibilityRole.HEADER} style={style}>
-      <Spacer.TopScreen />
-      <Container headerHeight={headerHeight}>
-        <ButtonContainer positionInHeader="left" testID="back-button-container">
-          {shouldDisplayBackButton ? (
-            <BackButton onGoBack={onGoBack} color={designSystem.color.icon.default} />
+export const PageHeaderWithoutPlaceholder = forwardRef<View, Props>(
+  (
+    {
+      title,
+      titleID,
+      onGoBack,
+      testID,
+      shouldDisplayBackButton = true,
+      RightButton = null,
+      children,
+      style,
+      onLayout,
+    },
+    ref
+  ) => {
+    const { designSystem } = useTheme()
+    const headerHeight = useGetHeaderHeightDS()
+
+    return (
+      <Header
+        ref={ref}
+        onLayout={onLayout}
+        testID={testID}
+        accessibilityRole={AccessibilityRole.HEADER}
+        style={style}>
+        <Spacer.TopScreen />
+        <Container headerHeight={headerHeight}>
+          <ButtonContainer positionInHeader="left" testID="back-button-container">
+            {shouldDisplayBackButton ? (
+              <BackButton onGoBack={onGoBack} color={designSystem.color.icon.default} />
+            ) : null}
+          </ButtonContainer>
+
+          {title ? (
+            <TitleContainer>
+              <Title nativeID={titleID}>{title}</Title>
+            </TitleContainer>
           ) : null}
-        </ButtonContainer>
-        {title ? (
-          <TitleContainer>
-            <Title nativeID={titleID}>{title}</Title>
-          </TitleContainer>
-        ) : null}
-        <ButtonContainer positionInHeader="right" testID="close-button-container">
-          {RightButton}
-        </ButtonContainer>
-      </Container>
-      {children}
-    </Header>
-  )
-}
+
+          <ButtonContainer positionInHeader="right" testID="close-button-container">
+            {RightButton}
+          </ButtonContainer>
+        </Container>
+
+        {children}
+      </Header>
+    )
+  }
+)
+
+PageHeaderWithoutPlaceholder.displayName = 'PageHeaderWithoutPlaceholder'
 
 const Header = styled(View)(({ theme }) => ({
   zIndex: theme.zIndex.header,
