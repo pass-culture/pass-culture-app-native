@@ -29,9 +29,13 @@ appId: ${MAESTRO_APP_ID}
       - assertVisible: 'Trouve ta séance'
       - runFlow: ../../subFolder/booking/DaySelectionCinema.yml
 
+- extractTextWithAI:
+    query: 'La 1ère séance de cinéma disponible (horaire) visible sur la page de sélection de la séance'
+    outputVariable: 'movieSession'
+
 - tapOn:
-    text: '.*€.*'
-    label: 'Sélection de la séance Duo'
+    text: '.*${movieSession}.*'
+    label: 'Sélection de la séance'
 
 - runFlow:
     when:
