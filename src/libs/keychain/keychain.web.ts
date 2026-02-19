@@ -4,7 +4,7 @@ const REFRESH_TOKEN_KEY = 'PASSCULTURE_REFRESH_TOKEN'
 
 function handleKeychainError(error: unknown, operation: string): never {
   const errorMessage = error instanceof Error ? error.message : 'unknown error'
-  throw new Error(`[Keychain]: ${operation} error: ${errorMessage}`, { cause: error })
+  throw new Error(`[Keychain]: ${operation} error: ${errorMessage}`)
 }
 
 export async function saveRefreshToken(refreshToken: string | undefined): Promise<void> {
