@@ -60,7 +60,7 @@ In order to launch the app in the Simulator or on your external Apple device, yo
       bundle exec fastlane ios download_certificates --env testing
       ```
 
-   1. When required (multiple times), use the git ssh URL of the private certificates repository
+   1. When required (multiple times), use the git https URL of the private certificates repository
    1. Get the `match repo passphrase` on our password manager in the "Tech" vault.
 
    1. It might ask your session password twice to continue, it might also ask you to do the previous step twice.
