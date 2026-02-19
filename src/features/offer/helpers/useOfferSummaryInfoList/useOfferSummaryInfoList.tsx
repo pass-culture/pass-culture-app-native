@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTheme } from 'styled-components/native'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { extractStockDates } from 'features/offer/helpers/extractStockDates/extractStockDates'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { capitalize } from 'libs/formatter/capitalize'
@@ -16,7 +16,7 @@ import { MapPin } from 'ui/svg/icons/MapPin'
 import { Stock } from 'ui/svg/icons/Stock'
 
 type Props = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   isCinemaOffer?: boolean
 }
 

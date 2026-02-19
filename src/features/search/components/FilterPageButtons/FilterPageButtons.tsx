@@ -1,12 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { FilterBehaviour } from 'features/search/enums'
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Again } from 'ui/svg/icons/Again'
 
 type Props = {
@@ -27,13 +24,6 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
   isSearchDisabled,
   isResetDisabled,
 }) => {
-  const theme = useTheme()
-  const defautlFlexDirection = theme.appContentWidth > theme.breakpoints.xs ? 'row' : 'column'
-  const flexDirection = useFontScaleValue<'row' | 'column'>({
-    default: defautlFlexDirection,
-    at200PercentZoom: 'column',
-  })
-
   let searchButtonText = ''
   switch (filterBehaviour) {
     case FilterBehaviour.SEARCH: {
@@ -47,41 +37,51 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
   }
 
   return (
-    <Container isModal={isModal} flexDirection={flexDirection} gap={4}>
-      <ResetButton
-        wording="Réinitialiser"
-        icon={Again}
-        onPress={onResetPress}
-        disabled={isResetDisabled}
-      />
-      <SearchButton
-        wording={searchButtonText}
-        onPress={onSearchPress}
-        disabled={isSearchDisabled}
-      />
+    <Container isModal={isModal} gap={4}>
+      <ResetButtonWrapper>
+        <Button
+          wording="Réinitialiser"
+          icon={Again}
+          onPress={onResetPress}
+          disabled={isResetDisabled}
+          variant="tertiary"
+          color="neutral"
+          size="small"
+        />
+      </ResetButtonWrapper>
+      <SearchButtonWrapper>
+        <Button
+          wording={searchButtonText}
+          onPress={onSearchPress}
+          disabled={isSearchDisabled}
+          color="brand"
+          fullWidth
+        />
+      </SearchButtonWrapper>
     </Container>
   )
 }
 
-const Container = styled(ViewGap)<{ isModal: boolean; flexDirection: 'row' | 'column' }>(({
-  isModal,
-  flexDirection,
-  theme,
-}) => {
+const Container = styled(ViewGap)<{ isModal: boolean }>(({ isModal, theme }) => {
   return {
-    flexDirection,
-    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    alignSelf: 'stretch',
     paddingHorizontal: theme.modal.spacing.MD,
     paddingTop: theme.designSystem.size.spacing.s,
     ...(isModal ? {} : { paddingBottom: theme.modal.spacing.MD }),
   }
 })
 
-const ResetButton = styledButton(ButtonQuaternaryBlack)({
+const ResetButtonWrapper = styled.View({
   width: 'auto',
+  flexShrink: 0,
 })
 
-const SearchButton = styledButton(ButtonPrimary)({
+const SearchButtonWrapper = styled.View({
   flexGrow: 1,
-  width: 'auto',
+  flexShrink: 1,
+  flexBasis: 0,
+  minWidth: 0,
 })

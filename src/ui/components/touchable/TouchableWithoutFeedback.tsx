@@ -1,3 +1,1 @@
-import { TouchableWithoutFeedback as RNTouchableWithoutFeedback } from 'react-native'
-
-export const TouchableWithoutFeedback = RNTouchableWithoutFeedback
+export { TouchableWithoutFeedback } from 'react-native'

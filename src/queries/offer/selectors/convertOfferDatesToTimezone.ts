@@ -1,7 +1,7 @@
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { getTimeZonedDate } from 'libs/parsers/formatDates'
 
-export const convertOfferDatesToTimezone = (offer: OfferResponseV2): OfferResponseV2 => {
+export const convertOfferDatesToTimezone = (offer: OfferResponse): OfferResponse => {
   const timezone = offer.address?.timezone ?? offer.venue.timezone
 
   return {

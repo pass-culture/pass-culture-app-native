@@ -89,7 +89,7 @@ export const formatToFrenchDateWithoutYear = ({
 export const getUniqueSortedTimestamps = (timestamps?: number[]): number[] => {
   if (!timestamps || timestamps.length === 0) return []
   const uniqueTimestamps = Array.from(new Set(timestamps))
-  const futureTimestamps = uniqueTimestamps.filter((timestamp) => timestamp >= new Date().valueOf())
+  const futureTimestamps = uniqueTimestamps.filter((timestamp) => timestamp >= Date.now())
   return futureTimestamps.sort((a, b) => a - b)
 }
 

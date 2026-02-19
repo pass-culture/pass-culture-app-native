@@ -12,7 +12,8 @@ export const NetInfoWrapper = memo(function NetInfoWrapper({ children }: PropsWi
   const networkInfo = useNetInfo()
 
   useEffect(() => {
-    const isConnected = !!networkInfo.isConnected && !!networkInfo.isInternetReachable
+    if (networkInfo.isConnected === null || networkInfo.isInternetReachable === null) return
+    const isConnected = networkInfo.isConnected && networkInfo.isInternetReachable
     onlineManager.setOnline(isConnected)
     if (isConnected === false) {
       showErrorSnackBar('Aucune connexion internet. Réessaie plus tard.')

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { BookingProperties } from 'features/bookings/types'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
+import { Button } from 'ui/designSystem/Button/Button'
 
 export type BookingDetailsButtonProps = {
   onCancel?: () => void
@@ -23,21 +23,25 @@ export const BookingDetailsButton = ({
 }) => {
   if (hasActivationCode) {
     return (
-      <ButtonSecondary
+      <Button
         testID={testID}
         wording="Terminer"
         onPress={onTerminate}
         fullWidth={fullWidth}
+        variant="secondary"
+        color="brand"
       />
     )
   }
   if (!isFreeOfferToArchive) {
     return (
-      <ButtonSecondary
+      <Button
         testID={testID}
         wording="Annuler ma réservation"
         onPress={onCancel}
         fullWidth={fullWidth}
+        variant="secondary"
+        color="brand"
       />
     )
   }

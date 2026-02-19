@@ -377,10 +377,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
-                  gap={3}
+                  gap={4}
                   style={
                     {
-                      "gap": 12,
+                      "gap": 16,
                       "marginBottom": 16,
                       "width": "100%",
                     }
@@ -1008,10 +1008,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
-                  gap={3}
+                  gap={4}
                   style={
                     {
-                      "gap": 12,
+                      "gap": 16,
                       "marginBottom": 16,
                       "width": "100%",
                     }
@@ -1639,10 +1639,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
-                  gap={3}
+                  gap={4}
                   style={
                     {
-                      "gap": 12,
+                      "gap": 16,
                       "marginBottom": 16,
                       "width": "100%",
                     }
@@ -2270,10 +2270,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
-                  gap={3}
+                  gap={4}
                   style={
                     {
-                      "gap": 12,
+                      "gap": 16,
                       "marginBottom": 16,
                       "width": "100%",
                     }
@@ -2901,10 +2901,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
-                  gap={3}
+                  gap={4}
                   style={
                     {
-                      "gap": 12,
+                      "gap": 16,
                       "marginBottom": 16,
                       "width": "100%",
                     }
@@ -3532,10 +3532,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
-                  gap={3}
+                  gap={4}
                   style={
                     {
-                      "gap": 12,
+                      "gap": 16,
                       "marginBottom": 16,
                       "width": "100%",
                     }

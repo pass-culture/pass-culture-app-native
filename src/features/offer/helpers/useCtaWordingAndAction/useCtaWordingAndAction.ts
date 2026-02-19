@@ -9,7 +9,7 @@ import {
   BookOfferResponse,
   EligibilityType,
   FavoriteOfferResponse,
-  OfferResponseV2,
+  OfferResponse,
   RecommendationApiParams,
   SubcategoryIdEnum,
   SubscriptionStatus,
@@ -19,8 +19,8 @@ import {
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
 import {
-  ValidStoredProfileInfos,
   useStoredProfileInfos,
+  ValidStoredProfileInfos,
 } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { openUrl } from 'features/navigation/helpers/openUrl'
@@ -45,7 +45,7 @@ import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Subcategory } from 'libs/subcategories/types'
-import { useEndedBookingFromOfferIdQuery, useBookingsQuery } from 'queries/bookings'
+import { useBookingsQuery, useEndedBookingFromOfferIdQuery } from 'queries/bookings'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
 import { OfferModal } from 'shared/offer/enums'
@@ -53,7 +53,7 @@ import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 type UseGetCtaWordingAndActionProps = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   subcategory: Subcategory
   from?: Referrals
   searchId?: string
@@ -69,7 +69,7 @@ type Props = {
   user?: UserProfileResponseWithoutSurvey
   userStatus: YoungStatusResponse
   isBeneficiary: boolean
-  offer: OfferResponseV2
+  offer: OfferResponse
   subcategory: Subcategory
   hasEnoughCreditData: HasEnoughCredit
   isUnderageBeneficiary: boolean

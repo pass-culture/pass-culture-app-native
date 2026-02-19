@@ -5,10 +5,9 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
-import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
 export const LinkToOffer = ({
   offer,
@@ -39,14 +38,14 @@ export const LinkToOffer = ({
   }
   return (
     <InternalTouchableLink
-      inline
-      justifyContent="flex-start"
       enableNavigate={!!netInfo.isConnected}
-      as={ButtonTertiaryBlack}
+      as={Button}
       wording="Voir l’offre"
       navigateTo={{ screen: 'Offer', params: { id: offer.id, from: 'bookingdetails' } }}
       onBeforeNavigate={onNavigateToOfferPress}
-      icon={PlainArrowNext}
+      variant="secondary"
+      color="neutral"
+      fullWidth
     />
   )
 }

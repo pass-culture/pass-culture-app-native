@@ -3,7 +3,7 @@ import React from 'react'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { Email } from 'ui/svg/icons/Email'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 
 const meta: Meta<typeof ButtonPrimary> = {
   title: 'ui/buttons/ButtonPrimary',
@@ -27,11 +27,11 @@ const variantConfig: Variants<typeof ButtonPrimary> = [
   },
   {
     label: 'ButtonPrimary default with icon',
-    props: { wording: 'Confirmer', icon: Email },
+    props: { wording: 'Confirmer', icon: EmailFilled },
   },
   {
     label: 'ButtonPrimary default disabled with icon',
-    props: { wording: 'Confirmer', disabled: true, icon: Email },
+    props: { wording: 'Confirmer', disabled: true, icon: EmailFilled },
   },
   // Tall
   {
@@ -48,11 +48,11 @@ const variantConfig: Variants<typeof ButtonPrimary> = [
   },
   {
     label: 'ButtonPrimary tall with icon',
-    props: { wording: 'Confirmer', buttonHeight: 'tall', icon: Email },
+    props: { wording: 'Confirmer', buttonHeight: 'tall', icon: EmailFilled },
   },
   {
     label: 'ButtonPrimary tall disabled with icon',
-    props: { wording: 'Confirmer', buttonHeight: 'tall', disabled: true, icon: Email },
+    props: { wording: 'Confirmer', buttonHeight: 'tall', disabled: true, icon: EmailFilled },
   },
   // Extra small
   {
@@ -69,11 +69,11 @@ const variantConfig: Variants<typeof ButtonPrimary> = [
   },
   {
     label: 'ButtonPrimary extra small with icon',
-    props: { wording: 'Confirmer', buttonHeight: 'extraSmall', icon: Email },
+    props: { wording: 'Confirmer', buttonHeight: 'extraSmall', icon: EmailFilled },
   },
   {
     label: 'ButtonPrimary extra small disabled with icon',
-    props: { wording: 'Confirmer', buttonHeight: 'extraSmall', disabled: true, icon: Email },
+    props: { wording: 'Confirmer', buttonHeight: 'extraSmall', disabled: true, icon: EmailFilled },
   },
 ]
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { initialBookingState, Step } from 'features/bookOffer/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
@@ -55,5 +55,5 @@ describe('<AlreadyBooked />', () => {
 })
 
 const renderAlreadyBookedModal = () => {
-  render(<AlreadyBooked offer={{ name: 'hello' } as OfferResponseV2} />)
+  render(<AlreadyBooked offer={{ name: 'hello' } as OfferResponse} />)
 }

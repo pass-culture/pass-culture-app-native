@@ -644,21 +644,21 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                       }
                     >
                       <View
-                        height={24}
-                        width={24}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        numberOfSpaces={2}
                         style={
                           {
-                            "width": 8,
+                            "marginRight": 8,
                           }
                         }
-                      />
+                      >
+                        <View
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                       <View
                         style={
                           {
@@ -774,21 +774,21 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                       }
                     >
                       <View
-                        height={24}
-                        width={24}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        numberOfSpaces={2}
                         style={
                           {
-                            "width": 8,
+                            "marginRight": 8,
                           }
                         }
-                      />
+                      >
+                        <View
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                       <View
                         style={
                           {

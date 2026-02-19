@@ -81,9 +81,8 @@ export const TicketTopPart = ({
             <Typo.Body>Pour deux personnes</Typo.Body>
           </Row>
         ) : null}
-        <Container>
-          <LinkToOffer offer={offer} mapping={mapping} />
-        </Container>
+
+        <LinkToOffer offer={offer} mapping={mapping} />
       </ViewGap>
       {venueInfo}
     </ViewGap>
@@ -111,8 +110,4 @@ const Row = styled.View(({ theme }) => ({
   gap: theme.designSystem.size.spacing.s,
   alignContent: 'center',
   justifyContent: 'flex-start',
-}))
-
-const Container = styled.View(({ theme }) => ({
-  marginLeft: theme.designSystem.size.spacing.xs,
 }))

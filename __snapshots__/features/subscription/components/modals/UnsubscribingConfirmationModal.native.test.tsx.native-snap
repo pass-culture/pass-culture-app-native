@@ -362,11 +362,11 @@ exports[`<UnsubscribingConfirmationModal /> should render correctly 1`] = `
                   Tu ne recevras plus toutes les dernières offres et l’actu liées au thème "Musique".
                 </Text>
                 <View
-                  gap={2}
+                  gap={4}
                   style={
                     {
                       "alignItems": "center",
-                      "gap": 8,
+                      "gap": 16,
                       "marginBottom": 16,
                       "marginTop": 24,
                       "width": "100%",

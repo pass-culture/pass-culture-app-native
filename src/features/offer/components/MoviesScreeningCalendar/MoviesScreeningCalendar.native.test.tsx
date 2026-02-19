@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native'
 
 import {
   BookingsResponse,
-  OfferResponseV2,
+  OfferResponse,
   OffersStocksResponseV2,
   RefreshResponse,
   SubcategoriesResponseModelv2,
@@ -63,7 +63,7 @@ describe('MoviesScreeningCalendar', () => {
     setFeatureFlags()
     mockdate.set(MOCK_DATE)
     mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, mockedOfferStockResponse)
-    mockServer.getApi<OfferResponseV2>(`/v2/offer/${ID}`, {
+    mockServer.getApi<OfferResponse>(`/v3/offer/${ID}`, {
       ...offerResponseSnap,
       id: ID,
       name: MOCK_NAME,

@@ -1,4 +1,4 @@
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { hasEnoughCredit } from 'features/offer/helpers/useHasEnoughCredit/hasEnoughCredit'
@@ -31,7 +31,7 @@ function convertDomainCreditToPacificFranc(
 }
 
 export const useHasEnoughCredit = (
-  offer?: Pick<OfferResponseV2, 'stocks' | 'expenseDomains'>
+  offer?: Pick<OfferResponse, 'stocks' | 'expenseDomains'>
 ): HasEnoughCredit => {
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()

@@ -90,7 +90,7 @@ export function useSearchHistory() {
         const newItems = [
           {
             ...item,
-            createdAt: new Date().getTime(),
+            createdAt: Date.now(),
             label: getHistoryItemLabel({
               query: item.query,
               category: categoryLabel,

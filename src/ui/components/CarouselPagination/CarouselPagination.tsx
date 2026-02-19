@@ -1,3 +1,1 @@
-import { CarouselPaginationBase } from 'ui/components/CarouselPagination/CarouselPaginationBase'
-
-export const CarouselPagination = CarouselPaginationBase
+export { CarouselPaginationBase as CarouselPagination } from 'ui/components/CarouselPagination/CarouselPaginationBase'

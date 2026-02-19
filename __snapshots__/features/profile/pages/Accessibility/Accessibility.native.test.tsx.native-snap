@@ -392,22 +392,22 @@ exports[`Accessibility should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Nouvelle fenêtre"
-                height={20}
-                width={20}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
                 style={
                   {
-                    "width": 8,
+                    "marginRight": 8,
                   }
                 }
-              />
+              >
+                <View
+                  accessibilityLabel="Nouvelle fenêtre"
+                  height={20}
+                  width={20}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
               <View
                 style={
                   {
@@ -511,22 +511,22 @@ exports[`Accessibility should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Nouvelle fenêtre"
-                height={20}
-                width={20}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
                 style={
                   {
-                    "width": 8,
+                    "marginRight": 8,
                   }
                 }
-              />
+              >
+                <View
+                  accessibilityLabel="Nouvelle fenêtre"
+                  height={20}
+                  width={20}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
               <View
                 style={
                   {

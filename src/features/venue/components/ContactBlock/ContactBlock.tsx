@@ -1,9 +1,11 @@
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { VenueContact, VenueResponse } from 'api/gen'
 import { isValidFrenchPhoneNumber } from 'features/venue/components/ContactBlock/isValidFrenchPhoneNumber'
 import { analytics } from 'libs/analytics/provider'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -28,7 +30,7 @@ export const ContactBlock: React.FC<{ venue: Omit<VenueResponse, 'isVirtual'> }>
   }
 
   return (
-    <React.Fragment>
+    <ButtonColumn gap={6}>
       {email ? (
         <ExternalTouchableLink
           externalNav={{ url: `mailto:${email}`, onError: onOpenUrlError }}
@@ -62,6 +64,10 @@ export const ContactBlock: React.FC<{ venue: Omit<VenueResponse, 'isVirtual'> }>
           color="neutral"
         />
       ) : null}
-    </React.Fragment>
+    </ButtonColumn>
   )
 }
+
+const ButtonColumn = styled(ViewGap)({
+  alignItems: 'flex-start',
+})

@@ -29,7 +29,7 @@ describe('Chronicles', () => {
   describe('Mobile displaying', () => {
     describe('Book Club subcategory', () => {
       beforeEach(() => {
-        mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, {
+        mockServer.getApi(`/v3/offer/${offerResponseSnap.id}`, {
           ...offerResponseSnap,
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         })
@@ -60,7 +60,7 @@ describe('Chronicles', () => {
 
     describe('Cine Club subcategory', () => {
       beforeEach(() => {
-        mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, {
+        mockServer.getApi(`/v3/offer/${offerResponseSnap.id}`, {
           ...offerResponseSnap,
           subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
         })
@@ -82,7 +82,7 @@ describe('Chronicles', () => {
   describe('Desktop displaying', () => {
     describe('Cine Club subcategory', () => {
       beforeEach(() => {
-        mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, {
+        mockServer.getApi(`/v3/offer/${offerResponseSnap.id}`, {
           ...offerResponseSnap,
           subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
         })
@@ -132,7 +132,7 @@ describe('Chronicles', () => {
 
     describe('Book Club subcategory', () => {
       beforeEach(() => {
-        mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, {
+        mockServer.getApi(`/v3/offer/${offerResponseSnap.id}`, {
           ...offerResponseSnap,
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         })

@@ -1,3 +1,1 @@
-import { ChronicleSectionBase } from 'features/offer/components/OfferContent/ChronicleSection/ChronicleSectionBase'
-
-export const ChronicleSection = ChronicleSectionBase
+export { ChronicleSectionBase as ChronicleSection } from 'features/offer/components/OfferContent/ChronicleSection/ChronicleSectionBase'

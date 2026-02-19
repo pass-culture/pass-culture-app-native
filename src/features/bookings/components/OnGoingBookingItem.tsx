@@ -8,13 +8,14 @@ import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics/provider'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
-import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Clock as InitialClock } from 'ui/svg/icons/Clock'
 import { Duo } from 'ui/svg/icons/Duo'
 import { OfferEvent as DefaultOfferEvent } from 'ui/svg/icons/OfferEvent'
+import { Share } from 'ui/svg/icons/Share'
 import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
@@ -95,10 +96,13 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Prop
         </AttributesView>
       </ContentContainer>
       <ShareContainer>
-        <RoundedButton
-          iconName="share"
+        <Button
+          iconButton
+          icon={Share}
           onPress={pressShareOffer}
           accessibilityLabel={`Partager l’offre ${stock.offer.name}`}
+          variant="secondary"
+          color="neutral"
         />
       </ShareContainer>
       {shareContent ? (

@@ -2,10 +2,10 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { OfferNotFound } from 'features/offer/pages/OfferNotFound/OfferNotFound'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
-import { OfferNotFoundError, LogTypeEnum } from 'libs/monitoring/errors'
+import { LogTypeEnum, OfferNotFoundError } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 
 const getOfferById = async (offerId: number, logType: LogTypeEnum) => {
@@ -16,7 +16,7 @@ const getOfferById = async (offerId: number, logType: LogTypeEnum) => {
     })
   }
   try {
-    return await api.getNativeV2OfferofferId(offerId)
+    return await api.getNativeV3OfferofferId(offerId)
   } catch (error) {
     if (error instanceof ApiError && error.statusCode === 404) {
       // This happens when the offer has been rejected but it is still indexed on Algolia
@@ -30,12 +30,12 @@ const getOfferById = async (offerId: number, logType: LogTypeEnum) => {
   }
 }
 
-export const useOfferQuery = <T = OfferResponseV2>({
+export const useOfferQuery = <T = OfferResponse>({
   offerId,
   select,
 }: {
   offerId: number
-  select?: (data: OfferResponseV2) => T | undefined
+  select?: (data: OfferResponse) => T | undefined
 }) => {
   const { logType } = useLogTypeFromRemoteConfig()
   const queryClient = useQueryClient()

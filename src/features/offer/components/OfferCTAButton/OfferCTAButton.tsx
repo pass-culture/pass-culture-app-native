@@ -3,7 +3,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { View } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { BookingButton } from 'features/offer/components/BookingButton/BookingButton'
@@ -13,7 +13,7 @@ import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOf
 import { Subcategory } from 'libs/subcategories/types'
 
 type OfferCTAButtonProps = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   subcategory: Subcategory
   trackEventHasSeenOfferOnce: VoidFunction
 }

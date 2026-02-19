@@ -2,7 +2,7 @@ import { useIsFocused } from '@react-navigation/native'
 import { useMemo } from 'react'
 
 import {
-  OfferResponseV2,
+  OfferResponse,
   RecommendationApiParams,
   SearchGroupNameEnumv2,
   SearchGroupResponseModelv2,
@@ -12,7 +12,7 @@ import { Position, useLocation } from 'libs/location/location'
 import { Offer } from 'shared/offer/types'
 
 type Props = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   offerSearchGroup: SearchGroupNameEnumv2
   searchGroupList: SearchGroupResponseModelv2[]
 }

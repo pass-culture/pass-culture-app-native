@@ -60,7 +60,7 @@ jest.useFakeTimers()
 
 describe('Chronicles', () => {
   beforeEach(() => {
-    mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
+    mockServer.getApi(`/v3/offer/${offerResponseSnap.id}`, offerResponseSnap)
     mockServer.getApi(`/v1/offer/${offerResponseSnap.id}/chronicles`, offerChroniclesFixture)
   })
 
@@ -75,7 +75,7 @@ describe('Chronicles', () => {
     })
 
     it('should display book club icon when offer subcategory linked to a book', async () => {
-      mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, {
+      mockServer.getApi(`/v3/offer/${offerResponseSnap.id}`, {
         ...offerResponseSnap,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       })
@@ -88,7 +88,7 @@ describe('Chronicles', () => {
     })
 
     it('should display cine club icon when offer subcategory linked to a film', async () => {
-      mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, {
+      mockServer.getApi(`/v3/offer/${offerResponseSnap.id}`, {
         ...offerResponseSnap,
         subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
       })

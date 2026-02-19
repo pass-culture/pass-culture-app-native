@@ -1642,17 +1642,17 @@ export interface ChangePasswordRequest {
  */
 export interface ChronicleAuthor {
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof ChronicleAuthor
    */
   age?: number | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof ChronicleAuthor
    */
   city?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof ChronicleAuthor
    */
   firstName?: string | null
@@ -1663,7 +1663,7 @@ export interface ChronicleAuthor {
  */
 export interface ChroniclePreview {
   /**
-   * @type {ChronicleAuthor}
+   * @type {ChronicleAuthor | null}
    * @memberof ChroniclePreview
    */
   author?: ChronicleAuthor | null
@@ -2444,22 +2444,22 @@ export interface GtlLabels {
    */
   label: string
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof GtlLabels
    */
   level01Label?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof GtlLabels
    */
   level02Label?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof GtlLabels
    */
   level03Label?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof GtlLabels
    */
   level04Label?: string | null
@@ -2790,22 +2790,22 @@ export interface OauthStateResponse {
  */
 export interface OfferAccessibilityResponse {
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof OfferAccessibilityResponse
    */
   audioDisability?: boolean | null
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof OfferAccessibilityResponse
    */
   mentalDisability?: boolean | null
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof OfferAccessibilityResponse
    */
   motorDisability?: boolean | null
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof OfferAccessibilityResponse
    */
   visualDisability?: boolean | null
@@ -2826,7 +2826,7 @@ export interface OfferAddressResponse {
    */
   coordinates: Coordinates
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferAddressResponse
    */
   label?: string | null
@@ -2836,7 +2836,7 @@ export interface OfferAddressResponse {
    */
   postalCode: string
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferAddressResponse
    */
   street?: string | null
@@ -2852,12 +2852,12 @@ export interface OfferAddressResponse {
  */
 export interface OfferArtist {
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferArtist
    */
-  id: string
+  id?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferArtist
    */
   image?: string | null
@@ -2867,7 +2867,7 @@ export interface OfferArtist {
    */
   name: string
   /**
-   * @type {ArtistType}
+   * @type {ArtistType | null}
    * @memberof OfferArtist
    */
   role?: ArtistType | null
@@ -2915,97 +2915,97 @@ export interface OfferChronicles {
  */
 export interface OfferExtraDataResponse {
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof OfferExtraDataResponse
    */
   allocineId?: number | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   author?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   bookFormat?: string | null
   /**
-   * @type {Array<string>}
+   * @type {Array<string> | null}
    * @memberof OfferExtraDataResponse
    */
   cast?: Array<string> | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   certificate?: string | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof OfferExtraDataResponse
    */
   durationMinutes?: number | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   ean?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   editeur?: string | null
   /**
-   * @type {Array<string>}
+   * @type {Array<string> | null}
    * @memberof OfferExtraDataResponse
    */
   genres?: Array<string> | null
   /**
-   * @type {GtlLabels}
+   * @type {GtlLabels | null}
    * @memberof OfferExtraDataResponse
    */
   gtlLabels?: GtlLabels | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   musicSubType?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   musicType?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   performer?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   releaseDate?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   showSubType?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   showType?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   speaker?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   stageDirector?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   visa?: string | null
@@ -3032,7 +3032,7 @@ export interface OfferImage {
  */
 export interface OfferImageResponse {
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferImageResponse
    */
   credit?: string | null
@@ -3105,7 +3105,7 @@ export interface OfferResponse {
    */
   accessibility: OfferAccessibilityResponse
   /**
-   * @type {OfferAddressResponse}
+   * @type {OfferAddressResponse | null}
    * @memberof OfferResponse
    */
   address?: OfferAddressResponse | null
@@ -3115,7 +3115,7 @@ export interface OfferResponse {
    */
   artists: Array<OfferArtist>
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferResponse
    */
   bookingAllowedDatetime?: string | null
@@ -3125,12 +3125,12 @@ export interface OfferResponse {
    */
   chronicles: Array<ChroniclePreview>
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof OfferResponse
    */
   chroniclesCount?: number | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferResponse
    */
   description?: string | null
@@ -3140,289 +3140,123 @@ export interface OfferResponse {
    */
   expenseDomains: Array<ExpenseDomain>
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferResponse
    */
   externalTicketOfficeUrl?: string | null
   /**
-   * @type {OfferExtraDataResponse}
+   * @type {OfferExtraDataResponse | null}
    * @memberof OfferResponse
    */
   extraData?: OfferExtraDataResponse | null
   /**
    * @type {number}
    * @memberof OfferResponse
-   */
-  id: number
-  /**
-   * @type {OfferImageResponse}
-   * @memberof OfferResponse
-   */
-  image?: OfferImageResponse | null
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isDigital: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isDuo: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isEducational: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isEvent: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponseV2
-   */
-  isExpired: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isExternalBookingsDisabled: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isForbiddenToUnderage: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isHeadline: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isReleased: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isSoldOut: boolean
-  /**
-   * @type {number}
-   * @memberof OfferResponse
-   */
-  last30DaysBookings?: number | null
-  /**
-   * @type {any}
-   * @memberof OfferResponse
-   */
-  metadata: any
-  /**
-   * @type {string}
-   * @memberof OfferResponse
-   */
-  name: string
-  /**
-   * @type {string}
-   * @memberof OfferResponse
-   */
-  publicationDate?: string | null
-  /**
-   * @type {ReactionCount}
-   * @memberof OfferResponse
-   */
-  reactionsCount: ReactionCount
-  /**
-   * @type {Array<OfferStockResponse>}
-   * @memberof OfferResponse
-   */
-  stocks: Array<OfferStockResponse>
-  /**
-   * @type {SubcategoryIdEnum}
-   * @memberof OfferResponse
-   */
-  subcategoryId: SubcategoryIdEnum
-  /**
-   * @type {OfferVenueResponse}
-   * @memberof OfferResponse
-   */
-  venue: OfferVenueResponse
-  /**
-   * @type {OfferVideo}
-   * @memberof OfferResponse
-   */
-  video?: OfferVideo | null
-  /**
-   * @type {string}
-   * @memberof OfferResponse
-   */
-  withdrawalDetails?: string | null
-}
-/**
- * @export
- * @interface OfferResponseV2
- */
-export interface OfferResponseV2 {
-  /**
-   * @type {OfferAccessibilityResponse}
-   * @memberof OfferResponseV2
-   */
-  accessibility: OfferAccessibilityResponse
-  /**
-   * @type {OfferAddressResponse}
-   * @memberof OfferResponseV2
-   */
-  address?: OfferAddressResponse | null
-  /**
-   * @type {Array<OfferArtist>}
-   * @memberof OfferResponseV2
-   */
-  artists: Array<OfferArtist>
-  /**
-   * @type {string}
-   * @memberof OfferResponseV2
-   */
-  bookingAllowedDatetime?: string | null
-  /**
-   * @type {Array<ChroniclePreview>}
-   * @memberof OfferResponseV2
-   */
-  chronicles: Array<ChroniclePreview>
-  /**
-   * @type {number}
-   * @memberof OfferResponseV2
-   */
-  chroniclesCount?: number | null
-  /**
-   * @type {string}
-   * @memberof OfferResponseV2
-   */
-  description?: string | null
-  /**
-   * @type {Array<ExpenseDomain>}
-   * @memberof OfferResponseV2
-   */
-  expenseDomains: Array<ExpenseDomain>
-  /**
-   * @type {string}
-   * @memberof OfferResponseV2
-   */
-  externalTicketOfficeUrl?: string | null
-  /**
-   * @type {OfferExtraDataResponse}
-   * @memberof OfferResponseV2
-   */
-  extraData?: OfferExtraDataResponse | null
-  /**
-   * @type {number}
-   * @memberof OfferResponseV2
    */
   id: number
   /**
    * @type {{ [key: string]: OfferImageResponse; }}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   images?: { [key: string]: OfferImageResponse; } | null
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isDigital: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isDuo: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isEducational: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isEvent: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isExpired: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isExternalBookingsDisabled: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isForbiddenToUnderage: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isHeadline: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isReleased: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isSoldOut: boolean
   /**
-   * @type {number}
-   * @memberof OfferResponseV2
+   * @type {number | null}
+   * @memberof OfferResponse
    */
   last30DaysBookings?: number | null
   /**
    * @type {any}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   metadata: any
   /**
    * @type {string}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   name: string
   /**
-   * @type {string}
-   * @memberof OfferResponseV2
+   * @type {string | null}
+   * @memberof OfferResponse
    */
   publicationDate?: string | null
   /**
    * @type {ReactionCount}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   reactionsCount: ReactionCount
   /**
    * @type {Array<OfferStockResponse>}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   stocks: Array<OfferStockResponse>
   /**
    * @type {SubcategoryIdEnum}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   subcategoryId: SubcategoryIdEnum
   /**
    * @type {OfferVenueResponse}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   venue: OfferVenueResponse
   /**
-   * @type {OfferVideo}
-   * @memberof OfferResponseV2
+   * @type {OfferVideo | null}
+   * @memberof OfferResponse
    */
   video?: OfferVideo | null
   /**
-   * @type {string}
-   * @memberof OfferResponseV2
+   * @type {string | null}
+   * @memberof OfferResponse
    */
   withdrawalDetails?: string | null
 }
@@ -3432,7 +3266,7 @@ export interface OfferResponseV2 {
  */
 export interface OfferStockActivationCodeResponse {
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferStockActivationCodeResponse
    */
   expirationDate?: string | null
@@ -3443,22 +3277,22 @@ export interface OfferStockActivationCodeResponse {
  */
 export interface OfferStockResponse {
   /**
-   * @type {OfferStockActivationCodeResponse}
+   * @type {OfferStockActivationCodeResponse | null}
    * @memberof OfferStockResponse
    */
   activationCode?: OfferStockActivationCodeResponse | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferStockResponse
    */
   beginningDatetime?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferStockResponse
    */
   bookingLimitDatetime?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferStockResponse
    */
   cancellationLimitDatetime?: string | null
@@ -3498,15 +3332,31 @@ export interface OfferStockResponse {
    */
   price: number
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferStockResponse
    */
   priceCategoryLabel?: string | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof OfferStockResponse
    */
   remainingQuantity?: number | null
+}
+/**
+ * @export
+ * @interface OfferVenueCoordinates
+ */
+export interface OfferVenueCoordinates {
+  /**
+   * @type {number | null}
+   * @memberof OfferVenueCoordinates
+   */
+  latitude?: number | null
+  /**
+   * @type {number | null}
+   * @memberof OfferVenueCoordinates
+   */
+  longitude?: number | null
 }
 /**
  * @export
@@ -3514,25 +3364,25 @@ export interface OfferStockResponse {
  */
 export interface OfferVenueResponse {
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferVenueResponse
    */
   address?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferVenueResponse
    */
   bannerUrl?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferVenueResponse
    */
   city?: string | null
   /**
-   * @type {Coordinates}
+   * @type {OfferVenueCoordinates}
    * @memberof OfferVenueResponse
    */
-  coordinates: Coordinates
+  coordinates: OfferVenueCoordinates
   /**
    * @type {number}
    * @memberof OfferVenueResponse
@@ -3559,7 +3409,7 @@ export interface OfferVenueResponse {
    */
   offerer: OfferOffererResponse
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferVenueResponse
    */
   postalCode?: string | null
@@ -3580,7 +3430,7 @@ export interface OfferVenueResponse {
  */
 export interface OfferVideo {
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof OfferVideo
    */
   durationSeconds?: number | null
@@ -3590,12 +3440,12 @@ export interface OfferVideo {
    */
   id: string
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferVideo
    */
   thumbUrl?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferVideo
    */
   title?: string | null
@@ -3641,7 +3491,7 @@ export interface OffersStocksResponseV2 {
    * @type {Array<OfferResponseV2>}
    * @memberof OffersStocksResponseV2
    */
-  offers: Array<OfferResponseV2>
+  offers: Array<OfferResponse>
 }
 /**
  * An enumeration.
@@ -3696,52 +3546,52 @@ export interface PhoneValidationRemainingAttemptsRequest {
  */
 export interface PlaylistRequestBody {
   /**
-   * @type {Array<string>}
+   * @type {Array<string> | null}
    * @memberof PlaylistRequestBody
    */
   categories?: Array<string> | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof PlaylistRequestBody
    */
   endDate?: string | null
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof PlaylistRequestBody
    */
   isDuo?: boolean | null
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof PlaylistRequestBody
    */
   isEvent?: boolean | null
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof PlaylistRequestBody
    */
   isRecoShuffled?: boolean | null
   /**
-   * @type {Array<{ [key: string]: string; }>}
+   * @type {Array<Map> | null}
    * @memberof PlaylistRequestBody
    */
   offerTypeList?: Array<{ [key: string]: string; }> | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof PlaylistRequestBody
    */
   priceMax?: number | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof PlaylistRequestBody
    */
   priceMin?: number | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof PlaylistRequestBody
    */
   startDate?: string | null
   /**
-   * @type {Array<string>}
+   * @type {Array<string> | null}
    * @memberof PlaylistRequestBody
    */
   subcategories?: Array<string> | null
@@ -3752,17 +3602,17 @@ export interface PlaylistRequestBody {
  */
 export interface PlaylistRequestQuery {
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof PlaylistRequestQuery
    */
   latitude?: number | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof PlaylistRequestQuery
    */
   longitude?: number | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof PlaylistRequestQuery
    */
   modelEndpoint?: string | null
@@ -3940,42 +3790,42 @@ export enum ReactionTypeEnum {
  */
 export interface RecommendationApiParams {
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof RecommendationApiParams
    */
   ab_test?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof RecommendationApiParams
    */
   call_id?: string | null
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof RecommendationApiParams
    */
   filtered?: boolean | null
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof RecommendationApiParams
    */
   geo_located?: boolean | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof RecommendationApiParams
    */
   model_endpoint?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof RecommendationApiParams
    */
   model_name?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof RecommendationApiParams
    */
   model_version?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof RecommendationApiParams
    */
   reco_origin?: string | null
@@ -4337,27 +4187,27 @@ export interface SigninResponse {
  */
 export interface SimilarOffersRequestQuery {
   /**
-   * @type {Array<string>}
+   * @type {Array<string> | null}
    * @memberof SimilarOffersRequestQuery
    */
   categories?: Array<string> | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof SimilarOffersRequestQuery
    */
   latitude?: number | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof SimilarOffersRequestQuery
    */
   longitude?: number | null
   /**
-   * @type {Array<string>}
+   * @type {Array<string> | null}
    * @memberof SimilarOffersRequestQuery
    */
   search_group_names?: Array<string> | null
   /**
-   * @type {Array<string>}
+   * @type {Array<string> | null}
    * @memberof SimilarOffersRequestQuery
    */
   subcategories?: Array<string> | null
@@ -6076,6 +5926,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     },
     /**
      * @summary get_venue <GET>
+     * @deprecated
      * @param {number} venue_id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -6179,6 +6030,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     },
     /**
      * @summary get_offer_v2 <GET>
+     * @deprecated
      * @param {number} offer_id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -6257,6 +6109,33 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       let pathname = `/native/v2/venue/{venue_id}`.replace(
         `{${'venue_id'}}`,
         encodeURIComponent(String(venue_id))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_offer_v3 <GET>
+     * @param {number} offer_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV3OfferofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'offer_id' is not null or undefined
+      if (offer_id === null || offer_id === undefined) {
+        throw new RequiredError(
+          'offer_id',
+          'Required parameter offer_id was null or undefined when calling getNativeV3OfferofferId.'
+        )
+      }
+      let pathname = `/native/v3/offer/{offer_id}`.replace(
+        `{${'offer_id'}}`,
+        encodeURIComponent(String(offer_id))
       )
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
@@ -7779,6 +7658,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     /**
      * 
      * @summary get_venue <GET>
+     * @deprecated
      * @param {number} venue_id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -7825,18 +7705,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
-     * @summary get_offer_v2 <GET>
-     * @param {number} offer_id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV2OfferofferId(offer_id: number, options?: any): Promise<OfferResponseV2> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2OfferofferId(offer_id, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
      * @summary get_email_update_status <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -7866,6 +7734,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getNativeV2VenuevenueId(venue_id: number, options?: any): Promise<VenueResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2VenuevenueId(venue_id, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_offer_v3 <GET>
+     * @param {number} offer_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV3OfferofferId(offer_id: number, options?: any): Promise<OfferResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV3OfferofferId(offer_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -8719,6 +8599,7 @@ export class DefaultApi extends BaseAPI {
   /**
     * 
     * @summary get_venue <GET>
+    * @deprecated
     * @param {number} venue_id 
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
@@ -8765,18 +8646,6 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     * 
-    * @summary get_offer_v2 <GET>
-    * @param {number} offer_id 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV2OfferofferId(offer_id: number, options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV2OfferofferId(offer_id, options)
-  }
-  /**
-    * 
     * @summary get_email_update_status <GET>
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
@@ -8808,6 +8677,18 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV2VenuevenueId(venue_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV2VenuevenueId(venue_id, options)
+  }
+  /**
+    * 
+    * @summary get_offer_v3 <GET>
+    * @param {number} offer_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV3OfferofferId(offer_id: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV3OfferofferId(offer_id, options)
   }
   /**
     * 

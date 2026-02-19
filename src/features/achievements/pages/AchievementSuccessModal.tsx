@@ -71,6 +71,8 @@ export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow
             ? 'Tu as débloqué plusieurs succès\u00a0!'
             : 'Tu as débloqué un succès\u00a0!'}
         </StyledTitle>
+      </StyledViewGap>
+      <ViewGap gap={4}>
         <InternalTouchableLink
           as={Button}
           wording="Accéder à mes succès"
@@ -78,7 +80,6 @@ export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow
           onBeforeNavigate={hideModalAndMarkAsSeen}
           fullWidth
         />
-
         <Button
           variant="tertiary"
           color="neutral"
@@ -87,7 +88,7 @@ export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow
           icon={Invalidate}
           onPress={hideModalAndMarkAsSeen}
         />
-      </StyledViewGap>
+      </ViewGap>
     </AppInformationModal>
   )
 }

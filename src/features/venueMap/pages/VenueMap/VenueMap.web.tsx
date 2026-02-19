@@ -1,3 +1,1 @@
-import { VenueMapBase } from 'features/venueMap/pages/VenueMap/VenueMapBase'
-
-export const VenueMap = VenueMapBase
+export { VenueMapBase as VenueMap } from 'features/venueMap/pages/VenueMap/VenueMapBase'

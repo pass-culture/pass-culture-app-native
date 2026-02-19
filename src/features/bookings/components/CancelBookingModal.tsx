@@ -14,9 +14,8 @@ import { analytics } from 'libs/analytics/provider'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Close } from 'ui/svg/icons/Close'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -88,12 +87,14 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
         <OfferName>{booking.stock.offer.name}</OfferName>
         {refundRule ? <Refund>{refundRule}</Refund> : null}
         <CancelButtonContainer>
-          <ButtonPrimary wording="Annuler ma réservation" onPress={confirmCancelBooking} />
+          <Button wording="Annuler ma réservation" onPress={confirmCancelBooking} />
         </CancelButtonContainer>
-        <ButtonTertiaryPrimary
+        <Button
           wording="Retourner à ma réservation"
           onPress={dismissModal}
           icon={PlainArrowPrevious}
+          variant="tertiary"
+          color="brand"
         />
       </ModalContent>
     </AppModal>
@@ -101,7 +102,6 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
 }
 
 const ModalContent = styled.View(({ theme }) => ({
-  paddingHorizontal: theme.designSystem.size.spacing.xl,
   width: '100%',
   marginBottom: theme.designSystem.size.spacing.xs,
 }))

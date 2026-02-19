@@ -1,6 +1,6 @@
 import type { ReadonlyDeep } from 'type-fest'
 
-import { ExpenseDomain, OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
+import { ExpenseDomain, OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { toMutable } from 'shared/types/toMutable'
 
 export const mockOffer = toMutable({
@@ -133,7 +133,7 @@ export const mockOffer = toMutable({
   chronicles: [],
   isHeadline: false,
   artists: [],
-} as const satisfies ReadonlyDeep<OfferResponseV2>)
+} as const satisfies ReadonlyDeep<OfferResponse>)
 
 export const mockDigitalOffer = toMutable({
   id: 146113,
@@ -233,4 +233,4 @@ export const mockDigitalOffer = toMutable({
   chronicles: [],
   isHeadline: false,
   artists: [],
-} as const satisfies ReadonlyDeep<OfferResponseV2>)
+} as const satisfies ReadonlyDeep<OfferResponse>)

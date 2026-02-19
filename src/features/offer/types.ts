@@ -5,7 +5,7 @@ import {
   CategoryIdEnum,
   FavoriteResponse,
   OfferArtist,
-  OfferResponseV2,
+  OfferResponse,
   ReactionTypeEnum,
   RecommendationApiParams,
   SearchGroupResponseModelv2,
@@ -78,7 +78,7 @@ type OfferHeaderComponentProps = PropsWithChildren<{
 }>
 
 export type OfferContentProps = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   searchGroupList: SearchGroupResponseModelv2[]
   chronicleVariantInfo: ChronicleVariantInfo
   subcategory: Subcategory

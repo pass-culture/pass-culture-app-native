@@ -4,59 +4,79 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { TextPlaceholder } from 'ui/components/placeholders/Placeholders'
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
-import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { getSpacing, Spacer } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { getSpacing } from 'ui/theme'
 
 export const OfferContentPlaceholder: FunctionComponent = () => {
   const { designSystem } = useTheme()
   return (
     <View testID="OfferContentPlaceholder">
-      <Spacer.Column numberOfSpaces={designSystem.size.spacing.xxl} />
       <ImageContainer>
         <TextPlaceholder height={getSpacing(95)} width={getSpacing(60)} />
       </ImageContainer>
-      <Spacer.Column numberOfSpaces={8} />
       <BodyContainer>
         <Row>
           <TextPlaceholder height={designSystem.size.spacing.xl} width={getSpacing(22)} />
-          <Spacer.Row numberOfSpaces={2} />
           <TextPlaceholder height={designSystem.size.spacing.xl} width={getSpacing(22)} />
         </Row>
-        <Spacer.Column numberOfSpaces={5} />
-        <TextPlaceholder height={designSystem.size.spacing.l} width={getSpacing(74)} />
-        <Spacer.Column numberOfSpaces={2} />
-        <TextPlaceholder height={designSystem.size.spacing.l} width={getSpacing(40)} />
-        <Spacer.Column numberOfSpaces={10} />
-        <TextPlaceholder height={designSystem.size.spacing.xl} width={getSpacing(22)} />
-        <Spacer.Column numberOfSpaces={10} />
-        <TextPlaceholder height={designSystem.size.spacing.xl} width={getSpacing(63)} />
-        <Spacer.Column numberOfSpaces={5} />
-        <TextPlaceholder height={designSystem.size.spacing.l} width={getSpacing(33)} />
-        <Spacer.Column numberOfSpaces={3.5} />
-        <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(82)} />
-        <Spacer.Column numberOfSpaces={2} />
-        <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(67)} />
-        <Spacer.Column numberOfSpaces={2} />
-        <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(82)} />
-        <Spacer.Column numberOfSpaces={2} />
-        <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(67)} />
-        <Spacer.Column numberOfSpaces={2} />
-        <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(82)} />
-        <Spacer.Column numberOfSpaces={2} />
-        <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(82)} />
-        <Spacer.Column numberOfSpaces={8} />
+        <StyledTextPlaceholder
+          marginBottom={designSystem.size.spacing.xxs}
+          height={designSystem.size.spacing.l}
+          width={getSpacing(74)}
+        />
+        <StyledTextPlaceholder
+          marginBottom={designSystem.size.spacing.s}
+          height={designSystem.size.spacing.l}
+          width={getSpacing(40)}
+        />
+        <StyledTextPlaceholder
+          marginBottom={designSystem.size.spacing.s}
+          height={designSystem.size.spacing.xl}
+          width={getSpacing(22)}
+        />
+        <StyledTextPlaceholder
+          marginBottom={designSystem.size.spacing.xs}
+          height={designSystem.size.spacing.xl}
+          width={getSpacing(63)}
+        />
+        <StyledTextPlaceholder
+          marginBottom={designSystem.size.spacing.xs}
+          height={designSystem.size.spacing.l}
+          width={getSpacing(33)}
+        />
+        <StyledViewGap gap={2}>
+          <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(82)} />
+          <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(67)} />
+          <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(82)} />
+          <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(67)} />
+          <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(82)} />
+          <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(82)} />
+        </StyledViewGap>
       </BodyContainer>
-      <SectionWithDivider visible margin gap={0}>
-        <Spacer.Column numberOfSpaces={8} />
-        <TextPlaceholder height={designSystem.size.spacing.xl} width={getSpacing(63)} />
-        <Spacer.Column numberOfSpaces={8} />
-        <TextPlaceholder height={designSystem.size.spacing.l} width={getSpacing(33)} />
-        <Spacer.Column numberOfSpaces={2} />
-        <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(58)} />
-        <Spacer.Column numberOfSpaces={6} />
-        <TextPlaceholder height={designSystem.size.spacing.xl} width={getSpacing(16)} />
-        <Spacer.Column numberOfSpaces={4} />
-      </SectionWithDivider>
+      <Divider />
+      <Wrapper>
+        <StyledTextPlaceholderWithMarginTop
+          marginBottom={designSystem.size.spacing.s}
+          height={designSystem.size.spacing.xl}
+          width={getSpacing(63)}
+        />
+        <StyledTextPlaceholder
+          marginBottom={designSystem.size.spacing.xxs}
+          height={designSystem.size.spacing.l}
+          width={getSpacing(33)}
+        />
+        <StyledTextPlaceholder
+          marginBottom={designSystem.size.spacing.s}
+          height={designSystem.size.spacing.s}
+          width={getSpacing(58)}
+        />
+        <StyledTextPlaceholder
+          marginBottom={designSystem.size.spacing.xs}
+          height={designSystem.size.spacing.xl}
+          width={getSpacing(16)}
+        />
+      </Wrapper>
+
       <BodyContainer>
         <SkeletonTile
           borderRadius={designSystem.size.borderRadius.xl}
@@ -65,20 +85,50 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
           fullWidth
         />
       </BodyContainer>
-      <Spacer.Column numberOfSpaces={8} />
     </View>
   )
 }
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  flexDirection: 'column',
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
 
-const ImageContainer = styled.View({
+const Wrapper = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))
+const StyledTextPlaceholder = styled(TextPlaceholder)<{ marginBottom: number }>(
+  ({ marginBottom }) => ({
+    marginBottom,
+  })
+)
+const StyledTextPlaceholderWithMarginTop = styled(StyledTextPlaceholder)<{ marginBottom: number }>(
+  ({ marginBottom, theme }) => ({
+    marginBottom,
+    marginTop: theme.designSystem.size.spacing.xxl,
+    paddingTop: theme.designSystem.size.spacing.xxl,
+  })
+)
+
+const ImageContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
-})
+  marginTop: theme.designSystem.size.spacing.xxxxl,
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
 
 const BodyContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.xxl,
 }))
 
-const Row = styled.View({
+const Row = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-})
+  gap: theme.designSystem.size.spacing.s,
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
+
+const Divider = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.s,
+  backgroundColor: theme.designSystem.color.background.subtle,
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))

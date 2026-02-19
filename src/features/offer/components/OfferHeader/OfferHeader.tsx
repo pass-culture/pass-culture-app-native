@@ -2,7 +2,7 @@ import React, { PropsWithChildren, useCallback } from 'react'
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
@@ -17,7 +17,7 @@ import { Share } from 'ui/svg/icons/Share'
 type OfferHeaderProps = PropsWithChildren<{
   headerTransition: Animated.AnimatedInterpolation<string | number>
   title: string
-  offer: OfferResponseV2
+  offer: OfferResponse
 }>
 
 /**

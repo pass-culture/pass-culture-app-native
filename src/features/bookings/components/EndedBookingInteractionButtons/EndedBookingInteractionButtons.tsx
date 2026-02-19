@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
 
 import { BookingListItemResponse, ReactionTypeEnum } from 'api/gen'
 import { SmallBadgedButton } from 'features/bookings/components/SmallBadgedButton'
 import { useReactionIcon } from 'features/bookings/helpers/useReactionIcon/useReactionIcon'
-import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
+import { Share } from 'ui/svg/icons/Share'
 
 type Props = {
   booking: BookingListItemResponse
@@ -34,35 +34,29 @@ export const EndedBookingInteractionButtons: FunctionComponent<Props> = ({
       .join(' ')
   }
 
-  const ReactionButton = userReaction === null ? SmallBadgedButton : RoundedButton
+  const ReactionButton = userReaction === null ? SmallBadgedButton : Button
 
   return (
     <ViewGap gap={4}>
-      <ShareContainer>
-        <RoundedButton
-          iconName="share"
-          onPress={handlePressShareOffer}
-          accessibilityLabel={`Partager l’offre ${stock.offer.name}`}
-        />
-      </ShareContainer>
+      <Button
+        iconButton
+        icon={Share}
+        onPress={handlePressShareOffer}
+        accessibilityLabel={`Partager l’offre ${stock.offer.name}`}
+        variant="secondary"
+        color="neutral"
+      />
+
       {canReact ? (
-        <ReactionContainer>
-          <ReactionButton
-            iconName="like"
-            Icon={ReactionIcon}
-            onPress={handleShowReactionModal}
-            accessibilityLabel={getReactionButtonAccessibilityLabel(userReaction)}
-          />
-        </ReactionContainer>
+        <ReactionButton
+          iconButton
+          icon={ReactionIcon}
+          onPress={handleShowReactionModal}
+          accessibilityLabel={getReactionButtonAccessibilityLabel(userReaction)}
+          variant="secondary"
+          color="neutral"
+        />
       ) : null}
     </ViewGap>
   )
 }
-
-const ShareContainer = styled.View(({ theme }) => ({
-  borderRadius: theme.designSystem.size.borderRadius.pill,
-}))
-
-const ReactionContainer = styled.View(({ theme }) => ({
-  borderRadius: theme.designSystem.size.borderRadius.pill,
-}))

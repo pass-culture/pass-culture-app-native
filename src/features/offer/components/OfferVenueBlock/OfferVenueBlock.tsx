@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
+import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { getVenueBlock } from 'features/offer/components/OfferVenueBlock/getVenueBlock'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
 import { getAddress, getVenue } from 'features/offer/helpers/getVenueBlockProps'
@@ -17,7 +17,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   title: string
-  offer: OfferResponseV2
+  offer: OfferResponse
   isOfferAtSameAddressAsVenue: boolean
   onChangeVenuePress?: VoidFunction
   onSeeVenuePress?: VoidFunction

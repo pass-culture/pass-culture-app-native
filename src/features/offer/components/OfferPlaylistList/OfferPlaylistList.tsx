@@ -4,7 +4,7 @@ import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
-import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
+import { OfferResponse, RecommendationApiParams } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
 import { PlaylistType } from 'features/offer/enums'
@@ -28,7 +28,7 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 
 export type OfferPlaylistListProps = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   sameCategorySimilarOffers?: Offer[]
   apiRecoParamsSameCategory?: RecommendationApiParams
   otherCategoriesSimilarOffers?: Offer[]

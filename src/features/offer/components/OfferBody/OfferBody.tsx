@@ -3,7 +3,7 @@ import React, { FunctionComponent, ReactNode, useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryIdEnum, OfferArtist, OfferResponseV2 } from 'api/gen'
+import { CategoryIdEnum, OfferArtist, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -43,7 +43,7 @@ import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   subcategory: Subcategory
   children: ReactNode
   chronicleVariantInfo: ChronicleVariantInfo
@@ -84,7 +84,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     }
   }, [isVideoSectionEnabled, params])
 
-  const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
+  const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -106,10 +106,9 @@ export const OfferBody: FunctionComponent<Props> = ({
     { fractionDigits: 2 }
   )
 
-  const hasAccessToArtistPage = isMultiArtistsEnabled
-    ? hasArtistPage
-    : hasArtistPage && artists.length === 1
-
+  const hasAccessToArtistPage =
+    enableArtistPage &&
+    (artists.length > 1 ? isMultiArtistsEnabled : artists.length === 1 && !!artists[0]?.id)
   const isCinemaOffer = subcategory.categoryId === CategoryIdEnum.CINEMA
 
   const { summaryInfoItems } = useOfferSummaryInfoList({
@@ -134,7 +133,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
     if (artists.length === 1) {
       const artist = artists[0]
-      if (artist) {
+      if (artist && artist.id) {
         void analytics.logConsultArtist({
           offerId: offer.id.toString(),
           artistId: artist.id,

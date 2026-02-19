@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { OfferVideoPreview } from 'features/offer/pages/OfferVideoPreview/OfferVideoPreview'
@@ -9,7 +9,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen, userEvent } from 'tests/utils'
 
-const mockOffer = jest.fn((): { data: OfferResponseV2 } => ({
+const mockOffer = jest.fn((): { data: OfferResponse } => ({
   data: offerResponseSnap,
 }))
 

@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { QueryKeys } from 'libs/queryKeys'
 
 import { fetchHeadlineOffersCount } from '../api/headlineOffers/fetchHeadlineOffersCount'
 
-export const useFetchHeadlineOffersCountQuery = (offer?: OfferResponseV2) => {
+export const useFetchHeadlineOffersCountQuery = (offer?: OfferResponse) => {
   const ean = offer?.extraData?.ean
 
   return useQuery({
