@@ -1,11 +1,11 @@
 import { ReactNode } from 'react'
 import { Animated } from 'react-native'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { ShareContent } from 'libs/share/types'
 
 export type UseOfferHeaderParams = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   headerTransition: Animated.AnimatedInterpolation<string | number>
 }
 

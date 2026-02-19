@@ -74,7 +74,7 @@ export interface VenueDetail {
 type OfferHeaderComponentProps = PropsWithChildren<{
   headerTransition: Animated.AnimatedInterpolation<string | number>
   title: string
-  offer: OfferResponseV2
+  offer: OfferResponse
 }>
 
 export type OfferContentProps = {
