@@ -1,8 +1,8 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - 'scroll'
-- assertVisible: 'Aides'
-- tapOn: "Nouvelle fenêtre\_: Centre d’aide"
+- assertVisible: 'Aide'
+- tapOn: "Nouvelle fenêtre\_: Chercher une info"
 
 - runFlow: # Si 1ere ouverture de chrome
     when:
