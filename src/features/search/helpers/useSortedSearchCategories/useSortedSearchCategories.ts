@@ -15,7 +15,7 @@ export type MappingOutput = Pick<
   CategoryButtonProps,
   'label' | 'navigateTo' | 'onBeforeNavigate' | 'height' | 'style'
 > & {
-  position: number | undefined
+  searchLandingPosition: number | undefined
   fillColor: BackgroundColorKey
   borderColor: BorderColorKey
 }
@@ -23,8 +23,8 @@ export type MappingOutput = Pick<
 export type ListCategoryButtonProps = MappingOutput[]
 
 export function categoriesSortPredicate(a: MappingOutput, b: MappingOutput): number {
-  const positionA: number = a?.position || 0
-  const positionB: number = b?.position || 0
+  const positionA: number = a?.searchLandingPosition || 0
+  const positionB: number = b?.searchLandingPosition || 0
   return positionA - positionB
 }
 
@@ -58,7 +58,7 @@ export const useSortedSearchCategories = (): ListCategoryButtonProps => {
       label: searchGroupLabelMapping?.[category.facetFilter] || '',
       navigateTo: navigateTo(category.facetFilter),
       onBeforeNavigate: () => onBeforeNavigate(category.facetFilter),
-      position: category.position,
+      searchLandingPosition: category.searchLandingPosition,
       borderColor: category.borderColor,
       fillColor: category.fillColor,
     }))
