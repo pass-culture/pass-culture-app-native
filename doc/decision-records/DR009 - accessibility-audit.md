@@ -1123,9 +1123,11 @@ Texte
 
 **Problème** 😱  
 E07 : le texte "Obligatoire" du champ "Adresse e-mail" se retrouve partiellement hors écran
+E03 , E04 , E05, E06 et E11 : les premiers éléments se superposent au titre de l’en-tête.
 
 **Correction** 💡  
-La mention obligatoire passe à la ligne lorsque lors d'un zoom egal ou supérieur à 200
+E07 : La mention obligatoire passe à la ligne lorsque lors d'un zoom egal ou supérieur à 200
+E03 , E04 , E05, E06 et E11 : le header est opaque
 
 **Retours audit** 🔥  
 Texte
