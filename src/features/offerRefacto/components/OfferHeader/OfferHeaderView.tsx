@@ -7,7 +7,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Share } from 'ui/svg/icons/Share'
 
-import { OfferHeaderViewProps } from './types'
+import { OfferHeaderViewProps } from 'features/offerRefacto/types'
 
 export const OfferHeaderView = ({
   viewModel,

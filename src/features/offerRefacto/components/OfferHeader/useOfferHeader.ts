@@ -4,7 +4,7 @@ import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { analytics } from 'libs/analytics/provider'
 import { useModal } from 'ui/components/modals/useModal'
 
-import { OfferHeaderViewModel, UseOfferHeaderParams } from './types'
+import { OfferHeaderViewModel, UseOfferHeaderParams } from 'features/offerRefacto/types'
 
 const SHARE_MODAL_TITLE = 'Partager l\u2019offre'
 
