@@ -225,7 +225,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                   }
                 }
               >
-                Paramètres du compte
+                Profil
               </Text>
               <View
                 style={
@@ -372,131 +372,47 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                     </View>
                   </View>
                 </View>
-                <View
-                  style={
-                    {
-                      "display": "flex",
-                    }
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "paddingTop": 8,
+                }
+              }
+            >
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
                   }
-                >
-                  <View
-                    accessibilityLabel="Notifications"
-                    accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": false,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {},
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="Notifications"
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "justifyContent": "space-between",
-                          },
-                          {
-                            "paddingVertical": 16,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        style={
-                          {
-                            "marginRight": 8,
-                          }
-                        }
-                      >
-                        <View
-                          height={24}
-                          width={24}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                      <View
-                        style={
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "textAlign": "left",
-                          }
-                        }
-                      >
-                        <Text
-                          numberOfLines={2}
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            }
-                          }
-                        >
-                          Notifications
-                        </Text>
-                      </View>
-                      <View
-                        style={
-                          {
-                            "alignItems": "flex-end",
-                          }
-                        }
-                      >
-                        <View
-                          height={20}
-                          testID="section-row-navigable-icon"
-                          width={20}
-                        >
-                          <Text>
-                            section-row-navigable-icon-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
+                }
+              >
+                Paramètres
+              </Text>
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "marginTop": 8,
+                    "width": "100%",
+                  }
+                }
+              />
+              <View
+                accessibilityRole="list"
+                style={
+                  {
+                    "flexDirection": "column",
+                    "paddingLeft": 0,
+                  }
+                }
+              >
                 <View
                   accessible={false}
                   style={
@@ -565,7 +481,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                             }
                           }
                         >
-                          Activer ma géolocalisation
+                          Géolocalisation
                         </Text>
                       </Text>
                     </View>
@@ -588,7 +504,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                         }
                       >
                         <View
-                          accessibilityLabel="Activer ma géolocalisation - Interrupteur à bascule - coché"
+                          accessibilityLabel="Géolocalisation - Interrupteur à bascule - coché"
                           accessibilityRole="switch"
                           accessibilityState={
                             {
@@ -626,7 +542,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                               },
                             ]
                           }
-                          testID="Activer ma géolocalisation - Interrupteur à bascule - coché"
+                          testID="Géolocalisation - Interrupteur à bascule - coché"
                         >
                           <View
                             active={true}
@@ -686,6 +602,267 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                     </View>
                   </View>
                 </View>
+                <View
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Apparence"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {},
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Apparence"
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "justifyContent": "space-between",
+                          },
+                          {
+                            "paddingVertical": 16,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "marginRight": 8,
+                          }
+                        }
+                      >
+                        <View
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "textAlign": "left",
+                          }
+                        }
+                      >
+                        <View
+                          style={
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "marginRight": 8,
+                            }
+                          }
+                        >
+                          <Text
+                            numberOfLines={2}
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Apparence
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "alignItems": "flex-end",
+                          }
+                        }
+                      >
+                        <View
+                          height={20}
+                          testID="section-row-navigable-icon"
+                          width={20}
+                        >
+                          <Text>
+                            section-row-navigable-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Notifications et thèmes suivis"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {},
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Notifications et thèmes suivis"
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "justifyContent": "space-between",
+                          },
+                          {
+                            "paddingVertical": 16,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "marginRight": 8,
+                          }
+                        }
+                      >
+                        <View
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "textAlign": "left",
+                          }
+                        }
+                      >
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Notifications et thèmes suivis
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "alignItems": "flex-end",
+                          }
+                        }
+                      >
+                        <View
+                          height={20}
+                          testID="section-row-navigable-icon"
+                          width={20}
+                        >
+                          <Text>
+                            section-row-navigable-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
               </View>
             </View>
             <View
@@ -706,7 +883,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                   }
                 }
               >
-                Aides
+                Aide
               </Text>
               <View
                 style={
@@ -860,7 +1037,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Nouvelle fenêtre : Centre d’aide"
+                    accessibilityLabel="Nouvelle fenêtre : Chercher une info"
                     accessibilityRole="link"
                     accessibilityState={
                       {
@@ -901,7 +1078,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Nouvelle fenêtre : Centre d’aide"
+                    testID="Nouvelle fenêtre : Chercher une info"
                   >
                     <View
                       style={
@@ -955,7 +1132,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                             }
                           }
                         >
-                          Centre d’aide
+                          Chercher une info
                         </Text>
                       </View>
                     </View>
@@ -1010,7 +1187,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Apparence"
+                    accessibilityLabel="Confidentialité"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -1051,7 +1228,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Apparence"
+                    testID="Confidentialité"
                   >
                     <View
                       style={
@@ -1093,30 +1270,19 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                           }
                         }
                       >
-                        <View
+                        <Text
+                          numberOfLines={2}
                           style={
                             {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "justifyContent": "space-between",
-                              "marginRight": 8,
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             }
                           }
                         >
-                          <Text
-                            numberOfLines={2}
-                            style={
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              }
-                            }
-                          >
-                            Apparence
-                          </Text>
-                        </View>
+                          Confidentialité
+                        </Text>
                       </View>
                       <View
                         style={
@@ -1272,131 +1438,6 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Faire une suggestion"
-                    accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": false,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {},
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="Faire une suggestion"
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "justifyContent": "space-between",
-                          },
-                          {
-                            "paddingVertical": 16,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        style={
-                          {
-                            "marginRight": 8,
-                          }
-                        }
-                      >
-                        <View
-                          height={24}
-                          width={24}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                      <View
-                        style={
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "textAlign": "left",
-                          }
-                        }
-                      >
-                        <Text
-                          numberOfLines={2}
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            }
-                          }
-                        >
-                          Faire une suggestion
-                        </Text>
-                      </View>
-                      <View
-                        style={
-                          {
-                            "alignItems": "flex-end",
-                          }
-                        }
-                      >
-                        <View
-                          height={20}
-                          testID="section-row-navigable-icon"
-                          width={20}
-                        >
-                          <Text>
-                            section-row-navigable-icon-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
                     accessibilityLabel="Informations légales"
                     accessibilityRole="button"
                     accessibilityState={
@@ -1522,7 +1563,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Confidentialité"
+                    accessibilityLabel="Faire une suggestion"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -1563,7 +1604,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Confidentialité"
+                    testID="Faire une suggestion"
                   >
                     <View
                       style={
@@ -1616,7 +1657,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                             }
                           }
                         >
-                          Confidentialité
+                          Faire une suggestion
                         </Text>
                       </View>
                       <View

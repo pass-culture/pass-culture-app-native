@@ -14,33 +14,44 @@ export const loggedInBeneficiaryContentConfig = ({
   AppearanceButton,
   ChatbotButton,
   FeedbackInAppButton,
+  HelpButton,
   LocationButton,
   SocialNetwork,
 }: LoggedInContentParams): LoggedInContentConfig[] => [
   {
-    section: 'Paramètres du compte',
+    section: 'Profil',
     items: [
+      { title: 'Mes succès', screen: 'Achievements', params: { from: 'profile' }, icon: Trophy },
       { title: 'Informations personnelles', screen: 'PersonalData', icon: Profile },
-      { title: 'Notifications', screen: 'NotificationsSettings', icon: Bell },
-      { component: LocationButton, key: 'LocationButton' },
     ],
   },
   {
-    section: 'Aides',
+    section: 'Paramètres',
+    items: [
+      { component: LocationButton, key: 'LocationButton' },
+      { component: AppearanceButton, key: 'AppearanceButton' },
+      {
+        title: 'Notifications et thèmes et suivis',
+        screen: 'NotificationsSettings',
+        icon: Bell,
+      },
+    ],
+  },
+  {
+    section: 'Aide',
     items: [
       { component: ChatbotButton, key: 'ChatbotButton' },
-      { title: 'Centre d’aide', externalNav: { url: env.ACCESSIBILITY_PLAN } },
+      { component: HelpButton, key: 'HelpButton' },
+      { title: 'Chercher une info', externalNav: { url: env.ACCESSIBILITY_PLAN } },
     ],
   },
   {
     section: 'Autres',
     items: [
-      { title: 'Mes succès', screen: 'Achievements', params: { from: 'profile' }, icon: Trophy },
-      { component: AppearanceButton, key: 'AppearanceButton' },
-      { title: 'Accessibilité', screen: 'Accessibility', icon: HandicapMental },
-      { component: FeedbackInAppButton, key: 'FeedbackInAppButton' },
-      { title: 'Informations légales', screen: 'LegalNotices', icon: LegalNotices },
       { title: 'Confidentialité', screen: 'ConsentSettings', icon: Confidentiality },
+      { title: 'Accessibilité', screen: 'Accessibility', icon: HandicapMental },
+      { title: 'Informations légales', screen: 'LegalNotices', icon: LegalNotices },
+      { component: FeedbackInAppButton, key: 'FeedbackInAppButton' },
     ],
   },
   {

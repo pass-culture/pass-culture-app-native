@@ -74,18 +74,6 @@ export const rootStackNavigatorPathConfig = {
       SetPhoneNumberWithoutValidation: {
         path: 'creation-compte/telephone-sans-validation',
       },
-      SetPhoneNumber: {
-        path: 'creation-compte/telephone',
-      },
-      SetPhoneValidationCode: {
-        path: 'creation-compte/code-de-validation-telephone',
-      },
-      PhoneValidationTooManyAttempts: {
-        path: 'creation-compte/code-de-validation-trop-d-essais',
-      },
-      PhoneValidationTooManySMSSent: {
-        path: 'creation-compte/code-de-validation-trop-de-sms',
-      },
       SetName: {
         path: 'creation-profil/nom-prenom',
       },

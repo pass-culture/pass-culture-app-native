@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
@@ -65,6 +66,12 @@ const isWeb = Platform.OS === 'web'
 
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 const DARK_MODE_GTM_APPEARANCE_TAG_KEY = 'darkModeGtmAppearanceTagSeen'
+
+const CHATBOT_ELIGIBLE_STATUSES = new Set<YoungStatusType>([
+  YoungStatusType.eligible,
+  YoungStatusType.beneficiary,
+  YoungStatusType.ex_beneficiary,
+])
 
 const OnlineProfile: React.FC = () => {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.PROFILE)
@@ -189,6 +196,10 @@ const OnlineProfile: React.FC = () => {
   const hidePreferenceSection = !enableDarkMode && isWeb
   const shouldShowAchievementsSection = user?.isBeneficiary
 
+  const userStatusType = user?.status?.statusType
+  const isEligibleForChatbot = !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.has(userStatusType)
+  const shouldDisplayChatbot = enableChatbot && isEligibleForChatbot
+
   const shareBannerTitle = 'Partage le pass Culture'
   const shareBannerDescription = 'Recommande le bon plan à tes amis\u00a0!'
 
@@ -211,9 +222,19 @@ const OnlineProfile: React.FC = () => {
             />
             <ProfileContainer>
               <Spacer.Column numberOfSpaces={4} />
-              <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
-                <VerticalUl>
-                  {isLoggedIn ? (
+              {isLoggedIn ? (
+                <Section title="Profil">
+                  <VerticalUl>
+                    {shouldShowAchievementsSection ? (
+                      <Li>
+                        <Row
+                          title="Mes succès"
+                          type="navigable"
+                          navigateTo={getProfilePropConfig('Achievements', { from: 'profile' })}
+                          icon={Trophy}
+                        />
+                      </Li>
+                    ) : null}
                     <Li>
                       <Row
                         title="Informations personnelles"
@@ -222,27 +243,23 @@ const OnlineProfile: React.FC = () => {
                         icon={ProfileIcon}
                       />
                     </Li>
-                  ) : null}
-                  <Li>
-                    <Row
-                      type="navigable"
-                      title="Notifications"
-                      icon={Bell}
-                      navigateTo={getProfilePropConfig('NotificationsSettings')}
-                    />
-                  </Li>
+                  </VerticalUl>
+                </Section>
+              ) : null}
+              <Section title="Paramètres">
+                <VerticalUl>
                   <LiWithMarginVertical accessible={false}>
                     <SectionWithSwitch
                       icon={LocationPointer}
                       iconSize={SECTION_ROW_ICON_SIZE}
-                      title="Activer ma géolocalisation"
+                      title="Géolocalisation"
                       active={isGeolocSwitchActive}
                       accessibilityHint={geolocPositionError?.message}
                       toggle={() => {
                         switchGeolocation()
                         debouncedLogLocationToggle(!isGeolocSwitchActive)
                       }}
-                      toggleLabel="Activer ma géolocalisation"
+                      toggleLabel="Géolocalisation"
                     />
                     <InputError
                       visible={!!geolocPositionError}
@@ -250,55 +267,6 @@ const OnlineProfile: React.FC = () => {
                       numberOfSpacesTop={1}
                     />
                   </LiWithMarginVertical>
-                </VerticalUl>
-              </Section>
-              <Section title="Aides">
-                <VerticalUl>
-                  {enableChatbot ? (
-                    <Li>
-                      <Row
-                        title="Poser une question"
-                        type="navigable"
-                        navigateTo={getProfilePropConfig('Chatbot')}
-                        icon={LifeBuoy}
-                      />
-                    </Li>
-                  ) : null}
-                  {shouldDisplayTutorial ? (
-                    <Li>
-                      <Row
-                        title="Comment ça marche&nbsp;?"
-                        type="navigable"
-                        navigateTo={getProfilePropConfig('ProfileTutorialAgeInformationCredit')}
-                        onPress={() =>
-                          analytics.logConsultTutorial({ age: userAge, from: 'ProfileHelp' })
-                        }
-                        icon={LifeBuoy}
-                      />
-                    </Li>
-                  ) : null}
-                  <Li>
-                    <Row
-                      title="Centre d’aide"
-                      type="clickable"
-                      externalNav={{ url: env.FAQ_LINK }}
-                      icon={ExternalSite}
-                    />
-                  </Li>
-                </VerticalUl>
-              </Section>
-              <Section title="Autres">
-                <VerticalUl>
-                  {shouldShowAchievementsSection ? (
-                    <Li>
-                      <Row
-                        title="Mes succès"
-                        type="navigable"
-                        navigateTo={getProfilePropConfig('Achievements', { from: 'profile' })}
-                        icon={Trophy}
-                      />
-                    </Li>
-                  ) : null}
                   {hidePreferenceSection ? null : (
                     <Li>
                       <Row
@@ -325,10 +293,73 @@ const OnlineProfile: React.FC = () => {
                   )}
                   <Li>
                     <Row
+                      type="navigable"
+                      title="Notifications et thèmes suivis"
+                      icon={Bell}
+                      navigateTo={getProfilePropConfig('NotificationsSettings')}
+                    />
+                  </Li>
+                </VerticalUl>
+              </Section>
+              <Section title="Aide">
+                <VerticalUl>
+                  {shouldDisplayChatbot ? (
+                    <Li>
+                      <Row
+                        title="Poser une question"
+                        type="navigable"
+                        navigateTo={getProfilePropConfig('Chatbot')}
+                        icon={LifeBuoy}
+                      />
+                    </Li>
+                  ) : null}
+                  {shouldDisplayTutorial ? (
+                    <Li>
+                      <Row
+                        title="Comment ça marche&nbsp;?"
+                        type="navigable"
+                        navigateTo={getProfilePropConfig('ProfileTutorialAgeInformationCredit')}
+                        onPress={() =>
+                          analytics.logConsultTutorial({ age: userAge, from: 'ProfileHelp' })
+                        }
+                        icon={LifeBuoy}
+                      />
+                    </Li>
+                  ) : null}
+                  <Li>
+                    <Row
+                      title="Chercher une info"
+                      type="clickable"
+                      externalNav={{ url: env.FAQ_LINK }}
+                      icon={ExternalSite}
+                    />
+                  </Li>
+                </VerticalUl>
+              </Section>
+              <Section title="Autres">
+                <VerticalUl>
+                  <Li>
+                    <Row
+                      title="Confidentialité"
+                      type="navigable"
+                      navigateTo={getProfilePropConfig('ConsentSettings')}
+                      icon={Confidentiality}
+                    />
+                  </Li>
+                  <Li>
+                    <Row
                       title="Accessibilité"
                       type="navigable"
                       navigateTo={getProfilePropConfig('Accessibility')}
                       icon={HandicapMental}
+                    />
+                  </Li>
+                  <Li>
+                    <Row
+                      title="Informations légales"
+                      type="navigable"
+                      navigateTo={getProfilePropConfig('LegalNotices')}
+                      icon={LegalNotices}
                     />
                   </Li>
                   {displayInAppFeedback ? (
@@ -341,22 +372,6 @@ const OnlineProfile: React.FC = () => {
                       />
                     </Li>
                   ) : null}
-                  <Li>
-                    <Row
-                      title="Informations légales"
-                      type="navigable"
-                      navigateTo={getProfilePropConfig('LegalNotices')}
-                      icon={LegalNotices}
-                    />
-                  </Li>
-                  <Li>
-                    <Row
-                      title="Confidentialité"
-                      type="navigable"
-                      navigateTo={getProfilePropConfig('ConsentSettings')}
-                      icon={Confidentiality}
-                    />
-                  </Li>
                 </VerticalUl>
               </Section>
               {isWeb ? null : (

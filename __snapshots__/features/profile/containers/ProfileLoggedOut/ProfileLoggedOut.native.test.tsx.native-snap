@@ -285,7 +285,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
           }
         }
       >
-        Paramètres de l’application
+        Paramètres
       </Text>
       <View
         style={
@@ -311,125 +311,6 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
         }
         withPadding={false}
       >
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
-          <View
-            accessibilityLabel="Notifications"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": false,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              {
-                "opacity": 1,
-                "userSelect": "auto",
-              }
-            }
-            testID="Notifications"
-          >
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                  },
-                  {
-                    "paddingVertical": 16,
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  {
-                    "marginRight": 8,
-                  }
-                }
-              >
-                <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "textAlign": "left",
-                  }
-                }
-              >
-                <Text
-                  numberOfLines={2}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Notifications
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "alignItems": "flex-end",
-                  }
-                }
-              >
-                <View
-                  height={20}
-                  testID="section-row-navigable-icon"
-                  width={20}
-                >
-                  <Text>
-                    section-row-navigable-icon-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
         <View
           style={
             {
@@ -500,7 +381,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
                         }
                       }
                     >
-                      Activer ma géolocalisation
+                      Géolocalisation
                     </Text>
                   </Text>
                 </View>
@@ -523,7 +404,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
                     }
                   >
                     <View
-                      accessibilityLabel="Activer ma géolocalisation - Interrupteur à bascule - non coché"
+                      accessibilityLabel="Géolocalisation - Interrupteur à bascule - non coché"
                       accessibilityRole="switch"
                       accessibilityState={
                         {
@@ -558,7 +439,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
                           "userSelect": "auto",
                         }
                       }
-                      testID="Activer ma géolocalisation - Interrupteur à bascule - non coché"
+                      testID="Géolocalisation - Interrupteur à bascule - non coché"
                     >
                       <View
                         active={false}
@@ -608,6 +489,134 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
             </View>
           </View>
         </View>
+        <View
+          style={
+            {
+              "display": "flex",
+            }
+          }
+        >
+          <View />
+        </View>
+        <View
+          style={
+            {
+              "display": "flex",
+            }
+          }
+        >
+          <View
+            accessibilityLabel="Notifications et thèmes et suivis"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="Notifications et thèmes et suivis"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                  },
+                  {
+                    "paddingVertical": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  {
+                    "marginRight": 8,
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "textAlign": "left",
+                  }
+                }
+              >
+                <Text
+                  numberOfLines={2}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  Notifications et thèmes et suivis
+                </Text>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "flex-end",
+                  }
+                }
+              >
+                <View
+                  height={20}
+                  testID="section-row-navigable-icon"
+                  width={20}
+                >
+                  <Text>
+                    section-row-navigable-icon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
     </View>
     <View>
@@ -622,7 +631,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
           }
         }
       >
-        Aides
+        Aide
       </Text>
       <View
         style={
@@ -648,15 +657,6 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
         }
         withPadding={false}
       >
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
-          <View />
-        </View>
         <View
           style={
             {
@@ -786,7 +786,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
           }
         >
           <View
-            accessibilityLabel="Nouvelle fenêtre : Centre d’aide"
+            accessibilityLabel="Nouvelle fenêtre : Chercher une info"
             accessibilityRole="link"
             accessibilityState={
               {
@@ -821,7 +821,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
                 "userSelect": "auto",
               }
             }
-            testID="Nouvelle fenêtre : Centre d’aide"
+            testID="Nouvelle fenêtre : Chercher une info"
           >
             <View
               style={
@@ -875,7 +875,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
                     }
                   }
                 >
-                  Centre d’aide
+                  Chercher une info
                 </Text>
               </View>
             </View>
@@ -928,7 +928,117 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
             }
           }
         >
-          <View />
+          <View
+            accessibilityLabel="Confidentialité"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="Confidentialité"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                  },
+                  {
+                    "paddingVertical": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  {
+                    "marginRight": 8,
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "textAlign": "left",
+                  }
+                }
+              >
+                <Text
+                  numberOfLines={2}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  Confidentialité
+                </Text>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "flex-end",
+                  }
+                }
+              >
+                <View
+                  height={20}
+                  testID="section-row-navigable-icon"
+                  width={20}
+                >
+                  <Text>
+                    section-row-navigable-icon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
         </View>
         <View
           style={
@@ -1028,125 +1138,6 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
                   }
                 >
                   Accessibilité
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "alignItems": "flex-end",
-                  }
-                }
-              >
-                <View
-                  height={20}
-                  testID="section-row-navigable-icon"
-                  width={20}
-                >
-                  <Text>
-                    section-row-navigable-icon-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
-          <View
-            accessibilityLabel="Faire une suggestion"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": false,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              {
-                "opacity": 1,
-                "userSelect": "auto",
-              }
-            }
-            testID="Faire une suggestion"
-          >
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                  },
-                  {
-                    "paddingVertical": 16,
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  {
-                    "marginRight": 8,
-                  }
-                }
-              >
-                <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "textAlign": "left",
-                  }
-                }
-              >
-                <Text
-                  numberOfLines={2}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Faire une suggestion
                 </Text>
               </View>
               <View
@@ -1296,7 +1287,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
           }
         >
           <View
-            accessibilityLabel="Confidentialité"
+            accessibilityLabel="Faire une suggestion"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -1331,7 +1322,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
                 "userSelect": "auto",
               }
             }
-            testID="Confidentialité"
+            testID="Faire une suggestion"
           >
             <View
               style={
@@ -1384,7 +1375,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
                     }
                   }
                 >
-                  Confidentialité
+                  Faire une suggestion
                 </Text>
               </View>
               <View

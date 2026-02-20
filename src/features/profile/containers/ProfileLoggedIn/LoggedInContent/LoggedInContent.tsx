@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
+import { YoungStatusType } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AppearanceButton } from 'features/profile/components/AppearanceButton/AppearanceButton'
 import { ChatbotButton } from 'features/profile/components/Buttons/ChatbotButton/ChatbotButton'
@@ -21,14 +22,24 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location/LocationWrapper'
 
+const CHATBOT_ELIGIBLE_STATUSES = new Set<YoungStatusType>([
+  YoungStatusType.eligible,
+  YoungStatusType.beneficiary,
+  YoungStatusType.ex_beneficiary,
+])
+
 type Props = { user: UserProfileResponseWithoutSurvey | undefined }
 
 export const LoggedInContent = ({ user }: Props) => {
   const { data: remoteConfig } = useRemoteConfigQuery()
-  const shouldDisplayChatbotButton = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CHATBOT)
+  const isChatbotFeatureEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CHATBOT)
   const shouldDisplayAppearanceButton = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
   const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
   const shouldDisplayHelpButton = getShouldDisplayHelpButton({ user })
+
+  const userStatusType = user?.status?.statusType
+  const isEligibleForChatbot = !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.has(userStatusType)
+  const shouldDisplayChatbotButton = isChatbotFeatureEnabled && isEligibleForChatbot
 
   const { hasSeenAppearanceTag, markAppearanceTagSeen } = useAppearanceTag(enableDarkModeGtm)
   const { isGeolocSwitchActive, switchGeolocation } = useGeolocationSwitch()

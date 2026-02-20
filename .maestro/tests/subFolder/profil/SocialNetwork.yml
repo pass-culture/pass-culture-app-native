@@ -58,7 +58,6 @@ appId: ${MAESTRO_APP_ID}
       - assertVisible:
           id: 'com.android.chrome:id/url_bar'
       - pressKey: back
-      - pressKey: back
 
 - runFlow:
     when:
@@ -99,5 +98,5 @@ appId: ${MAESTRO_APP_ID}
 
 - scrollUntilVisible:
     element:
-      text: 'Paramètres du compte'
+      text: 'Profil'
     direction: UP

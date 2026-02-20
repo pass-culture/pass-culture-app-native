@@ -51,7 +51,7 @@ describe('<ProfileV1 />', () => {
       theme: { isDesktopViewport: true },
     })
 
-    await screen.findByText('Centre d’aide')
+    await screen.findByText('Chercher une info')
 
     expect(container).toMatchSnapshot()
   })
@@ -61,7 +61,7 @@ describe('<ProfileV1 />', () => {
       theme: { isDesktopViewport: false },
     })
 
-    await screen.findByText('Centre d’aide')
+    await screen.findByText('Chercher une info')
 
     expect(container).toMatchSnapshot()
   })
