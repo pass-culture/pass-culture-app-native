@@ -1,10 +1,10 @@
 import React from 'react'
 import { Animated, View } from 'react-native'
 
+import { OfferHeaderViewModel } from 'features/offerRefacto/types'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { OfferHeaderView } from './OfferHeaderView'
-import { OfferHeaderViewModel } from 'features/offerRefacto/types'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.useFakeTimers()

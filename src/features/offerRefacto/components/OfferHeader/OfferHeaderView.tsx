@@ -1,13 +1,12 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { OfferHeaderViewProps } from 'features/offerRefacto/types'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Share } from 'ui/svg/icons/Share'
-
-import { OfferHeaderViewProps } from 'features/offerRefacto/types'
 
 export const OfferHeaderView = ({
   viewModel,

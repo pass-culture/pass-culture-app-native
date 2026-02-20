@@ -1,10 +1,9 @@
 import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { OfferHeaderViewModel, UseOfferHeaderParams } from 'features/offerRefacto/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { analytics } from 'libs/analytics/provider'
 import { useModal } from 'ui/components/modals/useModal'
-
-import { OfferHeaderViewModel, UseOfferHeaderParams } from 'features/offerRefacto/types'
 
 const SHARE_MODAL_TITLE = 'Partager l\u2019offre'
 
