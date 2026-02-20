@@ -2,8 +2,8 @@ import React, { memo, useState } from 'react'
 import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
+import { Button } from 'ui/designSystem/Button/Button'
 
 type Props = {
   onSubmit: () => void
@@ -24,7 +24,7 @@ export const LocationModalFooter = memo(function LocationModalFooter({
 
   return (
     <Container paddingBottom={keyboardHeight ? keyboardHeight - modalSpacing : 0}>
-      <ButtonPrimary wording={buttonWording} disabled={isSubmitDisabled} onPress={onSubmit} />
+      <Button fullWidth wording={buttonWording} disabled={isSubmitDisabled} onPress={onSubmit} />
     </Container>
   )
 })

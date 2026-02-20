@@ -7,8 +7,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { SnackBar } from 'ui/designSystem/Snackbar/SnackBar'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
@@ -86,7 +86,7 @@ const SnackBarWrapperDemo = () => {
             display="horizontal"
           />
 
-          <ButtonPrimary wording="Afficher la Snackbar" onPress={handleShowSnackbar} />
+          <Button wording="Afficher la Snackbar" onPress={handleShowSnackbar} />
         </ViewGap>
       </SnackBarWrapper>
     </FullHeightContainer>

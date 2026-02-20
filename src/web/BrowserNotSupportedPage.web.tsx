@@ -5,8 +5,8 @@ import { ScrollView } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageNotFound } from 'ui/svg/icons/PageNotFound'
 import { Validate } from 'ui/svg/icons/Validate'
 import { Spacer, Typo } from 'ui/theme'
@@ -86,7 +86,7 @@ export const BrowserNotSupportedPage: React.FC<{
       </ContentScroll>
 
       <ButtonContainer>
-        <ButtonPrimary wording="Continuer sans mettre à jour" onPress={onPress} numberOfLines={2} />
+        <Button wording="Continuer sans mettre à jour" onPress={onPress} numberOfLines={2} />
       </ButtonContainer>
     </Root>
   )

@@ -8,10 +8,10 @@ import { getSiteMapLinks } from 'features/profile/helpers/getSiteMapLinks'
 import { useSortedSearchCategories } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getLineHeightPx } from 'libs/parsers/getLineHeightPx'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Li } from 'ui/components/Li'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Dot } from 'ui/svg/icons/Dot'
 
@@ -51,7 +51,9 @@ export function SiteMapScreen() {
                   </BulletContainer>
                   <ListText>
                     <InternalTouchableLink
-                      as={ButtonTertiaryBlack}
+                      as={Button}
+                      variant="tertiary"
+                      color="neutral"
                       wording={item.wording}
                       navigateTo={item.navigateTo}
                       justifyContent="flex-start"
@@ -75,7 +77,9 @@ export function SiteMapScreen() {
                   </BulletContainer>
                   <ListText>
                     <InternalTouchableLink
-                      as={ButtonTertiaryBlack}
+                      as={Button}
+                      variant="tertiary"
+                      color="neutral"
                       wording={subPage.wording}
                       navigateTo={subPage.navigateTo}
                       justifyContent="flex-start"

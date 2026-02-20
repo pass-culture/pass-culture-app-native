@@ -4,9 +4,9 @@ import styled from 'styled-components/native'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
@@ -38,7 +38,9 @@ export const IdentityCheckDMS = () => {
 
           <ButtonContainer>
             <ExternalTouchableLink
-              as={ButtonTertiaryBlack}
+              as={Button}
+              variant="tertiary"
+              color="neutral"
               wording="Je suis de nationalité française"
               externalNav={{ url: env.DMS_FRENCH_CITIZEN_URL }}
               onBeforeNavigate={onDMSFrenchCitizenPress}
@@ -49,7 +51,9 @@ export const IdentityCheckDMS = () => {
               <SeparatorWithText label="ou" />
             </StyledSeparatorWithText>
             <ExternalTouchableLink
-              as={ButtonTertiaryBlack}
+              as={Button}
+              variant="tertiary"
+              color="neutral"
               wording="Je suis de nationalité étrangère"
               externalNav={{ url: env.DMS_FOREIGN_CITIZEN_URL }}
               onBeforeNavigate={onDMSForeignCitizenPress}
@@ -77,7 +81,7 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 }))
 
 const ButtonContainer = styled.View(({ theme }) => ({
-  padding: theme.designSystem.size.spacing.xxxl,
+  paddingVertical: theme.designSystem.size.spacing.xxxl,
 }))
 
 const StyledSeparatorWithText = styled.View(({ theme }) => ({

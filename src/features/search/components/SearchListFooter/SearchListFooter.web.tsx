@@ -2,8 +2,8 @@ import React, { ComponentProps } from 'react'
 import { ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { Li } from 'ui/components/Li'
+import { Button } from 'ui/designSystem/Button/Button'
 import { More } from 'ui/svg/icons/More'
 
 export interface SearchListFooterProps {
@@ -35,8 +35,8 @@ export const SearchListFooter = ({
       {showMoreButton ? <Separator /> : null}
       <Footer>
         {showMoreButton ? (
-          <ButtonSecondary
-            mediumWidth
+          <Button
+            variant="secondary"
             icon={More}
             wording="Afficher plus de résultats"
             onPress={onPress}

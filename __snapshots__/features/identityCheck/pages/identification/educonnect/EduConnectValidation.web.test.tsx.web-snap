@@ -5,18 +5,20 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 20px;
-  padding-right: 20px;
-  min-height: 40px;
-  width: 100%;
-  background-color: #6123df;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  width: auto;
   max-width: 500px;
+  border-style: solid;
+  border-color: #6123df;
+  border-width: 1px;
+  background-color: #6123df;
   cursor: pointer;
   outline: none;
-  border-width: 0;
-  display: flex;
+  display: inline-flex;
   overflow: hidden;
   text-decoration: none;
   box-sizing: border-box;
@@ -24,20 +26,6 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
 
 .c2:disabled {
   cursor: initial;
-  background: none;
-}
-
-.c2:hover {
-  text-decoration: underline;
-  text-decoration-color: #ffffff;
-}
-
-.c2:hover:disabled {
-  text-decoration: none;
-}
-
-.c3:disabled {
-  background-color: #f1f1f4;
 }
 
 .c0 {
@@ -230,17 +218,18 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
           >
             <button
               aria-label="Continuer"
-              class="c2 c3"
+              class="c2"
               data-testid="Continuer"
               tabindex="0"
               type="submit"
             >
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
               >
                 <div
-                  class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv r-maxWidth-dnmrzs"
+                  class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
                   dir="ltr"
+                  style="color: rgb(255, 255, 255); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                 >
                   Continuer
                 </div>

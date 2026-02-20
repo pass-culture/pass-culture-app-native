@@ -293,7 +293,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -320,44 +320,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Accueil"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Accueil
@@ -422,7 +433,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -449,44 +460,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Recherche"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Recherche
@@ -551,7 +573,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -578,44 +600,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Explore la carte"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Explore la carte
@@ -680,7 +713,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -707,44 +740,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Cartes jeunes"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Cartes jeunes
@@ -809,7 +853,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -836,44 +880,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Concerts & festivals"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Concerts & festivals
@@ -938,7 +993,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -965,44 +1020,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Cinéma"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Cinéma
@@ -1067,7 +1133,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -1094,44 +1160,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Films, séries et documentaires"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Films, séries et documentaires
@@ -1196,7 +1273,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -1223,44 +1300,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Livres"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Livres
@@ -1325,7 +1413,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -1352,44 +1440,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Musique"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Musique
@@ -1454,7 +1553,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -1481,44 +1580,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Arts & loisirs créatifs"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Arts & loisirs créatifs
@@ -1583,7 +1693,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -1610,44 +1720,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Spectacles"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Spectacles
@@ -1712,7 +1833,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -1739,44 +1860,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Musées & visites culturelles"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Musées & visites culturelles
@@ -1841,7 +1973,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -1868,44 +2000,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Jeux & jeux vidéos"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Jeux & jeux vidéos
@@ -1970,7 +2113,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -1997,44 +2140,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Médias & presse"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Médias & presse
@@ -2099,7 +2253,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -2126,44 +2280,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Conférences & rencontres"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Conférences & rencontres
@@ -2228,7 +2393,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -2255,44 +2420,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Évènements en ligne"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Évènements en ligne
@@ -2357,7 +2533,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -2384,44 +2560,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Réservations"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Réservations
@@ -2486,7 +2673,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -2513,44 +2700,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Favoris"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Favoris
@@ -2615,7 +2813,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -2642,44 +2840,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Profil"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Profil
@@ -2744,7 +2953,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -2771,44 +2980,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Créer un compte"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Créer un compte
@@ -2873,7 +3093,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -2900,44 +3120,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Se connecter"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Se connecter
@@ -3002,7 +3233,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -3029,44 +3260,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Mes succès"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Mes succès
@@ -3131,7 +3373,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -3158,44 +3400,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Notifications"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Notifications
@@ -3260,7 +3513,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -3287,44 +3540,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Comment ça marche ?"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Comment ça marche ?
@@ -3389,7 +3653,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -3416,44 +3680,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Informations personnelles"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Informations personnelles
@@ -3518,7 +3793,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -3545,44 +3820,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Apparence"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Apparence
@@ -3647,7 +3933,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -3674,44 +3960,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Accessibilité"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Accessibilité
@@ -3776,7 +4073,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -3803,44 +4100,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Faire une suggestion"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Faire une suggestion
@@ -3905,7 +4213,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -3932,44 +4240,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Informations légales"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Informations légales
@@ -4034,7 +4353,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -4061,44 +4380,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Confidentialité"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Confidentialité
@@ -4163,7 +4493,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -4190,44 +4520,55 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
+                          "justifyContent": "center",
                           "opacity": 1,
-                          "paddingBottom": 2,
+                          "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 2,
+                          "paddingTop": 0,
                           "userSelect": "auto",
-                          "width": "100%",
+                          "width": "auto",
                         }
                       }
                       testID="Débuggage"
                     >
                       <View
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
                             "alignItems": "center",
+                            "columnGap": 8,
                             "flexDirection": "row",
                           }
                         }
                       >
                         <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
                           style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "maxWidth": "100%",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
                         >
                           Débuggage

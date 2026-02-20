@@ -21,10 +21,10 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
 import { Playlist } from 'ui/components/Playlist'
 import { Separator } from 'ui/components/Separator'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Map } from 'ui/svg/icons/Map'
 import { LENGTH_XS, LENGTH_XXS, Typo } from 'ui/theme'
 
@@ -142,7 +142,9 @@ export const VenuePlaylist: React.FC<Props> = ({
           <Typo.Title3 numberOfLines={isWeb ? 1 : undefined}>{venuePlaylistTitle}</Typo.Title3>
           {shouldDisplaySeeOnMapButton ? (
             <ButtonContainer>
-              <ButtonTertiaryBlack
+              <Button
+                variant="tertiary"
+                color="neutral"
                 icon={Map}
                 wording="Voir sur la carte"
                 onPress={handleSeeMapPress}

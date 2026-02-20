@@ -2,10 +2,10 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -52,7 +52,9 @@ export function LayoutExpiredLink({ primaryButtonInformations, urlFAQ, customSub
         <FAQContainer gap={2}>
           <StyledBody>Si tu as besoin d’aide n’hésite pas à&nbsp;:</StyledBody>
           <ExternalTouchableLink
-            as={ButtonTertiaryBlack}
+            as={Button}
+            variant="tertiary"
+            color="neutral"
             wording="Consulter l’article d’aide"
             externalNav={{ url: urlFAQ }}
             icon={ExternalSiteFilled}

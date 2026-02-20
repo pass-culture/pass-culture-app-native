@@ -6,7 +6,7 @@ import { SearchState } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Button } from 'ui/designSystem/Button/Button'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -69,7 +69,8 @@ export const NoSearchResult = ({
             </ErrorDescription>
           </ErrorDescriptionContainer>
         </ContainerText>
-        <ButtonPrimary
+        <Button
+          fullWidth
           wording={props.ctaWording}
           onPress={props.onPress}
           accessibilityRole={AccessibilityRole.BUTTON}

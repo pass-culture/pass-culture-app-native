@@ -16,7 +16,6 @@ exports[`<UTMParameters /> should render correctly 1`] = `
 >
   <View
     accessibilityRole="header"
-    onLayout={[Function]}
     style={
       {
         "backgroundColor": "#ffffff",
@@ -174,162 +173,118 @@ exports[`<UTMParameters /> should render correctly 1`] = `
     </View>
   </View>
   <View
+    height={65}
     style={
       {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
+        "height": 65,
       }
     }
-  >
-    <View
-      onLayout={[Function]}
-      shouldBeAlignedFlexStart={false}
-      style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderTopLeftRadius": 22,
-            "borderTopRightRadius": 22,
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "column",
-            "flexGrow": 1,
-            "height": "100%",
-            "overflow": "scroll",
-            "paddingTop": 32,
-          },
-          {
-            "paddingBottom": 0,
-          },
-        ]
-      }
-    >
+  />
+  <RCTScrollView>
+    <View>
       <View
+        flexDirection="column"
         style={
           {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "maxWidth": 500,
-            "width": "100%",
+            "flexDirection": "column",
+            "flexWrap": "nowrap",
+            "paddingHorizontal": 24,
+            "paddingVertical": 24,
           }
         }
       >
-        <RCTScrollView
-          bottomChildrenViewHeight={0}
-          contentContainerStyle={
+        <View
+          gap={2}
+          style={
             {
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "paddingBottom": 0,
-              "paddingHorizontal": 24,
-              "paddingTop": 65,
+              "gap": 8,
             }
           }
-          keyboardShouldPersistTaps="handled"
-          onContentSizeChange={[Function]}
-          onLayout={[Function]}
-          paddingHeaderHeight={65}
-          style={{}}
         >
-          <View>
-            <View
-              flexDirection="column"
-              style={
-                {
-                  "flexDirection": "column",
-                  "flexWrap": "nowrap",
-                }
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               }
-            >
-              <View
-                gap={2}
-                style={
-                  {
-                    "gap": 8,
-                  }
-                }
-              >
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  traffic_gen: 
-                </Text>
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  traffic_campaign : 
-                </Text>
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  traffic_content : 
-                </Text>
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  traffic_medium : 
-                </Text>
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  traffic_source : 
-                </Text>
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  campaign_date : 
-                </Text>
-              </View>
-            </View>
-          </View>
-        </RCTScrollView>
+            }
+          >
+            traffic_gen: 
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
+            }
+          >
+            traffic_campaign : 
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
+            }
+          >
+            traffic_content : 
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
+            }
+          >
+            traffic_medium : 
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
+            }
+          >
+            traffic_source : 
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
+            }
+          >
+            campaign_date : 
+          </Text>
+        </View>
       </View>
+      <View
+        customHeight={8}
+        enable={true}
+        style={
+          {
+            "height": 8,
+          }
+        }
+      />
     </View>
-  </View>
+  </RCTScrollView>
 </View>
 `;
