@@ -11,7 +11,6 @@ export const DebugButton = () => (
     color="neutral"
     wording="Débuggage"
     navigateTo={getProfilePropConfig('DebugScreen')}
-    justifyContent="flex-start"
-    inline
+    size="small"
   />
 )

@@ -366,7 +366,10 @@ describe('<ProfileV1 />', () => {
     it('should navigate when the legal notices row is clicked', async () => {
       renderProfile()
 
-      const legalNoticesButton = screen.getByText('Informations légales')
+      // We have 2 "Informations légales" buttons on this screen, we want to test the first one which is the one in the "Autre" section
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const legalNoticesButton = screen.getAllByText('Informations légales').at(0)!
+
       await user.press(legalNoticesButton)
 
       expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {

@@ -71,6 +71,7 @@ export const env: Environment = {
   IOS_KEYCHAIN_SERVICE_KEY: 'rn_keychain_service_key',
   PASSCULTURE_DOWNLOAD_APP_URL: 'https://pass.culture.fr/nosapplications/',
   PRIVACY_POLICY_LINK: 'https://passculture.privacy',
+  CODE_OF_CONDUCT_LINK: 'https://passculture.code-of-conduct',
   PUBLIC_URL: 'https://web.example.com',
   RESIZE_IMAGE_ON_DEMAND_URL: 'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com',
   SENTRY_DSN: 'SENTRY_DSN',

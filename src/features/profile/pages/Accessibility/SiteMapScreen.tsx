@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { getSiteMapLinks } from 'features/profile/helpers/getSiteMapLinks'
 import { useSortedSearchCategories } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -12,11 +10,9 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Li } from 'ui/components/Li'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Dot } from 'ui/svg/icons/Dot'
 
 export function SiteMapScreen() {
-  const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
   const { isLoggedIn } = useAuthContext()
   const sortedCategories = useSortedSearchCategories()
   const siteMapLinks = getSiteMapLinks(sortedCategories)
@@ -26,13 +22,15 @@ export function SiteMapScreen() {
   )
 
   return (
-    <SecondaryPageWithBlurHeader title="Plan du site" enableMaxWidth={false} onGoBack={goBack}>
-      <StyledVerticalUl>
-        {visibleSiteMapLinks.map((item, parentIndex) => {
-          const visibleSubPages = item.subPages.filter(
+    <PageWithHeader
+      title="Plan du site"
+      shouldBeAlignedFlexStart
+      scrollChildren={
+        <StyledVerticalUl>
+          {visibleSiteMapLinks.map((item, parentIndex) => {
+            const visibleSubPages = item.subPages.filter(
             (subPage) => !subPage.isLoggedIn || isLoggedIn
           )
-
           const parentJsx = (
             <Li
               key={item.wording}
@@ -84,7 +82,7 @@ export function SiteMapScreen() {
           return [parentJsx, ...childrenJsx]
         })}
       </StyledVerticalUl>
-    </SecondaryPageWithBlurHeader>
+    />
   )
 }
 
@@ -115,7 +113,6 @@ const BulletContainer = styled.View(({ theme }) => ({
 
 const ListText = styled.View(({ theme }) => ({
   marginLeft: theme.designSystem.size.spacing.m,
-  flex: 1,
 }))
 
 const StyledVerticalUl = styled(VerticalUl)({

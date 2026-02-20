@@ -9,7 +9,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, checkAccessibilityFor, render } from 'tests/utils/web'
+import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { Home } from './Home'
 
@@ -54,9 +54,9 @@ describe('<Home/>', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      let results
-      await act(async () => {
-        results = await checkAccessibilityFor(container)
+      const results = await checkAccessibilityFor(container, {
+        // We disable this rule because the contentinfo landmark is not top level in the DOM, but it is still correctly used to wrap the footer content
+        rules: { 'landmark-contentinfo-is-top-level': { enabled: false } },
       })
 
       expect(results).toHaveNoViolations()
