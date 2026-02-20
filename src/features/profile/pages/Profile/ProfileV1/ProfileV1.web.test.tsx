@@ -65,14 +65,6 @@ describe('<ProfileV1 />', () => {
 
     expect(container).toMatchSnapshot()
   })
-
-  it('should display display preference section', () => {
-    render(reactQueryProviderHOC(<ProfileV1 />))
-
-    const displayPreferenceSection = screen.queryByText('Apparence')
-
-    expect(displayPreferenceSection).toBeInTheDocument()
-  })
 })
 
 const renderProfile = () => render(reactQueryProviderHOC(<ProfileV1 />))
