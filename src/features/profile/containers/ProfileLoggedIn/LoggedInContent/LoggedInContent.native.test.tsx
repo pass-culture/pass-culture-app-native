@@ -108,16 +108,8 @@ describe('LoggedInContent', () => {
   })
 
   describe('AppearanceButton', () => {
-    it('should not display AppearanceButton when feature flag is disabled', () => {
+    it('should display AppearanceButton by default', () => {
       setFeatureFlags([])
-
-      render(reactQueryProviderHOC(<LoggedInContent user={beneficiaryUser} />))
-
-      expect(screen.queryByText('Apparence')).toBeNull()
-    })
-
-    it('should display AppearanceButton when feature flag is enabled', () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE])
 
       render(reactQueryProviderHOC(<LoggedInContent user={beneficiaryUser} />))
 

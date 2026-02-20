@@ -33,7 +33,6 @@ type Props = { user: UserProfileResponseWithoutSurvey | undefined }
 export const LoggedInContent = ({ user }: Props) => {
   const { data: remoteConfig } = useRemoteConfigQuery()
   const isChatbotFeatureEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CHATBOT)
-  const shouldDisplayAppearanceButton = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
   const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
   const shouldDisplayHelpButton = getShouldDisplayHelpButton({ user })
 
@@ -48,14 +47,14 @@ export const LoggedInContent = ({ user }: Props) => {
 
   const sharedConfig = {
     ChatbotButton: shouldDisplayChatbotButton ? <ChatbotButton /> : null,
-    AppearanceButton: shouldDisplayAppearanceButton ? (
+    AppearanceButton: (
       <AppearanceButton
         navigate={navigate}
         enableDarkModeGtm={enableDarkModeGtm}
         hasSeenAppearanceTag={hasSeenAppearanceTag}
         markAppearanceTagSeen={markAppearanceTagSeen}
       />
-    ) : null,
+    ),
     LocationButton: (
       <LocationButton
         isGeolocSwitchActive={isGeolocSwitchActive}

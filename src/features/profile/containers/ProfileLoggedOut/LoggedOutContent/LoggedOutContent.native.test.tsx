@@ -4,7 +4,6 @@ import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { LoggedOutContent } from 'features/profile/containers/ProfileLoggedOut/LoggedOutContent/LoggedOutContent'
 import { getShouldDisplayHelpButton } from 'features/profile/helpers/getShouldDisplayHelpButton'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -48,15 +47,8 @@ describe('LoggedOutContent', () => {
   })
 
   describe('AppearanceButton', () => {
-    it('should not display AppearanceButton when the feature flag is disabled', () => {
+    it('should display AppearanceButton by default', () => {
       setFeatureFlags([])
-      render(<LoggedOutContent user={undefined} />)
-
-      expect(screen.queryByText('Apparence')).toBeNull()
-    })
-
-    it('should display AppearanceButton when the feature flag is enabled', () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE])
       render(<LoggedOutContent user={undefined} />)
 
       expect(screen.getByText('Apparence')).toBeTruthy()

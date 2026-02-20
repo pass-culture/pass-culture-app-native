@@ -4,8 +4,6 @@ import { Platform } from 'react-native'
 import * as ReactNative from 'react-native'
 
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ColorScheme, colorSchemeActions } from 'libs/styled/useColorScheme'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -19,7 +17,6 @@ const user = userEvent.setup()
 
 describe('Appearance', () => {
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE])
     Platform.OS = 'ios'
     colorSchemeActions.setColorScheme({ colorScheme: ColorScheme.SYSTEM })
   })
@@ -35,7 +32,7 @@ describe('Appearance', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should display dark mode section when feature flag is enable', async () => {
+  it('should display dark mode section', async () => {
     render(<Appearance />)
 
     await screen.findByText('Apparence')
@@ -43,18 +40,6 @@ describe('Appearance', () => {
     const subtitle = screen.getByText('Thème')
     await waitFor(() => {
       expect(subtitle).toBeOnTheScreen()
-    })
-  })
-
-  it('should not display dark mode section when feature flag is disable', async () => {
-    setFeatureFlags()
-    render(<Appearance />)
-
-    await screen.findByText('Apparence')
-
-    const subtitle = screen.queryByText('Thème')
-    await waitFor(() => {
-      expect(subtitle).not.toBeOnTheScreen()
     })
   })
 

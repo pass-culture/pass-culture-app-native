@@ -6,8 +6,6 @@ import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import {
   colorSchemeActions,
   ColorScheme,
@@ -30,8 +28,6 @@ const isWeb = Platform.OS === 'web'
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
 export const Appearance = () => {
-  const enableDarkMode = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
-
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
 
   const [isOrientationLocked, toggleIsOrientationLocked] = useOrientationLocked()
@@ -107,19 +103,17 @@ export const Appearance = () => {
             />
           )}
           {isWeb ? null : <GreySeparator />}
-          {enableDarkMode ? (
-            <View>
-              <RadioButtonGroup
-                label={radioGroupLabel}
-                options={themeOptions}
-                value={currentSelectionLabel}
-                onChange={handleGroupChange}
-                variant="detailed"
-                display="vertical"
-                labelVariant="title2"
-              />
-            </View>
-          ) : null}
+          <View>
+            <RadioButtonGroup
+              label={radioGroupLabel}
+              options={themeOptions}
+              value={currentSelectionLabel}
+              onChange={handleGroupChange}
+              variant="detailed"
+              display="vertical"
+              labelVariant="title2"
+            />
+          </View>
           <Spacer.BottomScreen />
         </ViewGap>
       }

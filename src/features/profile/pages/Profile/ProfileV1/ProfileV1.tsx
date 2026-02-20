@@ -75,7 +75,6 @@ const CHATBOT_ELIGIBLE_STATUSES = new Set<YoungStatusType>([
 
 const OnlineProfile: React.FC = () => {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.PROFILE)
-  const enableDarkMode = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
   const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
   const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
@@ -192,8 +191,6 @@ const OnlineProfile: React.FC = () => {
     shareApp('profile_banner')
   }, [])
 
-  // If no dark mode and no rotation mode in web this section is empty
-  const hidePreferenceSection = !enableDarkMode && isWeb
   const shouldShowAchievementsSection = user?.isBeneficiary
 
   const userStatusType = user?.status?.statusType
@@ -267,30 +264,26 @@ const OnlineProfile: React.FC = () => {
                       numberOfSpacesTop={1}
                     />
                   </LiWithMarginVertical>
-                  {hidePreferenceSection ? null : (
-                    <Li>
-                      <Row
-                        title="Apparence"
-                        type="navigable"
-                        navigateTo={getProfilePropConfig('Appearance')}
-                        accessibilityLabel={
-                          enableDarkModeGtm && !hasSeenAppearanceTag
-                            ? accessibilityLabel
-                            : undefined
-                        }
-                        renderTitle={(title) => (
-                          <TitleWithTag>
-                            <Typo.BodyAccent numberOfLines={2}>{title}</Typo.BodyAccent>
-                            {enableDarkModeGtm && !hasSeenAppearanceTag ? (
-                              <Tag label={tabLabel} variant={TagVariant.NEW} />
-                            ) : null}
-                          </TitleWithTag>
-                        )}
-                        onPress={markAppearanceTagSeen}
-                        icon={ArtMaterial}
-                      />
-                    </Li>
-                  )}
+                  <Li>
+                    <Row
+                      title="Apparence"
+                      type="navigable"
+                      navigateTo={getProfilePropConfig('Appearance')}
+                      accessibilityLabel={
+                        enableDarkModeGtm && !hasSeenAppearanceTag ? accessibilityLabel : undefined
+                      }
+                      renderTitle={(title) => (
+                        <TitleWithTag>
+                          <Typo.BodyAccent numberOfLines={2}>{title}</Typo.BodyAccent>
+                          {enableDarkModeGtm && !hasSeenAppearanceTag ? (
+                            <Tag label={tabLabel} variant={TagVariant.NEW} />
+                          ) : null}
+                        </TitleWithTag>
+                      )}
+                      onPress={markAppearanceTagSeen}
+                      icon={ArtMaterial}
+                    />
+                  </Li>
                   <Li>
                     <Row
                       type="navigable"

@@ -20,7 +20,6 @@ import { useLocation } from 'libs/location/LocationWrapper'
 type Props = { user: UserProfileResponseWithoutSurvey | undefined }
 
 export const LoggedOutContent = ({ user }: Props) => {
-  const shouldDisplayAppearanceButton = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
   const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
   const shouldDisplayHelpButton = getShouldDisplayHelpButton({ user })
   const { hasSeenAppearanceTag, markAppearanceTagSeen } = useAppearanceTag(enableDarkModeGtm)
@@ -30,14 +29,14 @@ export const LoggedOutContent = ({ user }: Props) => {
 
   const config = loggedOutContentConfig({
     HelpButton: shouldDisplayHelpButton ? <HelpButton user={user} /> : null,
-    AppearanceButton: shouldDisplayAppearanceButton ? (
+    AppearanceButton: (
       <AppearanceButton
         navigate={navigate}
         enableDarkModeGtm={enableDarkModeGtm}
         hasSeenAppearanceTag={hasSeenAppearanceTag}
         markAppearanceTagSeen={markAppearanceTagSeen}
       />
-    ) : null,
+    ),
     LocationButton: (
       <LocationButton
         isGeolocSwitchActive={isGeolocSwitchActive}
