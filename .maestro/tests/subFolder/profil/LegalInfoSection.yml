@@ -8,7 +8,7 @@ appId: ${MAESTRO_APP_ID}
 
 - assertVisible: 'Informations légales'
 - tapOn:
-    id: "Nouvelle fenêtre\_: Conditions Générales d’Utilisation"
+    id: 'Conditions Générales d’Utilisation'
 - waitForAnimationToEnd
 
 - runFlow:
@@ -32,7 +32,7 @@ appId: ${MAESTRO_APP_ID}
           text: 'Informations légales'
 
 - tapOn:
-    id: "Nouvelle fenêtre\_: Charte de protection des données personnelles"
+    id: 'Charte de protection des données personnelles'
 - 'waitForAnimationToEnd'
 - runFlow:
     when:
