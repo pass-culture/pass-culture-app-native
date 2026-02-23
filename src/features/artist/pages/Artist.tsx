@@ -6,16 +6,11 @@ import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { useArtistQuery } from 'features/artist/queries/useArtistQuery'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useArtistResultsQuery } from 'queries/offer/useArtistResultsQuery'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 
-// Handler will be created dynamically in the component with the new system
-
 export const Artist: FunctionComponent = () => {
-  const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
   const { params } = useRoute<UseRouteType<'Artist'>>()
 
   const pageTracking = usePageTracking({
@@ -54,8 +49,8 @@ export const Artist: FunctionComponent = () => {
     [pageTracking, params.id]
   )
 
-  // TODO(PC-35430): replace null by PageNotFound when wipArtistPage FF deleted
-  if (isLoading || !artist || !enableArtistPage) return null
+  // TODO(PC-35430): replace null by PageNotFound
+  if (isLoading || !artist) return null
 
   const handleOnExpandBioPress = () => {
     void analytics.logClickExpandArtistBio({
