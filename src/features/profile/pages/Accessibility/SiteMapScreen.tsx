@@ -10,6 +10,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Li } from 'ui/components/Li'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Dot } from 'ui/svg/icons/Dot'
 
 export function SiteMapScreen() {
@@ -24,64 +25,64 @@ export function SiteMapScreen() {
   return (
     <PageWithHeader
       title="Plan du site"
-      shouldBeAlignedFlexStart
       scrollChildren={
         <StyledVerticalUl>
           {visibleSiteMapLinks.map((item, parentIndex) => {
             const visibleSubPages = item.subPages.filter(
-            (subPage) => !subPage.isLoggedIn || isLoggedIn
-          )
-          const parentJsx = (
-            <Li
-              key={item.wording}
-              groupLabel="Plan du site"
-              total={visibleSiteMapLinks.length}
-              index={parentIndex}
-              accessibilityLabel={item.wording}
-              accessibilityRole={AccessibilityRole.BUTTON}>
-              <ItemContainer>
-                <BulletContainer>
-                  <Bullet />
-                </BulletContainer>
-                <ListText>
-                  <InternalTouchableLink
-                    as={ButtonTertiaryBlack}
-                    wording={item.wording}
-                    navigateTo={item.navigateTo}
-                    justifyContent="flex-start"
-                  />
-                </ListText>
-              </ItemContainer>
-            </Li>
-          )
+              (subPage) => !subPage.isLoggedIn || isLoggedIn
+            )
+            const parentJsx = (
+              <Li
+                key={item.wording}
+                groupLabel="Plan du site"
+                total={visibleSiteMapLinks.length}
+                index={parentIndex}
+                accessibilityLabel={item.wording}
+                accessibilityRole={AccessibilityRole.BUTTON}>
+                <ItemContainer>
+                  <BulletContainer>
+                    <Bullet />
+                  </BulletContainer>
+                  <ListText>
+                    <InternalTouchableLink
+                      as={ButtonTertiaryBlack}
+                      wording={item.wording}
+                      navigateTo={item.navigateTo}
+                      justifyContent="flex-start"
+                    />
+                  </ListText>
+                </ItemContainer>
+              </Li>
+            )
 
-          const childrenJsx = visibleSubPages.map((subPage, subIndex) => (
-            <Li
-              key={subPage.wording}
-              groupLabel={item.wording}
-              index={subIndex}
-              total={visibleSubPages.length}
-              accessibilityLabel={subPage.wording}
-              accessibilityRole={AccessibilityRole.BUTTON}>
-              <NestedItemContainer>
-                <BulletContainer>
-                  <NestedBullet />
-                </BulletContainer>
-                <ListText>
-                  <InternalTouchableLink
-                    as={ButtonTertiaryBlack}
-                    wording={subPage.wording}
-                    navigateTo={subPage.navigateTo}
-                    justifyContent="flex-start"
-                  />
-                </ListText>
-              </NestedItemContainer>
-            </Li>
-          ))
+            const childrenJsx = visibleSubPages.map((subPage, subIndex) => (
+              <Li
+                key={subPage.wording}
+                groupLabel={item.wording}
+                index={subIndex}
+                total={visibleSubPages.length}
+                accessibilityLabel={subPage.wording}
+                accessibilityRole={AccessibilityRole.BUTTON}>
+                <NestedItemContainer>
+                  <BulletContainer>
+                    <NestedBullet />
+                  </BulletContainer>
+                  <ListText>
+                    <InternalTouchableLink
+                      as={ButtonTertiaryBlack}
+                      wording={subPage.wording}
+                      navigateTo={subPage.navigateTo}
+                      justifyContent="flex-start"
+                    />
+                  </ListText>
+                </NestedItemContainer>
+              </Li>
+            ))
 
-          return [parentJsx, ...childrenJsx]
-        })}
-      </StyledVerticalUl>
+            return [parentJsx, ...childrenJsx]
+          })}
+        </StyledVerticalUl>
+      }
     />
   )
 }
@@ -117,4 +118,5 @@ const ListText = styled.View(({ theme }) => ({
 
 const StyledVerticalUl = styled(VerticalUl)({
   width: '100%',
+  alignItems: 'flex-start',
 })
