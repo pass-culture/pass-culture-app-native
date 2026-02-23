@@ -56,6 +56,8 @@ export const ChronicleCard: FunctionComponent<Props> = ({
     }
   }
 
+  const descriptionWithoutEndSpace = description?.trimEnd()
+
   return (
     <Container gap={3} testID={`chronicle-card-${id.toString()}`} width={cardWidth}>
       <InfoHeader
@@ -69,7 +71,7 @@ export const ChronicleCard: FunctionComponent<Props> = ({
           testID="description"
           onLayout={shouldTruncate ? handleOnLayout : undefined}
           numberOfLines={currentNumberOfLines}>
-          {`“${description}”`}
+          {`«\u00a0${descriptionWithoutEndSpace}\u00a0»`}
         </Description>
       </DescriptionContainer>
       <PublicationDate>{date}</PublicationDate>
