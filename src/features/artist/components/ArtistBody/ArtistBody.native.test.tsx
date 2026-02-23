@@ -217,6 +217,7 @@ describe('<ArtistBody />', () => {
       type: 'Artist',
       from: 'artist',
       artistId: mockArtist.id,
+      artistName: mockArtist.name,
     })
   })
 

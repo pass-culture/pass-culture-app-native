@@ -51,7 +51,7 @@ type ConsultThematicHomeParams = ConsultHomeParams & {
   moduleItemId?: string
 }
 type ShareParams = { from: Referrals; social?: Social | 'Other' } & (
-  | { type: 'Artist'; artistId: string }
+  | { type: 'Artist'; artistId: string; artistName: string }
   | { type: 'Offer'; offerId: number }
   | { type: 'Venue'; venueId: number }
   | { type: 'App' }

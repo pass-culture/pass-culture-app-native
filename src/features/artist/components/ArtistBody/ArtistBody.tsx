@@ -90,7 +90,12 @@ export const ArtistBody: FunctionComponent<Props> = ({
   })
 
   const pressShareArtist = () => {
-    void analytics.logShare({ type: 'Artist', from: 'artist', artistId: artist.id })
+    void analytics.logShare({
+      type: 'Artist',
+      from: 'artist',
+      artistId: artist.id,
+      artistName: artist.name,
+    })
     void shareArtist()
     showShareArtistModal()
   }
