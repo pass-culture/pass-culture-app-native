@@ -4,7 +4,6 @@ import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { LoggedOutContent } from 'features/profile/containers/ProfileLoggedOut/LoggedOutContent/LoggedOutContent'
 import { getShouldDisplayHelpButton } from 'features/profile/helpers/getShouldDisplayHelpButton'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -23,21 +22,12 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
 }))
 
 describe('LoggedOutContent', () => {
-  describe('ChatbotButton', () => {
-    it('should not display ChatbotButton when the feature flag is disabled', () => {
-      setFeatureFlags([])
+  beforeEach(() => {
+    setFeatureFlags([])
+  })
 
-      render(<LoggedOutContent user={undefined} />)
-
-      expect(screen.queryByText('Poser une question')).toBeNull()
-    })
-
-    it('should display ChatbotButton when the feature flag is enabled', () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CHATBOT])
-      render(<LoggedOutContent user={undefined} />)
-
-      expect(screen.getByText('Poser une question')).toBeTruthy()
-    })
+  afterEach(() => {
+    jest.clearAllMocks()
   })
 
   describe('HelpButton', () => {
@@ -45,27 +35,20 @@ describe('LoggedOutContent', () => {
       mockGetShouldDisplayHelpButton.mockReturnValueOnce(false)
       render(<LoggedOutContent user={undefined} />)
 
-      expect(screen.queryByText('Comment ça marche ?')).toBeNull()
+      expect(screen.queryByText('Comment ça marche\u00a0?')).toBeNull()
     })
 
     it('should display HelpButton when getShouldDisplayHelpButton returns true', () => {
       mockGetShouldDisplayHelpButton.mockReturnValueOnce(true)
       render(<LoggedOutContent user={undefined} />)
 
-      expect(screen.getByText('Comment ça marche ?')).toBeTruthy()
+      expect(screen.getByText('Comment ça marche\u00a0?')).toBeTruthy()
     })
   })
 
   describe('AppearanceButton', () => {
-    it('should not display AppearanceButton when the feature flag is disabled', () => {
+    it('should display AppearanceButton by default', () => {
       setFeatureFlags([])
-      render(<LoggedOutContent user={undefined} />)
-
-      expect(screen.queryByText('Apparence')).toBeNull()
-    })
-
-    it('should display AppearanceButton when the feature flag is enabled', () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE])
       render(<LoggedOutContent user={undefined} />)
 
       expect(screen.getByText('Apparence')).toBeTruthy()

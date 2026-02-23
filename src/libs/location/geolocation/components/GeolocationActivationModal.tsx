@@ -5,9 +5,8 @@ import styled from 'styled-components/native'
 import { analytics } from 'libs/analytics/provider'
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { useLocation } from 'libs/location/LocationWrapper'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
+import { Button } from 'ui/designSystem/Button/Button'
 import { LocationPointer as InitialLocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo } from 'ui/theme'
 
@@ -47,13 +46,16 @@ export const GeolocationActivationModal: React.FC<Props> = ({
       </FirstInformationText>
       <SecondInformationText>{informationText}</SecondInformationText>
       {isNative ? (
-        <StyledButtonPrimary
-          wording={callToActionMessage}
-          onPress={() => {
-            analytics.logOpenLocationSettings()
-            onPressGeolocPermissionModalButton()
-          }}
-        />
+        <ButtonWrapper>
+          <Button
+            fullWidth
+            wording={callToActionMessage}
+            onPress={() => {
+              analytics.logOpenLocationSettings()
+              onPressGeolocPermissionModalButton()
+            }}
+          />
+        </ButtonWrapper>
       ) : null}
     </AppInformationModal>
   )
@@ -76,6 +78,6 @@ const LocationPointer = styled(InitialLocationPointer).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.small,
 }))``
 
-const StyledButtonPrimary = styledButton(ButtonPrimary)(({ theme }) => ({
+const ButtonWrapper = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xl,
 }))

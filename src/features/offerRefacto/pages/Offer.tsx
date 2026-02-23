@@ -14,6 +14,7 @@ import { OfferContentPlaceholder } from 'features/offer/components/OfferContentP
 import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chronicleVariant'
 import { OfferArtistsModal } from 'features/offer/pages/OfferArtistsModal/OfferArtistsModal'
 import { useFetchHeadlineOffersCountQuery } from 'features/offer/queries/useFetchHeadlineOffersCountQuery'
+import { OfferHeader as RefactoOfferHeader } from 'features/offerRefacto/components/OfferHeader/OfferHeader'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { useReactionMutation } from 'features/reactions/queries/useReactionMutation'
@@ -167,6 +168,7 @@ export function Offer() {
             closeModal={hideOfferArtistsModal}
             artists={offer.artists}
             navigateTo={{ screen: 'Artist' }}
+            offerId={offer.id}
           />
         ) : null}
       </View>
@@ -186,6 +188,7 @@ export function Offer() {
         onVideoConsentPress={handleOnVideoConsentPress}
         isMultiArtistsEnabled={isMultiArtistsEnabled}
         onShowOfferArtistsModal={showOfferArtistsModal}
+        HeaderComponent={RefactoOfferHeader}
       />
     </Page>
   )

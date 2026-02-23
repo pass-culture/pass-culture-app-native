@@ -22,12 +22,17 @@ export const QrCode: FunctionComponent<Props> = ({ qrCode }) => (
   </QrCodeContainer>
 )
 
-const QrCodeContainer = styled.View({
+const QrCodeContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
-})
+  alignSelf: 'center',
+  backgroundColor: theme.designSystem.color.background.locked,
+  padding: theme.designSystem.size.spacing.s,
+  borderRadius: theme.designSystem.size.borderRadius.m,
+  borderWidth: 2,
+  borderColor: theme.designSystem.color.border.subtle,
+}))
 
-const StyledQRCode = styled(QRCode).attrs(({ theme }) => ({
+const StyledQRCode = styled(QRCode).attrs({
   size: QR_CODE_SIZE,
-  color: theme.designSystem.color.background.inverted,
-  backgroundColor: theme.designSystem.color.background.default,
-}))``
+  quietZone: 0,
+})``

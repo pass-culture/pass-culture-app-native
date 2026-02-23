@@ -26,9 +26,7 @@ describe('LocationButton', () => {
       />
     )
 
-    expect(
-      screen.getByLabelText('Activer ma géolocalisation - Interrupteur à bascule - coché')
-    ).toBeTruthy()
+    expect(screen.getByLabelText('Géolocalisation - Interrupteur à bascule - coché')).toBeTruthy()
   })
 
   it('should display error message if geolocPositionError is set', async () => {
@@ -56,9 +54,7 @@ describe('LocationButton', () => {
       />
     )
 
-    const toggle = screen.getByLabelText(
-      'Activer ma géolocalisation - Interrupteur à bascule - non coché'
-    )
+    const toggle = screen.getByLabelText('Géolocalisation - Interrupteur à bascule - non coché')
 
     await user.press(toggle)
 

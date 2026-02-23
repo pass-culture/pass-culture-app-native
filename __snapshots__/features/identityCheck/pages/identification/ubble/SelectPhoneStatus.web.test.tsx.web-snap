@@ -117,12 +117,8 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
           >
             <div
               class="css-view-175oi2r"
-              style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 24px; padding-left: 24px;"
+              style="flex-grow: 1; flex-direction: column; padding: 65px 24px 0px 24px;"
             >
-              <div
-                class="css-view-175oi2r"
-                style="height: 65px;"
-              />
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-height-1pi2tsx r-marginBlock-1xk7izq r-marginInline-1537yvj"
               >

@@ -1,7 +1,5 @@
 import { useColorScheme as useSystemColorScheme } from 'react-native'
 
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { createStore } from 'libs/store/createStore'
 
 import { getResolvedColorScheme } from './getResolvedColorScheme'
@@ -38,11 +36,6 @@ export const useStoredColorScheme: () => ColorScheme = colorSchemeStore.hooks.us
 export const useColorScheme = (): ColorSchemeType => {
   const storedScheme = useStoredColorScheme()
   const systemScheme = useSystemColorScheme()
-  const enableDarkMode = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
-
-  if (!enableDarkMode) {
-    return ColorScheme.LIGHT
-  }
 
   const userPreference = storedScheme ?? ColorScheme.SYSTEM
 

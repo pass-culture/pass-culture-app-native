@@ -2,21 +2,18 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { getSiteMapLinks } from 'features/profile/helpers/getSiteMapLinks'
 import { useSortedSearchCategories } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getLineHeightPx } from 'libs/parsers/getLineHeightPx'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Li } from 'ui/components/Li'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Dot } from 'ui/svg/icons/Dot'
 
 export function SiteMapScreen() {
-  const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
   const { isLoggedIn } = useAuthContext()
   const sortedCategories = useSortedSearchCategories()
   const siteMapLinks = getSiteMapLinks(sortedCategories)
@@ -29,7 +26,6 @@ export function SiteMapScreen() {
     <PageWithHeader
       title="Plan du site"
       shouldBeAlignedFlexStart
-      onGoBack={goBack}
       scrollChildren={
         <StyledVerticalUl>
           {visibleSiteMapLinks.map((item, parentIndex) => {
@@ -51,7 +47,9 @@ export function SiteMapScreen() {
                   </BulletContainer>
                   <ListText>
                     <InternalTouchableLink
-                      as={ButtonTertiaryBlack}
+                      as={Button}
+                      variant="tertiary"
+                      color="neutral"
                       wording={item.wording}
                       navigateTo={item.navigateTo}
                       justifyContent="flex-start"
@@ -75,7 +73,9 @@ export function SiteMapScreen() {
                   </BulletContainer>
                   <ListText>
                     <InternalTouchableLink
-                      as={ButtonTertiaryBlack}
+                      as={Button}
+                      variant="tertiary"
+                      color="neutral"
                       wording={subPage.wording}
                       navigateTo={subPage.navigateTo}
                       justifyContent="flex-start"
@@ -120,7 +120,6 @@ const BulletContainer = styled.View(({ theme }) => ({
 
 const ListText = styled.View(({ theme }) => ({
   marginLeft: theme.designSystem.size.spacing.m,
-  flex: 1,
 }))
 
 const StyledVerticalUl = styled(VerticalUl)({

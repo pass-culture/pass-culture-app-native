@@ -12,8 +12,8 @@ import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenRea
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
-import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
 import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
@@ -51,7 +51,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       required: true,
     },
     {
-      label: 'J’ai lu la charte des données personnelles',
+      label: 'J’ai lu les chartes des données personnelles',
       value: 'acceptDataCharter',
       required: true,
     }
@@ -97,7 +97,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
   const onSubmit = useCallback(() => {
     analytics.logContinueCGU()
     if (!isChecked.acceptCgu || !isChecked.acceptDataCharter) {
-      setErrorMessage('Tu dois accepter les CGU et la charte des données.')
+      setErrorMessage('Tu dois accepter les CGU et les chartes des données.')
       return
     }
     if (isRecaptchaEnabled) {
@@ -134,36 +134,43 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
         />
       ) : null}
       <CheckboxGroup<string>
-        label="CGU & Données"
+        label="Conditions et confidentialité"
+        labelTag="h3"
+        labelTagOverrideForAccessibility={2}
         options={checkboxOptions}
         value={selectedValues}
         onChange={setSelectedValues}
       />
-      <LinksContainer>
+      <Container gap={5}>
         <CaptionNeutralInfo>En cochant ces 2 cases tu assures avoir lu&nbsp;:</CaptionNeutralInfo>
-        <ButtonContainerFlexStart>
-          <ExternalTouchableLink
-            as={Button}
-            variant="tertiary"
-            color="neutral"
-            wording="Nos conditions générales d’utilisation"
-            externalNav={{ url: env.CGU_LINK }}
-            icon={ExternalSiteFilled}
-            numberOfLines={2}
-          />
-        </ButtonContainerFlexStart>
-        <ButtonContainerFlexStart>
-          <ExternalTouchableLink
-            as={Button}
-            variant="tertiary"
-            color="neutral"
-            wording="La charte des données personnelles"
-            externalNav={{ url: env.PRIVACY_POLICY_LINK }}
-            icon={ExternalSiteFilled}
-            numberOfLines={2}
-          />
-        </ButtonContainerFlexStart>
-      </LinksContainer>
+        <ExternalTouchableLink
+          as={Button}
+          variant="tertiary"
+          color="neutral"
+          wording="Conditions Générales d’Utilisation"
+          externalNav={{ url: env.CGU_LINK }}
+          icon={ExternalSiteFilled}
+          numberOfLines={2}
+        />
+        <ExternalTouchableLink
+          as={Button}
+          variant="tertiary"
+          color="neutral"
+          wording="Charte des données personnelles"
+          externalNav={{ url: env.PRIVACY_POLICY_LINK }}
+          icon={ExternalSiteFilled}
+          numberOfLines={2}
+        />
+        <ExternalTouchableLink
+          as={Button}
+          variant="tertiary"
+          color="neutral"
+          wording="Charte d’utilisation et de bonne conduite"
+          externalNav={{ url: env.CODE_OF_CONDUCT_LINK }}
+          icon={ExternalSiteFilled}
+          numberOfLines={2}
+        />
+      </Container>
       <ButtonContainer>
         <Button
           fullWidth
@@ -195,10 +202,11 @@ const BottomContainer = styled.View(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.xl,
 }))
 
-const LinksContainer = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xl,
-}))
-
 const ButtonContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xxxl,
+}))
+
+const Container = styled(ViewGap)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+  alignItems: 'flex-start',
 }))

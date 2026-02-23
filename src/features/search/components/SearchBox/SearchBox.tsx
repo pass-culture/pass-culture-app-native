@@ -14,7 +14,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { HiddenSuggestionsButton } from 'features/search/components/Buttons/HiddenSuggestionsButton'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
@@ -264,7 +263,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
             </StyledView>
           ) : null}
           <FlexView layout={LinearTransition.duration(250)}>
-            <HiddenSuggestionsButton />
             <SearchInput
               label="Rechercher dans le catalogue"
               ref={inputRef}

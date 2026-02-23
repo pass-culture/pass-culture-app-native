@@ -16,6 +16,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
 >
   <View
     accessibilityRole="header"
+    onLayout={[Function]}
     style={
       {
         "backgroundColor": "#ffffff",
@@ -224,26 +225,21 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               "flexGrow": 1,
               "paddingBottom": 0,
               "paddingHorizontal": 24,
+              "paddingTop": 65,
             }
           }
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
+          paddingHeaderHeight={65}
           style={{}}
         >
           <View>
             <View
               style={
                 {
-                  "height": 65,
-                }
-              }
-            />
-            <View
-              style={
-                {
                   "alignSelf": "center",
-                  "marginVertical": 40,
+                  "marginBottom": 40,
                   "maxWidth": 500,
                   "width": "100%",
                 }
@@ -2116,6 +2112,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
 >
   <View
     accessibilityRole="header"
+    onLayout={[Function]}
     style={
       {
         "backgroundColor": "#ffffff",
@@ -2324,26 +2321,21 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               "flexGrow": 1,
               "paddingBottom": 0,
               "paddingHorizontal": 24,
+              "paddingTop": 65,
             }
           }
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
+          paddingHeaderHeight={65}
           style={{}}
         >
           <View>
             <View
               style={
                 {
-                  "height": 65,
-                }
-              }
-            />
-            <View
-              style={
-                {
                   "alignSelf": "center",
-                  "marginVertical": 40,
+                  "marginBottom": 40,
                   "maxWidth": 500,
                   "width": "100%",
                 }

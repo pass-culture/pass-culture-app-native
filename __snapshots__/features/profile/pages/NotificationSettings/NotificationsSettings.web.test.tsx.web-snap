@@ -158,14 +158,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
           >
             <div
               class="css-view-175oi2r"
-              style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 24px; padding-left: 24px;"
+              style="flex-grow: 1; flex-direction: column; padding: 65px 24px 0px 24px;"
             >
               <div
-                class="css-view-175oi2r"
-                style="height: 65px;"
-              />
-              <div
-                class="css-view-175oi2r r-alignSelf-1kihuf0 r-marginBlock-140ww7k r-maxWidth-1ik5qf4 r-width-13qz1uu"
+                class="css-view-175oi2r r-alignSelf-1kihuf0 r-marginBottom-8d26hk r-maxWidth-1ik5qf4 r-width-13qz1uu"
               >
                 <div
                   class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"

@@ -1,7 +1,5 @@
 import ReactNative from 'react-native'
 
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { renderHook } from 'tests/utils'
 
 import { ColorScheme, colorSchemeActions, useColorScheme } from './useColorScheme'
@@ -13,7 +11,8 @@ const setColorSchemeSpy = jest.spyOn(colorSchemeActions, 'setColorScheme')
 
 describe('useColorScheme', () => {
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE])
+    colorSchemeActions.setColorScheme({ colorScheme: ColorScheme.SYSTEM })
+    setColorSchemeSpy.mockClear()
   })
 
   afterEach(() => {
@@ -28,20 +27,6 @@ describe('useColorScheme', () => {
     })
 
     it('should not write to store on first render', () => {
-      renderHook(() => useColorScheme())
-
-      expect(setColorSchemeSpy).not.toHaveBeenCalled()
-    })
-
-    it('should return default to light mode when feature flag disable', () => {
-      setFeatureFlags()
-      const { result } = renderHook(() => useColorScheme())
-
-      expect(result.current).toBe(ColorScheme.LIGHT)
-    })
-
-    it('should not set default to system theme when feature flag disable', () => {
-      setFeatureFlags()
       renderHook(() => useColorScheme())
 
       expect(setColorSchemeSpy).not.toHaveBeenCalled()
@@ -76,15 +61,6 @@ describe('useColorScheme', () => {
       const { result } = renderHook(() => useColorScheme())
 
       expect(result.current).toBe(ColorScheme.DARK)
-    })
-
-    it('should return light mode when system is dark but feature flag is disable', () => {
-      setFeatureFlags()
-      useColorSchemeSpy.mockReturnValueOnce(ColorScheme.DARK)
-      colorSchemeActions.setColorScheme({ colorScheme: ColorScheme.SYSTEM })
-      const { result } = renderHook(() => useColorScheme())
-
-      expect(result.current).toBe(ColorScheme.LIGHT)
     })
   })
 })

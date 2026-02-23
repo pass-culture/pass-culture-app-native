@@ -10,10 +10,10 @@ import { newEmailSelectionSchema } from 'features/profile/pages/NewEmailSelectio
 import { useNewEmailSelectionMutation } from 'features/profile/queries/useNewEmailSelectionMutation'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
@@ -70,7 +70,7 @@ export const NewEmailSelection = () => {
           <Container>
             <Banner label="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h." />
           </Container>
-          <ButtonPrimary
+          <Button
             wording="Modifier mon adresse e-mail"
             disabled={!isValid || isPending}
             onPress={onSubmit}

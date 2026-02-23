@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
@@ -57,8 +58,7 @@ import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { Trophy } from 'ui/svg/icons/Trophy'
 import { ArtMaterial } from 'ui/svg/icons/venueAndCategories/ArtMaterial'
-import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 const isWeb = Platform.OS === 'web'
@@ -66,9 +66,14 @@ const isWeb = Platform.OS === 'web'
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 const DARK_MODE_GTM_APPEARANCE_TAG_KEY = 'darkModeGtmAppearanceTagSeen'
 
+const CHATBOT_ELIGIBLE_STATUSES = new Set<YoungStatusType>([
+  YoungStatusType.eligible,
+  YoungStatusType.beneficiary,
+  YoungStatusType.ex_beneficiary,
+])
+
 const OnlineProfile: React.FC = () => {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.PROFILE)
-  const enableDarkMode = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
   const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
   const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
@@ -185,9 +190,11 @@ const OnlineProfile: React.FC = () => {
     shareApp('profile_banner')
   }, [])
 
-  // If no dark mode and no rotation mode in web this section is empty
-  const hidePreferenceSection = !enableDarkMode && isWeb
   const shouldShowAchievementsSection = user?.isBeneficiary
+
+  const userStatusType = user?.status?.statusType
+  const isEligibleForChatbot = !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.has(userStatusType)
+  const shouldDisplayChatbot = enableChatbot && isEligibleForChatbot
 
   const shareBannerTitle = 'Partage le pass Culture'
   const shareBannerDescription = 'Recommande le bon plan à tes amis\u00a0!'
@@ -211,9 +218,19 @@ const OnlineProfile: React.FC = () => {
             />
             <ProfileContainer>
               <Spacer.Column numberOfSpaces={4} />
-              <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
-                <VerticalUl>
-                  {isLoggedIn ? (
+              {isLoggedIn ? (
+                <Section title="Profil">
+                  <VerticalUl>
+                    {shouldShowAchievementsSection ? (
+                      <Li>
+                        <Row
+                          title="Mes succès"
+                          type="navigable"
+                          navigateTo={getProfilePropConfig('Achievements', { from: 'profile' })}
+                          icon={Trophy}
+                        />
+                      </Li>
+                    ) : null}
                     <Li>
                       <Row
                         title="Informations personnelles"
@@ -222,27 +239,23 @@ const OnlineProfile: React.FC = () => {
                         icon={ProfileIcon}
                       />
                     </Li>
-                  ) : null}
-                  <Li>
-                    <Row
-                      type="navigable"
-                      title="Notifications"
-                      icon={Bell}
-                      navigateTo={getProfilePropConfig('NotificationsSettings')}
-                    />
-                  </Li>
+                  </VerticalUl>
+                </Section>
+              ) : null}
+              <Section title="Paramètres">
+                <VerticalUl>
                   <LiWithMarginVertical accessible={false}>
                     <SectionWithSwitch
                       icon={LocationPointer}
                       iconSize={SECTION_ROW_ICON_SIZE}
-                      title="Activer ma géolocalisation"
+                      title="Géolocalisation"
                       active={isGeolocSwitchActive}
                       accessibilityHint={geolocPositionError?.message}
                       toggle={() => {
                         switchGeolocation()
                         debouncedLogLocationToggle(!isGeolocSwitchActive)
                       }}
-                      toggleLabel="Activer ma géolocalisation"
+                      toggleLabel="Géolocalisation"
                     />
                     <InputError
                       visible={!!geolocPositionError}
@@ -250,11 +263,39 @@ const OnlineProfile: React.FC = () => {
                       numberOfSpacesTop={1}
                     />
                   </LiWithMarginVertical>
+                  <Li>
+                    <Row
+                      title="Apparence"
+                      type="navigable"
+                      navigateTo={getProfilePropConfig('Appearance')}
+                      accessibilityLabel={
+                        enableDarkModeGtm && !hasSeenAppearanceTag ? accessibilityLabel : undefined
+                      }
+                      renderTitle={(title) => (
+                        <TitleWithTag>
+                          <Typo.BodyAccent numberOfLines={2}>{title}</Typo.BodyAccent>
+                          {enableDarkModeGtm && !hasSeenAppearanceTag ? (
+                            <Tag label={tabLabel} variant={TagVariant.NEW} />
+                          ) : null}
+                        </TitleWithTag>
+                      )}
+                      onPress={markAppearanceTagSeen}
+                      icon={ArtMaterial}
+                    />
+                  </Li>
+                  <Li>
+                    <Row
+                      type="navigable"
+                      title="Notifications et thèmes suivis"
+                      icon={Bell}
+                      navigateTo={getProfilePropConfig('NotificationsSettings')}
+                    />
+                  </Li>
                 </VerticalUl>
               </Section>
-              <Section title="Aides">
+              <Section title="Aide">
                 <VerticalUl>
-                  {enableChatbot ? (
+                  {shouldDisplayChatbot ? (
                     <Li>
                       <Row
                         title="Poser une question"
@@ -279,7 +320,7 @@ const OnlineProfile: React.FC = () => {
                   ) : null}
                   <Li>
                     <Row
-                      title="Centre d’aide"
+                      title="Chercher une info"
                       type="clickable"
                       externalNav={{ url: env.FAQ_LINK }}
                       icon={ExternalSite}
@@ -289,46 +330,28 @@ const OnlineProfile: React.FC = () => {
               </Section>
               <Section title="Autres">
                 <VerticalUl>
-                  {shouldShowAchievementsSection ? (
-                    <Li>
-                      <Row
-                        title="Mes succès"
-                        type="navigable"
-                        navigateTo={getProfilePropConfig('Achievements', { from: 'profile' })}
-                        icon={Trophy}
-                      />
-                    </Li>
-                  ) : null}
-                  {hidePreferenceSection ? null : (
-                    <Li>
-                      <Row
-                        title="Apparence"
-                        type="navigable"
-                        navigateTo={getProfilePropConfig('Appearance')}
-                        accessibilityLabel={
-                          enableDarkModeGtm && !hasSeenAppearanceTag
-                            ? accessibilityLabel
-                            : undefined
-                        }
-                        renderTitle={(title) => (
-                          <TitleWithTag>
-                            <Typo.BodyAccent numberOfLines={2}>{title}</Typo.BodyAccent>
-                            {enableDarkModeGtm && !hasSeenAppearanceTag ? (
-                              <Tag label={tabLabel} variant={TagVariant.NEW} />
-                            ) : null}
-                          </TitleWithTag>
-                        )}
-                        onPress={markAppearanceTagSeen}
-                        icon={ArtMaterial}
-                      />
-                    </Li>
-                  )}
+                  <Li>
+                    <Row
+                      title="Confidentialité"
+                      type="navigable"
+                      navigateTo={getProfilePropConfig('ConsentSettings')}
+                      icon={Confidentiality}
+                    />
+                  </Li>
                   <Li>
                     <Row
                       title="Accessibilité"
                       type="navigable"
                       navigateTo={getProfilePropConfig('Accessibility')}
                       icon={HandicapMental}
+                    />
+                  </Li>
+                  <Li>
+                    <Row
+                      title="Informations légales"
+                      type="navigable"
+                      navigateTo={getProfilePropConfig('LegalNotices')}
+                      icon={LegalNotices}
                     />
                   </Li>
                   {displayInAppFeedback ? (
@@ -341,22 +364,6 @@ const OnlineProfile: React.FC = () => {
                       />
                     </Li>
                   ) : null}
-                  <Li>
-                    <Row
-                      title="Informations légales"
-                      type="navigable"
-                      navigateTo={getProfilePropConfig('LegalNotices')}
-                      icon={LegalNotices}
-                    />
-                  </Li>
-                  <Li>
-                    <Row
-                      title="Confidentialité"
-                      type="navigable"
-                      navigateTo={getProfilePropConfig('ConsentSettings')}
-                      icon={Confidentiality}
-                    />
-                  </Li>
                 </VerticalUl>
               </Section>
               {isWeb ? null : (
@@ -412,16 +419,10 @@ const OnlineProfile: React.FC = () => {
                     </ButtonContainerFlexStart>
                   </DebugButtonContainer>
                 ) : null}
-                {isWeb ? null : (
-                  <LogoFrenchRepublicContainer>
-                    <LogoFrenchRepublic />
-                  </LogoFrenchRepublicContainer>
-                )}
               </Section>
-              {isWeb ? null : <Spacer.TabBar />}
             </ProfileContainer>
           </View>
-          {isWeb ? <AccessibilityFooter withHorizontalMargin /> : null}
+          <AccessibilityFooter withHorizontalMargin />
         </ScrollViewContentContainer>
       </ScrollView>
       <StatusBarBlurredBackground />
@@ -477,12 +478,6 @@ const Version = styled(Typo.BodyAccentXs)(({ theme }) => ({
 }))
 
 const DebugButtonContainer = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.l,
-}))
-
-const LogoFrenchRepublicContainer = styled.View(({ theme }) => ({
-  width: getSpacing(40),
-  height: getSpacing(28),
   marginBottom: theme.designSystem.size.spacing.l,
 }))
 
