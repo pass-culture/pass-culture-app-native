@@ -32,7 +32,7 @@ export const ChroniclesWritersModal: FunctionComponent<Props> = ({
         <Typo.Body>{variantInfo.modalWording}</Typo.Body>
 
         <Button
-          wording={variantInfo.modalButtonLabel}
+          wording="Voir tous les avis des clubs"
           onPress={onShowRecoButtonPress}
           color="brand"
         />
