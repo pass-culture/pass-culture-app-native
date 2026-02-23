@@ -76,8 +76,10 @@ export const Accordion = ({
   })
 
   const toggleListItem = () => {
-    const toValue = open ? 0 : 1
-    !open && setShowChildren(true) // Display children before opening animation begins
+    const closed = !open
+    const toValue = closed ? 1 : 0
+    if (closed) setShowChildren(true) // Display children before opening animation begins; // Display children before opening animation begins
+    setOpen(closed)
 
     Animated.parallel([
       Animated.timing(layoutAnimController, {
@@ -94,10 +96,7 @@ export const Accordion = ({
         useNativeDriver: ANIMATION_USE_NATIVE_DRIVER,
       }),
     ]).start(() => {
-      setOpen((prevOpen) => {
-        prevOpen && setShowChildren(false) // Hide children after closing animation ends
-        return !prevOpen
-      })
+      if (open) setShowChildren(false) // Hide children after closing animation ends; // Hide children after closing animation ends
     })
   }
 
