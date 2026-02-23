@@ -110,6 +110,7 @@ export const Chronicles: FunctionComponent = () => {
                 offer={offer}
                 subcategory={subcategoriesMapping[offer.subcategoryId]}
                 trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+                fullScreen
               />
             ) : (
               <Button wording="Trouve ta séance" onPress={onPress} color="brand" />
