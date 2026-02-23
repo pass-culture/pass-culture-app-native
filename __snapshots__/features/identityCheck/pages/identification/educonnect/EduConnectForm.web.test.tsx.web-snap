@@ -210,6 +210,9 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
             </div>
           </div>
           <div
+            class="css-view-175oi2r r-bottom-1p0dtai r-height-1wfhzrg r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-pointerEvents-633pao"
+          />
+          <div
             class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-qn3fzs r-paddingInline-cxgwc0 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
           >
             <button

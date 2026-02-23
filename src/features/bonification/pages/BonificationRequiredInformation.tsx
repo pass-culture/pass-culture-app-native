@@ -26,6 +26,7 @@ export const BonificationRequiredInformation = () => {
   return (
     <PageWithHeader
       title="Informations"
+      shouldDisplayBottomGradient
       scrollChildren={
         <Form.MaxWidth>
           <ViewGap gap={4}>

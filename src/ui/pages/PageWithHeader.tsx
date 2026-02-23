@@ -4,9 +4,11 @@ import styled from 'styled-components/native'
 
 import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
+import { Gradient } from 'ui/components/Gradient'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { CustomKeyboardAvoidingView } from 'ui/pages/components/CustomKeyboardAvoidingView'
 import { useShouldEnableScrollOnView } from 'ui/pages/helpers/useShouldEnableScrollView'
+import { useStickyFooterGradient } from 'ui/pages/helpers/useStickyFooterGradient'
 import { Page } from 'ui/pages/Page'
 import { Spacer } from 'ui/theme'
 
@@ -19,22 +21,32 @@ interface Props {
   RightButton?: ReactNode
   shouldBeAlignedFlexStart?: boolean
   scrollViewProps?: Omit<ScrollViewProps, 'contentContainerStyle'>
+  shouldDisplayBottomGradient?: boolean
 }
 const isWeb = Platform.OS === 'web'
 export const PageWithHeader = forwardRef<ScrollView, Props>((props, ref) => {
   const { onScrollViewLayout, onScrollViewContentSizeChange } = useShouldEnableScrollOnView()
   const [measuredHeaderHeight, setMeasuredHeaderHeight] = useState(0)
   const headerHeight = useGetHeaderHeight()
+  const {
+    gradientRef,
+    bottomChildrenViewHeight,
+    onFixedBottomChildrenViewLayout,
+    onChildrenScrollViewLayout,
+    onChildrenScrollViewContentSizeChange,
+    onChildrenScrollViewScroll,
+  } = useStickyFooterGradient({
+    hasFixedBottomChildren: Boolean(props.fixedBottomChildren),
+    scrollViewProps: props.scrollViewProps,
+    onScrollViewLayout,
+    onScrollViewContentSizeChange,
+  })
 
   function onHeaderLayout(event: LayoutChangeEvent) {
     const { height } = event.nativeEvent.layout
     setMeasuredHeaderHeight(height)
   }
-  const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
-  function onFixedBottomChildrenViewLayout(event: LayoutChangeEvent) {
-    const { height } = event.nativeEvent.layout
-    setBottomChildrenViewHeight(height)
-  }
+
   const paddingHeaderHeight = useFontScaleValue({
     default: headerHeight,
     at200PercentZoom: measuredHeaderHeight,
@@ -57,16 +69,21 @@ export const PageWithHeader = forwardRef<ScrollView, Props>((props, ref) => {
             {...props.scrollViewProps}
             bottomChildrenViewHeight={bottomChildrenViewHeight}
             paddingHeaderHeight={paddingHeaderHeight}
-            onContentSizeChange={onScrollViewContentSizeChange}
-            onLayout={onScrollViewLayout}>
+            onContentSizeChange={onChildrenScrollViewContentSizeChange}
+            onLayout={onChildrenScrollViewLayout}
+            onScroll={onChildrenScrollViewScroll}
+            scrollEventThrottle={16}>
             {props.scrollChildren}
           </ChildrenScrollView>
         ) : null}
         {props.fixedBottomChildren ? (
-          <FixedBottomChildrenView onLayout={onFixedBottomChildrenViewLayout}>
-            {props.fixedBottomChildren}
-            <Spacer.BottomScreen />
-          </FixedBottomChildrenView>
+          <React.Fragment>
+            <Gradient ref={gradientRef} bottomViewHeight={bottomChildrenViewHeight} />
+            <FixedBottomChildrenView onLayout={onFixedBottomChildrenViewLayout}>
+              {props.fixedBottomChildren}
+              <Spacer.BottomScreen />
+            </FixedBottomChildrenView>
+          </React.Fragment>
         ) : null}
       </CustomKeyboardAvoidingView>
     </Page>

@@ -231,7 +231,9 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
+          onScroll={[Function]}
           paddingHeaderHeight={65}
+          scrollEventThrottle={16}
           style={{}}
         >
           <View>
