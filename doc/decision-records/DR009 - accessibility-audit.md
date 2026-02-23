@@ -1100,11 +1100,15 @@ Texte
 **PR** : [#9228](https://github.com/pass-culture/pass-culture-app-native/pull/9228)
 
 **Problème** 😱  
+E01 : le composant "Qu’est ce que les cookies ?" et les autres composants qui permettent d’afficher/masquer du contenu doivent indiquer leur état d’ouverture (Disclosure) -> Conformité partielle : l’état du composant est bien restitué, mais de manière incohérente.
+À l’arrivée sur le composant, l’état est annoncé comme « Fermer ». Lors de l’ouverture, l’annonce reste « Fermer », et lors de la fermeture, l’état est annoncé comme « Ouvert ».
 E09 : le composant « Accéder aux séances » devrait être implémenté comme un bouton
 E14 : les composants dans les historiques de recherche et dans les suggestions déclenchent des événements, mais n'ont pas de rôle présenté aux technologies d'assistance. 
 
 **Correction** 💡  
-Ajout du rôle bouton sur les composants 
+E01 : le composant restitue de façon cohérent les etats fermé et ouvert
+E09 , E14 :Ajout du rôle bouton sur les composants 
+
 
 **Retours audit** 🔥  
 Texte
