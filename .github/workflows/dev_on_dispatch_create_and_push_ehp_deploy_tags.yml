@@ -141,7 +141,7 @@ jobs:
           #   1.137.1  => 10 000 000 + 137 000 + 001 => 10137001
 
           TESTING_VERSION="${{ steps.package-version.outputs.current-version }}"
-          SEMVER=(${TESTING_VERSION//./ })
+          SEMVER=("${TESTING_VERSION//./ }")
           MAJOR="${SEMVER[0]}"
           MINOR="${SEMVER[1]}"
           PATCH="${SEMVER[2]}"
