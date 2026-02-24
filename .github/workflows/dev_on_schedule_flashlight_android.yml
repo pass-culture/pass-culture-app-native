@@ -105,7 +105,7 @@ jobs:
 
           BRANCH_NAME="${BRANCH_NAME#refs/heads/}"
 
-          {echo "branch_name=$BRANCH_NAME"; echo "overall_score=$OVERALL_SCORE"; echo "avg_fps=$AVG_FPS"; echo "avg_ram=$AVG_RAM"; echo "avg_cpu=$AVG_CPU"; echo "short_sha=${GITHUB_SHA:0:7}"} >> "$GITHUB_OUTPUT" 
+          { echo "branch_name=$BRANCH_NAME"; echo "overall_score=$OVERALL_SCORE"; echo "avg_fps=$AVG_FPS"; echo "avg_ram=$AVG_RAM"; echo "avg_cpu=$AVG_CPU"; echo "short_sha=${GITHUB_SHA:0:7}" } >> "$GITHUB_OUTPUT" 
 
           if [ "$TEST_EXIT_CODE" -ne 0 ]; then
             exit "$TEST_EXIT_CODE"
