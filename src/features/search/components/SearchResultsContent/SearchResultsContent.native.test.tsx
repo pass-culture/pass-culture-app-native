@@ -4,7 +4,7 @@ import { uniqBy } from 'lodash'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate, popTo } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import {
   defaultDisabilitiesProperties,
@@ -87,7 +87,8 @@ const mockedPlace: SuggestedPlace = {
   type: 'street',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
-
+const mockSetSelectedLocationMode = jest.fn()
+const mockSetPlace = jest.fn()
 const mockShowGeolocPermissionModal = jest.fn()
 const mockedPosition = { latitude: 2, longitude: 40 } as Position
 const mockedNoPosition = null as Position
@@ -101,9 +102,9 @@ const everywhereUseLocation = {
   hasGeolocPosition: false,
   permissionState: GeolocPermissionState.DENIED,
   onModalHideRef: jest.fn(),
-  setPlace: jest.fn(),
+  setPlace: mockSetPlace,
   isCurrentLocationMode: jest.fn(),
-  setSelectedLocationMode: jest.fn(),
+  setSelectedLocationMode: mockSetSelectedLocationMode,
   showGeolocPermissionModal: mockShowGeolocPermissionModal,
   requestGeolocPermission: jest.fn(),
   triggerPositionUpdate: jest.fn(),
@@ -478,7 +479,7 @@ describe('SearchResultsContent component', () => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter', newSearchState)
     })
 
-    it('should navigate to SearchResults when location is not EVERYWHERE', async () => {
+    it('should update location to EVERYWHERE when `Élargir la zone de recherche` cta is pressed', async () => {
       const query = 'cinéma'
       const newSearchState = {
         ...mockSearchState,
@@ -489,7 +490,6 @@ describe('SearchResultsContent component', () => {
         },
         query,
       }
-
       mockUseSearch.mockReturnValueOnce({
         searchState: newSearchState,
         dispatch: mockDispatch,
@@ -500,13 +500,8 @@ describe('SearchResultsContent component', () => {
       const cta = await screen.findByText('Élargir la zone de recherche')
       await user.press(cta)
 
-      expect(popTo).toHaveBeenNthCalledWith(1, 'TabNavigator', {
-        params: {
-          params: expect.objectContaining({ ...mockSearchState, query }),
-          screen: 'SearchResults',
-        },
-        screen: 'SearchStackNavigator',
-      })
+      expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.EVERYWHERE)
+      expect(mockSetPlace).toHaveBeenCalledWith(null)
     })
 
     it('should log ExtendSearchRadiusClicked when `Élargir la zone de recherche` cta is pressed', async () => {

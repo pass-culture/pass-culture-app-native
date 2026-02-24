@@ -6,39 +6,34 @@ import { SearchState } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
+import { SuggestedPlace } from 'libs/place/types'
 import { Button } from 'ui/designSystem/Button/Button'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type NoSearchResultProps = {
+  setSelectedLocationMode: React.Dispatch<React.SetStateAction<LocationMode>>
   searchState: SearchState
+  setPlace: (place: SuggestedPlace | null) => void
   navigateToSearchFilter: (searchState: SearchState) => void
-  onResetPlace: () => void
-  navigateToSearchResults: (searchState: SearchState) => void
 }
 
 export const NoSearchResult = ({
+  setSelectedLocationMode,
   searchState,
+  setPlace,
   navigateToSearchFilter,
-  onResetPlace,
-  navigateToSearchResults,
 }: NoSearchResultProps) => {
   const title = 'Pas de résultat'
   const subtitle = searchState.query ? `pour "${searchState.query}"` : ''
-
   const noResultsProps = {
     errorDescription: 'Élargis la zone de recherche pour plus de résultats.',
     ctaWording: 'Élargir la zone de recherche',
     onPress: () => {
-      analytics.logExtendSearchRadiusClicked(searchState.searchId)
-      onResetPlace()
-      navigateToSearchResults({
-        ...searchState,
-        locationFilter: {
-          locationType: LocationMode.EVERYWHERE,
-        },
-      })
+      void analytics.logExtendSearchRadiusClicked(searchState.searchId)
+      setSelectedLocationMode(LocationMode.EVERYWHERE)
+      setPlace(null)
     },
   }
 

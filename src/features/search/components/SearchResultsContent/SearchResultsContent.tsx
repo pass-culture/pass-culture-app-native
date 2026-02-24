@@ -17,7 +17,6 @@ import { ArtistSection } from 'features/search/components/SearchListHeader/Artis
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
 import { getStringifySearchStateWithoutLocation } from 'features/search/helpers/getStringifySearchStateWithoutLocation/getStringifySearchStateWithoutLocation'
-import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateToSearchFilter/useNavigateToSearchFilter'
 import { usePrevious } from 'features/search/helpers/usePrevious'
 import { useGridListLayout } from 'features/search/store/gridListLayoutStore'
@@ -116,12 +115,12 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()
   const { navigateToSearchFilter } = useNavigateToSearchFilter()
-  const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
 
   const showSkeleton = useIsFalseWithDelay(!!isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(!!isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
-  const { geolocPosition, selectedLocationMode, selectedPlace, onResetPlace } = useLocation()
+  const { geolocPosition, selectedLocationMode, setSelectedLocationMode, selectedPlace, setPlace } =
+    useLocation()
   const { width, height } = useWindowDimensions()
   const shouldDisplayVenueMapInSearch = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
@@ -380,10 +379,10 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
 
     return (
       <NoSearchResult
+        setSelectedLocationMode={setSelectedLocationMode}
         searchState={searchState}
+        setPlace={setPlace}
         navigateToSearchFilter={navigateToSearchFilter}
-        onResetPlace={onResetPlace}
-        navigateToSearchResults={navigateToSearchResults}
       />
     )
   }
