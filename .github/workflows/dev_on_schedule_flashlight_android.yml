@@ -90,6 +90,8 @@ jobs:
 
       - name: Run the full test script
         id: run_test
+        env:
+          BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
         run: |
           set +e
           ./scripts/run_flashlight_on_android.sh 2>&1 | tee test_output.log
@@ -101,19 +103,12 @@ jobs:
           AVG_RAM="$(grep -oP 'Average RAM Usage\s+\K[0-9]+' test_output.log | tail -1 || echo 'N/A')"
           AVG_CPU="$(grep -oP 'Average Total CPU\s+\K[0-9]+' test_output.log | tail -1 || echo 'N/A')"
 
-          BRANCH_NAME="${{ github.head_ref || github.ref_name }}"
           BRANCH_NAME="${BRANCH_NAME#refs/heads/}"
 
-          echo "branch_name=$BRANCH_NAME" >> "$GITHUB_OUTPUT"
-          echo "overall_score=$OVERALL_SCORE" >> "$GITHUB_OUTPUT"
-          echo "avg_fps=$AVG_FPS" >> "$GITHUB_OUTPUT"
-          echo "avg_ram=$AVG_RAM" >> "$GITHUB_OUTPUT"
-          echo "avg_cpu=$AVG_CPU" >> "$GITHUB_OUTPUT"
+          {echo "branch_name=$BRANCH_NAME"; echo "overall_score=$OVERALL_SCORE"; echo "avg_fps=$AVG_FPS"; echo "avg_ram=$AVG_RAM"; echo "avg_cpu=$AVG_CPU"; echo "short_sha=${GITHUB_SHA:0:7}"} >> "$GITHUB_OUTPUT" 
 
-          echo "short_sha=${GITHUB_SHA:0:7}" >> "$GITHUB_OUTPUT"
-
-          if [ $TEST_EXIT_CODE -ne 0 ]; then
-            exit $TEST_EXIT_CODE
+          if [ "$TEST_EXIT_CODE" -ne 0 ]; then
+            exit "$TEST_EXIT_CODE"
           fi
 
       - name: Send Slack notification
