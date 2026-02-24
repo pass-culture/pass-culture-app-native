@@ -66,12 +66,12 @@ export const ChronicleCard: FunctionComponent<Props> = ({
         thumbnailComponent={icon}
       />
       <DescriptionContainer defaultHeight={defaultHeight} shouldTruncate={shouldTruncate}>
-        <Description
+        <Typo.BodyS
           testID="description"
           onLayout={shouldTruncate ? handleOnLayout : undefined}
           numberOfLines={currentNumberOfLines}>
           {`«\u00a0${descriptionWithoutEndSpace}\u00a0»`}
-        </Description>
+        </Typo.BodyS>
       </DescriptionContainer>
       <PublicationDate>{date}</PublicationDate>
       <BottomCardContainer>
@@ -95,10 +95,6 @@ const DescriptionContainer = styled.View<{ defaultHeight: number; shouldTruncate
   ({ defaultHeight, shouldTruncate }) =>
     shouldTruncate ? { maxHeight: MAX_LINES * defaultHeight, overflow: 'hidden', flexGrow: 1 } : {}
 )
-
-const Description = styled(Typo.BodyS)({
-  flexGrow: 1,
-})
 
 const BottomCardContainer = styled.View({
   flexDirection: 'row',
