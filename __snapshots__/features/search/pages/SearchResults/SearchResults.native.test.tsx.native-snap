@@ -99,7 +99,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 {
                   "busy": undefined,
                   "checked": undefined,
-                  "disabled": undefined,
+                  "disabled": false,
                   "expanded": undefined,
                   "selected": undefined,
                 }
@@ -129,10 +129,19 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     },
                     {
                       "alignItems": "center",
-                      "flexGrow": 1,
-                      "height": 40,
+                      "backgroundColor": "transparent",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
                       "justifyContent": "center",
-                      "maxWidth": 40,
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
+                      "width": "auto",
                     },
                   ],
                   {
@@ -143,23 +152,53 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               testID="Revenir en arrière"
             >
               <View
-                height={24}
-                testID="icon-back"
-                width={24}
-              >
-                <Text>
-                  icon-back-SVG-Mock
-                </Text>
-              </View>
-              <Text
+                gap={0}
+                hasIcon={true}
+                isMultiline={false}
                 style={
                   {
-                    "display": "none",
+                    "alignItems": "center",
+                    "columnGap": 0,
+                    "flexDirection": "row",
                   }
                 }
               >
-                Retour
-              </Text>
+                <View
+                  collapsable={false}
+                  jestAnimatedProps={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestAnimatedStyle={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestInlineStyle={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                  nativeID="1"
+                  style={
+                    [
+                      {
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={22}
+                    width={22}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
             </View>
           </View>
           <View
@@ -309,7 +348,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "reduceMotionV": "system",
                       }
                     }
-                    nativeID="1"
+                    nativeID="2"
                     style={
                       [
                         {

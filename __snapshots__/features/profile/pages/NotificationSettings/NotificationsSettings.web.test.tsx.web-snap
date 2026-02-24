@@ -2,37 +2,31 @@
 
 exports[`NotificationsSettings should render correctly 1`] = `
 .c0 {
-  flex-direction: column;
-  cursor: pointer;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: auto;
+  max-width: 500px;
   border-width: 0;
-  display: flex;
   background-color: transparent;
-  padding: 0;
-}
-
-.c0:active {
-  opacity: 0.7;
+  cursor: pointer;
   outline: none;
-}
-
-.c0:focus {
-  outline: auto;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
 .c0:disabled {
   cursor: initial;
 }
 
-.c0:hover {
-  text-decoration: underline;
-  text-decoration-color: #161617;
-}
-
-.c0:hover:disabled {
-  text-decoration: none;
-}
-
-.c4 {
+.c3 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -55,11 +49,11 @@ exports[`NotificationsSettings should render correctly 1`] = `
   box-sizing: border-box;
 }
 
-.c4:disabled {
+.c3:disabled {
   cursor: initial;
 }
 
-.c3 {
+.c2 {
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
@@ -67,18 +61,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
   cursor: pointer;
 }
 
-.c2 {
+.c1 {
   display: flex;
   flex-direction: column;
   flex: 1;
-}
-
-.c1 {
-  flex-grow: 1;
-  max-width: 40px;
-  height: 40px;
-  justify-content: center;
-  align-items: center;
 }
 
 <div>
@@ -101,28 +87,30 @@ exports[`NotificationsSettings should render correctly 1`] = `
         >
           <button
             aria-label="Revenir en arrière"
-            class="c0 c1"
+            class="c0"
             data-testid="Revenir en arrière"
             tabindex="0"
-            title="Revenir en arrière"
             type="button"
           >
             <div
-              class="css-view-175oi2r"
-              data-testid="icon-back"
+              class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1wjczhr r-flexDirection-18u37iz"
             >
               <div
-                class="css-text-146c3p1"
-                dir="ltr"
+                class="css-view-175oi2r"
+                id="0"
+                style="flex-shrink: 0;"
               >
-                icon-back-SVG-Mock
+                <div
+                  class="css-view-175oi2r"
+                >
+                  <div
+                    class="css-text-146c3p1"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
               </div>
-            </div>
-            <div
-              class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-              dir="ltr"
-            >
-              Retour
             </div>
           </button>
         </div>
@@ -213,7 +201,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   class="css-view-175oi2r r-height-3da1kt"
                 />
                 <form
-                  class="c2"
+                  class="c1"
                 >
                   <div
                     class="css-view-175oi2r r-paddingBlock-w7s2jr"
@@ -225,7 +213,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                       >
                         <label
-                          class="c3"
+                          class="c2"
                           for="1"
                         >
                           <div
@@ -313,7 +301,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                       >
                         <label
-                          class="c3"
+                          class="c2"
                           for="3"
                         >
                           <div
@@ -384,7 +372,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                       >
                         <label
-                          class="c3"
+                          class="c2"
                           for="5"
                         >
                           <div
@@ -452,7 +440,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                       >
                         <label
-                          class="c3"
+                          class="c2"
                           for="7"
                         >
                           <div
@@ -520,7 +508,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                       >
                         <label
-                          class="c3"
+                          class="c2"
                           for="9"
                         >
                           <div
@@ -588,7 +576,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                       >
                         <label
-                          class="c3"
+                          class="c2"
                           for="11"
                         >
                           <div
@@ -656,7 +644,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                       >
                         <label
-                          class="c3"
+                          class="c2"
                           for="13"
                         >
                           <div
@@ -724,7 +712,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                       >
                         <label
-                          class="c3"
+                          class="c2"
                           for="15"
                         >
                           <div
@@ -787,7 +775,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   />
                   <button
                     aria-label="Enregistrer les modifications"
-                    class="c4"
+                    class="c3"
                     data-testid="Enregistrer les modifications"
                     disabled=""
                     type="button"

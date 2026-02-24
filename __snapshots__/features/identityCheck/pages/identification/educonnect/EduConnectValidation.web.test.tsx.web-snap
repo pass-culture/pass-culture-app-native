@@ -1,7 +1,32 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<EduConnectValidation /> should render EduConnectValidation component correctly 1`] = `
-.c2 {
+.c0 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c1 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -24,47 +49,8 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
   box-sizing: border-box;
 }
 
-.c2:disabled {
+.c1:disabled {
   cursor: initial;
-}
-
-.c0 {
-  flex-direction: column;
-  cursor: pointer;
-  border-width: 0;
-  display: flex;
-  background-color: transparent;
-  padding: 0;
-}
-
-.c0:active {
-  opacity: 0.7;
-  outline: none;
-}
-
-.c0:focus {
-  outline: auto;
-}
-
-.c0:disabled {
-  cursor: initial;
-}
-
-.c0:hover {
-  text-decoration: underline;
-  text-decoration-color: #161617;
-}
-
-.c0:hover:disabled {
-  text-decoration: none;
-}
-
-.c1 {
-  flex-grow: 1;
-  max-width: 40px;
-  height: 40px;
-  justify-content: center;
-  align-items: center;
 }
 
 <div>
@@ -87,28 +73,30 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
         >
           <button
             aria-label="Revenir en arrière"
-            class="c0 c1"
+            class="c0"
             data-testid="Revenir en arrière"
             tabindex="0"
-            title="Revenir en arrière"
             type="button"
           >
             <div
-              class="css-view-175oi2r"
-              data-testid="icon-back"
+              class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1wjczhr r-flexDirection-18u37iz"
             >
               <div
-                class="css-text-146c3p1"
-                dir="ltr"
+                class="css-view-175oi2r"
+                id="0"
+                style="flex-shrink: 0;"
               >
-                icon-back-SVG-Mock
+                <div
+                  class="css-view-175oi2r"
+                >
+                  <div
+                    class="css-text-146c3p1"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
               </div>
-            </div>
-            <div
-              class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-              dir="ltr"
-            >
-              Retour
             </div>
           </button>
         </div>
@@ -221,7 +209,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
           >
             <button
               aria-label="Continuer"
-              class="c2"
+              class="c1"
               data-testid="Continuer"
               tabindex="0"
               type="submit"
