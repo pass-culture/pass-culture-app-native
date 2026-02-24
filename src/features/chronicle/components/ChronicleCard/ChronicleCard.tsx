@@ -20,7 +20,6 @@ type Props = PropsWithChildren<
 >
 
 const MAX_LINES = 3
-const CHRONICLE_CARD_HEIGHT = 220
 
 export const ChronicleCard: FunctionComponent<Props> = ({
   id,
@@ -83,21 +82,18 @@ export const ChronicleCard: FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled(ViewGap)<{ width?: number; shouldTruncate?: boolean }>(
-  ({ theme, width, shouldTruncate }) => ({
-    padding: theme.designSystem.size.spacing.xl,
-    borderRadius: theme.designSystem.size.borderRadius.m,
-    border: 1,
-    borderColor: theme.designSystem.color.border.subtle,
-    ...(width === undefined ? undefined : { width }),
-    height: shouldTruncate ? CHRONICLE_CARD_HEIGHT : undefined,
-    backgroundColor: theme.designSystem.color.background.default,
-  })
-)
+const Container = styled(ViewGap)<{ width?: number }>(({ theme, width }) => ({
+  padding: theme.designSystem.size.spacing.xl,
+  borderRadius: theme.designSystem.size.borderRadius.m,
+  border: 1,
+  borderColor: theme.designSystem.color.border.subtle,
+  ...(width === undefined ? undefined : { width }),
+  backgroundColor: theme.designSystem.color.background.default,
+}))
 
 const DescriptionContainer = styled.View<{ defaultHeight: number; shouldTruncate?: boolean }>(
   ({ defaultHeight, shouldTruncate }) =>
-    shouldTruncate ? { maxHeight: MAX_LINES * defaultHeight, overflow: 'hidden' } : {}
+    shouldTruncate ? { maxHeight: MAX_LINES * defaultHeight, overflow: 'hidden', flexGrow: 1 } : {}
 )
 
 const Description = styled(Typo.BodyS)({
