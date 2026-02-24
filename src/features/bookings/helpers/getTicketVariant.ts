@@ -1,6 +1,6 @@
 import { ExternalBookingDataResponseV2, TicketDisplayEnum, TicketResponse } from 'api/gen'
 
-export type TicketVariantResult =
+type TicketVariantResult =
   | { variant: 'no_ticket' }
   | {
       variant: 'email_withdrawal'
