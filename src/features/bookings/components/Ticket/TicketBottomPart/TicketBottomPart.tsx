@@ -53,6 +53,7 @@ export const TicketBottomPart = ({
         />
       )
     case 'digital_activation':
+    case 'digital_token':
       return (
         <DigitalTicket
           code={result.code}
@@ -78,16 +79,6 @@ export const TicketBottomPart = ({
           voucherData={result.voucherData}
           tokenData={result.tokenData}
           expirationDate={expirationDate}
-        />
-      )
-    case 'digital_token':
-      return (
-        <DigitalTicket
-          code={result.code}
-          completedUrl={result.completedUrl}
-          offerId={offerId}
-          subcategoryId={subcategoryId}
-          onBeforeNavigate={onBeforeNavigate}
         />
       )
     case 'on_site_withdrawal':
