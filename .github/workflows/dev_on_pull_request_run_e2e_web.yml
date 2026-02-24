@@ -53,20 +53,20 @@ jobs:
 
       - name: Determine latest Maestro version
         run: |
-          MAESTRO_VERSION=$(curl -s https://api.github.com/repos/mobile-dev-inc/maestro/releases/latest | grep tag_name | cut -d '"' -f4 | sed 's/^cli-//;s/^v//')
-          echo "MAESTRO_VERSION=$MAESTRO_VERSION" >> $GITHUB_ENV
+          MAESTRO_VERSION="$(curl -s https://api.github.com/repos/mobile-dev-inc/maestro/releases/latest | grep tag_name | cut -d '"' -f4 | sed 's/^cli-//;s/^v//')"
+          echo "MAESTRO_VERSION=$MAESTRO_VERSION" >> "$GITHUB_ENV"
 
       - name: Cleanup Maestro CLI
         run: |
           echo "Cleaning up any previous Maestro CLI installation..."
-          rm -rf $HOME/.maestro
+          rm -rf "$HOME/.maestro"
 
       - name: Install latest Maestro CLI
         run: |
           echo "Installing Maestro CLI version ${MAESTRO_VERSION}..."
           curl --location --silent "https://get.maestro.mobile.dev" | bash
-          echo "$HOME/.maestro/bin" >> $GITHUB_PATH
-          export PATH=$HOME/.maestro/bin:$PATH
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.maestro/bin:$PATH"
           maestro --version
         env:
           MAESTRO_VERSION: ${{ env.MAESTRO_VERSION }}
@@ -87,7 +87,7 @@ jobs:
           MAESTRO_DRIVER_STARTUP_TIMEOUT: 60000
         run: |
           echo "Running Maestro tests from your branch on web Staging build"
-          export PATH=$HOME/.maestro/bin:$PATH
+          export PATH="$HOME/.maestro/bin:$PATH"
           yarn test:e2e:web:staging --headless
 
       - name: Logs & screenshots from errors (Download link ⬇️)
