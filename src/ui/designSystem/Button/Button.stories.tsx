@@ -371,10 +371,6 @@ const secondaryDangerCases: Variants<typeof Button> = [
     props: { wording: baseLabel, variant: 'secondary', color: 'danger', hovered: true },
   },
   {
-    label: 'Secondary danger disabled',
-    props: { wording: baseLabel, variant: 'secondary', color: 'danger', disabled: true },
-  },
-  {
     label: 'Secondary danger icon left',
     props: { wording: baseLabel, variant: 'secondary', color: 'danger', icon: Invalidate },
   },
@@ -417,10 +413,6 @@ const tertiaryDangerCases: Variants<typeof Button> = [
   {
     label: 'Tertiary danger hover',
     props: { wording: baseLabel, variant: 'tertiary', color: 'danger', hovered: true },
-  },
-  {
-    label: 'Tertiary danger disabled',
-    props: { wording: baseLabel, variant: 'tertiary', color: 'danger', disabled: true },
   },
   {
     label: 'Tertiary danger icon left',
