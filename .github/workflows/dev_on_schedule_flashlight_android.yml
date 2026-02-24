@@ -105,7 +105,7 @@ jobs:
 
           BRANCH_NAME="${BRANCH_NAME#refs/heads/}"
 
-          { echo "branch_name=$BRANCH_NAME"; echo "overall_score=$OVERALL_SCORE"; echo "avg_fps=$AVG_FPS"; echo "avg_ram=$AVG_RAM"; echo "avg_cpu=$AVG_CPU"; echo "short_sha=${GITHUB_SHA:0:7}" } >> "$GITHUB_OUTPUT" 
+          { echo "branch_name=$BRANCH_NAME"; echo "overall_score=$OVERALL_SCORE"; echo "avg_fps=$AVG_FPS"; echo "avg_ram=$AVG_RAM"; echo "avg_cpu=$AVG_CPU"; echo "short_sha=${GITHUB_SHA:0:7}"; } >> "$GITHUB_OUTPUT" 
 
           if [ "$TEST_EXIT_CODE" -ne 0 ]; then
             exit "$TEST_EXIT_CODE"
@@ -127,7 +127,7 @@ jobs:
                   "author_icon": "https://github.com/${{github.actor}}.png",
                   "title": "PERFORMANCE TEST ANDROID",
                   "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                  "text": "Le test de performance sur la branche `${{ steps.run_test.outputs.branch_name || github.ref_name }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[job.status == 'failure'] }}\n\n*Métriques :*\n*- Score:* ${{ steps.run_test.outputs.overall_score || 'N/A' }}\n*- FPS moyen:* ${{ steps.run_test.outputs.avg_fps || 'N/A' }}\n*- RAM moyenne:* ${{ steps.run_test.outputs.avg_ram || 'N/A' }} MB\n*- CPU moyen:* ${{ steps.run_test.outputs.avg_cpu || 'N/A' }}%"
+                  "text": "Le test de performance sur la branche `${{ steps.run_test.outputs.branch_name || github.ref_name }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[(job.status == 'failure') && 1 || 0] }}\n\n*Métriques :*\n*- Score:* ${{ steps.run_test.outputs.overall_score || 'N/A' }}\n*- FPS moyen:* ${{ steps.run_test.outputs.avg_fps || 'N/A' }}\n*- RAM moyenne:* ${{ steps.run_test.outputs.avg_ram || 'N/A' }} MB\n*- CPU moyen:* ${{ steps.run_test.outputs.avg_cpu || 'N/A' }}%"
                 }
               ],
               "unfurl_links": false,
