@@ -96,7 +96,14 @@ export const TicketBottomPart = ({
       />
     )
 
-  if (ticket.token?.data) return <OnSiteWithdrawal token={ticket.token.data} isDuo={isDuo} />
+  if (ticket.token?.data)
+    return (
+      <OnSiteWithdrawal
+        token={ticket.token.data}
+        isDuo={isDuo}
+        shouldShowExchangeMessage={isEvent}
+      />
+    )
 
   return null
 }

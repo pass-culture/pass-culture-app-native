@@ -2,11 +2,16 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
-import { BookingOfferResponseAddress, BookingResponse, TicketResponse } from 'api/gen'
+import {
+  BookingOfferResponseAddress,
+  BookingResponse,
+  TicketDisplayEnum,
+  TicketResponse,
+} from 'api/gen'
 import { TicketBottomPart } from 'features/bookings/components/Ticket/TicketBottomPart/TicketBottomPart'
 import { TicketDisplay } from 'features/bookings/components/Ticket/TicketDisplay'
 import { TicketTopPart } from 'features/bookings/components/Ticket/TicketTopPart'
-import { getBookingLabelsV2 } from 'features/bookings/helpers'
+import { getBookingLabelsV2, getEventOnSiteWithdrawLabelV2 } from 'features/bookings/helpers'
 import { formatEventDateLabel } from 'features/bookings/helpers/getBookingLabels'
 import { useArchiveBookingMutation } from 'features/bookings/queries'
 import { BookingProperties } from 'features/bookings/types'
@@ -68,6 +73,25 @@ export const Ticket = ({
 
   const { hourLabel, dayLabel } = getBookingLabelsV2.getBookingLabels(booking, properties)
 
+  const shouldShowOnSiteWithdrawal =
+    ticket.token?.data &&
+    ticket.display !== TicketDisplayEnum.no_ticket &&
+    ticket.display !== TicketDisplayEnum.email_sent &&
+    ticket.display !== TicketDisplayEnum.email_will_be_sent &&
+    !(ticket.activationCode && booking.completedUrl) &&
+    !ticket.externalBooking &&
+    !(ticket.voucher?.data && properties.isEvent) &&
+    !(ticket.voucher?.data && ticket.token?.data) &&
+    !(ticket.token?.data && properties.isDigital && booking.completedUrl)
+
+  const onSiteWithdrawLabel = shouldShowOnSiteWithdrawal
+    ? getEventOnSiteWithdrawLabelV2.getEventOnSiteWithdrawLabel(
+        booking.stock.beginningDatetime,
+        ticket.withdrawal.delay,
+        false
+      )
+    : undefined
+
   const venueBlockAddress = getAddress(offer.address)
 
   const handleOnSeeVenuePress = async () => {
@@ -107,6 +131,7 @@ export const Ticket = ({
           title={offer.name}
           offer={offer}
           mapping={mapping}
+          withdrawLabel={onSiteWithdrawLabel}
           venueInfo={
             <VenueBlockWithItinerary
               properties={properties}

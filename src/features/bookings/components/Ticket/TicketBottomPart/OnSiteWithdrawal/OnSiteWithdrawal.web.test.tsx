@@ -8,7 +8,7 @@ const mockCopyToClipboard = jest.spyOn(copyToClipboardModule, 'copyToClipboard')
 
 describe('<OnSiteWithdrawal>', () => {
   it('should copy to clickboard on press', () => {
-    render(<OnSiteWithdrawal token="NBFJ55K8" isDuo={false} />)
+    render(<OnSiteWithdrawal token="NBFJ55K8" isDuo={false} shouldShowExchangeMessage={false} />)
     fireEvent.click(screen.getByText('NBFJ55K8'))
 
     expect(mockCopyToClipboard).toHaveBeenCalledTimes(1)
