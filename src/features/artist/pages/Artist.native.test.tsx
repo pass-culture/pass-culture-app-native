@@ -9,7 +9,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: jest.fn(),
@@ -50,7 +50,7 @@ describe('<Artist />', () => {
     })
   })
 
-  it('should render null when there is no artist', async () => {
+  it('should render page not found when there is no artist', async () => {
     mockServer.getApi(`/v1/artists/${mockArtist.id}`, {
       responseOptions: {
         statusCode: 404,
@@ -59,6 +59,6 @@ describe('<Artist />', () => {
     })
     render(reactQueryProviderHOC(<Artist />))
 
-    await waitFor(() => expect(screen.toJSON()).toBeNull())
+    expect(await screen.findByText('Page introuvable !')).toBeOnTheScreen()
   })
 })

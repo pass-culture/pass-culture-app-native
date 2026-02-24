@@ -1,16 +1,19 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { FunctionComponent, Suspense, useEffect } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import { ViewToken } from 'react-native'
 
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { useArtistQuery } from 'features/artist/queries/useArtistQuery'
+import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useArtistResultsQuery } from 'queries/offer/useArtistResultsQuery'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
+import { LoadingPage } from 'ui/pages/LoadingPage'
 
-export const Artist: FunctionComponent = () => {
+const ArtistContent: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Artist'>>()
 
   const pageTracking = usePageTracking({
@@ -22,7 +25,7 @@ export const Artist: FunctionComponent = () => {
   const { artistPlaylist, artistTopOffers } = useArtistResultsQuery({
     artistId: params.id,
   })
-  const { data: artist, isError, error, isLoading } = useArtistQuery(params.id)
+  const { data: artist, isError, error } = useArtistQuery(params.id)
 
   useEffect(() => {
     if (isError) eventMonitoring.captureException(error)
@@ -49,8 +52,7 @@ export const Artist: FunctionComponent = () => {
     [pageTracking, params.id]
   )
 
-  // TODO(PC-35430): replace null by PageNotFound
-  if (isLoading || !artist) return null
+  if (!artist) return <PageNotFound />
 
   const handleOnExpandBioPress = () => {
     void analytics.logClickExpandArtistBio({
@@ -68,5 +70,15 @@ export const Artist: FunctionComponent = () => {
       onViewableItemsChanged={handleViewableItemsChanged}
       onExpandBioPress={handleOnExpandBioPress}
     />
+  )
+}
+
+export const Artist: FunctionComponent = () => {
+  return (
+    <ErrorBoundary fallback={<PageNotFound />}>
+      <Suspense fallback={<LoadingPage />}>
+        <ArtistContent />
+      </Suspense>
+    </ErrorBoundary>
   )
 }

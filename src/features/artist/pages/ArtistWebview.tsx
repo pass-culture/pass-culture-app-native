@@ -1,5 +1,6 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useEffect } from 'react'
+import React, { Suspense, useEffect } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import { WebView } from 'react-native-webview'
 import styled from 'styled-components/native'
 
@@ -11,11 +12,12 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { LoadingPage } from 'ui/pages/LoadingPage'
 
-export const ArtistWebview = () => {
+const ArtistWebviewContent = () => {
   const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
   const { params } = useRoute<UseRouteType<'ArtistWebview'>>()
-  const { data: artist, isError, error, isLoading } = useArtistQuery(params.id)
+  const { data: artist, isError, error } = useArtistQuery(params.id)
 
   const headerHeight = useGetHeaderHeight()
 
@@ -23,7 +25,7 @@ export const ArtistWebview = () => {
     if (isError) eventMonitoring.captureException(error)
   }, [error, isError])
 
-  if (isLoading || !artist?.descriptionSource || !enableArtistPage) return <PageNotFound />
+  if (!artist?.descriptionSource || !enableArtistPage) return <PageNotFound />
 
   return (
     <React.Fragment>
@@ -37,3 +39,13 @@ export const ArtistWebview = () => {
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
 }))
+
+export const ArtistWebview = () => {
+  return (
+    <ErrorBoundary fallback={<PageNotFound />}>
+      <Suspense fallback={<LoadingPage />}>
+        <ArtistWebviewContent />
+      </Suspense>
+    </ErrorBoundary>
+  )
+}
