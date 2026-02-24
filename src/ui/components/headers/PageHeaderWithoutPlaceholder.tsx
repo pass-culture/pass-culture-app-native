@@ -1,10 +1,13 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { ReactNode, forwardRef } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useGetHeaderHeightDS } from 'shared/header/useGetHeaderHeight'
-import { BackButton } from 'ui/components/headers/BackButton'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -38,7 +41,7 @@ export const PageHeaderWithoutPlaceholder = forwardRef<View, Props>(
     },
     ref
   ) => {
-    const { designSystem } = useTheme()
+    const { goBack } = useNavigation<UseNavigationType>()
     const headerHeight = useGetHeaderHeightDS()
 
     return (
@@ -52,7 +55,15 @@ export const PageHeaderWithoutPlaceholder = forwardRef<View, Props>(
         <Container headerHeight={headerHeight}>
           <ButtonContainer positionInHeader="left" testID="back-button-container">
             {shouldDisplayBackButton ? (
-              <BackButton onGoBack={onGoBack} color={designSystem.color.icon.default} />
+              <Button
+                iconButton
+                variant="tertiary"
+                color="neutral"
+                icon={ArrowPrevious}
+                onPress={onGoBack ?? goBack}
+                accessibilityLabel="Revenir en arrière"
+                testID="icon-back"
+              />
             ) : null}
           </ButtonContainer>
 
