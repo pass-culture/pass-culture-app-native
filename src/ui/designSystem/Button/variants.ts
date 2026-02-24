@@ -7,16 +7,10 @@ import { BackgroundColorKey, BorderColorKey, IconColorKey, TextColorKey } from '
 
 import { ButtonColor, ButtonVariant } from './types'
 
-type PaletteKeys = {
+type VariantColorKeys = {
+  background?: BackgroundColorKey | 'transparent'
   text: TextColorKey
   icon: IconColorKey
-  border: BorderColorKey
-}
-
-type VariantKeys = {
-  background?: BackgroundColorKey | 'transparent'
-  text?: TextColorKey
-  icon?: IconColorKey
   border?: BorderColorKey
 }
 
@@ -24,29 +18,73 @@ type VariantHoverKeys = {
   background?: BackgroundColorKey
   border?: BorderColorKey
   text?: TextColorKey
+  icon?: IconColorKey
 }
 
-export const paletteKeysByColor: Record<ButtonColor, PaletteKeys> = {
-  brand: { text: 'brandPrimary', icon: 'brandPrimary', border: 'brandPrimary' },
-  neutral: { text: 'default', icon: 'default', border: 'default' },
-}
+type VariantByColorKeys = Record<ButtonColor, VariantColorKeys>
+type VariantByColorHoverKeys = Record<ButtonColor, VariantHoverKeys>
 
-export const variantBaseKeys: Record<ButtonVariant, VariantKeys> = {
+export const variantBaseKeysByColor: Record<ButtonVariant, VariantByColorKeys> = {
   primary: {
-    background: 'brandPrimary',
-    text: 'inverted',
-    icon: 'inverted',
-    border: 'brandPrimary',
+    brand: {
+      background: 'brandPrimary',
+      text: 'inverted',
+      icon: 'inverted',
+      border: 'brandPrimary',
+    },
+    neutral: {
+      background: 'inverted',
+      text: 'inverted',
+      icon: 'inverted',
+      border: 'inverted',
+    },
+    danger: {
+      background: 'danger',
+      text: 'inverted',
+      icon: 'inverted',
+      border: 'danger',
+    },
   },
   secondary: {
-    background: 'default',
+    brand: {
+      background: 'default',
+      text: 'brandPrimary',
+      icon: 'brandPrimary',
+      border: 'brandPrimary',
+    },
+    neutral: {
+      background: 'default',
+      text: 'default',
+      icon: 'default',
+      border: 'default',
+    },
+    danger: {
+      background: 'default',
+      text: 'danger',
+      icon: 'danger',
+      border: 'danger',
+    },
   },
   tertiary: {
-    background: 'transparent',
+    brand: {
+      background: 'transparent',
+      text: 'brandPrimary',
+      icon: 'brandPrimary',
+    },
+    neutral: {
+      background: 'transparent',
+      text: 'default',
+      icon: 'default',
+    },
+    danger: {
+      background: 'transparent',
+      text: 'danger',
+      icon: 'danger',
+    },
   },
 }
 
-export const variantDisabledKeys: Partial<Record<ButtonVariant, VariantKeys>> = {
+export const variantDisabledKeys: Record<ButtonVariant, VariantColorKeys> = {
   primary: {
     background: 'disabled',
     text: 'disabled',
@@ -65,8 +103,24 @@ export const variantDisabledKeys: Partial<Record<ButtonVariant, VariantKeys>> = 
   },
 }
 
-export const variantHoverKeys: Partial<Record<ButtonVariant, VariantHoverKeys>> = {
-  primary: { background: 'brandPrimaryHover', border: 'brandPrimaryHover' },
-  secondary: { text: 'brandPrimaryHover', border: 'brandPrimaryHover' },
-  tertiary: { text: 'brandPrimaryHover' },
+export const variantHoverKeysByColor: Record<ButtonVariant, VariantByColorHoverKeys> = {
+  primary: {
+    brand: { background: 'brandPrimaryHover', border: 'brandPrimaryHover' },
+    neutral: { background: 'brandPrimaryHover', border: 'brandPrimaryHover' },
+    danger: { background: 'dangerHover', border: 'dangerHover' },
+  },
+  secondary: {
+    brand: { text: 'brandPrimaryHover', icon: 'brandPrimaryHover', border: 'brandPrimaryHover' },
+    neutral: {
+      text: 'brandPrimaryHover',
+      icon: 'brandPrimaryHover',
+      border: 'brandPrimaryHover',
+    },
+    danger: { text: 'dangerHover', icon: 'dangerHover', border: 'dangerHover' },
+  },
+  tertiary: {
+    brand: { text: 'brandPrimaryHover', icon: 'brandPrimaryHover' },
+    neutral: { text: 'brandPrimaryHover', icon: 'brandPrimaryHover' },
+    danger: { text: 'dangerHover', icon: 'dangerHover' },
+  },
 }

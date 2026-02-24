@@ -9,18 +9,15 @@ import {
   BackgroundColor,
   BackgroundColorKey,
   BorderColor,
-  ColorsType,
+  BorderColorKey,
   IconColor,
+  IconColorKey,
   TextColor,
+  TextColorKey,
 } from 'theme/types'
 
 import { ButtonColor, ButtonColors, ButtonColorValue, ButtonVariant } from './types'
-import {
-  paletteKeysByColor,
-  variantBaseKeys,
-  variantDisabledKeys,
-  variantHoverKeys,
-} from './variants'
+import { variantBaseKeysByColor, variantDisabledKeys, variantHoverKeysByColor } from './variants'
 
 const getBackgroundColor = (
   background: BackgroundColor,
@@ -31,19 +28,6 @@ const getBackgroundColor = (
   return background[key]
 }
 
-const getHoverIconColor = ({
-  color,
-  hoverTextColor,
-  icon,
-}: {
-  color: ButtonColor
-  hoverTextColor?: ColorsType
-  icon: IconColor
-}) => {
-  if (!hoverTextColor) return undefined
-  return color === 'brand' ? icon.brandPrimaryHover : (icon.brandPrimaryHover ?? hoverTextColor)
-}
-
 const getBaseKeys = ({
   variant,
   color,
@@ -52,17 +36,20 @@ const getBaseKeys = ({
   variant: ButtonVariant
   color: ButtonColor
   disabled: boolean
-}) => {
-  const baseKeys = variantBaseKeys[variant]
-  const paletteKeys = paletteKeysByColor[color]
+}): {
+  backgroundKey?: BackgroundColorKey | 'transparent'
+  textKey: TextColorKey
+  iconKey: IconColorKey
+  borderKey?: BorderColorKey
+} => {
+  const baseKeys = variantBaseKeysByColor[variant][color]
   const disabledKeys = disabled ? variantDisabledKeys[variant] : undefined
 
   return {
     backgroundKey: disabledKeys?.background ?? baseKeys.background,
-    textKey: disabledKeys?.text ?? baseKeys.text ?? paletteKeys.text,
-    iconKey: disabledKeys?.icon ?? baseKeys.icon ?? paletteKeys.icon,
-    borderKey: disabledKeys?.border ?? baseKeys.border ?? paletteKeys.border,
-    paletteKeys,
+    textKey: disabledKeys?.text ?? baseKeys.text,
+    iconKey: disabledKeys?.icon ?? baseKeys.icon,
+    borderKey: disabledKeys?.border ?? baseKeys.border,
   }
 }
 
@@ -83,23 +70,19 @@ const getBaseColors = ({
   color: ButtonColor
   disabled: boolean
 }) => {
-  const { backgroundKey, textKey, iconKey, borderKey, paletteKeys } = getBaseKeys({
+  const { backgroundKey, textKey, iconKey, borderKey } = getBaseKeys({
     variant,
     color,
     disabled,
   })
 
-  const finalBackgroundKey =
-    variant === 'primary' && color === 'neutral' ? 'inverted' : backgroundKey
-  const finalBorderKey = variant === 'primary' && color === 'neutral' ? 'inverted' : borderKey
-
-  const backgroundColor = getBackgroundColor(background, finalBackgroundKey)
+  const backgroundColor = getBackgroundColor(background, backgroundKey)
 
   return {
     backgroundColor,
     textColor: text[textKey],
     iconColor: icon[iconKey],
-    borderColor: variant === 'tertiary' ? undefined : border[finalBorderKey ?? paletteKeys.border],
+    borderColor: variant === 'tertiary' || !borderKey ? undefined : border[borderKey],
   }
 }
 
@@ -129,12 +112,12 @@ const getHoverColors = ({
     }
   }
 
-  const hoverKeys = variantHoverKeys[variant]
+  const hoverKeys = variantHoverKeysByColor[variant][color]
   const hoverTextColor = hoverKeys?.text ? text[hoverKeys.text] : undefined
 
   return {
     hoverTextColor,
-    hoverIconColor: getHoverIconColor({ color, hoverTextColor, icon }),
+    hoverIconColor: hoverKeys?.icon ? icon[hoverKeys.icon] : undefined,
     hoverBackgroundColor: hoverKeys?.background ? background[hoverKeys.background] : undefined,
     hoverBorderColor:
       variant === 'tertiary' || !hoverKeys?.border ? undefined : border[hoverKeys.border],
