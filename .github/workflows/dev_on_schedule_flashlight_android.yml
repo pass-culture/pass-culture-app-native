@@ -121,7 +121,7 @@ jobs:
               "attachments": [
                 {
                   "mrkdwn_in": ["text"],
-                  "color": "${{ fromJSON('["#36a64f", "#A30002"]')[job.status == 'failure'] }}",
+                  "color": "${{ fromJSON('["#36a64f", "#A30002"]')[(job.status == 'failure') && 1 || 0] }}",
                   "author_name": "${{github.actor}}",
                   "author_link": "https://github.com/${{github.actor}}",
                   "author_icon": "https://github.com/${{github.actor}}.png",

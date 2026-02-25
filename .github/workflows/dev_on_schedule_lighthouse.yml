@@ -36,7 +36,7 @@ jobs:
         id: lighthouse_results
         run: |
           # Find the path of the first Lighthouse report
-          REPORT_PATH="$(ls -1 .lighthouseci/lhr-*.json | head -n 1)"
+          REPORT_PATH="$(find .lighthouseci -iname lhr-*.json | head -n 1)"
           echo "Parsing Lighthouse report: $REPORT_PATH"
 
           # Extract the summary score, which is a value from 0 to 1
