@@ -24,14 +24,14 @@ jobs:
       - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
       - name: Restore git history for Chromatic
         run: |
-          if $(git rev-parse --is-shallow-repository); then
+          if git rev-parse --is-shallow-repository; then
             git fetch --unshallow
           fi
           git fetch --all
       - name: Install dependencies
         run: yarn install
       - name: Build Storybook 🔧
-        run: yarn build-storybook --stats-json --output-dir $BUILD_DIR
+        run: yarn build-storybook --stats-json --output-dir "$BUILD_DIR"
       - name: Publish to Chromatic 🚀
         uses: chromaui/action@latest
         with:
@@ -40,4 +40,4 @@ jobs:
           storybookBuildDir: ${{ env.BUILD_DIR }}
           onlyChanged: true
       - name: Run axe storybook accessibility tests 🧪
-        run: yarn axe-storybook --build-dir $BUILD_DIR
+        run: yarn axe-storybook --build-dir "$BUILD_DIR"

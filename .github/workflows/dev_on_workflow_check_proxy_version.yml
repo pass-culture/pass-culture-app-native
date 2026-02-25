@@ -67,6 +67,6 @@ jobs:
         if: ${{ inputs.WEBAPP_URL && steps.proxy-rollback-protection.outputs.is_greater_or_equal_version != 'false' }}
         name: Get last git tag that match server proxy version
         run: |
-          export base_tag="$(git tag --sort=-taggerdate | grep ${{ steps.proxy-version.outputs.proxy_version }} | head -n1)"
+          base_tag="$(git tag --sort=-taggerdate | grep ${{ steps.proxy-version.outputs.proxy_version }} | head -n1)"
           echo "base_tag=${base_tag}" >> "$GITHUB_OUTPUT"
           echo "base_tag=${base_tag}"
