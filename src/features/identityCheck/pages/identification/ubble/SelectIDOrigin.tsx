@@ -6,11 +6,12 @@ import { SecondButtonList } from 'features/identityCheck/components/SecondButton
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Earth as InitialEarth } from 'ui/svg/icons/Earth'
 import { France as FranceIcon } from 'ui/svg/icons/France'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SelectIDOrigin: FunctionComponent = () => (
@@ -23,11 +24,10 @@ const SelectIDOriginContent: FunctionComponent = () => {
       <StyledIconContainer>
         <IdCardWithMagnifyingGlass />
       </StyledIconContainer>
-      <Spacer.Column numberOfSpaces={4} />
-      <StyledTitle4>Munis-toi de ta pièce d’identité et débloque ton crédit&nbsp;!</StyledTitle4>
-      <Spacer.Column numberOfSpaces={4} />
-      <StyledBody>Pour cela, nous avons besoin de vérifier ton identité.</StyledBody>
-      <Spacer.Column numberOfSpaces={8} />
+      <StyledViewGap gap={4}>
+        <StyledTitle4>Munis-toi de ta pièce d’identité et débloque ton crédit&nbsp;!</StyledTitle4>{' '}
+        <StyledBody>Pour cela, nous avons besoin de vérifier ton identité.</StyledBody>
+      </StyledViewGap>
       <HeroButtonList
         Title={
           <Text>
@@ -42,9 +42,9 @@ const SelectIDOriginContent: FunctionComponent = () => {
         key={1}
         accessibilityLabel="J’ai une carte d’identité ou un passeport français"
       />
-      <Spacer.Column numberOfSpaces={7} />
-      <SeparatorWithText label="ou" />
-      <Spacer.Column numberOfSpaces={7} />
+      <SeparatorContainer>
+        <SeparatorWithText label="ou" />
+      </SeparatorContainer>
       <SecondButtonList
         label="J’ai un titre de séjour, une carte d’identité ou un passeport étranger."
         leftIcon={Earth}
@@ -53,7 +53,14 @@ const SelectIDOriginContent: FunctionComponent = () => {
     </Container>
   )
 }
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
 
+const SeparatorContainer = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xxl,
+}))
 const Container = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xs,
   marginVertical: theme.designSystem.size.spacing.xxl,

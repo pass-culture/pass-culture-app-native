@@ -38,25 +38,21 @@ export const TutorialPage: FunctionComponent<Props> = ({
     <Page>
       <EmptyHeader onGoBack={onGoBack} />
       <StyledScrollView>
-        <Container>
+        <Container buttons={buttons}>
           {title ? (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={6} />
+            <TitleContainer>
               <Typo.Title3 numberOfLines={3} {...getHeadingAttrs(1)}>
                 {title}
               </Typo.Title3>
-            </React.Fragment>
+            </TitleContainer>
           ) : null}
           {subtitle ? (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={2} />
+            <SubtitleContainer>
               <Typo.Body>{subtitle}</Typo.Body>
-            </React.Fragment>
+            </SubtitleContainer>
           ) : null}
-          <Spacer.Column numberOfSpaces={4} />
-          {children}
+          <ChildrenContainer>{children}</ChildrenContainer>
         </Container>
-        {buttons ? null : <Spacer.Column numberOfSpaces={6} />}
       </StyledScrollView>
       {buttons ? (
         <ButtonsContainer
@@ -65,10 +61,9 @@ export const TutorialPage: FunctionComponent<Props> = ({
           delay={NAV_DELAY_IN_MS + 100} // We delay a little bit more for better animation orchestration
           easing={customEaseInOut}>
           {buttons?.map((button, index) => (
-            <React.Fragment key={'button' + index}>
-              {index === 0 ? null : <Spacer.Column numberOfSpaces={4} />}
+            <ButtonContainer key={'button' + index} index={index}>
               {button}
-            </React.Fragment>
+            </ButtonContainer>
           ))}
         </ButtonsContainer>
       ) : null}
@@ -76,6 +71,20 @@ export const TutorialPage: FunctionComponent<Props> = ({
     </Page>
   )
 }
+const ChildrenContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
+
+const ButtonContainer = styled.View<{ index: number }>(({ index, theme }) => ({
+  marginTop: index === 0 ? 0 : theme.designSystem.size.spacing.l,
+}))
+
+const TitleContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+}))
+const SubtitleContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
+}))
 
 const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
@@ -85,8 +94,9 @@ const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
   },
 }))``
 
-const Container = styled.View(({ theme }) => ({
+const Container = styled.View<{ buttons?: Array<ReactNode> }>(({ theme, buttons }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
+  marginBottom: buttons ? 0 : theme.designSystem.size.spacing.xl,
 }))
 
 const ButtonsContainer = styled(AnimatedView)(({ theme }) => ({

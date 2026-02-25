@@ -172,40 +172,41 @@ exports[`<FraudulentSuspendedAccount /> should match snapshot 1`] = `
           }
         }
       >
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
-            }
-          }
-        >
-          Ton compte est actuellement suspendu pour des raisons de sécurité.
-        </Text>
         <View
-          numberOfSpaces={5}
+          gap={5}
           style={
             {
-              "height": 20,
-            }
-          }
-        />
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
+              "gap": 20,
             }
           }
         >
-          Pour en savoir plus, tu peux contacter l’équipe de lutte contre la fraude.
-        </Text>
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              }
+            }
+          >
+            Ton compte est actuellement suspendu pour des raisons de sécurité.
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              }
+            }
+          >
+            Pour en savoir plus, tu peux contacter l’équipe de lutte contre la fraude.
+          </Text>
+        </View>
       </View>
       <View
         flex={1}

@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Info } from 'ui/svg/icons/Info'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 interface Props {
@@ -20,8 +20,7 @@ export const BookingCloseInformation = ({ visible, hideModal }: Props) => {
       title="Réservation en cours"
       numberOfLinesTitle={2}
       onCloseIconPress={hideModal}>
-      <React.Fragment>
-        <Spacer.Column numberOfSpaces={designSystem.size.spacing.xs} />
+      <Container>
         <Info size={illustrations.sizes.medium} color={designSystem.color.icon.brandPrimary} />
         <ModalBodyText>
           En quittant la réservation, elle ne sera pas annulée{LINE_BREAK}
@@ -34,7 +33,7 @@ export const BookingCloseInformation = ({ visible, hideModal }: Props) => {
           onPress={hideModal}
           fullWidth
         />
-      </React.Fragment>
+      </Container>
     </AppInformationModal>
   )
 }
@@ -42,4 +41,9 @@ export const BookingCloseInformation = ({ visible, hideModal }: Props) => {
 const ModalBodyText = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   marginVertical: theme.designSystem.size.spacing.xxl,
+}))
+
+const Container = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  alignItems: 'center',
 }))

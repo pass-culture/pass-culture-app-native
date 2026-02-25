@@ -759,14 +759,14 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   Ces cookies nous permettent, en fonction de ta navigation, de te proposer des contenus supposés pertinents et susceptibles de t’intéresser.
                 </Text>
                 <View
-                  numberOfSpaces={4}
+                  marginTop={true}
                   style={
                     {
-                      "height": 16,
+                      "marginBottom": 0,
+                      "marginTop": 8,
                     }
                   }
-                />
-                <View>
+                >
                   <View
                     style={
                       {
@@ -1107,14 +1107,14 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir des tendances et ainsi améliorer les résultats qui te sont proposés.
                 </Text>
                 <View
-                  numberOfSpaces={4}
+                  marginTop={true}
                   style={
                     {
-                      "height": 16,
+                      "marginBottom": 0,
+                      "marginTop": 8,
                     }
                   }
-                />
-                <View>
+                >
                   <View
                     style={
                       {
@@ -1455,14 +1455,14 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   Tu ne verras pas de publicité de tiers sur notre site ou sur notre application.
                 </Text>
                 <View
-                  numberOfSpaces={4}
+                  marginTop={true}
                   style={
                     {
-                      "height": 16,
+                      "marginBottom": 0,
+                      "marginTop": 8,
                     }
                   }
-                />
-                <View>
+                >
                   <View
                     style={
                       {
@@ -2121,7 +2121,15 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
                 </Text>
               </View>
             </View>
-            <View>
+            <View
+              marginBottom={true}
+              style={
+                {
+                  "marginBottom": 8,
+                  "marginTop": 0,
+                }
+              }
+            >
               <View
                 style={
                   {
@@ -2159,14 +2167,6 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
                 Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture.
               </Text>
             </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                {
-                  "height": 16,
-                }
-              }
-            />
             <View
               style={
                 {

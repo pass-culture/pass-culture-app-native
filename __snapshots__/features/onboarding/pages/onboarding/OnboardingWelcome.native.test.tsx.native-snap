@@ -128,179 +128,165 @@ exports[`OnboardingWelcome should render correctly 1`] = `
           Bienvenue sur le pass Culture
         </Text>
         <View
-          numberOfSpaces={4}
+          gap={6}
           style={
             {
-              "height": 16,
-            }
-          }
-        />
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
+              "gap": 24,
+              "marginVertical": 16,
             }
           }
         >
-          Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu as 17 ou 18 ans.
-        </Text>
-        <View
-          numberOfSpaces={6}
-          style={
-            {
-              "height": 24,
-            }
-          }
-        />
-        <View
-          accessibilityLabel="C’est parti !"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "alignSelf": "center",
-                  "backgroundColor": "#6123df",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderColor": "#6123df",
-                  "borderStyle": "solid",
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingBottom": 8,
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                  "paddingTop": 8,
-                  "width": "100%",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="C’est parti !"
-        >
-          <View
-            fullWidth={true}
-            gap={8}
-            hasIcon={true}
-            isMultiline={false}
+          <Text
             style={
               {
-                "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "width": "100%",
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
               }
             }
           >
-            <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
+            Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu as 17 ou 18 ans.
+          </Text>
+          <View
+            accessibilityLabel="C’est parti !"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
               }
-              jestInlineStyle={
-                {
-                  "flexShrink": 0,
-                }
-              }
-              nativeID="0"
-              style={
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
                 [
                   {
-                    "flexShrink": 0,
+                    "userSelect": "auto",
                   },
-                ]
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "center",
+                    "backgroundColor": "#6123df",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderColor": "#6123df",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="C’est parti !"
+          >
+            <View
+              fullWidth={true}
+              gap={8}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 8,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
+                }
               }
             >
               <View
-                height={22}
-                width={22}
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="0"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
               >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
+                <View
+                  height={22}
+                  width={22}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
               </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#ffffff",
+                      "flexBasis": undefined,
+                      "flexGrow": undefined,
+                      "flexShrink": 1,
+                      "maxWidth": "100%",
+                      "minWidth": 0,
+                      "textAlign": undefined,
+                    },
+                  ]
+                }
+              >
+                C’est parti !
+              </Text>
             </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#ffffff",
-                    "flexBasis": undefined,
-                    "flexGrow": undefined,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": undefined,
-                  },
-                ]
-              }
-            >
-              C’est parti !
-            </Text>
           </View>
         </View>
-        <View
-          numberOfSpaces={4}
-          style={
-            {
-              "height": 16,
-            }
-          }
-        />
         <View
           style={
             {

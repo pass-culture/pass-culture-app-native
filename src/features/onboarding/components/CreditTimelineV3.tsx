@@ -17,7 +17,7 @@ import { StepVariant } from 'ui/components/VerticalStepper/types'
 import { CakeOneCandle } from 'ui/svg/icons/CakeOneCandle'
 import { CakeTwoCandles } from 'ui/svg/icons/CakeTwoCandles'
 import { Warning } from 'ui/svg/icons/Warning'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
@@ -53,10 +53,9 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
     [17, seventeenYearsOldDeposit],
     [18, eighteenYearsOldDeposit],
   ])
-  const SpaceBetweenBlock = 3
 
   return (
-    <Container testID={testID}>
+    <MainContainer testID={testID}>
       {stepperProps.map((props, index) => {
         const isLast = index === stepperProps.length - 1
         const isFirst = index === 0
@@ -69,9 +68,7 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
               isLast={isLast}
               iconComponent={iconComponent}
               addMoreSpacingToIcons>
-              <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
-              {props.children}
-              <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
+              <Container>{props.children}</Container>
             </InternalStep>
           )
         }
@@ -100,21 +97,22 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
         if (props.creditStep === 'optional') {
           return (
             <InternalStep key={'optional ' + index} variant={StepVariant.unknown}>
-              <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
-              <DashedStyledView
-                bonificationStatus={props.bonificationStatus}
-                {...animatedViewProps}>
-                <View>
-                  <StyledBody>Bonus sous conditions</StyledBody>
-                  <Spacer.Column numberOfSpaces={1} />
-                  <StyledTitle3>
-                    Tu peux recevoir{SPACE}
-                    <TitleSecondary>{`${formattedBonificationAmount} supplémentaires`}</TitleSecondary>
-                  </StyledTitle3>
-                  {props.children}
-                </View>
-              </DashedStyledView>
-              <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
+              <Container>
+                <DashedStyledView
+                  bonificationStatus={props.bonificationStatus}
+                  {...animatedViewProps}>
+                  <View>
+                    <StyledBodyContainer>
+                      <StyledBody>Bonus sous conditions</StyledBody>
+                    </StyledBodyContainer>
+                    <StyledTitle3>
+                      Tu peux recevoir{SPACE}
+                      <TitleSecondary>{`${formattedBonificationAmount} supplémentaires`}</TitleSecondary>
+                    </StyledTitle3>
+                    {props.children}
+                  </View>
+                </DashedStyledView>
+              </Container>
             </InternalStep>
           )
         }
@@ -126,28 +124,36 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
             isFirst={isFirst}
             isLast={isLast}
             addMoreSpacingToIcons>
-            <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
-            <TouchableWithoutFeedback onPress={() => analytics.logTrySelectDeposit(age)}>
-              <StyledAnimatedView {...animatedViewProps}>
-                <View>
-                  <StyledBody>{`à ${props.creditStep} ans`}</StyledBody>
-                  <Spacer.Column numberOfSpaces={1} />
-                  <StyledTitle3>
-                    Tu reçois{SPACE}
-                    <TitleSecondary>{depositsByAge.get(props.creditStep) ?? ''}</TitleSecondary>
-                  </StyledTitle3>
-                  {props.children}
-                </View>
-              </StyledAnimatedView>
-            </TouchableWithoutFeedback>
-            <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
+            <Container>
+              <TouchableWithoutFeedback onPress={() => analytics.logTrySelectDeposit(age)}>
+                <StyledAnimatedView {...animatedViewProps}>
+                  <View>
+                    <StyledBodyContainer>
+                      <StyledBody>{`à ${props.creditStep} ans`}</StyledBody>
+                    </StyledBodyContainer>
+                    <StyledTitle3>
+                      Tu reçois{SPACE}
+                      <TitleSecondary>{depositsByAge.get(props.creditStep) ?? ''}</TitleSecondary>
+                    </StyledTitle3>
+                    {props.children}
+                  </View>
+                </StyledAnimatedView>
+              </TouchableWithoutFeedback>
+            </Container>
           </InternalStep>
         )
       })}
-    </Container>
+    </MainContainer>
   )
 }
 
+const StyledBodyContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xs,
+}))
+
+const Container = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
+}))
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
 }))
@@ -160,7 +166,7 @@ const GreyCakeTwoCandles = styled(CakeTwoCandles).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.default,
 }))``
 
-const Container = styled.View({
+const MainContainer = styled.View({
   flexGrow: 1,
   flexDirection: 'column',
 })

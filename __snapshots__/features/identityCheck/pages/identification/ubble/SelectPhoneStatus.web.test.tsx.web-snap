@@ -121,28 +121,23 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                   </div>
                 </div>
                 <div
-                  class="css-view-175oi2r r-height-10ptun7"
-                />
-                <h2
-                  aria-level="2"
-                  class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
-                  dir="ltr"
-                  role="heading"
+                  class="css-view-175oi2r r-gap-f4gmv6 r-marginBottom-zd98yo r-marginTop-1wzrnnt"
                 >
-                  Vérifie ton identité avec un smartphone
-                </h2>
-                <div
-                  class="css-view-175oi2r r-height-10ptun7"
-                />
-                <div
-                  class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
-                  dir="ltr"
-                >
-                  Gagne du temps en vérifiant ton identité sur un smartphone ! Tu peux aussi passer par le site demarche.numerique.gouv.fr mais le traitement sera plus long.
+                  <h2
+                    aria-level="2"
+                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
+                    dir="ltr"
+                    role="heading"
+                  >
+                    Vérifie ton identité avec un smartphone
+                  </h2>
+                  <div
+                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+                    dir="ltr"
+                  >
+                    Gagne du temps en vérifiant ton identité sur un smartphone ! Tu peux aussi passer par le site demarche.numerique.gouv.fr mais le traitement sera plus long.
+                  </div>
                 </div>
-                <div
-                  class="css-view-175oi2r r-height-mabqd8"
-                />
                 <ul
                   class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a r-width-13qz1uu"
                   role="list"

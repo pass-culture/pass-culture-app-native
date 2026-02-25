@@ -300,33 +300,26 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                 Type d’alerte
               </Text>
               <View
-                numberOfSpaces={4}
                 style={
                   {
-                    "height": 16,
-                  }
-                }
-              />
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
+                    "marginBottom": 8,
+                    "marginTop": 16,
                   }
                 }
               >
-                Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
-              </Text>
-              <View
-                numberOfSpaces={2}
-                style={
-                  {
-                    "height": 8,
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
-                }
-              />
+                >
+                  Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
+                </Text>
+              </View>
               <View
                 style={
                   {
@@ -681,27 +674,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={4}
-                  style={
-                    {
-                      "height": 16,
-                    }
-                  }
-                />
-                <View
                   style={
                     {
                       "backgroundColor": "#f1f1f4",
                       "height": 1,
+                      "marginBottom": 32,
+                      "marginTop": 16,
                       "width": "100%",
-                    }
-                  }
-                />
-                <View
-                  numberOfSpaces={8}
-                  style={
-                    {
-                      "height": 32,
                     }
                   }
                 />
@@ -719,133 +698,82 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                   Tes thèmes suivis
                 </Text>
                 <View
-                  numberOfSpaces={4}
                   style={
                     {
-                      "height": 16,
-                    }
-                  }
-                />
-                <View
-                  background="#f3edff"
-                  style={
-                    {
-                      "alignItems": "flex-start",
-                      "backgroundColor": "#f3edff",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "flexDirection": "row",
-                      "gap": 12,
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
+                      "marginTop": 16,
                     }
                   }
                 >
                   <View
-                    fill="#320096"
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    accessibilityLabel="Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications."
-                    accessibilityRole="none"
+                    background="#f3edff"
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "gap": 4,
-                      }
-                    }
-                  >
-                    <Text
-                      style={
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 22.4,
-                        }
-                      }
-                    >
-                      Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications.
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    {
-                      "height": 24,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "paddingVertical": 16,
-                    }
-                  }
-                >
-                  <View
-                    gap={4}
-                    style={
-                      {
-                        "alignItems": "center",
+                        "alignItems": "flex-start",
+                        "backgroundColor": "#f3edff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                         "flexDirection": "row",
-                        "gap": 16,
-                        "justifyContent": "flex-start",
+                        "gap": 12,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
                       }
                     }
-                    toggleLabel={false}
                   >
                     <View
-                      gap={2}
+                      fill="#320096"
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                    <View
+                      accessibilityLabel="Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications."
+                      accessibilityRole="none"
                       style={
                         {
-                          "alignItems": "center",
                           "flexBasis": 0,
-                          "flexDirection": "row",
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "gap": 8,
+                          "gap": 4,
                         }
                       }
-                      toggleLabel={false}
                     >
                       <Text
-                        htmlFor="testUuidV4"
                         style={
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 14,
+                            "lineHeight": 22.4,
                           }
                         }
                       >
-                        <Text
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            }
-                          }
-                        >
-                          Suivre tous les thèmes
-                        </Text>
+                        Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications.
                       </Text>
                     </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "marginBottom": 8,
+                      "marginTop": 24,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "paddingVertical": 16,
+                      }
+                    }
+                  >
                     <View
                       gap={4}
                       style={
@@ -853,108 +781,160 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                           "alignItems": "center",
                           "flexDirection": "row",
                           "gap": 16,
+                          "justifyContent": "flex-start",
                         }
                       }
+                      toggleLabel={false}
                     >
                       <View
+                        gap={2}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "gap": 8,
+                          }
+                        }
+                        toggleLabel={false}
+                      >
+                        <Text
+                          htmlFor="testUuidV4"
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          <Text
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Suivre tous les thèmes
+                          </Text>
+                        </Text>
+                      </View>
+                      <View
+                        gap={4}
                         style={
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "gap": 16,
                           }
                         }
                       >
                         <View
-                          accessibilityLabel="Suivre tous les thèmes - Interrupteur à bascule - non coché"
-                          accessibilityRole="switch"
-                          accessibilityState={
-                            {
-                              "busy": undefined,
-                              "checked": false,
-                              "disabled": true,
-                              "expanded": undefined,
-                              "selected": undefined,
-                            }
-                          }
-                          accessibilityValue={
-                            {
-                              "max": undefined,
-                              "min": undefined,
-                              "now": undefined,
-                              "text": undefined,
-                            }
-                          }
-                          accessible={true}
-                          focusable={false}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {
-                                "opacity": 1,
-                              },
-                            ]
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                            }
                           }
-                          testID="Suivre tous les thèmes - Interrupteur à bascule - non coché"
                         >
                           <View
-                            active={false}
-                            style={
+                            accessibilityLabel="Suivre tous les thèmes - Interrupteur à bascule - non coché"
+                            accessibilityRole="switch"
+                            accessibilityState={
                               {
-                                "backgroundColor": "#696a6f",
-                                "borderBottomLeftRadius": 32,
-                                "borderBottomRightRadius": 32,
-                                "borderTopLeftRadius": 32,
-                                "borderTopRightRadius": 32,
-                                "height": 36,
-                                "justifyContent": "center",
-                                "width": 64,
+                                "busy": undefined,
+                                "checked": false,
+                                "disabled": true,
+                                "expanded": undefined,
+                                "selected": undefined,
                               }
                             }
-                            toggleSize={32}
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            focusable={false}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              [
+                                {
+                                  "userSelect": "auto",
+                                },
+                                {
+                                  "opacity": 1,
+                                },
+                              ]
+                            }
+                            testID="Suivre tous les thèmes - Interrupteur à bascule - non coché"
                           >
                             <View
-                              disabled={true}
+                              active={false}
                               style={
-                                [
-                                  {
-                                    "alignItems": "center",
-                                    "aspectRatio": 1,
-                                    "backgroundColor": "#ffffff",
-                                    "borderBottomLeftRadius": 32,
-                                    "borderBottomRightRadius": 32,
-                                    "borderTopLeftRadius": 32,
-                                    "borderTopRightRadius": 32,
-                                    "height": 32,
-                                    "justifyContent": "center",
-                                    "width": 32,
-                                  },
-                                  {
-                                    "transform": [
-                                      {
-                                        "translateX": 2,
-                                      },
-                                    ],
-                                  },
-                                ]
+                                {
+                                  "backgroundColor": "#696a6f",
+                                  "borderBottomLeftRadius": 32,
+                                  "borderBottomRightRadius": 32,
+                                  "borderTopLeftRadius": 32,
+                                  "borderTopRightRadius": 32,
+                                  "height": 36,
+                                  "justifyContent": "center",
+                                  "width": 64,
+                                }
                               }
                               toggleSize={32}
                             >
                               <View
-                                height={16}
-                                width={16}
+                                disabled={true}
+                                style={
+                                  [
+                                    {
+                                      "alignItems": "center",
+                                      "aspectRatio": 1,
+                                      "backgroundColor": "#ffffff",
+                                      "borderBottomLeftRadius": 32,
+                                      "borderBottomRightRadius": 32,
+                                      "borderTopLeftRadius": 32,
+                                      "borderTopRightRadius": 32,
+                                      "height": 32,
+                                      "justifyContent": "center",
+                                      "width": 32,
+                                    },
+                                    {
+                                      "transform": [
+                                        {
+                                          "translateX": 2,
+                                        },
+                                      ],
+                                    },
+                                  ]
+                                }
+                                toggleSize={32}
                               >
-                                <Text>
-                                  undefined-SVG-Mock
-                                </Text>
+                                <View
+                                  height={16}
+                                  width={16}
+                                >
+                                  <Text>
+                                    undefined-SVG-Mock
+                                  </Text>
+                                </View>
                               </View>
                             </View>
                           </View>
@@ -963,14 +943,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    {
-                      "height": 8,
-                    }
-                  }
-                />
                 <View
                   style={
                     {
@@ -2022,109 +1994,109 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={2}
                   style={
                     {
-                      "height": 8,
+                      "marginTop": 8,
                     }
                   }
-                />
-                <View
-                  accessibilityLabel="Enregistrer les modifications"
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={false}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#f1f1f4",
-                          "borderBottomLeftRadius": 8,
-                          "borderBottomRightRadius": 8,
-                          "borderColor": "#cbcdd2",
-                          "borderStyle": "solid",
-                          "borderTopLeftRadius": 8,
-                          "borderTopRightRadius": 8,
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "justifyContent": "center",
-                          "paddingBottom": 8,
-                          "paddingLeft": 12,
-                          "paddingRight": 12,
-                          "paddingTop": 8,
-                          "width": "auto",
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="Enregistrer les modifications"
                 >
                   <View
-                    gap={8}
-                    hasIcon={false}
-                    isMultiline={false}
-                    style={
+                    accessibilityLabel="Enregistrer les modifications"
+                    accessibilityRole="button"
+                    accessibilityState={
                       {
-                        "alignItems": "center",
-                        "columnGap": 8,
-                        "flexDirection": "row",
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
                       }
                     }
-                  >
-                    <Text
-                      style={
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={false}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
                         [
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 22,
+                            "userSelect": "auto",
                           },
                           {
-                            "color": "#696a6f",
-                            "flexBasis": undefined,
-                            "flexGrow": undefined,
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
-                            "textAlign": undefined,
+                            "alignItems": "center",
+                            "backgroundColor": "#f1f1f4",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderColor": "#cbcdd2",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "justifyContent": "center",
+                            "paddingBottom": 8,
+                            "paddingLeft": 12,
+                            "paddingRight": 12,
+                            "paddingTop": 8,
+                            "width": "auto",
                           },
-                        ]
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Enregistrer les modifications"
+                  >
+                    <View
+                      gap={8}
+                      hasIcon={false}
+                      isMultiline={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                        }
                       }
                     >
-                      Enregistrer
-                    </Text>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#696a6f",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
+                        }
+                      >
+                        Enregistrer
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -2433,67 +2405,67 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               }
             >
               <View
-                background="#f3edff"
                 style={
                   {
-                    "alignItems": "flex-start",
-                    "backgroundColor": "#f3edff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "flexDirection": "row",
-                    "gap": 12,
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
+                    "marginBottom": 24,
                   }
                 }
               >
                 <View
-                  fill="#320096"
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-                <View
-                  accessibilityLabel="Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture."
-                  accessibilityRole="none"
+                  background="#f3edff"
                   style={
                     {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 4,
+                      "alignItems": "flex-start",
+                      "backgroundColor": "#f3edff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "flexDirection": "row",
+                      "gap": 12,
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
                     }
                   }
                 >
-                  <Text
+                  <View
+                    fill="#320096"
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    accessibilityLabel="Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture."
+                    accessibilityRole="none"
                     style={
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 22.4,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "gap": 4,
                       }
                     }
                   >
-                    Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture.
-                  </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 14,
+                          "lineHeight": 22.4,
+                        }
+                      }
+                    >
+                      Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture.
+                    </Text>
+                  </View>
                 </View>
               </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  {
-                    "height": 24,
-                  }
-                }
-              />
               <Text
                 accessibilityRole="header"
                 style={
@@ -2508,33 +2480,26 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                 Type d’alerte
               </Text>
               <View
-                numberOfSpaces={4}
                 style={
                   {
-                    "height": 16,
-                  }
-                }
-              />
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
+                    "marginBottom": 8,
+                    "marginTop": 16,
                   }
                 }
               >
-                Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
-              </Text>
-              <View
-                numberOfSpaces={2}
-                style={
-                  {
-                    "height": 8,
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
-                }
-              />
+                >
+                  Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
+                </Text>
+              </View>
               <View
                 style={
                   {
@@ -2895,27 +2860,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={4}
-                  style={
-                    {
-                      "height": 16,
-                    }
-                  }
-                />
-                <View
                   style={
                     {
                       "backgroundColor": "#f1f1f4",
                       "height": 1,
+                      "marginBottom": 32,
+                      "marginTop": 16,
                       "width": "100%",
-                    }
-                  }
-                />
-                <View
-                  numberOfSpaces={8}
-                  style={
-                    {
-                      "height": 32,
                     }
                   }
                 />
@@ -2933,71 +2884,20 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                   Tes thèmes suivis
                 </Text>
                 <View
-                  numberOfSpaces={6}
                   style={
                     {
-                      "height": 24,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "paddingVertical": 16,
+                      "marginBottom": 8,
+                      "marginTop": 24,
                     }
                   }
                 >
                   <View
-                    gap={4}
                     style={
                       {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "gap": 16,
-                        "justifyContent": "flex-start",
+                        "paddingVertical": 16,
                       }
                     }
-                    toggleLabel={false}
                   >
-                    <View
-                      gap={2}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "gap": 8,
-                        }
-                      }
-                      toggleLabel={false}
-                    >
-                      <Text
-                        htmlFor="testUuidV4"
-                        style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                      >
-                        <Text
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            }
-                          }
-                        >
-                          Suivre tous les thèmes
-                        </Text>
-                      </Text>
-                    </View>
                     <View
                       gap={4}
                       style={
@@ -3005,108 +2905,160 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                           "alignItems": "center",
                           "flexDirection": "row",
                           "gap": 16,
+                          "justifyContent": "flex-start",
                         }
                       }
+                      toggleLabel={false}
                     >
                       <View
+                        gap={2}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "gap": 8,
+                          }
+                        }
+                        toggleLabel={false}
+                      >
+                        <Text
+                          htmlFor="testUuidV4"
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          <Text
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Suivre tous les thèmes
+                          </Text>
+                        </Text>
+                      </View>
+                      <View
+                        gap={4}
                         style={
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "gap": 16,
                           }
                         }
                       >
                         <View
-                          accessibilityLabel="Suivre tous les thèmes - Interrupteur à bascule - non coché"
-                          accessibilityRole="switch"
-                          accessibilityState={
-                            {
-                              "busy": undefined,
-                              "checked": false,
-                              "disabled": true,
-                              "expanded": undefined,
-                              "selected": undefined,
-                            }
-                          }
-                          accessibilityValue={
-                            {
-                              "max": undefined,
-                              "min": undefined,
-                              "now": undefined,
-                              "text": undefined,
-                            }
-                          }
-                          accessible={true}
-                          focusable={false}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {
-                                "opacity": 1,
-                              },
-                            ]
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                            }
                           }
-                          testID="Suivre tous les thèmes - Interrupteur à bascule - non coché"
                         >
                           <View
-                            active={false}
-                            style={
+                            accessibilityLabel="Suivre tous les thèmes - Interrupteur à bascule - non coché"
+                            accessibilityRole="switch"
+                            accessibilityState={
                               {
-                                "backgroundColor": "#696a6f",
-                                "borderBottomLeftRadius": 32,
-                                "borderBottomRightRadius": 32,
-                                "borderTopLeftRadius": 32,
-                                "borderTopRightRadius": 32,
-                                "height": 36,
-                                "justifyContent": "center",
-                                "width": 64,
+                                "busy": undefined,
+                                "checked": false,
+                                "disabled": true,
+                                "expanded": undefined,
+                                "selected": undefined,
                               }
                             }
-                            toggleSize={32}
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            focusable={false}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              [
+                                {
+                                  "userSelect": "auto",
+                                },
+                                {
+                                  "opacity": 1,
+                                },
+                              ]
+                            }
+                            testID="Suivre tous les thèmes - Interrupteur à bascule - non coché"
                           >
                             <View
-                              disabled={true}
+                              active={false}
                               style={
-                                [
-                                  {
-                                    "alignItems": "center",
-                                    "aspectRatio": 1,
-                                    "backgroundColor": "#ffffff",
-                                    "borderBottomLeftRadius": 32,
-                                    "borderBottomRightRadius": 32,
-                                    "borderTopLeftRadius": 32,
-                                    "borderTopRightRadius": 32,
-                                    "height": 32,
-                                    "justifyContent": "center",
-                                    "width": 32,
-                                  },
-                                  {
-                                    "transform": [
-                                      {
-                                        "translateX": 2,
-                                      },
-                                    ],
-                                  },
-                                ]
+                                {
+                                  "backgroundColor": "#696a6f",
+                                  "borderBottomLeftRadius": 32,
+                                  "borderBottomRightRadius": 32,
+                                  "borderTopLeftRadius": 32,
+                                  "borderTopRightRadius": 32,
+                                  "height": 36,
+                                  "justifyContent": "center",
+                                  "width": 64,
+                                }
                               }
                               toggleSize={32}
                             >
                               <View
-                                height={16}
-                                width={16}
+                                disabled={true}
+                                style={
+                                  [
+                                    {
+                                      "alignItems": "center",
+                                      "aspectRatio": 1,
+                                      "backgroundColor": "#ffffff",
+                                      "borderBottomLeftRadius": 32,
+                                      "borderBottomRightRadius": 32,
+                                      "borderTopLeftRadius": 32,
+                                      "borderTopRightRadius": 32,
+                                      "height": 32,
+                                      "justifyContent": "center",
+                                      "width": 32,
+                                    },
+                                    {
+                                      "transform": [
+                                        {
+                                          "translateX": 2,
+                                        },
+                                      ],
+                                    },
+                                  ]
+                                }
+                                toggleSize={32}
                               >
-                                <Text>
-                                  undefined-SVG-Mock
-                                </Text>
+                                <View
+                                  height={16}
+                                  width={16}
+                                >
+                                  <Text>
+                                    undefined-SVG-Mock
+                                  </Text>
+                                </View>
                               </View>
                             </View>
                           </View>
@@ -3115,14 +3067,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    {
-                      "height": 8,
-                    }
-                  }
-                />
                 <View
                   style={
                     {
@@ -4174,109 +4118,109 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={2}
                   style={
                     {
-                      "height": 8,
+                      "marginTop": 8,
                     }
                   }
-                />
-                <View
-                  accessibilityLabel="Enregistrer les modifications"
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={false}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#f1f1f4",
-                          "borderBottomLeftRadius": 8,
-                          "borderBottomRightRadius": 8,
-                          "borderColor": "#cbcdd2",
-                          "borderStyle": "solid",
-                          "borderTopLeftRadius": 8,
-                          "borderTopRightRadius": 8,
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "justifyContent": "center",
-                          "paddingBottom": 8,
-                          "paddingLeft": 12,
-                          "paddingRight": 12,
-                          "paddingTop": 8,
-                          "width": "auto",
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="Enregistrer les modifications"
                 >
                   <View
-                    gap={8}
-                    hasIcon={false}
-                    isMultiline={false}
-                    style={
+                    accessibilityLabel="Enregistrer les modifications"
+                    accessibilityRole="button"
+                    accessibilityState={
                       {
-                        "alignItems": "center",
-                        "columnGap": 8,
-                        "flexDirection": "row",
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
                       }
                     }
-                  >
-                    <Text
-                      style={
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={false}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
                         [
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 22,
+                            "userSelect": "auto",
                           },
                           {
-                            "color": "#696a6f",
-                            "flexBasis": undefined,
-                            "flexGrow": undefined,
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
-                            "textAlign": undefined,
+                            "alignItems": "center",
+                            "backgroundColor": "#f1f1f4",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderColor": "#cbcdd2",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "justifyContent": "center",
+                            "paddingBottom": 8,
+                            "paddingLeft": 12,
+                            "paddingRight": 12,
+                            "paddingTop": 8,
+                            "width": "auto",
                           },
-                        ]
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Enregistrer les modifications"
+                  >
+                    <View
+                      gap={8}
+                      hasIcon={false}
+                      isMultiline={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                        }
                       }
                     >
-                      Enregistrer
-                    </Text>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#696a6f",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
+                        }
+                      >
+                        Enregistrer
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>

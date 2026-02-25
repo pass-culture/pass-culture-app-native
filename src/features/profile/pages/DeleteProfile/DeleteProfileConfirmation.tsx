@@ -6,12 +6,13 @@ import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useAnonymizeAccountMutation } from 'features/profile/queries/useAnonymizeAccountMutation'
 import { env } from 'libs/environment/env'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const DeleteProfileConfirmation = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -45,19 +46,19 @@ export const DeleteProfileConfirmation = () => {
         onPress: navigateToDeleteProfileReason,
         icon: Invalidate,
       }}>
-      <Typo.Body>
-        Si tu confirmes ta demande, tu ne pourras plus accéder à ton compte et tes données
-        personnelles seront supprimées (anonymisées).
-      </Typo.Body>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.Body>Tes réservations en cours seront également annulées et supprimées.</Typo.Body>
-      <Spacer.Column numberOfSpaces={6} />
-      <Banner
-        label="L’anonymisation de tes données personnelles empêche toute possibilité de te réidentifier à l’avenir."
-        links={[
-          { wording: 'Consultez notre FAQ', externalNav: { url: env.FAQ_LINK_RIGHT_TO_ERASURE } },
-        ]}
-      />
+      <ViewGap gap={6}>
+        <Typo.Body>
+          Si tu confirmes ta demande, tu ne pourras plus accéder à ton compte et tes données
+          personnelles seront supprimées (anonymisées).
+        </Typo.Body>
+        <Typo.Body>Tes réservations en cours seront également annulées et supprimées.</Typo.Body>
+        <Banner
+          label="L’anonymisation de tes données personnelles empêche toute possibilité de te réidentifier à l’avenir."
+          links={[
+            { wording: 'Consultez notre FAQ', externalNav: { url: env.FAQ_LINK_RIGHT_TO_ERASURE } },
+          ]}
+        />
+      </ViewGap>
     </GenericInfoPage>
   )
 }

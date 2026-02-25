@@ -346,46 +346,39 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
                 Si après 5 minutes tu n’as pas reçu ton lien de validation par e-mail, tu peux en demander un nouveau.
               </Text>
               <View
-                numberOfSpaces={6}
                 style={
                   {
-                    "height": 24,
-                  }
-                }
-              />
-              <Text
-                style={
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
+                    "marginBottom": 8,
+                    "marginTop": 24,
                   }
                 }
               >
-                Attention, il te reste :
-                 
                 <Text
                   style={
                     {
-                      "color": "#161617",
+                      "color": "#696a6f",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
                     }
                   }
                 >
-                  3 demandes
+                  Attention, il te reste :
+                   
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    3 demandes
+                  </Text>
                 </Text>
-              </Text>
-              <View
-                numberOfSpaces={2}
-                style={
-                  {
-                    "height": 8,
-                  }
-                }
-              />
+              </View>
               <View
                 accessibilityLabel="Demander un nouveau lien"
                 accessibilityRole="button"

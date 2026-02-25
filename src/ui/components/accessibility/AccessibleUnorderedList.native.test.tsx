@@ -1,8 +1,9 @@
 import React from 'react'
+import { View } from 'react-native'
 
 import { render, screen } from 'tests/utils'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 describe('accessibilityList', () => {
   it.each`
@@ -13,7 +14,7 @@ describe('accessibilityList', () => {
   `(
     'should render $itemList.length items and $numberOfSeparator separators',
     ({ itemList, numberOfSeparator }) => {
-      const Separator = <Spacer.Column numberOfSpaces={6} testID="accessibility-list-separator" />
+      const Separator = <View testID="accessibility-list-separator" />
 
       render(<AccessibleUnorderedList items={itemList} Separator={Separator} withPadding />)
 

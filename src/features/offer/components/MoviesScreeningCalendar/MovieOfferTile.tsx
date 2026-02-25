@@ -19,7 +19,6 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { EventCardList } from 'ui/components/eventCard/EventCardList'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
-import { Spacer } from 'ui/theme'
 
 type MovieOfferTileProps = {
   movieOffer: MovieOffer
@@ -71,7 +70,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
 
   return (
     <React.Fragment>
-      <View>
+      <StyledView>
         {offerScreeningOnSelectedDates ? (
           <HorizontalOfferTile
             offer={offerScreeningOnSelectedDates}
@@ -81,8 +80,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
             withRightArrow
           />
         ) : null}
-      </View>
-      <Spacer.Column numberOfSpaces={4} />
+      </StyledView>
       {nextScreeningDate ? (
         <View>
           <NextScreeningButton
@@ -97,9 +95,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
       ) : (
         <EventCardList data={eventCardData} />
       )}
-      <Spacer.Column numberOfSpaces={4} />
-      {isLast ? null : <Divider />}
-      <Spacer.Column numberOfSpaces={4} />
+      <Container>{isLast ? null : <Divider />}</Container>
       {CTAOfferModal}
     </React.Fragment>
   )
@@ -114,4 +110,12 @@ const getSubtitles = (offer: OfferPreviewResponse): string[] => {
 const Divider = styled.View(({ theme }) => ({
   height: 1,
   backgroundColor: theme.designSystem.color.background.subtle,
+}))
+
+const StyledView = styled(View)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
+
+const Container = styled(View)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
 }))

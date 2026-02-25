@@ -195,18 +195,11 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
               {
                 "backgroundColor": "#ffffff",
                 "flexDirection": "column",
+                "marginTop": 16,
                 "paddingHorizontal": 24,
               }
             }
           >
-            <View
-              numberOfSpaces={4}
-              style={
-                {
-                  "height": 16,
-                }
-              }
-            />
             <View
               style={
                 {
@@ -1713,185 +1706,177 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                 }
               />
               <View
-                numberOfSpaces={4}
                 style={
                   {
-                    "height": 16,
+                    "marginVertical": 16,
                   }
                 }
-              />
-              <View
-                accessibilityLabel="Partage le pass Culture - Recommande le bon plan à tes amis !"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Partage le pass Culture - Recommande le bon plan à tes amis !"
               >
                 <View
-                  style={
+                  accessibilityLabel="Partage le pass Culture - Recommande le bon plan à tes amis !"
+                  accessibilityRole="button"
+                  accessibilityState={
                     {
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "overflow": "hidden",
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
                     }
                   }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Partage le pass Culture - Recommande le bon plan à tes amis !"
                 >
                   <View
-                    accessibilityIgnoresInvertColors={true}
                     style={
                       {
-                        "backgroundColor": "#6123df",
-                        "justifyContent": "center",
-                        "width": "100%",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "overflow": "hidden",
                       }
                     }
                   >
-                    <Image
-                      source={
+                    <View
+                      accessibilityIgnoresInvertColors={true}
+                      style={
                         {
-                          "testUri": "../../../public/images/ShareAppBannerImage.png",
+                          "backgroundColor": "#6123df",
+                          "justifyContent": "center",
+                          "width": "100%",
                         }
                       }
-                      style={
-                        [
-                          {
-                            "bottom": 0,
-                            "left": 0,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                          },
-                          {
-                            "height": undefined,
-                            "width": "100%",
-                          },
-                          undefined,
-                        ]
-                      }
-                      testID="module-background"
-                    />
-                    <View
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "borderColor": "#90949d",
-                            "borderRadius": 8,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexDirection": "row",
-                            "padding": 16,
-                            "width": "100%",
-                          },
-                          {
-                            "borderWidth": 0,
-                          },
-                        ]
-                      }
                     >
+                      <Image
+                        source={
+                          {
+                            "testUri": "../../../public/images/ShareAppBannerImage.png",
+                          }
+                        }
+                        style={
+                          [
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            {
+                              "height": undefined,
+                              "width": "100%",
+                            },
+                            undefined,
+                          ]
+                        }
+                        testID="module-background"
+                      />
                       <View
                         style={
-                          {
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "marginRight": 16,
-                            "textAlign": "start",
-                          }
+                          [
+                            {
+                              "alignItems": "center",
+                              "borderColor": "#90949d",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "padding": 16,
+                              "width": "100%",
+                            },
+                            {
+                              "borderWidth": 0,
+                            },
+                          ]
                         }
                       >
                         <View
-                          gap={1}
                           style={
                             {
-                              "gap": 4,
-                              "paddingRight": 32,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "marginRight": 16,
+                              "textAlign": "start",
                             }
                           }
                         >
-                          <Text
+                          <View
+                            gap={1}
                             style={
                               {
-                                "color": "#ffffff",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
+                                "gap": 4,
+                                "paddingRight": 32,
                               }
                             }
                           >
-                            Partage le pass Culture
-                          </Text>
-                          <Text
-                            style={
-                              {
-                                "color": "#ffffff",
-                                "fontFamily": "Montserrat-Medium",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
+                            <Text
+                              style={
+                                {
+                                  "color": "#ffffff",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 16,
+                                  "lineHeight": 25.6,
+                                }
                               }
-                            }
-                          >
-                            Recommande le bon plan à tes amis !
-                          </Text>
+                            >
+                              Partage le pass Culture
+                            </Text>
+                            <Text
+                              style={
+                                {
+                                  "color": "#ffffff",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 16,
+                                  "lineHeight": 25.6,
+                                }
+                              }
+                            >
+                              Recommande le bon plan à tes amis !
+                            </Text>
+                          </View>
                         </View>
-                      </View>
-                      <View>
-                        <View
-                          height={24}
-                          width={24}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
+                        <View>
+                          <View
+                            height={24}
+                            width={24}
+                          >
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
+                          </View>
                         </View>
                       </View>
                     </View>
                   </View>
                 </View>
               </View>
-              <View
-                numberOfSpaces={4}
-                style={
-                  {
-                    "height": 16,
-                  }
-                }
-              />
             </View>
             <View
               style={
@@ -2364,105 +2349,105 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                 }
               />
               <View
-                numberOfSpaces={4}
                 style={
                   {
-                    "height": 16,
+                    "marginTop": 16,
                   }
                 }
-              />
-              <View
-                accessibilityLabel="Déconnexion"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Déconnexion"
               >
                 <View
+                  accessibilityLabel="Déconnexion"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
                   style={
                     [
                       {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
+                        "userSelect": "auto",
                       },
-                      undefined,
+                      {
+                        "opacity": 1,
+                      },
                     ]
                   }
+                  testID="Déconnexion"
                 >
                   <View
                     style={
-                      {
-                        "marginRight": 8,
-                      }
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                        },
+                        undefined,
+                      ]
                     }
                   >
                     <View
-                      height={24}
-                      width={24}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    style={
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "textAlign": "left",
-                      }
-                    }
-                  >
-                    <Text
-                      numberOfLines={2}
                       style={
                         {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
+                          "marginRight": 8,
                         }
                       }
                     >
-                      Déconnexion
-                    </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      style={
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "textAlign": "left",
+                        }
+                      }
+                    >
+                      <Text
+                        numberOfLines={2}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
+                      >
+                        Déconnexion
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>

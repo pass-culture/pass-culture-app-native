@@ -332,160 +332,146 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
           testID="modalScrollView"
         >
           <View>
-            <Text
+            <View
+              gap={8}
               style={
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
+                  "gap": 32,
+                  "marginBottom": 52,
                 }
               }
             >
-              Pour que la validation de ton numéro de téléphone se passe au mieux :
-            </Text>
-            <View
-              numberOfSpaces={8}
-              style={
-                {
-                  "height": 32,
-                }
-              }
-            />
-            <View
-              gap={3.75}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 15,
-                }
-              }
-            >
-              <View
-                height={24}
-                testID="BicolorSignal"
-                width={24}
-              >
-                <Text>
-                  BicolorSignal-SVG-Mock
-                </Text>
-              </View>
-              <View
+              <Text
                 style={
                   {
-                    "flexDirection": "column",
-                    "flexShrink": 1,
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                   }
                 }
               >
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Vérifie que tu as un bon réseau
-                </Text>
-                <Text
-                  style={
-                    {
-                      "color": "#696a6f",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Tu vas recevoir un code de validation par SMS
-                </Text>
-              </View>
-            </View>
-            <View
-              numberOfSpaces={8}
-              style={
-                {
-                  "height": 32,
-                }
-              }
-            />
-            <View
-              gap={3.75}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 15,
-                }
-              }
-            >
+                Pour que la validation de ton numéro de téléphone se passe au mieux :
+              </Text>
               <View
-                height={24}
-                testID="BicolorSmartphone"
-                width={24}
-              >
-                <Text>
-                  BicolorSmartphone-SVG-Mock
-                </Text>
-              </View>
-              <View
+                gap={3.75}
                 style={
                   {
-                    "flexDirection": "column",
-                    "flexShrink": 1,
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 15,
                   }
                 }
               >
-                <Text
+                <View
+                  height={24}
+                  testID="BicolorSignal"
+                  width={24}
+                >
+                  <Text>
+                    BicolorSignal-SVG-Mock
+                  </Text>
+                </View>
+                <View
                   style={
                     {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
+                      "flexDirection": "column",
                       "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
                     }
                   }
                 >
-                  Assure-toi d’indiquer ton numéro de téléphone personnel
-                </Text>
-                <Text
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    Vérifie que tu as un bon réseau
+                  </Text>
+                  <Text
+                    style={
+                      {
+                        "color": "#696a6f",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    Tu vas recevoir un code de validation par SMS
+                  </Text>
+                </View>
+              </View>
+              <View
+                gap={3.75}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 15,
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  testID="BicolorSmartphone"
+                  width={24}
+                >
+                  <Text>
+                    BicolorSmartphone-SVG-Mock
+                  </Text>
+                </View>
+                <View
                   style={
                     {
-                      "color": "#696a6f",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
+                      "flexDirection": "column",
                       "flexShrink": 1,
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
                     }
                   }
                 >
-                  Il ne peut être associé qu’à un seul compte
-                </Text>
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    Assure-toi d’indiquer ton numéro de téléphone personnel
+                  </Text>
+                  <Text
+                    style={
+                      {
+                        "color": "#696a6f",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    Il ne peut être associé qu’à un seul compte
+                  </Text>
+                </View>
               </View>
             </View>
-            <View
-              numberOfSpaces={13}
-              style={
-                {
-                  "height": 52,
-                }
-              }
-            />
             <View
               accessibilityLabel="J’ai compris"
               accessibilityRole="button"
