@@ -433,11 +433,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -599,11 +600,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -765,11 +767,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -931,11 +934,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -1097,11 +1101,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -1263,11 +1268,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -1429,11 +1435,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -1608,11 +1615,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -1787,11 +1795,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }

@@ -110,12 +110,17 @@ const RadioWrapper = styled.View<{ isSelected?: boolean }>(({ theme, isSelected 
 }))
 
 const RadioInner = styled.View<{ isSelected?: boolean; disabled?: boolean }>(
-  ({ theme, isSelected, disabled }) => ({
-    width: disabled ? theme.designSystem.size.spacing.l : theme.designSystem.size.spacing.s,
-    height: disabled ? theme.designSystem.size.spacing.l : theme.designSystem.size.spacing.s,
-    backgroundColor: getRadioInnerBackgroundColor(theme, isSelected, disabled),
-    borderRadius: theme.designSystem.size.borderRadius.l,
-  })
+  ({ theme, isSelected, disabled }) => {
+    const size = disabled ? theme.designSystem.size.spacing.l : theme.designSystem.size.spacing.s
+    return {
+      width: size,
+      height: size,
+      backgroundColor: getRadioInnerBackgroundColor(theme, isSelected, disabled),
+      borderRadius: size / 2,
+      /* See https://stackoverflow.com/questions/68103715/border-radius-in-react-native-not-working */
+      overflow: 'hidden',
+    }
+  }
 )
 
 function getRadioInnerBackgroundColor(theme: DefaultTheme, selected?: boolean, disabled?: boolean) {
