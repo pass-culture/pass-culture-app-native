@@ -42,7 +42,7 @@ jobs:
           # Extract the summary score, which is a value from 0 to 1
           PERF_SCORE_DECIMAL="$(jq '.categories.performance.score' $REPORT_PATH)"
           # Convert to a 0-100 scale and round it
-          PERF_SCORE="$(printf "%.0f" $(echo "$PERF_SCORE_DECIMAL * 100" | bc))"
+          PERF_SCORE="$(printf "%.0f" "$(echo "$PERF_SCORE_DECIMAL * 100" | bc)")"
 
           # Extract key metric values (the 'displayValue' is human-readable)
           FCP="$(jq --raw-output '.audits["first-contentful-paint"].displayValue' "$REPORT_PATH")"
