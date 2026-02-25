@@ -21,6 +21,8 @@ jobs:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  actionlint-check:
+    uses: pass-culture/common-workflows/actions/actionlint-check@f4db7db202ff3cddc97fcbf08c3821ebc78b10fb
   check-proxy-version-staging:
     name: Check staging proxy tag
     if: startsWith(github.ref, 'refs/tags/hotfix-staging') || startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
