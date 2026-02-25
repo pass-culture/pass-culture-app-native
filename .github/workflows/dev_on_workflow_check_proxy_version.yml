@@ -53,8 +53,8 @@ jobs:
         name: Compare deployed proxy version with the current deployment to prevent rollback
         run: |
           npm install -g semver-compare-cli
-          export current_version="$(cat server/package.json | jq -r .version)"
-          export is_greater_or_equal_version="$(npx semver-compare "${current_version}" ge ${{ steps.proxy-version.outputs.proxy_version }} && echo true || echo false)"
+          current_version="$(jq -r .version server/package.json)"
+          is_greater_or_equal_version="$(npx semver-compare "${current_version}" ge ${{ steps.proxy-version.outputs.proxy_version }} && echo true || echo false)"
           echo "is_greater_or_equal_version=$is_greater_or_equal_version" >> "$GITHUB_OUTPUT"
           echo "proxy version is ${{ steps.proxy-version.outputs.proxy_version }}"
           echo "current version is ${current_version}"
