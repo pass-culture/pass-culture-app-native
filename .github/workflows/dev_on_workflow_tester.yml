@@ -153,7 +153,7 @@ jobs:
         run: |
           mkdir coverage
           gsutil cp "gs://$CACHE_BUCKET_NAME/pass-culture/pass-culture-app-native/v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-*" coverage
-          for file in $(ls coverage/*tar); do tar --use-compress-program='zstd --long=30' -xf "$file"; done 
+          for file in coverage/*tar; do tar --use-compress-program='zstd --long=30' -xf "$file"; done 
           rm -f coverage/*.tar
       - name: 'Merge each coverage into one'
         run: |
