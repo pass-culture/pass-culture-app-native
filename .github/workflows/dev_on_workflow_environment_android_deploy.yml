@@ -135,8 +135,6 @@ jobs:
       - name: Setup android Google services config
         run: echo '${{ steps.secrets.outputs.ANDROID_PLAYSTORE_SERVICE_ACCOUNT }}' > fastlane/playStoreServiceAccount.json
       - name: Deploy hard android for ${{ inputs.ENV }}
-        env:
-          ENV: ${{ inputs.ENV }}
         run: |
           if [ "$ENV" != "production" ]; then
             bundle exec fastlane android deploy firebase_token:"${GOOGLE_APPLICATION_CREDENTIALS}" --env "$ENV" --verbose
@@ -148,6 +146,7 @@ jobs:
           LANG: en_US.UTF-8
           ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
           GOOGLE_APPLICATION_CREDENTIALS: ./app_distribution_credentials.json
+          ENV: ${{ inputs.ENV }}
       - name: Create Sentry sourcemaps
         run: source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "android" "$ENV"
 
@@ -179,13 +178,13 @@ jobs:
               "attachments": [
                   {
                       "mrkdwn_in": ["text"],
-                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[needs.sentry_and_deploy.result == 'failure'] }}",
+                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[(needs.sentry_and_deploy.result == 'failure') && 1 || 0] }}",
                       "author_name": "${{github.actor}}",
                       "author_link": "https://github.com/${{github.actor}}",
                       "author_icon": "https://github.com/${{github.actor}}.png",
                       "title": "PCAPPNATIVE Deployment",
                       "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Le déploiement Android sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[needs.sentry_and_deploy.result == 'failure'] }}"
+                      "text": "Le déploiement Android sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[(needs.sentry_and_deploy.result == 'failure') && 1 || 0] }}"
                   }
               ],
               "unfurl_links": false,
