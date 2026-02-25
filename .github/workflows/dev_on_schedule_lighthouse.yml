@@ -36,11 +36,11 @@ jobs:
         id: lighthouse_results
         run: |
           # Find the path of the first Lighthouse report
-          REPORT_PATH="$(find .lighthouseci -iname lhr-*.json | head -n 1)"
+          REPORT_PATH="$(find .lighthouseci -iname "lhr-*.json" | head -n 1)"
           echo "Parsing Lighthouse report: $REPORT_PATH"
 
           # Extract the summary score, which is a value from 0 to 1
-          PERF_SCORE_DECIMAL="$(jq '.categories.performance.score' $REPORT_PATH)"
+          PERF_SCORE_DECIMAL="$(jq '.categories.performance.score' "$REPORT_PATH")"
           # Convert to a 0-100 scale and round it
           PERF_SCORE="$(printf "%.0f" "$(echo "$PERF_SCORE_DECIMAL * 100" | bc)")"
 
