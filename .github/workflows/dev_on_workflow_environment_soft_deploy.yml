@@ -84,23 +84,21 @@ jobs:
             token: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
           result_path: .sentryclirc
       - name: Deploy soft android for ${{ inputs.ENV }}
-        env:
-          ENV: ${{ inputs.ENV }}
         run: |
           bundle exec fastlane android deploy ota: --env "$ENV"
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
           GOOGLE_APPLICATION_CREDENTIALS: ./firebase_credentials.json
-      - name: Deploy soft ios App for ${{ inputs.ENV }}
-        env:
           ENV: ${{ inputs.ENV }}
+      - name: Deploy soft ios App for ${{ inputs.ENV }}
         run: |
           bundle exec fastlane ios deploy ota: --env "$ENV"
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
           GOOGLE_APPLICATION_CREDENTIALS: ./firebase_credentials.json
+          ENV: ${{ inputs.ENV }}
 
   slack_notify:
     runs-on: ubuntu-24.04
