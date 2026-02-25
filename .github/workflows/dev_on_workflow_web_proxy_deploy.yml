@@ -83,7 +83,7 @@ jobs:
           ENV: ${{ inputs.ENV }}
         run: |
           gcloud app versions list --service="web-proxy-$ENV" --format="table[no-heading](id)" \
-            | grep -v $(gcloud app versions list --service="web-proxy-$ENV" --hide-no-traffic --format="table[no-heading](id)") \
+            | grep -v "$(gcloud app versions list --service="web-proxy-$ENV" --hide-no-traffic --format="table[no-heading](id)")" \
             | xargs gcloud app versions delete --service="web-proxy-$ENV"
   slack_notify:
     runs-on: ubuntu-24.04
