@@ -8,7 +8,7 @@ PODS:
   - AppsFlyerFramework (6.16.2):
     - AppsFlyerFramework/Main (= 6.16.2)
   - AppsFlyerFramework/Main (6.16.2)
-  - Batch (2.1.1)
+  - Batch (2.1.2)
   - BatchFirebaseDispatcher (3.2.0):
     - Batch (>= 1.19)
     - Firebase/Analytics
@@ -3251,9 +3251,9 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - SDWebImage (5.21.3):
-    - SDWebImage/Core (= 5.21.3)
-  - SDWebImage/Core (5.21.3)
+  - SDWebImage (5.21.5):
+    - SDWebImage/Core (= 5.21.5)
+  - SDWebImage/Core (5.21.5)
   - SDWebImageAVIFCoder (0.11.1):
     - libavif/core (>= 0.11.0)
     - SDWebImage (~> 5.10)
@@ -3665,7 +3665,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AppAuth: d4f13a8fe0baf391b2108511793e4b479691fb73
   AppsFlyerFramework: fe5303bffcdfd941d5f570c2d21eaaea982e7bdc
-  Batch: fe0c88b2182a8d0f6ca3b0ed725694206b2e3e44
+  Batch: a140a9ac06c2172b3bb24bd291e8933734f69679
   BatchFirebaseDispatcher: 1711b32884f4b6b3513553beab4c766056794ae1
   boost: 7e761d76ca2ce687f7cc98e698152abd03a18f90
   BVLinearGradient: 880f91a7854faff2df62518f0281afb1c60d49a3
@@ -3809,7 +3809,7 @@ SPEC CHECKSUMS:
   RNShare: a9e2a2325efa6a31416712a239eae1a282a354cf
   RNSVG: 15b549eab93d3c7f1de4f7ab612a88132ebc1bca
   RNWorklets: 83f7f4cd8c2ef480a058ff347a74e44d5596a5f8
-  SDWebImage: 16309af6d214ba3f77a7c6f6fdda888cb313a50a
+  SDWebImage: e9c98383c7572d713c1a0d7dd2783b10599b9838
   SDWebImageAVIFCoder: afe194a084e851f70228e4be35ef651df0fc5c57
   SDWebImageSVGCoder: 15a300a97ec1c8ac958f009c02220ac0402e936c
   SDWebImageWebPCoder: 0e06e365080397465cc73a7a9b472d8a3bd0f377
