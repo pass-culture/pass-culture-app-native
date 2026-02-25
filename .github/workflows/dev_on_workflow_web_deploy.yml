@@ -72,14 +72,19 @@ jobs:
       - name: 'Build web for input env'
         env:
           SENTRY_AUTH_TOKEN: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
+          ENV: ${{ inputs.ENV }}
         run: |
-          NODE_OPTIONS='--max-old-space-size=8192' UPLOAD_SOURCEMAPS_TO_SENTRY=true yarn build:${{ inputs.ENV }}
+          NODE_OPTIONS='--max-old-space-size=8192' UPLOAD_SOURCEMAPS_TO_SENTRY=true yarn run "build:$ENV"
       - name: 'Push assets to bucket'
+        env:
+          BUCKET_NAME: ${{ inputs.BUCKET_NAME }}
         run: |
-          gsutil rsync -x "index\.html$" -r dist gs://${{ inputs.BUCKET_NAME }}
+          gsutil rsync -x "index\.html$" -r dist "gs://$BUCKET_NAME"
       - name: 'Push index.html to bucket'
+        env:
+          BUCKET_NAME: ${{ inputs.BUCKET_NAME }}
         run: |
-          gsutil cp dist/index.html gs://${{ inputs.BUCKET_NAME }}
+          gsutil cp dist/index.html "gs://$BUCKET_NAME"
   slack_notify:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
@@ -114,7 +119,7 @@ jobs:
                       "author_icon": "https://github.com/${{github.actor}}.png",
                       "title": "PCAPPNATIVE Deployment",
                       "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Le déploiement Web sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[needs.web_deploy.result == 'failure'] }}"
+                      "text": "Le déploiement Web sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[(needs.web_deploy.result == 'failure') && 1 || 0] }}"
                   }
               ],
               "unfurl_links": false,

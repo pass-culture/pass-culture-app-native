@@ -128,7 +128,7 @@ jobs:
           JIRA_API_TOKEN: ${{ steps.secrets.outputs.JIRA_API_TOKEN }}
         # The jira view command uses .jira.d/templates/view template by default
         run: |
-          echo "value="$(jira view ${{ needs.issue-number.outputs.status }})"" >> "$GITHUB_OUTPUT"
+          echo "value=$(jira view "${{ needs.issue-number.outputs.status }}")" >> "$GITHUB_OUTPUT"
 
       - name: Mark issue as not deployable
         env:
