@@ -1,0 +1,41 @@
+import React from 'react'
+import { Path } from 'react-native-svg'
+import styled from 'styled-components/native'
+
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
+import { AccessibleIcon } from 'ui/svg/icons/types'
+
+const ProEditoCertificationSvg: React.FunctionComponent<AccessibleIcon> = ({
+  size,
+  color,
+  accessibilityLabel,
+  testID,
+}) => {
+  return (
+    <AccessibleSvg
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      fill="none"
+      testID={testID}
+      accessibilityLabel={accessibilityLabel}>
+      <Path
+        d="M15.2292 6.86606L15.6458 5.53446L14.5208 4.70221V3.30819L13.1875 2.87126L12.75 1.53966H11.3542L10.5208 0.416125L9.1875 0.83225L8.02083 0L6.875 0.811443L5.54167 0.395319L4.70833 1.51886H3.3125L2.875 2.85046L1.54167 3.28739V4.6814L0.416667 5.51365L0.833333 6.84525L0 8.0104L0.8125 9.15475L0.395833 10.4863L1.52083 11.3186V12.7126L2.85417 13.1495L3.29167 14.4811H4.6875L5.52083 15.6047L6.85417 15.1886L8 16L9.14583 15.1886L10.4792 15.6047L11.3125 14.4811H12.7083L13.1458 13.1495L14.4792 12.7126V11.3186L15.6042 10.4863L15.1875 9.15475L16 8.0104L15.2292 6.86606Z"
+        fill={color}
+      />
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8 4.875C10.1861 4.875 11.958 6.33185 11.958 8.12891C11.958 9.92595 10.1861 11.3828 8 11.3828C7.44843 11.3828 6.92334 11.2896 6.44629 11.1221C6.17557 11.5406 5.37564 11.7703 4.77148 11.8867C4.57115 11.9253 4.4208 11.6168 4.53125 11.4453C4.72008 11.152 4.90114 10.7376 4.94238 10.1943C4.37995 9.63243 4.042 8.91337 4.04199 8.12891C4.04199 6.33185 5.81387 4.875 8 4.875ZM6.64551 7.79199C6.35801 7.79217 6.125 8.02496 6.125 8.3125C6.125 8.60004 6.35801 8.83283 6.64551 8.83301C6.93316 8.83301 7.16699 8.60015 7.16699 8.3125C7.16699 8.02485 6.93316 7.79199 6.64551 7.79199ZM8.10449 7.79199C7.81684 7.79199 7.58301 8.02485 7.58301 8.3125C7.58301 8.60015 7.81684 8.83301 8.10449 8.83301C8.39199 8.83283 8.625 8.60004 8.625 8.3125C8.625 8.02496 8.39199 7.79217 8.10449 7.79199ZM9.5625 7.79199C9.27485 7.79199 9.04199 8.02485 9.04199 8.3125C9.04199 8.60015 9.27485 8.83301 9.5625 8.83301C9.85015 8.83301 10.083 8.60015 10.083 8.3125C10.083 8.02485 9.85015 7.79199 9.5625 7.79199Z"
+        fill="white"
+      />
+    </AccessibleSvg>
+  )
+}
+
+export const ProEditoCertification = styled(ProEditoCertificationSvg).attrs(
+  ({ color, size, theme }) => ({
+    color: color ?? theme.designSystem.color.icon.default,
+    size: size ?? theme.icons.sizes.standard,
+  })
+)``

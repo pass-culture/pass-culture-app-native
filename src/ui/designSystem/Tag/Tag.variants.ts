@@ -7,6 +7,7 @@ import { TagVariant } from 'ui/designSystem/Tag/types'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { CineClubCertification } from 'ui/svg/CineClubCertification'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
+import { ProEditoCertification } from 'ui/svg/ProEditoCertification'
 import { Star } from 'ui/svg/Star'
 
 export const variantBackground = {
@@ -19,6 +20,7 @@ export const variantBackground = {
   [TagVariant.CINECLUB]: 'cineclub',
   [TagVariant.HEADLINE]: 'headline',
   [TagVariant.LIKE]: 'subtle',
+  [TagVariant.PROEDITO]: 'proEdito',
 }
 
 export const variantIconColor = {
@@ -30,6 +32,7 @@ export const variantIconColor = {
   [TagVariant.CINECLUB]: 'cineclub',
   [TagVariant.HEADLINE]: 'headline',
   [TagVariant.LIKE]: 'brandPrimary',
+  [TagVariant.PROEDITO]: 'proEdito',
 }
 
 export const variantLabelColor = {
@@ -41,4 +44,5 @@ export const variantIcons = {
   [TagVariant.CINECLUB]: CineClubCertification,
   [TagVariant.HEADLINE]: Star,
   [TagVariant.LIKE]: ThumbUpFilled,
+  [TagVariant.PROEDITO]: ProEditoCertification,
 }
