@@ -675,6 +675,15 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                 }
               />
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
       </View>

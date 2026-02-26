@@ -1082,6 +1082,15 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 </Text>
               </View>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
       </View>

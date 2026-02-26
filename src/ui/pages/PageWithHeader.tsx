@@ -74,6 +74,7 @@ export const PageWithHeader = forwardRef<ScrollView, Props>((props, ref) => {
             onScroll={onChildrenScrollViewScroll}
             scrollEventThrottle={16}>
             {props.scrollChildren}
+            <Spacer.BottomScreen />
           </ChildrenScrollView>
         ) : null}
         {props.fixedBottomChildren ? (
@@ -89,6 +90,7 @@ export const PageWithHeader = forwardRef<ScrollView, Props>((props, ref) => {
     </Page>
   )
 })
+
 PageWithHeader.displayName = 'PageWithHeader'
 
 type ChildrenScrollViewProps = {

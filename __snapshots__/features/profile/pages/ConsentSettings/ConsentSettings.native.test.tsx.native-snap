@@ -2306,6 +2306,15 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
                 </Text>
               </View>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
       </View>

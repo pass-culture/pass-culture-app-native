@@ -1909,6 +1909,15 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
                 }
               }
             />
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
       </View>

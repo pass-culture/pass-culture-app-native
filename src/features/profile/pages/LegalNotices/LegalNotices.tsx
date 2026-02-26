@@ -97,6 +97,7 @@ export function LegalNotices() {
   )
 }
 
-const Container = styled(ViewGap)({
+const Container = styled(ViewGap)(({ theme }) => ({
   alignItems: 'flex-start',
-})
+  paddingBottom: theme.designSystem.size.spacing.xl,
+}))

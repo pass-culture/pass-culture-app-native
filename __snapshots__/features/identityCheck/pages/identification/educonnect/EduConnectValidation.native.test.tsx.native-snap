@@ -377,6 +377,15 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                 </View>
               </View>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
         <BVLinearGradient

@@ -240,6 +240,15 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
             <Text>
               scroll children
             </Text>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
         <BVLinearGradient
@@ -557,6 +566,15 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
             <Text>
               scroll children
             </Text>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
         <BVLinearGradient

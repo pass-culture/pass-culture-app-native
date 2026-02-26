@@ -243,6 +243,7 @@ exports[`LegalNotices should render correctly 1`] = `
                 {
                   "alignItems": "flex-start",
                   "gap": 20,
+                  "paddingBottom": 24,
                 }
               }
             >
@@ -801,6 +802,15 @@ exports[`LegalNotices should render correctly 1`] = `
                 </View>
               </View>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
       </View>

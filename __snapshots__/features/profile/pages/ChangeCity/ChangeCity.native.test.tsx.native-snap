@@ -518,6 +518,15 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                 }
               />
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
         <BVLinearGradient
@@ -1208,6 +1217,15 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                 }
               />
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
         <BVLinearGradient
@@ -1898,6 +1916,15 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                 }
               />
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
         <BVLinearGradient

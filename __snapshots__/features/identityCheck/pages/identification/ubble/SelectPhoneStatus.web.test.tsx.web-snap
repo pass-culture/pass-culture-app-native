@@ -283,6 +283,9 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                   </li>
                 </ul>
               </div>
+              <div
+                class="css-view-175oi2r r-height-3da1kt"
+              />
             </div>
           </div>
         </div>

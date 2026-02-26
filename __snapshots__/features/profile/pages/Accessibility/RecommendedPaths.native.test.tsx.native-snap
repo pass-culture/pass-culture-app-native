@@ -477,6 +477,15 @@ exports[`RecommendedPaths should render correctly 1`] = `
 
               Ces sites étant gérés par la Direction Interministérielle du Numérique ou par le Ministère de l’Éducation Nationale de la Jeunesse et des Sports, leur niveau d’accessibilité est maintenu dans le temps.
             </Text>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
       </View>

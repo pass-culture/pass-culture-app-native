@@ -2090,6 +2090,15 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                 </View>
               </View>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
       </View>
@@ -4194,6 +4203,15 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                 </View>
               </View>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
       </View>

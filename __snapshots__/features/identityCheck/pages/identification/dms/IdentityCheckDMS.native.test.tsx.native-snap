@@ -677,6 +677,15 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 }
               />
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
       </View>

@@ -28,7 +28,7 @@ export const AccessibilityFooter = ({ withHorizontalMargin = false }: Accessibil
         <LogoContainer>
           <ColoredPassCultureLogo />
         </LogoContainer>
-        <LinksContainer gap={4}>
+        <LinksContainer gap={6}>
           <InternalTouchableLink
             navigateTo={getProfilePropConfig('Accessibility')}
             as={Button}

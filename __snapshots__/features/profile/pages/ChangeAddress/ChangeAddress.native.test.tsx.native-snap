@@ -462,6 +462,15 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
                 </View>
               </View>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
         <BVLinearGradient
@@ -1096,6 +1105,15 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
                 </View>
               </View>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
         <BVLinearGradient
