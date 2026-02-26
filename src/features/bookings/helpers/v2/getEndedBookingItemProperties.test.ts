@@ -7,7 +7,6 @@ import { expirationDateUtilsV2 } from 'features/bookings/helpers'
 import { getEndedBookingItemProperties } from 'features/bookings/helpers/v2/getEndedBookingItemProperties'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
-import { SegmentResult } from 'shared/useABSegment/useABSegment'
 import * as snackBarStoreModule from 'ui/designSystem/Snackbar/snackBar.store'
 
 jest.mock('libs/analytics/provider', () => ({
@@ -42,13 +41,11 @@ describe('getEndedBookingItemProperties', () => {
   }
   const mockPrePopulateOffer = jest.fn()
   const mockShowErrorSnackBar = jest.fn()
-  const mockSegment: SegmentResult = 'A'
 
   const baseArgs = {
     booking: initialBooking,
     categoryId: CategoryIdEnum.CINEMA,
     prePopulateOffer: mockPrePopulateOffer,
-    segment: mockSegment,
     showErrorSnackBar: mockShowErrorSnackBar,
   }
 

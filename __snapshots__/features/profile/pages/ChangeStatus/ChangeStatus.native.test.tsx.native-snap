@@ -433,11 +433,12 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -599,11 +600,12 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -765,11 +767,12 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                       style={
                         {
                           "backgroundColor": "#6123df",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -931,11 +934,12 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -1097,11 +1101,12 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -1263,11 +1268,12 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -1429,11 +1435,12 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -1608,11 +1615,12 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -1787,11 +1795,12 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -2466,11 +2475,12 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -2632,11 +2642,12 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -2798,11 +2809,12 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "#6123df",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -2964,11 +2976,12 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -3130,11 +3143,12 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -3296,11 +3310,12 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -3462,11 +3477,12 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -3641,11 +3657,12 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -3820,11 +3837,12 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -4499,11 +4517,12 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -4665,11 +4684,12 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -4831,11 +4851,12 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                       style={
                         {
                           "backgroundColor": "#6123df",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -4997,11 +5018,12 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -5163,11 +5185,12 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -5329,11 +5352,12 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -5495,11 +5519,12 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -5674,11 +5699,12 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -5853,11 +5879,12 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }

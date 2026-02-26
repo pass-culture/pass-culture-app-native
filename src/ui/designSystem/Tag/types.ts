@@ -19,6 +19,7 @@ export enum TagVariant {
   CINECLUB = 'cineclub',
   HEADLINE = 'headline',
   LIKE = 'like',
+  PROEDITO = 'proedito',
 }
 
 export type TagProps = ViewProps & {

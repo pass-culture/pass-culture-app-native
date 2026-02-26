@@ -45,30 +45,29 @@ export const MovieCalendarProvider: React.FC<{
   const [isVisible, setIsVisible] = useState<boolean>(true)
   const { designSystem } = useTheme()
   const MOVIE_CALENDAR_PADDING = designSystem.size.spacing.xl
-  const scrollToMiddleElement = useCallback(
-    (currentIndex: number) => {
-      const { offset } = handleMovieCalendarScroll(
-        currentIndex,
-        flatListWidth,
-        itemWidth,
-        MOVIE_CALENDAR_PADDING
-      )
+  const layoutRef = useRef({ flatListWidth, itemWidth })
 
-      flatListRef.current?.scrollToOffset({
-        animated: true,
-        offset,
-      })
-    },
-    [MOVIE_CALENDAR_PADDING, flatListWidth, itemWidth]
-  )
+  useEffect(() => {
+    layoutRef.current = { flatListWidth, itemWidth }
+  }, [flatListWidth, itemWidth])
 
   useEffect(() => {
     const currentIndex = dates.findIndex(
       (date) => (date as Date).toDateString() === selectedDate.toDateString()
     )
 
-    scrollToMiddleElement(currentIndex)
-  }, [selectedDate, dates, scrollToMiddleElement])
+    const { offset } = handleMovieCalendarScroll(
+      currentIndex,
+      layoutRef.current.flatListWidth,
+      layoutRef.current.itemWidth,
+      MOVIE_CALENDAR_PADDING
+    )
+
+    flatListRef.current?.scrollToOffset({
+      animated: true,
+      offset,
+    })
+  }, [selectedDate, dates, MOVIE_CALENDAR_PADDING])
 
   useEffect(() => {
     if (flatListRef?.current) {

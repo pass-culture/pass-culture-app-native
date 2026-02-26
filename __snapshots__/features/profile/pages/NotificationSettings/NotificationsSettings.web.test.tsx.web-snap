@@ -806,6 +806,9 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   </button>
                 </form>
               </div>
+              <div
+                class="css-view-175oi2r r-height-3da1kt"
+              />
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@ import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { domains_exhausted_credit_v3 } from 'features/profile/fixtures/domainsCredit'
-import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, exBeneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -289,24 +289,24 @@ describe('<ProfileV1 />', () => {
       expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK, undefined, true)
     })
 
-    it('should display tutorial row when user is exbeneficiary', async () => {
-      mockedUseAuthContext.mockImplementationOnce(() => ({
+    it('should not display tutorial row when user is exbeneficiary', () => {
+      mockedUseAuthContext.mockReturnValueOnce({
         isLoggedIn: true,
-        user: { ...beneficiaryUser, depositExpirationDate: '2022-10-10T00:00:00Z' },
-      }))
+        user: { ...exBeneficiaryUser },
+      })
       renderProfile()
 
-      expect(await screen.findByText('Comment ça marche ?')).toBeOnTheScreen()
+      expect(screen.queryByText('Comment ça marche ?')).not.toBeOnTheScreen()
     })
 
-    it('should display tutorial row when user has no credit and no upcoming credit', async () => {
-      mockedUseAuthContext.mockImplementationOnce(() => ({
+    it('should not display tutorial row when user has no credit and no upcoming credit', () => {
+      mockedUseAuthContext.mockReturnValueOnce({
         isLoggedIn: true,
         user: { ...beneficiaryUser, domainsCredit: domains_exhausted_credit_v3 },
-      }))
+      })
       renderProfile()
 
-      expect(await screen.findByText('Comment ça marche ?')).toBeOnTheScreen()
+      expect(screen.queryByText('Comment ça marche ?')).not.toBeOnTheScreen()
     })
   })
 

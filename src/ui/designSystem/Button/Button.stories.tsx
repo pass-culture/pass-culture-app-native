@@ -322,12 +322,137 @@ const tertiaryNeutralCases: Variants<typeof Button> = [
   },
 ]
 
+const primaryDangerCases: Variants<typeof Button> = [
+  {
+    label: 'Primary danger default',
+    props: { wording: baseLabel, variant: 'primary', color: 'danger' },
+  },
+  {
+    label: 'Primary danger hover',
+    props: { wording: baseLabel, variant: 'primary', color: 'danger', hovered: true },
+  },
+  {
+    label: 'Primary danger icon left',
+    props: { wording: baseLabel, variant: 'primary', color: 'danger', icon: Invalidate },
+  },
+  {
+    label: 'Primary danger icon right',
+    props: {
+      wording: baseLabel,
+      variant: 'primary',
+      color: 'danger',
+      icon: PlainArrowNext,
+      iconPosition: 'right',
+    },
+  },
+  {
+    label: 'Primary danger icon button',
+    props: {
+      variant: 'primary',
+      color: 'danger',
+      icon: Invalidate,
+      iconButton: true,
+      accessibilityLabel: 'Fermer',
+    },
+  },
+  {
+    label: 'Primary danger small',
+    props: { wording: baseLabel, variant: 'primary', color: 'danger', size: 'small' },
+  },
+]
+
+const secondaryDangerCases: Variants<typeof Button> = [
+  {
+    label: 'Secondary danger default',
+    props: { wording: baseLabel, variant: 'secondary', color: 'danger' },
+  },
+  {
+    label: 'Secondary danger hover',
+    props: { wording: baseLabel, variant: 'secondary', color: 'danger', hovered: true },
+  },
+  {
+    label: 'Secondary danger icon left',
+    props: { wording: baseLabel, variant: 'secondary', color: 'danger', icon: Invalidate },
+  },
+  {
+    label: 'Secondary danger icon right',
+    props: {
+      wording: baseLabel,
+      variant: 'secondary',
+      color: 'danger',
+      icon: PlainArrowNext,
+      iconPosition: 'right',
+    },
+  },
+  {
+    label: 'Secondary danger icon button',
+    props: {
+      variant: 'secondary',
+      color: 'danger',
+      icon: Invalidate,
+      iconButton: true,
+      accessibilityLabel: 'Fermer',
+    },
+  },
+  {
+    label: 'Secondary danger transparent',
+    props: { wording: baseLabel, variant: 'secondary', color: 'danger', transparent: true },
+    withBackground: true,
+  },
+  {
+    label: 'Secondary danger small',
+    props: { wording: baseLabel, variant: 'secondary', color: 'danger', size: 'small' },
+  },
+]
+
+const tertiaryDangerCases: Variants<typeof Button> = [
+  {
+    label: 'Tertiary danger default',
+    props: { wording: baseLabel, variant: 'tertiary', color: 'danger' },
+  },
+  {
+    label: 'Tertiary danger hover',
+    props: { wording: baseLabel, variant: 'tertiary', color: 'danger', hovered: true },
+  },
+  {
+    label: 'Tertiary danger icon left',
+    props: { wording: baseLabel, variant: 'tertiary', color: 'danger', icon: Invalidate },
+  },
+  {
+    label: 'Tertiary danger icon right',
+    props: {
+      wording: baseLabel,
+      variant: 'tertiary',
+      color: 'danger',
+      icon: PlainArrowNext,
+      iconPosition: 'right',
+    },
+  },
+  {
+    label: 'Tertiary danger icon button',
+    props: {
+      variant: 'tertiary',
+      color: 'danger',
+      icon: Invalidate,
+      iconButton: true,
+      accessibilityLabel: 'Fermer',
+    },
+  },
+  {
+    label: 'Tertiary danger small',
+    props: { wording: baseLabel, variant: 'tertiary', color: 'danger', size: 'small' },
+  },
+]
+
 const variantConfig: Variants<typeof Button> = [
   ...primaryCases,
+  ...primaryDangerCases,
   ...secondaryBrandCases,
   ...secondaryNeutralCases,
+  ...secondaryDangerCases,
   ...tertiaryBrandCases,
   ...tertiaryNeutralCases,
+  ...tertiaryDangerCases,
 ]
 
 export const Template: VariantsStory<typeof Button> = {

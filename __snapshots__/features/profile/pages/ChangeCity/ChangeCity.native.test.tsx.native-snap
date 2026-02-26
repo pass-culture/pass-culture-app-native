@@ -231,7 +231,9 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
+          onScroll={[Function]}
           paddingHeaderHeight={65}
+          scrollEventThrottle={16}
           style={{}}
         >
           <View>
@@ -516,8 +518,58 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                 }
               />
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
+        <BVLinearGradient
+          bottomViewHeight={0}
+          colors={
+            [
+              16777215,
+              4294967295,
+            ]
+          }
+          endPoint={
+            {
+              "x": 0.5,
+              "y": 1,
+            }
+          }
+          locations={
+            [
+              0,
+              1,
+            ]
+          }
+          pointerEvents="none"
+          startPoint={
+            {
+              "x": 0.5,
+              "y": 0,
+            }
+          }
+          style={
+            [
+              {
+                "bottom": 0,
+                "height": 120,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+              },
+              {},
+              {},
+            ]
+          }
+        />
         <View
           onLayout={[Function]}
           style={
@@ -878,7 +930,9 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
+          onScroll={[Function]}
           paddingHeaderHeight={65}
+          scrollEventThrottle={16}
           style={{}}
         >
           <View>
@@ -1163,8 +1217,58 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                 }
               />
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
+        <BVLinearGradient
+          bottomViewHeight={0}
+          colors={
+            [
+              16777215,
+              4294967295,
+            ]
+          }
+          endPoint={
+            {
+              "x": 0.5,
+              "y": 1,
+            }
+          }
+          locations={
+            [
+              0,
+              1,
+            ]
+          }
+          pointerEvents="none"
+          startPoint={
+            {
+              "x": 0.5,
+              "y": 0,
+            }
+          }
+          style={
+            [
+              {
+                "bottom": 0,
+                "height": 120,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+              },
+              {},
+              {},
+            ]
+          }
+        />
         <View
           onLayout={[Function]}
           style={
@@ -1525,7 +1629,9 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
+          onScroll={[Function]}
           paddingHeaderHeight={65}
+          scrollEventThrottle={16}
           style={{}}
         >
           <View>
@@ -1810,8 +1916,58 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                 }
               />
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
+        <BVLinearGradient
+          bottomViewHeight={0}
+          colors={
+            [
+              16777215,
+              4294967295,
+            ]
+          }
+          endPoint={
+            {
+              "x": 0.5,
+              "y": 1,
+            }
+          }
+          locations={
+            [
+              0,
+              1,
+            ]
+          }
+          pointerEvents="none"
+          startPoint={
+            {
+              "x": 0.5,
+              "y": 0,
+            }
+          }
+          style={
+            [
+              {
+                "bottom": 0,
+                "height": 120,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+              },
+              {},
+              {},
+            ]
+          }
+        />
         <View
           onLayout={[Function]}
           style={
