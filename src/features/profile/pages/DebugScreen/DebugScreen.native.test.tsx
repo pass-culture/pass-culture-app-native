@@ -1,8 +1,10 @@
 import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import * as copyToClipboardModule from 'libs/copyToClipboard/copyToClipboard'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { DebugScreen } from './DebugScreen'
@@ -10,10 +12,7 @@ import { DebugScreen } from './DebugScreen'
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/firebase/analytics/analytics')
-
-jest.mock('features/auth/context/AuthContext', () => ({
-  useAuthContext: () => ({ user: { id: '1234' } }),
-}))
+jest.mock('features/auth/context/AuthContext')
 
 jest.mock('features/trustedDevice/helpers/useDeviceInfo', () => ({
   useDeviceInfo: () => ({
@@ -39,6 +38,8 @@ const mockCopyToClipboard = jest.spyOn(copyToClipboardModule, 'copyToClipboard')
 jest.useFakeTimers()
 
 describe('DebugScreen', () => {
+  mockAuthContextWithUser(beneficiaryUser)
+
   it('should render correctly', () => {
     render(<DebugScreen />)
 
@@ -71,6 +72,9 @@ describe('DebugScreen', () => {
     expect(decodedUrl).toContain('Device OS : iOS')
     expect(decodedUrl).toContain('Device resolution : 1080x1920')
     expect(decodedUrl).toContain('User ID : 1234')
+    expect(decodedUrl).toContain('User CreditType : CREDIT_V3_18')
+    expect(decodedUrl).toContain('User StatusType : BENEFICIARY')
+    expect(decodedUrl).toContain('User EligibilityType : ELIGIBLE_CREDIT_V3_18')
     expect(decodedUrl).toContain('Device font scale : 1.5')
     expect(decodedUrl).toContain('Device zoom : Non renseigné')
     expect(decodedUrl).toContain("J'ai un problème avec la carte")
@@ -84,7 +88,7 @@ describe('DebugScreen', () => {
     await userEvent.press(copyButton)
 
     await waitFor(() => {
-      expect(analytics.logClickCopyDebugInfo).toHaveBeenNthCalledWith(1, '1234')
+      expect(analytics.logClickCopyDebugInfo).toHaveBeenNthCalledWith(1, 1234)
     })
   })
 
@@ -95,7 +99,7 @@ describe('DebugScreen', () => {
     const copyButton = screen.getByText('Envoyer mon bug au support')
     await userEvent.press(copyButton)
 
-    expect(analytics.logClickMailDebugInfo).toHaveBeenNthCalledWith(1, '1234')
+    expect(analytics.logClickMailDebugInfo).toHaveBeenNthCalledWith(1, 1234)
   })
 
   it('should log HasClickedContactForm event when press "Contacter le support" button', async () => {

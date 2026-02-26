@@ -2660,13 +2660,13 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
               </View>
             </View>
             <View
-              gap={4}
+              gap={6}
               style={
                 {
                   "alignItems": "flex-start",
                   "flexDirection": "column",
                   "flexWrap": "wrap",
-                  "gap": 16,
+                  "gap": 24,
                   "justifyContent": "center",
                   "marginHorizontal": 0,
                 }

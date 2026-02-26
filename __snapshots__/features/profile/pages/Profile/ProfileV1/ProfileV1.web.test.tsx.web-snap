@@ -1015,7 +1015,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 </div>
               </div>
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-flexWrap-1w6e6rj r-gap-f4gmv6 r-justifyContent-1777fci r-marginInline-1v74nt2"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-flexWrap-1w6e6rj r-gap-1fdih9r r-justifyContent-1777fci r-marginInline-1v74nt2"
               >
                 <button
                   aria-label="Accessibilité : partiellement conforme"
@@ -2231,7 +2231,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 </div>
               </div>
               <div
-                class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-flexWrap-1w6e6rj r-gap-f4gmv6 r-justifyContent-1777fci r-marginInline-1j93nrh"
+                class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-flexWrap-1w6e6rj r-gap-1fdih9r r-justifyContent-1777fci r-marginInline-1j93nrh"
               >
                 <button
                   aria-label="Accessibilité : partiellement conforme"

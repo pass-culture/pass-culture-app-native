@@ -1,26 +1,24 @@
-import colorAlpha from 'color-alpha'
 import React, { useRef, useState } from 'react'
 import { Control, Controller, UseFormHandleSubmit } from 'react-hook-form'
 import { View, FlatList, ViewStyle, LayoutChangeEvent, ListRenderItem } from 'react-native'
-import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { ActivityIdEnum, ActivityResponseModel } from 'api/gen'
 import { useActivityTypes } from 'features/identityCheck/queries/useActivityTypesQuery'
 import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { AnimatedViewRefType, createAnimatableComponent } from 'libs/react-native-animatable'
+import { AnimatedViewRefType } from 'libs/react-native-animatable'
 // eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
+import { Gradient } from 'ui/components/Gradient'
 import { Li } from 'ui/components/Li'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { Spinner } from 'ui/components/Spinner'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Page } from 'ui/pages/Page'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-const GRADIENT_HEIGHT = getSpacing(30)
 const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
 
 export type StatusForm = {
@@ -170,24 +168,6 @@ const SpinnerView = styled(View).attrs<{ headerHeight: number }>({})<{
   flex: 1,
   paddingTop: headerHeight,
   justifyContent: 'center',
-}))
-
-const AnimatedGradient = createAnimatableComponent(LinearGradient)
-const Gradient = styled(AnimatedGradient).attrs<{ colors?: string[]; bottomViewHeight: number }>(
-  ({ theme }) => ({
-    colors: [
-      colorAlpha(theme.designSystem.color.background.default, 0),
-      theme.designSystem.color.background.default,
-    ],
-    locations: [0, 1],
-    pointerEvents: 'none',
-  })
-)<{ bottomViewHeight: number }>(({ bottomViewHeight }) => ({
-  position: 'absolute',
-  height: GRADIENT_HEIGHT,
-  left: 0,
-  right: 0,
-  bottom: bottomViewHeight,
 }))
 
 const ControllerWrapper = styled.View(({ theme }) => ({

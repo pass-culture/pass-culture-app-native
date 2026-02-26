@@ -86,4 +86,55 @@ describe('getButtonColors', () => {
     expect(result.backgroundColor).toBe(theme.designSystem.color.background.inverted)
     expect(result.borderColor).toBe(theme.designSystem.color.border.inverted)
   })
+
+  it('should returns danger colors from button tokens for all variants', () => {
+    const primaryResult = getButtonColors({
+      theme: computedTheme,
+      variant: 'primary',
+      color: 'danger',
+      transparent: false,
+      disabled: false,
+    })
+    const secondaryResult = getButtonColors({
+      theme: computedTheme,
+      variant: 'secondary',
+      color: 'danger',
+      transparent: false,
+      disabled: false,
+    })
+    const tertiaryResult = getButtonColors({
+      theme: computedTheme,
+      variant: 'tertiary',
+      color: 'danger',
+      transparent: false,
+      disabled: false,
+    })
+
+    expect(primaryResult.backgroundColor).toBe(theme.designSystem.color.background.danger)
+    expect(primaryResult.borderColor).toBe(theme.designSystem.color.border.danger)
+    expect(primaryResult.textColor).toBe(theme.designSystem.color.text.inverted)
+    expect(primaryResult.iconColor).toBe(theme.designSystem.color.icon.inverted)
+    expect(primaryResult.hoverBackgroundColor).toBe(theme.designSystem.color.background.dangerHover)
+    expect(primaryResult.hoverBorderColor).toBe(theme.designSystem.color.border.dangerHover)
+    expect(primaryResult.hoverTextColor).toBeUndefined()
+    expect(primaryResult.hoverIconColor).toBeUndefined()
+
+    expect(secondaryResult.backgroundColor).toBe(theme.designSystem.color.background.default)
+    expect(secondaryResult.borderColor).toBe(theme.designSystem.color.border.danger)
+    expect(secondaryResult.textColor).toBe(theme.designSystem.color.text.danger)
+    expect(secondaryResult.iconColor).toBe(theme.designSystem.color.icon.danger)
+    expect(secondaryResult.hoverBackgroundColor).toBeUndefined()
+    expect(secondaryResult.hoverBorderColor).toBe(theme.designSystem.color.border.dangerHover)
+    expect(secondaryResult.hoverTextColor).toBe(theme.designSystem.color.text.dangerHover)
+    expect(secondaryResult.hoverIconColor).toBe(theme.designSystem.color.icon.dangerHover)
+
+    expect(tertiaryResult.backgroundColor).toBe('transparent')
+    expect(tertiaryResult.borderColor).toBeUndefined()
+    expect(tertiaryResult.textColor).toBe(theme.designSystem.color.text.danger)
+    expect(tertiaryResult.iconColor).toBe(theme.designSystem.color.icon.danger)
+    expect(tertiaryResult.hoverBackgroundColor).toBeUndefined()
+    expect(tertiaryResult.hoverBorderColor).toBeUndefined()
+    expect(tertiaryResult.hoverTextColor).toBe(theme.designSystem.color.text.dangerHover)
+    expect(tertiaryResult.hoverIconColor).toBe(theme.designSystem.color.icon.dangerHover)
+  })
 })

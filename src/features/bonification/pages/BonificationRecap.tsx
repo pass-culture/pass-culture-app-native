@@ -118,6 +118,7 @@ export const BonificationRecap = () => {
   return (
     <PageWithHeader
       title="Informations"
+      shouldDisplayBottomGradient
       scrollChildren={
         <ViewGap gap={4}>
           <View>
