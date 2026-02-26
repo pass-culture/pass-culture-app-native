@@ -117,7 +117,7 @@ const RadioInner = styled.View<{ isSelected?: boolean; disabled?: boolean }>(
       height: size,
       backgroundColor: getRadioInnerBackgroundColor(theme, isSelected, disabled),
       borderRadius: size / 2,
-      /* See https://stackoverflow.com/questions/68103715/border-radius-in-react-native-not-working */
+      /* Border is not visible without overflow: 'hidden' : https://reactnative.dev/docs/view-style-props#borderradius */
       overflow: 'hidden',
     }
   }
