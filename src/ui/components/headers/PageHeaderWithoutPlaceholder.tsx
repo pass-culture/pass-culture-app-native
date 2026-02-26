@@ -62,7 +62,6 @@ export const PageHeaderWithoutPlaceholder = forwardRef<View, Props>(
                 icon={ArrowPrevious}
                 onPress={onGoBack ?? goBack}
                 accessibilityLabel="Revenir en arrière"
-                testID="icon-back"
               />
             ) : null}
           </ButtonContainer>

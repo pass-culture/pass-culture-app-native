@@ -267,7 +267,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
                 icon={ArrowPrevious}
                 onPress={unfocus}
                 accessibilityLabel="Revenir en arrière"
-                testID="icon-back"
               />
             </StyledView>
           ) : null}

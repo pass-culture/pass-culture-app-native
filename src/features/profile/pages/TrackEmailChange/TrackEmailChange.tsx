@@ -29,7 +29,6 @@ export function TrackEmailChange() {
             icon={ArrowPrevious}
             onPress={goBack}
             accessibilityLabel="Revenir en arrière"
-            testID="icon-back"
           />
         </GoBackContainer>
       </HeaderContainer>

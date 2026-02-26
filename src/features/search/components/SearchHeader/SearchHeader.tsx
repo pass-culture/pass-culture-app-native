@@ -66,7 +66,6 @@ export const SearchHeader: FC<Props> = ({
                   icon={ArrowPrevious}
                   onPress={onGoBack}
                   accessibilityLabel="Revenir en arrière"
-                  testID="icon-back"
                 />
               </StyledView>
             ) : null}

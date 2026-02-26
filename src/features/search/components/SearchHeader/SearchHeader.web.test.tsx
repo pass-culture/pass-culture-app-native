@@ -115,7 +115,7 @@ describe('SearchHeader component', () => {
         withArrow
       />
     )
-    await userEvent.click(screen.getByTestId('Revenir en arrière'))
+    await userEvent.click(screen.getByLabelText('Revenir en arrière'))
 
     await waitFor(() => {
       expect(mockDispatch).toHaveBeenCalledWith({

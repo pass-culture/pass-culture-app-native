@@ -31,7 +31,6 @@ export const EmptyHeader = ({ onGoBack }: Props) => {
             icon={ArrowPrevious}
             onPress={onGoBack ?? goBack}
             accessibilityLabel="Revenir en arrière"
-            testID="icon-back"
           />
         </GoBackContainer>
       </HeaderContainer>

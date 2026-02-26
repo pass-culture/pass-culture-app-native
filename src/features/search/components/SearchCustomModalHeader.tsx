@@ -43,7 +43,6 @@ export const SearchCustomModalHeader: React.FC<Props> = ({
               icon={ArrowPrevious}
               onPress={onGoBack}
               accessibilityLabel="Revenir en arrière"
-              testID="icon-back"
             />
           ) : null}
         </ButtonContainer>
