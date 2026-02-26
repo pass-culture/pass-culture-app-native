@@ -14,7 +14,10 @@ permissions:
 
 jobs:
   actionlint-check:
-    uses: pass-culture/common-workflows/actions/actionlint-check@f4db7db202ff3cddc97fcbf08c3821ebc78b10fb
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pass-culture/common-workflows/actions/actionlint-check@f4db7db202ff3cddc97fcbf08c3821ebc78b10fb
   yarn-install:
     uses: ./.github/workflows/dev_on_workflow_install.yml
     with:
