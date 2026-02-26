@@ -129,28 +129,33 @@ jobs:
           # ERROR Google Api Error: forbidden: You cannot rollout this release because it does not allow
           # any existing users to upgrade to the newly added APKs.
 
-          # As such, since the current version is 10136027 = 1 * 10_000_000 + 136 * 1_000 + 27, we build each new version
-          # as the sum of:
+          # As such, we build each new version as the sum of:
           #  + 10_000_000 * MAJOR,
           #  + 1_000 * MINOR,
-          #  + PATCH
+          #  + 10 * PATCH,
+          #  + NIGHTLY (0-9, reserved for nightly builds)
           # where <VERSION> = <MAJOR>.<MINOR>.<PATCH> (ex: 1.137.3) as we use semantic versioning.
 
           # Examples:
-          #   1.136.27 => 10 000 000 + 136 000 + 027 => 10136027
-          #   1.137.1  => 10 000 000 + 137 000 + 001 => 10137001
+          #   1.136.27 => 10 000 000 + 136 000 + 270 + 0 => 10136270
+          #   1.137.1  => 10 000 000 + 137 000 + 010 + 0 => 10137010
+          #   Nightly builds use BUILD + 1 (e.g., 10137011, 10137012, etc.)
 
           TESTING_VERSION=${{ steps.package-version.outputs.current-version }}
           SEMVER=(${TESTING_VERSION//./ })
           MAJOR=${SEMVER[0]}
           MINOR=${SEMVER[1]}
           PATCH=${SEMVER[2]}
-          BUILD_NUMBER=$((10000000 * MAJOR + 1000 * MINOR + PATCH))
+          BUILD_NUMBER=$((10000000 * MAJOR + 1000 * MINOR + 10 * PATCH))
           echo build_number=$BUILD_NUMBER >> $GITHUB_OUTPUT
       - name: 'Update build number in package.json'
         uses: sergeysova/jq-action@v2
         with:
           cmd: jq '.build = ${{ steps.build-number.outputs.build_number }}' package.json > tmp && mv tmp package.json
+      - name: 'Update build number in server/package.json'
+        uses: sergeysova/jq-action@v2
+        with:
+          cmd: jq '.build = ${{ steps.build-number.outputs.build_number }}' server/package.json > tmp && mv tmp server/package.json
       - name: 'Get routes used by app version'
         run: |
           TESTING_VERSION=${{ steps.package-version.outputs.current-version }}

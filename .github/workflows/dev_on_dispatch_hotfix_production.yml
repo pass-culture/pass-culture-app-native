@@ -1,0 +1,254 @@
+name: '1 [on_dispatch] Create Hotfix Production'
+
+on:
+  workflow_dispatch:
+    inputs:
+      baseVersion:
+        description: 'Version de base en prod (ex: 1.378.0)'
+        required: true
+        type: string
+      commitHash:
+        description: 'Hash du commit avec le fix (ex: abc123)'
+        required: true
+        type: string
+      hotfixDescription:
+        description: 'Description du hotfix (ex: Critical crash on login)'
+        required: true
+        type: string
+      severity:
+        description: 'Severity level'
+        required: true
+        type: choice
+        options:
+          - critical
+          - high
+          - medium
+
+permissions:
+  contents: write
+  id-token: write
+  actions: write
+
+jobs:
+  validate:
+    name: 'Validate hotfix request'
+    runs-on: ubuntu-24.04
+    outputs:
+      base_tag: ${{ steps.find-tag.outputs.base_tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Find base version tag
+        id: find-tag
+        run: |
+          BASE_TAG=""
+          for pattern in "production/v${{ inputs.baseVersion }}" "staging/v${{ inputs.baseVersion }}" "v${{ inputs.baseVersion }}" "patch/v${{ inputs.baseVersion }}"; do
+            if git rev-parse "$pattern" >/dev/null 2>&1; then
+              BASE_TAG="$pattern"
+              break
+            fi
+          done
+          if [ -z "$BASE_TAG" ]; then
+            echo "❌ Error: No tag found for version ${{ inputs.baseVersion }}"
+            echo "Searched: production/v${{ inputs.baseVersion }}, staging/v${{ inputs.baseVersion }}, v${{ inputs.baseVersion }}, patch/v${{ inputs.baseVersion }}"
+            exit 1
+          fi
+          echo "✅ Found base tag: $BASE_TAG → $(git log --oneline -1 $BASE_TAG)"
+          echo "base_tag=$BASE_TAG" >> $GITHUB_OUTPUT
+
+      - name: Check commit exists
+        run: |
+          if ! git rev-parse "${{ inputs.commitHash }}" >/dev/null 2>&1; then
+            echo "❌ Error: Commit ${{ inputs.commitHash }} does not exist"
+            exit 1
+          fi
+          echo "✅ Commit found: $(git log --oneline -1 ${{ inputs.commitHash }})"
+
+  create-hotfix:
+    name: 'Create production hotfix'
+    needs: validate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      hotfix_version: ${{ steps.bump.outputs.hotfix_version }}
+      build_number: ${{ steps.bump.outputs.build_number }}
+      hotfix_branch: ${{ steps.bump.outputs.hotfix_branch }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ needs.validate.outputs.base_tag }}
+
+      - name: Authenticate GitHub App
+        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
+        id: app-token
+        with:
+          app-id: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
+          private-key: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            pass-culture-app-native
+          permission-contents: write
+          permission-actions: write
+
+      - name: Get GitHub App User ID
+        id: get-user-id
+        run: echo "user-id=$(gh api "/users/${{ steps.app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+
+      - name: Configure git
+        run: |
+          git config user.name '${{ steps.app-token.outputs.app-slug }}[bot]'
+          git config user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/${{ github.repository_owner }}/pass-culture-app-native.git
+
+      - name: Cherry-pick fix commit
+        run: |
+          if ! git cherry-pick ${{ inputs.commitHash }}; then
+            echo "❌ Cherry-pick failed — conflicts detected."
+            echo "Commit: $(git log --oneline -1 ${{ inputs.commitHash }})"
+            echo "Please resolve conflicts manually and create a hotfix branch."
+            git cherry-pick --abort
+            exit 1
+          fi
+          echo "✅ Cherry-pick successful: $(git log --oneline -1)"
+
+      - name: Bump patch version
+        id: bump
+        run: |
+          BASE_VERSION="${{ inputs.baseVersion }}"
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$BASE_VERSION"
+
+          NEW_PATCH=$((PATCH + 1))
+          HOTFIX_VERSION="${MAJOR}.${MINOR}.${NEW_PATCH}"
+          BUILD_NUMBER=$((10000000 * MAJOR + 1000 * MINOR + 10 * NEW_PATCH))
+
+          echo "Base version:   $BASE_VERSION"
+          echo "Hotfix version: $HOTFIX_VERSION"
+          echo "Build number:   $BUILD_NUMBER"
+
+          jq ".version = \"$HOTFIX_VERSION\" | .build = $BUILD_NUMBER" package.json > tmp.json && mv tmp.json package.json
+          jq ".version = \"$HOTFIX_VERSION\" | .build = $BUILD_NUMBER" server/package.json > tmp.json && mv tmp.json server/package.json
+
+          HOTFIX_BRANCH="hotfix-production-v${HOTFIX_VERSION}"
+          echo "hotfix_version=$HOTFIX_VERSION" >> $GITHUB_OUTPUT
+          echo "build_number=$BUILD_NUMBER" >> $GITHUB_OUTPUT
+          echo "hotfix_branch=$HOTFIX_BRANCH" >> $GITHUB_OUTPUT
+
+      - name: Get routes used by version
+        run: ./scripts/get_used_routes.sh "v${{ steps.bump.outputs.hotfix_version }}"
+
+      - name: Commit and push hotfix branch
+        run: |
+          git add package.json server/package.json route_usage_changelog.md
+          git commit -m "hotfix: v${{ steps.bump.outputs.hotfix_version }} - ${{ inputs.hotfixDescription }}"
+          git push origin HEAD:refs/heads/${{ steps.bump.outputs.hotfix_branch }}
+
+      - name: Create and push hotfix tag
+        run: |
+          TAG_NAME="hotfix-production-v${{ steps.bump.outputs.hotfix_version }}"
+          git tag -a "$TAG_NAME" \
+            -m "🚨 Hotfix $TAG_NAME" \
+            -m "Base: ${{ needs.validate.outputs.base_tag }}" \
+            -m "Description: ${{ inputs.hotfixDescription }}" \
+            -m "Severity: ${{ inputs.severity }}" \
+            -m "Build: ${{ steps.bump.outputs.build_number }}"
+          git push origin "$TAG_NAME"
+
+  notify:
+    name: 'Notify Slack'
+    needs: create-hotfix
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Authenticate to Google
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+
+      - name: Get Slack token
+        id: slack_secrets
+        uses: 'google-github-actions/get-secretmanager-secrets@v3'
+        with:
+          secrets: |-
+            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-ci-slack-bot-token
+
+      - name: Notify Slack (critical)
+        if: inputs.severity == 'critical' && needs.create-hotfix.result == 'success'
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          # channel #alertes-deploiement-native — remplacer par le canal urgent si disponible
+          channel-id: 'C0309RP8K42'
+          payload: |
+            {
+              "attachments": [
+                {
+                  "mrkdwn_in": ["text"],
+                  "color": "#FF0000",
+                  "author_name": "${{ github.actor }}",
+                  "author_link": "https://github.com/${{ github.actor }}",
+                  "author_icon": "https://github.com/${{ github.actor }}.png",
+                  "title": "🚨 HOTFIX PRODUCTION CRITIQUE v${{ needs.create-hotfix.outputs.hotfix_version }}",
+                  "title_link": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+                  "text": "*Description:* ${{ inputs.hotfixDescription }}\n*Build:* ${{ needs.create-hotfix.outputs.build_number }}\n*Branch:* `${{ needs.create-hotfix.outputs.hotfix_branch }}`"
+                }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}
+
+      - name: Notify Slack (non-critical success)
+        if: inputs.severity != 'critical' && needs.create-hotfix.result == 'success'
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          channel-id: 'C0309RP8K42'
+          payload: |
+            {
+              "attachments": [
+                {
+                  "mrkdwn_in": ["text"],
+                  "color": "#36a64f",
+                  "author_name": "${{ github.actor }}",
+                  "author_link": "https://github.com/${{ github.actor }}",
+                  "author_icon": "https://github.com/${{ github.actor }}.png",
+                  "title": "🩹 Hotfix production v${{ needs.create-hotfix.outputs.hotfix_version }}",
+                  "title_link": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+                  "text": "*Severity:* ${{ inputs.severity }}\n*Description:* ${{ inputs.hotfixDescription }}\n*Build:* ${{ needs.create-hotfix.outputs.build_number }}"
+                }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}
+
+      - name: Notify Slack (failure)
+        if: needs.create-hotfix.result == 'failure'
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          channel-id: 'C0309RP8K42'
+          payload: |
+            {
+              "attachments": [
+                {
+                  "mrkdwn_in": ["text"],
+                  "color": "#A30002",
+                  "author_name": "${{ github.actor }}",
+                  "author_link": "https://github.com/${{ github.actor }}",
+                  "author_icon": "https://github.com/${{ github.actor }}.png",
+                  "title": "❌ Échec hotfix production v${{ inputs.baseVersion }}+1",
+                  "title_link": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+                  "text": "*Description:* ${{ inputs.hotfixDescription }}\n*Cause probable:* conflit lors du cherry-pick — résolution manuelle requise"
+                }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}

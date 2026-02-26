@@ -1,0 +1,165 @@
+name: '1 [on_dispatch] Create Patch Staging'
+
+on:
+  workflow_dispatch:
+    inputs:
+      commitHash:
+        description: 'Hash du commit à patcher (ex: abc123)'
+        required: true
+        type: string
+      patchDescription:
+        description: 'Description du patch (ex: Fix ubble crash)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  id-token: write
+  actions: write
+
+jobs:
+  create-patch:
+    name: 'Create staging patch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      patch_version: ${{ steps.bump.outputs.patch_version }}
+      build_number: ${{ steps.bump.outputs.build_number }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.commitHash }}
+
+      - name: Authenticate GitHub App
+        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
+        id: app-token
+        with:
+          app-id: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
+          private-key: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            pass-culture-app-native
+          permission-contents: write
+          permission-actions: write
+
+      - name: Get GitHub App User ID
+        id: get-user-id
+        run: echo "user-id=$(gh api "/users/${{ steps.app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+
+      - name: Configure git
+        run: |
+          git config user.name '${{ steps.app-token.outputs.app-slug }}[bot]'
+          git config user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/${{ github.repository_owner }}/pass-culture-app-native.git
+
+      - name: Bump patch version
+        id: bump
+        run: |
+          # Lire la version actuelle depuis package.json (jq, pas besoin de node)
+          CURRENT_VERSION=$(jq -r '.version' package.json)
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
+
+          NEW_PATCH=$((PATCH + 1))
+          PATCH_VERSION="${MAJOR}.${MINOR}.${NEW_PATCH}"
+          BUILD_NUMBER=$((10000000 * MAJOR + 1000 * MINOR + 10 * NEW_PATCH))
+
+          echo "Current version: $CURRENT_VERSION"
+          echo "Patch version:   $PATCH_VERSION"
+          echo "Build number:    $BUILD_NUMBER"
+
+          jq ".version = \"$PATCH_VERSION\" | .build = $BUILD_NUMBER" package.json > tmp.json && mv tmp.json package.json
+          jq ".version = \"$PATCH_VERSION\" | .build = $BUILD_NUMBER" server/package.json > tmp.json && mv tmp.json server/package.json
+
+          echo "patch_version=$PATCH_VERSION" >> $GITHUB_OUTPUT
+          echo "build_number=$BUILD_NUMBER" >> $GITHUB_OUTPUT
+
+      - name: Get routes used by version
+        run: ./scripts/get_used_routes.sh "v${{ steps.bump.outputs.patch_version }}"
+
+      - name: Commit and push patch branch
+        run: |
+          git add package.json server/package.json route_usage_changelog.md
+          git commit -m "patch: v${{ steps.bump.outputs.patch_version }} - ${{ inputs.patchDescription }}"
+          git push origin HEAD:refs/heads/patch/${{ steps.bump.outputs.patch_version }}
+
+      - name: Create and push patch tag
+        run: |
+          TAG_NAME="patch/v${{ steps.bump.outputs.patch_version }}"
+          git tag -a "$TAG_NAME" \
+            -m "🩹 Patch $TAG_NAME" \
+            -m "Description: ${{ inputs.patchDescription }}" \
+            -m "Build: ${{ steps.bump.outputs.build_number }}"
+          git push origin "$TAG_NAME"
+
+  notify:
+    name: 'Notify Slack'
+    needs: create-patch
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Authenticate to Google
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+
+      - name: Get Slack token
+        id: slack_secrets
+        uses: 'google-github-actions/get-secretmanager-secrets@v3'
+        with:
+          secrets: |-
+            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-ci-slack-bot-token
+
+      - name: Notify Slack (success)
+        if: needs.create-patch.result == 'success'
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          # channel #alertes-deploiement-native
+          channel-id: 'C0309RP8K42'
+          payload: |
+            {
+              "attachments": [
+                {
+                  "mrkdwn_in": ["text"],
+                  "color": "#36a64f",
+                  "author_name": "${{ github.actor }}",
+                  "author_link": "https://github.com/${{ github.actor }}",
+                  "author_icon": "https://github.com/${{ github.actor }}.png",
+                  "title": "🩹 Patch staging v${{ needs.create-patch.outputs.patch_version }} créé",
+                  "title_link": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+                  "text": "*Description:* ${{ inputs.patchDescription }}\n*Build:* ${{ needs.create-patch.outputs.build_number }}\n*Tag:* `patch/v${{ needs.create-patch.outputs.patch_version }}`"
+                }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}
+
+      - name: Notify Slack (failure)
+        if: needs.create-patch.result == 'failure'
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          channel-id: 'C0309RP8K42'
+          payload: |
+            {
+              "attachments": [
+                {
+                  "mrkdwn_in": ["text"],
+                  "color": "#A30002",
+                  "author_name": "${{ github.actor }}",
+                  "author_link": "https://github.com/${{ github.actor }}",
+                  "author_icon": "https://github.com/${{ github.actor }}.png",
+                  "title": "❌ Échec création patch staging",
+                  "title_link": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+                  "text": "*Description:* ${{ inputs.patchDescription }}\n*Commit:* `${{ inputs.commitHash }}`"
+                }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}

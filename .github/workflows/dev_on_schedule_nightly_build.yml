@@ -1,0 +1,230 @@
+name: '1 [on_schedule] Nightly Testing Build'
+
+on:
+  schedule:
+    # Tous les jours à 2h du matin (UTC)
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force build even if no changes'
+        required: false
+        default: 'false'
+        type: boolean
+
+permissions:
+  contents: write
+  id-token: write
+  actions: write
+
+jobs:
+  check-changes:
+    name: 'Check if there are new commits since last nightly'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      has_changes: ${{ steps.check.outputs.has_changes }}
+      last_nightly_sha: ${{ steps.check.outputs.last_nightly_sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Check for changes since last nightly build
+        id: check
+        run: |
+          # Récupérer le dernier tag nightly (format: nightly-YYYYMMDD-N)
+          LAST_NIGHTLY=$(git tag -l "nightly-*" | sort -V | tail -1)
+          
+          if [ -z "$LAST_NIGHTLY" ]; then
+            echo "No previous nightly build found"
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "last_nightly_sha=" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          LAST_SHA=$(git rev-parse "$LAST_NIGHTLY")
+          CURRENT_SHA=$(git rev-parse master)
+          
+          echo "Last nightly: $LAST_NIGHTLY ($LAST_SHA)"
+          echo "Current master: $CURRENT_SHA"
+          
+          if [ "$LAST_SHA" = "$CURRENT_SHA" ] && [ "${{ inputs.force }}" != "true" ]; then
+            echo "No changes since last nightly build"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "Changes detected or force build requested"
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+          
+          echo "last_nightly_sha=$LAST_SHA" >> $GITHUB_OUTPUT
+
+  increment-build:
+    name: 'Increment build number and create nightly tag'
+    needs: check-changes
+    if: needs.check-changes.outputs.has_changes == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      build_number: ${{ steps.increment.outputs.build_number }}
+      version: ${{ steps.increment.outputs.version }}
+      nightly_tag: ${{ steps.increment.outputs.nightly_tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Authenticate through github app ghactionci
+        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
+        id: github-app-token
+        with:
+          app-id: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
+          private-key: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            pass-culture-app-native
+          permission-contents: write
+          permission-actions: write
+      
+      - name: Get GitHub App User ID
+        id: get-user-id
+        run: |
+          echo "user-id=$(gh api "/users/${{ steps.github-app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_TOKEN: ${{ steps.github-app-token.outputs.token }}
+      
+      - name: Configure git
+        run: |
+          git config --global user.name '${{ steps.github-app-token.outputs.app-slug }}[bot]'
+          git config --global user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.github-app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ steps.github-app-token.outputs.token }}@github.com/${{ github.repository_owner }}/pass-culture-app-native.git
+      
+      - name: Increment build number
+        id: increment
+        run: |
+          # Lire la version et le build actuel
+          CURRENT_VERSION=$(jq -r '.version' package.json)
+          CURRENT_BUILD=$(jq -r '.build' package.json)
+          
+          echo "Current version: $CURRENT_VERSION"
+          echo "Current build: $CURRENT_BUILD"
+          
+          # Incrémenter le build number
+          NEW_BUILD=$((CURRENT_BUILD + 1))
+          
+          echo "New build: $NEW_BUILD"
+          
+          # Mettre à jour package.json
+          jq ".build = $NEW_BUILD" package.json > tmp.json && mv tmp.json package.json
+          
+          # Mettre à jour server/package.json
+          jq ".build = $NEW_BUILD" server/package.json > tmp.json && mv tmp.json server/package.json
+          
+          # Créer le tag nightly (format: nightly-YYYYMMDD-N)
+          TODAY=$(date -u +%Y%m%d)
+          NIGHTLY_COUNT=$(git tag -l "nightly-${TODAY}-*" | wc -l)
+          NIGHTLY_TAG="nightly-${TODAY}-$((NIGHTLY_COUNT + 1))"
+          
+          echo "build_number=$NEW_BUILD" >> $GITHUB_OUTPUT
+          echo "version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          echo "nightly_tag=$NIGHTLY_TAG" >> $GITHUB_OUTPUT
+      
+      - name: Commit and push build number
+        run: |
+          git add package.json server/package.json
+          git commit -m "chore(nightly): bump build to ${{ steps.increment.outputs.build_number }}"
+          git push origin master
+        env:
+          GITHUB_TOKEN: ${{ steps.github-app-token.outputs.token }}
+      
+      - name: Create and push nightly tag
+        run: |
+          git tag -a "${{ steps.increment.outputs.nightly_tag }}" \
+            -m "🌙 Nightly build ${{ steps.increment.outputs.nightly_tag }}" \
+            -m "Version: ${{ steps.increment.outputs.version }}" \
+            -m "Build: ${{ steps.increment.outputs.build_number }}"
+          git push origin "${{ steps.increment.outputs.nightly_tag }}"
+        env:
+          GITHUB_TOKEN: ${{ steps.github-app-token.outputs.token }}
+
+  build-android-testing:
+    needs: increment-build
+    uses: ./.github/workflows/dev_on_workflow_environment_android_deploy.yml
+    with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+      ENV: testing
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+
+  build-ios-testing:
+    needs: increment-build
+    uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
+    with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+      ENV: testing
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+
+  update-jira-nightly:
+    needs: [increment-build, build-android-testing, build-ios-testing]
+    if: always() && needs.increment-build.result == 'success'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup gajira cli
+        uses: atlassian/gajira-cli@master
+        with:
+          version: 1.0.20
+      
+      - name: Authentification to Google
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      
+      - name: Get Secret
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v3'
+        with:
+          secrets: |-
+            JIRA_USER_EMAIL:passculture-metier-ehp/passculture-app-native-jira-user-email
+            JIRA_API_TOKEN:passculture-metier-ehp/passculture-app-native-jira-api-token
+      
+      - name: Login
+        uses: atlassian/gajira-login@master
+        env:
+          JIRA_BASE_URL: https://passculture.atlassian.net/
+          JIRA_USER_EMAIL: ${{ steps.secrets.outputs.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ steps.secrets.outputs.JIRA_API_TOKEN }}
+      
+      - name: Add comment to tickets merged since last nightly
+        env:
+          JIRA_API_TOKEN: ${{ steps.secrets.outputs.JIRA_API_TOKEN }}
+        run: |
+          # Récupérer les commits depuis le dernier nightly
+          LAST_NIGHTLY=$(git tag -l "nightly-*" | sort -V | tail -2 | head -1)
+          
+          if [ -z "$LAST_NIGHTLY" ]; then
+            echo "No previous nightly build, skipping Jira update"
+            exit 0
+          fi
+          
+          # Extraire les numéros de tickets PC-XXXXX
+          TICKETS=$(git log --oneline "$LAST_NIGHTLY"..HEAD | grep -oE 'PC-[0-9]+' | sort -u)
+          
+          if [ -z "$TICKETS" ]; then
+            echo "No tickets found in commits"
+            exit 0
+          fi
+          
+          # Ajouter un commentaire sur chaque ticket
+          for TICKET in $TICKETS; do
+            echo "Adding comment to $TICKET"
+            jira comment "$TICKET" \
+              --comment "🌙 Nightly build ${{ needs.increment-build.outputs.nightly_tag }} disponible sur Firebase App Distribution (testing)\nVersion: ${{ needs.increment-build.outputs.version }}\nBuild: ${{ needs.increment-build.outputs.build_number }}" \
+              || echo "Failed to comment on $TICKET (may not exist or may be archived)"
+          done
