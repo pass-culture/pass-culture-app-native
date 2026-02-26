@@ -141,10 +141,7 @@ jobs:
           #   1.137.1  => 10 000 000 + 137 000 + 001 => 10137001
 
           TESTING_VERSION="${{ steps.package-version.outputs.current-version }}"
-          SEMVER=("${TESTING_VERSION//./ }")
-          MAJOR="${SEMVER[0]}"
-          MINOR="${SEMVER[1]}"
-          PATCH="${SEMVER[2]}"
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$TESTING_VERSION"
           BUILD_NUMBER="$((10000000 * MAJOR + 1000 * MINOR + PATCH))"
           echo "build_number=$BUILD_NUMBER" >> "$GITHUB_OUTPUT"
       - name: 'Update build number in package.json'
