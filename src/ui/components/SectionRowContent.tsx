@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'

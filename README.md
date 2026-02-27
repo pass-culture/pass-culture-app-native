@@ -228,3 +228,7 @@ You can also run lighthouse locally from your browser's dev tools (make sure to 
 ### Profiling with Xcode and Android Studio
 
 [Go to the dedicated page](./doc/development/how-to/profiling.md)
+
+### Accessibility
+
+[Application audits](doc/accessibility/audits/auditFollowUp.md)

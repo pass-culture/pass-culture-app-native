@@ -9,7 +9,7 @@ import Animated from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useHandleHover } from 'libs/hooks/useHandleHover'
-import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { ColorsType } from 'theme/types'
 import { Typo } from 'ui/theme'
 

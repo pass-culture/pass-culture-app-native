@@ -5,7 +5,7 @@ import { SHARE_APP_BANNER_IMAGE_SOURCE } from 'features/share/components/shareAp
 import { shareApp } from 'features/share/helpers/shareApp'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
-import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'

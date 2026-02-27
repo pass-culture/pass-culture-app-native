@@ -8,7 +8,7 @@ import { VideoMonoOfferTile } from 'features/home/components/modules/video/Video
 import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
 import { VideoModuleProps } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
 import { ColorsType } from 'theme/types'
 import { Play } from 'ui/svg/icons/Play'
 import { getSpacing, Typo } from 'ui/theme'

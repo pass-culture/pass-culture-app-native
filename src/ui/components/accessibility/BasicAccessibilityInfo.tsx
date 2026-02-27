@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { OfferAccessibilityResponse } from 'api/gen'
-import { HandicapCategory } from 'shared/accessibility/getAccessibilityCategoryAndIcon'
+import { HandicapCategory } from 'shared/accessibility/helpers/getAccessibilityCategoryAndIcon'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
 import { AccessibilityBadge } from 'ui/components/accessibility/AccessibilityBadge'
 import { Li } from 'ui/components/Li'

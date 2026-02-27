@@ -6,7 +6,7 @@ import { VENUE_MAP_BACKGROUND_APP_V2 } from 'features/venueMap/components/VenueM
 import { removeSelectedVenue, setVenues } from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Typo, getSpacing } from 'ui/theme'

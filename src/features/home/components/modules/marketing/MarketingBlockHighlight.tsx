@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 
 import { AttachedThematicCard } from 'features/home/components/AttachedModuleCard/AttachedThematicCard'
 import { MarketingBlock } from 'features/home/components/modules/marketing/MarketingBlock'
-import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { ShadowWrapper } from 'ui/components/ShadowWrapper'
 
 export type MarketingBlockHighlightProps = {
