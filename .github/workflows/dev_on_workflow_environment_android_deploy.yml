@@ -148,6 +148,8 @@ jobs:
           GOOGLE_APPLICATION_CREDENTIALS: ./app_distribution_credentials.json
           ENV: ${{ inputs.ENV }}
       - name: Create Sentry sourcemaps
+        env:
+          ENV: ${{ inputs.ENV }}
         run: source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "android" "$ENV"
 
   slack_notify:
