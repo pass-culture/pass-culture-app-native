@@ -25,6 +25,7 @@ type TicketTopPartProps = {
   mapping: SubcategoriesMapping
   ean?: string
   expirationDate?: string
+  withdrawLabel?: string
 }
 
 export const TicketTopPart = ({
@@ -38,6 +39,7 @@ export const TicketTopPart = ({
   mapping,
   ean,
   expirationDate,
+  withdrawLabel,
 }: TicketTopPartProps) => {
   return (
     <ViewGap gap={6}>
@@ -49,6 +51,12 @@ export const TicketTopPart = ({
             <Typo.Body>
               {user.firstName} {user.lastName}
             </Typo.Body>
+          </Row>
+        ) : null}
+        {withdrawLabel ? (
+          <Row>
+            <StyledStock />
+            <Typo.Body>{withdrawLabel}</Typo.Body>
           </Row>
         ) : null}
         {day ? (

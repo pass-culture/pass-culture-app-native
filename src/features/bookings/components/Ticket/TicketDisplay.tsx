@@ -104,17 +104,24 @@ const FullBlock = styled(ContentBlock)(({ theme }) => ({
 
 const BottomBlock = styled(ContentBlock)(({ theme }) => ({
   justifyContent: 'center',
-  borderBottomWidth: 1,
+  borderWidth: 1,
   borderBottomLeftRadius: theme.designSystem.size.spacing.xl,
   borderBottomRightRadius: theme.designSystem.size.spacing.xl,
 }))
 
 const TopBlock = styled(ContentBlock)(({ theme }) => ({
-  borderTopWidth: 1,
+  borderWidth: 1,
   borderTopLeftRadius: theme.designSystem.size.spacing.xl,
   borderTopRightRadius: theme.designSystem.size.spacing.xl,
 }))
+
 const MiddleBlock = styled.View(({ theme }) => ({
   flexDirection: 'row',
   height: theme.designSystem.size.spacing.xxxl,
+  /*
+    On React Native, combining borderRadius with asymmetric borderWidth (e.g. top: 1, bottom: 0) causes a phantom hairline to appear on the side with width 0.
+    Using uniform borderWidth on TopBlock/BottomBlock avoids this, then MiddleBlock overlaps by 1px to hide the now-visible inner borders.
+  */
+  marginVertical: -1,
+  zIndex: 1,
 }))
