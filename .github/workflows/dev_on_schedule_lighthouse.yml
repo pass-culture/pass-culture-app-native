@@ -27,10 +27,12 @@ jobs:
         run: ls -laR ./.lighthouseci
         if: always()
       - name: Log app version
+        env:
+          REF_NAME: ${{ github.ref_name }}
         run: |
           APP_VERSION=$(jq --raw-output '.version' ./package.json)
           echo "App version is: $APP_VERSION"
-          echo "Branch: ${{ github.ref_name }}"
+          echo "Branch: $REF_NAME"
           echo "Commit SHA: ${{ github.sha }}"
       - name: Parse and Log Lighthouse Results 📊
         id: lighthouse_results
