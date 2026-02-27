@@ -62,7 +62,7 @@ jobs:
           team_index=$(( (10#$day_of_year - 1) % 3 ))
           team_name=${teams[$team_index]}
 
-          echo "team_name=$team_name" >> $GITHUB_OUTPUT
+          echo "team_name=$team_name" >> "$GITHUB_OUTPUT"
           echo "📅 Jour $day_of_year → Équipe: $team_name"
 
       # Auth GitHub App pour accéder aux alertes Dependabot
