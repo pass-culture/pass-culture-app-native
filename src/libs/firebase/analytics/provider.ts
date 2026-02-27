@@ -29,7 +29,7 @@ export const firebaseAnalyticsProvider: AnalyticsProvider = {
     setAnalyticsCollectionEnabled(firebaseAnalytics, false)
   },
   async getAppInstanceId() {
-    if (Platform.OS === 'web') return Promise.resolve(null)
+    if (Platform.OS === 'web') return null
     return firebaseAnalytics.getAppInstanceId()
   },
   async setDefaultEventParameters(params: Record<string, unknown> | undefined) {
