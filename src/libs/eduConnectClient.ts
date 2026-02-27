@@ -12,13 +12,13 @@ export const eduConnectClient = {
     const accessToken = await storage.readString('access_token')
     const accessTokenStatus = getTokenStatus(accessToken)
     if (accessTokenStatus === 'unknown') {
-      return Promise.reject(new Error('eduConnectClient failed to decodeAccessToken'))
+      throw new Error('eduConnectClient failed to decodeAccessToken')
     }
     if (accessTokenStatus === 'expired') {
       const { result, error } = await refreshAccessToken(api)
 
       if (error) {
-        return Promise.reject(new Error(`eduConnectClient ${error}`))
+        throw new Error(`eduConnectClient ${error}`)
       }
 
       return result
