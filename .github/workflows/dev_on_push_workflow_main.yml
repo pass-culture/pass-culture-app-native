@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
-      - uses: pass-culture/common-workflows/actions/actionlint-check@f4db7db202ff3cddc97fcbf08c3821ebc78b10fb
+      - uses: pass-culture/common-workflows/actions/actionlint-check@a34529818e79c90e6d82f0bd9aef73ddf9d38833
   yarn-install:
     uses: ./.github/workflows/dev_on_workflow_install.yml
     with:
