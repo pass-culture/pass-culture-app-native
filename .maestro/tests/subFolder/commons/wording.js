@@ -78,7 +78,7 @@ output.wording = {
     },
   },
   booking: {
-    wording: "Réserver l’offre",
+    button: "Réserver l’offre",
     detailsTitle: "Détails de la réservation",
     info: "Informations",
     location: "Lieu de retrait",
@@ -87,6 +87,13 @@ output.wording = {
     generalConditions: "Nos conditions générales d’utilisation",
     closeModal: "Fermer la modale",
     stickyButtonId: "sticky-booking-button",
+    termsId: "J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire",
+    confirm: ".*Confirmer la réservation.*",
+    confirmed: "Réservation confirmée.*",
+    viewBooking: "Voir ma réservation",
+    cancel: "Annuler ma réservation",
+    onlineAccess: "Accéder à l’offre en ligne",
+    almostThere: "Tu y es presque",
   },
   auth: {
     login: {
@@ -215,16 +222,35 @@ output.wording = {
     },
   },
   search: {
-    title: "Rechercher",
+    tabBar: "Rechercher",
+    placeholder: "Rechercher des offres.*",
     musicCategory: {
       ios: "Catégorie Musique.*",
       android: "MUSIQUE",
     },
+    booksCategory: {
+      ios: "Catégorie livre.*",
+      android: "LIVRES",
+    },
+    mediaCategory: {
+      ios: "Catégorie Médias & presse",
+      android: "Médias & presse",
+    },
+    romanceCategory: "Romans & littérature",
     cds: "CDs",
     myPosition: "Ma position",
     franceEntire: "Localisation – Liste - Élément 3 sur 3 - France entière.*",
     offersTitle: "Les offres",
     cdType: "CD",
+    bookType: "Livre",
+    digitalSubscription: "Abonnement presse en ligne",
     cinemaTitle: "Cinéma",
+    filters: {
+      active: "Voir tous les filtres : 1 filtre actif",
+      category: ".*Catégorie.*",
+      romance: ".*Romance.*",
+      digitalPress: ".*Presse en ligne.*",
+      apply: "Appliquer le filtre",
+    },
   },
 }

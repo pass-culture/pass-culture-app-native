@@ -1,12 +1,12 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- assertVisible: 'Rechercher'
+- assertVisible: ${output.wording.search.title}
 - runFlow:
     when:
       platform: Android
     commands:
       - tapOn:
-          text: 'Livre'
+          text: ${output.wording.search.bookType}
           index: 0
 
 - runFlow:
@@ -24,7 +24,7 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-      - tapOn: 'Réserver l’offre'
+      - tapOn: ${output.wording.booking.button}
 
 - runFlow:
     when:
@@ -32,14 +32,14 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - tapOn: ${output.button.ios.booking}
 
-- assertVisible: 'Détails de la réservation'
-- tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire'
+- assertVisible: ${output.wording.booking.detailsTitle}
+- tapOn: ${output.wording.booking.termsId}
 - runFlow:
     when:
       platform: Android
     commands:
       - scrollUntilVisible:
-          element: 'Confirmer la réservation'
+          element: ${output.wording.booking.confirm}
 - runFlow:
     when:
       platform: iOS
@@ -47,31 +47,31 @@ appId: ${MAESTRO_APP_ID}
       - scroll
 
 - tapOn:
-    text: '.*Confirmer la réservation.*'
+    text: ${output.wording.booking.confirm}
     retryTapIfNoChange: false
 
-- assertVisible: "Réservation confirmée\_!"
+- assertVisible: ${output.wording.booking.confirmed}
 - runFlow:
     when:
       platform: iOS
-      visible: 'Plus tard'
+      visible: ${output.wording.common.later}
     commands:
-      - tapOn: 'Plus tard'
+      - tapOn: ${output.wording.common.later}
 
 - runFlow:
     when:
       platform: iOS
     commands:
       - tapOn:
-          text: 'Voir ma réservation'
+          text: ${output.wording.booking.viewBooking}
 
 - runFlow:
     when:
       platform: Android
     commands:
-      - tapOn: 'Voir ma réservation'
+      - tapOn: ${output.wording.booking.viewBooking}
 
 - scrollUntilVisible:
-    element: 'Annuler ma réservation'
-- tapOn: 'Annuler ma réservation'
-- tapOn: 'Annuler ma réservation'
+    element: ${output.wording.booking.cancel}
+- tapOn: ${output.wording.booking.cancel}
+- tapOn: ${output.wording.booking.cancel}

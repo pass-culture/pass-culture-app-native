@@ -1,6 +1,6 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- assertVisible: 'Rechercher'
+- assertVisible: ${output.wording.search.title}
 
 - runFlow:
     when:
@@ -8,9 +8,9 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - scrollUntilVisible:
           element:
-            text: 'Catégorie livre.*'
-      - tapOn: 'Catégorie livre.*'
-      - tapOn: 'Romans & littérature'
+            text: ${output.wording.search.booksCategory.ios}
+      - tapOn: ${output.wording.search.booksCategory.ios}
+      - tapOn: ${output.wording.search.romanceCategory}
 
 - runFlow:
     when:
@@ -18,25 +18,25 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - scrollUntilVisible:
           element:
-            text: 'LIVRES'
-      - tapOn: 'LIVRES'
-      - tapOn: 'Romans & littérature'
+            text: ${output.wording.search.booksCategory.android}
+      - tapOn: ${output.wording.search.booksCategory.android}
+      - tapOn: ${output.wording.search.romanceCategory}
 
 - runFlow:
     when:
-      visible: 'Ma position'
+      visible: ${output.wording.search.myPosition}
     commands:
-      - tapOn: 'Ma position'
-      - tapOn: 'Localisation – Liste - Élément 3 sur 3 - France entière.*'
+      - tapOn: ${output.wording.search.myPosition}
+      - tapOn: ${output.wording.search.franceEntire}
 
-- tapOn: 'Voir tous les filtres : 1 filtre actif'
-- tapOn: '.*Catégorie.*'
+- tapOn: ${output.wording.search.filters.active}
+- tapOn: ${output.wording.search.filters.category}
 
-- tapOn: '.*Romance.*'
-- tapOn: 'Appliquer le filtre'
-- tapOn: 'Rechercher'
+- tapOn: ${output.wording.search.filters.romance}
+- tapOn: ${output.wording.search.filters.apply}
+- tapOn: ${output.wording.search.title}
 
 - swipe:
     from:
-      text: Les offres
+      text: ${output.wording.search.offersTitle}
     direction: UP

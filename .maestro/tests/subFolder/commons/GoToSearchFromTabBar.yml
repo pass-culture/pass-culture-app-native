@@ -1,4 +1,4 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- tapOn: 'Rechercher des offres.*'
+- tapOn: ${output.wording.search.tabBar}
 - waitForAnimationToEnd

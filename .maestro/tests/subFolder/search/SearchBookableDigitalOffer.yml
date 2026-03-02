@@ -1,14 +1,14 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- assertVisible: 'Rechercher'
+- assertVisible: ${output.wording.search.title}
 - runFlow:
     when:
       platform: iOS
     commands:
       - scrollUntilVisible:
           element:
-            text: 'Catégorie Médias & presse'
-      - tapOn: 'Catégorie Médias & presse'
+            text: ${output.wording.search.mediaCategory.ios}
+      - tapOn: ${output.wording.search.mediaCategory.ios}
 
 - runFlow:
     when:
@@ -16,14 +16,14 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - scrollUntilVisible:
           element:
-            text: 'Médias & presse'
-      - tapOn: 'Médias & presse'
+            text: ${output.wording.search.mediaCategory.android}
+      - tapOn: ${output.wording.search.mediaCategory.android}
 
-- tapOn: 'Voir tous les filtres : 1 filtre actif'
-- tapOn: '.*Catégorie.*'
+- tapOn: ${output.wording.search.filters.active}
+- tapOn: ${output.wording.search.filters.category}
 
-- assertVisible: 'Médias & presse'
-- tapOn: '.*Presse en ligne.*'
-- tapOn: 'Appliquer le filtre'
+- assertVisible: ${output.wording.search.mediaCategory.android} # Android and iOS share similar label here for assertion
+- tapOn: ${output.wording.search.filters.digitalPress}
+- tapOn: ${output.wording.search.filters.apply}
 
-- tapOn: 'Rechercher'
+- tapOn: ${output.wording.search.title}

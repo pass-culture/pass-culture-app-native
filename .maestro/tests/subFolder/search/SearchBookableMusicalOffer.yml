@@ -21,5 +21,3 @@ appId: ${MAESTRO_APP_ID}
           text: ${output.wording.search.musicCategory.android}
     - tapOn: ${output.wording.search.musicCategory.android}
     - tapOn: ${output.wording.search.cds}
-
-
