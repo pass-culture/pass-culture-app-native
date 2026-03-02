@@ -441,71 +441,81 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                   variant="detailed"
                 >
                   <View
-                    accessibilityLabel="Sélectionne ta localisation - Liste - Élément 1 sur 2 - Utiliser ma position actuelle - non sélectionné"
-                    accessibilityRole="radio"
-                    accessibilityState={
+                    collapsed={null}
+                    isHover={false}
+                    radioState={
                       {
-                        "busy": undefined,
-                        "checked": false,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
+                        "disabled": false,
+                        "error": false,
+                        "selected": false,
                       }
                     }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
+                    sizing="fill"
                     style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "borderColor": "#90949d",
-                            "borderTopLeftRadius": 8,
-                            "borderTopRightRadius": 8,
-                            "borderWidth": 1,
-                            "cursor": "pointer",
-                            "paddingBottom": 16,
-                            "paddingLeft": 16,
-                            "paddingRight": 16,
-                            "paddingTop": 16,
-                            "width": "100%",
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#90949d",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                        "width": "100%",
+                      }
                     }
-                    testID="Sélectionne ta localisation - Liste - Élément 1 sur 2 - Utiliser ma position actuelle - non sélectionné"
+                    variant="detailed"
                   >
                     <View
-                      style={
+                      accessibilityLabel="Sélectionne ta localisation - Liste - Élément 1 sur 2 - Utiliser ma position actuelle - non sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
                         {
-                          "alignItems": "center",
-                          "columnGap": 12,
-                          "flexDirection": "row",
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "alignItems": "center",
+                              "columnGap": 12,
+                              "flexDirection": "row",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Sélectionne ta localisation - Liste - Élément 1 sur 2 - Utiliser ma position actuelle - non sélectionné"
                     >
                       <View
                         isHover={false}
@@ -587,71 +597,81 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                     </View>
                   </View>
                   <View
-                    accessibilityLabel="Sélectionne ta localisation - Liste - Élément 2 sur 2 - Choisir une zone géographique - Ville, code postal, adresse - non sélectionné"
-                    accessibilityRole="radio"
-                    accessibilityState={
+                    collapsed={null}
+                    isHover={false}
+                    radioState={
                       {
-                        "busy": undefined,
-                        "checked": false,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
+                        "disabled": false,
+                        "error": false,
+                        "selected": false,
                       }
                     }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
+                    sizing="fill"
                     style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "borderColor": "#90949d",
-                            "borderTopLeftRadius": 8,
-                            "borderTopRightRadius": 8,
-                            "borderWidth": 1,
-                            "cursor": "pointer",
-                            "paddingBottom": 16,
-                            "paddingLeft": 16,
-                            "paddingRight": 16,
-                            "paddingTop": 16,
-                            "width": "100%",
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#90949d",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                        "width": "100%",
+                      }
                     }
-                    testID="Sélectionne ta localisation - Liste - Élément 2 sur 2 - Choisir une zone géographique - Ville, code postal, adresse - non sélectionné"
+                    variant="detailed"
                   >
                     <View
-                      style={
+                      accessibilityLabel="Sélectionne ta localisation - Liste - Élément 2 sur 2 - Choisir une zone géographique - Ville, code postal, adresse - non sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
                         {
-                          "alignItems": "center",
-                          "columnGap": 12,
-                          "flexDirection": "row",
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "alignItems": "center",
+                              "columnGap": 12,
+                              "flexDirection": "row",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Sélectionne ta localisation - Liste - Élément 2 sur 2 - Choisir une zone géographique - Ville, code postal, adresse - non sélectionné"
                     >
                       <View
                         isHover={false}
