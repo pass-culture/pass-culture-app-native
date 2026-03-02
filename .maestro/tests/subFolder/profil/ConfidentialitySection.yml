@@ -6,13 +6,13 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - scrollUntilVisible:
           element:
-            text: 'Partage le pass Culture'
+            text: ${output.wording.profil.legal.share}
 - tapOn:
-    text: 'Confidentialité'
+    text: ${output.wording.profil.confidentiality.title}
 
-- assertVisible: 'Paramètres de confidentialité'
+- assertVisible: ${output.wording.profil.confidentiality.settings}
 - tapOn:
-    id: 'Tout accepter - Interrupteur à bascule - coché'
+    id: ${output.wording.cookies.switches.all.on}
 - scroll
-- assertVisible: '.*politique de gestion des cookies'
-- tapOn: 'Enregistrer mes choix'
+- assertVisible: ${output.wording.cookies.settings.policyLink}
+- tapOn: ${output.wording.cookies.settings.save}

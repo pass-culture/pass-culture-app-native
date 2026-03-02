@@ -2,15 +2,15 @@ appId: ${MAESTRO_APP_ID}
 ---
 - scrollUntilVisible:
     element:
-      text: 'Autres'
+      text: ${output.wording.profil.legal.others}
 - runFlow:
     when:
-      visible: 'Poser une question'
+      visible: ${output.wording.profil.chatbot.askQuestion}
     commands:
-      - tapOn: 'Poser une question'
-      - assertVisible: 'Assistant virtuel du pass culture'
+      - tapOn: ${output.wording.profil.chatbot.askQuestion}
+      - assertVisible: ${output.wording.profil.chatbot.virtualAssistant}
 
       - runFlow:
           file: ../../subFolder/cloud/commands/TapOnBack.yml
 
-      - assertVisible: 'Poser une question'
+      - assertVisible: ${output.wording.profil.chatbot.askQuestion}

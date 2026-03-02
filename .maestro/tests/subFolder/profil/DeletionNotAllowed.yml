@@ -1,7 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- assertVisible: "Nous ne pouvons pas encore supprimer ton compte"
-- tapOn: "Nous ne pouvons pas encore supprimer ton compte"
-- assertVisible: "Retourner sur mon profil"
-- assertVisible: "Désactiver mes notifications"
-- tapOn: "Revenir en arrière"
+- assertVisible: ${output.wording.profil.deletion.notAllowedTitle}
+- tapOn: ${output.wording.profil.deletion.notAllowedTitle}
+- assertVisible: ${output.wording.profil.deletion.backToProfileButton}
+- assertVisible: ${output.wording.profil.deletion.disableNotifications}
+- tapOn: ${output.wording.common.backButton}

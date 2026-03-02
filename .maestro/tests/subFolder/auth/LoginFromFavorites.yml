@@ -36,12 +36,12 @@ appId: ${MAESTRO_APP_ID}
 
 - runFlow:
     when:
-      visible: ${output.wording.auth.modal.later}
+      visible: ${output.wording.common.later}
     commands:
-      - tapOn: ${output.wording.auth.modal.later}
+      - tapOn: ${output.wording.common.later}
 
 - runFlow: # Si apparition de la modale de partage
     when:
       visible: ${output.wording.auth.modal.share}
     commands:
-      - tapOn: ${output.wording.auth.modal.noThanks}
+      - tapOn: ${output.wording.common.noThanks}

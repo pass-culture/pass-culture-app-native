@@ -17,6 +17,6 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: ${output.wording.onboarding.age.options.age18}
 
 - assertVisible: ${output.wording.onboarding.end.enjoy18}
-- tapOn: ${output.wording.onboarding.end.later}
+- tapOn: ${output.wording.common.later}
 
 - waitForAnimationToEnd

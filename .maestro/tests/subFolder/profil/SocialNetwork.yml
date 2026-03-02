@@ -2,15 +2,15 @@ appId: ${MAESTRO_APP_ID}
 ---
 - scrollUntilVisible:
     element:
-      text: 'Version.*'
-- tapOn: 'Instagram'
+      text: ${output.wording.profil.social.version}
+- tapOn: ${output.wording.profil.social.instagram}
 - waitForAnimationToEnd
 
 - runFlow: # Si 1ere ouverture de chrome
     when:
-      visible: 'Accepter et continuer'
+      visible: ${output.wording.profil.social.chromeAccept}
     commands:
-      - tapOn: 'Accepter et continuer'
+      - tapOn: ${output.wording.profil.social.chromeAccept}
 - runFlow:
     when:
       platform: Android
@@ -24,12 +24,12 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-      - tapOn: 'Revenir à pass Culture S'
+      - tapOn: ${output.wording.profil.helpCenter.backToPass}
       - scrollUntilVisible:
           element:
-            text: 'Instagram'
+            text: ${output.wording.profil.social.instagram}
 
-- tapOn: 'X'
+- tapOn: ${output.wording.profil.social.x}
 - waitForAnimationToEnd
 - runFlow:
     when:
@@ -44,12 +44,12 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-      - tapOn: 'Revenir à pass Culture S'
+      - tapOn: ${output.wording.profil.helpCenter.backToPass}
       - scrollUntilVisible:
           element:
-            text: 'Instagram'
+            text: ${output.wording.profil.social.instagram}
 
-- tapOn: 'Tiktok'
+- tapOn: ${output.wording.profil.social.tiktok}
 - waitForAnimationToEnd
 - runFlow:
     when:
@@ -63,21 +63,21 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-      - tapOn: 'Revenir à pass Culture S'
+      - tapOn: ${output.wording.profil.helpCenter.backToPass}
       - scrollUntilVisible:
           element:
-            text: 'Instagram'
+            text: ${output.wording.profil.social.instagram}
 
 - runFlow: # Fallback si problème de retour
     when:
-      visible: 'Bonjour Test-e2e.*'
+      visible: ${output.wording.profil.legal.welcomeGreeting}
     commands:
-      - tapOn: 'Mon profil.*'
+      - tapOn: ${output.wording.profil.tabBar.profil}
       - scrollUntilVisible:
           element:
-            text: 'Facebook'
+            text: ${output.wording.profil.social.facebook}
 
-- tapOn: 'Facebook'
+- tapOn: ${output.wording.profil.social.facebook}
 - waitForAnimationToEnd
 # - TODO: Investiguer la 429 à l'ouverture du lien externe
 # - tapOn: "Fermer"
@@ -94,9 +94,9 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-      - tapOn: 'Revenir à pass Culture S'
+      - tapOn: ${output.wording.profil.helpCenter.backToPass}
 
 - scrollUntilVisible:
     element:
-      text: 'Profil'
+      text: ${output.wording.profil.tabBar.profil}
     direction: UP

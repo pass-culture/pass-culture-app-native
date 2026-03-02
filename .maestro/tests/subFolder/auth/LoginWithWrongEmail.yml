@@ -28,6 +28,6 @@ appId: ${MAESTRO_APP_ID}
 
 - runFlow:
     when:
-      visible: ${output.wording.auth.modal.later}
+      visible: ${output.wording.common.later}
     commands:
-      - tapOn: ${output.wording.auth.modal.later}
+      - tapOn: ${output.wording.common.later}

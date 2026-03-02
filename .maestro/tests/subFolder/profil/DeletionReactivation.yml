@@ -1,52 +1,52 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- tapOn: 'Informations personnelles'
+- tapOn: ${output.wording.profil.deletion.personalInfo}
 
-- assertVisible: 'Prénom et nom'
-- assertVisible: 'Adresse e-mail'
-- assertVisible: 'Numéro de téléphone'
-- assertVisible: 'Mot de passe'
+- assertVisible: ${output.wording.profil.deletion.fullName}
+- assertVisible: ${output.wording.profil.deletion.email}
+- assertVisible: ${output.wording.profil.deletion.phone}
+- assertVisible: ${output.wording.profil.deletion.password}
 - runFlow:
     when:
         platform: android
     commands:
-    - tapOn: 'Supprimer mon compte'
+    - tapOn: ${output.wording.profil.deletion.deleteAccount}
 - repeat:
     while:
-      notVisible: "Pourquoi souhaites-tu supprimer ton compte\_?"
+      notVisible: ${output.wording.profil.deletion.deleteReasonQuestion}
     commands:
-    - doubleTapOn: 'Supprimer mon compte'
-- assertVisible: "Pourquoi souhaites-tu supprimer ton compte\_?"
+    - doubleTapOn: ${output.wording.profil.deletion.deleteAccount}
+- assertVisible: ${output.wording.profil.deletion.deleteReasonQuestion}
 
-- tapOn: "J’aimerais créer un compte avec une adresse e-mail différente"
+- tapOn: ${output.wording.profil.deletion.reasonDifferentEmail}
 
-- assertVisible: "Modifie ton adresse e-mail sur ce compte"
-- tapOn: "J’ai compris"
-- assertVisible: "Modifier mon e-mail"
-- assertVisible: "Valider la demande de modification de mon e-mail"
-- tapOn: "Revenir en arrière"
+- assertVisible: ${output.wording.profil.deletion.modifyEmailInfo}
+- tapOn: ${output.wording.profil.deletion.iUnderstand}
+- assertVisible: ${output.wording.profil.deletion.modifyEmail}
+- assertVisible: ${output.wording.profil.deletion.validateModifyEmail}
+- tapOn: ${output.wording.common.backButton}
 
-- tapOn: "Je n’utilise plus l’application"
+- tapOn: ${output.wording.profil.deletion.noLongerUseApp}
 - runFlow: ./DeletionNotAllowed.yml
 
-- tapOn: "Je n’ai plus de crédit ou très peu de crédit restant"
+- tapOn: ${output.wording.profil.deletion.noCredit}
 - runFlow: ./DeletionNotAllowed.yml
 
-- tapOn: "Je souhaite supprimer mes données personnelles"
+- tapOn: ${output.wording.profil.deletion.deletePersonalData}
 - runFlow: ./DeletionNotAllowed.yml
 
 - scrollUntilVisible:
-    element: "Autre"
+    element: ${output.wording.profil.deletion.other}
 
-- tapOn: "Je pense que quelqu’un d’autre a accès à mon compte"
-- assertVisible: "Sécurise ton compte"
-- assertVisible: "Suspendre mon compte"
-- assertVisible: "Ne pas sécuriser mon compte"
-- tapOn: "Revenir en arrière"
+- tapOn: ${output.wording.profil.deletion.someoneElseAccess}
+- assertVisible: ${output.wording.profil.deletion.secureAccount}
+- assertVisible: ${output.wording.profil.deletion.suspendAccount}
+- assertVisible: ${output.wording.profil.deletion.dontSecureAccount}
+- tapOn: ${output.wording.common.backButton}
 - scrollUntilVisible: 
-    element: "Autre"
+    element: ${output.wording.profil.deletion.other}
 
-- tapOn: "Autre"
-- assertVisible: "Contacte le support"
-- assertVisible: "Contacter le support"
-- tapOn: "Retourner au profil"
+- tapOn: ${output.wording.profil.deletion.other}
+- assertVisible: ${output.wording.profil.deletion.contactSupport}
+- assertVisible: ${output.wording.profil.deletion.contactSupportButton}
+- tapOn: ${output.wording.profil.deletion.backToProfile}

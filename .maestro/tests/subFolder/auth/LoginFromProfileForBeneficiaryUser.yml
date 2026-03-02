@@ -35,15 +35,15 @@ appId: ${MAESTRO_APP_ID}
 
 - runFlow: # Si apparition de la modale de suivi des thèmes
     when:
-      visible: ${output.wording.auth.modal.noThanks}
+      visible: ${output.wording.common.noThanks}
     commands:
-      - tapOn: ${output.wording.auth.modal.noThanks}
+      - tapOn: ${output.wording.common.noThanks}
 
 - runFlow: # Si apparition du QPI
     when:
       visible: ${output.wording.auth.modal.takeMinute}
     commands:
-      - tapOn: ${output.wording.auth.modal.later}
+      - tapOn: ${output.wording.common.later}
 
 - waitForAnimationToEnd
 
@@ -51,10 +51,10 @@ appId: ${MAESTRO_APP_ID}
     when:
       visible: ${output.wording.auth.modal.share}
     commands:
-      - tapOn: ${output.wording.auth.modal.noThanks}
+      - tapOn: ${output.wording.common.noThanks}
 
 - runFlow: # Si apparition de la modale native iOS de sauvegarde du mot de passe
     when:
-      visible: ${output.wording.auth.modal.later}
+      visible: ${output.wording.common.later}
     commands:
-      - tapOn: ${output.wording.auth.modal.later}
+      - tapOn: ${output.wording.common.later}

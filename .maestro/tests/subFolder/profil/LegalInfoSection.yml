@@ -1,14 +1,14 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - scrollUntilVisible:
-    element: 'Partager le pass Culture'
+    element: ${output.wording.profil.legal.share}
 
 - tapOn:
-    text: 'Informations légales'
+    text: ${output.wording.profil.legal.title}
 
-- assertVisible: 'Informations légales'
+- assertVisible: ${output.wording.profil.legal.title}
 - tapOn:
-    id: 'Conditions Générales d’Utilisation'
+    id: ${output.wording.profil.legal.cgu}
 - waitForAnimationToEnd
 
 - runFlow:
@@ -19,19 +19,19 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-      - tapOn: 'Revenir à pass Culture S'
-      - tapOn: 'Revenir en arrière'
+      - tapOn: ${output.wording.profil.helpCenter.backToPass}
+      - tapOn: ${output.wording.common.backButton}
       - scrollUntilVisible:
-          element: 'Partager le pass Culture'
+          element: ${output.wording.profil.legal.share}
 
 - runFlow: # Fallback si problème de retour
     when:
-      visible: 'Autres'
+      visible: ${output.wording.profil.legal.others}
     commands:
       - tapOn:
-          text: 'Informations légales'
+          text: ${output.wording.profil.legal.title}
 
-- tapOn: 'Charte des données personnelles'
+- tapOn: ${output.wording.profil.legal.privacyPolicy}
 - waitForAnimationToEnd
 - runFlow:
     when:
@@ -41,7 +41,7 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-      - tapOn: 'Revenir à pass Culture S'
-      - tapOn: 'Revenir en arrière'
+      - tapOn: ${output.wording.profil.helpCenter.backToPass}
+      - tapOn: ${output.wording.common.backButton}
       - scrollUntilVisible:
-          element: 'Partager le pass Culture'
+          element: ${output.wording.profil.legal.share}
