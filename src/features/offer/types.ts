@@ -15,9 +15,12 @@ import { ChronicleCardData } from 'features/chronicle/type'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { PlaylistType } from 'features/offer/enums'
+import { OfferBodyComponentProps } from 'features/offerRefacto/types'
 import { AlgoliaGeoloc } from 'libs/algolia/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { NAVIGATION_METHOD } from 'shared/constants'
+
+export type { OfferBodyComponentProps }
 
 type ValueOf<T> = T[keyof T]
 type NavigationMethod = ValueOf<typeof NAVIGATION_METHOD>
@@ -93,6 +96,7 @@ export type OfferContentProps = {
   onVideoConsentPress: VoidFunction
   isMultiArtistsEnabled?: boolean
   HeaderComponent?: ComponentType<OfferHeaderComponentProps>
+  BodyComponent?: ComponentType<OfferBodyComponentProps>
 }
 
 export type OfferImageContainerDimensions = {
