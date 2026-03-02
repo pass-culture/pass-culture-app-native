@@ -2,12 +2,11 @@ import { useCallback, useEffect } from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { SubcategoryIdEnumv2 } from 'api/gen'
+import { DELAY_BEFORE_CONSIDERING_PAGE_SEEN } from 'features/offer/constants'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import { useFunctionOnce } from 'libs/hooks'
-
-const DELAY_BEFORE_CONSIDERING_PAGE_SEEN = 5000
 
 export const useOfferContentTracking = ({
   offerId,

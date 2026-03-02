@@ -6,6 +6,7 @@ import { useOfferFavorites } from './useOfferFavorites'
 const mockAddFavorite = jest.fn()
 const mockRemoveFavorite = jest.fn()
 let capturedOnSuccess: (() => void) | undefined
+let capturedOnError: (() => void) | undefined
 
 jest.mock('queries/favorites/useAddFavoriteMutation', () => ({
   useAddFavoriteMutation: ({ onSuccess }: { onSuccess: () => void }) => {
@@ -16,7 +17,15 @@ jest.mock('queries/favorites/useAddFavoriteMutation', () => ({
 }))
 
 jest.mock('queries/favorites/useRemoveFavoriteMutation', () => ({
-  useRemoveFavoriteMutation: () => ({ mutate: mockRemoveFavorite, isPending: false }),
+  useRemoveFavoriteMutation: ({ onError }: { onError: () => void }) => {
+    capturedOnError = onError
+
+    return { mutate: mockRemoveFavorite, isPending: false }
+  },
+}))
+
+jest.mock('ui/designSystem/Snackbar/snackBar.store', () => ({
+  showErrorSnackBar: jest.fn(),
 }))
 
 jest.mock('features/favorites/hooks/useFavorite', () => ({
@@ -37,6 +46,7 @@ describe('useOfferFavorites', () => {
   beforeEach(() => {
     jest.clearAllMocks()
     capturedOnSuccess = undefined
+    capturedOnError = undefined
   })
 
   it('should return addFavorite as a function', () => {
@@ -108,5 +118,16 @@ describe('useOfferFavorites', () => {
     })
 
     expect(analytics.logHasAddedOfferToFavorites).not.toHaveBeenCalled()
+  })
+
+  it('should call showErrorSnackBar when removeFavorite fails', () => {
+    const { showErrorSnackBar } = jest.requireMock('ui/designSystem/Snackbar/snackBar.store')
+    renderHook(() => useOfferFavorites(offerResponseSnap, mockParams))
+
+    act(() => {
+      capturedOnError?.()
+    })
+
+    expect(showErrorSnackBar).toHaveBeenCalledWith(expect.any(String))
   })
 })

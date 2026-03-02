@@ -92,6 +92,7 @@ export type OfferBodyComponentProps = {
   onShowChroniclesWritersModal: () => void
   onOfferPreviewPress: (index?: number) => void
   userId?: number
+  // Strangler Fig: remove BodyWrapper and desktopCTAs when OfferContentBase is fully replaced
   BodyWrapper?: ComponentType<PropsWithChildren>
   desktopCTAs?: ReactElement | null
   children?: ReactNode

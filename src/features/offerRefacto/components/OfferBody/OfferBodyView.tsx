@@ -62,8 +62,7 @@ export const OfferBodyView = ({
           chronicles={chronicles}
           distance={distance}
           headlineOffersCount={headlineOffersCount}
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          chronicleVariantInfo={chronicleVariantInfo!}
+          chronicleVariantInfo={chronicleVariantInfo}
           isVideoSectionEnabled={isVideoSectionEnabled}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
           onVideoConsentPress={onVideoConsentPress ?? noop}
@@ -73,7 +72,7 @@ export const OfferBodyView = ({
         </OfferBodyContent>
       </BodyWrapper>
 
-      {chronicles?.length && chronicleVariantInfo ? (
+      {chronicles?.length ? (
         <ChroniclesSectionWithAnchor
           chronicles={chronicles}
           chronicleVariantInfo={chronicleVariantInfo}

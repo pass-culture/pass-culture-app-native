@@ -64,20 +64,23 @@ export const useOfferBody = ({
 
   const imageDimensions = useOfferImageContainerDimensions(offer.subcategoryId)
 
-  const onSeeMoreButtonPress = (chronicleId: number) => {
-    // It's dirty but necessary to use from parameter for the logs
-    navigate('Chronicles', { offerId: offer.id, chronicleId, from: 'chronicles' })
-    void analytics.logConsultChronicle({ offerId: offer.id, chronicleId })
-  }
+  const onSeeMoreButtonPress = useCallback(
+    (chronicleId: number) => {
+      // It's dirty but necessary to use from parameter for the logs
+      navigate('Chronicles', { offerId: offer.id, chronicleId, from: 'chronicles' })
+      void analytics.logConsultChronicle({ offerId: offer.id, chronicleId })
+    },
+    [navigate, offer.id]
+  )
 
-  const onSeeAllReviewsPress = () => {
+  const onSeeAllReviewsPress = useCallback(() => {
     void analytics.logClickInfoReview({
       from: 'offer',
       offerId: offer.id.toString(),
       categoryName: subcategory.categoryId,
       userId: userId?.toString(),
     })
-  }
+  }, [offer.id, subcategory.categoryId, userId])
 
   const onViewableItemsChanged = useCallback(
     (

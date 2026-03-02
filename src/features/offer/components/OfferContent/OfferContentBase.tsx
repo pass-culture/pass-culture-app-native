@@ -35,6 +35,7 @@ import { OfferImageContainer } from 'features/offer/components/OfferImageContain
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
+import { DELAY_BEFORE_CONSIDERING_PAGE_SEEN } from 'features/offer/constants'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
@@ -75,8 +76,6 @@ type OfferContentBaseProps = OfferContentProps &
     chronicleVariantInfo?: ChronicleVariantInfo
     isVideoSectionEnabled?: boolean
   }>
-
-const DELAY_BEFORE_CONSIDERING_PAGE_SEEN = 5000
 
 export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   offer,

@@ -7,6 +7,7 @@ import {
   RecommendationApiParams,
   SearchGroupResponseModelv2,
 } from 'api/gen'
+import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { OfferBodyComponentProps, OfferImageContainerDimensions } from 'features/offer/types'
 import { ShareContent } from 'libs/share/types'
 import { Subcategory } from 'libs/subcategories/types'
@@ -75,6 +76,7 @@ export type OfferBodyViewModel = {
   ) => void
 }
 
-export type OfferBodyViewProps = OfferBodyComponentProps & {
+export type OfferBodyViewProps = Omit<OfferBodyComponentProps, 'chronicleVariantInfo'> & {
   viewModel: OfferBodyViewModel
+  chronicleVariantInfo: ChronicleVariantInfo
 }
