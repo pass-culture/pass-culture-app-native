@@ -58,7 +58,7 @@ import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { Trophy } from 'ui/svg/icons/Trophy'
 import { ArtMaterial } from 'ui/svg/icons/venueAndCategories/ArtMaterial'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 const isWeb = Platform.OS === 'web'
@@ -209,7 +209,6 @@ const OnlineProfile: React.FC = () => {
               user={user}
             />
             <ProfileContainer>
-              <Spacer.Column numberOfSpaces={4} />
               {isLoggedIn ? (
                 <Section title="Profil">
                   <VerticalUl>
@@ -360,21 +359,21 @@ const OnlineProfile: React.FC = () => {
               </Section>
               {isWeb ? null : (
                 <Section title="Partager le pass Culture">
-                  <Spacer.Column numberOfSpaces={4} />
-                  <BannerWithBackground
-                    backgroundSource={SHARE_APP_BANNER_IMAGE_SOURCE}
-                    onPress={onShareBannerPress}
-                    accessibilityRole={AccessibilityRole.BUTTON}
-                    accessibilityLabel={getComputedAccessibilityLabel(
-                      shareBannerTitle,
-                      shareBannerDescription
-                    )}>
-                    <ShareAppContainer gap={1}>
-                      <StyledButtonText>{shareBannerTitle}</StyledButtonText>
-                      <StyledBody>{shareBannerDescription}</StyledBody>
-                    </ShareAppContainer>
-                  </BannerWithBackground>
-                  <Spacer.Column numberOfSpaces={4} />
+                  <BannerContainer>
+                    <BannerWithBackground
+                      backgroundSource={SHARE_APP_BANNER_IMAGE_SOURCE}
+                      onPress={onShareBannerPress}
+                      accessibilityRole={AccessibilityRole.BUTTON}
+                      accessibilityLabel={getComputedAccessibilityLabel(
+                        shareBannerTitle,
+                        shareBannerDescription
+                      )}>
+                      <ShareAppContainer gap={1}>
+                        <StyledButtonText>{shareBannerTitle}</StyledButtonText>
+                        <StyledBody>{shareBannerDescription}</StyledBody>
+                      </ShareAppContainer>
+                    </BannerWithBackground>
+                  </BannerContainer>
                 </Section>
               )}
               <Section title="Suivre le pass Culture">
@@ -382,14 +381,15 @@ const OnlineProfile: React.FC = () => {
               </Section>
               {isLoggedIn ? (
                 <Section>
-                  <Spacer.Column numberOfSpaces={4} />
-                  <SectionRow
-                    title="Déconnexion"
-                    onPress={signOut}
-                    type="clickable"
-                    icon={SignOut}
-                    iconSize={SECTION_ROW_ICON_SIZE}
-                  />
+                  <SectionRowContainer>
+                    <SectionRow
+                      title="Déconnexion"
+                      onPress={signOut}
+                      type="clickable"
+                      icon={SignOut}
+                      iconSize={SECTION_ROW_ICON_SIZE}
+                    />
+                  </SectionRowContainer>
                 </Section>
               ) : null}
               <Section>
@@ -430,10 +430,19 @@ export function ProfileV1() {
   return <OfflinePage />
 }
 
+const SectionRowContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
+
+const BannerContainer = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
+}))
+
 const ProfileContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
   flexDirection: 'column',
   paddingHorizontal: theme.contentPage.marginHorizontal,
+  marginTop: theme.designSystem.size.spacing.l,
 }))
 
 const ScrollViewContentContainer = styled.View({

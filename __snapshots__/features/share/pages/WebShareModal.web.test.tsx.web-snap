@@ -225,13 +225,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy"
                       >
                         <div
-                          class="css-view-175oi2r r-height-tbmifm"
-                        />
-                        <div
-                          class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
-                        />
-                        <div
-                          class="css-view-175oi2r r-height-tbmifm"
+                          class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginBottom-1ifxtd0 r-marginTop-1wzrnnt r-width-13qz1uu"
                         />
                         <div
                           class="css-view-175oi2r r-flexBasis-1mlwlqe r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-width-13qz1uu"
@@ -317,16 +311,10 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                           </div>
                         </div>
                         <div
-                          class="css-view-175oi2r r-height-tbmifm"
-                        />
-                        <div
-                          class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
-                        />
-                        <div
-                          class="css-view-175oi2r r-height-1472mwg"
+                          class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginBottom-1peese0 r-marginTop-1wzrnnt r-width-13qz1uu"
                         />
                         <ul
-                          class="css-view-175oi2r r-display-6413gk r-flexDirection-18u37iz r-gap-fulv98 r-gridTemplateColumns-1yfggyn r-overflow-1dqxon3 r-paddingLeft-gy4na3 r-width-13qz1uu"
+                          class="css-view-175oi2r r-display-6413gk r-flexDirection-18u37iz r-gap-fulv98 r-gridTemplateColumns-1yfggyn r-marginBottom-zd98yo r-overflow-1dqxon3 r-paddingLeft-gy4na3 r-width-13qz1uu"
                           role="list"
                         >
                           <li
@@ -442,9 +430,6 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                             </a>
                           </li>
                         </ul>
-                        <div
-                          class="css-view-175oi2r r-height-mabqd8"
-                        />
                         <button
                           aria-label="Annuler"
                           class="c4"

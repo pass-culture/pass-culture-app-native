@@ -8,7 +8,7 @@ import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { analytics } from 'libs/analytics/provider'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Button } from 'ui/designSystem/Button/Button'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const onBeforeNavigate = () => {
   void analytics.logProfilSignUp()
@@ -27,7 +27,6 @@ export const LoggedOutHeader = ({ featureFlags }: ProfileFeatureFlagsProps) => {
         Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18
         ans&nbsp;?
       </Typo.Body>
-      <Spacer.Column numberOfSpaces={5} />
       <Container>
         <InternalTouchableLink
           as={Button}
@@ -41,7 +40,7 @@ export const LoggedOutHeader = ({ featureFlags }: ProfileFeatureFlagsProps) => {
           fitContentWidth={isDesktopViewport}
         />
 
-        {isDesktopViewport ? <VerticalSeparator /> : <Spacer.Column numberOfSpaces={5} />}
+        {isDesktopViewport ? <VerticalSeparator /> : <Placeholder />}
 
         <AuthenticationButton
           type="login"
@@ -56,6 +55,7 @@ export const LoggedOutHeader = ({ featureFlags }: ProfileFeatureFlagsProps) => {
 const Container = styled.View(({ theme }) => ({
   flexDirection: theme.isDesktopViewport ? 'row' : 'column',
   alignItems: theme.isDesktopViewport ? undefined : 'center',
+  marginTop: theme.designSystem.size.spacing.xl,
 }))
 
 const VerticalSeparator = styled.View(({ theme }) => ({
@@ -63,3 +63,5 @@ const VerticalSeparator = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
   borderRightColor: theme.designSystem.color.border.default,
 }))
+
+const Placeholder = styled.View(({ theme }) => ({ height: theme.designSystem.size.spacing.xl }))

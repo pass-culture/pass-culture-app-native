@@ -9,7 +9,7 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { getDistinctPricesFromAllStock } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -33,11 +33,10 @@ export const BookDateChoice = ({ stocks, userRemainingCredit }: Props) => {
   const buttonTitle = bookingState.date
     ? formatToCompleteFrenchDate({ date: bookingState.date })
     : ''
-
   return (
     <StyledView>
       <Typo.Title3 {...getHeadingAttrs(3)} testID="DateStep">
-        Date
+        Date hello
       </Typo.Title3>
 
       {bookingState.step === Step.DATE ? (
@@ -48,10 +47,9 @@ export const BookDateChoice = ({ stocks, userRemainingCredit }: Props) => {
           hasSeveralPrices={hasSeveralPrices}
         />
       ) : (
-        <TouchableOpacity onPress={showCalendar}>
-          <Spacer.Column numberOfSpaces={2} />
+        <StyledTouchableOpacity onPress={showCalendar}>
           <Typo.Button>{buttonTitle}</Typo.Button>
-        </TouchableOpacity>
+        </StyledTouchableOpacity>
       )}
     </StyledView>
   )
@@ -59,4 +57,8 @@ export const BookDateChoice = ({ stocks, userRemainingCredit }: Props) => {
 
 const StyledView = styled(View)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xl,
+}))
+
+const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
 }))

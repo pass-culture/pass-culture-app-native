@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { getOnboardingPropConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingPropConfig'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { All as InitialAll } from 'ui/svg/icons/venueAndCategories/All'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { AgeButton } from './AgeButton'
 
@@ -24,6 +24,10 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
 
 const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
+}))
+
+const Container = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xs,
 }))
 
 const meta: Meta<typeof AgeButton> = {
@@ -51,12 +55,11 @@ const TextExample = ({ withSubtitle = false }) => (
       j’ai <StyledBodyAccent>17 ans</StyledBodyAccent>
     </StyledBody>
     {withSubtitle ? (
-      <React.Fragment>
-        <Spacer.Column numberOfSpaces={1} />
+      <Container>
         <StyledBodyAccentXs numberOfLines={2}>
           j’ai moins de 15 ans ou plus de 18 ans
         </StyledBodyAccentXs>
-      </React.Fragment>
+      </Container>
     ) : null}
   </React.Fragment>
 )

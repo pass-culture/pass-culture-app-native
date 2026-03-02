@@ -933,7 +933,6 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                 </View>
               </View>
               <View
-                numberOfSpaces={10}
                 style={
                   {
                     "height": 40,

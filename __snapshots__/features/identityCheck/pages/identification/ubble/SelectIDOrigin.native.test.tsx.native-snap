@@ -302,56 +302,44 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                 </View>
               </View>
               <View
-                numberOfSpaces={4}
+                gap={4}
                 style={
                   {
-                    "height": 16,
-                  }
-                }
-              />
-              <Text
-                accessibilityRole="header"
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 17,
-                    "lineHeight": 27.2,
-                    "textAlign": "center",
+                    "gap": 16,
+                    "marginBottom": 32,
+                    "marginTop": 16,
                   }
                 }
               >
-                Munis-toi de ta pièce d’identité et débloque ton crédit !
-              </Text>
-              <View
-                numberOfSpaces={4}
-                style={
-                  {
-                    "height": 16,
+                <Text
+                  accessibilityRole="header"
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 17,
+                      "lineHeight": 27.2,
+                      "textAlign": "center",
+                    }
                   }
-                }
-              />
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "textAlign": "center",
+                >
+                  Munis-toi de ta pièce d’identité et débloque ton crédit !
+                </Text>
+                 
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textAlign": "center",
+                    }
                   }
-                }
-              >
-                Pour cela, nous avons besoin de vérifier ton identité.
-              </Text>
-              <View
-                numberOfSpaces={8}
-                style={
-                  {
-                    "height": 32,
-                  }
-                }
-              />
+                >
+                  Pour cela, nous avons besoin de vérifier ton identité.
+                </Text>
+              </View>
               <View
                 accessibilityLabel="J’ai une carte d’identité ou un passeport français"
                 accessibilityRole="button"
@@ -495,68 +483,60 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                 </View>
               </View>
               <View
-                numberOfSpaces={7}
                 style={
                   {
-                    "height": 28,
-                  }
-                }
-              />
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "paddingHorizontal": 4,
+                    "marginVertical": 32,
                   }
                 }
               >
                 <View
                   style={
                     {
-                      "backgroundColor": "#cbcdd2",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "height": 1,
-                      "width": "100%",
-                    }
-                  }
-                />
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                      "marginHorizontal": 12,
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "paddingHorizontal": 4,
                     }
                   }
                 >
-                  ou
-                </Text>
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#cbcdd2",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "height": 1,
-                      "width": "100%",
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "#cbcdd2",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "height": 1,
+                        "width": "100%",
+                      }
                     }
-                  }
-                />
+                  />
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                        "marginHorizontal": 12,
+                      }
+                    }
+                  >
+                    ou
+                  </Text>
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "#cbcdd2",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "height": 1,
+                        "width": "100%",
+                      }
+                    }
+                  />
+                </View>
               </View>
-              <View
-                numberOfSpaces={7}
-                style={
-                  {
-                    "height": 28,
-                  }
-                }
-              />
               <View
                 accessibilityLabel="J’ai un titre de séjour, une carte d’identité ou un passeport étranger."
                 accessibilityRole="button"

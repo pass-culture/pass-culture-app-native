@@ -281,181 +281,174 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
           }
         }
       >
-        <Text
+        <View
+          gap={6}
           style={
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
+              "gap": 24,
             }
           }
         >
-          Si tu confirmes ta demande, tu ne pourras plus accéder à ton compte et tes données personnelles seront supprimées (anonymisées).
-        </Text>
-        <View
-          numberOfSpaces={6}
-          style={
-            {
-              "height": 24,
-            }
-          }
-        />
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Tes réservations en cours seront également annulées et supprimées.
-        </Text>
-        <View
-          numberOfSpaces={6}
-          style={
-            {
-              "height": 24,
-            }
-          }
-        />
-        <View
-          background="#f3edff"
-          style={
-            {
-              "alignItems": "flex-start",
-              "backgroundColor": "#f3edff",
-              "borderBottomLeftRadius": 8,
-              "borderBottomRightRadius": 8,
-              "borderTopLeftRadius": 8,
-              "borderTopRightRadius": 8,
-              "flexDirection": "row",
-              "gap": 12,
-              "paddingBottom": 16,
-              "paddingLeft": 16,
-              "paddingRight": 16,
-              "paddingTop": 16,
-            }
-          }
-        >
-          <View
-            fill="#320096"
-            height={24}
-            width={24}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="L’anonymisation de tes données personnelles empêche toute possibilité de te réidentifier à l’avenir."
-            accessibilityRole="none"
+          <Text
             style={
               {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "gap": 4,
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               }
             }
           >
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 14,
-                  "lineHeight": 22.4,
-                }
+            Si tu confirmes ta demande, tu ne pourras plus accéder à ton compte et tes données personnelles seront supprimées (anonymisées).
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               }
-            >
-              L’anonymisation de tes données personnelles empêche toute possibilité de te réidentifier à l’avenir.
-            </Text>
+            }
+          >
+            Tes réservations en cours seront également annulées et supprimées.
+          </Text>
+          <View
+            background="#f3edff"
+            style={
+              {
+                "alignItems": "flex-start",
+                "backgroundColor": "#f3edff",
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
+                "flexDirection": "row",
+                "gap": 12,
+                "paddingBottom": 16,
+                "paddingLeft": 16,
+                "paddingRight": 16,
+                "paddingTop": 16,
+              }
+            }
+          >
             <View
-              gap={3}
+              fill="#320096"
+              height={24}
+              width={24}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="L’anonymisation de tes données personnelles empêche toute possibilité de te réidentifier à l’avenir."
+              accessibilityRole="none"
               style={
                 {
-                  "alignItems": "flex-start",
-                  "gap": 12,
-                  "marginRight": 16,
-                  "marginTop": 8,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "gap": 4,
                 }
               }
             >
-              <View
-                accessibilityLabel="Lien externe - Consultez notre FAQ"
-                accessibilityRole="link"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+              <Text
                 style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "cursor": "pointer",
-                      "flexDirection": "row",
-                    },
-                    {
-                      "opacity": 1,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 14,
+                    "lineHeight": 22.4,
+                  }
+                }
+              >
+                L’anonymisation de tes données personnelles empêche toute possibilité de te réidentifier à l’avenir.
+              </Text>
+              <View
+                gap={3}
+                style={
+                  {
+                    "alignItems": "flex-start",
+                    "gap": 12,
+                    "marginRight": 16,
+                    "marginTop": 8,
+                  }
                 }
               >
                 <View
-                  style={
+                  accessibilityLabel="Lien externe - Consultez notre FAQ"
+                  accessibilityRole="link"
+                  accessibilityState={
                     {
-                      "marginRight": 8,
-                      "marginTop": 2,
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
                     }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      {
+                        "alignItems": "flex-start",
+                        "cursor": "pointer",
+                        "flexDirection": "row",
+                      },
+                      {
+                        "opacity": 1,
+                      },
+                    ]
                   }
                 >
                   <View
-                    accessibilityLabel="Nouvelle fenêtre"
-                    height={16}
-                    width={16}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
+                    style={
+                      {
+                        "marginRight": 8,
+                        "marginTop": 2,
+                      }
                     }
-                  }
-                >
-                  Consultez notre FAQ
-                </Text>
+                  >
+                    <View
+                      accessibilityLabel="Nouvelle fenêtre"
+                      height={16}
+                      width={16}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    Consultez notre FAQ
+                  </Text>
+                </View>
               </View>
             </View>
           </View>

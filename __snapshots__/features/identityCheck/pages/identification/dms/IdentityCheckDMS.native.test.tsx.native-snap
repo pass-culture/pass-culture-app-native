@@ -285,74 +285,61 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
               }
             >
               <View
-                numberOfSpaces={5}
-                style={
-                  {
-                    "height": 20,
-                  }
-                }
-              />
-              <View
-                fill="none"
-                height={156}
-                width={200}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={5}
-                style={
-                  {
-                    "height": 20,
-                  }
-                }
-              />
-              <View
+                gap={5}
                 style={
                   {
                     "alignItems": "center",
-                    "width": "100%",
+                    "gap": 20,
+                    "marginTop": 24,
                   }
                 }
               >
-                <Text
-                  accessibilityRole="header"
+                <View
+                  fill="none"
+                  height={156}
+                  width={200}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
                   style={
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 17,
-                      "lineHeight": 27.2,
+                      "alignItems": "center",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <Text
+                    accessibilityRole="header"
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 17,
+                        "lineHeight": 27.2,
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    Créer un dossier sur le site Démarche Numérique
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                       "textAlign": "center",
                     }
                   }
                 >
-                  Créer un dossier sur le site Démarche Numérique
+                  La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site Démarche Numérique afin d’obtenir ton pass Culture.
                 </Text>
               </View>
-              <View
-                numberOfSpaces={5}
-                style={
-                  {
-                    "height": 20,
-                  }
-                }
-              />
-              <Text
-                style={
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "textAlign": "center",
-                  }
-                }
-              >
-                La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site Démarche Numérique afin d’obtenir ton pass Culture.
-              </Text>
               <View
                 style={
                   {

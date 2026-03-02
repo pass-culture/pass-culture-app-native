@@ -211,10 +211,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18 ans ?
               </div>
               <div
-                class="css-view-175oi2r r-height-z80fyv"
-              />
-              <div
-                class="css-view-175oi2r r-flexDirection-18u37iz"
+                class="css-view-175oi2r r-flexDirection-18u37iz r-marginTop-11c0sde"
               >
                 <button
                   aria-label="Créer un compte"
@@ -272,11 +269,8 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-paddingInline-cxgwc0"
+              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-marginTop-1wzrnnt r-paddingInline-cxgwc0"
             >
-              <div
-                class="css-view-175oi2r r-height-10ptun7"
-              />
               <div
                 class="css-view-175oi2r r-paddingTop-tskmnb"
               >
@@ -1427,10 +1421,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18 ans ?
               </div>
               <div
-                class="css-view-175oi2r r-height-z80fyv"
-              />
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-marginTop-11c0sde"
               >
                 <button
                   aria-label="Créer un compte"
@@ -1452,7 +1443,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                   </div>
                 </button>
                 <div
-                  class="css-view-175oi2r r-height-z80fyv"
+                  class="css-view-175oi2r r-height-1472mwg"
                 />
                 <div
                   class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-gap-9aw3ui r-justifyContent-1777fci"
@@ -1488,11 +1479,8 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-paddingInline-cxgwc0"
+              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-marginTop-1wzrnnt r-paddingInline-cxgwc0"
             >
-              <div
-                class="css-view-175oi2r r-height-10ptun7"
-              />
               <div
                 class="css-view-175oi2r r-paddingTop-tskmnb"
               >

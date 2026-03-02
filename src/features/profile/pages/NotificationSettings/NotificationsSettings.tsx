@@ -30,7 +30,7 @@ import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const NotificationsSettings = () => {
@@ -141,17 +141,16 @@ export const NotificationsSettings = () => {
       scrollChildren={
         <Container>
           {isLoggedIn ? null : (
-            <React.Fragment>
+            <BannerContainer>
               <Banner label="Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture." />
-              <Spacer.Column numberOfSpaces={6} />
-            </React.Fragment>
+            </BannerContainer>
           )}
           <Typo.Title4 {...getHeadingAttrs(2)}>Type d’alerte</Typo.Title4>
-          <Spacer.Column numberOfSpaces={4} />
-          <Typo.Body>
-            Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
-          </Typo.Body>
-          <Spacer.Column numberOfSpaces={2} />
+          <TextContainer>
+            <Typo.Body>
+              Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
+            </Typo.Body>
+          </TextContainer>
           <Form.Flex>
             <SectionWithSwitchContainer>
               <SectionWithSwitch
@@ -177,28 +176,26 @@ export const NotificationsSettings = () => {
                 />
               </SectionWithSwitchContainer>
             )}
-            <Spacer.Column numberOfSpaces={4} />
-            <Separator.Horizontal />
-            <Spacer.Column numberOfSpaces={8} />
+            <StyledSeparator />
             <Typo.Title4 {...getHeadingAttrs(2)}>Tes thèmes suivis</Typo.Title4>
             {!isLoggedIn || areNotificationsEnabled ? null : (
-              <React.Fragment>
-                <Spacer.Column numberOfSpaces={4} />
+              <BannerThemeContainer>
                 <Banner label="Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications." />
-              </React.Fragment>
+              </BannerThemeContainer>
             )}
-            <Spacer.Column numberOfSpaces={6} />
-            <SectionWithSwitchContainer>
-              <SectionWithSwitch
-                title="Suivre tous les thèmes"
-                active={
-                  areNotificationsEnabled && state.themePreferences.length === TOTAL_NUMBER_OF_THEME
-                }
-                toggle={() => dispatch({ type: 'allTheme' })}
-                disabled={areThemeTogglesDisabled}
-              />
-            </SectionWithSwitchContainer>
-            <Spacer.Column numberOfSpaces={2} />
+            <StyledView>
+              <SectionWithSwitchContainer>
+                <SectionWithSwitch
+                  title="Suivre tous les thèmes"
+                  active={
+                    areNotificationsEnabled &&
+                    state.themePreferences.length === TOTAL_NUMBER_OF_THEME
+                  }
+                  toggle={() => dispatch({ type: 'allTheme' })}
+                  disabled={areThemeTogglesDisabled}
+                />
+              </SectionWithSwitchContainer>
+            </StyledView>
             {SUSBCRIPTION_THEMES.map((theme) => (
               <SectionWithSwitchContainer key={theme}>
                 <SectionWithSwitch
@@ -209,13 +206,14 @@ export const NotificationsSettings = () => {
                 />
               </SectionWithSwitchContainer>
             ))}
-            <Spacer.Column numberOfSpaces={2} />
-            <Button
-              wording="Enregistrer"
-              accessibilityLabel="Enregistrer les modifications"
-              onPress={submitProfile}
-              disabled={isSaveButtonDisabled}
-            />
+            <ButtonContainer>
+              <Button
+                wording="Enregistrer"
+                accessibilityLabel="Enregistrer les modifications"
+                onPress={submitProfile}
+                disabled={isSaveButtonDisabled}
+              />
+            </ButtonContainer>
           </Form.Flex>
           <PushNotificationsModal
             visible={isPushModalVisible}
@@ -233,8 +231,31 @@ export const NotificationsSettings = () => {
   )
 }
 
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
+const BannerContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
+const TextContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.s,
+}))
+const BannerThemeContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
 const SectionWithSwitchContainer = styled.View(({ theme }) => ({
   paddingVertical: theme.designSystem.size.spacing.l,
+}))
+
+const ButtonContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
+}))
+
+const StyledView = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.s,
 }))
 
 const Container = styled.View(({ theme }) => ({

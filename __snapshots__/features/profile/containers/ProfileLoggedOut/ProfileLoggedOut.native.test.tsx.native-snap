@@ -81,18 +81,11 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
       Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18 ans ?
     </Text>
     <View
-      numberOfSpaces={5}
-      style={
-        {
-          "height": 20,
-        }
-      }
-    />
-    <View
       style={
         {
           "alignItems": "center",
           "flexDirection": "column",
+          "marginTop": 24,
         }
       }
     >
@@ -192,10 +185,9 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
         </View>
       </View>
       <View
-        numberOfSpaces={5}
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
       />

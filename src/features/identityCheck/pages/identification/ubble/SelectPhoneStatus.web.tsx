@@ -8,7 +8,7 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { NoPhone } from 'ui/svg/icons/NoPhone'
 import { PhonePending as InitialPhonePending } from 'ui/svg/icons/PhonePending'
 import { Smartphone } from 'ui/svg/icons/Smartphone'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SelectPhoneStatus: FunctionComponent = () => {
@@ -36,23 +36,27 @@ const SelectPhoneStatusContent: FunctionComponent = () => {
   return (
     <Container>
       <PhonePending />
-      <Spacer.Column numberOfSpaces={4} />
-      <StyledTitle4>Vérifie ton identité avec un smartphone</StyledTitle4>
-      <Spacer.Column numberOfSpaces={4} />
-      <StyledBody>
-        Gagne du temps en vérifiant ton identité sur un smartphone&nbsp;! Tu peux aussi passer par
-        le site demarche.numerique.gouv.fr mais le traitement sera plus long.
-      </StyledBody>
-      <Spacer.Column numberOfSpaces={8} />
-      <AccessibleUnorderedList
-        items={buttonList}
-        Separator={<Spacer.Column numberOfSpaces={6} />}
-        withPadding
-      />
+      <StyledView>
+        <StyledTitle4>Vérifie ton identité avec un smartphone</StyledTitle4>
+        <StyledBody>
+          Gagne du temps en vérifiant ton identité sur un smartphone&nbsp;! Tu peux aussi passer par
+          le site demarche.numerique.gouv.fr mais le traitement sera plus long.
+        </StyledBody>
+      </StyledView>
+      <AccessibleUnorderedList items={buttonList} Separator={<Separator />} withPadding />
     </Container>
   )
 }
 
+const Separator = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xl,
+}))
+
+const StyledView = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.xxl,
+  gap: theme.designSystem.size.spacing.l,
+}))
 const Container = styled.View(({ theme }) => ({
   height: '100%',
   alignItems: 'center',

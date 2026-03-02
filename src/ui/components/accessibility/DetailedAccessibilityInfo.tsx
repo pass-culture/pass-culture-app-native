@@ -10,7 +10,7 @@ import { Accordion } from 'ui/components/Accordion'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   url: string
@@ -39,8 +39,9 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities, acc
                   <View
                     key={descriptionTitle}
                     accessibilityLabel={`${descriptionTitle}: ${descriptionInfo}`}>
-                    <Typo.BodyXs accessibilityHidden>{descriptionTitle}</Typo.BodyXs>
-                    <Spacer.Column numberOfSpaces={2} />
+                    <TextContainer>
+                      <Typo.BodyXs accessibilityHidden>{descriptionTitle}</Typo.BodyXs>
+                    </TextContainer>
                     {Array.isArray(descriptionInfo) ? (
                       descriptionInfo.map((info) => (
                         <Typo.Body key={info} accessibilityHidden>
@@ -61,7 +62,6 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities, acc
         ))}
       </FlexContainer>
       <FlexContainerWithMargin>
-        <Spacer.Column numberOfSpaces={2} />
         <Banner
           label="Tu peux retrouver des informations supplémentaires sur l’accessibilité de ce lieu sur le site d’acceslibre."
           links={[
@@ -73,7 +73,6 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities, acc
           ]}
         />
       </FlexContainerWithMargin>
-      <Spacer.Column numberOfSpaces={2} />
     </Container>
   )
 }
@@ -85,6 +84,9 @@ const Container = styled.View(({ theme }) => ({
     flexDirection: 'row',
   }),
 }))
+const TextContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.s,
+}))
 
 const FlexContainer = styled.View(({ theme }) => ({
   ...(theme.isDesktopViewport && {
@@ -95,6 +97,8 @@ const FlexContainerWithMargin = styled(FlexContainer)(({ theme }) => ({
   ...(theme.isDesktopViewport && {
     marginLeft: theme.designSystem.size.spacing.xxxxl,
   }),
+  paddingTop: theme.designSystem.size.spacing.s,
+  marginBottom: theme.designSystem.size.spacing.s,
 }))
 
 const StyledAccordionItem = styled(Accordion).attrs(({ theme }) => ({
