@@ -2,9 +2,9 @@ import React, { ComponentProps } from 'react'
 import { ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { Li } from 'ui/components/Li'
-import { More } from 'ui/svg/icons/More'
+import { Button } from 'ui/designSystem/Button/Button'
+import { PlainMore } from 'ui/svg/icons/PlainMore'
 
 export interface SearchListFooterProps {
   isFetchingNextPage: boolean
@@ -32,14 +32,14 @@ export const SearchListFooter = ({
     </Li>
   ) : (
     <Li style={style}>
-      {showMoreButton ? <Separator /> : null}
       <Footer>
         {showMoreButton ? (
-          <ButtonSecondary
-            mediumWidth
-            icon={More}
+          <Button
+            variant="secondary"
+            icon={PlainMore}
             wording="Afficher plus de résultats"
             onPress={onPress}
+            fullWidth
           />
         ) : null}
       </Footer>
@@ -52,13 +52,7 @@ SearchListFooter.displayName = 'SearchListFooter'
 const Footer = styled.View(({ theme }) => ({
   height: theme.tabBar.height + theme.designSystem.size.spacing.xxxl,
   alignItems: 'center',
-}))
-
-const Separator = styled.View(({ theme }) => ({
-  height: 2,
-  backgroundColor: theme.designSystem.color.background.subtle,
-  marginHorizontal: theme.designSystem.size.spacing.xl,
-  marginVertical: theme.designSystem.size.spacing.l,
+  justifyContent: 'center',
 }))
 
 const StyledActivityIndicator = styled(ActivityIndicator)(({ theme }) => ({

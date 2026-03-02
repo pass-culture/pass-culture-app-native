@@ -24,7 +24,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ShareContent } from 'libs/share/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
-import { Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT_V2 } from 'ui/theme/constants'
 
 const keyExtractor: (item: BookingListItemResponse) => string = (item) => item.id.toString()
@@ -137,7 +136,7 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         ItemSeparatorComponent={enableNewBookings ? null : StyledSeparator}
-        ListHeaderComponent={hasEndedBookings ? <Spacer.Column numberOfSpaces={6} /> : null}
+        ListHeaderComponent={hasEndedBookings ? <Placeholder /> : null}
         ListEmptyComponent={<NoBookingsView />}
       />
 
@@ -176,4 +175,8 @@ const contentContainerStyle = (designSystem) => ({
 
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.l,
+}))
+
+const Placeholder = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xl,
 }))

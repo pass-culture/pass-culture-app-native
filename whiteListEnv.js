@@ -76,6 +76,7 @@ export const whiteListEnv = (env, commitHash) => {
     'IOS_TEAM_ID',
     'PASSCULTURE_DOWNLOAD_APP_URL',
     'PRIVACY_POLICY_LINK',
+    'CODE_OF_CONDUCT_LINK',
     'RESIZE_IMAGE_ON_DEMAND_URL',
     'SENTRY_DSN',
     'SENTRY_PROFILES_SAMPLE_RATE',

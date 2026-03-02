@@ -14,7 +14,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { HiddenSuggestionsButton } from 'features/search/components/Buttons/HiddenSuggestionsButton'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
@@ -22,10 +21,11 @@ import { CreateHistoryItem, SearchState, SearchView } from 'features/search/type
 import { analytics } from 'libs/analytics/provider'
 import Animated, { LinearTransition } from 'libs/react-native-reanimated'
 import { useAppEnableAutocomplete } from 'queries/settings/useSettings'
-import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
+import { Button } from 'ui/designSystem/Button/Button'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const SEARCH_DEBOUNCE_MS = 500
@@ -260,11 +260,17 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         <SearchInputA11yContainer>
           {isFocusOnSuggestions ? (
             <StyledView>
-              <BackButton onGoBack={unfocus} />
+              <Button
+                iconButton
+                variant="tertiary"
+                color="neutral"
+                icon={ArrowPrevious}
+                onPress={unfocus}
+                accessibilityLabel="Revenir en arrière"
+              />
             </StyledView>
           ) : null}
           <FlexView layout={LinearTransition.duration(250)}>
-            <HiddenSuggestionsButton />
             <SearchInput
               label="Rechercher dans le catalogue"
               ref={inputRef}

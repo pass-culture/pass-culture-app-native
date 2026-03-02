@@ -1,10 +1,13 @@
-import React, { FunctionComponent, ReactNode } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React, { ReactNode, forwardRef } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useGetHeaderHeightDS } from 'shared/header/useGetHeaderHeight'
-import { BackButton } from 'ui/components/headers/BackButton'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -18,44 +21,69 @@ interface Props {
   RightButton?: ReactNode
   children?: ReactNode
   style?: StyleProp<ViewStyle>
+  onLayout?: (event) => void
 }
 
 // Component naming: this component needs to be used with a PlaceHolder component
 // that has the height of the header as it is an absolute view
-export const PageHeaderWithoutPlaceholder: FunctionComponent<Props> = ({
-  title,
-  titleID,
-  onGoBack,
-  testID,
-  shouldDisplayBackButton = true,
-  RightButton = null,
-  children,
-  style,
-}) => {
-  const { designSystem } = useTheme()
-  const headerHeight = useGetHeaderHeightDS()
-  return (
-    <Header testID={testID} accessibilityRole={AccessibilityRole.HEADER} style={style}>
-      <Spacer.TopScreen />
-      <Container headerHeight={headerHeight}>
-        <ButtonContainer positionInHeader="left" testID="back-button-container">
-          {shouldDisplayBackButton ? (
-            <BackButton onGoBack={onGoBack} color={designSystem.color.icon.default} />
+export const PageHeaderWithoutPlaceholder = forwardRef<View, Props>(
+  (
+    {
+      title,
+      titleID,
+      onGoBack,
+      testID,
+      shouldDisplayBackButton = true,
+      RightButton = null,
+      children,
+      style,
+      onLayout,
+    },
+    ref
+  ) => {
+    const { goBack } = useNavigation<UseNavigationType>()
+    const headerHeight = useGetHeaderHeightDS()
+
+    return (
+      <Header
+        ref={ref}
+        onLayout={onLayout}
+        testID={testID}
+        accessibilityRole={AccessibilityRole.HEADER}
+        style={style}>
+        <Spacer.TopScreen />
+        <Container headerHeight={headerHeight}>
+          <ButtonContainer positionInHeader="left" testID="back-button-container">
+            {shouldDisplayBackButton ? (
+              <Button
+                iconButton
+                variant="tertiary"
+                color="neutral"
+                icon={ArrowPrevious}
+                onPress={onGoBack ?? goBack}
+                accessibilityLabel="Revenir en arrière"
+              />
+            ) : null}
+          </ButtonContainer>
+
+          {title ? (
+            <TitleContainer>
+              <Title nativeID={titleID}>{title}</Title>
+            </TitleContainer>
           ) : null}
-        </ButtonContainer>
-        {title ? (
-          <TitleContainer>
-            <Title nativeID={titleID}>{title}</Title>
-          </TitleContainer>
-        ) : null}
-        <ButtonContainer positionInHeader="right" testID="close-button-container">
-          {RightButton}
-        </ButtonContainer>
-      </Container>
-      {children}
-    </Header>
-  )
-}
+
+          <ButtonContainer positionInHeader="right" testID="close-button-container">
+            {RightButton}
+          </ButtonContainer>
+        </Container>
+
+        {children}
+      </Header>
+    )
+  }
+)
+
+PageHeaderWithoutPlaceholder.displayName = 'PageHeaderWithoutPlaceholder'
 
 const Header = styled(View)(({ theme }) => ({
   zIndex: theme.zIndex.header,

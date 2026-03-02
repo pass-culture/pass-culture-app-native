@@ -20,7 +20,6 @@ type Props = PropsWithChildren<
 >
 
 const MAX_LINES = 3
-const CHRONICLE_CARD_HEIGHT = 220
 
 export const ChronicleCard: FunctionComponent<Props> = ({
   id,
@@ -56,6 +55,8 @@ export const ChronicleCard: FunctionComponent<Props> = ({
     }
   }
 
+  const descriptionWithoutEndSpace = description?.trimEnd()
+
   return (
     <Container gap={3} testID={`chronicle-card-${id.toString()}`} width={cardWidth}>
       <InfoHeader
@@ -65,12 +66,12 @@ export const ChronicleCard: FunctionComponent<Props> = ({
         thumbnailComponent={icon}
       />
       <DescriptionContainer defaultHeight={defaultHeight} shouldTruncate={shouldTruncate}>
-        <Description
+        <Typo.BodyS
           testID="description"
           onLayout={shouldTruncate ? handleOnLayout : undefined}
           numberOfLines={currentNumberOfLines}>
-          {`“${description}”`}
-        </Description>
+          {`«\u00a0${descriptionWithoutEndSpace}\u00a0»`}
+        </Typo.BodyS>
       </DescriptionContainer>
       <PublicationDate>{date}</PublicationDate>
       <BottomCardContainer>
@@ -81,26 +82,19 @@ export const ChronicleCard: FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled(ViewGap)<{ width?: number; shouldTruncate?: boolean }>(
-  ({ theme, width, shouldTruncate }) => ({
-    padding: theme.designSystem.size.spacing.xl,
-    borderRadius: theme.designSystem.size.borderRadius.m,
-    border: 1,
-    borderColor: theme.designSystem.color.border.subtle,
-    ...(width === undefined ? undefined : { width }),
-    height: shouldTruncate ? CHRONICLE_CARD_HEIGHT : undefined,
-    backgroundColor: theme.designSystem.color.background.default,
-  })
-)
+const Container = styled(ViewGap)<{ width?: number }>(({ theme, width }) => ({
+  padding: theme.designSystem.size.spacing.xl,
+  borderRadius: theme.designSystem.size.borderRadius.m,
+  border: 1,
+  borderColor: theme.designSystem.color.border.subtle,
+  ...(width === undefined ? undefined : { width }),
+  backgroundColor: theme.designSystem.color.background.default,
+}))
 
 const DescriptionContainer = styled.View<{ defaultHeight: number; shouldTruncate?: boolean }>(
   ({ defaultHeight, shouldTruncate }) =>
-    shouldTruncate ? { maxHeight: MAX_LINES * defaultHeight, overflow: 'hidden' } : {}
+    shouldTruncate ? { maxHeight: MAX_LINES * defaultHeight, overflow: 'hidden', flexGrow: 1 } : {}
 )
-
-const Description = styled(Typo.BodyS)({
-  flexGrow: 1,
-})
 
 const BottomCardContainer = styled.View({
   flexDirection: 'row',

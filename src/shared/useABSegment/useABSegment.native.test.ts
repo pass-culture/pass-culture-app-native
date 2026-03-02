@@ -25,15 +25,15 @@ const getSegmentFromIdentifierSpy = jest.spyOn(SegmentFromIdentifier, 'getSegmen
 describe('useABSegment', () => {
   it('should get AB segment from device id when user not logged in', () => {
     mockUseAuthContext.mockReturnValueOnce({ user: undefined })
-    renderHook(() => useABSegment())
+    renderHook(() => useABSegment(['A', 'B']))
 
-    expect(getSegmentFromIdentifierSpy).toHaveBeenNthCalledWith(1, 'device-id')
+    expect(getSegmentFromIdentifierSpy).toHaveBeenNthCalledWith(1, ['A', 'B'], 'device-id')
   })
 
   it('should get AB segment from user id when user logged in', () => {
     mockUseAuthContext.mockReturnValueOnce({ user: beneficiaryUser })
-    renderHook(() => useABSegment())
+    renderHook(() => useABSegment(['A', 'B']))
 
-    expect(getSegmentFromIdentifierSpy).toHaveBeenNthCalledWith(1, beneficiaryUser.id)
+    expect(getSegmentFromIdentifierSpy).toHaveBeenNthCalledWith(1, ['A', 'B'], beneficiaryUser.id)
   })
 })

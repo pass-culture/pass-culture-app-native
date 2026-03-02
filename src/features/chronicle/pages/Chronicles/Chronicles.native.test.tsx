@@ -202,7 +202,7 @@ describe('Chronicles', () => {
       it('should navigate to recommandation thematic home when pressing button', async () => {
         render(reactQueryProviderHOC(<Chronicles />))
 
-        await user.press(await screen.findByText('Voir tous les avis du club'))
+        await user.press(await screen.findByText('Voir tous les avis des clubs'))
 
         await waitFor(async () => {
           expect(mockNavigate).toHaveBeenNthCalledWith(1, 'ThematicHome', {
@@ -215,7 +215,7 @@ describe('Chronicles', () => {
       it('should trigger ClickAllClubRecos log when pressing button', async () => {
         render(reactQueryProviderHOC(<Chronicles />))
 
-        await user.press(await screen.findByText('Voir tous les avis du club'))
+        await user.press(await screen.findByText('Voir tous les avis des clubs'))
 
         await waitFor(() => {
           expect(analytics.logClickAllClubRecos).toHaveBeenNthCalledWith(1, {

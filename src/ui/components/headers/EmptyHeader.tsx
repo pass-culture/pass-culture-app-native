@@ -3,7 +3,8 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { BackButton } from 'ui/components/headers/BackButton'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Spacer } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -23,7 +24,14 @@ export const EmptyHeader = ({ onGoBack }: Props) => {
       <HeaderContainer>
         <Spacer.TopScreen />
         <GoBackContainer headerHeight={HEADER_HEIGHT}>
-          <BackButton onGoBack={onGoBack ?? goBack} color={designSystem.color.icon.default} />
+          <Button
+            iconButton
+            variant="tertiary"
+            color="neutral"
+            icon={ArrowPrevious}
+            onPress={onGoBack ?? goBack}
+            accessibilityLabel="Revenir en arrière"
+          />
         </GoBackContainer>
       </HeaderContainer>
     </React.Fragment>

@@ -19,29 +19,36 @@ export const loggedInNonBeneficiaryContentConfig = ({
   SocialNetwork,
 }: LoggedInContentParams): LoggedInContentConfig[] => [
   {
-    section: 'Paramètres du compte',
+    section: 'Profil',
+    items: [{ title: 'Informations personnelles', screen: 'PersonalData', icon: Profile }],
+  },
+  {
+    section: 'Paramètres',
     items: [
-      { title: 'Informations personnelles', screen: 'PersonalData', icon: Profile },
-      { title: 'Notifications', screen: 'NotificationsSettings', icon: Bell },
       { component: LocationButton, key: 'LocationButton' },
+      { component: AppearanceButton, key: 'AppearanceButton' },
+      {
+        title: 'Notifications et thèmes et suivis',
+        screen: 'NotificationsSettings',
+        icon: Bell,
+      },
     ],
   },
   {
-    section: 'Aides',
+    section: 'Aide',
     items: [
       { component: ChatbotButton, key: 'ChatbotButton' },
       { component: HelpButton, key: 'HelpButton' },
-      { title: 'Centre d’aide', externalNav: { url: env.ACCESSIBILITY_PLAN } },
+      { title: 'Chercher une info', externalNav: { url: env.ACCESSIBILITY_PLAN } },
     ],
   },
   {
     section: 'Autres',
     items: [
-      { component: AppearanceButton, key: 'AppearanceButton' },
-      { title: 'Accessibilité', screen: 'Accessibility', icon: HandicapMental },
-      { component: FeedbackInAppButton, key: 'FeedbackInAppButton' },
-      { title: 'Informations légales', screen: 'LegalNotices', icon: LegalNotices },
       { title: 'Confidentialité', screen: 'ConsentSettings', icon: Confidentiality },
+      { title: 'Accessibilité', screen: 'Accessibility', icon: HandicapMental },
+      { title: 'Informations légales', screen: 'LegalNotices', icon: LegalNotices },
+      { component: FeedbackInAppButton, key: 'FeedbackInAppButton' },
     ],
   },
   {

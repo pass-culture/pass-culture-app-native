@@ -60,57 +60,43 @@ exports[`<OfflinePage /> should match snapshot with default message 1`] = `
       </Text>
     </View>
     <View
-      numberOfSpaces={5}
+      gap={4}
       style={
         {
-          "height": 20,
-        }
-      }
-    />
-    <Text
-      accessibilityRole="header"
-      style={
-        {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 21,
-          "lineHeight": 33.6,
-          "textAlign": "center",
+          "gap": 16,
+          "marginVertical": 16,
         }
       }
     >
-      Pas de réseau internet
-    </Text>
-    <View
-      numberOfSpaces={4}
-      style={
-        {
-          "height": 16,
+      <Text
+        accessibilityRole="header"
+        style={
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 21,
+            "lineHeight": 33.6,
+            "textAlign": "center",
+          }
         }
-      }
-    />
-    <Text
-      accessibilityRole="header"
-      style={
-        {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 16,
-          "lineHeight": 25.6,
-          "textAlign": "center",
+      >
+        Pas de réseau internet
+      </Text>
+      <Text
+        accessibilityRole="header"
+        style={
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+            "textAlign": "center",
+          }
         }
-      }
-    >
-      Tu n’es pas connecté à internet.
-    </Text>
-    <View
-      numberOfSpaces={5}
-      style={
-        {
-          "height": 20,
-        }
-      }
-    />
+      >
+        Tu n’es pas connecté à internet.
+      </Text>
+    </View>
     <View
       style={
         {

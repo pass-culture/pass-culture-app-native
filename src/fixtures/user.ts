@@ -10,6 +10,9 @@ import {
   YoungStatusType,
 } from 'api/gen'
 import { EIGHTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
+import { UserCreditType } from 'features/auth/helpers/getCreditType'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 
 export const nonBeneficiaryUser: UserProfileResponseWithoutSurvey = {
@@ -37,6 +40,9 @@ export const nonBeneficiaryUser: UserProfileResponseWithoutSurvey = {
   currency: CurrencyEnum.EUR,
   achievements: [],
   hasProfileExpired: false,
+  statusType: UserStatusType.GENERAL_PUBLIC,
+  creditType: UserCreditType.NO_CREDIT,
+  eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
 }
 
 export const beneficiaryUser: UserProfileResponseWithoutSurvey = {
@@ -50,8 +56,8 @@ export const beneficiaryUser: UserProfileResponseWithoutSurvey = {
   roles: [UserRole.BENEFICIARY],
   isEligibleForBeneficiaryUpgrade: false,
   status: { statusType: YoungStatusType.beneficiary },
-  depositType: DepositType.GRANT_18,
-  eligibility: EligibilityType['age-18'],
+  depositType: DepositType.GRANT_17_18,
+  eligibility: EligibilityType['age-17-18'],
   depositActivationDate: '2021-11-19T11:00:00Z',
   eligibilityEndDatetime: '2023-11-19T11:00:00Z',
   birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
@@ -61,6 +67,9 @@ export const beneficiaryUser: UserProfileResponseWithoutSurvey = {
   postalCode: '75001',
   street: '10 rue du Bonheur',
   activityId: ActivityIdEnum.STUDENT,
+  statusType: UserStatusType.BENEFICIARY,
+  creditType: UserCreditType.CREDIT_V3_18,
+  eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
 }
 
 export const underageBeneficiaryUser: UserProfileResponseWithoutSurvey = {
@@ -69,9 +78,15 @@ export const underageBeneficiaryUser: UserProfileResponseWithoutSurvey = {
   roles: [UserRole.UNDERAGE_BENEFICIARY],
   isEligibleForBeneficiaryUpgrade: false,
   status: { statusType: YoungStatusType.eligible },
+  statusType: UserStatusType.GENERAL_PUBLIC,
+  creditType: UserCreditType.NO_CREDIT,
+  eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
 }
 
 export const exBeneficiaryUser: UserProfileResponseWithoutSurvey = {
   ...beneficiaryUser,
   depositExpirationDate: '2020-01-01T03:04:05',
+  statusType: UserStatusType.EX_BENEFICIARY,
+  creditType: UserCreditType.NO_CREDIT,
+  eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
 }

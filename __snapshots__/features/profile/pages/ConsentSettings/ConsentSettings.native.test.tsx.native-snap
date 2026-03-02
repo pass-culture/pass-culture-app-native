@@ -16,6 +16,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
 >
   <View
     accessibilityRole="header"
+    onLayout={[Function]}
     style={
       {
         "backgroundColor": "#ffffff",
@@ -71,7 +72,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -101,10 +102,19 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "flexGrow": 1,
-                  "height": 40,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 40,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                  "width": "auto",
                 },
               ],
               {
@@ -115,23 +125,53 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-          <Text
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
-                "display": "none",
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
               }
             }
           >
-            Retour
-          </Text>
+            <View
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="0"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -224,21 +264,18 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               "flexGrow": 1,
               "paddingBottom": 0,
               "paddingHorizontal": 24,
+              "paddingTop": 65,
             }
           }
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
+          onScroll={[Function]}
+          paddingHeaderHeight={65}
+          scrollEventThrottle={16}
           style={{}}
         >
           <View>
-            <View
-              style={
-                {
-                  "height": 65,
-                }
-              }
-            />
             <Text
               style={
                 {
@@ -722,14 +759,14 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   Ces cookies nous permettent, en fonction de ta navigation, de te proposer des contenus supposés pertinents et susceptibles de t’intéresser.
                 </Text>
                 <View
-                  numberOfSpaces={4}
+                  marginTop={true}
                   style={
                     {
-                      "height": 16,
+                      "marginBottom": 0,
+                      "marginTop": 8,
                     }
                   }
-                />
-                <View>
+                >
                   <View
                     style={
                       {
@@ -1070,14 +1107,14 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir des tendances et ainsi améliorer les résultats qui te sont proposés.
                 </Text>
                 <View
-                  numberOfSpaces={4}
+                  marginTop={true}
                   style={
                     {
-                      "height": 16,
+                      "marginBottom": 0,
+                      "marginTop": 8,
                     }
                   }
-                />
-                <View>
+                >
                   <View
                     style={
                       {
@@ -1418,14 +1455,14 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   Tu ne verras pas de publicité de tiers sur notre site ou sur notre application.
                 </Text>
                 <View
-                  numberOfSpaces={4}
+                  marginTop={true}
                   style={
                     {
-                      "height": 16,
+                      "marginBottom": 0,
+                      "marginTop": 8,
                     }
                   }
-                />
-                <View>
+                >
                   <View
                     style={
                       {
@@ -2084,7 +2121,15 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
                 </Text>
               </View>
             </View>
-            <View>
+            <View
+              marginBottom={true}
+              style={
+                {
+                  "marginBottom": 8,
+                  "marginTop": 0,
+                }
+              }
+            >
               <View
                 style={
                   {
@@ -2122,14 +2167,6 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
                 Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture.
               </Text>
             </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                {
-                  "height": 16,
-                }
-              }
-            />
             <View
               style={
                 {
@@ -2308,6 +2345,15 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
                 </Text>
               </View>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
       </View>

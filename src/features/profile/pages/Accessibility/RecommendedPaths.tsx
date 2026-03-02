@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -8,7 +9,7 @@ import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideT
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 
 export function RecommendedPaths() {
@@ -28,8 +29,7 @@ export function RecommendedPaths() {
             En particulier, l’obtention du crédit pass Culture peut se faire selon trois méthodes en
             fonction de sa situation&nbsp;:
           </Typo.Body>
-          <Spacer.Column numberOfSpaces={5} />
-          <VerticalUl>
+          <StyledVerticalUl>
             <BulletListItem
               groupLabel={groupLabel}
               index={0}
@@ -56,8 +56,8 @@ export function RecommendedPaths() {
                 accessibilityRole={AccessibilityRole.LINK}
               />
             </BulletListItem>
-          </VerticalUl>
-          <Spacer.Column numberOfSpaces={5} />
+          </StyledVerticalUl>
+
           <Typo.Body>
             Pour les utilisateurs en situation de handicap, il est recommandé d’utiliser ses
             identifiants EduConnect ou de passer par la plateforme Démarche Numérique.
@@ -71,3 +71,6 @@ export function RecommendedPaths() {
     />
   )
 }
+const StyledVerticalUl = styled(VerticalUl)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))

@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react'
+import styled from 'styled-components/native'
 
 import { LocationChoice } from 'features/search/components/LocationChoice'
 import { LocationFilter } from 'features/search/types'
@@ -6,7 +7,6 @@ import { LocationLabel, LocationMode } from 'libs/location/types'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { Everywhere } from 'ui/svg/icons/Everywhere'
-import { Spacer } from 'ui/theme'
 
 interface Props {
   onChange: (locationFilter: LocationFilter) => void
@@ -22,15 +22,17 @@ export const LocationFilterChoice = ({ onChange }: Props) => {
 
   return (
     <VerticalUl>
-      <Li>
-        <Spacer.Column numberOfSpaces={4} />
+      <StyledLi>
         <LocationChoice
           label={LocationLabel.everywhereLabel}
           Icon={Everywhere}
           onPress={onPressEverywhere}
           isSelected={LocationMode.EVERYWHERE === selected}
         />
-      </Li>
+      </StyledLi>
     </VerticalUl>
   )
 }
+const StyledLi = styled(Li)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))

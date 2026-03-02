@@ -2,7 +2,7 @@ import React from 'react'
 
 import { analytics } from 'libs/analytics/provider'
 import { render, screen, userEvent } from 'tests/utils'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Typo } from 'ui/theme'
 
 import { TouchableLink } from './TouchableLink'
@@ -60,11 +60,7 @@ describe('<TouchableLink />', () => {
     it('should render with correct style if component tag is given', () => {
       const buttonText = 'button'
       render(
-        <TouchableLink
-          as={ButtonPrimary}
-          wording={buttonText}
-          handleNavigation={handleNavigationMock}
-        />
+        <TouchableLink as={Button} wording={buttonText} handleNavigation={handleNavigationMock} />
       )
       const expectedStyle = screen.getByText(buttonText).props.style
       const link = screen.getByText(buttonText)

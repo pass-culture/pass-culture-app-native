@@ -5,8 +5,8 @@ import styled from 'styled-components/native'
 import { ErrorTrigger } from 'features/identityCheck/components/ErrorTrigger'
 import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { useEduConnectLoginMutation } from 'features/identityCheck/queries/useEduConnectLoginMutation'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
@@ -52,7 +52,7 @@ export const EduConnectForm = () => {
           </React.Fragment>
         }
         fixedBottomChildren={
-          <ButtonPrimary
+          <Button
             wording="Ouvrir un onglet ÉduConnect"
             onPress={openEduConnectTab}
             icon={ExternalSite}

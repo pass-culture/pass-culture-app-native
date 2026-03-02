@@ -2,12 +2,13 @@ import * as reactNavigationNative from '@react-navigation/native'
 import React from 'react'
 
 import {
-  mockArtists,
   mockArtistWithoutId,
-  mockMixedArtists,
+  mockArtists,
   mockArtistsWithoutIds,
+  mockMixedArtists,
 } from 'features/artist/fixtures/mockArtist'
 import { OfferArtistsModal } from 'features/offer/pages/OfferArtistsModal/OfferArtistsModal'
+import { analytics } from 'libs/analytics/provider'
 import { render, screen, userEvent } from 'tests/utils'
 
 const mockNavigate = jest.fn()
@@ -33,6 +34,7 @@ describe('OfferArtistsModal', () => {
         closeModal={jest.fn()}
         artists={mockArtists}
         navigateTo={{ screen: 'Artist' }}
+        offerId={1}
       />
     )
 
@@ -47,6 +49,7 @@ describe('OfferArtistsModal', () => {
         closeModal={mockCloseModal}
         artists={mockArtists}
         navigateTo={{ screen: 'Artist' }}
+        offerId={1}
       />
     )
 
@@ -62,12 +65,33 @@ describe('OfferArtistsModal', () => {
         closeModal={mockCloseModal}
         artists={mockArtists}
         navigateTo={{ screen: 'Artist' }}
+        offerId={1}
       />
     )
 
     await user.press(screen.getByText('Avril Lavigne'))
 
     expect(mockCloseModal).toHaveBeenCalledTimes(1)
+  })
+
+  it('should trigger ConsultArtist log when pressing an artist item with ID', async () => {
+    render(
+      <OfferArtistsModal
+        isVisible
+        closeModal={jest.fn()}
+        artists={mockArtists}
+        navigateTo={{ screen: 'Artist' }}
+        offerId={1}
+      />
+    )
+    await user.press(screen.getByText('Avril Lavigne'))
+
+    expect(analytics.logConsultArtist).toHaveBeenCalledWith({
+      artistId: 'cb22d035-f081-4ccb-99d8-8f5725a8ac9c',
+      artistName: 'Avril Lavigne',
+      from: 'offer',
+      offerId: '1',
+    })
   })
 
   it('should navigate to artist page when pressing an artist item with ID', async () => {
@@ -77,6 +101,7 @@ describe('OfferArtistsModal', () => {
         closeModal={jest.fn()}
         artists={mockArtists}
         navigateTo={{ screen: 'Artist' }}
+        offerId={1}
       />
     )
     await user.press(screen.getByText('Avril Lavigne'))
@@ -94,6 +119,7 @@ describe('OfferArtistsModal', () => {
           closeModal={jest.fn()}
           artists={mockMixedArtists}
           navigateTo={{ screen: 'Artist' }}
+          offerId={1}
         />
       )
 
@@ -109,6 +135,7 @@ describe('OfferArtistsModal', () => {
           closeModal={mockCloseModal}
           artists={mockMixedArtists}
           navigateTo={{ screen: 'Artist' }}
+          offerId={1}
         />
       )
 
@@ -125,6 +152,7 @@ describe('OfferArtistsModal', () => {
           closeModal={mockCloseModal}
           artists={mockMixedArtists}
           navigateTo={{ screen: 'Artist' }}
+          offerId={1}
         />
       )
 
@@ -145,6 +173,7 @@ describe('OfferArtistsModal', () => {
           closeModal={jest.fn()}
           artists={mockArtistsWithoutIds}
           navigateTo={{ screen: 'Artist' }}
+          offerId={1}
         />
       )
 
@@ -159,6 +188,7 @@ describe('OfferArtistsModal', () => {
           closeModal={mockCloseModal}
           artists={mockArtistsWithoutIds}
           navigateTo={{ screen: 'Artist' }}
+          offerId={1}
         />
       )
 

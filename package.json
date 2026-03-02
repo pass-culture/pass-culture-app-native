@@ -7,8 +7,8 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.379.0",
-  "build": 10379000,
+  "version": "1.381.1",
+  "build": 10381001,
   "private": true,
   "engines": {
     "node": ">=20.10"
@@ -95,7 +95,7 @@
     "@hookform/resolvers": "^2.9.11",
     "@hot-updater/react-native": "^0.20.11",
     "@openspacelabs/react-native-zoomable-view": "^2.1.5",
-    "@pass-culture/design-system": "0.6.2",
+    "@pass-culture/design-system": "0.7.3",
     "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-native-async-storage/async-storage": "^1.17.11",
     "@react-native-clipboard/clipboard": "^1.16.2",

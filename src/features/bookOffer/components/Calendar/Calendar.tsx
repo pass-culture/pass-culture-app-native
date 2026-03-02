@@ -29,7 +29,7 @@ import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 LocaleConfig.locales['fr'] = {
   monthNames: [...CAPITALIZED_MONTHS],
@@ -144,7 +144,6 @@ const CalendarDay: React.FC<CalendarDayProps> = ({
   minDate,
 }) => {
   const { price, status, selected } = marking as Marking
-  const { designSystem } = useTheme()
 
   if (!date) {
     eventMonitoring.captureException('Calendar displayed without selectable day', {
@@ -184,11 +183,14 @@ const CalendarDay: React.FC<CalendarDayProps> = ({
           {getDayDescription(price, currency, euroToPacificFrancRate, hasSeveralPrices)}
         </Caption>
       ) : (
-        <Spacer.Column numberOfSpaces={designSystem.size.spacing.xs} />
+        <Placeholder />
       )}
     </Container>
   )
 }
+const Placeholder = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xs,
+}))
 
 export const Calendar: React.FC<Props> = ({
   stocks,

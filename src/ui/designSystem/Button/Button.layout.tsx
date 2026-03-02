@@ -75,12 +75,14 @@ export const getContentPadding = ({
 export const getIconElement = ({
   icon: Icon,
   color,
+  color2,
   size,
 }: {
   icon?: React.FunctionComponent<AccessibleIcon>
   color: ColorsType | undefined
+  color2: ColorsType
   size: number
 }) => {
   if (!Icon) return null
-  return <Icon color={color} size={size} />
+  return <Icon color={color} color2={color2} size={size} />
 }

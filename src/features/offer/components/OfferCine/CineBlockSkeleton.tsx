@@ -1,22 +1,20 @@
 import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferEventCardListSkeleton } from 'features/offer/components/OfferEventCardList/OfferEventCardListSkeleton'
 import { VenueBlockSkeleton } from 'features/offer/components/OfferVenueBlock/VenueBlockSkeleton'
-import { Spacer } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 export const CineBlockSkeleton: FunctionComponent = () => {
   return (
-    <CineBlockContainer testID="cine-block-skeleton">
-      <Spacer.Column numberOfSpaces={6} />
+    <CineBlockContainer testID="cine-block-skeleton" gap={4}>
       <VenueBlockSkeleton />
-      <Spacer.Column numberOfSpaces={4} />
       <OfferEventCardListSkeleton />
     </CineBlockContainer>
   )
 }
 
-const CineBlockContainer = styled(View)(({ theme }) => ({
+const CineBlockContainer = styled(ViewGap)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
+  marginTop: theme.designSystem.size.spacing.xl,
 }))

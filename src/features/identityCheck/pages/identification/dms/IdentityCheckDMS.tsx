@@ -4,9 +4,10 @@ import styled from 'styled-components/native'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
@@ -26,19 +27,19 @@ export const IdentityCheckDMS = () => {
       title="Identification"
       scrollChildren={
         <Container>
-          <Spacer.Column numberOfSpaces={5} />
-          <IdCardWithMagnifyingGlass />
-          <Spacer.Column numberOfSpaces={5} />
-          <CenteredTitle title="Créer un dossier sur le site Démarche Numérique" />
-          <Spacer.Column numberOfSpaces={5} />
-          <StyledBody>
-            La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site
-            Démarche Numérique afin d’obtenir ton pass Culture.
-          </StyledBody>
-
+          <StyledViewGap gap={5}>
+            <IdCardWithMagnifyingGlass />
+            <CenteredTitle title="Créer un dossier sur le site Démarche Numérique" />
+            <StyledBody>
+              La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le
+              site Démarche Numérique afin d’obtenir ton pass Culture.
+            </StyledBody>
+          </StyledViewGap>
           <ButtonContainer>
             <ExternalTouchableLink
-              as={ButtonTertiaryBlack}
+              as={Button}
+              variant="tertiary"
+              color="neutral"
               wording="Je suis de nationalité française"
               externalNav={{ url: env.DMS_FRENCH_CITIZEN_URL }}
               onBeforeNavigate={onDMSFrenchCitizenPress}
@@ -49,7 +50,9 @@ export const IdentityCheckDMS = () => {
               <SeparatorWithText label="ou" />
             </StyledSeparatorWithText>
             <ExternalTouchableLink
-              as={ButtonTertiaryBlack}
+              as={Button}
+              variant="tertiary"
+              color="neutral"
               wording="Je suis de nationalité étrangère"
               externalNav={{ url: env.DMS_FOREIGN_CITIZEN_URL }}
               onBeforeNavigate={onDMSForeignCitizenPress}
@@ -63,6 +66,10 @@ export const IdentityCheckDMS = () => {
     />
   )
 }
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  alignItems: 'center',
+  marginTop: theme.designSystem.size.spacing.xl,
+}))
 
 const IdCardWithMagnifyingGlass = styled(InitialIdCardWithMagnifyingGlass).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
@@ -77,7 +84,7 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 }))
 
 const ButtonContainer = styled.View(({ theme }) => ({
-  padding: theme.designSystem.size.spacing.xxxl,
+  paddingVertical: theme.designSystem.size.spacing.xxxl,
 }))
 
 const StyledSeparatorWithText = styled.View(({ theme }) => ({

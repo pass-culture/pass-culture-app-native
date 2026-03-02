@@ -25,7 +25,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
       - name: Setup java
         uses: actions/setup-java@v4
         with:
@@ -33,10 +33,12 @@ jobs:
           distribution: 'temurin'
 
       - name: Log app version
+        env:
+          REF_NAME: ${{ github.ref_name }}
         run: |
           APP_VERSION=$(jq --raw-output '.version' ./package.json)
           echo "App version is: $APP_VERSION"
-          echo "Branch: ${{ github.ref_name }}"
+          echo "Branch: $REF_NAME"
           echo "Commit SHA: ${{ github.sha }}"
 
       - name: Enable KVM for Hardware Acceleration
@@ -90,30 +92,25 @@ jobs:
 
       - name: Run the full test script
         id: run_test
+        env:
+          BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
         run: |
           set +e
           ./scripts/run_flashlight_on_android.sh 2>&1 | tee test_output.log
-          TEST_EXIT_CODE=${PIPESTATUS[0]}
+          TEST_EXIT_CODE="${PIPESTATUS[0]}"
           set -e
 
-          OVERALL_SCORE=$(grep -oP 'Overall Score\s+\x1b\[1;32m\K[0-9.]+' test_output.log | tail -1 || echo 'N/A')
-          AVG_FPS=$(grep -oP 'Average FPS\s+\K[0-9]+' test_output.log | tail -1 || echo 'N/A')
-          AVG_RAM=$(grep -oP 'Average RAM Usage\s+\K[0-9]+' test_output.log | tail -1 || echo 'N/A')
-          AVG_CPU=$(grep -oP 'Average Total CPU\s+\K[0-9]+' test_output.log | tail -1 || echo 'N/A')
+          OVERALL_SCORE="$(grep -oP 'Overall Score\s+\x1b\[1;32m\K[0-9.]+' test_output.log | tail -1 || echo 'N/A')"
+          AVG_FPS="$(grep -oP 'Average FPS\s+\K[0-9]+' test_output.log | tail -1 || echo 'N/A')"
+          AVG_RAM="$(grep -oP 'Average RAM Usage\s+\K[0-9]+' test_output.log | tail -1 || echo 'N/A')"
+          AVG_CPU="$(grep -oP 'Average Total CPU\s+\K[0-9]+' test_output.log | tail -1 || echo 'N/A')"
 
-          BRANCH_NAME="${{ github.head_ref || github.ref_name }}"
-          BRANCH_NAME=${BRANCH_NAME#refs/heads/}
+          BRANCH_NAME="${BRANCH_NAME#refs/heads/}"
 
-          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
-          echo "overall_score=$OVERALL_SCORE" >> $GITHUB_OUTPUT
-          echo "avg_fps=$AVG_FPS" >> $GITHUB_OUTPUT
-          echo "avg_ram=$AVG_RAM" >> $GITHUB_OUTPUT
-          echo "avg_cpu=$AVG_CPU" >> $GITHUB_OUTPUT
+          { echo "branch_name=$BRANCH_NAME"; echo "overall_score=$OVERALL_SCORE"; echo "avg_fps=$AVG_FPS"; echo "avg_ram=$AVG_RAM"; echo "avg_cpu=$AVG_CPU"; echo "short_sha=${GITHUB_SHA:0:7}"; } >> "$GITHUB_OUTPUT" 
 
-          echo "short_sha=${GITHUB_SHA:0:7}" >> $GITHUB_OUTPUT
-
-          if [ $TEST_EXIT_CODE -ne 0 ]; then
-            exit $TEST_EXIT_CODE
+          if [ "$TEST_EXIT_CODE" -ne 0 ]; then
+            exit "$TEST_EXIT_CODE"
           fi
 
       - name: Send Slack notification
@@ -126,13 +123,13 @@ jobs:
               "attachments": [
                 {
                   "mrkdwn_in": ["text"],
-                  "color": "${{ fromJSON('["#36a64f", "#A30002"]')[job.status == 'failure'] }}",
+                  "color": "${{ fromJSON('["#36a64f", "#A30002"]')[(job.status == 'failure') && 1 || 0] }}",
                   "author_name": "${{github.actor}}",
                   "author_link": "https://github.com/${{github.actor}}",
                   "author_icon": "https://github.com/${{github.actor}}.png",
                   "title": "PERFORMANCE TEST ANDROID",
                   "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                  "text": "Le test de performance sur la branche `${{ steps.run_test.outputs.branch_name || github.ref_name }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[job.status == 'failure'] }}\n\n*Métriques :*\n*- Score:* ${{ steps.run_test.outputs.overall_score || 'N/A' }}\n*- FPS moyen:* ${{ steps.run_test.outputs.avg_fps || 'N/A' }}\n*- RAM moyenne:* ${{ steps.run_test.outputs.avg_ram || 'N/A' }} MB\n*- CPU moyen:* ${{ steps.run_test.outputs.avg_cpu || 'N/A' }}%"
+                  "text": "Le test de performance sur la branche `${{ steps.run_test.outputs.branch_name || github.ref_name }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[(job.status == 'failure') && 1 || 0] }}\n\n*Métriques :*\n*- Score:* ${{ steps.run_test.outputs.overall_score || 'N/A' }}\n*- FPS moyen:* ${{ steps.run_test.outputs.avg_fps || 'N/A' }}\n*- RAM moyenne:* ${{ steps.run_test.outputs.avg_ram || 'N/A' }} MB\n*- CPU moyen:* ${{ steps.run_test.outputs.avg_cpu || 'N/A' }}%"
                 }
               ],
               "unfurl_links": false,

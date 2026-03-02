@@ -12,7 +12,7 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary'
 export type ButtonSize = 'default' | 'small'
-export type ButtonColor = 'brand' | 'neutral'
+export type ButtonColor = 'brand' | 'neutral' | 'danger'
 
 export type ButtonColorValue = BackgroundColorValue | 'transparent'
 

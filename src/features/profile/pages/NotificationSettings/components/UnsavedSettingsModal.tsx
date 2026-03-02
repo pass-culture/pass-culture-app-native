@@ -3,9 +3,8 @@ import styled from 'styled-components/native'
 
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Close } from 'ui/svg/icons/Close'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Typo } from 'ui/theme'
@@ -33,7 +32,7 @@ export const UnsavedSettingsModal: FunctionComponent<Props> = ({
       onRightIconPress={dismissModal}>
       <ModalContent>
         <InformationText>Tes modifications ne seront pas prises en compte.</InformationText>
-        <ButtonPrimary
+        <Button
           wording="Enregistrer mes modifications"
           onPress={() => {
             onPressSaveChanges()
@@ -41,7 +40,9 @@ export const UnsavedSettingsModal: FunctionComponent<Props> = ({
             goBackAndLeaveNotificationsSettings()
           }}
         />
-        <ButtonTertiaryBlack
+        <Button
+          variant="tertiary"
+          color="neutral"
           wording="Quitter sans enregistrer"
           onPress={() => {
             dismissModal()

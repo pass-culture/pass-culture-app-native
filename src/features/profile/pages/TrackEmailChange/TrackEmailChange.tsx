@@ -5,7 +5,8 @@ import styled, { useTheme } from 'styled-components/native'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { TrackEmailChangeContent } from 'features/profile/pages/TrackEmailChange/TrackEmailChangeContent'
-import { BackButton } from 'ui/components/headers/BackButton'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -21,7 +22,14 @@ export function TrackEmailChange() {
       <HeaderContainer>
         <Spacer.TopScreen />
         <GoBackContainer height={HEADER_HEIGHT}>
-          <BackButton onGoBack={goBack} />
+          <Button
+            iconButton
+            variant="tertiary"
+            color="neutral"
+            icon={ArrowPrevious}
+            onPress={goBack}
+            accessibilityLabel="Revenir en arrière"
+          />
         </GoBackContainer>
       </HeaderContainer>
       <StyledTitleText>Suivi de ton changement d’e-mail</StyledTitleText>

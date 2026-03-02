@@ -23,7 +23,6 @@ export type ChronicleVariantInfo = {
   Icon?: React.ReactNode
   modalTitle: string
   modalWording: string
-  modalButtonLabel: string
   SmallIcon?: React.ReactNode
   tag?: React.ReactNode
 }

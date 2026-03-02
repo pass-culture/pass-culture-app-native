@@ -262,7 +262,7 @@ describe('SearchBox component', () => {
 
     renderSearchBox()
 
-    const previousButton = screen.queryByTestId('Revenir en arrière')
+    const previousButton = screen.queryByLabelText('Revenir en arrière')
 
     expect(previousButton).not.toBeOnTheScreen()
   })
@@ -271,7 +271,7 @@ describe('SearchBox component', () => {
     mockIsFocusOnSuggestions = true
     renderSearchBox()
 
-    const previousButton = screen.getByTestId('Revenir en arrière')
+    const previousButton = screen.getByLabelText('Revenir en arrière')
 
     expect(previousButton).toBeOnTheScreen()
   })
@@ -548,7 +548,7 @@ describe('SearchBox component', () => {
       useRoute.mockReturnValueOnce({ name: SearchView.Landing })
 
       renderSearchBox()
-      const previousButton = screen.getByTestId('Revenir en arrière')
+      const previousButton = screen.getByLabelText('Revenir en arrière')
 
       await user.press(previousButton)
 
@@ -561,7 +561,7 @@ describe('SearchBox component', () => {
 
       renderSearchBox()
 
-      const previousButton = screen.getByTestId('Revenir en arrière')
+      const previousButton = screen.getByLabelText('Revenir en arrière')
 
       await user.press(previousButton)
 

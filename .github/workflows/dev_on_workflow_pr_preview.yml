@@ -46,7 +46,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
       - name: 'OpenID Connect Authentication'
         id: 'openid-auth'
         uses: 'google-github-actions/auth@v2'
@@ -72,15 +72,16 @@ jobs:
           restore-keys: |
             v1-yarn-pro-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
       - run: yarn install
-      - run: yarn build:${{ inputs.ENV }}
+      - run: yarn run "build:$ENV"
         env:
           # By default NodeJS processes are limited to 512MB of memory
           # This is not enough for the build process when compiling sourcemaps
           # Increases the limit so that the build doesnt fail
           NODE_OPTIONS: --max_old_space_size=4096
+          ENV: ${{ inputs.ENV }}
       - if: inputs.ENV != 'testing'
         run: |
-          cat package.json | grep -E '"version": "[0-9]+.[0-9]+.[0-9]+"' | grep -Eo '[0-9]+.[0-9]+.[0-9]+' > build/version.txt
+          grep -E '"version": "[0-9]+.[0-9]+.[0-9]+"' package.json | grep -Eo '[0-9]+.[0-9]+.[0-9]+' > build/version.txt
       - name: 'Create Sentry release'
         if: ${{ inputs.PUSH_RELEASE_TO_SENTRY }}
         uses: getsentry/action-release@v3

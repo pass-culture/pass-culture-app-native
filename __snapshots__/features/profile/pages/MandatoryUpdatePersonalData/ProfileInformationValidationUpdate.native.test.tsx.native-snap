@@ -16,6 +16,7 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
 >
   <View
     accessibilityRole="header"
+    onLayout={[Function]}
     style={
       {
         "backgroundColor": "#ffffff",
@@ -154,21 +155,18 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
               "flexGrow": 1,
               "paddingBottom": 0,
               "paddingHorizontal": 24,
+              "paddingTop": 65,
             }
           }
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
+          onScroll={[Function]}
+          paddingHeaderHeight={65}
+          scrollEventThrottle={16}
           style={{}}
         >
           <View>
-            <View
-              style={
-                {
-                  "height": 65,
-                }
-              }
-            />
             <View
               gap={5}
               style={
@@ -307,8 +305,59 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
                 </View>
               </View>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
+        <BVLinearGradient
+          bottomViewHeight={0}
+          collapsable={false}
+          colors={
+            [
+              16777215,
+              4294967295,
+            ]
+          }
+          endPoint={
+            {
+              "x": 0.5,
+              "y": 1,
+            }
+          }
+          locations={
+            [
+              0,
+              1,
+            ]
+          }
+          pointerEvents="none"
+          startPoint={
+            {
+              "x": 0.5,
+              "y": 0,
+            }
+          }
+          style={
+            [
+              {
+                "bottom": 0,
+                "height": 120,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+              },
+              {},
+              {},
+            ]
+          }
+        />
         <View
           onLayout={[Function]}
           style={

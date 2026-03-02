@@ -16,6 +16,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
 >
   <View
     accessibilityRole="header"
+    onLayout={[Function]}
     style={
       {
         "backgroundColor": "#ffffff",
@@ -71,7 +72,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -101,10 +102,19 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "flexGrow": 1,
-                  "height": 40,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 40,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                  "width": "auto",
                 },
               ],
               {
@@ -115,23 +125,53 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
           testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-          <Text
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
-                "display": "none",
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
               }
             }
           >
-            Retour
-          </Text>
+            <View
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="0"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -224,21 +264,18 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
               "flexGrow": 1,
               "paddingBottom": 0,
               "paddingHorizontal": 24,
+              "paddingTop": 65,
             }
           }
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
+          onScroll={[Function]}
+          paddingHeaderHeight={65}
+          scrollEventThrottle={16}
           style={{}}
         >
           <View>
-            <View
-              style={
-                {
-                  "height": 65,
-                }
-              }
-            />
             <View
               style={
                 {
@@ -248,35 +285,27 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
               }
             >
               <View
-                numberOfSpaces={4}
                 style={
                   {
-                    "height": 16,
-                  }
-                }
-              />
-              <Text
-                accessibilityRole="header"
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 17,
-                    "lineHeight": 27.2,
-                    "textAlign": "center",
+                    "marginVertical": 16,
                   }
                 }
               >
-                As-tu ta pièce d’identité avec toi ?
-              </Text>
-              <View
-                numberOfSpaces={4}
-                style={
-                  {
-                    "height": 16,
+                <Text
+                  accessibilityRole="header"
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 17,
+                      "lineHeight": 27.2,
+                      "textAlign": "center",
+                    }
                   }
-                }
-              />
+                >
+                  As-tu ta pièce d’identité avec toi ?
+                </Text>
+              </View>
               <Text
                 style={
                   {
@@ -350,130 +379,112 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 </Text>
               </Text>
               <View
-                numberOfSpaces={12}
+                gap={7}
                 style={
                   {
-                    "height": 48,
+                    "gap": 28,
+                    "marginTop": 48,
                   }
                 }
-              />
-              <View
-                accessibilityLabel="J’ai ma pièce d’identité en cours de validité - Les copies ne sont pas acceptées"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="J’ai ma pièce d’identité en cours de validité - Les copies ne sont pas acceptées"
               >
                 <View
+                  accessibilityLabel="J’ai ma pièce d’identité en cours de validité - Les copies ne sont pas acceptées"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
                   style={
                     [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                        },
+                      ],
                       {
-                        "alignItems": "center",
-                        "borderColor": "#90949d",
-                        "borderRadius": 8,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "padding": 16,
-                        "width": "100%",
+                        "opacity": 1,
                       },
-                      undefined,
                     ]
                   }
+                  testID="J’ai ma pièce d’identité en cours de validité - Les copies ne sont pas acceptées"
                 >
                   <View
                     style={
-                      {
-                        "alignContent": "center",
-                        "marginRight": 16,
-                      }
-                    }
-                  >
-                    <View
-                      height={32}
-                      width={32}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    style={
-                      {
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginRight": 16,
-                        "textAlign": "start",
-                      }
+                      [
+                        {
+                          "alignItems": "center",
+                          "borderColor": "#90949d",
+                          "borderRadius": 8,
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "padding": 16,
+                          "width": "100%",
+                        },
+                        undefined,
+                      ]
                     }
                   >
                     <View
                       style={
                         {
-                          "justifyContent": "center",
-                          "minHeight": 58,
+                          "alignContent": "center",
+                          "marginRight": 16,
                         }
                       }
                     >
-                      <Text
-                        style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
+                      <View
+                        height={32}
+                        width={32}
                       >
-                        J’ai ma pièce d’identité en cours de validité
-                      </Text>
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      style={
+                        {
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                          "textAlign": "start",
+                        }
+                      }
+                    >
                       <View
                         style={
                           {
-                            "marginTop": 4,
+                            "justifyContent": "center",
+                            "minHeight": 58,
                           }
                         }
                       >
@@ -482,352 +493,355 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                             {
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             }
                           }
                         >
-                          Les copies ne sont pas acceptées
+                          J’ai ma pièce d’identité en cours de validité
                         </Text>
+                        <View
+                          style={
+                            {
+                              "marginTop": 4,
+                            }
+                          }
+                        >
+                          <Text
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                              }
+                            }
+                          >
+                            Les copies ne sont pas acceptées
+                          </Text>
+                        </View>
                       </View>
                     </View>
-                  </View>
-                  <View>
-                    <View
-                      height={24}
-                      width={24}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                    <View>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
-              </View>
-              <View
-                numberOfSpaces={7}
-                style={
-                  {
-                    "height": 28,
-                  }
-                }
-              />
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "paddingHorizontal": 4,
-                  }
-                }
-              >
                 <View
                   style={
                     {
-                      "backgroundColor": "#cbcdd2",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "height": 1,
-                      "width": "100%",
-                    }
-                  }
-                />
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                      "marginHorizontal": 12,
-                    }
-                  }
-                >
-                  ou
-                </Text>
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#cbcdd2",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "height": 1,
-                      "width": "100%",
-                    }
-                  }
-                />
-              </View>
-              <View
-                numberOfSpaces={7}
-                style={
-                  {
-                    "height": 28,
-                  }
-                }
-              />
-              <View
-                accessibilityRole="list"
-                style={
-                  {
-                    "flexDirection": "column",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                    "width": "100%",
-                  }
-                }
-                withPadding={true}
-              >
-                <View
-                  style={
-                    {
-                      "display": "flex",
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "paddingHorizontal": 4,
                     }
                   }
                 >
                   <View
-                    accessibilityLabel="Je n’ai pas ma pièce d’identité originale avec moi"
-                    accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": false,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {},
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#cbcdd2",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "height": 1,
+                        "width": "100%",
+                      }
                     }
-                    testID="Je n’ai pas ma pièce d’identité originale avec moi"
+                  />
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                        "marginHorizontal": 12,
+                      }
+                    }
                   >
-                    <View
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "justifyContent": "space-between",
-                          },
-                          undefined,
-                        ]
-                      }
-                    >
-                      <View
-                        style={
-                          {
-                            "marginRight": 8,
-                          }
-                        }
-                      >
-                        <View
-                          height={24}
-                          width={24}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                      <View
-                        style={
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "textAlign": "left",
-                          }
-                        }
-                      >
-                        <Text
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
-                            }
-                          }
-                        >
-                          Je n’ai pas ma pièce d’identité originale avec moi
-                        </Text>
-                      </View>
-                      <View
-                        style={
-                          {
-                            "alignItems": "flex-end",
-                          }
-                        }
-                      >
-                        <View
-                          height={20}
-                          testID="section-row-navigable-icon"
-                          width={20}
-                        >
-                          <Text>
-                            section-row-navigable-icon-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
+                    ou
+                  </Text>
                   <View
-                    numberOfSpaces={9}
                     style={
                       {
-                        "height": 36,
+                        "backgroundColor": "#cbcdd2",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "height": 1,
+                        "width": "100%",
                       }
                     }
                   />
                 </View>
                 <View
+                  accessibilityRole="list"
                   style={
                     {
-                      "display": "flex",
+                      "flexDirection": "column",
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
+                      "width": "100%",
                     }
                   }
+                  withPadding={true}
                 >
                   <View
-                    accessibilityLabel="Ma pièce d’identité est expirée ou perdue"
-                    accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": false,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {},
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
+                      {
+                        "display": "flex",
+                      }
                     }
-                    testID="Ma pièce d’identité est expirée ou perdue"
                   >
                     <View
+                      accessibilityLabel="Je n’ai pas ma pièce d’identité originale avec moi"
+                      accessibilityRole="button"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": false,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
                       style={
                         [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {},
+                          ],
                           {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "justifyContent": "space-between",
+                            "opacity": 1,
                           },
-                          undefined,
                         ]
                       }
+                      testID="Je n’ai pas ma pièce d’identité originale avec moi"
                     >
                       <View
                         style={
-                          {
-                            "marginRight": 8,
-                          }
+                          [
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                            },
+                            undefined,
+                          ]
                         }
                       >
                         <View
-                          height={24}
-                          width={24}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                      <View
-                        style={
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "textAlign": "left",
-                          }
-                        }
-                      >
-                        <Text
                           style={
                             {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
+                              "marginRight": 8,
                             }
                           }
                         >
-                          Ma pièce d’identité est expirée ou perdue
-                        </Text>
+                          <View
+                            height={24}
+                            width={24}
+                          >
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
+                          </View>
+                        </View>
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "textAlign": "left",
+                            }
+                          }
+                        >
+                          <Text
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                              }
+                            }
+                          >
+                            Je n’ai pas ma pièce d’identité originale avec moi
+                          </Text>
+                        </View>
+                        <View
+                          style={
+                            {
+                              "alignItems": "flex-end",
+                            }
+                          }
+                        >
+                          <View
+                            height={20}
+                            testID="section-row-navigable-icon"
+                            width={20}
+                          >
+                            <Text>
+                              section-row-navigable-icon-SVG-Mock
+                            </Text>
+                          </View>
+                        </View>
                       </View>
+                    </View>
+                    <View
+                      style={
+                        {
+                          "height": 24,
+                        }
+                      }
+                    />
+                  </View>
+                  <View
+                    style={
+                      {
+                        "display": "flex",
+                      }
+                    }
+                  >
+                    <View
+                      accessibilityLabel="Ma pièce d’identité est expirée ou perdue"
+                      accessibilityRole="button"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": false,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {},
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Ma pièce d’identité est expirée ou perdue"
+                    >
                       <View
                         style={
-                          {
-                            "alignItems": "flex-end",
-                          }
+                          [
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                            },
+                            undefined,
+                          ]
                         }
                       >
                         <View
-                          height={20}
-                          testID="section-row-navigable-icon"
-                          width={20}
+                          style={
+                            {
+                              "marginRight": 8,
+                            }
+                          }
                         >
-                          <Text>
-                            section-row-navigable-icon-SVG-Mock
+                          <View
+                            height={24}
+                            width={24}
+                          >
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
+                          </View>
+                        </View>
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "textAlign": "left",
+                            }
+                          }
+                        >
+                          <Text
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                              }
+                            }
+                          >
+                            Ma pièce d’identité est expirée ou perdue
                           </Text>
+                        </View>
+                        <View
+                          style={
+                            {
+                              "alignItems": "flex-end",
+                            }
+                          }
+                        >
+                          <View
+                            height={20}
+                            testID="section-row-navigable-icon"
+                            width={20}
+                          >
+                            <Text>
+                              section-row-navigable-icon-SVG-Mock
+                            </Text>
+                          </View>
                         </View>
                       </View>
                     </View>
@@ -835,6 +849,15 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 </View>
               </View>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
       </View>

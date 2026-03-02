@@ -51,20 +51,6 @@ describe('SearchHeader component', () => {
     mockUseSearch.mockReturnValue(initialMockUseSearch)
   })
 
-  it('should contain a button to go to the search suggestions view', async () => {
-    render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-        shouldDisplaySubtitle
-      />
-    )
-    await act(async () => {})
-
-    expect(await screen.findByText('Recherche par mots-clés')).toBeInTheDocument()
-  })
-
   it('should focus on location widget button', async () => {
     render(
       <SearchHeader
@@ -129,7 +115,7 @@ describe('SearchHeader component', () => {
         withArrow
       />
     )
-    await userEvent.click(screen.getByTestId('Revenir en arrière'))
+    await userEvent.click(screen.getByLabelText('Revenir en arrière'))
 
     await waitFor(() => {
       expect(mockDispatch).toHaveBeenCalledWith({

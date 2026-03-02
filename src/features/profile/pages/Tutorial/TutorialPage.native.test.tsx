@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as useGoBack from 'features/navigation/useGoBack'
 import { render, screen, userEvent } from 'tests/utils'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Button } from 'ui/designSystem/Button/Button'
 
 import { TutorialPage } from './TutorialPage'
 
@@ -43,6 +43,6 @@ const renderTutorialPage = () =>
     <TutorialPage
       title="Titre"
       subtitle="Sous-titre"
-      buttons={[<ButtonPrimary key={1} wording="Continuer" onPress={onPress} />]}
+      buttons={[<Button key={1} wording="Continuer" onPress={onPress} />]}
     />
   )

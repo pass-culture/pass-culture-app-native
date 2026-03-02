@@ -51,7 +51,7 @@ describe('<ProfileV1 />', () => {
       theme: { isDesktopViewport: true },
     })
 
-    await screen.findByText('Centre d’aide')
+    await screen.findByText('Chercher une info')
 
     expect(container).toMatchSnapshot()
   })
@@ -61,17 +61,9 @@ describe('<ProfileV1 />', () => {
       theme: { isDesktopViewport: false },
     })
 
-    await screen.findByText('Centre d’aide')
+    await screen.findByText('Chercher une info')
 
     expect(container).toMatchSnapshot()
-  })
-
-  it('should not display display preference section when feature flag disable', () => {
-    render(reactQueryProviderHOC(<ProfileV1 />))
-
-    const displayPreferenceSection = screen.queryByText('Apparence')
-
-    expect(displayPreferenceSection).not.toBeInTheDocument()
   })
 })
 

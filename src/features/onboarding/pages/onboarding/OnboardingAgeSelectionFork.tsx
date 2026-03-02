@@ -10,7 +10,7 @@ import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 type AgeButtonProps = {
@@ -74,13 +74,15 @@ export const OnboardingAgeSelectionFork: FunctionComponent = () => {
             </StyledBody>
           </AgeButton>
         ))}
-        Separator={<Spacer.Column numberOfSpaces={4} />}
+        Separator={<Separator />}
         withPadding
       />
     </TutorialPage>
   )
 }
-
+const Separator = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.l,
+}))
 const StyledTitle4 = styled(Typo.Title4).attrs(getNoHeadingAttrs)(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
 }))

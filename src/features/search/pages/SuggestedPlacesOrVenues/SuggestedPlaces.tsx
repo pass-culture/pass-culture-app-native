@@ -12,7 +12,7 @@ import { Li } from 'ui/components/Li'
 import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
 import { LocationPointer as DefaultLocationPointer } from 'ui/svg/icons/LocationPointer'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const keyExtractor = (place: SuggestedPlace) => {
   const { label, info } = place
@@ -60,15 +60,14 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
       {hasResults ? (
         <VerticalUl>
           {filteredPlaces.map((item, index) => (
-            <Li key={keyExtractor(item)}>
+            <StyledLi key={keyExtractor(item)} marginBottom={index + 1 < filteredPlaces.length}>
               <SuggestedResult
                 label={item.label}
                 info={item.info}
                 Icon={Icon}
                 onPress={() => setSelectedPlace(item)}
               />
-              {index + 1 < filteredPlaces.length ? <Spacer.Column numberOfSpaces={4} /> : null}
-            </Li>
+            </StyledLi>
           ))}
         </VerticalUl>
       ) : null}
@@ -90,6 +89,9 @@ const NotLongEnough = ({ show }: { show: boolean }) =>
     </StyledBody>
   ) : null
 
+const StyledLi = styled(Li)<{ marginBottom?: boolean }>(({ theme, marginBottom }) => ({
+  marginBottom: marginBottom ? theme.designSystem.size.spacing.l : 0,
+}))
 const ListIconWrapper = styled.View(({ theme }) => ({
   marginRight: theme.designSystem.size.spacing.xxs,
 }))

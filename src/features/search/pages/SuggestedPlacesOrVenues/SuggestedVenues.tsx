@@ -11,7 +11,7 @@ import { Li } from 'ui/components/Li'
 import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const keyExtractor = (venue: Venue) => {
   const { label, info } = venue
@@ -54,15 +54,14 @@ export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVe
           {filteredVenues.map((item, index) => {
             const isLast = index === filteredVenues.length - 1
             return (
-              <Li key={keyExtractor(item)}>
+              <StyledLi key={keyExtractor(item)} isLast={isLast}>
                 <SuggestedResult
                   label={item.label}
                   info={item.info}
                   Icon={BuildingIcon}
                   onPress={() => setSelectedVenue(item)}
                 />
-                {isLast ? null : <Spacer.Column numberOfSpaces={4} />}
-              </Li>
+              </StyledLi>
             )
           })}
         </VerticalUl>
@@ -83,6 +82,10 @@ const NoSuggestedVenues = ({ show }: { show: boolean }) =>
 const DescriptionErrorTextContainer = styled(Typo.Body)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xl,
   textAlign: 'center',
+}))
+
+const StyledLi = styled(Li)<{ isLast: boolean }>(({ theme, isLast }) => ({
+  marginBottom: isLast ? 0 : theme.designSystem.size.spacing.l,
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({

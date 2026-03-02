@@ -11,8 +11,8 @@ import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavi
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 
 const trustedDeviceCheatcodeCategory: CheatcodeCategory = {
@@ -83,7 +83,7 @@ export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
       />
 
       <BufferContainer gap={2}>
-        <ButtonPrimary
+        <Button
           wording="AccountSecurityBuffer"
           onPress={navigateToAccountSecurityBuffer}
           disabled={value.length < 1}

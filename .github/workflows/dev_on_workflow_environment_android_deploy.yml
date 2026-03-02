@@ -39,17 +39,19 @@ jobs:
         run: corepack enable
       - name: Is deployment targeting ehp or production
         id: cloudenv
+        env:
+          ENV: ${{ inputs.ENV }}
         run: |
-          if [ "${{ inputs.ENV }}" != "production" ]; then
-            echo "cloud_env=ehp" >> $GITHUB_OUTPUT
+          if [ "$ENV" != "production" ]; then
+            echo "cloud_env=ehp" >> "$GITHUB_OUTPUT"
           else
-            echo "cloud_env=prod" >> $GITHUB_OUTPUT
+            echo "cloud_env=prod" >> "$GITHUB_OUTPUT"
           fi
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
       - name: Setup java
         uses: actions/setup-java@v4
         with:
@@ -115,8 +117,10 @@ jobs:
         run: |
           mkdir --parents android/keystores/
       - name: Setup android keystore for ${{ inputs.ENV }} environment
+        env:
+          ENV: ${{ inputs.ENV }}
         run: |
-          echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' |  base64 --decode > android/keystores/${{ inputs.ENV }}.keystore
+          echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' |  base64 --decode > "android/keystores/$ENV.keystore"
       - name: Setup android keystore properties for ${{ inputs.ENV }} environment
         uses: chuhlomin/render-template@v1.10
         with:
@@ -132,18 +136,21 @@ jobs:
         run: echo '${{ steps.secrets.outputs.ANDROID_PLAYSTORE_SERVICE_ACCOUNT }}' > fastlane/playStoreServiceAccount.json
       - name: Deploy hard android for ${{ inputs.ENV }}
         run: |
-          if [ "${{ inputs.ENV }}" != "production" ]; then
-            bundle exec fastlane android deploy firebase_token:"${GOOGLE_APPLICATION_CREDENTIALS}" --env ${{ inputs.ENV }} --verbose
+          if [ "$ENV" != "production" ]; then
+            bundle exec fastlane android deploy firebase_token:"${GOOGLE_APPLICATION_CREDENTIALS}" --env "$ENV" --verbose
           else
-            bundle exec fastlane android deploy --env ${{ inputs.ENV }} --verbose
+            bundle exec fastlane android deploy --env "$ENV" --verbose
           fi
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
           ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
           GOOGLE_APPLICATION_CREDENTIALS: ./app_distribution_credentials.json
+          ENV: ${{ inputs.ENV }}
       - name: Create Sentry sourcemaps
-        run: bash -c 'source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "android" ${{ inputs.ENV }}'
+        env:
+          ENV: ${{ inputs.ENV }}
+        run: source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "android" "$ENV"
 
   slack_notify:
     runs-on: ubuntu-24.04
@@ -173,13 +180,13 @@ jobs:
               "attachments": [
                   {
                       "mrkdwn_in": ["text"],
-                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[needs.sentry_and_deploy.result == 'failure'] }}",
+                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[(needs.sentry_and_deploy.result == 'failure') && 1 || 0] }}",
                       "author_name": "${{github.actor}}",
                       "author_link": "https://github.com/${{github.actor}}",
                       "author_icon": "https://github.com/${{github.actor}}.png",
                       "title": "PCAPPNATIVE Deployment",
                       "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Le déploiement Android sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[needs.sentry_and_deploy.result == 'failure'] }}"
+                      "text": "Le déploiement Android sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[(needs.sentry_and_deploy.result == 'failure') && 1 || 0] }}"
                   }
               ],
               "unfurl_links": false,

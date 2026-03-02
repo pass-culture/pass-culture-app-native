@@ -27,7 +27,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
       - name: Setup java
         uses: actions/setup-java@v4
         with:
@@ -85,18 +85,20 @@ jobs:
           result_path: .sentryclirc
       - name: Deploy soft android for ${{ inputs.ENV }}
         run: |
-          bundle exec fastlane android deploy ota: --env ${{ inputs.ENV }}
+          bundle exec fastlane android deploy ota: --env "$ENV"
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
           GOOGLE_APPLICATION_CREDENTIALS: ./firebase_credentials.json
+          ENV: ${{ inputs.ENV }}
       - name: Deploy soft ios App for ${{ inputs.ENV }}
         run: |
-          bundle exec fastlane ios deploy ota: --env ${{ inputs.ENV }}
+          bundle exec fastlane ios deploy ota: --env "$ENV"
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
           GOOGLE_APPLICATION_CREDENTIALS: ./firebase_credentials.json
+          ENV: ${{ inputs.ENV }}
 
   slack_notify:
     runs-on: ubuntu-24.04
@@ -126,13 +128,13 @@ jobs:
               "attachments": [
                   {
                       "mrkdwn_in": ["text"],
-                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[needs.sentry_and_deploy.result == 'failure'] }}",
+                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[(needs.sentry_and_deploy.result == 'failure') && 1 || 0] }}",
                       "author_name": "${{github.actor}}",
                       "author_link": "https://github.com/${{github.actor}}",
                       "author_icon": "https://github.com/${{github.actor}}.png",
                       "title": "PCAPPNATIVE Deployment",
                       "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Le déploiement en OTA Android/iOS sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[needs.sentry_and_deploy.result == 'failure'] }}"
+                      "text": "Le déploiement en OTA Android/iOS sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[(needs.sentry_and_deploy.result == 'failure') && 1 || 0] }}"
                   }
               ],
               "unfurl_links": false,

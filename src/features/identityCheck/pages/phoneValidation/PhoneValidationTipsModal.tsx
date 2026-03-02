@@ -1,12 +1,14 @@
 import React, { FunctionComponent } from 'react'
+import styled, { useTheme } from 'styled-components/native'
 
 import { InformationWithIcon } from 'ui/components/InformationWithIcon'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Signal } from 'ui/svg/icons/Signal'
 import { Smartphone } from 'ui/svg/icons/Smartphone'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   isVisible: boolean
@@ -15,6 +17,7 @@ interface Props {
 }
 
 export const PhoneValidationTipsModal: FunctionComponent<Props> = (props) => {
+  const { designSystem } = useTheme()
   return (
     <AppModal
       visible={props.isVisible}
@@ -23,24 +26,27 @@ export const PhoneValidationTipsModal: FunctionComponent<Props> = (props) => {
       leftIcon={ArrowPrevious}
       leftIconAccessibilityLabel="Revenir à l’étape précédente">
       <React.Fragment>
-        <Typo.Body>
-          Pour que la validation de ton numéro de téléphone se passe au mieux&nbsp;:
-        </Typo.Body>
-        <Spacer.Column numberOfSpaces={8} />
-        <InformationWithIcon
-          Icon={Signal}
-          text="Vérifie que tu as un bon réseau"
-          subtitle="Tu vas recevoir un code de validation par SMS"
-        />
-        <Spacer.Column numberOfSpaces={8} />
-        <InformationWithIcon
-          Icon={Smartphone}
-          text="Assure-toi d’indiquer ton numéro de téléphone personnel"
-          subtitle="Il ne peut être associé qu’à un seul compte"
-        />
-        <Spacer.Column numberOfSpaces={13} />
+        <StyledViewGap gap={designSystem.size.spacing.s}>
+          <Typo.Body>
+            Pour que la validation de ton numéro de téléphone se passe au mieux&nbsp;:
+          </Typo.Body>
+          <InformationWithIcon
+            Icon={Signal}
+            text="Vérifie que tu as un bon réseau"
+            subtitle="Tu vas recevoir un code de validation par SMS"
+          />
+          <InformationWithIcon
+            Icon={Smartphone}
+            text="Assure-toi d’indiquer ton numéro de téléphone personnel"
+            subtitle="Il ne peut être associé qu’à un seul compte"
+          />
+        </StyledViewGap>
         <Button wording="J’ai compris" onPress={props.dismissModal} />
       </React.Fragment>
     </AppModal>
   )
 }
+
+const StyledViewGap = styled(ViewGap)({
+  marginBottom: getSpacing(13),
+})

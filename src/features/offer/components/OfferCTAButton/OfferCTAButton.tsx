@@ -16,12 +16,14 @@ type OfferCTAButtonProps = {
   offer: OfferResponse
   subcategory: Subcategory
   trackEventHasSeenOfferOnce: VoidFunction
+  fullScreen?: boolean
 }
 
 export const OfferCTAButton: FunctionComponent<OfferCTAButtonProps> = ({
   offer,
   subcategory,
   trackEventHasSeenOfferOnce,
+  fullScreen,
 }) => {
   const { ctaWordingAndAction, showOfferModal, CTAOfferModal, openModalOnNavigation } =
     useOfferCTAButton(offer, subcategory)
@@ -47,6 +49,7 @@ export const OfferCTAButton: FunctionComponent<OfferCTAButtonProps> = ({
           ctaWordingAndAction={ctaWordingAndAction}
           isFreeDigitalOffer={isFreeDigitalOffer}
           isLoggedIn={isLoggedIn}
+          fullScreen={fullScreen}
         />
       ) : (
         <StickyBookingButton

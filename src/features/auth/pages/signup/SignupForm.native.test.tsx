@@ -185,7 +185,7 @@ describe('Signup Form', () => {
         screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
 
-      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+      await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 
@@ -249,7 +249,7 @@ describe('Signup Form', () => {
         screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
 
-      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+      await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 
@@ -279,7 +279,7 @@ describe('Signup Form', () => {
       screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
 
-    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+    await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
 
@@ -339,7 +339,7 @@ describe('Signup Form', () => {
         screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
 
-      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+      await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 
@@ -399,7 +399,7 @@ describe('Signup Form', () => {
       await user.press(
         screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
-      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+      await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 
@@ -450,7 +450,7 @@ describe('Signup Form', () => {
         screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
 
-      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+      await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 
@@ -620,7 +620,7 @@ describe('Signup Form', () => {
         screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
 
-      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+      await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 
@@ -683,7 +683,7 @@ describe('Signup Form', () => {
         screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
 
-      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+      await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 
@@ -727,7 +727,7 @@ describe('Signup Form', () => {
         screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
 
-      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+      await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 
@@ -789,7 +789,7 @@ describe('Signup Form', () => {
         screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
 
-      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+      await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 

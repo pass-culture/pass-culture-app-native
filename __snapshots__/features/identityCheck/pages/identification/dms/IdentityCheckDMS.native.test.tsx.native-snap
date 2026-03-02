@@ -16,6 +16,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
 >
   <View
     accessibilityRole="header"
+    onLayout={[Function]}
     style={
       {
         "backgroundColor": "#ffffff",
@@ -71,7 +72,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -101,10 +102,19 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "flexGrow": 1,
-                  "height": 40,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 40,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                  "width": "auto",
                 },
               ],
               {
@@ -115,23 +125,53 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
           testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-          <Text
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
-                "display": "none",
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
               }
             }
           >
-            Retour
-          </Text>
+            <View
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="0"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -224,21 +264,18 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
               "flexGrow": 1,
               "paddingBottom": 0,
               "paddingHorizontal": 24,
+              "paddingTop": 65,
             }
           }
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
+          onScroll={[Function]}
+          paddingHeaderHeight={65}
+          scrollEventThrottle={16}
           style={{}}
         >
           <View>
-            <View
-              style={
-                {
-                  "height": 65,
-                }
-              }
-            />
             <View
               style={
                 {
@@ -248,81 +285,65 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
               }
             >
               <View
-                numberOfSpaces={5}
-                style={
-                  {
-                    "height": 20,
-                  }
-                }
-              />
-              <View
-                fill="none"
-                height={156}
-                width={200}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={5}
-                style={
-                  {
-                    "height": 20,
-                  }
-                }
-              />
-              <View
+                gap={5}
                 style={
                   {
                     "alignItems": "center",
-                    "width": "100%",
+                    "gap": 20,
+                    "marginTop": 24,
                   }
                 }
               >
-                <Text
-                  accessibilityRole="header"
+                <View
+                  fill="none"
+                  height={156}
+                  width={200}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
                   style={
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 17,
-                      "lineHeight": 27.2,
+                      "alignItems": "center",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <Text
+                    accessibilityRole="header"
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 17,
+                        "lineHeight": 27.2,
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    Créer un dossier sur le site Démarche Numérique
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                       "textAlign": "center",
                     }
                   }
                 >
-                  Créer un dossier sur le site Démarche Numérique
+                  La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site Démarche Numérique afin d’obtenir ton pass Culture.
                 </Text>
               </View>
               <View
-                numberOfSpaces={5}
                 style={
                   {
-                    "height": 20,
-                  }
-                }
-              />
-              <Text
-                style={
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "textAlign": "center",
-                  }
-                }
-              >
-                La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site Démarche Numérique afin d’obtenir ton pass Culture.
-              </Text>
-              <View
-                style={
-                  {
-                    "paddingBottom": 40,
-                    "paddingLeft": 40,
-                    "paddingRight": 40,
-                    "paddingTop": 40,
+                    "paddingVertical": 40,
                   }
                 }
               >
@@ -333,7 +354,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                     {
                       "busy": undefined,
                       "checked": undefined,
-                      "disabled": undefined,
+                      "disabled": false,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -363,22 +384,19 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                         },
                         {
                           "alignItems": "center",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "backgroundColor": "transparent",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
                           "justifyContent": "center",
-                          "maxWidth": 500,
-                          "minHeight": 40,
-                          "paddingBottom": 2,
-                          "paddingLeft": 2,
-                          "paddingRight": 2,
-                          "paddingTop": 2,
-                          "width": "100%",
-                        },
-                        {
-                          "backgroundColor": "transparent",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "width": "auto",
                         },
                       ],
                       {
@@ -389,44 +407,72 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   testID="Je suis de nationalité française"
                 >
                   <View
+                    gap={8}
+                    hasIcon={true}
+                    isMultiline={false}
                     style={
                       {
                         "alignItems": "center",
+                        "columnGap": 8,
                         "flexDirection": "row",
                       }
                     }
                   >
                     <View
-                      style={
+                      collapsable={false}
+                      jestAnimatedProps={
                         {
-                          "flexDirection": "row",
-                          "flexShrink": 0,
-                          "marginRight": 8,
+                          "value": {},
                         }
+                      }
+                      jestAnimatedStyle={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestInlineStyle={
+                        {
+                          "flexShrink": 0,
+                        }
+                      }
+                      nativeID="1"
+                      style={
+                        [
+                          {
+                            "flexShrink": 0,
+                          },
+                        ]
                       }
                     >
                       <View
                         accessibilityLabel="Nouvelle fenêtre"
-                        height={20}
-                        testID="button-icon-left"
-                        width={20}
+                        height={22}
+                        width={22}
                       >
                         <Text>
-                          button-icon-left-SVG-Mock
+                          undefined-SVG-Mock
                         </Text>
                       </View>
                     </View>
                     <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
                       style={
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 22,
-                          "maxWidth": "100%",
-                        }
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 22,
+                          },
+                          {
+                            "color": "#161617",
+                            "flexBasis": undefined,
+                            "flexGrow": undefined,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": undefined,
+                          },
+                        ]
                       }
                     >
                       Je suis de nationalité française
@@ -508,7 +554,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                     {
                       "busy": undefined,
                       "checked": undefined,
-                      "disabled": undefined,
+                      "disabled": false,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -538,22 +584,19 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                         },
                         {
                           "alignItems": "center",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "backgroundColor": "transparent",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
                           "flexDirection": "row",
                           "justifyContent": "center",
-                          "maxWidth": 500,
-                          "minHeight": 40,
-                          "paddingBottom": 2,
-                          "paddingLeft": 2,
-                          "paddingRight": 2,
-                          "paddingTop": 2,
-                          "width": "100%",
-                        },
-                        {
-                          "backgroundColor": "transparent",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "width": "auto",
                         },
                       ],
                       {
@@ -564,44 +607,72 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   testID="Je suis de nationalité étrangère"
                 >
                   <View
+                    gap={8}
+                    hasIcon={true}
+                    isMultiline={false}
                     style={
                       {
                         "alignItems": "center",
+                        "columnGap": 8,
                         "flexDirection": "row",
                       }
                     }
                   >
                     <View
-                      style={
+                      collapsable={false}
+                      jestAnimatedProps={
                         {
-                          "flexDirection": "row",
-                          "flexShrink": 0,
-                          "marginRight": 8,
+                          "value": {},
                         }
+                      }
+                      jestAnimatedStyle={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestInlineStyle={
+                        {
+                          "flexShrink": 0,
+                        }
+                      }
+                      nativeID="2"
+                      style={
+                        [
+                          {
+                            "flexShrink": 0,
+                          },
+                        ]
                       }
                     >
                       <View
                         accessibilityLabel="Nouvelle fenêtre"
-                        height={20}
-                        testID="button-icon-left"
-                        width={20}
+                        height={22}
+                        width={22}
                       >
                         <Text>
-                          button-icon-left-SVG-Mock
+                          undefined-SVG-Mock
                         </Text>
                       </View>
                     </View>
                     <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
                       style={
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 22,
-                          "maxWidth": "100%",
-                        }
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 22,
+                          },
+                          {
+                            "color": "#161617",
+                            "flexBasis": undefined,
+                            "flexGrow": undefined,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": undefined,
+                          },
+                        ]
                       }
                     >
                       Je suis de nationalité étrangère
@@ -632,6 +703,15 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 }
               />
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
       </View>

@@ -32,8 +32,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version-file: 'server/.nvmrc'
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
-        if: ${{ inputs.ENV == 'testing' }}
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
       - id: gcloud-auth
         name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v2'
@@ -75,13 +74,17 @@ jobs:
         run: rm -rf server/.yarn/cache
 
       - name: 'Push proxy for input env'
-        run: cd server && yarn deploy:${{ inputs.ENV }} && cd ..
+        env:
+          ENV: ${{ inputs.ENV }}
+        run: cd server && yarn run "deploy:$ENV" && cd ..
 
       - name: 'Clear unused apps'
+        env:
+          ENV: ${{ inputs.ENV }}
         run: |
-          gcloud app versions list --service=web-proxy-${{ inputs.ENV }} --format="table[no-heading](id)" \
-            | grep -v $(gcloud app versions list --service=web-proxy-${{ inputs.ENV }} --hide-no-traffic --format="table[no-heading](id)") \
-            | xargs gcloud app versions delete --service=web-proxy-${{ inputs.ENV }}
+          gcloud app versions list --service="web-proxy-$ENV" --format="table[no-heading](id)" \
+            | grep -v "$(gcloud app versions list --service="web-proxy-$ENV" --hide-no-traffic --format="table[no-heading](id)")" \
+            | xargs gcloud app versions delete --service="web-proxy-$ENV"
   slack_notify:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
@@ -110,13 +113,13 @@ jobs:
               "attachments": [
                   {
                       "mrkdwn_in": ["text"],
-                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[needs.web_proxy_deploy.result == 'failure'] }}",
+                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[(needs.web_proxy_deploy.result == 'failure') && 1 || 0] }}",
                       "author_name": "${{github.actor}}",
                       "author_link": "https://github.com/${{github.actor}}",
                       "author_icon": "https://github.com/${{github.actor}}.png",
                       "title": "PCAPPNATIVE Deployment",
                       "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Le déploiement Web proxy sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[needs.web_proxy_deploy.result == 'failure'] }}"
+                      "text": "Le déploiement Web proxy sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[(needs.web_proxy_deploy.result == 'failure') && 1 || 0] }}"
                   }
               ],
               "unfurl_links": false,

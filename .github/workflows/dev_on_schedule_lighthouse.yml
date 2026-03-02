@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
       - name: Run Lighthouse CI 🚀
         run: |
           yarn dlx @lhci/cli@0.14.0 autorun --collect.psiApiKey=${{ secrets.PAGE_SPEED_API_KEY }}
@@ -27,28 +27,30 @@ jobs:
         run: ls -laR ./.lighthouseci
         if: always()
       - name: Log app version
+        env:
+          REF_NAME: ${{ github.ref_name }}
         run: |
           APP_VERSION=$(jq --raw-output '.version' ./package.json)
           echo "App version is: $APP_VERSION"
-          echo "Branch: ${{ github.ref_name }}"
+          echo "Branch: $REF_NAME"
           echo "Commit SHA: ${{ github.sha }}"
       - name: Parse and Log Lighthouse Results 📊
         id: lighthouse_results
         run: |
           # Find the path of the first Lighthouse report
-          REPORT_PATH=$(ls -1 .lighthouseci/lhr-*.json | head -n 1)
+          REPORT_PATH="$(find .lighthouseci -iname "lhr-*.json" | head -n 1)"
           echo "Parsing Lighthouse report: $REPORT_PATH"
 
           # Extract the summary score, which is a value from 0 to 1
-          PERF_SCORE_DECIMAL=$(jq '.categories.performance.score' $REPORT_PATH)
+          PERF_SCORE_DECIMAL="$(jq '.categories.performance.score' "$REPORT_PATH")"
           # Convert to a 0-100 scale and round it
-          PERF_SCORE=$(printf "%.0f" $(echo "$PERF_SCORE_DECIMAL * 100" | bc))
+          PERF_SCORE="$(printf "%.0f" "$(echo "$PERF_SCORE_DECIMAL * 100" | bc)")"
 
           # Extract key metric values (the 'displayValue' is human-readable)
-          FCP=$(jq --raw-output '.audits["first-contentful-paint"].displayValue' $REPORT_PATH)
-          LCP=$(jq --raw-output '.audits["largest-contentful-paint"].displayValue' $REPORT_PATH)
-          TBT=$(jq --raw-output '.audits["total-blocking-time"].displayValue' $REPORT_PATH)
-          CLS=$(jq --raw-output '.audits["cumulative-layout-shift"].displayValue' $REPORT_PATH)
+          FCP="$(jq --raw-output '.audits["first-contentful-paint"].displayValue' "$REPORT_PATH")"
+          LCP="$(jq --raw-output '.audits["largest-contentful-paint"].displayValue' "$REPORT_PATH")"
+          TBT="$(jq --raw-output '.audits["total-blocking-time"].displayValue' "$REPORT_PATH")"
+          CLS="$(jq --raw-output '.audits["cumulative-layout-shift"].displayValue' "$REPORT_PATH")"
 
           # Log the results in a nicely formatted way
           echo "--- Lighthouse Performance Summary ---"

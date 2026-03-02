@@ -337,6 +337,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
+                "marginBottom": 16,
                 "maxWidth": 500,
                 "width": "100%",
               }
@@ -575,14 +576,6 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
               </View>
             </View>
           </View>
-          <View
-            numberOfSpaces={4}
-            style={
-              {
-                "height": 16,
-              }
-            }
-          />
           <View
             accessibilityLabel="Choisir les cookies"
             accessibilityRole="button"

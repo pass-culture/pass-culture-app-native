@@ -9,12 +9,14 @@ type Props = {
   ctaWordingAndAction: ICTAWordingAndAction
   isFreeDigitalOffer?: boolean
   isLoggedIn?: boolean
+  fullScreen?: boolean
 }
 
 export const BookingButton: FunctionComponent<Props> = ({
   ctaWordingAndAction,
   isFreeDigitalOffer,
   isLoggedIn,
+  fullScreen,
 }) => {
   const { wording, onPress, navigateTo, externalNav, isDisabled, bottomBannerText } =
     ctaWordingAndAction
@@ -25,7 +27,7 @@ export const BookingButton: FunctionComponent<Props> = ({
 
   return (
     <React.Fragment>
-      <ButtonContainer testID="booking-button">
+      <ButtonContainer testID="booking-button" fullScreen={fullScreen}>
         <CTAButton
           wording={wording}
           onPress={onPress}
@@ -41,6 +43,6 @@ export const BookingButton: FunctionComponent<Props> = ({
   )
 }
 
-const ButtonContainer = styled.View({
-  width: '50%',
-})
+const ButtonContainer = styled.View<{ fullScreen?: boolean }>(({ fullScreen }) => ({
+  width: fullScreen ? '100%' : '50%',
+}))

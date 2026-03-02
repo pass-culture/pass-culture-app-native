@@ -16,9 +16,7 @@ on:
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
         required: true
       PASSCULTURE_GITHUB_ACTION_APP_ID:
-        required: true
       PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY:
-        required: true
 
 concurrency:
   group: tester-${{ github.ref }}
@@ -48,7 +46,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
       - name: Cache the node_modules
         id: yarn-modules-cache
         uses: pass-culture-github-actions/cache@v1.0.0
@@ -148,10 +146,12 @@ jobs:
         with:
           version: '>= 416.0.0'
       - name: 'Get from bucket the differents coverages'
+        env:
+          CACHE_BUCKET_NAME: ${{ inputs.CACHE_BUCKET_NAME }}
         run: |
           mkdir coverage
-          gsutil cp 'gs://${{ inputs.CACHE_BUCKET_NAME }}/pass-culture/pass-culture-app-native/v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-*' coverage
-          for file in `ls coverage/*tar`; do tar  --use-compress-program='zstd --long=30' -xf $file; done 
+          gsutil cp "gs://$CACHE_BUCKET_NAME/pass-culture/pass-culture-app-native/v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-*" coverage
+          for file in coverage/*tar; do tar --use-compress-program='zstd --long=30' -xf "$file"; done 
           rm -f coverage/*.tar
       - name: 'Merge each coverage into one'
         run: |

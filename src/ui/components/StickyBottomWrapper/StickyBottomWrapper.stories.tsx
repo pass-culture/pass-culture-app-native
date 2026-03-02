@@ -3,8 +3,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SHARE_APP_IMAGE_SOURCE } from 'features/share/components/shareAppImage'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InformationWithIcon } from 'ui/components/InformationWithIcon'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Warning } from 'ui/svg/icons/Warning'
 
 import { StickyBottomWrapper } from './StickyBottomWrapper'
@@ -32,7 +32,7 @@ const StoryComponent = (props: React.ComponentProps<typeof StickyBottomWrapper>)
 export const Default: Story = {
   render: (props) => <StoryComponent {...props} />,
   args: {
-    children: <ButtonPrimary wording="Réserver l’offre" />,
+    children: <Button wording="Réserver l’offre" />,
   },
   name: 'StickyBottomWrapper',
 }

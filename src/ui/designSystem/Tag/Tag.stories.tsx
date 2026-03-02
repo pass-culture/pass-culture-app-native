@@ -85,6 +85,10 @@ const variantConfig: Variants<typeof Tag> = [
     props: { label: 'Ciné Club', variant: TagVariant.CINECLUB },
   },
   {
+    label: 'Pro Edito',
+    props: { label: '6 avis des pro', variant: TagVariant.PROEDITO },
+  },
+  {
     label: 'Headline',
     props: { label: 'À la une', variant: TagVariant.HEADLINE },
   },

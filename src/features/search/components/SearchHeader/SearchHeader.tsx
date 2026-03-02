@@ -11,7 +11,8 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
 import { CreateHistoryItem } from 'features/search/types'
 import Animated, { FadeIn, FadeOut } from 'libs/react-native-reanimated'
-import { BackButton } from 'ui/components/headers/BackButton'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Spacer } from 'ui/theme'
 
 type Props = {
@@ -58,7 +59,14 @@ export const SearchHeader: FC<Props> = ({
           <RowContainer entering={FadeIn} exiting={FadeOut}>
             {withArrow ? (
               <StyledView>
-                <BackButton onGoBack={onGoBack} />
+                <Button
+                  iconButton
+                  variant="tertiary"
+                  color="neutral"
+                  icon={ArrowPrevious}
+                  onPress={onGoBack}
+                  accessibilityLabel="Revenir en arrière"
+                />
               </StyledView>
             ) : null}
             <SearchTitleAndWidget

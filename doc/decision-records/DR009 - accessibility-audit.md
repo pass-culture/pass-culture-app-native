@@ -1100,11 +1100,15 @@ Texte
 **PR** : [#9228](https://github.com/pass-culture/pass-culture-app-native/pull/9228)
 
 **Problème** 😱  
+E01 : le composant "Qu’est ce que les cookies ?" et les autres composants qui permettent d’afficher/masquer du contenu doivent indiquer leur état d’ouverture (Disclosure) -> Conformité partielle : l’état du composant est bien restitué, mais de manière incohérente.
+À l’arrivée sur le composant, l’état est annoncé comme « Fermer ». Lors de l’ouverture, l’annonce reste « Fermer », et lors de la fermeture, l’état est annoncé comme « Ouvert ».
 E09 : le composant « Accéder aux séances » devrait être implémenté comme un bouton
 E14 : les composants dans les historiques de recherche et dans les suggestions déclenchent des événements, mais n'ont pas de rôle présenté aux technologies d'assistance. 
 
 **Correction** 💡  
-Ajout du rôle bouton sur les composants 
+E01 : le composant restitue de façon cohérent les etats fermé et ouvert
+E09 , E14 :Ajout du rôle bouton sur les composants 
+
 
 **Retours audit** 🔥  
 Texte
@@ -1118,8 +1122,9 @@ Texte
 <summary> 🟠Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ? </summary>
 
 **RAAM** : [Critère 8.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-2)  
-**Ticket** : [40212](https://passculture.atlassian.net/browse/PC-40212)
-**PR** : [#9230](https://github.com/pass-culture/pass-culture-app-native/pull/9230)
+**Ticket** : [40212](https://passculture.atlassian.net/browse/PC-40212) & [40213](https://passculture.atlassian.net/browse/PC-40213)
+& [40395](https://passculture.atlassian.net/browse/PC-40395)
+**PR** : [#9230](https://github.com/pass-culture/pass-culture-app-native/pull/9230) & [#9264](https://github.com/pass-culture/pass-culture-app-native/pull/9264) & [#9273](https://github.com/pass-culture/pass-culture-app-native/pull/9273)
 
 **Problème** 😱  
 E07 : le texte "Obligatoire" du champ "Adresse e-mail" se retrouve partiellement hors écran
@@ -1127,7 +1132,7 @@ E03 , E04 , E05, E06 et E11 : les premiers éléments se superposent au titre de
 
 **Correction** 💡  
 E07 : La mention obligatoire passe à la ligne lorsque lors d'un zoom egal ou supérieur à 200
-E03 , E04 , E05, E06 et E11 : le header est opaque
+E03 , E04 , E05, E06 et E11 : le header est opaque et le texte n'est plus dessous
 
 **Retours audit** 🔥  
 Texte

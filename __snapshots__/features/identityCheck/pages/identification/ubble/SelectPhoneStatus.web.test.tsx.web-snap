@@ -2,42 +2,28 @@
 
 exports[`SelectPhoneStatus should render correctly 1`] = `
 .c0 {
-  flex-direction: column;
-  cursor: pointer;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: auto;
+  max-width: 500px;
   border-width: 0;
-  display: flex;
   background-color: transparent;
-  padding: 0;
-}
-
-.c0:active {
-  opacity: 0.7;
+  cursor: pointer;
   outline: none;
-}
-
-.c0:focus {
-  outline: auto;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
 .c0:disabled {
   cursor: initial;
-}
-
-.c0:hover {
-  text-decoration: underline;
-  text-decoration-color: #161617;
-}
-
-.c0:hover:disabled {
-  text-decoration: none;
-}
-
-.c1 {
-  flex-grow: 1;
-  max-width: 40px;
-  height: 40px;
-  justify-content: center;
-  align-items: center;
 }
 
 <div>
@@ -60,28 +46,30 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
         >
           <button
             aria-label="Revenir en arrière"
-            class="c0 c1"
+            class="c0"
             data-testid="Revenir en arrière"
             tabindex="0"
-            title="Revenir en arrière"
             type="button"
           >
             <div
-              class="css-view-175oi2r"
-              data-testid="icon-back"
+              class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1wjczhr r-flexDirection-18u37iz"
             >
               <div
-                class="css-text-146c3p1"
-                dir="ltr"
+                class="css-view-175oi2r"
+                id="0"
+                style="flex-shrink: 0;"
               >
-                icon-back-SVG-Mock
+                <div
+                  class="css-view-175oi2r"
+                >
+                  <div
+                    class="css-text-146c3p1"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
               </div>
-            </div>
-            <div
-              class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-              dir="ltr"
-            >
-              Retour
             </div>
           </button>
         </div>
@@ -117,12 +105,8 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
           >
             <div
               class="css-view-175oi2r"
-              style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 24px; padding-left: 24px;"
+              style="flex-grow: 1; flex-direction: column; padding: 65px 24px 0px 24px;"
             >
-              <div
-                class="css-view-175oi2r"
-                style="height: 65px;"
-              />
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-height-1pi2tsx r-marginBlock-1xk7izq r-marginInline-1537yvj"
               >
@@ -137,28 +121,23 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                   </div>
                 </div>
                 <div
-                  class="css-view-175oi2r r-height-10ptun7"
-                />
-                <h2
-                  aria-level="2"
-                  class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
-                  dir="ltr"
-                  role="heading"
+                  class="css-view-175oi2r r-gap-f4gmv6 r-marginBottom-zd98yo r-marginTop-1wzrnnt"
                 >
-                  Vérifie ton identité avec un smartphone
-                </h2>
-                <div
-                  class="css-view-175oi2r r-height-10ptun7"
-                />
-                <div
-                  class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
-                  dir="ltr"
-                >
-                  Gagne du temps en vérifiant ton identité sur un smartphone ! Tu peux aussi passer par le site demarche.numerique.gouv.fr mais le traitement sera plus long.
+                  <h2
+                    aria-level="2"
+                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
+                    dir="ltr"
+                    role="heading"
+                  >
+                    Vérifie ton identité avec un smartphone
+                  </h2>
+                  <div
+                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+                    dir="ltr"
+                  >
+                    Gagne du temps en vérifiant ton identité sur un smartphone ! Tu peux aussi passer par le site demarche.numerique.gouv.fr mais le traitement sera plus long.
+                  </div>
                 </div>
-                <div
-                  class="css-view-175oi2r r-height-mabqd8"
-                />
                 <ul
                   class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a r-width-13qz1uu"
                   role="list"
@@ -287,6 +266,9 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                   </li>
                 </ul>
               </div>
+              <div
+                class="css-view-175oi2r r-height-3da1kt"
+              />
             </div>
           </div>
         </div>

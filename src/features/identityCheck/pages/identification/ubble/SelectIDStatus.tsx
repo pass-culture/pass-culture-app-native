@@ -14,11 +14,12 @@ import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedA
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { HeroButtonListWithOnPress } from 'ui/components/buttons/HeroButtonListWithOnPress'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { IdCard as InitialIdCard } from 'ui/svg/icons/IdCard'
 import { LostId as InitialLostId } from 'ui/svg/icons/LostId'
 import { NoId as InitialNoId } from 'ui/svg/icons/NoId'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SelectIDStatus: FunctionComponent = () => {
@@ -54,9 +55,9 @@ export const SelectIDStatus: FunctionComponent = () => {
       title="Identification"
       scrollChildren={
         <Container>
-          <Spacer.Column numberOfSpaces={4} />
-          <StyledTitle4>As-tu ta pièce d’identité avec toi&nbsp;?</StyledTitle4>
-          <Spacer.Column numberOfSpaces={4} />
+          <TitleContainer>
+            <StyledTitle4>As-tu ta pièce d’identité avec toi&nbsp;?</StyledTitle4>
+          </TitleContainer>
           <StyledText>
             <Typo.Body>Tu dois avoir ta pièce d’identité </Typo.Body>
             <Typo.BodyAccent>originale </Typo.BodyAccent>
@@ -64,27 +65,33 @@ export const SelectIDStatus: FunctionComponent = () => {
             <Typo.BodyAccent>en cours de validité </Typo.BodyAccent>
             <Typo.Body>avec toi.</Typo.Body>
           </StyledText>
-          <Spacer.Column numberOfSpaces={12} />
-          <HeroButtonListWithOnPress
-            accessibilityLabel={accessibilityLabel}
-            Title={<Typo.BodyAccent>{title}</Typo.BodyAccent>}
-            Subtitle={<Typo.BodyAccentXs>{subtitle}</Typo.BodyAccentXs>}
-            Icon={<IdCard />}
-            onPress={onPress}
-          />
-          <Spacer.Column numberOfSpaces={7} />
-          <SeparatorWithText label="ou" />
-          <Spacer.Column numberOfSpaces={7} />
-          <AccessibleUnorderedList
-            items={[FirstOtherOption, SecondOtherOption]}
-            Separator={buttonListSeparator}
-            withPadding
-          />
+          <StyledViewGap gap={7}>
+            <HeroButtonListWithOnPress
+              accessibilityLabel={accessibilityLabel}
+              Title={<Typo.BodyAccent>{title}</Typo.BodyAccent>}
+              Subtitle={<Typo.BodyAccentXs>{subtitle}</Typo.BodyAccentXs>}
+              Icon={<IdCard />}
+              onPress={onPress}
+            />
+            <SeparatorWithText label="ou" />
+            <AccessibleUnorderedList
+              items={[FirstOtherOption, SecondOtherOption]}
+              Separator={buttonListSeparator}
+              withPadding
+            />
+          </StyledViewGap>
         </Container>
       }
     />
   )
 }
+const TitleContainer = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
+}))
+
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xxxxl,
+}))
 
 const IdCard = styled(InitialIdCard).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
@@ -118,7 +125,10 @@ const SecondOtherOption = (
   />
 )
 
-const buttonListSeparator = <Spacer.Column numberOfSpaces={9} />
+const Separator = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xl,
+}))
+const buttonListSeparator = <Separator />
 
 const Container = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xs,
