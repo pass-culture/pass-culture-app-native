@@ -20,13 +20,13 @@ type Props = {
   venue: BookingVenueResponse
 }
 
-const notQrCodeSubcategories = [
+const notQrCodeSubcategories = new Set([
   SubcategoryIdEnum.FESTIVAL_MUSIQUE,
   SubcategoryIdEnum.CONCERT,
   SubcategoryIdEnum.EVENEMENT_MUSIQUE,
   SubcategoryIdEnum.FESTIVAL_SPECTACLE,
   SubcategoryIdEnum.SPECTACLE_REPRESENTATION,
-]
+])
 
 export const TicketBody: FunctionComponent<Props> = ({
   withdrawalDelay,
@@ -37,7 +37,7 @@ export const TicketBody: FunctionComponent<Props> = ({
   externalBookings,
   venue,
 }) => {
-  const subcategoryShouldHaveQrCode = !notQrCodeSubcategories.includes(subcategoryId)
+  const subcategoryShouldHaveQrCode = !notQrCodeSubcategories.has(subcategoryId)
 
   if (externalBookings)
     return (

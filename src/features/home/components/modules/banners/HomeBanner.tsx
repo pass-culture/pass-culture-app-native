@@ -47,11 +47,11 @@ const systemBannerIcons: {
   [BannerName.transition_17_18_banner]: StyledBirthdayCake,
 }
 
-const bannersToRender = [
+const bannersToRender = new Set([
   BannerName.activation_banner,
   BannerName.retry_identity_check_banner,
   BannerName.transition_17_18_banner,
-]
+])
 
 export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
@@ -77,7 +77,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   const { banner } = useActivationBanner()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const shouldRenderSystemBanner = banner.name ? bannersToRender.includes(banner.name) : false
+  const shouldRenderSystemBanner = banner.name ? bannersToRender.has(banner.name) : false
 
   const systemBannerAnalyticsType =
     banner.name === BannerName.geolocation_banner ? 'location' : 'credit'
