@@ -4,7 +4,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
 import { act, renderHook } from 'tests/utils'
 
-import { useOfferBody } from './useOfferBody'
+import { useOfferBodyData } from './useOfferBodyData'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -47,14 +47,14 @@ const defaultParams = {
   searchGroupList: [],
 }
 
-describe('useOfferBody', () => {
+describe('useOfferBodyData', () => {
   beforeEach(() => {
     jest.clearAllMocks()
     useRoute.mockReturnValue({ params: { id: offerResponseSnap.id } })
   })
 
   it('should return all expected ViewModel properties', () => {
-    const { result } = renderHook(() => useOfferBody(defaultParams))
+    const { result } = renderHook(() => useOfferBodyData(defaultParams))
 
     expect(result.current).toEqual(
       expect.objectContaining({
@@ -63,12 +63,13 @@ describe('useOfferBody', () => {
         distance: null,
         onSeeMoreButtonPress: expect.any(Function),
         onSeeAllReviewsPress: expect.any(Function),
+        onViewableItemsChanged: expect.any(Function),
       })
     )
   })
 
   it('should call analytics.logConsultChronicle on onSeeMoreButtonPress', () => {
-    const { result } = renderHook(() => useOfferBody(defaultParams))
+    const { result } = renderHook(() => useOfferBodyData(defaultParams))
 
     act(() => {
       result.current.onSeeMoreButtonPress(42)
@@ -81,7 +82,7 @@ describe('useOfferBody', () => {
   })
 
   it('should navigate to Chronicles on onSeeMoreButtonPress', () => {
-    const { result } = renderHook(() => useOfferBody(defaultParams))
+    const { result } = renderHook(() => useOfferBodyData(defaultParams))
 
     act(() => {
       result.current.onSeeMoreButtonPress(42)
@@ -95,7 +96,7 @@ describe('useOfferBody', () => {
   })
 
   it('should call analytics.logClickInfoReview on onSeeAllReviewsPress', () => {
-    const { result } = renderHook(() => useOfferBody(defaultParams))
+    const { result } = renderHook(() => useOfferBodyData(defaultParams))
 
     act(() => {
       result.current.onSeeAllReviewsPress()

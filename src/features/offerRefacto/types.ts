@@ -1,4 +1,4 @@
-import { ComponentType, PropsWithChildren, ReactElement, ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { Animated, ViewToken } from 'react-native'
 
 import {
@@ -7,12 +7,13 @@ import {
   RecommendationApiParams,
   SearchGroupResponseModelv2,
 } from 'api/gen'
-import { ChronicleCardData } from 'features/chronicle/type'
-import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
+import { OfferBodyComponentProps, OfferImageContainerDimensions } from 'features/offer/types'
 import { ShareContent } from 'libs/share/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { Offer } from 'shared/offer/types'
 import { ImageWithCredit } from 'shared/types'
+
+export type { OfferBodyComponentProps }
 
 export type HasEnoughCreditType =
   | { hasEnoughCredit: true; message?: never }
@@ -55,21 +56,10 @@ export type UseOfferBodyParams = {
   userId?: number
 }
 
-type ImageContainerDimensions = {
-  backgroundHeight: number
-  imageStyle: {
-    height: number
-    width: number
-    maxWidth: number
-    aspectRatio: number
-    borderRadius: number
-  }
-}
-
 export type OfferBodyViewModel = {
   offerImages: ImageWithCredit[]
   placeholderImage: string | undefined
-  imageDimensions: ImageContainerDimensions
+  imageDimensions: OfferImageContainerDimensions
   distance: string | null
   sameCategorySimilarOffers?: Offer[]
   apiRecoParamsSameCategory?: RecommendationApiParams
@@ -77,32 +67,12 @@ export type OfferBodyViewModel = {
   apiRecoParamsOtherCategories?: RecommendationApiParams
   onSeeMoreButtonPress: (chronicleId: number) => void
   onSeeAllReviewsPress: () => void
-}
-
-export type OfferBodyComponentProps = {
-  offer: OfferResponse
-  subcategory: Subcategory
-  searchGroupList: SearchGroupResponseModelv2[]
-  chronicles?: ChronicleCardData[]
-  chronicleVariantInfo: ChronicleVariantInfo
-  headlineOffersCount?: number
-  isVideoSectionEnabled?: boolean
-  hasVideoCookiesConsent?: boolean
-  onVideoConsentPress?: () => void
-  isMultiArtistsEnabled?: boolean
-  onShowOfferArtistsModal: (artists: OfferArtist[]) => void
-  onShowChroniclesWritersModal: () => void
-  onOfferPreviewPress: (index?: number) => void
   onViewableItemsChanged: (
     items: Pick<ViewToken, 'key' | 'index'>[],
     moduleId: string,
     itemType: 'offer' | 'venue' | 'artist' | 'unknown',
     playlistIndex?: number
   ) => void
-  userId?: number
-  BodyWrapper: ComponentType<PropsWithChildren>
-  desktopCTAs?: ReactElement | null
-  children?: ReactNode
 }
 
 export type OfferBodyViewProps = OfferBodyComponentProps & {

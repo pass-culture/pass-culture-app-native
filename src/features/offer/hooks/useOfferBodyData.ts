@@ -3,26 +3,54 @@ import { useQueryClient } from '@tanstack/react-query'
 import { useCallback, useMemo, useRef } from 'react'
 import { ViewToken } from 'react-native'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponse, RecommendationApiParams, SearchGroupResponseModelv2 } from 'api/gen'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
-import { OfferBodyViewModel, UseOfferBodyParams } from 'features/offerRefacto/types'
+import { OfferImageContainerDimensions } from 'features/offer/types'
 import { analytics } from 'libs/analytics/provider'
 import { getDistance } from 'libs/location/getDistance'
 import { useLocation } from 'libs/location/location'
 import { QueryKeys } from 'libs/queryKeys'
+import { Subcategory } from 'libs/subcategories/types'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
+import { Offer } from 'shared/offer/types'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { ImageWithCredit } from 'shared/types'
 
-export const useOfferBody = ({
+type UseOfferBodyDataParams = {
+  offer: OfferResponse
+  subcategory: Subcategory
+  searchGroupList: SearchGroupResponseModelv2[]
+  userId?: number
+}
+
+export type OfferBodyDataViewModel = {
+  offerImages: ImageWithCredit[]
+  placeholderImage: string | undefined
+  imageDimensions: OfferImageContainerDimensions
+  distance: string | null
+  sameCategorySimilarOffers?: Offer[]
+  apiRecoParamsSameCategory?: RecommendationApiParams
+  otherCategoriesSimilarOffers?: Offer[]
+  apiRecoParamsOtherCategories?: RecommendationApiParams
+  onSeeMoreButtonPress: (chronicleId: number) => void
+  onSeeAllReviewsPress: () => void
+  onViewableItemsChanged: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    playlistIndex?: number
+  ) => void
+}
+
+export const useOfferBodyData = ({
   offer,
   subcategory,
   searchGroupList,
   userId,
-}: UseOfferBodyParams): OfferBodyViewModel => {
+}: UseOfferBodyDataParams): OfferBodyDataViewModel => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Offer'>>()
 
@@ -65,7 +93,6 @@ export const useOfferBody = ({
   const imageDimensions = useOfferImageContainerDimensions(offer.subcategoryId)
 
   const onSeeMoreButtonPress = (chronicleId: number) => {
-    // It's dirty but necessary to use from parameter for the logs
     navigate('Chronicles', { offerId: offer.id, chronicleId, from: 'chronicles' })
     void analytics.logConsultChronicle({ offerId: offer.id, chronicleId })
   }

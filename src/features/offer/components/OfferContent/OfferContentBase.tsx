@@ -1,20 +1,12 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
-import { useQueryClient } from '@tanstack/react-query'
-import React, {
-  ComponentType,
-  FunctionComponent,
-  PropsWithChildren,
-  useCallback,
-  useMemo,
-  useRef,
-} from 'react'
-import { LayoutChangeEvent, StyleProp, ViewStyle, ViewToken } from 'react-native'
+import { useRoute } from '@react-navigation/native'
+import React, { ComponentType, FunctionComponent, PropsWithChildren } from 'react'
+import { LayoutChangeEvent, StyleProp, ViewStyle } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
-import { OfferArtist, OfferResponse, ReactionTypeEnum } from 'api/gen'
+import { OfferArtist, ReactionTypeEnum } from 'api/gen'
 import { ChronicleCardData } from 'features/chronicle/type'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { ChroniclesSectionWithAnchor } from 'features/offer/components/OfferContent/ChronicleSection/ChroniclesSectionWithAnchor'
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
@@ -26,20 +18,11 @@ import { OfferImageContainer } from 'features/offer/components/OfferImageContain
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
-import { getVenue } from 'features/offer/helpers/getVenueBlockProps'
-import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
-import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
+import { useOfferBodyData } from 'features/offer/hooks/useOfferBodyData'
 import { useOfferContentTracking } from 'features/offer/hooks/useOfferContentTracking'
 import { useOfferFavorites } from 'features/offer/hooks/useOfferFavorites'
 import { useOfferScroll } from 'features/offer/hooks/useOfferScroll'
-import { OfferContentProps } from 'features/offer/types'
-import { analytics } from 'libs/analytics/provider'
-import { getDistance } from 'libs/location/getDistance'
-import { useLocation } from 'libs/location/location'
-import { QueryKeys } from 'libs/queryKeys'
-import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
-import { usePageTracking } from 'shared/tracking/usePageTracking'
-import { ImageWithCredit } from 'shared/types'
+import { OfferBodyComponentProps, OfferContentProps } from 'features/offer/types'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -60,6 +43,112 @@ type OfferContentBaseProps = OfferContentProps &
     chronicleVariantInfo?: ChronicleVariantInfo
     isVideoSectionEnabled?: boolean
   }>
+
+// ---------------------------------------------------------------------------
+// DefaultBodyContent — backward-compat body when no BodyComponent is provided
+// ---------------------------------------------------------------------------
+
+const noop = () => undefined
+
+const DefaultBodyContent: FunctionComponent<OfferBodyComponentProps> = ({
+  offer,
+  subcategory,
+  searchGroupList,
+  userId,
+  chronicles,
+  chronicleVariantInfo,
+  headlineOffersCount,
+  isVideoSectionEnabled,
+  hasVideoCookiesConsent,
+  onVideoConsentPress,
+  isMultiArtistsEnabled,
+  onShowOfferArtistsModal,
+  onShowChroniclesWritersModal,
+  onOfferPreviewPress,
+  BodyWrapper = React.Fragment,
+  desktopCTAs,
+  children,
+}) => {
+  const {
+    offerImages,
+    placeholderImage,
+    imageDimensions,
+    distance,
+    sameCategorySimilarOffers,
+    apiRecoParamsSameCategory,
+    otherCategoriesSimilarOffers,
+    apiRecoParamsOtherCategories,
+    onSeeMoreButtonPress,
+    onSeeAllReviewsPress,
+    onViewableItemsChanged,
+  } = useOfferBodyData({ offer, subcategory, searchGroupList, userId })
+
+  return (
+    <React.Fragment>
+      <BodyWrapper>
+        <OfferImageContainer
+          images={offerImages}
+          categoryId={subcategory.categoryId}
+          onPress={onOfferPreviewPress}
+          placeholderImage={placeholderImage}
+          imageDimensions={imageDimensions}
+          offer={offer}
+        />
+        <OfferBody
+          offer={offer}
+          subcategory={subcategory}
+          likesCount={offer.reactionsCount.likes}
+          chroniclesCount={offer.chroniclesCount}
+          chronicles={chronicles}
+          distance={distance}
+          headlineOffersCount={headlineOffersCount}
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          chronicleVariantInfo={chronicleVariantInfo!}
+          isVideoSectionEnabled={isVideoSectionEnabled}
+          hasVideoCookiesConsent={hasVideoCookiesConsent}
+          onVideoConsentPress={onVideoConsentPress ?? noop}
+          isMultiArtistsEnabled={isMultiArtistsEnabled}
+          onShowOfferArtistsModal={onShowOfferArtistsModal}>
+          {desktopCTAs}
+        </OfferBody>
+      </BodyWrapper>
+
+      {chronicles?.length && chronicleVariantInfo ? (
+        <ChroniclesSectionWithAnchor
+          chronicles={chronicles}
+          chronicleVariantInfo={chronicleVariantInfo}
+          offer={offer}
+          onSeeMoreButtonPress={onSeeMoreButtonPress}
+          onShowChroniclesWritersModal={onShowChroniclesWritersModal}
+          onSeeAllReviewsPress={onSeeAllReviewsPress}
+        />
+      ) : null}
+
+      <DefaultBodySectionWithDivider
+        visible
+        margin
+        testID="messagingApp-container-with-divider"
+        gap={8}>
+        <OfferMessagingApps offer={offer} />
+      </DefaultBodySectionWithDivider>
+
+      <OfferPlaylistList
+        offer={offer}
+        sameCategorySimilarOffers={sameCategorySimilarOffers}
+        apiRecoParamsSameCategory={apiRecoParamsSameCategory}
+        otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
+        apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
+        onViewableItemsChanged={onViewableItemsChanged}
+      />
+
+      {children}
+    </React.Fragment>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// OfferContentBase — orchestration (scroll, header, footer)
+// ---------------------------------------------------------------------------
 
 export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   offer,
@@ -86,9 +175,11 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   children,
 }) => {
   const HeaderToRender = HeaderComponent || OfferHeader
+  const BodyToRender = BodyComponent ?? DefaultBodyContent
   const theme = useTheme()
 
-  // P1-05 — Extracted hooks (scroll, tracking, favorites)
+  const { params } = useRoute<UseRouteType<'Offer'>>()
+
   const { scrollListener, trackEventHasSeenOfferOnce } = useOfferContentTracking({
     offerId: offer.id,
     subcategoryId: subcategory.id,
@@ -96,82 +187,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   const { scrollViewRef, headerTransition, handleScroll, handleCheckScrollY } = useOfferScroll({
     scrollListener,
   })
-  const favoriteButtonProps = useOfferFavorites(offer)
-
-  // Body data — owned here so both inline (legacy) and BodyComponent (new) paths share tracking
-  const { navigate } = useNavigation<UseNavigationType>()
-  const { params } = useRoute<UseRouteType<'Offer'>>()
-
-  const pageTracking = usePageTracking({
-    pageName: 'Offer',
-    pageLocation: 'offer',
-    pageId: params.id.toString(),
-  })
-
-  const {
-    sameCategorySimilarOffers,
-    apiRecoParamsSameCategory,
-    otherCategoriesSimilarOffers,
-    apiRecoParamsOtherCategories,
-  } = useOfferPlaylist({ offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList })
-
-  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
-  const venue = getVenue(offer.venue)
-  const distance = venue.coordinates
-    ? getDistance(
-        { lat: venue.coordinates.latitude, lng: venue.coordinates.longitude },
-        { userLocation, selectedPlace, selectedLocationMode },
-        offer.subcategoryId
-      )
-    : null
-
-  // We want to show images from offer when it's loaded. Not the one preloaded in query cache...
-  const offerImages: ImageWithCredit[] = useMemo(
-    () =>
-      offer.metadata && offer.images ? getImagesUrlsWithCredit<ImageWithCredit>(offer.images) : [],
-    [offer]
-  )
-
-  const queryClient = useQueryClient()
-  const cachedOffer = queryClient.getQueryData<OfferResponse>([QueryKeys.OFFER, offer.id])
-
-  // Extract cached image before it's been updated by next offer query
-  const placeholderImage = useRef(cachedOffer?.images?.recto?.url).current
-
-  const imageDimensions = useOfferImageContainerDimensions(offer.subcategoryId)
-
-  const onSeeMoreButtonPress = (chronicleId: number) => {
-    // It's dirty but necessary to use from parameter for the logs
-    navigate('Chronicles', { offerId: offer.id, chronicleId, from: 'chronicles' })
-    void analytics.logConsultChronicle({ offerId: offer.id, chronicleId })
-  }
-
-  const handleOnSeeAllReviewsPress = () => {
-    void analytics.logClickInfoReview({
-      from: 'offer',
-      offerId: offer.id.toString(),
-      categoryName: subcategory.categoryId,
-      userId: userId?.toString(),
-    })
-  }
-
-  const handleViewableItemsChanged = useCallback(
-    (
-      items: Pick<ViewToken, 'key' | 'index'>[],
-      moduleId: string,
-      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-      playlistIndex?: number
-    ) => {
-      pageTracking.trackViewableItems({
-        moduleId,
-        itemType,
-        viewableItems: items,
-        playlistIndex,
-        entryId: offer.id.toString(),
-      })
-    },
-    [offer.id, pageTracking]
-  )
+  const favoriteButtonProps = useOfferFavorites(offer, params)
 
   const offerCtaButton = (
     <OfferCTAButton
@@ -209,87 +225,25 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           ref={scrollViewRef}
           contentContainerStyle={contentContainerStyle}
           onScroll={handleScroll}>
-          {BodyComponent ? (
-            <BodyComponent
-              offer={offer}
-              subcategory={subcategory}
-              searchGroupList={searchGroupList}
-              chronicles={chronicles}
-              chronicleVariantInfo={chronicleVariantInfo ?? { subtitleItem: '', label: '' }}
-              headlineOffersCount={headlineOffersCount}
-              isVideoSectionEnabled={isVideoSectionEnabled}
-              hasVideoCookiesConsent={hasVideoCookiesConsent}
-              onVideoConsentPress={onVideoConsentPress}
-              isMultiArtistsEnabled={isMultiArtistsEnabled}
-              onShowOfferArtistsModal={onShowOfferArtistsModal}
-              onShowChroniclesWritersModal={onShowChroniclesWritersModal}
-              onOfferPreviewPress={onOfferPreviewPress}
-              onViewableItemsChanged={handleViewableItemsChanged}
-              userId={userId}
-              BodyWrapper={BodyWrapper}
-              desktopCTAs={desktopCTAs}>
-              {children}
-            </BodyComponent>
-          ) : (
-            <React.Fragment>
-              <BodyWrapper>
-                <OfferImageContainer
-                  images={offerImages}
-                  categoryId={subcategory.categoryId}
-                  onPress={onOfferPreviewPress}
-                  placeholderImage={placeholderImage}
-                  imageDimensions={imageDimensions}
-                  offer={offer}
-                />
-                <OfferBody
-                  offer={offer}
-                  subcategory={subcategory}
-                  likesCount={offer.reactionsCount.likes}
-                  chroniclesCount={offer.chroniclesCount}
-                  chronicles={chronicles}
-                  distance={distance}
-                  headlineOffersCount={headlineOffersCount}
-                  chronicleVariantInfo={chronicleVariantInfo}
-                  isVideoSectionEnabled={isVideoSectionEnabled}
-                  hasVideoCookiesConsent={hasVideoCookiesConsent}
-                  onVideoConsentPress={onVideoConsentPress ?? (() => undefined)}
-                  isMultiArtistsEnabled={isMultiArtistsEnabled}
-                  onShowOfferArtistsModal={onShowOfferArtistsModal}>
-                  {desktopCTAs}
-                </OfferBody>
-              </BodyWrapper>
-
-              {chronicles?.length ? (
-                <ChroniclesSectionWithAnchor
-                  chronicles={chronicles}
-                  chronicleVariantInfo={chronicleVariantInfo}
-                  offer={offer}
-                  onSeeMoreButtonPress={onSeeMoreButtonPress}
-                  onShowChroniclesWritersModal={onShowChroniclesWritersModal}
-                  onSeeAllReviewsPress={handleOnSeeAllReviewsPress}
-                />
-              ) : null}
-
-              <StyledSectionWithDivider
-                visible
-                margin
-                testID="messagingApp-container-with-divider"
-                gap={8}>
-                <OfferMessagingApps offer={offer} />
-              </StyledSectionWithDivider>
-
-              <OfferPlaylistList
-                offer={offer}
-                sameCategorySimilarOffers={sameCategorySimilarOffers}
-                apiRecoParamsSameCategory={apiRecoParamsSameCategory}
-                otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
-                apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
-                onViewableItemsChanged={handleViewableItemsChanged}
-              />
-
-              {children}
-            </React.Fragment>
-          )}
+          <BodyToRender
+            offer={offer}
+            subcategory={subcategory}
+            searchGroupList={searchGroupList}
+            chronicles={chronicles}
+            chronicleVariantInfo={chronicleVariantInfo}
+            headlineOffersCount={headlineOffersCount}
+            isVideoSectionEnabled={isVideoSectionEnabled}
+            hasVideoCookiesConsent={hasVideoCookiesConsent}
+            onVideoConsentPress={onVideoConsentPress}
+            isMultiArtistsEnabled={isMultiArtistsEnabled}
+            onShowOfferArtistsModal={onShowOfferArtistsModal}
+            onShowChroniclesWritersModal={onShowChroniclesWritersModal}
+            onOfferPreviewPress={onOfferPreviewPress}
+            userId={userId}
+            BodyWrapper={BodyWrapper}
+            desktopCTAs={desktopCTAs}>
+            {children}
+          </BodyToRender>
         </IntersectionObserverScrollView>
         {theme.isMobileViewport ? (
           <FooterContainer>
@@ -305,14 +259,14 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
 
 const scrollIndicatorInsets = { right: 1 }
 
+const DefaultBodySectionWithDivider = styled(SectionWithDivider)(({ theme }) => ({
+  paddingBottom: theme.designSystem.size.spacing.xxl,
+}))
+
 const Container = styled.View({
   flex: 1,
 })
 
 const FooterContainer = styled.View(({ theme }) => ({
   marginTop: theme.isDesktopViewport ? undefined : theme.designSystem.size.spacing.xxs,
-}))
-
-const StyledSectionWithDivider = styled(SectionWithDivider)(({ theme }) => ({
-  paddingBottom: theme.designSystem.size.spacing.xxl,
 }))

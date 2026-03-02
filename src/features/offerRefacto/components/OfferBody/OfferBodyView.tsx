@@ -9,6 +9,8 @@ import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/O
 import { OfferBodyViewProps } from 'features/offerRefacto/types'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 
+const noop = () => undefined
+
 export const OfferBodyView = ({
   viewModel,
   offer,
@@ -23,8 +25,7 @@ export const OfferBodyView = ({
   onShowOfferArtistsModal,
   onShowChroniclesWritersModal,
   onOfferPreviewPress,
-  onViewableItemsChanged,
-  BodyWrapper,
+  BodyWrapper = React.Fragment,
   desktopCTAs,
   children,
 }: Readonly<OfferBodyViewProps>) => {
@@ -39,6 +40,7 @@ export const OfferBodyView = ({
     apiRecoParamsOtherCategories,
     onSeeMoreButtonPress,
     onSeeAllReviewsPress,
+    onViewableItemsChanged,
   } = viewModel
 
   return (
@@ -60,17 +62,18 @@ export const OfferBodyView = ({
           chronicles={chronicles}
           distance={distance}
           headlineOffersCount={headlineOffersCount}
-          chronicleVariantInfo={chronicleVariantInfo}
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          chronicleVariantInfo={chronicleVariantInfo!}
           isVideoSectionEnabled={isVideoSectionEnabled}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
-          onVideoConsentPress={onVideoConsentPress ?? (() => undefined)}
+          onVideoConsentPress={onVideoConsentPress ?? noop}
           isMultiArtistsEnabled={isMultiArtistsEnabled}
           onShowOfferArtistsModal={onShowOfferArtistsModal}>
           {desktopCTAs}
         </OfferBodyContent>
       </BodyWrapper>
 
-      {chronicles?.length ? (
+      {chronicles?.length && chronicleVariantInfo ? (
         <ChroniclesSectionWithAnchor
           chronicles={chronicles}
           chronicleVariantInfo={chronicleVariantInfo}

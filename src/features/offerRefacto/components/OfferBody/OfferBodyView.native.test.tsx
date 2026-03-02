@@ -10,28 +10,38 @@ import { render, screen } from 'tests/utils'
 
 import { OfferBodyView } from './OfferBodyView'
 
-jest.mock('features/offer/components/OfferBody/OfferBody', () => ({
-  OfferBody: () => <View testID="offer-body-content" />,
-}))
+jest.mock('features/offer/components/OfferBody/OfferBody', () => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { View } = require('react-native')
+  return { OfferBody: () => <View testID="offer-body-content" /> }
+})
 
 jest.mock(
   'features/offer/components/OfferContent/ChronicleSection/ChroniclesSectionWithAnchor',
-  () => ({
-    ChroniclesSectionWithAnchor: () => <View testID="chronicles-section" />,
-  })
+  () => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { View } = require('react-native')
+    return { ChroniclesSectionWithAnchor: () => <View testID="chronicles-section" /> }
+  }
 )
 
-jest.mock('features/offer/components/OfferImageContainer/OfferImageContainer', () => ({
-  OfferImageContainer: () => <View testID="offer-image-container" />,
-}))
+jest.mock('features/offer/components/OfferImageContainer/OfferImageContainer', () => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { View } = require('react-native')
+  return { OfferImageContainer: () => <View testID="offer-image-container" /> }
+})
 
-jest.mock('features/offer/components/OfferMessagingApps/OfferMessagingApps', () => ({
-  OfferMessagingApps: () => <View testID="offer-messaging-apps" />,
-}))
+jest.mock('features/offer/components/OfferMessagingApps/OfferMessagingApps', () => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { View } = require('react-native')
+  return { OfferMessagingApps: () => <View testID="offer-messaging-apps" /> }
+})
 
-jest.mock('features/offer/components/OfferPlaylistList/OfferPlaylistList', () => ({
-  OfferPlaylistList: () => <View testID="offer-playlist-list" />,
-}))
+jest.mock('features/offer/components/OfferPlaylistList/OfferPlaylistList', () => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { View } = require('react-native')
+  return { OfferPlaylistList: () => <View testID="offer-playlist-list" /> }
+})
 
 const mockViewModel: OfferBodyViewModel = {
   offerImages: [],
@@ -47,6 +57,7 @@ const mockViewModel: OfferBodyViewModel = {
   apiRecoParamsOtherCategories: undefined,
   onSeeMoreButtonPress: jest.fn(),
   onSeeAllReviewsPress: jest.fn(),
+  onViewableItemsChanged: jest.fn(),
 }
 
 const mockChronicle: ChronicleCardData = {
@@ -109,7 +120,6 @@ describe('<OfferBodyView />', () => {
         onShowOfferArtistsModal={jest.fn()}
         onShowChroniclesWritersModal={jest.fn()}
         onOfferPreviewPress={jest.fn()}
-        onViewableItemsChanged={jest.fn()}
         BodyWrapper={BodyWrapper}>
         <View testID="test-child" />
       </OfferBodyView>
@@ -130,7 +140,6 @@ const renderOfferBodyView = (overrides: { chronicles?: ChronicleCardData[] } = {
       onShowOfferArtistsModal={jest.fn()}
       onShowChroniclesWritersModal={jest.fn()}
       onOfferPreviewPress={jest.fn()}
-      onViewableItemsChanged={jest.fn()}
       BodyWrapper={BodyWrapper}
       {...overrides}
     />

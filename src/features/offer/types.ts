@@ -1,4 +1,4 @@
-import { ComponentType, PropsWithChildren, ReactNode } from 'react'
+import { ComponentType, PropsWithChildren, ReactElement, ReactNode } from 'react'
 import { Animated } from 'react-native'
 
 import {
@@ -15,12 +15,29 @@ import { ChronicleCardData } from 'features/chronicle/type'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { PlaylistType } from 'features/offer/enums'
-import { OfferBodyComponentProps } from 'features/offerRefacto/types'
 import { AlgoliaGeoloc } from 'libs/algolia/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { NAVIGATION_METHOD } from 'shared/constants'
 
-export type { OfferBodyComponentProps }
+export type OfferBodyComponentProps = {
+  offer: OfferResponse
+  subcategory: Subcategory
+  searchGroupList: SearchGroupResponseModelv2[]
+  chronicles?: ChronicleCardData[]
+  chronicleVariantInfo?: ChronicleVariantInfo
+  headlineOffersCount?: number
+  isVideoSectionEnabled?: boolean
+  hasVideoCookiesConsent?: boolean
+  onVideoConsentPress?: () => void
+  isMultiArtistsEnabled?: boolean
+  onShowOfferArtistsModal: (artists: OfferArtist[]) => void
+  onShowChroniclesWritersModal: () => void
+  onOfferPreviewPress: (index?: number) => void
+  userId?: number
+  BodyWrapper?: ComponentType<PropsWithChildren>
+  desktopCTAs?: ReactElement | null
+  children?: ReactNode
+}
 
 type ValueOf<T> = T[keyof T]
 type NavigationMethod = ValueOf<typeof NAVIGATION_METHOD>

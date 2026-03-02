@@ -1,19 +1,24 @@
-import { useRoute } from '@react-navigation/native'
-
 import { OfferResponse, RecommendationApiParams } from 'api/gen'
 import { useFavorite } from 'features/favorites/hooks/useFavorite'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { Referrals } from 'features/navigation/RootNavigator/types'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { analytics } from 'libs/analytics/provider'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
-export const useOfferFavorites = (offer: OfferResponse) => {
-  const { params } = useRoute<UseRouteType<'Offer'>>()
+type FavoriteAnalyticsParams = {
+  from?: Referrals
+  moduleName?: string
+  moduleId?: string
+  searchId?: string
+  playlistType?: string
+  apiRecoParams?: string
+}
 
+export const useOfferFavorites = (offer: OfferResponse, params?: FavoriteAnalyticsParams) => {
   const apiRecoParams: RecommendationApiParams = params?.apiRecoParams
-    ? JSON.parse(params?.apiRecoParams)
+    ? JSON.parse(params.apiRecoParams)
     : undefined
 
   const { mutate: addFavorite, isPending: isAddFavoriteLoading } = useAddFavoriteMutation({
