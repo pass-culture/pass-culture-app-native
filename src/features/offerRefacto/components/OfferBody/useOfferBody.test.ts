@@ -1,4 +1,4 @@
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
@@ -41,11 +41,6 @@ jest.mock('features/offer/helpers/useOfferImageContainerDimensions', () => ({
   }),
 }))
 
-const mockTrackViewableItems = jest.fn()
-jest.mock('shared/tracking/usePageTracking', () => ({
-  usePageTracking: () => ({ trackViewableItems: mockTrackViewableItems, forceSend: jest.fn() }),
-}))
-
 const defaultParams = {
   offer: offerResponseSnap,
   subcategory: mockSubcategory,
@@ -55,7 +50,6 @@ const defaultParams = {
 describe('useOfferBody', () => {
   beforeEach(() => {
     jest.clearAllMocks()
-    useRoute.mockReturnValue({ params: { id: offerResponseSnap.id } })
   })
 
   it('should return all expected ViewModel properties', () => {
@@ -68,7 +62,6 @@ describe('useOfferBody', () => {
         distance: null,
         onSeeMoreButtonPress: expect.any(Function),
         onSeeAllReviewsPress: expect.any(Function),
-        onViewableItemsChanged: expect.any(Function),
       })
     )
   })
@@ -112,23 +105,6 @@ describe('useOfferBody', () => {
       offerId: offerResponseSnap.id.toString(),
       categoryName: mockSubcategory.categoryId,
       userId: undefined,
-    })
-  })
-
-  it('should call trackViewableItems on onViewableItemsChanged', () => {
-    const { result } = renderHook(() => useOfferBody(defaultParams))
-    const items = [{ key: 'item-1', index: 0 }]
-
-    act(() => {
-      result.current.onViewableItemsChanged(items, 'module-id', 'offer', 0)
-    })
-
-    expect(mockTrackViewableItems).toHaveBeenCalledWith({
-      moduleId: 'module-id',
-      itemType: 'offer',
-      viewableItems: items,
-      playlistIndex: 0,
-      entryId: offerResponseSnap.id.toString(),
     })
   })
 })

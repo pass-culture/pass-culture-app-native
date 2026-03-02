@@ -23,6 +23,7 @@ export const OfferBodyView = ({
   onShowOfferArtistsModal,
   onShowChroniclesWritersModal,
   onOfferPreviewPress,
+  onViewableItemsChanged,
   BodyWrapper,
   desktopCTAs,
   children,
@@ -38,7 +39,6 @@ export const OfferBodyView = ({
     apiRecoParamsOtherCategories,
     onSeeMoreButtonPress,
     onSeeAllReviewsPress,
-    onViewableItemsChanged,
   } = viewModel
 
   return (

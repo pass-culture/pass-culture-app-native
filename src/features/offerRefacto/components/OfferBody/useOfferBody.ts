@@ -1,10 +1,9 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import { useQueryClient } from '@tanstack/react-query'
-import { useCallback, useMemo, useRef } from 'react'
-import { ViewToken } from 'react-native'
+import { useMemo, useRef } from 'react'
 
 import { OfferResponse } from 'api/gen'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
@@ -14,7 +13,6 @@ import { getDistance } from 'libs/location/getDistance'
 import { useLocation } from 'libs/location/location'
 import { QueryKeys } from 'libs/queryKeys'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
-import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { ImageWithCredit } from 'shared/types'
 
 export const useOfferBody = ({
@@ -24,13 +22,6 @@ export const useOfferBody = ({
   userId,
 }: UseOfferBodyParams): OfferBodyViewModel => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { params } = useRoute<UseRouteType<'Offer'>>()
-
-  const pageTracking = usePageTracking({
-    pageName: 'Offer',
-    pageLocation: 'offer',
-    pageId: params.id.toString(),
-  })
 
   const {
     sameCategorySimilarOffers,
@@ -79,24 +70,6 @@ export const useOfferBody = ({
     })
   }
 
-  const onViewableItemsChanged = useCallback(
-    (
-      items: Pick<ViewToken, 'key' | 'index'>[],
-      moduleId: string,
-      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-      playlistIndex?: number
-    ) => {
-      pageTracking.trackViewableItems({
-        moduleId,
-        itemType,
-        viewableItems: items,
-        playlistIndex,
-        entryId: offer.id.toString(),
-      })
-    },
-    [offer.id, pageTracking]
-  )
-
   return {
     offerImages,
     placeholderImage,
@@ -108,6 +81,5 @@ export const useOfferBody = ({
     apiRecoParamsOtherCategories,
     onSeeMoreButtonPress,
     onSeeAllReviewsPress,
-    onViewableItemsChanged,
   }
 }

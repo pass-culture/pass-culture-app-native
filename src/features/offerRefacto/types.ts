@@ -77,12 +77,6 @@ export type OfferBodyViewModel = {
   apiRecoParamsOtherCategories?: RecommendationApiParams
   onSeeMoreButtonPress: (chronicleId: number) => void
   onSeeAllReviewsPress: () => void
-  onViewableItemsChanged: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
 }
 
 export type OfferBodyComponentProps = {
@@ -99,6 +93,12 @@ export type OfferBodyComponentProps = {
   onShowOfferArtistsModal: (artists: OfferArtist[]) => void
   onShowChroniclesWritersModal: () => void
   onOfferPreviewPress: (index?: number) => void
+  onViewableItemsChanged: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    playlistIndex?: number
+  ) => void
   userId?: number
   BodyWrapper: ComponentType<PropsWithChildren>
   desktopCTAs?: ReactElement | null

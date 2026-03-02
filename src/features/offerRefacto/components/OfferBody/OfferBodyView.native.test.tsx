@@ -47,7 +47,6 @@ const mockViewModel: OfferBodyViewModel = {
   apiRecoParamsOtherCategories: undefined,
   onSeeMoreButtonPress: jest.fn(),
   onSeeAllReviewsPress: jest.fn(),
-  onViewableItemsChanged: jest.fn(),
 }
 
 const mockChronicle: ChronicleCardData = {
@@ -110,6 +109,7 @@ describe('<OfferBodyView />', () => {
         onShowOfferArtistsModal={jest.fn()}
         onShowChroniclesWritersModal={jest.fn()}
         onOfferPreviewPress={jest.fn()}
+        onViewableItemsChanged={jest.fn()}
         BodyWrapper={BodyWrapper}>
         <View testID="test-child" />
       </OfferBodyView>
@@ -130,6 +130,7 @@ const renderOfferBodyView = (overrides: { chronicles?: ChronicleCardData[] } = {
       onShowOfferArtistsModal={jest.fn()}
       onShowChroniclesWritersModal={jest.fn()}
       onOfferPreviewPress={jest.fn()}
+      onViewableItemsChanged={jest.fn()}
       BodyWrapper={BodyWrapper}
       {...overrides}
     />
