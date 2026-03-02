@@ -132,7 +132,7 @@ export const useOfferCTAs = ({
     isAComingSoonOffer,
     isLoggedIn,
     showCineCTA,
-    reminder,
+    hasReminder: !!reminder,
     movieScreeningUserData,
     favoriteAuthModal,
     reminderAuthModal,

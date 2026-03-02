@@ -4,13 +4,7 @@ import { Animated } from 'react-native'
 import { DefaultTheme } from 'styled-components/native'
 
 import { ApiError } from 'api/ApiError'
-import {
-  FavoriteRequest,
-  FavoriteResponse,
-  OfferArtist,
-  OfferResponse,
-  ReminderResponse,
-} from 'api/gen'
+import { FavoriteRequest, FavoriteResponse, OfferArtist, OfferResponse } from 'api/gen'
 import { FavoriteMutationContext } from 'features/favorites/queries/types'
 import { MovieScreeningUserData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { EmptyResponse } from 'libs/fetch'
@@ -83,7 +77,7 @@ export type OfferCTAsViewModel = {
   isLoggedIn: boolean
   favoriteAuthModal: ModalSettings
   reminderAuthModal: ModalSettings
+  hasReminder: boolean
   showCineCTA?: boolean
-  reminder?: ReminderResponse
   movieScreeningUserData?: MovieScreeningUserData
 }

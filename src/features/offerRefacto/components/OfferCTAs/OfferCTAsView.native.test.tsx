@@ -42,6 +42,7 @@ const defaultViewModel = {
   isLoggedIn: true,
   isAComingSoonOffer: false,
   showCineCTA: false,
+  hasReminder: false,
 }
 
 jest.spyOn(useOfferCTAContextModule, 'useOfferCTA').mockReturnValue({

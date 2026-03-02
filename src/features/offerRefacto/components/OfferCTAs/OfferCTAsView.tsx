@@ -31,7 +31,7 @@ export const OfferCTAsView = ({
     reminderAuthModal,
     theme,
     isFreeDigitalOffer,
-    reminder,
+    hasReminder,
     isLoggedIn,
     isAComingSoonOffer,
     showCineCTA,
@@ -58,7 +58,7 @@ export const OfferCTAsView = ({
         onPressFavoriteCTA={onFavoritePress}
         isAddFavoriteLoading={isAddFavoriteLoading}
         isRemoveFavoriteLoading={isRemoveFavoriteLoading}
-        hasReminder={!!reminder}
+        hasReminder={hasReminder}
         onPressReminderCTA={onReminderPress}
         favoriteAuthModal={favoriteAuthModal}
         reminderAuthModal={reminderAuthModal}
