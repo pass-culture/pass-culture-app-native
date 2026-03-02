@@ -19,26 +19,6 @@ import { AlgoliaGeoloc } from 'libs/algolia/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { NAVIGATION_METHOD } from 'shared/constants'
 
-export type OfferBodyComponentProps = {
-  offer: OfferResponse
-  subcategory: Subcategory
-  searchGroupList: SearchGroupResponseModelv2[]
-  chronicles?: ChronicleCardData[]
-  chronicleVariantInfo?: ChronicleVariantInfo
-  headlineOffersCount?: number
-  isVideoSectionEnabled?: boolean
-  hasVideoCookiesConsent?: boolean
-  onVideoConsentPress?: () => void
-  isMultiArtistsEnabled?: boolean
-  onShowOfferArtistsModal: (artists: OfferArtist[]) => void
-  onShowChroniclesWritersModal: () => void
-  onOfferPreviewPress: (index?: number) => void
-  userId?: number
-  BodyWrapper?: ComponentType<PropsWithChildren>
-  desktopCTAs?: ReactElement | null
-  children?: ReactNode
-}
-
 type ValueOf<T> = T[keyof T]
 type NavigationMethod = ValueOf<typeof NAVIGATION_METHOD>
 
@@ -96,6 +76,26 @@ type OfferHeaderComponentProps = PropsWithChildren<{
   title: string
   offer: OfferResponse
 }>
+
+export type OfferBodyComponentProps = {
+  offer: OfferResponse
+  subcategory: Subcategory
+  searchGroupList: SearchGroupResponseModelv2[]
+  chronicles?: ChronicleCardData[]
+  chronicleVariantInfo?: ChronicleVariantInfo
+  headlineOffersCount?: number
+  isVideoSectionEnabled?: boolean
+  hasVideoCookiesConsent?: boolean
+  onVideoConsentPress?: () => void
+  isMultiArtistsEnabled?: boolean
+  onShowOfferArtistsModal: (artists: OfferArtist[]) => void
+  onShowChroniclesWritersModal: () => void
+  onOfferPreviewPress: (index?: number) => void
+  userId?: number
+  BodyWrapper?: ComponentType<PropsWithChildren>
+  desktopCTAs?: ReactElement | null
+  children?: ReactNode
+}
 
 export type OfferContentProps = {
   offer: OfferResponse
