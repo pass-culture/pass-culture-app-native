@@ -26,3 +26,5 @@ export const BATCH_EVENT_BY_SUBCATEGORY: Partial<Record<SubcategoryIdEnumv2, Bat
 export const OF_ROLES = [ArtistType.author, ArtistType.stage_director]
 
 export const WITH_ROLES = [ArtistType.performer]
+
+export const DEFAULT_CTA_WORDING = 'Réserver l’offre'

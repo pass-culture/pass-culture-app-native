@@ -4,9 +4,23 @@ import { Animated } from 'react-native'
 import { DefaultTheme } from 'styled-components/native'
 
 import { ApiError } from 'api/ApiError'
-import { FavoriteRequest, FavoriteResponse, OfferArtist, OfferResponse } from 'api/gen'
+import {
+  BookOfferRequest,
+  BookOfferResponse,
+  BookingReponse,
+  FavoriteRequest,
+  FavoriteResponse,
+  OfferArtist,
+  OfferResponse,
+  RecommendationApiParams,
+  SubcategoryIdEnum,
+  SubscriptionStatus,
+} from 'api/gen'
 import { FavoriteMutationContext } from 'features/favorites/queries/types'
+import { ValidStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
+import { Referrals } from 'features/navigation/RootNavigator/types'
 import { MovieScreeningUserData } from 'features/offer/components/MovieScreeningCalendar/types'
+import { PlaylistType } from 'features/offer/enums'
 import { EmptyResponse } from 'libs/fetch'
 import { ShareContent } from 'libs/share/types'
 import { ModalSettings } from 'ui/components/modals/useModal'
@@ -81,3 +95,37 @@ export type OfferCTAsViewModel = {
   showCineCTA?: boolean
   movieScreeningUserData?: MovieScreeningUserData
 }
+
+export type CTAContext = {
+  offer: OfferResponse
+  bookOffer: UseMutateFunction<BookOfferResponse, Error | ApiError, BookOfferRequest>
+  isUnderageBeneficiary: boolean
+  booking?: BookingReponse | null
+  isBookingLoading?: boolean
+  isAlreadyBookedOffer?: boolean
+  from?: Referrals
+  searchId?: string
+  apiRecoParams?: RecommendationApiParams
+  playlistType?: PlaylistType
+  subscriptionStatus?: SubscriptionStatus | null
+  hasEnoughCreditMessage?: string
+  storedProfileInfos?: ValidStoredProfileInfos
+  alreadyBookedOfferId?: number
+}
+
+export type CTAType =
+  | 'AUTHENTICATION'
+  | 'BOOK_EVENT_OFFER'
+  | 'BOOK_OFFER'
+  | 'DIGITAL_OFFER'
+  | 'ENDED_USED_BOOKING'
+  | 'EXPIRED_CREDIT'
+  | 'EXPIRED_OFFER'
+  | 'EXTERNAL_URL'
+  | 'INCOMPLETE_PROFILE'
+  | 'INELIGIBLE'
+  | 'INSUFFICIENT_CREDIT'
+  | 'SEE_BOOKING'
+  | 'SOLD_OUT_OFFER'
+  | 'SUBSCRIPTION_STATUS'
+  | 'USER_15_16'
