@@ -262,7 +262,7 @@ exports[`TrackEmailChange account with password should render correctly when cho
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 65,
             }
@@ -1309,7 +1309,7 @@ exports[`TrackEmailChange account with password should render correctly when con
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 65,
             }
@@ -2367,7 +2367,7 @@ exports[`TrackEmailChange account with password should render correctly when val
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 65,
             }
@@ -3403,7 +3403,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 65,
             }
@@ -4675,7 +4675,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 65,
             }
@@ -5969,7 +5969,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 65,
             }
@@ -7252,7 +7252,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 65,
             }
