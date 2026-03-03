@@ -149,6 +149,46 @@ describe('<RadioButtonGroup />', () => {
     ).not.toBeChecked()
   })
 
+  it('should prevent selection of a per-option disabled RadioButton', async () => {
+    const disabledOptions = [
+      { label: 'RadioButton_1', key: 'radio-button-1' },
+      { label: 'RadioButton_2', key: 'radio-button-2', disabled: true },
+    ]
+    render(<ControlledRadioGroup options={disabledOptions} />)
+
+    await user.press(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 2 sur 2 - RadioButton_2 - non sélectionné'
+      )
+    )
+
+    expect(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 2 sur 2 - RadioButton_2 - non sélectionné'
+      )
+    ).not.toBeChecked()
+  })
+
+  it('should allow selection of a non-disabled option when another is per-option disabled', async () => {
+    const disabledOptions = [
+      { label: 'RadioButton_1', key: 'radio-button-1' },
+      { label: 'RadioButton_2', key: 'radio-button-2', disabled: true },
+    ]
+    render(<ControlledRadioGroup options={disabledOptions} />)
+
+    await user.press(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 1 sur 2 - RadioButton_1 - non sélectionné'
+      )
+    )
+
+    expect(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 1 sur 2 - RadioButton_1 - sélectionné'
+      )
+    ).toBeChecked()
+  })
+
   it('should render Error text when RadioButtonGroup is in error', () => {
     render(<ControlledRadioGroup error />)
 

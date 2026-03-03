@@ -135,6 +135,53 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
       options: optionsDetailed('radio-button-detailed-horizontal'),
     },
   },
+  {
+    label: 'RadioButtonGroup Per-Option Disabled',
+    props: {
+      label: 'Label',
+      description: 'Only the second option is disabled.',
+      value: '',
+      onChange,
+      options: [
+        { label: 'RadioButton_1', sizing: 'fill', key: 'radio-button-per-disabled-1' },
+        {
+          label: 'RadioButton_2',
+          sizing: 'fill',
+          key: 'radio-button-per-disabled-2',
+          disabled: true,
+        },
+        { label: 'RadioButton_3', sizing: 'fill', key: 'radio-button-per-disabled-3' },
+      ],
+    },
+  },
+  {
+    label: 'RadioButtonGroup Detailed Per-Option Disabled',
+    props: {
+      label: 'Label',
+      description: 'Only the second option is disabled.',
+      value: '',
+      onChange,
+      variant: 'detailed',
+      options: [
+        {
+          key: 'radio-button-detailed-per-disabled-1',
+          label: 'RadioButton Detailed 1',
+          description: 'Available option',
+        },
+        {
+          key: 'radio-button-detailed-per-disabled-2',
+          label: 'RadioButton Detailed 2',
+          description: 'Disabled option',
+          disabled: true,
+        },
+        {
+          key: 'radio-button-detailed-per-disabled-3',
+          label: 'RadioButton Detailed 3',
+          description: 'Available option',
+        },
+      ],
+    },
+  },
 ]
 
 export const Template: VariantsStory<typeof RadioButtonGroup> = {

@@ -248,7 +248,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
         <React.Fragment>
           <Separator />
           <Container>
-            <DuoChoiceSelector />
+            <DuoChoiceSelector label="Nombre de places" labelVariant="title3" />
           </Container>
         </React.Fragment>
       ) : null}

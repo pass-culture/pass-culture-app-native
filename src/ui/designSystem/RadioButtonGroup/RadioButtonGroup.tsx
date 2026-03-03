@@ -91,14 +91,15 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
   const renderRadioButton = useCallback(
     (item: RadioButtonGroupOption, index: number) => {
       const isSelected = value === item.label
+      const isOptionDisabled = item.disabled ?? disabled
       return (
         <RadioButton
           key={item.key}
           label={item.label}
-          disabled={disabled}
+          disabled={isOptionDisabled}
           error={error}
           value={value}
-          setValue={disabled || isSelected ? () => undefined : handleSetValue}
+          setValue={isOptionDisabled || isSelected ? () => undefined : handleSetValue}
           variant={variant}
           description={item.description}
           collapsed={item.collapsed}
