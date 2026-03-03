@@ -222,8 +222,8 @@ output.wording = {
     },
   },
   search: {
-    tabBar: "Rechercher",
-    placeholder: "Rechercher des offres.*",
+    title: "Rechercher",
+    tabBar: "Rechercher des offres.*",
     musicCategory: {
       ios: "Catégorie Musique.*",
       android: "MUSIQUE",
@@ -245,12 +245,26 @@ output.wording = {
     bookType: "Livre",
     digitalSubscription: "Abonnement presse en ligne",
     cinemaTitle: "Cinéma",
+    searchInCatalogue: "Champs de texte - Rechercher dans le catalogue",
+    noResult: "Pas de résultat",
+    for: 'pour ".*"',
     filters: {
       active: "Voir tous les filtres : 1 filtre actif",
       category: ".*Catégorie.*",
       romance: ".*Romance.*",
       digitalPress: ".*Presse en ligne.*",
       apply: "Appliquer le filtre",
+      all: "Voir tous les filtres",
+      price: ".*Prix.*",
+      maxPriceId: "Entrée pour le prix maximum",
+      accessibility: ".*Accessibilité.*",
+      reset: "Réinitialiser",
     },
+  },
+  venue: {
+    illustration: "Voir l’illustration en plein écran",
+    illustration1of1: "Illustration 1 sur 1",
+    illustration1of2: "Illustration 1 sur 2",
+    illustration2of2: "Illustration 2 sur 2",
   },
 }
