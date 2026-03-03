@@ -52,13 +52,13 @@ describe('useOfferFavorites', () => {
   it('should return addFavorite as a function', () => {
     const { result } = renderHook(() => useOfferFavorites(offerResponseSnap, mockParams))
 
-    expect(result.current.addFavorite).toBeInstanceOf(Function)
+    expect(result.current.addFavorite).toEqual(expect.any(Function))
   })
 
   it('should return removeFavorite as a function', () => {
     const { result } = renderHook(() => useOfferFavorites(offerResponseSnap, mockParams))
 
-    expect(result.current.removeFavorite).toBeInstanceOf(Function)
+    expect(result.current.removeFavorite).toEqual(expect.any(Function))
   })
 
   it('should return isAddFavoriteLoading as false initially', () => {
