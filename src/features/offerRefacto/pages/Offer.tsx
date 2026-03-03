@@ -14,6 +14,7 @@ import { OfferContentPlaceholder } from 'features/offer/components/OfferContentP
 import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chronicleVariant'
 import { OfferArtistsModal } from 'features/offer/pages/OfferArtistsModal/OfferArtistsModal'
 import { useFetchHeadlineOffersCountQuery } from 'features/offer/queries/useFetchHeadlineOffersCountQuery'
+import { OfferCTAs } from 'features/offerRefacto/components/OfferCTAs/OfferCTAs'
 import { OfferHeader as RefactoOfferHeader } from 'features/offerRefacto/components/OfferHeader/OfferHeader'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
@@ -189,6 +190,7 @@ export function Offer() {
         isMultiArtistsEnabled={isMultiArtistsEnabled}
         onShowOfferArtistsModal={showOfferArtistsModal}
         HeaderComponent={RefactoOfferHeader}
+        CTAsComponent={OfferCTAs}
       />
     </Page>
   )

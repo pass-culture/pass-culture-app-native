@@ -29,6 +29,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
   HeaderComponent,
+  CTAsComponent,
 }) => {
   const { visible, showModal, hideModal } = useModal(false)
   const headerHeight = useGetHeaderHeight()
@@ -87,7 +88,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           onVideoConsentPress={onVideoConsentPress}
           isMultiArtistsEnabled={isMultiArtistsEnabled}
           onShowOfferArtistsModal={onShowOfferArtistsModal}
-          HeaderComponent={HeaderComponent}>
+          HeaderComponent={HeaderComponent}
+          CTAsComponent={CTAsComponent}>
           {comingSoonFooterHeight ? (
             <ComingSoonFooterOffset height={comingSoonFooterHeight} />
           ) : null}

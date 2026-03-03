@@ -99,6 +99,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
   HeaderComponent,
+  CTAsComponent,
   children,
 }) => {
   const HeaderToRender = HeaderComponent || OfferHeader
@@ -271,6 +272,20 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     [offer.id, pageTracking]
   )
 
+  const OfferCTAsComponent = CTAsComponent ? (
+    <CTAsComponent
+      offer={offer}
+      subcategory={subcategory}
+      trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+      favoriteCTAProps={favoriteButtonProps}
+      onLayout={onLayout}
+    />
+  ) : (
+    <OfferContentCTAs offer={offer} onLayout={onLayout} {...favoriteButtonProps}>
+      {offerCtaButton}
+    </OfferContentCTAs>
+  )
+
   return (
     <Container>
       <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
@@ -323,11 +338,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               onVideoConsentPress={onVideoConsentPress}
               isMultiArtistsEnabled={isMultiArtistsEnabled}
               onShowOfferArtistsModal={onShowOfferArtistsModal}>
-              {theme.isDesktopViewport ? (
-                <OfferContentCTAs offer={offer} {...favoriteButtonProps}>
-                  {offerCtaButton}
-                </OfferContentCTAs>
-              ) : null}
+              {theme.isDesktopViewport ? OfferCTAsComponent : null}
             </OfferBody>
           </BodyWrapper>
 
@@ -358,13 +369,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           />
           {children}
         </IntersectionObserverScrollView>
-        {theme.isMobileViewport ? (
-          <FooterContainer>
-            <OfferContentCTAs offer={offer} onLayout={onLayout} {...favoriteButtonProps}>
-              {offerCtaButton}
-            </OfferContentCTAs>
-          </FooterContainer>
-        ) : null}
+        {theme.isMobileViewport ? <FooterContainer>{OfferCTAsComponent}</FooterContainer> : null}
       </AnchorProvider>
     </Container>
   )
