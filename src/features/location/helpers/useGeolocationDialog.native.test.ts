@@ -1,4 +1,4 @@
-import { Linking } from 'react-native'
+import { Alert, Linking } from 'react-native'
 
 import { mockLocationState } from 'features/location/fixtures/mockLocationState'
 import { GeolocPermissionState } from 'libs/location/location'
@@ -8,6 +8,7 @@ import { renderHook } from 'tests/utils'
 import { useGeolocationDialogs } from './useGeolocationDialogs'
 
 const openSettingsSpy = jest.spyOn(Linking, 'openSettings')
+const alertSpy = jest.spyOn(Alert, 'alert')
 
 const mockProps = {
   ...mockLocationState,
@@ -118,6 +119,29 @@ describe('useGeolocationDialogs', () => {
     await result.current.runGeolocationDialogs()
 
     expect(mockProps.setSelectedLocationMode).toHaveBeenNthCalledWith(1, LocationMode.AROUND_ME)
+  })
+
+  it('should show alert and select everywhere mode when permission state is GRANTED but we do not have access to a position', async () => {
+    const mockPropsGrantedWithoutPosition = {
+      ...mockProps,
+      permissionState: GeolocPermissionState.GRANTED,
+      hasGeolocPosition: false,
+    }
+    const { result } = renderHook(() => useGeolocationDialogs(mockPropsGrantedWithoutPosition))
+
+    alertSpy.mockImplementationOnce((_title, _message, buttons) => {
+      buttons?.[0]?.onPress?.()
+    })
+
+    await result.current.runGeolocationDialogs()
+
+    expect(alertSpy).toHaveBeenCalledWith(
+      'Paramètres de localisation',
+      'Nous n’avons pas pu récupérer ta position. Vérifie que la localisation est bien activée sur ton téléphone.',
+      [{ text: 'OK', onPress: expect.any(Function) }]
+    )
+
+    expect(mockProps.setSelectedLocationMode).toHaveBeenCalledWith(LocationMode.EVERYWHERE)
   })
 
   it('should call requestGeolocPermission when permission is DENIED', async () => {

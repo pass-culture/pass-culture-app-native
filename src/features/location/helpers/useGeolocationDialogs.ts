@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { Linking } from 'react-native'
+import { Alert, Linking } from 'react-native'
 
 import { LocationState } from 'features/location/types'
 import { GeolocPermissionState } from 'libs/location/location'
@@ -25,6 +25,7 @@ export const useGeolocationDialogs = ({
     onModalHideRef,
     showGeolocPermissionModal,
     requestGeolocPermission,
+    hasGeolocPosition,
   } = props
 
   const runGeolocationDialogs = useCallback(async () => {
@@ -43,6 +44,12 @@ export const useGeolocationDialogs = ({
         }
         onModalHideRef.current = showGeolocPermissionModal
       }
+    } else if (permissionState === GeolocPermissionState.GRANTED && !hasGeolocPosition) {
+      Alert.alert(
+        'Paramètres de localisation',
+        'Nous n’avons pas pu récupérer ta position. Vérifie que la localisation est bien activée sur ton téléphone.',
+        [{ text: 'OK', onPress: selectEverywhereMode }]
+      )
     } else if (permissionState === GeolocPermissionState.GRANTED && shouldDirectlyValidate) {
       setPlaceGlobally(null)
       selectAroundMeMode()
@@ -63,6 +70,7 @@ export const useGeolocationDialogs = ({
     showGeolocPermissionModal,
     shouldDirectlyValidate,
     requestGeolocPermission,
+    hasGeolocPosition,
   ])
 
   return { runGeolocationDialogs }
