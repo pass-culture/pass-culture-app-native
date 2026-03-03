@@ -6,7 +6,7 @@ import {
   PASSWORD_SECURITY_RULES_ACCESSIBILITY_LABEL,
   PasswordSecurityRules,
 } from 'features/auth/components/PasswordSecurityRules'
-import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { PasswordInput, Props as PasswordInputProps } from 'ui/components/inputs/PasswordInput'
 
 interface Props<TFieldValues extends FieldValues, TName> extends PasswordInputProps {

@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { MarketingBlockProps } from 'features/home/components/modules/marketing/types'
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { All } from 'ui/svg/icons/venueAndCategories/All'
 import { getSpacing } from 'ui/theme'

@@ -6,7 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
 import { OfferImageContainerDimensions } from 'features/offer/types'
-import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
+import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
 import { ImageWithCredit } from 'shared/types'
 import { CarouselPagination } from 'ui/components/CarouselPagination/CarouselPagination'
 import { Typo } from 'ui/theme'

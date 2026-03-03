@@ -3,7 +3,7 @@ import { AccessibilityRole } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
