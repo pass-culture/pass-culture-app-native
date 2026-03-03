@@ -46,7 +46,7 @@ export type CheatcodesStackParamList = {
   CheatcodesScreenNewCaledonia: undefined
   CheatcodesScreenPageWithHeader: undefined
   CheatcodesScreenRemoteConfig: undefined
-  CheatcodesScreenSecondaryPageWithBlurHeader: undefined
+  CheatcodesScreenPageHeaderWithoutPlaceholder: undefined
 }
 
 export type CheatcodesStackRouteName = keyof CheatcodesStackParamList
