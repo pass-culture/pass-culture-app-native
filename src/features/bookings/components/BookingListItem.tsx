@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -18,13 +18,13 @@ export type BookingListItemProp = {
 const FIXED_IMAGE_HEIGHT = getSpacing(36)
 const FIXED_IMAGE_WIDTH = getSpacing(24)
 
-export const BookingListItem = ({
+export const BookingListItem: FC<BookingListItemProp> = ({
   imageUrl,
   title,
   subtitle,
   display,
   children,
-}: BookingListItemProp) => {
+}) => {
   const { designSystem } = useTheme()
 
   const content = (
@@ -75,10 +75,10 @@ const Ticket = styled.View(({ theme }) => ({
   borderColor: theme.designSystem.color.border.subtle,
 }))
 
-const FullTicket = styled(Ticket)({
+const FullTicket = styled(Ticket)(({ theme }) => ({
   borderWidth: 1,
-  borderRadius: getSpacing(2.1),
-})
+  borderRadius: theme.designSystem.size.borderRadius.m,
+}))
 
 const Container = styled.View({
   flexDirection: 'row',
