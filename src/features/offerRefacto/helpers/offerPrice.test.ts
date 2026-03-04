@@ -9,6 +9,8 @@ import {
   getPrice,
 } from 'features/offerRefacto/helpers'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('getAllPrices', () => {
   it('should return all bookable prices if defined', () => {
     const stocks: OfferStockResponse[] = [

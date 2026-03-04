@@ -96,7 +96,6 @@ export type OfferCTAsViewModel = {
   reminderAuthModal: ModalSettings
   hasReminder: boolean
   showCineCTA?: boolean
-  movieScreeningUserData?: MovieScreeningUserData
 }
 
 export type CTAContext = {

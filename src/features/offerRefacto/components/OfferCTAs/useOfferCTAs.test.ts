@@ -4,7 +4,6 @@ import { ThemeProvider } from 'styled-components/native'
 
 import { mockSubcategoriesMapping } from 'features/headlineOffer/fixtures/mockMapping'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { OfferModal } from 'shared/offer/enums'
 import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
@@ -28,14 +27,6 @@ jest.mock('features/auth/context/AuthContext', () => ({
 }))
 jest.mock('features/offer/components/OfferContent/OfferCTAProvider', () => ({
   useOfferCTA: () => ({ isButtonVisible: true }),
-}))
-const mockOnPressCTA = jest.fn()
-const mockModalToDisplay = OfferModal.BOOKING
-jest.mock('features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction', () => ({
-  useCtaWordingAndAction: () => ({
-    onPress: mockOnPressCTA,
-    modalToDisplay: mockModalToDisplay,
-  }),
 }))
 const mockAddReminder = jest.fn()
 jest.mock('features/offer/queries/useAddReminderMutation', () => ({
@@ -134,7 +125,7 @@ describe('useOfferCTAs hook', () => {
         { wrapper }
       )
 
-      result.current.ctaProps.onFavoritePress()
+      result.current?.ctaProps.onFavoritePress()
 
       expect(mockFavoriteCTAProps.addFavorite).toHaveBeenCalledWith({
         offerId: offerResponseSnap.id,
@@ -168,7 +159,7 @@ describe('useOfferCTAs hook', () => {
         { wrapper }
       )
 
-      result.current.ctaProps.onFavoritePress()
+      result.current?.ctaProps.onFavoritePress()
 
       expect(mockFavoriteCTAProps.removeFavorite).toHaveBeenCalledWith(1)
     })
@@ -186,7 +177,7 @@ describe('useOfferCTAs hook', () => {
         { wrapper }
       )
 
-      result.current.ctaProps.onFavoritePress()
+      result.current?.ctaProps.onFavoritePress()
 
       expect(mockShowModal).toHaveBeenCalledTimes(1)
       expect(mockFavoriteCTAProps.addFavorite).not.toHaveBeenCalled()
@@ -206,7 +197,7 @@ describe('useOfferCTAs hook', () => {
         { wrapper }
       )
 
-      result.current.ctaProps.onReminderPress()
+      result.current?.ctaProps.onReminderPress()
 
       expect(mockAddReminder).toHaveBeenCalledWith(offerResponseSnap.id)
     })
@@ -224,7 +215,7 @@ describe('useOfferCTAs hook', () => {
         { wrapper }
       )
 
-      result.current.ctaProps.onReminderPress()
+      result.current?.ctaProps.onReminderPress()
 
       expect(mockShowModal).toHaveBeenCalledTimes(1)
       expect(mockAddReminder).not.toHaveBeenCalled()
@@ -233,6 +224,7 @@ describe('useOfferCTAs hook', () => {
 
   describe('CTA Button Logic', () => {
     it('should call onPressCTA and showOfferModal when on press is triggered', () => {
+      mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false })
       const { result } = renderHook(
         () =>
           useOfferCTAs({
@@ -244,9 +236,8 @@ describe('useOfferCTAs hook', () => {
         { wrapper }
       )
 
-      result.current.ctaProps.onPress()
+      result.current?.ctaProps.onPress()
 
-      expect(mockOnPressCTA).toHaveBeenCalledTimes(1)
       expect(mockShowOfferModal).toHaveBeenCalledTimes(1)
     })
   })

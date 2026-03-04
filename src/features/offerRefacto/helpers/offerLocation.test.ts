@@ -1,6 +1,8 @@
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { determineLocation, getRoundedPosition } from 'features/offerRefacto/helpers'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('getRoundedPosition', () => {
   it('should return undefined if latitude is undefined', () => {
     const result = getRoundedPosition(undefined, 2)

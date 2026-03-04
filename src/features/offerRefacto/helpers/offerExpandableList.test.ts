@@ -8,6 +8,8 @@ import {
 
 const baseList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('expandableList', () => {
   describe('expandList', () => {
     it('should return the size of the list to display increased by step value', () => {

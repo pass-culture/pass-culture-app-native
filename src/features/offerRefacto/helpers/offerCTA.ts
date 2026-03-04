@@ -159,11 +159,12 @@ export const getCTAProps = (type: CTAType, context: CTAContext): ICTAWordingAndA
       wording: getDigitalOfferBookingWording(offer.subcategoryId),
       isDisabled: isBookingLoading,
       onPress: () => {
-        if (isAlreadyBookedOffer) return openUrl(booking?.completedUrl ?? '')
-        if (offer.stocks[0]?.id) {
-          bookOffer({ quantity: 1, stockId: offer.stocks[0].id })
+        if (isAlreadyBookedOffer) {
+          return openUrl(booking?.completedUrl ?? '')
         }
-        return
+        if (offer.stocks[0]?.id) {
+          return bookOffer({ quantity: 1, stockId: offer.stocks[0].id })
+        }
       },
     },
     ENDED_USED_BOOKING: {

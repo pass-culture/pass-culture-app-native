@@ -1,6 +1,8 @@
 import { PORTRAIT_DIMENSIONS, RATIO_PORTRAIT, RATIO_SQUARE } from 'features/offerRefacto/constants'
 import { calculateCarouselIndex, computeImageStyle } from 'features/offerRefacto/helpers'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('calculateCarouselIndex', () => {
   it('should increase the index by 1', () => {
     const index = calculateCarouselIndex({ currentIndex: 0, direction: 1, maxIndex: 5 })

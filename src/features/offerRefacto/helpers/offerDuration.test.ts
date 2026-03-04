@@ -1,5 +1,7 @@
 import { formatDuration } from 'features/offerRefacto/helpers'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('formatDuration', () => {
   describe('unit=min', () => {
     it('should format duration with a number of hours exactly', () => {
