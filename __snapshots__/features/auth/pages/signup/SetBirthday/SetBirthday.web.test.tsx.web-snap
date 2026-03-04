@@ -1365,11 +1365,12 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
         </div>
       </div>
       <div
-        role="alert"
-      />
-      <div
-        class="css-view-175oi2r r-height-10ptun7"
-      />
+        class="css-view-175oi2r r-marginBottom-1ifxtd0"
+      >
+        <div
+          role="alert"
+        />
+      </div>
       <div
         class="css-view-175oi2r r-paddingTop-1ur9v65 r-width-13qz1uu"
       >

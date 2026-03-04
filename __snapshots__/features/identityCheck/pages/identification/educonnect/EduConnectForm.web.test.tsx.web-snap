@@ -135,66 +135,61 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
               style="flex-grow: 1; flex-direction: column; padding: 65px 24px 24px 24px;"
             >
               <div
-                class="css-view-175oi2r r-alignSelf-1kihuf0 r-paddingBottom-11rk87y r-paddingLeft-gu0qjt r-paddingRight-85oauj r-paddingTop-fd4yh7"
+                class="css-view-175oi2r r-marginBottom-zd98yo"
               >
                 <div
-                  class="css-view-175oi2r"
+                  class="css-view-175oi2r r-alignSelf-1kihuf0 r-paddingBottom-11rk87y r-paddingLeft-gu0qjt r-paddingRight-85oauj r-paddingTop-fd4yh7"
                 >
                   <div
-                    class="css-text-146c3p1"
-                    dir="ltr"
+                    class="css-view-175oi2r"
                   >
-                    undefined-SVG-Mock
-                  </div>
-                </div>
-              </div>
-              <div
-                class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
-                dir="ltr"
-              >
-                Identification
-              </div>
-              <div
-                class="css-view-175oi2r r-height-10ptun7"
-              />
-              <div
-                class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
-                dir="ltr"
-              >
-                Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
-              </div>
-              <div
-                class="css-view-175oi2r r-height-10ptun7"
-              />
-              <div
-                class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
-              >
-                <div
-                  class="css-view-175oi2r"
-                >
-                  <div
-                    class="css-text-146c3p1"
-                    dir="ltr"
-                  >
-                    undefined-SVG-Mock
+                    <div
+                      class="css-text-146c3p1"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
                   </div>
                 </div>
                 <div
-                  aria-label="Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur."
-                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
-                  role="presentation"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+                  dir="ltr"
+                >
+                  Identification
+                </div>
+                <div
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-marginBlock-12kyg2d r-textAlign-q4m81j"
+                  dir="ltr"
+                >
+                  Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
+                </div>
+                <div
+                  class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
                 >
                   <div
-                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-kmu5yi"
-                    dir="ltr"
+                    class="css-view-175oi2r"
                   >
-                    Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
+                    <div
+                      class="css-text-146c3p1"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    aria-label="Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur."
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
+                    role="presentation"
+                  >
+                    <div
+                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-kmu5yi"
+                      dir="ltr"
+                    >
+                      Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
+                    </div>
                   </div>
                 </div>
               </div>
-              <div
-                class="css-view-175oi2r r-height-mabqd8"
-              />
               <div
                 class="css-view-175oi2r r-height-3da1kt"
               />

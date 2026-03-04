@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { MaintenancePageType, SubscriptionStep } from 'api/gen'
@@ -31,8 +31,6 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const Stepper = () => {
   useShowDisableActivation()
-
-  const { isDesktopViewport } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Stepper'>>()
 
@@ -103,7 +101,7 @@ export const Stepper = () => {
               void analytics.logIdentityCheckStep(step.name)
             }}
           />
-          {index === steps.length - 1 ? null : <Spacer.Column numberOfSpaces={2} />}
+          {index === steps.length - 1 ? null : <Placeholder />}
         </StepButtonContainer>
       ))}
     </StepList>
@@ -111,19 +109,15 @@ export const Stepper = () => {
 
   return (
     <Page>
-      <Container>
+      <MainContainer>
         <Spacer.TopScreen />
-        {isDesktopViewport ? (
-          <Spacer.Column numberOfSpaces={16} />
-        ) : (
-          <Spacer.Column numberOfSpaces={4} />
-        )}
-
-        <StyledTitle1>{stepperTitle}</StyledTitle1>
-        <Spacer.Column numberOfSpaces={2} />
-        {stepperSubtitle ? <StyledSubtitle subtitle={stepperSubtitle} /> : null}
-        {errorMessage ? <StyledErrorMessage errorMessage={errorMessage} /> : null}
-        <Spacer.Column numberOfSpaces={2} />
+        <TitleContainer>
+          <StyledTitle1>{stepperTitle}</StyledTitle1>
+        </TitleContainer>
+        <Container>
+          {stepperSubtitle ? <StyledSubtitle subtitle={stepperSubtitle} /> : null}
+          {errorMessage ? <StyledErrorMessage errorMessage={errorMessage} /> : null}
+        </Container>
         {stepList}
         <Spacer.Flex flex={1} />
 
@@ -137,7 +131,7 @@ export const Stepper = () => {
             accessibilityRole={AccessibilityRole.BUTTON}
           />
         </QuitButtonContainer>
-      </Container>
+      </MainContainer>
       <QuitIdentityCheckModal
         visible={visible}
         hideModal={hideModal}
@@ -149,7 +143,11 @@ export const Stepper = () => {
 
 const StyledTitle1 = styled(Typo.Title1).attrs(() => getHeadingAttrs(1))``
 
-const Container = styled.ScrollView.attrs(({ theme }) => ({
+const TitleContainer = styled.View(({ theme }) => ({
+  marginTop: theme.isDesktopViewport ? getSpacing(16) : theme.designSystem.size.spacing.l,
+}))
+
+const MainContainer = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
     paddingHorizontal: theme.designSystem.size.spacing.xl,
     paddingBottom: theme.designSystem.size.spacing.xxxl,
@@ -159,6 +157,10 @@ const Container = styled.ScrollView.attrs(({ theme }) => ({
     flexGrow: 1,
   },
 }))``
+
+const Placeholder = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.s,
+}))
 
 const StepButtonContainer = styled.View({
   alignItems: 'center',
@@ -170,16 +172,25 @@ const QuitButtonContainer = styled.View({
 })
 
 const StyledSubtitle = ({ subtitle }: { subtitle: string }) => (
-  <React.Fragment>
-    <Spacer.Column numberOfSpaces={2} />
+  <SubtitleContainer>
     <Typo.Body>{subtitle}</Typo.Body>
-    <Spacer.Column numberOfSpaces={8} />
-  </React.Fragment>
+  </SubtitleContainer>
 )
 
 const StyledErrorMessage = ({ errorMessage }: { errorMessage: string }) => (
-  <React.Fragment>
-    <Spacer.Column numberOfSpaces={4} />
+  <ErrorMessageContainer>
     <Banner type={BannerType.ERROR} label={errorMessage} />
-  </React.Fragment>
+  </ErrorMessageContainer>
 )
+const SubtitleContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
+
+const ErrorMessageContainer = styled(Typo.Body)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.m,
+}))
+
+const Container = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.s,
+}))

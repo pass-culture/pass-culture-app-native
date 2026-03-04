@@ -32,7 +32,6 @@ export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
         />
         {showBadge ? <TabBarBadge testID={`${tabName}-new-feature-badge`} /> : null}
       </IconWrapper>
-      <Spacer.Column numberOfSpaces={2.5} />
       <TabBarTitle selected={isSelected} displayName={menu[tabName].displayName} />
       <Spacer.Flex />
       {isSelected ? <BicolorSelectorPlaceholder /> : null}
@@ -63,6 +62,7 @@ const BicolorSelectorPlaceholder = styled.View(({ theme }) => ({
   height: theme.designSystem.size.spacing.xxs,
 }))
 
-const IconWrapper = styled.View({
+const IconWrapper = styled.View(({ theme }) => ({
   position: 'relative',
-})
+  marginBottom: theme.designSystem.size.spacing.m,
+}))

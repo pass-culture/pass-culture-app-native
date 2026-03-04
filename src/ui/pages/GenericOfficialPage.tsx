@@ -23,15 +23,13 @@ export function GenericOfficialPage({
   flex = true,
   buttons,
 }: Readonly<Props>) {
-  const { isTouch } = useTheme()
+  const { isTouch, designSystem } = useTheme()
 
   const getButtonSpaces = () => {
     if (buttons) {
-      return buttons.length === 1
-        ? spacingMatrix.bottomWithOneButton
-        : spacingMatrix.bottomWithMoreThanOneButton
+      return buttons.length === 1 ? designSystem.size.spacing.l : designSystem.size.spacing.xxl
     }
-    return spacingMatrix.bottom
+    return designSystem.size.spacing.m
   }
 
   const pageContent = (
@@ -50,29 +48,27 @@ export function GenericOfficialPage({
       </HeaderContainer>
       <Content>
         {isTouch ? (
-          <React.Fragment>
+          <TopTouch>
             <Spacer.Flex />
-            <Spacer.Column numberOfSpaces={spacingMatrix.top} />
-          </React.Fragment>
+          </TopTouch>
         ) : null}
-        <Typo.Title2 {...getHeadingAttrs(1)}>{title}</Typo.Title2>
-        <Spacer.Column numberOfSpaces={spacingMatrix.afterTitle} />
+        <TitleContainer>
+          <Typo.Title2 {...getHeadingAttrs(1)}>{title}</Typo.Title2>
+        </TitleContainer>
         {children}
         {isTouch ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={getButtonSpaces()} />
+          <BottomTouch marginTop={getButtonSpaces()}>
             <Spacer.Flex flex={0.5} />
-          </React.Fragment>
+          </BottomTouch>
         ) : null}
       </Content>
       <BottomContent>
         {buttons ? (
           <BottomContainer>
             {buttons.map((button, index) => (
-              <React.Fragment key={index}>
-                {index === 0 ? null : <Spacer.Column numberOfSpaces={4} />}
+              <ButtonContainer key={index} index={index}>
                 {button}
-              </React.Fragment>
+              </ButtonContainer>
             ))}
           </BottomContainer>
         ) : null}
@@ -92,16 +88,19 @@ export function GenericOfficialPage({
     </React.Fragment>
   )
 }
+const ButtonContainer = styled.View<{ index: number }>(({ theme, index }) => ({
+  marginTop: index === 0 ? 0 : theme.designSystem.size.spacing.l,
+}))
+const TopTouch = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxxl,
+}))
 
-const spacingMatrix = {
-  top: 10,
-  afterIcon: 5,
-  afterLottieAnimation: 5,
-  afterTitle: 5,
-  bottom: 10,
-  bottomWithOneButton: 15,
-  bottomWithMoreThanOneButton: 30,
-}
+const TitleContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
+const BottomTouch = styled.View<{ marginTop: number }>(({ marginTop }) => ({
+  marginTop,
+}))
 
 const Container = styled.View({
   flex: 1,

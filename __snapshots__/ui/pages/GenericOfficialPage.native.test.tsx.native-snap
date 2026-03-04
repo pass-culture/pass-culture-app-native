@@ -117,41 +117,41 @@ exports[`<GenericOfficialPage /> should render correctly 1`] = `
       <View
         style={
           {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          }
-        }
-      />
-      <View
-        numberOfSpaces={10}
-        style={
-          {
-            "height": 40,
-          }
-        }
-      />
-      <Text
-        accessibilityRole="header"
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
+            "marginBottom": 40,
           }
         }
       >
-        Title
-      </Text>
+        <View
+          style={
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            }
+          }
+        />
+      </View>
       <View
-        numberOfSpaces={5}
         style={
           {
-            "height": 20,
+            "marginBottom": 24,
           }
         }
-      />
+      >
+        <Text
+          accessibilityRole="header"
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+            }
+          }
+        >
+          Title
+        </Text>
+      </View>
       <Text
         style={
           {
@@ -165,23 +165,24 @@ exports[`<GenericOfficialPage /> should render correctly 1`] = `
         Children...
       </Text>
       <View
-        numberOfSpaces={10}
+        marginTop={12}
         style={
           {
-            "height": 40,
+            "marginTop": 12,
           }
         }
-      />
-      <View
-        flex={0.5}
-        style={
-          {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
+      >
+        <View
+          flex={0.5}
+          style={
+            {
+              "flexBasis": 0,
+              "flexGrow": 0.5,
+              "flexShrink": 1,
+            }
           }
-        }
-      />
+        />
+      </View>
     </View>
     <View
       style={

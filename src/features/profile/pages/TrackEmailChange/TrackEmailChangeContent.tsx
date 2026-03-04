@@ -18,7 +18,6 @@ import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { EmailIcon } from 'ui/svg/icons/EmailIcon'
 import { PencilTip } from 'ui/svg/icons/venueAndCategories/PencilTip'
-import { Spacer } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
 
@@ -120,7 +119,6 @@ export const TrackEmailChangeContent = () => {
 
   return (
     <StyledListContainer>
-      <Spacer.Column numberOfSpaces={10} />
       <StepList currentStepIndex={currentStep}>
         {Object.entries(stepConfig)
           .filter(([key]) => (key === 'NEW_PASSWORD' ? hasPasswordStep : true))
@@ -130,7 +128,7 @@ export const TrackEmailChangeContent = () => {
 
             return (
               <Step key={key}>
-                {isCurrent ? <Spacer.Column numberOfSpaces={2} /> : null}
+                {isCurrent ? <Placeholder /> : null}
                 <StepButton
                   step={{
                     stepState,
@@ -148,6 +146,10 @@ export const TrackEmailChangeContent = () => {
     </StyledListContainer>
   )
 }
+
+const Placeholder = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.s,
+}))
 
 const DisabledEmailIcon = styled(EmailIcon).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.disabled,
@@ -181,7 +183,8 @@ const CompletedConfidentialityIcon = styled(Confidentiality).attrs(({ theme }) =
   color: theme.designSystem.color.icon.subtle,
 }))({ transform: 'rotate(-8deg)' })
 
-const StyledListContainer = styled.View({
+const StyledListContainer = styled.View(({ theme }) => ({
   marginHorizontal: 'auto',
   width: '100%',
-})
+  marginTop: theme.designSystem.size.spacing.xxxl,
+}))
