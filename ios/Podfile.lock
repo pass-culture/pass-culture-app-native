@@ -2682,6 +2682,8 @@ PODS:
     - React-perflogger (= 0.80.2)
     - React-utils (= 0.80.2)
     - SocketRocket
+  - RNAppleAuthentication (2.5.1):
+    - React-Core
   - RNBatchPush (1.0.0):
     - Batch (~> 2.1.0)
     - boost
@@ -3362,6 +3364,7 @@ DEPENDENCIES:
   - ReactAppDependencyProvider (from `build/generated/ios`)
   - ReactCodegen (from `build/generated/ios`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - "RNAppleAuthentication (from `../node_modules/@invertase/react-native-apple-authentication`)"
   - "RNBatchPush (from `../node_modules/@batch.com/react-native-plugin`)"
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
@@ -3614,6 +3617,8 @@ EXTERNAL SOURCES:
     :path: build/generated/ios
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNAppleAuthentication:
+    :path: "../node_modules/@invertase/react-native-apple-authentication"
   RNBatchPush:
     :path: "../node_modules/@batch.com/react-native-plugin"
   RNCAsyncStorage:
@@ -3789,6 +3794,7 @@ SPEC CHECKSUMS:
   ReactAppDependencyProvider: 6c9197c1f6643633012ab646d2bfedd1b0d25989
   ReactCodegen: f8ae44cfcb65af88f409f4b094b879591232f12c
   ReactCommon: a237545f08f598b8b37dc3a9163c1c4b85817b0b
+  RNAppleAuthentication: d6fe579e5f43cf8db54bdc48518bccea61c592a4
   RNBatchPush: d4dea6bf9212953209516b4d802837a22bb4a4ad
   RNCAsyncStorage: 8616bd5a58af409453ea4e1b246521bb76578d60
   RNCClipboard: 15efcee0bdfc617cd0b480c219b1d337fdba4358
