@@ -6712,6 +6712,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@invertase/react-native-apple-authentication@npm:^2.5.1":
+  version: 2.5.1
+  resolution: "@invertase/react-native-apple-authentication@npm:2.5.1"
+  checksum: 30d627ef12ab2daf4ccf1242a4c060653bd922da750d0f52bd6901920edad936ac640e14fff878db5e64335f64fcac2a4f0b287a52d977bd1b3481006418a531
+  languageName: node
+  linkType: hard
+
 "@isaacs/cliui@npm:^8.0.2":
   version: 8.0.2
   resolution: "@isaacs/cliui@npm:8.0.2"
@@ -11305,6 +11312,7 @@ __metadata:
     "@hot-updater/firebase": ^0.20.11
     "@hot-updater/react-native": ^0.20.11
     "@hot-updater/sentry-plugin": ^0.20.11
+    "@invertase/react-native-apple-authentication": ^2.5.1
     "@lhci/cli": ^0.14.0
     "@openspacelabs/react-native-zoomable-view": ^2.1.5
     "@pass-culture/design-system": 0.7.4
