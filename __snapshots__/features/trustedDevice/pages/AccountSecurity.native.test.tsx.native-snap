@@ -112,566 +112,576 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
         }
       />
       <View
-        flex={1}
         style={
           {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-          }
-        }
-      />
-      <View
-        animation={false}
-        style={
-          {
-            "alignItems": "center",
-            "justifyContent": "center",
-            "marginBottom": 24,
+            "justifyContent": "space-between",
           }
         }
       >
         <View
-          height={156}
-          width={200}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-      </View>
-      <View
-        gap={4}
-        style={
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 24,
-          }
-        }
-      >
-        <Text
-          accessibilityRole="header"
           style={
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-              "textAlign": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
             }
           }
         >
-          Sécurise ton compte
-        </Text>
-      </View>
-      <View
-        style={
-          {
-            "marginBottom": 24,
-          }
-        }
-      >
-        <View
-          gap={4}
-          style={
-            {
-              "gap": 16,
-            }
-          }
-        >
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            Tu as indiqué 
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              ne pas être à l’origine
-            </Text>
-             de cette connexion :
-          </Text>
           <View
+            animation={false}
             style={
               {
-                "backgroundColor": "#f3edff",
-                "borderBottomLeftRadius": 8,
-                "borderBottomRightRadius": 8,
-                "borderTopLeftRadius": 8,
-                "borderTopRightRadius": 8,
-                "flexDirection": "row",
-                "gap": 8,
-                "paddingBottom": 16,
-                "paddingLeft": 16,
-                "paddingRight": 16,
-                "paddingTop": 16,
-                "width": "100%",
+                "alignItems": "center",
+                "justifyContent": "center",
+                "marginBottom": 24,
               }
             }
           >
             <View
-              fill="#320096"
-              height={24}
-              width={24}
+              height={156}
+              width={200}
             >
               <Text>
                 undefined-SVG-Mock
               </Text>
             </View>
+          </View>
+          <View
+            gap={4}
+            style={
+              {
+                "alignItems": "center",
+                "gap": 16,
+                "marginBottom": 24,
+              }
+            }
+          >
             <Text
+              accessibilityRole="header"
               style={
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 14,
-                  "lineHeight": 22.4,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 21,
+                  "lineHeight": 33.6,
+                  "textAlign": "center",
                 }
               }
             >
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                  }
-                }
-              >
-                Appareil utilisé : 
-              </Text>
-               
-              iOS - iPhone 13
-              
-
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                  }
-                }
-              >
-                Lieu : 
-              </Text>
-               
-              Paris
-              
-
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                  }
-                }
-              >
-                Date et heure : 
-              </Text>
-               
-              Le 09/06/2023 à 10h00
+              Sécurise ton compte
             </Text>
           </View>
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            Pour des raisons de 
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              sécurité,
-            </Text>
-             nous te conseillons de
-             modifier ton mot de passe ou de suspendre ton compte temporairement.
-          </Text>
-        </View>
-      </View>
-      <View
-        flex={1}
-        style={
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          }
-        }
-      />
-      <View
-        gap={4}
-        isLandscape={false}
-        style={
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 40,
-          }
-        }
-      >
-        <View
-          accessibilityLabel="Modifier mon mot de passe"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "alignSelf": "center",
-                  "backgroundColor": "#6123df",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderColor": "#6123df",
-                  "borderStyle": "solid",
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingBottom": 8,
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                  "paddingTop": 8,
-                  "width": "100%",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Modifier mon mot de passe"
-        >
           <View
-            fullWidth={true}
-            gap={8}
-            hasIcon={false}
-            isMultiline={false}
             style={
               {
-                "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "width": "100%",
-              }
-            }
-          >
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#ffffff",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": "center",
-                  },
-                ]
-              }
-            >
-              Modifier mon mot de passe
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityLabel="Suspendre mon compte"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "alignSelf": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderColor": "#6123df",
-                  "borderStyle": "solid",
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingBottom": 8,
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                  "paddingTop": 8,
-                  "width": "100%",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Suspendre mon compte"
-        >
-          <View
-            fullWidth={true}
-            gap={8}
-            hasIcon={false}
-            isMultiline={false}
-            style={
-              {
-                "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "width": "100%",
-              }
-            }
-          >
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#6123df",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": "center",
-                  },
-                ]
-              }
-            >
-              Suspendre mon compte
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityLabel="Ne pas sécuriser mon compte"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 0,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "width": "auto",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Ne pas sécuriser mon compte"
-        >
-          <View
-            gap={8}
-            hasIcon={true}
-            isMultiline={false}
-            style={
-              {
-                "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
+                "marginBottom": 24,
               }
             }
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
-                {
-                  "flexShrink": 0,
-                }
-              }
-              nativeID="0"
+              gap={4}
               style={
+                {
+                  "gap": 16,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Tu as indiqué 
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  ne pas être à l’origine
+                </Text>
+                 de cette connexion :
+              </Text>
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f3edff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
+                  }
+                }
+              >
+                <View
+                  fill="#320096"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 22.4,
+                      }
+                    }
+                  >
+                    Appareil utilisé : 
+                  </Text>
+                   
+                  iOS - iPhone 13
+                  
+
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 22.4,
+                      }
+                    }
+                  >
+                    Lieu : 
+                  </Text>
+                   
+                  Paris
+                  
+
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 22.4,
+                      }
+                    }
+                  >
+                    Date et heure : 
+                  </Text>
+                   
+                  Le 09/06/2023 à 10h00
+                </Text>
+              </View>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Pour des raisons de 
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  sécurité,
+                </Text>
+                 nous te conseillons de
+                 modifier ton mot de passe ou de suspendre ton compte temporairement.
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          gap={4}
+          isLandscape={false}
+          style={
+            {
+              "alignItems": "center",
+              "gap": 16,
+              "marginBottom": 40,
+            }
+          }
+        >
+          <View
+            accessibilityLabel="Modifier mon mot de passe"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
                 [
                   {
-                    "flexShrink": 0,
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "center",
+                    "backgroundColor": "#6123df",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderColor": "#6123df",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Modifier mon mot de passe"
+          >
+            <View
+              fullWidth={true}
+              gap={8}
+              hasIcon={false}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 8,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#ffffff",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": "100%",
+                      "minWidth": 0,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Modifier mon mot de passe
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="Suspendre mon compte"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderColor": "#6123df",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Suspendre mon compte"
+          >
+            <View
+              fullWidth={true}
+              gap={8}
+              hasIcon={false}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 8,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#6123df",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": "100%",
+                      "minWidth": 0,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Suspendre mon compte
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "marginTop": 8,
+              }
+            }
+          >
+            <View
+              accessibilityLabel="Ne pas sécuriser mon compte"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "width": "auto",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
                   },
                 ]
               }
+              testID="Ne pas sécuriser mon compte"
             >
               <View
-                height={22}
-                width={22}
+                gap={8}
+                hasIcon={true}
+                isMultiline={false}
+                style={
+                  {
+                    "alignItems": "center",
+                    "columnGap": 8,
+                    "flexDirection": "row",
+                  }
+                }
               >
-                <Text>
-                  undefined-SVG-Mock
+                <View
+                  collapsable={false}
+                  jestAnimatedProps={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestAnimatedStyle={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestInlineStyle={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                  nativeID="0"
+                  style={
+                    [
+                      {
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={22}
+                    width={22}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
+                      },
+                      {
+                        "color": "#161617",
+                        "flexBasis": undefined,
+                        "flexGrow": undefined,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": undefined,
+                      },
+                    ]
+                  }
+                >
+                  Ne pas sécuriser mon compte
                 </Text>
               </View>
             </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#161617",
-                    "flexBasis": undefined,
-                    "flexGrow": undefined,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": undefined,
-                  },
-                ]
-              }
-            >
-              Ne pas sécuriser mon compte
-            </Text>
           </View>
         </View>
       </View>
@@ -801,464 +811,474 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
         }
       />
       <View
-        flex={1}
         style={
           {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-          }
-        }
-      />
-      <View
-        animation={false}
-        style={
-          {
-            "alignItems": "center",
-            "justifyContent": "center",
-            "marginBottom": 24,
+            "justifyContent": "space-between",
           }
         }
       >
         <View
-          height={156}
-          width={200}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-      </View>
-      <View
-        gap={4}
-        style={
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 24,
-          }
-        }
-      >
-        <Text
-          accessibilityRole="header"
           style={
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-              "textAlign": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
             }
           }
         >
-          Sécurise ton compte
-        </Text>
-      </View>
-      <View
-        style={
-          {
-            "marginBottom": 24,
-          }
-        }
-      >
-        <View
-          gap={4}
-          style={
-            {
-              "gap": 16,
-            }
-          }
-        >
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            Tu as indiqué 
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              ne pas être à l’origine
-            </Text>
-             de cette connexion :
-          </Text>
           <View
+            animation={false}
             style={
               {
-                "backgroundColor": "#f3edff",
-                "borderBottomLeftRadius": 8,
-                "borderBottomRightRadius": 8,
-                "borderTopLeftRadius": 8,
-                "borderTopRightRadius": 8,
-                "flexDirection": "row",
-                "gap": 8,
-                "paddingBottom": 16,
-                "paddingLeft": 16,
-                "paddingRight": 16,
-                "paddingTop": 16,
-                "width": "100%",
+                "alignItems": "center",
+                "justifyContent": "center",
+                "marginBottom": 24,
               }
             }
           >
             <View
-              fill="#320096"
-              height={24}
-              width={24}
+              height={156}
+              width={200}
             >
               <Text>
                 undefined-SVG-Mock
               </Text>
             </View>
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 14,
-                  "lineHeight": 22.4,
-                }
-              }
-            >
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                  }
-                }
-              >
-                Appareil utilisé : 
-              </Text>
-               
-              iOS - iPhone 13
-              
-
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                  }
-                }
-              >
-                Lieu : 
-              </Text>
-               
-              Paris
-              
-
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                  }
-                }
-              >
-                Date et heure : 
-              </Text>
-               
-              Le 09/06/2023 à 10h00
-            </Text>
           </View>
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            Pour des raisons de 
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              sécurité,
-            </Text>
-             nous te conseillons de
-             sécuriser l’accès à ta boîte mail et de suspendre ton compte pass Culture temporairement.
-          </Text>
-        </View>
-      </View>
-      <View
-        flex={1}
-        style={
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          }
-        }
-      />
-      <View
-        gap={4}
-        isLandscape={false}
-        style={
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 40,
-          }
-        }
-      >
-        <View
-          accessibilityLabel="Suspendre mon compte"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "alignSelf": "center",
-                  "backgroundColor": "#6123df",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderColor": "#6123df",
-                  "borderStyle": "solid",
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingBottom": 8,
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                  "paddingTop": 8,
-                  "width": "100%",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Suspendre mon compte"
-        >
           <View
-            fullWidth={true}
-            gap={8}
-            hasIcon={false}
-            isMultiline={false}
+            gap={4}
             style={
               {
                 "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "width": "100%",
+                "gap": 16,
+                "marginBottom": 24,
               }
             }
           >
             <Text
+              accessibilityRole="header"
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#ffffff",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": "center",
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 21,
+                  "lineHeight": 33.6,
+                  "textAlign": "center",
+                }
               }
             >
-              Suspendre mon compte
+              Sécurise ton compte
             </Text>
           </View>
-        </View>
-        <View
-          accessibilityLabel="Ne pas sécuriser mon compte"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 0,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "width": "auto",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Ne pas sécuriser mon compte"
-        >
           <View
-            gap={8}
-            hasIcon={true}
-            isMultiline={false}
             style={
               {
-                "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
+                "marginBottom": 24,
               }
             }
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
-                {
-                  "flexShrink": 0,
-                }
-              }
-              nativeID="5"
+              gap={4}
               style={
+                {
+                  "gap": 16,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Tu as indiqué 
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  ne pas être à l’origine
+                </Text>
+                 de cette connexion :
+              </Text>
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f3edff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
+                  }
+                }
+              >
+                <View
+                  fill="#320096"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 22.4,
+                      }
+                    }
+                  >
+                    Appareil utilisé : 
+                  </Text>
+                   
+                  iOS - iPhone 13
+                  
+
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 22.4,
+                      }
+                    }
+                  >
+                    Lieu : 
+                  </Text>
+                   
+                  Paris
+                  
+
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 22.4,
+                      }
+                    }
+                  >
+                    Date et heure : 
+                  </Text>
+                   
+                  Le 09/06/2023 à 10h00
+                </Text>
+              </View>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Pour des raisons de 
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  sécurité,
+                </Text>
+                 nous te conseillons de
+                 sécuriser l’accès à ta boîte mail et de suspendre ton compte pass Culture temporairement.
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          gap={4}
+          isLandscape={false}
+          style={
+            {
+              "alignItems": "center",
+              "gap": 16,
+              "marginBottom": 40,
+            }
+          }
+        >
+          <View
+            accessibilityLabel="Suspendre mon compte"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
                 [
                   {
-                    "flexShrink": 0,
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "center",
+                    "backgroundColor": "#6123df",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderColor": "#6123df",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Suspendre mon compte"
+          >
+            <View
+              fullWidth={true}
+              gap={8}
+              hasIcon={false}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 8,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#ffffff",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": "100%",
+                      "minWidth": 0,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Suspendre mon compte
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "marginTop": 8,
+              }
+            }
+          >
+            <View
+              accessibilityLabel="Ne pas sécuriser mon compte"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "width": "auto",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
                   },
                 ]
               }
+              testID="Ne pas sécuriser mon compte"
             >
               <View
-                height={22}
-                width={22}
+                gap={8}
+                hasIcon={true}
+                isMultiline={false}
+                style={
+                  {
+                    "alignItems": "center",
+                    "columnGap": 8,
+                    "flexDirection": "row",
+                  }
+                }
               >
-                <Text>
-                  undefined-SVG-Mock
+                <View
+                  collapsable={false}
+                  jestAnimatedProps={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestAnimatedStyle={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestInlineStyle={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                  nativeID="5"
+                  style={
+                    [
+                      {
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={22}
+                    width={22}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
+                      },
+                      {
+                        "color": "#161617",
+                        "flexBasis": undefined,
+                        "flexGrow": undefined,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": undefined,
+                      },
+                    ]
+                  }
+                >
+                  Ne pas sécuriser mon compte
                 </Text>
               </View>
             </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#161617",
-                    "flexBasis": undefined,
-                    "flexGrow": undefined,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": undefined,
-                  },
-                ]
-              }
-            >
-              Ne pas sécuriser mon compte
-            </Text>
           </View>
         </View>
       </View>
@@ -1388,566 +1408,576 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
         }
       />
       <View
-        flex={1}
         style={
           {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-          }
-        }
-      />
-      <View
-        animation={false}
-        style={
-          {
-            "alignItems": "center",
-            "justifyContent": "center",
-            "marginBottom": 24,
+            "justifyContent": "space-between",
           }
         }
       >
         <View
-          height={156}
-          width={200}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-      </View>
-      <View
-        gap={4}
-        style={
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 24,
-          }
-        }
-      >
-        <Text
-          accessibilityRole="header"
           style={
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-              "textAlign": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
             }
           }
         >
-          Sécurise ton compte
-        </Text>
-      </View>
-      <View
-        style={
-          {
-            "marginBottom": 24,
-          }
-        }
-      >
-        <View
-          gap={4}
-          style={
-            {
-              "gap": 16,
-            }
-          }
-        >
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            Tu as indiqué 
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              ne pas être à l’origine
-            </Text>
-             de cette connexion :
-          </Text>
           <View
+            animation={false}
             style={
               {
-                "backgroundColor": "#f3edff",
-                "borderBottomLeftRadius": 8,
-                "borderBottomRightRadius": 8,
-                "borderTopLeftRadius": 8,
-                "borderTopRightRadius": 8,
-                "flexDirection": "row",
-                "gap": 8,
-                "paddingBottom": 16,
-                "paddingLeft": 16,
-                "paddingRight": 16,
-                "paddingTop": 16,
-                "width": "100%",
+                "alignItems": "center",
+                "justifyContent": "center",
+                "marginBottom": 24,
               }
             }
           >
             <View
-              fill="#320096"
-              height={24}
-              width={24}
+              height={156}
+              width={200}
             >
               <Text>
                 undefined-SVG-Mock
               </Text>
             </View>
+          </View>
+          <View
+            gap={4}
+            style={
+              {
+                "alignItems": "center",
+                "gap": 16,
+                "marginBottom": 24,
+              }
+            }
+          >
             <Text
+              accessibilityRole="header"
               style={
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 14,
-                  "lineHeight": 22.4,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 21,
+                  "lineHeight": 33.6,
+                  "textAlign": "center",
                 }
               }
             >
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                  }
-                }
-              >
-                Appareil utilisé : 
-              </Text>
-               
-              Indéterminé
-              
-
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                  }
-                }
-              >
-                Lieu : 
-              </Text>
-               
-              Indéterminé
-              
-
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                  }
-                }
-              >
-                Date et heure : 
-              </Text>
-               
-              Indéterminé
+              Sécurise ton compte
             </Text>
           </View>
-          <Text
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              }
-            }
-          >
-            Pour des raisons de 
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              sécurité,
-            </Text>
-             nous te conseillons de
-             modifier ton mot de passe ou de suspendre ton compte temporairement.
-          </Text>
-        </View>
-      </View>
-      <View
-        flex={1}
-        style={
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          }
-        }
-      />
-      <View
-        gap={4}
-        isLandscape={false}
-        style={
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 40,
-          }
-        }
-      >
-        <View
-          accessibilityLabel="Modifier mon mot de passe"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "alignSelf": "center",
-                  "backgroundColor": "#6123df",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderColor": "#6123df",
-                  "borderStyle": "solid",
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingBottom": 8,
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                  "paddingTop": 8,
-                  "width": "100%",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Modifier mon mot de passe"
-        >
           <View
-            fullWidth={true}
-            gap={8}
-            hasIcon={false}
-            isMultiline={false}
             style={
               {
-                "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "width": "100%",
-              }
-            }
-          >
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#ffffff",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": "center",
-                  },
-                ]
-              }
-            >
-              Modifier mon mot de passe
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityLabel="Suspendre mon compte"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "alignSelf": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderColor": "#6123df",
-                  "borderStyle": "solid",
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingBottom": 8,
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                  "paddingTop": 8,
-                  "width": "100%",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Suspendre mon compte"
-        >
-          <View
-            fullWidth={true}
-            gap={8}
-            hasIcon={false}
-            isMultiline={false}
-            style={
-              {
-                "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "width": "100%",
-              }
-            }
-          >
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#6123df",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": "center",
-                  },
-                ]
-              }
-            >
-              Suspendre mon compte
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityLabel="Ne pas sécuriser mon compte"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 0,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "width": "auto",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Ne pas sécuriser mon compte"
-        >
-          <View
-            gap={8}
-            hasIcon={true}
-            isMultiline={false}
-            style={
-              {
-                "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
+                "marginBottom": 24,
               }
             }
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
-                {
-                  "flexShrink": 0,
-                }
-              }
-              nativeID="8"
+              gap={4}
               style={
+                {
+                  "gap": 16,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Tu as indiqué 
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  ne pas être à l’origine
+                </Text>
+                 de cette connexion :
+              </Text>
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f3edff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "flexDirection": "row",
+                    "gap": 8,
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
+                  }
+                }
+              >
+                <View
+                  fill="#320096"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 22.4,
+                      }
+                    }
+                  >
+                    Appareil utilisé : 
+                  </Text>
+                   
+                  Indéterminé
+                  
+
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 22.4,
+                      }
+                    }
+                  >
+                    Lieu : 
+                  </Text>
+                   
+                  Indéterminé
+                  
+
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 22.4,
+                      }
+                    }
+                  >
+                    Date et heure : 
+                  </Text>
+                   
+                  Indéterminé
+                </Text>
+              </View>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Pour des raisons de 
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  sécurité,
+                </Text>
+                 nous te conseillons de
+                 modifier ton mot de passe ou de suspendre ton compte temporairement.
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          gap={4}
+          isLandscape={false}
+          style={
+            {
+              "alignItems": "center",
+              "gap": 16,
+              "marginBottom": 40,
+            }
+          }
+        >
+          <View
+            accessibilityLabel="Modifier mon mot de passe"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
                 [
                   {
-                    "flexShrink": 0,
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "center",
+                    "backgroundColor": "#6123df",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderColor": "#6123df",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Modifier mon mot de passe"
+          >
+            <View
+              fullWidth={true}
+              gap={8}
+              hasIcon={false}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 8,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#ffffff",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": "100%",
+                      "minWidth": 0,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Modifier mon mot de passe
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="Suspendre mon compte"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderColor": "#6123df",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Suspendre mon compte"
+          >
+            <View
+              fullWidth={true}
+              gap={8}
+              hasIcon={false}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 8,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#6123df",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": "100%",
+                      "minWidth": 0,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Suspendre mon compte
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "marginTop": 8,
+              }
+            }
+          >
+            <View
+              accessibilityLabel="Ne pas sécuriser mon compte"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "width": "auto",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
                   },
                 ]
               }
+              testID="Ne pas sécuriser mon compte"
             >
               <View
-                height={22}
-                width={22}
+                gap={8}
+                hasIcon={true}
+                isMultiline={false}
+                style={
+                  {
+                    "alignItems": "center",
+                    "columnGap": 8,
+                    "flexDirection": "row",
+                  }
+                }
               >
-                <Text>
-                  undefined-SVG-Mock
+                <View
+                  collapsable={false}
+                  jestAnimatedProps={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestAnimatedStyle={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestInlineStyle={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                  nativeID="8"
+                  style={
+                    [
+                      {
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={22}
+                    width={22}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
+                      },
+                      {
+                        "color": "#161617",
+                        "flexBasis": undefined,
+                        "flexGrow": undefined,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": undefined,
+                      },
+                    ]
+                  }
+                >
+                  Ne pas sécuriser mon compte
                 </Text>
               </View>
             </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#161617",
-                    "flexBasis": undefined,
-                    "flexGrow": undefined,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": undefined,
-                  },
-                ]
-              }
-            >
-              Ne pas sécuriser mon compte
-            </Text>
           </View>
         </View>
       </View>

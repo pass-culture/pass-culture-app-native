@@ -247,326 +247,336 @@ exports[`QuitSignupModal should render correctly 1`] = `
               }
             />
             <View
-              flex={1}
               style={
                 {
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                }
-              }
-            />
-            <View
-              animation={false}
-              style={
-                {
-                  "alignItems": "center",
-                  "justifyContent": "center",
-                  "marginBottom": 24,
+                  "justifyContent": "space-between",
                 }
               }
             >
               <View
-                height={156}
-                width={200}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              gap={4}
-              style={
-                {
-                  "alignItems": "center",
-                  "gap": 16,
-                  "marginBottom": 24,
-                }
-              }
-            >
-              <Text
-                accessibilityRole="header"
                 style={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 21,
-                    "lineHeight": 33.6,
-                    "textAlign": "center",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "justifyContent": "center",
                   }
                 }
-              >
-                Veux-tu abandonner l’inscription ?
-              </Text>
-              <Text
-                accessibilityRole="header"
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "textAlign": "center",
-                  }
-                }
-              >
-                Les informations que tu as renseignées ne seront pas enregistrées.
-              </Text>
-            </View>
-            <View
-              flex={1}
-              style={
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                }
-              }
-            />
-            <View
-              gap={4}
-              isLandscape={false}
-              style={
-                {
-                  "alignItems": "center",
-                  "gap": 16,
-                  "marginBottom": 40,
-                }
-              }
-            >
-              <View
-                accessibilityLabel="Continuer l’inscription"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "alignSelf": "center",
-                        "backgroundColor": "#6123df",
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderColor": "#6123df",
-                        "borderStyle": "solid",
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "paddingBottom": 8,
-                        "paddingLeft": 12,
-                        "paddingRight": 12,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Continuer l’inscription"
               >
                 <View
-                  fullWidth={true}
-                  gap={8}
-                  hasIcon={false}
-                  isMultiline={false}
+                  animation={false}
                   style={
                     {
                       "alignItems": "center",
-                      "columnGap": 8,
-                      "flexDirection": "row",
                       "justifyContent": "center",
-                      "width": "100%",
-                    }
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 22,
-                        },
-                        {
-                          "color": "#ffffff",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "maxWidth": "100%",
-                          "minWidth": 0,
-                          "textAlign": "center",
-                        },
-                      ]
-                    }
-                  >
-                    Continuer l’inscription
-                  </Text>
-                </View>
-              </View>
-              <View
-                accessibilityLabel="Abandonner l’inscription"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "transparent",
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                        "width": "auto",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Abandonner l’inscription"
-              >
-                <View
-                  gap={8}
-                  hasIcon={true}
-                  isMultiline={false}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "columnGap": 8,
-                      "flexDirection": "row",
+                      "marginBottom": 24,
                     }
                   }
                 >
                   <View
-                    collapsable={false}
-                    jestAnimatedProps={
-                      {
-                        "value": {},
-                      }
+                    height={156}
+                    width={200}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  gap={4}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "gap": 16,
+                      "marginBottom": 24,
                     }
-                    jestAnimatedStyle={
-                      {
-                        "value": {},
-                      }
-                    }
-                    jestInlineStyle={
-                      {
-                        "flexShrink": 0,
-                      }
-                    }
-                    nativeID="0"
+                  }
+                >
+                  <Text
+                    accessibilityRole="header"
                     style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 21,
+                        "lineHeight": 33.6,
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    Veux-tu abandonner l’inscription ?
+                  </Text>
+                  <Text
+                    accessibilityRole="header"
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    Les informations que tu as renseignées ne seront pas enregistrées.
+                  </Text>
+                </View>
+              </View>
+              <View
+                gap={4}
+                isLandscape={false}
+                style={
+                  {
+                    "alignItems": "center",
+                    "gap": 16,
+                    "marginBottom": 40,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Continuer l’inscription"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
                       [
                         {
-                          "flexShrink": 0,
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "alignSelf": "center",
+                          "backgroundColor": "#6123df",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#6123df",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                          "width": "100%",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Continuer l’inscription"
+                >
+                  <View
+                    fullWidth={true}
+                    gap={8}
+                    hasIcon={false}
+                    isMultiline={false}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "columnGap": 8,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 22,
+                          },
+                          {
+                            "color": "#ffffff",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Continuer l’inscription
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "marginTop": 8,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Abandonner l’inscription"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 0,
+                            "flexDirection": "row",
+                            "justifyContent": "center",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "width": "auto",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
                         },
                       ]
                     }
+                    testID="Abandonner l’inscription"
                   >
                     <View
-                      fill="#161617"
-                      height={22}
-                      width={22}
+                      gap={8}
+                      hasIcon={true}
+                      isMultiline={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                        }
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
+                      <View
+                        collapsable={false}
+                        jestAnimatedProps={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestAnimatedStyle={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestInlineStyle={
+                          {
+                            "flexShrink": 0,
+                          }
+                        }
+                        nativeID="0"
+                        style={
+                          [
+                            {
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          fill="#161617"
+                          height={22}
+                          width={22}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#161617",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
+                        }
+                      >
+                        Abandonner l’inscription
                       </Text>
                     </View>
                   </View>
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 22,
-                        },
-                        {
-                          "color": "#161617",
-                          "flexBasis": undefined,
-                          "flexGrow": undefined,
-                          "flexShrink": 1,
-                          "maxWidth": "100%",
-                          "minWidth": 0,
-                          "textAlign": undefined,
-                        },
-                      ]
-                    }
-                  >
-                    Abandonner l’inscription
-                  </Text>
                 </View>
               </View>
             </View>
