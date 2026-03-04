@@ -83,7 +83,7 @@ export const DuoChoiceSelector: React.FC<DuoChoiceSelectorProps> = ({
         value={currentValue}
         onChange={handleChange}
         variant="detailed"
-        display="horizontal"
+        display="vertical"
       />
     </View>
   )
