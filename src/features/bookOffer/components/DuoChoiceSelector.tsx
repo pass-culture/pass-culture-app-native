@@ -19,6 +19,11 @@ const QUANTITY_BY_LABEL: Readonly<Record<string, 1 | 2>> = {
   [DUO_LABEL]: 2,
 }
 
+const LABEL_BY_QUANTITY: Readonly<Record<number, string>> = {
+  1: SOLO_LABEL,
+  2: DUO_LABEL,
+}
+
 type DuoChoiceSelectorProps = {
   label?: string
   labelVariant?: LabelVariant
@@ -62,8 +67,7 @@ export const DuoChoiceSelector: React.FC<DuoChoiceSelectorProps> = ({
       : []),
   ]
 
-  const currentValue =
-    bookingState.quantity === 1 ? SOLO_LABEL : bookingState.quantity === 2 ? DUO_LABEL : ''
+  const currentValue = (bookingState.quantity && LABEL_BY_QUANTITY[bookingState.quantity]) ?? ''
 
   const handleChange = useCallback(
     (selectedLabel: string) => {
