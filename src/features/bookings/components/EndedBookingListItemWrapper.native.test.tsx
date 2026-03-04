@@ -1,36 +1,60 @@
 import React, { ComponentProps } from 'react'
 
-import {
-  EndedBookingListItemWrapper,
-  LIKE_BUTTON_ACCESSIBILITY_LABEL,
-} from 'features/bookings/components/EndedBookingListItemWrapper'
+import { ReactionTypeEnum } from 'api/gen'
+import { EndedBookingListItemWrapper } from 'features/bookings/components/EndedBookingListItemWrapper'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-
-jest.mock('libs/network/NetInfoWrapper')
-jest.mock('libs/subcategories/useSubcategory')
 
 const mockHandleShowReactionModal = jest.fn()
 
 const user = userEvent.setup()
 
 describe('EndedBookingListItemWrapper', () => {
-  jest.useFakeTimers()
+  it('should display like button when user can react and has not reacted yet', () => {
+    const booking = mockBuilder.endedBookingListItemResponse({ canReact: true, userReaction: null })
 
-  it('should display like button when user can react', () => {
     renderComponent({
-      booking: mockBuilder.endedBookingListItemResponse({ canReact: true, userReaction: null }),
+      booking,
     })
 
-    expect(screen.getByLabelText(LIKE_BUTTON_ACCESSIBILITY_LABEL)).toBeOnTheScreen()
+    expect(
+      screen.getByLabelText(
+        `Ouvrir la modale de réaction pour la réservation ${booking.stock.offer.name}`
+      )
+    ).toBeOnTheScreen()
+  })
+
+  it('should not display like button when user has already reacted', () => {
+    const booking = mockBuilder.endedBookingListItemResponse({
+      canReact: true,
+      userReaction: ReactionTypeEnum.LIKE,
+    })
+
+    renderComponent({
+      booking,
+    })
+
+    expect(
+      screen.queryByLabelText(
+        `Ouvrir la modale de réaction pour la réservation ${booking.stock.offer.name}`
+      )
+    ).not.toBeOnTheScreen()
   })
 
   it('should call handleShowReactionModal when pressing like button', async () => {
-    const booking = mockBuilder.endedBookingListItemResponse({ canReact: true, userReaction: null })
+    const booking = mockBuilder.endedBookingListItemResponse({
+      canReact: true,
+      userReaction: null,
+    })
+
     renderComponent({ booking })
 
-    await user.press(screen.getByLabelText(LIKE_BUTTON_ACCESSIBILITY_LABEL))
+    await user.press(
+      screen.getByLabelText(
+        `Ouvrir la modale de réaction pour la réservation ${booking.stock.offer.name}`
+      )
+    )
 
     expect(mockHandleShowReactionModal).toHaveBeenCalledWith(booking)
   })
@@ -38,10 +62,10 @@ describe('EndedBookingListItemWrapper', () => {
 
 type RenderComponentType = Partial<ComponentProps<typeof EndedBookingListItemWrapper>>
 
-function renderComponent({
+const renderComponent = ({
   booking = mockBuilder.endedBookingListItemResponse(),
   handleShowReactionModal = mockHandleShowReactionModal,
-}: RenderComponentType = {}) {
+}: RenderComponentType = {}) => {
   return render(
     reactQueryProviderHOC(
       <EndedBookingListItemWrapper

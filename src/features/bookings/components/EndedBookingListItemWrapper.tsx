@@ -20,8 +20,6 @@ type EndedBookingProps = {
   handleShowReactionModal: (booking: BookingListItemResponse) => void
 }
 
-export const LIKE_BUTTON_ACCESSIBILITY_LABEL = 'Ajouter un j’aime à cette réservation'
-
 export const EndedBookingListItemWrapper: FunctionComponent<EndedBookingProps> = ({
   booking,
   handleShowReactionModal,
@@ -75,12 +73,12 @@ export const EndedBookingListItemWrapper: FunctionComponent<EndedBookingProps> =
           <BookingListItemLabel alert={!!booking.expirationDate} text={title} icon={icon} />
         </BookingListItem>
       </InternalTouchableLink>
-      {booking.canReact ? (
+      {booking.canReact && booking.userReaction === null ? (
         <LikeButtonContainer>
           <Button
             icon={ThumbUp}
             onPress={() => handleShowReactionModal(booking)}
-            accessibilityLabel={LIKE_BUTTON_ACCESSIBILITY_LABEL}
+            accessibilityLabel={`Ouvrir la modale de réaction pour la réservation ${name}`}
             variant="secondary"
             color="neutral"
             size="small"
