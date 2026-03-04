@@ -260,47 +260,43 @@ export const getCTAWordingAndAction = ({
   subcategory,
   isEndedUsedBooking,
   user,
-}: GetCTAWordingAndActionProps): ICTAWordingAndAction | undefined => {
-  const { offer, isUnderageBeneficiary } = context
+}: GetCTAWordingAndActionProps): ICTAWordingAndAction => {
+  const { offer, isUnderageBeneficiary, alreadyBookedOfferId } = context
   const { externalTicketOfficeUrl, subcategoryId } = offer
 
-  const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
-  const isMovieScreeningOffer = subcategoryId === SubcategoryIdEnum.SEANCE_CINE
-  const isUserFreeStatus = user?.eligibility === EligibilityType.free
-  const isFreeOffer = getIsFreeOffer(offer)
-  const isNotFreeOffer = !isFreeOffer
-  const isProfileIncomplete = getIsProfileIncomplete(user)
-  const isEligibleFreeOffer15To16 = enableBookingFreeOfferFifteenSixteen && isUserFreeStatus
-  const userWithNotEnoughCredit =
-    userStatus.statusType == YoungStatusType.beneficiary && !hasEnoughCredit
-  const isBeneficiary = user?.isBeneficiary
-  const isExBeneficiary = user && isUserExBeneficiary(user)
-  const shouldBeRedirectedToExternalUrl =
-    externalTicketOfficeUrl && (userWithNotEnoughCredit || isExBeneficiary)
-  const isDepositExpired = user?.depositExpirationDate
-    ? new Date(user?.depositExpirationDate) < new Date()
-    : false
-  const isAlreadyBookedOffer = !!user?.bookedOffers[offer.id]
-
+  // 1. Authentication and redirection
   if (!isLoggedIn) {
     return getCTAProps(externalTicketOfficeUrl ? 'EXTERNAL_URL' : 'AUTHENTICATION', context)
   }
 
+  const isExBeneficiary = user && isUserExBeneficiary(user)
+  const isBeneficiary = user?.isBeneficiary
+  const userWithoutEnoughCredit =
+    userStatus.statusType == YoungStatusType.beneficiary && !hasEnoughCredit
+  const shouldBeRedirectedToExternalUrl =
+    externalTicketOfficeUrl && (userWithoutEnoughCredit || isExBeneficiary)
   if (shouldBeRedirectedToExternalUrl) {
     return getCTAProps('EXTERNAL_URL', context)
   }
 
-  if (isEligibleFreeOffer15To16 && isNotFreeOffer) {
+  // 2. Free offers and specific status
+  const isFreeOffer = getIsFreeOffer(offer)
+  const isUserFreeStatus = user?.eligibility === EligibilityType.free
+  const isEligibleFreeOffer15To16 = enableBookingFreeOfferFifteenSixteen && isUserFreeStatus
+
+  if (isEligibleFreeOffer15To16 && !isFreeOffer) {
     return getCTAProps('USER_15_16', context)
   }
 
+  const isAlreadyBookedOffer = !!alreadyBookedOfferId
+  const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
   if (isFreeDigitalOffer && userStatus?.statusType !== YoungStatusType.non_eligible) {
-    if (subcategory.isEvent) {
+    if (subcategory.isEvent)
       return getCTAProps(isAlreadyBookedOffer ? 'SEE_BOOKING' : 'BOOK_OFFER', context)
-    }
     return getCTAProps('DIGITAL_OFFER', context)
   }
 
+  const isProfileIncomplete = getIsProfileIncomplete(user)
   if (isFreeOffer) {
     if (isEligibleFreeOffer15To16 && isProfileIncomplete) {
       return getCTAProps('INCOMPLETE_PROFILE', context)
@@ -311,6 +307,7 @@ export const getCTAWordingAndAction = ({
     }
   }
 
+  // 3. Eligibility and reservation status
   if (userStatus.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
     return getCTAProps('INELIGIBLE', context)
   }
@@ -327,26 +324,28 @@ export const getCTAWordingAndAction = ({
     return getCTAProps('SEE_BOOKING', context)
   }
 
+  // 4. Restrictions categories / educational offers
   // Non beneficiary or educational offer or unavailable offer for user
   const isOfferCategoryNotBookableByUser = isUnderageBeneficiary && offer.isForbiddenToUnderage
-  if (!isLoggedIn || !isBeneficiary || offer.isEducational || isOfferCategoryNotBookableByUser) {
+  if (!isBeneficiary || offer.isEducational || isOfferCategoryNotBookableByUser) {
     if (!externalTicketOfficeUrl) return { wording: undefined }
 
     return getCTAProps('EXTERNAL_URL', context)
   }
 
-  // Beneficiary
+  // 5. Expiration and stocks (beneficiaries only)
+  const isDepositExpired = user?.depositExpirationDate
+    ? new Date(user?.depositExpirationDate) < new Date()
+    : false
+  const isMovieScreeningOffer = subcategoryId === SubcategoryIdEnum.SEANCE_CINE
   if (isDepositExpired && isMovieScreeningOffer) return getCTAProps('EXPIRED_CREDIT', context)
 
   if (!offer.isReleased || offer.isExpired) return getCTAProps('EXPIRED_OFFER', context)
   if (offer.isSoldOut) return getCTAProps('SOLD_OUT_OFFER', context)
 
-  if (!subcategory.isEvent) {
-    return getCTAProps(hasEnoughCredit ? 'BOOK_OFFER' : 'INSUFFICIENT_CREDIT', context)
-  }
+  // 6. Booking a paid offer or insufficient credit
+  const bookOfferType = subcategory.isEvent ? 'BOOK_EVENT_OFFER' : 'BOOK_OFFER'
+  const type = hasEnoughCredit ? bookOfferType : 'INSUFFICIENT_CREDIT'
 
-  if (subcategory.isEvent) {
-    return getCTAProps(hasEnoughCredit ? 'BOOK_EVENT_OFFER' : 'INSUFFICIENT_CREDIT', context)
-  }
-  return undefined
+  return getCTAProps(type, context)
 }

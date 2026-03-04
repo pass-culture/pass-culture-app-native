@@ -1,21 +1,34 @@
-import { ActivityIdEnum, SubscriptionStatus } from 'api/gen'
+import mockdate from 'mockdate'
+
+import {
+  ActivityIdEnum,
+  EligibilityType,
+  SubcategoryIdEnum,
+  SubscriptionStatus,
+  YoungStatusType,
+} from 'api/gen'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { BottomBannerTextEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
+import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { DEFAULT_CTA_WORDING } from 'features/offerRefacto/constants'
 import { CTAContextFixture } from 'features/offerRefacto/fixtures/CTAContext.fixture'
 import {
   getBaseProps,
   getCTAProps,
+  getCTAWordingAndAction,
   getInsufficientCreditWording,
   getSpecificsMovieScreeningOffer,
   getSubscriptionCTAProps,
 } from 'features/offerRefacto/helpers'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { OfferModal } from 'shared/offer/enums'
 
 jest.mock('libs/firebase/analytics/analytics')
 const mockOpenUrl = jest.spyOn(NavigationHelpers, 'openUrl')
+
+mockdate.set(new Date('2021-01-04T00:00:00Z'))
 
 describe('getBaseProps', () => {
   it('should return base props for not movie screening offer', () => {
@@ -232,19 +245,6 @@ describe('getSubscriptionCTAProps', () => {
 
 describe('getCTAProps', () => {
   describe('Authentication CTA', () => {
-    it('should return authentication props', () => {
-      const result = getCTAProps('AUTHENTICATION', CTAContextFixture)
-
-      expect(result).toEqual(
-        expect.objectContaining({
-          wording: DEFAULT_CTA_WORDING,
-          isDisabled: false,
-          modalToDisplay: OfferModal.AUTHENTICATION,
-          movieScreeningUserData: { isUserLoggedIn: false },
-        })
-      )
-    })
-
     it('should trigger logConsultAuthenticationModal log at pressing', () => {
       const result = getCTAProps('AUTHENTICATION', CTAContextFixture)
 
@@ -255,19 +255,6 @@ describe('getCTAProps', () => {
   })
 
   describe('Book event offer CTA', () => {
-    it('should return book event offer props', () => {
-      const result = getCTAProps('BOOK_EVENT_OFFER', CTAContextFixture)
-
-      expect(result).toEqual(
-        expect.objectContaining({
-          wording: 'Voir les disponibilités',
-          isDisabled: false,
-          modalToDisplay: OfferModal.BOOKING,
-          movieScreeningUserData: { hasEnoughCredit: true },
-        })
-      )
-    })
-
     it('should trigger logConsultAvailableDates and logClickBookOffer logs at pressing', () => {
       const result = getCTAProps('BOOK_EVENT_OFFER', CTAContextFixture)
 
@@ -279,18 +266,6 @@ describe('getCTAProps', () => {
   })
 
   describe('Book offer CTA', () => {
-    it('should return book offer props', () => {
-      const result = getCTAProps('BOOK_OFFER', CTAContextFixture)
-
-      expect(result).toEqual(
-        expect.objectContaining({
-          wording: DEFAULT_CTA_WORDING,
-          isDisabled: false,
-          modalToDisplay: OfferModal.BOOKING,
-        })
-      )
-    })
-
     it('should trigger logConsultErrorApplicationModal log at pressing', () => {
       const result = getCTAProps('BOOK_OFFER', CTAContextFixture)
 
@@ -302,17 +277,6 @@ describe('getCTAProps', () => {
 
   describe('Digital offer CTA', () => {
     const mockBookOffer = jest.fn()
-
-    it('should return digital offer props', () => {
-      const result = getCTAProps('DIGITAL_OFFER', CTAContextFixture)
-
-      expect(result).toEqual(
-        expect.objectContaining({
-          wording: 'Accéder à l’offre en ligne',
-          isDisabled: false,
-        })
-      )
-    })
 
     it('should trigger book offer at pressing when offer not already booked and stock available', () => {
       const result = getCTAProps('DIGITAL_OFFER', {
@@ -337,57 +301,6 @@ describe('getCTAProps', () => {
       result.onPress && result.onPress()
 
       expect(mockOpenUrl).toHaveBeenNthCalledWith(1, 'https://www.google.com/')
-    })
-  })
-
-  describe('Ended used booking CTA', () => {
-    it('should return ended used booking props', () => {
-      const result = getCTAProps('ENDED_USED_BOOKING', CTAContextFixture)
-
-      expect(result).toEqual({
-        wording: DEFAULT_CTA_WORDING,
-        isDisabled: false,
-        modalToDisplay: OfferModal.BOOKING,
-        isEndedUsedBooking: true,
-        movieScreeningUserData: { bookings: CTAContextFixture.booking },
-      })
-    })
-  })
-
-  describe('Expired credit CTA', () => {
-    it('should return expired credit props', () => {
-      const result = getCTAProps('EXPIRED_CREDIT', CTAContextFixture)
-
-      expect(result).toEqual({
-        bottomBannerText: BottomBannerTextEnum.CREDIT_HAS_EXPIRED,
-        movieScreeningUserData: { isUserCreditExpired: true },
-      })
-    })
-  })
-
-  describe('Expired offer CTA', () => {
-    it('should return expired offer props', () => {
-      const result = getCTAProps('EXPIRED_OFFER', CTAContextFixture)
-
-      expect(result).toEqual({
-        wording: 'Offre expirée',
-        isDisabled: true,
-      })
-    })
-  })
-
-  describe('External URL CTA', () => {
-    it('should return expired offer props', () => {
-      const result = getCTAProps('EXTERNAL_URL', {
-        ...CTAContextFixture,
-        offer: { ...offerResponseSnap, externalTicketOfficeUrl: 'https://www.google.com/' },
-      })
-
-      expect(result).toEqual({
-        wording: 'Accéder au site partenaire',
-        isDisabled: false,
-        externalNav: { url: 'https://www.google.com/' },
-      })
     })
   })
 
@@ -427,44 +340,7 @@ describe('getCTAProps', () => {
     })
   })
 
-  describe('Ineligible CTA', () => {
-    it('should return ineligible props', () => {
-      const result = getCTAProps('INELIGIBLE', CTAContextFixture)
-
-      expect(result).toEqual({
-        wording: DEFAULT_CTA_WORDING,
-        bottomBannerText: BottomBannerTextEnum.NOT_ELIGIBLE,
-        isDisabled: true,
-        movieScreeningUserData: { isUserEligible: false },
-      })
-    })
-  })
-
-  describe('Insufficient credit CTA', () => {
-    it('should return insufficient credit props', () => {
-      const result = getCTAProps('INSUFFICIENT_CREDIT', CTAContextFixture)
-
-      expect(result).toEqual({
-        wording: 'Crédit insuffisant',
-        isDisabled: true,
-      })
-    })
-  })
-
   describe('See booking CTA', () => {
-    it('should return see booking props', () => {
-      const result = getCTAProps('SEE_BOOKING', { ...CTAContextFixture, alreadyBookedOfferId: 1 })
-
-      expect(result).toEqual(
-        expect.objectContaining({
-          wording: 'Voir ma réservation',
-          isDisabled: false,
-          navigateTo: { screen: 'BookingDetails', params: { id: 1 }, fromRef: true },
-          movieScreeningUserData: { hasBookedOffer: true, bookings: CTAContextFixture.booking },
-        })
-      )
-    })
-
     it('should trigger logViewedBookingPage log at pressing', () => {
       const result = getCTAProps('SEE_BOOKING', CTAContextFixture)
 
@@ -477,34 +353,7 @@ describe('getCTAProps', () => {
     })
   })
 
-  describe('Sold out offer CTA', () => {
-    it('should return sold out offer props', () => {
-      const result = getCTAProps('SOLD_OUT_OFFER', CTAContextFixture)
-
-      expect(result).toEqual({
-        wording: 'Offre épuisée',
-        isDisabled: true,
-      })
-    })
-  })
-
   describe('Subscription status CTA', () => {
-    it('should return subscription status props', () => {
-      const result = getCTAProps('SUBSCRIPTION_STATUS', {
-        ...CTAContextFixture,
-        subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
-      })
-
-      expect(result).toEqual(
-        expect.objectContaining({
-          wording: DEFAULT_CTA_WORDING,
-          isDisabled: false,
-          modalToDisplay: OfferModal.FINISH_SUBSCRIPTION,
-          movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
-        })
-      )
-    })
-
     it('should trigger logConsultFinishSubscriptionModal log at pressing', () => {
       const result = getCTAProps('SUBSCRIPTION_STATUS', {
         ...CTAContextFixture,
@@ -519,15 +368,502 @@ describe('getCTAProps', () => {
       )
     })
   })
+})
 
-  describe('User 15 16 CTA', () => {
-    it('should return insufficient credit props', () => {
-      const result = getCTAProps('USER_15_16', CTAContextFixture)
+describe('getCTAWordingAndAction', () => {
+  const mockBookOffer = jest.fn()
+  const defaultProps = {
+    context: {
+      offer: offerResponseSnap,
+      isUnderageBeneficiary: false,
+      bookOffer: mockBookOffer,
+      isBookingLoading: false,
+      booking: CTAContextFixture.booking,
+    },
+    enableBookingFreeOfferFifteenSixteen: true,
+    userStatus: { statusType: YoungStatusType.beneficiary },
+    hasEnoughCredit: true,
+    isLoggedIn: true,
+    subcategory: mockSubcategory,
+    isEndedUsedBooking: false,
+    user: beneficiaryUser,
+  }
+
+  describe('User not logged in', () => {
+    it('should use authentication CTA when offer has no external url', () => {
+      const result = getCTAWordingAndAction({ ...defaultProps, isLoggedIn: false })
+
+      expect(result).toEqual(
+        expect.objectContaining({
+          isDisabled: false,
+          modalToDisplay: OfferModal.AUTHENTICATION,
+          movieScreeningUserData: { isUserLoggedIn: false },
+          wording: DEFAULT_CTA_WORDING,
+        })
+      )
+    })
+  })
+
+  it('should use external url CTA when offer has external url and ex beneficiary user', () => {
+    const result = getCTAWordingAndAction({
+      ...defaultProps,
+      context: {
+        ...defaultProps.context,
+        offer: { ...offerResponseSnap, externalTicketOfficeUrl: 'https://www.google.com/' },
+      },
+      isLoggedIn: true,
+    })
+
+    expect(result).toEqual({
+      externalNav: { url: 'https://www.google.com/' },
+      isDisabled: false,
+      wording: 'Accéder au site partenaire',
+    })
+  })
+
+  it('should use external url CTA when offer has external url and user without enough credit', () => {
+    const result = getCTAWordingAndAction({
+      ...defaultProps,
+      context: {
+        ...defaultProps.context,
+        offer: { ...offerResponseSnap, externalTicketOfficeUrl: 'https://www.google.com/' },
+      },
+      isLoggedIn: true,
+      hasEnoughCredit: false,
+    })
+
+    expect(result).toEqual({
+      externalNav: { url: 'https://www.google.com/' },
+      isDisabled: false,
+      wording: 'Accéder au site partenaire',
+    })
+  })
+
+  it('should use 15 16 CTA when offer is not free and user eligibility is free', () => {
+    const result = getCTAWordingAndAction({
+      ...defaultProps,
+      isLoggedIn: true,
+      user: { ...nonBeneficiaryUser, eligibility: EligibilityType.free },
+    })
+
+    expect(result).toEqual({
+      bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
+      isDisabled: true,
+      wording: 'Réserver l’offre',
+    })
+  })
+
+  describe('Free digital offers', () => {
+    describe('Subcategory is not event', () => {
+      it('should return digital offer CTA', () => {
+        const result = getCTAWordingAndAction({
+          ...defaultProps,
+          subcategory: { ...mockSubcategory, isEvent: false },
+          userStatus: { statusType: YoungStatusType.beneficiary },
+          context: {
+            ...defaultProps.context,
+            offer: {
+              ...offerResponseSnap,
+              isDigital: true,
+              stocks: [{ ...offerResponseSnap.stocks[0], price: 0 }],
+            },
+          },
+        })
+
+        expect(result).toEqual(
+          expect.objectContaining({
+            isDisabled: false,
+            wording: 'Accéder à l’offre en ligne',
+          })
+        )
+      })
+    })
+
+    describe('Subcategory is event', () => {
+      it('should return see booking CTA if offer already booked', () => {
+        const result = getCTAWordingAndAction({
+          ...defaultProps,
+          userStatus: { statusType: YoungStatusType.beneficiary },
+          context: {
+            ...defaultProps.context,
+            offer: {
+              ...offerResponseSnap,
+              isDigital: true,
+              stocks: [{ ...offerResponseSnap.stocks[0], price: 0 }],
+            },
+            alreadyBookedOfferId: 1,
+          },
+        })
+
+        expect(result).toEqual(
+          expect.objectContaining({
+            wording: 'Voir ma réservation',
+            isDisabled: false,
+            navigateTo: { screen: 'BookingDetails', params: { id: 1 }, fromRef: true },
+            movieScreeningUserData: { hasBookedOffer: true, bookings: CTAContextFixture.booking },
+          })
+        )
+      })
+
+      it('should return book offer CTA if offer not booked', () => {
+        const result = getCTAWordingAndAction({
+          ...defaultProps,
+          userStatus: { statusType: YoungStatusType.beneficiary },
+          context: {
+            ...defaultProps.context,
+            offer: {
+              ...offerResponseSnap,
+              isDigital: true,
+              stocks: [{ ...offerResponseSnap.stocks[0], price: 0 }],
+            },
+          },
+        })
+
+        expect(result).toEqual(
+          expect.objectContaining({
+            wording: DEFAULT_CTA_WORDING,
+            isDisabled: false,
+            modalToDisplay: OfferModal.BOOKING,
+          })
+        )
+      })
+    })
+  })
+
+  describe('Free offers', () => {
+    it('should return incomplete profile CTA when user egilibility is free and profile incomplete', () => {
+      const result = getCTAWordingAndAction({
+        ...defaultProps,
+        isLoggedIn: true,
+        user: { ...beneficiaryUser, eligibility: EligibilityType.free, firstName: undefined },
+        context: {
+          ...defaultProps.context,
+          offer: {
+            ...offerResponseSnap,
+            stocks: [{ ...offerResponseSnap.stocks[0], price: 0 }],
+          },
+        },
+      })
 
       expect(result).toEqual({
         wording: DEFAULT_CTA_WORDING,
+        isDisabled: false,
+        navigateTo: {
+          params: { params: { type: 'booking' }, screen: 'SetName' },
+          screen: 'SubscriptionStackNavigator',
+        },
+      })
+    })
+
+    it('should return book offer CTA when user egilibility is free and profile complete', () => {
+      const result = getCTAWordingAndAction({
+        ...defaultProps,
+        isLoggedIn: true,
+        user: { ...beneficiaryUser, eligibility: EligibilityType.free },
+        context: {
+          ...defaultProps.context,
+          offer: {
+            ...offerResponseSnap,
+            stocks: [{ ...offerResponseSnap.stocks[0], price: 0 }],
+          },
+        },
+      })
+
+      expect(result).toEqual(
+        expect.objectContaining({
+          wording: DEFAULT_CTA_WORDING,
+          isDisabled: false,
+          modalToDisplay: OfferModal.BOOKING,
+        })
+      )
+    })
+  })
+
+  it('should return ineligible props and offer has no external url', () => {
+    const result = getCTAWordingAndAction({
+      ...defaultProps,
+      context: {
+        ...defaultProps.context,
+        offer: { ...offerResponseSnap, externalTicketOfficeUrl: undefined },
+      },
+      isLoggedIn: true,
+      userStatus: { ...defaultProps.userStatus, statusType: YoungStatusType.non_eligible },
+    })
+
+    expect(result).toEqual({
+      wording: DEFAULT_CTA_WORDING,
+      bottomBannerText: BottomBannerTextEnum.NOT_ELIGIBLE,
+      isDisabled: true,
+      movieScreeningUserData: { isUserEligible: false },
+    })
+  })
+
+  it('should return ended used booking props when booking ended or used', () => {
+    const result = getCTAWordingAndAction({
+      ...defaultProps,
+      isLoggedIn: true,
+      isEndedUsedBooking: true,
+    })
+
+    expect(result).toEqual({
+      wording: DEFAULT_CTA_WORDING,
+      isDisabled: false,
+      modalToDisplay: OfferModal.BOOKING,
+      isEndedUsedBooking: true,
+      movieScreeningUserData: { bookings: CTAContextFixture.booking },
+    })
+  })
+
+  it('should return subscription status props when user eligible and not beneficiary', () => {
+    const result = getCTAWordingAndAction({
+      ...defaultProps,
+      isLoggedIn: true,
+      user: nonBeneficiaryUser,
+      context: {
+        ...defaultProps.context,
+        subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
+      },
+      userStatus: {
+        ...defaultProps.userStatus,
+        statusType: YoungStatusType.eligible,
+      },
+    })
+
+    expect(result).toEqual(
+      expect.objectContaining({
+        isDisabled: false,
+        modalToDisplay: OfferModal.FINISH_SUBSCRIPTION,
+        movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
+        wording: 'Réserver l’offre',
+      })
+    )
+  })
+
+  it('should return see booking props when offer already booked', () => {
+    const result = getCTAWordingAndAction({
+      ...defaultProps,
+      isLoggedIn: true,
+      context: { ...defaultProps.context, alreadyBookedOfferId: offerResponseSnap.id },
+    })
+
+    expect(result).toEqual(
+      expect.objectContaining({
+        wording: 'Voir ma réservation',
+        isDisabled: false,
+        navigateTo: {
+          screen: 'BookingDetails',
+          params: { id: offerResponseSnap.id },
+          fromRef: true,
+        },
+        movieScreeningUserData: { hasBookedOffer: true, bookings: CTAContextFixture.booking },
+      })
+    )
+  })
+
+  describe('Restrictions (educational / non-beneficiary / underage restricted)', () => {
+    it('should return undefined wording for an educational offer without external URL', () => {
+      const result = getCTAWordingAndAction({
+        ...defaultProps,
+        user: { ...beneficiaryUser, isBeneficiary: true },
+        context: {
+          ...defaultProps.context,
+          offer: { ...offerResponseSnap, isEducational: true, externalTicketOfficeUrl: undefined },
+        },
+      })
+
+      expect(result).toEqual({ wording: undefined })
+    })
+
+    it('should return undefined wording when user is NOT a beneficiary and no external URL', () => {
+      const result = getCTAWordingAndAction({
+        ...defaultProps,
+        user: { ...beneficiaryUser, isBeneficiary: false },
+        context: {
+          ...defaultProps.context,
+          offer: { ...offerResponseSnap, externalTicketOfficeUrl: undefined },
+        },
+      })
+
+      expect(result).toEqual({ wording: undefined })
+    })
+
+    it('should return undefined wording when offer is forbidden to underage and user is underage beneficiary', () => {
+      const result = getCTAWordingAndAction({
+        ...defaultProps,
+        context: {
+          ...defaultProps.context,
+          isUnderageBeneficiary: true,
+          offer: {
+            ...offerResponseSnap,
+            isForbiddenToUnderage: true,
+            externalTicketOfficeUrl: undefined,
+          },
+        },
+      })
+
+      expect(result).toEqual({ wording: undefined })
+    })
+  })
+
+  it('should return external url CTA for educational offer if external URL is provided', () => {
+    const externalUrl = 'https://www.google.com/'
+    const result = getCTAWordingAndAction({
+      ...defaultProps,
+      context: {
+        ...defaultProps.context,
+        offer: {
+          ...offerResponseSnap,
+          isEducational: true,
+          externalTicketOfficeUrl: externalUrl,
+        },
+      },
+    })
+
+    expect(result).toEqual({
+      externalNav: { url: 'https://www.google.com/' },
+      isDisabled: false,
+      wording: 'Accéder au site partenaire',
+    })
+  })
+
+  it('should return expired credit CTA when cinema offer and deposit expiration date is in the past', () => {
+    const result = getCTAWordingAndAction({
+      ...defaultProps,
+      context: {
+        ...defaultProps.context,
+        offer: {
+          ...offerResponseSnap,
+          subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+        },
+      },
+      user: {
+        ...beneficiaryUser,
+        depositExpirationDate: '2020-12-04',
+      },
+    })
+
+    expect(result).toEqual({
+      bottomBannerText: BottomBannerTextEnum.CREDIT_HAS_EXPIRED,
+      movieScreeningUserData: { isUserCreditExpired: true },
+    })
+  })
+
+  describe('Offer availability (released and expired)', () => {
+    it('should return expired offer CTA when the offer is not yet released', () => {
+      const result = getCTAWordingAndAction({
+        ...defaultProps,
+        context: {
+          ...defaultProps.context,
+          offer: {
+            ...offerResponseSnap,
+            isReleased: false,
+            isExpired: false,
+          },
+        },
+      })
+
+      expect(result).toEqual({
+        wording: 'Offre expirée',
         isDisabled: true,
-        bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
+      })
+    })
+
+    it('should return expired offer CTA when the offer is expired', () => {
+      const result = getCTAWordingAndAction({
+        ...defaultProps,
+        context: {
+          ...defaultProps.context,
+          offer: {
+            ...offerResponseSnap,
+            isReleased: true,
+            isExpired: true,
+          },
+        },
+      })
+
+      expect(result).toEqual({
+        wording: 'Offre expirée',
+        isDisabled: true,
+      })
+    })
+  })
+
+  it('should return sold out offer CTA when the offer is sold out', () => {
+    const result = getCTAWordingAndAction({
+      ...defaultProps,
+      context: {
+        ...defaultProps.context,
+        offer: {
+          ...offerResponseSnap,
+          isSoldOut: true,
+        },
+      },
+    })
+
+    expect(result).toEqual({
+      wording: 'Offre épuisée',
+      isDisabled: true,
+    })
+  })
+
+  describe('Booking a paid offer', () => {
+    describe('When user has enough credit', () => {
+      it('should return book event offer CTA when subcategory is an event', () => {
+        const result = getCTAWordingAndAction({
+          ...defaultProps,
+          hasEnoughCredit: true,
+          subcategory: { ...mockSubcategory, isEvent: true },
+          context: {
+            ...defaultProps.context,
+            offer: { ...offerResponseSnap, isSoldOut: false, isReleased: true, isExpired: false },
+          },
+        })
+
+        expect(result).toEqual(
+          expect.objectContaining({
+            wording: 'Voir les disponibilités',
+            isDisabled: false,
+            modalToDisplay: OfferModal.BOOKING,
+            movieScreeningUserData: { hasEnoughCredit: true },
+          })
+        )
+      })
+
+      it('should return book offer CTA when subcategory is NOT an event', () => {
+        const result = getCTAWordingAndAction({
+          ...defaultProps,
+          hasEnoughCredit: true,
+          subcategory: { ...mockSubcategory, isEvent: false },
+          context: {
+            ...defaultProps.context,
+            offer: { ...offerResponseSnap, isSoldOut: false, isReleased: true, isExpired: false },
+          },
+        })
+
+        expect(result).toEqual(
+          expect.objectContaining({
+            wording: DEFAULT_CTA_WORDING,
+            isDisabled: false,
+            modalToDisplay: OfferModal.BOOKING,
+          })
+        )
+      })
+    })
+
+    it('should return insufficient credit CTA when user has insufficient credit', () => {
+      const result = getCTAWordingAndAction({
+        ...defaultProps,
+        hasEnoughCredit: false,
+        subcategory: { ...mockSubcategory, isEvent: true },
+        context: {
+          ...defaultProps.context,
+          offer: { ...offerResponseSnap, isSoldOut: false, isReleased: true, isExpired: false },
+        },
+      })
+
+      expect(result).toEqual({
+        wording: 'Crédit insuffisant',
+        isDisabled: true,
       })
     })
   })
