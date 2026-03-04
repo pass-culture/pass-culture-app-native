@@ -13,16 +13,19 @@ import {
   OfferArtist,
   OfferResponse,
   RecommendationApiParams,
-  SubcategoryIdEnum,
+  SubcategoryResponseModelv2,
   SubscriptionStatus,
+  YoungStatusResponse,
 } from 'api/gen'
 import { FavoriteMutationContext } from 'features/favorites/queries/types'
 import { ValidStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { MovieScreeningUserData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { PlaylistType } from 'features/offer/enums'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { EmptyResponse } from 'libs/fetch'
 import { ShareContent } from 'libs/share/types'
+import { OfferModal } from 'shared/offer/enums'
 import { ModalSettings } from 'ui/components/modals/useModal'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 
@@ -102,7 +105,6 @@ export type CTAContext = {
   isUnderageBeneficiary: boolean
   booking?: BookingReponse | null
   isBookingLoading?: boolean
-  isAlreadyBookedOffer?: boolean
   from?: Referrals
   searchId?: string
   apiRecoParams?: RecommendationApiParams
@@ -129,3 +131,26 @@ export type CTAType =
   | 'SOLD_OUT_OFFER'
   | 'SUBSCRIPTION_STATUS'
   | 'USER_15_16'
+
+export type ICTAWordingAndAction = {
+  modalToDisplay?: OfferModal
+  wording?: string
+  navigateTo?: InternalNavigationProps['navigateTo']
+  externalNav?: ExternalNavigationProps['externalNav']
+  onPress?: () => void
+  isEndedUsedBooking?: boolean
+  bottomBannerText?: string
+  isDisabled?: boolean
+  movieScreeningUserData?: MovieScreeningUserData
+}
+
+export type GetCTAWordingAndActionProps = {
+  context: CTAContext
+  enableBookingFreeOfferFifteenSixteen: boolean
+  userStatus: YoungStatusResponse
+  hasEnoughCredit: boolean
+  isLoggedIn: boolean
+  subcategory: SubcategoryResponseModelv2
+  isEndedUsedBooking?: boolean
+  user?: UserProfileResponseWithoutSurvey
+}

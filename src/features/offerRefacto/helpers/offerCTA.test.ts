@@ -317,7 +317,6 @@ describe('getCTAProps', () => {
     it('should trigger book offer at pressing when offer not already booked and stock available', () => {
       const result = getCTAProps('DIGITAL_OFFER', {
         ...CTAContextFixture,
-        isAlreadyBookedOffer: false,
         bookOffer: mockBookOffer,
       })
 
@@ -332,7 +331,7 @@ describe('getCTAProps', () => {
     it('should trigger open url at pressing when offer already booked', () => {
       const result = getCTAProps('DIGITAL_OFFER', {
         ...CTAContextFixture,
-        isAlreadyBookedOffer: true,
+        alreadyBookedOfferId: 1,
       })
 
       result.onPress && result.onPress()
