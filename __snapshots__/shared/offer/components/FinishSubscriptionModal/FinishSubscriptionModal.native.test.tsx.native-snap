@@ -244,7 +244,7 @@ pour réserver cette offre
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -273,10 +273,20 @@ pour réserver cette offre
                     "userSelect": "auto",
                   },
                   {
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
                   },
                 ],
                 {
@@ -287,13 +297,53 @@ pour réserver cette offre
             testID="Fermer la modale"
           >
             <View
-              height={20}
-              testID="rightIcon"
-              width={20}
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
+                }
+              }
             >
-              <Text>
-                rightIcon-SVG-Mock
-              </Text>
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="2"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  testID="rightIcon"
+                  width={22}
+                >
+                  <Text>
+                    rightIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>
@@ -749,7 +799,7 @@ pour réserver cette offre
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -778,10 +828,20 @@ pour réserver cette offre
                     "userSelect": "auto",
                   },
                   {
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
                   },
                 ],
                 {
@@ -792,13 +852,53 @@ pour réserver cette offre
             testID="Fermer la modale"
           >
             <View
-              height={20}
-              testID="rightIcon"
-              width={20}
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
+                }
+              }
             >
-              <Text>
-                rightIcon-SVG-Mock
-              </Text>
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="1"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  testID="rightIcon"
+                  width={22}
+                >
+                  <Text>
+                    rightIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>
@@ -1254,7 +1354,7 @@ pour réserver cette offre
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1283,10 +1383,20 @@ pour réserver cette offre
                     "userSelect": "auto",
                   },
                   {
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
                   },
                 ],
                 {
@@ -1297,13 +1407,53 @@ pour réserver cette offre
             testID="Fermer la modale"
           >
             <View
-              height={20}
-              testID="rightIcon"
-              width={20}
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
+                }
+              }
             >
-              <Text>
-                rightIcon-SVG-Mock
-              </Text>
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="0"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  testID="rightIcon"
+                  width={22}
+                >
+                  <Text>
+                    rightIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>

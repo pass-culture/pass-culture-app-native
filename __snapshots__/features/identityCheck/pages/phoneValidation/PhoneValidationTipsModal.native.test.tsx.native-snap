@@ -201,7 +201,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -230,10 +230,20 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                     "userSelect": "auto",
                   },
                   {
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
                   },
                 ],
                 {
@@ -244,22 +254,53 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
             testID="Revenir à l’étape précédente"
           >
             <View
-              height={20}
-              width={20}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-            <Text
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
               style={
                 {
-                  "display": "none",
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
                 }
               }
             >
-              Retour
-            </Text>
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="0"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  width={22}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
         <View

@@ -7798,10 +7798,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pass-culture/design-system@npm:0.7.3":
-  version: 0.7.3
-  resolution: "@pass-culture/design-system@npm:0.7.3"
-  checksum: 79a47f98ffc2fdd9f0116f6f83aadb6436256ba84046247ab63f25ac44e4fbea40ba080e82cf1b00d2222bca212abf34161cb41e8df318d560de87073b1b4eb5
+"@pass-culture/design-system@npm:0.7.4":
+  version: 0.7.4
+  resolution: "@pass-culture/design-system@npm:0.7.4"
+  checksum: 6db8bfc920ab000cc911e8e28461b99b2e9ed5bcc7b2c3dc218bcf44f3ea11ee69b44096fd3ac613f203de095767e57551d66cd73f71c74471bf078ac8629f9d
   languageName: node
   linkType: hard
 
@@ -11307,7 +11307,7 @@ __metadata:
     "@hot-updater/sentry-plugin": ^0.20.11
     "@lhci/cli": ^0.14.0
     "@openspacelabs/react-native-zoomable-view": ^2.1.5
-    "@pass-culture/design-system": 0.7.3
+    "@pass-culture/design-system": 0.7.4
     "@ptomasroos/react-native-multi-slider": ^2.2.2
     "@react-native-async-storage/async-storage": ^1.17.11
     "@react-native-clipboard/clipboard": ^1.16.2
