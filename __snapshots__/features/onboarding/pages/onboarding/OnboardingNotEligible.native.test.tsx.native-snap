@@ -202,278 +202,280 @@ exports[`OnboardingNotEligible should render correctly 1`] = `
         }
       />
       <View
-        flex={1}
         style={
           {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-          }
-        }
-      />
-      <View
-        animation={true}
-        style={
-          {
-            "alignItems": "center",
-            "height": "30%",
-            "justifyContent": "center",
-            "marginBottom": 24,
-          }
-        }
-      >
-        <View>
-          undefined-Lottie-Mock
-        </View>
-      </View>
-      <View
-        gap={4}
-        style={
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 24,
-          }
-        }
-      >
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-              "textAlign": "center",
-            }
-          }
-        >
-          Encore un peu de patience !
-        </Text>
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
-            }
-          }
-        >
-          Ton crédit t’attend à partir de tes 17 ans. En attendant, crée-toi un compte pour découvrir les bons plans autour de toi.
-        </Text>
-      </View>
-      <View
-        flex={1}
-        style={
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          }
-        }
-      />
-      <View
-        gap={4}
-        isLandscape={false}
-        style={
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 40,
+            "justifyContent": "space-between",
           }
         }
       >
         <View
-          accessibilityLabel="Créer un compte"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
           style={
             {
-              "alignItems": "center",
-              "alignSelf": "center",
-              "backgroundColor": "#6123df",
-              "borderBottomLeftRadius": 8,
-              "borderBottomRightRadius": 8,
-              "borderColor": "#6123df",
-              "borderStyle": "solid",
-              "borderTopLeftRadius": 8,
-              "borderTopRightRadius": 8,
-              "borderWidth": 1,
-              "flexDirection": "row",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
               "justifyContent": "center",
-              "opacity": 1,
-              "paddingBottom": 8,
-              "paddingLeft": 12,
-              "paddingRight": 12,
-              "paddingTop": 8,
-              "userSelect": "auto",
-              "width": "100%",
             }
           }
-          testID="Créer un compte"
         >
           <View
-            fullWidth={true}
-            gap={8}
-            hasIcon={false}
-            isMultiline={false}
+            animation={true}
             style={
               {
                 "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
+                "height": "30%",
                 "justifyContent": "center",
-                "width": "100%",
+                "marginBottom": 24,
+              }
+            }
+          >
+            <View>
+              undefined-Lottie-Mock
+            </View>
+          </View>
+          <View
+            gap={4}
+            style={
+              {
+                "alignItems": "center",
+                "gap": 16,
+                "marginBottom": 24,
               }
             }
           >
             <Text
+              accessibilityRole="header"
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#ffffff",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": "center",
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 21,
+                  "lineHeight": 33.6,
+                  "textAlign": "center",
+                }
               }
             >
-              Créer un compte
+              Encore un peu de patience !
+            </Text>
+            <Text
+              accessibilityRole="header"
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "textAlign": "center",
+                }
+              }
+            >
+              Ton crédit t’attend à partir de tes 17 ans. En attendant, crée-toi un compte pour découvrir les bons plans autour de toi.
             </Text>
           </View>
         </View>
         <View
-          accessibilityLabel="Accéder au catalogue"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          gap={4}
+          isLandscape={false}
           style={
             {
               "alignItems": "center",
-              "alignSelf": "center",
-              "backgroundColor": "#ffffff",
-              "borderBottomLeftRadius": 8,
-              "borderBottomRightRadius": 8,
-              "borderColor": "#6123df",
-              "borderStyle": "solid",
-              "borderTopLeftRadius": 8,
-              "borderTopRightRadius": 8,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "opacity": 1,
-              "paddingBottom": 8,
-              "paddingLeft": 12,
-              "paddingRight": 12,
-              "paddingTop": 8,
-              "userSelect": "auto",
-              "width": "100%",
+              "gap": 16,
+              "marginBottom": 40,
             }
           }
-          testID="Accéder au catalogue"
         >
           <View
-            fullWidth={true}
-            gap={8}
-            hasIcon={false}
-            isMultiline={false}
+            accessibilityLabel="Créer un compte"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               {
                 "alignItems": "center",
-                "columnGap": 8,
+                "alignSelf": "center",
+                "backgroundColor": "#6123df",
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
+                "borderColor": "#6123df",
+                "borderStyle": "solid",
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
+                "borderWidth": 1,
                 "flexDirection": "row",
                 "justifyContent": "center",
+                "opacity": 1,
+                "paddingBottom": 8,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 8,
+                "userSelect": "auto",
                 "width": "100%",
               }
             }
+            testID="Créer un compte"
           >
-            <Text
+            <View
+              fullWidth={true}
+              gap={8}
+              hasIcon={false}
+              isMultiline={false}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#6123df",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": "center",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 8,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
+                }
               }
             >
-              Accéder au catalogue
-            </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#ffffff",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": "100%",
+                      "minWidth": 0,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Créer un compte
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="Accéder au catalogue"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "backgroundColor": "#ffffff",
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
+                "borderColor": "#6123df",
+                "borderStyle": "solid",
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "opacity": 1,
+                "paddingBottom": 8,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 8,
+                "userSelect": "auto",
+                "width": "100%",
+              }
+            }
+            testID="Accéder au catalogue"
+          >
+            <View
+              fullWidth={true}
+              gap={8}
+              hasIcon={false}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 8,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#6123df",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": "100%",
+                      "minWidth": 0,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Accéder au catalogue
+              </Text>
+            </View>
           </View>
         </View>
       </View>

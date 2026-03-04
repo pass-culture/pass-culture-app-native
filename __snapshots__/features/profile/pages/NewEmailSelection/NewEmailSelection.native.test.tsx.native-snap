@@ -262,7 +262,7 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 65,
             }
