@@ -112,321 +112,323 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
         }
       />
       <View
-        flex={1}
         style={
           {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-          }
-        }
-      />
-      <View
-        animation={true}
-        style={
-          {
-            "alignItems": "center",
-            "height": "30%",
-            "justifyContent": "center",
-            "marginBottom": 24,
-          }
-        }
-      >
-        <View>
-          undefined-Lottie-Mock
-        </View>
-      </View>
-      <View
-        gap={4}
-        style={
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 24,
-          }
-        }
-      >
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-              "textAlign": "center",
-            }
-          }
-        >
-          Bonne nouvelle !
-        </Text>
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
-            }
-          }
-        >
-          150 € viennent d’être crédités sur ton compte pass Culture
-        </Text>
-      </View>
-      <View
-        style={
-          {
-            "marginBottom": 24,
+            "justifyContent": "space-between",
           }
         }
       >
         <View
           style={
             {
-              "paddingHorizontal": 40,
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
             }
           }
         >
           <View
-            accessibilityLabel="Barre de progression : 100%"
-            accessibilityRole="progressbar"
-            accessible={true}
+            animation={true}
             style={
               {
                 "alignItems": "center",
-                "flexDirection": "row",
-                "height": 40,
-                "maxHeight": 40,
+                "height": "30%",
+                "justifyContent": "center",
+                "marginBottom": 24,
               }
             }
           >
-            <View
-              backgroundColor="#6123df"
-              style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#6123df",
-                  "borderBottomLeftRadius": 32,
-                  "borderBottomRightRadius": 32,
-                  "borderTopLeftRadius": 32,
-                  "borderTopRightRadius": 32,
-                  "height": 32,
-                  "justifyContent": "center",
-                  "position": "absolute",
-                  "width": 32,
-                  "zIndex": 2,
-                }
-              }
-            >
-              <View
-                height={20}
-                testID="progress-bar-icon"
-                width={20}
-              >
-                <Text>
-                  progress-bar-icon-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              style={
-                {
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderColor": "#cbcdd2",
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
-                  "borderWidth": 2,
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "height": 20,
-                  "marginLeft": 24,
-                  "overflow": "hidden",
-                  "position": "relative",
-                  "zIndex": 1,
-                }
-              }
-            >
-              <View
-                backgroundColor="#6123df"
-                barWidth={0}
-                isAnimated={true}
-                onLayout={[Function]}
-                progress={1}
-                style={
-                  [
-                    {
-                      "backgroundColor": "#6123df",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "left": 0,
-                      "opacity": 0,
-                      "position": "relative",
-                    },
-                    {},
-                    {},
-                  ]
-                }
-                testID="animated-progress-bar"
-              />
+            <View>
+              undefined-Lottie-Mock
             </View>
           </View>
-          <Text
-            accessibilityRole="header"
-            style={
-              {
-                "color": "#6123df",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 21,
-                "lineHeight": 33.6,
-                "textAlign": "center",
-              }
-            }
-          >
-            150 €
-          </Text>
-        </View>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "marginTop": 16,
-              "textAlign": "center",
-            }
-          }
-        >
-          Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.
-        </Text>
-      </View>
-      <View
-        flex={1}
-        style={
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          }
-        }
-      />
-      <View
-        gap={4}
-        isLandscape={false}
-        style={
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 40,
-          }
-        }
-      >
-        <View
-          accessibilityLabel="C’est parti !"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "alignSelf": "center",
-                  "backgroundColor": "#6123df",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderColor": "#6123df",
-                  "borderStyle": "solid",
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingBottom": 8,
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                  "paddingTop": 8,
-                  "width": "100%",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="C’est parti !"
-        >
           <View
-            fullWidth={true}
-            gap={8}
-            hasIcon={false}
-            isMultiline={false}
+            gap={4}
             style={
               {
                 "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "width": "100%",
+                "gap": 16,
+                "marginBottom": 24,
               }
             }
           >
             <Text
+              accessibilityRole="header"
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#ffffff",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": "center",
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 21,
+                  "lineHeight": 33.6,
+                  "textAlign": "center",
+                }
               }
             >
-              C’est parti !
+              Bonne nouvelle !
             </Text>
+            <Text
+              accessibilityRole="header"
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "textAlign": "center",
+                }
+              }
+            >
+              150 € viennent d’être crédités sur ton compte pass Culture
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "marginBottom": 24,
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "paddingHorizontal": 40,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Barre de progression : 100%"
+                accessibilityRole="progressbar"
+                accessible={true}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "height": 40,
+                    "maxHeight": 40,
+                  }
+                }
+              >
+                <View
+                  backgroundColor="#6123df"
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#6123df",
+                      "borderBottomLeftRadius": 32,
+                      "borderBottomRightRadius": 32,
+                      "borderTopLeftRadius": 32,
+                      "borderTopRightRadius": 32,
+                      "height": 32,
+                      "justifyContent": "center",
+                      "position": "absolute",
+                      "width": 32,
+                      "zIndex": 2,
+                    }
+                  }
+                >
+                  <View
+                    height={20}
+                    testID="progress-bar-icon"
+                    width={20}
+                  >
+                    <Text>
+                      progress-bar-icon-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "borderBottomLeftRadius": 24,
+                      "borderBottomRightRadius": 24,
+                      "borderColor": "#cbcdd2",
+                      "borderTopLeftRadius": 24,
+                      "borderTopRightRadius": 24,
+                      "borderWidth": 2,
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "height": 20,
+                      "marginLeft": 24,
+                      "overflow": "hidden",
+                      "position": "relative",
+                      "zIndex": 1,
+                    }
+                  }
+                >
+                  <View
+                    backgroundColor="#6123df"
+                    barWidth={0}
+                    isAnimated={true}
+                    onLayout={[Function]}
+                    progress={1}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "#6123df",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "left": 0,
+                          "opacity": 0,
+                          "position": "relative",
+                        },
+                        {},
+                        {},
+                      ]
+                    }
+                    testID="animated-progress-bar"
+                  />
+                </View>
+              </View>
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#6123df",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 21,
+                    "lineHeight": 33.6,
+                    "textAlign": "center",
+                  }
+                }
+              >
+                150 €
+              </Text>
+            </View>
+            <Text
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "marginTop": 16,
+                  "textAlign": "center",
+                }
+              }
+            >
+              Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.
+            </Text>
+          </View>
+        </View>
+        <View
+          gap={4}
+          isLandscape={false}
+          style={
+            {
+              "alignItems": "center",
+              "gap": 16,
+              "marginBottom": 40,
+            }
+          }
+        >
+          <View
+            accessibilityLabel="C’est parti !"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "center",
+                    "backgroundColor": "#6123df",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderColor": "#6123df",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="C’est parti !"
+          >
+            <View
+              fullWidth={true}
+              gap={8}
+              hasIcon={false}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 8,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#ffffff",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": "100%",
+                      "minWidth": 0,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                C’est parti !
+              </Text>
+            </View>
           </View>
         </View>
       </View>
@@ -556,321 +558,323 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
         }
       />
       <View
-        flex={1}
         style={
           {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-          }
-        }
-      />
-      <View
-        animation={true}
-        style={
-          {
-            "alignItems": "center",
-            "height": "30%",
-            "justifyContent": "center",
-            "marginBottom": 24,
-          }
-        }
-      >
-        <View>
-          undefined-Lottie-Mock
-        </View>
-      </View>
-      <View
-        gap={4}
-        style={
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 24,
-          }
-        }
-      >
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-              "textAlign": "center",
-            }
-          }
-        >
-          Bonne nouvelle !
-        </Text>
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
-            }
-          }
-        >
-          50 € viennent d’être crédités sur ton compte pass Culture
-        </Text>
-      </View>
-      <View
-        style={
-          {
-            "marginBottom": 24,
+            "justifyContent": "space-between",
           }
         }
       >
         <View
           style={
             {
-              "paddingHorizontal": 40,
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
             }
           }
         >
           <View
-            accessibilityLabel="Barre de progression : 100%"
-            accessibilityRole="progressbar"
-            accessible={true}
+            animation={true}
             style={
               {
                 "alignItems": "center",
-                "flexDirection": "row",
-                "height": 40,
-                "maxHeight": 40,
+                "height": "30%",
+                "justifyContent": "center",
+                "marginBottom": 24,
               }
             }
           >
-            <View
-              backgroundColor="#6123df"
-              style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#6123df",
-                  "borderBottomLeftRadius": 32,
-                  "borderBottomRightRadius": 32,
-                  "borderTopLeftRadius": 32,
-                  "borderTopRightRadius": 32,
-                  "height": 32,
-                  "justifyContent": "center",
-                  "position": "absolute",
-                  "width": 32,
-                  "zIndex": 2,
-                }
-              }
-            >
-              <View
-                height={20}
-                testID="progress-bar-icon"
-                width={20}
-              >
-                <Text>
-                  progress-bar-icon-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              style={
-                {
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderColor": "#cbcdd2",
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
-                  "borderWidth": 2,
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "height": 20,
-                  "marginLeft": 24,
-                  "overflow": "hidden",
-                  "position": "relative",
-                  "zIndex": 1,
-                }
-              }
-            >
-              <View
-                backgroundColor="#6123df"
-                barWidth={0}
-                isAnimated={true}
-                onLayout={[Function]}
-                progress={1}
-                style={
-                  [
-                    {
-                      "backgroundColor": "#6123df",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "left": 0,
-                      "opacity": 0,
-                      "position": "relative",
-                    },
-                    {},
-                    {},
-                  ]
-                }
-                testID="animated-progress-bar"
-              />
+            <View>
+              undefined-Lottie-Mock
             </View>
           </View>
-          <Text
-            accessibilityRole="header"
-            style={
-              {
-                "color": "#6123df",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 21,
-                "lineHeight": 33.6,
-                "textAlign": "center",
-              }
-            }
-          >
-            50 €
-          </Text>
-        </View>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "marginTop": 16,
-              "textAlign": "center",
-            }
-          }
-        >
-          Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.
-        </Text>
-      </View>
-      <View
-        flex={1}
-        style={
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          }
-        }
-      />
-      <View
-        gap={4}
-        isLandscape={false}
-        style={
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 40,
-          }
-        }
-      >
-        <View
-          accessibilityLabel="C’est parti !"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "alignSelf": "center",
-                  "backgroundColor": "#6123df",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderColor": "#6123df",
-                  "borderStyle": "solid",
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingBottom": 8,
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                  "paddingTop": 8,
-                  "width": "100%",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="C’est parti !"
-        >
           <View
-            fullWidth={true}
-            gap={8}
-            hasIcon={false}
-            isMultiline={false}
+            gap={4}
             style={
               {
                 "alignItems": "center",
-                "columnGap": 8,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "width": "100%",
+                "gap": 16,
+                "marginBottom": 24,
               }
             }
           >
             <Text
+              accessibilityRole="header"
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 22,
-                  },
-                  {
-                    "color": "#ffffff",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                    "textAlign": "center",
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 21,
+                  "lineHeight": 33.6,
+                  "textAlign": "center",
+                }
               }
             >
-              C’est parti !
+              Bonne nouvelle !
             </Text>
+            <Text
+              accessibilityRole="header"
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "textAlign": "center",
+                }
+              }
+            >
+              50 € viennent d’être crédités sur ton compte pass Culture
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "marginBottom": 24,
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "paddingHorizontal": 40,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Barre de progression : 100%"
+                accessibilityRole="progressbar"
+                accessible={true}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "height": 40,
+                    "maxHeight": 40,
+                  }
+                }
+              >
+                <View
+                  backgroundColor="#6123df"
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#6123df",
+                      "borderBottomLeftRadius": 32,
+                      "borderBottomRightRadius": 32,
+                      "borderTopLeftRadius": 32,
+                      "borderTopRightRadius": 32,
+                      "height": 32,
+                      "justifyContent": "center",
+                      "position": "absolute",
+                      "width": 32,
+                      "zIndex": 2,
+                    }
+                  }
+                >
+                  <View
+                    height={20}
+                    testID="progress-bar-icon"
+                    width={20}
+                  >
+                    <Text>
+                      progress-bar-icon-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "borderBottomLeftRadius": 24,
+                      "borderBottomRightRadius": 24,
+                      "borderColor": "#cbcdd2",
+                      "borderTopLeftRadius": 24,
+                      "borderTopRightRadius": 24,
+                      "borderWidth": 2,
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "height": 20,
+                      "marginLeft": 24,
+                      "overflow": "hidden",
+                      "position": "relative",
+                      "zIndex": 1,
+                    }
+                  }
+                >
+                  <View
+                    backgroundColor="#6123df"
+                    barWidth={0}
+                    isAnimated={true}
+                    onLayout={[Function]}
+                    progress={1}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "#6123df",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "left": 0,
+                          "opacity": 0,
+                          "position": "relative",
+                        },
+                        {},
+                        {},
+                      ]
+                    }
+                    testID="animated-progress-bar"
+                  />
+                </View>
+              </View>
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#6123df",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 21,
+                    "lineHeight": 33.6,
+                    "textAlign": "center",
+                  }
+                }
+              >
+                50 €
+              </Text>
+            </View>
+            <Text
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "marginTop": 16,
+                  "textAlign": "center",
+                }
+              }
+            >
+              Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.
+            </Text>
+          </View>
+        </View>
+        <View
+          gap={4}
+          isLandscape={false}
+          style={
+            {
+              "alignItems": "center",
+              "gap": 16,
+              "marginBottom": 40,
+            }
+          }
+        >
+          <View
+            accessibilityLabel="C’est parti !"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "center",
+                    "backgroundColor": "#6123df",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderColor": "#6123df",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="C’est parti !"
+          >
+            <View
+              fullWidth={true}
+              gap={8}
+              hasIcon={false}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 8,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#ffffff",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": "100%",
+                      "minWidth": 0,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                C’est parti !
+              </Text>
+            </View>
           </View>
         </View>
       </View>

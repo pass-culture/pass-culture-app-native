@@ -101,7 +101,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   animationTargetLayerNames,
   animationTargetShapeNames,
 }) => {
-  const { isDesktopViewport, designSystem } = useTheme()
+  const { designSystem } = useTheme()
   const isLandscape = useIsLandscape()
 
   const headerHeight = useGetHeaderHeight()
@@ -120,192 +120,207 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
       <Container>
         {isLandscape ? null : <Placeholder height={placeholderHeight} />}
 
-        <Spacer.Flex flex={1} />
+        <ContainerFlex>
+          <ContainerWithCenteredContent>
+            <IllustrationContainer animation={!!animation}>
+              {IllustrationComponent ? (
+                <IllustrationComponent
+                  size={illustrationSizes.fullPage}
+                  color={designSystem.color.icon.brandPrimary}
+                />
+              ) : null}
+              {animation ? (
+                <ThemedStyledLottieView
+                  source={animation}
+                  width="100%"
+                  height="100%"
+                  coloringMode={animationColoringMode}
+                  targetShapeNames={animationTargetShapeNames}
+                  targetLayerNames={animationTargetLayerNames}
+                />
+              ) : null}
+            </IllustrationContainer>
 
-        <IllustrationContainer animation={!!animation}>
-          {IllustrationComponent ? (
-            <IllustrationComponent
-              size={illustrationSizes.fullPage}
-              color={designSystem.color.icon.brandPrimary}
-            />
-          ) : null}
-          {animation ? (
-            <ThemedStyledLottieView
-              source={animation}
-              width="100%"
-              height="100%"
-              coloringMode={animationColoringMode}
-              targetShapeNames={animationTargetShapeNames}
-              targetLayerNames={animationTargetLayerNames}
-            />
-          ) : null}
-        </IllustrationContainer>
+            <TextContainer gap={4}>
+              <StyledTitle2 {...getHeadingAttrs(1)}>{title}</StyledTitle2>
+              {subtitle ? <StyledBody {...getHeadingAttrs(2)}>{subtitle}</StyledBody> : null}
+            </TextContainer>
 
-        <TextContainer gap={4}>
-          <StyledTitle2 {...getHeadingAttrs(1)}>{title}</StyledTitle2>
-          {subtitle ? <StyledBody {...getHeadingAttrs(2)}>{subtitle}</StyledBody> : null}
-        </TextContainer>
+            {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}
+          </ContainerWithCenteredContent>
 
-        {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}
+          <ButtonContainer gap={4} isLandscape={isLandscape}>
+            {buttonsSurtitle}
+            {buttonPrimary.onPress ? (
+              <Button
+                fullWidth
+                color="brand"
+                key={1}
+                wording={buttonPrimary.wording}
+                onPress={buttonPrimary.onPress}
+                isLoading={buttonPrimary.isLoading}
+                disabled={buttonPrimary.disabled}
+                icon={buttonPrimary.icon}
+                accessibilityLabel={buttonPrimary.accessibilityLabel}
+                accessibilityRole={buttonPrimary.accessibilityRole ?? onPressAccessibilityRole}
+              />
+            ) : null}
 
-        {isDesktopViewport ? null : <Spacer.Flex flex={1} />}
+            {buttonPrimary.navigateTo ? (
+              <InternalTouchableLink
+                key={1}
+                as={Button}
+                color="brand"
+                fullWidth
+                wording={buttonPrimary.wording}
+                navigateTo={buttonPrimary.navigateTo}
+                onBeforeNavigate={buttonPrimary.onBeforeNavigate}
+                onAfterNavigate={buttonPrimary.onAfterNavigate}
+                isLoading={buttonPrimary.isLoading}
+                disabled={buttonPrimary.disabled}
+                icon={buttonPrimary.icon}
+                accessibilityLabel={buttonPrimary.accessibilityLabel}
+              />
+            ) : null}
 
-        <ButtonContainer gap={4} isLandscape={isLandscape}>
-          {buttonsSurtitle}
-          {buttonPrimary.onPress ? (
-            <Button
-              fullWidth
-              color="brand"
-              key={1}
-              wording={buttonPrimary.wording}
-              onPress={buttonPrimary.onPress}
-              isLoading={buttonPrimary.isLoading}
-              disabled={buttonPrimary.disabled}
-              icon={buttonPrimary.icon}
-              accessibilityLabel={buttonPrimary.accessibilityLabel}
-              accessibilityRole={buttonPrimary.accessibilityRole ?? onPressAccessibilityRole}
-            />
-          ) : null}
+            {buttonPrimary.externalNav ? (
+              <ExternalTouchableLink
+                key={1}
+                as={Button}
+                color="brand"
+                fullWidth
+                wording={buttonPrimary.wording}
+                externalNav={buttonPrimary.externalNav}
+                onBeforeNavigate={buttonPrimary.onBeforeNavigate}
+                onAfterNavigate={buttonPrimary.onAfterNavigate}
+                isLoading={buttonPrimary.isLoading}
+                disabled={buttonPrimary.disabled}
+                icon={ExternalSiteFilled}
+                accessibilityLabel={buttonPrimary.accessibilityLabel}
+              />
+            ) : null}
 
-          {buttonPrimary.navigateTo ? (
-            <InternalTouchableLink
-              key={1}
-              as={Button}
-              color="brand"
-              fullWidth
-              wording={buttonPrimary.wording}
-              navigateTo={buttonPrimary.navigateTo}
-              onBeforeNavigate={buttonPrimary.onBeforeNavigate}
-              onAfterNavigate={buttonPrimary.onAfterNavigate}
-              isLoading={buttonPrimary.isLoading}
-              disabled={buttonPrimary.disabled}
-              icon={buttonPrimary.icon}
-              accessibilityLabel={buttonPrimary.accessibilityLabel}
-            />
-          ) : null}
+            {buttonSecondary?.onPress ? (
+              <Button
+                fullWidth
+                key={2}
+                variant="secondary"
+                color="neutral"
+                wording={buttonSecondary.wording}
+                onPress={buttonSecondary.onPress}
+                isLoading={buttonSecondary.isLoading}
+                disabled={buttonSecondary.disabled}
+                icon={buttonSecondary.icon}
+                accessibilityLabel={buttonSecondary.accessibilityLabel}
+                accessibilityRole={buttonSecondary.accessibilityRole ?? onPressAccessibilityRole}
+              />
+            ) : null}
 
-          {buttonPrimary.externalNav ? (
-            <ExternalTouchableLink
-              key={1}
-              as={Button}
-              color="brand"
-              fullWidth
-              wording={buttonPrimary.wording}
-              externalNav={buttonPrimary.externalNav}
-              onBeforeNavigate={buttonPrimary.onBeforeNavigate}
-              onAfterNavigate={buttonPrimary.onAfterNavigate}
-              isLoading={buttonPrimary.isLoading}
-              disabled={buttonPrimary.disabled}
-              icon={ExternalSiteFilled}
-              accessibilityLabel={buttonPrimary.accessibilityLabel}
-            />
-          ) : null}
+            {buttonSecondary?.navigateTo ? (
+              <InternalTouchableLink
+                key={2}
+                as={Button}
+                fullWidth
+                variant="secondary"
+                wording={buttonSecondary.wording}
+                navigateTo={buttonSecondary.navigateTo}
+                onBeforeNavigate={buttonSecondary.onBeforeNavigate}
+                onAfterNavigate={buttonSecondary.onAfterNavigate}
+                isLoading={buttonSecondary.isLoading}
+                disabled={buttonSecondary.disabled}
+                icon={buttonSecondary.icon}
+                accessibilityLabel={buttonSecondary.accessibilityLabel}
+              />
+            ) : null}
 
-          {buttonSecondary?.onPress ? (
-            <Button
-              fullWidth
-              key={2}
-              variant="secondary"
-              color="neutral"
-              wording={buttonSecondary.wording}
-              onPress={buttonSecondary.onPress}
-              isLoading={buttonSecondary.isLoading}
-              disabled={buttonSecondary.disabled}
-              icon={buttonSecondary.icon}
-              accessibilityLabel={buttonSecondary.accessibilityLabel}
-              accessibilityRole={buttonSecondary.accessibilityRole ?? onPressAccessibilityRole}
-            />
-          ) : null}
+            {buttonSecondary?.externalNav ? (
+              <ExternalTouchableLink
+                key={2}
+                as={Button}
+                fullWidth
+                variant="secondary"
+                wording={buttonSecondary.wording}
+                externalNav={buttonSecondary.externalNav}
+                onBeforeNavigate={buttonSecondary.onBeforeNavigate}
+                onAfterNavigate={buttonSecondary.onAfterNavigate}
+                isLoading={buttonSecondary.isLoading}
+                disabled={buttonSecondary.disabled}
+                icon={ExternalSiteFilled}
+                accessibilityLabel={buttonSecondary.accessibilityLabel}
+              />
+            ) : null}
 
-          {buttonSecondary?.navigateTo ? (
-            <InternalTouchableLink
-              key={2}
-              as={Button}
-              fullWidth
-              variant="secondary"
-              wording={buttonSecondary.wording}
-              navigateTo={buttonSecondary.navigateTo}
-              onBeforeNavigate={buttonSecondary.onBeforeNavigate}
-              onAfterNavigate={buttonSecondary.onAfterNavigate}
-              isLoading={buttonSecondary.isLoading}
-              disabled={buttonSecondary.disabled}
-              icon={buttonSecondary.icon}
-              accessibilityLabel={buttonSecondary.accessibilityLabel}
-            />
-          ) : null}
+            {buttonTertiary?.onPress ? (
+              <TertiaryButtonContainer>
+                <Button
+                  variant="tertiary"
+                  color="neutral"
+                  key={buttonTertiary ? 3 : 2}
+                  wording={buttonTertiary.wording}
+                  onPress={buttonTertiary.onPress}
+                  isLoading={buttonTertiary.isLoading}
+                  disabled={buttonTertiary.disabled}
+                  icon={buttonTertiary.icon}
+                  accessibilityLabel={buttonTertiary.accessibilityLabel}
+                  accessibilityRole={buttonTertiary.accessibilityRole ?? onPressAccessibilityRole}
+                />
+              </TertiaryButtonContainer>
+            ) : null}
 
-          {buttonSecondary?.externalNav ? (
-            <ExternalTouchableLink
-              key={2}
-              as={Button}
-              fullWidth
-              variant="secondary"
-              wording={buttonSecondary.wording}
-              externalNav={buttonSecondary.externalNav}
-              onBeforeNavigate={buttonSecondary.onBeforeNavigate}
-              onAfterNavigate={buttonSecondary.onAfterNavigate}
-              isLoading={buttonSecondary.isLoading}
-              disabled={buttonSecondary.disabled}
-              icon={ExternalSiteFilled}
-              accessibilityLabel={buttonSecondary.accessibilityLabel}
-            />
-          ) : null}
+            {buttonTertiary?.navigateTo ? (
+              <TertiaryButtonContainer>
+                <InternalTouchableLink
+                  key={buttonTertiary ? 3 : 2}
+                  as={Button}
+                  variant="tertiary"
+                  color="neutral"
+                  wording={buttonTertiary.wording}
+                  navigateTo={buttonTertiary.navigateTo}
+                  onBeforeNavigate={buttonTertiary.onBeforeNavigate}
+                  onAfterNavigate={buttonTertiary.onAfterNavigate}
+                  isLoading={buttonTertiary.isLoading}
+                  disabled={buttonTertiary.disabled}
+                  icon={buttonTertiary.icon}
+                  accessibilityLabel={buttonTertiary.accessibilityLabel}
+                />
+              </TertiaryButtonContainer>
+            ) : null}
 
-          {buttonTertiary?.onPress ? (
-            <Button
-              variant="tertiary"
-              color="neutral"
-              key={buttonTertiary ? 3 : 2}
-              wording={buttonTertiary.wording}
-              onPress={buttonTertiary.onPress}
-              isLoading={buttonTertiary.isLoading}
-              disabled={buttonTertiary.disabled}
-              icon={buttonTertiary.icon}
-              accessibilityLabel={buttonTertiary.accessibilityLabel}
-              accessibilityRole={buttonTertiary.accessibilityRole ?? onPressAccessibilityRole}
-            />
-          ) : null}
-
-          {buttonTertiary?.navigateTo ? (
-            <InternalTouchableLink
-              key={buttonTertiary ? 3 : 2}
-              as={Button}
-              variant="tertiary"
-              color="neutral"
-              wording={buttonTertiary.wording}
-              navigateTo={buttonTertiary.navigateTo}
-              onBeforeNavigate={buttonTertiary.onBeforeNavigate}
-              onAfterNavigate={buttonTertiary.onAfterNavigate}
-              isLoading={buttonTertiary.isLoading}
-              disabled={buttonTertiary.disabled}
-              icon={buttonTertiary.icon}
-              accessibilityLabel={buttonTertiary.accessibilityLabel}
-            />
-          ) : null}
-
-          {buttonTertiary?.externalNav ? (
-            <ExternalTouchableLink
-              key={buttonTertiary ? 3 : 2}
-              as={Button}
-              variant="tertiary"
-              color="neutral"
-              wording={buttonTertiary.wording}
-              externalNav={buttonTertiary.externalNav}
-              onBeforeNavigate={buttonTertiary.onBeforeNavigate}
-              onAfterNavigate={buttonTertiary.onAfterNavigate}
-              isLoading={buttonTertiary.isLoading}
-              disabled={buttonTertiary.disabled}
-              icon={ExternalSiteFilled}
-              accessibilityLabel={buttonTertiary.accessibilityLabel}
-            />
-          ) : null}
-        </ButtonContainer>
-        {isDesktopViewport ? <Spacer.Flex flex={1} /> : null}
+            {buttonTertiary?.externalNav ? (
+              <TertiaryButtonContainer>
+                <ExternalTouchableLink
+                  key={buttonTertiary ? 3 : 2}
+                  as={Button}
+                  variant="tertiary"
+                  color="neutral"
+                  wording={buttonTertiary.wording}
+                  externalNav={buttonTertiary.externalNav}
+                  onBeforeNavigate={buttonTertiary.onBeforeNavigate}
+                  onAfterNavigate={buttonTertiary.onAfterNavigate}
+                  isLoading={buttonTertiary.isLoading}
+                  disabled={buttonTertiary.disabled}
+                  icon={ExternalSiteFilled}
+                  accessibilityLabel={buttonTertiary.accessibilityLabel}
+                />
+              </TertiaryButtonContainer>
+            ) : null}
+          </ButtonContainer>
+        </ContainerFlex>
         <Spacer.BottomScreen />
       </Container>
     </Page>
   )
 }
+
+const ContainerFlex = styled.View(({ theme }) => ({
+  justifyContent: theme.isDesktopViewport ? 'center' : 'space-between',
+  flex: 1,
+}))
+
+const ContainerWithCenteredContent = styled.View({
+  justifyContent: 'center',
+  flex: 1,
+})
 
 const Container = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
@@ -367,3 +382,7 @@ const SkipButton = ({ withSkipAction }: { withSkipAction?: () => void }) => {
   }
   return null
 }
+
+const TertiaryButtonContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
+}))

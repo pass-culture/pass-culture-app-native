@@ -3,32 +3,36 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import { ConsentState } from 'features/cookies/enums'
 import * as SetMarketingParams from 'features/cookies/helpers/setMarketingParams'
-import * as Tracking from 'features/cookies/helpers/startTracking'
-import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTrackingAcceptedCookies'
+import * as useCookiesModule from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { campaignTracker } from 'libs/campaign/__mocks__/campaign'
 import { EmptyResponse } from 'libs/fetch'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
-jest.mock('libs/campaign/campaign')
+const setCookiesConsentMock = jest.fn()
+jest.spyOn(useCookiesModule, 'useCookies').mockReturnValue({
+  setCookiesConsent: setCookiesConsentMock,
+  cookiesConsent: {
+    state: ConsentState.LOADING,
+  },
+  setUserId: jest.fn(),
+  loadCookiesConsent: jest.fn(),
+})
+
 jest.mock('libs/react-native-device-info/getDeviceId')
-const buildVersion = 10010005
-jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
 
 const COOKIES_CONSENT_KEY = 'cookies'
 const hideModal = jest.fn()
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
-const deviceId = 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a'
 
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
@@ -37,12 +41,6 @@ jest.mock('@react-navigation/native', () => ({
 }))
 
 jest.mock('features/navigation/navigationRef')
-
-const mockStartTracking = jest.spyOn(Tracking, 'startTracking')
-const mockStartTrackingAcceptedCookies = jest.spyOn(
-  TrackingAcceptedCookies,
-  'startTrackingAcceptedCookies'
-)
 
 const UTM_PARAMS = {
   utm_campaign: 'test',
@@ -103,26 +101,11 @@ describe('<CookiesConsent/>', () => {
 
       await user.press(screen.getByText('Tout accepter'))
 
-      const storageContent = {
-        buildVersion,
-        deviceId,
-        choiceDatetime: Today.toISOString(),
-        consent: {
-          mandatory: COOKIES_BY_CATEGORY.essential,
-          accepted: ALL_OPTIONAL_COOKIES,
-          refused: [],
-        },
-      }
-
-      expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
-    })
-
-    it('should enable tracking', async () => {
-      renderCookiesConsent()
-
-      await user.press(screen.getByText('Tout accepter'))
-
-      expect(mockStartTracking).toHaveBeenCalledWith(true)
+      expect(setCookiesConsentMock).toHaveBeenCalledWith({
+        mandatory: COOKIES_BY_CATEGORY.essential,
+        accepted: ALL_OPTIONAL_COOKIES,
+        refused: [],
+      })
     })
 
     it('should log analytics', async () => {
@@ -131,22 +114,6 @@ describe('<CookiesConsent/>', () => {
       await user.press(screen.getByText('Tout accepter'))
 
       expect(analytics.logHasAcceptedAllCookies).toHaveBeenCalledTimes(1)
-    })
-
-    it('should init AppsFlyer', async () => {
-      renderCookiesConsent()
-
-      await user.press(screen.getByText('Tout accepter'))
-
-      expect(campaignTracker.init).toHaveBeenNthCalledWith(1, true)
-    })
-
-    it('should save UTM params', async () => {
-      renderCookiesConsent()
-
-      await user.press(screen.getByText('Tout accepter'))
-
-      expect(setMarketingParamsSpy).toHaveBeenNthCalledWith(1, UTM_PARAMS, ALL_OPTIONAL_COOKIES)
     })
 
     it('should hide modal', async () => {
@@ -164,34 +131,11 @@ describe('<CookiesConsent/>', () => {
 
       await user.press(screen.getByText('Tout refuser'))
 
-      const storageContent = {
-        buildVersion,
-        deviceId,
-        choiceDatetime: Today.toISOString(),
-        consent: {
-          mandatory: COOKIES_BY_CATEGORY.essential,
-          accepted: [],
-          refused: ALL_OPTIONAL_COOKIES,
-        },
-      }
-
-      expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
-    })
-
-    it('should disable tracking', async () => {
-      renderCookiesConsent()
-
-      await user.press(screen.getByText('Tout refuser'))
-
-      expect(mockStartTracking).toHaveBeenCalledWith(false)
-    })
-
-    it('should not init AppsFlyer', async () => {
-      renderCookiesConsent()
-
-      await user.press(screen.getByText('Tout refuser'))
-
-      expect(campaignTracker.init).not.toHaveBeenCalled()
+      expect(setCookiesConsentMock).toHaveBeenCalledWith({
+        mandatory: COOKIES_BY_CATEGORY.essential,
+        accepted: [],
+        refused: ALL_OPTIONAL_COOKIES,
+      })
     })
 
     it('should not set marketing params', async () => {
@@ -221,44 +165,15 @@ describe('<CookiesConsent/>', () => {
 
       await user.press(screen.getByText('Enregistrer mes choix'))
 
-      const storageContent = {
-        buildVersion,
-        deviceId,
-        choiceDatetime: Today.toISOString(),
-        consent: {
-          mandatory: COOKIES_BY_CATEGORY.essential,
-          accepted: COOKIES_BY_CATEGORY.performance,
-          refused: [
-            ...COOKIES_BY_CATEGORY.customization,
-            ...COOKIES_BY_CATEGORY.marketing,
-            ...COOKIES_BY_CATEGORY.video,
-          ],
-        },
-      }
-
-      expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
-    })
-
-    it('should call startTrackingAcceptedCookies with empty array if all cookies are refused', async () => {
-      renderCookiesConsent()
-
-      await user.press(screen.getByText('Choisir les cookies'))
-
-      await user.press(screen.getByText('Enregistrer mes choix'))
-
-      expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith([])
-    })
-
-    it('should call startTrackingAcceptedCookies with performance if performance cookies are accepted', async () => {
-      renderCookiesConsent()
-
-      await user.press(screen.getByText('Choisir les cookies'))
-
-      await user.press(screen.getByTestId(NAVIGATION_STATISTICS_SWITCH))
-
-      await user.press(screen.getByText('Enregistrer mes choix'))
-
-      expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(COOKIES_BY_CATEGORY.performance)
+      expect(setCookiesConsentMock).toHaveBeenCalledWith({
+        mandatory: COOKIES_BY_CATEGORY.essential,
+        accepted: COOKIES_BY_CATEGORY.performance,
+        refused: [
+          ...COOKIES_BY_CATEGORY.customization,
+          ...COOKIES_BY_CATEGORY.marketing,
+          ...COOKIES_BY_CATEGORY.video,
+        ],
+      })
     })
 
     it('should log analytics if performance cookies are accepted', async () => {

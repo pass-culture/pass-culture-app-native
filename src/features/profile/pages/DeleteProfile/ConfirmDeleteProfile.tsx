@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { useAccountSuspendMutation } from 'features/auth/queries/useAccountSuspendMutation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
@@ -54,7 +55,10 @@ export function ConfirmDeleteProfile() {
       buttonPrimary={{
         wording: 'Supprimer mon compte',
         isLoading: isLoading,
-        onPress: suspendAccount,
+        onPress: () => {
+          Adjust.gdprForgetMe()
+          suspendAccount()
+        },
       }}
       buttonTertiary={{
         wording: 'Consulter l’article d’aide',

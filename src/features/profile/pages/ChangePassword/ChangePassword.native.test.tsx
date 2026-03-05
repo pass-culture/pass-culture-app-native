@@ -33,7 +33,7 @@ describe('ChangePassword', () => {
   it('should render correctly', async () => {
     renderChangePassword()
 
-    await screen.findByText('Mot de passe')
+    await screen.findByText('Modifier mon mot de passe')
 
     expect(screen).toMatchSnapshot()
   })

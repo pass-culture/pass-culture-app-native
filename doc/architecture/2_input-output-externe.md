@@ -14,7 +14,7 @@ flowchart TB
   end
   subgraph tracking
     Algolia_Analytics["Algolia Analytics : tracking actions"]
-    AppsFlyer["AppsFlyer : traking downloads"]
+    Adjust["Adjust : traking downloads"]
     Firebase_Analytics["Firebase Analytics : tracking actions"]
   end
   subgraph hosted_on_GCP
@@ -69,11 +69,11 @@ architecture-beta
   App:R --> L:DMS
 
   service Algolia_Analytics(cloud)[Algolia Analytics] in tracking
-  service AppsFlyer(cloud)[AppsFlyer tracking downloads] in tracking
+  service Adjust(cloud)[Adjust tracking downloads] in tracking
   service Firebase_Analytics(cloud)[Firebase Analytics tracking actions] in tracking
 
   App:B --> T:Algolia_Analytics
-  App:B --> T:AppsFlyer
+  App:B --> T:Adjust
   App:B --> T:Firebase_Analytics
 
   service Sentry(cloud)[Sentry erreurs tracking] in technique

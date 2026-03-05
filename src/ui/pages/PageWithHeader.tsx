@@ -105,7 +105,7 @@ const ChildrenScrollView = styled(ScrollView).attrs<ChildrenScrollViewProps>(
       flexGrow: 1,
       flexDirection: 'column',
       paddingTop: paddingHeaderHeight,
-      paddingBottom: bottomChildrenViewHeight,
+      paddingBottom: bottomChildrenViewHeight + theme.designSystem.size.spacing.xl,
       paddingHorizontal: theme.contentPage.marginHorizontal,
     },
   })

@@ -34,7 +34,6 @@ const mockIdentityCheckDispatch = jest.fn()
 jest.useFakeTimers()
 
 jest.mock('api/api')
-jest.mock('libs/campaign/campaign')
 jest.mock('libs/keychain/keychain')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),

@@ -44,8 +44,8 @@ export const cheatcodesStackNavigatorPathConfig = {
       CheatcodesScreenPageWithHeader: 'cheatcodes/other/page-with-header',
       CheatcodesScreenRemoteBanners: 'cheatcodes/remote-banners',
       CheatcodesScreenRemoteConfig: 'cheatcodes/other/remote-config',
-      CheatcodesScreenSecondaryPageWithBlurHeader:
-        'cheatcodes/other/secondary-page-with-blur-header',
+      CheatcodesScreenPageHeaderWithoutPlaceholder:
+        'cheatcodes/other/page-header-without-placeholder',
       CheatcodesScreenTrustedDeviceInfos: 'cheatcodes/trusted-device/trusted-device-infos',
     },
   },
