@@ -18,7 +18,7 @@ export const resetHasAlreadyBeenInitializedForTests = () => {
 }
 
 const requestAppTrackingAuthorizationIfNeeded = () => {
-  const NOT_DETERMINED = 3
+  const NOT_DETERMINED = 0
 
   RNAdjust.getAppTrackingAuthorizationStatus((status) => {
     if (status === NOT_DETERMINED) {
