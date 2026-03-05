@@ -667,7 +667,7 @@ describe('getCTAWordingAndAction', () => {
         })
       )
 
-      expect(result).toEqual({ wording: undefined })
+      expect(result).toEqual({})
     })
 
     it('should return undefined wording when user is not a beneficiary and no external URL', () => {
@@ -678,7 +678,7 @@ describe('getCTAWordingAndAction', () => {
         })
       )
 
-      expect(result).toEqual({ wording: undefined })
+      expect(result).toEqual({})
     })
 
     it('should return undefined wording when offer is forbidden to underage and user is underage beneficiary', () => {
@@ -689,7 +689,7 @@ describe('getCTAWordingAndAction', () => {
         })
       )
 
-      expect(result).toEqual({ wording: undefined })
+      expect(result).toEqual({})
     })
   })
 

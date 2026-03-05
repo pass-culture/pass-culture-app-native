@@ -72,7 +72,9 @@ describe('useOfferCTAs hook', () => {
     jest.clearAllMocks()
     mockUseRoute.mockReturnValue({ params: {} })
     mockUseFocusEffect.mockImplementation((callback) => {
-      callback()
+      React.useEffect(() => {
+        callback()
+      }, [callback])
     })
   })
 
@@ -165,7 +167,9 @@ describe('useOfferCTAs hook', () => {
     })
 
     it('should show auth modal on favorite press if user is logged out', () => {
-      mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false })
+      mockUseAuthContext
+        .mockReturnValueOnce({ isLoggedIn: false })
+        .mockReturnValueOnce({ isLoggedIn: false })
       const { result } = renderHook(
         () =>
           useOfferCTAs({
@@ -203,7 +207,9 @@ describe('useOfferCTAs hook', () => {
     })
 
     it('should show auth modal on reminder press if user is logged out', () => {
-      mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false })
+      mockUseAuthContext
+        .mockReturnValueOnce({ isLoggedIn: false })
+        .mockReturnValueOnce({ isLoggedIn: false })
       const { result } = renderHook(
         () =>
           useOfferCTAs({
@@ -224,7 +230,9 @@ describe('useOfferCTAs hook', () => {
 
   describe('CTA Button Logic', () => {
     it('should call onPressCTA and showOfferModal when on press is triggered', () => {
-      mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false })
+      mockUseAuthContext
+        .mockReturnValueOnce({ isLoggedIn: false })
+        .mockReturnValueOnce({ isLoggedIn: false })
       const { result } = renderHook(
         () =>
           useOfferCTAs({

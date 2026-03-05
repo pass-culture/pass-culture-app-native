@@ -129,6 +129,7 @@ export type CTAType =
   | 'SEE_BOOKING'
   | 'SOLD_OUT_OFFER'
   | 'SUBSCRIPTION_STATUS'
+  | 'UNDEFINED'
   | 'USER_15_16'
 
 export type ICTAWordingAndAction = {
