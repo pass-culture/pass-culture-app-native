@@ -1,11 +1,9 @@
 import { CookieNameEnum } from 'features/cookies/enums'
 import { removeGeneratedStorageKey } from 'features/cookies/helpers/removeGeneratedStorageKey'
 import { Cookies } from 'features/cookies/types'
-// eslint-disable-next-line no-restricted-imports
-import { campaignTracker } from 'libs/campaign/campaign'
-// eslint-disable-next-line no-restricted-imports
+import { Adjust } from 'libs/adjust/adjust'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
-import { Batch } from 'libs/react-native-batch'
+import { Batch, BatchPush } from 'libs/react-native-batch'
 
 const cookiesNameEnumUTM =
   CookieNameEnum.TRAFFIC_CAMPAIGN &&
@@ -21,18 +19,17 @@ export const generateUTMKeys = [
   'campaign_date',
 ]
 
-export const startTrackingAcceptedCookies = (acceptedCookies: Cookies) => {
+export const startTrackingAcceptedCookies = (
+  acceptedCookies: Cookies,
+  calledBecauseOfNewConsents: boolean
+) => {
   const acceptedGoogleAnalytics = acceptedCookies.includes(CookieNameEnum.GOOGLE_ANALYTICS)
   acceptedGoogleAnalytics
     ? firebaseAnalytics.enableCollection()
     : firebaseAnalytics.disableCollection()
 
-  const acceptedAppsFlyers = acceptedCookies.includes(CookieNameEnum.APPSFLYER)
-  campaignTracker.init(acceptedAppsFlyers)
-  campaignTracker.startAppsFlyer(acceptedAppsFlyers)
-
-  const acceptedBatch = acceptedCookies.includes(CookieNameEnum.BATCH)
-  acceptedBatch ? Batch.optIn() : Batch.optOut()
+  const acceptedAdjust = acceptedCookies.includes(CookieNameEnum.ADJUST)
+  acceptedAdjust ? Adjust.initOrEnable(calledBecauseOfNewConsents) : Adjust.disable()
 
   const acceptedAlgoliaInsights = acceptedCookies.includes(CookieNameEnum.ALGOLIA_INSIGHTS)
   if (!acceptedAlgoliaInsights) removeGeneratedStorageKey('algoliasearch-client-js')
@@ -40,5 +37,15 @@ export const startTrackingAcceptedCookies = (acceptedCookies: Cookies) => {
   const acceptedUTMCampaign = acceptedCookies.includes(cookiesNameEnumUTM)
   if (!acceptedUTMCampaign) {
     generateUTMKeys.forEach((key) => removeGeneratedStorageKey(key))
+  }
+
+  const acceptedBatch = acceptedCookies.includes(CookieNameEnum.BATCH)
+  if (acceptedBatch) {
+    Batch.optIn()
+    if (calledBecauseOfNewConsents) {
+      BatchPush.requestNotificationAuthorization() // For iOS and Android 13
+    }
+  } else {
+    Batch.optOut()
   }
 }

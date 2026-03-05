@@ -3,31 +3,31 @@ import React from 'react'
 
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState } from 'features/cookies/enums'
-import * as Tracking from 'features/cookies/helpers/startTrackingAcceptedCookies'
-import * as useCookies from 'features/cookies/helpers/useCookies'
-import type * as CookiesTypes from 'features/cookies/types'
-import { ConsentStatus } from 'features/cookies/types'
+import * as useCookiesModule from 'features/cookies/helpers/useCookies'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import * as PackageJson from 'libs/packageJson'
-import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
-jest.mock('libs/campaign/campaign')
-jest.mock('libs/react-native-device-info/getDeviceId')
-const buildVersion = 10010005
-jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
+const setCookiesConsentMock = jest.fn()
+jest.spyOn(useCookiesModule, 'useCookies').mockReturnValue({
+  setCookiesConsent: setCookiesConsentMock,
+  cookiesConsent: {
+    state: ConsentState.LOADING,
+  },
+  setUserId: jest.fn(),
+  loadCookiesConsent: jest.fn(),
+})
 
-const COOKIES_CONSENT_KEY = 'cookies'
+jest.mock('libs/react-native-device-info/getDeviceId')
+
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
-const deviceId = 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a'
 
 const mockPopTo = jest.fn()
 const mockDispatch = jest.fn()
@@ -52,8 +52,6 @@ jest.mock('@react-navigation/native', () => ({
   usePreventRemoveContext: () => ({ setPreventRemove: jest.fn() }),
 }))
 
-const mockStartTrackingAcceptedCookies = jest.spyOn(Tracking, 'startTrackingAcceptedCookies')
-
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: mockGoBack,
@@ -75,39 +73,6 @@ jest.mock('react-native/Libraries/Interaction/InteractionManager', () => ({
   clearInteractionHandle: jest.fn(),
   setDeadline: jest.fn(),
 }))
-
-const refusedDefault = [
-  ...COOKIES_BY_CATEGORY.marketing,
-  ...COOKIES_BY_CATEGORY.customization,
-  ...COOKIES_BY_CATEGORY.video,
-]
-
-const cookiesConsentStable: ConsentStatus = {
-  state: ConsentState.HAS_CONSENT,
-  value: {
-    mandatory: COOKIES_BY_CATEGORY.essential,
-    accepted: [],
-    refused: refusedDefault,
-  },
-}
-
-const setCookiesConsentMock = jest.fn(async (consent) => {
-  await storage.saveObject(COOKIES_CONSENT_KEY, {
-    buildVersion,
-    deviceId,
-    choiceDatetime: Today.toISOString(),
-    consent,
-  })
-})
-
-const useCookiesMockStable = {
-  cookiesConsent: cookiesConsentStable,
-  setCookiesConsent: setCookiesConsentMock,
-  setUserId: jest.fn(),
-  loadCookiesConsent: jest.fn(),
-}
-
-const useCookiesSpyOn = jest.spyOn(useCookies, 'useCookies').mockReturnValue(useCookiesMockStable)
 
 const mockShowModal = jest.fn()
 const useModalSpy = jest.spyOn(useModalAPI, 'useModal').mockReturnValue({
@@ -152,65 +117,15 @@ describe('<ConsentSettings/>', () => {
     const saveChoice = screen.getByText('Enregistrer mes choix')
     await user.press(saveChoice)
 
-    const storageContent = {
-      buildVersion,
-      deviceId,
-      choiceDatetime: Today.toISOString(),
-      consent: {
-        mandatory: COOKIES_BY_CATEGORY.essential,
-        accepted: COOKIES_BY_CATEGORY.performance,
-        refused: [
-          ...COOKIES_BY_CATEGORY.marketing,
-          ...COOKIES_BY_CATEGORY.customization,
-          ...COOKIES_BY_CATEGORY.video,
-        ],
-      },
-    }
-
-    expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
-  })
-
-  it('should call startTrackingAcceptedCookies with empty array if user refuses all cookies', async () => {
-    mockServer.postApi<EmptyResponse>('/v1/cookies_consent', {})
-
-    const emptyCookies: CookiesTypes.Cookies = []
-    const consentValue: CookiesTypes.Consent = {
-      mandatory: emptyCookies,
-      accepted: emptyCookies,
-      refused: emptyCookies,
-    }
-    const consentStatus: CookiesTypes.ConsentStatus = {
-      state: ConsentState.HAS_CONSENT,
-      value: consentValue,
-    }
-
-    useCookiesSpyOn.mockReturnValueOnce({
-      cookiesConsent: consentStatus,
-      setCookiesConsent: jest.fn(),
-      setUserId: jest.fn(),
-      loadCookiesConsent: jest.fn(),
+    expect(setCookiesConsentMock).toHaveBeenCalledWith({
+      mandatory: COOKIES_BY_CATEGORY.essential,
+      accepted: COOKIES_BY_CATEGORY.performance,
+      refused: [
+        ...COOKIES_BY_CATEGORY.marketing,
+        ...COOKIES_BY_CATEGORY.customization,
+        ...COOKIES_BY_CATEGORY.video,
+      ],
     })
-
-    renderConsentSettings()
-
-    const saveChoice = screen.getByText('Enregistrer mes choix')
-    await user.press(saveChoice)
-
-    expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith([])
-  })
-
-  it('should call startTrackingAcceptedCookies with cookies performance if user accepts performance cookies', async () => {
-    mockServer.postApi<EmptyResponse>('/v1/cookies_consent', {})
-
-    renderConsentSettings()
-
-    const performanceSwitch = screen.getByTestId(BROWSING_STATISTICS_SWITCH)
-    await user.press(performanceSwitch)
-
-    const saveChoice = screen.getByText('Enregistrer mes choix')
-    await user.press(saveChoice)
-
-    expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(COOKIES_BY_CATEGORY.performance)
   })
 
   it('should log analytics if performance cookies are accepted', async () => {

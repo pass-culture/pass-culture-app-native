@@ -1,13 +1,12 @@
 import { useCallback, useEffect } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
+import { ConsentState } from 'features/cookies/enums'
 import { isConsentChoiceExpired } from 'features/cookies/helpers/isConsentChoiceExpired'
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookiesConsentStore } from 'features/cookies/store/cookiesConsentStore'
 import { Consent, CookiesConsent } from 'features/cookies/types'
 import { getAppBuildVersion } from 'libs/packageJson'
-import { BatchPush } from 'libs/react-native-batch'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
 
@@ -70,9 +69,7 @@ export const useCookies = () => {
       .getState()
       .setCookiesConsentState({ state: ConsentState.HAS_CONSENT, value: cookiesConsent })
 
-    if (cookiesConsent.accepted.includes(CookieNameEnum.BATCH)) {
-      BatchPush.requestNotificationAuthorization() // For iOS and Android 13
-    }
+    startTrackingAcceptedCookies(cookiesConsent.accepted, true)
   }
 
   const setUserId = async (userId: number): Promise<void> => {
@@ -111,7 +108,7 @@ const setConsentAndChoiceDateTime = (cookies: CookiesConsent) => {
       state: ConsentState.HAS_CONSENT,
       value: cookies.consent,
     })
-    startTrackingAcceptedCookies(cookies.consent.accepted)
+    startTrackingAcceptedCookies(cookies.consent.accepted, false)
   } else {
     setCookiesConsentState({ state: ConsentState.UNKNOWN })
   }

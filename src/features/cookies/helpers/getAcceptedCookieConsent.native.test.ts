@@ -1,49 +1,44 @@
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { CookieNameEnum } from 'features/cookies/enums'
+import { COOKIES_CONSENT_KEY } from 'features/cookies/helpers/cookiesConsentKey'
 import { getAcceptedCookieConsent } from 'features/cookies/helpers/getAcceptedCookieConsent'
 import { storage } from 'libs/storage'
-import { renderHook } from 'tests/utils'
-
-const COOKIES_CONSENT_KEY_V2 = 'cookies'
 
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('getAcceptedCookieConsent', () => {
-  beforeEach(() => storage.clear(COOKIES_CONSENT_KEY_V2))
+  beforeEach(() => storage.clear(COOKIES_CONSENT_KEY))
 
   it('should return false if no cookies consent', async () => {
-    const { result } = renderHook(() => getAcceptedCookieConsent(CookieNameEnum.APPSFLYER))
-    const hasAcceptedCookie = await result.current
+    const hasAcceptedCookie = await getAcceptedCookieConsent(CookieNameEnum.ADJUST)
 
     expect(hasAcceptedCookie).toEqual(false)
   })
 
   it('should return false if user accept specific cookie but not the cookie in function parameter', async () => {
-    storage.saveObject(COOKIES_CONSENT_KEY_V2, {
+    await storage.saveObject(COOKIES_CONSENT_KEY, {
       consent: {
         mandatory: COOKIES_BY_CATEGORY.essential,
-        accepted: COOKIES_BY_CATEGORY.marketing, // = CookieNameEnum.APPSFLYER
+        accepted: COOKIES_BY_CATEGORY.marketing,
         refused: [...COOKIES_BY_CATEGORY.customization, ...COOKIES_BY_CATEGORY.performance],
       },
     })
 
-    const { result } = renderHook(() => getAcceptedCookieConsent(CookieNameEnum.ALGOLIA_INSIGHTS))
-    const hasAcceptedCookie = await result.current
+    const hasAcceptedCookie = await getAcceptedCookieConsent(CookieNameEnum.ALGOLIA_INSIGHTS)
 
     expect(hasAcceptedCookie).toEqual(false)
   })
 
   it('should return true if user accept specific cookie', async () => {
-    storage.saveObject(COOKIES_CONSENT_KEY_V2, {
+    await storage.saveObject(COOKIES_CONSENT_KEY, {
       consent: {
         mandatory: COOKIES_BY_CATEGORY.essential,
-        accepted: COOKIES_BY_CATEGORY.marketing, // = CookieNameEnum.APPSFLYER
+        accepted: COOKIES_BY_CATEGORY.marketing,
         refused: [...COOKIES_BY_CATEGORY.customization, ...COOKIES_BY_CATEGORY.performance],
       },
     })
 
-    const { result } = renderHook(() => getAcceptedCookieConsent(CookieNameEnum.APPSFLYER))
-    const hasAcceptedCookie = await result.current
+    const hasAcceptedCookie = await getAcceptedCookieConsent(CookieNameEnum.ADJUST)
 
     expect(hasAcceptedCookie).toEqual(true)
   })

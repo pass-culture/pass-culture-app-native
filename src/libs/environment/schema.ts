@@ -3,6 +3,7 @@ import * as yup from 'yup'
 export const EnvironmentSchema = yup.object({
   ACCESSIBILITY: yup.string().required(),
   ACCESSIBILITY_PLAN: yup.string().required(),
+  ADJUST_APP_TOKEN: yup.string().required(),
   ALGOLIA_APPLICATION_ID: yup.string().required(),
   ALGOLIA_ARTISTS_INDEX_NAME: yup.string().required(),
   ALGOLIA_MOST_LIKED_OFFERS_INDEX_NAME: yup.string().required(),
@@ -17,7 +18,6 @@ export const EnvironmentSchema = yup.object({
   ANDROID_APP_ID: yup.string().required(),
   API_BASE_URL: yup.string().ensure(), // Set to empty string in __DEV__ (see src/libs/environment/env.web.ts)
   APPLE_STORE_URL: yup.string().required(),
-  APPS_FLYER_DEV_PUBLIC_KEY: yup.string().required(),
   BOOKING_FEEDBACK_LINK: yup.string().required(),
   BOOKING_LIMIT_EXCEEDED_URL: yup.string().required(),
   CGU_LINK: yup.string().required(),
