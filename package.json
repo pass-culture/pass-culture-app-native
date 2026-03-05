@@ -75,7 +75,6 @@
     "test:unit": "TZ=UTC JEST=true node --no-experimental-fetch --no-compilation-cache --expose-gc ./node_modules/.bin/jest --forceExit --logHeapUsage",
     "test:unit:ci": "JEST_SILENT_REPORTER_DOTS=true yarn test:unit --maxWorkers=6 --coverage --ci --reporters=jest-junit --reporters=jest-silent-reporter",
     "test:unit:full": "TZ=UTC JEST=true jest --collect-coverage",
-    "test:lighthouse": "lhci autorun",
     "test:unit:web": "TZ=UTC JEST=true node --no-compilation-cache --expose-gc ./node_modules/.bin/jest --config jest.web.config.js --forceExit --logHeapUsage",
     "test:unit:web:ci": "yarn test:unit:web --maxWorkers=6 --coverage --ci --reporters=jest-junit --reporters=jest-silent-reporter",
     "add:tracker": "python3 scripts/add_tracker.py",
@@ -214,7 +213,6 @@
     "@hot-updater/bare": "^0.20.11",
     "@hot-updater/firebase": "^0.20.11",
     "@hot-updater/sentry-plugin": "^0.20.11",
-    "@lhci/cli": "^0.14.0",
     "@react-native-community/cli": "19.1.2",
     "@react-native-community/cli-platform-android": "19.1.2",
     "@react-native-community/cli-platform-ios": "19.1.2",
@@ -342,6 +340,7 @@
     "@babel/plugin-syntax-typescript": "^7.23.3",
     "@babel/types": "^7.23.6",
     "tar-fs": "3.1.1",
+    "basic-ftp": "5.2.0",
     "path-to-regexp": "8.0.0",
     "react-native-maps@1.24.2": "patch:react-native-maps@npm%3A1.24.2#./.yarn/patches/react-native-maps-npm-1.24.2-83a01f59cc.patch"
   },
