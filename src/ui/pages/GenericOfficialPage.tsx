@@ -66,7 +66,7 @@ export function GenericOfficialPage({
         {buttons ? (
           <BottomContainer>
             {buttons.map((button, index) => (
-              <ButtonContainer key={index} index={index}>
+              <ButtonContainer key={(button as React.ReactElement).key} index={index}>
                 {button}
               </ButtonContainer>
             ))}
