@@ -48,6 +48,7 @@ import { useVersion } from 'ui/hooks/useVersion'
 import { Page } from 'ui/pages/Page'
 import { Bell } from 'ui/svg/icons/Bell'
 import { Bulb } from 'ui/svg/icons/Bulb'
+import { ChatbotAI } from 'ui/svg/icons/ChatbotAI'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
@@ -292,7 +293,7 @@ const OnlineProfile: React.FC = () => {
                         title="Poser une question"
                         type="navigable"
                         navigateTo={getProfilePropConfig('Chatbot')}
-                        icon={LifeBuoy}
+                        icon={ChatbotAI}
                       />
                     </Li>
                   ) : null}
