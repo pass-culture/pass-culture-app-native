@@ -7,12 +7,12 @@ import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
-import { IdentityCheckPendingBadge } from 'features/profile/components/Badges/IdentityCheckPendingBadge'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
-import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
+import { ActivationBannerPending } from 'features/profile/components/Banners/ActivationBanner/ActivationBannerPending'
+import { YoungerBanner } from 'features/profile/components/Banners/GeneralPublicBanner/YoungerBanner'
 import { EligibilityMessage } from 'features/profile/components/Header/NonBeneficiaryHeader/EligibilityMessage'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
-import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
+import { ActivationDisabledBanner } from 'features/remoteBanners/banners/ActivationDisabledBanner'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -157,11 +157,12 @@ export function NonBeneficiaryBanner({
   if (isUserTooYoungToBeEligible) {
     return (
       <BannerContainer withMarginTop>
-        <YoungerBadge eligibilityStartDatetime={formattedEligibilityStartDatetime} />
+        <YoungerBanner eligibilityStartDatetime={formattedEligibilityStartDatetime} />
       </BannerContainer>
     )
   }
 
+  // Déjà déplacé dans EligibleBanner mais sans le Subtitle dans SubscriptionMessageBadge
   if (subscription?.subscriptionMessage && remoteActivationBannerOptions) {
     return (
       <BannerContainer>
@@ -178,10 +179,11 @@ export function NonBeneficiaryBanner({
     banner.name === BannerName.activation_banner ||
     banner.name === BannerName.transition_17_18_banner
   ) {
+    // Déjà déplacé dans EligibleBanner
     if (featureFlags.disableActivation && remoteActivationBannerOptions) {
       return (
         <BannerContainer withMarginTop>
-          <RemoteActivationBanner
+          <ActivationDisabledBanner
             from="profile"
             remoteActivationBannerOptions={remoteActivationBannerOptions}
           />
@@ -190,6 +192,7 @@ export function NonBeneficiaryBanner({
     }
 
     return (
+      // Déjà déplacé dans EligibleBanner
       <SystemBanner
         Icon={systemBannerIcons[banner.name]}
         homeBanner={banner as Banner} // Use this as because API typing return Banner | null but it's never null
@@ -199,10 +202,11 @@ export function NonBeneficiaryBanner({
     )
   }
 
+  // Déjà déplacé dans EligibleBanner
   if (subscription?.hasIdentityCheckPending) {
     return (
       <BannerContainer withMarginTop>
-        <IdentityCheckPendingBadge />
+        <ActivationBannerPending />
       </BannerContainer>
     )
   }

@@ -1,44 +1,32 @@
 import React from 'react'
-import { View } from 'react-native'
 
-import { ActivationBanner } from 'features/home/api/useActivationBanner'
-import { EligibilityMessage } from 'features/profile/components/Header/NonBeneficiaryHeader/EligibilityMessage'
-import { getEligibilityEndDatetime } from 'features/profile/helpers/getEligibilityEndDatetime'
+import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
+import { ActivationBanner } from 'features/profile/components/Banners/ActivationBanner/ActivationBanner'
+import { EligibleMessage } from 'features/profile/components/EligibleMessage/EligibleMessage'
 import { getProfileHeaderTitle } from 'features/profile/helpers/getProfileHeaderTitle'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
-import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
-import { Unlock } from 'ui/svg/icons/Unlock'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
-type Props = {
-  user: UserProfileResponseWithoutSurvey
-  banner: ActivationBanner
-  onPress: () => void
-} & ProfileFeatureFlagsProps
+type Props = { user: UserProfileResponseWithoutSurvey } & ProfileFeatureFlagsProps
 
-export const EligibleHeader = ({ featureFlags, user, banner, onPress }: Props) => {
+export const EligibleHeader = ({ featureFlags, user }: Props) => {
   const { firstName, lastName, eligibilityEndDatetime } = user
-  const formattedEligibilityEndDatetime = getEligibilityEndDatetime({ eligibilityEndDatetime })
-
   const headerTitle = getProfileHeaderTitle({ firstName, lastName })
-  const bannerTitle = banner.title
-  const bannerSubtitle = banner.text
-  const bannerAccessibilityLabel = getComputedAccessibilityLabel(bannerTitle, bannerSubtitle)
+  const { data: subscriptionInfos } = useGetStepperInfoQuery()
 
   return (
-    <View testID="eligible-header">
-      <PageHeader title={headerTitle} featureFlags={featureFlags} numberOfLines={3} />
-      <EligibilityMessage formattedEligibilityEndDatetime={formattedEligibilityEndDatetime} />
-      <SystemBanner
-        leftIcon={Unlock}
-        title={bannerTitle}
-        subtitle={bannerSubtitle}
-        onPress={onPress}
-        accessibilityLabel={bannerAccessibilityLabel}
-        analyticsParams={{ type: 'credit', from: 'profile' }}
-      />
-    </View>
+    <ViewGap gap={6} testID="eligible-header">
+      <ViewGap gap={2}>
+        <PageHeader title={headerTitle} featureFlags={featureFlags} numberOfLines={3} />
+        <EligibleMessage
+          eligibilityEndDatetime={eligibilityEndDatetime}
+          updatedAt={subscriptionInfos?.subscriptionMessage?.updatedAt}
+          featureFlags={featureFlags}
+        />
+      </ViewGap>
+      <ActivationBanner featureFlags={featureFlags} />
+    </ViewGap>
   )
 }

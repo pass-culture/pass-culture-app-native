@@ -7,12 +7,12 @@ import { Info } from 'ui/svg/icons/Info'
 import { RemoteBanner } from '../components/RemoteBanner'
 
 type RemoteGenericBannerProps = {
-  from: RemoteBannerOrigin
+  from?: RemoteBannerOrigin
   remoteGenericBannerOptions: Record<string, unknown>
 }
 
 export const RemoteGenericBanner = ({
-  from,
+  from = 'home',
   remoteGenericBannerOptions,
 }: RemoteGenericBannerProps) => {
   return (
@@ -21,7 +21,7 @@ export const RemoteGenericBanner = ({
       options={remoteGenericBannerOptions}
       leftIcon={Info}
       logClickEvent={analytics.logHasClickedRemoteGenericBanner}
-      analyticsParams={{ from: 'home', type: 'remoteGenericBanner' }}
+      analyticsParams={{ from, type: 'remoteGenericBanner' }}
     />
   )
 }

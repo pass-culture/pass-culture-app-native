@@ -4,11 +4,13 @@ import styled from 'styled-components/native'
 import { Typo } from 'ui/theme'
 
 type Props = {
-  startSubtitle: string
+  startSubtitle?: string
   boldEndSubtitle?: string
 }
 
 export const Subtitle = ({ startSubtitle, boldEndSubtitle }: Props) => {
+  if (!startSubtitle && !boldEndSubtitle) return null
+
   return (
     <Row>
       <Typo.Body>{startSubtitle}</Typo.Body>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
+import { ActivationDisabledBanner } from 'features/remoteBanners/banners/ActivationDisabledBanner'
 import { RemoteGenericBanner } from 'features/remoteBanners/banners/RemoteGenericBanner'
 import { remoteBannerSchema } from 'features/remoteBanners/utils/remoteBannerSchema'
 import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
@@ -61,7 +61,7 @@ export const CheatcodesScreenRemoteBanners = () => {
 
         <Typo.Title3>RemoteActivationBanner</Typo.Title3>
         {disableActivationOptions ? (
-          <RemoteActivationBanner
+          <ActivationDisabledBanner
             from="cheatcodes"
             remoteActivationBannerOptions={disableActivationOptions}
           />

@@ -126,7 +126,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
     await waitFor(async () => {
       expect(screen.queryByTestId('eligibility-system-banner-container')).not.toBeOnTheScreen()
-      expect(await screen.findByTestId('identity-check-pending-badge')).toBeOnTheScreen()
+      expect(await screen.findByTestId('activation-banner-pending')).toBeOnTheScreen()
     })
   })
 
@@ -160,7 +160,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     })
 
     await waitFor(async () => {
-      expect(await screen.findByTestId('younger-badge')).toBeOnTheScreen()
+      expect(await screen.findByTestId('younger-banner')).toBeOnTheScreen()
     })
   })
 
@@ -181,8 +181,8 @@ describe('<NonBeneficiaryHeader/>', () => {
 
     expect(screen.queryByTestId('subscription-message-badge')).not.toBeOnTheScreen()
     expect(screen.queryByTestId('eligibility-banner-container')).not.toBeOnTheScreen()
-    expect(screen.queryByTestId('identity-check-pending-badge')).not.toBeOnTheScreen()
-    expect(screen.queryByTestId('younger-badge')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('activation-banner-pending')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('younger-banner')).not.toBeOnTheScreen()
   })
 })
 
