@@ -116,7 +116,7 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
   const renderItem: ListRenderItem<BookingListItemResponse> = useCallback(
     ({ item }) => {
       return enableNewBookings ? (
-        <EndedBookingListItemWrapper booking={item} />
+        <EndedBookingListItemWrapper booking={item} handleShowReactionModal={openReactionModal} />
       ) : (
         <EndedBookingItem
           booking={item}

@@ -12,12 +12,18 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useSubcategory } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 
 type EndedBookingProps = {
   booking: BookingListItemResponse
+  handleShowReactionModal: (booking: BookingListItemResponse) => void
 }
 
-export const EndedBookingListItemWrapper: FunctionComponent<EndedBookingProps> = ({ booking }) => {
+export const EndedBookingListItemWrapper: FunctionComponent<EndedBookingProps> = ({
+  booking,
+  handleShowReactionModal,
+}) => {
   const {
     imageUrl,
     isDigital,
@@ -54,23 +60,44 @@ export const EndedBookingListItemWrapper: FunctionComponent<EndedBookingProps> =
   })
 
   return (
-    <BookingListItemContainer
-      navigateTo={navigateTo}
-      onBeforeNavigate={handlePressOffer}
-      accessibilityLabel={accessibilityLabel}>
-      <BookingListItem
-        display={isEvent ? 'punched' : 'full'}
-        title={name}
-        subtitle={venueName}
-        imageUrl={imageUrl ?? ''}>
-        <BookingListItemLabel alert={!!booking.expirationDate} text={title} icon={icon} />
-      </BookingListItem>
-    </BookingListItemContainer>
+    <Wrapper>
+      <InternalTouchableLink
+        navigateTo={navigateTo}
+        onBeforeNavigate={handlePressOffer}
+        accessibilityLabel={accessibilityLabel}>
+        <BookingListItem
+          display={isEvent ? 'punched' : 'full'}
+          title={name}
+          subtitle={venueName}
+          imageUrl={imageUrl ?? ''}>
+          <BookingListItemLabel alert={!!booking.expirationDate} text={title} icon={icon} />
+        </BookingListItem>
+      </InternalTouchableLink>
+      {booking.canReact && booking.userReaction === null ? (
+        <LikeButtonContainer>
+          <Button
+            icon={ThumbUp}
+            onPress={() => handleShowReactionModal(booking)}
+            accessibilityLabel={`Ouvrir la modale de réaction pour la réservation ${name}`}
+            variant="secondary"
+            color="neutral"
+            size="small"
+            iconButton
+          />
+        </LikeButtonContainer>
+      ) : null}
+    </Wrapper>
   )
 }
 
-const BookingListItemContainer = styled(InternalTouchableLink)(({ theme }) => ({
+const Wrapper = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
   marginBottom: theme.designSystem.size.spacing.l,
   ...(theme.isDesktopViewport ? { maxWidth: '50%' } : undefined),
+}))
+
+const LikeButtonContainer = styled.View(({ theme }) => ({
+  position: 'absolute',
+  top: theme.designSystem.size.spacing.m,
+  right: theme.designSystem.size.spacing.m,
 }))
