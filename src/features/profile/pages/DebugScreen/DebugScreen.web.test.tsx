@@ -25,10 +25,6 @@ jest.mock('ui/hooks/useVersion', () => ({
   useVersion: () => '1.2.3',
 }))
 
-jest.mock('libs/environment/env', () => ({
-  env: { COMMIT_HASH: 'abcdef', SUPPORT_EMAIL_ADDRESS: 'support@example.com' },
-}))
-
 describe('DebugScreen', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
