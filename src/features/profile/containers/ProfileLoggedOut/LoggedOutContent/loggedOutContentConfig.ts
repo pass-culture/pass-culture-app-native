@@ -7,6 +7,7 @@ import { Bulb } from 'ui/svg/icons/Bulb'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
+import { NoPhone } from 'ui/svg/icons/NoPhone'
 
 type LoggedOutContentConfig = {
   section: string
@@ -49,6 +50,7 @@ export const loggedOutContentConfig = ({
     items: [
       { component: HelpButton, key: 'HelpButton' },
       { title: 'Chercher une info', externalNav: { url: env.ACCESSIBILITY_PLAN } },
+      { title: 'Signaler un bug', screen: 'DebugScreen', icon: NoPhone },
     ],
   },
   {
