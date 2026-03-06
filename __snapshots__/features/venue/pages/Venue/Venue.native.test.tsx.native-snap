@@ -3460,12 +3460,55 @@ d’options
   <View
     style={
       {
+        "backgroundColor": "#ffffff",
         "bottom": 0,
         "position": "absolute",
         "width": "100%",
       }
     }
   >
+    <BVLinearGradient
+      bottomViewHeight={0}
+      collapsable={false}
+      colors={
+        [
+          16777215,
+          4294967295,
+        ]
+      }
+      endPoint={
+        {
+          "x": 0.5,
+          "y": 1,
+        }
+      }
+      locations={
+        [
+          0,
+          1,
+        ]
+      }
+      pointerEvents="none"
+      startPoint={
+        {
+          "x": 0.5,
+          "y": 0,
+        }
+      }
+      style={
+        [
+          {
+            "bottom": "100%",
+            "height": 120,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+          },
+          {},
+          {},
+        ]
+      }
+    />
     <View
       style={
         {
@@ -7082,12 +7125,55 @@ d’options
   <View
     style={
       {
+        "backgroundColor": "#ffffff",
         "bottom": 0,
         "position": "absolute",
         "width": "100%",
       }
     }
   >
+    <BVLinearGradient
+      bottomViewHeight={0}
+      collapsable={false}
+      colors={
+        [
+          16777215,
+          4294967295,
+        ]
+      }
+      endPoint={
+        {
+          "x": 0.5,
+          "y": 1,
+        }
+      }
+      locations={
+        [
+          0,
+          1,
+        ]
+      }
+      pointerEvents="none"
+      startPoint={
+        {
+          "x": 0.5,
+          "y": 0,
+        }
+      }
+      style={
+        [
+          {
+            "bottom": "100%",
+            "height": 120,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+          },
+          {},
+          {},
+        ]
+      }
+    />
     <View
       style={
         {
@@ -10451,12 +10537,55 @@ d’options
   <View
     style={
       {
+        "backgroundColor": "#ffffff",
         "bottom": 0,
         "position": "absolute",
         "width": "100%",
       }
     }
   >
+    <BVLinearGradient
+      bottomViewHeight={0}
+      collapsable={false}
+      colors={
+        [
+          16777215,
+          4294967295,
+        ]
+      }
+      endPoint={
+        {
+          "x": 0.5,
+          "y": 1,
+        }
+      }
+      locations={
+        [
+          0,
+          1,
+        ]
+      }
+      pointerEvents="none"
+      startPoint={
+        {
+          "x": 0.5,
+          "y": 0,
+        }
+      }
+      style={
+        [
+          {
+            "bottom": "100%",
+            "height": 120,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+          },
+          {},
+          {},
+        ]
+      }
+    />
     <View
       style={
         {

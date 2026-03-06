@@ -1884,11 +1884,53 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
       </View>
     </View>
   </RCTScrollView>
+  <BVLinearGradient
+    bottomViewHeight={0}
+    colors={
+      [
+        16777215,
+        4294967295,
+      ]
+    }
+    endPoint={
+      {
+        "x": 0.5,
+        "y": 1,
+      }
+    }
+    locations={
+      [
+        0,
+        1,
+      ]
+    }
+    pointerEvents="none"
+    startPoint={
+      {
+        "x": 0.5,
+        "y": 0,
+      }
+    }
+    style={
+      [
+        {
+          "bottom": 0,
+          "height": 120,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        },
+        {},
+        {},
+      ]
+    }
+  />
   <View
     onLayout={[Function]}
     style={
       {
         "alignItems": "center",
+        "backgroundColor": "#ffffff",
         "bottom": 0,
         "left": 0,
         "paddingBottom": 24,
