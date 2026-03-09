@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-restricted-imports
-import { GoogleSignin } from '@react-native-google-signin/google-signin'
+import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin'
 
 import { api } from 'api/api'
 import { loginToGoogle } from 'libs/react-native-google-sso/loginToGoogle'
@@ -66,5 +66,16 @@ describe('loginToGoogle', () => {
     await loginToGoogle({ onSuccess, onError })
 
     expect(onError).toHaveBeenCalledWith(error)
+  })
+
+  it('should not call onError when signIn is cancelled by the user', async () => {
+    mockedGoogleSignin.signIn.mockRejectedValueOnce({
+      code: statusCodes.SIGN_IN_CANCELLED,
+      message: 'Sign in cancelled',
+    })
+
+    await loginToGoogle({ onSuccess, onError })
+
+    expect(onError).not.toHaveBeenCalled()
   })
 })
