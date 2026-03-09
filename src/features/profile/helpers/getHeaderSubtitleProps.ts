@@ -9,7 +9,7 @@ export const getHeaderSubtitleProps = ({
 }: {
   isCreditEmpty: boolean
   isDepositExpired: boolean
-  depositExpirationDate?: string
+  depositExpirationDate?: string | null
   eligibility?: EligibilityType | null
 }) => {
   const displayedExpirationDate = depositExpirationDate

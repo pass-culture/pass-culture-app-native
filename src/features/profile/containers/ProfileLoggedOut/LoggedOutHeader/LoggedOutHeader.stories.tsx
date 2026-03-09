@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
-import { LoggedOutHeader } from 'features/profile/components/Header/LoggedOutHeader/LoggedOutHeader'
+import { LoggedOutHeader } from 'features/profile/containers/ProfileLoggedOut/LoggedOutHeader/LoggedOutHeader'
 import { theme } from 'theme'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
@@ -17,7 +17,7 @@ const variantConfig: Variants<typeof LoggedOutHeader> = [
     props: {
       featureFlags: {
         enablePassForAll: true,
-        enableProfileV2: false,
+        enableProfileV2: true,
         disableActivation: false,
       },
     },

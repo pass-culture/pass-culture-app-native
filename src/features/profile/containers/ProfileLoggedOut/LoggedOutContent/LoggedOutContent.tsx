@@ -3,7 +3,7 @@ import React from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AppearanceButton } from 'features/profile/components/AppearanceButton/AppearanceButton'
-import { HelpButton } from 'features/profile/components/Buttons/HelpButton/HelpButton'
+import { HelpButtonRow } from 'features/profile/components/Buttons/HelpButton/HelpButtonRow'
 import { LocationButton } from 'features/profile/components/Buttons/LocationButton/LocationButton'
 import { ProfileContentLayout } from 'features/profile/components/ProfileContentLayout/ProfileContentLayout'
 import { ShareBanner } from 'features/profile/components/ShareBanner/ShareBanner'
@@ -28,7 +28,7 @@ export const LoggedOutContent = ({ user }: Props) => {
   const { geolocPositionError } = useLocation()
 
   const config = loggedOutContentConfig({
-    HelpButton: shouldDisplayHelpButton ? <HelpButton user={user} /> : null,
+    HelpButton: shouldDisplayHelpButton ? <HelpButtonRow birthDate={user?.birthDate} /> : null,
     AppearanceButton: (
       <AppearanceButton
         navigate={navigate}

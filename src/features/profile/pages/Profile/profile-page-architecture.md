@@ -14,6 +14,18 @@ graph TD
     ProfileLoggedIn --> LoggedInContent
     ProfileLoggedIn --> LoggedInHeader
 
+    LoggedInHeader --> LoggedInExBeneficiaryHeader
+    LoggedInHeader --> LoggedInGeneralPublicHeader
+    LoggedInHeader --> LoggedInEligibleHeader
+    LoggedInHeader --> LoggedInBeneficiaryHeader
+
+    LoggedInEligibleHeader === EligibleFreeHeader
+    EligibleFreeHeader === EligibleHeader
+
+    LoggedInBeneficiaryHeader === BeneficiaryFreeHeader
+    BeneficiaryFreeHeader === BeneficiaryHeader
+    BeneficiaryHeader === BeneficiaryEmptyHeader
+
     LoggedInContent --> LoggedInBeneficiaryContent
     LoggedInContent --> LoggedInNonBeneficiaryContent
 
@@ -35,9 +47,15 @@ graph TD
         LoggedInContent
         LoggedInBeneficiaryContent
         LoggedInNonBeneficiaryContent
-    end
-
-    subgraph components
         LoggedOutHeader
         LoggedInHeader
+        LoggedInGeneralPublicHeader
+        LoggedInEligibleHeader
+        LoggedInBeneficiaryHeader
+        LoggedInExBeneficiaryHeader
+        EligibleHeader
+        EligibleFreeHeader
+        BeneficiaryEmptyHeader
+        BeneficiaryHeader
+        BeneficiaryFreeHeader
     end

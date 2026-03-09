@@ -26,10 +26,10 @@ describe('getCreditType', () => {
     mockedIsDepositExpired.mockReturnValue(false)
   })
 
-  it('should return NO_CREDIT by default', () => {
+  it('should return CREDIT_UNKNOWN by default', () => {
     const result = getCreditType(buildUser())
 
-    expect(result).toBe(UserCreditType.NO_CREDIT)
+    expect(result).toBe(UserCreditType.CREDIT_UNKNOWN)
   })
 
   describe('CREDIT V2', () => {

@@ -5,14 +5,14 @@ import { YoungStatusType } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AppearanceButton } from 'features/profile/components/AppearanceButton/AppearanceButton'
 import { ChatbotButton } from 'features/profile/components/Buttons/ChatbotButton/ChatbotButton'
-import { HelpButton } from 'features/profile/components/Buttons/HelpButton/HelpButton'
+import { HelpButtonRow } from 'features/profile/components/Buttons/HelpButton/HelpButtonRow'
 import { LocationButton } from 'features/profile/components/Buttons/LocationButton/LocationButton'
 import { FeedbackInAppButton } from 'features/profile/components/FeedbackInAppButton/FeedbackInAppButton'
 import { ProfileContentLayout } from 'features/profile/components/ProfileContentLayout/ProfileContentLayout'
 import { ShareBanner } from 'features/profile/components/ShareBanner/ShareBanner'
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
-import { loggedInBeneficiaryContentConfig } from 'features/profile/containers/ProfileLoggedIn/LoggedInContent/loggedInBeneficiaryContentConfig'
-import { loggedInNonBeneficiaryContentConfig } from 'features/profile/containers/ProfileLoggedIn/LoggedInContent/loggedInNonBeneficiaryContentConfig'
+import { loggedInBeneficiaryContentConfig } from 'features/profile/containers/ProfileLoggedIn/LoggedInContent/LoggedInBeneficiaryContent/loggedInBeneficiaryContentConfig'
+import { loggedInNonBeneficiaryContentConfig } from 'features/profile/containers/ProfileLoggedIn/LoggedInContent/LoggedInNonBeneficiaryContent/loggedInNonBeneficiaryContentConfig'
 import { getShouldDisplayHelpButton } from 'features/profile/helpers/getShouldDisplayHelpButton'
 import { useAppearanceTag } from 'features/profile/helpers/useAppearanceTag'
 import { useGeolocationSwitch } from 'features/profile/helpers/useGeolocationSwitch'
@@ -65,7 +65,7 @@ export const LoggedInContent = ({ user }: Props) => {
     FeedbackInAppButton: (
       <FeedbackInAppButton displayInAppFeedback={remoteConfig.displayInAppFeedback} />
     ),
-    HelpButton: shouldDisplayHelpButton ? <HelpButton user={user} /> : null,
+    HelpButton: shouldDisplayHelpButton ? <HelpButtonRow birthDate={user?.birthDate} /> : null,
     ShareBanner: <ShareBanner />,
     SocialNetwork: <SocialNetwork />,
   }

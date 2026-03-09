@@ -41,7 +41,7 @@ export const nonBeneficiaryUser: UserProfileResponseWithoutSurvey = {
   achievements: [],
   hasProfileExpired: false,
   statusType: UserStatusType.GENERAL_PUBLIC,
-  creditType: UserCreditType.NO_CREDIT,
+  creditType: UserCreditType.CREDIT_EMPTY,
   eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
 }
 
@@ -79,7 +79,7 @@ export const underageBeneficiaryUser: UserProfileResponseWithoutSurvey = {
   isEligibleForBeneficiaryUpgrade: false,
   status: { statusType: YoungStatusType.eligible },
   statusType: UserStatusType.GENERAL_PUBLIC,
-  creditType: UserCreditType.NO_CREDIT,
+  creditType: UserCreditType.CREDIT_EMPTY,
   eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
 }
 
@@ -87,6 +87,6 @@ export const exBeneficiaryUser: UserProfileResponseWithoutSurvey = {
   ...beneficiaryUser,
   depositExpirationDate: '2020-01-01T03:04:05',
   statusType: UserStatusType.EX_BENEFICIARY,
-  creditType: UserCreditType.NO_CREDIT,
+  creditType: UserCreditType.CREDIT_EMPTY,
   eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
 }

@@ -10,12 +10,15 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme/typography'
 
 type CreditInfoProps = {
-  totalCredit: DomainsCredit['all']
+  totalCredit?: DomainsCredit['all'] | null
 }
 
 export function CreditInfo({ totalCredit }: PropsWithChildren<CreditInfoProps>) {
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
+
+  if (!totalCredit) return null
+
   const totalCreditWithCurrency = formatCurrencyFromCents(
     totalCredit.remaining,
     currency,
