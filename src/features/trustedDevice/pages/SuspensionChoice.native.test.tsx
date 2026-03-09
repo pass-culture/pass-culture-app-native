@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
@@ -24,6 +25,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 })
 
 jest.mock('libs/firebase/analytics/analytics')
+
+jest.mock('libs/adjust/adjust')
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
@@ -53,6 +56,16 @@ describe('<SuspensionChoice/>', () => {
     await user.press(acceptSuspensionButton)
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'SuspiciousLoginSuspendedAccount')
+  })
+
+  it('should call Adjust.gdprForgetMe when pressing suspension button', async () => {
+    simulateSuspendForSuspiciousLoginSuccess()
+    renderSuspensionChoice()
+
+    const acceptSuspensionButton = screen.getByText('Oui, suspendre mon compte')
+    await user.press(acceptSuspensionButton)
+
+    expect(Adjust.gdprForgetMe).toHaveBeenCalledTimes(1)
   })
 
   it('should show snackbar on suspension error', async () => {

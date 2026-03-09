@@ -2,7 +2,7 @@ import React, { forwardRef, ReactNode, useState } from 'react'
 import { LayoutChangeEvent, Platform, ScrollView, ScrollViewProps, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { Gradient } from 'ui/components/Gradient'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
@@ -105,7 +105,7 @@ const ChildrenScrollView = styled(ScrollView).attrs<ChildrenScrollViewProps>(
       flexGrow: 1,
       flexDirection: 'column',
       paddingTop: paddingHeaderHeight,
-      paddingBottom: bottomChildrenViewHeight,
+      paddingBottom: bottomChildrenViewHeight + theme.designSystem.size.spacing.xl,
       paddingHorizontal: theme.contentPage.marginHorizontal,
     },
   })

@@ -6,8 +6,6 @@ import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/Cook
 import { CookiesSteps } from 'features/cookies/enums'
 import { getCookiesChoiceFromCategories } from 'features/cookies/helpers/getCookiesChoiceFromCategories'
 import { setMarketingParams } from 'features/cookies/helpers/setMarketingParams'
-import { startTracking } from 'features/cookies/helpers/startTracking'
-import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesChoiceByCategory, UTMParams } from 'features/cookies/types'
 import { navigationRef } from 'features/navigation/navigationRef'
@@ -37,7 +35,6 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       accepted: ALL_OPTIONAL_COOKIES,
       refused: [],
     })
-    startTracking(true)
     analytics.logHasAcceptedAllCookies()
     await setMarketingParams(params, ALL_OPTIONAL_COOKIES)
   }, [params, hideModal, setCookiesConsent])
@@ -49,7 +46,6 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       accepted: [],
       refused: ALL_OPTIONAL_COOKIES,
     })
-    startTracking(false)
   }, [hideModal, setCookiesConsent])
 
   const customChoice = useCallback(async () => {
@@ -60,7 +56,6 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       accepted,
       refused,
     })
-    startTrackingAcceptedCookies(accepted)
     analytics.logHasMadeAChoiceForCookies({
       from: 'Modal',
       type: settingsCookiesChoice,

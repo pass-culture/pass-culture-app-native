@@ -2,8 +2,8 @@ import React, { ComponentProps, ComponentType } from 'react'
 import styled from 'styled-components/native'
 
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
-import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
+import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
 import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 

@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useSuspendForSuspiciousLoginMutation } from 'features/trustedDevice/queries/useSuspendForSuspiciousLoginMutation'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
@@ -63,7 +64,10 @@ export const SuspensionChoice = () => {
       title="Souhaites-tu suspendre ton compte pass&nbsp;Culture&nbsp;?"
       buttonPrimary={{
         wording: 'Oui, suspendre mon compte',
-        onPress: onPressContinue,
+        onPress: () => {
+          Adjust.gdprForgetMe()
+          onPressContinue()
+        },
         isLoading: isPending,
       }}
       buttonTertiary={{

@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { AccessibilityData } from 'api/gen'
 import { analytics } from 'libs/analytics/provider'
-import { getDetailedAccessibilityInfo } from 'shared/accessibility/getDetailedAccessibilityInfo'
+import { getDetailedAccessibilityInfo } from 'shared/accessibility/helpers/getDetailedAccessibilityInfo'
 import { AccessibilityFrame } from 'ui/components/accessibility/AccessibilityFrame'
 import { Accordion } from 'ui/components/Accordion'
 import { Separator } from 'ui/components/Separator'

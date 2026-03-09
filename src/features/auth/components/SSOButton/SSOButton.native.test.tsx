@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-restricted-imports
-import { GoogleSignin } from '@react-native-google-signin/google-signin'
+import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin'
 import React from 'react'
 import DeviceInfo from 'react-native-device-info'
 
@@ -20,6 +20,7 @@ import { queryClient } from 'libs/react-query/queryClient'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
+import * as snackBarStoreModule from 'ui/designSystem/Snackbar/snackBar.store'
 
 jest.mock('libs/monitoring/services')
 jest.mock('libs/react-native-device-info/getDeviceId')
@@ -33,6 +34,7 @@ const apiPostGoogleAuthorize = jest.spyOn(API.api, 'postNativeV1OauthGoogleAutho
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 const onSignInFailureSpy = jest.fn()
+const showErrorSnackBarSpy = jest.spyOn(snackBarStoreModule, 'showErrorSnackBar')
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -95,6 +97,32 @@ describe('<SSOButton />', () => {
       isSuccess: false,
       content: { code: 'NETWORK_REQUEST_FAILED', general: [] },
     })
+  })
+
+  it('should not show snackbar when sso login is cancelled by user', async () => {
+    jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce({
+      code: statusCodes.SIGN_IN_CANCELLED,
+      message: 'Sign in cancelled',
+    })
+
+    renderSSOButton()
+    await user.press(await screen.findByTestId('S’inscrire avec Google'))
+
+    expect(showErrorSnackBarSpy).not.toHaveBeenCalled()
+  })
+
+  it('should show snackbar when sso login fails due to play services not available', async () => {
+    jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce({
+      code: statusCodes.PLAY_SERVICES_NOT_AVAILABLE,
+      message: 'Play services not available',
+    })
+
+    renderSSOButton()
+    await user.press(await screen.findByTestId('S’inscrire avec Google'))
+
+    expect(showErrorSnackBarSpy).toHaveBeenCalledWith(
+      'Une erreur est survenue, veuillez réessayer.'
+    )
   })
 
   it('should log analytics when logging in with sso from signup', async () => {

@@ -121,16 +121,6 @@ export interface AccountRequest {
    * @type {string}
    * @memberof AccountRequest
    */
-  appsFlyerPlatform?: string | null
-  /**
-   * @type {string}
-   * @memberof AccountRequest
-   */
-  appsFlyerUserId?: string | null
-  /**
-   * @type {string}
-   * @memberof AccountRequest
-   */
   birthdate: string
   /**
    * @type {string}
@@ -2376,16 +2366,6 @@ export interface GoogleAccountRequest {
    * @memberof GoogleAccountRequest
    */
   accountCreationToken: string
-  /**
-   * @type {string}
-   * @memberof GoogleAccountRequest
-   */
-  appsFlyerPlatform?: string | null
-  /**
-   * @type {string}
-   * @memberof GoogleAccountRequest
-   */
-  appsFlyerUserId?: string | null
   /**
    * @type {string}
    * @memberof GoogleAccountRequest

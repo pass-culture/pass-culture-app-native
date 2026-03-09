@@ -7,7 +7,7 @@ import { CountryButton } from 'features/identityCheck/components/countryPicker/C
 import { formatCallingCode } from 'features/identityCheck/components/countryPicker/formatCallingCode'
 import { Country } from 'features/identityCheck/components/countryPicker/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'

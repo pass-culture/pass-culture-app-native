@@ -1,5 +1,5 @@
 import { ComponentType, PropsWithChildren, ReactElement, ReactNode } from 'react'
-import { Animated } from 'react-native'
+import { Animated, LayoutChangeEvent } from 'react-native'
 
 import {
   CategoryIdEnum,
@@ -15,6 +15,7 @@ import { ChronicleCardData } from 'features/chronicle/type'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { PlaylistType } from 'features/offer/enums'
+import { FavoriteCTAProps } from 'features/offerRefacto/types'
 import { AlgoliaGeoloc } from 'libs/algolia/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { NAVIGATION_METHOD } from 'shared/constants'
@@ -98,6 +99,15 @@ export type OfferBodyComponentProps = {
   children?: ReactNode
 }
 
+type OfferCTAsComponentProps = {
+  offer: OfferResponse
+  subcategory: Subcategory
+  trackEventHasSeenOfferOnce: VoidFunction
+  favoriteCTAProps: FavoriteCTAProps
+  fullScreen?: boolean
+  onLayout?: (params: LayoutChangeEvent) => void
+}
+
 export type OfferContentProps = {
   offer: OfferResponse
   searchGroupList: SearchGroupResponseModelv2[]
@@ -115,6 +125,7 @@ export type OfferContentProps = {
   isMultiArtistsEnabled?: boolean
   HeaderComponent?: ComponentType<OfferHeaderComponentProps>
   BodyComponent?: ComponentType<OfferBodyComponentProps>
+  CTAsComponent?: ComponentType<OfferCTAsComponentProps>
 }
 
 export type OfferImageContainerDimensions = {

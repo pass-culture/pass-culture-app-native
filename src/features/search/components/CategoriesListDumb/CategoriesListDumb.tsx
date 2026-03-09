@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { ListCategoryButtonProps } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
 import { CategoryButton } from 'shared/categoryButton/CategoryButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports

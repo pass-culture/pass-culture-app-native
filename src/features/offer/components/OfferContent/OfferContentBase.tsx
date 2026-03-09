@@ -99,6 +99,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   onShowOfferArtistsModal,
   HeaderComponent,
   BodyComponent,
+  CTAsComponent,
   children,
 }) => {
   const HeaderToRender = HeaderComponent || OfferHeader
@@ -271,11 +272,19 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     [offer.id, pageTracking]
   )
 
-  const desktopCTAs = theme.isDesktopViewport ? (
-    <OfferContentCTAs offer={offer} {...favoriteButtonProps}>
+  const OfferCTAsComponent = CTAsComponent ? (
+    <CTAsComponent
+      offer={offer}
+      subcategory={subcategory}
+      trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+      favoriteCTAProps={favoriteButtonProps}
+      onLayout={onLayout}
+    />
+  ) : (
+    <OfferContentCTAs offer={offer} onLayout={onLayout} {...favoriteButtonProps}>
       {offerCtaButton}
     </OfferContentCTAs>
-  ) : null
+  )
 
   const bodyComponentProps: OfferBodyComponentProps = {
     offer,
@@ -293,7 +302,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     onOfferPreviewPress,
     userId,
     BodyWrapper,
-    desktopCTAs,
+    desktopCTAs: theme.isDesktopViewport ? OfferCTAsComponent : null,
   }
 
   return (
@@ -352,7 +361,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
                   onVideoConsentPress={onVideoConsentPress}
                   isMultiArtistsEnabled={isMultiArtistsEnabled}
                   onShowOfferArtistsModal={onShowOfferArtistsModal}>
-                  {desktopCTAs}
+                  {theme.isDesktopViewport ? OfferCTAsComponent : null}
                 </OfferBody>
               </BodyWrapper>
 
@@ -385,12 +394,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             </React.Fragment>
           )}
         </IntersectionObserverScrollView>
-        {theme.isMobileViewport ? (
-          <FooterContainer>
-            <OfferContentCTAs offer={offer} onLayout={onLayout} {...favoriteButtonProps}>
-              {offerCtaButton}
-            </OfferContentCTAs>
-          </FooterContainer>
+        {!BodyComponent && theme.isMobileViewport ? (
+          <FooterContainer>{OfferCTAsComponent}</FooterContainer>
         ) : null}
       </AnchorProvider>
     </Container>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
@@ -29,7 +30,7 @@ export function ChangeEmailContent({
 
   const isSubmitButtonDisabled = !user?.email || isLoading
   return (
-    <Container>
+    <View>
       {hasCurrentEmailChange ? (
         <DisclaimerContainer>
           <AlreadyChangedEmailDisclaimer />
@@ -60,12 +61,11 @@ export function ChangeEmailContent({
           </ButtonContainer>
         </Form.MaxWidth>
       </CenteredContainer>
-    </Container>
+    </View>
   )
 }
 
 const CenteredContainer = styled.View(({ theme }) => ({
-  flex: 1,
   alignItems: 'center',
   marginBottom: theme.designSystem.size.spacing.xl,
 }))
@@ -84,5 +84,3 @@ const InfoBannerContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
   marginBottom: theme.designSystem.size.spacing.xxxxl,
 }))
-
-const Container = styled.View(({ theme }) => ({ marginTop: theme.designSystem.size.spacing.xl }))

@@ -262,7 +262,7 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 65,
             }
@@ -944,7 +944,7 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 65,
             }

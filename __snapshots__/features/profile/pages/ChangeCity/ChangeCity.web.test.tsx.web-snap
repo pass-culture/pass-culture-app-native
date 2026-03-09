@@ -149,7 +149,7 @@ exports[`ChangeCity should render correctly 1`] = `
           >
             <div
               class="css-view-175oi2r"
-              style="flex-grow: 1; flex-direction: column; padding: 65px 24px 0px 24px;"
+              style="flex-grow: 1; flex-direction: column; padding: 65px 24px 24px 24px;"
             >
               <div
                 class="css-view-175oi2r r-marginBottom-1peese0"

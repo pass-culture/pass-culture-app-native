@@ -8,7 +8,7 @@ import {
 import {
   HandicapCategory,
   getAccessibilityCategoryAndIcon,
-} from 'shared/accessibility/getAccessibilityCategoryAndIcon'
+} from 'shared/accessibility/helpers/getAccessibilityCategoryAndIcon'
 
 const descriptionTranslations: Record<string, string> = {
   facilities: 'Sanitaire',

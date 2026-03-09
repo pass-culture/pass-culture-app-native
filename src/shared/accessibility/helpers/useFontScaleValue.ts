@@ -10,6 +10,12 @@ type ZoomedValue<T> = {
   at200PercentZoom: T
 }
 
+/**
+ * Value hook to get the adapted value according to the device font zoom.
+ * if the `fontScale` is above the threshold (`1.5`), we consider the display
+ * to be heavily zoomed and return the value for 200% zoom,
+ *  which is a key value in digital accessibility.
+ */
 export const useFontScaleValue = <T>({
   default: at100PercentZoom,
   at200PercentZoom,

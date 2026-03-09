@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/__mocks__/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -13,6 +14,8 @@ jest.mock('libs/jwt/jwt')
 jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/firebase/analytics/analytics')
+
+jest.mock('libs/adjust/adjust')
 
 const confirmationSuccessResponse = {
   accessToken: 'accessToken',
@@ -48,6 +51,16 @@ describe('SuspendAccountConfirmationWithoutAuthentication', () => {
     await user.press(suspendAccountButton)
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'SuspiciousLoginSuspendedAccount')
+  })
+
+  it('should call Adjust.gdprForgetMe when suspend account', async () => {
+    simulateAccountSuspendForHackSuspicionSuccess()
+    renderSuspendAccountConfirmationWithoutAuthentication()
+
+    const suspendAccountButton = screen.getByText('Oui, suspendre mon compte')
+    await user.press(suspendAccountButton)
+
+    expect(Adjust.gdprForgetMe).toHaveBeenCalledTimes(1)
   })
 
   it('should show error snackbar when an error occur during account suspension', async () => {

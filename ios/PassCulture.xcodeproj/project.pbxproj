@@ -13,6 +13,10 @@
 		1BD7D11A28A67CE400283479 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BD7D11928A67CE400283479 /* Montserrat-Italic.ttf */; };
 		25A567AE2E2FCEC0008F0E66 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 25A567AD2E2FCEB8008F0E66 /* AppDelegate.mm */; };
 		25A567B12E2FCF0E008F0E66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A567B02E2FCF0A008F0E66 /* main.m */; };
+		3AC0E86F2F39E56C00E2CF07 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC0E86D2F39D8CF00E2CF07 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3AC0E8712F39E58600E2CF07 /* AdServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC0E8702F39E58600E2CF07 /* AdServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3AC0E8732F39E59200E2CF07 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC0E8722F39E59200E2CF07 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3AC0E8752F39E59E00E2CF07 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC0E8742F39E59E00E2CF07 /* AppTrackingTransparency.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3F5E592198CE4F0F8395279F /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB19317735324C5D90C97D11 /* Montserrat-SemiBold.ttf */; };
 		6D144DC9254C2B760060E0BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D144DC8254C2B760060E0BD /* GoogleService-Info.plist */; };
 		82A443CD2AC3693F004BD838 /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82A443CC2AC3693F004BD838 /* Montserrat-BoldItalic.ttf */; };
@@ -40,6 +44,10 @@
 		25A567B02E2FCF0A008F0E66 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3746B404099846C48BD4E3A3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PassCulture/Info.plist; sourceTree = "<group>"; };
 		39A88C70253F4B6000BACBFA /* PassCulture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PassCulture.entitlements; path = PassCulture/PassCulture.entitlements; sourceTree = "<group>"; };
+		3AC0E86D2F39D8CF00E2CF07 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		3AC0E8702F39E58600E2CF07 /* AdServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdServices.framework; path = System/Library/Frameworks/AdServices.framework; sourceTree = SDKROOT; };
+		3AC0E8722F39E59200E2CF07 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		3AC0E8742F39E59E00E2CF07 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		4CAEF50B8632400B8EEB6469 /* PassCulture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassCulture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F350A4B89F548B599D643BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "PassCulture/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5FE4C5E883D5637AFB38DE7F /* Pods-PassCulture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassCulture.debug.xcconfig"; path = "Target Support Files/Pods-PassCulture/Pods-PassCulture.debug.xcconfig"; sourceTree = "<group>"; };
@@ -69,6 +77,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AC0E8752F39E59E00E2CF07 /* AppTrackingTransparency.framework in Frameworks */,
+				3AC0E8732F39E59200E2CF07 /* StoreKit.framework in Frameworks */,
+				3AC0E8712F39E58600E2CF07 /* AdServices.framework in Frameworks */,
+				3AC0E86F2F39E56C00E2CF07 /* AdSupport.framework in Frameworks */,
 				B0FA40225AA747F31BBB9695 /* Pods_PassCulture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,6 +153,10 @@
 		77E58495325A4481BF007316 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AC0E8742F39E59E00E2CF07 /* AppTrackingTransparency.framework */,
+				3AC0E8722F39E59200E2CF07 /* StoreKit.framework */,
+				3AC0E8702F39E58600E2CF07 /* AdServices.framework */,
+				3AC0E86D2F39D8CF00E2CF07 /* AdSupport.framework */,
 				C3EB4C7EF21447BFA7F60E12 /* JavaScriptCore.framework */,
 				22B7F87517A74CA28F4E566F /* JavaScriptCore.framework */,
 				8ED657E89359684BDB677D2F /* Pods_PassCulture.framework */,
@@ -301,11 +317,13 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PassCulture/Pods-PassCulture-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AdjustSignature/AdjustSigSdk.framework/AdjustSigSdk",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Batch/Batch.framework/Batch",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AdjustSigSdk.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Batch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
 			);
@@ -321,8 +339,8 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PassCulture/Pods-PassCulture-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/Adjust/Adjust.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/AppAuth/AppAuthCore_Privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/AppsFlyerFramework/AppsFlyerLib_Privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseABTesting/FirebaseABTesting_Privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore_Privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreExtension/FirebaseCoreExtension_Privacy.bundle",
@@ -359,8 +377,8 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Adjust.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AppAuthCore_Privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AppsFlyerLib_Privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseABTesting_Privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseCore_Privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseCoreExtension_Privacy.bundle",

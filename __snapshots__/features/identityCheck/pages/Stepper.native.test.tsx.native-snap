@@ -38,70 +38,55 @@ exports[`Stepper navigation should render correctly 1`] = `
         }
       />
       <View
-        numberOfSpaces={4}
         style={
           {
-            "height": 16,
-          }
-        }
-      />
-      <Text
-        accessibilityRole="header"
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 28,
-            "lineHeight": 44.8,
+            "marginTop": 16,
           }
         }
       >
-        Vas-y
-      </Text>
-      <View
-        numberOfSpaces={2}
-        style={
-          {
-            "height": 8,
+        <Text
+          accessibilityRole="header"
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 28,
+              "lineHeight": 44.8,
+            }
           }
-        }
-      />
+        >
+          Vas-y
+        </Text>
+      </View>
       <View
-        numberOfSpaces={2}
         style={
           {
-            "height": 8,
-          }
-        }
-      />
-      <Text
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
+            "marginVertical": 8,
           }
         }
       >
-        Débloque ton crédit
-      </Text>
-      <View
-        numberOfSpaces={8}
-        style={
-          {
-            "height": 32,
+        <View
+          style={
+            {
+              "marginBottom": 32,
+              "marginTop": 8,
+            }
           }
-        }
-      />
-      <View
-        numberOfSpaces={2}
-        style={
-          {
-            "height": 8,
-          }
-        }
-      />
+        >
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
+            }
+          >
+            Débloque ton crédit
+          </Text>
+        </View>
+      </View>
       <View
         accessibilityRole="list"
         style={
@@ -335,7 +320,6 @@ exports[`Stepper navigation should render correctly 1`] = `
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
                 style={
                   {
                     "height": 8,
@@ -592,7 +576,6 @@ exports[`Stepper navigation should render correctly 1`] = `
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
                 style={
                   {
                     "height": 8,
@@ -837,7 +820,6 @@ exports[`Stepper navigation should render correctly 1`] = `
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
                 style={
                   {
                     "height": 8,

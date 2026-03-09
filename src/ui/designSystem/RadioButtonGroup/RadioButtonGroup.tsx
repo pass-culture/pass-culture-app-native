@@ -8,7 +8,7 @@ import { FlatList, FlatListProps, ListRenderItemInfo } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
 import { Variant } from 'ui/designSystem/RadioButton/types'
 import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'

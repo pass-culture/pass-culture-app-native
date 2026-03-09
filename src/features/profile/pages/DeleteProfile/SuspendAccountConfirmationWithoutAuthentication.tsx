@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { useAccountSuspendForHackSuspicionMutation } from 'features/auth/queries/useAccountSuspendForHackSuspicionMutation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
@@ -45,7 +46,10 @@ export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
       title="Souhaites-tu suspendre ton compte pass&nbsp;Culture&nbsp;?"
       buttonPrimary={{
         wording: 'Oui, suspendre mon compte',
-        onPress: accountSuspendForHackSuspicion,
+        onPress: () => {
+          Adjust.gdprForgetMe()
+          accountSuspendForHackSuspicion()
+        },
         isLoading,
       }}
       buttonTertiary={{

@@ -33,7 +33,7 @@ jest.unmock('react-native-modal')
 jest.mock('react-native-orientation-locker')
 
 // useGetFontScale is used in AppButton, so it impacts all buttons like ButtonPrimary, ButtonSecondary, etc.
-jest.mock('shared/accessibility/useGetFontScale', () => ({
+jest.mock('shared/accessibility/helpers/useGetFontScale', () => ({
   useGetFontScale: () => ({ fontScale: 1 }),
 }))
 

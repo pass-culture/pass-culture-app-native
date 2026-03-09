@@ -12,9 +12,10 @@ import { IBookingContext } from 'features/bookOffer/types'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { PlaylistType } from 'features/offer/enums'
 import { beneficiaryUser } from 'fixtures/user'
+import { Adjust } from 'libs/adjust/adjust'
+import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics/provider'
-import { CampaignEvents, campaignTracker } from 'libs/campaign/campaign'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useBookOfferMutation from 'queries/bookOffer/useBookOfferMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -24,7 +25,7 @@ import { BookingOfferModalComponent } from './BookingOfferModal'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('libs/campaign/campaign')
+jest.mock('libs/adjust/adjust')
 
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
@@ -329,7 +330,7 @@ describe('<BookingOfferModalComponent />', () => {
         expect(logOfferConversionSpy).not.toHaveBeenCalled()
       })
 
-      it('should log campaign tracker when booking is complete', async () => {
+      it('should log Adjust book offer event when booking is complete', async () => {
         renderBookingOfferModal({ offerId: mockOffer.id })
         await user.press(
           await screen.findByRole('checkbox', {
@@ -339,12 +340,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(screen.getByText('Confirmer la réservation'))
 
-        expect(campaignTracker.logEvent).toHaveBeenCalledWith(CampaignEvents.COMPLETE_BOOK_OFFER, {
-          af_offer_id: mockOffer.id,
-          af_booking_id: mockOffer.stocks[0].id,
-          af_price: mockOffer.stocks[0].price,
-          af_category: mockOffer.subcategoryId,
-        })
+        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.BOOK_OFFER)
       })
 
       it('should navigate to booking confirmation when booking is complete', async () => {

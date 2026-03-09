@@ -262,7 +262,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 65,
             }
@@ -2380,7 +2380,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 65,
             }

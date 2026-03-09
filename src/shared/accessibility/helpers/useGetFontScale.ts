@@ -8,6 +8,10 @@ import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 const DEFAULT_FONT_SCALE = 1
 const isWeb = Platform.OS === 'web'
 
+/* Get device font scale (in order to adapt the display).
+ * The value is rounded to 3 decimals to limit rendering variations.
+ */
+
 export const useGetFontScale = (): { fontScale: number } => {
   const [fontScale, setFontScale] = useState<number>(DEFAULT_FONT_SCALE)
 

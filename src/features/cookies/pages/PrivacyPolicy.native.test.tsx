@@ -40,8 +40,13 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<PrivacyPolicy />', () => {
+  beforeEach(() => {
+    mockUseCookies.mockReturnValue(defaultUseCookies)
+  })
+
   it('should not show cookies modal when fetching cookies is loading', () => {
-    mockUseCookies.mockReturnValueOnce({
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseCookies.mockReturnValue({
       ...defaultUseCookies,
       cookiesConsent: { state: ConsentState.LOADING },
     })
@@ -53,7 +58,8 @@ describe('<PrivacyPolicy />', () => {
   })
 
   it('should show cookies modal when cookies is unknown', () => {
-    mockUseCookies.mockReturnValueOnce({
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseCookies.mockReturnValue({
       ...defaultUseCookies,
       cookiesConsent: { state: ConsentState.UNKNOWN },
     })
@@ -65,7 +71,8 @@ describe('<PrivacyPolicy />', () => {
   })
 
   it('should not show cookies modal when fetching cookies is defined but user has made cookie choice', () => {
-    mockUseIsCookiesListUpToDate.mockReturnValueOnce({
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseIsCookiesListUpToDate.mockReturnValue({
       isCookiesListUpToDate: true,
       cookiesLastUpdate: undefined,
       isLoading: false,
@@ -90,7 +97,8 @@ describe('<PrivacyPolicy />', () => {
       cookiesLastUpdate: undefined,
       isLoading: false,
     })
-    mockUseCookies.mockReturnValueOnce({
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseCookies.mockReturnValue({
       ...defaultUseCookies,
       cookiesConsent: {
         state: ConsentState.HAS_CONSENT,

@@ -118,7 +118,7 @@ export function ChangePassword() {
 
   return (
     <PageWithHeader
-      title="Mot de passe"
+      title="Modifier mon mot de passe"
       scrollViewProps={{
         keyboardShouldPersistTaps: 'handled',
       }}
