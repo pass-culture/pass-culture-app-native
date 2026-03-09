@@ -11,18 +11,15 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { LabelVariant, RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
 
-const SOLO_LABEL = 'Solo'
-const DUO_LABEL = 'Duo'
+const LABEL_TO_QUANTITY = { Solo: 1, Duo: 2 } as const
 
-const QUANTITY_BY_LABEL: Readonly<Record<string, 1 | 2>> = {
-  [SOLO_LABEL]: 1,
-  [DUO_LABEL]: 2,
-}
+type Quantity = (typeof LABEL_TO_QUANTITY)[keyof typeof LABEL_TO_QUANTITY]
 
-const LABEL_BY_QUANTITY: Readonly<Record<number, string>> = {
-  1: SOLO_LABEL,
-  2: DUO_LABEL,
-}
+const QUANTITY_BY_LABEL: Readonly<Record<string, Quantity>> = LABEL_TO_QUANTITY
+
+const LABEL_BY_QUANTITY: Readonly<Record<number, string>> = Object.fromEntries(
+  Object.entries(LABEL_TO_QUANTITY).map(([label, qty]) => [qty, label])
+)
 
 type DuoChoiceSelectorProps = {
   label?: string
@@ -40,32 +37,25 @@ export const DuoChoiceSelector: React.FC<DuoChoiceSelectorProps> = ({
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
-  const hasEnoughCreditForQuantity = (quantity: 1 | 2): boolean =>
+  const hasEnoughCreditForQuantity = (quantity: Quantity): boolean =>
     stock ? quantity * stock.price <= offerCredit : false
 
-  const getDescriptionForQuantity = (quantity: 1 | 2): string => {
+  const getDescriptionForQuantity = (quantity: Quantity): string => {
     if (!hasEnoughCreditForQuantity(quantity) || !stock) return 'crédit insuffisant'
     return formatCurrencyFromCents(quantity * stock.price, currency, euroToPacificFrancRate)
   }
 
-  const options: ReadonlyArray<RadioButtonGroupOption> = [
-    {
-      key: 'solo',
-      label: SOLO_LABEL,
-      description: getDescriptionForQuantity(1),
-      disabled: !hasEnoughCreditForQuantity(1),
-    },
-    ...(isDuo
-      ? [
-          {
-            key: 'duo',
-            label: DUO_LABEL,
-            description: getDescriptionForQuantity(2),
-            disabled: !hasEnoughCreditForQuantity(2),
-          },
-        ]
-      : []),
-  ]
+  const allEntries = Object.entries(LABEL_TO_QUANTITY)
+  const visibleEntries = isDuo ? allEntries : allEntries.slice(0, 1)
+
+  const options: ReadonlyArray<RadioButtonGroupOption> = visibleEntries.map(
+    ([optionLabel, quantity]) => ({
+      key: optionLabel.toLowerCase(),
+      label: optionLabel,
+      description: getDescriptionForQuantity(quantity),
+      disabled: !hasEnoughCreditForQuantity(quantity),
+    })
+  )
 
   const currentValue = (bookingState.quantity && LABEL_BY_QUANTITY[bookingState.quantity]) ?? ''
 
