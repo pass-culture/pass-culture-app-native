@@ -13,6 +13,13 @@ updates:
       - dependency-name: 'react-native-web'
     commit-message:
       prefix: '(BSR) chore(deps):'
+    auto-merge: true
+    groups:
+      dev-dependencies:
+        dependency-type: 'development'
+    conditions:
+      - base=main
+      - check-success="all"
 
   - package-ecosystem: 'bundler'
     directory: '/'
