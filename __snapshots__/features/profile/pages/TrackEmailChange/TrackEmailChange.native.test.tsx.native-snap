@@ -293,18 +293,11 @@ exports[`TrackEmailChange account with password should render correctly when cho
               style={
                 {
                   "marginHorizontal": "auto",
+                  "marginTop": 40,
                   "width": "100%",
                 }
               }
             >
-              <View
-                numberOfSpaces={10}
-                style={
-                  {
-                    "height": 40,
-                  }
-                }
-              />
               <View
                 accessibilityRole="list"
                 style={
@@ -647,7 +640,6 @@ exports[`TrackEmailChange account with password should render correctly when cho
                       }
                     >
                       <View
-                        numberOfSpaces={2}
                         style={
                           {
                             "height": 8,
@@ -1340,18 +1332,11 @@ exports[`TrackEmailChange account with password should render correctly when con
               style={
                 {
                   "marginHorizontal": "auto",
+                  "marginTop": 40,
                   "width": "100%",
                 }
               }
             >
-              <View
-                numberOfSpaces={10}
-                style={
-                  {
-                    "height": 40,
-                  }
-                }
-              />
               <View
                 accessibilityRole="list"
                 style={
@@ -1469,7 +1454,6 @@ exports[`TrackEmailChange account with password should render correctly when con
                       }
                     >
                       <View
-                        numberOfSpaces={2}
                         style={
                           {
                             "height": 8,
@@ -2398,18 +2382,11 @@ exports[`TrackEmailChange account with password should render correctly when val
               style={
                 {
                   "marginHorizontal": "auto",
+                  "marginTop": 40,
                   "width": "100%",
                 }
               }
             >
-              <View
-                numberOfSpaces={10}
-                style={
-                  {
-                    "height": 40,
-                  }
-                }
-              />
               <View
                 accessibilityRole="list"
                 style={
@@ -2973,7 +2950,6 @@ exports[`TrackEmailChange account with password should render correctly when val
                       }
                     >
                       <View
-                        numberOfSpaces={2}
                         style={
                           {
                             "height": 8,
@@ -3434,18 +3410,11 @@ exports[`TrackEmailChange account without password (sso) should render correctly
               style={
                 {
                   "marginHorizontal": "auto",
+                  "marginTop": 40,
                   "width": "100%",
                 }
               }
             >
-              <View
-                numberOfSpaces={10}
-                style={
-                  {
-                    "height": 40,
-                  }
-                }
-              />
               <View
                 accessibilityRole="list"
                 style={
@@ -4013,7 +3982,6 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                       }
                     >
                       <View
-                        numberOfSpaces={2}
                         style={
                           {
                             "height": 8,
@@ -4706,18 +4674,11 @@ exports[`TrackEmailChange account without password (sso) should render correctly
               style={
                 {
                   "marginHorizontal": "auto",
+                  "marginTop": 40,
                   "width": "100%",
                 }
               }
             >
-              <View
-                numberOfSpaces={10}
-                style={
-                  {
-                    "height": 40,
-                  }
-                }
-              />
               <View
                 accessibilityRole="list"
                 style={
@@ -4835,7 +4796,6 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                       }
                     >
                       <View
-                        numberOfSpaces={2}
                         style={
                           {
                             "height": 8,
@@ -6000,18 +5960,11 @@ exports[`TrackEmailChange account without password (sso) should render correctly
               style={
                 {
                   "marginHorizontal": "auto",
+                  "marginTop": 40,
                   "width": "100%",
                 }
               }
             >
-              <View
-                numberOfSpaces={10}
-                style={
-                  {
-                    "height": 40,
-                  }
-                }
-              />
               <View
                 accessibilityRole="list"
                 style={
@@ -6354,7 +6307,6 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                       }
                     >
                       <View
-                        numberOfSpaces={2}
                         style={
                           {
                             "height": 8,
@@ -7283,18 +7235,11 @@ exports[`TrackEmailChange account without password (sso) should render correctly
               style={
                 {
                   "marginHorizontal": "auto",
+                  "marginTop": 40,
                   "width": "100%",
                 }
               }
             >
-              <View
-                numberOfSpaces={10}
-                style={
-                  {
-                    "height": 40,
-                  }
-                }
-              />
               <View
                 accessibilityRole="list"
                 style={
@@ -8083,7 +8028,6 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                       }
                     >
                       <View
-                        numberOfSpaces={2}
                         style={
                           {
                             "height": 8,

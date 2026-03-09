@@ -18,6 +18,7 @@ import { CakeOneCandle } from 'ui/svg/icons/CakeOneCandle'
 import { CakeTwoCandles } from 'ui/svg/icons/CakeTwoCandles'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { CalendarS } from 'ui/svg/icons/CalendarS'
+import { ChatbotAI } from 'ui/svg/icons/ChatbotAI'
 import { Check } from 'ui/svg/icons/Check'
 import { CheckboxMarkChecked } from 'ui/svg/icons/CheckboxMarkChecked'
 import { CheckboxMarkIndeterminate } from 'ui/svg/icons/CheckboxMarkIndeterminate'
@@ -172,6 +173,7 @@ export const SecondaryAndBiggerIcons = {
   CakeTwoCandles,
   Calendar,
   CalendarS,
+  ChatbotAI,
   Check,
   CheckFilled,
   Clock,
