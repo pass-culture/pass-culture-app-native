@@ -58,18 +58,6 @@ describe('ChangePassword', () => {
     expect(continueButton).toBeEnabled()
   })
 
-  it('should redirect to Home if user has no password', async () => {
-    mockAuthContextWithUser({
-      ...beneficiaryUser,
-      hasPassword: false,
-    })
-    render(reactQueryProviderHOC(<ChangePassword />))
-
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Home' })
-    })
-  })
-
   it('should display the matching error when the passwords dont match', async () => {
     renderChangePassword()
 
