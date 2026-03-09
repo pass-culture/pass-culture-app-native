@@ -20,6 +20,7 @@ import { VenueThematicSection } from 'features/venue/components/VenueThematicSec
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { getVenueOffersArtists } from 'features/venue/helpers/getVenueOffersArtists'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
+import { useVenueProAdvicesQuery } from 'features/venue/queries/useVenueProAdvicesQuery'
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { Venue as VenueType } from 'features/venue/types'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
@@ -74,6 +75,7 @@ export const Venue: FunctionComponent = () => {
   )
 
   const enableSearchWithQuery = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE)
+  const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE)
   const {
     visible: searchInVenueModalVisible,
     hideModal: hideSearchInVenueModal,
@@ -110,6 +112,11 @@ export const Venue: FunctionComponent = () => {
     mapping: subcategoriesMapping,
   })
 
+  const { data: advices } = useVenueProAdvicesQuery({
+    venueId: params.id,
+    enableProAdvices,
+  })
+
   const {
     data: { artistPageSubcategories },
   } = useRemoteConfigQuery()
@@ -136,11 +143,12 @@ export const Venue: FunctionComponent = () => {
       labelMapping,
       userLocation,
     },
+    advices: advices?.proAdvices,
   })
 
   useEffect(() => {
     if ((params.from === 'deeplink' || params.from === 'venueMap') && venue?.id) {
-      analytics.logConsultVenue({ venueId: venue.id.toString(), from: params.from })
+      void analytics.logConsultVenue({ venueId: venue.id.toString(), from: params.from })
     }
   }, [params.from, venue?.id])
 
