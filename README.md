@@ -207,24 +207,6 @@ You can find this measure on firebase performance monitor for the different envi
 - [production iOS](https://console.firebase.google.com/project/pc-native-production/performance/app/ios:app.passculture/troubleshooting/trace/DURATION_TRACE/home_time_to_interactive_container/counter/home_time_to_interactive_in_ms?hl=fr&time=24h)
 - [production Android](https://console.firebase.google.com/project/pc-native-production/performance/app/android:app.passculture.webapp/troubleshooting/trace/DURATION_TRACE/home_time_to_interactive_container/counter/home_time_to_interactive_in_ms?hl=fr&time=24h)
 
-### Web performances
-
-We currently use lighthouse to measure performances on the web app. There is a job that runs lighthouse in the CI once a week, you can see the runs [here](https://github.com/pass-culture/pass-culture-app-native/actions/workflows/dev_on_schedule_lighthouse.yml).
-
-By running the performance test once a week, we have a measure for each version of the app. Here is an example of a report:
-
-```
---- Lighthouse Performance Summary ---
-🟢 Performance Score: 48 / 100
- FCP: 0.8 s
- LCP: 16.6 s
- TBT: 590 ms
- CLS: 0.108
-------------------------------------
-
-You can also run lighthouse locally from your browser's dev tools (make sure to run them in incognito mode to avoid extensions degrading performances).
-```
-
 ### Profiling with Xcode and Android Studio
 
 [Go to the dedicated page](./doc/development/how-to/profiling.md)

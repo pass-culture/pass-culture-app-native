@@ -156,7 +156,6 @@ COULD BE NICE TO HAVE:
 
 - Web vitals
 - Performance Monitoring:
-  - Profiling tools (maybe vite offers something): atm we use lighthouse
   - BundleAnalyzerPlugin and update `doc/development/optimization.md`
 - DuplicatesPlugin (used to be in Webpack, investigate is we need one in vite)
 - It might be worth it to investigate using `@vitejs/plugin-react-swc` in place of `@vitejs/plugin-react` (for development mode)
