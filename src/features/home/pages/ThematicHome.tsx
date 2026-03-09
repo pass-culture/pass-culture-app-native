@@ -1,7 +1,7 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
 import { Animated, Platform } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useGetHomepageById } from 'features/home/api/useHomepageData'
 import {
@@ -30,26 +30,24 @@ import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureSc
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { Page } from 'ui/pages/Page'
-import { Spacer, getSpacing } from 'ui/theme'
-
-const MARGIN_TOP_HEADER = 6
+import { getSpacing } from 'ui/theme'
 
 const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ thematicHeader }) => {
+  const { designSystem } = useTheme()
+  const MARGIN_TOP_HEADER = designSystem.size.spacing.xl
+
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.THEMATIC_HOME)
   if (thematicHeader?.type === ThematicHeaderType.Highlight) {
     if (Platform.OS === 'ios') {
       return (
-        <React.Fragment>
-          <Spacer.Column
-            numberOfSpaces={ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT + MARGIN_TOP_HEADER}
-          />
+        <IntroductionContainer marginTopHeader={MARGIN_TOP_HEADER}>
           {thematicHeader.introductionTitle && thematicHeader.introductionParagraph ? (
             <Introduction
               title={thematicHeader.introductionTitle}
               paragraph={thematicHeader.introductionParagraph}
             />
           ) : null}
-        </React.Fragment>
+        </IntroductionContainer>
       )
     }
     return <HighlightThematicHomeHeader {...thematicHeader} />
@@ -57,11 +55,7 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ the
 
   if (thematicHeader?.type === ThematicHeaderType.Category) {
     if (Platform.OS === 'ios') {
-      return (
-        <Spacer.Column
-          numberOfSpaces={ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT + MARGIN_TOP_HEADER}
-        />
-      )
+      return <Placeholder marginTopHeader={MARGIN_TOP_HEADER} />
     }
 
     return (
@@ -252,4 +246,12 @@ const ListHeaderContainer = styled.View({
 const GeolocationBannerContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
   marginBottom: theme.home.spaceBetweenModules,
+}))
+
+const IntroductionContainer = styled.View<{ marginTopHeader: number }>(({ marginTopHeader }) => ({
+  marginTop: getSpacing(ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT) + marginTopHeader,
+}))
+
+const Placeholder = styled.View<{ marginTopHeader: number }>(({ marginTopHeader }) => ({
+  height: getSpacing(ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT) + marginTopHeader,
 }))
