@@ -50,6 +50,10 @@ const variantConfig: Variants<typeof ChronicleCard> = [
       ),
     },
   },
+  {
+    label: 'ChronicleCard with navigable header',
+    props: { ...baseProps, headerNavigateTo: { screen: 'Login' } },
+  },
 ]
 
 type Story = StoryObj<typeof ChronicleCard>

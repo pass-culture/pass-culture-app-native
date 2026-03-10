@@ -1,15 +1,20 @@
 import React, { FunctionComponent, PropsWithChildren, ReactNode } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { ChronicleCardBody } from 'features/chronicle/components/ChronicleCardBody/ChronicleCardBody'
 import { ChronicleCardData } from 'features/chronicle/type'
+import { Image } from 'libs/resizing-image-on-demand/Image'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { InfoHeader } from 'ui/components/InfoHeader/InfoHeader'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { getSpacing } from 'ui/theme'
 
-const CHRONICLE_THUMBNAIL_SIZE = getSpacing(14)
+const CHRONICLE_THUMBNAIL_HEIGHT = getSpacing(18)
 
-type Props = PropsWithChildren<
+export type ChronicleCardProps = PropsWithChildren<
   ChronicleCardData & {
     cardWidth?: number
     shouldTruncate?: boolean
@@ -18,7 +23,7 @@ type Props = PropsWithChildren<
   }
 >
 
-export const ChronicleCard: FunctionComponent<Props> = ({
+export const ChronicleCard: FunctionComponent<ChronicleCardProps> = ({
   id,
   title,
   subtitle,
@@ -28,21 +33,47 @@ export const ChronicleCard: FunctionComponent<Props> = ({
   children,
   icon,
   tag,
+  tagProps,
+  image,
   shouldTruncate = false,
+  headerNavigateTo,
+  headerAccessibilityLabel,
 }) => {
+  const theme = useTheme()
+
+  const renderHeader = () => (
+    <InfoHeader
+      title={title}
+      subtitle={subtitle}
+      thumbnailComponent={image ? <Thumbnail url={image} testID="ChronicleCardThumbnail" /> : icon}
+      defaultThumbnailSize={theme.designSystem.size.spacing.xxxxl}
+      defaultThumbnailHeight={CHRONICLE_THUMBNAIL_HEIGHT}
+      rightComponent={
+        headerNavigateTo ? (
+          <RightFilled size={theme.icons.sizes.extraSmall} testID="RightFilled" />
+        ) : null
+      }
+    />
+  )
+
   return (
     <Container gap={3} testID={`chronicle-card-${id.toString()}`} width={cardWidth}>
-      <InfoHeader
-        title={title}
-        subtitle={subtitle}
-        defaultThumbnailSize={CHRONICLE_THUMBNAIL_SIZE}
-        thumbnailComponent={icon}
-      />
+      {headerNavigateTo ? (
+        <InternalTouchableLink
+          navigateTo={headerNavigateTo}
+          accessibilityLabel={headerAccessibilityLabel}
+          accessibilityRole={accessibilityRoleInternalNavigation()}>
+          {renderHeader()}
+        </InternalTouchableLink>
+      ) : (
+        renderHeader()
+      )}
+
       <ChronicleCardBody
         shouldTruncate={shouldTruncate}
         description={description}
         date={date}
-        tag={tag}>
+        tag={tagProps ? <Tag variant={tagProps.variant} label={tagProps.label} /> : tag}>
         {children}
       </ChronicleCardBody>
     </Container>
@@ -56,4 +87,12 @@ const Container = styled(ViewGap)<{ width?: number }>(({ theme, width }) => ({
   borderColor: theme.designSystem.color.border.subtle,
   ...(width === undefined ? undefined : { width }),
   backgroundColor: theme.designSystem.color.background.default,
+}))
+
+const Thumbnail = styled(Image)(({ theme }) => ({
+  borderRadius: theme.designSystem.size.borderRadius.s,
+  height: getSpacing(18),
+  width: theme.designSystem.size.spacing.xxxxl,
+  borderColor: theme.designSystem.color.border.subtle,
+  borderWidth: 1,
 }))
