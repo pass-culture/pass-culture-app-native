@@ -13,11 +13,10 @@ import { TrendsModule } from './TrendsModule'
 const meta: Meta<typeof TrendsModule> = {
   title: 'features/home/TrendsModule',
   component: TrendsModule,
-
   parameters: {
-    useQuery: {
-      featureFlags: { get: () => ({ minimalBuildNumber: 1000000 }) },
-    },
+    // Disabled this rule because id and data-testid is not duplicate ID
+    axe: { disabledRules: ['duplicate-id-active'] },
+    useQuery: { featureFlags: { get: () => ({ minimalBuildNumber: 1000000 }) } },
   },
 }
 
