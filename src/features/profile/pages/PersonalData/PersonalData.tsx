@@ -56,12 +56,14 @@ export function PersonalData() {
             accessibilityLabel="Modifier e-mail"
           />
           <EditableField label="Numéro de téléphone" value={user?.phoneNumber} />
-          <EditableField
-            label="Mot de passe"
-            value={'*'.repeat(12)}
-            navigateTo="ChangePassword"
-            accessibilityLabel="Modifier mot de passe"
-          />
+          {user?.hasPassword ? (
+            <EditableField
+              label="Mot de passe"
+              value={'*'.repeat(12)}
+              navigateTo="ChangePassword"
+              accessibilityLabel="Modifier mot de passe"
+            />
+          ) : null}
           <EditableField
             label="Statut"
             value={getActivityLabel(user?.activityId)}
