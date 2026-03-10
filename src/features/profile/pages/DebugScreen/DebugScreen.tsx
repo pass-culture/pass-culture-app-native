@@ -5,6 +5,7 @@ import { Platform, TextStyle, View } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { buildZendeskUrl } from 'features/profile/pages/DebugScreen/buildZendeskUrl'
 import { setFeedbackInAppSchema } from 'features/profile/pages/FeedbackInApp/setFeedbackInAppShema'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -22,7 +23,7 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Typo } from 'ui/theme'
-import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
+import { LINE_BREAK } from 'ui/theme/constants'
 
 const isWeb = Platform.OS === 'web'
 
@@ -61,7 +62,6 @@ export const DebugScreen = () => {
     { label: 'Device zoom', value: zoomInPercent ?? undefinedValue },
     { label: 'User ID', value: user?.id ?? undefinedValue },
     { label: 'Device font scale', value: deviceInfo?.fontScale ?? undefinedValue },
-    { label: 'Description', value: description ?? undefinedValue },
     { label: 'User CreditType', value: user?.creditType ?? undefinedValue },
     { label: 'User StatusType', value: user?.statusType ?? undefinedValue },
     { label: 'User EligibilityType', value: user?.eligibilityType ?? undefinedValue },
@@ -73,18 +73,21 @@ export const DebugScreen = () => {
     .map((item) => `${item.label}\u00a0: ${String(item.value)}`)
     .join(LINE_BREAK)
 
+  const url = buildZendeskUrl('report_bug', {
+    lastName: user?.lastName,
+    firstName: user?.firstName,
+    reason: 'motif_signaler_un_bug',
+    account: user?.email,
+    description: `<h4>VOTRE MESSAGE\u00a0:</h4>${description}<h4>NE PAS EFFACER LES INFORMATIONS TECHNIQUES CI-DESSOUS\u00a0:</h4>${debugText}`,
+    birthDate: user?.birthDate,
+  })
+
   const copy = () =>
     copyToClipboard({
       textToCopy: debugText,
       snackBarMessage: 'Copié dans le presse-papier\u00a0!',
       onCopy: () => analytics.logClickCopyDebugInfo(user?.id),
     })
-
-  const subject = encodeURI(`Informations de débuggage\u00a0: ${String(user?.id)}`)
-  const body = encodeURI(
-    `Bonjour, voici les informations de débuggage\u00a0:${DOUBLE_LINE_BREAK}${debugText}`
-  )
-  const mailtoUrl = `mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`
 
   const labelBoldStyle: TextStyle = { fontWeight: 'bold' }
   const debugDataToShow = sortedDebugData.filter((data) => data.label !== 'Description')
@@ -151,7 +154,7 @@ export const DebugScreen = () => {
             disabled={!isValid}
             as={Button}
             wording="Envoyer mon bug au support"
-            externalNav={{ url: mailtoUrl }}
+            externalNav={{ url }}
             icon={EmailFilled}
             onBeforeNavigate={() => analytics.logClickMailDebugInfo(user?.id)}
           />
