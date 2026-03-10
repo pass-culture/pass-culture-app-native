@@ -7,13 +7,14 @@ import { ThumbnailPlaceholder } from 'ui/components/InfoHeader/ThumbnailPlaceHol
 import { Typo } from 'ui/theme'
 
 type InfoHeaderProps = PropsWithChildren<{
-  defaultThumbnailSize: number
+  defaultThumbnailSize: number // use this prop as width when using height
   title?: string
   subtitle?: string
   thumbnailComponent?: ReactNode
   placeholderIcon?: ReactNode
   rightComponent?: ReactNode
   style?: StyleProp<ViewStyle>
+  defaultThumbnailHeight?: number
 }>
 
 export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({
@@ -25,6 +26,7 @@ export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({
   placeholderIcon,
   children,
   style,
+  defaultThumbnailHeight,
 }) => {
   const titleNumberOfLines = useFontScaleValue({ default: 1, at200PercentZoom: undefined })
   const subtitleNumberOfLines = useFontScaleValue({ default: 2, at200PercentZoom: undefined })
@@ -44,7 +46,7 @@ export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({
       {thumbnailComponent || (
         <ThumbnailPlaceholder
           width={defaultThumbnailSize}
-          height={defaultThumbnailSize}
+          height={defaultThumbnailHeight ?? defaultThumbnailSize}
           testID="VenuePreviewPlaceholder"
           icon={placeholderIcon}
         />
