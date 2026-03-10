@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { buildZendeskUrlForFraud } from 'features/profile/pages/DebugScreen/buildZendeskUrl'
 import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
@@ -155,17 +156,13 @@ describe('<SuspensionChoice/>', () => {
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, undefined)
   })
 
-  it('should open mail app when clicking on "Contacter le support" button', async () => {
+  it('should open Zendesk url when clicking on "Contacter le service fraude" button', async () => {
     renderSuspensionChoice()
 
     const contactSupportButton = screen.getByText('Contacter le service fraude')
     await user.press(contactSupportButton)
 
-    expect(openUrl).toHaveBeenCalledWith(
-      `mailto:service.fraude@test.passculture.app`,
-      undefined,
-      true
-    )
+    expect(openUrl).toHaveBeenCalledWith(buildZendeskUrlForFraud(undefined), undefined, true)
   })
 
   it('should log analytics when clicking on "Contacter le service fraude" button', async () => {

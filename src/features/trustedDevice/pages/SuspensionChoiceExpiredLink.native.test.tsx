@@ -3,12 +3,15 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { buildZendeskUrlForFraud } from 'features/profile/pages/DebugScreen/buildZendeskUrl'
 import { SuspensionChoiceExpiredLink } from 'features/trustedDevice/pages/SuspensionChoiceExpiredLink'
-import { env } from 'libs/environment/env'
+import { beneficiaryUser } from 'fixtures/user'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, screen, userEvent } from 'tests/utils'
 
 const mockOpenUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
+jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -21,6 +24,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SuspensionChoiceExpiredLink/>', () => {
+  beforeEach(() => {
+    mockAuthContextWithUser(beneficiaryUser)
+  })
+
   it('should match snapshot', () => {
     render(<SuspensionChoiceExpiredLink />)
 
@@ -40,15 +47,14 @@ describe('<SuspensionChoiceExpiredLink/>', () => {
     )
   })
 
-  it('should open mail app when "Contacter le service fraude" button is clicked', async () => {
+  it('should open Zendesk url when "Contacter le service fraude" button is clicked', async () => {
     render(<SuspensionChoiceExpiredLink />)
 
     const contactFraudButton = screen.getByText('Contacter le service fraude')
     await user.press(contactFraudButton)
 
-    expect(mockOpenUrl).toHaveBeenNthCalledWith(
-      1,
-      `mailto:${env.FRAUD_EMAIL_ADDRESS}`,
+    expect(mockOpenUrl).toHaveBeenCalledWith(
+      buildZendeskUrlForFraud(beneficiaryUser),
       undefined,
       true
     )

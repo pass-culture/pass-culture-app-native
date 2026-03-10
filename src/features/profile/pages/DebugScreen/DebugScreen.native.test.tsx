@@ -1,5 +1,6 @@
 import React from 'react'
 
+import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import * as copyToClipboardModule from 'libs/copyToClipboard/copyToClipboard'
@@ -30,6 +31,7 @@ jest.mock('libs/environment/env', () => ({
   env: { COMMIT_HASH: 'abcdef', SUPPORT_EMAIL_ADDRESS: 'support@example.com' },
 }))
 
+const mockOpenUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 const mockCopyToClipboard = jest.spyOn(copyToClipboardModule, 'copyToClipboard')
 
 jest.useFakeTimers()
@@ -41,6 +43,19 @@ describe('DebugScreen', () => {
     render(<DebugScreen />)
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should open Zendesk url when clicking on "Envoyer mon bug au support" button', async () => {
+    render(<DebugScreen />)
+    await enterDescription()
+    const copyButton = screen.getByText('Envoyer mon bug au support')
+    await userEvent.press(copyButton)
+
+    expect(mockOpenUrl).toHaveBeenCalledWith(
+      expect.stringContaining('https://aide.passculture.app/hc/fr/requests/new'),
+      undefined,
+      true
+    )
   })
 
   it('should call copyToClipboard when press "Copier dans le presse-papier" button', async () => {

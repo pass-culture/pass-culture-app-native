@@ -4,7 +4,9 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { GenericSuspendedAccount } from 'features/auth/pages/suspendedAccount/GenericSuspendedAccount/GenericSuspendedAccount'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { env } from 'libs/environment/env'
+import { buildZendeskUrlForFraud } from 'features/profile/pages/DebugScreen/buildZendeskUrl'
+import { beneficiaryUser } from 'fixtures/user'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { userEvent, render, screen } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
@@ -14,19 +16,24 @@ jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 
+jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
 
 const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<GenericSuspendedAccount />', () => {
-  it('should open mail app when clicking on "Contacter le support" button', async () => {
+  beforeEach(() => {
+    mockAuthContextWithUser(beneficiaryUser)
+  })
+
+  it('should open Zendesk url when clicking on "Contacter le service fraude" button', async () => {
     render(<GenericSuspendedAccount onBeforeNavigateContactFraudTeam={jest.fn()} />)
 
     const contactSupportButton = screen.getByText('Contacter le service fraude')
     await user.press(contactSupportButton)
 
-    expect(openUrl).toHaveBeenCalledWith(`mailto:${env.FRAUD_EMAIL_ADDRESS}`, undefined, true)
+    expect(openUrl).toHaveBeenCalledWith(buildZendeskUrlForFraud(beneficiaryUser), undefined, true)
   })
 
   it('should go to home page when clicking on go to home button', async () => {
