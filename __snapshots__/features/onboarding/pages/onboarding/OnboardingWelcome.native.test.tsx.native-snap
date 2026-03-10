@@ -54,20 +54,12 @@ exports[`OnboardingWelcome should render correctly 1`] = `
     contentContainerStyle={
       {
         "flexGrow": 1,
+        "justifyContent": "flex-end",
       }
     }
     style={{}}
   >
     <View>
-      <View
-        style={
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          }
-        }
-      />
       <BVLinearGradient
         colors={
           [

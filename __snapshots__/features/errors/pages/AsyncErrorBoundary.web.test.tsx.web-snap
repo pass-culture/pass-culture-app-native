@@ -91,74 +91,72 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
       </div>
     </button>
     <div
-      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1wtj0ep r-overflow-1jwulwa r-paddingBlock-zo2zu6 r-paddingInline-cxgwc0"
+      class="css-view-175oi2r r-height-10ptun7"
+    />
+    <div
+      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-overflow-1jwulwa r-paddingBlock-zo2zu6 r-paddingInline-cxgwc0"
     >
       <div
-        class="css-view-175oi2r r-height-10ptun7"
-      />
-      <div
-        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-      />
-      <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-marginBottom-1peese0"
+        class="css-view-175oi2r"
       >
         <div
-          class="css-view-175oi2r"
+          class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-marginBottom-1peese0"
         >
           <div
-            class="css-text-146c3p1"
-            dir="ltr"
-          >
-            undefined-SVG-Mock
-          </div>
-        </div>
-      </div>
-      <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-gap-f4gmv6 r-marginBottom-zd98yo"
-      >
-        <h1
-          aria-level="1"
-          class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1a2aj48 r-lineHeight-758dxi r-textAlign-q4m81j"
-          dir="ltr"
-          role="heading"
-        >
-          Oups !
-        </h1>
-        <h2
-          aria-level="2"
-          class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
-          dir="ltr"
-          role="heading"
-        >
-          Une erreur s’est produite pendant le chargement.
-        </h2>
-      </div>
-      <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-gap-f4gmv6"
-      >
-        <button
-          aria-label="Réessayer"
-          class="c2"
-          data-testid="Réessayer"
-          tabindex="0"
-          type="button"
-        >
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
+            class="css-view-175oi2r"
           >
             <div
-              class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
+              class="css-text-146c3p1"
               dir="ltr"
-              style="color: rgb(255, 255, 255); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px; text-align: center;"
             >
-              Réessayer
+              undefined-SVG-Mock
             </div>
           </div>
-        </button>
+        </div>
+        <div
+          class="css-view-175oi2r r-alignItems-1awozwy r-gap-f4gmv6 r-marginBottom-zd98yo"
+        >
+          <h1
+            aria-level="1"
+            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1a2aj48 r-lineHeight-758dxi r-textAlign-q4m81j"
+            dir="ltr"
+            role="heading"
+          >
+            Oups !
+          </h1>
+          <h2
+            aria-level="2"
+            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+            dir="ltr"
+            role="heading"
+          >
+            Une erreur s’est produite pendant le chargement.
+          </h2>
+        </div>
+        <div
+          class="css-view-175oi2r r-alignItems-1awozwy r-gap-f4gmv6"
+        >
+          <button
+            aria-label="Réessayer"
+            class="c2"
+            data-testid="Réessayer"
+            tabindex="0"
+            type="button"
+          >
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
+            >
+              <div
+                class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
+                dir="ltr"
+                style="color: rgb(255, 255, 255); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px; text-align: center;"
+              >
+                Réessayer
+              </div>
+            </div>
+          </button>
+        </div>
       </div>
-      <div
-        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-      />
     </div>
   </div>
 </div>

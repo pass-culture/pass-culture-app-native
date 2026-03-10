@@ -8,7 +8,6 @@ import { TabBarBadge } from 'features/navigation/TabBar/TabBarBadge'
 import { TabBarTitle } from 'features/navigation/TabBar/TabBarTitle'
 import { TabInnerComponentProps } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
-import { Spacer } from 'ui/theme'
 
 export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
   tabName,
@@ -23,21 +22,27 @@ export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
       {isSelected ? (
         <Gradient testID={accessibilityLabel ? `${accessibilityLabel} sélectionné` : undefined} />
       ) : null}
-      <Spacer.Flex />
-      <IconWrapper>
-        <StyledIcon
-          as={BicolorIcon}
-          selected={isSelected}
-          badgeValue={showBadge ? undefined : badgeValue}
-        />
-        {showBadge ? <TabBarBadge testID={`${tabName}-new-feature-badge`} /> : null}
-      </IconWrapper>
-      <TabBarTitle selected={isSelected} displayName={menu[tabName].displayName} />
-      <Spacer.Flex />
+      <MainContent>
+        <IconWrapper>
+          <StyledIcon
+            as={BicolorIcon}
+            selected={isSelected}
+            badgeValue={showBadge ? undefined : badgeValue}
+          />
+          {showBadge ? <TabBarBadge testID={`${tabName}-new-feature-badge`} /> : null}
+        </IconWrapper>
+        <TabBarTitle selected={isSelected} displayName={menu[tabName].displayName} />
+      </MainContent>
       {isSelected ? <BicolorSelectorPlaceholder /> : null}
     </React.Fragment>
   )
 }
+
+const MainContent = styled.View({
+  marginTop: 'auto',
+  marginBottom: 'auto',
+  alignItems: 'center',
+})
 
 const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   colors: [
