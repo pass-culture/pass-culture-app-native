@@ -55,6 +55,7 @@ import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
+import { NoPhone } from 'ui/svg/icons/NoPhone'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { Trophy } from 'ui/svg/icons/Trophy'
@@ -316,6 +317,14 @@ const OnlineProfile: React.FC = () => {
                       type="clickable"
                       externalNav={{ url: env.FAQ_LINK }}
                       icon={ExternalSite}
+                    />
+                  </Li>
+                  <Li>
+                    <Row
+                      title="Signaler un bug"
+                      type="clickable"
+                      navigateTo={getProfilePropConfig('DebugScreen')}
+                      icon={NoPhone}
                     />
                   </Li>
                 </VerticalUl>
