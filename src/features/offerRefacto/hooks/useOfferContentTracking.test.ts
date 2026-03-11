@@ -1,4 +1,5 @@
 import { SubcategoryIdEnumv2 } from 'api/gen'
+import { analytics } from 'libs/analytics/provider'
 import { renderHook, act, bottomScrollEvent, middleScrollEvent } from 'tests/utils'
 
 import { useOfferContentTracking } from './useOfferContentTracking'
@@ -14,11 +15,7 @@ jest.mock('features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking', 
   }),
 }))
 
-jest.mock('libs/analytics/provider', () => ({
-  analytics: {
-    logConsultWholeOffer: jest.fn(),
-  },
-}))
+jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('libs/hooks', () => ({
   useFunctionOnce: (fn: () => void) => fn,
@@ -47,7 +44,6 @@ describe('useOfferContentTracking', () => {
   })
 
   it('should not call logConsultWholeOffer when scroll is not at bottom', () => {
-    const { analytics } = jest.requireMock('libs/analytics/provider')
     const { result } = renderHook(() => useOfferContentTracking(defaultParams))
 
     act(() => {
@@ -60,7 +56,6 @@ describe('useOfferContentTracking', () => {
   })
 
   it('should call logConsultWholeOffer when scroll reaches the bottom', () => {
-    const { analytics } = jest.requireMock('libs/analytics/provider')
     const { result } = renderHook(() => useOfferContentTracking(defaultParams))
 
     act(() => {

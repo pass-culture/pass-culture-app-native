@@ -2,7 +2,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
-import { act, renderHook } from 'tests/utils'
+import { renderHook } from 'tests/utils'
 
 import { useOfferBody } from './useOfferBody'
 
@@ -70,9 +70,7 @@ describe('useOfferBody', () => {
   it('should call analytics.logConsultChronicle on onSeeMoreButtonPress', () => {
     const { result } = renderHook(() => useOfferBody(defaultParams))
 
-    act(() => {
-      result.current.onSeeMoreButtonPress(42)
-    })
+    result.current.onSeeMoreButtonPress(42)
 
     expect(analytics.logConsultChronicle).toHaveBeenCalledWith({
       offerId: offerResponseSnap.id,
@@ -83,9 +81,7 @@ describe('useOfferBody', () => {
   it('should navigate to Chronicles on onSeeMoreButtonPress', () => {
     const { result } = renderHook(() => useOfferBody(defaultParams))
 
-    act(() => {
-      result.current.onSeeMoreButtonPress(42)
-    })
+    result.current.onSeeMoreButtonPress(42)
 
     expect(navigate).toHaveBeenCalledWith('Chronicles', {
       offerId: offerResponseSnap.id,
@@ -97,9 +93,7 @@ describe('useOfferBody', () => {
   it('should call analytics.logClickInfoReview on onSeeAllReviewsPress', () => {
     const { result } = renderHook(() => useOfferBody(defaultParams))
 
-    act(() => {
-      result.current.onSeeAllReviewsPress()
-    })
+    result.current.onSeeAllReviewsPress()
 
     expect(analytics.logClickInfoReview).toHaveBeenCalledWith({
       from: 'offer',

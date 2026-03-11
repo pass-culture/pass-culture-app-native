@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferBodyComponentProps } from 'features/offerRefacto/types'
+import { OfferBodyComponentProps } from 'features/offer/types'
 
 import { OfferBodyView } from './OfferBodyView'
 import { useOfferBody } from './useOfferBody'

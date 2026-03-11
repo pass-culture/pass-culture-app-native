@@ -9,8 +9,6 @@ import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/O
 import { OfferBodyViewProps } from 'features/offerRefacto/types'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 
-const noop = () => undefined
-
 export const OfferBodyView = ({
   viewModel,
   offer,
@@ -20,7 +18,7 @@ export const OfferBodyView = ({
   headlineOffersCount,
   isVideoSectionEnabled,
   hasVideoCookiesConsent,
-  onVideoConsentPress,
+  onVideoConsentPress = () => {},
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
   onShowChroniclesWritersModal,
@@ -65,7 +63,7 @@ export const OfferBodyView = ({
           chronicleVariantInfo={chronicleVariantInfo}
           isVideoSectionEnabled={isVideoSectionEnabled}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
-          onVideoConsentPress={onVideoConsentPress ?? noop}
+          onVideoConsentPress={onVideoConsentPress}
           isMultiArtistsEnabled={isMultiArtistsEnabled}
           onShowOfferArtistsModal={onShowOfferArtistsModal}>
           {desktopCTAs}

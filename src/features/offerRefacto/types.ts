@@ -13,8 +13,8 @@ import {
   SearchGroupResponseModelv2,
 } from 'api/gen'
 import { FavoriteMutationContext } from 'features/favorites/queries/types'
-import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { MovieScreeningUserData } from 'features/offer/components/MovieScreeningCalendar/types'
+import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { OfferBodyComponentProps, OfferImageContainerDimensions } from 'features/offer/types'
 import { EmptyResponse } from 'libs/fetch'
 import { ShareContent } from 'libs/share/types'
@@ -23,8 +23,6 @@ import { Offer } from 'shared/offer/types'
 import { ImageWithCredit } from 'shared/types'
 import { ModalSettings } from 'ui/components/modals/useModal'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
-
-export type { OfferBodyComponentProps }
 
 export type HasEnoughCreditType =
   | { hasEnoughCredit: true; message?: never }
