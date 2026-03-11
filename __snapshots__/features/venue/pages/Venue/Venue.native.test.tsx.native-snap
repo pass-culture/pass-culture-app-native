@@ -8690,19 +8690,11 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "borderTopRightRadius": 8,
                                 "borderWidth": 1,
                                 "height": 48,
+                                "justifyContent": "center",
                                 "width": 48,
                               }
                             }
                           >
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
                             <View
                               fill="#161617"
                               height={24}
@@ -8712,15 +8704,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 undefined-SVG-Mock
                               </Text>
                             </View>
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
                             <View
                               style={
                                 {
@@ -8791,19 +8774,11 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "borderTopRightRadius": 8,
                                 "borderWidth": 1,
                                 "height": 48,
+                                "justifyContent": "center",
                                 "width": 48,
                               }
                             }
                           >
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
                             <View
                               fill="#161617"
                               height={24}
@@ -8813,15 +8788,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 undefined-SVG-Mock
                               </Text>
                             </View>
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
                             <View
                               style={
                                 {
@@ -8892,19 +8858,11 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "borderTopRightRadius": 8,
                                 "borderWidth": 1,
                                 "height": 48,
+                                "justifyContent": "center",
                                 "width": 48,
                               }
                             }
                           >
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
                             <View
                               fill="#161617"
                               height={24}
@@ -8914,15 +8872,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 undefined-SVG-Mock
                               </Text>
                             </View>
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
                             <View
                               style={
                                 {
@@ -8993,19 +8942,11 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "borderTopRightRadius": 8,
                                 "borderWidth": 1,
                                 "height": 48,
+                                "justifyContent": "center",
                                 "width": 48,
                               }
                             }
                           >
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
                             <View
                               fill="#161617"
                               height={24}
@@ -9015,15 +8956,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 undefined-SVG-Mock
                               </Text>
                             </View>
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
                             <View
                               style={
                                 {

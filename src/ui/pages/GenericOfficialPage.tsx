@@ -47,20 +47,12 @@ export function GenericOfficialPage({
         <EmptyContainer />
       </HeaderContainer>
       <Content>
-        {isTouch ? (
-          <TopTouch>
-            <Spacer.Flex />
-          </TopTouch>
-        ) : null}
+        {isTouch ? <TopTouch /> : null}
         <TitleContainer>
           <Typo.Title2 {...getHeadingAttrs(1)}>{title}</Typo.Title2>
         </TitleContainer>
         {children}
-        {isTouch ? (
-          <BottomTouch marginTop={getButtonSpaces()}>
-            <Spacer.Flex flex={0.5} />
-          </BottomTouch>
-        ) : null}
+        {isTouch ? <BottomTouch marginTop={getButtonSpaces()} /> : null}
       </Content>
       <BottomContent>
         {buttons ? (

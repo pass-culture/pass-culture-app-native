@@ -34,7 +34,6 @@ export const OnboardingWelcome: FunctionComponent = () => {
     <Page>
       <ImageBackground source={WELCOME_BACKGROUND_SOURCE} />
       <StyledScrollView>
-        <Spacer.Flex />
         <Gradient />
         <Content>
           <StyledTitle1>Bienvenue sur&nbsp;le&nbsp;pass&nbsp;Culture</StyledTitle1>
@@ -64,12 +63,13 @@ export const OnboardingWelcome: FunctionComponent = () => {
     </Page>
   )
 }
+
 const StyledViewGap = styled(ViewGap)(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.l,
 }))
 
 const StyledScrollView = styled(ScrollView).attrs({
-  contentContainerStyle: { flexGrow: 1 },
+  contentContainerStyle: { flexGrow: 1, justifyContent: 'flex-end' },
 })``
 
 const Content = styled.View(({ theme }) => ({
