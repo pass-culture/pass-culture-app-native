@@ -28,6 +28,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
+import { Gradient } from 'ui/components/Gradient'
 import { Button } from 'ui/designSystem/Button/Button'
 import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
 import { CheckboxGroupOption } from 'ui/designSystem/CheckboxGroup/types'
@@ -237,6 +238,7 @@ export function CulturalSurveyQuestions() {
         />
       </ChildrenScrollView>
 
+      <Gradient bottomViewHeight={bottomChildrenViewHeight} />
       <FixedBottomChildrenView onLayout={onFixedBottomChildrenViewLayout}>
         <Button
           fullWidth
@@ -278,6 +280,7 @@ const FixedBottomChildrenView = styled(View)(({ theme }) => ({
   bottom: 0,
   left: 0,
   right: 0,
+  backgroundColor: theme.designSystem.color.background.default,
   paddingBottom: theme.designSystem.size.spacing.xl,
   paddingTop: theme.designSystem.size.spacing.m,
   paddingHorizontal: theme.contentPage.marginHorizontal,

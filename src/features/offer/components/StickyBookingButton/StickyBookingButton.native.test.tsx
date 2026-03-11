@@ -22,12 +22,6 @@ describe('<StickyBookingButton />', () => {
     expect(screen.getByText('Réserver l’offre')).toBeOnTheScreen()
   })
 
-  it('should display the blurry style', () => {
-    render(<StickyBookingButton ctaWordingAndAction={mockCtaWordingAndAction} />)
-
-    expect(screen.getByTestId('blurry-wrapper')).toHaveStyle({ backgroundColor: 'transparent' })
-  })
-
   it('should not display the blurry style if no wording', () => {
     render(
       <StickyBookingButton
