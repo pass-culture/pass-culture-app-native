@@ -7,12 +7,12 @@ import {
   YoungStatusType,
 } from 'api/gen'
 import { getIsProfileIncomplete } from 'features/offer/helpers/getIsProfileIncomplete/getIsProfileIncomplete'
-import { getIsFreeDigitalOffer, getIsFreeOffer } from 'features/offerRefacto/helpers'
+import { isFreeDigitalOffer, isFreeOffer } from 'features/offerRefacto/helpers'
 import { getCTAProps } from 'features/offerRefacto/helpers/offerCTAContent'
 import {
   CTAType,
+  CTAWordingAndAction,
   GetCTAWordingAndActionProps,
-  ICTAWordingAndAction,
 } from 'features/offerRefacto/types'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
@@ -43,18 +43,16 @@ export const getFreeOfferCTA = (
   user?: UserProfileResponseWithoutSurvey,
   alreadyBookedOfferId?: number
 ): CTAType | undefined => {
-  const isFreeOffer = getIsFreeOffer(offer)
   const isUserFreeStatus = user?.eligibility === EligibilityType.free
   const isEligibleFreeOffer15To16 = enableBookingFreeOfferFifteenSixteen && isUserFreeStatus
 
-  const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
-  if (isFreeDigitalOffer && userStatus?.statusType !== YoungStatusType.non_eligible) {
+  if (isFreeDigitalOffer(offer) && userStatus?.statusType !== YoungStatusType.non_eligible) {
     if (subcategory.isEvent) return alreadyBookedOfferId ? 'SEE_BOOKING' : 'BOOK_OFFER'
     return 'DIGITAL_OFFER'
   }
 
   const isProfileIncomplete = getIsProfileIncomplete(user)
-  if (isFreeOffer) {
+  if (isFreeOffer(offer)) {
     if (isEligibleFreeOffer15To16 && isProfileIncomplete) {
       return 'INCOMPLETE_PROFILE'
     }
@@ -133,7 +131,7 @@ export const getCTAWordingAndAction = ({
   subcategory,
   isEndedUsedBooking,
   user,
-}: GetCTAWordingAndActionProps): ICTAWordingAndAction => {
+}: GetCTAWordingAndActionProps): CTAWordingAndAction => {
   const { offer, isUnderageBeneficiary, alreadyBookedOfferId } = context
   const { externalTicketOfficeUrl } = offer
 
@@ -149,10 +147,9 @@ export const getCTAWordingAndAction = ({
   }
 
   // 3. User 15/16 years old (no bookings for paid offers)
-  const isFreeOffer = getIsFreeOffer(offer)
   const isUserFreeStatus = user?.eligibility === EligibilityType.free
   const isEligibleFreeOffer15To16 = enableBookingFreeOfferFifteenSixteen && isUserFreeStatus
-  if (isEligibleFreeOffer15To16 && !isFreeOffer) {
+  if (isEligibleFreeOffer15To16 && !isFreeOffer(offer)) {
     return getCTAProps('USER_15_16', context)
   }
 

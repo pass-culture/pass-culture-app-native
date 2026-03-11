@@ -1,5 +1,5 @@
 import { useFocusEffect } from '@react-navigation/native'
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, useEffect } from 'react'
 import { ThemeProvider } from 'styled-components/native'
 
 import { mockSubcategoriesMapping } from 'features/headlineOffer/fixtures/mockMapping'
@@ -72,7 +72,7 @@ describe('useOfferCTAs hook', () => {
     jest.clearAllMocks()
     mockUseRoute.mockReturnValue({ params: {} })
     mockUseFocusEffect.mockImplementation((callback) => {
-      React.useEffect(() => {
+      useEffect(() => {
         callback()
       }, [callback])
     })

@@ -132,7 +132,7 @@ export type CTAType =
   | 'UNDEFINED'
   | 'USER_15_16'
 
-export type ICTAWordingAndAction = {
+export type CTAWordingAndAction = {
   modalToDisplay?: OfferModal
   wording?: string
   navigateTo?: InternalNavigationProps['navigateTo']

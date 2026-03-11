@@ -24,8 +24,8 @@ import { freeOfferIdActions } from 'features/offer/store/freeOfferIdStore'
 import {
   getCTAWordingAndAction,
   getIsAComingSoonOffer,
-  getIsFreeDigitalOffer,
-  getIsFreeOffer,
+  isFreeDigitalOffer,
+  isFreeOffer,
 } from 'features/offerRefacto/helpers'
 import { CTAContext, FavoriteCTAProps, OfferCTAsViewModel } from 'features/offerRefacto/types'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
@@ -176,7 +176,6 @@ export const useOfferCTAs = ({
     from: StepperOrigin.OFFER,
   })
 
-  const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
   const isAComingSoonOffer = getIsAComingSoonOffer(offer.bookingAllowedDatetime)
   const showCineCTA = isMobileViewport && showAccessScreeningButton && isCineButtonVisible
 
@@ -198,11 +197,10 @@ export const useOfferCTAs = ({
   // 6. Effects
   useEffect(() => {
     const isUserFreeStatus = user?.eligibility === EligibilityType.free
-    const isFreeOffer = getIsFreeOffer(offer)
     const isProfileIncomplete = getIsProfileIncomplete(user)
     const isEligibleFreeOffer15To16 = enableBookingFreeOfferFifteenSixteen && isUserFreeStatus
 
-    if (isLoggedIn && isEligibleFreeOffer15To16 && isProfileIncomplete && isFreeOffer) {
+    if (isLoggedIn && isEligibleFreeOffer15To16 && isProfileIncomplete && isFreeOffer(offer)) {
       freeOfferIdActions.setFreeOfferId(offer.id)
     }
   }, [isLoggedIn, enableBookingFreeOfferFifteenSixteen, user, offer])
@@ -234,7 +232,7 @@ export const useOfferCTAs = ({
     },
     CTAOfferModal,
     theme,
-    isFreeDigitalOffer,
+    isFreeDigitalOffer: isFreeDigitalOffer(offer),
     isAComingSoonOffer,
     isLoggedIn,
     showCineCTA,
