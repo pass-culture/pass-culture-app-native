@@ -5115,10 +5115,10 @@ export interface VenueProAdvice {
    */
   offerName: string
   /**
-   * @type {string}
+   * @type {SubcategoryIdEnum}
    * @memberof VenueProAdvice
    */
-  offerSubcategory: string
+  offerSubcategory: SubcategoryIdEnum
   /**
    * @type {string | null}
    * @memberof VenueProAdvice
