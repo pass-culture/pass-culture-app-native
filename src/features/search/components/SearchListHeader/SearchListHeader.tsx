@@ -69,8 +69,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
 
   const shouldDisplayAvailableUserDataMessage = userData?.length > 0
   const unavailableOfferMessage = shouldDisplayAvailableUserDataMessage ? userData[0]?.message : ''
-  const shouldDisplayAccessibilityContent =
-    Object.values(disabilities).filter((disability) => disability).length > 0
+  const shouldDisplayAccessibilityContent = Object.values(disabilities).filter(Boolean).length > 0
   const venuePlaylistTitle = getSearchVenuePlaylistTitle(
     shouldDisplayAccessibilityContent,
     venuesUserData?.[0]?.venue_playlist_title,

@@ -1,6 +1,6 @@
 import { range } from 'lodash'
 
-export const dayNumbers = range(1, 31 + 1).map((num) => String(num))
+export const dayNumbers = range(1, 31 + 1).map(String)
 export const DAYS = [
   'Dimanche',
   'Lundi',
