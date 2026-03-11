@@ -14,7 +14,7 @@ import onboarding_unlock from 'ui/animations/onboarding_unlock.json'
 import qpi_thanks from 'ui/animations/qpi_thanks.json'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
 import { AnimationObject, LottieColoringOptions } from 'ui/animations/type'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 export default {
   title: 'Fondations/Animations',
@@ -125,7 +125,6 @@ const HoverAnimation: React.FC<HoverAnimationProps> = ({
         <Typo.Button>👆{name} (Hover)</Typo.Button>
       </Cover>
 
-      <Spacer.Flex />
       <ThemedStyledLottieView
         key={isHovered ? `${name}-hover` : `${name}-idle`}
         source={source}
@@ -137,7 +136,6 @@ const HoverAnimation: React.FC<HoverAnimationProps> = ({
         height={isSmallAnimation ? getSpacing(15) : getSpacing(37.5)}
         width={isSmallAnimation ? getSpacing(15) : getSpacing(37.5)}
       />
-      <Spacer.Flex />
       <Name hasBackground={hasBackground}>{name}</Name>
     </AnimationContainer>
   )

@@ -1,8 +1,9 @@
 import React, { PropsWithChildren } from 'react'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { env } from 'libs/environment/env'
+import { buildZendeskUrlForFraud } from 'features/profile/pages/DebugScreen/buildZendeskUrl'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
@@ -16,6 +17,7 @@ export const GenericSuspendedAccount: React.FC<Props> = ({
   onBeforeNavigateContactFraudTeam,
 }) => {
   const signOut = useLogoutRoutine()
+  const { user } = useAuthContext()
 
   return (
     <GenericInfoPage
@@ -24,7 +26,7 @@ export const GenericSuspendedAccount: React.FC<Props> = ({
       buttonPrimary={{
         wording: 'Contacter le service fraude',
         onBeforeNavigate: onBeforeNavigateContactFraudTeam,
-        externalNav: { url: `mailto:${env.FRAUD_EMAIL_ADDRESS}` },
+        externalNav: { url: buildZendeskUrlForFraud(user) },
       }}
       buttonTertiary={{
         wording: 'Retourner à l’accueil',

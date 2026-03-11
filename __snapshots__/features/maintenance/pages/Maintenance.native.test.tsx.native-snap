@@ -15,103 +15,85 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
   }
 >
   <View
+    height={16}
+    style={
+      {
+        "height": 16,
+      }
+    }
+  />
+  <View
     style={
       {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "justifyContent": "space-between",
+        "justifyContent": "center",
         "overflow": "scroll",
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
   >
-    <View
-      height={16}
-      style={
-        {
-          "height": 16,
-        }
-      }
-    />
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
-    <View
-      style={
-        {
-          "alignItems": "center",
-          "justifyContent": "center",
-          "marginBottom": 24,
-        }
-      }
-    >
+    <View>
       <View
-        height={156}
-        width={200}
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "center",
+            "marginBottom": 24,
+          }
+        }
       >
-        <Text>
-          undefined-SVG-Mock
+        <View
+          height={156}
+          width={200}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <View
+        gap={4}
+        style={
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 32,
+          }
+        }
+      >
+        <Text
+          accessibilityRole="header"
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            }
+          }
+        >
+          Maintenance en cours
+        </Text>
+        <Text
+          accessibilityRole="header"
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "textAlign": "center",
+            }
+          }
+        >
+          C’est tout cassé ! Reviens plus tard
         </Text>
       </View>
     </View>
-    <View
-      gap={4}
-      style={
-        {
-          "alignItems": "center",
-          "gap": 16,
-          "marginBottom": 32,
-        }
-      }
-    >
-      <Text
-        accessibilityRole="header"
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          }
-        }
-      >
-        Maintenance en cours
-      </Text>
-      <Text
-        accessibilityRole="header"
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          }
-        }
-      >
-        C’est tout cassé ! Reviens plus tard
-      </Text>
-    </View>
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
   </View>
 </View>
 `;
@@ -131,103 +113,85 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
   }
 >
   <View
+    height={16}
+    style={
+      {
+        "height": 16,
+      }
+    }
+  />
+  <View
     style={
       {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "justifyContent": "space-between",
+        "justifyContent": "center",
         "overflow": "scroll",
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
   >
-    <View
-      height={16}
-      style={
-        {
-          "height": 16,
-        }
-      }
-    />
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
-    <View
-      style={
-        {
-          "alignItems": "center",
-          "justifyContent": "center",
-          "marginBottom": 24,
-        }
-      }
-    >
+    <View>
       <View
-        height={156}
-        width={200}
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "center",
+            "marginBottom": 24,
+          }
+        }
       >
-        <Text>
-          undefined-SVG-Mock
+        <View
+          height={156}
+          width={200}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <View
+        gap={4}
+        style={
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 32,
+          }
+        }
+      >
+        <Text
+          accessibilityRole="header"
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            }
+          }
+        >
+          Maintenance en cours
+        </Text>
+        <Text
+          accessibilityRole="header"
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "textAlign": "center",
+            }
+          }
+        >
+          L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !
         </Text>
       </View>
     </View>
-    <View
-      gap={4}
-      style={
-        {
-          "alignItems": "center",
-          "gap": 16,
-          "marginBottom": 32,
-        }
-      }
-    >
-      <Text
-        accessibilityRole="header"
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          }
-        }
-      >
-        Maintenance en cours
-      </Text>
-      <Text
-        accessibilityRole="header"
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          }
-        }
-      >
-        L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !
-      </Text>
-    </View>
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
   </View>
 </View>
 `;

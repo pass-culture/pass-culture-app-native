@@ -15,322 +15,304 @@ exports[`<GenericErrorPage /> should render correctly 1`] = `
   }
 >
   <View
+    height={16}
+    style={
+      {
+        "height": 16,
+      }
+    }
+  />
+  <View
     style={
       {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "justifyContent": "space-between",
+        "justifyContent": "center",
         "overflow": "scroll",
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
   >
-    <View
-      height={16}
-      style={
-        {
-          "height": 16,
-        }
-      }
-    />
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
-    <View
-      style={
-        {
-          "alignItems": "center",
-          "justifyContent": "center",
-          "marginBottom": 24,
-        }
-      }
-    >
+    <View>
       <View
-        fill="none"
-        height={156}
-        width={200}
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "center",
+            "marginBottom": 24,
+          }
+        }
       >
-        <Text>
-          undefined-SVG-Mock
+        <View
+          fill="none"
+          height={156}
+          width={200}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <View
+        gap={4}
+        style={
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 32,
+          }
+        }
+      >
+        <Text
+          accessibilityRole="header"
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            }
+          }
+        >
+          GenericErrorPage
+        </Text>
+        <Text
+          accessibilityRole="header"
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "textAlign": "center",
+            }
+          }
+        >
+          Subtitle
         </Text>
       </View>
-    </View>
-    <View
-      gap={4}
-      style={
-        {
-          "alignItems": "center",
-          "gap": 16,
-          "marginBottom": 32,
-        }
-      }
-    >
-      <Text
-        accessibilityRole="header"
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          }
-        }
-      >
-        GenericErrorPage
-      </Text>
-      <Text
-        accessibilityRole="header"
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          }
-        }
-      >
-        Subtitle
-      </Text>
-    </View>
-    <View
-      style={
-        {
-          "marginBottom": 32,
-        }
-      }
-    >
-      <Text
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          }
-        }
-      >
-        Children...
-      </Text>
-    </View>
-    <View
-      gap={4}
-      style={
-        {
-          "alignItems": "center",
-          "gap": 16,
-        }
-      }
-    >
       <View
-        accessibilityLabel="Primary button"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": false,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           {
-            "alignItems": "center",
-            "alignSelf": "center",
-            "backgroundColor": "#6123df",
-            "borderBottomLeftRadius": 8,
-            "borderBottomRightRadius": 8,
-            "borderColor": "#6123df",
-            "borderStyle": "solid",
-            "borderTopLeftRadius": 8,
-            "borderTopRightRadius": 8,
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "opacity": 1,
-            "paddingBottom": 8,
-            "paddingLeft": 12,
-            "paddingRight": 12,
-            "paddingTop": 8,
-            "userSelect": "auto",
-            "width": "100%",
+            "marginBottom": 32,
           }
         }
-        testID="Primary button"
       >
-        <View
-          fullWidth={true}
-          gap={8}
-          hasIcon={false}
-          isMultiline={false}
+        <Text
           style={
             {
-              "alignItems": "center",
-              "columnGap": 8,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "width": "100%",
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             }
           }
         >
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                },
-                {
-                  "color": "#ffffff",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "maxWidth": "100%",
-                  "minWidth": 0,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Primary button
-          </Text>
-        </View>
+          Children...
+        </Text>
       </View>
       <View
-        accessibilityLabel="Tertiary button"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": false,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+        gap={4}
         style={
           {
             "alignItems": "center",
-            "alignSelf": "center",
-            "backgroundColor": "transparent",
-            "borderBottomLeftRadius": 8,
-            "borderBottomRightRadius": 8,
-            "borderTopLeftRadius": 8,
-            "borderTopRightRadius": 8,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "opacity": 1,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "userSelect": "auto",
-            "width": "100%",
+            "gap": 16,
           }
         }
-        testID="Tertiary button"
       >
         <View
-          fullWidth={true}
-          gap={8}
-          hasIcon={false}
-          isMultiline={false}
+          accessibilityLabel="Primary button"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             {
               "alignItems": "center",
-              "columnGap": 8,
+              "alignSelf": "center",
+              "backgroundColor": "#6123df",
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderColor": "#6123df",
+              "borderStyle": "solid",
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "borderWidth": 1,
               "flexDirection": "row",
               "justifyContent": "center",
+              "opacity": 1,
+              "paddingBottom": 8,
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "paddingTop": 8,
+              "userSelect": "auto",
               "width": "100%",
             }
           }
+          testID="Primary button"
         >
-          <Text
+          <View
+            fullWidth={true}
+            gap={8}
+            hasIcon={false}
+            isMultiline={false}
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                },
-                {
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "maxWidth": "100%",
-                  "minWidth": 0,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "columnGap": 8,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
+              }
             }
           >
-            Tertiary button
-          </Text>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#ffffff",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Primary button
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityLabel="Tertiary button"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "alignSelf": "center",
+              "backgroundColor": "transparent",
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "borderWidth": 0,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "opacity": 1,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "userSelect": "auto",
+              "width": "100%",
+            }
+          }
+          testID="Tertiary button"
+        >
+          <View
+            fullWidth={true}
+            gap={8}
+            hasIcon={false}
+            isMultiline={false}
+            style={
+              {
+                "alignItems": "center",
+                "columnGap": 8,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
+              }
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Tertiary button
+            </Text>
+          </View>
         </View>
       </View>
     </View>
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
   </View>
 </View>
 `;

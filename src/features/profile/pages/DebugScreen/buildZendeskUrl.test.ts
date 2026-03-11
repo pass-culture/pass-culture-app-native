@@ -2,7 +2,7 @@ import { buildZendeskUrl } from './buildZendeskUrl'
 
 describe('buildZendeskFormUrl', () => {
   it('should build URL with all fields', () => {
-    const url = buildZendeskUrl('report_bug', {
+    const url = buildZendeskUrl({
       lastName: 'Dupont',
       firstName: 'Jean',
       reason: 'motif_signaler_un_bug',
@@ -16,14 +16,14 @@ describe('buildZendeskFormUrl', () => {
         '&tf_20701989633692=Dupont' +
         '&tf_20701995245852=Jean' +
         '&tf_20669850863388=motif_signaler_un_bug' +
-        '&tf_anonymous_requester_email=jean%40example.com' +
+        '&tf_20704397346076=jean%40example.com' +
         '&tf_description=Le%20bouton%20ne%20marche%20pas' +
         '&tf_20701971989276=2000-01-15'
     )
   })
 
   it('should skip null and undefined fields', () => {
-    const url = buildZendeskUrl('report_bug', {
+    const url = buildZendeskUrl({
       firstName: 'Jean',
       lastName: null,
       description: undefined,
@@ -36,7 +36,7 @@ describe('buildZendeskFormUrl', () => {
   })
 
   it('should replace line breaks with <br> in field values', () => {
-    const url = buildZendeskUrl('report_bug', {
+    const url = buildZendeskUrl({
       description: 'ligne1\nligne2\r\nligne3',
     })
 

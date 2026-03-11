@@ -110,16 +110,17 @@ export const Stepper = () => {
   return (
     <Page>
       <MainContainer>
-        <Spacer.TopScreen />
-        <TitleContainer>
-          <StyledTitle1>{stepperTitle}</StyledTitle1>
-        </TitleContainer>
-        <Container>
-          {stepperSubtitle ? <StyledSubtitle subtitle={stepperSubtitle} /> : null}
-          {errorMessage ? <StyledErrorMessage errorMessage={errorMessage} /> : null}
-        </Container>
-        {stepList}
-        <Spacer.Flex flex={1} />
+        <TopContent>
+          <Spacer.TopScreen />
+          <TitleContainer>
+            <StyledTitle1>{stepperTitle}</StyledTitle1>
+          </TitleContainer>
+          <Container>
+            {stepperSubtitle ? <StyledSubtitle subtitle={stepperSubtitle} /> : null}
+            {errorMessage ? <StyledErrorMessage errorMessage={errorMessage} /> : null}
+          </Container>
+          {stepList}
+        </TopContent>
 
         <QuitButtonContainer>
           <Button
@@ -155,8 +156,13 @@ const MainContainer = styled.ScrollView.attrs(({ theme }) => ({
     width: '100%',
     alignSelf: 'center',
     flexGrow: 1,
+    justifyContent: 'space-between',
   },
 }))``
+
+const TopContent = styled.View({
+  width: '100%',
+})
 
 const Placeholder = styled.View(({ theme }) => ({
   height: theme.designSystem.size.spacing.s,

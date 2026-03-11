@@ -2,7 +2,9 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { buildZendeskUrlForFraud } from 'features/profile/pages/DebugScreen/buildZendeskUrl'
 import { useSuspendForSuspiciousLoginMutation } from 'features/trustedDevice/queries/useSuspendForSuspiciousLoginMutation'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Adjust } from 'libs/adjust/adjust'
@@ -27,6 +29,7 @@ export const SuspensionChoice = () => {
   const { params } = useRoute<UseRouteType<'SuspensionChoice'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { logType } = useLogTypeFromRemoteConfig()
+  const { user } = useAuthContext()
 
   const { mutate: suspendAccountForSuspiciousLogin, isPending } =
     useSuspendForSuspiciousLoginMutation({
@@ -74,7 +77,7 @@ export const SuspensionChoice = () => {
         icon: EmailFilled,
         wording: 'Contacter le service fraude',
         onBeforeNavigate: onPressContactFraudTeam,
-        externalNav: { url: `mailto:${env.FRAUD_EMAIL_ADDRESS}` },
+        externalNav: { url: buildZendeskUrlForFraud(user) },
       }}>
       <Typo.BodyAccent>{groupLabel}&nbsp;:</Typo.BodyAccent>
       <VerticalUl>

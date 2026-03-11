@@ -1,5 +1,5 @@
 import React, { FunctionComponent, PropsWithChildren, ReactNode } from 'react'
-import { StatusBar } from 'react-native'
+import { StatusBar, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -9,7 +9,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Page } from 'ui/pages/Page'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -75,55 +75,57 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
       />
       <Page>
         {header}
+        <Placeholder height={top} />
         <Container>
-          <Placeholder height={top} />
-          <Spacer.Flex flex={1} />
-          <IllustrationContainer>
-            {IllustrationComponent ? (
-              <IllustrationComponent
-                size={illustrationSizes.fullPage}
-                color={designSystem.color.icon.brandPrimary}
-              />
+          <View>
+            <IllustrationContainer>
+              {IllustrationComponent ? (
+                <IllustrationComponent
+                  size={illustrationSizes.fullPage}
+                  color={designSystem.color.icon.brandPrimary}
+                />
+              ) : null}
+            </IllustrationContainer>
+            <TextContainer gap={4}>
+              <StyledTitle {...getHeadingAttrs(1)}>{title}</StyledTitle>
+              {subtitle ? (
+                <StyledSubtitle {...getHeadingAttrs(2)}>{subtitle}</StyledSubtitle>
+              ) : null}
+            </TextContainer>
+            {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}
+            {buttonPrimary || buttonTertiary || buttonTertiaryExternalNav ? (
+              <ButtonContainer gap={4}>
+                {buttonPrimary?.onPress ? (
+                  <Button
+                    key={1}
+                    wording={buttonPrimary.wording}
+                    onPress={buttonPrimary.onPress}
+                    isLoading={buttonPrimary.isLoading}
+                    disabled={buttonPrimary.disabled}
+                    icon={buttonPrimary.icon}
+                    color="brand"
+                    fullWidth
+                  />
+                ) : null}
+
+                {buttonTertiary?.onPress ? (
+                  <Button
+                    key={2}
+                    wording={buttonTertiary.wording}
+                    onPress={buttonTertiary.onPress}
+                    isLoading={buttonTertiary.isLoading}
+                    disabled={buttonTertiary.disabled}
+                    icon={buttonTertiary.icon}
+                    variant="tertiary"
+                    color="neutral"
+                    fullWidth
+                  />
+                ) : null}
+
+                {buttonTertiaryExternalNav}
+              </ButtonContainer>
             ) : null}
-          </IllustrationContainer>
-          <TextContainer gap={4}>
-            <StyledTitle {...getHeadingAttrs(1)}>{title}</StyledTitle>
-            {subtitle ? <StyledSubtitle {...getHeadingAttrs(2)}>{subtitle}</StyledSubtitle> : null}
-          </TextContainer>
-          {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}
-          {buttonPrimary || buttonTertiary || buttonTertiaryExternalNav ? (
-            <ButtonContainer gap={4}>
-              {buttonPrimary?.onPress ? (
-                <Button
-                  key={1}
-                  wording={buttonPrimary.wording}
-                  onPress={buttonPrimary.onPress}
-                  isLoading={buttonPrimary.isLoading}
-                  disabled={buttonPrimary.disabled}
-                  icon={buttonPrimary.icon}
-                  color="brand"
-                  fullWidth
-                />
-              ) : null}
-
-              {buttonTertiary?.onPress ? (
-                <Button
-                  key={2}
-                  wording={buttonTertiary.wording}
-                  onPress={buttonTertiary.onPress}
-                  isLoading={buttonTertiary.isLoading}
-                  disabled={buttonTertiary.disabled}
-                  icon={buttonTertiary.icon}
-                  variant="tertiary"
-                  color="neutral"
-                  fullWidth
-                />
-              ) : null}
-
-              {buttonTertiaryExternalNav}
-            </ButtonContainer>
-          ) : null}
-          <Spacer.Flex flex={1} />
+          </View>
         </Container>
       </Page>
     </React.Fragment>
@@ -132,7 +134,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
 
 const Container = styled.View(({ theme }) => ({
   flex: 1,
-  justifyContent: 'space-between',
+  justifyContent: 'center',
   paddingHorizontal: theme.contentPage.marginHorizontal,
   paddingVertical: theme.contentPage.marginVertical,
   overflow: 'scroll',

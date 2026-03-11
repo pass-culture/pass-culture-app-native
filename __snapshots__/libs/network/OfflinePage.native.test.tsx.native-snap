@@ -23,10 +23,8 @@ exports[`<OfflinePage /> should match snapshot with default message 1`] = `
     style={
       {
         "alignItems": "center",
-        "flexBasis": 0,
         "flexDirection": "column",
-        "flexGrow": 1,
-        "flexShrink": 1,
+        "height": "100%",
         "justifyContent": "center",
         "maxWidth": 360,
         "paddingHorizontal": 16,
@@ -39,15 +37,6 @@ exports[`<OfflinePage /> should match snapshot with default message 1`] = `
       style={
         {
           "height": 16,
-        }
-      }
-    />
-    <View
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
         }
       }
     />
@@ -97,15 +86,6 @@ exports[`<OfflinePage /> should match snapshot with default message 1`] = `
         Tu n’es pas connecté à internet.
       </Text>
     </View>
-    <View
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
     <View
       customHeight={8}
       enable={true}
