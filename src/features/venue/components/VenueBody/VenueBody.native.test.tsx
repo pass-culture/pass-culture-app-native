@@ -141,11 +141,13 @@ const renderVenueBody = ({
   headlineOfferData,
   playlists = gtlPlaylistAlgoliaSnapshot,
   arePlaylistsLoading = false,
+  nbAdvices = 0,
 }: {
   venue?: Omit<VenueResponse, 'isVirtual'>
   headlineOfferData?: HeadlineOfferData
   playlists?: GtlPlaylistData[]
   arePlaylistsLoading?: boolean
+  nbAdvices?: number
 }) => {
   return render(
     reactQueryProviderHOC(
@@ -155,6 +157,7 @@ const renderVenueBody = ({
         playlists={playlists}
         arePlaylistsLoading={arePlaylistsLoading}
         onViewableItemsChanged={jest.fn()}
+        nbAdvices={nbAdvices}
       />
     )
   )

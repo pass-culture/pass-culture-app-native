@@ -5,6 +5,7 @@ import Animated, { Layout } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Activity, VenueResponse } from 'api/gen'
+import { proAdvicesToChronicleCardData } from 'features/chronicle/adapters/proAdvicesToChronicleCardData/proAdvicesToChronicleCardData'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -20,6 +21,7 @@ import { VenueThematicSection } from 'features/venue/components/VenueThematicSec
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { getVenueOffersArtists } from 'features/venue/helpers/getVenueOffersArtists'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
+import { getAdvicesWithoutHeadline } from 'features/venue/helpers/venueAdvices'
 import { useVenueProAdvicesQuery } from 'features/venue/queries/useVenueProAdvicesQuery'
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { Venue as VenueType } from 'features/venue/types'
@@ -171,6 +173,11 @@ export const Venue: FunctionComponent = () => {
             enableAccesLibre={enableAccesLibre}
             shouldDisplayVenueCalendar={shouldDisplayVenueCalendar}
             onViewableItemsChanged={handleViewableItemsChanged}
+            advicesCardData={proAdvicesToChronicleCardData(
+              getAdvicesWithoutHeadline(advices?.proAdvices, headlineOfferData?.id),
+              subcategoriesMapping
+            )}
+            nbAdvices={advices?.nbResults ?? 0}
           />
           <VenueThematicSection venue={venue} />
           <VenueMessagingApps venue={venue} />
