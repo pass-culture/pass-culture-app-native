@@ -78,6 +78,7 @@ export const Venue: FunctionComponent = () => {
 
   const enableSearchWithQuery = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE)
   const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE)
+  const enableNewTagProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
   const {
     visible: searchInVenueModalVisible,
     hideModal: hideSearchInVenueModal,
@@ -178,6 +179,7 @@ export const Venue: FunctionComponent = () => {
               subcategoriesMapping
             )}
             nbAdvices={advices?.nbResults ?? 0}
+            enableNewTagProAdvices={enableNewTagProAdvices}
           />
           <VenueThematicSection venue={venue} />
           <VenueMessagingApps venue={venue} />

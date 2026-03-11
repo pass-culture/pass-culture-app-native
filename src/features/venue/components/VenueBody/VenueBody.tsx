@@ -37,6 +37,7 @@ interface Props {
   shouldDisplayVenueCalendar?: boolean
   advicesCardData?: ChronicleCardData[]
   nbAdvices: number
+  enableNewTagProAdvices?: boolean
 }
 
 export const VenueBody: FunctionComponent<Props> = ({
@@ -51,6 +52,7 @@ export const VenueBody: FunctionComponent<Props> = ({
   shouldDisplayVenueCalendar,
   advicesCardData,
   nbAdvices,
+  enableNewTagProAdvices,
 }) => {
   const currency = useGetCurrencyToDisplay()
 
@@ -98,6 +100,7 @@ export const VenueBody: FunctionComponent<Props> = ({
           onViewableItemsChanged={onViewableItemsChanged}
           advicesCardData={advicesCardData}
           nbAdvices={nbAdvices}
+          enableNewTagProAdvices={enableNewTagProAdvices}
         />
       </React.Fragment>
     ),

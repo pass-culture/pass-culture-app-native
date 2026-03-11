@@ -37,6 +37,7 @@ export interface VenueOffersProps {
   ) => void
   advicesCardData?: ChronicleCardData[]
   nbAdvices: number
+  enableNewTagProAdvices?: boolean
 }
 
 const LoadingState: React.FC = () => (
@@ -56,6 +57,7 @@ export function VenueOffers({
   onViewableItemsChanged,
   advicesCardData,
   nbAdvices,
+  enableNewTagProAdvices,
 }: Readonly<VenueOffersProps>) {
   const { userLocation, selectedLocationMode } = useLocation()
   const transformHits = useTransformOfferHits()
@@ -102,6 +104,7 @@ export function VenueOffers({
       onViewableItemsChanged={onViewableItemsChanged}
       advicesCardData={advicesCardData}
       nbAdvices={nbAdvices}
+      enableNewTagProAdvices={enableNewTagProAdvices}
     />
   )
 }
