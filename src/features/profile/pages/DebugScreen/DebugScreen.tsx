@@ -73,7 +73,7 @@ export const DebugScreen = () => {
     .map((item) => `${item.label}\u00a0: ${String(item.value)}`)
     .join(LINE_BREAK)
 
-  const url = buildZendeskUrl('report_bug', {
+  const url = buildZendeskUrl({
     lastName: user?.lastName,
     firstName: user?.firstName,
     reason: 'motif_signaler_un_bug',
