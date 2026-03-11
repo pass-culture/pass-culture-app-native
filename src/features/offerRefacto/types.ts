@@ -1,14 +1,26 @@
 import { UseMutateFunction } from '@tanstack/react-query'
 import { ReactElement, ReactNode } from 'react'
-import { Animated } from 'react-native'
+import { Animated, ViewToken } from 'react-native'
 import { DefaultTheme } from 'styled-components/native'
 
 import { ApiError } from 'api/ApiError'
-import { FavoriteRequest, FavoriteResponse, OfferArtist, OfferResponse } from 'api/gen'
+import {
+  FavoriteRequest,
+  FavoriteResponse,
+  OfferArtist,
+  OfferResponse,
+  RecommendationApiParams,
+  SearchGroupResponseModelv2,
+} from 'api/gen'
 import { FavoriteMutationContext } from 'features/favorites/queries/types'
 import { MovieScreeningUserData } from 'features/offer/components/MovieScreeningCalendar/types'
+import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
+import { OfferBodyComponentProps, OfferImageContainerDimensions } from 'features/offer/types'
 import { EmptyResponse } from 'libs/fetch'
 import { ShareContent } from 'libs/share/types'
+import { Subcategory } from 'libs/subcategories/types'
+import { Offer } from 'shared/offer/types'
+import { ImageWithCredit } from 'shared/types'
 import { ModalSettings } from 'ui/components/modals/useModal'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 
@@ -42,6 +54,39 @@ export type OfferHeaderViewProps = {
   viewModel: OfferHeaderViewModel
   headerTransition: Animated.AnimatedInterpolation<string | number>
   children?: ReactNode
+}
+
+// OfferBody types
+
+export type UseOfferBodyParams = {
+  offer: OfferResponse
+  subcategory: Subcategory
+  searchGroupList: SearchGroupResponseModelv2[]
+  userId?: number
+}
+
+export type OfferBodyViewModel = {
+  offerImages: ImageWithCredit[]
+  placeholderImage: string | undefined
+  imageDimensions: OfferImageContainerDimensions
+  distance: string | null
+  sameCategorySimilarOffers?: Offer[]
+  apiRecoParamsSameCategory?: RecommendationApiParams
+  otherCategoriesSimilarOffers?: Offer[]
+  apiRecoParamsOtherCategories?: RecommendationApiParams
+  onSeeMoreButtonPress: (chronicleId: number) => void
+  onSeeAllReviewsPress: () => void
+  onViewableItemsChanged: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    playlistIndex?: number
+  ) => void
+}
+
+export type OfferBodyViewProps = Omit<OfferBodyComponentProps, 'chronicleVariantInfo'> & {
+  viewModel: OfferBodyViewModel
+  chronicleVariantInfo: ChronicleVariantInfo
 }
 
 type CTAProps = {

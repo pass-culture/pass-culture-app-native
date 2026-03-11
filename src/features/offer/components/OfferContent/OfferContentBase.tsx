@@ -35,12 +35,13 @@ import { OfferImageContainer } from 'features/offer/components/OfferImageContain
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
+import { DELAY_BEFORE_CONSIDERING_PAGE_SEEN } from 'features/offer/constants'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
-import { OfferContentProps } from 'features/offer/types'
+import { OfferBodyComponentProps, OfferContentProps } from 'features/offer/types'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import { useFunctionOnce } from 'libs/hooks'
@@ -76,8 +77,6 @@ type OfferContentBaseProps = OfferContentProps &
     isVideoSectionEnabled?: boolean
   }>
 
-const DELAY_BEFORE_CONSIDERING_PAGE_SEEN = 5000
-
 export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   offer,
   searchGroupList,
@@ -99,6 +98,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
   HeaderComponent,
+  BodyComponent,
   CTAsComponent,
   children,
 }) => {
@@ -286,6 +286,25 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     </OfferContentCTAs>
   )
 
+  const bodyComponentProps: OfferBodyComponentProps = {
+    offer,
+    subcategory,
+    searchGroupList,
+    chronicles,
+    chronicleVariantInfo,
+    headlineOffersCount,
+    isVideoSectionEnabled,
+    hasVideoCookiesConsent,
+    onVideoConsentPress,
+    isMultiArtistsEnabled,
+    onShowOfferArtistsModal,
+    onShowChroniclesWritersModal,
+    onOfferPreviewPress,
+    userId,
+    BodyWrapper,
+    desktopCTAs: theme.isDesktopViewport ? OfferCTAsComponent : null,
+  }
+
   return (
     <Container>
       <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
@@ -315,61 +334,69 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           ref={scrollViewRef}
           contentContainerStyle={contentContainerStyle}
           onScroll={handleScroll}>
-          <BodyWrapper>
-            <OfferImageContainer
-              images={offerImages}
-              categoryId={subcategory.categoryId}
-              onPress={onOfferPreviewPress}
-              placeholderImage={placeholderImage}
-              imageDimensions={imageDimensions}
-              offer={offer}
-            />
-            <OfferBody
-              offer={offer}
-              subcategory={subcategory}
-              likesCount={offer.reactionsCount.likes}
-              chroniclesCount={offer.chroniclesCount}
-              chronicles={chronicles}
-              distance={distance}
-              headlineOffersCount={headlineOffersCount}
-              chronicleVariantInfo={chronicleVariantInfo}
-              isVideoSectionEnabled={isVideoSectionEnabled}
-              hasVideoCookiesConsent={hasVideoCookiesConsent}
-              onVideoConsentPress={onVideoConsentPress}
-              isMultiArtistsEnabled={isMultiArtistsEnabled}
-              onShowOfferArtistsModal={onShowOfferArtistsModal}>
-              {theme.isDesktopViewport ? OfferCTAsComponent : null}
-            </OfferBody>
-          </BodyWrapper>
+          {BodyComponent ? (
+            <BodyComponent {...bodyComponentProps}>{children}</BodyComponent>
+          ) : (
+            <React.Fragment>
+              <BodyWrapper>
+                <OfferImageContainer
+                  images={offerImages}
+                  categoryId={subcategory.categoryId}
+                  onPress={onOfferPreviewPress}
+                  placeholderImage={placeholderImage}
+                  imageDimensions={imageDimensions}
+                  offer={offer}
+                />
+                <OfferBody
+                  offer={offer}
+                  subcategory={subcategory}
+                  likesCount={offer.reactionsCount.likes}
+                  chroniclesCount={offer.chroniclesCount}
+                  chronicles={chronicles}
+                  distance={distance}
+                  headlineOffersCount={headlineOffersCount}
+                  chronicleVariantInfo={chronicleVariantInfo}
+                  isVideoSectionEnabled={isVideoSectionEnabled}
+                  hasVideoCookiesConsent={hasVideoCookiesConsent}
+                  onVideoConsentPress={onVideoConsentPress}
+                  isMultiArtistsEnabled={isMultiArtistsEnabled}
+                  onShowOfferArtistsModal={onShowOfferArtistsModal}>
+                  {theme.isDesktopViewport ? OfferCTAsComponent : null}
+                </OfferBody>
+              </BodyWrapper>
 
-          {chronicles?.length ? (
-            <ChroniclesSectionWithAnchor
-              chronicles={chronicles}
-              chronicleVariantInfo={chronicleVariantInfo}
-              offer={offer}
-              onSeeMoreButtonPress={onSeeMoreButtonPress}
-              onShowChroniclesWritersModal={onShowChroniclesWritersModal}
-              onSeeAllReviewsPress={handleOnSeeAllReviewsPress}
-            />
-          ) : null}
-          <StyledSectionWithDivider
-            visible
-            margin
-            testID="messagingApp-container-with-divider"
-            gap={8}>
-            <OfferMessagingApps offer={offer} />
-          </StyledSectionWithDivider>
-          <OfferPlaylistList
-            offer={offer}
-            sameCategorySimilarOffers={sameCategorySimilarOffers}
-            apiRecoParamsSameCategory={apiRecoParamsSameCategory}
-            otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
-            apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
-            onViewableItemsChanged={handleViewableItemsChanged}
-          />
-          {children}
+              {chronicles?.length ? (
+                <ChroniclesSectionWithAnchor
+                  chronicles={chronicles}
+                  chronicleVariantInfo={chronicleVariantInfo}
+                  offer={offer}
+                  onSeeMoreButtonPress={onSeeMoreButtonPress}
+                  onShowChroniclesWritersModal={onShowChroniclesWritersModal}
+                  onSeeAllReviewsPress={handleOnSeeAllReviewsPress}
+                />
+              ) : null}
+              <StyledSectionWithDivider
+                visible
+                margin
+                testID="messagingApp-container-with-divider"
+                gap={8}>
+                <OfferMessagingApps offer={offer} />
+              </StyledSectionWithDivider>
+              <OfferPlaylistList
+                offer={offer}
+                sameCategorySimilarOffers={sameCategorySimilarOffers}
+                apiRecoParamsSameCategory={apiRecoParamsSameCategory}
+                otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
+                apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
+                onViewableItemsChanged={handleViewableItemsChanged}
+              />
+              {children}
+            </React.Fragment>
+          )}
         </IntersectionObserverScrollView>
-        {theme.isMobileViewport ? <FooterContainer>{OfferCTAsComponent}</FooterContainer> : null}
+        {!BodyComponent && theme.isMobileViewport ? (
+          <FooterContainer>{OfferCTAsComponent}</FooterContainer>
+        ) : null}
       </AnchorProvider>
     </Container>
   )

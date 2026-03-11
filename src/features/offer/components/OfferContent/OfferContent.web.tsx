@@ -29,6 +29,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
   HeaderComponent,
+  BodyComponent,
   CTAsComponent,
 }) => {
   const { visible, showModal, hideModal } = useModal(false)
@@ -89,6 +90,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           isMultiArtistsEnabled={isMultiArtistsEnabled}
           onShowOfferArtistsModal={onShowOfferArtistsModal}
           HeaderComponent={HeaderComponent}
+          BodyComponent={BodyComponent}
           CTAsComponent={CTAsComponent}>
           {comingSoonFooterHeight ? (
             <ComingSoonFooterOffset height={comingSoonFooterHeight} />

@@ -1,4 +1,4 @@
-import { ComponentType, PropsWithChildren, ReactNode } from 'react'
+import { ComponentType, PropsWithChildren, ReactElement, ReactNode } from 'react'
 import { Animated, LayoutChangeEvent } from 'react-native'
 
 import {
@@ -78,6 +78,27 @@ type OfferHeaderComponentProps = PropsWithChildren<{
   offer: OfferResponse
 }>
 
+export type OfferBodyComponentProps = {
+  offer: OfferResponse
+  subcategory: Subcategory
+  searchGroupList: SearchGroupResponseModelv2[]
+  chronicles?: ChronicleCardData[]
+  chronicleVariantInfo?: ChronicleVariantInfo
+  headlineOffersCount?: number
+  isVideoSectionEnabled?: boolean
+  hasVideoCookiesConsent?: boolean
+  onVideoConsentPress?: () => void
+  isMultiArtistsEnabled?: boolean
+  onShowOfferArtistsModal: (artists: OfferArtist[]) => void
+  onShowChroniclesWritersModal: () => void
+  onOfferPreviewPress: (index?: number) => void
+  userId?: number
+  // Strangler Fig: remove BodyWrapper and desktopCTAs when OfferContentBase is fully replaced
+  BodyWrapper?: ComponentType<PropsWithChildren>
+  desktopCTAs?: ReactElement | null
+  children?: ReactNode
+}
+
 type OfferCTAsComponentProps = {
   offer: OfferResponse
   subcategory: Subcategory
@@ -103,6 +124,7 @@ export type OfferContentProps = {
   onVideoConsentPress: VoidFunction
   isMultiArtistsEnabled?: boolean
   HeaderComponent?: ComponentType<OfferHeaderComponentProps>
+  BodyComponent?: ComponentType<OfferBodyComponentProps>
   CTAsComponent?: ComponentType<OfferCTAsComponentProps>
 }
 
