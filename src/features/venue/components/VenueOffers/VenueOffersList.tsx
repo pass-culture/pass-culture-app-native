@@ -61,6 +61,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   onViewableItemsChanged,
   advicesCardData,
   nbAdvices,
+  enableNewTagProAdvices,
 }) => {
   const theme = useTheme()
   const { user } = useAuthContext()
@@ -190,6 +191,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           nbAdvices={nbAdvices}
           venue={venue}
           onPressChronicleCardSeeMore={onPressChronicleCardSeeMore}
+          enableNewTagProAdvices={enableNewTagProAdvices}
         />
       ) : null}
       {shouldDisplayArtistsPlaylist ? (
