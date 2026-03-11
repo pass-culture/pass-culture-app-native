@@ -6,11 +6,17 @@ tags:
   - squad-activation
 onFlowStart:
   - runScript: subFolder/links/DeepLinks.js
+  - runScript:
+      file: subFolder/commons/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: '18'
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
 - runFlow: subFolder/commons/StopApp.yml
 - runFlow: subFolder/links/DeepLinksToProfile.yml
-- runFlow: subFolder/auth/LoginFromProfileForBeneficiaryUser.yml
+- runFlow: subFolder/auth/LoginFromProfileForGeneratedUser.yml
 - runFlow: subFolder/commons/GoToProfileFromTabBar.yml
 
 - runFlow: subFolder/profil/DeletionReactivation.yml

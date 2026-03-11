@@ -328,6 +328,7 @@ Voici la liste des valeurs possibles pour ces deux variables :
 | ------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `id_provider` | `DMS`, `EDUCONNECT`, `UBBLE` (défaut)                                                                            |
 | `step`        | `EMAIL_VALIDATION`, `PHONE_VALIDATION`, `PROFILE_COMPLETION`, `IDENTITY_CHECK`, `HONOR_STATEMENT`, `BENEFICIARY` |
+| `age`         | `15` à `20` (défaut : `18`)                                                                                      |
 
 ## Tester des trackers
 

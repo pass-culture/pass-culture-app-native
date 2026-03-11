@@ -4,6 +4,13 @@ tags:
   - local
   - nightlyAndroid
   - squad-conversion
+onFlowStart:
+  - runScript:
+      file: subFolder/commons/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: '18'
 ---
 - runFlow:
     when:
@@ -29,7 +36,7 @@ tags:
 
 - runFlow: subFolder/tutorial/onboarding/Onboard18.yml
 - runFlow: subFolder/commons/GoToProfileFromTabBar.yml
-- runFlow: subFolder/auth/LoginFromProfileForBeneficiaryUser.yml
+- runFlow: subFolder/auth/LoginFromProfileForGeneratedUser.yml
 
 - runFlow: subFolder/commons/GoToSearchFromTabBar.yml
 - runFlow: subFolder/search/SearchBookableCinemaOffer.yml
