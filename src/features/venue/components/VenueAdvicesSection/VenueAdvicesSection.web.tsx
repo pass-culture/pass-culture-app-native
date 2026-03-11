@@ -10,6 +10,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { Button } from 'ui/designSystem/Button/Button'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
+import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Show } from 'ui/svg/icons/Show'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -18,6 +19,7 @@ type Props = {
   venue: VenueResponse
   advicesCardData: ChronicleCardData[]
   nbAdvices: number
+  onShowWritersModal: () => void
   onPressChronicleCardSeeMore?: () => void
   enableNewTagProAdvices?: boolean
 }
@@ -26,6 +28,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
   venue,
   advicesCardData,
   nbAdvices,
+  onShowWritersModal,
   onPressChronicleCardSeeMore,
   enableNewTagProAdvices,
 }) => {
@@ -88,6 +91,19 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
           </SeeAllAdvicesContainer>
         </Gutter>
       ) : null}
+
+      <Gutter>
+        <WritersButtonContainer>
+          <Button
+            wording="Qui écrit les avis des pros&nbsp;?"
+            icon={InfoPlain}
+            onPress={onShowWritersModal}
+            variant="tertiary"
+            color="neutral"
+            size="small"
+          />
+        </WritersButtonContainer>
+      </Gutter>
     </React.Fragment>
   )
 }
@@ -125,7 +141,7 @@ const StyledChronicleCardlist = styled(ChronicleCardList).attrs<{
     paddingVertical: theme.designSystem.size.spacing.l,
     paddingBottom:
       theme.isDesktopViewport || (theme.isMobileViewport && !shouldDisplayAllAdvicesButton)
-        ? theme.designSystem.size.spacing.xl
+        ? theme.designSystem.size.spacing.l
         : undefined,
   },
   cardWidth: CHRONICLE_CARD_WIDTH,
@@ -133,7 +149,7 @@ const StyledChronicleCardlist = styled(ChronicleCardList).attrs<{
 }))``
 
 const SeeAllAdvicesContainer = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.l,
 }))
 
 const TagContainer = styled.View<{ shouldDisplayAllAdvicesButton: boolean }>(
@@ -149,3 +165,8 @@ const TagContainer = styled.View<{ shouldDisplayAllAdvicesButton: boolean }>(
     flexShrink: 0,
   })
 )
+
+const WritersButtonContainer = styled.View(({ theme }) => ({
+  alignSelf: theme.isDesktopViewport ? 'flex-start' : undefined,
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))

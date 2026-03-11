@@ -12,6 +12,7 @@ describe('VenueAdvicesSection', () => {
         advicesCardData={[...proAdvicesCardDataFixture]}
         nbAdvices={2}
         venue={venueDataTest}
+        onShowWritersModal={jest.fn()}
       />
     )
 
@@ -25,6 +26,7 @@ describe('VenueAdvicesSection', () => {
         advicesCardData={[...proAdvicesCardDataFixture]}
         nbAdvices={2}
         venue={venueDataTest}
+        onShowWritersModal={jest.fn()}
       />,
       { theme: { isDesktopViewport: true } }
     )

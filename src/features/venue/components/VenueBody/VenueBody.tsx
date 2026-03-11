@@ -38,6 +38,7 @@ interface Props {
   advicesCardData?: ChronicleCardData[]
   nbAdvices: number
   enableNewTagProAdvices?: boolean
+  onShowWritersModal: () => void
 }
 
 export const VenueBody: FunctionComponent<Props> = ({
@@ -53,6 +54,7 @@ export const VenueBody: FunctionComponent<Props> = ({
   advicesCardData,
   nbAdvices,
   enableNewTagProAdvices,
+  onShowWritersModal,
 }) => {
   const currency = useGetCurrencyToDisplay()
 
@@ -101,6 +103,7 @@ export const VenueBody: FunctionComponent<Props> = ({
           advicesCardData={advicesCardData}
           nbAdvices={nbAdvices}
           enableNewTagProAdvices={enableNewTagProAdvices}
+          onShowWritersModal={onShowWritersModal}
         />
       </React.Fragment>
     ),

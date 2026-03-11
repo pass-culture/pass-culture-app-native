@@ -158,6 +158,7 @@ const renderVenueBody = ({
         arePlaylistsLoading={arePlaylistsLoading}
         onViewableItemsChanged={jest.fn()}
         nbAdvices={nbAdvices}
+        onShowWritersModal={jest.fn()}
       />
     )
   )

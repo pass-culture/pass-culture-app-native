@@ -268,6 +268,7 @@ const renderVenueOffers = ({
             onViewableItemsChanged={jest.fn()}
             advicesCardData={advicesCardData}
             nbAdvices={nbAdvices}
+            onShowWritersModal={jest.fn()}
           />
         </OfferCTAProvider>
       </AnchorProvider>

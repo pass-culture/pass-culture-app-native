@@ -38,6 +38,7 @@ export interface VenueOffersProps {
   advicesCardData?: ChronicleCardData[]
   nbAdvices: number
   enableNewTagProAdvices?: boolean
+  onShowWritersModal: () => void
 }
 
 const LoadingState: React.FC = () => (
@@ -58,6 +59,7 @@ export function VenueOffers({
   advicesCardData,
   nbAdvices,
   enableNewTagProAdvices,
+  onShowWritersModal,
 }: Readonly<VenueOffersProps>) {
   const { userLocation, selectedLocationMode } = useLocation()
   const transformHits = useTransformOfferHits()
@@ -105,6 +107,7 @@ export function VenueOffers({
       advicesCardData={advicesCardData}
       nbAdvices={nbAdvices}
       enableNewTagProAdvices={enableNewTagProAdvices}
+      onShowWritersModal={onShowWritersModal}
     />
   )
 }
