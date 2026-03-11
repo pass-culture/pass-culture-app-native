@@ -39,7 +39,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
     <Row>
       <StyledTitle3
         {...getHeadingAttrs(3)}
-        numberOfLines={1}
+        numberOfLines={2}
         enableNewTagProAdvices={enableNewTagProAdvices}>
         {`Les avis par “${venue.name}”`}
       </StyledTitle3>

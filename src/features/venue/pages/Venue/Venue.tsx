@@ -22,7 +22,7 @@ import { VenueThematicSection } from 'features/venue/components/VenueThematicSec
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { getVenueOffersArtists } from 'features/venue/helpers/getVenueOffersArtists'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
-import { getAdvicesWithoutHeadline } from 'features/venue/helpers/venueAdvices'
+import { getAdvicesWithoutHeadline, getHeadlineAdvice } from 'features/venue/helpers/venueAdvices'
 import { useVenueProAdvicesQuery } from 'features/venue/queries/useVenueProAdvicesQuery'
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { Venue as VenueType } from 'features/venue/types'
@@ -155,7 +155,7 @@ export const Venue: FunctionComponent = () => {
       labelMapping,
       userLocation,
     },
-    advices: advices?.proAdvices,
+    advice: getHeadlineAdvice(advices?.proAdvices, venueOffers?.headlineOffer?.objectID),
   })
 
   useEffect(() => {
@@ -171,7 +171,7 @@ export const Venue: FunctionComponent = () => {
   const handleOnShowRecoButtonPress = () => {
     hideAdvicesWritersModal()
     runAfterInteractionsMobile(() => {
-      navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
+      navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'venue' })
     })
   }
 

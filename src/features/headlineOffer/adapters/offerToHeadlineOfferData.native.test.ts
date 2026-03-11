@@ -102,7 +102,7 @@ describe('offerToHeadlineOfferData', () => {
         euroToPacificFrancRate: 10,
         userLocation: { latitude: 1, longitude: 1 },
       },
-      advices: [...proAdvicesFixture],
+      advice: proAdvicesFixture[0],
     })
 
     expect(result?.advice).toEqual(proAdvicesFixture[0])

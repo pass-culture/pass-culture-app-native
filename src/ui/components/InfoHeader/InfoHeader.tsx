@@ -8,13 +8,13 @@ import { Typo } from 'ui/theme'
 
 type InfoHeaderProps = PropsWithChildren<{
   defaultThumbnailSize: number // use this prop as width when using height
+  defaultThumbnailHeight?: number
   title?: string
   subtitle?: string
   thumbnailComponent?: ReactNode
   placeholderIcon?: ReactNode
   rightComponent?: ReactNode
   style?: StyleProp<ViewStyle>
-  defaultThumbnailHeight?: number
 }>
 
 export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({

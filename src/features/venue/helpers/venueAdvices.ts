@@ -10,3 +10,9 @@ export const getAdvicesWithoutHeadline = (
 
   return index === -1 ? advices : advices.filter((_, i) => i !== index)
 }
+
+export const getHeadlineAdvice = (advices: VenueProAdvice[] = [], headlineOfferId?: string) => {
+  if (!headlineOfferId) return
+
+  return advices.find((a) => a.offerId.toString() === headlineOfferId)
+}

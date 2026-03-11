@@ -36,7 +36,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
     <React.Fragment>
       <Gutter>
         <Row>
-          <StyledTitle3 {...getHeadingAttrs(3)} numberOfLines={1}>
+          <StyledTitle3 {...getHeadingAttrs(3)} numberOfLines={2}>
             {`Les avis par “${venue.name}”`}
           </StyledTitle3>
           {enableNewTagProAdvices ? (

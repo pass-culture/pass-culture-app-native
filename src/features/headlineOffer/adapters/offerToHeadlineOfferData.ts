@@ -22,13 +22,13 @@ type OfferToHeadlineOfferData = {
 type OfferToHeadlineParams = {
   offer?: Offer
   transformParameters: OfferToHeadlineOfferData
-  advices?: VenueProAdvice[]
+  advice?: VenueProAdvice
 }
 
 export function offerToHeadlineOfferData({
   offer,
   transformParameters,
-  advices,
+  advice,
 }: OfferToHeadlineParams): HeadlineOfferData | null {
   if (!offer) return null
 
@@ -51,6 +51,6 @@ export function offerToHeadlineOfferData({
     category: labelMapping[hitOffer.subcategoryId] ?? '',
     price: displayedPrice,
     distance: formatDistance({ lat: _geoloc?.lat, lng: _geoloc?.lng }, userLocation),
-    advice: advices?.find((advice) => advice.offerId.toString() === objectID),
+    advice,
   }
 }

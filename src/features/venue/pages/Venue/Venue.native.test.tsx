@@ -177,7 +177,7 @@ describe('<Venue />', () => {
       await user.press(await screen.findByText('Voir tous les avis des pros', { hidden: true }))
 
       expect(navigate).toHaveBeenCalledWith('ThematicHome', {
-        from: 'chronicles',
+        from: 'venue',
         homeId: '4mlVpAZySUZO6eHazWKZeV',
       })
     })
