@@ -18,7 +18,7 @@ export const OfferBodyView = ({
   headlineOffersCount,
   isVideoSectionEnabled,
   hasVideoCookiesConsent,
-  onVideoConsentPress = () => {},
+  onVideoConsentPress = () => undefined,
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
   onShowChroniclesWritersModal,
