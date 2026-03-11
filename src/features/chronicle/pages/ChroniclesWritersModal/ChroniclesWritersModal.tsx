@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react'
 
-import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -11,14 +10,16 @@ type Props = {
   isVisible: boolean
   closeModal: VoidFunction
   onShowRecoButtonPress: VoidFunction
-  variantInfo: ChronicleVariantInfo
+  modalWording: string
+  buttonWording: string
 }
 
 export const ChroniclesWritersModal: FunctionComponent<Props> = ({
   isVisible,
   closeModal,
   onShowRecoButtonPress,
-  variantInfo,
+  modalWording,
+  buttonWording,
 }) => {
   return (
     <AppModal
@@ -29,13 +30,9 @@ export const ChroniclesWritersModal: FunctionComponent<Props> = ({
       rightIcon={Close}
       onRightIconPress={closeModal}>
       <ViewGap gap={6}>
-        <Typo.Body>{variantInfo.modalWording}</Typo.Body>
+        <Typo.Body>{modalWording}</Typo.Body>
 
-        <Button
-          wording="Voir tous les avis des clubs"
-          onPress={onShowRecoButtonPress}
-          color="brand"
-        />
+        <Button wording={buttonWording} onPress={onShowRecoButtonPress} color="brand" />
       </ViewGap>
     </AppModal>
   )
