@@ -26,7 +26,7 @@ export const usePatchProfileMutation = ({ onError, onSuccess }: Options) => {
       client.setQueryData(
         [QueryKeys.USER_PROFILE],
         (old: UserProfileResponseWithoutComputedStatus | undefined) => ({
-          ...(old ?? {}),
+          ...old,
           ...response,
         })
       )

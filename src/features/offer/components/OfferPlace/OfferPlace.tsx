@@ -38,7 +38,7 @@ const mergeVenueData =
     timezone: '',
     isOpenToPublic: venue.isOpenToPublic,
     isPermanent: venue.isPermanent,
-    ...(prevData ?? {}),
+    ...prevData,
   })
 
 export const OfferPlace: FC<OfferPlaceProps> = ({
