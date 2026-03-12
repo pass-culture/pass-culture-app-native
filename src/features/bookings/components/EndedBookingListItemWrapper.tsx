@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { BookingListItemResponse } from 'api/gen'
+import { BookingListItemResponse, ReactionTypeEnum } from 'api/gen'
 import { BookingListItem } from 'features/bookings/components/BookingListItem'
 import { BookingListItemLabel } from 'features/bookings/components/BookingListItemLabel'
 import { ENDED_BOOKING_REASONS } from 'features/bookings/constants'
@@ -45,6 +45,10 @@ export const EndedBookingListItemWrapper: FunctionComponent<EndedBookingProps> =
       prePopulateOffer,
     })
 
+  const shouldShowReactionButton =
+    booking.canReact &&
+    (booking.userReaction === null || booking.userReaction === ReactionTypeEnum.NO_REACTION)
+
   const { title } =
     ENDED_BOOKING_REASONS[
       getEndedBookingReason(
@@ -73,7 +77,7 @@ export const EndedBookingListItemWrapper: FunctionComponent<EndedBookingProps> =
           <BookingListItemLabel alert={!!booking.expirationDate} text={title} icon={icon} />
         </BookingListItem>
       </InternalTouchableLink>
-      {booking.canReact && booking.userReaction === null ? (
+      {shouldShowReactionButton ? (
         <LikeButtonContainer>
           <Button
             icon={ThumbUp}
