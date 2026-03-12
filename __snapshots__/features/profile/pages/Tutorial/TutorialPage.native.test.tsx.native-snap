@@ -46,6 +46,7 @@ exports[`TutorialPage should render correctly 1`] = `
       headerHeight={48}
       style={
         {
+          "alignItems": "flex-start",
           "height": 48,
           "justifyContent": "center",
           "paddingHorizontal": 12,

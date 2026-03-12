@@ -55,4 +55,5 @@ const GoBackContainer = styled.View<{ headerHeight: number }>(({ theme, headerHe
   justifyContent: 'center',
   height: headerHeight,
   paddingHorizontal: theme.designSystem.size.spacing.m,
+  alignItems: 'flex-start',
 }))

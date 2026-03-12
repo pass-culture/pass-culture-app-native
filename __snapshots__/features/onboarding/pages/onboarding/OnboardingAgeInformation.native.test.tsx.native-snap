@@ -46,6 +46,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
       headerHeight={48}
       style={
         {
+          "alignItems": "flex-start",
           "height": 48,
           "justifyContent": "center",
           "paddingHorizontal": 12,
@@ -1086,6 +1087,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
       headerHeight={48}
       style={
         {
+          "alignItems": "flex-start",
           "height": 48,
           "justifyContent": "center",
           "paddingHorizontal": 12,
