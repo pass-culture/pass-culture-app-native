@@ -32,6 +32,7 @@ import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.c
 import { Network } from 'libs/share/types'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Offer } from 'shared/offer/types'
+import * as useABSegment from 'shared/useABSegment/useABSegment'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
@@ -91,6 +92,19 @@ mockUseGTLPlaylists.mockReturnValue({
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
+const useABSegmentSpy = jest.spyOn(useABSegment, 'useABSegment')
+
+const mockUseDeviceInfo = jest.fn().mockReturnValue({
+  deviceId: 'device-id',
+  os: 'iOS',
+  resolution: '1080x1920',
+  source: 'iPhone 13',
+  screenZoomLevel: undefined,
+  fontScale: 1.5,
+})
+jest.mock('features/trustedDevice/helpers/useDeviceInfo', () => ({
+  useDeviceInfo: () => mockUseDeviceInfo(),
+}))
 
 const user = userEvent.setup()
 
@@ -157,6 +171,7 @@ describe('<Venue />', () => {
         proAdvices: [...venueProAdvicesFixture.proAdvices],
         nbResults: venueProAdvicesFixture.nbResults,
       })
+      useABSegmentSpy.mockReturnValueOnce('A')
     })
 
     it('should open the advices writers modal when pressing "Qui écrit les avis des pros ?" button', async () => {
@@ -180,6 +195,19 @@ describe('<Venue />', () => {
         from: 'venue',
         homeId: '4mlVpAZySUZO6eHazWKZeV',
       })
+    })
+
+    it('should display advices section when AB testing segment is A', async () => {
+      renderVenue(venueId)
+
+      expect(await screen.findByText(`Les avis par “${venueDataTest.name}”`)).toBeOnTheScreen()
+    })
+
+    it('should not display advices section when AB testing segment is B', () => {
+      useABSegmentSpy.mockReturnValueOnce('B')
+      renderVenue(venueId)
+
+      expect(screen.queryByText(`Les avis par “${venueDataTest.name}”`)).not.toBeOnTheScreen()
     })
   })
 

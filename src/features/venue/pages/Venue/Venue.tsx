@@ -43,6 +43,7 @@ import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -145,6 +146,7 @@ export const Venue: FunctionComponent = () => {
   const enableVenueCalendar = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VENUE_CALENDAR)
   const shouldDisplayVenueCalendar = enableVenueCalendar && venueOffers?.hits.length === 1
   const enableAccesLibre = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE)
+  const segment = useABSegment(['A', 'B'])
 
   const headlineOfferData = offerToHeadlineOfferData({
     offer: venueOffers?.headlineOffer,
@@ -190,11 +192,15 @@ export const Venue: FunctionComponent = () => {
             enableAccesLibre={enableAccesLibre}
             shouldDisplayVenueCalendar={shouldDisplayVenueCalendar}
             onViewableItemsChanged={handleViewableItemsChanged}
-            advicesCardData={proAdvicesToChronicleCardData(
-              getAdvicesWithoutHeadline(advices?.proAdvices, headlineOfferData?.id),
-              subcategoriesMapping
-            )}
-            nbAdvices={nbAdvices}
+            advicesCardData={
+              segment === 'A'
+                ? proAdvicesToChronicleCardData(
+                    getAdvicesWithoutHeadline(advices?.proAdvices, headlineOfferData?.id),
+                    subcategoriesMapping
+                  )
+                : undefined
+            }
+            nbAdvices={advices?.nbResults ?? 0}
             enableNewTagProAdvices={enableNewTagProAdvices}
             onShowWritersModal={showAdvicesWritersModal}
           />
