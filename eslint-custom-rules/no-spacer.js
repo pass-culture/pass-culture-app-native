@@ -2,14 +2,12 @@ module.exports = {
   meta: {
     type: 'suggestion',
     docs: {
-      description: 'Forbids the use of Spacer.Column and Spacer.Flex components',
+      description: 'Forbids the use of Spacer.Column components',
       recommended: true,
     },
     messages: {
       noSpacerColumn:
         'Do not use Spacer.Column component. Use `gap` (`ViewGap`), `margin` or `padding` instead.',
-      noSpacerFlex:
-        'Do not use Spacer.Flex component. Add the `flex` property directly to your styles.',
     },
   },
   create(context) {

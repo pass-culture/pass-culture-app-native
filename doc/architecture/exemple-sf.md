@@ -257,7 +257,6 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(functi
     () => (
       <View testID="listHeader">
         {Header}
-        <Spacer.Column numberOfSpaces={6} />
         {shouldDisplayVideoInHeader && videoCarouselModules[0] ? (
           <VideoCarouselModule
             index={0}
@@ -329,7 +328,6 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(functi
     () => (
       <View testID="listHeader">
         {Header}
-        <Spacer.Column numberOfSpaces={6} />
         {/* Utilisation du booléen calculé par la fonction pure */}
         {shouldDisplayVideoInHeader && videoCarouselModules[0] ? (
           <VideoCarouselModule
@@ -539,7 +537,6 @@ export function useHomeViewModel(initialModules: HomepageModule[], homeId: strin
     () => (
       <View testID="listHeader">
         {Header}
-        <Spacer.Column numberOfSpaces={6} />
         {shouldDisplayVideoInHeader && videoCarouselModules[0] ? (
           <VideoCarouselModule
             index={0}
@@ -683,7 +680,6 @@ export const HomeListHeader: FunctionComponent<HomeListHeaderProps> = ({
   return (
     <View testID="listHeader">
       {Header}
-      <Spacer.Column numberOfSpaces={6} />
       {shouldDisplayVideoInHeader && videoCarouselModules[0] ? (
         <VideoCarouselModule
           index={0}

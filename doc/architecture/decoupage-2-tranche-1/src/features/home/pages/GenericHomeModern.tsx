@@ -97,7 +97,6 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(functi
     () => (
       <View testID="listHeader">
         {Header}
-        <Spacer.Column numberOfSpaces={6} />
         {shouldDisplayVideoInHeader && videoCarouselModules[0] ? (
           <VideoCarouselModule
             index={0}
