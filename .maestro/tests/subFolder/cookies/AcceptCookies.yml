@@ -2,17 +2,17 @@ appId: ${MAESTRO_APP_ID}
 ---
 - runFlow:
     when:
-      visible: "J’accède au pass Culture sans mettre à jour mon navigateur"
+      visible: ${output.wording.common.browserUpdate}
     commands:
-    - tapOn: "J’accède au pass Culture sans mettre à jour mon navigateur"
+    - tapOn: ${output.wording.common.browserUpdate}
 - runFlow:
     when:
-      visible: 'Autorisez-vous.*'
+      visible: ${output.wording.common.ios.permissionRegex}
       platform: iOS
     commands:
-    - tapOn: "Autoriser"
-- assertVisible: 'Respect de ta vie privée'
-- tapOn: 'Tout accepter'
+    - tapOn: ${output.wording.common.ios.allow}
+- assertVisible: ${output.wording.cookies.consent.title}
+- tapOn: ${output.wording.cookies.consent.acceptAll}
 - tapOn: 
-    text: 'Autoriser'
+    text: ${output.wording.common.ios.allow}
     optional: true

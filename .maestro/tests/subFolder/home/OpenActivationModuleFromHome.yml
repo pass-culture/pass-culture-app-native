@@ -1,6 +1,6 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- assertVisible: "Bienvenue\_!"
+- assertVisible: ${output.wording.common.welcome}
 - waitForAnimationToEnd
 - assertVisible: 'Débloque ton crédit'
 - runFlow:
@@ -14,5 +14,5 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - tapOn:
           id: 'Unlock'
-- assertVisible: 'Inscription'
+- assertVisible: ${output.wording.auth.signup.title}
 - assertVisible: 'Crée-toi un compte'

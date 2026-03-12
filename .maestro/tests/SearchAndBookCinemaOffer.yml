@@ -4,6 +4,8 @@ tags:
   - local
   - nightlyAndroid
   - squad-conversion
+onFlowStart:
+  - runScript: subFolder/commons/wording.js
 ---
 - runFlow:
     when:

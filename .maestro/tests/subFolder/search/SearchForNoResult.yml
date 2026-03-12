@@ -1,33 +1,33 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- assertVisible: 'Rechercher'
+- assertVisible: ${output.wording.search.title}
 
 - runFlow:
     when:
-      visible: 'Ma position'
+      visible: ${output.wording.search.myPosition}
     commands:
-      - tapOn: 'Ma position'
-      - tapOn: 'Localisation – Liste - Élément 3 sur 3 - France entière.*'
+      - tapOn: ${output.wording.search.myPosition}
+      - tapOn: ${output.wording.search.franceEntire}
 
-- tapOn: 'Champs de texte - Rechercher dans le catalogue'
+- tapOn: ${output.wording.search.searchInCatalogue}
 
 - inputText: 'totototototo'
 - pressKey: Enter
 
-- assertVisible: 'Pas de résultat'
+- assertVisible: ${output.wording.search.noResult}
 - assertVisible: 'pour "totototototo"'
 
 - tapOn:
-    id: 'Voir tous les filtres'
-- tapOn: '.*Prix.*'
+    id: ${output.wording.search.filters.all}
+- tapOn: ${output.wording.search.filters.price}
 - tapOn:
-    id: 'Entrée pour le prix maximum'
+    id: ${output.wording.search.filters.maxPriceId}
 - inputText: '50'
 - pressKey: Enter
-- tapOn: 'Appliquer le filtre'
+- tapOn: ${output.wording.search.filters.apply}
 
-- tapOn: '.*Accessibilité.*'
+- tapOn: ${output.wording.search.filters.accessibility}
 
-- tapOn: 'Appliquer le filtre'
+- tapOn: ${output.wording.search.filters.apply}
 
-- tapOn: 'Rechercher'
+- tapOn: ${output.wording.search.title}

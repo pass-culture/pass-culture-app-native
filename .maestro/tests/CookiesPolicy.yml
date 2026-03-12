@@ -4,6 +4,8 @@ tags:
   - nightlyIOS
   - local
   - squad-activation
+onFlowStart:
+  - runScript: subFolder/commons/wording.js
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
 - runFlow: subFolder/cookies/SelectOneCookie.yml

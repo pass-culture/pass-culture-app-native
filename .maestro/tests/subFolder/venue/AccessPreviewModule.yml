@@ -16,27 +16,27 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-    - tapOn: "Voir l’illustration en plein écran"
+    - tapOn: ${output.wording.venue.illustration}
 
 - runFlow:
     when:
-      visible: 'Illustration 1 sur 2'
+      visible: ${output.wording.venue.illustration1of2}
     commands:
       - assertVisible:
-          text: Illustration 1 sur 2
+          text: ${output.wording.venue.illustration1of2}
       - swipe:
           direction: LEFT
       - assertVisible:
-          text: Illustration 2 sur 2
+          text: ${output.wording.venue.illustration2of2}
       - swipe:
           direction: RIGHT
 
 - runFlow:
     when:
-      notVisible: 'Illustration 1 sur 2'
+      notVisible: ${output.wording.venue.illustration1of2}
     commands:
       - assertVisible:
-          text: Illustration 1 sur 1
+          text: ${output.wording.venue.illustration1of1}
 
-- tapOn: Revenir en arrière
-- tapOn: Revenir en arrière
+- tapOn: ${output.wording.common.backButton}
+- tapOn: ${output.wording.common.backButton}

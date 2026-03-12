@@ -1,19 +1,19 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- assertVisible: 'Rechercher'
+- assertVisible: ${output.wording.search.title}
 - runFlow:
     when:
-      visible: 'Ma position'
+      visible: ${output.wording.search.myPosition}
     commands:
-      - tapOn: 'Ma position'
-      - tapOn: 'Localisation – Liste - Élément 3 sur 3 - France entière.*'
+      - tapOn: ${output.wording.search.myPosition}
+      - tapOn: ${output.wording.search.franceEntire}
 
 - swipe:
     from:
-      text: 'Les offres'
+      text: ${output.wording.search.offersTitle}
     direction: UP
 - tapOn:
-    text: 'CD'
+    text: ${output.wording.search.cdType}
     index: 2
 
 - waitForAnimationToEnd
@@ -23,19 +23,19 @@ appId: ${MAESTRO_APP_ID}
       platform: Android
     commands:
       - tapOn:
-          id: sticky-booking-button
+          id: ${output.wording.booking.stickyButtonId}
 - runFlow:
     when:
       platform: iOS
     commands:
       - tapOn:
-          id: sticky-booking-button
+          id: ${output.wording.booking.stickyButtonId}
 
-- assertVisible: 'Détails de la réservation'
-- assertVisible: 'Informations'
-- assertVisible: 'Lieu de retrait'
-- assertVisible: 'Conditions d’annulation'
-- assertVisible: 'Conditions d’utilisation'
-- assertVisible: 'Nos conditions générales d’utilisation'
+- assertVisible: ${output.wording.booking.detailsTitle}
+- assertVisible: ${output.wording.booking.info}
+- assertVisible: ${output.wording.booking.location}
+- assertVisible: ${output.wording.booking.cancelConditions}
+- assertVisible: ${output.wording.booking.useConditions}
+- assertVisible: ${output.wording.booking.generalConditions}
 
-- tapOn: 'Fermer la modale'
+- tapOn: ${output.wording.booking.closeModal}

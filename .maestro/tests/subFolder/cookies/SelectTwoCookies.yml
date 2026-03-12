@@ -2,38 +2,38 @@ appId: ${MAESTRO_APP_ID}
 ---
 - runFlow:
     when:
-      visible: 'Autorisez-vous.*'
+      visible: ${output.wording.common.ios.permissionRegex}
       platform: iOS
     commands:
-      - tapOn: 'Autoriser'
-- assertVisible: 'Respect de ta vie privée'
-- tapOn: 'Choisir les cookies'
+      - tapOn: ${output.wording.common.ios.allow}
+- assertVisible: ${output.wording.cookies.consent.title}
+- tapOn: ${output.wording.cookies.consent.choose}
 
-- assertVisible: 'Réglages des cookies'
-- assertVisible: 'Je choisis mes cookies'
+- assertVisible: ${output.wording.cookies.settings.title}
+- assertVisible: ${output.wording.cookies.settings.subtitle}
 - scrollUntilVisible:
     element:
-      text: '.*politique de gestion des cookies'
-- tapOn: '.*politique de gestion des cookies'
+      text: ${output.wording.cookies.settings.policyLink}
+- tapOn: ${output.wording.cookies.settings.policyLink}
 
 - back
 
 - tapOn:
-    id: 'Revenir à l’étape précédente'
+    id: ${output.wording.common.back}
 
-- assertVisible: 'Respect de ta vie privée'
-- tapOn: 'Choisir les cookies'
+- assertVisible: ${output.wording.cookies.consent.title}
+- tapOn: ${output.wording.cookies.consent.choose}
 
-- assertVisible: 'Réglages des cookies'
-- assertVisible: 'Je choisis mes cookies'
+- assertVisible: ${output.wording.cookies.settings.title}
+- assertVisible: ${output.wording.cookies.settings.subtitle}
 - tapOn:
-    id: 'Personnaliser ta navigation - Interrupteur à bascule - non coché'
+    id: ${output.wording.cookies.switches.customization.off}
 - assertVisible:
-    id: 'Personnaliser ta navigation - Interrupteur à bascule - coché'
+    id: ${output.wording.cookies.switches.customization.on}
     enabled: true
 - tapOn:
-    id: 'Enregistrer des statistiques de navigation - Interrupteur à bascule - non coché'
+    id: ${output.wording.cookies.switches.statistics.off}
 - assertVisible:
-    id: 'Enregistrer des statistiques de navigation - Interrupteur à bascule - coché'
+    id: ${output.wording.cookies.switches.statistics.on}
     enabled: true
-- tapOn: 'Enregistrer mes choix'
+- tapOn: ${output.wording.cookies.settings.save}

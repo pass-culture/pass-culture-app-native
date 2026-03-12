@@ -17,4 +17,4 @@ appId: app.passculture.webapp
         link: ${output.links.staging.ios.home}
         autoVerify: true
 - runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
-- assertVisible: "Bienvenue\_!"
+- assertVisible: ${output.wording.common.welcome}

@@ -1,5 +1,5 @@
 appId: team.passculture.app.staging
 ---
-- assertVisible: "Identifie-toi pour retrouver tes favoris"
-- assertVisible: "Créer un compte"
-- assertVisible: "Se connecter"
+- assertVisible: ${output.wording.favorite.unloggedTitle}
+- assertVisible: ${output.wording.common.createAccount}
+- assertVisible: ${output.wording.auth.login.button}

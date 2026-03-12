@@ -4,15 +4,15 @@ appId: app.passculture.webapp
 
 - repeat:
     while:
-      visible: "Respect de ta vie privée"
+      visible: ${output.wording.cookies.consent.title}
     commands:
       - tapOn:
-          text: 'Tout accepter'
+          text: ${output.wording.cookies.consent.acceptAll}
           optional: true
 
 - runFlow:
     when:
-      visible: 'Autorisez-vous.*'
+      visible: ${output.wording.common.ios.permissionRegex}
       platform: iOS
     commands:
-    - tapOn: "Autoriser"
+    - tapOn: ${output.wording.common.ios.allow}

@@ -2,7 +2,7 @@ appId: ${MAESTRO_APP_ID}
 ---
 - scrollUntilVisible:
     element:
-      text: 'République Française - Liberté Égalité Fraternité'
-- tapOn: 'Déconnexion'
+      text: ${output.wording.auth.logout.footer}
+- tapOn: ${output.wording.auth.logout.button}
 
-- assertVisible: "Créer un compte"
+- assertVisible: ${output.wording.common.createAccount}

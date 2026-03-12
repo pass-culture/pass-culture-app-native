@@ -1,28 +1,28 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- assertVisible: 'Rechercher'
+- assertVisible: ${output.wording.search.title}
 - swipe:
     from:
-      text: 'Les offres'
+      text: ${output.wording.search.offersTitle}
     direction: UP
 - tapOn:
-    text: "Abonnement presse en ligne"
+    text: ${output.wording.search.digitalSubscription}
     index: 2
 
 - runFlow:
     when:
-      visible: "Réserver l’offre"
+      visible: ${output.wording.booking.button}
     commands:
-    - tapOn: "Réserver l’offre"
+      - tapOn: ${output.wording.booking.button}
 
 - runFlow:
     when:
-      visible: 'Accéder à l’offre en ligne'
+      visible: ${output.wording.booking.onlineAccess}
     commands:
-    - assertVisible: 'Accéder à l’offre en ligne'
-    
+      - assertVisible: ${output.wording.booking.onlineAccess}
+
 - runFlow:
     when:
-      visible: "Tu y es presque"
+      visible: ${output.wording.booking.almostThere}
     commands:
-    - assertVisible: "Tu y es presque"
+      - assertVisible: ${output.wording.booking.almostThere}

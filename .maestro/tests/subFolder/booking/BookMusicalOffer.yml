@@ -1,12 +1,12 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- assertVisible: 'Rechercher'
+- assertVisible: ${output.wording.search.title}
 - runFlow:
     when:
-      visible: 'Ma position'
+      visible: ${output.wording.search.myPosition}
     commands:
-      - tapOn: 'Ma position'
-      - tapOn: 'Localisation – Liste - Élément 3 sur 3 - France entière.*'
+      - tapOn: ${output.wording.search.myPosition}
+      - tapOn: ${output.wording.search.franceEntire}
 
 - runFlow:
     label: 'Swipe vers les offres pour éviter tap sur la tabBar'
@@ -22,61 +22,61 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - swipe:
-        from:
-          text: 'Les offres'
-        direction: UP
+      - swipe:
+          from:
+            text: ${output.wording.search.offersTitle}
+          direction: UP
 
-- tapOn: 'CD'
+- tapOn: ${output.wording.search.cdType}
 
 - runFlow:
     when:
-      visible: 'Voir ma réservation'
+      visible: ${output.wording.booking.viewBooking}
     commands:
-      - tapOn: 'Voir ma réservation'
+      - tapOn: ${output.wording.booking.viewBooking}
       - scrollUntilVisible:
-          element: 'Annuler ma réservation'
-      - tapOn: 'Annuler ma réservation' # TODO(PC-36108) améliorer les perfs pour éviter de devoir cliquer deux fois sur ce bouton
-      - tapOn: 'Annuler ma réservation'
+          element: ${output.wording.booking.cancel}
+      - tapOn: ${output.wording.booking.cancel} # TODO(PC-36108) améliorer les perfs pour éviter de devoir cliquer deux fois sur ce bouton
+      - tapOn: ${output.wording.booking.cancel}
 
 - runFlow:
     when:
       platform: Android
     commands:
       - tapOn:
-          id: sticky-booking-button
+          id: ${output.wording.booking.stickyButtonId}
 - runFlow:
     when:
       platform: iOS
     commands:
-      - tapOn: 'Réserver l’offre'
+      - tapOn: ${output.wording.booking.button}
 
-- assertVisible: 'Détails de la réservation'
-- tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire'
+- assertVisible: ${output.wording.booking.detailsTitle}
+- tapOn: ${output.wording.booking.termsId}
 - runFlow:
     when:
       platform: Android
     commands:
       - scrollUntilVisible:
-          element: 'Confirmer la réservation'
+          element: ${output.wording.booking.confirm}
 - runFlow:
     when:
       platform: iOS
     commands:
       - scroll
-- doubleTapOn: '.*Confirmer la réservation.*'
+- doubleTapOn: ${output.wording.booking.confirm}
 
-- assertVisible: "Réservation confirmée\_!"
-- tapOn: 'Voir ma réservation'
+- assertVisible: ${output.wording.booking.confirmed}
+- tapOn: ${output.wording.booking.viewBooking}
 
 - runFlow:
     when:
       platform: iOS
-      visible: 'Plus tard'
+      visible: ${output.wording.common.later}
     commands:
-      - tapOn: 'Plus tard'
+      - tapOn: ${output.wording.common.later}
 
 - scrollUntilVisible:
-    element: 'Annuler ma réservation'
-- tapOn: 'Annuler ma réservation'
-- tapOn: 'Annuler ma réservation'
+    element: ${output.wording.booking.cancel}
+- tapOn: ${output.wording.booking.cancel}
+- tapOn: ${output.wording.booking.cancel}

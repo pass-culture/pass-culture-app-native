@@ -1,43 +1,43 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible:
-    id: "Trier"
+    id: ${output.wording.favorite.sortButton}
 - tapOn:
-    id: "Trier"
+    id: ${output.wording.favorite.sortButton}
 
-- assertVisible: "Trier par"
-- assertVisible: ".*Ajouté récemment.*"
-- assertVisible: ".*Prix croissant.*"
-- assertVisible: ".*Proximité géographique.*"
+- assertVisible: ${output.wording.favorite.sortTitle}
+- assertVisible: ${output.wording.favorite.sortRecentlyAdded}
+- assertVisible: ${output.wording.favorite.sortPriceAsc}
+- assertVisible: ${output.wording.favorite.sortProximity}
 
-- tapOn: ".*Prix croissant.*"
-- tapOn: "Valider"
+- tapOn: ${output.wording.favorite.sortPriceAsc}
+- tapOn: ${output.wording.favorite.validate}
 
-- assertVisible: "3 favoris"
+- assertVisible: ${output.wording.favorite.count}
 - tapOn:
-    id: "Trier"
+    id: ${output.wording.favorite.sortButton}
 
-- tapOn: ".*Proximité géographique.*"
+- tapOn: ${output.wording.favorite.sortProximity}
 
 - runFlow:
     when:
-      visible: "Activer la géolocalisation"
+      visible: ${output.wording.favorite.location.activate}
     commands:
-    - tapOn: "Activer la géolocalisation"
-    - tapOn: "Autorisations"
-    - tapOn: "Position"
-    - tapOn: "Autoriser seulement si l'appli est utilisée"
+    - tapOn: ${output.wording.favorite.location.activate}
+    - tapOn: ${output.wording.favorite.location.permissions}
+    - tapOn: ${output.wording.favorite.location.position}
+    - tapOn: ${output.wording.favorite.location.allowWhileUsing}
     - pressKey: back
     - pressKey: back
     - pressKey: back
 
-- tapOn: ".*Proximité géographique.*"
-- tapOn: "Valider"
+- tapOn: ${output.wording.favorite.sortProximity}
+- tapOn: ${output.wording.favorite.validate}
 
-- assertVisible: "3 favoris"
+- assertVisible: ${output.wording.favorite.count}
 - tapOn:
-    id: "Trier"
+    id: ${output.wording.favorite.sortButton}
 
-- tapOn: ".*Ajouté récemment.*"
-- tapOn: "Valider"
-- assertVisible: "3 favoris"
+- tapOn: ${output.wording.favorite.sortRecentlyAdded}
+- tapOn: ${output.wording.favorite.validate}
+- assertVisible: ${output.wording.favorite.count}

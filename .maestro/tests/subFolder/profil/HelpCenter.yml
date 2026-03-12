@@ -2,16 +2,16 @@ appId: ${MAESTRO_APP_ID}
 ---
 - scrollUntilVisible:
     element:
-      text: 'Autres'
-- assertVisible: 'Aide'
-- tapOn: "Nouvelle fenêtre\_: Chercher une info"
+      text: ${output.wording.profil.legal.others}
+- assertVisible: ${output.wording.profil.helpCenter.title}
+- tapOn: ${output.wording.profil.helpCenter.searchInfo}
 
 - runFlow: # Si 1ere ouverture de chrome
     when:
-      visible: "Utiliser l'appli sans compte"
+      visible: ${output.wording.profil.helpCenter.unloggedFallback}
     commands:
-      - tapOn: "Utiliser l'appli sans compte"
-      - tapOn: "Non, merci"
+      - tapOn: ${output.wording.profil.helpCenter.unloggedFallback}
+      - tapOn: ${output.wording.common.noThanks}
       - pressKey: back
 
 - runFlow:
@@ -23,4 +23,4 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-      - tapOn: "Revenir à pass Culture S"
+      - tapOn: ${output.wording.profil.helpCenter.backToPass}

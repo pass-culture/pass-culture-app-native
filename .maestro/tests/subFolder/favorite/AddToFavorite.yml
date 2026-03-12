@@ -1,9 +1,9 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - tapOn:
-    id: 'Mettre en favori'
+    id: ${output.wording.favorite.addFavoriteId}
 - tapOn:
-    id: 'Revenir en arrière'
+    id: ${output.wording.common.backButton}
 
 - scroll
 
@@ -12,7 +12,7 @@ appId: ${MAESTRO_APP_ID}
       platform: iOS
     commands:
       - tapOn:
-          text: "CD"
+          text: ${output.wording.search.cdType}
           index: 3
 
 - runFlow:
@@ -20,64 +20,64 @@ appId: ${MAESTRO_APP_ID}
       platform: Android
     commands:
     - tapOn:
-        text: 'CD'
+        text: ${output.wording.search.cdType}
         index: 1
 
 - runFlow:
     when:
       platform: Android
       visible:
-        id: 'Retirer des favoris'
+        id: ${output.wording.favorite.removeFavoriteId}
     commands:
       - tapOn:
-          id: "Revenir en arrière"
+          id: ${output.wording.common.backButton}
       - scroll
       - tapOn:
-          text: 'CD'
+          text: ${output.wording.search.cdType}
           index: 3
 
 - runFlow:
     when:
       platform: iOS
       visible:
-        id: 'Retirer des favoris'
+        id: ${output.wording.favorite.removeFavoriteId}
     commands:
       - tapOn:
-          id: "Revenir en arrière"
+          id: ${output.wording.common.backButton}
       - scroll
       - tapOn:
-          text: "CD"
+          text: ${output.wording.search.cdType}
 
 - tapOn:
-    id: 'Mettre en favori'
+    id: ${output.wording.favorite.addFavoriteId}
 - tapOn:
-    id: 'Revenir en arrière'
+    id: ${output.wording.common.backButton}
 
 - scroll
 - runFlow:
     when:
       platform: Android
       visible:
-        id: 'Retirer des favoris'
+        id: ${output.wording.favorite.removeFavoriteId}
     commands:
       - tapOn:
-          id: "Revenir en arrière"
+          id: ${output.wording.common.backButton}
       - scroll
       - tapOn:
-          text: 'CD'
+          text: ${output.wording.search.cdType}
           index: 3
 
 - runFlow:
     when:
       platform: iOS
       visible:
-        id: 'Retirer des favoris'
+        id: ${output.wording.favorite.removeFavoriteId}
     commands:
       - tapOn:
-          id: "Revenir en arrière"
+          id: ${output.wording.common.backButton}
       - scroll
       - tapOn:
-          text: "CD"
+          text: ${output.wording.search.cdType}
           index: 3
 
 - runFlow:
@@ -86,22 +86,22 @@ appId: ${MAESTRO_APP_ID}
     commands:
     - scroll
     - tapOn: 
-        text: "CD"
+        text: ${output.wording.search.cdType}
         index: 3
     - tapOn:
-        id: 'Mettre en favori'
+        id: ${output.wording.favorite.addFavoriteId}
     - tapOn:
-        id: "Revenir en arrière"
+        id: ${output.wording.common.backButton}
 
 - runFlow:
     when:
       platform: Android
     commands:
     - tapOn:
-        text: 'CD'
+        text: ${output.wording.search.cdType}
         index: 2
     - tapOn:
-        id: 'Mettre en favori'
+        id: ${output.wording.favorite.addFavoriteId}
     - tapOn:
-        id: 'Revenir en arrière'
+        id: ${output.wording.common.backButton}
         retryTapIfNoChange: false

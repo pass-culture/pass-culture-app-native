@@ -1,7 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- tapOn: "Voir tous les filtres : 1 filtre actif"
-- tapOn: ".*Prix.*"
-- tapOn: "Réinitialiser"
-- tapOn: 'Appliquer le filtre'
-- tapOn: 'Rechercher'
+- tapOn: ${output.wording.search.filters.active}
+- tapOn: ${output.wording.search.filters.price}
+- tapOn: ${output.wording.search.filters.reset}
+- tapOn: ${output.wording.search.filters.apply}
+- tapOn: ${output.wording.search.title}

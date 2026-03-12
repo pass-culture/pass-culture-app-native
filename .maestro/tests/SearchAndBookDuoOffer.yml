@@ -6,6 +6,7 @@ tags:
   - squad-conversion
 onFlowStart:
   - runScript: subFolder/links/DeepLinks.js
+  - runScript: subFolder/commons/wording.js
 ---
 - runFlow:
     when:

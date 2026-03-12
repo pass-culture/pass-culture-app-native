@@ -2,46 +2,46 @@ appId: ${MAESTRO_APP_ID}
 ---
 - scrollUntilVisible:
     element:
-      text: 'Confidentialité'
-- tapOn: 'Accessibilité'
-- assertVisible: 'Accessibilité'
+      text: ${output.wording.profil.confidentiality.title}
+- tapOn: ${output.wording.profil.accessibility.title}
+- assertVisible: ${output.wording.profil.accessibility.title}
 
-- tapOn: 'Plan du site'
-- assertVisible: 'Plan du site'
+- tapOn: ${output.wording.profil.accessibility.sitemap}
+- assertVisible: ${output.wording.profil.accessibility.sitemap}
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - tapOn:
-    text: 'Nouvelle fenêtre : Les engagements du pass Culture'
+    text: ${output.wording.profil.accessibility.commitments}
     index: 0
-- assertVisible: 'Accessibilité'
-- assertVisible: "L'accessibilité au pass Culture"
+- assertVisible: ${output.wording.profil.accessibility.title}
+- assertVisible: ${output.wording.profil.accessibility.passAccessibility}
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
-- tapOn: 'Nouvelle fenêtre : Schéma pluriannuel'
-- assertVisible: 'Schéma pluriannuel.*'
-- assertVisible: 'Introduction'
+- tapOn: ${output.wording.profil.accessibility.multiannualScheme}
+- assertVisible: ${output.wording.profil.accessibility.multiannualSchemeTitle}
+- assertVisible: ${output.wording.profil.accessibility.introduction}
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
-- tapOn: 'Déclaration d’accessibilité - Android'
-- assertVisible: 'Déclaration d’accessibilité - Android'
+- tapOn: ${output.wording.profil.accessibility.declarationAndroid}
+- assertVisible: ${output.wording.profil.accessibility.declarationAndroid}
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
-- tapOn: 'Déclaration d’accessibilité - iOS'
-- assertVisible: 'Déclaration d’accessibilité - iOS'
+- tapOn: ${output.wording.profil.accessibility.declarationIos}
+- assertVisible: ${output.wording.profil.accessibility.declarationIos}
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
-- tapOn: 'Déclaration d’accessibilité - web'
-- assertVisible: 'Déclaration d’accessibilité web'
+- tapOn: ${output.wording.profil.accessibility.declarationWeb}
+- assertVisible: ${output.wording.profil.accessibility.declarationWebTitle}
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
-- tapOn: 'Parcours recommandés - web'
-- assertVisible: 'Parcours recommandés web'
+- tapOn: ${output.wording.profil.accessibility.recommendedPathsWeb}
+- assertVisible: ${output.wording.profil.accessibility.recommendedPathsWebTitle}
 
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
