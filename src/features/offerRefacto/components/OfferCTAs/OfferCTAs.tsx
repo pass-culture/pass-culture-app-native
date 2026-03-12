@@ -31,6 +31,8 @@ export const OfferCTAs = ({
     favoriteCTAProps,
   })
 
+  if (!viewModel) return null
+
   return (
     <OfferCTAsView
       offer={offer}

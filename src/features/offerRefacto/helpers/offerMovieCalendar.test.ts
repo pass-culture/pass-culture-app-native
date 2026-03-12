@@ -10,6 +10,8 @@ import {
   handleMovieCalendarScroll,
 } from 'features/offerRefacto/helpers'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('handleMovieCalendarScroll', () => {
   const itemWidth = 100
   const flatListWidth = 400

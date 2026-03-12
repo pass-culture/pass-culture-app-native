@@ -11,6 +11,8 @@ import {
 } from 'features/offerRefacto/helpers'
 import { LocationMode } from 'libs/location/types'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('getVenueSectionTitle', () => {
   it('should return "Lieu de retrait" when subcategory is not "Séances de cinéma" and offer is not an event', () => {
     const venueSectionTitle = getVenueSectionTitle(SubcategoryIdEnum.ABO_BIBLIOTHEQUE, false)
