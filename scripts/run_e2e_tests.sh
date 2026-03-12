@@ -119,6 +119,8 @@ stop_mock_analytics_server() {
 
 password=$(parse_env_variable MAESTRO_PASSWORD .maestro/.env.secret)
 maestro_cloud_api_key=$(parse_env_variable MAESTRO_CLOUD_API_KEY .maestro/.env.secret)
+maestro_e2e_api_key=$(parse_env_variable MAESTRO_E2E_API_KEY .maestro/.env.secret)
+maestro_e2e_endpoint=$(parse_env_variable MAESTRO_E2E_ENDPOINT .maestro/.env.secret)
 
 if [ "$target" == "test" ]; then
   stop_mock_analytics_server
@@ -138,6 +140,8 @@ maestro "$target" \
   --env MAESTRO_RUN_TRACKING_TESTS="$run_tracking_tests" \
   --env MAESTRO_RUN_CLOUD_COMMANDS="$run_cloud_commands" \
   --env MAESTRO_CLOUD_API_KEY="$maestro_cloud_api_key" \
+  --env MAESTRO_E2E_API_KEY="$maestro_e2e_api_key" \
+  --env MAESTRO_E2E_ENDPOINT="$maestro_e2e_endpoint" \
   --env MAESTRO_DRIVER_STARTUP_TIMEOUT=60000 \
   $TAGS \
   $cloud_arguments \

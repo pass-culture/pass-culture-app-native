@@ -33,6 +33,7 @@ Pour installer Maestro sur Mac OS, Linux ou Windows :
 ```bash
 curl -Ls "https://get.maestro.mobile.dev" | bash
 ```
+
 ### Installer les secrets pour Maestro
 
 Pour exécuter les tests avec Maestro, vous aurez besoin des secrets utilisés par les scénarios.  
@@ -40,7 +41,6 @@ Ces secrets sont disponibles dans notre gestionnaire de mots de passe sous le no
 
 Copiez ensuite le contenu dans le fichier `.maestro/.env.secret`  
 (créez ce fichier s’il n’existe pas déjà).
-
 
 ## Mise en place spécifique à Android
 
@@ -244,8 +244,10 @@ tags:
 ---
 - launchApp
 ```
+
 Et par exemple, ici pour le cas d'un test web
 il faut remplacer le `--include-tags` par celui voulu
+
 ```bash
 case "$target" in
   "test")
@@ -303,10 +305,35 @@ appId: your.app.id > Mettre l'ID de l'app que vous voulez tester comme "app.pass
 
 Voici [une liste des commandes](https://maestro.mobile.dev/api-reference/commands) que nous pouvons utiliser pour écrire les tests.
 
+## Générer un user dans les tests
+
+Maestro permet d'appeler des hooks au début et à la fin d'un script.
+Nous avons un script qui permet de générer un user en fonction de critères définis au préalable.
+
+Au début du fichier de test, il faut appeler le script `generateUser.js` avec les variables d'environnement `id_provider` et `step` comme ceci :
+
+```yaml
+onFlowStart:
+  - runScript:
+      file: subFolder/commons/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: '17'
+```
+
+Voici la liste des valeurs possibles pour ces deux variables :
+
+| Variable      | Valeurs possibles                                                                                                |
+| ------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `id_provider` | `DMS`, `EDUCONNECT`, `UBBLE` (défaut)                                                                            |
+| `step`        | `EMAIL_VALIDATION`, `PHONE_VALIDATION`, `PROFILE_COMPLETION`, `IDENTITY_CHECK`, `HONOR_STATEMENT`, `BENEFICIARY` |
+| `age`         | `15` à `20` (défaut : `18`)                                                                                      |
+
 ## Tester des trackers
 
-Il faut ajouter le flow suivant dans le scenario de test pour tester un tracker
-En remplacant `NomDeVotreEvent` par le nom de l'event que vous souhaitez tester
+Il faut ajouter le flow suivant dans le scénario de test pour tester un tracker.
+Remplacez `NomDeVotreEvent` par le nom de l'event que vous souhaitez tester.
 
 ```yaml
 - runFlow:
