@@ -87,7 +87,7 @@ describe('offerToHeadlineOfferData', () => {
     expect(result?.distance).toBeUndefined()
   })
 
-  it('should return pro advice if available', () => {
+  it('should return pro advice if available and AB testing segment is A', () => {
     const offerWithAdvices = {
       ...offersFixture[0],
       objectID: '1',
@@ -103,8 +103,31 @@ describe('offerToHeadlineOfferData', () => {
         userLocation: { latitude: 1, longitude: 1 },
       },
       advice: proAdvicesFixture[0],
+      segment: 'A',
     })
 
     expect(result?.advice).toEqual(proAdvicesFixture[0])
+  })
+
+  it('should not return pro advice if available and AB testing segment is B', () => {
+    const offerWithAdvices = {
+      ...offersFixture[0],
+      objectID: '1',
+    }
+
+    const result = offerToHeadlineOfferData({
+      offer: offerWithAdvices,
+      transformParameters: {
+        mapping: mockMapping,
+        labelMapping: mockLabelMapping,
+        currency: Currency.EURO,
+        euroToPacificFrancRate: 10,
+        userLocation: { latitude: 1, longitude: 1 },
+      },
+      advice: proAdvicesFixture[0],
+      segment: 'B',
+    })
+
+    expect(result?.advice).toEqual(undefined)
   })
 })
