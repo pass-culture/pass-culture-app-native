@@ -78,7 +78,6 @@ const StyledImage = styled(Image)(({ theme }) => ({
 const Ticket = styled.View(({ theme }) => ({
   minHeight: getSpacing(36.3),
   width: '100%',
-  flex: 1,
   borderColor: theme.designSystem.color.border.subtle,
 }))
 
