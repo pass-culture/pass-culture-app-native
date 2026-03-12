@@ -5,6 +5,8 @@ import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { proAdvicesCardDataFixture } from 'features/venue/fixtures/venueProAdvices.fixture'
 import { render, screen } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('VenueAdvicesSection', () => {
   it('should display correctly', () => {
     render(
