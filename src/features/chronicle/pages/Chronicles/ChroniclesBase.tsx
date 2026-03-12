@@ -120,7 +120,8 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
         closeModal={hideModal}
         isVisible={visible}
         onShowRecoButtonPress={handleOnShowRecoButtonPress}
-        variantInfo={variantInfo}
+        modalWording={variantInfo.modalWording}
+        buttonWording={variantInfo.buttonWording}
       />
     </React.Fragment>
   )

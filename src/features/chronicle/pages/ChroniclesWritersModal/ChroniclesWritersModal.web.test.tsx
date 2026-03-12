@@ -12,7 +12,8 @@ describe('<ChroniclesWritersModal/>', () => {
           isVisible
           closeModal={jest.fn()}
           onShowRecoButtonPress={jest.fn()}
-          variantInfo={chronicleVariantInfoFixture}
+          modalWording={chronicleVariantInfoFixture.modalWording}
+          buttonWording={chronicleVariantInfoFixture.buttonWording}
         />
       )
       await act(async () => {

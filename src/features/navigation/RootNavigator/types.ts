@@ -59,7 +59,7 @@ type BaseThematicHome = {
 }
 
 type OtherThematicBlockHome = {
-  from?: 'deeplink' | 'chronicles'
+  from?: 'deeplink' | 'chronicles' | 'venue'
 }
 
 type CategoryBlockThematicHome = {

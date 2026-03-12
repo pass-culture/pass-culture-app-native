@@ -101,7 +101,11 @@ export const ChronicleCardListBase = forwardRef<
           date={item.date}
           tag={tag}
           cardWidth={cardWidth}
-          shouldTruncate={shouldTruncate}>
+          shouldTruncate={shouldTruncate}
+          tagProps={item.tagProps}
+          image={item.image}
+          headerNavigateTo={item.headerNavigateTo}
+          headerAccessibilityLabel={item.headerAccessibilityLabel}>
           {onSeeMoreButtonPress ? (
             <View>
               <Button
