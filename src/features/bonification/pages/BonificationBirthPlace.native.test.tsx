@@ -5,6 +5,7 @@ import { InseeCountries, InseeCountry } from 'api/gen'
 import { BonificationBirthPlace } from 'features/bonification/pages/BonificationBirthPlace'
 import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { env } from 'libs/environment/env'
 import { CITIES_API_URL } from 'libs/place/queries/constants'
 import { CitiesResponse, SuggestedCity } from 'libs/place/types'
 import { mockServer } from 'tests/mswServer'
@@ -57,8 +58,9 @@ describe('BonificationBirthPlace', () => {
     const button = screen.getByText('Je ne connais pas son lieu de naissance')
     await userEvent.press(button)
 
-    expect(openUrl).toHaveBeenCalledWith(
-      'https://aide.passculture.app/hc/fr/articles/24338766387100-FAQ-Bonif'
+    expect(openUrl).toHaveBeenNthCalledWith(
+      1,
+      env.FAQ_BONIFICATION_LEGAL_GUARDIAN_BIRTH_INFORMATIONS
     )
   })
 
