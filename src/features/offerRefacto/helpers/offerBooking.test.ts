@@ -1,5 +1,7 @@
 import { getBookingId } from 'features/offerRefacto/helpers'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('getBookingId', () => {
   const bookedOffer = { 1090: 32927191, 2663: 32927185 }
 

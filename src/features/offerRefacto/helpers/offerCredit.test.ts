@@ -13,6 +13,8 @@ import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('hasEnoughCredit', () => {
   it.each`
     domains                | price | domainsCredit

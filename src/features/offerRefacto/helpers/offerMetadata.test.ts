@@ -1,5 +1,7 @@
 import { getMetadata } from 'features/offerRefacto/helpers'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('getMetadata', () => {
   it('should return an empty array when extraData is undefined', () => {
     const result = getMetadata()

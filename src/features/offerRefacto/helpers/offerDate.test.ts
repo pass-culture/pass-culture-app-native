@@ -5,6 +5,8 @@ import { getInitialSelectedDate, updateSelectedDate } from 'features/offerRefact
 
 mockdate.set(new Date(2025, 10, 5, 14, 0))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('getInitialSelectedDate', () => {
   it('should return first date of the array if exists', () => {
     const dates = [new Date(2025, 10, 5), new Date(2025, 10, 6)]
