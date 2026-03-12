@@ -224,17 +224,39 @@ export const ProfileTutorialAgeInformationCredit = () => {
         <CreditTimelineContainer>
           <CreditTimelineV3 age={17} stepperProps={stepperProps} testID="seventeen-timeline" />
         </CreditTimelineContainer>
-        <Banner
-          label="Des questions sur ton crédit&nbsp;?"
-          description="Les récents ajustements du dispositif peuvent en être la raison."
-          links={[
-            {
-              wording: 'Plus d’infos dans notre FAQ',
-              externalNav: { url: env.FAQ_LINK_CREDIT_V3 },
-              onBeforeNavigate: () => analytics.logHasClickedTutorialFAQ(),
-            },
-          ]}
-        />
+        {enableBonification ? (
+          <Banner
+            label="Des questions sur ton crédit&nbsp;?"
+            description="N’hésite pas à consulter nos pages d’aide pour trouver les réponses à tes questions."
+            links={[
+              {
+                wording: 'Plus d’infos sur ton crédit',
+                externalNav: { url: env.FAQ_LINK_PASS_CULTURE },
+                onBeforeNavigate: () =>
+                  analytics.logHasClickedTutorialFAQ({ type: 'FAQ_LINK_PASS_CULTURE' }),
+              },
+              {
+                wording: 'Plus d’infos sur les bonus sous conditions',
+                externalNav: { url: env.FAQ_BONIFICATION_GENERIC },
+                onBeforeNavigate: () =>
+                  analytics.logHasClickedTutorialFAQ({ type: 'FAQ_BONIFICATION_GENERIC' }),
+              },
+            ]}
+          />
+        ) : (
+          <Banner
+            label="Des questions sur ton crédit&nbsp;?"
+            description="Les récents ajustements du dispositif peuvent en être la raison."
+            links={[
+              {
+                wording: 'Plus d’infos dans notre FAQ',
+                externalNav: { url: env.FAQ_LINK_CREDIT_V3 },
+                onBeforeNavigate: () =>
+                  analytics.logHasClickedTutorialFAQ({ type: 'FAQ_LINK_CREDIT_V3' }),
+              },
+            ]}
+          />
+        )}
       </StyledScrollView>
       <ContentHeader
         headerTitle={headerTitle}

@@ -404,8 +404,9 @@ export const logEventAnalytics = {
       { firebase: AnalyticsEvent.HAS_CLICKED_REMOTE_GENERIC_BANNER },
       { from, options }
     ),
-  logHasClickedTutorialFAQ: () =>
-    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_TUTORIAL_FAQ }),
+  logHasClickedTutorialFAQ: (params?: {
+    type: 'FAQ_LINK_PASS_CULTURE' | 'FAQ_BONIFICATION_GENERIC' | 'FAQ_LINK_CREDIT_V3'
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_TUTORIAL_FAQ }, params),
   logHasCorrectedEmail: ({ from }: { from: Referrals }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CORRECTED_EMAIL }, { from }),
   logHasDismissedAppSharingModal: () =>

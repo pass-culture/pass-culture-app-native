@@ -96,7 +96,7 @@ export const BonificationBirthDate = () => {
                 icon={InfoPlain}
                 wording="Je ne connais pas sa date de naissance"
                 onPress={async () => {
-                  await openUrl(env.FAQ_BONIFICATION)
+                  await openUrl(env.FAQ_BONIFICATION_LEGAL_GUARDIAN_BIRTH_INFORMATIONS)
                 }}
               />
             </ButtonContainerFlexStart>

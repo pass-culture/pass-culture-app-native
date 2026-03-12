@@ -3,6 +3,7 @@ import React from 'react'
 import { goBack, navigate } from '__mocks__/@react-navigation/native'
 import { BonificationRequiredInformation } from 'features/bonification/pages/BonificationRequiredInformation'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { env } from 'libs/environment/env'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -27,8 +28,9 @@ describe('BonificationRequiredInformation', () => {
     const button = screen.getByText('Consulter l’article d’aide')
     await userEvent.press(button)
 
-    expect(openUrl).toHaveBeenCalledWith(
-      'https://aide.passculture.app/hc/fr/articles/24338766387100-FAQ-Bonif',
+    expect(openUrl).toHaveBeenNthCalledWith(
+      1,
+      env.FAQ_BONIFICATION_LEGAL_GUARDIAN_BIRTH_INFORMATIONS,
       undefined,
       true
     )

@@ -73,7 +73,7 @@ export const BonificationRequiredInformation = () => {
             variant="tertiary"
             color="neutral"
             wording="Consulter l’article d’aide"
-            externalNav={{ url: env.FAQ_BONIFICATION }}
+            externalNav={{ url: env.FAQ_BONIFICATION_LEGAL_GUARDIAN_BIRTH_INFORMATIONS }}
             icon={ExternalSiteFilled}
           />
           <StyledBodyXs>
