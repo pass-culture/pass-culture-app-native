@@ -1,11 +1,14 @@
 import React, { FunctionComponent } from 'react'
+import { View } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { ChronicleCardList } from 'features/chronicle/components/ChronicleCardList/ChronicleCardList'
 import { CHRONICLE_CARD_WIDTH } from 'features/chronicle/constant'
 import { ChronicleCardData } from 'features/chronicle/type'
+import { FeedBack } from 'features/reactions/components/FeedBack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
@@ -30,10 +33,10 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
   const shouldDisplayAllAdvicesButton = advicesCardData.length > 1
 
   return (
-    <React.Fragment>
+    <Container gap={4}>
       <Gutter>
         <Row>
-          <StyledTitle3 {...getHeadingAttrs(3)} numberOfLines={1}>
+          <StyledTitle3 {...getHeadingAttrs(3)} numberOfLines={2}>
             {`Les avis par “${venue.name}”`}
           </StyledTitle3>
           {enableNewTagProAdvices ? (
@@ -47,11 +50,10 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
         data={advicesCardData}
         shouldTruncate
         onSeeMoreButtonPress={onPressChronicleCardSeeMore}
-        shouldDisplayAllAdvicesButton={shouldDisplayAllAdvicesButton}
       />
       {shouldDisplayAllAdvicesButton ? (
         <Gutter>
-          <SeeAllAdvicesContainer>
+          <View>
             <InternalTouchableLink
               as={Button}
               wording={`Lire les ${nbAdvices} avis`}
@@ -61,12 +63,27 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
               color="neutral"
               size="small"
             />
-          </SeeAllAdvicesContainer>
+          </View>
         </Gutter>
       ) : null}
-    </React.Fragment>
+      <Gutter>
+        <FeedBack
+          storageKey="venue_advices_feedback"
+          likeQuiz="https://passculture.qualtrics.com/jfe/form/SV_eW1XQ60mF3KAMdg"
+          dislikeQuiz="https://passculture.qualtrics.com/jfe/form/SV_d1niW3WPCivA6wK"
+          title="Trouves-tu ces avis utiles&nbsp;?"
+          // TODO(PC-39762): add tracking
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
+          onLogReaction={() => {}}
+        />
+      </Gutter>
+    </Container>
   )
 }
+
+const Container = styled(ViewGap)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const Gutter = styled.View(({ theme }) => ({
   paddingHorizontal: theme.contentPage.marginHorizontal,
@@ -78,21 +95,13 @@ const StyledTitle3 = styled(Typo.Title3)({
   flexShrink: 1,
 })
 
-const StyledChronicleCardlist = styled(ChronicleCardList).attrs<{
-  shouldDisplayAllAdvicesButton: boolean
-}>(({ theme, shouldDisplayAllAdvicesButton }) => ({
+const StyledChronicleCardlist = styled(ChronicleCardList).attrs(({ theme }) => ({
   contentContainerStyle: {
     paddingHorizontal: theme.contentPage.marginHorizontal,
-    paddingVertical: theme.designSystem.size.spacing.l,
-    paddingBottom: shouldDisplayAllAdvicesButton ? undefined : theme.designSystem.size.spacing.xl,
   },
   cardWidth: CHRONICLE_CARD_WIDTH,
   snapToInterval: CHRONICLE_CARD_WIDTH,
 }))``
-
-const SeeAllAdvicesContainer = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xl,
-}))
 
 const TagContainer = styled.View(({ theme }) => ({
   marginLeft: theme.designSystem.size.spacing.s,
