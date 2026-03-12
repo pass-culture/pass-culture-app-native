@@ -1,5 +1,6 @@
 import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
 import { mockLabelMapping, mockMapping } from 'features/headlineOffer/fixtures/mockMapping'
+import { proAdvicesFixture } from 'features/venue/fixtures/venueProAdvices.fixture'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { offersFixture } from 'shared/offer/offer.fixture'
 
@@ -84,5 +85,26 @@ describe('offerToHeadlineOfferData', () => {
     })
 
     expect(result?.distance).toBeUndefined()
+  })
+
+  it('should return pro advice if available', () => {
+    const offerWithAdvices = {
+      ...offersFixture[0],
+      objectID: '1',
+    }
+
+    const result = offerToHeadlineOfferData({
+      offer: offerWithAdvices,
+      transformParameters: {
+        mapping: mockMapping,
+        labelMapping: mockLabelMapping,
+        currency: Currency.EURO,
+        euroToPacificFrancRate: 10,
+        userLocation: { latitude: 1, longitude: 1 },
+      },
+      advices: [...proAdvicesFixture],
+    })
+
+    expect(result?.advice).toEqual(proAdvicesFixture[0])
   })
 })

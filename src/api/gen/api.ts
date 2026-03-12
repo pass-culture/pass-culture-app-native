@@ -5091,6 +5091,84 @@ export interface VenueContact {
 }
 /**
  * @export
+ * @interface VenueProAdvice
+ */
+export interface VenueProAdvice {
+  /**
+   * @type {string}
+   * @memberof VenueProAdvice
+   */
+  author: string
+  /**
+   * @type {string}
+   * @memberof VenueProAdvice
+   */
+  content: string
+  /**
+   * @type {number}
+   * @memberof VenueProAdvice
+   */
+  offerId: number
+  /**
+   * @type {string}
+   * @memberof VenueProAdvice
+   */
+  offerName: string
+  /**
+   * @type {string}
+   * @memberof VenueProAdvice
+   */
+  offerSubcategory: string
+  /**
+   * @type {string | null}
+   * @memberof VenueProAdvice
+   */
+  offerThumbUrl?: string | null
+  /**
+   * @type {string}
+   * @memberof VenueProAdvice
+   */
+  publicationDatetime: string
+}
+/**
+ * @export
+ * @interface VenueProAdviceQuery
+ */
+export interface VenueProAdviceQuery {
+  /**
+   * @type {number | null}
+   * @memberof VenueProAdviceQuery
+   */
+  maxContentLength?: number | null
+  /**
+   * @type {number}
+   * @memberof VenueProAdviceQuery
+   */
+  page?: number
+  /**
+   * @type {number}
+   * @memberof VenueProAdviceQuery
+   */
+  resultsPerPage?: number
+}
+/**
+ * @export
+ * @interface VenueProAdvices
+ */
+export interface VenueProAdvices {
+  /**
+   * @type {number}
+   * @memberof VenueProAdvices
+   */
+  nbResults: number
+  /**
+   * @type {Array<VenueProAdvice>}
+   * @memberof VenueProAdvices
+   */
+  proAdvices: Array<VenueProAdvice>
+}
+/**
+ * @export
  * @interface VenueResponse
  */
 export interface VenueResponse {
@@ -5923,6 +6001,54 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         `{${'venue_id'}}`,
         encodeURIComponent(String(venue_id))
       )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_venue_advices <GET>
+     * @param {number} venue_id 
+     * @param {number} [maxContentLength] 
+     * @param {number} [page] 
+     * @param {number} [resultsPerPage] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1VenuevenueIdAdvices(venue_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'venue_id' is not null or undefined
+      if (venue_id === null || venue_id === undefined) {
+        throw new RequiredError(
+          'venue_id',
+          'Required parameter venue_id was null or undefined when calling getNativeV1VenuevenueIdAdvices.'
+        )
+      }
+      let pathname = `/native/v1/venue/{venue_id}/advices`.replace(
+        `{${'venue_id'}}`,
+        encodeURIComponent(String(venue_id))
+      )
+      const queryParameters: any = {};
+
+        if (maxContentLength != null) {
+            queryParameters['maxContentLength'] = maxContentLength;
+        }
+
+        if (page != null) {
+            queryParameters['page'] = page;
+        }
+
+        if (resultsPerPage != null) {
+            queryParameters['resultsPerPage'] = resultsPerPage;
+        }
+
+      const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
+        return `${encodeURIComponent(key)}=${encodeURIComponent(queryParameters[key])}`
+      }).join('&')
+      pathname += encodedQueryParams
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -7650,6 +7776,30 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary get_venue_advices <GET>
+     * @param {number} venue_id 
+     * @param {number} [maxContentLength] 
+     * @param {number} [page] 
+     * @param {number} [resultsPerPage] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1VenuevenueIdAdvices(venue_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, options?: any): Promise<VenueProAdvices> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1VenuevenueIdAdvices(venue_id, maxContentLength, page, resultsPerPage, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_movie_screenings_by_venue <GET>
+     * @param {number} venue_id 
+     * @param {string} [from] 
+     * @param {string} [to] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    /**
+     * 
      * @summary get_bookings <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -8588,6 +8738,21 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1VenuevenueId(venue_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1VenuevenueId(venue_id, options)
+  }
+  /**
+    * 
+    * @summary get_venue_advices <GET>
+    * @param {number} venue_id 
+    * @param {number} [maxContentLength] 
+    * @param {number} [page] 
+    * @param {number} [resultsPerPage] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV1VenuevenueIdAdvices(venue_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1VenuevenueIdAdvices(venue_id, maxContentLength, page, resultsPerPage, options)
   }
   /**
     * 

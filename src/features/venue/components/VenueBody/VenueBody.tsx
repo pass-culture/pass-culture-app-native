@@ -16,7 +16,6 @@ import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcateg
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -72,8 +71,8 @@ export const VenueBody: FunctionComponent<Props> = ({
     [Tab.OFFERS]: (
       <React.Fragment>
         {headlineOfferData ? (
-          <MarginContainer gap={2}>
-            <Typo.Title3 {...getHeadingAttrs(2)}>À la une</Typo.Title3>
+          <MarginContainer>
+            <StyledTitle3 {...getHeadingAttrs(2)}>À la une</StyledTitle3>
             <HeadlineOffer
               navigateTo={{ screen: 'Offer', params: { id: headlineOfferData.id } }}
               {...headlineOfferData}
@@ -130,7 +129,11 @@ export const VenueBody: FunctionComponent<Props> = ({
   )
 }
 
-const MarginContainer = styled(ViewGap)(({ theme }) => ({
+const MarginContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
   marginTop: theme.designSystem.size.spacing.xxxl,
+}))
+
+const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.s,
 }))

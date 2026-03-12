@@ -784,10 +784,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
               >
                 <View
-                  gap={2}
                   style={
                     {
-                      "gap": 8,
                       "marginHorizontal": 24,
                       "marginTop": 40,
                     }
@@ -801,6 +799,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 19,
                         "lineHeight": 30.4,
+                        "marginBottom": 8,
                       }
                     }
                   >
@@ -4449,10 +4448,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                 }
               >
                 <View
-                  gap={2}
                   style={
                     {
-                      "gap": 8,
                       "marginHorizontal": 24,
                       "marginTop": 40,
                     }
@@ -4466,6 +4463,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 19,
                         "lineHeight": 30.4,
+                        "marginBottom": 8,
                       }
                     }
                   >
