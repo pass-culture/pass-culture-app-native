@@ -2,7 +2,7 @@
 
 Soit $r$, le rayon autour duquel on veut récupérer les points. Soit $D$ la distance verticale sur l'écran, et $d$ la distance horizontale. Soit $R$ le ratio de l'écran (vertical / horizontal).
 
-<img src="../images/venue-map-schema.png" height="250" alt="Schema de l'écran du téléphone par rapport au rayon." />
+<img src="./venue-map-schema.png" height="250" alt="Schema de l'écran du téléphone par rapport au rayon." />
 
 D'après la définition du ratio, on a :
 
