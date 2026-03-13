@@ -3,9 +3,10 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
+import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
 import { Slider } from 'ui/components/inputs/Slider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 const MIN_RADIUS = 0
 const MAX_RADIUS = 100
@@ -23,10 +24,11 @@ export const LocationSearchFilters = ({
 
   const formatKm = (km: number) => `${km}\u00a0km`
   const { sliderLength } = useGetFullscreenModalSliderLength(false)
+  const marginRight = useFontScaleValue({ default: 0, at200PercentZoom: getSpacing(30) })
 
   return (
     <ViewGap gap={2}>
-      <LabelRadiusContainer nativeID={radiusLabelId}>
+      <LabelRadiusContainer nativeID={radiusLabelId} marginRight={marginRight}>
         <Typo.Body>{`Dans un rayon de\u00a0:`}</Typo.Body>
         <Typo.BodyAccent testID="value_radius">{`${aroundRadius}\u00a0km`}</Typo.BodyAccent>
       </LabelRadiusContainer>
@@ -47,7 +49,9 @@ export const LocationSearchFilters = ({
   )
 }
 
-const LabelRadiusContainer = styled.View({
+const LabelRadiusContainer = styled.View<{ marginRight: number }>(({ marginRight }) => ({
   flexDirection: 'row',
   justifyContent: 'space-between',
-})
+  alignItems: 'flex-end',
+  marginRight,
+}))

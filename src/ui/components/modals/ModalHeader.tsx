@@ -1,7 +1,9 @@
 import React, { FunctionComponent } from 'react'
 import { LayoutChangeEvent, View } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
+import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
 // eslint-disable-next-line no-restricted-imports
 import { ModalSpacing } from 'ui/components/modals/enum'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -36,9 +38,15 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
     styled(rightIcon).attrs(() => ({
       testID: 'rightIcon',
     }))``
+  const { top } = useSafeAreaInsets()
+  const marginTop = useFontScaleValue({ default: 0, at200PercentZoom: top })
 
   return (
-    <Container onLayout={onLayout} testID="modalHeader" modalSpacing={modalSpacing}>
+    <Container
+      onLayout={onLayout}
+      testID="modalHeader"
+      modalSpacing={modalSpacing}
+      marginTop={marginTop}>
       <HeaderActionContainer justifyContent="left">
         {leftIcon ? (
           <Button
@@ -72,13 +80,16 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   )
 }
 
-const Container = styled(View)<{ modalSpacing?: ModalSpacing }>(({ modalSpacing }) => ({
-  display: 'flex',
-  width: '100%',
-  flexDirection: 'row',
-  justifyContent: 'center',
-  ...(modalSpacing ? { padding: modalSpacing } : {}),
-}))
+const Container = styled(View)<{ modalSpacing?: ModalSpacing; marginTop: number }>(
+  ({ modalSpacing, marginTop }) => ({
+    display: 'flex',
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    ...(modalSpacing ? { padding: modalSpacing } : {}),
+    marginTop,
+  })
+)
 
 const TitleContainer = styled.View(({ theme }) => ({
   justifyContent: 'center',
