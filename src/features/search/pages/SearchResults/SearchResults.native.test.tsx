@@ -96,7 +96,7 @@ const mockHits = [
       exact_nb_hits: 2,
       facets: {
         analytics: {
-          ['offer.searchGroupNamev2']: [
+          ['offer.searchGroups']: [
             {
               attribute: '',
               operator: '',
@@ -132,7 +132,7 @@ const mockHits = [
       exact_nb_hits: 2,
       facets: {
         analytics: {
-          ['offer.searchGroupNamev2']: [
+          ['offer.searchGroups']: [
             {
               attribute: '',
               operator: '',

@@ -28,8 +28,8 @@ describe('buildOfferCategoriesPredicate', () => {
     ])
 
     expect(offerCategoriesPredicate).toEqual([
-      'offer.searchGroupNamev2:ARTS_LOISIRS_CREATIFS',
-      'offer.searchGroupNamev2:LIVRES',
+      'offer.searchGroups:ARTS_LOISIRS_CREATIFS',
+      'offer.searchGroups:LIVRES',
     ])
   })
 })

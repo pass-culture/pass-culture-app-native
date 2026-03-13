@@ -15,6 +15,7 @@ import {
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { BooksNativeCategoriesEnum } from 'features/search/types'
 import { Artist, Venue } from 'features/venue/types'
+import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { GtlLevel } from 'shared/gtl/types'
@@ -111,8 +112,8 @@ interface AlgoliaFacetsAnalyticsCategory extends AlgoliaFacetsAnalyticsKey {
 }
 
 interface AlgoliaFacetsObject {
-  ['offer.nativeCategoryId']: AlgoliaFacetsAnalyticsNativeCategory[]
-  ['offer.searchGroupNamev2']: AlgoliaFacetsAnalyticsCategory[]
+  [FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY]: AlgoliaFacetsAnalyticsNativeCategory[]
+  [FACETS_FILTERS_ENUM.OFFER_SEARCH_GROUPS]: AlgoliaFacetsAnalyticsCategory[]
 }
 
 interface AlgoliaFacets {
