@@ -12,6 +12,7 @@ export const env: Environment = {
   ALGOLIA_SEARCH_API_PUBLIC_KEY: 'algoliaApiKey',
   ALGOLIA_SUGGESTIONS_INDEX_NAME: 'algoliaSuggestionsIndexName',
   ALGOLIA_TOP_OFFERS_INDEX_NAME: 'algoliaTopOffersIndexName',
+  ALGOLIA_VENUES_INDEX_EXPERIMENTAL: 'algoliaVenuesIndexExperimental',
   ALGOLIA_VENUES_INDEX_NAME: 'algoliaVenuesIndexName',
   ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST: 'algoliaVenuesIndexPlaylistSearchNewest',
   ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH: 'algoliaVenuesIndexPlaylistSearch',

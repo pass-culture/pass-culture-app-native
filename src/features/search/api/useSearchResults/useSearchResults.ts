@@ -25,6 +25,10 @@ import { Offer } from 'shared/offer/types'
 
 type SearchOfferResponse = {
   offers: Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
+  venueNotOpenToPublic: Pick<
+    SearchResponse<AlgoliaVenue>,
+    'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'
+  >
   venues: Pick<SearchResponse<AlgoliaVenue>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
   duplicatedOffers: Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
   offerArtists: Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
@@ -32,6 +36,7 @@ type SearchOfferResponse = {
 
 export type SearchOfferHits = {
   offers: Offer[]
+  venueNotOpenToPublic: AlgoliaVenue[]
   venues: AlgoliaVenue[]
   artists: Artist[]
   duplicatedOffers: Offer[]
@@ -61,24 +66,30 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     ],
     queryFn: async ({ pageParam }) => {
       const page = pageParam as number
-      const { offersResponse, venuesResponse, duplicatedOffersResponse, offerArtistsResponse } =
-        await fetchSearchResults({
-          parameters: { page, ...searchState },
-          buildLocationParameterParams: {
-            userLocation,
-            selectedLocationMode,
-            aroundPlaceRadius,
-            aroundMeRadius,
-            geolocPosition,
-          },
-          isUserUnderage,
-          storeQueryID: setCurrentQueryID,
-          disabilitiesProperties: disabilities,
-          aroundPrecision,
-        })
+      const {
+        offersResponse,
+        venueNotOpenToPublic,
+        venuesResponse,
+        duplicatedOffersResponse,
+        offerArtistsResponse,
+      } = await fetchSearchResults({
+        parameters: { page, ...searchState },
+        buildLocationParameterParams: {
+          userLocation,
+          selectedLocationMode,
+          aroundPlaceRadius,
+          aroundMeRadius,
+          geolocPosition,
+        },
+        isUserUnderage,
+        storeQueryID: setCurrentQueryID,
+        disabilitiesProperties: disabilities,
+        aroundPrecision,
+      })
 
       return {
         offers: offersResponse,
+        venueNotOpenToPublic,
         venues: venuesResponse,
         duplicatedOffers: duplicatedOffersResponse,
         offerArtists: offerArtistsResponse,
@@ -107,6 +118,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
 
     return {
       offers: flatten(pages.map((page) => page.offers.hits.map(transformHits))),
+      venueNotOpenToPublic: flatten(pages[0]?.venueNotOpenToPublic.hits),
       venues,
       duplicatedOffers: flatten(pages.map((page) => page.duplicatedOffers.hits.map(transformHits))),
       artists: uniqBy(

@@ -188,6 +188,10 @@ const DEFAULT_SEARCH_RESULT_CONTENT_PROPS = {
       'name'
     ),
     duplicatedOffers: [],
+    venueNotOpenToPublic: mockedAlgoliaResponse.hits.map((hit: Hit<AlgoliaOffer>) => ({
+      ...hit.venue,
+      _geoloc: hit._geoloc,
+    })) as AlgoliaVenue[],
     venues: mockedAlgoliaResponse.hits.map((hit: Hit<AlgoliaOffer>) => ({
       ...hit.venue,
       _geoloc: hit._geoloc,
