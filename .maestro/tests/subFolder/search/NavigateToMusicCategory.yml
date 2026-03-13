@@ -1,0 +1,25 @@
+appId: team.passculture.app.staging
+---
+- tapOn: 'Recherche'
+- runFlow:
+    when:
+      visible: "J’accède au pass Culture sans mettre à jour mon navigateur"
+    commands:
+    - tapOn: "J’accède au pass Culture sans mettre à jour mon navigateur"
+- assertVisible: 'Parcours les catégories'
+- tapOn: "MUSIQUE"
+- assertVisible: 'Musique'
+- tapOn: "CDs"
+
+- runFlow:
+    when:
+      visible: "Les offres"
+    commands:
+    - assertVisible: ".*résultats"
+    - assertVisible: "Les artistes"
+
+- runFlow:
+    when:
+      notVisible: "Les offres"
+    commands:
+    - assertVisible: "Pas de résultat"

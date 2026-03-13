@@ -58,6 +58,7 @@
     "test:e2e:web:staging": "./scripts/run_e2e_tests.sh test web staging",
     "test:e2e:android:staging:cloud": "./scripts/run_e2e_tests.sh cloud android staging",
     "test:e2e:ios:staging:cloud": "./scripts/run_e2e_tests.sh cloud ios staging",
+    "test:e2e:web:staging:cloud": "./scripts/run_e2e_tests.sh cloud web staging",
     "test:e2e:android:testing": "./scripts/run_e2e_tests.sh test android testing",
     "test:e2e:ios:testing": "./scripts/run_e2e_tests.sh test ios testing",
     "test:e2e:web:testing": "./scripts/run_e2e_tests.sh test web testing",
