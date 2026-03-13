@@ -19,9 +19,7 @@ describe('<RemoteGenericBanner/>', () => {
   it('should log analytics when user presses banner', async () => {
     setFeatureFlags()
     render(
-      reactQueryProviderHOC(
-        <RemoteGenericBanner from="home" remoteGenericBannerOptions={bannerExternalUrl} />
-      )
+      reactQueryProviderHOC(<RemoteGenericBanner remoteGenericBannerOptions={bannerExternalUrl} />)
     )
 
     const banner = await screen.findByText('title 1')

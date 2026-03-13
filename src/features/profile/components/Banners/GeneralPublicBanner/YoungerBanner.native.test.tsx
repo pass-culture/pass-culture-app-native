@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
+import { YoungerBanner } from 'features/profile/components/Banners/GeneralPublicBanner/YoungerBanner'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -9,9 +9,9 @@ jest.mock('libs/firebase/analytics/analytics')
 mockdate.set(new Date('2021-12-15T00:00:00.000Z'))
 const eligibilityStartDatetime = new Date('2021-12-17T00:00:00.000Z')
 
-describe('YoungerBadge', () => {
+describe('YoungerBanner', () => {
   it('should display correct message with eligibility date', () => {
-    render(<YoungerBadge eligibilityStartDatetime={eligibilityStartDatetime} />)
+    render(<YoungerBanner eligibilityStartDatetime={eligibilityStartDatetime} />)
 
     expect(
       screen.getByText(

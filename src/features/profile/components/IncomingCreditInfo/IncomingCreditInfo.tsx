@@ -16,9 +16,9 @@ export const IncomingCreditInfo = ({
   seventeenYearsOldDeposit,
   eighteenYearsOldDeposit,
 }: Props) => {
-  const age = getAge(birthDate)
+  if (!birthDate) return null
 
-  if (!age) return null
+  const age = getAge(birthDate)
 
   const sixteenYearsOldIncomingDeposit = {
     label: 'À venir pour tes 17 ans\u00a0: ',

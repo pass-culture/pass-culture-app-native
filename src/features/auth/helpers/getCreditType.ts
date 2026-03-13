@@ -26,7 +26,7 @@ export const getCreditType = ({
   isEligibleForBeneficiaryUpgrade,
 }: UserProfileResponse): UserCreditType => {
   const isCreditExpired = getIsDepositExpired({ depositExpirationDate })
-  const isEmptyCredit = domainsCredit?.all.remaining === 0
+  const isEmptyCredit = domainsCredit?.all?.remaining === 0
   const isNotEligibleForBeneficiaryUpgrade = !isEligibleForBeneficiaryUpgrade
   const actualyNotPossibleInFrontend = false
 

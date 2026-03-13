@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
+import { ActivationDisabledBanner } from 'features/remoteBanners/banners/ActivationDisabledBanner'
 import {
   RemoteBannerRedirectionType,
   RemoteBannerType as RemoteBannerType,
@@ -15,12 +15,15 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.useFakeTimers()
 const user = userEvent.setup()
 
-describe('<RemoteActivationBanner/>', () => {
+describe('<ActivationDisabledBanner/>', () => {
   it('should log analytics when user presses banner', async () => {
     setFeatureFlags()
     render(
       reactQueryProviderHOC(
-        <RemoteActivationBanner from="profile" remoteActivationBannerOptions={bannerExternalUrl} />
+        <ActivationDisabledBanner
+          from="profile"
+          remoteActivationBannerOptions={bannerExternalUrl}
+        />
       )
     )
 
