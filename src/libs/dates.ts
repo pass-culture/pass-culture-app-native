@@ -64,8 +64,7 @@ export const setDateOneDayEarlier = (ISODate: Date | string) => {
 
 export const formatToReadableFrenchDate = (date: Date | string) => {
   const formattedDate = new Date(date)
-  // @ts-ignore isNan works with empty dates
-  if (isNaN(formattedDate)) return ''
+  if (Number.isNaN(formattedDate.getTime())) return ''
   const monthOrder = formattedDate.getMonth()
   const day = ('0' + formattedDate.getDate()).slice(-2)
   const month = CAPITALIZED_MONTHS[monthOrder].toLowerCase()
