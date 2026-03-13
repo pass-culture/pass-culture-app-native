@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useEffect, useState } from 'react'
-import { AppState, AppStateStatus } from 'react-native'
+import { AppState, AppStateStatus, StyleProp, ViewStyle } from 'react-native'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
@@ -20,6 +20,7 @@ type Props = {
   buttonsLabels?: { like: string; dislike: string }
   thanksMessage?: string
   ctaWording?: string
+  style?: StyleProp<ViewStyle>
 }
 
 export function FeedBack({
@@ -31,6 +32,7 @@ export function FeedBack({
   buttonsLabels = { like: 'Oui', dislike: 'Non' },
   thanksMessage = 'Merci pour ta réponse\u00a0! As-tu 2 minutes pour nous dire pourquoi\u00a0?',
   ctaWording = 'Répondre au court questionnaire',
+  style,
 }: Props) {
   const [reaction, setReaction] = useState<ReactionTypeEnum | null>(null)
   const [hasJustReacted, setHasJustReacted] = useState(false)
@@ -104,8 +106,8 @@ export function FeedBack({
 
   if (!reaction) {
     return (
-      <ViewGap gap={3}>
-        <Typo.BodyAccent>{title}</Typo.BodyAccent>
+      <ViewGap gap={3} style={style}>
+        <Typo.BodyAccentS>{title}</Typo.BodyAccentS>
         <ReactionChoiceValidation
           reactionStatus={null}
           handleOnPressReactionButton={handleReaction}
