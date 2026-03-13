@@ -34,16 +34,7 @@ const CustomHeightSpacer = styled.View<{ customHeight: number; enable?: boolean 
   })
 )
 
-interface FlexSpacerProps {
-  flex?: number
-}
-
-const FlexSpacer = styled.View<FlexSpacerProps>(({ flex }) => ({
-  flex: flex || 1,
-}))
-
 export const Spacer = {
-  Flex: FlexSpacer,
   Column: ColumnSpacer,
   TopScreen: TopScreenSpacer,
   TabBar: TabBarSpacer,
