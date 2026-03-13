@@ -5,7 +5,7 @@ import { Platform, TextStyle, View } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { buildZendeskUrl } from 'features/profile/pages/DebugScreen/buildZendeskUrl'
+import { buildZendeskUrlForDebug } from 'features/profile/helpers/buildZendeskUrl'
 import { setFeedbackInAppSchema } from 'features/profile/pages/FeedbackInApp/setFeedbackInAppShema'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -73,14 +73,7 @@ export const DebugScreen = () => {
     .map((item) => `${item.label}\u00a0: ${String(item.value)}`)
     .join(LINE_BREAK)
 
-  const url = buildZendeskUrl({
-    lastName: user?.lastName,
-    firstName: user?.firstName,
-    reason: 'motif_signaler_un_bug',
-    account: user?.email,
-    description: `<h4>VOTRE MESSAGE\u00a0:</h4>${description}<h4>NE PAS EFFACER LES INFORMATIONS TECHNIQUES CI-DESSOUS\u00a0:</h4>${debugText}`,
-    birthDate: user?.birthDate,
-  })
+  const url = buildZendeskUrlForDebug({ user, description, deviceInfo, version })
 
   const copy = () =>
     copyToClipboard({
