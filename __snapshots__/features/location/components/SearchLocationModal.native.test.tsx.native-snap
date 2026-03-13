@@ -217,11 +217,13 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
             }
           >
             <View
+              marginTop={0}
               style={
                 {
                   "display": "flex",
                   "flexDirection": "row",
                   "justifyContent": "center",
+                  "marginTop": 0,
                   "width": "100%",
                 }
               }

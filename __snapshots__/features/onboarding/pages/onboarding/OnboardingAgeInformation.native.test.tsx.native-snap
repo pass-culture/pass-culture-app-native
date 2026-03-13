@@ -432,41 +432,6 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                         ]
                       }
                     >
-                      <View>
-                        <View
-                          style={
-                            {
-                              "marginBottom": 4,
-                            }
-                          }
-                        >
-                          <Text
-                            style={
-                              {
-                                "color": "#320096",
-                                "fontFamily": "Montserrat-Medium",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              }
-                            }
-                          >
-                            à 17 ans
-                          </Text>
-                        </View>
-                        <Text
-                          accessibilityRole="header"
-                          style={
-                            {
-                              "color": "#320096",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 19,
-                              "lineHeight": 30.4,
-                            }
-                          }
-                        >
-                          50 €
-                        </Text>
-                      </View>
                       <View
                         style={
                           {
@@ -511,6 +476,41 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                             cette année
                           </Text>
                         </View>
+                      </View>
+                      <View>
+                        <View
+                          style={
+                            {
+                              "marginBottom": 4,
+                            }
+                          }
+                        >
+                          <Text
+                            style={
+                              {
+                                "color": "#320096",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            à 17 ans
+                          </Text>
+                        </View>
+                        <Text
+                          accessibilityRole="header"
+                          style={
+                            {
+                              "color": "#320096",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 19,
+                              "lineHeight": 30.4,
+                            }
+                          }
+                        >
+                          50 €
+                        </Text>
                       </View>
                     </View>
                   </View>
@@ -650,6 +650,51 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                         }
                       }
                     >
+                      <View
+                        style={
+                          {
+                            "position": "absolute",
+                            "right": 8,
+                            "top": 8,
+                          }
+                        }
+                      >
+                        <View
+                          backgroundColor="#fbebb2"
+                          isZoomed={true}
+                          style={
+                            {
+                              "alignItems": "center",
+                              "alignSelf": "flex-start",
+                              "backgroundColor": "#fbebb2",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "flexDirection": "row",
+                              "maxWidth": "100%",
+                              "paddingHorizontal": 8,
+                              "paddingVertical": 4,
+                            }
+                          }
+                          testID="tagWrapper"
+                        >
+                          <Text
+                            isZoomed={true}
+                            style={
+                              {
+                                "color": "#161617",
+                                "flexShrink": 1,
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 16,
+                              }
+                            }
+                          >
+                            à venir
+                          </Text>
+                        </View>
+                      </View>
                       <View>
                         <View
                           style={
@@ -696,51 +741,6 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                         >
                           Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.
                         </Text>
-                      </View>
-                      <View
-                        style={
-                          {
-                            "position": "absolute",
-                            "right": 8,
-                            "top": 8,
-                          }
-                        }
-                      >
-                        <View
-                          backgroundColor="#fbebb2"
-                          isZoomed={true}
-                          style={
-                            {
-                              "alignItems": "center",
-                              "alignSelf": "flex-start",
-                              "backgroundColor": "#fbebb2",
-                              "borderBottomLeftRadius": 4,
-                              "borderBottomRightRadius": 4,
-                              "borderTopLeftRadius": 4,
-                              "borderTopRightRadius": 4,
-                              "flexDirection": "row",
-                              "maxWidth": "100%",
-                              "paddingHorizontal": 8,
-                              "paddingVertical": 4,
-                            }
-                          }
-                          testID="tagWrapper"
-                        >
-                          <Text
-                            isZoomed={true}
-                            style={
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 16,
-                              }
-                            }
-                          >
-                            à venir
-                          </Text>
-                        </View>
                       </View>
                     </View>
                   </View>
@@ -1466,40 +1466,6 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                         }
                       }
                     >
-                      <View>
-                        <View
-                          style={
-                            {
-                              "marginBottom": 4,
-                            }
-                          }
-                        >
-                          <Text
-                            style={
-                              {
-                                "color": "#696a6f",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              }
-                            }
-                          >
-                            à 17 ans
-                          </Text>
-                        </View>
-                        <Text
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            }
-                          }
-                        >
-                          50 €
-                        </Text>
-                      </View>
                       <View
                         style={
                           {
@@ -1544,6 +1510,40 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                             passé
                           </Text>
                         </View>
+                      </View>
+                      <View>
+                        <View
+                          style={
+                            {
+                              "marginBottom": 4,
+                            }
+                          }
+                        >
+                          <Text
+                            style={
+                              {
+                                "color": "#696a6f",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                              }
+                            }
+                          >
+                            à 17 ans
+                          </Text>
+                        </View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          50 €
+                        </Text>
                       </View>
                     </View>
                   </View>
@@ -1685,6 +1685,51 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                         ]
                       }
                     >
+                      <View
+                        style={
+                          {
+                            "position": "absolute",
+                            "right": 8,
+                            "top": 8,
+                          }
+                        }
+                      >
+                        <View
+                          backgroundColor="#b9ecd0"
+                          isZoomed={true}
+                          style={
+                            {
+                              "alignItems": "center",
+                              "alignSelf": "flex-start",
+                              "backgroundColor": "#b9ecd0",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "flexDirection": "row",
+                              "maxWidth": "100%",
+                              "paddingHorizontal": 8,
+                              "paddingVertical": 4,
+                            }
+                          }
+                          testID="tagWrapper"
+                        >
+                          <Text
+                            isZoomed={true}
+                            style={
+                              {
+                                "color": "#161617",
+                                "flexShrink": 1,
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 16,
+                              }
+                            }
+                          >
+                            cette année
+                          </Text>
+                        </View>
+                      </View>
                       <View>
                         <View
                           style={
@@ -1732,51 +1777,6 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                         >
                           Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.
                         </Text>
-                      </View>
-                      <View
-                        style={
-                          {
-                            "position": "absolute",
-                            "right": 8,
-                            "top": 8,
-                          }
-                        }
-                      >
-                        <View
-                          backgroundColor="#b9ecd0"
-                          isZoomed={true}
-                          style={
-                            {
-                              "alignItems": "center",
-                              "alignSelf": "flex-start",
-                              "backgroundColor": "#b9ecd0",
-                              "borderBottomLeftRadius": 4,
-                              "borderBottomRightRadius": 4,
-                              "borderTopLeftRadius": 4,
-                              "borderTopRightRadius": 4,
-                              "flexDirection": "row",
-                              "maxWidth": "100%",
-                              "paddingHorizontal": 8,
-                              "paddingVertical": 4,
-                            }
-                          }
-                          testID="tagWrapper"
-                        >
-                          <Text
-                            isZoomed={true}
-                            style={
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 16,
-                              }
-                            }
-                          >
-                            cette année
-                          </Text>
-                        </View>
                       </View>
                     </View>
                   </View>

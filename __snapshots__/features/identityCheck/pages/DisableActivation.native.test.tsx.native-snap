@@ -122,12 +122,15 @@ exports[`<DisableActivation/> should render correctly 1`] = `
         }
       >
         <View
+          marginVertical={0}
           style={
             {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
               "justifyContent": "center",
+              "marginTop": 8,
+              "marginVertical": 0,
             }
           }
         >
@@ -155,6 +158,9 @@ exports[`<DisableActivation/> should render correctly 1`] = `
             style={
               {
                 "alignItems": "center",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "gap": 16,
                 "marginBottom": 24,
               }
@@ -554,12 +560,15 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
         }
       >
         <View
+          marginVertical={0}
           style={
             {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
               "justifyContent": "center",
+              "marginTop": 8,
+              "marginVertical": 0,
             }
           }
         >
@@ -587,6 +596,9 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
             style={
               {
                 "alignItems": "center",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "gap": 16,
                 "marginBottom": 24,
               }

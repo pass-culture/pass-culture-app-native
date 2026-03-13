@@ -151,7 +151,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                 data-testid="modalContainer"
               >
                 <div
-                  class="css-view-175oi2r r-display-6koalj r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
+                  class="css-view-175oi2r r-display-6koalj r-flexDirection-18u37iz r-justifyContent-1777fci r-marginTop-1mnahxq r-width-13qz1uu"
                   data-testid="modalHeader"
                 >
                   <div
