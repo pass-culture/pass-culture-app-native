@@ -16,6 +16,8 @@ export const getStatusType = ({
   birthDate,
   depositType,
 }: UserProfileResponse): UserStatusType => {
+  if (!status?.statusType) return UserStatusType.UNKNOWN
+
   const age = getAge(birthDate)
   const isEighteenOrMore = age && age >= 18
   const isCreditV3 = depositType === DepositType.GRANT_17_18

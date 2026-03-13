@@ -16,7 +16,7 @@ export const LoggedInGeneralPublicHeader = ({ user, featureFlags }: Props) => {
   return (
     <ViewGap gap={6} testID="logged-in-general-public-header">
       <PageHeader title={title} featureFlags={featureFlags} numberOfLines={3} />
-      <GeneralPublicBanner user={user} />
+      <GeneralPublicBanner user={user} featureFlags={featureFlags} />
     </ViewGap>
   )
 }
