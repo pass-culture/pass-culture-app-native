@@ -1,4 +1,4 @@
-# v1.382.0
+# v1.383.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/favorites/{favorite_id}
@@ -6,8 +6,8 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/account/suspend/token_validation/{token}
 - /native/v1/account/suspension_date
 - /native/v1/account/suspension_status
-- /native/v1/artists/{artist_id}
-- /native/v1/banner
+Pathname not found for getNativeV1ArtistsartistId
+Pathname not found for getNativeV1Banner
 - /native/v1/bookings
 - /native/v1/countries
 - /native/v1/cultural_survey/questions
@@ -24,6 +24,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/subcategories/v2
 - /native/v1/subscription/activity_types
 - /native/v1/subscription/profile
+- /native/v1/venue/{venue_id}/advices
 - /native/v2/bookings
 - /native/v2/bookings/{booking_id}
 - /native/v2/bookings/{status}
