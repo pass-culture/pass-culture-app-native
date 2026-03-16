@@ -60,6 +60,7 @@ export const beneficiaryUser: UserProfileResponseWithoutSurvey = {
   eligibility: EligibilityType['age-17-18'],
   depositActivationDate: '2021-11-19T11:00:00Z',
   eligibilityEndDatetime: '2023-11-19T11:00:00Z',
+  depositExpirationDate: '2050-11-19T11:00:00Z',
   birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
   firstName: 'Jean',
   lastName: 'Dupond',
