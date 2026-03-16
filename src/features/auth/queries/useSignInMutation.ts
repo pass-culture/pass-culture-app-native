@@ -41,6 +41,10 @@ export const useSignInMutation = ({
   return useMutation({
     mutationFn: async (body: LoginRequest) => {
       const requestBody = { ...body, deviceInfo }
+      if ('provider' in requestBody && requestBody.provider === 'apple') {
+        const { provider: _, ...appleBody } = requestBody
+        return api.postNativeV1OauthAppleAuthorize(appleBody)
+      }
       if ('authorizationCode' in requestBody) {
         return api.postNativeV1OauthGoogleAuthorize(requestBody)
       }
@@ -48,7 +52,8 @@ export const useSignInMutation = ({
     },
 
     onSuccess: async (response, body) => {
-      const loginAnalyticsType = 'authorizationCode' in body ? 'SSO_login' : undefined
+      const isSSO = 'authorizationCode' in body || ('provider' in body && body.provider === 'apple')
+      const loginAnalyticsType = isSSO ? 'SSO_login' : undefined
       await loginRoutine(response, analyticsMethod, analyticsType || loginAnalyticsType)
       onSuccess(response.accountState)
     },

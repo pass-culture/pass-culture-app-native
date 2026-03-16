@@ -259,7 +259,9 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
               <StyledViewGap gap={4}>
                 <SeparatorWithText label="ou" />
                 <SSOButtonBase type="login" onSuccess={signIn} />
-                {enableAppleSSO ? <SSOButtonApple type="login" /> : null}
+                {enableAppleSSO ? (
+                  <SSOButtonApple type="login" onSignInFailure={handleSigninFailure} />
+                ) : null}
                 <ExternalTouchableLink
                   as={Button}
                   variant="tertiary"

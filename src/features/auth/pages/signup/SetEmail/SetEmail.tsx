@@ -107,7 +107,9 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
       <SSOViewGap gap={4}>
         <SeparatorWithText label="ou" />
         <SSOButtonGoogle type="signup" onSignInFailure={onSSOSignInFailure} />
-        {enableAppleSSO ? <SSOButtonApple type="signup" /> : null}
+        {enableAppleSSO ? (
+          <SSOButtonApple type="signup" onSignInFailure={onSSOSignInFailure} />
+        ) : null}
       </SSOViewGap>
 
       <AuthenticationButtonContainer>
