@@ -87,6 +87,19 @@ exports[`<ProfileLoggedIn /> should match snapshot 1`] = `
           >
             Profite de ton crédit jusqu’au
           </Text>
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
+            }
+          >
+             
+            18/11/2050
+          </Text>
         </View>
       </View>
       <View
