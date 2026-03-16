@@ -5,7 +5,8 @@ import { useForm } from 'react-hook-form'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
-import { SSOButton } from 'features/auth/components/SSOButton/SSOButton'
+import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
+import { SSOButtonGoogle } from 'features/auth/components/SSOButton/SSOButtonGoogle'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
 import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
 import { StepperOrigin, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -36,6 +37,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
 }) => {
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
+  const enableAppleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO)
   const { designSystem } = useTheme()
   const { control, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {
@@ -102,10 +104,13 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         isLoading={false}
         disabled={disabled}
       />
-      {enableGoogleSSO ? (
+      {enableGoogleSSO || enableAppleSSO ? (
         <SSOViewGap gap={4}>
           <SeparatorWithText label="ou" />
-          <SSOButton type="signup" onSignInFailure={onSSOSignInFailure} />
+          {enableGoogleSSO ? (
+            <SSOButtonGoogle type="signup" onSignInFailure={onSSOSignInFailure} />
+          ) : null}
+          {enableAppleSSO ? <SSOButtonApple type="signup" /> : null}
         </SSOViewGap>
       ) : (
         <EmptySpace />

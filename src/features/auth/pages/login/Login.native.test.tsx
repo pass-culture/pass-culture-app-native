@@ -526,6 +526,42 @@ describe('<Login/>', () => {
     expect(screen.queryByTestId('snackbar-error')).not.toBeOnTheScreen()
   })
 
+  describe('Apple SSO', () => {
+    it('should display Apple SSO button when Apple SSO feature flag is enabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+      renderLogin()
+
+      expect(await screen.findByText('Se connecter avec Apple')).toBeOnTheScreen()
+    })
+
+    it('should not display Apple SSO button when Apple SSO feature flag is disabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
+      renderLogin()
+
+      await screen.findByText('Connecte-toi')
+
+      expect(screen.queryByText('Se connecter avec Apple')).not.toBeOnTheScreen()
+    })
+
+    it('should display both SSO buttons when both feature flags are enabled', async () => {
+      setFeatureFlags([
+        RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO,
+        RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO,
+      ])
+      renderLogin()
+
+      expect(await screen.findByTestId('Se connecter avec Google')).toBeOnTheScreen()
+      expect(screen.getByText('Se connecter avec Apple')).toBeOnTheScreen()
+    })
+
+    it('should display separator when only Apple SSO is enabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+      renderLogin()
+
+      expect(await screen.findByText('ou')).toBeOnTheScreen()
+    })
+  })
+
   describe('Login comes from adding an offer to favorite', () => {
     const OFFER_ID = favoriteResponseSnap.offer.id
 

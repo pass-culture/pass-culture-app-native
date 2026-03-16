@@ -12,7 +12,7 @@ type Props = {
   onSignInFailure?: (error: SignInResponseFailure) => void
 }
 
-export const SSOButton = ({ type, onSignInFailure }: Props) => {
+export const SSOButtonGoogle = ({ type, onSignInFailure }: Props) => {
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const isSignupButton = type === 'signup'
   const { mutate: signIn } = useSignInMutation({

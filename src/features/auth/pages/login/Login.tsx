@@ -6,6 +6,7 @@ import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
+import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
 import { SSOButtonBase } from 'features/auth/components/SSOButton/SSOButtonBase'
 import { loginSchema } from 'features/auth/pages/login/schema/loginSchema'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
@@ -50,6 +51,7 @@ type Props = {
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.LOGIN)
   const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
+  const enableAppleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO)
   const { data: isRecaptchaEnabled } = useIsRecaptchaEnabled()
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -249,10 +251,11 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
                 onPress={handleSubmit(onSubmit)}
                 disabled={shouldDisableLoginButton}
               />
-              {enableGoogleSSO ? (
+              {enableGoogleSSO || enableAppleSSO ? (
                 <StyledViewGap gap={4}>
                   <SeparatorWithText label="ou" />
-                  <SSOButtonBase type="login" onSuccess={signIn} />
+                  {enableGoogleSSO ? <SSOButtonBase type="login" onSuccess={signIn} /> : null}
+                  {enableAppleSSO ? <SSOButtonApple type="login" /> : null}
                 </StyledViewGap>
               ) : (
                 <NoSSOSpace />
