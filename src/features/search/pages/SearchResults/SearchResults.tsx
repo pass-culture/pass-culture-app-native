@@ -49,6 +49,7 @@ export const SearchResults = () => {
   const previousGeolocPosition = usePrevious(geolocPosition)
 
   const isArtistInSearchActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE_IN_SEARCH)
+  const enableAIFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR)
 
   const {
     hits,
@@ -163,6 +164,7 @@ export const SearchResults = () => {
               venuesUserData={venuesUserData}
               offerVenues={offerVenues}
               onViewableItemsChanged={handleViewableItemsChanged}
+              enableAIFakeDoor={enableAIFakeDoor}
             />
           )}
         </InstantSearch>

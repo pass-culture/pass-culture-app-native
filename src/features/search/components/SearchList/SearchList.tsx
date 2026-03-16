@@ -35,6 +35,7 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
       shouldDisplayGridList,
       onViewableItemsChanged,
       onViewableVenuePlaylistItemsChanged,
+      enableAIFakeDoor,
     },
     ref
   ) => {
@@ -67,6 +68,7 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
             venuesUserData={venuesUserData}
             shouldDisplayGridList={shouldDisplayGridList}
             onViewableVenuePlaylistItemsChanged={onViewableVenuePlaylistItemsChanged}
+            enableAIFakeDoor={enableAIFakeDoor}
           />
         }
         ItemSeparatorComponent={isGridLayout ? undefined : LineSeparator}

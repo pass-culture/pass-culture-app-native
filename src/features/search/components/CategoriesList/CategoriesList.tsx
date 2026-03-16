@@ -7,7 +7,11 @@ import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDispla
 import { LocationMode } from 'libs/location/types'
 import { useModal } from 'ui/components/modals/useModal'
 
-export const CategoriesList: FC = () => {
+type Props = {
+  enableAIFakeDoor?: boolean
+}
+
+export const CategoriesList: FC<Props> = ({ enableAIFakeDoor }) => {
   const isWeb = Platform.OS === 'web'
 
   const sortedCategories = useSortedSearchCategories()
@@ -30,6 +34,7 @@ export const CategoriesList: FC = () => {
       showVenueMapLocationModal={showVenueMapLocationModal}
       venueMapLocationModalVisible={venueMapLocationModalVisible}
       hideVenueMapLocationModal={hideVenueMapLocationModal}
+      enableAIFakeDoor={enableAIFakeDoor}
     />
   )
 }

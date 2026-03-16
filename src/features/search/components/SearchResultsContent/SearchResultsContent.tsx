@@ -84,6 +84,7 @@ export type SearchResultsContentProps = {
     itemType: 'offer' | 'venue' | 'artist' | 'unknown',
     playlistIndex?: number
   ) => void
+  enableAIFakeDoor?: boolean
 }
 
 export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
@@ -98,6 +99,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   userData,
   venuesUserData,
   offerVenues,
+  enableAIFakeDoor,
 }) => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const { listRef: searchListRef, handleViewableItemsChanged } = useViewableItemsTracker<
@@ -350,6 +352,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         shouldDisplayGridList={shouldDisplayGridList}
         onViewableItemsChanged={handleViewableItemsChanged}
         onViewableVenuePlaylistItemsChanged={onViewableItemsChanged}
+        enableAIFakeDoor={enableAIFakeDoor}
       />
     ),
     [Tab.MAP]: selectedLocationMode === LocationMode.EVERYWHERE ? null : <VenueMapViewContainer />,
