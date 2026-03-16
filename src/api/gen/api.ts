@@ -5105,6 +5105,11 @@ export interface VenueProAdvice {
    */
   content: string
   /**
+   * @type {string}
+   * @memberof VenueProAdvice
+   */
+  offerCategoryLabel: string
+  /**
    * @type {number}
    * @memberof VenueProAdvice
    */
@@ -5114,11 +5119,6 @@ export interface VenueProAdvice {
    * @memberof VenueProAdvice
    */
   offerName: string
-  /**
-   * @type {SubcategoryIdEnum}
-   * @memberof VenueProAdvice
-   */
-  offerSubcategory: SubcategoryIdEnum
   /**
    * @type {string | null}
    * @memberof VenueProAdvice

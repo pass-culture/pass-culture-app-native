@@ -1,16 +1,11 @@
 import { proAdvicesToChronicleCardData } from 'features/chronicle/adapters/proAdvicesToChronicleCardData/proAdvicesToChronicleCardData'
 import { proAdvicesFixture } from 'features/venue/fixtures/venueProAdvices.fixture'
-import { subcategoriesMappingSnap } from 'libs/subcategories/fixtures/mappings'
-import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 
 describe('proAdvicesToChronicleCardData', () => {
   it('should transform pro advices to chronicle card data', () => {
     const proAdvices = [...proAdvicesFixture]
-    const result = proAdvicesToChronicleCardData(
-      proAdvices,
-      subcategoriesMappingSnap as SubcategoriesMapping
-    )
+    const result = proAdvicesToChronicleCardData(proAdvices)
 
     expect(result).toEqual([
       {
