@@ -4,13 +4,13 @@ import { styled } from 'styled-components/native'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { SearchIA } from 'ui/svg/icons/SearchIA'
+import { AISearch } from 'ui/svg/icons/AISearch'
 import { Typo } from 'ui/theme'
 
 export const AIFakeDoorBanner: FunctionComponent = () => {
   return (
     <Touchable accessibilityLabel="Accéder au questionnaire sur l’IA pass Culture">
-      <GenericBanner LeftIcon={<SearchIA />}>
+      <GenericBanner LeftIcon={<AISearch />}>
         <ViewGap gap={1}>
           <Typo.BodyAccent>Besoin d’inspiration&nbsp;?</Typo.BodyAccent>
           <SubtitleText>Utilise notre IA pass Culture</SubtitleText>

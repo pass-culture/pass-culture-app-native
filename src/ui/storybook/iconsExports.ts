@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { CineClubCertification } from 'ui/svg/CineClubCertification'
 import { Again } from 'ui/svg/icons/Again'
+import { AISearch } from 'ui/svg/icons/AISearch'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { ArrowLeftNew } from 'ui/svg/icons/ArrowLeftNew'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
@@ -96,7 +97,6 @@ import { Question } from 'ui/svg/icons/Question'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
 import { Search } from 'ui/svg/icons/Search'
-import { SearchIA } from 'ui/svg/icons/SearchIA'
 import { Share } from 'ui/svg/icons/Share'
 import { Show } from 'ui/svg/icons/Show'
 import { Signal } from 'ui/svg/icons/Signal'
@@ -159,6 +159,7 @@ export const SocialNetworkIcons = {
 }
 
 export const SecondaryAndBiggerIcons = {
+  AISearch,
   ArrowAgain,
   ArrowLeftNew,
   ArrowNext,
@@ -222,7 +223,6 @@ export const SecondaryAndBiggerIcons = {
   Profile,
   ScrollToTop,
   Search,
-  SearchIA,
   Share,
   Signal,
   SignOut,

@@ -7,10 +7,10 @@ import { svgIdentifier } from 'ui/svg/utils'
 
 import { AccessibleIcon } from './types'
 
-const SearchIASvg: React.FC<AccessibleIcon> = ({
+const AISearchSvg: React.FC<AccessibleIcon> = ({
   size,
   accessibilityLabel,
-  testID = 'SearchIA',
+  testID = 'AISearch',
   ...props
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
@@ -44,6 +44,6 @@ const SearchIASvg: React.FC<AccessibleIcon> = ({
   )
 }
 
-export const SearchIA = styled(SearchIASvg).attrs(({ size, theme }) => ({
+export const AISearch = styled(AISearchSvg).attrs(({ size, theme }) => ({
   size: size ?? theme.icons.sizes.standard,
 }))``
