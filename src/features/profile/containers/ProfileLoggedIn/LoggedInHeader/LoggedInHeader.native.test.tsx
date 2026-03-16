@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser, nonBeneficiaryUser, exBeneficiaryUser } from 'fixtures/user'
@@ -22,6 +23,17 @@ describe('LoggedInHeader', () => {
     renderLoggedInHeader({ user: eligibleUser })
 
     expect(screen.getByTestId('logged-in-eligible-header')).toBeOnTheScreen()
+  })
+
+  it('should render LoggedInEligibleAndBeneficiaryHeader when user is ELIGIBLE_AND_BENEFICIARY', () => {
+    const eligibleUser = {
+      ...beneficiaryUser,
+      creditType: UserCreditType.CREDIT_V3_17,
+      statusType: UserStatusType.ELIGIBLE_AND_BENEFICIARY,
+    }
+    renderLoggedInHeader({ user: eligibleUser })
+
+    expect(screen.getByTestId('logged-in-eligible-and-beneficiary-header')).toBeOnTheScreen()
   })
 
   it('should render LoggedInBeneficiaryHeader when user is BENEFICIARY', () => {
