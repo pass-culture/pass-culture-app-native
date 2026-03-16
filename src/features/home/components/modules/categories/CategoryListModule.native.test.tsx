@@ -6,6 +6,7 @@ import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixt
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -93,5 +94,35 @@ describe('CategoryListModule', () => {
     )
 
     expect(screen.queryByText('Ce week-end')).not.toBeOnTheScreen()
+  })
+
+  it('should display AI fake door when enableAIFakeDoor FF activated', () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR])
+    render(
+      <CategoryListModule
+        id="123"
+        title="module"
+        categoryBlockList={categoryBlockList}
+        index={1}
+        homeEntryId="homeEntryId"
+      />
+    )
+
+    expect(screen.getByText('Besoin d’inspiration ?')).toBeOnTheScreen()
+  })
+
+  it('should not display AI fake door when enableAIFakeDoor FF deactivated', () => {
+    setFeatureFlags([])
+    render(
+      <CategoryListModule
+        id="123"
+        title="module"
+        categoryBlockList={categoryBlockList}
+        index={1}
+        homeEntryId="homeEntryId"
+      />
+    )
+
+    expect(screen.queryByText('Besoin d’inspiration ?')).not.toBeOnTheScreen()
   })
 })
