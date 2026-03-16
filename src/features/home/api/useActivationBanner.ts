@@ -12,7 +12,7 @@ export type ActivationBanner = {
   name?: BannerName
 }
 
-const defaultTitle = 'Débloque ton crédit'
+const defaultTitle = 'Débloque ton crédit pour bénéficier du pass Culture'
 
 export const useActivationBanner = (): { banner: ActivationBanner } => {
   const { shouldBeOverriden, amount: overriddenAmount } = useOverrideCreditActivationAmount()
