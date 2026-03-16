@@ -26,8 +26,7 @@ onFlowStart:
       - runFlow: subFolder/commons/LaunchAppWithPermissions.yml
 
 - runFlow: subFolder/commons/StopApp.yml
-- runFlow: subFolder/links/DeepLinksToProfile.yml
-- runFlow: subFolder/auth/LoginFromProfileForGeneratedUser.yml
+- runFlow: subFolder/links/DeepLinkBeneficiaryUser.yml
 
 - runFlow: subFolder/commons/GoToSearchFromTabBar.yml
 - runFlow: subFolder/search/SearchBookableDuoOffer.yml
