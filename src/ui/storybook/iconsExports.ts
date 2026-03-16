@@ -97,6 +97,7 @@ import { Question } from 'ui/svg/icons/Question'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
 import { Search } from 'ui/svg/icons/Search'
+import { SearchIA } from 'ui/svg/icons/SearchIA'
 import { Share } from 'ui/svg/icons/Share'
 import { Show } from 'ui/svg/icons/Show'
 import { Signal } from 'ui/svg/icons/Signal'
@@ -223,6 +224,7 @@ export const SecondaryAndBiggerIcons = {
   Profile,
   ScrollToTop,
   Search,
+  SearchIA,
   Share,
   Signal,
   SignOut,
