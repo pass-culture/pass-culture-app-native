@@ -1,5 +1,33 @@
-import { liteClient } from 'algoliasearch/lite'
+import { liteClient, SearchMethodParams } from 'algoliasearch/lite'
 
 import { env } from 'libs/environment/env'
 
-export const client = liteClient(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_PUBLIC_KEY)
+const baseClient = liteClient(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_PUBLIC_KEY)
+
+const disableAnalyticsByDefault = (
+  searchMethodParams: Parameters<typeof baseClient.search>[0]
+): SearchMethodParams => {
+  const params = Array.isArray(searchMethodParams)
+    ? searchMethodParams
+    : searchMethodParams.requests
+  const requests = params.map((req) => ({ analytics: false as const, ...req }))
+  const normalized = Array.isArray(searchMethodParams)
+    ? { requests }
+    : { ...searchMethodParams, requests }
+  return normalized
+}
+
+/**
+ * Algolia client with `analytics: false` injected by default on all requests.
+ * Only queries that explicitly set `analytics: true` will appear in Algolia search analytics.
+ * This prevents non-search queries (home playlists, modules, etc.) from polluting analytics.
+ */
+export const client: typeof baseClient = {
+  ...baseClient,
+  search(searchMethodParams, requestOptions) {
+    return baseClient.search(disableAnalyticsByDefault(searchMethodParams), requestOptions)
+  },
+  searchForHits(searchMethodParams, requestOptions) {
+    return baseClient.searchForHits(disableAnalyticsByDefault(searchMethodParams), requestOptions)
+  },
+}
