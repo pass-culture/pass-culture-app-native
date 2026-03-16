@@ -5,7 +5,7 @@ import DeviceInfo from 'react-native-device-info'
 
 import * as API from 'api/api'
 import { AccountState, OauthStateResponse, SigninResponse } from 'api/gen'
-import { SSOButton } from 'features/auth/components/SSOButton/SSOButton'
+import { SSOButtonGoogle } from 'features/auth/components/SSOButton/SSOButtonGoogle'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
@@ -215,5 +215,7 @@ describe('<SSOButton />', () => {
 })
 
 const renderSSOButton = (type: 'signup' | 'login' = 'signup') => {
-  render(reactQueryProviderHOC(<SSOButton type={type} onSignInFailure={onSignInFailureSpy} />))
+  render(
+    reactQueryProviderHOC(<SSOButtonGoogle type={type} onSignInFailure={onSignInFailureSpy} />)
+  )
 }
