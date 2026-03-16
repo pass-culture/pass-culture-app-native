@@ -45,6 +45,10 @@ const removeSelectedVenueSpy = jest.spyOn(useVenueMapStore, 'removeSelectedVenue
 const mockDispatch = jest.fn()
 const mockFetchSearchResultsResponse = {
   offersResponse: { ...mockedAlgoliaResponse, nbHits: 0, userData: null },
+  venueNotOpenToPublic: {
+    ...mockedAlgoliaVenueResponse,
+    userData: null,
+  },
   venuesResponse: mockedAlgoliaVenueResponse,
   offerArtistsResponse: { ...mockedAlgoliaResponse, nbHits: 0, userData: null },
   duplicatedOffersResponse: { ...mockedAlgoliaResponse, nbHits: 0, userData: null },
@@ -78,6 +82,14 @@ describe('useSearchResults', () => {
             facetFilters: [['offer.isEducational:false']],
             hitsPerPage: 20,
             numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
+            query: '',
+          },
+          {
+            indexName: 'algoliaVenuesIndexExperimental',
+            facetFilters: [['is_open_to_public:false']],
+            clickAnalytics: true,
+            hitsPerPage: 0,
             page: 0,
             query: '',
           },
