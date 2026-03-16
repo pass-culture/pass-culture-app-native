@@ -1,4 +1,4 @@
-import { EligibilityType, QFBonificationStatus, UserProfileResponse } from 'api/gen'
+import { DepositType, EligibilityType, QFBonificationStatus, UserProfileResponse } from 'api/gen'
 import { getAge } from 'shared/user/getAge'
 
 import { getEligibilityType, UserEligibilityType } from './getEligibilityType'
@@ -71,6 +71,8 @@ describe('getEligibilityType', () => {
         buildUser({
           eligibility: EligibilityType.free,
           qfBonificationStatus: QFBonificationStatus.eligible,
+          depositType: DepositType.GRANT_17_18,
+          isEligibleForBeneficiaryUpgrade: false,
         })
       )
 

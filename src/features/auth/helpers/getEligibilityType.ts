@@ -1,8 +1,9 @@
-import { EligibilityType, QFBonificationStatus, UserProfileResponse } from 'api/gen'
+import { DepositType, EligibilityType, QFBonificationStatus, UserProfileResponse } from 'api/gen'
 import { getAge } from 'shared/user/getAge'
 
 export enum UserEligibilityType {
   NOT_ELIGIBLE = 'NOT_ELIGIBLE',
+  ELIGIBLE_BONUS = 'ELIGIBLE_BONUS',
   ELIGIBLE_CREDIT_V1_18 = 'ELIGIBLE_CREDIT_V1_18',
   ELIGIBLE_CREDIT_V2_15 = 'ELIGIBLE_CREDIT_V2_15',
   ELIGIBLE_CREDIT_V2_16 = 'ELIGIBLE_CREDIT_V2_16',
@@ -12,13 +13,14 @@ export enum UserEligibilityType {
   ELIGIBLE_CREDIT_V3_16 = 'ELIGIBLE_CREDIT_V3_16',
   ELIGIBLE_CREDIT_V3_17 = 'ELIGIBLE_CREDIT_V3_17',
   ELIGIBLE_CREDIT_V3_18 = 'ELIGIBLE_CREDIT_V3_18',
-  ELIGIBLE_BONUS = 'ELIGIBLE_BONUS',
 }
 
 export const getEligibilityType = ({
   birthDate,
   eligibility,
   qfBonificationStatus,
+  depositType,
+  isEligibleForBeneficiaryUpgrade,
 }: UserProfileResponse): UserEligibilityType => {
   const actualyNotPossibleInFrontend = false
   const isTooOldForThisTypeOfEligibility = false
@@ -44,8 +46,15 @@ export const getEligibilityType = ({
   const isEligibleCreditV3_16 = isEligibleCreditV3_free && isSixteen
   const isEligibleCreditV3_17 = eligibility === EligibilityType['age-17-18'] && isSeventeen
   const isEligibleCreditV3_18 = eligibility === EligibilityType['age-17-18'] && isEighteenOrMore
-  const isEligibleBonus = qfBonificationStatus === QFBonificationStatus.eligible
 
+  // BONUS
+  const isCreditV3 = depositType === DepositType.GRANT_17_18
+  const isNotEligibleForBeneficiaryUpgrade = !isEligibleForBeneficiaryUpgrade
+  const isCreditV3_18 = isCreditV3 && isNotEligibleForBeneficiaryUpgrade && isEighteenOrMore
+  const isNotEligibleBonus = qfBonificationStatus === QFBonificationStatus.not_eligible
+  const isEligibleBonus = !isNotEligibleBonus && isCreditV3_18
+
+  if (isEligibleBonus) return UserEligibilityType.ELIGIBLE_BONUS
   if (isEligibleCreditV1_18) return UserEligibilityType.ELIGIBLE_CREDIT_V1_18
   if (isEligibleCreditV2_15) return UserEligibilityType.ELIGIBLE_CREDIT_V2_15
   if (isEligibleCreditV2_16) return UserEligibilityType.ELIGIBLE_CREDIT_V2_16
@@ -55,6 +64,5 @@ export const getEligibilityType = ({
   if (isEligibleCreditV3_16) return UserEligibilityType.ELIGIBLE_CREDIT_V3_16
   if (isEligibleCreditV3_17) return UserEligibilityType.ELIGIBLE_CREDIT_V3_17
   if (isEligibleCreditV3_18) return UserEligibilityType.ELIGIBLE_CREDIT_V3_18
-  if (isEligibleBonus) return UserEligibilityType.ELIGIBLE_BONUS
   return UserEligibilityType.NOT_ELIGIBLE
 }
