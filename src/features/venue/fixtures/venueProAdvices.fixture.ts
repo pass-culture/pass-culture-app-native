@@ -1,6 +1,6 @@
 import type { ReadonlyDeep } from 'type-fest'
 
-import { SubcategoryIdEnum, VenueProAdvice, VenueProAdvices } from 'api/gen'
+import { VenueProAdvice, VenueProAdvices } from 'api/gen'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 
@@ -11,7 +11,7 @@ export const proAdvicesFixture = [
       'Ce livre est vraiment exceptionnel\u00a0! Vous serez tenu en haleine du début à la fin\u00a0! Préparez-vous à être surpris et a totalement adhéré à l‘écriture de cet auteur\u00a0! ',
     offerId: 1,
     offerName: 'American dream',
-    offerSubcategory: SubcategoryIdEnum.LIVRE_PAPIER,
+    offerCategoryLabel: 'Livre',
     publicationDatetime: '09/03/2026',
     offerThumbUrl: 'url',
   },
@@ -21,7 +21,7 @@ export const proAdvicesFixture = [
       'Ce livre est vraiment exceptionnel\u00a0! Vous serez tenu en haleine du début à la fin\u00a0! Préparez-vous à être surpris et a totalement adhéré à l‘écriture de cet auteur\u00a0! ',
     offerId: 1,
     offerName: 'American dream',
-    offerSubcategory: SubcategoryIdEnum.LIVRE_PAPIER,
+    offerCategoryLabel: 'Livre',
     publicationDatetime: '09/03/2026',
   },
 ] as const satisfies readonly VenueProAdvice[]
