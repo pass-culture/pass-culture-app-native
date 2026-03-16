@@ -10,6 +10,7 @@ import { SearchSuggestions } from 'features/search/components/SearchSuggestions/
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
+import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { env } from 'libs/environment/env'
 
 const searchInputID = uuidv4()
@@ -34,11 +35,10 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
     (query: string) => setQueryHistory(query),
     [setQueryHistory]
   )
-
   const facetFilters =
     offerCategories.length > 0
       ? [
-          `${env.ALGOLIA_OFFERS_INDEX_NAME}.facets.analytics.offer.searchGroupNamev2.value:${String(offerCategories[0])}`,
+          `${env.ALGOLIA_OFFERS_INDEX_NAME}.facets.analytics.${FACETS_FILTERS_ENUM.OFFER_SEARCH_GROUPS}.value:${String(offerCategories[0])}`,
         ]
       : []
 
