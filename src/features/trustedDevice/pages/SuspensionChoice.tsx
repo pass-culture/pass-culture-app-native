@@ -4,7 +4,8 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { buildZendeskUrlForFraud } from 'features/profile/pages/DebugScreen/buildZendeskUrl'
+import { buildZendeskUrlForFraud } from 'features/profile/helpers/buildZendeskUrl'
+import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { useSuspendForSuspiciousLoginMutation } from 'features/trustedDevice/queries/useSuspendForSuspiciousLoginMutation'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Adjust } from 'libs/adjust/adjust'
@@ -19,6 +20,7 @@ import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideT
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { useVersion } from 'ui/hooks/useVersion'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { UserError } from 'ui/svg/UserError'
@@ -30,6 +32,8 @@ export const SuspensionChoice = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { logType } = useLogTypeFromRemoteConfig()
   const { user } = useAuthContext()
+  const deviceInfo = useDeviceInfo()
+  const version = useVersion()
 
   const { mutate: suspendAccountForSuspiciousLogin, isPending } =
     useSuspendForSuspiciousLoginMutation({
@@ -77,7 +81,7 @@ export const SuspensionChoice = () => {
         icon: EmailFilled,
         wording: 'Contacter le service fraude',
         onBeforeNavigate: onPressContactFraudTeam,
-        externalNav: { url: buildZendeskUrlForFraud(user) },
+        externalNav: { url: buildZendeskUrlForFraud({ user, deviceInfo, version }) },
       }}>
       <Typo.BodyAccent>{groupLabel}&nbsp;:</Typo.BodyAccent>
       <VerticalUl>
