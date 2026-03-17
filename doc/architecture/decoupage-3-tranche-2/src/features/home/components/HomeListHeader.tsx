@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react'
 import { View } from 'react-native';
-import { Spacer, PageContent, VideoCarouselModule } from 'src/features/home/pages/GenericHome';
-import { HomepageModule } from 'features/home/types';
+import { PageContent, VideoCarouselModule } from 'src/features/home/pages/GenericHome'
+import { HomepageModule } from 'features/home/types'
 
 type HomeListHeaderProps = {
   Header: React.JSX.Element;

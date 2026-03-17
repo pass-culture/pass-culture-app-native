@@ -8,7 +8,7 @@ import {
   View,
   Text,
 } from 'react-native'
-import { PageContent, Spacer, VideoCarouselModule } from 'src/features/home/pages/GenericHome'
+import { PageContent, VideoCarouselModule } from 'src/features/home/pages/GenericHome'
 
 import { enrichModulesWithData } from 'features/home/helpers/enrichModulesWithData'
 import { HomepageModule, isVideoCarouselModule, ThematicHeader } from 'features/home/types'

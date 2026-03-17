@@ -17,7 +17,7 @@ import { Button } from 'ui/designSystem/Button/Button'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const VideoModal: React.FC<VideoModalProps> = (props) => {
   const playerRef = useRef<YoutubePlayerRef>(null)
@@ -80,25 +80,23 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
       />
 
       <StyledScrollView>
-        <Spacer.Column numberOfSpaces={4} />
         <StyledTagContainer>
           <Tag label={props.videoTag} variant={TagVariant.DEFAULT} />
         </StyledTagContainer>
-        <Spacer.Column numberOfSpaces={2} />
-        <Typo.Title3>{props.title}</Typo.Title3>
-        <Spacer.Column numberOfSpaces={2} />
+        <TitleContainer>
+          <Typo.Title3>{props.title}</Typo.Title3>
+        </TitleContainer>
         <StyledCaptionDate>{`Publiée le ${formatToFrenchDate(
           new Date(props.videoPublicationDate)
         )}`}</StyledCaptionDate>
         {props.videoDescription ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={2} />
+          <VideoDescriptionContainer>
             <StyledBody>{props.videoDescription}</StyledBody>
-          </React.Fragment>
+          </VideoDescriptionContainer>
         ) : null}
-        <Spacer.Column numberOfSpaces={6} />
-        <Typo.Title4>{props.offerTitle}</Typo.Title4>
-        <Spacer.Column numberOfSpaces={4} />
+        <OfferTitleContainer>
+          <Typo.Title4>{props.offerTitle}</Typo.Title4>
+        </OfferTitleContainer>
         {props.isMultiOffer ? (
           <VideoMultiOfferList
             offers={props.offers}
@@ -107,15 +105,14 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
           />
         ) : null}
         {!props.isMultiOffer && props.offers[0] ? (
-          <React.Fragment>
+          <VideoMonoOfferTileContainer>
             <VideoMonoOfferTile
               offer={props.offers[0]}
               color={props.color}
               hideModal={props.hideModal}
               analyticsParams={analyticsParams}
             />
-            <Spacer.Column numberOfSpaces={8} />
-          </React.Fragment>
+          </VideoMonoOfferTileContainer>
         ) : null}
       </StyledScrollView>
       <CloseButtonWrapper>
@@ -139,9 +136,10 @@ const CloseButtonWrapper = styled.View(({ theme }) => ({
   right: theme.designSystem.size.spacing.l,
 }))
 
-const StyledTagContainer = styled.View({
+const StyledTagContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
   alignItems: 'flex-start',
-})
+}))
 
 const StyledCaptionDate = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.icon.subtle,
@@ -153,4 +151,21 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 
 const StyledScrollView = styled.ScrollView(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.xl,
+}))
+
+const TitleContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.s,
+}))
+
+const VideoDescriptionContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
+}))
+
+const OfferTitleContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
+
+const VideoMonoOfferTileContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxl,
 }))
