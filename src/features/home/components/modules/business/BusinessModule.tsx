@@ -13,6 +13,7 @@ import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 import { getSpacing, Typo } from 'ui/theme'
@@ -82,8 +83,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 
   if (!shouldModuleBeDisplayed) return null
 
-  const titleText = title ?? ''
-  const accessibilityLabel = subtitle ? `${titleText} ${subtitle}` : title
+  const accessibilityLabel = getComputedAccessibilityLabel(date, title, subtitle, callToAction)
 
   return (
     <StyledTouchableOpacity
