@@ -3,11 +3,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React, { FunctionComponent } from 'react'
 
 import { EmailSentGeneric } from 'features/auth/components/EmailSentGeneric'
-import {
-  RootStackParamList,
-  StepperOrigin,
-  UseNavigationType,
-} from 'features/navigation/RootNavigator/types'
+import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment/env'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -15,17 +11,12 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 type Props = Pick<NativeStackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>, 'route'>
 
 export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
-  const { navigate } = useNavigation<UseNavigationType>()
-
-  const onClose = () => {
-    navigate('Login', { from: StepperOrigin.RESET_PASSWORD_EMAIL_SENT })
-  }
-
+  const { goBack } = useNavigation<UseNavigationType>()
   return (
     <PageWithHeader
       title="Oubli de mot de passe"
       shouldDisplayBackButton={false}
-      RightButton={<RightButtonText onClose={onClose} wording="Quitter" />}
+      RightButton={<RightButtonText onClose={goBack} wording="Quitter" />}
       scrollChildren={
         <EmailSentGeneric
           title="Clique sur le lien de réinitialisation reçu par e-mail"
