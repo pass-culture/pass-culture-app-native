@@ -1,4 +1,7 @@
-import { createComponentForStaticNavigation } from '@react-navigation/native'
+import {
+  createComponentForStaticNavigation,
+  createPathConfigForStaticNavigation,
+} from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import {
@@ -7,7 +10,7 @@ import {
 } from 'features/navigation/helpers/screenParamsUtils'
 import { SEARCH_STACK_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/navigators/SearchStackNavigator/searchStackNavigationOptions'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
-import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
+import { SearchResultsContainer } from 'features/search/pages/SearchResults/SearchResultsContainer'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
 import { SearchView } from 'features/search/types'
 
@@ -24,7 +27,7 @@ const searchStackNavigatorConfig = {
       },
     },
     SearchResults: {
-      screen: SearchResults,
+      screen: SearchResultsContainer,
       linking: {
         path: 'recherche/resultats',
         parse: screenParamsParser[SearchView.Results],
@@ -43,4 +46,7 @@ const searchStackNavigatorConfig = {
 }
 
 const SearchStackNavigator = createNativeStackNavigator(searchStackNavigatorConfig)
-export const SearchStackScreen = createComponentForStaticNavigation(SearchStackNavigator, 'Search')
+export const SearchStackScreen = createComponentForStaticNavigation(SearchStackNavigator)
+
+export const SEARCH_STACK_LINKING_SCREENS =
+  createPathConfigForStaticNavigation(SearchStackNavigator)

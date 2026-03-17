@@ -3,10 +3,5 @@ import { rootStackNavigatorPathConfig } from 'features/navigation/navigators/Roo
 import { RootScreenNames } from './types'
 
 export const isRootStackScreen = (screen: string): screen is RootScreenNames => {
-  const rootGroupsScreens: string[] = Object.keys(rootStackNavigatorPathConfig.screens.groups)
-    .map((groupkey) => Object.keys(rootStackNavigatorPathConfig.screens.groups[groupkey].screens))
-    .flat()
-
-  const allRootScreens = [...rootGroupsScreens.flat()]
-  return allRootScreens.includes(screen)
+  return Object.keys(rootStackNavigatorPathConfig.screens).includes(screen as RootScreenNames)
 }

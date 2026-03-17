@@ -38,6 +38,7 @@ jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
   useNavigation: () => ({ navigate: jest.fn(), push: jest.fn() }),
   useFocusEffect: jest.fn(),
+  createComponentForStaticNavigation: () => () => null,
 }))
 
 jest.mock('features/navigation/navigationRef')

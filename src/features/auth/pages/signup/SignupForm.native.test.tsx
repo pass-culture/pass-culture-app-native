@@ -671,7 +671,7 @@ describe('Signup Form', () => {
 
       await user.press(ssoButton)
 
-      const datePicker = screen.getByTestId('date-picker-spinner-native')
+      const datePicker = await screen.findByTestId('date-picker-spinner-native')
       await act(async () =>
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )

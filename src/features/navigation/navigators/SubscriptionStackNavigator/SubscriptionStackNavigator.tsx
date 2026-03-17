@@ -300,9 +300,6 @@ export const SubscriptionStackNavigator = createNativeStackNavigator(
   subscriptionStackNavigatorDefinition
 )
 
-const SubscriptionScreen = createComponentForStaticNavigation(
-  SubscriptionStackNavigator,
-  'Subscription'
-)
+const SubscriptionScreen = createComponentForStaticNavigation(SubscriptionStackNavigator)
 
 export default SubscriptionScreen

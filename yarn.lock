@@ -8444,11 +8444,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-navigation/core@npm:^7.13.1":
-  version: 7.13.1
-  resolution: "@react-navigation/core@npm:7.13.1"
+"@react-navigation/core@npm:^7.14.0":
+  version: 7.17.2
+  resolution: "@react-navigation/core@npm:7.17.2"
   dependencies:
-    "@react-navigation/routers": ^7.5.1
+    "@react-navigation/routers": ^7.5.3
     escape-string-regexp: ^4.0.0
     fast-deep-equal: ^3.1.3
     nanoid: ^3.3.11
@@ -8458,7 +8458,7 @@ __metadata:
     use-sync-external-store: ^1.5.0
   peerDependencies:
     react: ">= 18.2.0"
-  checksum: 40b0113acdfd95f662852366b40fa8204c11fb43326c2fb3a39001408261b48b64138b69a5c363d41dca4ef8daa4a6940c7f58d7acb31abe8e9c22c4e77cf1c6
+  checksum: ee0641481b7e272ebe9aafa4e5985a9de497b719275a153687ecd8cf80b30dce03e53270d9d5606f6321fea801a7030578f0bc731e569f421cfbb76065e8b8e1
   languageName: node
   linkType: hard
 
@@ -8533,11 +8533,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-navigation/native@npm:^7.1.20":
-  version: 7.1.20
-  resolution: "@react-navigation/native@npm:7.1.20"
+"@react-navigation/native@npm:7.1.28":
+  version: 7.1.28
+  resolution: "@react-navigation/native@npm:7.1.28"
   dependencies:
-    "@react-navigation/core": ^7.13.1
+    "@react-navigation/core": ^7.14.0
     escape-string-regexp: ^4.0.0
     fast-deep-equal: ^3.1.3
     nanoid: ^3.3.11
@@ -8545,16 +8545,16 @@ __metadata:
   peerDependencies:
     react: ">= 18.2.0"
     react-native: "*"
-  checksum: dc005928ca887468774d5a912d93c35ff029b787871d7a22969f1b8a2263befd14780658e0da186c6ce6993a3fc55c0947d702117a80c614802d45873c8ac5c5
+  checksum: 7950a3b2a0cb712b12f52c9df3ffed8ebd317843a875b0ec764fff52922f2c51754759b8c866a9a36c02ec8c00c4be6604b1350e5546e3c83041b6372c9aef80
   languageName: node
   linkType: hard
 
-"@react-navigation/routers@npm:^7.5.1":
-  version: 7.5.1
-  resolution: "@react-navigation/routers@npm:7.5.1"
+"@react-navigation/routers@npm:^7.5.3":
+  version: 7.5.3
+  resolution: "@react-navigation/routers@npm:7.5.3"
   dependencies:
     nanoid: ^3.3.11
-  checksum: 49f04894f7e8b8e2c16abb96bbc1a9775a02341bb00fb9c0d9ce97f8d82613c27570921f2b854f8fd1639c29309df05345aa734124d48bdbcb5a934055b8af12
+  checksum: 1b8397ade6bbab51a60d2671fd88eca2e0cf22b9cd10bee16d3537bc5f05deea7dad8c116a809f580c87c5a6cceae7c4fc9f20644f45076ee8f00524e903fc4b
   languageName: node
   linkType: hard
 
@@ -11147,7 +11147,7 @@ __metadata:
     "@react-native/typescript-config": 0.80.2
     "@react-navigation/bottom-tabs": ^7.8.5
     "@react-navigation/devtools": ^7.0.40
-    "@react-navigation/native": ^7.1.20
+    "@react-navigation/native": 7.1.28
     "@react-navigation/native-stack": ^7.12.0
     "@react-oauth/google": ^0.13.4
     "@rollup/plugin-commonjs": ^28.0.3

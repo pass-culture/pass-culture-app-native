@@ -32,7 +32,13 @@ jest.mock('react-error-boundary', () => ({
   withErrorBoundary: (component: React.ReactNode, _: unknown) => component,
 }))
 jest.mock('features/navigation/navigators/TabNavigator/TabStackNavigator', () => ({
-  TabNavigator: () => null,
+  BottomTabScreen: () => null,
+  BottomTabNavigator: {
+    Navigator: () => null,
+    Screen: () => null,
+    Group: ({ children }: { children: React.ReactNode }) => children,
+    config: { screens: {} },
+  },
 }))
 jest.mock('features/navigation/navigators/RootNavigator/useInitialScreenConfig', () => ({
   useInitialScreen: () => 'TabNavigator',

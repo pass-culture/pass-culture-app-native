@@ -6,6 +6,10 @@ import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { ConsentSettings } from './ConsentSettings'
 
+jest.mock('features/navigation/helpers/openUrl', () => ({
+  openUrl: jest.fn(),
+}))
+
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
   useNavigation: () => ({

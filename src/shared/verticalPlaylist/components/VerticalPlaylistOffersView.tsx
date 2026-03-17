@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { FlatList, Platform, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { Referrals } from 'features/navigation/RootNavigator/types'
+import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'

@@ -83,7 +83,6 @@ describe('getScreenFromDeeplink()', () => {
 
   it('should return Offer with id=666', () => {
     const url = getScreenPath('Offer', { id: 666, from: 'offer', moduleName: undefined })
-
     const { screen, params } = getScreenFromDeeplink(url)
 
     expect(screen).toEqual('Offer')

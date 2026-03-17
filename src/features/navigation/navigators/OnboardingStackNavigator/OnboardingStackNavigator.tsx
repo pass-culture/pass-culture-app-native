@@ -60,6 +60,6 @@ export const OnboardingStackNavigator = createNativeStackNavigator(
   onboardingStackNavigatorPathDefinition
 )
 
-const OnboardingScreen = createComponentForStaticNavigation(OnboardingStackNavigator, 'Onboarding')
+const OnboardingScreen = createComponentForStaticNavigation(OnboardingStackNavigator)
 
 export default OnboardingScreen

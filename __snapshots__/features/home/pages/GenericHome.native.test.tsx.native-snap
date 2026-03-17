@@ -266,6 +266,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             width={200}
           >
             <BVLinearGradient
+              collapsable={false}
               colors={
                 [
                   4291546578,
@@ -372,6 +373,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={192}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -436,6 +438,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={153.60000000000002}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -492,6 +495,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={57.599999999999994}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -571,6 +575,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={192}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -635,6 +640,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={153.60000000000002}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -691,6 +697,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={57.599999999999994}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -770,6 +777,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={192}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -834,6 +842,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={153.60000000000002}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -890,6 +899,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={57.599999999999994}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -969,6 +979,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={192}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -1033,6 +1044,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={153.60000000000002}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -1089,6 +1101,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={57.599999999999994}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -1162,6 +1175,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             width={200}
           >
             <BVLinearGradient
+              collapsable={false}
               colors={
                 [
                   4291546578,
@@ -1271,6 +1285,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={160}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -1335,6 +1350,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={128}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -1391,6 +1407,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={48}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -1470,6 +1487,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={160}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -1534,6 +1552,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={128}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -1590,6 +1609,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={48}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -1669,6 +1689,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={160}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -1733,6 +1754,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={128}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -1789,6 +1811,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={48}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -1868,6 +1891,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={160}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -1932,6 +1956,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={128}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -1988,6 +2013,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={48}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -2067,6 +2093,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={160}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -2131,6 +2158,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={128}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -2187,6 +2215,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={48}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -2259,6 +2288,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             width={912}
           >
             <BVLinearGradient
+              collapsable={false}
               colors={
                 [
                   4291546578,
@@ -2327,6 +2357,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             width={200}
           >
             <BVLinearGradient
+              collapsable={false}
               colors={
                 [
                   4291546578,
@@ -2436,6 +2467,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={160}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -2500,6 +2532,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={128}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -2556,6 +2589,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={48}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -2635,6 +2669,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={160}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -2699,6 +2734,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={128}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -2755,6 +2791,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={48}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -2834,6 +2871,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={160}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -2898,6 +2936,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={128}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -2954,6 +2993,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={48}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -3033,6 +3073,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={160}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -3097,6 +3138,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={128}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -3153,6 +3195,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={48}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -3232,6 +3275,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={160}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -3296,6 +3340,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={128}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -3352,6 +3397,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={48}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -3425,6 +3471,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             width={200}
           >
             <BVLinearGradient
+              collapsable={false}
               colors={
                 [
                   4291546578,
@@ -3531,6 +3578,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={192}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -3595,6 +3643,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={153.60000000000002}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -3651,6 +3700,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={57.599999999999994}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -3730,6 +3780,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={192}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -3794,6 +3845,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={153.60000000000002}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -3850,6 +3902,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={57.599999999999994}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -3929,6 +3982,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={192}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -3993,6 +4047,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={153.60000000000002}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -4049,6 +4104,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={57.599999999999994}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -4128,6 +4184,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     width={192}
                   >
                     <BVLinearGradient
+                      collapsable={false}
                       colors={
                         [
                           4291546578,
@@ -4192,6 +4249,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={153.60000000000002}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,
@@ -4248,6 +4306,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       width={57.599999999999994}
                     >
                       <BVLinearGradient
+                        collapsable={false}
                         colors={
                           [
                             4291546578,

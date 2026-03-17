@@ -1,11 +1,29 @@
-export const {
-  getStateFromPath,
-  getPathFromState,
-  CommonActions,
-  createComponentForStaticNavigation,
-  createPathConfigForStaticNavigation,
-} = jest.requireActual('@react-navigation/native')
+const { getStateFromPath, getPathFromState, CommonActions } = jest.requireActual(
+  '@react-navigation/native'
+)
+
+export { getStateFromPath, getPathFromState, CommonActions }
 import { useEffect } from 'react'
+
+export const createComponentForStaticNavigation = jest.fn(() => () => null)
+export const createPathConfigForStaticNavigation = jest.fn((staticNavigatorDefinition) => {
+  const screens = staticNavigatorDefinition?.screens ?? staticNavigatorDefinition?.config?.screens
+  if (!screens || typeof screens !== 'object') return {}
+
+  const config = {}
+  const usedPaths = new Set<string>()
+  for (const screenName of Object.keys(screens)) {
+    const screenDefinition = screens[screenName]
+    const linking = screenDefinition?.linking
+    const path = typeof linking === 'string' ? linking : linking?.path
+    if (typeof path === 'string' && path.length > 0) {
+      if (usedPaths.has(path)) continue
+      usedPaths.add(path)
+    }
+    if (linking) config[screenName] = linking
+  }
+  return config
+})
 
 export const addListener = jest.fn()
 export const canGoBack = jest.fn()

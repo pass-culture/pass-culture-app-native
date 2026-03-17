@@ -452,7 +452,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     variant="default"
                   >
                     <View
-                      accessibilityLabel="Sélectionne une page - Liste - Élément 1 sur 10 - Offer - non sélectionné"
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 1 sur 14 - Offer - non sélectionné"
                       accessibilityRole="radio"
                       accessibilityState={
                         {
@@ -495,7 +495,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           },
                         ]
                       }
-                      testID="Sélectionne une page - Liste - Élément 1 sur 10 - Offer - non sélectionné"
+                      testID="Sélectionne une page - Liste - Élément 1 sur 14 - Offer - non sélectionné"
                     >
                       <View
                         style={
@@ -569,7 +569,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityLabel="Sélectionne une page - Liste - Élément 2 sur 10 - VenueMap - non sélectionné"
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 2 sur 14 - VenueMap - non sélectionné"
                       accessibilityRole="radio"
                       accessibilityState={
                         {
@@ -612,7 +612,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           },
                         ]
                       }
-                      testID="Sélectionne une page - Liste - Élément 2 sur 10 - VenueMap - non sélectionné"
+                      testID="Sélectionne une page - Liste - Élément 2 sur 14 - VenueMap - non sélectionné"
                     >
                       <View
                         style={
@@ -686,7 +686,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityLabel="Sélectionne une page - Liste - Élément 3 sur 10 - Venue - non sélectionné"
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 3 sur 14 - Venue - non sélectionné"
                       accessibilityRole="radio"
                       accessibilityState={
                         {
@@ -729,7 +729,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           },
                         ]
                       }
-                      testID="Sélectionne une page - Liste - Élément 3 sur 10 - Venue - non sélectionné"
+                      testID="Sélectionne une page - Liste - Élément 3 sur 14 - Venue - non sélectionné"
                     >
                       <View
                         style={
@@ -803,7 +803,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityLabel="Sélectionne une page - Liste - Élément 4 sur 10 - Home - sélectionné"
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 4 sur 14 - Home - sélectionné"
                       accessibilityRole="radio"
                       accessibilityState={
                         {
@@ -846,7 +846,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           },
                         ]
                       }
-                      testID="Sélectionne une page - Liste - Élément 4 sur 10 - Home - sélectionné"
+                      testID="Sélectionne une page - Liste - Élément 4 sur 14 - Home - sélectionné"
                     >
                       <View
                         style={
@@ -948,7 +948,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityLabel="Sélectionne une page - Liste - Élément 5 sur 10 - ThematicHome - non sélectionné"
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 5 sur 14 - ThematicHome - non sélectionné"
                       accessibilityRole="radio"
                       accessibilityState={
                         {
@@ -991,7 +991,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           },
                         ]
                       }
-                      testID="Sélectionne une page - Liste - Élément 5 sur 10 - ThematicHome - non sélectionné"
+                      testID="Sélectionne une page - Liste - Élément 5 sur 14 - ThematicHome - non sélectionné"
                     >
                       <View
                         style={
@@ -1065,7 +1065,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityLabel="Sélectionne une page - Liste - Élément 6 sur 10 - SearchResults - non sélectionné"
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 6 sur 14 - SearchResults - non sélectionné"
                       accessibilityRole="radio"
                       accessibilityState={
                         {
@@ -1108,7 +1108,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           },
                         ]
                       }
-                      testID="Sélectionne une page - Liste - Élément 6 sur 10 - SearchResults - non sélectionné"
+                      testID="Sélectionne une page - Liste - Élément 6 sur 14 - SearchResults - non sélectionné"
                     >
                       <View
                         style={
@@ -1182,7 +1182,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityLabel="Sélectionne une page - Liste - Élément 7 sur 10 - ThematicSearch - non sélectionné"
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 7 sur 14 - ThematicSearch - non sélectionné"
                       accessibilityRole="radio"
                       accessibilityState={
                         {
@@ -1225,7 +1225,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           },
                         ]
                       }
-                      testID="Sélectionne une page - Liste - Élément 7 sur 10 - ThematicSearch - non sélectionné"
+                      testID="Sélectionne une page - Liste - Élément 7 sur 14 - ThematicSearch - non sélectionné"
                     >
                       <View
                         style={
@@ -1299,7 +1299,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityLabel="Sélectionne une page - Liste - Élément 8 sur 10 - Profile - non sélectionné"
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 8 sur 14 - Profile - non sélectionné"
                       accessibilityRole="radio"
                       accessibilityState={
                         {
@@ -1342,7 +1342,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           },
                         ]
                       }
-                      testID="Sélectionne une page - Liste - Élément 8 sur 10 - Profile - non sélectionné"
+                      testID="Sélectionne une page - Liste - Élément 8 sur 14 - Profile - non sélectionné"
                     >
                       <View
                         style={
@@ -1416,7 +1416,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityLabel="Sélectionne une page - Liste - Élément 9 sur 10 - SignupForm - non sélectionné"
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 9 sur 14 - SignupForm - non sélectionné"
                       accessibilityRole="radio"
                       accessibilityState={
                         {
@@ -1459,7 +1459,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           },
                         ]
                       }
-                      testID="Sélectionne une page - Liste - Élément 9 sur 10 - SignupForm - non sélectionné"
+                      testID="Sélectionne une page - Liste - Élément 9 sur 14 - SignupForm - non sélectionné"
                     >
                       <View
                         style={
@@ -1533,7 +1533,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityLabel="Sélectionne une page - Liste - Élément 10 sur 10 - Stepper - non sélectionné"
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 10 sur 14 - Stepper - non sélectionné"
                       accessibilityRole="radio"
                       accessibilityState={
                         {
@@ -1576,7 +1576,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           },
                         ]
                       }
-                      testID="Sélectionne une page - Liste - Élément 10 sur 10 - Stepper - non sélectionné"
+                      testID="Sélectionne une page - Liste - Élément 10 sur 14 - Stepper - non sélectionné"
                     >
                       <View
                         style={
@@ -1645,6 +1645,474 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                             }
                           >
                             Stepper
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 11 sur 14 - Bookings - non sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "cursor": "pointer",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Sélectionne une page - Liste - Élément 11 sur 14 - Bookings - non sélectionné"
+                    >
+                      <View
+                        style={
+                          {
+                            "alignItems": "center",
+                            "columnGap": 12,
+                            "flexDirection": "row",
+                          }
+                        }
+                      >
+                        <View
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": false,
+                            }
+                          }
+                          style={
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 20,
+                              "borderBottomRightRadius": 20,
+                              "borderColor": "#90949d",
+                              "borderTopLeftRadius": 20,
+                              "borderTopRightRadius": 20,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="default"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            }
+                          }
+                        >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            radioState={
+                              {
+                                "disabled": false,
+                                "error": false,
+                                "selected": false,
+                              }
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Bookings
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 12 sur 14 - SearchStackNavigator - non sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "cursor": "pointer",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Sélectionne une page - Liste - Élément 12 sur 14 - SearchStackNavigator - non sélectionné"
+                    >
+                      <View
+                        style={
+                          {
+                            "alignItems": "center",
+                            "columnGap": 12,
+                            "flexDirection": "row",
+                          }
+                        }
+                      >
+                        <View
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": false,
+                            }
+                          }
+                          style={
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 20,
+                              "borderBottomRightRadius": 20,
+                              "borderColor": "#90949d",
+                              "borderTopLeftRadius": 20,
+                              "borderTopRightRadius": 20,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="default"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            }
+                          }
+                        >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            radioState={
+                              {
+                                "disabled": false,
+                                "error": false,
+                                "selected": false,
+                              }
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            SearchStackNavigator
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 13 sur 14 - Favorites - non sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "cursor": "pointer",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Sélectionne une page - Liste - Élément 13 sur 14 - Favorites - non sélectionné"
+                    >
+                      <View
+                        style={
+                          {
+                            "alignItems": "center",
+                            "columnGap": 12,
+                            "flexDirection": "row",
+                          }
+                        }
+                      >
+                        <View
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": false,
+                            }
+                          }
+                          style={
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 20,
+                              "borderBottomRightRadius": 20,
+                              "borderColor": "#90949d",
+                              "borderTopLeftRadius": 20,
+                              "borderTopRightRadius": 20,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="default"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            }
+                          }
+                        >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            radioState={
+                              {
+                                "disabled": false,
+                                "error": false,
+                                "selected": false,
+                              }
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Favorites
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 14 sur 14 - SearchLanding - non sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "cursor": "pointer",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Sélectionne une page - Liste - Élément 14 sur 14 - SearchLanding - non sélectionné"
+                    >
+                      <View
+                        style={
+                          {
+                            "alignItems": "center",
+                            "columnGap": 12,
+                            "flexDirection": "row",
+                          }
+                        }
+                      >
+                        <View
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": false,
+                            }
+                          }
+                          style={
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 20,
+                              "borderBottomRightRadius": 20,
+                              "borderColor": "#90949d",
+                              "borderTopLeftRadius": 20,
+                              "borderTopRightRadius": 20,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="default"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            }
+                          }
+                        >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            radioState={
+                              {
+                                "disabled": false,
+                                "error": false,
+                                "selected": false,
+                              }
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            SearchLanding
                           </Text>
                         </View>
                       </View>

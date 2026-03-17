@@ -14,7 +14,7 @@ export const getScreenFromDeeplink = (url: string): DeeplinkParts => {
   const screen = route?.name
   let params = route?.params
   if (!screen || !isRootStackScreen(screen)) {
-    throw new Error('Screen has unexpected value', { cause: { url, navigationState, route } })
+    return { screen: 'PageNotFound', params: undefined }
   }
   if (route?.state) {
     const nestedRoute = getLastRouteFromState(route.state)
