@@ -125,7 +125,7 @@ import { HomepageModule, isOffersModule, isVenuesModule, isVideoCarouselModule, 
 import { enrichModulesWithData } from 'features/home/helpers/enrichModulesWithData';
 import { isCloseToBottom } from 'libs/analytics';
 import { Spinner } from 'ui/components/Spinner';
-import { PageContent, Spacer, VideoCarouselModule } from 'src/features/home/pages/GenericHome'; // Imports simplifiés pour l'exemple
+import { PageContent, VideoCarouselModule } from 'src/features/home/pages/GenericHome'; // Imports simplifiés pour l'exemple
 import { View, Text } from 'react-native'; // Imports simplifiés
 
 // --- Définitions simplifiées pour l'exemple ---
@@ -425,7 +425,7 @@ import { isCloseToBottom } from 'libs/analytics';
 import { useTrackAllModulesSeen } from './useTrackAllModulesSeen';
 import { shouldDisplayVideoCarouselInHeader } from 'features/home/helpers/shouldDisplayVideoCarouselInHeader';
 import { Spinner } from 'ui/components/Spinner';
-import { PageContent, Spacer, VideoCarouselModule } from 'src/features/home/pages/GenericHome'; // Imports simplifiés pour l'exemple
+import { PageContent, VideoCarouselModule } from 'src/features/home/pages/GenericHome'; // Imports simplifiés pour l'exemple
 
 // --- Définitions simplifiées pour l'exemple ---
 type HomeViewModel = {
@@ -645,7 +645,7 @@ export const GenericHome: FunctionComponent<GenericHomeProps> = (props) => {
 // Fichier : src/features/home/components/HomeListHeader.tsx
 import React, { FunctionComponent } from 'react';
 import { View } from 'react-native';
-import { Spacer, PageContent, VideoCarouselModule } from 'src/features/home/pages/GenericHome'; // Imports simplifiés
+import { PageContent, VideoCarouselModule } from 'src/features/home/pages/GenericHome'; // Imports simplifiés
 import { HomepageModule } from 'features/home/types';
 
 type HomeListHeaderProps = {

@@ -281,55 +281,42 @@ exports[`PushNotificationsModal should render properly 1`] = `
           </Text>
         </View>
         <View
-          numberOfSpaces={10}
+          gap={4}
           style={
             {
-              "height": 40,
-            }
-          }
-        />
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
+              "gap": 16,
+              "marginBottom": 24,
+              "marginTop": 40,
             }
           }
         >
-          Reste informé des actualités du pass Culture en activant les notifications.
-        </Text>
-        <View
-          numberOfSpaces={4}
-          style={
-            {
-              "height": 16,
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              }
             }
-          }
-        />
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
+          >
+            Reste informé des actualités du pass Culture en activant les notifications.
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              }
             }
-          }
-        >
-          Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil.
-        </Text>
-        <View
-          numberOfSpaces={6}
-          style={
-            {
-              "height": 24,
-            }
-          }
-        />
+          >
+            Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil.
+          </Text>
+        </View>
         <View
           accessibilityLabel="Autoriser les notifications"
           accessibilityRole="button"

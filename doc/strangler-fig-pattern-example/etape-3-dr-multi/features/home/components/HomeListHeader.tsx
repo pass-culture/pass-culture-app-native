@@ -3,7 +3,7 @@
 
 import React, { FunctionComponent } from 'react';
 import { View, Text } from 'react-native';
-import { Spacer, PageContent, VideoCarouselModule } from '../../../../ui-mocks'; // Import des mocks
+import { PageContent, VideoCarouselModule } from '../../../../ui-mocks'; // Import des mocks
 import { HomepageModule } from '../types';
 
 type HomeListHeaderProps = {

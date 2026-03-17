@@ -1,10 +1,10 @@
 
 // doc/strangler-fig-pattern-example/features/home/components/HomeListHeader.tsx
 
-import React, { FunctionComponent } from 'react';
-import { View, Text } from 'react-native';
-import { Spacer, PageContent, VideoCarouselModule } from '../../../../ui-mocks'; // Import des mocks
-import { HomepageModule } from '../types';
+import React, { FunctionComponent } from 'react'
+import { View, Text } from 'react-native'
+import { PageContent, VideoCarouselModule } from '../../../../ui-mocks' // Import des mocks
+import { HomepageModule } from '../types'
 
 type HomeListHeaderProps = {
   Header?: React.JSX.Element;
