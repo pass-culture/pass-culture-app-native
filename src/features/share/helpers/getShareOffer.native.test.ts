@@ -13,10 +13,12 @@ const offer = mockOffer
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('@react-navigation/native', () => {
+  const actual = jest.requireActual('@react-navigation/native')
   return {
-    createPathConfigForStaticNavigation: jest.fn(),
+    ...actual,
+    createPathConfigForStaticNavigation: jest.fn(() => ({})),
     createNavigationContainerRef: jest.fn(),
-    createComponentForStaticNavigation: jest.fn(),
+    createComponentForStaticNavigation: jest.fn(() => () => null),
   }
 })
 

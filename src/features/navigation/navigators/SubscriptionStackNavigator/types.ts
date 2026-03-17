@@ -1,4 +1,4 @@
-import { BonificationRefusedType } from 'features/bonification/pages/BonificationRefused'
+import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { ProfileScreenType } from 'features/identityCheck/pages/profile/types'
 import {
   CulturalSurveyRootStackParamList,

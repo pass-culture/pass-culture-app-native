@@ -99,7 +99,7 @@ const profileStackNavigatorPathDefinition = {
     Chatbot: {
       screen: Chatbot,
       linking: {
-        path: 'profil/notifications',
+        path: 'profil/chatbot',
       },
       options: { title: 'Chatbot' },
     },
@@ -315,6 +315,6 @@ const profileStackNavigatorPathDefinition = {
 
 export const ProfileStackNavigator = createNativeStackNavigator(profileStackNavigatorPathDefinition)
 
-const ProfileScreen = createComponentForStaticNavigation(ProfileStackNavigator, 'Profile')
+const ProfileScreen = createComponentForStaticNavigation(ProfileStackNavigator)
 
 export default ProfileScreen

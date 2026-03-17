@@ -39,6 +39,7 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
       }
     }
     accessible={true}
+    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -48,33 +49,21 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      [
-        [
-          {
-            "backgroundColor": "black",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
-          [
-            {
-              "backgroundColor": "black",
-              "height": 1334,
-              "width": 750,
-            },
-          ],
-        ],
-        {},
-        {
-          "opacity": 0,
-        },
-      ]
+      {
+        "backgroundColor": "black",
+        "bottom": 0,
+        "height": 1334,
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "width": 750,
+      }
     }
   />
   <View
+    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}
@@ -90,35 +79,21 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
     scrollTo={null}
     statusBarTranslucent={false}
     style={
-      [
-        [
-          {},
-          [
-            {
-              "margin": 37.5,
-              "transform": [
-                {
-                  "translateY": 0,
-                },
-              ],
-            },
-            {
-              "flex": 1,
-              "justifyContent": "center",
-            },
-            {
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
-          ],
+      {
+        "flex": 1,
+        "justifyContent": "center",
+        "margin": 37.5,
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 0,
+        "opacity": 0,
+        "transform": [
+          {
+            "translateY": 0,
+          },
         ],
-        {
-          "opacity": 0,
-        },
-        {},
-      ]
+      }
     }
     supportedOrientations={
       [

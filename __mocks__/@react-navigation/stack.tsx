@@ -6,7 +6,10 @@ const Navigator: React.FC<PropsWithChildren> = ({ children }) => {
 }
 const Screen = () => null
 
-export const createStackNavigator = () => ({ Navigator, Screen })
+export const createStackNavigator = (config?: unknown) => {
+  if (config) return config
+  return { Navigator, Screen }
+}
 
 export const TransitionPresets = {}
 export const TransitionSpecs = { TransitionIOSSpec: { config: {} } }

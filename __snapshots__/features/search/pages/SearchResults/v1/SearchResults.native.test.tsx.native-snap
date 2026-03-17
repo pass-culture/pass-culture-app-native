@@ -641,6 +641,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
         }
       >
         <RCTScrollView
+          collapsable={false}
           contentContainerStyle={
             {
               "paddingBottom": 104,

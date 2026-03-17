@@ -319,6 +319,6 @@ export const CheatcodesStackNavigator = createNativeStackNavigator(
   cheatcodesStackNavigatorPathDefinition
 )
 
-const CheatcodesScreen = createComponentForStaticNavigation(CheatcodesStackNavigator, 'Cheatcodes')
+const CheatcodesScreen = createComponentForStaticNavigation(CheatcodesStackNavigator)
 
 export default CheatcodesScreen

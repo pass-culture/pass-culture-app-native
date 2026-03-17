@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
 import { LogoFilled } from 'ui/svg/icons/LogoFilled'

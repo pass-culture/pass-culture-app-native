@@ -4,6 +4,7 @@ import { View } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
@@ -25,13 +26,6 @@ import { SadFace } from 'ui/svg/icons/SadFace'
 import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
-
-export enum BonificationRefusedType {
-  CUSTODIAN_NOT_FOUND = 'custodian_not_found',
-  NOT_IN_TAX_HOUSEHOLD = 'not_in_tax_household',
-  QUOTIENT_FAMILY_TOO_HIGH = 'quotient_family_too_high',
-  TOO_MANY_RETRIES = 'too_many_retries',
-}
 
 interface PrimaryButtonConfig {
   wording: string

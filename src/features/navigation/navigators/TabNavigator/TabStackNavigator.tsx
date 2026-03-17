@@ -16,7 +16,10 @@ import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBound
 import { Favorites } from 'features/favorites/pages/Favorites'
 import { Home } from 'features/home/pages/Home'
 import { screenParamsParser } from 'features/navigation/helpers/screenParamsUtils'
-import { SearchStackScreen } from 'features/navigation/navigators/SearchStackNavigator/SearchStackNavigator'
+import {
+  SEARCH_STACK_LINKING_SCREENS,
+  SearchStackScreen,
+} from 'features/navigation/navigators/SearchStackNavigator/SearchStackNavigator'
 import { TabBar } from 'features/navigation/TabBar/TabBar'
 import { Profile } from 'features/profile/pages/Profile/Profile'
 import { withRemountOnColorSchemeHOC } from 'theme/withRemountOnColorSchemeHOC'
@@ -49,6 +52,9 @@ const tabNavigatorDefinition = {
     },
     SearchStackNavigator: {
       screen: withRemountOnColorSchemeHOC(withAsyncErrorBoundary(SearchStackScreen)),
+      linking: {
+        screens: SEARCH_STACK_LINKING_SCREENS,
+      },
     },
     Bookings: {
       screen: withRemountOnColorSchemeHOC(withAsyncErrorBoundary(Bookings)),
@@ -78,4 +84,4 @@ const tabNavigatorDefinition = {
 
 export const BottomTabNavigator = createBottomTabNavigator(tabNavigatorDefinition)
 
-export const BottomTabScreen = createComponentForStaticNavigation(BottomTabNavigator, 'BottomTab')
+export const BottomTabScreen = createComponentForStaticNavigation(BottomTabNavigator)
