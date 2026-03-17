@@ -136,7 +136,7 @@ export function createMappingTree(data: SubcategoriesResponseModelv2) {
               nativeCategoriesResult[nativeCategory.name] = {
                 label: nativeCategory.value ?? 'Tout',
                 position: nativeCategory.positions?.[searchGroup.name],
-                ...(getNativeCategoryGenreTypes(data, nativeCategory) || {}),
+                ...getNativeCategoryGenreTypes(data, nativeCategory),
               }
 
               return nativeCategoriesResult
