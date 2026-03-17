@@ -17,11 +17,6 @@ const disableAnalyticsByDefault = (
   return normalized
 }
 
-/**
- * Algolia client with `analytics: false` injected by default on all requests.
- * Only queries that explicitly set `analytics: true` will appear in Algolia search analytics.
- * This prevents non-search queries (home playlists, modules, etc.) from polluting analytics.
- */
 export const client: typeof baseClient = {
   ...baseClient,
   search(searchMethodParams, requestOptions) {
