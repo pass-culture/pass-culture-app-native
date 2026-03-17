@@ -158,6 +158,7 @@ export const Venue: FunctionComponent = () => {
       userLocation,
     },
     advice: getHeadlineAdvice(advices?.proAdvices, venueOffers?.headlineOffer?.objectID),
+    segment,
   })
 
   useEffect(() => {

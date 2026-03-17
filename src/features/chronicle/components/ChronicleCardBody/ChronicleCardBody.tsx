@@ -71,6 +71,7 @@ export const ChronicleCardBody: FunctionComponent<Props> = ({
 const Container = styled(ViewGap)<{ width?: number }>(({ theme, width }) => ({
   ...(width === undefined ? undefined : { width }),
   backgroundColor: theme.designSystem.color.background.default,
+  flexGrow: 1,
 }))
 
 const DescriptionContainer = styled.View<{ defaultHeight: number; shouldTruncate?: boolean }>(
