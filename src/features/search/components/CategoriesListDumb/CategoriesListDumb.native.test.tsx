@@ -48,6 +48,7 @@ const initialProps: ComponentProps<typeof CategoriesListDumb> = {
   hideVenueMapLocationModal: jest.fn(),
   shouldDisplayVenueMap: false,
   isMapWithoutPositionAndNotLocated: false,
+  onPressAIFakeDoorBanner: jest.fn(),
 }
 
 describe('CategoriesListDumb', () => {

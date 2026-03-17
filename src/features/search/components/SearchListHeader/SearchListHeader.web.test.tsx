@@ -87,6 +87,7 @@ describe('<SearchListHeader />', () => {
           userData={[]}
           venuesUserData={[]}
           venues={mockAlgoliaVenues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
+          onPressAIFakeDoorBanner={jest.fn()}
         />
       )
 
@@ -118,6 +119,7 @@ describe('<SearchListHeader />', () => {
           userData={[]}
           venuesUserData={[]}
           venues={mockAlgoliaVenues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
+          onPressAIFakeDoorBanner={jest.fn()}
         />
       )
 

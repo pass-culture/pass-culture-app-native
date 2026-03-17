@@ -17,6 +17,7 @@ import { AlgoliaOffer, AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, Position } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -508,5 +509,16 @@ describe('<SearchResults/>', () => {
         payload: 'testUuidV4',
       })
     })
+  })
+
+  it('should open AI fake door modal when pressing banner and enableAIFakeDoor FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR])
+    render(reactQueryProviderHOC(<SearchResults />))
+
+    await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
+
+    expect(
+      await screen.findByText('Encore un peu de patience...', { hidden: true })
+    ).toBeOnTheScreen()
   })
 })

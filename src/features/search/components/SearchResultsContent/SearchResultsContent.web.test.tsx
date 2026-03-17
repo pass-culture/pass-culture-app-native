@@ -45,6 +45,7 @@ const DEFAULT_SEARCH_RESULT_CONTENT_PROPS = {
     })) as AlgoliaVenue[],
   },
   nbHits: mockedAlgoliaResponse.hits.length,
+  onPressAIFakeDoorBanner: jest.fn(),
 } satisfies SearchResultsContentProps
 
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
