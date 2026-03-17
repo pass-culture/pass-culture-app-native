@@ -2,8 +2,8 @@ import { RouteProp } from '@react-navigation/native'
 import React from 'react'
 import { openInbox } from 'react-native-email-link'
 
-import { navigate } from '__mocks__/@react-navigation/native'
-import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { goBack } from '__mocks__/@react-navigation/native'
+import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
@@ -44,15 +44,13 @@ describe('<ResetPasswordEmailSent />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to Login when clicking on "Quitter" button', async () => {
+  it('should go back when pressing "Quitter" button', async () => {
     render(<ResetPasswordEmailSent route={routeMock} />)
 
     const quitButton = await screen.findByText('Quitter')
     await user.press(quitButton)
 
-    expect(navigate).toHaveBeenCalledWith('Login', {
-      from: StepperOrigin.RESET_PASSWORD_EMAIL_SENT,
-    })
+    expect(goBack).toHaveBeenCalledTimes(1)
   })
 
   it('should not show the button to open mail if no mail app is available', async () => {
