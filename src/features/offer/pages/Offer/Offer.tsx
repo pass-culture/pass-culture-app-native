@@ -167,7 +167,8 @@ export function Offer() {
             closeModal={hideChroniclesWritersModal}
             isVisible={chroniclesWritersModalVisible}
             onShowRecoButtonPress={handleOnShowRecoButtonPress}
-            variantInfo={chronicleVariantInfo}
+            modalWording={chronicleVariantInfo.modalWording}
+            buttonWording={chronicleVariantInfo.buttonWording}
           />
         ) : null}
         {selectedArtists.length > 1 ? (

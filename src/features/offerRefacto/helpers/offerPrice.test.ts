@@ -4,10 +4,12 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import {
   getAllPrices,
-  getIsFreeDigitalOffer,
-  getIsFreeOffer,
   getPrice,
+  isFreeDigitalOffer,
+  isFreeOffer,
 } from 'features/offerRefacto/helpers'
+
+jest.mock('libs/firebase/analytics/analytics')
 
 describe('getAllPrices', () => {
   it('should return all bookable prices if defined', () => {
@@ -52,55 +54,53 @@ describe('getPrice', () => {
   })
 })
 
-describe('getIsFreeDigitalOffer', () => {
+describe('isFreeDigitalOffer', () => {
   it('should return false when offer is not defined', () => {
-    const isFreeDigitalOffer = getIsFreeDigitalOffer()
-
-    expect(isFreeDigitalOffer).toEqual(false)
+    expect(isFreeDigitalOffer()).toEqual(false)
   })
 
   it('should return false when offer is digital and not free', () => {
-    const isFreeDigitalOffer = getIsFreeDigitalOffer({
+    const isFreeDigitalOfferValue = isFreeDigitalOffer({
       ...mockOffer,
       isDigital: true,
       stocks: [{ ...mockOffer.stocks[0], price: 100 }],
     })
 
-    expect(isFreeDigitalOffer).toEqual(false)
+    expect(isFreeDigitalOfferValue).toEqual(false)
   })
 
   it('should return false when offer is not digital and free', () => {
-    const isFreeDigitalOffer = getIsFreeDigitalOffer({
+    const isFreeDigitalOfferValue = isFreeDigitalOffer({
       ...mockOffer,
       isDigital: false,
       stocks: [{ ...mockOffer.stocks[0], price: 0 }],
     })
 
-    expect(isFreeDigitalOffer).toEqual(false)
+    expect(isFreeDigitalOfferValue).toEqual(false)
   })
 
   it('should return false when offer is not digital and not free', () => {
-    const isFreeDigitalOffer = getIsFreeDigitalOffer({
+    const isFreeDigitalOfferValue = isFreeDigitalOffer({
       ...mockOffer,
       isDigital: false,
       stocks: [{ ...mockOffer.stocks[0], price: 100 }],
     })
 
-    expect(isFreeDigitalOffer).toEqual(false)
+    expect(isFreeDigitalOfferValue).toEqual(false)
   })
 
   it('should return true when offer is digital and free', () => {
-    const isFreeDigitalOffer = getIsFreeDigitalOffer({
+    const isFreeDigitalOfferValue = isFreeDigitalOffer({
       ...mockOffer,
       isDigital: true,
       stocks: [{ ...mockOffer.stocks[0], price: 0 }],
     })
 
-    expect(isFreeDigitalOffer).toEqual(true)
+    expect(isFreeDigitalOfferValue).toEqual(true)
   })
 })
 
-describe('getIsFreeOffer', () => {
+describe('isFreeOffer', () => {
   it('returns true if there is only free stocks', () => {
     const offer = {
       ...offerResponseSnap,
@@ -112,7 +112,7 @@ describe('getIsFreeOffer', () => {
       ],
     }
 
-    expect(getIsFreeOffer(offer)).toBe(true)
+    expect(isFreeOffer(offer)).toBe(true)
   })
 
   it('returns true if there is at least one free stock', () => {
@@ -126,7 +126,7 @@ describe('getIsFreeOffer', () => {
       ],
     }
 
-    expect(getIsFreeOffer(offer)).toBe(true)
+    expect(isFreeOffer(offer)).toBe(true)
   })
 
   it('returns false if there are no stocks', () => {
@@ -135,6 +135,6 @@ describe('getIsFreeOffer', () => {
       stocks: [],
     }
 
-    expect(getIsFreeOffer(offer)).toBe(false)
+    expect(isFreeOffer(offer)).toBe(false)
   })
 })

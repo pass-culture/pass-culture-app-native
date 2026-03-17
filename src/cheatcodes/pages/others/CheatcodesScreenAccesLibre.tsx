@@ -23,7 +23,7 @@ export const CheatcodesScreenAccesLibre = () => {
 
   const onPress = () => {
     const parsedId = parseInt(value, 10)
-    if (!isNaN(parsedId)) {
+    if (!Number.isNaN(parsedId)) {
       setVenueId(parsedId)
     }
   }

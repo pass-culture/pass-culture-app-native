@@ -7,6 +7,7 @@ import {
   convertAlgoliaVenue2AlgoliaVenueOfferListItem,
   getReconciledVenues,
 } from 'features/search/helpers/searchList/getReconciledVenues'
+import { removeGeolocFromVenue } from 'features/search/helpers/searchList/removeGeolocFromVenue'
 import { SearchListProps } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -42,6 +43,10 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
       RemoteStoreFeatureFlags.ENABLE_VENUES_FROM_OFFER_INDEX
     )
 
+    const venues = hits.venueNotOpenToPublic[0]
+      ? [removeGeolocFromVenue(hits.venueNotOpenToPublic[0]), ...hits.venues]
+      : hits.venues
+
     return (
       <FlashList
         ref={ref}
@@ -55,8 +60,8 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
             userData={userData}
             venues={
               isEnabledVenuesFromOfferIndex
-                ? getReconciledVenues(hits.offers, hits.venues)
-                : hits.venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)
+                ? getReconciledVenues(hits.offers, venues)
+                : venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)
             }
             artistSection={artistSection}
             venuesUserData={venuesUserData}

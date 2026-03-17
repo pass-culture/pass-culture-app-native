@@ -20,23 +20,13 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "justifyContent": "space-between",
+        "justifyContent": "center",
         "overflow": "scroll",
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
   >
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
     <View
       style={
         {
@@ -78,16 +68,6 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
         Ta pièce d’identité a bien été transmise !
       </Text>
     </View>
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
   </View>
 </View>
 `;

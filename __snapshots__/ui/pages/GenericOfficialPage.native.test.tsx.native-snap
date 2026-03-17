@@ -120,17 +120,7 @@ exports[`<GenericOfficialPage /> should render correctly 1`] = `
             "marginBottom": 40,
           }
         }
-      >
-        <View
-          style={
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            }
-          }
-        />
-      </View>
+      />
       <View
         style={
           {
@@ -171,18 +161,7 @@ exports[`<GenericOfficialPage /> should render correctly 1`] = `
             "marginTop": 12,
           }
         }
-      >
-        <View
-          flex={0.5}
-          style={
-            {
-              "flexBasis": 0,
-              "flexGrow": 0.5,
-              "flexShrink": 1,
-            }
-          }
-        />
-      </View>
+      />
     </View>
     <View
       style={

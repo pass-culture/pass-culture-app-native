@@ -8,12 +8,17 @@ tags:
 onFlowStart:
   - runScript: subFolder/links/DeepLinks.js
   - runScript: subFolder/commons/Button.js
+  - runScript:
+      file: subFolder/commons/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: '18'
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
 
 - runFlow: subFolder/commons/StopApp.yml
-- runFlow: subFolder/links/DeepLinksToProfile.yml
-- runFlow: subFolder/auth/LoginFromProfileForBeneficiaryUser.yml
+- runFlow: subFolder/links/DeepLinkBeneficiaryUser.yml
 
 - runFlow: subFolder/commons/GoToSearchFromTabBar.yml
 - runFlow: subFolder/search/SearchBookableMusicalOffer.yml

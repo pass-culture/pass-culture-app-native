@@ -229,6 +229,42 @@ describe('<SetEmail />', () => {
   })
 
   describe('SSO', () => {
+    it('should display Apple SSO button when Apple SSO feature flag is enabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+
+      renderSetEmail()
+
+      expect(await screen.findByText('S\u2019inscrire avec Apple')).toBeOnTheScreen()
+    })
+
+    it('should not display Apple SSO button when Apple SSO feature flag is disabled', () => {
+      setFeatureFlags()
+
+      renderSetEmail()
+
+      expect(screen.queryByText('S\u2019inscrire avec Apple')).not.toBeOnTheScreen()
+    })
+
+    it('should display both SSO buttons when both feature flags are enabled', async () => {
+      setFeatureFlags([
+        RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO,
+        RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO,
+      ])
+
+      renderSetEmail()
+
+      expect(await screen.findByText('S\u2019inscrire avec Google')).toBeOnTheScreen()
+      expect(screen.getByText('S\u2019inscrire avec Apple')).toBeOnTheScreen()
+    })
+
+    it('should display separator when only Apple SSO is enabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+
+      renderSetEmail()
+
+      expect(await screen.findByText('ou')).toBeOnTheScreen()
+    })
+
     it('should display SSO button when FF is enabled', async () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
 

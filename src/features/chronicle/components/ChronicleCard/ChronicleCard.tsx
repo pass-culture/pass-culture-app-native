@@ -1,16 +1,20 @@
-import React, { FunctionComponent, PropsWithChildren, ReactNode, useState } from 'react'
-import { LayoutChangeEvent, Platform } from 'react-native'
+import React, { FunctionComponent, PropsWithChildren, ReactNode } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { ChronicleCardBody } from 'features/chronicle/components/ChronicleCardBody/ChronicleCardBody'
 import { ChronicleCardData } from 'features/chronicle/type'
-import { getLineHeightPx } from 'libs/parsers/getLineHeightPx'
+import { Image } from 'libs/resizing-image-on-demand/Image'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { InfoHeader } from 'ui/components/InfoHeader/InfoHeader'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Typo, getSpacing } from 'ui/theme'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { RightFilled } from 'ui/svg/icons/RightFilled'
+import { getSpacing } from 'ui/theme'
 
-const CHRONICLE_THUMBNAIL_SIZE = getSpacing(14)
+const CHRONICLE_THUMBNAIL_HEIGHT = getSpacing(18)
 
-type Props = PropsWithChildren<
+export type ChronicleCardProps = PropsWithChildren<
   ChronicleCardData & {
     cardWidth?: number
     shouldTruncate?: boolean
@@ -19,9 +23,7 @@ type Props = PropsWithChildren<
   }
 >
 
-const MAX_LINES = 3
-
-export const ChronicleCard: FunctionComponent<Props> = ({
+export const ChronicleCard: FunctionComponent<ChronicleCardProps> = ({
   id,
   title,
   subtitle,
@@ -31,53 +33,49 @@ export const ChronicleCard: FunctionComponent<Props> = ({
   children,
   icon,
   tag,
+  tagProps,
+  image,
   shouldTruncate = false,
+  headerNavigateTo,
+  headerAccessibilityLabel,
 }) => {
-  const { designSystem } = useTheme()
+  const theme = useTheme()
 
-  const [currentNumberOfLines, setCurrentNumberOfLines] = useState<number | undefined>(undefined)
-  const [shouldDisplayButton, setShouldDisplayButton] = useState(false)
-
-  // height depending on the platform
-  const lineHeight = designSystem.typography.bodyAccentS.lineHeight
-  const DEFAULT_HEIGHT_WEB = getLineHeightPx(lineHeight, true) * MAX_LINES
-  const DEFAULT_HEIGHT_MOBILE = getLineHeightPx(lineHeight, false) * MAX_LINES
-  const defaultHeight = Platform.OS === 'web' ? DEFAULT_HEIGHT_WEB : DEFAULT_HEIGHT_MOBILE
-
-  const handleOnLayout = (event: LayoutChangeEvent) => {
-    // We use Math.floor to avoid floating-point precision issues when comparing heights
-    const actualHeight = Math.floor(event.nativeEvent.layout.height)
-    const expectedMaxHeight = Math.floor(defaultHeight)
-
-    if (actualHeight > expectedMaxHeight) {
-      setShouldDisplayButton(true)
-      setCurrentNumberOfLines(3)
-    }
-  }
-
-  const descriptionWithoutEndSpace = description?.trimEnd()
+  const renderHeader = () => (
+    <InfoHeader
+      title={title}
+      subtitle={subtitle}
+      thumbnailComponent={image ? <Thumbnail url={image} testID="ChronicleCardThumbnail" /> : icon}
+      defaultThumbnailSize={theme.designSystem.size.spacing.xxxxl}
+      defaultThumbnailHeight={CHRONICLE_THUMBNAIL_HEIGHT}
+      rightComponent={
+        headerNavigateTo ? (
+          <RightFilled size={theme.icons.sizes.extraSmall} testID="RightFilled" />
+        ) : null
+      }
+    />
+  )
 
   return (
     <Container gap={3} testID={`chronicle-card-${id.toString()}`} width={cardWidth}>
-      <InfoHeader
-        title={title}
-        subtitle={subtitle}
-        defaultThumbnailSize={CHRONICLE_THUMBNAIL_SIZE}
-        thumbnailComponent={icon}
-      />
-      <DescriptionContainer defaultHeight={defaultHeight} shouldTruncate={shouldTruncate}>
-        <Typo.BodyS
-          testID="description"
-          onLayout={shouldTruncate ? handleOnLayout : undefined}
-          numberOfLines={currentNumberOfLines}>
-          {`«\u00a0${descriptionWithoutEndSpace}\u00a0»`}
-        </Typo.BodyS>
-      </DescriptionContainer>
-      <PublicationDate>{date}</PublicationDate>
-      <BottomCardContainer>
-        {tag}
-        {shouldDisplayButton && children}
-      </BottomCardContainer>
+      {headerNavigateTo ? (
+        <InternalTouchableLink
+          navigateTo={headerNavigateTo}
+          accessibilityLabel={headerAccessibilityLabel}
+          accessibilityRole={accessibilityRoleInternalNavigation()}>
+          {renderHeader()}
+        </InternalTouchableLink>
+      ) : (
+        renderHeader()
+      )}
+
+      <ChronicleCardBody
+        shouldTruncate={shouldTruncate}
+        description={description}
+        date={date}
+        tag={tagProps ? <Tag variant={tagProps.variant} label={tagProps.label} /> : tag}>
+        {children}
+      </ChronicleCardBody>
     </Container>
   )
 }
@@ -91,17 +89,10 @@ const Container = styled(ViewGap)<{ width?: number }>(({ theme, width }) => ({
   backgroundColor: theme.designSystem.color.background.default,
 }))
 
-const DescriptionContainer = styled.View<{ defaultHeight: number; shouldTruncate?: boolean }>(
-  ({ defaultHeight, shouldTruncate }) =>
-    shouldTruncate ? { maxHeight: MAX_LINES * defaultHeight, overflow: 'hidden', flexGrow: 1 } : {}
-)
-
-const BottomCardContainer = styled.View({
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-})
-
-const PublicationDate = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.designSystem.color.text.subtle,
+const Thumbnail = styled(Image)(({ theme }) => ({
+  borderRadius: theme.designSystem.size.borderRadius.s,
+  height: getSpacing(18),
+  width: theme.designSystem.size.spacing.xxxxl,
+  borderColor: theme.designSystem.color.border.subtle,
+  borderWidth: 1,
 }))

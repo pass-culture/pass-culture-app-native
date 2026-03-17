@@ -1,13 +1,15 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
-import { ViewToken } from 'react-native'
+import { View, ViewToken } from 'react-native'
 import Animated, { Layout } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Activity, VenueResponse } from 'api/gen'
+import { proAdvicesToChronicleCardData } from 'features/chronicle/adapters/proAdvicesToChronicleCardData/proAdvicesToChronicleCardData'
+import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -20,6 +22,8 @@ import { VenueThematicSection } from 'features/venue/components/VenueThematicSec
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { getVenueOffersArtists } from 'features/venue/helpers/getVenueOffersArtists'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
+import { getAdvicesWithoutHeadline, getHeadlineAdvice } from 'features/venue/helpers/venueAdvices'
+import { useVenueProAdvicesQuery } from 'features/venue/queries/useVenueProAdvicesQuery'
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { Venue as VenueType } from 'features/venue/types'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
@@ -37,7 +41,9 @@ import {
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -47,6 +53,7 @@ const VENUE_CTA_HEIGHT_IN_SPACES = 6 + 10 + 6
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenueQuery(params.id)
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const pageTracking = usePageTracking({
     pageName: 'Venue',
@@ -74,10 +81,17 @@ export const Venue: FunctionComponent = () => {
   )
 
   const enableSearchWithQuery = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE)
+  const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE)
+  const enableNewTagProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
   const {
     visible: searchInVenueModalVisible,
     hideModal: hideSearchInVenueModal,
     showModal: showSearchInVenueModal,
+  } = useModal(false)
+  const {
+    visible: advicesWritersModalVisible,
+    hideModal: hideAdvicesWritersModal,
+    showModal: showAdvicesWritersModal,
   } = useModal(false)
   const { userLocation, selectedLocationMode } = useLocation()
   const isUserUnderage = useIsUserUnderage()
@@ -110,6 +124,12 @@ export const Venue: FunctionComponent = () => {
     mapping: subcategoriesMapping,
   })
 
+  const { data: advices } = useVenueProAdvicesQuery({
+    venueId: params.id,
+    enableProAdvices,
+  })
+  const nbAdvices = advices?.nbResults ?? 0
+
   const {
     data: { artistPageSubcategories },
   } = useRemoteConfigQuery()
@@ -126,6 +146,7 @@ export const Venue: FunctionComponent = () => {
   const enableVenueCalendar = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VENUE_CALENDAR)
   const shouldDisplayVenueCalendar = enableVenueCalendar && venueOffers?.hits.length === 1
   const enableAccesLibre = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE)
+  const segment = useABSegment(['A', 'B'])
 
   const headlineOfferData = offerToHeadlineOfferData({
     offer: venueOffers?.headlineOffer,
@@ -136,17 +157,25 @@ export const Venue: FunctionComponent = () => {
       labelMapping,
       userLocation,
     },
+    advice: getHeadlineAdvice(advices?.proAdvices, venueOffers?.headlineOffer?.objectID),
   })
 
   useEffect(() => {
     if ((params.from === 'deeplink' || params.from === 'venueMap') && venue?.id) {
-      analytics.logConsultVenue({ venueId: venue.id.toString(), from: params.from })
+      void analytics.logConsultVenue({ venueId: venue.id.toString(), from: params.from })
     }
   }, [params.from, venue?.id])
 
   const isCTADisplayed =
     venue?.activity !== Activity.CINEMA &&
     ((venueOffers && venueOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0))
+
+  const handleOnShowRecoButtonPress = () => {
+    hideAdvicesWritersModal()
+    runAfterInteractionsMobile(() => {
+      navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'venue' })
+    })
+  }
 
   const VenueContentChildren = venue ? (
     <React.Fragment>
@@ -163,12 +192,33 @@ export const Venue: FunctionComponent = () => {
             enableAccesLibre={enableAccesLibre}
             shouldDisplayVenueCalendar={shouldDisplayVenueCalendar}
             onViewableItemsChanged={handleViewableItemsChanged}
+            advicesCardData={
+              segment === 'A'
+                ? proAdvicesToChronicleCardData(
+                    getAdvicesWithoutHeadline(advices?.proAdvices, headlineOfferData?.id)
+                  )
+                : undefined
+            }
+            nbAdvices={advices?.nbResults ?? 0}
+            enableNewTagProAdvices={enableNewTagProAdvices}
+            onShowWritersModal={showAdvicesWritersModal}
           />
           <VenueThematicSection venue={venue} />
           <VenueMessagingApps venue={venue} />
           <EmptyBottomSection isVisible={!!isCTADisplayed} />
         </Animated.View>
       </ViewGap>
+      {nbAdvices ? (
+        <View>
+          <ChroniclesWritersModal
+            closeModal={hideAdvicesWritersModal}
+            isVisible={advicesWritersModalVisible}
+            onShowRecoButtonPress={handleOnShowRecoButtonPress}
+            modalWording={`Les avis des pros sont rédigés par nos partenaires culturels du pass\u00a0: libraires, disquaires, organisateurs de spectacles...\nCes experts partagent leurs coups de coeur pour t‘aider à découvrir des oeuvres qui pourraient te plaire.`}
+            buttonWording="Voir tous les avis des pros"
+          />
+        </View>
+      ) : null}
     </React.Fragment>
   ) : null
 

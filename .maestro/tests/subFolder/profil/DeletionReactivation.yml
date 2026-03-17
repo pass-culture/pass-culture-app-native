@@ -6,11 +6,10 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'Adresse e-mail'
 - assertVisible: 'Numéro de téléphone'
 - assertVisible: 'Mot de passe'
-- runFlow:
-    when:
-        platform: android
-    commands:
-    - tapOn: 'Supprimer mon compte'
+- scrollUntilVisible:
+    element: 'Supprimer mon compte'
+- tapOn: 'Supprimer mon compte'
+
 - repeat:
     while:
       notVisible: "Pourquoi souhaites-tu supprimer ton compte\_?"

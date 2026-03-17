@@ -62,163 +62,152 @@ exports[`MarketingModal should render correctly 1`] = `
   <View
     style={
       {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "zIndex": -1,
-      }
-    }
-  />
-  <View
-    style={
-      {
-        "alignItems": "center",
-        "alignSelf": "center",
-        "backgroundColor": "#ffffff",
-        "borderBottomLeftRadius": 4,
-        "borderBottomRightRadius": 4,
-        "borderTopLeftRadius": 4,
-        "borderTopRightRadius": 4,
-        "maxHeight": 650,
-        "minHeight": 360,
-        "overflow": "hidden",
-        "width": 928,
+        "height": "100%",
+        "justifyContent": "center",
       }
     }
   >
     <View
       style={
         {
-          "flexGrow": 1,
-          "width": "100%",
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomLeftRadius": 4,
+          "borderBottomRightRadius": 4,
+          "borderTopLeftRadius": 4,
+          "borderTopRightRadius": 4,
+          "maxHeight": 650,
+          "minHeight": 360,
+          "overflow": "hidden",
+          "width": 928,
         }
       }
     >
       <View
         style={
           {
-            "alignItems": "center",
-            "flexGrow": 0.5,
+            "flexGrow": 1,
+            "width": "100%",
           }
         }
       >
         <View
-          accessibilityIgnoresInvertColors={true}
-          style={
-            {
-              "height": 252,
-              "width": "100%",
-            }
-          }
-        >
-          <Image
-            source={
-              {
-                "uri": "",
-              }
-            }
-            style={
-              [
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                },
-                {
-                  "height": 252,
-                  "width": "100%",
-                },
-                undefined,
-              ]
-            }
-          />
-        </View>
-      </View>
-      <BVLinearGradient
-        colors={
-          [
-            16777215,
-            4294967295,
-          ]
-        }
-        endPoint={
-          {
-            "x": 0.5,
-            "y": 1,
-          }
-        }
-        locations={
-          [
-            0,
-            0.85,
-          ]
-        }
-        startPoint={
-          {
-            "x": 0.5,
-            "y": 0,
-          }
-        }
-        style={
-          {
-            "height": 72,
-            "marginTop": -72,
-          }
-        }
-      />
-      <View
-        style={
-          {
-            "alignItems": "center",
-            "flexGrow": 0.5,
-          }
-        }
-      >
-        <View
-          gap={6}
           style={
             {
               "alignItems": "center",
-              "gap": 24,
-              "maxWidth": 500,
-              "paddingBottom": 32,
-              "paddingLeft": 24,
-              "paddingRight": 24,
-              "paddingTop": 24,
-              "width": "100%",
+              "flexGrow": 0.5,
             }
           }
         >
-          <Text
-            accessibilityRole="header"
-            nativeID="testUuidV4"
+          <View
+            accessibilityIgnoresInvertColors={true}
             style={
               {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 19,
-                "lineHeight": 30.4,
-                "textAlign": "center",
+                "height": 252,
+                "width": "100%",
               }
             }
           >
-            Titre
-          </Text>
+            <Image
+              source={
+                {
+                  "uri": "",
+                }
+              }
+              style={
+                [
+                  {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  },
+                  {
+                    "height": 252,
+                    "width": "100%",
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+        </View>
+        <BVLinearGradient
+          colors={
+            [
+              16777215,
+              4294967295,
+            ]
+          }
+          endPoint={
+            {
+              "x": 0.5,
+              "y": 1,
+            }
+          }
+          locations={
+            [
+              0,
+              0.85,
+            ]
+          }
+          startPoint={
+            {
+              "x": 0.5,
+              "y": 0,
+            }
+          }
+          style={
+            {
+              "height": 72,
+              "marginTop": -72,
+            }
+          }
+        />
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexGrow": 0.5,
+            }
+          }
+        >
+          <View
+            gap={6}
+            style={
+              {
+                "alignItems": "center",
+                "gap": 24,
+                "maxWidth": 500,
+                "paddingBottom": 32,
+                "paddingLeft": 24,
+                "paddingRight": 24,
+                "paddingTop": 24,
+                "width": "100%",
+              }
+            }
+          >
+            <Text
+              accessibilityRole="header"
+              nativeID="testUuidV4"
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 19,
+                  "lineHeight": 30.4,
+                  "textAlign": "center",
+                }
+              }
+            >
+              Titre
+            </Text>
+          </View>
         </View>
       </View>
     </View>
   </View>
-  <View
-    style={
-      {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "zIndex": -1,
-      }
-    }
-  />
 </Modal>
 `;

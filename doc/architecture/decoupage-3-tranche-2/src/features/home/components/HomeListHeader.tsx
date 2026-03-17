@@ -21,7 +21,6 @@ export const HomeListHeader: FunctionComponent<HomeListHeaderProps> = ({
   return (
     <View testID="listHeader">
       {Header}
-      <Spacer.Column numberOfSpaces={6} />
       {shouldDisplayVideoInHeader && videoCarouselModules[0] ? (
         <VideoCarouselModule
           index={0}

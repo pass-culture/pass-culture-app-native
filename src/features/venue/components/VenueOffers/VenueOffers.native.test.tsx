@@ -15,6 +15,7 @@ import {
   VenueMoviesOffersResponseSnap,
   VenueOffersResponseSnap,
 } from 'features/venue/fixtures/venueOffersResponseSnap'
+import { proAdvicesCardDataFixture } from 'features/venue/fixtures/venueProAdvices.fixture'
 import type { VenueOffers as VenueOffersType } from 'features/venue/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -224,6 +225,15 @@ describe('<VenueOffers />', () => {
       })
     })
   })
+
+  it('should display advices section when venue has advices', async () => {
+    renderVenueOffers({
+      advicesCardData: [...proAdvicesCardDataFixture],
+      nbAdvices: 2,
+    })
+
+    expect(await screen.findByText(`Les avis par “${venueDataTest.name}”`)).toBeOnTheScreen()
+  })
 })
 
 type RenderVenueOffersType = Partial<ComponentProps<typeof VenueOffers>>
@@ -238,6 +248,8 @@ const renderVenueOffers = ({
   labelMapping = mockLabelMapping,
   currency = Currency.EURO,
   euroToPacificFrancRate = 10,
+  advicesCardData,
+  nbAdvices = 0,
 }: RenderVenueOffersType) => {
   return render(
     reactQueryProviderHOC(
@@ -254,6 +266,9 @@ const renderVenueOffers = ({
             currency={currency}
             euroToPacificFrancRate={euroToPacificFrancRate}
             onViewableItemsChanged={jest.fn()}
+            advicesCardData={advicesCardData}
+            nbAdvices={nbAdvices}
+            onShowWritersModal={jest.fn()}
           />
         </OfferCTAProvider>
       </AnchorProvider>

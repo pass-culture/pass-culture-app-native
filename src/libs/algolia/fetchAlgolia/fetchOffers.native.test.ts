@@ -190,7 +190,7 @@ describe('fetchOffer', () => {
             facetFilters: [
               ['offer.isEducational:false'],
               ['offer.isForbiddenToUnderage:false'],
-              ['offer.searchGroupNamev2:LECON'],
+              ['offer.searchGroups:LECON'],
             ],
             numericFilters: [['offer.prices: 0 TO 300']],
             page: 0,
@@ -515,7 +515,7 @@ describe('fetchOffer', () => {
         requests: [
           expect.objectContaining({
             query,
-            facetFilters: [['offer.isEducational:false'], ['offer.searchGroupNamev2:LECON']],
+            facetFilters: [['offer.isEducational:false'], ['offer.searchGroups:LECON']],
             numericFilters: [['offer.prices: 0 TO 300']],
             page: 0,
             attributesToHighlight: [],
@@ -543,7 +543,7 @@ describe('fetchOffer', () => {
             query,
             facetFilters: [
               ['offer.isEducational:false'],
-              ['offer.searchGroupNamev2:SPECTACLES', 'offer.searchGroupNamev2:LIVRES'],
+              ['offer.searchGroups:SPECTACLES', 'offer.searchGroups:LIVRES'],
             ],
             numericFilters: [['offer.prices: 0 TO 300']],
             page: 0,
@@ -1611,10 +1611,7 @@ describe('fetchOffer', () => {
             page: page,
             facetFilters: [
               ['offer.isEducational:false'],
-              [
-                'offer.searchGroupNamev2:LECON',
-                'offer.searchGroupNamev2:MUSEES_VISITES_CULTURELLES',
-              ],
+              ['offer.searchGroups:LECON', 'offer.searchGroups:MUSEES_VISITES_CULTURELLES'],
               ['offer.isDigital:true'],
             ],
             numericFilters: [['offer.prices: 0 TO 300']],
@@ -1662,10 +1659,7 @@ describe('fetchOffer', () => {
             page: 0,
             facetFilters: [
               ['offer.isEducational:false'],
-              [
-                'offer.searchGroupNamev2:ARTS_LOISIRS_CREATIFS',
-                'offer.searchGroupNamev2:SPECTACLES',
-              ],
+              ['offer.searchGroups:ARTS_LOISIRS_CREATIFS', 'offer.searchGroups:SPECTACLES'],
               ['offer.isDuo:true'],
             ],
             numericFilters: [['offer.prices: 5 TO 40']],

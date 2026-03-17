@@ -160,7 +160,8 @@ export function Offer() {
             closeModal={hideChroniclesWritersModal}
             isVisible={chroniclesWritersModalVisible}
             onShowRecoButtonPress={handleOnShowRecoButtonPress}
-            variantInfo={chronicleVariantInfo}
+            modalWording={chronicleVariantInfo.modalWording}
+            buttonWording={chronicleVariantInfo.buttonWording}
           />
         ) : null}
         {offer.artists.length > 1 ? (

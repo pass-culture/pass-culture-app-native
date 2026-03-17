@@ -3,6 +3,7 @@ import { ViewToken } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
+import { ChronicleCardData } from 'features/chronicle/type'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -34,6 +35,10 @@ export interface VenueOffersProps {
     itemType: 'offer' | 'venue' | 'artist' | 'unknown',
     playlistIndex?: number
   ) => void
+  advicesCardData?: ChronicleCardData[]
+  nbAdvices: number
+  enableNewTagProAdvices?: boolean
+  onShowWritersModal: () => void
 }
 
 const LoadingState: React.FC = () => (
@@ -51,6 +56,10 @@ export function VenueOffers({
   euroToPacificFrancRate,
   arePlaylistsLoading,
   onViewableItemsChanged,
+  advicesCardData,
+  nbAdvices,
+  enableNewTagProAdvices,
+  onShowWritersModal,
 }: Readonly<VenueOffersProps>) {
   const { userLocation, selectedLocationMode } = useLocation()
   const transformHits = useTransformOfferHits()
@@ -95,6 +104,10 @@ export function VenueOffers({
       euroToPacificFrancRate={euroToPacificFrancRate}
       arePlaylistsLoading={arePlaylistsLoading}
       onViewableItemsChanged={onViewableItemsChanged}
+      advicesCardData={advicesCardData}
+      nbAdvices={nbAdvices}
+      enableNewTagProAdvices={enableNewTagProAdvices}
+      onShowWritersModal={onShowWritersModal}
     />
   )
 }

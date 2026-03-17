@@ -10,6 +10,7 @@ import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
+import { proAdvicesFixture } from 'features/venue/fixtures/venueProAdvices.fixture'
 import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import mockVenueSearchParams from 'fixtures/venueSearchParams'
 import { analytics } from 'libs/analytics/provider'
@@ -126,6 +127,13 @@ describe('<VenueBody />', () => {
       isHeadline: true,
     })
   })
+
+  it('should display advice in "À la une" section if available', async () => {
+    renderVenueBody({ headlineOfferData: { ...HEADLINE_OFFER_DATA, advice: proAdvicesFixture[0] } })
+
+    expect(screen.getByText('par Arthur')).toBeOnTheScreen()
+    expect(screen.getByText(/Ce livre est vraiment exceptionnel/i)).toBeOnTheScreen()
+  })
 })
 
 const renderVenueBody = ({
@@ -133,11 +141,13 @@ const renderVenueBody = ({
   headlineOfferData,
   playlists = gtlPlaylistAlgoliaSnapshot,
   arePlaylistsLoading = false,
+  nbAdvices = 0,
 }: {
   venue?: Omit<VenueResponse, 'isVirtual'>
   headlineOfferData?: HeadlineOfferData
   playlists?: GtlPlaylistData[]
   arePlaylistsLoading?: boolean
+  nbAdvices?: number
 }) => {
   return render(
     reactQueryProviderHOC(
@@ -147,6 +157,8 @@ const renderVenueBody = ({
         playlists={playlists}
         arePlaylistsLoading={arePlaylistsLoading}
         onViewableItemsChanged={jest.fn()}
+        nbAdvices={nbAdvices}
+        onShowWritersModal={jest.fn()}
       />
     )
   )

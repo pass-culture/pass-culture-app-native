@@ -5,6 +5,8 @@ import {
   chronicleVariant,
 } from 'features/offerRefacto/helpers'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('chronicleVariant', () => {
   it('should define all Book Club subcategories', () => {
     BOOK_CLUB_SUBCATEGORIES.forEach((subcategoryId) => {

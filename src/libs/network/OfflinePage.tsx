@@ -12,13 +12,11 @@ export const OfflinePage = () => {
     <Container>
       <Content>
         <Spacer.TopScreen />
-        <Spacer.Flex />
         <BrokenConnection />
         <StyledViewGap gap={4}>
           <StyledTitle2>Pas de réseau internet</StyledTitle2>
           <StyledBody>Tu n’es pas connecté à internet.</StyledBody>
         </StyledViewGap>
-        <Spacer.Flex />
         <Spacer.BottomScreen />
       </Content>
     </Container>
@@ -46,9 +44,9 @@ const StyledBody = styled(Typo.Body).attrs(() => getHeadingAttrs(2))({
 
 const Content = styled.View(({ theme }) => ({
   flexDirection: 'column',
-  flex: 1,
-  justifyContent: 'center',
+  height: '100%',
   alignItems: 'center',
+  justifyContent: 'center',
   paddingHorizontal: theme.designSystem.size.spacing.l,
   maxWidth: getSpacing(90),
 }))

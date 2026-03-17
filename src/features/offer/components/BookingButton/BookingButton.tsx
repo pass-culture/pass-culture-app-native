@@ -4,6 +4,7 @@ import { styled } from 'styled-components/native'
 import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
 import { CTAButton } from 'features/offer/components/CTAButton/CTAButton'
 import { ICTAWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 type Props = {
   ctaWordingAndAction: ICTAWordingAndAction
@@ -26,7 +27,7 @@ export const BookingButton: FunctionComponent<Props> = ({
   }
 
   return (
-    <React.Fragment>
+    <ViewGap gap={6}>
       <ButtonContainer testID="booking-button" fullScreen={fullScreen}>
         <CTAButton
           wording={wording}
@@ -39,7 +40,7 @@ export const BookingButton: FunctionComponent<Props> = ({
         />
       </ButtonContainer>
       {bottomBannerText ? <BottomBanner text={bottomBannerText} /> : null}
-    </React.Fragment>
+    </ViewGap>
   )
 }
 

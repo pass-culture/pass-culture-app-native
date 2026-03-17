@@ -1,8 +1,8 @@
 import { Environment } from 'libs/environment/schema'
 
 export const env: Environment = {
-  ACCESSIBILITY: 'https://passculture.accessibility',
   ACCESSIBILITY_PLAN: 'https://passculture.accessibility_plan',
+  ACCESSIBILITY: 'https://passculture.accessibility',
   ADJUST_APP_TOKEN: 'adjustAppToken',
   ALGOLIA_APPLICATION_ID: 'algoliaAppId',
   ALGOLIA_ARTISTS_INDEX_NAME: 'algoliaArtistsIndexName',
@@ -12,6 +12,7 @@ export const env: Environment = {
   ALGOLIA_SEARCH_API_PUBLIC_KEY: 'algoliaApiKey',
   ALGOLIA_SUGGESTIONS_INDEX_NAME: 'algoliaSuggestionsIndexName',
   ALGOLIA_TOP_OFFERS_INDEX_NAME: 'algoliaTopOffersIndexName',
+  ALGOLIA_VENUES_INDEX_EXPERIMENTAL: 'algoliaVenuesIndexExperimental',
   ALGOLIA_VENUES_INDEX_NAME: 'algoliaVenuesIndexName',
   ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST: 'algoliaVenuesIndexPlaylistSearchNewest',
   ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH: 'algoliaVenuesIndexPlaylistSearch',
@@ -21,6 +22,7 @@ export const env: Environment = {
   BOOKING_FEEDBACK_LINK: 'https://passculture.qualtrics.com/jfe/form/SV_dcmKZrtRwVABcA6',
   BOOKING_LIMIT_EXCEEDED_URL: 'https://aide.passculture.app/hc/fr/articles/4411991975825',
   CGU_LINK: 'https://passculture.cgu',
+  CODE_OF_CONDUCT_LINK: 'https://passculture.code-of-conduct',
   COMMIT_HASH: '13371337',
   CONTENTFUL_ENVIRONMENT: 'environment',
   CONTENTFUL_PUBLIC_ACCESS_TOKEN: 'accessToken',
@@ -36,15 +38,19 @@ export const env: Environment = {
   EDUCONNECT_ALLOWED_DOMAIN: 'https://educoco_alloweddodo',
   ENV: 'testing',
   FAMILY_QUOTIENT_TOO_HIGH_LINK: 'https://www.caf.fr/allocataires/ma-caf-recherche',
-  FAQ_BONIFICATION: 'https://aide.passculture.app/hc/fr/articles/24338766387100-FAQ-Bonif',
+  FAQ_BONIFICATION_GENERIC:
+    'https://aide.passculture.app/hc/fr/articles/25001135670044--Jeunes-Evolution-pass-Culture-Un-bonus-de-50-supplémentaire-sous-conditions',
+  FAQ_BONIFICATION_LEGAL_GUARDIAN_BIRTH_INFORMATIONS:
+    'https://aide.passculture.app/hc/fr/articles/24338766387100-FAQ-Bonif',
+  FAQ_LINK_CAF_QUOTIEN_FAMILIAL:
+    'https://www.caf.fr/allocataires/actualites/actualites-nationales/comment-obtenir-son-quotient-familial-qf',
   FAQ_LINK_CREDIT_V3: 'https://passculture-credit-v3.faq',
   FAQ_LINK_CREDIT: 'https://passculture-credit.faq',
   FAQ_LINK_DELETE_ACCOUNT: 'https://passculture-delete-account.faq',
   FAQ_LINK_EDUCONNECT_URL: 'https://passculture-educonnect.faq',
+  FAQ_LINK_PASS_CULTURE: 'https://passculture.faq',
   FAQ_LINK_PERSONAL_DATA:
     'https://aide.passculture.app/hc/fr/articles/7047585364380--Jeunes-Traitement-des-donn%C3%A9es-utilisateurs',
-  FAQ_LINK_CAF_QUOTIEN_FAMILIAL:
-    'https://www.caf.fr/allocataires/actualites/actualites-nationales/comment-obtenir-son-quotient-familial-qf',
   FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED: 'https://passculture-reset-password.faq',
   FAQ_LINK_RIGHT_TO_ERASURE: 'https://passculture-right-to-erasure.faq',
   FAQ_LINK_SIGNUP_CONFIRMATION_EMAIL_NOT_RECEIVED: 'https://passculture-confirmation-email.faq',
@@ -63,15 +69,14 @@ export const env: Environment = {
   GOOGLE_IOS_REVERSED_CLIENT_ID: 'GOOGLE_IOS_REVERSED_CLIENT_ID',
   GOOGLE_PLAY_STORE_URL:
     'https://play.google.com/store/apps/details?id=app.passculture.webapp&hl=fr',
-  HOT_UPDATER_FUNCTION_URL: 'https://hot-updater-5zhbbjibjq-ew.a.run.app',
   HOT_UPDATER_FIREBASE_PROJECT_ID: 'pc-native-testing',
   HOT_UPDATER_FIREBASE_STORAGE_BUCKET: 'pc-native-testing.appspot.com',
+  HOT_UPDATER_FUNCTION_URL: 'https://hot-updater-5zhbbjibjq-ew.a.run.app',
   IOS_APP_ID: 'app.ios',
   IOS_APP_STORE_ID: '1557887412',
   IOS_KEYCHAIN_SERVICE_KEY: 'rn_keychain_service_key',
   PASSCULTURE_DOWNLOAD_APP_URL: 'https://pass.culture.fr/nosapplications/',
   PRIVACY_POLICY_LINK: 'https://passculture.privacy',
-  CODE_OF_CONDUCT_LINK: 'https://passculture.code-of-conduct',
   PUBLIC_URL: 'https://web.example.com',
   RESIZE_IMAGE_ON_DEMAND_URL: 'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com',
   SENTRY_DSN: 'SENTRY_DSN',

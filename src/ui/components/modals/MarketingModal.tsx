@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -37,24 +37,24 @@ export const MarketingModal: FunctionComponent<Props> = ({
       onRequestClose={onBackdropPress}
       accessibilityLabelledBy={titleID}>
       <ClickAwayArea onPress={onBackdropPress} testID="clickaway-area" />
-      <FlexSpacer />
-      <Container>
-        <Flex>
-          <FlexContainer>
-            <ImageBackground source={imageSource} />
-          </FlexContainer>
-          <Gradient />
-          <FlexContainer>
-            <Content gap={6}>
-              <Title nativeID={titleID} numberOfLines={numberOfLinesTitle}>
-                {title}
-              </Title>
-              {children}
-            </Content>
-          </FlexContainer>
-        </Flex>
-      </Container>
-      <FlexSpacer />
+      <ModalCenteredContent>
+        <Container>
+          <Flex>
+            <FlexContainer>
+              <ImageBackground source={imageSource} />
+            </FlexContainer>
+            <Gradient />
+            <FlexContainer>
+              <Content gap={6}>
+                <Title nativeID={titleID} numberOfLines={numberOfLinesTitle}>
+                  {title}
+                </Title>
+                {children}
+              </Content>
+            </FlexContainer>
+          </Flex>
+        </Container>
+      </ModalCenteredContent>
     </Modal>
   )
 }
@@ -130,6 +130,7 @@ const Content = styled(ViewGap)(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
 }))
 
-const FlexSpacer = styled(Spacer.Flex)(({ theme }) => ({
-  zIndex: theme.zIndex.background,
-}))
+const ModalCenteredContent = styled.View({
+  height: '100%',
+  justifyContent: 'center',
+})

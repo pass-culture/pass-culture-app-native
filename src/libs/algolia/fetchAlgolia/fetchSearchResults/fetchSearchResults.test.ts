@@ -64,13 +64,69 @@ const aroundPlaceGeolocatedParams = {
   geolocPosition: userPosition,
 }
 
+const defaultOfferQuery = {
+  indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+  attributesToHighlight: [],
+  attributesToRetrieve: offerAttributesToRetrieve,
+  clickAnalytics: true,
+  analytics: true,
+  facetFilters: [['offer.isEducational:false']],
+  numericFilters: [['offer.prices: 0 TO 300']],
+  page: 0,
+  query,
+}
+
+const defaultVenuesNotOpenToPublicQuery = {
+  indexName: 'algoliaVenuesIndexExperimental',
+  facetFilters: [['is_open_to_public:false']],
+  clickAnalytics: true,
+  hitsPerPage: 1,
+  page: 0,
+  query,
+}
+
+const defaultVenuesQuery = {
+  indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
+  facetFilters: [['is_open_to_public:true']],
+  aroundRadius: 'all',
+  clickAnalytics: true,
+  analytics: true,
+  hitsPerPage: 35,
+  page: 0,
+  query,
+}
+
+const defaultOfferWithoutDuplicationLimitQuery = {
+  indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+  attributesToHighlight: [],
+  attributesToRetrieve: offerAttributesToRetrieve,
+  clickAnalytics: true,
+  analytics: true,
+  distinct: false,
+  facetFilters: [['offer.isEducational:false']],
+  hitsPerPage: 100,
+  numericFilters: [['offer.prices: 0 TO 300']],
+  page: 0,
+  typoTolerance: false,
+  query,
+}
+
+const defaultArtistsInOffersQuery = {
+  indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+  attributesToRetrieve: ['artists'],
+  facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
+  numericFilters: [['offer.prices: 0 TO 300']],
+  hitsPerPage: 100,
+  query: '',
+}
+
 describe('fetchSearchResults', () => {
   beforeEach(() => {
     mockSearch.mockResolvedValue({ results: [] })
   })
 
-  it('should execute multi query with venues playlist search newest index when there is not location filter', () => {
-    fetchSearchResults({
+  it('should execute multi query with venues playlist search newest index when there is not location filter', async () => {
+    await fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: everywhereParams,
       isUserUnderage: false,
@@ -78,56 +134,18 @@ describe('fetchSearchResults', () => {
     })
 
     const expectedResult = [
-      {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        query: 'searched query',
-      },
-      {
-        indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
-        facetFilters: [['is_open_to_public:true']],
-        aroundRadius: 'all',
-        clickAnalytics: true,
-        analytics: true,
-        hitsPerPage: 35,
-        page: 0,
-        query: 'searched query',
-      },
-      {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        distinct: false,
-        facetFilters: [['offer.isEducational:false']],
-        hitsPerPage: 100,
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        typoTolerance: false,
-        query: 'searched query',
-      },
-      {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToRetrieve: ['artists'],
-        facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        hitsPerPage: 100,
-        query: '',
-      },
+      defaultOfferQuery,
+      defaultVenuesNotOpenToPublicQuery,
+      defaultVenuesQuery,
+      defaultOfferWithoutDuplicationLimitQuery,
+      defaultArtistsInOffersQuery,
     ]
 
     expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
-  it('should execute multi query with venues playlist search newest index when location type is EVERYWHERE and user is not sharing its position', () => {
-    fetchSearchResults({
+  it('should execute multi query with venues playlist search newest index when location type is EVERYWHERE and user is not sharing its position', async () => {
+    await fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: everywhereParams,
       isUserUnderage: false,
@@ -135,56 +153,18 @@ describe('fetchSearchResults', () => {
     })
 
     const expectedResult = [
-      {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        query: 'searched query',
-      },
-      {
-        indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
-        facetFilters: [['is_open_to_public:true']],
-        aroundRadius: 'all',
-        clickAnalytics: true,
-        analytics: true,
-        hitsPerPage: 35,
-        page: 0,
-        query: 'searched query',
-      },
-      {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        distinct: false,
-        facetFilters: [['offer.isEducational:false']],
-        hitsPerPage: 100,
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        typoTolerance: false,
-        query: 'searched query',
-      },
-      {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToRetrieve: ['artists'],
-        facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        hitsPerPage: 100,
-        query: '',
-      },
+      defaultOfferQuery,
+      defaultVenuesNotOpenToPublicQuery,
+      defaultVenuesQuery,
+      defaultOfferWithoutDuplicationLimitQuery,
+      defaultArtistsInOffersQuery,
     ]
 
     expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
-  it('should execute multi query with venues playlist search index when location type is EVERYWHERE and user shares his position', () => {
-    fetchSearchResults({
+  it('should execute multi query with venues playlist search index when location type is EVERYWHERE and user shares his position', async () => {
+    await fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: everywhereGeolocatedParams,
       isUserUnderage: false,
@@ -193,61 +173,29 @@ describe('fetchSearchResults', () => {
 
     const expectedResult = [
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        ...defaultOfferQuery,
         aroundLatLng: '42, 43',
         aroundRadius: 'all',
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        query: 'searched query',
       },
+      defaultVenuesNotOpenToPublicQuery,
+      { ...defaultVenuesQuery, indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH },
       {
-        indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
-        facetFilters: [['is_open_to_public:true']],
-        aroundRadius: 'all',
-        clickAnalytics: true,
-        analytics: true,
-        hitsPerPage: 35,
-        page: 0,
-        query: 'searched query',
-      },
-      {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        ...defaultOfferWithoutDuplicationLimitQuery,
         aroundLatLng: '42, 43',
         aroundRadius: 'all',
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        distinct: false,
-        facetFilters: [['offer.isEducational:false']],
-        hitsPerPage: 100,
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        typoTolerance: false,
-        query: 'searched query',
       },
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToRetrieve: ['artists'],
-        facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        hitsPerPage: 100,
+        ...defaultArtistsInOffersQuery,
         aroundLatLng: '42, 43',
         aroundRadius: 'all',
-        query: '',
       },
     ]
 
     expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
-  it('should execute multi query with venues playlist search index when location type is AROUND_ME and user shares his position', () => {
-    fetchSearchResults({
+  it('should execute multi query with venues playlist search index when location type is AROUND_ME and user shares his position', async () => {
+    await fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: aroundMeParams,
       isUserUnderage: false,
@@ -256,62 +204,34 @@ describe('fetchSearchResults', () => {
 
     const expectedResult = [
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        ...defaultOfferQuery,
         aroundLatLng: '42, 43',
         aroundRadius: 100000,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        query: 'searched query',
       },
+      defaultVenuesNotOpenToPublicQuery,
       {
+        ...defaultVenuesQuery,
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
-        facetFilters: [['is_open_to_public:true']],
         aroundRadius: 100000,
         aroundLatLng: '42, 43',
-        clickAnalytics: true,
-        analytics: true,
-        hitsPerPage: 35,
-        page: 0,
-        query: 'searched query',
       },
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        ...defaultOfferWithoutDuplicationLimitQuery,
         aroundLatLng: '42, 43',
         aroundRadius: 100000,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        distinct: false,
-        facetFilters: [['offer.isEducational:false']],
-        hitsPerPage: 100,
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        typoTolerance: false,
-        query: 'searched query',
       },
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToRetrieve: ['artists'],
-        facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        hitsPerPage: 100,
+        ...defaultArtistsInOffersQuery,
         aroundLatLng: '42, 43',
         aroundRadius: 100000,
-        query: '',
       },
     ]
 
     expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
-  it('should execute multi query with venues playlist search index when location type is PLACE and user shares his position', () => {
-    fetchSearchResults({
+  it('should execute multi query with venues playlist search index when location type is PLACE and user shares his position', async () => {
+    await fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: aroundPlaceGeolocatedParams,
       isUserUnderage: false,
@@ -320,62 +240,34 @@ describe('fetchSearchResults', () => {
 
     const expectedResult = [
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        ...defaultOfferQuery,
         aroundLatLng: '5.16176, -52.669726',
         aroundRadius: 100000,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        query: 'searched query',
       },
+      defaultVenuesNotOpenToPublicQuery,
       {
+        ...defaultVenuesQuery,
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
-        facetFilters: [['is_open_to_public:true']],
         aroundRadius: 100000,
         aroundLatLng: '5.16176, -52.669726',
-        clickAnalytics: true,
-        analytics: true,
-        hitsPerPage: 35,
-        page: 0,
-        query: 'searched query',
       },
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        ...defaultOfferWithoutDuplicationLimitQuery,
         aroundLatLng: '5.16176, -52.669726',
         aroundRadius: 100000,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        distinct: false,
-        facetFilters: [['offer.isEducational:false']],
-        hitsPerPage: 100,
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        typoTolerance: false,
-        query: 'searched query',
       },
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToRetrieve: ['artists'],
-        facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        hitsPerPage: 100,
+        ...defaultArtistsInOffersQuery,
         aroundLatLng: '5.16176, -52.669726',
         aroundRadius: 100000,
-        query: '',
       },
     ]
 
     expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
-  it('should execute multi query with venues playlist search index when location type is PLACE and user not share his position', () => {
-    fetchSearchResults({
+  it('should execute multi query with venues playlist search index when location type is PLACE and user not share his position', async () => {
+    await fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: aroundPlaceParams,
       isUserUnderage: false,
@@ -384,62 +276,34 @@ describe('fetchSearchResults', () => {
 
     const expectedResult = [
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        ...defaultOfferQuery,
         aroundLatLng: '5.16176, -52.669726',
         aroundRadius: 100000,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        query: 'searched query',
       },
+      defaultVenuesNotOpenToPublicQuery,
       {
+        ...defaultVenuesQuery,
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
-        facetFilters: [['is_open_to_public:true']],
         aroundRadius: 100000,
         aroundLatLng: '5.16176, -52.669726',
-        clickAnalytics: true,
-        analytics: true,
-        hitsPerPage: 35,
-        page: 0,
-        query: 'searched query',
       },
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        ...defaultOfferWithoutDuplicationLimitQuery,
         aroundLatLng: '5.16176, -52.669726',
         aroundRadius: 100000,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        distinct: false,
-        facetFilters: [['offer.isEducational:false']],
-        hitsPerPage: 100,
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        typoTolerance: false,
-        query: 'searched query',
       },
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToRetrieve: ['artists'],
-        facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        hitsPerPage: 100,
+        ...defaultArtistsInOffersQuery,
         aroundLatLng: '5.16176, -52.669726',
         aroundRadius: 100000,
-        query: '',
       },
     ]
 
     expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
-  it('should execute multi query with venues playlist search index when location type is VENUE and user shares his position', () => {
-    fetchSearchResults({
+  it('should execute multi query with venues playlist search index when location type is VENUE and user shares his position', async () => {
+    await fetchSearchResults({
       parameters: {
         query,
         venue,
@@ -450,61 +314,33 @@ describe('fetchSearchResults', () => {
     })
 
     const expectedResult = [
+      { ...defaultOfferQuery, facetFilters: [['offer.isEducational:false'], ['venue.id:5543']] },
+      defaultVenuesNotOpenToPublicQuery,
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        query: 'searched query',
-      },
-      {
+        ...defaultVenuesQuery,
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
-        facetFilters: [['is_open_to_public:true']],
         aroundRadius: 100000,
         aroundLatLng: '5.16186, -52.669736',
-        clickAnalytics: true,
-        analytics: true,
-        hitsPerPage: 35,
-        page: 0,
-        query: 'searched query',
       },
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        distinct: false,
+        ...defaultOfferWithoutDuplicationLimitQuery,
         facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
-        hitsPerPage: 100,
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        typoTolerance: false,
-        query: 'searched query',
       },
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToRetrieve: ['artists'],
+        ...defaultArtistsInOffersQuery,
         facetFilters: [
           ['offer.isEducational:false'],
           ['artists.name:searched query'],
           ['venue.id:5543'],
         ],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        hitsPerPage: 100,
-        query: '',
       },
     ]
 
     expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
-  it('should execute multi query with venues playlist search index newest when venue is defined and user not share his position', () => {
-    fetchSearchResults({
+  it('should execute multi query with venues playlist search index newest when venue is defined and user not share his position', async () => {
+    await fetchSearchResults({
       parameters: {
         query,
         venue,
@@ -515,61 +351,32 @@ describe('fetchSearchResults', () => {
     })
 
     const expectedResult = [
+      { ...defaultOfferQuery, facetFilters: [['offer.isEducational:false'], ['venue.id:5543']] },
+      defaultVenuesNotOpenToPublicQuery,
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        query: 'searched query',
-      },
-      {
-        indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
-        facetFilters: [['is_open_to_public:true']],
+        ...defaultVenuesQuery,
         aroundRadius: 100000,
         aroundLatLng: '5.16186, -52.669736',
-        clickAnalytics: true,
-        analytics: true,
-        hitsPerPage: 35,
-        page: 0,
-        query: 'searched query',
       },
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        distinct: false,
+        ...defaultOfferWithoutDuplicationLimitQuery,
         facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
-        hitsPerPage: 100,
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        typoTolerance: false,
-        query: 'searched query',
       },
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToRetrieve: ['artists'],
+        ...defaultArtistsInOffersQuery,
         facetFilters: [
           ['offer.isEducational:false'],
           ['artists.name:searched query'],
           ['venue.id:5543'],
         ],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        hitsPerPage: 100,
-        query: '',
       },
     ]
 
     expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
-  it('should execute multi query with accessibilities filters when user has selected accessibility filters', () => {
-    fetchSearchResults({
+  it('should execute multi query with accessibilities filters when user has selected accessibility filters', async () => {
+    await fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: everywhereParams,
       isUserUnderage: false,
@@ -583,72 +390,46 @@ describe('fetchSearchResults', () => {
 
     const expectedResult = [
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
+        ...defaultOfferQuery,
         facetFilters: [
           ['offer.isEducational:false'],
           ['venue.isAudioDisabilityCompliant:true'],
           ['venue.isMentalDisabilityCompliant:true'],
         ],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        query: 'searched query',
       },
+      defaultVenuesNotOpenToPublicQuery,
       {
-        indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
+        ...defaultVenuesQuery,
         facetFilters: [
           ['is_open_to_public:true'],
           ['audio_disability:true'],
           ['mental_disability:true'],
         ],
-        aroundRadius: 'all',
-        clickAnalytics: true,
-        analytics: true,
-        hitsPerPage: 35,
-        page: 0,
-        query: 'searched query',
       },
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        distinct: false,
+        ...defaultOfferWithoutDuplicationLimitQuery,
         facetFilters: [
           ['offer.isEducational:false'],
           ['venue.isAudioDisabilityCompliant:true'],
           ['venue.isMentalDisabilityCompliant:true'],
         ],
-        hitsPerPage: 100,
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        typoTolerance: false,
-        query: 'searched query',
       },
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToRetrieve: ['artists'],
+        ...defaultArtistsInOffersQuery,
         facetFilters: [
           ['offer.isEducational:false'],
           ['artists.name:searched query'],
           ['venue.isAudioDisabilityCompliant:true'],
           ['venue.isMentalDisabilityCompliant:true'],
         ],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        hitsPerPage: 100,
-        query: '',
       },
     ]
 
     expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
-  it('should execute multi query with aroundPrecision param if provided', () => {
-    fetchSearchResults({
+  it('should execute multi query with aroundPrecision param if provided', async () => {
+    await fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: everywhereParams,
       isUserUnderage: false,
@@ -662,60 +443,24 @@ describe('fetchSearchResults', () => {
 
     const expectedResult = [
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
+        ...defaultOfferQuery,
         aroundPrecision: [
           { from: 0, value: 1000 },
           { from: 1000, value: 4000 },
           { from: 5000, value: 10000 },
         ],
-        query: 'searched query',
       },
-      {
-        indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
-        facetFilters: [['is_open_to_public:true']],
-        aroundRadius: 'all',
-        clickAnalytics: true,
-        analytics: true,
-        hitsPerPage: 35,
-        page: 0,
-        query: 'searched query',
-      },
-      {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        distinct: false,
-        facetFilters: [['offer.isEducational:false']],
-        hitsPerPage: 100,
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        typoTolerance: false,
-        query: 'searched query',
-      },
-      {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToRetrieve: ['artists'],
-        facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        hitsPerPage: 100,
-        query: '',
-      },
+      defaultVenuesNotOpenToPublicQuery,
+      defaultVenuesQuery,
+      defaultOfferWithoutDuplicationLimitQuery,
+      defaultArtistsInOffersQuery,
     ]
 
     expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
-  it('should execute multi query without aroundPrecision param if aroundPrecision is 0 (eq: O or not provided)', () => {
-    fetchSearchResults({
+  it('should execute multi query without aroundPrecision param if aroundPrecision is 0 (eq: O or not provided)', async () => {
+    await fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: everywhereParams,
       isUserUnderage: false,
@@ -724,49 +469,11 @@ describe('fetchSearchResults', () => {
     })
 
     const expectedResult = [
-      {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        query: 'searched query',
-      },
-      {
-        indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
-        facetFilters: [['is_open_to_public:true']],
-        aroundRadius: 'all',
-        clickAnalytics: true,
-        analytics: true,
-        hitsPerPage: 35,
-        page: 0,
-        query: 'searched query',
-      },
-      {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-        analytics: true,
-        distinct: false,
-        facetFilters: [['offer.isEducational:false']],
-        hitsPerPage: 100,
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        typoTolerance: false,
-        query: 'searched query',
-      },
-      {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        attributesToRetrieve: ['artists'],
-        facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        hitsPerPage: 100,
-        query: '',
-      },
+      defaultOfferQuery,
+      defaultVenuesNotOpenToPublicQuery,
+      defaultVenuesQuery,
+      defaultOfferWithoutDuplicationLimitQuery,
+      defaultArtistsInOffersQuery,
     ]
 
     expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })

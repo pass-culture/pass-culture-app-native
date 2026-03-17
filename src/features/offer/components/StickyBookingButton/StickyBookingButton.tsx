@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
 import { CTAButton } from 'features/offer/components/CTAButton/CTAButton'
 import { ICTAWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
-import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { Spacer } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -31,21 +30,19 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
   return (
     <StyledStickyBottomWrapper bottom={-bottom}>
       {wording ? (
-        <BlurryWrapper>
-          <CallToActionContainer testID="sticky-booking-button" accessible>
-            <ButtonWrapper>
-              <CTAButton
-                wording={wording}
-                onPress={onPress}
-                navigateTo={navigateTo}
-                externalNav={externalNav}
-                isDisabled={isDisabled}
-                isFreeDigitalOffer={isFreeDigitalOffer}
-                isLoggedIn={isLoggedIn}
-              />
-            </ButtonWrapper>
-          </CallToActionContainer>
-        </BlurryWrapper>
+        <CallToActionContainer testID="sticky-booking-button" accessible>
+          <ButtonWrapper>
+            <CTAButton
+              wording={wording}
+              onPress={onPress}
+              navigateTo={navigateTo}
+              externalNav={externalNav}
+              isDisabled={isDisabled}
+              isFreeDigitalOffer={isFreeDigitalOffer}
+              isLoggedIn={isLoggedIn}
+            />
+          </ButtonWrapper>
+        </CallToActionContainer>
       ) : null}
 
       {bottomBannerText ? <StyledBottomBanner text={bottomBannerText} /> : <Spacer.BottomScreen />}

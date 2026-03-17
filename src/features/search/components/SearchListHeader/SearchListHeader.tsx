@@ -84,7 +84,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     !venue && !!venues?.length && previousRoute?.name !== SearchView.Thematic
 
   const onPress = () => {
-    analytics.logActivateGeolocfromSearchResults()
+    void analytics.logActivateGeolocfromSearchResults()
     showGeolocPermissionModal()
   }
 
@@ -96,7 +96,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
 
   const onGridListButtonPress = (layout: GridListLayout) => {
     gridListLayoutActions.setLayout(layout)
-    analytics.logHasClickedGridListToggle({ fromLayout: selectedGridListLayout })
+    void analytics.logHasClickedGridListToggle({ fromLayout: selectedGridListLayout })
   }
 
   const getLayoutButtonProps = (layout: GridListLayout) => ({
