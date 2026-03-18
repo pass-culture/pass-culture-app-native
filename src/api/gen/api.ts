@@ -5095,10 +5095,10 @@ export interface VenueContact {
  */
 export interface VenueProAdvice {
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueProAdvice
    */
-  author: string
+  author?: string | null
   /**
    * @type {string}
    * @memberof VenueProAdvice

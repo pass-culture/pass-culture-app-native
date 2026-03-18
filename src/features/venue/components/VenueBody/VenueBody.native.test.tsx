@@ -134,6 +134,17 @@ describe('<VenueBody />', () => {
     expect(screen.getByText('par Arthur')).toBeOnTheScreen()
     expect(screen.getByText(/Ce livre est vraiment exceptionnel/i)).toBeOnTheScreen()
   })
+
+  it('should display "avis du pro" as tag label when headline has an advice with undefined author', async () => {
+    renderVenueBody({
+      headlineOfferData: {
+        ...HEADLINE_OFFER_DATA,
+        advice: { ...proAdvicesFixture[0], author: undefined },
+      },
+    })
+
+    expect(screen.getByText('avis du pro')).toBeOnTheScreen()
+  })
 })
 
 const renderVenueBody = ({
