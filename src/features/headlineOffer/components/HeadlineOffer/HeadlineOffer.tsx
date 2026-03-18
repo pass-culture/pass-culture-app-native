@@ -52,7 +52,12 @@ export const HeadlineOffer: FunctionComponent<HeadlineOfferProps> = ({
           <ChronicleCardBody
             date={getFormattedChronicleDate(advice.publicationDatetime)}
             description={advice.content}
-            tag={<Tag variant={TagVariant.PROEDITO} label={`par ${advice.author}`} />}
+            tag={
+              <Tag
+                variant={TagVariant.PROEDITO}
+                label={advice.author ? `par ${advice.author}` : 'avis du pro'}
+              />
+            }
             shouldTruncate>
             <View>
               <Button

@@ -19,7 +19,7 @@ export function proAdvicesToChronicleCardData(advices: VenueProAdvice[]): Chroni
       subtitle: offerCategoryLabel,
       description: content,
       date: getFormattedChronicleDate(publicationDatetime),
-      tagProps: { variant: TagVariant.PROEDITO, label: `par ${author}` },
+      tagProps: { variant: TagVariant.PROEDITO, label: author ? `par ${author}` : 'avis du pro' },
       image: offerThumbUrl,
       headerNavigateTo: { screen: 'Offer', params: { id: offerId } },
       headerAccessibilityLabel: `Voir l‘offre ${offerName}`,
