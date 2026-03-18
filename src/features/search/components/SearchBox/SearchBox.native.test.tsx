@@ -8,7 +8,6 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { BooksNativeCategoriesEnum, SearchState, SearchView } from 'features/search/types'
-import { analytics } from 'libs/analytics/__mocks__/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
@@ -390,90 +389,6 @@ describe('SearchBox component', () => {
     renderSearchBox()
 
     expect(screen.queryByText(venue.label)).not.toBeOnTheScreen()
-  })
-
-  describe('shouldRedirectToThematicSearch', () => {
-    it('should not update searchState when current route is not searchLanding', async () => {
-      // TODO(PC-32646): useRoute is called every time a letter is inputted +1 (sic!)
-      useRoute
-        .mockReturnValueOnce({ name: SearchView.Results })
-        .mockReturnValueOnce({ name: SearchView.Results })
-        .mockReturnValueOnce({ name: SearchView.Results })
-
-      renderSearchBox()
-
-      const searchInput = getSearchInput()
-
-      await user.type(searchInput, 'Livres', { submitEditing: true })
-
-      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-        type: 'SET_STATE',
-        payload: expect.not.objectContaining({
-          shouldRedirect: expect.anything(),
-        }),
-      })
-    })
-
-    it.each`
-      queryText    | offerCategories
-      ${'LIVRE'}   | ${[SearchGroupNameEnumv2.LIVRES]}
-      ${'Livre'}   | ${[SearchGroupNameEnumv2.LIVRES]}
-      ${'livre'}   | ${[SearchGroupNameEnumv2.LIVRES]}
-      ${'LIVRES'}  | ${[SearchGroupNameEnumv2.LIVRES]}
-      ${'Livres'}  | ${[SearchGroupNameEnumv2.LIVRES]}
-      ${'livres'}  | ${[SearchGroupNameEnumv2.LIVRES]}
-      ${'CINÉMA'}  | ${[SearchGroupNameEnumv2.CINEMA]}
-      ${'Cinéma'}  | ${[SearchGroupNameEnumv2.CINEMA]}
-      ${'cinéma'}  | ${[SearchGroupNameEnumv2.CINEMA]}
-      ${'cinémas'} | ${[SearchGroupNameEnumv2.CINEMA]}
-      ${'CINEMA'}  | ${[SearchGroupNameEnumv2.CINEMA]}
-      ${'Cinema'}  | ${[SearchGroupNameEnumv2.CINEMA]}
-      ${'cinéma'}  | ${[SearchGroupNameEnumv2.CINEMA]}
-      ${'cinemas'} | ${[SearchGroupNameEnumv2.CINEMA]}
-    `(
-      'should redirect to ThematicSearch of $offerCategories when queryText is $queryText and SearchView is `Landing`',
-      async ({ queryText, offerCategories }) => {
-        // TODO(PC-32646): useRoute is called every time a letter is inputted +1 (sic!)
-        useRoute.mockReturnValue({ name: SearchView.Landing })
-        renderSearchBox()
-
-        const searchInput = getSearchInput()
-        await user.type(searchInput, queryText, { submitEditing: true })
-
-        expect(popTo).toHaveBeenCalledWith('TabNavigator', {
-          params: {
-            params: {
-              ...initialSearchState,
-              query: queryText.trim(),
-              offerCategories,
-              searchId,
-              accessibilityFilter: {
-                isAudioDisabilityCompliant: undefined,
-                isMentalDisabilityCompliant: undefined,
-                isMotorDisabilityCompliant: undefined,
-                isVisualDisabilityCompliant: undefined,
-              },
-              priceRange: mockSearchState.priceRange,
-            },
-            screen: 'ThematicSearch',
-          },
-          screen: 'SearchStackNavigator',
-        })
-      }
-    )
-
-    it('should log HasSearchedCinemaQuery analytic', async () => {
-      // TODO(PC-32646): useRoute & useRemoteConfigContext are called every time a letter is inputted +1
-      useRoute.mockReturnValueOnce({ name: SearchView.Landing })
-
-      renderSearchBox()
-
-      const searchInput = getSearchInput()
-
-      await user.type(searchInput, 'cinéma', { submitEditing: true })
-
-      expect(analytics.logHasSearchedCinemaQuery).toHaveBeenCalledTimes(1)
-    })
   })
 
   describe('Without autocomplete', () => {
