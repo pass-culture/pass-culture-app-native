@@ -171,12 +171,14 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -726,12 +728,14 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -1281,12 +1285,14 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }

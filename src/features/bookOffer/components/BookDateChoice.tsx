@@ -36,9 +36,8 @@ export const BookDateChoice = ({ stocks, userRemainingCredit }: Props) => {
   return (
     <StyledView>
       <Typo.Title3 {...getHeadingAttrs(3)} testID="DateStep">
-        Date hello
+        Date
       </Typo.Title3>
-
       {bookingState.step === Step.DATE ? (
         <Calendar
           stocks={stocks}

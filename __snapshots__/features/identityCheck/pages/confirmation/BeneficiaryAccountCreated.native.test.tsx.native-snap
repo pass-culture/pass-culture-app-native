@@ -122,12 +122,15 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
         }
       >
         <View
+          marginVertical={0}
           style={
             {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
               "justifyContent": "center",
+              "marginTop": 8,
+              "marginVertical": 0,
             }
           }
         >
@@ -151,6 +154,9 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
             style={
               {
                 "alignItems": "center",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "gap": 16,
                 "marginBottom": 24,
               }
@@ -568,12 +574,15 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
         }
       >
         <View
+          marginVertical={0}
           style={
             {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
               "justifyContent": "center",
+              "marginTop": 8,
+              "marginVertical": 0,
             }
           }
         >
@@ -597,6 +606,9 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
             style={
               {
                 "alignItems": "center",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "gap": 16,
                 "marginBottom": 24,
               }

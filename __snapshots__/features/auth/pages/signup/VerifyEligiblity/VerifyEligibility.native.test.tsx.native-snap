@@ -100,91 +100,94 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         }
       />
     </View>
-    <View
+    <RCTScrollView
+      contentContainerStyle={
+        {
+          "justifyContent": "center",
+        }
+      }
       style={
         {
           "flexBasis": "auto",
           "flexDirection": "column",
           "flexGrow": 1,
           "flexShrink": 1,
-          "justifyContent": "center",
           "maxWidth": 400,
           "paddingHorizontal": 24,
           "width": "100%",
         }
       }
     >
-      <View
-        style={
-          {
-            "marginBottom": 40,
-          }
-        }
-      />
-      <View
-        style={
-          {
-            "marginBottom": 24,
-          }
-        }
-      >
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-            }
-          }
-        >
-          Vérifie ton identité pour débloquer ton crédit
-        </Text>
-      </View>
       <View>
-        <Text
+        <View
           style={
             {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "marginBottom": 16,
+              "marginBottom": 40,
+            }
+          }
+        />
+        <View
+          style={
+            {
+              "marginBottom": 24,
             }
           }
         >
-          Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière de l’État.
-        </Text>
-        <Text
+          <Text
+            accessibilityRole="header"
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 21,
+                "lineHeight": 33.6,
+              }
+            }
+          >
+            Vérifie ton identité pour débloquer ton crédit
+          </Text>
+        </View>
+        <View>
+          <Text
+            style={
+              {
+                "color": "#696a6f",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "marginBottom": 16,
+              }
+            }
+          >
+            Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière de l’État.
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
+            }
+          >
+            Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.
+          </Text>
+        </View>
+        <View
+          marginTop={32}
           style={
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
+              "marginTop": 32,
             }
           }
-        >
-          Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.
-        </Text>
+        />
       </View>
-      <View
-        marginTop={32}
-        style={
-          {
-            "marginTop": 32,
-          }
-        }
-      />
-    </View>
+    </RCTScrollView>
     <View
       style={
         {
-          "flexBasis": "auto",
           "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "maxWidth": 400,
           "paddingHorizontal": 24,
           "width": "100%",
@@ -195,10 +198,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         style={
           {
             "alignSelf": "stretch",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "flex-end",
+            "justifyContent": "flex-start",
             "marginBottom": 16,
           }
         }

@@ -171,12 +171,14 @@ exports[`<UnsubscribingConfirmationModal /> should render correctly 1`] = `
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }

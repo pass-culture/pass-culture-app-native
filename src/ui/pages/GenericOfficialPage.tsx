@@ -100,12 +100,14 @@ const Container = styled.View({
   overflowY: 'auto',
 })
 
-const Content = styled.View(({ theme }) => ({
+const Content = styled.ScrollView.attrs({
+  contentContainerStyle: { justifyContent: 'center' },
+})(({ theme }) => ({
   flexDirection: 'column',
   flex: 1,
   flexShrink: theme.isNative ? 1 : 0,
   flexBasis: 'auto',
-  justifyContent: 'center',
+
   paddingHorizontal: theme.designSystem.size.spacing.xl,
   width: '100%',
   maxWidth: getSpacing(100),
@@ -113,8 +115,6 @@ const Content = styled.View(({ theme }) => ({
 
 const BottomContent = styled.View(({ theme }) => ({
   flexDirection: 'column',
-  flex: 1,
-  flexBasis: 'auto',
   paddingHorizontal: theme.designSystem.size.spacing.xl,
   width: '100%',
   maxWidth: getSpacing(100),
@@ -155,11 +155,10 @@ const ColoredPassCultureLogo = styled(LogoPassCulture).attrs(({ theme }) => ({
 }))``
 
 const BottomContainer = styled.View(({ theme }) => ({
-  flex: 1,
   alignSelf: 'stretch',
   ...(theme.isTouch
     ? {
-        justifyContent: 'flex-end',
+        justifyContent: 'flex-start',
         marginBottom: theme.designSystem.size.spacing.l,
       }
     : {

@@ -4,6 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
 import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
+import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
@@ -109,7 +110,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   const shouldDisplayHeader = withGoBack || withSkipAction
   const placeholderHeight = shouldDisplayHeader ? headerHeight : top
   const onPressAccessibilityRole = accessibilityRoleInternalNavigation()
-
+  const marginVertical = useFontScaleValue({ default: 0, at200PercentZoom: getSpacing(25) })
   return (
     <Page>
       <Header
@@ -121,7 +122,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
         {isLandscape ? null : <Placeholder height={placeholderHeight} />}
 
         <ContainerFlex>
-          <ContainerWithCenteredContent>
+          <ContainerWithCenteredContent marginVertical={marginVertical}>
             <IllustrationContainer animation={!!animation}>
               {IllustrationComponent ? (
                 <IllustrationComponent
@@ -317,10 +318,14 @@ const ContainerFlex = styled.View(({ theme }) => ({
   flex: 1,
 }))
 
-const ContainerWithCenteredContent = styled.View({
-  justifyContent: 'center',
-  flex: 1,
-})
+const ContainerWithCenteredContent = styled.View<{ marginVertical: number }>(
+  ({ marginVertical, theme }) => ({
+    justifyContent: 'center',
+    flex: 1,
+    marginVertical,
+    marginTop: theme.designSystem.size.spacing.s,
+  })
+)
 
 const Container = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
@@ -349,6 +354,7 @@ const IllustrationContainer = styled.View<{ animation: boolean }>(({ animation, 
 const TextContainer = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
   marginBottom: theme.designSystem.size.spacing.xl,
+  flex: 1,
 }))
 
 const StyledTitle2 = styled(Typo.Title2)({

@@ -100,76 +100,79 @@ exports[`<GenericOfficialPage /> should render correctly 1`] = `
         }
       />
     </View>
-    <View
+    <RCTScrollView
+      contentContainerStyle={
+        {
+          "justifyContent": "center",
+        }
+      }
       style={
         {
           "flexBasis": "auto",
           "flexDirection": "column",
           "flexGrow": 1,
           "flexShrink": 1,
-          "justifyContent": "center",
           "maxWidth": 400,
           "paddingHorizontal": 24,
           "width": "100%",
         }
       }
     >
-      <View
-        style={
-          {
-            "marginBottom": 40,
-          }
-        }
-      />
-      <View
-        style={
-          {
-            "marginBottom": 24,
-          }
-        }
-      >
-        <Text
-          accessibilityRole="header"
+      <View>
+        <View
           style={
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
+              "marginBottom": 40,
+            }
+          }
+        />
+        <View
+          style={
+            {
+              "marginBottom": 24,
             }
           }
         >
-          Title
+          <Text
+            accessibilityRole="header"
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 21,
+                "lineHeight": 33.6,
+              }
+            }
+          >
+            Title
+          </Text>
+        </View>
+        <Text
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
+          }
+        >
+          Children...
         </Text>
+        <View
+          marginTop={12}
+          style={
+            {
+              "marginTop": 12,
+            }
+          }
+        />
       </View>
-      <Text
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          }
-        }
-      >
-        Children...
-      </Text>
-      <View
-        marginTop={12}
-        style={
-          {
-            "marginTop": 12,
-          }
-        }
-      />
-    </View>
+    </RCTScrollView>
     <View
       style={
         {
-          "flexBasis": "auto",
           "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "maxWidth": 400,
           "paddingHorizontal": 24,
           "width": "100%",
