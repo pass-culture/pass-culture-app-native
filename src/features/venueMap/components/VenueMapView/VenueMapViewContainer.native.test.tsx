@@ -131,10 +131,7 @@ describe('VenueMapViewContainer', () => {
   beforeEach(() => {
     initStore()
     mockUseVenueOffers()
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     Object.assign(constants.MARKER_LABEL_VISIBILITY_LIMIT, {
       zoom: 1,
       altitude: Infinity,
@@ -160,10 +157,7 @@ describe('VenueMapViewContainer', () => {
   })
 
   it('should render map with active filters', async () => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     await renderVenueMapViewContainer()
     const mapView = await screen.findByTestId('venue-map-view')
 
@@ -282,7 +276,6 @@ describe('VenueMapViewContainer', () => {
   it('should navigate to Venue page when bottom sheet is open and fling gesture detected if venue is permanent', async () => {
     setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE,
-      RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     ])
     mockUseVenueOffers(true)
@@ -305,7 +298,6 @@ describe('VenueMapViewContainer', () => {
   it('should trigger ConsultVenue log when bottom sheet is open and fling gesture detected if venue is permanent', async () => {
     setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE,
-      RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     ])
     mockUseVenueOffers(true)
@@ -331,7 +323,6 @@ describe('VenueMapViewContainer', () => {
   it('should not navigate to Venue page when bottom sheet is open and fling gesture detected if venue is not permanent', async () => {
     setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE,
-      RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     ])
     mockUseVenueOffers(true)
@@ -353,10 +344,7 @@ describe('VenueMapViewContainer', () => {
 
   it('should deactivate navigation to Venue page when bottom sheet is open, pressing venue button and venue is not permanent', async () => {
     mockUseVenueOffers(true)
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
 
     await renderVenueMapViewContainer()
 
@@ -373,10 +361,7 @@ describe('VenueMapViewContainer', () => {
 
   it('should activate navigation to Venue page when bottom sheet is open, pressing venue button and venue is permanent', async () => {
     mockUseVenueOffers(true)
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
 
     await renderVenueMapViewContainer()
 
@@ -406,10 +391,7 @@ describe('VenueMapViewContainer', () => {
   })
 
   it('should display venue label', async () => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     await renderVenueMapViewContainer()
 
     await screen.findByTestId('venue-map-view')
@@ -418,10 +400,7 @@ describe('VenueMapViewContainer', () => {
   })
 
   it('should not display venue label when zoom is too low', async () => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     Object.assign(constants.MARKER_LABEL_VISIBILITY_LIMIT, {
       zoom: 16,
       altitude: 1000,
@@ -435,10 +414,7 @@ describe('VenueMapViewContainer', () => {
   })
 
   it('should show venues matching selected category', async () => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     await renderVenueMapViewContainer()
 
     await waitFor(() =>
