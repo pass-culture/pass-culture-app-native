@@ -135,7 +135,7 @@
     "intl": "^1.2.5",
     "jwt-decode": "^3.1.2",
     "libphonenumber-js": "^1.12.6",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "lottie-react-native": "^7.3.2",
     "patch-package": "^8.0.0",
     "react": "19.1.0",
