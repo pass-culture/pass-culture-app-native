@@ -288,7 +288,7 @@
     "eslint-plugin-typescript-sort-keys": "^2.3.0",
     "eslint-plugin-unused-imports": "^3.0.0",
     "firebase-admin": "^13.4.0",
-    "firebase-tools": "^14.7.0",
+    "firebase-tools": "^14.27.0",
     "geckodriver": "^3.2.0",
     "hot-updater": "^0.20.11",
     "husky": "^9.1.7",
