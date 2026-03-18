@@ -341,6 +341,7 @@
     "tar-fs": "3.1.1",
     "basic-ftp": "5.2.0",
     "path-to-regexp": "8.0.0",
+    "simple-git": "3.32.3",
     "react-native-maps@1.24.2": "patch:react-native-maps@npm%3A1.24.2#./.yarn/patches/react-native-maps-npm-1.24.2-83a01f59cc.patch"
   },
   "exports": {
