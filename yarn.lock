@@ -11419,7 +11419,7 @@ __metadata:
     reset-css: ^5.0.2
     resize-observer-polyfill: ^1.5.1
     search-insights: ^2.13.0
-    storybook: ^9.1.17
+    storybook: ^9.1.19
     styled-components: ^6.1.19
     supercluster: ^8.0.1
     timezone-mock: ^1.2.1
@@ -25449,9 +25449,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"storybook@npm:^9.1.17":
-  version: 9.1.17
-  resolution: "storybook@npm:9.1.17"
+"storybook@npm:^9.1.19":
+  version: 9.1.20
+  resolution: "storybook@npm:9.1.20"
   dependencies:
     "@storybook/global": ^5.0.0
     "@testing-library/jest-dom": ^6.6.3
@@ -25472,7 +25472,7 @@ __metadata:
       optional: true
   bin:
     storybook: ./bin/index.cjs
-  checksum: 7e8bf80ac103148cdb9a8bd2b65ea155a7d1e26a9ae46a83b69e0d090847bb220509a6da2db52a7a35599f5153f23bb74bf20b167284a44526384d001641d051
+  checksum: a6e6d5353ab6eff6e5c1051254d7767e3b84e4934930455968350981c404c48992753c3fcababb6639a25d4add9e1851305b2c7f149c89c47782fe1a0de9804f
   languageName: node
   linkType: hard
 
