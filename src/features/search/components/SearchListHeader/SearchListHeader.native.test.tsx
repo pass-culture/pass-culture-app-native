@@ -486,4 +486,33 @@ describe('<SearchListHeader />', () => {
       expect(await screen.findByTestId('grid-list-menu')).toBeOnTheScreen()
     })
   })
+
+  describe('AI fake door banner', () => {
+    it('should display it when enableAIFakeDoor FF activated', () => {
+      render(
+        <SearchListHeader
+          nbHits={10}
+          userData={[]}
+          venuesUserData={[]}
+          venues={mockedAlgoliaVenuesItems}
+          enableAIFakeDoor
+        />
+      )
+
+      expect(screen.getByText('Utilise notre IA pass Culture')).toBeOnTheScreen()
+    })
+
+    it('should not display it when enableAIFakeDoor FF deactivated', () => {
+      render(
+        <SearchListHeader
+          nbHits={10}
+          userData={[]}
+          venuesUserData={[]}
+          venues={mockedAlgoliaVenuesItems}
+        />
+      )
+
+      expect(screen.queryByText('Utilise notre IA pass Culture')).not.toBeOnTheScreen()
+    })
+  })
 })

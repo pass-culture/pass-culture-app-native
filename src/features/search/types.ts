@@ -112,6 +112,7 @@ export interface SearchListProps {
     itemType: 'offer' | 'venue' | 'artist' | 'unknown',
     playlistIndex?: number
   ) => void
+  enableAIFakeDoor?: boolean
 }
 
 export type CreateHistoryItem = {
