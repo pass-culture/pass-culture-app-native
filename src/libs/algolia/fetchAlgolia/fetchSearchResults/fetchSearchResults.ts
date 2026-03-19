@@ -69,6 +69,7 @@ export const fetchSearchResults = async ({
     /* Is needed to get a queryID, in order to send analytics events
      https://www.algolia.com/doc/api-reference/api-parameters/clickAnalytics/ */
     clickAnalytics: true,
+    analytics: true,
   }
 
   const queries = [
@@ -101,6 +102,7 @@ export const fetchSearchResults = async ({
         parameters.venue
       ),
       clickAnalytics: true,
+      analytics: true,
     },
     // Offers without duplication limit
     {
