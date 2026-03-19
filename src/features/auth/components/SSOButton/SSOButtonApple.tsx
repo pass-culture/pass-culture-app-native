@@ -22,7 +22,7 @@ export const SSOButtonApple: FC<Props> = ({ type }) => {
       // TODO(PC-39896): implement Apple SSO sign-in handler
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       onPress={() => {}}
-      variant="secondary"
+      variant="primary"
       fullWidth
       color="neutral"
     />
