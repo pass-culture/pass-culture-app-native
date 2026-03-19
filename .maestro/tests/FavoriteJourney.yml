@@ -12,7 +12,7 @@ onFlowStart:
       env:
         id_provider: 'UBBLE'
         step: 'BENEFICIARY'
-        age: '18'
+        age: 18
 ---
 - runFlow: subFolder/commons/LaunchAppWithAllPermissions.yml
 - runFlow: subFolder/commons/StopApp.yml
