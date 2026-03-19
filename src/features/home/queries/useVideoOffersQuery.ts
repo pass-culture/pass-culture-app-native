@@ -30,9 +30,8 @@ export const useVideoOffersQuery = (
   const transformHits = useTransformOfferHits()
 
   const adaptedPlaylistParameters = offersModuleParameters
-    .map(adaptPlaylistParameters)
+    .map((offerModuleParameter) => adaptPlaylistParameters(offerModuleParameter))
     .filter(isSearchQueryParameters)
-
   const { data, refetch } = useQuery({
     queryKey: [QueryKeys.VIDEO_OFFER, id],
     queryFn: async () => {

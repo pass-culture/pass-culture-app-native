@@ -30,7 +30,7 @@ export const useGetOffersDataQuery = (modules: OffersModule[]) => {
 
   const offersParameters = modules.map((module) => {
     const adaptedPlaylistParameters = module.offersModuleParameters
-      .map(adaptPlaylistParameters)
+      .map((offerModuleParameter) => adaptPlaylistParameters(offerModuleParameter))
       .filter(isPlaylistOffersParameters)
     offersModuleIds.push(module.id)
     return {
