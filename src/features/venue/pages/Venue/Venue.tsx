@@ -43,7 +43,6 @@ import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -146,7 +145,8 @@ export const Venue: FunctionComponent = () => {
   const enableVenueCalendar = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VENUE_CALENDAR)
   const shouldDisplayVenueCalendar = enableVenueCalendar && venueOffers?.hits.length === 1
   const enableAccesLibre = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE)
-  const segment = useABSegment(['A', 'B'])
+  // To facilitate QA for the moment segment hardcoded (after => useABSegment(['A', 'B']))
+  const segment = 'A'
 
   const headlineOfferData = offerToHeadlineOfferData({
     offer: venueOffers?.headlineOffer,
