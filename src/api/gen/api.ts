@@ -5281,6 +5281,11 @@ export interface VenueResponse {
    * @type {string | null}
    * @memberof VenueResponse
    */
+  volunteeringUrl?: string | null
+  /**
+   * @type {string | null}
+   * @memberof VenueResponse
+   */
   withdrawalDetails?: string | null
 }
 /**
