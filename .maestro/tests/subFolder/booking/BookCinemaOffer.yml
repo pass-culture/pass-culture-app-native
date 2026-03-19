@@ -2,6 +2,10 @@ appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
 - runFlow: ../../subFolder/cloud/commands/SetEverywhere.yml
+- swipe:
+    from:
+      text: 'Les artistes'
+    direction: UP
 - extractTextWithAI:
     query: "Le titre exacte d'une des offres Cinéma visible dans les résultats de recherche"
     outputVariable: 'offerResult'
