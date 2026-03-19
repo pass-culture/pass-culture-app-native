@@ -6,5 +6,5 @@ export function getHighlightedQuery(query: string, partToHighlight: string): str
 
   const regex = new RegExp(escapedPartToHighlight, 'gi')
 
-  return query.replace(regex, '<mark>$&</mark>')
+  return query.replaceAll(regex, '<mark>$&</mark>')
 }
