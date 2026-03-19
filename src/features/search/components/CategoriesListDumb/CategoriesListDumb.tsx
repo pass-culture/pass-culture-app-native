@@ -18,6 +18,7 @@ type Props = {
   showVenueMapLocationModal: () => void
   venueMapLocationModalVisible: boolean
   hideVenueMapLocationModal: () => void
+  onPressAIFakeDoorBanner: () => void
   enableAIFakeDoor?: boolean
   children?: never
 }
@@ -37,6 +38,7 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
   venueMapLocationModalVisible,
   hideVenueMapLocationModal,
   enableAIFakeDoor,
+  onPressAIFakeDoorBanner,
 }) => {
   const { designSystem } = useTheme()
 
@@ -49,7 +51,7 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
     <StyledScrollView showsHorizontalScrollIndicator={false} testID="categoriesButtons">
       {enableAIFakeDoor ? (
         <BannerContainer>
-          <AIFakeDoorBanner />
+          <AIFakeDoorBanner onPress={onPressAIFakeDoorBanner} />
         </BannerContainer>
       ) : null}
       {isMapWithoutPositionAndNotLocated || shouldDisplayVenueMap ? (

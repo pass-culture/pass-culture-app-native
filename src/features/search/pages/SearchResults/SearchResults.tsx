@@ -6,6 +6,7 @@ import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchResultsContent } from 'features/search/components/SearchResultsContent/SearchResultsContent'
@@ -22,8 +23,10 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
+import { AIFakeDoorModal } from 'shared/AIFakeDoorModal/AIFakeDoorModal'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { Form } from 'ui/components/Form'
+import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
 
 const searchInputID = uuidv4()
@@ -39,6 +42,9 @@ export const SearchResults = () => {
   const { isFocusOnSuggestions, searchState, dispatch } = useSearch()
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
+  const { userLocation } = useLocation()
+  const { user } = useAuthContext()
+  const { visible, showModal, hideModal } = useModal(false)
 
   const setQueryHistoryMemoized = useCallback(
     (query: string) => setQueryHistory(query),
@@ -165,10 +171,19 @@ export const SearchResults = () => {
               offerVenues={offerVenues}
               onViewableItemsChanged={handleViewableItemsChanged}
               enableAIFakeDoor={enableAIFakeDoor}
+              onPressAIFakeDoorBanner={showModal}
             />
           )}
         </InstantSearch>
       </Form.Flex>
+      {enableAIFakeDoor ? (
+        <AIFakeDoorModal
+          close={hideModal}
+          visible={visible}
+          userLocation={userLocation}
+          userCity={user?.city}
+        />
+      ) : null}
     </Page>
   )
 }

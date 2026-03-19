@@ -43,6 +43,7 @@ interface SearchListHeaderProps extends ScrollViewProps {
     playlistIndex?: number
   ) => void
   enableAIFakeDoor?: boolean
+  onPressAIFakeDoorBanner: () => void
 }
 
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
@@ -54,6 +55,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   shouldDisplayGridList,
   onViewableVenuePlaylistItemsChanged,
   enableAIFakeDoor,
+  onPressAIFakeDoorBanner,
 }) => {
   const { geolocPosition, showGeolocPermissionModal, selectedLocationMode } = useLocation()
   const { disabilities } = useAccessibilityFiltersContext()
@@ -120,7 +122,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     <View testID="searchListHeader">
       {enableAIFakeDoor ? (
         <AIFakeDoorBannerContainer>
-          <AIFakeDoorBanner />
+          <AIFakeDoorBanner onPress={onPressAIFakeDoorBanner} />
         </AIFakeDoorBannerContainer>
       ) : null}
       {shouldDisplayGeolocationBanner ? (

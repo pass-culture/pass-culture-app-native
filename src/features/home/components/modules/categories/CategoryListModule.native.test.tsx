@@ -96,22 +96,45 @@ describe('CategoryListModule', () => {
     expect(screen.queryByText('Ce week-end')).not.toBeOnTheScreen()
   })
 
-  it('should display AI fake door when enableAIFakeDoor FF activated', () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR])
-    render(
-      <CategoryListModule
-        id="123"
-        title="module"
-        categoryBlockList={categoryBlockList}
-        index={1}
-        homeEntryId="homeEntryId"
-      />
-    )
+  describe('When enableAIFakeDoor FF activated', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR])
+    })
 
-    expect(screen.getByText('Besoin d’inspiration ?')).toBeOnTheScreen()
+    it('should display AI fake door banner', () => {
+      render(
+        <CategoryListModule
+          id="123"
+          title="module"
+          categoryBlockList={categoryBlockList}
+          index={1}
+          homeEntryId="homeEntryId"
+        />
+      )
+
+      expect(screen.getByText('Besoin d’inspiration ?')).toBeOnTheScreen()
+    })
+
+    it('should open AI fake door modal when pressing banner', async () => {
+      render(
+        <CategoryListModule
+          id="123"
+          title="module"
+          categoryBlockList={categoryBlockList}
+          index={1}
+          homeEntryId="homeEntryId"
+        />
+      )
+
+      await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
+
+      expect(
+        await screen.findByText('Encore un peu de patience...', { hidden: true })
+      ).toBeOnTheScreen()
+    })
   })
 
-  it('should not display AI fake door when enableAIFakeDoor FF deactivated', () => {
+  it('should not display AI fake door banner when enableAIFakeDoor FF deactivated', () => {
     setFeatureFlags([])
     render(
       <CategoryListModule

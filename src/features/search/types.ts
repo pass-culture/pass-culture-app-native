@@ -95,6 +95,7 @@ export interface SearchListProps {
   isFetchingNextPage: boolean
   onEndReached: () => void
   userData: SearchResponse<Offer[]>['userData']
+  onPressAIFakeDoorBanner: () => void
   onScroll?: () => void
   onPress?: () => void
   artistSection?: ReactNode

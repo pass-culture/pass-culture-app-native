@@ -8,10 +8,11 @@ import { LocationMode } from 'libs/location/types'
 import { useModal } from 'ui/components/modals/useModal'
 
 type Props = {
+  onPressAIFakeDoorBanner: () => void
   enableAIFakeDoor?: boolean
 }
 
-export const CategoriesList: FC<Props> = ({ enableAIFakeDoor }) => {
+export const CategoriesList: FC<Props> = ({ enableAIFakeDoor, onPressAIFakeDoorBanner }) => {
   const isWeb = Platform.OS === 'web'
 
   const sortedCategories = useSortedSearchCategories()
@@ -35,6 +36,7 @@ export const CategoriesList: FC<Props> = ({ enableAIFakeDoor }) => {
       venueMapLocationModalVisible={venueMapLocationModalVisible}
       hideVenueMapLocationModal={hideVenueMapLocationModal}
       enableAIFakeDoor={enableAIFakeDoor}
+      onPressAIFakeDoorBanner={onPressAIFakeDoorBanner}
     />
   )
 }

@@ -460,4 +460,15 @@ describe('<SearchLanding />', () => {
       expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
     })
   })
+
+  it('should open AI fake door modal when pressing banner and enableAIFakeDoor FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR])
+    render(reactQueryProviderHOC(<SearchLanding />))
+
+    await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
+
+    expect(
+      await screen.findByText('Encore un peu de patience...', { hidden: true })
+    ).toBeOnTheScreen()
+  })
 })

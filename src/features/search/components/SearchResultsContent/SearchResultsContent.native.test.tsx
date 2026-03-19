@@ -198,6 +198,7 @@ const DEFAULT_SEARCH_RESULT_CONTENT_PROPS = {
     })) as AlgoliaVenue[],
   },
   nbHits: mockedAlgoliaResponse.hits.length,
+  onPressAIFakeDoorBanner: jest.fn(),
 } satisfies SearchResultsContentProps
 
 const renderSearchResultContent = (
