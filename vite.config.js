@@ -3,6 +3,8 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
 import { whiteListEnv } from './whiteListEnv'
 import { execSync } from 'child_process'
+import fs from 'fs'
+import path from 'path'
 import { analyzer } from 'vite-bundle-analyzer'
 
 // Avoid tsc errors, will be corrected after upgrading typescript to 5.6
@@ -62,6 +64,28 @@ export default ({ mode }) => {
       __DEV__: env.NODE_ENV !== 'production',
     },
     plugins: [
+      {
+        name: 'serve-well-known',
+        configureServer(server) {
+          server.middlewares.use((req, res, next) => {
+            const pathname = req.url?.split('?')[0]
+            if (pathname?.startsWith('/.well-known/')) {
+              const filePath = path.resolve(process.cwd(), 'public', pathname.slice(1))
+              console.log(`[serve-well-known] Serving: ${pathname} -> ${filePath}`)
+              if (fs.existsSync(filePath)) {
+                const content = fs.readFileSync(filePath, 'utf-8')
+                res.setHeader('Content-Type', 'application/json; charset=utf-8')
+                res.setHeader('Content-Length', Buffer.byteLength(content))
+                res.statusCode = 200
+                res.end(content)
+                return
+              }
+              console.warn(`[serve-well-known] File not found: ${filePath}`)
+            }
+            next()
+          })
+        },
+      },
       react(),
       env.ANALYZE_BUNDLE ? analyzer() : null,
       {
@@ -139,7 +163,7 @@ export default ({ mode }) => {
         },
       ],
     },
-    server: { ...proxyConfig, open: true },
+    server: { ...proxyConfig, open: true, allowedHosts: ['9872-2a01-cb04-14d-e900-4882-ef5d-3344-9874.ngrok-free.app'] },
     preview: proxyConfig,
     optimizeDeps: {
       include: ['react-native', 'react-native-web'],

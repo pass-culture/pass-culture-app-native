@@ -19,6 +19,7 @@ export const env: Environment = {
   ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH: 'algoliaVenuesIndexPlaylistSearch',
   ANDROID_APP_ID: 'app.android',
   API_BASE_URL: 'https://localhost',
+  APPLE_SERVICE_ID: 'apple_service_id',
   APPLE_STORE_URL: 'https://apps.apple.com/fr/app/pass-culture/id1557887412',
   BOOKING_FEEDBACK_LINK: 'https://passculture.qualtrics.com/jfe/form/SV_dcmKZrtRwVABcA6',
   BOOKING_LIMIT_EXCEEDED_URL: 'https://aide.passculture.app/hc/fr/articles/4411991975825',

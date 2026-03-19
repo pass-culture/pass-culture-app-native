@@ -11316,6 +11316,7 @@ __metadata:
     prettier: ^3.5.3
     react: 19.1.0
     react-app-polyfill: ^2.0.0
+    react-apple-signin-auth: ^1.1.2
     react-device-detect: ^2.2.3
     react-dom: 19.1.0
     react-error-boundary: ^3.1.0
@@ -23183,6 +23184,16 @@ __metadata:
     regenerator-runtime: ^0.13.7
     whatwg-fetch: ^3.4.1
   checksum: 99e52a6b2229c7ca730cfd44ac95640f955be71d144225bd6c24fa47922a742658a371d0a2f0876d732533f1055b7cd7e9d534c89c29f8ca889ecd1b8d15f065
+  languageName: node
+  linkType: hard
+
+"react-apple-signin-auth@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "react-apple-signin-auth@npm:1.1.2"
+  peerDependencies:
+    react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
+  checksum: 7b9dd612b531191777badd1fbb1169c71fbcbcc0772385ad863c9d124df9c535677cb8bdde8f17d28704e232553b7d41f8ee50613ca3483a92f4de12d8618962
   languageName: node
   linkType: hard
 
