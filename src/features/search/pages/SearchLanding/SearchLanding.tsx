@@ -74,6 +74,8 @@ export const SearchLanding = () => {
               removeFromHistory={removeFromHistory}
               filteredHistory={filteredHistory}
               shouldNavigateToSearchResults
+              enableAIFakeDoor={enableAIFakeDoor}
+              onPressAIButton={showModal}
             />
           ) : (
             <CategoriesButtonsContainer>
