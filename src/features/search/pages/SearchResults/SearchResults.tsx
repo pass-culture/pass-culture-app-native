@@ -156,6 +156,8 @@ export const SearchResults = () => {
               addToHistory={addToHistory}
               removeFromHistory={removeFromHistory}
               filteredHistory={filteredHistory}
+              enableAIFakeDoor={enableAIFakeDoor}
+              onPressAIButton={showModal}
             />
           ) : (
             <SearchResultsContent

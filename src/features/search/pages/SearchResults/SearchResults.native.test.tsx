@@ -471,6 +471,28 @@ describe('<SearchResults/>', () => {
         })
       })
     })
+
+    describe('When enableAIFakeDoor FF is activated', () => {
+      beforeEach(() => {
+        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR])
+      })
+
+      it('should display AI fake door button', async () => {
+        render(reactQueryProviderHOC(<SearchResults />))
+
+        expect(
+          await screen.findByLabelText('Accéder au questionnaire sur l’IA pass Culture')
+        ).toBeOnTheScreen()
+      })
+
+      it('should open AI fake door modal when pressing AI button', async () => {
+        render(reactQueryProviderHOC(<SearchResults />))
+
+        await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
+
+        expect(await screen.findByText('Encore un peu de patience...')).toBeOnTheScreen()
+      })
+    })
   })
 
   describe('When offline', () => {
@@ -517,8 +539,6 @@ describe('<SearchResults/>', () => {
 
     await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
 
-    expect(
-      await screen.findByText('Encore un peu de patience...', { hidden: true })
-    ).toBeOnTheScreen()
+    expect(await screen.findByText('Encore un peu de patience...')).toBeOnTheScreen()
   })
 })
