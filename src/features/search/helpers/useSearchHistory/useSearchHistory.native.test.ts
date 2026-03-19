@@ -153,6 +153,7 @@ describe('useSearchHistory', () => {
           extra: {
             category: 'LIVRES',
             nativeCategory: undefined,
+            originalError: 'Erreur',
             query: 'one piece',
           },
         }

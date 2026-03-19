@@ -37,6 +37,10 @@ export function useSearchHistory() {
 
       return historyLessThan30Days
     } catch (error) {
+      eventMonitoring.captureException('Impossible de récupérer l’historique de recherche', {
+        level: LogTypeEnum.INFO,
+        extra: { error },
+      })
       return []
     }
   }, [setHistoryItems])
@@ -61,6 +65,12 @@ export function useSearchHistory() {
         await internalRemoveFromHistory(item)
       } catch (error) {
         showErrorSnackBar('Impossible de supprimer l’entrée de l’historique')
+        eventMonitoring.captureException('Search entry removal failed', {
+          level: LogTypeEnum.INFO,
+          extra: {
+            originalError: error instanceof Error ? error.message : String(error),
+          },
+        })
       }
     },
     [internalRemoveFromHistory]
@@ -111,6 +121,7 @@ export function useSearchHistory() {
               query: item.query,
               nativeCategory: item.nativeCategory,
               category: item.category,
+              originalError: error instanceof Error ? error.message : String(error),
             },
           })
       }
