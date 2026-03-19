@@ -129,6 +129,14 @@ export const SearchResults = () => {
     }
   }
 
+  const handleAIFakeDoorPress = (from: 'search' | 'searchAutoComplete') => {
+    void analytics.logHasClickedFakeDoorCTA({
+      from,
+      searchId: searchState.searchId ?? searchIdGenerated,
+    })
+    showModal()
+  }
+
   const searchResultHits = isArtistInSearchActive ? hits : { ...hits, artists: [] }
 
   if (!netInfo.isConnected) {
@@ -160,7 +168,7 @@ export const SearchResults = () => {
               removeFromHistory={removeFromHistory}
               filteredHistory={filteredHistory}
               enableAIFakeDoor={enableAIFakeDoor}
-              onPressAIButton={showModal}
+              onPressAIButton={() => handleAIFakeDoorPress('searchAutoComplete')}
             />
           ) : (
             <SearchResultsContent
@@ -175,7 +183,7 @@ export const SearchResults = () => {
               offerVenues={offerVenues}
               onViewableItemsChanged={handleViewableItemsChanged}
               enableAIFakeDoor={enableAIFakeDoor}
-              onPressAIFakeDoorBanner={showModal}
+              onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('search')}
             />
           )}
         </InstantSearch>

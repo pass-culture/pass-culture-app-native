@@ -11,6 +11,7 @@ import { SearchSuggestions } from 'features/search/components/SearchSuggestions/
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -44,6 +45,11 @@ export const SearchLanding = () => {
     [setQueryHistory]
   )
 
+  const handleAIFakeDoorPress = (from: 'searchLanding' | 'searchAutoComplete') => {
+    void analytics.logHasClickedFakeDoorCTA({ from })
+    showModal()
+  }
+
   if (!netInfo.isConnected) {
     return <OfflinePage />
   }
@@ -75,13 +81,13 @@ export const SearchLanding = () => {
               filteredHistory={filteredHistory}
               shouldNavigateToSearchResults
               enableAIFakeDoor={enableAIFakeDoor}
-              onPressAIButton={showModal}
+              onPressAIButton={() => handleAIFakeDoorPress('searchAutoComplete')}
             />
           ) : (
             <CategoriesButtonsContainer>
               <CategoriesList
                 enableAIFakeDoor={enableAIFakeDoor}
-                onPressAIFakeDoorBanner={showModal}
+                onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('searchLanding')}
               />
             </CategoriesButtonsContainer>
           )}

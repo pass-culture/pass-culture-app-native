@@ -59,11 +59,16 @@ export const CategoryListModule = ({
     })
   }, [id, homeEntryId, index])
 
+  const onPressAIFakeDoorBanner = () => {
+    void analytics.logHasClickedFakeDoorCTA({ from: 'home', homeEntryId })
+    showModal()
+  }
+
   return (
     <React.Fragment>
       {enableAIFakeDoor ? (
         <BannerContainer>
-          <AIFakeDoorBanner onPress={showModal} />
+          <AIFakeDoorBanner onPress={onPressAIFakeDoorBanner} />
         </BannerContainer>
       ) : null}
       <Container>

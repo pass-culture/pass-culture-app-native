@@ -470,6 +470,16 @@ describe('<SearchLanding />', () => {
 
         expect(await screen.findByText('Encore un peu de patience...')).toBeOnTheScreen()
       })
+
+      it('should trigger hasClickedFakeDoorCTA log when pressing AI button', async () => {
+        render(reactQueryProviderHOC(<SearchLanding />))
+
+        await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
+
+        expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenCalledWith({
+          from: 'searchAutoComplete',
+        })
+      })
     })
   })
 
@@ -483,12 +493,27 @@ describe('<SearchLanding />', () => {
     })
   })
 
-  it('should open AI fake door modal when pressing banner and enableAIFakeDoor FF activated', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR])
-    render(reactQueryProviderHOC(<SearchLanding />))
+  describe('When enableAIFakeDoor FF activated', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR])
+    })
 
-    await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
+    it('should open AI fake door modal when pressing banner', async () => {
+      render(reactQueryProviderHOC(<SearchLanding />))
 
-    expect(await screen.findByText('Encore un peu de patience...')).toBeOnTheScreen()
+      await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
+
+      expect(await screen.findByText('Encore un peu de patience...')).toBeOnTheScreen()
+    })
+
+    it('should trigger hasClickedFakeDoorCTA log when pressing AI fake door banner', async () => {
+      render(reactQueryProviderHOC(<SearchLanding />))
+
+      await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
+
+      expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenCalledWith({
+        from: 'searchLanding',
+      })
+    })
   })
 })
