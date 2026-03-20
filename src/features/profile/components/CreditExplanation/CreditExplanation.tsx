@@ -64,9 +64,9 @@ export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpi
 }
 
 const GreySeparator = styled(Separator.Horizontal).attrs(({ theme }) => ({
-  // TODO(PC-36408): theme.designSystem.separator.default or subtle not visible in light mode because the parent background is grey
-  color: theme.designSystem.color.border.default,
+  color: theme.designSystem.separator.color.default,
 }))``
+
 const SeparatorContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
   marginBottom: theme.designSystem.size.spacing.m,
