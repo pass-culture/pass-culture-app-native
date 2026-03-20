@@ -139,7 +139,6 @@ const BookingDetailsContainer = ({
     mapping[booking.stock?.offer?.subcategoryId]?.isEvent
   )
 
-  // FIXME(PC-36440): To remove when no need for Old/new container
   return (properties.isPhysical || properties.isEvent || properties.isDigital) && user ? (
     <BookingDetailsContent
       user={user}
@@ -148,6 +147,7 @@ const BookingDetailsContainer = ({
       mapping={mapping}
     />
   ) : (
+    // TODO(PC-36442): remove when new booking details page is available for all bookings
     <BookingDetailsContainerOld bookingId={bookingId} />
   )
 }
