@@ -1,0 +1,4 @@
+appId: ${MAESTRO_APP_ID}
+---
+- tapOn: 'Catégorie Livres'
+- tapOn: 'Romans & littérature'
