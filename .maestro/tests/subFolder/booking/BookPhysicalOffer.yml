@@ -13,10 +13,11 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-      - extractTextWithAI:
-          query: "Le titre exacte d'une des offres Livre visible dans les résultats de recherche"
-          outputVariable: 'offerResult'
-      - tapOn: .*${offerResult}.*
+    - scroll
+    - extractTextWithAI:
+        query: "Le titre exacte d'une des offres Livre visible dans les résultats de recherche"
+        outputVariable: 'offerResult'
+    - tapOn: .*${offerResult}.*
 
 - waitForAnimationToEnd
 

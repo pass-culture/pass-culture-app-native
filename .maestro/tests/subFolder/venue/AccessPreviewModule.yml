@@ -1,5 +1,6 @@
 appId: ${MAESTRO_APP_ID}
 ---
+- scroll
 - extractTextWithAI:
     query: "Le titre exacte d'une des offres Livre visible dans les résultats de recherche"
     outputVariable: 'offerResult'
