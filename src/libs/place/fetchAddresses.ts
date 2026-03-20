@@ -1,3 +1,5 @@
+import { LogTypeEnum } from 'libs/monitoring/errors'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { buildPlaceUrl, BuildSearchAddressProps } from 'libs/place/buildUrl'
 import { Collection } from 'libs/place/types'
 
@@ -17,7 +19,11 @@ export const fetchAddresses = async ({
     if (!response.ok) throw new Error('Failed to fetch addresses')
     const collection: Collection = await response.json()
     return buildSuggestedAddresses(collection)
-  } catch (_error) {
+  } catch (error) {
+    eventMonitoring.captureException('Failed to fetch addresses', {
+      level: LogTypeEnum.INFO,
+      extra: { error },
+    })
     return []
   }
 }
