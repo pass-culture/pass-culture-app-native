@@ -12,12 +12,9 @@ import { BookingWrapper } from 'features/bookOffer/context/BookingWrapper'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { shouldDisplayPricesStep } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
-import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
-import { Adjust } from 'libs/adjust/adjust'
-import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import { logOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
 import { algoliaAnalyticsSelectors } from 'libs/algolia/store/algoliaAnalyticsStore'
 import { analytics } from 'libs/analytics/provider'
@@ -57,7 +54,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const { step } = bookingState
   const { navigate } = useNavigation<UseNavigationType>()
   const route = useRoute<UseRouteType<'Offer'>>()
-  const selectedStock = useBookingStock()
   const isFromSearch = route.params?.from === 'searchresults'
   const fromOfferId = route.params?.fromOfferId
   const fromMultivenueOfferId = route.params?.fromMultivenueOfferId
@@ -87,9 +83,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
         void analytics.logHasBookedCineScreeningOffer({
           offerId,
         })
-      }
-      if (!!selectedStock && !!offer?.subcategoryId) {
-        Adjust.logEvent(AdjustEvents.BOOK_OFFER)
       }
       runAfterInteractionsMobile(() => {
         navigate('BookingConfirmation', { offerId, bookingId })

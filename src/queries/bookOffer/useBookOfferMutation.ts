@@ -3,6 +3,8 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { BookingsResponse, BookOfferRequest, BookOfferResponse } from 'api/gen'
+import { Adjust } from 'libs/adjust/adjust'
+import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import { QueryKeys } from 'libs/queryKeys'
 
 interface BookingMutationContext {
@@ -30,6 +32,7 @@ export const useBookOfferMutation = ({ onSuccess, onError }: BookOffer) => {
         queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGSV2] }),
         queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGSLIST] }),
       ])
+      Adjust.logEvent(AdjustEvents.BOOK_OFFER)
       onSuccess(data)
     },
     onError: (error: Error | ApiError, { stockId, quantity }, context?: BookingMutationContext) => {
