@@ -159,7 +159,7 @@ exports[`<DisableActivation/> should render correctly 1`] = `
               {
                 "alignItems": "center",
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0,
                 "flexShrink": 1,
                 "gap": 16,
                 "marginBottom": 24,
@@ -597,7 +597,7 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
               {
                 "alignItems": "center",
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0,
                 "flexShrink": 1,
                 "gap": 16,
                 "marginBottom": 24,

@@ -159,7 +159,7 @@ exports[`DeactivateProfileSuccess component should render delete profile success
               {
                 "alignItems": "center",
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0,
                 "flexShrink": 1,
                 "gap": 16,
                 "marginBottom": 24,

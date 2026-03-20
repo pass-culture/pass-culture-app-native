@@ -354,7 +354,7 @@ const IllustrationContainer = styled.View<{ animation: boolean }>(({ animation, 
 const TextContainer = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
   marginBottom: theme.designSystem.size.spacing.xl,
-  flex: 1,
+  flex: 0,
 }))
 
 const StyledTitle2 = styled(Typo.Title2)({
