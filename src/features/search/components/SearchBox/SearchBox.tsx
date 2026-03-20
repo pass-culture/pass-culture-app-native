@@ -210,7 +210,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
           CINEMA_KEYWORD_PATTERN.test(
             queryText
               .normalize('NFD')
-              .replace(/[\u0300-\u036f]/g, '')
+              .replaceAll(/[\u0300-\u036f]/g, '')
               .trim()
           )
         ) {

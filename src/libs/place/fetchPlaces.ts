@@ -11,7 +11,7 @@ const buildSuggestedPlaces = (collection: Collection): SuggestedPlace[] =>
   collection.features.map(({ geometry, properties }) => {
     const { city, context, name, type } = properties
     const detailedPlace = type === 'street' || type === 'housenumber' || type === 'locality'
-    const [, department] = context.replace(/\s+/g, '').split(',') // department number, department name, region
+    const [, department] = context.replaceAll(/\s+/g, '').split(',') // department number, department name, region
     const [longitude, latitude] = geometry.coordinates
 
     const shortName = detailedPlace ? name : city
