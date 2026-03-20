@@ -159,6 +159,7 @@ export function ChangePassword() {
 const Container = styled.View<{ paddingBottom: number }>(({ paddingBottom, theme }) => ({
   paddingBottom,
   marginBottom: theme.designSystem.size.spacing.xl,
+  flex: theme.isDesktopViewport ? undefined : 1,
 }))
 
 const OldPasswordContainer = styled.View(({ theme }) => ({
