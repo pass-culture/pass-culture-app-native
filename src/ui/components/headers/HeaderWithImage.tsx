@@ -37,7 +37,6 @@ export const HeaderWithImage: FunctionComponent<Props> = ({
             blurRadius={blurImageRadius}
             resizeMode="cover"
             url={imageUrl}
-            // @ts-ignore FIXME(PC-26465): remove when https://github.com/necolas/react-native-web/issues/2139 is fixed
             {...blurImageTransform}
           />
         ) : (
