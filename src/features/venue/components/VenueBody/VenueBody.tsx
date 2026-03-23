@@ -3,7 +3,7 @@ import { View, ViewToken } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
-import { ChronicleCardData } from 'features/chronicle/type'
+import { AdviceCardData } from 'features/advices/types'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { HeadlineOffer } from 'features/headlineOffer/components/HeadlineOffer/HeadlineOffer'
 import { HeadlineOfferData } from 'features/headlineOffer/type'
@@ -35,7 +35,7 @@ interface Props {
     playlistIndex?: number
   ) => void
   shouldDisplayVenueCalendar?: boolean
-  advicesCardData?: ChronicleCardData[]
+  advicesCardData?: AdviceCardData[]
   nbAdvices: number
   enableNewTagProAdvices?: boolean
   onShowWritersModal: () => void

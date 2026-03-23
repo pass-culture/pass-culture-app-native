@@ -3,9 +3,9 @@ import { StyleSheet, View } from 'react-native'
 import { styled, useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
-import { ChronicleCardList } from 'features/chronicle/components/ChronicleCardList/ChronicleCardList'
-import { CHRONICLE_CARD_WIDTH } from 'features/chronicle/constant'
-import { ChronicleCardData } from 'features/chronicle/type'
+import { AdviceCardList } from 'features/advices/components/AdviceCardList/AdviceCardList'
+import { ADVICE_CARD_WIDTH } from 'features/advices/constants'
+import { AdviceCardData } from 'features/advices/types'
 import { FeedBack } from 'features/reactions/components/FeedBack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -19,7 +19,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   venue: VenueResponse
-  advicesCardData: ChronicleCardData[]
+  advicesCardData: AdviceCardData[]
   nbAdvices: number
   onShowWritersModal: () => void
   onPressChronicleCardSeeMore?: () => void
@@ -58,7 +58,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
             as={Button}
             icon={Show}
             wording={`Lire les ${nbAdvices} avis`}
-            navigateTo={{ screen: 'Chronicles' }}
+            navigateTo={{ screen: 'ClubAdvices' }}
             variant="tertiary"
             color="neutral"
           />
@@ -71,7 +71,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
     <Container gap={4}>
       <Gutter>{TitleContent}</Gutter>
 
-      <StyledChronicleCardlist
+      <StyledAdviceCardlist
         data={advicesCardData}
         shouldTruncate
         onSeeMoreButtonPress={onPressChronicleCardSeeMore}
@@ -85,7 +85,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
               as={Button}
               wording={`Lire les ${nbAdvices} avis`}
               // TODO(PC-40227): add pro advices page
-              navigateTo={{ screen: 'Chronicles' }}
+              navigateTo={{ screen: 'ClubAdvices' }}
               variant="secondary"
               color="neutral"
               size="small"
@@ -151,14 +151,14 @@ const SeeAllAdvicesContainerDesktop = styled.View(({ theme }) => ({
   paddingLeft: theme.designSystem.size.spacing.s,
 }))
 
-const StyledChronicleCardlist = styled(ChronicleCardList).attrs<{
+const StyledAdviceCardlist = styled(AdviceCardList).attrs<{
   shouldDisplayAllAdvicesButton: boolean
 }>(({ theme }) => ({
   contentContainerStyle: {
     paddingHorizontal: theme.contentPage.marginHorizontal,
   },
-  cardWidth: CHRONICLE_CARD_WIDTH,
-  snapToInterval: CHRONICLE_CARD_WIDTH,
+  cardWidth: ADVICE_CARD_WIDTH,
+  snapToInterval: ADVICE_CARD_WIDTH,
 }))``
 
 const TagContainer = styled.View<{ shouldDisplayAllAdvicesButton: boolean }>(

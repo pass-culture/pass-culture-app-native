@@ -1,7 +1,7 @@
 import type { ReadonlyDeep } from 'type-fest'
 
 import { VenueProAdvice, VenueProAdvices } from 'api/gen'
-import { ChronicleCardData } from 'features/chronicle/type'
+import { AdviceCardData } from 'features/advices/types'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 
 export const proAdvicesFixture = [
@@ -55,4 +55,4 @@ export const proAdvicesCardDataFixture = [
     headerNavigateTo: { screen: 'Offer', params: { id: 1 } },
     headerAccessibilityLabel: 'Voir l‘offre American dream',
   },
-] as const satisfies readonly ChronicleCardData[]
+] as const satisfies readonly AdviceCardData[]
