@@ -49,6 +49,4 @@ export type PreValidationSignupLastStepProps = {
 }
 
 // Frontend discriminator to distinguish Apple from Google (same API shape)
-export type AppleLoginRequest = AppleSigninRequest & { provider: 'apple' }
-
-export type LoginRequest = SigninRequest | GoogleSigninRequest | AppleLoginRequest
+export type LoginRequest = SigninRequest | GoogleSigninRequest | (AppleSigninRequest & { provider: 'apple' })

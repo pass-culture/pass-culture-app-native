@@ -3,8 +3,6 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
 import { whiteListEnv } from './whiteListEnv'
 import { execSync } from 'child_process'
-import fs from 'fs'
-import path from 'path'
 import { analyzer } from 'vite-bundle-analyzer'
 
 // Avoid tsc errors, will be corrected after upgrading typescript to 5.6
@@ -36,15 +34,6 @@ function getGitInfo(command) {
 
 const commitHash = getGitInfo('git rev-parse --short HEAD')
 
-function parseViteAllowedHosts(env) {
-  const raw = process.env.VITE_ALLOWED_HOSTS ?? env.VITE_ALLOWED_HOSTS ?? ''
-  const hosts = raw
-    .split(',')
-    .map((h) => h.trim())
-    .filter(Boolean)
-  return hosts.length > 0 ? { allowedHosts: hosts } : {}
-}
-
 export default ({ mode }) => {
   const isDevMode = mode === 'development'
   const isProdMode = mode === 'production'
@@ -73,38 +62,7 @@ export default ({ mode }) => {
       __DEV__: env.NODE_ENV !== 'production',
     },
     plugins: [
-      {
-        name: 'serve-well-known',
-        configureServer(server) {
-          const publicDir = path.resolve(process.cwd(), 'public')
-          const debugAppleSso = process.env.DEBUG_APPLE_SSO === 'true'
-          server.middlewares.use((req, res, next) => {
-            const pathname = req.url?.split('?')[0]
-            if (!pathname?.startsWith('/.well-known/')) {
-              return next()
-            }
-            const filePath = path.resolve(publicDir, pathname.slice(1))
-            const relativeToPublic = path.relative(publicDir, filePath)
-            if (relativeToPublic.startsWith('..') || path.isAbsolute(relativeToPublic)) {
-              return next()
-            }
-            if (debugAppleSso) {
-              console.log(`[serve-well-known] ${pathname}`)
-            }
-            if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
-              if (debugAppleSso) {
-                console.warn(`[serve-well-known] File not found: ${filePath}`)
-              }
-              return next()
-            }
-            const content = fs.readFileSync(filePath, 'utf-8')
-            res.setHeader('Content-Type', 'application/json; charset=utf-8')
-            res.setHeader('Content-Length', Buffer.byteLength(content))
-            res.statusCode = 200
-            res.end(content)
-          })
-        },
-      },
+      // Dev-only: handles Apple's form_post callback in local dev (in production, the backend handles this route)
       {
         name: 'apple-sso-callback',
         configureServer(server) {
@@ -211,7 +169,7 @@ export default ({ mode }) => {
         },
       ],
     },
-    server: { ...proxyConfig, open: true, ...parseViteAllowedHosts(env) },
+    server: { ...proxyConfig, open: true },
     preview: proxyConfig,
     optimizeDeps: {
       include: ['react-native', 'react-native-web'],

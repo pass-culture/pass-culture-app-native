@@ -4,7 +4,6 @@ import React from 'react'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { SignInResponseFailure } from 'features/auth/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 import { SSOButtonAppleBase } from './SSOButtonAppleBase'
 
@@ -18,13 +17,7 @@ export const SSOButtonApple = ({ type, onSignInFailure }: Props) => {
   const isSignupButton = type === 'signup'
   const { mutate: signIn } = useSignInMutation({
     params,
-    onFailure: (error) => {
-      if (onSignInFailure) {
-        onSignInFailure(error)
-      } else {
-        showErrorSnackBar('Une erreur est survenue, veuillez réessayer.')
-      }
-    },
+    onFailure: (error) => onSignInFailure?.(error),
     analyticsType: isSignupButton ? 'SSO_signup' : 'SSO_login',
     analyticsMethod: isSignupButton ? 'fromSignup' : 'fromLogin',
   })

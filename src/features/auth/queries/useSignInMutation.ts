@@ -41,6 +41,8 @@ export const useSignInMutation = ({
   return useMutation({
     mutationFn: async (body: LoginRequest) => {
       const requestBody = { ...body, deviceInfo }
+      // IMPORTANT: Apple check must come before Google — both have `authorizationCode`,
+      // so the `provider` discriminator is the only way to distinguish them.
       if ('provider' in requestBody && requestBody.provider === 'apple') {
         const { provider: _, ...appleBody } = requestBody
         return api.postNativeV1OauthAppleAuthorize(appleBody)
