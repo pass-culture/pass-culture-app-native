@@ -184,5 +184,6 @@ const StyledScrollView = styled.ScrollView(({ theme }) => ({
 
 const ButtonContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.l,
-  alignItems: theme.isDesktopViewport ? 'flex-start' : undefined,
+  marginLeft: theme.designSystem.size.spacing.xxxl,
+  alignItems: 'flex-start',
 }))
