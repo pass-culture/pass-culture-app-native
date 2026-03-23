@@ -13,12 +13,12 @@ import { useTimer } from 'libs/hooks/useTimer'
 import { LogTypeEnum } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { formatToHour } from 'libs/parsers/formatDates'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   email: string
@@ -100,31 +100,26 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
         {hasAttemptsLeft ? (
           <React.Fragment>
             <StyledBody>{resendAttemptText}</StyledBody>
-            <Spacer.Column numberOfSpaces={6} />
-            <EmailAttemptsLeft attemptsLeft={remainingResendsResponse?.remainingResends} />
-            <Spacer.Column numberOfSpaces={2} />
+            <EmailAttemptsLeftContainer>
+              <EmailAttemptsLeft attemptsLeft={remainingResendsResponse?.remainingResends} />
+            </EmailAttemptsLeftContainer>
           </React.Fragment>
         ) : (
-          <React.Fragment>
+          <Container>
             <Banner
               type={BannerType.ALERT}
               label={`Tu as dépassé le nombre de 3 demandes de lien autorisées.${retryMessage}`}
             />
-            <Spacer.Column numberOfSpaces={6} />
-          </React.Fragment>
+          </Container>
         )}
-        <ButtonPrimary
+        <Button
+          fullWidth
           accessibilityRole={AccessibilityRole.BUTTON}
           wording="Demander un nouveau lien"
           onPress={onResendPress}
           disabled={isPending || !hasAttemptsLeft || isResendCooldownActive}
         />
-        {errorMessage ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={2} />
-            <StyledCaption>{errorMessage}</StyledCaption>
-          </React.Fragment>
-        ) : null}
+        {errorMessage ? <StyledCaption>{errorMessage}</StyledCaption> : null}
       </ModalContent>
     </AppModal>
   )
@@ -142,4 +137,14 @@ const StyledBody = styled(Typo.Body)({
 const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.error,
   textAlign: 'center',
+  marginTop: theme.designSystem.size.spacing.s,
+}))
+
+const EmailAttemptsLeftContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.s,
+}))
+
+const Container = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))

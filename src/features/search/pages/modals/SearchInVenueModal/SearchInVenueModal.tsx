@@ -5,9 +5,9 @@ import { SearchFixedModalBottomContainer } from 'features/search/components/Sear
 import { useSearchInVenueModal } from 'features/search/pages/modals/SearchInVenueModal/useSearchInVenueModal'
 import { VenueModalHookProps } from 'features/search/pages/modals/VenueModal/type'
 import { Venue } from 'features/venue/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
+import { Button } from 'ui/designSystem/Button/Button'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { Close } from 'ui/svg/icons/Close'
 
@@ -55,7 +55,7 @@ export const SearchInVenueModal = ({
       fixedModalBottom={
         <SearchFixedModalBottomContainer>
           <Container>
-            <ButtonPrimary
+            <Button
               wording="Lancer la recherche"
               onPress={doApplySearch}
               disabled={isSearchButtonDisabled}

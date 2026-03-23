@@ -2,9 +2,13 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { buildZendeskUrlForFraud } from 'features/profile/helpers/buildZendeskUrl'
+import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { useSuspendForSuspiciousLoginMutation } from 'features/trustedDevice/queries/useSuspendForSuspiciousLoginMutation'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
@@ -13,9 +17,10 @@ import { eventMonitoring } from 'libs/monitoring/services'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { useVersion } from 'ui/hooks/useVersion'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { UserError } from 'ui/svg/UserError'
@@ -25,8 +30,10 @@ import { SPACE } from 'ui/theme/constants'
 export const SuspensionChoice = () => {
   const { params } = useRoute<UseRouteType<'SuspensionChoice'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { showErrorSnackBar } = useSnackBarContext()
   const { logType } = useLogTypeFromRemoteConfig()
+  const { user } = useAuthContext()
+  const deviceInfo = useDeviceInfo()
+  const version = useVersion()
 
   const { mutate: suspendAccountForSuspiciousLogin, isPending } =
     useSuspendForSuspiciousLoginMutation({
@@ -34,11 +41,9 @@ export const SuspensionChoice = () => {
         navigate('SuspiciousLoginSuspendedAccount')
       },
       onError: (error) => {
-        showErrorSnackBar({
-          message:
-            'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+        showErrorSnackBar(
+          'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.'
+        )
         if (logType === LogTypeEnum.INFO) {
           const errorMessage = getErrorMessage(error)
           eventMonitoring.captureException(
@@ -66,14 +71,17 @@ export const SuspensionChoice = () => {
       title="Souhaites-tu suspendre ton compte pass&nbsp;Culture&nbsp;?"
       buttonPrimary={{
         wording: 'Oui, suspendre mon compte',
-        onPress: onPressContinue,
+        onPress: () => {
+          Adjust.gdprForgetMe()
+          onPressContinue()
+        },
         isLoading: isPending,
       }}
       buttonTertiary={{
         icon: EmailFilled,
         wording: 'Contacter le service fraude',
         onBeforeNavigate: onPressContactFraudTeam,
-        externalNav: { url: `mailto:${env.FRAUD_EMAIL_ADDRESS}` },
+        externalNav: { url: buildZendeskUrlForFraud({ user, deviceInfo, version }) },
       }}>
       <Typo.BodyAccent>{groupLabel}&nbsp;:</Typo.BodyAccent>
       <VerticalUl>

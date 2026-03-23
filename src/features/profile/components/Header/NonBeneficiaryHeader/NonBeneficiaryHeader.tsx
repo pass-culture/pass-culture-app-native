@@ -11,6 +11,7 @@ import { IdentityCheckPendingBadge } from 'features/profile/components/Badges/Id
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
 import { EligibilityMessage } from 'features/profile/components/Header/NonBeneficiaryHeader/EligibilityMessage'
+import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
@@ -22,12 +23,11 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Unlock } from 'ui/svg/icons/Unlock'
 import { Typo } from 'ui/theme'
 
-interface NonBeneficiaryHeaderProps {
-  featureFlags: { disableActivation: boolean }
+type NonBeneficiaryHeaderProps = {
   eligibilityStartDatetime?: string
   eligibilityEndDatetime?: string
   eligibilityEndDateInSystemBanner?: boolean
-}
+} & ProfileFeatureFlagsProps
 
 function NonBeneficiaryHeaderComponent({
   featureFlags,
@@ -37,7 +37,7 @@ function NonBeneficiaryHeaderComponent({
 }: PropsWithChildren<NonBeneficiaryHeaderProps>) {
   return (
     <React.Fragment>
-      <PageHeader title="Mon profil" />
+      <PageHeader featureFlags={featureFlags} title="Mon profil" />
       <NonBeneficiaryBanner
         featureFlags={featureFlags}
         eligibilityEndDatetime={eligibilityEndDatetime}

@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { theme } from 'theme'
-import { getSpacing } from 'ui/theme'
 
 import { CategoriesListDumb } from './CategoriesListDumb'
 
@@ -15,9 +14,9 @@ const meta: Meta<typeof CategoriesListDumb> = {
 }
 export default meta
 
-const BodyWrapper = styled.View({
-  marginHorizontal: -getSpacing(4),
-})
+const BodyWrapper = styled.View(({ theme }) => ({
+  marginHorizontal: -theme.designSystem.size.spacing.l,
+}))
 
 type Story = StoryObj<typeof CategoriesListDumb>
 
@@ -43,7 +42,7 @@ export const Default: Story = {
             withPush: true,
           },
         },
-        position: undefined,
+        searchLandingPosition: undefined,
         fillColor: 'decorative01',
         borderColor: 'decorative01',
       },
@@ -58,7 +57,7 @@ export const Default: Story = {
             withPush: true,
           },
         },
-        position: undefined,
+        searchLandingPosition: undefined,
         borderColor: 'decorative02',
         fillColor: 'decorative02',
       },
@@ -73,7 +72,7 @@ export const Default: Story = {
             withPush: true,
           },
         },
-        position: undefined,
+        searchLandingPosition: undefined,
         borderColor: 'decorative04',
         fillColor: 'decorative04',
       },
@@ -88,7 +87,7 @@ export const Default: Story = {
             withPush: true,
           },
         },
-        position: undefined,
+        searchLandingPosition: undefined,
         borderColor: 'decorative05',
         fillColor: 'decorative05',
       },
@@ -103,7 +102,7 @@ export const Default: Story = {
             withPush: true,
           },
         },
-        position: undefined,
+        searchLandingPosition: undefined,
         borderColor: 'decorative03',
         fillColor: 'decorative03',
       },

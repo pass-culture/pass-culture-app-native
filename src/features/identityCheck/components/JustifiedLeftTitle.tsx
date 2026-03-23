@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const JustifiedLeftTitle = ({ title, titleID }: { title: string; titleID?: string }) => (
@@ -10,10 +10,10 @@ export const JustifiedLeftTitle = ({ title, titleID }: { title: string; titleID?
   </TitleContainer>
 )
 
-const TitleContainer = styled.View({
+const TitleContainer = styled.View(({ theme }) => ({
   alignItems: 'flex-start',
   width: '100%',
-  marginBottom: getSpacing(8),
-})
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
 
 const Title = styled(Typo.Title3).attrs(() => getHeadingAttrs(2))({})

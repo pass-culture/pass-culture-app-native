@@ -131,16 +131,16 @@ describe('useSortedSearchCategories', () => {
 
 describe('categoriesSortPredicate', () => {
   it('should sort when example is simple', () => {
-    const itemA = { position: 2, label: 'Example 1' } as MappingOutput
-    const itemB = { position: 1, label: 'Example 2' } as MappingOutput
+    const itemA = { searchLandingPosition: 2, label: 'Example 1' } as MappingOutput
+    const itemB = { searchLandingPosition: 1, label: 'Example 2' } as MappingOutput
 
     expect(categoriesSortPredicate(itemA, itemB)).toEqual(1)
     expect(categoriesSortPredicate(itemB, itemA)).toEqual(-1)
   })
 
   it('should sort when undefined', () => {
-    const itemA = { position: undefined, label: 'Example 1' } as MappingOutput
-    const itemB = { position: 1, label: 'Example 2' } as MappingOutput
+    const itemA = { searchLandingPosition: undefined, label: 'Example 1' } as MappingOutput
+    const itemB = { searchLandingPosition: 1, label: 'Example 2' } as MappingOutput
 
     expect(categoriesSortPredicate(itemA, itemB)).toEqual(-1)
     expect(categoriesSortPredicate(itemB, itemA)).toEqual(1)

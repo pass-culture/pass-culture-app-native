@@ -9,13 +9,6 @@ import { ContactBlock } from './ContactBlock'
 
 const venueId = venueDataTest.id
 
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackBar,
-  }),
-}))
-
 const openUrlSpy = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -92,7 +85,8 @@ describe('<ContactBlock/>', () => {
 
     await user.press(screen.getByText('https://my@website.com'))
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ message: 'Une erreur est survenue.' })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(screen.getByText('Une erreur est survenue.')).toBeOnTheScreen()
   })
 
   it('should display nothing when contact section is empty', () => {

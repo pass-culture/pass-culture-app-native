@@ -9,16 +9,16 @@ import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStack
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { PhonePending } from 'ui/svg/icons/PhonePending'
 import { Typo } from 'ui/theme'
 
 const FAQTouchableLinkProps = {
-  as: ButtonTertiaryBlack,
+  as: Button,
   wording: 'En savoir plus',
   icon: InfoPlain,
   accessibilityLabel: 'En savoir plus sur ce qu’on fait de tes données',

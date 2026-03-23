@@ -3,7 +3,7 @@ import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { ColorsType } from 'theme/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
@@ -138,8 +138,8 @@ const DisabledContainer = styled(BaseContainer)(({ theme }) => ({
   minHeight: getSpacing(22),
   width: '98%',
   borderColor: theme.designSystem.color.border.disabled,
-  paddingVertical: getSpacing(4),
-  paddingRight: getSpacing(4),
+  paddingVertical: theme.designSystem.size.spacing.l,
+  paddingRight: theme.designSystem.size.spacing.l,
 }))
 
 const CompletedContainer = styled(DisabledContainer)(({ theme }) => ({
@@ -154,13 +154,13 @@ const styleContainer: Record<StepButtonState, React.ElementType> = {
   [StepButtonState.RETRY]: RetryContainer,
 }
 
-const IconContainer = styled.View({ padding: getSpacing(4) })
+const IconContainer = styled.View(({ theme }) => ({ padding: theme.designSystem.size.spacing.l }))
 
-const ChildrenContainer = styled.View({
+const ChildrenContainer = styled.View(({ theme }) => ({
   flexDirection: 'column',
   flex: 1,
-  paddingRight: getSpacing(4),
-})
+  paddingRight: theme.designSystem.size.spacing.l,
+}))
 
 const StyledInternalTouchableLink: typeof InternalTouchableLink = styled(
   InternalTouchableLink

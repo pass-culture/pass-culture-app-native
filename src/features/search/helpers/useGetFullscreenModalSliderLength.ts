@@ -5,7 +5,6 @@ export function useGetFullscreenModalSliderLength(hasFormWidthLimit = true) {
   const baseSliderContainerWidth = isDesktopViewport ? modal.desktopMaxWidth : appContentWidth
   /**
    * This hack is used to avoid the slider to be cropped.
-   * FIXME(PC-17652): We should create a slider that automatically scales ? Without defining any width
    */
   const modalHorizontalSpacing = modal.spacing.MD * 2
 

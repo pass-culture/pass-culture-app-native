@@ -10,7 +10,9 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
 import { CreateHistoryItem } from 'features/search/types'
-import { BackButton } from 'ui/components/headers/BackButton'
+import Animated, { FadeIn, FadeOut } from 'libs/react-native-reanimated'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Spacer } from 'ui/theme'
 
 type Props = {
@@ -21,7 +23,6 @@ type Props = {
   title?: string
   shouldDisplaySubtitle?: boolean
   withArrow?: boolean
-  placeholder?: string
   withFilterButton?: boolean
   shouldDisplayHeader?: boolean
 }
@@ -34,7 +35,6 @@ export const SearchHeader: FC<Props> = ({
   withArrow = false,
   title = 'Rechercher',
   offerCategories,
-  placeholder,
   withFilterButton = false,
   shouldDisplayHeader = true,
 }: Props) => {
@@ -56,10 +56,17 @@ export const SearchHeader: FC<Props> = ({
       <Spacer.TopScreen />
       <HeaderContainer>
         {shouldDisplayHeader ? (
-          <RowContainer>
+          <RowContainer entering={FadeIn} exiting={FadeOut}>
             {withArrow ? (
               <StyledView>
-                <BackButton onGoBack={onGoBack} />
+                <Button
+                  iconButton
+                  variant="tertiary"
+                  color="neutral"
+                  icon={ArrowPrevious}
+                  onPress={onGoBack}
+                  accessibilityLabel="Revenir en arrière"
+                />
               </StyledView>
             ) : null}
             <SearchTitleAndWidget
@@ -75,7 +82,6 @@ export const SearchHeader: FC<Props> = ({
               addSearchHistory={addSearchHistory}
               searchInHistory={searchInHistory}
               offerCategories={offerCategories}
-              placeholder={placeholder}
             />
           </SearchBoxContainer>
           {withFilterButton ? (
@@ -105,7 +111,7 @@ const StyledView = styled.View(({ theme }) => ({
   height: theme.designSystem.size.spacing.xxxl,
 }))
 
-const RowContainer = styled.View(({ theme }) => ({
+const RowContainer = styled(Animated.View)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   paddingBottom: theme.designSystem.size.spacing.l,

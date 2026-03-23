@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
@@ -15,21 +14,22 @@ import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStack
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useAddressesQuery } from 'libs/place/queries/useAddressesQuery'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { useIdCheckAddressAutocompletion } from 'queries/settings/useSettings'
 import { Form } from 'ui/components/Form'
 import { isAddressValid } from 'ui/components/inputs/addressCheck'
 import { InputError } from 'ui/components/inputs/InputError'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const snackbarMessage =
   'Nous avons eu un problème pour trouver l’adresse associée à ton code postal. Réessaie plus tard.'
-const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
+const exception = 'Failed to fetch data from API: https://data.geopf.fr/geocodage/search'
 
 export const SetAddress = () => {
   const { params } = useRoute<UseRouteType<'SetAddress'>>()
@@ -48,18 +48,15 @@ export const SetAddress = () => {
     [ProfileTypes.RECAP_EXISTING_DATA]: identityCheckAndRecapExistingDataConfig,
   }
 
-  const { data: settings } = useSettingsContext()
+  const { data: idCheckAddressAutocompletion } = useIdCheckAddressAutocompletion()
   const storedAddress = useAddress()
   const storedCity = useCity()
   const { setAddress: setStoreAddress } = addressActions
-  const { showErrorSnackBar } = useSnackBarContext()
   const { navigate } = useNavigation<UseNavigationType>()
   const [query, setQuery] = useState<string>(storedAddress ?? '')
   const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
   const [selectedAddress, setSelectedAddress] = useState<string | null>(storedAddress ?? null)
   const debouncedSetQuery = useRef(debounce(setDebouncedQuery, 500)).current
-
-  const idCheckAddressAutocompletion = !!settings?.idCheckAddressAutocompletion
 
   const {
     data: addresses = [],
@@ -69,13 +66,13 @@ export const SetAddress = () => {
     query: debouncedQuery,
     cityCode: storedCity?.code ?? '',
     postalCode: storedCity?.postalCode ?? '',
-    enabled: idCheckAddressAutocompletion && debouncedQuery.length > 0,
+    enabled: !!idCheckAddressAutocompletion && debouncedQuery.length > 0,
     limit: 10,
   })
 
   useEffect(() => {
     if (!isError) return
-    showErrorSnackBar({ message: snackbarMessage, timeout: SNACK_BAR_TIME_OUT })
+    showErrorSnackBar(snackbarMessage)
     eventMonitoring.captureException(new IdentityCheckError(exception))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError])
@@ -156,7 +153,7 @@ export const SetAddress = () => {
         </React.Fragment>
       }
       fixedBottomChildren={
-        <ButtonPrimary
+        <Button
           type="submit"
           onPress={submitAddress}
           wording="Continuer"
@@ -175,6 +172,6 @@ const AdressesContainer = styled.View({
 })
 
 const Container = styled.View(({ theme }) => ({
-  marginTop: getSpacing(5),
+  marginTop: theme.designSystem.size.spacing.xl,
   marginBottom: theme.designSystem.size.spacing.s,
 }))

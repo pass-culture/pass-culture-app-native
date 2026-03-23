@@ -3,34 +3,29 @@ import React, { FunctionComponent, PropsWithChildren, useRef } from 'react'
 import { useSharedValue } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
-import { CategoryIdEnum, OfferResponseV2 } from 'api/gen'
+import { CategoryIdEnum, OfferResponse } from 'api/gen'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferImageRenderer } from 'features/offer/components/OfferImageContainer/OfferImageRenderer'
-import { offerImageContainerMarginTop } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { OfferImageContainerDimensions } from 'features/offer/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { ImageWithCredit } from 'shared/types'
-import { SegmentResult } from 'shared/useABSegment/useABSegment'
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { getSpacing } from 'ui/theme'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 import { OfferImageHeaderWrapper } from './OfferImageHeaderWrapper'
 
 type Props = {
   categoryId: CategoryIdEnum | null
   imageDimensions: OfferImageContainerDimensions
-  offer: OfferResponseV2
-  segment: SegmentResult
+  offer: OfferResponse
   images?: ImageWithCredit[]
   onPress?: (defaultIndex?: number) => void
   placeholderImage?: string
-  enableVideoABTesting?: boolean
 }
 
 export const OfferImageContainer: FunctionComponent<Props> = ({
@@ -40,16 +35,13 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   placeholderImage,
   imageDimensions,
   offer,
-  segment,
-  enableVideoABTesting,
 }) => {
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, designSystem } = useTheme()
   const headerHeight = useGetHeaderHeight()
 
   const progressValue = useSharedValue<number>(0)
 
   const { navigate } = useNavigation<UseNavigationType>()
-  const { showInfoSnackBar } = useSnackBarContext()
   const { cookiesConsent } = useCookies()
   const scrollToAnchor = useScrollToAnchor()
   const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
@@ -58,15 +50,12 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
     cookiesConsent.value.accepted.includes(CookieNameEnum.VIDEO_PLAYBACK)
 
   const hasVideo = offer.video?.id && isVideoSectionEnabled
-  const shouldShowVideoSection = enableVideoABTesting ? hasVideo && segment === 'A' : hasVideo
 
   const handleVideoPress = () => {
     if (!hasConsent) {
-      showInfoSnackBar({
-        message:
-          'Pour lire la vidéo, tu dois accepter les cookies vidéo depuis ton profil dans la partie “Confidentialité"',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(
+        'Pour lire la vidéo, tu dois accepter les cookies vidéo depuis ton profil dans la partie “Confidentialité"'
+      )
       scrollToAnchor(AnchorNames.VIDEO_PLAYBACK)
       return
     }
@@ -81,7 +70,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
       <OfferImageHeaderWrapper
         imageHeight={imageDimensions.backgroundHeight}
         imageUrl={placeholderImage}
-        paddingTop={getSpacing(offerImageContainerMarginTop)}>
+        paddingTop={designSystem.size.spacing.xxl * 4}>
         {children}
       </OfferImageHeaderWrapper>
     )
@@ -97,7 +86,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
         onPress={onPress}
         categoryId={categoryId}
         imageDimensions={imageDimensions}
-        onSeeVideoPress={shouldShowVideoSection ? handleVideoPress : undefined}
+        onSeeVideoPress={hasVideo ? handleVideoPress : undefined}
       />
     </Wrapper>
   )

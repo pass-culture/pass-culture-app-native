@@ -10,7 +10,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { useConfirmChangeEmailV2Mutation } from 'features/profile/queries/useConfirmChangeEmailV2Mutation'
 import { isTimestampExpired } from 'libs/dates'
 import { eventMonitoring } from 'libs/monitoring/services'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { PhonePending } from 'ui/svg/icons/PhonePending'
@@ -19,7 +19,6 @@ export function ConfirmChangeEmail() {
   const { replace, reset } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'ConfirmChangeEmail'>>()
   const loginRoutine = useLoginRoutine()
-  const { showErrorSnackBar } = useSnackBarContext()
   const { mutate, isPending } = useConfirmChangeEmailV2Mutation({
     onSuccess: async ({
       accessToken,
@@ -49,10 +48,9 @@ export function ConfirmChangeEmail() {
         reset({ index: 0, routes: [{ name: 'ChangeEmailExpiredLink' }] })
         return
       }
-      showErrorSnackBar({
-        message: 'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(
+        'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.'
+      )
     },
   })
 

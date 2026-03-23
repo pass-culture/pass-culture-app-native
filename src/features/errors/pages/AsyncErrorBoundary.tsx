@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import { FallbackProps } from 'react-error-boundary'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundaryWithoutNavigation'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
@@ -9,7 +9,6 @@ import { ScreenError, AsyncError } from 'libs/monitoring/errors'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface AsyncFallbackProps extends FallbackProps {
@@ -21,6 +20,7 @@ interface AsyncFallbackProps extends FallbackProps {
 export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
   const { goBack, canGoBack } = useGoBack(...homeNavigationConfig)
   const { top } = useCustomSafeInsets()
+  const { designSystem } = useTheme()
 
   return (
     <AsyncErrorBoundaryWithoutNavigation
@@ -29,7 +29,7 @@ export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
         canGoBack() ? (
           <HeaderContainer
             onPress={goBack}
-            top={top + getSpacing(3.5)}
+            top={top + designSystem.size.spacing.l}
             accessibilityLabel="Revenir en arrière">
             <StyledArrowPrevious />
           </HeaderContainer>
@@ -47,6 +47,6 @@ const StyledArrowPrevious = styled(ArrowPrevious).attrs(({ theme }) => ({
 const HeaderContainer = styledButton(Touchable)<{ top: number }>(({ theme, top }) => ({
   position: 'absolute',
   top,
-  left: getSpacing(6),
+  left: theme.designSystem.size.spacing.xl,
   zIndex: theme.zIndex.floatingButton,
 }))

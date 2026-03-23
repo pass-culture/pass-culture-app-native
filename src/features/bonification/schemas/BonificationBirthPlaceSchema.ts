@@ -1,13 +1,13 @@
 import { number, object, string } from 'yup'
 
-import { InseeCountry } from 'features/bonification/inseeCountries'
+import { InseeCountry } from 'api/gen'
 import { isNameValid } from 'ui/components/inputs/nameCheck'
 
 export const BonificationBirthPlaceSchema = object({
   birthCountrySelection: object()
     .shape({
-      COG: number().required('Le pays de naissance est obligatoire.'),
-      LIBCOG: string()
+      cog: number().required('Le pays de naissance est obligatoire.'),
+      libcog: string()
         .required('Le pays de naissance est obligatoire.')
         .test(
           'isCountryValid',
@@ -19,7 +19,7 @@ export const BonificationBirthPlaceSchema = object({
     .nullable(),
 
   birthCity: object().when('birthCountrySelection', {
-    is: (country: InseeCountry | null | undefined) => country?.LIBCOG === 'France',
+    is: (country: InseeCountry | null | undefined) => country?.libcog === 'France',
     then: (schema) =>
       schema
         .shape({

@@ -4,7 +4,7 @@ import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
-import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
+import { OfferResponse, RecommendationApiParams } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
 import { PlaylistType } from 'features/offer/enums'
@@ -19,8 +19,8 @@ import {
   getIfPricesShouldBeFixed,
 } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer, SimilarOfferPlaylist } from 'shared/offer/types'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
@@ -28,7 +28,7 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 
 export type OfferPlaylistListProps = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   sameCategorySimilarOffers?: Offer[]
   apiRecoParamsSameCategory?: RecommendationApiParams
   otherCategoriesSimilarOffers?: Offer[]
@@ -65,7 +65,7 @@ export function OfferPlaylistList({
   const labelMapping = useCategoryHomeLabelMapping()
 
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
   const { logSameCategoryPlaylistVerticalScroll, logOtherCategoriesPlaylistVerticalScroll } =
     useLogPlaylist({

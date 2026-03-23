@@ -1,8 +1,10 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- 'scroll'
-- assertVisible: 'Aides'
-- tapOn: "Nouvelle fenêtre\_: Centre d’aide"
+- scrollUntilVisible:
+    element:
+      text: 'Autres'
+- assertVisible: 'Aide'
+- tapOn: "Nouvelle fenêtre\_: Chercher une info"
 
 - runFlow: # Si 1ere ouverture de chrome
     when:
@@ -21,4 +23,4 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-    - tapOn: "Revenir à pass Culture S"
+      - tapOn: "Revenir à pass Culture S"

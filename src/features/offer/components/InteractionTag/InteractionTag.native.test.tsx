@@ -10,27 +10,17 @@ describe('getTagProps', () => {
     expect(getTagProps({ theme: computedTheme, subcategoryId })).toBeNull()
   })
 
-  it('should return "Reco du Club" tag when chroniclesCount > 0', () => {
+  it('should return "X avis book club" tag when chroniclesCount > 0', () => {
     expect(
       getTagProps({
         theme: computedTheme,
         chroniclesCount: 1,
-        headlinesCount: 10,
         likesCount: 10,
         subcategoryId,
       })
     ).toEqual({
-      label: 'Reco du Book Club',
+      label: '1 avis book club',
       variant: TagVariant.BOOKCLUB,
-    })
-  })
-
-  it('should return "Reco par les lieux" tag when headlinesCount > 0 and no chronicles', () => {
-    expect(
-      getTagProps({ theme: computedTheme, headlinesCount: 1, likesCount: 10, subcategoryId })
-    ).toEqual({
-      label: 'Reco par les lieux',
-      variant: TagVariant.HEADLINE,
     })
   })
 
@@ -45,20 +35,11 @@ describe('getTagProps', () => {
     expect(getTagProps({ theme: computedTheme, subcategoryId })).toBeNull()
   })
 
-  it('should use short label when hasSmallLayout is true — "Reco lieux"', () => {
-    expect(
-      getTagProps({ theme: computedTheme, headlinesCount: 1, hasSmallLayout: true, subcategoryId })
-    ).toEqual({
-      label: 'Reco lieux',
-      variant: TagVariant.HEADLINE,
-    })
-  })
-
-  it('should use short label when hasSmallLayout is true — "Reco Club"', () => {
+  it('should use short label when hasSmallLayout is true — "X avis"', () => {
     expect(
       getTagProps({ theme: computedTheme, chroniclesCount: 1, hasSmallLayout: true, subcategoryId })
     ).toEqual({
-      label: 'Reco Club',
+      label: '1 avis',
       variant: TagVariant.BOOKCLUB,
     })
   })
@@ -86,7 +67,7 @@ describe('getTagProps', () => {
     })
   })
 
-  it('should return "Reco du Ciné Club" tag when chroniclesCount > 0 and subcategory is not a Book Club', () => {
+  it('should return "X avis ciné club" tag when chroniclesCount > 0 and subcategory is not a book club', () => {
     expect(
       getTagProps({
         theme: computedTheme,
@@ -94,12 +75,12 @@ describe('getTagProps', () => {
         subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
       })
     ).toEqual({
-      label: 'Reco du Ciné Club',
+      label: '1 avis ciné club',
       variant: TagVariant.CINECLUB,
     })
   })
 
-  it('should return short label "Reco Club" when chroniclesCount > 0, hasSmallLayout is true, and not a Book Club', () => {
+  it('should return short label "X avis" when chroniclesCount > 0, hasSmallLayout is true, and not a book club', () => {
     expect(
       getTagProps({
         theme: computedTheme,
@@ -108,7 +89,7 @@ describe('getTagProps', () => {
         subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
       })
     ).toEqual({
-      label: 'Reco Club',
+      label: '1 avis',
       variant: TagVariant.CINECLUB,
     })
   })

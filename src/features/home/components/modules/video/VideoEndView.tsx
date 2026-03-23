@@ -8,10 +8,8 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { Offers } from 'ui/svg/icons/Offers'
-import { getSpacing } from 'ui/theme'
 
 export const VideoEndView: React.FC<{
   onPressReplay: () => void
@@ -24,7 +22,6 @@ export const VideoEndView: React.FC<{
 }> = ({ onPressReplay, offer, onPressSeeOffer, style, moduleId, moduleName, homeEntryId }) => {
   const prePopulateOffer = usePrePopulateOffer()
   const mapping = useCategoryIdMapping()
-  const segment = useABSegment()
 
   return (
     <VideoEndViewContainer style={style}>
@@ -46,16 +43,13 @@ export const VideoEndView: React.FC<{
                     offerId: +offer.objectID,
                     categoryId: mapping[offer.offer.subcategoryId],
                   })
-                  triggerConsultOfferLog(
-                    {
-                      offerId: +offer.objectID,
-                      from: 'video',
-                      moduleId,
-                      moduleName,
-                      homeEntryId,
-                    },
-                    segment
-                  )
+                  triggerConsultOfferLog({
+                    offerId: +offer.objectID,
+                    from: 'video',
+                    moduleId,
+                    moduleName,
+                    homeEntryId,
+                  })
                 }}
                 navigateTo={{
                   screen: 'Offer',
@@ -94,11 +88,11 @@ const BlackView = styled.View(({ theme }) => ({
   backgroundColor: colorAlpha(theme.designSystem.color.background.lockedInverted, 0.7),
   height: '100%',
   justifyContent: 'center',
-  borderTopLeftRadius: getSpacing(4),
-  borderTopRightRadius: getSpacing(4),
+  borderTopLeftRadius: theme.designSystem.size.borderRadius.l,
+  borderTopRightRadius: theme.designSystem.size.borderRadius.l,
 }))
 
-const SeeOfferButtonContainer = styled.View({
+const SeeOfferButtonContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  paddingLeft: getSpacing(9),
-})
+  paddingLeft: theme.designSystem.size.spacing.xxxl,
+}))

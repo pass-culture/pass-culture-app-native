@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { ColorsType } from 'theme/types'
 import { Separator } from 'ui/components/Separator'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface SeparatorWithTextProps {
   label: string
@@ -23,15 +23,15 @@ export const SeparatorWithText: FunctionComponent<SeparatorWithTextProps> = ({
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  paddingHorizontal: getSpacing(1),
-})
+  paddingHorizontal: theme.designSystem.size.spacing.xs,
+}))
 
-const StyledLabel = styled(Typo.BodyAccentXs)({
-  marginHorizontal: getSpacing(2.5),
-})
+const StyledLabel = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.m,
+}))
 
 const StyledSeparator = styled(Separator.Horizontal)<{ backgroundColor?: ColorsType }>(
   ({ theme, backgroundColor }) => ({

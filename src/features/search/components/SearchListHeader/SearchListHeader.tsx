@@ -24,6 +24,7 @@ import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { GridLayoutButton } from 'ui/components/buttons/GridLayoutButton'
 import { ListLayoutButton } from 'ui/components/buttons/ListLayoutButton'
+import { AIFakeDoorBanner } from 'ui/components/ModuleBanner/AIFakeDoorBanner'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Error } from 'ui/svg/icons/Error'
 import { Typo } from 'ui/theme'
@@ -41,6 +42,8 @@ interface SearchListHeaderProps extends ScrollViewProps {
     itemType: 'offer' | 'venue' | 'artist' | 'unknown',
     playlistIndex?: number
   ) => void
+  enableAIFakeDoor?: boolean
+  onPressAIFakeDoorBanner: () => void
 }
 
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
@@ -51,6 +54,8 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   artistSection,
   shouldDisplayGridList,
   onViewableVenuePlaylistItemsChanged,
+  enableAIFakeDoor,
+  onPressAIFakeDoorBanner,
 }) => {
   const { geolocPosition, showGeolocPermissionModal, selectedLocationMode } = useLocation()
   const { disabilities } = useAccessibilityFiltersContext()
@@ -66,8 +71,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
 
   const shouldDisplayAvailableUserDataMessage = userData?.length > 0
   const unavailableOfferMessage = shouldDisplayAvailableUserDataMessage ? userData[0]?.message : ''
-  const shouldDisplayAccessibilityContent =
-    Object.values(disabilities).filter((disability) => disability).length > 0
+  const shouldDisplayAccessibilityContent = Object.values(disabilities).filter(Boolean).length > 0
   const venuePlaylistTitle = getSearchVenuePlaylistTitle(
     shouldDisplayAccessibilityContent,
     venuesUserData?.[0]?.venue_playlist_title,
@@ -84,7 +88,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     !venue && !!venues?.length && previousRoute?.name !== SearchView.Thematic
 
   const onPress = () => {
-    analytics.logActivateGeolocfromSearchResults()
+    void analytics.logActivateGeolocfromSearchResults()
     showGeolocPermissionModal()
   }
 
@@ -96,7 +100,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
 
   const onGridListButtonPress = (layout: GridListLayout) => {
     gridListLayoutActions.setLayout(layout)
-    analytics.logHasClickedGridListToggle({ fromLayout: selectedGridListLayout })
+    void analytics.logHasClickedGridListToggle({ fromLayout: selectedGridListLayout })
   }
 
   const getLayoutButtonProps = (layout: GridListLayout) => ({
@@ -115,6 +119,11 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
 
   return (
     <View testID="searchListHeader">
+      {enableAIFakeDoor ? (
+        <AIFakeDoorBannerContainer>
+          <AIFakeDoorBanner onPress={onPressAIFakeDoorBanner} />
+        </AIFakeDoorBannerContainer>
+      ) : null}
       {shouldDisplayGeolocationBanner ? (
         <GeolocationBannerContainer>
           <GeolocationBanner
@@ -199,5 +208,10 @@ const Title = styled(Typo.Title3)(({ theme }) => ({
 }))
 
 const StyledVenuePlaylist = styled(VenuePlaylist)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
+
+const AIFakeDoorBannerContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
   marginTop: theme.designSystem.size.spacing.l,
 }))

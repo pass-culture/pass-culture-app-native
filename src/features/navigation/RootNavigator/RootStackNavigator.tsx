@@ -1,12 +1,13 @@
 import { Route } from '@react-navigation/native'
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import React, { useEffect } from 'react'
-import { Platform, View } from 'react-native'
+import { Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { Artist } from 'features/artist/pages/Artist'
+import { ArtistWebview } from 'features/artist/pages/ArtistWebview'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
@@ -52,7 +53,7 @@ import { SuspenseSubscriptionStackNavigator } from 'features/navigation/Subscrip
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { TabNavigator } from 'features/navigation/TabBar/TabStackNavigator'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
-import { Offer } from 'features/offer/pages/Offer/Offer'
+import { OfferPageBridge } from 'features/offer/bridge/OfferPageBridge'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { OfferVideoPreview } from 'features/offer/pages/OfferVideoPreview/OfferVideoPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
@@ -277,6 +278,7 @@ const rootScreens: RouteConfig[] = [
   },
   { name: 'Artist', component: Artist, options: { title: 'Artiste' } },
   { name: '_DeeplinkOnlyArtist1', component: Artist, options: { title: 'Artiste' } },
+  { name: 'ArtistWebview', component: ArtistWebview, options: { title: 'Artiste sur Wikipédia' } },
   {
     name: 'Chronicles',
     component: Chronicles,
@@ -343,7 +345,7 @@ const rootScreens: RouteConfig[] = [
 // For some reason, inlining "withAsyncErrorBoundary" directly in the Screen's component prop causes unexpected behavior with a Youtube player when pressing fullscreen button
 // Youtube player in fullscreen opens and closes 1 second later automatically
 const OfferVideoPreviewWithAsyncErrorBoundry = withAsyncErrorBoundary(OfferVideoPreview)
-const OfferWithAsyncErrorBoundry = withAsyncErrorBoundary(Offer)
+const OfferWithBridgeAndBoundary = withAsyncErrorBoundary(OfferPageBridge)
 
 const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
@@ -394,19 +396,19 @@ const RootStackNavigator = withWebWrapper(
           ))}
           <RootStackNavigatorBase.Screen
             name="Offer"
-            component={OfferWithAsyncErrorBoundry}
+            component={OfferWithBridgeAndBoundary}
             options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
           <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyOffer1"
-            component={OfferWithAsyncErrorBoundry}
+            component={OfferWithBridgeAndBoundary}
             options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
           <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyOffer2"
-            component={OfferWithAsyncErrorBoundry}
+            component={OfferWithBridgeAndBoundary}
             options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
           <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyOffer3"
-            component={OfferWithAsyncErrorBoundry}
+            component={OfferWithBridgeAndBoundary}
             options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
           <RootStackNavigatorBase.Screen
             name="OfferVideoPreview"
@@ -464,11 +466,7 @@ export const RootNavigator: React.FC<{ currentRoute?: Route<string> }> = ({ curr
       <Main nativeID={mainId} accessibilityRole={mainAccessibilityRole}>
         <RootStackNavigator initialRouteName={initialScreen} />
       </Main>
-      {showTabBar ? (
-        <View accessibilityRole={AccessibilityRole.FOOTER}>
-          <AccessibleTabBar id={tabBarId} currentRoute={currentRoute} />
-        </View>
-      ) : null}
+      {showTabBar ? <AccessibleTabBar id={tabBarId} currentRoute={currentRoute} /> : null}
       {/* The components below are those for which we do not want their rendering to happen while the splash is displayed. */}
       {isSplashScreenHidden ? <PrivacyPolicy /> : null}
     </TabNavigationStateProvider>

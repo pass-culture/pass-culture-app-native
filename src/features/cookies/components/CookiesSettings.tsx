@@ -17,7 +17,7 @@ import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const checkboxID = uuidv4()
@@ -114,12 +114,12 @@ export const CookiesSettings = ({
   )
 }
 
-const ChoiceContainer = styled.View({
+const ChoiceContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
-  marginTop: getSpacing(6),
-})
+  marginTop: theme.designSystem.size.spacing.xl,
+}))
 
 const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

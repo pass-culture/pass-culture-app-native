@@ -46,7 +46,13 @@ describe('<SearchList />', () => {
 
   const props: SearchListProps = {
     nbHits: mockNbHits,
-    hits: { offers: mockHits, venues: [], duplicatedOffers: mockHits, artists: [] },
+    hits: {
+      offers: mockHits,
+      venueNotOpenToPublic: [],
+      venues: [],
+      duplicatedOffers: mockHits,
+      artists: [],
+    },
     renderItem,
     autoScrollEnabled: true,
     refreshing: false,
@@ -56,6 +62,7 @@ describe('<SearchList />', () => {
     onScroll: jest.fn(),
     userData: [],
     venuesUserData: [],
+    onPressAIFakeDoorBanner: jest.fn(),
   }
 
   it('should renders correctly and calls renderItem', () => {

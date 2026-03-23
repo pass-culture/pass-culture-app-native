@@ -9,51 +9,99 @@ exports[`<WebShareModal/> should render correctly when hidden 1`] = `
 
 exports[`<WebShareModal/> should render correctly when shown 1`] = `
 .c0 {
-  flex-direction: column;
-  cursor: pointer;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: auto;
+  max-width: 500px;
   border-width: 0;
-  display: flex;
   background-color: transparent;
-  padding: 0;
-}
-
-.c0:active {
-  opacity: 0.7;
+  cursor: pointer;
   outline: none;
-}
-
-.c0:focus {
-  outline: auto;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
 .c0:disabled {
   cursor: initial;
 }
 
-.c0:hover {
-  text-decoration: underline;
-  text-decoration-color: #161617;
+.c1 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
-.c0:hover:disabled {
+.c1:disabled {
+  cursor: initial;
+}
+
+.c3 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  width: 100%;
+  max-width: 500px;
+  align-self: center;
+  border-style: solid;
+  border-color: #6123df;
+  border-width: 1px;
+  background-color: #6123df;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  overflow: hidden;
   text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c3:disabled {
+  cursor: initial;
 }
 
 .c2 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 2px;
-  padding-right: 2px;
-  min-height: 40px;
-  width: 100%;
+  border-radius: 8px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: auto;
   max-width: 500px;
+  border-width: 0;
+  background-color: transparent;
   cursor: pointer;
   outline: none;
-  border-width: 0;
-  display: flex;
+  display: inline-flex;
   overflow: hidden;
   text-decoration: none;
   box-sizing: border-box;
@@ -61,97 +109,6 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
 
 .c2:disabled {
   cursor: initial;
-  background: none;
-}
-
-.c2:hover {
-  text-decoration: underline;
-  text-decoration-color: #161617;
-}
-
-.c2:hover:disabled {
-  text-decoration: none;
-}
-
-.c5 {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 20px;
-  padding-right: 20px;
-  min-height: 40px;
-  width: 100%;
-  background-color: #6123df;
-  max-width: 320px;
-  cursor: pointer;
-  outline: none;
-  border-width: 0;
-  display: flex;
-  overflow: hidden;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c5:disabled {
-  cursor: initial;
-  background: none;
-}
-
-.c5:hover {
-  text-decoration: underline;
-  text-decoration-color: #ffffff;
-}
-
-.c5:hover:disabled {
-  text-decoration: none;
-}
-
-.c4 {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 2px;
-  padding-right: 2px;
-  min-height: 40px;
-  width: 100%;
-  max-width: 500px;
-  cursor: pointer;
-  outline: none;
-  border-width: 0;
-  display: flex;
-  overflow: hidden;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c4:disabled {
-  cursor: initial;
-  background: none;
-}
-
-.c4:hover {
-  text-decoration: underline;
-  text-decoration-color: #161617;
-}
-
-.c4:hover:disabled {
-  text-decoration: none;
-}
-
-.c6:disabled {
-  background-color: #f1f1f4;
-}
-
-.c3 {
-  background-color: transparent;
-}
-
-.c1 {
-  padding: 4px;
 }
 
 <body>
@@ -190,11 +147,11 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
               style="transform: translateY(0px);"
             >
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderBottomLeftRadius-pm2fo r-borderBottomRightRadius-zmljjp r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-flexDirection-eqz5dr r-height-1ln4yuo r-justifyContent-1777fci r-maxHeight-68cu2u r-maxWidth-1ge9hsw r-paddingBottom-11rk87y r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt r-width-13qz1uu"
+                class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderBottomLeftRadius-pm2fo r-borderBottomRightRadius-zmljjp r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-flexDirection-eqz5dr r-height-11p5hdz r-justifyContent-1777fci r-maxHeight-68cu2u r-maxWidth-1ge9hsw r-paddingBottom-11rk87y r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt r-width-13qz1uu"
                 data-testid="modalContainer"
               >
                 <div
-                  class="css-view-175oi2r r-display-6koalj r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
+                  class="css-view-175oi2r r-display-6koalj r-flexDirection-18u37iz r-justifyContent-1777fci r-marginTop-1mnahxq r-width-13qz1uu"
                   data-testid="modalHeader"
                 >
                   <div
@@ -219,28 +176,37 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                   >
                     <button
                       aria-label="Fermer la modale"
-                      class="c0 c1"
+                      class="c0"
                       data-testid="Fermer la modale"
                       tabindex="0"
-                      title="Fermer la modale"
                       type="button"
                     >
                       <div
-                        class="css-view-175oi2r"
-                        data-testid="rightIcon"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1wjczhr r-flexDirection-18u37iz"
                       >
                         <div
-                          class="css-text-146c3p1"
-                          dir="ltr"
+                          class="css-view-175oi2r"
+                          id="3"
+                          style="flex-shrink: 0;"
                         >
-                          rightIcon-SVG-Mock
+                          <div
+                            class="css-view-175oi2r"
+                            data-testid="rightIcon"
+                          >
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              rightIcon-SVG-Mock
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </button>
                   </div>
                 </div>
                 <div
-                  class="css-view-175oi2r r-height-z80fyv"
+                  class="css-view-175oi2r r-height-1472mwg"
                   data-testid="spacerBetweenHeaderAndContent"
                 />
                 <div
@@ -258,13 +224,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy"
                       >
                         <div
-                          class="css-view-175oi2r r-height-tbmifm"
-                        />
-                        <div
-                          class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
-                        />
-                        <div
-                          class="css-view-175oi2r r-height-tbmifm"
+                          class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginBottom-1ifxtd0 r-marginTop-1wzrnnt r-width-13qz1uu"
                         />
                         <div
                           class="css-view-175oi2r r-flexBasis-1mlwlqe r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-width-13qz1uu"
@@ -273,33 +233,35 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                             class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci"
                           >
                             <button
-                              aria-label="Copier"
-                              class="c2 c3"
+                              aria-label="Copier le lien"
+                              class="c1"
                               data-testid="Copier le lien"
                               tabindex="0"
                               type="button"
                             >
                               <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                                class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                               >
                                 <div
-                                  class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx r-marginRight-1kb76zh"
+                                  class="css-view-175oi2r"
+                                  id="4"
+                                  style="flex-shrink: 0;"
                                 >
                                   <div
                                     class="css-view-175oi2r"
-                                    data-testid="button-icon-left"
                                   >
                                     <div
                                       class="css-text-146c3p1"
                                       dir="ltr"
                                     >
-                                      button-icon-left-SVG-Mock
+                                      undefined-SVG-Mock
                                     </div>
                                   </div>
                                 </div>
                                 <div
-                                  class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                                  class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
                                   dir="ltr"
+                                  style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                                 >
                                   Copier
                                 </div>
@@ -310,34 +272,36 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                             class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci"
                           >
                             <a
-                              aria-label="E-mail"
-                              class="c4 c3"
+                              aria-label="Ouvrir le gestionnaire mail"
+                              class="c2"
                               data-testid="Ouvrir le gestionnaire mail"
                               href="mailto:?subject=Je t’invite à découvrir une super offre sur le pass Culture !&body=Voici%20une%20super%20offre%C2%A0!%0Ahttps%3A%2F%2Furl.com%2Foffer"
                               tabindex="0"
                               target="_blank"
                             >
                               <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                                class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                               >
                                 <div
-                                  class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx r-marginRight-1kb76zh"
+                                  class="css-view-175oi2r"
+                                  id="5"
+                                  style="flex-shrink: 0;"
                                 >
                                   <div
                                     class="css-view-175oi2r"
-                                    data-testid="button-icon-left"
                                   >
                                     <div
                                       class="css-text-146c3p1"
                                       dir="ltr"
                                     >
-                                      button-icon-left-SVG-Mock
+                                      undefined-SVG-Mock
                                     </div>
                                   </div>
                                 </div>
                                 <div
-                                  class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                                  class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
                                   dir="ltr"
+                                  style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                                 >
                                   E-mail
                                 </div>
@@ -346,16 +310,10 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                           </div>
                         </div>
                         <div
-                          class="css-view-175oi2r r-height-tbmifm"
-                        />
-                        <div
-                          class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
-                        />
-                        <div
-                          class="css-view-175oi2r r-height-1472mwg"
+                          class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginBottom-1peese0 r-marginTop-1wzrnnt r-width-13qz1uu"
                         />
                         <ul
-                          class="css-view-175oi2r r-display-6413gk r-flexDirection-18u37iz r-gap-fulv98 r-gridTemplateColumns-1yfggyn r-overflow-1dqxon3 r-paddingLeft-gy4na3 r-width-13qz1uu"
+                          class="css-view-175oi2r r-display-6413gk r-flexDirection-18u37iz r-gap-fulv98 r-gridTemplateColumns-1yfggyn r-marginBottom-zd98yo r-overflow-1dqxon3 r-paddingLeft-gy4na3 r-width-13qz1uu"
                           role="list"
                         >
                           <li
@@ -471,22 +429,20 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                             </a>
                           </li>
                         </ul>
-                        <div
-                          class="css-view-175oi2r r-height-mabqd8"
-                        />
                         <button
                           aria-label="Annuler"
-                          class="c5 c6"
+                          class="c3"
                           data-testid="Annuler"
                           tabindex="0"
                           type="button"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
                           >
                             <div
-                              class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                              class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
                               dir="ltr"
+                              style="color: rgb(255, 255, 255); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px; text-align: center;"
                             >
                               Annuler
                             </div>

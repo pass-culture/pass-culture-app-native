@@ -2,16 +2,15 @@ import React from 'react'
 
 import { CurrencyEnum, SubscriptionStepCompletionState } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { IconStepCurrent } from 'features/identityCheck/components/IconStepCurrent'
 import { IconStepDisabled } from 'features/identityCheck/components/IconStepDisabled'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { IconStepRetry } from 'features/identityCheck/components/IconStepRetry'
 import { computeIdentificationMethod } from 'features/identityCheck/pages/helpers/computeIdentificationMethod'
+import { useStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { ProfileType } from 'features/identityCheck/pages/profile/types'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
-import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -41,10 +40,9 @@ export const useStepperInfo = (): StepperInfo => {
 
   const { user } = useAuthContext()
   const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
+  const storedProfileInfos = useStoredProfileInfos()
 
-  const { remainingAttempts } = usePhoneValidationRemainingAttemptsQuery()
   const { data } = useGetStepperInfoQuery()
-  const { data: settings } = useSettingsContext()
   const { shouldBeOverriden: shouldCreditAmountBeOverriden, amount: overriddenCreditAmount } =
     useOverrideCreditActivationAmount()
 
@@ -63,13 +61,6 @@ export const useStepperInfo = (): StepperInfo => {
     allowedIdentityCheckMethods,
   } = data
 
-  const getPhoneValidationFirstScreen = () => {
-    if (settings?.enablePhoneValidation) {
-      return remainingAttempts === 0 ? 'PhoneValidationTooManySMSSent' : 'SetPhoneNumber'
-    }
-    return 'SetPhoneNumberWithoutValidation'
-  }
-
   const hasUserCompletedInfo =
     !!user?.firstName &&
     !!user?.lastName &&
@@ -77,6 +68,23 @@ export const useStepperInfo = (): StepperInfo => {
     !!user?.postalCode &&
     !!user?.city &&
     !!user?.activityId
+
+  const hasStoredProfileInfo =
+    !!storedProfileInfos?.address ||
+    !!storedProfileInfos?.name ||
+    !!storedProfileInfos?.status ||
+    !!storedProfileInfos?.city
+
+  const userAlreadyGaveInfos = hasUserCompletedInfo || hasStoredProfileInfo
+  const isFirstStepProfileNotCompleted =
+    subscriptionStepsToDisplay[0]?.name === 'profile-completion' &&
+    subscriptionStepsToDisplay[0].completionState !== SubscriptionStepCompletionState.completed
+  const isSecondStepProfileNotCompleted =
+    subscriptionStepsToDisplay[1]?.name === 'profile-completion' &&
+    subscriptionStepsToDisplay[1].completionState !== SubscriptionStepCompletionState.completed
+
+  const shouldDisplayValidateYourInformation =
+    userAlreadyGaveInfos && (isSecondStepProfileNotCompleted || isFirstStepProfileNotCompleted)
 
   const stepsConfig: StepsDictionary = {
     [IdentityCheckStep.PROFILE]: {
@@ -91,13 +99,13 @@ export const useStepperInfo = (): StepperInfo => {
       firstScreenType: hasUserCompletedInfo
         ? ProfileTypes.RECAP_EXISTING_DATA
         : ProfileTypes.IDENTITY_CHECK,
-      subtitle: hasUserCompletedInfo ? 'Confirme tes informations' : undefined,
+      subtitle: shouldDisplayValidateYourInformation ? 'Confirme tes informations' : undefined,
     },
     [IdentityCheckStep.IDENTIFICATION]: {
       name: IdentityCheckStep.IDENTIFICATION,
       icon: {
-        disabled: () => <IconStepDisabled Icon={Profile} testID="identification-step-disabled" />,
-        current: () => <IconStepCurrent Icon={Profile} testID="identification-step-current" />,
+        disabled: () => <IconStepDisabled Icon={IdCard} testID="identification-step-disabled" />,
+        current: () => <IconStepCurrent Icon={IdCard} testID="identification-step-current" />,
         completed: () => <IconStepDone Icon={IdCard} testID="identification-step-done" />,
         retry: () => <IconStepRetry Icon={IdCard} testID="identification-retry-step" />,
       },
@@ -130,7 +138,7 @@ export const useStepperInfo = (): StepperInfo => {
         completed: () => <IconStepDone Icon={Smartphone} testID="phone-validation-step-done" />,
         retry: () => <IconStepRetry Icon={Smartphone} testID="phone-validation-retry-step" />,
       },
-      firstScreen: getPhoneValidationFirstScreen(),
+      firstScreen: 'SetPhoneNumberWithoutValidation',
       firstScreenType: ProfileTypes.IDENTITY_CHECK,
     },
   }

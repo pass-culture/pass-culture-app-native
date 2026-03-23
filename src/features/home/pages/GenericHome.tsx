@@ -96,9 +96,7 @@ const FooterComponent = ({
   if (hasShownAll && Platform.OS === 'web') {
     return (
       <React.Fragment>
-        <footer>
-          <AccessibilityFooter />
-        </footer>
+        <AccessibilityFooter withHorizontalMargin />
         <Spacer.TabBar />
       </React.Fragment>
     )
@@ -131,7 +129,7 @@ const buildModulesHandlingVideoCarouselPosition = (
   thematicHeader?: ThematicHeader
 ) => {
   if (thematicHeader) return modules
-  if (modules[0] && modules[0].type === HomepageModuleType.VideoCarouselModule) {
+  if (modules[0]?.type === HomepageModuleType.VideoCarouselModule) {
     return without(modules, modules[0])
   }
   return modules
@@ -169,7 +167,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   })
 
   const showSkeleton = useShowSkeleton()
-  const initialNumToRender = 10
+  const initialNumToRender = Platform.OS === 'web' ? 30 : 10
   const maxToRenderPerBatch = 6
   const [maxIndex, setMaxIndex] = useState(initialNumToRender)
   const [isLoading, setIsLoading] = useState(false)

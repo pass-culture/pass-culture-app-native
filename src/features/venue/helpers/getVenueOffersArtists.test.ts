@@ -98,6 +98,93 @@ describe('getVenueOffersArtists', () => {
     })
   })
 
+  it('should return artists when there are offers with id deduplication', () => {
+    const result = getVenueOffersArtists(
+      [SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE],
+      [
+        {
+          offer: {
+            dates: [],
+            isDigital: false,
+            isDuo: false,
+            name: 'I want something more',
+            prices: [28.0],
+            subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
+            thumbUrl:
+              'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+            artist: 'Céline Dion',
+          },
+          _geoloc: { lat: 4.90339, lng: -52.31663 },
+          objectID: '102310',
+          venue: {
+            id: 4,
+            name: 'Lieu 4',
+            publicName: 'Lieu 4',
+            address: '4 rue de la paix',
+            postalCode: '75000',
+            city: 'Paris',
+          },
+          artists: [
+            {
+              id: '1',
+              name: 'Céline Dion',
+              image:
+                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+            },
+          ],
+        },
+        {
+          offer: {
+            dates: [],
+            isDigital: false,
+            isDuo: false,
+            name: 'I want something more',
+            prices: [28.0],
+            subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
+            thumbUrl:
+              'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+            artist: 'Céline Dion',
+          },
+          _geoloc: { lat: 4.90339, lng: -52.31663 },
+          objectID: '102310',
+          venue: {
+            id: 4,
+            name: 'Lieu 4',
+            publicName: 'Lieu 4',
+            address: '4 rue de la paix',
+            postalCode: '75000',
+            city: 'Paris',
+          },
+          artists: [
+            {
+              id: '2',
+              name: 'Céline Dion',
+              image:
+                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+            },
+          ],
+        },
+      ]
+    )
+
+    expect(result.data).toEqual({
+      artists: [
+        {
+          id: '1',
+          image:
+            'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+          name: 'Céline Dion',
+        },
+        {
+          id: '2',
+          image:
+            'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+          name: 'Céline Dion',
+        },
+      ],
+    })
+  })
+
   it('should return 30 artists max / unique by id / ordered by number of offers / ordered by names', () => {
     // We have 2 times Artist 1 to 15 and 1 time Artist 16 to 30
     const mockedArtistList: Offer[] = Array.from({ length: 45 }, (_, index) => ({

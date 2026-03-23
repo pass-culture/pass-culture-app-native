@@ -33,9 +33,12 @@ jest.unmock('react-native-modal')
 jest.mock('react-native-orientation-locker')
 
 // useGetFontScale is used in AppButton, so it impacts all buttons like ButtonPrimary, ButtonSecondary, etc.
-jest.mock('shared/accessibility/useGetFontScale', () => ({
+jest.mock('shared/accessibility/helpers/useGetFontScale', () => ({
   useGetFontScale: () => ({ fontScale: 1 }),
 }))
+
+// impacts to much tests and risks launching unhandled requests that are difficult to detect and can create unstable tests.
+jest.mock('queries/settings/settingsQuery')
 
 // It would be better to put it in the __mocks__ folder, but I haven't been able to do that.
 // Mock Keyboard.addListener to avoid "TypeError: Cannot read property 'remove' of undefined"

@@ -10,6 +10,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
+import { VenueAdvicesSection } from 'features/venue/components/VenueAdvicesSection/VenueAdvicesSection'
 import { VenueOffersProps } from 'features/venue/components/VenueOffers/VenueOffers'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics/provider'
@@ -35,8 +36,6 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const keyExtractor = (item: Offer) => item.objectID
 
-const OFFERS_PLAYLIST_SIMILAR_SPACING = Platform.OS === 'android' ? getSpacing(8) : getSpacing(14)
-
 type VenueOffersListProps = VenueOffersProps & {
   mapping: CategoryIdMapping
   labelMapping: CategoryHomeLabelMapping
@@ -60,6 +59,10 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   currency,
   euroToPacificFrancRate,
   onViewableItemsChanged,
+  advicesCardData,
+  nbAdvices,
+  enableNewTagProAdvices,
+  onShowWritersModal,
 }) => {
   const theme = useTheme()
   const { user } = useAuthContext()
@@ -71,8 +74,13 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   const { hits = [] } = venueOffers ?? {}
   const { artists = [] } = venueArtists ?? {}
   const shouldDisplayArtistsPlaylist = artistsPlaylistEnabled && artists.length > 0
+  const shouldDisplayAdvicesSection = advicesCardData && advicesCardData.length > 0 && nbAdvices > 0
 
   const onPressSeeMore = () => analytics.logVenueSeeMoreClicked(venue.id)
+
+  // TODO(PC-40227): add pro advices page
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  const onPressChronicleCardSeeMore = () => {}
 
   const renderFooter: RenderFooterItem = ({ width, height }: { width: number; height: number }) => (
     <SeeMore
@@ -88,7 +96,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
       theme,
       likesCount: item.offer.likes,
       chroniclesCount: item.offer.chroniclesCount,
-      headlinesCount: item.offer.headlineCount,
       isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
       subcategoryId: item.offer.subcategoryId,
     })
@@ -124,7 +131,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   }
 
   const handleArtistsPlaylistPress = (artistId: string, artistName: string) => {
-    analytics.logConsultArtist({
+    void analytics.logConsultArtist({
       artistId,
       artistName,
       from: 'venue',
@@ -179,6 +186,16 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           />
         )}
       </ObservedPlaylist>
+      {shouldDisplayAdvicesSection ? (
+        <VenueAdvicesSection
+          advicesCardData={advicesCardData}
+          nbAdvices={nbAdvices}
+          venue={venue}
+          onPressChronicleCardSeeMore={onPressChronicleCardSeeMore}
+          enableNewTagProAdvices={enableNewTagProAdvices}
+          onShowWritersModal={onShowWritersModal}
+        />
+      ) : null}
       {shouldDisplayArtistsPlaylist ? (
         <ArtistsPlaylistContainer gap={2}>
           <ArtistsPlaylistTitleText>Les artistes disponibles dans ce lieu</ArtistsPlaylistTitleText>
@@ -225,9 +242,9 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
 
 const Container = styled.View(({ theme }) => ({ marginTop: theme.designSystem.size.spacing.xl }))
 
-const ArtistsPlaylistContainer = styled(ViewGap)({
-  paddingBottom: OFFERS_PLAYLIST_SIMILAR_SPACING,
-})
+const ArtistsPlaylistContainer = styled(ViewGap)(({ theme }) => ({
+  paddingBottom: Platform.OS === 'android' ? theme.designSystem.size.spacing.xxl : getSpacing(14),
+}))
 
 const ArtistsPlaylistTitleText = styled(Typo.Title3).attrs(getHeadingAttrs(2))(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,

@@ -6,22 +6,22 @@ import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
 import { object, string } from 'yup'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useCitiesByPostalCodeQuery } from 'libs/place/queries/useCitiesByPostalCodeQuery'
 import { SuggestedCity } from 'libs/place/types'
+import { useIneligiblePostalCodes } from 'queries/settings/useSettings'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { RequiredIndicator } from 'ui/components/inputs/types'
 import { Li } from 'ui/components/Li'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Error } from 'ui/svg/icons/Error'
 
 const keyExtractor = ({ name, code, postalCode }: SuggestedCity) => `${name}-${code}-${postalCode}`
@@ -41,8 +41,7 @@ export const CitySearchInput = ({
   label,
   requiredIndicator,
 }: CitySearchInputProps) => {
-  const { showErrorSnackBar } = useSnackBarContext()
-  const { data: settings } = useSettingsContext()
+  const { data: ineligiblePostalCodes } = useIneligiblePostalCodes()
   const [postalCodeQuery, setPostalCodeQuery] = useState<string>(city?.postalCode ?? '')
   const [isPostalCodeIneligible, setIsPostalCodeIneligible] = useState(false)
   const debouncedSetPostalCode = useRef(debounce(setPostalCodeQuery, 500)).current
@@ -74,16 +73,14 @@ export const CitySearchInput = ({
         })
     }
     if (isError) {
-      showErrorSnackBar({
-        message:
-          'Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(
+        'Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard.'
+      )
       eventMonitoring.captureException(
         new IdentityCheckError('Failed to fetch data from API: https://geo.api.gouv.fr/communes')
       )
     }
-  }, [isSuccess, isError, cities.length, setError, showErrorSnackBar])
+  }, [isSuccess, isError, cities.length, setError])
 
   const onSubmit = useCallback(
     ({ postalCode }: PostalCodeForm) => {
@@ -95,8 +92,8 @@ export const CitySearchInput = ({
 
   const handlePostalCodeChange = (postalCode: string) => {
     setPostalCodeQuery(postalCode)
-    if (settings) {
-      setIsPostalCodeIneligible(settings.ineligiblePostalCodes.includes(postalCode))
+    if (ineligiblePostalCodes) {
+      setIsPostalCodeIneligible(ineligiblePostalCodes.includes(postalCode))
     }
   }
 

@@ -1,13 +1,16 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { SubscribeButton } from 'features/subscription/components/buttons/SubscribeButton'
+import { useIconWiggle } from 'features/subscription/helpers/useIconWiggle'
 import { storage } from 'libs/storage'
-import { ToggleButtonSize } from 'ui/components/buttons/ToggleButton'
 import { Tooltip } from 'ui/components/Tooltip'
+import { Button } from 'ui/designSystem/Button/Button'
+import type { ButtonNativeProps, ButtonSize } from 'ui/designSystem/Button/types'
+import { Bell } from 'ui/svg/icons/Bell'
+import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { getSpacing } from 'ui/theme'
 
-const WIDGET_HEIGHT = getSpacing(10 + 1 + 4) // roundedButton + padding + caption
+const WIDGET_HEIGHT = getSpacing(6) // fallback offset before layout measurement
 const TOOLTIP_WIDTH = getSpacing(65)
 const DISPLAY_START_OFFSET_IN_MS = 1000
 const DISPLAY_DURATION_IN_MS = 8000
@@ -16,9 +19,11 @@ const MAX_TOOLTIP_DISPLAYS = 3
 export const SubscribeButtonWithTooltip = (props: {
   active: boolean
   onPress: () => void
-  size?: ToggleButtonSize
+  size?: ButtonSize
 }) => {
-  const [isTooltipVisible, setIsTooltipVisible] = React.useState(false)
+  const [isTooltipVisible, setIsTooltipVisible] = useState(false)
+  const [buttonHeight, setButtonHeight] = useState<number | null>(null)
+  const { iconAnimatedStyle, trigger } = useIconWiggle()
 
   const displayTooltipIfNeeded = useCallback(async () => {
     const timesTooltipHasBeenDisplayed = Number(
@@ -55,24 +60,58 @@ export const SubscribeButtonWithTooltip = (props: {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [displayTooltipIfNeeded, hideTooltip])
 
+  const isSmall = props.size === 'small'
+  const wording = props.active ? 'Déjà suivi' : 'Suivre'
+  const a11yLabel = props.active ? 'Thème déjà suivi' : 'Suivre le thème'
+  const icon = props.active ? ActiveBellIcon : Bell
+
+  const onPressWithAnimation = () => {
+    if (!props.active) trigger()
+    props.onPress()
+  }
+
+  const buttonCommonProps = {
+    icon,
+    variant: 'secondary',
+    color: 'neutral',
+    size: 'small',
+    onPress: onPressWithAnimation,
+    accessibilityLabel: a11yLabel,
+    iconAnimatedStyle,
+  } as const
+
+  const buttonProps: ButtonNativeProps = {
+    ...buttonCommonProps,
+    ...(isSmall ? { iconButton: true } : { wording }),
+  }
+
+  const tooltipOffset = buttonHeight ?? WIDGET_HEIGHT
+
   return (
-    <React.Fragment>
-      <SubscribeButton label={{ active: 'Déjà suivi', inactive: 'Suivre' }} {...props} />
+    <TooltipAnchor onLayout={(event) => setButtonHeight(event.nativeEvent.layout.height)}>
+      <Button {...buttonProps} />
       <StyledTooltip
         label="Suis ce thème pour recevoir de l’actualité sur ce sujet&nbsp;!"
         pointerDirection="top"
         isVisible={isTooltipVisible}
         onHide={hideTooltip}
         onCloseIconPress={onCloseIconPress}
+        offset={tooltipOffset}
       />
-    </React.Fragment>
+    </TooltipAnchor>
   )
 }
 
-const StyledTooltip = styled(Tooltip)(({ theme }) => ({
+const TooltipAnchor = styled.View({ alignSelf: 'flex-start', position: 'relative' })
+
+const StyledTooltip = styled(Tooltip)<{ offset: number }>(({ theme, offset }) => ({
   position: 'absolute',
-  bottom: -WIDGET_HEIGHT,
+  top: offset,
   right: 0,
   zIndex: theme.zIndex.header,
   width: TOOLTIP_WIDTH,
 }))
+
+const ActiveBellIcon = styled(BellFilled).attrs(({ theme }) => ({
+  color: theme.designSystem.color.background.brandPrimary,
+}))``

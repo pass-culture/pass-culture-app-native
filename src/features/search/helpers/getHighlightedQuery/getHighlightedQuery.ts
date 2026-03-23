@@ -2,9 +2,9 @@
 export function getHighlightedQuery(query: string, partToHighlight: string): string {
   if (partToHighlight === '') return query
 
-  const escapedPartToHighlight = partToHighlight.replace(/[\\^$*+?.()|[\]{}]/g, '\\$&')
+  const escapedPartToHighlight = partToHighlight.replace(/[\\^$*+?.()|[\]{}]/g, String.raw`\$&`)
 
   const regex = new RegExp(escapedPartToHighlight, 'gi')
 
-  return query.replace(regex, '<mark>$&</mark>')
+  return query.replaceAll(regex, '<mark>$&</mark>')
 }

@@ -8,7 +8,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { DeleteProfileReasonNewEmailModal } from 'features/profile/components/Modals/DeleteProfileReasonNewEmailModal'
 import { useCheckHasCurrentEmailChangeQuery } from 'features/profile/queries/useCheckHasCurrentEmailChangeQuery'
 import { useModal } from 'ui/components/modals/useModal'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 import { ChangeEmailContent } from './ChangeEmailContent'
 
@@ -32,9 +32,12 @@ export function ChangeEmail() {
 
   return (
     <React.Fragment>
-      <SecondaryPageWithBlurHeader title="Modifier mon e-mail">
-        <ChangeEmailContent hasCurrentEmailChange={hasCurrentEmailChange} user={user} />
-      </SecondaryPageWithBlurHeader>
+      <PageWithHeader
+        title="Modifier mon e-mail"
+        scrollChildren={
+          <ChangeEmailContent hasCurrentEmailChange={hasCurrentEmailChange} user={user} />
+        }
+      />
       <DeleteProfileReasonNewEmailModal isVisible={visible} hideModal={handleHideModal} />
     </React.Fragment>
   )

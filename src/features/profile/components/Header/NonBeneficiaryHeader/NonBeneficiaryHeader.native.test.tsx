@@ -10,6 +10,7 @@ import {
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
+import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, useLocation } from 'libs/location/location'
@@ -75,7 +76,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     })
 
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false },
+      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
     })
@@ -98,7 +99,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     })
 
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false },
+      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
     })
@@ -118,7 +119,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
 
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false },
+      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
     })
@@ -138,7 +139,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
 
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false },
+      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
     })
@@ -153,7 +154,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
     mockServer.getApi<BannerResponse>('/v1/banner', {})
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false },
+      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
       startDatetime: '2021-03-31T00:00Z',
       endDatetime: '2022-03-31T00:00Z',
     })
@@ -173,7 +174,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
 
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false },
+      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
     })
@@ -190,7 +191,7 @@ function renderNonBeneficiaryHeader({
   startDatetime,
   endDatetime,
 }: {
-  featureFlags: { disableActivation: boolean }
+  featureFlags: ProfileFeatureFlagsProps['featureFlags']
   startDatetime: string
   endDatetime: string
 }) {

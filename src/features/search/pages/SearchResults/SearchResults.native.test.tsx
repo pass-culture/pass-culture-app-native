@@ -17,6 +17,7 @@ import { AlgoliaOffer, AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, Position } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -57,6 +58,10 @@ const initialSearchResults = {
       'name'
     ),
     duplicatedOffers: [],
+    venueNotOpenToPublic: mockedAlgoliaResponse.hits.map((hit: Hit<AlgoliaOffer>) => ({
+      ...hit.venue,
+      _geoloc: hit._geoloc,
+    })) as AlgoliaVenue[],
     venues: mockedAlgoliaResponse.hits.map((hit: Hit<AlgoliaOffer>) => ({
       ...hit.venue,
       _geoloc: hit._geoloc,
@@ -96,7 +101,7 @@ const mockHits = [
       exact_nb_hits: 2,
       facets: {
         analytics: {
-          ['offer.searchGroupNamev2']: [
+          ['offer.searchGroups']: [
             {
               attribute: '',
               operator: '',
@@ -132,7 +137,7 @@ const mockHits = [
       exact_nb_hits: 2,
       facets: {
         analytics: {
-          ['offer.searchGroupNamev2']: [
+          ['offer.searchGroups']: [
             {
               attribute: '',
               operator: '',
@@ -223,13 +228,6 @@ const mockedEmptyHistory = {
   search: jest.fn(),
 }
 
-const mockUseRemoteConfigQuery = jest.fn(() => ({
-  data: { displayNewSearchHeader: false },
-}))
-jest.mock('libs/firebase/remoteConfig/queries/useRemoteConfigQuery', () => ({
-  useRemoteConfigQuery: () => mockUseRemoteConfigQuery(),
-}))
-
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -265,7 +263,7 @@ describe('<SearchResults/>', () => {
   it('should render SearchResults', async () => {
     render(reactQueryProviderHOC(<SearchResults />))
 
-    await screen.findByText('Rechercher')
+    await screen.findByTestId('searchInput')
 
     expect(screen).toMatchSnapshot()
   })
@@ -312,7 +310,7 @@ describe('<SearchResults/>', () => {
 
     it('should display offer suggestions', async () => {
       render(reactQueryProviderHOC(<SearchResults />))
-      await screen.findByText('Rechercher')
+      await screen.findByTestId('searchInput')
 
       expect(screen.getByTestId('autocompleteOfferItem_1')).toBeOnTheScreen()
       expect(screen.getByTestId('autocompleteOfferItem_2')).toBeOnTheScreen()
@@ -321,7 +319,7 @@ describe('<SearchResults/>', () => {
     it('should display venue suggestions', async () => {
       render(reactQueryProviderHOC(<SearchResults />))
 
-      await screen.findByText('Rechercher')
+      await screen.findByTestId('searchInput')
 
       expect(screen.getByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
       expect(screen.getByTestId('autocompleteVenueItem_2')).toBeOnTheScreen()
@@ -329,7 +327,7 @@ describe('<SearchResults/>', () => {
 
     it('should handle venue press', async () => {
       render(reactQueryProviderHOC(<SearchResults />))
-      await screen.findByText('Rechercher')
+      await screen.findByTestId('searchInput')
 
       await user.press(screen.getByTestId('autocompleteVenueItem_1'))
 
@@ -337,6 +335,22 @@ describe('<SearchResults/>', () => {
         from: 'searchAutoComplete',
         venueId: '1',
       })
+    })
+
+    it('should hide header', async () => {
+      render(reactQueryProviderHOC(<SearchResults />))
+
+      await screen.findByTestId('searchInput')
+
+      expect(screen.queryByText('Rechercher')).not.toBeOnTheScreen()
+    })
+
+    it('should not display filter button', async () => {
+      render(reactQueryProviderHOC(<SearchResults />))
+
+      await screen.findByTestId('searchInput')
+
+      expect(screen.queryByLabelText(/Voir tous les filtres/)).not.toBeOnTheScreen()
     })
 
     it('should dismiss keyboard on scroll', async () => {
@@ -350,7 +364,7 @@ describe('<SearchResults/>', () => {
       const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
       render(reactQueryProviderHOC(<SearchResults />))
 
-      await screen.findByText('Rechercher')
+      await screen.findByTestId('searchInput')
 
       const scrollView = screen.getByTestId('autocompleteScrollView')
       // 1st scroll to bottom => trigger
@@ -362,7 +376,7 @@ describe('<SearchResults/>', () => {
     it('should display search history when it has items', async () => {
       mockdate.set(TODAY_DATE)
       render(reactQueryProviderHOC(<SearchResults />))
-      await screen.findByText('Rechercher')
+      await screen.findByTestId('searchInput')
 
       expect(screen.getByText('Historique de recherche')).toBeOnTheScreen()
     })
@@ -374,7 +388,7 @@ describe('<SearchResults/>', () => {
         .mockReturnValueOnce(mockedEmptyHistory)
         .mockReturnValueOnce(mockedEmptyHistory)
       render(reactQueryProviderHOC(<SearchResults />))
-      await screen.findByText('Rechercher')
+      await screen.findByTestId('searchInput')
 
       expect(screen.queryByText('Historique de recherche')).not.toBeOnTheScreen()
     })
@@ -383,7 +397,7 @@ describe('<SearchResults/>', () => {
       mockdate.set(TODAY_DATE)
       const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
       render(reactQueryProviderHOC(<SearchResults />))
-      await screen.findByText('Rechercher')
+      await screen.findByTestId('searchInput')
 
       await user.press(screen.getByText('manga'))
 
@@ -394,7 +408,7 @@ describe('<SearchResults/>', () => {
       it('When it has not category and native category', async () => {
         mockdate.set(TODAY_DATE)
         render(reactQueryProviderHOC(<SearchResults />))
-        await screen.findByText('Rechercher')
+        await screen.findByTestId('searchInput')
 
         await user.press(screen.getByText('manga'))
 
@@ -416,7 +430,7 @@ describe('<SearchResults/>', () => {
       it('When it has category and native category', async () => {
         mockdate.set(TODAY_DATE)
         render(reactQueryProviderHOC(<SearchResults />))
-        await screen.findByText('Rechercher')
+        await screen.findByTestId('searchInput')
 
         await user.press(screen.getByText('tolkien'))
 
@@ -438,7 +452,7 @@ describe('<SearchResults/>', () => {
       it('When it has only a category', async () => {
         mockdate.set(TODAY_DATE)
         render(reactQueryProviderHOC(<SearchResults />))
-        await screen.findByText('Rechercher')
+        await screen.findByTestId('searchInput')
 
         await user.press(screen.getByText('foresti'))
 
@@ -455,6 +469,28 @@ describe('<SearchResults/>', () => {
             offerCategories: [SearchGroupNameEnumv2.SPECTACLES],
           },
         })
+      })
+    })
+
+    describe('When enableAIFakeDoor FF is activated', () => {
+      beforeEach(() => {
+        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR])
+      })
+
+      it('should display AI fake door button', async () => {
+        render(reactQueryProviderHOC(<SearchResults />))
+
+        expect(
+          await screen.findByLabelText('Accéder au questionnaire sur l’IA pass Culture')
+        ).toBeOnTheScreen()
+      })
+
+      it('should open AI fake door modal when pressing AI button', async () => {
+        render(reactQueryProviderHOC(<SearchResults />))
+
+        await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
+
+        expect(await screen.findByText('Encore un peu de patience...')).toBeOnTheScreen()
       })
     })
   })
@@ -488,7 +524,7 @@ describe('<SearchResults/>', () => {
     it('should generate searchId and dispatch it in the state', async () => {
       render(reactQueryProviderHOC(<SearchResults />))
 
-      await screen.findByText('Rechercher')
+      await screen.findByTestId('searchInput')
 
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_SEARCH_ID',
@@ -497,39 +533,12 @@ describe('<SearchResults/>', () => {
     })
   })
 
-  describe('When displayNewSearchHeader is enabled', () => {
-    beforeAll(() => {
-      mockUseRemoteConfigQuery.mockReturnValue({
-        data: { displayNewSearchHeader: true },
-      })
-    })
+  it('should open AI fake door modal when pressing banner and enableAIFakeDoor FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR])
+    render(reactQueryProviderHOC(<SearchResults />))
 
-    afterAll(() => {
-      mockUseRemoteConfigQuery.mockReturnValue({
-        data: { displayNewSearchHeader: false },
-      })
-    })
+    await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
 
-    it('should display back arrow when displayNewSearchHeader is true', async () => {
-      render(reactQueryProviderHOC(<SearchResults />))
-
-      await screen.findByText('Rechercher')
-
-      expect(screen.getByTestId('icon-back')).toBeOnTheScreen()
-    })
-
-    describe('When input is focused', () => {
-      beforeEach(() => {
-        mockUseSearch.mockReturnValue({ ...DEFAULT_MOCK_USE_SEARCH, isFocusOnSuggestions: true })
-      })
-
-      it('should hide header', async () => {
-        render(reactQueryProviderHOC(<SearchResults />))
-
-        await screen.findByTestId('searchInput')
-
-        expect(screen.queryByText('Rechercher')).not.toBeOnTheScreen()
-      })
-    })
+    expect(await screen.findByText('Encore un peu de patience...')).toBeOnTheScreen()
   })
 })

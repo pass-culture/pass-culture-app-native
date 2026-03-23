@@ -1,12 +1,12 @@
 import React from 'react'
-import styled from 'styled-components/native'
 
 import { EligibilityType } from 'api/gen'
+import { HighlightedBody } from 'features/profile/components/HighlightedBody/HighlightedBody'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Offers } from 'ui/svg/icons/Offers'
 import { Typo } from 'ui/theme'
 
@@ -48,7 +48,7 @@ export const EmptyCredit = ({
         {ageToShowCreditV3 + 1} ans. En attendant…
       </Typo.Body>
       <InternalTouchableLink
-        as={ButtonPrimary}
+        as={Button}
         wording="Profite d’offres gratuites"
         navigateTo={{
           screen: 'ThematicHome',
@@ -59,7 +59,3 @@ export const EmptyCredit = ({
     </ViewGap>
   )
 }
-
-const HighlightedBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.designSystem.color.text.brandSecondary,
-}))

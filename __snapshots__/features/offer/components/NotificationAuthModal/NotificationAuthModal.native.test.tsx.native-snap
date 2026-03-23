@@ -144,7 +144,7 @@ exports[`NotificationAuthModal should match previous snapshot 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={432}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -157,7 +157,7 @@ exports[`NotificationAuthModal should match previous snapshot 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
+          "height": 432,
           "justifyContent": "center",
           "maxHeight": 650,
           "maxWidth": 960,
@@ -171,12 +171,14 @@ exports[`NotificationAuthModal should match previous snapshot 1`] = `
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -244,7 +246,7 @@ activer un rappel
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -273,10 +275,20 @@ activer un rappel
                     "userSelect": "auto",
                   },
                   {
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
                   },
                 ],
                 {
@@ -287,13 +299,53 @@ activer un rappel
             testID="Fermer la modale"
           >
             <View
-              height={20}
-              testID="rightIcon"
-              width={20}
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
+                }
+              }
             >
-              <Text>
-                rightIcon-SVG-Mock
-              </Text>
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="0"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  testID="rightIcon"
+                  width={22}
+                >
+                  <Text>
+                    rightIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>
@@ -301,7 +353,7 @@ activer un rappel
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
@@ -363,23 +415,17 @@ activer un rappel
                   Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil !
                 </Text>
                 <View
-                  numberOfSpaces={6}
                   style={
                     {
-                      "height": 24,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
+                      "marginBottom": 16,
+                      "marginTop": 24,
                       "width": "100%",
                     }
                   }
                 >
                   <View
                     accessibilityLabel="Créer un compte"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -414,16 +460,21 @@ activer un rappel
                           },
                           {
                             "alignItems": "center",
-                            "borderBottomLeftRadius": 24,
-                            "borderBottomRightRadius": 24,
-                            "borderTopLeftRadius": 24,
-                            "borderTopRightRadius": 24,
+                            "backgroundColor": "#6123df",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderColor": "#6123df",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 1,
+                            "flexDirection": "row",
                             "justifyContent": "center",
-                            "overflow": "hidden",
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
+                            "paddingBottom": 8,
+                            "paddingLeft": 12,
+                            "paddingRight": 12,
+                            "paddingTop": 8,
+                            "width": "auto",
                           },
                         ],
                         {
@@ -434,37 +485,36 @@ activer un rappel
                     testID="Créer un compte"
                   >
                     <View
-                      height={48}
-                      width="100%"
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                    <View
+                      gap={8}
+                      hasIcon={false}
+                      isMultiline={false}
                       style={
                         {
                           "alignItems": "center",
+                          "columnGap": 8,
                           "flexDirection": "row",
-                          "position": "absolute",
                         }
                       }
                     >
                       <Text
-                        adjustsFontSizeToFit={true}
-                        isDisabled={false}
-                        numberOfLines={1}
                         style={
-                          {
-                            "color": "#ffffff",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                            "paddingBottom": 8,
-                            "paddingLeft": 8,
-                            "paddingRight": 8,
-                            "paddingTop": 8,
-                          }
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#ffffff",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
                         }
                       >
                         Créer un compte
@@ -472,14 +522,6 @@ activer un rappel
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    {
-                      "height": 16,
-                    }
-                  }
-                />
                 <View
                   style={
                     {
@@ -531,9 +573,9 @@ activer un rappel
                         {
                           "color": "#320096",
                           "cursor": "pointer",
-                          "fontFamily": "Montserrat-Bold",
+                          "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
-                          "lineHeight": 25.6,
+                          "lineHeight": 22,
                           "textDecorationLine": "underline",
                         }
                       }

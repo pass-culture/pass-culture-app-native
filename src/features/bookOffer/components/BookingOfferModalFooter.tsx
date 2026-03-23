@@ -9,7 +9,7 @@ import {
   resetBookingState,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Button } from 'ui/designSystem/Button/Button'
 
 type BookingOptions = {
   hasPricesStep?: boolean
@@ -30,17 +30,18 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: BookingOptions
   const enabledButton = getButtonState(bookingState)
 
   const validateOptions = useCallback(() => {
-    analyticsBySteps[step]?.()
+    void analyticsBySteps[step]?.()
 
     handleBookingSteps(step, dispatch, { isDuo, hasPricesStep })
   }, [dispatch, hasPricesStep, isDuo, step])
 
   return step == Step.CONFIRMATION ? null : (
     <FooterContainer testID="bookingOfferModalFooter">
-      <ButtonPrimary
+      <Button
         wording={getButtonWording(bookingState.step)}
         onPress={validateOptions}
         disabled={!enabledButton}
+        fullWidth
       />
     </FooterContainer>
   )

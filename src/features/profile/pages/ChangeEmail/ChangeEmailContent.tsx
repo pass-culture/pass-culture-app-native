@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
@@ -6,11 +7,10 @@ import { AlreadyChangedEmailDisclaimer } from 'features/profile/components/Discl
 import { ChangeEmailDisclaimer } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimer'
 import { useChangeEmailMutation } from 'features/profile/queries/useChangeEmailMutation'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
 import { Banner } from 'ui/designSystem/Banner/Banner'
-import { getSpacing } from 'ui/theme'
+import { Button } from 'ui/designSystem/Button/Button'
 
 export function ChangeEmailContent({
   hasCurrentEmailChange,
@@ -30,7 +30,7 @@ export function ChangeEmailContent({
 
   const isSubmitButtonDisabled = !user?.email || isLoading
   return (
-    <Container>
+    <View>
       {hasCurrentEmailChange ? (
         <DisclaimerContainer>
           <AlreadyChangedEmailDisclaimer />
@@ -51,7 +51,8 @@ export function ChangeEmailContent({
             <Banner label="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h." />
           </InfoBannerContainer>
           <ButtonContainer paddingBottom={bottom}>
-            <ButtonPrimary
+            <Button
+              fullWidth
               wording="Envoyer la demande"
               accessibilityLabel="Valider la demande de modification de mon e-mail"
               onPress={submitEmailChange}
@@ -60,15 +61,14 @@ export function ChangeEmailContent({
           </ButtonContainer>
         </Form.MaxWidth>
       </CenteredContainer>
-    </Container>
+    </View>
   )
 }
 
-const CenteredContainer = styled.View({
-  flex: 1,
+const CenteredContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
-  marginBottom: getSpacing(6),
-})
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const ButtonContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
   paddingBottom,
@@ -76,8 +76,11 @@ const ButtonContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom 
   width: '100%',
 }))
 
-const DisclaimerContainer = styled.View({ marginBottom: getSpacing(4) })
+const DisclaimerContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
 
-const InfoBannerContainer = styled.View({ marginTop: getSpacing(4), marginBottom: getSpacing(12) })
-
-const Container = styled.View({ marginTop: getSpacing(6) })
+const InfoBannerContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.xxxxl,
+}))

@@ -37,8 +37,8 @@ const BackgroundContainer = styled.View<HeaderBackgroundProps>(({ height, theme 
 }))
 
 const HeaderBackgroundSvg: React.FC<HeaderBackgroundProps> = (props) => {
-  const { appContentWidth } = useTheme()
-  const width = props.width || appContentWidth + getSpacing(1)
+  const { appContentWidth, designSystem } = useTheme()
+  const width = props.width || appContentWidth + designSystem.size.spacing.xs
   const height = props.height || HEADER_BACKGROUND_DEFAULT_SIZE
   const { id: id1, fill: fill1 } = svgIdentifier()
   const { id: id2, fill: fill2 } = svgIdentifier()

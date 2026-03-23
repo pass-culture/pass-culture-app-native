@@ -20,7 +20,7 @@ import {
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
-import { OfferResponseV2, ReactionTypeEnum, RecommendationApiParams } from 'api/gen'
+import { OfferArtist, OfferResponse, ReactionTypeEnum, RecommendationApiParams } from 'api/gen'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -52,19 +52,18 @@ import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMu
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { ImageWithCredit } from 'shared/types'
-import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 type OfferContentBaseProps = OfferContentProps &
   PropsWithChildren<{
     BodyWrapper: FunctionComponent
     onOfferPreviewPress: (index?: number) => void
     onShowChroniclesWritersModal: () => void
-    onShowOfferArtistsModal: () => void
+    onShowOfferArtistsModal: (artists: OfferArtist[]) => void
     onVideoConsentPress?: () => void
     chronicles?: ChronicleCardData[]
     likesCount?: number
@@ -97,12 +96,13 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   userId,
   hasVideoCookiesConsent,
   onVideoConsentPress,
-  segment,
-  enableVideoABTesting,
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
+  HeaderComponent,
+  CTAsComponent,
   children,
 }) => {
+  const HeaderToRender = HeaderComponent || OfferHeader
   const theme = useTheme()
 
   const { navigate } = useNavigation<UseNavigationType>()
@@ -117,7 +117,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   const apiRecoParams: RecommendationApiParams = params?.apiRecoParams
     ? JSON.parse(params?.apiRecoParams)
     : undefined
-  const { showErrorSnackBar } = useSnackBarContext()
 
   const {
     sameCategorySimilarOffers,
@@ -153,7 +152,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   )
 
   const queryClient = useQueryClient()
-  const cachedOffer = queryClient.getQueryData<OfferResponseV2>([QueryKeys.OFFER, offer.id])
+  const cachedOffer = queryClient.getQueryData<OfferResponse>([QueryKeys.OFFER, offer.id])
 
   // Extract cached image before it's been updated by next offer query
   const placeholderImage = useRef(cachedOffer?.images?.recto?.url).current
@@ -216,10 +215,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
 
   const { mutate: removeFavorite, isPending: isRemoveFavoriteLoading } = useRemoveFavoriteMutation({
     onError: () => {
-      showErrorSnackBar({
-        message: 'L’offre n’a pas été retirée de tes favoris',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('L’offre n’a pas été retirée de tes favoris')
     },
   })
 
@@ -258,8 +254,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     />
   )
 
-  const { animationState } = getAnimationState(theme, headerTransition)
-
   const handleViewableItemsChanged = useCallback(
     (
       items: Pick<ViewToken, 'key' | 'index'>[],
@@ -278,20 +272,32 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     [offer.id, pageTracking]
   )
 
+  const OfferCTAsComponent = CTAsComponent ? (
+    <CTAsComponent
+      offer={offer}
+      subcategory={subcategory}
+      trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+      favoriteCTAProps={favoriteButtonProps}
+      onLayout={onLayout}
+    />
+  ) : (
+    <OfferContentCTAs offer={offer} onLayout={onLayout} {...favoriteButtonProps}>
+      {offerCtaButton}
+    </OfferContentCTAs>
+  )
+
   return (
     <Container>
       <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
         <OfferWebMetaHeader offer={offer} />
-        <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer}>
+        <HeaderToRender title={offer.name} headerTransition={headerTransition} offer={offer}>
           {onReactionButtonPress ? (
             <OfferReactionHeaderButton
               onPress={onReactionButtonPress}
               defaultReaction={defaultReaction}
-              animationState={animationState}
             />
           ) : (
             <FavoriteButton
-              animationState={animationState}
               offerId={offer.id}
               addFavorite={addFavorite}
               isAddFavoriteLoading={isAddFavoriteLoading}
@@ -300,7 +306,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               favorite={favorite}
             />
           )}
-        </OfferHeader>
+        </HeaderToRender>
         <IntersectionObserverScrollView
           testID="offerv2-container"
           scrollEventThrottle={16}
@@ -317,8 +323,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               placeholderImage={placeholderImage}
               imageDimensions={imageDimensions}
               offer={offer}
-              segment={segment}
-              enableVideoABTesting={enableVideoABTesting}
             />
             <OfferBody
               offer={offer}
@@ -329,18 +333,12 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               distance={distance}
               headlineOffersCount={headlineOffersCount}
               chronicleVariantInfo={chronicleVariantInfo}
-              userId={userId}
               isVideoSectionEnabled={isVideoSectionEnabled}
               hasVideoCookiesConsent={hasVideoCookiesConsent}
               onVideoConsentPress={onVideoConsentPress}
-              enableVideoABTesting={enableVideoABTesting}
               isMultiArtistsEnabled={isMultiArtistsEnabled}
               onShowOfferArtistsModal={onShowOfferArtistsModal}>
-              {theme.isDesktopViewport ? (
-                <OfferContentCTAs offer={offer} {...favoriteButtonProps}>
-                  {offerCtaButton}
-                </OfferContentCTAs>
-              ) : null}
+              {theme.isDesktopViewport ? OfferCTAsComponent : null}
             </OfferBody>
           </BodyWrapper>
 
@@ -371,13 +369,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           />
           {children}
         </IntersectionObserverScrollView>
-        {theme.isMobileViewport ? (
-          <FooterContainer>
-            <OfferContentCTAs offer={offer} onLayout={onLayout} {...favoriteButtonProps}>
-              {offerCtaButton}
-            </OfferContentCTAs>
-          </FooterContainer>
-        ) : null}
+        {theme.isMobileViewport ? <FooterContainer>{OfferCTAsComponent}</FooterContainer> : null}
       </AnchorProvider>
     </Container>
   )

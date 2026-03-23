@@ -2,7 +2,7 @@ import { QueryClient } from '@tanstack/react-query'
 import React, { ComponentProps } from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { OfferResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
+import { OfferResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -146,7 +146,7 @@ describe('<OfferContent />', () => {
   })
 
   it.skip('should not show preview modal when clicking on offer placeholder image', async () => {
-    const offer: OfferResponseV2 = {
+    const offer: OfferResponse = {
       ...offerResponseSnap,
       images: null,
     }
@@ -171,7 +171,6 @@ const renderOfferContent = ({
   subcategory = mockSubcategory,
   isDesktopViewport = false,
   isMobileViewport = false,
-  segment = 'A',
 }: RenderOfferContentType) => {
   useRoute.mockReturnValue({ params: { id: offer.id } })
   return render(
@@ -183,7 +182,6 @@ const renderOfferContent = ({
         chronicleVariantInfo={chronicleVariantInfoFixture}
         onShowChroniclesWritersModal={jest.fn()}
         onVideoConsentPress={jest.fn()}
-        segment={segment}
         onShowOfferArtistsModal={jest.fn()}
       />,
       setupQueryClient

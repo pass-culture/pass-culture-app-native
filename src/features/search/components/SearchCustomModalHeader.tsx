@@ -4,8 +4,9 @@ import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { BackButton } from 'ui/components/headers/BackButton'
 import { CloseButton } from 'ui/components/headers/CloseButton'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -35,7 +36,14 @@ export const SearchCustomModalHeader: React.FC<Props> = ({
       <HeaderContent testID="pageHeader" height={headerHeight}>
         <ButtonContainer positionInHeader="left" testID="back-button-container">
           {shouldDisplayBackButton ? (
-            <BackButton onGoBack={onGoBack} color={designSystem.color.icon.default} />
+            <Button
+              iconButton
+              variant="tertiary"
+              color="neutral"
+              icon={ArrowPrevious}
+              onPress={onGoBack}
+              accessibilityLabel="Revenir en arrière"
+            />
           ) : null}
         </ButtonContainer>
         <StyledTitle4 numberOfLines={1} nativeID={titleId} {...getHeadingAttrs(1)}>

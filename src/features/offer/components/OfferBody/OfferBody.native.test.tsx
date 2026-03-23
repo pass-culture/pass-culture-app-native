@@ -5,7 +5,7 @@ import {
   CategoryIdEnum,
   HomepageLabelNameEnumv2,
   NativeCategoryIdEnumv2,
-  OfferResponseV2,
+  OfferResponse,
   OnlineOfflinePlatformChoicesEnum,
   SearchGroupNameEnumv2,
   SubcategoryIdEnum,
@@ -97,7 +97,7 @@ describe('<OfferBody />', () => {
     })
 
     it('should display vinyl tag', async () => {
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...offerResponseSnap,
         subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
         extraData: { musicType: 'Metal', musicSubType: 'Industrial' },
@@ -153,7 +153,7 @@ describe('<OfferBody />', () => {
   })
 
   it('should display artists', async () => {
-    const offer: OfferResponseV2 = {
+    const offer: OfferResponse = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
       artists: [
@@ -169,7 +169,7 @@ describe('<OfferBody />', () => {
   })
 
   it('should not display artists when array is empty', () => {
-    const offer: OfferResponseV2 = {
+    const offer: OfferResponse = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
       artists: [],
@@ -188,7 +188,7 @@ describe('<OfferBody />', () => {
   })
 
   it('should not display prices when the offer is free', async () => {
-    const offerFree: OfferResponseV2 = {
+    const offerFree: OfferResponse = {
       ...offerResponseSnap,
       stocks: [
         {
@@ -226,7 +226,7 @@ describe('<OfferBody />', () => {
     })
 
     it('should not display both section', async () => {
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...offerResponseSnap,
         isDuo: false,
         venue: {
@@ -246,7 +246,7 @@ describe('<OfferBody />', () => {
     })
 
     it('should not display top separator between this two section', async () => {
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...offerResponseSnap,
         isDuo: false,
         venue: {
@@ -262,7 +262,7 @@ describe('<OfferBody />', () => {
     })
 
     it('should display top separator above summary info list when venue button is not displayed', async () => {
-      const offerWithoutPermanentVenue: OfferResponseV2 = {
+      const offerWithoutPermanentVenue: OfferResponse = {
         ...offerResponseSnap,
         venue: {
           ...offerResponseSnap.venue,
@@ -296,7 +296,7 @@ describe('<OfferBody />', () => {
       })
 
       it('should not display venue button when venue is not permanent', async () => {
-        const offer: OfferResponseV2 = {
+        const offer: OfferResponse = {
           ...offerResponseSnap,
           venue: {
             ...offerResponseSnap.venue,
@@ -313,7 +313,7 @@ describe('<OfferBody />', () => {
       })
 
       it('should not display venue button when this is a cinema offer', async () => {
-        const offer: OfferResponseV2 = {
+        const offer: OfferResponse = {
           ...offerResponseSnap,
           venue: {
             ...offerResponseSnap.venue,
@@ -332,7 +332,7 @@ describe('<OfferBody />', () => {
 
     describe('Summary info section', () => {
       it('should display duo info', async () => {
-        const offer: OfferResponseV2 = {
+        const offer: OfferResponse = {
           ...offerResponseSnap,
           isDuo: true,
         }
@@ -342,7 +342,7 @@ describe('<OfferBody />', () => {
       })
 
       it('should not display duo info', async () => {
-        const offer: OfferResponseV2 = {
+        const offer: OfferResponse = {
           ...offerResponseSnap,
           isDuo: false,
         }
@@ -382,7 +382,7 @@ describe('<OfferBody />', () => {
 
   describe('About section', () => {
     it('should display about section', async () => {
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...offerResponseSnap,
         description: 'Cette offre est super cool cool cool cool cool cool',
         extraData: {
@@ -403,7 +403,7 @@ describe('<OfferBody />', () => {
     })
 
     it('should not display about section', async () => {
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...offerResponseSnap,
         description: undefined,
         extraData: {},
@@ -418,7 +418,7 @@ describe('<OfferBody />', () => {
   })
 
   describe('ProposedBy section', () => {
-    const offerWithDifferentAddress: OfferResponseV2 = {
+    const offerWithDifferentAddress: OfferResponse = {
       ...offerResponseSnap,
       address: {
         label: 'Lieu différent',
@@ -475,7 +475,7 @@ describe('<OfferBody />', () => {
 
   describe('Artists button', () => {
     it('should redirect to artist page when FF is enabled', async () => {
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...offerResponseSnap,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         artists: [{ id: '1', name: 'Stephen King' }],
@@ -491,8 +491,27 @@ describe('<OfferBody />', () => {
       expect(mockNavigate).toHaveBeenCalledWith('Artist', { id: '1' })
     })
 
+    it('should not redirect to artist page if artist has not id when FF is enabled', async () => {
+      const offer: OfferResponse = {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        artists: [{ name: 'Stephen King' }],
+      }
+
+      setFeatureFlags()
+
+      renderOfferBody({
+        offer,
+        subcategory: mockSubcategoryBook,
+      })
+
+      await user.press(await screen.findByText('Stephen King'))
+
+      expect(mockNavigate).not.toHaveBeenCalled()
+    })
+
     it('should log ConsultArtist when pressing artist name button and FF is enabled', async () => {
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...offerResponseSnap,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         artists: [{ id: '1', name: 'Stephen King' }],
@@ -514,7 +533,7 @@ describe('<OfferBody />', () => {
     })
 
     it('should not log ConsultArtist when pressing artist name if offer has several artists and FF is enabled', async () => {
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...offerResponseSnap,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         artists: [
@@ -534,7 +553,7 @@ describe('<OfferBody />', () => {
     })
 
     it('should not redirect to artist page when FF is disabled', async () => {
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...offerResponseSnap,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         artists: [{ id: '1', name: 'Stephen King' }],
@@ -553,7 +572,7 @@ describe('<OfferBody />', () => {
     })
 
     it('should can not press artists names if offer has several artists and wipOfferMultiArtists FF deactivated', async () => {
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...offerResponseSnap,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         artists: [
@@ -576,7 +595,7 @@ describe('<OfferBody />', () => {
 
     describe('When wipOfferMultiArtists FF activated', () => {
       it('should trigger artists modal opening when pressing artists names if offer has several artists', async () => {
-        const offer: OfferResponseV2 = {
+        const offer: OfferResponse = {
           ...offerResponseSnap,
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
           artists: [
@@ -599,7 +618,7 @@ describe('<OfferBody />', () => {
       })
 
       it('should open artist page when pressing artist name if offer has only one artist', async () => {
-        const offer: OfferResponseV2 = {
+        const offer: OfferResponse = {
           ...offerResponseSnap,
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
           artists: [{ id: '1', name: 'Stephen King' }],

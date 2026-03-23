@@ -6,7 +6,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
     accessibilityRole="header"
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -27,6 +27,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -58,7 +59,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -88,10 +89,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "flexGrow": 1,
-                  "height": 40,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 40,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                  "width": "auto",
                 },
               ],
               {
@@ -102,23 +112,53 @@ exports[`<SetStatus/> should render correctly 1`] = `
           testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-          <Text
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
-                "display": "none",
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
               }
             }
           >
-            Retour
-          </Text>
+            <View
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="0"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -432,11 +472,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -598,11 +639,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -764,11 +806,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -930,11 +973,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -1096,11 +1140,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -1262,11 +1307,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -1428,11 +1474,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -1607,11 +1654,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -1786,11 +1834,12 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         {
                           "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 8,
+                          "overflow": "hidden",
                           "width": 8,
                         }
                       }
@@ -1953,22 +2002,23 @@ exports[`<SetStatus/> should render correctly 1`] = `
               },
               {
                 "alignItems": "center",
+                "alignSelf": "center",
                 "backgroundColor": "#f1f1f4",
-                "borderBottomLeftRadius": 24,
-                "borderBottomRightRadius": 24,
-                "borderTopLeftRadius": 24,
-                "borderTopRightRadius": 24,
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
+                "borderColor": "#cbcdd2",
+                "borderStyle": "solid",
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
+                "borderWidth": 1,
                 "flexDirection": "row",
                 "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
+                "paddingBottom": 8,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 8,
                 "width": "100%",
               },
-              {},
             ],
             {
               "opacity": 1,
@@ -1978,24 +2028,39 @@ exports[`<SetStatus/> should render correctly 1`] = `
         testID="Continuer vers l’étape suivante"
       >
         <View
+          fullWidth={true}
+          gap={8}
+          hasIcon={false}
+          isMultiline={false}
           style={
             {
               "alignItems": "center",
+              "columnGap": 8,
               "flexDirection": "row",
+              "justifyContent": "center",
+              "width": "100%",
             }
           }
         >
           <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
             style={
-              {
-                "color": "#696a6f",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              }
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 16,
+                  "lineHeight": 22,
+                },
+                {
+                  "color": "#696a6f",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "maxWidth": "100%",
+                  "minWidth": 0,
+                  "textAlign": "center",
+                },
+              ]
             }
           >
             Continuer
@@ -2012,37 +2077,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
         }
       />
     </View>
-  </View>,
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
   </View>,
 ]
 `;

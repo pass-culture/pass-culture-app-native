@@ -5,21 +5,21 @@ import styled from 'styled-components/native'
 import { useAccountSuspendMutation } from 'features/auth/queries/useAccountSuspendMutation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 export function ConfirmDeleteProfile() {
   const { reset } = useNavigation<UseNavigationType>()
-  const { showErrorSnackBar } = useSnackBarContext()
 
   const { suspendAccount, isLoading } = useAccountSuspendMutation({
     onSuccess: () => {
@@ -41,10 +41,7 @@ export function ConfirmDeleteProfile() {
       })
     },
     onError: () => {
-      showErrorSnackBar({
-        message: 'Une erreur s’est produite pendant le chargement.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('Une erreur s’est produite pendant le chargement.')
     },
   })
 
@@ -58,7 +55,10 @@ export function ConfirmDeleteProfile() {
       buttonPrimary={{
         wording: 'Supprimer mon compte',
         isLoading: isLoading,
-        onPress: suspendAccount,
+        onPress: () => {
+          Adjust.gdprForgetMe()
+          suspendAccount()
+        },
       }}
       buttonTertiary={{
         wording: 'Consulter l’article d’aide',
@@ -108,6 +108,6 @@ const LinkInsideTextBlack = styled(LinkInsideText).attrs(({ theme }) => ({
   color: theme.designSystem.color.text.default,
 }))``
 
-const StyledBodyAccent = styled(Typo.BodyAccent)({
-  marginTop: getSpacing(5),
-})
+const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+}))

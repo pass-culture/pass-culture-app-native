@@ -13,8 +13,6 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ShareContent } from 'libs/share/types'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -37,8 +35,6 @@ export const EndedBookingItem = ({
   const subcategory = subcategoriesMapping[stock.offer.subcategoryId]
   const prePopulateOffer = usePrePopulateOffer()
   const netInfo = useNetInfoContext()
-  const { showErrorSnackBar } = useSnackBarContext()
-  const segment = useABSegment()
 
   const endedBookingDateLabel = getEndedBookingDateLabel(cancellationDate, dateUsed)
 
@@ -48,8 +44,6 @@ export const EndedBookingItem = ({
       categoryId: subcategory.categoryId,
       netInfo,
       prePopulateOffer,
-      segment,
-      showErrorSnackBar,
     })
 
   const { share: shareOffer, shareContent } = getShareOffer({

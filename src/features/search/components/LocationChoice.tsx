@@ -10,7 +10,7 @@ import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   onPress?: () => void
@@ -27,7 +27,7 @@ export const LocationChoice: React.FC<Props> = ({
   onPress,
   arrowNext = false,
   accessibilityDescribedBy,
-  isSelected,
+  isSelected = false,
   disabled = false,
   label,
   Icon,
@@ -53,9 +53,9 @@ export const LocationChoice: React.FC<Props> = ({
       disabled={disabled}
       {...accessibleRadioProps({ checked: isSelected, label })}>
       <FirstPart ref={containerRef}>
-        <Spacer.Row numberOfSpaces={3} />
+        <WrapperStyledIcon />
         <StyledIcon />
-        <Spacer.Row numberOfSpaces={3} />
+        <WrapperStyledIcon />
         <TextContainer>
           <ButtonText
             numberOfLines={3}
@@ -66,14 +66,16 @@ export const LocationChoice: React.FC<Props> = ({
         </TextContainer>
         {isSelected ? <Validate testID="validateIcon" /> : null}
       </FirstPart>
-      <SecondPart>
+      <SecondPart isSelected={isSelected} arrowNext={arrowNext}>
         {arrowNext ? <ArrowNext /> : null}
-        {!isSelected && !arrowNext ? <Spacer.Row numberOfSpaces={8} /> : null}
       </SecondPart>
     </Container>
   )
 }
 
+const WrapperStyledIcon = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xs,
+}))
 const Container = styled(TouchableOpacity)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
@@ -93,11 +95,14 @@ const TextContainer = styled.View(({ theme }) => ({
   marginRight: theme.isMobileViewport ? 0 : theme.designSystem.size.spacing.l,
 }))
 
-const SecondPart = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-  height: '100%',
-})
+const SecondPart = styled.View<{ isSelected: boolean; arrowNext: boolean }>(
+  ({ isSelected, arrowNext, theme }) => ({
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: '100%',
+    marginLeft: !arrowNext && !isSelected ? theme.designSystem.size.spacing.xl : 0,
+  })
+)
 
 const ButtonText = styled(Typo.BodyAccent)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
   color: isSelected

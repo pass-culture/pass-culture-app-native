@@ -52,7 +52,7 @@ export const ModuleTitlePlaceholder = () => {
   return (
     <SkeletonTile
       width={getSpacing(50)}
-      height={getSpacing(4)}
+      height={designSystem.size.spacing.l}
       borderRadius={designSystem.size.borderRadius.m}
     />
   )
@@ -82,25 +82,25 @@ export const TextPlaceholder = ({ width, height }: { width: number; height?: num
   const { designSystem } = useTheme()
   return (
     <SkeletonTile
-      height={height ?? getSpacing(3)}
+      height={height ?? designSystem.size.spacing.m}
       width={width}
       borderRadius={designSystem.size.borderRadius.m}
     />
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flexDirection: 'column',
-  paddingHorizontal: getSpacing(6),
-  gap: getSpacing(5),
-  marginTop: getSpacing(1),
-})
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
+  gap: theme.designSystem.size.spacing.xl,
+  marginTop: theme.designSystem.size.spacing.xs,
+}))
 
 const Separator = () => <StyledSeparator />
 
 const StyledView = styled.View(({ theme }) => ({
   gap: theme.designSystem.size.spacing.s,
-  marginVertical: getSpacing(3),
+  marginVertical: theme.designSystem.size.spacing.m,
 }))
 
-const StyledSeparator = styled.View({ width: getSpacing(4) })
+const StyledSeparator = styled.View(({ theme }) => ({ width: theme.designSystem.size.spacing.l }))

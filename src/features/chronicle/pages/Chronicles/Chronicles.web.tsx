@@ -25,9 +25,9 @@ import {
 } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Button } from 'ui/designSystem/Button/Button'
 
 export const Chronicles: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'Chronicles'>>()
@@ -54,7 +54,7 @@ export const Chronicles: FunctionComponent = () => {
   const { trackEventHasSeenOfferOnce } = useOfferBatchTracking(subcategory.id)
   const prices = getOfferPrices(offer?.stocks ?? [])
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
   const imageDimensions = useOfferImageContainerDimensions(offer?.subcategoryId)
 
@@ -110,9 +110,10 @@ export const Chronicles: FunctionComponent = () => {
                 offer={offer}
                 subcategory={subcategoriesMapping[offer.subcategoryId]}
                 trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+                fullScreen
               />
             ) : (
-              <ButtonPrimary wording="Trouve ta séance" onPress={onPress} />
+              <Button wording="Trouve ta séance" onPress={onPress} color="brand" />
             )}
           </StyledChronicleOfferInfo>
         ) : null}

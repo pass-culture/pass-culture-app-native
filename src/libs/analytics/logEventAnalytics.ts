@@ -7,7 +7,7 @@ import {
   NativeCategoryIdEnumv2,
   ReactionTypeEnum,
   RecommendationApiParams,
-  VenueContactModel,
+  VenueContact,
 } from 'api/gen'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { PreValidationSignupStep } from 'features/auth/enums'
@@ -51,6 +51,7 @@ type ConsultThematicHomeParams = ConsultHomeParams & {
   moduleItemId?: string
 }
 type ShareParams = { from: Referrals; social?: Social | 'Other' } & (
+  | { type: 'Artist'; artistId: string; artistName: string }
   | { type: 'Offer'; offerId: number }
   | { type: 'Venue'; venueId: number }
   | { type: 'App' }
@@ -388,16 +389,11 @@ export const logEventAnalytics = {
       | 'FeedbackInApp'
       | 'LegalNotices'
       | 'NotEligibleEduConnect'
-      | 'PhoneValidationTooManyAttempts'
       | 'SignupConfirmationEmailSent'
   ) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_CONTACT_FORM }, { from }),
   logHasClickedDuoStep: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_DUO_STEP }),
-  logHasClickedFakeDoorCTA: (params: { offerId: number; userId?: number }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_FAKE_DOOR_CTA }, params),
   logHasClickedGridListToggle: ({ fromLayout }: { fromLayout: GridListLayout }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_GRID_LIST_TOGGLE }, { fromLayout }),
-  logHasClickedMissingCode: () =>
-    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_MISSING_CODE }),
   logHasClickedRemoteActivationBanner: (from: RemoteBannerOrigin, options: RemoteBannerType) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.HAS_CLICKED_REMOTE_ACTIVATION_BANNER },
@@ -408,8 +404,9 @@ export const logEventAnalytics = {
       { firebase: AnalyticsEvent.HAS_CLICKED_REMOTE_GENERIC_BANNER },
       { from, options }
     ),
-  logHasClickedTutorialFAQ: () =>
-    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_TUTORIAL_FAQ }),
+  logHasClickedTutorialFAQ: (params?: {
+    type: 'FAQ_LINK_PASS_CULTURE' | 'FAQ_BONIFICATION_GENERIC' | 'FAQ_LINK_CREDIT_V3'
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_TUTORIAL_FAQ }, params),
   logHasCorrectedEmail: ({ from }: { from: Referrals }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CORRECTED_EMAIL }, { from }),
   logHasDismissedAppSharingModal: () =>
@@ -436,7 +433,6 @@ export const logEventAnalytics = {
   logHasOpenedCookiesAccordion: (type: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_OPENED_COOKIES_ACCORDION }, { type }),
   logHasRefusedCookie: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_REFUSED_COOKIE }),
-  logHasRequestedCode: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_REQUESTED_CODE }),
   logHasSearchedCinemaQuery: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_SEARCHED_CINEMA_QUERY }),
   logHasSeenAllVideo: (params: {
@@ -524,8 +520,6 @@ export const logEventAnalytics = {
       },
       params
     ),
-  logOpenApp: (params: { appsFlyerUserId?: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.OPEN_APP }, params),
   logOpenDMSForeignCitizenURL: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.OPEN_DMS_FOREIGN_CITIZEN_URL }),
   logOpenDMSFrenchCitizenURL: () =>
@@ -712,7 +706,7 @@ export const logEventAnalytics = {
     from: ReactionFromEnum
     userId?: number
   }) => analytics.logEvent({ firebase: AnalyticsEvent.VALIDATE_REACTION }, params),
-  logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>
+  logVenueContact: (params: { type: keyof VenueContact; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_CONTACT }, params),
   logVenueMapSeenDuration: (duration: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_MAP_SEEN_DURATION }, { duration }),

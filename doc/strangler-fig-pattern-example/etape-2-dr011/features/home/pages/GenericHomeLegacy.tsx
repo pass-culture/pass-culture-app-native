@@ -17,7 +17,6 @@ import { HomepageModule, isOffersModule, isVenuesModule, HomepageModuleType } fr
 import { isCloseToBottom } from '../../../libs/analytics'
 import { Spinner } from '../../../ui/components/Spinner'
 
-import { PageContent, Spacer, VideoCarouselModule } from '../../ui-mocks';
 
 type GenericHomeProps = {
   // ... props

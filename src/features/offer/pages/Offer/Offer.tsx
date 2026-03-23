@@ -1,8 +1,8 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { View } from 'react-native'
 
-import { ReactionTypeEnum } from 'api/gen'
+import { OfferArtist, ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
@@ -18,6 +18,7 @@ import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoic
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { useReactionMutation } from 'features/reactions/queries/useReactionMutation'
 import { analytics } from 'libs/analytics/provider'
+import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
@@ -27,7 +28,6 @@ import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
 
@@ -38,7 +38,6 @@ export function Offer() {
   const { navigate } = useNavigation<UseNavigationType>()
   const offerId = route.params?.id
 
-  const enableVideoABTesting = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_VIDEO_AB_TESTING)
   const isMultiArtistsEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_MULTI_ARTISTS)
 
   const { isLoggedIn, user } = useAuthContext()
@@ -54,7 +53,6 @@ export function Offer() {
   const subcategoriesMapping = useSubcategoriesMapping()
 
   const { cookiesConsent, setCookiesConsent } = useCookies()
-  const segment = useABSegment()
 
   const hasVideoCookiesConsent =
     cookiesConsent.state === ConsentState.HAS_CONSENT &&
@@ -83,6 +81,7 @@ export function Offer() {
   const categoryId = offer?.subcategoryId
     ? subcategoriesMapping[offer?.subcategoryId]?.categoryId
     : ''
+  const [selectedArtists, setSelectedArtists] = useState<OfferArtist[]>([])
 
   const handleSaveReaction = useCallback(
     ({ offerId, reactionType }: { offerId: number; reactionType: ReactionTypeEnum }) => {
@@ -122,6 +121,14 @@ export function Offer() {
     })
   }
 
+  const handleShowOfferArtistsModal = useCallback(
+    (artistsToDisplay: OfferArtist[]) => {
+      setSelectedArtists(artistsToDisplay)
+      showOfferArtistsModal()
+    },
+    [showOfferArtistsModal]
+  )
+
   const { data } = useFetchHeadlineOffersCountQuery(offer)
 
   if (!offer || !subcategories || !subcategoriesMapping?.[offer?.subcategoryId]) return null
@@ -142,7 +149,7 @@ export function Offer() {
     <Page>
       <View>
         <ReactionChoiceModal
-          dateUsed={booking?.dateUsed ?? ''}
+          dateUsed={formatToSlashedFrenchDate(booking?.dateUsed ?? '')}
           offerId={offer.id}
           offerName={offer.name}
           imageUrl={offer.images?.url?.url}
@@ -160,15 +167,17 @@ export function Offer() {
             closeModal={hideChroniclesWritersModal}
             isVisible={chroniclesWritersModalVisible}
             onShowRecoButtonPress={handleOnShowRecoButtonPress}
-            variantInfo={chronicleVariantInfo}
+            modalWording={chronicleVariantInfo.modalWording}
+            buttonWording={chronicleVariantInfo.buttonWording}
           />
         ) : null}
-        {offer.artists.length > 1 ? (
+        {selectedArtists.length > 1 ? (
           <OfferArtistsModal
             isVisible={offerArtistsModalVisible}
             closeModal={hideOfferArtistsModal}
-            artists={offer.artists}
+            artists={selectedArtists}
             navigateTo={{ screen: 'Artist' }}
+            offerId={offer.id}
           />
         ) : null}
       </View>
@@ -186,10 +195,8 @@ export function Offer() {
         onShowChroniclesWritersModal={handleOnShowChroniclesWritersModal}
         hasVideoCookiesConsent={hasVideoCookiesConsent}
         onVideoConsentPress={handleOnVideoConsentPress}
-        segment={segment}
-        enableVideoABTesting={enableVideoABTesting}
         isMultiArtistsEnabled={isMultiArtistsEnabled}
-        onShowOfferArtistsModal={showOfferArtistsModal}
+        onShowOfferArtistsModal={handleShowOfferArtistsModal}
       />
     </Page>
   )

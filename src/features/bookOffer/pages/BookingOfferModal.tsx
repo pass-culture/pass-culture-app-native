@@ -6,7 +6,6 @@ import { useTheme } from 'styled-components/native'
 import { ApiError } from 'api/ApiError'
 import { isApiError } from 'api/apiHelpers'
 import { RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
-import { BookingCloseInformation } from 'features/bookOffer/components/BookingCloseInformation'
 import { BookingOfferModalFooter } from 'features/bookOffer/components/BookingOfferModalFooter'
 import { BookingOfferModalHeader } from 'features/bookOffer/components/BookingOfferModalHeader'
 import { BookingWrapper } from 'features/bookOffer/context/BookingWrapper'
@@ -17,17 +16,17 @@ import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
+import { Adjust } from 'libs/adjust/adjust'
+import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import { logOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
 import { algoliaAnalyticsSelectors } from 'libs/algolia/store/algoliaAnalyticsStore'
 import { analytics } from 'libs/analytics/provider'
-import { CampaignEvents, campaignTracker } from 'libs/campaign/campaign'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
-import { useModal } from 'ui/components/modals/useModal'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface BookingOfferModalComponentProps {
@@ -59,7 +58,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const { navigate } = useNavigation<UseNavigationType>()
   const route = useRoute<UseRouteType<'Offer'>>()
   const selectedStock = useBookingStock()
-  const { showErrorSnackBar } = useSnackBarContext()
   const isFromSearch = route.params?.from === 'searchresults'
   const fromOfferId = route.params?.fromOfferId
   const fromMultivenueOfferId = route.params?.fromMultivenueOfferId
@@ -91,12 +89,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
         })
       }
       if (!!selectedStock && !!offer?.subcategoryId) {
-        void campaignTracker.logEvent(CampaignEvents.COMPLETE_BOOK_OFFER, {
-          af_offer_id: offerId,
-          af_booking_id: selectedStock.id,
-          af_price: selectedStock.price,
-          af_category: offer.subcategoryId,
-        })
+        Adjust.logEvent(AdjustEvents.BOOK_OFFER)
       }
       runAfterInteractionsMobile(() => {
         navigate('BookingConfirmation', { offerId, bookingId })
@@ -119,9 +112,9 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
           }
         }
       }
-      showErrorSnackBar({ message, timeout: SNACK_BAR_TIME_OUT })
+      showErrorSnackBar(message)
     },
-    [dismissModal, offerId, showErrorSnackBar]
+    [dismissModal, offerId]
   )
 
   const { mutate, isPending } = useBookOfferMutation({
@@ -176,31 +169,13 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
 
   const shouldAddSpacerBetweenHeaderAndContent = step === Step.CONFIRMATION
 
-  const {
-    visible: bookingCloseInformationModalVisible,
-    showModal: showBookingCloseInformationModal,
-    hideModal: hideBookingCloseInformationModal,
-  } = useModal(false)
-
   const onClose = useCallback(async () => {
     dismissModal()
 
     if (bookingState.offerId !== offerId) dispatch({ type: 'SET_OFFER_ID', payload: offerId })
     dispatch({ type: 'RESET' })
-    if (isPending && title.includes('Détails de la réservation')) {
-      showBookingCloseInformationModal()
-    }
     void analytics.logCancelBookingFunnel(step, offerId)
-  }, [
-    dismissModal,
-    bookingState.offerId,
-    offerId,
-    dispatch,
-    isPending,
-    title,
-    step,
-    showBookingCloseInformationModal,
-  ])
+  }, [dismissModal, bookingState.offerId, offerId, dispatch, step])
 
   return (
     <AppModal
@@ -222,10 +197,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
       }
       shouldAddSpacerBetweenHeaderAndContent={shouldAddSpacerBetweenHeaderAndContent}>
       {children}
-      <BookingCloseInformation
-        visible={bookingCloseInformationModalVisible}
-        hideModal={hideBookingCloseInformationModal}
-      />
     </AppModal>
   )
 }

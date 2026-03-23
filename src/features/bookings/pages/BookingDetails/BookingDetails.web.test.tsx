@@ -19,6 +19,7 @@ import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import * as useBookingByIdQueryAPI from 'queries/bookings/useBookingByIdQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
@@ -59,7 +60,7 @@ describe('BookingDetails', () => {
       })
     })
 
-    describe('when FF WIP_NEW_BOOKING_PAGE is on', () => {
+    describe('when FF WIP_NEW_BOOKINGS_ENDED_ONGOING is on', () => {
       let ongoingBookingV2: BookingResponse = bookingsSnapV2.ongoingBookings[0]
 
       beforeEach(() => {
@@ -70,11 +71,11 @@ describe('BookingDetails', () => {
           subcategoriesDataTest
         )
         mockUseNetInfoContext.mockReturnValue({ isConnected: true })
-        setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE])
+        setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING])
       })
 
       it('should not have basic accessibility issues', async () => {
-        const { container } = renderBookingDetailsV2({ booking: ongoingBookingV2 })
+        const { container } = renderBookingDetailsWithBookingById({ booking: ongoingBookingV2 })
 
         await act(async () => {
           const results = await checkAccessibilityFor(container)
@@ -84,7 +85,7 @@ describe('BookingDetails', () => {
       })
 
       it('should display organizer contact when there is a organizer contact', async () => {
-        renderBookingDetailsV2({
+        renderBookingDetailsWithBookingById({
           booking: {
             ...ongoingBookingV2,
             stock: {
@@ -107,7 +108,7 @@ describe('BookingDetails', () => {
       })
 
       it('should display details section when there is a withdrawal detail', async () => {
-        renderBookingDetailsV2({
+        renderBookingDetailsWithBookingById({
           booking: {
             ...ongoingBookingV2,
             ticket: {
@@ -132,7 +133,7 @@ describe('BookingDetails', () => {
       `(
         'should display $expectedComponent when isDesktopViewport is $isDesktopViewport',
         async ({ isDesktopViewport, expectedComponent }) => {
-          renderBookingDetailsV2({
+          renderBookingDetailsWithBookingById({
             booking: ongoingBookingV2,
             isDesktopViewport,
           })
@@ -148,7 +149,7 @@ describe('BookingDetails', () => {
       `(
         'should not render error message when booking is no ticket and isDesktopViewport is $isDesktopViewport',
         async ({ isDesktopViewport }) => {
-          renderBookingDetailsV2({
+          renderBookingDetailsWithBookingById({
             booking: {
               ...ongoingBookingV2,
               ticket: {
@@ -183,7 +184,7 @@ describe('BookingDetails', () => {
       `(
         'should render error message when booking is ticket and isDesktopViewport is $isDesktopViewport',
         async ({ isDesktopViewport }) => {
-          renderBookingDetailsV2({ booking: ongoingBookingV2, isDesktopViewport })
+          renderBookingDetailsWithBookingById({ booking: ongoingBookingV2, isDesktopViewport })
 
           expect(
             screen.getByText('Tu n’as pas le droit de céder ou de revendre ton billet.')
@@ -206,28 +207,22 @@ const renderBookingDetails = (booking: Booking) => {
   return render(reactQueryProviderHOC(<BookingDetails />))
 }
 
-const renderBookingDetailsV2 = ({
+const renderBookingDetailsWithBookingById = ({
   booking,
   isDesktopViewport,
 }: {
   booking?: BookingResponse
   isDesktopViewport?: boolean
 }) => {
-  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQuery').mockReturnValue({
+  jest.spyOn(useBookingByIdQueryAPI, 'useBookingByIdQuery').mockReturnValue({
     data: booking,
     isLoading: false,
+    isFetching: false,
     isSuccess: true,
     isError: false,
     error: undefined,
   } as unknown as UseQueryResult<BookingResponse | null, Error>)
 
-  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQueryV1').mockReturnValue({
-    data: booking,
-    isLoading: false,
-    isSuccess: true,
-    isError: false,
-    error: undefined,
-  } as unknown as UseQueryResult<BookingReponse | null, Error>)
   return render(reactQueryProviderHOC(<BookingDetails />), {
     theme: { isDesktopViewport: isDesktopViewport ?? false },
   })

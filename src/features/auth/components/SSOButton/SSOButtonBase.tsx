@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useGoogleLogin } from 'libs/react-native-google-sso/useGoogleLogin'
-import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
+import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
+import { LogTypeEnum } from 'libs/monitoring/errors'
+import { eventMonitoring } from 'libs/monitoring/services'
+import { loginToGoogle } from 'libs/react-native-google-sso/loginToGoogle'
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
+import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Google } from 'ui/svg/icons/socialNetwork/Google'
 
 type Props = {
@@ -17,24 +21,38 @@ type Props = {
   }) => void
 }
 
-export const SSOButtonBase = ({ type, onSuccess }: Props) => {
-  const googleLogin = useGoogleLogin({
-    onSuccess: ({ code, state = '' }) =>
-      onSuccess({ authorizationCode: code, oauthStateToken: state }),
-  })
+export const SSOButtonBase: FC<Props> = ({ type, onSuccess }) => {
+  const { logType } = useLogTypeFromRemoteConfig()
+
+  const onError = async (error: unknown) => {
+    showErrorSnackBar('Une erreur est survenue, veuillez réessayer.')
+    if (logType === LogTypeEnum.INFO) {
+      const errorMessage = getErrorMessage(error)
+      eventMonitoring.captureException(`Can’t login via Google: ${errorMessage}`, {
+        level: 'info',
+        extra: { error },
+      })
+    }
+  }
+
+  const handleLogin = async () =>
+    loginToGoogle({
+      onSuccess: ({ code, state = '' }) =>
+        onSuccess({ authorizationCode: code, oauthStateToken: state }),
+      onError,
+    })
 
   const buttonWording = `${type === 'login' ? 'Se connecter' : 'S’inscrire'} avec Google`
 
   return (
-    <StyledButton
+    <Button
       accessibilityRole={AccessibilityRole.BUTTON}
       wording={buttonWording}
       icon={Google}
-      onPress={googleLogin}
+      onPress={handleLogin}
+      variant="secondary"
+      fullWidth
+      color="neutral"
     />
   )
 }
-
-const StyledButton = styledButton(ButtonSecondaryBlack)(({ theme }) => ({
-  borderColor: theme.designSystem.color.border.subtle,
-}))

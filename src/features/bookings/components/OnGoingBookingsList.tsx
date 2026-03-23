@@ -1,7 +1,7 @@
 import { UseQueryResult } from '@tanstack/react-query'
 import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { BookingListItemResponse, BookingsListResponseV2 } from 'api/gen'
 import { OngoingBookingListItemWrapper } from 'features/bookings/components/OngoingBookingListItemWrapper'
@@ -19,8 +19,8 @@ import {
   NumberOfBookingsPlaceholder,
 } from 'ui/components/placeholders/Placeholders'
 import { Separator } from 'ui/components/Separator'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { getSpacing, Spacer } from 'ui/theme'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { getSpacing } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT_V2 } from 'ui/theme/constants'
 
 import { NoBookingsView } from './NoBookingsView'
@@ -34,7 +34,7 @@ type Props = {
 
 export const OnGoingBookingsList: FunctionComponent<Props> = ({ useOngoingBookingsQuery }) => {
   const netInfo = useNetInfoContext()
-
+  const { designSystem } = useTheme()
   const enableNewBookings = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING)
 
   const {
@@ -48,14 +48,12 @@ export const OnGoingBookingsList: FunctionComponent<Props> = ({ useOngoingBookin
   const { isLoading: subcategoriesIsLoading } = useSubcategoriesQuery()
   const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
-  const { showErrorSnackBar } = useSnackBarContext()
 
-  const refetchOffline = useCallback(() => {
-    showErrorSnackBar({
-      message: 'Impossible de recharger tes réservations, connecte-toi à internet pour réessayer.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
-  }, [showErrorSnackBar])
+  const refetchOffline = () => {
+    showErrorSnackBar(
+      'Impossible de recharger tes réservations, connecte-toi à internet pour réessayer.'
+    )
+  }
 
   const onRefetch = netInfo.isConnected && netInfo.isInternetReachable ? refetch : refetchOffline
   const hasBookings = ongoingBookings.length > 0
@@ -92,8 +90,8 @@ export const OnGoingBookingsList: FunctionComponent<Props> = ({ useOngoingBookin
       renderItem={renderItem}
       refreshing={isRefreshing}
       onRefresh={onRefetch}
-      contentContainerStyle={contentContainerStyle}
-      ListHeaderComponent={hasBookings ? <Spacer.Column numberOfSpaces={6} /> : null}
+      contentContainerStyle={contentContainerStyle(designSystem)}
+      ListHeaderComponent={hasBookings ? <Placeholder /> : null}
       ListEmptyComponent={<NoBookingsView />}
       ItemSeparatorComponent={enableNewBookings ? null : ItemSeparatorComponent}
       onScroll={onScroll}
@@ -101,13 +99,16 @@ export const OnGoingBookingsList: FunctionComponent<Props> = ({ useOngoingBookin
     />
   )
 }
+const Placeholder = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xl,
+}))
 
 const keyExtractor = (item: BookingListItemResponse) => item.id.toString()
 
-const contentContainerStyle = {
+const contentContainerStyle = (designSystem) => ({
   flexGrow: 1,
-  paddingBottom: TAB_BAR_COMP_HEIGHT_V2 + getSpacing(8),
-}
+  paddingBottom: TAB_BAR_COMP_HEIGHT_V2 + designSystem.size.spacing.xxl,
+})
 
 const Footer = styled.View({ height: TAB_BAR_COMP_HEIGHT_V2 + getSpacing(52) })
 const BOOKINGS_LIST_PLACEHOLDER = Array.from({ length: 10 }).map((_, index) => ({
@@ -115,6 +116,7 @@ const BOOKINGS_LIST_PLACEHOLDER = Array.from({ length: 10 }).map((_, index) => (
 }))
 
 function BookingsPlaceholder() {
+  const { designSystem } = useTheme()
   const renderPlaceholder = useCallback(() => <BookingHitPlaceholder />, [])
   const ListHeaderComponent = useMemo(() => <NumberOfBookingsPlaceholder />, [])
   const ListFooterComponent = useMemo(() => <Footer />, [])
@@ -124,7 +126,7 @@ function BookingsPlaceholder() {
       <FlatList
         data={BOOKINGS_LIST_PLACEHOLDER}
         renderItem={renderPlaceholder}
-        contentContainerStyle={contentContainerStyle}
+        contentContainerStyle={contentContainerStyle(designSystem)}
         ListHeaderComponent={ListHeaderComponent}
         ItemSeparatorComponent={ItemSeparatorComponent}
         ListFooterComponent={ListFooterComponent}

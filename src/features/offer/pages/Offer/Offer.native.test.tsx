@@ -6,6 +6,7 @@ import {
   PaginatedFavoritesResponse,
   SubcategoriesResponseModelv2,
 } from 'api/gen'
+import { mockArtists } from 'features/artist/fixtures/mockArtist'
 import { bookingsSnap } from 'features/bookings/fixtures'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
@@ -140,7 +141,7 @@ describe('<Offer />', () => {
 
     renderOfferPage({ mockOffer: offerResponseSnap })
 
-    await waitFor(() => expect(screen.getByTestId('animated-icon-like')).toBeOnTheScreen())
+    expect(await screen.findByLabelText('Réagir à cette offre')).toBeOnTheScreen()
   })
 
   it('should not display reaction button in header if booking has been cancelled', async () => {
@@ -162,7 +163,9 @@ describe('<Offer />', () => {
 
     await screen.findByTestId('offerv2-container')
 
-    await waitFor(() => expect(screen.queryByTestId('animated-icon-like')).not.toBeOnTheScreen())
+    await waitFor(() =>
+      expect(screen.queryByLabelText('Réagir à cette offre')).not.toBeOnTheScreen()
+    )
   })
 
   it('should not display reaction button in header when user is anonymous (not logged in)', async () => {
@@ -170,7 +173,9 @@ describe('<Offer />', () => {
 
     renderOfferPage({ mockOffer: offerResponseSnap })
 
-    await waitFor(() => expect(screen.queryByTestId('animated-icon-like')).not.toBeOnTheScreen())
+    await waitFor(() =>
+      expect(screen.queryByLabelText('Réagir à cette offre')).not.toBeOnTheScreen()
+    )
   })
 
   it('should open reaction modal when press on reaction button in header', async () => {
@@ -192,7 +197,7 @@ describe('<Offer />', () => {
 
     await screen.findByTestId('offerv2-container')
 
-    const reactionButton = await screen.findByTestId('animated-icon-like')
+    const reactionButton = await screen.findByLabelText('Réagir à cette offre')
 
     await user.press(reactionButton)
 
@@ -223,31 +228,43 @@ describe('<Offer />', () => {
   it('should display chronicles section', async () => {
     renderOfferPage({ mockOffer: offerResponseSnap })
 
-    expect(await screen.findByText('La reco du Ciné Club')).toBeOnTheScreen()
+    expect(await screen.findByText('Les avis du ciné club')).toBeOnTheScreen()
   })
 
-  it('should open chronicles writers modal when pressing "C’est quoi le Ciné Club\u00a0?" button', async () => {
+  it('should open chronicles writers modal when pressing "Qui écrit les avis du ciné club\u00a0?" button', async () => {
     renderOfferPage({ mockOffer: offerResponseSnap })
 
-    await screen.findByText('La reco du Ciné Club')
+    await screen.findByText('Les avis du ciné club')
 
-    await user.press(screen.getByText('C’est quoi le Ciné Club\u00a0?'))
+    await user.press(screen.getByText('Qui écrit les avis du ciné club\u00a0?'))
 
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
 
-  it('should trigger ClickWhatsClub log when pressing "C’est quoi le Ciné Club\u00a0?" button', async () => {
+  it('should trigger ClickWhatsClub log when pressing "Qui écrit les avis du ciné club\u00a0?" button', async () => {
     renderOfferPage({ mockOffer: offerResponseSnap })
 
-    await screen.findByText('La reco du Ciné Club')
+    await screen.findByText('Les avis du ciné club')
 
-    await user.press(screen.getByText('C’est quoi le Ciné Club\u00a0?'))
+    await user.press(screen.getByText('Qui écrit les avis du ciné club\u00a0?'))
 
     expect(analytics.logClickWhatsClub).toHaveBeenNthCalledWith(1, {
       categoryName: 'CINEMA',
       from: 'offer',
       offerId: '116656',
     })
+  })
+
+  it('should open artists modal when offer has several artists and wipArtistPage and wipOfferMultiArtists FFs', async () => {
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_ARTIST_PAGE,
+      RemoteStoreFeatureFlags.WIP_OFFER_MULTI_ARTISTS,
+    ])
+    renderOfferPage({ mockOffer: { ...offerResponseSnap, artists: mockArtists } })
+
+    await user.press(screen.getByLabelText('Ouvrir la liste des artistes'))
+
+    expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
 
   describe('video section', () => {

@@ -62,13 +62,13 @@ describe('CategoriesList', () => {
   })
 
   it('should display categories', async () => {
-    render(<CategoriesList />)
+    render(<CategoriesList onPressAIFakeDoorBanner={jest.fn()} />)
 
     expect(await screen.findByText('Cinéma'.toUpperCase())).toBeOnTheScreen()
   })
 
   it('should dispatch with offerCategory before navigation', async () => {
-    render(<CategoriesList />)
+    render(<CategoriesList onPressAIFakeDoorBanner={jest.fn()} />)
 
     await user.press(screen.getByText('Spectacles'.toUpperCase()))
 
@@ -79,7 +79,7 @@ describe('CategoriesList', () => {
   })
 
   it('should navigate to search results with search params on press', async () => {
-    render(<CategoriesList />)
+    render(<CategoriesList onPressAIFakeDoorBanner={jest.fn()} />)
 
     await user.press(screen.getByText('Spectacles'.toUpperCase()))
 
@@ -110,7 +110,7 @@ describe('CategoriesList', () => {
         place,
         onModalHideRef: jest.fn(),
       })
-      render(<CategoriesList />)
+      render(<CategoriesList onPressAIFakeDoorBanner={jest.fn()} />)
 
       expect(screen.queryByText('Explore la carte')).not.toBeOnTheScreen()
     }
@@ -134,7 +134,7 @@ describe('CategoriesList', () => {
         onModalHideRef: jest.fn(),
       })
 
-      render(<CategoriesList />)
+      render(<CategoriesList onPressAIFakeDoorBanner={jest.fn()} />)
 
       expect(screen.getByText('Explore la carte')).toBeOnTheScreen()
     }
@@ -148,7 +148,7 @@ describe('CategoriesList', () => {
       onModalHideRef: jest.fn(),
     })
 
-    render(<CategoriesList />)
+    render(<CategoriesList onPressAIFakeDoorBanner={jest.fn()} />)
 
     await user.press(screen.getByText('Explore la carte'))
 

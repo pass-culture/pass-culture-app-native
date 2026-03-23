@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { CategoryIdEnum } from 'api/gen'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { HorizontalTile } from './HorizontalTile'
 
@@ -15,11 +15,11 @@ const meta: Meta<typeof HorizontalTile> = {
 }
 export default meta
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  gap: getSpacing(4),
-})
+  gap: theme.designSystem.size.spacing.l,
+}))
 
 const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

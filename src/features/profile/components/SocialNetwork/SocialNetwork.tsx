@@ -4,42 +4,34 @@ import styled from 'styled-components/native'
 import { Li } from 'ui/components/Li'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { Ul } from 'ui/components/Ul'
-import { getSpacing } from 'ui/theme'
 
-export function SocialNetwork() {
-  return (
-    <NetworkRow>
-      <NetworkRowContainer>
-        <StyledUl>
-          <Li>
-            <SocialNetworkCard network="instagram" />
-          </Li>
-          <Li>
-            <SocialNetworkCard network="x" />
-          </Li>
-          <Li>
-            <SocialNetworkCard network="tiktok" />
-          </Li>
-          <Li>
-            <SocialNetworkCard network="facebook" />
-          </Li>
-        </StyledUl>
-      </NetworkRowContainer>
-    </NetworkRow>
-  )
-}
+export const SocialNetwork = () => (
+  <NetworkRowContainer>
+    <StyledUl>
+      <Li>
+        <SocialNetworkCard network="instagram" />
+      </Li>
+      <Li>
+        <SocialNetworkCard network="x" />
+      </Li>
+      <Li>
+        <SocialNetworkCard network="tiktok" />
+      </Li>
+      <Li>
+        <SocialNetworkCard network="facebook" />
+      </Li>
+    </StyledUl>
+  </NetworkRowContainer>
+)
 
-const NetworkRow = styled.View(({ theme }) => ({
+const NetworkRowContainer = styled.View(({ theme }) => ({
   width: '100%',
   margin: theme.isDesktopViewport ? undefined : 'auto',
   maxWidth: theme.contentPage.maxWidth,
-}))
-
-const NetworkRowContainer = styled.View({
   flexDirection: 'row',
-  paddingVertical: getSpacing(4),
+  paddingVertical: theme.designSystem.size.spacing.l,
   justifyContent: 'space-between',
-})
+}))
 
 const StyledUl = styled(Ul)({
   flex: 1,

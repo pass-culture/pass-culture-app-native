@@ -190,11 +190,13 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
           }
         >
           <View
+            marginTop={0}
             style={
               {
                 "display": "flex",
                 "flexDirection": "row",
                 "justifyContent": "center",
+                "marginTop": 0,
                 "width": "100%",
               }
             }
@@ -337,6 +339,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
+                "marginBottom": 16,
                 "maxWidth": 500,
                 "width": "100%",
               }
@@ -358,7 +361,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                   {
                     "busy": undefined,
                     "checked": undefined,
-                    "disabled": undefined,
+                    "disabled": false,
                     "expanded": undefined,
                     "selected": undefined,
                   }
@@ -388,22 +391,23 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                       },
                       {
                         "alignItems": "center",
+                        "alignSelf": "center",
                         "backgroundColor": "#6123df",
-                        "borderBottomLeftRadius": 24,
-                        "borderBottomRightRadius": 24,
-                        "borderTopLeftRadius": 24,
-                        "borderTopRightRadius": 24,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#6123df",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
                         "flexDirection": "row",
                         "justifyContent": "center",
-                        "maxWidth": 500,
-                        "minHeight": 40,
-                        "paddingBottom": 2,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 2,
+                        "paddingBottom": 8,
+                        "paddingLeft": 12,
+                        "paddingRight": 12,
+                        "paddingTop": 8,
                         "width": "100%",
                       },
-                      {},
                     ],
                     {
                       "opacity": 1,
@@ -413,24 +417,39 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                 testID="Tout refuser"
               >
                 <View
+                  fullWidth={true}
+                  gap={8}
+                  hasIcon={false}
+                  isMultiline={false}
                   style={
                     {
                       "alignItems": "center",
+                      "columnGap": 8,
                       "flexDirection": "row",
+                      "justifyContent": "center",
+                      "width": "100%",
                     }
                   }
                 >
                   <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={1}
                     style={
-                      {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "maxWidth": "100%",
-                      }
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 22,
+                        },
+                        {
+                          "color": "#ffffff",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "maxWidth": "100%",
+                          "minWidth": 0,
+                          "textAlign": "center",
+                        },
+                      ]
                     }
                   >
                     Tout refuser
@@ -462,7 +481,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                   {
                     "busy": undefined,
                     "checked": undefined,
-                    "disabled": undefined,
+                    "disabled": false,
                     "expanded": undefined,
                     "selected": undefined,
                   }
@@ -492,22 +511,23 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                       },
                       {
                         "alignItems": "center",
+                        "alignSelf": "center",
                         "backgroundColor": "#6123df",
-                        "borderBottomLeftRadius": 24,
-                        "borderBottomRightRadius": 24,
-                        "borderTopLeftRadius": 24,
-                        "borderTopRightRadius": 24,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#6123df",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
                         "flexDirection": "row",
                         "justifyContent": "center",
-                        "maxWidth": 500,
-                        "minHeight": 40,
-                        "paddingBottom": 2,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 2,
+                        "paddingBottom": 8,
+                        "paddingLeft": 12,
+                        "paddingRight": 12,
+                        "paddingTop": 8,
                         "width": "100%",
                       },
-                      {},
                     ],
                     {
                       "opacity": 1,
@@ -517,24 +537,39 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                 testID="Tout accepter"
               >
                 <View
+                  fullWidth={true}
+                  gap={8}
+                  hasIcon={false}
+                  isMultiline={false}
                   style={
                     {
                       "alignItems": "center",
+                      "columnGap": 8,
                       "flexDirection": "row",
+                      "justifyContent": "center",
+                      "width": "100%",
                     }
                   }
                 >
                   <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={1}
                     style={
-                      {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "maxWidth": "100%",
-                      }
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 22,
+                        },
+                        {
+                          "color": "#ffffff",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "maxWidth": "100%",
+                          "minWidth": 0,
+                          "textAlign": "center",
+                        },
+                      ]
                     }
                   >
                     Tout accepter
@@ -544,21 +579,13 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            numberOfSpaces={4}
-            style={
-              {
-                "height": 16,
-              }
-            }
-          />
-          <View
             accessibilityLabel="Choisir les cookies"
             accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -588,25 +615,22 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "transparent",
-                    "borderBottomLeftRadius": 24,
-                    "borderBottomRightRadius": 24,
-                    "borderTopLeftRadius": 24,
-                    "borderTopRightRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "width": "100%",
-                  },
-                  {
+                    "alignSelf": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#6123df",
                     "borderStyle": "solid",
-                    "borderWidth": 2,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 8,
+                    "width": "100%",
                   },
                 ],
                 {
@@ -617,24 +641,39 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             testID="Choisir les cookies"
           >
             <View
+              fullWidth={true}
+              gap={8}
+              hasIcon={false}
+              isMultiline={false}
               style={
                 {
                   "alignItems": "center",
+                  "columnGap": 8,
                   "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
                 }
               }
             >
               <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
                 style={
-                  {
-                    "color": "#6123df",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "maxWidth": "100%",
-                  }
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#6123df",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": "100%",
+                      "minWidth": 0,
+                      "textAlign": "center",
+                    },
+                  ]
                 }
               >
                 Choisir les cookies

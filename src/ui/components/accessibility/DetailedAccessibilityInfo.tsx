@@ -2,19 +2,19 @@ import React, { FC } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ExternalAccessibilityDataModel } from 'api/gen'
+import { AccessibilityData } from 'api/gen'
 import { analytics } from 'libs/analytics/provider'
-import { getDetailedAccessibilityInfo } from 'shared/accessibility/getDetailedAccessibilityInfo'
+import { getDetailedAccessibilityInfo } from 'shared/accessibility/helpers/getDetailedAccessibilityInfo'
 import { AccessibilityFrame } from 'ui/components/accessibility/AccessibilityFrame'
 import { Accordion } from 'ui/components/Accordion'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   url: string
-  accessibilities?: ExternalAccessibilityDataModel | null
+  accessibilities?: AccessibilityData | null
   acceslibreId?: string | null
 }
 
@@ -39,8 +39,9 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities, acc
                   <View
                     key={descriptionTitle}
                     accessibilityLabel={`${descriptionTitle}: ${descriptionInfo}`}>
-                    <Typo.BodyXs accessibilityHidden>{descriptionTitle}</Typo.BodyXs>
-                    <Spacer.Column numberOfSpaces={2} />
+                    <TextContainer>
+                      <Typo.BodyXs accessibilityHidden>{descriptionTitle}</Typo.BodyXs>
+                    </TextContainer>
                     {Array.isArray(descriptionInfo) ? (
                       descriptionInfo.map((info) => (
                         <Typo.Body key={info} accessibilityHidden>
@@ -60,9 +61,7 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities, acc
           </React.Fragment>
         ))}
       </FlexContainer>
-      <Spacer.Row numberOfSpaces={12} />
-      <FlexContainer>
-        <Spacer.Column numberOfSpaces={2} />
+      <FlexContainerWithMargin>
         <Banner
           label="Tu peux retrouver des informations supplémentaires sur l’accessibilité de ce lieu sur le site d’acceslibre."
           links={[
@@ -73,8 +72,7 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities, acc
             },
           ]}
         />
-      </FlexContainer>
-      <Spacer.Column numberOfSpaces={2} />
+      </FlexContainerWithMargin>
     </Container>
   )
 }
@@ -86,20 +84,30 @@ const Container = styled.View(({ theme }) => ({
     flexDirection: 'row',
   }),
 }))
+const TextContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.s,
+}))
 
 const FlexContainer = styled.View(({ theme }) => ({
   ...(theme.isDesktopViewport && {
     flex: 1,
   }),
 }))
+const FlexContainerWithMargin = styled(FlexContainer)(({ theme }) => ({
+  ...(theme.isDesktopViewport && {
+    marginLeft: theme.designSystem.size.spacing.xxxxl,
+  }),
+  paddingTop: theme.designSystem.size.spacing.s,
+  marginBottom: theme.designSystem.size.spacing.s,
+}))
 
-const StyledAccordionItem = styled(Accordion).attrs({
+const StyledAccordionItem = styled(Accordion).attrs(({ theme }) => ({
   titleStyle: {
-    paddingVertical: getSpacing(4),
+    paddingVertical: theme.designSystem.size.spacing.l,
     paddingHorizontal: 0,
   },
   bodyStyle: {
-    paddingBottom: getSpacing(4),
+    paddingBottom: theme.designSystem.size.spacing.l,
     paddingHorizontal: 0,
   },
-})``
+}))``

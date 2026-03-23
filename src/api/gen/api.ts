@@ -68,19 +68,55 @@ export class RequiredError extends Error {
 
 /**
  * @export
+ * @interface AccessibilityData
+ */
+export interface AccessibilityData {
+  /**
+   * @type {AudioDisability | null}
+   * @memberof AccessibilityData
+   */
+  audioDisability?: AudioDisability | null
+  /**
+   * @type {boolean | null}
+   * @memberof AccessibilityData
+   */
+  isAccessibleAudioDisability?: boolean | null
+  /**
+   * @type {boolean | null}
+   * @memberof AccessibilityData
+   */
+  isAccessibleMentalDisability?: boolean | null
+  /**
+   * @type {boolean | null}
+   * @memberof AccessibilityData
+   */
+  isAccessibleMotorDisability?: boolean | null
+  /**
+   * @type {boolean | null}
+   * @memberof AccessibilityData
+   */
+  isAccessibleVisualDisability?: boolean | null
+  /**
+   * @type {MentalDisability | null}
+   * @memberof AccessibilityData
+   */
+  mentalDisability?: MentalDisability | null
+  /**
+   * @type {MotorDisability | null}
+   * @memberof AccessibilityData
+   */
+  motorDisability?: MotorDisability | null
+  /**
+   * @type {VisualDisability | null}
+   * @memberof AccessibilityData
+   */
+  visualDisability?: VisualDisability | null
+}
+/**
+ * @export
  * @interface AccountRequest
  */
 export interface AccountRequest {
-  /**
-   * @type {string}
-   * @memberof AccountRequest
-   */
-  appsFlyerPlatform?: string | null
-  /**
-   * @type {string}
-   * @memberof AccountRequest
-   */
-  appsFlyerUserId?: string | null
   /**
    * @type {string}
    * @memberof AccountRequest
@@ -278,17 +314,17 @@ export interface ActivityTypesResponse {
  */
 export interface ArtistResponse {
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof ArtistResponse
    */
   description?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof ArtistResponse
    */
   descriptionCredit?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof ArtistResponse
    */
   descriptionSource?: string | null
@@ -298,7 +334,7 @@ export interface ArtistResponse {
    */
   id: string
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof ArtistResponse
    */
   image?: string | null
@@ -309,15 +345,25 @@ export interface ArtistResponse {
   name: string
 }
 /**
+ * A link Artist <> Product also bears a type An artist can be an author or a musician for different products
  * @export
- * @interface AudioDisabilityModel
+ * @enum {string}
  */
-export interface AudioDisabilityModel {
+export enum ArtistType {
+  'author' = 'author',
+  'performer' = 'performer',
+  'stage_director' = 'stage_director',
+}
+/**
+ * @export
+ * @interface AudioDisability
+ */
+export interface AudioDisability {
   /**
    * @type {Array<string>}
-   * @memberof AudioDisabilityModel
+   * @memberof AudioDisability
    */
-  deafAndHardOfHearing?: Array<string>
+  deafAndHardOfHearing: Array<string>
 }
 /**
  * @export
@@ -370,27 +416,6 @@ export interface Banner {
    * @memberof Banner
    */
   title: string
-}
-/**
- * @export
- * @interface BannerMetaModel
- */
-export interface BannerMetaModel {
-  /**
-   * @type {string}
-   * @memberof BannerMetaModel
-   */
-  image_credit?: string | null
-  /**
-   * @type {string}
-   * @memberof BannerMetaModel
-   */
-  image_credit_url?: string | null
-  /**
-   * @type {boolean}
-   * @memberof BannerMetaModel
-   */
-  is_from_google?: boolean | null
 }
 /**
  * An enumeration.
@@ -1607,17 +1632,17 @@ export interface ChangePasswordRequest {
  */
 export interface ChronicleAuthor {
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof ChronicleAuthor
    */
   age?: number | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof ChronicleAuthor
    */
   city?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof ChronicleAuthor
    */
   firstName?: string | null
@@ -1628,7 +1653,7 @@ export interface ChronicleAuthor {
  */
 export interface ChroniclePreview {
   /**
-   * @type {ChronicleAuthor}
+   * @type {ChronicleAuthor | null}
    * @memberof ChroniclePreview
    */
   author?: ChronicleAuthor | null
@@ -2056,52 +2081,6 @@ export enum ExpenseDomain {
 }
 /**
  * @export
- * @interface ExternalAccessibilityDataModel
- */
-export interface ExternalAccessibilityDataModel {
-  /**
-   * @type {AudioDisabilityModel}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  audioDisability?: AudioDisabilityModel
-  /**
-   * @type {boolean}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  isAccessibleAudioDisability?: boolean
-  /**
-   * @type {boolean}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  isAccessibleMentalDisability?: boolean
-  /**
-   * @type {boolean}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  isAccessibleMotorDisability?: boolean
-  /**
-   * @type {boolean}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  isAccessibleVisualDisability?: boolean
-  /**
-   * @type {MentalDisabilityModel}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  mentalDisability?: MentalDisabilityModel
-  /**
-   * @type {MotorDisabilityModel}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  motorDisability?: MotorDisabilityModel
-  /**
-   * @type {VisualDisabilityModel}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  visualDisability?: VisualDisabilityModel
-}
-/**
- * @export
  * @interface ExternalBookingDataResponseV2
  */
 export interface ExternalBookingDataResponseV2 {
@@ -2391,16 +2370,6 @@ export interface GoogleAccountRequest {
    * @type {string}
    * @memberof GoogleAccountRequest
    */
-  appsFlyerPlatform?: string | null
-  /**
-   * @type {string}
-   * @memberof GoogleAccountRequest
-   */
-  appsFlyerUserId?: string | null
-  /**
-   * @type {string}
-   * @memberof GoogleAccountRequest
-   */
   birthdate: string
   /**
    * @type {string}
@@ -2455,22 +2424,22 @@ export interface GtlLabels {
    */
   label: string
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof GtlLabels
    */
   level01Label?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof GtlLabels
    */
   level02Label?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof GtlLabels
    */
   level03Label?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof GtlLabels
    */
   level04Label?: string | null
@@ -2549,6 +2518,33 @@ export enum IdentityCheckMethod {
   'ubble' = 'ubble',
 }
 /**
+ * @export
+ * @interface InseeCountries
+ */
+export interface InseeCountries {
+  /**
+   * @type {Array<InseeCountry>}
+   * @memberof InseeCountries
+   */
+  countries: Array<InseeCountry>
+}
+/**
+ * @export
+ * @interface InseeCountry
+ */
+export interface InseeCountry {
+  /**
+   * @type {number}
+   * @memberof InseeCountry
+   */
+  cog: number
+  /**
+   * @type {string}
+   * @memberof InseeCountry
+   */
+  libcog: string
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -2570,40 +2566,40 @@ export interface MarkAchievementsAsSeenRequest {
 }
 /**
  * @export
- * @interface MentalDisabilityModel
+ * @interface MentalDisability
  */
-export interface MentalDisabilityModel {
+export interface MentalDisability {
   /**
    * @type {string}
-   * @memberof MentalDisabilityModel
+   * @memberof MentalDisability
    */
-  trainedPersonnel?: string
+  trainedPersonnel: string
 }
 /**
  * @export
- * @interface MotorDisabilityModel
+ * @interface MotorDisability
  */
-export interface MotorDisabilityModel {
+export interface MotorDisability {
   /**
    * @type {string}
-   * @memberof MotorDisabilityModel
+   * @memberof MotorDisability
    */
-  entrance?: string
+  entrance: string
   /**
    * @type {string}
-   * @memberof MotorDisabilityModel
+   * @memberof MotorDisability
    */
-  exterior?: string
+  exterior: string
   /**
    * @type {string}
-   * @memberof MotorDisabilityModel
+   * @memberof MotorDisability
    */
-  facilities?: string
+  facilities: string
   /**
    * @type {string}
-   * @memberof MotorDisabilityModel
+   * @memberof MotorDisability
    */
-  parking?: string
+  parking: string
 }
 /**
  * @export
@@ -2774,22 +2770,22 @@ export interface OauthStateResponse {
  */
 export interface OfferAccessibilityResponse {
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof OfferAccessibilityResponse
    */
   audioDisability?: boolean | null
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof OfferAccessibilityResponse
    */
   mentalDisability?: boolean | null
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof OfferAccessibilityResponse
    */
   motorDisability?: boolean | null
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof OfferAccessibilityResponse
    */
   visualDisability?: boolean | null
@@ -2810,7 +2806,7 @@ export interface OfferAddressResponse {
    */
   coordinates: Coordinates
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferAddressResponse
    */
   label?: string | null
@@ -2820,7 +2816,7 @@ export interface OfferAddressResponse {
    */
   postalCode: string
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferAddressResponse
    */
   street?: string | null
@@ -2836,12 +2832,12 @@ export interface OfferAddressResponse {
  */
 export interface OfferArtist {
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferArtist
    */
-  id: string
+  id?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferArtist
    */
   image?: string | null
@@ -2850,6 +2846,11 @@ export interface OfferArtist {
    * @memberof OfferArtist
    */
   name: string
+  /**
+   * @type {ArtistType | null}
+   * @memberof OfferArtist
+   */
+  role?: ArtistType | null
 }
 /**
  * @export
@@ -2894,97 +2895,97 @@ export interface OfferChronicles {
  */
 export interface OfferExtraDataResponse {
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof OfferExtraDataResponse
    */
   allocineId?: number | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   author?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   bookFormat?: string | null
   /**
-   * @type {Array<string>}
+   * @type {Array<string> | null}
    * @memberof OfferExtraDataResponse
    */
   cast?: Array<string> | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   certificate?: string | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof OfferExtraDataResponse
    */
   durationMinutes?: number | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   ean?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   editeur?: string | null
   /**
-   * @type {Array<string>}
+   * @type {Array<string> | null}
    * @memberof OfferExtraDataResponse
    */
   genres?: Array<string> | null
   /**
-   * @type {GtlLabels}
+   * @type {GtlLabels | null}
    * @memberof OfferExtraDataResponse
    */
   gtlLabels?: GtlLabels | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   musicSubType?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   musicType?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   performer?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   releaseDate?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   showSubType?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   showType?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   speaker?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   stageDirector?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferExtraDataResponse
    */
   visa?: string | null
@@ -3011,7 +3012,7 @@ export interface OfferImage {
  */
 export interface OfferImageResponse {
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferImageResponse
    */
   credit?: string | null
@@ -3075,17 +3076,6 @@ export interface OfferPreviewResponse {
 }
 /**
  * @export
- * @interface OfferReportReasons
- */
-export interface OfferReportReasons {
-  /**
-   * @type {{ [key: string]: ReasonMeta; }}
-   * @memberof OfferReportReasons
-   */
-  reasons: { [key: string]: ReasonMeta; }
-}
-/**
- * @export
  * @interface OfferResponse
  */
 export interface OfferResponse {
@@ -3095,7 +3085,7 @@ export interface OfferResponse {
    */
   accessibility: OfferAccessibilityResponse
   /**
-   * @type {OfferAddressResponse}
+   * @type {OfferAddressResponse | null}
    * @memberof OfferResponse
    */
   address?: OfferAddressResponse | null
@@ -3105,7 +3095,7 @@ export interface OfferResponse {
    */
   artists: Array<OfferArtist>
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferResponse
    */
   bookingAllowedDatetime?: string | null
@@ -3115,12 +3105,12 @@ export interface OfferResponse {
    */
   chronicles: Array<ChroniclePreview>
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof OfferResponse
    */
   chroniclesCount?: number | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferResponse
    */
   description?: string | null
@@ -3130,289 +3120,123 @@ export interface OfferResponse {
    */
   expenseDomains: Array<ExpenseDomain>
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferResponse
    */
   externalTicketOfficeUrl?: string | null
   /**
-   * @type {OfferExtraDataResponse}
+   * @type {OfferExtraDataResponse | null}
    * @memberof OfferResponse
    */
   extraData?: OfferExtraDataResponse | null
   /**
    * @type {number}
    * @memberof OfferResponse
-   */
-  id: number
-  /**
-   * @type {OfferImageResponse}
-   * @memberof OfferResponse
-   */
-  image?: OfferImageResponse | null
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isDigital: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isDuo: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isEducational: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isEvent: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponseV2
-   */
-  isExpired: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isExternalBookingsDisabled: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isForbiddenToUnderage: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isHeadline: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isReleased: boolean
-  /**
-   * @type {boolean}
-   * @memberof OfferResponse
-   */
-  isSoldOut: boolean
-  /**
-   * @type {number}
-   * @memberof OfferResponse
-   */
-  last30DaysBookings?: number | null
-  /**
-   * @type {any}
-   * @memberof OfferResponse
-   */
-  metadata: any
-  /**
-   * @type {string}
-   * @memberof OfferResponse
-   */
-  name: string
-  /**
-   * @type {string}
-   * @memberof OfferResponse
-   */
-  publicationDate?: string | null
-  /**
-   * @type {ReactionCount}
-   * @memberof OfferResponse
-   */
-  reactionsCount: ReactionCount
-  /**
-   * @type {Array<OfferStockResponse>}
-   * @memberof OfferResponse
-   */
-  stocks: Array<OfferStockResponse>
-  /**
-   * @type {SubcategoryIdEnum}
-   * @memberof OfferResponse
-   */
-  subcategoryId: SubcategoryIdEnum
-  /**
-   * @type {OfferVenueResponse}
-   * @memberof OfferResponse
-   */
-  venue: OfferVenueResponse
-  /**
-   * @type {OfferVideo}
-   * @memberof OfferResponse
-   */
-  video?: OfferVideo | null
-  /**
-   * @type {string}
-   * @memberof OfferResponse
-   */
-  withdrawalDetails?: string | null
-}
-/**
- * @export
- * @interface OfferResponseV2
- */
-export interface OfferResponseV2 {
-  /**
-   * @type {OfferAccessibilityResponse}
-   * @memberof OfferResponseV2
-   */
-  accessibility: OfferAccessibilityResponse
-  /**
-   * @type {OfferAddressResponse}
-   * @memberof OfferResponseV2
-   */
-  address?: OfferAddressResponse | null
-  /**
-   * @type {Array<OfferArtist>}
-   * @memberof OfferResponseV2
-   */
-  artists: Array<OfferArtist>
-  /**
-   * @type {string}
-   * @memberof OfferResponseV2
-   */
-  bookingAllowedDatetime?: string | null
-  /**
-   * @type {Array<ChroniclePreview>}
-   * @memberof OfferResponseV2
-   */
-  chronicles: Array<ChroniclePreview>
-  /**
-   * @type {number}
-   * @memberof OfferResponseV2
-   */
-  chroniclesCount?: number | null
-  /**
-   * @type {string}
-   * @memberof OfferResponseV2
-   */
-  description?: string | null
-  /**
-   * @type {Array<ExpenseDomain>}
-   * @memberof OfferResponseV2
-   */
-  expenseDomains: Array<ExpenseDomain>
-  /**
-   * @type {string}
-   * @memberof OfferResponseV2
-   */
-  externalTicketOfficeUrl?: string | null
-  /**
-   * @type {OfferExtraDataResponse}
-   * @memberof OfferResponseV2
-   */
-  extraData?: OfferExtraDataResponse | null
-  /**
-   * @type {number}
-   * @memberof OfferResponseV2
    */
   id: number
   /**
    * @type {{ [key: string]: OfferImageResponse; }}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   images?: { [key: string]: OfferImageResponse; } | null
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isDigital: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isDuo: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isEducational: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isEvent: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isExpired: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isExternalBookingsDisabled: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isForbiddenToUnderage: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isHeadline: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isReleased: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isSoldOut: boolean
   /**
-   * @type {number}
-   * @memberof OfferResponseV2
+   * @type {number | null}
+   * @memberof OfferResponse
    */
   last30DaysBookings?: number | null
   /**
    * @type {any}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   metadata: any
   /**
    * @type {string}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   name: string
   /**
-   * @type {string}
-   * @memberof OfferResponseV2
+   * @type {string | null}
+   * @memberof OfferResponse
    */
   publicationDate?: string | null
   /**
    * @type {ReactionCount}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   reactionsCount: ReactionCount
   /**
    * @type {Array<OfferStockResponse>}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   stocks: Array<OfferStockResponse>
   /**
    * @type {SubcategoryIdEnum}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   subcategoryId: SubcategoryIdEnum
   /**
    * @type {OfferVenueResponse}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   venue: OfferVenueResponse
   /**
-   * @type {OfferVideo}
-   * @memberof OfferResponseV2
+   * @type {OfferVideo | null}
+   * @memberof OfferResponse
    */
   video?: OfferVideo | null
   /**
-   * @type {string}
-   * @memberof OfferResponseV2
+   * @type {string | null}
+   * @memberof OfferResponse
    */
   withdrawalDetails?: string | null
 }
@@ -3422,7 +3246,7 @@ export interface OfferResponseV2 {
  */
 export interface OfferStockActivationCodeResponse {
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferStockActivationCodeResponse
    */
   expirationDate?: string | null
@@ -3433,22 +3257,22 @@ export interface OfferStockActivationCodeResponse {
  */
 export interface OfferStockResponse {
   /**
-   * @type {OfferStockActivationCodeResponse}
+   * @type {OfferStockActivationCodeResponse | null}
    * @memberof OfferStockResponse
    */
   activationCode?: OfferStockActivationCodeResponse | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferStockResponse
    */
   beginningDatetime?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferStockResponse
    */
   bookingLimitDatetime?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferStockResponse
    */
   cancellationLimitDatetime?: string | null
@@ -3488,15 +3312,31 @@ export interface OfferStockResponse {
    */
   price: number
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferStockResponse
    */
   priceCategoryLabel?: string | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof OfferStockResponse
    */
   remainingQuantity?: number | null
+}
+/**
+ * @export
+ * @interface OfferVenueCoordinates
+ */
+export interface OfferVenueCoordinates {
+  /**
+   * @type {number | null}
+   * @memberof OfferVenueCoordinates
+   */
+  latitude?: number | null
+  /**
+   * @type {number | null}
+   * @memberof OfferVenueCoordinates
+   */
+  longitude?: number | null
 }
 /**
  * @export
@@ -3504,25 +3344,25 @@ export interface OfferStockResponse {
  */
 export interface OfferVenueResponse {
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferVenueResponse
    */
   address?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferVenueResponse
    */
   bannerUrl?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferVenueResponse
    */
   city?: string | null
   /**
-   * @type {Coordinates}
+   * @type {OfferVenueCoordinates}
    * @memberof OfferVenueResponse
    */
-  coordinates: Coordinates
+  coordinates: OfferVenueCoordinates
   /**
    * @type {number}
    * @memberof OfferVenueResponse
@@ -3549,7 +3389,7 @@ export interface OfferVenueResponse {
    */
   offerer: OfferOffererResponse
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferVenueResponse
    */
   postalCode?: string | null
@@ -3570,7 +3410,7 @@ export interface OfferVenueResponse {
  */
 export interface OfferVideo {
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof OfferVideo
    */
   durationSeconds?: number | null
@@ -3580,12 +3420,12 @@ export interface OfferVideo {
    */
   id: string
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferVideo
    */
   thumbUrl?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof OfferVideo
    */
   title?: string | null
@@ -3631,7 +3471,7 @@ export interface OffersStocksResponseV2 {
    * @type {Array<OfferResponseV2>}
    * @memberof OffersStocksResponseV2
    */
-  offers: Array<OfferResponseV2>
+  offers: Array<OfferResponse>
 }
 /**
  * An enumeration.
@@ -3686,52 +3526,52 @@ export interface PhoneValidationRemainingAttemptsRequest {
  */
 export interface PlaylistRequestBody {
   /**
-   * @type {Array<string>}
+   * @type {Array<string> | null}
    * @memberof PlaylistRequestBody
    */
   categories?: Array<string> | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof PlaylistRequestBody
    */
   endDate?: string | null
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof PlaylistRequestBody
    */
   isDuo?: boolean | null
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof PlaylistRequestBody
    */
   isEvent?: boolean | null
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof PlaylistRequestBody
    */
   isRecoShuffled?: boolean | null
   /**
-   * @type {Array<{ [key: string]: string; }>}
+   * @type {Array<Map> | null}
    * @memberof PlaylistRequestBody
    */
   offerTypeList?: Array<{ [key: string]: string; }> | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof PlaylistRequestBody
    */
   priceMax?: number | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof PlaylistRequestBody
    */
   priceMin?: number | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof PlaylistRequestBody
    */
   startDate?: string | null
   /**
-   * @type {Array<string>}
+   * @type {Array<string> | null}
    * @memberof PlaylistRequestBody
    */
   subcategories?: Array<string> | null
@@ -3742,17 +3582,17 @@ export interface PlaylistRequestBody {
  */
 export interface PlaylistRequestQuery {
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof PlaylistRequestQuery
    */
   latitude?: number | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof PlaylistRequestQuery
    */
   longitude?: number | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof PlaylistRequestQuery
    */
   modelEndpoint?: string | null
@@ -3926,62 +3766,46 @@ export enum ReactionTypeEnum {
 }
 /**
  * @export
- * @interface ReasonMeta
- */
-export interface ReasonMeta {
-  /**
-   * @type {string}
-   * @memberof ReasonMeta
-   */
-  description: string
-  /**
-   * @type {string}
-   * @memberof ReasonMeta
-   */
-  title: string
-}
-/**
- * @export
  * @interface RecommendationApiParams
  */
 export interface RecommendationApiParams {
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof RecommendationApiParams
    */
   ab_test?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof RecommendationApiParams
    */
   call_id?: string | null
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof RecommendationApiParams
    */
   filtered?: boolean | null
   /**
-   * @type {boolean}
+   * @type {boolean | null}
    * @memberof RecommendationApiParams
    */
   geo_located?: boolean | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof RecommendationApiParams
    */
   model_endpoint?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof RecommendationApiParams
    */
   model_name?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof RecommendationApiParams
    */
   model_version?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof RecommendationApiParams
    */
   reco_origin?: string | null
@@ -4343,27 +4167,27 @@ export interface SigninResponse {
  */
 export interface SimilarOffersRequestQuery {
   /**
-   * @type {Array<string>}
+   * @type {Array<string> | null}
    * @memberof SimilarOffersRequestQuery
    */
   categories?: Array<string> | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof SimilarOffersRequestQuery
    */
   latitude?: number | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof SimilarOffersRequestQuery
    */
   longitude?: number | null
   /**
-   * @type {Array<string>}
+   * @type {Array<string> | null}
    * @memberof SimilarOffersRequestQuery
    */
   search_group_names?: Array<string> | null
   /**
-   * @type {Array<string>}
+   * @type {Array<string> | null}
    * @memberof SimilarOffersRequestQuery
    */
   subcategories?: Array<string> | null
@@ -5087,6 +4911,11 @@ export interface UserProfileResponse {
    */
   recreditTypeToShow?: RecreditType | null
   /**
+   * @type {number}
+   * @memberof UserProfileResponse
+   */
+  remainingBonusAttempts?: number | null
+  /**
    * @type {boolean}
    * @memberof UserProfileResponse
    */
@@ -5236,55 +5065,107 @@ export interface ValidationErrorElement {
 }
 /**
  * @export
- * @interface VenueAccessibilityModel
+ * @interface VenueContact
  */
-export interface VenueAccessibilityModel {
+export interface VenueContact {
   /**
-   * @type {boolean}
-   * @memberof VenueAccessibilityModel
-   */
-  audioDisability?: boolean | null
-  /**
-   * @type {boolean}
-   * @memberof VenueAccessibilityModel
-   */
-  mentalDisability?: boolean | null
-  /**
-   * @type {boolean}
-   * @memberof VenueAccessibilityModel
-   */
-  motorDisability?: boolean | null
-  /**
-   * @type {boolean}
-   * @memberof VenueAccessibilityModel
-   */
-  visualDisability?: boolean | null
-}
-/**
- * @export
- * @interface VenueContactModel
- */
-export interface VenueContactModel {
-  /**
-   * @type {string}
-   * @memberof VenueContactModel
+   * @type {string | null}
+   * @memberof VenueContact
    */
   email?: string | null
-/**
-   * @type {string}
-   * @memberof VenueContactModel
- */
+  /**
+   * @type {string | null}
+   * @memberof VenueContact
+   */
   phoneNumber?: string | null
   /**
-   * @type {{ [key: string]: string; }}
-   * @memberof VenueContactModel
+   * @type { [key: string]: string; } | null}
+   * @memberof VenueContact
    */
   socialMedias?: { [key: string]: string; } | null
   /**
-   * @type {string}
-   * @memberof VenueContactModel
+   * @type {string | null}
+   * @memberof VenueContact
    */
   website?: string | null
+}
+/**
+ * @export
+ * @interface VenueProAdvice
+ */
+export interface VenueProAdvice {
+  /**
+   * @type {string | null}
+   * @memberof VenueProAdvice
+   */
+  author?: string | null
+  /**
+   * @type {string}
+   * @memberof VenueProAdvice
+   */
+  content: string
+  /**
+   * @type {string}
+   * @memberof VenueProAdvice
+   */
+  offerCategoryLabel: string
+  /**
+   * @type {number}
+   * @memberof VenueProAdvice
+   */
+  offerId: number
+  /**
+   * @type {string}
+   * @memberof VenueProAdvice
+   */
+  offerName: string
+  /**
+   * @type {string | null}
+   * @memberof VenueProAdvice
+   */
+  offerThumbUrl?: string | null
+  /**
+   * @type {string}
+   * @memberof VenueProAdvice
+   */
+  publicationDatetime: string
+}
+/**
+ * @export
+ * @interface VenueProAdviceQuery
+ */
+export interface VenueProAdviceQuery {
+  /**
+   * @type {number | null}
+   * @memberof VenueProAdviceQuery
+   */
+  maxContentLength?: number | null
+  /**
+   * @type {number}
+   * @memberof VenueProAdviceQuery
+   */
+  page?: number
+  /**
+   * @type {number}
+   * @memberof VenueProAdviceQuery
+   */
+  resultsPerPage?: number
+}
+/**
+ * @export
+ * @interface VenueProAdvices
+ */
+export interface VenueProAdvices {
+  /**
+   * @type {number}
+   * @memberof VenueProAdvices
+   */
+  nbResults: number
+  /**
+   * @type {Array<VenueProAdvice>}
+   * @memberof VenueProAdvices
+   */
+  proAdvices: Array<VenueProAdvice>
 }
 /**
  * @export
@@ -5292,57 +5173,57 @@ export interface VenueContactModel {
  */
 export interface VenueResponse {
   /**
-   * @type {VenueAccessibilityModel}
+   * @type {AccessibilityData}
    * @memberof VenueResponse
    */
-  accessibility: VenueAccessibilityModel
+  accessibilityData: AccessibilityData
   /**
-   * @type {string}
+   * @type {Activity | null}
    * @memberof VenueResponse
    */
   activity: Activity | null
   /**
-   * @type {string | ModelNull}
+   * @type {string | null}
    * @memberof VenueResponse
    */
-  address?: string | null
+  bannerCredit?: string | null
   /**
-   * @type {BannerMetaModel}
+   * @type {boolean}
    * @memberof VenueResponse
    */
-  bannerMeta?: BannerMetaModel | null
+  bannerIsFromGoogle?: boolean
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
   bannerUrl?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
   city?: string | null
   /**
-   * @type {VenueContactModel}
+   * @type {VenueContact | null}
    * @memberof VenueResponse
    */
-  contact?: VenueContactModel | null
+  contact?: VenueContact | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
   description?: string | null
   /**
-   * @type {ExternalAccessibilityDataModel}
+   * @type {AccessibilityData | null}
    * @memberof VenueResponse
    */
-  externalAccessibilityData?: ExternalAccessibilityDataModel | null
+  externalAccessibilityData?: AccessibilityData | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
   externalAccessibilityId?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
   externalAccessibilityUrl?: string | null
@@ -5360,19 +5241,14 @@ export interface VenueResponse {
    * @type {boolean}
    * @memberof VenueResponse
    */
-  isPermanent?: boolean | null
+  isPermanent: boolean
   /**
-   * @type {boolean}
-   * @memberof VenueResponse
-   */
-  isVirtual: boolean
-  /**
-   * @type {number}
+   * @type {number | null}
    * @memberof VenueResponse
    */
   latitude?: number | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof VenueResponse
    */
   longitude?: number | null
@@ -5382,22 +5258,17 @@ export interface VenueResponse {
    */
   name: string
   /**
-   * @type {any}
+   * @type {any | null}
    * @memberof VenueResponse
    */
   openingHours?: any | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
   postalCode?: string | null
-/**
-   * @type {string}
-   * @memberof VenueResponse
- */
-  publicName?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
   street?: string | null
@@ -5407,27 +5278,26 @@ export interface VenueResponse {
    */
   timezone: string
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
   withdrawalDetails?: string | null
 }
 /**
-/**
  * @export
- * @interface VisualDisabilityModel
+ * @interface VisualDisability
  */
-export interface VisualDisabilityModel {
+export interface VisualDisability {
   /**
    * @type {Array<string>}
-   * @memberof VisualDisabilityModel
+   * @memberof VisualDisability
    */
-  audioDescription?: Array<string>
+  audioDescription: Array<string>
   /**
    * @type {string}
-   * @memberof VisualDisabilityModel
+   * @memberof VisualDisability
    */
-  soundBeacon?: string
+  soundBeacon: string
 }
 /**
  * @export
@@ -5718,6 +5588,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary get_countries <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1Countries(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v1/countries`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary get_cultural_survey_questions <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -5824,24 +5712,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     async getNativeV1OauthState(options: any = {}): Promise<FetchArgs> {
       let pathname = `/native/v1/oauth/state`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary report_offer_reasons <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1OfferReportReasons(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/offer/report/reasons`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -6114,6 +5984,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     },
     /**
      * @summary get_venue <GET>
+     * @deprecated
      * @param {number} venue_id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -6130,6 +6001,54 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         `{${'venue_id'}}`,
         encodeURIComponent(String(venue_id))
       )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_venue_advices <GET>
+     * @param {number} venue_id 
+     * @param {number} [maxContentLength] 
+     * @param {number} [page] 
+     * @param {number} [resultsPerPage] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1VenuevenueIdAdvices(venue_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'venue_id' is not null or undefined
+      if (venue_id === null || venue_id === undefined) {
+        throw new RequiredError(
+          'venue_id',
+          'Required parameter venue_id was null or undefined when calling getNativeV1VenuevenueIdAdvices.'
+        )
+      }
+      let pathname = `/native/v1/venue/{venue_id}/advices`.replace(
+        `{${'venue_id'}}`,
+        encodeURIComponent(String(venue_id))
+      )
+      const queryParameters: any = {};
+
+        if (maxContentLength != null) {
+            queryParameters['maxContentLength'] = maxContentLength;
+        }
+
+        if (page != null) {
+            queryParameters['page'] = page;
+        }
+
+        if (resultsPerPage != null) {
+            queryParameters['resultsPerPage'] = resultsPerPage;
+        }
+
+      const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
+        return `${encodeURIComponent(key)}=${encodeURIComponent(queryParameters[key])}`
+      }).join('&')
+      pathname += encodedQueryParams
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -6217,6 +6136,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     },
     /**
      * @summary get_offer_v2 <GET>
+     * @deprecated
      * @param {number} offer_id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -6295,6 +6215,33 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       let pathname = `/native/v2/venue/{venue_id}`.replace(
         `{${'venue_id'}}`,
         encodeURIComponent(String(venue_id))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_offer_v3 <GET>
+     * @param {number} offer_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV3OfferofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'offer_id' is not null or undefined
+      if (offer_id === null || offer_id === undefined) {
+        throw new RequiredError(
+          'offer_id',
+          'Required parameter offer_id was null or undefined when calling getNativeV3OfferofferId.'
+        )
+      }
+      let pathname = `/native/v3/offer/{offer_id}`.replace(
+        `{${'offer_id'}}`,
+        encodeURIComponent(String(offer_id))
       )
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
@@ -7607,6 +7554,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary get_countries <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1Countries(options?: any): Promise<InseeCountries> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1Countries(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary get_cultural_survey_questions <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -7669,17 +7627,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getNativeV1OauthState(options?: any): Promise<OauthStateResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OauthState(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
-     * @summary report_offer_reasons <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1OfferReportReasons(options?: any): Promise<OfferReportReasons> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OfferReportReasons(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -7817,6 +7764,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     /**
      * 
      * @summary get_venue <GET>
+     * @deprecated
      * @param {number} venue_id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -7826,6 +7774,30 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
+    /**
+     * 
+     * @summary get_venue_advices <GET>
+     * @param {number} venue_id 
+     * @param {number} [maxContentLength] 
+     * @param {number} [page] 
+     * @param {number} [resultsPerPage] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1VenuevenueIdAdvices(venue_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, options?: any): Promise<VenueProAdvices> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1VenuevenueIdAdvices(venue_id, maxContentLength, page, resultsPerPage, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_movie_screenings_by_venue <GET>
+     * @param {number} venue_id 
+     * @param {string} [from] 
+     * @param {string} [to] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
     /**
      * 
      * @summary get_bookings <GET>
@@ -7863,18 +7835,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
-     * @summary get_offer_v2 <GET>
-     * @param {number} offer_id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV2OfferofferId(offer_id: number, options?: any): Promise<OfferResponseV2> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2OfferofferId(offer_id, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
      * @summary get_email_update_status <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -7904,6 +7864,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getNativeV2VenuevenueId(venue_id: number, options?: any): Promise<VenueResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2VenuevenueId(venue_id, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_offer_v3 <GET>
+     * @param {number} offer_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV3OfferofferId(offer_id: number, options?: any): Promise<OfferResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV3OfferofferId(offer_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -8547,6 +8519,17 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     * 
+    * @summary get_countries <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV1Countries(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1Countries(options)
+  }
+  /**
+    * 
     * @summary get_cultural_survey_questions <GET>
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
@@ -8611,17 +8594,6 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1OauthState(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1OauthState(options)
-  }
-  /**
-    * 
-    * @summary report_offer_reasons <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1OfferReportReasons(options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1OfferReportReasons(options)
   }
   /**
     * 
@@ -8757,6 +8729,7 @@ export class DefaultApi extends BaseAPI {
   /**
     * 
     * @summary get_venue <GET>
+    * @deprecated
     * @param {number} venue_id 
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
@@ -8765,6 +8738,21 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1VenuevenueId(venue_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1VenuevenueId(venue_id, options)
+  }
+  /**
+    * 
+    * @summary get_venue_advices <GET>
+    * @param {number} venue_id 
+    * @param {number} [maxContentLength] 
+    * @param {number} [page] 
+    * @param {number} [resultsPerPage] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV1VenuevenueIdAdvices(venue_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1VenuevenueIdAdvices(venue_id, maxContentLength, page, resultsPerPage, options)
   }
   /**
     * 
@@ -8803,18 +8791,6 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     * 
-    * @summary get_offer_v2 <GET>
-    * @param {number} offer_id 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV2OfferofferId(offer_id: number, options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV2OfferofferId(offer_id, options)
-  }
-  /**
-    * 
     * @summary get_email_update_status <GET>
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
@@ -8846,6 +8822,18 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV2VenuevenueId(venue_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV2VenuevenueId(venue_id, options)
+  }
+  /**
+    * 
+    * @summary get_offer_v3 <GET>
+    * @param {number} offer_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV3OfferofferId(offer_id: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV3OfferofferId(offer_id, options)
   }
   /**
     * 

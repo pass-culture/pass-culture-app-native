@@ -12,7 +12,7 @@ const TIMESTAMPS_COMPARE_MARGIN = 300 // seconds
  *@returns current timestamp expressed in seconds.
  */
 export function currentTimestamp() {
-  return Math.round(new Date().valueOf() / 1000)
+  return Math.round(Date.now() / 1000)
 }
 
 /**
@@ -53,11 +53,7 @@ export function dateDiffInFullYears(oldDate: Date, newDate: Date) {
  * @param ISODate a string date in the ISO 8601 format %Y-%m-%dT%H:%M:%S
  */
 export const formatToSlashedFrenchDate = (ISODate: Date | string) => {
-  const date = new Date(ISODate)
-  const day = ('0' + date.getDate()).slice(-2)
-  const month = ('0' + (date.getMonth() + 1)).slice(-2)
-  const year = date.getFullYear()
-  return `${day}/${month}/${year}`
+  return new Date(ISODate).toLocaleDateString('fr-FR')
 }
 
 export const setDateOneDayEarlier = (ISODate: Date | string) => {
@@ -68,8 +64,7 @@ export const setDateOneDayEarlier = (ISODate: Date | string) => {
 
 export const formatToReadableFrenchDate = (date: Date | string) => {
   const formattedDate = new Date(date)
-  // @ts-ignore isNan works with empty dates
-  if (isNaN(formattedDate)) return ''
+  if (Number.isNaN(formattedDate.getTime())) return ''
   const monthOrder = formattedDate.getMonth()
   const day = ('0' + formattedDate.getDate()).slice(-2)
   const month = CAPITALIZED_MONTHS[monthOrder].toLowerCase()

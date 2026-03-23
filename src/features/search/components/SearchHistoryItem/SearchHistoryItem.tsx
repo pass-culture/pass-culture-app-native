@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { HistoryItemHighlight } from 'features/search/components/Highlight/Highlight'
 import { Highlighted, HistoryItem } from 'features/search/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Typo } from 'ui/theme'
 
@@ -23,7 +24,7 @@ export function SearchHistoryItem({ item, queryHistory, onPress }: Props) {
 
   return (
     <Container>
-      <HistoryItemTouchable onPress={handlePress}>
+      <HistoryItemTouchable onPress={handlePress} accessibilityRole={AccessibilityRole.BUTTON}>
         <ClockIconContainer>
           <ClockFilledIcon />
         </ClockIconContainer>

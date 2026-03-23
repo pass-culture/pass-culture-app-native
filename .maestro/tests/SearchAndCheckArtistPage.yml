@@ -1,11 +1,9 @@
 appId: ${MAESTRO_APP_ID}
-jsengine: graaljs
 tags:
   - local
   - nightlyIOS
   - nightlyAndroid
   - squad-decouverte
-
 onFlowStart:
   - runScript: subFolder/links/DeepLinks.js
   - runScript: subFolder/commons/Button.js
@@ -16,8 +14,7 @@ onFlowStart:
 - runFlow: subFolder/links/DeepLinksToHome.yml
 
 - runFlow: subFolder/commons/GoToSearchFromTabBar.yml
-- tapOn: 'Catégorie Livres'
-- tapOn: 'Mangas'
+- runFlow: subFolder/search/NavigateToNovelsSubCategory.yml
 - runFlow: subFolder/search/CheckArtistPage.yml
 
 - runFlow: subFolder/commons/StopApp.yml

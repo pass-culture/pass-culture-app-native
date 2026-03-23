@@ -12,4 +12,5 @@ export type RadioButtonGroupOption = Omit<
   'value' | 'setValue' | 'error' | 'variant' | 'disabled'
 > & {
   key: string
+  disabled?: boolean
 }

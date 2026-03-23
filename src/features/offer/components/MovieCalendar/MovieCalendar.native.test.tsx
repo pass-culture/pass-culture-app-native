@@ -6,8 +6,6 @@ import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCale
 import { toMutable } from 'shared/types/toMutable'
 import { CustomRenderOptions, fireEvent, render, screen, userEvent } from 'tests/utils'
 
-import { MOVIE_CALENDAR_PADDING } from '../MoviesScreeningCalendar/helpers/handleMovieCalendarScroll'
-
 const dummyDates = toMutable([
   new Date('2024-07-18T00:00:00.000Z'), // Jeudi 18 juillet 2024
   new Date('2024-07-19T00:00:00.000Z'), // Vendredi 19 juillet 2024
@@ -145,6 +143,8 @@ describe('<MovieCalendar/>', () => {
 
     it('should scroll to the middle element when an item is clicked', async () => {
       const itemIndex = 5
+      const MOVIE_CALENDAR_PADDING = 24
+
       renderMovieCalendar(
         dummyDates,
         { isDesktopViewport: false },

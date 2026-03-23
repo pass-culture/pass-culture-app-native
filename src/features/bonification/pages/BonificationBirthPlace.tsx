@@ -3,8 +3,8 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
+import { InseeCountry } from 'api/gen'
 import { CountryPicker } from 'features/bonification/components/CountryPicker'
-import { InseeCountry } from 'features/bonification/inseeCountries'
 import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames'
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
 import {
@@ -17,10 +17,9 @@ import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStack
 import { CitySearchNameInput } from 'features/profile/components/CitySearchInput/CitySearchNameInput'
 import { env } from 'libs/environment/env'
 import { SuggestedCity } from 'libs/place/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { Form } from 'ui/components/Form'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
@@ -45,7 +44,7 @@ export const BonificationBirthPlace = () => {
     defaultValues: {
       birthCountrySelection: birthCountry ?? {},
       birthCity: birthCity ?? {},
-      birthCountryInput: birthCountry?.LIBCOG ?? '',
+      birthCountryInput: birthCountry?.libcog ?? '',
     },
     resolver: yupResolver(BonificationBirthPlaceSchema),
     mode: 'onChange',
@@ -56,7 +55,7 @@ export const BonificationBirthPlace = () => {
   async function saveBirthPlaceAndNavigate({ birthCountrySelection, birthCity }: FormValues) {
     if (disabled) return
     setBirthCountry(birthCountrySelection)
-    if (birthCountrySelection.LIBCOG === 'France' && birthCity) {
+    if (birthCountrySelection.libcog === 'France' && birthCity) {
       setBirthCity(birthCity)
     } else {
       setBirthCity(null)
@@ -118,22 +117,22 @@ export const BonificationBirthPlace = () => {
                 )}
               />
             ) : null}
-            <ButtonTertiaryPrimary
+            <Button
+              variant="tertiary"
+              numberOfLines={2}
               icon={InfoPlain}
               wording="Je ne connais pas son lieu de naissance"
               onPress={async () => {
-                await openUrl(env.FAQ_BONIFICATION)
+                await openUrl(env.FAQ_BONIFICATION_LEGAL_GUARDIAN_BIRTH_INFORMATIONS)
               }}
-              justifyContent="flex-start"
-              inline
             />
           </ViewGap>
         </Form.MaxWidth>
       }
       fixedBottomChildren={
-        <ButtonPrimary
-          type="submit"
+        <Button
           wording="Continuer"
+          type="submit"
           accessibilityLabel="Continuer vers le résumé"
           onPress={handleSubmit(saveBirthPlaceAndNavigate)}
           disabled={disabled}

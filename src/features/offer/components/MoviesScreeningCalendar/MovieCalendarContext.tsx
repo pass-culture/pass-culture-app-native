@@ -9,6 +9,7 @@ import React, {
   useState,
 } from 'react'
 import { View, ViewStyle } from 'react-native'
+import { useTheme } from 'styled-components'
 
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
 import { useDaysSelector } from 'features/offer/helpers/useDaysSelector/useDaysSelector'
@@ -42,26 +43,31 @@ export const MovieCalendarProvider: React.FC<{
   const { width: itemWidth, onLayout: onItemLayout } = useLayout()
   const scrollToAnchor = useScrollToAnchor()
   const [isVisible, setIsVisible] = useState<boolean>(true)
+  const { designSystem } = useTheme()
+  const MOVIE_CALENDAR_PADDING = designSystem.size.spacing.xl
+  const layoutRef = useRef({ flatListWidth, itemWidth })
 
-  const scrollToMiddleElement = useCallback(
-    (currentIndex: number) => {
-      const { offset } = handleMovieCalendarScroll(currentIndex, flatListWidth, itemWidth)
-
-      flatListRef.current?.scrollToOffset({
-        animated: true,
-        offset,
-      })
-    },
-    [flatListRef, flatListWidth, itemWidth]
-  )
+  useEffect(() => {
+    layoutRef.current = { flatListWidth, itemWidth }
+  }, [flatListWidth, itemWidth])
 
   useEffect(() => {
     const currentIndex = dates.findIndex(
       (date) => (date as Date).toDateString() === selectedDate.toDateString()
     )
 
-    scrollToMiddleElement(currentIndex)
-  }, [selectedDate, dates, scrollToMiddleElement])
+    const { offset } = handleMovieCalendarScroll(
+      currentIndex,
+      layoutRef.current.flatListWidth,
+      layoutRef.current.itemWidth,
+      MOVIE_CALENDAR_PADDING
+    )
+
+    flatListRef.current?.scrollToOffset({
+      animated: true,
+      offset,
+    })
+  }, [selectedDate, dates, MOVIE_CALENDAR_PADDING])
 
   useEffect(() => {
     if (flatListRef?.current) {

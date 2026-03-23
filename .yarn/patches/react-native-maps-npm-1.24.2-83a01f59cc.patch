@@ -1,0 +1,245 @@
+diff --git a/ios/AirGoogleMaps/RNMapsGoogleMapView.h b/ios/AirGoogleMaps/RNMapsGoogleMapView.h
+index 58090f132a0a030b789cc5cb3914b408836527b3..c1023723c7cd54f62d65ca3a580cb791cc6db67d 100644
+--- a/ios/AirGoogleMaps/RNMapsGoogleMapView.h
++++ b/ios/AirGoogleMaps/RNMapsGoogleMapView.h
+@@ -11,15 +11,15 @@
+ #import <React/RCTViewComponentView.h>
+ #import <UIKit/UIKit.h>
+ #if __has_include(<ReactNativeMaps/generated/RNMapsAirModuleDelegate.h>)
+-#import <ReactNativeMaps/generated/RNMapsHostVewDelegate.h>
++#import <ReactNativeMaps/generated/RNMapsHostViewDelegate.h>
+ #else
+-#import "RNMapsHostVewDelegate.h"
++#import "RNMapsHostViewDelegate.h"
+ #endif
+ @class AIRGoogleMap;
+ 
+ NS_ASSUME_NONNULL_BEGIN
+ 
+-@interface RNMapsGoogleMapView : RCTViewComponentView<RNMapsHostVewDelegate>
++@interface RNMapsGoogleMapView : RCTViewComponentView<RNMapsHostViewDelegate>
+ 
+ @end
+ 
+diff --git a/ios/AirGoogleMaps/RNMapsGoogleMapView.mm b/ios/AirGoogleMaps/RNMapsGoogleMapView.mm
+index c2911830a427e8e3a4372152e97caf2f6fb7dcab..ac53b78fd71a923fdc3cf6731d1e5b58c2d3bb80 100644
+--- a/ios/AirGoogleMaps/RNMapsGoogleMapView.mm
++++ b/ios/AirGoogleMaps/RNMapsGoogleMapView.mm
+@@ -13,7 +13,7 @@
+ #import "AIRGoogleMapManager.h"
+ #if __has_include(<ReactNativeMaps/generated/RNMapsAirModuleDelegate.h>)
+ #import <ReactNativeMaps/generated/RNMapsAirModuleDelegate.h>
+-#import <ReactNativeMaps/generated/RNMapsHostVewDelegate.h>
++#import <ReactNativeMaps/generated/RNMapsHostViewDelegate.h>
+ #import <ReactNativeMaps/generated/ComponentDescriptors.h>
+ #import <ReactNativeMaps/generated/EventEmitters.h>
+ #import <ReactNativeMaps/generated/Props.h>
+diff --git a/ios/AirGoogleMaps/RNMapsGooglePolygonView.mm b/ios/AirGoogleMaps/RNMapsGooglePolygonView.mm
+index 6cc58eaf65bd864150f3833b07926eadcdaef151..563c02527f8f78441f77c4d029b535936178af93 100644
+--- a/ios/AirGoogleMaps/RNMapsGooglePolygonView.mm
++++ b/ios/AirGoogleMaps/RNMapsGooglePolygonView.mm
+@@ -12,7 +12,7 @@
+ #import "AIRGoogleMap.h"
+ #if __has_include(<ReactNativeMaps/generated/RNMapsAirModuleDelegate.h>)
+ #import <ReactNativeMaps/generated/RNMapsSpecs.h>
+-#import <ReactNativeMaps/generated/RNMapsHostVewDelegate.h>
++#import <ReactNativeMaps/generated/RNMapsHostViewDelegate.h>
+ #import <ReactNativeMaps/generated/ComponentDescriptors.h>
+ #import <ReactNativeMaps/generated/EventEmitters.h>
+ #import <ReactNativeMaps/generated/Props.h>
+diff --git a/ios/AirMaps/FabricPlaceholders/PlaceHolderGoogleMapView.mm b/ios/AirMaps/FabricPlaceholders/PlaceHolderGoogleMapView.mm
+index 270ab5189a580e091ca5aa79f5f4bf366323fd3b..481cbfa673bec654b3aa9defaee0c535dc379bd9 100644
+--- a/ios/AirMaps/FabricPlaceholders/PlaceHolderGoogleMapView.mm
++++ b/ios/AirMaps/FabricPlaceholders/PlaceHolderGoogleMapView.mm
+@@ -10,7 +10,7 @@
+ #if HAVE_GOOGLE_MAPS == 0
+ 
+ #if __has_include(<ReactNativeMaps/generated/RNMapsAirModuleDelegate.h>)
+-#import <ReactNativeMaps/generated/RNMapsHostVewDelegate.h>
++#import <ReactNativeMaps/generated/RNMapsHostViewDelegate.h>
+ #import <ReactNativeMaps/generated/ComponentDescriptors.h>
+ #import <ReactNativeMaps/generated/EventEmitters.h>
+ #import <ReactNativeMaps/generated/Props.h>
+@@ -20,7 +20,7 @@
+ #import "../../generated/RNMapsSpecs/EventEmitters.h"
+ #import "../../generated/RNMapsSpecs/Props.h"
+ #import "../../generated/RNMapsSpecs/RCTComponentViewHelpers.h"
+-#import "../../generated/RNMapsHostVewDelegate.h"
++#import "../../generated/RNMapsHostViewDelegate.h"
+ #endif
+ #import "RCTFabricComponentsPlugins.h"
+ #import <React/RCTConversions.h>
+diff --git a/ios/AirMaps/FabricPlaceholders/PlaceHolderPolygonView.mm b/ios/AirMaps/FabricPlaceholders/PlaceHolderPolygonView.mm
+index ee6f3ee6d3e60881fb4b560ac7556e9dafc72322..d7a9a33b9962f951f31f6677d10cd7b45224b49a 100644
+--- a/ios/AirMaps/FabricPlaceholders/PlaceHolderPolygonView.mm
++++ b/ios/AirMaps/FabricPlaceholders/PlaceHolderPolygonView.mm
+@@ -10,7 +10,7 @@
+ #if HAVE_GOOGLE_MAPS == 0
+ 
+ #if __has_include(<ReactNativeMaps/generated/RNMapsAirModuleDelegate.h>)
+-#import <ReactNativeMaps/generated/RNMapsHostVewDelegate.h>
++#import <ReactNativeMaps/generated/RNMapsHostViewDelegate.h>
+ #import <ReactNativeMaps/generated/ComponentDescriptors.h>
+ #import <ReactNativeMaps/generated/EventEmitters.h>
+ #import <ReactNativeMaps/generated/Props.h>
+diff --git a/ios/AirMaps/RNMapsAirModule.mm b/ios/AirMaps/RNMapsAirModule.mm
+index 445ff4eef134a306f556a0df6b66a0b71da00953..f238f635d88a5414a6c82117e800d8b341d09f3c 100644
+--- a/ios/AirMaps/RNMapsAirModule.mm
++++ b/ios/AirMaps/RNMapsAirModule.mm
+@@ -19,10 +19,10 @@
+ 
+ #if __has_include(<ReactNativeMaps/generated/RNMapsAirModuleDelegate.h>)
+ #import <ReactNativeMaps/generated/RNMapsSpecs.h>
+-#import <ReactNativeMaps/generated/RNMapsHostVewDelegate.h>
++#import <ReactNativeMaps/generated/RNMapsHostViewDelegate.h>
+ #else
+ #import "RNMapsSpecs.h"
+-#import "RNMapsHostVewDelegate.h"
++#import "RNMapsHostViewDelegate.h"
+ #endif
+ @interface RNMapsAirModule()<NativeAirMapsModuleSpec>
+ @end
+@@ -36,7 +36,7 @@
+                    reject:(RCTPromiseRejectBlock)reject {
+     dispatch_async(dispatch_get_main_queue(), ^{
+         id view = [_viewRegistry_DEPRECATED viewForReactTag:[NSNumber numberWithDouble:tag]];
+-        if ([view conformsToProtocol:@protocol(RNMapsHostVewDelegate)]) {
++        if ([view conformsToProtocol:@protocol(RNMapsHostViewDelegate)]) {
+             id<RNMapsAirModuleDelegate> mapViewDelegate = [view mapView];
+             success(mapViewDelegate);
+         } else {
+diff --git a/ios/AirMaps/RNMapsMapView.h b/ios/AirMaps/RNMapsMapView.h
+index 7be48867ddb43b24704b612014dca9fa230b361f..a608b0ad9ac9ae14c95ba6978e4d88c495252323 100644
+--- a/ios/AirMaps/RNMapsMapView.h
++++ b/ios/AirMaps/RNMapsMapView.h
+@@ -9,16 +9,16 @@
+ 
+ #import <React/RCTViewComponentView.h>
+ #import <UIKit/UIKit.h>
+-#if __has_include(<ReactNativeMaps/generated/RNMapsHostVewDelegate.h>)
+-#import <ReactNativeMaps/generated/RNMapsHostVewDelegate.h>
++#if __has_include(<ReactNativeMaps/generated/RNMapsHostViewDelegate.h>)
++#import <ReactNativeMaps/generated/RNMapsHostViewDelegate.h>
+ #else
+-#import "RNMapsHostVewDelegate.h"
++#import "RNMapsHostViewDelegate.h"
+ #endif
+ @class AIRMap;
+ 
+ NS_ASSUME_NONNULL_BEGIN
+ 
+-@interface RNMapsMapView : RCTViewComponentView<RNMapsHostVewDelegate>
++@interface RNMapsMapView : RCTViewComponentView<RNMapsHostViewDelegate>
+ 
+ @end
+ 
+diff --git a/ios/AirMaps/RNMapsMapView.mm b/ios/AirMaps/RNMapsMapView.mm
+index 3ded0612eb0302bac2f4c42ba7ed610038eddbaa..e892f63a7e59dc208768960cd4638027ffc675b4 100644
+--- a/ios/AirMaps/RNMapsMapView.mm
++++ b/ios/AirMaps/RNMapsMapView.mm
+@@ -14,7 +14,7 @@
+ #if __has_include(<ReactNativeMaps/generated/RNMapsAirModuleDelegate.h>)
+ #import <ReactNativeMaps/generated/RNMapsAirModuleDelegate.h>
+ #import <ReactNativeMaps/generated/RNMapsSpecs.h>
+-#import <ReactNativeMaps/generated/RNMapsHostVewDelegate.h>
++#import <ReactNativeMaps/generated/RNMapsHostViewDelegate.h>
+ #import <ReactNativeMaps/generated/ComponentDescriptors.h>
+ #import <ReactNativeMaps/generated/EventEmitters.h>
+ #import <ReactNativeMaps/generated/Props.h>
+diff --git a/ios/AirMaps/RNMapsMarkerView.mm b/ios/AirMaps/RNMapsMarkerView.mm
+index d3fb82a41642ebf0f3b8e1cbc64c1e8ddb34a6f9..be7e91dc6ef5005a68e468f9f223c47c2e095b7f 100644
+--- a/ios/AirMaps/RNMapsMarkerView.mm
++++ b/ios/AirMaps/RNMapsMarkerView.mm
+@@ -11,13 +11,13 @@
+ #import "AIRMapMarker.h"
+ #import "AIRMapMarkerManager.h"
+ #if __has_include(<ReactNativeMaps/generated/RNMapsAirModuleDelegate.h>)
+-#import <ReactNativeMaps/generated/RNMapsHostVewDelegate.h>
++#import <ReactNativeMaps/generated/RNMapsHostViewDelegate.h>
+ #import <ReactNativeMaps/generated/ComponentDescriptors.h>
+ #import <ReactNativeMaps/generated/EventEmitters.h>
+ #import <ReactNativeMaps/generated/Props.h>
+ #import <ReactNativeMaps/generated/RCTComponentViewHelpers.h>
+ #else
+-#import "../generated/RNMapsHostVewDelegate.h"
++#import "../generated/RNMapsHostViewDelegate.h"
+ #import "../generated/RNMapsSpecs/ComponentDescriptors.h"
+ #import "../generated/RNMapsSpecs/EventEmitters.h"
+ #import "../generated/RNMapsSpecs/Props.h"
+diff --git a/ios/generated/RNMapsHostVewDelegate.h b/ios/generated/RNMapsHostVewDelegate.h
+deleted file mode 100644
+index 1d3b5235ff9130f8682e23935c27b3caebb3defc..0000000000000000000000000000000000000000
+--- a/ios/generated/RNMapsHostVewDelegate.h
++++ /dev/null
+@@ -1,17 +0,0 @@
+-//
+-//  AIRUrlTileOverlay.h
+-//  AirMaps
+-//
+-//  Created by cascadian on 3/19/16.
+-//  Copyright © 2016. All rights reserved.
+-//
+-
+-#import <Foundation/Foundation.h>
+-#import "RNMapsAirModuleDelegate.h"
+-
+-@protocol RNMapsHostVewDelegate <NSObject>
+-@required
+-
+-- (id<RNMapsAirModuleDelegate>) mapView;
+-
+-@end
+diff --git a/ios/generated/RNMapsHostViewDelegate.h b/ios/generated/RNMapsHostViewDelegate.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..0f9c843b996c43365728ce5dbb2524808f240cb8
+--- /dev/null
++++ b/ios/generated/RNMapsHostViewDelegate.h
+@@ -0,0 +1,17 @@
++//
++//  AIRUrlTileOverlay.h
++//  AirMaps
++//
++//  Created by cascadian on 3/19/16.
++//  Copyright © 2016. All rights reserved.
++//
++
++#import <Foundation/Foundation.h>
++#import "RNMapsAirModuleDelegate.h"
++
++@protocol RNMapsHostViewDelegate <NSObject>
++@required
++
++- (id<RNMapsAirModuleDelegate>) mapView;
++
++@end
+diff --git a/ios/generated/module.modulemap b/ios/generated/module.modulemap
+index 84a87d6f582b92874cd387bb524ed73660257b51..924029b1a174fcb12d168fa39493a91cc0adff9f 100644
+--- a/ios/generated/module.modulemap
++++ b/ios/generated/module.modulemap
+@@ -1,6 +1,6 @@
+ framework module ReactNativeMapsGenerated {
+     header "RNMapsAirModuleDelegate.h"
+-    header "RNMapsHostVewDelegate.h"
++    header "RNMapsHostViewDelegate.h"
+ 
+     explicit module RNMapsSpecs {
+         header "ComponentDescriptors.h"
+diff --git a/package.json b/package.json
+index b0ac3c3c6ff61d47eda04617de5f5672bf37f2dc..8b3bca01b68874186df3926d7b73c2e26017faa1 100644
+--- a/package.json
++++ b/package.json
+@@ -109,6 +109,14 @@
+     "includesGeneratedCode": true,
+     "android": {
+       "javaPackageName": "com.rnmaps.fabric"
++    },
++    "ios": {
++      "componentProvider": {
++        "RNMapsGoogleMapView": "RNMapsGoogleMapView",
++        "RNMapsGooglePolygon": "RNMapsGooglePolygonView",
++        "RNMapsMapView": "RNMapsMapView",
++        "RNMapsMarker": "RNMapsMarkerView"
++      }
+     }
+   },
+   "engines": {

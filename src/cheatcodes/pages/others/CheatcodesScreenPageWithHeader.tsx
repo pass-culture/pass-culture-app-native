@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
 
@@ -17,7 +17,7 @@ export const CheatcodesScreenPageWithHeader = () => {
       title="Title"
       scrollChildren={<Typo.Body>Children...</Typo.Body>}
       fixedBottomChildren={
-        <ButtonPrimary wording="Retour" onPress={navigateToCheatcodesNavigationGenericPages} />
+        <Button fullWidth wording="Retour" onPress={navigateToCheatcodesNavigationGenericPages} />
       }
     />
   )

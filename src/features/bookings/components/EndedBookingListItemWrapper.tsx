@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { BookingListItemResponse } from 'api/gen'
+import { BookingListItemResponse, ReactionTypeEnum } from 'api/gen'
 import { BookingListItem } from 'features/bookings/components/BookingListItem'
 import { BookingListItemLabel } from 'features/bookings/components/BookingListItemLabel'
 import { ENDED_BOOKING_REASONS } from 'features/bookings/constants'
@@ -11,15 +11,19 @@ import { getEndedBookingItemProperties } from 'features/bookings/helpers/v2/getE
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useSubcategory } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 
 type EndedBookingProps = {
   booking: BookingListItemResponse
+  handleShowReactionModal: (booking: BookingListItemResponse) => void
 }
 
-export const EndedBookingListItemWrapper: FunctionComponent<EndedBookingProps> = ({ booking }) => {
+export const EndedBookingListItemWrapper: FunctionComponent<EndedBookingProps> = ({
+  booking,
+  handleShowReactionModal,
+}) => {
   const {
     imageUrl,
     isDigital,
@@ -31,8 +35,6 @@ export const EndedBookingListItemWrapper: FunctionComponent<EndedBookingProps> =
 
   const prePopulateOffer = usePrePopulateOffer()
   const netInfo = useNetInfoContext()
-  const { showErrorSnackBar } = useSnackBarContext()
-  const segment = useABSegment()
   const { isEvent, categoryId } = useSubcategory(subcategoryId)
 
   const { accessibilityLabel, isBookingEligibleForArchive, handlePressOffer, navigateTo } =
@@ -41,9 +43,11 @@ export const EndedBookingListItemWrapper: FunctionComponent<EndedBookingProps> =
       categoryId,
       netInfo,
       prePopulateOffer,
-      segment,
-      showErrorSnackBar,
     })
+
+  const shouldShowReactionButton =
+    booking.canReact &&
+    (booking.userReaction === null || booking.userReaction === ReactionTypeEnum.NO_REACTION)
 
   const { title } =
     ENDED_BOOKING_REASONS[
@@ -60,23 +64,44 @@ export const EndedBookingListItemWrapper: FunctionComponent<EndedBookingProps> =
   })
 
   return (
-    <BookingListItemContainer
-      navigateTo={navigateTo}
-      onBeforeNavigate={handlePressOffer}
-      accessibilityLabel={accessibilityLabel}>
-      <BookingListItem
-        display={isEvent ? 'punched' : 'full'}
-        title={name}
-        subtitle={venueName}
-        imageUrl={imageUrl ?? ''}>
-        <BookingListItemLabel alert={!!booking.expirationDate} text={title} icon={icon} />
-      </BookingListItem>
-    </BookingListItemContainer>
+    <Wrapper>
+      <InternalTouchableLink
+        navigateTo={navigateTo}
+        onBeforeNavigate={handlePressOffer}
+        accessibilityLabel={accessibilityLabel}>
+        <BookingListItem
+          display={isEvent ? 'punched' : 'full'}
+          title={name}
+          subtitle={venueName}
+          imageUrl={imageUrl ?? ''}>
+          <BookingListItemLabel alert={!!booking.expirationDate} text={title} icon={icon} />
+        </BookingListItem>
+      </InternalTouchableLink>
+      {shouldShowReactionButton ? (
+        <LikeButtonContainer>
+          <Button
+            icon={ThumbUp}
+            onPress={() => handleShowReactionModal(booking)}
+            accessibilityLabel={`Ouvrir la modale de réaction pour la réservation ${name}`}
+            variant="secondary"
+            color="neutral"
+            size="small"
+            iconButton
+          />
+        </LikeButtonContainer>
+      ) : null}
+    </Wrapper>
   )
 }
 
-const BookingListItemContainer = styled(InternalTouchableLink)(({ theme }) => ({
+const Wrapper = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
   marginBottom: theme.designSystem.size.spacing.l,
   ...(theme.isDesktopViewport ? { maxWidth: '50%' } : undefined),
+}))
+
+const LikeButtonContainer = styled.View(({ theme }) => ({
+  position: 'absolute',
+  top: theme.designSystem.size.spacing.m,
+  right: theme.designSystem.size.spacing.m,
 }))

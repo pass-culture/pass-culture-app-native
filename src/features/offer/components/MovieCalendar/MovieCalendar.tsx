@@ -11,10 +11,7 @@ import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScrol
 import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 import { getSpacing } from 'ui/theme'
 
-import {
-  handleMovieCalendarScroll,
-  MOVIE_CALENDAR_PADDING,
-} from '../MoviesScreeningCalendar/helpers/handleMovieCalendarScroll'
+import { handleMovieCalendarScroll } from '../MoviesScreeningCalendar/helpers/handleMovieCalendarScroll'
 
 type Props = {
   dates: Date[]
@@ -39,7 +36,7 @@ export const MovieCalendar: React.FC<Props> = ({
   onItemLayout,
   disabledDates,
 }) => {
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, designSystem } = useTheme()
   const {
     handleScrollPrevious,
     handleScrollNext,
@@ -52,11 +49,17 @@ export const MovieCalendar: React.FC<Props> = ({
     ref: listRef,
     isActive: isDesktopViewport,
   })
+  const MOVIE_CALENDAR_PADDING = designSystem.size.spacing.xl
 
   const scrollToMiddleElement = useCallback(
     (currentIndex: number) => {
       if (!listWidth || !itemWidth) return
-      const { offset } = handleMovieCalendarScroll(currentIndex, listWidth, itemWidth)
+      const { offset } = handleMovieCalendarScroll(
+        currentIndex,
+        listWidth,
+        itemWidth,
+        MOVIE_CALENDAR_PADDING
+      )
 
       if (listRef && 'current' in listRef) {
         listRef.current?.scrollToOffset({
@@ -65,7 +68,7 @@ export const MovieCalendar: React.FC<Props> = ({
         })
       }
     },
-    [listRef, listWidth, itemWidth]
+    [listWidth, itemWidth, MOVIE_CALENDAR_PADDING, listRef]
   )
 
   const onInternalTabChange = useCallback(
@@ -93,7 +96,7 @@ export const MovieCalendar: React.FC<Props> = ({
           ref={listRef}
           data={dates}
           horizontal
-          contentContainerStyle={contentContainerStyle}
+          contentContainerStyle={{ paddingHorizontal: MOVIE_CALENDAR_PADDING }}
           showsHorizontalScrollIndicator={false}
           onScroll={onScroll}
           onContentSizeChange={onContentSizeChange}
@@ -125,16 +128,14 @@ export const MovieCalendar: React.FC<Props> = ({
   )
 }
 
-const contentContainerStyle = {
-  paddingHorizontal: MOVIE_CALENDAR_PADDING,
-}
-
-const FadeComponent = styled(LinearGradient)`
+const FadeComponent = styled(LinearGradient)(
+  ({ theme }) => `
   position: absolute;
   top: 0;
-  bottom: ${getSpacing(1)}px;
+  bottom: ${theme.designSystem.size.spacing.xs}px;
   width: ${getSpacing(20)}px;
 `
+)
 
 const FadeLeft = styled(FadeComponent).attrs<{ colors?: string[] }>(({ theme }) => ({
   colors: [

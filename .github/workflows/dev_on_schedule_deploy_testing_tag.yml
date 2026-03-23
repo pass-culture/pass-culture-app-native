@@ -24,12 +24,12 @@ jobs:
           corepack prepare yarn@3.6.4 --activate
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: 'yarn'
 
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile

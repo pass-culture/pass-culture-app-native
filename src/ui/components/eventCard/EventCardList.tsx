@@ -2,16 +2,13 @@ import React, { useState } from 'react'
 import { FlatList, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { Referrals } from 'features/navigation/RootNavigator/types'
 import { EVENT_CARD_WIDTH, EventCard, EventCardProps } from 'ui/components/eventCard/EventCard'
 
 type Props = {
   data: EventCardProps[]
-  analyticsFrom?: Referrals
-  offerId?: number
 }
 
-export const EventCardList: React.FC<Props> = ({ data, analyticsFrom, offerId }) => {
+export const EventCardList: React.FC<Props> = ({ data }) => {
   const [webViewWidth, setWebViewWidth] = useState(0)
   const { isDesktopViewport, designSystem } = useTheme()
 
@@ -19,8 +16,6 @@ export const EventCardList: React.FC<Props> = ({ data, analyticsFrom, offerId })
     Math.floor(webViewWidth / (EVENT_CARD_WIDTH + designSystem.size.spacing.l)),
     1
   )
-
-  const analyticsParams = { analyticsFrom, offerId }
 
   if (isDesktopViewport) {
     return (
@@ -37,7 +32,7 @@ export const EventCardList: React.FC<Props> = ({ data, analyticsFrom, offerId })
           data={data}
           renderItem={({ item }: { item: EventCardProps }) => (
             <Container>
-              <EventCard {...item} {...analyticsParams} />
+              <EventCard {...item} />
             </Container>
           )}
           keyExtractor={(item) => JSON.stringify(item)}
@@ -64,12 +59,12 @@ export const EventCardList: React.FC<Props> = ({ data, analyticsFrom, offerId })
             <View>
               {topEventCardData ? (
                 <EventCardContainer isLast={isLastColumn(index)} isBottom={false}>
-                  <EventCard {...topEventCardData} {...analyticsParams} />
+                  <EventCard {...topEventCardData} />
                 </EventCardContainer>
               ) : null}
               {bottomEventCardData ? (
                 <EventCardContainer isLast={isLastColumn(index)} isBottom>
-                  <EventCard {...bottomEventCardData} {...analyticsParams} />
+                  <EventCard {...bottomEventCardData} />
                 </EventCardContainer>
               ) : null}
             </View>

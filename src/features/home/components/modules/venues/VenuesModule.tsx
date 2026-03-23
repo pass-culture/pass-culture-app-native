@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 import { ViewToken } from 'react-native'
+import { useTheme } from 'styled-components'
 
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
 import { ModuleData } from 'features/home/types'
@@ -9,7 +10,7 @@ import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
-import { LENGTH_S, getSpacing } from 'ui/theme'
+import { LENGTH_S } from 'ui/theme'
 
 type VenuesModuleProps = {
   moduleId: string
@@ -35,7 +36,7 @@ export const VenuesModule = ({
 }: VenuesModuleProps) => {
   const moduleName = displayParameters.title
   const { playlistItems = [] } = data ?? { playlistItems: [] }
-
+  const { designSystem } = useTheme()
   const renderItem: CustomListRenderItem<VenueHit> = useCallback(
     ({ item, width, height }) => (
       <VenueTile
@@ -80,7 +81,7 @@ export const VenuesModule = ({
           keyExtractor={keyExtractor}
           tileType="venue"
           withMargin
-          contentContainerStyle={{ paddingHorizontal: getSpacing(6) }}
+          contentContainerStyle={{ paddingHorizontal: designSystem.size.spacing.xl }}
           onViewableItemsChanged={handleViewableItemsChanged}
           playlistRef={listRef}
         />

@@ -11,7 +11,6 @@ import { getNativeCategories } from 'features/search/helpers/categoriesHelpers/c
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
-import { getSpacing } from 'ui/theme'
 
 interface Props {
   categories: SearchGroupNameEnumv2[]
@@ -67,12 +66,12 @@ export const OfferNativeCategoryChoices = (props: Props) => {
   )
 }
 
-const BodyContainer = styled.View({
+const BodyContainer = styled.View(({ theme }) => ({
   flexWrap: 'wrap',
   flexDirection: 'column',
-  marginBottom: -getSpacing(3),
-  marginRight: -getSpacing(3),
-})
+  marginBottom: -theme.designSystem.size.spacing.m,
+  marginRight: -theme.designSystem.size.spacing.m,
+}))
 
 const StyledUl = styled(Ul)({
   flexWrap: 'wrap',

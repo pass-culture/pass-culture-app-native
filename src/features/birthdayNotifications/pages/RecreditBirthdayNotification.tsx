@@ -5,14 +5,14 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { storage } from 'libs/storage'
 import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { getAge } from 'shared/user/getAge'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { Typo } from 'ui/theme'
@@ -26,7 +26,7 @@ export const RecreditBirthdayNotification = () => {
 
   const credit = useAvailableCredit()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const creditedAmount = formatCurrencyFromCents(
     user?.recreditAmountToShow ?? 3000,
     currency,
@@ -37,12 +37,11 @@ export const RecreditBirthdayNotification = () => {
     currency,
     euroToPacificFrancRate
   )
-  const { showErrorSnackBar } = useSnackBarContext()
 
   const { mutate: resetRecreditAmountToShow, isPending: isResetRecreditAmountToShowLoading } =
     useResetRecreditAmountToShowMutation({
       onSuccess: () => navigateToHome(),
-      onError: () => showErrorSnackBar({ message: 'Une erreur est survenue' }),
+      onError: () => showErrorSnackBar('Une erreur est survenue'),
     })
 
   useEffect(() => {

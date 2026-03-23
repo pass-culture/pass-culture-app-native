@@ -3,7 +3,6 @@ import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
-import { getSpacing } from 'ui/theme'
 
 const PROGRESS_DURATION_IN_MS = 800
 
@@ -45,7 +44,7 @@ export const ProgressBar = ({ currentStep, totalStep }: Props) => {
 
 const BarBackground = styled.View(({ theme }) => ({
   width: '100%',
-  height: getSpacing(1.5),
+  height: theme.designSystem.size.spacing.s,
   backgroundColor: theme.designSystem.color.background.disabled,
   justifyContent: 'flex-start',
 }))

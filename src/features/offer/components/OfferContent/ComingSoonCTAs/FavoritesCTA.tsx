@@ -4,9 +4,8 @@ import styled from 'styled-components/native'
 
 import { FavoriteAuthModal } from 'features/offer/components/FavoriteAuthModal/FavoriteAuthModal'
 import { FavoriteProps } from 'features/offer/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ModalSettings } from 'ui/components/modals/useModal'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 import { Typo } from 'ui/theme'
@@ -32,20 +31,26 @@ export const FavoritesCTA: FC<Props> = ({
       {caption ? <Caption>{caption}</Caption> : null}
       {favorite ? (
         <ButtonContainer>
-          <ButtonSecondary
+          <Button
             wording="Retirer des favoris"
             onPress={onPressFavoriteCTA}
             icon={FavoriteFilled}
             isLoading={isRemoveFavoriteLoading}
+            variant="secondary"
+            color="brand"
+            accessibilityLabel="Retirer des favoris"
+            fullWidth
           />
         </ButtonContainer>
       ) : (
         <ButtonContainer>
-          <ButtonPrimary
+          <Button
             wording="Mettre en favori"
             onPress={onPressFavoriteCTA}
             icon={Favorite}
             isLoading={isAddFavoriteLoading}
+            accessibilityLabel="Mettre en favori"
+            fullWidth
           />
           <FavoriteAuthModal
             visible={favoriteAuthModal.visible}

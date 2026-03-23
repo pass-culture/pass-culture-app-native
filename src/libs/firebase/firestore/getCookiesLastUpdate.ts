@@ -31,7 +31,8 @@ export const getCookiesLastUpdate = async (): Promise<
       )
 
       // If build version or date are undefined or invalid, return undefined
-      if (lastUpdateBuildVersion === undefined || isNaN(lastUpdated.getTime())) return undefined
+      if (lastUpdateBuildVersion === undefined || Number.isNaN(lastUpdated.getTime()))
+        return undefined
       return { lastUpdated, lastUpdateBuildVersion }
     })
     .catch((error) => {

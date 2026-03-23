@@ -1,6 +1,7 @@
 import { Hit, SearchResponse } from 'algoliasearch/lite'
 
 import { DisabilitiesProperties } from 'features/accessibility/types'
+import { VENUES_FACETS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
@@ -68,6 +69,7 @@ export const fetchSearchResults = async ({
     /* Is needed to get a queryID, in order to send analytics events
      https://www.algolia.com/doc/api-reference/api-parameters/clickAnalytics/ */
     clickAnalytics: true,
+    analytics: true,
   }
 
   const queries = [
@@ -78,6 +80,15 @@ export const fetchSearchResults = async ({
       ...offersQueryParams,
       ...buildHitsPerPage(parameters.hitsPerPage),
       ...(aroundPrecision && { aroundPrecision }),
+    },
+    // Venues not open to public
+    {
+      indexName: env.ALGOLIA_VENUES_INDEX_EXPERIMENTAL,
+      query: parameters.query,
+      facetFilters: [[`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:false`]],
+      page: 0,
+      hitsPerPage: parameters.query ? 1 : 0,
+      clickAnalytics: true,
     },
     // Venues
     {
@@ -91,33 +102,7 @@ export const fetchSearchResults = async ({
         parameters.venue
       ),
       clickAnalytics: true,
-    },
-    // Facets
-    // this request should be reworked because we have a problem on genreType view
-    {
-      indexName: offersIndex,
-      query: parameters.query || '',
-      page: 0,
-      ...buildHitsPerPage(parameters.hitsPerPage),
-      ...buildOfferSearchParameters(
-        {
-          ...parameters,
-          offerCategories: [],
-          offerNativeCategories: undefined,
-          offerGenreTypes: undefined,
-        },
-        buildLocationParameterParams,
-        isUserUnderage,
-        disabilitiesProperties,
-        true
-      ),
-      facets: [
-        'offer.bookMacroSection',
-        'offer.movieGenres',
-        'offer.musicType',
-        'offer.nativeCategoryId',
-        'offer.showType',
-      ],
+      analytics: true,
     },
     // Offers without duplication limit
     {
@@ -148,14 +133,14 @@ export const fetchSearchResults = async ({
   try {
     const [
       offersResponse,
+      venueNotOpenToPublic,
       venuesResponse,
-      facetsResponse,
       duplicatedOffersResponse,
       offerArtistsResponse,
     ] = (await multipleQueries<Offer | AlgoliaVenue>(queries)) as [
       SearchResponse<Offer>,
       SearchResponse<AlgoliaVenue>,
-      SearchResponse<Offer>,
+      SearchResponse<AlgoliaVenue>,
       SearchResponse<Offer>,
       SearchResponse<Offer>,
     ]
@@ -166,8 +151,8 @@ export const fetchSearchResults = async ({
 
     return {
       offersResponse,
+      venueNotOpenToPublic,
       venuesResponse,
-      facetsResponse,
       duplicatedOffersResponse,
       offerArtistsResponse,
       redirectUrl,
@@ -176,8 +161,8 @@ export const fetchSearchResults = async ({
     captureAlgoliaError(error)
     return {
       offersResponse: getDefaultReponse<Offer>(),
+      venueNotOpenToPublic: getDefaultReponse<AlgoliaVenue>(),
       venuesResponse: getDefaultReponse<AlgoliaVenue>(),
-      facetsResponse: {},
       offerArtistsResponse: getDefaultReponse<Offer>(),
       duplicatedOffersResponse: getDefaultReponse<Offer>(),
       redirectUrl: undefined,

@@ -1,8 +1,8 @@
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
+import { theme } from 'theme'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { getSpacing } from 'ui/theme'
 
 import { PlaylistArrowButton } from './PlaylistArrowButton'
 
@@ -15,13 +15,13 @@ export default meta
 const variantConfig: Variants<typeof PlaylistArrowButton> = [
   {
     label: 'PlaylistArrowButton left',
-    props: { direction: 'left', top: getSpacing(5) },
-    minHeight: getSpacing(10),
+    props: { direction: 'left', top: theme.designSystem.size.spacing.xl },
+    minHeight: theme.designSystem.size.spacing.xxxl,
   },
   {
     label: 'PlaylistArrowButton  right',
-    props: { direction: 'right', top: getSpacing(5) },
-    minHeight: getSpacing(10),
+    props: { direction: 'right', top: theme.designSystem.size.spacing.xl },
+    minHeight: theme.designSystem.size.spacing.xxxl,
   },
 ]
 

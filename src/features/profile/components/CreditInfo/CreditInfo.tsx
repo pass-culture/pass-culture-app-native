@@ -3,19 +3,22 @@ import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme/typography'
 
 type CreditInfoProps = {
-  totalCredit: DomainsCredit['all']
+  totalCredit?: DomainsCredit['all'] | null
 }
 
 export function CreditInfo({ totalCredit }: PropsWithChildren<CreditInfoProps>) {
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
+
+  if (!totalCredit) return null
+
   const totalCreditWithCurrency = formatCurrencyFromCents(
     totalCredit.remaining,
     currency,

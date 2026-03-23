@@ -43,7 +43,7 @@ describe('<OfferReactionSection />', () => {
         chronicles: [chroniclesSnap[0], chroniclesSnap[1], chroniclesSnap[2]],
       })
 
-      expect(await screen.findByText('3 avis')).toBeOnTheScreen()
+      expect(await screen.findByText('3 avis book club')).toBeOnTheScreen()
     })
 
     it('should display headline offers count when exist', async () => {
@@ -103,7 +103,7 @@ describe('<OfferReactionSection />', () => {
         )
       )
 
-      expect(await screen.findByText('4 avis')).toBeOnTheScreen()
+      expect(await screen.findByText('4 avis book club')).toBeOnTheScreen()
     })
 
     it('should display published chronicles count when there is at least one published chronicle', async () => {
@@ -112,11 +112,11 @@ describe('<OfferReactionSection />', () => {
         chroniclesCount: 5,
         chronicleVariantInfo: {
           ...chronicleVariantInfoFixture,
-          labelReaction: 'Book-club',
+          labelReaction: 'book club',
         },
       })
 
-      expect(await screen.findByText('5 avis')).toBeOnTheScreen()
+      expect(await screen.findByText('5 avis book club')).toBeOnTheScreen()
     })
 
     it('should scroll to chronicles section when clicking on published chronicles counter', async () => {

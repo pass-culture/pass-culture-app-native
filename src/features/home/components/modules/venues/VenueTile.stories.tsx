@@ -2,7 +2,6 @@ import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
-import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { LENGTH_S } from 'ui/theme'
 
@@ -11,13 +10,6 @@ import { VenueTile } from './VenueTile'
 const meta: Meta<typeof VenueTile> = {
   title: 'Features/home/VenueTile',
   component: VenueTile,
-  decorators: [
-    (Story) => (
-      <ReactQueryClientProvider>
-        <Story />
-      </ReactQueryClientProvider>
-    ),
-  ],
 }
 export default meta
 

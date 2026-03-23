@@ -2,9 +2,7 @@ import { ComponentProps, FunctionComponent, RefAttributes } from 'react'
 import { Insets, TextInput as RNTextInput, TextStyle, ViewStyle } from 'react-native'
 
 // eslint-disable-next-line local-rules/no-theme-from-theme
-import { theme } from 'theme'
 import { ColorsType } from 'theme/types'
-import { InputSize } from 'ui/designSystem/TextInput/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type InputProps = {
@@ -53,22 +51,6 @@ type CustomTextInputProps = InputProps & {
   characterCount?: number
 }
 
-type CustomSearchInputProps = InputProps & {
-  label?: string
-  inputHeight?: InputSize
-  format?: string
-  LeftIcon?: React.FC
-  onPressRightIcon?: () => void
-  searchInputID?: string
-  isFocusable?: boolean
-  onFocus?: () => void
-  inputContainerStyle?: ViewStyle
-  children?: React.ReactNode
-  isRequiredField?: boolean
-  textStyle?: ValueOf<typeof theme.designSystem.typography>
-  disableClearButton?: boolean
-}
-
 export type RNTextInputProps = Pick<
   ComponentProps<typeof RNTextInput> & { disabled?: boolean; nativeAutoFocus?: boolean },
   /* react-native-web's TextInput supports the prop "disabled"
@@ -113,8 +95,6 @@ type TextInputNativeProps = CustomTextInputBaseProps & RNTextInputProps
 
 export type TextInputProps = CustomTextInputProps & Omit<RNTextInputProps, 'placeholder'>
 
-export type SearchInputProps = CustomSearchInputProps & RNTextInputProps
-
 function getInputProps<Props extends InputProps>(props: Props): InputProps {
   return {
     accessibilityHint: props.accessibilityHint,
@@ -134,22 +114,6 @@ export function getCustomTextInputProps(props: TextInputProps): CustomTextInputP
     rightButton: props.rightButton,
     description: props.description,
     characterCount: props.characterCount,
-  }
-}
-
-export function getCustomSearchInputProps(props: SearchInputProps): CustomSearchInputProps {
-  return {
-    ...getInputProps(props),
-    label: props.label,
-    inputHeight: props.inputHeight,
-    LeftIcon: props.LeftIcon,
-    onPressRightIcon: props.onPressRightIcon,
-    inputContainerStyle: props.inputContainerStyle,
-    children: props.children,
-    isFocusable: props.isFocusable,
-    onFocus: props.onFocus,
-    isRequiredField: props.isRequiredField,
-    disableClearButton: props.disableClearButton,
   }
 }
 

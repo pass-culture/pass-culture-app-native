@@ -131,9 +131,6 @@ firebase-debug.log
 /logs/*
 .tsbuild
 
-# lighthouse
-.lighthouseci
-
 # ts-prune
 scripts/dead_code_current.txt
 

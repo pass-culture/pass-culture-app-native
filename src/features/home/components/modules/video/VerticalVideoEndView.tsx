@@ -71,6 +71,6 @@ const BlackView = styled.View(({ theme }) => ({
   backgroundColor: colorAlpha(theme.designSystem.color.background.lockedInverted, 0.9),
   height: '100%',
   justifyContent: 'center',
-  borderTopLeftRadius: getSpacing(4),
-  borderTopRightRadius: getSpacing(4),
+  borderTopLeftRadius: theme.designSystem.size.borderRadius.l,
+  borderTopRightRadius: theme.designSystem.size.borderRadius.l,
 }))

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Animated } from 'react-native'
-import { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
@@ -8,10 +7,10 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareVenue } from 'features/share/helpers/getShareVenue'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics/provider'
-import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
-import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { useModal } from 'ui/components/modals/useModal'
+import { Button } from 'ui/designSystem/Button/Button'
+import { Share } from 'ui/svg/icons/Share'
 
 interface Props {
   headerTransition: Animated.AnimatedInterpolation<string | number>
@@ -22,7 +21,6 @@ interface Props {
  * @param props.headerTransition should be between animated between 0 and 1
  */
 export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
-  const theme = useTheme()
   const { goBack } = useGoBack(...getSearchHookConfig('SearchLanding'))
 
   const { share: shareVenue, shareContent } = getShareVenue({ venue, utmMedium: 'header' })
@@ -38,8 +36,6 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
     showShareVenueModal()
   }
 
-  const { animationState } = getAnimationState(theme, headerTransition)
-
   return (
     <React.Fragment>
       <ContentHeader
@@ -48,11 +44,13 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
         onBackPress={goBack}
         titleTestID="venueHeaderName"
         RightElement={
-          <RoundedButton
-            animationState={animationState}
-            iconName="share"
+          <Button
+            iconButton
+            icon={Share}
             onPress={onSharePress}
             accessibilityLabel="Partager"
+            variant="secondary"
+            color="neutral"
           />
         }
       />

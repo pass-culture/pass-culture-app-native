@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React, { ComponentProps } from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
+import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferPlace, OfferPlaceProps } from 'features/offer/components/OfferPlace/OfferPlace'
@@ -75,7 +75,6 @@ const offerPlaceProps: OfferPlaceProps = {
   offer: mockOffer,
   subcategory: mockSubcategory,
   isOfferAtSameAddressAsVenue: true,
-  segment: 'A',
 }
 
 const DEFAULT_USER_LOCATION = { latitude: 5, longitude: -52 }
@@ -317,7 +316,6 @@ describe('<OfferPlace />', () => {
       fromMultivenueOfferId: '146112',
       offerId: '2',
       isHeadline: false,
-      displayVideo: true,
     })
   })
 
@@ -357,7 +355,7 @@ describe('<OfferPlace />', () => {
   })
 
   describe('Venue is permanent', () => {
-    const offer: OfferResponseV2 = {
+    const offer: OfferResponse = {
       ...mockOffer,
       venue: {
         ...mockOffer.venue,
@@ -378,7 +376,7 @@ describe('<OfferPlace />', () => {
 
     it('should not display "Voir la page du lieu" button when venue is not permanent', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...mockOffer,
         venue: {
           ...mockOffer.venue,
@@ -416,7 +414,7 @@ describe('<OfferPlace />', () => {
   describe('"Voir l’itinéraire" button', () => {
     it('should display "Voir l’itinéraire" button when complete venue address specified', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...mockOffer,
         venue: {
           ...mockOffer.venue,
@@ -433,7 +431,7 @@ describe('<OfferPlace />', () => {
 
     it('should log consult itinerary when pressing "Voir l’itinéraire" button', async () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...mockOffer,
         id: 146112,
       }
@@ -449,7 +447,7 @@ describe('<OfferPlace />', () => {
 
     it('should not display "Voir l’itinéraire" button when venue address, city and postal code not provided', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...mockOffer,
         venue: {
           ...mockOffer.venue,
@@ -467,7 +465,7 @@ describe('<OfferPlace />', () => {
 
     it('should not display "Voir l’itinéraire" button when only venue address provided', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...mockOffer,
         venue: {
           ...mockOffer.venue,
@@ -484,7 +482,7 @@ describe('<OfferPlace />', () => {
 
     it('should not display "Voir l’itinéraire" button when only venue city provided', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...mockOffer,
         venue: {
           ...mockOffer.venue,
@@ -501,7 +499,7 @@ describe('<OfferPlace />', () => {
 
     it('should not display "Voir l’itinéraire" button when only venue city postalCode', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...mockOffer,
         venue: {
           ...mockOffer.venue,
@@ -645,7 +643,6 @@ const renderOfferPlace = ({
           subcategory={subcategory}
           distance={distance}
           isOfferAtSameAddressAsVenue
-          segment="A"
         />
       </OfferCTAProvider>
     ),

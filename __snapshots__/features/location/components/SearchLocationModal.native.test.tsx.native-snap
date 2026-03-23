@@ -217,11 +217,13 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
             }
           >
             <View
+              marginTop={0}
               style={
                 {
                   "display": "flex",
                   "flexDirection": "row",
                   "justifyContent": "center",
+                  "marginTop": 0,
                   "width": "100%",
                 }
               }
@@ -287,7 +289,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                     {
                       "busy": undefined,
                       "checked": undefined,
-                      "disabled": undefined,
+                      "disabled": false,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -312,24 +314,74 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                   onStartShouldSetResponder={[Function]}
                   style={
                     {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
                       "opacity": 1,
-                      "paddingBottom": 4,
-                      "paddingLeft": 4,
-                      "paddingRight": 4,
-                      "paddingTop": 4,
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
                       "userSelect": "auto",
+                      "width": "auto",
                     }
                   }
                   testID="Fermer la modale"
                 >
                   <View
-                    height={20}
-                    testID="rightIcon"
-                    width={20}
+                    gap={0}
+                    hasIcon={true}
+                    isMultiline={false}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "columnGap": 0,
+                        "flexDirection": "row",
+                      }
+                    }
                   >
-                    <Text>
-                      rightIcon-SVG-Mock
-                    </Text>
+                    <View
+                      collapsable={false}
+                      jestAnimatedProps={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestAnimatedStyle={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestInlineStyle={
+                        {
+                          "flexShrink": 0,
+                        }
+                      }
+                      nativeID="0"
+                      style={
+                        [
+                          {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        height={22}
+                        testID="rightIcon"
+                        width={22}
+                      >
+                        <Text>
+                          rightIcon-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -357,274 +409,539 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
           >
             <View>
               <View
-                accessibilityRole="list"
+                accessibilityRole="none"
                 style={
                   {
-                    "flexDirection": "column",
-                    "paddingLeft": 0,
+                    "gap": 8,
                   }
                 }
+                useFlatList={false}
               >
                 <View
-                  accessibilityLabel="Localisation – Liste - Élément 1 sur 3 - Utiliser ma position actuelle, non sélectionné"
-                  accessibilityRole="button"
-                  accessible={true}
                   style={
                     {
-                      "display": "flex",
+                      "gap": 4,
                     }
                   }
                 >
-                  <View
-                    accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={false}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
+                  <Text
                     style={
                       {
-                        "opacity": 1,
-                        "userSelect": "auto",
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       }
                     }
                   >
-                    <View
-                      gap={2}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 8,
-                        }
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={24}
-                        width={24}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                      <Text
-                        color="default"
-                        style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                      >
-                        Utiliser ma position actuelle
-                      </Text>
-                    </View>
-                  </View>
+                    Sélectionne ta localisation
+                  </Text>
+                </View>
+                <View
+                  display="vertical"
+                  style={
+                    {
+                      "flexDirection": "column",
+                      "flexWrap": "nowrap",
+                      "gap": 8,
+                    }
+                  }
+                  variant="detailed"
+                >
                   <View
+                    collapsed={null}
+                    isHover={false}
+                    radioState={
+                      {
+                        "disabled": false,
+                        "error": false,
+                        "selected": false,
+                      }
+                    }
+                    sizing="fill"
                     style={
                       {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "marginVertical": 16,
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#90949d",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
                         "width": "100%",
                       }
                     }
-                  />
-                </View>
-                <View
-                  accessibilityLabel="Localisation – Liste - Élément 2 sur 3 - Choisir une localisation, Ville, code postal, adresse, non sélectionné"
-                  accessibilityRole="button"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={false}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
-                    }
+                    variant="detailed"
                   >
                     <View
-                      gap={2}
+                      accessibilityLabel="Sélectionne ta localisation - Liste - Élément 1 sur 3 - Utiliser ma position actuelle - non sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
                       style={
                         {
                           "alignItems": "center",
+                          "columnGap": 12,
                           "flexDirection": "row",
-                          "gap": 8,
+                          "opacity": 1,
+                          "userSelect": "auto",
                         }
                       }
+                      testID="Sélectionne ta localisation - Liste - Élément 1 sur 3 - Utiliser ma position actuelle - non sélectionné"
                     >
                       <View
-                        fill="none"
-                        height={24}
-                        width={24}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                      <Text
-                        color="default"
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        radioState={
+                          {
+                            "disabled": false,
+                            "error": false,
+                            "selected": false,
+                          }
+                        }
                         style={
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 20,
+                            "borderBottomRightRadius": 20,
+                            "borderColor": "#90949d",
+                            "borderTopLeftRadius": 20,
+                            "borderTopRightRadius": 20,
+                            "borderWidth": 2,
+                            "height": 20,
+                            "justifyContent": "center",
+                            "width": 20,
+                          }
+                        }
+                        variant="detailed"
+                      />
+                      <View
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
-                        Choisir une localisation
-                      </Text>
+                        <Text
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": false,
+                            }
+                          }
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Utiliser ma position actuelle
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "justifyContent": "center",
+                          }
+                        }
+                      >
+                        <View
+                          fill="none"
+                          height={32}
+                          width={32}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
                   </View>
                   <View
+                    collapsed={null}
+                    isHover={false}
+                    radioState={
+                      {
+                        "disabled": false,
+                        "error": false,
+                        "selected": false,
+                      }
+                    }
+                    sizing="fill"
                     style={
                       {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "marginVertical": 16,
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#90949d",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
                         "width": "100%",
                       }
                     }
-                  />
-                </View>
-                <View
-                  accessibilityLabel="Localisation – Liste - Élément 3 sur 3 - France entière, sélectionné"
-                  accessibilityRole="button"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={false}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
-                    }
+                    variant="detailed"
                   >
                     <View
-                      gap={2}
+                      accessibilityLabel="Sélectionne ta localisation - Liste - Élément 2 sur 3 - Choisir une zone géographique - Ville, code postal, adresse - non sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
                       style={
                         {
                           "alignItems": "center",
+                          "columnGap": 12,
                           "flexDirection": "row",
-                          "gap": 8,
+                          "opacity": 1,
+                          "userSelect": "auto",
                         }
                       }
+                      testID="Sélectionne ta localisation - Liste - Élément 2 sur 3 - Choisir une zone géographique - Ville, code postal, adresse - non sélectionné"
                     >
                       <View
-                        accessibilityLabel="position dans le monde"
-                        height={24}
-                        width={24}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                      <Text
-                        color="brandPrimary"
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        radioState={
+                          {
+                            "disabled": false,
+                            "error": false,
+                            "selected": false,
+                          }
+                        }
                         style={
                           {
-                            "color": "#6123df",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 20,
+                            "borderBottomRightRadius": 20,
+                            "borderColor": "#90949d",
+                            "borderTopLeftRadius": 20,
+                            "borderTopRightRadius": 20,
+                            "borderWidth": 2,
+                            "height": 20,
+                            "justifyContent": "center",
+                            "width": 20,
+                          }
+                        }
+                        variant="detailed"
+                      />
+                      <View
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
-                        France entière
-                      </Text>
+                        <Text
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": false,
+                            }
+                          }
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Choisir une zone géographique
+                        </Text>
+                        <Text
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": false,
+                            }
+                          }
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Ville, code postal, adresse
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "justifyContent": "center",
+                          }
+                        }
+                      >
+                        <View
+                          fill="none"
+                          height={32}
+                          width={32}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    isHover={false}
+                    radioState={
+                      {
+                        "disabled": false,
+                        "error": false,
+                        "selected": true,
+                      }
+                    }
+                    sizing="fill"
+                    style={
+                      {
+                        "backgroundColor": "#f3edff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#6123df",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                        "width": "100%",
+                      }
+                    }
+                    variant="detailed"
+                  >
+                    <View
+                      accessibilityLabel="Sélectionne ta localisation - Liste - Élément 3 sur 3 - France entière - sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": true,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 12,
+                          "flexDirection": "row",
+                          "opacity": 1,
+                          "userSelect": "auto",
+                        }
+                      }
+                      testID="Sélectionne ta localisation - Liste - Élément 3 sur 3 - France entière - sélectionné"
+                    >
+                      <View
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        radioState={
+                          {
+                            "disabled": false,
+                            "error": false,
+                            "selected": true,
+                          }
+                        }
+                        style={
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#f3edff",
+                            "borderBottomLeftRadius": 20,
+                            "borderBottomRightRadius": 20,
+                            "borderColor": "#6123df",
+                            "borderTopLeftRadius": 20,
+                            "borderTopRightRadius": 20,
+                            "borderWidth": 2,
+                            "height": 20,
+                            "justifyContent": "center",
+                            "width": 20,
+                          }
+                        }
+                        variant="detailed"
+                      >
+                        <View
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": true,
+                            }
+                          }
+                          style={
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#6123df",
+                              "borderBottomLeftRadius": 6,
+                              "borderBottomRightRadius": 6,
+                              "borderColor": "#6123df",
+                              "borderTopLeftRadius": 6,
+                              "borderTopRightRadius": 6,
+                              "height": 10,
+                              "justifyContent": "center",
+                              "width": 10,
+                            }
+                          }
+                          variant="detailed"
+                        />
+                      </View>
+                      <View
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": true,
+                            }
+                          }
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          France entière
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "justifyContent": "center",
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="position dans le monde"
+                          height={32}
+                          width={32}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -682,20 +999,22 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
               style={
                 {
                   "alignItems": "center",
+                  "alignSelf": "center",
                   "backgroundColor": "#f1f1f4",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#cbcdd2",
+                  "borderStyle": "solid",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
                   "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
                   "userSelect": "auto",
                   "width": "100%",
                 }
@@ -703,24 +1022,39 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
               testID="Valider la localisation"
             >
               <View
+                fullWidth={true}
+                gap={8}
+                hasIcon={false}
+                isMultiline={false}
                 style={
                   {
                     "alignItems": "center",
+                    "columnGap": 8,
                     "flexDirection": "row",
+                    "justifyContent": "center",
+                    "width": "100%",
                   }
                 }
               >
                 <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
                   style={
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    }
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
+                      },
+                      {
+                        "color": "#696a6f",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": "center",
+                      },
+                    ]
                   }
                 >
                   Valider la localisation

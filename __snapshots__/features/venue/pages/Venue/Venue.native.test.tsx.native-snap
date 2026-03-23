@@ -249,117 +249,20 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 />
                 <View
-                  accessibilityLabel="Copier l’adresse"
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
                     {
-                      "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderBottomLeftRadius": 24,
-                      "borderBottomRightRadius": 24,
-                      "borderTopLeftRadius": 24,
-                      "borderTopRightRadius": 24,
-                      "flexDirection": "row",
-                      "justifyContent": "flex-start",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "opacity": 1,
-                      "paddingBottom": 2,
-                      "paddingLeft": 2,
-                      "paddingRight": 2,
-                      "paddingTop": 2,
-                      "userSelect": "auto",
-                      "width": "100%",
-                    }
-                  }
-                  testID="Copier l’adresse"
-                >
-                  <View
-                    style={
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "flexDirection": "row",
-                          "flexShrink": 0,
-                          "marginRight": 8,
-                        }
-                      }
-                    >
-                      <View
-                        height={20}
-                        testID="button-icon-left"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-left-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "maxWidth": "100%",
-                        }
-                      }
-                    >
-                      Copier l’adresse
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={
-                    {
-                      "alignItems": "flex-start",
+                      "alignSelf": "flex-start",
                     }
                   }
                 >
                   <View
-                    accessibilityLabel="Voir l’itinéraire"
-                    accessibilityRole="link"
+                    accessibilityLabel="Copier l’adresse"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
-                        "disabled": undefined,
+                        "disabled": false,
                         "expanded": undefined,
                         "selected": undefined,
                       }
@@ -386,16 +289,145 @@ exports[`<Venue /> should match snapshot 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "transparent",
-                        "borderBottomLeftRadius": 0,
-                        "borderBottomRightRadius": 0,
-                        "borderTopLeftRadius": 0,
-                        "borderTopRightRadius": 0,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                         "borderWidth": 0,
                         "flexDirection": "row",
                         "justifyContent": "center",
-                        "marginTop": 0,
-                        "maxWidth": 500,
-                        "minHeight": 20,
+                        "opacity": 1,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "userSelect": "auto",
+                        "width": "auto",
+                      }
+                    }
+                    testID="Copier l’adresse"
+                  >
+                    <View
+                      gap={8}
+                      hasIcon={true}
+                      isMultiline={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                        }
+                      }
+                    >
+                      <View
+                        collapsable={false}
+                        jestAnimatedProps={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestAnimatedStyle={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestInlineStyle={
+                          {
+                            "flexShrink": 0,
+                          }
+                        }
+                        nativeID="0"
+                        style={
+                          [
+                            {
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={22}
+                          width={22}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#161617",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
+                        }
+                      >
+                        Copier l’adresse
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignSelf": "flex-start",
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Voir l’itinéraire"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 0,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
                         "opacity": 1,
                         "paddingBottom": 0,
                         "paddingLeft": 0,
@@ -408,44 +440,72 @@ exports[`<Venue /> should match snapshot 1`] = `
                     testID="Voir l’itinéraire"
                   >
                     <View
+                      gap={8}
+                      hasIcon={true}
+                      isMultiline={false}
                       style={
                         {
                           "alignItems": "center",
+                          "columnGap": 8,
                           "flexDirection": "row",
                         }
                       }
                     >
                       <View
-                        style={
+                        collapsable={false}
+                        jestAnimatedProps={
                           {
-                            "flexDirection": "row",
-                            "flexShrink": 0,
-                            "marginRight": 8,
+                            "value": {},
                           }
+                        }
+                        jestAnimatedStyle={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestInlineStyle={
+                          {
+                            "flexShrink": 0,
+                          }
+                        }
+                        nativeID="1"
+                        style={
+                          [
+                            {
+                              "flexShrink": 0,
+                            },
+                          ]
                         }
                       >
                         <View
                           accessibilityLabel="Nouvelle fenêtre"
-                          height={20}
-                          testID="button-icon-left"
-                          width={20}
+                          height={22}
+                          width={22}
                         >
                           <Text>
-                            button-icon-left-SVG-Mock
+                            undefined-SVG-Mock
                           </Text>
                         </View>
                       </View>
                       <Text
-                        adjustsFontSizeToFit={false}
-                        numberOfLines={1}
                         style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                            "maxWidth": "100%",
-                          }
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#161617",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
                         }
                       >
                         Voir l’itinéraire
@@ -486,7 +546,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               "reduceMotionV": "system",
             }
           }
-          nativeID="0"
+          nativeID="2"
         >
           <View
             gap={6}
@@ -724,10 +784,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
               >
                 <View
-                  gap={2}
                   style={
                     {
-                      "gap": 8,
                       "marginHorizontal": 24,
                       "marginTop": 40,
                     }
@@ -741,6 +799,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 19,
                         "lineHeight": 30.4,
+                        "marginBottom": 8,
                       }
                     }
                   >
@@ -1133,10 +1192,10 @@ exports[`<Venue /> should match snapshot 1`] = `
                           <View
                             style={
                               {
+                                "alignSelf": "center",
                                 "backgroundColor": "#f1f1f4",
-                                "height": 20,
-                                "marginLeft": 16,
-                                "marginRight": 12,
+                                "height": 24,
+                                "marginHorizontal": 16,
                                 "width": 1,
                               }
                             }
@@ -1148,7 +1207,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               {
                                 "busy": undefined,
                                 "checked": undefined,
-                                "disabled": undefined,
+                                "disabled": false,
                                 "expanded": undefined,
                                 "selected": undefined,
                               }
@@ -1174,39 +1233,97 @@ exports[`<Venue /> should match snapshot 1`] = `
                             style={
                               {
                                 "alignItems": "center",
+                                "backgroundColor": "transparent",
+                                "borderBottomLeftRadius": 8,
+                                "borderBottomRightRadius": 8,
+                                "borderTopLeftRadius": 8,
+                                "borderTopRightRadius": 8,
+                                "borderWidth": 0,
                                 "flexDirection": "row",
+                                "justifyContent": "center",
                                 "opacity": 1,
-                                "paddingBottom": 4,
-                                "paddingLeft": 4,
-                                "paddingRight": 4,
-                                "paddingTop": 4,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
                                 "userSelect": "auto",
+                                "width": "auto",
                               }
                             }
                             testID="Voir plus d’offres de la sélection Toutes les offres"
                           >
                             <View
-                              fill="none"
-                              height={16}
-                              width={16}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <Text
+                              gap={8}
+                              hasIcon={true}
+                              isMultiline={false}
                               style={
                                 {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 16,
-                                  "lineHeight": 25.6,
-                                  "marginLeft": 8,
+                                  "alignItems": "center",
+                                  "columnGap": 8,
+                                  "flexDirection": "row",
                                 }
                               }
                             >
-                              Voir tout
-                            </Text>
+                              <View
+                                collapsable={false}
+                                jestAnimatedProps={
+                                  {
+                                    "value": {},
+                                  }
+                                }
+                                jestAnimatedStyle={
+                                  {
+                                    "value": {},
+                                  }
+                                }
+                                jestInlineStyle={
+                                  {
+                                    "flexShrink": 0,
+                                  }
+                                }
+                                nativeID="3"
+                                style={
+                                  [
+                                    {
+                                      "flexShrink": 0,
+                                    },
+                                  ]
+                                }
+                              >
+                                <View
+                                  fill="none"
+                                  height={22}
+                                  width={22}
+                                >
+                                  <Text>
+                                    undefined-SVG-Mock
+                                  </Text>
+                                </View>
+                              </View>
+                              <Text
+                                style={
+                                  [
+                                    {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-SemiBold",
+                                      "fontSize": 16,
+                                      "lineHeight": 22,
+                                    },
+                                    {
+                                      "color": "#161617",
+                                      "flexBasis": undefined,
+                                      "flexGrow": undefined,
+                                      "flexShrink": 1,
+                                      "maxWidth": "100%",
+                                      "minWidth": 0,
+                                      "textAlign": undefined,
+                                    },
+                                  ]
+                                }
+                              >
+                                Voir tout
+                              </Text>
+                            </View>
                           </View>
                         </View>
                       </View>
@@ -2055,21 +2172,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 width={160}
                               >
                                 <View
-                                  numberOfSpaces={2}
-                                  style={
-                                    {
-                                      "height": 8,
-                                    }
-                                  }
-                                />
-                                <View
                                   accessibilityLabel="En voir plus"
                                   accessibilityRole="button"
                                   accessibilityState={
                                     {
                                       "busy": undefined,
                                       "checked": undefined,
-                                      "disabled": undefined,
+                                      "disabled": false,
                                       "expanded": undefined,
                                       "selected": undefined,
                                     }
@@ -2095,91 +2204,95 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   style={
                                     {
                                       "alignItems": "center",
+                                      "backgroundColor": "transparent",
+                                      "borderBottomLeftRadius": 8,
+                                      "borderBottomRightRadius": 8,
+                                      "borderTopLeftRadius": 8,
+                                      "borderTopRightRadius": 8,
+                                      "borderWidth": 0,
+                                      "flexDirection": "row",
+                                      "justifyContent": "center",
                                       "opacity": 1,
+                                      "paddingBottom": 0,
+                                      "paddingLeft": 0,
+                                      "paddingRight": 0,
+                                      "paddingTop": 0,
                                       "userSelect": "auto",
+                                      "width": "auto",
                                     }
                                   }
                                   testID="En voir plus"
                                 >
                                   <View
+                                    gap={8}
+                                    hasIcon={true}
+                                    isMultiline={false}
                                     style={
                                       {
-                                        "flexDirection": "row",
-                                      }
-                                    }
-                                  >
-                                    <View
-                                      numberOfSpaces={16}
-                                      style={
-                                        {
-                                          "width": 64,
-                                        }
-                                      }
-                                    />
-                                    <View
-                                      style={
-                                        {
-                                          "alignItems": "center",
-                                          "aspectRatio": 1,
-                                          "backgroundColor": "#ffffff",
-                                          "borderBottomLeftRadius": 32,
-                                          "borderBottomRightRadius": 32,
-                                          "borderColor": "#90949d",
-                                          "borderStyle": "solid",
-                                          "borderTopLeftRadius": 32,
-                                          "borderTopRightRadius": 32,
-                                          "borderWidth": 1,
-                                          "height": 64,
-                                          "justifyContent": "center",
-                                          "width": 64,
-                                        }
-                                      }
-                                    >
-                                      <View
-                                        height={32}
-                                        width={32}
-                                      >
-                                        <Text>
-                                          undefined-SVG-Mock
-                                        </Text>
-                                      </View>
-                                    </View>
-                                    <View
-                                      numberOfSpaces={16}
-                                      style={
-                                        {
-                                          "width": 64,
-                                        }
-                                      }
-                                    />
-                                  </View>
-                                  <View
-                                    numberOfSpaces={2}
-                                    style={
-                                      {
-                                        "height": 8,
-                                      }
-                                    }
-                                  />
-                                  <View
-                                    style={
-                                      {
+                                        "alignItems": "center",
+                                        "columnGap": 8,
                                         "flexDirection": "row",
                                       }
                                     }
                                   >
                                     <Text
                                       style={
-                                        {
-                                          "color": "#6123df",
-                                          "fontFamily": "Montserrat-SemiBold",
-                                          "fontSize": 16,
-                                          "lineHeight": 25.6,
-                                        }
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-SemiBold",
+                                            "fontSize": 16,
+                                            "lineHeight": 22,
+                                          },
+                                          {
+                                            "color": "#161617",
+                                            "flexBasis": undefined,
+                                            "flexGrow": undefined,
+                                            "flexShrink": 1,
+                                            "maxWidth": "100%",
+                                            "minWidth": 0,
+                                            "textAlign": undefined,
+                                          },
+                                        ]
                                       }
                                     >
                                       En voir plus
                                     </Text>
+                                    <View
+                                      collapsable={false}
+                                      jestAnimatedProps={
+                                        {
+                                          "value": {},
+                                        }
+                                      }
+                                      jestAnimatedStyle={
+                                        {
+                                          "value": {},
+                                        }
+                                      }
+                                      jestInlineStyle={
+                                        {
+                                          "flexShrink": 0,
+                                        }
+                                      }
+                                      nativeID="4"
+                                      style={
+                                        [
+                                          {
+                                            "flexShrink": 0,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      <View
+                                        height={22}
+                                        width={22}
+                                      >
+                                        <Text>
+                                          undefined-SVG-Mock
+                                        </Text>
+                                      </View>
+                                    </View>
                                   </View>
                                 </View>
                               </View>
@@ -2261,7 +2374,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     style={
                       {
                         "position": "absolute",
-                        "top": -20,
+                        "top": -24,
                       }
                     }
                   >
@@ -2311,79 +2424,153 @@ exports[`<Venue /> should match snapshot 1`] = `
                   Reçois nos recos lecture, nos jeux-concours et le meilleur de l’actu littéraire !
                 </Text>
                 <View
-                  accessibilityLabel="Suivre le thème"
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
                     {
-                      "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 24,
-                      "borderBottomRightRadius": 24,
-                      "borderColor": "#90949d",
-                      "borderTopLeftRadius": 24,
-                      "borderTopRightRadius": 24,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": "auto",
-                      "justifyContent": "center",
-                      "opacity": 1,
-                      "paddingHorizontal": 12,
-                      "paddingVertical": 4,
-                      "userSelect": "auto",
-                      "width": "auto",
                     }
                   }
-                  testID="Suivre le thème"
                 >
                   <View
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <Text
-                    style={
+                    accessibilityLabel="Suivre le thème"
+                    accessibilityRole="button"
+                    accessibilityState={
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "marginLeft": 8,
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
                       }
                     }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#90949d",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "opacity": 1,
+                        "paddingBottom": 8,
+                        "paddingLeft": 12,
+                        "paddingRight": 12,
+                        "paddingTop": 8,
+                        "userSelect": "auto",
+                        "width": "auto",
+                      }
+                    }
+                    testID="Suivre le thème"
                   >
-                    Suivre le thème
-                  </Text>
+                    <View
+                      gap={8}
+                      hasIcon={true}
+                      isMultiline={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                        }
+                      }
+                    >
+                      <View
+                        collapsable={false}
+                        jestAnimatedProps={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestAnimatedStyle={
+                          {
+                            "value": {
+                              "transform": [
+                                {
+                                  "rotate": "0deg",
+                                },
+                              ],
+                            },
+                          }
+                        }
+                        jestInlineStyle={
+                          [
+                            {
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
+                        nativeID="5"
+                        style={
+                          [
+                            {
+                              "flexShrink": 0,
+                            },
+                            {
+                              "transform": [
+                                {
+                                  "rotate": "0deg",
+                                },
+                              ],
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={14}
+                          width={14}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 14,
+                              "lineHeight": 14,
+                            },
+                            {
+                              "color": "#161617",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
+                        }
+                      >
+                        Suivre le thème
+                      </Text>
+                    </View>
+                  </View>
                 </View>
               </View>
             </View>
@@ -2473,7 +2660,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -2579,7 +2766,7 @@ Instagram
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -2685,7 +2872,7 @@ WhatsApp
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -2791,7 +2978,7 @@ iMessage
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -2875,8 +3062,8 @@ iMessage
                               }
                             >
                               <View
-                                height={28}
-                                width={28}
+                                height={32}
+                                width={32}
                               >
                                 <Text>
                                   undefined-SVG-Mock
@@ -3029,7 +3216,7 @@ d’options
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": undefined,
+            "disabled": false,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -3054,86 +3241,73 @@ d’options
         onStartShouldSetResponder={[Function]}
         style={
           {
-            "borderBottomLeftRadius": 999,
-            "borderBottomRightRadius": 999,
-            "borderTopLeftRadius": 999,
-            "borderTopRightRadius": 999,
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderBottomLeftRadius": 8,
+            "borderBottomRightRadius": 8,
+            "borderColor": "#90949d",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 8,
+            "borderTopRightRadius": 8,
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
             "opacity": 1,
+            "paddingBottom": 8,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 8,
             "userSelect": "auto",
+            "width": "auto",
           }
         }
         testID="Revenir en arrière"
       >
         <View
-          collapsable={false}
+          gap={0}
+          hasIcon={true}
+          isMultiline={false}
           style={
             {
               "alignItems": "center",
-              "aspectRatio": 1,
-              "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderBottomLeftRadius": 999,
-              "borderBottomRightRadius": 999,
-              "borderColor": "rgba(255, 255, 255, 1)",
-              "borderStyle": "solid",
-              "borderTopLeftRadius": 999,
-              "borderTopRightRadius": 999,
-              "borderWidth": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "transform": undefined,
-              "width": 40,
+              "columnGap": 0,
+              "flexDirection": "row",
             }
           }
-          testID="AnimatedHeaderIconRoundContainer"
         >
           <View
-            size={24}
-            style={
+            collapsable={false}
+            jestAnimatedProps={
               {
-                "height": 24,
-                "width": 24,
+                "value": {},
               }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              {
+                "flexShrink": 0,
+              }
+            }
+            nativeID="6"
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
             }
           >
             <View
-              collapsable={false}
-              style={
-                {
-                  "opacity": 1,
-                  "position": "absolute",
-                }
-              }
-              testID="initial-icon-container"
+              height={22}
+              width={22}
             >
-              <View
-                height={24}
-                testID="animated-icon-back"
-                width={24}
-              >
-                <Text>
-                  animated-icon-back-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              collapsable={false}
-              style={
-                {
-                  "opacity": 0,
-                  "position": "absolute",
-                }
-              }
-              testID="final-icon-container"
-            >
-              <View
-                height={24}
-                testID="final-animated-icon-back"
-                width={24}
-              >
-                <Text>
-                  final-animated-icon-back-SVG-Mock
-                </Text>
-              </View>
+              <Text>
+                undefined-SVG-Mock
+              </Text>
             </View>
           </View>
         </View>
@@ -3184,145 +3358,7 @@ d’options
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          {
-            "borderBottomLeftRadius": 999,
-            "borderBottomRightRadius": 999,
-            "borderTopLeftRadius": 999,
-            "borderTopRightRadius": 999,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-        testID="Partager"
-      >
-        <View
-          collapsable={false}
-          style={
-            {
-              "alignItems": "center",
-              "aspectRatio": 1,
-              "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderBottomLeftRadius": 999,
-              "borderBottomRightRadius": 999,
-              "borderColor": "rgba(255, 255, 255, 1)",
-              "borderStyle": "solid",
-              "borderTopLeftRadius": 999,
-              "borderTopRightRadius": 999,
-              "borderWidth": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "transform": undefined,
-              "width": 40,
-            }
-          }
-          testID="AnimatedHeaderIconRoundContainer"
-        >
-          <View
-            size={24}
-            style={
-              {
-                "height": 24,
-                "width": 24,
-              }
-            }
-          >
-            <View
-              collapsable={false}
-              style={
-                {
-                  "opacity": 1,
-                  "position": "absolute",
-                }
-              }
-              testID="initial-icon-container"
-            >
-              <View
-                height={24}
-                testID="animated-icon-share"
-                width={24}
-              >
-                <Text>
-                  animated-icon-share-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              collapsable={false}
-              style={
-                {
-                  "opacity": 0,
-                  "position": "absolute",
-                }
-              }
-              testID="final-icon-container"
-            >
-              <View
-                height={24}
-                testID="final-animated-icon-share"
-                width={24}
-              >
-                <Text>
-                  final-animated-icon-share-SVG-Mock
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-  <View
-    style={
-      {
-        "bottom": 0,
-        "position": "absolute",
-        "width": "100%",
-      }
-    }
-  >
-    <View
-      style={
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "paddingHorizontal": 24,
-          "paddingVertical": 24,
-          "width": "100%",
-        }
-      }
-    >
-      <View
-        accessibilityLabel="Rechercher une offre"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
+            "disabled": false,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -3348,19 +3384,190 @@ d’options
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#6123df",
-            "borderBottomLeftRadius": 24,
-            "borderBottomRightRadius": 24,
-            "borderTopLeftRadius": 24,
-            "borderTopRightRadius": 24,
+            "backgroundColor": "#ffffff",
+            "borderBottomLeftRadius": 8,
+            "borderBottomRightRadius": 8,
+            "borderColor": "#90949d",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 8,
+            "borderTopRightRadius": 8,
+            "borderWidth": 1,
             "flexDirection": "row",
             "justifyContent": "center",
-            "minHeight": 40,
             "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
+            "paddingBottom": 8,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 8,
+            "userSelect": "auto",
+            "width": "auto",
+          }
+        }
+        testID="Partager"
+      >
+        <View
+          gap={0}
+          hasIcon={true}
+          isMultiline={false}
+          style={
+            {
+              "alignItems": "center",
+              "columnGap": 0,
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              {
+                "flexShrink": 0,
+              }
+            }
+            nativeID="7"
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              height={22}
+              width={22}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      {
+        "backgroundColor": "#ffffff",
+        "bottom": 0,
+        "position": "absolute",
+        "width": "100%",
+      }
+    }
+  >
+    <BVLinearGradient
+      bottomViewHeight={0}
+      collapsable={false}
+      colors={
+        [
+          16777215,
+          4294967295,
+        ]
+      }
+      endPoint={
+        {
+          "x": 0.5,
+          "y": 1,
+        }
+      }
+      locations={
+        [
+          0,
+          1,
+        ]
+      }
+      pointerEvents="none"
+      startPoint={
+        {
+          "x": 0.5,
+          "y": 0,
+        }
+      }
+      style={
+        [
+          {
+            "bottom": "100%",
+            "height": 120,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+          },
+          {},
+          {},
+        ]
+      }
+    />
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "paddingHorizontal": 24,
+          "paddingVertical": 24,
+          "width": "100%",
+        }
+      }
+    >
+      <View
+        accessibilityLabel="Rechercher une offre"
+        accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "alignSelf": "center",
+            "backgroundColor": "#6123df",
+            "borderBottomLeftRadius": 8,
+            "borderBottomRightRadius": 8,
+            "borderColor": "#6123df",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 8,
+            "borderTopRightRadius": 8,
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "opacity": 1,
+            "paddingBottom": 8,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 8,
             "userSelect": "auto",
             "width": "100%",
           }
@@ -3368,44 +3575,75 @@ d’options
         testID="Rechercher une offre"
       >
         <View
+          fullWidth={true}
+          gap={8}
+          hasIcon={true}
+          isMultiline={false}
           style={
             {
               "alignItems": "center",
+              "columnGap": 8,
               "flexDirection": "row",
+              "justifyContent": "center",
+              "width": "100%",
             }
           }
         >
           <View
-            style={
+            collapsable={false}
+            jestAnimatedProps={
               {
-                "flexDirection": "row",
-                "flexShrink": 0,
-                "marginRight": 8,
+                "value": {},
               }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              {
+                "flexShrink": 0,
+              }
+            }
+            nativeID="8"
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
             }
           >
             <View
               fill="none"
-              height={24}
-              testID="button-icon-left"
-              width={24}
+              height={22}
+              width={22}
             >
               <Text>
-                button-icon-left-SVG-Mock
+                undefined-SVG-Mock
               </Text>
             </View>
           </View>
           <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
             style={
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              }
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 16,
+                  "lineHeight": 22,
+                },
+                {
+                  "color": "#ffffff",
+                  "flexBasis": undefined,
+                  "flexGrow": undefined,
+                  "flexShrink": 1,
+                  "maxWidth": "100%",
+                  "minWidth": 0,
+                  "textAlign": undefined,
+                },
+              ]
             }
           >
             Rechercher une offre
@@ -3675,117 +3913,20 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   }
                 />
                 <View
-                  accessibilityLabel="Copier l’adresse"
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
                     {
-                      "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderBottomLeftRadius": 24,
-                      "borderBottomRightRadius": 24,
-                      "borderTopLeftRadius": 24,
-                      "borderTopRightRadius": 24,
-                      "flexDirection": "row",
-                      "justifyContent": "flex-start",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "opacity": 1,
-                      "paddingBottom": 2,
-                      "paddingLeft": 2,
-                      "paddingRight": 2,
-                      "paddingTop": 2,
-                      "userSelect": "auto",
-                      "width": "100%",
-                    }
-                  }
-                  testID="Copier l’adresse"
-                >
-                  <View
-                    style={
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "flexDirection": "row",
-                          "flexShrink": 0,
-                          "marginRight": 8,
-                        }
-                      }
-                    >
-                      <View
-                        height={20}
-                        testID="button-icon-left"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-left-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "maxWidth": "100%",
-                        }
-                      }
-                    >
-                      Copier l’adresse
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={
-                    {
-                      "alignItems": "flex-start",
+                      "alignSelf": "flex-start",
                     }
                   }
                 >
                   <View
-                    accessibilityLabel="Voir l’itinéraire"
-                    accessibilityRole="link"
+                    accessibilityLabel="Copier l’adresse"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
-                        "disabled": undefined,
+                        "disabled": false,
                         "expanded": undefined,
                         "selected": undefined,
                       }
@@ -3812,16 +3953,145 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "transparent",
-                        "borderBottomLeftRadius": 0,
-                        "borderBottomRightRadius": 0,
-                        "borderTopLeftRadius": 0,
-                        "borderTopRightRadius": 0,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                         "borderWidth": 0,
                         "flexDirection": "row",
                         "justifyContent": "center",
-                        "marginTop": 0,
-                        "maxWidth": 500,
-                        "minHeight": 20,
+                        "opacity": 1,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "userSelect": "auto",
+                        "width": "auto",
+                      }
+                    }
+                    testID="Copier l’adresse"
+                  >
+                    <View
+                      gap={8}
+                      hasIcon={true}
+                      isMultiline={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                        }
+                      }
+                    >
+                      <View
+                        collapsable={false}
+                        jestAnimatedProps={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestAnimatedStyle={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestInlineStyle={
+                          {
+                            "flexShrink": 0,
+                          }
+                        }
+                        nativeID="21"
+                        style={
+                          [
+                            {
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={22}
+                          width={22}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#161617",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
+                        }
+                      >
+                        Copier l’adresse
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignSelf": "flex-start",
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Voir l’itinéraire"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 0,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
                         "opacity": 1,
                         "paddingBottom": 0,
                         "paddingLeft": 0,
@@ -3834,44 +4104,72 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                     testID="Voir l’itinéraire"
                   >
                     <View
+                      gap={8}
+                      hasIcon={true}
+                      isMultiline={false}
                       style={
                         {
                           "alignItems": "center",
+                          "columnGap": 8,
                           "flexDirection": "row",
                         }
                       }
                     >
                       <View
-                        style={
+                        collapsable={false}
+                        jestAnimatedProps={
                           {
-                            "flexDirection": "row",
-                            "flexShrink": 0,
-                            "marginRight": 8,
+                            "value": {},
                           }
+                        }
+                        jestAnimatedStyle={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestInlineStyle={
+                          {
+                            "flexShrink": 0,
+                          }
+                        }
+                        nativeID="22"
+                        style={
+                          [
+                            {
+                              "flexShrink": 0,
+                            },
+                          ]
                         }
                       >
                         <View
                           accessibilityLabel="Nouvelle fenêtre"
-                          height={20}
-                          testID="button-icon-left"
-                          width={20}
+                          height={22}
+                          width={22}
                         >
                           <Text>
-                            button-icon-left-SVG-Mock
+                            undefined-SVG-Mock
                           </Text>
                         </View>
                       </View>
                       <Text
-                        adjustsFontSizeToFit={false}
-                        numberOfLines={1}
                         style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                            "maxWidth": "100%",
-                          }
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#161617",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
                         }
                       >
                         Voir l’itinéraire
@@ -3912,7 +4210,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               "reduceMotionV": "system",
             }
           }
-          nativeID="2"
+          nativeID="23"
         >
           <View
             gap={6}
@@ -4150,10 +4448,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                 }
               >
                 <View
-                  gap={2}
                   style={
                     {
-                      "gap": 8,
                       "marginHorizontal": 24,
                       "marginTop": 40,
                     }
@@ -4167,6 +4463,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 19,
                         "lineHeight": 30.4,
+                        "marginBottom": 8,
                       }
                     }
                   >
@@ -4559,10 +4856,10 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           <View
                             style={
                               {
+                                "alignSelf": "center",
                                 "backgroundColor": "#f1f1f4",
-                                "height": 20,
-                                "marginLeft": 16,
-                                "marginRight": 12,
+                                "height": 24,
+                                "marginHorizontal": 16,
                                 "width": 1,
                               }
                             }
@@ -4574,7 +4871,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               {
                                 "busy": undefined,
                                 "checked": undefined,
-                                "disabled": undefined,
+                                "disabled": false,
                                 "expanded": undefined,
                                 "selected": undefined,
                               }
@@ -4600,39 +4897,97 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             style={
                               {
                                 "alignItems": "center",
+                                "backgroundColor": "transparent",
+                                "borderBottomLeftRadius": 8,
+                                "borderBottomRightRadius": 8,
+                                "borderTopLeftRadius": 8,
+                                "borderTopRightRadius": 8,
+                                "borderWidth": 0,
                                 "flexDirection": "row",
+                                "justifyContent": "center",
                                 "opacity": 1,
-                                "paddingBottom": 4,
-                                "paddingLeft": 4,
-                                "paddingRight": 4,
-                                "paddingTop": 4,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
                                 "userSelect": "auto",
+                                "width": "auto",
                               }
                             }
                             testID="Voir plus d’offres de la sélection Toutes les offres"
                           >
                             <View
-                              fill="none"
-                              height={16}
-                              width={16}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <Text
+                              gap={8}
+                              hasIcon={true}
+                              isMultiline={false}
                               style={
                                 {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 16,
-                                  "lineHeight": 25.6,
-                                  "marginLeft": 8,
+                                  "alignItems": "center",
+                                  "columnGap": 8,
+                                  "flexDirection": "row",
                                 }
                               }
                             >
-                              Voir tout
-                            </Text>
+                              <View
+                                collapsable={false}
+                                jestAnimatedProps={
+                                  {
+                                    "value": {},
+                                  }
+                                }
+                                jestAnimatedStyle={
+                                  {
+                                    "value": {},
+                                  }
+                                }
+                                jestInlineStyle={
+                                  {
+                                    "flexShrink": 0,
+                                  }
+                                }
+                                nativeID="24"
+                                style={
+                                  [
+                                    {
+                                      "flexShrink": 0,
+                                    },
+                                  ]
+                                }
+                              >
+                                <View
+                                  fill="none"
+                                  height={22}
+                                  width={22}
+                                >
+                                  <Text>
+                                    undefined-SVG-Mock
+                                  </Text>
+                                </View>
+                              </View>
+                              <Text
+                                style={
+                                  [
+                                    {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-SemiBold",
+                                      "fontSize": 16,
+                                      "lineHeight": 22,
+                                    },
+                                    {
+                                      "color": "#161617",
+                                      "flexBasis": undefined,
+                                      "flexGrow": undefined,
+                                      "flexShrink": 1,
+                                      "maxWidth": "100%",
+                                      "minWidth": 0,
+                                      "textAlign": undefined,
+                                    },
+                                  ]
+                                }
+                              >
+                                Voir tout
+                              </Text>
+                            </View>
                           </View>
                         </View>
                       </View>
@@ -5481,21 +5836,13 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 width={160}
                               >
                                 <View
-                                  numberOfSpaces={2}
-                                  style={
-                                    {
-                                      "height": 8,
-                                    }
-                                  }
-                                />
-                                <View
                                   accessibilityLabel="En voir plus"
                                   accessibilityRole="button"
                                   accessibilityState={
                                     {
                                       "busy": undefined,
                                       "checked": undefined,
-                                      "disabled": undefined,
+                                      "disabled": false,
                                       "expanded": undefined,
                                       "selected": undefined,
                                     }
@@ -5521,91 +5868,95 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   style={
                                     {
                                       "alignItems": "center",
+                                      "backgroundColor": "transparent",
+                                      "borderBottomLeftRadius": 8,
+                                      "borderBottomRightRadius": 8,
+                                      "borderTopLeftRadius": 8,
+                                      "borderTopRightRadius": 8,
+                                      "borderWidth": 0,
+                                      "flexDirection": "row",
+                                      "justifyContent": "center",
                                       "opacity": 1,
+                                      "paddingBottom": 0,
+                                      "paddingLeft": 0,
+                                      "paddingRight": 0,
+                                      "paddingTop": 0,
                                       "userSelect": "auto",
+                                      "width": "auto",
                                     }
                                   }
                                   testID="En voir plus"
                                 >
                                   <View
+                                    gap={8}
+                                    hasIcon={true}
+                                    isMultiline={false}
                                     style={
                                       {
-                                        "flexDirection": "row",
-                                      }
-                                    }
-                                  >
-                                    <View
-                                      numberOfSpaces={16}
-                                      style={
-                                        {
-                                          "width": 64,
-                                        }
-                                      }
-                                    />
-                                    <View
-                                      style={
-                                        {
-                                          "alignItems": "center",
-                                          "aspectRatio": 1,
-                                          "backgroundColor": "#ffffff",
-                                          "borderBottomLeftRadius": 32,
-                                          "borderBottomRightRadius": 32,
-                                          "borderColor": "#90949d",
-                                          "borderStyle": "solid",
-                                          "borderTopLeftRadius": 32,
-                                          "borderTopRightRadius": 32,
-                                          "borderWidth": 1,
-                                          "height": 64,
-                                          "justifyContent": "center",
-                                          "width": 64,
-                                        }
-                                      }
-                                    >
-                                      <View
-                                        height={32}
-                                        width={32}
-                                      >
-                                        <Text>
-                                          undefined-SVG-Mock
-                                        </Text>
-                                      </View>
-                                    </View>
-                                    <View
-                                      numberOfSpaces={16}
-                                      style={
-                                        {
-                                          "width": 64,
-                                        }
-                                      }
-                                    />
-                                  </View>
-                                  <View
-                                    numberOfSpaces={2}
-                                    style={
-                                      {
-                                        "height": 8,
-                                      }
-                                    }
-                                  />
-                                  <View
-                                    style={
-                                      {
+                                        "alignItems": "center",
+                                        "columnGap": 8,
                                         "flexDirection": "row",
                                       }
                                     }
                                   >
                                     <Text
                                       style={
-                                        {
-                                          "color": "#6123df",
-                                          "fontFamily": "Montserrat-SemiBold",
-                                          "fontSize": 16,
-                                          "lineHeight": 25.6,
-                                        }
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-SemiBold",
+                                            "fontSize": 16,
+                                            "lineHeight": 22,
+                                          },
+                                          {
+                                            "color": "#161617",
+                                            "flexBasis": undefined,
+                                            "flexGrow": undefined,
+                                            "flexShrink": 1,
+                                            "maxWidth": "100%",
+                                            "minWidth": 0,
+                                            "textAlign": undefined,
+                                          },
+                                        ]
                                       }
                                     >
                                       En voir plus
                                     </Text>
+                                    <View
+                                      collapsable={false}
+                                      jestAnimatedProps={
+                                        {
+                                          "value": {},
+                                        }
+                                      }
+                                      jestAnimatedStyle={
+                                        {
+                                          "value": {},
+                                        }
+                                      }
+                                      jestInlineStyle={
+                                        {
+                                          "flexShrink": 0,
+                                        }
+                                      }
+                                      nativeID="25"
+                                      style={
+                                        [
+                                          {
+                                            "flexShrink": 0,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      <View
+                                        height={22}
+                                        width={22}
+                                      >
+                                        <Text>
+                                          undefined-SVG-Mock
+                                        </Text>
+                                      </View>
+                                    </View>
                                   </View>
                                 </View>
                               </View>
@@ -5687,7 +6038,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                     style={
                       {
                         "position": "absolute",
-                        "top": -20,
+                        "top": -24,
                       }
                     }
                   >
@@ -5737,79 +6088,153 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   Reçois nos recos lecture, nos jeux-concours et le meilleur de l’actu littéraire !
                 </Text>
                 <View
-                  accessibilityLabel="Suivre le thème"
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
                     {
-                      "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 24,
-                      "borderBottomRightRadius": 24,
-                      "borderColor": "#90949d",
-                      "borderTopLeftRadius": 24,
-                      "borderTopRightRadius": 24,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": "auto",
-                      "justifyContent": "center",
-                      "opacity": 1,
-                      "paddingHorizontal": 12,
-                      "paddingVertical": 4,
-                      "userSelect": "auto",
-                      "width": "auto",
                     }
                   }
-                  testID="Suivre le thème"
                 >
                   <View
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <Text
-                    style={
+                    accessibilityLabel="Suivre le thème"
+                    accessibilityRole="button"
+                    accessibilityState={
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "marginLeft": 8,
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
                       }
                     }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#90949d",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "opacity": 1,
+                        "paddingBottom": 8,
+                        "paddingLeft": 12,
+                        "paddingRight": 12,
+                        "paddingTop": 8,
+                        "userSelect": "auto",
+                        "width": "auto",
+                      }
+                    }
+                    testID="Suivre le thème"
                   >
-                    Suivre le thème
-                  </Text>
+                    <View
+                      gap={8}
+                      hasIcon={true}
+                      isMultiline={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                        }
+                      }
+                    >
+                      <View
+                        collapsable={false}
+                        jestAnimatedProps={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestAnimatedStyle={
+                          {
+                            "value": {
+                              "transform": [
+                                {
+                                  "rotate": "0deg",
+                                },
+                              ],
+                            },
+                          }
+                        }
+                        jestInlineStyle={
+                          [
+                            {
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
+                        nativeID="26"
+                        style={
+                          [
+                            {
+                              "flexShrink": 0,
+                            },
+                            {
+                              "transform": [
+                                {
+                                  "rotate": "0deg",
+                                },
+                              ],
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={14}
+                          width={14}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 14,
+                              "lineHeight": 14,
+                            },
+                            {
+                              "color": "#161617",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
+                        }
+                      >
+                        Suivre le thème
+                      </Text>
+                    </View>
+                  </View>
                 </View>
               </View>
             </View>
@@ -5899,7 +6324,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -6005,7 +6430,7 @@ Instagram
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -6111,7 +6536,7 @@ WhatsApp
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -6217,7 +6642,7 @@ iMessage
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -6301,8 +6726,8 @@ iMessage
                               }
                             >
                               <View
-                                height={28}
-                                width={28}
+                                height={32}
+                                width={32}
                               >
                                 <Text>
                                   undefined-SVG-Mock
@@ -6455,7 +6880,7 @@ d’options
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": undefined,
+            "disabled": false,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -6480,86 +6905,73 @@ d’options
         onStartShouldSetResponder={[Function]}
         style={
           {
-            "borderBottomLeftRadius": 999,
-            "borderBottomRightRadius": 999,
-            "borderTopLeftRadius": 999,
-            "borderTopRightRadius": 999,
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderBottomLeftRadius": 8,
+            "borderBottomRightRadius": 8,
+            "borderColor": "#90949d",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 8,
+            "borderTopRightRadius": 8,
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
             "opacity": 1,
+            "paddingBottom": 8,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 8,
             "userSelect": "auto",
+            "width": "auto",
           }
         }
         testID="Revenir en arrière"
       >
         <View
-          collapsable={false}
+          gap={0}
+          hasIcon={true}
+          isMultiline={false}
           style={
             {
               "alignItems": "center",
-              "aspectRatio": 1,
-              "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderBottomLeftRadius": 999,
-              "borderBottomRightRadius": 999,
-              "borderColor": "rgba(255, 255, 255, 1)",
-              "borderStyle": "solid",
-              "borderTopLeftRadius": 999,
-              "borderTopRightRadius": 999,
-              "borderWidth": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "transform": undefined,
-              "width": 40,
+              "columnGap": 0,
+              "flexDirection": "row",
             }
           }
-          testID="AnimatedHeaderIconRoundContainer"
         >
           <View
-            size={24}
-            style={
+            collapsable={false}
+            jestAnimatedProps={
               {
-                "height": 24,
-                "width": 24,
+                "value": {},
               }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              {
+                "flexShrink": 0,
+              }
+            }
+            nativeID="27"
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
             }
           >
             <View
-              collapsable={false}
-              style={
-                {
-                  "opacity": 1,
-                  "position": "absolute",
-                }
-              }
-              testID="initial-icon-container"
+              height={22}
+              width={22}
             >
-              <View
-                height={24}
-                testID="animated-icon-back"
-                width={24}
-              >
-                <Text>
-                  animated-icon-back-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              collapsable={false}
-              style={
-                {
-                  "opacity": 0,
-                  "position": "absolute",
-                }
-              }
-              testID="final-icon-container"
-            >
-              <View
-                height={24}
-                testID="final-animated-icon-back"
-                width={24}
-              >
-                <Text>
-                  final-animated-icon-back-SVG-Mock
-                </Text>
-              </View>
+              <Text>
+                undefined-SVG-Mock
+              </Text>
             </View>
           </View>
         </View>
@@ -6610,145 +7022,7 @@ d’options
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          {
-            "borderBottomLeftRadius": 999,
-            "borderBottomRightRadius": 999,
-            "borderTopLeftRadius": 999,
-            "borderTopRightRadius": 999,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-        testID="Partager"
-      >
-        <View
-          collapsable={false}
-          style={
-            {
-              "alignItems": "center",
-              "aspectRatio": 1,
-              "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderBottomLeftRadius": 999,
-              "borderBottomRightRadius": 999,
-              "borderColor": "rgba(255, 255, 255, 1)",
-              "borderStyle": "solid",
-              "borderTopLeftRadius": 999,
-              "borderTopRightRadius": 999,
-              "borderWidth": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "transform": undefined,
-              "width": 40,
-            }
-          }
-          testID="AnimatedHeaderIconRoundContainer"
-        >
-          <View
-            size={24}
-            style={
-              {
-                "height": 24,
-                "width": 24,
-              }
-            }
-          >
-            <View
-              collapsable={false}
-              style={
-                {
-                  "opacity": 1,
-                  "position": "absolute",
-                }
-              }
-              testID="initial-icon-container"
-            >
-              <View
-                height={24}
-                testID="animated-icon-share"
-                width={24}
-              >
-                <Text>
-                  animated-icon-share-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              collapsable={false}
-              style={
-                {
-                  "opacity": 0,
-                  "position": "absolute",
-                }
-              }
-              testID="final-icon-container"
-            >
-              <View
-                height={24}
-                testID="final-animated-icon-share"
-                width={24}
-              >
-                <Text>
-                  final-animated-icon-share-SVG-Mock
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-  <View
-    style={
-      {
-        "bottom": 0,
-        "position": "absolute",
-        "width": "100%",
-      }
-    }
-  >
-    <View
-      style={
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "paddingHorizontal": 24,
-          "paddingVertical": 24,
-          "width": "100%",
-        }
-      }
-    >
-      <View
-        accessibilityLabel="Rechercher une offre"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
+            "disabled": false,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -6774,19 +7048,190 @@ d’options
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#6123df",
-            "borderBottomLeftRadius": 24,
-            "borderBottomRightRadius": 24,
-            "borderTopLeftRadius": 24,
-            "borderTopRightRadius": 24,
+            "backgroundColor": "#ffffff",
+            "borderBottomLeftRadius": 8,
+            "borderBottomRightRadius": 8,
+            "borderColor": "#90949d",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 8,
+            "borderTopRightRadius": 8,
+            "borderWidth": 1,
             "flexDirection": "row",
             "justifyContent": "center",
-            "minHeight": 40,
             "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
+            "paddingBottom": 8,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 8,
+            "userSelect": "auto",
+            "width": "auto",
+          }
+        }
+        testID="Partager"
+      >
+        <View
+          gap={0}
+          hasIcon={true}
+          isMultiline={false}
+          style={
+            {
+              "alignItems": "center",
+              "columnGap": 0,
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              {
+                "flexShrink": 0,
+              }
+            }
+            nativeID="28"
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              height={22}
+              width={22}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      {
+        "backgroundColor": "#ffffff",
+        "bottom": 0,
+        "position": "absolute",
+        "width": "100%",
+      }
+    }
+  >
+    <BVLinearGradient
+      bottomViewHeight={0}
+      collapsable={false}
+      colors={
+        [
+          16777215,
+          4294967295,
+        ]
+      }
+      endPoint={
+        {
+          "x": 0.5,
+          "y": 1,
+        }
+      }
+      locations={
+        [
+          0,
+          1,
+        ]
+      }
+      pointerEvents="none"
+      startPoint={
+        {
+          "x": 0.5,
+          "y": 0,
+        }
+      }
+      style={
+        [
+          {
+            "bottom": "100%",
+            "height": 120,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+          },
+          {},
+          {},
+        ]
+      }
+    />
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "paddingHorizontal": 24,
+          "paddingVertical": 24,
+          "width": "100%",
+        }
+      }
+    >
+      <View
+        accessibilityLabel="Rechercher une offre"
+        accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "alignSelf": "center",
+            "backgroundColor": "#6123df",
+            "borderBottomLeftRadius": 8,
+            "borderBottomRightRadius": 8,
+            "borderColor": "#6123df",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 8,
+            "borderTopRightRadius": 8,
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "opacity": 1,
+            "paddingBottom": 8,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 8,
             "userSelect": "auto",
             "width": "100%",
           }
@@ -6794,44 +7239,75 @@ d’options
         testID="Rechercher une offre"
       >
         <View
+          fullWidth={true}
+          gap={8}
+          hasIcon={true}
+          isMultiline={false}
           style={
             {
               "alignItems": "center",
+              "columnGap": 8,
               "flexDirection": "row",
+              "justifyContent": "center",
+              "width": "100%",
             }
           }
         >
           <View
-            style={
+            collapsable={false}
+            jestAnimatedProps={
               {
-                "flexDirection": "row",
-                "flexShrink": 0,
-                "marginRight": 8,
+                "value": {},
               }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              {
+                "flexShrink": 0,
+              }
+            }
+            nativeID="29"
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
             }
           >
             <View
               fill="none"
-              height={24}
-              testID="button-icon-left"
-              width={24}
+              height={22}
+              width={22}
             >
               <Text>
-                button-icon-left-SVG-Mock
+                undefined-SVG-Mock
               </Text>
             </View>
           </View>
           <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
             style={
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              }
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 16,
+                  "lineHeight": 22,
+                },
+                {
+                  "color": "#ffffff",
+                  "flexBasis": undefined,
+                  "flexGrow": undefined,
+                  "flexShrink": 1,
+                  "maxWidth": "100%",
+                  "minWidth": 0,
+                  "textAlign": undefined,
+                },
+              ]
             }
           >
             Rechercher une offre
@@ -7101,117 +7577,20 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   }
                 />
                 <View
-                  accessibilityLabel="Copier l’adresse"
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
                     {
-                      "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderBottomLeftRadius": 24,
-                      "borderBottomRightRadius": 24,
-                      "borderTopLeftRadius": 24,
-                      "borderTopRightRadius": 24,
-                      "flexDirection": "row",
-                      "justifyContent": "flex-start",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "opacity": 1,
-                      "paddingBottom": 2,
-                      "paddingLeft": 2,
-                      "paddingRight": 2,
-                      "paddingTop": 2,
-                      "userSelect": "auto",
-                      "width": "100%",
-                    }
-                  }
-                  testID="Copier l’adresse"
-                >
-                  <View
-                    style={
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "flexDirection": "row",
-                          "flexShrink": 0,
-                          "marginRight": 8,
-                        }
-                      }
-                    >
-                      <View
-                        height={20}
-                        testID="button-icon-left"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-left-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "maxWidth": "100%",
-                        }
-                      }
-                    >
-                      Copier l’adresse
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={
-                    {
-                      "alignItems": "flex-start",
+                      "alignSelf": "flex-start",
                     }
                   }
                 >
                   <View
-                    accessibilityLabel="Voir l’itinéraire"
-                    accessibilityRole="link"
+                    accessibilityLabel="Copier l’adresse"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
-                        "disabled": undefined,
+                        "disabled": false,
                         "expanded": undefined,
                         "selected": undefined,
                       }
@@ -7238,16 +7617,145 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "transparent",
-                        "borderBottomLeftRadius": 0,
-                        "borderBottomRightRadius": 0,
-                        "borderTopLeftRadius": 0,
-                        "borderTopRightRadius": 0,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                         "borderWidth": 0,
                         "flexDirection": "row",
                         "justifyContent": "center",
-                        "marginTop": 0,
-                        "maxWidth": 500,
-                        "minHeight": 20,
+                        "opacity": 1,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "userSelect": "auto",
+                        "width": "auto",
+                      }
+                    }
+                    testID="Copier l’adresse"
+                  >
+                    <View
+                      gap={8}
+                      hasIcon={true}
+                      isMultiline={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                        }
+                      }
+                    >
+                      <View
+                        collapsable={false}
+                        jestAnimatedProps={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestAnimatedStyle={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestInlineStyle={
+                          {
+                            "flexShrink": 0,
+                          }
+                        }
+                        nativeID="9"
+                        style={
+                          [
+                            {
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={22}
+                          width={22}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#161617",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
+                        }
+                      >
+                        Copier l’adresse
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignSelf": "flex-start",
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Voir l’itinéraire"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 0,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
                         "opacity": 1,
                         "paddingBottom": 0,
                         "paddingLeft": 0,
@@ -7260,44 +7768,72 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     testID="Voir l’itinéraire"
                   >
                     <View
+                      gap={8}
+                      hasIcon={true}
+                      isMultiline={false}
                       style={
                         {
                           "alignItems": "center",
+                          "columnGap": 8,
                           "flexDirection": "row",
                         }
                       }
                     >
                       <View
-                        style={
+                        collapsable={false}
+                        jestAnimatedProps={
                           {
-                            "flexDirection": "row",
-                            "flexShrink": 0,
-                            "marginRight": 8,
+                            "value": {},
                           }
+                        }
+                        jestAnimatedStyle={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestInlineStyle={
+                          {
+                            "flexShrink": 0,
+                          }
+                        }
+                        nativeID="10"
+                        style={
+                          [
+                            {
+                              "flexShrink": 0,
+                            },
+                          ]
                         }
                       >
                         <View
                           accessibilityLabel="Nouvelle fenêtre"
-                          height={20}
-                          testID="button-icon-left"
-                          width={20}
+                          height={22}
+                          width={22}
                         >
                           <Text>
-                            button-icon-left-SVG-Mock
+                            undefined-SVG-Mock
                           </Text>
                         </View>
                       </View>
                       <Text
-                        adjustsFontSizeToFit={false}
-                        numberOfLines={1}
                         style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                            "maxWidth": "100%",
-                          }
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#161617",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
                         }
                       >
                         Voir l’itinéraire
@@ -7338,7 +7874,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               "reduceMotionV": "system",
             }
           }
-          nativeID="1"
+          nativeID="11"
         >
           <View
             gap={6}
@@ -7691,295 +8227,386 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       Contact
                     </Text>
                     <View
-                      accessibilityLabel="contact@venue.com"
-                      accessibilityRole="link"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      collapsable={false}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
+                      gap={6}
                       style={
                         {
-                          "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
-                          "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
-                          "opacity": 1,
-                          "paddingBottom": 2,
-                          "paddingLeft": 2,
-                          "paddingRight": 2,
-                          "paddingTop": 2,
-                          "userSelect": "auto",
-                          "width": "100%",
+                          "alignItems": "flex-start",
+                          "gap": 24,
                         }
                       }
-                      testID="contact@venue.com"
                     >
                       <View
+                        accessibilityLabel="contact@venue.com"
+                        accessibilityRole="link"
+                        accessibilityState={
+                          {
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": false,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        collapsable={false}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
                         style={
                           {
                             "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 0,
                             "flexDirection": "row",
+                            "justifyContent": "center",
+                            "opacity": 1,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "userSelect": "auto",
+                            "width": "auto",
                           }
                         }
+                        testID="contact@venue.com"
                       >
                         <View
+                          gap={8}
+                          hasIcon={true}
+                          isMultiline={false}
                           style={
                             {
+                              "alignItems": "center",
+                              "columnGap": 8,
                               "flexDirection": "row",
-                              "flexShrink": 0,
-                              "marginRight": 8,
                             }
                           }
                         >
                           <View
-                            height={20}
-                            testID="button-icon-left"
-                            width={20}
-                          >
-                            <Text>
-                              button-icon-left-SVG-Mock
-                            </Text>
-                          </View>
-                        </View>
-                        <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "maxWidth": "100%",
+                            collapsable={false}
+                            jestAnimatedProps={
+                              {
+                                "value": {},
+                              }
                             }
-                          }
-                        >
-                          contact@venue.com
-                        </Text>
+                            jestAnimatedStyle={
+                              {
+                                "value": {},
+                              }
+                            }
+                            jestInlineStyle={
+                              {
+                                "flexShrink": 0,
+                              }
+                            }
+                            nativeID="18"
+                            style={
+                              [
+                                {
+                                  "flexShrink": 0,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              height={22}
+                              width={22}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                          </View>
+                          <Text
+                            style={
+                              [
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 16,
+                                  "lineHeight": 22,
+                                },
+                                {
+                                  "color": "#161617",
+                                  "flexBasis": undefined,
+                                  "flexGrow": undefined,
+                                  "flexShrink": 1,
+                                  "maxWidth": "100%",
+                                  "minWidth": 0,
+                                  "textAlign": undefined,
+                                },
+                              ]
+                            }
+                          >
+                            contact@venue.com
+                          </Text>
+                        </View>
                       </View>
-                    </View>
-                    <View
-                      accessibilityLabel="+33102030405"
-                      accessibilityRole="link"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      collapsable={false}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
-                          "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
-                          "opacity": 1,
-                          "paddingBottom": 2,
-                          "paddingLeft": 2,
-                          "paddingRight": 2,
-                          "paddingTop": 2,
-                          "userSelect": "auto",
-                          "width": "100%",
-                        }
-                      }
-                      testID="+33102030405"
-                    >
                       <View
+                        accessibilityLabel="+33102030405"
+                        accessibilityRole="link"
+                        accessibilityState={
+                          {
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": false,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        collapsable={false}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
                         style={
                           {
                             "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 0,
                             "flexDirection": "row",
+                            "justifyContent": "center",
+                            "opacity": 1,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "userSelect": "auto",
+                            "width": "auto",
                           }
                         }
+                        testID="+33102030405"
                       >
                         <View
+                          gap={8}
+                          hasIcon={true}
+                          isMultiline={false}
                           style={
                             {
+                              "alignItems": "center",
+                              "columnGap": 8,
                               "flexDirection": "row",
-                              "flexShrink": 0,
-                              "marginRight": 8,
                             }
                           }
                         >
                           <View
-                            height={20}
-                            testID="button-icon-left"
-                            width={20}
-                          >
-                            <Text>
-                              button-icon-left-SVG-Mock
-                            </Text>
-                          </View>
-                        </View>
-                        <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "maxWidth": "100%",
+                            collapsable={false}
+                            jestAnimatedProps={
+                              {
+                                "value": {},
+                              }
                             }
-                          }
-                        >
-                          +33102030405
-                        </Text>
+                            jestAnimatedStyle={
+                              {
+                                "value": {},
+                              }
+                            }
+                            jestInlineStyle={
+                              {
+                                "flexShrink": 0,
+                              }
+                            }
+                            nativeID="19"
+                            style={
+                              [
+                                {
+                                  "flexShrink": 0,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              height={22}
+                              width={22}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                          </View>
+                          <Text
+                            style={
+                              [
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 16,
+                                  "lineHeight": 22,
+                                },
+                                {
+                                  "color": "#161617",
+                                  "flexBasis": undefined,
+                                  "flexGrow": undefined,
+                                  "flexShrink": 1,
+                                  "maxWidth": "100%",
+                                  "minWidth": 0,
+                                  "textAlign": undefined,
+                                },
+                              ]
+                            }
+                          >
+                            +33102030405
+                          </Text>
+                        </View>
                       </View>
-                    </View>
-                    <View
-                      accessibilityLabel="https://my@website.com"
-                      accessibilityRole="link"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      collapsable={false}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
-                          "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
-                          "opacity": 1,
-                          "paddingBottom": 2,
-                          "paddingLeft": 2,
-                          "paddingRight": 2,
-                          "paddingTop": 2,
-                          "userSelect": "auto",
-                          "width": "100%",
-                        }
-                      }
-                      testID="https://my@website.com"
-                    >
                       <View
+                        accessibilityLabel="https://my@website.com"
+                        accessibilityRole="link"
+                        accessibilityState={
+                          {
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": false,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        collapsable={false}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
                         style={
                           {
                             "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 0,
                             "flexDirection": "row",
+                            "justifyContent": "center",
+                            "opacity": 1,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "userSelect": "auto",
+                            "width": "auto",
                           }
                         }
+                        testID="https://my@website.com"
                       >
                         <View
+                          gap={8}
+                          hasIcon={true}
+                          isMultiline={false}
                           style={
                             {
+                              "alignItems": "center",
+                              "columnGap": 8,
                               "flexDirection": "row",
-                              "flexShrink": 0,
-                              "marginRight": 8,
                             }
                           }
                         >
                           <View
-                            accessibilityLabel="Nouvelle fenêtre"
-                            height={20}
-                            testID="button-icon-left"
-                            width={20}
-                          >
-                            <Text>
-                              button-icon-left-SVG-Mock
-                            </Text>
-                          </View>
-                        </View>
-                        <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "maxWidth": "100%",
+                            collapsable={false}
+                            jestAnimatedProps={
+                              {
+                                "value": {},
+                              }
                             }
-                          }
-                        >
-                          https://my@website.com
-                        </Text>
+                            jestAnimatedStyle={
+                              {
+                                "value": {},
+                              }
+                            }
+                            jestInlineStyle={
+                              {
+                                "flexShrink": 0,
+                              }
+                            }
+                            nativeID="20"
+                            style={
+                              [
+                                {
+                                  "flexShrink": 0,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              accessibilityLabel="Nouvelle fenêtre"
+                              height={22}
+                              width={22}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                          </View>
+                          <Text
+                            style={
+                              [
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 16,
+                                  "lineHeight": 22,
+                                },
+                                {
+                                  "color": "#161617",
+                                  "flexBasis": undefined,
+                                  "flexGrow": undefined,
+                                  "flexShrink": 1,
+                                  "maxWidth": "100%",
+                                  "minWidth": 0,
+                                  "textAlign": undefined,
+                                },
+                              ]
+                            }
+                          >
+                            https://my@website.com
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -8061,19 +8688,11 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "borderTopRightRadius": 8,
                                 "borderWidth": 1,
                                 "height": 48,
+                                "justifyContent": "center",
                                 "width": 48,
                               }
                             }
                           >
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
                             <View
                               fill="#161617"
                               height={24}
@@ -8083,15 +8702,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 undefined-SVG-Mock
                               </Text>
                             </View>
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
                             <View
                               style={
                                 {
@@ -8162,19 +8772,11 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "borderTopRightRadius": 8,
                                 "borderWidth": 1,
                                 "height": 48,
+                                "justifyContent": "center",
                                 "width": 48,
                               }
                             }
                           >
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
                             <View
                               fill="#161617"
                               height={24}
@@ -8184,15 +8786,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 undefined-SVG-Mock
                               </Text>
                             </View>
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
                             <View
                               style={
                                 {
@@ -8263,19 +8856,11 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "borderTopRightRadius": 8,
                                 "borderWidth": 1,
                                 "height": 48,
+                                "justifyContent": "center",
                                 "width": 48,
                               }
                             }
                           >
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
                             <View
                               fill="#161617"
                               height={24}
@@ -8285,15 +8870,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 undefined-SVG-Mock
                               </Text>
                             </View>
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
                             <View
                               style={
                                 {
@@ -8364,19 +8940,11 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "borderTopRightRadius": 8,
                                 "borderWidth": 1,
                                 "height": 48,
+                                "justifyContent": "center",
                                 "width": 48,
                               }
                             }
                           >
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
                             <View
                               fill="#161617"
                               height={24}
@@ -8386,15 +8954,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 undefined-SVG-Mock
                               </Text>
                             </View>
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
                             <View
                               style={
                                 {
@@ -8823,7 +9382,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     style={
                       {
                         "position": "absolute",
-                        "top": -20,
+                        "top": -24,
                       }
                     }
                   >
@@ -8873,79 +9432,153 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   Reçois nos recos lecture, nos jeux-concours et le meilleur de l’actu littéraire !
                 </Text>
                 <View
-                  accessibilityLabel="Suivre le thème"
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
                     {
-                      "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 24,
-                      "borderBottomRightRadius": 24,
-                      "borderColor": "#90949d",
-                      "borderTopLeftRadius": 24,
-                      "borderTopRightRadius": 24,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": "auto",
-                      "justifyContent": "center",
-                      "opacity": 1,
-                      "paddingHorizontal": 12,
-                      "paddingVertical": 4,
-                      "userSelect": "auto",
-                      "width": "auto",
                     }
                   }
-                  testID="Suivre le thème"
                 >
                   <View
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <Text
-                    style={
+                    accessibilityLabel="Suivre le thème"
+                    accessibilityRole="button"
+                    accessibilityState={
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "marginLeft": 8,
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
                       }
                     }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#90949d",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "opacity": 1,
+                        "paddingBottom": 8,
+                        "paddingLeft": 12,
+                        "paddingRight": 12,
+                        "paddingTop": 8,
+                        "userSelect": "auto",
+                        "width": "auto",
+                      }
+                    }
+                    testID="Suivre le thème"
                   >
-                    Suivre le thème
-                  </Text>
+                    <View
+                      gap={8}
+                      hasIcon={true}
+                      isMultiline={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                        }
+                      }
+                    >
+                      <View
+                        collapsable={false}
+                        jestAnimatedProps={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestAnimatedStyle={
+                          {
+                            "value": {
+                              "transform": [
+                                {
+                                  "rotate": "0deg",
+                                },
+                              ],
+                            },
+                          }
+                        }
+                        jestInlineStyle={
+                          [
+                            {
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
+                        nativeID="14"
+                        style={
+                          [
+                            {
+                              "flexShrink": 0,
+                            },
+                            {
+                              "transform": [
+                                {
+                                  "rotate": "0deg",
+                                },
+                              ],
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={14}
+                          width={14}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 14,
+                              "lineHeight": 14,
+                            },
+                            {
+                              "color": "#161617",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
+                        }
+                      >
+                        Suivre le thème
+                      </Text>
+                    </View>
+                  </View>
                 </View>
               </View>
             </View>
@@ -9035,7 +9668,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -9141,7 +9774,7 @@ Instagram
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -9247,7 +9880,7 @@ WhatsApp
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -9353,7 +9986,7 @@ iMessage
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -9437,8 +10070,8 @@ iMessage
                               }
                             >
                               <View
-                                height={28}
-                                width={28}
+                                height={32}
+                                width={32}
                               >
                                 <Text>
                                   undefined-SVG-Mock
@@ -9591,7 +10224,7 @@ d’options
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": undefined,
+            "disabled": false,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -9616,86 +10249,73 @@ d’options
         onStartShouldSetResponder={[Function]}
         style={
           {
-            "borderBottomLeftRadius": 999,
-            "borderBottomRightRadius": 999,
-            "borderTopLeftRadius": 999,
-            "borderTopRightRadius": 999,
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderBottomLeftRadius": 8,
+            "borderBottomRightRadius": 8,
+            "borderColor": "#90949d",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 8,
+            "borderTopRightRadius": 8,
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
             "opacity": 1,
+            "paddingBottom": 8,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 8,
             "userSelect": "auto",
+            "width": "auto",
           }
         }
         testID="Revenir en arrière"
       >
         <View
-          collapsable={false}
+          gap={0}
+          hasIcon={true}
+          isMultiline={false}
           style={
             {
               "alignItems": "center",
-              "aspectRatio": 1,
-              "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderBottomLeftRadius": 999,
-              "borderBottomRightRadius": 999,
-              "borderColor": "rgba(255, 255, 255, 1)",
-              "borderStyle": "solid",
-              "borderTopLeftRadius": 999,
-              "borderTopRightRadius": 999,
-              "borderWidth": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "transform": undefined,
-              "width": 40,
+              "columnGap": 0,
+              "flexDirection": "row",
             }
           }
-          testID="AnimatedHeaderIconRoundContainer"
         >
           <View
-            size={24}
-            style={
+            collapsable={false}
+            jestAnimatedProps={
               {
-                "height": 24,
-                "width": 24,
+                "value": {},
               }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              {
+                "flexShrink": 0,
+              }
+            }
+            nativeID="15"
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
             }
           >
             <View
-              collapsable={false}
-              style={
-                {
-                  "opacity": 1,
-                  "position": "absolute",
-                }
-              }
-              testID="initial-icon-container"
+              height={22}
+              width={22}
             >
-              <View
-                height={24}
-                testID="animated-icon-back"
-                width={24}
-              >
-                <Text>
-                  animated-icon-back-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              collapsable={false}
-              style={
-                {
-                  "opacity": 0,
-                  "position": "absolute",
-                }
-              }
-              testID="final-icon-container"
-            >
-              <View
-                height={24}
-                testID="final-animated-icon-back"
-                width={24}
-              >
-                <Text>
-                  final-animated-icon-back-SVG-Mock
-                </Text>
-              </View>
+              <Text>
+                undefined-SVG-Mock
+              </Text>
             </View>
           </View>
         </View>
@@ -9746,145 +10366,7 @@ d’options
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          {
-            "borderBottomLeftRadius": 999,
-            "borderBottomRightRadius": 999,
-            "borderTopLeftRadius": 999,
-            "borderTopRightRadius": 999,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-        testID="Partager"
-      >
-        <View
-          collapsable={false}
-          style={
-            {
-              "alignItems": "center",
-              "aspectRatio": 1,
-              "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderBottomLeftRadius": 999,
-              "borderBottomRightRadius": 999,
-              "borderColor": "rgba(255, 255, 255, 1)",
-              "borderStyle": "solid",
-              "borderTopLeftRadius": 999,
-              "borderTopRightRadius": 999,
-              "borderWidth": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "transform": undefined,
-              "width": 40,
-            }
-          }
-          testID="AnimatedHeaderIconRoundContainer"
-        >
-          <View
-            size={24}
-            style={
-              {
-                "height": 24,
-                "width": 24,
-              }
-            }
-          >
-            <View
-              collapsable={false}
-              style={
-                {
-                  "opacity": 1,
-                  "position": "absolute",
-                }
-              }
-              testID="initial-icon-container"
-            >
-              <View
-                height={24}
-                testID="animated-icon-share"
-                width={24}
-              >
-                <Text>
-                  animated-icon-share-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              collapsable={false}
-              style={
-                {
-                  "opacity": 0,
-                  "position": "absolute",
-                }
-              }
-              testID="final-icon-container"
-            >
-              <View
-                height={24}
-                testID="final-animated-icon-share"
-                width={24}
-              >
-                <Text>
-                  final-animated-icon-share-SVG-Mock
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-  <View
-    style={
-      {
-        "bottom": 0,
-        "position": "absolute",
-        "width": "100%",
-      }
-    }
-  >
-    <View
-      style={
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "paddingHorizontal": 24,
-          "paddingVertical": 24,
-          "width": "100%",
-        }
-      }
-    >
-      <View
-        accessibilityLabel="Rechercher une offre"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
+            "disabled": false,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -9910,19 +10392,190 @@ d’options
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#6123df",
-            "borderBottomLeftRadius": 24,
-            "borderBottomRightRadius": 24,
-            "borderTopLeftRadius": 24,
-            "borderTopRightRadius": 24,
+            "backgroundColor": "#ffffff",
+            "borderBottomLeftRadius": 8,
+            "borderBottomRightRadius": 8,
+            "borderColor": "#90949d",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 8,
+            "borderTopRightRadius": 8,
+            "borderWidth": 1,
             "flexDirection": "row",
             "justifyContent": "center",
-            "minHeight": 40,
             "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
+            "paddingBottom": 8,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 8,
+            "userSelect": "auto",
+            "width": "auto",
+          }
+        }
+        testID="Partager"
+      >
+        <View
+          gap={0}
+          hasIcon={true}
+          isMultiline={false}
+          style={
+            {
+              "alignItems": "center",
+              "columnGap": 0,
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              {
+                "flexShrink": 0,
+              }
+            }
+            nativeID="16"
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              height={22}
+              width={22}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      {
+        "backgroundColor": "#ffffff",
+        "bottom": 0,
+        "position": "absolute",
+        "width": "100%",
+      }
+    }
+  >
+    <BVLinearGradient
+      bottomViewHeight={0}
+      collapsable={false}
+      colors={
+        [
+          16777215,
+          4294967295,
+        ]
+      }
+      endPoint={
+        {
+          "x": 0.5,
+          "y": 1,
+        }
+      }
+      locations={
+        [
+          0,
+          1,
+        ]
+      }
+      pointerEvents="none"
+      startPoint={
+        {
+          "x": 0.5,
+          "y": 0,
+        }
+      }
+      style={
+        [
+          {
+            "bottom": "100%",
+            "height": 120,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+          },
+          {},
+          {},
+        ]
+      }
+    />
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "paddingHorizontal": 24,
+          "paddingVertical": 24,
+          "width": "100%",
+        }
+      }
+    >
+      <View
+        accessibilityLabel="Rechercher une offre"
+        accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "alignSelf": "center",
+            "backgroundColor": "#6123df",
+            "borderBottomLeftRadius": 8,
+            "borderBottomRightRadius": 8,
+            "borderColor": "#6123df",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 8,
+            "borderTopRightRadius": 8,
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "opacity": 1,
+            "paddingBottom": 8,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 8,
             "userSelect": "auto",
             "width": "100%",
           }
@@ -9930,44 +10583,75 @@ d’options
         testID="Rechercher une offre"
       >
         <View
+          fullWidth={true}
+          gap={8}
+          hasIcon={true}
+          isMultiline={false}
           style={
             {
               "alignItems": "center",
+              "columnGap": 8,
               "flexDirection": "row",
+              "justifyContent": "center",
+              "width": "100%",
             }
           }
         >
           <View
-            style={
+            collapsable={false}
+            jestAnimatedProps={
               {
-                "flexDirection": "row",
-                "flexShrink": 0,
-                "marginRight": 8,
+                "value": {},
               }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              {
+                "flexShrink": 0,
+              }
+            }
+            nativeID="17"
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
             }
           >
             <View
               fill="none"
-              height={24}
-              testID="button-icon-left"
-              width={24}
+              height={22}
+              width={22}
             >
               <Text>
-                button-icon-left-SVG-Mock
+                undefined-SVG-Mock
               </Text>
             </View>
           </View>
           <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
             style={
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              }
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 16,
+                  "lineHeight": 22,
+                },
+                {
+                  "color": "#ffffff",
+                  "flexBasis": undefined,
+                  "flexGrow": undefined,
+                  "flexShrink": 1,
+                  "maxWidth": "100%",
+                  "minWidth": 0,
+                  "textAlign": undefined,
+                },
+              ]
             }
           >
             Rechercher une offre

@@ -51,20 +51,6 @@ describe('SearchHeader component', () => {
     mockUseSearch.mockReturnValue(initialMockUseSearch)
   })
 
-  it('should contain a button to go to the search suggestions view', async () => {
-    render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-        shouldDisplaySubtitle
-      />
-    )
-    await act(async () => {})
-
-    expect(await screen.findByText('Recherche par mots-clés')).toBeInTheDocument()
-  })
-
   it('should focus on location widget button', async () => {
     render(
       <SearchHeader
@@ -75,13 +61,13 @@ describe('SearchHeader component', () => {
       />
     )
 
-    await act(async () => {
-      await userEvent.tab()
-    })
-
-    const locationFilterButton = screen.getByTestId(
+    const locationFilterButton = await screen.findByTestId(
       'France entière - Ouvrir la modale de localisation'
     )
+
+    await act(async () => {
+      locationFilterButton.focus()
+    })
 
     expect(locationFilterButton).toHaveFocus()
   })
@@ -98,12 +84,10 @@ describe('SearchHeader component', () => {
 
     await act(async () => {
       await userEvent.tab()
-      await userEvent.tab()
       await userEvent.keyboard('{Enter}')
     })
 
-    //The function is called with event parameter that is not used in the function that is why we use expect.anything()
-    expect(mockShowSuggestions).toHaveBeenNthCalledWith(1, expect.anything())
+    expect(mockShowSuggestions).toHaveBeenCalledTimes(1)
   })
 
   it('should reset search state on go back except for location filter', async () => {
@@ -131,7 +115,7 @@ describe('SearchHeader component', () => {
         withArrow
       />
     )
-    await userEvent.click(screen.getByTestId('Revenir en arrière'))
+    await userEvent.click(screen.getByLabelText('Revenir en arrière'))
 
     await waitFor(() => {
       expect(mockDispatch).toHaveBeenCalledWith({
@@ -139,25 +123,6 @@ describe('SearchHeader component', () => {
         payload: initialSearchStateWithLocation,
       })
     })
-  })
-
-  it('should not have focus on search main input', async () => {
-    render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-      />
-    )
-
-    await act(async () => {
-      await userEvent.tab()
-      await userEvent.tab()
-    })
-
-    const searchMainInput = screen.getByRole('searchbox', { hidden: true })
-
-    expect(searchMainInput).not.toHaveFocus()
   })
 
   describe('when being focus on suggestion', () => {

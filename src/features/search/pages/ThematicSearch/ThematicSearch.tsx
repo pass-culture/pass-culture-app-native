@@ -94,8 +94,7 @@ export const ThematicSearch: React.FC = () => {
   const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
   const offerCategory = offerCategories[0]
 
-  const shouldDisplayAccessibilityContent =
-    Object.values(disabilities).filter((disability) => disability).length > 0
+  const shouldDisplayAccessibilityContent = Object.values(disabilities).filter(Boolean).length > 0
 
   const venuePlaylistTitle = getSearchVenuePlaylistTitle(
     shouldDisplayAccessibilityContent,
@@ -172,10 +171,7 @@ export const ThematicSearch: React.FC = () => {
 
   return (
     <Page>
-      <ThematicSearchBar
-        offerCategories={offerCategories}
-        placeholder={`${titles[offerCategory]}...`}
-        title={titles[offerCategory]}>
+      <ThematicSearchBar offerCategories={offerCategories} title={titles[offerCategory]}>
         <IntersectionObserverScrollView>
           <SubcategoryButtonListWrapper offerCategory={offerCategory} />
           {shouldDisplayVenuesPlaylist ? (

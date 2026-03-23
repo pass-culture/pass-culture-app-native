@@ -1,10 +1,11 @@
 import React from 'react'
 
 import { goBack, navigate } from '__mocks__/@react-navigation/native'
-import { InseeCountry } from 'features/bonification/inseeCountries'
+import { InseeCountries, InseeCountry } from 'api/gen'
 import { BonificationBirthPlace } from 'features/bonification/pages/BonificationBirthPlace'
 import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { env } from 'libs/environment/env'
 import { CITIES_API_URL } from 'libs/place/queries/constants'
 import { CitiesResponse, SuggestedCity } from 'libs/place/types'
 import { mockServer } from 'tests/mswServer'
@@ -13,14 +14,27 @@ import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
-jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/jwt/jwt')
 
-const birthCountry: InseeCountry = { LIBCOG: 'France', COG: 99100 }
+const birthCountry: InseeCountry = { libcog: 'France', cog: 99100 }
 const birthCity: SuggestedCity = {
   name: 'Paris',
   code: '75056',
   postalCode: '75017',
   departementCode: '75',
+}
+
+const inseeCountriesMock: InseeCountries = {
+  countries: [
+    {
+      cog: 99100,
+      libcog: 'France',
+    },
+    {
+      cog: 99101,
+      libcog: 'Danemark',
+    },
+  ],
 }
 
 describe('BonificationBirthPlace', () => {
@@ -35,6 +49,7 @@ describe('BonificationBirthPlace', () => {
         population: 150000,
       },
     ])
+    mockServer.getApi<InseeCountries>(`/v1/countries`, inseeCountriesMock)
   })
 
   it('should navigate to FAQ if button pressed', async () => {
@@ -43,8 +58,9 @@ describe('BonificationBirthPlace', () => {
     const button = screen.getByText('Je ne connais pas son lieu de naissance')
     await userEvent.press(button)
 
-    expect(openUrl).toHaveBeenCalledWith(
-      'https://aide.passculture.app/hc/fr/articles/24338766387100-FAQ-Bonif'
+    expect(openUrl).toHaveBeenNthCalledWith(
+      1,
+      env.FAQ_BONIFICATION_LEGAL_GUARDIAN_BIRTH_INFORMATIONS
     )
   })
 
@@ -82,10 +98,10 @@ describe('BonificationBirthPlace', () => {
 
       renderBonificationBirthPlace()
 
-      const countryField = screen.getByDisplayValue(birthCountry.LIBCOG)
+      const countryField = screen.getByDisplayValue(birthCountry.libcog)
       const cityField = screen.getByDisplayValue(birthCity.name)
 
-      expect(countryField.props.value).toBe(birthCountry.LIBCOG)
+      expect(countryField.props.value).toBe(birthCountry.libcog)
       expect(cityField.props.value).toBe(birthCity.name)
     })
 
@@ -110,7 +126,7 @@ async function completeForm() {
   await userEvent.type(countryOfBirthField, 'fra')
 
   // Select the suggested country
-  const countrySuggestion = screen.getByText(birthCountry.LIBCOG)
+  const countrySuggestion = screen.getByText(birthCountry.libcog)
   await userEvent.press(countrySuggestion)
 
   // Fill in the city input

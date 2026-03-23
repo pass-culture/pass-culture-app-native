@@ -1,4 +1,4 @@
-import { InseeCountry } from 'features/bonification/inseeCountries'
+import { InseeCountry } from 'api/gen'
 import { Title } from 'features/bonification/pages/BonificationTitle'
 import { SuggestedCity } from 'libs/place/types'
 import { createStore } from 'libs/store/createStore'

@@ -3,11 +3,10 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { BackButton } from 'ui/components/headers/BackButton'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { Spacer } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
-
-const HEADER_HEIGHT = getSpacing(12)
 
 interface Props {
   onGoBack?: () => void
@@ -17,22 +16,33 @@ export const EmptyHeader = ({ onGoBack }: Props) => {
   const { designSystem } = useTheme()
   const { top } = useCustomSafeInsets()
   const { goBack } = useGoBack(...homeNavigationConfig)
+  const HEADER_HEIGHT = designSystem.size.spacing.xxxxl
+
   return (
     <React.Fragment>
-      <TopSpacer top={top} />
+      <TopSpacer top={top} headerHeight={HEADER_HEIGHT} />
       <HeaderContainer>
         <Spacer.TopScreen />
-        <GoBackContainer>
-          <BackButton onGoBack={onGoBack ?? goBack} color={designSystem.color.icon.default} />
+        <GoBackContainer headerHeight={HEADER_HEIGHT}>
+          <Button
+            iconButton
+            variant="tertiary"
+            color="neutral"
+            icon={ArrowPrevious}
+            onPress={onGoBack ?? goBack}
+            accessibilityLabel="Revenir en arrière"
+          />
         </GoBackContainer>
       </HeaderContainer>
     </React.Fragment>
   )
 }
 
-const TopSpacer = styled.View<{ top: number }>(({ top }) => ({
-  height: HEADER_HEIGHT + top,
-}))
+const TopSpacer = styled.View<{ top: number; headerHeight: number }>(({ top, headerHeight }) => {
+  return {
+    height: headerHeight + top,
+  }
+})
 
 const HeaderContainer = styled.View(({ theme }) => ({
   zIndex: theme.zIndex.header,
@@ -41,8 +51,9 @@ const HeaderContainer = styled.View(({ theme }) => ({
   top: 0,
 }))
 
-const GoBackContainer = styled.View({
+const GoBackContainer = styled.View<{ headerHeight: number }>(({ theme, headerHeight }) => ({
   justifyContent: 'center',
-  height: HEADER_HEIGHT,
-  paddingHorizontal: getSpacing(3),
-})
+  height: headerHeight,
+  paddingHorizontal: theme.designSystem.size.spacing.m,
+  alignItems: 'flex-start',
+}))

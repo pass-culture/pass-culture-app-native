@@ -1,16 +1,18 @@
 import React, { FunctionComponent } from 'react'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { OpenInboxButton } from 'features/auth/components/OpenInboxButton'
 import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailable'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -31,7 +33,7 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
   openInBoxAnalytics,
 }) => {
   const isMailAppAvailable = useIsMailAppAvailable()
-
+  const { designSystem } = useTheme()
   return (
     <ViewGap gap={4}>
       <IllustrationContainer>
@@ -43,15 +45,21 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
       <Typo.Body>L’e-mail peut prendre quelques minutes pour arriver.</Typo.Body>
       <Separator.Horizontal />
       <Typo.Body>Tu n‘as pas reçu de lien&nbsp;? Tu peux&nbsp;:</Typo.Body>
-      <ExternalTouchableLink
-        as={ButtonTertiaryBlack}
-        wording="Consulter notre centre d’aide"
-        externalNav={consultFaq}
-        onBeforeNavigate={consultFaqAnalytics}
-        icon={ExternalSiteFilled}
-        justifyContent="flex-start"
-      />
-      <StyledView marginBottom={additionalCTA ? getSpacing(2) : getSpacing(6)}>
+      <ButtonContainerFlexStart>
+        <ExternalTouchableLink
+          as={Button}
+          variant="tertiary"
+          color="neutral"
+          wording="Consulter notre centre d’aide"
+          externalNav={consultFaq}
+          onBeforeNavigate={consultFaqAnalytics}
+          icon={ExternalSiteFilled}
+        />
+      </ButtonContainerFlexStart>
+      <StyledView
+        marginBottom={
+          additionalCTA ? designSystem.size.spacing.xxxl : designSystem.size.spacing.xl
+        }>
         {additionalCTA}
       </StyledView>
       {isMailAppAvailable ? <OpenInboxButton onAdditionalPress={openInBoxAnalytics} /> : null}

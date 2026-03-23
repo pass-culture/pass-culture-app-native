@@ -3,13 +3,12 @@ import styled from 'styled-components/native'
 
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { SubscriptionTheme } from 'features/subscription/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { RingingBellOff } from 'ui/svg/RingingBellOff'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -33,20 +32,26 @@ export const UnsubscribingConfirmationModal: FunctionComponent<Props> = ({
       <StyledBody>
         {`Tu ne recevras plus toutes les dernières offres et l’actu liées au thème "${mapSubscriptionThemeToName[theme]}".`}
       </StyledBody>
-      <StyledButtonContainer gap={2}>
-        <ButtonPrimary wording="Ne plus suivre ce thème" onPress={onUnsubscribePress} />
-        <ButtonTertiaryBlack wording="Annuler" icon={Invalidate} onPress={dismissModal} />
+      <StyledButtonContainer gap={4}>
+        <Button wording="Ne plus suivre ce thème" onPress={onUnsubscribePress} fullWidth />
+        <Button
+          wording="Annuler"
+          variant="tertiary"
+          color="neutral"
+          icon={Invalidate}
+          onPress={dismissModal}
+        />
       </StyledButtonContainer>
     </AppModalWithIllustration>
   )
 }
 
-const StyledButtonContainer = styled(ViewGap)({
+const StyledButtonContainer = styled(ViewGap)(({ theme }) => ({
   width: '100%',
-  marginTop: getSpacing(6),
-  marginBottom: getSpacing(4),
+  marginTop: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.l,
   alignItems: 'center',
-})
+}))
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',

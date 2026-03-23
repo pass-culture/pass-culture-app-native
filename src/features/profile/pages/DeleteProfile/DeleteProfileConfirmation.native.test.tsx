@@ -5,14 +5,16 @@ import * as API from 'api/api'
 import * as Auth from 'features/auth/context/AuthContext'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import { nonBeneficiaryUser } from 'fixtures/user'
+import { Adjust } from 'libs/adjust/adjust'
 import { env } from 'libs/environment/fixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { DeleteProfileConfirmation } from './DeleteProfileConfirmation'
 
 jest.mock('libs/firebase/analytics/analytics')
+
+jest.mock('libs/adjust/adjust')
 
 const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
 
@@ -33,13 +35,6 @@ jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
 const mockSignOut = jest.fn()
 jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
-}))
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackBar,
-  }),
 }))
 
 const postAnonymizeAccountSpy = jest.spyOn(API.api, 'postNativeV1AccountAnonymize')
@@ -83,6 +78,15 @@ describe('DeleteProfileConfirmation', () => {
     })
   })
 
+  it('should call Adjust.gdprForgetMe when pressing account anonymization button', async () => {
+    renderDeleteProfileConfirmation()
+    givenAnonymizeAccountSucceeds()
+
+    await user.press(screen.getByText('Supprimer mon compte'))
+
+    expect(Adjust.gdprForgetMe).toHaveBeenCalledTimes(1)
+  })
+
   it('should navigate to DeleteProfileSuccess when account is anonymized', async () => {
     renderDeleteProfileConfirmation()
     givenAnonymizeAccountSucceeds()
@@ -110,11 +114,12 @@ describe('DeleteProfileConfirmation', () => {
 
     await user.press(screen.getByText('Supprimer mon compte'))
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message:
-        'Une erreur s’est produite lors de ta demande de suppression de compte. Réessaie plus tard.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(
+      screen.getByText(
+        'Une erreur s’est produite lors de ta demande de suppression de compte. Réessaie plus tard.'
+      )
+    ).toBeOnTheScreen()
   })
 
   function renderDeleteProfileConfirmation() {

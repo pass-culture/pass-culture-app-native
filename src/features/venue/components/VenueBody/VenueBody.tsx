@@ -3,6 +3,7 @@ import { View, ViewToken } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
+import { ChronicleCardData } from 'features/chronicle/type'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { HeadlineOffer } from 'features/headlineOffer/components/HeadlineOffer/HeadlineOffer'
 import { HeadlineOfferData } from 'features/headlineOffer/type'
@@ -13,11 +14,9 @@ import { Tab, VenueOffersArtists, VenueOffers as VenueOffersType } from 'feature
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -36,6 +35,10 @@ interface Props {
     playlistIndex?: number
   ) => void
   shouldDisplayVenueCalendar?: boolean
+  advicesCardData?: ChronicleCardData[]
+  nbAdvices: number
+  enableNewTagProAdvices?: boolean
+  onShowWritersModal: () => void
 }
 
 export const VenueBody: FunctionComponent<Props> = ({
@@ -48,10 +51,14 @@ export const VenueBody: FunctionComponent<Props> = ({
   enableAccesLibre,
   onViewableItemsChanged,
   shouldDisplayVenueCalendar,
+  advicesCardData,
+  nbAdvices,
+  enableNewTagProAdvices,
+  onShowWritersModal,
 }) => {
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const segment = useABSegment()
+
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
@@ -61,23 +68,20 @@ export const VenueBody: FunctionComponent<Props> = ({
   const SectionContainer = isLargeScreen ? View : SectionWithDivider
 
   const handleOnBeforeNavigate = (headlineOfferData: HeadlineOfferData) => {
-    triggerConsultOfferLog(
-      {
-        offerId: Number(headlineOfferData.id),
-        from: 'venue',
-        venueId: venue.id,
-        isHeadline: true,
-      },
-      segment
-    )
+    triggerConsultOfferLog({
+      offerId: Number(headlineOfferData.id),
+      from: 'venue',
+      venueId: venue.id,
+      isHeadline: true,
+    })
   }
 
   const tabPanels = {
     [Tab.OFFERS]: (
       <React.Fragment>
         {headlineOfferData ? (
-          <MarginContainer gap={2}>
-            <Typo.Title3 {...getHeadingAttrs(2)}>À la une</Typo.Title3>
+          <MarginContainer>
+            <StyledTitle3 {...getHeadingAttrs(2)}>À la une</StyledTitle3>
             <HeadlineOffer
               navigateTo={{ screen: 'Offer', params: { id: headlineOfferData.id } }}
               {...headlineOfferData}
@@ -96,6 +100,10 @@ export const VenueBody: FunctionComponent<Props> = ({
           euroToPacificFrancRate={euroToPacificFrancRate}
           arePlaylistsLoading={arePlaylistsLoading}
           onViewableItemsChanged={onViewableItemsChanged}
+          advicesCardData={advicesCardData}
+          nbAdvices={nbAdvices}
+          enableNewTagProAdvices={enableNewTagProAdvices}
+          onShowWritersModal={onShowWritersModal}
         />
       </React.Fragment>
     ),
@@ -134,7 +142,11 @@ export const VenueBody: FunctionComponent<Props> = ({
   )
 }
 
-const MarginContainer = styled(ViewGap)(({ theme }) => ({
+const MarginContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
   marginTop: theme.designSystem.size.spacing.xxxl,
+}))
+
+const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.s,
 }))

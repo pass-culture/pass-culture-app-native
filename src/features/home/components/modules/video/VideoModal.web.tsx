@@ -11,13 +11,12 @@ import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful/types'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
 import { Offer } from 'shared/offer/types'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { Touchable } from 'ui/components/touchable/Touchable'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface VideoModalProps extends VideoModule {
   offers: Offer[]
@@ -78,25 +77,15 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
       />
 
       <StyledScrollView>
-        <Spacer.Column numberOfSpaces={4} />
         <StyledTagContainer>
           <Tag label={props.videoTag} variant={TagVariant.DEFAULT} />
         </StyledTagContainer>
-        <Spacer.Column numberOfSpaces={2} />
         <Typo.Title3>{props.title}</Typo.Title3>
-        <Spacer.Column numberOfSpaces={2} />
         <StyledCaptionDate>{`Publiée le ${formatToFrenchDate(
           new Date(props.videoPublicationDate)
         )}`}</StyledCaptionDate>
-        {props.videoDescription ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={2} />
-            <StyledBody>{props.videoDescription}</StyledBody>
-          </React.Fragment>
-        ) : null}
-        <Spacer.Column numberOfSpaces={6} />
-        <Typo.Title4>{props.offerTitle}</Typo.Title4>
-        <Spacer.Column numberOfSpaces={4} />
+        {props.videoDescription ? <StyledBody>{props.videoDescription}</StyledBody> : null}
+        <StyledTitle>{props.offerTitle}</StyledTitle>
         {props.isMultiOffer ? (
           <VideoMultiOfferList
             offers={props.offers}
@@ -105,49 +94,57 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
           />
         ) : null}
         {!props.isMultiOffer && props.offers[0] ? (
-          <React.Fragment>
-            <VideoMonoOfferTile
-              offer={props.offers[0]}
-              color={props.color}
-              hideModal={props.hideModal}
-              analyticsParams={analyticsParams}
-            />
-            <Spacer.Column numberOfSpaces={8} />
-          </React.Fragment>
+          <StyledVideoMonoOfferTile
+            offer={props.offers[0]}
+            color={props.color}
+            hideModal={props.hideModal}
+            analyticsParams={analyticsParams}
+          />
         ) : null}
       </StyledScrollView>
-      <StyledTouchable onPress={onCloseModal} accessibilityLabel="Fermer la modale vidéo">
-        <StyledCloseIcon />
-      </StyledTouchable>
+      <CloseButtonWrapper>
+        <Button
+          iconButton
+          icon={Close}
+          accessibilityLabel="Fermer la modale vidéo"
+          onPress={onCloseModal}
+          variant="secondary"
+          color="neutral"
+        />
+      </CloseButtonWrapper>
     </AppModal>
   )
 }
+const StyledVideoMonoOfferTile = styled(VideoMonoOfferTile)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
 
-const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
+const CloseButtonWrapper = styled.View(({ theme }) => ({
   position: 'absolute',
   top: theme.designSystem.size.spacing.l,
   right: theme.designSystem.size.spacing.l,
-  borderRadius: theme.designSystem.size.borderRadius.xxl,
-  padding: getSpacing(2.5),
-  backgroundColor: theme.designSystem.color.background.default,
 }))
 
-const StyledTagContainer = styled.View({
+const StyledTagContainer = styled.View(({ theme }) => ({
   alignItems: 'flex-start',
-})
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.s,
+}))
 
 const StyledCaptionDate = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.icon.subtle,
+  marginTop: theme.designSystem.size.spacing.s,
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
+  marginTop: theme.designSystem.size.spacing.s,
+}))
+const StyledTitle = styled(Typo.Title4)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.l,
 }))
 
 const StyledScrollView = styled.ScrollView(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.xl,
 }))
-
-const StyledCloseIcon = styled(Close).attrs(({ theme }) => ({
-  size: theme.icons.sizes.smaller,
-}))``

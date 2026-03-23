@@ -9,7 +9,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
 import { Clear } from 'ui/svg/icons/Clear'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const FADE_IN_DURATION = 300
 
@@ -81,12 +81,14 @@ const Pointer = ({ style }: { style?: ComponentProps<typeof Svg>['style'] }) => 
   )
 }
 
-const StyledPointer = styled(Pointer)<Pick<Props, 'pointerDirection'>>(({ pointerDirection }) => ({
-  position: 'relative',
-  alignSelf: 'flex-end',
-  right: getSpacing(3.5),
-  transform: pointerDirection === 'bottom' ? 'rotate(180deg)' : undefined,
-}))
+const StyledPointer = styled(Pointer)<Pick<Props, 'pointerDirection'>>(
+  ({ pointerDirection, theme }) => ({
+    position: 'relative',
+    alignSelf: 'flex-end',
+    right: theme.designSystem.size.spacing.l,
+    transform: pointerDirection === 'bottom' ? 'rotate(180deg)' : undefined,
+  })
+)
 
 const StyledAnimatedView = styled(AnimatedView)<Pick<Props, 'pointerDirection'>>(
   ({ pointerDirection }) => ({
@@ -99,7 +101,7 @@ const Background = styled.View(({ theme }) => ({
   alignItems: 'flex-start',
   width: '100%',
   padding: theme.designSystem.size.spacing.s,
-  paddingLeft: getSpacing(4),
+  paddingLeft: theme.designSystem.size.spacing.l,
   borderRadius: theme.designSystem.size.borderRadius.m,
   backgroundColor: theme.designSystem.color.background.inverted,
 }))

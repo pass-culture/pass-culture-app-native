@@ -18,6 +18,8 @@ import {
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { useSearchGroupLabel } from 'libs/subcategories'
@@ -43,8 +45,8 @@ export function AutocompleteOfferItem({
   const { query, [env.ALGOLIA_OFFERS_INDEX_NAME]: indexInfos } = hit
   // https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/query-suggestions/how-to/adding-category-suggestions/js/#suggestions-with-categories-index-schema
   const {
-    ['offer.searchGroupNamev2']: categories = [],
-    ['offer.nativeCategoryId']: nativeCategories = [],
+    [FACETS_FILTERS_ENUM.OFFER_SEARCH_GROUPS]: categories = [],
+    [FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY]: nativeCategories = [],
   } = indexInfos?.facets?.analytics || {}
 
   const mappedNativeCategories = useNativeCategories(offerCategories[0])
@@ -219,7 +221,10 @@ const SuggestionContainer: FunctionComponent<{
   testID: string
   children: ReactNode
 }> = ({ hit, onPress, testID, children }) => (
-  <AutocompleteItemTouchable testID={testID} onPress={onPress}>
+  <AutocompleteItemTouchable
+    testID={testID}
+    onPress={onPress}
+    accessibilityRole={AccessibilityRole.BUTTON}>
     <MagnifyingGlassIconContainer>
       <MagnifyingGlassFilledIcon />
     </MagnifyingGlassIconContainer>

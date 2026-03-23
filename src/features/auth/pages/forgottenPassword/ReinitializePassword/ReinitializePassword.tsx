@@ -14,12 +14,12 @@ import { analytics } from 'libs/analytics/provider'
 import { isTimestampExpired } from 'libs/dates'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { newPasswordSchema } from 'shared/forms/schemas/newPasswordSchema'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { LoadingPage } from 'ui/pages/LoadingPage'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -36,7 +36,6 @@ export const ReinitializePassword = () => {
 
   const route = useRoute<UseRouteType<'ReinitializePassword'>>()
   const navigation = useNavigation<UseNavigationType>()
-  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const loginRoutine = useLoginRoutine()
   const deviceInfo = useDeviceInfo()
 
@@ -73,16 +72,13 @@ export const ReinitializePassword = () => {
   }, [password, trigger])
 
   const { mutate: resetPassword, isPending } = useResetPasswordMutation({
-    onSuccess: (response: ResetPasswordResponse) => {
-      showSuccessSnackBar({
-        message: 'Ton mot de passe est modifié\u00a0!',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-      analytics.logHasChangedPassword({
+    onSuccess: async (response: ResetPasswordResponse) => {
+      showSuccessSnackBar('Ton mot de passe est modifié\u00a0!')
+      await analytics.logHasChangedPassword({
         from: route.params.from ?? 'forgottenpassword',
         reason: 'resetPassword',
       })
-      loginRoutine(
+      await loginRoutine(
         {
           accessToken: response.accessToken,
           refreshToken: response.refreshToken,
@@ -93,10 +89,7 @@ export const ReinitializePassword = () => {
       navigateToHome()
     },
     onError: () => {
-      showErrorSnackBar({
-        message: 'Une erreur s’est produite pendant la modification de ton mot de passe.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('Une erreur s’est produite pendant la modification de ton mot de passe.')
     },
   })
 
@@ -117,44 +110,48 @@ export const ReinitializePassword = () => {
     return <LoadingPage />
   }
   return (
-    <SecondaryPageWithBlurHeader
+    <PageWithHeader
       title="Nouveau mot de passe"
-      RightButton={<RightButtonText onClose={navigateToHome} wording="Quitter" />}>
-      <Typo.Title3 {...getHeadingAttrs(2)}>Choisis un nouveau mot de passe</Typo.Title3>
-      <Form.MaxWidth>
-        <Container>
-          <PasswordInputController
-            name="newPassword"
-            label="Mot de passe"
-            control={control}
-            withSecurityRules
-            securityRulesAlwaysVisible
-            onSubmitEditing={handleSubmit(submitPassword)}
-            requiredIndicator="explicit"
-            autocomplete="new-password"
-          />
-        </Container>
-        <Container>
-          <PasswordInputController
-            name="confirmedPassword"
-            label="Confirmer le mot de passe"
-            control={control}
-            onSubmitEditing={handleSubmit(submitPassword)}
-            requiredIndicator="explicit"
-            autocomplete="new-password"
-          />
-        </Container>
-        <Container>
-          <ButtonPrimary
-            wording="Se connecter"
-            onPress={handleSubmit(submitPassword)}
-            disabled={!isValid || isPending}
-            isLoading={isPending}
-            accessibilityLabel="Valider le nouveau mot de passe et se connecter"
-          />
-        </Container>
-      </Form.MaxWidth>
-    </SecondaryPageWithBlurHeader>
+      RightButton={<RightButtonText onClose={navigateToHome} wording="Quitter" />}
+      scrollChildren={
+        <React.Fragment>
+          <Typo.Title3 {...getHeadingAttrs(2)}>Choisis un nouveau mot de passe</Typo.Title3>
+          <Form.MaxWidth>
+            <Container>
+              <PasswordInputController
+                name="newPassword"
+                label="Mot de passe"
+                control={control}
+                withSecurityRules
+                securityRulesAlwaysVisible
+                onSubmitEditing={handleSubmit(submitPassword)}
+                requiredIndicator="explicit"
+                autocomplete="new-password"
+              />
+            </Container>
+            <Container>
+              <PasswordInputController
+                name="confirmedPassword"
+                label="Confirmer le mot de passe"
+                control={control}
+                onSubmitEditing={handleSubmit(submitPassword)}
+                requiredIndicator="explicit"
+                autocomplete="new-password"
+              />
+            </Container>
+            <Container>
+              <Button
+                wording="Se connecter"
+                onPress={handleSubmit(submitPassword)}
+                disabled={!isValid || isPending}
+                isLoading={isPending}
+                accessibilityLabel="Valider le nouveau mot de passe et se connecter"
+              />
+            </Container>
+          </Form.MaxWidth>
+        </React.Fragment>
+      }
+    />
   )
 }
 

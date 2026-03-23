@@ -6,22 +6,23 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
+import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export const HomeHeader: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
   const { isLoggedIn, user } = useAuthContext()
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, designSystem } = useTheme()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const numberOfLines = useFontScaleValue({ default: 2, at200PercentZoom: 3 })
+  const height = designSystem.size.spacing.xl
 
   const Header = useMemo(() => {
     const welcomeTitle =
@@ -58,7 +59,7 @@ export const HomeHeader: FunctionComponent = function () {
             <TitleContainer>
               <Title testID="web-location-widget">
                 <TitleLabel numberOfLines={1}>{welcomeTitle}</TitleLabel>
-                <StyledSeparator height={getSpacing(6)} />
+                <StyledSeparator height={height} />
                 <LocationWidgetDesktop />
               </Title>
               <Subtitle>{getSubtitle()}</Subtitle>
@@ -81,6 +82,7 @@ export const HomeHeader: FunctionComponent = function () {
     availableCredit,
     currency,
     euroToPacificFrancRate,
+    height,
   ])
 
   return Header

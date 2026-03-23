@@ -2,9 +2,6 @@ import { FeatureCollection, Point } from 'geojson'
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { SettingsResponse } from 'api/gen'
-import { SettingsWrapper } from 'features/auth/context/SettingsContext'
-import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
@@ -14,17 +11,8 @@ import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const QUERY_ADDRESS = '1 rue Poissonnière'
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
-  SNACK_BAR_TIME_OUT: 5000,
-}))
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
@@ -44,10 +32,9 @@ useRoute.mockReturnValue({
 describe('<SetAddress/>', () => {
   beforeEach(() => {
     mockServer.universalGet<FeatureCollection<Point, Properties>>(
-      'https://api-adresse.data.gouv.fr/search',
+      'https://data.geopf.fr/geocodage/search',
       mockedSuggestedPlaces
     )
-    mockServer.getApi<SettingsResponse>('/v1/settings', defaultSettings)
   })
 
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
@@ -128,11 +115,5 @@ describe('<SetAddress/>', () => {
 })
 
 const renderSetAddress = () => {
-  return render(
-    reactQueryProviderHOC(
-      <SettingsWrapper>
-        <SetAddress />
-      </SettingsWrapper>
-    )
-  )
+  return render(reactQueryProviderHOC(<SetAddress />))
 }

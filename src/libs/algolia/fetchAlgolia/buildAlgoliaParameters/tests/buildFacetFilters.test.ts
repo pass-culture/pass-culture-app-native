@@ -41,7 +41,7 @@ describe('buildFacetFilters', () => {
     })
 
     expect(facetFilters).toEqual({
-      facetFilters: [['offer.isEducational:false'], ['offer.searchGroupNamev2:CONCERTS_FESTIVALS']],
+      facetFilters: [['offer.isEducational:false'], ['offer.searchGroups:CONCERTS_FESTIVALS']],
     })
   })
 

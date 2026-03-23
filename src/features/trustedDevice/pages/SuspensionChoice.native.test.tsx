@@ -3,6 +3,9 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { buildZendeskUrlForFraud } from 'features/profile/helpers/buildZendeskUrl'
+import { beneficiaryUser } from 'fixtures/user'
+import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
@@ -10,28 +13,43 @@ import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRem
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { FetchError, MonitoringError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { SuspensionChoice } from './SuspensionChoice'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackBar,
-  }),
-}))
 
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: jest.fn(),
   canGoBack: jest.fn(() => true),
 })
 
+jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
+
+jest.mock('libs/adjust/adjust')
+
+const mockDeviceInfo = {
+  deviceId: 'device-id',
+  os: 'iOS 17',
+  source: 'iPhone 15',
+  resolution: '1170x2532',
+  fontScale: 1,
+  screenZoomLevel: 1.25,
+}
+
+const mockVersion = '1.300.0'
+
+jest.mock('features/trustedDevice/helpers/useDeviceInfo', () => ({
+  useDeviceInfo: () => mockDeviceInfo,
+}))
+
+jest.mock('ui/hooks/useVersion', () => ({
+  useVersion: () => mockVersion,
+}))
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
@@ -45,6 +63,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SuspensionChoice/>', () => {
+  beforeEach(() => {
+    mockAuthContextWithUser(beneficiaryUser)
+  })
+
   it('should match snapshot', async () => {
     renderSuspensionChoice()
 
@@ -63,6 +85,16 @@ describe('<SuspensionChoice/>', () => {
     expect(navigate).toHaveBeenNthCalledWith(1, 'SuspiciousLoginSuspendedAccount')
   })
 
+  it('should call Adjust.gdprForgetMe when pressing suspension button', async () => {
+    simulateSuspendForSuspiciousLoginSuccess()
+    renderSuspensionChoice()
+
+    const acceptSuspensionButton = screen.getByText('Oui, suspendre mon compte')
+    await user.press(acceptSuspensionButton)
+
+    expect(Adjust.gdprForgetMe).toHaveBeenCalledTimes(1)
+  })
+
   it('should show snackbar on suspension error', async () => {
     simulateSuspendForSuspiciousLoginError()
     renderSuspensionChoice()
@@ -70,11 +102,12 @@ describe('<SuspensionChoice/>', () => {
     const acceptSuspensionButton = screen.getByText('Oui, suspendre mon compte')
     await user.press(acceptSuspensionButton)
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message:
-        'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(
+      screen.getByText(
+        'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.'
+      )
+    ).toBeOnTheScreen()
   })
 
   describe('When shouldLogInfo remote config is false', () => {
@@ -149,14 +182,18 @@ describe('<SuspensionChoice/>', () => {
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, undefined)
   })
 
-  it('should open mail app when clicking on "Contacter le support" button', async () => {
+  it('should open Zendesk url when clicking on "Contacter le service fraude" button', async () => {
     renderSuspensionChoice()
 
     const contactSupportButton = screen.getByText('Contacter le service fraude')
     await user.press(contactSupportButton)
 
     expect(openUrl).toHaveBeenCalledWith(
-      `mailto:service.fraude@test.passculture.app`,
+      buildZendeskUrlForFraud({
+        user: beneficiaryUser,
+        deviceInfo: mockDeviceInfo,
+        version: mockVersion,
+      }),
       undefined,
       true
     )

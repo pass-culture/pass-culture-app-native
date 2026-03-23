@@ -4,6 +4,7 @@ import { ColorsType } from 'theme/types'
 
 interface AccessibleIconSharedProperties {
   color?: ColorsType
+  color2?: ColorsType
   testID?: string
   style?: ViewStyle
   accessibilityLabel?: string

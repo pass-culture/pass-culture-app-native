@@ -4,20 +4,21 @@ import { styled } from 'styled-components/native'
 
 import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { env } from 'libs/environment/env'
-import { bonificationAmountFallbackValue } from 'shared/credits/defaultCreditByAge'
+import {
+  useBonificationBonusAmount,
+  useBonificationQfThreshold,
+  usePacificFrancToEuroRate,
+} from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Form } from 'ui/components/Form'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Speaker } from 'ui/svg/icons/Speaker'
@@ -28,17 +29,23 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const BonificationExplanations = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { data: settings } = useSettingsContext()
   const { user } = useAuthContext()
   const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const bonificationAmount = formatCurrencyFromCents(
-    settings?.bonification.bonusAmount || bonificationAmountFallbackValue,
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
+  const { data: bonificationBonusAmount } = useBonificationBonusAmount()
+  const formattedBonificationAmount = formatCurrencyFromCents(
+    bonificationBonusAmount,
     currency,
     euroToPacificFrancRate
   )
-  const familyQuotientLevel = settings?.bonification.qfThreshold || 700
+  const { data: bonificationQfThreshold } = useBonificationQfThreshold()
+  const qfThresholdInCents = (bonificationQfThreshold || 700) * 100
+  const familyQuotientLevel = formatCurrencyFromCents(
+    qfThresholdInCents,
+    currency,
+    euroToPacificFrancRate
+  )
 
   const bannerLabel = isUserRegisteredInPacificFrancRegion
     ? 'Si tu habites en Nouvelle-Calédonie, tu ne pourras malheureusement pas bénéficier du bonus.'
@@ -47,6 +54,7 @@ export const BonificationExplanations = () => {
   return (
     <PageWithHeader
       title="Informations"
+      shouldDisplayBottomGradient
       scrollChildren={
         <Form.MaxWidth>
           <ViewGap gap={4}>
@@ -58,10 +66,10 @@ export const BonificationExplanations = () => {
             </StyledTitle3>
             <Typo.Body>
               Ce bonus de
-              <Typo.BodyAccent>{SPACE + bonificationAmount + SPACE}</Typo.BodyAccent>
+              <Typo.BodyAccent>{SPACE + formattedBonificationAmount + SPACE}</Typo.BodyAccent>
               est réservé aux jeunes dont la famille ou les tuteurs légaux ont un
               <Typo.BodyAccent>
-                {` quotient familial inférieur à ${familyQuotientLevel}.`}
+                {` quotient familial inférieur ou égal à ${familyQuotientLevel}.`}
               </Typo.BodyAccent>
             </Typo.Body>
             <Banner label={bannerLabel} Icon={WarningFilled} />
@@ -73,22 +81,29 @@ export const BonificationExplanations = () => {
         </Form.MaxWidth>
       }
       fixedBottomChildren={
-        <ViewGap gap={3}>
-          <ButtonPrimary
+        <ViewGap gap={4}>
+          <Button
+            fullWidth
+            type="submit"
             wording="Continuer"
             isLoading={false}
-            type="submit"
             accessibilityLabel="Continuer vers les informations requises"
             onPress={() =>
               navigate(...getSubscriptionHookConfig('BonificationRequiredInformation'))
             }
           />
           <ExternalTouchableLink
-            as={ButtonTertiaryBlack}
+            as={Button}
+            variant="tertiary"
+            color="neutral"
             wording="Plus d’infos sur le quotient familial"
             externalNav={{ url: env.FAQ_LINK_CAF_QUOTIEN_FAMILIAL }}
             icon={ExternalSiteFilled}
           />
+          <StyledBodyS>
+            Si tu es en <Typo.BodyAccentS>situation de handicap</Typo.BodyAccentS>, un peu de
+            patience, ton cas sera pris en compte prochainement.
+          </StyledBodyS>
         </ViewGap>
       }
     />
@@ -105,5 +120,9 @@ const Container = styled.View({
 })
 
 const StyledTitle3 = styled(Typo.Title3)({
+  textAlign: 'center',
+})
+
+const StyledBodyS = styled(Typo.BodyS)({
   textAlign: 'center',
 })

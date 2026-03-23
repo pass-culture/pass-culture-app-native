@@ -51,7 +51,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, cleanup, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { OfferContent } from './OfferContent'
 
@@ -61,15 +60,6 @@ jest.mock('libs/jwt/jwt')
 
 const useFavoriteSpy = jest.spyOn(useFavorite, 'useFavorite')
 const spyApiDeleteFavorite = jest.spyOn(api, 'deleteNativeV1MeFavoritesfavoriteId')
-
-const mockShowErrorSnackBar = jest.fn()
-const mockShowInfoSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackBar,
-    showInfoSnackBar: mockShowInfoSnackBar,
-  }),
-}))
 
 const consentState: ConsentStatus = { state: ConsentState.LOADING }
 
@@ -274,9 +264,8 @@ describe('<OfferContent />', () => {
       await user.press(button)
 
       expect(spyApiDeleteFavorite).toHaveBeenCalledWith(favoriteResponseSnap.id)
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith(
-        expect.objectContaining({ message: 'L’offre n’a pas été retirée de tes favoris' })
-      )
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(screen.getByText('L’offre n’a pas été retirée de tes favoris')).toBeOnTheScreen()
     })
   })
 
@@ -665,20 +654,20 @@ describe('<OfferContent />', () => {
         expect(screen.queryByText("L'avis du book club")).not.toBeOnTheScreen()
       })
 
-      it('should display "Voir tous les avis" button', async () => {
+      it('should display "Lire les X avis" button', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
 
-        expect(await screen.findByText('Voir tous les avis')).toBeOnTheScreen()
+        expect(await screen.findByText('Lire les 3 avis')).toBeOnTheScreen()
       })
 
-      it('should navigate to chronicles page when pressing "Voir tous les avis" button', async () => {
+      it('should navigate to chronicles page when pressing "Lire les X avis" button', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
 
-        await user.press(await screen.findByText('Voir tous les avis'))
+        await user.press(await screen.findByText('Lire les 3 avis'))
 
         expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', {
           offerId: 116656,
@@ -686,12 +675,12 @@ describe('<OfferContent />', () => {
         })
       })
 
-      it('should trigger ClickInfoReview log when pressing "Voir tous les avis" button', async () => {
+      it('should trigger ClickInfoReview log when pressing "Lire les X avis" button', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
 
-        await user.press(await screen.findByText('Voir tous les avis'))
+        await user.press(await screen.findByText('Lire les 3 avis'))
 
         expect(analytics.logClickInfoReview).toHaveBeenNthCalledWith(1, {
           from: 'offer',
@@ -830,39 +819,20 @@ describe('<OfferContent />', () => {
 
       await user.press(screen.getByText('Voir la vidéo'))
 
-      expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
-        message:
-          'Pour lire la vidéo, tu dois accepter les cookies vidéo depuis ton profil dans la partie “Confidentialité"',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(
+        screen.getByText(
+          'Pour lire la vidéo, tu dois accepter les cookies vidéo depuis ton profil dans la partie “Confidentialité"'
+        )
+      ).toBeOnTheScreen()
     })
   })
 
   describe('Video section', () => {
-    it('should display video section when AB Testing segment is A, video and AB Testing FF activated', async () => {
+    it('should display video section when video FF activated', async () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
 
       renderOfferContent({})
-
-      await screen.findByText('Réserver l’offre')
-
-      expect(screen.getByText('Vidéo')).toBeOnTheScreen()
-    })
-
-    it('should not display video section when AB Testing segment is not A, video and AB Testing FF activated', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
-
-      renderOfferContent({ segment: 'B' })
-
-      await screen.findByText('Réserver l’offre')
-
-      expect(screen.queryByText('Vidéo')).not.toBeOnTheScreen()
-    })
-
-    it('should display video section when AB Testing segment is not A, video FF activated and AB Testing FF deactivated', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
-
-      renderOfferContent({ segment: 'B', enableVideoABTesting: false })
 
       await screen.findByText('Réserver l’offre')
 
@@ -880,8 +850,6 @@ function renderOfferContent({
   subcategory = mockSubcategory,
   isDesktopViewport,
   chronicles,
-  segment = 'A',
-  enableVideoABTesting = true,
 }: RenderOfferContentType) {
   const subtitle = 'Membre du Book Club'
   const chroniclesData =
@@ -899,8 +867,6 @@ function renderOfferContent({
           onShowChroniclesWritersModal={jest.fn()}
           hasVideoCookiesConsent
           onVideoConsentPress={jest.fn()}
-          segment={segment}
-          enableVideoABTesting={enableVideoABTesting}
           onShowOfferArtistsModal={jest.fn()}
         />
       </NavigationContainer>

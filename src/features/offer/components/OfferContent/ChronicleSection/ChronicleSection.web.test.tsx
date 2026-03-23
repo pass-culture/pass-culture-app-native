@@ -27,7 +27,7 @@ describe('ChronicleSection', () => {
 
     expect(screen.getByText(chronicleVariantInfoFixture.titleSection)).toBeInTheDocument()
     expect(
-      screen.getByText('Notre communauté de lecteurs te partagent leurs avis sur ce livre !')
+      screen.getByText('Notre communauté de lecteurs te partage leur avis sur ce livre !')
     ).toBeInTheDocument()
     expect(screen.getByText('Voir tous les avis')).toBeInTheDocument()
     expect(screen.getAllByTestId(/chronicle-card-*/).length).toBeGreaterThan(0)
@@ -47,7 +47,7 @@ describe('ChronicleSection', () => {
 
     expect(screen.getByText(chronicleVariantInfoFixture.titleSection)).toBeInTheDocument()
     expect(
-      screen.getByText('Notre communauté de lecteurs te partagent leurs avis sur ce livre !')
+      screen.getByText('Notre communauté de lecteurs te partage leur avis sur ce livre !')
     ).toBeInTheDocument()
     expect(screen.getByText('Voir tous les avis')).toBeInTheDocument()
     expect(screen.getAllByTestId(/chronicle-card-*/).length).toBeGreaterThan(0)

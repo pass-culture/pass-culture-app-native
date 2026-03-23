@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { Bulb } from 'ui/svg/icons/Bulb'
 import { Everywhere } from 'ui/svg/icons/Everywhere'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { GenericBanner } from './GenericBanner'
 
@@ -16,9 +16,9 @@ const meta: Meta<typeof GenericBanner> = {
 
 export default meta
 
-const StyledText = styled(Typo.Button)({
-  marginBottom: getSpacing(1),
-})
+const StyledText = styled(Typo.Button)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xs,
+}))
 
 const textExample = ({ withSubtitle = true }) => (
   <React.Fragment>

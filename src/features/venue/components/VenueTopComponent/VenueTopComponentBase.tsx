@@ -3,8 +3,8 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
+import { getVenueBlock } from 'features/offer/components/OfferVenueBlock/getVenueBlock'
 import { VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
-import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { OpeningHoursStatus } from 'features/venue/components/OpeningHoursStatus/OpeningHoursStatus'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
 import { analytics } from 'libs/analytics/provider'
@@ -29,12 +29,12 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   venue,
   onPressBannerImage,
 }) => {
-  const { venueAddress, venueName } = useVenueBlock({
+  const { venueAddress, venueName } = getVenueBlock({
     venue: getVenue(venue),
   })
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
 
-  const { bannerUrl, bannerMeta } = venue
+  const { bannerUrl, bannerIsFromGoogle, bannerCredit } = venue
 
   const distanceToVenue = getDistance(
     { lat: venue.latitude, lng: venue.longitude },
@@ -54,7 +54,8 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
     <TopContainer>
       <VenueBanner
         bannerUrl={bannerUrl}
-        bannerMeta={bannerMeta}
+        bannerCredit={bannerCredit}
+        bannerIsFromGoogle={bannerIsFromGoogle}
         handleImagePress={onPressBannerImage}
       />
       <MarginContainer>
@@ -127,6 +128,7 @@ const getVenue = (venue: Omit<VenueResponse, 'isVirtual'>): VenueBlockVenue => {
   return {
     ...venue,
     bannerUrl: venue.bannerUrl ?? undefined,
+    address: venue.street,
     coordinates: {},
   }
 }

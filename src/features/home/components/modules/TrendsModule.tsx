@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Platform, useWindowDimensions } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { Trend } from 'features/home/components/Trend'
 import { TrendBlock, TrendNavigationProps } from 'features/home/types'
@@ -11,7 +11,6 @@ import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { LocationMode } from 'libs/location/types'
 import { useModal } from 'ui/components/modals/useModal'
-import { getSpacing } from 'ui/theme'
 
 type Trends = {
   index: number
@@ -30,6 +29,7 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
     visible: venueMapLocationModalVisible,
     hideModal: hideVenueMapLocationModal,
   } = useModal()
+  const { designSystem } = useTheme()
 
   const isSmallScreen = width < 375
   const shouldOpenMapDirectly = selectedLocationMode !== LocationMode.EVERYWHERE && !isWeb
@@ -99,7 +99,7 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
         <ScrollContainer
           horizontal
           isSmallScreen={isSmallScreen}
-          contentContainerStyle={{ paddingLeft: getSpacing(4) }}
+          contentContainerStyle={{ paddingLeft: designSystem.size.spacing.l }}
           testID="scrollable-trends-module">
           {renderTrends(items, moduleId, getNavigationProps)}
         </ScrollContainer>

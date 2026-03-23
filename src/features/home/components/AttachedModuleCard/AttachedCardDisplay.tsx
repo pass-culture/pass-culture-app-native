@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
@@ -26,10 +26,7 @@ interface AttachedCardDisplayProps {
   bottomBannerText?: string
 }
 
-const BORDER_WIDTH = getSpacing(0.25)
 const OFFER_CARD_HEIGHT = getSpacing(25)
-const OFFER_CARD_PADDING = getSpacing(4)
-const BORDER_RADIUS = getSpacing(3)
 
 export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
   title,
@@ -84,17 +81,20 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
   )
 }
 
-const BottomBanner = styled.View(({ theme }) => ({
-  paddingHorizontal: theme.designSystem.size.spacing.l,
-  paddingVertical: theme.designSystem.size.spacing.s,
-  height: theme.designSystem.size.spacing.xxxl,
-  gap: theme.designSystem.size.spacing.s,
-  backgroundColor: theme.designSystem.color.background.warning,
-  borderBottomLeftRadius: BORDER_RADIUS,
-  borderBottomRightRadius: BORDER_RADIUS,
-  flexDirection: 'row',
-  alignItems: 'center',
-}))
+const BottomBanner = styled.View(({ theme }) => {
+  const BORDER_RADIUS = theme.designSystem.size.borderRadius.l
+  return {
+    paddingHorizontal: theme.designSystem.size.spacing.l,
+    paddingVertical: theme.designSystem.size.spacing.s,
+    height: theme.designSystem.size.spacing.xxxl,
+    gap: theme.designSystem.size.spacing.s,
+    backgroundColor: theme.designSystem.color.background.warning,
+    borderBottomLeftRadius: BORDER_RADIUS,
+    borderBottomRightRadius: BORDER_RADIUS,
+    flexDirection: 'row',
+    alignItems: 'center',
+  }
+})
 
 const CentralColumn = styled.View(({ theme }) => ({
   flexDirection: 'column',
@@ -106,7 +106,7 @@ const CentralColumn = styled.View(({ theme }) => ({
 }))
 
 const RightColumn = styled.View<{ hasRightTagLabel: boolean; hasBottomRightElement: boolean }>(
-  ({ hasRightTagLabel, hasBottomRightElement }) => {
+  ({ hasRightTagLabel, hasBottomRightElement, theme }) => {
     let justifyContent: 'space-between' | 'flex-start' | 'flex-end'
 
     if (hasRightTagLabel && hasBottomRightElement) {
@@ -119,7 +119,7 @@ const RightColumn = styled.View<{ hasRightTagLabel: boolean; hasBottomRightEleme
 
     return {
       alignItems: 'flex-end',
-      marginVertical: getSpacing(0.25),
+      marginVertical: theme.designSystem.size.spacing.xxs,
       justifyContent,
     }
   }
@@ -131,26 +131,32 @@ const ImageContainer = styled.View({
 })
 
 const Container = styled.View<{ shouldFixHeight: boolean; bottomBannerText?: string }>(
-  ({ theme, shouldFixHeight, bottomBannerText }) => ({
-    backgroundColor: theme.designSystem.color.background.default,
-    borderTopLeftRadius: BORDER_RADIUS,
-    borderTopRightRadius: BORDER_RADIUS,
-    borderBottomLeftRadius: bottomBannerText ? 0 : BORDER_RADIUS,
-    borderBottomRightRadius: bottomBannerText ? 0 : BORDER_RADIUS,
-    borderWidth: BORDER_WIDTH,
-    borderColor: theme.designSystem.color.border.subtle,
-    gap: theme.designSystem.size.spacing.s,
-    flexDirection: 'row',
-    padding: OFFER_CARD_PADDING,
-    flexWrap: 'wrap',
-    height: shouldFixHeight ? OFFER_CARD_HEIGHT + 2 * OFFER_CARD_PADDING : 'auto',
-  })
+  ({ theme, shouldFixHeight, bottomBannerText }) => {
+    const OFFER_CARD_PADDING = theme.designSystem.size.spacing.l
+    const BORDER_RADIUS = theme.designSystem.size.borderRadius.l
+    const BORDER_WIDTH = theme.designSystem.size.spacing.xxs
+
+    return {
+      backgroundColor: theme.designSystem.color.background.default,
+      borderTopLeftRadius: BORDER_RADIUS,
+      borderTopRightRadius: BORDER_RADIUS,
+      borderBottomLeftRadius: bottomBannerText ? 0 : BORDER_RADIUS,
+      borderBottomRightRadius: bottomBannerText ? 0 : BORDER_RADIUS,
+      borderWidth: BORDER_WIDTH,
+      borderColor: theme.designSystem.color.border.subtle,
+      gap: theme.designSystem.size.spacing.s,
+      flexDirection: 'row',
+      padding: OFFER_CARD_PADDING,
+      flexWrap: 'wrap',
+      height: shouldFixHeight ? OFFER_CARD_HEIGHT + 2 * OFFER_CARD_PADDING : 'auto',
+    }
+  }
 )
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const BottomRightElementContainer = styled.View({
-  marginTop: getSpacing(1),
-})
+const BottomRightElementContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xs,
+}))

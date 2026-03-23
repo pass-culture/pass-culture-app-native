@@ -38,7 +38,7 @@ write_path_to_file () {
 # Loop through each function name
 echo "$function_names" | while read -r function_name; do
     # Search for the function name within the project directory, excluding the api.ts file, test files, and story files
-    if grep -qr --exclude="api.ts" --exclude="*.test.*" --exclude="*.stories.*" "$function_name" "$PROJECT_DIR"; then
+    if grep --quiet --word-regexp --recursive --exclude="api.ts" --exclude="*.test.*" --exclude="*.stories.*" "$function_name" "$PROJECT_DIR"; then
         write_path_to_file "used_routes.txt"
     else
         write_path_to_file "unused_routes.txt"

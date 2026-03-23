@@ -1,7 +1,7 @@
 import React from 'react'
 import { Platform } from 'react-native'
 
-import { CategoryIdEnum, OfferResponseV2, OfferStockResponse } from 'api/gen'
+import { CategoryIdEnum, OfferResponse, OfferStockResponse } from 'api/gen'
 import { AlreadyBooked } from 'features/bookOffer/components/AlreadyBooked'
 import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { BookingEventChoices } from 'features/bookOffer/components/BookingEventChoices'
@@ -32,7 +32,7 @@ const getDefaultModalContent = (): ModalContent => {
   }
 }
 
-const getEndedUseBookingModalContent = (offer: OfferResponseV2): ModalContent => {
+const getEndedUseBookingModalContent = (offer: OfferResponse): ModalContent => {
   return {
     children: <AlreadyBooked offer={offer} />,
     title: 'Réservation impossible',

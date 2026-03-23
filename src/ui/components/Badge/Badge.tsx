@@ -1,9 +1,7 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
-import { getSpacing, Typo } from 'ui/theme'
-
-const BADGE_SIZE = getSpacing(4)
+import { Typo } from 'ui/theme'
 
 type Props = {
   value: number
@@ -11,30 +9,34 @@ type Props = {
   children?: never
 }
 
-export const Badge: FunctionComponent<Props> = ({ value, ...props }) => (
-  <Container {...props}>
-    <Wrapper>
-      <Caption>{value}</Caption>
-    </Wrapper>
-  </Container>
-)
+export const Badge: FunctionComponent<Props> = ({ value, ...props }) => {
+  const { designSystem } = useTheme()
+  const BADGE_SIZE = designSystem.size.spacing.l
+  return (
+    <Container {...props}>
+      <Wrapper BADGE_SIZE={BADGE_SIZE}>
+        <Caption BADGE_SIZE={BADGE_SIZE}>{value}</Caption>
+      </Wrapper>
+    </Container>
+  )
+}
 
 const Container = styled.View(({ theme }) => ({
   alignSelf: 'center',
-  borderWidth: getSpacing(0.25),
+  borderWidth: theme.designSystem.size.spacing.xxs,
   borderStyle: 'solid',
   borderColor: theme.designSystem.color.border.inverted,
   borderRadius: theme.designSystem.size.borderRadius.l,
   backgroundColor: theme.designSystem.color.background.brandPrimary,
 }))
 
-const Wrapper = styled.View({
+const Wrapper = styled.View<{ BADGE_SIZE: number }>(({ BADGE_SIZE, theme }) => ({
   minWidth: BADGE_SIZE,
   minHeight: BADGE_SIZE,
-  paddingHorizontal: getSpacing(0.5),
-})
+  paddingHorizontal: theme.designSystem.size.spacing.xxs,
+}))
 
-const Caption = styled(Typo.BodyAccentXs)(({ theme }) => ({
+const Caption = styled(Typo.BodyAccentXs)<{ BADGE_SIZE: number }>(({ BADGE_SIZE, theme }) => ({
   textAlign: 'center',
   color: theme.designSystem.color.text.inverted,
   lineHeight: `${BADGE_SIZE}px`,

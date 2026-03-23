@@ -10,8 +10,9 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { WELCOME_BACKGROUND_SOURCE } from 'features/onboarding/components/welcomeBackground'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Page } from 'ui/pages/Page'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -33,25 +34,24 @@ export const OnboardingWelcome: FunctionComponent = () => {
     <Page>
       <ImageBackground source={WELCOME_BACKGROUND_SOURCE} />
       <StyledScrollView>
-        <Spacer.Flex />
         <Gradient />
         <Content>
           <StyledTitle1>Bienvenue sur&nbsp;le&nbsp;pass&nbsp;Culture</StyledTitle1>
-          <Spacer.Column numberOfSpaces={4} />
-          <StyledBody>
-            Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu
-            as 17 ou 18 ans.
-          </StyledBody>
-          <Spacer.Column numberOfSpaces={6} />
-          <InternalTouchableLink
-            as={ButtonPrimary}
-            wording="C’est parti&nbsp;!"
-            icon={PlainArrowNext}
-            iconAfterWording
-            navigateTo={getOnboardingPropConfig('OnboardingGeolocation')}
-            onBeforeNavigate={onStartPress}
-          />
-          <Spacer.Column numberOfSpaces={4} />
+          <StyledViewGap gap={6}>
+            <StyledBody>
+              Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si
+              tu as 17 ou 18 ans.
+            </StyledBody>
+            <InternalTouchableLink
+              as={Button}
+              fullWidth
+              wording="C’est parti&nbsp;!"
+              icon={PlainArrowNext}
+              iconAfterWording
+              navigateTo={getOnboardingPropConfig('OnboardingGeolocation')}
+              onBeforeNavigate={onStartPress}
+            />
+          </StyledViewGap>
           <StyledAuthenticationButton
             type="login"
             onAdditionalPress={onLoginPress}
@@ -64,8 +64,12 @@ export const OnboardingWelcome: FunctionComponent = () => {
   )
 }
 
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
+}))
+
 const StyledScrollView = styled(ScrollView).attrs({
-  contentContainerStyle: { flexGrow: 1 },
+  contentContainerStyle: { flexGrow: 1, justifyContent: 'flex-end' },
 })``
 
 const Content = styled.View(({ theme }) => ({
@@ -75,8 +79,8 @@ const Content = styled.View(({ theme }) => ({
   alignItems: 'center',
   bottom: 0,
   backgroundColor: theme.designSystem.color.background.default,
-  paddingHorizontal: getSpacing(6),
-  paddingBottom: getSpacing(8),
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
+  paddingBottom: theme.designSystem.size.spacing.xxl,
 }))
 
 const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({

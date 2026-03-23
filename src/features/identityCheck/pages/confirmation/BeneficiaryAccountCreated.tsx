@@ -8,10 +8,10 @@ import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { defaultCreditByAge } from 'shared/credits/defaultCreditByAge'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import FrenchRepublicAnimation from 'ui/animations/french_republic_animation.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
@@ -28,7 +28,7 @@ export function BeneficiaryAccountCreated() {
   const { showShareAppModal } = useShareAppContext()
 
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const fallbackAmount = isUnderageBeneficiary
     ? defaultCreditByAge.age_17
     : defaultCreditByAge.age_18

@@ -15,7 +15,7 @@ import { Duo } from 'ui/svg/icons/Duo'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { OrderPrice as DefaultOrderPrice } from 'ui/svg/icons/OrderPrice'
 import { Profile as DefaultProfile } from 'ui/svg/icons/Profile'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type BookingPropertiesSectionProps = {
@@ -63,15 +63,13 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
           />
         ) : null}
         {propertiesLabels.dateLabel?.length > 0 ? (
-          <React.Fragment>
-            <SectionRow
-              title={propertiesLabels.dateLabel}
-              renderTitle={renderRowTitle}
-              type="clickable"
-              icon={Calendar}
-              accessibilityLabel={`Date\u00a0: ${propertiesLabels.dateLabel}`}
-            />
-          </React.Fragment>
+          <SectionRow
+            title={propertiesLabels.dateLabel}
+            renderTitle={renderRowTitle}
+            type="clickable"
+            icon={Calendar}
+            accessibilityLabel={`Date\u00a0: ${propertiesLabels.dateLabel}`}
+          />
         ) : null}
         {propertiesLabels.locationLabel ? (
           <SectionRow
@@ -100,20 +98,21 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
     </View>
   )
 }
-const StyledViewGap = styled(ViewGap)({
-  marginTop: getSpacing(4.5),
-})
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+}))
+
 const TitleNameContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   gap: theme.designSystem.size.spacing.s,
 }))
 
-const IconDuoContainer = styled.View({
+const IconDuoContainer = styled.View(({ theme }) => ({
   // the Duo icon is wide so we increase the size and remove the margin
   // so that it has the same size as the text
-  marginVertical: -getSpacing(1.5),
-})
+  marginVertical: -theme.designSystem.size.spacing.s,
+}))
 
 const Title = styled(Typo.Body)(({ theme }) => ({
   marginRight: theme.designSystem.size.spacing.s,

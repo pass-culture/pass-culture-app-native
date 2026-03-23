@@ -24,6 +24,7 @@ import {
   useBookingsByStatusQuery,
   useBookingsV2WithConvertedTimezoneQuery,
 } from 'queries/bookings/useBookingsQuery'
+import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
 import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -114,10 +115,11 @@ export const Bookings = () => {
   }
 
   const shouldDisplayPastille = numberOfReactableBookings > 0
+  const numberOfLines = useFontScaleValue({ default: 1, at200PercentZoom: 3 })
 
   return (
     <Container gap={6}>
-      <PageHeader title="Mes réservations" />
+      <PageHeader title="Mes réservations" numberOfLines={numberOfLines} />
       <TabLayout
         tabPanels={tabPanels}
         defaultTab={params?.activeTab ?? BookingsTab.CURRENT}

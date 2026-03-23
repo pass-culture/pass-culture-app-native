@@ -1,82 +1,56 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
-.c2 {
+.c0 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 20px;
-  padding-right: 20px;
-  min-height: 40px;
-  width: 100%;
-  background-color: #6123df;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: auto;
   max-width: 500px;
+  border-width: 0;
+  background-color: transparent;
   cursor: pointer;
   outline: none;
-  border-width: 0;
-  display: flex;
+  display: inline-flex;
   overflow: hidden;
   text-decoration: none;
   box-sizing: border-box;
-}
-
-.c2:disabled {
-  cursor: initial;
-  background: none;
-}
-
-.c2:hover {
-  text-decoration: underline;
-  text-decoration-color: #ffffff;
-}
-
-.c2:hover:disabled {
-  text-decoration: none;
-}
-
-.c3:disabled {
-  background-color: #f1f1f4;
-}
-
-.c0 {
-  flex-direction: column;
-  cursor: pointer;
-  border-width: 0;
-  display: flex;
-  background-color: transparent;
-  padding: 0;
-}
-
-.c0:active {
-  opacity: 0.7;
-  outline: none;
-}
-
-.c0:focus {
-  outline: auto;
 }
 
 .c0:disabled {
   cursor: initial;
 }
 
-.c0:hover {
-  text-decoration: underline;
-  text-decoration-color: #161617;
-}
-
-.c0:hover:disabled {
-  text-decoration: none;
-}
-
 .c1 {
-  flex-grow: 1;
-  max-width: 40px;
-  height: 40px;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  width: auto;
+  max-width: 500px;
+  border-style: solid;
+  border-color: #6123df;
+  border-width: 1px;
+  background-color: #6123df;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c1:disabled {
+  cursor: initial;
 }
 
 <div>
@@ -84,7 +58,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
     class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginLeft-11wrixw r-marginRight-61z16t"
   >
     <header
-      class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-1nwnxgm r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
+      class="css-view-175oi2r r-backgroundColor-14lw9ot r-borderBottomColor-1nwnxgm r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
       role="banner"
     >
       <div
@@ -99,28 +73,30 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
         >
           <button
             aria-label="Revenir en arrière"
-            class="c0 c1"
+            class="c0"
             data-testid="Revenir en arrière"
             tabindex="0"
-            title="Revenir en arrière"
             type="button"
           >
             <div
-              class="css-view-175oi2r"
-              data-testid="icon-back"
+              class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1wjczhr r-flexDirection-18u37iz"
             >
               <div
-                class="css-text-146c3p1"
-                dir="ltr"
+                class="css-view-175oi2r"
+                id="0"
+                style="flex-shrink: 0;"
               >
-                icon-back-SVG-Mock
+                <div
+                  class="css-view-175oi2r"
+                >
+                  <div
+                    class="css-text-146c3p1"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
               </div>
-            </div>
-            <div
-              class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-              dir="ltr"
-            >
-              Retour
             </div>
           </button>
         </div>
@@ -156,107 +132,106 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
           >
             <div
               class="css-view-175oi2r"
-              style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 24px; padding-left: 24px;"
+              style="flex-grow: 1; flex-direction: column; padding: 65px 24px 24px 24px;"
             >
               <div
-                class="css-view-175oi2r"
-                style="height: 65px;"
-              />
-              <div
-                class="css-view-175oi2r r-alignSelf-1kihuf0 r-paddingBottom-rabhyy r-paddingLeft-35ea9k r-paddingRight-gxpyh3 r-paddingTop-10iw8no"
+                class="css-view-175oi2r r-marginBottom-zd98yo"
               >
                 <div
-                  class="css-view-175oi2r"
+                  class="css-view-175oi2r r-alignSelf-1kihuf0 r-paddingBottom-11rk87y r-paddingLeft-gu0qjt r-paddingRight-85oauj r-paddingTop-fd4yh7"
                 >
                   <div
-                    class="css-text-146c3p1"
-                    dir="ltr"
-                  >
-                    undefined-SVG-Mock
-                  </div>
-                </div>
-              </div>
-              <div
-                class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
-                dir="ltr"
-              >
-                Identification
-              </div>
-              <div
-                class="css-view-175oi2r r-height-10ptun7"
-              />
-              <div
-                class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
-                dir="ltr"
-              >
-                Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
-              </div>
-              <div
-                class="css-view-175oi2r r-height-10ptun7"
-              />
-              <div
-                class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
-              >
-                <div
-                  class="css-view-175oi2r"
-                >
-                  <div
-                    class="css-text-146c3p1"
-                    dir="ltr"
-                  >
-                    undefined-SVG-Mock
-                  </div>
-                </div>
-                <div
-                  aria-label="Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur."
-                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
-                  role="presentation"
-                >
-                  <div
-                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-kmu5yi"
-                    dir="ltr"
-                  >
-                    Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
-                  </div>
-                </div>
-              </div>
-              <div
-                class="css-view-175oi2r r-height-mabqd8"
-              />
-            </div>
-          </div>
-          <div
-            class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-qn3fzs r-paddingInline-cxgwc0 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
-          >
-            <button
-              aria-label="Ouvrir un onglet ÉduConnect"
-              class="c2 c3"
-              data-testid="Ouvrir un onglet ÉduConnect"
-              tabindex="0"
-              type="button"
-            >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-              >
-                <div
-                  class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx r-marginRight-1kb76zh"
-                >
-                  <div
-                    aria-label="Nouvelle fenêtre"
                     class="css-view-175oi2r"
-                    data-testid="button-icon-left"
                   >
                     <div
                       class="css-text-146c3p1"
                       dir="ltr"
                     >
-                      button-icon-left-SVG-Mock
+                      undefined-SVG-Mock
                     </div>
                   </div>
                 </div>
                 <div
-                  class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
                   dir="ltr"
+                >
+                  Identification
+                </div>
+                <div
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-marginBlock-12kyg2d r-textAlign-q4m81j"
+                  dir="ltr"
+                >
+                  Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
+                </div>
+                <div
+                  class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+                >
+                  <div
+                    class="css-view-175oi2r"
+                  >
+                    <div
+                      class="css-text-146c3p1"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    aria-label="Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur."
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
+                    role="presentation"
+                  >
+                    <div
+                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-kmu5yi"
+                      dir="ltr"
+                    >
+                      Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-175oi2r r-height-3da1kt"
+              />
+            </div>
+          </div>
+          <div
+            class="css-view-175oi2r r-bottom-1p0dtai r-height-1wfhzrg r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-pointerEvents-633pao"
+          />
+          <div
+            class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-qn3fzs r-paddingInline-cxgwc0 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
+          >
+            <button
+              aria-label="Ouvrir un onglet ÉduConnect"
+              class="c1"
+              data-testid="Ouvrir un onglet ÉduConnect"
+              tabindex="0"
+              type="button"
+            >
+              <div
+                class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
+              >
+                <div
+                  class="css-view-175oi2r"
+                  id="1"
+                  style="flex-shrink: 0;"
+                >
+                  <div
+                    aria-label="Nouvelle fenêtre"
+                    class="css-view-175oi2r"
+                  >
+                    <div
+                      class="css-text-146c3p1"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
+                  dir="ltr"
+                  style="color: rgb(255, 255, 255); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                 >
                   Ouvrir un onglet ÉduConnect
                 </div>
@@ -269,9 +244,6 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
         </div>
       </div>
     </div>
-    <div
-      class="css-view-175oi2r r-backdropFilter-1jy2u1p r-height-17lwhjb r-left-1d2f490 r-overflow-1udh08x r-position-u8s1d r-right-zchlnj r-top-ipm5af"
-    />
   </div>
 </div>
 `;

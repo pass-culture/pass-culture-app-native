@@ -1,10 +1,8 @@
 import styled from 'styled-components/native'
 
-import { getSpacing } from 'ui/theme'
-
 export const LineSeparator = styled.View(({ theme }) => ({
   height: 2,
   backgroundColor: theme.designSystem.color.background.subtle,
-  marginHorizontal: getSpacing(6),
-  marginVertical: getSpacing(4),
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+  marginVertical: theme.designSystem.size.spacing.l,
 }))

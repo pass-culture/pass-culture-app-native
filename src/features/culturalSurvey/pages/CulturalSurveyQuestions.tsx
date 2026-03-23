@@ -28,10 +28,11 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Gradient } from 'ui/components/Gradient'
+import { Button } from 'ui/designSystem/Button/Button'
 import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
 import { CheckboxGroupOption } from 'ui/designSystem/CheckboxGroup/types'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
 import { Spacer } from 'ui/theme'
 
@@ -49,7 +50,6 @@ export function CulturalSurveyQuestions() {
   const { nextQuestion, isCurrentQuestionLastQuestion } = useGetNextQuestion(params?.question)
   const culturalSurveyProgress = useCulturalSurveyProgress(params?.question)
 
-  const { showErrorSnackBar } = useSnackBarContext()
   const { refetchUser } = useAuthContext()
 
   const { goBack } = useGoBack(...homeNavigationConfig)
@@ -109,7 +109,7 @@ export function CulturalSurveyQuestions() {
 
   const onError = (error: unknown) => {
     navigateToHome()
-    showErrorSnackBar({ message: extractApiErrorMessage(error), timeout: SNACK_BAR_TIME_OUT })
+    showErrorSnackBar(extractApiErrorMessage(error))
   }
 
   const { mutate: postCulturalSurveyAnswers } = useCulturalSurveyAnswersMutation({
@@ -238,8 +238,10 @@ export function CulturalSurveyQuestions() {
         />
       </ChildrenScrollView>
 
+      <Gradient bottomViewHeight={bottomChildrenViewHeight} />
       <FixedBottomChildrenView onLayout={onFixedBottomChildrenViewLayout}>
-        <ButtonPrimary
+        <Button
+          fullWidth
           onPress={navigateToNextQuestion}
           disabled={!currentAnswers.length}
           wording={isCurrentQuestionLastQuestion ? 'Valider' : 'Continuer'}
@@ -278,6 +280,7 @@ const FixedBottomChildrenView = styled(View)(({ theme }) => ({
   bottom: 0,
   left: 0,
   right: 0,
+  backgroundColor: theme.designSystem.color.background.default,
   paddingBottom: theme.designSystem.size.spacing.xl,
   paddingTop: theme.designSystem.size.spacing.m,
   paddingHorizontal: theme.contentPage.marginHorizontal,

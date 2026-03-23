@@ -13,7 +13,7 @@ import { eventMonitoring } from 'libs/monitoring/services'
 import { GtlLevel } from 'shared/gtl/types'
 
 export const buildOfferCategoriesPredicate = (searchGroups: SearchGroupNameEnumv2[]): string[] =>
-  searchGroups.map((searchGroup) => `${FACETS_FILTERS_ENUM.OFFER_SEARCH_GROUP_NAME}:${searchGroup}`)
+  searchGroups.map((searchGroup) => `${FACETS_FILTERS_ENUM.OFFER_SEARCH_GROUPS}:${searchGroup}`)
 
 export const buildOfferSubcategoriesPredicate = (subcategoryIds: SubcategoryIdEnumv2[]): string[] =>
   subcategoryIds.map(

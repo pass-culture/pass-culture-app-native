@@ -5,7 +5,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags as featureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
-import { getCurrencyFromParam } from 'shared/currency/useCurrencyParam'
+import { getCurrencyFromParam } from 'shared/currency/getCurrencyParam'
 
 export enum Currency {
   EURO = '€',

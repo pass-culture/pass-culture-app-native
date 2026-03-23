@@ -2,9 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CheatcodeButton, CheatcodeCategory } from 'cheatcodes/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { padding } from 'ui/theme'
 
 interface Props {
@@ -18,28 +17,23 @@ interface Props {
  * or a navigation button (navigationTarget) based on the button prop.
  */
 export const LinkToCheatcodesScreen = ({ button, variant = 'primary' }: Props) => {
-  const ButtonComponent = variant === 'secondary' ? ButtonSecondary : ButtonPrimary
-
   const { title, onPress, navigationTarget } = button
-
-  const buttonHeight = variant === 'secondary' ? 'extraSmall' : 'small'
-
   return (
     <Row>
       {onPress ? (
         // Case 1: It's an ActionButton
-        <ButtonComponent wording={title} onPress={onPress} buttonHeight={buttonHeight} />
+        <Button wording={title} onPress={onPress} variant={variant} />
       ) : navigationTarget ? (
         // Case 2: It's a NavigationButton
         <InternalTouchableLink
-          as={ButtonComponent}
+          as={Button}
           wording={title}
           navigateTo={navigationTarget}
-          buttonHeight={buttonHeight}
+          variant={variant}
         />
       ) : (
         // Case 3: It's a ContainerButton (no action) - render it disabled
-        <ButtonComponent wording={title} disabled buttonHeight={buttonHeight} />
+        <Button wording={title} disabled variant={variant} />
       )}
     </Row>
   )

@@ -22,10 +22,8 @@ import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStack
 import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { useSnackBarContext, SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 export const ActivationProfileRecap = () => {
@@ -55,7 +53,6 @@ export const ActivationProfileRecap = () => {
     !storedStatus
 
   const saveStep = useSaveStep()
-  const { showErrorSnackBar } = useSnackBarContext()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
 
   const enableBookingFreeOfferFifteenSixteen = useFeatureFlag(
@@ -78,8 +75,6 @@ export const ActivationProfileRecap = () => {
         enableBookingFreeOfferFifteenSixteen,
         storedFreeOfferId,
         reset,
-        showErrorSnackBar,
-        SNACK_BAR_TIME_OUT,
       }),
   })
 
@@ -137,16 +132,20 @@ export const ActivationProfileRecap = () => {
       }
       fixedBottomChildren={
         hasMissingData ? (
-          <ButtonPrimary wording="Compléter les informations" onPress={updateInformation} />
+          <Button wording="Compléter les informations" onPress={updateInformation} />
         ) : (
           <ViewGap gap={4}>
-            <ButtonPrimary
+            <Button
               isLoading={isPending}
               wording="Confirmer"
               accessibilityLabel="Confirmer et envoyer les informations"
               onPress={submit}
             />
-            <ButtonSecondary wording="Modifier mes informations" onPress={updateInformation} />
+            <Button
+              variant="secondary"
+              wording="Modifier mes informations"
+              onPress={updateInformation}
+            />
           </ViewGap>
         )
       }

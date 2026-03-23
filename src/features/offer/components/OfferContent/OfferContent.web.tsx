@@ -26,19 +26,16 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   headlineOffersCount,
   hasVideoCookiesConsent,
   onVideoConsentPress,
-  segment,
-  enableVideoABTesting,
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
+  HeaderComponent,
+  CTAsComponent,
 }) => {
   const { visible, showModal, hideModal } = useModal(false)
   const headerHeight = useGetHeaderHeight()
   const [carouselDefaultIndex, setCarouselDefaultIndex] = useState(0)
 
   const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
-  const shouldShowVideoSection = enableVideoABTesting
-    ? isVideoSectionEnabled && segment === 'A'
-    : isVideoSectionEnabled
 
   const offerImages: ImageWithCredit[] = useMemo(
     () => (offer.images ? getImagesUrlsWithCredit<ImageWithCredit>(offer.images) : []),
@@ -80,7 +77,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           chronicles={chronicles}
           chronicleVariantInfo={chronicleVariantInfo}
           onOfferPreviewPress={handlePreviewPress}
-          isVideoSectionEnabled={shouldShowVideoSection}
+          isVideoSectionEnabled={isVideoSectionEnabled}
           BodyWrapper={BodyWrapper}
           defaultReaction={defaultReaction}
           onReactionButtonPress={onReactionButtonPress}
@@ -89,10 +86,10 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           onShowChroniclesWritersModal={onShowChroniclesWritersModal}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
           onVideoConsentPress={onVideoConsentPress}
-          segment={segment}
-          enableVideoABTesting={enableVideoABTesting}
           isMultiArtistsEnabled={isMultiArtistsEnabled}
-          onShowOfferArtistsModal={onShowOfferArtistsModal}>
+          onShowOfferArtistsModal={onShowOfferArtistsModal}
+          HeaderComponent={HeaderComponent}
+          CTAsComponent={CTAsComponent}>
           {comingSoonFooterHeight ? (
             <ComingSoonFooterOffset height={comingSoonFooterHeight} />
           ) : null}
@@ -114,7 +111,7 @@ const StyledWrapper = styled.View<{ headerHeight: number }>(
       return {
         flexDirection: 'row',
         paddingHorizontal: getSpacing(16),
-        paddingTop: getSpacing(12) + headerHeight,
+        paddingTop: designSystem.size.spacing.xxxxl + headerHeight,
         paddingBottom: designSystem.size.spacing.xxxxl,
         gap: getSpacing(16),
       }

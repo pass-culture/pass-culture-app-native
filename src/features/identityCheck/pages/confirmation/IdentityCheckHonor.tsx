@@ -14,16 +14,15 @@ import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStack
 import { QueryKeys } from 'libs/queryKeys'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Page } from 'ui/pages/Page'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const IdentityCheckHonor = () => {
   const headerHeight = useGetHeaderHeight()
-  const { showErrorSnackBar } = useSnackBarContext()
   const queryClient = useQueryClient()
   const { navigate } = useNavigation<UseNavigationType>()
   const { refetchUser } = useAuthContext()
@@ -46,10 +45,7 @@ export const IdentityCheckHonor = () => {
         const { data: user } = await refetchUser()
         userProfile = user
       } catch (error) {
-        showErrorSnackBar({
-          message: extractApiErrorMessage(error),
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+        showErrorSnackBar(extractApiErrorMessage(error))
       }
       const hasUserOngoingCredit = userProfile ? hasOngoingCredit(userProfile) : false
       if (hasUserOngoingCredit) {
@@ -59,11 +55,7 @@ export const IdentityCheckHonor = () => {
         navigate(...getSubscriptionHookConfig('BeneficiaryRequestSent'))
       }
     },
-    onError: (error) =>
-      showErrorSnackBar({
-        message: extractApiErrorMessage(error),
-        timeout: SNACK_BAR_TIME_OUT,
-      }),
+    onError: (error) => showErrorSnackBar(extractApiErrorMessage(error)),
   })
 
   // If the mutation is loading or is a success, we don't want the user to trigger the button again
@@ -77,29 +69,39 @@ export const IdentityCheckHonor = () => {
         <Typo.Title2 {...getHeadingAttrs(1)}>
           Les informations que tu as renseignées sont-elles correctes&nbsp;?
         </Typo.Title2>
-        <Spacer.Column numberOfSpaces={10} />
-        <Typo.Title4 {...getHeadingAttrs(2)}>
-          &quot;Je déclare que l’ensemble des informations que j’ai renseignées durant mon
-          inscription sont correctes.&quot;
-        </Typo.Title4>
-        <Spacer.Column numberOfSpaces={4} />
+        <TextContainer>
+          <Typo.Title4 {...getHeadingAttrs(2)}>
+            &quot;Je déclare que l’ensemble des informations que j’ai renseignées durant mon
+            inscription sont correctes.&quot;
+          </Typo.Title4>
+        </TextContainer>
         <StyledBody>
           Des contrôles aléatoires seront effectués et un justificatif de domicile devra être
           fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées.
         </StyledBody>
-        <Spacer.Column numberOfSpaces={15} />
-        <ButtonPrimary
-          type="submit"
-          onPress={postHonorStatement}
-          wording="Valider et continuer"
-          isLoading={isSubmitButtonEnabled}
-        />
-        <Spacer.Column numberOfSpaces={5} />
+        <ButtonContainer>
+          <Button
+            fullWidth
+            type="submit"
+            onPress={postHonorStatement}
+            wording="Valider et continuer"
+            isLoading={isSubmitButtonEnabled}
+          />
+        </ButtonContainer>
         <Spacer.BottomScreen />
       </StyledScrollView>
     </Page>
   )
 }
+const TextContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xxxl,
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
+
+const ButtonContainer = styled.View(({ theme }) => ({
+  marginTop: getSpacing(15),
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const StyledScrollView = styled(ScrollView).attrs(({ theme }) => ({
   contentContainerStyle: {

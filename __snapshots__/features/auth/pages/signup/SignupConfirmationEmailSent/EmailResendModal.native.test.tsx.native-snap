@@ -144,7 +144,7 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={432}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -157,7 +157,7 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
+          "height": 432,
           "justifyContent": "center",
           "maxHeight": 650,
           "maxWidth": 960,
@@ -171,12 +171,14 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -243,7 +245,7 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -272,10 +274,20 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
                     "userSelect": "auto",
                   },
                   {
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
                   },
                 ],
                 {
@@ -286,13 +298,53 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
             testID="Fermer la modale"
           >
             <View
-              height={20}
-              testID="rightIcon"
-              width={20}
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
+                }
+              }
             >
-              <Text>
-                rightIcon-SVG-Mock
-              </Text>
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="0"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  testID="rightIcon"
+                  width={22}
+                >
+                  <Text>
+                    rightIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>
@@ -300,7 +352,7 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
@@ -346,46 +398,39 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
                 Si après 5 minutes tu n’as pas reçu ton lien de validation par e-mail, tu peux en demander un nouveau.
               </Text>
               <View
-                numberOfSpaces={6}
                 style={
                   {
-                    "height": 24,
-                  }
-                }
-              />
-              <Text
-                style={
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
+                    "marginBottom": 8,
+                    "marginTop": 24,
                   }
                 }
               >
-                Attention, il te reste :
-                 
                 <Text
                   style={
                     {
-                      "color": "#161617",
+                      "color": "#696a6f",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
                     }
                   }
                 >
-                  3 demandes
+                  Attention, il te reste :
+                   
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    3 demandes
+                  </Text>
                 </Text>
-              </Text>
-              <View
-                numberOfSpaces={2}
-                style={
-                  {
-                    "height": 8,
-                  }
-                }
-              />
+              </View>
               <View
                 accessibilityLabel="Demander un nouveau lien"
                 accessibilityRole="button"
@@ -423,22 +468,23 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
                       },
                       {
                         "alignItems": "center",
+                        "alignSelf": "center",
                         "backgroundColor": "#6123df",
-                        "borderBottomLeftRadius": 24,
-                        "borderBottomRightRadius": 24,
-                        "borderTopLeftRadius": 24,
-                        "borderTopRightRadius": 24,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#6123df",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
                         "flexDirection": "row",
                         "justifyContent": "center",
-                        "maxWidth": 500,
-                        "minHeight": 40,
-                        "paddingBottom": 2,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 2,
+                        "paddingBottom": 8,
+                        "paddingLeft": 12,
+                        "paddingRight": 12,
+                        "paddingTop": 8,
                         "width": "100%",
                       },
-                      {},
                     ],
                     {
                       "opacity": 1,
@@ -448,24 +494,39 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
                 testID="Demander un nouveau lien"
               >
                 <View
+                  fullWidth={true}
+                  gap={8}
+                  hasIcon={false}
+                  isMultiline={false}
                   style={
                     {
                       "alignItems": "center",
+                      "columnGap": 8,
                       "flexDirection": "row",
+                      "justifyContent": "center",
+                      "width": "100%",
                     }
                   }
                 >
                   <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={1}
                     style={
-                      {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "maxWidth": "100%",
-                      }
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 22,
+                        },
+                        {
+                          "color": "#ffffff",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "maxWidth": "100%",
+                          "minWidth": 0,
+                          "textAlign": "center",
+                        },
+                      ]
                     }
                   >
                     Demander un nouveau lien

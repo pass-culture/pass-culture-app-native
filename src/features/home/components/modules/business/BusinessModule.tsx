@@ -13,14 +13,13 @@ import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
-import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 import { getSpacing, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 const FIXED_SIZE = getSpacing(81.75)
-const MAIN_MARGIN = getSpacing(6)
 const FULL_HEIGHT = { height: '100%' }
 const FULL_WIDTH = { width: '100%' }
 
@@ -41,7 +40,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     callToAction,
   } = props
   const isDisabled = !url
-  const { isLoggedIn, user, isUserLoading } = useAuthContext()
+  const { isLoggedIn, user } = useAuthContext()
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const { width } = useWindowDimensions()
   const isLargeScreen = width > 700
@@ -50,8 +49,6 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
       setShouldRedirect(true)
     }
   }, [isDisabled])
-
-  const { showInfoSnackBar } = useSnackBarContext()
 
   const logAndOpenUrl = (finalUrl: string) => {
     setShouldRedirect(false)
@@ -63,9 +60,6 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     if (!url || !shouldRedirect) return
     const businessUrl = getBusinessUrl(url, user?.email)
     if (businessUrl) logAndOpenUrl(businessUrl)
-    else if (isUserLoading) {
-      showInfoSnackBar({ message: 'Redirection en cours', timeout: SNACK_BAR_TIME_OUT_LONG })
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url, user, shouldRedirect])
 
@@ -89,8 +83,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 
   if (!shouldModuleBeDisplayed) return null
 
-  const titleText = title ?? ''
-  const accessibilityLabel = subtitle ? `${titleText} ${subtitle}` : title
+  const accessibilityLabel = getComputedAccessibilityLabel(date, title, subtitle, callToAction)
 
   return (
     <StyledTouchableOpacity
@@ -169,12 +162,15 @@ export const BusinessModule = memo(UnmemoizedBusinessModule)
 
 const BlankSpace = styled.View(({ theme }) => ({ height: theme.designSystem.size.spacing.l }))
 
-const FlexRow = styled.View(({ theme }) => ({
-  borderRadius: theme.designSystem.size.borderRadius.m,
-  flexDirection: 'row',
-  width: theme.appContentWidth - 2 * MAIN_MARGIN,
-  ...FULL_HEIGHT,
-}))
+const FlexRow = styled.View(({ theme }) => {
+  const MAIN_MARGIN = theme.designSystem.size.spacing.xl
+  return {
+    borderRadius: theme.designSystem.size.borderRadius.m,
+    flexDirection: 'row',
+    width: theme.appContentWidth - 2 * MAIN_MARGIN,
+    ...FULL_HEIGHT,
+  }
+})
 
 const StyledLinearGradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   angle: 0,
@@ -193,16 +189,19 @@ const StyledLinearGradientLargeScreen = styled(LinearGradient).attrs<{ colors?: 
 const StyledTouchableOpacity = styled(TouchableOpacity)<{
   onMouseDown: (e: Event) => void
   isFocus?: boolean
-}>(({ theme, isFocus }) => ({
-  textDecoration: 'none',
-  borderRadius: theme.designSystem.size.borderRadius.m,
-  height: FIXED_SIZE,
-  flexWrap: 'wrap',
-  overflow: 'hidden',
-  marginHorizontal: MAIN_MARGIN,
-  marginBottom: theme.home.spaceBetweenModules,
-  ...customFocusOutline({ theme, isFocus }),
-}))
+}>(({ theme, isFocus }) => {
+  const MAIN_MARGIN = theme.designSystem.size.spacing.xl
+  return {
+    textDecoration: 'none',
+    borderRadius: theme.designSystem.size.borderRadius.m,
+    height: FIXED_SIZE,
+    flexWrap: 'wrap',
+    overflow: 'hidden',
+    marginHorizontal: MAIN_MARGIN,
+    marginBottom: theme.home.spaceBetweenModules,
+    ...customFocusOutline({ theme, isFocus }),
+  }
+})
 
 const ColumnLargeScreen = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.lockedInverted,
@@ -228,18 +227,22 @@ const StyledImageBackground = styled(ImageBackground)<{ height: number }>(({ the
   backgroundColor: theme.designSystem.color.background.brandPrimary,
 }))
 
-const StyledImageBackgroundLargeScreen = styled(ImageBackground)<{ height: number }>(
-  ({ height, theme }) => ({
+const StyledImageBackgroundLargeScreen = styled(ImageBackground)<{ height: number }>(({
+  height,
+  theme,
+}) => {
+  const MAIN_MARGIN = theme.designSystem.size.spacing.xl
+  return {
     height,
     width: (theme.appContentWidth - 2 * MAIN_MARGIN) / 2,
     borderRadius: theme.designSystem.size.borderRadius.s,
     backgroundColor: theme.designSystem.color.background.brandPrimary,
-  })
-)
+  }
+})
 
 const Row = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  paddingTop: getSpacing(4.5),
+  paddingTop: theme.designSystem.size.spacing.xl,
   gap: theme.designSystem.size.spacing.s,
   marginBottom: theme.designSystem.size.spacing.xl,
 }))

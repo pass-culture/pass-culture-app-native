@@ -1,20 +1,7 @@
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { getSpacing } from 'ui/theme/spacing'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
-
-interface SpacerProps {
-  numberOfSpaces: number
-}
-
-const RowSpacer = styled.View<SpacerProps>(({ numberOfSpaces }) => ({
-  width: getSpacing(numberOfSpaces),
-}))
-
-const ColumnSpacer = styled.View<SpacerProps>(({ numberOfSpaces }) => ({
-  height: getSpacing(numberOfSpaces),
-}))
 
 const TabBarSpacer: React.FC = () => {
   const { tabBarHeight } = useCustomSafeInsets()
@@ -38,18 +25,7 @@ const CustomHeightSpacer = styled.View<{ customHeight: number; enable?: boolean 
   })
 )
 
-interface FlexSpacerProps {
-  flex?: number
-}
-
-const FlexSpacer = styled.View<FlexSpacerProps>(({ flex }) => ({
-  flex: flex || 1,
-}))
-
 export const Spacer = {
-  Flex: FlexSpacer,
-  Row: RowSpacer,
-  Column: ColumnSpacer,
   TopScreen: TopScreenSpacer,
   TabBar: TabBarSpacer,
   BottomScreen: BottomScreenSpacer,

@@ -83,15 +83,17 @@ yarn start
 
 #### Android real device
 
-First, go to the phone setting and activate developpement mode, then put the device on debug mode.
+First, go to the phone setting and activate developpement mode, then put the device on debug mode. Depends on device, it could be go to 'settings', then in 'about the deevice' finaly tap 5 time on the os version. 
 
 Connect your device to the computer and run:
-
-  ```sh
-  yarn android:testing --deviceName
-  ```
-
-Click 'transfert de fichier' on the pop up that appeared
+```sh
+adb devices 
+```
+Click 'transfert de fichier' on the pop up that appeared.
+If the device is listed and authorized, you can run :
+```sh
+yarn android:testing --deviceName
+```
 
 
 #### Emulator

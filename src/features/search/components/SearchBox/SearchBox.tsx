@@ -14,20 +14,18 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
-import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
-import { useGoBack } from 'features/navigation/useGoBack'
-import { HiddenSuggestionsButton } from 'features/search/components/Buttons/HiddenSuggestionsButton'
-import { SearchMainInput } from 'features/search/components/SearchMainInput/SearchMainInput'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { BackButton } from 'ui/components/headers/BackButton'
+import Animated, { LinearTransition } from 'libs/react-native-reanimated'
+import { useAppEnableAutocomplete } from 'queries/settings/useSettings'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Button } from 'ui/designSystem/Button/Button'
+import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const SEARCH_DEBOUNCE_MS = 500
@@ -37,7 +35,6 @@ type Props = UseSearchBoxProps & {
   searchInHistory: (search: string) => void
   accessibleHiddenTitle?: string
   offerCategories?: SearchGroupNameEnumv2[]
-  placeholder?: string
 }
 
 const accessibilityDescribedBy = uuidv4()
@@ -50,14 +47,11 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   addSearchHistory,
   searchInHistory,
   offerCategories,
-  placeholder,
   ...props
 }) => {
   const { isDesktopViewport } = useTheme()
   const { searchState, dispatch, isFocusOnSuggestions, hideSuggestions, showSuggestions } =
     useSearch()
-  const { goBack } = useGoBack(...homeNavigationConfig)
-  const { showErrorSnackBar } = useSnackBarContext()
   const [displayedQuery, setDisplayedQuery] = useState<string>(searchState.query)
   const inputRef = useRef<RNTextInput | null>(null)
   const route = useRoute()
@@ -65,18 +59,13 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const { navigateToSearch: navigateToThematicSearch } = useNavigateToSearch('ThematicSearch')
   const currentView = route.name
 
-  const {
-    data: { displayNewSearchHeader },
-  } = useRemoteConfigQuery()
-
   // Autocompletion inspired by https://github.com/algolia/doc-code-samples/tree/master/react-instantsearch-hooks-native/getting-started
   const { query: autocompleteQuery, refine: setAutocompleteQuery, clear } = useSearchBox(props)
   // An issue was opened to ask the integration of debounce directly in the lib : https://github.com/algolia/react-instantsearch/discussions/3555
   const debounceSetAutocompleteQuery = useRef(
     debounce(setAutocompleteQuery, SEARCH_DEBOUNCE_MS)
   ).current
-  const { data: appSettings } = useSettingsContext()
-  const appEnableAutocomplete = appSettings?.appEnableAutocomplete
+  const { data: appEnableAutocomplete } = useAppEnableAutocomplete()
 
   const setQuery = useCallback(
     (value: string) => {
@@ -116,12 +105,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     },
     [dispatch, navigateToThematicSearch, navigateToSearchResults, searchState]
   )
-
-  const hasEditableSearchInput = displayNewSearchHeader
-    ? isFocusOnSuggestions
-    : isFocusOnSuggestions ||
-      currentView === SearchView.Results ||
-      currentView === SearchView.Thematic
 
   // Track when the InstantSearch query changes to synchronize it with
   // the React state.
@@ -170,41 +153,11 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     hideSuggestions()
   }, [hideSuggestions, searchState.query, setQuery])
 
-  const onPressArrowBack = useCallback(() => {
-    if (isFocusOnSuggestions) {
-      unfocus()
-      return
-    }
-    Keyboard.dismiss()
-    setQuery('')
-    dispatch({
-      type: 'SET_STATE',
-      payload: {
-        ...initialSearchState,
-        locationFilter: searchState.locationFilter,
-        offerCategories: offerCategories ?? searchState.offerCategories,
-      },
-    })
-    goBack()
-  }, [
-    dispatch,
-    goBack,
-    isFocusOnSuggestions,
-    offerCategories,
-    searchState.locationFilter,
-    searchState.offerCategories,
-    setQuery,
-    unfocus,
-  ])
-
   const onSubmitQuery = useCallback(
     (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
       const queryText = event.nativeEvent.text
       if (queryText.length > 150) {
-        showErrorSnackBar({
-          message: 'Ta recherche ne peut pas faire plus de 150 caractères.',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+        showErrorSnackBar('Ta recherche ne peut pas faire plus de 150 caractères.')
         return
       }
       if (queryText.length < 1 && Platform.OS !== 'android') return
@@ -257,11 +210,11 @@ export const SearchBox: React.FunctionComponent<Props> = ({
           CINEMA_KEYWORD_PATTERN.test(
             queryText
               .normalize('NFD')
-              .replace(/[\u0300-\u036f]/g, '')
+              .replaceAll(/[\u0300-\u036f]/g, '')
               .trim()
           )
         ) {
-          analytics.logHasSearchedCinemaQuery()
+          void analytics.logHasSearchedCinemaQuery()
         }
       }
 
@@ -279,31 +232,19 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       searchState.priceRange,
       pushWithSearch,
       hideSuggestions,
-      showErrorSnackBar,
       offerCategories,
     ]
   )
 
-  const onFocus = useCallback(() => {
+  const onFocus = () => {
     if (isFocusOnSuggestions && appEnableAutocomplete) return
     // Avoid the redirection on suggestions view when user is on a results view
     // (not useful in this case because we don't have suggestions)
     // or suggestions view if it's the current view when feature flag deactivated
-    if (hasEditableSearchInput && !appEnableAutocomplete) return
+    if (isFocusOnSuggestions && !appEnableAutocomplete) return
     searchInHistory(searchState.query)
     showSuggestions()
-  }, [
-    appEnableAutocomplete,
-    hasEditableSearchInput,
-    isFocusOnSuggestions,
-    searchInHistory,
-    searchState.query,
-    showSuggestions,
-  ])
-
-  const showLocationButton =
-    (currentView === SearchView.Results || currentView === SearchView.Thematic) &&
-    !isFocusOnSuggestions
+  }
 
   const disableInputClearButton =
     (currentView === SearchView.Results || currentView === SearchView.Thematic) &&
@@ -317,24 +258,31 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       ) : null}
       <SearchInputContainer {...props}>
         <SearchInputA11yContainer>
-          {hasEditableSearchInput ? (
+          {isFocusOnSuggestions ? (
             <StyledView>
-              <BackButton onGoBack={displayNewSearchHeader ? unfocus : onPressArrowBack} />
+              <Button
+                iconButton
+                variant="tertiary"
+                color="neutral"
+                icon={ArrowPrevious}
+                onPress={unfocus}
+                accessibilityLabel="Revenir en arrière"
+              />
             </StyledView>
           ) : null}
-          <FlexView>
-            <HiddenSuggestionsButton />
-            <SearchMainInput
+          <FlexView layout={LinearTransition.duration(250)}>
+            <SearchInput
+              label="Rechercher dans le catalogue"
               ref={inputRef}
-              query={displayedQuery}
-              setQuery={setQuery}
-              onSubmitQuery={onSubmitQuery}
-              resetQuery={resetQuery}
-              isFocusable={isFocusOnSuggestions}
+              value={displayedQuery}
+              onChangeText={setQuery}
+              onSubmitEditing={onSubmitQuery}
+              onClear={resetQuery}
+              nativeAutoFocus={Platform.OS !== 'web'}
               onFocus={onFocus}
-              disableInputClearButton={disableInputClearButton}
-              placeholder={placeholder}
-              showLocationButton={showLocationButton}
+              focusable={isFocusOnSuggestions}
+              testID="searchInput"
+              disableClearButton={disableInputClearButton}
             />
           </FlexView>
         </SearchInputA11yContainer>
@@ -354,15 +302,13 @@ const RowContainer = styled.View({
 
 const SearchInputContainer = styled.View({
   flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
   flex: 1,
 })
 
 const SearchInputA11yContainer = styled.View({
   flex: 1,
   flexDirection: 'row',
-  alignItems: 'center',
+  alignItems: 'flex-end',
 })
 
 const StyledView = styled.View(({ theme }) => ({
@@ -374,7 +320,7 @@ const StyledView = styled.View(({ theme }) => ({
   height: theme.designSystem.size.spacing.xxxl,
 }))
 
-const FlexView = styled.View({
+const FlexView = styled(Animated.View)({
   flex: 1,
   flexDirection: 'row',
 })

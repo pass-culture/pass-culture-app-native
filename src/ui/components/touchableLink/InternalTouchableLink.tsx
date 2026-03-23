@@ -3,7 +3,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 
 import { pushFromRef, navigateFromRef, resetFromRef } from 'features/navigation/navigationRef'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { InternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 
@@ -42,15 +42,13 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         push(screen as any, params as any)
       }
+    } else if (fromRef) {
+      navigateFromRef(screen as keyof RootStackParamList, params)
     } else {
-      if (fromRef) {
-        navigateFromRef(screen as keyof RootStackParamList, params)
-      } else {
-        // TypeScript cannot verify union types match navigate's overloaded signature
-        // but types are correct at runtime - screen and params are validated at call site
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        navigate(screen as any, params as any)
-      }
+      // TypeScript cannot verify union types match navigate's overloaded signature
+      // but types are correct at runtime - screen and params are validated at call site
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      navigate(screen as any, params as any)
     }
   }, [navigate, push, reset, fromRef, withPush, withReset, params, screen])
 

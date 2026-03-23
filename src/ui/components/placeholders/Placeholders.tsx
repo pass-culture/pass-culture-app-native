@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -44,43 +44,24 @@ export const TextPlaceholder = ({
     <TextPlaceholderContainer marginBottom={marginBottom}>
       <SkeletonTile
         borderRadius={designSystem.size.borderRadius.s}
-        height={height ?? getSpacing(3)}
+        height={height ?? designSystem.size.spacing.m}
         width={width}
       />
     </TextPlaceholderContainer>
   )
 }
 
-const FilterPillsPlaceholder = () => {
+export const HeaderSearchResultsPlaceholder: FC = () => {
   const { designSystem } = useTheme()
-  const pillsWidth = [8, 17.5, 28, 30.5, 14.5, 19.5]
   return (
-    <PillsContainer gap={1}>
-      {pillsWidth.map((width) => (
-        <SkeletonTile
-          borderRadius={designSystem.size.borderRadius.xl}
-          height={getSpacing(8)}
-          width={getSpacing(width)}
-          key={`pill-${width}`}
-        />
-      ))}
-    </PillsContainer>
+    <React.Fragment>
+      <TitleContainer>
+        <TextPlaceholder height={designSystem.size.spacing.xl} width={getSpacing(50)} />
+      </TitleContainer>
+      <NumberOfResultsPlaceholder />
+    </React.Fragment>
   )
 }
-
-export const HeaderSearchResultsPlaceholder = ({
-  displayNewSearchHeader,
-}: {
-  displayNewSearchHeader: boolean
-}) => (
-  <React.Fragment>
-    {displayNewSearchHeader ? null : <FilterPillsPlaceholder />}
-    <TitleContainer>
-      <TextPlaceholder height={getSpacing(4.5)} width={getSpacing(50)} />
-    </TitleContainer>
-    <NumberOfResultsPlaceholder />
-  </React.Fragment>
-)
 
 export const NumberOfResultsPlaceholder = () => {
   const { designSystem } = useTheme()
@@ -88,7 +69,7 @@ export const NumberOfResultsPlaceholder = () => {
     <Container>
       <SkeletonTile
         width={getSpacing(20)}
-        height={getSpacing(3)}
+        height={designSystem.size.spacing.m}
         borderRadius={designSystem.size.borderRadius.s}
       />
     </Container>
@@ -101,36 +82,42 @@ export const NumberOfBookingsPlaceholder = () => {
     <Container>
       <SkeletonTile
         width={getSpacing(42)}
-        height={getSpacing(3)}
+        height={designSystem.size.spacing.m}
         borderRadius={designSystem.size.borderRadius.s}
       />
     </Container>
   )
 }
 
-export const HitPlaceholder = () => (
-  <Row gap={4}>
-    <BasePlaceholder height={imageHeight} width={imageWidth} />
-    <View>
-      <TextPlaceholder width={getSpacing(60)} marginBottom={3} />
-      <TextPlaceholder width={getSpacing(30)} marginBottom={1} />
-      <TextPlaceholder width={getSpacing(40)} marginBottom={2} />
-      <TextPlaceholder width={getSpacing(8)} />
-    </View>
-  </Row>
-)
+export const HitPlaceholder = () => {
+  const { designSystem } = useTheme()
+  return (
+    <Row gap={4}>
+      <BasePlaceholder height={imageHeight} width={imageWidth} />
+      <View>
+        <TextPlaceholder width={getSpacing(60)} marginBottom={3} />
+        <TextPlaceholder width={getSpacing(30)} marginBottom={1} />
+        <TextPlaceholder width={getSpacing(40)} marginBottom={2} />
+        <TextPlaceholder width={designSystem.size.spacing.xxl} />
+      </View>
+    </Row>
+  )
+}
 
-export const BookingHitPlaceholder = () => (
-  <Row gap={4}>
-    <BasePlaceholder height={bookingImageHeight} width={bookingImageWidth} />
-    <View>
-      <TextPlaceholder width={getSpacing(60)} marginBottom={1} />
-      <TextPlaceholder width={getSpacing(30)} marginBottom={7} />
-      <TextPlaceholder width={getSpacing(24)} marginBottom={3} />
-      <TextPlaceholder width={getSpacing(8)} marginBottom={2} />
-    </View>
-  </Row>
-)
+export const BookingHitPlaceholder = () => {
+  const { designSystem } = useTheme()
+  return (
+    <Row gap={4}>
+      <BasePlaceholder height={bookingImageHeight} width={bookingImageWidth} />
+      <View>
+        <TextPlaceholder width={getSpacing(60)} marginBottom={1} />
+        <TextPlaceholder width={getSpacing(30)} marginBottom={7} />
+        <TextPlaceholder width={getSpacing(24)} marginBottom={3} />
+        <TextPlaceholder width={designSystem.size.spacing.xxl} marginBottom={2} />
+      </View>
+    </Row>
+  )
+}
 
 export const FavoriteHitPlaceholder = () => {
   const { designSystem } = useTheme()
@@ -142,14 +129,14 @@ export const FavoriteHitPlaceholder = () => {
           <TextPlaceholder width={getSpacing(60)} marginBottom={3} />
           <TextPlaceholder width={getSpacing(30)} marginBottom={1} />
           <TextPlaceholder width={getSpacing(40)} marginBottom={2} />
-          <TextPlaceholder width={getSpacing(8)} />
+          <TextPlaceholder width={designSystem.size.spacing.xxl} />
         </View>
       </Row>
       <FavoriteButtonsContainer gap={0}>
         <FirstButtonContainer>
           <BasePlaceholder
             radius={designSystem.size.borderRadius.xl}
-            height={getSpacing(12)}
+            height={designSystem.size.spacing.xxxxl}
             width={getSpacing(40)}
             fullWidth
           />
@@ -157,7 +144,7 @@ export const FavoriteHitPlaceholder = () => {
         <ButtonContainer>
           <BasePlaceholder
             radius={designSystem.size.borderRadius.xl}
-            height={getSpacing(12)}
+            height={designSystem.size.spacing.xxxxl}
             width={getSpacing(40)}
             fullWidth
           />
@@ -167,39 +154,33 @@ export const FavoriteHitPlaceholder = () => {
   )
 }
 
-const Container = styled.View({
-  marginHorizontal: getSpacing(6),
-  marginTop: getSpacing(1),
-  marginBottom: getSpacing(5),
-})
+const Container = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.xl,
+  marginTop: theme.designSystem.size.spacing.xs,
+}))
 
-const Row = styled(ViewGap)({
+const Row = styled(ViewGap)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  marginHorizontal: getSpacing(6),
-})
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))
 
 const ButtonContainer = styled.View({
   minWidth: getSpacing(30),
   maxWidth: getSpacing(70),
   width: '47%',
 })
-const FirstButtonContainer = styled(ButtonContainer)({
-  marginRight: getSpacing(5),
-})
+const FirstButtonContainer = styled(ButtonContainer)(({ theme }) => ({
+  marginRight: theme.designSystem.size.spacing.xl,
+}))
 
 const TextPlaceholderContainer = styled.View<{ marginBottom?: number }>(({ marginBottom }) => ({
   marginBottom: marginBottom ? getSpacing(marginBottom) : undefined,
 }))
 
-const PillsContainer = styled(ViewGap)({
-  flexDirection: 'row',
-  marginHorizontal: getSpacing(6),
-  marginVertical: getSpacing(1),
-})
-
 const TitleContainer = styled.View(({ theme }) => ({
-  marginHorizontal: getSpacing(6),
-  marginTop: getSpacing(6),
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+  marginTop: theme.designSystem.size.spacing.xl,
   marginBottom: theme.designSystem.size.spacing.s,
 }))

@@ -9,7 +9,7 @@ import { Accordion } from 'ui/components/Accordion'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -57,11 +57,11 @@ const StyledAccordionItem = styled(Accordion).attrs<{ title?: React.JSX.Element 
   title: <Typo.BodyAccent>Qu’est-ce que les cookies&nbsp;?</Typo.BodyAccent>,
   titleStyle: {
     backgroundColor: theme.designSystem.color.background.subtle,
-    paddingVertical: getSpacing(4),
+    paddingVertical: theme.designSystem.size.spacing.l,
   },
   bodyStyle: {
     backgroundColor: theme.designSystem.color.background.subtle,
-    paddingBottom: getSpacing(4),
+    paddingBottom: theme.designSystem.size.spacing.l,
   },
 }))``
 
@@ -74,6 +74,10 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const CookiesSettingsContainer = styled.View({ paddingVertical: getSpacing(8) })
+const CookiesSettingsContainer = styled.View(({ theme }) => ({
+  paddingVertical: theme.designSystem.size.spacing.xxl,
+}))
 
-const StyledView = styled.View({ marginBottom: getSpacing(8) })
+const StyledView = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))

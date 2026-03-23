@@ -11,17 +11,15 @@ import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { SuggestedCity } from 'libs/place/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Again } from 'ui/svg/icons/Again'
 
 export const ProfileInformationValidationUpdate = () => {
   const { user, refetchUser } = useAuthContext()
   const { navigate, reset } = useNavigation<UseNavigationType>()
-  const { showErrorSnackBar } = useSnackBarContext()
   const [navigatorName, screenConfig] = getProfileHookConfig('UpdatePersonalDataConfirmation')
 
   // isPending from react-query is not support with mutateAsync
@@ -40,7 +38,7 @@ export const ProfileInformationValidationUpdate = () => {
       refetchUser()
     },
     onError: () => {
-      showErrorSnackBar({ message: 'Une erreur est survenue', timeout: SNACK_BAR_TIME_OUT })
+      showErrorSnackBar('Une erreur est survenue')
     },
   })
 
@@ -87,15 +85,12 @@ export const ProfileInformationValidationUpdate = () => {
     user?.city && user?.postalCode ? `${user.city} ${user.postalCode}` : undefined
   const isProfileIncomplete = !fullStoredCity || !user?.activityId || !user?.street
   const fixedBottomChildren = isProfileIncomplete ? (
-    <ButtonPrimary
-      wording="Compléter mes informations"
-      onPress={onChangeInformation}
-      icon={Again}
-    />
+    <Button wording="Compléter mes informations" onPress={onChangeInformation} icon={Again} />
   ) : (
     <ViewGap gap={4}>
-      <ButtonPrimary wording="Modifier mes informations" onPress={onChangeInformation} />
-      <ButtonSecondary
+      <Button wording="Modifier mes informations" onPress={onChangeInformation} />
+      <Button
+        variant="secondary"
         type="submit"
         wording="Confirmer"
         onPress={onSubmitProfile}

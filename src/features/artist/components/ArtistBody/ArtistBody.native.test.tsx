@@ -1,11 +1,13 @@
 import React from 'react'
+import { Share } from 'react-native'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { mockArtist } from 'features/artist/fixtures/mockArtist'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
@@ -33,6 +35,8 @@ mockUseOfferQuery.mockReturnValue({
 jest.mock('queries/offer/useOfferQuery', () => ({ useOffer: () => mockUseOfferQuery() }))
 
 useRoute.mockReturnValue({ params: { fromOfferId: 1 } })
+
+const mockShare = jest.spyOn(Share, 'share').mockImplementation(jest.fn())
 
 const user = userEvent.setup()
 
@@ -140,11 +144,7 @@ describe('<ArtistBody />', () => {
     render(
       reactQueryProviderHOC(
         <ArtistBody
-          artist={{
-            ...mockArtist,
-            descriptionCredit: '© Contenu généré par IA',
-            descriptionSource: 'https://fr.wikipedia.org/wiki/Avril_Lavigne',
-          }}
+          artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
           onViewableItemsChanged={jest.fn()}
@@ -161,11 +161,7 @@ describe('<ArtistBody />', () => {
     render(
       reactQueryProviderHOC(
         <ArtistBody
-          artist={{
-            ...mockArtist,
-            descriptionCredit: '© Contenu généré par IA',
-            descriptionSource: 'https://fr.wikipedia.org/wiki/Avril_Lavigne',
-          }}
+          artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
           onViewableItemsChanged={jest.fn()}
@@ -178,5 +174,76 @@ describe('<ArtistBody />', () => {
 
     expect(screen.getByText('© Contenu généré par IA')).toBeOnTheScreen()
     expect(screen.getByText('Source : Wikipédia')).toBeOnTheScreen()
+  })
+
+  it('should navigate to artist webview page when pressing Wikipedia button', async () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={mockArtist}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    await user.press(screen.getByText('Voir plus'))
+
+    await user.press(screen.getByText('Source : Wikipédia'))
+
+    expect(navigate).toHaveBeenCalledWith('ArtistWebview', { id: mockArtist.id })
+  })
+
+  it('should log analytics when clicking on the share button', async () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={mockArtist}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    const shareButton = screen.getByLabelText('Partager')
+
+    await user.press(shareButton)
+
+    expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
+      type: 'Artist',
+      from: 'artist',
+      artistId: mockArtist.id,
+      artistName: mockArtist.name,
+    })
+  })
+
+  it('should share when clicking on the share button', async () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={mockArtist}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    const shareButton = screen.getByLabelText('Partager')
+
+    await user.press(shareButton)
+
+    expect(mockShare).toHaveBeenCalledWith(
+      {
+        message: 'Retrouve "Avril Lavigne" sur le pass Culture\u00a0:\n',
+        url: 'https://webapp-v2.example.com/artiste/cb22d035-f081-4ccb-99d8-8f5725a8ac9c?utm_gen=product&utm_campaign=share_artist&utm_medium=header',
+      },
+      { subject: 'Retrouve "Avril Lavigne" sur le pass Culture' }
+    )
   })
 })

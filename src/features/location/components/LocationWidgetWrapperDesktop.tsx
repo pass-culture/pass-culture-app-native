@@ -99,7 +99,7 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
 
 const StyledTooltip = styled(Tooltip)<{ widgetWidth?: number }>(({ theme, widgetWidth }) => ({
   position: 'absolute',
-  top: WIDGET_HEIGHT + getSpacing(2),
+  top: WIDGET_HEIGHT + theme.designSystem.size.spacing.s,
   left: (widgetWidth ?? 0) / 2,
   zIndex: theme.zIndex.header,
   width: TOOLTIP_WIDTH,

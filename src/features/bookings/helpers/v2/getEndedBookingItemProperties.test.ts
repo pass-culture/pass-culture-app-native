@@ -7,8 +7,7 @@ import { expirationDateUtilsV2 } from 'features/bookings/helpers'
 import { getEndedBookingItemProperties } from 'features/bookings/helpers/v2/getEndedBookingItemProperties'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
-import { SegmentResult } from 'shared/useABSegment/useABSegment'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
+import * as snackBarStoreModule from 'ui/designSystem/Snackbar/snackBar.store'
 
 jest.mock('libs/analytics/provider', () => ({
   analytics: {
@@ -42,13 +41,11 @@ describe('getEndedBookingItemProperties', () => {
   }
   const mockPrePopulateOffer = jest.fn()
   const mockShowErrorSnackBar = jest.fn()
-  const mockSegment: SegmentResult = 'A'
 
   const baseArgs = {
     booking: initialBooking,
     categoryId: CategoryIdEnum.CINEMA,
     prePopulateOffer: mockPrePopulateOffer,
-    segment: mockSegment,
     showErrorSnackBar: mockShowErrorSnackBar,
   }
 
@@ -142,13 +139,15 @@ describe('getEndedBookingItemProperties', () => {
           name: initialBooking.stock.offer.name,
         })
       )
-      expect(triggerConsultOfferLog).toHaveBeenCalledWith(
-        { offerId: initialBooking.stock.offer.id, from: 'endedbookings' },
-        mockSegment
-      )
+      expect(triggerConsultOfferLog).toHaveBeenCalledWith({
+        offerId: initialBooking.stock.offer.id,
+        from: 'endedbookings',
+      })
     })
 
     it('should show error snackbar on press if disconnected', async () => {
+      const mockShowErrorSnackBar = jest.spyOn(snackBarStoreModule, 'showErrorSnackBar')
+
       const netInfo: NetInfoState = {
         isConnected: false,
         type: NetInfoStateType.none,
@@ -164,10 +163,9 @@ describe('getEndedBookingItemProperties', () => {
       await properties.handlePressOffer()
 
       expect(mockPrePopulateOffer).not.toHaveBeenCalled()
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message: expect.stringContaining('Impossible d’afficher'),
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith(
+        'Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.'
+      )
     })
   })
 })

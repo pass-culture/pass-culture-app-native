@@ -5,7 +5,7 @@ export function getLineHeightPx(
   shouldConvertRemToPx: boolean | undefined
 ): number {
   if (shouldConvertRemToPx && typeof lineHeight === 'string') {
-    return parseFloat(lineHeight) * REM_TO_PX
+    return Number.parseFloat(lineHeight) * REM_TO_PX
   }
-  return typeof lineHeight === 'number' ? lineHeight : parseFloat(lineHeight)
+  return typeof lineHeight === 'number' ? lineHeight : Number.parseFloat(lineHeight)
 }

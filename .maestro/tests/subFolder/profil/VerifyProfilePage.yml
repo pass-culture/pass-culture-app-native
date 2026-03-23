@@ -3,5 +3,5 @@ url: https://app.staging.passculture.team/
 - assertVisible: "Mon profil"
 - assertVisible: "Créer un compte"
 - assertVisible: "Se connecter"
-- assertVisible: "Paramètres de l’application"
-- assertVisible: "Aides"
+- assertVisible: "Paramètres"
+- assertVisible: "Aide"

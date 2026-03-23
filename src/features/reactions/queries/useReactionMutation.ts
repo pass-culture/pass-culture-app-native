@@ -5,7 +5,7 @@ import {
   BookingsListResponseV2,
   BookingsResponse,
   BookingsResponseV2,
-  OfferResponseV2,
+  OfferResponse,
   PostReactionRequest,
   ReactionTypeEnum,
 } from 'api/gen'
@@ -16,11 +16,10 @@ import {
 } from 'features/reactions/helpers/addReactionsToBookings/addReactionsToBookings'
 import { updateLikesCounter } from 'features/reactions/helpers/updateLikesCounter/updateLikesCounter'
 import { QueryKeys } from 'libs/queryKeys'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 export const useReactionMutation = () => {
   const queryClient = useQueryClient()
-  const { showErrorSnackBar } = useSnackBarContext()
 
   const BOOKING_KEYS = [QueryKeys.BOOKINGS, QueryKeys.BOOKINGSV2, QueryKeys.BOOKINGSLIST]
 
@@ -41,7 +40,7 @@ export const useReactionMutation = () => {
         previousBookingsList: queryClient.getQueryData([QueryKeys.BOOKINGSLIST]),
       }
 
-      queryClient.setQueryData<OfferResponseV2 | undefined>([QueryKeys.OFFER, offerId], (old) =>
+      queryClient.setQueryData<OfferResponse | undefined>([QueryKeys.OFFER, offerId], (old) =>
         old
           ? {
               ...old,
@@ -91,7 +90,7 @@ export const useReactionMutation = () => {
       queryClient.setQueryData([QueryKeys.BOOKINGSV2], context?.previousBookingsV2)
       queryClient.setQueryData([QueryKeys.BOOKINGSLIST], context?.previousBookingsList)
 
-      showErrorSnackBar({ message: 'Une erreur s’est produite', timeout: SNACK_BAR_TIME_OUT })
+      showErrorSnackBar('Une erreur s’est produite')
     },
 
     onSettled: async (_data, _error, reactionRequest) => {

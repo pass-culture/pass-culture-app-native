@@ -83,7 +83,7 @@ const mockHits = [
       exact_nb_hits: 2,
       facets: {
         analytics: {
-          ['offer.searchGroupNamev2']: [
+          ['offer.searchGroups']: [
             {
               attribute: '',
               operator: '',
@@ -119,7 +119,7 @@ const mockHits = [
       exact_nb_hits: 2,
       facets: {
         analytics: {
-          ['offer.searchGroupNamev2']: [
+          ['offer.searchGroups']: [
             {
               attribute: '',
               operator: '',
@@ -285,7 +285,7 @@ describe('<SearchLanding />', () => {
     it('should not display artists suggestions when wipArtistsSuggestionsInSearch FF deactivated', async () => {
       render(reactQueryProviderHOC(<SearchLanding />))
 
-      await screen.findByPlaceholderText('Offre, artiste, lieu culturel...')
+      await screen.findByTestId('searchInput')
 
       expect(screen.queryByText('Artistes')).not.toBeOnTheScreen()
     })
@@ -370,7 +370,7 @@ describe('<SearchLanding />', () => {
 
       render(reactQueryProviderHOC(<SearchLanding />))
 
-      await screen.findByPlaceholderText('Offre, artiste, lieu culturel...')
+      await screen.findByTestId('searchInput')
 
       expect(screen.queryByText('Historique de recherche')).not.toBeOnTheScreen()
     })
@@ -449,6 +449,28 @@ describe('<SearchLanding />', () => {
         })
       })
     })
+
+    describe('When enableAIFakeDoor FF is activated', () => {
+      beforeEach(() => {
+        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR])
+      })
+
+      it('should display AI fake door button', async () => {
+        render(reactQueryProviderHOC(<SearchLanding />))
+
+        expect(
+          await screen.findByLabelText('Accéder au questionnaire sur l’IA pass Culture')
+        ).toBeOnTheScreen()
+      })
+
+      it('should open AI fake door modal when pressing AI button', async () => {
+        render(reactQueryProviderHOC(<SearchLanding />))
+
+        await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
+
+        expect(await screen.findByText('Encore un peu de patience...')).toBeOnTheScreen()
+      })
+    })
   })
 
   describe('When offline', () => {
@@ -459,5 +481,14 @@ describe('<SearchLanding />', () => {
 
       expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
     })
+  })
+
+  it('should open AI fake door modal when pressing banner and enableAIFakeDoor FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR])
+    render(reactQueryProviderHOC(<SearchLanding />))
+
+    await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
+
+    expect(await screen.findByText('Encore un peu de patience...')).toBeOnTheScreen()
   })
 })

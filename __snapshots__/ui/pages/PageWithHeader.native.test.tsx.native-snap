@@ -16,9 +16,10 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
 >
   <View
     accessibilityRole="header"
+    onLayout={[Function]}
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -39,6 +40,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -70,7 +72,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -100,10 +102,19 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "flexGrow": 1,
-                  "height": 40,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 40,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                  "width": "auto",
                 },
               ],
               {
@@ -114,23 +125,53 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-          <Text
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
-                "display": "none",
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
               }
             }
           >
-            Retour
-          </Text>
+            <View
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="0"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -182,6 +223,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
   >
     <View
       onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
       style={
         [
           {
@@ -220,28 +262,75 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
+              "paddingTop": 65,
             }
           }
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
+          onScroll={[Function]}
+          paddingHeaderHeight={65}
+          scrollEventThrottle={16}
           style={{}}
         >
           <View>
-            <View
-              style={
-                {
-                  "height": 65,
-                }
-              }
-            />
             <Text>
               scroll children
             </Text>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
+        <BVLinearGradient
+          bottomViewHeight={0}
+          colors={
+            [
+              16777215,
+              4294967295,
+            ]
+          }
+          endPoint={
+            {
+              "x": 0.5,
+              "y": 1,
+            }
+          }
+          locations={
+            [
+              0,
+              1,
+            ]
+          }
+          pointerEvents="none"
+          startPoint={
+            {
+              "x": 0.5,
+              "y": 0,
+            }
+          }
+          style={
+            [
+              {
+                "bottom": 0,
+                "height": 120,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+              },
+              {},
+              {},
+            ]
+          }
+        />
         <View
           onLayout={[Function]}
           style={
@@ -273,37 +362,6 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
       </View>
     </View>
   </View>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-  </View>
 </View>
 `;
 
@@ -323,6 +381,7 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
 >
   <View
     accessibilityRole="header"
+    onLayout={[Function]}
     style={
       {
         "backgroundColor": "#ffffff",
@@ -346,6 +405,7 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -377,7 +437,7 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -407,10 +467,19 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
                 },
                 {
                   "alignItems": "center",
-                  "flexGrow": 1,
-                  "height": 40,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 40,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                  "width": "auto",
                 },
               ],
               {
@@ -421,23 +490,53 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
           testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-          <Text
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
-                "display": "none",
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
               }
             }
           >
-            Retour
-          </Text>
+            <View
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="1"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -489,6 +588,7 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
   >
     <View
       onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
       style={
         [
           {
@@ -527,28 +627,75 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
+              "paddingTop": 65,
             }
           }
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
+          onScroll={[Function]}
+          paddingHeaderHeight={65}
+          scrollEventThrottle={16}
           style={{}}
         >
           <View>
-            <View
-              style={
-                {
-                  "height": 65,
-                }
-              }
-            />
             <Text>
               scroll children
             </Text>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
+        <BVLinearGradient
+          bottomViewHeight={0}
+          colors={
+            [
+              16777215,
+              -1,
+            ]
+          }
+          endPoint={
+            {
+              "x": 0.5,
+              "y": 1,
+            }
+          }
+          locations={
+            [
+              0,
+              1,
+            ]
+          }
+          pointerEvents="none"
+          startPoint={
+            {
+              "x": 0.5,
+              "y": 0,
+            }
+          }
+          style={
+            [
+              {
+                "bottom": 0,
+                "height": 120,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+              },
+              {},
+              {},
+            ]
+          }
+        />
         <View
           onLayout={[Function]}
           style={

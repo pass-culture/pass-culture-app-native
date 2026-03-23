@@ -15,10 +15,10 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
       - name: Enable Corepack
         run: corepack enable
       - uses: pass-culture-github-actions/cache@v1.0.0
@@ -50,23 +50,25 @@ jobs:
           secrets: |-
             MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
             MAESTRO_CLOUD_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-maestro-cloud-api-key
+            MAESTRO_E2E_API_KEY:passculture-metier-ehp/pcapi-staging_e2e_api_key
+            MAESTRO_E2E_ENDPOINT:passculture-metier-ehp/pcapi-staging-e2e-endpoint
 
       - name: Determine latest Maestro version
         run: |
-          MAESTRO_VERSION=$(curl -s https://api.github.com/repos/mobile-dev-inc/maestro/releases/latest | grep tag_name | cut -d '"' -f4 | sed 's/^cli-//;s/^v//')
-          echo "MAESTRO_VERSION=$MAESTRO_VERSION" >> $GITHUB_ENV
+          MAESTRO_VERSION="$(curl -s https://api.github.com/repos/mobile-dev-inc/maestro/releases/latest | grep tag_name | cut -d '"' -f4 | sed 's/^cli-//;s/^v//')"
+          echo "MAESTRO_VERSION=$MAESTRO_VERSION" >> "$GITHUB_ENV"
 
       - name: Cleanup Maestro CLI
         run: |
           echo "Cleaning up any previous Maestro CLI installation..."
-          rm -rf $HOME/.maestro
+          rm -rf "$HOME/.maestro"
 
       - name: Install latest Maestro CLI
         run: |
           echo "Installing Maestro CLI version ${MAESTRO_VERSION}..."
           curl --location --silent "https://get.maestro.mobile.dev" | bash
-          echo "$HOME/.maestro/bin" >> $GITHUB_PATH
-          export PATH=$HOME/.maestro/bin:$PATH
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.maestro/bin:$PATH"
           maestro --version
         env:
           MAESTRO_VERSION: ${{ env.MAESTRO_VERSION }}
@@ -78,6 +80,8 @@ jobs:
         env:
           MAESTRO_PASSWORD: ${{ steps.maestro_secrets.outputs.MAESTRO_PASSWORD }}
           MAESTRO_CLOUD_API_KEY: ${{ steps.maestro_secrets.outputs.MAESTRO_CLOUD_API_KEY }}
+          MAESTRO_E2E_API_KEY: ${{ steps.maestro_secrets.outputs.MAESTRO_E2E_API_KEY }}
+          MAESTRO_E2E_ENDPOINT: ${{ steps.maestro_secrets.outputs.MAESTRO_E2E_ENDPOINT }}
           MAESTRO_VALID_IOS_EMAIL: dev-tests-e2e-ios@passculture.team
           MAESTRO_VALID_ANDROID_EMAIL: dev-tests-e2e-android@passculture.team
           MAESTRO_INVALID_EMAIL: dev-tests-e2e-invalid@passculture.team
@@ -87,7 +91,7 @@ jobs:
           MAESTRO_DRIVER_STARTUP_TIMEOUT: 60000
         run: |
           echo "Running Maestro tests from your branch on web Staging build"
-          export PATH=$HOME/.maestro/bin:$PATH
+          export PATH="$HOME/.maestro/bin:$PATH"
           yarn test:e2e:web:staging --headless
 
       - name: Logs & screenshots from errors (Download link ⬇️)
@@ -125,13 +129,13 @@ jobs:
               "attachments": [
                   {
                       "mrkdwn_in": ["text"],
-                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[needs.run_e2e_web.result == 'failure'] }}",
+                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[(needs.run_e2e_web.result == 'failure') && 1 || 0] }}",
                       "author_name": "${{github.actor}}",
                       "author_link": "https://github.com/${{github.actor}}",
                       "author_icon": "https://github.com/${{github.actor}}.png",
                       "title": "SMOKETEST E2E-WEB",
                       "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Le smoke test Web sur la branche `${{ github.ref_name }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[needs.run_e2e_web.result == 'failure'] }}"
+                      "text": "Le smoke test Web sur la branche `${{ github.ref_name }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[(needs.run_e2e_web.result == 'failure') && 1 || 0] }}"
                   }
               ],
               "unfurl_links": false,

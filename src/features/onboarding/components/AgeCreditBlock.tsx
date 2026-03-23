@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { CreditBlock } from 'features/onboarding/components/CreditBlock'
 import { CreditStatus } from 'features/onboarding/enums'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   age: number
@@ -24,8 +24,9 @@ export const AgeCreditBlock: FunctionComponent<Props> = ({
 
   return (
     <CreditBlock creditStatus={creditStatus} animated={statusIsOngoing} onPress={onPress}>
-      <AgeText>{`à ${age} ans`}</AgeText>
-      <Spacer.Column numberOfSpaces={1} />
+      <Container>
+        <AgeText>{`à ${age} ans`}</AgeText>
+      </Container>
       {children}
     </CreditBlock>
   )
@@ -37,4 +38,8 @@ const BodySecondary = styled(Typo.Body)(({ theme }) => ({
 
 const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
+}))
+
+const Container = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xs,
 }))

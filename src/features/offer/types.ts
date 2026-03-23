@@ -1,9 +1,11 @@
-import { ReactNode } from 'react'
+import { ComponentType, PropsWithChildren, ReactNode } from 'react'
+import { Animated, LayoutChangeEvent } from 'react-native'
 
 import {
   CategoryIdEnum,
   FavoriteResponse,
-  OfferResponseV2,
+  OfferArtist,
+  OfferResponse,
   ReactionTypeEnum,
   RecommendationApiParams,
   SearchGroupResponseModelv2,
@@ -13,10 +15,10 @@ import { ChronicleCardData } from 'features/chronicle/type'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { PlaylistType } from 'features/offer/enums'
+import { FavoriteCTAProps } from 'features/offerRefacto/types'
 import { AlgoliaGeoloc } from 'libs/algolia/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { NAVIGATION_METHOD } from 'shared/constants'
-import { SegmentResult } from 'shared/useABSegment/useABSegment'
 
 type ValueOf<T> = T[keyof T]
 type NavigationMethod = ValueOf<typeof NAVIGATION_METHOD>
@@ -70,14 +72,28 @@ export interface VenueDetail {
   distance?: string
 }
 
+type OfferHeaderComponentProps = PropsWithChildren<{
+  headerTransition: Animated.AnimatedInterpolation<string | number>
+  title: string
+  offer: OfferResponse
+}>
+
+type OfferCTAsComponentProps = {
+  offer: OfferResponse
+  subcategory: Subcategory
+  trackEventHasSeenOfferOnce: VoidFunction
+  favoriteCTAProps: FavoriteCTAProps
+  fullScreen?: boolean
+  onLayout?: (params: LayoutChangeEvent) => void
+}
+
 export type OfferContentProps = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   searchGroupList: SearchGroupResponseModelv2[]
   chronicleVariantInfo: ChronicleVariantInfo
   subcategory: Subcategory
   onShowChroniclesWritersModal: () => void
-  onShowOfferArtistsModal: () => void
-  segment: SegmentResult
+  onShowOfferArtistsModal: (artists: OfferArtist[]) => void
   chronicles?: ChronicleCardData[]
   headlineOffersCount?: number
   defaultReaction?: ReactionTypeEnum | null
@@ -85,8 +101,9 @@ export type OfferContentProps = {
   userId?: number
   hasVideoCookiesConsent?: boolean
   onVideoConsentPress: VoidFunction
-  enableVideoABTesting?: boolean
   isMultiArtistsEnabled?: boolean
+  HeaderComponent?: ComponentType<OfferHeaderComponentProps>
+  CTAsComponent?: ComponentType<OfferCTAsComponentProps>
 }
 
 export type OfferImageContainerDimensions = {

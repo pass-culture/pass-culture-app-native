@@ -6,7 +6,6 @@ import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { ColorsType } from 'theme/types'
 import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing } from 'ui/theme'
 
 interface ProgressBarProps {
   progress: number
@@ -105,7 +104,7 @@ const IconContainer = styled.View<{ backgroundColor: string }>(({ backgroundColo
 }))
 
 const ProgressBarContainer = styled.View(({ theme }) => ({
-  marginLeft: getSpacing(5),
+  marginLeft: theme.designSystem.size.spacing.xl,
   flexDirection: 'row',
   overflow: 'hidden',
   flex: 1,

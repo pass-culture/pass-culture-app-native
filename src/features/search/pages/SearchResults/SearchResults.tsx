@@ -6,6 +6,7 @@ import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchResultsContent } from 'features/search/components/SearchResultsContent/SearchResultsContent'
@@ -19,12 +20,13 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
+import { AIFakeDoorModal } from 'shared/AIFakeDoorModal/AIFakeDoorModal'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { Form } from 'ui/components/Form'
+import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
 
 const searchInputID = uuidv4()
@@ -40,6 +42,9 @@ export const SearchResults = () => {
   const { isFocusOnSuggestions, searchState, dispatch } = useSearch()
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
+  const { userLocation } = useLocation()
+  const { user } = useAuthContext()
+  const { visible, showModal, hideModal } = useModal(false)
 
   const setQueryHistoryMemoized = useCallback(
     (query: string) => setQueryHistory(query),
@@ -50,10 +55,7 @@ export const SearchResults = () => {
   const previousGeolocPosition = usePrevious(geolocPosition)
 
   const isArtistInSearchActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE_IN_SEARCH)
-
-  const {
-    data: { displayNewSearchHeader },
-  } = useRemoteConfigQuery()
+  const enableAIFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR)
 
   const {
     hits,
@@ -67,7 +69,6 @@ export const SearchResults = () => {
     isFetchingNextPage,
     userData,
     venuesUserData,
-    facets,
     offerVenues,
   } = useSearchResults()
 
@@ -127,8 +128,6 @@ export const SearchResults = () => {
 
   const searchResultHits = isArtistInSearchActive ? hits : { ...hits, artists: [] }
 
-  const shouldDisplayHeader = !displayNewSearchHeader || !isFocusOnSuggestions
-
   if (!netInfo.isConnected) {
     return <OfflinePage />
   }
@@ -141,14 +140,14 @@ export const SearchResults = () => {
           indexName={suggestionsIndex}
           insights={{ insightsClient: AlgoliaSearchInsights }}>
           <Configure hitsPerPage={5} clickAnalytics />
-          <Container displayNewSearchHeader={displayNewSearchHeader}>
+          <Container>
             <SearchHeader
               searchInputID={searchInputID}
               addSearchHistory={addToHistory}
               searchInHistory={setQueryHistoryMemoized}
-              withFilterButton={displayNewSearchHeader}
-              withArrow={displayNewSearchHeader}
-              shouldDisplayHeader={shouldDisplayHeader}
+              withFilterButton={!isFocusOnSuggestions}
+              withArrow
+              shouldDisplayHeader={!isFocusOnSuggestions}
             />
           </Container>
           {isFocusOnSuggestions ? (
@@ -157,6 +156,8 @@ export const SearchResults = () => {
               addToHistory={addToHistory}
               removeFromHistory={removeFromHistory}
               filteredHistory={filteredHistory}
+              enableAIFakeDoor={enableAIFakeDoor}
+              onPressAIButton={showModal}
             />
           ) : (
             <SearchResultsContent
@@ -169,21 +170,26 @@ export const SearchResults = () => {
               isFetchingNextPage={isFetchingNextPage}
               userData={userData}
               venuesUserData={venuesUserData}
-              facets={facets}
               offerVenues={offerVenues}
               onViewableItemsChanged={handleViewableItemsChanged}
+              enableAIFakeDoor={enableAIFakeDoor}
+              onPressAIFakeDoorBanner={showModal}
             />
           )}
         </InstantSearch>
       </Form.Flex>
+      {enableAIFakeDoor ? (
+        <AIFakeDoorModal
+          close={hideModal}
+          visible={visible}
+          userLocation={userLocation}
+          userCity={user?.city}
+        />
+      ) : null}
     </Page>
   )
 }
 
-const Container = styled.View<{ displayNewSearchHeader: boolean }>(
-  ({ theme, displayNewSearchHeader }) => ({
-    marginBottom: displayNewSearchHeader
-      ? theme.designSystem.size.spacing.l
-      : theme.designSystem.size.spacing.s,
-  })
-)
+const Container = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+}))

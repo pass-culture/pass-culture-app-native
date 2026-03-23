@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -37,24 +37,24 @@ export const MarketingModal: FunctionComponent<Props> = ({
       onRequestClose={onBackdropPress}
       accessibilityLabelledBy={titleID}>
       <ClickAwayArea onPress={onBackdropPress} testID="clickaway-area" />
-      <FlexSpacer />
-      <Container>
-        <Flex>
-          <FlexContainer>
-            <ImageBackground source={imageSource} />
-          </FlexContainer>
-          <Gradient />
-          <FlexContainer>
-            <Content gap={6}>
-              <Title nativeID={titleID} numberOfLines={numberOfLinesTitle}>
-                {title}
-              </Title>
-              {children}
-            </Content>
-          </FlexContainer>
-        </Flex>
-      </Container>
-      <FlexSpacer />
+      <ModalCenteredContent>
+        <Container>
+          <Flex>
+            <FlexContainer>
+              <ImageBackground source={imageSource} />
+            </FlexContainer>
+            <Gradient />
+            <FlexContainer>
+              <Content gap={6}>
+                <Title nativeID={titleID} numberOfLines={numberOfLinesTitle}>
+                  {title}
+                </Title>
+                {children}
+              </Content>
+            </FlexContainer>
+          </Flex>
+        </Container>
+      </ModalCenteredContent>
     </Modal>
   )
 }
@@ -108,8 +108,8 @@ const MAX_MODAL_HEIGHT = 650
 const Container = styled.View(({ theme }) => {
   const modalWidth =
     theme.isMobileViewport && !theme.isTabletViewport
-      ? theme.appContentWidth - getSpacing(8)
-      : theme.breakpoints.sm - getSpacing(3)
+      ? theme.appContentWidth - theme.designSystem.size.spacing.xxl
+      : theme.breakpoints.sm - theme.designSystem.size.spacing.m
   return {
     backgroundColor: theme.designSystem.color.background.default,
     alignItems: 'center',
@@ -125,11 +125,12 @@ const Container = styled.View(({ theme }) => {
 const Content = styled(ViewGap)(({ theme }) => ({
   width: '100%',
   alignItems: 'center',
-  padding: getSpacing(6),
-  paddingBottom: getSpacing(8),
+  padding: theme.designSystem.size.spacing.xl,
+  paddingBottom: theme.designSystem.size.spacing.xxl,
   maxWidth: theme.contentPage.maxWidth,
 }))
 
-const FlexSpacer = styled(Spacer.Flex)(({ theme }) => ({
-  zIndex: theme.zIndex.background,
-}))
+const ModalCenteredContent = styled.View({
+  height: '100%',
+  justifyContent: 'center',
+})

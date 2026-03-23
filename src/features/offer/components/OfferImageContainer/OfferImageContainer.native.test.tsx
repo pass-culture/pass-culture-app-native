@@ -45,7 +45,6 @@ describe('<OfferImageContainer />', () => {
           onPress={jest.fn()}
           imageDimensions={mockOfferImageDimensions}
           offer={offerResponseSnap}
-          segment="A"
         />
       )
     )
@@ -62,7 +61,6 @@ describe('<OfferImageContainer />', () => {
           onPress={jest.fn()}
           imageDimensions={mockOfferImageDimensions}
           offer={offerResponseSnap}
-          segment="A"
         />
       )
     )
@@ -80,7 +78,6 @@ describe('<OfferImageContainer />', () => {
           onPress={jest.fn()}
           imageDimensions={mockOfferImageDimensions}
           offer={offerResponseSnap}
-          segment="A"
         />
       )
     )
@@ -97,7 +94,6 @@ describe('<OfferImageContainer />', () => {
           onPress={jest.fn()}
           imageDimensions={mockOfferImageDimensions}
           offer={offerResponseSnap}
-          segment="A"
         />
       )
     )
@@ -121,7 +117,6 @@ describe('<OfferImageContainer />', () => {
           placeholderImage="placeholder_image"
           imageDimensions={mockOfferImageDimensions}
           offer={offerResponseSnap}
-          segment="A"
         />
       )
     )
@@ -138,7 +133,6 @@ describe('<OfferImageContainer />', () => {
           placeholderImage="placeholder_image"
           imageDimensions={mockOfferImageDimensions}
           offer={offerResponseSnap}
-          segment="A"
         />
       ),
       { theme: { isNative: true, isDesktopViewport: true } }
@@ -149,7 +143,7 @@ describe('<OfferImageContainer />', () => {
     expect(container).not.toHaveStyle({ position: 'sticky' })
   })
 
-  it('should not display see video button when AB testing segment is not A and AB Testing FF activated', async () => {
+  it('should display see video button when offer has a video and video FF activated', async () => {
     render(
       reactQueryProviderHOC(
         <OfferImageContainer
@@ -158,48 +152,6 @@ describe('<OfferImageContainer />', () => {
           onPress={jest.fn()}
           imageDimensions={mockOfferImageDimensions}
           offer={offerResponseSnap}
-          segment="B"
-          enableVideoABTesting
-        />
-      )
-    )
-
-    await screen.findByTestId('offerImageContainerCarousel')
-
-    expect(screen.queryByText('Voir la vidéo')).not.toBeOnTheScreen()
-  })
-
-  it('should display see video button when AB testing segment is A and AB Testing FF activated', async () => {
-    render(
-      reactQueryProviderHOC(
-        <OfferImageContainer
-          images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
-          categoryId={CategoryIdEnum.CINEMA}
-          onPress={jest.fn()}
-          imageDimensions={mockOfferImageDimensions}
-          offer={offerResponseSnap}
-          segment="A"
-          enableVideoABTesting
-        />
-      )
-    )
-
-    await screen.findByTestId('offerImageContainerCarousel')
-
-    expect(screen.getByText('Voir la vidéo')).toBeOnTheScreen()
-  })
-
-  it('should display see video button when AB testing segment is not A and AB Testing FF deactivated', async () => {
-    render(
-      reactQueryProviderHOC(
-        <OfferImageContainer
-          images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
-          categoryId={CategoryIdEnum.CINEMA}
-          onPress={jest.fn()}
-          imageDimensions={mockOfferImageDimensions}
-          offer={offerResponseSnap}
-          segment="B"
-          enableVideoABTesting={false}
         />
       )
     )

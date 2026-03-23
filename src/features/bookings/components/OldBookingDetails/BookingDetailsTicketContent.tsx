@@ -9,9 +9,9 @@ import { TicketCode } from 'features/bookings/components/OldBookingDetails/Ticke
 import { getBookingProperties } from 'features/bookings/helpers'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
-import { ButtonWithLinearGradientDeprecated } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradientDeprecated'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { ExternalSiteFilled as ExternalSiteFilledIcon } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -59,10 +59,11 @@ export function BookingDetailsTicketContent({
   ) : null
   const accessExternalOfferButton = completedUrl ? (
     <ExternalTouchableLink
-      as={ButtonWithLinearGradientDeprecated}
+      as={Button}
       wording={buttonWording}
       icon={ExternalSiteFilledIcon}
       externalNav={{ url: completedUrl, params: { analyticsData: { offerId } } }}
+      size="small"
     />
   ) : null
 

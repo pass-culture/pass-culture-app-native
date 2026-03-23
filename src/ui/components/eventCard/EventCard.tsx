@@ -1,15 +1,11 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Referrals } from 'features/navigation/RootNavigator/types'
-import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
-import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
-import { SegmentResult } from 'shared/useABSegment/useABSegment'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { getSpacing, Typo } from 'ui/theme'
 
-const BORDER_WIDTH = getSpacing(0.25)
 export const EVENT_CARD_HEIGHT = getSpacing(19)
 export const EVENT_CARD_WIDTH = getSpacing(30)
 
@@ -18,28 +14,17 @@ export type EventCardProps = {
   isDisabled: boolean
   title: string
   subtitleLeft: string
-  segment: SegmentResult
   subtitleRight?: string
-  analyticsFrom?: Referrals
 }
 
-export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
+export const EventCard: React.FC<EventCardProps> = ({
   onPress,
   isDisabled,
   title,
   subtitleLeft,
   subtitleRight,
-  analyticsFrom,
-  offerId,
-  segment,
 }) => {
   const hasSubtitleRight = !!subtitleRight
-  const handleEventCardPress = () => {
-    if (analyticsFrom === 'venue' && offerId !== undefined) {
-      triggerConsultOfferLog({ offerId, from: analyticsFrom }, segment)
-    }
-    onPress()
-  }
 
   const computedAccessibilityLabel = getComputedAccessibilityLabel(
     title,
@@ -51,7 +36,7 @@ export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
     <StyledTouchableOpacity
       testID="event-card"
       disabled={isDisabled}
-      onPress={handleEventCardPress}
+      onPress={onPress}
       accessibilityLabel={computedAccessibilityLabel}>
       <Title numberOfLines={1} disabled={isDisabled}>
         {title}
@@ -70,8 +55,12 @@ export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
   )
 }
 
-const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(
-  ({ theme, disabled }) => ({
+const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(({
+  theme,
+  disabled,
+}) => {
+  const BORDER_WIDTH = theme.designSystem.size.spacing.xxs
+  return {
     minWidth: EVENT_CARD_WIDTH,
     minHeight: EVENT_CARD_HEIGHT,
     boxSizing: 'border-box',
@@ -83,8 +72,8 @@ const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(
     backgroundColor: disabled
       ? theme.designSystem.color.background.disabled
       : theme.designSystem.color.background.default,
-  })
-)
+  }
+})
 
 const Title = styled(Typo.Button)<{ disabled: boolean }>(({ theme, disabled }) => ({
   color: disabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.default,

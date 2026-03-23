@@ -8,16 +8,16 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { ColorScheme } from 'libs/styled/useColorScheme'
-import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Marianne } from 'ui/svg/icons/Marianne'
 import { Ubble } from 'ui/svg/icons/Ubble'
 import { UbbleDark } from 'ui/svg/icons/UbbleDark'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const IdentificationFork: FunctionComponent = () => {
   return (
@@ -47,7 +47,9 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
       />
       <StyledExternalTouchableLinkContainer>
         <ExternalTouchableLink
-          as={ButtonQuaternaryBlack}
+          as={Button}
+          variant="tertiary"
+          color="neutral"
           externalNav={{ url: env.FAQ_LINK_EDUCONNECT_URL }}
           icon={ExternalSiteFilled}
           wording="C’est quoi ÉduConnect&nbsp;?"
@@ -78,28 +80,31 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
           />
         </BannerContainer>
       ) : null}
-      <Spacer.Column numberOfSpaces={10} />
+      <Placeholder />
     </Container>
   )
 }
+const Placeholder = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xxxl,
+}))
 
-const Container = styled.View({
-  marginHorizontal: getSpacing(1),
-  marginVertical: getSpacing(3),
-})
+const Container = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xs,
+  marginVertical: theme.designSystem.size.spacing.m,
+}))
 
 const BannerContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
 }))
 
-const StyledSeparatorWithText = styled.View({
-  marginVertical: getSpacing(6),
-})
+const StyledSeparatorWithText = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))
 
-const StyledExternalTouchableLinkContainer = styled.View({
+const StyledExternalTouchableLinkContainer = styled.View(({ theme }) => ({
   alignItems: 'flex-start',
-  marginTop: getSpacing(3),
-})
+  marginTop: theme.designSystem.size.spacing.m,
+}))
 
 const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

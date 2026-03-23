@@ -1,16 +1,20 @@
 appId: ${MAESTRO_APP_ID}
 ---
+- scrollUntilVisible:
+    element:
+      text: 'Notifications et thèmes suivis'
+
 - runFlow:
     when:
       platform: iOS
     commands:
-      - tapOn: 'Notifications'
+      - tapOn: 'Notifications et thèmes suivis'
 
 - runFlow:
     when:
       platform: Android
     commands:
-      - tapOn: 'Notifications'
+      - tapOn: 'Notifications et thèmes suivis'
 
 - assertVisible:
     id: 'Autoriser les notifications - Interrupteur à bascule - non coché'

@@ -11,9 +11,9 @@ import { analytics } from 'libs/analytics/provider'
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { useModal } from 'ui/components/modals/useModal'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -63,7 +63,7 @@ export function BookingConfirmation() {
   useShowReview()
 
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const amountLeftWithCurrency = formatCurrencyFromCents(
     amountLeft,
     currency,

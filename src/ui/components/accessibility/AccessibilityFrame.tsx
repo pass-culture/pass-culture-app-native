@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { ValidationMark as DefaultValidationMark } from 'ui/components/ValidationMark'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer } from 'ui/theme'
 
 interface Props {
   Icon: React.FC<AccessibleIcon>
@@ -19,9 +18,7 @@ export const AccessibilityFrame: React.FC<Props> = ({ Icon, isAccessible }) => {
 
   return (
     <Frame accessibilityHidden>
-      <Spacer.Flex />
       <StyledIcon />
-      <Spacer.Flex />
       <ValidationContainer>
         <ValidationMark isValid={isAccessible} />
       </ValidationContainer>
@@ -30,9 +27,10 @@ export const AccessibilityFrame: React.FC<Props> = ({ Icon, isAccessible }) => {
 }
 
 const Frame = styled.View(({ theme }) => ({
-  height: getSpacing(12),
-  width: getSpacing(12),
+  height: theme.designSystem.size.spacing.xxxxl,
+  width: theme.designSystem.size.spacing.xxxxl,
   alignItems: 'center',
+  justifyContent: 'center',
   borderColor: theme.designSystem.color.border.default,
   borderRadius: theme.designSystem.size.borderRadius.m,
   borderWidth: 1,

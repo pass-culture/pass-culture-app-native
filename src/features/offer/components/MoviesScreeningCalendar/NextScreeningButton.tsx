@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { extractDate } from 'features/offer/components/MovieCalendar/hooks/useMovieCalendarDay'
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Typo } from 'ui/theme'

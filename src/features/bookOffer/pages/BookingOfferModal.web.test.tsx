@@ -65,7 +65,7 @@ describe('<BookingOfferModal/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
-      mockServer.getApi(`/v2/offer/${mockOffer.id}`, mockOffer)
+      mockServer.getApi(`/v3/offer/${mockOffer.id}`, mockOffer)
     })
 
     it('should not have basic accessibility issues for step "date"', async () => {

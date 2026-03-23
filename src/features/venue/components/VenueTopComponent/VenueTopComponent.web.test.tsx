@@ -25,7 +25,8 @@ describe('<VenueTopComponent />', () => {
           venue={{
             ...venueDataTest,
             bannerUrl: 'https://image.com',
-            bannerMeta: { is_from_google: false, image_credit: 'François Boulo' },
+            bannerIsFromGoogle: false,
+            bannerCredit: 'François Boulo',
           }}
         />
       ),
@@ -45,7 +46,8 @@ describe('<VenueTopComponent />', () => {
           venue={{
             ...venueDataTest,
             bannerUrl: 'https://image.com',
-            bannerMeta: { is_from_google: false, image_credit: 'François Boulo' },
+            bannerIsFromGoogle: false,
+            bannerCredit: 'François Boulo',
           }}
         />
       ),

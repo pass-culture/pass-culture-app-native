@@ -11,12 +11,13 @@ describe('<ChroniclesWritersModal/>', () => {
         isVisible
         closeModal={jest.fn}
         onShowRecoButtonPress={jest.fn()}
-        variantInfo={chronicleVariantInfoFixture}
+        modalWording={chronicleVariantInfoFixture.modalWording}
+        buttonWording={chronicleVariantInfoFixture.buttonWording}
       />
     )
 
     expect(
-      screen.getByText('Les avis du Book Club sont écrits par des jeunes passionnés de lecture.')
+      screen.getByText('Les avis du book club sont écrits par des jeunes passionnés de lecture.')
     ).toBeOnTheScreen()
   })
 })

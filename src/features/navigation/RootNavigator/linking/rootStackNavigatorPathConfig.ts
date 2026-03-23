@@ -74,18 +74,6 @@ export const rootStackNavigatorPathConfig = {
       SetPhoneNumberWithoutValidation: {
         path: 'creation-compte/telephone-sans-validation',
       },
-      SetPhoneNumber: {
-        path: 'creation-compte/telephone',
-      },
-      SetPhoneValidationCode: {
-        path: 'creation-compte/code-de-validation-telephone',
-      },
-      PhoneValidationTooManyAttempts: {
-        path: 'creation-compte/code-de-validation-trop-d-essais',
-      },
-      PhoneValidationTooManySMSSent: {
-        path: 'creation-compte/code-de-validation-trop-de-sms',
-      },
       SetName: {
         path: 'creation-profil/nom-prenom',
       },
@@ -378,6 +366,9 @@ export const rootStackNavigatorPathConfig = {
   Artist: {
     path: 'artiste/:id',
   },
+  ArtistWebview: {
+    path: 'artiste/wikipedia/:id',
+  },
   _DeeplinkOnlyArtist1: {
     path: 'artist/:id',
   },
@@ -394,9 +385,6 @@ export const rootStackNavigatorPathConfig = {
   _DeeplinkOnlyThematicHome1: {
     path: 'thematic-home',
     parse: screenParamsParser['ThematicHome'],
-  },
-  Achievements: {
-    path: 'profil/succes',
   },
   Chronicles: {
     path: 'avis-du-book-club/:offerId/:chronicleId',

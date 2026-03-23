@@ -2,12 +2,12 @@ import React from 'react'
 
 import { reset, goBack } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { ConfirmDeleteProfile } from './ConfirmDeleteProfile'
 
@@ -16,14 +16,11 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({ showErrorSnackBar: mockShowErrorSnackBar }),
-}))
-
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/firebase/analytics/analytics')
+
+jest.mock('libs/adjust/adjust')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -66,16 +63,23 @@ describe('ConfirmDeleteProfile component', () => {
     })
   })
 
+  it('should call Adjust.gdprForgetMe when clicking on "Supprimer mon compte" button', async () => {
+    mockServer.postApi('/v1/account/suspend', {})
+    renderConfirmDeleteProfile()
+
+    await user.press(screen.getByText('Supprimer mon compte'))
+
+    expect(Adjust.gdprForgetMe).toHaveBeenCalledTimes(1)
+  })
+
   it('should show error snackbar if suspend account request fails when clicking on "Supprimer mon compte" button', async () => {
     mockServer.postApi('/v1/account/suspend', { responseOptions: { statusCode: 400 } })
     renderConfirmDeleteProfile()
 
     await user.press(screen.getByText('Supprimer mon compte'))
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message: 'Une erreur s’est produite pendant le chargement.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(screen.getByText('Une erreur s’est produite pendant le chargement.')).toBeOnTheScreen()
   })
 
   it('should log analytics and redirect to FAQ when clicking on FAQ link', async () => {

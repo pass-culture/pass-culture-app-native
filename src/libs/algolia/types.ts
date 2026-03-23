@@ -112,8 +112,8 @@ interface AlgoliaFacetsAnalyticsCategory extends AlgoliaFacetsAnalyticsKey {
 }
 
 interface AlgoliaFacetsObject {
-  ['offer.nativeCategoryId']: AlgoliaFacetsAnalyticsNativeCategory[]
-  ['offer.searchGroupNamev2']: AlgoliaFacetsAnalyticsCategory[]
+  [FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY]: AlgoliaFacetsAnalyticsNativeCategory[]
+  [FACETS_FILTERS_ENUM.OFFER_SEARCH_GROUPS]: AlgoliaFacetsAnalyticsCategory[]
 }
 
 interface AlgoliaFacets {
@@ -195,7 +195,7 @@ export type Geoloc = AlgoliaGeoloc
 
 export type VenueHit = Pick<
   VenueResponse,
-  | 'accessibility'
+  | 'accessibilityData'
   | 'bannerUrl'
   | 'contact'
   | 'description'
@@ -203,11 +203,11 @@ export type VenueHit = Pick<
   | 'latitude'
   | 'longitude'
   | 'name'
-  | 'publicName'
   | 'city'
   | 'postalCode'
   | 'isOpenToPublic'
   | 'activity'
+  | 'isPermanent'
 >
 
 export interface AlgoliaQueryParameters {
@@ -274,25 +274,6 @@ export interface AlgoliaVenue {
   _geoloc: Geoloc
   _highlightResult?: AlgoliaVenueHighlightResult
 }
-
-type FacetKeys =
-  | FACETS_FILTERS_ENUM.OFFER_BOOK_TYPE
-  | FACETS_FILTERS_ENUM.OFFER_MOVIE_GENRES
-  | FACETS_FILTERS_ENUM.OFFER_MUSIC_TYPE
-  | FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY
-  | FACETS_FILTERS_ENUM.OFFER_SHOW_TYPE
-
-type NativeCategoryFacets = Record<NativeCategoryIdEnumv2, number>
-type GenreTypeFacets = Record<GenreType, number>
-
-export type NativeCategoryFacetData = Record<
-  FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY,
-  NativeCategoryFacets
->
-
-type GenreTypeFacetData = Record<FacetKeys, GenreTypeFacets>
-
-export type FacetData = NativeCategoryFacetData | GenreTypeFacetData
 
 export type MultipleOffersResult = {
   hits: AlgoliaOffer[]

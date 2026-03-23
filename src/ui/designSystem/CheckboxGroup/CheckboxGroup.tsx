@@ -18,10 +18,12 @@ import {
 } from 'ui/designSystem/CheckboxGroup/types'
 import { SelectableVariant } from 'ui/designSystem/types'
 import { Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const CheckboxGroup = <T extends string = string>({
   label,
   labelTag = 'span',
+  labelTagOverrideForAccessibility = undefined,
   description,
   error,
   options,
@@ -56,10 +58,14 @@ export const CheckboxGroup = <T extends string = string>({
     onChange?.(newValues)
   }
 
+  const headingAttrs = labelTagOverrideForAccessibility
+    ? getHeadingAttrs(labelTagOverrideForAccessibility)
+    : {}
+
   return (
     <View accessibilityRole={AccessibilityRole.GROUP}>
       <Header gap={2} hasError={!!error}>
-        <LabelTag>{label}</LabelTag>
+        <LabelTag {...headingAttrs}>{label}</LabelTag>
         {description ? <Description>{description}</Description> : null}
         {error ? <InputError errorMessage={error} visible /> : null}
       </Header>

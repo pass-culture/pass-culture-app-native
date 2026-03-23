@@ -1,3 +1,1 @@
-import { ChronicleCardListBase } from './ChronicleCardListBase'
-
-export const ChronicleCardList = ChronicleCardListBase
+export { ChronicleCardListBase as ChronicleCardList } from './ChronicleCardListBase'

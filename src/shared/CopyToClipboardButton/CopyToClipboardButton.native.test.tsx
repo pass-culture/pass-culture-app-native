@@ -1,12 +1,10 @@
 import React from 'react'
 
+import * as copyToClipboardModule from 'libs/copyToClipboard/copyToClipboard'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
 import { userEvent, render, screen } from 'tests/utils'
 
-const mockCopyToClipboard = jest.fn()
-jest.mock('libs/useCopyToClipboard/useCopyToClipboard', () => ({
-  useCopyToClipboard: () => mockCopyToClipboard,
-}))
+const mockCopyToClipboard = jest.spyOn(copyToClipboardModule, 'copyToClipboard')
 
 const successSnackBarMessage = 'Copié avec succès\u00a0!'
 const wording = 'Copier l’adresse'

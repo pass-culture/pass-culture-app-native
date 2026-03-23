@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { TrendBlock, TrendNavigationProps } from 'features/home/types'
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Typo, getSpacing } from 'ui/theme'
 
@@ -27,7 +27,9 @@ export const Trend = ({ image, title, ...rest }: TrendProps) => {
 
 const Item = styled(InternalTouchableLink)(({ theme }) => ({
   gap: theme.designSystem.size.spacing.s,
-  padding: theme.isDesktopViewport ? getSpacing(1.5) : getSpacing(0.75),
+  padding: theme.isDesktopViewport
+    ? theme.designSystem.size.spacing.s
+    : theme.designSystem.size.spacing.xs,
   alignItems: 'center',
 }))
 

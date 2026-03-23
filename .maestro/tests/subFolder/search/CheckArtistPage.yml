@@ -3,7 +3,7 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'Rechercher'
 - runFlow: ../../subFolder/cloud/commands/SetEverywhere.yml
 - extractTextWithAI:
-    query: "Le nom exacte du premier artiste visible dans les résultats de recherche"
+    query: "Le nom exacte d'un artiste sans nom composé visible dans les résultats de recherche"
     outputVariable: 'artistName'
 - tapOn: .*${artistName}.*
 - assertVisible: 'Ses oeuvres populaires'

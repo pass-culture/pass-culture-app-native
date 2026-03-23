@@ -2,15 +2,14 @@ import React, { Fragment } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
-import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
+import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
+import { getVenueBlock } from 'features/offer/components/OfferVenueBlock/getVenueBlock'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
 import { getAddress, getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
-import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Separator } from 'ui/components/Separator'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Typo } from 'ui/theme'
@@ -18,7 +17,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   title: string
-  offer: OfferResponseV2
+  offer: OfferResponse
   isOfferAtSameAddressAsVenue: boolean
   onChangeVenuePress?: VoidFunction
   onSeeVenuePress?: VoidFunction
@@ -43,7 +42,7 @@ export function OfferVenueBlock({
   const addressLabel = venueBlockAddress?.label ?? undefined
   const venueImageUrl = venueBlockVenue.bannerUrl ?? ''
 
-  const { venueName, venueAddress, isOfferAddressDifferent, onCopyAddressPress } = useVenueBlock({
+  const { venueName, venueAddress, isOfferAddressDifferent, onCopyAddressPress } = getVenueBlock({
     venue: venueBlockVenue,
     offerAddress: venueBlockAddress,
   })
@@ -66,10 +65,12 @@ export function OfferVenueBlock({
 
         {onChangeVenuePress ? (
           <Container>
-            <ButtonSecondaryBlack
+            <Button
               icon={EditPen}
               wording={isCinema ? 'Changer de cinéma' : 'Changer le lieu de retrait'}
               onPress={onChangeVenuePress}
+              variant="secondary"
+              color="neutral"
             />
           </Container>
         ) : null}
@@ -79,11 +80,12 @@ export function OfferVenueBlock({
         <Fragment>
           <StyledHorizontalSeparator />
           <TertiaryButtonWrapper>
-            <ButtonTertiaryBlack
-              inline
+            <Button
               wording="Copier l’adresse"
               onPress={onCopyAddressPress}
               icon={Duplicate}
+              variant="tertiary"
+              color="neutral"
             />
           </TertiaryButtonWrapper>
 

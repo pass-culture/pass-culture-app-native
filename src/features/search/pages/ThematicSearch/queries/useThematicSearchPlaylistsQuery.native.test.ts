@@ -1,6 +1,7 @@
 import { LocationMode, Position } from 'libs/location/types'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettingsMock } from 'tests/settings/mockSettings'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { useThematicSearchPlaylistsQuery } from './useThematicSearchPlaylistsQuery'
@@ -21,6 +22,8 @@ const defaultThematicSearchOffer = mockBuilder.searchResponseOffer({})
 const fetchThematicSearchPlaylistsOffers = jest.fn().mockResolvedValue([defaultThematicSearchOffer])
 
 jest.mock('libs/firebase/analytics/analytics')
+
+setSettingsMock({ patchSettingsWith: { objectStorageUrl: undefined } }) // Avoid thumbUrl change
 
 const PLAYLISTS_TITLES = ['Titre de la playlist - 1', 'Titre de la playlist - 2']
 

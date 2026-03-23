@@ -25,6 +25,7 @@ type TicketTopPartProps = {
   mapping: SubcategoriesMapping
   ean?: string
   expirationDate?: string
+  withdrawLabel?: string
 }
 
 export const TicketTopPart = ({
@@ -38,6 +39,7 @@ export const TicketTopPart = ({
   mapping,
   ean,
   expirationDate,
+  withdrawLabel,
 }: TicketTopPartProps) => {
   return (
     <ViewGap gap={6}>
@@ -49,6 +51,12 @@ export const TicketTopPart = ({
             <Typo.Body>
               {user.firstName} {user.lastName}
             </Typo.Body>
+          </Row>
+        ) : null}
+        {withdrawLabel ? (
+          <Row>
+            <StyledStock />
+            <Typo.Body>{withdrawLabel}</Typo.Body>
           </Row>
         ) : null}
         {day ? (
@@ -81,9 +89,8 @@ export const TicketTopPart = ({
             <Typo.Body>Pour deux personnes</Typo.Body>
           </Row>
         ) : null}
-        <Container>
-          <LinkToOffer offer={offer} mapping={mapping} />
-        </Container>
+
+        <LinkToOffer offer={offer} mapping={mapping} />
       </ViewGap>
       {venueInfo}
     </ViewGap>
@@ -111,8 +118,4 @@ const Row = styled.View(({ theme }) => ({
   gap: theme.designSystem.size.spacing.s,
   alignContent: 'center',
   justifyContent: 'flex-start',
-}))
-
-const Container = styled.View(({ theme }) => ({
-  marginLeft: theme.designSystem.size.spacing.xs,
 }))

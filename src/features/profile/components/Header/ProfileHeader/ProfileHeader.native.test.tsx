@@ -5,6 +5,7 @@ import { BannerName, BannerResponse, EligibilityType, SubscriptionStepperRespons
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
+import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser, exBeneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -43,7 +44,7 @@ describe('ProfileHeader', () => {
 
   it('should not display subtitle with passForAll enabled', async () => {
     renderProfileHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: true },
+      featureFlags: { disableActivation: false, enablePassForAll: true, enableProfileV2: false },
       user: undefined,
     })
     await screen.findByText('Cheatcodes')
@@ -55,7 +56,7 @@ describe('ProfileHeader', () => {
 
   it('should display the LoggedOutHeader if no user', async () => {
     renderProfileHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false },
+      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
       user: undefined,
     })
 
@@ -70,7 +71,7 @@ describe('ProfileHeader', () => {
 
   it('should display the BeneficiaryHeader if user is beneficiary', async () => {
     renderProfileHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false },
+      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
       user: beneficiaryUser,
     })
 
@@ -82,7 +83,7 @@ describe('ProfileHeader', () => {
   it('should display the BeneficiaryHeader if user is underage beneficiary', async () => {
     mockedisUserUnderageBeneficiary.mockReturnValueOnce(true)
     renderProfileHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false },
+      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
       user: beneficiaryUser,
     })
 
@@ -93,7 +94,7 @@ describe('ProfileHeader', () => {
 
   it('should display the ExBeneficiary Header if credit is expired', async () => {
     renderProfileHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false },
+      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
       user: exBeneficiaryUser,
     })
 
@@ -104,7 +105,7 @@ describe('ProfileHeader', () => {
 
   it('should display the NonBeneficiaryHeader Header if user is not beneficiary', async () => {
     renderProfileHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false },
+      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
       user: nonBeneficiaryUser,
     })
 
@@ -113,7 +114,7 @@ describe('ProfileHeader', () => {
 
   it('should display the BeneficiaryAndEligibleForUpgradeHeader Header if user is beneficiary and isEligibleForBeneficiaryUpgrade and eligibility is 18 yo', async () => {
     renderProfileHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false },
+      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
       user: {
         ...beneficiaryUser,
         isEligibleForBeneficiaryUpgrade: true,
@@ -131,6 +132,6 @@ const renderProfileHeader = ({
   featureFlags,
   user,
 }: {
-  featureFlags: { disableActivation: boolean; enablePassForAll: boolean }
+  featureFlags: ProfileFeatureFlagsProps['featureFlags']
   user?: UserProfileResponseWithoutSurvey
 }) => render(reactQueryProviderHOC(<ProfileHeader featureFlags={featureFlags} user={user} />))

@@ -9,8 +9,6 @@ import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
-import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { OnGoingBookingsList } from './OnGoingBookingsList'
 
@@ -21,10 +19,6 @@ mockUseSubcategories.mockReturnValue({
 } as UseQueryResult<SubcategoriesResponseModelv2, Error>)
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
-
-jest.mock('ui/components/snackBar/SnackBarContext', () =>
-  jest.requireActual('ui/components/snackBar/__mocks__/SnackBarContext')
-)
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -84,10 +78,12 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
         flatList.props.onRefresh()
       })
 
-      expect(showErrorSnackBar).toHaveBeenCalledWith({
-        message: `Impossible de recharger tes réservations, connecte-toi à internet pour réessayer.`,
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(
+        screen.getByText(
+          `Impossible de recharger tes réservations, connecte-toi à internet pour réessayer.`
+        )
+      ).toBeOnTheScreen()
     })
   })
 

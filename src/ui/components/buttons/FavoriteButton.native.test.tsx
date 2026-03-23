@@ -16,17 +16,13 @@ describe('<FavoriteButton />', () => {
   it('should render favorite icon', async () => {
     renderFavoriteButton()
 
-    await screen.findByLabelText('Mettre en favori')
-
-    expect(screen.getByTestId('icon-favorite')).toBeOnTheScreen()
+    expect(await screen.findByLabelText('Mettre en favori')).toBeOnTheScreen()
   })
 
   it('should enable the favorites button when is not loading', async () => {
     renderFavoriteButton()
 
-    await screen.findByLabelText('Mettre en favori')
-
-    expect(screen.getByLabelText('Mettre en favori')).not.toBeDisabled()
+    expect(await screen.findByLabelText('Mettre en favori')).not.toBeDisabled()
   })
 
   it('should disabled the favorites button when is loading', async () => {
@@ -36,9 +32,7 @@ describe('<FavoriteButton />', () => {
       isRemoveFavoriteLoading: true,
     })
 
-    await screen.findByLabelText('Mettre en favori')
-
-    expect(screen.getByLabelText('Mettre en favori')).toBeDisabled()
+    expect(await screen.findByLabelText('Mettre en favori')).toBeDisabled()
   })
 
   describe('user is logged in', () => {
@@ -48,7 +42,7 @@ describe('<FavoriteButton />', () => {
         favorite: { id: favoriteResponseSnap.id, offer: favoriteResponseSnap.offer },
       })
 
-      expect(screen.getByTestId('icon-favorite-filled')).toBeOnTheScreen()
+      expect(await screen.findByLabelText('Retirer des favoris')).toBeOnTheScreen()
     })
   })
 
@@ -60,7 +54,7 @@ describe('<FavoriteButton />', () => {
     it('should display SignIn modal when pressing Favorite', async () => {
       renderFavoriteButton()
 
-      await user.press(screen.getByTestId('icon-favorite'))
+      await user.press(await screen.findByLabelText('Mettre en favori'))
 
       expect(screen.getByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
     })
@@ -69,7 +63,6 @@ describe('<FavoriteButton />', () => {
 
 const defaultProps = {
   offerId: 116656,
-  animationState: undefined,
   addFavorite: jest.fn(),
   isAddFavoriteLoading: false,
   removeFavorite: jest.fn(),

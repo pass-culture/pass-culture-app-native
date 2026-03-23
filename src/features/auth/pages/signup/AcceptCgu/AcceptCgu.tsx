@@ -1,19 +1,20 @@
 import React, { FunctionComponent, useState, useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useSignupRecaptcha } from 'features/auth/helpers/useSignupRecaptcha'
+import { SetContainer } from 'features/auth/pages/signup/SetContainer'
 import { PreValidationSignupLastStepProps } from 'features/auth/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
-import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
+import { useIsRecaptchaEnabled } from 'queries/settings/useSettings'
+import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
@@ -26,7 +27,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
   isSSOSubscription,
   signUp,
 }) => {
-  const { data: settings, isLoading: areSettingsLoading } = useSettingsContext()
+  const { data: isRecaptchaEnabled, isLoading: areSettingsLoading } = useIsRecaptchaEnabled()
   const networkInfo = useNetInfoContext()
 
   const [isFetching, setIsFetching] = useState(false)
@@ -51,7 +52,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       required: true,
     },
     {
-      label: 'J’ai lu la charte des données personnelles',
+      label: 'J’ai lu les chartes des données personnelles',
       value: 'acceptDataCharter',
       required: true,
     }
@@ -97,10 +98,10 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
   const onSubmit = useCallback(() => {
     analytics.logContinueCGU()
     if (!isChecked.acceptCgu || !isChecked.acceptDataCharter) {
-      setErrorMessage('Tu dois accepter les CGU et la charte des données.')
+      setErrorMessage('Tu dois accepter les CGU et les chartes des données.')
       return
     }
-    if (settings?.isRecaptchaEnabled) {
+    if (isRecaptchaEnabled) {
       openReCaptchaChallenge()
     } else {
       handleSignup('dummyToken', isChecked.marketingEmailSubscription)
@@ -109,7 +110,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
     isChecked.acceptCgu,
     isChecked.acceptDataCharter,
     isChecked.marketingEmailSubscription,
-    settings?.isRecaptchaEnabled,
+    isRecaptchaEnabled,
     openReCaptchaChallenge,
     handleSignup,
   ])
@@ -123,60 +124,78 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
     !isChecked.acceptDataCharter
 
   return (
-    <Form.MaxWidth>
-      {settings?.isRecaptchaEnabled ? (
-        <ReCaptcha
-          onClose={onReCaptchaClose}
-          onError={onReCaptchaError}
-          onExpire={onReCaptchaExpire}
-          onSuccess={(token) => onReCaptchaSuccess(token, isChecked.marketingEmailSubscription)}
-          isVisible={isDoingReCaptchaChallenge}
+    <SetContainer>
+      <Form.MaxWidth>
+        {isRecaptchaEnabled ? (
+          <ReCaptcha
+            onClose={onReCaptchaClose}
+            onError={onReCaptchaError}
+            onExpire={onReCaptchaExpire}
+            onSuccess={(token) => onReCaptchaSuccess(token, isChecked.marketingEmailSubscription)}
+            isVisible={isDoingReCaptchaChallenge}
+          />
+        ) : null}
+        <CheckboxGroup<string>
+          label="Conditions et confidentialité"
+          labelTag="h3"
+          labelTagOverrideForAccessibility={2}
+          options={checkboxOptions}
+          value={selectedValues}
+          onChange={setSelectedValues}
         />
-      ) : null}
-      <CheckboxGroup<string>
-        label="CGU & Données"
-        options={checkboxOptions}
-        value={selectedValues}
-        onChange={setSelectedValues}
-      />
-      <LinksContainer>
-        <CaptionNeutralInfo>En cochant ces 2 cases tu assures avoir lu&nbsp;:</CaptionNeutralInfo>
-        <ExternalTouchableLink
-          as={ButtonQuaternaryBlack}
-          wording="Nos conditions générales d’utilisation"
-          externalNav={{ url: env.CGU_LINK }}
-          icon={ExternalSiteFilled}
-          justifyContent="flex-start"
-          numberOfLines={2}
-        />
-        <ExternalTouchableLink
-          as={ButtonQuaternaryBlack}
-          wording="La charte des données personnelles"
-          externalNav={{ url: env.PRIVACY_POLICY_LINK }}
-          icon={ExternalSiteFilled}
-          justifyContent="flex-start"
-          numberOfLines={2}
-        />
-      </LinksContainer>
-      <ButtonContainer>
-        <ButtonPrimary
-          wording="S’inscrire"
-          accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
-          // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
-          // Cf. backend logic for token validation
-          onPress={onSubmit}
-          isLoading={isDoingReCaptchaChallenge || isFetching}
-          disabled={disabled}
-          accessibilityHint={
-            errorMessage ? `${errorMessage} - ${PRIVACY_NOTICE_TEXT}` : PRIVACY_NOTICE_TEXT
-          }
-        />
-      </ButtonContainer>
-      <InputError visible={!!errorMessage} errorMessage={errorMessage} numberOfSpacesTop={5} />
-      <BottomContainer>
-        <CaptionNeutralInfo {...hiddenFromScreenReader()}>{PRIVACY_NOTICE_TEXT}</CaptionNeutralInfo>
-      </BottomContainer>
-    </Form.MaxWidth>
+        <Container gap={5}>
+          <CaptionNeutralInfo>En cochant ces 2 cases tu assures avoir lu&nbsp;:</CaptionNeutralInfo>
+          <ExternalTouchableLink
+            as={Button}
+            variant="tertiary"
+            color="neutral"
+            wording="Conditions Générales d’Utilisation"
+            externalNav={{ url: env.CGU_LINK }}
+            icon={ExternalSiteFilled}
+            numberOfLines={2}
+          />
+          <ExternalTouchableLink
+            as={Button}
+            variant="tertiary"
+            color="neutral"
+            wording="Charte des données personnelles"
+            externalNav={{ url: env.PRIVACY_POLICY_LINK }}
+            icon={ExternalSiteFilled}
+            numberOfLines={2}
+          />
+          <ExternalTouchableLink
+            as={Button}
+            variant="tertiary"
+            color="neutral"
+            wording="Charte d’utilisation et de bonne conduite"
+            externalNav={{ url: env.CODE_OF_CONDUCT_LINK }}
+            icon={ExternalSiteFilled}
+            numberOfLines={2}
+          />
+        </Container>
+        <ButtonContainer>
+          <Button
+            fullWidth
+            wording="S’inscrire"
+            accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
+            // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
+            // Cf. backend logic for token validation
+            onPress={onSubmit}
+            isLoading={isDoingReCaptchaChallenge || isFetching}
+            disabled={disabled}
+            accessibilityHint={
+              errorMessage ? `${errorMessage} - ${PRIVACY_NOTICE_TEXT}` : PRIVACY_NOTICE_TEXT
+            }
+          />
+        </ButtonContainer>
+        <InputError visible={!!errorMessage} errorMessage={errorMessage} numberOfSpacesTop={5} />
+        <BottomContainer>
+          <CaptionNeutralInfo {...hiddenFromScreenReader()}>
+            {PRIVACY_NOTICE_TEXT}
+          </CaptionNeutralInfo>
+        </BottomContainer>
+      </Form.MaxWidth>
+    </SetContainer>
   )
 }
 
@@ -188,10 +207,11 @@ const BottomContainer = styled.View(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.xl,
 }))
 
-const LinksContainer = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xl,
-}))
-
 const ButtonContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xxxl,
+}))
+
+const Container = styled(ViewGap)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+  alignItems: 'flex-start',
 }))

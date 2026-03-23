@@ -272,7 +272,7 @@ describe('moviesOfferBuilder', () => {
   })
 
   describe('buildOfferResponse', () => {
-    it('should return an array of OfferResponseV2', () => {
+    it('should return an array of OfferResponse', () => {
       const offer1 = mockBuilder.offerResponseV2({})
       const offer2 = mockBuilder.offerResponseV2({})
 

@@ -9,7 +9,6 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
-import { Spacer } from 'ui/theme'
 
 import { NavItem } from './NavItem'
 
@@ -32,8 +31,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, routeBadgeMap }) => {
         {tabRoutes.map((route, index) => {
           const tabNavigationConfig = getTabNavigatorConfig(route, searchState)
           return (
-            <StyledLi key={`key-tab-nav-${route.name}`}>
-              {index > 0 ? <Spacer.Row numberOfSpaces={1.5} /> : null}
+            <StyledLi key={`key-tab-nav-${route.name}`} index={index}>
               <NavItem
                 tabName={route.name}
                 isSelected={route.isSelected}
@@ -72,7 +70,8 @@ const NavItemsContainer = styled.View<{
   zIndex: theme.zIndex.headerNav,
 }))
 
-const StyledLi = styled(Li)({
+const StyledLi = styled(Li)<{ index: number }>(({ theme, index }) => ({
   display: 'flex',
   flexDirection: 'row',
-})
+  marginLeft: index > 0 ? theme.designSystem.size.spacing.s : 0,
+}))

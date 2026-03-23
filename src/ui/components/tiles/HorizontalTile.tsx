@@ -3,7 +3,6 @@ import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferImage } from 'ui/components/tiles/OfferImage'
-import { getSpacing } from 'ui/theme'
 
 export type HorizontalTileProps = PropsWithChildren<
   {
@@ -26,8 +25,8 @@ export const HorizontalTile: FunctionComponent<HorizontalTileProps> = ({
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   alignItems: 'center',
   flexDirection: 'row',
-  gap: getSpacing(4),
-})
+  gap: theme.designSystem.size.spacing.l,
+}))

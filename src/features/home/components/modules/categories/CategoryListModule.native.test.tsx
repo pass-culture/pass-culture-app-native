@@ -6,6 +6,7 @@ import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixt
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -93,5 +94,58 @@ describe('CategoryListModule', () => {
     )
 
     expect(screen.queryByText('Ce week-end')).not.toBeOnTheScreen()
+  })
+
+  describe('When enableAIFakeDoor FF activated', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR])
+    })
+
+    it('should display AI fake door banner', () => {
+      render(
+        <CategoryListModule
+          id="123"
+          title="module"
+          categoryBlockList={categoryBlockList}
+          index={1}
+          homeEntryId="homeEntryId"
+        />
+      )
+
+      expect(screen.getByText('Besoin d’inspiration ?')).toBeOnTheScreen()
+    })
+
+    it('should open AI fake door modal when pressing banner', async () => {
+      render(
+        <CategoryListModule
+          id="123"
+          title="module"
+          categoryBlockList={categoryBlockList}
+          index={1}
+          homeEntryId="homeEntryId"
+        />
+      )
+
+      await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
+
+      expect(
+        await screen.findByText('Encore un peu de patience...', { hidden: true })
+      ).toBeOnTheScreen()
+    })
+  })
+
+  it('should not display AI fake door banner when enableAIFakeDoor FF deactivated', () => {
+    setFeatureFlags([])
+    render(
+      <CategoryListModule
+        id="123"
+        title="module"
+        categoryBlockList={categoryBlockList}
+        index={1}
+        homeEntryId="homeEntryId"
+      />
+    )
+
+    expect(screen.queryByText('Besoin d’inspiration ?')).not.toBeOnTheScreen()
   })
 })

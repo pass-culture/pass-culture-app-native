@@ -20,16 +20,16 @@ import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
-import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { DAYS, dayNamesShort } from 'shared/date/days'
 import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 LocaleConfig.locales['fr'] = {
   monthNames: [...CAPITALIZED_MONTHS],
@@ -110,19 +110,12 @@ export const getDayDescription = (
   hasSeveralPrices?: boolean
 ) => {
   let dayDescription = hasSeveralPrices ? 'dès ' : ''
-  dayDescription += formatCurrencyFromCents(price, currency, euroToPacificFrancRate).replace(
-    /\u00A0/g,
+  dayDescription += formatCurrencyFromCents(price, currency, euroToPacificFrancRate).replaceAll(
+    '\u00A0',
     ''
   )
 
   return dayDescription
-}
-
-const RNCalendarTheme = {
-  // Prevent calendar height from changing when switching month
-  minHeight: 415,
-  // Hack to remove unnecessary calendar horizontal margins
-  marginHorizontal: -getSpacing(2.5),
 }
 
 type CalendarDayProps = {
@@ -190,11 +183,14 @@ const CalendarDay: React.FC<CalendarDayProps> = ({
           {getDayDescription(price, currency, euroToPacificFrancRate, hasSeveralPrices)}
         </Caption>
       ) : (
-        <Spacer.Column numberOfSpaces={getSpacing(1)} />
+        <Placeholder />
       )}
     </Container>
   )
 }
+const Placeholder = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xs,
+}))
 
 export const Calendar: React.FC<Props> = ({
   stocks,
@@ -203,7 +199,7 @@ export const Calendar: React.FC<Props> = ({
   hasSeveralPrices,
 }) => {
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const markedDates = useMarkedDates(stocks, userRemainingCredit ?? 0)
   const minDate = getMinAvailableDate(markedDates) ?? format(new Date(), 'yyyy-dd-MM')
   const selectDay = useSelectDay()
@@ -236,6 +232,12 @@ export const Calendar: React.FC<Props> = ({
       minDate,
     ]
   )
+  const RNCalendarTheme = {
+    // Prevent calendar height from changing when switching month
+    minHeight: 415,
+    // Hack to remove unnecessary calendar horizontal margins
+    marginHorizontal: -theme.designSystem.size.spacing.m,
+  }
 
   return (
     <RNCalendar
@@ -266,7 +268,10 @@ const Caption = styled(Typo.BodyAccentXs)<{ status: OfferStatus }>(({ status, th
 
 const Container = styled(TouchableOpacity).attrs({ hitSlop })(({ theme }) => ({
   alignItems: 'center',
-  width: theme.appContentWidth < theme.breakpoints.xs ? getSpacing(9.5) : getSpacing(11),
+  width:
+    theme.appContentWidth < theme.breakpoints.xs
+      ? theme.designSystem.size.spacing.xxxl
+      : theme.designSystem.size.spacing.xxxxl,
 }))
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({

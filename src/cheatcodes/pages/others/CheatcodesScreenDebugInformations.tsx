@@ -1,6 +1,7 @@
 import { HotUpdater, getUpdateSource } from '@hot-updater/react-native'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Alert, Button } from 'react-native'
+import styled from 'styled-components/native'
 
 import { api } from 'api/api'
 import { CrashTestButton } from 'cheatcodes/components/CrashTestButton'
@@ -12,7 +13,7 @@ import { storage } from 'libs/storage'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
 
 const oldAccesstoken =
@@ -102,36 +103,42 @@ export const CheatcodesScreenDebugInformations: FunctionComponent = function () 
   }
 
   return (
-    <SecondaryPageWithBlurHeader title="CheatCodes">
-      <ViewGap gap={2}>
-        <CrashTestButton />
-        <Button title="Utiliser un ancien token" onPress={setOldToken} />
-        <Button title="Invalider l’access token" onPress={setOldToken} />
-        <Button title="Invalider les 2 tokens" onPress={invalidateBothTokens} />
-        <Button title="/ME" onPress={fetchMe} />
-        <Typo.Body>User email: {userEmail ?? 'unknown'}</Typo.Body>
-        <Typo.Body>Batch installation ID: {batchInstallationId}</Typo.Body>
-        <Typo.Body>User ID: {userId}</Typo.Body>
-        <Separator.Horizontal />
-        <Typo.Title4>HOT UPDATER</Typo.Title4>
-        <Typo.Body>Bundle ID: {bundleId ?? 'unknown'}</Typo.Body>
-        <Typo.Body>Channel: {HotUpdater.getChannel()}</Typo.Body>
-        <Typo.Body>App Version: {HotUpdater.getAppVersion()}</Typo.Body>
-        <Button title="Reload" onPress={() => HotUpdater.reload()} />
-        <Button
-          title="HotUpdater.runUpdateProcess()"
-          onPress={() =>
-            HotUpdater.runUpdateProcess({
-              source: `${env.HOT_UPDATER_FUNCTION_URL}`,
-            })
-          }
-        />
-        <Button title="Check for App Update" onPress={handleCheckForAppUpdate} />
-        <Typo.Body>Update Status: {updateStatus ?? 'unknown'}</Typo.Body>
-      </ViewGap>
-    </SecondaryPageWithBlurHeader>
+    <PageWithHeader
+      title="CheatCodes"
+      scrollChildren={
+        <StyledViewGap gap={2}>
+          <CrashTestButton />
+          <Button title="Utiliser un ancien token" onPress={setOldToken} />
+          <Button title="Invalider l’access token" onPress={setOldToken} />
+          <Button title="Invalider les 2 tokens" onPress={invalidateBothTokens} />
+          <Button title="/ME" onPress={fetchMe} />
+          <Typo.Body>User email: {userEmail ?? 'unknown'}</Typo.Body>
+          <Typo.Body>Batch installation ID: {batchInstallationId}</Typo.Body>
+          <Typo.Body>User ID: {userId}</Typo.Body>
+          <Separator.Horizontal />
+          <Typo.Title4>HOT UPDATER</Typo.Title4>
+          <Typo.Body>Bundle ID: {bundleId ?? 'unknown'}</Typo.Body>
+          <Typo.Body>Channel: {HotUpdater.getChannel()}</Typo.Body>
+          <Typo.Body>App Version: {HotUpdater.getAppVersion()}</Typo.Body>
+          <Button title="Reload" onPress={() => HotUpdater.reload()} />
+          <Button
+            title="HotUpdater.runUpdateProcess()"
+            onPress={() =>
+              HotUpdater.runUpdateProcess({
+                source: `${env.HOT_UPDATER_FUNCTION_URL}`,
+              })
+            }
+          />
+          <Button title="Check for App Update" onPress={handleCheckForAppUpdate} />
+          <Typo.Body>Update Status: {updateStatus ?? 'unknown'}</Typo.Body>
+        </StyledViewGap>
+      }
+    />
   )
 }
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxxl,
+}))
 
 async function getBatchInstallationID() {
   try {

@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FC, Fragment } from 'react'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferVenueBlock } from 'features/offer/components/OfferVenueBlock/OfferVenueBlock'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
@@ -14,18 +14,16 @@ import { useLocation } from 'libs/location/location'
 import { Subcategory } from 'libs/subcategories/types'
 import { useSearchVenueOffersInfiniteQuery } from 'queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
-import { SegmentResult } from 'shared/useABSegment/useABSegment'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
 
 const ANIMATION_DURATION = 500 //ms
 
 type Props = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   subcategory: Subcategory
   handleOnSeeVenuePress?: VoidFunction
   isOfferAtSameAddressAsVenue: boolean
-  segment: SegmentResult
   distance?: string | null
 }
 
@@ -35,7 +33,6 @@ export const OfferVenueContainer: FC<Props> = ({
   subcategory,
   handleOnSeeVenuePress,
   isOfferAtSameAddressAsVenue,
-  segment,
 }) => {
   const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, subcategory.isEvent)
 
@@ -103,14 +100,11 @@ export const OfferVenueContainer: FC<Props> = ({
 
   const onNewOfferVenueSelected = (nextOfferId: number) => {
     hideChangeVenueModal()
-    triggerConsultOfferLog(
-      {
-        offerId: nextOfferId,
-        from: 'offer',
-        fromMultivenueOfferId: offer.id,
-      },
-      segment
-    )
+    triggerConsultOfferLog({
+      offerId: nextOfferId,
+      from: 'offer',
+      fromMultivenueOfferId: offer.id,
+    })
     navigate('Offer', {
       fromOfferId: offer.id,
       id: nextOfferId,

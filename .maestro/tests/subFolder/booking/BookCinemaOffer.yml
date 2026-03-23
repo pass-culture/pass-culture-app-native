@@ -2,6 +2,10 @@ appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
 - runFlow: ../../subFolder/cloud/commands/SetEverywhere.yml
+- swipe:
+    from:
+      text: 'Les artistes'
+    direction: UP
 - extractTextWithAI:
     query: "Le titre exacte d'une des offres Cinéma visible dans les résultats de recherche"
     outputVariable: 'offerResult'
@@ -29,8 +33,12 @@ appId: ${MAESTRO_APP_ID}
       - assertVisible: 'Trouve ta séance'
       - runFlow: ../../subFolder/booking/DaySelectionCinema.yml
 
+- extractTextWithAI:
+    query: 'La 1ère séance de cinéma disponible (horaire) visible sur la page de sélection de la séance'
+    outputVariable: 'movieSession'
+
 - tapOn:
-    text: '.*€.*'
+    text: '.*${movieSession}.*'
     label: 'Sélection de la séance'
 
 - runFlow:
@@ -68,12 +76,3 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: 'Annuler ma réservation'
 
 - waitForAnimationToEnd
-
-- runFlow:
-    when:
-      visible: 'Voir le détail de l’offre'
-    commands:
-      - tapOn:
-          text: 'Voir le détail de l’offre'
-      - pressKey: back
-      - pressKey: back

@@ -10,7 +10,6 @@ const RATIO_PORTRAIT = 2 / 3
 const RATIO_SQUARE = 1
 
 export const blurImageHeight = getSpacing(74)
-export const offerImageContainerMarginTop = MARGIN_DP + getSpacing(2)
 const HEADER_HEIGHT = getSpacing(64.5)
 
 const PORTRAIT_DIMENSIONS = {

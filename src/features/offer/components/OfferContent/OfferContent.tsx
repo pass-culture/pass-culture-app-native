@@ -27,17 +27,14 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   userId,
   hasVideoCookiesConsent,
   onVideoConsentPress,
-  segment,
-  enableVideoABTesting,
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
+  HeaderComponent,
+  CTAsComponent,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
-  const shouldShowVideoSection = enableVideoABTesting
-    ? isVideoSectionEnabled && segment === 'A'
-    : isVideoSectionEnabled
 
   const handlePreviewPress = (defaultIndex = 0) => {
     if (!offer.images) return
@@ -53,7 +50,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         searchGroupList={searchGroupList}
         contentContainerStyle={CONTENT_CONTAINER_STYLE}
         onOfferPreviewPress={handlePreviewPress}
-        isVideoSectionEnabled={shouldShowVideoSection}
+        isVideoSectionEnabled={isVideoSectionEnabled}
         BodyWrapper={BodyWrapper}
         chronicles={chronicles}
         chronicleVariantInfo={chronicleVariantInfo}
@@ -66,10 +63,10 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         onShowChroniclesWritersModal={onShowChroniclesWritersModal}
         hasVideoCookiesConsent={hasVideoCookiesConsent}
         onVideoConsentPress={onVideoConsentPress}
-        segment={segment}
-        enableVideoABTesting={enableVideoABTesting}
         onShowOfferArtistsModal={onShowOfferArtistsModal}
-        isMultiArtistsEnabled={isMultiArtistsEnabled}>
+        isMultiArtistsEnabled={isMultiArtistsEnabled}
+        HeaderComponent={HeaderComponent}
+        CTAsComponent={CTAsComponent}>
         {comingSoonFooterHeight ? (
           <ComingSoonFooterOffset
             testID="coming-soon-footer-offset"

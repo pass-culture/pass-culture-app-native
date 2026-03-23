@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
 import { ColorsType } from 'theme/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import {

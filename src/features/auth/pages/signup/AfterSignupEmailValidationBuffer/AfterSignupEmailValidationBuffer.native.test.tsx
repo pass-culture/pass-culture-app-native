@@ -13,9 +13,7 @@ import * as datesLib from 'libs/dates'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, waitFor } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+import { act, render, screen, waitFor } from 'tests/utils'
 
 import { AfterSignupEmailValidationBuffer } from './AfterSignupEmailValidationBuffer'
 
@@ -24,13 +22,6 @@ mockdate.set(new Date('2020-12-01T00:00:00Z'))
 jest.mock('libs/react-native-device-info/getDeviceId')
 const loginAndRedirectMock = jest.fn()
 jest.spyOn(LoginAndRedirectAPI, 'useLoginAndRedirect').mockReturnValue(loginAndRedirectMock)
-
-const mockShowInfoSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showInfoSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowInfoSnackBar(props)),
-  }),
-}))
 
 jest.spyOn(DeviceInfo, 'getModel').mockReturnValue('iPhone 13')
 jest.spyOn(DeviceInfo, 'getSystemName').mockReturnValue('iOS')
@@ -89,11 +80,8 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
       await waitFor(
         () => {
-          expect(mockShowInfoSnackBar).toHaveBeenCalledTimes(1)
-          expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
-            message: 'Ce lien de validation n’est plus valide',
-            timeout: SNACK_BAR_TIME_OUT,
-          })
+          expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+          expect(screen.getByText('Ce lien de validation n’est plus valide')).toBeOnTheScreen()
           expect(replace).toHaveBeenCalledTimes(1)
           expect(replace).toHaveBeenCalledWith(...homeNavigationConfig)
         },

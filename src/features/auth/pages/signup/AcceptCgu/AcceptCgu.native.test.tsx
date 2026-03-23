@@ -1,8 +1,7 @@
 import React from 'react'
-import { Linking } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/tests/setSettings'
+import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -12,6 +11,8 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, simulateWebviewMessage, userEvent, waitFor } from 'tests/utils'
 
 import { AcceptCgu } from './AcceptCgu'
+
+const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -52,10 +53,6 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<AcceptCgu/>', () => {
-  beforeEach(() => {
-    setSettings()
-  })
-
   it('should render correctly', () => {
     renderAcceptCGU()
 
@@ -68,22 +65,31 @@ describe('<AcceptCgu/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to the "CGU" page', async () => {
+  it('should go to CGUs when the "Conditions Générales d’Utilisation" link is pressed', async () => {
     renderAcceptCGU()
+    const cguButton = screen.getByText('Conditions Générales d’Utilisation')
 
-    const link = screen.getByText('Nos conditions générales d’utilisation')
-    await user.press(link)
+    await user.press(cguButton)
 
-    expect(Linking.openURL).toHaveBeenCalledWith(env.CGU_LINK)
+    expect(openUrl).toHaveBeenCalledWith(env.CGU_LINK, undefined, true)
   })
 
-  it('should redirect to the "Charte des données personnelles" page', async () => {
+  it('should go to personal data page when the "Charte des données personnelles" link is pressed', async () => {
     renderAcceptCGU()
+    const personalDataButton = screen.getByText('Charte des données personnelles')
 
-    const link = screen.getByText('La charte des données personnelles')
-    await user.press(link)
+    await user.press(personalDataButton)
 
-    expect(Linking.openURL).toHaveBeenCalledWith(env.PRIVACY_POLICY_LINK)
+    expect(openUrl).toHaveBeenCalledWith(env.PRIVACY_POLICY_LINK, undefined, true)
+  })
+
+  it('should go to code of conduct page when the "Charte d’utilisation et de bonne conduite" link is pressed', async () => {
+    renderAcceptCGU()
+    const codeOfConductButton = screen.getByText('Charte d’utilisation et de bonne conduite')
+
+    await user.press(codeOfConductButton)
+
+    expect(openUrl).toHaveBeenCalledWith(env.CODE_OF_CONDUCT_LINK, undefined, true)
   })
 
   it('should disable the button if the data charted is not checked', async () => {
@@ -102,7 +108,7 @@ describe('<AcceptCgu/>', () => {
       screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
 
-    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+    await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
 
@@ -118,7 +124,7 @@ describe('<AcceptCgu/>', () => {
       screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
 
-    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+    await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
 
@@ -131,7 +137,7 @@ describe('<AcceptCgu/>', () => {
     await user.press(
       screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
-    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+    await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
@@ -150,7 +156,7 @@ describe('<AcceptCgu/>', () => {
     await user.press(
       screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
-    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+    await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
 
@@ -173,7 +179,7 @@ describe('<AcceptCgu/>', () => {
     await user.press(
       screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
-    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+    await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
     await user.press(screen.getByText('S’inscrire'))
 
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
@@ -203,7 +209,7 @@ describe('<AcceptCgu/>', () => {
     await user.press(
       screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
-    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+    await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
@@ -227,7 +233,7 @@ describe('<AcceptCgu/>', () => {
     await user.press(
       screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
-    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+    await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
@@ -251,7 +257,7 @@ describe('<AcceptCgu/>', () => {
     await user.press(
       screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
-    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
+    await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')

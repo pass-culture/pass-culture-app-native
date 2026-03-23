@@ -1,10 +1,11 @@
-import { useFocusEffect } from '@react-navigation/native'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import { View } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { BookingButton } from 'features/offer/components/BookingButton/BookingButton'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { StickyBookingButton } from 'features/offer/components/StickyBookingButton/StickyBookingButton'
@@ -12,36 +13,34 @@ import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOf
 import { Subcategory } from 'libs/subcategories/types'
 
 type OfferCTAButtonProps = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   subcategory: Subcategory
   trackEventHasSeenOfferOnce: VoidFunction
+  fullScreen?: boolean
 }
 
 export const OfferCTAButton: FunctionComponent<OfferCTAButtonProps> = ({
   offer,
   subcategory,
   trackEventHasSeenOfferOnce,
+  fullScreen,
 }) => {
-  const {
-    ctaWordingAndAction,
-    showOfferModal,
-    CTAOfferModal,
-    openModalOnNavigation,
-    secondaryCtaWordingAndAction,
-    secondaryCTAOfferModal,
-  } = useOfferCTAButton(offer, subcategory)
+  const { ctaWordingAndAction, showOfferModal, CTAOfferModal, openModalOnNavigation } =
+    useOfferCTAButton(offer, subcategory)
 
   const { isLoggedIn } = useAuthContext()
   const { isDesktopViewport } = useTheme()
   const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
+  const { setParams } = useNavigation<UseNavigationType>()
 
   useFocusEffect(
     useCallback(() => {
       trackEventHasSeenOfferOnce()
       if (openModalOnNavigation) {
         showOfferModal()
+        setParams({ openModalOnNavigation: undefined })
       }
-    }, [trackEventHasSeenOfferOnce, openModalOnNavigation, showOfferModal])
+    }, [trackEventHasSeenOfferOnce, openModalOnNavigation, showOfferModal, setParams])
   )
   return (
     <View>
@@ -50,17 +49,16 @@ export const OfferCTAButton: FunctionComponent<OfferCTAButtonProps> = ({
           ctaWordingAndAction={ctaWordingAndAction}
           isFreeDigitalOffer={isFreeDigitalOffer}
           isLoggedIn={isLoggedIn}
+          fullScreen={fullScreen}
         />
       ) : (
         <StickyBookingButton
           ctaWordingAndAction={ctaWordingAndAction}
           isFreeDigitalOffer={isFreeDigitalOffer}
           isLoggedIn={isLoggedIn}
-          secondaryCtaWordingAndAction={secondaryCtaWordingAndAction}
         />
       )}
       {CTAOfferModal}
-      {secondaryCTAOfferModal}
     </View>
   )
 }

@@ -11,11 +11,11 @@ import { setFeedbackInAppSchema } from 'features/profile/pages/FeedbackInApp/set
 import { useFeedbackMutation } from 'features/profile/queries/useFeedbackMutation'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput/LargeTextInput'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
+import { showSuccessSnackBar, showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
@@ -28,7 +28,6 @@ type FormValue = {
 export const FeedbackInApp = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const navigateToProfile = () => navigate(...getTabHookConfig('Profile'))
-  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const {
     control,
@@ -42,17 +41,14 @@ export const FeedbackInApp = () => {
 
   const { mutate: sendFeedback } = useFeedbackMutation({
     onSuccess: () => {
-      showSuccessSnackBar({
-        message: 'Ta suggestion a bien été transmise\u00a0!',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showSuccessSnackBar('Ta suggestion a bien été transmise\u00a0!')
+
       navigateToProfile()
     },
     onError: () => {
-      showErrorSnackBar({
-        message: 'Une erreur s’est produite lors de l’envoi de ta suggestion. Réessaie plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(
+        'Une erreur s’est produite lors de l’envoi de ta suggestion. Réessaie plus tard.'
+      )
     },
   })
 
@@ -105,7 +101,7 @@ export const FeedbackInApp = () => {
               )}
             />
           </InputContainer>
-          <ButtonPrimary
+          <Button
             type="submit"
             wording="Envoyer"
             accessibilityLabel="Envoyer ma suggestion"

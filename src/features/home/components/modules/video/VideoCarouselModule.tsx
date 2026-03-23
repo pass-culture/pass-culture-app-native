@@ -20,7 +20,6 @@ import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { useCategoryIdMapping } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { CarouselBar } from 'ui/components/CarouselBar/CarouselBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing } from 'ui/theme'
@@ -38,7 +37,6 @@ interface VideoCarouselModuleBaseProps extends VideoCarouselModuleType {
 export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps> = (props) => {
   const prePopulateOffer = usePrePopulateOffer()
   const mapping = useCategoryIdMapping()
-  const segment = useABSegment()
 
   const { width: windowWidth } = useWindowDimensions()
   const carouselRef = React.useRef<ICarouselInstance>(null)
@@ -54,7 +52,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   const shouldModuleBeDisplayed = Platform.OS !== 'web' && hasItems
 
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(autoplay ? true : false)
+  const [isPlaying, setIsPlaying] = useState(!!autoplay)
   const [hasFinishedPlaying, setHasFinishedPlaying] = useState(false)
 
   useEffect(() => {
@@ -117,15 +115,12 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
               offerId: +offer.objectID,
               categoryId,
             })
-            triggerConsultOfferLog(
-              {
-                offerId: +offer.objectID,
-                moduleId: item.id,
-                from: 'video_carousel_block',
-                homeEntryId,
-              },
-              segment
-            )
+            triggerConsultOfferLog({
+              offerId: +offer.objectID,
+              moduleId: item.id,
+              from: 'video_carousel_block',
+              homeEntryId,
+            })
           }}>
           <AttachedOfferCard offer={offer} shouldFixHeight />
         </StyledInternalTouchableLink>
@@ -237,7 +232,7 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink)<{
 }))
 
 const SingleItemContainer = styled.View(({ theme }) => ({
-  marginHorizontal: getSpacing(5),
+  marginHorizontal: theme.designSystem.size.spacing.xl,
   marginVertical: theme.designSystem.size.spacing.l,
 }))
 

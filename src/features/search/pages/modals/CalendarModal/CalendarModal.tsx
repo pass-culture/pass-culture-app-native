@@ -273,7 +273,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
           items={filterButtonListItems}
           horizontal={isMobileViewport}
           contentContainerStyle={
-            isDesktopViewport ? { marginHorizontal: getSpacing(2) } : undefined
+            isDesktopViewport ? { marginHorizontal: designSystem.size.spacing.s } : undefined
           }
         />
       </View>
@@ -296,6 +296,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
         markedDates={markedDates}
         testID="calendar"
         firstDay={1}
+        customProps={{ marginTop: designSystem.size.spacing.l }}
         theme={{
           // UX decision: align with disabled background token for the muted state
           textDisabledColor: designSystem.color.background.disabled,
@@ -318,13 +319,14 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
   )
 }
 
-const StyledCalendarList = styled(CalendarList).attrs({
-  calendarStyle: {
-    width: '100%',
-  },
-})({
-  marginTop: getSpacing(4),
-})
+const StyledCalendarList = styled(CalendarList).attrs<{ customProps?: { marginTop: number } }>(
+  ({ customProps }) => ({
+    calendarStyle: {
+      width: '100%',
+    },
+    marginTop: customProps?.marginTop,
+  })
+)``
 
 const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   colors: [
@@ -335,11 +337,11 @@ const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme })
   locations: [0, 0.5, 1],
   start: { x: 0, y: 0 },
   end: { x: 0, y: 1 },
-}))({
+}))(({ theme }) => ({
   position: 'absolute',
-  bottom: getSpacing(10),
+  bottom: theme.designSystem.size.spacing.xxxl,
   left: 0,
   right: 0,
   height: getSpacing(23),
   zIndex: 1,
-})
+}))

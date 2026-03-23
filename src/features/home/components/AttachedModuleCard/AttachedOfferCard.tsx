@@ -13,8 +13,8 @@ import {
   getIfPricesShouldBeFixed,
 } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Offer } from 'shared/offer/types'
 
 type Props = {
@@ -31,7 +31,7 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight, com
   const categoryId = mapping[attachedOffer.subcategoryId]
   const labelMapping = useCategoryHomeLabelMapping()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const categoryName = labelMapping[attachedOffer.subcategoryId] ?? ''
   const details: string[] = []
 

@@ -37,6 +37,7 @@ export type CheckboxGroupDisplay = 'vertical' | 'horizontal'
 export type CheckboxGroupProps<T = string> = {
   label: string
   labelTag?: ElementType
+  labelTagOverrideForAccessibility?: 1 | 2 | 3
   description?: string
   error?: string
   options: CheckboxGroupOption<T>[]

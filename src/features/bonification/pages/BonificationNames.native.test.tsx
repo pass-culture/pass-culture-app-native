@@ -4,6 +4,7 @@ import { goBack, navigate } from '__mocks__/@react-navigation/native'
 import { BonificationNames } from 'features/bonification/pages/BonificationNames'
 import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { env } from 'libs/environment/env'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -43,8 +44,9 @@ describe('BonificationNames', () => {
     const button = screen.getByText('Je ne connais pas son nom de naissance')
     await userEvent.press(button)
 
-    expect(openUrl).toHaveBeenCalledWith(
-      'https://aide.passculture.app/hc/fr/articles/24338766387100-FAQ-Bonif'
+    expect(openUrl).toHaveBeenNthCalledWith(
+      1,
+      env.FAQ_BONIFICATION_LEGAL_GUARDIAN_BIRTH_INFORMATIONS
     )
   })
 

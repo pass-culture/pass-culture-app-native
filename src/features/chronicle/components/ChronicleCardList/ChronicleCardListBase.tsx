@@ -12,8 +12,7 @@ import { FlatList, FlatListProps, ListRenderItem, StyleProp, View, ViewStyle } f
 import styled from 'styled-components/native'
 
 import { ChronicleCardData } from 'features/chronicle/type'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { getSpacing } from 'ui/theme'
 
@@ -41,6 +40,7 @@ export type ChronicleCardListProps = Pick<
   onSeeMoreButtonPress?: (chronicleId: number) => void
   shouldTruncate?: boolean
   cardIcon?: ReactNode
+  tag?: ReactNode
 }
 
 export const ChronicleCardListBase = forwardRef<
@@ -63,6 +63,7 @@ export const ChronicleCardListBase = forwardRef<
     onLayout,
     shouldTruncate,
     cardIcon,
+    tag,
   },
   ref
 ) {
@@ -98,21 +99,31 @@ export const ChronicleCardListBase = forwardRef<
           subtitle={item.subtitle}
           description={item.description}
           date={item.date}
+          tag={tag}
           cardWidth={cardWidth}
-          shouldTruncate={shouldTruncate}>
+          shouldTruncate={shouldTruncate}
+          tagProps={item.tagProps}
+          image={item.image}
+          headerNavigateTo={item.headerNavigateTo}
+          headerAccessibilityLabel={item.headerAccessibilityLabel}>
           {onSeeMoreButtonPress ? (
             <View>
-              <StyledButtonTertiaryBlack
+              <Button
                 wording="Voir plus"
                 accessibilityLabel={`Voir plus à propos de ${item.title}`}
                 onPress={() => onSeeMoreButtonPress(item.id)}
+                variant="tertiary"
+                color="neutral"
+                size="small"
+                icon={PlainMore}
+                iconPosition="left"
               />
             </View>
           ) : null}
         </ChronicleCard>
       )
     },
-    [cardWidth, onSeeMoreButtonPress, shouldTruncate, cardIcon]
+    [cardIcon, tag, cardWidth, shouldTruncate, onSeeMoreButtonPress]
   )
 
   return (
@@ -137,13 +148,3 @@ export const ChronicleCardListBase = forwardRef<
     />
   )
 })
-
-const StyledPlainMore = styled(PlainMore).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
-}))``
-
-const StyledButtonTertiaryBlack = styledButton(ButtonTertiaryBlack).attrs({
-  icon: StyledPlainMore,
-  iconPosition: 'right',
-  buttonHeight: 'extraSmall',
-})``

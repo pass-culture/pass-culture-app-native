@@ -2,7 +2,7 @@
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 
-const MARGIN = getSpacing(6)
+const MARGIN = theme.designSystem.size.spacing.xl
 const GUTTER = getSpacing(4)
 const MIN_WIDTH = getSpacing(32)
 

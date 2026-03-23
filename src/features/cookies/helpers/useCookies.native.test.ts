@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 
 import { api } from 'api/api'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
+import { ConsentState } from 'features/cookies/enums'
 import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/types'
@@ -13,7 +13,6 @@ import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRem
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { eventMonitoring } from 'libs/monitoring/services'
 import * as PackageJson from 'libs/packageJson'
-import { BatchPush } from 'libs/react-native-batch'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
@@ -24,7 +23,6 @@ import { waitForPromiseResolution } from 'tests/waitForPromiseResolution'
 const buildVersion = 10010005
 jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
 
-jest.mock('libs/campaign/campaign')
 jest.mock('libs/monitoring/services')
 jest.mock('libs/react-native-device-info/getDeviceId')
 
@@ -98,17 +96,6 @@ describe('useCookies', () => {
   })
 
   describe('storage', () => {
-    it('should not start tracking accepted cookies if only userId is already in storage', async () => {
-      await storage.saveObject(COOKIES_CONSENT_KEY, {
-        userId: FAKE_USER_ID,
-      })
-
-      renderUseCookies()
-      await act(async () => {})
-
-      expect(mockStartTrackingAcceptedCookies).not.toHaveBeenCalled()
-    })
-
     it('should save cookies consent in the storage', async () => {
       const { result } = renderUseCookies()
       const { setCookiesConsent } = result.current
@@ -158,25 +145,6 @@ describe('useCookies', () => {
           accepted: ALL_OPTIONAL_COOKIES,
           refused: [],
         },
-      })
-    })
-
-    it('should start tracking accepted cookies when consent is already in storage', async () => {
-      await storage.saveObject(COOKIES_CONSENT_KEY, {
-        buildVersion,
-        deviceId,
-        choiceDatetime: TODAY.toISOString(),
-        consent: {
-          mandatory: COOKIES_BY_CATEGORY.essential,
-          accepted: ALL_OPTIONAL_COOKIES,
-          refused: [],
-        },
-      })
-
-      renderUseCookies()
-
-      await waitFor(() => {
-        expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(ALL_OPTIONAL_COOKIES)
       })
     })
 
@@ -566,33 +534,53 @@ describe('useCookies', () => {
     })
   })
 
-  describe('Batch permissions', () => {
-    it('should request notification authorization when Batch cookie is accepted', async () => {
+  describe('Tracking', () => {
+    describe('Storage', () => {
+      it('should not call startTrackingAcceptedCookies if only userId is already in storage', async () => {
+        await storage.saveObject(COOKIES_CONSENT_KEY, {
+          userId: FAKE_USER_ID,
+        })
+
+        renderUseCookies()
+        await act(async () => {})
+
+        expect(mockStartTrackingAcceptedCookies).not.toHaveBeenCalled()
+      })
+
+      it('should call startTrackingAcceptedCookies with accepted cookies and calledBecauseOfNewConsents to false when consent is already in storage', async () => {
+        await storage.saveObject(COOKIES_CONSENT_KEY, {
+          buildVersion,
+          deviceId,
+          choiceDatetime: TODAY.toISOString(),
+          consent: {
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          },
+        })
+
+        renderUseCookies()
+
+        await waitFor(() => {
+          expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(ALL_OPTIONAL_COOKIES, false)
+        })
+      })
+    })
+
+    it('should call startTrackingAcceptedCookies with accepted cookies and calledBecauseOfNewConsents to true when set consent', async () => {
       const { result } = renderUseCookies()
 
       await act(async () => {
         await result.current.setCookiesConsent({
           mandatory: COOKIES_BY_CATEGORY.essential,
-          accepted: [CookieNameEnum.BATCH],
+          accepted: ALL_OPTIONAL_COOKIES,
           refused: [],
         })
       })
 
-      expect(BatchPush.requestNotificationAuthorization).toHaveBeenCalledTimes(1)
-    })
-
-    it('should NOT request notification authorization when Batch cookie is refused', async () => {
-      const { result } = renderUseCookies()
-
-      await act(async () => {
-        await result.current.setCookiesConsent({
-          mandatory: COOKIES_BY_CATEGORY.essential,
-          accepted: [],
-          refused: [CookieNameEnum.BATCH],
-        })
+      await waitFor(() => {
+        expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(ALL_OPTIONAL_COOKIES, true)
       })
-
-      expect(BatchPush.requestNotificationAuthorization).not.toHaveBeenCalled()
     })
   })
 })

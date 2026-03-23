@@ -10,12 +10,12 @@ const keychainOptions = Platform.OS === 'ios' ? { service: env.IOS_KEYCHAIN_SERV
 
 function handleKeychainError(error: unknown, operation: string): never {
   const errorMessage = error instanceof Error ? error.message : 'unknown error'
-  throw Error(`[Keychain]: ${operation} error: ${errorMessage}`)
+  throw new Error(`[Keychain]: ${operation} error: ${errorMessage}`, { cause: error })
 }
 
 export async function saveRefreshToken(refreshToken: string | undefined): Promise<void> {
   if (!refreshToken) {
-    throw Error('[Keychain]: No refresh token to save')
+    throw new Error('[Keychain]: No refresh token to save')
   }
   try {
     await setGenericPassword(REFRESH_TOKEN_KEY, refreshToken, keychainOptions)

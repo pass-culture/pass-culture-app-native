@@ -16,9 +16,10 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
 >
   <View
     accessibilityRole="header"
+    onLayout={[Function]}
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -39,6 +40,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -182,6 +184,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
   >
     <View
       onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
       style={
         [
           {
@@ -222,21 +225,16 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
               "flexGrow": 1,
               "paddingBottom": 0,
               "paddingHorizontal": 24,
+              "paddingTop": 65,
             }
           }
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
+          paddingHeaderHeight={65}
           style={{}}
         >
           <View>
-            <View
-              style={
-                {
-                  "height": 65,
-                }
-              }
-            />
             <Text
               accessibilityRole="header"
               style={
@@ -421,31 +419,34 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                             +33
                           </Text>
                           <View
-                            fill="#161617"
-                            height={16}
-                            width={16}
+                            gap={2}
+                            style={
+                              {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "gap": 8,
+                              }
+                            }
                           >
-                            <Text>
-                              undefined-SVG-Mock
-                            </Text>
+                            <View
+                              fill="#161617"
+                              height={16}
+                              width={16}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                            <View
+                              style={
+                                {
+                                  "borderRightColor": "#90949d",
+                                  "borderRightWidth": 2,
+                                  "paddingVertical": 12,
+                                }
+                              }
+                            />
                           </View>
-                          <View
-                            numberOfSpaces={2}
-                            style={
-                              {
-                                "width": 8,
-                              }
-                            }
-                          />
-                          <View
-                            style={
-                              {
-                                "borderRightColor": "#90949d",
-                                "borderRightWidth": 1,
-                                "paddingVertical": 10,
-                              }
-                            }
-                          />
                         </View>
                       </View>
                       <TextInput
@@ -637,9 +638,9 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                   style={
                     {
                       "color": "#696a6f",
-                      "fontFamily": "Montserrat-Bold",
+                      "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "lineHeight": 22,
                       "maxWidth": "100%",
                     }
                   }
@@ -661,37 +662,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
         </View>
       </View>
     </View>
-  </View>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;

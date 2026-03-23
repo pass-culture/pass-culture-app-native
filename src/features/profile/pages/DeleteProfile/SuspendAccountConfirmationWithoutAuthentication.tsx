@@ -2,16 +2,21 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useAccountSuspendForHackSuspicionMutation } from 'features/auth/queries/useAccountSuspendForHackSuspicionMutation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { buildZendeskUrlForFraud } from 'features/profile/helpers/buildZendeskUrl'
+import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { useVersion } from 'ui/hooks/useVersion'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { UserError } from 'ui/svg/UserError'
@@ -20,7 +25,9 @@ import { SPACE } from 'ui/theme/constants'
 
 export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { showErrorSnackBar } = useSnackBarContext()
+  const { user } = useAuthContext()
+  const deviceInfo = useDeviceInfo()
+  const version = useVersion()
 
   const onPressContactFraudTeam = () => {
     analytics.logContactFraudTeam({ from: 'suspendaccountconfirmation' })
@@ -31,11 +38,9 @@ export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
       navigate('SuspiciousLoginSuspendedAccount')
     },
     onError: () => {
-      showErrorSnackBar({
-        message:
-          'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(
+        'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.'
+      )
     },
   })
 
@@ -48,14 +53,17 @@ export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
       title="Souhaites-tu suspendre ton compte pass&nbsp;Culture&nbsp;?"
       buttonPrimary={{
         wording: 'Oui, suspendre mon compte',
-        onPress: accountSuspendForHackSuspicion,
+        onPress: () => {
+          Adjust.gdprForgetMe()
+          accountSuspendForHackSuspicion()
+        },
         isLoading,
       }}
       buttonTertiary={{
         wording: 'Contacter le service fraude',
         icon: EmailFilled,
         onBeforeNavigate: onPressContactFraudTeam,
-        externalNav: { url: `mailto:${env.FRAUD_EMAIL_ADDRESS}` },
+        externalNav: { url: buildZendeskUrlForFraud({ user, deviceInfo, version }) },
       }}>
       <Typo.BodyAccent>{groupLabel}&nbsp;:</Typo.BodyAccent>
       <VerticalUl>

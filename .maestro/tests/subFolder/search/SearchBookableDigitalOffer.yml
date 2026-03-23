@@ -23,7 +23,7 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: '.*Catégorie.*'
 
 - assertVisible: 'Médias & presse'
-- tapOn: 'Presse en ligne'
+- tapOn: '.*Presse en ligne.*'
 - tapOn: 'Appliquer le filtre'
 
 - tapOn: 'Rechercher'

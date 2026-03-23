@@ -1,4 +1,7 @@
 import { UserProfileResponse } from 'api/gen'
+import { UserCreditType } from 'features/auth/helpers/getCreditType'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { ShareContent } from 'libs/share/types'
 
 export interface WebShareModalProps {
@@ -18,4 +21,8 @@ export enum ShareAppModalType {
 export type UserProfileResponseWithoutSurvey = Omit<
   UserProfileResponse,
   'needsToFillCulturalSurvey'
->
+> & {
+  statusType: UserStatusType
+  creditType: UserCreditType
+  eligibilityType: UserEligibilityType
+}

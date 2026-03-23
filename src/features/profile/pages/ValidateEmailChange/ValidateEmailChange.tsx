@@ -13,11 +13,11 @@ import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useEmailUpdateStatusQuery } from 'features/profile/queries/useEmailUpdateStatusQuery'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { Separator } from 'ui/components/Separator'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { PhonePending } from 'ui/svg/icons/PhonePending'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type ValidateEmailChangeProps = NativeStackScreenProps<
   RootStackParamList & ProfileStackParamList,
@@ -27,7 +27,6 @@ type ValidateEmailChangeProps = NativeStackScreenProps<
 export function ValidateEmailChange({ route: { params }, navigation }: ValidateEmailChangeProps) {
   const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } =
     useEmailUpdateStatusQuery()
-  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -51,11 +50,9 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
       if (isLoggedIn) {
         await signOut()
       }
-      showSuccessSnackBar({
-        message:
-          'Ton adresse e-mail est modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showSuccessSnackBar(
+        'Ton adresse e-mail est modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail.'
+      )
       navigation.reset({
         routes: [{ name: 'Login', params: { from: StepperOrigin.VALIDATE_EMAIL_CHANGE } }],
       })
@@ -64,16 +61,15 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
         navigation.reset({ routes: [{ name: 'ChangeEmailExpiredLink' }] })
         return
       }
-      showErrorSnackBar({
-        message: 'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(
+        'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.'
+      )
       eventMonitoring.captureException(error)
       navigation.replace(...homeNavigationConfig)
     } finally {
       setIsLoading(false)
     }
-  }, [isLoggedIn, mutate, navigation, showErrorSnackBar, showSuccessSnackBar, signOut])
+  }, [isLoggedIn, mutate, navigation, signOut])
 
   useEffect(() => {
     if (!isLoadingEmailUpdateStatus) {
@@ -104,7 +100,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
       <Wrapper>
         <Typo.Body>Nouvelle adresse e-mail&nbsp;:</Typo.Body>
         <Typo.BodyAccent>{emailUpdateStatus?.newEmail}</Typo.BodyAccent>
-        <StyledSeparator />
+        <Separator.HorizontalWithMargin />
         <StyledCaption>
           En cliquant sur valider, tu seras déconnecté.e. Tu devras te reconnecter avec ta nouvelle
           adresse e-mail.
@@ -114,16 +110,12 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
   )
 }
 
-const Wrapper = styled.View({
-  marginTop: getSpacing(4),
+const Wrapper = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
   alignItems: 'center',
-})
+}))
 
 const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',
   color: theme.designSystem.color.text.subtle,
 }))
-
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginVertical: getSpacing(4),
-})

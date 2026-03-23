@@ -12,15 +12,14 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { analytics } from 'libs/analytics/provider'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Close } from 'ui/svg/icons/Close'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -36,7 +35,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   const netInfo = useNetInfoContext()
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const refundRule = getRefundRule({
     totalAmount: booking.totalAmount,
     currency,
@@ -44,21 +43,18 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
     user,
   })
   const { navigate } = useNavigation<UseNavigationType>()
-  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   function onSuccess() {
     navigate(...getTabHookConfig('Bookings'))
-    showSuccessSnackBar({
-      message:
-        'La réservation a bien été annulée. Tu pourras la retrouver dans tes réservations terminées',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    showSuccessSnackBar(
+      'La réservation a bien été annulée. Tu pourras la retrouver dans tes réservations terminées'
+    )
   }
 
   function onError(error: unknown) {
     dismissModal()
     navigate(...getTabHookConfig('Bookings'))
-    showErrorSnackBar({ message: extractApiErrorMessage(error), timeout: SNACK_BAR_TIME_OUT })
+    showErrorSnackBar(extractApiErrorMessage(error))
   }
 
   const { mutate: cancelBooking } = useCancelBookingMutation({
@@ -73,10 +69,9 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
       dismissModal()
     } else {
       dismissModal()
-      showErrorSnackBar({
-        message: 'Impossible d’annuler la réservation. Connecte-toi à internet avant de réessayer.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(
+        'Impossible d’annuler la réservation. Connecte-toi à internet avant de réessayer.'
+      )
     }
   }
 
@@ -92,12 +87,14 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
         <OfferName>{booking.stock.offer.name}</OfferName>
         {refundRule ? <Refund>{refundRule}</Refund> : null}
         <CancelButtonContainer>
-          <ButtonPrimary wording="Annuler ma réservation" onPress={confirmCancelBooking} />
+          <Button wording="Annuler ma réservation" onPress={confirmCancelBooking} />
         </CancelButtonContainer>
-        <ButtonTertiaryPrimary
+        <Button
           wording="Retourner à ma réservation"
           onPress={dismissModal}
           icon={PlainArrowPrevious}
+          variant="tertiary"
+          color="brand"
         />
       </ModalContent>
     </AppModal>
@@ -105,7 +102,6 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
 }
 
 const ModalContent = styled.View(({ theme }) => ({
-  paddingHorizontal: getSpacing(5.5),
   width: '100%',
   marginBottom: theme.designSystem.size.spacing.xs,
 }))
@@ -121,5 +117,5 @@ const Refund = styled(Typo.Body)(({ theme }) => ({
 
 const CancelButtonContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xxl,
-  marginBottom: getSpacing(5),
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))

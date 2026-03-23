@@ -6,8 +6,8 @@ import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
+import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
 import { SSOButtonBase } from 'features/auth/components/SSOButton/SSOButtonBase'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { loginSchema } from 'features/auth/pages/login/schema/loginSchema'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { SignInResponseFailure } from 'features/auth/types'
@@ -25,21 +25,20 @@ import { ReCaptchaError, ReCaptchaInternalError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
+import { useIsRecaptchaEnabled } from 'queries/settings/useSettings'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Form } from 'ui/components/Form'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { InputError } from 'ui/components/inputs/InputError'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
-import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Key } from 'ui/svg/icons/Key'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
 type LoginFormData = {
   email: string
   password: string
@@ -52,12 +51,11 @@ type Props = {
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.LOGIN)
   const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
-  const { data: settings } = useSettingsContext()
+  const enableAppleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO)
+  const { data: isRecaptchaEnabled } = useIsRecaptchaEnabled()
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { showInfoSnackBar, showErrorSnackBar } = useSnackBarContext()
   const [isDoingReCaptchaChallenge, setIsDoingReCaptchaChallenge] = useState(false)
-  const isRecaptchaEnabled = settings?.isRecaptchaEnabled
 
   const {
     handleSubmit,
@@ -84,14 +82,12 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
 
   useEffect(() => {
     if (params?.displayForcedLoginHelpMessage) {
-      showInfoSnackBar({
-        message:
-          'Pour sécuriser ton pass Culture, tu dois régulièrement confirmer tes identifiants.',
-        timeout: SNACK_BAR_TIME_OUT_LONG,
-      })
+      showErrorSnackBar(
+        'Pour sécuriser ton pass Culture, tu dois régulièrement confirmer tes identifiants.'
+      )
       analytics.logDisplayForcedLoginHelpMessage()
     }
-  }, [params?.displayForcedLoginHelpMessage, showInfoSnackBar])
+  }, [params?.displayForcedLoginHelpMessage])
 
   const handleSigninFailure = useCallback(
     (response: SignInResponseFailure) => {
@@ -112,11 +108,9 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           'SSO_EMAIL_NOT_VALIDATED',
         ].includes(failureCode)
       ) {
-        showErrorSnackBar({
-          message:
-            'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.',
-          timeout: SNACK_BAR_TIME_OUT_LONG,
-        })
+        showErrorSnackBar(
+          'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.'
+        )
       } else if (failureCode === 'EMAIL_NOT_VALIDATED') {
         navigate('SignupConfirmationEmailSent', { email })
       } else if (failureCode === 'ACCOUNT_DELETED') {
@@ -129,7 +123,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         setErrorMessage('E-mail ou mot de passe incorrect')
       }
     },
-    [setFocus, navigate, showErrorSnackBar, email, setFormErrors, setErrorMessage]
+    [email, navigate, setErrorMessage, setFocus, setFormErrors]
   )
 
   const { mutate: signIn, isPending } = useSignInMutation({
@@ -212,56 +206,65 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           isVisible={isDoingReCaptchaChallenge}
         />
       ) : null}
-      <SecondaryPageWithBlurHeader title="Connexion" shouldDisplayBackButton>
-        <TitleContainer>
-          <Typo.Title3 {...getHeadingAttrs(2)}>{titlePage}</Typo.Title3>
-        </TitleContainer>
-        <Form.MaxWidth>
-          <InputError
-            visible={!!errorMessage}
-            errorMessage={errorMessage}
-            numberOfSpacesTop={5}
-            centered
-          />
-          <Container>
-            <EmailInputController
-              label="Adresse e-mail"
-              name="email"
-              control={control}
-              requiredIndicator="explicit"
-            />
-          </Container>
-          <PasswordInputController
-            name="password"
-            control={control}
-            autocomplete="current-password"
-            onSubmitEditing={handleSubmit(onSubmit)}
-            requiredIndicator="explicit"
-          />
-          <ButtonContainer>
-            <ButtonTertiaryBlack
-              wording="Mot de passe oublié&nbsp;?"
-              onPress={onForgottenPasswordClick}
-              icon={Key}
-              inline
-            />
-          </ButtonContainer>
-          <ButtonPrimary
-            wording="Se connecter"
-            onPress={handleSubmit(onSubmit)}
-            disabled={shouldDisableLoginButton}
-          />
-          {enableGoogleSSO ? (
-            <StyledViewGap gap={4}>
-              <SeparatorWithText label="ou" />
-              <SSOButtonBase type="login" onSuccess={signIn} />
-            </StyledViewGap>
-          ) : (
-            <NoSSOSpace />
-          )}
-        </Form.MaxWidth>
-        <SignUpButton type="signup" onAdditionalPress={onLogSignUpAnalytics} />
-      </SecondaryPageWithBlurHeader>
+      <PageWithHeader
+        shouldDisplayBackButton
+        title="Connexion"
+        scrollChildren={
+          <React.Fragment>
+            <TitleContainer>
+              <Typo.Title3 {...getHeadingAttrs(2)}>{titlePage}</Typo.Title3>
+            </TitleContainer>
+            <Form.MaxWidth>
+              <InputError
+                visible={!!errorMessage}
+                errorMessage={errorMessage}
+                numberOfSpacesTop={5}
+                centered
+              />
+              <Container>
+                <EmailInputController
+                  label="Adresse e-mail"
+                  name="email"
+                  control={control}
+                  requiredIndicator="explicit"
+                />
+              </Container>
+              <PasswordInputController
+                name="password"
+                control={control}
+                autocomplete="current-password"
+                onSubmitEditing={handleSubmit(onSubmit)}
+                requiredIndicator="explicit"
+              />
+              <ButtonContainer>
+                <Button
+                  variant="tertiary"
+                  color="neutral"
+                  wording="Mot de passe oublié&nbsp;?"
+                  onPress={onForgottenPasswordClick}
+                  icon={Key}
+                />
+              </ButtonContainer>
+              <Button
+                fullWidth
+                wording="Se connecter"
+                onPress={handleSubmit(onSubmit)}
+                disabled={shouldDisableLoginButton}
+              />
+              {enableGoogleSSO || enableAppleSSO ? (
+                <StyledViewGap gap={4}>
+                  <SeparatorWithText label="ou" />
+                  {enableGoogleSSO ? <SSOButtonBase type="login" onSuccess={signIn} /> : null}
+                  {enableAppleSSO ? <SSOButtonApple type="login" /> : null}
+                </StyledViewGap>
+              ) : (
+                <NoSSOSpace />
+              )}
+            </Form.MaxWidth>
+            <SignUpButton type="signup" onAdditionalPress={onLogSignUpAnalytics} />
+          </React.Fragment>
+        }
+      />
     </React.Fragment>
   )
 })

@@ -11,10 +11,11 @@ import { EditableField } from 'features/profile/components/EditableFiled/Editabl
 import { useCheckHasCurrentEmailChangeQuery } from 'features/profile/queries/useCheckHasCurrentEmailChangeQuery'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { SectionRow } from 'ui/components/SectionRow'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { Button } from 'ui/designSystem/Button/Button'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Trash } from 'ui/svg/icons/Trash'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
@@ -41,54 +42,65 @@ export function PersonalData() {
   }, [hasCurrentEmailChange])
 
   return (
-    <SecondaryPageWithBlurHeader onGoBack={goBack} title="Informations personnelles">
-      <EditableField label="Prénom et nom" value={fullname} />
-      <EditableField
-        label="Adresse e-mail"
-        value={user?.email}
-        navigateTo={updateEmailRoute}
-        onBeforeNavigate={onEmailChangeClick}
-        accessibilityLabel="Modifier e-mail"
-      />
-      <EditableField label="Numéro de téléphone" value={user?.phoneNumber} />
-      <EditableField
-        label="Mot de passe"
-        value={'*'.repeat(12)}
-        navigateTo="ChangePassword"
-        accessibilityLabel="Modifier mot de passe"
-      />
-      <EditableField
-        label="Statut"
-        value={getActivityLabel(user?.activityId)}
-        navigateTo="ChangeStatus"
-        accessibilityLabel="Modifier le statut"
-      />
-      <EditableField
-        label="Adresse de résidence"
-        value={city}
-        navigateTo="ChangeCity"
-        navigateParams={{ type: PersonalDataTypes.PROFIL_PERSONAL_DATA }}
-        accessibilityLabel="Modifier mon adresse de résidence"
-      />
-      <ViewGap gap={8}>
-        <Banner
-          label="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter."
-          links={[
-            {
-              wording: 'Comment gérer tes données personnelles\u00a0?',
-              externalNav: { url: env.FAQ_LINK_PERSONAL_DATA },
-            },
-          ]}
-        />
-        <SectionRow
-          title="Supprimer mon compte"
-          type="navigable"
-          navigateTo={getProfilePropConfig('DeleteProfileReason')}
-          onPress={analytics.logAccountDeletion}
-          icon={Trash}
-          iconSize={SECTION_ROW_ICON_SIZE}
-        />
-      </ViewGap>
-    </SecondaryPageWithBlurHeader>
+    <PageWithHeader
+      onGoBack={goBack}
+      title="Informations personnelles"
+      scrollChildren={
+        <React.Fragment>
+          <EditableField label="Prénom et nom" value={fullname} />
+          <EditableField
+            label="Adresse e-mail"
+            value={user?.email}
+            navigateTo={updateEmailRoute}
+            onBeforeNavigate={onEmailChangeClick}
+            accessibilityLabel="Modifier e-mail"
+          />
+          <EditableField label="Numéro de téléphone" value={user?.phoneNumber} />
+          {user?.hasPassword ? (
+            <EditableField
+              label="Mot de passe"
+              value={'*'.repeat(12)}
+              navigateTo="ChangePassword"
+              accessibilityLabel="Modifier mot de passe"
+            />
+          ) : null}
+          <EditableField
+            label="Statut"
+            value={getActivityLabel(user?.activityId)}
+            navigateTo="ChangeStatus"
+            accessibilityLabel="Modifier le statut"
+          />
+          <EditableField
+            label="Adresse de résidence"
+            value={city}
+            navigateTo="ChangeCity"
+            navigateParams={{ type: PersonalDataTypes.PROFIL_PERSONAL_DATA }}
+            accessibilityLabel="Modifier mon adresse de résidence"
+          />
+          <ViewGap gap={8}>
+            <Banner
+              label="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter."
+              links={[
+                {
+                  wording: 'Comment gérer tes données personnelles\u00a0?',
+                  externalNav: { url: env.FAQ_LINK_PERSONAL_DATA },
+                },
+              ]}
+            />
+            <InternalTouchableLink
+              as={Button}
+              variant="secondary"
+              color="neutral"
+              type="navigable"
+              wording="Supprimer mon compte"
+              navigateTo={getProfilePropConfig('DeleteProfileReason')}
+              onBeforeNavigate={analytics.logAccountDeletion}
+              icon={Trash}
+              iconSize={SECTION_ROW_ICON_SIZE}
+            />
+          </ViewGap>
+        </React.Fragment>
+      }
+    />
   )
 }

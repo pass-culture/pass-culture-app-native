@@ -1,7 +1,5 @@
 import { DefaultTheme } from 'styled-components/native'
 
-import { getSpacing } from 'ui/theme'
-
 type HorizontalAlignPropStyle = {
   horizontalAlign: 'left' | 'right'
 }
@@ -31,8 +29,8 @@ export const scrollButtonStyles: ScrollButtonForNotTouchDevicePropsStylesNative 
   margin: 'auto',
   height: theme.buttons.scrollButton.size,
   width: theme.buttons.scrollButton.size,
-  right: horizontalAlign === 'right' ? getSpacing(2) : 'auto',
-  left: horizontalAlign === 'left' ? getSpacing(2) : 'auto',
+  right: horizontalAlign === 'right' ? theme.designSystem.size.spacing.s : 'auto',
+  left: horizontalAlign === 'left' ? theme.designSystem.size.spacing.s : 'auto',
   top: top ? top - theme.buttons.scrollButton.size / 2 : 0,
   bottom: top ? 'auto' : 0,
   borderWidth: theme.buttons.scrollButton.borderWidth,

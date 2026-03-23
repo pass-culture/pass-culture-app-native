@@ -7,13 +7,12 @@ import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStack
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Form } from 'ui/components/Form'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
@@ -27,6 +26,7 @@ export const BonificationRequiredInformation = () => {
   return (
     <PageWithHeader
       title="Informations"
+      shouldDisplayBottomGradient
       scrollChildren={
         <Form.MaxWidth>
           <ViewGap gap={4}>
@@ -59,18 +59,21 @@ export const BonificationRequiredInformation = () => {
         </Form.MaxWidth>
       }
       fixedBottomChildren={
-        <ViewGap gap={3}>
-          <ButtonPrimary
+        <ViewGap gap={4}>
+          <Button
+            fullWidth
+            type="submit"
             wording="Commencer"
             isLoading={false}
-            type="submit"
             accessibilityLabel="Commencer la demande"
             onPress={() => navigate(...getSubscriptionHookConfig('BonificationNames'))}
           />
           <ExternalTouchableLink
-            as={ButtonTertiaryBlack}
+            as={Button}
+            variant="tertiary"
+            color="neutral"
             wording="Consulter l’article d’aide"
-            externalNav={{ url: env.FAQ_BONIFICATION }}
+            externalNav={{ url: env.FAQ_BONIFICATION_LEGAL_GUARDIAN_BIRTH_INFORMATIONS }}
             icon={ExternalSiteFilled}
           />
           <StyledBodyXs>

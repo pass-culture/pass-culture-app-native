@@ -12,7 +12,6 @@ import 'react-native-get-random-values' // required for `uuid` module to work
 
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
-import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundaryWithoutNavigation'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
@@ -22,7 +21,6 @@ import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
-import { getIsMaestro } from 'libs/e2e/getIsMaestro'
 import { env } from 'libs/environment/env'
 import { AnalyticsInitializer } from 'libs/firebase/analytics/AnalyticsInitializer'
 import { FirestoreNetworkObserver } from 'libs/firebase/firestore/FirestoreNetworkObserver/FirestoreNetworkObserver'
@@ -38,7 +36,7 @@ import { SplashScreenProvider } from 'libs/splashscreen/splashscreen'
 import { ThemeWrapper } from 'libs/styled/ThemeWrapper'
 import { useLaunchPerformanceObserver } from 'performance/useLaunchPerformanceObserver'
 import { useOrientationLocked } from 'shared/hook/useOrientationLocked'
-import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
+import { SnackBarWrapper } from 'ui/designSystem/Snackbar/SnackBarWrapper'
 
 LogBox.ignoreLogs([
   'Setting a timer',
@@ -55,8 +53,7 @@ const App: FunctionComponent = function () {
   useOrientationLocked()
 
   useEffect(() => {
-    eventMonitoring.init({ enabled: !__DEV__ })
-    getIsMaestro().then((isMaestro) => isMaestro && LogBox.ignoreAllLogs())
+    void eventMonitoring.init({ enabled: !__DEV__ })
   }, [])
 
   useEffect(() => {
@@ -80,33 +77,31 @@ const App: FunctionComponent = function () {
                 {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
                 <NetInfoWrapper>
                   <FirestoreNetworkObserver />
-                  <SettingsWrapper>
-                    <AuthWrapper>
-                      <LocationWrapper>
-                        <AccessibilityFiltersWrapper>
-                          <FavoritesWrapper>
-                            <SearchWrapper>
-                              <SnackBarProvider>
-                                <CulturalSurveyContextProvider>
-                                  <SubscriptionContextProvider>
-                                    <SplashScreenProvider>
-                                      <ShareAppWrapper>
-                                        <OfflineModeContainer>
-                                          <ScreenErrorProvider>
-                                            <AppNavigationContainer />
-                                          </ScreenErrorProvider>
-                                        </OfflineModeContainer>
-                                      </ShareAppWrapper>
-                                    </SplashScreenProvider>
-                                  </SubscriptionContextProvider>
-                                </CulturalSurveyContextProvider>
-                              </SnackBarProvider>
-                            </SearchWrapper>
-                          </FavoritesWrapper>
-                        </AccessibilityFiltersWrapper>
-                      </LocationWrapper>
-                    </AuthWrapper>
-                  </SettingsWrapper>
+                  <AuthWrapper>
+                    <LocationWrapper>
+                      <AccessibilityFiltersWrapper>
+                        <FavoritesWrapper>
+                          <SearchWrapper>
+                            <SnackBarWrapper>
+                              <CulturalSurveyContextProvider>
+                                <SubscriptionContextProvider>
+                                  <SplashScreenProvider>
+                                    <ShareAppWrapper>
+                                      <OfflineModeContainer>
+                                        <ScreenErrorProvider>
+                                          <AppNavigationContainer />
+                                        </ScreenErrorProvider>
+                                      </OfflineModeContainer>
+                                    </ShareAppWrapper>
+                                  </SplashScreenProvider>
+                                </SubscriptionContextProvider>
+                              </CulturalSurveyContextProvider>
+                            </SnackBarWrapper>
+                          </SearchWrapper>
+                        </FavoritesWrapper>
+                      </AccessibilityFiltersWrapper>
+                    </LocationWrapper>
+                  </AuthWrapper>
                 </NetInfoWrapper>
               </AnalyticsInitializer>
             </ErrorBoundary>

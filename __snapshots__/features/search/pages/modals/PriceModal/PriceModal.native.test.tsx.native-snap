@@ -528,15 +528,16 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         style={
                           {
                             "backgroundColor": "#696a6f",
-                            "borderBottomLeftRadius": 16,
-                            "borderBottomRightRadius": 16,
-                            "borderTopLeftRadius": 16,
-                            "borderTopRightRadius": 16,
-                            "height": 32,
+                            "borderBottomLeftRadius": 32,
+                            "borderBottomRightRadius": 32,
+                            "borderTopLeftRadius": 32,
+                            "borderTopRightRadius": 32,
+                            "height": 36,
                             "justifyContent": "center",
-                            "width": 56,
+                            "width": 64,
                           }
                         }
+                        toggleSize={32}
                       >
                         <View
                           disabled={false}
@@ -550,9 +551,9 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                                 "borderBottomRightRadius": 32,
                                 "borderTopLeftRadius": 32,
                                 "borderTopRightRadius": 32,
-                                "height": 28,
+                                "height": 32,
                                 "justifyContent": "center",
-                                "width": 28,
+                                "width": 32,
                               },
                               {
                                 "transform": [
@@ -563,6 +564,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                               },
                             ]
                           }
+                          toggleSize={32}
                         />
                       </View>
                     </View>
@@ -689,15 +691,16 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         style={
                           {
                             "backgroundColor": "#696a6f",
-                            "borderBottomLeftRadius": 16,
-                            "borderBottomRightRadius": 16,
-                            "borderTopLeftRadius": 16,
-                            "borderTopRightRadius": 16,
-                            "height": 32,
+                            "borderBottomLeftRadius": 32,
+                            "borderBottomRightRadius": 32,
+                            "borderTopLeftRadius": 32,
+                            "borderTopRightRadius": 32,
+                            "height": 36,
                             "justifyContent": "center",
-                            "width": 56,
+                            "width": 64,
                           }
                         }
+                        toggleSize={32}
                       >
                         <View
                           disabled={false}
@@ -711,9 +714,9 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                                 "borderBottomRightRadius": 32,
                                 "borderTopLeftRadius": 32,
                                 "borderTopRightRadius": 32,
-                                "height": 28,
+                                "height": 32,
                                 "justifyContent": "center",
-                                "width": 28,
+                                "width": 32,
                               },
                               {
                                 "transform": [
@@ -724,6 +727,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                               },
                             ]
                           }
+                          toggleSize={32}
                         />
                       </View>
                     </View>
@@ -995,213 +999,321 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
           }
         >
           <View
-            flexDirection="row"
-            gap={4}
-            isModal={true}
             style={
               {
-                "flexDirection": "row",
-                "gap": 16,
-                "justifyContent": "center",
-                "paddingHorizontal": 24,
-                "paddingTop": 8,
+                "position": "relative",
               }
             }
           >
-            <View
-              accessibilityLabel="Réinitialiser"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": true,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={false}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
+            <BVLinearGradient
+              bottomViewHeight={0}
+              colors={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "borderBottomLeftRadius": 24,
-                      "borderBottomRightRadius": 24,
-                      "borderTopLeftRadius": 24,
-                      "borderTopRightRadius": 24,
-                      "flexDirection": "row",
-                      "justifyContent": "center",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "paddingBottom": 2,
-                      "paddingLeft": 2,
-                      "paddingRight": 2,
-                      "paddingTop": 2,
-                      "width": "100%",
-                    },
-                    {
-                      "backgroundColor": "transparent",
-                      "width": "auto",
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
+                  16777215,
+                  4294967295,
                 ]
               }
-              testID="Réinitialiser"
+              endPoint={
+                {
+                  "x": 0.5,
+                  "y": 1,
+                }
+              }
+              locations={
+                [
+                  0,
+                  1,
+                ]
+              }
+              pointerEvents="none"
+              startPoint={
+                {
+                  "x": 0.5,
+                  "y": 0,
+                }
+              }
+              style={
+                [
+                  {
+                    "bottom": "100%",
+                    "height": 120,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                  },
+                  {},
+                  {},
+                ]
+              }
+            />
+            <View
+              gap={4}
+              isModal={true}
+              style={
+                {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "backgroundColor": "#ffffff",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "paddingHorizontal": 24,
+                  "paddingTop": 8,
+                  "width": "100%",
+                }
+              }
             >
               <View
                 style={
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "flexShrink": 0,
+                    "width": "auto",
                   }
                 }
               >
                 <View
-                  style={
+                  accessibilityLabel="Réinitialiser"
+                  accessibilityRole="button"
+                  accessibilityState={
                     {
-                      "flexDirection": "row",
-                      "flexShrink": 0,
-                      "marginRight": 8,
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": true,
+                      "expanded": undefined,
+                      "selected": undefined,
                     }
                   }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={false}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "transparent",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 0,
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "width": "auto",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Réinitialiser"
                 >
                   <View
-                    height={16}
-                    testID="button-icon-left"
-                    width={16}
+                    gap={8}
+                    hasIcon={true}
+                    isMultiline={false}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "columnGap": 8,
+                        "flexDirection": "row",
+                      }
+                    }
                   >
-                    <Text>
-                      button-icon-left-SVG-Mock
+                    <View
+                      collapsable={false}
+                      jestAnimatedProps={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestAnimatedStyle={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestInlineStyle={
+                        {
+                          "flexShrink": 0,
+                        }
+                      }
+                      nativeID="0"
+                      style={
+                        [
+                          {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        height={14}
+                        width={14}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 14,
+                            "lineHeight": 14,
+                          },
+                          {
+                            "color": "#696a6f",
+                            "flexBasis": undefined,
+                            "flexGrow": undefined,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": undefined,
+                          },
+                        ]
+                      }
+                    >
+                      Réinitialiser
                     </Text>
                   </View>
                 </View>
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                      "maxWidth": "100%",
-                    }
-                  }
-                >
-                  Réinitialiser
-                </Text>
               </View>
-            </View>
-            <View
-              accessibilityLabel="Rechercher"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": false,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#6123df",
-                      "borderBottomLeftRadius": 24,
-                      "borderBottomRightRadius": 24,
-                      "borderTopLeftRadius": 24,
-                      "borderTopRightRadius": 24,
-                      "flexDirection": "row",
-                      "justifyContent": "center",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "paddingBottom": 2,
-                      "paddingLeft": 20,
-                      "paddingRight": 20,
-                      "paddingTop": 2,
-                      "width": "100%",
-                    },
-                    {
-                      "flexGrow": 1,
-                      "width": "auto",
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Rechercher"
-            >
               <View
                 style={
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "minWidth": 0,
                   }
                 }
               >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
+                <View
+                  accessibilityLabel="Rechercher"
+                  accessibilityRole="button"
+                  accessibilityState={
                     {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
                     }
                   }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "alignSelf": "center",
+                          "backgroundColor": "#6123df",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#6123df",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                          "width": "100%",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Rechercher"
                 >
-                  Rechercher
-                </Text>
+                  <View
+                    fullWidth={true}
+                    gap={8}
+                    hasIcon={false}
+                    isMultiline={false}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "columnGap": 8,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 22,
+                          },
+                          {
+                            "color": "#ffffff",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Rechercher
+                    </Text>
+                  </View>
+                </View>
               </View>
             </View>
           </View>

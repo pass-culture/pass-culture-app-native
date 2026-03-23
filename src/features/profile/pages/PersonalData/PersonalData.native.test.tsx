@@ -63,6 +63,26 @@ describe('PersonalData', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  it('should display password section when user has a password', async () => {
+    mockedUseAuthContext.mockReturnValueOnce({
+      ...initialAuthContext,
+      user: { ...mockedUser, hasPassword: true },
+    })
+    render(reactQueryProviderHOC(<PersonalData />))
+
+    expect(screen.getByText('Mot de passe')).toBeOnTheScreen()
+  })
+
+  it('should not display password section when user has no password', async () => {
+    mockedUseAuthContext.mockReturnValueOnce({
+      ...initialAuthContext,
+      user: { ...mockedUser, hasPassword: false },
+    })
+    render(reactQueryProviderHOC(<PersonalData />))
+
+    expect(screen.queryByText('Mot de passe')).not.toBeOnTheScreen()
+  })
+
   it('should not display name section when first name and last name not provided', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
@@ -146,6 +166,18 @@ describe('PersonalData', () => {
     await user.press(screen.getByText('Supprimer mon compte'))
 
     expect(analytics.logAccountDeletion).toHaveBeenCalledTimes(1)
+  })
+
+  it('should  redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
+    mockedUseAuthContext.mockReturnValueOnce({
+      ...initialAuthContext,
+      user: { ...mockedUser, isBeneficiary: false },
+    })
+
+    render(reactQueryProviderHOC(<PersonalData />))
+
+    await user.press(screen.getByText('Supprimer mon compte'))
+
     expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: undefined,
       screen: 'DeleteProfileReason',

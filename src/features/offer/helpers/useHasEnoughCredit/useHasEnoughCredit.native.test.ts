@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 
-import { CurrencyEnum, OfferResponseV2 } from 'api/gen'
+import { CurrencyEnum, OfferResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { beneficiaryUser } from 'fixtures/user'
@@ -104,7 +104,7 @@ describe('useHasEnoughCredit', () => {
   })
 })
 
-const renderUseHasEnoughCredit = (offer?: Pick<OfferResponseV2, 'stocks' | 'expenseDomains'>) =>
+const renderUseHasEnoughCredit = (offer?: Pick<OfferResponse, 'stocks' | 'expenseDomains'>) =>
   renderHook(() => useHasEnoughCredit(offer), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

@@ -3,7 +3,6 @@ import { LayoutChangeEvent, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing } from 'ui/theme'
 interface SectionProps {
   visible: boolean
   margin?: boolean
@@ -37,6 +36,6 @@ const Divider = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.subtle,
 }))
 
-const Wrapper = styled.View({
-  paddingHorizontal: getSpacing(6),
-})
+const Wrapper = styled.View(({ theme }) => ({
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
+}))

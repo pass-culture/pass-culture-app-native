@@ -19,9 +19,7 @@ const checkNetworks = [
 ]
 
 export const checkIsInstalled = async () => {
-  return (await Promise.all(checkNetworks.map((check) => check()))).filter(
-    (network) => network
-  ) as Network[]
+  return (await Promise.all(checkNetworks.map((check) => check()))).filter(Boolean) as Network[]
 }
 
 const MAX_NB_OF_SOCIALS_TO_SHOW = 3

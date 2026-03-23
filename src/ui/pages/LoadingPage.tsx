@@ -10,7 +10,14 @@ import { ThemedStyledLottieView } from '../animations/ThemedStyledLottieView'
 const UnmemoizedLoadingPage: FunctionComponent = () => {
   return (
     <Container>
-      <ThemedStyledLottieView width={150} height={150} source={LoaderAnimation} />
+      <ThemedStyledLottieView
+        width={150}
+        height={150}
+        source={LoaderAnimation}
+        autoPlay
+        loop
+        usePartialPlayback={false}
+      />
       <LoadingText>Chargement en cours...</LoadingText>
     </Container>
   )

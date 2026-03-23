@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -61,7 +61,7 @@ describe('<OfferAbout />', () => {
 
   describe('Description', () => {
     it('should display description', () => {
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...offerResponseSnap,
         description: 'Cette offre est super cool cool cool cool cool cool',
       }
@@ -81,7 +81,7 @@ describe('<OfferAbout />', () => {
     })
 
     it('should not display description when no description', () => {
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...offerResponseSnap,
         description: null,
       }
@@ -113,7 +113,7 @@ describe('<OfferAbout />', () => {
     })
 
     it('should not display accessibility when disabilities are not defined', () => {
-      const offer: OfferResponseV2 = {
+      const offer: OfferResponse = {
         ...offerResponseSnap,
         accessibility: {},
       }

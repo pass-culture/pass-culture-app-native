@@ -6,6 +6,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2, SubcategoryIdEnum } from 'api/gen'
 import { offerChroniclesFixture } from 'features/chronicle/fixtures/offerChronicles.fixture'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -48,12 +49,18 @@ jest.mock('queries/subcategories/useSubcategoriesQuery', () => ({
 const mockShowModal = jest.fn()
 const mockCloseModal = jest.fn()
 
+const mockGoBack = jest.fn()
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: mockGoBack,
+  canGoBack: jest.fn(() => true),
+})
+
 const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('Chronicles', () => {
   beforeEach(() => {
-    mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
+    mockServer.getApi(`/v3/offer/${offerResponseSnap.id}`, offerResponseSnap)
     mockServer.getApi(`/v1/offer/${offerResponseSnap.id}/chronicles`, offerChroniclesFixture)
   })
 
@@ -68,27 +75,27 @@ describe('Chronicles', () => {
     })
 
     it('should display book club icon when offer subcategory linked to a book', async () => {
-      mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, {
+      mockServer.getApi(`/v3/offer/${offerResponseSnap.id}`, {
         ...offerResponseSnap,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       })
 
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await screen.findByText('Tous les avis du Book Club')
+      await screen.findByText('Tous les avis du book club')
 
       expect(screen.getAllByTestId('bookClubIcon')[0]).toBeOnTheScreen()
     })
 
     it('should display cine club icon when offer subcategory linked to a film', async () => {
-      mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, {
+      mockServer.getApi(`/v3/offer/${offerResponseSnap.id}`, {
         ...offerResponseSnap,
         subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
       })
 
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await screen.findByText('Tous les avis du Ciné Club')
+      await screen.findByText('Tous les avis du ciné club')
 
       expect(screen.getAllByTestId('cineClubIcon')[0]).toBeOnTheScreen()
     })
@@ -96,7 +103,7 @@ describe('Chronicles', () => {
     it('should scroll to selected chronicle on layout', async () => {
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await screen.findByText('Tous les avis du Ciné Club')
+      await screen.findByText('Tous les avis du ciné club')
 
       await act(async () => {
         fireEvent(screen.getByTestId('chronicle-list'), 'onLayout', mockOnLayout)
@@ -105,7 +112,7 @@ describe('Chronicles', () => {
       await waitFor(() => expect(mockScrollToIndex).toHaveBeenCalledTimes(1))
     })
 
-    it('should open chronicle modal when pressing "C’est quoi le Ciné Club ?" button', async () => {
+    it('should open chronicle modal when pressing "Qui écrit les avis du ciné club ?" button', async () => {
       jest.spyOn(useModal, 'useModal').mockReturnValueOnce({
         visible: false,
         showModal: mockShowModal,
@@ -114,12 +121,12 @@ describe('Chronicles', () => {
       })
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await user.press(await screen.findByText('C’est quoi le Ciné Club ?'))
+      await user.press(await screen.findByText('Qui écrit les avis du ciné club ?'))
 
       expect(mockShowModal).toHaveBeenCalledTimes(1)
     })
 
-    it('should trigger ClickWhatsClub log when pressing "C’est quoi le Ciné Club ?" button', async () => {
+    it('should trigger ClickWhatsClub log when pressing "Qui écrit les avis du ciné club ?" button', async () => {
       jest.spyOn(useModal, 'useModal').mockReturnValueOnce({
         visible: false,
         showModal: jest.fn(),
@@ -128,7 +135,7 @@ describe('Chronicles', () => {
       })
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await user.press(await screen.findByText('C’est quoi le Ciné Club ?'))
+      await user.press(await screen.findByText('Qui écrit les avis du ciné club ?'))
 
       expect(analytics.logClickWhatsClub).toHaveBeenNthCalledWith(1, {
         categoryName: 'CINEMA',
@@ -151,24 +158,21 @@ describe('Chronicles', () => {
     it('should render correctly', async () => {
       render(reactQueryProviderHOC(<Chronicles />))
 
-      expect(await screen.findByText('Tous les avis du Ciné Club')).toBeOnTheScreen()
+      expect(await screen.findByText('Tous les avis du ciné club')).toBeOnTheScreen()
     })
 
-    it('should navigate to offer page without openModalOnNavigation param when pressing back button', async () => {
+    it('should execute goBack when pressing back button', async () => {
       render(reactQueryProviderHOC(<Chronicles />))
 
       await user.press(await screen.findByLabelText('Revenir en arrière'))
 
-      expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Offer', {
-        id: offerResponseSnap.id,
-        openModalOnNavigation: undefined,
-      })
+      expect(mockGoBack).toHaveBeenCalledTimes(1)
     })
 
     it('should not scroll to selected chronicle on layout', async () => {
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await screen.findByText('Tous les avis du Ciné Club')
+      await screen.findByText('Tous les avis du ciné club')
 
       await act(async () => {
         fireEvent(screen.getByTestId('chronicle-list'), 'onLayout', mockOnLayout)
@@ -198,7 +202,7 @@ describe('Chronicles', () => {
       it('should navigate to recommandation thematic home when pressing button', async () => {
         render(reactQueryProviderHOC(<Chronicles />))
 
-        await user.press(await screen.findByText('Voir toutes les recos du Ciné Club'))
+        await user.press(await screen.findByText('Voir tous les avis des clubs'))
 
         await waitFor(async () => {
           expect(mockNavigate).toHaveBeenNthCalledWith(1, 'ThematicHome', {
@@ -211,7 +215,7 @@ describe('Chronicles', () => {
       it('should trigger ClickAllClubRecos log when pressing button', async () => {
         render(reactQueryProviderHOC(<Chronicles />))
 
-        await user.press(await screen.findByText('Voir toutes les recos du Ciné Club'))
+        await user.press(await screen.findByText('Voir tous les avis des clubs'))
 
         await waitFor(() => {
           expect(analytics.logClickAllClubRecos).toHaveBeenNthCalledWith(1, {

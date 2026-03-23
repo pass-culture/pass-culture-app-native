@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { EligibilityType, OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
+import { EligibilityType, OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { BookingState, Step, initialBookingState } from 'features/bookOffer/context/reducer'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
@@ -19,7 +19,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingDetails, BookingDetailsProps } from './BookingDetails'
 
@@ -51,14 +50,6 @@ jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
 
 const mockUseBookingOffer = jest.spyOn(BookingOfferAPI, 'useBookingOfferQuery')
 mockUseBookingOffer.mockReturnValue({ ...mockOffer, isDuo: false })
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
-  SNACK_BAR_TIME_OUT: 5000,
-}))
 
 const mockStocks = mockOffer.stocks
 const mockDigitalStocks = mockDigitalOffer.stocks
@@ -153,7 +144,7 @@ describe('<BookingDetails />', () => {
   })
 
   beforeEach(() => {
-    mockServer.getApi<OfferResponseV2>(`/v2/offer/${mockOfferId}`, offerResponseSnap)
+    mockServer.getApi<OfferResponse>(`/v3/offer/${mockOfferId}`, offerResponseSnap)
   })
 
   afterEach(() => {

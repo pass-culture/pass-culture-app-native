@@ -8,14 +8,15 @@ import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics/provider'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
-import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Clock as InitialClock } from 'ui/svg/icons/Clock'
 import { Duo } from 'ui/svg/icons/Duo'
 import { OfferEvent as DefaultOfferEvent } from 'ui/svg/icons/OfferEvent'
-import { Spacer, Typo } from 'ui/theme'
+import { Share } from 'ui/svg/icons/Share'
+import { Typo } from 'ui/theme'
 
 type Props = {
   booking: BookingListItemResponse
@@ -65,40 +66,46 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Prop
         accessibilityLabel={accessibilityLabel}>
         <OfferImage imageUrl={stock.offer.imageUrl ?? ''} categoryId={categoryId} size="tall" />
         <AttributesView>
-          <BookingItemTitle title={stock.offer.name} />
-          {dateLabel ? <DateLabel>{dateLabel}</DateLabel> : null}
-          {isDuo ? <Duo /> : null}
-          <Spacer.Flex />
-          {withdrawLabel ? (
-            <React.Fragment>
-              {offer.withdrawalType === WithdrawalTypeEnum.on_site ? (
-                <WithdrawContainer testID="on-site-withdrawal-container">
-                  <OfferEvent />
-                  <OnSiteWithdrawalCaption numberOfLines={2}>
-                    {withdrawLabel}
-                  </OnSiteWithdrawalCaption>
-                </WithdrawContainer>
-              ) : (
-                <WithdrawContainer testID="withdraw-container">
-                  <Clock />
-                  <WithdrawCaption numberOfLines={2}>{withdrawLabel}</WithdrawCaption>
-                </WithdrawContainer>
-              )}
-            </React.Fragment>
-          ) : null}
-          {canDisplayExpirationMessage ? (
-            <ExpirationBookingContainer testID="expiration-booking-container">
-              <Clock />
-              <ExpirationBookingLabel>{correctExpirationMessages}</ExpirationBookingLabel>
-            </ExpirationBookingContainer>
-          ) : null}
+          <TopAttributes>
+            <BookingItemTitle title={stock.offer.name} />
+            {dateLabel ? <DateLabel>{dateLabel}</DateLabel> : null}
+            {isDuo ? <Duo /> : null}
+          </TopAttributes>
+          <BottomAttributes>
+            {withdrawLabel ? (
+              <React.Fragment>
+                {offer.withdrawalType === WithdrawalTypeEnum.on_site ? (
+                  <WithdrawContainer testID="on-site-withdrawal-container">
+                    <OfferEvent />
+                    <OnSiteWithdrawalCaption numberOfLines={2}>
+                      {withdrawLabel}
+                    </OnSiteWithdrawalCaption>
+                  </WithdrawContainer>
+                ) : (
+                  <WithdrawContainer testID="withdraw-container">
+                    <Clock />
+                    <WithdrawCaption numberOfLines={2}>{withdrawLabel}</WithdrawCaption>
+                  </WithdrawContainer>
+                )}
+              </React.Fragment>
+            ) : null}
+            {canDisplayExpirationMessage ? (
+              <ExpirationBookingContainer testID="expiration-booking-container">
+                <Clock />
+                <ExpirationBookingLabel>{correctExpirationMessages}</ExpirationBookingLabel>
+              </ExpirationBookingContainer>
+            ) : null}
+          </BottomAttributes>
         </AttributesView>
       </ContentContainer>
       <ShareContainer>
-        <RoundedButton
-          iconName="share"
+        <Button
+          iconButton
+          icon={Share}
           onPress={pressShareOffer}
           accessibilityLabel={`Partager l’offre ${stock.offer.name}`}
+          variant="secondary"
+          color="neutral"
         />
       </ShareContainer>
       {shareContent ? (
@@ -121,9 +128,18 @@ const ContentContainer = styled(InternalTouchableLink)(({ theme }) => ({
 
 const AttributesView = styled.View(({ theme }) => ({
   flex: 1,
+  justifyContent: 'space-between',
   paddingLeft: theme.designSystem.size.spacing.l,
   paddingRight: theme.designSystem.size.spacing.xs,
 }))
+
+const TopAttributes = styled.View({
+  width: '100%',
+})
+
+const BottomAttributes = styled.View({
+  width: '100%',
+})
 
 const WithdrawContainer = styled.View({
   flex: 1,

@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate, popTo, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { navigationRef } from 'features/navigation/navigationRef'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -15,9 +14,8 @@ import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { GeoCoordinates, Position } from 'libs/location/location'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { setSettingsMock } from 'tests/settings/mockSettings'
 import { act, render, screen, userEvent } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { SearchBox } from './SearchBox'
 
@@ -28,14 +26,7 @@ let mockSearchState: SearchState = {
   offerCategories: [SearchGroupNameEnumv2.CINEMA],
   priceRange: [0, 20],
 }
-const mockShowSuccessSnackBar = jest.fn()
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSuccessSnackBar(props)),
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
-}))
+
 const queryWithMoreThan150characters =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non aliquet quam, at ultrices purus. Morbi velit orci, tincidunt sed erat sed efficitur.'
 
@@ -175,7 +166,7 @@ describe('SearchBox component', () => {
 
   it('should render SearchBox', async () => {
     renderSearchBox()
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = getSearchInput()
 
     expect(searchInput).toBeOnTheScreen()
   })
@@ -188,7 +179,7 @@ describe('SearchBox component', () => {
 
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = getSearchInput()
 
     await user.type(searchInput, 'j', { submitEditing: true })
 
@@ -207,14 +198,14 @@ describe('SearchBox component', () => {
   it('should display error message when query submitted is longer than 150 characters', async () => {
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = getSearchInput()
 
     await user.type(searchInput, queryWithMoreThan150characters, { submitEditing: true })
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message: 'Ta recherche ne peut pas faire plus de 150 caractères.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(
+      screen.getByText('Ta recherche ne peut pas faire plus de 150 caractères.')
+    ).toBeOnTheScreen()
   })
 
   it('should navigate to search results on submit', async () => {
@@ -223,7 +214,7 @@ describe('SearchBox component', () => {
 
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = getSearchInput()
 
     await user.type(searchInput, 'j', { submitEditing: true })
 
@@ -254,7 +245,7 @@ describe('SearchBox component', () => {
 
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = getSearchInput()
     await user.type(searchInput, 'j')
     const resetSearchInputButton = screen.getByTestId('Réinitialiser la recherche')
     await user.press(resetSearchInputButton)
@@ -271,26 +262,16 @@ describe('SearchBox component', () => {
 
     renderSearchBox()
 
-    const previousButton = screen.queryByTestId('Revenir en arrière')
+    const previousButton = screen.queryByLabelText('Revenir en arrière')
 
     expect(previousButton).not.toBeOnTheScreen()
-  })
-
-  it('should show back button when being on the search results view', async () => {
-    useRoute.mockReturnValueOnce({ name: SearchView.Results })
-
-    renderSearchBox()
-
-    const previousButton = screen.getByTestId('Revenir en arrière')
-
-    expect(previousButton).toBeOnTheScreen()
   })
 
   it('should show back button when being focus on suggestions', async () => {
     mockIsFocusOnSuggestions = true
     renderSearchBox()
 
-    const previousButton = screen.getByTestId('Revenir en arrière')
+    const previousButton = screen.getByLabelText('Revenir en arrière')
 
     expect(previousButton).toBeOnTheScreen()
   })
@@ -298,7 +279,7 @@ describe('SearchBox component', () => {
   it('should show the text typed by the user', async () => {
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = getSearchInput()
     await user.type(searchInput, 'Some text')
 
     expect(searchInput.props.value).toBe('Some text')
@@ -307,7 +288,7 @@ describe('SearchBox component', () => {
   it('should not execute a search if input is empty', async () => {
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = getSearchInput()
 
     await user.type(searchInput, '')
 
@@ -339,25 +320,6 @@ describe('SearchBox component', () => {
     expect(screen.queryByLabelText('Réinitialiser la recherche')).not.toBeOnTheScreen()
   })
 
-  it('should reset searchState when user go goBack to Landing', async () => {
-    mockSearchState = {
-      ...mockSearchState,
-      query: 'Some text',
-    }
-    useRoute.mockReturnValueOnce({ name: SearchView.Results })
-
-    mockQuery = 'Some text'
-    renderSearchBox(true)
-
-    const goBackIcon = screen.getByTestId('icon-back')
-    await user.press(goBackIcon)
-
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'SET_STATE',
-      payload: { ...initialSearchState, offerCategories: mockSearchState.offerCategories },
-    })
-  })
-
   it('should execute a search if input is not empty', async () => {
     useRoute
       .mockReturnValueOnce({ name: SearchView.Results })
@@ -365,7 +327,7 @@ describe('SearchBox component', () => {
 
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = getSearchInput()
 
     await user.type(searchInput, 'j', { submitEditing: true })
 
@@ -385,7 +347,7 @@ describe('SearchBox component', () => {
     useRoute.mockReturnValueOnce({ name: SearchView.Landing })
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = getSearchInput()
 
     await user.type(searchInput, '')
 
@@ -440,7 +402,7 @@ describe('SearchBox component', () => {
 
       renderSearchBox()
 
-      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+      const searchInput = getSearchInput()
 
       await user.type(searchInput, 'Livres', { submitEditing: true })
 
@@ -475,7 +437,7 @@ describe('SearchBox component', () => {
         useRoute.mockReturnValue({ name: SearchView.Landing })
         renderSearchBox()
 
-        const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+        const searchInput = getSearchInput()
         await user.type(searchInput, queryText, { submitEditing: true })
 
         expect(popTo).toHaveBeenCalledWith('TabNavigator', {
@@ -506,7 +468,7 @@ describe('SearchBox component', () => {
 
       renderSearchBox()
 
-      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+      const searchInput = getSearchInput()
 
       await user.type(searchInput, 'cinéma', { submitEditing: true })
 
@@ -516,7 +478,11 @@ describe('SearchBox component', () => {
 
   describe('Without autocomplete', () => {
     beforeAll(() => {
-      setSettings({ appEnableAutocomplete: false })
+      setSettingsMock({ patchSettingsWith: { appEnableAutocomplete: false } })
+    })
+
+    afterAll(() => {
+      setSettingsMock()
     })
 
     it('should stay on the current view when focusing search input and being on the %s view', async () => {
@@ -524,7 +490,7 @@ describe('SearchBox component', () => {
 
       renderSearchBox()
 
-      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+      const searchInput = getSearchInput()
       await user.type(searchInput, '')
 
       expect(mockDispatch).not.toHaveBeenCalled()
@@ -577,20 +543,12 @@ describe('SearchBox component', () => {
   })
 
   describe('With autocomplete', () => {
-    beforeAll(() => {
-      setSettings({ appEnableAutocomplete: true })
-    })
-
-    afterAll(() => {
-      setSettings()
-    })
-
     it('should unfocus from suggestion when being focus on the suggestions and press back button', async () => {
       mockIsFocusOnSuggestions = true
       useRoute.mockReturnValueOnce({ name: SearchView.Landing })
 
       renderSearchBox()
-      const previousButton = screen.getByTestId('Revenir en arrière')
+      const previousButton = screen.getByLabelText('Revenir en arrière')
 
       await user.press(previousButton)
 
@@ -603,7 +561,7 @@ describe('SearchBox component', () => {
 
       renderSearchBox()
 
-      const previousButton = screen.getByTestId('Revenir en arrière')
+      const previousButton = screen.getByLabelText('Revenir en arrière')
 
       await user.press(previousButton)
 
@@ -642,29 +600,6 @@ describe('SearchBox component', () => {
       useRoute.mockReturnValueOnce({ name: SearchView.Results })
     })
 
-    it('should unselect the venue and set the view to Landing when current route is search and previous route is Venue when the user press the back button', async () => {
-      renderSearchBox()
-
-      const previousButton = screen.getByTestId('Revenir en arrière')
-
-      await user.press(previousButton)
-
-      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-        type: 'SET_STATE',
-        payload: { ...initialSearchState, offerCategories: mockSearchState.offerCategories },
-      })
-    })
-
-    it('should execute go back when current route is search and previous route is Venue', async () => {
-      renderSearchBox()
-
-      const previousButton = screen.getByTestId('Revenir en arrière')
-
-      await user.press(previousButton)
-
-      expect(mockGoBack).toHaveBeenCalledTimes(1)
-    })
-
     it('should update searchState without offerNativeCategories set to undefined when a query is made from another page than ThematicSearch', async () => {
       // TODO(PC-32646): useRoute is called every time a letter is inputted +1
       useRoute
@@ -683,7 +618,7 @@ describe('SearchBox component', () => {
 
       renderSearchBox()
 
-      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+      const searchInput = getSearchInput()
 
       await user.type(searchInput, 'HP', { submitEditing: true })
 
@@ -713,20 +648,6 @@ describe('SearchBox component', () => {
         stale: false,
       })
       useRoute.mockReturnValueOnce({ name: SearchView.Thematic })
-    })
-
-    it('should execute go back when current route is search and previous route is ThematicSearch', async () => {
-      useRoute.mockReturnValueOnce({
-        name: SearchView.Results,
-      })
-
-      renderSearchBox()
-
-      const previousButton = screen.getByTestId('Revenir en arrière')
-
-      await user.press(previousButton)
-
-      expect(mockGoBack).toHaveBeenCalledTimes(1)
     })
 
     it('should clear offerNativeCategories and gtls when a previous search was made on searchResults and now a query is made on ThematicSearch', async () => {
@@ -760,7 +681,7 @@ describe('SearchBox component', () => {
 
       renderSearchBox(false, BOOK_OFFER_CATEGORIES)
 
-      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+      const searchInput = getSearchInput()
 
       await user.type(searchInput, 'HP', { submitEditing: true })
 
@@ -778,6 +699,8 @@ describe('SearchBox component', () => {
     })
   })
 })
+
+const getSearchInput = () => screen.getByTestId('searchInput')
 
 const renderSearchBox = (
   isDesktopViewport?: boolean,

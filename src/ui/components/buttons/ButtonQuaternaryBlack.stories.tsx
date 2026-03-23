@@ -3,7 +3,7 @@ import React from 'react'
 
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { Email } from 'ui/svg/icons/Email'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 
 const meta: Meta<typeof ButtonQuaternaryBlack> = {
   title: 'ui/buttons/ButtonQuaternaryBlack',
@@ -27,11 +27,11 @@ const variantConfig: Variants<typeof ButtonQuaternaryBlack> = [
   },
   {
     label: 'ButtonQuaternaryBlack default with icon',
-    props: { wording: 'Confirmer', icon: Email },
+    props: { wording: 'Confirmer', icon: EmailFilled },
   },
   {
     label: 'ButtonQuaternaryBlack default disabled with icon',
-    props: { wording: 'Confirmer', disabled: true, icon: Email },
+    props: { wording: 'Confirmer', disabled: true, icon: EmailFilled },
   },
 ]
 
