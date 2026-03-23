@@ -71,7 +71,11 @@ const AllHeadersWrapper = () => (
     <Separator.HorizontalWithMargin />
 
     <Typo.BodyAccentXs>LoggedInExBeneficiaryHeader</Typo.BodyAccentXs>
-    <LoggedInExBeneficiaryHeader user={exBeneficiaryUser} {...commonProps} />
+    <LoggedInExBeneficiaryHeader
+      user={exBeneficiaryUser}
+      {...commonProps}
+      remoteConfigData={{ homeEntryIdFreeOffers: 'homeEntryIdFreeOffers' }}
+    />
 
     <Separator.HorizontalWithMargin />
 

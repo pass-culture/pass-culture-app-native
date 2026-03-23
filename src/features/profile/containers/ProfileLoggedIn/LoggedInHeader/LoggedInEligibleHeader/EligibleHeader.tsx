@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
+import { SubscriptionStepperResponseV2 } from 'api/gen'
 import { ActivationBanner } from 'features/profile/components/Banners/ActivationBanner/ActivationBanner'
 import { EligibleMessage } from 'features/profile/components/EligibleMessage/EligibleMessage'
 import { getProfileHeaderTitle } from 'features/profile/helpers/getProfileHeaderTitle'
@@ -9,12 +9,14 @@ import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
-type Props = { user: UserProfileResponseWithoutSurvey } & ProfileFeatureFlagsProps
+type Props = {
+  user: UserProfileResponseWithoutSurvey
+  subscriptionInfos?: SubscriptionStepperResponseV2
+} & ProfileFeatureFlagsProps
 
-export const EligibleHeader = ({ featureFlags, user }: Props) => {
+export const EligibleHeader = ({ featureFlags, user, subscriptionInfos }: Props) => {
   const { firstName, lastName, eligibilityEndDatetime } = user
   const headerTitle = getProfileHeaderTitle({ firstName, lastName })
-  const { data: subscriptionInfos } = useGetStepperInfoQuery()
 
   return (
     <ViewGap gap={6} testID="eligible-header">

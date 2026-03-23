@@ -1,6 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 
+import { SubscriptionStepperResponseV2 } from 'api/gen'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { EligibleFreeHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInEligibleHeader/EligibleFreeHeader'
 import { EligibleHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInEligibleHeader/EligibleHeader'
@@ -8,9 +9,12 @@ import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 
-type Props = { user: UserProfileResponseWithoutSurvey } & ProfileFeatureFlagsProps
+type Props = {
+  user: UserProfileResponseWithoutSurvey
+  subscriptionInfos?: SubscriptionStepperResponseV2
+} & ProfileFeatureFlagsProps
 
-export const LoggedInEligibleHeader = ({ user, featureFlags }: Props) => {
+export const LoggedInEligibleHeader = ({ user, featureFlags, subscriptionInfos }: Props) => {
   const commonProps = { user, featureFlags }
 
   let header: React.ReactNode
@@ -23,7 +27,7 @@ export const LoggedInEligibleHeader = ({ user, featureFlags }: Props) => {
     case UserEligibilityType.ELIGIBLE_CREDIT_V2_18:
     case UserEligibilityType.ELIGIBLE_CREDIT_V3_17:
     case UserEligibilityType.ELIGIBLE_CREDIT_V3_18:
-      header = <EligibleHeader {...commonProps} />
+      header = <EligibleHeader {...commonProps} subscriptionInfos={subscriptionInfos} />
       break
 
     case UserEligibilityType.ELIGIBLE_CREDIT_V3_15:

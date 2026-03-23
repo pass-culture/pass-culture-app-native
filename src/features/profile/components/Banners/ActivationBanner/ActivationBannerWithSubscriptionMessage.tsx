@@ -1,7 +1,6 @@
 import React from 'react'
 
-import { PopOverIcon, SubscriptionMessage } from 'api/gen'
-import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailable'
+import { PopOverIcon, SubscriptionMessage, SubscriptionStepperResponseV2 } from 'api/gen'
 import { getCallToActionLinkForSubscriptionMessage } from 'features/profile/helpers/getCallToActionLinkForSubscriptionMessage'
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/helpers/matchSubscriptionMessageIconToSvg'
 import { Banner } from 'ui/designSystem/Banner/Banner'
@@ -12,12 +11,18 @@ const defaultSubscriptionMessage: SubscriptionMessage = {
   callToAction: undefined,
 }
 
-export const ActivationBannerWithSubscriptionMessage = ({ subscriptionInfos }) => {
-  const subscriptionMessage = subscriptionInfos?.subscriptionMessage || defaultSubscriptionMessage
+type Props = {
+  subscriptionInfos?: SubscriptionStepperResponseV2
+  isMailAppAvailable: boolean
+}
 
+export const ActivationBannerWithSubscriptionMessage = ({
+  subscriptionInfos,
+  isMailAppAvailable,
+}: Props) => {
+  const subscriptionMessage = subscriptionInfos?.subscriptionMessage || defaultSubscriptionMessage
   const { popOverIcon, userMessage } = subscriptionMessage
   const subscriptionIcon = matchSubscriptionMessageIconToSvg(popOverIcon)
-  const isMailAppAvailable = useIsMailAppAvailable()
   const links = getCallToActionLinkForSubscriptionMessage(subscriptionMessage, isMailAppAvailable)
 
   return (

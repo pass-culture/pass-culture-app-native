@@ -14,15 +14,21 @@ import { getIsDepositExpired } from 'features/profile/helpers/getIsDepositExpire
 import { getProfileHeaderTitle } from 'features/profile/helpers/getProfileHeaderTitle'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
-import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
+import { DepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
-type Props = { user: UserProfileResponseWithoutSurvey } & ProfileFeatureFlagsProps
+type Props = {
+  user: UserProfileResponseWithoutSurvey
+  depositAmount: DepositAmountsByAge
+} & ProfileFeatureFlagsProps
 
-export const LoggedInEligibleAndBeneficiaryHeader = ({ featureFlags, user }: Props) => {
+export const LoggedInEligibleAndBeneficiaryHeader = ({
+  featureFlags,
+  user,
+  depositAmount,
+}: Props) => {
   const { firstName, lastName, depositExpirationDate, domainsCredit, eligibility, birthDate } = user
-  const depositAmount = useDepositAmountsByAge()
   const title = getProfileHeaderTitle({ firstName, lastName })
   const isCreditEmpty = domainsCredit?.all.remaining === 0
   const isDepositExpired = getIsDepositExpired({ depositExpirationDate })

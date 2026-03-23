@@ -10,9 +10,12 @@ import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
-type Props = { user: UserProfileResponseWithoutSurvey } & ProfileFeatureFlagsProps
+type Props = {
+  user: UserProfileResponseWithoutSurvey
+  remoteConfigData: { homeEntryIdFreeOffers: string }
+} & ProfileFeatureFlagsProps
 
-export const LoggedInExBeneficiaryHeader = ({ user, featureFlags }: Props) => {
+export const LoggedInExBeneficiaryHeader = ({ user, featureFlags, remoteConfigData }: Props) => {
   const { firstName, lastName, domainsCredit, depositExpirationDate, eligibility } = user
   const headerTitle = getProfileHeaderTitle({ firstName, lastName })
   const isCreditEmpty = domainsCredit?.all.remaining === 0
@@ -30,7 +33,7 @@ export const LoggedInExBeneficiaryHeader = ({ user, featureFlags }: Props) => {
         <PageHeader title={headerTitle} featureFlags={featureFlags} numberOfLines={3} />
         <Subtitle {...subtitleProps} />
       </ViewGap>
-      <ExBeneficiaryBanner />
+      <ExBeneficiaryBanner remoteConfigData={remoteConfigData} />
     </ViewGap>
   )
 }
