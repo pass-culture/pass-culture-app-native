@@ -41,7 +41,7 @@ export enum QueryKeys {
   NEXT_SUBSCRIPTION_STEP = 'nextSubscriptionStep',
   OAUTH_STATE = 'oauthState',
   OFFER = 'offer',
-  OFFER_CHRONICLES = 'offerChronicles',
+  CLUB_ADVICES = 'clubAdvices',
   PLACES = 'places',
   RECOMMENDATION_HITS = 'recommendationHits',
   RECOMMENDATION_OFFER_IDS = 'recommendationOfferIds',
