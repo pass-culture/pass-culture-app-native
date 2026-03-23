@@ -6,8 +6,9 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
 export const SearchResultsContainer: FC = () => {
-  const enableNewSearchResultsPage =
-    useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_SEARCH_RESULTS_PAGE) || true
+  const enableNewSearchResultsPage = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_NEW_SEARCH_RESULTS_PAGE
+  )
 
   return enableNewSearchResultsPage ? <SearchResults /> : <SearchResultsV1 />
 }

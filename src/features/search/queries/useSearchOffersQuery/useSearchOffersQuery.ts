@@ -23,7 +23,7 @@ export const useSearchOffersQuery = <TSelect = FetchSearchOffersResponse>(
     queryFn: ({ pageParam }) =>
       fetchSearchOffers({
         ...params,
-        parameters: { ...params.parameters, page: pageParam as number },
+        parameters: { ...params.parameters, page: pageParam },
       }),
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {

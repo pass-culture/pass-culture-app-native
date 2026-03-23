@@ -15,7 +15,6 @@ type SearchRouteConfig = {
 
 const searchScreens: SearchRouteConfig[] = [
   { name: SearchView.Landing, component: SearchLanding },
-  // { name: SearchView.Results, component: SearchResults },
   { name: SearchView.Results, component: SearchResultsContainer },
   { name: SearchView.Thematic, component: ThematicSearch },
 ]

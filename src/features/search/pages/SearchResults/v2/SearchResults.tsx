@@ -145,17 +145,18 @@ export const SearchResults = () => {
     [pageTracking, searchState.searchId]
   )
 
-  const handleEndReached = useCallback(() => {
-    if (offers && hasNextPage) {
-      const page = offers.lastPage?.offersResponse.page ?? 0
-
-      if (page > 0) {
-        const currentSearchId = searchState.searchId ?? searchIdGenerated
-        void analytics.logSearchScrollToPage(page, currentSearchId)
-      }
-      void fetchNextPage()
+  const handleEndReached = async () => {
+    if (!(offers && hasNextPage)) {
+      return
     }
-  }, [offers, hasNextPage, fetchNextPage, searchState.searchId, searchIdGenerated])
+    const page = offers.lastPage?.offersResponse.page ?? 0
+
+    if (page > 0) {
+      const currentSearchId = searchState.searchId ?? searchIdGenerated
+      void analytics.logSearchScrollToPage(page, currentSearchId)
+    }
+    await fetchNextPage()
+  }
 
   const searchResultHits = isArtistInSearchActive ? hits : { ...hits, artists: [] }
 
