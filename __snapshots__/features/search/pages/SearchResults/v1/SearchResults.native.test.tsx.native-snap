@@ -671,7 +671,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                   "results": [
                     {
                       "type": "return",
-                      "value": undefined,
+                      "value": Promise {},
                     },
                   ],
                 }
