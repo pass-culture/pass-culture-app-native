@@ -11,9 +11,8 @@ import {
   SearchGroupResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { ChronicleCardData } from 'features/chronicle/type'
+import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { Referrals } from 'features/navigation/RootNavigator/types'
-import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { PlaylistType } from 'features/offer/enums'
 import { FavoriteCTAProps } from 'features/offerRefacto/types'
 import { AlgoliaGeoloc } from 'libs/algolia/types'
@@ -90,11 +89,11 @@ type OfferCTAsComponentProps = {
 export type OfferContentProps = {
   offer: OfferResponse
   searchGroupList: SearchGroupResponseModelv2[]
-  chronicleVariantInfo: ChronicleVariantInfo
+  adviceVariantInfo: AdviceVariantInfo
   subcategory: Subcategory
-  onShowChroniclesWritersModal: () => void
+  onShowClubAdviceWritersModal: () => void
   onShowOfferArtistsModal: (artists: OfferArtist[]) => void
-  chronicles?: ChronicleCardData[]
+  advices?: AdviceCardData[]
   headlineOffersCount?: number
   defaultReaction?: ReactionTypeEnum | null
   onReactionButtonPress?: () => void

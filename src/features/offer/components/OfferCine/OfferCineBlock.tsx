@@ -28,7 +28,7 @@ const cinemaCTAButtonName = 'Accéder aux séances'
 
 export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => {
   const theme = useTheme()
-  const route = useRoute<UseRouteType<'Chronicles'>>()
+  const route = useRoute<UseRouteType<'ClubAdvices'>>()
   const from = route.params?.from
   const { setButton, showButton } = useOfferCTA()
   const scrollToAnchor = useScrollToAnchor()

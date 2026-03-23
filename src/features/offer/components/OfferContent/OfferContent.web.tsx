@@ -18,11 +18,11 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   offer,
   searchGroupList,
   subcategory,
-  chronicles,
-  chronicleVariantInfo,
+  advices,
+  adviceVariantInfo,
   defaultReaction,
   onReactionButtonPress,
-  onShowChroniclesWritersModal,
+  onShowClubAdviceWritersModal,
   headlineOffersCount,
   hasVideoCookiesConsent,
   onVideoConsentPress,
@@ -74,8 +74,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           offer={offer}
           searchGroupList={searchGroupList}
           subcategory={subcategory}
-          chronicles={chronicles}
-          chronicleVariantInfo={chronicleVariantInfo}
+          advices={advices}
+          adviceVariantInfo={adviceVariantInfo}
           onOfferPreviewPress={handlePreviewPress}
           isVideoSectionEnabled={isVideoSectionEnabled}
           BodyWrapper={BodyWrapper}
@@ -83,7 +83,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           onReactionButtonPress={onReactionButtonPress}
           headlineOffersCount={headlineOffersCount}
           onLayout={onLayout}
-          onShowChroniclesWritersModal={onShowChroniclesWritersModal}
+          onShowClubAdviceWritersModal={onShowClubAdviceWritersModal}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
           onVideoConsentPress={onVideoConsentPress}
           isMultiArtistsEnabled={isMultiArtistsEnabled}

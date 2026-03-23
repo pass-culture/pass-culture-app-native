@@ -3,7 +3,7 @@ import React, { ComponentProps } from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { OfferResponse, SubcategoriesResponseModelv2 } from 'api/gen'
-import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
+import { adviceVariantInfoFixture } from 'features/advices/fixtures/adviceVariantInfo.fixture'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
@@ -179,8 +179,8 @@ const renderOfferContent = ({
         offer={offer}
         searchGroupList={PLACEHOLDER_DATA.searchGroups}
         subcategory={subcategory}
-        chronicleVariantInfo={chronicleVariantInfoFixture}
-        onShowChroniclesWritersModal={jest.fn()}
+        adviceVariantInfo={adviceVariantInfoFixture}
+        onShowClubAdviceWritersModal={jest.fn()}
         onVideoConsentPress={jest.fn()}
         onShowOfferArtistsModal={jest.fn()}
       />,

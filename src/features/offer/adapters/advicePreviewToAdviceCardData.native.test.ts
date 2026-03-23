@@ -1,22 +1,20 @@
 import { ChroniclePreview } from 'api/gen'
-import { advicePreviewToAdviceCardData } from 'features/offerRefacto/helpers'
+import { advicePreviewToAdviceCardData } from 'features/offer/adapters/advicePreviewToAdviceCardData'
 
-jest.mock('libs/firebase/analytics/analytics')
+const ADVICE_PREVIEW: ChroniclePreview = {
+  id: 1,
+  contentPreview: 'lorem ipsum dolor',
+  dateCreated: '2025-01-20T23:32:13.978038Z',
+  author: {
+    firstName: 'John',
+    age: 13,
+    city: 'Paris',
+  },
+}
+
+const subtitle = 'Membre du Book Club'
 
 describe('advicePreviewToAdviceCardData', () => {
-  const ADVICE_PREVIEW: ChroniclePreview = {
-    id: 1,
-    contentPreview: 'lorem ipsum dolor',
-    dateCreated: '2025-01-20T23:32:13.978038Z',
-    author: {
-      firstName: 'John',
-      age: 13,
-      city: 'Paris',
-    },
-  }
-
-  const subtitle = 'Membre du Book Club'
-
   it('should convert ChroniclePreview to ChronicleCardData with Author', () => {
     expect(advicePreviewToAdviceCardData(ADVICE_PREVIEW, subtitle)).toStrictEqual({
       date: 'Janvier 2025',

@@ -10,11 +10,11 @@ describe('getTagProps', () => {
     expect(getTagProps({ theme: computedTheme, subcategoryId })).toBeNull()
   })
 
-  it('should return "X avis book club" tag when chroniclesCount > 0', () => {
+  it('should return "X avis book club" tag when advicesCount > 0', () => {
     expect(
       getTagProps({
         theme: computedTheme,
-        chroniclesCount: 1,
+        advicesCount: 1,
         likesCount: 10,
         subcategoryId,
       })
@@ -37,7 +37,7 @@ describe('getTagProps', () => {
 
   it('should use short label when hasSmallLayout is true — "X avis"', () => {
     expect(
-      getTagProps({ theme: computedTheme, chroniclesCount: 1, hasSmallLayout: true, subcategoryId })
+      getTagProps({ theme: computedTheme, advicesCount: 1, hasSmallLayout: true, subcategoryId })
     ).toEqual({
       label: '1 avis',
       variant: TagVariant.BOOKCLUB,
@@ -67,11 +67,11 @@ describe('getTagProps', () => {
     })
   })
 
-  it('should return "X avis ciné club" tag when chroniclesCount > 0 and subcategory is not a book club', () => {
+  it('should return "X avis ciné club" tag when advicesCount > 0 and subcategory is not a book club', () => {
     expect(
       getTagProps({
         theme: computedTheme,
-        chroniclesCount: 1,
+        advicesCount: 1,
         subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
       })
     ).toEqual({
@@ -80,11 +80,11 @@ describe('getTagProps', () => {
     })
   })
 
-  it('should return short label "X avis" when chroniclesCount > 0, hasSmallLayout is true, and not a book club', () => {
+  it('should return short label "X avis" when advicesCount > 0, hasSmallLayout is true, and not a book club', () => {
     expect(
       getTagProps({
         theme: computedTheme,
-        chroniclesCount: 1,
+        advicesCount: 1,
         hasSmallLayout: true,
         subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
       })

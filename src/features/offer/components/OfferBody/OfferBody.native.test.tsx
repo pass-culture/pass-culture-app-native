@@ -11,8 +11,8 @@ import {
   SubcategoryIdEnum,
   SubcategoryIdEnumv2,
 } from 'api/gen'
+import { adviceVariantInfoFixture } from 'features/advices/fixtures/adviceVariantInfo.fixture'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
-import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { mockSubcategory, mockSubcategoryBook } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
@@ -671,7 +671,7 @@ describe('<OfferBody />', () => {
           offer={offer}
           subcategory={subcategory}
           distance={distance}
-          chronicleVariantInfo={chronicleVariantInfoFixture}
+          adviceVariantInfo={adviceVariantInfoFixture}
           isVideoSectionEnabled={isVideoSectionEnabled}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
           onVideoConsentPress={jest.fn()}

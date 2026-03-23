@@ -4,10 +4,10 @@ import { View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
-import { ChronicleCardBody } from 'features/chronicle/components/ChronicleCardBody/ChronicleCardBody'
+import { AdviceCardBody } from 'features/advices/components/AdviceCardBody/AdviceCardBody'
+import { getFormattedAdviceDate } from 'features/advices/helpers/getFormattedAdviceDate'
 import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
-import { getFormattedChronicleDate } from 'shared/chronicle/getFormattedChronicleDate/getFormattedChronicleDate'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -49,8 +49,8 @@ export const HeadlineOffer: FunctionComponent<HeadlineOfferProps> = ({
       </Container>
       {advice ? (
         <AdviceContainer>
-          <ChronicleCardBody
-            date={getFormattedChronicleDate(advice.publicationDatetime)}
+          <AdviceCardBody
+            date={getFormattedAdviceDate(advice.publicationDatetime)}
             description={advice.content}
             tag={
               <Tag
@@ -71,7 +71,7 @@ export const HeadlineOffer: FunctionComponent<HeadlineOfferProps> = ({
                 iconPosition="left"
               />
             </View>
-          </ChronicleCardBody>
+          </AdviceCardBody>
         </AdviceContainer>
       ) : null}
     </React.Fragment>

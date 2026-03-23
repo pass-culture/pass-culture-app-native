@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { ChronicleCardData } from 'features/chronicle/type'
+import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { InfoCounter } from 'features/offer/components/InfoCounter/InfoCounter'
-import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { formatLikesCounter } from 'features/offer/helpers/formatLikesCounter/formatLikesCounter'
 import { getRecommendationText } from 'features/offer/helpers/getRecommendationText/getRecommendationText'
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
@@ -15,48 +14,48 @@ import { Star } from 'ui/svg/Star'
 
 type Props = {
   likesCount?: number
-  chroniclesCount?: number | null
+  advicesCount?: number | null
   headlineOffersCount?: number
-  chronicleVariantInfo: ChronicleVariantInfo
-  chronicles?: ChronicleCardData[]
+  adviceVariantInfo: AdviceVariantInfo
+  advices?: AdviceCardData[]
 }
 
 export const OfferReactionSection: FunctionComponent<Props> = ({
   likesCount,
-  chroniclesCount,
+  advicesCount,
   headlineOffersCount,
-  chronicleVariantInfo,
-  chronicles,
+  adviceVariantInfo,
+  advices,
 }) => {
   const scrollToAnchor = useScrollToAnchor()
-  const hasPublishedChronicles = (chronicles?.length ?? 0) > 0
-  const hasUnpublishedChronicles = (chroniclesCount ?? 0) - (chronicles?.length ?? 0) > 0
-  const chroniclesCounter = chroniclesCount ?? 0
+  const hasPublishedAdvices = (advices?.length ?? 0) > 0
+  const hasUnpublishedAdvices = (advicesCount ?? 0) - (advices?.length ?? 0) > 0
+  const advicesCounter = advicesCount ?? 0
 
   const likesCounterElement = likesCount ? (
     <LikesInfoCounter text={formatLikesCounter(likesCount)} />
   ) : null
 
-  const handleChroniclesPress = () => {
-    scrollToAnchor(AnchorNames.CHRONICLES_SECTION)
+  const handleAdvicesPress = () => {
+    scrollToAnchor(AnchorNames.CLUB_ADVICE_SECTION)
   }
 
-  const getChroniclesCounterElement = (): React.ReactNode => {
-    if (hasPublishedChronicles) {
+  const getAdvicesCounterElement = (): React.ReactNode => {
+    if (hasPublishedAdvices) {
       return (
-        <TouchableOpacity onPress={handleChroniclesPress} testID="chroniclesCounter">
-          <ChroniclesInfoCounter
-            text={`${chroniclesCounter} avis ${chronicleVariantInfo.labelReaction}`}
-            icon={chronicleVariantInfo.SmallIcon}
+        <TouchableOpacity onPress={handleAdvicesPress} testID="advicesCounter">
+          <AdvicesInfoCounter
+            text={`${advicesCounter} avis ${adviceVariantInfo.labelReaction}`}
+            icon={adviceVariantInfo.SmallIcon}
           />
         </TouchableOpacity>
       )
     }
-    if (hasUnpublishedChronicles) {
+    if (hasUnpublishedAdvices) {
       return (
-        <ChroniclesInfoCounter
-          text={`Recommandé par le ${chronicleVariantInfo.labelReaction}`}
-          icon={chronicleVariantInfo.SmallIcon}
+        <AdvicesInfoCounter
+          text={`Recommandé par le ${adviceVariantInfo.labelReaction}`}
+          icon={adviceVariantInfo.SmallIcon}
         />
       )
     }
@@ -64,21 +63,20 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
     return null
   }
 
-  const chroniclesCounterElement = getChroniclesCounterElement()
+  const advicesCounterElement = getAdvicesCounterElement()
 
   const headlineOffersCounterElement = headlineOffersCount ? (
     <HeadlineOffersCount text={getRecommendationText(headlineOffersCount)} />
   ) : null
 
-  if (!(likesCounterElement || chroniclesCounterElement || headlineOffersCounterElement))
-    return null
+  if (!(likesCounterElement || advicesCounterElement || headlineOffersCounterElement)) return null
 
   return (
     <ViewGap gap={4}>
-      {likesCounterElement || chroniclesCounterElement ? (
+      {likesCounterElement || advicesCounterElement ? (
         <InfosCounterContainer gap={2}>
           {likesCounterElement}
-          {chroniclesCounterElement}
+          {advicesCounterElement}
         </InfosCounterContainer>
       ) : null}
       {headlineOffersCounterElement}
@@ -103,7 +101,7 @@ const LikesInfoCounter = styled(InfoCounter).attrs<{ icon?: React.ReactNode }>({
   icon: <ThumbUpIcon testID="likesCounterIcon" />,
 })``
 
-const ChroniclesInfoCounter = styled(InfoCounter).attrs<{ icon: React.ReactNode }>(({ icon }) => ({
+const AdvicesInfoCounter = styled(InfoCounter).attrs<{ icon: React.ReactNode }>(({ icon }) => ({
   icon,
 }))``
 
