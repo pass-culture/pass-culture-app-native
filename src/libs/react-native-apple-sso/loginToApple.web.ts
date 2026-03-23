@@ -15,8 +15,14 @@ export const loginToApple = async ({ onSuccess, onError }: AppleLoginOptions) =>
     return
   }
 
+  const clientId = env.APPLE_SERVICE_ID?.trim()
+  if (!clientId) {
+    onError?.(new Error('APPLE_SERVICE_ID is not configured'))
+    return
+  }
+
   const params = new URLSearchParams({
-    client_id: env.APPLE_SERVICE_ID as string,
+    client_id: clientId,
     redirect_uri: `${WEBAPP_V2_URL}/oauth/apple/callback`,
     response_mode: 'form_post',
     response_type: 'code',

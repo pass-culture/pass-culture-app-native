@@ -11,7 +11,10 @@ export const loginToApple = async ({ onSuccess, onError }: AppleLoginOptions) =>
       requestedScopes: [appleAuth.Scope.FULL_NAME, appleAuth.Scope.EMAIL],
     })
 
-    if (!appleResponse.authorizationCode) return
+    if (!appleResponse.authorizationCode) {
+      onError?.(new Error('Apple Sign-In returned no authorization code'))
+      return
+    }
 
     const { oauthStateToken } = await api.getNativeV1OauthState()
     onSuccess({ code: appleResponse.authorizationCode, state: oauthStateToken })
