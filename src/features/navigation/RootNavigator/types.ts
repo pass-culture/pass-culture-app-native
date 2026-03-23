@@ -192,9 +192,9 @@ type ArtistParams = {
   id: string
 }
 
-type ChroniclesParams = {
+type ClubAdvicesParams = {
   offerId: number
-  chronicleId?: number
+  adviceId?: number
   from?: Referrals
 }
 
@@ -224,8 +224,8 @@ export type RootStackParamList = {
   Bookings: { activeTab?: BookingsTab } | undefined
   ChangeEmailExpiredLink: undefined
   CheatcodesStackNavigator?: NavigatorScreenParams<CheatcodesStackParamList>
-  Chronicles: ChroniclesParams
-  _DeeplinkOnlyChronicles1: ChroniclesParams
+  ClubAdvices: ClubAdvicesParams
+  _DeeplinkOnlyClubAdvices1: ClubAdvicesParams
   CulturalSurvey: undefined
   DeeplinksGenerator: undefined
   EighteenBirthday: undefined
