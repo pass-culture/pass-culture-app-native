@@ -54,7 +54,7 @@ export const SSOButtonAppleBase: FC<Props> = ({ type, onSuccess }) => {
       wording={buttonWording}
       icon={Apple}
       onPress={handleLogin}
-      variant="secondary"
+      variant="primary"
       fullWidth
       color="neutral"
     />

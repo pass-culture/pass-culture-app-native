@@ -65,24 +65,31 @@ export default ({ mode }) => {
     },
     plugins: [
       {
-        name: 'serve-well-known',
+        name: 'apple-sso-callback',
         configureServer(server) {
-          server.middlewares.use((req, res, next) => {
-            const pathname = req.url?.split('?')[0]
-            if (pathname?.startsWith('/.well-known/')) {
-              const filePath = path.resolve(process.cwd(), 'public', pathname.slice(1))
-              console.log(`[serve-well-known] Serving: ${pathname} -> ${filePath}`)
-              if (fs.existsSync(filePath)) {
-                const content = fs.readFileSync(filePath, 'utf-8')
-                res.setHeader('Content-Type', 'application/json; charset=utf-8')
-                res.setHeader('Content-Length', Buffer.byteLength(content))
-                res.statusCode = 200
-                res.end(content)
-                return
-              }
-              console.warn(`[serve-well-known] File not found: ${filePath}`)
-            }
-            next()
+          server.middlewares.use('/oauth/apple/callback', (req, res, next) => {
+            if (req.method !== 'POST') return next()
+
+            let body = ''
+            req.on('data', (chunk) => (body += chunk))
+            req.on('end', () => {
+              const params = new URLSearchParams(body)
+              const code = params.get('code') ?? ''
+              const state = params.get('state') ?? ''
+              const origin = req.headers['x-forwarded-proto']
+                ? `${req.headers['x-forwarded-proto']}://${req.headers['x-forwarded-host']}`
+                : `http://${req.headers['host']}`
+
+              res.setHeader('Content-Type', 'text/html; charset=utf-8')
+              res.statusCode = 200
+              res.end(`<!DOCTYPE html><html><body><script>
+                window.opener && window.opener.postMessage(
+                  { type: 'apple-sso-callback', code: ${JSON.stringify(code)}, state: ${JSON.stringify(state)} },
+                  ${JSON.stringify(origin)}
+                );
+                window.close();
+              </script></body></html>`)
+            })
           })
         },
       },
@@ -163,7 +170,7 @@ export default ({ mode }) => {
         },
       ],
     },
-    server: { ...proxyConfig, open: true, allowedHosts: ['9872-2a01-cb04-14d-e900-4882-ef5d-3344-9874.ngrok-free.app'] },
+    server: { ...proxyConfig, open: true, allowedHosts: ['f5f2-2a01-cb04-14d-e900-1f7-4df-ce49-5397.ngrok-free.app'] },
     preview: proxyConfig,
     optimizeDeps: {
       include: ['react-native', 'react-native-web'],
