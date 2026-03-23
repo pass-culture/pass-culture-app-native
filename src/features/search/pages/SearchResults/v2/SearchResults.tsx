@@ -1,3 +1,5 @@
+//
+
 import { useNavigationState } from '@react-navigation/native'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
@@ -6,20 +8,29 @@ import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
+import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
+import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchResultsContent } from 'features/search/components/SearchResultsContent/SearchResultsContent'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
-import { usePrevious } from 'features/search/helpers/usePrevious'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { useSync } from 'features/search/helpers/useSync/useSync'
+import { selectSearchArtists } from 'features/search/queries/useSearchArtists/selectors/selectSearchArtists'
+import { useSearchArtistsQuery } from 'features/search/queries/useSearchArtists/useSearchArtistsQuery'
+import { selectSearchOffers } from 'features/search/queries/useSearchOffersQuery/selectors/selectSearchOffers'
+import { useSearchOffersQuery } from 'features/search/queries/useSearchOffersQuery/useSearchOffersQuery'
+import { selectSearchVenues } from 'features/search/queries/useSearchVenuesQuery/selectors/selectSearchVenues'
+import { useSearchVenuesQuery } from 'features/search/queries/useSearchVenuesQuery/useSearchVenuesQuery'
+import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
@@ -42,7 +53,6 @@ export const SearchResults = () => {
   const { isFocusOnSuggestions, searchState, dispatch } = useSearch()
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
-  const { userLocation } = useLocation()
   const { user } = useAuthContext()
   const { visible, showModal, hideModal } = useModal(false)
 
@@ -51,25 +61,58 @@ export const SearchResults = () => {
     [setQueryHistory]
   )
 
-  const { geolocPosition } = useLocation()
-  const previousGeolocPosition = usePrevious(geolocPosition)
+  const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius, geolocPosition } =
+    useLocation()
 
   const isArtistInSearchActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE_IN_SEARCH)
   const enableAIFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR)
 
+  const { disabilities } = useAccessibilityFiltersContext()
+  const isUserUnderage = useIsUserUnderage()
   const {
-    hits,
+    data: { aroundPrecision },
+  } = useRemoteConfigQuery()
+
+  const queryParams = {
+    parameters: { page: 0, ...searchState },
+    buildLocationParameterParams: {
+      userLocation,
+      selectedLocationMode,
+      aroundPlaceRadius,
+      aroundMeRadius,
+      geolocPosition,
+    },
+    aroundPrecision,
+    disabilitiesProperties: disabilities,
+    isUserUnderage,
+  }
+
+  const transformHits = useTransformOfferHits()
+
+  const { data: artists, isLoading: isArtistsQueryLoading } = useSearchArtistsQuery(queryParams, {
+    select: selectSearchArtists,
+  })
+  const {
+    data: offers,
     hasNextPage,
     fetchNextPage,
-    data,
     refetch,
-    nbHits,
-    isLoading,
     isRefetching,
-    userData,
-    venuesUserData,
-    offerVenues,
-  } = useSearchResults()
+    isLoading: isOffersQueryLoading,
+  } = useSearchOffersQuery(queryParams, {
+    select: (data) => selectSearchOffers({ data, transformHits }),
+  })
+  const { data: venues, isLoading: isVenuesQueryLoading } = useSearchVenuesQuery(queryParams, {
+    select: selectSearchVenues,
+  })
+
+  const hits: SearchOfferHits = {
+    artists: artists ?? [],
+    duplicatedOffers: offers?.duplicatedOffers ?? [],
+    offers: offers?.offers ?? [],
+    venues: venues?.algoliaVenues ?? [],
+    venueNotOpenToPublic: venues?.venueNotOpenToPublic ?? [],
+  }
 
   const pageTracking = usePageTracking({
     pageName: 'SearchResults',
@@ -102,20 +145,9 @@ export const SearchResults = () => {
     [pageTracking, searchState.searchId]
   )
 
-  const shouldRefetchResults = Boolean(
-    (geolocPosition && !previousGeolocPosition) || (!geolocPosition && previousGeolocPosition)
-  )
-
-  useEffect(() => {
-    if (shouldRefetchResults) {
-      void refetch()
-    }
-  }, [refetch, shouldRefetchResults])
-
   const handleEndReached = useCallback(() => {
-    if (data && hasNextPage) {
-      const [lastPage] = data.pages.slice(-1)
-      const page = lastPage?.offers.page ?? 0
+    if (offers && hasNextPage) {
+      const page = offers.lastPage?.offersResponse.page ?? 0
 
       if (page > 0) {
         const currentSearchId = searchState.searchId ?? searchIdGenerated
@@ -123,7 +155,7 @@ export const SearchResults = () => {
       }
       void fetchNextPage()
     }
-  }, [data, hasNextPage, fetchNextPage, searchState.searchId, searchIdGenerated])
+  }, [offers, hasNextPage, fetchNextPage, searchState.searchId, searchIdGenerated])
 
   const searchResultHits = isArtistInSearchActive ? hits : { ...hits, artists: [] }
 
@@ -162,13 +194,13 @@ export const SearchResults = () => {
             <SearchResultsContent
               hits={searchResultHits}
               onEndReached={handleEndReached}
-              onSearchResultsRefresh={refetch}
-              nbHits={nbHits}
-              isLoading={isLoading}
+              onSearchResultsRefresh={() => refetch()}
+              nbHits={offers?.nbHits ?? 0}
+              isLoading={isArtistsQueryLoading && isOffersQueryLoading && isVenuesQueryLoading}
               isRefetching={isRefetching}
-              userData={userData}
-              venuesUserData={venuesUserData}
-              offerVenues={offerVenues}
+              userData={offers?.userData}
+              venuesUserData={venues?.venuesUserData ?? undefined}
+              offerVenues={offers?.offerVenues ?? []}
               onViewableItemsChanged={handleViewableItemsChanged}
               enableAIFakeDoor={enableAIFakeDoor}
               onPressAIFakeDoorBanner={showModal}

@@ -1,5 +1,6 @@
 import { useFocusEffect, useIsFocused } from '@react-navigation/native'
 import { FlashListRef } from '@shopify/flash-list'
+import { SearchResponse } from 'algoliasearch'
 import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { FlatList, Platform, useWindowDimensions, ViewToken } from 'react-native'
@@ -72,10 +73,9 @@ export type SearchResultsContentProps = {
   onSearchResultsRefresh: () => void
   hits: SearchOfferHits
   nbHits: number
-  isLoading?: boolean
-  isFetching?: boolean
-  isFetchingNextPage?: boolean
-  userData: unknown
+  isLoading: boolean
+  isRefetching: boolean
+  userData: SearchResponse<Offer[]>['userData']
   venuesUserData: VenuesUserData
   offerVenues: Venue[]
   onPressAIFakeDoorBanner: () => void
@@ -95,8 +95,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   hits,
   nbHits,
   isLoading,
-  isFetching,
-  isFetchingNextPage,
+  isRefetching,
   userData,
   venuesUserData,
   offerVenues,
@@ -120,8 +119,8 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const { searchState } = useSearch()
   const { navigateToSearchFilter } = useNavigateToSearchFilter()
 
-  const showSkeleton = useIsFalseWithDelay(!!isLoading, ANIMATION_DURATION)
-  const isRefreshing = useIsFalseWithDelay(!!isFetching, ANIMATION_DURATION)
+  const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
+  const isRefreshing = useIsFalseWithDelay(isRefetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
   const { geolocPosition, selectedLocationMode, setSelectedLocationMode, selectedPlace, setPlace } =
     useLocation()
@@ -336,7 +335,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     [Tab.SEARCHLIST]: (
       <SearchList
         ref={searchListRef}
-        isFetchingNextPage={!!isFetchingNextPage}
         hits={hits}
         nbHits={nbHits}
         renderItem={renderItem}

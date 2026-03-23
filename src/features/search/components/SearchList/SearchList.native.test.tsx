@@ -57,7 +57,6 @@ describe('<SearchList />', () => {
     autoScrollEnabled: true,
     refreshing: false,
     onRefresh: jest.fn(),
-    isFetchingNextPage: false,
     onEndReached: jest.fn(),
     onScroll: jest.fn(),
     userData: [],

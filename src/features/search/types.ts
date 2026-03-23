@@ -96,7 +96,6 @@ export interface SearchListProps {
   autoScrollEnabled: boolean
   refreshing: boolean
   onRefresh: (() => void) | null | undefined
-  isFetchingNextPage: boolean
   onEndReached: () => void
   userData: SearchResponse<Offer[]>['userData']
   onPressAIFakeDoorBanner: () => void
@@ -182,8 +181,6 @@ export type ThematicPlaylistProps = {
   ) => void
   searchId?: string
 }
-
-export type SearchResultsTabPanels = 'ALL' | 'OFFERS' | 'ARTISTS' | 'VENUES'
 
 export type FetchSearchResultsArgs = {
   parameters: SearchQueryParameters
