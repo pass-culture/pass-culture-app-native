@@ -15,6 +15,7 @@ type Props = {
   isSearchDisabled?: boolean
   children?: never
   isResetDisabled?: boolean
+  displayGradient?: boolean
 }
 
 export const FilterPageButtons: FunctionComponent<Props> = ({
@@ -24,6 +25,7 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
   filterBehaviour,
   isSearchDisabled,
   isResetDisabled,
+  displayGradient,
 }) => {
   let searchButtonText = ''
   switch (filterBehaviour) {
@@ -39,7 +41,7 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
 
   return (
     <Wrapper>
-      <StickyBottomGradient />
+      {displayGradient ? <StickyBottomGradient /> : null}
       <Container isModal={isModal} gap={4}>
         <ResetButtonWrapper>
           <Button
