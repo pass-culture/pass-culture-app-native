@@ -46,12 +46,12 @@ const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 
 const apiSignUpSpy = jest.spyOn(api, 'postNativeV1Account')
-const apiSSOSignUpSpy = jest.spyOn(api, 'postNativeV1OauthGoogleAccount')
+const apiSSOSignUpSpy = jest.spyOn(api, 'postNativeV1OauthssoProviderAccount')
 
 const loginAndRedirectMock = jest.fn()
 jest.spyOn(LoginAndRedirectAPI, 'useLoginAndRedirect').mockReturnValue(loginAndRedirectMock)
 
-const apiPostGoogleAuthorize = jest.spyOn(api, 'postNativeV1OauthGoogleAuthorize')
+const apiPostOAuthAuthorize = jest.spyOn(api, 'postNativeV1OauthssoProviderAuthorize')
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
@@ -486,18 +486,21 @@ describe('Signup Form', () => {
 
       await pressSSOButton()
 
-      expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
-        authorizationCode: 'mockServerAuthCode',
-        oauthStateToken: 'oauth_state_token',
-        deviceInfo: {
-          deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-          os: 'iOS',
-          source: 'iPhone 13',
-          resolution: '750x1334',
-          screenZoomLevel: undefined,
-          fontScale: -1,
+      expect(apiPostOAuthAuthorize).toHaveBeenCalledWith(
+        {
+          authorizationCode: 'mockServerAuthCode',
+          oauthStateToken: 'oauth_state_token',
+          deviceInfo: {
+            deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+            os: 'iOS',
+            source: 'iPhone 13',
+            resolution: '750x1334',
+            screenZoomLevel: undefined,
+            fontScale: -1,
+          },
         },
-      })
+        'google'
+      )
     })
 
     it('should go to next step when sso button is clicked and sso account does not exist', async () => {

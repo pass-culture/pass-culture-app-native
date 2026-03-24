@@ -30,6 +30,7 @@ export const SSOButtonAppleBase: FC<Props> = ({ type, onSuccess }) => {
   if (Platform.OS === 'android') return null
 
   const onError = async (error: unknown) => {
+    console.log('[AppleSSO:Button] onError called:', error)
     showErrorSnackBar('Une erreur est survenue, veuillez réessayer.')
     if (logType === LogTypeEnum.INFO) {
       eventMonitoring.captureException(`Can\u2019t login via Apple: ${getErrorMessage(error)}`, {
@@ -39,12 +40,20 @@ export const SSOButtonAppleBase: FC<Props> = ({ type, onSuccess }) => {
     }
   }
 
-  const handleLogin = async () =>
-    loginToApple({
-      onSuccess: ({ code, state }) =>
-        onSuccess({ authorizationCode: code, oauthStateToken: state, provider: 'apple' }),
+  const handleLogin = async () => {
+    console.log('[AppleSSO:Button] handleLogin pressed, calling loginToApple...')
+    return loginToApple({
+      onSuccess: ({ code, state }) => {
+        console.log('[AppleSSO:Button] loginToApple onSuccess, calling signIn mutation with:', {
+          authorizationCode: code.substring(0, 10) + '...',
+          oauthStateToken: state.substring(0, 10) + '...',
+          provider: 'apple',
+        })
+        onSuccess({ authorizationCode: code, oauthStateToken: state, provider: 'apple' })
+      },
       onError,
     })
+  }
 
   const buttonWording = `${type === 'login' ? 'Se connecter' : 'S\u2019inscrire'} avec Apple`
 

@@ -62,36 +62,6 @@ export default ({ mode }) => {
       __DEV__: env.NODE_ENV !== 'production',
     },
     plugins: [
-      // Dev-only: handles Apple's form_post callback in local dev (in production, the backend handles this route)
-      {
-        name: 'apple-sso-callback',
-        configureServer(server) {
-          server.middlewares.use('/oauth/apple/callback', (req, res, next) => {
-            if (req.method !== 'POST') return next()
-
-            let body = ''
-            req.on('data', (chunk) => (body += chunk))
-            req.on('end', () => {
-              const params = new URLSearchParams(body)
-              const code = params.get('code') ?? ''
-              const state = params.get('state') ?? ''
-              const origin = req.headers['x-forwarded-proto']
-                ? `${req.headers['x-forwarded-proto']}://${req.headers['x-forwarded-host']}`
-                : `http://${req.headers['host']}`
-
-              res.setHeader('Content-Type', 'text/html; charset=utf-8')
-              res.statusCode = 200
-              res.end(`<!DOCTYPE html><html><body><script>
-                window.opener && window.opener.postMessage(
-                  { type: 'apple-sso-callback', code: ${JSON.stringify(code)}, state: ${JSON.stringify(state)} },
-                  ${JSON.stringify(origin)}
-                );
-                window.close();
-              </script></body></html>`)
-            })
-          })
-        },
-      },
       react(),
       env.ANALYZE_BUNDLE ? analyzer() : null,
       {
@@ -169,7 +139,7 @@ export default ({ mode }) => {
         },
       ],
     },
-    server: { ...proxyConfig, open: true },
+    server: { ...proxyConfig, open: true, allowedHosts: ['nyono-86-238-171-43.a.free.pinggy.link'] },
     preview: proxyConfig,
     optimizeDeps: {
       include: ['react-native', 'react-native-web'],

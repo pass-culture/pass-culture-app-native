@@ -1,8 +1,9 @@
-import { AppleSigninRequest, GoogleSigninRequest, SigninRequest } from 'api/gen'
+import { OAuthSigninRequest, SigninRequest } from 'api/gen'
 
 export type SignInResponseFailure = {
   isSuccess: false
   statusCode?: number
+  provider?: 'google' | 'apple'
   content?:
     | {
         code:
@@ -49,4 +50,4 @@ export type PreValidationSignupLastStepProps = {
 }
 
 // Frontend discriminator to distinguish Apple from Google (same API shape)
-export type LoginRequest = SigninRequest | GoogleSigninRequest | (AppleSigninRequest & { provider: 'apple' })
+export type LoginRequest = SigninRequest | (OAuthSigninRequest & { provider: 'google' | 'apple' })

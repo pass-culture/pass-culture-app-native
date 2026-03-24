@@ -262,6 +262,7 @@ export type RootStackParamList = {
   _DeeplinkOnlyOfferPreview3: OfferPreviewParams
   OfferVideoPreview: OfferVideoPreviewParams
   OnboardingStackNavigator?: NavigatorScreenParams<OnboardingStackParamList>
+  AppleSSOCallback: undefined
   OnboardingSubscription: undefined
   PageNotFound: undefined
   ProAdvicesOffer: ProAdvicesOfferParams

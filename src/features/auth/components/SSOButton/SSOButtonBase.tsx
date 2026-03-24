@@ -15,9 +15,11 @@ type Props = {
   onSuccess: ({
     authorizationCode,
     oauthStateToken,
+    provider,
   }: {
     authorizationCode: string
     oauthStateToken: string
+    provider: 'google'
   }) => void
 }
 
@@ -38,7 +40,7 @@ export const SSOButtonBase: FC<Props> = ({ type, onSuccess }) => {
   const handleLogin = async () =>
     loginToGoogle({
       onSuccess: ({ code, state = '' }) =>
-        onSuccess({ authorizationCode: code, oauthStateToken: state }),
+        onSuccess({ authorizationCode: code, oauthStateToken: state, provider: 'google' }),
       onError,
     })
 

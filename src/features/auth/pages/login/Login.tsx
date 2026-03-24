@@ -108,8 +108,9 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           'SSO_EMAIL_NOT_VALIDATED',
         ].includes(failureCode)
       ) {
+        const providerName = response.provider === 'apple' ? 'Apple' : 'Google'
         showErrorSnackBar(
-          'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.'
+          `Ton compte ${providerName} semble ne pas être valide. Pour pouvoir te connecter, confirme d\u2019abord ton adresse e-mail ${providerName}.`
         )
       } else if (failureCode === 'EMAIL_NOT_VALIDATED') {
         const email = getValues('email')?.trim()

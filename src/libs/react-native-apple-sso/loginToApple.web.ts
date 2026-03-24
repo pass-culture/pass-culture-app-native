@@ -1,6 +1,5 @@
 import { api } from 'api/api'
 import { env } from 'libs/environment/env'
-import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { AppleLoginOptions } from 'libs/react-native-apple-sso/types'
 
 const APPLE_AUTH_ENDPOINT = 'https://appleid.apple.com/auth/authorize'
@@ -23,7 +22,7 @@ export const loginToApple = async ({ onSuccess, onError }: AppleLoginOptions) =>
 
   const params = new URLSearchParams({
     client_id: clientId,
-    redirect_uri: `${WEBAPP_V2_URL}/oauth/apple/callback`,
+    redirect_uri: `${window.location.origin}/oauth/apple/callback`,
     response_mode: 'form_post',
     response_type: 'code',
     scope: 'email',

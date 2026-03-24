@@ -69,8 +69,9 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         onSSOEmailNotFoundError()
         goToNextStep({ accountCreationToken: errorResponse.content.accountCreationToken })
       } else {
+        const providerName = errorResponse.provider === 'apple' ? 'Apple' : 'Google'
         showErrorSnackBar(
-          'Ton compte Google semble ne pas être valide. Pour pouvoir t’inscrire, confirme d’abord ton adresse e-mail Google.'
+          `Ton compte ${providerName} semble ne pas être valide. Pour pouvoir t\u2019inscrire, confirme d\u2019abord ton adresse e-mail ${providerName}.`
         )
       }
     },

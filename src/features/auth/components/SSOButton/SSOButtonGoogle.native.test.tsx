@@ -28,7 +28,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 jest.mock('libs/network/NetInfoWrapper')
 
-const apiPostGoogleAuthorize = jest.spyOn(API.api, 'postNativeV1OauthGoogleAuthorize')
+const apiPostOAuthAuthorize = jest.spyOn(API.api, 'postNativeV1OauthssoProviderAuthorize')
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 const onSignInFailureSpy = jest.fn()
@@ -68,18 +68,21 @@ describe('<SSOButton />', () => {
 
     await user.press(await screen.findByTestId('S’inscrire avec Google'))
 
-    expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
-      authorizationCode: 'mockServerAuthCode',
-      oauthStateToken: 'oauth_state_token',
-      deviceInfo: {
-        deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-        os: 'iOS',
-        source: 'iPhone 13',
-        resolution: '750x1334',
-        screenZoomLevel: undefined,
-        fontScale: -1,
+    expect(apiPostOAuthAuthorize).toHaveBeenCalledWith(
+      {
+        authorizationCode: 'mockServerAuthCode',
+        oauthStateToken: 'oauth_state_token',
+        deviceInfo: {
+          deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          os: 'iOS',
+          source: 'iPhone 13',
+          resolution: '750x1334',
+          screenZoomLevel: undefined,
+          fontScale: -1,
+        },
       },
-    })
+      'google'
+    )
   })
 
   it('should call onSignInFailure when signin fails', async () => {
