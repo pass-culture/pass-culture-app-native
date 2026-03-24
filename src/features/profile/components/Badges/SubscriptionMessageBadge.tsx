@@ -8,7 +8,7 @@ import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { formatDateToLastUpdatedAtMessage } from 'features/profile/helpers/formatDateToLastUpdatedAtMessage'
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/helpers/matchSubscriptionMessageIconToSvg'
 import { shouldOpenInbox as checkShouldOpenInbox } from 'features/profile/helpers/shouldOpenInbox'
-import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
+import { ActivationDisabledBanner } from 'features/remoteBanners/banners/ActivationDisabledBanner'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Clock } from 'ui/svg/icons/Clock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -76,7 +76,7 @@ export const SubscriptionMessageBadge = ({
       ) : null}
       {disableActivation ? (
         <RemoteActivationBannerContainer>
-          <RemoteActivationBanner
+          <ActivationDisabledBanner
             from="profile"
             remoteActivationBannerOptions={remoteActivationBannerOptions}
           />

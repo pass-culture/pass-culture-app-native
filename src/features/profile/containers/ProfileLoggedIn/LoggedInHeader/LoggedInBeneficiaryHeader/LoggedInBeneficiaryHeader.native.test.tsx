@@ -143,5 +143,15 @@ describe('LoggedInBeneficiaryHeader', () => {
 
 const renderLoggedInBeneficiaryHeader = (user: UserProfileResponseWithoutSurvey) =>
   render(
-    reactQueryProviderHOC(<LoggedInBeneficiaryHeader user={user} featureFlags={featureFlags} />)
+    reactQueryProviderHOC(
+      <LoggedInBeneficiaryHeader
+        user={user}
+        featureFlags={featureFlags}
+        bonificationInfos={{
+          enableBonification: true,
+          onCloseBanner: jest.fn(),
+          hasClosedBonificationBanner: true,
+        }}
+      />
+    )
   )

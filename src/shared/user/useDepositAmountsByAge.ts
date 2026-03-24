@@ -5,7 +5,14 @@ import {
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 
-export function useDepositAmountsByAge() {
+export type DepositAmountsByAge = {
+  fifteenYearsOldDeposit: string
+  sixteenYearsOldDeposit: string
+  seventeenYearsOldDeposit: string
+  eighteenYearsOldDeposit: string
+}
+
+export const useDepositAmountsByAge = (): DepositAmountsByAge => {
   const { data: depositAmountsByAge } = useDepositAmountsByAgeSetting()
 
   const currency = useGetCurrencyToDisplay()

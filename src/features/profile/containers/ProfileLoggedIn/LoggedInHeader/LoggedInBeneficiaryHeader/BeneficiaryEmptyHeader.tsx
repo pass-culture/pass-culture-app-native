@@ -23,7 +23,7 @@ import { Typo } from 'ui/theme'
 type Props = { user: UserProfileResponseWithoutSurvey } & ProfileFeatureFlagsProps
 
 export const BeneficiaryEmptyHeader = ({ user, featureFlags }: Props) => {
-  const { data } = useRemoteConfigQuery()
+  const { data: remoteConfigData } = useRemoteConfigQuery()
   const {
     firstName,
     lastName,
@@ -66,7 +66,13 @@ export const BeneficiaryEmptyHeader = ({ user, featureFlags }: Props) => {
   })
 
   if (isEighteenYearsOldOrMore) {
-    return <LoggedInExBeneficiaryHeader user={user} featureFlags={featureFlags} />
+    return (
+      <LoggedInExBeneficiaryHeader
+        user={user}
+        featureFlags={featureFlags}
+        remoteConfigData={remoteConfigData}
+      />
+    )
   }
 
   return (
@@ -82,7 +88,7 @@ export const BeneficiaryEmptyHeader = ({ user, featureFlags }: Props) => {
           {nextCreditTimingText}
           {ageToShowCreditV3 + 1} ans. En attendant…
         </Typo.Body>
-        <FreeHomeButton homeId={data.homeEntryIdFreeOffers} />
+        <FreeHomeButton homeId={remoteConfigData.homeEntryIdFreeOffers} />
         <GreySeparatorWithBorderDefaultColor />
         <HelpButton birthDate={birthDate} />
       </ContainerHeader>

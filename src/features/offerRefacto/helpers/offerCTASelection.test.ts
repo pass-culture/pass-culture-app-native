@@ -17,7 +17,7 @@ import { CTAContextFixture } from 'features/offerRefacto/fixtures/CTAContext.fix
 import { getCTAWordingAndAction } from 'features/offerRefacto/helpers'
 import { CTAContext } from 'features/offerRefacto/types'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
-import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, exBeneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { OfferModal } from 'shared/offer/enums'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -102,6 +102,7 @@ describe('getCTAWordingAndAction', () => {
       buildGetCTAWordingAndAction({
         offer: { externalTicketOfficeUrl: 'https://www.google.com/' },
         isLoggedIn: true,
+        user: exBeneficiaryUser,
       })
     )
 

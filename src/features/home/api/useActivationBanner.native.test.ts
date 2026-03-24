@@ -159,7 +159,7 @@ describe('useActivationBanner', () => {
       await act(async () => {})
 
       expect(result.current.banner).toEqual({
-        title: 'Débloque ton crédit',
+        title: 'Débloque ton crédit pour bénéficier du pass Culture',
         text: 'API - Bénéficie de ton crédit maintenant !',
         name: BannerName.activation_banner,
       })
