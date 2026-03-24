@@ -60,17 +60,16 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const {
     handleSubmit,
     control,
-    watch,
     setFocus,
     setError: setFormErrors,
     formState: { isValid },
+    getValues,
   } = useForm<LoginFormData>({
     mode: 'all',
     resolver: yupResolver(loginSchema),
     defaultValues: { email: '', password: '' },
     delayError: SUGGESTION_DELAY_IN_MS,
   })
-  const email = watch('email')
 
   const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
 
@@ -112,6 +111,11 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.'
         )
       } else if (failureCode === 'EMAIL_NOT_VALIDATED') {
+        const email = getValues('email')?.trim()
+        if (!email) {
+          setErrorMessage('Impossible de recuperer ton adresse e-mail. Reessaie.')
+          return
+        }
         navigate('SignupConfirmationEmailSent', { email })
       } else if (failureCode === 'ACCOUNT_DELETED') {
         setFormErrors('email', { message: 'Cette adresse e-mail est liée à un compte supprimé' })
@@ -123,7 +127,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         setErrorMessage('E-mail ou mot de passe incorrect')
       }
     },
-    [email, navigate, setErrorMessage, setFocus, setFormErrors]
+    [getValues, navigate, setErrorMessage, setFocus, setFormErrors]
   )
 
   const { mutate: signIn, isPending } = useSignInMutation({
