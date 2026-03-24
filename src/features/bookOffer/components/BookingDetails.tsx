@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { EligibilityType, OfferStockResponse, SubcategoryIdEnum } from 'api/gen'
+import { OfferStockResponse, SubcategoryIdEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Item } from 'features/bookings/components/BookingItemWithIcon'
-import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { BookingInformations } from 'features/bookOffer/components/BookingInformations'
 import { CancellationDetails } from 'features/bookOffer/components/CancellationDetails'
 import { CguDetails } from 'features/bookOffer/components/CguDetails'
@@ -12,6 +11,10 @@ import { CguWithCheckbox } from 'features/bookOffer/components/CguWithCheckbox'
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
+import {
+  getBookingDetails,
+  getVenueBookingDetails,
+} from 'features/bookOffer/helpers/getBookingDetails'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { RotatingTextOptions, useRotatingText } from 'features/bookOffer/helpers/useRotatingText'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
@@ -26,8 +29,6 @@ import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
 import { useSearchVenueOffersInfiniteQuery } from 'queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
-import { formatFullAddress } from 'shared/address/addressFormatter'
-import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { Loader } from 'ui/components/Loader'
@@ -74,7 +75,6 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   const { quantity } = bookingState
 
   const isEvent = offer?.subcategoryId ? mapping[offer?.subcategoryId]?.isEvent : undefined
-
   const loadingMessage = useRotatingText(LOADING_MESSAGES, isLoading)
 
   const isMultivenueCompatibleOffer = Boolean(
@@ -85,9 +85,6 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
   const { onScroll: onScrollModal } = useOpacityTransition()
   const { userLocation, selectedLocationMode, place } = useLocation()
-  const venueName = offer?.address?.label || offer?.venue.name
-
-  const headerMessage = getVenueSelectionHeaderMessage(selectedLocationMode, place, venueName)
 
   const defaultSearchVenueOffers = {
     offerId: 0,
@@ -119,19 +116,17 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   } = useSearchVenueOffersInfiniteQuery(
     Object.assign(defaultSearchVenueOffers, currentSearchVenueOffers)
   )
+  const { venueFullAddress, venueName, shouldDisplayOtherVenuesAvailableButton } =
+    getVenueBookingDetails({
+      offer,
+      shouldFetchSearchVenueOffers,
+      nbVenueItems,
+    })
+  const headerMessage = getVenueSelectionHeaderMessage(selectedLocationMode, place, venueName)
+
   const [isCguChecked, setIsCguChecked] = useState(false)
 
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
-
-  const shouldDisplayOtherVenuesAvailableButton = Boolean(
-    shouldFetchSearchVenueOffers && nbVenueItems > 0
-  )
-
-  const venueStreet = offer?.address?.street || offer?.venue.address
-  const venuePostalCode = offer?.address?.postalCode || offer?.venue.postalCode
-  const venueCity = offer?.address?.city || offer?.venue.city
-
-  const venueFullAddress = formatFullAddress(venueStreet, venuePostalCode, venueCity)
 
   const { visible, hideModal, showModal } = useModal(false)
 
@@ -161,9 +156,9 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
     return ''
   }, [offer?.subcategoryId, isEvent])
 
-  const onEndReached = useCallback(() => {
+  const onEndReached = useCallback(async () => {
     if (data && hasNextPage) {
-      fetchNextPage()
+      await fetchNextPage()
     }
   }, [data, fetchNextPage, hasNextPage])
 
@@ -177,22 +172,22 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
   if (!selectedStock || typeof quantity !== 'number') return null
 
-  const priceInCents = quantity * selectedStock.price
-  const formattedPriceWithEuro = formatCurrencyFromCents(
-    priceInCents,
+  const {
+    formattedPriceWithEuro,
+    isNotUserFreeStatus,
+    isBookingConfirmationButtonDisabled,
+    isFreeOfferToArchive,
+    deductedAmount,
+  } = getBookingDetails({
+    offer,
+    selectedStock,
+    quantity,
+    user,
+    isUserUnderage,
+    isCguChecked,
     currency,
-    euroToPacificFrancRate
-  )
-
-  const isNotUserFreeStatus = user?.eligibility !== EligibilityType.free
-  const deductedAmount = `${formattedPriceWithEuro} seront déduits de ton crédit pass Culture`
-
-  const isStockBookable = !(isUserUnderage && selectedStock.isForbiddenToUnderage)
-
-  const isBookingConfirmationButtonDisabled = !isStockBookable || !isCguChecked
-
-  const isFreeOfferToArchive =
-    !!offer && FREE_OFFER_CATEGORIES_TO_ARCHIVE.includes(offer.subcategoryId)
+    euroToPacificFrancRate,
+  })
 
   return isLoading ? (
     <Loader message={loadingMessage} />
