@@ -6,13 +6,10 @@ import { AccountState, EligibilityType } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
-import { Adjust } from 'libs/adjust/adjust'
-import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import { SSOType } from 'libs/analytics/logEventAnalytics'
 // eslint-disable-next-line no-restricted-imports
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { getAge } from 'shared/user/getAge'
 
 export const useLoginAndRedirect = () => {
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
@@ -36,16 +33,6 @@ export const useLoginAndRedirect = () => {
 
       try {
         const user = await api.getNativeV1Me()
-        const userAge = getAge(user.birthDate)
-        Adjust.logEvent(AdjustEvents.REGISTRATION)
-
-        if (userAge && userAge < 18) {
-          Adjust.logEvent(AdjustEvents.UNDERAGE_REGISTRATION)
-        }
-
-        if (userAge && userAge >= 18) {
-          Adjust.logEvent(AdjustEvents.REGISTRATION_18)
-        }
 
         if (disableActivation) {
           delayedReplace(...getSubscriptionHookConfig('DisableActivation'))
