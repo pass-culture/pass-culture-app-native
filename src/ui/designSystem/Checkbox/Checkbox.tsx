@@ -84,8 +84,8 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
   disabled,
   sizing,
   hasError,
-  indeterminate = false, // TODO(PC-38116): Use new state props instead
-  isChecked, // TODO(PC-38116): Use new state props instead
+  indeterminate = false,
+  isChecked,
   label,
   accessibilityLabel,
   onPress,
