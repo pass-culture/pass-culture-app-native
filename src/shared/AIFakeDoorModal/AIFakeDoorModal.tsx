@@ -28,8 +28,12 @@ export const AIFakeDoorModal = ({ visible, close, userLocation, userCity }: Prop
   const [hasSeenSurvey, setHasSeenSurvey] = useState(false)
 
   useEffect(() => {
-    AsyncStorage.getItem(AI_FAKE_DOOR_SURVEY).then((val) => setHasSeenSurvey(val === 'true'))
-  }, [])
+    if (visible) {
+      AsyncStorage.getItem(AI_FAKE_DOOR_SURVEY).then((val) => {
+        setHasSeenSurvey(val === 'true')
+      })
+    }
+  }, [visible])
 
   const markHasSeen = async () => {
     setHasSeenSurvey(true)

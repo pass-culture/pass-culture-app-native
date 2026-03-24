@@ -91,7 +91,7 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
 
 const StyledScrollView = styled.ScrollView(({ theme }) => ({
   paddingHorizontal: theme.contentPage.marginHorizontal,
-  marginTop: theme.isMobileViewport ? 0 : theme.designSystem.size.spacing.xxl,
+  marginTop: theme.isMobileViewport ? 0 : theme.designSystem.size.spacing.s,
 }))
 
 const StyledCategoryButton = styled(CategoryButton)<{ mobileMinWidth: string }>(
