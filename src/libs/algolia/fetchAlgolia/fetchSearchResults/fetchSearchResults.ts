@@ -145,8 +145,8 @@ export const fetchSearchResults = async ({
       SearchResponse<Offer>,
     ]
 
-    if (storeQueryID) storeQueryID(offersResponse.queryID)
-    const { renderingContent } = offersResponse
+    if (storeQueryID) storeQueryID(offersResponse?.queryID)
+    const renderingContent = offersResponse?.renderingContent
     const redirectUrl = (renderingContent as RenderingContent)?.redirect?.url
 
     return {

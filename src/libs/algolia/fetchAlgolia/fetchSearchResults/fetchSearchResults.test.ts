@@ -459,6 +459,22 @@ describe('fetchSearchResults', () => {
     expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
+  it('should not crash when multipleQueries returns empty results and storeQueryID is provided', async () => {
+    mockSearch.mockRejectedValueOnce(new Error('Algolia error'))
+
+    const storeQueryID = jest.fn()
+    const result = await fetchSearchResults({
+      parameters: { query } as SearchQueryParameters,
+      buildLocationParameterParams: everywhereParams,
+      isUserUnderage: false,
+      disabilitiesProperties: defaultDisabilitiesProperties,
+      storeQueryID,
+    })
+
+    expect(result.offersResponse).toBeUndefined()
+    expect(storeQueryID).toHaveBeenCalledWith(undefined)
+  })
+
   it('should execute multi query without aroundPrecision param if aroundPrecision is 0 (eq: O or not provided)', async () => {
     await fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
