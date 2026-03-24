@@ -130,6 +130,15 @@ export const fetchSearchResults = async ({
     },
   ]
 
+  const defaultResponse = {
+    offersResponse: getDefaultReponse<Offer>(),
+    venueNotOpenToPublic: getDefaultReponse<AlgoliaVenue>(),
+    venuesResponse: getDefaultReponse<AlgoliaVenue>(),
+    duplicatedOffersResponse: getDefaultReponse<Offer>(),
+    offerArtistsResponse: getDefaultReponse<Offer>(),
+    redirectUrl: undefined,
+  }
+
   try {
     const [
       offersResponse,
@@ -145,8 +154,10 @@ export const fetchSearchResults = async ({
       SearchResponse<Offer>,
     ]
 
-    if (storeQueryID) storeQueryID(offersResponse?.queryID)
-    const renderingContent = offersResponse?.renderingContent
+    if (!offersResponse) return defaultResponse
+
+    if (storeQueryID) storeQueryID(offersResponse.queryID)
+    const { renderingContent } = offersResponse
     const redirectUrl = (renderingContent as RenderingContent)?.redirect?.url
 
     return {
@@ -159,13 +170,6 @@ export const fetchSearchResults = async ({
     }
   } catch (error) {
     captureAlgoliaError(error)
-    return {
-      offersResponse: getDefaultReponse<Offer>(),
-      venueNotOpenToPublic: getDefaultReponse<AlgoliaVenue>(),
-      venuesResponse: getDefaultReponse<AlgoliaVenue>(),
-      offerArtistsResponse: getDefaultReponse<Offer>(),
-      duplicatedOffersResponse: getDefaultReponse<Offer>(),
-      redirectUrl: undefined,
-    }
+    return defaultResponse
   }
 }

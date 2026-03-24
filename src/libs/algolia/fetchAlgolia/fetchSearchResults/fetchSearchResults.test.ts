@@ -471,8 +471,9 @@ describe('fetchSearchResults', () => {
       storeQueryID,
     })
 
-    expect(result.offersResponse).toBeUndefined()
-    expect(storeQueryID).toHaveBeenCalledWith(undefined)
+    expect(result.offersResponse.hits).toEqual([])
+    expect(result.offersResponse.nbHits).toBe(0)
+    expect(storeQueryID).not.toHaveBeenCalled()
   })
 
   it('should execute multi query without aroundPrecision param if aroundPrecision is 0 (eq: O or not provided)', async () => {
