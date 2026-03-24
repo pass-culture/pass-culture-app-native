@@ -3,20 +3,17 @@ import { AccessibilityRole } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
 import { AnimationObject, LottieColoringMode } from 'ui/animations/type'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import { getGenericInfoPageButtons } from 'ui/pages/helpers/getGenericInfoPageButtons'
 import { Page } from 'ui/pages/Page'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'
@@ -109,8 +106,9 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   const { top } = useSafeAreaInsets()
   const shouldDisplayHeader = withGoBack || withSkipAction
   const placeholderHeight = shouldDisplayHeader ? headerHeight : top
-  const onPressAccessibilityRole = accessibilityRoleInternalNavigation()
   const marginVertical = useFontScaleValue({ default: 0, at200PercentZoom: getSpacing(25) })
+  const buttons = getGenericInfoPageButtons({ buttonPrimary, buttonSecondary, buttonTertiary })
+
   return (
     <Page>
       <Header
@@ -152,159 +150,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
 
           <ButtonContainer gap={4} isLandscape={isLandscape}>
             {buttonsSurtitle}
-            {buttonPrimary.onPress ? (
-              <Button
-                fullWidth
-                color="brand"
-                key={1}
-                wording={buttonPrimary.wording}
-                onPress={buttonPrimary.onPress}
-                isLoading={buttonPrimary.isLoading}
-                disabled={buttonPrimary.disabled}
-                icon={buttonPrimary.icon}
-                accessibilityLabel={buttonPrimary.accessibilityLabel}
-                accessibilityRole={buttonPrimary.accessibilityRole ?? onPressAccessibilityRole}
-              />
-            ) : null}
-
-            {buttonPrimary.navigateTo ? (
-              <InternalTouchableLink
-                key={1}
-                as={Button}
-                color="brand"
-                fullWidth
-                wording={buttonPrimary.wording}
-                navigateTo={buttonPrimary.navigateTo}
-                onBeforeNavigate={buttonPrimary.onBeforeNavigate}
-                onAfterNavigate={buttonPrimary.onAfterNavigate}
-                isLoading={buttonPrimary.isLoading}
-                disabled={buttonPrimary.disabled}
-                icon={buttonPrimary.icon}
-                accessibilityLabel={buttonPrimary.accessibilityLabel}
-              />
-            ) : null}
-
-            {buttonPrimary.externalNav ? (
-              <ExternalTouchableLink
-                key={1}
-                as={Button}
-                color="brand"
-                fullWidth
-                wording={buttonPrimary.wording}
-                externalNav={buttonPrimary.externalNav}
-                onBeforeNavigate={buttonPrimary.onBeforeNavigate}
-                onAfterNavigate={buttonPrimary.onAfterNavigate}
-                isLoading={buttonPrimary.isLoading}
-                disabled={buttonPrimary.disabled}
-                icon={ExternalSiteFilled}
-                accessibilityLabel={buttonPrimary.accessibilityLabel}
-              />
-            ) : null}
-
-            {buttonSecondary?.onPress ? (
-              <Button
-                fullWidth
-                key={2}
-                variant="secondary"
-                color="neutral"
-                wording={buttonSecondary.wording}
-                onPress={buttonSecondary.onPress}
-                isLoading={buttonSecondary.isLoading}
-                disabled={buttonSecondary.disabled}
-                icon={buttonSecondary.icon}
-                accessibilityLabel={buttonSecondary.accessibilityLabel}
-                accessibilityRole={buttonSecondary.accessibilityRole ?? onPressAccessibilityRole}
-              />
-            ) : null}
-
-            {buttonSecondary?.navigateTo ? (
-              <InternalTouchableLink
-                key={2}
-                as={Button}
-                fullWidth
-                variant="secondary"
-                wording={buttonSecondary.wording}
-                navigateTo={buttonSecondary.navigateTo}
-                onBeforeNavigate={buttonSecondary.onBeforeNavigate}
-                onAfterNavigate={buttonSecondary.onAfterNavigate}
-                isLoading={buttonSecondary.isLoading}
-                disabled={buttonSecondary.disabled}
-                icon={buttonSecondary.icon}
-                accessibilityLabel={buttonSecondary.accessibilityLabel}
-              />
-            ) : null}
-
-            {buttonSecondary?.externalNav ? (
-              <ExternalTouchableLink
-                key={2}
-                as={Button}
-                fullWidth
-                variant="secondary"
-                wording={buttonSecondary.wording}
-                externalNav={buttonSecondary.externalNav}
-                onBeforeNavigate={buttonSecondary.onBeforeNavigate}
-                onAfterNavigate={buttonSecondary.onAfterNavigate}
-                isLoading={buttonSecondary.isLoading}
-                disabled={buttonSecondary.disabled}
-                icon={ExternalSiteFilled}
-                accessibilityLabel={buttonSecondary.accessibilityLabel}
-              />
-            ) : null}
-
-            {buttonTertiary?.onPress ? (
-              <TertiaryButtonContainer>
-                <Button
-                  variant="tertiary"
-                  color="neutral"
-                  key={buttonTertiary ? 3 : 2}
-                  wording={buttonTertiary.wording}
-                  onPress={buttonTertiary.onPress}
-                  isLoading={buttonTertiary.isLoading}
-                  disabled={buttonTertiary.disabled}
-                  icon={buttonTertiary.icon}
-                  accessibilityLabel={buttonTertiary.accessibilityLabel}
-                  accessibilityRole={buttonTertiary.accessibilityRole ?? onPressAccessibilityRole}
-                />
-              </TertiaryButtonContainer>
-            ) : null}
-
-            {buttonTertiary?.navigateTo ? (
-              <TertiaryButtonContainer>
-                <InternalTouchableLink
-                  key={buttonTertiary ? 3 : 2}
-                  as={Button}
-                  variant="tertiary"
-                  color="neutral"
-                  wording={buttonTertiary.wording}
-                  navigateTo={buttonTertiary.navigateTo}
-                  onBeforeNavigate={buttonTertiary.onBeforeNavigate}
-                  onAfterNavigate={buttonTertiary.onAfterNavigate}
-                  isLoading={buttonTertiary.isLoading}
-                  disabled={buttonTertiary.disabled}
-                  icon={buttonTertiary.icon}
-                  accessibilityLabel={buttonTertiary.accessibilityLabel}
-                />
-              </TertiaryButtonContainer>
-            ) : null}
-
-            {buttonTertiary?.externalNav ? (
-              <TertiaryButtonContainer>
-                <ExternalTouchableLink
-                  key={buttonTertiary ? 3 : 2}
-                  as={Button}
-                  variant="tertiary"
-                  color="neutral"
-                  wording={buttonTertiary.wording}
-                  externalNav={buttonTertiary.externalNav}
-                  onBeforeNavigate={buttonTertiary.onBeforeNavigate}
-                  onAfterNavigate={buttonTertiary.onAfterNavigate}
-                  isLoading={buttonTertiary.isLoading}
-                  disabled={buttonTertiary.disabled}
-                  icon={ExternalSiteFilled}
-                  accessibilityLabel={buttonTertiary.accessibilityLabel}
-                />
-              </TertiaryButtonContainer>
-            ) : null}
+            {buttons}
           </ButtonContainer>
         </ContainerFlex>
         <Spacer.BottomScreen />
@@ -388,7 +234,3 @@ const SkipButton = ({ withSkipAction }: { withSkipAction?: () => void }) => {
   }
   return null
 }
-
-const TertiaryButtonContainer = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.s,
-}))
