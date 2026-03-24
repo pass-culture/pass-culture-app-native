@@ -329,6 +329,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
       <RCTScrollView
         modalSpacing={24}
         onContentSizeChange={[Function]}
+        onScroll={[Function]}
         scrollEnabled={true}
         style={
           {

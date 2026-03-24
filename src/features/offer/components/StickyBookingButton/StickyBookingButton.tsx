@@ -12,12 +12,14 @@ type Props = {
   ctaWordingAndAction: ICTAWordingAndAction
   isFreeDigitalOffer?: boolean
   isLoggedIn?: boolean
+  displayGradient?: boolean
 }
 
 export const StickyBookingButton: FunctionComponent<Props> = ({
   ctaWordingAndAction,
   isFreeDigitalOffer,
   isLoggedIn,
+  displayGradient,
 }) => {
   const { bottom } = useCustomSafeInsets()
   const { wording, onPress, navigateTo, externalNav, isDisabled, bottomBannerText } =
@@ -28,7 +30,7 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
   }
 
   return (
-    <StyledStickyBottomWrapper bottom={-bottom}>
+    <StyledStickyBottomWrapper bottom={-bottom} displayGradient={displayGradient}>
       {wording ? (
         <CallToActionContainer testID="sticky-booking-button" accessible>
           <ButtonWrapper>

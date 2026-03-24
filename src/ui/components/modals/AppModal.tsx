@@ -1,6 +1,8 @@
 import React, { FunctionComponent, useRef, useState, useMemo, useCallback } from 'react'
 import {
   LayoutChangeEvent,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
   Platform,
   ScrollView,
   ScrollViewProps,
@@ -54,6 +56,7 @@ type Props = {
   swipeDirection?: ModalSwipeDirection
   propagateSwipe?: boolean
   desktopConstraints?: CSSObject
+  onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void
 } & ModalIconProps &
   Pick<ViewProps, 'onLayout'>
 
@@ -96,6 +99,7 @@ export const AppModal: FunctionComponent<Props> = ({
   propagateSwipe,
   onLayout,
   desktopConstraints,
+  onScroll,
 }) => {
   const iconProps = {
     rightIconAccessibilityLabel,
@@ -207,6 +211,7 @@ export const AppModal: FunctionComponent<Props> = ({
         ref={setFullscreenScrollViewRef}
         onContentSizeChange={onContentSizeChangeFullscreenModal}
         scrollEnabled={scrollEnabled}
+        onScroll={onScroll}
         keyboardShouldPersistTaps={keyboardShouldPersistTaps}>
         {children}
       </StyledScrollView>
@@ -220,6 +225,7 @@ export const AppModal: FunctionComponent<Props> = ({
     keyboardShouldPersistTaps,
     modalSpacing,
     onContentSizeChangeFullscreenModal,
+    onScroll,
     scrollEnabled,
     setFullscreenScrollViewRef,
   ])
@@ -284,6 +290,7 @@ export const AppModal: FunctionComponent<Props> = ({
                   ref={scrollViewRef}
                   scrollEnabled={scrollEnabled}
                   onContentSizeChange={updateScrollViewContentHeight}
+                  onScroll={onScroll}
                   testID="modalScrollView">
                   {children}
                 </ScrollView>

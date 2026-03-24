@@ -7,6 +7,7 @@ import React, {
   useEffect,
   useMemo,
   useRef,
+  useState,
 } from 'react'
 import {
   LayoutChangeEvent,
@@ -126,6 +127,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   } = useOfferPlaylist({ offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList })
   const scrollViewRef = useRef<ScrollView>(null)
   const scrollYRef = useRef<number>(0)
+  const [isBottomReached, setIsBottomReached] = useState(false)
+  const isBottomReachedRef = useRef(false)
 
   const logConsultWholeOffer = useFunctionOnce(() => {
     void analytics.logConsultWholeOffer(offer.id)
@@ -192,6 +195,11 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
       onScroll(event)
       scrollYRef.current = event.nativeEvent.contentOffset.y
+      const closeToBottom = isCloseToBottom(event.nativeEvent)
+      if (closeToBottom !== isBottomReachedRef.current) {
+        isBottomReachedRef.current = closeToBottom
+        setIsBottomReached(closeToBottom)
+      }
     },
     [onScroll]
   )
@@ -251,6 +259,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
       offer={offer}
       subcategory={subcategory}
       trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+      displayStickyGradient={!isBottomReached}
     />
   )
 

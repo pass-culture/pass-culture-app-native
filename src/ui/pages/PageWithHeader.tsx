@@ -6,6 +6,7 @@ import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValu
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { Gradient } from 'ui/components/Gradient'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { CustomKeyboardAvoidingView } from 'ui/pages/components/CustomKeyboardAvoidingView'
 import { useShouldEnableScrollOnView } from 'ui/pages/helpers/useShouldEnableScrollView'
 import { useStickyFooterGradient } from 'ui/pages/helpers/useStickyFooterGradient'
@@ -27,6 +28,10 @@ const isWeb = Platform.OS === 'web'
 export const PageWithHeader = forwardRef<ScrollView, Props>((props, ref) => {
   const { onScrollViewLayout, onScrollViewContentSizeChange } = useShouldEnableScrollOnView()
   const [measuredHeaderHeight, setMeasuredHeaderHeight] = useState(0)
+  const [keyboardHeight, setKeyboardHeight] = useState(0)
+  useForHeightKeyboardEvents(setKeyboardHeight)
+
+  const shouldDisplayGradient = keyboardHeight === 0
   const headerHeight = useGetHeaderHeight()
   const {
     gradientRef,
@@ -79,7 +84,9 @@ export const PageWithHeader = forwardRef<ScrollView, Props>((props, ref) => {
         ) : null}
         {props.fixedBottomChildren ? (
           <React.Fragment>
-            <Gradient ref={gradientRef} bottomViewHeight={bottomChildrenViewHeight} />
+            {shouldDisplayGradient ? (
+              <Gradient ref={gradientRef} bottomViewHeight={bottomChildrenViewHeight} />
+            ) : null}
             <FixedBottomChildrenView onLayout={onFixedBottomChildrenViewLayout}>
               {props.fixedBottomChildren}
               <Spacer.BottomScreen />

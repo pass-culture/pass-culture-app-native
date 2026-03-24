@@ -4,11 +4,15 @@ import styled from 'styled-components/native'
 
 import { StickyBottomGradient } from 'ui/components/StickyBottomGradient/StickyBottomGradient'
 
+type Props = ViewProps & {
+  displayGradient?: boolean
+}
+
 // to have a correct layout, the parent of StickyBottomWrapper must be in `position: relative;`
-export const StickyBottomWrapper = ({ children, ...props }: ViewProps) => {
+export const StickyBottomWrapper = ({ children, displayGradient = true, ...props }: Props) => {
   return (
     <Container {...props}>
-      <StickyBottomGradient />
+      {displayGradient ? <StickyBottomGradient /> : null}
       {children}
     </Container>
   )
