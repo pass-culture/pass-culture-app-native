@@ -29,10 +29,19 @@ appId: ${MAESTRO_APP_ID}
 - runFlow:
     when:
       visible: 'Accéder aux séances'
+      platform: Android
     commands:
       - tapOn: 'Accéder aux séances'
       - assertVisible: 'Trouve ta séance'
       - runFlow: ../../subFolder/booking/DaySelectionCinema.yml
+
+- runFlow:
+    when:
+        platform: iOS
+    commands:
+    - tapOn: 'Accéder aux séances'
+    - assertVisible: 'Trouve ta séance'
+    - tapOn: '${output.targetDateTest}'
 
 - extractTextWithAI:
     query: 'La 1ère séance de cinéma disponible (horaire) visible sur la page de sélection de la séance'
@@ -53,15 +62,14 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: 'Valider le prix'
 
 - assertVisible: 'Nombre de places'
-- tapOn: 'Duo'
-
+- tapOn: '.*Nombre de places - Liste - Élément 2 sur 2 - Duo.*'
 - tapOn: 'Finaliser ma réservation'
 
 - assertVisible: 'Détails de la réservation'
 - tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire'
 - scrollUntilVisible:
-    element: 'Confirmer la réservation'
-- doubleTapOn: 'Confirmer la réservation'
+    element: '.*Confirmer la réservation.*'
+- doubleTapOn: '.*Confirmer la réservation.*'
 
 - assertVisible: "Réservation confirmée\_!"
 - tapOn:

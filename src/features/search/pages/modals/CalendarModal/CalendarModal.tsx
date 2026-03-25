@@ -221,7 +221,11 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
       setValueWithValidation('selectedFilterMode', undefined)
     }
 
-    const selectedDate = new Date(date.dateString)
+    const parts = date.dateString.split('-')
+    const year = Number(parts[0])
+    const month = Number(parts[1])
+    const day = Number(parts[2])
+    const selectedDate = new Date(year, month - 1, day)
 
     if (!selectedStartDate || selectedEndDate || selectedDate < selectedStartDate) {
       setValueWithValidation('selectedStartDate', selectedDate)

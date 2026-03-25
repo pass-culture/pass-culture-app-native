@@ -5,6 +5,7 @@ tags:
   - squad-conversion
 onFlowStart:
   - runScript: subFolder/links/DeepLinks.js
+  - runScript: subFolder/commons/getCurrentDay.js
   - runScript:
       file: subFolder/commons/generateUser.js
       env:
@@ -14,13 +15,13 @@ onFlowStart:
 ---
 - runFlow:
     when:
-      true: ${MAESTRO_RUN_CLOUD_COMMANDS == 'false'}
+      platform: iOS
     commands:
       - runFlow: subFolder/commons/LaunchApp.yml
 
 - runFlow:
     when:
-      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+      platform: Android
     commands:
       - runFlow: subFolder/commons/LaunchAppWithPermissions.yml
 

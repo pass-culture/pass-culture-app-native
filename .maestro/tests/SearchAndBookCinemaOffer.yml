@@ -13,13 +13,13 @@ onFlowStart:
 ---
 - runFlow:
     when:
-      true: ${MAESTRO_RUN_CLOUD_COMMANDS == 'false'}
+      platform: iOS
     commands:
       - runFlow: subFolder/commons/LaunchApp.yml
 
 - runFlow:
     when:
-      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+      platform: Android
     commands:
       - runFlow: subFolder/commons/LaunchAppWithPermissions.yml
 
