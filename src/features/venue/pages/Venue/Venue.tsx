@@ -82,6 +82,8 @@ export const Venue: FunctionComponent = () => {
   const enableSearchWithQuery = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE)
   const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE)
   const enableNewTagProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
+  const enableVolunteer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER)
+  const enableVolunteerNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_NEW_TAG)
   const {
     visible: searchInVenueModalVisible,
     hideModal: hideSearchInVenueModal,
@@ -180,7 +182,11 @@ export const Venue: FunctionComponent = () => {
 
   const VenueContentChildren = venue ? (
     <React.Fragment>
-      <VenueTopComponent venue={venue} />
+      <VenueTopComponent
+        venue={venue}
+        enableVolunteer={enableVolunteer}
+        enableVolunteerNewTag={enableVolunteerNewTag}
+      />
       <ViewGap gap={isDesktopViewport ? 10 : 6}>
         <Animated.View layout={Layout.duration(200)}>
           <VenueBody

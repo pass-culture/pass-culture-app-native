@@ -30,6 +30,7 @@ exports[`<Venue /> should match snapshot 1`] = `
   >
     <View>
       <View
+        hasVolunteer={false}
         style={
           {
             "flexDirection": "column",
@@ -3694,6 +3695,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
   >
     <View>
       <View
+        hasVolunteer={false}
         style={
           {
             "flexDirection": "column",
@@ -7358,6 +7360,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
   >
     <View>
       <View
+        hasVolunteer={false}
         style={
           {
             "flexDirection": "column",
