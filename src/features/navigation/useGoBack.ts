@@ -20,7 +20,7 @@ export function useGoBack<RouteName extends keyof RootStackParamList>(
 
   function customGoBack() {
     const can = canGoBack()
-    if (typeof previousRoute?.name !== 'undefined' && can) {
+    if (previousRoute && can) {
       goBack()
     } else if (can && Platform.OS === 'web') {
       window.history.back()

@@ -85,7 +85,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   const offerTitle = `Les offres${shouldDisplayAccessibilityContent ? ' dans des lieux accessibles' : ''}`
 
   const shouldDisplayVenuesPlaylist =
-    !venue && !!venues?.length && previousRoute?.name !== SearchView.Thematic
+    !venue && !!venues?.length && previousRoute !== SearchView.Thematic
 
   const onPress = () => {
     void analytics.logActivateGeolocfromSearchResults()

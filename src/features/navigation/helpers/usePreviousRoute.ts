@@ -1,11 +1,9 @@
-import { Route, useNavigationState } from '@react-navigation/native'
+import { useNavigationState } from '@react-navigation/native'
 
-export function usePreviousRoute(): Route<string> | null {
-  // @ts-expect-error: because of noUncheckedIndexedAccess
+export const usePreviousRoute = () => {
   return useNavigationState((state) => {
-    const numberOfRoutes = state.routes.length
-    if (numberOfRoutes > 1) {
-      return state.routes[numberOfRoutes - 2]
+    if (state.index > 0) {
+      return state.routes[state.index - 1]?.name
     }
     return null
   })
