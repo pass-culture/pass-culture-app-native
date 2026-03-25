@@ -24,6 +24,7 @@ type ScreensRequiringParsing = Extract<
   | 'SearchLanding'
   | 'SearchResults'
   | 'ThematicSearch'
+  | 'ProAdvicesVenue'
 >
 
 type ParamsList = Required<AllNavParamList>
@@ -170,6 +171,11 @@ export const screenParamsParser: ParamsParsers = {
     moduleItemId: identityFn,
     latitude: identityFn,
     longitude: identityFn,
+  },
+  ProAdvicesVenue: {
+    venueId: Number,
+    offerId: Number,
+    from: identityFn,
   },
 }
 

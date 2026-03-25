@@ -397,4 +397,8 @@ export const rootStackNavigatorPathConfig = {
   BonificationGranted: {
     path: 'bonification/accordee',
   },
+  ProAdvicesVenue: {
+    path: 'avis-du-pro/lieu/:venueId/:offerId',
+    parse: screenParamsParser['ProAdvicesVenue'],
+  },
 }
