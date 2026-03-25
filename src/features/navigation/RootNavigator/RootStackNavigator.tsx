@@ -30,7 +30,7 @@ import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pag
 import { BonificationGranted } from 'features/bonification/pages/BonificationGranted'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
-import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
+import { ClubAdvices } from 'features/clubAdvices/pages/ClubAdvices/ClubAdvices'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
@@ -280,14 +280,14 @@ const rootScreens: RouteConfig[] = [
   { name: '_DeeplinkOnlyArtist1', component: Artist, options: { title: 'Artiste' } },
   { name: 'ArtistWebview', component: ArtistWebview, options: { title: 'Artiste sur Wikipédia' } },
   {
-    name: 'Chronicles',
-    component: Chronicles,
-    options: { title: 'Avis du book club' },
+    name: 'ClubAdvices',
+    component: ClubAdvices,
+    options: { title: 'Avis du club' },
   },
   {
-    name: '_DeeplinkOnlyChronicles1',
-    component: Chronicles,
-    options: { title: 'Avis du book club' },
+    name: '_DeeplinkOnlyClubAdvices1',
+    component: ClubAdvices,
+    options: { title: 'Avis du club' },
   },
   {
     name: 'UTMParameters',

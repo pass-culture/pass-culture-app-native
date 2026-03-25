@@ -95,7 +95,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
     const tag = renderInteractionTag({
       theme,
       likesCount: item.offer.likes,
-      chroniclesCount: item.offer.chroniclesCount,
+      advicesCount: item.offer.chroniclesCount,
       isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
       subcategoryId: item.offer.subcategoryId,
     })

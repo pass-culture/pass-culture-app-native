@@ -3,7 +3,7 @@ import { ViewToken } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
-import { ChronicleCardData } from 'features/chronicle/type'
+import { AdviceCardData } from 'features/advices/types'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -35,7 +35,7 @@ export interface VenueOffersProps {
     itemType: 'offer' | 'venue' | 'artist' | 'unknown',
     playlistIndex?: number
   ) => void
-  advicesCardData?: ChronicleCardData[]
+  advicesCardData?: AdviceCardData[]
   nbAdvices: number
   enableNewTagProAdvices?: boolean
   onShowWritersModal: () => void

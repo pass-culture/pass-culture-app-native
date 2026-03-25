@@ -5,8 +5,8 @@ import Animated, { Layout } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Activity, VenueResponse } from 'api/gen'
-import { proAdvicesToChronicleCardData } from 'features/chronicle/adapters/proAdvicesToChronicleCardData/proAdvicesToChronicleCardData'
-import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
+import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
+import { proAdvicesToAdviceCardData } from 'features/clubAdvices/adapters/proAdvicesToAdviceCardData/proAdvicesToAdviceCardData'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -195,7 +195,7 @@ export const Venue: FunctionComponent = () => {
             onViewableItemsChanged={handleViewableItemsChanged}
             advicesCardData={
               segment === 'A'
-                ? proAdvicesToChronicleCardData(
+                ? proAdvicesToAdviceCardData(
                     getAdvicesWithoutHeadline(advices?.proAdvices, headlineOfferData?.id)
                   )
                 : undefined
@@ -211,7 +211,7 @@ export const Venue: FunctionComponent = () => {
       </ViewGap>
       {nbAdvices ? (
         <View>
-          <ChroniclesWritersModal
+          <AdvicesWritersModal
             closeModal={hideAdvicesWritersModal}
             isVisible={advicesWritersModalVisible}
             onShowRecoButtonPress={handleOnShowRecoButtonPress}

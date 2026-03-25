@@ -1,8 +1,8 @@
 import React, { ComponentProps } from 'react'
 
-import { chroniclesSnap } from 'features/chronicle/fixtures/chroniclesSnap'
+import { advicesFixture } from 'features/advices/fixtures/advices.fixture'
+import { adviceVariantInfoFixture } from 'features/advices/fixtures/adviceVariantInfo.fixture'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
-import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
@@ -32,15 +32,15 @@ describe('<OfferReactionSection />', () => {
     })
 
     it('should not display likes information when not exists', () => {
-      renderOfferReactionSection({ chroniclesCount: 1 })
+      renderOfferReactionSection({ advicesCount: 1 })
 
       expect(screen.queryByTestId('likesCounterIcon')).not.toBeOnTheScreen()
     })
 
-    it('should display chronicles information when exist', async () => {
+    it('should display advices information when exist', async () => {
       renderOfferReactionSection({
-        chroniclesCount: 3,
-        chronicles: [chroniclesSnap[0], chroniclesSnap[1], chroniclesSnap[2]],
+        advicesCount: 3,
+        advices: [advicesFixture[0], advicesFixture[1], advicesFixture[2]],
       })
 
       expect(await screen.findByText('3 avis book club')).toBeOnTheScreen()
@@ -59,19 +59,19 @@ describe('<OfferReactionSection />', () => {
       expect(screen.queryByTestId('headlineOffersCounterIcon')).not.toBeOnTheScreen()
     })
 
-    it('should display nothing when there are not chronicles, likes information and headline offers count', async () => {
+    it('should display nothing when there are not advices, likes information and headline offers count', async () => {
       renderOfferReactionSection({})
 
       expect(screen.queryByTestId('likesCounterIcon')).not.toBeOnTheScreen()
       expect(screen.queryByTestId('headlineOffersCounterIcon')).not.toBeOnTheScreen()
     })
 
-    it('should display labelReaction when there are only unpublished chronicles', async () => {
+    it('should display labelReaction when there are only unpublished advices', async () => {
       renderOfferReactionSection({
-        chronicles: [],
-        chroniclesCount: 10,
-        chronicleVariantInfo: {
-          ...chronicleVariantInfoFixture,
+        advices: [],
+        advicesCount: 10,
+        adviceVariantInfo: {
+          ...adviceVariantInfoFixture,
           labelReaction: 'Book-club',
         },
       })
@@ -79,12 +79,12 @@ describe('<OfferReactionSection />', () => {
       expect(await screen.findByText('Recommandé par le Book-club')).toBeOnTheScreen()
     })
 
-    it('should not display anything when there are no chronicles at all', () => {
+    it('should not display anything when there are no advices at all', () => {
       renderOfferReactionSection({
-        chroniclesCount: 0,
-        chronicles: [],
-        chronicleVariantInfo: {
-          ...chronicleVariantInfoFixture,
+        advicesCount: 0,
+        advices: [],
+        adviceVariantInfo: {
+          ...adviceVariantInfoFixture,
           labelReaction: 'Book-club',
         },
       })
@@ -92,13 +92,13 @@ describe('<OfferReactionSection />', () => {
       expect(screen.queryByText(/Recommandé par/)).not.toBeOnTheScreen()
     })
 
-    it('should display the number of published chronicles when there is at least one published offer', async () => {
+    it('should display the number of published advices when there is at least one published offer', async () => {
       render(
         reactQueryProviderHOC(
           <OfferReactionSection
-            chroniclesCount={4}
-            chronicles={chroniclesSnap}
-            chronicleVariantInfo={chronicleVariantInfoFixture}
+            advicesCount={4}
+            advices={advicesFixture}
+            adviceVariantInfo={adviceVariantInfoFixture}
           />
         )
       )
@@ -106,12 +106,12 @@ describe('<OfferReactionSection />', () => {
       expect(await screen.findByText('4 avis book club')).toBeOnTheScreen()
     })
 
-    it('should display published chronicles count when there is at least one published chronicle', async () => {
+    it('should display published advices count when there is at least one published advice', async () => {
       renderOfferReactionSection({
-        chronicles: [chroniclesSnap[0], chroniclesSnap[1]],
-        chroniclesCount: 5,
-        chronicleVariantInfo: {
-          ...chronicleVariantInfoFixture,
+        advices: [advicesFixture[0], advicesFixture[1]],
+        advicesCount: 5,
+        adviceVariantInfo: {
+          ...adviceVariantInfoFixture,
           labelReaction: 'book club',
         },
       })
@@ -119,40 +119,40 @@ describe('<OfferReactionSection />', () => {
       expect(await screen.findByText('5 avis book club')).toBeOnTheScreen()
     })
 
-    it('should scroll to chronicles section when clicking on published chronicles counter', async () => {
+    it('should scroll to advices section when clicking on published advices counter', async () => {
       const user = userEvent.setup()
       renderOfferReactionSection({
-        chronicles: [chroniclesSnap[0], chroniclesSnap[1]],
-        chroniclesCount: 2,
+        advices: [advicesFixture[0], advicesFixture[1]],
+        advicesCount: 2,
       })
 
-      const chroniclesCounter = screen.getByTestId('chroniclesCounter')
-      await user.press(chroniclesCounter)
+      const advicesCounter = screen.getByTestId('advicesCounter')
+      await user.press(advicesCounter)
 
-      expect(mockScrollToAnchor).toHaveBeenCalledWith('chronicles-section')
+      expect(mockScrollToAnchor).toHaveBeenCalledWith('club-advice-section')
     })
 
-    it('should not be clickable when there are only unpublished chronicles', async () => {
+    it('should not be clickable when there are only unpublished advices', async () => {
       renderOfferReactionSection({
-        chronicles: [],
-        chroniclesCount: 5,
-        chronicleVariantInfo: {
-          ...chronicleVariantInfoFixture,
+        advices: [],
+        advicesCount: 5,
+        adviceVariantInfo: {
+          ...adviceVariantInfoFixture,
           labelReaction: 'Book Club',
         },
       })
 
       expect(await screen.findByText('Recommandé par le Book Club')).toBeOnTheScreen()
-      expect(screen.queryByTestId('chroniclesCounter')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('advicesCounter')).not.toBeOnTheScreen()
     })
 
-    it('should not render clickable element when there are no chronicles', () => {
+    it('should not render clickable element when there are no advices', () => {
       renderOfferReactionSection({
-        chroniclesCount: 0,
-        chronicles: [],
+        advicesCount: 0,
+        advices: [],
       })
 
-      expect(screen.queryByTestId('chroniclesCounter')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('advicesCounter')).not.toBeOnTheScreen()
     })
   })
 })
@@ -160,20 +160,20 @@ describe('<OfferReactionSection />', () => {
 type RenderOfferReactionSectionType = Partial<ComponentProps<typeof OfferReactionSection>>
 
 function renderOfferReactionSection({
-  chroniclesCount = 0,
+  advicesCount = 0,
   likesCount = 0,
   headlineOffersCount = 0,
-  chronicles,
-  chronicleVariantInfo = chronicleVariantInfoFixture,
+  advices,
+  adviceVariantInfo = adviceVariantInfoFixture,
 }: RenderOfferReactionSectionType) {
   render(
     reactQueryProviderHOC(
       <OfferReactionSection
-        chroniclesCount={chroniclesCount}
+        advicesCount={advicesCount}
         likesCount={likesCount}
         headlineOffersCount={headlineOffersCount}
-        chronicles={chronicles}
-        chronicleVariantInfo={chronicleVariantInfo}
+        advices={advices}
+        adviceVariantInfo={adviceVariantInfo}
       />
     )
   )

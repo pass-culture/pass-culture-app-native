@@ -7,7 +7,7 @@ type ScreensRequiringParsing = Extract<
   | 'AfterSignupEmailValidationBuffer'
   | 'BookingDetails'
   | 'BookingConfirmation'
-  | 'Chronicles'
+  | 'ClubAdvices'
   | 'Home'
   | 'Login'
   | 'Offer'
@@ -97,9 +97,9 @@ export const screenParamsParser: ParamsParsers = {
     bookingId: Number,
     apiRecoParams: identityFn,
   },
-  Chronicles: {
+  ClubAdvices: {
     offerId: Number,
-    chronicleId: Number,
+    adviceId: Number,
     from: identityFn,
   },
   Login: {
