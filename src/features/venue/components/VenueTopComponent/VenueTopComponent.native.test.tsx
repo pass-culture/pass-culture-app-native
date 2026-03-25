@@ -216,6 +216,15 @@ describe('<VenueTopComponent />', () => {
 
       expect(screen.queryByText('Nouveau')).not.toBeOnTheScreen()
     })
+
+    it('should display feedback component below volunteer card when venue has volunteering url', () => {
+      renderVenueTopComponent({
+        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
+        enableVolunteer: true,
+      })
+
+      expect(screen.getByText('Le bénévolat sur le pass t’intéresse t-il ?')).toBeOnTheScreen()
+    })
   })
 })
 

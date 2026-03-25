@@ -6,6 +6,7 @@ import { VenueResponse } from 'api/gen'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { getVenueBlock } from 'features/offer/components/OfferVenueBlock/getVenueBlock'
 import { VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
+import { FeedBack } from 'features/reactions/components/FeedBack'
 import { OpeningHoursStatus } from 'features/venue/components/OpeningHoursStatus/OpeningHoursStatus'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
 import { analytics } from 'libs/analytics/provider'
@@ -70,7 +71,7 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   const editorialCardInfo: EditorialCardInfo = useMemo(
     () => ({
       imageURL:
-        'https://cdn.phototourl.com/free/2026-03-24-5f1a4c71-c6d5-45b2-94b4-2273fe731437.jpg',
+        'https://cdn.phototourl.com/free/2026-03-25-5b473853-1bdb-4308-96bb-8b1518dbe1aa.png',
       url: venue.volunteeringUrl,
       title: `Deviens bénévole pour\n“${venue.name}”`,
       subtitle: 'Donne de ton temps pour la culture\u00a0!',
@@ -139,25 +140,36 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
         </MarginContainer>
       </TopContainer>
       {hasVolunteer ? (
-        <CardWrapper>
-          {enableVolunteerNewTag ? (
-            <TagContainer>
-              <Tag variant={TagVariant.NEW} label="Nouveau" />
-            </TagContainer>
-          ) : null}
-          <EditorialCard
-            height={
-              theme.isDesktopViewport ? VOLUNTEER_LARGE_CARD_HEIGHT : VOLUNTEER_SMALL_CARD_HEIGHT
-            }
-            width={width}
-            isFocus={focusProps.isFocus}
-            editorialCardInfo={editorialCardInfo}
-            accessibilityLabel={`Devenir bénévole pour ${venue.name} - Ouvre JeVeuxAider.gouv.fr | Devenez bénévole dans une association en quelques clics | La plateforme publique du bénévolat par la Réserve Civique`}
-            onFocus={focusProps.onFocus}
-            onBlur={focusProps.onBlur}
-            onPress={onPressVolunteeringCard}
+        <VolunteeringContainer gap={4}>
+          <CardWrapper>
+            {enableVolunteerNewTag ? (
+              <TagContainer>
+                <Tag variant={TagVariant.NEW} label="Nouveau" />
+              </TagContainer>
+            ) : null}
+            <EditorialCard
+              height={
+                theme.isDesktopViewport ? VOLUNTEER_LARGE_CARD_HEIGHT : VOLUNTEER_SMALL_CARD_HEIGHT
+              }
+              width={width}
+              isFocus={focusProps.isFocus}
+              editorialCardInfo={editorialCardInfo}
+              accessibilityLabel={`Devenir bénévole pour ${venue.name} - Ouvre JeVeuxAider.gouv.fr | Devenez bénévole dans une association en quelques clics | La plateforme publique du bénévolat par la Réserve Civique`}
+              onFocus={focusProps.onFocus}
+              onBlur={focusProps.onBlur}
+              onPress={onPressVolunteeringCard}
+            />
+          </CardWrapper>
+          <StyledFeedBack
+            storageKey="volunteering_feedback"
+            likeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
+            dislikeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
+            title="Le bénévolat sur le pass t’intéresse t-il&nbsp;?"
+            // TODO(PC-40467): add tracking
+            // eslint-disable-next-line @typescript-eslint/no-empty-function
+            onLogReaction={() => {}}
           />
-        </CardWrapper>
+        </VolunteeringContainer>
       ) : null}
     </React.Fragment>
   )
@@ -168,7 +180,7 @@ const TopContainer = styled.View<{ hasVolunteer?: boolean }>(({ theme, hasVolunt
   return {
     flexDirection: isLargeScreen ? 'row' : 'column',
     marginTop: isLargeScreen ? theme.designSystem.size.spacing.xxl : 0,
-    marginHorizontal: isLargeScreen ? getSpacing(18) : 0,
+    marginHorizontal: isLargeScreen ? theme.designSystem.size.spacing.xl : 0,
     marginBottom:
       isLargeScreen && !hasVolunteer
         ? theme.designSystem.size.spacing.xxxl
@@ -204,4 +216,14 @@ const TagContainer = styled.View(({ theme }) => ({
   left: theme.designSystem.size.spacing.xxxl,
   zIndex: 2,
   pointerEvents: 'none',
+}))
+
+const VolunteeringContainer = styled(ViewGap)(({ theme }) => ({
+  marginBottom: theme.isDesktopViewport
+    ? theme.designSystem.size.spacing.xl
+    : theme.designSystem.size.spacing.m,
+}))
+
+const StyledFeedBack = styled(FeedBack)(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
 }))
