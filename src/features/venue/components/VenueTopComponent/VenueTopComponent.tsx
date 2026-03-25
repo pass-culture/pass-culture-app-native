@@ -7,14 +7,27 @@ import { VenueTopComponentBase } from 'features/venue/components/VenueTopCompone
 
 type Props = {
   venue: Omit<VenueResponse, 'isVirtual'>
+  enableVolunteer?: boolean
+  enableVolunteerNewTag?: boolean
 }
 
-export const VenueTopComponent: React.FunctionComponent<Props> = ({ venue }) => {
+export const VenueTopComponent: React.FunctionComponent<Props> = ({
+  venue,
+  enableVolunteer,
+  enableVolunteerNewTag,
+}) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const handleImagePress = () => {
     navigate('VenuePreviewCarousel', { id: venue.id })
   }
 
-  return <VenueTopComponentBase venue={venue} onPressBannerImage={handleImagePress} />
+  return (
+    <VenueTopComponentBase
+      venue={venue}
+      onPressBannerImage={handleImagePress}
+      enableVolunteer={enableVolunteer}
+      enableVolunteerNewTag={enableVolunteerNewTag}
+    />
+  )
 }
