@@ -77,7 +77,7 @@ const profileScreens: ProfileRouteConfig[] = [
   },
   {
     name: 'Achievements',
-    component: Achievements,
+    component: withAuthProtection(Achievements),
     options: { title: 'Mes succès' },
   },
   {
@@ -158,7 +158,7 @@ const profileScreens: ProfileRouteConfig[] = [
   },
   {
     name: 'ChangeEmail',
-    component: ChangeEmail,
+    component: withAuthProtection(ChangeEmail),
     options: { title: 'Modification de l’e-mail' },
   },
   {
@@ -183,7 +183,7 @@ const profileScreens: ProfileRouteConfig[] = [
   },
   {
     name: 'ChangePassword',
-    component: ChangePassword,
+    component: withAuthProtection(ChangePassword),
     options: { title: 'Modification du mot de passe' },
   },
   {
@@ -198,7 +198,7 @@ const profileScreens: ProfileRouteConfig[] = [
   },
   {
     name: 'ConfirmChangeEmail',
-    component: ConfirmChangeEmail,
+    component: withAuthProtection(ConfirmChangeEmail),
     options: { title: 'Confirmation de changement d’email ' },
   },
   {
