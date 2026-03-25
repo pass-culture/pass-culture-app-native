@@ -94,7 +94,8 @@ export const ClubAdvicesBase: FunctionComponent<Props> = ({
           separatorSize={6}
           headerComponent={
             <AdviceCardListHeader
-              variantInfo={variantInfo}
+              title={`Tous les avis du ${variantInfo.labelReaction}`}
+              buttonWording={variantInfo.modalTitle}
               onPressMoreInfo={handleOnShowAdvicesWritersModal}
             />
           }
