@@ -44,7 +44,7 @@ export type AdviceCardListProps = Pick<
   separatorSize?: number
   headerComponent?: ReactElement
   style?: StyleProp<ViewStyle>
-  onSeeMoreButtonPress?: (chronicleId: number) => void
+  onSeeMoreButtonPress?: (id: number) => void
   shouldTruncate?: boolean
   cardIcon?: ReactNode
   tag?: ReactNode
