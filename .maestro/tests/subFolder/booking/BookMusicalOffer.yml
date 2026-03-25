@@ -79,4 +79,16 @@ appId: ${MAESTRO_APP_ID}
 - scrollUntilVisible:
     element: 'Annuler ma réservation'
 - tapOn: 'Annuler ma réservation'
-- tapOn: 'Annuler ma réservation'
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn: 'Annuler ma réservation'
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn:
+          point: 50%,87%

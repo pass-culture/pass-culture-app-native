@@ -2,6 +2,7 @@ appId: ${MAESTRO_APP_ID}
 tags:
   - local
   - nightlyAndroid
+  - nightlyIOS
   - squad-conversion
 onFlowStart:
   - runScript:

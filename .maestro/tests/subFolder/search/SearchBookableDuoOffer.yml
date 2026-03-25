@@ -40,14 +40,9 @@ onFlowStart:
     id: 'Uniquement les offres duo - Interrupteur à bascule - non coché'
 - tapOn: 'Appliquer le filtre'
 
-- runFlow:
-    when:
-      platform: Android
-    commands:
-    - tapOn: 'Dates'
-    - tapOn: '${output.targetDateTest}'
-    - tapOn:
-        text: 'Appliquer le filtre'
-        retryTapIfNoChange: true
+- tapOn: '.*Dates.*'
+
+- tapOn: '${output.targetDateTest}'
+- tapOn: 'Appliquer le filtre'
 
 - tapOn: 'Rechercher'
