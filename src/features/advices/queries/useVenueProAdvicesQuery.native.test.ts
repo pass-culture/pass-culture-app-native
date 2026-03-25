@@ -1,6 +1,6 @@
+import { useVenueProAdvicesQuery } from 'features/advices/queries/useVenueProAdvicesQuery'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { venueProAdvicesFixture } from 'features/venue/fixtures/venueProAdvices.fixture'
-import { useVenueProAdvicesQuery } from 'features/venue/queries/useVenueProAdvicesQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
