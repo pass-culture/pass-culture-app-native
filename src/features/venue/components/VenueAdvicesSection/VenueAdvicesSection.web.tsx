@@ -22,7 +22,7 @@ type Props = {
   advicesCardData: AdviceCardData[]
   nbAdvices: number
   onShowWritersModal: () => void
-  onPressChronicleCardSeeMore?: () => void
+  onPressAdviceCardSeeMore?: (offerId: number) => void
   enableNewTagProAdvices?: boolean
 }
 
@@ -31,7 +31,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
   advicesCardData,
   nbAdvices,
   onShowWritersModal,
-  onPressChronicleCardSeeMore,
+  onPressAdviceCardSeeMore,
   enableNewTagProAdvices,
 }) => {
   const theme = useTheme()
@@ -58,7 +58,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
             as={Button}
             icon={Show}
             wording={`Lire les ${nbAdvices} avis`}
-            navigateTo={{ screen: 'ClubAdvices' }}
+            navigateTo={{ screen: 'ProAdvicesVenue', params: { venueId: venue.id } }}
             variant="tertiary"
             color="neutral"
           />
@@ -74,7 +74,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
       <StyledAdviceCardlist
         data={advicesCardData}
         shouldTruncate
-        onSeeMoreButtonPress={onPressChronicleCardSeeMore}
+        onSeeMoreButtonPress={onPressAdviceCardSeeMore}
         shouldDisplayAllAdvicesButton={shouldDisplayAllAdvicesButton}
       />
 
@@ -84,8 +84,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
             <InternalTouchableLink
               as={Button}
               wording={`Lire les ${nbAdvices} avis`}
-              // TODO(PC-40227): add pro advices page
-              navigateTo={{ screen: 'ClubAdvices' }}
+              navigateTo={{ screen: 'ProAdvicesVenue', params: { venueId: venue.id } }}
               variant="secondary"
               color="neutral"
               size="small"

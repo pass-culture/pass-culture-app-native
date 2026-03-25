@@ -1,4 +1,4 @@
-import { proAdvicesToAdviceCardData } from 'features/clubAdvices/adapters/proAdvicesToAdviceCardData/proAdvicesToAdviceCardData'
+import { proAdvicesToAdviceCardData } from 'features/proAdvices/adapters/proAdvicesToAdviceCardData/proAdvicesToAdviceCardData'
 import { proAdvicesFixture } from 'features/venue/fixtures/venueProAdvices.fixture'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 

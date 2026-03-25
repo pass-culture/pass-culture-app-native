@@ -198,6 +198,12 @@ type ClubAdvicesParams = {
   from?: Referrals
 }
 
+type ProAdvicesVenueParams = {
+  venueId: number
+  offerId?: number
+  from?: Referrals
+}
+
 /**
  * WARNING !
  * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
@@ -253,6 +259,7 @@ export type RootStackParamList = {
   OnboardingStackNavigator?: NavigatorScreenParams<OnboardingStackParamList>
   OnboardingSubscription: undefined
   PageNotFound: undefined
+  ProAdvicesVenue: ProAdvicesVenueParams
   Profile: undefined
   ProfileStackNavigator?: NavigatorScreenParams<ProfileStackParamList>
   RecreditBirthdayNotification: undefined
