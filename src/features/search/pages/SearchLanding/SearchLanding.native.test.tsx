@@ -477,6 +477,7 @@ describe('<SearchLanding />', () => {
         await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
 
         expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenCalledWith({
+          featureName: 'conversational_search_AI',
           from: 'searchAutoComplete',
         })
       })
@@ -512,6 +513,7 @@ describe('<SearchLanding />', () => {
       await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
 
       expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenCalledWith({
+        featureName: 'conversational_search_AI',
         from: 'searchLanding',
       })
     })

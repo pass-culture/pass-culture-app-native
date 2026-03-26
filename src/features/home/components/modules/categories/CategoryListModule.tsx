@@ -60,7 +60,11 @@ export const CategoryListModule = ({
   }, [id, homeEntryId, index])
 
   const onPressAIFakeDoorBanner = () => {
-    void analytics.logHasClickedFakeDoorCTA({ from: 'home', homeEntryId })
+    void analytics.logHasClickedFakeDoorCTA({
+      featureName: 'conversational_search_AI',
+      from: 'home',
+      homeEntryId,
+    })
     showModal()
   }
 

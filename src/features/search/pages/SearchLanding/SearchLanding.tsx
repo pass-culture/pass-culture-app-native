@@ -46,7 +46,7 @@ export const SearchLanding = () => {
   )
 
   const handleAIFakeDoorPress = (from: 'searchLanding' | 'searchAutoComplete') => {
-    void analytics.logHasClickedFakeDoorCTA({ from })
+    void analytics.logHasClickedFakeDoorCTA({ featureName: 'conversational_search_AI', from })
     showModal()
   }
 

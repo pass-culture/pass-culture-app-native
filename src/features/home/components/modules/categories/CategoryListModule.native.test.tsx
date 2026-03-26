@@ -147,6 +147,7 @@ describe('CategoryListModule', () => {
       await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
 
       expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenCalledWith({
+        featureName: 'conversational_search_AI',
         from: 'home',
         homeEntryId: 'homeEntryId',
       })

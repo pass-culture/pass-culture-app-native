@@ -131,6 +131,7 @@ export const SearchResults = () => {
 
   const handleAIFakeDoorPress = (from: 'search' | 'searchAutoComplete') => {
     void analytics.logHasClickedFakeDoorCTA({
+      featureName: 'conversational_search_AI',
       from,
       searchId: searchState.searchId ?? searchIdGenerated,
     })
