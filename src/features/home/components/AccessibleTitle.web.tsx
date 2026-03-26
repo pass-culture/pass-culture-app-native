@@ -37,6 +37,7 @@ export const AccessibleTitle: React.FC<AccessibleTitleProps> = ({
 const TitleWrapper = styled.View<{ windowWidth?: number; withMargin?: boolean }>(
   ({ withMargin, theme }) => {
     return {
+      flexShrink: 1,
       marginHorizontal: withMargin ? theme.contentPage.marginHorizontal : undefined,
     }
   }
