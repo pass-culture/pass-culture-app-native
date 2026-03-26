@@ -4,6 +4,8 @@ import { VenuesModule } from 'features/home/components/modules/venues/VenuesModu
 import { ModuleData } from 'features/home/types'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { DisplayParametersFields } from 'libs/contentful/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -21,6 +23,10 @@ const props = {
 }
 
 describe('VenuesModule component', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     renderVenuesModule()
 
@@ -32,7 +38,36 @@ describe('VenuesModule component', () => {
 
     expect(screen.queryByTestId('offersModuleList')).toBeNull()
   })
+
+  it('should not display new tag when wipEnableVolunteerNewTag FF deactivated and playlist has exclusively volunteering venues', () => {
+    renderVenuesModule({
+      displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+    })
+
+    expect(screen.queryByText('Nouveau')).not.toBeOnTheScreen()
+  })
+
+  describe('When wipEnableVolunteerNewTag FF activated', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_NEW_TAG])
+    })
+
+    it('should display new tag if playlist has exclusively volunteering venues', () => {
+      renderVenuesModule({
+        displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+      })
+
+      expect(screen.getByText('Nouveau')).toBeOnTheScreen()
+    })
+
+    it('should not display new tag if playlist has not exclusively volunteering venues', () => {
+      renderVenuesModule()
+
+      expect(screen.queryByText('Nouveau')).not.toBeOnTheScreen()
+    })
+  })
 })
 
-const renderVenuesModule = (additionalProps: { data?: ModuleData } = {}) =>
-  render(reactQueryProviderHOC(<VenuesModule {...props} {...additionalProps} />))
+const renderVenuesModule = (
+  additionalProps: { data?: ModuleData; displayParameters?: DisplayParametersFields } = {}
+) => render(reactQueryProviderHOC(<VenuesModule {...props} {...additionalProps} />))

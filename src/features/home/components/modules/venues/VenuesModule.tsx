@@ -7,6 +7,8 @@ import { ModuleData } from 'features/home/types'
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
@@ -34,6 +36,7 @@ export const VenuesModule = ({
   data,
   onViewableItemsChanged,
 }: VenuesModuleProps) => {
+  const enableVolunteerNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_NEW_TAG)
   const moduleName = displayParameters.title
   const { playlistItems = [] } = data ?? { playlistItems: [] }
   const { designSystem } = useTheme()
@@ -52,6 +55,8 @@ export const VenuesModule = ({
   )
 
   const shouldModuleBeDisplayed = playlistItems.length > displayParameters.minOffers
+  const isExclusiveVolunteering = displayParameters.isExclusiveVolunteering ?? false
+  const showNewTag = enableVolunteerNewTag && isExclusiveVolunteering
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
@@ -84,6 +89,7 @@ export const VenuesModule = ({
           contentContainerStyle={{ paddingHorizontal: designSystem.size.spacing.xl }}
           onViewableItemsChanged={handleViewableItemsChanged}
           playlistRef={listRef}
+          showNewTag={showNewTag}
         />
       )}
     </ObservedPlaylist>

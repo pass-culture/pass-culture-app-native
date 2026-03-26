@@ -284,6 +284,7 @@ export interface DisplayParametersFields {
   layout: Layout
   minOffers: number
   subtitle?: string
+  isExclusiveVolunteering?: boolean
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/business/fields
