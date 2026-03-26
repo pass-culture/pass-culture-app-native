@@ -1,9 +1,6 @@
-//
-
 import { useNavigationState } from '@react-navigation/native'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
-import { ViewToken } from 'react-native'
 import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -127,23 +124,15 @@ export const SearchResults = () => {
   }, [searchState.searchId, searchIdGenerated, dispatch])
 
   // Handler for modules with the new system
-  const handleViewableItemsChanged = React.useCallback(
-    (
-      items: Pick<ViewToken, 'key' | 'index'>[],
-      moduleId: string,
-      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-      playlistIndex?: number
-    ) => {
-      pageTracking.trackViewableItems({
-        moduleId,
-        itemType,
-        viewableItems: items,
-        searchId: searchState.searchId,
-        playlistIndex,
-      })
-    },
-    [pageTracking, searchState.searchId]
-  )
+  const handleViewableItemsChanged = (items, moduleId, itemType, playlistIndex) => {
+    pageTracking.trackViewableItems({
+      moduleId,
+      itemType,
+      viewableItems: items,
+      searchId: searchState.searchId,
+      playlistIndex,
+    })
+  }
 
   const handleEndReached = async () => {
     if (!(offers && hasNextPage)) {

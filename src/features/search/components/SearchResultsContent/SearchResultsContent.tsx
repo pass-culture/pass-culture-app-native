@@ -21,7 +21,7 @@ import { getStringifySearchStateWithoutLocation } from 'features/search/helpers/
 import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateToSearchFilter/useNavigateToSearchFilter'
 import { usePrevious } from 'features/search/helpers/usePrevious'
 import { useGridListLayout } from 'features/search/store/gridListLayoutStore'
-import { GridListLayout, VenuesUserData } from 'features/search/types'
+import { GridListLayout, SearchListProps, VenuesUserData } from 'features/search/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { Venue } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
@@ -79,12 +79,7 @@ export type SearchResultsContentProps = {
   venuesUserData: VenuesUserData
   offerVenues: Venue[]
   onPressAIFakeDoorBanner: () => void
-  onViewableItemsChanged?: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
+  onViewableItemsChanged?: SearchListProps['onViewableVenuePlaylistItemsChanged']
   enableAIFakeDoor?: boolean
 }
 
