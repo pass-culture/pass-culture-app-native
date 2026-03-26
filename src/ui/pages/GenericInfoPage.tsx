@@ -1,5 +1,5 @@
 import React, { FunctionComponent, PropsWithChildren, ReactNode } from 'react'
-import { AccessibilityRole } from 'react-native'
+import { AccessibilityRole, Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -82,6 +82,7 @@ type Props = PropsWithChildren<{
   buttonTertiary?: ButtonProps
 }> &
   AnimationProps
+const isWeb = Platform.OS === 'web'
 
 export const GenericInfoPage: React.FunctionComponent<Props> = ({
   withGoBack = false,
@@ -108,6 +109,11 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   const placeholderHeight = shouldDisplayHeader ? headerHeight : top
   const marginVertical = useFontScaleValue({ default: 0, at200PercentZoom: getSpacing(25) })
   const buttons = getGenericInfoPageButtons({ buttonPrimary, buttonSecondary, buttonTertiary })
+
+  const flex = useFontScaleValue({
+    default: undefined,
+    at200PercentZoom: 0,
+  })
 
   return (
     <Page>
@@ -140,7 +146,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
               ) : null}
             </IllustrationContainer>
 
-            <TextContainer gap={4}>
+            <TextContainer gap={4} flex={flex}>
               <StyledTitle2 {...getHeadingAttrs(1)}>{title}</StyledTitle2>
               {subtitle ? <StyledBody {...getHeadingAttrs(2)}>{subtitle}</StyledBody> : null}
             </TextContainer>
@@ -197,11 +203,13 @@ const IllustrationContainer = styled.View<{ animation: boolean }>(({ animation, 
   ...(animation && { height: '30%' }),
 }))
 
-const TextContainer = styled(ViewGap)(({ theme }) => ({
-  alignItems: 'center',
-  marginBottom: theme.designSystem.size.spacing.xl,
-  flex: 0,
-}))
+const TextContainer = styled(ViewGap)<{ flex?: number; marginBottom?: number }>(
+  ({ flex, marginBottom }) => ({
+    alignItems: 'center',
+    marginBottom,
+    flex,
+  })
+)
 
 const StyledTitle2 = styled(Typo.Title2)({
   textAlign: 'center',
@@ -217,6 +225,7 @@ const ChildrenContainer = styled.View(({ theme }) => ({
 
 const ButtonContainer = styled(ViewGap)<{ isLandscape: boolean }>(({ isLandscape, theme }) => ({
   alignItems: 'center',
+  marginTop: isWeb ? getSpacing(25) : 0,
   marginBottom: isLandscape ? getSpacing(40) : theme.designSystem.size.spacing.xxxl,
 }))
 

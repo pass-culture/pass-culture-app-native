@@ -149,11 +149,7 @@ exports[`NotEligibleEduConnect should render correctly 1`] = `
             style={
               {
                 "alignItems": "center",
-                "flexBasis": 0,
-                "flexGrow": 0,
-                "flexShrink": 1,
                 "gap": 16,
-                "marginBottom": 24,
               }
             }
           >
@@ -203,6 +199,7 @@ exports[`NotEligibleEduConnect should render correctly 1`] = `
               "alignItems": "center",
               "gap": 16,
               "marginBottom": 40,
+              "marginTop": 0,
             }
           }
         >
