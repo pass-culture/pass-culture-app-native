@@ -1,4 +1,4 @@
-import { useIsFocused, useRoute } from '@react-navigation/native'
+import { useIsFocused, useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import { Platform, ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
@@ -6,7 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
@@ -69,6 +69,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   const artistsPlaylistEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_ARTISTS_PLAYLIST)
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavigationConfig = useNavigateToSearchWithVenueOffers(venue)
+  const { navigate } = useNavigation<UseNavigationType>()
   const isFocused = useIsFocused()
 
   const { hits = [] } = venueOffers ?? {}
@@ -78,9 +79,9 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
 
   const onPressSeeMore = () => analytics.logVenueSeeMoreClicked(venue.id)
 
-  // TODO(PC-40227): add pro advices page
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  const onPressChronicleCardSeeMore = () => {}
+  const onPressAdviceCardSeeMore = (offerId: number) => {
+    navigate('ProAdvicesVenue', { venueId: venue.id, offerId })
+  }
 
   const renderFooter: RenderFooterItem = ({ width, height }: { width: number; height: number }) => (
     <SeeMore
@@ -95,7 +96,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
     const tag = renderInteractionTag({
       theme,
       likesCount: item.offer.likes,
-      chroniclesCount: item.offer.chroniclesCount,
+      advicesCount: item.offer.chroniclesCount,
       isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
       subcategoryId: item.offer.subcategoryId,
     })
@@ -191,7 +192,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           advicesCardData={advicesCardData}
           nbAdvices={nbAdvices}
           venue={venue}
-          onPressChronicleCardSeeMore={onPressChronicleCardSeeMore}
+          onPressAdviceCardSeeMore={onPressAdviceCardSeeMore}
           enableNewTagProAdvices={enableNewTagProAdvices}
           onShowWritersModal={onShowWritersModal}
         />

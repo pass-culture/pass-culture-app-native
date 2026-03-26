@@ -4,13 +4,12 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum, OfferArtist, OfferResponse } from 'api/gen'
+import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { ProposedBySection } from 'features/offer/components/OfferBody/ProposedBySection/ProposedBySection'
-import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { VideoSection } from 'features/offer/components/OfferContent/VideoSection/VideoSection'
 import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
@@ -46,14 +45,14 @@ type Props = {
   offer: OfferResponse
   subcategory: Subcategory
   children: ReactNode
-  chronicleVariantInfo: ChronicleVariantInfo
+  adviceVariantInfo: AdviceVariantInfo
   onVideoConsentPress: () => void
   onShowOfferArtistsModal: (artists: OfferArtist[]) => void
   likesCount?: number
-  chroniclesCount?: number | null
+  advicesCount?: number | null
   distance?: string | null
   headlineOffersCount?: number
-  chronicles?: ChronicleCardData[]
+  advices?: AdviceCardData[]
   isVideoSectionEnabled?: boolean
   hasVideoCookiesConsent?: boolean
   isMultiArtistsEnabled?: boolean
@@ -64,11 +63,11 @@ export const OfferBody: FunctionComponent<Props> = ({
   subcategory,
   children,
   likesCount,
-  chroniclesCount,
+  advicesCount,
   distance,
   headlineOffersCount,
-  chronicleVariantInfo,
-  chronicles,
+  adviceVariantInfo,
+  advices,
   isVideoSectionEnabled,
   hasVideoCookiesConsent,
   isMultiArtistsEnabled,
@@ -192,10 +191,10 @@ export const OfferBody: FunctionComponent<Props> = ({
 
         <OfferReactionSection
           likesCount={likesCount}
-          chroniclesCount={chroniclesCount}
+          advicesCount={advicesCount}
           headlineOffersCount={headlineOffersCount}
-          chronicleVariantInfo={chronicleVariantInfo}
-          chronicles={chronicles}
+          adviceVariantInfo={adviceVariantInfo}
+          advices={advices}
         />
 
         <GroupWithSeparator

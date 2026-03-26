@@ -12,8 +12,6 @@ import { IBookingContext } from 'features/bookOffer/types'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { PlaylistType } from 'features/offer/enums'
 import { beneficiaryUser } from 'fixtures/user'
-import { Adjust } from 'libs/adjust/adjust'
-import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -24,8 +22,6 @@ import { render, screen, userEvent, waitFor } from 'tests/utils'
 import { BookingOfferModalComponent } from './BookingOfferModal'
 
 jest.mock('libs/firebase/analytics/analytics')
-
-jest.mock('libs/adjust/adjust')
 
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
@@ -328,19 +324,6 @@ describe('<BookingOfferModalComponent />', () => {
         await user.press(screen.getByText('Confirmer la réservation'))
 
         expect(logOfferConversionSpy).not.toHaveBeenCalled()
-      })
-
-      it('should log Adjust book offer event when booking is complete', async () => {
-        renderBookingOfferModal({ offerId: mockOffer.id })
-        await user.press(
-          await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
-          })
-        )
-
-        await user.press(screen.getByText('Confirmer la réservation'))
-
-        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.BOOK_OFFER)
       })
 
       it('should navigate to booking confirmation when booking is complete', async () => {

@@ -7,6 +7,7 @@ import React, {
   useEffect,
   useMemo,
   useRef,
+  useState,
 } from 'react'
 import {
   LayoutChangeEvent,
@@ -21,12 +22,11 @@ import { IOScrollView as IntersectionObserverScrollView } from 'react-native-int
 import styled, { useTheme } from 'styled-components/native'
 
 import { OfferArtist, OfferResponse, ReactionTypeEnum, RecommendationApiParams } from 'api/gen'
-import { ChronicleCardData } from 'features/chronicle/type'
+import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
-import { ChroniclesSectionWithAnchor } from 'features/offer/components/OfferContent/ChronicleSection/ChroniclesSectionWithAnchor'
-import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
+import { ClubAdviceSectionWithAnchor } from 'features/offer/components/OfferContent/ClubAdviceSection/ClubAdviceSectionWithAnchor'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { OfferContentCTAs } from 'features/offer/components/OfferFooter/OfferContentCTAs'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
@@ -62,17 +62,17 @@ type OfferContentBaseProps = OfferContentProps &
   PropsWithChildren<{
     BodyWrapper: FunctionComponent
     onOfferPreviewPress: (index?: number) => void
-    onShowChroniclesWritersModal: () => void
+    onShowClubAdviceWritersModal: () => void
     onShowOfferArtistsModal: (artists: OfferArtist[]) => void
     onVideoConsentPress?: () => void
-    chronicles?: ChronicleCardData[]
+    advices?: AdviceCardData[]
     likesCount?: number
     headlineOffersCount?: number
     defaultReaction?: ReactionTypeEnum | null
     onReactionButtonPress?: () => void
     contentContainerStyle?: StyleProp<ViewStyle>
     onLayout?: (params: LayoutChangeEvent) => void
-    chronicleVariantInfo?: ChronicleVariantInfo
+    adviceVariantInfo?: AdviceVariantInfo
     isVideoSectionEnabled?: boolean
   }>
 
@@ -82,14 +82,14 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   offer,
   searchGroupList,
   subcategory,
-  chronicles,
-  chronicleVariantInfo,
+  advices,
+  adviceVariantInfo,
   headlineOffersCount,
   onOfferPreviewPress,
   contentContainerStyle,
   defaultReaction,
   onReactionButtonPress,
-  onShowChroniclesWritersModal,
+  onShowClubAdviceWritersModal,
   isVideoSectionEnabled,
   BodyWrapper = React.Fragment,
   onLayout,
@@ -126,6 +126,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   } = useOfferPlaylist({ offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList })
   const scrollViewRef = useRef<ScrollView>(null)
   const scrollYRef = useRef<number>(0)
+  const [isBottomReached, setIsBottomReached] = useState(false)
+  const isBottomReachedRef = useRef(false)
 
   const logConsultWholeOffer = useFunctionOnce(() => {
     void analytics.logConsultWholeOffer(offer.id)
@@ -192,6 +194,11 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
       onScroll(event)
       scrollYRef.current = event.nativeEvent.contentOffset.y
+      const closeToBottom = isCloseToBottom(event.nativeEvent)
+      if (closeToBottom !== isBottomReachedRef.current) {
+        isBottomReachedRef.current = closeToBottom
+        setIsBottomReached(closeToBottom)
+      }
     },
     [onScroll]
   )
@@ -231,10 +238,10 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
 
   const imageDimensions = useOfferImageContainerDimensions(offer.subcategoryId)
 
-  const onSeeMoreButtonPress = (chronicleId: number) => {
+  const onSeeMoreButtonPress = (adviceId: number) => {
     // It's dirty but necessary to use from parameter for the logs
-    navigate('Chronicles', { offerId: offer.id, chronicleId, from: 'chronicles' })
-    void analytics.logConsultChronicle({ offerId: offer.id, chronicleId })
+    navigate('ClubAdvices', { offerId: offer.id, adviceId, from: 'chronicles' })
+    void analytics.logConsultChronicle({ offerId: offer.id, chronicleId: adviceId })
   }
 
   const handleOnSeeAllReviewsPress = () => {
@@ -251,6 +258,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
       offer={offer}
       subcategory={subcategory}
       trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+      displayStickyGradient={!isBottomReached}
     />
   )
 
@@ -328,11 +336,11 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               offer={offer}
               subcategory={subcategory}
               likesCount={offer.reactionsCount.likes}
-              chroniclesCount={offer.chroniclesCount}
-              chronicles={chronicles}
+              advicesCount={offer.chroniclesCount}
+              advices={advices}
               distance={distance}
               headlineOffersCount={headlineOffersCount}
-              chronicleVariantInfo={chronicleVariantInfo}
+              adviceVariantInfo={adviceVariantInfo}
               isVideoSectionEnabled={isVideoSectionEnabled}
               hasVideoCookiesConsent={hasVideoCookiesConsent}
               onVideoConsentPress={onVideoConsentPress}
@@ -342,13 +350,13 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             </OfferBody>
           </BodyWrapper>
 
-          {chronicles?.length ? (
-            <ChroniclesSectionWithAnchor
-              chronicles={chronicles}
-              chronicleVariantInfo={chronicleVariantInfo}
+          {advices?.length ? (
+            <ClubAdviceSectionWithAnchor
+              advices={advices}
+              adviceVariantInfo={adviceVariantInfo}
               offer={offer}
               onSeeMoreButtonPress={onSeeMoreButtonPress}
-              onShowChroniclesWritersModal={onShowChroniclesWritersModal}
+              onShowClubAdviceWritersModal={onShowClubAdviceWritersModal}
               onSeeAllReviewsPress={handleOnSeeAllReviewsPress}
             />
           ) : null}

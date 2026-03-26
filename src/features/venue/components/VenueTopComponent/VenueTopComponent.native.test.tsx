@@ -1,9 +1,10 @@
 import Clipboard from '@react-native-clipboard/clipboard'
 import mockdate from 'mockdate'
-import React from 'react'
+import React, { ComponentProps } from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { Activity, VenueResponse } from 'api/gen'
+import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
@@ -20,6 +21,8 @@ const mockUseLocation = jest.mocked(useLocation)
 jest.mock('@react-native-clipboard/clipboard')
 const venueOpenToPublic = { ...venueDataTest, isOpenToPublic: true }
 
+const mockOpenUrl = jest.spyOn(NavigationHelpers, 'openUrl')
+
 const user = userEvent.setup()
 jest.useFakeTimers()
 
@@ -29,7 +32,7 @@ describe('<VenueTopComponent />', () => {
   })
 
   it('should display full venue address', async () => {
-    renderVenueTopComponent(venueOpenToPublic)
+    renderVenueTopComponent({ venue: venueOpenToPublic })
 
     expect(await screen.findByText('1 boulevard Poissonnière, 75000 Paris')).toBeOnTheScreen()
   })
@@ -39,7 +42,7 @@ describe('<VenueTopComponent />', () => {
       ...venueOpenToPublic,
       activity: Activity.CULTURAL_CENTRE,
     }
-    renderVenueTopComponent(culturalCenterVenue)
+    renderVenueTopComponent({ venue: culturalCenterVenue })
 
     expect(await screen.findByText('Centre culturel')).toBeOnTheScreen()
   })
@@ -56,7 +59,7 @@ describe('<VenueTopComponent />', () => {
       longitude: 30,
     }
 
-    renderVenueTopComponent(locatedVenue)
+    renderVenueTopComponent({ venue: locatedVenue })
 
     expect(await screen.findByText('À 10 km')).toBeOnTheScreen()
   })
@@ -70,13 +73,13 @@ describe('<VenueTopComponent />', () => {
       latitude: 30,
       longitude: 30,
     }
-    renderVenueTopComponent(locatedVenue)
+    renderVenueTopComponent({ venue: locatedVenue })
 
     expect(screen.queryByText('À 10 km')).not.toBeOnTheScreen()
   })
 
   it('should copy the whole address when pressing the copy button', async () => {
-    renderVenueTopComponent(venueOpenToPublic)
+    renderVenueTopComponent({ venue: venueOpenToPublic })
     await user.press(screen.getByText('Copier l’adresse'))
 
     expect(Clipboard.setString).toHaveBeenCalledWith(
@@ -88,7 +91,7 @@ describe('<VenueTopComponent />', () => {
     Clipboard.getString = jest
       .fn()
       .mockReturnValue('Le Petit Rintintin 1, 1 boulevard Poissonnière, 75000 Paris')
-    renderVenueTopComponent(venueOpenToPublic)
+    renderVenueTopComponent({ venue: venueOpenToPublic })
     await user.press(screen.getByText('Copier l’adresse'))
 
     expect(analytics.logCopyAddress).toHaveBeenCalledWith({
@@ -99,19 +102,19 @@ describe('<VenueTopComponent />', () => {
 
   it('should render dynamics opening hours', async () => {
     mockdate.set(new Date('2024-05-31T08:31:00'))
-    renderVenueTopComponent(venueOpenToPublic)
+    renderVenueTopComponent({ venue: venueOpenToPublic })
 
     expect(screen.getByText('Ouvre bientôt - 9h')).toBeOnTheScreen()
   })
 
   it('should NOT render dynamics opening hours when venue doesn t have openingHours', async () => {
-    renderVenueTopComponent({ ...venueOpenToPublic, openingHours: undefined })
+    renderVenueTopComponent({ venue: { ...venueOpenToPublic, openingHours: undefined } })
 
     expect(screen.queryByText('Fermé')).not.toBeOnTheScreen()
   })
 
   it('should log analytics when pressing Voir l’itinéraire', async () => {
-    render(reactQueryProviderHOC(<VenueTopComponent venue={venueOpenToPublic} />))
+    renderVenueTopComponent({ venue: venueOpenToPublic })
 
     await user.press(screen.getByText('Voir l’itinéraire'))
 
@@ -123,10 +126,12 @@ describe('<VenueTopComponent />', () => {
 
   it('should navigate to venue preview carousel', async () => {
     renderVenueTopComponent({
-      ...venueOpenToPublic,
-      bannerUrl: 'https://image.com',
-      bannerIsFromGoogle: false,
-      bannerCredit: 'François Boulo',
+      venue: {
+        ...venueOpenToPublic,
+        bannerUrl: 'https://image.com',
+        bannerIsFromGoogle: false,
+        bannerCredit: 'François Boulo',
+      },
     })
 
     await user.press(
@@ -142,7 +147,7 @@ describe('<VenueTopComponent />', () => {
     it('should not render dynamics opening hours', async () => {
       mockdate.set(new Date('2024-05-31T08:31:00'))
 
-      renderVenueTopComponent({ ...venueDataTest, isOpenToPublic: false })
+      renderVenueTopComponent({ venue: { ...venueDataTest, isOpenToPublic: false } })
 
       expect(screen.queryByText('Ouvre bientôt - 9h')).not.toBeOnTheScreen()
     })
@@ -153,7 +158,80 @@ describe('<VenueTopComponent />', () => {
       expect(screen.queryByText('1 boulevard Poissonnière, 75000 Paris')).not.toBeOnTheScreen()
     })
   })
+
+  it('should not display volunteer card when wipEnableVolunteer FF deactivated and venue has volunteering url', () => {
+    renderVenueTopComponent({ venue: { ...venueOpenToPublic, volunteeringUrl: 'url' } })
+
+    expect(
+      screen.queryByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`)
+    ).not.toBeOnTheScreen()
+  })
+
+  describe('When wipEnableVolunteer FF activated', () => {
+    it('should not display volunteer card when venue has not volunteering url', () => {
+      renderVenueTopComponent({ venue: venueOpenToPublic, enableVolunteer: true })
+
+      expect(
+        screen.queryByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`)
+      ).not.toBeOnTheScreen()
+    })
+
+    it('should display volunteer card when venue has volunteering url', () => {
+      renderVenueTopComponent({
+        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
+        enableVolunteer: true,
+      })
+
+      expect(
+        screen.getByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`)
+      ).toBeOnTheScreen()
+    })
+
+    it('should redirect to voluteer page when venue has volunteering url and pressing voluteer card', async () => {
+      renderVenueTopComponent({
+        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
+        enableVolunteer: true,
+      })
+
+      await user.press(screen.getByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`))
+
+      expect(mockOpenUrl).toHaveBeenCalledWith('url')
+    })
+
+    it('should display new tag on volunteer card when venue has volunteering url and wipEnableVolunteerNewTag FF activated', () => {
+      renderVenueTopComponent({
+        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
+        enableVolunteer: true,
+        enableVolunteerNewTag: true,
+      })
+
+      expect(screen.getByText('Nouveau')).toBeOnTheScreen()
+    })
+
+    it('should not display new tag on volunteer card when venue has volunteering url and wipEnableVolunteerNewTag FF deactivated', () => {
+      renderVenueTopComponent({
+        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
+        enableVolunteer: true,
+      })
+
+      expect(screen.queryByText('Nouveau')).not.toBeOnTheScreen()
+    })
+  })
 })
 
-const renderVenueTopComponent = (venue: Omit<VenueResponse, 'isVirtual'>) =>
-  render(reactQueryProviderHOC(<VenueTopComponent venue={venue} />))
+type RenderVenueTopComponent = ComponentProps<typeof VenueTopComponent>
+
+const renderVenueTopComponent = ({
+  venue,
+  enableVolunteer,
+  enableVolunteerNewTag,
+}: RenderVenueTopComponent) =>
+  render(
+    reactQueryProviderHOC(
+      <VenueTopComponent
+        venue={venue}
+        enableVolunteer={enableVolunteer}
+        enableVolunteerNewTag={enableVolunteerNewTag}
+      />
+    )
+  )

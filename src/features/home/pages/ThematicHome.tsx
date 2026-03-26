@@ -108,7 +108,7 @@ export const ThematicHome: FunctionComponent = () => {
       moduleItemId,
     },
   } = useRoute<UseRouteType<'ThematicHome'>>()
-  const { goBack } = useGoBack('Chronicles')
+  const { goBack } = useGoBack('ClubAdvices')
   const { navigate } = useNavigation<UseNavigationType>()
   const isFromDeeplink = from === 'deeplink'
   // if homepage fails to be fetched, `homeId` should not be `requestHomeId`, it would mislead tracker's data

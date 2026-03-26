@@ -192,9 +192,15 @@ type ArtistParams = {
   id: string
 }
 
-type ChroniclesParams = {
+type ClubAdvicesParams = {
   offerId: number
-  chronicleId?: number
+  adviceId?: number
+  from?: Referrals
+}
+
+type ProAdvicesVenueParams = {
+  venueId: number
+  offerId?: number
   from?: Referrals
 }
 
@@ -224,8 +230,8 @@ export type RootStackParamList = {
   Bookings: { activeTab?: BookingsTab } | undefined
   ChangeEmailExpiredLink: undefined
   CheatcodesStackNavigator?: NavigatorScreenParams<CheatcodesStackParamList>
-  Chronicles: ChroniclesParams
-  _DeeplinkOnlyChronicles1: ChroniclesParams
+  ClubAdvices: ClubAdvicesParams
+  _DeeplinkOnlyClubAdvices1: ClubAdvicesParams
   CulturalSurvey: undefined
   DeeplinksGenerator: undefined
   EighteenBirthday: undefined
@@ -253,6 +259,7 @@ export type RootStackParamList = {
   OnboardingStackNavigator?: NavigatorScreenParams<OnboardingStackParamList>
   OnboardingSubscription: undefined
   PageNotFound: undefined
+  ProAdvicesVenue: ProAdvicesVenueParams
   Profile: undefined
   ProfileStackNavigator?: NavigatorScreenParams<ProfileStackParamList>
   RecreditBirthdayNotification: undefined

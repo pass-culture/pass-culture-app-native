@@ -1,0 +1,39 @@
+import mockdate from 'mockdate'
+
+import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
+import * as logAdjustRegistrationEventsModule from 'features/auth/pages/signup/helpers/logAdjustRegistrationEvents'
+import { useGoogleSignupMutation } from 'features/auth/queries/signup/useGoogleSignupMutation'
+import { getAge } from 'shared/user/getAge'
+import { mockServer } from 'tests/mswServer'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { renderHook, waitFor } from 'tests/utils'
+
+jest.mock('features/auth/pages/signup/helpers/logAdjustRegistrationEvents')
+
+mockdate.set(CURRENT_DATE)
+
+describe('useGoogleSignupMutation', () => {
+  it('should call logAdjustRegistrationEvents with good user age when signup is successful', async () => {
+    mockServer.postApi('/v1/oauth/google/account', {})
+    const birthDate = '2002-12-01T00:00:00.000Z'
+
+    const { result } = renderUseGoogleSignupMutation()
+
+    result.current.mutate({
+      accountCreationToken: 'token',
+      birthdate: birthDate,
+      token: 'token',
+    })
+
+    await waitFor(() => {
+      expect(logAdjustRegistrationEventsModule.logAdjustRegistrationEvents).toHaveBeenCalledWith(
+        getAge(birthDate)
+      )
+    })
+  })
+})
+
+const renderUseGoogleSignupMutation = () =>
+  renderHook(() => useGoogleSignupMutation(), {
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })

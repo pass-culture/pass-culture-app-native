@@ -3,9 +3,9 @@ import { View } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
-import { ChronicleCardList } from 'features/chronicle/components/ChronicleCardList/ChronicleCardList'
-import { CHRONICLE_CARD_WIDTH } from 'features/chronicle/constant'
-import { ChronicleCardData } from 'features/chronicle/type'
+import { AdviceCardList } from 'features/advices/components/AdviceCardList/AdviceCardList'
+import { ADVICE_CARD_WIDTH } from 'features/advices/constants'
+import { AdviceCardData } from 'features/advices/types'
 import { FeedBack } from 'features/reactions/components/FeedBack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -18,10 +18,10 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   venue: VenueResponse
-  advicesCardData: ChronicleCardData[]
+  advicesCardData: AdviceCardData[]
   nbAdvices: number
   onShowWritersModal: () => void
-  onPressChronicleCardSeeMore?: () => void
+  onPressAdviceCardSeeMore?: (offerId: number) => void
   enableNewTagProAdvices?: boolean
 }
 
@@ -30,7 +30,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
   advicesCardData,
   nbAdvices,
   onShowWritersModal,
-  onPressChronicleCardSeeMore,
+  onPressAdviceCardSeeMore,
   enableNewTagProAdvices,
 }) => {
   const shouldDisplayAllAdvicesButton = advicesCardData.length > 1
@@ -49,10 +49,10 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
           ) : null}
         </Row>
       </Gutter>
-      <StyledChronicleCardlist
+      <StyledAdviceCardList
         data={advicesCardData}
         shouldTruncate
-        onSeeMoreButtonPress={onPressChronicleCardSeeMore}
+        onSeeMoreButtonPress={onPressAdviceCardSeeMore}
       />
       {shouldDisplayAllAdvicesButton ? (
         <Gutter>
@@ -60,8 +60,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
             <InternalTouchableLink
               as={Button}
               wording={`Lire les ${nbAdvices} avis`}
-              // TODO(PC-40227): add pro advices page
-              navigateTo={{ screen: 'Chronicles' }}
+              navigateTo={{ screen: 'ProAdvicesVenue', params: { venueId: venue.id } }}
               variant="secondary"
               color="neutral"
               size="small"
@@ -108,12 +107,12 @@ const StyledTitle3 = styled(Typo.Title3)({
   flexShrink: 1,
 })
 
-const StyledChronicleCardlist = styled(ChronicleCardList).attrs(({ theme }) => ({
+const StyledAdviceCardList = styled(AdviceCardList).attrs(({ theme }) => ({
   contentContainerStyle: {
     paddingHorizontal: theme.contentPage.marginHorizontal,
   },
-  cardWidth: CHRONICLE_CARD_WIDTH,
-  snapToInterval: CHRONICLE_CARD_WIDTH,
+  cardWidth: ADVICE_CARD_WIDTH,
+  snapToInterval: ADVICE_CARD_WIDTH,
 }))``
 
 const TagContainer = styled.View(({ theme }) => ({

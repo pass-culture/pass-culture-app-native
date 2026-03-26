@@ -56,7 +56,7 @@ describe('getUserProfileState', () => {
       expect(getUserProfileState(user)).toEqual({
         statusType: UserStatusType.BENEFICIARY,
         creditType: UserCreditType.CREDIT_EMPTY,
-        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
+        eligibilityType: UserEligibilityType.ELIGIBLE_BONUS,
       })
     })
 
@@ -207,7 +207,7 @@ describe('getUserProfileState', () => {
     })
   })
 
-  it('should return BENEFICIARY + CREDIT_V3_18 + ELIGIBLE_CREDIT_V3_18 when user is eighteen with free deposit', () => {
+  it('should return BENEFICIARY + CREDIT_V3_18 + ELIGIBLE_BONUS when user is eighteen with free deposit', () => {
     mockAge(18)
     const user = buildUser({
       status: { statusType: YoungStatusType.beneficiary },
@@ -218,7 +218,7 @@ describe('getUserProfileState', () => {
     expect(getUserProfileState(user)).toEqual({
       statusType: UserStatusType.BENEFICIARY,
       creditType: UserCreditType.CREDIT_V3_18,
-      eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
+      eligibilityType: UserEligibilityType.ELIGIBLE_BONUS,
     })
   })
 

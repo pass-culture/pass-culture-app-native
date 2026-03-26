@@ -3,15 +3,15 @@ import React, { useCallback } from 'react'
 import { View } from 'react-native'
 
 import { ReactionTypeEnum } from 'api/gen'
+import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
+import { clubAdviceVariant } from 'features/clubAdvices/helpers/clubAdviceVariant'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
+import { advicePreviewToAdviceCardData } from 'features/offer/adapters/advicePreviewToAdviceCardData'
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
 import { OfferContentPlaceholder } from 'features/offer/components/OfferContentPlaceholder/OfferContentPlaceholder'
-import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chronicleVariant'
 import { OfferArtistsModal } from 'features/offer/pages/OfferArtistsModal/OfferArtistsModal'
 import { useFetchHeadlineOffersCountQuery } from 'features/offer/queries/useFetchHeadlineOffersCountQuery'
 import { OfferCTAs } from 'features/offerRefacto/components/OfferCTAs/OfferCTAs'
@@ -104,7 +104,7 @@ export function Offer() {
     })
   }
 
-  const handleOnShowChroniclesWritersModal = () => {
+  const handleOnShowClubAdviceWritersModal = () => {
     void analytics.logClickWhatsClub({
       offerId: offerId.toString(),
       from: 'offer',
@@ -127,10 +127,10 @@ export function Offer() {
   if (!offer || !subcategories || !subcategoriesMapping?.[offer?.subcategoryId]) return null
 
   const subcategory = subcategoriesMapping[offer?.subcategoryId]
-  const chronicleVariantInfo = chronicleVariant[subcategory.id]
+  const adviceVariantInfo = clubAdviceVariant[subcategory.id]
 
-  const chronicles = offer?.chronicles?.map((value) =>
-    chroniclePreviewToChronicalCardData(value, chronicleVariantInfo.subtitleItem)
+  const advices = offer?.chronicles?.map((value) =>
+    advicePreviewToAdviceCardData(value, adviceVariantInfo.subtitleItem)
   )
 
   const shouldFetchSearchVenueOffers = isMultiVenueCompatibleOffer(offer)
@@ -155,13 +155,13 @@ export function Offer() {
           bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
         />
 
-        {chronicleVariantInfo ? (
-          <ChroniclesWritersModal
+        {adviceVariantInfo ? (
+          <AdvicesWritersModal
             closeModal={hideChroniclesWritersModal}
             isVisible={chroniclesWritersModalVisible}
             onShowRecoButtonPress={handleOnShowRecoButtonPress}
-            modalWording={chronicleVariantInfo.modalWording}
-            buttonWording={chronicleVariantInfo.buttonWording}
+            modalWording={adviceVariantInfo.modalWording}
+            buttonWording={adviceVariantInfo.buttonWording}
           />
         ) : null}
         {offer.artists.length > 1 ? (
@@ -177,15 +177,15 @@ export function Offer() {
 
       <OfferContent
         offer={offer}
-        chronicles={chronicles}
-        chronicleVariantInfo={chronicleVariantInfo}
+        advices={advices}
+        adviceVariantInfo={adviceVariantInfo}
         headlineOffersCount={headlineOffersCount}
         searchGroupList={subcategories.searchGroups}
         subcategory={subcategoriesMapping[offer.subcategoryId]}
         defaultReaction={booking?.userReaction}
         onReactionButtonPress={booking?.canReact ? showReactionModal : undefined}
         userId={user?.id}
-        onShowChroniclesWritersModal={handleOnShowChroniclesWritersModal}
+        onShowClubAdviceWritersModal={handleOnShowClubAdviceWritersModal}
         hasVideoCookiesConsent={hasVideoCookiesConsent}
         onVideoConsentPress={handleOnVideoConsentPress}
         isMultiArtistsEnabled={isMultiArtistsEnabled}

@@ -5,12 +5,13 @@ import Animated, { Layout } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Activity, VenueResponse } from 'api/gen'
-import { proAdvicesToChronicleCardData } from 'features/chronicle/adapters/proAdvicesToChronicleCardData/proAdvicesToChronicleCardData'
-import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
+import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
+import { useVenueProAdvicesQuery } from 'features/advices/queries/useVenueProAdvicesQuery'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
+import { proAdvicesToAdviceCardData } from 'features/proAdvices/adapters/proAdvicesToAdviceCardData/proAdvicesToAdviceCardData'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchInVenueModal } from 'features/search/pages/modals/SearchInVenueModal/SearchInVenueModal'
@@ -23,7 +24,6 @@ import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/V
 import { getVenueOffersArtists } from 'features/venue/helpers/getVenueOffersArtists'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 import { getAdvicesWithoutHeadline, getHeadlineAdvice } from 'features/venue/helpers/venueAdvices'
-import { useVenueProAdvicesQuery } from 'features/venue/queries/useVenueProAdvicesQuery'
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { Venue as VenueType } from 'features/venue/types'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
@@ -82,6 +82,8 @@ export const Venue: FunctionComponent = () => {
   const enableSearchWithQuery = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE)
   const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE)
   const enableNewTagProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
+  const enableVolunteer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER)
+  const enableVolunteerNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_NEW_TAG)
   const {
     visible: searchInVenueModalVisible,
     hideModal: hideSearchInVenueModal,
@@ -180,7 +182,11 @@ export const Venue: FunctionComponent = () => {
 
   const VenueContentChildren = venue ? (
     <React.Fragment>
-      <VenueTopComponent venue={venue} />
+      <VenueTopComponent
+        venue={venue}
+        enableVolunteer={enableVolunteer}
+        enableVolunteerNewTag={enableVolunteerNewTag}
+      />
       <ViewGap gap={isDesktopViewport ? 10 : 6}>
         <Animated.View layout={Layout.duration(200)}>
           <VenueBody
@@ -195,7 +201,7 @@ export const Venue: FunctionComponent = () => {
             onViewableItemsChanged={handleViewableItemsChanged}
             advicesCardData={
               segment === 'A'
-                ? proAdvicesToChronicleCardData(
+                ? proAdvicesToAdviceCardData(
                     getAdvicesWithoutHeadline(advices?.proAdvices, headlineOfferData?.id)
                   )
                 : undefined
@@ -211,7 +217,7 @@ export const Venue: FunctionComponent = () => {
       </ViewGap>
       {nbAdvices ? (
         <View>
-          <ChroniclesWritersModal
+          <AdvicesWritersModal
             closeModal={hideAdvicesWritersModal}
             isVisible={advicesWritersModalVisible}
             onShowRecoButtonPress={handleOnShowRecoButtonPress}

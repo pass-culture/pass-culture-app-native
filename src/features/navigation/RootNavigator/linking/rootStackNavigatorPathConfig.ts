@@ -386,15 +386,19 @@ export const rootStackNavigatorPathConfig = {
     path: 'thematic-home',
     parse: screenParamsParser['ThematicHome'],
   },
-  Chronicles: {
-    path: 'avis-du-book-club/:offerId/:chronicleId',
-    parse: screenParamsParser['Chronicles'],
+  ClubAdvices: {
+    path: 'avis-du-club/:offerId/:adviceId',
+    parse: screenParamsParser['ClubAdvices'],
   },
-  _DeeplinkOnlyChronicles1: {
-    path: 'chronicles/:offerId/:chronicleId',
-    parse: screenParamsParser['Chronicles'],
+  _DeeplinkOnlyClubAdvices1: {
+    path: 'clubAdvices/:offerId/:adviceId',
+    parse: screenParamsParser['ClubAdvices'],
   },
   BonificationGranted: {
     path: 'bonification/accordee',
+  },
+  ProAdvicesVenue: {
+    path: 'avis-du-pro/lieu/:venueId/:offerId',
+    parse: screenParamsParser['ProAdvicesVenue'],
   },
 }

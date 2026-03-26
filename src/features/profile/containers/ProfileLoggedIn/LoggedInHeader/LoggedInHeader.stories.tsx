@@ -1,7 +1,9 @@
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
-import { BannerName } from 'api/gen'
+import { UserCreditType } from 'features/auth/helpers/getCreditType'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { BeneficiaryFreeHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInBeneficiaryHeader/BeneficiaryFreeHeader'
 import { BeneficiaryHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInBeneficiaryHeader/BeneficiaryHeader'
 import { EligibleHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInEligibleHeader/EligibleHeader'
@@ -16,59 +18,73 @@ import { Typo } from 'ui/theme'
 import { BeneficiaryEmptyHeader } from './LoggedInBeneficiaryHeader/BeneficiaryEmptyHeader'
 
 const meta: Meta = {
-  title: 'features/profile/headers/loggedInHeader',
+  title: 'features/profile/headers/LoggedInHeader',
 }
 
 export default meta
 
-const featureFlags = {
-  enablePassForAll: true,
-  disableActivation: false,
-  enableProfileV2: true,
+const commonProps = {
+  featureFlags: {
+    enablePassForAll: true,
+    disableActivation: false,
+    enableProfileV2: true,
+  },
+}
+
+const beneficiaryUserWithEmptyCredit = {
+  ...beneficiaryUser,
+  domainsCredit: { all: { initial: 300, remaining: 0 } },
+}
+
+const freeBeneficiaryUser = {
+  ...beneficiaryUser,
+  creditType: UserCreditType.CREDIT_V3_15,
+}
+
+const eligibleUser = {
+  ...nonBeneficiaryUser,
+  eligibilityEndDatetime: '2023-11-19T11:00:00Z',
+  statusType: UserStatusType.ELIGIBLE,
+  eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_17,
 }
 
 const AllHeadersWrapper = () => (
   <ViewGap gap={6}>
     <Typo.BodyAccentXs>BeneficiaryEmptyHeader</Typo.BodyAccentXs>
-    <BeneficiaryEmptyHeader user={beneficiaryUser} featureFlags={featureFlags} />
+    <BeneficiaryEmptyHeader user={beneficiaryUserWithEmptyCredit} {...commonProps} />
 
     <Separator.HorizontalWithMargin />
 
     <Typo.BodyAccentXs>BeneficiaryFreeHeader</Typo.BodyAccentXs>
-    <BeneficiaryFreeHeader user={beneficiaryUser} featureFlags={featureFlags} />
+    <BeneficiaryFreeHeader user={freeBeneficiaryUser} {...commonProps} />
 
     <Separator.HorizontalWithMargin />
 
     <Typo.BodyAccentXs>BeneficiaryHeader</Typo.BodyAccentXs>
-    <BeneficiaryHeader user={beneficiaryUser} featureFlags={featureFlags} />
+    <BeneficiaryHeader user={beneficiaryUser} {...commonProps} />
 
     <Separator.HorizontalWithMargin />
 
     <Typo.BodyAccentXs>EligibleHeader</Typo.BodyAccentXs>
-    <EligibleHeader
-      user={beneficiaryUser}
-      featureFlags={featureFlags}
-      banner={{
-        title: 'Débloque tes 150€',
-        text: 'à dépenser sur l’application',
-        name: BannerName.activation_banner,
-      }}
-      onPress={() => 'doNothing'}
+    <EligibleHeader user={eligibleUser} {...commonProps} />
+
+    <Separator.HorizontalWithMargin />
+
+    <Typo.BodyAccentXs>LoggedInExBeneficiaryHeader</Typo.BodyAccentXs>
+    <LoggedInExBeneficiaryHeader
+      user={exBeneficiaryUser}
+      {...commonProps}
+      remoteConfigData={{ homeEntryIdFreeOffers: 'homeEntryIdFreeOffers' }}
     />
 
     <Separator.HorizontalWithMargin />
 
-    <Typo.BodyAccentXs>LoggedInExBeneficiaryHeader</Typo.BodyAccentXs>
-    <LoggedInExBeneficiaryHeader user={exBeneficiaryUser} featureFlags={featureFlags} />
-
-    <Separator.HorizontalWithMargin />
-
-    <Typo.BodyAccentXs>LoggedInExBeneficiaryHeader</Typo.BodyAccentXs>
-    <LoggedInGeneralPublicHeader user={nonBeneficiaryUser} featureFlags={featureFlags} />
+    <Typo.BodyAccentXs>LoggedInGeneralPublicHeader</Typo.BodyAccentXs>
+    <LoggedInGeneralPublicHeader user={nonBeneficiaryUser} {...commonProps} />
   </ViewGap>
 )
 
 export const AllHeadersStory: VariantsStory<typeof AllHeadersWrapper> = {
-  name: 'loggedInHeader',
+  name: 'LoggedInHeader',
   render: () => <AllHeadersWrapper />,
 }
