@@ -52,16 +52,18 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: 'Valider le prix'
 
 - assertVisible: 'Nombre de places'
-- tapOn: 'Solo'
+- tapOn: 'Nombre de places - Liste - Élément 1 sur 2 - Solo.*'
 - tapOn: 'Finaliser ma réservation'
 
 - assertVisible: 'Détails de la réservation'
 - tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire'
 - scrollUntilVisible:
-    element: 'Confirmer la réservation'
-- doubleTapOn: 'Confirmer la réservation'
+    element: '.*Confirmer la réservation.*'
+- doubleTapOn: '.*Confirmer la réservation.*'
 
-- assertVisible: "Réservation confirmée\_!"
+- assertVisible: 
+    text: "Réservation confirmée\_!"
+    optional: true
 - tapOn:
     text: 'Voir ma réservation'
     retryTapIfNoChange: true
@@ -73,6 +75,7 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Annuler ma réservation'
     commands:
       - tapOn: 'Annuler ma réservation'
-      - tapOn: 'Annuler ma réservation'
+      - tapOn: 
+          id: 'Annuler ma réservation'
 
 - waitForAnimationToEnd

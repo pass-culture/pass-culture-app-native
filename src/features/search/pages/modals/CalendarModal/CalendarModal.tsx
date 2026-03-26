@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { addMonths, addYears, format } from 'date-fns'
+import { addMonths, addYears, format, parse } from 'date-fns'
 import React, { FunctionComponent, useCallback, useMemo, useRef } from 'react'
 import { SetValueConfig, useForm } from 'react-hook-form'
 import { View } from 'react-native'
@@ -218,7 +218,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
       setValueWithValidation('selectedFilterMode', undefined)
     }
 
-    const selectedDate = new Date(date.dateString)
+    const selectedDate = parse(date.dateString, 'yyyy-MM-dd', new Date())
 
     if (!selectedStartDate || selectedEndDate || selectedDate < selectedStartDate) {
       setValueWithValidation('selectedStartDate', selectedDate)

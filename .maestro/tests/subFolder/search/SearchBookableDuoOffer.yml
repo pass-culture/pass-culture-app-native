@@ -7,7 +7,7 @@ onFlowStart:
     when:
       platform: iOS
     commands:
-      - tapOn: 'Catégories Cinéma.*'
+      - tapOn: 'Catégorie Cinéma.*'
 
 - runFlow:
     when:
@@ -26,16 +26,23 @@ onFlowStart:
 
 - tapOn: 'Rechercher'
 - tapOn: '.*Voir tous les filtres.*'
-- tapOn: 'Duo'
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn: 'Filtre - Duo'
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn: 'Duo'
 - tapOn:
     id: 'Uniquement les offres duo - Interrupteur à bascule - non coché'
 - tapOn: 'Appliquer le filtre'
 
-- tapOn: 'Dates'
+- tapOn: '.*Dates.*'
 
 - tapOn: '${output.targetDateTest}'
+- tapOn: 'Appliquer le filtre'
 
-- tapOn:
-    text: 'Appliquer le filtre'
-    retryTapIfNoChange: true
 - tapOn: 'Rechercher'

@@ -53,15 +53,14 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: 'Valider le prix'
 
 - assertVisible: 'Nombre de places'
-- tapOn: 'Duo'
-
+- tapOn: '.*Nombre de places - Liste - Élément 2 sur 2 - Duo.*'
 - tapOn: 'Finaliser ma réservation'
 
 - assertVisible: 'Détails de la réservation'
 - tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire'
 - scrollUntilVisible:
-    element: 'Confirmer la réservation'
-- doubleTapOn: 'Confirmer la réservation'
+    element: '.*Confirmer la réservation.*'
+- doubleTapOn: '.*Confirmer la réservation.*'
 
 - assertVisible: "Réservation confirmée\_!"
 - tapOn:
