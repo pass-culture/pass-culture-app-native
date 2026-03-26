@@ -1,6 +1,9 @@
 import { UserProfileResponse, YoungStatusType } from 'api/gen'
+import { logUserStatusTypeFallback } from 'features/profile/helpers/logUserStatusTypeFallback'
 
 import { getStatusType, UserStatusType } from './getStatusType'
+
+jest.mock('features/profile/helpers/logUserStatusTypeFallback')
 
 const buildUser = (statusType: YoungStatusType | string): UserProfileResponse =>
   ({ status: { statusType } }) as UserProfileResponse
@@ -46,5 +49,14 @@ describe('getStatusType', () => {
     const result = getStatusType(user)
 
     expect(result).toBe(UserStatusType.UNKNOWN)
+  })
+
+  it('should log fallback when status type is unknown', () => {
+    const user = buildUser('unexpected_status')
+    const result = getStatusType(user)
+
+    expect(result).toBe(UserStatusType.UNKNOWN)
+
+    expect(logUserStatusTypeFallback).toHaveBeenCalledTimes(1)
   })
 })

@@ -1,5 +1,6 @@
 import { DepositType, UserProfileResponse } from 'api/gen'
 import { getIsDepositExpired } from 'features/profile/helpers/getIsDepositExpired'
+import { logUserCreditTypeFallback } from 'features/profile/helpers/logUserCreditTypeFallback'
 import { getAge } from 'shared/user/getAge'
 
 export enum UserCreditType {
@@ -18,13 +19,15 @@ export enum UserCreditType {
   CREDIT_BONUS = 'CREDIT_BONUS',
 }
 
-export const getCreditType = ({
-  depositType,
-  domainsCredit,
-  birthDate,
-  depositExpirationDate,
-  isEligibleForBeneficiaryUpgrade,
-}: UserProfileResponse): UserCreditType => {
+export const getCreditType = (user: UserProfileResponse): UserCreditType => {
+  const {
+    depositType,
+    domainsCredit,
+    birthDate,
+    depositExpirationDate,
+    isEligibleForBeneficiaryUpgrade,
+  } = user
+
   const isCreditExpired = getIsDepositExpired({ depositExpirationDate })
   const isEmptyCredit = domainsCredit?.all?.remaining === 0
   const isNotEligibleForBeneficiaryUpgrade = !isEligibleForBeneficiaryUpgrade
@@ -67,5 +70,7 @@ export const getCreditType = ({
   if (isCreditV3_17) return UserCreditType.CREDIT_V3_17
   if (isCreditV3_18) return UserCreditType.CREDIT_V3_18
   if (isCreditBonus) return UserCreditType.CREDIT_BONUS
+
+  logUserCreditTypeFallback({ user })
   return UserCreditType.CREDIT_UNKNOWN
 }

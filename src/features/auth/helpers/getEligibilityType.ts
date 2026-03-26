@@ -1,4 +1,5 @@
 import { DepositType, EligibilityType, QFBonificationStatus, UserProfileResponse } from 'api/gen'
+import { logUserEligibilityTypeFallback } from 'features/profile/helpers/logUserEligibilityTypeFallback'
 import { getAge } from 'shared/user/getAge'
 
 export enum UserEligibilityType {
@@ -15,13 +16,14 @@ export enum UserEligibilityType {
   ELIGIBLE_CREDIT_V3_18 = 'ELIGIBLE_CREDIT_V3_18',
 }
 
-export const getEligibilityType = ({
-  birthDate,
-  eligibility,
-  qfBonificationStatus,
-  depositType,
-  isEligibleForBeneficiaryUpgrade,
-}: UserProfileResponse): UserEligibilityType => {
+export const getEligibilityType = (user: UserProfileResponse): UserEligibilityType => {
+  const {
+    birthDate,
+    eligibility,
+    qfBonificationStatus,
+    depositType,
+    isEligibleForBeneficiaryUpgrade,
+  } = user
   const actualyNotPossibleInFrontend = false
   const isTooOldForThisTypeOfEligibility = false
 
@@ -64,5 +66,7 @@ export const getEligibilityType = ({
   if (isEligibleCreditV3_16) return UserEligibilityType.ELIGIBLE_CREDIT_V3_16
   if (isEligibleCreditV3_17) return UserEligibilityType.ELIGIBLE_CREDIT_V3_17
   if (isEligibleCreditV3_18) return UserEligibilityType.ELIGIBLE_CREDIT_V3_18
+
+  logUserEligibilityTypeFallback({ user })
   return UserEligibilityType.NOT_ELIGIBLE
 }
