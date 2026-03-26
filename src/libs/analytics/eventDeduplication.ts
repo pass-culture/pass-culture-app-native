@@ -6,7 +6,10 @@ let lastCleanup = Date.now()
 
 function generateKey(eventName: string, params?: Record<string, unknown>): string {
   if (!params) return eventName
-  const sortedParams = JSON.stringify(params, Object.keys(params).sort())
+  const sortedParams = JSON.stringify(
+    params,
+    Object.keys(params).sort((a, b) => a.localeCompare(b))
+  )
   return `${eventName}:${sortedParams}`
 }
 
