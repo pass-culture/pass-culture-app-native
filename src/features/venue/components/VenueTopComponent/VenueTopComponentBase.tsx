@@ -31,6 +31,7 @@ type Props = {
   onPressBannerImage?: () => void
   enableVolunteer?: boolean
   enableVolunteerNewTag?: boolean
+  enableVolunteerFeedback?: boolean
 }
 
 const VOLUNTEER_SMALL_CARD_HEIGHT = getSpacing(56.25)
@@ -41,6 +42,7 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   onPressBannerImage,
   enableVolunteer,
   enableVolunteerNewTag,
+  enableVolunteerFeedback,
 }) => {
   const theme = useTheme()
   const { width } = useWindowDimensions()
@@ -160,15 +162,17 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
               onPress={onPressVolunteeringCard}
             />
           </CardWrapper>
-          <StyledFeedBack
-            storageKey="volunteering_feedback"
-            likeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
-            dislikeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
-            title="Le bénévolat sur le pass t’intéresse t-il&nbsp;?"
-            // TODO(PC-40467): add tracking
-            // eslint-disable-next-line @typescript-eslint/no-empty-function
-            onLogReaction={() => {}}
-          />
+          {enableVolunteerFeedback ? (
+            <StyledFeedBack
+              storageKey="volunteering_feedback"
+              likeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
+              dislikeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
+              title="Le bénévolat sur le pass t’intéresse t-il&nbsp;?"
+              // TODO(PC-40467): add tracking
+              // eslint-disable-next-line @typescript-eslint/no-empty-function
+              onLogReaction={() => {}}
+            />
+          ) : null}
         </VolunteeringContainer>
       ) : null}
     </React.Fragment>
