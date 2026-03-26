@@ -143,13 +143,14 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     homeEntryId,
   })
 
-  const { isDesktopViewport, designSystem } = useTheme()
+  const { isDesktopViewport, designSystem, modal } = useTheme()
   const { width: windowWidth } = useWindowDimensions()
-  const { playerHeight, playerWidth } = getVideoPlayerDimensions(
+  const { playerHeight, playerWidth } = getVideoPlayerDimensions({
     isDesktopViewport,
     windowWidth,
-    RATIO710
-  )
+    ratio: RATIO710,
+    desktopMaxWidth: modal.desktopMaxWidth,
+  })
 
   const animValue = useSharedValue(0)
 

@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { FlatList, Platform, ViewStyle } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
@@ -8,8 +8,6 @@ import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { getAge } from 'shared/user/getAge'
-// eslint-disable-next-line local-rules/no-theme-from-theme
-import { theme } from 'theme'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -82,6 +80,18 @@ export function DeleteProfileReason() {
   const canDeleteProfile = !user?.isBeneficiary || userIsDefinedAndAbove21
   const reasons = reasonButtons(!!canDeleteProfile)
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
+  const theme = useTheme()
+  const flatListStyles: ViewStyle = useMemo(
+    () => ({
+      paddingHorizontal: theme.contentPage.marginHorizontal,
+      paddingBottom: theme.designSystem.size.spacing.xxl,
+      maxWidth: theme.contentPage.maxWidth,
+      width: '100%',
+      alignSelf: 'center',
+      gap: theme.designSystem.size.spacing.l, //works only on mobile
+    }),
+    [theme]
+  )
 
   return (
     <PageWithHeader
@@ -140,15 +150,6 @@ const TitlesContainer = styled.View(({ theme }) => ({
   gap: theme.designSystem.size.spacing.l,
   width: '100%',
 }))
-
-const flatListStyles: ViewStyle = {
-  paddingHorizontal: theme.contentPage.marginHorizontal,
-  paddingBottom: theme.designSystem.size.spacing.xxl,
-  maxWidth: theme.contentPage.maxWidth,
-  width: '100%',
-  alignSelf: 'center',
-  gap: theme.designSystem.size.spacing.l, //works only on mobile
-}
 
 const StyledIcon = styled(SadFace).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.medium,

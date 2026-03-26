@@ -3,7 +3,7 @@ import { FlashListRef } from '@shopify/flash-list'
 import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { FlatList, Platform, useWindowDimensions, ViewToken } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
@@ -115,7 +115,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         venuesUserData === undefined ? 0 : 1
       ),
   })
-
+  const { designSystem, breakpoints } = useTheme()
   const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()
   const { navigateToSearchFilter } = useNavigateToSearchFilter()
@@ -242,7 +242,14 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     }
   }, [searchState])
 
-  const { tileWidth, nbrOfTilesToDisplay } = getGridTileRatio(width)
+  const margin = designSystem.size.spacing.xl
+  const gutter = designSystem.size.spacing.l
+  const { tileWidth, nbrOfTilesToDisplay } = getGridTileRatio({
+    screenWidth: width,
+    margin,
+    gutter,
+    breakpoint: breakpoints.lg,
+  })
 
   const renderItem = useCallback<
     ({ item, index }: { item: Offer; index: number }) => React.JSX.Element

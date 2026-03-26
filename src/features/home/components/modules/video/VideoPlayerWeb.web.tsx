@@ -31,13 +31,14 @@ export const VideoPlayerWeb: React.FC<VideoPlayerWebProps> = ({
 }) => {
   const [hasFinishPlaying, setHasFinishPlaying] = useState(false)
   const [showErrorView, setShowErrorView] = React.useState(false)
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, modal } = useTheme()
   const { width: windowWidth } = useWindowDimensions()
-  const { playerHeight, playerWidth } = getVideoPlayerDimensions(
+  const { playerHeight, playerWidth } = getVideoPlayerDimensions({
     isDesktopViewport,
     windowWidth,
-    RATIO169
-  )
+    ratio: RATIO169,
+    desktopMaxWidth: modal.desktopMaxWidth,
+  })
 
   const logConsultVideo = () => {
     analytics.logConsultVideo({ from: 'home', moduleId, homeEntryId, offerId: offer?.objectID })
