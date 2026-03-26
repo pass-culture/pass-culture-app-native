@@ -1,5 +1,4 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import colorAlpha from 'color-alpha'
 import { addMonths, addYears, format, parse } from 'date-fns'
 import React, { FunctionComponent, useCallback, useMemo, useRef } from 'react'
 import { SetValueConfig, useForm } from 'react-hook-form'
