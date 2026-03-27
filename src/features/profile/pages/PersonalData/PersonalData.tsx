@@ -53,15 +53,22 @@ export function PersonalData() {
             value={user?.email}
             navigateTo={updateEmailRoute}
             onBeforeNavigate={onEmailChangeClick}
-            accessibilityLabel="Modifier e-mail"
+            accessibilityLabel="Modifier l’e-mail"
           />
-          <EditableField label="Numéro de téléphone" value={user?.phoneNumber} />
+          {user?.phoneNumber ? (
+            <EditableField
+              label="Numéro de téléphone"
+              value={user?.phoneNumber}
+              navigateTo="ChangePhoneNumber"
+              accessibilityLabel="Modifier le numéro de téléphone"
+            />
+          ) : null}
           {user?.hasPassword ? (
             <EditableField
               label="Mot de passe"
               value={'*'.repeat(12)}
               navigateTo="ChangePassword"
-              accessibilityLabel="Modifier mot de passe"
+              accessibilityLabel="Modifier le mot de passe"
             />
           ) : null}
           <EditableField
@@ -75,7 +82,7 @@ export function PersonalData() {
             value={city}
             navigateTo="ChangeCity"
             navigateParams={{ type: PersonalDataTypes.PROFIL_PERSONAL_DATA }}
-            accessibilityLabel="Modifier mon adresse de résidence"
+            accessibilityLabel="Modifier l’adresse de résidence"
           />
           <ViewGap gap={8}>
             <Banner

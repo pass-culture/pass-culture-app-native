@@ -102,7 +102,7 @@ describe('PersonalData', () => {
 
     render(reactQueryProviderHOC(<PersonalData />))
 
-    await user.press(screen.getByTestId('Modifier e-mail'))
+    await user.press(screen.getByTestId('Modifier l’e-mail'))
 
     expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: undefined,
@@ -118,7 +118,7 @@ describe('PersonalData', () => {
 
     render(reactQueryProviderHOC(<PersonalData />))
 
-    await user.press(screen.getByTestId('Modifier mot de passe'))
+    await user.press(screen.getByTestId('Modifier le mot de passe'))
 
     expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: undefined,
@@ -147,7 +147,7 @@ describe('PersonalData', () => {
 
     render(reactQueryProviderHOC(<PersonalData />))
 
-    await user.press(screen.getByTestId('Modifier mon adresse de résidence'))
+    await user.press(screen.getByTestId('Modifier l’adresse de résidence'))
 
     expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: { type: PersonalDataTypes.PROFIL_PERSONAL_DATA },
@@ -202,8 +202,26 @@ describe('PersonalData', () => {
 
     render(reactQueryProviderHOC(<PersonalData />))
 
-    await user.press(screen.getByTestId('Modifier e-mail'))
+    await user.press(screen.getByTestId('Modifier l’e-mail'))
 
     expect(analytics.logModifyMail).toHaveBeenCalledTimes(1)
+  })
+
+  it('should display phone number section when user has one', async () => {
+    mockedUseAuthContext.mockReturnValueOnce(initialAuthContext)
+
+    render(reactQueryProviderHOC(<PersonalData />))
+
+    expect(await screen.findByText('Numéro de téléphone')).toBeOnTheScreen()
+  })
+
+  it('should  not display phone number section when user has none', async () => {
+    mockedUseAuthContext.mockReturnValueOnce({
+      ...initialAuthContext,
+      user: { ...mockedUser, phoneNumber: undefined },
+    })
+    render(reactQueryProviderHOC(<PersonalData />))
+
+    expect(screen.queryByText('Numéro de téléphone')).not.toBeOnTheScreen()
   })
 })
