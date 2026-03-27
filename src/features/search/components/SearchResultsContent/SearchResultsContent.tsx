@@ -1,5 +1,6 @@
 import { useFocusEffect, useIsFocused } from '@react-navigation/native'
 import { FlashListRef } from '@shopify/flash-list'
+import { SearchResponse } from 'algoliasearch'
 import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { FlatList, Platform, useWindowDimensions, ViewToken } from 'react-native'
@@ -20,7 +21,7 @@ import { getStringifySearchStateWithoutLocation } from 'features/search/helpers/
 import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateToSearchFilter/useNavigateToSearchFilter'
 import { usePrevious } from 'features/search/helpers/usePrevious'
 import { useGridListLayout } from 'features/search/store/gridListLayoutStore'
-import { GridListLayout, VenuesUserData } from 'features/search/types'
+import { GridListLayout, SearchListProps, VenuesUserData } from 'features/search/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { Venue } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
@@ -72,19 +73,13 @@ export type SearchResultsContentProps = {
   onSearchResultsRefresh: () => void
   hits: SearchOfferHits
   nbHits: number
-  isLoading?: boolean
-  isFetching?: boolean
-  isFetchingNextPage?: boolean
-  userData: unknown
+  isLoading: boolean
+  isRefetching: boolean
+  userData: SearchResponse<Offer[]>['userData']
   venuesUserData: VenuesUserData
   offerVenues: Venue[]
   onPressAIFakeDoorBanner: () => void
-  onViewableItemsChanged?: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
+  onViewableItemsChanged?: SearchListProps['onViewableVenuePlaylistItemsChanged']
   enableAIFakeDoor?: boolean
 }
 
@@ -95,8 +90,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   hits,
   nbHits,
   isLoading,
-  isFetching,
-  isFetchingNextPage,
+  isRefetching,
   userData,
   venuesUserData,
   offerVenues,
@@ -120,8 +114,8 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const { searchState } = useSearch()
   const { navigateToSearchFilter } = useNavigateToSearchFilter()
 
-  const showSkeleton = useIsFalseWithDelay(!!isLoading, ANIMATION_DURATION)
-  const isRefreshing = useIsFalseWithDelay(!!isFetching, ANIMATION_DURATION)
+  const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
+  const isRefreshing = useIsFalseWithDelay(isRefetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
   const { geolocPosition, selectedLocationMode, setSelectedLocationMode, selectedPlace, setPlace } =
     useLocation()
@@ -336,7 +330,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     [Tab.SEARCHLIST]: (
       <SearchList
         ref={searchListRef}
-        isFetchingNextPage={!!isFetchingNextPage}
         hits={hits}
         nbHits={nbHits}
         renderItem={renderItem}

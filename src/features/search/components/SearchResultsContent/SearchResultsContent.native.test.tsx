@@ -173,9 +173,8 @@ jest.mock('@gorhom/bottom-sheet', () => {
 const mockOnEndReached = jest.fn()
 
 const DEFAULT_SEARCH_RESULT_CONTENT_PROPS = {
-  isFetching: false,
+  isRefetching: false,
   isLoading: false,
-  isFetchingNextPage: false,
   userData: [],
   onEndReached: mockOnEndReached,
   onSearchResultsRefresh: jest.fn(),

@@ -10,9 +10,13 @@ import {
   SearchGroupNameEnumv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
+import { DisabilitiesProperties } from 'features/accessibility/types'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { Venue } from 'features/venue/types'
+import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
+import { SearchQueryParameters } from 'libs/algolia/types'
+import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { Range } from 'libs/typesUtils/typeHelpers'
@@ -92,7 +96,6 @@ export interface SearchListProps {
   autoScrollEnabled: boolean
   refreshing: boolean
   onRefresh: (() => void) | null | undefined
-  isFetchingNextPage: boolean
   onEndReached: () => void
   userData: SearchResponse<Offer[]>['userData']
   onPressAIFakeDoorBanner: () => void
@@ -177,4 +180,12 @@ export type ThematicPlaylistProps = {
     playlistIndex?: number
   ) => void
   searchId?: string
+}
+
+export type FetchSearchResultsArgs = {
+  parameters: SearchQueryParameters
+  buildLocationParameterParams: BuildLocationParameterParams
+  isUserUnderage: boolean
+  disabilitiesProperties: DisabilitiesProperties
+  aroundPrecision?: CustomRemoteConfig['aroundPrecision']
 }

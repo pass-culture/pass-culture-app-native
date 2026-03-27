@@ -9,7 +9,7 @@ import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
-import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
+import { SearchResults } from 'features/search/pages/SearchResults/v1/SearchResults'
 import { SearchState } from 'features/search/types'
 import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
@@ -47,7 +47,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),
 }))
 
-const mockRefetch = jest.fn()
+const mockRefetch = jest.fn().mockResolvedValue(undefined)
 const mockFecthNextPage = jest.fn()
 const initialSearchResults = {
   data: { pages: [{ offers: { page: 0 } }, { offers: { page: 1 } }] },
@@ -280,6 +280,25 @@ describe('<SearchResults/>', () => {
     rerender(reactQueryProviderHOC(<SearchResults />))
 
     await waitFor(() => expect(mockRefetch).toHaveBeenCalledTimes(1))
+  })
+
+  it('should display an error snackbar when refetch fails', async () => {
+    const apiError = new Error('API Failure')
+    mockRefetch.mockRejectedValueOnce(apiError)
+
+    const { rerender } = render(reactQueryProviderHOC(<SearchResults />))
+
+    await screen.findByTestId('searchResults')
+
+    mockUseLocation.mockReturnValueOnce(
+      getAroundPlaceUserPosition({ geolocPosition: { latitude: 999, longitude: 0.876 } })
+    )
+
+    rerender(reactQueryProviderHOC(<SearchResults />))
+
+    const errorMessage = await screen.findByText(/une erreur est survenue/i)
+
+    expect(errorMessage).toBeOnTheScreen()
   })
 
   it('should fetch next page when end of list is reached', async () => {

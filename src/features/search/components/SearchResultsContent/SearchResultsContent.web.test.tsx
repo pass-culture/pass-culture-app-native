@@ -20,9 +20,8 @@ import { render, screen } from 'tests/utils/web'
 import { SearchResultsContent, SearchResultsContentProps } from './SearchResultsContent'
 
 const DEFAULT_SEARCH_RESULT_CONTENT_PROPS = {
-  isFetching: false,
+  isRefetching: false,
   isLoading: false,
-  isFetchingNextPage: false,
   userData: [],
   onEndReached: jest.fn(),
   onSearchResultsRefresh: jest.fn(),

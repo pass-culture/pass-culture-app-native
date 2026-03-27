@@ -6,6 +6,7 @@ import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { extractApiErrorMessage } from 'api/apiHelpers'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
@@ -27,6 +28,7 @@ import { AIFakeDoorModal } from 'shared/AIFakeDoorModal/AIFakeDoorModal'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
 
 const searchInputID = uuidv4()
@@ -65,8 +67,7 @@ export const SearchResults = () => {
     refetch,
     nbHits,
     isLoading,
-    isFetching,
-    isFetchingNextPage,
+    isRefetching,
     userData,
     venuesUserData,
     offerVenues,
@@ -109,11 +110,13 @@ export const SearchResults = () => {
 
   useEffect(() => {
     if (shouldRefetchResults) {
-      void refetch()
+      refetch().catch((error) => {
+        showErrorSnackBar(extractApiErrorMessage(error))
+      })
     }
   }, [refetch, shouldRefetchResults])
 
-  const handleEndReached = useCallback(() => {
+  const handleEndReached = async () => {
     if (data && hasNextPage) {
       const [lastPage] = data.pages.slice(-1)
       const page = lastPage?.offers.page ?? 0
@@ -122,9 +125,9 @@ export const SearchResults = () => {
         const currentSearchId = searchState.searchId ?? searchIdGenerated
         void analytics.logSearchScrollToPage(page, currentSearchId)
       }
-      void fetchNextPage()
+      await fetchNextPage()
     }
-  }, [data, hasNextPage, fetchNextPage, searchState.searchId, searchIdGenerated])
+  }
 
   const searchResultHits = isArtistInSearchActive ? hits : { ...hits, artists: [] }
 
@@ -166,8 +169,7 @@ export const SearchResults = () => {
               onSearchResultsRefresh={refetch}
               nbHits={nbHits}
               isLoading={isLoading}
-              isFetching={isFetching}
-              isFetchingNextPage={isFetchingNextPage}
+              isRefetching={isRefetching}
               userData={userData}
               venuesUserData={venuesUserData}
               offerVenues={offerVenues}
