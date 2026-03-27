@@ -1,11 +1,13 @@
 import { DepositType, UserProfileResponse } from 'api/gen'
 import { getIsDepositExpired } from 'features/profile/helpers/getIsDepositExpired'
+import { logUserCreditTypeFallback } from 'features/profile/helpers/logUserCreditTypeFallback'
 import { getAge } from 'shared/user/getAge'
 
 import { getCreditType, UserCreditType } from './getCreditType'
 
 jest.mock('shared/user/getAge')
 jest.mock('features/profile/helpers/getIsDepositExpired')
+jest.mock('features/profile/helpers/logUserCreditTypeFallback')
 
 const mockedGetAge = getAge as jest.Mock
 const mockedIsDepositExpired = getIsDepositExpired as jest.Mock
@@ -26,10 +28,20 @@ describe('getCreditType', () => {
     mockedIsDepositExpired.mockReturnValue(false)
   })
 
-  it('should return CREDIT_UNKNOWN by default', () => {
-    const result = getCreditType(buildUser())
+  describe('CREDIT UNKNOWN', () => {
+    it('should return CREDIT_UNKNOWN by default', () => {
+      const result = getCreditType(buildUser())
 
-    expect(result).toBe(UserCreditType.CREDIT_UNKNOWN)
+      expect(result).toBe(UserCreditType.CREDIT_UNKNOWN)
+    })
+
+    it('should log fallback when credit type is unknown', () => {
+      const result = getCreditType(buildUser())
+
+      expect(result).toBe(UserCreditType.CREDIT_UNKNOWN)
+
+      expect(logUserCreditTypeFallback).toHaveBeenCalledTimes(1)
+    })
   })
 
   describe('CREDIT V2', () => {
@@ -93,7 +105,7 @@ describe('getCreditType', () => {
     })
   })
 
-  describe('EXPIRED', () => {
+  describe('CREDIT EXPIRED', () => {
     it('should override all credits', () => {
       mockedIsDepositExpired.mockReturnValueOnce(true)
       const result = getCreditType(buildUser({ depositType: DepositType.GRANT_18 }))

@@ -3,8 +3,10 @@ import { View } from 'react-native'
 
 import { SubscriptionStepperResponseV2 } from 'api/gen'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { EligibleFreeHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInEligibleHeader/EligibleFreeHeader'
 import { EligibleHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInEligibleHeader/EligibleHeader'
+import { logHeaderFallback } from 'features/profile/helpers/logHeaderFallback'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -39,6 +41,7 @@ export const LoggedInEligibleHeader = ({ user, featureFlags, subscriptionInfos }
       break
 
     default:
+      logHeaderFallback({ user, headerType: UserStatusType.ELIGIBLE })
       header = <PageHeader title="Mon profil" featureFlags={featureFlags} numberOfLines={3} />
   }
 

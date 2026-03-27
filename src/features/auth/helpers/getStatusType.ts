@@ -1,4 +1,5 @@
 import { DepositType, UserProfileResponse, YoungStatusType } from 'api/gen'
+import { logUserStatusTypeFallback } from 'features/profile/helpers/logUserStatusTypeFallback'
 import { getAge } from 'shared/user/getAge'
 
 export enum UserStatusType {
@@ -11,12 +12,13 @@ export enum UserStatusType {
   UNKNOWN = 'UNKNOWN',
 }
 
-export const getStatusType = ({
-  status,
-  birthDate,
-  depositType,
-}: UserProfileResponse): UserStatusType => {
-  if (!status?.statusType) return UserStatusType.UNKNOWN
+export const getStatusType = (user: UserProfileResponse): UserStatusType => {
+  const { status, birthDate, depositType } = user
+
+  if (!status?.statusType) {
+    logUserStatusTypeFallback({ user })
+    return UserStatusType.UNKNOWN
+  }
 
   const age = getAge(birthDate)
   const isEighteenOrMore = age && age >= 18
@@ -36,6 +38,7 @@ export const getStatusType = ({
     case YoungStatusType.suspended:
       return UserStatusType.SUSPENDED
     default:
+      logUserStatusTypeFallback({ user })
       return UserStatusType.UNKNOWN
   }
 }
