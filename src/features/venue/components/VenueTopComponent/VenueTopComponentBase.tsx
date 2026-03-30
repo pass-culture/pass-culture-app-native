@@ -230,4 +230,5 @@ const VolunteeringContainer = styled(ViewGap)(({ theme }) => ({
 
 const StyledFeedBack = styled(FeedBack)(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
+  width: theme.isDesktopViewport ? '50%' : undefined,
 }))

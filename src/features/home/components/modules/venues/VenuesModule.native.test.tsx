@@ -22,6 +22,8 @@ const props = {
   },
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('VenuesModule component', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -52,18 +54,50 @@ describe('VenuesModule component', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_NEW_TAG])
     })
 
-    it('should display new tag if playlist has exclusively volunteering venues', () => {
-      renderVenuesModule({
-        displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+    describe('When playlist has exclusively volunteering venues', () => {
+      it('should display new tag', () => {
+        renderVenuesModule({
+          displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+        })
+
+        expect(screen.getByText('Nouveau')).toBeOnTheScreen()
       })
 
-      expect(screen.getByText('Nouveau')).toBeOnTheScreen()
+      it('should display feedback when wipEnableVolunteerFeedback FF activated', () => {
+        setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK])
+        renderVenuesModule({
+          displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+        })
+
+        expect(screen.getByText('Le bénévolat sur le pass t’intéresse t-il ?')).toBeOnTheScreen()
+      })
+
+      it('should not display feedback when wipEnableVolunteerFeedback FF deactivated', () => {
+        renderVenuesModule({
+          displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+        })
+
+        expect(
+          screen.queryByText('Le bénévolat sur le pass t’intéresse t-il ?')
+        ).not.toBeOnTheScreen()
+      })
     })
 
-    it('should not display new tag if playlist has not exclusively volunteering venues', () => {
-      renderVenuesModule()
+    describe('When playlist has not exclusively volunteering venues', () => {
+      it('should not display new tag', () => {
+        renderVenuesModule()
 
-      expect(screen.queryByText('Nouveau')).not.toBeOnTheScreen()
+        expect(screen.queryByText('Nouveau')).not.toBeOnTheScreen()
+      })
+
+      it('should not display feedback when wipEnableVolunteerFeedback FF activated', () => {
+        setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK])
+        renderVenuesModule()
+
+        expect(
+          screen.queryByText('Le bénévolat sur le pass t’intéresse t-il ?')
+        ).not.toBeOnTheScreen()
+      })
     })
   })
 })
