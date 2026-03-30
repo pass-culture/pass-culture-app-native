@@ -9,6 +9,8 @@ import { Playlist, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -38,6 +40,7 @@ type Props = Pick<
   withMargin?: boolean
   contentContainerStyle?: StyleProp<ViewStyle>
   forceNativeSeeMore?: boolean
+  showNewTag?: boolean
 }
 
 export const PassPlaylist = ({
@@ -62,6 +65,7 @@ export const PassPlaylist = ({
   withMargin = true,
   contentContainerStyle,
   forceNativeSeeMore,
+  showNewTag,
   ...props
 }: Props) => {
   const { isTouch } = useTheme()
@@ -96,6 +100,11 @@ export const PassPlaylist = ({
         <StyledView>
           <AccessibleTitle withMargin={withMargin} TitleComponent={TitleLevel2} title={title} />
           {renderTitleSeeMore()}
+          {showNewTag ? (
+            <TagContainer>
+              <Tag label="Nouveau" variant={TagVariant.NEW} />
+            </TagContainer>
+          ) : undefined}
         </StyledView>
         {subtitle ? <StyledSubtitle withMargin={withMargin}>{subtitle}</StyledSubtitle> : null}
       </ViewGap>
@@ -141,3 +150,10 @@ const StyledSubtitle = styled(Typo.BodyAccentXs).attrs<{
 const StyledView = styled.View({
   flexDirection: 'row',
 })
+
+const TagContainer = styled.View(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.s,
+  marginRight: theme.designSystem.size.spacing.xl,
+  flexShrink: 0,
+  justifyContent: 'center',
+}))
