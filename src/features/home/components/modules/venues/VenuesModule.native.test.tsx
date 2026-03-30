@@ -3,11 +3,12 @@ import React from 'react'
 import { VenuesModule } from 'features/home/components/modules/venues/VenuesModule'
 import { ModuleData } from 'features/home/types'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
+import { analytics } from 'libs/analytics/provider'
 import { DisplayParametersFields } from 'libs/contentful/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const props = {
   moduleId: 'fakemoduleid',
@@ -23,6 +24,9 @@ const props = {
 }
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('VenuesModule component', () => {
   beforeEach(() => {
@@ -81,6 +85,28 @@ describe('VenuesModule component', () => {
           screen.queryByText('Le bénévolat sur le pass t’intéresse t-il ?')
         ).not.toBeOnTheScreen()
       })
+
+      it('should trigger ConsultVenue log with originDetail set to volunteeringPlaylist when pressing on a venue', async () => {
+        renderVenuesModule({
+          displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+        })
+
+        const venues = screen.getAllByTestId(/Lieu/)
+        const firstVenue = venues[0]
+
+        if (firstVenue) {
+          await user.press(firstVenue)
+        }
+
+        expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
+          venueId: props.data?.playlistItems[0].id.toString(),
+          from: 'home',
+          moduleName: props.displayParameters.title,
+          moduleId: props.moduleId,
+          homeEntryId: props.homeEntryId,
+          originDetail: 'volunteeringPlaylist',
+        })
+      })
     })
 
     describe('When playlist has not exclusively volunteering venues', () => {
@@ -97,6 +123,24 @@ describe('VenuesModule component', () => {
         expect(
           screen.queryByText('Le bénévolat sur le pass t’intéresse t-il ?')
         ).not.toBeOnTheScreen()
+      })
+
+      it('should trigger ConsultVenue log without originDetail set to volunteeringPlaylist when pressing on a venue', async () => {
+        renderVenuesModule()
+        const venues = screen.getAllByTestId(/Lieu/)
+        const firstVenue = venues[0]
+
+        if (firstVenue) {
+          await user.press(firstVenue)
+        }
+
+        expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
+          venueId: props.data?.playlistItems[0].id.toString(),
+          from: 'home',
+          moduleName: props.displayParameters.title,
+          moduleId: props.moduleId,
+          homeEntryId: props.homeEntryId,
+        })
       })
     })
   })

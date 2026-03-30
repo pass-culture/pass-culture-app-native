@@ -46,6 +46,7 @@ export const VenuesModule = ({
   const moduleName = displayParameters.title
   const { playlistItems = [] } = data ?? { playlistItems: [] }
   const { designSystem } = useTheme()
+  const isExclusiveVolunteering = displayParameters.isExclusiveVolunteering ?? false
   const renderItem: CustomListRenderItem<VenueHit> = useCallback(
     ({ item, width, height }) => (
       <VenueTile
@@ -55,13 +56,13 @@ export const VenuesModule = ({
         venue={item}
         width={width}
         height={height}
+        originDetail={isExclusiveVolunteering ? 'volunteeringPlaylist' : undefined}
       />
     ),
-    [moduleName, moduleId, homeEntryId]
+    [moduleName, moduleId, homeEntryId, isExclusiveVolunteering]
   )
 
   const shouldModuleBeDisplayed = playlistItems.length > displayParameters.minOffers
-  const isExclusiveVolunteering = displayParameters.isExclusiveVolunteering ?? false
   const showNewTag = enableVolunteerNewTag && isExclusiveVolunteering
   const showFeedback = enableVolunteerFeedback && isExclusiveVolunteering
 
