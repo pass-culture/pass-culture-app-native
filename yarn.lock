@@ -11508,7 +11508,7 @@ __metadata:
     react-native-performance: ^5.1.4
     react-native-permissions: ^5.4.1
     react-native-qrcode-svg: ^6.1.2
-    react-native-reanimated: ^4.1.5
+    react-native-reanimated: ~4.1.7
     react-native-reanimated-carousel: ^4.0.2
     react-native-safe-area-context: ^5.5.1
     react-native-screens: ^4.11.1
@@ -23584,12 +23584,12 @@ __metadata:
   linkType: hard
 
 "react-native-is-edge-to-edge@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "react-native-is-edge-to-edge@npm:1.2.1"
+  version: 1.3.1
+  resolution: "react-native-is-edge-to-edge@npm:1.3.1"
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 8fb6d8ab7b953c7d7cec8c987cef24f1c5348a293a85cb49c7c53b54ef110c0ca746736ae730e297603c8c76020df912e93915fb17518c4f2f91143757177aba
+  checksum: dc82d54e0bf8f89208a538bb0d14e4891af6efae27ed5b7b21be683a72c38c5219ab9be1ea9bd40aa1c905d481174e649d0b71aeceaa9946e6c707f251568282
   languageName: node
   linkType: hard
 
@@ -23753,18 +23753,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-reanimated@npm:^4.1.5":
-  version: 4.1.5
-  resolution: "react-native-reanimated@npm:4.1.5"
+"react-native-reanimated@npm:~4.1.7":
+  version: 4.1.7
+  resolution: "react-native-reanimated@npm:4.1.7"
   dependencies:
     react-native-is-edge-to-edge: ^1.2.1
-    semver: 7.7.2
+    semver: ^7.7.2
   peerDependencies:
-    "@babel/core": ^7.0.0-0
     react: "*"
-    react-native: "*"
-    react-native-worklets: ">=0.5.0"
-  checksum: 5439c2f5c27af9590719a4c412f3cb8415c626e346885821898ae50c7e3cdf00bc21058a1bc29cafa1366231f414c6979fae852acf0713ba7bdc7e5ba351827c
+    react-native: 0.78 - 0.82
+    react-native-worklets: 0.5 - 0.8
+  checksum: 8aea9130fc363fb73f96ce79f340b8e669a7bf628d9a8c4a36bb6c86fc8879c928eb0fe68d1429acbaf0dcf9625b0a9208be9a53a10eb3bbb7cd60c56f2f3523
   languageName: node
   linkType: hard
 
