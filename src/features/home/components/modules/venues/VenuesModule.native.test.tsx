@@ -81,7 +81,7 @@ describe('VenuesModule component', () => {
           expect(screen.getByText('Le bénévolat sur le pass t’intéresse t-il ?')).toBeOnTheScreen()
         })
 
-        it('should trigger AnswerVolunteerQuestion log with yes answer when answering yes to feedback quiz', async () => {
+        it('should trigger FeatureFeedbackClicked log with yes answer when answering yes to feedback quiz', async () => {
           await AsyncStorage.removeItem('volunteering_feedback')
           renderVenuesModule({
             displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
@@ -89,14 +89,15 @@ describe('VenuesModule component', () => {
 
           await user.press(screen.getByText('Oui'))
 
-          expect(analytics.logAnswerVolunteerQuestion).toHaveBeenCalledWith({
-            answer: 'yes',
+          expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
+            featureName: 'volunteer',
+            feedbackResponse: 'Oui',
             from: 'home',
             entryId: 'fakeEntryId',
           })
         })
 
-        it('should trigger AnswerVolunteerQuestion log with no answer when answering no to feedback quiz', async () => {
+        it('should trigger FeatureFeedbackClicked log with no answer when answering no to feedback quiz', async () => {
           await AsyncStorage.removeItem('volunteering_feedback')
           renderVenuesModule({
             displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
@@ -104,8 +105,9 @@ describe('VenuesModule component', () => {
 
           await user.press(screen.getByText('Non'))
 
-          expect(analytics.logAnswerVolunteerQuestion).toHaveBeenCalledWith({
-            answer: 'no',
+          expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
+            featureName: 'volunteer',
+            feedbackResponse: 'Non',
             from: 'home',
             entryId: 'fakeEntryId',
           })

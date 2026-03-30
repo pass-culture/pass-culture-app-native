@@ -81,10 +81,11 @@ export const VenuesModule = ({
   }, [shouldModuleBeDisplayed])
 
   const handleOnLogFeedback = (type: ReactionTypeEnum) => {
-    const answer = type === ReactionTypeEnum.LIKE ? 'yes' : 'no'
-    void analytics.logAnswerVolunteerQuestion({
+    const feedbackResponse = type === ReactionTypeEnum.LIKE ? 'Oui' : 'Non'
+    void analytics.logFeatureFeedbackClicked({
+      featureName: 'volunteer',
+      feedbackResponse,
       from: 'home',
-      answer,
       entryId: homeEntryId,
     })
   }

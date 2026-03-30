@@ -253,7 +253,7 @@ describe('<VenueTopComponent />', () => {
       ).not.toBeOnTheScreen()
     })
 
-    it('should trigger AnswerVolunteerQuestion log with yes answer when venue has volunteering url and answering yes to feedback quiz', async () => {
+    it('should trigger FeatureFeedbackClicked log with yes answer when venue has volunteering url and answering yes to feedback quiz', async () => {
       await AsyncStorage.removeItem('volunteering_feedback')
       renderVenueTopComponent({
         venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
@@ -263,14 +263,15 @@ describe('<VenueTopComponent />', () => {
 
       await user.press(screen.getByText('Oui'))
 
-      expect(analytics.logAnswerVolunteerQuestion).toHaveBeenCalledWith({
-        answer: 'yes',
+      expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
+        featureName: 'volunteer',
+        feedbackResponse: 'Oui',
         from: 'venue',
         venueId: venueOpenToPublic.id.toString(),
       })
     })
 
-    it('should trigger AnswerVolunteerQuestion log with no answer when venue has volunteering url and answering no to feedback quiz', async () => {
+    it('should trigger FeatureFeedbackClicked log with no answer when venue has volunteering url and answering no to feedback quiz', async () => {
       await AsyncStorage.removeItem('volunteering_feedback')
       renderVenueTopComponent({
         venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
@@ -280,8 +281,9 @@ describe('<VenueTopComponent />', () => {
 
       await user.press(screen.getByText('Non'))
 
-      expect(analytics.logAnswerVolunteerQuestion).toHaveBeenCalledWith({
-        answer: 'no',
+      expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
+        featureName: 'volunteer',
+        feedbackResponse: 'Non',
         from: 'venue',
         venueId: venueOpenToPublic.id.toString(),
       })

@@ -98,12 +98,6 @@ export const logEventAnalytics = {
     venueId?: number
     apiRecoParams?: RecommendationApiParams
   }) => analytics.logEvent({ firebase: AnalyticsEvent.ALL_TILES_SEEN }, params),
-  logAnswerVolunteerQuestion: (params: {
-    from: Referrals
-    answer: string
-    venueId?: string
-    entryId?: string
-  }) => analytics.logEvent({ firebase: AnalyticsEvent.ANSWER_VOLUNTEER_QUESTION }, params),
   logAppThemeStatus: (params: {
     themeSetting: ColorSchemeType
     systemTheme: ColorSchemeType
@@ -351,6 +345,13 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED }, params),
   logExtendSearchRadiusClicked: (searchId?: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.EXTEND_SEARCH_RADIUS_CLICKED }, { searchId }),
+  logFeatureFeedbackClicked: (params: {
+    featureName: string
+    feedbackResponse: 'Oui' | 'Non'
+    from: Referrals
+    entryId?: string
+    venueId?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.FEATURE_FEEDBACK_CLICKED }, params),
   logGoToProfil: ({ from, offerId }: { from: string; offerId: number }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.GO_TO_PROFIL },
