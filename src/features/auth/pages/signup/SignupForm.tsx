@@ -96,9 +96,9 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
 
   useEffect(() => {
     if (accountCreationToken && isFirstStep) {
-      goToNextStep({ accountCreationToken })
+      goToNextStep({ accountCreationToken, ssoProvider: params?.ssoProvider })
     }
-  }, [accountCreationToken, goToNextStep, isFirstStep])
+  }, [accountCreationToken, goToNextStep, isFirstStep, params?.ssoProvider])
 
   useEffect(() => {
     if (params?.from && stepConfig?.name) {
@@ -128,7 +128,7 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
     birthdate: '',
   })
 
-  const { mutateAsync: ssoSignup } = useSSOSignupMutation(signupData.ssoProvider ?? 'google')
+  const { mutateAsync: ssoSignup } = useSSOSignupMutation(signupData.ssoProvider)
 
   const onSSOEmailNotFoundError = useCallback(() => setIsSSOSubscription(true), [])
   const onDefaultEmailSignup = useCallback(() => {
@@ -150,7 +150,13 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
       }
 
       if (commonParams.accountCreationToken) {
-        const { accountCreationToken, email: _email, password: _password, ssoProvider: _ssoProvider, ...rest } = commonParams
+        const {
+          accountCreationToken,
+          email: _email,
+          password: _password,
+          ssoProvider: _ssoProvider,
+          ...rest
+        } = commonParams
         const { accessToken, refreshToken } = await ssoSignup({
           ...rest,
           accountCreationToken,

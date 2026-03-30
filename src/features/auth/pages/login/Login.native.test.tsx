@@ -192,6 +192,7 @@ describe('<Login/>', () => {
       accountCreationToken: 'accountCreationToken',
       email: 'user@gmail.com',
       from: StepperOrigin.LOGIN,
+      ssoProvider: 'google',
     })
   })
 

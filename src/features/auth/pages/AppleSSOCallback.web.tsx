@@ -10,9 +10,13 @@ export const AppleSSOCallback = () => {
     const params = new URLSearchParams(window.location.search)
     const code = params.get('code') ?? ''
     const state = params.get('state') ?? ''
+    const error = params.get('error') ?? ''
 
     if (window.opener) {
-      window.opener.postMessage({ type: 'apple-sso-callback', code, state }, window.location.origin)
+      window.opener.postMessage(
+        { type: 'apple-sso-callback', code, state, error },
+        window.location.origin
+      )
     }
     window.close()
   }, [])

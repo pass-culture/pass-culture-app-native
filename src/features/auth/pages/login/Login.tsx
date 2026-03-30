@@ -98,6 +98,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           accountCreationToken: response.content?.accountCreationToken,
           email: response.content?.email,
           from: StepperOrigin.LOGIN,
+          ssoProvider: response.provider,
         })
       } else if (
         failureCode &&

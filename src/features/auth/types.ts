@@ -51,4 +51,8 @@ export type PreValidationSignupLastStepProps = {
 }
 
 // Frontend discriminator to distinguish Apple from Google (same API shape)
-export type LoginRequest = SigninRequest | (OAuthSigninRequest & { provider: 'google' | 'apple' })
+type OAuthLoginRequest = OAuthSigninRequest & { provider: 'google' | 'apple' }
+export type LoginRequest = SigninRequest | OAuthLoginRequest
+
+export const isOAuthLoginRequest = (req: LoginRequest): req is OAuthLoginRequest =>
+  'provider' in req

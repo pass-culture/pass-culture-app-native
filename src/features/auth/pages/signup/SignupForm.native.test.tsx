@@ -418,7 +418,6 @@ describe('Signup Form', () => {
             fontScale: -1,
           },
         },
-        'google',
         { credentials: 'omit' }
       )
     })
@@ -701,6 +700,7 @@ describe('Signup Form', () => {
           accountCreationToken: 'accountCreationToken',
           email: 'user@gmail.com',
           from: StepperOrigin.LOGIN,
+          ssoProvider: 'google',
         },
       })
       mockServer.postApi<SigninResponse>('/v1/oauth/google/account', {
@@ -741,7 +741,11 @@ describe('Signup Form', () => {
     it('should directly go to birthday step when account creation token is in route params', async () => {
       // eslint-disable-next-line local-rules/independent-mocks
       useRoute.mockReturnValue({
-        params: { accountCreationToken: 'accountCreationToken', email: 'user@gmail.com' },
+        params: {
+          accountCreationToken: 'accountCreationToken',
+          email: 'user@gmail.com',
+          ssoProvider: 'google',
+        },
       })
 
       await renderSignupForm()
@@ -756,6 +760,7 @@ describe('Signup Form', () => {
           accountCreationToken: 'accountCreationToken',
           email: 'user@gmail.com',
           from: StepperOrigin.LOGIN,
+          ssoProvider: 'google',
         },
       })
       getModelSpy.mockReturnValueOnce('iPhone 13') // first call in useSignIn
@@ -863,6 +868,7 @@ describe('Signup Form', () => {
             accountCreationToken: 'accountCreationToken',
             email: 'user@gmail.com',
             from: StepperOrigin.LOGIN,
+            ssoProvider: 'google',
           },
         })
 

@@ -173,6 +173,7 @@ type SignupFormParams =
       email?: string
       offerId?: number
       from: StepperOrigin
+      ssoProvider?: 'google' | 'apple'
       stepIndex?: number
     }
   | undefined

@@ -6,6 +6,8 @@ import { AppleLoginOptions } from 'libs/react-native-apple-sso/types'
 
 export const loginToApple = async ({ onSuccess, onError }: AppleLoginOptions) => {
   try {
+    const { oauthStateToken } = await api.getNativeV1OauthState()
+
     const appleResponse = await appleAuth.performRequest({
       requestedOperation: appleAuth.Operation.LOGIN,
       requestedScopes: [appleAuth.Scope.FULL_NAME, appleAuth.Scope.EMAIL],
@@ -16,7 +18,6 @@ export const loginToApple = async ({ onSuccess, onError }: AppleLoginOptions) =>
       return
     }
 
-    const { oauthStateToken } = await api.getNativeV1OauthState()
     onSuccess({ code: appleResponse.authorizationCode, state: oauthStateToken })
   } catch (error) {
     const appleError = error as { code?: string }

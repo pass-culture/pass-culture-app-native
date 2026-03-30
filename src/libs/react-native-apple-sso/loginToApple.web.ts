@@ -44,8 +44,15 @@ export const loginToApple = async ({ onSuccess, onError }: AppleLoginOptions) =>
       window.removeEventListener('message', handleMessage)
       clearInterval(checkClosed)
 
-      const { code, state } = event.data as { type: string; code: string; state: string }
-      if (code) {
+      const { code, state, error } = event.data as {
+        type: string
+        code: string
+        state: string
+        error?: string
+      }
+      if (error) {
+        onError?.(new Error(`apple_auth_error: ${error}`))
+      } else if (code) {
         onSuccess({ code, state })
       } else {
         onError?.(new Error('no_code_in_callback'))

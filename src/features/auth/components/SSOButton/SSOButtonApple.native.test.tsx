@@ -1,14 +1,16 @@
 // eslint-disable-next-line no-restricted-imports
-import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin'
+import appleAuth from '@invertase/react-native-apple-authentication'
 import React from 'react'
 import DeviceInfo from 'react-native-device-info'
 
 import * as API from 'api/api'
 import { AccountState, OauthStateResponse, SigninResponse } from 'api/gen'
-import { SSOButtonGoogle } from 'features/auth/components/SSOButton/SSOButtonGoogle'
-import { UserProfile } from 'features/share/types'
+import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -47,30 +49,31 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
-describe('<SSOButton />', () => {
+describe('<SSOButtonApple />', () => {
   beforeEach(() => {
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
   })
 
   it('should sign in with device info when sso button is clicked', async () => {
     getModelSpy.mockReturnValueOnce('iPhone 13')
     getSystemNameSpy.mockReturnValueOnce('iOS')
-    mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
+    mockServer.postApi<SigninResponse>('/v1/oauth/apple/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
     })
-    mockServer.getApi<UserProfile>('/v1/me', beneficiaryUser)
+    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
 
     renderSSOButton()
 
-    await user.press(await screen.findByTestId('S’inscrire avec Google'))
+    await user.press(await screen.findByTestId('S\u2019inscrire avec Apple'))
 
     expect(apiPostOAuthAuthorize).toHaveBeenCalledWith(
       {
-        authorizationCode: 'mockServerAuthCode',
+        authorizationCode: 'mockAppleAuthCode',
         oauthStateToken: 'oauth_state_token',
         deviceInfo: {
           deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
@@ -81,45 +84,42 @@ describe('<SSOButton />', () => {
           fontScale: -1,
         },
       },
-      'google'
+      'apple'
     )
   })
 
   it('should call onSignInFailure when signin fails', async () => {
-    mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
+    mockServer.postApi<SigninResponse>('/v1/oauth/apple/authorize', {
       responseOptions: { statusCode: 500 },
     })
 
     renderSSOButton()
-    await user.press(await screen.findByTestId('S’inscrire avec Google'))
+    await user.press(await screen.findByTestId('S\u2019inscrire avec Apple'))
 
     expect(onSignInFailureSpy).toHaveBeenCalledWith({
       isSuccess: false,
       content: { code: 'NETWORK_REQUEST_FAILED', general: [] },
-      provider: 'google',
+      provider: 'apple',
     })
   })
 
   it('should not show snackbar when sso login is cancelled by user', async () => {
-    jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce({
-      code: statusCodes.SIGN_IN_CANCELLED,
+    jest.spyOn(appleAuth, 'performRequest').mockRejectedValueOnce({
+      code: appleAuth.Error.CANCELED,
       message: 'Sign in cancelled',
     })
 
     renderSSOButton()
-    await user.press(await screen.findByTestId('S’inscrire avec Google'))
+    await user.press(await screen.findByTestId('S\u2019inscrire avec Apple'))
 
     expect(showErrorSnackBarSpy).not.toHaveBeenCalled()
   })
 
-  it('should show snackbar when sso login fails due to play services not available', async () => {
-    jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce({
-      code: statusCodes.PLAY_SERVICES_NOT_AVAILABLE,
-      message: 'Play services not available',
-    })
+  it('should show snackbar when sso login fails', async () => {
+    jest.spyOn(appleAuth, 'performRequest').mockRejectedValueOnce(new Error('Apple auth error'))
 
     renderSSOButton()
-    await user.press(await screen.findByTestId('S’inscrire avec Google'))
+    await user.press(await screen.findByTestId('S\u2019inscrire avec Apple'))
 
     expect(showErrorSnackBarSpy).toHaveBeenCalledWith(
       'Une erreur est survenue, veuillez réessayer.'
@@ -127,31 +127,31 @@ describe('<SSOButton />', () => {
   })
 
   it('should log analytics when logging in with sso from signup', async () => {
-    mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
+    mockServer.postApi<SigninResponse>('/v1/oauth/apple/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
     })
-    mockServer.getApi<UserProfile>('/v1/me', beneficiaryUser)
+    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
 
     renderSSOButton()
 
-    await user.press(await screen.findByTestId('S’inscrire avec Google'))
+    await user.press(await screen.findByTestId('S\u2019inscrire avec Apple'))
 
     expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromSignup', type: 'SSO_signup' })
   })
 
   it('should log analytics when logging in with sso from login', async () => {
-    mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
+    mockServer.postApi<SigninResponse>('/v1/oauth/apple/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
     })
-    mockServer.getApi<UserProfile>('/v1/me', beneficiaryUser)
+    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
 
     renderSSOButton('login')
 
-    await user.press(await screen.findByTestId('Se connecter avec Google'))
+    await user.press(await screen.findByTestId('Se connecter avec Apple'))
 
     expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: 'SSO_login' })
   })
@@ -172,10 +172,12 @@ describe('<SSOButton />', () => {
     })
 
     it('should not log to Sentry on SSO login error', async () => {
-      jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce('GoogleSignIn Error')
+      jest
+        .spyOn(appleAuth, 'performRequest')
+        .mockRejectedValueOnce(new Error('Apple Sign-In Error'))
 
       renderSSOButton()
-      await user.press(await screen.findByTestId('S’inscrire avec Google'))
+      await user.press(await screen.findByTestId('S\u2019inscrire avec Apple'))
 
       expect(eventMonitoring.captureException).toHaveBeenCalledTimes(0)
     })
@@ -202,21 +204,21 @@ describe('<SSOButton />', () => {
     })
 
     it('should log to Sentry on SSO login error', async () => {
-      jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce('GoogleSignIn Error')
+      jest
+        .spyOn(appleAuth, 'performRequest')
+        .mockRejectedValueOnce(new Error('Apple Sign-In Error'))
 
       renderSSOButton()
-      await user.press(await screen.findByTestId('S’inscrire avec Google'))
+      await user.press(await screen.findByTestId('S\u2019inscrire avec Apple'))
 
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        'Can’t login via Google: GoogleSignIn Error',
-        { level: 'info', extra: { error: 'GoogleSignIn Error' } }
+        'Can\u2019t login via Apple: Apple Sign-In Error',
+        { level: 'info', extra: { error: new Error('Apple Sign-In Error') } }
       )
     })
   })
 })
 
 const renderSSOButton = (type: 'signup' | 'login' = 'signup') => {
-  render(
-    reactQueryProviderHOC(<SSOButtonGoogle type={type} onSignInFailure={onSignInFailureSpy} />)
-  )
+  render(reactQueryProviderHOC(<SSOButtonApple type={type} onSignInFailure={onSignInFailureSpy} />))
 }

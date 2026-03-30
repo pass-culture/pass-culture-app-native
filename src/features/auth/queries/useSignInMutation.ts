@@ -6,7 +6,7 @@ import { api } from 'api/api'
 import { isApiError } from 'api/apiHelpers'
 import { AccountState, FavoriteResponse } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
-import { LoginRequest, SignInResponseFailure } from 'features/auth/types'
+import { isOAuthLoginRequest, LoginRequest, SignInResponseFailure } from 'features/auth/types'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import {
   RootStackParamList,
@@ -41,7 +41,7 @@ export const useSignInMutation = ({
   return useMutation({
     mutationFn: async (body: LoginRequest) => {
       const requestBody = { ...body, deviceInfo }
-      if ('provider' in requestBody) {
+      if (isOAuthLoginRequest(requestBody)) {
         const { provider, ...oauthBody } = requestBody
         return api.postNativeV1OauthssoProviderAuthorize(oauthBody, provider)
       }
@@ -49,16 +49,15 @@ export const useSignInMutation = ({
     },
 
     onSuccess: async (response, body) => {
-      const isSSO = 'provider' in body
-      const loginAnalyticsType = isSSO ? 'SSO_login' : undefined
+      const loginAnalyticsType = isOAuthLoginRequest(body) ? 'SSO_login' : undefined
       await loginRoutine(response, analyticsMethod, analyticsType || loginAnalyticsType)
       onSuccess(response.accountState)
     },
 
     onError: (error, variables) => {
       const errorResponse: SignInResponseFailure = { isSuccess: false }
-      if ('provider' in variables) {
-        errorResponse.provider = variables.provider as 'google' | 'apple'
+      if (isOAuthLoginRequest(variables)) {
+        errorResponse.provider = variables.provider
       }
       if (isApiError(error)) {
         errorResponse.statusCode = error.statusCode
