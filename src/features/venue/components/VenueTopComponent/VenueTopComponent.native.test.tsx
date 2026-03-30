@@ -216,6 +216,27 @@ describe('<VenueTopComponent />', () => {
 
       expect(screen.queryByText('Nouveau')).not.toBeOnTheScreen()
     })
+
+    it('should display feedback component below volunteer card when venue has volunteering url and wipEnableVolunteerFeedback FF activated', () => {
+      renderVenueTopComponent({
+        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
+        enableVolunteer: true,
+        enableVolunteerFeedback: true,
+      })
+
+      expect(screen.getByText('Le bénévolat sur le pass t’intéresse t-il ?')).toBeOnTheScreen()
+    })
+
+    it('should not display feedback component below volunteer card when venue has volunteering url and wipEnableVolunteerFeedback FF deactivated', () => {
+      renderVenueTopComponent({
+        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
+        enableVolunteer: true,
+      })
+
+      expect(
+        screen.queryByText('Le bénévolat sur le pass t’intéresse t-il ?')
+      ).not.toBeOnTheScreen()
+    })
   })
 })
 
@@ -225,6 +246,7 @@ const renderVenueTopComponent = ({
   venue,
   enableVolunteer,
   enableVolunteerNewTag,
+  enableVolunteerFeedback,
 }: RenderVenueTopComponent) =>
   render(
     reactQueryProviderHOC(
@@ -232,6 +254,7 @@ const renderVenueTopComponent = ({
         venue={venue}
         enableVolunteer={enableVolunteer}
         enableVolunteerNewTag={enableVolunteerNewTag}
+        enableVolunteerFeedback={enableVolunteerFeedback}
       />
     )
   )

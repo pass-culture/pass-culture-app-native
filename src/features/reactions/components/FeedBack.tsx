@@ -91,7 +91,7 @@ export function FeedBack({
 
   if (reaction && hasJustReacted) {
     return (
-      <ViewGap gap={2}>
+      <ViewGap gap={2} style={style}>
         <Typo.BodyAccent>{thanksMessage}</Typo.BodyAccent>
         <ExternalTouchableLink
           wording={ctaWording}

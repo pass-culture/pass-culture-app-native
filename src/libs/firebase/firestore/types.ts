@@ -71,6 +71,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_GRID_LIST = 'wipEnableGridList',
   WIP_ENABLE_VENUE_CALENDAR = 'wipEnableVenueCalendar',
   WIP_ENABLE_VOLUNTEER = 'wipEnableVolunteer',
+  WIP_ENABLE_VOLUNTEER_FEEDBACK = 'wipEnableVolunteerFeedback',
   WIP_ENABLE_VOLUNTEER_NEW_TAG = 'wipEnableVolunteerNewTag',
   WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE = 'wipFlingBottomSheetNavigateToVenue',
   WIP_NEW_BOOKING_PAGE = 'wipNewBookingPage',
