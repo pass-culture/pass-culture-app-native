@@ -187,7 +187,7 @@ describe('<VenueTopComponent />', () => {
       ).toBeOnTheScreen()
     })
 
-    it('should redirect to voluteer page when venue has volunteering url and pressing voluteer card', async () => {
+    it('should redirect to voluteer page when venue has volunteering url and pressing volunteer card', async () => {
       renderVenueTopComponent({
         venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
         enableVolunteer: true,
@@ -196,6 +196,20 @@ describe('<VenueTopComponent />', () => {
       await user.press(screen.getByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`))
 
       expect(mockOpenUrl).toHaveBeenCalledWith('url')
+    })
+
+    it('should trigger ClickVolunteerCTA log when venue has volunteering url and pressing volunteer card', async () => {
+      renderVenueTopComponent({
+        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
+        enableVolunteer: true,
+      })
+
+      await user.press(screen.getByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`))
+
+      expect(analytics.logClickVolunteerCTA).toHaveBeenCalledWith({
+        from: 'venue',
+        venueId: venueOpenToPublic.id.toString(),
+      })
     })
 
     it('should display new tag on volunteer card when venue has volunteering url and wipEnableVolunteerNewTag FF activated', () => {

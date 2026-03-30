@@ -84,6 +84,7 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
 
   const onPressVolunteeringCard = async () => {
     if (venue.volunteeringUrl) {
+      await analytics.logClickVolunteerCTA({ from: 'venue', venueId: venue.id.toString() })
       await openUrl(venue.volunteeringUrl)
     }
   }
