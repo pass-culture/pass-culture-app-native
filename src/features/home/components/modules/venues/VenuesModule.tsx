@@ -3,6 +3,7 @@ import { ViewToken } from 'react-native'
 import { useTheme } from 'styled-components'
 import { styled } from 'styled-components/native'
 
+import { ReactionTypeEnum } from 'api/gen'
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
 import { ModuleData } from 'features/home/types'
 import { FeedBack } from 'features/reactions/components/FeedBack'
@@ -79,6 +80,15 @@ export const VenuesModule = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldModuleBeDisplayed])
 
+  const handleOnLogFeedback = (type: ReactionTypeEnum) => {
+    const answer = type === ReactionTypeEnum.LIKE ? 'yes' : 'no'
+    void analytics.logAnswerVolunteerQuestion({
+      from: 'home',
+      answer,
+      entryId: homeEntryId,
+    })
+  }
+
   if (!shouldModuleBeDisplayed) return null
 
   return (
@@ -109,9 +119,7 @@ export const VenuesModule = ({
           likeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
           dislikeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
           title="Le bénévolat sur le pass t’intéresse t-il&nbsp;?"
-          // TODO(PC-40467): add tracking
-          // eslint-disable-next-line @typescript-eslint/no-empty-function
-          onLogReaction={() => {}}
+          onLogReaction={handleOnLogFeedback}
         />
       ) : null}
     </Container>

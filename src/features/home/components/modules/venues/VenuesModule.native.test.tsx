@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import React from 'react'
 
 import { VenuesModule } from 'features/home/components/modules/venues/VenuesModule'
@@ -67,13 +68,48 @@ describe('VenuesModule component', () => {
         expect(screen.getByText('Nouveau')).toBeOnTheScreen()
       })
 
-      it('should display feedback when wipEnableVolunteerFeedback FF activated', () => {
-        setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK])
-        renderVenuesModule({
-          displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+      describe('When wipEnableVolunteerFeedback FF activated', () => {
+        beforeEach(() => {
+          setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK])
         })
 
-        expect(screen.getByText('Le bénévolat sur le pass t’intéresse t-il ?')).toBeOnTheScreen()
+        it('should display feedback', () => {
+          renderVenuesModule({
+            displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+          })
+
+          expect(screen.getByText('Le bénévolat sur le pass t’intéresse t-il ?')).toBeOnTheScreen()
+        })
+
+        it('should trigger AnswerVolunteerQuestion log with yes answer when answering yes to feedback quiz', async () => {
+          await AsyncStorage.removeItem('volunteering_feedback')
+          renderVenuesModule({
+            displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+          })
+
+          await user.press(screen.getByText('Oui'))
+
+          expect(analytics.logAnswerVolunteerQuestion).toHaveBeenCalledWith({
+            answer: 'yes',
+            from: 'home',
+            entryId: 'fakeEntryId',
+          })
+        })
+
+        it('should trigger AnswerVolunteerQuestion log with no answer when answering no to feedback quiz', async () => {
+          await AsyncStorage.removeItem('volunteering_feedback')
+          renderVenuesModule({
+            displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+          })
+
+          await user.press(screen.getByText('Non'))
+
+          expect(analytics.logAnswerVolunteerQuestion).toHaveBeenCalledWith({
+            answer: 'no',
+            from: 'home',
+            entryId: 'fakeEntryId',
+          })
+        })
       })
 
       it('should not display feedback when wipEnableVolunteerFeedback FF deactivated', () => {

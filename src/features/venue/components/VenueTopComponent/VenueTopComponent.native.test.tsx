@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import Clipboard from '@react-native-clipboard/clipboard'
 import mockdate from 'mockdate'
 import React, { ComponentProps } from 'react'
@@ -250,6 +251,40 @@ describe('<VenueTopComponent />', () => {
       expect(
         screen.queryByText('Le bénévolat sur le pass t’intéresse t-il ?')
       ).not.toBeOnTheScreen()
+    })
+
+    it('should trigger AnswerVolunteerQuestion log with yes answer when venue has volunteering url and answering yes to feedback quiz', async () => {
+      await AsyncStorage.removeItem('volunteering_feedback')
+      renderVenueTopComponent({
+        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
+        enableVolunteer: true,
+        enableVolunteerFeedback: true,
+      })
+
+      await user.press(screen.getByText('Oui'))
+
+      expect(analytics.logAnswerVolunteerQuestion).toHaveBeenCalledWith({
+        answer: 'yes',
+        from: 'venue',
+        venueId: venueOpenToPublic.id.toString(),
+      })
+    })
+
+    it('should trigger AnswerVolunteerQuestion log with no answer when venue has volunteering url and answering no to feedback quiz', async () => {
+      await AsyncStorage.removeItem('volunteering_feedback')
+      renderVenueTopComponent({
+        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
+        enableVolunteer: true,
+        enableVolunteerFeedback: true,
+      })
+
+      await user.press(screen.getByText('Non'))
+
+      expect(analytics.logAnswerVolunteerQuestion).toHaveBeenCalledWith({
+        answer: 'no',
+        from: 'venue',
+        venueId: venueOpenToPublic.id.toString(),
+      })
     })
   })
 })
