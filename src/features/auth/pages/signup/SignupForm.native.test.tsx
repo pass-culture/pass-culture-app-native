@@ -418,6 +418,7 @@ describe('Signup Form', () => {
             fontScale: -1,
           },
         },
+        'google',
         { credentials: 'omit' }
       )
     })
@@ -638,6 +639,7 @@ describe('Signup Form', () => {
             fontScale: -1,
           },
         },
+        'google',
         { credentials: 'omit' }
       )
     })
@@ -805,6 +807,7 @@ describe('Signup Form', () => {
             fontScale: -1,
           },
         },
+        'google',
         { credentials: 'omit' }
       )
     })

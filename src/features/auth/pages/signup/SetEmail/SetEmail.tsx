@@ -67,7 +67,10 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
     (errorResponse: SignInResponseFailure) => {
       if (errorResponse.content?.code === 'SSO_EMAIL_NOT_FOUND') {
         onSSOEmailNotFoundError()
-        goToNextStep({ accountCreationToken: errorResponse.content.accountCreationToken })
+        goToNextStep({
+          accountCreationToken: errorResponse.content.accountCreationToken,
+          ssoProvider: errorResponse.provider,
+        })
       } else {
         const providerName = errorResponse.provider === 'apple' ? 'Apple' : 'Google'
         showErrorSnackBar(

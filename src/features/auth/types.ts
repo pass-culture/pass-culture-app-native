@@ -31,6 +31,7 @@ export type SignupData = {
   password: string
   birthdate: string
   accountCreationToken?: string
+  ssoProvider?: 'google' | 'apple'
 }
 
 export type PreValidationSignupNormalStepProps = {

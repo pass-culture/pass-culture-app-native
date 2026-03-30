@@ -69,8 +69,6 @@ export const safeFetch = async (
       'device-id': await getDeviceId(),
       platform: Platform.OS,
       'request-id': uuidv4(),
-      // Bypass Pinggy tunnel caution page in development
-      ...(__DEV__ ? { 'X-Pinggy-No-Screen': 'true' } : {}),
     },
   }
 

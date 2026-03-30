@@ -139,7 +139,7 @@ export default ({ mode }) => {
         },
       ],
     },
-    server: { ...proxyConfig, open: true, allowedHosts: ['wpwrd-86-238-171-43.a.free.pinggy.link'] },
+    server: { ...proxyConfig, open: true },
     preview: proxyConfig,
     optimizeDeps: {
       include: ['react-native', 'react-native-web'],

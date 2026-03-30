@@ -41,18 +41,14 @@ export const useSignInMutation = ({
   return useMutation({
     mutationFn: async (body: LoginRequest) => {
       const requestBody = { ...body, deviceInfo }
-      console.log('[SignInMutation] mutationFn called with keys:', Object.keys(body))
       if ('provider' in requestBody) {
         const { provider, ...oauthBody } = requestBody
-        console.log(`[SignInMutation] Routing to unified OAuth endpoint with provider: ${provider}, body keys:`, Object.keys(oauthBody))
         return api.postNativeV1OauthssoProviderAuthorize(oauthBody, provider)
       }
-      console.log('[SignInMutation] Routing to standard signin endpoint')
       return api.postNativeV1Signin(requestBody, { credentials: 'omit' })
     },
 
     onSuccess: async (response, body) => {
-      console.log('[SignInMutation] onSuccess called, accountState:', response.accountState)
       const isSSO = 'provider' in body
       const loginAnalyticsType = isSSO ? 'SSO_login' : undefined
       await loginRoutine(response, analyticsMethod, analyticsType || loginAnalyticsType)
@@ -60,13 +56,6 @@ export const useSignInMutation = ({
     },
 
     onError: (error, variables) => {
-      console.log('[SignInMutation] onError called:', {
-        isApiError: isApiError(error),
-        statusCode: isApiError(error) ? (error as any).statusCode : undefined,
-        content: isApiError(error) ? (error as any).content : undefined,
-        errorMessage: error instanceof Error ? error.message : String(error),
-        variableKeys: Object.keys(variables),
-      })
       const errorResponse: SignInResponseFailure = { isSuccess: false }
       if ('provider' in variables) {
         errorResponse.provider = variables.provider as 'google' | 'apple'
@@ -77,7 +66,6 @@ export const useSignInMutation = ({
       } else {
         errorResponse.content = { code: 'NETWORK_REQUEST_FAILED', general: [] }
       }
-      console.log('[SignInMutation] Calling onFailure with:', JSON.stringify(errorResponse))
       onFailure(errorResponse)
     },
   })

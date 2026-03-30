@@ -8,9 +8,7 @@ export const loginToApple = async ({ onSuccess, onError }: AppleLoginOptions) =>
   let oauthStateToken: string
 
   try {
-    const response = await api.getNativeV1OauthState()
-    console.log('[AppleSSO] oauthState response:', JSON.stringify(response))
-    oauthStateToken = response.oauthStateToken
+    oauthStateToken = (await api.getNativeV1OauthState()).oauthStateToken
   } catch (error) {
     onError?.(error)
     return
