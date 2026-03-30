@@ -30,13 +30,13 @@ jobs:
         run: semgrep scan -q --sarif --config auto . > semgrep-results.sarif
 
       - name: Save SARIF results as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v6
         with:
           name: semgrep-scan-results
           path: semgrep-results.sarif
 
       - name: Upload SARIF result to the GitHub Security Dashboard
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: semgrep-results.sarif
         if: always()
