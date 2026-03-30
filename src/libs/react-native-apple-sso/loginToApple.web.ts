@@ -8,7 +8,9 @@ export const loginToApple = async ({ onSuccess, onError }: AppleLoginOptions) =>
   let oauthStateToken: string
 
   try {
-    oauthStateToken = (await api.getNativeV1OauthState()).oauthStateToken
+    const response = await api.getNativeV1OauthState()
+    console.log('[AppleSSO] oauthState response:', JSON.stringify(response))
+    oauthStateToken = response.oauthStateToken
   } catch (error) {
     onError?.(error)
     return
@@ -23,9 +25,8 @@ export const loginToApple = async ({ onSuccess, onError }: AppleLoginOptions) =>
   const params = new URLSearchParams({
     client_id: clientId,
     redirect_uri: `${window.location.origin}/oauth/apple/callback`,
-    response_mode: 'form_post',
+    response_mode: 'query',
     response_type: 'code',
-    scope: 'email',
     state: oauthStateToken,
   })
 
