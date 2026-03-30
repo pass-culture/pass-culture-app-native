@@ -98,6 +98,12 @@ export const logEventAnalytics = {
     venueId?: number
     apiRecoParams?: RecommendationApiParams
   }) => analytics.logEvent({ firebase: AnalyticsEvent.ALL_TILES_SEEN }, params),
+  logAnswerVolunteerQuestion: (params: {
+    from: Referrals
+    answer: string
+    venueId?: string
+    entryId?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.ANSWER_VOLUNTEER_QUESTION }, params),
   logAppThemeStatus: (params: {
     themeSetting: ColorSchemeType
     systemTheme: ColorSchemeType
@@ -207,6 +213,8 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.SEE_MORE_CLICKED }, params),
   logClickSocialNetwork: (network: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_SOCIAL_NETWORK }, { network }),
+  logClickVolunteerCTA: (params: { from: Referrals; venueId: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_VOLUNTEER_CTA }, params),
   logClickWhatsClub: (params: { offerId: string; from: Referrals; categoryName: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_WHATS_CLUB }, params),
   logConfirmBookingCancellation: (offerId: number) =>
@@ -287,6 +295,7 @@ export const logEventAnalytics = {
     moduleId?: string
     homeEntryId?: string
     searchId?: string
+    originDetail?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE }, params),
   logConsultVenueMap: ({ from, searchId }: { from: Referrals; searchId?: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_MAP }, { from, searchId }),
