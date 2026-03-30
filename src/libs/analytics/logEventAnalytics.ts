@@ -392,6 +392,21 @@ export const logEventAnalytics = {
       | 'SignupConfirmationEmailSent'
   ) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_CONTACT_FORM }, { from }),
   logHasClickedDuoStep: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_DUO_STEP }),
+  logHasClickedFakeDoorCTA: ({
+    featureName,
+    from,
+    searchId,
+    homeEntryId,
+  }: {
+    featureName: string
+    from: Referrals
+    searchId?: string
+    homeEntryId?: string
+  }) =>
+    analytics.logEvent(
+      { firebase: AnalyticsEvent.HAS_CLICKED_FAKE_DOOR_CTA },
+      { featureName, from, homeEntryId, searchId }
+    ),
   logHasClickedGridListToggle: ({ fromLayout }: { fromLayout: GridListLayout }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_GRID_LIST_TOGGLE }, { fromLayout }),
   logHasClickedRemoteActivationBanner: (from: RemoteBannerOrigin, options: RemoteBannerType) =>

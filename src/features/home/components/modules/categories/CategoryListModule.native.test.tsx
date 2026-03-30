@@ -132,6 +132,26 @@ describe('CategoryListModule', () => {
         await screen.findByText('Encore un peu de patience...', { hidden: true })
       ).toBeOnTheScreen()
     })
+
+    it('should trigger hasClickedFakeDoorCTA log when pressing AI fake door modal banner', async () => {
+      render(
+        <CategoryListModule
+          id="123"
+          title="module"
+          categoryBlockList={categoryBlockList}
+          index={1}
+          homeEntryId="homeEntryId"
+        />
+      )
+
+      await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
+
+      expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenCalledWith({
+        featureName: 'conversational_search_AI',
+        from: 'home',
+        homeEntryId: 'homeEntryId',
+      })
+    })
   })
 
   it('should not display AI fake door banner when enableAIFakeDoor FF deactivated', () => {
