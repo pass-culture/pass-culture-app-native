@@ -2920,11 +2920,11 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNReanimated/reanimated (= 4.1.5)
+    - RNReanimated/reanimated (= 4.1.7)
     - RNWorklets
     - SocketRocket
     - Yoga
-  - RNReanimated/reanimated (4.1.5):
+  - RNReanimated/reanimated (4.1.7):
     - boost
     - DoubleConversion
     - fast_float
@@ -2951,11 +2951,11 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNReanimated/reanimated/apple (= 4.1.5)
+    - RNReanimated/reanimated/apple (= 4.1.7)
     - RNWorklets
     - SocketRocket
     - Yoga
-  - RNReanimated/reanimated/apple (4.1.5):
+  - RNReanimated/reanimated/apple (4.1.7):
     - boost
     - DoubleConversion
     - fast_float
@@ -3807,7 +3807,7 @@ SPEC CHECKSUMS:
   RNGoogleSignin: a6a612cce56a45ab701c5c5c6e36f5390522d100
   RNKeychain: 75a69663382c48a55fbe875a6f1bd83fe7169b6a
   RNPermissions: 3189bfe4d863b83c8b530a0c9c26f1080a393eb3
-  RNReanimated: f58748c1e80282d9f103367967cc5696df3b0214
+  RNReanimated: 995e36c364bfb34484a799d1e61cd76004983495
   RNScreens: 5ca475eb30f4362c5808f3ff4a1c7b786bcd878e
   RNSentry: c98dba4c036a77ca114cf9b03d2a7643336454c5
   RNShare: a9e2a2325efa6a31416712a239eae1a282a354cf
