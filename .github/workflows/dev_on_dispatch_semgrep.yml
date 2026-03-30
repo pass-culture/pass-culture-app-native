@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Perform Semgrep Analysis
-        run: semgrep scan -q --sarif --config auto . > semgrep-results.sarif
+        run: semgrep scan --sarif --config auto . > semgrep-results.sarif
 
       - name: Save SARIF results as artifact
         uses: actions/upload-artifact@v6
