@@ -35,7 +35,7 @@ type Props = {
 }
 
 const VOLUNTEER_SMALL_CARD_HEIGHT = getSpacing(56.25)
-const VOLUNTEER_LARGE_CARD_HEIGHT = getSpacing(58.25)
+const VOLUNTEER_LARGE_CARD_HEIGHT = getSpacing(65)
 
 export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   venue,
@@ -232,9 +232,7 @@ const TagContainer = styled.View(({ theme }) => ({
 }))
 
 const VolunteeringContainer = styled(ViewGap)(({ theme }) => ({
-  marginBottom: theme.isDesktopViewport
-    ? theme.designSystem.size.spacing.xl
-    : theme.designSystem.size.spacing.m,
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))
 
 const StyledFeedBack = styled(FeedBack)(({ theme }) => ({

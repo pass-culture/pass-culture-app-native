@@ -98,7 +98,12 @@ export const PassPlaylist = ({
     <StyledViewGap gap={4} noMarginBottom={noMarginBottom} {...props}>
       <ViewGap gap={1}>
         <StyledView>
-          <AccessibleTitle withMargin={withMargin} TitleComponent={TitleLevel2} title={title} />
+          <AccessibleTitle
+            withMargin={withMargin}
+            TitleComponent={TitleLevel2}
+            title={title}
+            withTag={showNewTag}
+          />
           {renderTitleSeeMore()}
           {showNewTag ? (
             <TagContainer>
@@ -152,7 +157,6 @@ const StyledView = styled.View({
 })
 
 const TagContainer = styled.View(({ theme }) => ({
-  marginLeft: theme.designSystem.size.spacing.s,
   marginRight: theme.designSystem.size.spacing.xl,
   flexShrink: 0,
   justifyContent: 'center',

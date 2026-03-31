@@ -1710,7 +1710,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     style={
                       {
                         "flexShrink": 1,
-                        "marginHorizontal": 24,
+                        "marginLeft": 24,
+                        "marginRight": 24,
                       }
                     }
                     testID="playlistTitle"

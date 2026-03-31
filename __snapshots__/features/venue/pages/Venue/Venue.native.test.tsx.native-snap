@@ -1155,7 +1155,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                             style={
                               {
                                 "flexShrink": 1,
-                                "marginHorizontal": 24,
+                                "marginLeft": 24,
+                                "marginRight": 24,
                               }
                             }
                             testID="playlistTitle"
@@ -4821,7 +4822,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             style={
                               {
                                 "flexShrink": 1,
-                                "marginHorizontal": 24,
+                                "marginLeft": 24,
+                                "marginRight": 24,
                               }
                             }
                             testID="playlistTitle"
