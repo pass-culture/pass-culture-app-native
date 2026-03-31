@@ -4,7 +4,7 @@ import React, { FunctionComponent } from 'react'
 import { useVenueProAdvicesQuery } from 'features/advices/queries/useVenueProAdvicesQuery'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { proAdvicesToAdviceCardData } from 'features/proAdvices/adapters/proAdvicesToAdviceCardData/proAdvicesToAdviceCardData'
+import { venueProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/venueProAdvicesToAdviceCardData/venueProAdvicesToAdviceCardData'
 import { ProAdvicesBase } from 'features/proAdvices/pages/ProAdvicesBase'
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -19,7 +19,7 @@ export const ProAdvicesVenue: FunctionComponent = () => {
   const { data: advices } = useVenueProAdvicesQuery({
     venueId,
     enableProAdvices,
-    select: ({ proAdvices }) => proAdvicesToAdviceCardData(proAdvices),
+    select: ({ proAdvices }) => venueProAdvicesToAdviceCardData(proAdvices),
   })
   const nbAdvices = advices?.length ?? 0
 

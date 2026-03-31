@@ -11,7 +11,7 @@ import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylis
 import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
-import { proAdvicesToAdviceCardData } from 'features/proAdvices/adapters/proAdvicesToAdviceCardData/proAdvicesToAdviceCardData'
+import { venueProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/venueProAdvicesToAdviceCardData/venueProAdvicesToAdviceCardData'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchInVenueModal } from 'features/search/pages/modals/SearchInVenueModal/SearchInVenueModal'
@@ -205,7 +205,7 @@ export const Venue: FunctionComponent = () => {
             onViewableItemsChanged={handleViewableItemsChanged}
             advicesCardData={
               segment === 'A'
-                ? proAdvicesToAdviceCardData(
+                ? venueProAdvicesToAdviceCardData(
                     getAdvicesWithoutHeadline(advices?.proAdvices, headlineOfferData?.id)
                   )
                 : undefined

@@ -1,11 +1,11 @@
-import { proAdvicesToAdviceCardData } from 'features/proAdvices/adapters/proAdvicesToAdviceCardData/proAdvicesToAdviceCardData'
+import { venueProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/venueProAdvicesToAdviceCardData/venueProAdvicesToAdviceCardData'
 import { proAdvicesFixture } from 'features/venue/fixtures/venueProAdvices.fixture'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 
-describe('proAdvicesToAdviceCardData', () => {
+describe('venueProAdvicesToAdviceCardData', () => {
   it('should transform pro advices to advice card data', () => {
     const proAdvices = [...proAdvicesFixture]
-    const result = proAdvicesToAdviceCardData(proAdvices)
+    const result = venueProAdvicesToAdviceCardData(proAdvices)
 
     expect(result).toEqual([
       {
@@ -36,7 +36,7 @@ describe('proAdvicesToAdviceCardData', () => {
 
   it('should return "avis du pro" as tag label when author undefined', () => {
     const proAdvices = [{ ...proAdvicesFixture[0], author: undefined }]
-    const result = proAdvicesToAdviceCardData(proAdvices)
+    const result = venueProAdvicesToAdviceCardData(proAdvices)
 
     expect(result).toEqual([
       {

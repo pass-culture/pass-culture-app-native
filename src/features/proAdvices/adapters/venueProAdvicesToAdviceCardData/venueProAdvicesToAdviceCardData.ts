@@ -3,7 +3,7 @@ import { getFormattedAdviceDate } from 'features/advices/helpers/getFormattedAdv
 import { AdviceCardData } from 'features/advices/types'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 
-export function proAdvicesToAdviceCardData(advices: VenueProAdvice[]): AdviceCardData[] {
+export function venueProAdvicesToAdviceCardData(advices: VenueProAdvice[]): AdviceCardData[] {
   return advices.map(
     ({
       offerId,
