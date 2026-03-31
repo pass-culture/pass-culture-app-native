@@ -11,6 +11,7 @@ export const AccessibleTitle: React.FC<AccessibleTitleProps> = ({
   TitleComponent = Typo.Title3,
   withMargin = true,
   accessibilityLabel,
+  withTag,
 }) => {
   const { titleText, titleEmoji } = separateTitleAndEmojis(title)
   const { titleText: accessibilityLabelTitleText } = separateTitleAndEmojis(
@@ -18,7 +19,7 @@ export const AccessibleTitle: React.FC<AccessibleTitleProps> = ({
   )
   const StyledTitleComponent = styled(TitleComponent || Typo.Title3)({})
   return (
-    <TitleWrapper testID="playlistTitle" withMargin={withMargin}>
+    <TitleWrapper testID="playlistTitle" withMargin={withMargin} withTag={withTag}>
       <StyledTitleComponent
         numberOfLines={2}
         accessibilityLabel={accessibilityLabel ? accessibilityLabelTitleText : titleText}>
@@ -34,11 +35,18 @@ export const AccessibleTitle: React.FC<AccessibleTitleProps> = ({
   )
 }
 
-const TitleWrapper = styled.View<{ windowWidth?: number; withMargin?: boolean }>(
-  ({ withMargin, theme }) => {
+const TitleWrapper = styled.View<{ windowWidth?: number; withMargin?: boolean; withTag?: boolean }>(
+  ({ withMargin, withTag, theme }) => {
+    const getMarginRight = () => {
+      if (withTag) return theme.designSystem.size.spacing.s
+      if (withMargin) return theme.contentPage.marginHorizontal
+      return undefined
+    }
+
     return {
       flexShrink: 1,
-      marginHorizontal: withMargin ? theme.contentPage.marginHorizontal : undefined,
+      marginLeft: withMargin ? theme.contentPage.marginHorizontal : undefined,
+      marginRight: getMarginRight(),
     }
   }
 )
