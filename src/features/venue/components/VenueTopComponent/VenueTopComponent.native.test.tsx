@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import Clipboard from '@react-native-clipboard/clipboard'
 import mockdate from 'mockdate'
 import React, { ComponentProps } from 'react'
@@ -187,7 +188,7 @@ describe('<VenueTopComponent />', () => {
       ).toBeOnTheScreen()
     })
 
-    it('should redirect to voluteer page when venue has volunteering url and pressing voluteer card', async () => {
+    it('should redirect to voluteer page when venue has volunteering url and pressing volunteer card', async () => {
       renderVenueTopComponent({
         venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
         enableVolunteer: true,
@@ -196,6 +197,20 @@ describe('<VenueTopComponent />', () => {
       await user.press(screen.getByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`))
 
       expect(mockOpenUrl).toHaveBeenCalledWith('url')
+    })
+
+    it('should trigger ClickVolunteerCTA log when venue has volunteering url and pressing volunteer card', async () => {
+      renderVenueTopComponent({
+        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
+        enableVolunteer: true,
+      })
+
+      await user.press(screen.getByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`))
+
+      expect(analytics.logClickVolunteerCTA).toHaveBeenCalledWith({
+        from: 'venue',
+        venueId: venueOpenToPublic.id.toString(),
+      })
     })
 
     it('should display new tag on volunteer card when venue has volunteering url and wipEnableVolunteerNewTag FF activated', () => {
@@ -236,6 +251,42 @@ describe('<VenueTopComponent />', () => {
       expect(
         screen.queryByText('Le bénévolat sur le pass t’intéresse t-il ?')
       ).not.toBeOnTheScreen()
+    })
+
+    it('should trigger FeatureFeedbackClicked log with yes answer when venue has volunteering url and answering yes to feedback quiz', async () => {
+      await AsyncStorage.removeItem('volunteering_feedback')
+      renderVenueTopComponent({
+        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
+        enableVolunteer: true,
+        enableVolunteerFeedback: true,
+      })
+
+      await user.press(screen.getByText('Oui'))
+
+      expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
+        featureName: 'volunteer',
+        feedbackResponse: 'Oui',
+        from: 'venue',
+        venueId: venueOpenToPublic.id.toString(),
+      })
+    })
+
+    it('should trigger FeatureFeedbackClicked log with no answer when venue has volunteering url and answering no to feedback quiz', async () => {
+      await AsyncStorage.removeItem('volunteering_feedback')
+      renderVenueTopComponent({
+        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
+        enableVolunteer: true,
+        enableVolunteerFeedback: true,
+      })
+
+      await user.press(screen.getByText('Non'))
+
+      expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
+        featureName: 'volunteer',
+        feedbackResponse: 'Non',
+        from: 'venue',
+        venueId: venueOpenToPublic.id.toString(),
+      })
     })
   })
 })

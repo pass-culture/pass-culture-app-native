@@ -1,13 +1,15 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import React from 'react'
 
 import { VenuesModule } from 'features/home/components/modules/venues/VenuesModule'
 import { ModuleData } from 'features/home/types'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
+import { analytics } from 'libs/analytics/provider'
 import { DisplayParametersFields } from 'libs/contentful/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const props = {
   moduleId: 'fakemoduleid',
@@ -23,6 +25,9 @@ const props = {
 }
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('VenuesModule component', () => {
   beforeEach(() => {
@@ -63,13 +68,50 @@ describe('VenuesModule component', () => {
         expect(screen.getByText('Nouveau')).toBeOnTheScreen()
       })
 
-      it('should display feedback when wipEnableVolunteerFeedback FF activated', () => {
-        setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK])
-        renderVenuesModule({
-          displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+      describe('When wipEnableVolunteerFeedback FF activated', () => {
+        beforeEach(() => {
+          setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK])
         })
 
-        expect(screen.getByText('Le bénévolat sur le pass t’intéresse t-il ?')).toBeOnTheScreen()
+        it('should display feedback', () => {
+          renderVenuesModule({
+            displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+          })
+
+          expect(screen.getByText('Le bénévolat sur le pass t’intéresse t-il ?')).toBeOnTheScreen()
+        })
+
+        it('should trigger FeatureFeedbackClicked log with yes answer when answering yes to feedback quiz', async () => {
+          await AsyncStorage.removeItem('volunteering_feedback')
+          renderVenuesModule({
+            displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+          })
+
+          await user.press(screen.getByText('Oui'))
+
+          expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
+            featureName: 'volunteer',
+            feedbackResponse: 'Oui',
+            from: 'home',
+            entryId: 'fakeEntryId',
+          })
+        })
+
+        it('should trigger FeatureFeedbackClicked log with no answer when answering no to feedback quiz', async () => {
+          await AsyncStorage.removeItem('volunteering_feedback')
+          renderVenuesModule({
+            displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+          })
+
+          await user.press(screen.getByText('Non'))
+
+          expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
+            featureName: 'volunteer',
+            feedbackResponse: 'Non',
+            from: 'home',
+            entryId: 'fakeEntryId',
+          })
+        })
       })
 
       it('should not display feedback when wipEnableVolunteerFeedback FF deactivated', () => {
@@ -80,6 +122,28 @@ describe('VenuesModule component', () => {
         expect(
           screen.queryByText('Le bénévolat sur le pass t’intéresse t-il ?')
         ).not.toBeOnTheScreen()
+      })
+
+      it('should trigger ConsultVenue log with originDetail set to volunteeringPlaylist when pressing on a venue', async () => {
+        renderVenuesModule({
+          displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+        })
+
+        const venues = screen.getAllByTestId(/Lieu/)
+        const firstVenue = venues[0]
+
+        if (firstVenue) {
+          await user.press(firstVenue)
+        }
+
+        expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
+          venueId: props.data?.playlistItems[0].id.toString(),
+          from: 'home',
+          moduleName: props.displayParameters.title,
+          moduleId: props.moduleId,
+          homeEntryId: props.homeEntryId,
+          originDetail: 'volunteeringPlaylist',
+        })
       })
     })
 
@@ -97,6 +161,24 @@ describe('VenuesModule component', () => {
         expect(
           screen.queryByText('Le bénévolat sur le pass t’intéresse t-il ?')
         ).not.toBeOnTheScreen()
+      })
+
+      it('should trigger ConsultVenue log without originDetail set to volunteeringPlaylist when pressing on a venue', async () => {
+        renderVenuesModule()
+        const venues = screen.getAllByTestId(/Lieu/)
+        const firstVenue = venues[0]
+
+        if (firstVenue) {
+          await user.press(firstVenue)
+        }
+
+        expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
+          venueId: props.data?.playlistItems[0].id.toString(),
+          from: 'home',
+          moduleName: props.displayParameters.title,
+          moduleId: props.moduleId,
+          homeEntryId: props.homeEntryId,
+        })
       })
     })
   })

@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { View, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { VenueResponse } from 'api/gen'
+import { ReactionTypeEnum, VenueResponse } from 'api/gen'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { getVenueBlock } from 'features/offer/components/OfferVenueBlock/getVenueBlock'
 import { VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
@@ -84,8 +84,19 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
 
   const onPressVolunteeringCard = async () => {
     if (venue.volunteeringUrl) {
+      await analytics.logClickVolunteerCTA({ from: 'venue', venueId: venue.id.toString() })
       await openUrl(venue.volunteeringUrl)
     }
+  }
+
+  const handleOnLogFeedback = (type: ReactionTypeEnum) => {
+    const feedbackResponse = type === ReactionTypeEnum.LIKE ? 'Oui' : 'Non'
+    void analytics.logFeatureFeedbackClicked({
+      featureName: 'volunteer',
+      feedbackResponse,
+      from: 'venue',
+      venueId: venue.id.toString(),
+    })
   }
 
   return (
@@ -168,9 +179,7 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
               likeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
               dislikeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
               title="Le bénévolat sur le pass t’intéresse t-il&nbsp;?"
-              // TODO(PC-40467): add tracking
-              // eslint-disable-next-line @typescript-eslint/no-empty-function
-              onLogReaction={() => {}}
+              onLogReaction={handleOnLogFeedback}
             />
           ) : null}
         </VolunteeringContainer>

@@ -207,6 +207,8 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.SEE_MORE_CLICKED }, params),
   logClickSocialNetwork: (network: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_SOCIAL_NETWORK }, { network }),
+  logClickVolunteerCTA: (params: { from: Referrals; venueId: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_VOLUNTEER_CTA }, params),
   logClickWhatsClub: (params: { offerId: string; from: Referrals; categoryName: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_WHATS_CLUB }, params),
   logConfirmBookingCancellation: (offerId: number) =>
@@ -287,6 +289,7 @@ export const logEventAnalytics = {
     moduleId?: string
     homeEntryId?: string
     searchId?: string
+    originDetail?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE }, params),
   logConsultVenueMap: ({ from, searchId }: { from: Referrals; searchId?: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_MAP }, { from, searchId }),
@@ -342,6 +345,13 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED }, params),
   logExtendSearchRadiusClicked: (searchId?: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.EXTEND_SEARCH_RADIUS_CLICKED }, { searchId }),
+  logFeatureFeedbackClicked: (params: {
+    featureName: string
+    feedbackResponse: 'Oui' | 'Non'
+    from: Referrals
+    entryId?: string
+    venueId?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.FEATURE_FEEDBACK_CLICKED }, params),
   logGoToProfil: ({ from, offerId }: { from: string; offerId: number }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.GO_TO_PROFIL },

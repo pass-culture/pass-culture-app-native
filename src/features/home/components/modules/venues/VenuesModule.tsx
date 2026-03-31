@@ -3,6 +3,7 @@ import { ViewToken } from 'react-native'
 import { useTheme } from 'styled-components'
 import { styled } from 'styled-components/native'
 
+import { ReactionTypeEnum } from 'api/gen'
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
 import { ModuleData } from 'features/home/types'
 import { FeedBack } from 'features/reactions/components/FeedBack'
@@ -46,6 +47,7 @@ export const VenuesModule = ({
   const moduleName = displayParameters.title
   const { playlistItems = [] } = data ?? { playlistItems: [] }
   const { designSystem } = useTheme()
+  const isExclusiveVolunteering = displayParameters.isExclusiveVolunteering ?? false
   const renderItem: CustomListRenderItem<VenueHit> = useCallback(
     ({ item, width, height }) => (
       <VenueTile
@@ -55,13 +57,13 @@ export const VenuesModule = ({
         venue={item}
         width={width}
         height={height}
+        originDetail={isExclusiveVolunteering ? 'volunteeringPlaylist' : undefined}
       />
     ),
-    [moduleName, moduleId, homeEntryId]
+    [moduleName, moduleId, homeEntryId, isExclusiveVolunteering]
   )
 
   const shouldModuleBeDisplayed = playlistItems.length > displayParameters.minOffers
-  const isExclusiveVolunteering = displayParameters.isExclusiveVolunteering ?? false
   const showNewTag = enableVolunteerNewTag && isExclusiveVolunteering
   const showFeedback = enableVolunteerFeedback && isExclusiveVolunteering
 
@@ -77,6 +79,16 @@ export const VenuesModule = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldModuleBeDisplayed])
+
+  const handleOnLogFeedback = (type: ReactionTypeEnum) => {
+    const feedbackResponse = type === ReactionTypeEnum.LIKE ? 'Oui' : 'Non'
+    void analytics.logFeatureFeedbackClicked({
+      featureName: 'volunteer',
+      feedbackResponse,
+      from: 'home',
+      entryId: homeEntryId,
+    })
+  }
 
   if (!shouldModuleBeDisplayed) return null
 
@@ -108,9 +120,7 @@ export const VenuesModule = ({
           likeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
           dislikeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
           title="Le bénévolat sur le pass t’intéresse t-il&nbsp;?"
-          // TODO(PC-40467): add tracking
-          // eslint-disable-next-line @typescript-eslint/no-empty-function
-          onLogReaction={() => {}}
+          onLogReaction={handleOnLogFeedback}
         />
       ) : null}
     </Container>
