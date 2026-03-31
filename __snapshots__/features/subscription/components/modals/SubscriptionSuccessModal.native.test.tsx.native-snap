@@ -120,7 +120,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                 "top": "auto",
               },
               {
-                "margin": "auto",
+                "justifyContent": "flex-end",
+                "margin": 0,
               },
             ],
           ],
@@ -158,7 +159,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -359,6 +360,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -803,7 +805,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                 "top": "auto",
               },
               {
-                "margin": "auto",
+                "justifyContent": "flex-end",
+                "margin": 0,
               },
             ],
           ],
@@ -841,7 +844,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -1042,6 +1045,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -1486,7 +1490,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                 "top": "auto",
               },
               {
-                "margin": "auto",
+                "justifyContent": "flex-end",
+                "margin": 0,
               },
             ],
           ],
@@ -1524,7 +1529,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -1725,6 +1730,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -2169,7 +2175,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                 "top": "auto",
               },
               {
-                "margin": "auto",
+                "justifyContent": "flex-end",
+                "margin": 0,
               },
             ],
           ],
@@ -2207,7 +2214,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -2408,6 +2415,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -2852,7 +2860,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                 "top": "auto",
               },
               {
-                "margin": "auto",
+                "justifyContent": "flex-end",
+                "margin": 0,
               },
             ],
           ],
@@ -2890,7 +2899,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -3091,6 +3100,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -3535,7 +3545,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                 "top": "auto",
               },
               {
-                "margin": "auto",
+                "justifyContent": "flex-end",
+                "margin": 0,
               },
             ],
           ],
@@ -3573,7 +3584,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -3774,6 +3785,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {

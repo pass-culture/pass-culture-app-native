@@ -360,7 +360,7 @@ exports[`PersonalData should render personal data success 1`] = `
                 rosa.bonheur@gmail.com
               </Text>
               <View
-                accessibilityLabel="Modifier e-mail"
+                accessibilityLabel="Modifier l’e-mail"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -416,7 +416,7 @@ exports[`PersonalData should render personal data success 1`] = `
                     },
                   ]
                 }
-                testID="Modifier e-mail"
+                testID="Modifier l’e-mail"
               >
                 <View
                   gap={8}
@@ -539,7 +539,7 @@ exports[`PersonalData should render personal data success 1`] = `
                 +33685974563
               </Text>
               <View
-                accessibilityLabel="Modifier numéro de téléphone"
+                accessibilityLabel="Modifier le numéro de téléphone"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -595,7 +595,7 @@ exports[`PersonalData should render personal data success 1`] = `
                     },
                   ]
                 }
-                testID="Modifier numéro de téléphone"
+                testID="Modifier le numéro de téléphone"
               >
                 <View
                   gap={8}
@@ -718,7 +718,7 @@ exports[`PersonalData should render personal data success 1`] = `
                 ************
               </Text>
               <View
-                accessibilityLabel="Modifier mot de passe"
+                accessibilityLabel="Modifier le mot de passe"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -774,7 +774,7 @@ exports[`PersonalData should render personal data success 1`] = `
                     },
                   ]
                 }
-                testID="Modifier mot de passe"
+                testID="Modifier le mot de passe"
               >
                 <View
                   gap={8}

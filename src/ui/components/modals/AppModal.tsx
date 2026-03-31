@@ -60,8 +60,8 @@ type Props = {
 } & ModalIconProps &
   Pick<ViewProps, 'onLayout'>
 
-// Without this, the margin is recomputed with arbitrary values
-const styles = StyleSheet.create({ modal: { margin: 'auto' } })
+// Keep modal sheet flush with screen edges on mobile.
+const styles = StyleSheet.create({ modal: { margin: 0, justifyContent: 'flex-end' } })
 
 const MAX_HEIGHT = 650
 const DESKTOP_FULLSCREEN_RATIO = 0.75
@@ -328,6 +328,7 @@ const SpacerBetweenHeaderAndContent = styled.View(({ theme }) => ({
 
 const ScrollViewContainer = styled.View.attrs<{ backdropColor?: string }>(({ theme }) => ({
   backdropColor: theme.designSystem.color.background.overlay,
+  marginBottom: theme.designSystem.size.spacing.xxxxl,
 }))<{ paddingBottom: number; modalSpacing?: ModalSpacing }>(({ paddingBottom, modalSpacing }) => ({
   width: '100%', // do not use `flex: 1` here if you want full width
   maxWidth: getSpacing(120),

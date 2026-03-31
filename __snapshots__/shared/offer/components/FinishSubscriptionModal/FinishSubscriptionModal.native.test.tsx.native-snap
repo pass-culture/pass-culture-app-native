@@ -120,7 +120,8 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
                 "top": "auto",
               },
               {
-                "margin": "auto",
+                "justifyContent": "flex-end",
+                "margin": 0,
               },
             ],
           ],
@@ -158,7 +159,7 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -360,6 +361,7 @@ pour réserver cette offre
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -677,7 +679,8 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
                 "top": "auto",
               },
               {
-                "margin": "auto",
+                "justifyContent": "flex-end",
+                "margin": 0,
               },
             ],
           ],
@@ -715,7 +718,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -917,6 +920,7 @@ pour réserver cette offre
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -1234,7 +1238,8 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
                 "top": "auto",
               },
               {
-                "margin": "auto",
+                "justifyContent": "flex-end",
+                "margin": 0,
               },
             ],
           ],
@@ -1272,7 +1277,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -1474,6 +1479,7 @@ pour réserver cette offre
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {

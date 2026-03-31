@@ -87,9 +87,9 @@ exports[`ShareAppModalVersionB should match snapshot 1`] = `
         "alignItems": "center",
         "bottom": 0,
         "flex": 1,
-        "justifyContent": "center",
+        "justifyContent": "flex-end",
         "left": 0,
-        "margin": "auto",
+        "margin": 0,
         "position": "absolute",
         "right": 0,
         "top": "auto",
@@ -121,7 +121,7 @@ exports[`ShareAppModalVersionB should match snapshot 1`] = `
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 429,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -315,6 +315,7 @@ exports[`ShareAppModalVersionB should match snapshot 1`] = `
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={5}
         style={
           {
