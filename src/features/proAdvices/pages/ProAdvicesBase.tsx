@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useRef } from 'react'
+import React, { FunctionComponent, PropsWithChildren, useCallback, useRef } from 'react'
 import { FlatList } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { styled, useTheme } from 'styled-components/native'
@@ -14,14 +14,15 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
+import { getSpacing } from 'ui/theme'
 
-type Props = {
+type Props = PropsWithChildren<{
   title: string
   advices: AdviceCardData[]
   goBack: () => void
   id?: number
   thumbnailHeight?: number
-}
+}>
 
 export const ProAdvicesBase: FunctionComponent<Props> = ({
   title,
@@ -29,6 +30,7 @@ export const ProAdvicesBase: FunctionComponent<Props> = ({
   goBack,
   id,
   thumbnailHeight,
+  children,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { headerTransition, onScroll } = useOpacityTransition()
@@ -62,38 +64,39 @@ export const ProAdvicesBase: FunctionComponent<Props> = ({
   return (
     <React.Fragment>
       <AdvicesWebMetaHeader title={title} />
-      <AdvicesHeader
-        headerTransition={headerTransition}
-        title="Les avis du pro"
-        handleGoBack={goBack}
-      />
-
-      <StyledAdviceCardList
-        data={advices}
-        horizontal={false}
-        separatorSize={6}
-        headerComponent={
-          <AdviceCardListHeader
-            title={title}
-            buttonWording="Qui écrit les avis des pros&nbsp;?"
-            onPressMoreInfo={showModal}
-          />
-        }
-        ref={advicesListRef}
-        onScroll={onScroll}
-        contentContainerStyle={{
-          paddingTop: headerHeight,
-          ...(isDesktopViewport
-            ? { paddingBottom: headerHeight }
-            : {
-                paddingBottom: designSystem.size.spacing.xxxl,
-                marginTop: designSystem.size.spacing.l,
-                marginHorizontal: contentPage.marginHorizontal,
-              }),
-        }}
-        onLayout={handleLayout}
-        thumbnailHeight={thumbnailHeight}
-      />
+      <AdvicesHeader headerTransition={headerTransition} title={title} handleGoBack={goBack} />
+      <Container>
+        {children}
+        <StyledAdviceCardList
+          data={advices}
+          horizontal={false}
+          separatorSize={6}
+          headerComponent={
+            <AdviceCardListHeader
+              title={`Les ${advices.length} avis des pros`}
+              buttonWording="Qui écrit les avis des pros&nbsp;?"
+              onPressMoreInfo={showModal}
+            />
+          }
+          ref={advicesListRef}
+          onScroll={onScroll}
+          contentContainerStyle={{
+            paddingTop: headerHeight,
+            ...(isDesktopViewport
+              ? {
+                  paddingBottom: headerHeight,
+                  marginHorizontal: children ? undefined : contentPage.marginHorizontal,
+                }
+              : {
+                  paddingBottom: designSystem.size.spacing.xxxl,
+                  marginTop: designSystem.size.spacing.l,
+                  marginHorizontal: contentPage.marginHorizontal,
+                }),
+          }}
+          onLayout={handleLayout}
+          thumbnailHeight={thumbnailHeight}
+        />
+      </Container>
 
       <AdvicesWritersModal
         closeModal={hideModal}
@@ -106,7 +109,12 @@ export const ProAdvicesBase: FunctionComponent<Props> = ({
   )
 }
 
-const StyledAdviceCardList = styled(AdviceCardList)(({ theme }) => ({
+const Container = styled.View({
   flex: 1,
-  marginHorizontal: theme.isDesktopViewport ? theme.designSystem.size.spacing.xl : undefined,
-}))
+  flexDirection: 'row',
+  columnGap: getSpacing(18),
+})
+
+const StyledAdviceCardList = styled(AdviceCardList)({
+  flex: 1,
+})

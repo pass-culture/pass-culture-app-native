@@ -11,6 +11,7 @@ export const proAdvicesFixture = [
     venueName: 'The Best Place',
     publicationDatetime: '09/03/2026',
     venueThumbUrl: 'url',
+    distance: 500,
   },
   {
     author: 'Bérangère',
