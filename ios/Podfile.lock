@@ -2893,7 +2893,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - RNReanimated (4.1.5):
+  - RNReanimated (4.1.7):
     - boost
     - DoubleConversion
     - fast_float
