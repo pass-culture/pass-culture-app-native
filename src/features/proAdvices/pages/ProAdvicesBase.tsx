@@ -20,9 +20,16 @@ type Props = {
   advices: AdviceCardData[]
   goBack: () => void
   id?: number
+  thumbnailHeight?: number
 }
 
-export const ProAdvicesBase: FunctionComponent<Props> = ({ title, advices, goBack, id }) => {
+export const ProAdvicesBase: FunctionComponent<Props> = ({
+  title,
+  advices,
+  goBack,
+  id,
+  thumbnailHeight,
+}) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { headerTransition, onScroll } = useOpacityTransition()
   const { visible, showModal, hideModal } = useModal(false)
@@ -85,6 +92,7 @@ export const ProAdvicesBase: FunctionComponent<Props> = ({ title, advices, goBac
               }),
         }}
         onLayout={handleLayout}
+        thumbnailHeight={thumbnailHeight}
       />
 
       <AdvicesWritersModal

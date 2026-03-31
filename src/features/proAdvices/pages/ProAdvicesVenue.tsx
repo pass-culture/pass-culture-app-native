@@ -1,6 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 
+import { OFFER_ADVICE_THUMBNAIL_HEIGHT } from 'features/advices/constants'
 import { useVenueProAdvicesQuery } from 'features/advices/queries/useVenueProAdvicesQuery'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -29,5 +30,13 @@ export const ProAdvicesVenue: FunctionComponent = () => {
 
   const title = `Les ${nbAdvices} avis par “${venue.name}”`
 
-  return <ProAdvicesBase title={title} advices={advices ?? []} goBack={goBack} id={offerId} />
+  return (
+    <ProAdvicesBase
+      title={title}
+      advices={advices ?? []}
+      goBack={goBack}
+      id={offerId}
+      thumbnailHeight={OFFER_ADVICE_THUMBNAIL_HEIGHT}
+    />
+  )
 }
