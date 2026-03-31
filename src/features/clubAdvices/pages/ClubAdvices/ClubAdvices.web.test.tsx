@@ -66,7 +66,7 @@ describe('ClubAdvices', () => {
 
         expect(await screen.findByText('Tous les avis du ciné club')).toBeInTheDocument()
         expect(screen.getByText('Sous les étoiles de Paris - VF')).toBeInTheDocument()
-        expect(screen.getByText('Dès 5,00 €')).toBeInTheDocument()
+        expect(screen.getByText('5,00 €')).toBeInTheDocument()
         expect(screen.getAllByTestId(/advice-*/).length).toBeGreaterThan(0)
       })
 
