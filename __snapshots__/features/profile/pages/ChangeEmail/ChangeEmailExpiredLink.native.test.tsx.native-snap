@@ -89,18 +89,12 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
       {
         "flexGrow": 1,
         "justifyContent": "space-between",
-      }
-    }
-    showsVerticalScrollIndicator={false}
-    style={
-      {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
+    showsVerticalScrollIndicator={false}
+    style={{}}
   >
     <View>
       <View
@@ -112,6 +106,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
         }
       />
       <View
+        flexValue={1}
         style={
           {
             "flexBasis": 0,
@@ -122,6 +117,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
         }
       >
         <View
+          flexValue={1}
           marginVertical={0}
           style={
             {
@@ -202,7 +198,6 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
               "alignItems": "center",
               "gap": 16,
               "marginBottom": 40,
-              "marginTop": 0,
             }
           }
         >
@@ -552,18 +547,12 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
       {
         "flexGrow": 1,
         "justifyContent": "space-between",
-      }
-    }
-    showsVerticalScrollIndicator={false}
-    style={
-      {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
+    showsVerticalScrollIndicator={false}
+    style={{}}
   >
     <View>
       <View
@@ -575,6 +564,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
         }
       />
       <View
+        flexValue={1}
         style={
           {
             "flexBasis": 0,
@@ -585,6 +575,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
         }
       >
         <View
+          flexValue={1}
           marginVertical={0}
           style={
             {
@@ -665,7 +656,6 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
               "alignItems": "center",
               "gap": 16,
               "marginBottom": 40,
-              "marginTop": 0,
             }
           }
         >

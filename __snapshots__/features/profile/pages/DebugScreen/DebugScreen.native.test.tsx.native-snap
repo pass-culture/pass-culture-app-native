@@ -463,7 +463,7 @@ exports[`DebugScreen should render correctly 1`] = `
                       }
                     }
                   >
-                    Non renseigné
+                    100%
                   </Text>
                 </Text>
                 <Text

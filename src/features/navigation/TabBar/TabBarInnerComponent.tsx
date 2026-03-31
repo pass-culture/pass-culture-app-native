@@ -7,7 +7,7 @@ import { menu } from 'features/navigation/TabBar/menu'
 import { TabBarBadge } from 'features/navigation/TabBar/TabBarBadge'
 import { TabBarTitle } from 'features/navigation/TabBar/TabBarTitle'
 import { TabInnerComponentProps } from 'features/navigation/TabBar/TabStackNavigatorTypes'
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
 
 export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
@@ -21,12 +21,12 @@ export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
 
   const accessibilityLabel = menu[tabName].accessibilityLabel
 
-  const title = useFontScaleValue({
+  const title = useMobileFontScaleToDisplay({
     default: <TabBarTitle selected={isSelected} displayName={menu[tabName].displayName} />,
     at200PercentZoom: null,
   })
 
-  const iconSize = useFontScaleValue({
+  const iconSize = useMobileFontScaleToDisplay({
     default: icons.sizes.small,
     at200PercentZoom: icons.sizes.standard,
   })

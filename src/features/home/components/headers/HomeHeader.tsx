@@ -7,7 +7,7 @@ import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
@@ -21,7 +21,7 @@ export const HomeHeader: FunctionComponent = function () {
   const { isDesktopViewport, designSystem } = useTheme()
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
-  const numberOfLines = useFontScaleValue({ default: 2, at200PercentZoom: 3 })
+  const numberOfLines = useMobileFontScaleToDisplay({ default: 2, at200PercentZoom: 3 })
   const height = designSystem.size.spacing.xl
 
   const Header = useMemo(() => {

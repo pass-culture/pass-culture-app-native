@@ -9,7 +9,7 @@ import { ContentTypes } from 'libs/contentful/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/LocationWrapper'
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { AIFakeDoorModal } from 'shared/AIFakeDoorModal/AIFakeDoorModal'
 import { CategoryButton } from 'shared/categoryButton/CategoryButton'
 import { useModal } from 'ui/components/modals/useModal'
@@ -39,7 +39,7 @@ export const CategoryListModule = ({
   index,
   homeEntryId,
 }: CategoryListProps) => {
-  const mobileMinWidth = useFontScaleValue({
+  const mobileMinWidth = useMobileFontScaleToDisplay({
     default: MOBILE_MIN_WIDTH,
     at200PercentZoom: MOBILE_MIN_WIDTH_WHEN_FONT_ZOOMED,
   })

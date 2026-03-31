@@ -198,18 +198,12 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
       {
         "flexGrow": 1,
         "justifyContent": "space-between",
-      }
-    }
-    showsVerticalScrollIndicator={false}
-    style={
-      {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
+    showsVerticalScrollIndicator={false}
+    style={{}}
   >
     <View>
       <View
@@ -221,6 +215,7 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
         }
       />
       <View
+        flexValue={1}
         style={
           {
             "flexBasis": 0,
@@ -231,6 +226,7 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
         }
       >
         <View
+          flexValue={1}
           marginVertical={0}
           style={
             {
@@ -475,7 +471,6 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
               "alignItems": "center",
               "gap": 16,
               "marginBottom": 40,
-              "marginTop": 0,
             }
           }
         >

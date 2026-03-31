@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { Slider } from 'ui/components/inputs/Slider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Typo } from 'ui/theme'
@@ -24,7 +24,7 @@ export const LocationSearchFilters = ({
 
   const formatKm = (km: number) => `${km}\u00a0km`
   const { sliderLength } = useGetFullscreenModalSliderLength(false)
-  const marginRight = useFontScaleValue({ default: 0, at200PercentZoom: getSpacing(30) })
+  const marginRight = useMobileFontScaleToDisplay({ default: 0, at200PercentZoom: getSpacing(30) })
 
   return (
     <ViewGap gap={2}>

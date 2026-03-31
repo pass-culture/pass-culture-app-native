@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { formatDistanceDate } from 'libs/parsers/formatDistanceDate'
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { Typo } from 'ui/theme'
 
 type Props = {
@@ -23,9 +23,12 @@ export const OfferCaption: FC<Props> = ({
   distance,
   width,
 }: Props) => {
-  const categoryLabelNumberOfLines = useFontScaleValue({ default: 1, at200PercentZoom: 3 })
-  const nameNumberOfLines = useFontScaleValue({ default: 2, at200PercentZoom: 4 })
-  const distanceDateNumberOfLines = useFontScaleValue({ default: 1, at200PercentZoom: 4 })
+  const categoryLabelNumberOfLines = useMobileFontScaleToDisplay({
+    default: 1,
+    at200PercentZoom: 3,
+  })
+  const nameNumberOfLines = useMobileFontScaleToDisplay({ default: 2, at200PercentZoom: 4 })
+  const distanceDateNumberOfLines = useMobileFontScaleToDisplay({ default: 1, at200PercentZoom: 4 })
 
   const distanceDate = formatDistanceDate(width, distance, date)
 

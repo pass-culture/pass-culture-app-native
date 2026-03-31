@@ -9,6 +9,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { copyToClipboard } from 'libs/copyToClipboard/copyToClipboard'
 import { env } from 'libs/environment/env'
+import { useZoomInPercent } from 'shared/accessibility/helpers/zoomHelpers'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
@@ -27,9 +28,8 @@ export const DebugScreen = () => {
   const version = useVersion()
   const webCommitHash = isWeb ? `-${String(env.COMMIT_HASH)}` : ''
   const fullVersion = `${version}${webCommitHash}`
-  const zoomInPercent = deviceInfo?.screenZoomLevel
-    ? `${Math.round(deviceInfo.screenZoomLevel * 100)}%`
-    : undefined
+
+  const deviceZoom = useZoomInPercent()
 
   const undefinedValue = 'Non renseigné'
   const debugData = [
@@ -38,7 +38,7 @@ export const DebugScreen = () => {
     { label: 'Device model', value: deviceInfo?.source ?? undefinedValue },
     { label: 'Device OS', value: deviceInfo?.os ?? undefinedValue },
     { label: 'Device resolution', value: deviceInfo?.resolution ?? undefinedValue },
-    { label: 'Device zoom', value: zoomInPercent ?? undefinedValue },
+    { label: 'Device zoom', value: deviceZoom ? `${deviceZoom}%` : undefinedValue },
     { label: 'User ID', value: user?.id ?? undefinedValue },
     { label: 'Device font scale', value: deviceInfo?.fontScale ?? undefinedValue },
     { label: 'User CreditType', value: user?.creditType ?? undefinedValue },
