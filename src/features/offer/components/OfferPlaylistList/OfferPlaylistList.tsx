@@ -146,11 +146,7 @@ export function OfferPlaylistList({
                   navigationMethod: 'push',
                   apiRecoParams: playlist.apiRecoParams,
                   priceDisplay: (item: Offer) =>
-                    getDisplayedPrice(
-                      item.offer.prices,
-                      currency,
-                      euroToPacificFrancRate
-                    ),
+                    getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
                   theme,
                 })}
                 title={playlist.title}

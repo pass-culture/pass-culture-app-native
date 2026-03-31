@@ -69,11 +69,7 @@ export const VenueMapOfferPlaylist = ({
           offerLocation={item._geoloc}
           analyticsFrom="venueMap"
           thumbUrl={item.offer.thumbUrl}
-          price={getDisplayedPrice(
-            item.offer.prices,
-            currency,
-            euroToPacificFrancRate
-          )}
+          price={getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate)}
           width={PLAYLIST_ITEM_WIDTH}
           height={PLAYLIST_ITEM_HEIGHT}
           playlistType={playlistType}

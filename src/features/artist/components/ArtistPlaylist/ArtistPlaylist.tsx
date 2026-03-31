@@ -72,11 +72,7 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
             theme,
             hasSmallLayout: true,
             priceDisplay: (item: Offer) =>
-              getDisplayedPrice(
-                item.offer.prices,
-                currency,
-                euroToPacificFrancRate
-              ),
+              getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
           })}
           itemWidth={itemWidth}
           itemHeight={itemHeight}

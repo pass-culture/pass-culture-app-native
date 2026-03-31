@@ -34,11 +34,7 @@ export function offerToHeadlineOfferData({
   const { mapping, labelMapping, currency, euroToPacificFrancRate, userLocation } =
     transformParameters
 
-  const displayedPrice = getDisplayedPrice(
-    hitOffer.prices,
-    currency,
-    euroToPacificFrancRate
-  )
+  const displayedPrice = getDisplayedPrice(hitOffer.prices, currency, euroToPacificFrancRate)
 
   return {
     id: objectID,
