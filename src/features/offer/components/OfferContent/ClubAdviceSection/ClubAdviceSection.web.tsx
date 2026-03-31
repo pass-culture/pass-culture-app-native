@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { AdviceCardList } from 'features/advices/components/AdviceCardList/AdviceCardList'
-import { ADVICE_CARD_WIDTH } from 'features/advices/constants'
+import { ADVICE_CARD_WIDTH, OFFER_ADVICE_THUMBNAIL_HEIGHT } from 'features/advices/constants'
 import { ClubAdviceSectionBase } from 'features/offer/components/OfferContent/ClubAdviceSection/ClubAdviceSectionBase'
 import { ClubAdviceSectionProps } from 'features/offer/components/OfferContent/ClubAdviceSection/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -56,12 +56,13 @@ export const ClubAdviceSection = (props: ClubAdviceSectionProps) => {
               <StyledBodyAccentXs>{variantInfo.subtitleSection}</StyledBodyAccentXs>
             ) : null}
           </Gutter>
-          <StyledChronicleCardlist
+          <StyledAdviceCardList
             data={data}
             onSeeMoreButtonPress={onSeeMoreButtonPress}
             shouldTruncate
             cardIcon={variantInfo.Icon}
             tag={variantInfo.tag}
+            thumbnailHeight={OFFER_ADVICE_THUMBNAIL_HEIGHT}
           />
           <ClubButtonContainer>
             <Button
@@ -81,7 +82,7 @@ export const ClubAdviceSection = (props: ClubAdviceSectionProps) => {
   )
 }
 
-const StyledChronicleCardlist = styled(AdviceCardList).attrs(({ theme }) => ({
+const StyledAdviceCardList = styled(AdviceCardList).attrs(({ theme }) => ({
   contentContainerStyle: {
     paddingHorizontal: theme.contentPage.marginHorizontal,
     paddingVertical: theme.contentPage.marginHorizontal,

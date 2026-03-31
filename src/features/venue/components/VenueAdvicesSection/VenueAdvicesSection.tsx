@@ -4,7 +4,7 @@ import { styled } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { AdviceCardList } from 'features/advices/components/AdviceCardList/AdviceCardList'
-import { ADVICE_CARD_WIDTH } from 'features/advices/constants'
+import { ADVICE_CARD_WIDTH, OFFER_ADVICE_THUMBNAIL_HEIGHT } from 'features/advices/constants'
 import { AdviceCardData } from 'features/advices/types'
 import { FeedBack } from 'features/reactions/components/FeedBack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -53,6 +53,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
         data={advicesCardData}
         shouldTruncate
         onSeeMoreButtonPress={onPressAdviceCardSeeMore}
+        thumbnailHeight={OFFER_ADVICE_THUMBNAIL_HEIGHT}
       />
       {shouldDisplayAllAdvicesButton ? (
         <Gutter>

@@ -9,6 +9,7 @@ import { AdviceCardList } from 'features/advices/components/AdviceCardList/Advic
 import { AdviceCardListHeader } from 'features/advices/components/AdviceCardListHeader/AdviceCardListHeader'
 import { AdvicesHeader } from 'features/advices/components/AdvicesHeader/AdvicesHeader'
 import { AdvicesWebMetaHeader } from 'features/advices/components/AdvicesWebMetaHeader/AdvicesWebMetaHeader'
+import { OFFER_ADVICE_THUMBNAIL_HEIGHT } from 'features/advices/constants'
 import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
 import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -114,6 +115,7 @@ export const ClubAdvicesBase: FunctionComponent<Props> = ({
           onLayout={handleLayout}
           cardIcon={variantInfo.Icon}
           tag={variantInfo.tag}
+          thumbnailHeight={OFFER_ADVICE_THUMBNAIL_HEIGHT}
         />
       </FullFlexRow>
       <AdvicesWritersModal
