@@ -288,7 +288,7 @@
     "eslint-plugin-typescript-sort-keys": "^2.3.0",
     "eslint-plugin-unused-imports": "^3.0.0",
     "firebase-admin": "^13.4.0",
-    "firebase-tools": "^15.10.1",
+    "firebase-tools": "^15.12.0",
     "hot-updater": "^0.20.11",
     "husky": "^9.1.7",
     "jest": "^30.0.5",
@@ -343,6 +343,7 @@
     "simple-git": "3.32.3",
     "node-forge": "1.4.0",
     "undici": "6.24.1",
+    "tar": "7.5.11",
     "react-native-maps@1.24.2": "patch:react-native-maps@npm%3A1.24.2#./.yarn/patches/react-native-maps-npm-1.24.2-83a01f59cc.patch"
   },
   "exports": {
