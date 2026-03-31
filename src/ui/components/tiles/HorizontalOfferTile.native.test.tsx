@@ -312,6 +312,55 @@ describe('HorizontalOfferTile component', () => {
       })
     })
 
+    describe('price display', () => {
+      it('should display a single price', async () => {
+        const offerWithSinglePrice = {
+          ...mockOffer,
+          offer: { ...mockOffer.offer, prices: [1500] },
+        }
+        renderHorizontalOfferTile({ ...defaultProps, offer: offerWithSinglePrice })
+
+        expect(await screen.findByText('15 €')).toBeOnTheScreen()
+      })
+
+      it('should display "Dès" prefix for multiple prices', async () => {
+        const offerWithMultiplePrices = {
+          ...mockOffer,
+          offer: {
+            ...mockOffer.offer,
+            prices: [1000, 2000, 3000],
+            subcategoryId: SubcategoryIdEnum.CONCERT,
+          },
+        }
+        renderHorizontalOfferTile({ ...defaultProps, offer: offerWithMultiplePrices })
+
+        expect(await screen.findByText('Dès 10 €')).toBeOnTheScreen()
+      })
+
+      it('should display "Gratuit" for free offers', async () => {
+        const freeOffer = {
+          ...mockOffer,
+          offer: { ...mockOffer.offer, prices: [0] },
+        }
+        renderHorizontalOfferTile({ ...defaultProps, offer: freeOffer })
+
+        expect(await screen.findByText('Gratuit')).toBeOnTheScreen()
+      })
+
+      it('should not display price when price prop is empty string', async () => {
+        render(
+          reactQueryProviderHOC(
+            <HorizontalOfferTile {...defaultProps} price="" />
+          )
+        )
+
+        await screen.findByText('La nuit des temps')
+
+        expect(screen.queryByText('0,28 €')).not.toBeOnTheScreen()
+        expect(screen.queryByText('Gratuit')).not.toBeOnTheScreen()
+      })
+    })
+
     describe('coming soon offer', () => {
       const bookingAllowedDatetime = 1753886400 // '2025-07-30T14:00:00+02:00'
       const mockComingSoonOffer = {

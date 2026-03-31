@@ -2,11 +2,7 @@ import { VenueProAdvice } from 'api/gen'
 import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { Position } from 'libs/location/location'
 import { formatDistance } from 'libs/parsers/formatDistance'
-import {
-  formatStartPrice,
-  getDisplayedPrice,
-  getIfPricesShouldBeFixed,
-} from 'libs/parsers/getDisplayedPrice'
+import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
@@ -41,8 +37,7 @@ export function offerToHeadlineOfferData({
   const displayedPrice = getDisplayedPrice(
     hitOffer.prices,
     currency,
-    euroToPacificFrancRate,
-    getIfPricesShouldBeFixed(hitOffer.subcategoryId) ? formatStartPrice : undefined
+    euroToPacificFrancRate
   )
 
   return {

@@ -8,11 +8,7 @@ import { renderInteractionTag } from 'features/offer/components/InteractionTag/I
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
-import {
-  formatStartPrice,
-  getDisplayedPrice,
-  getIfPricesShouldBeFixed,
-} from 'libs/parsers/getDisplayedPrice'
+import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -76,8 +72,7 @@ export const VenueMapOfferPlaylist = ({
           price={getDisplayedPrice(
             item.offer.prices,
             currency,
-            euroToPacificFrancRate,
-            getIfPricesShouldBeFixed(item.offer.subcategoryId) ? undefined : formatStartPrice
+            euroToPacificFrancRate
           )}
           width={PLAYLIST_ITEM_WIDTH}
           height={PLAYLIST_ITEM_HEIGHT}

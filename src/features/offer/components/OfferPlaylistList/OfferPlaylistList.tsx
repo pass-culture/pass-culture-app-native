@@ -13,11 +13,7 @@ import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/u
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
-import {
-  formatStartPrice,
-  getDisplayedPrice,
-  getIfPricesShouldBeFixed,
-} from 'libs/parsers/getDisplayedPrice'
+import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -153,10 +149,7 @@ export function OfferPlaylistList({
                     getDisplayedPrice(
                       item.offer.prices,
                       currency,
-                      euroToPacificFrancRate,
-                      getIfPricesShouldBeFixed(item.offer.subcategoryId)
-                        ? undefined
-                        : formatStartPrice
+                      euroToPacificFrancRate
                     ),
                   theme,
                 })}
