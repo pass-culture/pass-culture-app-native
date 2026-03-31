@@ -84,6 +84,9 @@ export const Venue: FunctionComponent = () => {
   const enableNewTagProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
   const enableVolunteer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER)
   const enableVolunteerNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_NEW_TAG)
+  const enableVolunteerFeedback = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK
+  )
   const {
     visible: searchInVenueModalVisible,
     hideModal: hideSearchInVenueModal,
@@ -186,6 +189,7 @@ export const Venue: FunctionComponent = () => {
         venue={venue}
         enableVolunteer={enableVolunteer}
         enableVolunteerNewTag={enableVolunteerNewTag}
+        enableVolunteerFeedback={enableVolunteerFeedback}
       />
       <ViewGap gap={isDesktopViewport ? 10 : 6}>
         <Animated.View layout={Layout.duration(200)}>

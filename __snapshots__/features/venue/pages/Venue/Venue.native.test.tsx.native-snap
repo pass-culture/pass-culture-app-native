@@ -1154,7 +1154,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                           <View
                             style={
                               {
-                                "marginHorizontal": 24,
+                                "flexShrink": 1,
+                                "marginLeft": 24,
+                                "marginRight": 24,
                               }
                             }
                             testID="playlistTitle"
@@ -4819,7 +4821,9 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           <View
                             style={
                               {
-                                "marginHorizontal": 24,
+                                "flexShrink": 1,
+                                "marginLeft": 24,
+                                "marginRight": 24,
                               }
                             }
                             testID="playlistTitle"

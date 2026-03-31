@@ -2004,18 +2004,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@happy-dom/jest-environment@npm:^20.0.10":
-  version: 20.0.10
-  resolution: "@happy-dom/jest-environment@npm:20.0.10"
+"@happy-dom/jest-environment@npm:^20.8.9":
+  version: 20.8.9
+  resolution: "@happy-dom/jest-environment@npm:20.8.9"
   dependencies:
-    happy-dom: ^20.0.10
+    happy-dom: ^20.8.9
   peerDependencies:
     "@jest/environment": ">=25.0.0"
     "@jest/fake-timers": ">=25.0.0"
     "@jest/types": ">=25.0.0"
     jest-mock: ">=25.0.0"
     jest-util: ">=25.0.0"
-  checksum: 9f836669d1d292d8c9562084570e406eefc404813994f84beee8e5390eb8c07e645da57337a2ac64581037897a6890588cce8a5d0822a13b6dc11ea23f0391bf
+  checksum: 5c16692caa7834daeda4b34ef38e57051a6f9fb29d1d924a8e7fb1cd2aa00f700955bcc5c147b4ebb713e2447887eff2f752e2603443096a1c191d7ba1e79dbb
   languageName: node
   linkType: hard
 
@@ -2501,7 +2501,7 @@ __metadata:
     "@babel/core": ^7.28.6
     "@babel/preset-env": ^7.16.11
     "@babel/preset-typescript": ^7.27.1
-    "@happy-dom/jest-environment": ^20.0.10
+    "@happy-dom/jest-environment": ^20.8.9
     "@swc/core": ^1.12.7
     "@types/express": ^4.17.13
     "@types/jest": ^27.4.1
@@ -2527,7 +2527,7 @@ __metadata:
     node-dev: ^8.0.0
     nodemon: ^2.0.15
     prettier: ^2.6.2
-    ts-jest: ^29.4.5
+    ts-jest: ^29.4.6
     ts-node: ^10.7.0
     typescript: ^4.9.5
   languageName: unknown
@@ -2951,12 +2951,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.0.0":
-  version: 20.19.21
-  resolution: "@types/node@npm:20.19.21"
+"@types/node@npm:>=20.0.0":
+  version: 25.5.0
+  resolution: "@types/node@npm:25.5.0"
   dependencies:
-    undici-types: ~6.21.0
-  checksum: 79eeb55b109a54e212d963870d0a9184bbc1b6ed07a26a52d9aa87c15f594648d3832876b37635e5fb5c6206acd9240209394579d4e6ec0870d1b78cfa4c13d2
+    undici-types: ~7.18.0
+  checksum: ea0908794d5c011f4f2b5d2e93737ae047ff4a9fd1ec6da27e13a1f976d8d0e029830ddf2d4177e00a2601307e8bbc06e7b4cb3e29e889489d42dd44b49c796a
   languageName: node
   linkType: hard
 
@@ -3036,6 +3036,15 @@ __metadata:
   version: 3.0.2
   resolution: "@types/whatwg-mimetype@npm:3.0.2"
   checksum: 30e2599ae02c539a6dd08b58de255aad24a41cdabeebc0293814884f1301f1328443b9915f2e990e4f484fa7f226ca8718991b63d2d387287f898c36390ef856
+  languageName: node
+  linkType: hard
+
+"@types/ws@npm:^8.18.1":
+  version: 8.18.1
+  resolution: "@types/ws@npm:8.18.1"
+  dependencies:
+    "@types/node": "*"
+  checksum: 0331b14cde388e2805af66cad3e3f51857db8e68ed91e5b99750915e96fe7572e58296dc99999331bbcf08f0ff00a227a0bb214e991f53c2a5aca7b0e71173fa
   languageName: node
   linkType: hard
 
@@ -4815,6 +4824,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"entities@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "entities@npm:7.0.1"
+  checksum: 5ee49e52e64eafc63251585f74eae50f259ea2169dbbf5380843dcd97c79bfe430a58e7f34012ab67a8e258f6ef9f92d721d149ffc88c89039e155f1bcf48a53
+  languageName: node
+  linkType: hard
+
 "env-paths@npm:^2.2.0":
   version: 2.2.1
   resolution: "env-paths@npm:2.2.1"
@@ -6039,9 +6055,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"handlebars@npm:^4.7.8":
-  version: 4.7.8
-  resolution: "handlebars@npm:4.7.8"
+"handlebars@npm:^4.7.9":
+  version: 4.7.9
+  resolution: "handlebars@npm:4.7.9"
   dependencies:
     minimist: ^1.2.5
     neo-async: ^2.6.2
@@ -6053,18 +6069,21 @@ __metadata:
       optional: true
   bin:
     handlebars: bin/handlebars
-  checksum: 00e68bb5c183fd7b8b63322e6234b5ac8fbb960d712cb3f25587d559c2951d9642df83c04a1172c918c41bcfc81bfbd7a7718bbce93b893e0135fc99edea93ff
+  checksum: ac39070fc1c3c76a654e4b526383eaf1601976eaa474547b263915b4806977f083600e586ca923709baeed7c82a42640bcc9cc04c37a7efd3fb444f49b8347d6
   languageName: node
   linkType: hard
 
-"happy-dom@npm:^20.0.10":
-  version: 20.0.10
-  resolution: "happy-dom@npm:20.0.10"
+"happy-dom@npm:^20.8.9":
+  version: 20.8.9
+  resolution: "happy-dom@npm:20.8.9"
   dependencies:
-    "@types/node": ^20.0.0
+    "@types/node": ">=20.0.0"
     "@types/whatwg-mimetype": ^3.0.2
+    "@types/ws": ^8.18.1
+    entities: ^7.0.1
     whatwg-mimetype: ^3.0.0
-  checksum: 5403dafcc0e4b93705ae10d8ffa1c9d1d9a07d5a3cad1a942fa287f482148d6ffdadc971ddd31ca2bfbaef6cf12a47f31a0f42e52f135355f44139c36a5de129
+    ws: ^8.18.3
+  checksum: 93a3eb3048189096e67e306e9372d1f604b4a97299fd8e4fda60ea89a62a6f10cfde2b4ef49f0164c3a2baf335e6b263839855a4509f6c525f14fdfe990d2d82
   languageName: node
   linkType: hard
 
@@ -10031,9 +10050,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:^29.4.5":
-  version: 29.4.5
-  resolution: "ts-jest@npm:29.4.5"
+"ts-jest@npm:^29.4.6":
+  version: 29.4.6
+  resolution: "ts-jest@npm:29.4.6"
   dependencies:
     bs-logger: ^0.2.6
     fast-json-stable-stringify: ^2.1.0
@@ -10067,7 +10086,7 @@ __metadata:
       optional: true
   bin:
     ts-jest: cli.js
-  checksum: b2ba677d32bd0024356ab8d43a1b88cb81ecad94be277b111975e626fd37a9ed17fd446a2e3a399a3c8534dcf89ea7c28a4bf4f094b153a4a9972c67b680ad0d
+  checksum: 07ae4102569565ab57036f095152ea75c85032edf15379043ffc8da2dd0e6e93e84d0c50a24e10a5cddacb5ab773df0f3170f02db6c178edd22a5e485bc57dc7
   languageName: node
   linkType: hard
 
@@ -10326,10 +10345,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~6.21.0":
-  version: 6.21.0
-  resolution: "undici-types@npm:6.21.0"
-  checksum: 46331c7d6016bf85b3e8f20c159d62f5ae471aba1eb3dc52fff35a0259d58dcc7d592d4cc4f00c5f9243fa738a11cfa48bd20203040d4a9e6bc25e807fab7ab3
+"undici-types@npm:~7.18.0":
+  version: 7.18.2
+  resolution: "undici-types@npm:7.18.2"
+  checksum: 23da306c8366574adec305b06a8519ab5c7d09e3f5d16c1a98709a34fae17da09ec95198f30f86c00055e02efa8bfcc843e84e8aebeb9b8d6bb3e06afccae07a
   languageName: node
   linkType: hard
 
@@ -10831,6 +10850,21 @@ __metadata:
     utf-8-validate:
       optional: true
   checksum: f9bb062abf54cc8f02d94ca86dcd349c3945d63851f5d07a3a61c2fcb755b15a88e943a63cf580cbdb5b74436d67ef6b67f745b8f7c0814e411379138e1863cb
+  languageName: node
+  linkType: hard
+
+"ws@npm:^8.18.3":
+  version: 8.20.0
+  resolution: "ws@npm:8.20.0"
+  peerDependencies:
+    bufferutil: ^4.0.1
+    utf-8-validate: ">=5.0.2"
+  peerDependenciesMeta:
+    bufferutil:
+      optional: true
+    utf-8-validate:
+      optional: true
+  checksum: 2b31d24a53690770564a033c21ea48390f84d23fbc5abc14b2bbec4e112846f2f3ca66caee769a73fb8bc89ba16b452a6911a553e9742bbc75bccb79e203953e
   languageName: node
   linkType: hard
 
