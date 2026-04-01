@@ -16,6 +16,7 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import { adviceVariantInfoFixture } from 'features/advices/fixtures/adviceVariantInfo.fixture'
+import { proAdvicesFixture } from 'features/advices/fixtures/offerProAdvices.fixture'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState } from 'features/cookies/enums'
 import * as Cookies from 'features/cookies/helpers/useCookies'
@@ -28,6 +29,7 @@ import { CineContentCTAID } from 'features/offer/components/OfferCine/CineConten
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
+import { offerProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/offerProAdvicesToAdviceCardData/offerProAdvicesToAdviceCardData'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
@@ -639,8 +641,8 @@ describe('<OfferContent />', () => {
       })
     })
 
-    describe('Chronicles section', () => {
-      it('should not display chronicles section when there are no chronicles', async () => {
+    describe('Club advices section', () => {
+      it('should not display club advices section when there are no club advices', async () => {
         renderOfferContent({
           offer: {
             ...offerResponseSnap,
@@ -662,7 +664,7 @@ describe('<OfferContent />', () => {
         expect(await screen.findByText('Lire les 3 avis')).toBeOnTheScreen()
       })
 
-      it('should navigate to chronicles page when pressing "Lire les X avis" button', async () => {
+      it('should navigate to club advices page when pressing "Lire les X avis" button', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
@@ -689,7 +691,7 @@ describe('<OfferContent />', () => {
         })
       })
 
-      it('should navigate to chronicles page with anchor on the selected chronicle when pressing "Voir plus" button on a card', async () => {
+      it('should navigate to club advices page with anchor on the selected advice when pressing "Voir plus" button on a card', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
@@ -743,6 +745,30 @@ describe('<OfferContent />', () => {
 
         await waitFor(() => {
           expect(mockRegisterAnchor).toHaveBeenCalledWith('club-advice-section', expect.any(Object))
+        })
+      })
+    })
+
+    describe('Pro advices section', () => {
+      it('should display "Lire les X avis des pros" button', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+          proAdvices: offerProAdvicesToAdviceCardData([...proAdvicesFixture]),
+        })
+
+        expect(await screen.findByText('Lire les 2 avis des pros')).toBeOnTheScreen()
+      })
+
+      it('should navigate to offer pro advices page when pressing "Lire les X avis des pros" button', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+          proAdvices: offerProAdvicesToAdviceCardData([...proAdvicesFixture]),
+        })
+
+        await user.press(await screen.findByText('Lire les 2 avis des pros'))
+
+        expect(mockNavigate).toHaveBeenNthCalledWith(1, 'ProAdvicesOffer', {
+          offerId: 116656,
         })
       })
     })
@@ -849,11 +875,12 @@ function renderOfferContent({
   offer = offerResponseSnap,
   subcategory = mockSubcategory,
   isDesktopViewport,
-  advices,
+  clubAdvices,
+  proAdvices,
 }: RenderOfferContentType) {
   const subtitle = 'Membre du Book Club'
-  const advicesData =
-    advices || offer.chronicles.map((data) => advicePreviewToAdviceCardData(data, subtitle))
+  const clubAdvicesData =
+    clubAdvices || offer.chronicles.map((data) => advicePreviewToAdviceCardData(data, subtitle))
   render(
     reactQueryProviderHOC(
       <NavigationContainer>
@@ -861,7 +888,8 @@ function renderOfferContent({
           offer={offer}
           searchGroupList={subcategoriesDataTest.searchGroups}
           subcategory={subcategory}
-          advices={advicesData}
+          clubAdvices={clubAdvicesData}
+          proAdvices={proAdvices}
           adviceVariantInfo={adviceVariantInfoFixture}
           onShowClubAdviceWritersModal={jest.fn()}
           hasVideoCookiesConsent

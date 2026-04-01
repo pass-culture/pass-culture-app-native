@@ -11,7 +11,7 @@ describe('<AdvicesWritersModal/>', () => {
         <AdvicesWritersModal
           isVisible
           closeModal={jest.fn()}
-          onShowRecoButtonPress={jest.fn()}
+          onButtonPress={jest.fn()}
           modalWording={adviceVariantInfoFixture.modalWording}
           buttonWording={adviceVariantInfoFixture.buttonWording}
         />

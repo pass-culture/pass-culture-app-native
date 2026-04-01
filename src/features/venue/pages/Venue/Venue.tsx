@@ -1,4 +1,4 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
 import { View, ViewToken } from 'react-native'
 import Animated, { Layout } from 'react-native-reanimated'
@@ -9,9 +9,9 @@ import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/
 import { useVenueProAdvicesQuery } from 'features/advices/queries/useVenueProAdvicesQuery'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
-import { proAdvicesToAdviceCardData } from 'features/proAdvices/adapters/proAdvicesToAdviceCardData/proAdvicesToAdviceCardData'
+import { venueProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/venueProAdvicesToAdviceCardData/venueProAdvicesToAdviceCardData'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchInVenueModal } from 'features/search/pages/modals/SearchInVenueModal/SearchInVenueModal'
@@ -41,7 +41,6 @@ import {
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -52,7 +51,6 @@ const VENUE_CTA_HEIGHT_IN_SPACES = 6 + 10 + 6
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenueQuery(params.id)
-  const { navigate } = useNavigation<UseNavigationType>()
 
   const pageTracking = usePageTracking({
     pageName: 'Venue',
@@ -175,13 +173,6 @@ export const Venue: FunctionComponent = () => {
     venue?.activity !== Activity.CINEMA &&
     ((venueOffers && venueOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0))
 
-  const handleOnShowRecoButtonPress = () => {
-    hideAdvicesWritersModal()
-    runAfterInteractionsMobile(() => {
-      navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'venue' })
-    })
-  }
-
   const VenueContentChildren = venue ? (
     <React.Fragment>
       <VenueTopComponent
@@ -203,7 +194,7 @@ export const Venue: FunctionComponent = () => {
             onViewableItemsChanged={handleViewableItemsChanged}
             advicesCardData={
               segment === 'A'
-                ? proAdvicesToAdviceCardData(
+                ? venueProAdvicesToAdviceCardData(
                     getAdvicesWithoutHeadline(advices?.proAdvices, headlineOfferData?.id)
                   )
                 : undefined
@@ -222,9 +213,9 @@ export const Venue: FunctionComponent = () => {
           <AdvicesWritersModal
             closeModal={hideAdvicesWritersModal}
             isVisible={advicesWritersModalVisible}
-            onShowRecoButtonPress={handleOnShowRecoButtonPress}
+            onButtonPress={hideAdvicesWritersModal}
             modalWording={`Les avis des pros sont rédigés par nos partenaires culturels du pass\u00a0: libraires, disquaires, organisateurs de spectacles...\nCes experts partagent leurs coups de coeur pour t‘aider à découvrir des oeuvres qui pourraient te plaire.`}
-            buttonWording="Voir tous les avis des pros"
+            buttonWording="Fermer"
           />
         </View>
       ) : null}

@@ -3076,6 +3076,94 @@ export interface OfferPreviewResponse {
 }
 /**
  * @export
+ * @interface OfferProAdvice
+ */
+export interface OfferProAdvice {
+  /**
+   * @type {string | ModelNull}
+   * @memberof OfferProAdvice
+   */
+  author?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferProAdvice
+   */
+  content: string
+  /**
+   * @type {number | null}
+   * @memberof OfferProAdvice
+   */
+  distance?: number | null
+  /**
+   * @type {string}
+   * @memberof OfferProAdvice
+   */
+  publicationDatetime: string
+  /**
+   * @type {number}
+   * @memberof OfferProAdvice
+   */
+  venueId: number
+  /**
+   * @type {string}
+   * @memberof OfferProAdvice
+   */
+  venueName: string
+  /**
+   * @type {string | null}
+   * @memberof OfferProAdvice
+   */
+  venueThumbUrl?: string | null
+}
+  /**
+ * @export
+ * @interface OfferProAdviceQuery
+ */
+export interface OfferProAdviceQuery {
+  /**
+   * @type {number | null}
+   * @memberof OfferProAdviceQuery
+   */
+  latitude?: number | null
+  /**
+   * @type {number | ModelNull}
+   * @memberof OfferProAdviceQuery
+   */
+  longitude?: number | null
+  /**
+   * @type {number | ModelNull}
+   * @memberof OfferProAdviceQuery
+   */
+  maxContentLength?: number | null
+  /**
+   * @type {number}
+   * @memberof OfferProAdviceQuery
+   */
+  page?: number
+  /**
+   * @type {number}
+   * @memberof OfferProAdviceQuery
+   */
+  resultsPerPage?: number
+}
+/**
+ * @export
+ * @interface OfferProAdvices
+ */
+export interface OfferProAdvices {
+  /**
+   * @type {number}
+   * @memberof OfferProAdvices
+   */
+  nbResults: number
+  /**
+   * @type {Array<OfferProAdvice>}
+   * @memberof OfferProAdvices
+   */
+  proAdvices: Array<OfferProAdvice>
+}
+/**
+ * @export
  * @interface OfferResponse
  */
 export interface OfferResponse {
@@ -5780,7 +5868,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         options: localVarRequestOptions,
       }
     },
-    /**
+        /**
      * @summary offer_chronicles <GET>
      * @param {number} offer_id 
      * @param {*} [options] Override http request option.
@@ -5798,6 +5886,64 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         `{${'offer_id'}}`,
         encodeURIComponent(String(offer_id))
       )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_offer_pro_advices <GET>
+     * @param {number} offer_id 
+     * @param {number} [maxContentLength] 
+     * @param {number} [page] 
+     * @param {number} [resultsPerPage] 
+     * @param {number} [latitude] 
+     * @param {number} [longitude] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1OfferofferIdAdvices(offer_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, latitude?: number, longitude?: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'offer_id' is not null or undefined
+      if (offer_id === null || offer_id === undefined) {
+        throw new RequiredError(
+          'offer_id',
+          'Required parameter offer_id was null or undefined when calling getNativeV1OfferofferIdAdvices.'
+        )
+      }
+      let pathname = `/native/v1/offer/{offer_id}/advices`.replace(
+        `{${'offer_id'}}`,
+        encodeURIComponent(String(offer_id))
+      )
+      const queryParameters: any = {};
+
+        if (maxContentLength != null) {
+            queryParameters['maxContentLength'] = maxContentLength;
+        }
+
+        if (page != null) {
+            queryParameters['page'] = page;
+        }
+
+        if (resultsPerPage != null) {
+            queryParameters['resultsPerPage'] = resultsPerPage;
+        }
+
+        if (latitude != null) {
+            queryParameters['latitude'] = latitude;
+        }
+
+        if (longitude != null) {
+            queryParameters['longitude'] = longitude;
+        }
+
+      const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
+        return `${encodeURIComponent(key)}=${encodeURIComponent(queryParameters[key])}`
+      }).join('&')
+      pathname += encodedQueryParams
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -7674,6 +7820,23 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary get_offer_pro_advices <GET>
+     * @param {number} offer_id 
+     * @param {number} [maxContentLength] 
+     * @param {number} [page] 
+     * @param {number} [resultsPerPage] 
+     * @param {number} [latitude] 
+     * @param {number} [longitude] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1OfferofferIdAdvices(offer_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, latitude?: number, longitude?: number, options?: any): Promise<OfferProAdvices> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OfferofferIdAdvices(offer_id, maxContentLength, page, resultsPerPage, latitude, longitude, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary phone_validation_remaining_attempts <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -8636,6 +8799,23 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1OfferofferIdChronicles(offer_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1OfferofferIdChronicles(offer_id, options)
+  }
+  /**
+    * 
+    * @summary get_offer_pro_advices <GET>
+    * @param {number} offer_id 
+    * @param {number} [maxContentLength] 
+    * @param {number} [page] 
+    * @param {number} [resultsPerPage] 
+    * @param {number} [latitude] 
+    * @param {number} [longitude] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV1OfferofferIdAdvices(offer_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, latitude?: number, longitude?: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1OfferofferIdAdvices(offer_id, maxContentLength, page, resultsPerPage, latitude, longitude, options)
   }
   /**
     * 

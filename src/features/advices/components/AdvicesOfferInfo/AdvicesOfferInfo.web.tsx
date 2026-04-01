@@ -8,7 +8,7 @@ import { OfferImageContainerDimensions } from 'features/offer/types'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Typo } from 'ui/theme'
 
-type ClubAdviceOfferInfoProps = PropsWithChildren<{
+type AdvicesOfferInfoProps = PropsWithChildren<{
   imageUrl: string
   imageDimensions: OfferImageContainerDimensions
   title: string
@@ -17,7 +17,7 @@ type ClubAdviceOfferInfoProps = PropsWithChildren<{
   style?: StyleProp<ViewStyle>
 }>
 
-export const ClubAdviceOfferInfo = ({
+export const AdvicesOfferInfo = ({
   imageUrl,
   title,
   price,
@@ -25,7 +25,7 @@ export const ClubAdviceOfferInfo = ({
   categoryId,
   imageDimensions,
   children,
-}: ClubAdviceOfferInfoProps) => {
+}: AdvicesOfferInfoProps) => {
   return (
     <View style={[style, { maxWidth: imageDimensions.imageStyle.width }]}>
       <View style={imageDimensions.imageStyle}>

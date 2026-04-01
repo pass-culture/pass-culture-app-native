@@ -3,7 +3,7 @@ import { SearchResponse } from 'algoliasearch/lite'
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { useRoute } from '__mocks__/@react-navigation/native'
 import {
   Activity,
   OffersStocksResponseV2,
@@ -179,19 +179,6 @@ describe('<Venue />', () => {
       expect(
         await screen.findByText('Qui écrit les avis\u00a0?', { hidden: true })
       ).toBeOnTheScreen()
-    })
-
-    it('should navigate on thematic home when pressing "Voir tous les avis des pros" button', async () => {
-      renderVenue(venueId)
-
-      await user.press(await screen.findByText('Qui écrit les avis des pros ?'))
-
-      await user.press(await screen.findByText('Voir tous les avis des pros', { hidden: true }))
-
-      expect(navigate).toHaveBeenCalledWith('ThematicHome', {
-        from: 'venue',
-        homeId: '4mlVpAZySUZO6eHazWKZeV',
-      })
     })
 
     it('should display advices section when AB testing segment is A', async () => {

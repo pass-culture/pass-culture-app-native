@@ -2,11 +2,11 @@ import React from 'react'
 import { FlatList } from 'react-native'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { VenueProAdvices, VenueResponse } from 'api/gen'
+import { OfferProAdvices } from 'api/gen'
+import { offerProAdvicesFixture } from 'features/advices/fixtures/offerProAdvices.fixture'
 import * as useGoBack from 'features/navigation/useGoBack'
-import { ProAdvicesVenue } from 'features/proAdvices/pages/ProAdvicesVenue'
-import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
-import { venueProAdvicesFixture } from 'features/venue/fixtures/venueProAdvices.fixture'
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { ProAdvicesOffer } from 'features/proAdvices/pages/ProAdvicesOffer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
@@ -36,31 +36,28 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 const user = userEvent.setup()
 jest.useFakeTimers()
 
-describe('ProAdvicesVenue', () => {
+describe('ProAdvicesOffer', () => {
   beforeAll(() => {
-    useRoute.mockReturnValue({ params: { venueId: venueDataTest.id } })
+    useRoute.mockReturnValue({ params: { offerId: offerResponseSnap.id } })
   })
 
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE])
-    mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(
-      `/v2/venue/${venueDataTest.id}`,
-      venueDataTest
-    )
-    mockServer.getApi<VenueProAdvices>(`/v1/venue/${venueDataTest.id}/advices`, {
-      proAdvices: [...venueProAdvicesFixture.proAdvices],
-      nbResults: venueProAdvicesFixture.nbResults,
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_OFFER])
+    mockServer.getApi(`/v3/offer/${offerResponseSnap.id}`, offerResponseSnap)
+    mockServer.getApi<OfferProAdvices>(`/v1/offer/${offerResponseSnap.id}/advices`, {
+      proAdvices: [...offerProAdvicesFixture.proAdvices],
+      nbResults: offerProAdvicesFixture.nbResults,
     })
   })
 
   it('should display correctly', async () => {
-    render(reactQueryProviderHOC(<ProAdvicesVenue />))
+    render(reactQueryProviderHOC(<ProAdvicesOffer />))
 
-    expect(await screen.findByText('Les 2 avis par “Le Petit Rintintin 1”')).toBeTruthy()
+    expect(await screen.findByText('Les 2 avis des pros')).toBeTruthy()
   })
 
   it('should execute goBack when pressing back button', async () => {
-    render(reactQueryProviderHOC(<ProAdvicesVenue />))
+    render(reactQueryProviderHOC(<ProAdvicesOffer />))
 
     await user.press(await screen.findByLabelText('Revenir en arrière'))
 
@@ -68,7 +65,7 @@ describe('ProAdvicesVenue', () => {
   })
 
   it('should open advices writers modal when pressing "Qui écrit les avis des pros ?" button', async () => {
-    render(reactQueryProviderHOC(<ProAdvicesVenue />))
+    render(reactQueryProviderHOC(<ProAdvicesOffer />))
 
     await user.press(await screen.findByText('Qui écrit les avis des pros ?'))
 
@@ -85,22 +82,22 @@ describe('ProAdvicesVenue', () => {
       hideModal: mockHideModal,
       toggleModal: jest.fn(),
     })
-    render(reactQueryProviderHOC(<ProAdvicesVenue />))
+    render(reactQueryProviderHOC(<ProAdvicesOffer />))
 
     await user.press(await screen.findByText('Fermer'))
 
     expect(mockHideModal).toHaveBeenCalledTimes(1)
   })
 
-  describe('When offer id defined', () => {
+  describe('When venue id defined', () => {
     beforeAll(() => {
-      useRoute.mockReturnValue({ params: { venueId: venueDataTest.id, offerId: 1 } })
+      useRoute.mockReturnValue({ params: { offerId: offerResponseSnap.id, venueId: 1 } })
     })
 
     it('should scroll to selected advice on layout', async () => {
-      render(reactQueryProviderHOC(<ProAdvicesVenue />))
+      render(reactQueryProviderHOC(<ProAdvicesOffer />))
 
-      await screen.findByText('Les 2 avis par “Le Petit Rintintin 1”')
+      await screen.findByText('Les 2 avis des pros')
 
       await act(async () => {
         fireEvent(screen.getByTestId('advice-list'), 'onLayout', mockOnLayout)

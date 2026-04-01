@@ -2,7 +2,7 @@ import React from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { Button, Image as mockImage } from 'react-native'
 
-import { ClubAdviceOfferInfo } from 'features/clubAdvices/components/ClubAdviceOfferInfo/ClubAdviceOfferInfo.web'
+import { AdvicesOfferInfo } from 'features/advices/components/AdvicesOfferInfo/AdvicesOfferInfo.web'
 import { mockOfferImageDimensions } from 'features/offer/fixtures/offerImageDimensions'
 import { render, screen } from 'tests/utils/web'
 
@@ -10,10 +10,10 @@ jest.mock('libs/resizing-image-on-demand/FastImage', () => ({
   FastImage: mockImage,
 }))
 
-describe('ClubAdviceOfferInfo', () => {
+describe('AdvicesOfferInfo', () => {
   it('should render correctly', () => {
     render(
-      <ClubAdviceOfferInfo
+      <AdvicesOfferInfo
         imageUrl="http://image.jpeg"
         price="12€"
         title="lorem ipsum"
@@ -29,7 +29,7 @@ describe('ClubAdviceOfferInfo', () => {
 
   it('should at least render placeholder when there is no image', () => {
     render(
-      <ClubAdviceOfferInfo
+      <AdvicesOfferInfo
         imageUrl=""
         price="12€"
         title="lorem ipsum"
@@ -45,13 +45,13 @@ describe('ClubAdviceOfferInfo', () => {
 
   it('should render correctly with custom children', () => {
     render(
-      <ClubAdviceOfferInfo
+      <AdvicesOfferInfo
         imageUrl="http://image.jpeg"
         price="12€"
         title="lorem ipsum"
         imageDimensions={mockOfferImageDimensions}>
         <Button testID="button" title="button" />
-      </ClubAdviceOfferInfo>
+      </AdvicesOfferInfo>
     )
 
     expect(screen.getByText('12€')).toBeInTheDocument()
