@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
+import { usePreviousRouteName } from 'features/navigation/helpers/usePreviousRouteName'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -78,14 +78,14 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     isLocated
   )
 
-  const previousRoute = usePreviousRoute()
+  const previousRouteName = usePreviousRouteName()
 
   const selectedGridListLayout = useGridListLayout()
 
   const offerTitle = `Les offres${shouldDisplayAccessibilityContent ? ' dans des lieux accessibles' : ''}`
 
   const shouldDisplayVenuesPlaylist =
-    !venue && !!venues?.length && previousRoute?.name !== SearchView.Thematic
+    !venue && !!venues?.length && previousRouteName !== SearchView.Thematic
 
   const onPress = () => {
     void analytics.logActivateGeolocfromSearchResults()

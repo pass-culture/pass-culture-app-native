@@ -3,7 +3,6 @@ import { openInbox } from 'react-native-email-link'
 
 import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -11,8 +10,6 @@ import { render, screen, userEvent } from 'tests/utils'
 
 import { SignupConfirmationEmailSent, faqConfig } from './SignupConfirmationEmailSent'
 
-const mockUsePreviousRoute = usePreviousRoute as jest.MockedFunction<typeof usePreviousRoute>
-jest.mock('features/navigation/helpers/usePreviousRoute')
 jest.mock('features/navigation/helpers/openUrl')
 
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
@@ -32,7 +29,6 @@ jest.useFakeTimers()
 
 describe('<SignupConfirmationEmailSent />', () => {
   beforeEach(() => {
-    mockUsePreviousRoute.mockReturnValue({ name: 'SomeScreen', key: 'key' })
     mockServer.getApi<EmailValidationRemainingResendsResponse>(
       '/v1/email_validation_remaining_resends/john.doe%40gmail.com',
       {
