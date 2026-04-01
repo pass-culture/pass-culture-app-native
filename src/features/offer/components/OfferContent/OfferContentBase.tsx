@@ -56,6 +56,8 @@ import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 type OfferContentBaseProps = OfferContentProps &
@@ -65,7 +67,7 @@ type OfferContentBaseProps = OfferContentProps &
     onShowClubAdviceWritersModal: () => void
     onShowOfferArtistsModal: (artists: OfferArtist[]) => void
     onVideoConsentPress?: () => void
-    advices?: AdviceCardData[]
+    clubAdvices?: AdviceCardData[]
     likesCount?: number
     headlineOffersCount?: number
     defaultReaction?: ReactionTypeEnum | null
@@ -82,7 +84,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   offer,
   searchGroupList,
   subcategory,
-  advices,
+  clubAdvices,
+  proAdvices,
   adviceVariantInfo,
   headlineOffersCount,
   onOfferPreviewPress,
@@ -337,7 +340,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               subcategory={subcategory}
               likesCount={offer.reactionsCount.likes}
               advicesCount={offer.chroniclesCount}
-              advices={advices}
+              advices={clubAdvices}
               distance={distance}
               headlineOffersCount={headlineOffersCount}
               adviceVariantInfo={adviceVariantInfo}
@@ -350,15 +353,29 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             </OfferBody>
           </BodyWrapper>
 
-          {advices?.length ? (
+          {clubAdvices?.length ? (
             <ClubAdviceSectionWithAnchor
-              advices={advices}
+              advices={clubAdvices}
               adviceVariantInfo={adviceVariantInfo}
               offer={offer}
               onSeeMoreButtonPress={onSeeMoreButtonPress}
               onShowClubAdviceWritersModal={onShowClubAdviceWritersModal}
               onSeeAllReviewsPress={handleOnSeeAllReviewsPress}
             />
+          ) : null}
+          {proAdvices?.length ? (
+            <StyledSectionWithDivider visible testID="pro-advice-section" gap={8}>
+              <Gutter>
+                <InternalTouchableLink
+                  as={Button}
+                  wording={`Lire les ${proAdvices.length} avis des pros`}
+                  navigateTo={{ screen: 'ProAdvicesOffer', params: { offerId: offer.id } }}
+                  variant="secondary"
+                  color="neutral"
+                  size="small"
+                />
+              </Gutter>
+            </StyledSectionWithDivider>
           ) : null}
           <StyledSectionWithDivider
             visible
@@ -395,4 +412,8 @@ const FooterContainer = styled.View(({ theme }) => ({
 
 const StyledSectionWithDivider = styled(SectionWithDivider)(({ theme }) => ({
   paddingBottom: theme.designSystem.size.spacing.xxl,
+}))
+
+const Gutter = styled.View(({ theme }) => ({
+  paddingHorizontal: theme.contentPage.marginHorizontal,
 }))

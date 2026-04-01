@@ -93,7 +93,8 @@ export type OfferContentProps = {
   subcategory: Subcategory
   onShowClubAdviceWritersModal: () => void
   onShowOfferArtistsModal: (artists: OfferArtist[]) => void
-  advices?: AdviceCardData[]
+  clubAdvices?: AdviceCardData[]
+  proAdvices?: AdviceCardData[]
   headlineOffersCount?: number
   defaultReaction?: ReactionTypeEnum | null
   onReactionButtonPress?: () => void

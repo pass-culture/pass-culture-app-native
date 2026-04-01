@@ -18,7 +18,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   offer,
   searchGroupList,
   subcategory,
-  advices,
+  clubAdvices,
+  proAdvices,
   adviceVariantInfo,
   defaultReaction,
   headlineOffersCount,
@@ -52,7 +53,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         onOfferPreviewPress={handlePreviewPress}
         isVideoSectionEnabled={isVideoSectionEnabled}
         BodyWrapper={BodyWrapper}
-        advices={advices}
+        clubAdvices={clubAdvices}
+        proAdvices={proAdvices}
         adviceVariantInfo={adviceVariantInfo}
         headlineOffersCount={headlineOffersCount}
         subcategory={subcategory}
