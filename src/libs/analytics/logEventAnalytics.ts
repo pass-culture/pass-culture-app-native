@@ -224,6 +224,13 @@ export const logEventAnalytics = {
       { firebase: AnalyticsEvent.CONSULT_ACHIEVEMENTS_SUCCESS_MODAL },
       { achievementName }
     ),
+  logConsultAdvice: (params: {
+    from: Referrals
+    originDetails: string
+    adviceType: 'book_club' | 'cine_club' | 'pro'
+    offerId?: string
+    venueId?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ADVICE }, params),
   logConsultApplicationProcessingModal: (offerId: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.CONSULT_APPLICATION_PROCESSING_MODAL },
@@ -351,6 +358,7 @@ export const logEventAnalytics = {
     from: Referrals
     entryId?: string
     venueId?: string
+    offerId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.FEATURE_FEEDBACK_CLICKED }, params),
   logGoToProfil: ({ from, offerId }: { from: string; offerId: number }) =>
     analytics.logEvent(
