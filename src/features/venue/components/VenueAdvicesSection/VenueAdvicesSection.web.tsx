@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { styled, useTheme } from 'styled-components/native'
 
-import { VenueResponse } from 'api/gen'
+import { ReactionTypeEnum, VenueResponse } from 'api/gen'
 import { AdviceCardList } from 'features/advices/components/AdviceCardList/AdviceCardList'
 import { ADVICE_CARD_WIDTH } from 'features/advices/constants'
 import { AdviceCardData } from 'features/advices/types'
@@ -25,6 +25,7 @@ type Props = {
   onPressAdviceCardSeeMore?: (offerId: number) => void
   enableNewTagProAdvices?: boolean
   onPressAllAdvicesButton?: () => void
+  onFeedbackLog: (type: ReactionTypeEnum) => void
 }
 
 export const VenueAdvicesSection: FunctionComponent<Props> = ({
@@ -35,6 +36,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
   onPressAdviceCardSeeMore,
   enableNewTagProAdvices,
   onPressAllAdvicesButton,
+  onFeedbackLog,
 }) => {
   const theme = useTheme()
   const shouldDisplayAllAdvicesButton = advicesCardData.length > 1
@@ -116,9 +118,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
           likeQuiz="https://passculture.qualtrics.com/jfe/form/SV_eW1XQ60mF3KAMdg"
           dislikeQuiz="https://passculture.qualtrics.com/jfe/form/SV_d1niW3WPCivA6wK"
           title="Trouves-tu ces avis utiles&nbsp;?"
-          // TODO(PC-39762): add tracking
-          // eslint-disable-next-line @typescript-eslint/no-empty-function
-          onLogReaction={() => {}}
+          onLogReaction={onFeedbackLog}
         />
       </Gutter>
     </Container>

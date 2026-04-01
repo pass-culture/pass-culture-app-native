@@ -4,6 +4,7 @@ import { Platform, ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
+import { ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -96,6 +97,16 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
       venueId: venue.id.toString(),
       originDetails: 'Lire les x avis',
       adviceType: 'pro',
+    })
+  }
+
+  const onFeedbackLog = (type: ReactionTypeEnum) => {
+    const feedbackResponse = type === ReactionTypeEnum.LIKE ? 'Oui' : 'Non'
+    void analytics.logFeatureFeedbackClicked({
+      featureName: 'pro_advices',
+      feedbackResponse,
+      from: 'venue',
+      venueId: venue.id.toString(),
     })
   }
 
@@ -212,6 +223,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           enableNewTagProAdvices={enableNewTagProAdvices}
           onShowWritersModal={onShowWritersModal}
           onPressAllAdvicesButton={onPressAllAdvicesButton}
+          onFeedbackLog={onFeedbackLog}
         />
       ) : null}
       {shouldDisplayArtistsPlaylist ? (

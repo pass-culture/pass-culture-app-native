@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { UseQueryResult } from '@tanstack/react-query'
 import mockdate from 'mockdate'
 import React, { ComponentProps, createRef } from 'react'
@@ -260,6 +261,40 @@ describe('<VenueOffers />', () => {
         venueId: venueDataTest.id.toString(),
         adviceType: 'pro',
         originDetails: 'Lire les x avis',
+      })
+    })
+
+    it('should trigger FeatureFeedbackClicked log with yes answer when answering yes to feedback quiz', async () => {
+      await AsyncStorage.removeItem('venue_advices_feedback')
+      renderVenueOffers({
+        advicesCardData: [...proAdvicesCardDataFixture],
+        nbAdvices: 2,
+      })
+
+      await user.press(screen.getByText('Oui'))
+
+      expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
+        featureName: 'pro_advices',
+        feedbackResponse: 'Oui',
+        from: 'venue',
+        venueId: venueDataTest.id.toString(),
+      })
+    })
+
+    it('should trigger FeatureFeedbackClicked log with no answer when answering no to feedback quiz', async () => {
+      await AsyncStorage.removeItem('venue_advices_feedback')
+      renderVenueOffers({
+        advicesCardData: [...proAdvicesCardDataFixture],
+        nbAdvices: 2,
+      })
+
+      await user.press(screen.getByText('Non'))
+
+      expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
+        featureName: 'pro_advices',
+        feedbackResponse: 'Non',
+        from: 'venue',
+        venueId: venueDataTest.id.toString(),
       })
     })
   })
