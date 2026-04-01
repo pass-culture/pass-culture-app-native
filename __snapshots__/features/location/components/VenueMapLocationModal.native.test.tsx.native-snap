@@ -181,7 +181,8 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                   "top": "auto",
                 },
                 {
-                  "margin": "auto",
+                  "justifyContent": "flex-end",
+                  "margin": 0,
                 },
               ],
             ],
@@ -221,7 +222,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
             "borderTopRightRadius": 16,
             "flexDirection": "column",
             "height": 1318,
-            "justifyContent": "center",
+            "justifyContent": "flex-start",
             "maxHeight": 1334,
             "maxWidth": 960,
             "paddingBottom": 32,

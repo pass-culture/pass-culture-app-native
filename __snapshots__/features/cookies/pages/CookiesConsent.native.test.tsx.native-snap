@@ -120,7 +120,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                 "top": "auto",
               },
               {
-                "margin": "auto",
+                "justifyContent": "flex-end",
+                "margin": 0,
               },
             ],
           ],
@@ -158,7 +159,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 1318,
           "maxWidth": 960,
           "paddingBottom": 32,

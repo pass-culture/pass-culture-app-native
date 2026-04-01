@@ -19,6 +19,7 @@ import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
+import { ChangePhoneNumber } from 'features/profile/pages/ChangePhoneNumber/ChangePhoneNumber'
 import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
 import { Chatbot } from 'features/profile/pages/Chatbot/Chatbot'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
@@ -185,6 +186,11 @@ const profileScreens: ProfileRouteConfig[] = [
     name: 'ChangePassword',
     component: withAuthProtection(ChangePassword),
     options: { title: 'Modification du mot de passe' },
+  },
+  {
+    name: 'ChangePhoneNumber',
+    component: withAuthProtection(ChangePhoneNumber),
+    options: { title: 'Modification du numéro de téléphone' },
   },
   {
     name: 'SuspendAccountConfirmation',

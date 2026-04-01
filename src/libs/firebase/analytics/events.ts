@@ -97,6 +97,7 @@ export enum AnalyticsEvent {
   HAS_APPLIED_FAVORITES_SORTING = 'HasAppliedFavoritesSorting',
   HAS_BOOKED_CINE_SCREENING_OFFER = 'HasBookedCineScreeningOffer',
   HAS_CHANGED_PASSWORD = 'HasChangedPassword',
+  HAS_CHANGED_PHONE_NUMBER = 'HasChangedPhoneNumber',
   HAS_CHOSEN_PRICE = 'HasChosenPrice',
   HAS_CHOSEN_TIME = 'HasChosenTime',
   HAS_CLICKED_CONTACT_FORM = 'HasClickedContactForm',

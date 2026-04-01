@@ -389,6 +389,8 @@ export const logEventAnalytics = {
     from: Referrals
     reason: 'changePassword' | 'resetPassword'
   }) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHANGED_PASSWORD }, { from, reason }),
+  logHasChangedPhoneNumber: () =>
+    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHANGED_PHONE_NUMBER }),
   logHasChosenPrice: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_PRICE }),
   logHasChosenTime: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_TIME }),
   logHasClickedContactForm: (

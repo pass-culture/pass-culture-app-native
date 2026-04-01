@@ -120,7 +120,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 "top": "auto",
               },
               {
-                "margin": "auto",
+                "justifyContent": "flex-end",
+                "margin": 0,
               },
             ],
           ],
@@ -160,7 +161,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 1318,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 1334,
           "maxWidth": 960,
           "paddingBottom": 32,

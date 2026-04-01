@@ -360,7 +360,7 @@ exports[`PersonalData should render personal data success 1`] = `
                 rosa.bonheur@gmail.com
               </Text>
               <View
-                accessibilityLabel="Modifier e-mail"
+                accessibilityLabel="Modifier l’e-mail"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -416,7 +416,7 @@ exports[`PersonalData should render personal data success 1`] = `
                     },
                   ]
                 }
-                testID="Modifier e-mail"
+                testID="Modifier l’e-mail"
               >
                 <View
                   gap={8}
@@ -538,55 +538,8 @@ exports[`PersonalData should render personal data success 1`] = `
               >
                 +33685974563
               </Text>
-            </View>
-            <View
-              style={
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 1,
-                  "marginVertical": 16,
-                  "width": "100%",
-                }
-              }
-            />
-            <Text
-              style={
-                {
-                  "color": "#696a6f",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                }
-              }
-            >
-              Mot de passe
-            </Text>
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "marginTop": 8,
-                }
-              }
-            >
-              <Text
-                numberOfLines={2}
-                style={
-                  {
-                    "color": "#161617",
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginRight": 8,
-                  }
-                }
-              >
-                ************
-              </Text>
               <View
-                accessibilityLabel="Modifier mot de passe"
+                accessibilityLabel="Modifier le numéro de téléphone"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -642,7 +595,7 @@ exports[`PersonalData should render personal data success 1`] = `
                     },
                   ]
                 }
-                testID="Modifier mot de passe"
+                testID="Modifier le numéro de téléphone"
               >
                 <View
                   gap={8}
@@ -674,6 +627,185 @@ exports[`PersonalData should render personal data success 1`] = `
                       }
                     }
                     nativeID="2"
+                    style={
+                      [
+                        {
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      fill="#6123df"
+                      height={22}
+                      width={22}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 22,
+                        },
+                        {
+                          "color": "#6123df",
+                          "flexBasis": undefined,
+                          "flexGrow": undefined,
+                          "flexShrink": 1,
+                          "maxWidth": "100%",
+                          "minWidth": 0,
+                          "textAlign": undefined,
+                        },
+                      ]
+                    }
+                  >
+                    Modifier
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
+                  "marginVertical": 16,
+                  "width": "100%",
+                }
+              }
+            />
+            <Text
+              style={
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
+              }
+            >
+              Mot de passe
+            </Text>
+            <View
+              style={
+                {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "marginTop": 8,
+                }
+              }
+            >
+              <Text
+                numberOfLines={2}
+                style={
+                  {
+                    "color": "#161617",
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginRight": 8,
+                  }
+                }
+              >
+                ************
+              </Text>
+              <View
+                accessibilityLabel="Modifier le mot de passe"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 0,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "width": "auto",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Modifier le mot de passe"
+              >
+                <View
+                  gap={8}
+                  hasIcon={true}
+                  isMultiline={false}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "columnGap": 8,
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <View
+                    collapsable={false}
+                    jestAnimatedProps={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestAnimatedStyle={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestInlineStyle={
+                      {
+                        "flexShrink": 0,
+                      }
+                    }
+                    nativeID="3"
                     style={
                       [
                         {
@@ -852,7 +984,7 @@ exports[`PersonalData should render personal data success 1`] = `
                         "flexShrink": 0,
                       }
                     }
-                    nativeID="3"
+                    nativeID="4"
                     style={
                       [
                         {
@@ -944,7 +1076,7 @@ exports[`PersonalData should render personal data success 1`] = `
                 10 rue de Bohneur, 75001, Paris
               </Text>
               <View
-                accessibilityLabel="Modifier mon adresse de résidence"
+                accessibilityLabel="Modifier l’adresse de résidence"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -1000,7 +1132,7 @@ exports[`PersonalData should render personal data success 1`] = `
                     },
                   ]
                 }
-                testID="Modifier mon adresse de résidence"
+                testID="Modifier l’adresse de résidence"
               >
                 <View
                   gap={8}
@@ -1031,7 +1163,7 @@ exports[`PersonalData should render personal data success 1`] = `
                         "flexShrink": 0,
                       }
                     }
-                    nativeID="4"
+                    nativeID="5"
                     style={
                       [
                         {
@@ -1323,7 +1455,7 @@ exports[`PersonalData should render personal data success 1`] = `
                         "flexShrink": 0,
                       }
                     }
-                    nativeID="5"
+                    nativeID="6"
                     style={
                       [
                         {
