@@ -121,7 +121,7 @@ export const ClubAdvicesBase: FunctionComponent<Props> = ({
       <AdvicesWritersModal
         closeModal={hideModal}
         isVisible={visible}
-        onShowRecoButtonPress={handleOnShowRecoButtonPress}
+        onButtonPress={handleOnShowRecoButtonPress}
         modalWording={variantInfo.modalWording}
         buttonWording={variantInfo.buttonWording}
       />

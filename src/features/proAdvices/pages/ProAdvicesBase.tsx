@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, PropsWithChildren, useCallback, useRef } from 'react'
 import { FlatList } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -10,7 +9,6 @@ import { AdvicesHeader } from 'features/advices/components/AdvicesHeader/Advices
 import { AdvicesWebMetaHeader } from 'features/advices/components/AdvicesWebMetaHeader/AdvicesWebMetaHeader'
 import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
 import { AdviceCardData } from 'features/advices/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
@@ -32,7 +30,6 @@ export const ProAdvicesBase: FunctionComponent<Props> = ({
   thumbnailHeight,
   children,
 }) => {
-  const { navigate } = useNavigation<UseNavigationType>()
   const { headerTransition, onScroll } = useOpacityTransition()
   const { visible, showModal, hideModal } = useModal(false)
   const advicesListRef = useRef<FlatList<AdviceCardData>>(null)
@@ -53,13 +50,6 @@ export const ProAdvicesBase: FunctionComponent<Props> = ({
       })
     }
   }, [selectedAdvice, headerHeight])
-
-  const handleOnShowRecoButtonPress = () => {
-    hideModal()
-    runAfterInteractionsMobile(() => {
-      navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'venue' })
-    })
-  }
 
   return (
     <React.Fragment>
@@ -101,9 +91,9 @@ export const ProAdvicesBase: FunctionComponent<Props> = ({
       <AdvicesWritersModal
         closeModal={hideModal}
         isVisible={visible}
-        onShowRecoButtonPress={handleOnShowRecoButtonPress}
+        onButtonPress={hideModal}
         modalWording={`Les avis des pros sont rédigés par nos partenaires culturels du pass\u00a0: libraires, disquaires, organisateurs de spectacles...\nCes experts partagent leurs coups de coeur pour t‘aider à découvrir des oeuvres qui pourraient te plaire.`}
-        buttonWording="Voir tous les avis des pros"
+        buttonWording="Fermer"
       />
     </React.Fragment>
   )

@@ -166,7 +166,7 @@ export function Offer() {
           <AdvicesWritersModal
             closeModal={hideChroniclesWritersModal}
             isVisible={chroniclesWritersModalVisible}
-            onShowRecoButtonPress={handleOnShowRecoButtonPress}
+            onButtonPress={handleOnShowRecoButtonPress}
             modalWording={adviceVariantInfo.modalWording}
             buttonWording={adviceVariantInfo.buttonWording}
           />

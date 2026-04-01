@@ -1,4 +1,3 @@
-import * as reactNavigationNative from '@react-navigation/native'
 import React from 'react'
 import { FlatList } from 'react-native'
 
@@ -13,6 +12,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
+import * as useModalAPI from 'ui/components/modals/useModal'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -31,11 +31,6 @@ const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: mockGoBack,
   canGoBack: jest.fn(() => true),
-})
-
-const mockNavigate = jest.fn()
-jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
-  navigate: mockNavigate,
 })
 
 const user = userEvent.setup()
@@ -82,17 +77,19 @@ describe('ProAdvicesVenue', () => {
     ).toBeOnTheScreen()
   })
 
-  it('should navigate to recommandation thematic home when pressing "Voir tous les avis des pros" button in advices writers modal', async () => {
+  it('should close the modal when pressing "Fermer" button in advices writers modal', async () => {
+    const mockHideModal = jest.fn()
+    jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+      visible: true,
+      showModal: jest.fn(),
+      hideModal: mockHideModal,
+      toggleModal: jest.fn(),
+    })
     render(reactQueryProviderHOC(<ProAdvicesVenue />))
 
-    await user.press(await screen.findByText('Qui écrit les avis des pros ?'))
+    await user.press(await screen.findByText('Fermer'))
 
-    await user.press(await screen.findByText('Voir tous les avis des pros'))
-
-    expect(mockNavigate).toHaveBeenCalledWith('ThematicHome', {
-      homeId: '4mlVpAZySUZO6eHazWKZeV',
-      from: 'venue',
-    })
+    expect(mockHideModal).toHaveBeenCalledTimes(1)
   })
 
   describe('When offer id defined', () => {
