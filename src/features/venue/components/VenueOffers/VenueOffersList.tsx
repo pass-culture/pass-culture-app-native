@@ -80,7 +80,23 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   const onPressSeeMore = () => analytics.logVenueSeeMoreClicked(venue.id)
 
   const onPressAdviceCardSeeMore = (offerId: number) => {
+    void analytics.logConsultAdvice({
+      from: 'venue',
+      offerId: offerId.toString(),
+      venueId: venue.id.toString(),
+      originDetails: 'Les avis des pros',
+      adviceType: 'pro',
+    })
     navigate('ProAdvicesVenue', { venueId: venue.id, offerId })
+  }
+
+  const onPressAllAdvicesButton = () => {
+    void analytics.logConsultAdvice({
+      from: 'venue',
+      venueId: venue.id.toString(),
+      originDetails: 'Lire les x avis',
+      adviceType: 'pro',
+    })
   }
 
   const renderFooter: RenderFooterItem = ({ width, height }: { width: number; height: number }) => (
@@ -195,6 +211,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           onPressAdviceCardSeeMore={onPressAdviceCardSeeMore}
           enableNewTagProAdvices={enableNewTagProAdvices}
           onShowWritersModal={onShowWritersModal}
+          onPressAllAdvicesButton={onPressAllAdvicesButton}
         />
       ) : null}
       {shouldDisplayArtistsPlaylist ? (

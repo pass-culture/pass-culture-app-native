@@ -24,6 +24,7 @@ type Props = {
   onShowWritersModal: () => void
   onPressAdviceCardSeeMore?: (offerId: number) => void
   enableNewTagProAdvices?: boolean
+  onPressAllAdvicesButton?: () => void
 }
 
 export const VenueAdvicesSection: FunctionComponent<Props> = ({
@@ -33,6 +34,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
   onShowWritersModal,
   onPressAdviceCardSeeMore,
   enableNewTagProAdvices,
+  onPressAllAdvicesButton,
 }) => {
   const theme = useTheme()
   const shouldDisplayAllAdvicesButton = advicesCardData.length > 1
@@ -61,6 +63,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
             navigateTo={{ screen: 'ProAdvicesVenue', params: { venueId: venue.id } }}
             variant="tertiary"
             color="neutral"
+            onBeforeNavigate={onPressAllAdvicesButton}
           />
         </SeeAllAdvicesContainerDesktop>
       ) : null}
@@ -88,6 +91,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
               variant="secondary"
               color="neutral"
               size="small"
+              onBeforeNavigate={onPressAllAdvicesButton}
             />
           </View>
         </Gutter>

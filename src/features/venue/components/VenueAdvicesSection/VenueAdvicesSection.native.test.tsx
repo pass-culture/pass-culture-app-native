@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueAdvicesSection } from 'features/venue/components/VenueAdvicesSection/VenueAdvicesSection'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { proAdvicesCardDataFixture } from 'features/venue/fixtures/venueProAdvices.fixture'
+import { analytics } from 'libs/analytics/provider'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -65,5 +66,25 @@ describe('VenueAdvicesSection', () => {
     await user.press(screen.getByText('Lire les 2 avis'))
 
     expect(navigate).toHaveBeenCalledWith('ProAdvicesVenue', { venueId: venueDataTest.id })
+  })
+
+  it('should trigger ConsultAdvice log when pressing all advices button', async () => {
+    render(
+      <VenueAdvicesSection
+        advicesCardData={[...proAdvicesCardDataFixture]}
+        nbAdvices={2}
+        venue={venueDataTest}
+        onShowWritersModal={jest.fn()}
+      />
+    )
+
+    await user.press(screen.getByText('Lire les 2 avis'))
+
+    expect(analytics.logConsultAdvice).toHaveBeenNthCalledWith(1, {
+      from: 'venue',
+      venueId: venueDataTest.id.toString(),
+      originDetails: 'Lire les x avis',
+      adviceType: 'pro',
+    })
   })
 })

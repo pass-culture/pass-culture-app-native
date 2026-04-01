@@ -3,7 +3,7 @@ import mockdate from 'mockdate'
 import React, { ComponentProps, createRef } from 'react'
 import { ScrollView } from 'react-native'
 
-import { push } from '__mocks__/@react-navigation/native'
+import { navigate, push } from '__mocks__/@react-navigation/native'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import { mockLabelMapping, mockMapping } from 'features/headlineOffer/fixtures/mockMapping'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
@@ -226,13 +226,42 @@ describe('<VenueOffers />', () => {
     })
   })
 
-  it('should display advices section when venue has advices', async () => {
-    renderVenueOffers({
-      advicesCardData: [...proAdvicesCardDataFixture],
-      nbAdvices: 2,
+  describe('When venue has advices', () => {
+    it('should display advices section', async () => {
+      renderVenueOffers({
+        advicesCardData: [...proAdvicesCardDataFixture],
+        nbAdvices: 2,
+      })
+
+      expect(await screen.findByText(`Les avis par “${venueDataTest.name}”`)).toBeOnTheScreen()
     })
 
-    expect(await screen.findByText(`Les avis par “${venueDataTest.name}”`)).toBeOnTheScreen()
+    it('should navigate to venue pro advices page when pressing all advices button', async () => {
+      renderVenueOffers({
+        advicesCardData: [...proAdvicesCardDataFixture],
+        nbAdvices: 2,
+      })
+
+      await user.press(screen.getByText('Lire les 2 avis'))
+
+      expect(navigate).toHaveBeenCalledWith('ProAdvicesVenue', { venueId: venueDataTest.id })
+    })
+
+    it('should trigger ConsultAdvice log when pressing all advices button', async () => {
+      renderVenueOffers({
+        advicesCardData: [...proAdvicesCardDataFixture],
+        nbAdvices: 2,
+      })
+
+      await user.press(screen.getByText('Lire les 2 avis'))
+
+      expect(analytics.logConsultAdvice).toHaveBeenNthCalledWith(1, {
+        from: 'venue',
+        venueId: venueDataTest.id.toString(),
+        adviceType: 'pro',
+        originDetails: 'Lire les x avis',
+      })
+    })
   })
 })
 
