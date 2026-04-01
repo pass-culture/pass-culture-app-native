@@ -11,7 +11,6 @@ import { SignInResponseFailure } from 'features/auth/types'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
@@ -36,7 +35,7 @@ jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/monitoring/services')
 jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('features/navigation/helpers/navigateToHome')
-jest.mock('features/navigation/helpers/usePreviousRoute')
+jest.mock('features/navigation/helpers/usePreviousRouteName')
 const mockResetSearch = jest.fn()
 const mockIdentityCheckDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
@@ -47,8 +46,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 
 const captureMonitoringError = jest.spyOn(monitoringErrorsModule, 'captureMonitoringError')
-
-const mockUsePreviousRoute = usePreviousRoute as jest.Mock
 
 const apiPostFavoriteSpy = jest.spyOn(API.api, 'postNativeV1MeFavorites')
 
@@ -82,7 +79,6 @@ describe('<Login/>', () => {
     mockMeApiCall({
       showEligibleCard: false,
     } as UserProfileResponseWithoutSurvey)
-    mockUsePreviousRoute.mockReturnValue(null)
   })
 
   afterEach(async () => {

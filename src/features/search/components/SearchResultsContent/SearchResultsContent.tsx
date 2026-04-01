@@ -7,6 +7,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
+import { usePreviousRouteName } from 'features/navigation/helpers/usePreviousRouteName'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
@@ -20,7 +21,7 @@ import { getStringifySearchStateWithoutLocation } from 'features/search/helpers/
 import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateToSearchFilter/useNavigateToSearchFilter'
 import { usePrevious } from 'features/search/helpers/usePrevious'
 import { useGridListLayout } from 'features/search/store/gridListLayoutStore'
-import { GridListLayout, VenuesUserData } from 'features/search/types'
+import { GridListLayout, SearchView, VenuesUserData } from 'features/search/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { Venue } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
@@ -103,6 +104,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   enableAIFakeDoor,
   onPressAIFakeDoorBanner,
 }) => {
+  const previousRouteName = usePreviousRouteName()
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const { listRef: searchListRef, handleViewableItemsChanged } = useViewableItemsTracker<
     FlashListRef<Offer>
@@ -186,12 +188,17 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const previousIsLoading = usePrevious(isLoading)
   useEffect(() => {
     if (previousIsLoading && !isLoading) {
-      void analytics.logPerformSearch(searchState, disabilities, nbHits, 'SearchResults')
+      void analytics.logPerformSearch(
+        searchState,
+        disabilities,
+        nbHits,
+        previousRouteName === SearchView.Thematic ? previousRouteName : SearchView.Results
+      )
       if (nbHits === 0) {
         void analytics.logNoSearchResult(searchState.query, searchState.searchId)
       }
     }
-  }, [isLoading, nbHits, previousIsLoading, searchState, disabilities])
+  }, [isLoading, nbHits, previousIsLoading, previousRouteName, searchState, disabilities])
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 

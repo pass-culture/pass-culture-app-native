@@ -1,7 +1,7 @@
 import { Route } from '@react-navigation/native'
 import React from 'react'
 
-import { usePreviousRoute } from 'features/navigation/helpers/__mocks__/usePreviousRoute'
+import { usePreviousRouteName } from 'features/navigation/helpers/__mocks__/usePreviousRouteName'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as getReconciledVenuesAPI from 'features/search/helpers/searchList/getReconciledVenues'
@@ -18,7 +18,7 @@ jest.useFakeTimers()
 const mockHits: Offer[] = mockedAlgoliaResponse.hits
 const mockNbHits = mockedAlgoliaResponse.nbHits
 
-const mockUsePreviousRoute: jest.Mock<Route<string> | null> = usePreviousRoute
+const mockUsePreviousRouteName: jest.Mock<Route<string> | null> = usePreviousRouteName
 
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({
@@ -39,7 +39,7 @@ const spiedGetReconciledVenue = jest.spyOn(getReconciledVenuesAPI, 'getReconcile
 describe('<SearchList />', () => {
   beforeEach(() => {
     setFeatureFlags()
-    mockUsePreviousRoute.mockReturnValue({ name: 'SomeScreen', key: 'key' })
+    mockUsePreviousRouteName.mockReturnValue({ name: 'SomeScreen', key: 'key' })
   })
 
   const renderItem = jest.fn()

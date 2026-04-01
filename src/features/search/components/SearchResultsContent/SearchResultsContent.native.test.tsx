@@ -12,7 +12,7 @@ import {
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { SearchState } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import { beneficiaryUser } from 'fixtures/user'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
@@ -223,6 +223,11 @@ const initSearchResultsFlashlist = async () => {
   return flashList
 }
 
+let mockPreviousRouteName = SearchView.Landing
+jest.mock('features/navigation/helpers/usePreviousRouteName', () => ({
+  usePreviousRouteName: jest.fn(() => mockPreviousRouteName),
+}))
+
 describe('SearchResultsContent component', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -246,6 +251,8 @@ describe('SearchResultsContent component', () => {
       userLocation: mockedPosition,
       hasGeolocPosition: false,
     })
+
+    mockPreviousRouteName = SearchView.Landing
   })
 
   it('should render correctly', async () => {
@@ -337,6 +344,7 @@ describe('SearchResultsContent component', () => {
     })
 
     rerender({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, isLoading: false })
+    rerender({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, isLoading: false })
 
     expect(analytics.logPerformSearch).toHaveBeenCalledTimes(1)
   })
@@ -365,7 +373,37 @@ describe('SearchResultsContent component', () => {
       mockSearchState,
       mockAccessibilityFilter,
       4,
-      'SearchResults'
+      SearchView.Results
+    )
+  })
+
+  it('should log PerformSearch with ThematicSearch when previous route is ThematicSearch', async () => {
+    mockPreviousRouteName = SearchView.Thematic
+
+    const { rerender } = renderSearchResultContent({
+      ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS,
+      isLoading: true,
+    })
+
+    mockUseSearch.mockReturnValueOnce({
+      searchState: mockSearchState,
+      dispatch: mockDispatch,
+    })
+
+    const mockAccessibilityFilter = {
+      isAudioDisabilityCompliant: undefined,
+      isMentalDisabilityCompliant: undefined,
+      isMotorDisabilityCompliant: undefined,
+      isVisualDisabilityCompliant: undefined,
+    }
+    rerender({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, isLoading: false })
+
+    expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(
+      1,
+      mockSearchState,
+      mockAccessibilityFilter,
+      4,
+      SearchView.Thematic
     )
   })
 

@@ -8,7 +8,7 @@ let mockCanGoBack = false
 const mockNavigate = jest.fn()
 const mockGoBack = jest.fn()
 const mockPopTo = jest.fn()
-const mockPreviousRoute: { name?: string } = { name: undefined }
+let mockPreviousRouteName
 jest.mock('@react-navigation/native', () => ({
   ...(jest.requireActual('@react-navigation/native') as Record<string, unknown>),
   useNavigation: () => ({
@@ -19,8 +19,8 @@ jest.mock('@react-navigation/native', () => ({
   }),
 }))
 
-jest.mock('features/navigation/helpers/usePreviousRoute', () => ({
-  usePreviousRoute: jest.fn(() => mockPreviousRoute),
+jest.mock('features/navigation/helpers/usePreviousRouteName', () => ({
+  usePreviousRouteName: jest.fn(() => mockPreviousRouteName),
 }))
 
 const actualHistory = window.history
@@ -66,7 +66,7 @@ describe('useGoBack()', () => {
 
     it("should use history if previous route doesn't exist and canGoBack = true", async () => {
       mockCanGoBack = true
-      mockPreviousRoute.name = undefined
+      mockPreviousRouteName = undefined
 
       const { result } = renderUseGoBack()
       result.current.goBack()
@@ -76,7 +76,7 @@ describe('useGoBack()', () => {
 
     it('should call goBack if previous route exists and canGoBack = true', () => {
       mockCanGoBack = true
-      mockPreviousRoute.name = 'Login'
+      mockPreviousRouteName = 'Login'
       const { result } = renderUseGoBack()
       result.current.goBack()
 
