@@ -43,7 +43,6 @@ export type Maintenance =
 
 export enum RemoteStoreFeatureFlags {
   DARK_MODE_GTM = 'darkModeGTM',
-  DISABLE_ACHIEVEMENTS_SUCCESS_MODAL = 'disableAchievementsSuccessModal',
   DISABLE_ACTIVATION = 'disableActivation',
   ENABLE_AI_FAKE_DOOR = 'enableAIFakeDoor',
   ENABLE_BONIFICATION = 'enableBonification',
