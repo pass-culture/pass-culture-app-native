@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
-import { usePreviousRoute } from 'features/navigation/helpers/__mocks__/usePreviousRoute'
+import { usePreviousRouteName } from 'features/navigation/helpers/__mocks__/usePreviousRouteName'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
@@ -28,7 +28,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const searchId = uuidv4()
 
-const mockUsePreviousRoute: jest.Mock<Route<string> | null> = usePreviousRoute
+const mockUsePreviousRouteName: jest.Mock<Route<string> | null> = usePreviousRouteName
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 const mockPosition: GeoCoordinates | null = DEFAULT_POSITION
@@ -96,7 +96,7 @@ const mockedAlgoliaVenuesItems = mockAlgoliaVenues.map(
 describe('<SearchListHeader />', () => {
   beforeEach(() => {
     mockUseAccessibilityFiltersContext.mockReturnValue(defaultValuesAccessibilityContext)
-    mockUsePreviousRoute.mockReturnValue({ name: 'SomeScreen', key: 'key' })
+    mockUsePreviousRouteName.mockReturnValue({ name: 'SomeScreen', key: 'key' })
   })
 
   describe('When feature flags deactivated', () => {

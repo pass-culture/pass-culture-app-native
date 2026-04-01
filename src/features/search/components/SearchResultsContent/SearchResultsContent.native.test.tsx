@@ -222,9 +222,9 @@ const initSearchResultsFlashlist = async () => {
   return flashList
 }
 
-let mockPreviousRoute = SearchView.Landing
-jest.mock('features/navigation/helpers/usePreviousRoute', () => ({
-  usePreviousRoute: jest.fn(() => mockPreviousRoute),
+let mockPreviousRouteName = SearchView.Landing
+jest.mock('features/navigation/helpers/usePreviousRouteName', () => ({
+  usePreviousRouteName: jest.fn(() => mockPreviousRouteName),
 }))
 
 describe('SearchResultsContent component', () => {
@@ -251,7 +251,7 @@ describe('SearchResultsContent component', () => {
       hasGeolocPosition: false,
     })
 
-    mockPreviousRoute = SearchView.Landing
+    mockPreviousRouteName = SearchView.Landing
   })
 
   it('should render correctly', async () => {
@@ -377,7 +377,7 @@ describe('SearchResultsContent component', () => {
   })
 
   it('should log PerformSearch with ThematicSearch when previous route is ThematicSearch', async () => {
-    mockPreviousRoute = SearchView.Thematic
+    mockPreviousRouteName = SearchView.Thematic
 
     const { rerender } = renderSearchResultContent({
       ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS,

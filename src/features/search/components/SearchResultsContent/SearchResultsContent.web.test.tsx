@@ -83,8 +83,8 @@ jest.mock('queries/venue/useVenueOffersQuery')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
-jest.mock('features/navigation/helpers/usePreviousRoute', () => ({
-  usePreviousRoute: () => ({ name: 'ThematicSearch' }),
+jest.mock('features/navigation/helpers/usePreviousRouteName', () => ({
+  usePreviousRouteName: () => ({ name: 'ThematicSearch' }),
 }))
 
 jest

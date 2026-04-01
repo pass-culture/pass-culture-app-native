@@ -78,14 +78,14 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     isLocated
   )
 
-  const previousRoute = usePreviousRouteName()
+  const previousRouteName = usePreviousRouteName()
 
   const selectedGridListLayout = useGridListLayout()
 
   const offerTitle = `Les offres${shouldDisplayAccessibilityContent ? ' dans des lieux accessibles' : ''}`
 
   const shouldDisplayVenuesPlaylist =
-    !venue && !!venues?.length && previousRoute !== SearchView.Thematic
+    !venue && !!venues?.length && previousRouteName !== SearchView.Thematic
 
   const onPress = () => {
     void analytics.logActivateGeolocfromSearchResults()

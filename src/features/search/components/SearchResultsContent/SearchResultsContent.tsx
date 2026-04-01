@@ -98,7 +98,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   enableAIFakeDoor,
   onPressAIFakeDoorBanner,
 }) => {
-  const previousRoute = usePreviousRouteName()
+  const previousRouteName = usePreviousRouteName()
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const { listRef: searchListRef, handleViewableItemsChanged } = useViewableItemsTracker<
     FlashListRef<Offer>
@@ -186,13 +186,13 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         searchState,
         disabilities,
         nbHits,
-        previousRoute === SearchView.Thematic ? previousRoute : SearchView.Results
+        previousRouteName === SearchView.Thematic ? previousRouteName : SearchView.Results
       )
       if (nbHits === 0) {
         void analytics.logNoSearchResult(searchState.query, searchState.searchId)
       }
     }
-  }, [isLoading, nbHits, previousIsLoading, previousRoute, searchState, disabilities])
+  }, [isLoading, nbHits, previousIsLoading, previousRouteName, searchState, disabilities])
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 

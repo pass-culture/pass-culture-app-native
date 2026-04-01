@@ -35,7 +35,7 @@ jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/monitoring/services')
 jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('features/navigation/helpers/navigateToHome')
-jest.mock('features/navigation/helpers/usePreviousRoute')
+jest.mock('features/navigation/helpers/usePreviousRouteName')
 const mockResetSearch = jest.fn()
 const mockIdentityCheckDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({

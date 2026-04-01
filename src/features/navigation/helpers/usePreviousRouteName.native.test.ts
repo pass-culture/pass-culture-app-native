@@ -3,7 +3,7 @@ import { renderHook } from 'tests/utils'
 
 import { usePreviousRouteName } from './usePreviousRouteName'
 
-describe('usePreviousRoute', () => {
+describe('usePreviousRouteName', () => {
   it('should return the previous route when there is more than one route in the stack', () => {
     useNavigationState.mockImplementationOnce((selector) =>
       selector({
