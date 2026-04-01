@@ -8,7 +8,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
-import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
+import { usePreviousRouteName } from 'features/navigation/helpers/usePreviousRouteName'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
@@ -98,7 +98,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   enableAIFakeDoor,
   onPressAIFakeDoorBanner,
 }) => {
-  const previousRoute = usePreviousRoute()
+  const previousRoute = usePreviousRouteName()
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const { listRef: searchListRef, handleViewableItemsChanged } = useViewableItemsTracker<
     FlashListRef<Offer>

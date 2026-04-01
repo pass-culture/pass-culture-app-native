@@ -1,7 +1,7 @@
 import { useNavigationState } from '__mocks__/@react-navigation/native'
 import { renderHook } from 'tests/utils'
 
-import { usePreviousRoute } from './usePreviousRoute'
+import { usePreviousRouteName } from './usePreviousRouteName'
 
 describe('usePreviousRoute', () => {
   it('should return the previous route when there is more than one route in the stack', () => {
@@ -12,7 +12,7 @@ describe('usePreviousRoute', () => {
       })
     )
 
-    const { result } = renderHook(() => usePreviousRoute())
+    const { result } = renderHook(() => usePreviousRouteName())
 
     expect(result.current).toBe('Home')
   })
@@ -25,7 +25,7 @@ describe('usePreviousRoute', () => {
       })
     )
 
-    const { result } = renderHook(() => usePreviousRoute())
+    const { result } = renderHook(() => usePreviousRouteName())
 
     expect(result.current).toBeNull()
   })
@@ -38,7 +38,7 @@ describe('usePreviousRoute', () => {
       })
     )
 
-    const { result } = renderHook(() => usePreviousRoute())
+    const { result } = renderHook(() => usePreviousRouteName())
 
     expect(result.current).toBeNull()
   })
