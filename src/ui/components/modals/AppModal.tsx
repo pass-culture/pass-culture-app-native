@@ -60,8 +60,11 @@ type Props = {
 } & ModalIconProps &
   Pick<ViewProps, 'onLayout'>
 
+const isWeb = Platform.OS === 'web'
 // Keep modal sheet flush with screen edges on mobile.
-const styles = StyleSheet.create({ modal: { margin: 0, justifyContent: 'flex-end' } })
+const styles = StyleSheet.create({
+  modal: { margin: 'auto', justifyContent: isWeb ? 'center' : 'flex-end' },
+})
 
 const MAX_HEIGHT = 650
 const DESKTOP_FULLSCREEN_RATIO = 0.75

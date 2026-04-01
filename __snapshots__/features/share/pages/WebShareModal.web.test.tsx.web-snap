@@ -143,7 +143,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
             <div
               aria-labelledby="testUuidV4"
               aria-modal="true"
-              class="css-view-175oi2r r-flex-13awgt0 r-alignItems-1awozwy r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-n0puxl r-justifyContent-17s6mgv r-margin-crgep1 r-pointerEvents-12vffkv"
+              class="css-view-175oi2r r-flex-13awgt0 r-alignItems-1awozwy r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-n0puxl r-justifyContent-1777fci r-margin-ywje51 r-pointerEvents-12vffkv"
               style="transform: translateY(0px);"
             >
               <div

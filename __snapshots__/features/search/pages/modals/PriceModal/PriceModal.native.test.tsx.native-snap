@@ -121,7 +121,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],

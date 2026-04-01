@@ -121,7 +121,7 @@ exports[`<AppModal /> on big screen 1`] = `
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],
@@ -414,7 +414,7 @@ exports[`<AppModal /> on small screen 1`] = `
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],
@@ -656,7 +656,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],
@@ -944,7 +944,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],
@@ -1232,7 +1232,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],
@@ -1520,7 +1520,7 @@ exports[`<AppModal /> with left icon render 1`] = `
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],
@@ -1917,7 +1917,7 @@ exports[`<AppModal /> with minimal props 1`] = `
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],
@@ -2205,7 +2205,7 @@ exports[`<AppModal /> with right icon render 1`] = `
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],
@@ -2603,7 +2603,7 @@ exports[`<AppModal /> without children 1`] = `
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],
