@@ -1,6 +1,7 @@
 import { Environment } from 'libs/environment/schema'
 
 export const env: Environment = {
+  ACCES_LIBRE_URL: 'https://acceslibre.beta.gouv.fr/',
   ACCESSIBILITY_PLAN: 'https://passculture.accessibility_plan',
   ACCESSIBILITY: 'https://passculture.accessibility',
   ADJUST_APP_TOKEN: 'adjustAppToken',
