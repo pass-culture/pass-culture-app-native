@@ -128,10 +128,7 @@ describe('<ProfileV1 />', () => {
   })
 
   beforeEach(() => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION,
-      RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL])
     mockServer.getApi<SubscriptionStepperResponseV2>(
       '/v2/subscription/stepper',
       subscriptionStepperFixture
@@ -315,7 +312,6 @@ describe('<ProfileV1 />', () => {
       asyncStorageGetItemSpy.mockResolvedValueOnce(null)
       asyncStorageSetItemSpy.mockResolvedValueOnce()
       setFeatureFlags([
-        RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION,
         RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL,
         RemoteStoreFeatureFlags.DARK_MODE_GTM,
       ])

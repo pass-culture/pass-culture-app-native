@@ -149,7 +149,6 @@ export const Venue: FunctionComponent = () => {
   const labelMapping = useCategoryHomeLabelMapping()
   const enableVenueCalendar = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VENUE_CALENDAR)
   const shouldDisplayVenueCalendar = enableVenueCalendar && venueOffers?.hits.length === 1
-  const enableAccesLibre = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE)
   // To facilitate QA for the moment segment hardcoded (after => useABSegment(['A', 'B']))
   const segment = 'A'
 
@@ -200,7 +199,6 @@ export const Venue: FunctionComponent = () => {
             venueArtists={venueArtists}
             headlineOfferData={headlineOfferData}
             arePlaylistsLoading={arePlaylistsLoading}
-            enableAccesLibre={enableAccesLibre}
             shouldDisplayVenueCalendar={shouldDisplayVenueCalendar}
             onViewableItemsChanged={handleViewableItemsChanged}
             advicesCardData={

@@ -27,7 +27,6 @@ interface Props {
   playlists: GtlPlaylistData[]
   headlineOfferData?: HeadlineOfferData | null
   arePlaylistsLoading: boolean
-  enableAccesLibre?: boolean
   onViewableItemsChanged: (
     items: Pick<ViewToken, 'key' | 'index'>[],
     moduleId: string,
@@ -48,7 +47,6 @@ export const VenueBody: FunctionComponent<Props> = ({
   playlists,
   headlineOfferData,
   arePlaylistsLoading,
-  enableAccesLibre,
   onViewableItemsChanged,
   shouldDisplayVenueCalendar,
   advicesCardData,
@@ -107,7 +105,7 @@ export const VenueBody: FunctionComponent<Props> = ({
         />
       </React.Fragment>
     ),
-    [Tab.INFOS]: <PracticalInformation venue={venue} enableAccesLibre={enableAccesLibre} />,
+    [Tab.INFOS]: <PracticalInformation venue={venue} />,
     [Tab.AGENDA]: shouldDisplayVenueCalendar ? (
       <Typo.Title3>
         Bientôt&nbsp;: agenda présentant les dates de l’evènement unique de ce lieu

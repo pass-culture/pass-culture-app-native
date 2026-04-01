@@ -80,7 +80,6 @@ const OnlineProfile: React.FC = () => {
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
   const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
   const enableProfileV2 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PROFILE_V2)
-  const enableDebugSection = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION)
   const enableChatbot = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CHATBOT)
 
   const { dispatch: favoritesDispatch } = useFavoritesState()
@@ -407,20 +406,18 @@ const OnlineProfile: React.FC = () => {
                   {version}
                   {isWeb ? `-${String(env.COMMIT_HASH)}` : ''}
                 </Version>
-                {enableDebugSection ? (
-                  <DebugButtonContainer>
-                    <ButtonContainerFlexStart>
-                      <InternalTouchableLink
-                        as={Button}
-                        size="small"
-                        variant="tertiary"
-                        color="neutral"
-                        wording="Débuggage"
-                        navigateTo={getProfilePropConfig('DebugScreen')}
-                      />
-                    </ButtonContainerFlexStart>
-                  </DebugButtonContainer>
-                ) : null}
+                <DebugButtonContainer>
+                  <ButtonContainerFlexStart>
+                    <InternalTouchableLink
+                      as={Button}
+                      size="small"
+                      variant="tertiary"
+                      color="neutral"
+                      wording="Débuggage"
+                      navigateTo={getProfilePropConfig('DebugScreen')}
+                    />
+                  </ButtonContainerFlexStart>
+                </DebugButtonContainer>
               </Section>
             </ProfileContainer>
           </View>

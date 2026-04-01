@@ -43,14 +43,12 @@ export type Maintenance =
 
 export enum RemoteStoreFeatureFlags {
   DARK_MODE_GTM = 'darkModeGTM',
-  DISABLE_ACHIEVEMENTS_SUCCESS_MODAL = 'disableAchievementsSuccessModal',
   DISABLE_ACTIVATION = 'disableActivation',
   ENABLE_AI_FAKE_DOOR = 'enableAIFakeDoor',
   ENABLE_BONIFICATION = 'enableBonification',
   ENABLE_BOOKING_FREE_OFFER_15_16 = 'enableBookingFreeOfferFifteenSixteen',
   ENABLE_CHATBOT = 'enableChatbot',
   ENABLE_CULTURAL_SURVEY_MANDATORY = 'enableCulturalSurveyMandatory',
-  ENABLE_DEBUG_SECTION = 'enableDebugSection',
   ENABLE_HIDE_TICKET = 'enableHideTicket',
   ENABLE_MANDATORY_UPDATE_PERSONAL_DATA = 'enableMandatoryUpdatePersonalData',
   ENABLE_PACIFIC_FRANC_CURRENCY = 'enablePacificFrancCurrency',
@@ -65,7 +63,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_ARTIST_PAGE_IN_SEARCH = 'wipArtistPageInSearch',
   WIP_ARTISTS_SUGGESTIONS_IN_SEARCH = 'wipArtistsSuggestionsInSearch',
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
-  WIP_ENABLE_ACCES_LIBRE = 'wipEnableAccesLibre',
   WIP_ENABLE_APPLE_SSO = 'wipEnableAppleSSO',
   WIP_ENABLE_GOOGLE_SSO = 'wipEnableGoogleSSO',
   WIP_ENABLE_GRID_LIST = 'wipEnableGridList',

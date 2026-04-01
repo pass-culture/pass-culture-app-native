@@ -2,8 +2,6 @@ import React from 'react'
 
 import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -133,52 +131,8 @@ describe('PracticalInformation', () => {
     expect(screen.queryByText('Contact')).not.toBeOnTheScreen()
   })
 
-  describe('Without AccesLibre use', () => {
-    it('should display basic accessibility block', async () => {
-      render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
-
-      expect(await screen.findByTestId('BasicAccessibilityInfo')).toBeOnTheScreen()
-    })
-
-    it('should not display basic accessibility section when no accessibility info provided', async () => {
-      render(
-        reactQueryProviderHOC(
-          <PracticalInformation
-            venue={{
-              ...venueOpenToPublic,
-              externalAccessibilityUrl: undefined,
-              externalAccessibilityData: undefined,
-              accessibilityData: {
-                audioDisability: null,
-                mentalDisability: null,
-                motorDisability: null,
-                visualDisability: null,
-              },
-            }}
-          />
-        )
-      )
-
-      expect(screen.queryByTestId('BasicAccessibilityInfo')).not.toBeOnTheScreen()
-      expect(screen.queryByText('Accessibilité')).not.toBeOnTheScreen()
-    })
-
-    it('should not display AccesLibre banner when url is provided', () => {
-      render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
-
-      expect(
-        screen.queryByText(
-          'Tu peux retrouver des informations supplémentaires sur l’accessibilité de ce lieu sur le site d’acceslibre.'
-        )
-      ).not.toBeOnTheScreen()
-    })
-  })
-
-  it('should display AccesLibre banner when url is provided and AccesLibre used', () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE])
-    render(
-      reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} enableAccesLibre />)
-    )
+  it('should display AccesLibre banner when url is provided', () => {
+    render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
 
     expect(
       screen.getByText(
@@ -248,13 +202,9 @@ describe('PracticalInformation', () => {
     })
 
     it('should not display accessibility section when AccesLibre used', () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE])
       render(
         reactQueryProviderHOC(
-          <PracticalInformation
-            venue={{ ...venueOpenToPublic, isOpenToPublic: false }}
-            enableAccesLibre
-          />
+          <PracticalInformation venue={{ ...venueOpenToPublic, isOpenToPublic: false }} />
         )
       )
 
