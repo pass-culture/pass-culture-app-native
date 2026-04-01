@@ -343,6 +343,8 @@
     "node-forge": "1.4.0",
     "undici": "6.24.1",
     "tar": "7.5.11",
+    "picomatch@>= 2.0.0, <2.3.2": "^2.3.2",
+    "picomatch@>= 4.0.0, <4.0.4": "^4.0.4",
     "react-native-maps@1.24.2": "patch:react-native-maps@npm%3A1.24.2#./.yarn/patches/react-native-maps-npm-1.24.2-83a01f59cc.patch"
   },
   "exports": {
