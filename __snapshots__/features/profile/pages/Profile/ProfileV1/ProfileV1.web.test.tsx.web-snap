@@ -1021,6 +1021,33 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                   Version 1.10.5
                   -13371337
                 </div>
+                <div
+                  class="css-view-175oi2r r-marginBottom-1ifxtd0"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignSelf-k200y"
+                  >
+                    <button
+                      aria-label="Débuggage"
+                      class="c4"
+                      data-testid="Débuggage"
+                      tabindex="0"
+                      type="button"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
+                      >
+                        <div
+                          class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                          dir="ltr"
+                          style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                        >
+                          Débuggage
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </main>
@@ -2272,6 +2299,33 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 >
                   Version 1.10.5
                   -13371337
+                </div>
+                <div
+                  class="css-view-175oi2r r-marginBottom-1ifxtd0"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignSelf-k200y"
+                  >
+                    <button
+                      aria-label="Débuggage"
+                      class="c4"
+                      data-testid="Débuggage"
+                      tabindex="0"
+                      type="button"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
+                      >
+                        <div
+                          class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                          dir="ltr"
+                          style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                        >
+                          Débuggage
+                        </div>
+                      </div>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
