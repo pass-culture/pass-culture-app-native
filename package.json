@@ -351,6 +351,7 @@
     "minimatch@>= 9.0.0, <9.0.7": "^9.0.7",
     "jws@< 3.2.3": "^3.2.3",
     "jws@4.0.0": "^4.0.1",
+    "fast-xml-parser@>= 4.0.0-beta.3, < 4.5.5": "^4.5.5",
     "react-native-maps@1.24.2": "patch:react-native-maps@npm%3A1.24.2#./.yarn/patches/react-native-maps-npm-1.24.2-83a01f59cc.patch"
   },
   "exports": {
