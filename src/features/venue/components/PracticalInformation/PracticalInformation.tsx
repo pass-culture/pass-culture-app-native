@@ -15,10 +15,9 @@ import { OpeningHours } from '../OpeningHours/OpeningHours'
 
 type Props = {
   venue: Omit<VenueResponse, 'isVirtual'>
-  enableAccesLibre?: boolean
 }
 
-export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAccesLibre }) => {
+export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
   const {
     withdrawalDetails,
     description,
@@ -33,7 +32,6 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAc
 
   const shouldDisplayDetailedAccessibility =
     !!isOpenToPublic &&
-    enableAccesLibre &&
     !!externalAccessibilityUrl &&
     !!externalAccessibilityData &&
     !!externalAccessibilityId
