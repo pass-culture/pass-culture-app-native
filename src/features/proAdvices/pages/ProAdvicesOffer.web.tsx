@@ -1,42 +1,26 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { styled, useTheme } from 'styled-components/native'
+import { styled } from 'styled-components/native'
 
 import { SubcategoryIdEnumv2 } from 'api/gen'
+import { AdvicesOfferColumn } from 'features/advices/components/AdvicesOfferColumn/AdvicesOfferColumn.web'
 import { useOfferProAdvicesQuery } from 'features/advices/queries/useOfferProAdvicesQuery'
-import { useAuthContext } from 'features/auth/context/AuthContext'
-import { ClubAdviceOfferInfo } from 'features/clubAdvices/components/ClubAdviceOfferInfo/ClubAdviceOfferInfo.web'
-import { isBookClubSubcategory } from 'features/clubAdvices/helpers/isBookClubSubcategory'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
-import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
-import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
-import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { offerProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/offerProAdvicesToAdviceCardData/offerProAdvicesToAdviceCardData'
 import { ProAdvicesBase } from 'features/proAdvices/pages/ProAdvicesBase'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/LocationWrapper'
-import {
-  formatPrice,
-  getDisplayedPrice,
-  getIfPricesShouldBeFixed,
-} from 'libs/parsers/getDisplayedPrice'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
-import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
-import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { Button } from 'ui/designSystem/Button/Button'
 
 export const ProAdvicesOffer: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'ProAdvicesOffer'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { offerId, venueId } = route.params
   const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_OFFER)
-  const theme = useTheme()
-  const { appBarHeight, isDesktopViewport } = theme
+
   const subcategoriesMapping = useSubcategoriesMapping()
 
   const { userLocation } = useLocation()
@@ -49,34 +33,12 @@ export const ProAdvicesOffer: FunctionComponent = () => {
     select: ({ proAdvices }) =>
       offerProAdvicesToAdviceCardData([...proAdvices, ...proAdvices, ...proAdvices, ...proAdvices]),
   })
-  const { user } = useAuthContext()
 
   const { goBack } = useGoBack('Offer')
-
-  const { top } = useSafeAreaInsets()
-  const headerHeight = appBarHeight + top
 
   const subcategory = offer
     ? subcategoriesMapping[offer.subcategoryId]
     : subcategoriesMapping[SubcategoryIdEnumv2.CONCERT]
-  const imageDimensions = useOfferImageContainerDimensions(offer?.subcategoryId)
-
-  const { trackEventHasSeenOfferOnce } = useOfferBatchTracking(subcategory.id)
-  const prices = getOfferPrices(offer?.stocks ?? [])
-  const currency = useGetCurrencyToDisplay()
-  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
-  const displayedPrice = getDisplayedPrice(
-    prices,
-    currency,
-    euroToPacificFrancRate,
-    formatPrice({
-      isFixed: getIfPricesShouldBeFixed(offer?.subcategoryId),
-      isDuo: !!(offer?.isDuo && user?.isBeneficiary),
-    }),
-    {
-      fractionDigits: 2,
-    }
-  )
 
   const onPress = () => {
     navigate('Offer', { id: offerId, from: 'chronicles' })
@@ -89,26 +51,12 @@ export const ProAdvicesOffer: FunctionComponent = () => {
   return (
     <Container>
       <ProAdvicesBase title={title} advices={advices ?? []} goBack={goBack} id={venueId}>
-        {isDesktopViewport ? (
-          <StyledClubAdviceOfferInfo
-            imageUrl={offer.images?.recto?.url ?? ''}
-            title={offer.name}
-            price={displayedPrice}
-            categoryId={subcategory.categoryId}
-            paddingTop={headerHeight}
-            imageDimensions={imageDimensions}>
-            {isBookClubSubcategory(offer.subcategoryId) ? (
-              <OfferCTAButton
-                offer={offer}
-                subcategory={subcategoriesMapping[offer.subcategoryId]}
-                trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-                fullScreen
-              />
-            ) : (
-              <Button wording="Trouve ta séance" onPress={onPress} color="brand" />
-            )}
-          </StyledClubAdviceOfferInfo>
-        ) : null}
+        <AdvicesOfferColumn
+          offer={offer}
+          subcategoriesMapping={subcategoriesMapping}
+          subcategory={subcategory}
+          onPress={onPress}
+        />
       </ProAdvicesBase>
     </Container>
   )
@@ -126,9 +74,3 @@ const Container = styled(FullFlexView)(({ theme }) => ({
       }
     : {}),
 }))
-
-const StyledClubAdviceOfferInfo = styled(ClubAdviceOfferInfo)<{ paddingTop: number }>(
-  ({ paddingTop }) => ({
-    paddingTop,
-  })
-)
