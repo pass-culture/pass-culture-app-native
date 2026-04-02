@@ -121,3 +121,9 @@ export type Duration = {
   label: string
   accessibilityLabel: string
 }
+
+export type AdvicesStatus = {
+  total: number
+  hasPublished: boolean
+  hasUnpublished: boolean
+}
