@@ -1139,8 +1139,8 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Signaler un bug"
-                    accessibilityRole="button"
+                    accessibilityLabel="Nouvelle fenêtre : Signaler un bug"
+                    accessibilityRole="link"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1180,7 +1180,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Signaler un bug"
+                    testID="Nouvelle fenêtre : Signaler un bug"
                   >
                     <View
                       style={
@@ -1235,6 +1235,23 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                         >
                           Signaler un bug
                         </Text>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "alignItems": "flex-end",
+                          }
+                        }
+                      >
+                        <View
+                          height={20}
+                          testID="section-row-navigable-icon"
+                          width={20}
+                        >
+                          <Text>
+                            section-row-navigable-icon-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>

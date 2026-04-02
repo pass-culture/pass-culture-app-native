@@ -9,6 +9,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
+import { BugReportButton } from 'features/profile/components/Buttons/BugReportButton/BugReportButton'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
@@ -55,7 +56,6 @@ import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
-import { NoPhone } from 'ui/svg/icons/NoPhone'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { Trophy } from 'ui/svg/icons/Trophy'
@@ -319,12 +319,7 @@ const OnlineProfile: React.FC = () => {
                     />
                   </Li>
                   <Li>
-                    <Row
-                      title="Signaler un bug"
-                      type="clickable"
-                      navigateTo={getProfilePropConfig('DebugScreen')}
-                      icon={NoPhone}
-                    />
+                    <BugReportButton />
                   </Li>
                 </VerticalUl>
               </Section>

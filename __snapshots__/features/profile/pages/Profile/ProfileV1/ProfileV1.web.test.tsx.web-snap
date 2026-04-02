@@ -601,13 +601,13 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                     class="css-view-175oi2r r-display-ixj5dj"
                     role="listitem"
                   >
-                    <div
-                      aria-label="Signaler un bug"
+                    <a
+                      aria-label="Nouvelle fenêtre : Signaler un bug"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                      data-testid="Signaler un bug"
+                      data-testid="Nouvelle fenêtre : Signaler un bug"
+                      href="https://aide.passculture.app/hc/fr/requests/new?ticket_form_id=20669662761500&tf_20669850863388=motif_signaler_un_bug&tf_description=%3Ch4%3EVOTRE%20MESSAGE%C2%A0%3A%3C%2Fh4%3E%3Ch4%3ENE%20PAS%20EFFACER%20LES%20INFORMATIONS%20TECHNIQUES%20CI-DESSOUS%C2%A0%3A%3C%2Fh4%3EApp%20version%C2%A0%3A%20Version%C2%A01.10.5-13371337%3Cbr%3EDevice%20font%20scale%C2%A0%3A%201%3Cbr%3EDevice%20ID%C2%A0%3A%20testUuidV4%3Cbr%3EDevice%20model%C2%A0%3A%20WebKit%3Cbr%3EDevice%20OS%C2%A0%3A%20unknown%3Cbr%3EDevice%20resolution%C2%A0%3A%200x0%3Cbr%3EDevice%20zoom%C2%A0%3A%20100%25%3Cbr%3EUser%20CreditType%C2%A0%3A%20Non%20renseign%C3%A9%3Cbr%3EUser%20EligibilityType%C2%A0%3A%20Non%20renseign%C3%A9%3Cbr%3EUser%20ID%C2%A0%3A%20Non%20renseign%C3%A9%3Cbr%3EUser%20StatusType%C2%A0%3A%20Non%20renseign%C3%A9"
                       role="link"
                       style="transition-duration: 0s;"
-                      tabindex="0"
                     >
                       <div
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
@@ -636,8 +636,23 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                             Signaler un bug
                           </div>
                         </div>
+                        <div
+                          class="css-view-175oi2r r-alignItems-obd0qt"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                            data-testid="section-row-navigable-icon"
+                          >
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              section-row-navigable-icon-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -1880,13 +1895,13 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                     class="css-view-175oi2r r-display-ixj5dj"
                     role="listitem"
                   >
-                    <div
-                      aria-label="Signaler un bug"
+                    <a
+                      aria-label="Nouvelle fenêtre : Signaler un bug"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                      data-testid="Signaler un bug"
+                      data-testid="Nouvelle fenêtre : Signaler un bug"
+                      href="https://aide.passculture.app/hc/fr/requests/new?ticket_form_id=20669662761500&tf_20669850863388=motif_signaler_un_bug&tf_description=%3Ch4%3EVOTRE%20MESSAGE%C2%A0%3A%3C%2Fh4%3E%3Ch4%3ENE%20PAS%20EFFACER%20LES%20INFORMATIONS%20TECHNIQUES%20CI-DESSOUS%C2%A0%3A%3C%2Fh4%3EApp%20version%C2%A0%3A%20Version%C2%A01.10.5-13371337%3Cbr%3EDevice%20font%20scale%C2%A0%3A%201%3Cbr%3EDevice%20ID%C2%A0%3A%20testUuidV4%3Cbr%3EDevice%20model%C2%A0%3A%20WebKit%3Cbr%3EDevice%20OS%C2%A0%3A%20unknown%3Cbr%3EDevice%20resolution%C2%A0%3A%200x0%3Cbr%3EDevice%20zoom%C2%A0%3A%20100%25%3Cbr%3EUser%20CreditType%C2%A0%3A%20Non%20renseign%C3%A9%3Cbr%3EUser%20EligibilityType%C2%A0%3A%20Non%20renseign%C3%A9%3Cbr%3EUser%20ID%C2%A0%3A%20Non%20renseign%C3%A9%3Cbr%3EUser%20StatusType%C2%A0%3A%20Non%20renseign%C3%A9"
                       role="link"
                       style="transition-duration: 0s;"
-                      tabindex="0"
                     >
                       <div
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
@@ -1915,8 +1930,23 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                             Signaler un bug
                           </div>
                         </div>
+                        <div
+                          class="css-view-175oi2r r-alignItems-obd0qt"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                            data-testid="section-row-navigable-icon"
+                          >
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              section-row-navigable-icon-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    </a>
                   </li>
                 </ul>
               </div>
