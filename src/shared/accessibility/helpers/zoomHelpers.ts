@@ -14,7 +14,7 @@ const isWeb = Platform.OS === 'web'
 // that can impact the UI but is still acceptable for most of the users.
 const MOBILE_ZOOM_THRESHOLD = 1.5
 
-// We use 150 as threshold because 150% zoom is quite extreme and
+// We use 150% as threshold because 200% zoom is quite extreme and
 // would break too much the UI. 150% is already a quite zoomed font size
 // that can impact the UI but is still acceptable for most of the users
 const WEB_ZOOM_THRESHOLD = 150
