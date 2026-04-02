@@ -147,3 +147,5 @@ storybook-static
 # hot-updater
 .hot-updater/output
 
+# ssl certificates
+proxy_cacert
