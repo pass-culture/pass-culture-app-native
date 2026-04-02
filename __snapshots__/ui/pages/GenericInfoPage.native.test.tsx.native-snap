@@ -281,18 +281,12 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
       {
         "flexGrow": 1,
         "justifyContent": "space-between",
-      }
-    }
-    showsVerticalScrollIndicator={false}
-    style={
-      {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
+    showsVerticalScrollIndicator={false}
+    style={{}}
   >
     <View>
       <View
@@ -304,6 +298,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
         }
       />
       <View
+        flexValue={1}
         style={
           {
             "flexBasis": 0,
@@ -314,6 +309,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
         }
       >
         <View
+          flexValue={1}
           marginVertical={0}
           style={
             {
@@ -350,11 +346,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
             style={
               {
                 "alignItems": "center",
-                "flexBasis": 0,
-                "flexGrow": 0,
-                "flexShrink": 1,
                 "gap": 16,
-                "marginBottom": 24,
               }
             }
           >

@@ -89,18 +89,12 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
       {
         "flexGrow": 1,
         "justifyContent": "space-between",
-      }
-    }
-    showsVerticalScrollIndicator={false}
-    style={
-      {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
+    showsVerticalScrollIndicator={false}
+    style={{}}
   >
     <View>
       <View
@@ -112,6 +106,7 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
         }
       />
       <View
+        flexValue={1}
         style={
           {
             "flexBasis": 0,
@@ -122,6 +117,7 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
         }
       >
         <View
+          flexValue={1}
           marginVertical={0}
           style={
             {
@@ -154,11 +150,7 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
             style={
               {
                 "alignItems": "center",
-                "flexBasis": 0,
-                "flexGrow": 0,
-                "flexShrink": 1,
                 "gap": 16,
-                "marginBottom": 24,
               }
             }
           >
@@ -541,18 +533,12 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
       {
         "flexGrow": 1,
         "justifyContent": "space-between",
-      }
-    }
-    showsVerticalScrollIndicator={false}
-    style={
-      {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
+    showsVerticalScrollIndicator={false}
+    style={{}}
   >
     <View>
       <View
@@ -564,6 +550,7 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
         }
       />
       <View
+        flexValue={1}
         style={
           {
             "flexBasis": 0,
@@ -574,6 +561,7 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
         }
       >
         <View
+          flexValue={1}
           marginVertical={0}
           style={
             {
@@ -606,11 +594,7 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
             style={
               {
                 "alignItems": "center",
-                "flexBasis": 0,
-                "flexGrow": 0,
-                "flexShrink": 1,
                 "gap": 16,
-                "marginBottom": 24,
               }
             }
           >

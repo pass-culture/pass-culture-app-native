@@ -3,7 +3,7 @@ import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { AppButtonInner } from 'ui/components/buttons/AppButton/AppButtonInner'
 import { DefaultLoadingIndicator } from 'ui/components/buttons/AppButton/DefaultLoadingIndicator'
 import { appButtonStyles } from 'ui/components/buttons/AppButton/styleUtils'
@@ -41,7 +41,10 @@ export const AppButton = <T extends AppButtonProps>({
   ellipsizeMode,
   backgroundColor,
 }: OnlyBaseButtonProps<T>) => {
-  const numberOfLinesComparedToFontScale = useFontScaleValue({ default: 1, at200PercentZoom: 2 })
+  const numberOfLinesComparedToFontScale = useMobileFontScaleToDisplay({
+    default: 1,
+    at200PercentZoom: 2,
+  })
 
   const pressHandler: AppButtonEventNative =
     disabled || isLoading ? undefined : (onPress as AppButtonEventNative)

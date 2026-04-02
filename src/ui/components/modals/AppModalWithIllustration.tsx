@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -27,8 +27,8 @@ export const AppModalWithIllustration: FunctionComponent<Props> = ({
     <AppModal
       visible={visible}
       title={title}
-      titleNumberOfLines={useFontScaleValue({ default: 2, at200PercentZoom: undefined })}
-      isFullscreen={useFontScaleValue({ default: false, at200PercentZoom: true })}
+      titleNumberOfLines={useMobileFontScaleToDisplay({ default: 2, at200PercentZoom: undefined })}
+      isFullscreen={useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })}
       rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}
       onRightIconPress={hideModal}

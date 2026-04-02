@@ -89,18 +89,12 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
       {
         "flexGrow": 1,
         "justifyContent": "space-between",
-      }
-    }
-    showsVerticalScrollIndicator={false}
-    style={
-      {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
+    showsVerticalScrollIndicator={false}
+    style={{}}
   >
     <View>
       <View
@@ -112,6 +106,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
         }
       />
       <View
+        flexValue={1}
         style={
           {
             "flexBasis": 0,
@@ -122,6 +117,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
         }
       >
         <View
+          flexValue={1}
           marginVertical={0}
           style={
             {
@@ -159,11 +155,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
             style={
               {
                 "alignItems": "center",
-                "flexBasis": 0,
-                "flexGrow": 0,
-                "flexShrink": 1,
                 "gap": 16,
-                "marginBottom": 24,
               }
             }
           >
@@ -697,18 +689,12 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
       {
         "flexGrow": 1,
         "justifyContent": "space-between",
-      }
-    }
-    showsVerticalScrollIndicator={false}
-    style={
-      {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
+    showsVerticalScrollIndicator={false}
+    style={{}}
   >
     <View>
       <View
@@ -720,6 +706,7 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
         }
       />
       <View
+        flexValue={1}
         style={
           {
             "flexBasis": 0,
@@ -730,6 +717,7 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
         }
       >
         <View
+          flexValue={1}
           marginVertical={0}
           style={
             {
@@ -767,11 +755,7 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
             style={
               {
                 "alignItems": "center",
-                "flexBasis": 0,
-                "flexGrow": 0,
-                "flexShrink": 1,
                 "gap": 16,
-                "marginBottom": 24,
               }
             }
           >

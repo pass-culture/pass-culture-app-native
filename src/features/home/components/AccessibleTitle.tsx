@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
 import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
@@ -22,7 +22,7 @@ export const AccessibleTitle: React.FC<AccessibleTitleProps> = ({
   accessibilityLabel,
   withTag,
 }) => {
-  const numberOfLines = useFontScaleValue({ default: 2, at200PercentZoom: 3 })
+  const numberOfLines = useMobileFontScaleToDisplay({ default: 2, at200PercentZoom: 3 })
 
   const { titleText, titleEmoji } = separateTitleAndEmojis(title)
   const { titleText: accessibilityLabelTitleText } = separateTitleAndEmojis(
