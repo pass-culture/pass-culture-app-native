@@ -8,8 +8,6 @@ import { ConsentStatus } from 'features/cookies/types'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offerRefacto/pages/Offer'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
@@ -75,7 +73,6 @@ describe('<OfferPage />', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
       useRoute.mockReturnValue({ params: { id: mockedOffer.id } })
-      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
       mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/116656`, {
         params: {},
         results: [],

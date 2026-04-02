@@ -7,8 +7,6 @@ import * as logClickOnProductAPI from 'libs/algolia/analytics/logClickOnOffer'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { UserProps } from 'libs/location/getDistance'
 import { LocationMode, Position } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
@@ -90,7 +88,6 @@ jest.useFakeTimers()
 
 describe('HorizontalOfferTile component', () => {
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
   })
 

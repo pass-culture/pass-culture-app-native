@@ -14,7 +14,6 @@ import {
 import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -42,7 +41,7 @@ jest.useFakeTimers()
 
 describe('CreditHeader', () => {
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+    setFeatureFlags([])
   })
 
   describe('Beneficiary is not underage', () => {

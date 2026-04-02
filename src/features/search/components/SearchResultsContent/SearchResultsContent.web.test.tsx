@@ -98,10 +98,7 @@ describe('SearchResultsContent component', () => {
   })
 
   it('should not render tabs on web when feature flag map in search activated', async () => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH,
-      RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH])
     render(reactQueryProviderHOC(<SearchResultsContent {...DEFAULT_SEARCH_RESULT_CONTENT_PROPS} />))
 
     await screen.findByTestId('searchResultsFlashlist')

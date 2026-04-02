@@ -29,10 +29,10 @@ describe('ProfileHeader', () => {
   beforeEach(() => {
     setFeatureFlags()
     mockdate.set('2021-07-01T00:00:00Z')
-    mockServer.getApi<SubscriptionStepperResponseV2>(
-      '/v2/subscription/stepper',
-      subscriptionStepperFixture
-    )
+    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
+      ...subscriptionStepperFixture,
+      nextSubscriptionStep: null,
+    })
     mockServer.getApi<BannerResponse>('/v1/banner', {
       banner: {
         name: BannerName.activation_banner,
