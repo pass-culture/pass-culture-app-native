@@ -28,7 +28,7 @@ export const ProAdvicesVenue: FunctionComponent = () => {
 
   if (!venue) return null
 
-  const title = `Les ${nbAdvices} avis par “${venue.name}”`
+  const title = `${nbAdvices} avis par “${venue.name}”`
 
   return (
     <ProAdvicesBase

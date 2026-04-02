@@ -30,8 +30,7 @@ export const ProAdvicesOffer: FunctionComponent = () => {
     enableProAdvices,
     latitude: userLocation?.latitude,
     longitude: userLocation?.longitude,
-    select: ({ proAdvices }) =>
-      offerProAdvicesToAdviceCardData([...proAdvices, ...proAdvices, ...proAdvices, ...proAdvices]),
+    select: ({ proAdvices }) => offerProAdvicesToAdviceCardData(proAdvices),
   })
 
   const { goBack } = useGoBack('Offer')

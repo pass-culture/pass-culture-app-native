@@ -56,7 +56,7 @@ describe('ProAdvicesVenue', () => {
   it('should display correctly', async () => {
     render(reactQueryProviderHOC(<ProAdvicesVenue />))
 
-    expect(await screen.findByText('Les 2 avis par “Le Petit Rintintin 1”')).toBeTruthy()
+    expect(await screen.findByText('2 avis par “Le Petit Rintintin 1”')).toBeTruthy()
   })
 
   it('should execute goBack when pressing back button', async () => {
@@ -100,7 +100,7 @@ describe('ProAdvicesVenue', () => {
     it('should scroll to selected advice on layout', async () => {
       render(reactQueryProviderHOC(<ProAdvicesVenue />))
 
-      await screen.findByText('Les 2 avis par “Le Petit Rintintin 1”')
+      await screen.findByText('2 avis par “Le Petit Rintintin 1”')
 
       await act(async () => {
         fireEvent(screen.getByTestId('advice-list'), 'onLayout', mockOnLayout)
