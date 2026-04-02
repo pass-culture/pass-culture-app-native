@@ -25,7 +25,7 @@ import { LocationMode } from 'libs/location/types'
 import * as useVenueOffersQueryAPI from 'queries/venue/useVenueOffersQuery'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
 const venueId = venueDataTest.id
@@ -74,6 +74,14 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const mockOnLayoutWithButton = {
+  nativeEvent: {
+    layout: {
+      height: 157,
+    },
+  },
+}
 
 const user = userEvent.setup()
 
@@ -261,6 +269,49 @@ describe('<VenueOffers />', () => {
         venueId: venueDataTest.id.toString(),
         adviceType: 'pro',
         originDetails: 'Lire les x avis',
+      })
+    })
+
+    it('should navigate to venue pro advices page when pressing see more button on advice', async () => {
+      renderVenueOffers({
+        advicesCardData: [...proAdvicesCardDataFixture],
+        nbAdvices: 2,
+      })
+
+      const description = screen.getAllByTestId('description')[0]
+
+      await act(async () => {
+        description?.props.onLayout(mockOnLayoutWithButton)
+      })
+
+      await user.press(screen.getByText('Voir plus'))
+
+      expect(navigate).toHaveBeenCalledWith('ProAdvicesVenue', {
+        venueId: venueDataTest.id,
+        offerId: proAdvicesCardDataFixture[0].id,
+      })
+    })
+
+    it('should trigger ConsultAdvice log when pressing see more button on advice', async () => {
+      renderVenueOffers({
+        advicesCardData: [...proAdvicesCardDataFixture],
+        nbAdvices: 2,
+      })
+
+      const description = screen.getAllByTestId('description')[0]
+
+      await act(async () => {
+        description?.props.onLayout(mockOnLayoutWithButton)
+      })
+
+      await user.press(screen.getByText('Voir plus'))
+
+      expect(analytics.logConsultAdvice).toHaveBeenNthCalledWith(1, {
+        from: 'venue',
+        venueId: venueDataTest.id.toString(),
+        adviceType: 'pro',
+        originDetails: 'Les avis des pros',
+        offerId: proAdvicesCardDataFixture[0].id.toString(),
       })
     })
 
