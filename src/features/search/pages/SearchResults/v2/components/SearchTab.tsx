@@ -42,7 +42,7 @@ const StyledSearchFilterTabContainer = styled(ViewGap)(({ theme }) => ({
 const StyledSearchFilterTab = styled(TouchableOpacity)<{ isSelected: boolean }>(
   ({ theme, isSelected }) => ({
     borderWidth: 1,
-    borderColor: '#90949D',
+    borderColor: theme.designSystem.color.border.subtle,
     borderRadius: theme.designSystem.size.borderRadius.xxl,
     paddingVertical: theme.designSystem.size.spacing.xs,
     paddingHorizontal: theme.designSystem.size.spacing.l,
@@ -51,8 +51,8 @@ const StyledSearchFilterTab = styled(TouchableOpacity)<{ isSelected: boolean }>(
 
     ...(isSelected && {
       borderWidth: 2,
-      borderColor: '#161617',
-      backgroundColor: '#F1F1F4',
+      borderColor: theme.designSystem.color.border.selected,
+      backgroundColor: theme.designSystem.color.background.disabled,
       gap: theme.designSystem.size.spacing.xs,
     }),
   })
