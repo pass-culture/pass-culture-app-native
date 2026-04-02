@@ -4,6 +4,7 @@ import React from 'react'
 import { YoungStatusType } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AppearanceButton } from 'features/profile/components/AppearanceButton/AppearanceButton'
+import { BugReportButton } from 'features/profile/components/Buttons/BugReportButton/BugReportButton'
 import { ChatbotButton } from 'features/profile/components/Buttons/ChatbotButton/ChatbotButton'
 import { HelpButtonRow } from 'features/profile/components/Buttons/HelpButton/HelpButtonRow'
 import { LocationButton } from 'features/profile/components/Buttons/LocationButton/LocationButton'
@@ -68,6 +69,7 @@ export const LoggedInContent = ({ user }: Props) => {
     HelpButton: shouldDisplayHelpButton ? <HelpButtonRow birthDate={user?.birthDate} /> : null,
     ShareBanner: <ShareBanner />,
     SocialNetwork: <SocialNetwork />,
+    BugReportButton: <BugReportButton />,
   }
 
   const isBeneficiary = user?.isBeneficiary

@@ -3,6 +3,7 @@ import React from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AppearanceButton } from 'features/profile/components/AppearanceButton/AppearanceButton'
+import { BugReportButton } from 'features/profile/components/Buttons/BugReportButton/BugReportButton'
 import { HelpButtonRow } from 'features/profile/components/Buttons/HelpButton/HelpButtonRow'
 import { LocationButton } from 'features/profile/components/Buttons/LocationButton/LocationButton'
 import { ProfileContentLayout } from 'features/profile/components/ProfileContentLayout/ProfileContentLayout'
@@ -46,6 +47,7 @@ export const LoggedOutContent = ({ user }: Props) => {
     ),
     ShareBanner: <ShareBanner />,
     SocialNetwork: <SocialNetwork />,
+    BugReportButton: <BugReportButton />,
   })
 
   return <ProfileContentLayout config={config} testID="logged-out-content" />

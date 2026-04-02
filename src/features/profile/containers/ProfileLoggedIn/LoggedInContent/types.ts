@@ -19,4 +19,6 @@ export type LoggedInContentParams = {
   ShareBanner: React.ReactNode | null
 } & {
   SocialNetwork: React.ReactNode
+} & {
+  BugReportButton: React.ReactNode
 }
