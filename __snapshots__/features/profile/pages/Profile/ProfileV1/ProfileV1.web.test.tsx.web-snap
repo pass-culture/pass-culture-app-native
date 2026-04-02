@@ -616,6 +616,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r r-marginRight-1kb76zh"
                         >
                           <div
+                            aria-label="Nouvelle fenêtre"
                             class="css-view-175oi2r"
                           >
                             <div
@@ -1910,6 +1911,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r r-marginRight-1kb76zh"
                         >
                           <div
+                            aria-label="Nouvelle fenêtre"
                             class="css-view-175oi2r"
                           >
                             <div

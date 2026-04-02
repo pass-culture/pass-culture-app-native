@@ -18,8 +18,6 @@ type LoggedOutContentParams = {
 } & {
   LocationButton: React.ReactNode
 } & {
-  ShareBanner: React.ReactNode
-} & {
   SocialNetwork: React.ReactNode
 } & {
   BugReportButton: React.ReactNode
