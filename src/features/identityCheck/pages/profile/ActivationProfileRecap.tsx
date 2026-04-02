@@ -20,8 +20,6 @@ import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -55,15 +53,10 @@ export const ActivationProfileRecap = () => {
   const saveStep = useSaveStep()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
 
-  const enableBookingFreeOfferFifteenSixteen = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
-  )
-
   const { mutateAsync: postProfile } = usePostProfileMutation({
     onSuccess: () =>
       handlePostProfileSuccess({
         isBookingFreeOffer,
-        enableBookingFreeOfferFifteenSixteen,
         storedFreeOfferId,
         navigateForwardToStepper,
         reset,
@@ -72,7 +65,6 @@ export const ActivationProfileRecap = () => {
     onError: () =>
       handlePostProfileError({
         isBookingFreeOffer,
-        enableBookingFreeOfferFifteenSixteen,
         storedFreeOfferId,
         reset,
       }),

@@ -13,7 +13,6 @@ import { useStatus } from 'features/identityCheck/pages/profile/store/statusStor
 import * as usePostProfileMutation from 'features/identityCheck/queries/usePostProfileMutation'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
@@ -109,7 +108,6 @@ describe('ProfileInformationValidationCreate', () => {
   })
 
   it('should navigate to Offer when press "Continuer"', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
     renderProfileInformationValidation()
 
     await user.press(screen.getByText('Continuer'))
@@ -122,7 +120,6 @@ describe('ProfileInformationValidationCreate', () => {
   })
 
   it('should navigate to SetName when press "Modifier mes informations"', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
     renderProfileInformationValidation()
 
     await user.press(screen.getByText('Modifier mes informations'))
@@ -158,7 +155,6 @@ describe('ProfileInformationValidationCreate', () => {
 
   it('should navigate to error screen if posting profile fails', async () => {
     mockUseMutationError({ content: {}, name: 'ApiError', statusCode: 400, message: 'erreur' })
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
     renderProfileInformationValidation()
 
     await user.press(screen.getByText('Continuer'))
