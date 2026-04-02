@@ -1,5 +1,6 @@
 export const whiteListEnv = (env, commitHash) => {
   const authorizedEnvVars = [
+    'ACCES_LIBRE_URL',
     'ACCESSIBILITY_PLAN',
     'ACCESSIBILITY',
     'ADJUST_APP_TOKEN',

@@ -28,6 +28,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
     externalAccessibilityData,
     externalAccessibilityId,
     externalAccessibilityUrl,
+    id: venueId,
   } = venue
 
   const shouldDisplayDetailedAccessibility =
@@ -54,6 +55,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
     if (shouldDisplayBasicAccessibility) {
       return (
         <BasicAccessibilityInfo
+          venueId={venueId}
           accessibility={{
             audioDisability: accessibilityData.isAccessibleAudioDisability,
             mentalDisability: accessibilityData.isAccessibleMentalDisability,
@@ -65,6 +67,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
     }
     return null
   }, [
+    venueId,
     shouldDisplayDetailedAccessibility,
     shouldDisplayBasicAccessibility,
     externalAccessibilityUrl,

@@ -67,7 +67,8 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities, acc
           links={[
             {
               externalNav: { url },
-              onBeforeNavigate: () => analytics.logAccessibilityBannerClicked(acceslibreId),
+              onBeforeNavigate: () =>
+                analytics.logAccessibilityBannerClicked({ acceslibreId, action: 'view_info' }),
               wording: 'Voir plus d’infos sur l’accessibilité du lieu',
             },
           ]}
@@ -89,10 +90,9 @@ const TextContainer = styled.View(({ theme }) => ({
 }))
 
 const FlexContainer = styled.View(({ theme }) => ({
-  ...(theme.isDesktopViewport && {
-    flex: 1,
-  }),
+  ...(theme.isDesktopViewport && { flex: 1 }),
 }))
+
 const FlexContainerWithMargin = styled(FlexContainer)(({ theme }) => ({
   ...(theme.isDesktopViewport && {
     marginLeft: theme.designSystem.size.spacing.xxxxl,
