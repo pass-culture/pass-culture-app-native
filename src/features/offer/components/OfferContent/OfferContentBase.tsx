@@ -105,6 +105,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   onShowOfferArtistsModal,
   HeaderComponent,
   CTAsComponent,
+  proAdvicesCount,
   children,
 }) => {
   const HeaderToRender = HeaderComponent || OfferHeader
@@ -341,8 +342,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               offer={offer}
               subcategory={subcategory}
               likesCount={offer.reactionsCount.likes}
-              advicesCount={offer.chroniclesCount}
-              advices={clubAdvices}
+              clubAdvicesCount={offer.chroniclesCount}
+              clubAdvices={clubAdvices}
               distance={distance}
               headlineOffersCount={headlineOffersCount}
               adviceVariantInfo={adviceVariantInfo}
@@ -350,7 +351,9 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               hasVideoCookiesConsent={hasVideoCookiesConsent}
               onVideoConsentPress={onVideoConsentPress}
               isMultiArtistsEnabled={isMultiArtistsEnabled}
-              onShowOfferArtistsModal={onShowOfferArtistsModal}>
+              onShowOfferArtistsModal={onShowOfferArtistsModal}
+              proAdvicesCount={proAdvicesCount}
+              proAdvices={proAdvices}>
               {theme.isDesktopViewport ? OfferCTAsComponent : null}
             </OfferBody>
           </BodyWrapper>
@@ -370,13 +373,16 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
                   params: { offerId: offer.id, from: 'chronicles' },
                 }}
                 onBeforeNavigate={handleOnSeeAllReviewsPress}
-              onSeeMoreButtonPress={onSeeMoreButtonPress}
-              onShowClubAdviceWritersModal={onShowClubAdviceWritersModal}
-            />
+                onSeeMoreButtonPress={onSeeMoreButtonPress}
+                onShowClubAdviceWritersModal={onShowClubAdviceWritersModal}
+              />
             </AdviceSectionWithAnchor>
           ) : null}
           {proAdvices?.length ? (
-            <StyledSectionWithDivider visible testID="pro-advice-section" gap={8}>
+            <AdviceSectionWithAnchor
+              anchorName={AnchorNames.PRO_ADVICE_SECTION}
+              sectionId="pro-advice-section"
+              anchorSectionId="pro-advice-section-anchor">
               <Gutter>
                 <InternalTouchableLink
                   as={Button}
@@ -387,7 +393,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
                   size="small"
                 />
               </Gutter>
-            </StyledSectionWithDivider>
+            </AdviceSectionWithAnchor>
           ) : null}
           <StyledSectionWithDivider
             visible

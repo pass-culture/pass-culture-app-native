@@ -3,6 +3,7 @@ export const AnchorNames = {
   OFFER_CINE_AVAILABILITIES: 'offer-cine-availabilities',
   VENUE_CINE_AVAILABILITIES: 'venue-cine-availabilities',
   CLUB_ADVICE_SECTION: 'club-advice-section',
+  PRO_ADVICE_SECTION: 'pro-advice-section',
   VIDEO_PLAYBACK: 'video-playback',
   COOKIES_ACCORDION: 'cookies-accordion',
 } as const

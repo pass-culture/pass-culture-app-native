@@ -104,6 +104,7 @@ export type OfferContentProps = {
   isMultiArtistsEnabled?: boolean
   HeaderComponent?: ComponentType<OfferHeaderComponentProps>
   CTAsComponent?: ComponentType<OfferCTAsComponentProps>
+  proAdvicesCount?: number
 }
 
 export type OfferImageContainerDimensions = {

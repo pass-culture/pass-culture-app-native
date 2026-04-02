@@ -20,6 +20,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   subcategory,
   clubAdvices,
   proAdvices,
+  proAdvicesCount,
   adviceVariantInfo,
   defaultReaction,
   headlineOffersCount,
@@ -68,7 +69,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         onShowOfferArtistsModal={onShowOfferArtistsModal}
         isMultiArtistsEnabled={isMultiArtistsEnabled}
         HeaderComponent={HeaderComponent}
-        CTAsComponent={CTAsComponent}>
+        CTAsComponent={CTAsComponent}
+        proAdvicesCount={proAdvicesCount}>
         {comingSoonFooterHeight ? (
           <ComingSoonFooterOffset
             testID="coming-soon-footer-offset"

@@ -31,6 +31,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   onShowOfferArtistsModal,
   HeaderComponent,
   CTAsComponent,
+  proAdvicesCount,
 }) => {
   const { visible, showModal, hideModal } = useModal(false)
   const headerHeight = useGetHeaderHeight()
@@ -77,6 +78,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           subcategory={subcategory}
           clubAdvices={clubAdvices}
           proAdvices={proAdvices}
+          proAdvicesCount={proAdvicesCount}
           adviceVariantInfo={adviceVariantInfo}
           onOfferPreviewPress={handlePreviewPress}
           isVideoSectionEnabled={isVideoSectionEnabled}
