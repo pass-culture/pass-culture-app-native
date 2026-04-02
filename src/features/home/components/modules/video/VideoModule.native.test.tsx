@@ -114,30 +114,34 @@ describe('VideoModule', () => {
     expect(multiOfferList).toBeOnTheScreen()
   })
 
-  it('should show SeeMore button when is multiples offers and more than three offers', async () => {
+  it('should show "Tout voir" button when is multiples offers and more than three offers', async () => {
     mockUseVideoOffersQuery.mockReturnValueOnce({
       offers: [offerFixture, offerFixture2, offerFixture3, offerFixture4],
     })
     renderVideoModule(true)
 
-    const seeMoreWording = screen.getByText('Voir tout')
+    const seeAllButton = screen.getByLabelText(
+      'Tout voir pour la sélection Lujipeka répond à vos questions !'
+    )
 
     await screen.findByLabelText(`Média vidéo : ${videoModuleFixture.title}`)
 
-    expect(seeMoreWording).toBeOnTheScreen()
+    expect(seeAllButton).toBeOnTheScreen()
   })
 
-  it('should not show SeeMore button when is multiples offers and less than three offers', async () => {
+  it('should not show "Tout voir" button when is multiples offers and less than three offers', async () => {
     mockUseVideoOffersQuery.mockReturnValueOnce({
       offers: [offerFixture, offerFixture2],
     })
     renderVideoModule(true)
 
-    const seeMoreWording = screen.queryByText('Voir tout')
+    const seeAllButton = screen.queryByLabelText(
+      'Tout voir pour la sélection Lujipeka répond à vos questions !'
+    )
 
     await screen.findByLabelText(`Média vidéo : ${videoModuleFixture.title}`)
 
-    expect(seeMoreWording).not.toBeOnTheScreen()
+    expect(seeAllButton).not.toBeOnTheScreen()
   })
 })
 

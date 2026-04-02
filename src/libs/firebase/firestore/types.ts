@@ -51,6 +51,7 @@ export enum RemoteStoreFeatureFlags {
   ENABLE_MANDATORY_UPDATE_PERSONAL_DATA = 'enableMandatoryUpdatePersonalData',
   ENABLE_PRO_REVIEWS_VENUE_AB_TESTING = 'enableProReviewsVenueABTesting',
   ENABLE_PROFILE_V2 = 'enableProfileV2',
+  ENABLE_SEE_ALL_PLAYLIST = 'enableSeeAllPlaylist',
   ENABLE_REPLICA_ALGOLIA_INDEX = 'enableReplicaAlgoliaIndex',
   ENABLE_VENUES_FROM_OFFER_INDEX = 'enableVenuesFromOfferIndex',
   SHOW_REMOTE_GENERIC_BANNER = 'showRemoteBanner',

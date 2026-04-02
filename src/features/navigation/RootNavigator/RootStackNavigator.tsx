@@ -73,6 +73,7 @@ import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
+import { VerticalPlaylistPage } from 'shared/pages/VerticalPlaylistPage/VerticalPlaylistPage'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
@@ -351,6 +352,11 @@ const rootScreens: RouteConfig[] = [
     name: 'ProAdvicesVenue',
     component: ProAdvicesVenue,
     options: { title: 'Avis du pro' },
+  },
+  {
+    name: 'VerticalPlaylistPage',
+    component: VerticalPlaylistPage,
+    options: { title: 'Liste de lecture verticale' },
   },
 ]
 
