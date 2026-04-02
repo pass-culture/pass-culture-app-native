@@ -19,4 +19,20 @@ export type LoggedInContentParams = {
   ShareBanner: React.ReactNode | null
 } & {
   SocialNetwork: React.ReactNode
+} & {
+  BugReportButton: React.ReactNode
+}
+
+export type LoggedOutContentParams = {
+  HelpButton: React.ReactNode
+} & {
+  AppearanceButton: React.ReactNode
+} & {
+  LocationButton: React.ReactNode
+} & {
+  ShareBanner: React.ReactNode
+} & {
+  SocialNetwork: React.ReactNode
+} & {
+  BugReportButton: React.ReactNode
 }

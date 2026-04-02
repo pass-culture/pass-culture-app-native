@@ -1,5 +1,4 @@
-import React from 'react'
-
+import { LoggedOutContentParams } from 'features/profile/containers/ProfileLoggedIn/LoggedInContent/types'
 import { SectionItem } from 'features/profile/helpers/createProfileContent'
 import { env } from 'libs/environment/env'
 import { Bell } from 'ui/svg/icons/Bell'
@@ -7,23 +6,10 @@ import { Bulb } from 'ui/svg/icons/Bulb'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
-import { NoPhone } from 'ui/svg/icons/NoPhone'
 
 type LoggedOutContentConfig = {
   section: string
   items: SectionItem[]
-}
-
-type LoggedOutContentParams = {
-  HelpButton: React.ReactNode
-} & {
-  AppearanceButton: React.ReactNode
-} & {
-  LocationButton: React.ReactNode
-} & {
-  ShareBanner: React.ReactNode
-} & {
-  SocialNetwork: React.ReactNode
 }
 
 export const loggedOutContentConfig = ({
@@ -32,6 +18,7 @@ export const loggedOutContentConfig = ({
   LocationButton,
   ShareBanner,
   SocialNetwork,
+  BugReportButton,
 }: LoggedOutContentParams): LoggedOutContentConfig[] => [
   {
     section: 'Paramètres',
@@ -50,7 +37,7 @@ export const loggedOutContentConfig = ({
     items: [
       { component: HelpButton, key: 'HelpButton' },
       { title: 'Chercher une info', externalNav: { url: env.ACCESSIBILITY_PLAN } },
-      { title: 'Signaler un bug', screen: 'DebugScreen', icon: NoPhone },
+      { component: BugReportButton, key: 'BugReportButton' },
     ],
   },
   {
