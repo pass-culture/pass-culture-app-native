@@ -16,9 +16,11 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { useSync } from 'features/search/helpers/useSync/useSync'
+import { SearchTab } from 'features/search/pages/SearchResults/v2/components/SearchTab'
 import { selectSearchArtists } from 'features/search/queries/useSearchArtists/selectors/selectSearchArtists'
 import { useSearchArtistsQuery } from 'features/search/queries/useSearchArtists/useSearchArtistsQuery'
 import { selectSearchOffers } from 'features/search/queries/useSearchOffersQuery/selectors/selectSearchOffers'
+import { SearchFilter } from 'features/search/queries/useSearchOffersQuery/types'
 import { useSearchOffersQuery } from 'features/search/queries/useSearchOffersQuery/useSearchOffersQuery'
 import { selectSearchVenues } from 'features/search/queries/useSearchVenuesQuery/selectors/selectSearchVenues'
 import { useSearchVenuesQuery } from 'features/search/queries/useSearchVenuesQuery/useSearchVenuesQuery'
@@ -45,6 +47,7 @@ export const SearchResults = () => {
   const currentRoute = routes?.at(-1)?.name
   useSync(currentRoute === 'SearchResults')
   const [searchIdGenerated] = useState(uuidv4)
+  const [selectedFilter, setSelectedFilter] = useState<SearchFilter | null>(null)
 
   const netInfo = useNetInfoContext()
   const { isFocusOnSuggestions, searchState, dispatch } = useSearch()
@@ -87,7 +90,7 @@ export const SearchResults = () => {
   const transformHits = useTransformOfferHits()
 
   const { data: artists, isLoading: isArtistsQueryLoading } = useSearchArtistsQuery(queryParams, {
-    select: selectSearchArtists,
+    select: (data) => selectSearchArtists(data, selectedFilter),
   })
   const {
     data: offers,
@@ -97,10 +100,10 @@ export const SearchResults = () => {
     isRefetching,
     isLoading: isOffersQueryLoading,
   } = useSearchOffersQuery(queryParams, {
-    select: (data) => selectSearchOffers({ data, transformHits }),
+    select: (data) => selectSearchOffers({ data, transformHits, selectedFilter }),
   })
   const { data: venues, isLoading: isVenuesQueryLoading } = useSearchVenuesQuery(queryParams, {
-    select: selectSearchVenues,
+    select: (data) => selectSearchVenues(data, selectedFilter),
   })
 
   const hits: SearchOfferHits = {
@@ -156,6 +159,9 @@ export const SearchResults = () => {
     showModal()
   }
 
+  const handlePressFilter = (filter: SearchFilter) =>
+    setSelectedFilter((prev) => (prev === filter ? null : filter))
+
   const searchResultHits = isArtistInSearchActive ? hits : { ...hits, artists: [] }
 
   if (!netInfo.isConnected) {
@@ -177,8 +183,9 @@ export const SearchResults = () => {
               searchInHistory={setQueryHistoryMemoized}
               withFilterButton={!isFocusOnSuggestions}
               withArrow
-              shouldDisplayHeader={!isFocusOnSuggestions}
-            />
+              shouldDisplayHeader={!isFocusOnSuggestions}>
+              <SearchTab selectedFilter={selectedFilter} onFilterPress={handlePressFilter} />
+            </SearchHeader>
           </Container>
           {isFocusOnSuggestions ? (
             <SearchSuggestions

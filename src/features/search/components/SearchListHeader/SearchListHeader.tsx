@@ -31,6 +31,7 @@ import { Typo } from 'ui/theme'
 
 interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
+  hasOfferHits?: boolean
   userData: SearchResponse<Offer[]>['userData']
   venues?: AlgoliaVenueOfferListItem[]
   venuesUserData: VenuesUserData
@@ -48,6 +49,7 @@ interface SearchListHeaderProps extends ScrollViewProps {
 
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   nbHits,
+  hasOfferHits = true,
   userData,
   venues,
   venuesUserData,
@@ -158,18 +160,20 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
           </ObservedPlaylist>
         </IOScrollView>
       ) : null}
-      <HeaderSectionContainer>
-        <TitleContainer>
-          <Title>{offerTitle}</Title>
-          <NumberOfResults nbHits={nbHits} />
-        </TitleContainer>
-        {shouldDisplayGridList ? (
-          <GridListMenu testID="grid-list-menu">
-            <ListLayoutButton {...getLayoutButtonProps(GridListLayout.LIST)} />
-            <GridLayoutButton {...getLayoutButtonProps(GridListLayout.GRID)} />
-          </GridListMenu>
-        ) : null}
-      </HeaderSectionContainer>
+      {hasOfferHits ? (
+        <HeaderSectionContainer>
+          <TitleContainer>
+            <Title>{offerTitle}</Title>
+            <NumberOfResults nbHits={nbHits} />
+          </TitleContainer>
+          {shouldDisplayGridList ? (
+            <GridListMenu testID="grid-list-menu">
+              <ListLayoutButton {...getLayoutButtonProps(GridListLayout.LIST)} />
+              <GridLayoutButton {...getLayoutButtonProps(GridListLayout.GRID)} />
+            </GridListMenu>
+          ) : null}
+        </HeaderSectionContainer>
+      ) : null}
     </View>
   )
 }

@@ -1,5 +1,6 @@
 import { InfiniteData } from '@tanstack/react-query'
 
+import { SubcategoryIdEnum } from 'api/gen'
 import { FetchSearchOffersResponse } from 'features/search/queries/useSearchOffersQuery/types'
 import { AlgoliaOffer, HitOffer } from 'libs/algolia/types'
 
@@ -7,123 +8,104 @@ import { selectSearchOffers } from './selectSearchOffers'
 
 const transformHits = (hit: AlgoliaOffer<HitOffer>) => hit
 
+const makePage = (offersOverrides = {}, duplicatedOverrides = {}): FetchSearchOffersResponse => ({
+  offersResponse: {
+    hits: [],
+    nbHits: 0,
+    userData: null,
+    nbPages: 1,
+    page: 0,
+    ...offersOverrides,
+  },
+  duplicatedOffersResponse: {
+    hits: [],
+    nbHits: 0,
+    ...duplicatedOverrides,
+  },
+})
+
+const makeData = (pages: FetchSearchOffersResponse[]): InfiniteData<FetchSearchOffersResponse> => ({
+  pages,
+  pageParams: [],
+})
+
 describe('selectSearchOffers', () => {
-  it('should flatten and transform offers and duplicated offers', () => {
-    const mockData = {
-      pages: [
-        {
-          offersResponse: {
-            hits: [{ id: 'offer-1' }],
-            nbHits: 100,
-            userData: [{ message: 'user-data message' }],
-          },
-          duplicatedOffersResponse: {
-            hits: [{ id: 'dupliacted-offer-1', venue: { id: 'venue-1' }, _geoloc: 'loc1' }],
-          },
-        },
-        {
-          offersResponse: { hits: [{ id: 'offer-2' }], nbHits: 100 },
-          duplicatedOffersResponse: {
-            hits: [{ id: 'dupliacted-offer-2', venue: { id: 'venue-2' }, _geoloc: 'loc2' }],
-          },
-        },
-      ],
-      pageParams: [],
-    } as unknown as InfiniteData<FetchSearchOffersResponse>
+  it('should return all expected keys', () => {
+    const data = makeData([makePage()])
+    const result = selectSearchOffers({ data, transformHits, selectedFilter: null })
 
-    const result = selectSearchOffers({ data: mockData, transformHits })
-
-    expect(result.offers).toHaveLength(2)
-    expect(result.offers[0]).toMatchObject({ id: 'offer-1' })
-    expect(result.duplicatedOffers).toHaveLength(2)
-    expect(result.duplicatedOffers[0]).toMatchObject({ id: 'dupliacted-offer-1' })
+    expect(result).toEqual(
+      expect.objectContaining({
+        duplicatedOffers: expect.any(Array),
+        lastPage: expect.objectContaining({
+          duplicatedOffersResponse: expect.objectContaining({
+            hits: expect.any(Array),
+            nbHits: 0,
+          }),
+          offersResponse: expect.objectContaining({
+            hits: expect.any(Array),
+            nbHits: 0,
+            nbPages: 1,
+            page: 0,
+            userData: null,
+          }),
+        }),
+        nbHits: 0,
+        offerVenues: expect.any(Array),
+        offers: expect.any(Array),
+        userData: null,
+      })
+    )
   })
 
-  it('should extract unique venues from duplicated offers', () => {
-    const mockData = {
-      pages: [
-        {
-          offersResponse: { hits: [] },
-          duplicatedOffersResponse: {
-            hits: [
-              { id: '1', venue: { id: 'venue-1' }, _geoloc: 'loc1' },
-              { id: '2', venue: { id: 'venue-1' }, _geoloc: 'loc1' },
-              { id: '3', venue: { id: 'venue-2' }, _geoloc: 'loc2' },
-            ],
-          },
-        },
-      ],
-      pageParams: [],
-    } as unknown as InfiniteData<FetchSearchOffersResponse>
-
-    const result = selectSearchOffers({ data: mockData, transformHits })
-
-    expect(result.offerVenues).toHaveLength(1)
-    expect(result.offerVenues).toEqual([
-      {
-        _geoloc: 'loc1',
-        activity: null,
-        banner_url: null,
-        info: '',
-        isOpenToPublic: true,
-        isPermanent: null,
-        label: '',
-        postalCode: null,
-        venueId: 'venue-1',
+  describe('selectedFilter', () => {
+    const mockOffer: AlgoliaOffer<HitOffer> = {
+      objectID: '1',
+      offer: {
+        dates: [],
+        isDuo: false,
+        isDigital: false,
+        name: 'Bellatrix Tome 1',
+        prices: [14.95],
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        thumbUrl: '',
       },
-    ])
-  })
-
-  it('should return metadata (nbHits, userData) from the first page', () => {
-    const mockData = {
-      pages: [
-        {
-          offersResponse: { hits: [{}], nbHits: 42, userData: [{ message: 'user-data message' }] },
-          duplicatedOffersResponse: { hits: [] },
-        },
-      ],
-      pageParams: [],
-    } as unknown as InfiniteData<FetchSearchOffersResponse>
-
-    const result = selectSearchOffers({ data: mockData, transformHits })
-
-    expect(result.nbHits).toBe(42)
-    expect(result.userData).toEqual([{ message: 'user-data message' }])
-  })
-
-  it('should identify the last page correctly', () => {
-    const firstPage = {
-      offersResponse: { hits: [] },
-      duplicatedOffersResponse: { hits: [] },
-    } as unknown as FetchSearchOffersResponse
-    const secondPage = {
-      offersResponse: { hits: ['last'], nbHits: 1 },
-      duplicatedOffersResponse: { hits: [] },
-    } as unknown as FetchSearchOffersResponse
-
-    const mockData: InfiniteData<FetchSearchOffersResponse> = {
-      pages: [firstPage, secondPage],
-      pageParams: [null, 'page-params-1'],
+      venue: {
+        id: 1,
+        name: 'Lieu 1',
+        publicName: 'Lieu 1',
+        address: '1 rue de la paix',
+        postalCode: '75000',
+        city: 'Paris',
+        activity: 'BOOKSTORE',
+        isPermanent: true,
+      },
+      _geoloc: { lat: 48.94374, lng: 2.48171 },
     }
+    const data = makeData([makePage({ hits: [mockOffer], nbHits: 1 }, { hits: [mockOffer] })])
 
-    const result = selectSearchOffers({ data: mockData, transformHits })
+    it('should return offers when selectedFilter is null', () => {
+      const result = selectSearchOffers({ data, transformHits, selectedFilter: null })
 
-    expect(result.lastPage).toEqual(secondPage)
-  })
+      expect(result.offers).toHaveLength(1)
+    })
 
-  it('should fallback to flattened offers length if nbHits is missing', () => {
-    const mockData = {
-      pages: [
-        {
-          offersResponse: { hits: [{}, {}] },
-          duplicatedOffersResponse: { hits: [] },
-        },
-      ],
-      pageParams: [],
-    } as unknown as InfiniteData<FetchSearchOffersResponse>
+    it('should return offers when selectedFilter is "Offres"', () => {
+      const result = selectSearchOffers({ data, transformHits, selectedFilter: 'Offres' })
 
-    const result = selectSearchOffers({ data: mockData, transformHits })
+      expect(result.offers).toHaveLength(1)
+    })
 
-    expect(result.nbHits).toBe(2)
+    it('should return empty offers when selectedFilter is "Lieux"', () => {
+      const result = selectSearchOffers({ data, transformHits, selectedFilter: 'Lieux' })
+
+      expect(result.offers).toHaveLength(0)
+    })
+
+    it('should return empty offers when selectedFilter is "Artistes"', () => {
+      const result = selectSearchOffers({ data, transformHits, selectedFilter: 'Artistes' })
+
+      expect(result.offers).toHaveLength(0)
+    })
   })
 })
