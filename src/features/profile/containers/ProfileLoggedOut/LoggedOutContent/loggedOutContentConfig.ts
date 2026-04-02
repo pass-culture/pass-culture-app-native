@@ -1,4 +1,3 @@
-import { LoggedOutContentParams } from 'features/profile/containers/ProfileLoggedIn/LoggedInContent/types'
 import { SectionItem } from 'features/profile/helpers/createProfileContent'
 import { env } from 'libs/environment/env'
 import { Bell } from 'ui/svg/icons/Bell'
@@ -10,6 +9,20 @@ import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 type LoggedOutContentConfig = {
   section: string
   items: SectionItem[]
+}
+
+type LoggedOutContentParams = {
+  HelpButton: React.ReactNode
+} & {
+  AppearanceButton: React.ReactNode
+} & {
+  LocationButton: React.ReactNode
+} & {
+  ShareBanner: React.ReactNode
+} & {
+  SocialNetwork: React.ReactNode
+} & {
+  BugReportButton: React.ReactNode
 }
 
 export const loggedOutContentConfig = ({

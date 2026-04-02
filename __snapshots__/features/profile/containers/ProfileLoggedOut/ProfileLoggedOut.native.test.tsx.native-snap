@@ -1064,6 +1064,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Nouvelle fenêtre"
                     height={24}
                     width={24}
                   >

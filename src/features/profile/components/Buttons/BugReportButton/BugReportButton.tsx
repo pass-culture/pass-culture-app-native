@@ -5,7 +5,7 @@ import { StyledSectionRow } from 'features/profile/components/SectionRowWithPadd
 import { buildZendeskUrlForDebug } from 'features/profile/helpers/buildZendeskUrl'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { useVersion } from 'ui/hooks/useVersion'
-import { NoPhone } from 'ui/svg/icons/NoPhone'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 
 export const BugReportButton: FC = () => {
   const deviceInfo = useDeviceInfo()
@@ -20,7 +20,7 @@ export const BugReportButton: FC = () => {
       title="Signaler un bug"
       type="navigable"
       externalNav={{ url }}
-      icon={NoPhone}
+      icon={ExternalSite}
     />
   )
 }
