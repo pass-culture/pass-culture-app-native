@@ -42,6 +42,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -99,6 +100,7 @@ export const Venue: FunctionComponent = () => {
   const isUserUnderage = useIsUserUnderage()
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const transformHits = useTransformOfferHits()
+  const segment = useABSegment(['A', 'B'])
 
   const { data: gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylistsQuery({
     venue,
@@ -128,7 +130,7 @@ export const Venue: FunctionComponent = () => {
 
   const { data: advices } = useVenueProAdvicesQuery({
     venueId: params.id,
-    enableProAdvices,
+    enableProAdvices: enableProAdvices && segment === 'A',
   })
   const nbAdvices = advices?.nbResults ?? 0
 
@@ -147,8 +149,6 @@ export const Venue: FunctionComponent = () => {
   const labelMapping = useCategoryHomeLabelMapping()
   const enableVenueCalendar = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VENUE_CALENDAR)
   const shouldDisplayVenueCalendar = enableVenueCalendar && venueOffers?.hits.length === 1
-  // To facilitate QA for the moment segment hardcoded (after => useABSegment(['A', 'B']))
-  const segment = 'A'
 
   const headlineOfferData = offerToHeadlineOfferData({
     offer: venueOffers?.headlineOffer,
