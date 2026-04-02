@@ -9,8 +9,6 @@ import { SSOButtonGoogle } from 'features/auth/components/SSOButton/SSOButtonGoo
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -54,7 +52,6 @@ describe('<SSOButton />', () => {
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
   })
 
   it('should sign in with device info when sso button is clicked', async () => {
