@@ -121,7 +121,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],

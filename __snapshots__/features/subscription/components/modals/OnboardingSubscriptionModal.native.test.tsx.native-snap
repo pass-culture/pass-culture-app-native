@@ -121,7 +121,7 @@ exports[`<OnboardingSubscriptionModal /> should display correctly 1`] = `
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],

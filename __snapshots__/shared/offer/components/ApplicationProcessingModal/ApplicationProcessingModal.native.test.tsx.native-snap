@@ -121,7 +121,7 @@ exports[`<ApplicationProcessingModal /> should match previous snapshot 1`] = `
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],

@@ -121,7 +121,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],
@@ -806,7 +806,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],
@@ -1491,7 +1491,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],
@@ -2176,7 +2176,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],
@@ -2861,7 +2861,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],
@@ -3546,7 +3546,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],

@@ -121,7 +121,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],

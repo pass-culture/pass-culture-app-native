@@ -139,7 +139,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],

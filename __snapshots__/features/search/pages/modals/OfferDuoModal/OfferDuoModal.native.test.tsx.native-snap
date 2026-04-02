@@ -121,7 +121,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
               },
               {
                 "justifyContent": "flex-end",
-                "margin": 0,
+                "margin": "auto",
               },
             ],
           ],
