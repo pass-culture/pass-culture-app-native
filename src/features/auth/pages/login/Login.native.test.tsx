@@ -556,6 +556,27 @@ describe('<Login/>', () => {
 
       expect(await screen.findByText('ou')).toBeOnTheScreen()
     })
+
+    it('should display sso identifier forgotten when APPLE SSO is enabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+      renderLogin()
+
+      expect(await screen.findByText('Je ne me souviens pas de mes identifiants')).toBeOnTheScreen()
+    })
+
+    it('should display sso identifier forgotten when google SSO is enabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
+      renderLogin()
+
+      expect(await screen.findByText('Je ne me souviens pas de mes identifiants')).toBeOnTheScreen()
+    })
+
+    it('should not display sso identifier forgotten when SSO are disabled', async () => {
+      setFeatureFlags([])
+      renderLogin()
+
+      expect(screen.queryByText('Je ne me souviens pas de mes identifiants')).not.toBeOnTheScreen()
+    })
   })
 
   describe('Login comes from adding an offer to favorite', () => {
