@@ -74,6 +74,8 @@ export const VenueBody: FunctionComponent<Props> = ({
       from: 'venue',
       venueId: venue.id,
       isHeadline: true,
+      adviceType: 'pro',
+      originDetail: 'advice',
     })
   }
 
