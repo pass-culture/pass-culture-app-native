@@ -10,10 +10,9 @@ import * as CulturalSurveyContextProviderModule from 'features/culturalSurvey/co
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
 import { useCulturalSurveyQuestionsQuery as mockedUseCulturalSurveyQuestions } from 'features/culturalSurvey/queries/__mocks__/useCulturalSurveyQuestionsQuery'
 import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/queries/useCulturalSurveyAnswersMutation'
-import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import {
   bottomScrollEvent,
   fireEvent,
@@ -122,31 +121,7 @@ describe('CulturalSurveyQuestions page', () => {
     expect(dispatch).toHaveBeenCalledWith({ type: 'FLUSH_ANSWERS' })
   })
 
-  it('should navigate to Home if on lastQuestion and API call is successful and FF ENABLE_CULTURAL_SURVEY_MANDATORY is disabled', async () => {
-    mockUseGetNextQuestionReturnValue = {
-      isCurrentQuestionLastQuestion: true,
-      nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
-    }
-    render(<CulturalSurveyQuestions />)
-
-    await user.press(screen.getByLabelText('Valider le formulaire'))
-
-    expect(reset).toHaveBeenCalledWith({
-      index: 1,
-      routes: [
-        { name: navigateToHomeConfig.screen },
-        {
-          name: 'SubscriptionStackNavigator',
-          state: {
-            routes: [{ name: 'CulturalSurveyThanks' }],
-          },
-        },
-      ],
-    })
-  })
-
-  it('should navigate to CulturalSurveyThanks if on lastQuestion and API call is successful and FF ENABLE_CULTURAL_SURVEY_MANDATORY is enabled', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
+  it('should navigate to CulturalSurveyThanks if on lastQuestion and API call is successful', async () => {
     mockUseGetNextQuestionReturnValue = {
       isCurrentQuestionLastQuestion: true,
       nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,

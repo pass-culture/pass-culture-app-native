@@ -172,13 +172,13 @@ describe('useStepperInfo', () => {
   })
 
   describe('confirmation step', () => {
-    it('should have firstScreen to "IdentityCheckHonor"', () => {
+    it('should have firstScreen to "CulturalSurveyIntro"', () => {
       const { stepsDetails } = useStepperInfo()
       const confirmationStep = stepsDetails.find(
         (step) => step.name === IdentityCheckStep.CONFIRMATION
       )
 
-      expect(confirmationStep?.firstScreen).toEqual('IdentityCheckHonor')
+      expect(confirmationStep?.firstScreen).toEqual('CulturalSurveyIntro')
     })
   })
 })

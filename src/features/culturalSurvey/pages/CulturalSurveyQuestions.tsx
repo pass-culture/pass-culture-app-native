@@ -17,15 +17,13 @@ import { useCulturalSurveyProgress } from 'features/culturalSurvey/helpers/useCu
 import { useGetNextQuestion } from 'features/culturalSurvey/helpers/useGetNextQuestion'
 import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/queries/useCulturalSurveyAnswersMutation'
 import { useCulturalSurveyQuestionsQuery } from 'features/culturalSurvey/queries/useCulturalSurveyQuestionsQuery'
-import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
 import { Gradient } from 'ui/components/Gradient'
@@ -37,10 +35,6 @@ import { Page } from 'ui/pages/Page'
 import { Spacer } from 'ui/theme'
 
 export function CulturalSurveyQuestions() {
-  const enableCulturalSurveyMandatory = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY
-  )
-
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
 
   const { push, reset } = useNavigation<UseNavigationType>()
@@ -75,36 +69,19 @@ export function CulturalSurveyQuestions() {
   const onSuccess = async () => {
     await refetchUser()
     dispatch({ type: 'FLUSH_ANSWERS' })
-    performReset()
-  }
-
-  const performReset = () => {
-    if (enableCulturalSurveyMandatory) {
-      reset({
-        index: 1,
-        routes: [
-          {
-            name: 'SubscriptionStackNavigator',
-            state: { routes: [{ name: 'Stepper' }] },
-          },
-          {
-            name: 'SubscriptionStackNavigator',
-            state: { routes: [{ name: 'CulturalSurveyThanks' }] },
-          },
-        ],
-      })
-    } else {
-      reset({
-        index: 1,
-        routes: [
-          { name: navigateToHomeConfig.screen },
-          {
-            name: 'SubscriptionStackNavigator',
-            state: { routes: [{ name: 'CulturalSurveyThanks' }] },
-          },
-        ],
-      })
-    }
+    reset({
+      index: 1,
+      routes: [
+        {
+          name: 'SubscriptionStackNavigator',
+          state: { routes: [{ name: 'Stepper' }] },
+        },
+        {
+          name: 'SubscriptionStackNavigator',
+          state: { routes: [{ name: 'CulturalSurveyThanks' }] },
+        },
+      ],
+    })
   }
 
   const onError = (error: unknown) => {
