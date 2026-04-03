@@ -16,7 +16,7 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import { adviceVariantInfoFixture } from 'features/advices/fixtures/adviceVariantInfo.fixture'
-import { proAdvicesFixture } from 'features/advices/fixtures/offerProAdvices.fixture'
+import { offerProAdvicesCardDataFixture } from 'features/advices/fixtures/offerProAdvices.fixture'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState } from 'features/cookies/enums'
 import * as Cookies from 'features/cookies/helpers/useCookies'
@@ -29,7 +29,6 @@ import { CineContentCTAID } from 'features/offer/components/OfferCine/CineConten
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
-import { offerProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/offerProAdvicesToAdviceCardData/offerProAdvicesToAdviceCardData'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
@@ -732,7 +731,7 @@ describe('<OfferContent />', () => {
         })
       })
 
-      it('should register club-advice-section anchor when advices are present', async () => {
+      it('should register club-advice-section anchor when club advices are present', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
@@ -753,7 +752,7 @@ describe('<OfferContent />', () => {
       it('should display "Lire les X avis des pros" button', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
-          proAdvices: offerProAdvicesToAdviceCardData([...proAdvicesFixture]),
+          proAdvices: [...offerProAdvicesCardDataFixture],
         })
 
         expect(await screen.findByText('Lire les 2 avis des pros')).toBeOnTheScreen()
@@ -762,13 +761,30 @@ describe('<OfferContent />', () => {
       it('should navigate to offer pro advices page when pressing "Lire les X avis des pros" button', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
-          proAdvices: offerProAdvicesToAdviceCardData([...proAdvicesFixture]),
+          proAdvices: [...offerProAdvicesCardDataFixture],
         })
 
         await user.press(await screen.findByText('Lire les 2 avis des pros'))
 
         expect(mockNavigate).toHaveBeenNthCalledWith(1, 'ProAdvicesOffer', {
           offerId: 116656,
+        })
+      })
+
+      it('should register pro-advice-section anchor when pro advices are present', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+          proAdvices: [...offerProAdvicesCardDataFixture],
+        })
+
+        const anchorView = await screen.findByTestId('pro-advice-section-anchor')
+
+        act(() => {
+          anchorView.props.onLayout()
+        })
+
+        await waitFor(() => {
+          expect(mockRegisterAnchor).toHaveBeenCalledWith('pro-advice-section', expect.any(Object))
         })
       })
     })

@@ -26,7 +26,8 @@ import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
-import { ClubAdviceSectionWithAnchor } from 'features/offer/components/OfferContent/ClubAdviceSection/ClubAdviceSectionWithAnchor'
+import { AdviceSectionWithAnchor } from 'features/offer/components/OfferContent/AdviceSection/AdviceSectionWithAnchor'
+import { ClubAdviceSection } from 'features/offer/components/OfferContent/ClubAdviceSection/ClubAdviceSection'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { OfferContentCTAs } from 'features/offer/components/OfferFooter/OfferContentCTAs'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
@@ -53,6 +54,7 @@ import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImage
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { ImageWithCredit } from 'shared/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -103,6 +105,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   onShowOfferArtistsModal,
   HeaderComponent,
   CTAsComponent,
+  proAdvicesCount,
   children,
 }) => {
   const HeaderToRender = HeaderComponent || OfferHeader
@@ -339,8 +342,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               offer={offer}
               subcategory={subcategory}
               likesCount={offer.reactionsCount.likes}
-              advicesCount={offer.chroniclesCount}
-              advices={clubAdvices}
+              clubAdvicesCount={offer.chroniclesCount}
+              clubAdvices={clubAdvices}
               distance={distance}
               headlineOffersCount={headlineOffersCount}
               adviceVariantInfo={adviceVariantInfo}
@@ -348,23 +351,38 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               hasVideoCookiesConsent={hasVideoCookiesConsent}
               onVideoConsentPress={onVideoConsentPress}
               isMultiArtistsEnabled={isMultiArtistsEnabled}
-              onShowOfferArtistsModal={onShowOfferArtistsModal}>
+              onShowOfferArtistsModal={onShowOfferArtistsModal}
+              proAdvicesCount={proAdvicesCount}
+              proAdvices={proAdvices}>
               {theme.isDesktopViewport ? OfferCTAsComponent : null}
             </OfferBody>
           </BodyWrapper>
 
           {clubAdvices?.length ? (
-            <ClubAdviceSectionWithAnchor
-              advices={clubAdvices}
-              adviceVariantInfo={adviceVariantInfo}
-              offer={offer}
-              onSeeMoreButtonPress={onSeeMoreButtonPress}
-              onShowClubAdviceWritersModal={onShowClubAdviceWritersModal}
-              onSeeAllReviewsPress={handleOnSeeAllReviewsPress}
-            />
+            <AdviceSectionWithAnchor
+              anchorName={AnchorNames.CLUB_ADVICE_SECTION}
+              sectionId="club-advice-section"
+              anchorSectionId="club-advice-section-anchor">
+              <ClubAdviceSection
+                ctaLabel={offer.chroniclesCount ? `Lire les ${offer.chroniclesCount} avis` : ''}
+                variantInfo={adviceVariantInfo}
+                data={clubAdvices}
+                // It's dirty but necessary to use from parameter for the logs
+                navigateTo={{
+                  screen: 'ClubAdvices',
+                  params: { offerId: offer.id, from: 'chronicles' },
+                }}
+                onBeforeNavigate={handleOnSeeAllReviewsPress}
+                onSeeMoreButtonPress={onSeeMoreButtonPress}
+                onShowClubAdviceWritersModal={onShowClubAdviceWritersModal}
+              />
+            </AdviceSectionWithAnchor>
           ) : null}
           {proAdvices?.length ? (
-            <StyledSectionWithDivider visible testID="pro-advice-section" gap={8}>
+            <AdviceSectionWithAnchor
+              anchorName={AnchorNames.PRO_ADVICE_SECTION}
+              sectionId="pro-advice-section"
+              anchorSectionId="pro-advice-section-anchor">
               <Gutter>
                 <InternalTouchableLink
                   as={Button}
@@ -375,7 +393,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
                   size="small"
                 />
               </Gutter>
-            </StyledSectionWithDivider>
+            </AdviceSectionWithAnchor>
           ) : null}
           <StyledSectionWithDivider
             visible

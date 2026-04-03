@@ -3,80 +3,100 @@ import styled from 'styled-components/native'
 
 import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { InfoCounter } from 'features/offer/components/InfoCounter/InfoCounter'
+import { OfferAdvicesCounter } from 'features/offer/components/OfferAdvicesCounter/OfferAdvicesCounter'
 import { formatLikesCounter } from 'features/offer/helpers/formatLikesCounter/formatLikesCounter'
 import { getRecommendationText } from 'features/offer/helpers/getRecommendationText/getRecommendationText'
+import { getAdvicesStatus } from 'features/offer/helpers/offerAdvices'
+import { AdvicesStatus } from 'features/offer/types'
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
+import { ProEditoCertification } from 'ui/svg/ProEditoCertification'
 import { Star } from 'ui/svg/Star'
 
 type Props = {
   likesCount?: number
-  advicesCount?: number | null
+  clubAdvicesCount?: number | null
   headlineOffersCount?: number
   adviceVariantInfo: AdviceVariantInfo
-  advices?: AdviceCardData[]
+  clubAdvices?: AdviceCardData[]
+  proAdvicesCount?: number
+  proAdvices?: AdviceCardData[]
+  enableProReviewNewTag?: boolean
 }
 
 export const OfferReactionSection: FunctionComponent<Props> = ({
   likesCount,
-  advicesCount,
+  clubAdvicesCount,
   headlineOffersCount,
   adviceVariantInfo,
-  advices,
+  clubAdvices,
+  proAdvicesCount,
+  proAdvices,
+  enableProReviewNewTag,
 }) => {
   const scrollToAnchor = useScrollToAnchor()
-  const hasPublishedAdvices = (advices?.length ?? 0) > 0
-  const hasUnpublishedAdvices = (advicesCount ?? 0) - (advices?.length ?? 0) > 0
-  const advicesCounter = advicesCount ?? 0
+
+  const clubAdvicesStatus: AdvicesStatus = getAdvicesStatus(clubAdvicesCount, clubAdvices?.length)
+  const proAdvicesStatus: AdvicesStatus = getAdvicesStatus(proAdvicesCount, proAdvices?.length)
 
   const likesCounterElement = likesCount ? (
     <LikesInfoCounter text={formatLikesCounter(likesCount)} />
   ) : null
 
-  const handleAdvicesPress = () => {
-    scrollToAnchor(AnchorNames.CLUB_ADVICE_SECTION)
-  }
+  const clubAdvicesCounterElement = (
+    <OfferAdvicesCounter
+      testID="clubAdvicesCounter"
+      publishedText={`${clubAdvicesStatus.total} avis ${adviceVariantInfo.labelReaction}`}
+      unpublishedText={`Recommandé par le ${adviceVariantInfo.labelReaction}`}
+      icon={adviceVariantInfo.SmallIcon}
+      advicesStatus={clubAdvicesStatus}
+      onPress={() => scrollToAnchor(AnchorNames.CLUB_ADVICE_SECTION)}
+    />
+  )
 
-  const getAdvicesCounterElement = (): React.ReactNode => {
-    if (hasPublishedAdvices) {
-      return (
-        <TouchableOpacity onPress={handleAdvicesPress} testID="advicesCounter">
-          <AdvicesInfoCounter
-            text={`${advicesCounter} avis ${adviceVariantInfo.labelReaction}`}
-            icon={adviceVariantInfo.SmallIcon}
-          />
-        </TouchableOpacity>
-      )
-    }
-    if (hasUnpublishedAdvices) {
-      return (
-        <AdvicesInfoCounter
-          text={`Recommandé par le ${adviceVariantInfo.labelReaction}`}
-          icon={adviceVariantInfo.SmallIcon}
-        />
-      )
-    }
-
-    return null
-  }
-
-  const advicesCounterElement = getAdvicesCounterElement()
+  const proAdvicesCounterElement = (
+    <ProAdvicesCounterContainer gap={2}>
+      <OfferAdvicesCounter
+        testID="proAdvicesCounter"
+        publishedText={`${proAdvicesStatus.total} avis des pros`}
+        unpublishedText="Recommandé par les pros"
+        icon={<SmallProEditoIcon />}
+        advicesStatus={proAdvicesStatus}
+        onPress={() => scrollToAnchor(AnchorNames.PRO_ADVICE_SECTION)}
+      />
+      {enableProReviewNewTag ? (
+        <TagContainer>
+          <Tag variant={TagVariant.NEW} label="Nouveau" />
+        </TagContainer>
+      ) : null}
+    </ProAdvicesCounterContainer>
+  )
 
   const headlineOffersCounterElement = headlineOffersCount ? (
     <HeadlineOffersCount text={getRecommendationText(headlineOffersCount)} />
   ) : null
 
-  if (!(likesCounterElement || advicesCounterElement || headlineOffersCounterElement)) return null
+  if (
+    !(
+      likesCounterElement ||
+      clubAdvicesCounterElement ||
+      headlineOffersCounterElement ||
+      proAdvicesCounterElement
+    )
+  )
+    return null
 
   return (
     <ViewGap gap={4}>
-      {likesCounterElement || advicesCounterElement ? (
+      {likesCounterElement || clubAdvicesCounterElement || proAdvicesCounterElement ? (
         <InfosCounterContainer gap={2}>
           {likesCounterElement}
-          {advicesCounterElement}
+          {clubAdvicesCounterElement}
+          {proAdvicesCounterElement}
         </InfosCounterContainer>
       ) : null}
       {headlineOffersCounterElement}
@@ -86,6 +106,8 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
 
 const InfosCounterContainer = styled(ViewGap)({
   flexDirection: 'row',
+  flexWrap: 'wrap',
+  alignItems: 'center',
 })
 
 const ThumbUpIcon = styled(ThumbUpFilled).attrs(({ theme }) => ({
@@ -101,10 +123,20 @@ const LikesInfoCounter = styled(InfoCounter).attrs<{ icon?: React.ReactNode }>({
   icon: <ThumbUpIcon testID="likesCounterIcon" />,
 })``
 
-const AdvicesInfoCounter = styled(InfoCounter).attrs<{ icon: React.ReactNode }>(({ icon }) => ({
-  icon,
-}))``
-
 const HeadlineOffersCount = styled(InfoCounter).attrs<{ icon?: React.ReactNode }>({
   icon: <StarIcon testID="headlineOffersCounterIcon" />,
 })``
+
+const SmallProEditoIcon = styled(ProEditoCertification).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.proEdito,
+  size: theme.icons.sizes.small,
+}))``
+
+const TagContainer = styled.View({
+  alignItems: 'center',
+})
+
+const ProAdvicesCounterContainer = styled(ViewGap)({
+  flexDirection: 'row',
+  alignItems: 'center',
+})
