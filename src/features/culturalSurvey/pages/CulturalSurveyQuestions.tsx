@@ -36,6 +36,7 @@ import { Spacer } from 'ui/theme'
 
 export function CulturalSurveyQuestions() {
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
+  const [isAtBottom, setIsAtBottom] = useState(false)
 
   const { push, reset } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'CulturalSurveyQuestions'>>()
@@ -160,7 +161,9 @@ export function CulturalSurveyQuestions() {
   const pageSubtitle = 'Tu peux sélectionner une ou plusieurs réponses.'
 
   function onScroll({ nativeEvent }: { nativeEvent: NativeScrollEvent }) {
-    if (isCloseToBottom(nativeEvent)) logCulturalSurveyScrolledToBottom()
+    const closeToBottom = isCloseToBottom(nativeEvent)
+    setIsAtBottom(closeToBottom)
+    if (closeToBottom) logCulturalSurveyScrolledToBottom()
   }
 
   const checkboxOptions: CheckboxGroupOption<CulturalSurveyAnswerEnum>[] =
@@ -192,13 +195,11 @@ export function CulturalSurveyQuestions() {
   return (
     <Page>
       <Spacer.TopScreen />
-
       <CulturalSurveyPageHeader
         progress={culturalSurveyProgress}
         title={mapQuestionIdToPageTitle(culturalSurveyQuestion.id)}
         onGoBack={onGoBack}
       />
-
       <ChildrenScrollView
         bottomChildrenViewHeight={bottomChildrenViewHeight}
         onScroll={onScroll}
@@ -215,7 +216,7 @@ export function CulturalSurveyQuestions() {
         />
       </ChildrenScrollView>
 
-      <Gradient bottomViewHeight={bottomChildrenViewHeight} />
+      {isAtBottom ? null : <Gradient bottomViewHeight={bottomChildrenViewHeight} />}
       <FixedBottomChildrenView onLayout={onFixedBottomChildrenViewLayout}>
         <Button
           fullWidth
