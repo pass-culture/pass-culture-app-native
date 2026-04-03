@@ -62,7 +62,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_ARTISTS_SUGGESTIONS_IN_SEARCH = 'wipArtistsSuggestionsInSearch',
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
   WIP_ENABLE_APPLE_SSO = 'wipEnableAppleSSO',
-  WIP_ENABLE_GOOGLE_SSO = 'wipEnableGoogleSSO',
   WIP_ENABLE_GRID_LIST = 'wipEnableGridList',
   WIP_ENABLE_VENUE_CALENDAR = 'wipEnableVenueCalendar',
   WIP_ENABLE_VOLUNTEER = 'wipEnableVolunteer',

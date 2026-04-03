@@ -70,7 +70,7 @@ setSettingsMock({ patchSettingsWith: { isRecaptchaEnabled: false } })
 
 describe('<Login/>', () => {
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
+    setFeatureFlags([])
     mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
@@ -230,8 +230,7 @@ describe('<Login/>', () => {
     expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
   })
 
-  it('should redirect to home WHEN signin is successful with WIP_ENABLE_GOOGLE_SSO', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
+  it('should redirect to home WHEN signin is successful with GOOGLE_SSO', async () => {
     mockMeApiCall({
       showEligibleCard: false,
     } as UserProfileResponseWithoutSurvey)
@@ -531,7 +530,6 @@ describe('<Login/>', () => {
     })
 
     it('should not display Apple SSO button when Apple SSO feature flag is disabled', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
       renderLogin()
 
       await screen.findByText('Connecte-toi')
@@ -539,19 +537,15 @@ describe('<Login/>', () => {
       expect(screen.queryByText('Se connecter avec Apple')).not.toBeOnTheScreen()
     })
 
-    it('should display both SSO buttons when both feature flags are enabled', async () => {
-      setFeatureFlags([
-        RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO,
-        RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO,
-      ])
+    it('should display both SSO buttons when apple sso feature flags is enabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
       renderLogin()
 
       expect(await screen.findByTestId('Se connecter avec Google')).toBeOnTheScreen()
       expect(screen.getByText('Se connecter avec Apple')).toBeOnTheScreen()
     })
 
-    it('should display separator when only Apple SSO is enabled', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+    it('should always display separator', async () => {
       renderLogin()
 
       expect(await screen.findByText('ou')).toBeOnTheScreen()
@@ -564,18 +558,10 @@ describe('<Login/>', () => {
       expect(await screen.findByText('Je ne me souviens pas de mes identifiants')).toBeOnTheScreen()
     })
 
-    it('should display sso identifier forgotten when google SSO is enabled', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
+    it('should display sso identifier forgotten', async () => {
       renderLogin()
 
       expect(await screen.findByText('Je ne me souviens pas de mes identifiants')).toBeOnTheScreen()
-    })
-
-    it('should not display sso identifier forgotten when SSO are disabled', async () => {
-      setFeatureFlags([])
-      renderLogin()
-
-      expect(screen.queryByText('Je ne me souviens pas de mes identifiants')).not.toBeOnTheScreen()
     })
   })
 

@@ -245,11 +245,8 @@ describe('<SetEmail />', () => {
       expect(screen.queryByText('S\u2019inscrire avec Apple')).not.toBeOnTheScreen()
     })
 
-    it('should display both SSO buttons when both feature flags are enabled', async () => {
-      setFeatureFlags([
-        RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO,
-        RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO,
-      ])
+    it('should display both SSO buttons when apple sso feature flags is enabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
 
       renderSetEmail()
 
@@ -265,25 +262,13 @@ describe('<SetEmail />', () => {
       expect(await screen.findByText('ou')).toBeOnTheScreen()
     })
 
-    it('should display SSO button when FF is enabled', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
-
+    it('should display google SSO button', async () => {
       renderSetEmail()
 
       expect(await screen.findByTestId('S’inscrire avec Google')).toBeOnTheScreen()
     })
 
-    it('should not display SSO button when FF is disabled', () => {
-      setFeatureFlags()
-
-      renderSetEmail()
-
-      expect(screen.queryByTestId('S’inscrire avec Google')).not.toBeOnTheScreen()
-    })
-
     it('should go to next step when clicking SSO button and account does not already exist', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
-
       mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
         responseOptions: {
           statusCode: 401,
@@ -309,8 +294,6 @@ describe('<SetEmail />', () => {
     })
 
     it('should display snackbar when SSO account is invalid', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
-
       mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
         responseOptions: {
           statusCode: 400,
