@@ -4,6 +4,7 @@ tags:
   - nightlyIOS
   - nightlyAndroid
   - squad-decouverte
+  - fix
 onFlowStart:
   - runScript: subFolder/links/DeepLinks.js
   - runScript: subFolder/commons/Button.js
@@ -14,7 +15,7 @@ onFlowStart:
 - runFlow: subFolder/links/DeepLinksToHome.yml
 
 - runFlow: subFolder/commons/GoToSearchFromTabBar.yml
-- runFlow: subFolder/search/NavigateToNovelsSubCategory.yml
+- runFlow: subFolder/search/NavigateToBookSubCategory.yml
 - runFlow: subFolder/search/CheckArtistPage.yml
 
 - runFlow: subFolder/commons/StopApp.yml
