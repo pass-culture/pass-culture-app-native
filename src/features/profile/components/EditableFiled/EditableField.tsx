@@ -34,18 +34,22 @@ export function EditableField({
     <React.Fragment>
       <StyledBodyAccentXs>{label}</StyledBodyAccentXs>
       <EditContainer>
-        {isCompleted ? (
-          <EditText numberOfLines={2}>{displayValue}</EditText>
-        ) : (
-          <NoEditText>Non complété</NoEditText>
-        )}
+        <ValueContainer>
+          {isCompleted ? (
+            <EditText numberOfLines={3}>{displayValue}</EditText>
+          ) : (
+            <NoEditText>Non complété</NoEditText>
+          )}
+        </ValueContainer>
         {showButton ? (
-          <EditButton
-            navigateTo={getProfilePropConfig(navigateTo, navigateParams)}
-            onPress={onBeforeNavigate}
-            wording={isCompleted ? 'Modifier' : 'Compléter'}
-            accessibilityLabel={accessibilityLabel}
-          />
+          <ButtonContainer>
+            <EditButton
+              navigateTo={getProfilePropConfig(navigateTo, navigateParams)}
+              onPress={onBeforeNavigate}
+              wording={isCompleted ? 'Modifier' : 'Compléter'}
+              accessibilityLabel={accessibilityLabel}
+            />
+          </ButtonContainer>
         ) : null}
       </EditContainer>
       <StyledSeparator />
@@ -60,13 +64,22 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
 const EditContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.s,
   flexDirection: 'row',
-  justifyContent: 'space-between',
+  alignItems: 'flex-start',
 }))
 
-const EditText = styled(Typo.Body)(({ theme }) => ({
-  flexShrink: 1,
-  marginRight: theme.designSystem.size.spacing.s,
+const ValueContainer = styled.View({
+  flex: 1,
+  minWidth: 0,
+})
+
+const ButtonContainer = styled.View(({ theme }) => ({
+  flexShrink: 0,
+  marginLeft: theme.designSystem.size.spacing.s,
 }))
+
+const EditText = styled(Typo.Body)({
+  flexShrink: 1,
+})
 
 const NoEditText = styled(Typo.BodyItalic)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
