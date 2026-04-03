@@ -76,7 +76,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     })
 
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
     })
@@ -99,7 +99,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     })
 
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
     })
@@ -119,7 +119,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
 
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
     })
@@ -139,7 +139,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
 
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
     })
@@ -154,7 +154,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
     mockServer.getApi<BannerResponse>('/v1/banner', {})
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       startDatetime: '2021-03-31T00:00Z',
       endDatetime: '2022-03-31T00:00Z',
     })
@@ -174,7 +174,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
 
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
     })

@@ -22,17 +22,13 @@ jest.mock('features/identityCheck/queries/useGetStepperInfoQuery', () => ({
 }))
 
 const featureFlags = {
-  enablePassForAll: true,
   enableProfileV2: true,
   disableActivation: false,
 }
 
 describe('GeneralPublicBanner', () => {
   beforeEach(() => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL,
-      RemoteStoreFeatureFlags.ENABLE_PROFILE_V2,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PROFILE_V2])
   })
 
   it('should return null if user is undefined', () => {
