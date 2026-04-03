@@ -3594,22 +3594,6 @@ export interface PaginatedFavoritesResponse {
 }
 /**
  * @export
- * @interface PhoneValidationRemainingAttemptsRequest
- */
-export interface PhoneValidationRemainingAttemptsRequest {
-  /**
-   * @type {string}
-   * @memberof PhoneValidationRemainingAttemptsRequest
-   */
-  counterResetDatetime?: string | null
-  /**
-   * @type {number}
-   * @memberof PhoneValidationRemainingAttemptsRequest
-   */
-  remainingAttempts: number
-}
-/**
- * @export
  * @interface PlaylistRequestBody
  */
 export interface PlaylistRequestBody {
@@ -4070,17 +4054,6 @@ export interface SearchGroupResponseModelv2 {
 }
 /**
  * @export
- * @interface SendPhoneValidationRequest
- */
-export interface SendPhoneValidationRequest {
-  /**
-   * @type {string}
-   * @memberof SendPhoneValidationRequest
-   */
-  phoneNumber: string
-}
-/**
- * @export
  * @interface SettingsResponse
  */
 export interface SettingsResponse {
@@ -4124,11 +4097,6 @@ export interface SettingsResponse {
    * @memberof SettingsResponse
    */
   enableNativeCulturalSurvey: boolean
-  /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
-  enablePhoneValidation: boolean
   /**
    * @type {boolean}
    * @memberof SettingsResponse
@@ -5110,17 +5078,6 @@ export interface ValidateEmailResponse {
 }
 /**
  * @export
- * @interface ValidatePhoneNumberRequest
- */
-export interface ValidatePhoneNumberRequest {
-  /**
-   * @type {string}
-   * @memberof ValidatePhoneNumberRequest
-   */
-  code: string
-}
-/**
- * @export
  * @interface ValidationError
  */
 export interface ValidationError extends Array<ValidationErrorElement> {
@@ -5945,24 +5902,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }).join('&')
       pathname += encodedQueryParams
       let secureOptions = Object.assign(options, { credentials: 'omit' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary phone_validation_remaining_attempts <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1PhoneValidationRemainingAttempts(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/phone_validation/remaining_attempts`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -7220,35 +7159,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary send_phone_validation_code <POST>
-     * @param {SendPhoneValidationRequest} body 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1SendPhoneValidationCode(body: SendPhoneValidationRequest, options: any = {}): Promise<FetchArgs> {
-      // verify required parameter 'body' is not null or undefined
-      if (body === null || body === undefined) {
-        throw new RequiredError(
-          'body',
-          'Required parameter body was null or undefined when calling postNativeV1SendPhoneValidationCode.'
-        )
-      }
-      let pathname = `/native/v1/send_phone_validation_code`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization = (<any>"SendPhoneValidationRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * @summary signin <POST>
      * @param {SigninRequest} body 
      * @param {*} [options] Override http request option.
@@ -7401,35 +7311,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"ValidateEmailRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary validate_phone_number <POST>
-     * @param {ValidatePhoneNumberRequest} body 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1ValidatePhoneNumber(body: ValidatePhoneNumberRequest, options: any = {}): Promise<FetchArgs> {
-      // verify required parameter 'body' is not null or undefined
-      if (body === null || body === undefined) {
-        throw new RequiredError(
-          'body',
-          'Required parameter body was null or undefined when calling postNativeV1ValidatePhoneNumber.'
-        )
-      }
-      let pathname = `/native/v1/validate_phone_number`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization = (<any>"ValidatePhoneNumberRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: pathname,
@@ -7832,17 +7713,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getNativeV1OfferofferIdAdvices(offer_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, latitude?: number, longitude?: number, options?: any): Promise<OfferProAdvices> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OfferofferIdAdvices(offer_id, maxContentLength, page, resultsPerPage, latitude, longitude, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
-     * @summary phone_validation_remaining_attempts <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1PhoneValidationRemainingAttempts(options?: any): Promise<PhoneValidationRemainingAttemptsRequest> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1PhoneValidationRemainingAttempts(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -8407,18 +8277,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
-     * @summary send_phone_validation_code <POST>
-     * @param {SendPhoneValidationRequest} body 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1SendPhoneValidationCode(body: SendPhoneValidationRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1SendPhoneValidationCode(body, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
      * @summary signin <POST>
      * @param {SigninRequest} body 
      * @param {*} [options] Override http request option.
@@ -8485,18 +8343,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async postNativeV1ValidateEmail(body: ValidateEmailRequest, options?: any): Promise<ValidateEmailResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1ValidateEmail(body, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
-     * @summary validate_phone_number <POST>
-     * @param {ValidatePhoneNumberRequest} body 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1ValidatePhoneNumber(body: ValidatePhoneNumberRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1ValidatePhoneNumber(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -8816,17 +8662,6 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1OfferofferIdAdvices(offer_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, latitude?: number, longitude?: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1OfferofferIdAdvices(offer_id, maxContentLength, page, resultsPerPage, latitude, longitude, options)
-  }
-  /**
-    * 
-    * @summary phone_validation_remaining_attempts <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1PhoneValidationRemainingAttempts(options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1PhoneValidationRemainingAttempts(options)
   }
   /**
     * 
@@ -9380,18 +9215,6 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     * 
-    * @summary send_phone_validation_code <POST>
-    * @param {SendPhoneValidationRequest} body 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async postNativeV1SendPhoneValidationCode(body: SendPhoneValidationRequest, options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).postNativeV1SendPhoneValidationCode(body, options)
-  }
-  /**
-    * 
     * @summary signin <POST>
     * @param {SigninRequest} body 
     * @param {*} [options] Override http request option.
@@ -9460,18 +9283,6 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV1ValidateEmail(body: ValidateEmailRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ValidateEmail(body, options)
-  }
-  /**
-    * 
-    * @summary validate_phone_number <POST>
-    * @param {ValidatePhoneNumberRequest} body 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async postNativeV1ValidatePhoneNumber(body: ValidatePhoneNumberRequest, options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).postNativeV1ValidatePhoneNumber(body, options)
   }
   /**
     * 
