@@ -12,7 +12,6 @@ export const SettingsFixture: SettingsResponse = {
   displayDmsRedirection: true,
   enableFrontImageResizing: true,
   enableNativeCulturalSurvey: false,
-  enablePhoneValidation: true,
   idCheckAddressAutocompletion: true,
   isRecaptchaEnabled: true,
   objectStorageUrl: 'https://localhost-storage',
