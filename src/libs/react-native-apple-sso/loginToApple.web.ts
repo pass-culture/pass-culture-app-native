@@ -1,6 +1,9 @@
 import { api } from 'api/api'
 import { env } from 'libs/environment/env'
-import { AppleLoginOptions } from 'libs/react-native-apple-sso/types'
+import {
+  APPLE_SSO_CALLBACK_MESSAGE_TYPE,
+  AppleLoginOptions,
+} from 'libs/react-native-apple-sso/types'
 
 const APPLE_AUTH_ENDPOINT = 'https://appleid.apple.com/auth/authorize'
 
@@ -16,7 +19,7 @@ export const loginToApple = async ({ onSuccess, onError }: AppleLoginOptions) =>
 
   const clientId = env.APPLE_SERVICE_ID?.trim()
   if (!clientId) {
-    onError?.(new Error('APPLE_SERVICE_ID is not configured'))
+    onError?.(new Error('apple_service_id_not_configured'))
     return
   }
 
@@ -39,7 +42,7 @@ export const loginToApple = async ({ onSuccess, onError }: AppleLoginOptions) =>
   return new Promise<void>((resolve) => {
     const handleMessage = (event: MessageEvent) => {
       if (event.origin !== window.location.origin) return
-      if (event.data?.type !== 'apple-sso-callback') return
+      if (event.data?.type !== APPLE_SSO_CALLBACK_MESSAGE_TYPE) return
 
       window.removeEventListener('message', handleMessage)
       clearInterval(checkClosed)

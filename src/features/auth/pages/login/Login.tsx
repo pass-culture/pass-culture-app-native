@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { SSOButtonAppleBase } from 'features/auth/components/SSOButton/SSOButtonAppleBase'
-import { SSOButtonBase } from 'features/auth/components/SSOButton/SSOButtonBase'
+import { SSOButtonGoogleBase } from 'features/auth/components/SSOButton/SSOButtonGoogleBase'
 import { loginSchema } from 'features/auth/pages/login/schema/loginSchema'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { SignInResponseFailure } from 'features/auth/types'
@@ -260,7 +260,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
               />
               <StyledViewGap gap={4}>
                 <SeparatorWithText label="ou" />
-                <SSOButtonBase type="login" onSuccess={signIn} />
+                <SSOButtonGoogleBase type="login" onSuccess={signIn} />
                 {enableAppleSSO ? <SSOButtonAppleBase type="login" onSuccess={signIn} /> : null}
                 <ExternalTouchableLink
                   as={Button}

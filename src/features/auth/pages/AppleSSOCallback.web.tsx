@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 
+import { APPLE_SSO_CALLBACK_MESSAGE_TYPE } from 'libs/react-native-apple-sso/types'
+
 /**
  * Web-only callback page for Apple Sign In.
  * Apple redirects the popup here with ?code=xxx&state=yyy (response_mode=query).
@@ -14,7 +16,7 @@ export const AppleSSOCallback = () => {
 
     if (window.opener) {
       window.opener.postMessage(
-        { type: 'apple-sso-callback', code, state, error },
+        { type: APPLE_SSO_CALLBACK_MESSAGE_TYPE, code, state, error },
         window.location.origin
       )
     }

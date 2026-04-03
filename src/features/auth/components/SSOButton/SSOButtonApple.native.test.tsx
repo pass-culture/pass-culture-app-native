@@ -15,7 +15,6 @@ import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { eventMonitoring } from 'libs/monitoring/services'
-import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -158,10 +157,6 @@ describe('<SSOButtonApple />', () => {
 
   describe('When shouldLogInfo remote config is false', () => {
     beforeEach(() => {
-      queryClient.setQueryData([QueryKeys.REMOTE_CONFIG], {
-        ...DEFAULT_REMOTE_CONFIG,
-        shouldLogInfo: false,
-      })
       useRemoteConfigSpy.mockReturnValue({
         ...remoteConfigResponseFixture,
         data: {
@@ -185,10 +180,6 @@ describe('<SSOButtonApple />', () => {
 
   describe('When shouldLogInfo remote config is true', () => {
     beforeAll(() => {
-      queryClient.setQueryData([QueryKeys.REMOTE_CONFIG], {
-        ...DEFAULT_REMOTE_CONFIG,
-        shouldLogInfo: true,
-      })
       useRemoteConfigSpy.mockReturnValue({
         ...remoteConfigResponseFixture,
         data: {

@@ -23,7 +23,7 @@ type Props = {
   }) => void
 }
 
-export const SSOButtonBase: FC<Props> = ({ type, onSuccess }) => {
+export const SSOButtonGoogleBase: FC<Props> = ({ type, onSuccess }) => {
   const { logType } = useLogTypeFromRemoteConfig()
 
   const onError = async (error: unknown) => {
