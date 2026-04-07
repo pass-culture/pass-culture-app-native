@@ -19,10 +19,7 @@ export const LoggedOutHeader = ({ featureFlags }: ProfileFeatureFlagsProps) => {
   const { isDesktopViewport, designSystem } = useTheme()
 
   return (
-    <HeaderWithGreyContainer
-      title="Mon profil"
-      subtitle={featureFlags.enablePassForAll ? undefined : 'Tu as 17 ou 18 ans\u00a0?'}
-      featureFlags={featureFlags}>
+    <HeaderWithGreyContainer title="Mon profil" featureFlags={featureFlags}>
       <Typo.Body>
         Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18
         ans&nbsp;?

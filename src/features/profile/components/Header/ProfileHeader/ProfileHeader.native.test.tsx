@@ -42,9 +42,9 @@ describe('ProfileHeader', () => {
     })
   })
 
-  it('should not display subtitle with passForAll enabled', async () => {
+  it('should not display subtitle', async () => {
     renderProfileHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: true, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       user: undefined,
     })
     await screen.findByText('Cheatcodes')
@@ -56,7 +56,7 @@ describe('ProfileHeader', () => {
 
   it('should display the LoggedOutHeader if no user', async () => {
     renderProfileHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       user: undefined,
     })
 
@@ -71,7 +71,7 @@ describe('ProfileHeader', () => {
 
   it('should display the BeneficiaryHeader if user is beneficiary', async () => {
     renderProfileHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       user: beneficiaryUser,
     })
 
@@ -83,7 +83,7 @@ describe('ProfileHeader', () => {
   it('should display the BeneficiaryHeader if user is underage beneficiary', async () => {
     mockedisUserUnderageBeneficiary.mockReturnValueOnce(true)
     renderProfileHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       user: beneficiaryUser,
     })
 
@@ -94,7 +94,7 @@ describe('ProfileHeader', () => {
 
   it('should display the ExBeneficiary Header if credit is expired', async () => {
     renderProfileHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       user: exBeneficiaryUser,
     })
 
@@ -105,7 +105,7 @@ describe('ProfileHeader', () => {
 
   it('should display the NonBeneficiaryHeader Header if user is not beneficiary', async () => {
     renderProfileHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       user: nonBeneficiaryUser,
     })
 
@@ -114,7 +114,7 @@ describe('ProfileHeader', () => {
 
   it('should display the BeneficiaryAndEligibleForUpgradeHeader Header if user is beneficiary and isEligibleForBeneficiaryUpgrade and eligibility is 18 yo', async () => {
     renderProfileHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       user: {
         ...beneficiaryUser,
         isEligibleForBeneficiaryUpgrade: true,

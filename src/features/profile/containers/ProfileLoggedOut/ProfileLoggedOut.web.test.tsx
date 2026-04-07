@@ -31,7 +31,6 @@ const renderProfileLoggedOut = async () => {
     reactQueryProviderHOC(
       <ProfileLoggedOut
         featureFlags={{
-          enablePassForAll: true,
           enableProfileV2: true,
           disableActivation: false,
         }}

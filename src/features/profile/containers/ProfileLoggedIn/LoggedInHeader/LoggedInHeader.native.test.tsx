@@ -12,7 +12,6 @@ import { LoggedInHeader } from './LoggedInHeader'
 jest.mock('libs/firebase/analytics/analytics')
 
 const featureFlags = {
-  enablePassForAll: false,
   disableActivation: false,
   enableProfileV2: true,
 }
