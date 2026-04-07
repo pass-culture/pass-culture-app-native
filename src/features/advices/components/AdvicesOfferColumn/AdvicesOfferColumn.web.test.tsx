@@ -103,7 +103,7 @@ describe('AdvicesOfferColumn', () => {
         )
 
         expect(screen.getByText('Sous les étoiles de Paris - VF')).toBeInTheDocument()
-        expect(screen.getByText('Dès 5,00 €')).toBeInTheDocument()
+        expect(screen.getByText('5,00 €')).toBeInTheDocument()
       })
 
       it('should display session button when offer subcategory is in cine club subcategories', () => {
