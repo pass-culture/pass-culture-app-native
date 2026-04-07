@@ -18,11 +18,7 @@ import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatPlaylistDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
-import {
-  formatPrice,
-  getDisplayedPrice,
-  getIfPricesShouldBeFixed,
-} from 'libs/parsers/getDisplayedPrice'
+import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
@@ -145,7 +141,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           currency,
           euroToPacificFrancRate,
           formatPrice({
-            isFixed: getIfPricesShouldBeFixed(item.offer.subcategoryId),
             isDuo: !!(item.offer.isDuo && user?.isBeneficiary),
           })
         )}
