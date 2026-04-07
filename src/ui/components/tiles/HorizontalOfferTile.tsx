@@ -37,7 +37,7 @@ interface Props extends Partial<HorizontalTileProps> {
   onPress?: () => void
   analyticsParams: OfferAnalyticsParams
   style?: StyleProp<ViewStyle>
-  price?: string
+  shouldDisplayPrice?: boolean
   withRightArrow?: boolean
 }
 
@@ -47,7 +47,7 @@ export const HorizontalOfferTile = ({
   onPress,
   style,
   subtitles,
-  price,
+  shouldDisplayPrice = true,
   withRightArrow,
   ...horizontalTileProps
 }: Props) => {
@@ -149,7 +149,6 @@ export const HorizontalOfferTile = ({
   })
 
   const interactionTagLabel = getInteractionTagLabel(interactionTag)
-  const displayedPrice = price ?? formattedPrice
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offerDetails,
@@ -196,10 +195,10 @@ export const HorizontalOfferTile = ({
                 </Body>
               ))}
             <PriceAndComingSoonTagContainer gap={1}>
-              {displayedPrice ? <Typo.BodyAccentS>{displayedPrice}</Typo.BodyAccentS> : null}
+              {shouldDisplayPrice ? <Typo.BodyAccentS>{formattedPrice}</Typo.BodyAccentS> : null}
               {interactionTag ? (
                 <React.Fragment>
-                  {displayedPrice ? <Typo.BodyAccentS>{'\u2022'}</Typo.BodyAccentS> : null}
+                  {shouldDisplayPrice ? <Typo.BodyAccentS>{'\u2022'}</Typo.BodyAccentS> : null}
                   {interactionTag}
                 </React.Fragment>
               ) : null}

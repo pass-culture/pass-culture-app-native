@@ -75,7 +75,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
           <HorizontalOfferTile
             offer={offerScreeningOnSelectedDates}
             analyticsParams={{ from: 'venue' }}
-            price=""
+            shouldDisplayPrice={false}
             subtitles={getSubtitles(offer)}
             withRightArrow
           />
