@@ -4,7 +4,6 @@ tags:
   - nightlyIOS
   - nightlyAndroid
   - squad-decouverte
-  - fix
 onFlowStart:
   - runScript: subFolder/links/DeepLinks.js
   - runScript: subFolder/commons/Button.js
