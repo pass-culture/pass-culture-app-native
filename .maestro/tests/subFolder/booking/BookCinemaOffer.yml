@@ -11,8 +11,7 @@ appId: ${MAESTRO_APP_ID}
     outputVariable: 'offerResult'
 - tapOn: .*${offerResult}.*
 
-- waitForAnimationToEnd: # TODO:(PC-36170) améliorer les perfs de la page offre (cinéma)
-    timeout: 5000
+- waitForAnimationToEnd
 
 - repeat:
     while:
@@ -23,8 +22,7 @@ appId: ${MAESTRO_APP_ID}
       - tapOn:
           text: 'Séance de cinéma'
           index: 1
-      - waitForAnimationToEnd: # TODO:(PC-36170) améliorer les perfs de la page offre (cinéma)
-          timeout: 5000
+      - waitForAnimationToEnd
 - runFlow:
     when:
       visible: 'Accéder aux séances'
