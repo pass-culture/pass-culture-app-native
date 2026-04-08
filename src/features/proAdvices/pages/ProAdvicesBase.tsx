@@ -63,7 +63,7 @@ export const ProAdvicesBase: FunctionComponent<Props> = ({
           separatorSize={6}
           headerComponent={
             <AdviceCardListHeader
-              title={`Les ${advices.length} avis des pros`}
+              title={`${advices.length} avis des pros`}
               buttonWording="Qui écrit les avis des pros&nbsp;?"
               onPressMoreInfo={showModal}
             />

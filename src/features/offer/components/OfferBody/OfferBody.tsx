@@ -45,10 +45,12 @@ type Props = {
   onVideoConsentPress: () => void
   onShowOfferArtistsModal: (artists: OfferArtist[]) => void
   likesCount?: number
-  advicesCount?: number | null
+  clubAdvicesCount?: number | null
+  proAdvicesCount?: number
   distance?: string | null
   headlineOffersCount?: number
-  advices?: AdviceCardData[]
+  clubAdvices?: AdviceCardData[]
+  proAdvices?: AdviceCardData[]
   isVideoSectionEnabled?: boolean
   hasVideoCookiesConsent?: boolean
   isMultiArtistsEnabled?: boolean
@@ -59,11 +61,13 @@ export const OfferBody: FunctionComponent<Props> = ({
   subcategory,
   children,
   likesCount,
-  advicesCount,
+  clubAdvicesCount,
+  proAdvicesCount,
   distance,
   headlineOffersCount,
   adviceVariantInfo,
-  advices,
+  clubAdvices,
+  proAdvices,
   isVideoSectionEnabled,
   hasVideoCookiesConsent,
   isMultiArtistsEnabled,
@@ -80,6 +84,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   }, [isVideoSectionEnabled, params])
 
   const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
+  const enableProReviewNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -186,10 +191,13 @@ export const OfferBody: FunctionComponent<Props> = ({
 
         <OfferReactionSection
           likesCount={likesCount}
-          advicesCount={advicesCount}
+          clubAdvicesCount={clubAdvicesCount}
           headlineOffersCount={headlineOffersCount}
           adviceVariantInfo={adviceVariantInfo}
-          advices={advices}
+          clubAdvices={clubAdvices}
+          proAdvicesCount={proAdvicesCount}
+          proAdvices={proAdvices}
+          enableProReviewNewTag={enableProReviewNewTag}
         />
 
         <GroupWithSeparator

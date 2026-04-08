@@ -104,6 +104,7 @@ export type OfferContentProps = {
   isMultiArtistsEnabled?: boolean
   HeaderComponent?: ComponentType<OfferHeaderComponentProps>
   CTAsComponent?: ComponentType<OfferCTAsComponentProps>
+  proAdvicesCount?: number
 }
 
 export type OfferImageContainerDimensions = {
@@ -120,4 +121,10 @@ export type OfferImageContainerDimensions = {
 export type Duration = {
   label: string
   accessibilityLabel: string
+}
+
+export type AdvicesStatus = {
+  total: number
+  hasPublished: boolean
+  hasUnpublished: boolean
 }

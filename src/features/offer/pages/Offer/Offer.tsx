@@ -141,7 +141,10 @@ export function Offer() {
     enableProAdvices,
     latitude: userLocation?.latitude,
     longitude: userLocation?.longitude,
-    select: ({ proAdvices }) => offerProAdvicesToAdviceCardData(proAdvices),
+    select: ({ proAdvices, nbResults }) => ({
+      list: offerProAdvicesToAdviceCardData(proAdvices),
+      nbResults,
+    }),
   })
 
   if (!offer || !subcategories || !subcategoriesMapping?.[offer?.subcategoryId]) return null
@@ -198,7 +201,7 @@ export function Offer() {
       <OfferContent
         offer={offer}
         clubAdvices={clubAdvices}
-        proAdvices={proAdvices}
+        proAdvices={proAdvices?.list}
         adviceVariantInfo={adviceVariantInfo}
         headlineOffersCount={headlineOffersCount}
         searchGroupList={subcategories.searchGroups}
@@ -211,6 +214,7 @@ export function Offer() {
         onVideoConsentPress={handleOnVideoConsentPress}
         isMultiArtistsEnabled={isMultiArtistsEnabled}
         onShowOfferArtistsModal={handleShowOfferArtistsModal}
+        proAdvicesCount={proAdvices?.nbResults}
       />
     </Page>
   )
