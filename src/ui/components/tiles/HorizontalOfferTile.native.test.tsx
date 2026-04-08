@@ -347,8 +347,12 @@ describe('HorizontalOfferTile component', () => {
         expect(await screen.findByText('Gratuit')).toBeOnTheScreen()
       })
 
-      it('should not display price when price prop is empty string', async () => {
-        render(reactQueryProviderHOC(<HorizontalOfferTile {...defaultProps} price="" />))
+      it('should not display price when shouldDisplayPrice is false', async () => {
+        render(
+          reactQueryProviderHOC(
+            <HorizontalOfferTile {...defaultProps} shouldDisplayPrice={false} />
+          )
+        )
 
         await screen.findByText('La nuit des temps')
 
