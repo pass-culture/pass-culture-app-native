@@ -7,8 +7,6 @@ import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFi
 import { SearchResults } from 'features/search/pages/SearchResults/v1/SearchResults'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { useVenuesInRegionQuery } from 'queries/venueMap/useVenuesInRegionQuery'
@@ -75,7 +73,6 @@ const mockUseVenuesInRegionQuery = useVenuesInRegionQuery as jest.Mock
 describe('<SearchResults/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
       mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     })
 

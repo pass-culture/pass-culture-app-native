@@ -49,7 +49,6 @@ export enum RemoteStoreFeatureFlags {
   ENABLE_CHATBOT = 'enableChatbot',
   ENABLE_HIDE_TICKET = 'enableHideTicket',
   ENABLE_MANDATORY_UPDATE_PERSONAL_DATA = 'enableMandatoryUpdatePersonalData',
-  ENABLE_PACIFIC_FRANC_CURRENCY = 'enablePacificFrancCurrency',
   ENABLE_PRO_REVIEWS_VENUE_AB_TESTING = 'enableProReviewsVenueABTesting',
   ENABLE_PROFILE_V2 = 'enableProfileV2',
   ENABLE_REPLICA_ALGOLIA_INDEX = 'enableReplicaAlgoliaIndex',

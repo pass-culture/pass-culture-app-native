@@ -3,8 +3,6 @@ import React, { ComponentProps } from 'react'
 import { Step } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
@@ -64,7 +62,6 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 describe('<BookingOfferModal/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
       mockServer.getApi(`/v3/offer/${mockOffer.id}`, mockOffer)
     })
 

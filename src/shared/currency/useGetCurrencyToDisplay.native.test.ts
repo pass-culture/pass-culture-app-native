@@ -2,7 +2,6 @@ import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { renderHook } from 'tests/utils'
@@ -45,40 +44,34 @@ describe('useGetCurrencyToDisplay', () => {
       } as ILocationContext)
     })
 
-    describe('and the feature flag is enabled', () => {
-      beforeEach(() => {
-        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
-      })
+    it('should return Euro when displayFormat is "short"', () => {
+      const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
 
-      it('should return Euro when displayFormat is "short"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
-
-        expect(result.current).toBe('€')
-      })
-
-      it('should return Euro when displayFormat is "full"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
-
-        expect(result.current).toBe('€')
-      })
+      expect(result.current).toBe('€')
     })
 
-    describe('and the feature flag is disabled', () => {
-      beforeEach(() => {
-        setFeatureFlags()
-      })
+    it('should return Euro when displayFormat is "full"', () => {
+      const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
 
-      it('should return Euro when displayFormat is "short"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
+      expect(result.current).toBe('€')
+    })
+  })
 
-        expect(result.current).toBe('€')
-      })
+  describe('and the feature flag is disabled', () => {
+    beforeEach(() => {
+      setFeatureFlags()
+    })
 
-      it('should return Euro when displayFormat is "full"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
+    it('should return Euro when displayFormat is "short"', () => {
+      const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
 
-        expect(result.current).toBe('€')
-      })
+      expect(result.current).toBe('€')
+    })
+
+    it('should return Euro when displayFormat is "full"', () => {
+      const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
+
+      expect(result.current).toBe('€')
     })
   })
 
@@ -96,40 +89,16 @@ describe('useGetCurrencyToDisplay', () => {
       } as ILocationContext)
     })
 
-    describe('and the feature flag is enabled', () => {
-      beforeEach(() => {
-        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
-      })
+    it('should return Euro when displayFormat is "short"', () => {
+      const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
 
-      it('should return Euro when displayFormat is "short"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
-
-        expect(result.current).toBe('€')
-      })
-
-      it('should return Euro when displayFormat is "full"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
-
-        expect(result.current).toBe('€')
-      })
+      expect(result.current).toBe('€')
     })
 
-    describe('and the feature flag is disabled', () => {
-      beforeEach(() => {
-        setFeatureFlags()
-      })
+    it('should return Euro when displayFormat is "full"', () => {
+      const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
 
-      it('should return Euro when displayFormat is "short"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
-
-        expect(result.current).toBe('€')
-      })
-
-      it('should return Euro when displayFormat is "full"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
-
-        expect(result.current).toBe('€')
-      })
+      expect(result.current).toBe('€')
     })
   })
 
@@ -174,40 +143,16 @@ describe('useGetCurrencyToDisplay', () => {
       } as ILocationContext)
     })
 
-    describe('and the feature flag is enabled', () => {
-      beforeEach(() => {
-        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
-      })
+    it('should return Pacific Franc short ("F") when displayFormat is "short"', () => {
+      const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
 
-      it('should return Pacific Franc short ("F") when displayFormat is "short"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
-
-        expect(result.current).toBe('F')
-      })
-
-      it('should return Pacific Franc full ("francs Pacifique") when displayFormat is "full"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
-
-        expect(result.current).toBe('francs\u00a0Pacifique')
-      })
+      expect(result.current).toBe('F')
     })
 
-    describe('and the feature flag is disabled', () => {
-      beforeEach(() => {
-        setFeatureFlags()
-      })
+    it('should return Pacific Franc full ("francs Pacifique") when displayFormat is "full"', () => {
+      const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
 
-      it('should return Euro when displayFormat is "short"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
-
-        expect(result.current).toBe('€')
-      })
-
-      it('should return Euro when displayFormat is "full"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
-
-        expect(result.current).toBe('€')
-      })
+      expect(result.current).toBe('francs\u00a0Pacifique')
     })
   })
 
@@ -222,38 +167,16 @@ describe('useGetCurrencyToDisplay', () => {
       })
     })
 
-    describe('and the feature flag is enabled', () => {
-      beforeEach(() => {
-        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
-      })
+    it('should return Euro when displayFormat is "short"', async () => {
+      const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
 
-      it('should return Euro when displayFormat is "short"', async () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
-
-        expect(result.current).toBe('€')
-      })
-
-      it('should return Euro when displayFormat is "full"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
-
-        expect(result.current).toBe('€')
-      })
+      expect(result.current).toBe('€')
     })
 
-    describe('and the feature flag is disabled', () => {
-      beforeEach(() => setFeatureFlags())
+    it('should return Euro when displayFormat is "full"', () => {
+      const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
 
-      it('should return Euro when displayFormat is "short"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
-
-        expect(result.current).toBe('€')
-      })
-
-      it('should return Euro when displayFormat is "full"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
-
-        expect(result.current).toBe('€')
-      })
+      expect(result.current).toBe('€')
     })
   })
 
@@ -268,38 +191,16 @@ describe('useGetCurrencyToDisplay', () => {
       })
     })
 
-    describe('and the feature flag is enabled', () => {
-      beforeEach(() => {
-        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
-      })
+    it('should return Pacific Franc short ("F") when displayFormat is "short"', () => {
+      const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
 
-      it('should return Pacific Franc short ("F") when displayFormat is "short"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
-
-        expect(result.current).toBe('F')
-      })
-
-      it('should return Pacific Franc full ("francs Pacifique") when displayFormat is "full"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
-
-        expect(result.current).toBe('francs\u00a0Pacifique')
-      })
+      expect(result.current).toBe('F')
     })
 
-    describe('and the feature flag is disabled', () => {
-      beforeEach(() => setFeatureFlags())
+    it('should return Pacific Franc full ("francs Pacifique") when displayFormat is "full"', () => {
+      const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
 
-      it('should return Euro when displayFormat is "short"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
-
-        expect(result.current).toBe('€')
-      })
-
-      it('should return Euro when displayFormat is "full"', () => {
-        const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
-
-        expect(result.current).toBe('€')
-      })
+      expect(result.current).toBe('francs\u00a0Pacifique')
     })
   })
 })

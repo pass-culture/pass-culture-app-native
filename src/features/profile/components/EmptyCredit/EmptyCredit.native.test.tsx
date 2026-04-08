@@ -3,8 +3,6 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { EligibilityType } from 'api/gen'
 import { EmptyCredit } from 'features/profile/components/EmptyCredit/EmptyCredit'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -19,10 +17,6 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<EmptyCredit />', () => {
-  beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
-  })
-
   it.each([15, 16, 17])('should render correctly for %s yo', (age) => {
     render(<EmptyCredit age={age} />)
 

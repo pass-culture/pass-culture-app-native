@@ -4,8 +4,6 @@ import React from 'react'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
@@ -50,10 +48,6 @@ mockUseSubcategories.mockReturnValue({
 mockdate.set(new Date('2019-12-01T00:00:00.000Z'))
 
 describe('AttachedOfferCard', () => {
-  beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
-  })
-
   it('should display date if offer has one', () => {
     render(<AttachedOfferCard offer={offer} />)
 
