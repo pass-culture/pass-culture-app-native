@@ -7,7 +7,6 @@ import {
   EligibilityType,
   QFBonificationStatus,
   UserRole,
-  YoungStatusType,
 } from 'api/gen'
 import { EIGHTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
@@ -26,7 +25,6 @@ export const nonBeneficiaryUser: UserProfileResponseWithoutSurvey = {
   birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
   email: 'email@domain.ext',
   hasPassword: true,
-  isBeneficiary: false,
   requiresIdCheck: false,
   roles: [],
   showEligibleCard: false,
@@ -36,7 +34,7 @@ export const nonBeneficiaryUser: UserProfileResponseWithoutSurvey = {
     marketingEmail: true,
     marketingPush: true,
   },
-  status: { statusType: YoungStatusType.non_eligible },
+  subscriptionStatus: undefined,
   currency: CurrencyEnum.EUR,
   achievements: [],
   hasProfileExpired: false,
@@ -52,10 +50,8 @@ export const beneficiaryUser: UserProfileResponseWithoutSurvey = {
     physical: { initial: 300_00, remaining: 100_00 },
     digital: { initial: 300_00, remaining: 200_00 },
   },
-  isBeneficiary: true,
   roles: [UserRole.BENEFICIARY],
   isEligibleForBeneficiaryUpgrade: false,
-  status: { statusType: YoungStatusType.beneficiary },
   depositType: DepositType.GRANT_17_18,
   eligibility: EligibilityType['age-17-18'],
   depositActivationDate: '2021-11-19T11:00:00Z',
@@ -75,13 +71,11 @@ export const beneficiaryUser: UserProfileResponseWithoutSurvey = {
 
 export const underageBeneficiaryUser: UserProfileResponseWithoutSurvey = {
   ...beneficiaryUser,
-  isBeneficiary: false,
   roles: [UserRole.UNDERAGE_BENEFICIARY],
   isEligibleForBeneficiaryUpgrade: false,
-  status: { statusType: YoungStatusType.eligible },
-  statusType: UserStatusType.GENERAL_PUBLIC,
+  statusType: UserStatusType.ELIGIBLE,
   creditType: UserCreditType.CREDIT_EMPTY,
-  eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
+  eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_15,
 }
 
 export const exBeneficiaryUser: UserProfileResponseWithoutSurvey = {

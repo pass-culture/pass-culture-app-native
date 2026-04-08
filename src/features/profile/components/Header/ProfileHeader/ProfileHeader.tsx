@@ -10,6 +10,7 @@ import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBene
 import { LoggedOutHeader } from 'features/profile/containers/ProfileLoggedOut/LoggedOutHeader/LoggedOutHeader'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { isAndWasBeneficiary } from 'shared/user/checkStatus'
 import { getAge } from 'shared/user/getAge'
 
 type ProfileHeaderProps = {
@@ -26,7 +27,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
     }
 
     if (
-      user.isBeneficiary &&
+      isAndWasBeneficiary(user.statusType) &&
       user.isEligibleForBeneficiaryUpgrade &&
       user.eligibility === EligibilityType['age-18']
     ) {
@@ -45,7 +46,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
       )
     }
 
-    if (!user.isBeneficiary || user.isEligibleForBeneficiaryUpgrade) {
+    if (!isAndWasBeneficiary(user.statusType) || user.isEligibleForBeneficiaryUpgrade) {
       return (
         <NonBeneficiaryHeader
           featureFlags={featureFlags}

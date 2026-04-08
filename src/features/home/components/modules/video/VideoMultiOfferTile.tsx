@@ -17,6 +17,7 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { getOfferDates } from 'shared/date/getOfferDates'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
+import { isAndWasBeneficiary } from 'shared/user/checkStatus'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing } from 'ui/theme'
 
@@ -45,7 +46,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isDuo: !!(isDuo && user?.isBeneficiary),
+      isDuo: !!(isDuo && isAndWasBeneficiary(user?.statusType)),
     })
   )
 

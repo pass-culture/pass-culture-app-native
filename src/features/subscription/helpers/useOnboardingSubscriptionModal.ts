@@ -1,12 +1,13 @@
 import { useEffect } from 'react'
 
-import { YoungStatusType } from 'api/gen'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
+import { isNonEligible } from 'shared/user/checkStatus'
 
 interface Args {
   isLoggedIn: boolean
-  userStatus?: YoungStatusType
+  userStatus?: UserStatusType
   showOnboardingSubscriptionModal: () => void
 }
 
@@ -17,7 +18,7 @@ export const useOnboardingSubscriptionModal = ({
 }: Args) => {
   useEffect(() => {
     const displaySubscriptionModal = async () => {
-      if (!isLoggedIn || userStatus === YoungStatusType.non_eligible) return
+      if (!isLoggedIn || isNonEligible(userStatus)) return
 
       if (await storage.readObject<boolean>('has_seen_onboarding_subscription')) return
 

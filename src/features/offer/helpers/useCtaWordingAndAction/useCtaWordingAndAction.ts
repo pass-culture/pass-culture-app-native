@@ -13,8 +13,6 @@ import {
   RecommendationApiParams,
   SubcategoryIdEnum,
   SubscriptionStatus,
-  YoungStatusResponse,
-  YoungStatusType,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
@@ -47,6 +45,12 @@ import { useBookingsQuery, useEndedBookingFromOfferIdQuery } from 'queries/booki
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
 import { OfferModal } from 'shared/offer/enums'
+import {
+  isAndWasBeneficiary,
+  isCurrentlyBeneficiary,
+  isEligible,
+  isNonEligible,
+} from 'shared/user/checkStatus'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
@@ -65,8 +69,6 @@ const getIsBookedOffer = (
 type Props = {
   isLoggedIn: boolean
   user?: UserProfileResponseWithoutSurvey
-  userStatus: YoungStatusResponse
-  isBeneficiary: boolean
   offer: OfferResponse
   subcategory: Subcategory
   hasEnoughCreditData: HasEnoughCredit
@@ -101,8 +103,6 @@ export type ICTAWordingAndAction = {
 export const getCtaWordingAndAction = ({
   isLoggedIn,
   user,
-  userStatus,
-  isBeneficiary,
   offer,
   subcategory,
   hasEnoughCreditData,
@@ -130,8 +130,7 @@ export const getCtaWordingAndAction = ({
   const isFreeOffer = getIsFreeOffer(offer)
   const isNotFreeOffer = !isFreeOffer
   const isProfileIncomplete = getIsProfileIncomplete(user)
-  const userWithNotEnoughCredit =
-    userStatus.statusType == YoungStatusType.beneficiary && !hasEnoughCredit
+  const userWithNotEnoughCredit = isCurrentlyBeneficiary(user?.statusType) && !hasEnoughCredit
   const isExBeneficiary = user && isUserExBeneficiary(user)
   const shouldBeRedirectedToExternalUrl =
     externalTicketOfficeUrl && (userWithNotEnoughCredit || isExBeneficiary)
@@ -168,7 +167,7 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (isFreeDigitalOffer && userStatus?.statusType !== YoungStatusType.non_eligible) {
+  if (isFreeDigitalOffer && !isNonEligible(user?.statusType)) {
     if (subcategory.isEvent) {
       if (!isAlreadyBookedOffer) {
         return {
@@ -243,8 +242,22 @@ export const getCtaWordingAndAction = ({
       }
     }
   }
+  if (isAlreadyBookedOffer) {
+    return {
+      wording: 'Voir ma réservation',
+      isDisabled: false,
+      navigateTo: {
+        screen: 'BookingDetails',
+        params: { id: user?.bookedOffers[offer.id] },
+        fromRef: true,
+      },
+      onPress: () => analytics.logViewedBookingPage({ offerId: offer.id, from: 'offer' }),
+      bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
+      movieScreeningUserData: { hasBookedOffer: true, bookings: booking as BookingReponse },
+    }
+  }
 
-  if (userStatus.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
+  if (isNonEligible(user?.statusType) && !externalTicketOfficeUrl) {
     return {
       wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
       bottomBannerText: BottomBannerTextEnum.NOT_ELIGIBLE,
@@ -264,12 +277,12 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (userStatus.statusType === YoungStatusType.eligible && !isBeneficiary) {
+  if (isEligible(user?.statusType) && !isAndWasBeneficiary(user?.statusType)) {
     const common = {
       wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
       isDisabled: false,
     }
-    switch (userStatus.subscriptionStatus) {
+    switch (user?.subscriptionStatus) {
       case SubscriptionStatus.has_to_complete_subscription:
         return {
           ...common,
@@ -300,24 +313,14 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (isAlreadyBookedOffer) {
-    return {
-      wording: 'Voir ma réservation',
-      isDisabled: false,
-      navigateTo: {
-        screen: 'BookingDetails',
-        params: { id: user?.bookedOffers[offer.id] },
-        fromRef: true,
-      },
-      onPress: () => analytics.logViewedBookingPage({ offerId: offer.id, from: 'offer' }),
-      bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
-      movieScreeningUserData: { hasBookedOffer: true, bookings: booking as BookingReponse },
-    }
-  }
-
   // Non beneficiary or educational offer or unavailable offer for user
   const isOfferCategoryNotBookableByUser = isUnderageBeneficiary && offer.isForbiddenToUnderage
-  if (!isLoggedIn || !isBeneficiary || offer.isEducational || isOfferCategoryNotBookableByUser) {
+  if (
+    !isLoggedIn ||
+    !isAndWasBeneficiary(user?.statusType) ||
+    offer.isEducational ||
+    isOfferCategoryNotBookableByUser
+  ) {
     if (!externalTicketOfficeUrl) return { wording: undefined }
 
     return {
@@ -465,7 +468,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
       showErrorSnackBar(message)
     },
   })
-  const { isBeneficiary = false, bookedOffers = {}, status } = user ?? {}
+  const { bookedOffers = {} } = user ?? {}
   const { data: booking } = useOngoingOrEndedBookingQuery(
     getBookingOfferId(offerId, bookedOffers) ?? 0
   )
@@ -477,12 +480,9 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
    */
   if (isLoggedIn === null || user === null || !offer.venue.id) return
 
-  const userStatus = status?.statusType ? status : { statusType: YoungStatusType.non_eligible }
   return getCtaWordingAndAction({
     isLoggedIn,
     user,
-    userStatus,
-    isBeneficiary,
     offer,
     subcategory,
     hasEnoughCreditData: hasEnoughCredit,

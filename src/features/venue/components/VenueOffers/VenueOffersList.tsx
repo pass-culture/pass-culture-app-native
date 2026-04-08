@@ -23,6 +23,7 @@ import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
+import { isAndWasBeneficiary } from 'shared/user/checkStatus'
 import { AvatarList } from 'ui/components/Avatar/AvatarList'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
@@ -141,7 +142,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           currency,
           euroToPacificFrancRate,
           formatPrice({
-            isDuo: !!(item.offer.isDuo && user?.isBeneficiary),
+            isDuo: !!(item.offer.isDuo && isAndWasBeneficiary(user?.statusType)),
           })
         )}
         venueId={venue?.id}

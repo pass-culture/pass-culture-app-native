@@ -7,6 +7,7 @@ import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
+import { isAndWasBeneficiary } from 'shared/user/checkStatus'
 import { getAge } from 'shared/user/getAge'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -77,7 +78,7 @@ const reasonButtons = (canDelete: boolean): ReasonButton[] => [
 export function DeleteProfileReason() {
   const { user } = useAuthContext()
   const userIsDefinedAndAbove21 = user?.birthDate && getAge(user?.birthDate) >= 21
-  const canDeleteProfile = !user?.isBeneficiary || userIsDefinedAndAbove21
+  const canDeleteProfile = !isAndWasBeneficiary(user?.statusType) || userIsDefinedAndAbove21
   const reasons = reasonButtons(!!canDeleteProfile)
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
   const theme = useTheme()

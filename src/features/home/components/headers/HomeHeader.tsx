@@ -10,6 +10,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { isAndWasBeneficiary } from 'shared/user/checkStatus'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
@@ -28,19 +29,20 @@ export const HomeHeader: FunctionComponent = function () {
     const welcomeTitle =
       user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
 
+    const isBeneficiaryUser = isAndWasBeneficiary(user?.statusType)
     const getSubtitle = () => {
       const shouldSeeDefaultSubtitle =
         !isLoggedIn ||
         !user ||
-        !user.isBeneficiary ||
+        !isBeneficiaryUser ||
         user.eligibility === EligibilityType.free ||
         user.depositType === DepositType.GRANT_FREE ||
-        (!user.isBeneficiary && user.isEligibleForBeneficiaryUpgrade)
+        (!isBeneficiaryUser && user.isEligibleForBeneficiaryUpgrade)
 
       if (shouldSeeDefaultSubtitle) return 'Toute la culture à portée de main'
 
       const shouldSeeBeneficiarySubtitle =
-        user.isBeneficiary && !!availableCredit && !availableCredit.isExpired
+        isBeneficiaryUser && !!availableCredit && !availableCredit.isExpired
       if (shouldSeeBeneficiarySubtitle) {
         const credit = formatCurrencyFromCents(
           availableCredit.amount,

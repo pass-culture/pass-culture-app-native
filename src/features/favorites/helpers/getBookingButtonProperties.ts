@@ -1,9 +1,10 @@
-import { FavoriteOfferResponse, YoungStatusType } from 'api/gen'
+import { FavoriteOfferResponse } from 'api/gen'
 import { getBeneficiaryBookingButtonProps } from 'features/favorites/helpers/getBeneficiaryBookingButtonProps'
 import { getEligibleBookingButtonProps } from 'features/favorites/helpers/getEligibleBookingButtonProps'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { OfferModal } from 'shared/offer/enums'
+import { isAndWasBeneficiary, isEligible } from 'shared/user/checkStatus'
 import { ExternalNavigationProps } from 'ui/components/touchableLink/types'
 
 interface Props {
@@ -46,13 +47,11 @@ export const getBookingButtonProperties = (
     onPress: () => props.onInAppBooking(props.offer),
   }
 
-  const userStatus = props.user.status
-  if (userStatus?.statusType === YoungStatusType.eligible) {
-    return getEligibleBookingButtonProps(userStatus, props.offer.id)
+  if (isEligible(props.user.statusType)) {
+    return getEligibleBookingButtonProps(props.user.subscriptionStatus, props.offer.id)
   }
 
-  const isExBeneficiary = !props.user.isBeneficiary
-  if (isExBeneficiary) {
+  if (!isAndWasBeneficiary(props.user.statusType)) {
     if (!props.offer.isReleased || props.offer.isExpired || props.offer.isSoldOut) {
       return
     }

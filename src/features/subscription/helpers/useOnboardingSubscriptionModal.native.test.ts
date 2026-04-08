@@ -1,4 +1,4 @@
-import { YoungStatusType } from 'api/gen'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/useOnboardingSubscriptionModal'
 import { storage } from 'libs/storage'
 import { renderHook, waitFor } from 'tests/utils'
@@ -27,7 +27,7 @@ describe('useOnboardingSubscriptionModal', () => {
     renderHook(() =>
       useOnboardingSubscriptionModal({
         isLoggedIn: true,
-        userStatus: YoungStatusType.non_eligible,
+        userStatus: UserStatusType.GENERAL_PUBLIC,
         showOnboardingSubscriptionModal,
       })
     )
@@ -41,7 +41,7 @@ describe('useOnboardingSubscriptionModal', () => {
     renderHook(() =>
       useOnboardingSubscriptionModal({
         isLoggedIn: true,
-        userStatus: YoungStatusType.eligible,
+        userStatus: UserStatusType.ELIGIBLE,
         showOnboardingSubscriptionModal,
       })
     )
@@ -57,7 +57,7 @@ describe('useOnboardingSubscriptionModal', () => {
     renderHook(() =>
       useOnboardingSubscriptionModal({
         isLoggedIn: true,
-        userStatus: YoungStatusType.eligible,
+        userStatus: UserStatusType.ELIGIBLE,
         showOnboardingSubscriptionModal,
       })
     )
@@ -72,7 +72,7 @@ describe('useOnboardingSubscriptionModal', () => {
     renderHook(() =>
       useOnboardingSubscriptionModal({
         isLoggedIn: true,
-        userStatus: YoungStatusType.eligible,
+        userStatus: UserStatusType.ELIGIBLE,
         showOnboardingSubscriptionModal,
       })
     )

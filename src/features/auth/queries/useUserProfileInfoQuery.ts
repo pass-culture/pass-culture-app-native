@@ -20,7 +20,13 @@ export const useUserProfileInfoQuery = (isLoggedIn: boolean, options = {}) => {
     meta: { persist: true },
     select: (user) => {
       const { statusType, creditType, eligibilityType } = getUserProfileState(user)
-      return { ...user, statusType, creditType, eligibilityType }
+      return {
+        ...user,
+        statusType,
+        creditType,
+        eligibilityType,
+        subscriptionStatus: user.status.subscriptionStatus,
+      }
     },
     ...options,
   })

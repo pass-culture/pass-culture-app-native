@@ -1,7 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { SubscriptionSuccessModal } from 'features/subscription/components/modals/SubscriptionSuccessModal'
 import { UnsubscribingConfirmationModal } from 'features/subscription/components/modals/UnsubscribingConfirmationModal'
@@ -12,6 +11,7 @@ import { NotificationsLoggedOutModal } from 'features/subscription/Notifications
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { storage } from 'libs/storage'
+import { isNonEligible } from 'shared/user/checkStatus'
 import { useModal } from 'ui/components/modals/useModal'
 import type { ButtonSize } from 'ui/designSystem/Button/types'
 import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
@@ -91,7 +91,7 @@ export const SubscribeButtonWithModals = ({ homeId, size }: Props) => {
     }
   }
 
-  if (!thematic || user?.status?.statusType === YoungStatusType.non_eligible) return null
+  if (!thematic || isNonEligible(user?.statusType)) return null
 
   return (
     <View>

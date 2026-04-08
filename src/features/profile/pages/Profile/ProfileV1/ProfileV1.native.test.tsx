@@ -293,7 +293,7 @@ describe('<ProfileV1 />', () => {
       })
       renderProfile()
 
-      expect(screen.queryByText('Comment ça marche ?')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Comment ça marche\u00a0?')).not.toBeOnTheScreen()
     })
 
     it('should not display tutorial row when user has no credit and no upcoming credit', () => {
@@ -303,7 +303,7 @@ describe('<ProfileV1 />', () => {
       })
       renderProfile()
 
-      expect(screen.queryByText('Comment ça marche ?')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Comment ça marche\u00a0?')).not.toBeOnTheScreen()
     })
   })
 

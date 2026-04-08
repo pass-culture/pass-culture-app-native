@@ -1,4 +1,4 @@
-import { beneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 
 import { getShouldDisplayHelpButton } from './getShouldDisplayHelpButton'
 
@@ -8,9 +8,7 @@ describe('getShouldDisplayHelpButton', () => {
   })
 
   it('should return true when user is not a beneficiary', () => {
-    const user = { ...beneficiaryUser, isBeneficiary: false }
-
-    expect(getShouldDisplayHelpButton({ user })).toBe(true)
+    expect(getShouldDisplayHelpButton({ user: nonBeneficiaryUser })).toBe(true)
   })
 
   it('should return false when user is a beneficiary', () => {

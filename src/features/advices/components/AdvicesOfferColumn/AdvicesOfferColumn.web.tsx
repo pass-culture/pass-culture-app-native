@@ -14,6 +14,7 @@ import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { isAndWasBeneficiary } from 'shared/user/checkStatus'
 import { Button } from 'ui/designSystem/Button/Button'
 
 type Props = {
@@ -43,7 +44,7 @@ export const AdvicesOfferColumn: FunctionComponent<Props> = ({
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isDuo: !!(offer?.isDuo && user?.isBeneficiary),
+      isDuo: !!(offer?.isDuo && isAndWasBeneficiary(user?.statusType)),
     }),
     {
       fractionDigits: 2,

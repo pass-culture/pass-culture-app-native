@@ -4,11 +4,12 @@ import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { Adjust } from 'libs/adjust/adjust'
 import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import { storage } from 'libs/storage'
+import { isAndWasBeneficiary } from 'shared/user/checkStatus'
 import { getAge } from 'shared/user/getAge'
 
 export const useAdjustBeneficiaryEvent = (user?: UserProfileResponseWithoutSurvey) => {
   useEffect(() => {
-    if (user?.isBeneficiary) {
+    if (isAndWasBeneficiary(user?.statusType)) {
       // beneficiary events will be logged only once so we prefer check that Adjust is enabled to avoid losing the event
       Adjust.isEnabled((isEnabled) => {
         if (isEnabled) {
@@ -30,5 +31,5 @@ export const useAdjustBeneficiaryEvent = (user?: UserProfileResponseWithoutSurve
         }
       })
     }
-  }, [user?.isBeneficiary, user?.birthDate])
+  }, [user?.statusType, user?.birthDate])
 }

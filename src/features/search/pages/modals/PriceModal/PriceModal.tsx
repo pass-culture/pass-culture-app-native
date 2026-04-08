@@ -20,6 +20,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { formatCurrencyFromCentsWithoutCurrencySymbol } from 'shared/currency/formatCurrencyFromCentsWithoutCurrencySymbol'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { isAndWasBeneficiary } from 'shared/user/checkStatus'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { Form } from 'ui/components/Form'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
@@ -97,7 +98,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   const searchPriceSchema = priceSchema({ initialCredit: formatInitialCredit, currency })
 
   const isLimitCreditSearchDefaultValue = Number(searchState?.maxPrice) === formatAvailableCredit
-  const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
+  const isLoggedInAndBeneficiary = isLoggedIn && isAndWasBeneficiary(user?.statusType)
   const depositTypeIsNotGrantFree = user?.depositType !== DepositType.GRANT_FREE
 
   const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false

@@ -12,6 +12,10 @@ const navigationProps = {
   route: { params: { email: 'john.doe@gmail.com' } },
 } as NativeStackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
 
+jest.mock('features/auth/helpers/useIsMailAppAvailable', () => ({
+  useIsMailAppAvailable: jest.fn(() => true),
+}))
+
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {

@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UpdateEmailTokenExpiration } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
@@ -97,7 +98,7 @@ describe('PersonalData', () => {
   it('should redirect to ChangeEmail when clicking on modify email button', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
-      user: { ...mockedUser, isBeneficiary: false },
+      user: { ...mockedUser, statusType: UserStatusType.GENERAL_PUBLIC },
     })
 
     render(reactQueryProviderHOC(<PersonalData />))
@@ -113,7 +114,7 @@ describe('PersonalData', () => {
   it('should redirect to ChangePassword when clicking on modify password button', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
-      user: { ...mockedUser, isBeneficiary: false },
+      user: { ...mockedUser, statusType: UserStatusType.GENERAL_PUBLIC },
     })
 
     render(reactQueryProviderHOC(<PersonalData />))
@@ -129,7 +130,7 @@ describe('PersonalData', () => {
   it('should redirect to ChangeStatus when clicking on modify status button', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
-      user: { ...mockedUser, isBeneficiary: false },
+      user: { ...mockedUser, statusType: UserStatusType.GENERAL_PUBLIC },
     })
 
     render(reactQueryProviderHOC(<PersonalData />))
@@ -158,7 +159,7 @@ describe('PersonalData', () => {
   it('should log analytics and redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
-      user: { ...mockedUser, isBeneficiary: false },
+      user: { ...mockedUser, statusType: UserStatusType.GENERAL_PUBLIC },
     })
 
     render(reactQueryProviderHOC(<PersonalData />))
@@ -171,7 +172,7 @@ describe('PersonalData', () => {
   it('should  redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
-      user: { ...mockedUser, isBeneficiary: false },
+      user: { ...mockedUser, statusType: UserStatusType.GENERAL_PUBLIC },
     })
 
     render(reactQueryProviderHOC(<PersonalData />))
@@ -187,7 +188,7 @@ describe('PersonalData', () => {
   it('should open FAQ link when clicking on "Comment gérer tes données personnelles ?" button', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
-      user: { ...mockedUser, isBeneficiary: false },
+      user: { ...mockedUser, statusType: UserStatusType.GENERAL_PUBLIC },
     })
 
     render(reactQueryProviderHOC(<PersonalData />))

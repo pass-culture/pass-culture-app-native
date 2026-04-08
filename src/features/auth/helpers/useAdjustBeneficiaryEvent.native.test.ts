@@ -2,6 +2,7 @@ import { format } from 'date-fns'
 import mockdate from 'mockdate'
 
 import { CURRENT_DATE, SIXTEEN_AGE_DATE, EIGHTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { useAdjustBeneficiaryEvent } from 'features/auth/helpers/useAdjustBeneficiaryEvent'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
@@ -42,7 +43,7 @@ describe('useAdjustBeneficiaryEvent', () => {
   it('should not log beneficiary event and not save beneficiary event sent in storage when user is not beneficiary', async () => {
     renderUseAdjustBeneficiaryEvent({
       ...beneficiaryUser,
-      isBeneficiary: false,
+      statusType: UserStatusType.GENERAL_PUBLIC,
     })
 
     // force to wait that all useEffect are called to check that event is not logged after
@@ -106,7 +107,7 @@ describe('useAdjustBeneficiaryEvent', () => {
   it('should log beneficiary event when user becomes beneficiary', async () => {
     const { rerender } = renderUseAdjustBeneficiaryEvent({
       ...beneficiaryUser,
-      isBeneficiary: false,
+      statusType: UserStatusType.GENERAL_PUBLIC,
     })
 
     // force to wait that all useEffect are called to check that event is not logged after
@@ -117,7 +118,7 @@ describe('useAdjustBeneficiaryEvent', () => {
     rerender({
       user: {
         ...beneficiaryUser,
-        isBeneficiary: true,
+        statusType: UserStatusType.BENEFICIARY,
       },
     })
 

@@ -5,15 +5,19 @@ import { Share } from 'react-native'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import {
+  CurrencyEnum,
   ExpenseDomain,
   FavoriteResponse,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
-  YoungStatusType,
 } from 'api/gen'
+import { UserCreditType } from 'features/auth/helpers/getCreditType'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { favoriteResponseSnap as favorite } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -29,13 +33,28 @@ import { Favorite } from './Favorite'
 const credit: Credit = { amount: 100, isExpired: false }
 
 const userProfile: UserProfileResponseWithoutSurvey = {
-  isBeneficiary: true,
   bookedOffers: {},
   domainsCredit: { [ExpenseDomain.all]: { initial: 500, remaining: 300 } },
-  status: {
-    statusType: YoungStatusType.beneficiary,
+  achievements: [],
+  currency: CurrencyEnum.EUR,
+  email: 'test@example.com',
+  hasPassword: true,
+  id: 1,
+  hasProfileExpired: false,
+  isEligibleForBeneficiaryUpgrade: false,
+  requiresIdCheck: false,
+  roles: [],
+  subscriptionStatus: null,
+  showEligibleCard: false,
+  subscriptions: {
+    marketingEmail: true,
+    marketingPush: true,
+    subscribedThemes: [SubscriptionTheme.CINEMA],
   },
-} as UserProfileResponseWithoutSurvey
+  statusType: UserStatusType.BENEFICIARY,
+  creditType: UserCreditType.CREDIT_V3_18,
+  eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
+}
 const onInAppBooking = jest.fn()
 
 const mockFavoritesState = initialFavoritesState

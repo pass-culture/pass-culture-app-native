@@ -31,6 +31,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
+import { isAndWasBeneficiary } from 'shared/user/checkStatus'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GroupTags } from 'ui/GroupTags/GroupTags'
@@ -100,7 +101,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isDuo: !!(offer.isDuo && user?.isBeneficiary),
+      isDuo: !!(offer.isDuo && isAndWasBeneficiary(user?.statusType)),
     }),
     { fractionDigits: 2 }
   )

@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import { YoungStatusType } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AppearanceButton } from 'features/profile/components/AppearanceButton/AppearanceButton'
 import { BugReportButton } from 'features/profile/components/Buttons/BugReportButton/BugReportButton'
@@ -17,17 +16,13 @@ import { loggedInNonBeneficiaryContentConfig } from 'features/profile/containers
 import { getShouldDisplayHelpButton } from 'features/profile/helpers/getShouldDisplayHelpButton'
 import { useAppearanceTag } from 'features/profile/helpers/useAppearanceTag'
 import { useGeolocationSwitch } from 'features/profile/helpers/useGeolocationSwitch'
+import { CHATBOT_ELIGIBLE_STATUSES } from 'features/profile/pages/Profile/ProfileV1/ProfileV1'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location/LocationWrapper'
-
-const CHATBOT_ELIGIBLE_STATUSES = new Set<YoungStatusType>([
-  YoungStatusType.eligible,
-  YoungStatusType.beneficiary,
-  YoungStatusType.ex_beneficiary,
-])
+import { isAndWasBeneficiary } from 'shared/user/checkStatus'
 
 type Props = { user: UserProfileResponseWithoutSurvey | undefined }
 
@@ -37,7 +32,7 @@ export const LoggedInContent = ({ user }: Props) => {
   const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
   const shouldDisplayHelpButton = getShouldDisplayHelpButton({ user })
 
-  const userStatusType = user?.status?.statusType
+  const userStatusType = user?.statusType
   const isEligibleForChatbot = !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.has(userStatusType)
   const shouldDisplayChatbotButton = isChatbotFeatureEnabled && isEligibleForChatbot
 
@@ -72,13 +67,13 @@ export const LoggedInContent = ({ user }: Props) => {
     BugReportButton: <BugReportButton />,
   }
 
-  const isBeneficiary = user?.isBeneficiary
+  const isBeneficiaryUser = isAndWasBeneficiary(user?.statusType)
 
-  const testID = isBeneficiary
+  const testID = isBeneficiaryUser
     ? 'logged-in-beneficiary-content'
     : 'logged-in-non-beneficiary-content'
 
-  const config = isBeneficiary
+  const config = isBeneficiaryUser
     ? loggedInBeneficiaryContentConfig(sharedConfig)
     : loggedInNonBeneficiaryContentConfig(sharedConfig)
 

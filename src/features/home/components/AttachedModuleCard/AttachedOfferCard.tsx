@@ -12,6 +12,7 @@ import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcateg
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
+import { isAndWasBeneficiary } from 'shared/user/checkStatus'
 
 type Props = {
   offer: Offer
@@ -37,7 +38,7 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight, com
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isDuo: !!(attachedOffer.isDuo && user?.isBeneficiary),
+      isDuo: !!(attachedOffer.isDuo && isAndWasBeneficiary(user?.statusType)),
     })
   )
   const distance = getDistance(

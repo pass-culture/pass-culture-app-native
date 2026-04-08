@@ -24,6 +24,7 @@ import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { isAndWasBeneficiary } from 'shared/user/checkStatus'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -100,11 +101,10 @@ export const SearchFilter: React.FC = () => {
   }, [dispatch, getLocationFilter, setDisabilities, logReinitializeFilters])
 
   const hasDuoOfferToggle = useMemo(() => {
-    const isBeneficiary = !!user?.isBeneficiary
     const hasRemainingCredit = !!user?.domainsCredit?.all?.remaining
 
-    return isBeneficiary && hasRemainingCredit
-  }, [user?.isBeneficiary, user?.domainsCredit?.all?.remaining])
+    return !!isAndWasBeneficiary(user?.statusType) && hasRemainingCredit
+  }, [user?.statusType, user?.domainsCredit?.all?.remaining])
 
   const onClose = isMobileViewport ? onGoBack : undefined
   return (

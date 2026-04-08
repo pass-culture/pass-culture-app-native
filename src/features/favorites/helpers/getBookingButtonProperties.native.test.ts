@@ -1,4 +1,4 @@
-import { YoungStatusType } from 'api/gen'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import * as getBeneficiaryBookingButtonPropsAPI from 'features/favorites/helpers/getBeneficiaryBookingButtonProps'
 import { getBookingButtonProperties } from 'features/favorites/helpers/getBookingButtonProperties'
@@ -21,7 +21,6 @@ const mockGetAvailableCredit = getAvailableCredit as jest.MockedFunction<typeof 
 
 const favoriteOffer = favoriteOfferResponseSnap
 const mockOnInAppBooking = jest.fn()
-const user = beneficiaryUser
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -31,7 +30,7 @@ describe('getBookingButtonProperties', () => {
       getBookingButtonProperties({
         offer: favoriteOffer,
         onInAppBooking: mockOnInAppBooking,
-        user: { ...user, status: { statusType: YoungStatusType.eligible } },
+        user: { ...beneficiaryUser, statusType: UserStatusType.ELIGIBLE },
       })
 
       expect(getEligibleBookingButtonPropsSpy).toHaveBeenCalledTimes(1)
@@ -48,7 +47,7 @@ describe('getBookingButtonProperties', () => {
       getBookingButtonProperties({
         offer: favoriteOffer,
         onInAppBooking: mockOnInAppBooking,
-        user,
+        user: beneficiaryUser,
       })
 
       expect(getBeneficiaryBookingButtonPropsSpy).toHaveBeenCalledTimes(1)
@@ -65,7 +64,11 @@ describe('getBookingButtonProperties', () => {
       const buttonProps = getBookingButtonProperties({
         offer: favoriteOffer,
         onInAppBooking: mockOnInAppBooking,
-        user: { ...user, bookedOffers: { [favoriteOffer.id]: 1 } },
+        user: {
+          ...beneficiaryUser,
+          statusType: UserStatusType.EX_BENEFICIARY,
+          bookedOffers: { [favoriteOffer.id]: 1 },
+        },
       })
 
       expect(buttonProps).toEqual({
@@ -83,7 +86,10 @@ describe('getBookingButtonProperties', () => {
       const buttonProps = getBookingButtonProperties({
         offer: { ...favoriteOffer, ...offerStatus },
         onInAppBooking: mockOnInAppBooking,
-        user,
+        user: {
+          ...beneficiaryUser,
+          statusType: UserStatusType.EX_BENEFICIARY,
+        },
       })
 
       expect(buttonProps).toBe(undefined)
@@ -93,7 +99,10 @@ describe('getBookingButtonProperties', () => {
       const buttonProps = getBookingButtonProperties({
         offer: { ...favoriteOffer, price: 0 },
         onInAppBooking: mockOnInAppBooking,
-        user,
+        user: {
+          ...beneficiaryUser,
+          statusType: UserStatusType.EX_BENEFICIARY,
+        },
       })
 
       expect(buttonProps?.wording).toEqual('Réserver')
@@ -105,7 +114,10 @@ describe('getBookingButtonProperties', () => {
       const buttonProps = getBookingButtonProperties({
         offer: { ...favoriteOffer, price: 200, externalTicketOfficeUrl: 'http://toto.com' },
         onInAppBooking: mockOnInAppBooking,
-        user,
+        user: {
+          ...beneficiaryUser,
+          statusType: UserStatusType.EX_BENEFICIARY,
+        },
       })
 
       expect(buttonProps?.wording).toEqual('Réserver')

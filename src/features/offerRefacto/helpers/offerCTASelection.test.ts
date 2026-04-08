@@ -9,6 +9,7 @@ import {
   YoungStatusResponse,
   YoungStatusType,
 } from 'api/gen'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { BottomBannerTextEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -37,6 +38,7 @@ describe('getCTAWordingAndAction', () => {
     enableBookingFreeOfferFifteenSixteen: true,
     userStatus: { statusType: YoungStatusType.beneficiary },
     hasEnoughCredit: true,
+    statusType: UserStatusType.BENEFICIARY,
     isLoggedIn: true,
     subcategory: mockSubcategory,
     isEndedUsedBooking: false,
@@ -240,8 +242,8 @@ describe('getCTAWordingAndAction', () => {
   it('should return ineligible props and offer has no external url', () => {
     const result = getCTAWordingAndAction(
       buildGetCTAWordingAndAction({
+        user: { ...nonBeneficiaryUser, statusType: UserStatusType.GENERAL_PUBLIC },
         offer: { externalTicketOfficeUrl: undefined },
-        userStatus: { statusType: YoungStatusType.non_eligible },
       })
     )
 
@@ -272,7 +274,7 @@ describe('getCTAWordingAndAction', () => {
   it('should return subscription status props when user eligible and not beneficiary', () => {
     const result = getCTAWordingAndAction(
       buildGetCTAWordingAndAction({
-        user: nonBeneficiaryUser,
+        user: { ...nonBeneficiaryUser, statusType: UserStatusType.ELIGIBLE },
         context: { subscriptionStatus: SubscriptionStatus.has_to_complete_subscription },
         userStatus: { statusType: YoungStatusType.eligible },
       })
@@ -314,17 +316,6 @@ describe('getCTAWordingAndAction', () => {
       const result = getCTAWordingAndAction(
         buildGetCTAWordingAndAction({
           offer: { isEducational: true, externalTicketOfficeUrl: undefined },
-        })
-      )
-
-      expect(result).toEqual({})
-    })
-
-    it('should return undefined wording when user is not a beneficiary and no external URL', () => {
-      const result = getCTAWordingAndAction(
-        buildGetCTAWordingAndAction({
-          user: nonBeneficiaryUser,
-          offer: { externalTicketOfficeUrl: undefined },
         })
       )
 

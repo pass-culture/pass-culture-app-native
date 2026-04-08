@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 
-import { VenueResponse, YoungStatusType } from 'api/gen'
+import { VenueResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UnsubscribingConfirmationModal } from 'features/subscription/components/modals/UnsubscribingConfirmationModal'
 import { ThematicSubscriptionBlock } from 'features/subscription/components/ThematicSubscriptionBlock'
@@ -10,6 +10,7 @@ import { NotificationsLoggedOutModal } from 'features/subscription/Notifications
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { mapActivityToCategory } from 'features/venue/helpers/mapActivityToCategory'
+import { isNonEligible } from 'shared/user/checkStatus'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
@@ -78,7 +79,7 @@ export const VenueThematicSection: FunctionComponent<Props> = ({ venue }: Props)
   if (
     !thematic ||
     (isSubscribeButtonActive && !hasUserSubscribed) ||
-    user?.status?.statusType === YoungStatusType.non_eligible
+    isNonEligible(user?.statusType)
   )
     return null
 

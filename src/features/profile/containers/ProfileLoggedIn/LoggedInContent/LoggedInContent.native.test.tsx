@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { YoungStatusType } from 'api/gen'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { getShouldDisplayHelpButton } from 'features/profile/helpers/getShouldDisplayHelpButton'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
@@ -78,7 +78,7 @@ describe('LoggedInContent', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CHATBOT])
       const eligibleUser: UserProfileResponseWithoutSurvey = {
         ...nonBeneficiaryUser,
-        status: { statusType: YoungStatusType.eligible },
+        statusType: UserStatusType.ELIGIBLE,
       }
 
       render(reactQueryProviderHOC(<LoggedInContent user={eligibleUser} />))
@@ -90,10 +90,22 @@ describe('LoggedInContent', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CHATBOT])
       const exBeneficiary: UserProfileResponseWithoutSurvey = {
         ...beneficiaryUser,
-        status: { statusType: YoungStatusType.ex_beneficiary },
+        statusType: UserStatusType.EX_BENEFICIARY,
       }
 
       render(reactQueryProviderHOC(<LoggedInContent user={exBeneficiary} />))
+
+      expect(screen.getByText('Poser une question')).toBeTruthy()
+    })
+
+    it('should display ChatbotButton when feature flag is enabled and user is eligible and beneficiary', () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CHATBOT])
+      const eligibleAndBeneficiary: UserProfileResponseWithoutSurvey = {
+        ...beneficiaryUser,
+        statusType: UserStatusType.ELIGIBLE_AND_BENEFICIARY,
+      }
+
+      render(reactQueryProviderHOC(<LoggedInContent user={eligibleAndBeneficiary} />))
 
       expect(screen.getByText('Poser une question')).toBeTruthy()
     })

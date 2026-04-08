@@ -4,6 +4,7 @@ import { ThemeProvider as WebThemeProvider } from 'styled-components'
 import { ThemeProvider } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -108,7 +109,10 @@ function renderHeader({
 }) {
   mockedUseAuthContext.mockReturnValueOnce({
     isLoggedIn,
-    user: { isBeneficiary },
+    user: {
+      isBeneficiary,
+      statusType: isBeneficiary ? UserStatusType.BENEFICIARY : UserStatusType.GENERAL_PUBLIC,
+    },
   })
 
   return render(

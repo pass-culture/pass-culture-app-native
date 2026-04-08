@@ -4,8 +4,8 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
@@ -30,6 +30,7 @@ import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
+import { isAndWasBeneficiary } from 'shared/user/checkStatus'
 import { getAge } from 'shared/user/getAge'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
@@ -68,10 +69,11 @@ const isWeb = Platform.OS === 'web'
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 const DARK_MODE_GTM_APPEARANCE_TAG_KEY = 'darkModeGtmAppearanceTagSeen'
 
-const CHATBOT_ELIGIBLE_STATUSES = new Set<YoungStatusType>([
-  YoungStatusType.eligible,
-  YoungStatusType.beneficiary,
-  YoungStatusType.ex_beneficiary,
+export const CHATBOT_ELIGIBLE_STATUSES = new Set<UserStatusType>([
+  UserStatusType.ELIGIBLE,
+  UserStatusType.BENEFICIARY,
+  UserStatusType.EX_BENEFICIARY,
+  UserStatusType.ELIGIBLE_AND_BENEFICIARY,
 ])
 
 const OnlineProfile: React.FC = () => {
@@ -100,7 +102,7 @@ const OnlineProfile: React.FC = () => {
     permissionState === GeolocPermissionState.GRANTED
   )
 
-  const shouldDisplayTutorial = !user?.isBeneficiary
+  const shouldDisplayTutorial = !isAndWasBeneficiary(user?.statusType)
   const [hasSeenAppearanceTag, setHasSeenAppearanceTag] = useState<boolean | null>(null)
 
   useEffect(() => {
@@ -182,10 +184,8 @@ const OnlineProfile: React.FC = () => {
     shareApp('profile_banner')
   }, [])
 
-  const shouldShowAchievementsSection = user?.isBeneficiary
-
-  const userStatusType = user?.status?.statusType
-  const isEligibleForChatbot = !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.has(userStatusType)
+  const shouldShowAchievementsSection = isAndWasBeneficiary(user?.statusType)
+  const isEligibleForChatbot = !!user?.statusType && CHATBOT_ELIGIBLE_STATUSES.has(user?.statusType)
   const shouldDisplayChatbot = enableChatbot && isEligibleForChatbot
 
   const shareBannerTitle = 'Partage le pass Culture'
