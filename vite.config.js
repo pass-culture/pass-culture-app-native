@@ -1,13 +1,15 @@
-import { defineConfig, loadEnv, transformWithEsbuild } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig, loadEnv, transformWithOxc } from 'vite'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
 import { whiteListEnv } from './whiteListEnv'
 import { execSync } from 'child_process'
 import { analyzer } from 'vite-bundle-analyzer'
 
-const defaultExtensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
-const allExtensions = [...defaultExtensions.map((ext) => `.web${ext}`), ...defaultExtensions]
+// Avoid tsc errors, will be corrected after upgrading typescript to 5.6
+const react = require('@vitejs/plugin-react').default
+
+const defaultExtensions = ['.js', '.ts', '.mjs', '.mts', '.jsx', '.tsx']
+const allExtensions = [...defaultExtensions.map((ext) => `.web${ext}`), ...defaultExtensions, '.json']
 
 const libsThatHaveJSFilesContainingJSX = [
   'node_modules/react-native-animatable',
@@ -66,11 +68,10 @@ export default ({ mode }) => {
         apply: 'build', // This plugin runs only when building (not serve)
         name: 'treat-js-files-as-jsx',
         async transform(code, id) {
-          if (!libsThatHaveJSFilesContainingJSX.some((lib) => id.includes(lib))) return null
-          return transformWithEsbuild(code, id, {
-            loader: 'jsx',
-            jsx: 'automatic',
-          })
+          return libsThatHaveJSFilesContainingJSX.some((lib) => id.includes(lib)) ? transformWithOxc(code, id, {
+            lang: 'jsx',
+            jsx: { runtime: 'automatic' }
+          }) : null
         },
       },
       createHtmlPlugin({
@@ -142,11 +143,9 @@ export default ({ mode }) => {
     preview: proxyConfig,
     optimizeDeps: {
       include: ['react-native', 'react-native-web'],
-      esbuildOptions: {
-        jsx: 'transform',
-        resolveExtensions: allExtensions,
-        loader: {
-          '.js': 'jsx',
+      rolldownOptions: {
+        resolve: {
+          extensions: allExtensions,
         },
       },
     },
