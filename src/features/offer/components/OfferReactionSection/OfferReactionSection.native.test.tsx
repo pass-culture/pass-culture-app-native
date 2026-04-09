@@ -109,6 +109,18 @@ describe('<OfferReactionSection />', () => {
 
       expect(screen.queryByText('Nouveau')).not.toBeOnTheScreen()
     })
+
+    it('should not display new tag when wipProReviewsNewTag FF activated but no pro advices', async () => {
+      renderOfferReactionSection({
+        clubAdvices: [advicesFixture[0]],
+        clubAdvicesCount: 1,
+        enableProReviewNewTag: true,
+      })
+
+      await screen.findByText('1 avis book club')
+
+      expect(screen.queryByText('Nouveau')).not.toBeOnTheScreen()
+    })
   })
 
   describe('Headline offers information', () => {
