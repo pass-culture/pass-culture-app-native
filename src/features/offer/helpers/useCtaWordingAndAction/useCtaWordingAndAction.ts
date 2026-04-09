@@ -97,7 +97,6 @@ export type ICTAWordingAndAction = {
   movieScreeningUserData?: MovieScreeningUserData
 }
 
-// Follow logic of https://www.notion.so/Modalit-s-d-affichage-du-CTA-de-r-servation-dbd30de46c674f3f9ca9f37ce8333241
 export const getCtaWordingAndAction = ({
   isLoggedIn,
   user,
