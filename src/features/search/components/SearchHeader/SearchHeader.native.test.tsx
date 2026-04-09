@@ -2,7 +2,6 @@ import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { setSettings } from 'features/auth/tests/setSettings'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
@@ -62,7 +61,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('SearchHeader component', () => {
   beforeEach(() => {
-    setSettings()
     setFeatureFlags()
   })
 

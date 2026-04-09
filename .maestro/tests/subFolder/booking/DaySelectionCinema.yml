@@ -5,11 +5,12 @@ appId: ${MAESTRO_APP_ID}
       notVisible:
         text: ${output.targetDateTest}
     commands:
-      - pressKey: back
+      - tapOn: 'Revenir en arrière'
       - scroll
-      - tapOn:
-          text: 'Séance de cinéma'
-          index: 1
+      - extractTextWithAI:
+          query: "Le titre exacte d'une des offres Cinéma visible dans les résultats de recherche"
+          outputVariable: 'offerResult'
+      - tapOn: .*${offerResult}.*
       - tapOn: 'Accéder aux séances'
 
 - runFlow:

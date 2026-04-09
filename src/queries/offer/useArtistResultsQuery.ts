@@ -76,11 +76,7 @@ export const useArtistResultsQuery = ({ artistId, subcategoryId }: UseArtistResu
   return { artistPlaylist, artistTopOffers }
 }
 
-const parseDistance = (distance: string) => {
-  if (distance.includes('km')) {
-    // Convert kilometers to meters
-    return parseFloat(distance) * 1000
-  }
-
-  return parseFloat(distance)
+export const parseDistance = (distance: string) => {
+  // Convert kilometers to meters if necessary
+  return Number.parseFloat(distance) * (distance.includes('km') ? 1000 : 1)
 }

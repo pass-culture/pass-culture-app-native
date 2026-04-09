@@ -1,7 +1,5 @@
 import mockdate from 'mockdate'
 
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { renderHook } from 'tests/utils'
 
 import { useGetDepositAmountsByAge } from './useGetDepositAmountsByAge'
@@ -10,10 +8,6 @@ const TODAY = '2022-10-24'
 mockdate.set(new Date(TODAY))
 
 describe('useGetDepositAmountsByAge', () => {
-  beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
-  })
-
   it('should return nothing when birthDate is not defined', () => {
     const { result } = renderHook(() => useGetDepositAmountsByAge())
 

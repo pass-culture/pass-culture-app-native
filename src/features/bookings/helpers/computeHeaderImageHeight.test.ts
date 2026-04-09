@@ -24,6 +24,9 @@ describe('computeHeaderImageHeight', () => {
         windowHeight,
         display,
         isAndroid,
+        ticketFullMiddleHeight: 32,
+        extraAndroidMargin: 32,
+        ticket_punched_middle_height: 40,
       })
 
       expect(headerImageHeight).toEqual(expectedHeaderImageHeight)

@@ -156,7 +156,7 @@ const getVerticalSpacing = (
   if (shouldHaveNoSpacing) {
     return 0
   }
-  return getSpacing(0.5)
+  return theme.designSystem.size.spacing.xxs
 }
 
 const IconWrapper = styled.View<IconWrapperProps>(({ theme, ...props }) => ({

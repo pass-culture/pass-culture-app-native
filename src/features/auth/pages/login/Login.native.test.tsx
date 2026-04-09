@@ -7,12 +7,10 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
 import { AccountState, FavoriteResponse, OauthStateResponse, SigninResponse } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { SignInResponseFailure } from 'features/auth/types'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
@@ -26,9 +24,9 @@ import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixture
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettingsMock } from 'tests/settings/mockSettings'
 import { act, fireEvent, render, screen, simulateWebviewMessage, userEvent } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
-import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 
 import { Login } from './Login'
 
@@ -37,7 +35,7 @@ jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/monitoring/services')
 jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('features/navigation/helpers/navigateToHome')
-jest.mock('features/navigation/helpers/usePreviousRoute')
+jest.mock('features/navigation/helpers/usePreviousRouteName')
 const mockResetSearch = jest.fn()
 const mockIdentityCheckDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
@@ -48,17 +46,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 
 const captureMonitoringError = jest.spyOn(monitoringErrorsModule, 'captureMonitoringError')
-
-const mockShowErrorSnackBar = jest.fn()
-const mockShowInfoSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackBar,
-    showInfoSnackBar: mockShowInfoSnackBar,
-  }),
-}))
-
-const mockUsePreviousRoute = usePreviousRoute as jest.Mock
 
 const apiPostFavoriteSpy = jest.spyOn(API.api, 'postNativeV1MeFavorites')
 
@@ -79,9 +66,11 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 const user = userEvent.setup()
 
+setSettingsMock({ patchSettingsWith: { isRecaptchaEnabled: false } })
+
 describe('<Login/>', () => {
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
+    setFeatureFlags([])
     mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
@@ -90,7 +79,6 @@ describe('<Login/>', () => {
     mockMeApiCall({
       showEligibleCard: false,
     } as UserProfileResponseWithoutSurvey)
-    mockUsePreviousRoute.mockReturnValue(null)
   })
 
   afterEach(async () => {
@@ -173,11 +161,11 @@ describe('<Login/>', () => {
 
     await user.press(await screen.findByTestId('Se connecter avec Google'))
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message:
-        'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.',
-      timeout: SNACK_BAR_TIME_OUT_LONG,
-    })
+    expect(
+      screen.getByText(
+        'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.'
+      )
+    ).toBeOnTheScreen()
   })
 
   it('should redirect to signup form when SSO login fails because user does not exist', async () => {
@@ -242,8 +230,7 @@ describe('<Login/>', () => {
     expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
   })
 
-  it('should redirect to home WHEN signin is successful with WIP_ENABLE_GOOGLE_SSO', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
+  it('should redirect to home WHEN signin is successful with GOOGLE_SSO', async () => {
     mockMeApiCall({
       showEligibleCard: false,
     } as UserProfileResponseWithoutSurvey)
@@ -509,10 +496,12 @@ describe('<Login/>', () => {
 
     await screen.findByText('Connecte-toi')
 
-    expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
-      message: 'Pour sécuriser ton pass Culture, tu dois régulièrement confirmer tes identifiants.',
-      timeout: SNACK_BAR_TIME_OUT_LONG,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(
+      screen.getByText(
+        'Pour sécuriser ton pass Culture, tu dois régulièrement confirmer tes identifiants.'
+      )
+    ).toBeOnTheScreen()
   })
 
   it('should log analytics when displaying forced login help message', async () => {
@@ -529,7 +518,51 @@ describe('<Login/>', () => {
 
     await screen.findByText('Connecte-toi')
 
-    expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
+    expect(screen.queryByTestId('snackbar-error')).not.toBeOnTheScreen()
+  })
+
+  describe('Apple SSO', () => {
+    it('should display Apple SSO button when Apple SSO feature flag is enabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+      renderLogin()
+
+      expect(await screen.findByText('Se connecter avec Apple')).toBeOnTheScreen()
+    })
+
+    it('should not display Apple SSO button when Apple SSO feature flag is disabled', async () => {
+      renderLogin()
+
+      await screen.findByText('Connecte-toi')
+
+      expect(screen.queryByText('Se connecter avec Apple')).not.toBeOnTheScreen()
+    })
+
+    it('should display both SSO buttons when apple sso feature flags is enabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+      renderLogin()
+
+      expect(await screen.findByTestId('Se connecter avec Google')).toBeOnTheScreen()
+      expect(screen.getByText('Se connecter avec Apple')).toBeOnTheScreen()
+    })
+
+    it('should always display separator', async () => {
+      renderLogin()
+
+      expect(await screen.findByText('ou')).toBeOnTheScreen()
+    })
+
+    it('should display sso identifier forgotten when APPLE SSO is enabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+      renderLogin()
+
+      expect(await screen.findByText('Je ne me souviens pas de mes identifiants')).toBeOnTheScreen()
+    })
+
+    it('should display sso identifier forgotten', async () => {
+      renderLogin()
+
+      expect(await screen.findByText('Je ne me souviens pas de mes identifiants')).toBeOnTheScreen()
+    })
   })
 
   describe('Login comes from adding an offer to favorite', () => {
@@ -595,7 +628,11 @@ describe('<Login/>', () => {
 
   describe('Login with ReCatpcha', () => {
     beforeAll(() => {
-      setSettings()
+      setSettingsMock()
+    })
+
+    afterAll(() => {
+      setSettingsMock({ patchSettingsWith: { isRecaptchaEnabled: false } })
     })
 
     it('should not open reCAPTCHA challenge modal before clicking on login button', async () => {

@@ -5,12 +5,9 @@ import styled from 'styled-components/native'
 import { DeeplinksGeneratorForm } from 'features/internal/components/DeeplinksGeneratorForm'
 import { DeeplinksHistory } from 'features/internal/components/DeeplinksHistory'
 import { DeeplinksResult } from 'features/internal/components/DeeplinksResult'
-import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
-import { getSpacing } from 'ui/theme'
 
 const linksInitialState: Array<string> = []
 
@@ -18,8 +15,6 @@ export const DeeplinksGenerator = () => {
   const [result, setResult] = useState(linksInitialState[0])
   const [links, setLinks] = useState<Array<string>>(linksInitialState)
   const [keepHistory, setKeepHistory] = useState(false)
-  const { showErrorSnackBar } = useSnackBarContext()
-  const headerHeight = useGetHeaderHeight()
 
   const onGenerate = useCallback(
     (generatedDeeplink: string) => {
@@ -35,10 +30,9 @@ export const DeeplinksGenerator = () => {
             )
           } catch (error) {
             if (error instanceof Error)
-              showErrorSnackBar({
-                message: `Le lien ${generatedDeeplink} n’a pas été ajouté à l’historique\u00a0: ${error.message}`,
-                timeout: SNACK_BAR_TIME_OUT,
-              })
+              showErrorSnackBar(
+                `Le lien ${generatedDeeplink} n’a pas été ajouté à l’historique\u00a0: ${error.message}`
+              )
           }
         }
       }
@@ -58,7 +52,6 @@ export const DeeplinksGenerator = () => {
         title="Envie de tout envie de lien&nbsp;?"
         shouldDisplayBackButton
       />
-      <Placeholder height={headerHeight} />
       <Container>
         <Row>
           <Left>
@@ -76,7 +69,6 @@ export const DeeplinksGenerator = () => {
           </Right>
         </Row>
       </Container>
-      <BlurHeader height={headerHeight} />
     </Page>
   )
 }
@@ -101,10 +93,7 @@ const Right = styled.View({
 
 const Container = styled.View(({ theme }) => ({
   flex: 1,
-  paddingTop: getSpacing(6),
+  marginTop: theme.designSystem.size.spacing.xl,
+  paddingTop: theme.designSystem.size.spacing.xl,
   paddingBottom: theme.designSystem.size.spacing.l,
-}))
-
-const Placeholder = styled.View<{ height: number }>(({ height }) => ({
-  height,
 }))

@@ -11,10 +11,9 @@ import { LogTypeEnum } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 export function useSearchHistory() {
-  const { showErrorSnackBar } = useSnackBarContext()
   const { data: subcategoriesData } = useSubcategoriesQuery()
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const [history, setHistory] = useState<HistoryItem[]>([])
@@ -38,6 +37,10 @@ export function useSearchHistory() {
 
       return historyLessThan30Days
     } catch (error) {
+      eventMonitoring.captureException('Impossible de récupérer l’historique de recherche', {
+        level: LogTypeEnum.INFO,
+        extra: { error },
+      })
       return []
     }
   }, [setHistoryItems])
@@ -61,13 +64,16 @@ export function useSearchHistory() {
       try {
         await internalRemoveFromHistory(item)
       } catch (error) {
-        showErrorSnackBar({
-          message: 'Impossible de supprimer l’entrée de l’historique',
-          timeout: SNACK_BAR_TIME_OUT,
+        showErrorSnackBar('Impossible de supprimer l’entrée de l’historique')
+        eventMonitoring.captureException('Search entry removal failed', {
+          level: LogTypeEnum.INFO,
+          extra: {
+            originalError: error instanceof Error ? error.message : String(error),
+          },
         })
       }
     },
-    [internalRemoveFromHistory, showErrorSnackBar]
+    [internalRemoveFromHistory]
   )
 
   const addToHistory = useCallback(
@@ -94,7 +100,7 @@ export function useSearchHistory() {
         const newItems = [
           {
             ...item,
-            createdAt: new Date().getTime(),
+            createdAt: Date.now(),
             label: getHistoryItemLabel({
               query: item.query,
               category: categoryLabel,
@@ -115,6 +121,7 @@ export function useSearchHistory() {
               query: item.query,
               nativeCategory: item.nativeCategory,
               category: item.category,
+              originalError: error instanceof Error ? error.message : String(error),
             },
           })
       }

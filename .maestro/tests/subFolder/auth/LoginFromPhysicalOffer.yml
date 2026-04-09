@@ -23,8 +23,8 @@ appId: ${MAESTRO_APP_ID}
       platform: iOS
     commands:
       - scrollUntilVisible:
-          element: "Envoyer sur iMessage"
-      - assertVisible: "Envoyer sur iMessage"
+          element: 'Envoyer sur iMessage'
+      - assertVisible: 'Envoyer sur iMessage'
 
 - assertVisible:
     text: 'Voir l’itinéraire'
@@ -34,7 +34,7 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-      - tapOn: 'Acheter'
+      - tapOn: 'Réserver l’offre'
 
 - runFlow:
     when:

@@ -84,7 +84,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "flexDirection": "row",
                 "justifyContent": "space-between",
                 "paddingHorizontal": 24,
-                "paddingVertical": 20,
+                "paddingVertical": 24,
               },
               {
                 "backgroundColor": "#f1f1f4",
@@ -328,15 +328,16 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
               style={
                 {
                   "backgroundColor": "#696a6f",
-                  "borderBottomLeftRadius": 16,
-                  "borderBottomRightRadius": 16,
-                  "borderTopLeftRadius": 16,
-                  "borderTopRightRadius": 16,
-                  "height": 32,
+                  "borderBottomLeftRadius": 32,
+                  "borderBottomRightRadius": 32,
+                  "borderTopLeftRadius": 32,
+                  "borderTopRightRadius": 32,
+                  "height": 36,
                   "justifyContent": "center",
-                  "width": 56,
+                  "width": 64,
                 }
               }
+              toggleSize={32}
             >
               <View
                 disabled={false}
@@ -350,9 +351,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "borderBottomRightRadius": 32,
                       "borderTopLeftRadius": 32,
                       "borderTopRightRadius": 32,
-                      "height": 28,
+                      "height": 32,
                       "justifyContent": "center",
-                      "width": 28,
+                      "width": 32,
                     },
                     {
                       "transform": [
@@ -363,6 +364,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                     },
                   ]
                 }
+                toggleSize={32}
               />
             </View>
           </View>
@@ -381,14 +383,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         style={
           [
             {
-              "marginRight": 8,
-            },
-            {
               "alignItems": "center",
               "flexDirection": "row",
               "justifyContent": "space-between",
+              "marginRight": 8,
               "paddingHorizontal": 24,
-              "paddingVertical": 20,
+              "paddingVertical": 24,
             },
             {
               "paddingHorizontal": 0,
@@ -451,15 +451,16 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
               style={
                 {
                   "backgroundColor": "#696a6f",
-                  "borderBottomLeftRadius": 16,
-                  "borderBottomRightRadius": 16,
-                  "borderTopLeftRadius": 16,
-                  "borderTopRightRadius": 16,
-                  "height": 32,
+                  "borderBottomLeftRadius": 32,
+                  "borderBottomRightRadius": 32,
+                  "borderTopLeftRadius": 32,
+                  "borderTopRightRadius": 32,
+                  "height": 36,
                   "justifyContent": "center",
-                  "width": 56,
+                  "width": 64,
                 }
               }
+              toggleSize={32}
             >
               <View
                 disabled={false}
@@ -473,9 +474,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "borderBottomRightRadius": 32,
                       "borderTopLeftRadius": 32,
                       "borderTopRightRadius": 32,
-                      "height": 28,
+                      "height": 32,
                       "justifyContent": "center",
-                      "width": 28,
+                      "width": 32,
                     },
                     {
                       "transform": [
@@ -486,6 +487,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                     },
                   ]
                 }
+                toggleSize={32}
               />
             </View>
           </View>
@@ -548,7 +550,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "flexDirection": "row",
                 "justifyContent": "space-between",
                 "paddingHorizontal": 24,
-                "paddingVertical": 20,
+                "paddingVertical": 24,
               },
               {
                 "paddingHorizontal": 0,
@@ -661,14 +663,14 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           Ces cookies nous permettent, en fonction de ta navigation, de te proposer des contenus supposés pertinents et susceptibles de t’intéresser.
         </Text>
         <View
-          numberOfSpaces={4}
+          marginTop={true}
           style={
             {
-              "height": 16,
+              "marginBottom": 0,
+              "marginTop": 8,
             }
           }
-        />
-        <View>
+        >
           <View
             style={
               {
@@ -729,14 +731,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         style={
           [
             {
-              "marginRight": 8,
-            },
-            {
               "alignItems": "center",
               "flexDirection": "row",
               "justifyContent": "space-between",
+              "marginRight": 8,
               "paddingHorizontal": 24,
-              "paddingVertical": 20,
+              "paddingVertical": 24,
             },
             {
               "paddingHorizontal": 0,
@@ -799,15 +799,16 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
               style={
                 {
                   "backgroundColor": "#696a6f",
-                  "borderBottomLeftRadius": 16,
-                  "borderBottomRightRadius": 16,
-                  "borderTopLeftRadius": 16,
-                  "borderTopRightRadius": 16,
-                  "height": 32,
+                  "borderBottomLeftRadius": 32,
+                  "borderBottomRightRadius": 32,
+                  "borderTopLeftRadius": 32,
+                  "borderTopRightRadius": 32,
+                  "height": 36,
                   "justifyContent": "center",
-                  "width": 56,
+                  "width": 64,
                 }
               }
+              toggleSize={32}
             >
               <View
                 disabled={false}
@@ -821,9 +822,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "borderBottomRightRadius": 32,
                       "borderTopLeftRadius": 32,
                       "borderTopRightRadius": 32,
-                      "height": 28,
+                      "height": 32,
                       "justifyContent": "center",
-                      "width": 28,
+                      "width": 32,
                     },
                     {
                       "transform": [
@@ -834,6 +835,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                     },
                   ]
                 }
+                toggleSize={32}
               />
             </View>
           </View>
@@ -896,7 +898,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "flexDirection": "row",
                 "justifyContent": "space-between",
                 "paddingHorizontal": 24,
-                "paddingVertical": 20,
+                "paddingVertical": 24,
               },
               {
                 "paddingHorizontal": 0,
@@ -1009,14 +1011,14 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir des tendances et ainsi améliorer les résultats qui te sont proposés.
         </Text>
         <View
-          numberOfSpaces={4}
+          marginTop={true}
           style={
             {
-              "height": 16,
+              "marginBottom": 0,
+              "marginTop": 8,
             }
           }
-        />
-        <View>
+        >
           <View
             style={
               {
@@ -1077,14 +1079,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         style={
           [
             {
-              "marginRight": 8,
-            },
-            {
               "alignItems": "center",
               "flexDirection": "row",
               "justifyContent": "space-between",
+              "marginRight": 8,
               "paddingHorizontal": 24,
-              "paddingVertical": 20,
+              "paddingVertical": 24,
             },
             {
               "paddingHorizontal": 0,
@@ -1147,15 +1147,16 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
               style={
                 {
                   "backgroundColor": "#696a6f",
-                  "borderBottomLeftRadius": 16,
-                  "borderBottomRightRadius": 16,
-                  "borderTopLeftRadius": 16,
-                  "borderTopRightRadius": 16,
-                  "height": 32,
+                  "borderBottomLeftRadius": 32,
+                  "borderBottomRightRadius": 32,
+                  "borderTopLeftRadius": 32,
+                  "borderTopRightRadius": 32,
+                  "height": 36,
                   "justifyContent": "center",
-                  "width": 56,
+                  "width": 64,
                 }
               }
+              toggleSize={32}
             >
               <View
                 disabled={false}
@@ -1169,9 +1170,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "borderBottomRightRadius": 32,
                       "borderTopLeftRadius": 32,
                       "borderTopRightRadius": 32,
-                      "height": 28,
+                      "height": 32,
                       "justifyContent": "center",
-                      "width": 28,
+                      "width": 32,
                     },
                     {
                       "transform": [
@@ -1182,6 +1183,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                     },
                   ]
                 }
+                toggleSize={32}
               />
             </View>
           </View>
@@ -1244,7 +1246,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "flexDirection": "row",
                 "justifyContent": "space-between",
                 "paddingHorizontal": 24,
-                "paddingVertical": 20,
+                "paddingVertical": 24,
               },
               {
                 "paddingHorizontal": 0,
@@ -1357,14 +1359,14 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           Tu ne verras pas de publicité de tiers sur notre site ou sur notre application.
         </Text>
         <View
-          numberOfSpaces={4}
+          marginTop={true}
           style={
             {
-              "height": 16,
+              "marginBottom": 0,
+              "marginTop": 8,
             }
           }
-        />
-        <View>
+        >
           <View
             style={
               {
@@ -1428,14 +1430,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           style={
             [
               {
-                "marginRight": 8,
-              },
-              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
+                "marginRight": 8,
                 "paddingHorizontal": 24,
-                "paddingVertical": 20,
+                "paddingVertical": 24,
               },
               {
                 "paddingHorizontal": 0,
@@ -1498,15 +1498,16 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 style={
                   {
                     "backgroundColor": "#696a6f",
-                    "borderBottomLeftRadius": 16,
-                    "borderBottomRightRadius": 16,
-                    "borderTopLeftRadius": 16,
-                    "borderTopRightRadius": 16,
-                    "height": 32,
+                    "borderBottomLeftRadius": 32,
+                    "borderBottomRightRadius": 32,
+                    "borderTopLeftRadius": 32,
+                    "borderTopRightRadius": 32,
+                    "height": 36,
                     "justifyContent": "center",
-                    "width": 56,
+                    "width": 64,
                   }
                 }
+                toggleSize={32}
               >
                 <View
                   disabled={false}
@@ -1520,9 +1521,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                         "borderBottomRightRadius": 32,
                         "borderTopLeftRadius": 32,
                         "borderTopRightRadius": 32,
-                        "height": 28,
+                        "height": 32,
                         "justifyContent": "center",
-                        "width": 28,
+                        "width": 32,
                       },
                       {
                         "transform": [
@@ -1533,6 +1534,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       },
                     ]
                   }
+                  toggleSize={32}
                 />
               </View>
             </View>
@@ -1595,7 +1597,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                   "flexDirection": "row",
                   "justifyContent": "space-between",
                   "paddingHorizontal": 24,
-                  "paddingVertical": 20,
+                  "paddingVertical": 24,
                 },
                 {
                   "paddingHorizontal": 0,
@@ -1733,14 +1735,12 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
         style={
           [
             {
-              "marginRight": 8,
-            },
-            {
               "alignItems": "center",
               "flexDirection": "row",
               "justifyContent": "space-between",
+              "marginRight": 8,
               "paddingHorizontal": 24,
-              "paddingVertical": 20,
+              "paddingVertical": 24,
             },
             {
               "paddingHorizontal": 0,
@@ -1803,15 +1803,16 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
               style={
                 {
                   "backgroundColor": "#15884f",
-                  "borderBottomLeftRadius": 16,
-                  "borderBottomRightRadius": 16,
-                  "borderTopLeftRadius": 16,
-                  "borderTopRightRadius": 16,
-                  "height": 32,
+                  "borderBottomLeftRadius": 32,
+                  "borderBottomRightRadius": 32,
+                  "borderTopLeftRadius": 32,
+                  "borderTopRightRadius": 32,
+                  "height": 36,
                   "justifyContent": "center",
-                  "width": 56,
+                  "width": 64,
                 }
               }
+              toggleSize={32}
             >
               <View
                 disabled={true}
@@ -1825,19 +1826,20 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
                       "borderBottomRightRadius": 32,
                       "borderTopLeftRadius": 32,
                       "borderTopRightRadius": 32,
-                      "height": 28,
+                      "height": 32,
                       "justifyContent": "center",
-                      "width": 28,
+                      "width": 32,
                     },
                     {
                       "transform": [
                         {
-                          "translateX": 26,
+                          "translateX": 30,
                         },
                       ],
                     },
                   ]
                 }
+                toggleSize={32}
               >
                 <View
                   height={16}
@@ -1909,7 +1911,7 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
                 "flexDirection": "row",
                 "justifyContent": "space-between",
                 "paddingHorizontal": 24,
-                "paddingVertical": 20,
+                "paddingVertical": 24,
               },
               {
                 "paddingHorizontal": 0,
@@ -2023,7 +2025,15 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
         </Text>
       </View>
     </View>
-    <View>
+    <View
+      marginBottom={true}
+      style={
+        {
+          "marginBottom": 8,
+          "marginTop": 0,
+        }
+      }
+    >
       <View
         style={
           {
@@ -2061,14 +2071,6 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
         Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture.
       </Text>
     </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        {
-          "height": 16,
-        }
-      }
-    />
     <View
       style={
         {

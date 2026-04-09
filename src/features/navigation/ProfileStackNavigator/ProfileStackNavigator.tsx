@@ -1,6 +1,7 @@
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import React from 'react'
 
+import { Achievements } from 'features/achievements/pages/Achievements'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { ProfileStackNavigatorBase } from 'features/navigation/ProfileStackNavigator/ProfileStackNavigatorBase'
 import { ProfileStackRouteName } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
@@ -18,7 +19,9 @@ import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
+import { ChangePhoneNumber } from 'features/profile/pages/ChangePhoneNumber/ChangePhoneNumber'
 import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
+import { Chatbot } from 'features/profile/pages/Chatbot/Chatbot'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { DebugScreen } from 'features/profile/pages/DebugScreen/DebugScreen'
@@ -67,6 +70,16 @@ const profileScreens: ProfileRouteConfig[] = [
     name: 'AccessibilityDeclarationWeb',
     component: AccessibilityDeclarationWeb,
     options: { title: 'Déclaration d’accessibilité - web' },
+  },
+  {
+    name: 'Chatbot',
+    component: Chatbot,
+    options: { title: 'Chatbot' },
+  },
+  {
+    name: 'Achievements',
+    component: withAuthProtection(Achievements),
+    options: { title: 'Mes succès' },
   },
   {
     name: 'RecommendedPaths',
@@ -146,7 +159,7 @@ const profileScreens: ProfileRouteConfig[] = [
   },
   {
     name: 'ChangeEmail',
-    component: ChangeEmail,
+    component: withAuthProtection(ChangeEmail),
     options: { title: 'Modification de l’e-mail' },
   },
   {
@@ -171,8 +184,13 @@ const profileScreens: ProfileRouteConfig[] = [
   },
   {
     name: 'ChangePassword',
-    component: ChangePassword,
+    component: withAuthProtection(ChangePassword),
     options: { title: 'Modification du mot de passe' },
+  },
+  {
+    name: 'ChangePhoneNumber',
+    component: withAuthProtection(ChangePhoneNumber),
+    options: { title: 'Modification du numéro de téléphone' },
   },
   {
     name: 'SuspendAccountConfirmation',
@@ -186,7 +204,7 @@ const profileScreens: ProfileRouteConfig[] = [
   },
   {
     name: 'ConfirmChangeEmail',
-    component: ConfirmChangeEmail,
+    component: withAuthProtection(ConfirmChangeEmail),
     options: { title: 'Confirmation de changement d’email ' },
   },
   {
@@ -205,9 +223,9 @@ const profileScreens: ProfileRouteConfig[] = [
     options: { title: 'Formulaire de suggestion' },
   },
   {
-    name: 'DisplayPreference',
+    name: 'Appearance',
     component: Appearance,
-    options: { title: 'Préférence d’affichage' },
+    options: { title: 'Apparence' },
   },
   {
     name: 'ProfileTutorialAgeInformationCredit',

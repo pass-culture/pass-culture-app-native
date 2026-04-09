@@ -4,23 +4,17 @@ import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/location'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { convertEuroToPacificFranc, RoundUnit } from 'shared/currency/convertEuroToPacificFranc'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Separator } from 'ui/components/Separator'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { Typo } from 'ui/theme'
-import { SPACE } from 'ui/theme/constants'
 
 export const CheatcodesScreenNewCaledonia = () => {
-  const pacificFrancToEuroRate = useGetPacificFrancToEuroRate()
-  const enablePacificFrancCurrency = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY
-  )
+  const { data: pacificFrancToEuroRate } = usePacificFrancToEuroRate()
 
   const [inputEuro, setInputEuro] = useState('')
   const priceInEuro = parseFloat(inputEuro) || 0
@@ -31,16 +25,6 @@ export const CheatcodesScreenNewCaledonia = () => {
 
   return (
     <CheatcodesTemplateScreen title="Nouvelle-Calédonie 🇳🇨" flexDirection="column">
-      <Typo.Body>
-        FeatureFlag
-        {SPACE}
-        <Typo.Title4>enablePacificFrancCurrency</Typo.Title4>
-        &nbsp;:
-      </Typo.Body>
-      <StyledTitle3 active={enablePacificFrancCurrency}>
-        {enablePacificFrancCurrency === true ? 'Actif' : 'Inactif'}
-      </StyledTitle3>
-      <Separator.HorizontalWithMargin />
       <Typo.Body>Localisation de l’utilisateur&nbsp;:</Typo.Body>
       <Typo.Title3>{selectedPlace ? selectedPlace?.info : 'Non localisé'}</Typo.Title3>
       <Typo.Body>Code postal renseigné par l’utilisateur&nbsp;:</Typo.Body>
@@ -79,10 +63,6 @@ export const CheatcodesScreenNewCaledonia = () => {
     </CheatcodesTemplateScreen>
   )
 }
-
-const StyledTitle3 = styled(Typo.Title3)<{ active: boolean }>(({ theme, active }) => ({
-  color: active ? theme.designSystem.color.text.success : theme.designSystem.color.text.error,
-}))
 
 const StyledText = styled(Typo.Body)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,

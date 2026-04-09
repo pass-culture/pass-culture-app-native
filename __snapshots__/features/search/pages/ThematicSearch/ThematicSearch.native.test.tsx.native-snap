@@ -15,122 +15,362 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
   }
 >
   <View
-    customHeight={16}
-    enable={true}
     style={
       {
-        "height": 16,
-      }
-    }
-  />
-  <View
-    style={
-      {
-        "marginTop": 24,
-        "paddingHorizontal": 24,
-        "zIndex": 1,
+        "marginBottom": 8,
       }
     }
   >
     <View
+      customHeight={16}
+      enable={true}
       style={
         {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "paddingBottom": 16,
+          "height": 16,
+        }
+      }
+    />
+    <View
+      style={
+        {
+          "marginTop": 24,
+          "paddingHorizontal": 24,
+          "zIndex": 1,
         }
       }
     >
       <View
-        style={
+        collapsable={false}
+        entering={[Function]}
+        exiting={[Function]}
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
           {
             "alignItems": "center",
-            "display": "flex",
             "flexDirection": "row",
-            "height": 40,
-            "justifyContent": "center",
-            "width": 40,
+            "paddingBottom": 16,
           }
+        }
+        nativeID="0"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "paddingBottom": 16,
+            },
+          ]
         }
       >
         <View
-          accessibilityLabel="Revenir en arrière"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
           style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "flexGrow": 1,
-                  "height": 40,
-                  "justifyContent": "center",
-                  "maxWidth": 40,
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "height": 40,
+              "justifyContent": "center",
+              "width": 40,
+            }
           }
-          testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-          <Text
-            style={
+            accessibilityLabel="Revenir en arrière"
+            accessibilityRole="button"
+            accessibilityState={
               {
-                "display": "none",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Revenir en arrière"
           >
-            Retour
-          </Text>
+            <View
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="1"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  width={22}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "space-between",
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              }
+            }
+            testID="SearchHeaderTitleContainer"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "flexShrink": 1,
+                  "justifyContent": "flex-start",
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "flex-start",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
+                  }
+                }
+              >
+                <Text
+                  accessibilityRole="header"
+                  htmlFor="testUuidV4"
+                  small={true}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 19,
+                        "lineHeight": 30.4,
+                      },
+                    ]
+                  }
+                >
+                  Livres
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+              }
+            }
+            testID="LocationWidgetBadge"
+          >
+            <View
+              highlighted={false}
+              style={
+                {
+                  "backgroundColor": "#ffffff",
+                  "borderBottomLeftRadius": 16,
+                  "borderBottomRightRadius": 16,
+                  "borderColor": "#90949d",
+                  "borderTopLeftRadius": 16,
+                  "borderTopRightRadius": 16,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "minHeight": 32,
+                  "paddingHorizontal": 8,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="France entière - Ouvrir la modale de localisation"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "marginLeft": 4,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="France entière - Ouvrir la modale de localisation"
+              >
+                <View
+                  height={16}
+                  testID="location pointer default"
+                  width={16}
+                >
+                  <Text>
+                    location pointer default-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginLeft": 4,
+                      "maxWidth": 100,
+                    }
+                  }
+                >
+                  France entière
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
         style={
           {
-            "flexBasis": 0,
+            "alignItems": "flex-end",
             "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "space-between",
+            "gap": 8,
+            "width": "100%",
           }
         }
       >
@@ -138,207 +378,23 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           style={
             {
               "flexBasis": 0,
+              "flexDirection": "row",
               "flexGrow": 1,
               "flexShrink": 1,
             }
           }
-          testID="SearchHeaderTitleContainer"
         >
           <View
             style={
               {
-                "alignItems": "flex-start",
                 "flexDirection": "row",
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
+                "width": "100%",
               }
             }
           >
             <View
               style={
                 {
-                  "alignItems": "flex-start",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-start",
-                }
-              }
-            >
-              <Text
-                accessibilityRole="header"
-                htmlFor="testUuidV4"
-                small={true}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 19,
-                      "lineHeight": 30.4,
-                    },
-                  ]
-                }
-              >
-                Livres
-              </Text>
-            </View>
-          </View>
-        </View>
-        <View
-          style={
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-            }
-          }
-          testID="LocationWidgetBadge"
-        >
-          <View
-            highlighted={false}
-            style={
-              {
-                "backgroundColor": "#ffffff",
-                "borderBottomLeftRadius": 16,
-                "borderBottomRightRadius": 16,
-                "borderColor": "#90949d",
-                "borderTopLeftRadius": 16,
-                "borderTopRightRadius": 16,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "minHeight": 32,
-                "paddingHorizontal": 8,
-              }
-            }
-          >
-            <View
-              accessibilityLabel="France entière - Ouvrir la modale de localisation"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "marginLeft": 4,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="France entière - Ouvrir la modale de localisation"
-            >
-              <View
-                height={16}
-                testID="location pointer default"
-                width={16}
-              >
-                <Text>
-                  location pointer default-SVG-Mock
-                </Text>
-              </View>
-              <Text
-                numberOfLines={1}
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "marginLeft": 4,
-                    "maxWidth": 100,
-                  }
-                }
-              >
-                France entière
-              </Text>
-            </View>
-          </View>
-        </View>
-      </View>
-    </View>
-    <View
-      style={
-        {
-          "alignItems": "flex-end",
-          "flexDirection": "row",
-          "gap": 8,
-          "width": "100%",
-        }
-      }
-    >
-      <View
-        style={
-          {
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-          }
-        }
-      >
-        <View
-          style={
-            {
-              "flexDirection": "row",
-              "width": "100%",
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "alignItems": "center",
                   "flexBasis": 0,
                   "flexDirection": "row",
                   "flexGrow": 1,
@@ -349,6 +405,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               <View
                 style={
                   {
+                    "alignItems": "flex-end",
                     "flexBasis": 0,
                     "flexDirection": "row",
                     "flexGrow": 1,
@@ -357,150 +414,183 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 }
               >
                 <View
-                  style={
+                  collapsable={false}
+                  jestAnimatedProps={
                     {
-                      "alignItems": "flex-start",
-                      "width": "100%",
+                      "value": {},
                     }
                   }
+                  jestAnimatedStyle={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestInlineStyle={
+                    {
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    }
+                  }
+                  layout={
+                    LinearTransition {
+                      "build": [Function],
+                      "durationV": 250,
+                      "randomizeDelay": false,
+                      "reduceMotionV": "system",
+                    }
+                  }
+                  nativeID="2"
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
                 >
-                  <View>
-                    <View
-                      accessibilityElementsHidden={true}
-                      importantForAccessibility="no"
-                      style={
-                        {
-                          "alignItems": "flex-end",
-                          "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "width": "100%",
-                        }
-                      }
-                    >
-                      <View>
-                        <Text
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            }
-                          }
-                        >
-                          Rechercher dans le catalogue
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
                   <View
-                    isDisabled={false}
-                    isError={false}
-                    isFocused={false}
-                    isHover={false}
-                    size="small"
                     style={
                       {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderColor": "#90949d",
-                        "borderStyle": "solid",
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "height": 40,
-                        "marginTop": 4,
-                        "paddingBottom": 0,
-                        "paddingLeft": 9,
-                        "paddingRight": 9,
-                        "paddingTop": 0,
+                        "alignItems": "flex-start",
                         "width": "100%",
                       }
                     }
-                    testID="styled-input-container"
                   >
-                    <View
-                      style={
-                        {
-                          "flexShrink": 0,
-                          "marginRight": 8,
-                        }
-                      }
-                    >
+                    <View>
                       <View
-                        height={24}
-                        width={24}
+                        accessibilityElementsHidden={true}
+                        importantForAccessibility="no"
+                        style={
+                          {
+                            "alignItems": "flex-end",
+                            "flexDirection": "row",
+                            "justifyContent": "space-between",
+                            "width": "100%",
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View>
+                          <Text
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Rechercher dans le catalogue
+                          </Text>
+                        </View>
                       </View>
                     </View>
-                    <TextInput
-                      accessibilityLabel="Champs de texte - Rechercher dans le catalogue"
-                      accessibilityRequired={false}
-                      editable={true}
-                      isEmpty={true}
-                      multiline={false}
-                      nativeID="searchInput"
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onFocus={[Function]}
-                      onSubmitEditing={[Function]}
-                      placeholder=""
-                      placeholderTextColor="#696a6f"
-                      returnKeyType="search"
+                    <View
+                      isDisabled={false}
+                      isError={false}
+                      isFocused={false}
+                      isHover={false}
+                      size="small"
                       style={
                         {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat",
-                          "fontSize": 16,
-                          "fontStyle": "italic",
-                          "fontWeight": "500",
-                          "height": "100%",
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "height": 40,
+                          "marginTop": 4,
                           "paddingBottom": 0,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
+                          "paddingLeft": 9,
+                          "paddingRight": 9,
                           "paddingTop": 0,
+                          "width": "100%",
                         }
                       }
-                      testID="searchInput"
-                      textAlignVertical="center"
-                      value=""
-                    />
+                      testID="styled-input-container"
+                    >
+                      <View
+                        style={
+                          {
+                            "flexShrink": 0,
+                            "marginRight": 8,
+                          }
+                        }
+                      >
+                        <View
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <TextInput
+                        accessibilityLabel="Champs de texte - Rechercher dans le catalogue"
+                        accessibilityRequired={false}
+                        editable={true}
+                        isEmpty={true}
+                        multiline={false}
+                        nativeID="searchInput"
+                        onBlur={[Function]}
+                        onChangeText={[Function]}
+                        onFocus={[Function]}
+                        onSubmitEditing={[Function]}
+                        placeholder=""
+                        placeholderTextColor="#696a6f"
+                        returnKeyType="search"
+                        style={
+                          {
+                            "color": "#161617",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat",
+                            "fontSize": 16,
+                            "fontStyle": "italic",
+                            "fontWeight": "500",
+                            "height": "100%",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                          }
+                        }
+                        testID="searchInput"
+                        textAlignVertical="center"
+                        value=""
+                      />
+                    </View>
                   </View>
                 </View>
               </View>
             </View>
-          </View>
-          <Text
-            nativeID="testUuidV4"
-            style={
-              {
-                "display": "none",
+            <Text
+              nativeID="testUuidV4"
+              style={
+                {
+                  "display": "none",
+                }
               }
-            }
-          >
-            Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
-          </Text>
+            >
+              Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
+            </Text>
+          </View>
         </View>
       </View>
     </View>
   </View>
-  <View
-    numberOfSpaces={2}
-    style={
-      {
-        "height": 8,
-      }
-    }
-  />
   <RCTScrollView
     onContentSizeChange={[Function]}
     onLayout={[Function]}
@@ -1619,7 +1709,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   <View
                     style={
                       {
-                        "marginHorizontal": 24,
+                        "flexShrink": 1,
+                        "marginLeft": 24,
+                        "marginRight": 24,
                       }
                     }
                     testID="playlistTitle"
@@ -1738,14 +1830,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "subcategoryId": "ABO_BIBLIOTHEQUE",
                         },
                         "venue": {
-                          "accessibility": {
-                            "audioDisability": false,
-                            "mentalDisability": false,
-                            "motorDisability": false,
-                            "visualDisability": true,
+                          "accessibilityData": {
+                            "isAccessibleAudioDisability": false,
+                            "isAccessibleMentalDisability": false,
+                            "isAccessibleMotorDisability": false,
+                            "isAccessibleVisualDisability": true,
                           },
                           "activity": "BOOKSTORE",
-                          "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
                             "email": "contact@venue.com",
@@ -1835,7 +1926,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             ],
                           },
                           "postalCode": "75000",
-                          "publicName": "Le Petit Rintintin 1",
+                          "street": "1 boulevard Poissonnière",
                           "timezone": "UTC",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
@@ -1851,14 +1942,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "subcategoryId": "ABO_MEDIATHEQUE",
                         },
                         "venue": {
-                          "accessibility": {
-                            "audioDisability": false,
-                            "mentalDisability": false,
-                            "motorDisability": false,
-                            "visualDisability": true,
+                          "accessibilityData": {
+                            "isAccessibleAudioDisability": false,
+                            "isAccessibleMentalDisability": false,
+                            "isAccessibleMotorDisability": false,
+                            "isAccessibleVisualDisability": true,
                           },
                           "activity": "BOOKSTORE",
-                          "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
                             "email": "contact@venue.com",
@@ -1948,7 +2038,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             ],
                           },
                           "postalCode": "75000",
-                          "publicName": "Le Petit Rintintin 1",
+                          "street": "1 boulevard Poissonnière",
                           "timezone": "UTC",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
@@ -1964,14 +2054,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "subcategoryId": "ABO_LIVRE_NUMERIQUE",
                         },
                         "venue": {
-                          "accessibility": {
-                            "audioDisability": false,
-                            "mentalDisability": false,
-                            "motorDisability": false,
-                            "visualDisability": true,
+                          "accessibilityData": {
+                            "isAccessibleAudioDisability": false,
+                            "isAccessibleMentalDisability": false,
+                            "isAccessibleMotorDisability": false,
+                            "isAccessibleVisualDisability": true,
                           },
                           "activity": "BOOKSTORE",
-                          "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
                             "email": "contact@venue.com",
@@ -2061,7 +2150,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             ],
                           },
                           "postalCode": "75000",
-                          "publicName": "Le Petit Rintintin 1",
+                          "street": "1 boulevard Poissonnière",
                           "timezone": "UTC",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
@@ -2077,14 +2166,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "subcategoryId": "ABO_LUDOTHEQUE",
                         },
                         "venue": {
-                          "accessibility": {
-                            "audioDisability": false,
-                            "mentalDisability": false,
-                            "motorDisability": false,
-                            "visualDisability": true,
+                          "accessibilityData": {
+                            "isAccessibleAudioDisability": false,
+                            "isAccessibleMentalDisability": false,
+                            "isAccessibleMotorDisability": false,
+                            "isAccessibleVisualDisability": true,
                           },
                           "activity": "BOOKSTORE",
-                          "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
                             "email": "contact@venue.com",
@@ -2174,7 +2262,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             ],
                           },
                           "postalCode": "75000",
-                          "publicName": "Le Petit Rintintin 1",
+                          "street": "1 boulevard Poissonnière",
                           "timezone": "UTC",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
@@ -2190,14 +2278,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "subcategoryId": "ABO_CONCERT",
                         },
                         "venue": {
-                          "accessibility": {
-                            "audioDisability": false,
-                            "mentalDisability": false,
-                            "motorDisability": false,
-                            "visualDisability": true,
+                          "accessibilityData": {
+                            "isAccessibleAudioDisability": false,
+                            "isAccessibleMentalDisability": false,
+                            "isAccessibleMotorDisability": false,
+                            "isAccessibleVisualDisability": true,
                           },
                           "activity": "BOOKSTORE",
-                          "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
                             "email": "contact@venue.com",
@@ -2287,7 +2374,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             ],
                           },
                           "postalCode": "75000",
-                          "publicName": "Le Petit Rintintin 1",
+                          "street": "1 boulevard Poissonnière",
                           "timezone": "UTC",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
@@ -2303,14 +2390,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "subcategoryId": "ABO_JEU_VIDEO",
                         },
                         "venue": {
-                          "accessibility": {
-                            "audioDisability": false,
-                            "mentalDisability": false,
-                            "motorDisability": false,
-                            "visualDisability": true,
+                          "accessibilityData": {
+                            "isAccessibleAudioDisability": false,
+                            "isAccessibleMentalDisability": false,
+                            "isAccessibleMotorDisability": false,
+                            "isAccessibleVisualDisability": true,
                           },
                           "activity": "BOOKSTORE",
-                          "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
                             "email": "contact@venue.com",
@@ -2400,7 +2486,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             ],
                           },
                           "postalCode": "75000",
-                          "publicName": "Le Petit Rintintin 1",
+                          "street": "1 boulevard Poissonnière",
                           "timezone": "UTC",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
@@ -2645,14 +2731,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               "subcategoryId": "ABO_BIBLIOTHEQUE",
                             },
                             "venue": {
-                              "accessibility": {
-                                "audioDisability": false,
-                                "mentalDisability": false,
-                                "motorDisability": false,
-                                "visualDisability": true,
+                              "accessibilityData": {
+                                "isAccessibleAudioDisability": false,
+                                "isAccessibleMentalDisability": false,
+                                "isAccessibleMotorDisability": false,
+                                "isAccessibleVisualDisability": true,
                               },
                               "activity": "BOOKSTORE",
-                              "address": "1 boulevard Poissonnière",
                               "city": "Paris",
                               "contact": {
                                 "email": "contact@venue.com",
@@ -2742,7 +2827,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 ],
                               },
                               "postalCode": "75000",
-                              "publicName": "Le Petit Rintintin 1",
+                              "street": "1 boulevard Poissonnière",
                               "timezone": "UTC",
                               "withdrawalDetails": "How to withdraw, https://test.com",
                             },
@@ -2928,14 +3013,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               "subcategoryId": "ABO_MEDIATHEQUE",
                             },
                             "venue": {
-                              "accessibility": {
-                                "audioDisability": false,
-                                "mentalDisability": false,
-                                "motorDisability": false,
-                                "visualDisability": true,
+                              "accessibilityData": {
+                                "isAccessibleAudioDisability": false,
+                                "isAccessibleMentalDisability": false,
+                                "isAccessibleMotorDisability": false,
+                                "isAccessibleVisualDisability": true,
                               },
                               "activity": "BOOKSTORE",
-                              "address": "1 boulevard Poissonnière",
                               "city": "Paris",
                               "contact": {
                                 "email": "contact@venue.com",
@@ -3025,7 +3109,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 ],
                               },
                               "postalCode": "75000",
-                              "publicName": "Le Petit Rintintin 1",
+                              "street": "1 boulevard Poissonnière",
                               "timezone": "UTC",
                               "withdrawalDetails": "How to withdraw, https://test.com",
                             },
@@ -3211,14 +3295,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               "subcategoryId": "ABO_LIVRE_NUMERIQUE",
                             },
                             "venue": {
-                              "accessibility": {
-                                "audioDisability": false,
-                                "mentalDisability": false,
-                                "motorDisability": false,
-                                "visualDisability": true,
+                              "accessibilityData": {
+                                "isAccessibleAudioDisability": false,
+                                "isAccessibleMentalDisability": false,
+                                "isAccessibleMotorDisability": false,
+                                "isAccessibleVisualDisability": true,
                               },
                               "activity": "BOOKSTORE",
-                              "address": "1 boulevard Poissonnière",
                               "city": "Paris",
                               "contact": {
                                 "email": "contact@venue.com",
@@ -3308,7 +3391,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 ],
                               },
                               "postalCode": "75000",
-                              "publicName": "Le Petit Rintintin 1",
+                              "street": "1 boulevard Poissonnière",
                               "timezone": "UTC",
                               "withdrawalDetails": "How to withdraw, https://test.com",
                             },
@@ -3494,14 +3577,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               "subcategoryId": "ABO_LUDOTHEQUE",
                             },
                             "venue": {
-                              "accessibility": {
-                                "audioDisability": false,
-                                "mentalDisability": false,
-                                "motorDisability": false,
-                                "visualDisability": true,
+                              "accessibilityData": {
+                                "isAccessibleAudioDisability": false,
+                                "isAccessibleMentalDisability": false,
+                                "isAccessibleMotorDisability": false,
+                                "isAccessibleVisualDisability": true,
                               },
                               "activity": "BOOKSTORE",
-                              "address": "1 boulevard Poissonnière",
                               "city": "Paris",
                               "contact": {
                                 "email": "contact@venue.com",
@@ -3591,7 +3673,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 ],
                               },
                               "postalCode": "75000",
-                              "publicName": "Le Petit Rintintin 1",
+                              "street": "1 boulevard Poissonnière",
                               "timezone": "UTC",
                               "withdrawalDetails": "How to withdraw, https://test.com",
                             },

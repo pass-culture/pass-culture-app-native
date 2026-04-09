@@ -5,7 +5,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { IdCardInvalid } from 'ui/svg/icons/IdCardInvalid'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const ComeBackLater: FunctionComponent = () => {
   useEffect(() => {
@@ -32,7 +32,7 @@ export const ComeBackLater: FunctionComponent = () => {
   )
 }
 
-const StyledText = styled(Typo.Body)({
+const StyledText = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-  marginBottom: getSpacing(6),
-})
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))

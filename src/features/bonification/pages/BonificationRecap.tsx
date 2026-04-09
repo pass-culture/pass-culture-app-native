@@ -10,14 +10,14 @@ import {
   legalRepresentativeActions,
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
-import { Summary } from 'features/identityCheck/components/Summary'
+import { InfoListItemProps, Summary } from 'features/identityCheck/components/Summary'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
+import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 export const BonificationRecap = () => {
@@ -26,35 +26,30 @@ export const BonificationRecap = () => {
     useLegalRepresentative()
   const { resetLegalRepresentative } = legalRepresentativeActions
   const { refetchUser } = useAuthContext()
-  const { showSuccessSnackBar } = useSnackBarContext()
 
   const { mutate, isPending } = usePostBonusQuotientFamilialMutation({
     onSuccess: () => {
       navigate('TabNavigator', { screen: 'Home' })
-      showSuccessSnackBar({
-        message: 'Tes informations ont été envoyées\u00a0!',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showSuccessSnackBar('Tes informations ont été envoyées\u00a0!')
       resetLegalRepresentative()
       void refetchUser()
     },
     onError: (_error) => {
       navigate(...getSubscriptionHookConfig('BonificationError'))
-      // LOG TO SENTRY?
     },
   })
 
   const [accepted, setAccepted] = useState(false)
 
   const submit = () => {
-    if (title && firstNames && givenName && birthDate && birthCountry?.COG) {
+    if (title && firstNames && givenName && birthDate && birthCountry?.cog) {
       mutate({
         gender: title === 'Madame' ? GenderEnum.Mme : GenderEnum['M.'],
         firstNames,
         commonName,
         lastName: givenName,
-        birthDate: new Date(birthDate).toISOString().substring(0, 10),
-        birthCountryCogCode: birthCountry.COG.toString(),
+        birthDate: formatDateToISOStringWithoutTime(birthDate),
+        birthCountryCogCode: birthCountry.cog.toString(),
         birthCityCogCode: birthCity?.code,
       })
     } else {
@@ -62,28 +57,68 @@ export const BonificationRecap = () => {
     }
   }
 
-  const recapData = [
-    {
+  const recapData: InfoListItemProps[] = []
+
+  if (title) {
+    recapData.push({
+      title: 'Civilité',
+      value: title,
+    })
+  }
+
+  if (givenName) {
+    recapData.push({
+      title: 'Nom de naissance',
+      value: givenName.toUpperCase(),
+    })
+  }
+
+  if (firstNames?.length) {
+    recapData.push({
+      title: 'Prénom(s)',
+      value: firstNames.join(', '),
+    })
+  }
+
+  if (commonName) {
+    recapData.push({
+      title: 'Nom d’usage',
+      value: commonName.toUpperCase(),
+    })
+  }
+
+  if (birthDate) {
+    recapData.push({
+      title: 'Date de naissance',
+      value: new Date(birthDate).toLocaleDateString(),
+    })
+  }
+
+  if (birthCountry) {
+    recapData.push({
+      title: 'Pays de naissance',
+      value: birthCountry.libcog.toString(),
+    })
+  }
+
+  if (birthCity?.name) {
+    recapData.push({
+      title: 'Ville de naissance',
+      value: `${birthCity.name}, ${birthCity.postalCode}`,
+    })
+  }
+
+  if (!recapData.length) {
+    recapData.push({
       title: 'Erreur',
       value: 'Nous ne retrouvons pas les données du formulaire',
-    },
-  ]
-
-  if (title && firstNames?.length && givenName)
-    recapData.splice(0, 1, {
-      title: 'Nom',
-      value: `${title} ${firstNames?.join(' ')} ${givenName.toUpperCase()}`,
     })
-  if (commonName) recapData.push({ title: 'Nom d’usage', value: commonName.toUpperCase() })
-  if (birthDate)
-    recapData.push({ title: 'Date de naissance', value: new Date(birthDate).toLocaleDateString() })
-  if (birthCountry)
-    recapData.push({ title: 'Pays de naissance', value: birthCountry.LIBCOG.toString() })
-  if (birthCity?.name) recapData.push({ title: 'Ville de naissance', value: birthCity?.name })
+  }
 
   return (
     <PageWithHeader
       title="Informations"
+      shouldDisplayBottomGradient
       scrollChildren={
         <ViewGap gap={4}>
           <View>
@@ -102,15 +137,17 @@ export const BonificationRecap = () => {
       }
       fixedBottomChildren={
         <ViewGap gap={4}>
-          <ButtonPrimary
+          <Button
             isLoading={isPending}
             type="submit"
+            fullWidth
             wording="Confirmer"
             onPress={submit}
             disabled={!accepted}
           />
-          <ButtonSecondary
-            type="button"
+          <Button
+            variant="secondary"
+            color="neutral"
             wording="Modifier mes informations"
             onPress={() => {
               navigate(...getSubscriptionHookConfig('BonificationNames'))

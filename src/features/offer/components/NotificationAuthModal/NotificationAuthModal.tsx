@@ -4,11 +4,11 @@ import styled from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonWithLinearGradientDeprecated } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradientDeprecated'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { UserNotification } from 'ui/svg/UserNotification'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 interface Props {
@@ -25,13 +25,13 @@ export const NotificationAuthModal: FunctionComponent<Props> = ({
   const closeModal = () => dismissModal()
 
   const signUp = useCallback(() => {
-    analytics.logSignUpFromOffer(offerId)
-    analytics.logSignUpClicked({ from: 'offer_notification' })
+    void analytics.logSignUpFromOffer(offerId)
+    void analytics.logSignUpClicked({ from: 'offer_notification' })
     dismissModal()
   }, [dismissModal, offerId])
 
   const signIn = useCallback(() => {
-    analytics.logSignInFromOffer(offerId)
+    void analytics.logSignInFromOffer(offerId)
     dismissModal()
   }, [dismissModal, offerId])
 
@@ -44,10 +44,9 @@ export const NotificationAuthModal: FunctionComponent<Props> = ({
       <StyledBody>
         Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!
       </StyledBody>
-      <Spacer.Column numberOfSpaces={6} />
       <StyledButtonContainer>
         <InternalTouchableLink
-          as={ButtonWithLinearGradientDeprecated}
+          as={Button}
           wording="Créer un compte"
           navigateTo={{
             screen: 'SignupForm',
@@ -56,7 +55,6 @@ export const NotificationAuthModal: FunctionComponent<Props> = ({
           onBeforeNavigate={signUp}
         />
       </StyledButtonContainer>
-      <Spacer.Column numberOfSpaces={4} />
       <StyledAuthenticationButton
         type="login"
         params={{ from: StepperOrigin.NOTIFICATION, offerId }}
@@ -70,9 +68,11 @@ const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }
   linkColor: theme.designSystem.color.text.brandSecondary,
 }))``
 
-const StyledButtonContainer = styled.View({
+const StyledButtonContainer = styled.View(({ theme }) => ({
   width: '100%',
-})
+  marginTop: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',

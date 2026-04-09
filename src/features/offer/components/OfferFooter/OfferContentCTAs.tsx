@@ -2,7 +2,7 @@ import React, { FC, PropsWithChildren } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CineContentCTA } from 'features/offer/components/OfferCine/CineContentCTA'
 import { FavoritesCTA } from 'features/offer/components/OfferContent/ComingSoonCTAs/FavoritesCTA'
@@ -16,10 +16,10 @@ import { useGetRemindersQuery } from 'features/offer/queries/useGetRemindersQuer
 import { FavoriteProps } from 'features/offer/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useModal } from 'ui/components/modals/useModal'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 export type Props = PropsWithChildren<{
-  offer: OfferResponseV2
+  offer: OfferResponse
   onLayout?: (params: LayoutChangeEvent) => void
 }> &
   FavoriteProps
@@ -34,8 +34,6 @@ export const OfferContentCTAs: FC<Props> = ({
   onLayout,
   children,
 }) => {
-  const { showErrorSnackBar } = useSnackBarContext()
-
   const { isLoggedIn } = useAuthContext()
 
   const { isDesktopViewport, isMobileViewport } = useTheme()
@@ -49,19 +47,13 @@ export const OfferContentCTAs: FC<Props> = ({
 
   const { mutate: addReminder } = useAddReminderMutation({
     onError: () => {
-      showErrorSnackBar({
-        message: 'L’offre n’a pas pu être ajoutée à tes rappels',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('L’offre n’a pas pu être ajoutée à tes rappels')
     },
   })
 
   const { mutate: deleteReminder } = useDeleteReminderMutation({
     onError: () => {
-      showErrorSnackBar({
-        message: 'L’offre n’a pas pu être retirée de tes rappels',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('L’offre n’a pas pu être retirée de tes rappels')
     },
   })
 

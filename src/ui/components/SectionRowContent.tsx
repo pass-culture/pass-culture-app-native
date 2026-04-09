@@ -2,10 +2,10 @@ import React, { FunctionComponent } from 'react'
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export type SectionRowContentProps = {
   title: string
@@ -35,7 +35,10 @@ export const SectionRowContent = ({
   style,
   ...props
 }: SectionRowContentProps) => {
-  const titleNumberOfLines = useFontScaleValue({ default: numberOfLines, at200PercentZoom: 3 })
+  const titleNumberOfLines = useMobileFontScaleToDisplay({
+    default: numberOfLines,
+    at200PercentZoom: 3,
+  })
 
   const Title = renderTitle ? (
     renderTitle(title)
@@ -46,10 +49,9 @@ export const SectionRowContent = ({
   return (
     <View style={[styles.container, style]}>
       {Icon ? (
-        <React.Fragment>
+        <IconWrapper>
           <Icon size={iconSize} />
-          <Spacer.Row numberOfSpaces={2} />
-        </React.Fragment>
+        </IconWrapper>
       ) : null}
       <TitleContainer>{Title}</TitleContainer>
       {props.type == 'navigable' ? (
@@ -82,3 +84,7 @@ const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
   color: theme.designSystem.color.icon.default,
 }))``
+
+const IconWrapper = styled.View(({ theme }) => ({
+  marginRight: theme.designSystem.size.spacing.s,
+}))

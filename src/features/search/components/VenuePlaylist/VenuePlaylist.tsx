@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { Ref, useEffect } from 'react'
 import { Platform, StyleProp, ViewStyle, ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -20,12 +21,12 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
 import { Playlist } from 'ui/components/Playlist'
 import { Separator } from 'ui/components/Separator'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Map } from 'ui/svg/icons/Map'
-import { getSpacing, LENGTH_XS, LENGTH_XXS, Typo } from 'ui/theme'
+import { LENGTH_XS, LENGTH_XXS, Typo } from 'ui/theme'
 
 export const VENUE_ITEM_HEIGHT = LENGTH_XXS
 export const VENUE_ITEM_WIDTH = LENGTH_XS
@@ -92,7 +93,7 @@ export const VenuePlaylist: React.FC<Props> = ({
   } = useSearch()
   const enabledVenueMap = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
   const { setVenuesFilters } = venuesFilterActions
-
+  const { designSystem } = useTheme()
   const logVenuePlaylistDisplayedOnSearchResultsOnce = useFunctionOnce(() =>
     analytics.logVenuePlaylistDisplayedOnSearchResults({
       searchId,
@@ -141,7 +142,9 @@ export const VenuePlaylist: React.FC<Props> = ({
           <Typo.Title3 numberOfLines={isWeb ? 1 : undefined}>{venuePlaylistTitle}</Typo.Title3>
           {shouldDisplaySeeOnMapButton ? (
             <ButtonContainer>
-              <ButtonTertiaryBlack
+              <Button
+                variant="tertiary"
+                color="neutral"
                 icon={Map}
                 wording="Voir sur la carte"
                 onPress={handleSeeMapPress}
@@ -164,7 +167,7 @@ export const VenuePlaylist: React.FC<Props> = ({
           keyExtractor={keyExtractor}
           testID="search-venue-list"
           onEndReached={logAllTilesSeenOnce}
-          contentContainerStyle={{ paddingHorizontal: getSpacing(6) }}
+          contentContainerStyle={{ paddingHorizontal: designSystem.size.spacing.xl }}
           ref={playlistRef}
           onViewableItemsChanged={onViewableItemsChanged}
         />

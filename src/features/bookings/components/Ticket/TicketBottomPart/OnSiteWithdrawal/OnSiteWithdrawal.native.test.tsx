@@ -15,7 +15,14 @@ describe('<OnSiteWithdrawal>', () => {
   `(
     'should render plural or singular and delay correctly',
     ({ isDuo, withdrawalDelay, expected }) => {
-      render(<OnSiteWithdrawal token="NBFJ55K8" isDuo={isDuo} withdrawalDelay={withdrawalDelay} />)
+      render(
+        <OnSiteWithdrawal
+          token="NBFJ55K8"
+          isDuo={isDuo}
+          shouldShowExchangeMessage
+          withdrawalDelay={withdrawalDelay}
+        />
+      )
 
       expect(screen.getByText(expected)).toBeOnTheScreen()
     }

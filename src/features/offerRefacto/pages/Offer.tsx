@@ -3,31 +3,36 @@ import React, { useCallback } from 'react'
 import { View } from 'react-native'
 
 import { ReactionTypeEnum } from 'api/gen'
+import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
+import { useOfferProAdvicesQuery } from 'features/advices/queries/useOfferProAdvicesQuery'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
+import { clubAdviceVariant } from 'features/clubAdvices/helpers/clubAdviceVariant'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
+import { advicePreviewToAdviceCardData } from 'features/offer/adapters/advicePreviewToAdviceCardData'
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
 import { OfferContentPlaceholder } from 'features/offer/components/OfferContentPlaceholder/OfferContentPlaceholder'
-import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chronicleVariant'
 import { OfferArtistsModal } from 'features/offer/pages/OfferArtistsModal/OfferArtistsModal'
 import { useFetchHeadlineOffersCountQuery } from 'features/offer/queries/useFetchHeadlineOffersCountQuery'
+import { OfferCTAs } from 'features/offerRefacto/components/OfferCTAs/OfferCTAs'
+import { OfferHeader as RefactoOfferHeader } from 'features/offerRefacto/components/OfferHeader/OfferHeader'
+import { offerProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/offerProAdvicesToAdviceCardData/offerProAdvicesToAdviceCardData'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { useReactionMutation } from 'features/reactions/queries/useReactionMutation'
 import { analytics } from 'libs/analytics/provider'
+import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
+import { useLocation } from 'libs/location/LocationWrapper'
 import { useSubcategoriesMapping } from 'libs/subcategories/mappings'
 import { useEndedBookingFromOfferIdQuery } from 'queries/bookings'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
 
@@ -38,10 +43,11 @@ export function Offer() {
   const { navigate } = useNavigation<UseNavigationType>()
   const offerId = route.params?.id
 
-  const enableVideoABTesting = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_VIDEO_AB_TESTING)
   const isMultiArtistsEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_MULTI_ARTISTS)
+  const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_OFFER)
 
   const { isLoggedIn, user } = useAuthContext()
+  const { userLocation } = useLocation()
   const { data: offer, isLoading } = useOfferQuery({
     offerId,
     select: (data) => ({
@@ -54,7 +60,6 @@ export function Offer() {
   const subcategoriesMapping = useSubcategoriesMapping()
 
   const { cookiesConsent, setCookiesConsent } = useCookies()
-  const segment = useABSegment()
 
   const hasVideoCookiesConsent =
     cookiesConsent.state === ConsentState.HAS_CONSENT &&
@@ -104,7 +109,7 @@ export function Offer() {
     })
   }
 
-  const handleOnShowChroniclesWritersModal = () => {
+  const handleOnShowClubAdviceWritersModal = () => {
     void analytics.logClickWhatsClub({
       offerId: offerId.toString(),
       from: 'offer',
@@ -124,13 +129,24 @@ export function Offer() {
 
   const { data } = useFetchHeadlineOffersCountQuery(offer)
 
+  const { data: proAdvices } = useOfferProAdvicesQuery({
+    offerId,
+    enableProAdvices,
+    latitude: userLocation?.latitude,
+    longitude: userLocation?.longitude,
+    select: ({ proAdvices, nbResults }) => ({
+      list: offerProAdvicesToAdviceCardData(proAdvices),
+      nbResults,
+    }),
+  })
+
   if (!offer || !subcategories || !subcategoriesMapping?.[offer?.subcategoryId]) return null
 
   const subcategory = subcategoriesMapping[offer?.subcategoryId]
-  const chronicleVariantInfo = chronicleVariant[subcategory.id]
+  const adviceVariantInfo = clubAdviceVariant[subcategory.id]
 
-  const chronicles = offer?.chronicles?.map((value) =>
-    chroniclePreviewToChronicalCardData(value, chronicleVariantInfo.subtitleItem)
+  const clubAdvices = offer?.chronicles?.map((value) =>
+    advicePreviewToAdviceCardData(value, adviceVariantInfo.subtitleItem)
   )
 
   const shouldFetchSearchVenueOffers = isMultiVenueCompatibleOffer(offer)
@@ -142,7 +158,7 @@ export function Offer() {
     <Page>
       <View>
         <ReactionChoiceModal
-          dateUsed={booking?.dateUsed ?? ''}
+          dateUsed={formatToSlashedFrenchDate(booking?.dateUsed ?? '')}
           offerId={offer.id}
           offerName={offer.name}
           imageUrl={offer.images?.url?.url}
@@ -155,12 +171,13 @@ export function Offer() {
           bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
         />
 
-        {chronicleVariantInfo ? (
-          <ChroniclesWritersModal
+        {adviceVariantInfo ? (
+          <AdvicesWritersModal
             closeModal={hideChroniclesWritersModal}
             isVisible={chroniclesWritersModalVisible}
-            onShowRecoButtonPress={handleOnShowRecoButtonPress}
-            variantInfo={chronicleVariantInfo}
+            onButtonPress={handleOnShowRecoButtonPress}
+            modalWording={adviceVariantInfo.modalWording}
+            buttonWording={adviceVariantInfo.buttonWording}
           />
         ) : null}
         {offer.artists.length > 1 ? (
@@ -169,27 +186,30 @@ export function Offer() {
             closeModal={hideOfferArtistsModal}
             artists={offer.artists}
             navigateTo={{ screen: 'Artist' }}
+            offerId={offer.id}
           />
         ) : null}
       </View>
 
       <OfferContent
         offer={offer}
-        chronicles={chronicles}
-        chronicleVariantInfo={chronicleVariantInfo}
+        clubAdvices={clubAdvices}
+        proAdvices={proAdvices?.list}
+        adviceVariantInfo={adviceVariantInfo}
         headlineOffersCount={headlineOffersCount}
         searchGroupList={subcategories.searchGroups}
         subcategory={subcategoriesMapping[offer.subcategoryId]}
         defaultReaction={booking?.userReaction}
         onReactionButtonPress={booking?.canReact ? showReactionModal : undefined}
         userId={user?.id}
-        onShowChroniclesWritersModal={handleOnShowChroniclesWritersModal}
+        onShowClubAdviceWritersModal={handleOnShowClubAdviceWritersModal}
         hasVideoCookiesConsent={hasVideoCookiesConsent}
         onVideoConsentPress={handleOnVideoConsentPress}
-        segment={segment}
-        enableVideoABTesting={enableVideoABTesting}
         isMultiArtistsEnabled={isMultiArtistsEnabled}
         onShowOfferArtistsModal={showOfferArtistsModal}
+        HeaderComponent={RefactoOfferHeader}
+        CTAsComponent={OfferCTAs}
+        proAdvicesCount={proAdvices?.nbResults}
       />
     </Page>
   )

@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
-import { getSpacing } from 'ui/theme'
 
 export const ScrollToTopButton = ({
   transition,
@@ -37,8 +36,8 @@ const StyledView = styled.View(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   overflow: 'hidden',
-  height: getSpacing(10),
-  width: getSpacing(10),
+  height: theme.designSystem.size.spacing.xxxl,
+  width: theme.designSystem.size.spacing.xxxl,
 }))
 
 const ScrollToTopIcon = styled(ScrollToTop).attrs(({ theme }) => ({

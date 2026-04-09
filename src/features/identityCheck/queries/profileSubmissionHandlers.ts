@@ -2,12 +2,12 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 import { resetProfileStores } from 'features/identityCheck/pages/profile/store/resetProfileStores'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 type OfferNavigation = NativeStackNavigationProp<RootStackParamList, 'Offer'>
 
 type Params = {
   isBookingFreeOffer: boolean
-  enableBookingFreeOfferFifteenSixteen: boolean
   storedFreeOfferId?: number | null
   reset: OfferNavigation['reset']
 }
@@ -15,11 +15,6 @@ type Params = {
 type SuccessParams = Params & {
   navigateForwardToStepper: () => void
   refetchUser: () => void
-}
-
-type ErrorParams = Params & {
-  showErrorSnackBar: (args: { message: string; timeout: number }) => void
-  SNACK_BAR_TIME_OUT: number
 }
 
 function handleFreeOfferProfileSuccess({
@@ -49,16 +44,10 @@ function handleStandardProfileSuccess({
 }
 
 export function handlePostProfileSuccess(params: SuccessParams) {
-  const {
-    isBookingFreeOffer,
-    enableBookingFreeOfferFifteenSixteen,
-    reset,
-    storedFreeOfferId,
-    navigateForwardToStepper,
-    refetchUser,
-  } = params
+  const { isBookingFreeOffer, reset, storedFreeOfferId, navigateForwardToStepper, refetchUser } =
+    params
 
-  if (isBookingFreeOffer && enableBookingFreeOfferFifteenSixteen) {
+  if (isBookingFreeOffer) {
     handleFreeOfferProfileSuccess({ storedFreeOfferId, reset })
   } else {
     handleStandardProfileSuccess({ navigateForwardToStepper })
@@ -71,7 +60,7 @@ export function handlePostProfileSuccess(params: SuccessParams) {
 function handleFreeOfferProfileError({
   storedFreeOfferId,
   reset,
-}: Pick<ErrorParams, 'storedFreeOfferId' | 'reset'>) {
+}: Pick<Params, 'storedFreeOfferId' | 'reset'>) {
   if (storedFreeOfferId) {
     reset({
       routes: [
@@ -97,22 +86,12 @@ function handleFreeOfferProfileError({
   }
 }
 
-function handleStandardProfileError({
-  showErrorSnackBar,
-  SNACK_BAR_TIME_OUT,
-}: Pick<ErrorParams, 'showErrorSnackBar' | 'SNACK_BAR_TIME_OUT'>) {
-  showErrorSnackBar({
-    message: 'Une erreur est survenue lors de la mise à jour de ton profil',
-    timeout: SNACK_BAR_TIME_OUT,
-  })
-}
+export function handlePostProfileError(params: Params) {
+  const { isBookingFreeOffer, reset, storedFreeOfferId } = params
 
-export function handlePostProfileError(params: ErrorParams) {
-  const { isBookingFreeOffer, enableBookingFreeOfferFifteenSixteen, ...rest } = params
-
-  if (isBookingFreeOffer && enableBookingFreeOfferFifteenSixteen) {
-    handleFreeOfferProfileError(rest)
+  if (isBookingFreeOffer) {
+    handleFreeOfferProfileError({ storedFreeOfferId, reset })
   } else {
-    handleStandardProfileError(rest)
+    showErrorSnackBar('Une erreur est survenue lors de la mise à jour de ton profil')
   }
 }

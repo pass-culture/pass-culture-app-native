@@ -23,6 +23,10 @@ export async function getDeviceId() {
     }
     return NEW_DEVICE_ID
   } catch (error) {
+    const errorMessage = getErrorMessage(error)
+    eventMonitoring.captureException(`Error when read device ID from storage: ${errorMessage}`, {
+      extra: { error },
+    })
     return NEW_DEVICE_ID
   }
 }

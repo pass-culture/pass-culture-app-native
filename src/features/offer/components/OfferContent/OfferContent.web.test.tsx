@@ -2,13 +2,11 @@ import { QueryClient } from '@tanstack/react-query'
 import React, { ComponentProps } from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { OfferResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
-import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
+import { OfferResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import { adviceVariantInfoFixture } from 'features/advices/fixtures/adviceVariantInfo.fixture'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Position } from 'libs/location/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -64,7 +62,6 @@ describe('<OfferContent />', () => {
   const user = userEvent.setup()
 
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockAuthContextWithoutUser({ persist: true })
@@ -146,7 +143,7 @@ describe('<OfferContent />', () => {
   })
 
   it.skip('should not show preview modal when clicking on offer placeholder image', async () => {
-    const offer: OfferResponseV2 = {
+    const offer: OfferResponse = {
       ...offerResponseSnap,
       images: null,
     }
@@ -171,7 +168,6 @@ const renderOfferContent = ({
   subcategory = mockSubcategory,
   isDesktopViewport = false,
   isMobileViewport = false,
-  segment = 'A',
 }: RenderOfferContentType) => {
   useRoute.mockReturnValue({ params: { id: offer.id } })
   return render(
@@ -180,10 +176,9 @@ const renderOfferContent = ({
         offer={offer}
         searchGroupList={PLACEHOLDER_DATA.searchGroups}
         subcategory={subcategory}
-        chronicleVariantInfo={chronicleVariantInfoFixture}
-        onShowChroniclesWritersModal={jest.fn()}
+        adviceVariantInfo={adviceVariantInfoFixture}
+        onShowClubAdviceWritersModal={jest.fn()}
         onVideoConsentPress={jest.fn()}
-        segment={segment}
         onShowOfferArtistsModal={jest.fn()}
       />,
       setupQueryClient

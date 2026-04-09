@@ -23,19 +23,18 @@ import {
 } from 'features/subscription/types'
 import { analytics } from 'libs/analytics/provider'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Banner } from 'ui/designSystem/Banner/Banner'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Spacer, Typo } from 'ui/theme'
+import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const NotificationsSettings = () => {
   const { isLoggedIn, user } = useAuthContext()
-  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const initialState = user?.subscriptions
     ? {
@@ -59,19 +58,13 @@ export const NotificationsSettings = () => {
   const { pushPermission } = usePushPermission(updatePushPermissionFromSettings)
 
   const { mutate: patchProfile, isPending: isUpdatingProfile } = usePatchProfileMutation({
-    onSuccess: () => {
-      showSuccessSnackBar({
-        message: 'Tes modifications ont été enregistrées\u00a0!',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-      analytics.logNotificationToggle(!!state.allowEmails, state.allowPush)
+    onSuccess: async () => {
+      showSuccessSnackBar('Tes modifications ont été enregistrées\u00a0!')
+      await analytics.logNotificationToggle(!!state.allowEmails, state.allowPush)
     },
 
     onError: () => {
-      showErrorSnackBar({
-        message: 'Une erreur est survenue',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('Une erreur est survenue')
       dispatch({ type: 'reset', initialState })
     },
   })
@@ -136,117 +129,140 @@ export const NotificationsSettings = () => {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
 
   return (
-    <SecondaryPageWithBlurHeader
+    <PageWithHeader
       title="Suivi et notifications"
-      scrollable
       onGoBack={() => {
         if (hasUserChanged) {
           showUnsavedModal()
         } else {
           goBack()
         }
-      }}>
-      <Container>
-        {isLoggedIn ? null : (
-          <React.Fragment>
-            <Banner label="Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture." />
-            <Spacer.Column numberOfSpaces={6} />
-          </React.Fragment>
-        )}
-        <Typo.Title4 {...getHeadingAttrs(2)}>Type d’alerte</Typo.Title4>
-        <Spacer.Column numberOfSpaces={4} />
-        <Typo.Body>
-          Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
-        </Typo.Body>
-        <Spacer.Column numberOfSpaces={2} />
-        <Form.Flex>
-          <SectionWithSwitchContainer>
-            <SectionWithSwitch
-              title="Autoriser l’envoi d’e-mails"
-              active={isLoggedIn && state.allowEmails}
-              toggle={() => dispatch({ type: 'email' })}
-              disabled={!isLoggedIn}
-            />
-          </SectionWithSwitchContainer>
-          {!state.allowEmails && isLoggedIn ? (
-            <Typo.BodyAccentXs>
-              Tu continueras à recevoir par e-mail des informations essentielles concernant ton
-              compte.
-            </Typo.BodyAccentXs>
-          ) : null}
-          {Platform.OS === 'web' ? null : (
+      }}
+      scrollChildren={
+        <Container>
+          {isLoggedIn ? null : (
+            <BannerContainer>
+              <Banner label="Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture." />
+            </BannerContainer>
+          )}
+          <Typo.Title4 {...getHeadingAttrs(2)}>Type d’alerte</Typo.Title4>
+          <TextContainer>
+            <Typo.Body>
+              Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
+            </Typo.Body>
+          </TextContainer>
+          <Form.Flex>
             <SectionWithSwitchContainer>
               <SectionWithSwitch
-                title="Autoriser les notifications"
-                active={isLoggedIn && state.allowPush}
-                toggle={togglePush}
+                title="Autoriser l’envoi d’e-mails"
+                active={isLoggedIn && state.allowEmails}
+                toggle={() => dispatch({ type: 'email' })}
                 disabled={!isLoggedIn}
               />
             </SectionWithSwitchContainer>
-          )}
-          <Spacer.Column numberOfSpaces={4} />
-          <Separator.Horizontal />
-          <Spacer.Column numberOfSpaces={8} />
-          <Typo.Title4 {...getHeadingAttrs(2)}>Tes thèmes suivis</Typo.Title4>
-          {!isLoggedIn || areNotificationsEnabled ? null : (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={4} />
-              <Banner label="Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications." />
-            </React.Fragment>
-          )}
-          <Spacer.Column numberOfSpaces={6} />
-          <SectionWithSwitchContainer>
-            <SectionWithSwitch
-              title="Suivre tous les thèmes"
-              active={
-                areNotificationsEnabled && state.themePreferences.length === TOTAL_NUMBER_OF_THEME
-              }
-              toggle={() => dispatch({ type: 'allTheme' })}
-              disabled={areThemeTogglesDisabled}
-            />
-          </SectionWithSwitchContainer>
-          <Spacer.Column numberOfSpaces={2} />
-          {SUSBCRIPTION_THEMES.map((theme) => (
-            <SectionWithSwitchContainer key={theme}>
-              <SectionWithSwitch
-                title={mapSubscriptionThemeToName[theme]}
-                active={isThemeToggled(theme)}
-                disabled={areThemeTogglesDisabled}
-                toggle={() => dispatch({ type: 'toggleTheme', theme })}
+            {!state.allowEmails && isLoggedIn ? (
+              <Typo.BodyAccentXs>
+                Tu continueras à recevoir par e-mail des informations essentielles concernant ton
+                compte.
+              </Typo.BodyAccentXs>
+            ) : null}
+            {Platform.OS === 'web' ? null : (
+              <SectionWithSwitchContainer>
+                <SectionWithSwitch
+                  title="Autoriser les notifications"
+                  active={isLoggedIn && state.allowPush}
+                  toggle={togglePush}
+                  disabled={!isLoggedIn}
+                />
+              </SectionWithSwitchContainer>
+            )}
+            <StyledSeparator />
+            <Typo.Title4 {...getHeadingAttrs(2)}>Tes thèmes suivis</Typo.Title4>
+            {!isLoggedIn || areNotificationsEnabled ? null : (
+              <BannerThemeContainer>
+                <Banner label="Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications." />
+              </BannerThemeContainer>
+            )}
+            <StyledView>
+              <SectionWithSwitchContainer>
+                <SectionWithSwitch
+                  title="Suivre tous les thèmes"
+                  active={
+                    areNotificationsEnabled &&
+                    state.themePreferences.length === TOTAL_NUMBER_OF_THEME
+                  }
+                  toggle={() => dispatch({ type: 'allTheme' })}
+                  disabled={areThemeTogglesDisabled}
+                />
+              </SectionWithSwitchContainer>
+            </StyledView>
+            {SUSBCRIPTION_THEMES.map((theme) => (
+              <SectionWithSwitchContainer key={theme}>
+                <SectionWithSwitch
+                  title={mapSubscriptionThemeToName[theme]}
+                  active={isThemeToggled(theme)}
+                  disabled={areThemeTogglesDisabled}
+                  toggle={() => dispatch({ type: 'toggleTheme', theme })}
+                />
+              </SectionWithSwitchContainer>
+            ))}
+            <ButtonContainer>
+              <Button
+                wording="Enregistrer"
+                accessibilityLabel="Enregistrer les modifications"
+                onPress={submitProfile}
+                disabled={isSaveButtonDisabled}
               />
-            </SectionWithSwitchContainer>
-          ))}
-          <Spacer.Column numberOfSpaces={2} />
-          <ButtonPrimary
-            wording="Enregistrer"
-            accessibilityLabel="Enregistrer les modifications"
-            onPress={submitProfile}
-            disabled={isSaveButtonDisabled}
+            </ButtonContainer>
+          </Form.Flex>
+          <PushNotificationsModal
+            visible={isPushModalVisible}
+            onRequestPermission={onRequestNotificationPermissionFromModal}
+            onDismiss={hidePushModal}
           />
-        </Form.Flex>
-        <PushNotificationsModal
-          visible={isPushModalVisible}
-          onRequestPermission={onRequestNotificationPermissionFromModal}
-          onDismiss={hidePushModal}
-        />
-        <UnsavedSettingsModal
-          visible={isUnsavedModalVisible}
-          dismissModal={hideUnsavedModal}
-          onPressSaveChanges={submitProfile}
-        />
-      </Container>
-    </SecondaryPageWithBlurHeader>
+          <UnsavedSettingsModal
+            visible={isUnsavedModalVisible}
+            dismissModal={hideUnsavedModal}
+            onPressSaveChanges={submitProfile}
+          />
+        </Container>
+      }
+    />
   )
 }
 
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
+const BannerContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
+const TextContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.s,
+}))
+const BannerThemeContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
 const SectionWithSwitchContainer = styled.View(({ theme }) => ({
   paddingVertical: theme.designSystem.size.spacing.l,
+}))
+
+const ButtonContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
+}))
+
+const StyledView = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.s,
 }))
 
 const Container = styled.View(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
   width: '100%',
   alignSelf: 'center',
+  marginBottom: theme.designSystem.size.spacing.xxxl,
 }))
 
 type ToggleActions =

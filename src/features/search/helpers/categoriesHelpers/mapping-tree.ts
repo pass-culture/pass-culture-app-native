@@ -11,20 +11,16 @@ import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { availableCategories } from 'features/search/helpers/availableCategories/availableCategories'
 import { getNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { OfferGenreType } from 'features/search/types'
-import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
-import { FacetData, NativeCategoryFacetData } from 'libs/algolia/types'
 
 export type BaseCategory = {
   label: string
   position?: number
 }
 type MappedGenreType = BaseCategory & {
-  nbResultsFacet?: never
   gtls?: GTL[]
 }
 export type MappedGenreTypes = Record<string, MappedGenreType>
 type MappedNativeCategory = BaseCategory & {
-  nbResultsFacet?: number
   genreTypeKey?: GenreType
   children?: MappedGenreTypes
   gtls?: GTL[]
@@ -63,17 +59,15 @@ export function getBooksNativeCategories(data: SubcategoriesResponseModelv2) {
 export function getBooksGenreTypes(data: SubcategoriesResponseModelv2): OfferGenreType[] {
   const bookTree = data.genreTypes.find(({ name }) => name === GenreType.BOOK)?.trees as BookType[]
 
-  return bookTree
-    .map((bookCategory) =>
-      bookCategory.children.map((bookGenre) => {
-        return {
-          name: getKeyFromStringLabel(bookGenre.label),
-          value: bookGenre.label,
-          key: GenreType.BOOK,
-        } as OfferGenreType
-      })
-    )
-    .flat()
+  return bookTree.flatMap((bookCategory) =>
+    bookCategory.children.map((bookGenre) => {
+      return {
+        name: getKeyFromStringLabel(bookGenre.label),
+        value: bookGenre.label,
+        key: GenreType.BOOK,
+      } as OfferGenreType
+    })
+  )
 }
 
 function mapBookCategories(data: SubcategoriesResponseModelv2) {
@@ -100,7 +94,7 @@ function mapBookCategories(data: SubcategoriesResponseModelv2) {
   }, {})
 }
 
-export function createMappingTree(data: SubcategoriesResponseModelv2, facetsData?: FacetData) {
+export function createMappingTree(data: SubcategoriesResponseModelv2) {
   /**
    * We want to create a mapping tree that looks like this:
    * {
@@ -130,8 +124,8 @@ export function createMappingTree(data: SubcategoriesResponseModelv2, facetsData
         searchGroup.name in availableCategories && searchGroup.name in CATEGORY_CRITERIA
     )
     .sort((a, b) => {
-      const positionA: number = CATEGORY_CRITERIA[a.name]?.position ?? 0
-      const positionB: number = CATEGORY_CRITERIA[b.name]?.position ?? 0
+      const positionA: number = CATEGORY_CRITERIA[a.name]?.filterModalPosition ?? 0
+      const positionB: number = CATEGORY_CRITERIA[b.name]?.filterModalPosition ?? 0
       return positionA - positionB
     })
     .reduce<MappingTree>((result, searchGroup) => {
@@ -141,12 +135,8 @@ export function createMappingTree(data: SubcategoriesResponseModelv2, facetsData
             (nativeCategoriesResult, nativeCategory) => {
               nativeCategoriesResult[nativeCategory.name] = {
                 label: nativeCategory.value ?? 'Tout',
-                nbResultsFacet:
-                  (facetsData as NativeCategoryFacetData)?.[
-                    FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY
-                  ]?.[nativeCategory.name] ?? 0,
                 position: nativeCategory.positions?.[searchGroup.name],
-                ...(getNativeCategoryGenreTypes(data, nativeCategory) || {}),
+                ...getNativeCategoryGenreTypes(data, nativeCategory),
               }
 
               return nativeCategoriesResult
@@ -177,10 +167,10 @@ export function getKeyFromStringLabel(input?: string | null): string | null {
   if (!input) return null
   return input
     .toUpperCase()
-    .replace('&', 'ET')
-    .replace('-', '_')
-    .replace(',', '')
-    .replace(/ /g, '_')
+    .replaceAll('&', 'ET')
+    .replaceAll('-', '_')
+    .replaceAll(',', '')
+    .replaceAll(' ', '_')
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .replaceAll(/[\u0300-\u036f]/g, '')
 }

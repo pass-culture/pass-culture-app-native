@@ -66,7 +66,10 @@ describe('<NonBeneficiaryHeader/>', () => {
   afterAll(mockdate.reset)
 
   it('should render the activation banner when user is eligible and api call returns activation banner', async () => {
-    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
+    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
+      ...mockStep,
+      nextSubscriptionStep: null,
+    })
     mockServer.getApi<BannerResponse>('/v1/banner', {
       banner: {
         name: BannerName.activation_banner,
@@ -76,7 +79,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     })
 
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
     })
@@ -89,7 +92,10 @@ describe('<NonBeneficiaryHeader/>', () => {
   })
 
   it("should render the transition 17 to 18 banner when beneficiary's user is now 18", async () => {
-    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
+    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
+      ...mockStep,
+      nextSubscriptionStep: null,
+    })
     mockServer.getApi<BannerResponse>('/v1/banner', {
       banner: {
         name: BannerName.transition_17_18_banner,
@@ -99,7 +105,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     })
 
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
     })
@@ -119,14 +125,14 @@ describe('<NonBeneficiaryHeader/>', () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
 
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
     })
 
     await waitFor(async () => {
       expect(screen.queryByTestId('eligibility-system-banner-container')).not.toBeOnTheScreen()
-      expect(await screen.findByTestId('identity-check-pending-badge')).toBeOnTheScreen()
+      expect(await screen.findByTestId('activation-banner-pending')).toBeOnTheScreen()
     })
   })
 
@@ -139,7 +145,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
 
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
     })
@@ -154,13 +160,13 @@ describe('<NonBeneficiaryHeader/>', () => {
     mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
     mockServer.getApi<BannerResponse>('/v1/banner', {})
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       startDatetime: '2021-03-31T00:00Z',
       endDatetime: '2022-03-31T00:00Z',
     })
 
     await waitFor(async () => {
-      expect(await screen.findByTestId('younger-badge')).toBeOnTheScreen()
+      expect(await screen.findByTestId('younger-banner')).toBeOnTheScreen()
     })
   })
 
@@ -174,15 +180,15 @@ describe('<NonBeneficiaryHeader/>', () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
 
     renderNonBeneficiaryHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false, enableProfileV2: false },
+      featureFlags: { disableActivation: false, enableProfileV2: false },
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
     })
 
     expect(screen.queryByTestId('subscription-message-badge')).not.toBeOnTheScreen()
     expect(screen.queryByTestId('eligibility-banner-container')).not.toBeOnTheScreen()
-    expect(screen.queryByTestId('identity-check-pending-badge')).not.toBeOnTheScreen()
-    expect(screen.queryByTestId('younger-badge')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('activation-banner-pending')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('younger-banner')).not.toBeOnTheScreen()
   })
 })
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
@@ -51,7 +51,7 @@ jest.mock('queries/offer/useBookingOfferQuery', () => ({
 
 describe('<BookingEventChoices />', () => {
   beforeEach(() => {
-    mockServer.getApi<OfferResponseV2>(`/v2/offer/116656`, offerResponseSnap)
+    mockServer.getApi<OfferResponse>(`/v3/offer/116656`, offerResponseSnap)
     setFeatureFlags()
   })
 
@@ -92,7 +92,7 @@ describe('<BookingEventChoices />', () => {
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
       await waitFor(() => {
-        expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
+        expect(screen.queryByText('Nombre de places')).not.toBeOnTheScreen()
       })
     })
 
@@ -143,7 +143,7 @@ describe('<BookingEventChoices />', () => {
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
       await waitFor(() => {
-        expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
+        expect(screen.queryByText('Nombre de places')).not.toBeOnTheScreen()
       })
     })
   })
@@ -187,7 +187,7 @@ describe('<BookingEventChoices />', () => {
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
       await waitFor(() => {
-        expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
+        expect(screen.queryByText('Nombre de places')).not.toBeOnTheScreen()
       })
     })
   })
@@ -209,7 +209,7 @@ describe('<BookingEventChoices />', () => {
     it('should display duo selection', async () => {
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
-      expect(await screen.findByTestId('DuoStep')).toBeOnTheScreen()
+      expect(await screen.findByText('Nombre de places')).toBeOnTheScreen()
     })
 
     it('should not display date selection', async () => {

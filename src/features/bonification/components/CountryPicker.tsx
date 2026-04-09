@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { FieldError, UseFormReset, UseFormWatch } from 'react-hook-form'
 import { View } from 'react-native'
 
-import { INSEE_COUNTRY_LIST, InseeCountry } from 'features/bonification/inseeCountries'
+import { InseeCountry } from 'api/gen'
+import { useCountriesQuery } from 'features/bonification/queries/useCountriesQuery'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
@@ -31,18 +32,19 @@ export const CountryPicker: React.FC<{
   valueSelection,
   watch,
 }) => {
+  const { data } = useCountriesQuery()
   const [countryList, setCountryList] = useState(
-    birthCountry?.LIBCOG
-      ? INSEE_COUNTRY_LIST.filter((country) =>
-          country.LIBCOG.toLocaleLowerCase().includes(birthCountry?.LIBCOG.toLocaleLowerCase())
+    birthCountry?.libcog
+      ? data?.countries?.filter((country) =>
+          country.libcog.toLocaleLowerCase().includes(birthCountry?.libcog.toLocaleLowerCase())
         )
-      : INSEE_COUNTRY_LIST
+      : data?.countries
   )
 
   const handleUserInputChange = (input: string) => {
     setCountryList(
-      INSEE_COUNTRY_LIST.filter((country) =>
-        country.LIBCOG.toLocaleLowerCase().includes(input.toLocaleLowerCase())
+      data?.countries?.filter((country) =>
+        country.libcog.toLocaleLowerCase().includes(input.toLocaleLowerCase())
       )
     )
   }
@@ -72,22 +74,22 @@ export const CountryPicker: React.FC<{
       />
       {valueInput && valueInput.length != 0 ? (
         <VerticalUl>
-          {countryList.map((country, index) => {
+          {countryList?.map((country, index) => {
             return (
-              <Li key={country.COG}>
+              <Li key={country.cog}>
                 <AddressOption
-                  label={country.LIBCOG}
-                  selected={country ? country.COG === valueSelection?.COG : false}
+                  label={country.libcog}
+                  selected={country ? country.cog === valueSelection?.cog : false}
                   onPressOption={() => {
                     setCountryList([])
                     onChangeSelection(country)
-                    onChangeInput(country.LIBCOG)
+                    onChangeInput(country.libcog)
                     setShowCityField(
-                      watch('birthCountrySelection')?.LIBCOG?.toLocaleLowerCase() === 'france'
+                      watch('birthCountrySelection')?.libcog?.toLocaleLowerCase() === 'france'
                     )
                   }}
-                  optionKey={country.LIBCOG}
-                  accessibilityLabel={`Proposition de pays ${index + 1}\u00a0: ${country.LIBCOG}`}
+                  optionKey={country.libcog}
+                  accessibilityLabel={`Proposition de pays ${index + 1}\u00a0: ${country.libcog}`}
                 />
               </Li>
             )

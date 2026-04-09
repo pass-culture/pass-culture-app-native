@@ -18,11 +18,11 @@ export const mockHit = {
     exact_nb_hits: 2,
     facets: {
       exact_matches: {
-        ['offer.searchGroupNamev2']: [],
+        ['offer.searchGroups']: [],
         ['offer.nativeCategoryId']: [],
       },
       analytics: {
-        ['offer.searchGroupNamev2']: [
+        ['offer.searchGroups']: [
           {
             attribute: '',
             operator: '',
@@ -50,10 +50,10 @@ export const mockHitSeveralCategoriesWithAssociationToNativeCategory: AlgoliaSug
     facets: {
       exact_matches: {
         'offer.nativeCategoryId': [],
-        'offer.searchGroupNamev2': [],
+        'offer.searchGroups': [],
       },
       analytics: {
-        ['offer.searchGroupNamev2']: [
+        ['offer.searchGroups']: [
           {
             attribute: '',
             operator: '',
@@ -81,10 +81,10 @@ export const mockHitSeveralCategoriesWithAssociationToBooksNativeCategory: Algol
     facets: {
       exact_matches: {
         'offer.nativeCategoryId': [],
-        'offer.searchGroupNamev2': [],
+        'offer.searchGroups': [],
       },
       analytics: {
-        ['offer.searchGroupNamev2']: [
+        ['offer.searchGroups']: [
           {
             attribute: '',
             operator: '',
@@ -112,10 +112,10 @@ export const mockHitSeveralCategoriesWithoutAssociationToNativeCategory: Algolia
     facets: {
       exact_matches: {
         'offer.nativeCategoryId': [],
-        'offer.searchGroupNamev2': [],
+        'offer.searchGroups': [],
       },
       analytics: {
-        ['offer.searchGroupNamev2']: [
+        ['offer.searchGroups']: [
           {
             attribute: '',
             operator: '',
@@ -143,10 +143,10 @@ export const mockHitWithoutCategoryAndNativeCategory: AlgoliaSuggestionHit = {
     facets: {
       exact_matches: {
         'offer.nativeCategoryId': [],
-        'offer.searchGroupNamev2': [],
+        'offer.searchGroups': [],
       },
       analytics: {
-        ['offer.searchGroupNamev2']: [],
+        ['offer.searchGroups']: [],
         ['offer.nativeCategoryId']: [],
       },
     },
@@ -160,10 +160,10 @@ export const mockHitWithOnlyCategory: AlgoliaSuggestionHit = {
     facets: {
       exact_matches: {
         'offer.nativeCategoryId': [],
-        'offer.searchGroupNamev2': [],
+        'offer.searchGroups': [],
       },
       analytics: {
-        ['offer.searchGroupNamev2']: [
+        ['offer.searchGroups']: [
           {
             attribute: '',
             operator: '',
@@ -184,10 +184,10 @@ export const mockHitUnknownNativeCategory: AlgoliaSuggestionHit = {
     facets: {
       exact_matches: {
         'offer.nativeCategoryId': [],
-        'offer.searchGroupNamev2': [],
+        'offer.searchGroups': [],
       },
       analytics: {
-        ['offer.searchGroupNamev2']: [
+        ['offer.searchGroups']: [
           {
             attribute: '',
             operator: '',
@@ -215,10 +215,10 @@ export const mockHitUnknownCategory: AlgoliaSuggestionHit = {
     facets: {
       exact_matches: {
         'offer.nativeCategoryId': [],
-        'offer.searchGroupNamev2': [],
+        'offer.searchGroups': [],
       },
       analytics: {
-        ['offer.searchGroupNamev2']: [
+        ['offer.searchGroups']: [
           {
             attribute: '',
             operator: '',
@@ -239,10 +239,10 @@ export const mockHitUnknownNativeCategoryAndCategory: AlgoliaSuggestionHit = {
     facets: {
       exact_matches: {
         'offer.nativeCategoryId': [],
-        'offer.searchGroupNamev2': [],
+        'offer.searchGroups': [],
       },
       analytics: {
-        ['offer.searchGroupNamev2']: [
+        ['offer.searchGroups']: [
           {
             attribute: '',
             operator: '',
@@ -270,7 +270,7 @@ export const mockHitIrrelevantResult: AlgoliaSuggestionHit = {
     facets: {
       exact_matches: {
         'offer.nativeCategoryId': [],
-        'offer.searchGroupNamev2': [],
+        'offer.searchGroups': [],
       },
       analytics: {
         'offer.nativeCategoryId': [
@@ -281,9 +281,9 @@ export const mockHitIrrelevantResult: AlgoliaSuggestionHit = {
             count: 250,
           },
         ],
-        'offer.searchGroupNamev2': [
+        'offer.searchGroups': [
           {
-            attribute: 'offer.searchGroupNamev2',
+            attribute: 'offer.searchGroups',
             operator: ':',
             value: SearchGroupNameEnumv2.LIVRES,
             count: 3153,
@@ -301,7 +301,7 @@ export const mockHitRelevantResults: AlgoliaSuggestionHit = {
     facets: {
       exact_matches: {
         'offer.nativeCategoryId': [],
-        'offer.searchGroupNamev2': [],
+        'offer.searchGroups': [],
       },
       analytics: {
         'offer.nativeCategoryId': [
@@ -312,9 +312,9 @@ export const mockHitRelevantResults: AlgoliaSuggestionHit = {
             count: 8,
           },
         ],
-        'offer.searchGroupNamev2': [
+        'offer.searchGroups': [
           {
-            attribute: 'offer.searchGroupNamev2',
+            attribute: 'offer.searchGroups',
             operator: ':',
             value: SearchGroupNameEnumv2.LIVRES,
             count: 6172,
@@ -332,7 +332,7 @@ export const mockHitsWithDifferentCounts: AlgoliaSuggestionHit = {
     facets: {
       exact_matches: {
         'offer.nativeCategoryId': [],
-        'offer.searchGroupNamev2': [],
+        'offer.searchGroups': [],
       },
       analytics: {
         'offer.nativeCategoryId': [
@@ -349,9 +349,9 @@ export const mockHitsWithDifferentCounts: AlgoliaSuggestionHit = {
             count: 13,
           },
         ],
-        'offer.searchGroupNamev2': [
+        'offer.searchGroups': [
           {
-            attribute: 'offer.searchGroupNamev2',
+            attribute: 'offer.searchGroups',
             operator: ':',
             value: SearchGroupNameEnumv2.LIVRES,
             count: 6172,
@@ -369,12 +369,12 @@ export const mockHitWithUnavailableCategory: AlgoliaSuggestionHit = {
     facets: {
       exact_matches: {
         'offer.nativeCategoryId': [],
-        'offer.searchGroupNamev2': [],
+        'offer.searchGroups': [],
       },
       analytics: {
-        ['offer.searchGroupNamev2']: [
+        ['offer.searchGroups']: [
           {
-            attribute: 'offer.searchGroupNamev2',
+            attribute: 'offer.searchGroups',
             operator: ':',
             value: SearchGroupNameEnumv2.NONE,
             count: 6172,
@@ -393,12 +393,12 @@ export const mockHitWithNativeCategory: AlgoliaSuggestionHit = {
     facets: {
       exact_matches: {
         'offer.nativeCategoryId': [],
-        'offer.searchGroupNamev2': [],
+        'offer.searchGroups': [],
       },
       analytics: {
-        ['offer.searchGroupNamev2']: [
+        ['offer.searchGroups']: [
           {
-            attribute: 'offer.searchGroupNamev2',
+            attribute: 'offer.searchGroups',
             operator: ':',
             value: SearchGroupNameEnumv2.LIVRES,
             count: 6172,

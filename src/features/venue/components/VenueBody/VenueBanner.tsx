@@ -3,13 +3,12 @@ import React, { PropsWithChildren } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
-import { BannerMetaModel } from 'api/gen'
 import { GOOGLE_LOGO } from 'features/venue/components/VenueBody/GoogleLogo'
 import { useVenueBackgroundStyle } from 'features/venue/helpers/useVenueBackgroundStyle'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Image } from 'libs/resizing-image-on-demand/Image'
-import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
-import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
+import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Venue } from 'ui/svg/icons/Venue'
@@ -20,17 +19,21 @@ const GOOGLE_LOGO_WIDTH = 47
 
 type Props = {
   bannerUrl?: string | null
-  bannerMeta?: BannerMetaModel | null
+  bannerCredit?: string | null
+  bannerIsFromGoogle?: boolean
   handleImagePress?: VoidFunction
 }
 
-export const VenueBanner: React.FC<Props> = ({ handleImagePress, bannerUrl, bannerMeta }) => {
+export const VenueBanner: React.FC<Props> = ({
+  handleImagePress,
+  bannerUrl,
+  bannerCredit,
+  bannerIsFromGoogle,
+}) => {
   const backgroundStyle = useVenueBackgroundStyle()
   const { isMobileViewport, designSystem } = useTheme()
-  const { is_from_google: isFromGoogle, image_credit: imageCredit } = bannerMeta ?? {
-    is_from_google: null,
-    image_credit: null,
-  }
+  const isFromGoogle = bannerIsFromGoogle
+  const imageCredit = bannerCredit
   const hasGoogleCredit = isFromGoogle && imageCredit
   const defaultMarginBottom = isMobileViewport ? designSystem.size.spacing.xl : undefined
 

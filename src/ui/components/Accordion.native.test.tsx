@@ -52,6 +52,16 @@ describe('Accordion', () => {
       screen.getByTestId('accordion title - Accordéon - Réduire l’accordéon')
     ).toHaveAccessibilityState({ expanded: true })
   })
+
+  it('should update accessibility state immediately after pressing the title', async () => {
+    await renderAccordion()
+
+    await user.press(screen.getByText(/accordion title/))
+
+    expect(
+      screen.getByTestId('accordion title - Accordéon - Réduire l’accordéon')
+    ).toHaveAccessibilityState({ expanded: true })
+  })
 })
 
 const renderAccordion = () => {

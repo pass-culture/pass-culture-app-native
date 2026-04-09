@@ -4,9 +4,9 @@ import styled from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { UserIdentification as InitialUserIdentification } from 'ui/svg/UserIdentification'
 import { Typo } from 'ui/theme'
 
@@ -51,7 +51,8 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
       </StyledBody>
       <StyledButtonContainer>
         <InternalTouchableLink
-          as={ButtonPrimary}
+          as={Button}
+          fullWidth
           wording="Créer un compte"
           navigateTo={{
             screen: 'SignupForm',

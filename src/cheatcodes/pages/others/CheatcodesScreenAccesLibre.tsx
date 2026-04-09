@@ -4,11 +4,11 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
-import { getDetailedAccessibilityInfo } from 'shared/accessibility/getDetailedAccessibilityInfo'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { getDetailedAccessibilityInfo } from 'shared/accessibility/helpers/getDetailedAccessibilityInfo'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { Typo } from 'ui/theme'
 
@@ -19,32 +19,32 @@ export const CheatcodesScreenAccesLibre = () => {
 
   const { data: venue } = useVenueQuery(venueId || 0, { enabled: !!venueId })
 
-  const details = getDetailedAccessibilityInfo(venue?.externalAccessibilityData)
+  const details = getDetailedAccessibilityInfo(venue?.accessibilityData)
 
   const onPress = () => {
     const parsedId = parseInt(value, 10)
-    if (!isNaN(parsedId)) {
+    if (!Number.isNaN(parsedId)) {
       setVenueId(parsedId)
     }
   }
 
   return (
     <CheatcodesTemplateScreen title="AccesLibre 🌈" flexDirection="column">
-      <TextInput
-        label="Rentrer un ID de lieu avec AccesLibre"
-        keyboardType="number-pad"
-        value={value}
-        onChangeText={setValue}
-      />
-
-      <SearchVenueButton
-        wording="Rechercher un lieu"
-        onPress={onPress}
-        disabled={value.length < 1}
-      />
-
+      <ViewGap gap={2}>
+        <TextInput
+          label="Rentrer un ID de lieu avec AccesLibre"
+          keyboardType="number-pad"
+          value={value}
+          onChangeText={setValue}
+        />
+        <SearchVenueButton
+          wording="Rechercher un lieu"
+          onPress={onPress}
+          disabled={value.length < 1}
+        />
+      </ViewGap>
       {venue ? (
-        venue.externalAccessibilityData ? (
+        venue.accessibilityData ? (
           details?.map((detail, index) => (
             <View key={index}>
               <StyledViewGap gap={5}>
@@ -76,8 +76,7 @@ export const CheatcodesScreenAccesLibre = () => {
   )
 }
 
-const SearchVenueButton = styledButton(ButtonPrimary)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.m,
+const SearchVenueButton = styledButton(Button)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,
 }))
 

@@ -14,6 +14,7 @@ describe('transformGeoLocatedVenueToVenueResponse', () => {
       venueId: 123,
       isOpenToPublic: true,
       activity: Activity.BOOKSTORE,
+      isPermanent: true,
     } satisfies GeolocatedVenue
 
     const expectedVenueResponse = {
@@ -21,10 +22,11 @@ describe('transformGeoLocatedVenueToVenueResponse', () => {
       name: geolocatedData.label,
       longitude: geolocatedData._geoloc.lng,
       latitude: geolocatedData._geoloc.lat,
-      accessibility: {},
+      accessibilityData: {},
       timezone: '',
       isOpenToPublic: true,
       activity: Activity.BOOKSTORE,
+      isPermanent: true,
     } satisfies Omit<VenueResponse, 'isVirtual'>
 
     expect(transformGeoLocatedVenueToVenueResponse(geolocatedData)).toMatchObject(

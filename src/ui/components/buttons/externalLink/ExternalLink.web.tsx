@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled as DefaultExternalSite } from 'ui/svg/icons/ExternalSiteFilled'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   url: string
@@ -39,7 +39,7 @@ export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID, with
 const Text = webStyled.span(({ theme }) => ({
   whiteSpace: 'nowrap',
   verticalAlign: 'middle',
-  marginLeft: getSpacing(1),
+  marginLeft: theme.designSystem.size.spacing.xs,
   ...theme.designSystem.typography.button,
 }))
 

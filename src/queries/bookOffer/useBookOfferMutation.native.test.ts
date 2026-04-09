@@ -1,10 +1,14 @@
 import { QueryClient } from '@tanstack/react-query'
 
 import { BookingsResponse, BookOfferResponse } from 'api/gen'
+import { Adjust } from 'libs/adjust/adjust'
+import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { mockServer } from 'tests/mswServer'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
+
+jest.mock('libs/adjust/adjust')
 
 const props = { onError: jest.fn(), onSuccess: jest.fn() }
 
@@ -48,6 +52,20 @@ describe('useBookOfferMutation', () => {
       expect(props.onSuccess).not.toHaveBeenCalled()
       expect(props.onError).toHaveBeenCalledTimes(1)
       expect(queryCache.find({ queryKey: ['userProfile'] })?.state.isInvalidated).toBeFalsy()
+    })
+  })
+
+  describe('Adjust event', () => {
+    it('should log Adjust book offer event after successfully booking', async () => {
+      mockServer.postApi<BookOfferResponse>('/v1/bookings', {})
+
+      const { result } = renderUseBookOfferMutation()
+
+      result.current.mutate({ quantity: 1, stockId: 10 })
+
+      await waitFor(() => {
+        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.BOOK_OFFER)
+      })
     })
   })
 })

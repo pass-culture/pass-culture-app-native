@@ -18,24 +18,15 @@ import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SuggestedCity } from 'libs/place/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Again } from 'ui/svg/icons/Again'
 
 export const ProfileInformationValidationCreate = () => {
-  const enableBookingFreeOfferFifteenSixteen = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
-  )
-
   const { refetchUser, user } = useAuthContext()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
-  const { showErrorSnackBar } = useSnackBarContext()
 
   const { navigate, reset } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'ProfileInformationValidationCreate'>>()
@@ -91,7 +82,6 @@ export const ProfileInformationValidationCreate = () => {
     onSuccess: () =>
       handlePostProfileSuccess({
         isBookingFreeOffer,
-        enableBookingFreeOfferFifteenSixteen,
         storedFreeOfferId,
         navigateForwardToStepper,
         reset,
@@ -100,11 +90,8 @@ export const ProfileInformationValidationCreate = () => {
     onError: () =>
       handlePostProfileError({
         isBookingFreeOffer,
-        enableBookingFreeOfferFifteenSixteen,
         storedFreeOfferId,
         reset,
-        showErrorSnackBar,
-        SNACK_BAR_TIME_OUT,
       }),
   })
 
@@ -179,13 +166,15 @@ export const ProfileInformationValidationCreate = () => {
       }
       fixedBottomChildren={
         <ViewGap gap={4}>
-          <ButtonPrimary
+          <Button
             type="submit"
             wording="Continuer"
             onPress={onSubmitProfile}
             isLoading={isLoading}
           />
-          <ButtonTertiaryBlack
+          <Button
+            variant="tertiary"
+            color="neutral"
             wording="Modifier mes informations"
             onPress={onChangeInformation}
             icon={Again}

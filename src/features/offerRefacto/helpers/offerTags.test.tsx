@@ -4,6 +4,8 @@ import { View } from 'react-native'
 import { getInteractionTagLabel, getTags } from 'features/offerRefacto/helpers'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('getTags', () => {
   it('should return the offer subcategory by default', () => {
     const tags = getTags('Cinéma plein air')

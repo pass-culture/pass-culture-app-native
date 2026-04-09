@@ -1,12 +1,19 @@
 import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
 import { CategoryBlock as CategoryBlockData } from 'features/home/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useLocation } from 'libs/location/LocationWrapper'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
+import { AIFakeDoorModal } from 'shared/AIFakeDoorModal/AIFakeDoorModal'
 import { CategoryButton } from 'shared/categoryButton/CategoryButton'
+import { useModal } from 'ui/components/modals/useModal'
+import { AIFakeDoorBanner } from 'ui/components/ModuleBanner/AIFakeDoorBanner'
 import { getSpacing } from 'ui/theme'
 import { colorMapping } from 'ui/theme/colorMapping'
 
@@ -32,15 +39,19 @@ export const CategoryListModule = ({
   index,
   homeEntryId,
 }: CategoryListProps) => {
-  const mobileMinWidth = useFontScaleValue({
+  const mobileMinWidth = useMobileFontScaleToDisplay({
     default: MOBILE_MIN_WIDTH,
     at200PercentZoom: MOBILE_MIN_WIDTH_WHEN_FONT_ZOOMED,
   })
 
   const { designSystem } = useTheme()
+  const enableAIFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR)
+  const { visible, showModal, hideModal } = useModal(false)
+  const { userLocation } = useLocation()
+  const { user } = useAuthContext()
 
   useEffect(() => {
-    analytics.logModuleDisplayedOnHomepage({
+    void analytics.logModuleDisplayedOnHomepage({
       moduleId: id,
       moduleType: ContentTypes.CATEGORY_LIST,
       index,
@@ -48,46 +59,70 @@ export const CategoryListModule = ({
     })
   }, [id, homeEntryId, index])
 
-  return (
-    <Container>
-      <AccessibleTitle title={title} />
-      <StyledView>
-        {categoryBlockList.map((item) => {
-          const fillFromDesignSystem =
-            designSystem.color.background[colorMapping[item.color].fill ?? 'default']
+  const onPressAIFakeDoorBanner = () => {
+    void analytics.logHasClickedFakeDoorCTA({
+      featureName: 'conversational_search_AI',
+      from: 'home',
+      homeEntryId,
+    })
+    showModal()
+  }
 
-          const borderFromDesignSystem =
-            designSystem.color.border[colorMapping[item.color].border ?? 'default']
-          return (
-            <StyledCategoryButton
-              key={item.id}
-              label={item.title}
-              height={BLOCK_HEIGHT}
-              mobileMinWidth={mobileMinWidth}
-              fillColor={fillFromDesignSystem || colorMapping[item.color].fill}
-              borderColor={borderFromDesignSystem || colorMapping[item.color].border}
-              onBeforeNavigate={() => {
-                analytics.logCategoryBlockClicked({
-                  moduleId: item.id,
-                  moduleListID: id,
-                  entryId: homeEntryId,
-                  toEntryId: item.homeEntryId,
-                })
-              }}
-              navigateTo={{
-                screen: 'ThematicHome',
-                params: {
-                  homeId: item.homeEntryId,
-                  from: 'category_block',
-                  moduleId: item.id,
-                  moduleListId: id,
-                },
-              }}
-            />
-          )
-        })}
-      </StyledView>
-    </Container>
+  return (
+    <React.Fragment>
+      {enableAIFakeDoor ? (
+        <BannerContainer>
+          <AIFakeDoorBanner onPress={onPressAIFakeDoorBanner} />
+        </BannerContainer>
+      ) : null}
+      <Container>
+        <AccessibleTitle title={title} />
+        <StyledView>
+          {categoryBlockList.map((item) => {
+            const fillFromDesignSystem =
+              designSystem.color.background[colorMapping[item.color].fill ?? 'default']
+
+            const borderFromDesignSystem =
+              designSystem.color.border[colorMapping[item.color].border ?? 'default']
+            return (
+              <StyledCategoryButton
+                key={item.id}
+                label={item.title}
+                height={BLOCK_HEIGHT}
+                mobileMinWidth={mobileMinWidth}
+                fillColor={fillFromDesignSystem || colorMapping[item.color].fill}
+                borderColor={borderFromDesignSystem || colorMapping[item.color].border}
+                onBeforeNavigate={() => {
+                  void analytics.logCategoryBlockClicked({
+                    moduleId: item.id,
+                    moduleListID: id,
+                    entryId: homeEntryId,
+                    toEntryId: item.homeEntryId,
+                  })
+                }}
+                navigateTo={{
+                  screen: 'ThematicHome',
+                  params: {
+                    homeId: item.homeEntryId,
+                    from: 'category_block',
+                    moduleId: item.id,
+                    moduleListId: id,
+                  },
+                }}
+              />
+            )
+          })}
+        </StyledView>
+      </Container>
+      {enableAIFakeDoor ? (
+        <AIFakeDoorModal
+          close={hideModal}
+          visible={visible}
+          userLocation={userLocation}
+          userCity={user?.city}
+        />
+      ) : null}
+    </React.Fragment>
   )
 }
 
@@ -110,6 +145,11 @@ const StyledView = styled.View(({ theme }) => {
         }),
   }
 })
+
+const BannerContainer = styled.View(({ theme }) => ({
+  paddingHorizontal: theme.contentPage.marginHorizontal,
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const Container = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,

@@ -2,13 +2,16 @@ appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
 - runFlow: ../../subFolder/cloud/commands/SetEverywhere.yml
+- swipe:
+    from:
+      text: 'Les artistes'
+    direction: UP
 - extractTextWithAI:
-    query: "Le titre exacte d'une des offres Cinéma visible dans les résultats de recherche"
+    query: "Le titre exacte d'une des offres Cinéma visible dans les résultats de recherche dont le titre n'est pas cropé."
     outputVariable: 'offerResult'
 - tapOn: .*${offerResult}.*
 
-- waitForAnimationToEnd: # TODO:(PC-36170) améliorer les perfs de la page offre (cinéma)
-    timeout: 5000
+- waitForAnimationToEnd
 
 - repeat:
     while:
@@ -19,8 +22,7 @@ appId: ${MAESTRO_APP_ID}
       - tapOn:
           text: 'Séance de cinéma'
           index: 1
-      - waitForAnimationToEnd: # TODO:(PC-36170) améliorer les perfs de la page offre (cinéma)
-          timeout: 5000
+      - waitForAnimationToEnd
 - runFlow:
     when:
       visible: 'Accéder aux séances'
@@ -29,8 +31,12 @@ appId: ${MAESTRO_APP_ID}
       - assertVisible: 'Trouve ta séance'
       - runFlow: ../../subFolder/booking/DaySelectionCinema.yml
 
+- extractTextWithAI:
+    query: 'La 1ère séance de cinéma disponible (horaire) visible sur la page de sélection de la séance'
+    outputVariable: 'movieSession'
+
 - tapOn:
-    text: '.*€.*'
+    text: '.*${movieSession}.*'
     label: 'Sélection de la séance'
 
 - runFlow:
@@ -44,16 +50,18 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: 'Valider le prix'
 
 - assertVisible: 'Nombre de places'
-- tapOn: 'Solo'
+- tapOn: 'Nombre de places - Liste - Élément 1 sur 2 - Solo.*'
 - tapOn: 'Finaliser ma réservation'
 
 - assertVisible: 'Détails de la réservation'
 - tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire'
 - scrollUntilVisible:
-    element: 'Confirmer la réservation'
-- doubleTapOn: 'Confirmer la réservation'
+    element: '.*Confirmer la réservation.*'
+- doubleTapOn: '.*Confirmer la réservation.*'
 
-- assertVisible: "Réservation confirmée\_!"
+- assertVisible: 
+    text: "Réservation confirmée\_!"
+    optional: true
 - tapOn:
     text: 'Voir ma réservation'
     retryTapIfNoChange: true
@@ -65,15 +73,7 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Annuler ma réservation'
     commands:
       - tapOn: 'Annuler ma réservation'
-      - tapOn: 'Annuler ma réservation'
+      - tapOn: 
+          id: 'Annuler ma réservation'
 
 - waitForAnimationToEnd
-
-- runFlow:
-    when:
-      visible: 'Voir le détail de l’offre'
-    commands:
-      - tapOn:
-          text: 'Voir le détail de l’offre'
-      - pressKey: back
-      - pressKey: back

@@ -18,7 +18,7 @@ export const mockSuggestionHits = toMutable([
       exact_nb_hits: 2,
       facets: {
         analytics: {
-          ['offer.searchGroupNamev2']: [
+          ['offer.searchGroups']: [
             {
               attribute: '',
               operator: '',
@@ -53,7 +53,7 @@ export const mockSuggestionHits = toMutable([
       exact_nb_hits: 2,
       facets: {
         analytics: {
-          ['offer.searchGroupNamev2']: [
+          ['offer.searchGroups']: [
             {
               attribute: '',
               operator: '',

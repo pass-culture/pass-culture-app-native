@@ -3,7 +3,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import React, { FC, ReactNode } from 'react'
 import { useTheme } from 'styled-components/native'
 
-import { Activity, OfferResponseV2, SubcategoryIdEnum, VenueResponse } from 'api/gen'
+import { Activity, OfferResponse, SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferCineBlock } from 'features/offer/components/OfferCine/OfferCineBlock'
 import { OfferVenueContainer } from 'features/offer/components/OfferVenueContainer/OfferVenueContainer'
@@ -11,19 +11,20 @@ import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitl
 import { analytics } from 'libs/analytics/provider'
 import { QueryKeys } from 'libs/queryKeys'
 import { Subcategory } from 'libs/subcategories/types'
-import { SegmentResult } from 'shared/useABSegment/useABSegment'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 export type OfferPlaceProps = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   subcategory: Subcategory
   isOfferAtSameAddressAsVenue: boolean
-  segment: SegmentResult
   distance?: string | null
 }
 
-type PartialVenue = Pick<VenueResponse, 'id' | 'name' | 'description' | 'isOpenToPublic'>
+type PartialVenue = Pick<
+  VenueResponse,
+  'id' | 'name' | 'description' | 'isOpenToPublic' | 'isPermanent'
+>
 
 const mergeVenueData =
   (venue: PartialVenue) =>
@@ -33,18 +34,17 @@ const mergeVenueData =
     // Info not available in OfferVenueResponse so we fallback to OTHER
     activity: Activity.OTHER,
     description: venue.description,
-    accessibility: {},
-    contact: {},
+    accessibilityData: {},
     timezone: '',
     isOpenToPublic: venue.isOpenToPublic,
-    ...(prevData ?? {}),
+    isPermanent: venue.isPermanent,
+    ...prevData,
   })
 
 export const OfferPlace: FC<OfferPlaceProps> = ({
   offer,
   subcategory,
   distance,
-  segment,
   isOfferAtSameAddressAsVenue,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -79,7 +79,6 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
           subcategory={subcategory}
           handleOnSeeVenuePress={handleOnSeeVenuePress}
           isOfferAtSameAddressAsVenue={isOfferAtSameAddressAsVenue}
-          segment={segment}
         />
       )}
     </OfferPlaceWrapper>

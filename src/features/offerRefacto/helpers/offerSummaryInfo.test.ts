@@ -6,6 +6,8 @@ import { getOfferSummaryInfoData } from 'features/offerRefacto/helpers'
 
 mockdate.set(CURRENT_DATE)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('getOfferSummaryInfoData', () => {
   it('should return formatted offer summary data', () => {
     const offerSummaryInfoData = getOfferSummaryInfoData(offerResponseSnap)

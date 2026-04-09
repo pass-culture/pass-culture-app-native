@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { BookingsResponse, BookOfferResponse, OfferResponseV2 } from 'api/gen'
+import { BookingsResponse, BookOfferResponse, OfferResponse } from 'api/gen'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { mockSubcategory, mockSubcategoryNotEvent } from 'features/offer/fixtures/mockSubcategory'
@@ -14,7 +14,6 @@ import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthC
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderAsync, screen, userEvent, waitFor } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -43,13 +42,6 @@ const offerDigitalAndFree = {
     },
   ],
 }
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackBar,
-  }),
-}))
 
 const offerNotEventCTAButtonProps = {
   offer: offerResponseSnap,
@@ -86,7 +78,7 @@ describe('<OfferCTAButton />', () => {
     mockAuthContextWithoutUser({ persist: true })
     setFeatureFlags()
     mockServer.getApi<BookingsResponse>(`/v1/bookings`, {})
-    mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, {
+    mockServer.getApi<OfferResponse>(`/v3/offer/${offerResponseSnap.id}`, {
       responseOptions: { data: offerResponseSnap },
     })
   })
@@ -140,7 +132,7 @@ describe('<OfferCTAButton />', () => {
 
     describe('When booking API response is success', () => {
       beforeEach(() => {
-        mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
+        mockServer.getApi<OfferResponse>(`/v3/offer/${offerResponseSnap.id}`, offerResponseSnap)
         mockServer.getApi<BookingsResponse>('/v1/bookings', expectedResponse)
         mockServer.postApi<BookOfferResponse>(`/v1/bookings`, { bookingId: 123 })
       })
@@ -180,24 +172,11 @@ describe('<OfferCTAButton />', () => {
           })
         })
       })
-
-      it('should not display an error message when pressing button to book the offer', async () => {
-        mockAuthContextWithUser(beneficiaryUser, { persist: true })
-
-        await renderOfferCTAButton({
-          ...offerNotEventCTAButtonProps,
-          offer: { ...offerResponseSnap, ...offerDigitalAndFree },
-        })
-
-        await user.press(screen.getByText('Accéder à l’offre en ligne'))
-
-        expect(mockShowErrorSnackBar).not.toHaveBeenCalled()
-      })
     })
 
     describe('When booking API response is error', () => {
       beforeEach(() => {
-        mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
+        mockServer.getApi<OfferResponse>(`/v3/offer/${offerResponseSnap.id}`, offerResponseSnap)
         mockServer.getApi<BookingsResponse>('/v1/bookings', {
           responseOptions: { data: expectedResponse },
         })
@@ -236,7 +215,7 @@ describe('<OfferCTAButton />', () => {
     })
 
     it('should display an error message when pressing button to book the offer', async () => {
-      mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
+      mockServer.getApi<OfferResponse>(`/v3/offer/${offerResponseSnap.id}`, offerResponseSnap)
       mockServer.getApi<BookingsResponse>('/v1/bookings', {
         responseOptions: { data: expectedResponse },
       })
@@ -254,10 +233,10 @@ describe('<OfferCTAButton />', () => {
 
       await user.press(screen.getByText('Accéder à l’offre en ligne'))
 
-      expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
-        message: 'Désolé, il est impossible d’ouvrir le lien. Réessaie plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(
+        screen.getByText('Désolé, il est impossible d’ouvrir le lien. Réessaie plus tard.')
+      ).toBeOnTheScreen()
     })
   })
 
@@ -280,7 +259,7 @@ describe('<OfferCTAButton />', () => {
 
     it('should directly redirect to the offer when pressing offer access button', async () => {
       mockServer.getApi<BookingsResponse>(`/v1/bookings`, expectedResponse)
-      mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
+      mockServer.getApi<OfferResponse>(`/v3/offer/${offerResponseSnap.id}`, offerResponseSnap)
       mockAuthContextWithUser(
         { ...beneficiaryUser, bookedOffers: { 116656: 123 } },
         { persist: true }
@@ -300,7 +279,7 @@ describe('<OfferCTAButton />', () => {
     describe('and is Event', () => {
       it('should not open bookings details modal when pressing offer access button', async () => {
         mockServer.getApi<BookingsResponse>(`/v1/bookings`, expectedResponse)
-        mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
+        mockServer.getApi<OfferResponse>(`/v3/offer/${offerResponseSnap.id}`, offerResponseSnap)
         mockAuthContextWithUser(
           { ...beneficiaryUser, bookedOffers: { 116656: 123 } },
           { persist: true }

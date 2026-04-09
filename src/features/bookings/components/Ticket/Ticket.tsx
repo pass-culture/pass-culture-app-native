@@ -6,8 +6,9 @@ import { BookingOfferResponseAddress, BookingResponse, TicketResponse } from 'ap
 import { TicketBottomPart } from 'features/bookings/components/Ticket/TicketBottomPart/TicketBottomPart'
 import { TicketDisplay } from 'features/bookings/components/Ticket/TicketDisplay'
 import { TicketTopPart } from 'features/bookings/components/Ticket/TicketTopPart'
-import { getBookingLabelsV2 } from 'features/bookings/helpers'
+import { getBookingLabelsV2, getEventOnSiteWithdrawLabelV2 } from 'features/bookings/helpers'
 import { formatEventDateLabel } from 'features/bookings/helpers/getBookingLabels'
+import { getTicketVariant } from 'features/bookings/helpers/getTicketVariant'
 import { useArchiveBookingMutation } from 'features/bookings/queries'
 import { BookingProperties } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -18,8 +19,8 @@ import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { formatFullAddress } from 'shared/address/addressFormatter'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { IdCard } from 'ui/svg/icons/IdCard'
 
 const VENUE_THUMBNAIL_SIZE = 60
@@ -45,22 +46,16 @@ export const Ticket = ({
 }: TicketProps) => {
   const { navigate, goBack } = useNavigation<UseNavigationType>()
 
-  const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
   const { mutate: archiveBooking } = useArchiveBookingMutation({
     bookingId: booking.id,
     onSuccess: () => {
-      showSuccessSnackBar({
-        message:
-          'La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showSuccessSnackBar(
+        'La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées'
+      )
       goBack()
     },
     onError: (error) => {
-      showErrorSnackBar({
-        message: extractApiErrorMessage(error),
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar(extractApiErrorMessage(error))
     },
   })
 
@@ -73,6 +68,22 @@ export const Ticket = ({
   const { offer } = booking.stock
 
   const { hourLabel, dayLabel } = getBookingLabelsV2.getBookingLabels(booking, properties)
+
+  const ticketVariant = getTicketVariant(
+    ticket,
+    properties.isDigital ?? false,
+    properties.isEvent ?? false,
+    booking.completedUrl ?? undefined
+  )
+
+  const onSiteWithdrawLabel =
+    ticketVariant.variant === 'on_site_withdrawal'
+      ? getEventOnSiteWithdrawLabelV2.getEventOnSiteWithdrawLabel(
+          booking.stock.beginningDatetime,
+          ticket.withdrawal.delay,
+          false
+        )
+      : undefined
 
   const venueBlockAddress = getAddress(offer.address)
 
@@ -113,6 +124,7 @@ export const Ticket = ({
           title={offer.name}
           offer={offer}
           mapping={mapping}
+          withdrawLabel={onSiteWithdrawLabel}
           venueInfo={
             <VenueBlockWithItinerary
               properties={properties}

@@ -1,6 +1,8 @@
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { extractStockDates } from 'features/offerRefacto/helpers'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('extractStockDates', () => {
   it('should return an empty array for an offer without stocks', () => {
     const offer = { ...mockOffer, stocks: [] }

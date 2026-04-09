@@ -59,7 +59,7 @@ type BaseThematicHome = {
 }
 
 type OtherThematicBlockHome = {
-  from?: 'deeplink' | 'chronicles'
+  from?: 'deeplink' | 'chronicles' | 'venue'
 }
 
 type CategoryBlockThematicHome = {
@@ -192,10 +192,20 @@ type ArtistParams = {
   id: string
 }
 
-type ChroniclesParams = {
+type ClubAdvicesParams = {
   offerId: number
-  chronicleId?: number
+  adviceId?: number
   from?: Referrals
+}
+
+type ProAdvicesOfferParams = {
+  offerId: number
+  venueId?: number
+}
+
+type ProAdvicesVenueParams = {
+  venueId: number
+  offerId?: number
 }
 
 /**
@@ -205,27 +215,27 @@ type ChroniclesParams = {
  * please update the deeplink handler in consequence.
  */
 export type RootStackParamList = {
-  OnboardingStackNavigator?: NavigatorScreenParams<OnboardingStackParamList>
   ABTestingPOC: undefined
   AccountCreated: undefined
   AccountReactivationSuccess: undefined
   AccountStatusScreenHandler: undefined
-  Achievements: { from?: 'profile' | 'success' }
+  Achievements: { from: 'profile' | 'success' } | undefined
   AfterSignupEmailValidationBuffer: AfterSignupEmailValidationBufferParams
   _DeeplinkOnlyAfterSignupEmailValidationBuffer1: AfterSignupEmailValidationBufferParams
   Artist: ArtistParams
+  ArtistWebview: ArtistParams
   _DeeplinkOnlyArtist1: ArtistParams
   BannedCountryError: undefined
+  BonificationGranted: undefined
   BookingConfirmation: BookingConfirmationParams
   _DeeplinkOnlyBookingConfirmation1: BookingConfirmationParams
   BookingDetails: BookingDetailsParams
   _DeeplinkOnlyBookingDetails1: BookingDetailsParams
   Bookings: { activeTab?: BookingsTab } | undefined
-  BonificationGranted: undefined
   ChangeEmailExpiredLink: undefined
   CheatcodesStackNavigator?: NavigatorScreenParams<CheatcodesStackParamList>
-  Chronicles: ChroniclesParams
-  _DeeplinkOnlyChronicles1: ChroniclesParams
+  ClubAdvices: ClubAdvicesParams
+  _DeeplinkOnlyClubAdvices1: ClubAdvicesParams
   CulturalSurvey: undefined
   DeeplinksGenerator: undefined
   EighteenBirthday: undefined
@@ -235,11 +245,7 @@ export type RootStackParamList = {
   FraudulentSuspendedAccount: undefined
   LocationFilter?: { selectedVenue?: Venue; selectedPlace?: SuggestedPlace }
   LocationPicker: undefined
-  Login?: {
-    displayForcedLoginHelpMessage?: boolean
-    offerId?: number
-    from?: StepperOrigin
-  }
+  Login?: { displayForcedLoginHelpMessage?: boolean; offerId?: number; from?: StepperOrigin }
   Maintenance: undefined
   MandatoryUpdatePersonalData: undefined
   MovieCalendar: undefined
@@ -254,8 +260,11 @@ export type RootStackParamList = {
   _DeeplinkOnlyOfferPreview2: OfferPreviewParams
   _DeeplinkOnlyOfferPreview3: OfferPreviewParams
   OfferVideoPreview: OfferVideoPreviewParams
+  OnboardingStackNavigator?: NavigatorScreenParams<OnboardingStackParamList>
   OnboardingSubscription: undefined
   PageNotFound: undefined
+  ProAdvicesOffer: ProAdvicesOfferParams
+  ProAdvicesVenue: ProAdvicesVenueParams
   Profile: undefined
   ProfileStackNavigator?: NavigatorScreenParams<ProfileStackParamList>
   RecreditBirthdayNotification: undefined
@@ -272,20 +281,14 @@ export type RootStackParamList = {
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   SignupForm: SignupFormParams
-  SubscriptionStackNavigator?: NavigatorScreenParams<SubscriptionStackParamList>
   _DeeplinkOnlySignupForm1: SignupFormParams
+  SubscriptionStackNavigator?: NavigatorScreenParams<SubscriptionStackParamList>
   SuspendedAccountUponUserRequest: undefined
   TabNavigator: NavigatorScreenParams<TabParamList>
   ThematicHome: ThematicHomeParams
   _DeeplinkOnlyThematicHome1: ThematicHomeParams
   Tutorial?: { selectedAge?: 15 | 16 | 17 | 18 }
-  UTMParameters:
-    | {
-        utm_campaign: string
-        utm_medium: string
-        utm_source: string
-      }
-    | undefined
+  UTMParameters: { utm_campaign: string; utm_medium: string; utm_source: string } | undefined
   ValidateEmailChange: { token: string }
   Venue: VenueParams
   _DeeplinkOnlyVenue1: VenueParams

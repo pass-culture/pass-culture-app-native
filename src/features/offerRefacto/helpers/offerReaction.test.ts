@@ -1,5 +1,7 @@
 import { formatLikesCounter, getRecommendationText } from 'features/offerRefacto/helpers'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('formatLikesCounter', () => {
   it('should display exact number when likes counter < 1_000', () => {
     expect(formatLikesCounter(999)).toEqual('999 j’aime')

@@ -42,8 +42,8 @@ const Container = styled.View<{ backgroundColor?: ColorsType }>(({ theme, backgr
   width: getSpacing(20),
 }))
 
-const PointerContainer = styled.View({
+const PointerContainer = styled.View(({ theme }) => ({
   position: 'absolute',
   bottom: 0,
-  right: -getSpacing(1.5),
-})
+  right: -theme.designSystem.size.spacing.s,
+}))

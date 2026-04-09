@@ -10,7 +10,7 @@ export const eventMonitoring = {
   captureException,
   setUser,
   setExtras,
-  async init({ enabled } = { enabled: true }) {
+  async init({ enabled = true } = {}) {
     if (!enabled) return
     const config = await getSentryConfig()
     init(config)

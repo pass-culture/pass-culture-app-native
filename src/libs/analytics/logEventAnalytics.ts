@@ -7,7 +7,7 @@ import {
   NativeCategoryIdEnumv2,
   ReactionTypeEnum,
   RecommendationApiParams,
-  VenueContactModel,
+  VenueContact,
 } from 'api/gen'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { PreValidationSignupStep } from 'features/auth/enums'
@@ -51,6 +51,7 @@ type ConsultThematicHomeParams = ConsultHomeParams & {
   moduleItemId?: string
 }
 type ShareParams = { from: Referrals; social?: Social | 'Other' } & (
+  | { type: 'Artist'; artistId: string; artistName: string }
   | { type: 'Offer'; offerId: number }
   | { type: 'Venue'; venueId: number }
   | { type: 'App' }
@@ -80,8 +81,10 @@ export type SSOType = 'SSO_login' | 'SSO_signup'
 export const logEventAnalytics = {
   logAcceptNotifications: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.ACCEPT_NOTIFICATIONS }),
-  logAccessibilityBannerClicked: (acceslibreId?: string | null) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.ACCESSIBILITY_BANNER_CLICKED }, { acceslibreId }),
+  logAccessibilityBannerClicked: (params: {
+    action: 'view_info' | 'contribute'
+    acceslibreId?: string | null
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.ACCESSIBILITY_BANNER_CLICKED }, params),
   logAccountDeletion: () => analytics.logEvent({ firebase: AnalyticsEvent.ACCOUNT_DELETION }),
   logAccountReactivation: (from: Referrals) =>
     analytics.logEvent({ firebase: AnalyticsEvent.ACCOUNT_REACTIVATION }, { from }),
@@ -124,9 +127,7 @@ export const logEventAnalytics = {
   logBookingDetailsScrolledToBottom: (offerId: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.BOOKING_DETAILS_SCROLLED_TO_BOTTOM },
-      {
-        offerId,
-      }
+      { offerId }
     ),
   logBookingError: (offerId: number, code: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.BOOKING_ERROR }, { code, offerId }),
@@ -148,10 +149,7 @@ export const logEventAnalytics = {
   logCancelBookingFunnel: (step: Step, offerId: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.CANCEL_BOOKING_FUNNEL },
-      {
-        offerId,
-        step: STEP_LABEL[step],
-      }
+      { offerId, step: STEP_LABEL[step] }
     ),
   logCancelSignup: (pageName: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CANCEL_SIGNUP }, { pageName }),
@@ -164,13 +162,8 @@ export const logEventAnalytics = {
   logChangeOrientationToggle: (enabled: boolean) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CHANGE_ORIENTATION_TOGGLE }, { enabled }),
   logChooseEduConnectMethod: () =>
-    analytics.logEvent({
-      firebase: AnalyticsEvent.CHOOSE_EDUCONNECT_METHOD,
-    }),
-  logChooseUbbleMethod: () =>
-    analytics.logEvent({
-      firebase: AnalyticsEvent.CHOOSE_UBBLE_METHOD,
-    }),
+    analytics.logEvent({ firebase: AnalyticsEvent.CHOOSE_EDUCONNECT_METHOD }),
+  logChooseUbbleMethod: () => analytics.logEvent({ firebase: AnalyticsEvent.CHOOSE_UBBLE_METHOD }),
   logClickAllClubRecos: (params: { offerId: string; from: Referrals; categoryName: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_ALL_CLUB_RECOS }, params),
   logClickBookOffer: (params: {
@@ -206,6 +199,8 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.SEE_MORE_CLICKED }, params),
   logClickSocialNetwork: (network: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_SOCIAL_NETWORK }, { network }),
+  logClickVolunteerCTA: (params: { from: Referrals; venueId: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_VOLUNTEER_CTA }, params),
   logClickWhatsClub: (params: { offerId: string; from: Referrals; categoryName: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_WHATS_CLUB }, params),
   logConfirmBookingCancellation: (offerId: number) =>
@@ -221,12 +216,17 @@ export const logEventAnalytics = {
       { firebase: AnalyticsEvent.CONSULT_ACHIEVEMENTS_SUCCESS_MODAL },
       { achievementName }
     ),
+  logConsultAdvice: (params: {
+    from: Referrals
+    originDetails: string
+    adviceType: 'book_club' | 'cine_club' | 'pro'
+    offerId?: string
+    venueId?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ADVICE }, params),
   logConsultApplicationProcessingModal: (offerId: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.CONSULT_APPLICATION_PROCESSING_MODAL },
-      {
-        offerId,
-      }
+      { offerId }
     ),
   logConsultArticleAccountDeletion: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ARTICLE_ACCOUNT_DELETION }),
@@ -253,12 +253,7 @@ export const logEventAnalytics = {
   logConsultErrorApplicationModal: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ERROR_APPLICATION_MODAL }, { offerId }),
   logConsultFinishSubscriptionModal: (offerId: number) =>
-    analytics.logEvent(
-      { firebase: AnalyticsEvent.CONSULT_FINISH_SUBSCRIPTION_MODAL },
-      {
-        offerId,
-      }
-    ),
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_FINISH_SUBSCRIPTION_MODAL }, { offerId }),
   logConsultHome: (params: ConsultHomeParams) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_HOME }, params),
   logConsultItinerary: (params: OfferIdOrVenueId & { from: Referrals }) =>
@@ -286,6 +281,7 @@ export const logEventAnalytics = {
     moduleId?: string
     homeEntryId?: string
     searchId?: string
+    originDetail?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE }, params),
   logConsultVenueMap: ({ from, searchId }: { from: Referrals; searchId?: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_MAP }, { from, searchId }),
@@ -306,16 +302,12 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES }, params),
   logContactFraudTeam: ({ from }: { from: Referrals }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONTACT_FRAUD_TEAM }, { from }),
-  logContinueCGU: () =>
-    analytics.logEvent({
-      firebase: AnalyticsEvent.CONTINUE_CGU,
-    }),
+  logContinueCGU: () => analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_CGU }),
   logContinueIdentityCheck: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_IDENTITY_CHECK }),
   logContinueSignup: () => analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_SIGNUP }),
   logCopyAddress: (params: { from: Referrals; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.COPY_ADDRESS }, params),
-
   logCulturalSurveyScrolledToBottom: (params: { questionId?: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CULTURAL_SURVEY_SCROLLED_TO_BOTTOM }, params),
   logDiscoverOffers: (from: Referrals) =>
@@ -341,14 +333,16 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED }, params),
   logExtendSearchRadiusClicked: (searchId?: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.EXTEND_SEARCH_RADIUS_CLICKED }, { searchId }),
+  logFeatureFeedbackClicked: (params: {
+    featureName: string
+    feedbackResponse: 'Oui' | 'Non'
+    from: Referrals
+    entryId?: string
+    venueId?: string
+    offerId?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.FEATURE_FEEDBACK_CLICKED }, params),
   logGoToProfil: ({ from, offerId }: { from: string; offerId: number }) =>
-    analytics.logEvent(
-      { firebase: AnalyticsEvent.GO_TO_PROFIL },
-      {
-        from,
-        offerId,
-      }
-    ),
+    analytics.logEvent({ firebase: AnalyticsEvent.GO_TO_PROFIL }, { from, offerId }),
   logHasAcceptedAllCookies: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_ACCEPTED_ALL_COOKIES }),
   logHasActivateGeolocFromTutorial: () =>
@@ -365,9 +359,7 @@ export const logEventAnalytics = {
   logHasAppliedFavoritesSorting: ({ sortBy }: { sortBy: FavoriteSortBy }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.HAS_APPLIED_FAVORITES_SORTING },
-      {
-        type: sortBy,
-      }
+      { type: sortBy }
     ),
   logHasBookedCineScreeningOffer: (params: { offerId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_BOOKED_CINE_SCREENING_OFFER }, params),
@@ -378,6 +370,8 @@ export const logEventAnalytics = {
     from: Referrals
     reason: 'changePassword' | 'resetPassword'
   }) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHANGED_PASSWORD }, { from, reason }),
+  logHasChangedPhoneNumber: () =>
+    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHANGED_PHONE_NUMBER }),
   logHasChosenPrice: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_PRICE }),
   logHasChosenTime: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_TIME }),
   logHasClickedContactForm: (
@@ -388,16 +382,26 @@ export const logEventAnalytics = {
       | 'FeedbackInApp'
       | 'LegalNotices'
       | 'NotEligibleEduConnect'
-      | 'PhoneValidationTooManyAttempts'
       | 'SignupConfirmationEmailSent'
   ) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_CONTACT_FORM }, { from }),
   logHasClickedDuoStep: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_DUO_STEP }),
-  logHasClickedFakeDoorCTA: (params: { offerId: number; userId?: number }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_FAKE_DOOR_CTA }, params),
+  logHasClickedFakeDoorCTA: ({
+    featureName,
+    from,
+    searchId,
+    homeEntryId,
+  }: {
+    featureName: string
+    from: Referrals
+    searchId?: string
+    homeEntryId?: string
+  }) =>
+    analytics.logEvent(
+      { firebase: AnalyticsEvent.HAS_CLICKED_FAKE_DOOR_CTA },
+      { featureName, from, homeEntryId, searchId }
+    ),
   logHasClickedGridListToggle: ({ fromLayout }: { fromLayout: GridListLayout }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_GRID_LIST_TOGGLE }, { fromLayout }),
-  logHasClickedMissingCode: () =>
-    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_MISSING_CODE }),
   logHasClickedRemoteActivationBanner: (from: RemoteBannerOrigin, options: RemoteBannerType) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.HAS_CLICKED_REMOTE_ACTIVATION_BANNER },
@@ -408,8 +412,9 @@ export const logEventAnalytics = {
       { firebase: AnalyticsEvent.HAS_CLICKED_REMOTE_GENERIC_BANNER },
       { from, options }
     ),
-  logHasClickedTutorialFAQ: () =>
-    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_TUTORIAL_FAQ }),
+  logHasClickedTutorialFAQ: (params?: {
+    type: 'FAQ_LINK_PASS_CULTURE' | 'FAQ_BONIFICATION_GENERIC' | 'FAQ_LINK_CREDIT_V3'
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_TUTORIAL_FAQ }, params),
   logHasCorrectedEmail: ({ from }: { from: Referrals }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CORRECTED_EMAIL }, { from }),
   logHasDismissedAppSharingModal: () =>
@@ -423,10 +428,7 @@ export const logEventAnalytics = {
   logHasMadeAChoiceForCookies: ({ from, type }: { from: string; type: CookiesChoiceByCategory }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.HAS_MADE_A_CHOICE_FOR_COOKIES },
-      {
-        from,
-        type: JSON.stringify(type),
-      }
+      { from, type: JSON.stringify(type) }
     ),
   logHasOpenedAccessibilityAccordion: (handicap: string) =>
     analytics.logEvent(
@@ -436,7 +438,6 @@ export const logEventAnalytics = {
   logHasOpenedCookiesAccordion: (type: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_OPENED_COOKIES_ACCORDION }, { type }),
   logHasRefusedCookie: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_REFUSED_COOKIE }),
-  logHasRequestedCode: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_REQUESTED_CODE }),
   logHasSearchedCinemaQuery: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_SEARCHED_CINEMA_QUERY }),
   logHasSeenAllVideo: (params: {
@@ -510,22 +511,12 @@ export const logEventAnalytics = {
   logNotificationToggle: (enableEmail: boolean, enablePush?: boolean) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.NOTIFICATION_TOGGLE },
-      {
-        enableEmail,
-        enablePush: Platform.OS === 'android' ? true : enablePush,
-      }
+      { enableEmail, enablePush: Platform.OS === 'android' ? true : enablePush }
     ),
   logOfferSeenDuration: (offerId: number, duration: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.OFFER_SEEN_DURATION }, { duration, offerId }),
   logOnboardingStarted: (params: { type: 'login' | 'start' }) =>
-    analytics.logEvent(
-      {
-        firebase: AnalyticsEvent.ONBOARDING_STARTED,
-      },
-      params
-    ),
-  logOpenApp: (params: { appsFlyerUserId?: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.OPEN_APP }, params),
+    analytics.logEvent({ firebase: AnalyticsEvent.ONBOARDING_STARTED }, params),
   logOpenDMSForeignCitizenURL: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.OPEN_DMS_FOREIGN_CITIZEN_URL }),
   logOpenDMSFrenchCitizenURL: () =>
@@ -533,10 +524,7 @@ export const logEventAnalytics = {
   logOpenExternalUrl: (url: string, params: OfferAnalyticsData) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.OPEN_EXTERNAL_URL },
-      {
-        offerId: params.offerId,
-        url: urlWithValueMaxLength(url),
-      }
+      { offerId: params.offerId, url: urlWithValueMaxLength(url) }
     ),
   logOpenLocationSettings: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.OPEN_LOCATION_SETTINGS }),
@@ -566,11 +554,7 @@ export const logEventAnalytics = {
   ) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.PLAYLIST_HORIZONTAL_SCROLL },
-      {
-        ...apiRecoParams,
-        fromOfferId,
-        playlistType,
-      }
+      { ...apiRecoParams, fromOfferId, playlistType }
     ),
   logPlaylistVerticalScroll: (params: {
     offerId: number
@@ -580,10 +564,7 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.PLAYLIST_VERTICAL_SCROLL }, params),
   logProfilScrolledToBottom: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.PROFIL_SCROLLED_TO_BOTTOM }),
-  logProfilSignUp: () =>
-    analytics.logEvent({
-      firebase: AnalyticsEvent.PROFIL_SIGN_UP,
-    }),
+  logProfilSignUp: () => analytics.logEvent({ firebase: AnalyticsEvent.PROFIL_SIGN_UP }),
   logQuitAuthenticationMethodSelection: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_AUTHENTICATION_METHOD_SELECTION }),
   logQuitAuthenticationModal: (offerId: number) =>
@@ -595,13 +576,9 @@ export const logEventAnalytics = {
   logReinitializeFilters: (searchId?: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.REINITIALIZE_FILTERS }, { searchId }),
   logResendEmailResetPasswordExpiredLink: () =>
-    analytics.logEvent({
-      firebase: AnalyticsEvent.RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK,
-    }),
+    analytics.logEvent({ firebase: AnalyticsEvent.RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK }),
   logResendEmailSignupConfirmationExpiredLink: () =>
-    analytics.logEvent({
-      firebase: AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK,
-    }),
+    analytics.logEvent({ firebase: AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK }),
   logResendEmailValidation: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.RESEND_EMAIL_VALIDATION }),
   logSaveNewMail: () => analytics.logEvent({ firebase: AnalyticsEvent.SAVE_NEW_MAIL }),
@@ -612,20 +589,13 @@ export const logEventAnalytics = {
   logSeeMyBooking: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SEE_MY_BOOKING }, { offerId }),
   logSelectAge: ({ age }: { age: EligibleAges | NonEligible }) =>
-    analytics.logEvent(
-      {
-        firebase: AnalyticsEvent.SELECT_AGE,
-      },
-      { age }
-    ),
+    analytics.logEvent({ firebase: AnalyticsEvent.SELECT_AGE }, { age }),
   logSelectDeletionReason: (type: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SELECT_DELETION_REASON }, { type }),
   logSendActivationMailAgain: (numberOfTimes: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.SEND_ACTIVATION_MAIL_AGAIN },
-      {
-        times: numberOfTimes,
-      }
+      { times: numberOfTimes }
     ),
   logShare: (params: ShareParams) => analytics.logEvent({ firebase: AnalyticsEvent.SHARE }, params),
   logShareApp: ({ from, type }: { from?: Referrals; type?: ShareAppModalType }) =>
@@ -633,12 +603,7 @@ export const logEventAnalytics = {
   logShowShareAppModal: ({ type }: { type: ShareAppModalType }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SHOW_SHARE_APP_MODAL }, { type }),
   logSignInFromAuthenticationModal: (offerId: number) =>
-    analytics.logEvent(
-      { firebase: AnalyticsEvent.SIGN_IN_FROM_AUTHENTICATION_MODAL },
-      {
-        offerId,
-      }
-    ),
+    analytics.logEvent({ firebase: AnalyticsEvent.SIGN_IN_FROM_AUTHENTICATION_MODAL }, { offerId }),
   logSignInFromFavorite: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_IN_FROM_FAVORITE }),
   logSignInFromOffer: (offerId: number) =>
@@ -646,12 +611,7 @@ export const logEventAnalytics = {
   logSignUpClicked: ({ from }: { from: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP }, { from }),
   logSignUpFromAuthenticationModal: (offerId: number) =>
-    analytics.logEvent(
-      { firebase: AnalyticsEvent.SIGN_UP_FROM_AUTHENTICATION_MODAL },
-      {
-        offerId,
-      }
-    ),
+    analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP_FROM_AUTHENTICATION_MODAL }, { offerId }),
   logSignUpFromFavorite: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP_FROM_FAVORITE }),
   logSignUpFromOffer: (offerId: number) =>
@@ -712,7 +672,7 @@ export const logEventAnalytics = {
     from: ReactionFromEnum
     userId?: number
   }) => analytics.logEvent({ firebase: AnalyticsEvent.VALIDATE_REACTION }, params),
-  logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>
+  logVenueContact: (params: { type: keyof VenueContact; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_CONTACT }, params),
   logVenueMapSeenDuration: (duration: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_MAP_SEEN_DURATION }, { duration }),

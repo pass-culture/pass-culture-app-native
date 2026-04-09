@@ -8,7 +8,9 @@ interface ExtendedUtmParams extends UtmParams {
 }
 
 export const getCampaignDate = (time: string | null) =>
-  time && !isNaN(new Date(parseInt(time)).getTime()) ? new Date(parseInt(time)) : null
+  time && !Number.isNaN(new Date(Number.parseInt(time)).getTime())
+    ? new Date(Number.parseInt(time))
+    : null
 
 export const useUtmParams = (): ExtendedUtmParams => {
   const [utmParams, setUtmParams] = useState<ExtendedUtmParams | null>(null)

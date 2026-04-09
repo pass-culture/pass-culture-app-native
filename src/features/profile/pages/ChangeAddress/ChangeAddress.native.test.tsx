@@ -3,9 +3,6 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
-import { SettingsResponse } from 'api/gen'
-import { SettingsWrapper } from 'features/auth/context/SettingsContext'
-import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { ChangeAddress } from 'features/profile/pages/ChangeAddress/ChangeAddress'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
@@ -16,7 +13,6 @@ import { Properties } from 'libs/place/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('libs/network/NetInfoWrapper')
@@ -24,15 +20,6 @@ jest.mock('libs/network/NetInfoWrapper')
 const patchProfileSpy = jest.spyOn(API.api, 'patchNativeV1Profile')
 
 const QUERY_ADDRESS = '1 rue Poissonnière'
-
-const mockShowSuccessSnackBar = jest.fn()
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: mockShowSuccessSnackBar,
-    showErrorSnackBar: mockShowErrorSnackBar,
-  }),
-}))
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -46,9 +33,8 @@ jest.useFakeTimers()
 describe('<SetAddress/>', () => {
   beforeEach(() => {
     mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
-    mockServer.getApi<SettingsResponse>('/v1/settings', defaultSettings)
     mockServer.universalGet<FeatureCollection<Point, Properties>>(
-      'https://api-adresse.data.gouv.fr/search',
+      'https://data.geopf.fr/geocodage/search',
       mockedSuggestedPlaces
     )
   })
@@ -124,10 +110,10 @@ describe('<SetAddress/>', () => {
       await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
       await user.press(screen.getByText('Valider mon adresse'))
 
-      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-        message: 'Ton adresse de résidence a bien été modifiée\u00a0!',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
+      expect(
+        screen.getByText('Ton adresse de résidence a bien été modifiée\u00a0!')
+      ).toBeOnTheScreen()
     })
 
     it('should send analytics when success', async () => {
@@ -171,7 +157,7 @@ describe('<SetAddress/>', () => {
       await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
       await user.press(screen.getByText('Continuer'))
 
-      expect(mockShowSuccessSnackBar).not.toHaveBeenCalled()
+      expect(screen.queryByTestId('snackbar-success')).toBeNull()
     })
 
     it('should navigate to ChangeStatus when clicking on "Continuer"', async () => {
@@ -192,11 +178,5 @@ describe('<SetAddress/>', () => {
 })
 
 const renderSetAddress = () => {
-  return render(
-    reactQueryProviderHOC(
-      <SettingsWrapper>
-        <ChangeAddress />
-      </SettingsWrapper>
-    )
-  )
+  return render(reactQueryProviderHOC(<ChangeAddress />))
 }

@@ -10,7 +10,6 @@ import {
   SubcategoriesResponseModelv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
-import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
 import { CATEGORY_CRITERIA, CategoriesModalView } from 'features/search/enums'
 import {
@@ -228,8 +227,7 @@ export function getNativeCategoryFromEnum(
 function getGenreTypeFromEnum(data: SubcategoriesResponseModelv2 | undefined, genreType?: string) {
   if (data && genreType) {
     const genre = data.genreTypes
-      .map((gt) => gt.values)
-      .flat()
+      .flatMap((gt) => gt.values)
       .find((genreTypeValue) => genreTypeValue.name === genreType)
 
     const bookGenre = getBooksGenreTypes(data).find(
@@ -256,22 +254,20 @@ export function isOnlyOnline(
     return false
   }
 
-  const platforms: OnlineOfflinePlatformChoicesEnum[] = [
-    ...new Set(
-      data.subcategories
-        .filter((subcategory) =>
-          nativeCategoryId
-            ? subcategory.nativeCategoryId === nativeCategoryId
-            : subcategory.searchGroupName === categoryId
-        )
-        .map((subcategory) => subcategory.onlineOfflinePlatform)
-    ),
-  ]
+  const platforms: Set<OnlineOfflinePlatformChoicesEnum> = new Set(
+    data.subcategories
+      .filter((subcategory) =>
+        nativeCategoryId
+          ? subcategory.nativeCategoryId === nativeCategoryId
+          : subcategory.searchGroupName === categoryId
+      )
+      .map((subcategory) => subcategory.onlineOfflinePlatform)
+  )
 
   const isOnlyOnline =
-    platforms.includes(OnlineOfflinePlatformChoicesEnum.ONLINE) &&
-    !platforms.includes(OnlineOfflinePlatformChoicesEnum.ONLINE_OR_OFFLINE) &&
-    !platforms.includes(OnlineOfflinePlatformChoicesEnum.OFFLINE)
+    platforms.has(OnlineOfflinePlatformChoicesEnum.ONLINE) &&
+    !platforms.has(OnlineOfflinePlatformChoicesEnum.ONLINE_OR_OFFLINE) &&
+    !platforms.has(OnlineOfflinePlatformChoicesEnum.OFFLINE)
 
   return isOnlyOnline
 }
@@ -349,10 +345,9 @@ function typedEntries<T extends Record<string, unknown>>(obj: T): Entries<T> {
 
 export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
   const { data: subcategories } = useSubcategoriesQuery()
-  const { facets } = useSearchResults()
   if (!searchGroup || !subcategories) return []
 
-  const tree = createMappingTree(subcategories, facets)
+  const tree = createMappingTree(subcategories)
   if (searchGroup === SearchGroupNameEnumv2.NONE || !tree[searchGroup].children) return []
 
   const nativeCategories = typedEntries(tree[searchGroup].children)
@@ -377,14 +372,16 @@ export const useSubcategoryIdsFromSearchGroups = (
 
   const { nativeCategories, subcategories } = data
 
-  const filteredNativeCategories = nativeCategories
-    .filter((nativeCategory) =>
-      nativeCategory.parents.some((parent) => searchGroups.includes(parent))
-    )
-    .map((filteredNativeCategory) => filteredNativeCategory.name)
+  const filteredNativeCategories = new Set(
+    nativeCategories
+      .filter((nativeCategory) =>
+        nativeCategory.parents.some((parent) => searchGroups.includes(parent))
+      )
+      .map((filteredNativeCategory) => filteredNativeCategory.name)
+  )
 
   return subcategories
-    .filter((subcategory) => filteredNativeCategories.includes(subcategory.nativeCategoryId))
+    .filter((subcategory) => filteredNativeCategories.has(subcategory.nativeCategoryId))
     .map((filteredSubcategory) => filteredSubcategory.id)
 }
 
@@ -557,16 +554,6 @@ export function getFacetTypeFromGenreTypeKey(genreTypeKey: GenreType) {
     case GenreType.MOVIE:
     default:
       return FACETS_FILTERS_ENUM.OFFER_MOVIE_GENRES
-  }
-}
-
-export function getNbResultsFacetLabel(nbResultsFacet?: number) {
-  if (nbResultsFacet === undefined) {
-    return undefined
-  } else if (nbResultsFacet > 10000) {
-    return '+10000'
-  } else {
-    return `${nbResultsFacet}`
   }
 }
 

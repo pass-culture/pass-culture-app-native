@@ -6,7 +6,7 @@ import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { SubscriptionAnalyticsParams, SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics/provider'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 type AnalyticsInfos = { venueId: string; homeId?: never } | { homeId: string; venueId?: never }
 
@@ -30,8 +30,6 @@ export const useThematicSubscription = ({
 } => {
   const { pushPermission } = usePushPermission()
   const isPushPermissionGranted = pushPermission === 'granted'
-
-  const { showErrorSnackBar } = useSnackBarContext()
 
   const isAtLeastOneNotificationTypeActivated =
     Platform.OS === 'web'
@@ -73,10 +71,7 @@ export const useThematicSubscription = ({
       }
     },
     onError: () => {
-      showErrorSnackBar({
-        message: 'Une erreur est survenue, veuillez réessayer',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('Une erreur est survenue, veuillez réessayer')
       setState(initialState)
     },
   })

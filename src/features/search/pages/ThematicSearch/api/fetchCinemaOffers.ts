@@ -23,7 +23,7 @@ export const fetchCinemaOffers = async ({
   }
 
   // We need the timestamps in seconds format for Algolia search
-  const today = Math.floor(new Date().getTime() / 1000)
+  const today = Math.floor(Date.now() / 1000)
   const sevenDaysAgo = Math.floor(subDays(new Date(), 7).getTime() / 1000)
 
   const queries: SearchForHits[] = [

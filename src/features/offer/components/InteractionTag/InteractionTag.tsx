@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import { DefaultTheme } from 'styled-components/native'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import { isBookClubSubcategory } from 'features/chronicle/helpers/isBookClubSubcategory'
+import { isBookClubSubcategory } from 'features/clubAdvices/helpers/isBookClubSubcategory'
 import { formatLikesCounter } from 'features/offer/helpers/formatLikesCounter/formatLikesCounter'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagProps, TagVariant } from 'ui/designSystem/Tag/types'
@@ -12,8 +12,7 @@ type InteractionTagParams = {
   theme: DefaultTheme
   subcategoryId: SubcategoryIdEnum
   likesCount?: number
-  chroniclesCount?: number
-  headlinesCount?: number
+  advicesCount?: number
   hasSmallLayout?: boolean
   isComingSoonOffer?: boolean
 }
@@ -27,8 +26,7 @@ export const renderInteractionTag = (params: InteractionTagParams): ReactNode | 
 
 export const getTagProps = ({
   likesCount = 0,
-  chroniclesCount = 0,
-  headlinesCount = 0,
+  advicesCount = 0,
   hasSmallLayout,
   isComingSoonOffer,
   subcategoryId,
@@ -41,23 +39,16 @@ export const getTagProps = ({
     }
   }
 
-  if (chroniclesCount > 0) {
+  if (advicesCount > 0) {
     if (isBookClubSubcategory(subcategoryId)) {
       return {
-        label: hasSmallLayout ? 'Reco Club' : 'Reco du Book Club',
+        label: hasSmallLayout ? `${advicesCount} avis` : `${advicesCount} avis book club`,
         variant: TagVariant.BOOKCLUB,
       }
     }
     return {
-      label: hasSmallLayout ? 'Reco Club' : 'Reco du Ciné Club',
+      label: hasSmallLayout ? `${advicesCount} avis` : `${advicesCount} avis ciné club`,
       variant: TagVariant.CINECLUB,
-    }
-  }
-
-  if (headlinesCount > 0) {
-    return {
-      label: hasSmallLayout ? 'Reco lieux' : 'Reco par les lieux',
-      variant: TagVariant.HEADLINE,
     }
   }
 

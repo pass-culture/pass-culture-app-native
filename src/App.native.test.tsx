@@ -1,7 +1,5 @@
 import React from 'react'
-import { LogBox } from 'react-native'
 
-import { campaignTracker } from 'libs/campaign/campaign'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
 import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
@@ -13,10 +11,6 @@ jest.mock('features/navigation/NavigationContainer/NavigationContainer', () => (
   AppNavigationContainer: () => 'Placeholder for NavigationContainer',
 }))
 
-jest.mock('libs/e2e/getIsMaestro', () => ({
-  getIsMaestro: () => Promise.resolve(true),
-}))
-jest.mock('libs/campaign/campaign')
 jest.mock('@hot-updater/react-native')
 jest.mock('react-native/Libraries/LogBox/LogBox')
 
@@ -48,14 +42,6 @@ describe('<App /> with mocked RootNavigator', () => {
     })
   })
 
-  it('should not init AppsFlyer on launch', async () => {
-    renderApp()
-
-    await waitFor(() => {
-      expect(campaignTracker.init).not.toHaveBeenCalled()
-    })
-  })
-
   it('should configure Google signin on launch', async () => {
     renderApp()
 
@@ -65,14 +51,6 @@ describe('<App /> with mocked RootNavigator', () => {
         webClientId: 'GOOGLE_CLIENT_ID',
         offlineAccess: true,
       })
-    })
-  })
-
-  it('should disable log box when maestro tests are running', async () => {
-    renderApp()
-
-    await waitFor(() => {
-      expect(LogBox.ignoreAllLogs).toHaveBeenCalledTimes(1)
     })
   })
 })

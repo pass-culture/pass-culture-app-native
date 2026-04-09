@@ -18,7 +18,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
     accessibilityRole="header"
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -39,6 +39,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -70,7 +71,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -100,10 +101,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "flexGrow": 1,
-                  "height": 40,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 40,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                  "width": "auto",
                 },
               ],
               {
@@ -114,23 +124,53 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
           testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-          <Text
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
-                "display": "none",
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
               }
             }
           >
-            Retour
-          </Text>
+            <View
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="0"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -172,19 +212,12 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
     </View>
   </View>
   <View
-    height={65}
-    style={
-      {
-        "height": 65,
-      }
-    }
-  />
-  <View
     style={
       {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
+        "marginTop": 24,
         "paddingBottom": 16,
         "paddingTop": 24,
       }
@@ -295,16 +328,13 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 <View
                   nativeID="testUuidV4"
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                        "paddingHorizontal": 24,
-                        "paddingVertical": 20,
-                      },
-                      undefined,
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "paddingHorizontal": 24,
+                      "paddingVertical": 24,
+                    }
                   }
                 >
                   <Text
@@ -382,1194 +412,1245 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 testID="accordionBodyContainer"
               >
                 <View
-                  accessibilityLabel="Offer"
-                  accessibilityRole="radio"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
+                  accessibilityRole="none"
                   style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "minHeight": 24,
-                          "paddingVertical": 12,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
+                    {
+                      "gap": 8,
+                    }
                   }
-                  testID="Offer"
+                  useFlatList={false}
                 >
                   <View
                     style={
                       {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "flexShrink": 0,
+                        "gap": 4,
                       }
                     }
                   >
-                    <View
+                    <Text
                       style={
                         {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         }
                       }
                     >
-                      <Text
-                        isSelected={false}
-                        numberOfLines={2}
+                      Sélectionne une page
+                    </Text>
+                  </View>
+                  <View
+                    display="vertical"
+                    style={
+                      {
+                        "flexDirection": "column",
+                        "flexWrap": "nowrap",
+                        "gap": 24,
+                      }
+                    }
+                    variant="default"
+                  >
+                    <View
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 1 sur 10 - Offer - non sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "cursor": "pointer",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Sélectionne une page - Liste - Élément 1 sur 10 - Offer - non sélectionné"
+                    >
+                      <View
                         style={
                           {
-                            "color": "#161617",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "alignItems": "center",
+                            "columnGap": 12,
+                            "flexDirection": "row",
                           }
                         }
                       >
-                        Offer
-                      </Text>
+                        <View
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": false,
+                            }
+                          }
+                          style={
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 20,
+                              "borderBottomRightRadius": 20,
+                              "borderColor": "#90949d",
+                              "borderTopLeftRadius": 20,
+                              "borderTopRightRadius": 20,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="default"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            }
+                          }
+                        >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            radioState={
+                              {
+                                "disabled": false,
+                                "error": false,
+                                "selected": false,
+                              }
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Offer
+                          </Text>
+                        </View>
+                      </View>
                     </View>
-                  </View>
-                  <View
-                    style={
-                      {
-                        "alignItems": "flex-end",
-                        "flexBasis": 0,
-                        "flexGrow": 0.1,
-                        "flexShrink": 1,
-                        "height": 20,
-                        "justifyContent": "center",
-                        "width": 20,
-                      }
-                    }
-                  >
                     <View
-                      accessibilityLabel="Non sélectionné"
-                      height={20}
-                      width={20}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "width": "100%",
-                    }
-                  }
-                />
-                <View
-                  accessibilityLabel="VenueMap"
-                  accessibilityRole="radio"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 2 sur 10 - VenueMap - non sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
                         {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "minHeight": 24,
-                          "paddingVertical": 12,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="VenueMap"
-                >
-                  <View
-                    style={
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "flexShrink": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "cursor": "pointer",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Sélectionne une page - Liste - Élément 2 sur 10 - VenueMap - non sélectionné"
                     >
-                      <Text
-                        isSelected={false}
-                        numberOfLines={2}
+                      <View
                         style={
                           {
-                            "color": "#161617",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "alignItems": "center",
+                            "columnGap": 12,
+                            "flexDirection": "row",
                           }
                         }
                       >
-                        VenueMap
-                      </Text>
+                        <View
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": false,
+                            }
+                          }
+                          style={
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 20,
+                              "borderBottomRightRadius": 20,
+                              "borderColor": "#90949d",
+                              "borderTopLeftRadius": 20,
+                              "borderTopRightRadius": 20,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="default"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            }
+                          }
+                        >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            radioState={
+                              {
+                                "disabled": false,
+                                "error": false,
+                                "selected": false,
+                              }
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            VenueMap
+                          </Text>
+                        </View>
+                      </View>
                     </View>
-                  </View>
-                  <View
-                    style={
-                      {
-                        "alignItems": "flex-end",
-                        "flexBasis": 0,
-                        "flexGrow": 0.1,
-                        "flexShrink": 1,
-                        "height": 20,
-                        "justifyContent": "center",
-                        "width": 20,
-                      }
-                    }
-                  >
                     <View
-                      accessibilityLabel="Non sélectionné"
-                      height={20}
-                      width={20}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "width": "100%",
-                    }
-                  }
-                />
-                <View
-                  accessibilityLabel="Venue"
-                  accessibilityRole="radio"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 3 sur 10 - Venue - non sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
                         {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "minHeight": 24,
-                          "paddingVertical": 12,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="Venue"
-                >
-                  <View
-                    style={
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "flexShrink": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "cursor": "pointer",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Sélectionne une page - Liste - Élément 3 sur 10 - Venue - non sélectionné"
                     >
-                      <Text
-                        isSelected={false}
-                        numberOfLines={2}
+                      <View
                         style={
                           {
-                            "color": "#161617",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "alignItems": "center",
+                            "columnGap": 12,
+                            "flexDirection": "row",
                           }
                         }
                       >
-                        Venue
-                      </Text>
+                        <View
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": false,
+                            }
+                          }
+                          style={
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 20,
+                              "borderBottomRightRadius": 20,
+                              "borderColor": "#90949d",
+                              "borderTopLeftRadius": 20,
+                              "borderTopRightRadius": 20,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="default"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            }
+                          }
+                        >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            radioState={
+                              {
+                                "disabled": false,
+                                "error": false,
+                                "selected": false,
+                              }
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Venue
+                          </Text>
+                        </View>
+                      </View>
                     </View>
-                  </View>
-                  <View
-                    style={
-                      {
-                        "alignItems": "flex-end",
-                        "flexBasis": 0,
-                        "flexGrow": 0.1,
-                        "flexShrink": 1,
-                        "height": 20,
-                        "justifyContent": "center",
-                        "width": 20,
-                      }
-                    }
-                  >
                     <View
-                      accessibilityLabel="Non sélectionné"
-                      height={20}
-                      width={20}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "width": "100%",
-                    }
-                  }
-                />
-                <View
-                  accessibilityLabel="Home"
-                  accessibilityRole="radio"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": true,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 4 sur 10 - Home - sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
                         {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "minHeight": 24,
-                          "paddingVertical": 12,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="Home"
-                >
-                  <View
-                    style={
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "flexShrink": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "busy": undefined,
+                          "checked": true,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "cursor": "pointer",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Sélectionne une page - Liste - Élément 4 sur 10 - Home - sélectionné"
                     >
-                      <Text
-                        isSelected={true}
-                        numberOfLines={2}
+                      <View
                         style={
                           {
-                            "color": "#6123df",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "alignItems": "center",
+                            "columnGap": 12,
+                            "flexDirection": "row",
                           }
                         }
                       >
-                        Home
-                      </Text>
+                        <View
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": true,
+                            }
+                          }
+                          style={
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 20,
+                              "borderBottomRightRadius": 20,
+                              "borderColor": "#6123df",
+                              "borderTopLeftRadius": 20,
+                              "borderTopRightRadius": 20,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="default"
+                        >
+                          <View
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            radioState={
+                              {
+                                "disabled": false,
+                                "error": false,
+                                "selected": true,
+                              }
+                            }
+                            style={
+                              {
+                                "alignItems": "center",
+                                "backgroundColor": "#6123df",
+                                "borderBottomLeftRadius": 6,
+                                "borderBottomRightRadius": 6,
+                                "borderColor": "#6123df",
+                                "borderTopLeftRadius": 6,
+                                "borderTopRightRadius": 6,
+                                "height": 10,
+                                "justifyContent": "center",
+                                "width": 10,
+                              }
+                            }
+                            variant="default"
+                          />
+                        </View>
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            }
+                          }
+                        >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            radioState={
+                              {
+                                "disabled": false,
+                                "error": false,
+                                "selected": true,
+                              }
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Home
+                          </Text>
+                        </View>
+                      </View>
                     </View>
-                  </View>
-                  <View
-                    style={
-                      {
-                        "alignItems": "flex-end",
-                        "flexBasis": 0,
-                        "flexGrow": 0.1,
-                        "flexShrink": 1,
-                        "height": 20,
-                        "justifyContent": "center",
-                        "width": 20,
-                      }
-                    }
-                  >
                     <View
-                      height={20}
-                      width={20}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "width": "100%",
-                    }
-                  }
-                />
-                <View
-                  accessibilityLabel="ThematicHome"
-                  accessibilityRole="radio"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 5 sur 10 - ThematicHome - non sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
                         {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "minHeight": 24,
-                          "paddingVertical": 12,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="ThematicHome"
-                >
-                  <View
-                    style={
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "flexShrink": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "cursor": "pointer",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Sélectionne une page - Liste - Élément 5 sur 10 - ThematicHome - non sélectionné"
                     >
-                      <Text
-                        isSelected={false}
-                        numberOfLines={2}
+                      <View
                         style={
                           {
-                            "color": "#161617",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "alignItems": "center",
+                            "columnGap": 12,
+                            "flexDirection": "row",
                           }
                         }
                       >
-                        ThematicHome
-                      </Text>
+                        <View
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": false,
+                            }
+                          }
+                          style={
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 20,
+                              "borderBottomRightRadius": 20,
+                              "borderColor": "#90949d",
+                              "borderTopLeftRadius": 20,
+                              "borderTopRightRadius": 20,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="default"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            }
+                          }
+                        >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            radioState={
+                              {
+                                "disabled": false,
+                                "error": false,
+                                "selected": false,
+                              }
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            ThematicHome
+                          </Text>
+                        </View>
+                      </View>
                     </View>
-                  </View>
-                  <View
-                    style={
-                      {
-                        "alignItems": "flex-end",
-                        "flexBasis": 0,
-                        "flexGrow": 0.1,
-                        "flexShrink": 1,
-                        "height": 20,
-                        "justifyContent": "center",
-                        "width": 20,
-                      }
-                    }
-                  >
                     <View
-                      accessibilityLabel="Non sélectionné"
-                      height={20}
-                      width={20}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "width": "100%",
-                    }
-                  }
-                />
-                <View
-                  accessibilityLabel="SearchResults"
-                  accessibilityRole="radio"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 6 sur 10 - SearchResults - non sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
                         {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "minHeight": 24,
-                          "paddingVertical": 12,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="SearchResults"
-                >
-                  <View
-                    style={
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "flexShrink": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "cursor": "pointer",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Sélectionne une page - Liste - Élément 6 sur 10 - SearchResults - non sélectionné"
                     >
-                      <Text
-                        isSelected={false}
-                        numberOfLines={2}
+                      <View
                         style={
                           {
-                            "color": "#161617",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "alignItems": "center",
+                            "columnGap": 12,
+                            "flexDirection": "row",
                           }
                         }
                       >
-                        SearchResults
-                      </Text>
+                        <View
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": false,
+                            }
+                          }
+                          style={
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 20,
+                              "borderBottomRightRadius": 20,
+                              "borderColor": "#90949d",
+                              "borderTopLeftRadius": 20,
+                              "borderTopRightRadius": 20,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="default"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            }
+                          }
+                        >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            radioState={
+                              {
+                                "disabled": false,
+                                "error": false,
+                                "selected": false,
+                              }
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            SearchResults
+                          </Text>
+                        </View>
+                      </View>
                     </View>
-                  </View>
-                  <View
-                    style={
-                      {
-                        "alignItems": "flex-end",
-                        "flexBasis": 0,
-                        "flexGrow": 0.1,
-                        "flexShrink": 1,
-                        "height": 20,
-                        "justifyContent": "center",
-                        "width": 20,
-                      }
-                    }
-                  >
                     <View
-                      accessibilityLabel="Non sélectionné"
-                      height={20}
-                      width={20}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "width": "100%",
-                    }
-                  }
-                />
-                <View
-                  accessibilityLabel="ThematicSearch"
-                  accessibilityRole="radio"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 7 sur 10 - ThematicSearch - non sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
                         {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "minHeight": 24,
-                          "paddingVertical": 12,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="ThematicSearch"
-                >
-                  <View
-                    style={
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "flexShrink": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "cursor": "pointer",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Sélectionne une page - Liste - Élément 7 sur 10 - ThematicSearch - non sélectionné"
                     >
-                      <Text
-                        isSelected={false}
-                        numberOfLines={2}
+                      <View
                         style={
                           {
-                            "color": "#161617",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "alignItems": "center",
+                            "columnGap": 12,
+                            "flexDirection": "row",
                           }
                         }
                       >
-                        ThematicSearch
-                      </Text>
+                        <View
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": false,
+                            }
+                          }
+                          style={
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 20,
+                              "borderBottomRightRadius": 20,
+                              "borderColor": "#90949d",
+                              "borderTopLeftRadius": 20,
+                              "borderTopRightRadius": 20,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="default"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            }
+                          }
+                        >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            radioState={
+                              {
+                                "disabled": false,
+                                "error": false,
+                                "selected": false,
+                              }
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            ThematicSearch
+                          </Text>
+                        </View>
+                      </View>
                     </View>
-                  </View>
-                  <View
-                    style={
-                      {
-                        "alignItems": "flex-end",
-                        "flexBasis": 0,
-                        "flexGrow": 0.1,
-                        "flexShrink": 1,
-                        "height": 20,
-                        "justifyContent": "center",
-                        "width": 20,
-                      }
-                    }
-                  >
                     <View
-                      accessibilityLabel="Non sélectionné"
-                      height={20}
-                      width={20}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "width": "100%",
-                    }
-                  }
-                />
-                <View
-                  accessibilityLabel="Profile"
-                  accessibilityRole="radio"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 8 sur 10 - Profile - non sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
                         {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "minHeight": 24,
-                          "paddingVertical": 12,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="Profile"
-                >
-                  <View
-                    style={
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "flexShrink": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "cursor": "pointer",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Sélectionne une page - Liste - Élément 8 sur 10 - Profile - non sélectionné"
                     >
-                      <Text
-                        isSelected={false}
-                        numberOfLines={2}
+                      <View
                         style={
                           {
-                            "color": "#161617",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "alignItems": "center",
+                            "columnGap": 12,
+                            "flexDirection": "row",
                           }
                         }
                       >
-                        Profile
-                      </Text>
+                        <View
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": false,
+                            }
+                          }
+                          style={
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 20,
+                              "borderBottomRightRadius": 20,
+                              "borderColor": "#90949d",
+                              "borderTopLeftRadius": 20,
+                              "borderTopRightRadius": 20,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="default"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            }
+                          }
+                        >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            radioState={
+                              {
+                                "disabled": false,
+                                "error": false,
+                                "selected": false,
+                              }
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Profile
+                          </Text>
+                        </View>
+                      </View>
                     </View>
-                  </View>
-                  <View
-                    style={
-                      {
-                        "alignItems": "flex-end",
-                        "flexBasis": 0,
-                        "flexGrow": 0.1,
-                        "flexShrink": 1,
-                        "height": 20,
-                        "justifyContent": "center",
-                        "width": 20,
-                      }
-                    }
-                  >
                     <View
-                      accessibilityLabel="Non sélectionné"
-                      height={20}
-                      width={20}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "width": "100%",
-                    }
-                  }
-                />
-                <View
-                  accessibilityLabel="SignupForm"
-                  accessibilityRole="radio"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 9 sur 10 - SignupForm - non sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
                         {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "minHeight": 24,
-                          "paddingVertical": 12,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="SignupForm"
-                >
-                  <View
-                    style={
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "flexShrink": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "cursor": "pointer",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Sélectionne une page - Liste - Élément 9 sur 10 - SignupForm - non sélectionné"
                     >
-                      <Text
-                        isSelected={false}
-                        numberOfLines={2}
+                      <View
                         style={
                           {
-                            "color": "#161617",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "alignItems": "center",
+                            "columnGap": 12,
+                            "flexDirection": "row",
                           }
                         }
                       >
-                        SignupForm
-                      </Text>
+                        <View
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": false,
+                            }
+                          }
+                          style={
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 20,
+                              "borderBottomRightRadius": 20,
+                              "borderColor": "#90949d",
+                              "borderTopLeftRadius": 20,
+                              "borderTopRightRadius": 20,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="default"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            }
+                          }
+                        >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            radioState={
+                              {
+                                "disabled": false,
+                                "error": false,
+                                "selected": false,
+                              }
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            SignupForm
+                          </Text>
+                        </View>
+                      </View>
                     </View>
-                  </View>
-                  <View
-                    style={
-                      {
-                        "alignItems": "flex-end",
-                        "flexBasis": 0,
-                        "flexGrow": 0.1,
-                        "flexShrink": 1,
-                        "height": 20,
-                        "justifyContent": "center",
-                        "width": 20,
-                      }
-                    }
-                  >
                     <View
-                      accessibilityLabel="Non sélectionné"
-                      height={20}
-                      width={20}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "width": "100%",
-                    }
-                  }
-                />
-                <View
-                  accessibilityLabel="Stepper"
-                  accessibilityRole="radio"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
+                      accessibilityLabel="Sélectionne une page - Liste - Élément 10 sur 10 - Stepper - non sélectionné"
+                      accessibilityRole="radio"
+                      accessibilityState={
                         {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "minHeight": 24,
-                          "paddingVertical": 12,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="Stepper"
-                >
-                  <View
-                    style={
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "flexShrink": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "cursor": "pointer",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Sélectionne une page - Liste - Élément 10 sur 10 - Stepper - non sélectionné"
                     >
-                      <Text
-                        isSelected={false}
-                        numberOfLines={2}
+                      <View
                         style={
                           {
-                            "color": "#161617",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "alignItems": "center",
+                            "columnGap": 12,
+                            "flexDirection": "row",
                           }
                         }
                       >
-                        Stepper
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    style={
-                      {
-                        "alignItems": "flex-end",
-                        "flexBasis": 0,
-                        "flexGrow": 0.1,
-                        "flexShrink": 1,
-                        "height": 20,
-                        "justifyContent": "center",
-                        "width": 20,
-                      }
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Non sélectionné"
-                      height={20}
-                      width={20}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                        <View
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": false,
+                            }
+                          }
+                          style={
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 20,
+                              "borderBottomRightRadius": 20,
+                              "borderColor": "#90949d",
+                              "borderTopLeftRadius": 20,
+                              "borderTopRightRadius": 20,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="default"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            }
+                          }
+                        >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            radioState={
+                              {
+                                "disabled": false,
+                                "error": false,
+                                "selected": false,
+                              }
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Stepper
+                          </Text>
+                        </View>
+                      </View>
                     </View>
                   </View>
                 </View>
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "width": "100%",
-                    }
-                  }
-                />
               </View>
             </View>
             <View
@@ -1631,16 +1712,13 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 <View
                   nativeID="testUuidV4"
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                        "paddingHorizontal": 24,
-                        "paddingVertical": 20,
-                      },
-                      undefined,
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "paddingHorizontal": 24,
+                      "paddingVertical": 24,
+                    }
                   }
                 >
                   <Text
@@ -1828,10 +1906,10 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   <View
                     style={
                       {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
+                        "paddingBottom": 24,
+                        "paddingLeft": 24,
+                        "paddingRight": 24,
+                        "paddingTop": 24,
                       }
                     }
                   >
@@ -1919,16 +1997,13 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 <View
                   nativeID="testUuidV4"
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                        "paddingHorizontal": 24,
-                        "paddingVertical": 20,
-                      },
-                      undefined,
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "paddingHorizontal": 24,
+                      "paddingVertical": 24,
+                    }
                   }
                 >
                   <Text
@@ -2116,10 +2191,10 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   <View
                     style={
                       {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
+                        "paddingBottom": 24,
+                        "paddingLeft": 24,
+                        "paddingRight": 24,
+                        "paddingTop": 24,
                       }
                     }
                   >
@@ -2257,10 +2332,10 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   <View
                     style={
                       {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
+                        "paddingBottom": 24,
+                        "paddingLeft": 24,
+                        "paddingRight": 24,
+                        "paddingTop": 24,
                       }
                     }
                   >
@@ -2398,10 +2473,10 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   <View
                     style={
                       {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
+                        "paddingBottom": 24,
+                        "paddingLeft": 24,
+                        "paddingRight": 24,
+                        "paddingTop": 24,
                       }
                     }
                   >
@@ -2539,10 +2614,10 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   <View
                     style={
                       {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
+                        "paddingBottom": 24,
+                        "paddingLeft": 24,
+                        "paddingRight": 24,
+                        "paddingTop": 24,
                       }
                     }
                   >
@@ -2681,10 +2756,10 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   <View
                     style={
                       {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
+                        "paddingBottom": 24,
+                        "paddingLeft": 24,
+                        "paddingRight": 24,
+                        "paddingTop": 24,
                       }
                     }
                   >
@@ -2719,7 +2794,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
           style={
             {
               "alignItems": "center",
-              "paddingHorizontal": 20,
+              "paddingHorizontal": 24,
               "paddingVertical": 16,
             }
           }
@@ -2749,7 +2824,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
-                  "paddingVertical": 6,
+                  "paddingVertical": 8,
                 }
               }
             >
@@ -2793,22 +2868,23 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   },
                   {
                     "alignItems": "center",
+                    "alignSelf": "center",
                     "backgroundColor": "#6123df",
-                    "borderBottomLeftRadius": 24,
-                    "borderBottomRightRadius": 24,
-                    "borderTopLeftRadius": 24,
-                    "borderTopRightRadius": 24,
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderColor": "#6123df",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 1,
                     "flexDirection": "row",
                     "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
+                    "paddingBottom": 8,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 8,
                     "width": "100%",
                   },
-                  {},
                 ],
                 {
                   "opacity": 1,
@@ -2818,24 +2894,39 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
             testID="Générer le lien"
           >
             <View
+              fullWidth={true}
+              gap={8}
+              hasIcon={false}
+              isMultiline={false}
               style={
                 {
                   "alignItems": "center",
+                  "columnGap": 8,
                   "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
                 }
               }
             >
               <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
                 style={
-                  {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "maxWidth": "100%",
-                  }
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#ffffff",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": "100%",
+                      "minWidth": 0,
+                      "textAlign": "center",
+                    },
+                  ]
                 }
               >
                 Générer le lien
@@ -3194,37 +3285,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
         </View>
       </View>
     </View>
-  </View>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;

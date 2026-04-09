@@ -15,33 +15,32 @@ import { OpeningHours } from '../OpeningHours/OpeningHours'
 
 type Props = {
   venue: Omit<VenueResponse, 'isVirtual'>
-  enableAccesLibre?: boolean
 }
 
-export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAccesLibre }) => {
+export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
   const {
     withdrawalDetails,
     description,
     contact,
     isOpenToPublic,
-    accessibility,
+    accessibilityData,
     openingHours,
     externalAccessibilityData,
     externalAccessibilityId,
     externalAccessibilityUrl,
+    id: venueId,
   } = venue
 
   const shouldDisplayDetailedAccessibility =
     !!isOpenToPublic &&
-    enableAccesLibre &&
     !!externalAccessibilityUrl &&
     !!externalAccessibilityData &&
     !!externalAccessibilityId
 
   const shouldDisplayBasicAccessibility =
     !!isOpenToPublic &&
-    !!accessibility &&
-    Object.values(accessibility).some((value) => value != null)
+    !!accessibilityData &&
+    Object.values(accessibilityData).some((value) => value != null)
 
   const accessibilitySection = useMemo(() => {
     if (shouldDisplayDetailedAccessibility) {
@@ -54,16 +53,27 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAc
       )
     }
     if (shouldDisplayBasicAccessibility) {
-      return <BasicAccessibilityInfo accessibility={accessibility} />
+      return (
+        <BasicAccessibilityInfo
+          venueId={venueId}
+          accessibility={{
+            audioDisability: accessibilityData.isAccessibleAudioDisability,
+            mentalDisability: accessibilityData.isAccessibleMentalDisability,
+            motorDisability: accessibilityData.isAccessibleMotorDisability,
+            visualDisability: accessibilityData.isAccessibleVisualDisability,
+          }}
+        />
+      )
     }
     return null
   }, [
+    venueId,
     shouldDisplayDetailedAccessibility,
     shouldDisplayBasicAccessibility,
     externalAccessibilityUrl,
     externalAccessibilityData,
     externalAccessibilityId,
-    accessibility,
+    accessibilityData,
   ])
 
   const shouldDisplayOpeningHours =

@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { CineClubCertification } from 'ui/svg/CineClubCertification'
 import { Again } from 'ui/svg/icons/Again'
+import { AISearch } from 'ui/svg/icons/AISearch'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { ArrowLeftNew } from 'ui/svg/icons/ArrowLeftNew'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
@@ -18,6 +19,7 @@ import { CakeOneCandle } from 'ui/svg/icons/CakeOneCandle'
 import { CakeTwoCandles } from 'ui/svg/icons/CakeTwoCandles'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { CalendarS } from 'ui/svg/icons/CalendarS'
+import { ChatbotAI } from 'ui/svg/icons/ChatbotAI'
 import { Check } from 'ui/svg/icons/Check'
 import { CheckboxMarkChecked } from 'ui/svg/icons/CheckboxMarkChecked'
 import { CheckboxMarkIndeterminate } from 'ui/svg/icons/CheckboxMarkIndeterminate'
@@ -38,7 +40,6 @@ import { Duo } from 'ui/svg/icons/Duo'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { Earth } from 'ui/svg/icons/Earth'
 import { EditPen } from 'ui/svg/icons/EditPen'
-import { Email } from 'ui/svg/icons/Email'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { EmailIcon } from 'ui/svg/icons/EmailIcon'
 import { Error } from 'ui/svg/icons/Error'
@@ -79,7 +80,6 @@ import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { Map } from 'ui/svg/icons/Map'
 import { MapPin } from 'ui/svg/icons/MapPin'
-import { More } from 'ui/svg/icons/More'
 import { NoId } from 'ui/svg/icons/NoId'
 import { NoPhone } from 'ui/svg/icons/NoPhone'
 import { OfferEvent } from 'ui/svg/icons/OfferEvent'
@@ -159,6 +159,7 @@ export const SocialNetworkIcons = {
 }
 
 export const SecondaryAndBiggerIcons = {
+  AISearch,
   ArrowAgain,
   ArrowLeftNew,
   ArrowNext,
@@ -174,6 +175,7 @@ export const SecondaryAndBiggerIcons = {
   CakeTwoCandles,
   Calendar,
   CalendarS,
+  ChatbotAI,
   Check,
   CheckFilled,
   Clock,
@@ -184,7 +186,6 @@ export const SecondaryAndBiggerIcons = {
   Confirmation,
   Duo,
   Earth,
-  Email,
   EmailIcon,
   Error,
   Everywhere,
@@ -213,7 +214,6 @@ export const SecondaryAndBiggerIcons = {
   MagnifyingGlass,
   MagnifyingGlassFilled,
   MapPin,
-  More,
   NoId,
   NoPhone,
   OfferEvent,

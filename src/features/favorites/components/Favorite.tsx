@@ -18,24 +18,22 @@ import { useLocation } from 'libs/location/location'
 import { useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { LineSeparator } from 'ui/components/LineSeparator'
 import { useModal } from 'ui/components/modals/useModal'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useLayout } from 'ui/hooks/useLayout'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { Share } from 'ui/svg/icons/Share'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
@@ -63,8 +61,7 @@ export const Favorite: React.FC<Props> = (props) => {
     offer.subcategoryId
   )
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const segment = useABSegment()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
   const displayPrice = getFavoriteDisplayPrice({
     currency,
@@ -72,7 +69,6 @@ export const Favorite: React.FC<Props> = (props) => {
     startPrice: offer.startPrice,
     price: offer.price,
   })
-  const { showErrorSnackBar } = useSnackBarContext()
   const { categoryId, appLabel } = useSubcategory(offer.subcategoryId)
   const formattedDate = useFavoriteFormattedDate({ offer })
   const { modalToDisplay, ...buttonProperties } =
@@ -90,10 +86,7 @@ export const Favorite: React.FC<Props> = (props) => {
 
   const { mutate: removeFavorite, isPending } = useRemoveFavoriteMutation({
     onError: () => {
-      showErrorSnackBar({
-        message: 'L’offre n’a pas été retirée de tes favoris',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('L’offre n’a pas été retirée de tes favoris')
     },
   })
 
@@ -116,7 +109,7 @@ export const Favorite: React.FC<Props> = (props) => {
       offerId: offer.id,
     })
 
-    triggerConsultOfferLog({ offerId: offer.id, from: 'favorites' }, segment)
+    triggerConsultOfferLog({ offerId: offer.id, from: 'favorites' })
   }
 
   function onRemove() {
@@ -178,7 +171,7 @@ export const Favorite: React.FC<Props> = (props) => {
           externalNav={externalNav}
           wording={wording}
           accessibilityLabel={accessibilityLabel}
-          as={ButtonPrimary}
+          as={Button}
           icon={ExternalSite}
         />
       )
@@ -186,7 +179,7 @@ export const Favorite: React.FC<Props> = (props) => {
       buttonProperties?.onPress?.()
       showBookOfferModal()
     }
-    return <ButtonPrimary wording={wording} disabled={disabled} onPress={onPressBookingButton} />
+    return <Button wording={wording} disabled={disabled} onPress={onPressBookingButton} />
   }, [buttonProperties, showBookOfferModal])
 
   return (
@@ -214,19 +207,23 @@ export const Favorite: React.FC<Props> = (props) => {
               </Row>
             </StyledTouchableLink>
             <ShareContainer>
-              <RoundedButton
-                iconName="share"
+              <Button
+                variant="secondary"
+                color="neutral"
                 onPress={pressShareOffer}
+                icon={Share}
                 accessibilityLabel={`Partager l’offre ${offer.name}`}
               />
             </ShareContainer>
           </Container>
           <FavoriteButtonsContainer gap={5}>
             <ButtonContainer>
-              <ButtonSecondary
+              <Button
                 wording="Supprimer"
-                accessibilityLabel={`Supprimer l’offre ${offer.name} de mes favoris`}
+                variant="secondary"
+                color="neutral"
                 onPress={onRemove}
+                accessibilityLabel={`Supprimer l’offre ${offer.name} de mes favoris`}
                 disabled={isPending}
               />
             </ButtonContainer>
@@ -288,8 +285,8 @@ const ButtonContainer = styled.View({
   flex: 1,
 })
 
-const DEFAULT_MARGIN = getSpacing(6)
 export const FavoriteButtonsContainer = styled(ViewGap)(({ theme }) => {
+  const DEFAULT_MARGIN = theme.designSystem.size.spacing.xl
   const WEB_MARGIN_LEFT =
     DEFAULT_MARGIN + theme.tiles.sizes.small.width + getSpacing(SPACER_BETWEEN_IMAGE_AND_CONTENT)
   return {

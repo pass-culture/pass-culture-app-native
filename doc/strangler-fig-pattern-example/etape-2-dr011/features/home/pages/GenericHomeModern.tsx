@@ -11,11 +11,11 @@ import {
 } from 'react-native'
 
 import { enrichModulesWithData } from '../core/enrichModulesWithData'
-import { HomepageModule, isOffersModule, isVenuesModule, HomepageModuleType, ThematicHeader } from '../types'
+import { HomepageModule, HomepageModuleType, ThematicHeader } from '../types'
 import { isCloseToBottom } from '../../../libs/analytics'
 import { Spinner } from '../../../ui/components/Spinner'
-import { PageContent, Spacer, VideoCarouselModule } from '../../ui-mocks';
-import { fetchHomepageModules } from '../api/fetchHomepageModules';
+import { PageContent, VideoCarouselModule } from '../../ui-mocks'
+import { fetchHomepageModules } from '../api/fetchHomepageModules'
 
 type GenericHomeProps = {
   Header?: React.JSX.Element
@@ -90,7 +90,6 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(functi
     () => (
       <View testID="listHeader">
         {Header}
-        <Spacer.Column numberOfSpaces={6} />
         {shouldDisplayVideoInHeader && videoCarouselModules[0] ? (
           <VideoCarouselModule
             index={0}

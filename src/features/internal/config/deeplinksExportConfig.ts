@@ -45,7 +45,7 @@ export const SCREENS_CONFIG: {
       type: 'string',
       required: true,
       description: 'Identifiant unique de l’offre.',
-      serverValidator: (value: unknown) => api.getNativeV2OfferofferId(Number(value)),
+      serverValidator: (value: unknown) => api.getNativeV3OfferofferId(Number(value)),
     },
   },
   VenueMap: {},

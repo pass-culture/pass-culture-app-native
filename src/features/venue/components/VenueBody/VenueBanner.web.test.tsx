@@ -10,7 +10,8 @@ describe('<VenueBanner />', () => {
     render(
       <VenueBanner
         bannerUrl="https://image.com"
-        bannerMeta={{ is_from_google: false, image_credit: 'François Boulo' }}
+        bannerIsFromGoogle={false}
+        bannerCredit="François Boulo"
         handleImagePress={mockHandleImagePress}
       />
     )
@@ -24,7 +25,8 @@ describe('<VenueBanner />', () => {
     render(
       <VenueBanner
         bannerUrl="https://image.com"
-        bannerMeta={{ is_from_google: true, image_credit: 'François Boulo' }}
+        bannerIsFromGoogle
+        bannerCredit="François Boulo"
         handleImagePress={mockHandleImagePress}
       />
     )
@@ -37,7 +39,8 @@ describe('<VenueBanner />', () => {
   it('should display default venue background', async () => {
     render(
       <VenueBanner
-        bannerMeta={{ is_from_google: true, image_credit: 'François Boulo' }}
+        bannerIsFromGoogle
+        bannerCredit="François Boulo"
         handleImagePress={mockHandleImagePress}
       />
     )

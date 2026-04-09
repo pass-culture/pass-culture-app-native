@@ -12,6 +12,7 @@ export const geolocatedVenuesFixture: GeolocatedVenue[] = [
     venueId: 2628,
     activity: Activity.MUSEUM,
     isOpenToPublic: true,
+    isPermanent: true,
   },
   {
     _geoloc: { lat: 48.8829762, lng: 2.3076797 },
@@ -23,5 +24,6 @@ export const geolocatedVenuesFixture: GeolocatedVenue[] = [
     venueId: 5391,
     activity: Activity.MUSEUM,
     isOpenToPublic: true,
+    isPermanent: true,
   },
 ]

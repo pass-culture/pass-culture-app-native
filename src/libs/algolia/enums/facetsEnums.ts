@@ -15,7 +15,7 @@ export enum FACETS_FILTERS_ENUM {
   OFFER_MOVIE_GENRES = 'offer.movieGenres',
   OFFER_MUSIC_TYPE = 'offer.musicType',
   OFFER_NATIVE_CATEGORY = 'offer.nativeCategoryId',
-  OFFER_SEARCH_GROUP_NAME = 'offer.searchGroupNamev2',
+  OFFER_SEARCH_GROUPS = 'offer.searchGroups',
   OFFER_SHOW_TYPE = 'offer.showType',
   OFFER_SUB_CATEGORY = 'offer.subcategoryId',
   OFFER_TAGS = 'offer.tags',
@@ -44,4 +44,5 @@ export enum VENUES_FACETS_ENUM {
   VENUE_MOTOR_DISABILITY_COMPLIANT = 'motor_disability',
   VENUE_VISUAL_DISABILITY_COMPLIANT = 'visual_disability',
   VENUE_IS_OPEN_TO_PUBLIC = 'is_open_to_public',
+  VENUE_HAS_VOLUNTEERING = 'has_volunteering_url',
 }

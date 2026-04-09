@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import { Summary } from 'features/identityCheck/components/Summary'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 type Props = {
@@ -39,11 +39,7 @@ export const EduconnectValidationPage: FC<Props> = ({
         />
       }
       fixedBottomChildren={
-        <ButtonPrimary
-          type="submit"
-          wording={EduconnectValidationPageButtonName}
-          onPress={onValidate}
-        />
+        <Button type="submit" wording={EduconnectValidationPageButtonName} onPress={onValidate} />
       }
     />
   )

@@ -1,4 +1,8 @@
+let clipboardContent = 'Some text'
+
 export default {
-  setString: jest.fn(),
-  getString: jest.fn().mockResolvedValue('Some text'),
+  setString: jest.fn((text: string) => {
+    clipboardContent = text
+  }),
+  getString: jest.fn(() => Promise.resolve(clipboardContent)),
 }

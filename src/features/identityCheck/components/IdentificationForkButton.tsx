@@ -44,6 +44,6 @@ const TextWrapper = styled.View({
   justifyContent: 'center',
 })
 
-const SubtitleContainer = styled.View({
-  marginTop: getSpacing(1),
-})
+const SubtitleContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xs,
+}))

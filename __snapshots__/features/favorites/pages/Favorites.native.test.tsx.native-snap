@@ -76,7 +76,7 @@ exports[`<Favorites/> should render correctly 1`] = `
         {
           "busy": undefined,
           "checked": undefined,
-          "disabled": undefined,
+          "disabled": false,
           "expanded": undefined,
           "selected": undefined,
         }
@@ -104,9 +104,23 @@ exports[`<Favorites/> should render correctly 1`] = `
             {
               "userSelect": "auto",
             },
-            {},
             {
-              "overflow": "hidden",
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderColor": "#6123df",
+              "borderStyle": "solid",
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "paddingBottom": 8,
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "paddingTop": 8,
+              "width": "auto",
             },
           ],
           {
@@ -117,39 +131,72 @@ exports[`<Favorites/> should render correctly 1`] = `
       testID="Trier"
     >
       <View
+        gap={8}
+        hasIcon={true}
+        isMultiline={false}
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#6123df",
-            "borderBottomLeftRadius": 24,
-            "borderBottomRightRadius": 24,
-            "borderTopLeftRadius": 24,
-            "borderTopRightRadius": 24,
+            "columnGap": 8,
             "flexDirection": "row",
-            "height": 40,
-            "overflow": "hidden",
-            "paddingHorizontal": 12,
           }
         }
       >
         <View
-          fill="#ffffff"
-          height={32}
-          width={32}
+          collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {},
+            }
+          }
+          jestInlineStyle={
+            {
+              "flexShrink": 0,
+            }
+          }
+          nativeID="0"
+          style={
+            [
+              {
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            fill="#6123df"
+            height={22}
+            width={22}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
         </View>
         <Text
           style={
-            {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "paddingHorizontal": 8,
-            }
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 16,
+                "lineHeight": 22,
+              },
+              {
+                "color": "#6123df",
+                "flexBasis": undefined,
+                "flexGrow": undefined,
+                "flexShrink": 1,
+                "maxWidth": "100%",
+                "minWidth": 0,
+                "textAlign": undefined,
+              },
+            ]
           }
         >
           Trier
@@ -259,7 +306,7 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             style={
               {
-                "marginBottom": 20,
+                "marginBottom": 24,
                 "marginHorizontal": 24,
                 "marginTop": 4,
               }
@@ -668,7 +715,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -1163,7 +1210,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -1658,7 +1705,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -2153,7 +2200,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -2648,7 +2695,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -3143,7 +3190,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -3638,7 +3685,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -4133,7 +4180,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -4628,7 +4675,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -5123,7 +5170,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
 import { BrokenConnection as InitialBrokenConnection } from 'ui/svg/BrokenConnection'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -11,20 +12,19 @@ export const OfflinePage = () => {
     <Container>
       <Content>
         <Spacer.TopScreen />
-        <Spacer.Flex />
         <BrokenConnection />
-        <Spacer.Column numberOfSpaces={5} />
-        <StyledTitle2>Pas de réseau internet</StyledTitle2>
-        <Spacer.Column numberOfSpaces={4} />
-        <StyledBody>Tu n’es pas connecté à internet.</StyledBody>
-        <Spacer.Column numberOfSpaces={5} />
-        <Spacer.Flex />
+        <StyledViewGap gap={4}>
+          <StyledTitle2>Pas de réseau internet</StyledTitle2>
+          <StyledBody>Tu n’es pas connecté à internet.</StyledBody>
+        </StyledViewGap>
         <Spacer.BottomScreen />
       </Content>
     </Container>
   )
 }
-
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
+}))
 const BrokenConnection = styled(InitialBrokenConnection).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
   size: theme.illustrations.sizes.fullPage,
@@ -44,9 +44,9 @@ const StyledBody = styled(Typo.Body).attrs(() => getHeadingAttrs(2))({
 
 const Content = styled.View(({ theme }) => ({
   flexDirection: 'column',
-  flex: 1,
-  justifyContent: 'center',
+  height: '100%',
   alignItems: 'center',
+  justifyContent: 'center',
   paddingHorizontal: theme.designSystem.size.spacing.l,
   maxWidth: getSpacing(90),
 }))

@@ -19,7 +19,7 @@ const Row = styled.View({
   flexWrap: 'wrap',
 })
 
-const featureFlags = { enablePassForAll: false, disableActivation: false }
+const featureFlags = { disableActivation: false }
 
 const variantConfig: Variants<typeof HeaderWithGreyContainer> = [
   {

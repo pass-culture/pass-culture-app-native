@@ -6,21 +6,19 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ApiError } from 'api/ApiError'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useChangePasswordMutation } from 'features/auth/queries/useChangePasswordMutation'
-import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { changePasswordSchema } from 'features/profile/pages/ChangePassword/schema/changePasswordSchema'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Button } from 'ui/designSystem/Button/Button'
+import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 type ChangePasswordFormData = {
   currentPassword: string
@@ -35,9 +33,7 @@ export function ChangePassword() {
     confirmedPassword: '',
   }
   const { navigate } = useNavigation<UseNavigationType>()
-  const { showSuccessSnackBar } = useSnackBarContext()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
-  const { user, isUserLoading } = useAuthContext()
 
   useForHeightKeyboardEvents(setKeyboardHeight)
 
@@ -77,10 +73,7 @@ export function ChangePassword() {
           onSuccess() {
             clearErrors()
             reset()
-            showSuccessSnackBar({
-              message: 'Ton mot de passe est modifié',
-              timeout: SNACK_BAR_TIME_OUT,
-            })
+            showSuccessSnackBar('Ton mot de passe est modifié')
             navigate(...getTabHookConfig('Profile'))
             analytics.logHasChangedPassword({ from: 'personaldata', reason: 'changePassword' })
             resolve()
@@ -115,61 +108,58 @@ export function ChangePassword() {
 
   useEnterKeyAction(onEnterKeyAction)
 
-  if (!isUserLoading && !user?.hasPassword) {
-    navigateToHome()
-    return null
-  }
-
   return (
-    <SecondaryPageWithBlurHeader
-      title="Mot de passe"
-      scrollable
+    <PageWithHeader
+      title="Modifier mon mot de passe"
       scrollViewProps={{
         keyboardShouldPersistTaps: 'handled',
-      }}>
-      <Container paddingBottom={Platform.OS === 'ios' ? keyboardHeight : 0}>
-        <Form.MaxWidth flex={1}>
-          <OldPasswordContainer>
+      }}
+      scrollChildren={
+        <Container paddingBottom={Platform.OS === 'ios' ? keyboardHeight : 0}>
+          <Form.MaxWidth flex={1}>
+            <OldPasswordContainer>
+              <PasswordInputController
+                control={control}
+                name="currentPassword"
+                label="Mot de passe actuel"
+                requiredIndicator="explicit"
+                autocomplete="current-password"
+              />
+            </OldPasswordContainer>
             <PasswordInputController
               control={control}
-              name="currentPassword"
-              label="Mot de passe actuel"
-              requiredIndicator="explicit"
-              autocomplete="current-password"
-            />
-          </OldPasswordContainer>
-          <PasswordInputController
-            control={control}
-            name="newPassword"
-            label="Nouveau mot de passe"
-            autocomplete="new-password"
-            withSecurityRules
-            requiredIndicator="explicit"
-          />
-          <RepeatPasswordContainer keyboardHeight={keyboardHeight}>
-            <PasswordInputController
-              control={control}
-              name="confirmedPassword"
+              name="newPassword"
+              label="Nouveau mot de passe"
               autocomplete="new-password"
-              label="Confirmer le mot de passe"
+              withSecurityRules
               requiredIndicator="explicit"
             />
-          </RepeatPasswordContainer>
-          <ButtonPrimary
-            wording="Enregistrer"
-            accessibilityLabel="Enregistrer les modifications"
-            onPress={onSubmit}
-            disabled={disabled}
-          />
-        </Form.MaxWidth>
-      </Container>
-    </SecondaryPageWithBlurHeader>
+            <RepeatPasswordContainer keyboardHeight={keyboardHeight}>
+              <PasswordInputController
+                control={control}
+                name="confirmedPassword"
+                autocomplete="new-password"
+                label="Confirmer le mot de passe"
+                requiredIndicator="explicit"
+              />
+            </RepeatPasswordContainer>
+            <Button
+              wording="Enregistrer"
+              accessibilityLabel="Enregistrer les modifications"
+              onPress={onSubmit}
+              disabled={disabled}
+            />
+          </Form.MaxWidth>
+        </Container>
+      }
+    />
   )
 }
 
 const Container = styled.View<{ paddingBottom: number }>(({ paddingBottom, theme }) => ({
   paddingBottom,
   marginBottom: theme.designSystem.size.spacing.xl,
+  flex: theme.isDesktopViewport ? undefined : 1,
 }))
 
 const OldPasswordContainer = styled.View(({ theme }) => ({

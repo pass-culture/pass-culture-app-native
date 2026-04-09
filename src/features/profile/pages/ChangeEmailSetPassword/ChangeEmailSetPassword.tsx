@@ -11,12 +11,12 @@ import { useChangeEmailSetPasswordMutation } from 'features/profile/queries/useC
 import { eventMonitoring } from 'libs/monitoring/services'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { newPasswordSchema } from 'shared/forms/schemas/newPasswordSchema'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -28,7 +28,6 @@ type FormValues = {
 export const ChangeEmailSetPassword = () => {
   const { replace } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'ChangeEmailSetPassword'>>()
-  const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   useForHeightKeyboardEvents(setKeyboardHeight)
 
@@ -47,19 +46,14 @@ export const ChangeEmailSetPassword = () => {
 
   const { mutate: setPassword, isPending } = useChangeEmailSetPasswordMutation({
     onSuccess: () => {
-      showSuccessSnackBar({
-        message: 'Ton mot de passe a bien été créé.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showSuccessSnackBar('Ton mot de passe a bien été créé.')
       if (!params?.emailSelectionToken) return // emailSelectionToken should never be undefined if token is defined
       replace(...getProfileHookConfig('NewEmailSelection', { token: params?.emailSelectionToken }))
     },
     onError: () =>
-      showErrorSnackBar({
-        message:
-          'Une erreur s’est produite lors de la création du mot de passe. Réessaie plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      }),
+      showErrorSnackBar(
+        'Une erreur s’est produite lors de la création du mot de passe. Réessaie plus tard.'
+      ),
   })
 
   const onSubmit = handleSubmit(({ newPassword }) => {
@@ -73,49 +67,52 @@ export const ChangeEmailSetPassword = () => {
   })
 
   return (
-    <SecondaryPageWithBlurHeader title="Créer mon mot de passe">
-      <StyledView paddingBottom={Platform.OS === 'ios' ? keyboardHeight : 0}>
-        <ViewGap gap={4}>
-          <Typo.Title3 {...getHeadingAttrs(2)}>Crée ton mot de passe</Typo.Title3>
-          <Typo.Body>
-            Tu t’es inscrit via Google, tu ne possèdes donc pas de mot de passe actuellement.
-          </Typo.Body>
-          <Typo.Body>
-            Ce mot de passe te permettra de te connecter avec ta nouvelle adresse e-mail.
-          </Typo.Body>
-        </ViewGap>
-        <Form.MaxWidth flex={1}>
-          <Container>
-            <PasswordInputController
-              name="newPassword"
-              label="Mot de passe"
-              autocomplete="new-password"
-              control={control}
-              requiredIndicator="explicit"
-              withSecurityRules
-              securityRulesAlwaysVisible
-            />
-          </Container>
-          <Container>
-            <PasswordInputController
-              name="confirmedPassword"
-              autocomplete="new-password"
-              label="Confirmer le mot de passe"
-              control={control}
-              requiredIndicator="explicit"
-            />
-          </Container>
-          <Container>
-            <ButtonPrimary
-              wording="Créer mon mot de passe"
-              disabled={!isValid}
-              isLoading={isPending}
-              onPress={onSubmit}
-            />
-          </Container>
-        </Form.MaxWidth>
-      </StyledView>
-    </SecondaryPageWithBlurHeader>
+    <PageWithHeader
+      title="Créer mon mot de passe"
+      scrollChildren={
+        <StyledView paddingBottom={Platform.OS === 'ios' ? keyboardHeight : 0}>
+          <ViewGap gap={4}>
+            <Typo.Title3 {...getHeadingAttrs(2)}>Crée ton mot de passe</Typo.Title3>
+            <Typo.Body>
+              Tu t’es inscrit via Google, tu ne possèdes donc pas de mot de passe actuellement.
+            </Typo.Body>
+            <Typo.Body>
+              Ce mot de passe te permettra de te connecter avec ta nouvelle adresse e-mail.
+            </Typo.Body>
+          </ViewGap>
+          <Form.MaxWidth flex={1}>
+            <Container>
+              <PasswordInputController
+                name="newPassword"
+                label="Mot de passe"
+                autocomplete="new-password"
+                control={control}
+                requiredIndicator="explicit"
+                withSecurityRules
+                securityRulesAlwaysVisible
+              />
+            </Container>
+            <Container>
+              <PasswordInputController
+                name="confirmedPassword"
+                autocomplete="new-password"
+                label="Confirmer le mot de passe"
+                control={control}
+                requiredIndicator="explicit"
+              />
+            </Container>
+            <Container>
+              <Button
+                wording="Créer mon mot de passe"
+                disabled={!isValid}
+                isLoading={isPending}
+                onPress={onSubmit}
+              />
+            </Container>
+          </Form.MaxWidth>
+        </StyledView>
+      }
+    />
   )
 }
 

@@ -1,8 +1,6 @@
 // eslint-disable-next-line no-restricted-imports
 import { isSafari, browserVersion } from 'react-device-detect'
 
-// eslint-disable-next-line local-rules/no-theme-from-theme
-
 import { CustomFocusOutlineProps } from 'ui/theme/customFocusOutline/type'
 
 /*

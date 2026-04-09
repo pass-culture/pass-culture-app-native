@@ -1,12 +1,14 @@
 import { useFocusEffect, useIsFocused } from '@react-navigation/native'
 import { FlashListRef } from '@shopify/flash-list'
+import { SearchResponse } from 'algoliasearch'
 import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { FlatList, Platform, useWindowDimensions, ViewToken } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
+import { usePreviousRouteName } from 'features/navigation/helpers/usePreviousRouteName'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
@@ -17,11 +19,10 @@ import { ArtistSection } from 'features/search/components/SearchListHeader/Artis
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
 import { getStringifySearchStateWithoutLocation } from 'features/search/helpers/getStringifySearchStateWithoutLocation/getStringifySearchStateWithoutLocation'
-import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateToSearchFilter/useNavigateToSearchFilter'
 import { usePrevious } from 'features/search/helpers/usePrevious'
 import { useGridListLayout } from 'features/search/store/gridListLayoutStore'
-import { GridListLayout, VenuesUserData } from 'features/search/types'
+import { GridListLayout, SearchListProps, SearchView, VenuesUserData } from 'features/search/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { Venue } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
@@ -73,18 +74,14 @@ export type SearchResultsContentProps = {
   onSearchResultsRefresh: () => void
   hits: SearchOfferHits
   nbHits: number
-  isLoading?: boolean
-  isFetching?: boolean
-  isFetchingNextPage?: boolean
-  userData: unknown
+  isLoading: boolean
+  isRefetching: boolean
+  userData: SearchResponse<Offer[]>['userData']
   venuesUserData: VenuesUserData
   offerVenues: Venue[]
-  onViewableItemsChanged?: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
+  onPressAIFakeDoorBanner: () => void
+  onViewableItemsChanged?: SearchListProps['onViewableVenuePlaylistItemsChanged']
+  enableAIFakeDoor?: boolean
 }
 
 export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
@@ -94,12 +91,14 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   hits,
   nbHits,
   isLoading,
-  isFetching,
-  isFetchingNextPage,
+  isRefetching,
   userData,
   venuesUserData,
   offerVenues,
+  enableAIFakeDoor,
+  onPressAIFakeDoorBanner,
 }) => {
+  const previousRouteName = usePreviousRouteName()
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const { listRef: searchListRef, handleViewableItemsChanged } = useViewableItemsTracker<
     FlashListRef<Offer>
@@ -112,16 +111,16 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         venuesUserData === undefined ? 0 : 1
       ),
   })
-
+  const { designSystem, breakpoints } = useTheme()
   const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()
   const { navigateToSearchFilter } = useNavigateToSearchFilter()
-  const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
 
-  const showSkeleton = useIsFalseWithDelay(!!isLoading, ANIMATION_DURATION)
-  const isRefreshing = useIsFalseWithDelay(!!isFetching, ANIMATION_DURATION)
+  const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
+  const isRefreshing = useIsFalseWithDelay(isRefetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
-  const { geolocPosition, selectedLocationMode, selectedPlace, onResetPlace } = useLocation()
+  const { geolocPosition, selectedLocationMode, setSelectedLocationMode, selectedPlace, setPlace } =
+    useLocation()
   const { width, height } = useWindowDimensions()
   const shouldDisplayVenueMapInSearch = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
@@ -183,12 +182,17 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const previousIsLoading = usePrevious(isLoading)
   useEffect(() => {
     if (previousIsLoading && !isLoading) {
-      void analytics.logPerformSearch(searchState, disabilities, nbHits, 'SearchResults')
+      void analytics.logPerformSearch(
+        searchState,
+        disabilities,
+        nbHits,
+        previousRouteName === SearchView.Thematic ? previousRouteName : SearchView.Results
+      )
       if (nbHits === 0) {
         void analytics.logNoSearchResult(searchState.query, searchState.searchId)
       }
     }
-  }, [isLoading, nbHits, previousIsLoading, searchState, disabilities])
+  }, [isLoading, nbHits, previousIsLoading, previousRouteName, searchState, disabilities])
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
@@ -239,7 +243,14 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     }
   }, [searchState])
 
-  const { tileWidth, nbrOfTilesToDisplay } = getGridTileRatio(width)
+  const margin = designSystem.size.spacing.xl
+  const gutter = designSystem.size.spacing.l
+  const { tileWidth, nbrOfTilesToDisplay } = getGridTileRatio({
+    screenWidth: width,
+    margin,
+    gutter,
+    breakpoint: breakpoints.lg,
+  })
 
   const renderItem = useCallback<
     ({ item, index }: { item: Offer; index: number }) => React.JSX.Element
@@ -326,7 +337,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     [Tab.SEARCHLIST]: (
       <SearchList
         ref={searchListRef}
-        isFetchingNextPage={!!isFetchingNextPage}
         hits={hits}
         nbHits={nbHits}
         renderItem={renderItem}
@@ -351,6 +361,8 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         shouldDisplayGridList={shouldDisplayGridList}
         onViewableItemsChanged={handleViewableItemsChanged}
         onViewableVenuePlaylistItemsChanged={onViewableItemsChanged}
+        enableAIFakeDoor={enableAIFakeDoor}
+        onPressAIFakeDoorBanner={onPressAIFakeDoorBanner}
       />
     ),
     [Tab.MAP]: selectedLocationMode === LocationMode.EVERYWHERE ? null : <VenueMapViewContainer />,
@@ -380,10 +392,10 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
 
     return (
       <NoSearchResult
+        setSelectedLocationMode={setSelectedLocationMode}
         searchState={searchState}
+        setPlace={setPlace}
         navigateToSearchFilter={navigateToSearchFilter}
-        onResetPlace={onResetPlace}
-        navigateToSearchResults={navigateToSearchResults}
       />
     )
   }

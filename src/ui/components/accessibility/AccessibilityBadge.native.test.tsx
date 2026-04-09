@@ -2,7 +2,7 @@ import React from 'react'
 
 import { render, screen } from 'tests/utils'
 
-import { HandicapCategory } from '../../../shared/accessibility/getAccessibilityCategoryAndIcon'
+import { HandicapCategory } from '../../../shared/accessibility/helpers/getAccessibilityCategoryAndIcon'
 
 import { AccessibilityBadge } from './AccessibilityBadge'
 

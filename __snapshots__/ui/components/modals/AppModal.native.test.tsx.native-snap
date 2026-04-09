@@ -120,6 +120,7 @@ exports[`<AppModal /> on big screen 1`] = `
                 "top": 0,
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -150,7 +151,7 @@ exports[`<AppModal /> on big screen 1`] = `
           "maxWidth": 520,
         }
       }
-      height={428}
+      height={432}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -163,8 +164,8 @@ exports[`<AppModal /> on big screen 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
-          "justifyContent": "center",
+          "height": 432,
+          "justifyContent": "flex-start",
           "maxWidth": 520,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -176,12 +177,14 @@ exports[`<AppModal /> on big screen 1`] = `
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -245,13 +248,14 @@ exports[`<AppModal /> on big screen 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -409,6 +413,7 @@ exports[`<AppModal /> on small screen 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -433,7 +438,7 @@ exports[`<AppModal /> on small screen 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={432}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -446,8 +451,8 @@ exports[`<AppModal /> on small screen 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
-          "justifyContent": "center",
+          "height": 432,
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 400,
           "paddingBottom": 32,
@@ -460,12 +465,14 @@ exports[`<AppModal /> on small screen 1`] = `
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -529,13 +536,14 @@ exports[`<AppModal /> on small screen 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -647,6 +655,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -671,7 +680,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={432}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -684,8 +693,8 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
-          "justifyContent": "center",
+          "height": 432,
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -698,12 +707,14 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -767,13 +778,14 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -931,6 +943,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -955,7 +968,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={432}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -968,8 +981,8 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
-          "justifyContent": "center",
+          "height": 432,
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -982,12 +995,14 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -1051,13 +1066,14 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -1215,6 +1231,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -1239,7 +1256,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={432}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -1252,8 +1269,8 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
-          "justifyContent": "center",
+          "height": 432,
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -1266,12 +1283,14 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -1335,13 +1354,14 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -1499,6 +1519,7 @@ exports[`<AppModal /> with left icon render 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -1523,7 +1544,7 @@ exports[`<AppModal /> with left icon render 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={432}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -1536,8 +1557,8 @@ exports[`<AppModal /> with left icon render 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
-          "justifyContent": "center",
+          "height": 432,
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -1550,12 +1571,14 @@ exports[`<AppModal /> with left icon render 1`] = `
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -1580,7 +1603,7 @@ exports[`<AppModal /> with left icon render 1`] = `
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1609,10 +1632,20 @@ exports[`<AppModal /> with left icon render 1`] = `
                     "userSelect": "auto",
                   },
                   {
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
                   },
                 ],
                 {
@@ -1623,22 +1656,53 @@ exports[`<AppModal /> with left icon render 1`] = `
             testID="Revenir à l’étape précédente"
           >
             <View
-              height={20}
-              width={20}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-            <Text
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
               style={
                 {
-                  "display": "none",
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
                 }
               }
             >
-              Retour
-            </Text>
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="0"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  width={22}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
         <View
@@ -1687,13 +1751,14 @@ exports[`<AppModal /> with left icon render 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -1851,6 +1916,7 @@ exports[`<AppModal /> with minimal props 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -1875,7 +1941,7 @@ exports[`<AppModal /> with minimal props 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={432}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -1888,8 +1954,8 @@ exports[`<AppModal /> with minimal props 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
-          "justifyContent": "center",
+          "height": 432,
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -1902,12 +1968,14 @@ exports[`<AppModal /> with minimal props 1`] = `
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -1971,13 +2039,14 @@ exports[`<AppModal /> with minimal props 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -2135,6 +2204,7 @@ exports[`<AppModal /> with right icon render 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -2159,7 +2229,7 @@ exports[`<AppModal /> with right icon render 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={432}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -2172,8 +2242,8 @@ exports[`<AppModal /> with right icon render 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
-          "justifyContent": "center",
+          "height": 432,
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -2186,12 +2256,14 @@ exports[`<AppModal /> with right icon render 1`] = `
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -2258,7 +2330,7 @@ exports[`<AppModal /> with right icon render 1`] = `
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2287,10 +2359,20 @@ exports[`<AppModal /> with right icon render 1`] = `
                     "userSelect": "auto",
                   },
                   {
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
                   },
                 ],
                 {
@@ -2301,13 +2383,53 @@ exports[`<AppModal /> with right icon render 1`] = `
             testID="Fermer la modale et annuler"
           >
             <View
-              height={20}
-              testID="rightIcon"
-              width={20}
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
+                }
+              }
             >
-              <Text>
-                rightIcon-SVG-Mock
-              </Text>
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="2"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  testID="rightIcon"
+                  width={22}
+                >
+                  <Text>
+                    rightIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>
@@ -2315,13 +2437,14 @@ exports[`<AppModal /> with right icon render 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -2479,6 +2602,7 @@ exports[`<AppModal /> without children 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -2503,7 +2627,7 @@ exports[`<AppModal /> without children 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={432}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -2516,8 +2640,8 @@ exports[`<AppModal /> without children 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
-          "justifyContent": "center",
+          "height": 432,
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -2530,12 +2654,14 @@ exports[`<AppModal /> without children 1`] = `
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -2599,13 +2725,14 @@ exports[`<AppModal /> without children 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {

@@ -11,7 +11,7 @@ import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 export const useSubmitChangeCity = () => {
   const { user } = useAuthContext()
@@ -25,7 +25,6 @@ export const useSubmitChangeCity = () => {
   const { setCity } = cityActions
   const { resetAddress } = addressActions
 
-  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'ChangeCity'>>()
   const type = params?.type
@@ -50,10 +49,7 @@ export const useSubmitChangeCity = () => {
         navigate(...getProfileHookConfig('ChangeAddress', { type }))
       } else {
         navigate(...getProfileHookConfig('PersonalData'))
-        showSuccessSnackBar({
-          message: 'Ta ville de résidence a bien été modifiée\u00a0!',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+        showSuccessSnackBar('Ta ville de résidence a bien été modifiée\u00a0!')
       }
 
       analytics.logUpdatePostalCode({
@@ -64,10 +60,7 @@ export const useSubmitChangeCity = () => {
       })
     },
     onError: () => {
-      showErrorSnackBar({
-        message: 'Une erreur est survenue',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('Une erreur est survenue')
     },
   })
 

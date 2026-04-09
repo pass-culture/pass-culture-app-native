@@ -12,10 +12,7 @@ export type SubscriptionStackParamList = {
   Stepper: { from: StepperOrigin } | undefined
   // PhoneValidation
   SetPhoneNumberWithoutValidation: undefined
-  SetPhoneNumber: undefined
-  SetPhoneValidationCode: undefined
-  PhoneValidationTooManyAttempts: undefined
-  PhoneValidationTooManySMSSent: undefined
+
   NewSignup: undefined
   // Profile
   ProfileInformationValidationCreate?: ProfileScreenType
@@ -31,7 +28,7 @@ export type SubscriptionStackParamList = {
   ComeBackLater: undefined
   DMSIntroduction?: { isForeignDMSInformation: boolean }
   ExpiredOrLostID: undefined
-  UbbleWebview: undefined
+  UbbleWebview: { identificationUrl: string }
   IdentityCheckEnd: undefined
   IdentityCheckUnavailable?: { withDMS?: boolean }
   EduConnectForm: undefined

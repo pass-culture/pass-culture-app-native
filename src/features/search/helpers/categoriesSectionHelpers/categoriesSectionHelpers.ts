@@ -10,7 +10,6 @@ export type CategoriesMapping = MappingTree | MappedNativeCategories | MappedGen
 
 type CategoriesMappingItem = {
   label: string
-  nbResultsFacet?: number
   children?: CategoriesMapping
 }
 
@@ -33,8 +32,11 @@ export const getSortedCategoriesEntries = <T extends CategoriesMapping>(
   return entries
 }
 
+export const itemHasChildren = (item: { children?: CategoriesMapping } | undefined): boolean =>
+  Object.keys(item?.children ?? {}).length > 0
+
 export const checkHasChildrenCategories = (entries: CategoryEntry[]): boolean =>
-  entries.some(([, item]) => Object.keys(item.children ?? {}).length > 0)
+  entries.some(([, item]) => itemHasChildren(item))
 
 export const buildRadioOptions = <K>(
   entries: CategoryEntry[],

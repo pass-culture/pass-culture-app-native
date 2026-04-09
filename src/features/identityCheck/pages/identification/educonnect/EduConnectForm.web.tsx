@@ -5,12 +5,12 @@ import styled from 'styled-components/native'
 import { ErrorTrigger } from 'features/identityCheck/components/ErrorTrigger'
 import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { useEduConnectLoginMutation } from 'features/identityCheck/queries/useEduConnectLoginMutation'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const EduConnectForm = () => {
   const { error, openEduConnectTab } = useEduConnectLoginMutation()
@@ -29,30 +29,21 @@ export const EduConnectForm = () => {
       <PageWithHeader
         title="Mon identité"
         scrollChildren={
-          <React.Fragment>
+          <Container>
             <Center>
               <IdCardWithMagnifyingGlass />
             </Center>
-
             <StyledButtonText>Identification</StyledButtonText>
-
-            <Spacer.Column numberOfSpaces={4} />
-
             <StyledBody>
               Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de
               ton identifiant et ton mot de passe EduConnect&nbsp;! Si tu ne les as pas, contacte
               ton établissement pour les récupérer.
             </StyledBody>
-
-            <Spacer.Column numberOfSpaces={4} />
-
             <Banner label="Un souci pour accéder à la page&nbsp;? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur." />
-
-            <Spacer.Column numberOfSpaces={8} />
-          </React.Fragment>
+          </Container>
         }
         fixedBottomChildren={
-          <ButtonPrimary
+          <Button
             wording="Ouvrir un onglet ÉduConnect"
             onPress={openEduConnectTab}
             icon={ExternalSite}
@@ -64,17 +55,21 @@ export const EduConnectForm = () => {
   )
 }
 
+const Container = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
 const IdCardWithMagnifyingGlass = styled(InitialIdCardWithMagnifyingGlass).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,
   color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
-const Center = styled.View({
+const Center = styled.View(({ theme }) => ({
   alignSelf: 'center',
-  padding: getSpacing(7),
-})
+  padding: theme.designSystem.size.spacing.xxl,
+}))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
   textAlign: 'center',
   color: theme.designSystem.color.text.subtle,
 }))

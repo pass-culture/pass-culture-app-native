@@ -5,7 +5,7 @@ import { openUrl } from 'features/navigation/helpers/openUrl'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
 import { ExternalSiteFilled as DefaultExternalSite } from 'ui/svg/icons/ExternalSiteFilled'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   url: string
@@ -46,6 +46,6 @@ const ExternalSite = styled(DefaultExternalSite).attrs<{ primary?: boolean }>(
   })
 )<{ primary?: boolean }>``
 
-const StyledBody = styled(Typo.Body)({
-  marginLeft: getSpacing(1),
-})
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.xs,
+}))

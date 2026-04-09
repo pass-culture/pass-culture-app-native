@@ -16,9 +16,10 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
 >
   <View
     accessibilityRole="header"
+    onLayout={[Function]}
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -39,6 +40,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -70,7 +72,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -100,10 +102,19 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "flexGrow": 1,
-                  "height": 40,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 40,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                  "width": "auto",
                 },
               ],
               {
@@ -114,23 +125,53 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-          <Text
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
-                "display": "none",
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
               }
             }
           >
-            Retour
-          </Text>
+            <View
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="0"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -171,960 +212,1013 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
       />
     </View>
   </View>
-  <RCTScrollView
-    contentContainerStyle={
+  <View
+    style={
       {
-        "alignSelf": "center",
-        "maxWidth": 500,
-        "paddingHorizontal": 24,
-        "paddingVertical": 24,
-        "width": "100%",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
       }
     }
-    enableMaxWidth={true}
-    scrollEnabled={true}
-    style={{}}
   >
-    <View>
+    <View
+      onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
+          {
+            "paddingBottom": 0,
+          },
+        ]
+      }
+    >
       <View
-        height={65}
         style={
           {
-            "height": 65,
-          }
-        }
-      />
-      <RCTScrollView
-        ListFooterComponent={[Function]}
-        ListHeaderComponent={
-          <Styled(View)>
-            <Styled(Styled(SadFaceSvg)) />
-            <Styled(View)>
-              <Styled(Text)
-                accessibilityRole="header"
-              >
-                Pourquoi souhaites-tu supprimer ton compte ?
-              </Styled(Text)>
-              <Styled(Text)>
-                Triste de te voir partir ! Dis-nous pourquoi pour nous aider à améliorer l’application.
-              </Styled(Text)>
-            </Styled(View)>
-          </Styled(View)>
-        }
-        contentContainerStyle={
-          {
-            "alignSelf": "center",
-            "gap": 16,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "maxWidth": 500,
-            "paddingBottom": 32,
-            "paddingHorizontal": 24,
             "width": "100%",
           }
         }
-        data={
-          [
-            {
-              "analyticsReason": "changeEmail",
-              "navigateTo": {
-                "params": {
-                  "params": {
-                    "showModal": true,
-                  },
-                  "screen": "ChangeEmail",
-                },
-                "screen": "ProfileStackNavigator",
-              },
-              "wording": "J’aimerais créer un compte avec une adresse e-mail différente",
-            },
-            {
-              "analyticsReason": "noLongerUsed",
-              "navigateTo": {
-                "params": {
-                  "params": undefined,
-                  "screen": "DeleteProfileConfirmation",
-                },
-                "screen": "ProfileStackNavigator",
-              },
-              "wording": "Je n’utilise plus l’application",
-            },
-            {
-              "analyticsReason": "noMoreCredit",
-              "navigateTo": {
-                "params": {
-                  "params": undefined,
-                  "screen": "DeleteProfileConfirmation",
-                },
-                "screen": "ProfileStackNavigator",
-              },
-              "wording": "Je n’ai plus de crédit ou très peu de crédit restant",
-            },
-            {
-              "analyticsReason": "dataDeletion",
-              "navigateTo": {
-                "params": {
-                  "params": undefined,
-                  "screen": "DeleteProfileConfirmation",
-                },
-                "screen": "ProfileStackNavigator",
-              },
-              "wording": "Je souhaite supprimer mes données personnelles",
-            },
-            {
-              "analyticsReason": "hackedAccount",
-              "navigateTo": {
-                "params": {
-                  "params": undefined,
-                  "screen": "DeleteProfileAccountHacked",
-                },
-                "screen": "ProfileStackNavigator",
-              },
-              "wording": "Je pense que quelqu’un d’autre a accès à mon compte",
-            },
-            {
-              "analyticsReason": "other",
-              "navigateTo": {
-                "params": {
-                  "params": undefined,
-                  "screen": "DeleteProfileContactSupport",
-                },
-                "screen": "ProfileStackNavigator",
-              },
-              "wording": "Autre",
-            },
-          ]
-        }
-        getItem={[Function]}
-        getItemCount={[Function]}
-        keyExtractor={[Function]}
-        onContentSizeChange={[Function]}
-        onLayout={[Function]}
-        onMomentumScrollBegin={[Function]}
-        onMomentumScrollEnd={[Function]}
-        onScroll={[Function]}
-        onScrollBeginDrag={[Function]}
-        onScrollEndDrag={[Function]}
-        removeClippedSubviews={false}
-        renderItem={[Function]}
-        scrollEventThrottle={0.0001}
-        stickyHeaderIndices={[]}
-        viewabilityConfig={
-          {
-            "itemVisiblePercentThreshold": 100,
-          }
-        }
-        viewabilityConfigCallbackPairs={[]}
       >
-        <View>
-          <View
-            collapsable={false}
-            onLayout={[Function]}
-          >
-            <View
-              style={
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
+            {
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "paddingBottom": 24,
+              "paddingHorizontal": 24,
+              "paddingTop": 65,
+            }
+          }
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          onScroll={[Function]}
+          paddingHeaderHeight={65}
+          scrollEventThrottle={16}
+          style={{}}
+        >
+          <View>
+            <RCTScrollView
+              ListFooterComponent={[Function]}
+              ListHeaderComponent={
+                <Styled(View)>
+                  <Styled(Styled(SadFaceSvg)) />
+                  <Styled(View)>
+                    <Styled(Text)
+                      accessibilityRole="header"
+                    >
+                      Pourquoi souhaites-tu supprimer ton compte ?
+                    </Styled(Text)>
+                    <Styled(Text)>
+                      Triste de te voir partir ! Dis-nous pourquoi pour nous aider à améliorer l’application.
+                    </Styled(Text)>
+                  </Styled(View)>
+                </Styled(View)>
+              }
+              contentContainerStyle={
                 {
-                  "alignItems": "center",
-                  "paddingBottom": 8,
+                  "alignSelf": "center",
+                  "gap": 16,
+                  "maxWidth": 500,
+                  "paddingBottom": 32,
+                  "paddingHorizontal": 24,
+                  "width": "100%",
                 }
               }
-            >
-              <View
-                height={109.2}
-                width={140}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                style={
+              data={
+                [
                   {
-                    "alignItems": "flex-start",
-                    "gap": 16,
-                    "width": "100%",
-                  }
-                }
-              >
-                <Text
-                  accessibilityRole="header"
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 19,
-                      "lineHeight": 30.4,
-                    }
-                  }
-                >
-                  Pourquoi souhaites-tu supprimer ton compte ?
-                </Text>
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Triste de te voir partir ! Dis-nous pourquoi pour nous aider à améliorer l’application.
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={null}
-          >
-            <View
-              style={
-                {
-                  "paddingBottom": 0,
-                }
-              }
-            >
-              <View
-                accessibilityLabel="J’aimerais créer un compte avec une adresse e-mail différente"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
+                    "analyticsReason": "changeEmail",
+                    "navigateTo": {
+                      "params": {
+                        "params": {
+                          "showModal": true,
+                        },
+                        "screen": "ChangeEmail",
                       },
-                      {},
-                      {
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
+                      "screen": "ProfileStackNavigator",
                     },
-                  ]
-                }
-                testID="J’aimerais créer un compte avec une adresse e-mail différente"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "borderColor": "#90949d",
-                        "borderRadius": 8,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "padding": 16,
-                        "width": "100%",
+                    "wording": "J’aimerais créer un compte avec une adresse e-mail différente",
+                  },
+                  {
+                    "analyticsReason": "noLongerUsed",
+                    "navigateTo": {
+                      "params": {
+                        "params": undefined,
+                        "screen": "DeleteProfileConfirmation",
                       },
-                      undefined,
-                    ]
-                  }
+                      "screen": "ProfileStackNavigator",
+                    },
+                    "wording": "Je n’utilise plus l’application",
+                  },
+                  {
+                    "analyticsReason": "noMoreCredit",
+                    "navigateTo": {
+                      "params": {
+                        "params": undefined,
+                        "screen": "DeleteProfileConfirmation",
+                      },
+                      "screen": "ProfileStackNavigator",
+                    },
+                    "wording": "Je n’ai plus de crédit ou très peu de crédit restant",
+                  },
+                  {
+                    "analyticsReason": "dataDeletion",
+                    "navigateTo": {
+                      "params": {
+                        "params": undefined,
+                        "screen": "DeleteProfileConfirmation",
+                      },
+                      "screen": "ProfileStackNavigator",
+                    },
+                    "wording": "Je souhaite supprimer mes données personnelles",
+                  },
+                  {
+                    "analyticsReason": "hackedAccount",
+                    "navigateTo": {
+                      "params": {
+                        "params": undefined,
+                        "screen": "DeleteProfileAccountHacked",
+                      },
+                      "screen": "ProfileStackNavigator",
+                    },
+                    "wording": "Je pense que quelqu’un d’autre a accès à mon compte",
+                  },
+                  {
+                    "analyticsReason": "other",
+                    "navigateTo": {
+                      "params": {
+                        "params": undefined,
+                        "screen": "DeleteProfileContactSupport",
+                      },
+                      "screen": "ProfileStackNavigator",
+                    },
+                    "wording": "Autre",
+                  },
+                ]
+              }
+              getItem={[Function]}
+              getItemCount={[Function]}
+              keyExtractor={[Function]}
+              onContentSizeChange={[Function]}
+              onLayout={[Function]}
+              onMomentumScrollBegin={[Function]}
+              onMomentumScrollEnd={[Function]}
+              onScroll={[Function]}
+              onScrollBeginDrag={[Function]}
+              onScrollEndDrag={[Function]}
+              removeClippedSubviews={false}
+              renderItem={[Function]}
+              scrollEventThrottle={0.0001}
+              stickyHeaderIndices={[]}
+              viewabilityConfig={
+                {
+                  "itemVisiblePercentThreshold": 100,
+                }
+              }
+              viewabilityConfigCallbackPairs={[]}
+            >
+              <View>
+                <View
+                  collapsable={false}
+                  onLayout={[Function]}
                 >
                   <View
                     style={
                       {
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginRight": 16,
-                        "textAlign": "start",
+                        "alignItems": "center",
+                        "paddingBottom": 8,
                       }
                     }
                   >
                     <View
-                      style={
-                        {
-                          "justifyContent": "center",
-                          "minHeight": 58,
-                        }
-                      }
-                    >
-                      <Text
-                        style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                      >
-                        J’aimerais créer un compte avec une adresse e-mail différente
-                      </Text>
-                    </View>
-                  </View>
-                  <View>
-                    <View
-                      height={24}
-                      width={24}
+                      height={109.2}
+                      width={140}
                     >
                       <Text>
                         undefined-SVG-Mock
                       </Text>
                     </View>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={null}
-          >
-            <View
-              style={
-                {
-                  "paddingBottom": 0,
-                }
-              }
-            >
-              <View
-                accessibilityLabel="Je n’utilise plus l’application"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {},
-                      {
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Je n’utilise plus l’application"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "borderColor": "#90949d",
-                        "borderRadius": 8,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "padding": 16,
-                        "width": "100%",
-                      },
-                      undefined,
-                    ]
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginRight": 16,
-                        "textAlign": "start",
-                      }
-                    }
-                  >
                     <View
                       style={
                         {
-                          "justifyContent": "center",
-                          "minHeight": 58,
+                          "alignItems": "flex-start",
+                          "gap": 16,
+                          "width": "100%",
                         }
                       }
                     >
                       <Text
+                        accessibilityRole="header"
                         style={
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 19,
+                            "lineHeight": 30.4,
+                          }
+                        }
+                      >
+                        Pourquoi souhaites-tu supprimer ton compte ?
+                      </Text>
+                      <Text
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
                             "fontSize": 16,
                             "lineHeight": 25.6,
                           }
                         }
                       >
-                        Je n’utilise plus l’application
-                      </Text>
-                    </View>
-                  </View>
-                  <View>
-                    <View
-                      height={24}
-                      width={24}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
+                        Triste de te voir partir ! Dis-nous pourquoi pour nous aider à améliorer l’application.
                       </Text>
                     </View>
                   </View>
                 </View>
-              </View>
-            </View>
-          </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={null}
-          >
-            <View
-              style={
-                {
-                  "paddingBottom": 0,
-                }
-              }
-            >
-              <View
-                accessibilityLabel="Je n’ai plus de crédit ou très peu de crédit restant"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {},
-                      {
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Je n’ai plus de crédit ou très peu de crédit restant"
-              >
                 <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "borderColor": "#90949d",
-                        "borderRadius": 8,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "padding": 16,
-                        "width": "100%",
-                      },
-                      undefined,
-                    ]
-                  }
+                  onFocusCapture={[Function]}
+                  onLayout={[Function]}
+                  style={null}
                 >
                   <View
                     style={
                       {
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginRight": 16,
-                        "textAlign": "start",
+                        "paddingBottom": 0,
                       }
                     }
                   >
                     <View
-                      style={
+                      accessibilityLabel="J’aimerais créer un compte avec une adresse e-mail différente"
+                      accessibilityRole="button"
+                      accessibilityState={
                         {
-                          "justifyContent": "center",
-                          "minHeight": 58,
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
-                    >
-                      <Text
-                        style={
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {},
+                            {
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                            },
+                          ],
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="J’aimerais créer un compte avec une adresse e-mail différente"
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "borderColor": "#90949d",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "padding": 16,
+                              "width": "100%",
+                            },
+                            undefined,
+                          ]
                         }
                       >
-                        Je n’ai plus de crédit ou très peu de crédit restant
-                      </Text>
-                    </View>
-                  </View>
-                  <View>
-                    <View
-                      height={24}
-                      width={24}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                        <View
+                          style={
+                            {
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "marginRight": 16,
+                              "textAlign": "start",
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              {
+                                "justifyContent": "center",
+                                "minHeight": 58,
+                              }
+                            }
+                          >
+                            <Text
+                              style={
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 16,
+                                  "lineHeight": 25.6,
+                                }
+                              }
+                            >
+                              J’aimerais créer un compte avec une adresse e-mail différente
+                            </Text>
+                          </View>
+                        </View>
+                        <View>
+                          <View
+                            height={24}
+                            width={24}
+                          >
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
                     </View>
                   </View>
                 </View>
-              </View>
-            </View>
-          </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={null}
-          >
-            <View
-              style={
-                {
-                  "paddingBottom": 0,
-                }
-              }
-            >
-              <View
-                accessibilityLabel="Je souhaite supprimer mes données personnelles"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {},
-                      {
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Je souhaite supprimer mes données personnelles"
-              >
                 <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "borderColor": "#90949d",
-                        "borderRadius": 8,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "padding": 16,
-                        "width": "100%",
-                      },
-                      undefined,
-                    ]
-                  }
+                  onFocusCapture={[Function]}
+                  onLayout={[Function]}
+                  style={null}
                 >
                   <View
                     style={
                       {
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginRight": 16,
-                        "textAlign": "start",
+                        "paddingBottom": 0,
                       }
                     }
                   >
                     <View
-                      style={
+                      accessibilityLabel="Je n’utilise plus l’application"
+                      accessibilityRole="button"
+                      accessibilityState={
                         {
-                          "justifyContent": "center",
-                          "minHeight": 58,
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
-                    >
-                      <Text
-                        style={
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {},
+                            {
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                            },
+                          ],
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Je n’utilise plus l’application"
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "borderColor": "#90949d",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "padding": 16,
+                              "width": "100%",
+                            },
+                            undefined,
+                          ]
                         }
                       >
-                        Je souhaite supprimer mes données personnelles
-                      </Text>
-                    </View>
-                  </View>
-                  <View>
-                    <View
-                      height={24}
-                      width={24}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                        <View
+                          style={
+                            {
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "marginRight": 16,
+                              "textAlign": "start",
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              {
+                                "justifyContent": "center",
+                                "minHeight": 58,
+                              }
+                            }
+                          >
+                            <Text
+                              style={
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 16,
+                                  "lineHeight": 25.6,
+                                }
+                              }
+                            >
+                              Je n’utilise plus l’application
+                            </Text>
+                          </View>
+                        </View>
+                        <View>
+                          <View
+                            height={24}
+                            width={24}
+                          >
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
                     </View>
                   </View>
                 </View>
-              </View>
-            </View>
-          </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={null}
-          >
-            <View
-              style={
-                {
-                  "paddingBottom": 0,
-                }
-              }
-            >
-              <View
-                accessibilityLabel="Je pense que quelqu’un d’autre a accès à mon compte"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {},
-                      {
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Je pense que quelqu’un d’autre a accès à mon compte"
-              >
                 <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "borderColor": "#90949d",
-                        "borderRadius": 8,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "padding": 16,
-                        "width": "100%",
-                      },
-                      undefined,
-                    ]
-                  }
+                  onFocusCapture={[Function]}
+                  onLayout={[Function]}
+                  style={null}
                 >
                   <View
                     style={
                       {
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginRight": 16,
-                        "textAlign": "start",
+                        "paddingBottom": 0,
                       }
                     }
                   >
                     <View
-                      style={
+                      accessibilityLabel="Je n’ai plus de crédit ou très peu de crédit restant"
+                      accessibilityRole="button"
+                      accessibilityState={
                         {
-                          "justifyContent": "center",
-                          "minHeight": 58,
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
-                    >
-                      <Text
-                        style={
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {},
+                            {
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                            },
+                          ],
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Je n’ai plus de crédit ou très peu de crédit restant"
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "borderColor": "#90949d",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "padding": 16,
+                              "width": "100%",
+                            },
+                            undefined,
+                          ]
                         }
                       >
-                        Je pense que quelqu’un d’autre a accès à mon compte
-                      </Text>
-                    </View>
-                  </View>
-                  <View>
-                    <View
-                      height={24}
-                      width={24}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                        <View
+                          style={
+                            {
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "marginRight": 16,
+                              "textAlign": "start",
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              {
+                                "justifyContent": "center",
+                                "minHeight": 58,
+                              }
+                            }
+                          >
+                            <Text
+                              style={
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 16,
+                                  "lineHeight": 25.6,
+                                }
+                              }
+                            >
+                              Je n’ai plus de crédit ou très peu de crédit restant
+                            </Text>
+                          </View>
+                        </View>
+                        <View>
+                          <View
+                            height={24}
+                            width={24}
+                          >
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
                     </View>
                   </View>
                 </View>
-              </View>
-            </View>
-          </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={null}
-          >
-            <View
-              style={
-                {
-                  "paddingBottom": 0,
-                }
-              }
-            >
-              <View
-                accessibilityLabel="Autre"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {},
-                      {
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Autre"
-              >
                 <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "borderColor": "#90949d",
-                        "borderRadius": 8,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "padding": 16,
-                        "width": "100%",
-                      },
-                      undefined,
-                    ]
-                  }
+                  onFocusCapture={[Function]}
+                  onLayout={[Function]}
+                  style={null}
                 >
                   <View
                     style={
                       {
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginRight": 16,
-                        "textAlign": "start",
+                        "paddingBottom": 0,
                       }
                     }
                   >
                     <View
-                      style={
+                      accessibilityLabel="Je souhaite supprimer mes données personnelles"
+                      accessibilityRole="button"
+                      accessibilityState={
                         {
-                          "justifyContent": "center",
-                          "minHeight": 58,
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
-                    >
-                      <Text
-                        style={
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {},
+                            {
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                            },
+                          ],
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Je souhaite supprimer mes données personnelles"
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "borderColor": "#90949d",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "padding": 16,
+                              "width": "100%",
+                            },
+                            undefined,
+                          ]
                         }
                       >
-                        Autre
-                      </Text>
-                    </View>
-                  </View>
-                  <View>
-                    <View
-                      height={24}
-                      width={24}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                        <View
+                          style={
+                            {
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "marginRight": 16,
+                              "textAlign": "start",
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              {
+                                "justifyContent": "center",
+                                "minHeight": 58,
+                              }
+                            }
+                          >
+                            <Text
+                              style={
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 16,
+                                  "lineHeight": 25.6,
+                                }
+                              }
+                            >
+                              Je souhaite supprimer mes données personnelles
+                            </Text>
+                          </View>
+                        </View>
+                        <View>
+                          <View
+                            height={24}
+                            width={24}
+                          >
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
                     </View>
                   </View>
                 </View>
+                <View
+                  onFocusCapture={[Function]}
+                  onLayout={[Function]}
+                  style={null}
+                >
+                  <View
+                    style={
+                      {
+                        "paddingBottom": 0,
+                      }
+                    }
+                  >
+                    <View
+                      accessibilityLabel="Je pense que quelqu’un d’autre a accès à mon compte"
+                      accessibilityRole="button"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {},
+                            {
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Je pense que quelqu’un d’autre a accès à mon compte"
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "borderColor": "#90949d",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "padding": 16,
+                              "width": "100%",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            {
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "marginRight": 16,
+                              "textAlign": "start",
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              {
+                                "justifyContent": "center",
+                                "minHeight": 58,
+                              }
+                            }
+                          >
+                            <Text
+                              style={
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 16,
+                                  "lineHeight": 25.6,
+                                }
+                              }
+                            >
+                              Je pense que quelqu’un d’autre a accès à mon compte
+                            </Text>
+                          </View>
+                        </View>
+                        <View>
+                          <View
+                            height={24}
+                            width={24}
+                          >
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  onFocusCapture={[Function]}
+                  onLayout={[Function]}
+                  style={null}
+                >
+                  <View
+                    style={
+                      {
+                        "paddingBottom": 0,
+                      }
+                    }
+                  >
+                    <View
+                      accessibilityLabel="Autre"
+                      accessibilityRole="button"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {},
+                            {
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Autre"
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "borderColor": "#90949d",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "padding": 16,
+                              "width": "100%",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            {
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "marginRight": 16,
+                              "textAlign": "start",
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              {
+                                "justifyContent": "center",
+                                "minHeight": 58,
+                              }
+                            }
+                          >
+                            <Text
+                              style={
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 16,
+                                  "lineHeight": 25.6,
+                                }
+                              }
+                            >
+                              Autre
+                            </Text>
+                          </View>
+                        </View>
+                        <View>
+                          <View
+                            height={24}
+                            width={24}
+                          >
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  onLayout={[Function]}
+                >
+                  <View
+                    customHeight={8}
+                    enable={true}
+                    style={
+                      {
+                        "height": 8,
+                      }
+                    }
+                  />
+                </View>
               </View>
-            </View>
-          </View>
-          <View
-            onLayout={[Function]}
-          >
+            </RCTScrollView>
             <View
               customHeight={8}
               enable={true}
@@ -1135,40 +1229,9 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
               }
             />
           </View>
-        </View>
-      </RCTScrollView>
+        </RCTScrollView>
+      </View>
     </View>
-  </RCTScrollView>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;

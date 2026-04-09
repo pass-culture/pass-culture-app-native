@@ -1,13 +1,13 @@
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { hasEnoughCredit } from 'features/offer/helpers/useHasEnoughCredit/hasEnoughCredit'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { RoundUnit, convertEuroToPacificFranc } from 'shared/currency/convertEuroToPacificFranc'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 
 export type HasEnoughCredit =
   | { hasEnoughCredit: true; message?: never }
@@ -31,11 +31,11 @@ function convertDomainCreditToPacificFranc(
 }
 
 export const useHasEnoughCredit = (
-  offer?: Pick<OfferResponseV2, 'stocks' | 'expenseDomains'>
+  offer?: Pick<OfferResponse, 'stocks' | 'expenseDomains'>
 ): HasEnoughCredit => {
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
   // If the offer, user, or userDomaineCredit is not available, we return false
   if (!offer || !user?.domainsCredit) return { hasEnoughCredit: false }

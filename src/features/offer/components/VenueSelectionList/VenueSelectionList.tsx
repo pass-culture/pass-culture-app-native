@@ -92,7 +92,6 @@ export const VenueSelectionList = ({
         </React.Fragment>
       )}
       <RadioButtonGroup
-        errorText="Une erreur est survenue"
         label={subTitle}
         description={headerMessage}
         options={options}

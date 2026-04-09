@@ -4,7 +4,7 @@ import { uniqBy } from 'lodash'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate, popTo } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import {
   defaultDisabilitiesProperties,
@@ -12,7 +12,7 @@ import {
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { SearchState } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import { beneficiaryUser } from 'fixtures/user'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
@@ -87,7 +87,8 @@ const mockedPlace: SuggestedPlace = {
   type: 'street',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
-
+const mockSetSelectedLocationMode = jest.fn()
+const mockSetPlace = jest.fn()
 const mockShowGeolocPermissionModal = jest.fn()
 const mockedPosition = { latitude: 2, longitude: 40 } as Position
 const mockedNoPosition = null as Position
@@ -101,9 +102,9 @@ const everywhereUseLocation = {
   hasGeolocPosition: false,
   permissionState: GeolocPermissionState.DENIED,
   onModalHideRef: jest.fn(),
-  setPlace: jest.fn(),
+  setPlace: mockSetPlace,
   isCurrentLocationMode: jest.fn(),
-  setSelectedLocationMode: jest.fn(),
+  setSelectedLocationMode: mockSetSelectedLocationMode,
   showGeolocPermissionModal: mockShowGeolocPermissionModal,
   requestGeolocPermission: jest.fn(),
   triggerPositionUpdate: jest.fn(),
@@ -172,9 +173,8 @@ jest.mock('@gorhom/bottom-sheet', () => {
 const mockOnEndReached = jest.fn()
 
 const DEFAULT_SEARCH_RESULT_CONTENT_PROPS = {
-  isFetching: false,
+  isRefetching: false,
   isLoading: false,
-  isFetchingNextPage: false,
   userData: [],
   onEndReached: mockOnEndReached,
   onSearchResultsRefresh: jest.fn(),
@@ -187,12 +187,17 @@ const DEFAULT_SEARCH_RESULT_CONTENT_PROPS = {
       'name'
     ),
     duplicatedOffers: [],
+    venueNotOpenToPublic: mockedAlgoliaResponse.hits.map((hit: Hit<AlgoliaOffer>) => ({
+      ...hit.venue,
+      _geoloc: hit._geoloc,
+    })) as AlgoliaVenue[],
     venues: mockedAlgoliaResponse.hits.map((hit: Hit<AlgoliaOffer>) => ({
       ...hit.venue,
       _geoloc: hit._geoloc,
     })) as AlgoliaVenue[],
   },
   nbHits: mockedAlgoliaResponse.hits.length,
+  onPressAIFakeDoorBanner: jest.fn(),
 } satisfies SearchResultsContentProps
 
 const renderSearchResultContent = (
@@ -217,6 +222,11 @@ const initSearchResultsFlashlist = async () => {
   return flashList
 }
 
+let mockPreviousRouteName = SearchView.Landing
+jest.mock('features/navigation/helpers/usePreviousRouteName', () => ({
+  usePreviousRouteName: jest.fn(() => mockPreviousRouteName),
+}))
+
 describe('SearchResultsContent component', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -240,6 +250,8 @@ describe('SearchResultsContent component', () => {
       userLocation: mockedPosition,
       hasGeolocPosition: false,
     })
+
+    mockPreviousRouteName = SearchView.Landing
   })
 
   it('should render correctly', async () => {
@@ -331,6 +343,7 @@ describe('SearchResultsContent component', () => {
     })
 
     rerender({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, isLoading: false })
+    rerender({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, isLoading: false })
 
     expect(analytics.logPerformSearch).toHaveBeenCalledTimes(1)
   })
@@ -359,7 +372,37 @@ describe('SearchResultsContent component', () => {
       mockSearchState,
       mockAccessibilityFilter,
       4,
-      'SearchResults'
+      SearchView.Results
+    )
+  })
+
+  it('should log PerformSearch with ThematicSearch when previous route is ThematicSearch', async () => {
+    mockPreviousRouteName = SearchView.Thematic
+
+    const { rerender } = renderSearchResultContent({
+      ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS,
+      isLoading: true,
+    })
+
+    mockUseSearch.mockReturnValueOnce({
+      searchState: mockSearchState,
+      dispatch: mockDispatch,
+    })
+
+    const mockAccessibilityFilter = {
+      isAudioDisabilityCompliant: undefined,
+      isMentalDisabilityCompliant: undefined,
+      isMotorDisabilityCompliant: undefined,
+      isVisualDisabilityCompliant: undefined,
+    }
+    rerender({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, isLoading: false })
+
+    expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(
+      1,
+      mockSearchState,
+      mockAccessibilityFilter,
+      4,
+      SearchView.Thematic
     )
   })
 
@@ -478,7 +521,7 @@ describe('SearchResultsContent component', () => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter', newSearchState)
     })
 
-    it('should navigate to SearchResults when location is not EVERYWHERE', async () => {
+    it('should update location to EVERYWHERE when `Élargir la zone de recherche` cta is pressed', async () => {
       const query = 'cinéma'
       const newSearchState = {
         ...mockSearchState,
@@ -489,7 +532,6 @@ describe('SearchResultsContent component', () => {
         },
         query,
       }
-
       mockUseSearch.mockReturnValueOnce({
         searchState: newSearchState,
         dispatch: mockDispatch,
@@ -500,13 +542,8 @@ describe('SearchResultsContent component', () => {
       const cta = await screen.findByText('Élargir la zone de recherche')
       await user.press(cta)
 
-      expect(popTo).toHaveBeenNthCalledWith(1, 'TabNavigator', {
-        params: {
-          params: expect.objectContaining({ ...mockSearchState, query }),
-          screen: 'SearchResults',
-        },
-        screen: 'SearchStackNavigator',
-      })
+      expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.EVERYWHERE)
+      expect(mockSetPlace).toHaveBeenCalledWith(null)
     })
 
     it('should log ExtendSearchRadiusClicked when `Élargir la zone de recherche` cta is pressed', async () => {

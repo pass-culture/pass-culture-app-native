@@ -1,4 +1,4 @@
-# v1.374.0
+# v1.386.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/favorites/{favorite_id}
@@ -9,15 +9,15 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/artists/{artist_id}
 - /native/v1/banner
 - /native/v1/bookings
+- /native/v1/countries
 - /native/v1/cultural_survey/questions
 - /native/v1/email_validation_remaining_resends/{email}
 - /native/v1/me
 - /native/v1/me/favorites
 - /native/v1/me/reminders
 - /native/v1/oauth/state
-- /native/v1/offer/{offer_id}
 - /native/v1/offer/{offer_id}/chronicles
-- /native/v1/phone_validation/remaining_attempts
+- /native/v1/offer/{offer_id}/advices
 - /native/v1/profile/token_expiration
 - /native/v1/reaction/available
 - /native/v1/recommendation/similar_offers/{offer_id}
@@ -25,13 +25,14 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/subcategories/v2
 - /native/v1/subscription/activity_types
 - /native/v1/subscription/profile
+- /native/v1/venue/{venue_id}/advices
 - /native/v2/bookings
 - /native/v2/bookings/{booking_id}
 - /native/v2/bookings/{status}
-- /native/v2/offer/{offer_id}
 - /native/v2/profile/email_update/status
 - /native/v2/subscription/stepper
 - /native/v2/venue/{venue_id}
+- /native/v3/offer/{offer_id}
 - /native/v1/profile
 - /native/v1/account
 - /native/v1/account/anonymize
@@ -51,7 +52,6 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/me/reminders
 - /native/v1/oauth/google/account
 - /native/v1/oauth/google/authorize
-- /native/v1/profile
 - /native/v1/profile/email_update/cancel
 - /native/v1/reaction
 - /native/v1/recommendation/playlist
@@ -62,14 +62,12 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/reset_recredit_amount_to_show
 - /native/v1/send_offer_link_by_push/{offer_id}
 - /native/v1/send_offer_webapp_link_by_email/{offer_id}
-- /native/v1/send_phone_validation_code
 - /native/v1/signin
 - /native/v1/subscription/bonus/quotient_familial
 - /native/v1/subscription/honor_statement
 - /native/v1/subscription/profile
 - /native/v1/ubble_identification
 - /native/v1/validate_email
-- /native/v1/validate_phone_number
 - /native/v2/offers/stocks
 - /native/v2/profile/email_update/confirm
 - /native/v2/profile/email_update/new_email
@@ -78,7 +76,12 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/profile/email_update/validate
 ## Unused routes:
 - /native/v1/categories
-- /native/v1/offer/report/reasons
 - /native/v1/offerer/{offerer_id}/headline-offer
+- /native/v1/offer/{offer_id}
+- /native/v1/phone_validation/remaining_attempts
 - /native/v1/venue/{venue_id}
+- /native/v2/offer/{offer_id}
+- /native/v1/profile
+- /native/v1/send_phone_validation_code
+- /native/v1/validate_phone_number
 

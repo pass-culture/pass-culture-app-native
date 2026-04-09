@@ -8,7 +8,7 @@ import { VideoMonoOfferTile } from 'features/home/components/modules/video/Video
 import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
 import { VideoModuleProps } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { ColorsType } from 'theme/types'
 import { Play } from 'ui/svg/icons/Play'
 import { getSpacing, Typo } from 'ui/theme'
@@ -17,17 +17,16 @@ import { videoModuleColorsMapping } from 'ui/theme/videoModuleColorsMapping'
 const THUMBNAIL_HEIGHT = getSpacing(52.5)
 // We do not center the player icon, because when the title is 2-line long,
 // the title is to close to the player. So the player is closer to the top.
-const PLAYER_TOP_MARGIN = getSpacing(12.5)
 const PLAYER_SIZE = getSpacing(24)
 const COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER = getSpacing(38.5)
-const MONO_OFFER_CARD_VERTICAL_SPACING = getSpacing(8)
 
 export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) => {
   const { designSystem } = useTheme()
 
-  const numberOfLines = useFontScaleValue({ default: 1, at200PercentZoom: 3 })
+  const numberOfLines = useMobileFontScaleToDisplay({ default: 1, at200PercentZoom: 3 })
 
   const [monoOfferCardHeight, setMonoOfferCardHeight] = useState<number>(0)
+  const MONO_OFFER_CARD_VERTICAL_SPACING = designSystem.size.spacing.xxl
 
   const COLOR_CATEGORY_BACKGROUND_HEIGHT_MONO_OFFER =
     MONO_OFFER_CARD_VERTICAL_SPACING + monoOfferCardHeight
@@ -139,21 +138,20 @@ const TextContainer = styled.View({
   right: 0,
 })
 
-const VideoTitle = styled(Typo.Title3)(({ theme }) => ({
+const VideoTitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.designSystem.color.text.lockedInverted,
   textAlign: 'center',
   textTransform: 'uppercase',
-  fontSize: getSpacing(6.5),
   padding: theme.designSystem.size.spacing.l,
 }))
 
-const PlayerContainer = styled.View({
+const PlayerContainer = styled.View(({ theme }) => ({
   position: 'absolute',
-  top: PLAYER_TOP_MARGIN,
+  top: theme.designSystem.size.spacing.xxxxl,
   left: 0,
   right: 0,
   alignItems: 'center',
-})
+}))
 
 const Player = styled(Play).attrs({
   size: PLAYER_SIZE,

@@ -89,12 +89,12 @@ export const TextPlaceholder = ({ width, height }: { width: number; height?: num
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flexDirection: 'column',
-  paddingHorizontal: getSpacing(6),
-  gap: getSpacing(5),
-  marginTop: getSpacing(1),
-})
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
+  gap: theme.designSystem.size.spacing.xl,
+  marginTop: theme.designSystem.size.spacing.xs,
+}))
 
 const Separator = () => <StyledSeparator />
 

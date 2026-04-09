@@ -7,7 +7,7 @@ import {
   AccountSecurityStatus,
   useAccountSuspendTokenValidationQuery,
 } from 'features/trustedDevice/queries/useAccountSuspendTokenValidationQuery'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
 export const AccountSecurityBuffer = () => {
@@ -16,28 +16,20 @@ export const AccountSecurityBuffer = () => {
 
   const { data: tokenStatus, isLoading } = useAccountSuspendTokenValidationQuery(params.token)
 
-  const { showErrorSnackBar } = useSnackBarContext()
-
   useEffect(() => {
     if (tokenStatus === AccountSecurityStatus.EXPIRED_TOKEN) {
       replace('SuspensionChoiceExpiredLink')
     }
 
     if (tokenStatus === AccountSecurityStatus.INVALID_TOKEN) {
-      const navigateToHomeWithErrorSnackBar = () => {
-        navigateToHome()
-        showErrorSnackBar({
-          message: 'Une erreur est survenue pour cause de lien invalide.',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
-      }
-      navigateToHomeWithErrorSnackBar()
+      navigateToHome()
+      showErrorSnackBar('Une erreur est survenue pour cause de lien invalide.')
     }
 
     if (tokenStatus === AccountSecurityStatus.VALID_TOKEN) {
       replace('AccountSecurity', params)
     }
-  }, [params, replace, showErrorSnackBar, tokenStatus])
+  }, [params, replace, tokenStatus])
 
   if (isLoading) {
     return <LoadingPage />

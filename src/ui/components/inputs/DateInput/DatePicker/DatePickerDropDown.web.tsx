@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
 
 import { DateInputDesktop } from 'ui/components/inputs/DateInput/atoms/DateInputDesktop.web'
 import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
 import { InputError } from 'ui/components/inputs/InputError'
-import { Spacer } from 'ui/theme'
 
 export type DatePickerDropDownProps = Omit<DatePickerProps, 'date'> & {
   date?: Date
@@ -25,8 +25,15 @@ export const DatePickerDropDown: FunctionComponent<DatePickerDropDownProps> = ({
         maximumDate={maximumDate}
         errorMessage={errorMessage}
       />
-      <InputError visible={!!errorMessage} errorMessage={errorMessage} numberOfSpacesTop={2} />
-      <Spacer.Column numberOfSpaces={errorMessage ? 10 : 4} />
+      <InputErrorContainer errorMessage={!!errorMessage}>
+        <InputError visible={!!errorMessage} errorMessage={errorMessage} numberOfSpacesTop={2} />
+      </InputErrorContainer>
     </React.Fragment>
   )
 }
+
+const InputErrorContainer = styled.View<{ errorMessage: boolean }>(({ theme, errorMessage }) => ({
+  marginBottom: errorMessage
+    ? theme.designSystem.size.spacing.xxxl
+    : theme.designSystem.size.spacing.l,
+}))

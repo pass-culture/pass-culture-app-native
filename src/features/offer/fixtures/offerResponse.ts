@@ -1,6 +1,6 @@
 import type { ReadonlyDeep } from 'type-fest'
 
-import { ExpenseDomain, OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
+import { ExpenseDomain, OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { toMutable } from 'shared/types/toMutable'
 
 // humanizedId AHD3A
@@ -66,6 +66,7 @@ export const offerResponseSnap = toMutable({
       author: null,
     },
   ],
+  chroniclesCount: 3,
   stocks: [
     {
       id: 118929,
@@ -136,4 +137,4 @@ export const offerResponseSnap = toMutable({
     id: 'hWdLhB2okqA',
     thumbUrl: 'https://www.youtube.com/watch?v=hWdLhB2okqA',
   },
-} as const satisfies ReadonlyDeep<OfferResponseV2>)
+} as const satisfies ReadonlyDeep<OfferResponse>)

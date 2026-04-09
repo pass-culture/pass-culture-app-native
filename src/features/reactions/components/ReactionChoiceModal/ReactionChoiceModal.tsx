@@ -12,10 +12,9 @@ import { ReactionChoiceModalBodyWithValidation } from 'features/reactions/compon
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { OfferImageBasicProps } from 'features/reactions/types'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Close } from 'ui/svg/icons/Close'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -81,7 +80,7 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
       reactionType: reactionStatus,
     })
 
-    analytics.logValidateReaction({
+    void analytics.logValidateReaction({
       offerId,
       reactionType: reactionStatus,
       userId: profile?.id,
@@ -118,18 +117,18 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
       rightIconAccessibilityLabel="Fermer la modale"
       fixedModalBottom={
         bodyType === ReactionChoiceModalBodyEnum.VALIDATION ? (
-          <ButtonPrimary
-            wording={buttonWording}
-            onPress={handleOnSave}
-            disabled={isButtonDisabled}
-          />
+          <Button wording={buttonWording} onPress={handleOnSave} disabled={isButtonDisabled} />
         ) : (
           <ButtonsContainer gap={4}>
-            <ButtonPrimary wording="Donner mon avis" onPress={onPressRedirection} />
-            <ButtonTertiaryBlack
+            <Button wording="Donner mon avis" onPress={onPressRedirection} fullWidth />
+            <Button
               wording="Plus tard"
               icon={ClockFilled}
               onPress={() => closeModal(true)}
+              variant="tertiary"
+              color="neutral"
+              accessibilityLabel="Plus tard"
+              fullWidth
             />
           </ButtonsContainer>
         )

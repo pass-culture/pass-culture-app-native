@@ -2,6 +2,7 @@ import type { StoryObj } from '@storybook/react'
 import React, { type ComponentProps } from 'react'
 import styled from 'styled-components/native'
 
+import { BackgroundColorValue, TextColorValue } from 'theme/types'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
@@ -10,6 +11,8 @@ type Variant<Props extends Record<string, unknown>> = {
   label: string
   props?: Partial<Props>
   withBackground?: boolean
+  backgroundColor?: BackgroundColorValue
+  color?: TextColorValue
   minHeight?: number
 }
 
@@ -52,10 +55,15 @@ export const VariantsTemplate = <
         <React.Fragment key={variant.label}>
           <Typo.BodyAccentXs>{variant.label}</Typo.BodyAccentXs>
 
-          <ComponentContainer withBackground={variant.withBackground} minHeight={variant.minHeight}>
+          <ComponentContainer
+            withBackground={variant.withBackground}
+            backgroundColor={variant.backgroundColor}
+            minHeight={variant.minHeight}>
             <Component {...props} />
             {variant.withBackground ? (
-              <StyledBody>Le background ne fait pas partie du composant</StyledBody>
+              <StyledBody color={variant.color}>
+                Le background ne fait pas partie du composant
+              </StyledBody>
             ) : null}
           </ComponentContainer>
 
@@ -71,19 +79,21 @@ export type VariantsStory<
   Props extends Record<string, unknown> = ComponentProps<ComponentType>,
 > = StoryObj<ComponentType>
 
-const ComponentContainer = styled.View<{ withBackground?: boolean; minHeight?: number }>(
-  ({ withBackground, minHeight, theme }) => ({
-    backgroundColor: withBackground
-      ? theme.designSystem.color.background.brandSecondary
-      : 'transparent',
-    padding: theme.designSystem.size.spacing.s,
-    borderRadius: theme.designSystem.size.borderRadius.m,
-    minHeight,
-  })
-)
+const ComponentContainer = styled.View<{
+  withBackground?: boolean
+  backgroundColor?: BackgroundColorValue
+  minHeight?: number
+}>(({ withBackground, backgroundColor, minHeight, theme }) => ({
+  backgroundColor: withBackground
+    ? (backgroundColor ?? theme.designSystem.color.background.brandSecondary)
+    : 'transparent',
+  padding: theme.designSystem.size.spacing.s,
+  borderRadius: theme.designSystem.size.borderRadius.m,
+  minHeight,
+}))
 
-const StyledBody = styled(Typo.BodyAccentXs)(({ theme }) => ({
+const StyledBody = styled(Typo.BodyAccentXs)<{ color?: TextColorValue }>(({ theme, color }) => ({
   marginTop: theme.designSystem.size.spacing.m,
-  color: theme.designSystem.color.text.lockedInverted,
+  color: color ?? theme.designSystem.color.text.lockedInverted,
   fontStyle: 'italic',
 }))

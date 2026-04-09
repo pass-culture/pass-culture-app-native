@@ -21,15 +21,14 @@ import { useVerticalVideoPlayer } from 'features/home/components/modules/video/u
 import { VerticalVideoEndView } from 'features/home/components/modules/video/VerticalVideoEndView'
 import { VerticalVideoErrorView } from 'features/home/components/modules/video/VerticalVideoErrorView'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Pause } from 'ui/svg/icons/Pause'
 import { PlayV2 } from 'ui/svg/icons/PlayV2'
 import { SoundOff } from 'ui/svg/icons/SoundOff'
 import { SoundOn } from 'ui/svg/icons/SoundOn'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 import { PlayerState } from './types'
-
-const PLAYER_CONTROLS_HEIGHT = getSpacing(0)
 
 export enum VideoPlayerButtonsWording {
   CONTINUE_PLAYING = 'Continuer à regarder',
@@ -87,18 +86,17 @@ const PlayerCalque = ({
   return (
     <PressListener onPress={onPressPlay}>
       <Calque
-        style={{ height: playerHeight - PLAYER_CONTROLS_HEIGHT }}
+        style={{ height: playerHeight }}
         start={{ x: 0, y: 0.9 }}
         end={{ x: 0, y: 1 }}
         colors={[
           colorAlpha(designSystem.color.background.lockedInverted, 0.9),
           colorAlpha(designSystem.color.background.lockedInverted, 0.9),
         ]}>
-        <ButtonsContainer>
+        <ButtonsContainer gap={1.5}>
           <IconContainer>
             <StyledPlayIcon />
           </IconContainer>
-          <Spacer.Column numberOfSpaces={1.5} />
           <StyledCaption>
             {videoState === PlayerState.UNSTARTED
               ? VideoPlayerButtonsWording.START_PLAYING
@@ -145,13 +143,14 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     homeEntryId,
   })
 
-  const { isDesktopViewport, designSystem } = useTheme()
+  const { isDesktopViewport, designSystem, modal } = useTheme()
   const { width: windowWidth } = useWindowDimensions()
-  const { playerHeight, playerWidth } = getVideoPlayerDimensions(
+  const { playerHeight, playerWidth } = getVideoPlayerDimensions({
     isDesktopViewport,
     windowWidth,
-    RATIO710
-  )
+    ratio: RATIO710,
+    desktopMaxWidth: modal.desktopMaxWidth,
+  })
 
   const animValue = useSharedValue(0)
 
@@ -233,10 +232,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
       </StyledVideoPlayerContainer>
 
       {isPlaying ? (
-        <PressListener
-          style={{ height: playerHeight - PLAYER_CONTROLS_HEIGHT }}
-          onPress={togglePlay}
-        />
+        <PressListener style={{ height: playerHeight }} onPress={togglePlay} />
       ) : (
         <PlayerCalque
           hasFinishedPlaying={hasFinishedPlaying}
@@ -293,7 +289,7 @@ const ProgressBar = styled(AnimatedGradient).attrs<{ colors?: string[] }>(({ the
   angle: 90,
   useAngle: true,
 }))(({ theme }) => ({
-  height: getSpacing(1),
+  height: theme.designSystem.size.spacing.xs,
   borderRadius: theme.designSystem.size.borderRadius.xxl,
 }))
 
@@ -302,25 +298,25 @@ const StyledVideoPlayerContainer = styled.View(({ theme }) => ({
   alignSelf: 'stretch',
 }))
 
-const Calque = styled(LinearGradient)({
+const Calque = styled(LinearGradient)(({ theme }) => ({
   position: 'absolute',
-  left: -getSpacing(6),
-  right: -getSpacing(6),
+  left: -theme.designSystem.size.spacing.xl,
+  right: -theme.designSystem.size.spacing.xl,
   top: 0,
   bottom: 0,
   alignItems: 'center',
   justifyContent: 'center',
-})
+}))
 
-const PressListener = styled.Pressable({
+const PressListener = styled.Pressable(({ theme }) => ({
   position: 'absolute',
-  left: -getSpacing(6),
-  right: -getSpacing(6),
+  left: -theme.designSystem.size.spacing.xl,
+  right: -theme.designSystem.size.spacing.xl,
   top: 0,
   flexDirection: 'row',
-})
+}))
 
-const ButtonsContainer = styled.View({
+const ButtonsContainer = styled(ViewGap)({
   justifyContent: 'center',
   alignItems: 'center',
   maxWidth: getSpacing(20),

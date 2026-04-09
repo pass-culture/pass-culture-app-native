@@ -11,7 +11,7 @@ import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
-import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
+import { ActivationDisabledBanner } from 'features/remoteBanners/banners/ActivationDisabledBanner'
 import { RemoteGenericBanner } from 'features/remoteBanners/banners/RemoteGenericBanner'
 import { TechnicalProblemBanner } from 'features/technicalProblemBanner/components/TechnicalProblemBanner'
 import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
@@ -47,11 +47,11 @@ const systemBannerIcons: {
   [BannerName.transition_17_18_banner]: StyledBirthdayCake,
 }
 
-const bannersToRender = [
+const bannersToRender = new Set([
   BannerName.activation_banner,
   BannerName.retry_identity_check_banner,
   BannerName.transition_17_18_banner,
-]
+])
 
 export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
@@ -77,7 +77,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   const { banner } = useActivationBanner()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const shouldRenderSystemBanner = banner.name ? bannersToRender.includes(banner.name) : false
+  const shouldRenderSystemBanner = banner.name ? bannersToRender.has(banner.name) : false
 
   const systemBannerAnalyticsType =
     banner.name === BannerName.geolocation_banner ? 'location' : 'credit'
@@ -108,7 +108,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
     if (disableActivation && remoteActivationBannerOptions) {
       return (
         <BannerContainer>
-          <RemoteActivationBanner
+          <ActivationDisabledBanner
             from="home"
             remoteActivationBannerOptions={remoteActivationBannerOptions}
           />
@@ -169,10 +169,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
       ) : null}
       {showRemoteGenericBanner && remoteGenericBannerOptions ? (
         <RemoteGenericBannerContainer>
-          <RemoteGenericBanner
-            from="home"
-            remoteGenericBannerOptions={remoteGenericBannerOptions}
-          />
+          <RemoteGenericBanner remoteGenericBannerOptions={remoteGenericBannerOptions} />
         </RemoteGenericBannerContainer>
       ) : null}
       {SystemBanner}

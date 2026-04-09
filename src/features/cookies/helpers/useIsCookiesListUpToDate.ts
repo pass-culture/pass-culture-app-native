@@ -19,7 +19,6 @@ export const useIsCookiesListUpToDate = () => {
   // Watch the store to reload when cookies consent changes
   const cookiesConsentState = useCookiesConsentStore((state) => state.cookiesConsent)
 
-  // TODO(PC-34248): refacto cookies management
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true)

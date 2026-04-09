@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { OfferStockResponse } from 'api/gen'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Typo } from 'ui/theme'
 
 interface PriceLineProps {
@@ -22,7 +22,7 @@ export function PriceLine({
   attributes,
 }: PriceLineProps) {
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const totalPrice = formatCurrencyFromCents(quantity * unitPrice, currency, euroToPacificFrancRate)
   const price = formatCurrencyFromCents(unitPrice, currency, euroToPacificFrancRate)
 

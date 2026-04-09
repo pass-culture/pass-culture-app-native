@@ -28,6 +28,7 @@ export interface VenueTileProps {
   homeEntryId?: string
   width: number
   height: number
+  originDetail?: string
 }
 
 const mergeVenueData =
@@ -35,7 +36,7 @@ const mergeVenueData =
   (prevData: VenueResponse | undefined): Omit<VenueResponse, 'isVirtual'> => ({
     ...venueHit,
     timezone: '',
-    ...(prevData ?? {}),
+    ...prevData,
   })
 
 const UnmemoizedVenueTile = (props: VenueTileProps) => {
@@ -55,12 +56,13 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
   function handlePressVenue() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData([QueryKeys.VENUE, venue.id], mergeVenueData(venue))
-    analytics.logConsultVenue({
+    void analytics.logConsultVenue({
       venueId: venue.id.toString(),
       moduleId: props.moduleId,
       moduleName: props.moduleName,
       from: 'home',
       homeEntryId: props.homeEntryId,
+      originDetail: props.originDetail,
     })
   }
 

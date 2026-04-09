@@ -6,34 +6,17 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { simulateBackend } from 'features/favorites/tests/simulateBackend'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, waitFor } from 'tests/utils'
-import {
-  hideSnackBar,
-  showErrorSnackBar,
-  showInfoSnackBar,
-  showSuccessSnackBar,
-} from 'ui/components/snackBar/__mocks__/SnackBarContext'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { DefaultWrapper, renderHook, waitFor } from 'tests/utils'
+import * as SnackBarStore from 'ui/designSystem/Snackbar/snackBar.store'
 
 import { useAddFavoriteMutation } from './useAddFavoriteMutation'
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
 
+const mockSnackBarOpen = jest.spyOn(SnackBarStore.snackBarActions, 'open')
+
 const offerId = 116656
-
-jest.mock('ui/components/snackBar/SnackBarContext')
-
-const mockedUseSnackBarContext = useSnackBarContext as jest.MockedFunction<
-  typeof useSnackBarContext
->
-
-mockedUseSnackBarContext.mockReturnValue({
-  hideSnackBar,
-  showInfoSnackBar,
-  showSuccessSnackBar,
-  showErrorSnackBar,
-})
 
 describe('useAddFavoriteMutation', () => {
   it('should add favorite', async () => {
@@ -74,10 +57,10 @@ describe('useAddFavoriteMutation', () => {
     result.current.mutate({ offerId })
 
     await waitFor(() => {
-      expect(showErrorSnackBar).toHaveBeenCalledWith({
-        message: 'L’offre n’a pas été ajoutée à tes favoris',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(mockSnackBarOpen).toHaveBeenCalledWith(
+        'L’offre n’a pas été ajoutée à tes favoris',
+        'error'
+      )
     })
   })
 
@@ -95,10 +78,10 @@ describe('useAddFavoriteMutation', () => {
     result.current.mutate({ offerId })
 
     await waitFor(() => {
-      expect(showErrorSnackBar).toHaveBeenCalledWith({
-        message: 'Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(mockSnackBarOpen).toHaveBeenCalledWith(
+        'Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.',
+        'error'
+      )
     })
   })
 })
@@ -107,9 +90,11 @@ const renderUseAddFavorite = (onSuccess?: (data?: FavoriteResponse | undefined) 
   const { result } = renderHook(() => useAddFavoriteMutation({ onSuccess }), {
     wrapper: (props) =>
       reactQueryProviderHOC(
-        <FavoritesWrapper>
-          <View>{props.children}</View>
-        </FavoritesWrapper>
+        <DefaultWrapper>
+          <FavoritesWrapper>
+            <View>{props.children}</View>
+          </FavoritesWrapper>
+        </DefaultWrapper>
       ),
   })
   return result

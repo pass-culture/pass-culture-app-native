@@ -12,7 +12,7 @@ import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { domains_exhausted_credit_v3 } from 'features/profile/fixtures/domainsCredit'
-import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, exBeneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -57,7 +57,7 @@ jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 
-const GEOLOC_SWITCH = /Activer ma géolocalisation - Interrupteur à bascule/
+const GEOLOC_SWITCH = /Géolocalisation - Interrupteur à bascule/
 
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
 const mockPositionError = null as GeolocationError | null
@@ -128,10 +128,7 @@ describe('<ProfileV1 />', () => {
   })
 
   beforeEach(() => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION,
-      RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL,
-    ])
+    setFeatureFlags([])
     mockServer.getApi<SubscriptionStepperResponseV2>(
       '/v2/subscription/stepper',
       subscriptionStepperFixture
@@ -147,7 +144,7 @@ describe('<ProfileV1 />', () => {
   it('should render correctly', async () => {
     renderProfile()
 
-    await screen.findByText('Centre d’aide')
+    await screen.findByText('Chercher une info')
 
     expect(screen).toMatchSnapshot()
   })
@@ -255,7 +252,7 @@ describe('<ProfileV1 />', () => {
     it('should navigate when the notifications row is clicked', async () => {
       renderProfile()
 
-      const notificationsButton = screen.getByText('Notifications')
+      const notificationsButton = screen.getByText('Notifications et thèmes suivis')
       await user.press(notificationsButton)
 
       expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
@@ -283,30 +280,30 @@ describe('<ProfileV1 />', () => {
       const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
       renderProfile()
 
-      const faqButton = screen.getByText('Centre d’aide')
+      const faqButton = screen.getByText('Chercher une info')
       await user.press(faqButton)
 
       expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK, undefined, true)
     })
 
-    it('should display tutorial row when user is exbeneficiary', async () => {
-      mockedUseAuthContext.mockImplementationOnce(() => ({
+    it('should not display tutorial row when user is exbeneficiary', () => {
+      mockedUseAuthContext.mockReturnValueOnce({
         isLoggedIn: true,
-        user: { ...beneficiaryUser, depositExpirationDate: '2022-10-10T00:00:00Z' },
-      }))
+        user: { ...exBeneficiaryUser },
+      })
       renderProfile()
 
-      expect(await screen.findByText('Comment ça marche ?')).toBeOnTheScreen()
+      expect(screen.queryByText('Comment ça marche ?')).not.toBeOnTheScreen()
     })
 
-    it('should display tutorial row when user has no credit and no upcoming credit', async () => {
-      mockedUseAuthContext.mockImplementationOnce(() => ({
+    it('should not display tutorial row when user has no credit and no upcoming credit', () => {
+      mockedUseAuthContext.mockReturnValueOnce({
         isLoggedIn: true,
         user: { ...beneficiaryUser, domainsCredit: domains_exhausted_credit_v3 },
-      }))
+      })
       renderProfile()
 
-      expect(await screen.findByText('Comment ça marche ?')).toBeOnTheScreen()
+      expect(screen.queryByText('Comment ça marche ?')).not.toBeOnTheScreen()
     })
   })
 
@@ -314,11 +311,7 @@ describe('<ProfileV1 />', () => {
     it('should show the "Nouveau" tag on Apparence and hide it after click when FF enabled', async () => {
       asyncStorageGetItemSpy.mockResolvedValueOnce(null)
       asyncStorageSetItemSpy.mockResolvedValueOnce()
-      setFeatureFlags([
-        RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION,
-        RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL,
-        RemoteStoreFeatureFlags.DARK_MODE_GTM,
-      ])
+      setFeatureFlags([RemoteStoreFeatureFlags.DARK_MODE_GTM])
 
       renderProfile()
 
@@ -330,7 +323,7 @@ describe('<ProfileV1 />', () => {
 
       expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
         params: undefined,
-        screen: 'DisplayPreference',
+        screen: 'Appearance',
       })
       expect(asyncStorageSetItemSpy).toHaveBeenCalledWith('darkModeGtmAppearanceTagSeen', 'true')
 
@@ -347,7 +340,7 @@ describe('<ProfileV1 />', () => {
 
       expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
         params: undefined,
-        screen: 'DisplayPreference',
+        screen: 'Appearance',
       })
     })
 
@@ -366,7 +359,10 @@ describe('<ProfileV1 />', () => {
     it('should navigate when the legal notices row is clicked', async () => {
       renderProfile()
 
-      const legalNoticesButton = screen.getByText('Informations légales')
+      // We have 2 "Informations légales" buttons on this screen, we want to test the first one which is the one in the "Autre" section
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const legalNoticesButton = screen.getAllByText('Informations légales').at(0)!
+
       await user.press(legalNoticesButton)
 
       expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
@@ -376,7 +372,7 @@ describe('<ProfileV1 />', () => {
     })
 
     it('should display achievement section when is beneficiary user', async () => {
-      mockedUseAuthContext.mockReturnValueOnce({ user: beneficiaryUser })
+      mockedUseAuthContext.mockReturnValueOnce({ isLoggedIn: true, user: beneficiaryUser })
       renderProfile()
 
       await act(() => {})
@@ -387,20 +383,23 @@ describe('<ProfileV1 />', () => {
     })
 
     it('should go to achievements when user clicks the banner', async () => {
-      mockedUseAuthContext.mockReturnValueOnce({ user: beneficiaryUser })
+      mockedUseAuthContext.mockReturnValueOnce({ isLoggedIn: true, user: beneficiaryUser })
 
       renderProfile()
 
       const achievementBanner = await screen.findByText('Mes succès')
       await user.press(achievementBanner)
 
-      expect(navigate).toHaveBeenCalledWith('Achievements', { from: 'profile' })
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+        screen: 'Achievements',
+        params: { from: 'profile' },
+      })
     })
 
     it('should not display achievement section when is not beneficiary user', async () => {
       renderProfile()
 
-      await screen.findByText('Mon profil')
+      await screen.findByText('Informations personnelles')
 
       const achievementSectionTitle = screen.queryByText('Mes succès')
 
@@ -523,6 +522,37 @@ describe('<ProfileV1 />', () => {
       await user.press(banner)
 
       expect(analytics.logShareApp).toHaveBeenNthCalledWith(1, { from: 'profile' })
+    })
+  })
+
+  describe('chatbot CTA', () => {
+    it('should display chatbot CTA when FF enableChatbot is activated and user is eligible', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CHATBOT])
+      mockedUseAuthContext.mockReturnValueOnce({
+        isLoggedIn: true,
+        user: beneficiaryUser,
+      })
+      renderProfile()
+
+      expect(await screen.findByText('Poser une question')).toBeOnTheScreen()
+    })
+
+    it('should not display chatbot CTA when FF enableChatbot is deactivated', async () => {
+      setFeatureFlags([])
+      mockedUseAuthContext.mockReturnValueOnce({
+        isLoggedIn: true,
+        user: beneficiaryUser,
+      })
+      renderProfile()
+
+      expect(screen.queryByText('Poser une question')).not.toBeOnTheScreen()
+    })
+
+    it('should not display chatbot CTA when user is not eligible', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CHATBOT])
+      renderProfile()
+
+      expect(screen.queryByText('Poser une question')).not.toBeOnTheScreen()
     })
   })
 })

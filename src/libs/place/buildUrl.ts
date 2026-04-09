@@ -1,4 +1,4 @@
-const API_ADRESSE_URL = `https://api-adresse.data.gouv.fr/search`
+const API_ADRESSE_URL = `https://data.geopf.fr/geocodage/search`
 
 export interface BuildSearchAddressProps {
   query: string

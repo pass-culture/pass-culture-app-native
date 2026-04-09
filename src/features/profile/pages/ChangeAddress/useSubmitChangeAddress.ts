@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form'
 import { Keyboard } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
@@ -16,13 +15,14 @@ import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useAddressesQuery } from 'libs/place/queries/useAddressesQuery'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
+import { useIdCheckAddressAutocompletion } from 'queries/settings/useSettings'
 import { isAddressValid } from 'ui/components/inputs/addressCheck'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 
 const snackbarMessage =
   'Nous avons eu un problème pour trouver l’adresse associée à ton code postal. Réessaie plus tard.'
-const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
+const exception = 'Failed to fetch data from API: https://data.geopf.fr/geocodage/search'
 
 type AddressForm = {
   address: string
@@ -36,8 +36,7 @@ export const useSubmitChangeAddress = () => {
   const buttonWording = isMandatoryUpdatePersonalData ? 'Continuer' : 'Valider mon adresse'
 
   const { user } = useAuthContext()
-  const { data: settings } = useSettingsContext()
-  const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
+  const { data: idCheckAddressAutocompletion } = useIdCheckAddressAutocompletion()
   const { setAddress: setStoreAddress } = addressActions
   const storedCity = useCity()
   const storedAddress = useAddress()
@@ -64,8 +63,7 @@ export const useSubmitChangeAddress = () => {
   ).current
   const [debouncedQuery, setDebouncedQuery] = useState(query)
 
-  const idCheckAddressAutocompletion = !!settings?.idCheckAddressAutocompletion
-  const shouldShowAddressResults = idCheckAddressAutocompletion && debouncedQuery.length > 0
+  const shouldShowAddressResults = !!idCheckAddressAutocompletion && debouncedQuery.length > 0
 
   const {
     data: addresses = [],
@@ -81,7 +79,7 @@ export const useSubmitChangeAddress = () => {
 
   useEffect(() => {
     if (isError) {
-      showErrorSnackBar({ message: snackbarMessage, timeout: SNACK_BAR_TIME_OUT })
+      showErrorSnackBar(snackbarMessage)
       eventMonitoring.captureException(new IdentityCheckError(exception))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -106,26 +104,20 @@ export const useSubmitChangeAddress = () => {
   }
 
   const { mutate: patchProfile } = usePatchProfileMutation({
-    onSuccess: (_, variables) => {
+    onSuccess: async (_, variables) => {
       if (isMandatoryUpdatePersonalData) {
         navigate(...getProfileHookConfig('ChangeStatus', { type }))
       } else {
         navigate(...getProfileHookConfig('PersonalData'))
-        showSuccessSnackBar({
-          message: 'Ton adresse de résidence a bien été modifiée\u00a0!',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+        showSuccessSnackBar('Ton adresse de résidence a bien été modifiée\u00a0!')
       }
-      analytics.logUpdateAddress({
+      await analytics.logUpdateAddress({
         newAddress: variables.address ?? '',
         oldAddress: user?.street ?? '',
       })
     },
     onError: () => {
-      showErrorSnackBar({
-        message: 'Une erreur est survenue',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      showErrorSnackBar('Une erreur est survenue')
     },
   })
 
@@ -140,7 +132,7 @@ export const useSubmitChangeAddress = () => {
   const hasNonEmptyQuery = query.trim().length > 0
   const isValidAndNotEmpty = isValid && hasNonEmptyQuery
 
-  const isValidAddress = isAddressValid(query)
+  const isValidAddress = selectedAddress !== null || isAddressValid(query)
   const label = idCheckAddressAutocompletion
     ? 'Recherche et sélectionne ton adresse'
     : 'Entre ton adresse'

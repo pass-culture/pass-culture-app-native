@@ -6,15 +6,11 @@ import { renderInteractionTag } from 'features/offer/components/InteractionTag/I
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { OfferTileProps } from 'features/offer/types'
-import {
-  formatPrice,
-  getDisplayedPrice,
-  getIfPricesShouldBeFixed,
-} from 'libs/parsers/getDisplayedPrice'
+import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getOfferDates } from 'shared/date/getOfferDates'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Offer } from 'shared/offer/types'
 
 type Props = Omit<
@@ -31,20 +27,11 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
   const theme = useTheme()
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
-  const {
-    subcategoryId,
-    dates,
-    releaseDate,
-    isDuo,
-    likes,
-    chroniclesCount,
-    headlineCount,
-    name,
-    thumbUrl,
-  } = item.offer
+  const { subcategoryId, dates, releaseDate, isDuo, likes, chroniclesCount, name, thumbUrl } =
+    item.offer
 
   const formattedDate = getOfferDates({
     subcategoryId,
@@ -57,7 +44,6 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isFixed: getIfPricesShouldBeFixed(subcategoryId),
       isDuo: !!(isDuo && user?.isBeneficiary),
     })
   )
@@ -65,8 +51,7 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
   const tag = renderInteractionTag({
     theme,
     likesCount: likes,
-    chroniclesCount: chroniclesCount,
-    headlinesCount: headlineCount,
+    advicesCount: chroniclesCount,
     hasSmallLayout,
     isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
     subcategoryId: item.offer.subcategoryId,

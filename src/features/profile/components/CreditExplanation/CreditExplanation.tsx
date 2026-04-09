@@ -4,13 +4,12 @@ import styled from 'styled-components/native'
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
 import { Question } from 'ui/svg/icons/Question'
-import { Spacer } from 'ui/theme'
 
 interface Props {
   age: number
@@ -19,7 +18,6 @@ interface Props {
 
 export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpired }) => {
   const { visible, showModal, hideModal } = useModal(false)
-
   const onTutorialClick = () => analytics.logConsultTutorial({ age, from: 'CreditBlock' })
 
   if (isDepositExpired) {
@@ -29,11 +27,16 @@ export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpi
     }
     return (
       <React.Fragment>
-        <StyledButtonQuaternaryBlack
-          icon={Question}
-          wording="Mon crédit est expiré, que&nbsp;faire&nbsp;?"
-          onPress={onPressExplanationButton}
-        />
+        <ButtonContainerFlexStart>
+          <Button
+            variant="tertiary"
+            color="neutral"
+            icon={Question}
+            numberOfLines={2}
+            wording="Mon crédit est expiré, que&nbsp;faire&nbsp;?"
+            onPress={onPressExplanationButton}
+          />
+        </ButtonContainerFlexStart>
         <ExpiredCreditModal visible={visible} hideModal={hideModal} />
       </React.Fragment>
     )
@@ -41,29 +44,30 @@ export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpi
 
   return (
     <React.Fragment>
-      <Spacer.Column numberOfSpaces={4} />
-      <GreySeparator />
-      <Spacer.Column numberOfSpaces={2.5} />
-      <InternalTouchableLink
-        as={StyledButtonQuaternaryBlack}
-        icon={Question}
-        wording="Comment ça marche&nbsp;?"
-        navigateTo={getProfilePropConfig('ProfileTutorialAgeInformationCredit')}
-        onBeforeNavigate={onTutorialClick}
-      />
+      <SeparatorContainer>
+        <GreySeparator />
+      </SeparatorContainer>
+      <ButtonContainerFlexStart>
+        <InternalTouchableLink
+          as={Button}
+          variant="tertiary"
+          color="neutral"
+          icon={Question}
+          numberOfLines={2}
+          wording="Comment ça marche&nbsp;?"
+          navigateTo={getProfilePropConfig('ProfileTutorialAgeInformationCredit')}
+          onBeforeNavigate={onTutorialClick}
+        />
+      </ButtonContainerFlexStart>
     </React.Fragment>
   )
 }
 
-const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack).attrs({
-  numberOfLines: 2,
-  justifyContent: 'flex-start',
-})(({ theme }) => ({
-  textAlign: 'left',
-  backgroundColor: theme.designSystem.color.background.default,
-}))
-
 const GreySeparator = styled(Separator.Horizontal).attrs(({ theme }) => ({
-  // TODO(PC-36408): theme.designSystem.separator.default or subtle not visible in light mode because the parent background is grey
-  color: theme.designSystem.color.border.default,
+  color: theme.designSystem.separator.color.default,
 }))``
+
+const SeparatorContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.m,
+}))

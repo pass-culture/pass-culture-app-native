@@ -8,18 +8,14 @@ import { renderInteractionTag } from 'features/offer/components/InteractionTag/I
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
-import {
-  formatStartPrice,
-  getDisplayedPrice,
-  getIfPricesShouldBeFixed,
-} from 'libs/parsers/getDisplayedPrice'
+import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { CustomListRenderItem, Playlist } from 'ui/components/Playlist'
+import { Button } from 'ui/designSystem/Button/Button'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { LENGTH_S, RATIO_HOME_IMAGE } from 'ui/theme'
 
@@ -48,7 +44,7 @@ export const VenueMapOfferPlaylist = ({
 }: VenueMapOfferPlaylistProps) => {
   const theme = useTheme()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const isFocused = useIsFocused()
@@ -58,8 +54,7 @@ export const VenueMapOfferPlaylist = ({
       const tag = renderInteractionTag({
         theme,
         likesCount: item.offer.likes,
-        chroniclesCount: item.offer.chroniclesCount,
-        headlinesCount: item.offer.headlineCount,
+        advicesCount: item.offer.chroniclesCount,
         hasSmallLayout: true,
         isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
         subcategoryId: item.offer.subcategoryId,
@@ -74,12 +69,7 @@ export const VenueMapOfferPlaylist = ({
           offerLocation={item._geoloc}
           analyticsFrom="venueMap"
           thumbUrl={item.offer.thumbUrl}
-          price={getDisplayedPrice(
-            item.offer.prices,
-            currency,
-            euroToPacificFrancRate,
-            getIfPricesShouldBeFixed(item.offer.subcategoryId) ? undefined : formatStartPrice
-          )}
+          price={getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate)}
           width={PLAYLIST_ITEM_WIDTH}
           height={PLAYLIST_ITEM_HEIGHT}
           playlistType={playlistType}
@@ -118,11 +108,12 @@ export const VenueMapOfferPlaylist = ({
         )}
       </ObservedPlaylist>
       <StyledView>
-        <StyleButtonTertiaryBlack
-          inline
+        <StyledButton
           wording="Voir les offres du lieu"
           onPress={onPressMore}
           icon={PlainArrowNext}
+          variant="tertiary"
+          color="neutral"
         />
       </StyledView>
     </React.Fragment>
@@ -133,6 +124,6 @@ const StyledView = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
 }))
 
-const StyleButtonTertiaryBlack = styled(ButtonTertiaryBlack)({
+const StyledButton = styled(Button)({
   transform: 'translateY(-10px)',
 })

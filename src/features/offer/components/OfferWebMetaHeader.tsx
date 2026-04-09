@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { Helmet } from 'libs/react-helmet/Helmet'
 
 import { description } from '../../../../package.json'
 
 interface Props {
-  offer: OfferResponseV2
+  offer: OfferResponse
 }
 
 export const OfferWebMetaHeader = ({ offer }: Props) => (

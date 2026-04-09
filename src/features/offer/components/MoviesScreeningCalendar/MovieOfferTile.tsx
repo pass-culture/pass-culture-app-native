@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react'
+import React, { FC } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -15,11 +15,10 @@ import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/ty
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { VenueOffers } from 'features/venue/types'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { useSubcategoriesMapping } from 'libs/subcategories'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { EventCardList } from 'ui/components/eventCard/EventCardList'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
-import { Spacer } from 'ui/theme'
 
 type MovieOfferTileProps = {
   movieOffer: MovieOffer
@@ -36,18 +35,13 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
 }) => {
   const movieScreenings = getMovieScreenings(offer.stocks)
   const { goToDate, selectedDate } = useMovieCalendar()
-  const segment = useABSegment()
 
-  const selectedScreeningStock = useMemo(
-    () => movieScreenings[getDateString(String(selectedDate))],
-    [movieScreenings, selectedDate]
-  )
+  const selectedScreeningStock = movieScreenings[getDateString(String(selectedDate))]
 
   const subcategoriesMapping = useSubcategoriesMapping()
 
   const { bookingData, selectedDateScreenings } = useSelectedDateScreening(
     selectedScreeningStock,
-    segment,
     offer.isExternalBookingsDisabled
   )
 
@@ -57,30 +51,36 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
     movieScreeningUserData,
   } = useOfferCTAButton(offer, subcategoriesMapping[offer.subcategoryId], bookingData)
 
-  const eventCardData = useMemo(
-    () => selectedDateScreenings(offer.venue.id, onPressOfferCTA, movieScreeningUserData),
-    [movieScreeningUserData, offer.venue.id, onPressOfferCTA, selectedDateScreenings]
+  const eventCardData = selectedDateScreenings(
+    offer.venue.id,
+    () => {
+      onPressOfferCTA()
+      triggerConsultOfferLog({
+        offerId: Number(offerScreeningOnSelectedDates?.objectID),
+        from: 'venue',
+        venueId: offer.venue.id,
+      })
+    },
+    movieScreeningUserData
   )
 
-  const offerScreeningOnSelectedDates = useMemo(
-    () => venueOffers.hits.find((item) => Number(item.objectID) === offer.id),
-    [offer.id, venueOffers.hits]
+  const offerScreeningOnSelectedDates = venueOffers.hits.find(
+    (item) => Number(item.objectID) === offer.id
   )
 
   return (
     <React.Fragment>
-      <View>
+      <StyledView>
         {offerScreeningOnSelectedDates ? (
           <HorizontalOfferTile
             offer={offerScreeningOnSelectedDates}
             analyticsParams={{ from: 'venue' }}
-            price={undefined}
+            shouldDisplayPrice={false}
             subtitles={getSubtitles(offer)}
             withRightArrow
           />
         ) : null}
-      </View>
-      <Spacer.Column numberOfSpaces={4} />
+      </StyledView>
       {nextScreeningDate ? (
         <View>
           <NextScreeningButton
@@ -93,15 +93,9 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
           />
         </View>
       ) : (
-        <EventCardList
-          data={eventCardData}
-          analyticsFrom="venue"
-          offerId={Number(offerScreeningOnSelectedDates?.objectID)}
-        />
+        <EventCardList data={eventCardData} />
       )}
-      <Spacer.Column numberOfSpaces={4} />
-      {isLast ? null : <Divider />}
-      <Spacer.Column numberOfSpaces={4} />
+      <Container>{isLast ? null : <Divider />}</Container>
       {CTAOfferModal}
     </React.Fragment>
   )
@@ -116,4 +110,12 @@ const getSubtitles = (offer: OfferPreviewResponse): string[] => {
 const Divider = styled.View(({ theme }) => ({
   height: 1,
   backgroundColor: theme.designSystem.color.background.subtle,
+}))
+
+const StyledView = styled(View)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
+
+const Container = styled(View)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
 }))

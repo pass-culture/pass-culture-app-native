@@ -33,3 +33,12 @@ export type TextColorKey = keyof DesignTokensType['color']['text']
 export type IconColorKey = keyof DesignTokensType['color']['icon']
 export type BorderColorKey = keyof DesignTokensType['color']['border']
 export type BackgroundColorKey = keyof DesignTokensType['color']['background']
+
+type ThemeColors = DesignTokensType['color']
+export type BackgroundColorValue = ThemeColors['background'][BackgroundColorKey]
+export type TextColorValue = ThemeColors['background'][TextColorKey]
+
+export type BackgroundColor = ThemeColors['background']
+export type BorderColor = ThemeColors['border']
+export type IconColor = ThemeColors['icon']
+export type TextColor = ThemeColors['text']

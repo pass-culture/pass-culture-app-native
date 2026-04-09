@@ -1,7 +1,6 @@
 import { OfferStockResponse } from 'api/gen'
 import { EventCardSubtitleEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
 import { MovieScreeningUserData } from 'features/offer/components/MovieScreeningCalendar/types'
-import { MOVIE_CALENDAR_PADDING } from 'features/offerRefacto/constants'
 import { DAYS, FullWeekDay, SHORT_DAYS, ShortWeekDay } from 'shared/date/days'
 import {
   CAPITALIZED_MONTHS,
@@ -13,9 +12,10 @@ import {
 export const handleMovieCalendarScroll = (
   currentIndex: number,
   flatListWidth: number,
-  itemWidth: number
+  itemWidth: number,
+  movieCalendarPadding: number
 ) => {
-  const shift = flatListWidth / 2 - MOVIE_CALENDAR_PADDING
+  const shift = flatListWidth / 2 - movieCalendarPadding
   const centerOfSelectedElement = currentIndex * itemWidth + itemWidth / 2
 
   if (centerOfSelectedElement - shift < 0 || currentIndex === 0) {

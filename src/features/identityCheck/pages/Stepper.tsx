@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { MaintenancePageType, SubscriptionStep } from 'api/gen'
@@ -16,14 +16,14 @@ import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStack
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { StepButton } from 'ui/components/StepButton/StepButton'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { StepList } from 'ui/components/StepList/StepList'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
+import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -31,8 +31,6 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const Stepper = () => {
   useShowDisableActivation()
-
-  const { isDesktopViewport } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Stepper'>>()
 
@@ -49,7 +47,6 @@ export const Stepper = () => {
   const stepToComplete = steps[currentStepIndex]
 
   const { subscription } = useSetSubscriptionStepAndMethod()
-  const { showErrorSnackBar } = useSnackBarContext()
   const { refetchUser } = useAuthContext()
   useRehydrateProfile()
 
@@ -79,10 +76,7 @@ export const Stepper = () => {
           }
         })
         .catch((error) => {
-          showErrorSnackBar({
-            message: extractApiErrorMessage(error),
-            timeout: SNACK_BAR_TIME_OUT,
-          })
+          showErrorSnackBar(extractApiErrorMessage(error))
         })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -90,7 +84,7 @@ export const Stepper = () => {
 
   useEffect(() => {
     if (params?.from && stepToComplete?.name) {
-      analytics.logStepperDisplayed(params.from, stepToComplete.name)
+      void analytics.logStepperDisplayed(params.from, stepToComplete.name)
     }
   }, [params?.from, stepToComplete?.name])
 
@@ -104,10 +98,10 @@ export const Stepper = () => {
               type: step.firstScreenType,
             })}
             onPress={() => {
-              analytics.logIdentityCheckStep(step.name)
+              void analytics.logIdentityCheckStep(step.name)
             }}
           />
-          {index === steps.length - 1 ? null : <Spacer.Column numberOfSpaces={2} />}
+          {index === steps.length - 1 ? null : <Placeholder />}
         </StepButtonContainer>
       ))}
     </StepList>
@@ -115,31 +109,30 @@ export const Stepper = () => {
 
   return (
     <Page>
-      <Container>
-        <Spacer.TopScreen />
-        {isDesktopViewport ? (
-          <Spacer.Column numberOfSpaces={16} />
-        ) : (
-          <Spacer.Column numberOfSpaces={4} />
-        )}
-
-        <StyledTitle1>{stepperTitle}</StyledTitle1>
-        <Spacer.Column numberOfSpaces={2} />
-        {stepperSubtitle ? <StyledSubtitle subtitle={stepperSubtitle} /> : null}
-        {errorMessage ? <StyledErrorMessage errorMessage={errorMessage} /> : null}
-        <Spacer.Column numberOfSpaces={2} />
-        {stepList}
-        <Spacer.Flex flex={1} />
+      <MainContainer>
+        <TopContent>
+          <Spacer.TopScreen />
+          <TitleContainer>
+            <StyledTitle1>{stepperTitle}</StyledTitle1>
+          </TitleContainer>
+          <Container>
+            {stepperSubtitle ? <StyledSubtitle subtitle={stepperSubtitle} /> : null}
+            {errorMessage ? <StyledErrorMessage errorMessage={errorMessage} /> : null}
+          </Container>
+          {stepList}
+        </TopContent>
 
         <QuitButtonContainer>
-          <ButtonTertiaryBlack
+          <Button
+            variant="tertiary"
+            color="neutral"
             icon={Invalidate}
             wording="Abandonner"
             onPress={showQuitIdentityCheckModal}
             accessibilityRole={AccessibilityRole.BUTTON}
           />
         </QuitButtonContainer>
-      </Container>
+      </MainContainer>
       <QuitIdentityCheckModal
         visible={visible}
         hideModal={hideModal}
@@ -151,16 +144,29 @@ export const Stepper = () => {
 
 const StyledTitle1 = styled(Typo.Title1).attrs(() => getHeadingAttrs(1))``
 
-const Container = styled.ScrollView.attrs(({ theme }) => ({
+const TitleContainer = styled.View(({ theme }) => ({
+  marginTop: theme.isDesktopViewport ? getSpacing(16) : theme.designSystem.size.spacing.l,
+}))
+
+const MainContainer = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
-    paddingHorizontal: getSpacing(6),
-    paddingBottom: getSpacing(9),
+    paddingHorizontal: theme.designSystem.size.spacing.xl,
+    paddingBottom: theme.designSystem.size.spacing.xxxl,
     maxWidth: theme.contentPage.maxWidth,
     width: '100%',
     alignSelf: 'center',
     flexGrow: 1,
+    justifyContent: 'space-between',
   },
 }))``
+
+const TopContent = styled.View({
+  width: '100%',
+})
+
+const Placeholder = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.s,
+}))
 
 const StepButtonContainer = styled.View({
   alignItems: 'center',
@@ -172,16 +178,25 @@ const QuitButtonContainer = styled.View({
 })
 
 const StyledSubtitle = ({ subtitle }: { subtitle: string }) => (
-  <React.Fragment>
-    <Spacer.Column numberOfSpaces={2} />
+  <SubtitleContainer>
     <Typo.Body>{subtitle}</Typo.Body>
-    <Spacer.Column numberOfSpaces={8} />
-  </React.Fragment>
+  </SubtitleContainer>
 )
 
 const StyledErrorMessage = ({ errorMessage }: { errorMessage: string }) => (
-  <React.Fragment>
-    <Spacer.Column numberOfSpaces={4} />
+  <ErrorMessageContainer>
     <Banner type={BannerType.ERROR} label={errorMessage} />
-  </React.Fragment>
+  </ErrorMessageContainer>
 )
+const SubtitleContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
+
+const ErrorMessageContainer = styled(Typo.Body)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.m,
+}))
+
+const Container = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.s,
+}))

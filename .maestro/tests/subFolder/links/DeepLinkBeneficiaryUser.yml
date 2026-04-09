@@ -1,0 +1,26 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - openLink:
+          link: ${output.deeplinkAndroid}
+          autoVerify: true
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - openLink:
+          link: ${output.deeplinkIos}
+          autoVerify: true
+- evalScript: '${console.log(output.userEmail)}'
+- waitForAnimationToEnd
+- runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
+- tapOn: 'On y va !'
+
+- runFlow: # Si apparition de la modale de partage
+    when:
+      visible: 'Partager l’appli'
+    commands:
+      - tapOn: 'Fermer la modale'

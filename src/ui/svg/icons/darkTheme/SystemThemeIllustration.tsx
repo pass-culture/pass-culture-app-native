@@ -186,7 +186,14 @@ export const SystemThemeIllustration = () => {
           rx="1"
           fill={designSystem.color.background.lockedInverted}
         />
-        <Rect x="31" y="89" width="8" height="2" rx="1" fill="#CB0659" />
+        <Rect
+          x="31"
+          y="89"
+          width="8"
+          height="2"
+          rx="1"
+          fill={designSystem.color.background.lockedBrandPrimary}
+        />
         <Path
           d="M51.2075 96H32.7964C32.3576 96 32.002 96.4113 32.002 96.9188V97.0812C32.002 97.5887 32.3576 98 32.7964 98H51.2075C51.6463 98 52.002 97.5887 52.002 97.0812V96.9188C52.002 96.4113 51.6463 96 51.2075 96Z"
           fill="black"
@@ -203,7 +210,14 @@ export const SystemThemeIllustration = () => {
           rx="1"
           fill={designSystem.color.background.lockedInverted}
         />
-        <Rect x="54" y="89" width="8" height="2" rx="1" fill="#CB0659" />
+        <Rect
+          x="54"
+          y="89"
+          width="8"
+          height="2"
+          rx="1"
+          fill={designSystem.color.background.lockedBrandPrimary}
+        />
         <Path
           d="M56.7452 96H60.002V98H56.7452C56.3346 98 56.002 97.5888 56.002 97.0812V96.9188C56.002 96.4112 56.3346 96 56.7452 96Z"
           fill="black"
@@ -211,7 +225,7 @@ export const SystemThemeIllustration = () => {
         <Path d="M60.002 95H2.00195V105H60.002V95Z" fill={designSystem.color.background.locked} />
         <Path
           d="M39.8625 95.8867H36.5826C35.9788 95.8867 35.4893 96.3752 35.4893 96.9778V100.251C35.4893 100.854 35.9788 101.342 36.5826 101.342H39.8625C40.4664 101.342 40.9559 100.854 40.9559 100.251V96.9778C40.9559 96.3752 40.4664 95.8867 39.8625 95.8867Z"
-          fill="#EB0055"
+          fill={designSystem.color.background.lockedBrandPrimary}
         />
         <Path
           d="M40.4022 102.391H36.0401C35.71 102.391 35.4424 102.657 35.4424 102.986C35.4424 103.315 35.71 103.582 36.0401 103.582H40.4022C40.7324 103.582 41 103.315 41 102.986C41 102.657 40.7324 102.391 40.4022 102.391Z"
@@ -219,7 +233,7 @@ export const SystemThemeIllustration = () => {
         />
         <Path
           d="M53.8127 95.8867H50.5328C49.929 95.8867 49.4395 96.3752 49.4395 96.9778V100.251C49.4395 100.854 49.929 101.342 50.5328 101.342H53.8127C54.4166 101.342 54.9061 100.854 54.9061 100.251V96.9778C54.9061 96.3752 54.4166 95.8867 53.8127 95.8867Z"
-          fill="#EB0055"
+          fill={designSystem.color.background.lockedBrandPrimary}
         />
         <Path
           d="M54.3544 102.391H49.9922C49.6621 102.391 49.3945 102.657 49.3945 102.986C49.3945 103.315 49.6621 103.582 49.9922 103.582H54.3544C54.6845 103.582 54.9521 103.315 54.9521 102.986C54.9521 102.657 54.6845 102.391 54.3544 102.391Z"

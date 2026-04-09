@@ -16,9 +16,10 @@ exports[`Appearance should render correctly 1`] = `
 >
   <View
     accessibilityRole="header"
+    onLayout={[Function]}
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -39,6 +40,7 @@ exports[`Appearance should render correctly 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -70,7 +72,7 @@ exports[`Appearance should render correctly 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -96,34 +98,73 @@ exports[`Appearance should render correctly 1`] = `
           style={
             {
               "alignItems": "center",
-              "flexGrow": 1,
-              "height": 40,
+              "backgroundColor": "transparent",
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "borderWidth": 0,
+              "flexDirection": "row",
               "justifyContent": "center",
-              "maxWidth": 40,
               "opacity": 1,
+              "paddingBottom": 8,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
               "userSelect": "auto",
+              "width": "auto",
             }
           }
           testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-          <Text
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
-                "display": "none",
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
               }
             }
           >
-            Retour
-          </Text>
+            <View
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="0"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -175,6 +216,7 @@ exports[`Appearance should render correctly 1`] = `
   >
     <View
       onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
       style={
         [
           {
@@ -213,23 +255,20 @@ exports[`Appearance should render correctly 1`] = `
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
+              "paddingTop": 65,
             }
           }
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
+          onScroll={[Function]}
+          paddingHeaderHeight={65}
+          scrollEventThrottle={16}
           style={{}}
         >
           <View>
-            <View
-              style={
-                {
-                  "height": 65,
-                }
-              }
-            />
             <View
               gap={6}
               style={
@@ -358,15 +397,16 @@ exports[`Appearance should render correctly 1`] = `
                         style={
                           {
                             "backgroundColor": "#696a6f",
-                            "borderBottomLeftRadius": 16,
-                            "borderBottomRightRadius": 16,
-                            "borderTopLeftRadius": 16,
-                            "borderTopRightRadius": 16,
-                            "height": 32,
+                            "borderBottomLeftRadius": 32,
+                            "borderBottomRightRadius": 32,
+                            "borderTopLeftRadius": 32,
+                            "borderTopRightRadius": 32,
+                            "height": 36,
                             "justifyContent": "center",
-                            "width": 56,
+                            "width": 64,
                           }
                         }
+                        toggleSize={32}
                       >
                         <View
                           collapsable={false}
@@ -380,16 +420,17 @@ exports[`Appearance should render correctly 1`] = `
                               "borderBottomRightRadius": 32,
                               "borderTopLeftRadius": 32,
                               "borderTopRightRadius": 32,
-                              "height": 28,
+                              "height": 32,
                               "justifyContent": "center",
                               "transform": [
                                 {
                                   "translateX": 2,
                                 },
                               ],
-                              "width": 28,
+                              "width": 32,
                             }
                           }
+                          toggleSize={32}
                         />
                       </View>
                     </View>
@@ -448,35 +489,15 @@ exports[`Appearance should render correctly 1`] = `
                     variant="detailed"
                   >
                     <View
-                      accessibilityLabel="Mode clair"
-                      accessibilityRole="radio"
-                      accessibilityState={
+                      isHover={false}
+                      radioState={
                         {
-                          "busy": undefined,
-                          "checked": false,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
+                          "disabled": false,
+                          "error": false,
+                          "selected": false,
                         }
                       }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      collapsable={false}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
+                      sizing="fill"
                       style={
                         {
                           "backgroundColor": "#ffffff",
@@ -486,26 +507,55 @@ exports[`Appearance should render correctly 1`] = `
                           "borderTopLeftRadius": 8,
                           "borderTopRightRadius": 8,
                           "borderWidth": 1,
-                          "cursor": "pointer",
-                          "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
                           "paddingRight": 16,
                           "paddingTop": 16,
-                          "userSelect": "auto",
                           "width": "100%",
                         }
                       }
-                      testID="Mode clair"
+                      variant="detailed"
                     >
                       <View
+                        accessibilityLabel="Thème - Liste - Élément 1 sur 3 - Mode clair - Affichage classique - non sélectionné"
+                        accessibilityRole="radio"
+                        accessibilityState={
+                          {
+                            "busy": undefined,
+                            "checked": false,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        collapsable={false}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
                         style={
                           {
                             "alignItems": "center",
                             "columnGap": 12,
                             "flexDirection": "row",
+                            "opacity": 1,
+                            "userSelect": "auto",
                           }
                         }
+                        testID="Thème - Liste - Élément 1 sur 3 - Mode clair - Affichage classique - non sélectionné"
                       >
                         <View
                           isHover={false}
@@ -609,35 +659,15 @@ exports[`Appearance should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityLabel="Mode sombre"
-                      accessibilityRole="radio"
-                      accessibilityState={
+                      isHover={false}
+                      radioState={
                         {
-                          "busy": undefined,
-                          "checked": false,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
+                          "disabled": false,
+                          "error": false,
+                          "selected": false,
                         }
                       }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      collapsable={false}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
+                      sizing="fill"
                       style={
                         {
                           "backgroundColor": "#ffffff",
@@ -647,26 +677,55 @@ exports[`Appearance should render correctly 1`] = `
                           "borderTopLeftRadius": 8,
                           "borderTopRightRadius": 8,
                           "borderWidth": 1,
-                          "cursor": "pointer",
-                          "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
                           "paddingRight": 16,
                           "paddingTop": 16,
-                          "userSelect": "auto",
                           "width": "100%",
                         }
                       }
-                      testID="Mode sombre"
+                      variant="detailed"
                     >
                       <View
+                        accessibilityLabel="Thème - Liste - Élément 2 sur 3 - Mode sombre - Réduit la fatigue visuelle - non sélectionné"
+                        accessibilityRole="radio"
+                        accessibilityState={
+                          {
+                            "busy": undefined,
+                            "checked": false,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        collapsable={false}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
                         style={
                           {
                             "alignItems": "center",
                             "columnGap": 12,
                             "flexDirection": "row",
+                            "opacity": 1,
+                            "userSelect": "auto",
                           }
                         }
+                        testID="Thème - Liste - Élément 2 sur 3 - Mode sombre - Réduit la fatigue visuelle - non sélectionné"
                       >
                         <View
                           isHover={false}
@@ -770,35 +829,15 @@ exports[`Appearance should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityLabel="Réglages appareil"
-                      accessibilityRole="radio"
-                      accessibilityState={
+                      isHover={false}
+                      radioState={
                         {
-                          "busy": undefined,
-                          "checked": true,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
+                          "disabled": false,
+                          "error": false,
+                          "selected": true,
                         }
                       }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      collapsable={false}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
+                      sizing="fill"
                       style={
                         {
                           "backgroundColor": "#f3edff",
@@ -808,26 +847,55 @@ exports[`Appearance should render correctly 1`] = `
                           "borderTopLeftRadius": 8,
                           "borderTopRightRadius": 8,
                           "borderWidth": 1,
-                          "cursor": "pointer",
-                          "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
                           "paddingRight": 16,
                           "paddingTop": 16,
-                          "userSelect": "auto",
                           "width": "100%",
                         }
                       }
-                      testID="Réglages appareil"
+                      variant="detailed"
                     >
                       <View
+                        accessibilityLabel="Thème - Liste - Élément 3 sur 3 - Réglages appareil - Automatique selon les réglages de ton appareil - sélectionné"
+                        accessibilityRole="radio"
+                        accessibilityState={
+                          {
+                            "busy": undefined,
+                            "checked": true,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        collapsable={false}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
                         style={
                           {
                             "alignItems": "center",
                             "columnGap": 12,
                             "flexDirection": "row",
+                            "opacity": 1,
+                            "userSelect": "auto",
                           }
                         }
+                        testID="Thème - Liste - Élément 3 sur 3 - Réglages appareil - Automatique selon les réglages de ton appareil - sélectionné"
                       >
                         <View
                           isHover={false}
@@ -971,41 +1039,19 @@ exports[`Appearance should render correctly 1`] = `
                 }
               />
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
       </View>
     </View>
-  </View>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;

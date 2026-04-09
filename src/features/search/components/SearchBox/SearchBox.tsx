@@ -14,17 +14,18 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
-import { HiddenSuggestionsButton } from 'features/search/components/Buttons/HiddenSuggestionsButton'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
-import { BackButton } from 'ui/components/headers/BackButton'
+import Animated, { LinearTransition } from 'libs/react-native-reanimated'
+import { useAppEnableAutocomplete } from 'queries/settings/useSettings'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Button } from 'ui/designSystem/Button/Button'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const SEARCH_DEBOUNCE_MS = 500
@@ -51,7 +52,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const { isDesktopViewport } = useTheme()
   const { searchState, dispatch, isFocusOnSuggestions, hideSuggestions, showSuggestions } =
     useSearch()
-  const { showErrorSnackBar } = useSnackBarContext()
   const [displayedQuery, setDisplayedQuery] = useState<string>(searchState.query)
   const inputRef = useRef<RNTextInput | null>(null)
   const route = useRoute()
@@ -65,8 +65,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const debounceSetAutocompleteQuery = useRef(
     debounce(setAutocompleteQuery, SEARCH_DEBOUNCE_MS)
   ).current
-  const { data: appSettings } = useSettingsContext()
-  const appEnableAutocomplete = appSettings?.appEnableAutocomplete
+  const { data: appEnableAutocomplete } = useAppEnableAutocomplete()
 
   const setQuery = useCallback(
     (value: string) => {
@@ -158,10 +157,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
       const queryText = event.nativeEvent.text
       if (queryText.length > 150) {
-        showErrorSnackBar({
-          message: 'Ta recherche ne peut pas faire plus de 150 caractères.',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+        showErrorSnackBar('Ta recherche ne peut pas faire plus de 150 caractères.')
         return
       }
       if (queryText.length < 1 && Platform.OS !== 'android') return
@@ -214,11 +210,11 @@ export const SearchBox: React.FunctionComponent<Props> = ({
           CINEMA_KEYWORD_PATTERN.test(
             queryText
               .normalize('NFD')
-              .replace(/[\u0300-\u036f]/g, '')
+              .replaceAll(/[\u0300-\u036f]/g, '')
               .trim()
           )
         ) {
-          analytics.logHasSearchedCinemaQuery()
+          void analytics.logHasSearchedCinemaQuery()
         }
       }
 
@@ -236,7 +232,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       searchState.priceRange,
       pushWithSearch,
       hideSuggestions,
-      showErrorSnackBar,
       offerCategories,
     ]
   )
@@ -265,11 +260,17 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         <SearchInputA11yContainer>
           {isFocusOnSuggestions ? (
             <StyledView>
-              <BackButton onGoBack={unfocus} />
+              <Button
+                iconButton
+                variant="tertiary"
+                color="neutral"
+                icon={ArrowPrevious}
+                onPress={unfocus}
+                accessibilityLabel="Revenir en arrière"
+              />
             </StyledView>
           ) : null}
-          <FlexView>
-            <HiddenSuggestionsButton />
+          <FlexView layout={LinearTransition.duration(250)}>
             <SearchInput
               label="Rechercher dans le catalogue"
               ref={inputRef}
@@ -301,15 +302,13 @@ const RowContainer = styled.View({
 
 const SearchInputContainer = styled.View({
   flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
   flex: 1,
 })
 
 const SearchInputA11yContainer = styled.View({
   flex: 1,
   flexDirection: 'row',
-  alignItems: 'center',
+  alignItems: 'flex-end',
 })
 
 const StyledView = styled.View(({ theme }) => ({
@@ -321,7 +320,7 @@ const StyledView = styled.View(({ theme }) => ({
   height: theme.designSystem.size.spacing.xxxl,
 }))
 
-const FlexView = styled.View({
+const FlexView = styled(Animated.View)({
   flex: 1,
   flexDirection: 'row',
 })

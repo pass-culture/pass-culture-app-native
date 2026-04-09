@@ -16,9 +16,10 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
 >
   <View
     accessibilityRole="header"
+    onLayout={[Function]}
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -39,6 +40,7 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -70,7 +72,7 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -96,34 +98,73 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
           style={
             {
               "alignItems": "center",
-              "flexGrow": 1,
-              "height": 40,
+              "backgroundColor": "transparent",
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "borderWidth": 0,
+              "flexDirection": "row",
               "justifyContent": "center",
-              "maxWidth": 40,
               "opacity": 1,
+              "paddingBottom": 8,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
               "userSelect": "auto",
+              "width": "auto",
             }
           }
           testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-          <Text
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
-                "display": "none",
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
               }
             }
           >
-            Retour
-          </Text>
+            <View
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="0"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -175,6 +216,7 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
   >
     <View
       onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
       style={
         [
           {
@@ -213,23 +255,20 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
+              "paddingTop": 65,
             }
           }
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
+          onScroll={[Function]}
+          paddingHeaderHeight={65}
+          scrollEventThrottle={16}
           style={{}}
         >
           <View>
-            <View
-              style={
-                {
-                  "height": 65,
-                }
-              }
-            />
             <View
               gap={5}
               style={
@@ -436,8 +475,59 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
                 </View>
               </View>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
+        <BVLinearGradient
+          bottomViewHeight={0}
+          collapsable={false}
+          colors={
+            [
+              16777215,
+              4294967295,
+            ]
+          }
+          endPoint={
+            {
+              "x": 0.5,
+              "y": 1,
+            }
+          }
+          locations={
+            [
+              0,
+              1,
+            ]
+          }
+          pointerEvents="none"
+          startPoint={
+            {
+              "x": 0.5,
+              "y": 0,
+            }
+          }
+          style={
+            [
+              {
+                "bottom": 0,
+                "height": 120,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+              },
+              {},
+              {},
+            ]
+          }
+        />
         <View
           onLayout={[Function]}
           style={
@@ -468,7 +558,7 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
                 {
                   "busy": undefined,
                   "checked": undefined,
-                  "disabled": undefined,
+                  "disabled": false,
                   "expanded": undefined,
                   "selected": undefined,
                 }
@@ -495,44 +585,57 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
                 {
                   "alignItems": "center",
                   "backgroundColor": "#6123df",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#6123df",
+                  "borderStyle": "solid",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
                   "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
                   "userSelect": "auto",
-                  "width": "100%",
+                  "width": "auto",
                 }
               }
               testID="Continuer"
             >
               <View
+                gap={8}
+                hasIcon={false}
+                isMultiline={false}
                 style={
                   {
                     "alignItems": "center",
+                    "columnGap": 8,
                     "flexDirection": "row",
                   }
                 }
               >
                 <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
                   style={
-                    {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    }
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
+                      },
+                      {
+                        "color": "#ffffff",
+                        "flexBasis": undefined,
+                        "flexGrow": undefined,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": undefined,
+                      },
+                    ]
                   }
                 >
                   Continuer
@@ -546,7 +649,7 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
                 {
                   "busy": undefined,
                   "checked": undefined,
-                  "disabled": undefined,
+                  "disabled": false,
                   "expanded": undefined,
                   "selected": undefined,
                 }
@@ -573,63 +676,90 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
                 {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
                   "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
                   "userSelect": "auto",
-                  "width": "100%",
+                  "width": "auto",
                 }
               }
               testID="Modifier mes informations"
             >
               <View
+                gap={8}
+                hasIcon={true}
+                isMultiline={false}
                 style={
                   {
                     "alignItems": "center",
+                    "columnGap": 8,
                     "flexDirection": "row",
                   }
                 }
               >
                 <View
-                  style={
+                  collapsable={false}
+                  jestAnimatedProps={
                     {
-                      "flexDirection": "row",
-                      "flexShrink": 0,
-                      "marginRight": 8,
+                      "value": {},
                     }
+                  }
+                  jestAnimatedStyle={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestInlineStyle={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                  nativeID="1"
+                  style={
+                    [
+                      {
+                        "flexShrink": 0,
+                      },
+                    ]
                   }
                 >
                   <View
-                    height={20}
-                    testID="button-icon-left"
-                    width={20}
+                    height={22}
+                    width={22}
                   >
                     <Text>
-                      button-icon-left-SVG-Mock
+                      undefined-SVG-Mock
                     </Text>
                   </View>
                 </View>
                 <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
                   style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    }
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
+                      },
+                      {
+                        "color": "#161617",
+                        "flexBasis": undefined,
+                        "flexGrow": undefined,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": undefined,
+                      },
+                    ]
                   }
                 >
                   Modifier mes informations
@@ -649,37 +779,6 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
         </View>
       </View>
     </View>
-  </View>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;

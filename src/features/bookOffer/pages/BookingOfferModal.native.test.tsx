@@ -14,18 +14,14 @@ import { PlaylistType } from 'features/offer/enums'
 import { beneficiaryUser } from 'fixtures/user'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics/provider'
-import { CampaignEvents, campaignTracker } from 'libs/campaign/campaign'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useBookOfferMutation from 'queries/bookOffer/useBookOfferMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
 
 jest.mock('libs/firebase/analytics/analytics')
-
-jest.mock('libs/campaign/campaign')
 
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
@@ -81,14 +77,6 @@ const mockUseMutationError = (error?: ApiError) => {
 }
 
 const logOfferConversionSpy = jest.spyOn(logOfferConversionAPI, 'logOfferConversion')
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
-  SNACK_BAR_TIME_OUT: 5000,
-}))
 
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
@@ -338,24 +326,6 @@ describe('<BookingOfferModalComponent />', () => {
         expect(logOfferConversionSpy).not.toHaveBeenCalled()
       })
 
-      it('should log campaign tracker when booking is complete', async () => {
-        renderBookingOfferModal({ offerId: mockOffer.id })
-        await user.press(
-          await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
-          })
-        )
-
-        await user.press(screen.getByText('Confirmer la réservation'))
-
-        expect(campaignTracker.logEvent).toHaveBeenCalledWith(CampaignEvents.COMPLETE_BOOK_OFFER, {
-          af_offer_id: mockOffer.id,
-          af_booking_id: mockOffer.stocks[0].id,
-          af_price: mockOffer.stocks[0].price,
-          af_category: mockOffer.subcategoryId,
-        })
-      })
-
       it('should navigate to booking confirmation when booking is complete', async () => {
         renderBookingOfferModal({})
 
@@ -478,7 +448,8 @@ describe('<BookingOfferModalComponent />', () => {
 
           await user.press(screen.getByText('Confirmer la réservation'))
 
-          expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, { timeout: 5000, message })
+          expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+          expect(screen.getByText(message)).toBeOnTheScreen()
         }
       )
     })

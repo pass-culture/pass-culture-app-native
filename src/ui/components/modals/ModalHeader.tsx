@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from 'react'
 import { LayoutChangeEvent, View } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-import { styledButton } from 'ui/components/buttons/styledButton'
-import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 // eslint-disable-next-line no-restricted-imports
 import { ModalSpacing } from 'ui/components/modals/enum'
-import { Touchable } from 'ui/components/touchable/Touchable'
-import { getSpacing, Typo } from 'ui/theme'
+import { Button } from 'ui/designSystem/Button/Button'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ModalIconProps } from './types'
@@ -33,27 +33,30 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   modalSpacing,
   onLayout,
 }) => {
-  const LeftIcon =
-    !!leftIcon &&
-    styled(leftIcon).attrs(({ theme }) => ({
-      size: theme.icons.sizes.smaller,
-      color: theme.designSystem.color.icon.default,
-    }))``
   const RightIcon =
     !!rightIcon &&
-    styled(rightIcon).attrs(({ theme }) => ({
-      size: theme.icons.sizes.smaller,
-      color: theme.designSystem.color.icon.default,
+    styled(rightIcon).attrs(() => ({
+      testID: 'rightIcon',
     }))``
+  const { top } = useSafeAreaInsets()
+  const marginTop = useMobileFontScaleToDisplay({ default: 0, at200PercentZoom: top })
 
   return (
-    <Container onLayout={onLayout} testID="modalHeader" modalSpacing={modalSpacing}>
+    <Container
+      onLayout={onLayout}
+      testID="modalHeader"
+      modalSpacing={modalSpacing}
+      marginTop={marginTop}>
       <HeaderActionContainer justifyContent="left">
-        {LeftIcon ? (
-          <HeaderAction onPress={onLeftIconPress} accessibilityLabel={leftIconAccessibilityLabel}>
-            <LeftIcon />
-            <HiddenAccessibleText>Retour</HiddenAccessibleText>
-          </HeaderAction>
+        {leftIcon ? (
+          <Button
+            iconButton
+            variant="tertiary"
+            color="neutral"
+            icon={leftIcon}
+            onPress={onLeftIconPress}
+            accessibilityLabel={leftIconAccessibilityLabel}
+          />
         ) : null}
       </HeaderActionContainer>
       <TitleContainer>
@@ -63,22 +66,30 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
       </TitleContainer>
       <HeaderActionContainer justifyContent="right">
         {RightIcon ? (
-          <HeaderAction onPress={onRightIconPress} accessibilityLabel={rightIconAccessibilityLabel}>
-            <RightIcon testID="rightIcon" />
-          </HeaderAction>
+          <Button
+            iconButton
+            variant="tertiary"
+            color="neutral"
+            icon={RightIcon}
+            onPress={onRightIconPress}
+            accessibilityLabel={rightIconAccessibilityLabel}
+          />
         ) : null}
       </HeaderActionContainer>
     </Container>
   )
 }
 
-const Container = styled(View)<{ modalSpacing?: ModalSpacing }>(({ modalSpacing }) => ({
-  display: 'flex',
-  width: '100%',
-  flexDirection: 'row',
-  justifyContent: 'center',
-  ...(modalSpacing ? { padding: modalSpacing } : {}),
-}))
+const Container = styled(View)<{ modalSpacing?: ModalSpacing; marginTop: number }>(
+  ({ modalSpacing, marginTop }) => ({
+    display: 'flex',
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    ...(modalSpacing ? { padding: modalSpacing } : {}),
+    marginTop,
+  })
+)
 
 const TitleContainer = styled.View(({ theme }) => ({
   justifyContent: 'center',
@@ -99,10 +110,6 @@ const HeaderActionContainer = styled.View<{ justifyContent: 'left' | 'right' }>(
     }
   }
 )
-
-const HeaderAction = styledButton(Touchable)({
-  padding: getSpacing(1),
-})
 
 const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(1))({
   textAlign: 'center',

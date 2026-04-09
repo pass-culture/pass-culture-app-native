@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SHARE_APP_IMAGE_SOURCE } from 'features/share/components/shareAppImage'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Button } from 'ui/designSystem/Button/Button'
 
 import { BlurryWrapper } from './BlurryWrapper'
 
@@ -24,7 +24,7 @@ export const Default: Story = {
   ),
   name: 'BlurryWrapper',
   args: {
-    children: <ButtonPrimary wording="Réserver l’offre" mediumWidth />,
+    children: <Button wording="Réserver l’offre" fullWidth />,
   },
 }
 

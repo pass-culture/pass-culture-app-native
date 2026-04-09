@@ -10,16 +10,12 @@ import { newEmailSelectionSchema } from 'features/profile/pages/NewEmailSelectio
 import { useNewEmailSelectionMutation } from 'features/profile/queries/useNewEmailSelectionMutation'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
-import {
-  SNACK_BAR_TIME_OUT,
-  SNACK_BAR_TIME_OUT_LONG,
-  useSnackBarContext,
-} from 'ui/components/snackBar/SnackBarContext'
 import { Banner } from 'ui/designSystem/Banner/Banner'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 type FormValues = {
   newEmail: string
@@ -28,7 +24,6 @@ type FormValues = {
 export const NewEmailSelection = () => {
   const { replace } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'NewEmailSelection'>>()
-  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const {
     control,
@@ -45,18 +40,15 @@ export const NewEmailSelection = () => {
 
   const { mutate: selectNewEmail, isPending } = useNewEmailSelectionMutation({
     onSuccess: () => {
-      showSuccessSnackBar({
-        message:
-          'E-mail envoyé sur ta nouvelle adresse\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.',
-        timeout: SNACK_BAR_TIME_OUT_LONG,
-      })
+      showSuccessSnackBar(
+        'E-mail envoyé sur ta nouvelle adresse\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.'
+      )
       replace(...getProfileHookConfig('TrackEmailChange'))
     },
     onError: () =>
-      showErrorSnackBar({
-        message: 'Une erreur s’est produite lors du choix de l’adresse e-mail. Réessaie plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      }),
+      showErrorSnackBar(
+        'Une erreur s’est produite lors du choix de l’adresse e-mail. Réessaie plus tard.'
+      ),
   })
 
   const onSubmit = handleSubmit(({ newEmail }) => {
@@ -70,19 +62,22 @@ export const NewEmailSelection = () => {
   })
 
   return (
-    <SecondaryPageWithBlurHeader title="Modifier mon adresse e-mail">
-      <Form.MaxWidth flex={1}>
-        <EmailInputController control={control} name="newEmail" label="Nouvelle adresse e-mail" />
-        <Container>
-          <Banner label="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h." />
-        </Container>
-        <ButtonPrimary
-          wording="Modifier mon adresse e-mail"
-          disabled={!isValid || isPending}
-          onPress={onSubmit}
-        />
-      </Form.MaxWidth>
-    </SecondaryPageWithBlurHeader>
+    <PageWithHeader
+      title="Modifier mon adresse e-mail"
+      scrollChildren={
+        <Form.MaxWidth flex={1}>
+          <EmailInputController control={control} name="newEmail" label="Nouvelle adresse e-mail" />
+          <Container>
+            <Banner label="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h." />
+          </Container>
+          <Button
+            wording="Modifier mon adresse e-mail"
+            disabled={!isValid || isPending}
+            onPress={onSubmit}
+          />
+        </Form.MaxWidth>
+      }
+    />
   )
 }
 

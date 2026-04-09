@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -21,8 +21,9 @@ import {
   MappedNativeCategories,
   createMappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
+import { itemHasChildren } from 'features/search/helpers/categoriesSectionHelpers/categoriesSectionHelpers'
+import { useHandleScroll } from 'features/search/helpers/useHandleScroll'
 import { NativeCategoryEnum, SearchState } from 'features/search/types'
-import { FacetData } from 'libs/algolia/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { Form } from 'ui/components/Form'
@@ -38,7 +39,6 @@ export interface CategoriesModalProps {
   hideModal: VoidFunction
   filterBehaviour: FilterBehaviour
   onClose?: VoidFunction
-  facets?: FacetData
 }
 
 export type CategoriesModalFormProps = {
@@ -54,15 +54,17 @@ export const CategoriesModal = ({
   isVisible = false,
   hideModal,
   onClose,
-  facets,
 }: CategoriesModalProps) => {
   const { data = PLACEHOLDER_DATA } = useSubcategoriesQuery()
   const { modal, designSystem } = useTheme()
   const { dispatch, searchState } = useSearch()
 
+  const [isBottomReached, setIsBottomReached] = useState(false)
+  const isBottomReachedRef = useRef(false)
+
   const tree = useMemo(() => {
-    return createMappingTree(data, facets)
-  }, [data, facets])
+    return createMappingTree(data)
+  }, [data])
 
   const {
     formState: { isSubmitting },
@@ -94,7 +96,7 @@ export const CategoriesModal = ({
         setValue('genreType', null)
       }
 
-      if (tree[categoryKey]?.children) {
+      if (itemHasChildren(tree[categoryKey])) {
         setValue('currentView', CategoriesModalView.NATIVE_CATEGORIES)
       }
     },
@@ -111,7 +113,7 @@ export const CategoriesModal = ({
         setValue('genreType', null)
       }
 
-      if (nativeCategoryKey && nativeCategories[nativeCategoryKey]?.children) {
+      if (nativeCategoryKey && itemHasChildren(nativeCategories[nativeCategoryKey])) {
         setValue('currentView', CategoriesModalView.GENRES)
       }
     },
@@ -235,6 +237,8 @@ export const CategoriesModal = ({
 
   const hasDefaultValue = category === SearchGroupNameEnumv2.NONE
 
+  const handleScroll = useHandleScroll({ isBottomReachedRef, setIsBottomReached })
+
   return (
     <AppModal
       customModalHeader={
@@ -258,6 +262,7 @@ export const CategoriesModal = ({
       leftIcon={ArrowPrevious}
       leftIconAccessibilityLabel="Revenir en arrière"
       onRightIconPress={handleModalClose}
+      onScroll={handleScroll}
       fixedModalBottom={
         <SearchFixedModalBottom
           onResetPress={handleReset}
@@ -265,6 +270,7 @@ export const CategoriesModal = ({
           isSearchDisabled={isSubmitting}
           filterBehaviour={filterBehaviour}
           isResetDisabled={hasDefaultValue}
+          displayGradient={!isBottomReached}
         />
       }>
       <Form.MaxWidth marginTop={designSystem.size.spacing.m}>
@@ -289,7 +295,6 @@ export const CategoriesModal = ({
             allLabel="Tout"
             value={genreType}
             descriptionContext={descriptionContext}
-            onSubmit={handleSubmit(handleSearchPress)}
           />
         ) : null}
       </Form.MaxWidth>

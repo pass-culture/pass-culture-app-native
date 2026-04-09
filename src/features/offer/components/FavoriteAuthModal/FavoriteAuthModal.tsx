@@ -4,9 +4,9 @@ import styled from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
@@ -19,18 +19,18 @@ interface Props {
 
 export const FavoriteAuthModal: FunctionComponent<Props> = ({ visible, offerId, dismissModal }) => {
   const closeModal = useCallback(() => {
-    analytics.logQuitFavoriteModalForSignIn(offerId)
+    void analytics.logQuitFavoriteModalForSignIn(offerId)
     dismissModal()
   }, [dismissModal, offerId])
 
   const signUp = useCallback(() => {
-    analytics.logSignUpFromOffer(offerId)
-    analytics.logSignUpClicked({ from: 'offer_favorite' })
+    void analytics.logSignUpFromOffer(offerId)
+    void analytics.logSignUpClicked({ from: 'offer_favorite' })
     dismissModal()
   }, [dismissModal, offerId])
 
   const signIn = useCallback(() => {
-    analytics.logSignInFromOffer(offerId)
+    void analytics.logSignInFromOffer(offerId)
     dismissModal()
   }, [dismissModal, offerId])
 
@@ -45,7 +45,7 @@ export const FavoriteAuthModal: FunctionComponent<Props> = ({ visible, offerId, 
       </StyledBody>
       <StyledButtonContainer>
         <InternalTouchableLink
-          as={ButtonPrimary}
+          as={Button}
           wording="Créer un compte"
           navigateTo={{
             screen: 'SignupForm',

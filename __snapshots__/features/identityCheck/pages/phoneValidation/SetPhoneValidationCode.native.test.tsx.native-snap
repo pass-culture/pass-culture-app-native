@@ -16,9 +16,10 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
 >
   <View
     accessibilityRole="header"
+    onLayout={[Function]}
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -39,6 +40,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -182,6 +184,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
   >
     <View
       onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
       style={
         [
           {
@@ -222,21 +225,16 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
               "flexGrow": 1,
               "paddingBottom": 0,
               "paddingHorizontal": 24,
+              "paddingTop": 65,
             }
           }
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
+          paddingHeaderHeight={65}
           style={{}}
         >
           <View>
-            <View
-              style={
-                {
-                  "height": 65,
-                }
-              }
-            />
             <View
               style={
                 {
@@ -462,7 +460,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                             "justifyContent": "center",
                             "marginTop": 0,
                             "maxWidth": 500,
-                            "minHeight": 20,
+                            "minHeight": 24,
                             "paddingBottom": 0,
                             "paddingLeft": 0,
                             "paddingRight": 0,
@@ -513,9 +511,9 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                         style={
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
+                            "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "lineHeight": 22,
                             "maxWidth": "100%",
                           }
                         }
@@ -619,9 +617,9 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                 style={
                   {
                     "color": "#696a6f",
-                    "fontFamily": "Montserrat-Bold",
+                    "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 16,
-                    "lineHeight": 25.6,
+                    "lineHeight": 22,
                     "maxWidth": "100%",
                   }
                 }
@@ -642,37 +640,6 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
         </View>
       </View>
     </View>
-  </View>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;

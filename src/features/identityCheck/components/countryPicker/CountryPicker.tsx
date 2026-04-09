@@ -7,14 +7,15 @@ import { CountryButton } from 'features/identityCheck/components/countryPicker/C
 import { formatCallingCode } from 'features/identityCheck/components/countryPicker/formatCallingCode'
 import { Country } from 'features/identityCheck/components/countryPicker/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { Touchable } from 'ui/components/touchable/Touchable'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ArrowDown as DefaultArrowDown } from 'ui/svg/icons/ArrowDown'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   selectedCountry: Country
@@ -43,9 +44,10 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
         hoverUnderlineColor={null}
         accessibilityLabel={accessibilityLabel}>
         <CallingCodeText>{callingCode}</CallingCodeText>
-        <ArrowDown />
-        <Spacer.Row numberOfSpaces={2} />
-        <VerticalSeparator />
+        <StyledViewGap gap={2}>
+          <ArrowDown />
+          <VerticalSeparator />
+        </StyledViewGap>
       </StyledTouchable>
       <AppModal
         title="Choix de l’indicatif téléphonique"
@@ -70,6 +72,10 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
   )
 }
 
+const StyledViewGap = styled(ViewGap)({
+  flexDirection: 'row',
+  alignItems: 'center',
+})
 const focusStyle =
   Platform.OS === 'web'
     ? {
@@ -87,14 +93,14 @@ const StyledTouchable = styledButton(Touchable)({
 
 const VerticalSeparator = styled.View(({ theme }) => ({
   paddingVertical: theme.designSystem.size.spacing.m,
-  borderRightWidth: getSpacing(0.25),
+  borderRightWidth: theme.designSystem.size.spacing.xxs,
   borderRightColor: theme.designSystem.color.border.default,
 }))
 
-const CallingCodeText = styled(Typo.Body)({
-  marginLeft: -getSpacing(1), // To compensate for the Flag component right margin
-  marginRight: getSpacing(1),
-})
+const CallingCodeText = styled(Typo.Body)(({ theme }) => ({
+  marginLeft: -theme.designSystem.size.spacing.xs, // To compensate for the Flag component right margin
+  marginRight: theme.designSystem.size.spacing.xs,
+}))
 
 const ArrowDown = styled(DefaultArrowDown).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,

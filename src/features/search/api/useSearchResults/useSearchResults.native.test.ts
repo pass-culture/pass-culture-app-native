@@ -8,7 +8,6 @@ import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoli
 import * as fetchSearchResults from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import * as multipleQueriesAPI from 'libs/algolia/fetchAlgolia/multipleQueries'
-import { algoliaFacets } from 'libs/algolia/fixtures/algoliaFacets'
 import {
   mockedAlgoliaResponse,
   mockedAlgoliaVenueResponse,
@@ -46,9 +45,12 @@ const removeSelectedVenueSpy = jest.spyOn(useVenueMapStore, 'removeSelectedVenue
 const mockDispatch = jest.fn()
 const mockFetchSearchResultsResponse = {
   offersResponse: { ...mockedAlgoliaResponse, nbHits: 0, userData: null },
+  venueNotOpenToPublic: {
+    ...mockedAlgoliaVenueResponse,
+    userData: null,
+  },
   venuesResponse: mockedAlgoliaVenueResponse,
   offerArtistsResponse: { ...mockedAlgoliaResponse, nbHits: 0, userData: null },
-  facetsResponse: algoliaFacets,
   duplicatedOffersResponse: { ...mockedAlgoliaResponse, nbHits: 0, userData: null },
   redirectUrl: undefined,
 }
@@ -67,7 +69,7 @@ jest.useFakeTimers()
 
 describe('useSearchResults', () => {
   describe('useSearchInfiniteQuery', () => {
-    it('should fetch offers, venues and all facets', async () => {
+    it('should fetch offers, venues and duplicated offers', async () => {
       renderUseSearchResults()
 
       await waitFor(() => {
@@ -84,26 +86,19 @@ describe('useSearchResults', () => {
             query: '',
           },
           {
+            indexName: 'algoliaVenuesIndexExperimental',
+            facetFilters: [['is_open_to_public:false']],
+            clickAnalytics: true,
+            hitsPerPage: 0,
+            page: 0,
+            query: '',
+          },
+          {
             indexName: 'algoliaVenuesIndexPlaylistSearch',
             facetFilters: [['is_open_to_public:true']],
             aroundRadius: 'all',
             clickAnalytics: true,
             hitsPerPage: 35,
-            page: 0,
-            query: '',
-          },
-          {
-            facets: [
-              'offer.bookMacroSection',
-              'offer.movieGenres',
-              'offer.musicType',
-              'offer.nativeCategoryId',
-              'offer.showType',
-            ],
-            indexName: 'algoliaOffersIndexName',
-            facetFilters: [['offer.isEducational:false']],
-            hitsPerPage: 20,
-            numericFilters: [['offer.prices: 0 TO 300']],
             page: 0,
             query: '',
           },

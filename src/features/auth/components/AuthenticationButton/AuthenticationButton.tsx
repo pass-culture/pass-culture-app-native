@@ -8,7 +8,7 @@ import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideT
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Connect } from 'ui/svg/icons/Connect'
 import { ProfileFilled } from 'ui/svg/icons/ProfileFilled'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type LoginProps = {
   type: 'login'
@@ -61,19 +61,19 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
   )
 }
 
-const ButtonContainer = styled.View({
+const ButtonContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  gap: getSpacing(1),
-})
+  gap: theme.designSystem.size.spacing.xs,
+}))
 
-const AuthenticationContainer = styled.View({
+const AuthenticationContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
   flexDirection: 'row',
   justifyContent: 'center',
-  gap: getSpacing(1),
+  gap: theme.designSystem.size.spacing.xs,
   flexWrap: 'wrap',
-})
+}))
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',

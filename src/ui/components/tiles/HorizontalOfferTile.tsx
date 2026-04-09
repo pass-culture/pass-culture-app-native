@@ -14,19 +14,14 @@ import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { getDistance } from 'libs/location/getDistance'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
-import {
-  formatPrice,
-  getDisplayedPrice,
-  getIfPricesShouldBeFixed,
-} from 'libs/parsers/getDisplayedPrice'
+import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getOfferDates } from 'shared/date/getOfferDates'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -42,7 +37,7 @@ interface Props extends Partial<HorizontalTileProps> {
   onPress?: () => void
   analyticsParams: OfferAnalyticsParams
   style?: StyleProp<ViewStyle>
-  price?: string
+  shouldDisplayPrice?: boolean
   withRightArrow?: boolean
 }
 
@@ -52,7 +47,7 @@ export const HorizontalOfferTile = ({
   onPress,
   style,
   subtitles,
-  price,
+  shouldDisplayPrice = true,
   withRightArrow,
   ...horizontalTileProps
 }: Props) => {
@@ -74,9 +69,8 @@ export const HorizontalOfferTile = ({
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const prePopulateOffer = usePrePopulateOffer()
-  const segment = useABSegment()
 
   const userPosition =
     currentRoute === 'SearchResults' &&
@@ -109,7 +103,6 @@ export const HorizontalOfferTile = ({
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isFixed: getIfPricesShouldBeFixed(subcategoryId),
       isDuo: !!(isDuo && user?.isBeneficiary),
     })
   )
@@ -131,14 +124,11 @@ export const HorizontalOfferTile = ({
       offerId,
     })
 
-    triggerConsultOfferLog(
-      {
-        offerId,
+    triggerConsultOfferLog({
+      offerId,
 
-        ...analyticsParams,
-      },
-      segment
-    )
+      ...analyticsParams,
+    })
 
     if (analyticsParams.from === 'searchresults') {
       const currentQueryID = algoliaAnalyticsSelectors.selectCurrentQueryID()
@@ -159,6 +149,7 @@ export const HorizontalOfferTile = ({
   })
 
   const interactionTagLabel = getInteractionTagLabel(interactionTag)
+
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offerDetails,
     categoryLabel: appLabel,
@@ -204,10 +195,10 @@ export const HorizontalOfferTile = ({
                 </Body>
               ))}
             <PriceAndComingSoonTagContainer gap={1}>
-              {price ? <Typo.BodyAccentS>{price}</Typo.BodyAccentS> : null}
+              {shouldDisplayPrice ? <Typo.BodyAccentS>{formattedPrice}</Typo.BodyAccentS> : null}
               {interactionTag ? (
                 <React.Fragment>
-                  {price ? <Typo.BodyAccentS>{'\u2022'}</Typo.BodyAccentS> : null}
+                  {shouldDisplayPrice ? <Typo.BodyAccentS>{'\u2022'}</Typo.BodyAccentS> : null}
                   {interactionTag}
                 </React.Fragment>
               ) : null}

@@ -8,11 +8,10 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { isTimestampExpired } from 'libs/dates'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
 export function AfterSignupEmailValidationBuffer() {
-  const { showInfoSnackBar } = useSnackBarContext()
   const deviceInfo = useDeviceInfo()
   const { replace } = useNavigation<UseNavigationType>()
   const timeoutRef = useRef<number | undefined>(undefined)
@@ -65,10 +64,7 @@ export function AfterSignupEmailValidationBuffer() {
   }
 
   function onEmailValidationFailure() {
-    showInfoSnackBar({
-      message: 'Ce lien de validation n’est plus valide',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    showErrorSnackBar('Ce lien de validation n’est plus valide')
     delayedReplace(...homeNavigationConfig)
   }
 

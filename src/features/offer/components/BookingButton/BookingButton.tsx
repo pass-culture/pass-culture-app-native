@@ -1,20 +1,23 @@
 import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
+import { styled } from 'styled-components/native'
 
 import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
 import { CTAButton } from 'features/offer/components/CTAButton/CTAButton'
 import { ICTAWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 type Props = {
   ctaWordingAndAction: ICTAWordingAndAction
   isFreeDigitalOffer?: boolean
   isLoggedIn?: boolean
+  fullScreen?: boolean
 }
 
 export const BookingButton: FunctionComponent<Props> = ({
   ctaWordingAndAction,
   isFreeDigitalOffer,
   isLoggedIn,
+  fullScreen,
 }) => {
   const { wording, onPress, navigateTo, externalNav, isDisabled, bottomBannerText } =
     ctaWordingAndAction
@@ -24,8 +27,8 @@ export const BookingButton: FunctionComponent<Props> = ({
   }
 
   return (
-    <React.Fragment>
-      <View testID="booking-button">
+    <ViewGap gap={6}>
+      <ButtonContainer testID="booking-button" fullScreen={fullScreen}>
         <CTAButton
           wording={wording}
           onPress={onPress}
@@ -35,8 +38,12 @@ export const BookingButton: FunctionComponent<Props> = ({
           isFreeDigitalOffer={isFreeDigitalOffer}
           isLoggedIn={isLoggedIn}
         />
-      </View>
+      </ButtonContainer>
       {bottomBannerText ? <BottomBanner text={bottomBannerText} /> : null}
-    </React.Fragment>
+    </ViewGap>
   )
 }
+
+const ButtonContainer = styled.View<{ fullScreen?: boolean }>(({ fullScreen }) => ({
+  width: fullScreen ? '100%' : '50%',
+}))

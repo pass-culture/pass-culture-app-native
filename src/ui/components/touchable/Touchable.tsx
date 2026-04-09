@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 import { TouchableProps } from './types'

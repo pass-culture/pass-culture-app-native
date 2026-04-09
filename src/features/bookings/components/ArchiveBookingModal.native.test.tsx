@@ -8,19 +8,8 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('libs/jwt/jwt')
-
-const mockShowErrorSnackBar = jest.fn()
-const mockShowSuccessSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSuccessSnackBar(props)),
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
-  SNACK_BAR_TIME_OUT: 5000,
-}))
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
   usePersistQuery: jest.requireActual('@tanstack/react-query').useQuery,
@@ -68,11 +57,12 @@ describe('<ArchiveBookingModal />', () => {
     const cancelButton = screen.getByText('Terminer ma réservation')
     await user.press(cancelButton)
 
-    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-      message:
-        'La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées',
-      timeout: 5000,
-    })
+    expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
+    expect(
+      screen.getByText(
+        'La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées'
+      )
+    ).toBeOnTheScreen()
   })
 
   it('should call goBack when success on archiving reservation', async () => {
@@ -100,10 +90,8 @@ describe('<ArchiveBookingModal />', () => {
     const cancelButton = screen.getByText('Terminer ma réservation')
     await user.press(cancelButton)
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message: response.message,
-      timeout: 5000,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(screen.getByText(response.message)).toBeOnTheScreen()
   })
 })
 

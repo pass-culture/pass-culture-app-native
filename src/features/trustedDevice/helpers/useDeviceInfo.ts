@@ -30,7 +30,7 @@ export const useDeviceInfo = (): DeviceInformation | undefined => {
       const resolution = `${width}x${height}`
       const screenZoomLevel = isWeb ? PixelRatio.get() : undefined
       const fontScaleRaw = isWeb ? PixelRatio.getFontScale() : await DeviceInfo.getFontScale()
-      const fontScale = parseFloat(fontScaleRaw.toFixed(3))
+      const fontScale = Number.parseFloat(fontScaleRaw.toFixed(3))
 
       setDeviceInfo({
         deviceId,

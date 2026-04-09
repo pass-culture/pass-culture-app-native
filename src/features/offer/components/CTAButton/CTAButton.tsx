@@ -1,10 +1,9 @@
 import React, { FunctionComponent, useMemo } from 'react'
-import { useTheme } from 'styled-components/native'
 
-import { ButtonWithLinearGradientDeprecated } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradientDeprecated'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { Button } from 'ui/designSystem/Button/Button'
 import { ExternalSiteFilled as ExternalSiteFilledIcon } from 'ui/svg/icons/ExternalSiteFilled'
 
 type Props = {
@@ -28,9 +27,8 @@ export const CTAButton: FunctionComponent<Props> = ({
   isLoggedIn,
   onBeforeNavigate,
 }) => {
-  const { isDesktopViewport } = useTheme()
   const commonLinkProps = {
-    as: ButtonWithLinearGradientDeprecated,
+    as: Button,
     wording: wording,
     onBeforeNavigate: onBeforeNavigate ?? onPress,
     isDisabled: isDisabled,
@@ -55,13 +53,5 @@ export const CTAButton: FunctionComponent<Props> = ({
     )
   }
 
-  return (
-    <ButtonWithLinearGradientDeprecated
-      wording={wording}
-      onPress={onPress}
-      isDisabled={isDisabled}
-      icon={buttonIcon}
-      fitContentWidth={isDesktopViewport}
-    />
-  )
+  return <Button wording={wording} onPress={onPress} disabled={isDisabled} icon={buttonIcon} />
 }

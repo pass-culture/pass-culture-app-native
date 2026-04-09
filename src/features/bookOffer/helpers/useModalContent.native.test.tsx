@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Platform } from 'react-native'
 
-import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
+import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
@@ -9,7 +9,7 @@ import { renderHook } from 'tests/utils'
 
 import { useModalContent } from './useModalContent'
 
-let mockOffer: OfferResponseV2 | undefined = baseOffer
+let mockOffer: OfferResponse | undefined = baseOffer
 
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()

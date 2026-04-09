@@ -7,12 +7,9 @@ import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { SSOType } from 'libs/analytics/logEventAnalytics'
-import { CampaignEvents, campaignTracker } from 'libs/campaign/campaign'
 // eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { getAge } from 'shared/user/getAge'
 
 export const useLoginAndRedirect = () => {
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
@@ -36,20 +33,6 @@ export const useLoginAndRedirect = () => {
 
       try {
         const user = await api.getNativeV1Me()
-        const userAge = getAge(user.birthDate)
-        const firebasePseudoId = await firebaseAnalytics.getAppInstanceId()
-        await campaignTracker.logEvent(CampaignEvents.COMPLETE_REGISTRATION, {
-          af_firebase_pseudo_id: firebasePseudoId,
-          af_user_id: user.id,
-        })
-
-        if (userAge && userAge < 18) {
-          await campaignTracker.logEvent(CampaignEvents.UNDERAGE_USER, {
-            af_firebase_pseudo_id: firebasePseudoId,
-            af_user_id: user.id,
-            af_user_age: userAge,
-          })
-        }
 
         if (disableActivation) {
           delayedReplace(...getSubscriptionHookConfig('DisableActivation'))

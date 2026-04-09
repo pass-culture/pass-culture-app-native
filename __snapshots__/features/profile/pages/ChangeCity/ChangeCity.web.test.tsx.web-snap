@@ -1,43 +1,12 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ChangeCity should render correctly 1`] = `
-.c0 {
-  flex-direction: column;
-  cursor: pointer;
-  border-width: 0;
-  display: flex;
-  background-color: transparent;
-  padding: 0;
-}
-
-.c0:active {
-  opacity: 0.7;
-  outline: none;
-}
-
-.c0:focus {
-  outline: auto;
-}
-
-.c0:disabled {
-  cursor: initial;
-}
-
-.c0:hover {
-  text-decoration: underline;
-  text-decoration-color: #161617;
-}
-
-.c0:hover:disabled {
-  text-decoration: none;
-}
-
-.c2 {
+.c1 {
   width: 100%;
   max-width: 500px;
 }
 
-.c3 {
+.c2 {
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
@@ -45,55 +14,60 @@ exports[`ChangeCity should render correctly 1`] = `
   cursor: pointer;
 }
 
-.c4 {
+.c3 {
   width: 100%;
 }
 
-.c5 {
+.c0 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 20px;
-  padding-right: 20px;
-  min-height: 40px;
-  width: 100%;
-  background-color: #f1f1f4;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: auto;
   max-width: 500px;
+  border-width: 0;
+  background-color: transparent;
   cursor: pointer;
   outline: none;
-  border-width: 0;
-  display: flex;
+  display: inline-flex;
   overflow: hidden;
   text-decoration: none;
   box-sizing: border-box;
 }
 
-.c5:disabled {
+.c0:disabled {
   cursor: initial;
-  background: none;
 }
 
-.c5:hover {
-  text-decoration: underline;
-  text-decoration-color: #ffffff;
-}
-
-.c5:hover:disabled {
-  text-decoration: none;
-}
-
-.c6:disabled {
-  background-color: #f1f1f4;
-}
-
-.c1 {
-  flex-grow: 1;
-  max-width: 40px;
-  height: 40px;
-  justify-content: center;
+.c4 {
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  width: auto;
+  max-width: 500px;
+  border-style: solid;
+  border-color: #cbcdd2;
+  border-width: 1px;
+  background-color: #f1f1f4;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c4:disabled {
+  cursor: initial;
 }
 
 <div>
@@ -101,7 +75,7 @@ exports[`ChangeCity should render correctly 1`] = `
     class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginLeft-11wrixw r-marginRight-61z16t"
   >
     <header
-      class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-1nwnxgm r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
+      class="css-view-175oi2r r-backgroundColor-14lw9ot r-borderBottomColor-1nwnxgm r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
       role="banner"
     >
       <div
@@ -116,28 +90,30 @@ exports[`ChangeCity should render correctly 1`] = `
         >
           <button
             aria-label="Revenir en arrière"
-            class="c0 c1"
+            class="c0"
             data-testid="Revenir en arrière"
             tabindex="0"
-            title="Revenir en arrière"
             type="button"
           >
             <div
-              class="css-view-175oi2r"
-              data-testid="icon-back"
+              class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1wjczhr r-flexDirection-18u37iz"
             >
               <div
-                class="css-text-146c3p1"
-                dir="ltr"
+                class="css-view-175oi2r"
+                id="0"
+                style="flex-shrink: 0;"
               >
-                icon-back-SVG-Mock
+                <div
+                  class="css-view-175oi2r"
+                >
+                  <div
+                    class="css-text-146c3p1"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
               </div>
-            </div>
-            <div
-              class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-              dir="ltr"
-            >
-              Retour
             </div>
           </button>
         </div>
@@ -173,12 +149,8 @@ exports[`ChangeCity should render correctly 1`] = `
           >
             <div
               class="css-view-175oi2r"
-              style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 24px; padding-left: 24px;"
+              style="flex-grow: 1; flex-direction: column; padding: 65px 24px 24px 24px;"
             >
-              <div
-                class="css-view-175oi2r"
-                style="height: 65px;"
-              />
               <div
                 class="css-view-175oi2r r-marginBottom-1peese0"
               >
@@ -192,7 +164,7 @@ exports[`ChangeCity should render correctly 1`] = `
                 </h2>
               </div>
               <form
-                class="c2"
+                class="c1"
               >
                 <div
                   class="css-view-175oi2r r-marginBottom-5oul0u"
@@ -201,7 +173,7 @@ exports[`ChangeCity should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1habvwh r-width-13qz1uu"
                   >
                     <label
-                      class="c3 c4"
+                      class="c2 c3"
                       for="Entrée pour la ville"
                     >
                       <div
@@ -278,24 +250,31 @@ exports[`ChangeCity should render correctly 1`] = `
                   role="list"
                 />
               </div>
+              <div
+                class="css-view-175oi2r r-height-3da1kt"
+              />
             </div>
           </div>
+          <div
+            class="css-view-175oi2r r-bottom-1p0dtai r-height-1wfhzrg r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-pointerEvents-633pao"
+          />
           <div
             class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-qn3fzs r-paddingInline-cxgwc0 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
           >
             <button
               aria-label="Valider ma ville de résidence"
-              class="c5 c6"
+              class="c4"
               data-testid="Valider ma ville de résidence"
               disabled=""
               type="submit"
             >
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
               >
                 <div
-                  class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                  class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
                   dir="ltr"
+                  style="color: rgb(105, 106, 111); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                 >
                   Valider ma ville de résidence
                 </div>
@@ -308,9 +287,6 @@ exports[`ChangeCity should render correctly 1`] = `
         </div>
       </div>
     </div>
-    <div
-      class="css-view-175oi2r r-backdropFilter-1jy2u1p r-height-17lwhjb r-left-1d2f490 r-overflow-1udh08x r-position-u8s1d r-right-zchlnj r-top-ipm5af"
-    />
   </div>
 </div>
 `;

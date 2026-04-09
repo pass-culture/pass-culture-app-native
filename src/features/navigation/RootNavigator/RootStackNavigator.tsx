@@ -7,6 +7,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { Artist } from 'features/artist/pages/Artist'
+import { ArtistWebview } from 'features/artist/pages/ArtistWebview'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
@@ -29,7 +30,7 @@ import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pag
 import { BonificationGranted } from 'features/bonification/pages/BonificationGranted'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
-import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
+import { ClubAdvices } from 'features/clubAdvices/pages/ClubAdvices/ClubAdvices'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
@@ -55,6 +56,8 @@ import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFilte
 import { OfferPageBridge } from 'features/offer/bridge/OfferPageBridge'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { OfferVideoPreview } from 'features/offer/pages/OfferVideoPreview/OfferVideoPreview'
+import { ProAdvicesOffer } from 'features/proAdvices/pages/ProAdvicesOffer'
+import { ProAdvicesVenue } from 'features/proAdvices/pages/ProAdvicesVenue'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { MandatoryUpdatePersonalData } from 'features/profile/pages/MandatoryUpdatePersonalData/MandatoryUpdatePersonalData'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
@@ -277,15 +280,16 @@ const rootScreens: RouteConfig[] = [
   },
   { name: 'Artist', component: Artist, options: { title: 'Artiste' } },
   { name: '_DeeplinkOnlyArtist1', component: Artist, options: { title: 'Artiste' } },
+  { name: 'ArtistWebview', component: ArtistWebview, options: { title: 'Artiste sur Wikipédia' } },
   {
-    name: 'Chronicles',
-    component: Chronicles,
-    options: { title: 'Avis du book club' },
+    name: 'ClubAdvices',
+    component: ClubAdvices,
+    options: { title: 'Avis du club' },
   },
   {
-    name: '_DeeplinkOnlyChronicles1',
-    component: Chronicles,
-    options: { title: 'Avis du book club' },
+    name: '_DeeplinkOnlyClubAdvices1',
+    component: ClubAdvices,
+    options: { title: 'Avis du club' },
   },
   {
     name: 'UTMParameters',
@@ -337,6 +341,16 @@ const rootScreens: RouteConfig[] = [
     // This screen is the RootNavigator (and not SubscriptionStackNavigator with the other Bonification screens) so we can return it from useInitialScreen (the hook doesn't handle setting nested screens as initial screens)
     name: 'BonificationGranted',
     component: withAuthProtection(BonificationGranted),
+  },
+  {
+    name: 'ProAdvicesOffer',
+    component: ProAdvicesOffer,
+    options: { title: 'Avis du pro' },
+  },
+  {
+    name: 'ProAdvicesVenue',
+    component: ProAdvicesVenue,
+    options: { title: 'Avis du pro' },
   },
 ]
 

@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { FlatList, Platform, ViewStyle } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
@@ -8,13 +8,11 @@ import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { getAge } from 'shared/user/getAge'
-// eslint-disable-next-line local-rules/no-theme-from-theme
-import { theme } from 'theme'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { SadFace } from 'ui/svg/icons/SadFace'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
@@ -82,43 +80,59 @@ export function DeleteProfileReason() {
   const canDeleteProfile = !user?.isBeneficiary || userIsDefinedAndAbove21
   const reasons = reasonButtons(!!canDeleteProfile)
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
+  const theme = useTheme()
+  const flatListStyles: ViewStyle = useMemo(
+    () => ({
+      paddingHorizontal: theme.contentPage.marginHorizontal,
+      paddingBottom: theme.designSystem.size.spacing.xxl,
+      maxWidth: theme.contentPage.maxWidth,
+      width: '100%',
+      alignSelf: 'center',
+      gap: theme.designSystem.size.spacing.l, //works only on mobile
+    }),
+    [theme]
+  )
 
   return (
-    <SecondaryPageWithBlurHeader onGoBack={goBack} title="Suppression de compte">
-      <FlatList
-        viewabilityConfig={VIEWABILITY_CONFIG}
-        ListHeaderComponent={
-          <HeaderContainer>
-            <StyledIcon />
-            <TitlesContainer>
-              <Typo.Title3 {...getHeadingAttrs(1)}>
-                Pourquoi souhaites-tu supprimer ton compte&nbsp;?
-              </Typo.Title3>
-              <Typo.Body>
-                Triste de te voir partir&nbsp;! Dis-nous pourquoi pour nous aider à améliorer
-                l’application.
-              </Typo.Body>
-            </TitlesContainer>
-          </HeaderContainer>
-        }
-        ListFooterComponent={Spacer.BottomScreen}
-        contentContainerStyle={flatListStyles}
-        data={reasons}
-        renderItem={({ item }) => {
-          const { wording, navigateTo, analyticsReason } = item
-          return (
-            <ItemContainer>
-              <HeroButtonList
-                Title={<Typo.BodyAccent>{wording}</Typo.BodyAccent>}
-                navigateTo={navigateTo}
-                onBeforeNavigate={() => analytics.logSelectDeletionReason(analyticsReason)}
-                accessibilityLabel={wording}
-              />
-            </ItemContainer>
-          )
-        }}
-      />
-    </SecondaryPageWithBlurHeader>
+    <PageWithHeader
+      onGoBack={goBack}
+      title="Suppression de compte"
+      scrollChildren={
+        <FlatList
+          viewabilityConfig={VIEWABILITY_CONFIG}
+          ListHeaderComponent={
+            <HeaderContainer>
+              <StyledIcon />
+              <TitlesContainer>
+                <Typo.Title3 {...getHeadingAttrs(1)}>
+                  Pourquoi souhaites-tu supprimer ton compte&nbsp;?
+                </Typo.Title3>
+                <Typo.Body>
+                  Triste de te voir partir&nbsp;! Dis-nous pourquoi pour nous aider à améliorer
+                  l’application.
+                </Typo.Body>
+              </TitlesContainer>
+            </HeaderContainer>
+          }
+          ListFooterComponent={Spacer.BottomScreen}
+          contentContainerStyle={flatListStyles}
+          data={reasons}
+          renderItem={({ item }) => {
+            const { wording, navigateTo, analyticsReason } = item
+            return (
+              <ItemContainer>
+                <HeroButtonList
+                  Title={<Typo.BodyAccent>{wording}</Typo.BodyAccent>}
+                  navigateTo={navigateTo}
+                  onBeforeNavigate={() => analytics.logSelectDeletionReason(analyticsReason)}
+                  accessibilityLabel={wording}
+                />
+              </ItemContainer>
+            )
+          }}
+        />
+      }
+    />
   )
 }
 
@@ -136,15 +150,6 @@ const TitlesContainer = styled.View(({ theme }) => ({
   gap: theme.designSystem.size.spacing.l,
   width: '100%',
 }))
-
-const flatListStyles: ViewStyle = {
-  paddingHorizontal: theme.contentPage.marginHorizontal,
-  paddingBottom: getSpacing(8),
-  maxWidth: theme.contentPage.maxWidth,
-  width: '100%',
-  alignSelf: 'center',
-  gap: theme.designSystem.size.spacing.l, //works only on mobile
-}
 
 const StyledIcon = styled(SadFace).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.medium,

@@ -5,7 +5,6 @@ import {
   LayoutChangeEvent,
   Platform,
   StyleProp,
-  StyleSheet,
   TextProps,
   View,
   ViewStyle,
@@ -16,7 +15,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useFunctionOnce } from 'libs/hooks'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { extractTextFromReactNode } from 'shared/extractTextFromReactNode/extractTextFromReactNode'
 import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -24,7 +23,7 @@ import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutli
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ArrowNext as DefaultArrowNext } from '../svg/icons/ArrowNext'
-import { getSpacing, Typo } from '../theme'
+import { Typo } from '../theme'
 
 interface AccordionProps {
   title: React.JSX.Element | string
@@ -77,8 +76,10 @@ export const Accordion = ({
   })
 
   const toggleListItem = () => {
-    const toValue = open ? 0 : 1
-    !open && setShowChildren(true) // Display children before opening animation begins
+    const closed = !open
+    const toValue = closed ? 1 : 0
+    if (closed) setShowChildren(true) // Display children before opening animation begins; // Display children before opening animation begins
+    setOpen(closed)
 
     Animated.parallel([
       Animated.timing(layoutAnimController, {
@@ -95,10 +96,7 @@ export const Accordion = ({
         useNativeDriver: ANIMATION_USE_NATIVE_DRIVER,
       }),
     ]).start(() => {
-      setOpen((prevOpen) => {
-        prevOpen && setShowChildren(false) // Hide children after closing animation ends
-        return !prevOpen
-      })
+      if (open) setShowChildren(false) // Hide children after closing animation ends; // Hide children after closing animation ends
     })
   }
 
@@ -127,9 +125,7 @@ export const Accordion = ({
     <React.Fragment>
       <SwitchContainer>
         {leftComponent ? (
-          <LeftComponentView style={[styles.titleContainer, titleStyle]}>
-            {leftComponent}
-          </LeftComponentView>
+          <LeftComponentView style={titleStyle}>{leftComponent}</LeftComponentView>
         ) : null}
         <StyledTouchableOpacity
           accessibilityLabel={computedAccessibilityLabel}
@@ -140,14 +136,14 @@ export const Accordion = ({
           onMouseDown={(e) => e.preventDefault()}
           {...focusProps}
           {...accessibilityProps}>
-          <View nativeID={accordionLabelId} style={[styles.titleContainer, titleStyle]}>
+          <StyledTitleContainer nativeID={accordionLabelId} style={titleStyle}>
             <Title {...getHeadingAttrs(2)}>{title}</Title>
             <StyledArrowAnimatedView
               style={{ transform: [{ rotateZ: arrowAngle }] }}
               testID="accordionArrow">
               <ArrowNext />
             </StyledArrowAnimatedView>
-          </View>
+          </StyledTitleContainer>
         </StyledTouchableOpacity>
       </SwitchContainer>
       <StyledAnimatedView style={{ height: bodyHeight }} testID="accordionBody">
@@ -167,24 +163,22 @@ export const Accordion = ({
   )
 }
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: getSpacing(5),
-    paddingHorizontal: getSpacing(6),
-    ...(isWeb ? { cursor: 'pointer' } : {}),
-  },
-})
+const StyledTitleContainer = styled.View(({ theme }) => ({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  paddingVertical: theme.designSystem.size.spacing.xl,
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
+  ...(isWeb ? { cursor: 'pointer' } : {}),
+}))
 
-const StyledView = styled(View)<{ hidden: boolean }>(({ hidden }) => ({
+const StyledView = styled(View)<{ hidden: boolean }>(({ hidden, theme }) => ({
   display: hidden ? 'none' : 'flex',
   position: 'absolute',
   bottom: 0,
   width: '100%',
-  paddingBottom: getSpacing(6),
-  paddingHorizontal: getSpacing(6),
+  paddingBottom: theme.designSystem.size.spacing.xl,
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
   paddingTop: 0,
 }))
 
@@ -218,6 +212,6 @@ const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.default,
 }))``
 
-const LeftComponentView = styled.View(({ theme }) => ({
+const LeftComponentView = styled(StyledTitleContainer)(({ theme }) => ({
   marginRight: theme.designSystem.size.spacing.s,
 }))

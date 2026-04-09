@@ -52,7 +52,8 @@ export type CategoryCriteria = {
   icon: React.FC<AccessibleIcon>
   illustration: React.FC<AccessibleIcon>
   facetFilter: SearchGroupNameEnumv2
-  position: number
+  searchLandingPosition: number
+  filterModalPosition: number
   fillColor: BackgroundColorKey
   borderColor: BorderColorKey
 }
@@ -63,7 +64,8 @@ type CategoryCriteriaWithNone = {
         icon: React.FC<AccessibleIcon>
         illustration: undefined
         facetFilter: SearchGroupNameEnumv2
-        position: undefined
+        searchLandingPosition: undefined
+        filterModalPosition: undefined
         fillColor: undefined
         borderColor: undefined
       }
@@ -75,15 +77,26 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     icon: categoriesIcons.All,
     illustration: undefined,
     facetFilter: SearchGroupNameEnumv2.NONE,
-    position: undefined,
+    searchLandingPosition: undefined,
+    filterModalPosition: undefined,
     borderColor: undefined,
     fillColor: undefined,
+  },
+  [SearchGroupNameEnumv2.CARTES_JEUNES]: {
+    icon: categoriesIcons.Card,
+    illustration: SearchCategoriesIllustrations.YouthCards,
+    facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
+    searchLandingPosition: 11,
+    filterModalPosition: 1,
+    borderColor: 'decorative03',
+    fillColor: 'decorative03',
   },
   [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: {
     icon: categoriesIcons.Conference,
     illustration: SearchCategoriesIllustrations.ConcertsFestivals,
     facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
-    position: 1,
+    searchLandingPosition: 1,
+    filterModalPosition: 2,
     borderColor: 'decorative03',
     fillColor: 'decorative03',
   },
@@ -91,7 +104,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     icon: categoriesIcons.Cinema,
     illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
     facetFilter: SearchGroupNameEnumv2.CINEMA,
-    position: 2,
+    searchLandingPosition: 2,
+    filterModalPosition: 3,
     borderColor: 'decorative01',
     fillColor: 'decorative01',
   },
@@ -99,7 +113,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     icon: categoriesIcons.Cinema,
     illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
     facetFilter: SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
-    position: 3,
+    searchLandingPosition: 3,
+    filterModalPosition: 4,
     borderColor: 'decorative02',
     fillColor: 'decorative02',
   },
@@ -107,7 +122,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     icon: categoriesIcons.Book,
     illustration: SearchCategoriesIllustrations.Books,
     facetFilter: SearchGroupNameEnumv2.LIVRES,
-    position: 4,
+    searchLandingPosition: 4,
+    filterModalPosition: 5,
     borderColor: 'decorative05',
     fillColor: 'decorative05',
   },
@@ -115,7 +131,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     icon: categoriesIcons.Disk,
     illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,
     facetFilter: SearchGroupNameEnumv2.MUSIQUE,
-    position: 5,
+    searchLandingPosition: 5,
+    filterModalPosition: 6,
     borderColor: 'decorative04',
     fillColor: 'decorative04',
   },
@@ -123,7 +140,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     icon: categoriesIcons.Palette,
     illustration: SearchCategoriesIllustrations.ArtsCrafts,
     facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
-    position: 6,
+    searchLandingPosition: 6,
+    filterModalPosition: 7,
     borderColor: 'decorative01',
     fillColor: 'decorative01',
   },
@@ -131,7 +149,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     icon: categoriesIcons.Show,
     illustration: SearchCategoriesIllustrations.Shows,
     facetFilter: SearchGroupNameEnumv2.SPECTACLES,
-    position: 7,
+    searchLandingPosition: 7,
+    filterModalPosition: 8,
     borderColor: 'decorative05',
     fillColor: 'decorative05',
   },
@@ -139,7 +158,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     icon: categoriesIcons.Museum,
     illustration: SearchCategoriesIllustrations.MuseumCulturalVisits,
     facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
-    position: 8,
+    searchLandingPosition: 8,
+    filterModalPosition: 9,
     borderColor: 'decorative03',
     fillColor: 'decorative03',
   },
@@ -147,7 +167,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     icon: categoriesIcons.VideoGame,
     illustration: SearchCategoriesIllustrations.GamesVideoGames,
     facetFilter: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
-    position: 9,
+    searchLandingPosition: 9,
+    filterModalPosition: 10,
     borderColor: 'decorative04',
     fillColor: 'decorative04',
   },
@@ -155,30 +176,25 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     icon: categoriesIcons.Press,
     illustration: SearchCategoriesIllustrations.MediaPress,
     facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
-    position: 10,
+    searchLandingPosition: 10,
+    filterModalPosition: 11,
     borderColor: 'decorative02',
     fillColor: 'decorative02',
-  },
-  [SearchGroupNameEnumv2.CARTES_JEUNES]: {
-    icon: categoriesIcons.Card,
-    illustration: SearchCategoriesIllustrations.YouthCards,
-    facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
-    position: 11,
-    borderColor: 'decorative03',
-    fillColor: 'decorative03',
   },
   [SearchGroupNameEnumv2.RENCONTRES_CONFERENCES]: {
     icon: categoriesIcons.Microphone,
     illustration: SearchCategoriesIllustrations.ConferencesMeetings,
     facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
-    position: 12,
+    searchLandingPosition: 12,
+    filterModalPosition: 12,
     borderColor: 'decorative01',
     fillColor: 'decorative01',
   },
   [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE]: {
     icon: categoriesIcons.LiveEvent,
     illustration: SearchCategoriesIllustrations.OnlineEvents,
-    position: 13,
+    searchLandingPosition: 13,
+    filterModalPosition: 13,
     facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
     borderColor: 'decorative02',
     fillColor: 'decorative02',

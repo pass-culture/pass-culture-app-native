@@ -1,12 +1,7 @@
-import {
-  TICKET_FULL_MIDDLE_HEIGHT,
-  TICKET_PUNCHED_MIDDLE_HEIGHT,
-} from 'features/bookings/components/Ticket/TicketDisplay'
 import { blurImageHeight } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { MARGIN_DP, getSpacing } from 'ui/theme'
 
 export const MARGIN_TOP_TICKET = getSpacing(MARGIN_DP)
-export const EXTRA_ANDROID_MARGIN = getSpacing(8)
 const EXTRA_FULL = getSpacing(24)
 
 interface ComputeParams {
@@ -14,6 +9,9 @@ interface ComputeParams {
   windowHeight: number
   display: 'punched' | 'full'
   isAndroid?: boolean
+  ticketFullMiddleHeight: number
+  extraAndroidMargin: number
+  ticket_punched_middle_height: number
 }
 
 export function computeHeaderImageHeight({
@@ -21,16 +19,19 @@ export function computeHeaderImageHeight({
   windowHeight,
   display,
   isAndroid,
+  ticketFullMiddleHeight,
+  extraAndroidMargin,
+  ticket_punched_middle_height,
 }: ComputeParams) {
   const isPunched = display === 'punched'
   const halfOfMiddleBlockHeight =
-    (isPunched ? TICKET_PUNCHED_MIDDLE_HEIGHT : TICKET_FULL_MIDDLE_HEIGHT + EXTRA_FULL) / 2
+    (isPunched ? ticket_punched_middle_height : ticketFullMiddleHeight + EXTRA_FULL) / 2
 
   const headerImageHeight =
     topBlockHeight +
     halfOfMiddleBlockHeight +
     MARGIN_TOP_TICKET +
-    (isAndroid ? EXTRA_ANDROID_MARGIN : 0)
+    (isAndroid ? extraAndroidMargin : 0)
 
   const scrollContentHeight = windowHeight - blurImageHeight
   return { headerImageHeight, scrollContentHeight }

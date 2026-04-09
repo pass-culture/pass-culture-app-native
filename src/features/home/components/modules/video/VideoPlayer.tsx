@@ -30,13 +30,14 @@ export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
   const [isPlaying, setIsPlaying] = useState(true)
   const [hasFinishPlaying, setHasFinishPlaying] = useState(false)
   const [showErrorView, setShowErrorView] = React.useState(false)
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, modal } = useTheme()
   const { width: windowWidth } = useWindowDimensions()
-  const { playerHeight, playerWidth } = getVideoPlayerDimensions(
+  const { playerHeight, playerWidth } = getVideoPlayerDimensions({
     isDesktopViewport,
     windowWidth,
-    RATIO169
-  )
+    ratio: RATIO169,
+    desktopMaxWidth: modal.desktopMaxWidth,
+  })
 
   // Make sure the video stop playing when app is not in an active state (eg: background/inactive)
   useEffect(() => {

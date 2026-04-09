@@ -13,6 +13,9 @@ export const profileStackNavigatorPathConfig = {
       AccessibilityDeclarationWeb: {
         path: 'accessibilite/declaration-accessibilite-web',
       },
+      Achievements: {
+        path: 'profil/succes',
+      },
       RecommendedPaths: {
         path: 'accessibilite/parcours-recommandes',
       },

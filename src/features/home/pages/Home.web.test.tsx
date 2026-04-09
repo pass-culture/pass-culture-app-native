@@ -4,12 +4,10 @@ import { SubcategoriesResponseModelv2 } from 'api/gen'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedBusinessModule } from 'features/home/fixtures/homepage.fixture'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, checkAccessibilityFor, render } from 'tests/utils/web'
+import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { Home } from './Home'
 
@@ -35,7 +33,6 @@ jest.spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate').mockReturnValue({
 
 describe('<Home/>', () => {
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
@@ -54,9 +51,9 @@ describe('<Home/>', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      let results
-      await act(async () => {
-        results = await checkAccessibilityFor(container)
+      const results = await checkAccessibilityFor(container, {
+        // We disable this rule because the contentinfo landmark is not top level in the DOM, but it is still correctly used to wrap the footer content
+        rules: { 'landmark-contentinfo-is-top-level': { enabled: false } },
       })
 
       expect(results).toHaveNoViolations()

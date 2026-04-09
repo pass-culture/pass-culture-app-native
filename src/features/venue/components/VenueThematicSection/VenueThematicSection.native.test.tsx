@@ -10,21 +10,11 @@ import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthC
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, renderAsync, screen, userEvent, waitFor } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
 const venueFixture = { ...venueDataTest, activity: Activity.CINEMA }
-
-const mockShowSuccessSnackBar = jest.fn()
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: mockShowSuccessSnackBar,
-    showErrorSnackBar: mockShowErrorSnackBar,
-  }),
-}))
 
 const alreadySubscribedUser = {
   ...beneficiaryUser,
@@ -81,10 +71,12 @@ describe('<VenueThematicSection/>', () => {
 
       await user.press(screen.getByText('Suivre le thème'))
 
-      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-        message: 'Tu suis le thème “Cinéma”\u00a0! Tu peux gérer tes alertes depuis ton profil.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
+      expect(
+        screen.getByText(
+          'Tu suis le thème “Cinéma”\u00a0! Tu peux gérer tes alertes depuis ton profil.'
+        )
+      ).toBeOnTheScreen()
     })
 
     it('should notify when subscription fails', async () => {
@@ -96,10 +88,8 @@ describe('<VenueThematicSection/>', () => {
 
       await user.press(screen.getByText('Suivre le thème'))
 
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message: 'Une erreur est survenue, veuillez réessayer',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(screen.getByText('Une erreur est survenue, veuillez réessayer')).toBeOnTheScreen()
     })
 
     it('should show logged out modal when user is not logged in', async () => {

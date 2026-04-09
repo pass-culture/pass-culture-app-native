@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -32,11 +31,5 @@ describe('<SetAddress/>', () => {
 })
 
 const renderSetAddress = () => {
-  return render(
-    reactQueryProviderHOC(
-      <SettingsWrapper>
-        <SetAddress />
-      </SettingsWrapper>
-    )
-  )
+  return render(reactQueryProviderHOC(<SetAddress />))
 }

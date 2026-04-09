@@ -16,13 +16,13 @@ export function parseMarkdown(markdown: string, styles: TextStyle = {}): Markdow
 
   // Temporarily replace URLs with a unique marker
   const urls: string[] = []
-  const textWithoutUrls = markdown.replace(URL_REGEX, (match) => {
+  const textWithoutUrls = markdown.replaceAll(URL_REGEX, (match) => {
     urls.push(match) // Store URL
     return `{URL-${urls.length}}` // Temporary marker
   })
 
   // Replace Markdown
-  textWithoutUrls.replace(MARKDOWN_REGEXP, (match, isBold, isItalic, offset) => {
+  textWithoutUrls.replaceAll(MARKDOWN_REGEXP, (match, isBold, isItalic, offset) => {
     // Add plain text before the styled match
     if (lastIndex < offset) {
       parts.push({ text: textWithoutUrls.slice(lastIndex, offset), ...styles })
@@ -57,7 +57,7 @@ export function parseMarkdown(markdown: string, styles: TextStyle = {}): Markdow
     const url = urls.shift() ?? ''
     return {
       ...partObject,
-      text: partObject.text.replace(/{URL-(\d+)}/g, url),
+      text: partObject.text.replaceAll(/{URL-(\d+)}/g, url),
     }
   })
 }

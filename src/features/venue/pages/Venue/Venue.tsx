@@ -1,14 +1,17 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
-import { ViewToken } from 'react-native'
+import { View, ViewToken } from 'react-native'
 import Animated, { Layout } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Activity, VenueResponse } from 'api/gen'
+import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
+import { useVenueProAdvicesQuery } from 'features/advices/queries/useVenueProAdvicesQuery'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
+import { venueProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/venueProAdvicesToAdviceCardData/venueProAdvicesToAdviceCardData'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchInVenueModal } from 'features/search/pages/modals/SearchInVenueModal/SearchInVenueModal'
@@ -20,6 +23,7 @@ import { VenueThematicSection } from 'features/venue/components/VenueThematicSec
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { getVenueOffersArtists } from 'features/venue/helpers/getVenueOffersArtists'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
+import { getAdvicesWithoutHeadline, getHeadlineAdvice } from 'features/venue/helpers/venueAdvices'
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { Venue as VenueType } from 'features/venue/types'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
@@ -34,10 +38,11 @@ import {
   useCategoryIdMapping,
   useSubcategoriesMapping,
 } from 'libs/subcategories'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -74,15 +79,28 @@ export const Venue: FunctionComponent = () => {
   )
 
   const enableSearchWithQuery = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE)
+  const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE)
+  const enableNewTagProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
+  const enableVolunteer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER)
+  const enableVolunteerNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_NEW_TAG)
+  const enableVolunteerFeedback = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK
+  )
   const {
     visible: searchInVenueModalVisible,
     hideModal: hideSearchInVenueModal,
     showModal: showSearchInVenueModal,
   } = useModal(false)
+  const {
+    visible: advicesWritersModalVisible,
+    hideModal: hideAdvicesWritersModal,
+    showModal: showAdvicesWritersModal,
+  } = useModal(false)
   const { userLocation, selectedLocationMode } = useLocation()
   const isUserUnderage = useIsUserUnderage()
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const transformHits = useTransformOfferHits()
+  const segment = useABSegment(['A', 'B'])
 
   const { data: gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylistsQuery({
     venue,
@@ -110,6 +128,12 @@ export const Venue: FunctionComponent = () => {
     mapping: subcategoriesMapping,
   })
 
+  const { data: advices } = useVenueProAdvicesQuery({
+    venueId: params.id,
+    enableProAdvices: enableProAdvices && segment === 'A',
+  })
+  const nbAdvices = advices?.nbResults ?? 0
+
   const {
     data: { artistPageSubcategories },
   } = useRemoteConfigQuery()
@@ -120,12 +144,11 @@ export const Venue: FunctionComponent = () => {
   const { isDesktopViewport } = useTheme()
 
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const enableVenueCalendar = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VENUE_CALENDAR)
   const shouldDisplayVenueCalendar = enableVenueCalendar && venueOffers?.hits.length === 1
-  const enableAccesLibre = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE)
 
   const headlineOfferData = offerToHeadlineOfferData({
     offer: venueOffers?.headlineOffer,
@@ -136,11 +159,13 @@ export const Venue: FunctionComponent = () => {
       labelMapping,
       userLocation,
     },
+    advice: getHeadlineAdvice(advices?.proAdvices, venueOffers?.headlineOffer?.objectID),
+    segment,
   })
 
   useEffect(() => {
     if ((params.from === 'deeplink' || params.from === 'venueMap') && venue?.id) {
-      analytics.logConsultVenue({ venueId: venue.id.toString(), from: params.from })
+      void analytics.logConsultVenue({ venueId: venue.id.toString(), from: params.from })
     }
   }, [params.from, venue?.id])
 
@@ -150,7 +175,12 @@ export const Venue: FunctionComponent = () => {
 
   const VenueContentChildren = venue ? (
     <React.Fragment>
-      <VenueTopComponent venue={venue} />
+      <VenueTopComponent
+        venue={venue}
+        enableVolunteer={enableVolunteer}
+        enableVolunteerNewTag={enableVolunteerNewTag}
+        enableVolunteerFeedback={enableVolunteerFeedback}
+      />
       <ViewGap gap={isDesktopViewport ? 10 : 6}>
         <Animated.View layout={Layout.duration(200)}>
           <VenueBody
@@ -160,15 +190,35 @@ export const Venue: FunctionComponent = () => {
             venueArtists={venueArtists}
             headlineOfferData={headlineOfferData}
             arePlaylistsLoading={arePlaylistsLoading}
-            enableAccesLibre={enableAccesLibre}
             shouldDisplayVenueCalendar={shouldDisplayVenueCalendar}
             onViewableItemsChanged={handleViewableItemsChanged}
+            advicesCardData={
+              segment === 'A'
+                ? venueProAdvicesToAdviceCardData(
+                    getAdvicesWithoutHeadline(advices?.proAdvices, headlineOfferData?.id)
+                  )
+                : undefined
+            }
+            nbAdvices={advices?.nbResults ?? 0}
+            enableNewTagProAdvices={enableNewTagProAdvices}
+            onShowWritersModal={showAdvicesWritersModal}
           />
           <VenueThematicSection venue={venue} />
           <VenueMessagingApps venue={venue} />
           <EmptyBottomSection isVisible={!!isCTADisplayed} />
         </Animated.View>
       </ViewGap>
+      {nbAdvices ? (
+        <View>
+          <AdvicesWritersModal
+            closeModal={hideAdvicesWritersModal}
+            isVisible={advicesWritersModalVisible}
+            onButtonPress={hideAdvicesWritersModal}
+            modalWording={`Les avis des pros sont rédigés par nos partenaires culturels du pass\u00a0: libraires, disquaires, organisateurs de spectacles...\nCes experts partagent leurs coups de coeur pour t‘aider à découvrir des oeuvres qui pourraient te plaire.`}
+            buttonWording="Fermer"
+          />
+        </View>
+      ) : null}
     </React.Fragment>
   ) : null
 

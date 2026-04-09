@@ -28,7 +28,7 @@ const tlds = [
   'ai',
 ]
 const externalNavRegex = new RegExp(
-  `((^|\\s)|https?:\\/\\/)[a-z]([-a-z0-9:%._+~#=]*[a-z0-9])?\\.(${tlds.join('|')})([/?#]\\S*)?(\\s|$)`,
+  String.raw`((^|\s)|https?:\/\/)[a-z]([-a-z0-9:%._+~#=]*[a-z0-9])?\.(${tlds.join('|')})([/?#]\S*)?(\s|$)`,
   'gm'
 )
 

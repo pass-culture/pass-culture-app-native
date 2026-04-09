@@ -2,19 +2,16 @@ import React from 'react'
 
 import { CurrencyEnum, SubscriptionStepCompletionState } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { IconStepCurrent } from 'features/identityCheck/components/IconStepCurrent'
 import { IconStepDisabled } from 'features/identityCheck/components/IconStepDisabled'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { IconStepRetry } from 'features/identityCheck/components/IconStepRetry'
 import { computeIdentificationMethod } from 'features/identityCheck/pages/helpers/computeIdentificationMethod'
+import { useStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { ProfileType } from 'features/identityCheck/pages/profile/types'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
-import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { IdCard } from 'ui/svg/icons/IdCard'
@@ -35,16 +32,11 @@ type StepsDictionary = Record<PartialIdentityCheckStep, StepConfig>
 
 // hook as it can be dynamic depending on subscription step
 export const useStepperInfo = (): StepperInfo => {
-  const enableCulturalSurveyMandatory = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY
-  )
-
   const { user } = useAuthContext()
   const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
+  const storedProfileInfos = useStoredProfileInfos()
 
-  const { remainingAttempts } = usePhoneValidationRemainingAttemptsQuery()
   const { data } = useGetStepperInfoQuery()
-  const { data: settings } = useSettingsContext()
   const { shouldBeOverriden: shouldCreditAmountBeOverriden, amount: overriddenCreditAmount } =
     useOverrideCreditActivationAmount()
 
@@ -63,13 +55,6 @@ export const useStepperInfo = (): StepperInfo => {
     allowedIdentityCheckMethods,
   } = data
 
-  const getPhoneValidationFirstScreen = () => {
-    if (settings?.enablePhoneValidation) {
-      return remainingAttempts === 0 ? 'PhoneValidationTooManySMSSent' : 'SetPhoneNumber'
-    }
-    return 'SetPhoneNumberWithoutValidation'
-  }
-
   const hasUserCompletedInfo =
     !!user?.firstName &&
     !!user?.lastName &&
@@ -77,6 +62,23 @@ export const useStepperInfo = (): StepperInfo => {
     !!user?.postalCode &&
     !!user?.city &&
     !!user?.activityId
+
+  const hasStoredProfileInfo =
+    !!storedProfileInfos?.address ||
+    !!storedProfileInfos?.name ||
+    !!storedProfileInfos?.status ||
+    !!storedProfileInfos?.city
+
+  const userAlreadyGaveInfos = hasUserCompletedInfo || hasStoredProfileInfo
+  const isFirstStepProfileNotCompleted =
+    subscriptionStepsToDisplay[0]?.name === 'profile-completion' &&
+    subscriptionStepsToDisplay[0].completionState !== SubscriptionStepCompletionState.completed
+  const isSecondStepProfileNotCompleted =
+    subscriptionStepsToDisplay[1]?.name === 'profile-completion' &&
+    subscriptionStepsToDisplay[1].completionState !== SubscriptionStepCompletionState.completed
+
+  const shouldDisplayValidateYourInformation =
+    userAlreadyGaveInfos && (isSecondStepProfileNotCompleted || isFirstStepProfileNotCompleted)
 
   const stepsConfig: StepsDictionary = {
     [IdentityCheckStep.PROFILE]: {
@@ -91,7 +93,7 @@ export const useStepperInfo = (): StepperInfo => {
       firstScreenType: hasUserCompletedInfo
         ? ProfileTypes.RECAP_EXISTING_DATA
         : ProfileTypes.IDENTITY_CHECK,
-      subtitle: hasUserCompletedInfo ? undefined : 'Confirme tes informations',
+      subtitle: shouldDisplayValidateYourInformation ? 'Confirme tes informations' : undefined,
     },
     [IdentityCheckStep.IDENTIFICATION]: {
       name: IdentityCheckStep.IDENTIFICATION,
@@ -117,7 +119,7 @@ export const useStepperInfo = (): StepperInfo => {
         completed: () => <IconStepDone Icon={LegalNotices} testID="confirmation-step-done" />,
         retry: () => <IconStepRetry Icon={LegalNotices} testID="confirmation-retry-step" />,
       },
-      firstScreen: enableCulturalSurveyMandatory ? 'CulturalSurveyIntro' : 'IdentityCheckHonor',
+      firstScreen: 'CulturalSurveyIntro',
       firstScreenType: ProfileTypes.IDENTITY_CHECK,
     },
     [IdentityCheckStep.PHONE_VALIDATION]: {
@@ -130,7 +132,7 @@ export const useStepperInfo = (): StepperInfo => {
         completed: () => <IconStepDone Icon={Smartphone} testID="phone-validation-step-done" />,
         retry: () => <IconStepRetry Icon={Smartphone} testID="phone-validation-retry-step" />,
       },
-      firstScreen: getPhoneValidationFirstScreen(),
+      firstScreen: 'SetPhoneNumberWithoutValidation',
       firstScreenType: ProfileTypes.IDENTITY_CHECK,
     },
   }

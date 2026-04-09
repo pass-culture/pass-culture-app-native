@@ -15,6 +15,7 @@ export const Default: Story = {
   render: (props) => <BasicAccessibilityInfo {...props} />,
   name: 'BasicAccessibilityInfo',
   args: {
+    venueId: 123,
     accessibility: {
       audioDisability: false,
       mentalDisability: false,

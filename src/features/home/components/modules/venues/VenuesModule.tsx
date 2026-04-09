@@ -1,15 +1,22 @@
 import React, { useCallback, useEffect } from 'react'
 import { ViewToken } from 'react-native'
+import { useTheme } from 'styled-components'
+import { styled } from 'styled-components/native'
 
+import { ReactionTypeEnum } from 'api/gen'
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
 import { ModuleData } from 'features/home/types'
+import { FeedBack } from 'features/reactions/components/FeedBack'
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
-import { LENGTH_S, getSpacing } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { LENGTH_S } from 'ui/theme'
 
 type VenuesModuleProps = {
   moduleId: string
@@ -33,9 +40,14 @@ export const VenuesModule = ({
   data,
   onViewableItemsChanged,
 }: VenuesModuleProps) => {
+  const enableVolunteerNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_NEW_TAG)
+  const enableVolunteerFeedback = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK
+  )
   const moduleName = displayParameters.title
   const { playlistItems = [] } = data ?? { playlistItems: [] }
-
+  const { designSystem } = useTheme()
+  const isExclusiveVolunteering = displayParameters.isExclusiveVolunteering ?? false
   const renderItem: CustomListRenderItem<VenueHit> = useCallback(
     ({ item, width, height }) => (
       <VenueTile
@@ -45,12 +57,15 @@ export const VenuesModule = ({
         venue={item}
         width={width}
         height={height}
+        originDetail={isExclusiveVolunteering ? 'volunteeringPlaylist' : undefined}
       />
     ),
-    [moduleName, moduleId, homeEntryId]
+    [moduleName, moduleId, homeEntryId, isExclusiveVolunteering]
   )
 
   const shouldModuleBeDisplayed = playlistItems.length > displayParameters.minOffers
+  const showNewTag = enableVolunteerNewTag && isExclusiveVolunteering
+  const showFeedback = enableVolunteerFeedback && isExclusiveVolunteering
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
@@ -65,26 +80,58 @@ export const VenuesModule = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldModuleBeDisplayed])
 
+  const handleOnLogFeedback = (type: ReactionTypeEnum) => {
+    const feedbackResponse = type === ReactionTypeEnum.LIKE ? 'Oui' : 'Non'
+    void analytics.logFeatureFeedbackClicked({
+      featureName: 'volunteer',
+      feedbackResponse,
+      from: 'home',
+      entryId: homeEntryId,
+    })
+  }
+
   if (!shouldModuleBeDisplayed) return null
 
   return (
-    <ObservedPlaylist onViewableItemsChanged={onViewableItemsChanged}>
-      {({ listRef, handleViewableItemsChanged }) => (
-        <PassPlaylist
-          title={displayParameters.title}
-          subtitle={displayParameters.subtitle}
-          data={playlistItems || []}
-          itemHeight={ITEM_HEIGHT}
-          itemWidth={ITEM_WIDTH}
-          renderItem={renderItem}
-          keyExtractor={keyExtractor}
-          tileType="venue"
-          withMargin
-          contentContainerStyle={{ paddingHorizontal: getSpacing(6) }}
-          onViewableItemsChanged={handleViewableItemsChanged}
-          playlistRef={listRef}
+    <Container gap={4}>
+      <ObservedPlaylist onViewableItemsChanged={onViewableItemsChanged}>
+        {({ listRef, handleViewableItemsChanged }) => (
+          <PassPlaylist
+            title={displayParameters.title}
+            subtitle={displayParameters.subtitle}
+            data={playlistItems || []}
+            itemHeight={ITEM_HEIGHT}
+            itemWidth={ITEM_WIDTH}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+            tileType="venue"
+            withMargin
+            contentContainerStyle={{ paddingHorizontal: designSystem.size.spacing.xl }}
+            onViewableItemsChanged={handleViewableItemsChanged}
+            playlistRef={listRef}
+            showNewTag={showNewTag}
+            noMarginBottom
+          />
+        )}
+      </ObservedPlaylist>
+      {showFeedback ? (
+        <StyledFeedBack
+          storageKey="volunteering_feedback"
+          likeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
+          dislikeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
+          title="Le bénévolat sur le pass t’intéresse t-il&nbsp;?"
+          onLogReaction={handleOnLogFeedback}
         />
-      )}
-    </ObservedPlaylist>
+      ) : null}
+    </Container>
   )
 }
+
+const Container = styled(ViewGap)(({ theme }) => ({
+  paddingBottom: theme.home.spaceBetweenModules,
+}))
+
+const StyledFeedBack = styled(FeedBack)(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+  width: theme.isDesktopViewport ? '50%' : 'auto',
+}))

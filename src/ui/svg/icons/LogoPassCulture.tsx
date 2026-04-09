@@ -31,6 +31,6 @@ export const LogoPassCulture = styled(LogoPassCultureSvg).attrs(
   ({ color, width, height, theme }) => ({
     color: color ?? theme.designSystem.color.icon.default,
     width: width ?? getSpacing(26),
-    height: height ?? getSpacing(9),
+    height: height ?? theme.designSystem.size.spacing.xxxl,
   })
 )``

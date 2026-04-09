@@ -3,7 +3,7 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useGetThematicHeaderHeight } from 'features/home/api/helpers/useGetThematicHeaderHeight'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface DefaultThematicHomeHeaderProps {
   headerTitle?: string
@@ -19,21 +19,23 @@ export const DefaultThematicHomeHeader: FunctionComponent<DefaultThematicHomeHea
   return (
     <Container>
       {headerTitle ? (
-        <React.Fragment>
+        <HeaderContainer>
           <HeaderPlaceholder headerHeight={headerHeight} />
           <Typo.Title1 numberOfLines={2}>{headerTitle}</Typo.Title1>
           {headerSubtitle ? (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={2} />
+            <HeaderSubtitleContainer>
               <Typo.Body numberOfLines={2}>{headerSubtitle}</Typo.Body>
-            </React.Fragment>
+            </HeaderSubtitleContainer>
           ) : null}
-          <Spacer.Column numberOfSpaces={6} />
-        </React.Fragment>
+        </HeaderContainer>
       ) : null}
     </Container>
   )
 }
+
+const HeaderContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const HeaderPlaceholder = styled.View<{ headerHeight: number }>(({ headerHeight }) => ({
   height: headerHeight,
@@ -44,4 +46,8 @@ const Container = styled.View(({ theme }) => ({
     Platform.OS == 'web' ? theme.designSystem.size.spacing.xl : theme.designSystem.size.spacing.s,
   marginHorizontal: theme.contentPage.marginHorizontal,
   marginBottom: theme.designSystem.size.spacing.s,
+}))
+
+const HeaderSubtitleContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
 }))

@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
-import { Keyboard, Platform } from 'react-native'
+import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ProgressBar } from 'features/auth/components/ProgressBar/ProgressBar'
@@ -17,11 +17,9 @@ import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics/provider'
-import { campaignTracker } from 'libs/campaign/campaign'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { useModal } from 'ui/components/modals/useModal'
@@ -147,8 +145,6 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
         marketingEmailSubscription,
         token,
         trustedDevice,
-        appsFlyerPlatform: Platform.OS,
-        appsFlyerUserId: await campaignTracker.getUserId(),
         firebasePseudoId: await firebaseAnalytics.getAppInstanceId(),
       }
 
@@ -206,8 +202,6 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
           </React.Fragment>
         ) : null}
       </StyledScrollView>
-
-      <BlurHeader height={headerHeight} />
     </Page>
   )
 }

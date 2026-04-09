@@ -74,18 +74,6 @@ export const rootStackNavigatorPathConfig = {
       SetPhoneNumberWithoutValidation: {
         path: 'creation-compte/telephone-sans-validation',
       },
-      SetPhoneNumber: {
-        path: 'creation-compte/telephone',
-      },
-      SetPhoneValidationCode: {
-        path: 'creation-compte/code-de-validation-telephone',
-      },
-      PhoneValidationTooManyAttempts: {
-        path: 'creation-compte/code-de-validation-trop-d-essais',
-      },
-      PhoneValidationTooManySMSSent: {
-        path: 'creation-compte/code-de-validation-trop-de-sms',
-      },
       SetName: {
         path: 'creation-profil/nom-prenom',
       },
@@ -378,6 +366,9 @@ export const rootStackNavigatorPathConfig = {
   Artist: {
     path: 'artiste/:id',
   },
+  ArtistWebview: {
+    path: 'artiste/wikipedia/:id',
+  },
   _DeeplinkOnlyArtist1: {
     path: 'artist/:id',
   },
@@ -395,18 +386,23 @@ export const rootStackNavigatorPathConfig = {
     path: 'thematic-home',
     parse: screenParamsParser['ThematicHome'],
   },
-  Achievements: {
-    path: 'profil/succes',
+  ClubAdvices: {
+    path: 'avis-du-club/:offerId/:adviceId',
+    parse: screenParamsParser['ClubAdvices'],
   },
-  Chronicles: {
-    path: 'avis-du-book-club/:offerId/:chronicleId',
-    parse: screenParamsParser['Chronicles'],
-  },
-  _DeeplinkOnlyChronicles1: {
-    path: 'chronicles/:offerId/:chronicleId',
-    parse: screenParamsParser['Chronicles'],
+  _DeeplinkOnlyClubAdvices1: {
+    path: 'clubAdvices/:offerId/:adviceId',
+    parse: screenParamsParser['ClubAdvices'],
   },
   BonificationGranted: {
     path: 'bonification/accordee',
+  },
+  ProAdvicesOffer: {
+    path: 'avis-du-pro/offre/:offerId/:venueId',
+    parse: screenParamsParser['ProAdvicesOffer'],
+  },
+  ProAdvicesVenue: {
+    path: 'avis-du-pro/lieu/:venueId/:offerId',
+    parse: screenParamsParser['ProAdvicesVenue'],
   },
 }

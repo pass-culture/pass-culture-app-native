@@ -16,9 +16,10 @@ exports[`RecommendedPaths should render correctly 1`] = `
 >
   <View
     accessibilityRole="header"
+    onLayout={[Function]}
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -39,6 +40,7 @@ exports[`RecommendedPaths should render correctly 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -70,7 +72,7 @@ exports[`RecommendedPaths should render correctly 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -100,10 +102,19 @@ exports[`RecommendedPaths should render correctly 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "flexGrow": 1,
-                  "height": 40,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 40,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                  "width": "auto",
                 },
               ],
               {
@@ -114,23 +125,53 @@ exports[`RecommendedPaths should render correctly 1`] = `
           testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-          <Text
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
-                "display": "none",
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
               }
             }
           >
-            Retour
-          </Text>
+            <View
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="0"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -171,301 +212,308 @@ exports[`RecommendedPaths should render correctly 1`] = `
       />
     </View>
   </View>
-  <RCTScrollView
-    contentContainerStyle={
-      {
-        "alignSelf": "center",
-        "maxWidth": "100%",
-        "paddingHorizontal": 24,
-        "paddingVertical": 24,
-        "width": "100%",
-      }
-    }
-    enableMaxWidth={false}
-    scrollEnabled={true}
-    style={{}}
-  >
-    <View>
-      <View
-        height={65}
-        style={
-          {
-            "height": 65,
-          }
-        }
-      />
-      <Text
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          }
-        }
-      >
-        En complément de la mise en conformité du pass Culture au regard des critères du RGAA qui reste partielle, les équipes du pass Culture se sont attachées à travailler des parcours critiques pour l’utilisation de son dispositif.
-        
-
-
-        En particulier, l’obtention du crédit pass Culture peut se faire selon trois méthodes en fonction de sa situation :
-      </Text>
-      <View
-        numberOfSpaces={5}
-        style={
-          {
-            "height": 20,
-          }
-        }
-      />
-      <View
-        accessibilityRole="list"
-        style={
-          {
-            "flexDirection": "column",
-            "paddingLeft": 0,
-          }
-        }
-      >
-        <View
-          accessibilityLabel="Méthodes pour obtenir le crédit – Liste - Élément 1 sur 3 - en indiquant ses identifiants EduConnect"
-          accessible={true}
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-                "marginLeft": 12,
-                "marginTop": 0,
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "height": 25.6,
-                  "justifyContent": "center",
-                }
-              }
-            >
-              <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "marginLeft": 12,
-                }
-              }
-            >
-              en indiquant ses identifiants EduConnect
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityLabel="Méthodes pour obtenir le crédit – Liste - Élément 2 sur 3 - en présentant sa carte d’identité"
-          accessible={true}
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-                "marginLeft": 12,
-                "marginTop": 0,
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "height": 25.6,
-                  "justifyContent": "center",
-                }
-              }
-            >
-              <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "marginLeft": 12,
-                }
-              }
-            >
-              en présentant sa carte d’identité
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityLabel="Méthodes pour obtenir le crédit – Liste - Élément 3 sur 3 - en remplissant un formulaire sur  Démarche Numérique"
-          accessibilityRole="link"
-          accessible={true}
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-                "marginLeft": 12,
-                "marginTop": 0,
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "height": 25.6,
-                  "justifyContent": "center",
-                }
-              }
-            >
-              <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "marginLeft": 12,
-                }
-              }
-            >
-              en remplissant un formulaire sur 
-              <Text
-                accessibilityLabel="Démarche Numérique, lien externe"
-                accessibilityRole="link"
-                onPress={[Function]}
-                style={
-                  {
-                    "color": "#6123df",
-                    "cursor": "pointer",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "textDecorationLine": "underline",
-                  }
-                }
-              >
-                Démarche Numérique
-              </Text>
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View
-        numberOfSpaces={5}
-        style={
-          {
-            "height": 20,
-          }
-        }
-      />
-      <Text
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          }
-        }
-      >
-        Pour les utilisateurs en situation de handicap, il est recommandé d’utiliser ses identifiants EduConnect ou de passer par la plateforme Démarche Numérique.
-        
-
-        Ces sites étant gérés par la Direction Interministérielle du Numérique ou par le Ministère de l’Éducation Nationale de la Jeunesse et des Sports, leur niveau d’accessibilité est maintenu dans le temps.
-      </Text>
-    </View>
-  </RCTScrollView>
   <View
-    height={65}
     style={
       {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
       }
     }
   >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
+    <View
+      onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
       style={
         [
           {
-            "backgroundColor": "transparent",
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
           },
+          {
+            "paddingBottom": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
           {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-          },
-        ]
-      }
-    />
+            "maxWidth": 500,
+            "width": "100%",
+          }
+        }
+      >
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
+            {
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "paddingBottom": 24,
+              "paddingHorizontal": 24,
+              "paddingTop": 65,
+            }
+          }
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          onScroll={[Function]}
+          paddingHeaderHeight={65}
+          scrollEventThrottle={16}
+          style={{}}
+        >
+          <View>
+            <Text
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
+              }
+            >
+              En complément de la mise en conformité du pass Culture au regard des critères du RGAA qui reste partielle, les équipes du pass Culture se sont attachées à travailler des parcours critiques pour l’utilisation de son dispositif.
+              
+
+
+              En particulier, l’obtention du crédit pass Culture peut se faire selon trois méthodes en fonction de sa situation :
+            </Text>
+            <View
+              accessibilityRole="list"
+              style={
+                {
+                  "flexDirection": "column",
+                  "marginVertical": 24,
+                  "paddingLeft": 0,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Méthodes pour obtenir le crédit – Liste - Élément 1 sur 3 - en indiquant ses identifiants EduConnect"
+                accessible={true}
+                style={
+                  {
+                    "display": "flex",
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "flexDirection": "row",
+                      "marginLeft": 12,
+                      "marginTop": 0,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "height": 25.6,
+                        "justifyContent": "center",
+                      }
+                    }
+                  >
+                    <View
+                      borderColor="#161617"
+                      fillColor="#161617"
+                      height={3}
+                      width={3}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "marginLeft": 12,
+                      }
+                    }
+                  >
+                    en indiquant ses identifiants EduConnect
+                  </Text>
+                </View>
+              </View>
+              <View
+                accessibilityLabel="Méthodes pour obtenir le crédit – Liste - Élément 2 sur 3 - en présentant sa carte d’identité"
+                accessible={true}
+                style={
+                  {
+                    "display": "flex",
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "flexDirection": "row",
+                      "marginLeft": 12,
+                      "marginTop": 0,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "height": 25.6,
+                        "justifyContent": "center",
+                      }
+                    }
+                  >
+                    <View
+                      borderColor="#161617"
+                      fillColor="#161617"
+                      height={3}
+                      width={3}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "marginLeft": 12,
+                      }
+                    }
+                  >
+                    en présentant sa carte d’identité
+                  </Text>
+                </View>
+              </View>
+              <View
+                accessibilityLabel="Méthodes pour obtenir le crédit – Liste - Élément 3 sur 3 - en remplissant un formulaire sur  Démarche Numérique"
+                accessibilityRole="link"
+                accessible={true}
+                style={
+                  {
+                    "display": "flex",
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "flexDirection": "row",
+                      "marginLeft": 12,
+                      "marginTop": 0,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "height": 25.6,
+                        "justifyContent": "center",
+                      }
+                    }
+                  >
+                    <View
+                      borderColor="#161617"
+                      fillColor="#161617"
+                      height={3}
+                      width={3}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "marginLeft": 12,
+                      }
+                    }
+                  >
+                    en remplissant un formulaire sur 
+                    <Text
+                      accessibilityLabel="Démarche Numérique, lien externe"
+                      accessibilityRole="link"
+                      onPress={[Function]}
+                      style={
+                        {
+                          "color": "#6123df",
+                          "cursor": "pointer",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                          "textDecorationLine": "underline",
+                        }
+                      }
+                    >
+                      Démarche Numérique
+                    </Text>
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <Text
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
+              }
+            >
+              Pour les utilisateurs en situation de handicap, il est recommandé d’utiliser ses identifiants EduConnect ou de passer par la plateforme Démarche Numérique.
+              
+
+              Ces sites étant gérés par la Direction Interministérielle du Numérique ou par le Ministère de l’Éducation Nationale de la Jeunesse et des Sports, leur niveau d’accessibilité est maintenu dans le temps.
+            </Text>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
+          </View>
+        </RCTScrollView>
+      </View>
+    </View>
   </View>
 </View>
 `;

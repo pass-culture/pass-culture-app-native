@@ -6,10 +6,6 @@ import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
 import { BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
-import { algoliaFacets } from 'libs/algolia/fixtures/algoliaFacets'
-import { FacetData } from 'libs/algolia/types'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -49,10 +45,6 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<CategoriesModal/>', () => {
-  beforeEach(() => {
-    setFeatureFlags()
-  })
-
   afterEach(() => {
     mockData = PLACEHOLDER_DATA
   })
@@ -156,6 +148,33 @@ describe('<CategoriesModal/>', () => {
       const defaultCategoryFilterRadioButton = screen.getByLabelText(ALL_CATEGORIES_LABEL)
 
       expect(defaultCategoryFilterRadioButton).toBeChecked()
+    })
+
+    it('should not navigate to native categories view when selecting a category without subcategories', async () => {
+      renderCategories()
+
+      await user.press(screen.getByText('Cartes jeunes'))
+
+      expect(screen.getByText(ALL_CATEGORIES_LABEL)).toBeOnTheScreen()
+    })
+
+    it('should set search state when selecting a category without subcategories and pressing search', async () => {
+      renderCategories()
+
+      await user.press(screen.getByText('Cartes jeunes'))
+      await user.press(screen.getByText('Rechercher'))
+
+      const expectedSearchParams: SearchState = {
+        ...searchState,
+        offerCategories: [SearchGroupNameEnumv2.CARTES_JEUNES],
+        offerNativeCategories: [],
+        offerGenreTypes: [],
+      }
+
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expectedSearchParams,
+      })
     })
 
     describe('should close the modal', () => {
@@ -276,45 +295,6 @@ describe('<CategoriesModal/>', () => {
       expect(mockDispatch).toHaveBeenCalledWith({
         type: 'SET_STATE',
         payload: expectedSearchParams,
-      })
-    })
-
-    describe('When wipDisplaySearchNbFacetResults feature flag is activated', () => {
-      beforeEach(() => {
-        setFeatureFlags([RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS])
-        // Give native categories a genreType so they have children and display as FilterRow with counts
-        mockData = {
-          ...PLACEHOLDER_DATA,
-          nativeCategories: PLACEHOLDER_DATA.nativeCategories.map((nativeCategory) =>
-            nativeCategory.name === NativeCategoryIdEnumv2.CARTES_CINEMA
-              ? { ...nativeCategory, genreType: GenreType.MOVIE }
-              : nativeCategory
-          ),
-        }
-      })
-
-      it('should display number of results on each category', () => {
-        renderCategories()
-
-        // Cartes cinéma
-        expect(screen.getByText('7')).toBeOnTheScreen()
-        // Séances de cinéma
-        expect(screen.getByText('54')).toBeOnTheScreen()
-      })
-    })
-
-    describe('When wipDisplaySearchNbFacetResults feature flag is not activated', () => {
-      beforeEach(() => {
-        setFeatureFlags()
-      })
-
-      it('should not display number of results on each category', () => {
-        renderCategories()
-
-        // Cartes cinéma
-        expect(screen.queryByText('7')).not.toBeOnTheScreen()
-        // Séances de cinéma
-        expect(screen.queryByText('54')).not.toBeOnTheScreen()
       })
     })
   })
@@ -541,7 +521,6 @@ function renderCategories({
       hideModal={mockHideModal}
       filterBehaviour={filterBehaviour}
       onClose={onClose}
-      facets={algoliaFacets.facets as FacetData}
       {...props}
     />
   )

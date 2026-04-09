@@ -1,7 +1,7 @@
 import { UseQueryResult } from '@tanstack/react-query'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import {
   BookingListItemOfferResponse,
@@ -24,7 +24,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ShareContent } from 'libs/share/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
-import { getSpacing, Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT_V2 } from 'ui/theme/constants'
 
 const keyExtractor: (item: BookingListItemResponse) => string = (item) => item.id.toString()
@@ -35,7 +34,7 @@ type Props = {
 
 export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery }) => {
   const enableNewBookings = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING)
-
+  const { designSystem } = useTheme()
   const { data: bookings = { bookings: [] } } = useEndedBookingsQuery()
 
   const { bookings: endedBookings } = bookings
@@ -117,7 +116,7 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
   const renderItem: ListRenderItem<BookingListItemResponse> = useCallback(
     ({ item }) => {
       return enableNewBookings ? (
-        <EndedBookingListItemWrapper booking={item} />
+        <EndedBookingListItemWrapper booking={item} handleShowReactionModal={openReactionModal} />
       ) : (
         <EndedBookingItem
           booking={item}
@@ -132,12 +131,12 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
   return (
     <React.Fragment>
       <FlatList
-        contentContainerStyle={contentContainerStyle}
+        contentContainerStyle={contentContainerStyle(designSystem)}
         data={endedBookings ?? []}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         ItemSeparatorComponent={enableNewBookings ? null : StyledSeparator}
-        ListHeaderComponent={hasEndedBookings ? <Spacer.Column numberOfSpaces={6} /> : null}
+        ListHeaderComponent={hasEndedBookings ? <Placeholder /> : null}
         ListEmptyComponent={<NoBookingsView />}
       />
 
@@ -168,12 +167,16 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
   )
 }
 
-const contentContainerStyle = {
+const contentContainerStyle = (designSystem) => ({
   flexGrow: 1,
-  paddingHorizontal: getSpacing(5),
-  paddingBottom: TAB_BAR_COMP_HEIGHT_V2 + getSpacing(8),
-}
+  paddingHorizontal: designSystem.size.spacing.xl,
+  paddingBottom: TAB_BAR_COMP_HEIGHT_V2 + designSystem.size.spacing.xxl,
+})
 
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.l,
+}))
+
+const Placeholder = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xl,
 }))

@@ -95,7 +95,7 @@ describe('buildOfferSearchParameters', () => {
     expect(result).toEqual({
       aroundLatLng: '48.8566, 2.3522',
       aroundRadius: 'all',
-      facetFilters: [['offer.isEducational:false'], ['offer.searchGroupNamev2:MUSIQUE']],
+      facetFilters: [['offer.isEducational:false'], ['offer.searchGroups:MUSIQUE']],
       numericFilters: [['offer.prices: 0 TO 300']],
     })
   })

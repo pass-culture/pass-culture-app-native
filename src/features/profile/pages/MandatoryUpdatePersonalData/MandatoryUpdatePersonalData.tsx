@@ -2,8 +2,8 @@ import React from 'react'
 
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { env } from 'libs/environment/env'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { UserError } from 'ui/svg/UserError'
@@ -19,7 +19,9 @@ export const MandatoryUpdatePersonalData = () => (
       navigateTo: getProfilePropConfig('ProfileInformationValidationUpdate'),
     }}>
     <ExternalTouchableLink
-      as={ButtonTertiaryBlack}
+      as={Button}
+      variant="tertiary"
+      color="neutral"
       wording="Charte des données personnelles"
       externalNav={{ url: env.PRIVACY_POLICY_LINK }}
       icon={ExternalSiteFilled}

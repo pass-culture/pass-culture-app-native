@@ -2,8 +2,8 @@ import React, { ComponentProps, ComponentType } from 'react'
 import styled from 'styled-components/native'
 
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
-import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
@@ -12,6 +12,7 @@ export type AccessibleTitleProps = {
   TitleComponent?: ComponentType<ComponentProps<typeof Typo.Title3>>
   withMargin?: boolean
   accessibilityLabel?: string
+  withTag?: boolean
 }
 
 export const AccessibleTitle: React.FC<AccessibleTitleProps> = ({
@@ -19,8 +20,9 @@ export const AccessibleTitle: React.FC<AccessibleTitleProps> = ({
   TitleComponent = Typo.Title3,
   withMargin = true,
   accessibilityLabel,
+  withTag,
 }) => {
-  const numberOfLines = useFontScaleValue({ default: 2, at200PercentZoom: 3 })
+  const numberOfLines = useMobileFontScaleToDisplay({ default: 2, at200PercentZoom: 3 })
 
   const { titleText, titleEmoji } = separateTitleAndEmojis(title)
   const { titleText: accessibilityLabelTitleText } = separateTitleAndEmojis(
@@ -28,7 +30,7 @@ export const AccessibleTitle: React.FC<AccessibleTitleProps> = ({
   )
   const StyledTitleComponent = styled(TitleComponent || Typo.Title3)({})
   return (
-    <TitleWrapper testID="playlistTitle" withMargin={withMargin}>
+    <TitleWrapper testID="playlistTitle" withMargin={withMargin} withTag={withTag}>
       <StyledTitleComponent
         numberOfLines={numberOfLines}
         accessibilityLabel={accessibilityLabel ? accessibilityLabelTitleText : titleText}>
@@ -46,8 +48,18 @@ export const AccessibleTitle: React.FC<AccessibleTitleProps> = ({
   )
 }
 
-const TitleWrapper = styled.View<{ withMargin?: boolean }>(({ withMargin, theme }) => {
-  return {
-    marginHorizontal: withMargin ? theme.contentPage.marginHorizontal : undefined,
+const TitleWrapper = styled.View<{ withMargin?: boolean; withTag?: boolean }>(
+  ({ withMargin, withTag, theme }) => {
+    const getMarginRight = () => {
+      if (withTag) return theme.designSystem.size.spacing.s
+      if (withMargin) return theme.contentPage.marginHorizontal
+      return undefined
+    }
+
+    return {
+      flexShrink: 1,
+      marginLeft: withMargin ? theme.contentPage.marginHorizontal : undefined,
+      marginRight: getMarginRight(),
+    }
   }
-})
+)

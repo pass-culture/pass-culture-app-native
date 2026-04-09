@@ -3,6 +3,7 @@ import React from 'react'
 import { ReactionTypeEnum } from 'api/gen'
 import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
 import { render, screen, userEvent } from 'tests/utils'
+import { theme } from 'theme'
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -32,8 +33,12 @@ describe('ReactionChoiceValidation', () => {
       />
     )
 
-    expect(screen.getByTestId('thumbUpFilled')).toBeOnTheScreen()
-    expect(screen.getByTestId('thumbDown')).toBeOnTheScreen()
+    expect(screen.getByText('J’aime')).toHaveStyle({
+      color: theme.designSystem.color.text.brandPrimary,
+    })
+    expect(screen.getByText('Je n’aime pas')).toHaveStyle({
+      color: theme.designSystem.color.text.default,
+    })
   })
 
   it('should trigger handleOnPressReactionButton when pressing like button', async () => {

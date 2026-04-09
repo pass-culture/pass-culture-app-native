@@ -15,7 +15,7 @@ import { Duo } from 'ui/svg/icons/Duo'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { OrderPrice as DefaultOrderPrice } from 'ui/svg/icons/OrderPrice'
 import { Profile as DefaultProfile } from 'ui/svg/icons/Profile'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type BookingPropertiesSectionProps = {
@@ -108,11 +108,11 @@ const TitleNameContainer = styled.View(({ theme }) => ({
   gap: theme.designSystem.size.spacing.s,
 }))
 
-const IconDuoContainer = styled.View({
+const IconDuoContainer = styled.View(({ theme }) => ({
   // the Duo icon is wide so we increase the size and remove the margin
   // so that it has the same size as the text
-  marginVertical: -getSpacing(1.5),
-})
+  marginVertical: -theme.designSystem.size.spacing.s,
+}))
 
 const Title = styled(Typo.Body)(({ theme }) => ({
   marginRight: theme.designSystem.size.spacing.s,

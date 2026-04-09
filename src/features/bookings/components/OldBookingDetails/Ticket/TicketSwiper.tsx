@@ -15,7 +15,7 @@ import {
   TicketsProps,
 } from 'features/bookings/components/OldBookingDetails/Ticket/getTickets'
 import { TicketSwiperControls } from 'features/bookings/components/OldBookingDetails/Ticket/TicketSwiperControls'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 const SEPARATOR_VALUE = 4
 const INTERVAL = getSpacing(SEPARATOR_VALUE)
@@ -118,4 +118,8 @@ const SwiperTicketsControlsContainer = styled.View({
   alignItems: 'center',
 })
 
-const Separator = () => <Spacer.Row numberOfSpaces={SEPARATOR_VALUE} />
+const SeparatorSpacer = styled.View(({ theme }) => ({
+  width: theme.designSystem.size.spacing.xs,
+}))
+
+const Separator = () => <SeparatorSpacer />

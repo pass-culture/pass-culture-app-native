@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
 
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface HeaderIconProps {
   wording: 'Fermer' | 'Quitter' | 'Annuler'
@@ -21,8 +21,8 @@ export const RightButtonText: FunctionComponent<HeaderIconProps> = ({ onClose, w
   )
 }
 
-const StyledTouchable = styledButton(Touchable)({
-  height: getSpacing(10),
+const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xxxl,
   justifyContent: 'center',
   alignItems: 'center',
-})
+}))

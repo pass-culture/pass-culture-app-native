@@ -18,27 +18,26 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   offer,
   searchGroupList,
   subcategory,
-  chronicles,
-  chronicleVariantInfo,
+  clubAdvices,
+  proAdvices,
+  adviceVariantInfo,
   defaultReaction,
   onReactionButtonPress,
-  onShowChroniclesWritersModal,
+  onShowClubAdviceWritersModal,
   headlineOffersCount,
   hasVideoCookiesConsent,
   onVideoConsentPress,
-  segment,
-  enableVideoABTesting,
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
+  HeaderComponent,
+  CTAsComponent,
+  proAdvicesCount,
 }) => {
   const { visible, showModal, hideModal } = useModal(false)
   const headerHeight = useGetHeaderHeight()
   const [carouselDefaultIndex, setCarouselDefaultIndex] = useState(0)
 
   const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
-  const shouldShowVideoSection = enableVideoABTesting
-    ? isVideoSectionEnabled && segment === 'A'
-    : isVideoSectionEnabled
 
   const offerImages: ImageWithCredit[] = useMemo(
     () => (offer.images ? getImagesUrlsWithCredit<ImageWithCredit>(offer.images) : []),
@@ -77,22 +76,24 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           offer={offer}
           searchGroupList={searchGroupList}
           subcategory={subcategory}
-          chronicles={chronicles}
-          chronicleVariantInfo={chronicleVariantInfo}
+          clubAdvices={clubAdvices}
+          proAdvices={proAdvices}
+          proAdvicesCount={proAdvicesCount}
+          adviceVariantInfo={adviceVariantInfo}
           onOfferPreviewPress={handlePreviewPress}
-          isVideoSectionEnabled={shouldShowVideoSection}
+          isVideoSectionEnabled={isVideoSectionEnabled}
           BodyWrapper={BodyWrapper}
           defaultReaction={defaultReaction}
           onReactionButtonPress={onReactionButtonPress}
           headlineOffersCount={headlineOffersCount}
           onLayout={onLayout}
-          onShowChroniclesWritersModal={onShowChroniclesWritersModal}
+          onShowClubAdviceWritersModal={onShowClubAdviceWritersModal}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
           onVideoConsentPress={onVideoConsentPress}
-          segment={segment}
-          enableVideoABTesting={enableVideoABTesting}
           isMultiArtistsEnabled={isMultiArtistsEnabled}
-          onShowOfferArtistsModal={onShowOfferArtistsModal}>
+          onShowOfferArtistsModal={onShowOfferArtistsModal}
+          HeaderComponent={HeaderComponent}
+          CTAsComponent={CTAsComponent}>
           {comingSoonFooterHeight ? (
             <ComingSoonFooterOffset height={comingSoonFooterHeight} />
           ) : null}
@@ -114,7 +115,7 @@ const StyledWrapper = styled.View<{ headerHeight: number }>(
       return {
         flexDirection: 'row',
         paddingHorizontal: getSpacing(16),
-        paddingTop: getSpacing(12) + headerHeight,
+        paddingTop: designSystem.size.spacing.xxxxl + headerHeight,
         paddingBottom: designSystem.size.spacing.xxxxl,
         gap: getSpacing(16),
       }

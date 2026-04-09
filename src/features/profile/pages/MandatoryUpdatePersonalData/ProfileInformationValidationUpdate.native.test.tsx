@@ -9,7 +9,6 @@ import { beneficiaryUser } from 'fixtures/user'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 
 import { ProfileInformationValidationUpdate } from './ProfileInformationValidationUpdate'
 jest.mock('features/auth/context/AuthContext')
@@ -25,11 +24,6 @@ const mockUseMutationError = (error?: ApiError) => {
     mutateAsync: jest.fn(() => onError(error)),
   }))
 }
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({ showErrorSnackBar: mockShowErrorSnackBar }),
-}))
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -116,10 +110,8 @@ describe('ProfileInformationValidationUpdate', () => {
     await user.press(screen.getByText('Confirmer'))
 
     await waitFor(() => {
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message: 'Une erreur est survenue',
-        timeout: SNACK_BAR_TIME_OUT_LONG,
-      })
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(screen.getByText('Une erreur est survenue')).toBeOnTheScreen()
     })
   })
 })

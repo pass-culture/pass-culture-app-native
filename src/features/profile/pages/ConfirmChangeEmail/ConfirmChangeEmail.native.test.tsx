@@ -10,20 +10,11 @@ import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { screen, userEvent, renderAsync } from 'tests/utils'
-import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 useRoute.mockReturnValue({ params: { token: 'token' } })
-
-const mockShowErrorSnackBar = jest.fn()
-jest.spyOn(SnackBarContextModule, 'useSnackBarContext').mockReturnValue({
-  showErrorSnackBar: mockShowErrorSnackBar,
-  showInfoSnackBar: jest.fn(),
-  showSuccessSnackBar: jest.fn(),
-  hideSnackBar: jest.fn(),
-})
 
 const confirmationSuccessResponse = {
   accessToken: 'accessToken',
@@ -143,10 +134,10 @@ describe('<ConfirmChangeEmail />', () => {
 
     await userEvent.press(screen.getByText('Confirmer la demande'))
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message: 'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.',
-      timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(
+      screen.getByText('Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.')
+    ).toBeOnTheScreen()
   })
 
   it('should not display an error snackbar when change email confirmation fails because the link expired', async () => {
@@ -157,7 +148,7 @@ describe('<ConfirmChangeEmail />', () => {
 
     await userEvent.press(screen.getByText('Confirmer la demande'))
 
-    expect(mockShowErrorSnackBar).not.toHaveBeenCalled()
+    expect(screen.queryByTestId('snackbar-error')).toBeNull()
   })
 
   it('should redirect ChangeEmailExpiredLink when timestamp has expired', async () => {

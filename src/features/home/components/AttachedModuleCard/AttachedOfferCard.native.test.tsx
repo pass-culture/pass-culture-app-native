@@ -4,8 +4,6 @@ import React from 'react'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
@@ -50,10 +48,6 @@ mockUseSubcategories.mockReturnValue({
 mockdate.set(new Date('2019-12-01T00:00:00.000Z'))
 
 describe('AttachedOfferCard', () => {
-  beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
-  })
-
   it('should display date if offer has one', () => {
     render(<AttachedOfferCard offer={offer} />)
 
@@ -74,7 +68,7 @@ describe('AttachedOfferCard', () => {
   it('should display price if offer has one', () => {
     render(<AttachedOfferCard offer={offer} />)
 
-    const price = screen.getByText('Dès 34 €')
+    const price = screen.getByText('34 €')
 
     expect(price).toBeOnTheScreen()
   })
@@ -91,7 +85,7 @@ describe('AttachedOfferCard', () => {
     mockUseLocation.mockReturnValueOnce(AROUND_ME_POSITION)
     render(<AttachedOfferCard offer={offer} />)
     const accessibilityLabel = screen.getByLabelText(
-      'Découvre l’offre exclusive "Un lit sous une rivière" de la catégorie "Concert". Date\u00a0: 17 novembre 2020. Prix\u00a0: Dès 34 €. Distance : à 107 km.'
+      'Découvre l’offre exclusive "Un lit sous une rivière" de la catégorie "Concert". Date\u00a0: 17 novembre 2020. Prix\u00a0: 34 €. Distance : à 107 km.'
     )
 
     expect(accessibilityLabel).toBeOnTheScreen()

@@ -11,7 +11,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
-import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 
 import { SetEmail } from './SetEmail'
 
@@ -45,13 +44,6 @@ jest.useFakeTimers()
 
 const INCORRECT_EMAIL_MESSAGE =
   'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackBar,
-  }),
-}))
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -237,25 +229,46 @@ describe('<SetEmail />', () => {
   })
 
   describe('SSO', () => {
-    it('should display SSO button when FF is enabled', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
+    it('should display Apple SSO button when Apple SSO feature flag is enabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
 
+      renderSetEmail()
+
+      expect(await screen.findByText('S\u2019inscrire avec Apple')).toBeOnTheScreen()
+    })
+
+    it('should not display Apple SSO button when Apple SSO feature flag is disabled', () => {
+      setFeatureFlags()
+
+      renderSetEmail()
+
+      expect(screen.queryByText('S\u2019inscrire avec Apple')).not.toBeOnTheScreen()
+    })
+
+    it('should display both SSO buttons when apple sso feature flags is enabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+
+      renderSetEmail()
+
+      expect(await screen.findByText('S\u2019inscrire avec Google')).toBeOnTheScreen()
+      expect(screen.getByText('S\u2019inscrire avec Apple')).toBeOnTheScreen()
+    })
+
+    it('should display separator when only Apple SSO is enabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+
+      renderSetEmail()
+
+      expect(await screen.findByText('ou')).toBeOnTheScreen()
+    })
+
+    it('should display google SSO button', async () => {
       renderSetEmail()
 
       expect(await screen.findByTestId('S’inscrire avec Google')).toBeOnTheScreen()
     })
 
-    it('should not display SSO button when FF is disabled', () => {
-      setFeatureFlags()
-
-      renderSetEmail()
-
-      expect(screen.queryByTestId('S’inscrire avec Google')).not.toBeOnTheScreen()
-    })
-
     it('should go to next step when clicking SSO button and account does not already exist', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
-
       mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
         responseOptions: {
           statusCode: 401,
@@ -281,8 +294,6 @@ describe('<SetEmail />', () => {
     })
 
     it('should display snackbar when SSO account is invalid', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
-
       mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
         responseOptions: {
           statusCode: 400,
@@ -299,11 +310,12 @@ describe('<SetEmail />', () => {
 
       await user.press(screen.getByText('S’inscrire avec Google'))
 
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message:
-          'Ton compte Google semble ne pas être valide. Pour pouvoir t’inscrire, confirme d’abord ton adresse e-mail Google.',
-        timeout: SNACK_BAR_TIME_OUT_LONG,
-      })
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(
+        screen.getByText(
+          'Ton compte Google semble ne pas être valide. Pour pouvoir t’inscrire, confirme d’abord ton adresse e-mail Google.'
+        )
+      ).toBeOnTheScreen()
     })
   })
 })

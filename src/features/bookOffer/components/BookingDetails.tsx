@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { EligibilityType, OfferStockResponse, SubcategoryIdEnum } from 'api/gen'
+import { OfferStockResponse, SubcategoryIdEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Item } from 'features/bookings/components/BookingItemWithIcon'
-import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { BookingInformations } from 'features/bookOffer/components/BookingInformations'
 import { CancellationDetails } from 'features/bookOffer/components/CancellationDetails'
 import { CguDetails } from 'features/bookOffer/components/CguDetails'
@@ -12,6 +11,10 @@ import { CguWithCheckbox } from 'features/bookOffer/components/CguWithCheckbox'
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
+import {
+  getBookingDetails,
+  getVenueBookingDetails,
+} from 'features/bookOffer/helpers/getBookingDetails'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { RotatingTextOptions, useRotatingText } from 'features/bookOffer/helpers/useRotatingText'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
@@ -24,19 +27,18 @@ import { useLocation } from 'libs/location/location'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
 import { useSearchVenueOffersInfiniteQuery } from 'queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery'
-import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
-import { formatFullAddress } from 'shared/address/addressFormatter'
-import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
+import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Loader } from 'ui/components/Loader'
 import { useModal } from 'ui/components/modals/useModal'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Error } from 'ui/svg/icons/Error'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export interface BookingDetailsProps {
@@ -67,13 +69,12 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   const selectedStock = useBookingStock()
   const offer = useBookingOfferQuery()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const isUserUnderage = useIsUserUnderage()
   const mapping = useSubcategoriesMapping()
   const { quantity } = bookingState
 
   const isEvent = offer?.subcategoryId ? mapping[offer?.subcategoryId]?.isEvent : undefined
-
   const loadingMessage = useRotatingText(LOADING_MESSAGES, isLoading)
 
   const isMultivenueCompatibleOffer = Boolean(
@@ -84,9 +85,6 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
   const { onScroll: onScrollModal } = useOpacityTransition()
   const { userLocation, selectedLocationMode, place } = useLocation()
-  const venueName = offer?.address?.label || offer?.venue.name
-
-  const headerMessage = getVenueSelectionHeaderMessage(selectedLocationMode, place, venueName)
 
   const defaultSearchVenueOffers = {
     offerId: 0,
@@ -118,19 +116,17 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   } = useSearchVenueOffersInfiniteQuery(
     Object.assign(defaultSearchVenueOffers, currentSearchVenueOffers)
   )
+  const { venueFullAddress, venueName, shouldDisplayOtherVenuesAvailableButton } =
+    getVenueBookingDetails({
+      offer,
+      shouldFetchSearchVenueOffers,
+      nbVenueItems,
+    })
+  const headerMessage = getVenueSelectionHeaderMessage(selectedLocationMode, place, venueName)
+
   const [isCguChecked, setIsCguChecked] = useState(false)
 
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
-
-  const shouldDisplayOtherVenuesAvailableButton = Boolean(
-    shouldFetchSearchVenueOffers && nbVenueItems > 0
-  )
-
-  const venueStreet = offer?.address?.street || offer?.venue.address
-  const venuePostalCode = offer?.address?.postalCode || offer?.venue.postalCode
-  const venueCity = offer?.address?.city || offer?.venue.city
-
-  const venueFullAddress = formatFullAddress(venueStreet, venuePostalCode, venueCity)
 
   const { visible, hideModal, showModal } = useModal(false)
 
@@ -160,9 +156,9 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
     return ''
   }, [offer?.subcategoryId, isEvent])
 
-  const onEndReached = useCallback(() => {
+  const onEndReached = useCallback(async () => {
     if (data && hasNextPage) {
-      fetchNextPage()
+      await fetchNextPage()
     }
   }, [data, fetchNextPage, hasNextPage])
 
@@ -176,41 +172,38 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
   if (!selectedStock || typeof quantity !== 'number') return null
 
-  const priceInCents = quantity * selectedStock.price
-  const formattedPriceWithEuro = formatCurrencyFromCents(
-    priceInCents,
+  const {
+    formattedPriceWithEuro,
+    isNotUserFreeStatus,
+    isBookingConfirmationButtonDisabled,
+    isFreeOfferToArchive,
+    deductedAmount,
+  } = getBookingDetails({
+    offer,
+    selectedStock,
+    quantity,
+    user,
+    isUserUnderage,
+    isCguChecked,
     currency,
-    euroToPacificFrancRate
-  )
-
-  const isNotUserFreeStatus = user?.eligibility !== EligibilityType.free
-  const deductedAmount = `${formattedPriceWithEuro} seront déduits de ton crédit pass Culture`
-
-  const isStockBookable = !(isUserUnderage && selectedStock.isForbiddenToUnderage)
-
-  const isBookingConfirmationButtonDisabled = !isStockBookable || !isCguChecked
-
-  const isFreeOfferToArchive =
-    !!offer && FREE_OFFER_CATEGORIES_TO_ARCHIVE.includes(offer.subcategoryId)
+    euroToPacificFrancRate,
+  })
 
   return isLoading ? (
     <Loader message={loadingMessage} />
   ) : (
-    <Container>
+    <MainContainer>
       <Banner
         label="Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
         Icon={Error}
       />
-      <Spacer.Column numberOfSpaces={6} />
-
-      <Typo.Title4 {...getHeadingAttrs(2)}>Informations</Typo.Title4>
-      <Spacer.Column numberOfSpaces={6} />
+      <Container>
+        <Typo.Title4 {...getHeadingAttrs(2)}>Informations</Typo.Title4>{' '}
+      </Container>
       <BookingInformations />
-      <Spacer.Column numberOfSpaces={6} />
-
-      <Separator />
-
-      <Spacer.Column numberOfSpaces={6} />
+      <Container>
+        <Separator />
+      </Container>
       <VenueTitleContainer>
         <VenueTitleText>{venueSectionTitle}</VenueTitleText>
         {shouldDisplayOtherVenuesAvailableButton ? (
@@ -221,62 +214,51 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
           />
         ) : null}
       </VenueTitleContainer>
-
-      <Spacer.Column numberOfSpaces={4} />
-      <Item
-        Icon={LocationBuilding}
-        message={
-          <VenueContainer>
-            <Typo.BodyAccentXs testID="venueName">{venueName}</Typo.BodyAccentXs>
-            <Spacer.Column numberOfSpaces={1} />
-            <VenueAddress testID="venueAddress">{venueFullAddress}</VenueAddress>
-          </VenueContainer>
-        }
-      />
-      <Spacer.Column numberOfSpaces={6} />
-
+      <ItemContainer>
+        <Item
+          Icon={LocationBuilding}
+          message={
+            <VenueContainer>
+              <Typo.BodyAccentXs testID="venueName">{venueName}</Typo.BodyAccentXs>
+              <VenueAddress testID="venueAddress">{venueFullAddress}</VenueAddress>
+            </VenueContainer>
+          }
+        />
+      </ItemContainer>
       {isFreeOfferToArchive ? null : (
         <React.Fragment>
           <Separator />
-          <Spacer.Column numberOfSpaces={6} />
-          <CancellationDetails />
-          <Spacer.Column numberOfSpaces={6} />
+          <Container>
+            <CancellationDetails />
+          </Container>
         </React.Fragment>
       )}
-
-      <React.Fragment>
+      <StyledViewGap gap={6}>
         <Separator />
-        <Spacer.Column numberOfSpaces={6} />
         <CguDetails>
           <CguWithCheckbox isChecked={isCguChecked} setIsChecked={setIsCguChecked} />
         </CguDetails>
-      </React.Fragment>
-
-      <Spacer.Column numberOfSpaces={6} />
-
+      </StyledViewGap>
       {offer?.isDuo && !isEvent ? (
         <React.Fragment>
           <Separator />
-          <Spacer.Column numberOfSpaces={6} />
-
-          <DuoChoiceSelector />
-
-          <Spacer.Column numberOfSpaces={6} />
+          <Container>
+            <DuoChoiceSelector label="Nombre de places" labelVariant="title3" />
+          </Container>
         </React.Fragment>
       ) : null}
-
       <ButtonContainer>
-        <ButtonPrimary
+        <Button
           disabled={isBookingConfirmationButtonDisabled}
           wording="Confirmer la réservation"
           onPress={onPressBookOffer}
           accessibilityHint={deductedAmount}
+          fullWidth
         />
       </ButtonContainer>
       {formattedPriceWithEuro && isNotUserFreeStatus ? (
         <Caption {...hiddenFromScreenReader()}>{deductedAmount}</Caption>
       ) : null}
-
       {shouldDisplayOtherVenuesAvailableButton ? (
         <VenueSelectionModal
           isVisible={visible}
@@ -298,15 +280,24 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
           headerMessage={headerMessage}
         />
       ) : null}
-    </Container>
+    </MainContainer>
   )
 }
+const ItemContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
+
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const ButtonContainer = styled.View({
   alignItems: 'center',
 })
-
-const Container = styled.View({ width: '100%' })
+const Container = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))
+const MainContainer = styled.View({ width: '100%' })
 
 const Separator = styled.View(({ theme }) => ({
   height: 2,
@@ -319,10 +310,11 @@ const Caption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const VenueTitleContainer = styled.View({
+const VenueTitleContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'space-between',
-})
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
 
 const VenueTitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
   flexShrink: 1,
@@ -332,6 +324,7 @@ const VenueAddress = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const VenueContainer = styled.View({
+const VenueContainer = styled.View(({ theme }) => ({
   flexDirection: 'column',
-})
+  gap: theme.designSystem.size.spacing.xs,
+}))

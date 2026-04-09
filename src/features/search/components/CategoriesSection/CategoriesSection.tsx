@@ -32,7 +32,6 @@ export interface CategoriesSectionProps<
     : undefined
   itemsMapping: T
   onSelect: (item: N) => void
-  onSubmit?: () => void
   shouldSortItems?: boolean
   value: N
 }
@@ -47,16 +46,10 @@ export function CategoriesSection<
   getIcon,
   itemsMapping,
   onSelect,
-  onSubmit,
   shouldSortItems = true,
   value,
 }: Readonly<CategoriesSectionProps<T, N>>) {
   const handleGetIcon = (category: SearchGroupNameEnumv2) => getIcon?.(category)
-
-  const handleSelect = (key: N) => {
-    onSelect(key)
-    onSubmit?.()
-  }
 
   const entries = getSortedCategoriesEntries(itemsMapping, shouldSortItems)
   const hasChildren = checkHasChildrenCategories(entries)
@@ -71,14 +64,12 @@ export function CategoriesSection<
         onChange={(newLabel) => {
           const selectedValue = getValueForLabel(radioOptions, newLabel)
           if (selectedValue === undefined) return
-          handleSelect(selectedValue)
+          onSelect(selectedValue)
         }}
         variant="default"
         display="vertical"
         disabled={false}
-        error={false}
         options={toRadioButtonGroupOptions(radioOptions)}
-        errorText="Error"
       />
     )
   }
@@ -104,7 +95,7 @@ export function CategoriesSection<
           k={k}
           item={item}
           descriptionContext={descriptionContext}
-          handleSelect={handleSelect}
+          handleSelect={onSelect}
           handleGetIcon={handleGetIcon}
         />
       ))}

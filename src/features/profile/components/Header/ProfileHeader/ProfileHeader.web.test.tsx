@@ -19,7 +19,6 @@ jest.mock('features/auth/context/AuthContext', () => ({
 
 const featureFlags = {
   disableActivation: false,
-  enablePassForAll: false,
   enableProfileV2: false,
 }
 

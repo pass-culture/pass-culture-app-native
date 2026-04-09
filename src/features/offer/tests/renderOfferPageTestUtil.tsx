@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { RootStackNavigatorBase } from 'features/navigation/RootNavigator/Stack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
@@ -16,7 +16,7 @@ jest.unmock('@react-navigation/native-stack')
 
 jest.mock('features/auth/context/AuthContext')
 
-let mockedOffer: Partial<OfferResponseV2> | undefined | null = undefined
+let mockedOffer: Partial<OfferResponse> | undefined | null = undefined
 let mockedIsLoading = false
 jest.mock('queries/offer/useOfferQuery', () => ({
   useOfferQuery: () => ({
@@ -33,14 +33,14 @@ jest.mock('react-native-safe-area-context', () => ({
 const offerId = offerResponseSnap.id
 
 type MockOffer =
-  | (OfferResponseV2 & {
-      extraOffer?: Partial<Omit<OfferResponseV2, 'id'>>
+  | (OfferResponse & {
+      extraOffer?: Partial<Omit<OfferResponse, 'id'>>
     })
   | null
 
 type RenderOfferPage = {
   fromOfferId?: number
-  extraOffer?: Partial<Omit<OfferResponseV2, 'id'>>
+  extraOffer?: Partial<Omit<OfferResponse, 'id'>>
   openModalOnNavigation?: boolean
   mockOffer?: MockOffer
   mockIsLoading?: boolean

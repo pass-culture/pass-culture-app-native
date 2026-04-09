@@ -2,12 +2,12 @@ import { CurrencyEnum } from 'api/gen'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { useLocation } from 'libs/location/location'
 import { ILocationContext } from 'libs/location/types'
-import { getCurrencyFromParam } from 'shared/currency/useCurrencyParam'
+import { getCurrencyFromParam } from 'shared/currency/getCurrencyParam'
 import { renderHook } from 'tests/utils/web'
 
 import { useGetCurrencyToDisplay } from './useGetCurrencyToDisplay'
 
-jest.mock('shared/currency/useCurrencyParam')
+jest.mock('shared/currency/getCurrencyParam')
 const mockGetCurrencyFromParam = jest.mocked(getCurrencyFromParam)
 
 jest.mock('libs/location/location')

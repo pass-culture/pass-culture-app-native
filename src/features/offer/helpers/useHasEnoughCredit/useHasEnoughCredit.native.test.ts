@@ -1,11 +1,10 @@
 import mockdate from 'mockdate'
 
-import { CurrencyEnum, OfferResponseV2 } from 'api/gen'
+import { CurrencyEnum, OfferResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as currencyHook from 'shared/currency/useGetCurrencyToDisplay'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -80,7 +79,6 @@ describe('useHasEnoughCredit', () => {
       .spyOn(currencyHook, 'useGetCurrencyToDisplay')
       .mockReturnValueOnce(Currency.PACIFIC_FRANC_SHORT)
 
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockUseAuthContext.mockReturnValueOnce({
       user: {
         ...beneficiaryUser,
@@ -104,7 +102,7 @@ describe('useHasEnoughCredit', () => {
   })
 })
 
-const renderUseHasEnoughCredit = (offer?: Pick<OfferResponseV2, 'stocks' | 'expenseDomains'>) =>
+const renderUseHasEnoughCredit = (offer?: Pick<OfferResponse, 'stocks' | 'expenseDomains'>) =>
   renderHook(() => useHasEnoughCredit(offer), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

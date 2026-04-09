@@ -57,10 +57,10 @@ const genericPagesCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'SecondaryPageWithBlurHeader',
+      title: 'PageHeaderWithoutPlaceholder',
       navigationTarget: {
         screen: 'CheatcodesStackNavigator',
-        params: { screen: 'CheatcodesScreenSecondaryPageWithBlurHeader' },
+        params: { screen: 'CheatcodesScreenPageHeaderWithoutPlaceholder' },
       },
     },
   ],

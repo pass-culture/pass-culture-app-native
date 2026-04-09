@@ -4,10 +4,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { CutoutHorizontal } from 'ui/svg/CutoutHorizontal'
 import { Stroke } from 'ui/svg/Stroke'
-import { getSpacing } from 'ui/theme'
-
-export const TICKET_FULL_MIDDLE_HEIGHT = getSpacing(8)
-export const TICKET_PUNCHED_MIDDLE_HEIGHT = getSpacing(10)
 
 type TicketContentProps = {
   bottomContent: React.JSX.Element
@@ -25,6 +21,7 @@ export const TicketDisplay = ({
   onTopBlockLayout,
 }: TicketContentProps) => {
   const { designSystem } = useTheme()
+
   const backgroundColor = designSystem.color.background.default
   const borderColor = designSystem.color.border.subtle
 
@@ -77,7 +74,7 @@ export const TicketDisplay = ({
 }
 
 const FullContainerStrokedLine = styled.View(({ theme }) => ({
-  height: TICKET_FULL_MIDDLE_HEIGHT,
+  height: theme.designSystem.size.spacing.xxl,
   backgroundColor: theme.designSystem.color.background.default,
   justifyContent: 'center',
 }))
@@ -93,7 +90,7 @@ const ContainerStrokedLine = styled.View(({ theme }) => ({
 const ContentBlock = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
   gap: theme.designSystem.size.spacing.xl,
-  paddingHorizontal: getSpacing(7.5),
+  paddingHorizontal: theme.designSystem.size.spacing.xxl,
   borderColor: theme.designSystem.color.border.subtle,
   borderLeftWidth: 1,
   borderRightWidth: 1,
@@ -105,19 +102,26 @@ const FullBlock = styled(ContentBlock)(({ theme }) => ({
   borderWidth: 1,
 }))
 
-const BottomBlock = styled(ContentBlock)({
+const BottomBlock = styled(ContentBlock)(({ theme }) => ({
   justifyContent: 'center',
-  borderBottomWidth: 1,
-  borderBottomLeftRadius: getSpacing(6),
-  borderBottomRightRadius: getSpacing(6),
-})
-const TopBlock = styled(ContentBlock)({
-  borderTopWidth: 1,
-  borderTopLeftRadius: getSpacing(6),
-  borderTopRightRadius: getSpacing(6),
-})
+  borderWidth: 1,
+  borderBottomLeftRadius: theme.designSystem.size.spacing.xl,
+  borderBottomRightRadius: theme.designSystem.size.spacing.xl,
+}))
 
-const MiddleBlock = styled.View({
+const TopBlock = styled(ContentBlock)(({ theme }) => ({
+  borderWidth: 1,
+  borderTopLeftRadius: theme.designSystem.size.spacing.xl,
+  borderTopRightRadius: theme.designSystem.size.spacing.xl,
+}))
+
+const MiddleBlock = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  height: TICKET_PUNCHED_MIDDLE_HEIGHT,
-})
+  height: theme.designSystem.size.spacing.xxxl,
+  /*
+    On React Native, combining borderRadius with asymmetric borderWidth (e.g. top: 1, bottom: 0) causes a phantom hairline to appear on the side with width 0.
+    Using uniform borderWidth on TopBlock/BottomBlock avoids this, then MiddleBlock overlaps by 1px to hide the now-visible inner borders.
+  */
+  marginVertical: -1,
+  zIndex: 1,
+}))

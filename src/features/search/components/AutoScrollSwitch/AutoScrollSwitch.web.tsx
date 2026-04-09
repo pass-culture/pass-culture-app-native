@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const AutoScrollSwitch = ({
   title,
@@ -27,11 +27,9 @@ export const AutoScrollSwitch = ({
           checkboxID={checkboxID}
           accessibilityLabelledBy={labelID}
         />
-        <Spacer.Row numberOfSpaces={5} />
         <InputLabel id={labelID} htmlFor={checkboxID}>
           <Typo.BodyAccent>{title}</Typo.BodyAccent>
         </InputLabel>
-        <Spacer.Column numberOfSpaces={2} />
       </FlexContainer>
     </Container>
   )
@@ -54,4 +52,6 @@ const FlexContainer = styled.div(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   marginBottom: theme.designSystem.size.spacing.m,
+  marginRight: theme.designSystem.size.spacing.s,
+  gap: theme.designSystem.size.spacing.xl,
 }))

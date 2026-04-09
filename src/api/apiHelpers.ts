@@ -27,7 +27,7 @@ function navigateToLogin(params?: Record<string, unknown>) {
 }
 
 export async function getAuthenticationHeaders(options?: RequestInit): Promise<Headers> {
-  if (options && options.credentials === 'omit') return {}
+  if (options?.credentials === 'omit') return {}
 
   const accessToken = await storage.readString('access_token')
   return accessToken ? { Authorization: `Bearer ${accessToken}` } : {}
@@ -191,8 +191,8 @@ export function isAPIExceptionCapturedAsInfo(statusCode: number) {
   return Boolean(statusCode === 401)
 }
 
-const notCapturedStatusCodes = [500, 502, 503, 504]
+const notCapturedStatusCodes = new Set([500, 502, 503, 504])
 
 export function isAPIExceptionNotCaptured(statusCode: number) {
-  return notCapturedStatusCodes.includes(statusCode)
+  return notCapturedStatusCodes.has(statusCode)
 }

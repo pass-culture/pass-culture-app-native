@@ -2,8 +2,8 @@ import React from 'react'
 
 import { BookingVenueResponseV2 } from 'api/gen'
 import { BookingProperties } from 'features/bookings/types'
+import { getVenueBlock } from 'features/offer/components/OfferVenueBlock/getVenueBlock'
 import { VenueBlockAddress } from 'features/offer/components/OfferVenueBlock/type'
-import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
 import { analytics } from 'libs/analytics/provider'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
@@ -30,7 +30,7 @@ export const VenueBlockWithItinerary = ({
   onSeeVenuePress,
   addressLabel,
 }: Props) => {
-  const { venueName, venueAddress, isOfferAddressDifferent } = useVenueBlock({
+  const { venueName, venueAddress, isOfferAddressDifferent } = getVenueBlock({
     venue: { ...venue, addressId: venue.address.id ?? undefined, address: null },
     offerAddress: address,
   })

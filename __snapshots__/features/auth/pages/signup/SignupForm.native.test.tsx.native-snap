@@ -18,7 +18,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
     accessibilityRole="header"
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -39,6 +39,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -70,7 +71,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -100,10 +101,19 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "flexGrow": 1,
-                  "height": 40,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 40,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                  "width": "auto",
                 },
               ],
               {
@@ -114,23 +124,53 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
           testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-          <Text
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
-                "display": "none",
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
               }
             }
           >
-            Retour
-          </Text>
+            <View
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="0"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -177,7 +217,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
       style={
         {
           "backgroundColor": "#f1f1f4",
-          "height": 6,
+          "height": 8,
           "justifyContent": "flex-start",
           "width": "100%",
         }
@@ -533,22 +573,23 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                 },
                 {
                   "alignItems": "center",
+                  "alignSelf": "center",
                   "backgroundColor": "#f1f1f4",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#cbcdd2",
+                  "borderStyle": "solid",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
                   "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
                   "width": "100%",
                 },
-                {},
               ],
               {
                 "opacity": 1,
@@ -558,24 +599,39 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
           testID="Continuer vers l’étape Mot de passe"
         >
           <View
+            fullWidth={true}
+            gap={8}
+            hasIcon={false}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
+                "columnGap": 8,
                 "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
               }
             }
           >
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
-                {
-                  "color": "#696a6f",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "maxWidth": "100%",
-                }
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#696a6f",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": "center",
+                  },
+                ]
               }
             >
               Continuer
@@ -583,12 +639,200 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
           </View>
         </View>
         <View
+          gap={4}
           style={
             {
-              "height": 32,
+              "gap": 16,
+              "marginBottom": 40,
+              "marginTop": 16,
             }
           }
-        />
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "paddingHorizontal": 4,
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "backgroundColor": "#cbcdd2",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "height": 1,
+                  "width": "100%",
+                }
+              }
+            />
+            <Text
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                  "marginHorizontal": 12,
+                }
+              }
+            >
+              ou
+            </Text>
+            <View
+              style={
+                {
+                  "backgroundColor": "#cbcdd2",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "height": 1,
+                  "width": "100%",
+                }
+              }
+            />
+          </View>
+          <View
+            accessibilityLabel="S’inscrire avec Google"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="S’inscrire avec Google"
+          >
+            <View
+              fullWidth={true}
+              gap={8}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 8,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
+                }
+              }
+            >
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="1"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  width={22}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#161617",
+                      "flexBasis": undefined,
+                      "flexGrow": undefined,
+                      "flexShrink": 1,
+                      "maxWidth": "100%",
+                      "minWidth": 0,
+                      "textAlign": undefined,
+                    },
+                  ]
+                }
+              >
+                S’inscrire avec Google
+              </Text>
+            </View>
+          </View>
+        </View>
         <View
           style={
             {
@@ -647,9 +891,9 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                   {
                     "color": "#320096",
                     "cursor": "pointer",
-                    "fontFamily": "Montserrat-Bold",
+                    "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 16,
-                    "lineHeight": 25.6,
+                    "lineHeight": 22,
                     "textDecorationLine": "underline",
                   }
                 }
@@ -662,37 +906,6 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
       </View>
     </View>
   </RCTScrollView>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-  </View>
 </View>
 `;
 
@@ -714,7 +927,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
     accessibilityRole="header"
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -735,6 +948,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -766,7 +980,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -796,10 +1010,19 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "flexGrow": 1,
-                  "height": 40,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 40,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                  "width": "auto",
                 },
               ],
               {
@@ -810,23 +1033,53 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
           testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-          <Text
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
-                "display": "none",
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
               }
             }
           >
-            Retour
-          </Text>
+            <View
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="2"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -935,7 +1188,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
       style={
         {
           "backgroundColor": "#f1f1f4",
-          "height": 6,
+          "height": 8,
           "justifyContent": "flex-start",
           "width": "100%",
         }
@@ -985,595 +1238,589 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
         }
       />
       <View
+        marginTop={0}
         style={
           {
-            "maxWidth": 500,
-            "width": "100%",
+            "marginTop": 0,
           }
         }
       >
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 19,
-              "lineHeight": 30.4,
-            }
-          }
-        >
-          Choisis un mot de passe
-        </Text>
         <View
           style={
             {
-              "marginVertical": 40,
+              "maxWidth": 500,
+              "width": "100%",
             }
           }
         >
-          <View
-            style={
-              {
-                "alignItems": "flex-start",
-                "width": "100%",
-              }
-            }
-          >
-            <View>
-              <View
-                accessibilityElementsHidden={true}
-                importantForAccessibility="no"
-                style={
-                  {
-                    "alignItems": "flex-end",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "width": "100%",
-                  }
-                }
-              >
-                <View>
-                  <Text
-                    style={
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      }
-                    }
-                  >
-                    Mot de passe
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              isDisabled={false}
-              isError={false}
-              isFocused={false}
-              isHover={false}
-              size="small"
-              style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderColor": "#90949d",
-                  "borderStyle": "solid",
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 40,
-                  "marginTop": 4,
-                  "paddingBottom": 0,
-                  "paddingLeft": 9,
-                  "paddingRight": 9,
-                  "paddingTop": 0,
-                  "width": "100%",
-                }
-              }
-              testID="styled-input-container"
-            >
-              <TextInput
-                accessibilityLabel="Champs de texte - Mot de passe - Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial"
-                accessibilityRequired={false}
-                autoCapitalize="none"
-                autoComplete="current-password"
-                editable={true}
-                isEmpty={true}
-                multiline={false}
-                nativeID="Mot de passe"
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onFocus={[Function]}
-                placeholder=""
-                placeholderTextColor="#696a6f"
-                returnKeyType="next"
-                secureTextEntry={true}
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat",
-                    "fontSize": 16,
-                    "fontStyle": "italic",
-                    "fontWeight": "500",
-                    "height": "100%",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                  }
-                }
-                testID="Mot de passe"
-                textAlignVertical="center"
-                value=""
-              />
-              <View
-                accessibilityLabel="Afficher le mot de passe"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "maxWidth": 60,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Afficher le mot de passe"
-              >
-                <View
-                  fill="#161617"
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
           <Text
-            displayBlock={true}
-            nativeID="testUuidV4"
+            accessibilityRole="header"
             style={
               {
-                "display": "none",
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 19,
+                "lineHeight": 30.4,
               }
             }
           >
-            Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial
+            Choisis un mot de passe
           </Text>
           <View
-            accessibilityAtomic={false}
-            accessibilityRole="none"
-            gap={1}
-            isVisible={true}
             style={
               {
-                "alignItems": "flex-start",
-                "gap": 4,
-                "maxWidth": 500,
-                "paddingTop": 8,
-                "width": "100%",
+                "marginVertical": 40,
               }
             }
           >
             <View
-              gap={1}
-              noFullWidth={false}
               style={
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row-reverse",
-                  "gap": 4,
-                  "justifyContent": "flex-end",
-                  "maxWidth": 500,
+                  "alignItems": "flex-start",
                   "width": "100%",
                 }
               }
             >
-              <Text
-                accessibilityLabel="12 caractères - au minimum"
-                color="default"
-                noFullWidth={false}
-                style={
-                  {
-                    "color": "#161617",
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "paddingLeft": 4,
-                  }
-                }
-              >
-                12 caractères
-              </Text>
-              <View
-                style={
-                  {
-                    "flexShrink": 0,
-                  }
-                }
-              >
+              <View>
                 <View
-                  height={20}
-                  testID="rule-icon-close"
-                  width={20}
+                  accessibilityElementsHidden={true}
+                  importantForAccessibility="no"
+                  style={
+                    {
+                      "alignItems": "flex-end",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "width": "100%",
+                    }
+                  }
                 >
-                  <Text>
-                    rule-icon-close-SVG-Mock
-                  </Text>
+                  <View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
+                      }
+                    >
+                      Mot de passe
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                isDisabled={false}
+                isError={false}
+                isFocused={false}
+                isHover={false}
+                size="small"
+                style={
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "marginTop": 4,
+                    "paddingBottom": 0,
+                    "paddingLeft": 9,
+                    "paddingRight": 9,
+                    "paddingTop": 0,
+                    "width": "100%",
+                  }
+                }
+                testID="styled-input-container"
+              >
+                <TextInput
+                  accessibilityLabel="Champs de texte - Mot de passe - Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial"
+                  accessibilityRequired={false}
+                  autoCapitalize="none"
+                  autoComplete="current-password"
+                  editable={true}
+                  isEmpty={true}
+                  multiline={false}
+                  nativeID="Mot de passe"
+                  onBlur={[Function]}
+                  onChangeText={[Function]}
+                  onFocus={[Function]}
+                  placeholder=""
+                  placeholderTextColor="#696a6f"
+                  returnKeyType="next"
+                  secureTextEntry={true}
+                  style={
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat",
+                      "fontSize": 16,
+                      "fontStyle": "italic",
+                      "fontWeight": "500",
+                      "height": "100%",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                    }
+                  }
+                  testID="Mot de passe"
+                  textAlignVertical="center"
+                  value=""
+                />
+                <View
+                  accessibilityLabel="Afficher le mot de passe"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "maxWidth": 60,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Afficher le mot de passe"
+                >
+                  <View
+                    fill="#161617"
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
-            <View
-              gap={1}
-              noFullWidth={false}
+            <Text
+              displayBlock={true}
+              nativeID="testUuidV4"
               style={
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row-reverse",
+                  "display": "none",
+                }
+              }
+            >
+              Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial
+            </Text>
+            <View
+              accessibilityAtomic={false}
+              accessibilityRole="none"
+              gap={1}
+              isVisible={true}
+              style={
+                {
+                  "alignItems": "flex-start",
                   "gap": 4,
-                  "justifyContent": "flex-end",
                   "maxWidth": 500,
+                  "paddingTop": 8,
                   "width": "100%",
                 }
               }
             >
-              <Text
-                accessibilityLabel="1 majuscule - au minimum"
-                color="default"
+              <View
+                gap={1}
                 noFullWidth={false}
                 style={
                   {
-                    "color": "#161617",
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "paddingLeft": 4,
+                    "alignItems": "center",
+                    "flexDirection": "row-reverse",
+                    "gap": 4,
+                    "justifyContent": "flex-end",
+                    "maxWidth": 500,
+                    "width": "100%",
                   }
                 }
               >
-                1 majuscule
-              </Text>
-              <View
-                style={
-                  {
-                    "flexShrink": 0,
+                <Text
+                  accessibilityLabel="12 caractères - au minimum"
+                  color="default"
+                  noFullWidth={false}
+                  style={
+                    {
+                      "color": "#161617",
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "paddingLeft": 4,
+                    }
                   }
-                }
-              >
-                <View
-                  height={20}
-                  testID="rule-icon-close"
-                  width={20}
                 >
-                  <Text>
-                    rule-icon-close-SVG-Mock
-                  </Text>
+                  12 caractères
+                </Text>
+                <View
+                  style={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                >
+                  <View
+                    height={20}
+                    testID="rule-icon-close"
+                    width={20}
+                  >
+                    <Text>
+                      rule-icon-close-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
-            </View>
-            <View
-              gap={1}
-              noFullWidth={false}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row-reverse",
-                  "gap": 4,
-                  "justifyContent": "flex-end",
-                  "maxWidth": 500,
-                  "width": "100%",
-                }
-              }
-            >
-              <Text
-                accessibilityLabel="1 minuscule - au minimum"
-                color="default"
+              <View
+                gap={1}
                 noFullWidth={false}
                 style={
                   {
-                    "color": "#161617",
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "paddingLeft": 4,
+                    "alignItems": "center",
+                    "flexDirection": "row-reverse",
+                    "gap": 4,
+                    "justifyContent": "flex-end",
+                    "maxWidth": 500,
+                    "width": "100%",
                   }
                 }
               >
-                1 minuscule
-              </Text>
-              <View
-                style={
-                  {
-                    "flexShrink": 0,
+                <Text
+                  accessibilityLabel="1 majuscule - au minimum"
+                  color="default"
+                  noFullWidth={false}
+                  style={
+                    {
+                      "color": "#161617",
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "paddingLeft": 4,
+                    }
                   }
-                }
-              >
-                <View
-                  height={20}
-                  testID="rule-icon-close"
-                  width={20}
                 >
-                  <Text>
-                    rule-icon-close-SVG-Mock
-                  </Text>
+                  1 majuscule
+                </Text>
+                <View
+                  style={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                >
+                  <View
+                    height={20}
+                    testID="rule-icon-close"
+                    width={20}
+                  >
+                    <Text>
+                      rule-icon-close-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
-            </View>
-            <View
-              gap={1}
-              noFullWidth={false}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row-reverse",
-                  "gap": 4,
-                  "justifyContent": "flex-end",
-                  "maxWidth": 500,
-                  "width": "100%",
-                }
-              }
-            >
-              <Text
-                accessibilityLabel="1 chiffre - au minimum"
-                color="default"
+              <View
+                gap={1}
                 noFullWidth={false}
                 style={
                   {
-                    "color": "#161617",
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "paddingLeft": 4,
+                    "alignItems": "center",
+                    "flexDirection": "row-reverse",
+                    "gap": 4,
+                    "justifyContent": "flex-end",
+                    "maxWidth": 500,
+                    "width": "100%",
                   }
                 }
               >
-                1 chiffre
-              </Text>
-              <View
-                style={
-                  {
-                    "flexShrink": 0,
+                <Text
+                  accessibilityLabel="1 minuscule - au minimum"
+                  color="default"
+                  noFullWidth={false}
+                  style={
+                    {
+                      "color": "#161617",
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "paddingLeft": 4,
+                    }
                   }
-                }
-              >
-                <View
-                  height={20}
-                  testID="rule-icon-close"
-                  width={20}
                 >
-                  <Text>
-                    rule-icon-close-SVG-Mock
-                  </Text>
+                  1 minuscule
+                </Text>
+                <View
+                  style={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                >
+                  <View
+                    height={20}
+                    testID="rule-icon-close"
+                    width={20}
+                  >
+                    <Text>
+                      rule-icon-close-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
-            </View>
-            <View
-              gap={1}
-              noFullWidth={false}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row-reverse",
-                  "gap": 4,
-                  "justifyContent": "flex-end",
-                  "maxWidth": 500,
-                  "width": "100%",
-                }
-              }
-            >
-              <Text
-                accessibilityLabel="1 caractère spécial (!@#$%^&*...) - au minimum"
-                color="default"
+              <View
+                gap={1}
                 noFullWidth={false}
                 style={
                   {
-                    "color": "#161617",
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "paddingLeft": 4,
+                    "alignItems": "center",
+                    "flexDirection": "row-reverse",
+                    "gap": 4,
+                    "justifyContent": "flex-end",
+                    "maxWidth": 500,
+                    "width": "100%",
                   }
                 }
               >
-                1 caractère spécial (!@#$%^&*...)
-              </Text>
+                <Text
+                  accessibilityLabel="1 chiffre - au minimum"
+                  color="default"
+                  noFullWidth={false}
+                  style={
+                    {
+                      "color": "#161617",
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "paddingLeft": 4,
+                    }
+                  }
+                >
+                  1 chiffre
+                </Text>
+                <View
+                  style={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                >
+                  <View
+                    height={20}
+                    testID="rule-icon-close"
+                    width={20}
+                  >
+                    <Text>
+                      rule-icon-close-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
               <View
+                gap={1}
+                noFullWidth={false}
                 style={
                   {
-                    "flexShrink": 0,
+                    "alignItems": "center",
+                    "flexDirection": "row-reverse",
+                    "gap": 4,
+                    "justifyContent": "flex-end",
+                    "maxWidth": 500,
+                    "width": "100%",
                   }
                 }
               >
-                <View
-                  height={20}
-                  testID="rule-icon-close"
-                  width={20}
+                <Text
+                  accessibilityLabel="1 caractère spécial (!@#$%^&*...) - au minimum"
+                  color="default"
+                  noFullWidth={false}
+                  style={
+                    {
+                      "color": "#161617",
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "paddingLeft": 4,
+                    }
+                  }
                 >
-                  <Text>
-                    rule-icon-close-SVG-Mock
-                  </Text>
+                  1 caractère spécial (!@#$%^&*...)
+                </Text>
+                <View
+                  style={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                >
+                  <View
+                    height={20}
+                    testID="rule-icon-close"
+                    width={20}
+                  >
+                    <Text>
+                      rule-icon-close-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
           </View>
-        </View>
-        <View
-          style={
-            {
-              "marginBottom": 16,
-            }
-          }
-        >
           <View
-            accessibilityLabel="Continuer vers l’étape Date de naissance"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={false}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#f1f1f4",
-                    "borderBottomLeftRadius": 24,
-                    "borderBottomRightRadius": 24,
-                    "borderTopLeftRadius": 24,
-                    "borderTopRightRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "width": "100%",
-                  },
-                  {},
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
+              {
+                "marginBottom": 16,
+              }
             }
-            testID="Continuer vers l’étape Date de naissance"
           >
             <View
-              style={
+              accessibilityLabel="Continuer vers l’étape Date de naissance"
+              accessibilityRole="button"
+              accessibilityState={
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": true,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={false}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "alignSelf": "center",
+                      "backgroundColor": "#f1f1f4",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#cbcdd2",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "paddingBottom": 8,
+                      "paddingLeft": 12,
+                      "paddingRight": 12,
+                      "paddingTop": 8,
+                      "width": "100%",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Continuer vers l’étape Date de naissance"
             >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+              <View
+                fullWidth={true}
+                gap={8}
+                hasIcon={false}
+                isMultiline={false}
                 style={
                   {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "maxWidth": "100%",
+                    "alignItems": "center",
+                    "columnGap": 8,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "width": "100%",
                   }
                 }
               >
-                Continuer
-              </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
+                      },
+                      {
+                        "color": "#696a6f",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Continuer
+                </Text>
+              </View>
             </View>
           </View>
         </View>
       </View>
     </View>
   </RCTScrollView>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-  </View>
 </View>
 `;
 
@@ -1595,7 +1842,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
     accessibilityRole="header"
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -1616,6 +1863,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -1647,7 +1895,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -1677,10 +1925,19 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "flexGrow": 1,
-                  "height": 40,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 40,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                  "width": "auto",
                 },
               ],
               {
@@ -1691,23 +1948,53 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
           testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-          <Text
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
-                "display": "none",
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
               }
             }
           >
-            Retour
-          </Text>
+            <View
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="4"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -1816,7 +2103,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
       style={
         {
           "backgroundColor": "#f1f1f4",
-          "height": 6,
+          "height": 8,
           "justifyContent": "flex-start",
           "width": "100%",
         }
@@ -1866,813 +2153,857 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
         }
       />
       <View
+        marginTop={0}
         style={
           {
-            "maxWidth": 500,
-            "width": "100%",
+            "marginTop": 0,
           }
         }
       >
-        <Text
-          accessibilityRole="header"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 19,
-              "lineHeight": 30.4,
-            }
-          }
-        >
-          Renseigne ta date de naissance
-        </Text>
         <View
           style={
             {
-              "alignItems": "center",
-              "marginVertical": 16,
+              "maxWidth": 500,
               "width": "100%",
             }
           }
         >
+          <Text
+            accessibilityRole="header"
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 19,
+                "lineHeight": 30.4,
+              }
+            }
+          >
+            Renseigne ta date de naissance
+          </Text>
           <View
             style={
               {
-                "marginBottom": 40,
+                "alignItems": "center",
+                "marginVertical": 16,
+                "width": "100%",
               }
             }
           >
             <View
-              background="#f3edff"
               style={
                 {
-                  "alignItems": "flex-start",
-                  "backgroundColor": "#f3edff",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "flexDirection": "row",
-                  "gap": 12,
-                  "paddingBottom": 16,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "paddingTop": 16,
+                  "marginBottom": 40,
+                  "width": "100%",
                 }
               }
             >
               <View
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                accessibilityLabel="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
-                accessibilityRole="none"
+                background="#f3edff"
                 style={
                   {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "gap": 4,
+                    "alignItems": "flex-start",
+                    "backgroundColor": "#f3edff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "flexDirection": "row",
+                    "gap": 12,
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  accessibilityLabel="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
+                  accessibilityRole="none"
+                  style={
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "gap": 4,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 22.4,
+                      }
+                    }
+                  >
+                    Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityLabel="Date de naissance - 1er décembre 2006"
+              accessible={true}
+              gap={2}
+              style={
+                {
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "gap": 8,
+                  "maxWidth": 500,
+                  "width": "100%",
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "flex-end",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "width": "100%",
                   }
                 }
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 14,
-                      "lineHeight": 22.4,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     }
                   }
                 >
-                  Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
+                  Date de naissance
+                </Text>
+              </View>
+              <View
+                height="small"
+                isDisabled={false}
+                isError={false}
+                isFocus={false}
+                style={
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "borderWidth": 2,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "paddingBottom": 0,
+                    "paddingLeft": 17,
+                    "paddingRight": 17,
+                    "paddingTop": 0,
+                    "width": "100%",
+                  }
+                }
+                testID="styled-input-container"
+              >
+                <Text
+                  nativeID="testUuidV4"
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  1er décembre 2006
                 </Text>
               </View>
             </View>
-          </View>
-          <View
-            accessibilityLabel="Date de naissance - 1er décembre 2006"
-            accessible={true}
-            gap={2}
-            style={
-              {
-                "alignItems": "flex-start",
-                "display": "flex",
-                "flexDirection": "column",
-                "gap": 8,
-                "maxWidth": 500,
-                "width": "100%",
-              }
-            }
-          >
-            <View
-              style={
+            <RNDatePicker
+              appTheme={
                 {
-                  "alignItems": "flex-end",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "width": "100%",
-                }
-              }
-            >
-              <Text
-                htmlFor="testUuidV4"
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Date de naissance
-              </Text>
-            </View>
-            <View
-              height="small"
-              isDisabled={false}
-              isError={false}
-              isFocus={false}
-              style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderColor": "#90949d",
-                  "borderStyle": "solid",
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 40,
-                  "paddingBottom": 0,
-                  "paddingLeft": 17,
-                  "paddingRight": 17,
-                  "paddingTop": 0,
-                  "width": "100%",
-                }
-              }
-              testID="styled-input-container"
-            >
-              <Text
-                nativeID="testUuidV4"
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                1er décembre 2006
-              </Text>
-            </View>
-          </View>
-          <RNDatePicker
-            appTheme={
-              {
-                "activeOpacity": 0.7,
-                "appBarHeight": 64,
-                "appContentWidth": 960,
-                "borderRadius": {
-                  "button": 24,
-                  "checkbox": 4,
-                  "radioButton": 20,
-                  "radius": 8,
-                  "tile": 12,
-                },
-                "breakpoints": {
-                  "lg": 1024,
-                  "md": 960,
-                  "sm": 576,
-                  "xl": 1200,
-                  "xs": 358,
-                  "xxl": 1400,
-                  "xxs": 320,
-                },
-                "buttons": {
-                  "buttonHeights": {
-                    "extraSmall": 32,
-                    "inline": 16,
-                    "small": 40,
-                    "tall": 48,
+                  "activeOpacity": 0.7,
+                  "appBarHeight": 64,
+                  "appContentWidth": 960,
+                  "borderRadius": {
+                    "button": 24,
+                    "checkbox": 4,
+                    "radioButton": 20,
+                    "radius": 8,
+                    "tile": 12,
                   },
-                  "linearGradient": {
-                    "iconSize": 24,
+                  "breakpoints": {
+                    "lg": 1024,
+                    "md": 960,
+                    "sm": 576,
+                    "xl": 1200,
+                    "xs": 358,
+                    "xxl": 1400,
+                    "xxs": 320,
                   },
-                  "maxWidth": 500,
-                  "primary": {
-                    "iconSize": 24,
-                    "marginLeft": 0,
-                    "marginLeftWithIcon": 8,
-                  },
-                  "primaryBlack": {
-                    "iconSize": 24,
-                    "marginLeft": 0,
-                    "marginLeftWithIcon": 8,
-                  },
-                  "primaryWhite": {
-                    "iconSize": 24,
-                    "marginLeft": 0,
-                    "marginLeftWithIcon": 8,
-                  },
-                  "quaternaryBlack": {
-                    "iconSize": 16,
-                    "marginLeft": 0,
-                    "marginLeftWithIcon": 4,
-                  },
-                  "quaternaryGrey": {
-                    "iconSize": 16,
-                    "marginLeft": 0,
-                    "marginLeftWithIcon": 4,
-                  },
-                  "quaternaryNeutralInfo": {
-                    "iconSize": 16,
-                    "marginLeft": 0,
-                    "marginLeftWithIcon": 4,
-                  },
-                  "quaternaryPrimary": {
-                    "iconSize": 16,
-                    "marginLeft": 0,
-                    "marginLeftWithIcon": 4,
-                  },
-                  "quaternarySecondary": {
-                    "iconSize": 16,
-                    "marginLeft": 0,
-                    "marginLeftWithIcon": 4,
-                  },
-                  "roundedButton": {
-                    "size": 40,
-                  },
-                  "scrollButton": {
-                    "borderWidth": 1,
-                    "size": 40,
-                  },
-                  "secondary": {
-                    "borderWidth": 2,
-                    "iconSize": 24,
-                    "marginLeft": 0,
-                    "marginLeftWithIcon": 8,
-                  },
-                  "secondaryBlack": {
-                    "borderWidth": 2,
-                    "iconSize": 20,
-                    "marginLeft": 0,
-                    "marginLeftWithIcon": 8,
-                  },
-                  "secondaryWhite": {
-                    "borderWidth": 2,
-                    "iconSize": 24,
-                    "marginLeft": 0,
-                    "marginLeftWithIcon": 8,
-                  },
-                  "tertiary": {
-                    "iconSize": 20,
-                    "marginLeft": 0,
-                    "marginLeftWithIcon": 8,
-                  },
-                  "tertiaryBlack": {
-                    "iconSize": 20,
-                    "marginLeft": 0,
-                    "marginLeftWithIcon": 8,
-                  },
-                  "tertiaryNeutralInfo": {
-                    "iconSize": 20,
-                    "marginLeft": 0,
-                    "marginLeftWithIcon": 8,
-                  },
-                  "tertiarySecondary": {
-                    "iconSize": 20,
-                    "marginLeft": 0,
-                    "marginLeftWithIcon": 8,
-                  },
-                  "tertiaryWhite": {
-                    "iconSize": 20,
-                    "marginLeft": 0,
-                    "marginLeftWithIcon": 8,
-                  },
-                },
-                "checkbox": {
-                  "border": {
-                    "size": 2,
-                  },
-                  "size": 20,
-                },
-                "colorScheme": "light",
-                "colors": {
-                  "aquamarineLight": "#DBFFEA",
-                  "black": "#161617",
-                  "coral": "#F8733D",
-                  "coralLight": "#FFDECC",
-                  "deepPinkLight": "#FFD7E9",
-                  "goldLight100": "#FFF5D8",
-                  "greyDark": "#696A6F",
-                  "greyMedium": "#CBCDD2",
-                  "lilacLight": "#EAE3FF",
-                  "primary": "#eb0055",
-                  "primaryDark": "#c10046",
-                  "secondaryDark": "#25026C",
-                  "skyBlue": "#20C5E9",
-                  "skyBlueLight": "#D6F8FF",
-                  "white": "#ffffff",
-                },
-                "contentPage": {
-                  "bottom": {
-                    "offsetTopHeightDesktopTablet": 40,
-                  },
-                  "marginHorizontal": 24,
-                  "marginVertical": 24,
-                  "maxWidth": 500,
-                  "mediumWidth": 320,
-                },
-                "controlComponent": {
-                  "size": 24,
-                },
-                "designSystem": {
-                  "color": {
-                    "background": {
-                      "bookclub": "#dcf3f8",
-                      "brandPrimary": "#6123df",
-                      "brandPrimaryHover": "#320096",
-                      "brandPrimarySelected": "#f3edff",
-                      "brandSecondary": "#320096",
-                      "brandSecondaryHover": "#25026c",
-                      "cineclub": "#ffe0ea",
-                      "decorative01": "#ffeae2",
-                      "decorative02": "#9be3f3",
-                      "decorative03": "#94f0d6",
-                      "decorative04": "#c1a3ff",
-                      "decorative05": "#ffa5c0",
-                      "default": "#ffffff",
-                      "disabled": "#f1f1f4",
-                      "error": "#fce1e6",
-                      "gradientMaximum": "#ffffff",
-                      "gradientMiddle": "#ffffff7a",
-                      "gradientMinimum": "#ffffff00",
-                      "headline": "#f3edff",
-                      "hover": "#f1f1f4",
-                      "info": "#f3edff",
-                      "inverted": "#161617",
-                      "locked": "#ffffff",
-                      "lockedBrandPrimary": "#6123df",
-                      "lockedBrandSecondary": "#320096",
-                      "lockedInverted": "#161617",
-                      "overlay": "#23232329",
-                      "shadowOverlay": "#23232329",
-                      "skeletonGradient01": "#cbcdd2",
-                      "skeletonGradient02": "#f1f1f4",
-                      "subtle": "#f1f1f4",
-                      "success": "#b9ecd0",
-                      "warning": "#fbebb2",
+                  "buttons": {
+                    "buttonHeights": {
+                      "extraSmall": 32,
+                      "inline": 16,
+                      "small": 40,
+                      "tall": 48,
                     },
+                    "linearGradient": {
+                      "iconSize": 24,
+                    },
+                    "maxWidth": 500,
+                    "primary": {
+                      "iconSize": 24,
+                      "marginLeft": 0,
+                      "marginLeftWithIcon": 8,
+                    },
+                    "primaryBlack": {
+                      "iconSize": 24,
+                      "marginLeft": 0,
+                      "marginLeftWithIcon": 8,
+                    },
+                    "primaryWhite": {
+                      "iconSize": 24,
+                      "marginLeft": 0,
+                      "marginLeftWithIcon": 8,
+                    },
+                    "quaternaryBlack": {
+                      "iconSize": 16,
+                      "marginLeft": 0,
+                      "marginLeftWithIcon": 4,
+                    },
+                    "quaternaryGrey": {
+                      "iconSize": 16,
+                      "marginLeft": 0,
+                      "marginLeftWithIcon": 4,
+                    },
+                    "quaternaryNeutralInfo": {
+                      "iconSize": 16,
+                      "marginLeft": 0,
+                      "marginLeftWithIcon": 4,
+                    },
+                    "quaternaryPrimary": {
+                      "iconSize": 16,
+                      "marginLeft": 0,
+                      "marginLeftWithIcon": 4,
+                    },
+                    "quaternarySecondary": {
+                      "iconSize": 16,
+                      "marginLeft": 0,
+                      "marginLeftWithIcon": 4,
+                    },
+                    "roundedButton": {
+                      "size": 40,
+                    },
+                    "scrollButton": {
+                      "borderWidth": 1,
+                      "size": 40,
+                    },
+                    "secondary": {
+                      "borderWidth": 2,
+                      "iconSize": 24,
+                      "marginLeft": 0,
+                      "marginLeftWithIcon": 8,
+                    },
+                    "secondaryBlack": {
+                      "borderWidth": 2,
+                      "iconSize": 20,
+                      "marginLeft": 0,
+                      "marginLeftWithIcon": 8,
+                    },
+                    "secondaryWhite": {
+                      "borderWidth": 2,
+                      "iconSize": 24,
+                      "marginLeft": 0,
+                      "marginLeftWithIcon": 8,
+                    },
+                    "tertiary": {
+                      "iconSize": 20,
+                      "marginLeft": 0,
+                      "marginLeftWithIcon": 8,
+                    },
+                    "tertiaryBlack": {
+                      "iconSize": 20,
+                      "marginLeft": 0,
+                      "marginLeftWithIcon": 8,
+                    },
+                    "tertiaryNeutralInfo": {
+                      "iconSize": 20,
+                      "marginLeft": 0,
+                      "marginLeftWithIcon": 8,
+                    },
+                    "tertiarySecondary": {
+                      "iconSize": 20,
+                      "marginLeft": 0,
+                      "marginLeftWithIcon": 8,
+                    },
+                    "tertiaryWhite": {
+                      "iconSize": 20,
+                      "marginLeft": 0,
+                      "marginLeftWithIcon": 8,
+                    },
+                  },
+                  "checkbox": {
                     "border": {
-                      "brandPrimary": "#6123df",
-                      "brandPrimaryHover": "#320096",
-                      "brandSecondary": "#320096",
-                      "brandSecondaryHover": "#25026c",
-                      "decorative01": "#d63d00",
-                      "decorative02": "#14a0be",
-                      "decorative03": "#0e8474",
-                      "decorative04": "#320096",
-                      "decorative05": "#eb0055",
-                      "default": "#90949d",
-                      "disabled": "#cbcdd2",
-                      "error": "#a20121",
-                      "focused": "#161617",
-                      "inverted": "#ffffff",
-                      "selected": "#161617",
-                      "subtle": "#cbcdd2",
-                      "success": "#15884f",
+                      "size": 2,
                     },
-                    "icon": {
-                      "bookclub": "#14a0be",
-                      "brandPrimary": "#6123df",
-                      "brandPrimaryHover": "#320096",
-                      "brandSecondary": "#320096",
-                      "brandSecondaryHover": "#25026c",
-                      "cineclub": "#cb0659",
-                      "default": "#161617",
-                      "disabled": "#696a6f",
-                      "error": "#a20121",
-                      "headline": "#6123df",
-                      "info": "#320096",
-                      "inverted": "#ffffff",
-                      "locked": "#161617",
-                      "lockedInverted": "#ffffff",
-                      "subtle": "#696a6f",
-                      "success": "#15884f",
-                      "warning": "#e1a605",
-                    },
-                    "outline": {
-                      "default": "#161617",
-                      "error": "#a20121",
-                      "inverted": "#ffffff",
-                    },
-                    "text": {
-                      "brandPrimary": "#6123df",
-                      "brandPrimaryHover": "#320096",
-                      "brandSecondary": "#320096",
-                      "brandSecondaryHover": "#25026c",
-                      "default": "#161617",
-                      "disabled": "#696a6f",
-                      "error": "#a20121",
-                      "inverted": "#ffffff",
-                      "locked": "#161617",
-                      "lockedInverted": "#ffffff",
-                      "subtle": "#696a6f",
-                      "success": "#15884f",
-                      "warning": "#664900",
-                    },
+                    "size": 20,
                   },
-                  "separator": {
+                  "colorScheme": "light",
+                  "colors": {
+                    "aquamarineLight": "#DBFFEA",
+                    "black": "#161617",
+                    "coral": "#F8733D",
+                    "coralLight": "#FFDECC",
+                    "deepPinkLight": "#FFD7E9",
+                    "goldLight100": "#FFF5D8",
+                    "greyDark": "#696A6F",
+                    "greyMedium": "#CBCDD2",
+                    "lilacLight": "#EAE3FF",
+                    "primary": "#eb0055",
+                    "primaryDark": "#c10046",
+                    "secondaryDark": "#25026C",
+                    "skyBlue": "#20C5E9",
+                    "skyBlueLight": "#D6F8FF",
+                    "white": "#ffffff",
+                  },
+                  "contentPage": {
+                    "bottom": {
+                      "offsetTopHeightDesktopTablet": 40,
+                    },
+                    "marginHorizontal": 24,
+                    "marginVertical": 24,
+                    "maxWidth": 500,
+                    "mediumWidth": 320,
+                  },
+                  "controlComponent": {
+                    "size": 24,
+                  },
+                  "designSystem": {
                     "color": {
-                      "default": "#90949d",
-                      "subtle": "#cbcdd2",
+                      "background": {
+                        "bookclub": "#dcf3f8",
+                        "brandPrimary": "#6123df",
+                        "brandPrimaryHover": "#320096",
+                        "brandPrimarySelected": "#f3edff",
+                        "brandSecondary": "#320096",
+                        "brandSecondaryHover": "#25026c",
+                        "cineclub": "#ffe0ea",
+                        "danger": "#a20121",
+                        "dangerHover": "#700118",
+                        "dangerSubtle": "#fce1e6",
+                        "decorative01": "#ffeae2",
+                        "decorative02": "#dcf3f8",
+                        "decorative03": "#94f0d6",
+                        "decorative04": "#c1a3ff",
+                        "decorative05": "#ffa5c0",
+                        "default": "#ffffff",
+                        "disabled": "#f1f1f4",
+                        "error": "#fce1e6",
+                        "gradientMaximum": "#ffffff",
+                        "gradientMiddle": "#ffffff7a",
+                        "gradientMinimum": "#ffffff00",
+                        "headline": "#f3edff",
+                        "hover": "#f1f1f4",
+                        "info": "#f3edff",
+                        "inverted": "#161617",
+                        "locked": "#ffffff",
+                        "lockedBrandPrimary": "#6123df",
+                        "lockedBrandSecondary": "#320096",
+                        "lockedInverted": "#161617",
+                        "overlay": "#23232329",
+                        "proEdito": "#ffeae2",
+                        "shadowOverlay": "#23232329",
+                        "skeletonGradient01": "#cbcdd2",
+                        "skeletonGradient02": "#f1f1f4",
+                        "subtle": "#f1f1f4",
+                        "success": "#b9ecd0",
+                        "warning": "#fbebb2",
+                      },
+                      "border": {
+                        "brandPrimary": "#6123df",
+                        "brandPrimaryHover": "#320096",
+                        "brandSecondary": "#320096",
+                        "brandSecondaryHover": "#25026c",
+                        "danger": "#a20121",
+                        "dangerHover": "#700118",
+                        "decorative01": "#d63d00",
+                        "decorative02": "#14a0be",
+                        "decorative03": "#0e8474",
+                        "decorative04": "#320096",
+                        "decorative05": "#eb0055",
+                        "default": "#90949d",
+                        "disabled": "#cbcdd2",
+                        "error": "#a20121",
+                        "focused": "#161617",
+                        "inverted": "#ffffff",
+                        "selected": "#161617",
+                        "subtle": "#cbcdd2",
+                        "success": "#15884f",
+                      },
+                      "icon": {
+                        "bookclub": "#14a0be",
+                        "brandPrimary": "#6123df",
+                        "brandPrimaryHover": "#320096",
+                        "brandSecondary": "#320096",
+                        "brandSecondaryHover": "#25026c",
+                        "cineclub": "#cb0659",
+                        "danger": "#a20121",
+                        "dangerHover": "#700118",
+                        "default": "#161617",
+                        "disabled": "#696a6f",
+                        "error": "#a20121",
+                        "headline": "#6123df",
+                        "info": "#320096",
+                        "inverted": "#ffffff",
+                        "locked": "#161617",
+                        "lockedInverted": "#ffffff",
+                        "proEdito": "#d63d00",
+                        "subtle": "#696a6f",
+                        "success": "#15884f",
+                        "warning": "#e1a605",
+                      },
+                      "outline": {
+                        "default": "#161617",
+                        "error": "#a20121",
+                        "inverted": "#ffffff",
+                      },
+                      "text": {
+                        "brandPrimary": "#6123df",
+                        "brandPrimaryHover": "#320096",
+                        "brandSecondary": "#320096",
+                        "brandSecondaryHover": "#25026c",
+                        "danger": "#a20121",
+                        "dangerHover": "#700118",
+                        "default": "#161617",
+                        "disabled": "#696a6f",
+                        "error": "#a20121",
+                        "inverted": "#ffffff",
+                        "locked": "#161617",
+                        "lockedInverted": "#ffffff",
+                        "subtle": "#696a6f",
+                        "success": "#15884f",
+                        "warning": "#664900",
+                      },
+                    },
+                    "separator": {
+                      "color": {
+                        "default": "#90949d",
+                        "subtle": "#cbcdd2",
+                      },
+                    },
+                    "size": {
+                      "borderRadius": {
+                        "l": 16,
+                        "m": 8,
+                        "pill": 999,
+                        "s": 4,
+                        "xl": 24,
+                        "xxl": 32,
+                      },
+                      "spacing": {
+                        "l": 16,
+                        "m": 12,
+                        "s": 8,
+                        "xl": 24,
+                        "xs": 4,
+                        "xxl": 32,
+                        "xxs": 2,
+                        "xxxl": 40,
+                        "xxxxl": 48,
+                      },
+                    },
+                    "typography": {
+                      "body": {
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": "16px",
+                        "lineHeight": "25.6px",
+                      },
+                      "bodyAccent": {
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "16px",
+                        "lineHeight": "25.6px",
+                      },
+                      "bodyAccentS": {
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "14px",
+                        "lineHeight": "22.4px",
+                      },
+                      "bodyAccentXs": {
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "12px",
+                        "lineHeight": "19.2px",
+                      },
+                      "bodyItalic": {
+                        "fontFamily": "Montserrat",
+                        "fontSize": "16px",
+                        "fontStyle": "italic",
+                        "fontWeight": "500",
+                        "lineHeight": "25.6px",
+                      },
+                      "bodyItalicAccent": {
+                        "fontFamily": "Montserrat",
+                        "fontSize": "16px",
+                        "fontStyle": "italic",
+                        "fontWeight": "600",
+                        "lineHeight": "25.6px",
+                      },
+                      "bodyS": {
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": "14px",
+                        "lineHeight": "22.4px",
+                      },
+                      "bodyXs": {
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": "12px",
+                        "lineHeight": "19.2px",
+                      },
+                      "button": {
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "16px",
+                        "lineHeight": "22px",
+                      },
+                      "buttonS": {
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "14px",
+                        "lineHeight": "14px",
+                      },
+                      "title1": {
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "28px",
+                        "lineHeight": "44.8px",
+                      },
+                      "title2": {
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "21px",
+                        "lineHeight": "33.6px",
+                      },
+                      "title3": {
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "19px",
+                        "lineHeight": "30.4px",
+                      },
+                      "title4": {
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "17px",
+                        "lineHeight": "27.2px",
+                      },
                     },
                   },
-                  "size": {
-                    "borderRadius": {
-                      "l": 16,
-                      "m": 8,
-                      "pill": 999,
-                      "s": 4,
-                      "xl": 24,
-                      "xxl": 32,
+                  "fontFamily": {
+                    "black": "Montserrat-Black",
+                    "bold": "Montserrat-Bold",
+                    "boldItalic": "Montserrat-BoldItalic",
+                    "italic": "Montserrat-Italic",
+                    "medium": "Montserrat-Medium",
+                    "regular": "Montserrat-Regular",
+                    "semiBold": "Montserrat-SemiBold",
+                  },
+                  "forms": {
+                    "maxWidth": 500,
+                  },
+                  "home": {
+                    "spaceBetweenModules": 24,
+                  },
+                  "icons": {
+                    "sizes": {
+                      "button": 22,
+                      "buttonSmall": 14,
+                      "extraSmall": 16,
+                      "small": 24,
+                      "smaller": 20,
+                      "standard": 32,
                     },
+                  },
+                  "illustrations": {
+                    "sizes": {
+                      "fullPage": 200,
+                      "medium": 140,
+                      "small": 100,
+                    },
+                  },
+                  "image": {
+                    "square": {
+                      "sizes": {
+                        "large": {
+                          "borderRadius": 8,
+                          "height": 120,
+                          "width": 120,
+                        },
+                        "medium": {
+                          "borderRadius": 4,
+                          "height": 80,
+                          "width": 80,
+                        },
+                        "small": {
+                          "borderRadius": 4,
+                          "height": 40,
+                          "width": 40,
+                        },
+                      },
+                    },
+                  },
+                  "inputs": {
+                    "height": {
+                      "regular": 48,
+                      "small": 40,
+                      "tall": 94,
+                    },
+                  },
+                  "isDesktopViewport": false,
+                  "isMobileViewport": true,
+                  "isNative": true,
+                  "isSmallScreen": false,
+                  "isTabletViewport": false,
+                  "isTouch": true,
+                  "minScreenHeight": 568,
+                  "modal": {
+                    "desktopMaxWidth": 520,
                     "spacing": {
-                      "l": 16,
-                      "m": 12,
-                      "s": 8,
-                      "xl": 24,
-                      "xs": 4,
-                      "xxl": 32,
-                      "xxs": 2,
-                      "xxxl": 40,
-                      "xxxxl": 48,
+                      "16": "SM",
+                      "24": "MD",
+                      "32": "LG",
+                      "LG": 32,
+                      "MD": 24,
+                      "SM": 16,
                     },
                   },
-                  "typography": {
-                    "body": {
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": "16px",
-                      "lineHeight": "25.6px",
-                    },
-                    "bodyAccent": {
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": "16px",
-                      "lineHeight": "25.6px",
-                    },
-                    "bodyAccentS": {
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": "14px",
-                      "lineHeight": "22.4px",
-                    },
-                    "bodyAccentXs": {
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": "12px",
-                      "lineHeight": "19.2px",
-                    },
-                    "bodyItalic": {
-                      "fontFamily": "Montserrat",
-                      "fontSize": "16px",
-                      "fontStyle": "italic",
-                      "fontWeight": "500",
-                      "lineHeight": "25.6px",
-                    },
-                    "bodyItalicAccent": {
-                      "fontFamily": "Montserrat",
-                      "fontSize": "16px",
-                      "fontStyle": "italic",
-                      "fontWeight": "600",
-                      "lineHeight": "25.6px",
-                    },
-                    "bodyS": {
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": "14px",
-                      "lineHeight": "22.4px",
-                    },
-                    "bodyXs": {
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": "12px",
-                      "lineHeight": "19.2px",
-                    },
-                    "button": {
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": "16px",
-                      "lineHeight": "25.6px",
-                    },
-                    "title1": {
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": "28px",
-                      "lineHeight": "44.8px",
-                    },
-                    "title2": {
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": "21px",
-                      "lineHeight": "33.6px",
-                    },
-                    "title3": {
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": "19px",
-                      "lineHeight": "30.4px",
-                    },
-                    "title4": {
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": "17px",
-                      "lineHeight": "27.2px",
-                    },
+                  "navTopHeight": 80,
+                  "outline": {
+                    "offSet": 2,
+                    "style": "solid",
+                    "width": 2,
                   },
-                },
-                "fontFamily": {
-                  "black": "Montserrat-Black",
-                  "bold": "Montserrat-Bold",
-                  "boldItalic": "Montserrat-BoldItalic",
-                  "italic": "Montserrat-Italic",
-                  "medium": "Montserrat-Medium",
-                  "regular": "Montserrat-Regular",
-                  "semiBold": "Montserrat-SemiBold",
-                },
-                "forms": {
-                  "maxWidth": 500,
-                },
-                "home": {
-                  "spaceBetweenModules": 24,
-                },
-                "icons": {
-                  "sizes": {
-                    "extraSmall": 16,
-                    "small": 24,
-                    "smaller": 20,
-                    "standard": 32,
+                  "radioButton": {
+                    "border": {
+                      "size": 2,
+                    },
+                    "innerDotSize": 10,
+                    "size": 20,
                   },
-                },
-                "illustrations": {
-                  "sizes": {
-                    "fullPage": 200,
-                    "medium": 140,
-                    "small": 100,
+                  "showTabBar": true,
+                  "slider": {
+                    "markerSize": 36,
+                    "trackHeight": 16,
                   },
-                },
-                "image": {
-                  "square": {
+                  "tabBar": {
+                    "fontSize": 10,
+                    "height": 64,
+                    "heightV2": 66,
+                    "iconSize": 28,
+                    "labelMinScreenWidth": 375,
+                    "showLabels": true,
+                  },
+                  "ticket": {
+                    "maxWidth": 300,
+                    "minHeight": 192,
+                    "qrCodeSize": 170,
+                    "sizeRatio": 0.755,
+                  },
+                  "tiles": {
+                    "borderRadius": 4,
+                    "maxCaptionHeight": {
+                      "offer": 72,
+                      "offerTile": 128,
+                      "venue": 72,
+                      "videoModuleOffer": 56,
+                    },
                     "sizes": {
                       "large": {
-                        "borderRadius": 8,
-                        "height": 120,
-                        "width": 120,
+                        "height": 144,
+                        "width": 96,
                       },
                       "medium": {
-                        "borderRadius": 4,
-                        "height": 80,
+                        "height": 112,
                         "width": 80,
                       },
                       "small": {
-                        "borderRadius": 4,
-                        "height": 40,
-                        "width": 40,
+                        "height": 96,
+                        "width": 64,
+                      },
+                      "tall": {
+                        "height": 120,
+                        "width": 80,
+                      },
+                      "xLarge": {
+                        "height": 220,
+                        "width": 146,
                       },
                     },
                   },
-                },
-                "inputs": {
-                  "height": {
-                    "regular": 48,
-                    "small": 40,
-                    "tall": 94,
+                  "zIndex": {
+                    "background": -1,
+                    "bottomSheet": 60,
+                    "cheatCodeButton": 50,
+                    "favoritePastilleContent": 1,
+                    "floatingButton": 1,
+                    "header": 1,
+                    "headerNav": 2,
+                    "homeOfferCoverIcons": 1,
+                    "locationWidget": 2,
+                    "modalHeader": 1,
+                    "playlistsButton": 1,
+                    "progressbar": 1,
+                    "progressbarIcon": 2,
+                    "snackbar": 50,
+                    "tabBar": 2,
                   },
-                },
-                "isDesktopViewport": false,
-                "isMobileViewport": true,
-                "isNative": true,
-                "isSmallScreen": false,
-                "isTabletViewport": false,
-                "isTouch": true,
-                "minScreenHeight": 568,
-                "modal": {
-                  "desktopMaxWidth": 520,
-                  "spacing": {
-                    "16": "SM",
-                    "24": "MD",
-                    "32": "LG",
-                    "LG": 32,
-                    "MD": 24,
-                    "SM": 16,
-                  },
-                },
-                "navTopHeight": 80,
-                "outline": {
-                  "offSet": 2,
-                  "style": "solid",
-                  "width": 2,
-                },
-                "radioButton": {
-                  "border": {
-                    "size": 2,
-                  },
-                  "innerDotSize": 10,
-                  "size": 20,
-                },
-                "showTabBar": true,
-                "slider": {
-                  "markerSize": 36,
-                  "trackHeight": 16,
-                },
-                "tabBar": {
-                  "fontSize": 10,
-                  "height": 64,
-                  "heightV2": 66,
-                  "iconSize": 28,
-                  "labelMinScreenWidth": 375,
-                  "showLabels": true,
-                },
-                "ticket": {
-                  "maxWidth": 300,
-                  "minHeight": 192,
-                  "qrCodeSize": 170,
-                  "sizeRatio": 0.755,
-                },
-                "tiles": {
-                  "borderRadius": 4,
-                  "maxCaptionHeight": {
-                    "offer": 72,
-                    "offerTile": 128,
-                    "venue": 72,
-                    "videoModuleOffer": 56,
-                  },
-                  "sizes": {
-                    "large": {
-                      "height": 144,
-                      "width": 96,
-                    },
-                    "medium": {
-                      "height": 112,
-                      "width": 80,
-                    },
-                    "small": {
-                      "height": 96,
-                      "width": 64,
-                    },
-                    "tall": {
-                      "height": 120,
-                      "width": 80,
-                    },
-                    "xLarge": {
-                      "height": 220,
-                      "width": 146,
-                    },
-                  },
-                },
-                "zIndex": {
-                  "background": -1,
-                  "bottomSheet": 60,
-                  "cheatCodeButton": 50,
-                  "favoritePastilleContent": 1,
-                  "floatingButton": 1,
-                  "header": 1,
-                  "headerNav": 2,
-                  "homeOfferCoverIcons": 1,
-                  "locationWidget": 2,
-                  "modalHeader": 1,
-                  "playlistsButton": 1,
-                  "progressbar": 1,
-                  "progressbarIcon": 2,
-                  "snackbar": 50,
-                  "tabBar": 2,
-                },
-              }
-            }
-            buttonColor="#000000"
-            cancelText="Cancel"
-            confirmText="Confirm"
-            date="2006-12-01T00:00:00.000Z"
-            dividerColor="#000000"
-            locale="fr-FR"
-            maximumDate="2006-12-31T00:00:00.000Z"
-            minimumDate="1900-01-01T00:00:00.000Z"
-            minuteInterval={1}
-            mode="date"
-            onChange={[Function]}
-            onDateChange={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                {
-                  "height": 216,
-                  "width": 310,
-                },
-                {
-                  "marginTop": 20,
-                },
-              ]
-            }
-            testID="date-picker-spinner-native"
-            textColor="#000000"
-            theme="light"
-            timeZoneOffsetInMinutes=""
-            title="Select date"
-          />
-          <View
-            style={
-              {
-                "paddingTop": 40,
-                "width": "100%",
-              }
-            }
-          >
-            <View
-              accessibilityLabel="Continuer vers l’étape CGU & Données"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": true,
-                  "expanded": undefined,
-                  "selected": undefined,
                 }
               }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={false}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
+              buttonColor="#000000"
+              cancelText="Cancel"
+              confirmText="Confirm"
+              date="2006-12-01T00:00:00.000Z"
+              dividerColor="#000000"
+              locale="fr-FR"
+              maximumDate="2006-12-31T00:00:00.000Z"
+              minimumDate="1900-01-01T00:00:00.000Z"
+              minuteInterval={1}
+              mode="date"
+              onChange={[Function]}
+              onDateChange={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#f1f1f4",
-                      "borderBottomLeftRadius": 24,
-                      "borderBottomRightRadius": 24,
-                      "borderTopLeftRadius": 24,
-                      "borderTopRightRadius": 24,
-                      "flexDirection": "row",
-                      "justifyContent": "center",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "paddingBottom": 2,
-                      "paddingLeft": 20,
-                      "paddingRight": 20,
-                      "paddingTop": 2,
-                      "width": "100%",
-                    },
-                    {},
-                  ],
                   {
-                    "opacity": 1,
+                    "height": 216,
+                    "width": 310,
+                  },
+                  {
+                    "marginTop": 24,
                   },
                 ]
               }
-              testID="Continuer vers l’étape CGU & Données"
+              testID="date-picker-spinner-native"
+              textColor="#000000"
+              theme="light"
+              timeZoneOffsetInMinutes=""
+              title="Select date"
+            />
+            <View
+              style={
+                {
+                  "paddingTop": 40,
+                  "width": "100%",
+                }
+              }
             >
               <View
-                style={
+                accessibilityLabel="Continuer vers l’étape CGU & Données"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": true,
+                    "expanded": undefined,
+                    "selected": undefined,
                   }
                 }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={false}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "center",
+                        "backgroundColor": "#f1f1f4",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#cbcdd2",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "paddingBottom": 8,
+                        "paddingLeft": 12,
+                        "paddingRight": 12,
+                        "paddingTop": 8,
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Continuer vers l’étape CGU & Données"
               >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
+                <View
+                  fullWidth={true}
+                  gap={8}
+                  hasIcon={false}
+                  isMultiline={false}
                   style={
                     {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
+                      "alignItems": "center",
+                      "columnGap": 8,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "width": "100%",
                     }
                   }
                 >
-                  Continuer
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 22,
+                        },
+                        {
+                          "color": "#696a6f",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "maxWidth": "100%",
+                          "minWidth": 0,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Continuer
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
@@ -2680,37 +3011,6 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
       </View>
     </View>
   </RCTScrollView>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-  </View>
 </View>
 `;
 
@@ -2732,7 +3032,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
     accessibilityRole="header"
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -2753,6 +3053,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -2784,7 +3085,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -2814,10 +3115,19 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "flexGrow": 1,
-                  "height": 40,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 40,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                  "width": "auto",
                 },
               ],
               {
@@ -2828,23 +3138,53 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-          <Text
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
-                "display": "none",
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
               }
             }
           >
-            Retour
-          </Text>
+            <View
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="6"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -2953,7 +3293,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
       style={
         {
           "backgroundColor": "#f1f1f4",
-          "height": 6,
+          "height": 8,
           "justifyContent": "flex-start",
           "width": "100%",
         }
@@ -3003,58 +3343,347 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
         }
       />
       <View
+        marginTop={0}
         style={
           {
-            "maxWidth": 500,
-            "width": "100%",
+            "marginTop": 0,
           }
         }
       >
         <View
-          accessibilityRole="none"
+          style={
+            {
+              "maxWidth": 500,
+              "width": "100%",
+            }
+          }
         >
           <View
-            gap={2}
-            hasError={false}
+            accessibilityRole="none"
+          >
+            <View
+              gap={2}
+              hasError={false}
+              style={
+                {
+                  "gap": 8,
+                  "marginBottom": 16,
+                }
+              }
+            >
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 19,
+                    "lineHeight": 30.4,
+                  }
+                }
+              >
+                Conditions et confidentialité
+              </Text>
+            </View>
+            <View
+              display="vertical"
+              style={
+                {
+                  "flexDirection": "column",
+                  "flexWrap": "nowrap",
+                  "gap": 16,
+                }
+              }
+              variant="default"
+            >
+              <View
+                accessibilityLabel="Conditions et confidentialité - J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "cursor": "pointer",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Conditions et confidentialité - J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire"
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "columnGap": 12,
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <View
+                    disabled={false}
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 4,
+                        "borderBottomRightRadius": 4,
+                        "borderColor": "#90949d",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 4,
+                        "borderTopRightRadius": 4,
+                        "borderWidth": 2,
+                        "height": 20,
+                        "justifyContent": "center",
+                        "width": 20,
+                      }
+                    }
+                    variant="default"
+                  />
+                  <View
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      isHover={false}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
+                      state={
+                        [
+                          "default",
+                        ]
+                      }
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
+                      }
+                    >
+                      J’ai lu et j’accepte les conditions générales d’utilisation
+                      <Text
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          }
+                        }
+                      >
+                         - obligatoire
+                      </Text>
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                accessibilityLabel="Conditions et confidentialité - J’ai lu les chartes des données personnelles - obligatoire"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "cursor": "pointer",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Conditions et confidentialité - J’ai lu les chartes des données personnelles - obligatoire"
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "columnGap": 12,
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <View
+                    disabled={false}
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 4,
+                        "borderBottomRightRadius": 4,
+                        "borderColor": "#90949d",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 4,
+                        "borderTopRightRadius": 4,
+                        "borderWidth": 2,
+                        "height": 20,
+                        "justifyContent": "center",
+                        "width": 20,
+                      }
+                    }
+                    variant="default"
+                  />
+                  <View
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      isHover={false}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
+                      state={
+                        [
+                          "default",
+                        ]
+                      }
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
+                      }
+                    >
+                      J’ai lu les chartes des données personnelles
+                      <Text
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          }
+                        }
+                      >
+                         - obligatoire
+                      </Text>
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            gap={5}
             style={
               {
-                "gap": 8,
-                "marginBottom": 16,
+                "alignItems": "flex-start",
+                "gap": 20,
+                "marginTop": 24,
               }
             }
           >
             <Text
               style={
                 {
-                  "color": "#161617",
+                  "color": "#696a6f",
                   "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
                 }
               }
             >
-              CGU & Données
+              En cochant ces 2 cases tu assures avoir lu :
             </Text>
-          </View>
-          <View
-            display="vertical"
-            style={
-              {
-                "flexDirection": "column",
-                "flexWrap": "nowrap",
-                "gap": 16,
-              }
-            }
-            variant="default"
-          >
             <View
-              accessibilityLabel="CGU & Données - J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire"
-              accessibilityRole="checkbox"
+              accessibilityLabel="Conditions Générales d’Utilisation"
+              accessibilityRole="link"
               accessibilityState={
                 {
                   "busy": undefined,
-                  "checked": false,
-                  "disabled": undefined,
+                  "checked": undefined,
+                  "disabled": false,
                   "expanded": undefined,
                   "selected": undefined,
                 }
@@ -3083,8 +3712,20 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                       "userSelect": "auto",
                     },
                     {
-                      "cursor": "pointer",
-                      "width": "100%",
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "width": "auto",
                     },
                   ],
                   {
@@ -3092,97 +3733,90 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   },
                 ]
               }
-              testID="CGU & Données - J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire"
+              testID="Conditions Générales d’Utilisation"
             >
               <View
+                gap={8}
+                hasIcon={true}
+                isMultiline={true}
                 style={
                   {
                     "alignItems": "center",
-                    "columnGap": 12,
+                    "columnGap": 8,
                     "flexDirection": "row",
                   }
                 }
               >
                 <View
-                  disabled={false}
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
+                  collapsable={false}
+                  jestAnimatedProps={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestAnimatedStyle={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestInlineStyle={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                  nativeID="8"
+                  style={
                     [
-                      "default",
+                      {
+                        "flexShrink": 0,
+                      },
                     ]
                   }
-                  style={
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 4,
-                      "borderColor": "#90949d",
-                      "borderStyle": "solid",
-                      "borderTopLeftRadius": 4,
-                      "borderTopRightRadius": 4,
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    }
-                  }
-                  variant="default"
-                />
-                <View
-                  style={
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    }
-                  }
                 >
-                  <Text
-                    isHover={false}
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
-                    state={
-                      [
-                        "default",
-                      ]
-                    }
-                    style={
+                  <View
+                    accessibilityLabel="Nouvelle fenêtre"
+                    height={22}
+                    width={22}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <Text
+                  numberOfLines={2}
+                  style={
+                    [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
+                        "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
-                        "lineHeight": 25.6,
-                      }
-                    }
-                  >
-                    J’ai lu et j’accepte les conditions générales d’utilisation
-                    <Text
-                      style={
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        }
-                      }
-                    >
-                       - obligatoire
-                    </Text>
-                  </Text>
-                </View>
+                        "lineHeight": 22,
+                      },
+                      {
+                        "color": "#161617",
+                        "flexBasis": undefined,
+                        "flexGrow": undefined,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": undefined,
+                      },
+                    ]
+                  }
+                >
+                  Conditions Générales d’Utilisation
+                </Text>
               </View>
             </View>
             <View
-              accessibilityLabel="CGU & Données - J’ai lu la charte des données personnelles - obligatoire"
-              accessibilityRole="checkbox"
+              accessibilityLabel="Charte des données personnelles"
+              accessibilityRole="link"
               accessibilityState={
                 {
                   "busy": undefined,
-                  "checked": false,
-                  "disabled": undefined,
+                  "checked": undefined,
+                  "disabled": false,
                   "expanded": undefined,
                   "selected": undefined,
                 }
@@ -3211,7 +3845,297 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                       "userSelect": "auto",
                     },
                     {
-                      "cursor": "pointer",
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "width": "auto",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Charte des données personnelles"
+            >
+              <View
+                gap={8}
+                hasIcon={true}
+                isMultiline={true}
+                style={
+                  {
+                    "alignItems": "center",
+                    "columnGap": 8,
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <View
+                  collapsable={false}
+                  jestAnimatedProps={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestAnimatedStyle={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestInlineStyle={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                  nativeID="9"
+                  style={
+                    [
+                      {
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityLabel="Nouvelle fenêtre"
+                    height={22}
+                    width={22}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <Text
+                  numberOfLines={2}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
+                      },
+                      {
+                        "color": "#161617",
+                        "flexBasis": undefined,
+                        "flexGrow": undefined,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": undefined,
+                      },
+                    ]
+                  }
+                >
+                  Charte des données personnelles
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityLabel="Charte d’utilisation et de bonne conduite"
+              accessibilityRole="link"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "width": "auto",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Charte d’utilisation et de bonne conduite"
+            >
+              <View
+                gap={8}
+                hasIcon={true}
+                isMultiline={true}
+                style={
+                  {
+                    "alignItems": "center",
+                    "columnGap": 8,
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <View
+                  collapsable={false}
+                  jestAnimatedProps={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestAnimatedStyle={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestInlineStyle={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                  nativeID="10"
+                  style={
+                    [
+                      {
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityLabel="Nouvelle fenêtre"
+                    height={22}
+                    width={22}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <Text
+                  numberOfLines={2}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
+                      },
+                      {
+                        "color": "#161617",
+                        "flexBasis": undefined,
+                        "flexGrow": undefined,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": undefined,
+                      },
+                    ]
+                  }
+                >
+                  Charte d’utilisation et de bonne conduite
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "marginTop": 40,
+              }
+            }
+          >
+            <View
+              accessibilityHint="Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes données et pour exercer tes droits (ex : demander l’accès à tes données ou leur suppression), tu peux te reporter à la charte des données personnelles. Tu peux également gérer certaines préférences concernant tes données depuis les paramètres de ton compte, comme par exemple le fait de ne plus souhaiter recevoir notre newsletter."
+              accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité - Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes données et pour exercer tes droits (ex : demander l’accès à tes données ou leur suppression), tu peux te reporter à la charte des données personnelles. Tu peux également gérer certaines préférences concernant tes données depuis les paramètres de ton compte, comme par exemple le fait de ne plus souhaiter recevoir notre newsletter."
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": true,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={false}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "alignSelf": "center",
+                      "backgroundColor": "#f1f1f4",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#cbcdd2",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "paddingBottom": 8,
+                      "paddingLeft": 12,
+                      "paddingRight": 12,
+                      "paddingTop": 8,
                       "width": "100%",
                     },
                   ],
@@ -3220,477 +4144,74 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   },
                 ]
               }
-              testID="CGU & Données - J’ai lu la charte des données personnelles - obligatoire"
+              testID="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité - Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes données et pour exercer tes droits (ex : demander l’accès à tes données ou leur suppression), tu peux te reporter à la charte des données personnelles. Tu peux également gérer certaines préférences concernant tes données depuis les paramètres de ton compte, comme par exemple le fait de ne plus souhaiter recevoir notre newsletter."
             >
               <View
+                fullWidth={true}
+                gap={8}
+                hasIcon={false}
+                isMultiline={false}
                 style={
                   {
                     "alignItems": "center",
-                    "columnGap": 12,
-                    "flexDirection": "row",
-                  }
-                }
-              >
-                <View
-                  disabled={false}
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 4,
-                      "borderColor": "#90949d",
-                      "borderStyle": "solid",
-                      "borderTopLeftRadius": 4,
-                      "borderTopRightRadius": 4,
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    }
-                  }
-                  variant="default"
-                />
-                <View
-                  style={
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    }
-                  }
-                >
-                  <Text
-                    isHover={false}
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
-                    state={
-                      [
-                        "default",
-                      ]
-                    }
-                    style={
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      }
-                    }
-                  >
-                    J’ai lu la charte des données personnelles
-                    <Text
-                      style={
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        }
-                      }
-                    >
-                       - obligatoire
-                    </Text>
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          style={
-            {
-              "marginTop": 24,
-            }
-          }
-        >
-          <Text
-            style={
-              {
-                "color": "#696a6f",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 19.2,
-              }
-            }
-          >
-            En cochant ces 2 cases tu assures avoir lu :
-          </Text>
-          <View
-            accessibilityLabel="Nos conditions générales d’utilisation"
-            accessibilityRole="link"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "borderBottomLeftRadius": 24,
-                    "borderBottomRightRadius": 24,
-                    "borderTopLeftRadius": 24,
-                    "borderTopRightRadius": 24,
-                    "flexDirection": "row",
-                    "height": "auto",
-                    "justifyContent": "flex-start",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 2,
-                    "width": "100%",
-                  },
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Nos conditions générales d’utilisation"
-          >
-            <View
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "flexDirection": "row",
-                    "flexShrink": 0,
-                    "marginRight": 8,
-                  }
-                }
-              >
-                <View
-                  accessibilityLabel="Nouvelle fenêtre"
-                  height={16}
-                  testID="button-icon-left"
-                  width={16}
-                >
-                  <Text>
-                    button-icon-left-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={2}
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "maxWidth": "100%",
-                  }
-                }
-              >
-                Nos conditions générales d’utilisation
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="La charte des données personnelles"
-            accessibilityRole="link"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "borderBottomLeftRadius": 24,
-                    "borderBottomRightRadius": 24,
-                    "borderTopLeftRadius": 24,
-                    "borderTopRightRadius": 24,
-                    "flexDirection": "row",
-                    "height": "auto",
-                    "justifyContent": "flex-start",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 2,
-                    "width": "100%",
-                  },
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="La charte des données personnelles"
-          >
-            <View
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "flexDirection": "row",
-                    "flexShrink": 0,
-                    "marginRight": 8,
-                  }
-                }
-              >
-                <View
-                  accessibilityLabel="Nouvelle fenêtre"
-                  height={16}
-                  testID="button-icon-left"
-                  width={16}
-                >
-                  <Text>
-                    button-icon-left-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={2}
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "maxWidth": "100%",
-                  }
-                }
-              >
-                La charte des données personnelles
-              </Text>
-            </View>
-          </View>
-        </View>
-        <View
-          style={
-            {
-              "marginTop": 40,
-            }
-          }
-        >
-          <View
-            accessibilityHint="Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes données et pour exercer tes droits (ex : demander l’accès à tes données ou leur suppression), tu peux te reporter à la charte des données personnelles. Tu peux également gérer certaines préférences concernant tes données depuis les paramètres de ton compte, comme par exemple le fait de ne plus souhaiter recevoir notre newsletter."
-            accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={false}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#f1f1f4",
-                    "borderBottomLeftRadius": 24,
-                    "borderBottomRightRadius": 24,
-                    "borderTopLeftRadius": 24,
-                    "borderTopRightRadius": 24,
+                    "columnGap": 8,
                     "flexDirection": "row",
                     "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
                     "width": "100%",
-                  },
-                  {},
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
-          >
-            <View
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                }
-              }
-            >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "maxWidth": "100%",
                   }
                 }
               >
-                S’inscrire
-              </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 22,
+                      },
+                      {
+                        "color": "#696a6f",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  S’inscrire
+                </Text>
+              </View>
             </View>
           </View>
-        </View>
-        <View
-          style={
-            {
-              "marginVertical": 24,
-            }
-          }
-        >
-          <Text
-            accessibilityElementsHidden={true}
-            importantForAccessibility="no"
+          <View
             style={
               {
-                "color": "#696a6f",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 19.2,
+                "marginVertical": 24,
               }
             }
           >
-            Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes données et pour exercer tes droits (ex : demander l’accès à tes données ou leur suppression), tu peux te reporter à la charte des données personnelles. Tu peux également gérer certaines préférences concernant tes données depuis les paramètres de ton compte, comme par exemple le fait de ne plus souhaiter recevoir notre newsletter.
-          </Text>
+            <Text
+              accessibilityElementsHidden={true}
+              importantForAccessibility="no"
+              style={
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
+              }
+            >
+              Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes données et pour exercer tes droits (ex : demander l’accès à tes données ou leur suppression), tu peux te reporter à la charte des données personnelles. Tu peux également gérer certaines préférences concernant tes données depuis les paramètres de ton compte, comme par exemple le fait de ne plus souhaiter recevoir notre newsletter.
+            </Text>
+          </View>
         </View>
       </View>
     </View>
   </RCTScrollView>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-  </View>
 </View>
 `;

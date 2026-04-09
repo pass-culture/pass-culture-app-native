@@ -1,18 +1,26 @@
 import React from 'react'
-import styled from 'styled-components/native'
 
-import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
-import { getSpacing } from 'ui/theme/spacing'
+import { DebugButton } from 'features/profile/components/Buttons/DebugButton/DebugButton'
+import { Version } from 'features/profile/components/Version/Version'
+import { env } from 'libs/environment/env'
+import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
+import { Separator } from 'ui/components/Separator'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
+import { useVersion } from 'ui/hooks/useVersion'
 
-export const Footer = () => (
-  <LogoFrenchRepublicContainer>
-    <LogoFrenchRepublic />
-  </LogoFrenchRepublicContainer>
-)
+export const Footer = () => {
+  const version = useVersion()
+  const commitHash = env.COMMIT_HASH
 
-const LogoFrenchRepublicContainer = styled.View(({ theme }) => ({
-  width: getSpacing(40),
-  height: getSpacing(28),
-  marginTop: theme.designSystem.size.spacing.l,
-  marginBottom: theme.tabBar.heightV2,
-}))
+  return (
+    <ViewGap gap={5}>
+      <Separator.Horizontal />
+      <Version version={version} commitHash={commitHash} />
+      <ButtonContainerFlexStart>
+        <DebugButton />
+      </ButtonContainerFlexStart>
+      <AccessibilityFooter />
+    </ViewGap>
+  )
+}

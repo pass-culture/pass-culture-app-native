@@ -1,7 +1,7 @@
 import React from 'react'
 import { DefaultTheme } from 'styled-components/native'
 
-import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
+import { OfferResponse, RecommendationApiParams } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
@@ -18,7 +18,7 @@ import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
 
 type OfferPlaylistItemProps = {
-  offer?: OfferResponseV2
+  offer?: OfferResponse
   categoryMapping: CategoryIdMapping
   labelMapping: CategoryHomeLabelMapping | SubcategoryOfferLabelMapping
   currency: Currency
@@ -58,8 +58,7 @@ export const OfferPlaylistItem = ({
     const tag = renderInteractionTag({
       theme,
       likesCount: item.offer.likes,
-      chroniclesCount: item.offer.chroniclesCount,
-      headlinesCount: item.offer.headlineCount,
+      advicesCount: item.offer.chroniclesCount,
       hasSmallLayout,
       isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
       subcategoryId: item.offer.subcategoryId,

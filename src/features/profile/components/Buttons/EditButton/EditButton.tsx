@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { ButtonQuaternaryPrimary } from 'ui/components/buttons/ButtonQuaternaryPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { Button } from 'ui/designSystem/Button/Button'
 import { EditPen } from 'ui/svg/icons/EditPen'
 
 type EditButtonProps = {
@@ -21,7 +21,8 @@ export const EditButton = ({
 }: EditButtonProps) => {
   return navigateTo ? (
     <InternalTouchableLink
-      as={ButtonQuaternaryPrimary}
+      as={Button}
+      variant="tertiary"
       navigateTo={navigateTo}
       onBeforeNavigate={onPress}
       wording={wording}
@@ -31,7 +32,8 @@ export const EditButton = ({
     />
   ) : (
     <TouchableLink
-      as={ButtonQuaternaryPrimary}
+      as={Button}
+      variant="tertiary"
       wording={wording}
       icon={EditPen}
       inline

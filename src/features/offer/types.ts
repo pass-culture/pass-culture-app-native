@@ -1,22 +1,23 @@
-import { ReactNode } from 'react'
+import { ComponentType, PropsWithChildren, ReactNode } from 'react'
+import { Animated, LayoutChangeEvent } from 'react-native'
 
 import {
   CategoryIdEnum,
   FavoriteResponse,
-  OfferResponseV2,
+  OfferArtist,
+  OfferResponse,
   ReactionTypeEnum,
   RecommendationApiParams,
   SearchGroupResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { ChronicleCardData } from 'features/chronicle/type'
+import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { Referrals } from 'features/navigation/RootNavigator/types'
-import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { PlaylistType } from 'features/offer/enums'
+import { FavoriteCTAProps } from 'features/offerRefacto/types'
 import { AlgoliaGeoloc } from 'libs/algolia/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { NAVIGATION_METHOD } from 'shared/constants'
-import { SegmentResult } from 'shared/useABSegment/useABSegment'
 
 type ValueOf<T> = T[keyof T]
 type NavigationMethod = ValueOf<typeof NAVIGATION_METHOD>
@@ -70,23 +71,40 @@ export interface VenueDetail {
   distance?: string
 }
 
-export type OfferContentProps = {
-  offer: OfferResponseV2
-  searchGroupList: SearchGroupResponseModelv2[]
-  chronicleVariantInfo: ChronicleVariantInfo
+type OfferHeaderComponentProps = PropsWithChildren<{
+  headerTransition: Animated.AnimatedInterpolation<string | number>
+  title: string
+  offer: OfferResponse
+}>
+
+type OfferCTAsComponentProps = {
+  offer: OfferResponse
   subcategory: Subcategory
-  onShowChroniclesWritersModal: () => void
-  onShowOfferArtistsModal: () => void
-  segment: SegmentResult
-  chronicles?: ChronicleCardData[]
+  trackEventHasSeenOfferOnce: VoidFunction
+  favoriteCTAProps: FavoriteCTAProps
+  fullScreen?: boolean
+  onLayout?: (params: LayoutChangeEvent) => void
+}
+
+export type OfferContentProps = {
+  offer: OfferResponse
+  searchGroupList: SearchGroupResponseModelv2[]
+  adviceVariantInfo: AdviceVariantInfo
+  subcategory: Subcategory
+  onShowClubAdviceWritersModal: () => void
+  onShowOfferArtistsModal: (artists: OfferArtist[]) => void
+  clubAdvices?: AdviceCardData[]
+  proAdvices?: AdviceCardData[]
   headlineOffersCount?: number
   defaultReaction?: ReactionTypeEnum | null
   onReactionButtonPress?: () => void
   userId?: number
   hasVideoCookiesConsent?: boolean
   onVideoConsentPress: VoidFunction
-  enableVideoABTesting?: boolean
   isMultiArtistsEnabled?: boolean
+  HeaderComponent?: ComponentType<OfferHeaderComponentProps>
+  CTAsComponent?: ComponentType<OfferCTAsComponentProps>
+  proAdvicesCount?: number
 }
 
 export type OfferImageContainerDimensions = {
@@ -103,4 +121,10 @@ export type OfferImageContainerDimensions = {
 export type Duration = {
   label: string
   accessibilityLabel: string
+}
+
+export type AdvicesStatus = {
+  total: number
+  hasPublished: boolean
+  hasUnpublished: boolean
 }

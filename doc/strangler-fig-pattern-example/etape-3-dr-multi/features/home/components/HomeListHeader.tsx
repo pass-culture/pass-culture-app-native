@@ -3,7 +3,7 @@
 
 import React, { FunctionComponent } from 'react';
 import { View, Text } from 'react-native';
-import { Spacer, PageContent, VideoCarouselModule } from '../../../../ui-mocks'; // Import des mocks
+import { PageContent, VideoCarouselModule } from '../../../../ui-mocks'; // Import des mocks
 import { HomepageModule } from '../types';
 
 type HomeListHeaderProps = {
@@ -24,7 +24,6 @@ export const HomeListHeader: FunctionComponent<HomeListHeaderProps> = ({
   return (
     <View testID="listHeader">
       {Header}
-      <Spacer.Column numberOfSpaces={6} />
       {shouldDisplayVideoInHeader && videoCarouselModules[0] ? (
         <VideoCarouselModule
           index={0}

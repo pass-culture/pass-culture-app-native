@@ -3,9 +3,8 @@ import styled from 'styled-components/native'
 
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 
 interface SeeMoreProps {
   height: number
@@ -15,87 +14,34 @@ interface SeeMoreProps {
 }
 
 export const SeeMore: React.FC<SeeMoreProps> = ({ height, width, navigateTo, onPress }) => {
+  const buttonProps = {
+    wording: 'En voir plus',
+    accessibilityLabel: 'En voir plus',
+    icon: ArrowNext,
+    iconPosition: 'right' as const,
+    variant: 'tertiary' as const,
+    color: 'neutral' as const,
+  }
+
   return (
     <Container height={height} width={width}>
-      <Spacer.Column numberOfSpaces={2} />
-      <ClickableArea
-        activeOpacity={1}
-        navigateTo={navigateTo}
-        onPress={onPress}
-        accessibilityLabel="En voir plus">
-        <Row>
-          <Spacer.Row numberOfSpaces={16} />
-          <RoundContainer>
-            <ArrowNext />
-          </RoundContainer>
-          <Spacer.Row numberOfSpaces={16} />
-        </Row>
-        <Spacer.Column numberOfSpaces={2} />
-        <Row>
-          <StyledBodyAccent>En voir plus</StyledBodyAccent>
-        </Row>
-      </ClickableArea>
+      {navigateTo ? (
+        <InternalTouchableLink
+          as={Button}
+          navigateTo={navigateTo}
+          onBeforeNavigate={onPress}
+          {...buttonProps}
+        />
+      ) : (
+        <Button onPress={onPress} {...buttonProps} />
+      )}
     </Container>
   )
 }
-
-const ClickableArea: React.FC<{
-  activeOpacity: number
-  navigateTo?: InternalNavigationProps['navigateTo']
-  onPress: () => void
-  accessibilityLabel: string
-  children: React.ReactNode
-}> = ({ activeOpacity, children, onPress, navigateTo, ...props }) => {
-  return navigateTo ? (
-    <StyledTouchableLink
-      activeOpacity={activeOpacity}
-      navigateTo={navigateTo}
-      onBeforeNavigate={onPress}
-      {...props}>
-      {children}
-    </StyledTouchableLink>
-  ) : (
-    <StyledTouchableOpacity activeOpacity={activeOpacity} onPress={onPress} {...props}>
-      {children}
-    </StyledTouchableOpacity>
-  )
-}
-
-const Row = styled.View({ flexDirection: 'row' })
 
 const Container = styled.View<{ height: number; width: number }>(({ height, width }) => ({
   height,
   width,
   alignItems: 'center',
   justifyContent: 'center',
-}))
-
-const StyledTouchableLink = styled(InternalTouchableLink)({
-  alignItems: 'center',
-})
-
-const StyledTouchableOpacity = styled(TouchableOpacity)({
-  alignItems: 'center',
-})
-
-const CONTAINER_SIZE = getSpacing(16)
-const RoundContainer = styled.View(({ theme }) => ({
-  width: CONTAINER_SIZE,
-  height: CONTAINER_SIZE,
-  aspectRatio: '1',
-  borderRadius: theme.designSystem.size.borderRadius.xxl,
-  backgroundColor: theme.designSystem.color.background.default,
-  border: 1,
-  justifyContent: 'center',
-  borderColor: theme.designSystem.color.border.default,
-  alignItems: 'center',
-}))
-
-const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
-  color: theme.designSystem.color.icon.brandPrimary,
-  size: theme.icons.sizes.standard,
-}))``
-
-const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
-  color: theme.designSystem.color.text.brandPrimary,
 }))

@@ -1,4 +1,4 @@
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -11,7 +11,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('useOfferQuery', () => {
   beforeEach(() =>
-    mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
+    mockServer.getApi<OfferResponse>(`/v3/offer/${offerResponseSnap.id}`, offerResponseSnap)
   )
 
   it('should call API otherwise', async () => {

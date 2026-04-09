@@ -24,8 +24,6 @@ import { Offer } from 'shared/offer/types'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing } from 'ui/theme'
 
-const VENUE_THUMBNAIL_SIZE = getSpacing(12)
-
 const FLING_GESTURE = Gesture.Fling()
   .withTestId('flingGesture')
   .runOnJS(true)
@@ -60,6 +58,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
   ) {
     const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
     const { designSystem } = useTheme()
+    const VENUE_THUMBNAIL_SIZE = designSystem.size.spacing.xxxxl
 
     const distanceToVenue = getDistance(
       {
@@ -125,7 +124,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
         )
       }
       return null
-    }, [venue, onClose, venueTags, designSystem.size.spacing.l])
+    }, [venue, onClose, VENUE_THUMBNAIL_SIZE, venueTags, designSystem.size.spacing.l])
 
     const flingRef = useRef<FlingGesture | undefined>(undefined)
 
@@ -172,7 +171,6 @@ const StyledView = styled.View({
   paddingHorizontal: 16,
 })
 
-const HANDLE_STROKE = getSpacing(0.75)
 const HANDLE_LENGTH = getSpacing(14)
 
 const HandleComponent: FunctionComponent<BottomSheetHandleProps> = () => {
@@ -192,8 +190,11 @@ const HandleContainer = styled.View(({ theme }) => ({
   paddingBottom: 8,
 }))
 
-const Handle = styled.View(({ theme }) => ({
-  width: HANDLE_LENGTH,
-  height: HANDLE_STROKE,
-  backgroundColor: theme.designSystem.color.border.subtle,
-}))
+const Handle = styled.View(({ theme }) => {
+  const HANDLE_STROKE = theme.designSystem.size.spacing.xs
+  return {
+    width: HANDLE_LENGTH,
+    height: HANDLE_STROKE,
+    backgroundColor: theme.designSystem.color.border.subtle,
+  }
+})

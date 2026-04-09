@@ -16,9 +16,10 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
 >
   <View
     accessibilityRole="header"
+    onLayout={[Function]}
     style={
       {
-        "backgroundColor": "rgba(255,255,255,0)",
+        "backgroundColor": "#ffffff",
         "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 1,
         "left": 0,
@@ -39,6 +40,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
       }
     />
     <View
+      headerHeight={48}
       style={
         {
           "alignItems": "center",
@@ -70,7 +72,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -100,10 +102,19 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "flexGrow": 1,
-                  "height": 40,
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
                   "justifyContent": "center",
-                  "maxWidth": 40,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                  "width": "auto",
                 },
               ],
               {
@@ -114,23 +125,53 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
           testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-          <Text
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
               {
-                "display": "none",
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
               }
             }
           >
-            Retour
-          </Text>
+            <View
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="0"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -182,6 +223,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
   >
     <View
       onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
       style={
         [
           {
@@ -220,23 +262,20 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
+              "paddingTop": 65,
             }
           }
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
+          onScroll={[Function]}
+          paddingHeaderHeight={65}
+          scrollEventThrottle={16}
           style={{}}
         >
           <View>
-            <View
-              style={
-                {
-                  "height": 65,
-                }
-              }
-            />
             <View
               style={
                 {
@@ -424,7 +463,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                     {
                       "busy": undefined,
                       "checked": undefined,
-                      "disabled": undefined,
+                      "disabled": false,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -454,24 +493,19 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                         },
                         {
                           "alignItems": "center",
-                          "borderBottomLeftRadius": 0,
-                          "borderBottomRightRadius": 0,
-                          "borderTopLeftRadius": 0,
-                          "borderTopRightRadius": 0,
+                          "backgroundColor": "transparent",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 0,
                           "flexDirection": "row",
                           "justifyContent": "center",
-                          "marginTop": 0,
-                          "maxWidth": 500,
-                          "minHeight": 20,
                           "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
                           "paddingTop": 0,
                           "width": "auto",
-                        },
-                        {
-                          "backgroundColor": "transparent",
                         },
                       ],
                       {
@@ -482,44 +516,72 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                   testID="C’est quoi ÉduConnect ?"
                 >
                   <View
+                    gap={8}
+                    hasIcon={true}
+                    isMultiline={false}
                     style={
                       {
                         "alignItems": "center",
+                        "columnGap": 8,
                         "flexDirection": "row",
                       }
                     }
                   >
                     <View
-                      style={
+                      collapsable={false}
+                      jestAnimatedProps={
                         {
-                          "flexDirection": "row",
-                          "flexShrink": 0,
-                          "marginRight": 8,
+                          "value": {},
                         }
+                      }
+                      jestAnimatedStyle={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestInlineStyle={
+                        {
+                          "flexShrink": 0,
+                        }
+                      }
+                      nativeID="1"
+                      style={
+                        [
+                          {
+                            "flexShrink": 0,
+                          },
+                        ]
                       }
                     >
                       <View
                         accessibilityLabel="Nouvelle fenêtre"
-                        height={16}
-                        testID="button-icon-left"
-                        width={16}
+                        height={22}
+                        width={22}
                       >
                         <Text>
-                          button-icon-left-SVG-Mock
+                          undefined-SVG-Mock
                         </Text>
                       </View>
                     </View>
                     <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
                       style={
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                          "maxWidth": "100%",
-                        }
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 22,
+                          },
+                          {
+                            "color": "#161617",
+                            "flexBasis": undefined,
+                            "flexGrow": undefined,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": undefined,
+                          },
+                        ]
                       }
                     >
                       C’est quoi ÉduConnect ?
@@ -871,7 +933,6 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                 </View>
               </View>
               <View
-                numberOfSpaces={10}
                 style={
                   {
                     "height": 40,
@@ -879,41 +940,19 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                 }
               />
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
           </View>
         </RCTScrollView>
       </View>
     </View>
-  </View>
-  <View
-    height={65}
-    style={
-      {
-        "backdropFilter": "blur(20px)",
-        "height": 65,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;

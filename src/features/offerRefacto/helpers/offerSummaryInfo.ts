@@ -1,4 +1,4 @@
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import {
   extractStockDates,
   formatDuration,
@@ -8,7 +8,7 @@ import { capitalize } from 'libs/formatter/capitalize'
 import { getFormattedDates } from 'libs/parsers/formatDates'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 
-export const getOfferSummaryInfoData = (offer: OfferResponseV2) => {
+export const getOfferSummaryInfoData = (offer: OfferResponse) => {
   const { venue, isDigital, extraData, address } = offer
 
   const dates = extractStockDates(offer)

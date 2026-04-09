@@ -1,14 +1,12 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { InseeCountry } from 'features/bonification/inseeCountries'
+import { InseeCountry } from 'api/gen'
 import { BonificationRecap } from 'features/bonification/pages/BonificationRecap'
 import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/jwt/jwt')
@@ -18,19 +16,12 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ refetchUser: mockRefetchUser })),
 }))
 
-const mockShowSuccessSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSuccessSnackBar(props)),
-    showErrorSnackBar: jest.fn(),
-  }),
-}))
-
 const title = 'Monsieur'
 const firstName = 'Jean'
 const givenName = 'Dupont'
+const commonName = 'Dubois'
 const birthDate = '1975-10-10T00:00:00.000Z'
-const birthCountry: InseeCountry = { LIBCOG: 'Belgique', COG: 99131 }
+const birthCountry: InseeCountry = { libcog: 'Belgique', cog: 99131 }
 
 describe('BonificationRecap', () => {
   beforeEach(() => {
@@ -39,7 +30,7 @@ describe('BonificationRecap', () => {
   })
 
   it('should navigate to name screen when pressing "Modifier mes informations"', async () => {
-    prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+    prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
 
     const button = screen.getByText('Modifier mes informations')
     await userEvent.press(button)
@@ -51,19 +42,27 @@ describe('BonificationRecap', () => {
   })
 
   it('should show previously saved data', () => {
-    prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+    prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
 
-    const nameField = screen.getByText('Monsieur Jean DUPONT')
-    const countryField = screen.getByText(birthCountry.LIBCOG)
-    const birthDateField = screen.getByText(new Date(birthDate).toLocaleDateString())
+    expect(screen.getByText('Civilité')).toBeTruthy()
+    expect(screen.getByText(title)).toBeTruthy()
 
-    expect(nameField).toBeTruthy()
-    expect(countryField).toBeTruthy()
-    expect(birthDateField).toBeTruthy()
+    expect(screen.getByText('Nom de naissance')).toBeTruthy()
+    expect(screen.getByText(givenName.toUpperCase())).toBeTruthy()
+
+    expect(screen.getByText('Prénom(s)')).toBeTruthy()
+    expect(screen.getByText(firstName)).toBeTruthy()
+
+    expect(screen.getByText('Nom d’usage')).toBeTruthy()
+    expect(screen.getByText(commonName.toUpperCase())).toBeTruthy()
+
+    expect(screen.getByText('Pays de naissance')).toBeTruthy()
+    expect(screen.getByText(birthCountry.libcog)).toBeTruthy()
+    expect(screen.getByText(new Date(birthDate).toLocaleDateString())).toBeTruthy()
   })
 
   it('should navigate to error screen when pressing "Envoyer" and data is missing', async () => {
-    prepareDataAndRender(undefined, undefined, undefined, undefined, undefined)
+    prepareDataAndRender(undefined, undefined, undefined, undefined, undefined, undefined)
 
     await validateAndSubmitForm()
 
@@ -81,7 +80,7 @@ describe('BonificationRecap', () => {
     })
 
     it('should navigate to home', async () => {
-      prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+      prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
 
       await validateAndSubmitForm()
 
@@ -89,18 +88,16 @@ describe('BonificationRecap', () => {
     })
 
     it('should show snackbar', async () => {
-      prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+      prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
 
       await validateAndSubmitForm()
 
-      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-        message: 'Tes informations ont été envoyées\u00a0!',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
+      expect(screen.getByText('Tes informations ont été envoyées\u00a0!')).toBeOnTheScreen()
     })
 
     it('should refresh the user', async () => {
-      prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+      prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
 
       await validateAndSubmitForm()
 
@@ -113,7 +110,7 @@ describe('BonificationRecap', () => {
         'resetLegalRepresentative'
       )
 
-      prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+      prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
 
       await validateAndSubmitForm()
 
@@ -129,7 +126,7 @@ describe('BonificationRecap', () => {
     })
 
     it('should navigate to error screen when pressing "Confirmer"', async () => {
-      prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+      prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
 
       await validateAndSubmitForm()
 
@@ -158,12 +155,13 @@ async function validateAndSubmitForm() {
   await userEvent.press(button)
 }
 
-function prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry) {
-  const { setTitle, setFirstNames, setGivenName, setBirthDate, setBirthCountry } =
+function prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry) {
+  const { setTitle, setFirstNames, setGivenName, setCommonName, setBirthDate, setBirthCountry } =
     legalRepresentativeActions
   setTitle(title)
   setFirstNames([firstName])
   setGivenName(givenName)
+  setCommonName(commonName)
   setBirthDate(new Date(birthDate))
   setBirthCountry(birthCountry)
   render(reactQueryProviderHOC(<BonificationRecap />))

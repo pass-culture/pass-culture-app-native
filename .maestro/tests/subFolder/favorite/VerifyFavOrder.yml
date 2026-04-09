@@ -6,24 +6,31 @@ appId: ${MAESTRO_APP_ID}
     id: "Trier"
 
 - assertVisible: "Trier par"
-- assertVisible: "Trier par Ajouté récemment"
-- assertVisible: "Trier par Prix croissant"
-- assertVisible: "Trier par Proximité géographique"
+- assertVisible: ".*Ajouté récemment.*"
+- assertVisible: ".*Prix croissant.*"
+- assertVisible: ".*Proximité géographique.*"
 
-- tapOn: "Trier par Prix croissant"
+- tapOn: ".*Prix croissant.*"
 - tapOn: "Valider"
 
 - assertVisible: "3 favoris"
 - tapOn:
     id: "Trier"
 
-- tapOn: "Trier par Proximité géographique"
+- tapOn: ".*Proximité géographique.*"
+
+- runFlow:
+    when:
+      visible: "Paramètres de localisation"
+    commands:
+    - tapOn: "Fermer la modale"
+
 - tapOn: "Valider"
 
 - assertVisible: "3 favoris"
 - tapOn:
     id: "Trier"
 
-- tapOn: "Trier par Ajouté récemment"
+- tapOn: ".*Ajouté récemment.*"
 - tapOn: "Valider"
 - assertVisible: "3 favoris"

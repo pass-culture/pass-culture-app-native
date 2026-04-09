@@ -12,7 +12,7 @@ jest.useFakeTimers()
 describe('<SeeMore />', () => {
   it('calls onPress when clicking the arrow', async () => {
     render(<SeeMore {...props} />)
-    await user.press(screen.getByTestId('En voir plus'))
+    await user.press(screen.getByLabelText('En voir plus'))
 
     expect(props.onPress).toHaveBeenCalledTimes(1)
   })

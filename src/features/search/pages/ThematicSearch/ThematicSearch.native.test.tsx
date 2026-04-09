@@ -312,7 +312,7 @@ describe('<ThematicSearch/>', () => {
 
       await screen.findByText('Livres')
 
-      expect(screen.getByTestId('icon-back')).toBeOnTheScreen()
+      expect(screen.getByLabelText('Revenir en arrière')).toBeOnTheScreen()
     })
 
     describe('When input is focused', () => {

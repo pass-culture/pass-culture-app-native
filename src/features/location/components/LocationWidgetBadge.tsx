@@ -7,15 +7,15 @@ import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
-import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { useModal } from 'ui/components/modals/useModal'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo } from 'ui/theme'
 
 export const LocationWidgetBadge = () => {
-  const numberOfLines = useFontScaleValue({ default: 1, at200PercentZoom: 3 })
+  const numberOfLines = useMobileFontScaleToDisplay({ default: 1, at200PercentZoom: 3 })
 
   const { place, selectedLocationMode } = useLocation()
 

@@ -2,7 +2,7 @@ import { StoryFn } from '@storybook/react-vite'
 import React, { useMemo } from 'react'
 import styled from 'styled-components/native'
 
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { Emoji } from './Emoji'
 
@@ -33,8 +33,8 @@ export const Emojis: StoryFn<React.FC> = () => {
   )
 }
 
-const AlignedText = styled.View({
+const AlignedText = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  paddingVertical: getSpacing(1),
-})
+  paddingVertical: theme.designSystem.size.spacing.xs,
+}))

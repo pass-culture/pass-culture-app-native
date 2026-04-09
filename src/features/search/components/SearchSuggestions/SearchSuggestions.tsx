@@ -22,6 +22,8 @@ import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/location'
+import { Button } from 'ui/designSystem/Button/Button'
+import { AISearch } from 'ui/svg/icons/AISearch'
 
 type SearchSuggestionsParams = {
   queryHistory: string
@@ -30,6 +32,8 @@ type SearchSuggestionsParams = {
   filteredHistory: HistoryItem[]
   shouldNavigateToSearchResults?: boolean
   offerCategories?: SearchGroupNameEnumv2[]
+  enableAIFakeDoor?: boolean
+  onPressAIButton?: () => void
 }
 export const SearchSuggestions = ({
   queryHistory,
@@ -38,6 +42,8 @@ export const SearchSuggestions = ({
   filteredHistory,
   shouldNavigateToSearchResults,
   offerCategories,
+  enableAIFakeDoor,
+  onPressAIButton,
 }: SearchSuggestionsParams) => {
   const { navigate, setOptions } = useNavigation<UseNavigationType>()
   const { searchState, dispatch, hideSuggestions } = useSearch()
@@ -129,6 +135,18 @@ export const SearchSuggestions = ({
       keyboardShouldPersistTaps="handled"
       onScroll={Keyboard.dismiss}
       scrollEventThrottle={16}>
+      {enableAIFakeDoor ? (
+        <ButtonContainer>
+          <Button
+            variant="tertiary"
+            wording="Demander à l’IA pass Culture"
+            accessibilityLabel="Accéder au questionnaire sur l’IA pass Culture"
+            color="neutral"
+            icon={AISearch}
+            onPress={onPressAIButton}
+          />
+        </ButtonContainer>
+      ) : null}
       <SearchHistory
         history={filteredHistory}
         queryHistory={queryHistory}
@@ -162,4 +180,10 @@ const StyledScrollView = styled.ScrollView(({ theme }) => ({
   paddingLeft: theme.designSystem.size.spacing.xl,
   paddingRight: theme.designSystem.size.spacing.xl,
   ...(theme.isMobileViewport ? { marginBottom: theme.tabBar.height } : {}),
+}))
+
+const ButtonContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+  marginLeft: theme.designSystem.size.spacing.xxxl,
+  alignItems: 'flex-start',
 }))

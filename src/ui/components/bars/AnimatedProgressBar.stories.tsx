@@ -4,7 +4,7 @@ import React from 'react'
 import { theme } from 'theme'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { EditPen } from 'ui/svg/icons/EditPen'
-import { Email } from 'ui/svg/icons/Email'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 
 import { AnimatedProgressBar } from './AnimatedProgressBar'
 
@@ -17,11 +17,15 @@ export default meta
 const variantConfig: Variants<typeof AnimatedProgressBar> = [
   {
     label: 'AnimatedProgressBar default',
-    props: { progress: 0.5, color: theme.designSystem.color.background.brandPrimary, icon: Email },
+    props: {
+      progress: 0.5,
+      color: theme.designSystem.color.background.brandPrimary,
+      icon: EmailFilled,
+    },
   },
   {
     label: 'AnimatedProgressBar empty',
-    props: { progress: 0, color: theme.designSystem.color.background.success, icon: Email },
+    props: { progress: 0, color: theme.designSystem.color.background.success, icon: EmailFilled },
   },
   {
     label: 'AnimatedProgressBar full',

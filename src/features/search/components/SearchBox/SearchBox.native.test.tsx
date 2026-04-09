@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate, popTo, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { navigationRef } from 'features/navigation/navigationRef'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -15,9 +14,8 @@ import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { GeoCoordinates, Position } from 'libs/location/location'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { setSettingsMock } from 'tests/settings/mockSettings'
 import { act, render, screen, userEvent } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { SearchBox } from './SearchBox'
 
@@ -28,14 +26,7 @@ let mockSearchState: SearchState = {
   offerCategories: [SearchGroupNameEnumv2.CINEMA],
   priceRange: [0, 20],
 }
-const mockShowSuccessSnackBar = jest.fn()
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showSuccessSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSuccessSnackBar(props)),
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
-}))
+
 const queryWithMoreThan150characters =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non aliquet quam, at ultrices purus. Morbi velit orci, tincidunt sed erat sed efficitur.'
 
@@ -211,10 +202,10 @@ describe('SearchBox component', () => {
 
     await user.type(searchInput, queryWithMoreThan150characters, { submitEditing: true })
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message: 'Ta recherche ne peut pas faire plus de 150 caractères.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
+    expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+    expect(
+      screen.getByText('Ta recherche ne peut pas faire plus de 150 caractères.')
+    ).toBeOnTheScreen()
   })
 
   it('should navigate to search results on submit', async () => {
@@ -271,7 +262,7 @@ describe('SearchBox component', () => {
 
     renderSearchBox()
 
-    const previousButton = screen.queryByTestId('Revenir en arrière')
+    const previousButton = screen.queryByLabelText('Revenir en arrière')
 
     expect(previousButton).not.toBeOnTheScreen()
   })
@@ -280,7 +271,7 @@ describe('SearchBox component', () => {
     mockIsFocusOnSuggestions = true
     renderSearchBox()
 
-    const previousButton = screen.getByTestId('Revenir en arrière')
+    const previousButton = screen.getByLabelText('Revenir en arrière')
 
     expect(previousButton).toBeOnTheScreen()
   })
@@ -487,7 +478,11 @@ describe('SearchBox component', () => {
 
   describe('Without autocomplete', () => {
     beforeAll(() => {
-      setSettings({ appEnableAutocomplete: false })
+      setSettingsMock({ patchSettingsWith: { appEnableAutocomplete: false } })
+    })
+
+    afterAll(() => {
+      setSettingsMock()
     })
 
     it('should stay on the current view when focusing search input and being on the %s view', async () => {
@@ -548,20 +543,12 @@ describe('SearchBox component', () => {
   })
 
   describe('With autocomplete', () => {
-    beforeAll(() => {
-      setSettings({ appEnableAutocomplete: true })
-    })
-
-    afterAll(() => {
-      setSettings()
-    })
-
     it('should unfocus from suggestion when being focus on the suggestions and press back button', async () => {
       mockIsFocusOnSuggestions = true
       useRoute.mockReturnValueOnce({ name: SearchView.Landing })
 
       renderSearchBox()
-      const previousButton = screen.getByTestId('Revenir en arrière')
+      const previousButton = screen.getByLabelText('Revenir en arrière')
 
       await user.press(previousButton)
 
@@ -574,7 +561,7 @@ describe('SearchBox component', () => {
 
       renderSearchBox()
 
-      const previousButton = screen.getByTestId('Revenir en arrière')
+      const previousButton = screen.getByLabelText('Revenir en arrière')
 
       await user.press(previousButton)
 

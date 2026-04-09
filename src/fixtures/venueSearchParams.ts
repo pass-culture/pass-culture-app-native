@@ -10,7 +10,7 @@ export default {
     locationType: LocationMode.EVERYWHERE,
   },
   venue: {
-    label: mockVenueResponse.publicName || '',
+    label: mockVenueResponse.name || '',
     info: mockVenueResponse.city || '',
     _geoloc: {
       lat: mockVenueResponse.latitude,

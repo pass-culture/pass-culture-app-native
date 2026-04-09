@@ -222,6 +222,8 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0' // for google-signin
     implementation 'com.google.android.gms:play-services-location:21.0.1' // for google map android
     implementation("com.google.android.gms:play-services-maps:19.0.0") // Maps SDK for Android
+    implementation 'com.google.android.gms:play-services-ads-identifier:18.3.0' // for Adjust
+    implementation 'com.android.installreferrer:installreferrer:2.2' // for Adjust
 }
 
 

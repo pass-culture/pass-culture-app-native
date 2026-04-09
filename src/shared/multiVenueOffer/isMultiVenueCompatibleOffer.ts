@@ -1,4 +1,4 @@
-import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
+import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 
 const EAN_MULTI_VENUE_COMPATIBLE_OFFER = new Set([
   SubcategoryIdEnum.LIVRE_PAPIER,
@@ -7,11 +7,11 @@ const EAN_MULTI_VENUE_COMPATIBLE_OFFER = new Set([
   SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
 ])
 
-const isEanMultiVenueCompatibleOffer = (offer: OfferResponseV2): boolean =>
+const isEanMultiVenueCompatibleOffer = (offer: OfferResponse): boolean =>
   Boolean(EAN_MULTI_VENUE_COMPATIBLE_OFFER.has(offer.subcategoryId) && offer.extraData?.ean)
 
-const isMovieMultiVenueCompatibleOffer = (offer: OfferResponseV2): boolean =>
+const isMovieMultiVenueCompatibleOffer = (offer: OfferResponse): boolean =>
   Boolean(SubcategoryIdEnum.SEANCE_CINE === offer.subcategoryId && offer.extraData?.allocineId)
 
-export const isMultiVenueCompatibleOffer = (offer: OfferResponseV2) =>
+export const isMultiVenueCompatibleOffer = (offer: OfferResponse) =>
   isEanMultiVenueCompatibleOffer(offer) || isMovieMultiVenueCompatibleOffer(offer)

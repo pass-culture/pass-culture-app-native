@@ -8,7 +8,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 import * as fetchOffersByArtist from './fetchOffersByArtist'
-import { useArtistResultsQuery } from './useArtistResultsQuery'
+import { parseDistance, useArtistResultsQuery } from './useArtistResultsQuery'
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
   usePersistQuery: jest.requireActual('@tanstack/react-query').useQuery,
@@ -140,5 +140,16 @@ describe('useArtistResultsQuery', () => {
     await waitFor(() => {
       expect(result.current.artistTopOffers).toEqual([])
     })
+  })
+})
+
+describe('parseDistance', () => {
+  it.each([
+    { input: '1.5 km', expected: 1500 },
+    { input: '800 m', expected: 800 },
+    { input: '0', expected: 0 },
+    { input: '12.3km', expected: 12300 },
+  ])('should parse "$input" to $expected meters', ({ input, expected }) => {
+    expect(parseDistance(input)).toBe(expected)
   })
 })

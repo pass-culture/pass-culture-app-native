@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AttributionCopyEndpoint</key>
+	<string>https://adjust-skadnetwork.com</string>
 	<key>BatchAPIKey</key>
 	<string>$(BATCH_API_PUBLIC_KEY_IOS)</string>
 	<key>BatchProfileCustomDataMigrationEnabled</key>
@@ -92,6 +94,8 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAdvertisingAttributionReportEndpoint</key>
+	<string>https://adjust-skadnetwork.com</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<!-- Do not change NSAllowsArbitraryLoads to true, or you will risk app rejection! -->

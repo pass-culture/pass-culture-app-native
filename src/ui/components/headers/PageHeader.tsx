@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
   title: string
@@ -35,7 +35,7 @@ export const PageHeader = ({
 
 const HeaderContainer = styled.View<{ enableProfileV2: boolean }>(({ theme, enableProfileV2 }) => ({
   flexDirection: 'row',
-  marginTop: enableProfileV2 ? 0 : getSpacing(6),
+  marginTop: enableProfileV2 ? 0 : theme.designSystem.size.spacing.xl,
   marginHorizontal: enableProfileV2 ? 0 : theme.contentPage.marginHorizontal,
   justifyContent: 'space-between',
   zIndex: theme.zIndex.header,
@@ -45,9 +45,9 @@ const TitleContainer = styled.View({
   flexShrink: 1,
 })
 
-const TitleText = styled(Typo.Title1)({
-  marginBottom: getSpacing(1),
-})
+const TitleText = styled(Typo.Title1)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xs,
+}))
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

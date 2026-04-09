@@ -11,7 +11,12 @@ describe('getVideoPlayerDimensions', () => {
     const isDesktopViewport = false
     const windowWidth = mobileWidthMock
 
-    const dimensions = getVideoPlayerDimensions(isDesktopViewport, windowWidth, RATIO169)
+    const dimensions = getVideoPlayerDimensions({
+      isDesktopViewport,
+      windowWidth,
+      ratio: RATIO169,
+      desktopMaxWidth: 520,
+    })
 
     expect(dimensions).toEqual({ playerHeight: 219.375, playerWidth: 390 })
   })
@@ -20,7 +25,12 @@ describe('getVideoPlayerDimensions', () => {
     const isDesktopViewport = true
     const windowWidth = desktopWidthMock
 
-    const dimensions = getVideoPlayerDimensions(isDesktopViewport, windowWidth, RATIO169)
+    const dimensions = getVideoPlayerDimensions({
+      isDesktopViewport,
+      windowWidth,
+      ratio: RATIO169,
+      desktopMaxWidth: 520,
+    })
 
     expect(dimensions).toEqual({ playerHeight: 292.5, playerWidth: 520 })
   })

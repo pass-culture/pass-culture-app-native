@@ -3,14 +3,13 @@ import React, { FunctionComponent, ReactNode, useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryIdEnum, OfferResponseV2 } from 'api/gen'
+import { CategoryIdEnum, OfferArtist, OfferResponse } from 'api/gen'
+import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { ProposedBySection } from 'features/offer/components/OfferBody/ProposedBySection/ProposedBySection'
-import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { VideoSection } from 'features/offer/components/OfferContent/VideoSection/VideoSection'
 import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
@@ -25,16 +24,12 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import {
-  formatPrice,
-  getDisplayedPrice,
-  getIfPricesShouldBeFixed,
-} from 'libs/parsers/getDisplayedPrice'
+import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Subcategory } from 'libs/subcategories/types'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -43,21 +38,21 @@ import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
-  offer: OfferResponseV2
+  offer: OfferResponse
   subcategory: Subcategory
   children: ReactNode
-  chronicleVariantInfo: ChronicleVariantInfo
+  adviceVariantInfo: AdviceVariantInfo
   onVideoConsentPress: () => void
-  onShowOfferArtistsModal: () => void
+  onShowOfferArtistsModal: (artists: OfferArtist[]) => void
   likesCount?: number
-  chroniclesCount?: number | null
+  clubAdvicesCount?: number | null
+  proAdvicesCount?: number
   distance?: string | null
   headlineOffersCount?: number
-  chronicles?: ChronicleCardData[]
-  userId?: number
+  clubAdvices?: AdviceCardData[]
+  proAdvices?: AdviceCardData[]
   isVideoSectionEnabled?: boolean
   hasVideoCookiesConsent?: boolean
-  enableVideoABTesting?: boolean
   isMultiArtistsEnabled?: boolean
 }
 
@@ -66,12 +61,13 @@ export const OfferBody: FunctionComponent<Props> = ({
   subcategory,
   children,
   likesCount,
-  chroniclesCount,
+  clubAdvicesCount,
+  proAdvicesCount,
   distance,
   headlineOffersCount,
-  chronicleVariantInfo,
-  chronicles,
-  userId,
+  adviceVariantInfo,
+  clubAdvices,
+  proAdvices,
   isVideoSectionEnabled,
   hasVideoCookiesConsent,
   isMultiArtistsEnabled,
@@ -80,19 +76,19 @@ export const OfferBody: FunctionComponent<Props> = ({
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Offer'>>()
-  const segment = isVideoSectionEnabled ? 'A' : 'B'
 
   useEffect(() => {
     if (params.from === 'deeplink') {
-      triggerConsultOfferLog({ offerId: params.id, from: 'deeplink' }, segment)
+      triggerConsultOfferLog({ offerId: params.id, from: 'deeplink' })
     }
-  }, [isVideoSectionEnabled, params, segment])
+  }, [isVideoSectionEnabled, params])
 
-  const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
+  const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
+  const enableProReviewNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
   const extraData = offer.extraData ?? undefined
   const tags = getOfferTags(subcategory.appLabel, extraData)
@@ -104,16 +100,14 @@ export const OfferBody: FunctionComponent<Props> = ({
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isFixed: getIfPricesShouldBeFixed(offer.subcategoryId),
       isDuo: !!(offer.isDuo && user?.isBeneficiary),
     }),
     { fractionDigits: 2 }
   )
 
-  const hasAccessToArtistPage = isMultiArtistsEnabled
-    ? hasArtistPage
-    : hasArtistPage && artists.length === 1
-
+  const hasAccessToArtistPage =
+    enableArtistPage &&
+    (artists.length > 1 ? isMultiArtistsEnabled : artists.length === 1 && !!artists[0]?.id)
   const isCinemaOffer = subcategory.categoryId === CategoryIdEnum.CINEMA
 
   const { summaryInfoItems } = useOfferSummaryInfoList({
@@ -133,21 +127,24 @@ export const OfferBody: FunctionComponent<Props> = ({
   const shouldDisplayAboutSection =
     shouldDisplayAccessibilitySection || !!offer.description || hasMetadata
 
-  const handleArtistLinkPress = () => {
-    if (!artists[0]) return
+  const handleArtistLinkPress = (artists: OfferArtist[]) => {
+    if (artists.length === 0) return
 
     if (artists.length === 1) {
-      void analytics.logConsultArtist({
-        offerId: offer.id.toString(),
-        artistId: artists[0].id,
-        artistName: artists[0].name,
-        from: 'offer',
-      })
-      navigate('Artist', { id: artists[0].id })
+      const artist = artists[0]
+      if (artist && artist.id) {
+        void analytics.logConsultArtist({
+          offerId: offer.id.toString(),
+          artistId: artist.id,
+          artistName: artist.name,
+          from: 'offer',
+        })
+        navigate('Artist', { id: artist.id })
+      }
       return
     }
 
-    onShowOfferArtistsModal()
+    onShowOfferArtistsModal(artists)
   }
 
   const handleManageCookiesPress = () => {
@@ -169,8 +166,6 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const hasVenuePage = offer.venue.isPermanent
 
-  const artistsNames = artists.map((artist) => artist.name)
-
   return (
     <Container>
       <MarginContainer gap={6}>
@@ -181,7 +176,7 @@ export const OfferBody: FunctionComponent<Props> = ({
               <OfferTitle offerName={offer.name} />
               {artists.length > 0 ? (
                 <OfferArtists
-                  artistsNames={artistsNames}
+                  artists={artists}
                   isMultiArtistsEnabled={isMultiArtistsEnabled}
                   onPressArtistLink={hasAccessToArtistPage ? handleArtistLinkPress : undefined}
                 />
@@ -196,10 +191,13 @@ export const OfferBody: FunctionComponent<Props> = ({
 
         <OfferReactionSection
           likesCount={likesCount}
-          chroniclesCount={chroniclesCount}
+          clubAdvicesCount={clubAdvicesCount}
           headlineOffersCount={headlineOffersCount}
-          chronicleVariantInfo={chronicleVariantInfo}
-          chronicles={chronicles}
+          adviceVariantInfo={adviceVariantInfo}
+          clubAdvices={clubAdvices}
+          proAdvicesCount={proAdvicesCount}
+          proAdvices={proAdvices}
+          enableProReviewNewTag={enableProReviewNewTag}
         />
 
         <GroupWithSeparator
@@ -234,8 +232,6 @@ export const OfferBody: FunctionComponent<Props> = ({
           }
           title={offer.video?.title ?? offer.name}
           offerId={offer.id}
-          offerSubcategory={offer.subcategoryId}
-          userId={userId}
           duration={offer.video?.durationSeconds}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
           onManageCookiesPress={handleManageCookiesPress}
@@ -258,7 +254,6 @@ export const OfferBody: FunctionComponent<Props> = ({
         subcategory={subcategory}
         distance={distance}
         isOfferAtSameAddressAsVenue={isOfferAtSameAddressAsVenue}
-        segment={segment}
       />
     </Container>
   )

@@ -3,9 +3,8 @@ import styled from 'styled-components/native'
 
 import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
-import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
+import { Button } from 'ui/designSystem/Button/Button'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
-import { Spacer } from 'ui/theme'
 
 interface Props {
   offerId: number
@@ -28,12 +27,21 @@ export const AddToFavoritesButton: FunctionComponent<Props> = ({
   if (isFavorite) return null
 
   return (
-    <React.Fragment>
-      <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryPrimary wording="Mettre en favori" icon={StyledIcon} onPress={addToFavorite} />
-    </React.Fragment>
+    <Container>
+      <Button
+        wording="Mettre en favori"
+        icon={StyledIcon}
+        onPress={addToFavorite}
+        variant="tertiary"
+      />
+    </Container>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  width: '100%',
+  marginTop: theme.designSystem.size.spacing.l,
+}))
 
 const StyledIcon = styled(FavoriteFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,

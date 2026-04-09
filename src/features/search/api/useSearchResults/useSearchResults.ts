@@ -16,7 +16,7 @@ import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { algoliaAnalyticsActions } from 'libs/algolia/store/algoliaAnalyticsStore'
-import { AlgoliaVenue, FacetData } from 'libs/algolia/types'
+import { AlgoliaVenue } from 'libs/algolia/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location/location'
 import { QueryKeys } from 'libs/queryKeys'
@@ -25,14 +25,18 @@ import { Offer } from 'shared/offer/types'
 
 type SearchOfferResponse = {
   offers: Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
+  venueNotOpenToPublic: Pick<
+    SearchResponse<AlgoliaVenue>,
+    'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'
+  >
   venues: Pick<SearchResponse<AlgoliaVenue>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
-  facets: Pick<SearchResponse<Offer>, 'facets'>
   duplicatedOffers: Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
   offerArtists: Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
 }
 
 export type SearchOfferHits = {
   offers: Offer[]
+  venueNotOpenToPublic: AlgoliaVenue[]
   venues: AlgoliaVenue[]
   artists: Artist[]
   duplicatedOffers: Offer[]
@@ -64,8 +68,8 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
       const page = pageParam as number
       const {
         offersResponse,
+        venueNotOpenToPublic,
         venuesResponse,
-        facetsResponse,
         duplicatedOffersResponse,
         offerArtistsResponse,
       } = await fetchSearchResults({
@@ -85,8 +89,8 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
 
       return {
         offers: offersResponse,
+        venueNotOpenToPublic,
         venues: venuesResponse,
-        facets: facetsResponse,
         duplicatedOffers: duplicatedOffersResponse,
         offerArtists: offerArtistsResponse,
       }
@@ -114,6 +118,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
 
     return {
       offers: flatten(pages.map((page) => page.offers.hits.map(transformHits))),
+      venueNotOpenToPublic: flatten(pages[0]?.venueNotOpenToPublic.hits),
       venues,
       duplicatedOffers: flatten(pages.map((page) => page.duplicatedOffers.hits.map(transformHits))),
       artists: uniqBy(
@@ -128,7 +133,6 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const offersData = data?.pages[0]?.offers
   const { nbHits, userData } = offersData ?? { nbHits: 0, userData: [] }
   const venuesUserData = data?.pages?.[0]?.venues?.userData
-  const facets = data?.pages?.[0]?.facets.facets as FacetData
 
   const offerVenues: Venue[] = useMemo(() => {
     const venueMap = new Map()
@@ -154,7 +158,6 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     nbHits: nbHits === 0 ? hits.offers.length : nbHits || 0, // (PC-28287) there is an algolia bugs that return 0 nbHits but there are hits
     userData,
     venuesUserData,
-    facets,
     offerVenues,
     ...infiniteQuery,
   }

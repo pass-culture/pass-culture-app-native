@@ -7,15 +7,16 @@ import styled from 'styled-components/native'
 
 import { MINIMUM_DATE, UNDER_YOUNGEST_AGE } from 'features/auth/constants'
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
+import { SetContainer } from 'features/auth/pages/signup/SetContainer'
 import { PreValidationSignupNormalStepProps } from 'features/auth/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { NonEligible } from 'features/onboarding/enums'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -87,48 +88,51 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
       : 'Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.'
 
   return (
-    <Form.MaxWidth>
-      <Typo.Title3 {...getHeadingAttrs(2)}>{pageTitle}</Typo.Title3>
-      {isSSOSubscriptionFromLogin ? (
-        <StyledView>
-          <Typo.Body>
-            Ton compte Google “{params?.email ?? ''}” n’est pas lié à un compte existant. Pour
-            continuer, tu peux créer un compte.
-          </Typo.Body>
-        </StyledView>
-      ) : null}
-      <InnerContainer>
-        <BannerContainer>
-          <Banner label={bannerMessage} Icon={IdCard} />
-        </BannerContainer>
-        <Controller
-          control={control}
-          name="birthdate"
-          render={({ field: { value, onChange }, formState: { errors } }) => (
-            <DateInput
-              onChange={onChange}
-              date={value}
-              errorMessage={
-                formatDateToISOStringWithoutTime(value) ===
-                formatDateToISOStringWithoutTime(defaultDate)
-                  ? undefined
-                  : errors.birthdate?.message
-              }
-              maximumDate={maximumSpinnerDate}
-              minimumDate={MINIMUM_DATE}
-            />
-          )}
-        />
-        <ButtonContainer>
-          <ButtonPrimary
-            wording="Continuer"
-            accessibilityLabel={accessibilityLabelForNextStep}
-            disabled={!isValid}
-            onPress={handleSubmit(onGoToNextStep)}
+    <SetContainer>
+      <Form.MaxWidth>
+        <Typo.Title3 {...getHeadingAttrs(2)}>{pageTitle}</Typo.Title3>
+        {isSSOSubscriptionFromLogin ? (
+          <StyledView>
+            <Typo.Body>
+              Ton compte Google “{params?.email ?? ''}” n’est pas lié à un compte existant. Pour
+              continuer, tu peux créer un compte.
+            </Typo.Body>
+          </StyledView>
+        ) : null}
+        <InnerContainer>
+          <BannerContainer>
+            <Banner label={bannerMessage} Icon={IdCard} />
+          </BannerContainer>
+          <Controller
+            control={control}
+            name="birthdate"
+            render={({ field: { value, onChange }, formState: { errors } }) => (
+              <DateInput
+                onChange={onChange}
+                date={value}
+                errorMessage={
+                  formatDateToISOStringWithoutTime(value) ===
+                  formatDateToISOStringWithoutTime(defaultDate)
+                    ? undefined
+                    : errors.birthdate?.message
+                }
+                maximumDate={maximumSpinnerDate}
+                minimumDate={MINIMUM_DATE}
+              />
+            )}
           />
-        </ButtonContainer>
-      </InnerContainer>
-    </Form.MaxWidth>
+          <ButtonContainer>
+            <Button
+              wording="Continuer"
+              accessibilityLabel={accessibilityLabelForNextStep}
+              disabled={!isValid}
+              onPress={handleSubmit(onGoToNextStep)}
+              fullWidth
+            />
+          </ButtonContainer>
+        </InnerContainer>
+      </Form.MaxWidth>
+    </SetContainer>
   )
 }
 
@@ -144,6 +148,7 @@ const InnerContainer = styled.View(({ theme }) => ({
 
 const BannerContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xxxl,
+  width: '100%',
 }))
 
 const ButtonContainer = styled.View(({ theme }) => ({

@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
@@ -6,10 +7,10 @@ import { AlreadyChangedEmailDisclaimer } from 'features/profile/components/Discl
 import { ChangeEmailDisclaimer } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimer'
 import { useChangeEmailMutation } from 'features/profile/queries/useChangeEmailMutation'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
 
 export function ChangeEmailContent({
   hasCurrentEmailChange,
@@ -29,7 +30,7 @@ export function ChangeEmailContent({
 
   const isSubmitButtonDisabled = !user?.email || isLoading
   return (
-    <Container>
+    <View>
       {hasCurrentEmailChange ? (
         <DisclaimerContainer>
           <AlreadyChangedEmailDisclaimer />
@@ -50,7 +51,8 @@ export function ChangeEmailContent({
             <Banner label="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h." />
           </InfoBannerContainer>
           <ButtonContainer paddingBottom={bottom}>
-            <ButtonPrimary
+            <Button
+              fullWidth
               wording="Envoyer la demande"
               accessibilityLabel="Valider la demande de modification de mon e-mail"
               onPress={submitEmailChange}
@@ -59,12 +61,11 @@ export function ChangeEmailContent({
           </ButtonContainer>
         </Form.MaxWidth>
       </CenteredContainer>
-    </Container>
+    </View>
   )
 }
 
 const CenteredContainer = styled.View(({ theme }) => ({
-  flex: 1,
   alignItems: 'center',
   marginBottom: theme.designSystem.size.spacing.xl,
 }))
@@ -83,5 +84,3 @@ const InfoBannerContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
   marginBottom: theme.designSystem.size.spacing.xxxxl,
 }))
-
-const Container = styled.View(({ theme }) => ({ marginTop: theme.designSystem.size.spacing.xl }))

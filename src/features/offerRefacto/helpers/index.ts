@@ -1,5 +1,7 @@
 export * from './offerBatch'
 export * from './offerBooking'
+export * from './offerCTAContent'
+export * from './offerCTASelection'
 export * from './offerChronicle'
 export * from './offerComingSoon'
 export * from './offerCredit'

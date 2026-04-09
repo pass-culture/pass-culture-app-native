@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Markdown } from 'ui/components/Markdown/Markdown'
+import { Button } from 'ui/designSystem/Button/Button'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
 import { ArrowUp } from 'ui/svg/icons/ArrowUp'
 
@@ -45,12 +45,13 @@ export function CollapsibleText({ text, maxChars = 250, onAdditionalPress, child
 
       {isTruncated ? (
         <ButtonContainer>
-          <ButtonTertiaryBlack
+          <Button
             accessibilityHint={buttonAccessibleHint}
             wording={buttonText}
             onPress={onPress}
             icon={buttonIcon}
-            inline
+            variant="tertiary"
+            color="neutral"
           />
         </ButtonContainer>
       ) : null}

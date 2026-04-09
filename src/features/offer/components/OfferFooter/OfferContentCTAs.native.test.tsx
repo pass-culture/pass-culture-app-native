@@ -20,7 +20,6 @@ import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthC
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/jwt/jwt')
 
@@ -30,13 +29,6 @@ const useOfferCTASpy = jest.spyOn(useOfferCTAContextModule, 'useOfferCTA')
 
 const addReminderMutationSpy = jest.spyOn(api, 'postNativeV1MeReminders')
 const deleteReminderMutationSpy = jest.spyOn(api, 'deleteNativeV1MeRemindersreminderId')
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackBar,
-  }),
-}))
 
 jest.mock('features/auth/context/AuthContext')
 
@@ -195,7 +187,7 @@ describe('OfferContentCTAs', () => {
 
       expect(screen.queryByText('Mettre en favori')).not.toBeOnTheScreen()
 
-      expect(await screen.findByLabelText('Chargement en cours')).toBeOnTheScreen()
+      expect(await screen.findByTestId('button-loading')).toBeOnTheScreen()
     })
 
     it('should display snackbar when addReminder fails', async () => {
@@ -211,10 +203,8 @@ describe('OfferContentCTAs', () => {
 
       await user.press(await screen.findByText('Ajouter un rappel'))
 
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message: 'L’offre n’a pas pu être ajoutée à tes rappels',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(screen.getByText('L’offre n’a pas pu être ajoutée à tes rappels')).toBeOnTheScreen()
     })
 
     it('should show reminder authentication modal when not logged in', async () => {

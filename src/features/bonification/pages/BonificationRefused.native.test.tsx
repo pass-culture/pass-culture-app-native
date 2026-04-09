@@ -119,6 +119,19 @@ describe('BonificationRefused', () => {
       expect(remainingAttemptsText).toBeOnTheScreen()
     })
 
+    it('should adapt singular when remaining retries is 1', async () => {
+      useRoute.mockReturnValueOnce({
+        params: { bonificationRefusedType: BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD },
+      })
+      mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 1 })
+
+      render(<BonificationRefused />)
+
+      const remainingAttemptsText = screen.getByText('Attention, il te reste : 1 demande')
+
+      expect(remainingAttemptsText).toBeOnTheScreen()
+    })
+
     it('should not show number of remaining retries if over 5', async () => {
       useRoute.mockReturnValueOnce({
         params: { bonificationRefusedType: BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD },

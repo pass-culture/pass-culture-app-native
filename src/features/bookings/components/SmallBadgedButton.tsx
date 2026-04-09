@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react'
 
-import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { WithSmallBadge } from 'ui/components/WithSmallBadge'
+import { Button } from 'ui/designSystem/Button/Button'
 
-export const SmallBadgedButton = WithSmallBadge<ComponentProps<typeof RoundedButton>>(RoundedButton)
+export const SmallBadgedButton = WithSmallBadge<ComponentProps<typeof Button>>(Button)

@@ -8,6 +8,8 @@ import { PasswordInput } from './PasswordInput'
 const meta: Meta<typeof PasswordInput> = {
   title: 'ui/inputs/PasswordInput',
   component: PasswordInput,
+  // Disabled this rule because id and data-testid is not duplicate ID
+  parameters: { axe: { disabledRules: ['duplicate-id-aria'] } },
 }
 export default meta
 

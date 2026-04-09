@@ -1,7 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-// eslint-disable-next-line local-rules/no-theme-from-theme
 import { AVATAR_SMALL } from 'ui/theme/constants'
 
 export type AvatarProps = {

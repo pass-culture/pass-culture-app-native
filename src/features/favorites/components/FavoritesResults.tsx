@@ -14,7 +14,6 @@ import { DefaultTheme } from 'styled-components/native/dist/types'
 import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
-import { Sort } from 'features/favorites/components/Buttons/Sort'
 import { Favorite } from 'features/favorites/components/Favorite'
 import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
 import { NumberOfResults } from 'features/favorites/components/NumberOfResults'
@@ -35,6 +34,9 @@ import {
   FavoriteHitPlaceholder,
   NumberOfResultsPlaceholder,
 } from 'ui/components/placeholders/Placeholders'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
+import { Sort as SortIcon } from 'ui/svg/icons/Sort'
 import { Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
@@ -44,18 +46,21 @@ function applySortBy(list: Array<FavoriteResponse>, sortBy: FavoriteSortBy, posi
   if (!list) {
     // fix concurrency sentry/issues/288586
     return []
-  } else if (sortBy === 'ASCENDING_PRICE') {
-    list.sort(sortByAscendingPrice)
-    return list
-  } else if (sortBy === 'AROUND_ME') {
-    list.sort(sortByDistanceAroundMe(position))
-    return list
-  } else if (sortBy === 'RECENTLY_ADDED') {
-    list.sort(sortByIdDesc)
-    return list
-  } else {
-    return list
   }
+
+  const copiedList = [...list]
+
+  if (sortBy === 'ASCENDING_PRICE') {
+    return copiedList.sort(sortByAscendingPrice)
+  }
+  if (sortBy === 'AROUND_ME') {
+    return copiedList.sort(sortByDistanceAroundMe(position))
+  }
+  if (sortBy === 'RECENTLY_ADDED') {
+    return copiedList.sort(sortByIdDesc)
+  }
+
+  return copiedList
 }
 
 const ANIMATION_DURATION = 700
@@ -127,7 +132,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
       ) : null}
       {sortedFavorites && sortedFavorites.length > 0 ? (
         <SortContainer>
-          <Sort />
+          <SortButton />
           <Spacer.BottomScreen />
         </SortContainer>
       ) : null}
@@ -139,6 +144,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
           ref={flatListRef}
           testID="favoritesResultsFlatlist"
           data={sortedFavorites}
+          extraData={favoritesState.sortBy}
           contentContainerStyle={contentContainerStyle(theme)}
           keyExtractor={keyExtractor}
           ListHeaderComponent={ListHeaderComponent}
@@ -179,7 +185,7 @@ const FavoritesResultsPlaceHolder = () => {
   return (
     <React.Fragment>
       <SortContainer>
-        <Sort />
+        <SortButton />
         <Spacer.BottomScreen />
       </SortContainer>
       <Container testID="FavoritesResultsPlaceHolder">
@@ -194,3 +200,14 @@ const FavoritesResultsPlaceHolder = () => {
     </React.Fragment>
   )
 }
+
+const SortButton = () => (
+  <InternalTouchableLink
+    navigateTo={{ screen: 'FavoritesSorts' }}
+    accessibilityLabel="Trier"
+    as={Button}
+    wording="Trier"
+    variant="secondary"
+    icon={SortIcon}
+  />
+)

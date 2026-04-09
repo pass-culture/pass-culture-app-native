@@ -42,7 +42,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)({
 })
 
 const AchievementContainer = styled.View<{ isCompleted: boolean }>(({ theme, isCompleted }) => ({
-  paddingVertical: getSpacing(6),
+  paddingVertical: theme.designSystem.size.spacing.xl,
   paddingHorizontal: theme.designSystem.size.spacing.s,
   border: `1px solid ${theme.designSystem.color.border.default}`,
   borderRadius: theme.designSystem.size.borderRadius.m,

@@ -1,4 +1,4 @@
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
@@ -6,7 +6,7 @@ import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment/env'
 import { LocationMode } from 'libs/location/types'
 
-export const fetchHeadlineOffersCount = async (offer?: OfferResponseV2) => {
+export const fetchHeadlineOffersCount = async (offer?: OfferResponse) => {
   if (!offer) return
 
   const searchParameters = buildOfferSearchParameters(

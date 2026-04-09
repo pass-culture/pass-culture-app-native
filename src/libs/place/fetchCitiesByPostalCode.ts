@@ -1,3 +1,5 @@
+import { LogTypeEnum } from 'libs/monitoring/errors'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { CitiesResponse } from 'libs/place/types'
 
 const CITIES_API_URL = 'https://geo.api.gouv.fr/communes'
@@ -11,7 +13,11 @@ export const fetchCitiesByPostalCode = async (postalCode: string): Promise<Citie
     const response = await fetch(url)
     if (!response.ok) throw new Error('Failed to fetch cities')
     return await response.json()
-  } catch (_error) {
+  } catch (error) {
+    eventMonitoring.captureException('Failed to fetch cities', {
+      level: LogTypeEnum.INFO,
+      extra: { error },
+    })
     return []
   }
 }

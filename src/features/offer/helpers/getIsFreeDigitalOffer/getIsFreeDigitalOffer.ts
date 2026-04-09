@@ -1,5 +1,5 @@
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 
-export function getIsFreeDigitalOffer(offer?: Pick<OfferResponseV2, 'isDigital' | 'stocks'>) {
+export function getIsFreeDigitalOffer(offer?: Pick<OfferResponse, 'isDigital' | 'stocks'>) {
   return (offer?.isDigital && offer?.stocks[0]?.price === 0) ?? false
 }

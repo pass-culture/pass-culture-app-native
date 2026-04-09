@@ -1,11 +1,13 @@
-import colorAlpha from 'color-alpha'
-import React, { FunctionComponent, ReactNode } from 'react'
-import { Platform, StyleProp, View, ViewStyle } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import { useNavigation } from '@react-navigation/native'
+import React, { ReactNode, forwardRef } from 'react'
+import { StyleProp, View, ViewStyle } from 'react-native'
+import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { HEADER_HEIGHT } from 'shared/header/useGetHeaderHeight'
-import { BACK_BUTTON_MAX_SIZE, BackButton } from 'ui/components/headers/BackButton'
+import { useGetHeaderHeightDS } from 'shared/header/useGetHeaderHeight'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -19,43 +21,69 @@ interface Props {
   RightButton?: ReactNode
   children?: ReactNode
   style?: StyleProp<ViewStyle>
+  onLayout?: (event) => void
 }
 
 // Component naming: this component needs to be used with a PlaceHolder component
 // that has the height of the header as it is an absolute view
-export const PageHeaderWithoutPlaceholder: FunctionComponent<Props> = ({
-  title,
-  titleID,
-  onGoBack,
-  testID,
-  shouldDisplayBackButton = true,
-  RightButton = null,
-  children,
-  style,
-}) => {
-  const { designSystem } = useTheme()
-  return (
-    <Header testID={testID} accessibilityRole={AccessibilityRole.HEADER} style={style}>
-      <Spacer.TopScreen />
-      <Container>
-        <ButtonContainer positionInHeader="left" testID="back-button-container">
-          {shouldDisplayBackButton ? (
-            <BackButton onGoBack={onGoBack} color={designSystem.color.icon.default} />
+export const PageHeaderWithoutPlaceholder = forwardRef<View, Props>(
+  (
+    {
+      title,
+      titleID,
+      onGoBack,
+      testID,
+      shouldDisplayBackButton = true,
+      RightButton = null,
+      children,
+      style,
+      onLayout,
+    },
+    ref
+  ) => {
+    const { goBack } = useNavigation<UseNavigationType>()
+    const headerHeight = useGetHeaderHeightDS()
+
+    return (
+      <Header
+        ref={ref}
+        onLayout={onLayout}
+        testID={testID}
+        accessibilityRole={AccessibilityRole.HEADER}
+        style={style}>
+        <Spacer.TopScreen />
+        <Container headerHeight={headerHeight}>
+          <ButtonContainer positionInHeader="left" testID="back-button-container">
+            {shouldDisplayBackButton ? (
+              <Button
+                iconButton
+                variant="tertiary"
+                color="neutral"
+                icon={ArrowPrevious}
+                onPress={onGoBack ?? goBack}
+                accessibilityLabel="Revenir en arrière"
+              />
+            ) : null}
+          </ButtonContainer>
+
+          {title ? (
+            <TitleContainer>
+              <Title nativeID={titleID}>{title}</Title>
+            </TitleContainer>
           ) : null}
-        </ButtonContainer>
-        {title ? (
-          <TitleContainer>
-            <Title nativeID={titleID}>{title}</Title>
-          </TitleContainer>
-        ) : null}
-        <ButtonContainer positionInHeader="right" testID="close-button-container">
-          {RightButton}
-        </ButtonContainer>
-      </Container>
-      {children}
-    </Header>
-  )
-}
+
+          <ButtonContainer positionInHeader="right" testID="close-button-container">
+            {RightButton}
+          </ButtonContainer>
+        </Container>
+
+        {children}
+      </Header>
+    )
+  }
+)
+
+PageHeaderWithoutPlaceholder.displayName = 'PageHeaderWithoutPlaceholder'
 
 const Header = styled(View)(({ theme }) => ({
   zIndex: theme.zIndex.header,
@@ -63,11 +91,7 @@ const Header = styled(View)(({ theme }) => ({
   top: 0,
   left: 0,
   right: 0,
-  // There is an issue with the blur on Android: we chose to render white background for the header
-  backgroundColor:
-    Platform.OS === 'android'
-      ? theme.designSystem.color.background.default
-      : colorAlpha(theme.designSystem.color.background.default, 0),
+  backgroundColor: theme.designSystem.color.background.default,
   borderBottomColor: theme.designSystem.separator.color.subtle,
   borderBottomWidth: 1,
 }))
@@ -83,17 +107,20 @@ const Title = styled(Typo.Title4).attrs(() => ({
   textAlign: 'center',
 })
 
-const Container = styled.View(({ theme }) => ({
-  alignItems: 'center',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  minHeight: HEADER_HEIGHT,
-  width: '100%',
-  paddingHorizontal: theme.contentPage.marginHorizontal,
-}))
+const Container = styled.View<{ headerHeight: number }>(({ theme, headerHeight }) => {
+  return {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    minHeight: headerHeight,
+    width: '100%',
+    paddingHorizontal: theme.contentPage.marginHorizontal,
+  }
+})
 
 const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
   ({ positionInHeader = 'left', theme }) => {
+    const BACK_BUTTON_MAX_SIZE = theme.designSystem.size.spacing.xxxl
     const isLeftComponent = positionInHeader === 'left'
     const marginHorizontal = theme.designSystem.size.spacing.s
     return {

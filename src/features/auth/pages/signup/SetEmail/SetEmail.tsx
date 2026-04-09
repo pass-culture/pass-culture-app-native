@@ -5,7 +5,8 @@ import { useForm } from 'react-hook-form'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
-import { SSOButton } from 'features/auth/components/SSOButton/SSOButton'
+import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
+import { SSOButtonGoogle } from 'features/auth/components/SSOButton/SSOButtonGoogle'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
 import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
 import { StepperOrigin, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -14,11 +15,11 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { CheckboxController } from 'shared/forms/controllers/CheckboxController'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
-import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -34,10 +35,8 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
   onSSOEmailNotFoundError,
   onDefaultEmailSignup,
 }) => {
-  const { showErrorSnackBar } = useSnackBarContext()
-
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
-  const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
+  const enableAppleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO)
   const { designSystem } = useTheme()
   const { control, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {
@@ -70,16 +69,14 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         onSSOEmailNotFoundError()
         goToNextStep({ accountCreationToken: errorResponse.content.accountCreationToken })
       } else {
-        showErrorSnackBar({
-          message:
-            'Ton compte Google semble ne pas être valide. Pour pouvoir t’inscrire, confirme d’abord ton adresse e-mail Google.',
-          timeout: SNACK_BAR_TIME_OUT_LONG,
-        })
+        showErrorSnackBar(
+          'Ton compte Google semble ne pas être valide. Pour pouvoir t’inscrire, confirme d’abord ton adresse e-mail Google.'
+        )
       }
     },
-    [goToNextStep, onSSOEmailNotFoundError, showErrorSnackBar]
+    [goToNextStep, onSSOEmailNotFoundError]
   )
-
+  const disabled = watch('email').trim() === ''
   return (
     <Form.MaxWidth>
       <Typo.Title3 {...getHeadingAttrs(2)}>Crée-toi un compte</Typo.Title3>
@@ -98,21 +95,21 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
           name="marketingEmailSubscription"
         />
       </ControllersContainer>
-      <ButtonPrimary
+      <Button
+        fullWidth
         wording="Continuer"
         accessibilityLabel={accessibilityLabelForNextStep}
         onPress={handleSubmit(goToNextStepCallback)}
         isLoading={false}
-        disabled={watch('email').trim() === ''}
+        disabled={disabled}
       />
-      {enableGoogleSSO ? (
-        <SSOViewGap gap={4}>
-          <SeparatorWithText label="ou" />
-          <SSOButton type="signup" onSignInFailure={onSSOSignInFailure} />
-        </SSOViewGap>
-      ) : (
-        <EmptySpace />
-      )}
+
+      <SSOViewGap gap={4}>
+        <SeparatorWithText label="ou" />
+        <SSOButtonGoogle type="signup" onSignInFailure={onSSOSignInFailure} />
+        {enableAppleSSO ? <SSOButtonApple type="signup" /> : null}
+      </SSOViewGap>
+
       <AuthenticationButtonContainer>
         <AuthenticationButton
           type="login"
@@ -138,7 +135,4 @@ const AuthenticationButtonContainer = styled.View(({ theme }) => ({
 }))
 const EmailInputContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xxl,
-}))
-const EmptySpace = styled.View(({ theme }) => ({
-  height: theme.designSystem.size.spacing.xxl,
 }))

@@ -3,17 +3,17 @@ import styled from 'styled-components/native'
 
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
-import { getSpacing } from 'ui/theme'
 
 interface Props {
   items: ReactNode[]
-  Separator: ReactElement
+  Separator?: ReactElement
+  withPadding?: boolean
 }
 
-export const AccessibleUnorderedList: FC<Props> = ({ items, Separator }) => {
+export const AccessibleUnorderedList: FC<Props> = ({ items, Separator, withPadding = false }) => {
   const itemListLength = items.length
   return (
-    <StyledVerticalUl>
+    <StyledVerticalUl withPadding={withPadding}>
       {items.map((item, index) => {
         return (
           <Li key={index}>
@@ -26,7 +26,9 @@ export const AccessibleUnorderedList: FC<Props> = ({ items, Separator }) => {
   )
 }
 
-const StyledVerticalUl = styled(VerticalUl)({
-  width: '100%',
-  padding: getSpacing(1),
-})
+const StyledVerticalUl = styled(VerticalUl)<{ withPadding?: boolean }>(
+  ({ theme, withPadding }) => ({
+    width: '100%',
+    padding: withPadding ? theme.designSystem.size.spacing.xs : 0,
+  })
+)

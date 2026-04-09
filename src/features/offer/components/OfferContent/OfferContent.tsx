@@ -18,26 +18,25 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   offer,
   searchGroupList,
   subcategory,
-  chronicles,
-  chronicleVariantInfo,
+  clubAdvices,
+  proAdvices,
+  proAdvicesCount,
+  adviceVariantInfo,
   defaultReaction,
   headlineOffersCount,
   onReactionButtonPress,
-  onShowChroniclesWritersModal,
+  onShowClubAdviceWritersModal,
   userId,
   hasVideoCookiesConsent,
   onVideoConsentPress,
-  segment,
-  enableVideoABTesting,
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
+  HeaderComponent,
+  CTAsComponent,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
-  const shouldShowVideoSection = enableVideoABTesting
-    ? isVideoSectionEnabled && segment === 'A'
-    : isVideoSectionEnabled
 
   const handlePreviewPress = (defaultIndex = 0) => {
     if (!offer.images) return
@@ -53,23 +52,25 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         searchGroupList={searchGroupList}
         contentContainerStyle={CONTENT_CONTAINER_STYLE}
         onOfferPreviewPress={handlePreviewPress}
-        isVideoSectionEnabled={shouldShowVideoSection}
+        isVideoSectionEnabled={isVideoSectionEnabled}
         BodyWrapper={BodyWrapper}
-        chronicles={chronicles}
-        chronicleVariantInfo={chronicleVariantInfo}
+        clubAdvices={clubAdvices}
+        proAdvices={proAdvices}
+        adviceVariantInfo={adviceVariantInfo}
         headlineOffersCount={headlineOffersCount}
         subcategory={subcategory}
         defaultReaction={defaultReaction}
         onReactionButtonPress={onReactionButtonPress}
         onLayout={onLayout}
         userId={userId}
-        onShowChroniclesWritersModal={onShowChroniclesWritersModal}
+        onShowClubAdviceWritersModal={onShowClubAdviceWritersModal}
         hasVideoCookiesConsent={hasVideoCookiesConsent}
         onVideoConsentPress={onVideoConsentPress}
-        segment={segment}
-        enableVideoABTesting={enableVideoABTesting}
         onShowOfferArtistsModal={onShowOfferArtistsModal}
-        isMultiArtistsEnabled={isMultiArtistsEnabled}>
+        isMultiArtistsEnabled={isMultiArtistsEnabled}
+        HeaderComponent={HeaderComponent}
+        CTAsComponent={CTAsComponent}
+        proAdvicesCount={proAdvicesCount}>
         {comingSoonFooterHeight ? (
           <ComingSoonFooterOffset
             testID="coming-soon-footer-offset"

@@ -1,6 +1,8 @@
 import React, { FunctionComponent, useRef, useState, useMemo, useCallback } from 'react'
 import {
   LayoutChangeEvent,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
   Platform,
   ScrollView,
   ScrollViewProps,
@@ -54,11 +56,15 @@ type Props = {
   swipeDirection?: ModalSwipeDirection
   propagateSwipe?: boolean
   desktopConstraints?: CSSObject
+  onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void
 } & ModalIconProps &
   Pick<ViewProps, 'onLayout'>
 
-// Without this, the margin is recomputed with arbitrary values
-const styles = StyleSheet.create({ modal: { margin: 'auto' } })
+const isWeb = Platform.OS === 'web'
+// Keep modal sheet flush with screen edges on mobile.
+const styles = StyleSheet.create({
+  modal: { margin: 'auto', justifyContent: isWeb ? 'center' : 'flex-end' },
+})
 
 const MAX_HEIGHT = 650
 const DESKTOP_FULLSCREEN_RATIO = 0.75
@@ -96,6 +102,7 @@ export const AppModal: FunctionComponent<Props> = ({
   propagateSwipe,
   onLayout,
   desktopConstraints,
+  onScroll,
 }) => {
   const iconProps = {
     rightIconAccessibilityLabel,
@@ -108,7 +115,7 @@ export const AppModal: FunctionComponent<Props> = ({
 
   const { height: windowHeight, width: windowWidth } = useWindowDimensions()
   const { bottom, top, right, left } = useCustomSafeInsets()
-  const { isSmallScreen, modal, isDesktopViewport } = useTheme()
+  const { isSmallScreen, modal, isDesktopViewport, designSystem } = useTheme()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const [scrollViewContentHeight, setScrollViewContentHeight] = useState(300)
@@ -142,6 +149,7 @@ export const AppModal: FunctionComponent<Props> = ({
       setKeyboardHeight(0)
     },
   })
+  const SPACE_BETWEEN_HEADER_AND_CONTENT = designSystem.size.spacing.xl
 
   const scrollViewPaddingBottom = keyboardHeight || bottom
   const modalHeight = useMemo(() => {
@@ -154,7 +162,12 @@ export const AppModal: FunctionComponent<Props> = ({
       2 * MODAL_PADDING +
       SMALL_BUFFER_TO_AVOID_UNNECESSARY_SCROLL
     )
-  }, [scrollViewContentHeight, scrollViewPaddingBottom, headerHeight])
+  }, [
+    scrollViewContentHeight,
+    scrollViewPaddingBottom,
+    headerHeight,
+    SPACE_BETWEEN_HEADER_AND_CONTENT,
+  ])
 
   const updateHeaderHeight = useCallback(
     ({ nativeEvent }: LayoutChangeEvent): void => {
@@ -201,6 +214,7 @@ export const AppModal: FunctionComponent<Props> = ({
         ref={setFullscreenScrollViewRef}
         onContentSizeChange={onContentSizeChangeFullscreenModal}
         scrollEnabled={scrollEnabled}
+        onScroll={onScroll}
         keyboardShouldPersistTaps={keyboardShouldPersistTaps}>
         {children}
       </StyledScrollView>
@@ -214,6 +228,7 @@ export const AppModal: FunctionComponent<Props> = ({
     keyboardShouldPersistTaps,
     modalSpacing,
     onContentSizeChangeFullscreenModal,
+    onScroll,
     scrollEnabled,
     setFullscreenScrollViewRef,
   ])
@@ -278,6 +293,7 @@ export const AppModal: FunctionComponent<Props> = ({
                   ref={scrollViewRef}
                   scrollEnabled={scrollEnabled}
                   onContentSizeChange={updateScrollViewContentHeight}
+                  onScroll={onScroll}
                   testID="modalScrollView">
                   {children}
                 </ScrollView>
@@ -309,13 +325,13 @@ const contentContainerStyle = Platform.select({
     : {},
 })
 
-const SPACE_BETWEEN_HEADER_AND_CONTENT = getSpacing(5)
-const SpacerBetweenHeaderAndContent = styled.View({
-  height: SPACE_BETWEEN_HEADER_AND_CONTENT,
-})
+const SpacerBetweenHeaderAndContent = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xl,
+}))
 
 const ScrollViewContainer = styled.View.attrs<{ backdropColor?: string }>(({ theme }) => ({
   backdropColor: theme.designSystem.color.background.overlay,
+  marginBottom: theme.designSystem.size.spacing.xxxxl,
 }))<{ paddingBottom: number; modalSpacing?: ModalSpacing }>(({ paddingBottom, modalSpacing }) => ({
   width: '100%', // do not use `flex: 1` here if you want full width
   maxWidth: getSpacing(120),

@@ -17,6 +17,7 @@ import * as ongoingOrEndedBookingAPI from 'features/bookings/queries/useOngoingO
 import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { openUrl } from 'features/navigation/helpers/openUrl'
+import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -26,13 +27,14 @@ import * as useBookingByIdQueryAPI from 'queries/bookings/useBookingByIdQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent, waitFor } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
 
 const BookingDetails = withAsyncErrorBoundary(BookingDetailsDefault)
 
 jest.mock('features/auth/context/AuthContext')
+jest.mock('features/profile/helpers/isUserExBeneficiary')
+const mockedIsUserExBeneficiary = jest.mocked(isUserExBeneficiary)
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.useFakeTimers()
@@ -42,16 +44,6 @@ jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
-
-const mockShowInfoSnackBar = jest.fn()
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  ...jest.requireActual('ui/components/snackBar/SnackBarContext'),
-  useSnackBarContext: jest.fn(() => ({
-    showInfoSnackBar: mockShowInfoSnackBar,
-    showErrorSnackBar: mockShowErrorSnackBar,
-  })),
-}))
 
 let mockBookings: BookingsResponse = { ...bookingsSnap }
 
@@ -110,6 +102,7 @@ describe('BookingDetails', () => {
     })
 
     it('should render correctly', async () => {
+      mockedIsUserExBeneficiary.mockReturnValueOnce(true)
       const booking = structuredClone(ongoingBookings)
       booking.completedUrl = 'https://example.com'
       renderBookingDetails(booking)
@@ -323,7 +316,6 @@ describe('BookingDetails', () => {
         offerId: String(offerId),
         from: 'bookings',
         isHeadline: false,
-        displayVideo: true,
       })
     })
 
@@ -345,10 +337,12 @@ describe('BookingDetails', () => {
         from: 'bookingdetails',
       })
       expect(analytics.logConsultOffer).not.toHaveBeenCalledWith({ offerId, from: 'bookings' })
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message: `Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.`,
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(
+        screen.getByText(
+          `Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.`
+        )
+      ).toBeOnTheScreen()
     })
 
     describe('cancellation button', () => {
@@ -374,7 +368,7 @@ describe('BookingDetails', () => {
         renderBookingDetails(endedBookings)
         await screen.findByText('Ma réservation')
 
-        expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
+        expect(screen.queryByTestId('snackbar-error')).not.toBeOnTheScreen()
         expect(navigate).not.toHaveBeenCalled()
       })
 
@@ -403,10 +397,10 @@ describe('BookingDetails', () => {
 
           await screen.findByText('Ma réservation')
 
-          expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
-            message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
-            timeout: SNACK_BAR_TIME_OUT,
-          })
+          expect(
+            screen.getByText(`Ta réservation "${nameCanceledBooking}" a été annulée`)
+          ).toBeOnTheScreen()
+          expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
           expect(navigate).toHaveBeenCalledWith('Bookings')
         })
 
@@ -430,10 +424,10 @@ describe('BookingDetails', () => {
 
           await screen.findByText('Ma réservation')
 
-          expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
-            message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
-            timeout: SNACK_BAR_TIME_OUT,
-          })
+          expect(
+            screen.getByText(`Ta réservation "${nameCanceledBooking}" a été annulée`)
+          ).toBeOnTheScreen()
+          expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
           expect(navigate).toHaveBeenCalledWith('Bookings')
         })
 
@@ -461,10 +455,10 @@ describe('BookingDetails', () => {
 
           await screen.findByText('Ma réservation')
 
-          expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
-            message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
-            timeout: SNACK_BAR_TIME_OUT,
-          })
+          expect(
+            screen.getByText(`Ta réservation "${nameCanceledBooking}" a été annulée`)
+          ).toBeOnTheScreen()
+          expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
           expect(navigate).toHaveBeenCalledWith('Bookings')
         })
       })
@@ -731,7 +725,6 @@ describe('BookingDetails', () => {
         offerId: String(offerId),
         from: 'bookings',
         isHeadline: false,
-        displayVideo: true,
       })
     })
 
@@ -753,10 +746,12 @@ describe('BookingDetails', () => {
         from: 'bookingdetails',
       })
       expect(analytics.logConsultOffer).not.toHaveBeenCalledWith({ offerId, from: 'bookings' })
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message: `Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.`,
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(
+        screen.getByText(
+          `Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.`
+        )
+      ).toBeOnTheScreen()
     })
 
     it('should render correctly when offer is not digital withdrawal type is no ticket', async () => {

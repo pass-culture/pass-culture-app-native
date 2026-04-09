@@ -4,8 +4,8 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { QFBonificationStatus } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
+import { BonificationRefusedType } from 'features/bonification/pages/BonificationRefused'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
@@ -21,16 +21,17 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { bonificationAmountFallbackValue } from 'shared/credits/defaultCreditByAge'
+import { useBonificationBonusAmount, usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
-import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
 import { Page } from 'ui/pages/Page'
 import { Clock } from 'ui/svg/icons/Clock'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
@@ -39,27 +40,28 @@ import { Lock } from 'ui/svg/icons/Lock'
 import { Offers } from 'ui/svg/icons/Offers'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ProfileTutorialAgeInformationCredit = () => {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
   const { navigate } = useNavigation<UseNavigationType>()
   const { user, isLoggedIn } = useAuthContext()
-  const { data: settings } = useSettingsContext()
   const { designSystem } = useTheme()
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
   const { onScroll, headerTransition } = useOpacityTransition()
   const headerHeight = useGetHeaderHeight()
   const headerTitle = 'Comment ça marche\u00a0?'
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const bonificationAmount = formatCurrencyFromCents(
-    settings?.bonification.bonusAmount || bonificationAmountFallbackValue,
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
+  const { data: bonificationBonusAmount } = useBonificationBonusAmount()
+  const formattedBonificationAmount = formatCurrencyFromCents(
+    bonificationBonusAmount,
     currency,
     euroToPacificFrancRate
   )
   const bonificationStatus: QFBonificationStatus | null | undefined = user?.qfBonificationStatus
+  const bonificationTooManyRetries = user?.remainingBonusAttempts === 0
   const wasBonificationReceived = bonificationStatus === QFBonificationStatus.granted
   const isEligibleToBonification = bonificationStatus !== QFBonificationStatus.not_eligible
   const { resetBannerVisibility } = useBonificationBannerVisibility()
@@ -98,13 +100,13 @@ export const ProfileTutorialAgeInformationCredit = () => {
           <CreditProgressBar
             progress={1}
             width="18%"
-            innerText={bonificationAmount}
+            innerText={formattedBonificationAmount}
             color={designSystem.color.background.brandSecondary}
           />
         </RowView>
-        <Spacer.Column numberOfSpaces={6} />
         <AccessibleUnorderedList
-          Separator={<Spacer.Column numberOfSpaces={4} />}
+          withPadding
+          Separator={<Separator />}
           items={[
             <BlockDescriptionItem
               key={1}
@@ -119,18 +121,29 @@ export const ProfileTutorialAgeInformationCredit = () => {
           ]}
         />
         {!isLoggedIn || !isEligibleToBonification || wasBonificationReceived ? null : (
-          <ButtonTertiaryPrimary
-            icon={
-              bonificationStatus === QFBonificationStatus.started ? ClockFilled : PlainArrowNext
-            }
-            wording={getWording(bonificationStatus)}
-            disabled={getDisabled(bonificationStatus)}
-            onPress={() => {
-              navigate(...getSubscriptionHookConfig('BonificationExplanations'))
-              resetBannerVisibility()
-            }}
-            justifyContent="flex-start"
-          />
+          <StyledButtonContainerFlexStart>
+            <Button
+              variant="tertiary"
+              color="neutral"
+              icon={
+                bonificationStatus === QFBonificationStatus.started ? ClockFilled : PlainArrowNext
+              }
+              wording={getWording(bonificationStatus)}
+              disabled={getDisabled(bonificationStatus)}
+              onPress={() => {
+                if (bonificationTooManyRetries) {
+                  navigate(
+                    ...getSubscriptionHookConfig('BonificationRefused', {
+                      bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES,
+                    })
+                  )
+                } else {
+                  navigate(...getSubscriptionHookConfig('BonificationExplanations'))
+                }
+                resetBannerVisibility()
+              }}
+            />
+          </StyledButtonContainerFlexStart>
         )}
       </React.Fragment>
     ),
@@ -145,24 +158,22 @@ export const ProfileTutorialAgeInformationCredit = () => {
     {
       creditStep: 17,
       children: (
-        <React.Fragment>
+        <ViewGap gap={4}>
           <CreditProgressBar progress={0.5} />
-          <Spacer.Column numberOfSpaces={4} />
           <BlockDescriptionItem
             icon={<SmallLock />}
             text="Tu as jusqu’à la veille de tes 18 ans pour confirmer ton identité et activer ton crédit."
           />
-        </React.Fragment>
+        </ViewGap>
       ),
     },
     {
       creditStep: 18,
       children: (
-        <React.Fragment>
+        <ViewGap gap={6}>
           <CreditProgressBar progress={1} />
-          <Spacer.Column numberOfSpaces={6} />
           <AccessibleUnorderedList
-            Separator={<Spacer.Column numberOfSpaces={4} />}
+            Separator={<Separator />}
             items={[
               <BlockDescriptionItem
                 key={1}
@@ -175,8 +186,9 @@ export const ProfileTutorialAgeInformationCredit = () => {
                 text="Une fois activé, ton crédit expirera la veille de ton 21ème anniversaire."
               />,
             ]}
+            withPadding
           />
-        </React.Fragment>
+        </ViewGap>
       ),
     },
     {
@@ -200,30 +212,51 @@ export const ProfileTutorialAgeInformationCredit = () => {
     <Page>
       <StyledScrollView onScroll={onScroll} scrollEventThrottle={16}>
         <Placeholder height={headerHeight} />
-        <Spacer.Column numberOfSpaces={7} />
-        <Typo.Title3 numberOfLines={3} {...getHeadingAttrs(1)}>
-          {headerTitle}
-        </Typo.Title3>
-        <Spacer.Column numberOfSpaces={6} />
+        <TextContainer>
+          <Typo.Title3 numberOfLines={3} {...getHeadingAttrs(1)}>
+            {headerTitle}
+          </Typo.Title3>
+        </TextContainer>
         <Typo.BodyS numberOfLines={3} {...getHeadingAttrs(2)}>
           De 17 à 18 ans, le pass Culture offre un crédit à dépenser dans l’application pour des
           activités culturelles.
         </Typo.BodyS>
-        <Spacer.Column numberOfSpaces={6} />
-        <CreditTimelineV3 age={17} stepperProps={stepperProps} testID="seventeen-timeline" />
-        <Spacer.Column numberOfSpaces={4} />
-        <Banner
-          label="Des questions sur ton crédit&nbsp;?"
-          description="Les récents ajustements du dispositif peuvent en être la raison."
-          links={[
-            {
-              wording: 'Plus d’infos dans notre FAQ',
-              externalNav: { url: env.FAQ_LINK_CREDIT_V3 },
-              onBeforeNavigate: () => analytics.logHasClickedTutorialFAQ(),
-            },
-          ]}
-        />
-        <Spacer.Column numberOfSpaces={12} />
+        <CreditTimelineContainer>
+          <CreditTimelineV3 age={17} stepperProps={stepperProps} testID="seventeen-timeline" />
+        </CreditTimelineContainer>
+        {enableBonification ? (
+          <Banner
+            label="Des questions sur ton crédit&nbsp;?"
+            description="N’hésite pas à consulter nos pages d’aide pour trouver les réponses à tes questions."
+            links={[
+              {
+                wording: 'Plus d’infos sur ton crédit',
+                externalNav: { url: env.FAQ_LINK_PASS_CULTURE },
+                onBeforeNavigate: () =>
+                  analytics.logHasClickedTutorialFAQ({ type: 'FAQ_LINK_PASS_CULTURE' }),
+              },
+              {
+                wording: 'Plus d’infos sur les bonus sous conditions',
+                externalNav: { url: env.FAQ_BONIFICATION_GENERIC },
+                onBeforeNavigate: () =>
+                  analytics.logHasClickedTutorialFAQ({ type: 'FAQ_BONIFICATION_GENERIC' }),
+              },
+            ]}
+          />
+        ) : (
+          <Banner
+            label="Des questions sur ton crédit&nbsp;?"
+            description="Les récents ajustements du dispositif peuvent en être la raison."
+            links={[
+              {
+                wording: 'Plus d’infos dans notre FAQ',
+                externalNav: { url: env.FAQ_LINK_CREDIT_V3 },
+                onBeforeNavigate: () =>
+                  analytics.logHasClickedTutorialFAQ({ type: 'FAQ_LINK_CREDIT_V3' }),
+              },
+            ]}
+          />
+        )}
       </StyledScrollView>
       <ContentHeader
         headerTitle={headerTitle}
@@ -233,13 +266,27 @@ export const ProfileTutorialAgeInformationCredit = () => {
     </Page>
   )
 }
+const TextContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
+
+const CreditTimelineContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
+
+const Separator = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.l,
+}))
 
 const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
-    paddingHorizontal: getSpacing(6),
+    paddingHorizontal: theme.designSystem.size.spacing.xl,
     maxWidth: theme.contentPage.maxWidth,
     width: '100%',
     alignSelf: 'center',
+    marginBottom: theme.designSystem.size.spacing.xxxxl,
   },
 }))``
 
@@ -263,11 +310,16 @@ const GreyOffers = styled(Offers).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.default,
 }))``
 
-const RowView = styled.View({
+const RowView = styled.View(({ theme }) => ({
   flexDirection: 'row',
-})
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const StyledPlainMore = styled(PlainMore).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.smaller,
 }))``
+
+const StyledButtonContainerFlexStart = styled(ButtonContainerFlexStart)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.m,
+}))

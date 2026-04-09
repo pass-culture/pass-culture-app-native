@@ -1,7 +1,7 @@
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
 import { Animated } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { CategoryThematicHeader } from 'features/home/types'
@@ -9,6 +9,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { HomeGradient } from 'ui/svg/HomeGradient'
 import { getSpacing, Typo } from 'ui/theme'
 import { gradientImagesMapping } from 'ui/theme/gradientImagesMapping'
+import { isBackgroundColorKey } from 'ui/theme/isBackgroundColorKey'
 
 export const MOBILE_HEADER_HEIGHT = 45
 
@@ -22,10 +23,19 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
   color,
   gradientTranslation,
 }) => {
+  const { designSystem } = useTheme()
+
+  const gradientRaw = gradientImagesMapping[color] ?? gradientImagesMapping.Gold
+  const gradientColors: string[] = gradientRaw.map((colorValue) =>
+    isBackgroundColorKey(colorValue, designSystem.color.background)
+      ? designSystem.color.background[colorValue]
+      : colorValue
+  )
+
   return (
     <Container>
       <HomeGradient
-        colors={gradientImagesMapping[color]}
+        colors={gradientColors}
         testID="HomeGradient"
         height={getSpacing(MOBILE_HEADER_HEIGHT)}
       />
