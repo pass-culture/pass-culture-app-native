@@ -68,7 +68,7 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
         advicesStatus={proAdvicesStatus}
         onPress={() => scrollToAnchor(AnchorNames.PRO_ADVICE_SECTION)}
       />
-      {enableProReviewNewTag ? (
+      {enableProReviewNewTag && proAdvicesStatus.total > 0 ? (
         <TagContainer>
           <Tag variant={TagVariant.NEW} label="Nouveau" />
         </TagContainer>
