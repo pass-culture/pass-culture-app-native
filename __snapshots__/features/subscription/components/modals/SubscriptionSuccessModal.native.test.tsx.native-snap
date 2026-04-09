@@ -120,6 +120,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -158,7 +159,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -171,12 +172,14 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -243,7 +246,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -272,10 +275,20 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                     "userSelect": "auto",
                   },
                   {
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
                   },
                 ],
                 {
@@ -286,13 +299,53 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
             testID="Fermer la modale"
           >
             <View
-              height={20}
-              testID="rightIcon"
-              width={20}
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
+                }
+              }
             >
-              <Text>
-                rightIcon-SVG-Mock
-              </Text>
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="8"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  testID="rightIcon"
+                  width={22}
+                >
+                  <Text>
+                    rightIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>
@@ -307,6 +360,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -576,7 +630,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                             "flexShrink": 0,
                           }
                         }
-                        nativeID="4"
+                        nativeID="9"
                         style={
                           [
                             {
@@ -751,6 +805,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -789,7 +844,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -802,12 +857,14 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -874,7 +931,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -903,10 +960,20 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                     "userSelect": "auto",
                   },
                   {
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
                   },
                 ],
                 {
@@ -917,13 +984,53 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
             testID="Fermer la modale"
           >
             <View
-              height={20}
-              testID="rightIcon"
-              width={20}
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
+                }
+              }
             >
-              <Text>
-                rightIcon-SVG-Mock
-              </Text>
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="0"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  testID="rightIcon"
+                  width={22}
+                >
+                  <Text>
+                    rightIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>
@@ -938,6 +1045,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -991,637 +1099,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                   }
                 >
                   Tu recevras toute l’actu ciné (sorties, avant-premières…) et les bons plans !
-                </Text>
-                <Text
-                  style={
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                      "marginBottom": 24,
-                      "marginTop": 16,
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  Tu pourras gérer tes alertes depuis ton profil.
-                </Text>
-                <View
-                  gap={4}
-                  style={
-                    {
-                      "gap": 16,
-                      "marginBottom": 16,
-                      "width": "100%",
-                    }
-                  }
-                >
-                  <View
-                    accessibilityLabel="Continuer sur l’app"
-                    accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": false,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "alignItems": "center",
-                            "alignSelf": "center",
-                            "backgroundColor": "#6123df",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "borderColor": "#6123df",
-                            "borderStyle": "solid",
-                            "borderTopLeftRadius": 8,
-                            "borderTopRightRadius": 8,
-                            "borderWidth": 1,
-                            "flexDirection": "row",
-                            "justifyContent": "center",
-                            "paddingBottom": 8,
-                            "paddingLeft": 12,
-                            "paddingRight": 12,
-                            "paddingTop": 8,
-                            "width": "100%",
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="Continuer sur l’app"
-                  >
-                    <View
-                      fullWidth={true}
-                      gap={8}
-                      hasIcon={false}
-                      isMultiline={false}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "columnGap": 8,
-                          "flexDirection": "row",
-                          "justifyContent": "center",
-                          "width": "100%",
-                        }
-                      }
-                    >
-                      <Text
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                            },
-                            {
-                              "color": "#ffffff",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "maxWidth": "100%",
-                              "minWidth": 0,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                      >
-                        Continuer sur l’app
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    accessibilityLabel="Voir mes préférences"
-                    accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": false,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "transparent",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "borderTopLeftRadius": 8,
-                            "borderTopRightRadius": 8,
-                            "borderWidth": 0,
-                            "flexDirection": "row",
-                            "justifyContent": "center",
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "width": "auto",
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="Voir mes préférences"
-                  >
-                    <View
-                      gap={8}
-                      hasIcon={true}
-                      isMultiline={false}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "columnGap": 8,
-                          "flexDirection": "row",
-                        }
-                      }
-                    >
-                      <View
-                        collapsable={false}
-                        jestAnimatedProps={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestAnimatedStyle={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestInlineStyle={
-                          {
-                            "flexShrink": 0,
-                          }
-                        }
-                        nativeID="0"
-                        style={
-                          [
-                            {
-                              "flexShrink": 0,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          fill="#161617"
-                          height={22}
-                          width={22}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                      <Text
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                            },
-                            {
-                              "color": "#161617",
-                              "flexBasis": undefined,
-                              "flexGrow": undefined,
-                              "flexShrink": 1,
-                              "maxWidth": "100%",
-                              "minWidth": 0,
-                              "textAlign": undefined,
-                            },
-                          ]
-                        }
-                      >
-                        Voir mes préférences
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-        </RCTScrollView>
-      </View>
-    </View>
-  </View>
-</Modal>
-`;
-
-exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = `
-<Modal
-  accessibilityLabelledBy="testUuidV4"
-  accessibilityModal={true}
-  animationType="none"
-  deviceHeight={1334}
-  deviceWidth={750}
-  hideModalContentWhileAnimating={false}
-  onBackdropPress={[MockFunction]}
-  onModalHide={[Function]}
-  onModalWillHide={[Function]}
-  onModalWillShow={[Function]}
-  onRequestClose={[Function]}
-  panResponderThreshold={4}
-  scrollHorizontal={false}
-  scrollOffset={0}
-  scrollOffsetMax={0}
-  scrollTo={null}
-  statusBarTranslucent={true}
-  supportedOrientations={
-    [
-      "portrait",
-      "landscape",
-    ]
-  }
-  swipeThreshold={100}
-  testID="modal"
-  transparent={true}
-  visible={true}
->
-  <View
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      [
-        [
-          {
-            "backgroundColor": "black",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
-          [
-            {
-              "backgroundColor": "black",
-              "height": 1334,
-              "width": 750,
-            },
-          ],
-        ],
-        {},
-        {
-          "opacity": 0,
-        },
-      ]
-    }
-  />
-  <View
-    accessibilityLabelledBy="testUuidV4"
-    accessibilityModal={true}
-    deviceHeight={1334}
-    deviceWidth={750}
-    hideModalContentWhileAnimating={false}
-    onBackdropPress={[MockFunction]}
-    onModalHide={[Function]}
-    onModalWillHide={[Function]}
-    onModalWillShow={[Function]}
-    panResponderThreshold={4}
-    pointerEvents="box-none"
-    scrollHorizontal={false}
-    scrollOffset={0}
-    scrollOffsetMax={0}
-    scrollTo={null}
-    statusBarTranslucent={true}
-    style={
-      [
-        [
-          {},
-          [
-            {
-              "margin": 37.5,
-              "transform": [
-                {
-                  "translateY": 0,
-                },
-              ],
-            },
-            {
-              "flex": 1,
-              "justifyContent": "center",
-            },
-            [
-              {
-                "alignItems": "center",
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": "auto",
-              },
-              {
-                "margin": "auto",
-              },
-            ],
-          ],
-        ],
-        {
-          "transform": [
-            {
-              "translateY": 1334,
-            },
-          ],
-        },
-        {},
-      ]
-    }
-    supportedOrientations={
-      [
-        "portrait",
-        "landscape",
-      ]
-    }
-    swipeThreshold={100}
-  >
-    <View
-      height={432}
-      isLandscape={false}
-      leftNootch={16}
-      rightNootch={16}
-      style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "#ffffff",
-          "borderBottomLeftRadius": 0,
-          "borderBottomRightRadius": 0,
-          "borderTopLeftRadius": 16,
-          "borderTopRightRadius": 16,
-          "flexDirection": "column",
-          "height": 432,
-          "justifyContent": "center",
-          "maxHeight": 650,
-          "maxWidth": 960,
-          "paddingBottom": 32,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 24,
-          "width": "100%",
-        }
-      }
-      testID="modalContainer"
-    >
-      <View
-        onLayout={[Function]}
-        style={
-          {
-            "display": "flex",
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "width": "100%",
-          }
-        }
-        testID="modalHeader"
-      >
-        <View
-          justifyContent="left"
-          style={
-            {
-              "alignItems": "flex-start",
-              "flexDirection": "row",
-              "height": 28,
-              "justifyContent": "flex-start",
-              "width": 28,
-            }
-          }
-        />
-        <View
-          style={
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "center",
-              "paddingHorizontal": 12,
-              "zIndex": 1,
-            }
-          }
-        >
-          <Text
-            accessibilityRole="header"
-            nativeID="testUuidV4"
-            numberOfLines={2}
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              }
-            }
-            testID="modalHeaderTitle"
-          >
-            Tu suis le thème "Lecture"
-          </Text>
-        </View>
-        <View
-          justifyContent="right"
-          style={
-            {
-              "alignItems": "flex-start",
-              "flexDirection": "row",
-              "height": 28,
-              "justifyContent": "flex-end",
-              "width": 28,
-            }
-          }
-        >
-          <View
-            accessibilityLabel="Fermer la modale"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Fermer la modale"
-          >
-            <View
-              height={20}
-              testID="rightIcon"
-              width={20}
-            >
-              <Text>
-                rightIcon-SVG-Mock
-              </Text>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          {
-            "height": 24,
-          }
-        }
-        testID="spacerBetweenHeaderAndContent"
-      />
-      <View
-        backdropColor="#23232329"
-        paddingBottom={8}
-        style={
-          {
-            "maxHeight": "100%",
-            "maxWidth": 480,
-            "paddingBottom": 8,
-            "width": "100%",
-          }
-        }
-      >
-        <RCTScrollView
-          contentContainerStyle={{}}
-          onContentSizeChange={[Function]}
-          scrollEnabled={true}
-          testID="modalScrollView"
-        >
-          <View>
-            <View
-              style={
-                {
-                  "alignItems": "center",
-                  "width": "100%",
-                }
-              }
-            >
-              <View
-                height={156}
-                width={200}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "marginTop": 24,
-                  }
-                }
-              >
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  Tu recevras nos recos lecture, nos jeux-concours et le meilleur de l’actu littéraire !
                 </Text>
                 <Text
                   style={
@@ -1893,7 +1370,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
 </Modal>
 `;
 
-exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = `
+exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = `
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
@@ -2013,6 +1490,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -2051,7 +1529,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -2064,12 +1542,14 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -2114,7 +1594,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
             }
             testID="modalHeaderTitle"
           >
-            Tu suis le thème "Musique"
+            Tu suis le thème "Lecture"
           </Text>
         </View>
         <View
@@ -2136,7 +1616,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2165,10 +1645,20 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                     "userSelect": "auto",
                   },
                   {
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
                   },
                 ],
                 {
@@ -2179,646 +1669,55 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
             testID="Fermer la modale"
           >
             <View
-              height={20}
-              testID="rightIcon"
-              width={20}
-            >
-              <Text>
-                rightIcon-SVG-Mock
-              </Text>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          {
-            "height": 24,
-          }
-        }
-        testID="spacerBetweenHeaderAndContent"
-      />
-      <View
-        backdropColor="#23232329"
-        paddingBottom={8}
-        style={
-          {
-            "maxHeight": "100%",
-            "maxWidth": 480,
-            "paddingBottom": 8,
-            "width": "100%",
-          }
-        }
-      >
-        <RCTScrollView
-          contentContainerStyle={{}}
-          onContentSizeChange={[Function]}
-          scrollEnabled={true}
-          testID="modalScrollView"
-        >
-          <View>
-            <View
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
               style={
                 {
                   "alignItems": "center",
-                  "width": "100%",
+                  "columnGap": 0,
+                  "flexDirection": "row",
                 }
               }
             >
               <View
-                height={156}
-                width={200}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                style={
+                collapsable={false}
+                jestAnimatedProps={
                   {
-                    "alignItems": "center",
-                    "marginTop": 24,
+                    "value": {},
                   }
                 }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="2"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
               >
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  Tu recevras les bons plans musique et l’actu des événements près de chez toi !
-                </Text>
-                <Text
-                  style={
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                      "marginBottom": 24,
-                      "marginTop": 16,
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  Tu pourras gérer tes alertes depuis ton profil.
-                </Text>
                 <View
-                  gap={4}
-                  style={
-                    {
-                      "gap": 16,
-                      "marginBottom": 16,
-                      "width": "100%",
-                    }
-                  }
+                  height={22}
+                  testID="rightIcon"
+                  width={22}
                 >
-                  <View
-                    accessibilityLabel="Continuer sur l’app"
-                    accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": false,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "alignItems": "center",
-                            "alignSelf": "center",
-                            "backgroundColor": "#6123df",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "borderColor": "#6123df",
-                            "borderStyle": "solid",
-                            "borderTopLeftRadius": 8,
-                            "borderTopRightRadius": 8,
-                            "borderWidth": 1,
-                            "flexDirection": "row",
-                            "justifyContent": "center",
-                            "paddingBottom": 8,
-                            "paddingLeft": 12,
-                            "paddingRight": 12,
-                            "paddingTop": 8,
-                            "width": "100%",
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="Continuer sur l’app"
-                  >
-                    <View
-                      fullWidth={true}
-                      gap={8}
-                      hasIcon={false}
-                      isMultiline={false}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "columnGap": 8,
-                          "flexDirection": "row",
-                          "justifyContent": "center",
-                          "width": "100%",
-                        }
-                      }
-                    >
-                      <Text
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                            },
-                            {
-                              "color": "#ffffff",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "maxWidth": "100%",
-                              "minWidth": 0,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                      >
-                        Continuer sur l’app
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    accessibilityLabel="Voir mes préférences"
-                    accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": false,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "transparent",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "borderTopLeftRadius": 8,
-                            "borderTopRightRadius": 8,
-                            "borderWidth": 0,
-                            "flexDirection": "row",
-                            "justifyContent": "center",
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "width": "auto",
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="Voir mes préférences"
-                  >
-                    <View
-                      gap={8}
-                      hasIcon={true}
-                      isMultiline={false}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "columnGap": 8,
-                          "flexDirection": "row",
-                        }
-                      }
-                    >
-                      <View
-                        collapsable={false}
-                        jestAnimatedProps={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestAnimatedStyle={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestInlineStyle={
-                          {
-                            "flexShrink": 0,
-                          }
-                        }
-                        nativeID="2"
-                        style={
-                          [
-                            {
-                              "flexShrink": 0,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          fill="#161617"
-                          height={22}
-                          width={22}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                      <Text
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                            },
-                            {
-                              "color": "#161617",
-                              "flexBasis": undefined,
-                              "flexGrow": undefined,
-                              "flexShrink": 1,
-                              "maxWidth": "100%",
-                              "minWidth": 0,
-                              "textAlign": undefined,
-                            },
-                          ]
-                        }
-                      >
-                        Voir mes préférences
-                      </Text>
-                    </View>
-                  </View>
+                  <Text>
+                    rightIcon-SVG-Mock
+                  </Text>
                 </View>
               </View>
             </View>
           </View>
-        </RCTScrollView>
-      </View>
-    </View>
-  </View>
-</Modal>
-`;
-
-exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`] = `
-<Modal
-  accessibilityLabelledBy="testUuidV4"
-  accessibilityModal={true}
-  animationType="none"
-  deviceHeight={1334}
-  deviceWidth={750}
-  hideModalContentWhileAnimating={false}
-  onBackdropPress={[MockFunction]}
-  onModalHide={[Function]}
-  onModalWillHide={[Function]}
-  onModalWillShow={[Function]}
-  onRequestClose={[Function]}
-  panResponderThreshold={4}
-  scrollHorizontal={false}
-  scrollOffset={0}
-  scrollOffsetMax={0}
-  scrollTo={null}
-  statusBarTranslucent={true}
-  supportedOrientations={
-    [
-      "portrait",
-      "landscape",
-    ]
-  }
-  swipeThreshold={100}
-  testID="modal"
-  transparent={true}
-  visible={true}
->
-  <View
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      [
-        [
-          {
-            "backgroundColor": "black",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
-          [
-            {
-              "backgroundColor": "black",
-              "height": 1334,
-              "width": 750,
-            },
-          ],
-        ],
-        {},
-        {
-          "opacity": 0,
-        },
-      ]
-    }
-  />
-  <View
-    accessibilityLabelledBy="testUuidV4"
-    accessibilityModal={true}
-    deviceHeight={1334}
-    deviceWidth={750}
-    hideModalContentWhileAnimating={false}
-    onBackdropPress={[MockFunction]}
-    onModalHide={[Function]}
-    onModalWillHide={[Function]}
-    onModalWillShow={[Function]}
-    panResponderThreshold={4}
-    pointerEvents="box-none"
-    scrollHorizontal={false}
-    scrollOffset={0}
-    scrollOffsetMax={0}
-    scrollTo={null}
-    statusBarTranslucent={true}
-    style={
-      [
-        [
-          {},
-          [
-            {
-              "margin": 37.5,
-              "transform": [
-                {
-                  "translateY": 0,
-                },
-              ],
-            },
-            {
-              "flex": 1,
-              "justifyContent": "center",
-            },
-            [
-              {
-                "alignItems": "center",
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": "auto",
-              },
-              {
-                "margin": "auto",
-              },
-            ],
-          ],
-        ],
-        {
-          "transform": [
-            {
-              "translateY": 1334,
-            },
-          ],
-        },
-        {},
-      ]
-    }
-    supportedOrientations={
-      [
-        "portrait",
-        "landscape",
-      ]
-    }
-    swipeThreshold={100}
-  >
-    <View
-      height={432}
-      isLandscape={false}
-      leftNootch={16}
-      rightNootch={16}
-      style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "#ffffff",
-          "borderBottomLeftRadius": 0,
-          "borderBottomRightRadius": 0,
-          "borderTopLeftRadius": 16,
-          "borderTopRightRadius": 16,
-          "flexDirection": "column",
-          "height": 432,
-          "justifyContent": "center",
-          "maxHeight": 650,
-          "maxWidth": 960,
-          "paddingBottom": 32,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 24,
-          "width": "100%",
-        }
-      }
-      testID="modalContainer"
-    >
-      <View
-        onLayout={[Function]}
-        style={
-          {
-            "display": "flex",
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "width": "100%",
-          }
-        }
-        testID="modalHeader"
-      >
-        <View
-          justifyContent="left"
-          style={
-            {
-              "alignItems": "flex-start",
-              "flexDirection": "row",
-              "height": 28,
-              "justifyContent": "flex-start",
-              "width": 28,
-            }
-          }
-        />
-        <View
-          style={
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "center",
-              "paddingHorizontal": 12,
-              "zIndex": 1,
-            }
-          }
-        >
-          <Text
-            accessibilityRole="header"
-            nativeID="testUuidV4"
-            numberOfLines={2}
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              }
-            }
-            testID="modalHeaderTitle"
-          >
-            Tu suis le thème "Spectacles"
-          </Text>
-        </View>
-        <View
-          justifyContent="right"
-          style={
-            {
-              "alignItems": "flex-start",
-              "flexDirection": "row",
-              "height": 28,
-              "justifyContent": "flex-end",
-              "width": 28,
-            }
-          }
-        >
-          <View
-            accessibilityLabel="Fermer la modale"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Fermer la modale"
-          >
-            <View
-              height={20}
-              testID="rightIcon"
-              width={20}
-            >
-              <Text>
-                rightIcon-SVG-Mock
-              </Text>
-            </View>
-          </View>
         </View>
       </View>
       <View
@@ -2831,6 +1730,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -2883,7 +1783,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                     }
                   }
                 >
-                  Stand-up, théâtre, comédies musicales... tu recevras toute l’actu des événements près de chez toi !
+                  Tu recevras nos recos lecture, nos jeux-concours et le meilleur de l’actu littéraire !
                 </Text>
                 <Text
                   style={
@@ -3155,6 +2055,1376 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
 </Modal>
 `;
 
+exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = `
+<Modal
+  accessibilityLabelledBy="testUuidV4"
+  accessibilityModal={true}
+  animationType="none"
+  deviceHeight={1334}
+  deviceWidth={750}
+  hideModalContentWhileAnimating={false}
+  onBackdropPress={[MockFunction]}
+  onModalHide={[Function]}
+  onModalWillHide={[Function]}
+  onModalWillShow={[Function]}
+  onRequestClose={[Function]}
+  panResponderThreshold={4}
+  scrollHorizontal={false}
+  scrollOffset={0}
+  scrollOffsetMax={0}
+  scrollTo={null}
+  statusBarTranslucent={true}
+  supportedOrientations={
+    [
+      "portrait",
+      "landscape",
+    ]
+  }
+  swipeThreshold={100}
+  testID="modal"
+  transparent={true}
+  visible={true}
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      [
+        [
+          {
+            "backgroundColor": "black",
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
+        ],
+        {},
+        {
+          "opacity": 0,
+        },
+      ]
+    }
+  />
+  <View
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
+    deviceHeight={1334}
+    deviceWidth={750}
+    hideModalContentWhileAnimating={false}
+    onBackdropPress={[MockFunction]}
+    onModalHide={[Function]}
+    onModalWillHide={[Function]}
+    onModalWillShow={[Function]}
+    panResponderThreshold={4}
+    pointerEvents="box-none"
+    scrollHorizontal={false}
+    scrollOffset={0}
+    scrollOffsetMax={0}
+    scrollTo={null}
+    statusBarTranslucent={true}
+    style={
+      [
+        [
+          {},
+          [
+            {
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
+            },
+            {
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "auto",
+              },
+              {
+                "justifyContent": "flex-end",
+                "margin": "auto",
+              },
+            ],
+          ],
+        ],
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
+      ]
+    }
+    supportedOrientations={
+      [
+        "portrait",
+        "landscape",
+      ]
+    }
+    swipeThreshold={100}
+  >
+    <View
+      height={432}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
+          "flexDirection": "column",
+          "height": 432,
+          "justifyContent": "flex-start",
+          "maxHeight": 650,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": "100%",
+        }
+      }
+      testID="modalContainer"
+    >
+      <View
+        marginTop={0}
+        onLayout={[Function]}
+        style={
+          {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "marginTop": 0,
+            "width": "100%",
+          }
+        }
+        testID="modalHeader"
+      >
+        <View
+          justifyContent="left"
+          style={
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
+            }
+          }
+        />
+        <View
+          style={
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            }
+          }
+        >
+          <Text
+            accessibilityRole="header"
+            nativeID="testUuidV4"
+            numberOfLines={2}
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              }
+            }
+            testID="modalHeaderTitle"
+          >
+            Tu suis le thème "Musique"
+          </Text>
+        </View>
+        <View
+          justifyContent="right"
+          style={
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            }
+          }
+        >
+          <View
+            accessibilityLabel="Fermer la modale"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Fermer la modale"
+          >
+            <View
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="4"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  testID="rightIcon"
+                  width={22}
+                >
+                  <Text>
+                    rightIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "height": 24,
+          }
+        }
+        testID="spacerBetweenHeaderAndContent"
+      />
+      <View
+        backdropColor="#23232329"
+        marginBottom={48}
+        paddingBottom={8}
+        style={
+          {
+            "maxHeight": "100%",
+            "maxWidth": 480,
+            "paddingBottom": 8,
+            "width": "100%",
+          }
+        }
+      >
+        <RCTScrollView
+          contentContainerStyle={{}}
+          onContentSizeChange={[Function]}
+          scrollEnabled={true}
+          testID="modalScrollView"
+        >
+          <View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "width": "100%",
+                }
+              }
+            >
+              <View
+                height={156}
+                width={200}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "marginTop": 24,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Tu recevras les bons plans musique et l’actu des événements près de chez toi !
+                </Text>
+                <Text
+                  style={
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginBottom": 24,
+                      "marginTop": 16,
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Tu pourras gérer tes alertes depuis ton profil.
+                </Text>
+                <View
+                  gap={4}
+                  style={
+                    {
+                      "gap": 16,
+                      "marginBottom": 16,
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Continuer sur l’app"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "alignItems": "center",
+                            "alignSelf": "center",
+                            "backgroundColor": "#6123df",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderColor": "#6123df",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "justifyContent": "center",
+                            "paddingBottom": 8,
+                            "paddingLeft": 12,
+                            "paddingRight": 12,
+                            "paddingTop": 8,
+                            "width": "100%",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Continuer sur l’app"
+                  >
+                    <View
+                      fullWidth={true}
+                      gap={8}
+                      hasIcon={false}
+                      isMultiline={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "width": "100%",
+                        }
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#ffffff",
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                      >
+                        Continuer sur l’app
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityLabel="Voir mes préférences"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 0,
+                            "flexDirection": "row",
+                            "justifyContent": "center",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "width": "auto",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Voir mes préférences"
+                  >
+                    <View
+                      gap={8}
+                      hasIcon={true}
+                      isMultiline={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                        }
+                      }
+                    >
+                      <View
+                        collapsable={false}
+                        jestAnimatedProps={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestAnimatedStyle={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestInlineStyle={
+                          {
+                            "flexShrink": 0,
+                          }
+                        }
+                        nativeID="5"
+                        style={
+                          [
+                            {
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          fill="#161617"
+                          height={22}
+                          width={22}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#161617",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
+                        }
+                      >
+                        Voir mes préférences
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </RCTScrollView>
+      </View>
+    </View>
+  </View>
+</Modal>
+`;
+
+exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`] = `
+<Modal
+  accessibilityLabelledBy="testUuidV4"
+  accessibilityModal={true}
+  animationType="none"
+  deviceHeight={1334}
+  deviceWidth={750}
+  hideModalContentWhileAnimating={false}
+  onBackdropPress={[MockFunction]}
+  onModalHide={[Function]}
+  onModalWillHide={[Function]}
+  onModalWillShow={[Function]}
+  onRequestClose={[Function]}
+  panResponderThreshold={4}
+  scrollHorizontal={false}
+  scrollOffset={0}
+  scrollOffsetMax={0}
+  scrollTo={null}
+  statusBarTranslucent={true}
+  supportedOrientations={
+    [
+      "portrait",
+      "landscape",
+    ]
+  }
+  swipeThreshold={100}
+  testID="modal"
+  transparent={true}
+  visible={true}
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      [
+        [
+          {
+            "backgroundColor": "black",
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
+        ],
+        {},
+        {
+          "opacity": 0,
+        },
+      ]
+    }
+  />
+  <View
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
+    deviceHeight={1334}
+    deviceWidth={750}
+    hideModalContentWhileAnimating={false}
+    onBackdropPress={[MockFunction]}
+    onModalHide={[Function]}
+    onModalWillHide={[Function]}
+    onModalWillShow={[Function]}
+    panResponderThreshold={4}
+    pointerEvents="box-none"
+    scrollHorizontal={false}
+    scrollOffset={0}
+    scrollOffsetMax={0}
+    scrollTo={null}
+    statusBarTranslucent={true}
+    style={
+      [
+        [
+          {},
+          [
+            {
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
+            },
+            {
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "auto",
+              },
+              {
+                "justifyContent": "flex-end",
+                "margin": "auto",
+              },
+            ],
+          ],
+        ],
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
+      ]
+    }
+    supportedOrientations={
+      [
+        "portrait",
+        "landscape",
+      ]
+    }
+    swipeThreshold={100}
+  >
+    <View
+      height={432}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
+          "flexDirection": "column",
+          "height": 432,
+          "justifyContent": "flex-start",
+          "maxHeight": 650,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": "100%",
+        }
+      }
+      testID="modalContainer"
+    >
+      <View
+        marginTop={0}
+        onLayout={[Function]}
+        style={
+          {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "marginTop": 0,
+            "width": "100%",
+          }
+        }
+        testID="modalHeader"
+      >
+        <View
+          justifyContent="left"
+          style={
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
+            }
+          }
+        />
+        <View
+          style={
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            }
+          }
+        >
+          <Text
+            accessibilityRole="header"
+            nativeID="testUuidV4"
+            numberOfLines={2}
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              }
+            }
+            testID="modalHeaderTitle"
+          >
+            Tu suis le thème "Spectacles"
+          </Text>
+        </View>
+        <View
+          justifyContent="right"
+          style={
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            }
+          }
+        >
+          <View
+            accessibilityLabel="Fermer la modale"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Fermer la modale"
+          >
+            <View
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="6"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  testID="rightIcon"
+                  width={22}
+                >
+                  <Text>
+                    rightIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "height": 24,
+          }
+        }
+        testID="spacerBetweenHeaderAndContent"
+      />
+      <View
+        backdropColor="#23232329"
+        marginBottom={48}
+        paddingBottom={8}
+        style={
+          {
+            "maxHeight": "100%",
+            "maxWidth": 480,
+            "paddingBottom": 8,
+            "width": "100%",
+          }
+        }
+      >
+        <RCTScrollView
+          contentContainerStyle={{}}
+          onContentSizeChange={[Function]}
+          scrollEnabled={true}
+          testID="modalScrollView"
+        >
+          <View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "width": "100%",
+                }
+              }
+            >
+              <View
+                height={156}
+                width={200}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "marginTop": 24,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Stand-up, théâtre, comédies musicales... tu recevras toute l’actu des événements près de chez toi !
+                </Text>
+                <Text
+                  style={
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginBottom": 24,
+                      "marginTop": 16,
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Tu pourras gérer tes alertes depuis ton profil.
+                </Text>
+                <View
+                  gap={4}
+                  style={
+                    {
+                      "gap": 16,
+                      "marginBottom": 16,
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Continuer sur l’app"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "alignItems": "center",
+                            "alignSelf": "center",
+                            "backgroundColor": "#6123df",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderColor": "#6123df",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "justifyContent": "center",
+                            "paddingBottom": 8,
+                            "paddingLeft": 12,
+                            "paddingRight": 12,
+                            "paddingTop": 8,
+                            "width": "100%",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Continuer sur l’app"
+                  >
+                    <View
+                      fullWidth={true}
+                      gap={8}
+                      hasIcon={false}
+                      isMultiline={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "width": "100%",
+                        }
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#ffffff",
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                      >
+                        Continuer sur l’app
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityLabel="Voir mes préférences"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 0,
+                            "flexDirection": "row",
+                            "justifyContent": "center",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "width": "auto",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Voir mes préférences"
+                  >
+                    <View
+                      gap={8}
+                      hasIcon={true}
+                      isMultiline={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                        }
+                      }
+                    >
+                      <View
+                        collapsable={false}
+                        jestAnimatedProps={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestAnimatedStyle={
+                          {
+                            "value": {},
+                          }
+                        }
+                        jestInlineStyle={
+                          {
+                            "flexShrink": 0,
+                          }
+                        }
+                        nativeID="7"
+                        style={
+                          [
+                            {
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          fill="#161617"
+                          height={22}
+                          width={22}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 22,
+                            },
+                            {
+                              "color": "#161617",
+                              "flexBasis": undefined,
+                              "flexGrow": undefined,
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
+                              "textAlign": undefined,
+                            },
+                          ]
+                        }
+                      >
+                        Voir mes préférences
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </RCTScrollView>
+      </View>
+    </View>
+  </View>
+</Modal>
+`;
+
 exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = `
 <Modal
   accessibilityLabelledBy="testUuidV4"
@@ -3275,6 +3545,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -3313,7 +3584,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -3326,12 +3597,14 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -3398,7 +3671,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -3427,10 +3700,20 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                     "userSelect": "auto",
                   },
                   {
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
                   },
                 ],
                 {
@@ -3441,13 +3724,53 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
             testID="Fermer la modale"
           >
             <View
-              height={20}
-              testID="rightIcon"
-              width={20}
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
+                }
+              }
             >
-              <Text>
-                rightIcon-SVG-Mock
-              </Text>
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="10"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  testID="rightIcon"
+                  width={22}
+                >
+                  <Text>
+                    rightIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>
@@ -3462,6 +3785,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -3731,7 +4055,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                             "flexShrink": 0,
                           }
                         }
-                        nativeID="5"
+                        nativeID="11"
                         style={
                           [
                             {

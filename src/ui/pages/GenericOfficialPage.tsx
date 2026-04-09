@@ -23,15 +23,13 @@ export function GenericOfficialPage({
   flex = true,
   buttons,
 }: Readonly<Props>) {
-  const { isTouch } = useTheme()
+  const { isTouch, designSystem } = useTheme()
 
   const getButtonSpaces = () => {
     if (buttons) {
-      return buttons.length === 1
-        ? spacingMatrix.bottomWithOneButton
-        : spacingMatrix.bottomWithMoreThanOneButton
+      return buttons.length === 1 ? designSystem.size.spacing.l : designSystem.size.spacing.xxl
     }
-    return spacingMatrix.bottom
+    return designSystem.size.spacing.m
   }
 
   const pageContent = (
@@ -49,30 +47,20 @@ export function GenericOfficialPage({
         <EmptyContainer />
       </HeaderContainer>
       <Content>
-        {isTouch ? (
-          <React.Fragment>
-            <Spacer.Flex />
-            <Spacer.Column numberOfSpaces={spacingMatrix.top} />
-          </React.Fragment>
-        ) : null}
-        <Typo.Title2 {...getHeadingAttrs(1)}>{title}</Typo.Title2>
-        <Spacer.Column numberOfSpaces={spacingMatrix.afterTitle} />
+        {isTouch ? <TopTouch /> : null}
+        <TitleContainer>
+          <Typo.Title2 {...getHeadingAttrs(1)}>{title}</Typo.Title2>
+        </TitleContainer>
         {children}
-        {isTouch ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={getButtonSpaces()} />
-            <Spacer.Flex flex={0.5} />
-          </React.Fragment>
-        ) : null}
+        {isTouch ? <BottomTouch marginTop={getButtonSpaces()} /> : null}
       </Content>
       <BottomContent>
         {buttons ? (
           <BottomContainer>
             {buttons.map((button, index) => (
-              <React.Fragment key={index}>
-                {index === 0 ? null : <Spacer.Column numberOfSpaces={4} />}
+              <ButtonContainer key={(button as React.ReactElement).key} index={index}>
                 {button}
-              </React.Fragment>
+              </ButtonContainer>
             ))}
           </BottomContainer>
         ) : null}
@@ -92,16 +80,19 @@ export function GenericOfficialPage({
     </React.Fragment>
   )
 }
+const ButtonContainer = styled.View<{ index: number }>(({ theme, index }) => ({
+  marginTop: index === 0 ? 0 : theme.designSystem.size.spacing.l,
+}))
+const TopTouch = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxxl,
+}))
 
-const spacingMatrix = {
-  top: 10,
-  afterIcon: 5,
-  afterLottieAnimation: 5,
-  afterTitle: 5,
-  bottom: 10,
-  bottomWithOneButton: 15,
-  bottomWithMoreThanOneButton: 30,
-}
+const TitleContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
+const BottomTouch = styled.View<{ marginTop: number }>(({ marginTop }) => ({
+  marginTop,
+}))
 
 const Container = styled.View({
   flex: 1,
@@ -109,12 +100,14 @@ const Container = styled.View({
   overflowY: 'auto',
 })
 
-const Content = styled.View(({ theme }) => ({
+const Content = styled.ScrollView.attrs({
+  contentContainerStyle: { justifyContent: 'center' },
+})(({ theme }) => ({
   flexDirection: 'column',
   flex: 1,
   flexShrink: theme.isNative ? 1 : 0,
   flexBasis: 'auto',
-  justifyContent: 'center',
+
   paddingHorizontal: theme.designSystem.size.spacing.xl,
   width: '100%',
   maxWidth: getSpacing(100),
@@ -122,8 +115,6 @@ const Content = styled.View(({ theme }) => ({
 
 const BottomContent = styled.View(({ theme }) => ({
   flexDirection: 'column',
-  flex: 1,
-  flexBasis: 'auto',
   paddingHorizontal: theme.designSystem.size.spacing.xl,
   width: '100%',
   maxWidth: getSpacing(100),
@@ -164,11 +155,10 @@ const ColoredPassCultureLogo = styled(LogoPassCulture).attrs(({ theme }) => ({
 }))``
 
 const BottomContainer = styled.View(({ theme }) => ({
-  flex: 1,
   alignSelf: 'stretch',
   ...(theme.isTouch
     ? {
-        justifyContent: 'flex-end',
+        justifyContent: 'flex-start',
         marginBottom: theme.designSystem.size.spacing.l,
       }
     : {

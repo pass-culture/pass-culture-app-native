@@ -1,18 +1,15 @@
-import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
-import { Controller, useForm } from 'react-hook-form'
-import { Platform, TextStyle, View } from 'react-native'
+import { Platform, View } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { setFeedbackInAppSchema } from 'features/profile/pages/FeedbackInApp/setFeedbackInAppShema'
+import { buildZendeskUrlForDebug } from 'features/profile/helpers/buildZendeskUrl'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { copyToClipboard } from 'libs/copyToClipboard/copyToClipboard'
 import { env } from 'libs/environment/env'
-import { LargeTextInput } from 'ui/components/inputs/LargeTextInput/LargeTextInput'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { useZoomInPercent } from 'shared/accessibility/helpers/zoomHelpers'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
@@ -20,9 +17,8 @@ import { Button } from 'ui/designSystem/Button/Button'
 import { useVersion } from 'ui/hooks/useVersion'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
-import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Typo } from 'ui/theme'
-import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
+import { LINE_BREAK } from 'ui/theme/constants'
 
 const isWeb = Platform.OS === 'web'
 
@@ -32,36 +28,19 @@ export const DebugScreen = () => {
   const version = useVersion()
   const webCommitHash = isWeb ? `-${String(env.COMMIT_HASH)}` : ''
   const fullVersion = `${version}${webCommitHash}`
-  const zoomInPercent = deviceInfo?.screenZoomLevel
-    ? `${Math.round(deviceInfo.screenZoomLevel * 100)}%`
-    : undefined
 
-  type FormValue = {
-    feedback: string
-  }
-
-  const {
-    control,
-    formState: { isValid },
-    watch,
-  } = useForm<FormValue>({
-    defaultValues: { feedback: '' },
-    resolver: yupResolver(setFeedbackInAppSchema),
-    mode: 'onChange',
-  })
+  const deviceZoom = useZoomInPercent()
 
   const undefinedValue = 'Non renseigné'
-  const description = watch().feedback.toString()
   const debugData = [
     { label: 'App version', value: fullVersion },
     { label: 'Device ID', value: deviceInfo?.deviceId ?? undefinedValue },
     { label: 'Device model', value: deviceInfo?.source ?? undefinedValue },
     { label: 'Device OS', value: deviceInfo?.os ?? undefinedValue },
     { label: 'Device resolution', value: deviceInfo?.resolution ?? undefinedValue },
-    { label: 'Device zoom', value: zoomInPercent ?? undefinedValue },
+    { label: 'Device zoom', value: deviceZoom ? `${deviceZoom}%` : undefinedValue },
     { label: 'User ID', value: user?.id ?? undefinedValue },
     { label: 'Device font scale', value: deviceInfo?.fontScale ?? undefinedValue },
-    { label: 'Description', value: description ?? undefinedValue },
     { label: 'User CreditType', value: user?.creditType ?? undefinedValue },
     { label: 'User StatusType', value: user?.statusType ?? undefinedValue },
     { label: 'User EligibilityType', value: user?.eligibilityType ?? undefinedValue },
@@ -73,6 +52,8 @@ export const DebugScreen = () => {
     .map((item) => `${item.label}\u00a0: ${String(item.value)}`)
     .join(LINE_BREAK)
 
+  const url = buildZendeskUrlForDebug({ user, deviceInfo, version })
+
   const copy = () =>
     copyToClipboard({
       textToCopy: debugText,
@@ -80,13 +61,6 @@ export const DebugScreen = () => {
       onCopy: () => analytics.logClickCopyDebugInfo(user?.id),
     })
 
-  const subject = encodeURI(`Informations de débuggage\u00a0: ${String(user?.id)}`)
-  const body = encodeURI(
-    `Bonjour, voici les informations de débuggage\u00a0:${DOUBLE_LINE_BREAK}${debugText}`
-  )
-  const mailtoUrl = `mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`
-
-  const labelBoldStyle: TextStyle = { fontWeight: 'bold' }
   const debugDataToShow = sortedDebugData.filter((data) => data.label !== 'Description')
   return (
     <PageWithHeader
@@ -117,43 +91,11 @@ export const DebugScreen = () => {
             externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
             links={[
               {
-                externalNav: { url: env.SUPPORT_ACCOUNT_ISSUES_FORM },
+                externalNav: { url },
                 wording: 'Contacter le support',
                 onBeforeNavigate: () => analytics.logHasClickedContactForm('DebugScreen'),
               },
             ]}
-          />
-          <Controller
-            control={control}
-            name="feedback"
-            render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => {
-              return (
-                <LargeTextInput
-                  label="Description du problème"
-                  labelStyle={labelBoldStyle}
-                  value={value}
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  errorMessage={error?.message}
-                  testID="problem-description-input"
-                  requiredIndicator="explicit"
-                />
-              )
-            }}
-          />
-        </ViewGap>
-      }
-      fixedBottomChildren={
-        <ViewGap gap={4}>
-          <ExternalTouchableLink
-            fullWidth
-            variant="secondary"
-            disabled={!isValid}
-            as={Button}
-            wording="Envoyer mon bug au support"
-            externalNav={{ url: mailtoUrl }}
-            icon={EmailFilled}
-            onBeforeNavigate={() => analytics.logClickMailDebugInfo(user?.id)}
           />
         </ViewGap>
       }

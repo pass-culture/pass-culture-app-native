@@ -1,5 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { OfferStockResponse } from 'api/gen'
@@ -16,7 +17,8 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { Li } from 'ui/components/Li'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { VerticalUl } from 'ui/components/Ul'
-import { Spacer, Typo } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -43,16 +45,15 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
   const radioGroupLabel = 'Prix'
 
   return (
-    <React.Fragment>
+    <ViewGap gap={4}>
       <Typo.Title3 {...getHeadingAttrs(3)} testID="PricesStep">
         {radioGroupLabel}
       </Typo.Title3>
 
-      <Spacer.Column numberOfSpaces={4} />
       <View accessibilityRole={AccessibilityRole.RADIOGROUP} accessibilityLabelledBy={titleID}>
         <VerticalUl>
           {filteredStocks.map((stock) => (
-            <Li key={stock.id}>
+            <StyledLi key={stock.id}>
               <RadioSelector
                 radioGroupLabel={radioGroupLabel}
                 label={stock.priceCategoryLabel ?? ''}
@@ -62,11 +63,14 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
                 description={getPriceWording(stock, offerCredit)}
                 rightText={formatCurrencyFromCents(stock.price, currency, euroToPacificFrancRate)}
               />
-              <Spacer.Column numberOfSpaces={2} />
-            </Li>
+            </StyledLi>
           ))}
         </VerticalUl>
       </View>
-    </React.Fragment>
+    </ViewGap>
   )
 }
+
+const StyledLi = styled(Li)(({ theme }) => ({
+  paddingBottom: theme.designSystem.size.spacing.s,
+}))

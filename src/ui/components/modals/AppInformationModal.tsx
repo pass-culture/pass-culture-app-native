@@ -6,7 +6,6 @@ import { v4 as uuidv4 } from 'uuid'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer } from 'ui/theme'
 
 import { ModalHeader } from './ModalHeader'
 
@@ -37,19 +36,19 @@ export const AppInformationModal: FunctionComponent<Props> = ({
       testID={testIdSuffix ? `modal-${testIdSuffix}` : undefined}
       onRequestClose={onCloseIconPress}>
       <ClickAwayArea onPress={onCloseIconPress} />
-      <FlexSpacer />
-      <Container accessibilityLabelledBy={titleID} gap={6}>
-        <ModalHeader
-          title={title}
-          titleID={titleID}
-          rightIconAccessibilityLabel="Fermer la modale"
-          rightIcon={Close}
-          onRightIconPress={onCloseIconPress}
-          numberOfLines={numberOfLinesTitle}
-        />
-        <Content>{children}</Content>
-      </Container>
-      <FlexSpacer />
+      <ModalCenteredContent>
+        <Container accessibilityLabelledBy={titleID} gap={6}>
+          <ModalHeader
+            title={title}
+            titleID={titleID}
+            rightIconAccessibilityLabel="Fermer la modale"
+            rightIcon={Close}
+            onRightIconPress={onCloseIconPress}
+            numberOfLines={numberOfLinesTitle}
+          />
+          <Content>{children}</Content>
+        </Container>
+      </ModalCenteredContent>
     </Modal>
   )
 }
@@ -82,6 +81,7 @@ const Content = styled.View(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
 }))
 
-const FlexSpacer = styled(Spacer.Flex)(({ theme }) => ({
-  zIndex: theme.zIndex.background,
-}))
+const ModalCenteredContent = styled.View({
+  height: '100%',
+  justifyContent: 'center',
+})

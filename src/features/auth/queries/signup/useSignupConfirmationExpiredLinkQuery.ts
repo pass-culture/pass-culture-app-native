@@ -12,10 +12,13 @@ export const useSignupConfirmationExpiredLinkQuery = (email: string, onSuccess: 
       const result = await api.postNativeV1ResendEmailValidation({ email })
       onSuccess()
       return result
-    } catch (err) {
+    } catch (error) {
       throw new AsyncError('NETWORK_REQUEST_FAILED', {
         retry: query.refetch,
         logType: LogTypeEnum.ERROR,
+        captureContext: {
+          extra: { error },
+        },
       })
     }
   }

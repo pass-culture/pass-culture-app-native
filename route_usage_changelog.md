@@ -1,4 +1,4 @@
-# v1.381.0
+# v1.386.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/favorites/{favorite_id}
@@ -17,6 +17,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/me/reminders
 - /native/v1/oauth/state
 - /native/v1/offer/{offer_id}/chronicles
+- /native/v1/offer/{offer_id}/advices
 - /native/v1/profile/token_expiration
 - /native/v1/reaction/available
 - /native/v1/recommendation/similar_offers/{offer_id}
@@ -24,6 +25,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/subcategories/v2
 - /native/v1/subscription/activity_types
 - /native/v1/subscription/profile
+- /native/v1/venue/{venue_id}/advices
 - /native/v2/bookings
 - /native/v2/bookings/{booking_id}
 - /native/v2/bookings/{status}

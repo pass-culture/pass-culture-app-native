@@ -68,10 +68,10 @@ describe('SuggestionHitHighlight for a offer suggestion', () => {
       facets: {
         exact_matches: {
           'offer.nativeCategoryId': [],
-          'offer.searchGroupNamev2': [],
+          'offer.searchGroups': [],
         },
         analytics: {
-          ['offer.searchGroupNamev2']: [
+          ['offer.searchGroups']: [
             {
               attribute: '',
               operator: '',

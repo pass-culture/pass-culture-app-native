@@ -83,7 +83,7 @@ const mockHits = [
       exact_nb_hits: 2,
       facets: {
         analytics: {
-          ['offer.searchGroupNamev2']: [
+          ['offer.searchGroups']: [
             {
               attribute: '',
               operator: '',
@@ -119,7 +119,7 @@ const mockHits = [
       exact_nb_hits: 2,
       facets: {
         analytics: {
-          ['offer.searchGroupNamev2']: [
+          ['offer.searchGroups']: [
             {
               attribute: '',
               operator: '',
@@ -449,6 +449,39 @@ describe('<SearchLanding />', () => {
         })
       })
     })
+
+    describe('When enableAIFakeDoor FF is activated', () => {
+      beforeEach(() => {
+        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR])
+      })
+
+      it('should display AI fake door button', async () => {
+        render(reactQueryProviderHOC(<SearchLanding />))
+
+        expect(
+          await screen.findByLabelText('Accéder au questionnaire sur l’IA pass Culture')
+        ).toBeOnTheScreen()
+      })
+
+      it('should open AI fake door modal when pressing AI button', async () => {
+        render(reactQueryProviderHOC(<SearchLanding />))
+
+        await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
+
+        expect(await screen.findByText('Encore un peu de patience...')).toBeOnTheScreen()
+      })
+
+      it('should trigger hasClickedFakeDoorCTA log when pressing AI button', async () => {
+        render(reactQueryProviderHOC(<SearchLanding />))
+
+        await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
+
+        expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenCalledWith({
+          featureName: 'conversational_search_AI',
+          from: 'searchAutoComplete',
+        })
+      })
+    })
   })
 
   describe('When offline', () => {
@@ -458,6 +491,31 @@ describe('<SearchLanding />', () => {
       render(reactQueryProviderHOC(<SearchLanding />))
 
       expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
+    })
+  })
+
+  describe('When enableAIFakeDoor FF activated', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR])
+    })
+
+    it('should open AI fake door modal when pressing banner', async () => {
+      render(reactQueryProviderHOC(<SearchLanding />))
+
+      await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
+
+      expect(await screen.findByText('Encore un peu de patience...')).toBeOnTheScreen()
+    })
+
+    it('should trigger hasClickedFakeDoorCTA log when pressing AI fake door banner', async () => {
+      render(reactQueryProviderHOC(<SearchLanding />))
+
+      await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
+
+      expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenCalledWith({
+        featureName: 'conversational_search_AI',
+        from: 'searchLanding',
+      })
     })
   })
 })

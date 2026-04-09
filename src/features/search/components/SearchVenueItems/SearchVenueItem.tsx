@@ -35,7 +35,7 @@ interface SearchVenueItemProps {
 const mergeVenueData = (venue: AlgoliaVenue) => (prevData: AlgoliaVenue | undefined) => ({
   ...venue,
   accessibility: {},
-  ...(prevData ?? {}),
+  ...prevData,
 })
 
 const UnmemoizedSearchVenueItem = ({

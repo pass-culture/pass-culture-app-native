@@ -50,6 +50,8 @@ jobs:
           secrets: |-
             MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
             MAESTRO_CLOUD_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-maestro-cloud-api-key
+            MAESTRO_E2E_API_KEY:passculture-metier-ehp/pcapi-staging_e2e_api_key
+            MAESTRO_E2E_ENDPOINT:passculture-metier-ehp/pcapi-staging-e2e-endpoint
 
       - name: Determine latest Maestro version
         run: |
@@ -78,6 +80,8 @@ jobs:
         env:
           MAESTRO_PASSWORD: ${{ steps.maestro_secrets.outputs.MAESTRO_PASSWORD }}
           MAESTRO_CLOUD_API_KEY: ${{ steps.maestro_secrets.outputs.MAESTRO_CLOUD_API_KEY }}
+          MAESTRO_E2E_API_KEY: ${{ steps.maestro_secrets.outputs.MAESTRO_E2E_API_KEY }}
+          MAESTRO_E2E_ENDPOINT: ${{ steps.maestro_secrets.outputs.MAESTRO_E2E_ENDPOINT }}
           MAESTRO_VALID_IOS_EMAIL: dev-tests-e2e-ios@passculture.team
           MAESTRO_VALID_ANDROID_EMAIL: dev-tests-e2e-android@passculture.team
           MAESTRO_INVALID_EMAIL: dev-tests-e2e-invalid@passculture.team

@@ -5,7 +5,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
@@ -66,10 +65,6 @@ jest.mock('libs/location/LocationWrapper', () => ({
 
 describe('useActivationBanner', () => {
   describe('with feature flag enable', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
-    })
-
     it('nextSubscriptionStepEnable', async () => {
       mockUseGetStepperInfo.mockReturnValueOnce({
         data: { nextSubscriptionStep: SubscriptionStep['email-validation'] },
@@ -159,7 +154,7 @@ describe('useActivationBanner', () => {
       await act(async () => {})
 
       expect(result.current.banner).toEqual({
-        title: 'Débloque ton crédit',
+        title: 'Débloque ton crédit pour bénéficier du pass Culture',
         text: 'API - Bénéficie de ton crédit maintenant !',
         name: BannerName.activation_banner,
       })

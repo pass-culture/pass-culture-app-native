@@ -1,0 +1,9 @@
+export enum AdjustEvents {
+  REGISTRATION = 'ae71ok',
+  UNDERAGE_REGISTRATION = '65fn2r',
+  REGISTRATION_18 = 'ptmgvr',
+  COMPLETE_BENEFICIARY = 'xkve12',
+  COMPLETE_BENEFICIARY_UNDERAGE = '2ddds5',
+  COMPLETE_BENEFICIARY_18 = '4bn26d',
+  BOOK_OFFER = 'h2vkqv',
+}

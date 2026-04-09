@@ -1,27 +1,33 @@
 appId: ${MAESTRO_APP_ID}
-jsengine: graaljs
 tags:
   - local
   - nightlyAndroid
+  - nightlyIOS
   - squad-conversion
 onFlowStart:
   - runScript: subFolder/links/DeepLinks.js
+  - runScript: subFolder/commons/getCurrentDay.js
+  - runScript:
+      file: subFolder/commons/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: 18
 ---
 - runFlow:
     when:
-      true: ${MAESTRO_RUN_CLOUD_COMMANDS == 'false'}
+      platform: iOS
     commands:
       - runFlow: subFolder/commons/LaunchApp.yml
 
 - runFlow:
     when:
-      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+      platform: Android
     commands:
       - runFlow: subFolder/commons/LaunchAppWithPermissions.yml
 
 - runFlow: subFolder/commons/StopApp.yml
-- runFlow: subFolder/links/DeepLinksToProfile.yml
-- runFlow: subFolder/auth/LoginFromProfileForBeneficiaryUser.yml
+- runFlow: subFolder/links/DeepLinkBeneficiaryUser.yml
 
 - runFlow: subFolder/commons/GoToSearchFromTabBar.yml
 - runFlow: subFolder/search/SearchBookableDuoOffer.yml

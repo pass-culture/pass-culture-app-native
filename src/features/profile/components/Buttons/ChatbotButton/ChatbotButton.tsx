@@ -2,7 +2,7 @@ import React from 'react'
 
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { StyledSectionRow } from 'features/profile/components/SectionRowWithPaddingVertical/SectionRowWithPaddingVertical'
-import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
+import { ChatbotAI } from 'ui/svg/icons/ChatbotAI'
 
 export const ChatbotButton = () => (
   <StyledSectionRow
@@ -10,6 +10,6 @@ export const ChatbotButton = () => (
     title="Poser une question"
     type="navigable"
     navigateTo={getProfilePropConfig('Chatbot')}
-    icon={LifeBuoy}
+    icon={ChatbotAI}
   />
 )

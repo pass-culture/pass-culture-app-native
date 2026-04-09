@@ -4,18 +4,25 @@ import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CategoriesList } from 'features/search/components/CategoriesList/CategoriesList'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useLocation } from 'libs/location/LocationWrapper'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
+import { AIFakeDoorModal } from 'shared/AIFakeDoorModal/AIFakeDoorModal'
 import { Form } from 'ui/components/Form'
+import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
 
 const searchInputID = uuidv4()
@@ -28,11 +35,20 @@ export const SearchLanding = () => {
   const { isFocusOnSuggestions } = useSearch()
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
+  const enableAIFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR)
+  const { userLocation } = useLocation()
+  const { user } = useAuthContext()
+  const { visible, showModal, hideModal } = useModal(false)
 
   const setQueryHistoryMemoized = useCallback(
     (query: string) => setQueryHistory(query),
     [setQueryHistory]
   )
+
+  const handleAIFakeDoorPress = (from: 'searchLanding' | 'searchAutoComplete') => {
+    void analytics.logHasClickedFakeDoorCTA({ featureName: 'conversational_search_AI', from })
+    showModal()
+  }
 
   if (!netInfo.isConnected) {
     return <OfflinePage />
@@ -64,14 +80,27 @@ export const SearchLanding = () => {
               removeFromHistory={removeFromHistory}
               filteredHistory={filteredHistory}
               shouldNavigateToSearchResults
+              enableAIFakeDoor={enableAIFakeDoor}
+              onPressAIButton={() => handleAIFakeDoorPress('searchAutoComplete')}
             />
           ) : (
             <CategoriesButtonsContainer>
-              <CategoriesList />
+              <CategoriesList
+                enableAIFakeDoor={enableAIFakeDoor}
+                onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('searchLanding')}
+              />
             </CategoriesButtonsContainer>
           )}
         </InstantSearch>
       </Form.Flex>
+      {enableAIFakeDoor ? (
+        <AIFakeDoorModal
+          close={hideModal}
+          visible={visible}
+          userLocation={userLocation}
+          userCity={user?.city}
+        />
+      ) : null}
     </Page>
   )
 }

@@ -1,11 +1,8 @@
+import { VenueProAdvice } from 'api/gen'
 import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { Position } from 'libs/location/location'
 import { formatDistance } from 'libs/parsers/formatDistance'
-import {
-  formatStartPrice,
-  getDisplayedPrice,
-  getIfPricesShouldBeFixed,
-} from 'libs/parsers/getDisplayedPrice'
+import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
@@ -21,11 +18,15 @@ type OfferToHeadlineOfferData = {
 type OfferToHeadlineParams = {
   offer?: Offer
   transformParameters: OfferToHeadlineOfferData
+  advice?: VenueProAdvice
+  segment?: string
 }
 
 export function offerToHeadlineOfferData({
   offer,
   transformParameters,
+  advice,
+  segment,
 }: OfferToHeadlineParams): HeadlineOfferData | null {
   if (!offer) return null
 
@@ -33,12 +34,7 @@ export function offerToHeadlineOfferData({
   const { mapping, labelMapping, currency, euroToPacificFrancRate, userLocation } =
     transformParameters
 
-  const displayedPrice = getDisplayedPrice(
-    hitOffer.prices,
-    currency,
-    euroToPacificFrancRate,
-    getIfPricesShouldBeFixed(hitOffer.subcategoryId) ? formatStartPrice : undefined
-  )
+  const displayedPrice = getDisplayedPrice(hitOffer.prices, currency, euroToPacificFrancRate)
 
   return {
     id: objectID,
@@ -48,5 +44,6 @@ export function offerToHeadlineOfferData({
     category: labelMapping[hitOffer.subcategoryId] ?? '',
     price: displayedPrice,
     distance: formatDistance({ lat: _geoloc?.lat, lng: _geoloc?.lng }, userLocation),
+    advice: segment === 'A' ? advice : undefined,
   }
 }

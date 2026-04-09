@@ -1,11 +1,14 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { View, ViewToken } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
+import { AdviceCardData } from 'features/advices/types'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { HeadlineOffer } from 'features/headlineOffer/components/HeadlineOffer/HeadlineOffer'
 import { HeadlineOfferData } from 'features/headlineOffer/type'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
@@ -16,7 +19,6 @@ import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcateg
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -27,7 +29,6 @@ interface Props {
   playlists: GtlPlaylistData[]
   headlineOfferData?: HeadlineOfferData | null
   arePlaylistsLoading: boolean
-  enableAccesLibre?: boolean
   onViewableItemsChanged: (
     items: Pick<ViewToken, 'key' | 'index'>[],
     moduleId: string,
@@ -35,6 +36,10 @@ interface Props {
     playlistIndex?: number
   ) => void
   shouldDisplayVenueCalendar?: boolean
+  advicesCardData?: AdviceCardData[]
+  nbAdvices: number
+  enableNewTagProAdvices?: boolean
+  onShowWritersModal: () => void
 }
 
 export const VenueBody: FunctionComponent<Props> = ({
@@ -44,10 +49,14 @@ export const VenueBody: FunctionComponent<Props> = ({
   playlists,
   headlineOfferData,
   arePlaylistsLoading,
-  enableAccesLibre,
   onViewableItemsChanged,
   shouldDisplayVenueCalendar,
+  advicesCardData,
+  nbAdvices,
+  enableNewTagProAdvices,
+  onShowWritersModal,
 }) => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const currency = useGetCurrencyToDisplay()
 
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
@@ -65,19 +74,33 @@ export const VenueBody: FunctionComponent<Props> = ({
       from: 'venue',
       venueId: venue.id,
       isHeadline: true,
+      adviceType: 'pro',
+      originDetail: 'advice',
     })
+  }
+
+  const handleOnSeeMoreHeadlineOfferPress = (offerId: number) => {
+    void analytics.logConsultAdvice({
+      from: 'venue',
+      offerId: offerId.toString(),
+      venueId: venue.id.toString(),
+      originDetails: 'headline',
+      adviceType: 'pro',
+    })
+    navigate('ProAdvicesVenue', { venueId: venue.id, offerId })
   }
 
   const tabPanels = {
     [Tab.OFFERS]: (
       <React.Fragment>
         {headlineOfferData ? (
-          <MarginContainer gap={2}>
-            <Typo.Title3 {...getHeadingAttrs(2)}>À la une</Typo.Title3>
+          <MarginContainer>
+            <StyledTitle3 {...getHeadingAttrs(2)}>À la une</StyledTitle3>
             <HeadlineOffer
               navigateTo={{ screen: 'Offer', params: { id: headlineOfferData.id } }}
               {...headlineOfferData}
               onBeforeNavigate={() => handleOnBeforeNavigate(headlineOfferData)}
+              onSeeMoreButtonPress={handleOnSeeMoreHeadlineOfferPress}
             />
           </MarginContainer>
         ) : null}
@@ -92,10 +115,14 @@ export const VenueBody: FunctionComponent<Props> = ({
           euroToPacificFrancRate={euroToPacificFrancRate}
           arePlaylistsLoading={arePlaylistsLoading}
           onViewableItemsChanged={onViewableItemsChanged}
+          advicesCardData={advicesCardData}
+          nbAdvices={nbAdvices}
+          enableNewTagProAdvices={enableNewTagProAdvices}
+          onShowWritersModal={onShowWritersModal}
         />
       </React.Fragment>
     ),
-    [Tab.INFOS]: <PracticalInformation venue={venue} enableAccesLibre={enableAccesLibre} />,
+    [Tab.INFOS]: <PracticalInformation venue={venue} />,
     [Tab.AGENDA]: shouldDisplayVenueCalendar ? (
       <Typo.Title3>
         Bientôt&nbsp;: agenda présentant les dates de l’evènement unique de ce lieu
@@ -130,7 +157,11 @@ export const VenueBody: FunctionComponent<Props> = ({
   )
 }
 
-const MarginContainer = styled(ViewGap)(({ theme }) => ({
+const MarginContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
   marginTop: theme.designSystem.size.spacing.xxxl,
+}))
+
+const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.s,
 }))

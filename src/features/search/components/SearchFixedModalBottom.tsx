@@ -10,6 +10,7 @@ type Props = {
   filterBehaviour: FilterBehaviour
   isSearchDisabled?: boolean
   isResetDisabled?: boolean
+  displayGradient?: boolean
 }
 
 export const SearchFixedModalBottom = memo(function SearchFixedModalBottom({
@@ -18,6 +19,7 @@ export const SearchFixedModalBottom = memo(function SearchFixedModalBottom({
   filterBehaviour,
   isSearchDisabled,
   isResetDisabled,
+  displayGradient,
 }: Props) {
   return (
     <SearchFixedModalBottomContainer>
@@ -28,6 +30,7 @@ export const SearchFixedModalBottom = memo(function SearchFixedModalBottom({
         isSearchDisabled={isSearchDisabled}
         filterBehaviour={filterBehaviour}
         isResetDisabled={isResetDisabled}
+        displayGradient={displayGradient}
       />
     </SearchFixedModalBottomContainer>
   )

@@ -1,8 +1,8 @@
 export enum CookieNameEnum {
   ACCESS_TOKEN = 'access_token',
+  ADJUST = 'adjust',
   ALGOLIA_INSIGHTS = 'algolia_insights',
   APP_TRACKING_TRANSPARENCY = 'app_tracking_transparency',
-  APPSFLYER = 'appsflyer',
   BATCH = 'batch',
   CAMPAIGN_DATE = 'campaign_date',
   EDU_CONNECT = 'edu_connect',

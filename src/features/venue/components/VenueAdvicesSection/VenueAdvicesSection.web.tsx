@@ -1,0 +1,188 @@
+import React, { FunctionComponent } from 'react'
+import { StyleSheet, View } from 'react-native'
+import { styled, useTheme } from 'styled-components/native'
+
+import { ReactionTypeEnum, VenueResponse } from 'api/gen'
+import { AdviceCardList } from 'features/advices/components/AdviceCardList/AdviceCardList'
+import { ADVICE_CARD_WIDTH, OFFER_ADVICE_THUMBNAIL_HEIGHT } from 'features/advices/constants'
+import { AdviceCardData } from 'features/advices/types'
+import { FeedBack } from 'features/reactions/components/FeedBack'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { TagVariant } from 'ui/designSystem/Tag/types'
+import { InfoPlain } from 'ui/svg/icons/InfoPlain'
+import { Show } from 'ui/svg/icons/Show'
+import { Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
+type Props = {
+  venue: VenueResponse
+  advicesCardData: AdviceCardData[]
+  nbAdvices: number
+  onShowWritersModal: () => void
+  onPressAdviceCardSeeMore?: (offerId: number) => void
+  enableNewTagProAdvices?: boolean
+  onPressAllAdvicesButton?: () => void
+  onFeedbackLog: (type: ReactionTypeEnum) => void
+}
+
+export const VenueAdvicesSection: FunctionComponent<Props> = ({
+  venue,
+  advicesCardData,
+  nbAdvices,
+  onShowWritersModal,
+  onPressAdviceCardSeeMore,
+  enableNewTagProAdvices,
+  onPressAllAdvicesButton,
+  onFeedbackLog,
+}) => {
+  const theme = useTheme()
+  const shouldDisplayAllAdvicesButton = advicesCardData.length > 1
+
+  const TitleContent = (
+    <Row>
+      <StyledTitle3
+        {...getHeadingAttrs(3)}
+        numberOfLines={2}
+        enableNewTagProAdvices={enableNewTagProAdvices}>
+        {`Les avis par “${venue.name}”`}
+      </StyledTitle3>
+
+      {enableNewTagProAdvices ? (
+        <TagContainer shouldDisplayAllAdvicesButton={shouldDisplayAllAdvicesButton}>
+          <Tag variant={TagVariant.NEW} label="Nouveau" />
+        </TagContainer>
+      ) : null}
+
+      {theme.isDesktopViewport && shouldDisplayAllAdvicesButton ? (
+        <SeeAllAdvicesContainerDesktop testID="allAdvicesButtonDesktop">
+          <InternalTouchableLink
+            as={Button}
+            icon={Show}
+            wording={`Lire les ${nbAdvices} avis`}
+            navigateTo={{ screen: 'ProAdvicesVenue', params: { venueId: venue.id } }}
+            variant="tertiary"
+            color="neutral"
+            onBeforeNavigate={onPressAllAdvicesButton}
+          />
+        </SeeAllAdvicesContainerDesktop>
+      ) : null}
+    </Row>
+  )
+
+  return (
+    <Container gap={4}>
+      <Gutter>{TitleContent}</Gutter>
+
+      <StyledAdviceCardlist
+        data={advicesCardData}
+        shouldTruncate
+        onSeeMoreButtonPress={onPressAdviceCardSeeMore}
+        shouldDisplayAllAdvicesButton={shouldDisplayAllAdvicesButton}
+        thumbnailHeight={OFFER_ADVICE_THUMBNAIL_HEIGHT}
+      />
+
+      {shouldDisplayAllAdvicesButton && !theme.isDesktopViewport ? (
+        <Gutter>
+          <View testID="allAdvicesButtonMobile">
+            <InternalTouchableLink
+              as={Button}
+              wording={`Lire les ${nbAdvices} avis`}
+              navigateTo={{ screen: 'ProAdvicesVenue', params: { venueId: venue.id } }}
+              variant="secondary"
+              color="neutral"
+              size="small"
+              onBeforeNavigate={onPressAllAdvicesButton}
+            />
+          </View>
+        </Gutter>
+      ) : null}
+
+      <Gutter>
+        <WritersButtonContainer>
+          <Button
+            wording="Qui écrit les avis des pros&nbsp;?"
+            icon={InfoPlain}
+            onPress={onShowWritersModal}
+            variant="tertiary"
+            color="neutral"
+            size="small"
+          />
+        </WritersButtonContainer>
+      </Gutter>
+
+      <Gutter>
+        <StyledFeedback
+          storageKey="venue_advices_feedback"
+          likeQuiz="https://passculture.qualtrics.com/jfe/form/SV_eW1XQ60mF3KAMdg"
+          dislikeQuiz="https://passculture.qualtrics.com/jfe/form/SV_d1niW3WPCivA6wK"
+          title="Trouves-tu ces avis utiles&nbsp;?"
+          onLogReaction={onFeedbackLog}
+        />
+      </Gutter>
+    </Container>
+  )
+}
+
+const Container = styled(ViewGap)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
+
+const Gutter = styled.View(({ theme }) => ({
+  paddingHorizontal: theme.contentPage.marginHorizontal,
+}))
+
+const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
+
+const StyledTitle3 = styled(Typo.Title3)<{ enableNewTagProAdvices?: boolean }>(
+  ({ theme, enableNewTagProAdvices }) => ({
+    flexShrink: 1,
+    ...(!enableNewTagProAdvices && theme.isDesktopViewport
+      ? {
+          borderRightWidth: StyleSheet.hairlineWidth,
+          borderRightColor: theme.designSystem.color.border.default,
+          paddingRight: theme.designSystem.size.spacing.s,
+        }
+      : {}),
+  })
+)
+
+const SeeAllAdvicesContainerDesktop = styled.View(({ theme }) => ({
+  width: 'auto',
+  borderWidth: 0,
+  paddingLeft: theme.designSystem.size.spacing.s,
+}))
+
+const StyledAdviceCardlist = styled(AdviceCardList).attrs<{
+  shouldDisplayAllAdvicesButton: boolean
+}>(({ theme }) => ({
+  contentContainerStyle: {
+    paddingHorizontal: theme.contentPage.marginHorizontal,
+  },
+  cardWidth: ADVICE_CARD_WIDTH,
+  snapToInterval: ADVICE_CARD_WIDTH,
+}))``
+
+const TagContainer = styled.View<{ shouldDisplayAllAdvicesButton: boolean }>(
+  ({ theme, shouldDisplayAllAdvicesButton }) => ({
+    marginLeft: theme.designSystem.size.spacing.s,
+    ...(theme.isDesktopViewport && shouldDisplayAllAdvicesButton
+      ? {
+          borderRightWidth: StyleSheet.hairlineWidth,
+          borderRightColor: theme.designSystem.color.border.default,
+          paddingRight: theme.designSystem.size.spacing.s,
+        }
+      : {}),
+    flexShrink: 0,
+  })
+)
+
+const StyledFeedback = styled(FeedBack)(({ theme }) => ({
+  width: theme.isDesktopViewport ? '50%' : '100%',
+}))
+
+const WritersButtonContainer = styled.View(({ theme }) => ({
+  alignSelf: theme.isDesktopViewport ? 'flex-start' : undefined,
+}))

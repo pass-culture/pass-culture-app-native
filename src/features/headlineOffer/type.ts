@@ -1,4 +1,4 @@
-import { CategoryIdEnum } from 'api/gen'
+import { CategoryIdEnum, VenueProAdvice } from 'api/gen'
 
 export type HeadlineOfferData = {
   id: string
@@ -8,4 +8,5 @@ export type HeadlineOfferData = {
   price: string
   offerTitle?: string
   distance?: string
+  advice?: VenueProAdvice
 }

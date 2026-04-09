@@ -9,9 +9,9 @@ import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
-import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
+import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { BaseTextInput } from 'ui/components/inputs/BaseTextInput'
@@ -90,7 +90,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
     </React.Fragment>
   )
 
-  const labels = useFontScaleValue({
+  const labels = useMobileFontScaleToDisplay({
     default: descriptionAndRequired,
     at200PercentZoom: <FlexView>{descriptionAndRequired}</FlexView>,
   })

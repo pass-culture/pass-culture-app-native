@@ -1,6 +1,8 @@
 import React, { FunctionComponent, useRef, useState, useMemo, useCallback } from 'react'
 import {
   LayoutChangeEvent,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
   Platform,
   ScrollView,
   ScrollViewProps,
@@ -54,11 +56,15 @@ type Props = {
   swipeDirection?: ModalSwipeDirection
   propagateSwipe?: boolean
   desktopConstraints?: CSSObject
+  onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void
 } & ModalIconProps &
   Pick<ViewProps, 'onLayout'>
 
-// Without this, the margin is recomputed with arbitrary values
-const styles = StyleSheet.create({ modal: { margin: 'auto' } })
+const isWeb = Platform.OS === 'web'
+// Keep modal sheet flush with screen edges on mobile.
+const styles = StyleSheet.create({
+  modal: { margin: 'auto', justifyContent: isWeb ? 'center' : 'flex-end' },
+})
 
 const MAX_HEIGHT = 650
 const DESKTOP_FULLSCREEN_RATIO = 0.75
@@ -96,6 +102,7 @@ export const AppModal: FunctionComponent<Props> = ({
   propagateSwipe,
   onLayout,
   desktopConstraints,
+  onScroll,
 }) => {
   const iconProps = {
     rightIconAccessibilityLabel,
@@ -207,6 +214,7 @@ export const AppModal: FunctionComponent<Props> = ({
         ref={setFullscreenScrollViewRef}
         onContentSizeChange={onContentSizeChangeFullscreenModal}
         scrollEnabled={scrollEnabled}
+        onScroll={onScroll}
         keyboardShouldPersistTaps={keyboardShouldPersistTaps}>
         {children}
       </StyledScrollView>
@@ -220,6 +228,7 @@ export const AppModal: FunctionComponent<Props> = ({
     keyboardShouldPersistTaps,
     modalSpacing,
     onContentSizeChangeFullscreenModal,
+    onScroll,
     scrollEnabled,
     setFullscreenScrollViewRef,
   ])
@@ -284,6 +293,7 @@ export const AppModal: FunctionComponent<Props> = ({
                   ref={scrollViewRef}
                   scrollEnabled={scrollEnabled}
                   onContentSizeChange={updateScrollViewContentHeight}
+                  onScroll={onScroll}
                   testID="modalScrollView">
                   {children}
                 </ScrollView>
@@ -321,6 +331,7 @@ const SpacerBetweenHeaderAndContent = styled.View(({ theme }) => ({
 
 const ScrollViewContainer = styled.View.attrs<{ backdropColor?: string }>(({ theme }) => ({
   backdropColor: theme.designSystem.color.background.overlay,
+  marginBottom: theme.designSystem.size.spacing.xxxxl,
 }))<{ paddingBottom: number; modalSpacing?: ModalSpacing }>(({ paddingBottom, modalSpacing }) => ({
   width: '100%', // do not use `flex: 1` here if you want full width
   maxWidth: getSpacing(120),

@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   isVisible: boolean
@@ -23,8 +23,9 @@ export const DeleteProfileReasonNewEmailModal: React.FC<Props> = ({ isVisible, h
       <StyledBody>
         Pour modifier ton adresse e-mail, suis les instructions sur cette page.
       </StyledBody>
-      <Spacer.Column numberOfSpaces={5} />
-      <Button wording="J’ai compris" onPress={hideModal} />
+      <Container>
+        <Button wording="J’ai compris" onPress={hideModal} />
+      </Container>
     </AppModal>
   )
 }
@@ -32,3 +33,6 @@ export const DeleteProfileReasonNewEmailModal: React.FC<Props> = ({ isVisible, h
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
+const Container = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+}))

@@ -2,12 +2,13 @@ import React, { FunctionComponent, PropsWithChildren, ReactNode } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { ThumbnailPlaceholder } from 'ui/components/InfoHeader/ThumbnailPlaceHolder'
 import { Typo } from 'ui/theme'
 
 type InfoHeaderProps = PropsWithChildren<{
-  defaultThumbnailSize: number
+  defaultThumbnailSize: number // use this prop as width when using height
+  defaultThumbnailHeight?: number
   title?: string
   subtitle?: string
   thumbnailComponent?: ReactNode
@@ -25,9 +26,16 @@ export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({
   placeholderIcon,
   children,
   style,
+  defaultThumbnailHeight,
 }) => {
-  const titleNumberOfLines = useFontScaleValue({ default: 1, at200PercentZoom: undefined })
-  const subtitleNumberOfLines = useFontScaleValue({ default: 2, at200PercentZoom: undefined })
+  const titleNumberOfLines = useMobileFontScaleToDisplay({
+    default: 1,
+    at200PercentZoom: undefined,
+  })
+  const subtitleNumberOfLines = useMobileFontScaleToDisplay({
+    default: 2,
+    at200PercentZoom: undefined,
+  })
 
   const subtitleComponent = title ? (
     <Subtitle testID="subtitileWithTitle" numberOfLines={subtitleNumberOfLines}>
@@ -44,7 +52,7 @@ export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({
       {thumbnailComponent || (
         <ThumbnailPlaceholder
           width={defaultThumbnailSize}
-          height={defaultThumbnailSize}
+          height={defaultThumbnailHeight ?? defaultThumbnailSize}
           testID="VenuePreviewPlaceholder"
           icon={placeholderIcon}
         />

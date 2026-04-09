@@ -8,26 +8,16 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: 'Ma position'
       - tapOn: 'Localisation – Liste - Élément 3 sur 3 - France entière.*'
 
-- runFlow:
-    label: 'Swipe vers les offres pour éviter tap sur la tabBar'
-    when:
-      platform: iOS
-    commands:
-      - swipe:
-          start: 50%, 49%
-          end: 50%, 37%
+- swipe:
+    from:
+      text: 'Les artistes'
+    direction: UP
 
-- runFlow:
-    label: 'Swipe vers les offres pour éviter tap sur la tabBar'
-    when:
-      platform: Android
-    commands:
-    - swipe:
-        from:
-          text: 'Les offres'
-        direction: UP
 
-- tapOn: 'CD'
+- extractTextWithAI:
+    query: "Le titre exacte d'une des offres CD visible dans les résultats de recherche dont le titre n'est pas cropé."
+    outputVariable: 'offerResult'
+- tapOn: .*${offerResult}.*
 
 - runFlow:
     when:
@@ -79,4 +69,16 @@ appId: ${MAESTRO_APP_ID}
 - scrollUntilVisible:
     element: 'Annuler ma réservation'
 - tapOn: 'Annuler ma réservation'
-- tapOn: 'Annuler ma réservation'
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn: 'Annuler ma réservation'
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn:
+          point: 50%,87%

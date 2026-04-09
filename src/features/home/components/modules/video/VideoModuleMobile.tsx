@@ -8,7 +8,7 @@ import { VideoMonoOfferTile } from 'features/home/components/modules/video/Video
 import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
 import { VideoModuleProps } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { ColorsType } from 'theme/types'
 import { Play } from 'ui/svg/icons/Play'
 import { getSpacing, Typo } from 'ui/theme'
@@ -23,7 +23,7 @@ const COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER = getSpacing(38.5)
 export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) => {
   const { designSystem } = useTheme()
 
-  const numberOfLines = useFontScaleValue({ default: 1, at200PercentZoom: 3 })
+  const numberOfLines = useMobileFontScaleToDisplay({ default: 1, at200PercentZoom: 3 })
 
   const [monoOfferCardHeight, setMonoOfferCardHeight] = useState<number>(0)
   const MONO_OFFER_CARD_VERTICAL_SPACING = designSystem.size.spacing.xxl

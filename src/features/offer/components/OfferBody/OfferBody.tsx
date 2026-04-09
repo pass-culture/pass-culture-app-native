@@ -4,13 +4,12 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum, OfferArtist, OfferResponse } from 'api/gen'
+import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { ProposedBySection } from 'features/offer/components/OfferBody/ProposedBySection/ProposedBySection'
-import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { VideoSection } from 'features/offer/components/OfferContent/VideoSection/VideoSection'
 import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
@@ -25,11 +24,7 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import {
-  formatPrice,
-  getDisplayedPrice,
-  getIfPricesShouldBeFixed,
-} from 'libs/parsers/getDisplayedPrice'
+import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Subcategory } from 'libs/subcategories/types'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
@@ -46,14 +41,16 @@ type Props = {
   offer: OfferResponse
   subcategory: Subcategory
   children: ReactNode
-  chronicleVariantInfo: ChronicleVariantInfo
+  adviceVariantInfo: AdviceVariantInfo
   onVideoConsentPress: () => void
   onShowOfferArtistsModal: (artists: OfferArtist[]) => void
   likesCount?: number
-  chroniclesCount?: number | null
+  clubAdvicesCount?: number | null
+  proAdvicesCount?: number
   distance?: string | null
   headlineOffersCount?: number
-  chronicles?: ChronicleCardData[]
+  clubAdvices?: AdviceCardData[]
+  proAdvices?: AdviceCardData[]
   isVideoSectionEnabled?: boolean
   hasVideoCookiesConsent?: boolean
   isMultiArtistsEnabled?: boolean
@@ -64,11 +61,13 @@ export const OfferBody: FunctionComponent<Props> = ({
   subcategory,
   children,
   likesCount,
-  chroniclesCount,
+  clubAdvicesCount,
+  proAdvicesCount,
   distance,
   headlineOffersCount,
-  chronicleVariantInfo,
-  chronicles,
+  adviceVariantInfo,
+  clubAdvices,
+  proAdvices,
   isVideoSectionEnabled,
   hasVideoCookiesConsent,
   isMultiArtistsEnabled,
@@ -85,6 +84,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   }, [isVideoSectionEnabled, params])
 
   const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
+  const enableProReviewNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -100,7 +100,6 @@ export const OfferBody: FunctionComponent<Props> = ({
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isFixed: getIfPricesShouldBeFixed(offer.subcategoryId),
       isDuo: !!(offer.isDuo && user?.isBeneficiary),
     }),
     { fractionDigits: 2 }
@@ -192,10 +191,13 @@ export const OfferBody: FunctionComponent<Props> = ({
 
         <OfferReactionSection
           likesCount={likesCount}
-          chroniclesCount={chroniclesCount}
+          clubAdvicesCount={clubAdvicesCount}
           headlineOffersCount={headlineOffersCount}
-          chronicleVariantInfo={chronicleVariantInfo}
-          chronicles={chronicles}
+          adviceVariantInfo={adviceVariantInfo}
+          clubAdvices={clubAdvices}
+          proAdvicesCount={proAdvicesCount}
+          proAdvices={proAdvices}
+          enableProReviewNewTag={enableProReviewNewTag}
         />
 
         <GroupWithSeparator

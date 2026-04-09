@@ -11,7 +11,6 @@ import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetSte
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
-import { setSettingsMock } from 'tests/settings/mockSettings'
 
 const mockIdentityCheckState = mockState
 
@@ -60,7 +59,6 @@ mockOverrideCreditActivationAmount.mockReturnValue({
 describe('useStepperInfo', () => {
   beforeEach(() => {
     setFeatureFlags()
-    setSettingsMock({ patchSettingsWith: { enablePhoneValidation: true } })
   })
 
   it('should return empty stepsDetails and empty title if no data', () => {
@@ -160,8 +158,6 @@ describe('useStepperInfo', () => {
         },
       })
 
-      setSettingsMock({ patchSettingsWith: { enablePhoneValidation: false } })
-
       const { stepsDetails } = useStepperInfo()
       const phoneValidationStep = stepsDetails.find(
         (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
@@ -172,13 +168,13 @@ describe('useStepperInfo', () => {
   })
 
   describe('confirmation step', () => {
-    it('should have firstScreen to "IdentityCheckHonor"', () => {
+    it('should have firstScreen to "CulturalSurveyIntro"', () => {
       const { stepsDetails } = useStepperInfo()
       const confirmationStep = stepsDetails.find(
         (step) => step.name === IdentityCheckStep.CONFIRMATION
       )
 
-      expect(confirmationStep?.firstScreen).toEqual('IdentityCheckHonor')
+      expect(confirmationStep?.firstScreen).toEqual('CulturalSurveyIntro')
     })
   })
 })

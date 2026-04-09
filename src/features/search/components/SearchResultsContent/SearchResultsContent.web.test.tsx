@@ -20,9 +20,8 @@ import { render, screen } from 'tests/utils/web'
 import { SearchResultsContent, SearchResultsContentProps } from './SearchResultsContent'
 
 const DEFAULT_SEARCH_RESULT_CONTENT_PROPS = {
-  isFetching: false,
+  isRefetching: false,
   isLoading: false,
-  isFetchingNextPage: false,
   userData: [],
   onEndReached: jest.fn(),
   onSearchResultsRefresh: jest.fn(),
@@ -35,12 +34,17 @@ const DEFAULT_SEARCH_RESULT_CONTENT_PROPS = {
       'name'
     ),
     duplicatedOffers: [],
+    venueNotOpenToPublic: mockedAlgoliaResponse.hits.map((hit: Hit<AlgoliaOffer>) => ({
+      ...hit.venue,
+      _geoloc: hit._geoloc,
+    })) as AlgoliaVenue[],
     venues: mockedAlgoliaResponse.hits.map((hit: Hit<AlgoliaOffer>) => ({
       ...hit.venue,
       _geoloc: hit._geoloc,
     })) as AlgoliaVenue[],
   },
   nbHits: mockedAlgoliaResponse.hits.length,
+  onPressAIFakeDoorBanner: jest.fn(),
 } satisfies SearchResultsContentProps
 
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
@@ -79,8 +83,8 @@ jest.mock('queries/venue/useVenueOffersQuery')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
-jest.mock('features/navigation/helpers/usePreviousRoute', () => ({
-  usePreviousRoute: () => ({ name: 'ThematicSearch' }),
+jest.mock('features/navigation/helpers/usePreviousRouteName', () => ({
+  usePreviousRouteName: () => ({ name: 'ThematicSearch' }),
 }))
 
 jest
@@ -94,10 +98,7 @@ describe('SearchResultsContent component', () => {
   })
 
   it('should not render tabs on web when feature flag map in search activated', async () => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH,
-      RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH])
     render(reactQueryProviderHOC(<SearchResultsContent {...DEFAULT_SEARCH_RESULT_CONTENT_PROPS} />))
 
     await screen.findByTestId('searchResultsFlashlist')

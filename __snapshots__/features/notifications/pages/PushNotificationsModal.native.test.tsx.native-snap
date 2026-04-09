@@ -61,107 +61,272 @@ exports[`PushNotificationsModal should render properly 1`] = `
   <View
     style={
       {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "zIndex": -1,
-      }
-    }
-  />
-  <View
-    accessibilityLabelledBy="testUuidV4"
-    gap={6}
-    style={
-      {
-        "alignItems": "center",
-        "alignSelf": "center",
-        "backgroundColor": "#ffffff",
-        "borderBottomLeftRadius": 4,
-        "borderBottomRightRadius": 4,
-        "borderTopLeftRadius": 4,
-        "borderTopRightRadius": 4,
-        "gap": 24,
-        "paddingBottom": 32,
-        "paddingLeft": 24,
-        "paddingRight": 24,
-        "paddingTop": 24,
-        "width": 928,
+        "height": "100%",
+        "justifyContent": "center",
       }
     }
   >
     <View
+      accessibilityLabelledBy="testUuidV4"
+      gap={6}
       style={
         {
-          "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "width": "100%",
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomLeftRadius": 4,
+          "borderBottomRightRadius": 4,
+          "borderTopLeftRadius": 4,
+          "borderTopRightRadius": 4,
+          "gap": 24,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": 928,
         }
       }
-      testID="modalHeader"
     >
       <View
-        justifyContent="left"
+        marginTop={0}
         style={
           {
-            "alignItems": "flex-start",
+            "display": "flex",
             "flexDirection": "row",
-            "height": 28,
-            "justifyContent": "flex-start",
-            "width": 28,
-          }
-        }
-      />
-      <View
-        style={
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
             "justifyContent": "center",
-            "paddingHorizontal": 12,
-            "zIndex": 1,
+            "marginTop": 0,
+            "width": "100%",
           }
         }
+        testID="modalHeader"
       >
-        <Text
-          accessibilityRole="header"
-          nativeID="testUuidV4"
-          numberOfLines={2}
+        <View
+          justifyContent="left"
           style={
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 17,
-              "lineHeight": 27.2,
-              "textAlign": "center",
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
             }
           }
-          testID="modalHeaderTitle"
+        />
+        <View
+          style={
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            }
+          }
         >
-          Paramètres de notifications
-        </Text>
+          <Text
+            accessibilityRole="header"
+            nativeID="testUuidV4"
+            numberOfLines={2}
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              }
+            }
+            testID="modalHeaderTitle"
+          >
+            Paramètres de notifications
+          </Text>
+        </View>
+        <View
+          justifyContent="right"
+          style={
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            }
+          }
+        >
+          <View
+            accessibilityLabel="Fermer la modale"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Fermer la modale"
+          >
+            <View
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="0"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  testID="rightIcon"
+                  width={22}
+                >
+                  <Text>
+                    rightIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
       <View
-        justifyContent="right"
         style={
           {
-            "alignItems": "flex-start",
-            "flexDirection": "row",
-            "height": 28,
-            "justifyContent": "flex-end",
-            "width": 28,
+            "alignItems": "center",
+            "maxWidth": 500,
+            "width": "100%",
           }
         }
       >
         <View
-          accessibilityLabel="Fermer la modale"
+          height={156}
+          width={200}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+        <View
+          gap={4}
+          style={
+            {
+              "gap": 16,
+              "marginBottom": 24,
+              "marginTop": 40,
+            }
+          }
+        >
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              }
+            }
+          >
+            Reste informé des actualités du pass Culture en activant les notifications.
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              }
+            }
+          >
+            Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil.
+          </Text>
+        </View>
+        <View
+          accessibilityLabel="Autoriser les notifications"
           accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
               "checked": undefined,
-              "disabled": undefined,
+              "disabled": false,
               "expanded": undefined,
               "selected": undefined,
             }
@@ -190,10 +355,22 @@ exports[`PushNotificationsModal should render properly 1`] = `
                   "userSelect": "auto",
                 },
                 {
-                  "paddingBottom": 4,
-                  "paddingLeft": 4,
-                  "paddingRight": 4,
-                  "paddingTop": 4,
+                  "alignItems": "center",
+                  "backgroundColor": "#6123df",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#6123df",
+                  "borderStyle": "solid",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
+                  "width": "auto",
                 },
               ],
               {
@@ -201,196 +378,47 @@ exports[`PushNotificationsModal should render properly 1`] = `
               },
             ]
           }
-          testID="Fermer la modale"
+          testID="Autoriser les notifications"
         >
           <View
-            height={20}
-            testID="rightIcon"
-            width={20}
+            gap={8}
+            hasIcon={false}
+            isMultiline={false}
+            style={
+              {
+                "alignItems": "center",
+                "columnGap": 8,
+                "flexDirection": "row",
+              }
+            }
           >
-            <Text>
-              rightIcon-SVG-Mock
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#ffffff",
+                    "flexBasis": undefined,
+                    "flexGrow": undefined,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": undefined,
+                  },
+                ]
+              }
+            >
+              Autoriser les notifications
             </Text>
           </View>
         </View>
       </View>
     </View>
-    <View
-      style={
-        {
-          "alignItems": "center",
-          "maxWidth": 500,
-          "width": "100%",
-        }
-      }
-    >
-      <View
-        height={156}
-        width={200}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-      <View
-        numberOfSpaces={10}
-        style={
-          {
-            "height": 40,
-          }
-        }
-      />
-      <Text
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          }
-        }
-      >
-        Reste informé des actualités du pass Culture en activant les notifications.
-      </Text>
-      <View
-        numberOfSpaces={4}
-        style={
-          {
-            "height": 16,
-          }
-        }
-      />
-      <Text
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          }
-        }
-      >
-        Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil.
-      </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          {
-            "height": 24,
-          }
-        }
-      />
-      <View
-        accessibilityLabel="Autoriser les notifications"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": false,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "backgroundColor": "#6123df",
-                "borderBottomLeftRadius": 8,
-                "borderBottomRightRadius": 8,
-                "borderColor": "#6123df",
-                "borderStyle": "solid",
-                "borderTopLeftRadius": 8,
-                "borderTopRightRadius": 8,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "paddingBottom": 8,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 8,
-                "width": "auto",
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
-        }
-        testID="Autoriser les notifications"
-      >
-        <View
-          gap={8}
-          hasIcon={false}
-          isMultiline={false}
-          style={
-            {
-              "alignItems": "center",
-              "columnGap": 8,
-              "flexDirection": "row",
-            }
-          }
-        >
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                },
-                {
-                  "color": "#ffffff",
-                  "flexBasis": undefined,
-                  "flexGrow": undefined,
-                  "flexShrink": 1,
-                  "maxWidth": "100%",
-                  "minWidth": 0,
-                  "textAlign": undefined,
-                },
-              ]
-            }
-          >
-            Autoriser les notifications
-          </Text>
-        </View>
-      </View>
-    </View>
   </View>
-  <View
-    style={
-      {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "zIndex": -1,
-      }
-    }
-  />
 </Modal>
 `;

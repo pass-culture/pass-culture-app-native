@@ -1,7 +1,6 @@
 import React from 'react'
 
-import { navigate, replace } from '__mocks__/@react-navigation/native'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { goBack, navigate, replace } from '__mocks__/@react-navigation/native'
 import { captureMonitoringError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -17,7 +16,6 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('libs/monitoring/services')
 jest.mock('libs/monitoring/errors')
-jest.useFakeTimers()
 jest.mock('libs/network/NetInfoWrapper')
 
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
@@ -35,6 +33,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+jest.useFakeTimers()
 const user = userEvent.setup()
 
 describe('<ForgottenPassword />', () => {
@@ -65,13 +64,13 @@ describe('<ForgottenPassword />', () => {
     ).toBeOnTheScreen()
   })
 
-  it('should redirect to Login when clicking on ArrowPrevious icon', async () => {
+  it('should go back when pressing go back button', async () => {
     await renderForgottenPassword()
 
     const leftIcon = screen.getByTestId('Revenir en arrière')
     await user.press(leftIcon)
 
-    expect(navigate).toHaveBeenCalledWith('Login', { from: StepperOrigin.FORGOTTEN_PASSWORD })
+    expect(goBack).toHaveBeenCalledTimes(1)
   })
 
   it("should NOT open reCAPTCHA challenge's modal when there is no network", async () => {

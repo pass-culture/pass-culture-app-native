@@ -1,15 +1,13 @@
-import React, { useRef, useState } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import { Control, Controller, UseFormHandleSubmit } from 'react-hook-form'
-import { View, FlatList, ViewStyle, LayoutChangeEvent, ListRenderItem } from 'react-native'
-import styled from 'styled-components/native'
+import { View, FlatList, LayoutChangeEvent, ListRenderItem, ViewStyle } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { ActivityIdEnum, ActivityResponseModel } from 'api/gen'
 import { useActivityTypes } from 'features/identityCheck/queries/useActivityTypesQuery'
 import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedViewRefType } from 'libs/react-native-animatable'
-// eslint-disable-next-line local-rules/no-theme-from-theme
-import { theme } from 'theme'
 import { Gradient } from 'ui/components/Gradient'
 import { Li } from 'ui/components/Li'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
@@ -58,6 +56,18 @@ export function StatusFlatList({
     const { height } = event.nativeEvent.layout
     setBottomViewHeight(height)
   }
+  const theme = useTheme()
+
+  const flatListStyles: ViewStyle = useMemo(
+    () => ({
+      paddingHorizontal: theme.contentPage.marginHorizontal,
+      paddingVertical: theme.contentPage.marginVertical,
+      maxWidth: theme.contentPage.maxWidth,
+      width: '100%',
+      alignSelf: 'center',
+    }),
+    [theme]
+  )
 
   const renderItem: ListRenderItem<ActivityResponseModel> = ({ item }) => (
     <Li
@@ -135,14 +145,6 @@ const Container = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.s,
   marginBottom: theme.designSystem.size.spacing.xxl,
 }))
-
-const flatListStyles: ViewStyle = {
-  paddingHorizontal: theme.contentPage.marginHorizontal,
-  paddingVertical: theme.contentPage.marginVertical,
-  maxWidth: theme.contentPage.maxWidth,
-  width: '100%',
-  alignSelf: 'center',
-}
 
 const FlatListContainer = styled(View)({
   flex: 1,

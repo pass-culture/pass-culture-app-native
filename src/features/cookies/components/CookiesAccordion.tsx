@@ -1,5 +1,4 @@
 import React, { PropsWithChildren } from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -11,7 +10,7 @@ import { Accordion } from 'ui/components/Accordion'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { Separator } from 'ui/components/Separator'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const CookiesAccordion = ({
   cookie,
@@ -52,27 +51,23 @@ export const CookiesAccordion = ({
         defaultOpen={defaultOpen}>
         <React.Fragment>
           <Typo.Body>{info.description}</Typo.Body>
-          {info.caption ? (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={4} />
-              <InfoCaption>{info.caption}</InfoCaption>
-            </React.Fragment>
-          ) : null}
+          {info.caption ? <InfoCaption marginTop>{info.caption}</InfoCaption> : null}
         </React.Fragment>
       </StyledAccordionItem>
       {info.permanentCaption ? (
-        <React.Fragment>
-          <InfoCaption>{info.permanentCaption}</InfoCaption>
-          <Spacer.Column numberOfSpaces={4} />
-        </React.Fragment>
+        <InfoCaption marginBottom>{info.permanentCaption}</InfoCaption>
       ) : null}
       <Separator.Horizontal />
     </React.Fragment>
   )
 }
 
-const InfoCaption: React.FC<PropsWithChildren> = ({ children }) => (
-  <View>
+const InfoCaption: React.FC<PropsWithChildren<{ marginTop?: boolean; marginBottom?: boolean }>> = ({
+  children,
+  marginTop,
+  marginBottom,
+}) => (
+  <StyledView marginTop={marginTop} marginBottom={marginBottom}>
     <IconContainer>
       <StyledInfo />
     </IconContainer>
@@ -80,9 +75,15 @@ const InfoCaption: React.FC<PropsWithChildren> = ({ children }) => (
       <IconSpacer />
       {children}
     </CaptionNeutralInfo>
-  </View>
+  </StyledView>
 )
 
+const StyledView = styled.View<{ marginTop?: boolean; marginBottom?: boolean }>(
+  ({ theme, marginTop, marginBottom }) => ({
+    marginTop: marginTop ? theme.designSystem.size.spacing.s : 0,
+    marginBottom: marginBottom ? theme.designSystem.size.spacing.s : 0,
+  })
+)
 const IconSpacer = styled.View(({ theme }) => {
   const SPACER_BETWEEN_ICON_AND_TEXT = theme.designSystem.size.spacing.xs
   return {

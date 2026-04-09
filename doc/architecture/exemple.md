@@ -125,7 +125,7 @@ import { HomepageModule, isOffersModule, isVenuesModule, isVideoCarouselModule, 
 import { enrichModulesWithData } from 'features/home/helpers/enrichModulesWithData';
 import { isCloseToBottom } from 'libs/analytics';
 import { Spinner } from 'ui/components/Spinner';
-import { PageContent, Spacer, VideoCarouselModule } from 'src/features/home/pages/GenericHome'; // Imports simplifiés pour l'exemple
+import { PageContent, VideoCarouselModule } from 'src/features/home/pages/GenericHome'; // Imports simplifiés pour l'exemple
 import { View, Text } from 'react-native'; // Imports simplifiés
 
 // --- Définitions simplifiées pour l'exemple ---
@@ -214,7 +214,6 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
     () => (
       <View testID="listHeader">
         {Header}
-        <Spacer.Column numberOfSpaces={6} />
         {shouldDisplayVideoInHeader && videoCarouselModules[0] ? (
           <VideoCarouselModule
             index={0}
@@ -297,7 +296,6 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
     () => (
       <View testID="listHeader">
         {Header}
-        <Spacer.Column numberOfSpaces={6} />
         {/* Utilisation du booléen calculé par la fonction pure */}
         {shouldDisplayVideoInHeader && videoCarouselModules[0] ? (
           <VideoCarouselModule
@@ -427,7 +425,7 @@ import { isCloseToBottom } from 'libs/analytics';
 import { useTrackAllModulesSeen } from './useTrackAllModulesSeen';
 import { shouldDisplayVideoCarouselInHeader } from 'features/home/helpers/shouldDisplayVideoCarouselInHeader';
 import { Spinner } from 'ui/components/Spinner';
-import { PageContent, Spacer, VideoCarouselModule } from 'src/features/home/pages/GenericHome'; // Imports simplifiés pour l'exemple
+import { PageContent, VideoCarouselModule } from 'src/features/home/pages/GenericHome'; // Imports simplifiés pour l'exemple
 
 // --- Définitions simplifiées pour l'exemple ---
 type HomeViewModel = {
@@ -515,7 +513,6 @@ export function useHomeViewModel(initialModules: HomepageModule[], homeId: strin
     () => (
       <View testID="listHeader">
         {Header}
-        <Spacer.Column numberOfSpaces={6} />
         {shouldDisplayVideoInHeader && videoCarouselModules[0] ? (
           <VideoCarouselModule
             index={0}
@@ -648,7 +645,7 @@ export const GenericHome: FunctionComponent<GenericHomeProps> = (props) => {
 // Fichier : src/features/home/components/HomeListHeader.tsx
 import React, { FunctionComponent } from 'react';
 import { View } from 'react-native';
-import { Spacer, PageContent, VideoCarouselModule } from 'src/features/home/pages/GenericHome'; // Imports simplifiés
+import { PageContent, VideoCarouselModule } from 'src/features/home/pages/GenericHome'; // Imports simplifiés
 import { HomepageModule } from 'features/home/types';
 
 type HomeListHeaderProps = {
@@ -669,7 +666,6 @@ export const HomeListHeader: FunctionComponent<HomeListHeaderProps> = ({
   return (
     <View testID="listHeader">
       {Header}
-      <Spacer.Column numberOfSpaces={6} />
       {shouldDisplayVideoInHeader && videoCarouselModules[0] ? (
         <VideoCarouselModule
           index={0}

@@ -262,7 +262,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 65,
             }
@@ -276,13 +276,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
           style={{}}
         >
           <View>
-            <View
-              style={
-                {
-                  "marginTop": 24,
-                }
-              }
-            >
+            <View>
               <View
                 style={
                   {
@@ -337,9 +331,6 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                 style={
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "marginBottom": 24,
                   }
                 }

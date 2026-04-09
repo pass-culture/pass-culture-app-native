@@ -3,12 +3,10 @@ import React, { ComponentProps } from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { OfferResponse, SubcategoriesResponseModelv2 } from 'api/gen'
-import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
+import { adviceVariantInfoFixture } from 'features/advices/fixtures/adviceVariantInfo.fixture'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Position } from 'libs/location/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -64,7 +62,6 @@ describe('<OfferContent />', () => {
   const user = userEvent.setup()
 
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockAuthContextWithoutUser({ persist: true })
@@ -179,8 +176,8 @@ const renderOfferContent = ({
         offer={offer}
         searchGroupList={PLACEHOLDER_DATA.searchGroups}
         subcategory={subcategory}
-        chronicleVariantInfo={chronicleVariantInfoFixture}
-        onShowChroniclesWritersModal={jest.fn()}
+        adviceVariantInfo={adviceVariantInfoFixture}
+        onShowClubAdviceWritersModal={jest.fn()}
         onVideoConsentPress={jest.fn()}
         onShowOfferArtistsModal={jest.fn()}
       />,

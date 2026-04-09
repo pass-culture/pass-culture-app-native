@@ -9,7 +9,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { PageNotFound } from 'ui/svg/icons/PageNotFound'
 import { Validate } from 'ui/svg/icons/Validate'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -68,7 +68,6 @@ export const BrowserNotSupportedPage: React.FC<{
 
           <AccessibleUnorderedList
             withPadding
-            Separator={<Spacer.Column numberOfSpaces={2} />}
             items={Object.entries(supportedBrowsers).map(([browser, version]) => {
               let displayedMessage = `${browser}`
               if (version > 0) displayedMessage += ` (version ≥ ${version})`
@@ -133,6 +132,7 @@ const ListContainer = styled(ViewGap)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   paddingHorizontal: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.s,
 }))
 
 const ButtonContainer = styled.View(({ theme }) => ({

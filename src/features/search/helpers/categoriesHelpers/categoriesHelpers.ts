@@ -254,22 +254,20 @@ export function isOnlyOnline(
     return false
   }
 
-  const platforms: OnlineOfflinePlatformChoicesEnum[] = [
-    ...new Set(
-      data.subcategories
-        .filter((subcategory) =>
-          nativeCategoryId
-            ? subcategory.nativeCategoryId === nativeCategoryId
-            : subcategory.searchGroupName === categoryId
-        )
-        .map((subcategory) => subcategory.onlineOfflinePlatform)
-    ),
-  ]
+  const platforms: Set<OnlineOfflinePlatformChoicesEnum> = new Set(
+    data.subcategories
+      .filter((subcategory) =>
+        nativeCategoryId
+          ? subcategory.nativeCategoryId === nativeCategoryId
+          : subcategory.searchGroupName === categoryId
+      )
+      .map((subcategory) => subcategory.onlineOfflinePlatform)
+  )
 
   const isOnlyOnline =
-    platforms.includes(OnlineOfflinePlatformChoicesEnum.ONLINE) &&
-    !platforms.includes(OnlineOfflinePlatformChoicesEnum.ONLINE_OR_OFFLINE) &&
-    !platforms.includes(OnlineOfflinePlatformChoicesEnum.OFFLINE)
+    platforms.has(OnlineOfflinePlatformChoicesEnum.ONLINE) &&
+    !platforms.has(OnlineOfflinePlatformChoicesEnum.ONLINE_OR_OFFLINE) &&
+    !platforms.has(OnlineOfflinePlatformChoicesEnum.OFFLINE)
 
   return isOnlyOnline
 }
@@ -374,14 +372,16 @@ export const useSubcategoryIdsFromSearchGroups = (
 
   const { nativeCategories, subcategories } = data
 
-  const filteredNativeCategories = nativeCategories
-    .filter((nativeCategory) =>
-      nativeCategory.parents.some((parent) => searchGroups.includes(parent))
-    )
-    .map((filteredNativeCategory) => filteredNativeCategory.name)
+  const filteredNativeCategories = new Set(
+    nativeCategories
+      .filter((nativeCategory) =>
+        nativeCategory.parents.some((parent) => searchGroups.includes(parent))
+      )
+      .map((filteredNativeCategory) => filteredNativeCategory.name)
+  )
 
   return subcategories
-    .filter((subcategory) => filteredNativeCategories.includes(subcategory.nativeCategoryId))
+    .filter((subcategory) => filteredNativeCategories.has(subcategory.nativeCategoryId))
     .map((filteredSubcategory) => filteredSubcategory.id)
 }
 

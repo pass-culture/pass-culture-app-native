@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, FlatListProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferAnalyticsParams } from 'libs/analytics/types'
@@ -21,7 +21,7 @@ export const VideoMultiOfferList: React.FC<OfferListProps> = ({
 }) => {
   return (
     <React.Fragment>
-      <FlatList
+      <StyledFlatList
         ItemSeparatorComponent={ItemSeparatorComponent}
         data={offers}
         renderItem={({ item }) => (
@@ -33,7 +33,6 @@ export const VideoMultiOfferList: React.FC<OfferListProps> = ({
           />
         )}
       />
-      <Spacer.Column numberOfSpaces={4} />
       <Spacer.BottomScreen />
     </React.Fragment>
   )
@@ -51,3 +50,6 @@ function ItemSeparatorComponent() {
     </ItemSeparatorContainer>
   )
 }
+const StyledFlatList = styled(FlatList)<FlatListProps<Offer>>(({ theme }) => ({
+  marginBottom: theme.tabBar.height + theme.designSystem.size.spacing.l,
+}))

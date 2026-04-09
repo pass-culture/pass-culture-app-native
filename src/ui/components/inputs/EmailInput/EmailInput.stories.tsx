@@ -8,6 +8,8 @@ import { EmailInput } from './EmailInput'
 const meta: Meta<typeof EmailInput> = {
   title: 'ui/inputs/EmailInput',
   component: EmailInput,
+  // Disabled this rule because id and data-testid is not duplicate ID
+  parameters: { axe: { disabledRules: ['duplicate-id-aria'] } },
 }
 export default meta
 

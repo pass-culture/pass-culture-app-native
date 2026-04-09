@@ -6,7 +6,7 @@ import { useAchievementDetails } from 'features/achievements/hooks/useAchievemen
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -41,7 +41,6 @@ export const AchievementDetailsModal = ({ visible, hideModal, name }: Props) => 
         <IconsWrapper>
           <Illustration size={illustrations.sizes.fullPage} />
         </IconsWrapper>
-        <Spacer.Column numberOfSpaces={6} />
         <BodyWrapper>
           {achievement.completed ? (
             <Tag label={completedAtLabel} variant={TagVariant.NEW} />
@@ -49,12 +48,10 @@ export const AchievementDetailsModal = ({ visible, hideModal, name }: Props) => 
             <Tag label="Non débloqué" />
           )}
         </BodyWrapper>
-        <Spacer.Column numberOfSpaces={4} />
         {achievement.completed ? (
-          <React.Fragment>
+          <TitleContainer>
             <Typo.Title3>{achievement.title}</Typo.Title3>
-            <Spacer.Column numberOfSpaces={4} />
-          </React.Fragment>
+          </TitleContainer>
         ) : null}
         <StyledDescrption>{achievement.description}</StyledDescrption>
       </Container>
@@ -62,6 +59,9 @@ export const AchievementDetailsModal = ({ visible, hideModal, name }: Props) => 
   )
 }
 
+const TitleContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
 const Container = styled.View(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
@@ -73,6 +73,8 @@ const IconsWrapper = styled.View({
 })
 
 const BodyWrapper = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.l,
   paddingHorizontal: theme.designSystem.size.spacing.s,
   paddingVertical: theme.designSystem.size.spacing.xs,
   borderRadius: theme.designSystem.size.borderRadius.s,

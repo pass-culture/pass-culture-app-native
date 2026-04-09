@@ -1,5 +1,5 @@
 import { ComponentType, PropsWithChildren, ReactNode } from 'react'
-import { Animated } from 'react-native'
+import { Animated, LayoutChangeEvent } from 'react-native'
 
 import {
   CategoryIdEnum,
@@ -11,10 +11,10 @@ import {
   SearchGroupResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { ChronicleCardData } from 'features/chronicle/type'
+import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { Referrals } from 'features/navigation/RootNavigator/types'
-import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { PlaylistType } from 'features/offer/enums'
+import { FavoriteCTAProps } from 'features/offerRefacto/types'
 import { AlgoliaGeoloc } from 'libs/algolia/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { NAVIGATION_METHOD } from 'shared/constants'
@@ -77,14 +77,24 @@ type OfferHeaderComponentProps = PropsWithChildren<{
   offer: OfferResponse
 }>
 
+type OfferCTAsComponentProps = {
+  offer: OfferResponse
+  subcategory: Subcategory
+  trackEventHasSeenOfferOnce: VoidFunction
+  favoriteCTAProps: FavoriteCTAProps
+  fullScreen?: boolean
+  onLayout?: (params: LayoutChangeEvent) => void
+}
+
 export type OfferContentProps = {
   offer: OfferResponse
   searchGroupList: SearchGroupResponseModelv2[]
-  chronicleVariantInfo: ChronicleVariantInfo
+  adviceVariantInfo: AdviceVariantInfo
   subcategory: Subcategory
-  onShowChroniclesWritersModal: () => void
+  onShowClubAdviceWritersModal: () => void
   onShowOfferArtistsModal: (artists: OfferArtist[]) => void
-  chronicles?: ChronicleCardData[]
+  clubAdvices?: AdviceCardData[]
+  proAdvices?: AdviceCardData[]
   headlineOffersCount?: number
   defaultReaction?: ReactionTypeEnum | null
   onReactionButtonPress?: () => void
@@ -93,6 +103,8 @@ export type OfferContentProps = {
   onVideoConsentPress: VoidFunction
   isMultiArtistsEnabled?: boolean
   HeaderComponent?: ComponentType<OfferHeaderComponentProps>
+  CTAsComponent?: ComponentType<OfferCTAsComponentProps>
+  proAdvicesCount?: number
 }
 
 export type OfferImageContainerDimensions = {
@@ -109,4 +121,10 @@ export type OfferImageContainerDimensions = {
 export type Duration = {
   label: string
   accessibilityLabel: string
+}
+
+export type AdvicesStatus = {
+  total: number
+  hasPublished: boolean
+  hasUnpublished: boolean
 }

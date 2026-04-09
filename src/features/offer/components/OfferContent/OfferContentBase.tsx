@@ -7,6 +7,7 @@ import React, {
   useEffect,
   useMemo,
   useRef,
+  useState,
 } from 'react'
 import {
   LayoutChangeEvent,
@@ -21,12 +22,12 @@ import { IOScrollView as IntersectionObserverScrollView } from 'react-native-int
 import styled, { useTheme } from 'styled-components/native'
 
 import { OfferArtist, OfferResponse, ReactionTypeEnum, RecommendationApiParams } from 'api/gen'
-import { ChronicleCardData } from 'features/chronicle/type'
+import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
-import { ChroniclesSectionWithAnchor } from 'features/offer/components/OfferContent/ChronicleSection/ChroniclesSectionWithAnchor'
-import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
+import { AdviceSectionWithAnchor } from 'features/offer/components/OfferContent/AdviceSection/AdviceSectionWithAnchor'
+import { ClubAdviceSection } from 'features/offer/components/OfferContent/ClubAdviceSection/ClubAdviceSection'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { OfferContentCTAs } from 'features/offer/components/OfferFooter/OfferContentCTAs'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
@@ -53,26 +54,29 @@ import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImage
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { ImageWithCredit } from 'shared/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 type OfferContentBaseProps = OfferContentProps &
   PropsWithChildren<{
     BodyWrapper: FunctionComponent
     onOfferPreviewPress: (index?: number) => void
-    onShowChroniclesWritersModal: () => void
+    onShowClubAdviceWritersModal: () => void
     onShowOfferArtistsModal: (artists: OfferArtist[]) => void
     onVideoConsentPress?: () => void
-    chronicles?: ChronicleCardData[]
+    clubAdvices?: AdviceCardData[]
     likesCount?: number
     headlineOffersCount?: number
     defaultReaction?: ReactionTypeEnum | null
     onReactionButtonPress?: () => void
     contentContainerStyle?: StyleProp<ViewStyle>
     onLayout?: (params: LayoutChangeEvent) => void
-    chronicleVariantInfo?: ChronicleVariantInfo
+    adviceVariantInfo?: AdviceVariantInfo
     isVideoSectionEnabled?: boolean
   }>
 
@@ -82,14 +86,15 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   offer,
   searchGroupList,
   subcategory,
-  chronicles,
-  chronicleVariantInfo,
+  clubAdvices,
+  proAdvices,
+  adviceVariantInfo,
   headlineOffersCount,
   onOfferPreviewPress,
   contentContainerStyle,
   defaultReaction,
   onReactionButtonPress,
-  onShowChroniclesWritersModal,
+  onShowClubAdviceWritersModal,
   isVideoSectionEnabled,
   BodyWrapper = React.Fragment,
   onLayout,
@@ -99,6 +104,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
   HeaderComponent,
+  CTAsComponent,
+  proAdvicesCount,
   children,
 }) => {
   const HeaderToRender = HeaderComponent || OfferHeader
@@ -125,6 +132,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   } = useOfferPlaylist({ offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList })
   const scrollViewRef = useRef<ScrollView>(null)
   const scrollYRef = useRef<number>(0)
+  const [isBottomReached, setIsBottomReached] = useState(false)
+  const isBottomReachedRef = useRef(false)
 
   const logConsultWholeOffer = useFunctionOnce(() => {
     void analytics.logConsultWholeOffer(offer.id)
@@ -191,6 +200,11 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
       onScroll(event)
       scrollYRef.current = event.nativeEvent.contentOffset.y
+      const closeToBottom = isCloseToBottom(event.nativeEvent)
+      if (closeToBottom !== isBottomReachedRef.current) {
+        isBottomReachedRef.current = closeToBottom
+        setIsBottomReached(closeToBottom)
+      }
     },
     [onScroll]
   )
@@ -230,10 +244,10 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
 
   const imageDimensions = useOfferImageContainerDimensions(offer.subcategoryId)
 
-  const onSeeMoreButtonPress = (chronicleId: number) => {
+  const onSeeMoreButtonPress = (adviceId: number) => {
     // It's dirty but necessary to use from parameter for the logs
-    navigate('Chronicles', { offerId: offer.id, chronicleId, from: 'chronicles' })
-    void analytics.logConsultChronicle({ offerId: offer.id, chronicleId })
+    navigate('ClubAdvices', { offerId: offer.id, adviceId, from: 'chronicles' })
+    void analytics.logConsultChronicle({ offerId: offer.id, chronicleId: adviceId })
   }
 
   const handleOnSeeAllReviewsPress = () => {
@@ -250,6 +264,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
       offer={offer}
       subcategory={subcategory}
       trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+      displayStickyGradient={!isBottomReached}
     />
   )
 
@@ -269,6 +284,20 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
       })
     },
     [offer.id, pageTracking]
+  )
+
+  const OfferCTAsComponent = CTAsComponent ? (
+    <CTAsComponent
+      offer={offer}
+      subcategory={subcategory}
+      trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+      favoriteCTAProps={favoriteButtonProps}
+      onLayout={onLayout}
+    />
+  ) : (
+    <OfferContentCTAs offer={offer} onLayout={onLayout} {...favoriteButtonProps}>
+      {offerCtaButton}
+    </OfferContentCTAs>
   )
 
   return (
@@ -313,33 +342,58 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               offer={offer}
               subcategory={subcategory}
               likesCount={offer.reactionsCount.likes}
-              chroniclesCount={offer.chroniclesCount}
-              chronicles={chronicles}
+              clubAdvicesCount={offer.chroniclesCount}
+              clubAdvices={clubAdvices}
               distance={distance}
               headlineOffersCount={headlineOffersCount}
-              chronicleVariantInfo={chronicleVariantInfo}
+              adviceVariantInfo={adviceVariantInfo}
               isVideoSectionEnabled={isVideoSectionEnabled}
               hasVideoCookiesConsent={hasVideoCookiesConsent}
               onVideoConsentPress={onVideoConsentPress}
               isMultiArtistsEnabled={isMultiArtistsEnabled}
-              onShowOfferArtistsModal={onShowOfferArtistsModal}>
-              {theme.isDesktopViewport ? (
-                <OfferContentCTAs offer={offer} {...favoriteButtonProps}>
-                  {offerCtaButton}
-                </OfferContentCTAs>
-              ) : null}
+              onShowOfferArtistsModal={onShowOfferArtistsModal}
+              proAdvicesCount={proAdvicesCount}
+              proAdvices={proAdvices}>
+              {theme.isDesktopViewport ? OfferCTAsComponent : null}
             </OfferBody>
           </BodyWrapper>
 
-          {chronicles?.length ? (
-            <ChroniclesSectionWithAnchor
-              chronicles={chronicles}
-              chronicleVariantInfo={chronicleVariantInfo}
-              offer={offer}
-              onSeeMoreButtonPress={onSeeMoreButtonPress}
-              onShowChroniclesWritersModal={onShowChroniclesWritersModal}
-              onSeeAllReviewsPress={handleOnSeeAllReviewsPress}
-            />
+          {clubAdvices?.length ? (
+            <AdviceSectionWithAnchor
+              anchorName={AnchorNames.CLUB_ADVICE_SECTION}
+              sectionId="club-advice-section"
+              anchorSectionId="club-advice-section-anchor">
+              <ClubAdviceSection
+                ctaLabel={offer.chroniclesCount ? `Lire les ${offer.chroniclesCount} avis` : ''}
+                variantInfo={adviceVariantInfo}
+                data={clubAdvices}
+                // It's dirty but necessary to use from parameter for the logs
+                navigateTo={{
+                  screen: 'ClubAdvices',
+                  params: { offerId: offer.id, from: 'chronicles' },
+                }}
+                onBeforeNavigate={handleOnSeeAllReviewsPress}
+                onSeeMoreButtonPress={onSeeMoreButtonPress}
+                onShowClubAdviceWritersModal={onShowClubAdviceWritersModal}
+              />
+            </AdviceSectionWithAnchor>
+          ) : null}
+          {proAdvices?.length ? (
+            <AdviceSectionWithAnchor
+              anchorName={AnchorNames.PRO_ADVICE_SECTION}
+              sectionId="pro-advice-section"
+              anchorSectionId="pro-advice-section-anchor">
+              <Gutter>
+                <InternalTouchableLink
+                  as={Button}
+                  wording={`Lire les ${proAdvices.length} avis des pros`}
+                  navigateTo={{ screen: 'ProAdvicesOffer', params: { offerId: offer.id } }}
+                  variant="secondary"
+                  color="neutral"
+                  size="small"
+                />
+              </Gutter>
+            </AdviceSectionWithAnchor>
           ) : null}
           <StyledSectionWithDivider
             visible
@@ -358,13 +412,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           />
           {children}
         </IntersectionObserverScrollView>
-        {theme.isMobileViewport ? (
-          <FooterContainer>
-            <OfferContentCTAs offer={offer} onLayout={onLayout} {...favoriteButtonProps}>
-              {offerCtaButton}
-            </OfferContentCTAs>
-          </FooterContainer>
-        ) : null}
+        {theme.isMobileViewport ? <FooterContainer>{OfferCTAsComponent}</FooterContainer> : null}
       </AnchorProvider>
     </Container>
   )
@@ -382,4 +430,8 @@ const FooterContainer = styled.View(({ theme }) => ({
 
 const StyledSectionWithDivider = styled(SectionWithDivider)(({ theme }) => ({
   paddingBottom: theme.designSystem.size.spacing.xxl,
+}))
+
+const Gutter = styled.View(({ theme }) => ({
+  paddingHorizontal: theme.contentPage.marginHorizontal,
 }))

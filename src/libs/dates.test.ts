@@ -98,3 +98,17 @@ describe('timeDiffInHours', () => {
     expect(timeDiffInHours('2022-07-08T12:00:00Z')).toBe(-1)
   })
 })
+
+describe('formatToReadableFrenchDate invalid inputs', () => {
+  it('should return empty string for invalid date string', () => {
+    expect(formatToReadableFrenchDate('not a date')).toBe('')
+  })
+
+  it('should return empty string for empty string', () => {
+    expect(formatToReadableFrenchDate('')).toBe('')
+  })
+
+  it('should return empty string for invalid Date object', () => {
+    expect(formatToReadableFrenchDate(new Date('invalid'))).toBe('')
+  })
+})

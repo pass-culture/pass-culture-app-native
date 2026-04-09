@@ -120,6 +120,7 @@ exports[`<ErrorApplicationModal /> should match previous snapshot 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -158,7 +159,7 @@ exports[`<ErrorApplicationModal /> should match previous snapshot 1`] = `
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -171,12 +172,14 @@ exports[`<ErrorApplicationModal /> should match previous snapshot 1`] = `
       testID="modalContainer"
     >
       <View
+        marginTop={0}
         onLayout={[Function]}
         style={
           {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
+            "marginTop": 0,
             "width": "100%",
           }
         }
@@ -244,7 +247,7 @@ ton crédit
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -273,10 +276,20 @@ ton crédit
                     "userSelect": "auto",
                   },
                   {
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "auto",
                   },
                 ],
                 {
@@ -287,13 +300,53 @@ ton crédit
             testID="Fermer la modale"
           >
             <View
-              height={20}
-              testID="rightIcon"
-              width={20}
+              gap={0}
+              hasIcon={true}
+              isMultiline={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 0,
+                  "flexDirection": "row",
+                }
+              }
             >
-              <Text>
-                rightIcon-SVG-Mock
-              </Text>
+              <View
+                collapsable={false}
+                jestAnimatedProps={
+                  {
+                    "value": {},
+                  }
+                }
+                jestAnimatedStyle={
+                  {
+                    "value": {},
+                  }
+                }
+                jestInlineStyle={
+                  {
+                    "flexShrink": 0,
+                  }
+                }
+                nativeID="0"
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={22}
+                  testID="rightIcon"
+                  width={22}
+                >
+                  <Text>
+                    rightIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>
@@ -308,6 +361,7 @@ ton crédit
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -565,7 +619,7 @@ ton crédit
                             "flexShrink": 0,
                           }
                         }
-                        nativeID="0"
+                        nativeID="1"
                         style={
                           [
                             {

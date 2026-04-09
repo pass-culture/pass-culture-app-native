@@ -18,18 +18,21 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   offer,
   searchGroupList,
   subcategory,
-  chronicles,
-  chronicleVariantInfo,
+  clubAdvices,
+  proAdvices,
+  proAdvicesCount,
+  adviceVariantInfo,
   defaultReaction,
   headlineOffersCount,
   onReactionButtonPress,
-  onShowChroniclesWritersModal,
+  onShowClubAdviceWritersModal,
   userId,
   hasVideoCookiesConsent,
   onVideoConsentPress,
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
   HeaderComponent,
+  CTAsComponent,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -51,20 +54,23 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         onOfferPreviewPress={handlePreviewPress}
         isVideoSectionEnabled={isVideoSectionEnabled}
         BodyWrapper={BodyWrapper}
-        chronicles={chronicles}
-        chronicleVariantInfo={chronicleVariantInfo}
+        clubAdvices={clubAdvices}
+        proAdvices={proAdvices}
+        adviceVariantInfo={adviceVariantInfo}
         headlineOffersCount={headlineOffersCount}
         subcategory={subcategory}
         defaultReaction={defaultReaction}
         onReactionButtonPress={onReactionButtonPress}
         onLayout={onLayout}
         userId={userId}
-        onShowChroniclesWritersModal={onShowChroniclesWritersModal}
+        onShowClubAdviceWritersModal={onShowClubAdviceWritersModal}
         hasVideoCookiesConsent={hasVideoCookiesConsent}
         onVideoConsentPress={onVideoConsentPress}
         onShowOfferArtistsModal={onShowOfferArtistsModal}
         isMultiArtistsEnabled={isMultiArtistsEnabled}
-        HeaderComponent={HeaderComponent}>
+        HeaderComponent={HeaderComponent}
+        CTAsComponent={CTAsComponent}
+        proAdvicesCount={proAdvicesCount}>
         {comingSoonFooterHeight ? (
           <ComingSoonFooterOffset
             testID="coming-soon-footer-offset"

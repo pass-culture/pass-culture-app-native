@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { ColorsType } from 'theme/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import {
@@ -32,7 +32,10 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   onBeforeNavigate,
   height,
 }) => {
-  const effectiveHeight = useFontScaleValue({ default: height, at200PercentZoom: undefined })
+  const effectiveHeight = useMobileFontScaleToDisplay({
+    default: height,
+    at200PercentZoom: undefined,
+  })
 
   const focusProps = useHandleFocus()
   const hoverProps = useHandleHover()

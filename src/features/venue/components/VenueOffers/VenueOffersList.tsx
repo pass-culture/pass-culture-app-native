@@ -1,26 +1,24 @@
-import { useIsFocused, useRoute } from '@react-navigation/native'
+import { useIsFocused, useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import { Platform, ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
+import { ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
+import { VenueAdvicesSection } from 'features/venue/components/VenueAdvicesSection/VenueAdvicesSection'
 import { VenueOffersProps } from 'features/venue/components/VenueOffers/VenueOffers'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatPlaylistDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
-import {
-  formatPrice,
-  getDisplayedPrice,
-  getIfPricesShouldBeFixed,
-} from 'libs/parsers/getDisplayedPrice'
+import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
@@ -58,19 +56,55 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   currency,
   euroToPacificFrancRate,
   onViewableItemsChanged,
+  advicesCardData,
+  nbAdvices,
+  enableNewTagProAdvices,
+  onShowWritersModal,
 }) => {
   const theme = useTheme()
   const { user } = useAuthContext()
   const artistsPlaylistEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_ARTISTS_PLAYLIST)
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavigationConfig = useNavigateToSearchWithVenueOffers(venue)
+  const { navigate } = useNavigation<UseNavigationType>()
   const isFocused = useIsFocused()
 
   const { hits = [] } = venueOffers ?? {}
   const { artists = [] } = venueArtists ?? {}
   const shouldDisplayArtistsPlaylist = artistsPlaylistEnabled && artists.length > 0
+  const shouldDisplayAdvicesSection = advicesCardData && advicesCardData.length > 0 && nbAdvices > 0
 
   const onPressSeeMore = () => analytics.logVenueSeeMoreClicked(venue.id)
+
+  const onPressAdviceCardSeeMore = (offerId: number) => {
+    void analytics.logConsultAdvice({
+      from: 'venue',
+      offerId: offerId.toString(),
+      venueId: venue.id.toString(),
+      originDetails: 'Les avis des pros',
+      adviceType: 'pro',
+    })
+    navigate('ProAdvicesVenue', { venueId: venue.id, offerId })
+  }
+
+  const onPressAllAdvicesButton = () => {
+    void analytics.logConsultAdvice({
+      from: 'venue',
+      venueId: venue.id.toString(),
+      originDetails: 'Lire les x avis',
+      adviceType: 'pro',
+    })
+  }
+
+  const onFeedbackLog = (type: ReactionTypeEnum) => {
+    const feedbackResponse = type === ReactionTypeEnum.LIKE ? 'Oui' : 'Non'
+    void analytics.logFeatureFeedbackClicked({
+      featureName: 'pro_advices',
+      feedbackResponse,
+      from: 'venue',
+      venueId: venue.id.toString(),
+    })
+  }
 
   const renderFooter: RenderFooterItem = ({ width, height }: { width: number; height: number }) => (
     <SeeMore
@@ -85,7 +119,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
     const tag = renderInteractionTag({
       theme,
       likesCount: item.offer.likes,
-      chroniclesCount: item.offer.chroniclesCount,
+      advicesCount: item.offer.chroniclesCount,
       isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
       subcategoryId: item.offer.subcategoryId,
     })
@@ -107,7 +141,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           currency,
           euroToPacificFrancRate,
           formatPrice({
-            isFixed: getIfPricesShouldBeFixed(item.offer.subcategoryId),
             isDuo: !!(item.offer.isDuo && user?.isBeneficiary),
           })
         )}
@@ -121,7 +154,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   }
 
   const handleArtistsPlaylistPress = (artistId: string, artistName: string) => {
-    analytics.logConsultArtist({
+    void analytics.logConsultArtist({
       artistId,
       artistName,
       from: 'venue',
@@ -176,6 +209,18 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           />
         )}
       </ObservedPlaylist>
+      {shouldDisplayAdvicesSection ? (
+        <VenueAdvicesSection
+          advicesCardData={advicesCardData}
+          nbAdvices={nbAdvices}
+          venue={venue}
+          onPressAdviceCardSeeMore={onPressAdviceCardSeeMore}
+          enableNewTagProAdvices={enableNewTagProAdvices}
+          onShowWritersModal={onShowWritersModal}
+          onPressAllAdvicesButton={onPressAllAdvicesButton}
+          onFeedbackLog={onFeedbackLog}
+        />
+      ) : null}
       {shouldDisplayArtistsPlaylist ? (
         <ArtistsPlaylistContainer gap={2}>
           <ArtistsPlaylistTitleText>Les artistes disponibles dans ce lieu</ArtistsPlaylistTitleText>

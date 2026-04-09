@@ -20,7 +20,7 @@ import {
 } from 'ui/components/placeholders/Placeholders'
 import { Separator } from 'ui/components/Separator'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT_V2 } from 'ui/theme/constants'
 
 import { NoBookingsView } from './NoBookingsView'
@@ -91,7 +91,7 @@ export const OnGoingBookingsList: FunctionComponent<Props> = ({ useOngoingBookin
       refreshing={isRefreshing}
       onRefresh={onRefetch}
       contentContainerStyle={contentContainerStyle(designSystem)}
-      ListHeaderComponent={hasBookings ? <Spacer.Column numberOfSpaces={6} /> : null}
+      ListHeaderComponent={hasBookings ? <Placeholder /> : null}
       ListEmptyComponent={<NoBookingsView />}
       ItemSeparatorComponent={enableNewBookings ? null : ItemSeparatorComponent}
       onScroll={onScroll}
@@ -99,6 +99,9 @@ export const OnGoingBookingsList: FunctionComponent<Props> = ({ useOngoingBookin
     />
   )
 }
+const Placeholder = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xl,
+}))
 
 const keyExtractor = (item: BookingListItemResponse) => item.id.toString()
 

@@ -1,6 +1,8 @@
 import { SubcategoryIdEnum } from 'api/gen'
 import { getIsMusicSupport } from 'features/offerRefacto/helpers'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('getIsMusicSupport', () => {
   it('should return false if subcategoryId is undefined', () => {
     expect(getIsMusicSupport(undefined)).toEqual(false)

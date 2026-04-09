@@ -17,7 +17,7 @@ import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Marianne } from 'ui/svg/icons/Marianne'
 import { Ubble } from 'ui/svg/icons/Ubble'
 import { UbbleDark } from 'ui/svg/icons/UbbleDark'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const IdentificationFork: FunctionComponent = () => {
   return (
@@ -80,10 +80,13 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
           />
         </BannerContainer>
       ) : null}
-      <Spacer.Column numberOfSpaces={10} />
+      <Placeholder />
     </Container>
   )
 }
+const Placeholder = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xxxl,
+}))
 
 const Container = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xs,

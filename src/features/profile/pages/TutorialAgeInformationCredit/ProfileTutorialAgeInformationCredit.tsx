@@ -28,6 +28,7 @@ import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Button } from 'ui/designSystem/Button/Button'
 import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
@@ -39,7 +40,7 @@ import { Lock } from 'ui/svg/icons/Lock'
 import { Offers } from 'ui/svg/icons/Offers'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ProfileTutorialAgeInformationCredit = () => {
@@ -103,10 +104,9 @@ export const ProfileTutorialAgeInformationCredit = () => {
             color={designSystem.color.background.brandSecondary}
           />
         </RowView>
-        <Spacer.Column numberOfSpaces={6} />
         <AccessibleUnorderedList
           withPadding
-          Separator={<Spacer.Column numberOfSpaces={4} />}
+          Separator={<Separator />}
           items={[
             <BlockDescriptionItem
               key={1}
@@ -158,24 +158,22 @@ export const ProfileTutorialAgeInformationCredit = () => {
     {
       creditStep: 17,
       children: (
-        <React.Fragment>
+        <ViewGap gap={4}>
           <CreditProgressBar progress={0.5} />
-          <Spacer.Column numberOfSpaces={4} />
           <BlockDescriptionItem
             icon={<SmallLock />}
             text="Tu as jusqu’à la veille de tes 18 ans pour confirmer ton identité et activer ton crédit."
           />
-        </React.Fragment>
+        </ViewGap>
       ),
     },
     {
       creditStep: 18,
       children: (
-        <React.Fragment>
+        <ViewGap gap={6}>
           <CreditProgressBar progress={1} />
-          <Spacer.Column numberOfSpaces={6} />
           <AccessibleUnorderedList
-            Separator={<Spacer.Column numberOfSpaces={4} />}
+            Separator={<Separator />}
             items={[
               <BlockDescriptionItem
                 key={1}
@@ -190,7 +188,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
             ]}
             withPadding
           />
-        </React.Fragment>
+        </ViewGap>
       ),
     },
     {
@@ -214,30 +212,51 @@ export const ProfileTutorialAgeInformationCredit = () => {
     <Page>
       <StyledScrollView onScroll={onScroll} scrollEventThrottle={16}>
         <Placeholder height={headerHeight} />
-        <Spacer.Column numberOfSpaces={7} />
-        <Typo.Title3 numberOfLines={3} {...getHeadingAttrs(1)}>
-          {headerTitle}
-        </Typo.Title3>
-        <Spacer.Column numberOfSpaces={6} />
+        <TextContainer>
+          <Typo.Title3 numberOfLines={3} {...getHeadingAttrs(1)}>
+            {headerTitle}
+          </Typo.Title3>
+        </TextContainer>
         <Typo.BodyS numberOfLines={3} {...getHeadingAttrs(2)}>
           De 17 à 18 ans, le pass Culture offre un crédit à dépenser dans l’application pour des
           activités culturelles.
         </Typo.BodyS>
-        <Spacer.Column numberOfSpaces={6} />
-        <CreditTimelineV3 age={17} stepperProps={stepperProps} testID="seventeen-timeline" />
-        <Spacer.Column numberOfSpaces={4} />
-        <Banner
-          label="Des questions sur ton crédit&nbsp;?"
-          description="Les récents ajustements du dispositif peuvent en être la raison."
-          links={[
-            {
-              wording: 'Plus d’infos dans notre FAQ',
-              externalNav: { url: env.FAQ_LINK_CREDIT_V3 },
-              onBeforeNavigate: () => analytics.logHasClickedTutorialFAQ(),
-            },
-          ]}
-        />
-        <Spacer.Column numberOfSpaces={12} />
+        <CreditTimelineContainer>
+          <CreditTimelineV3 age={17} stepperProps={stepperProps} testID="seventeen-timeline" />
+        </CreditTimelineContainer>
+        {enableBonification ? (
+          <Banner
+            label="Des questions sur ton crédit&nbsp;?"
+            description="N’hésite pas à consulter nos pages d’aide pour trouver les réponses à tes questions."
+            links={[
+              {
+                wording: 'Plus d’infos sur ton crédit',
+                externalNav: { url: env.FAQ_LINK_PASS_CULTURE },
+                onBeforeNavigate: () =>
+                  analytics.logHasClickedTutorialFAQ({ type: 'FAQ_LINK_PASS_CULTURE' }),
+              },
+              {
+                wording: 'Plus d’infos sur les bonus sous conditions',
+                externalNav: { url: env.FAQ_BONIFICATION_GENERIC },
+                onBeforeNavigate: () =>
+                  analytics.logHasClickedTutorialFAQ({ type: 'FAQ_BONIFICATION_GENERIC' }),
+              },
+            ]}
+          />
+        ) : (
+          <Banner
+            label="Des questions sur ton crédit&nbsp;?"
+            description="Les récents ajustements du dispositif peuvent en être la raison."
+            links={[
+              {
+                wording: 'Plus d’infos dans notre FAQ',
+                externalNav: { url: env.FAQ_LINK_CREDIT_V3 },
+                onBeforeNavigate: () =>
+                  analytics.logHasClickedTutorialFAQ({ type: 'FAQ_LINK_CREDIT_V3' }),
+              },
+            ]}
+          />
+        )}
       </StyledScrollView>
       <ContentHeader
         headerTitle={headerTitle}
@@ -247,6 +266,19 @@ export const ProfileTutorialAgeInformationCredit = () => {
     </Page>
   )
 }
+const TextContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
+
+const CreditTimelineContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
+
+const Separator = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.l,
+}))
 
 const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
@@ -254,6 +286,7 @@ const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
     maxWidth: theme.contentPage.maxWidth,
     width: '100%',
     alignSelf: 'center',
+    marginBottom: theme.designSystem.size.spacing.xxxxl,
   },
 }))``
 
@@ -277,9 +310,10 @@ const GreyOffers = styled(Offers).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.default,
 }))``
 
-const RowView = styled.View({
+const RowView = styled.View(({ theme }) => ({
   flexDirection: 'row',
-})
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const StyledPlainMore = styled(PlainMore).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,

@@ -4,21 +4,19 @@
  */
 
 import React, { useCallback } from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getBorderHoverStyle, getRadioColors } from 'ui/designSystem/RadioButton/helpers'
-import {
-  ContentContainer,
-  RadioButtonDefaultContainer,
-  RadioCircle,
-  RightBox,
-} from 'ui/designSystem/RadioButton/RadioButtonDefault'
+import { RadioCircle, RightBox } from 'ui/designSystem/RadioButton/RadioButtonDefault'
 import { RadioDescriptionText } from 'ui/designSystem/RadioButton/styles/RadioButtonLabel.styles'
 import { DetailedRadioProps, RadioStateObject } from 'ui/designSystem/RadioButton/types'
 import { SelectableAsset } from 'ui/designSystem/SelectableAsset'
+import { SelectableSizing } from 'ui/designSystem/types'
 
 export const RadioButtonDetailed = ({
   label,
@@ -50,11 +48,12 @@ export const RadioButtonDetailed = ({
       variant="detailed"
       sizing={sizing}
       collapsed={collapsed}
-      onPress={onToggle}
-      {...accessibleRadioProps({ checked: selected, label, accessibilityLabel })}
-      {...focusProps}
-      {...hoverProps}>
-      <ContentContainer>
+      isHover={hoverProps.isHover}>
+      <TouchableContentContainer
+        onPress={onToggle}
+        {...accessibleRadioProps({ checked: selected, label, accessibilityLabel })}
+        {...focusProps}
+        {...hoverProps}>
         <RadioCircle radioState={radioState} variant="detailed" hoverProps={hoverProps} />
         <RightBox radioState={radioState} label={label} hoverProps={hoverProps}>
           {description ? (
@@ -64,17 +63,17 @@ export const RadioButtonDetailed = ({
           ) : null}
         </RightBox>
         {asset ? (
-          <BottomBox>
+          <LeftBox>
             <SelectableAsset {...asset} disable={disabled} />
-          </BottomBox>
+          </LeftBox>
         ) : null}
-      </ContentContainer>
+      </TouchableContentContainer>
       {collapsed && selected ? <CollapsedContainer>{collapsed}</CollapsedContainer> : null}
     </RadioButtonContainer>
   )
 }
 
-const BottomBox = styled.View({ justifyContent: 'center' })
+const LeftBox = styled.View({ justifyContent: 'center' })
 
 const CollapsedContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
@@ -84,26 +83,39 @@ type ContainerProps = {
   radioState: RadioStateObject
   variant: 'default' | 'detailed'
   collapsed?: React.ReactNode
+  sizing?: SelectableSizing
+  isHover?: boolean
 }
 
-const RadioButtonContainer = styled(RadioButtonDefaultContainer)<ContainerProps>(({
-  theme,
-  radioState,
-  variant,
-  collapsed,
-  isHover,
-}) => {
-  const { backgroundColor, borderColor } = getRadioColors(radioState, theme, {
-    componentPart: 'container',
-    variant,
-    collapsed: !!collapsed,
-  })
-  return {
-    backgroundColor,
-    borderColor,
-    borderWidth: 1,
-    borderRadius: theme.designSystem.size.borderRadius.m,
-    padding: theme.designSystem.size.spacing.l,
-    ...getBorderHoverStyle({ radioState, theme, isHover, radioStateBorderColorError: borderColor }),
+const isWeb = Platform.OS === 'web'
+
+const TouchableContentContainer = styled(TouchableOpacity)(({ theme }) => ({
+  alignItems: 'center',
+  flexDirection: 'row',
+  columnGap: theme.designSystem.size.spacing.m,
+}))
+
+const RadioButtonContainer = styled.View<ContainerProps>(
+  ({ theme, radioState, sizing, variant, collapsed, isHover }) => {
+    const { backgroundColor, borderColor } = getRadioColors(radioState, theme, {
+      componentPart: 'container',
+      variant,
+      collapsed: !!collapsed,
+    })
+    return {
+      width: sizing === 'fill' ? '100%' : undefined,
+      alignSelf: sizing === 'hug' && isWeb ? 'flex-start' : undefined,
+      backgroundColor,
+      borderColor,
+      borderWidth: 1,
+      borderRadius: theme.designSystem.size.borderRadius.m,
+      padding: theme.designSystem.size.spacing.l,
+      ...getBorderHoverStyle({
+        radioState,
+        theme,
+        isHover,
+        radioStateBorderColorError: borderColor,
+      }),
+    }
   }
-})
+)

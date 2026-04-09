@@ -1,34 +1,52 @@
-import React from 'react'
-import { View } from 'react-native'
-import styled from 'styled-components/native'
+import React, { useMemo } from 'react'
+import { View, useWindowDimensions } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
 
-import { VenueResponse } from 'api/gen'
+import { ReactionTypeEnum, VenueResponse } from 'api/gen'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 import { getVenueBlock } from 'features/offer/components/OfferVenueBlock/getVenueBlock'
 import { VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
+import { FeedBack } from 'features/reactions/components/FeedBack'
 import { OpeningHoursStatus } from 'features/venue/components/OpeningHoursStatus/OpeningHoursStatus'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
 import { analytics } from 'libs/analytics/provider'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { getDistance } from 'libs/location/getDistance'
 import { useLocation } from 'libs/location/location'
 import { MAP_ACTIVITY_TO_LABEL } from 'libs/parsers/activity'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
+import { EditorialCard, EditorialCardInfo } from 'ui/components/EditorialCard'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 import { GroupTags } from 'ui/GroupTags/GroupTags'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   venue: Omit<VenueResponse, 'isVirtual'>
   onPressBannerImage?: () => void
+  enableVolunteer?: boolean
+  enableVolunteerNewTag?: boolean
+  enableVolunteerFeedback?: boolean
 }
+
+const VOLUNTEER_SMALL_CARD_HEIGHT = getSpacing(56.25)
+const VOLUNTEER_LARGE_CARD_HEIGHT = getSpacing(65)
 
 export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   venue,
   onPressBannerImage,
+  enableVolunteer,
+  enableVolunteerNewTag,
+  enableVolunteerFeedback,
 }) => {
+  const theme = useTheme()
+  const { width } = useWindowDimensions()
+  const focusProps = useHandleFocus()
   const { venueAddress, venueName } = getVenueBlock({
     venue: getVenue(venue),
   })
@@ -50,68 +68,136 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
 
   const isDynamicOpeningHoursDisplayed = venue.openingHours && venue.isOpenToPublic
 
+  const hasVolunteer = enableVolunteer && !!venue.volunteeringUrl
+
+  const editorialCardInfo: EditorialCardInfo = useMemo(
+    () => ({
+      imageURL:
+        'https://cdn.phototourl.com/free/2026-03-25-5b473853-1bdb-4308-96bb-8b1518dbe1aa.png',
+      url: venue.volunteeringUrl,
+      title: `Deviens bénévole pour\n“${venue.name}”`,
+      subtitle: 'Donne de ton temps pour la culture\u00a0!',
+      callToAction: 'Voir les missions sur jeveuxaider.gouv',
+    }),
+    [venue.name, venue.volunteeringUrl]
+  )
+
+  const onPressVolunteeringCard = async () => {
+    if (venue.volunteeringUrl) {
+      await analytics.logClickVolunteerCTA({ from: 'venue', venueId: venue.id.toString() })
+      await openUrl(venue.volunteeringUrl)
+    }
+  }
+
+  const handleOnLogFeedback = (type: ReactionTypeEnum) => {
+    const feedbackResponse = type === ReactionTypeEnum.LIKE ? 'Oui' : 'Non'
+    void analytics.logFeatureFeedbackClicked({
+      featureName: 'volunteer',
+      feedbackResponse,
+      from: 'venue',
+      venueId: venue.id.toString(),
+    })
+  }
+
   return (
-    <TopContainer>
-      <VenueBanner
-        bannerUrl={bannerUrl}
-        bannerCredit={bannerCredit}
-        bannerIsFromGoogle={bannerIsFromGoogle}
-        handleImagePress={onPressBannerImage}
-      />
-      <MarginContainer>
-        <ViewGap gap={4}>
-          <GroupTags tags={venueTags} />
-          <ViewGap gap={1}>
-            <VenueTitle accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`} adjustsFontSizeToFit>
-              {venueName}
-            </VenueTitle>
-            {isDynamicOpeningHoursDisplayed ? (
-              <OpeningHoursStatus
-                currentDate={currentDate}
-                openingHours={venue.openingHours}
-                timezone={venue.timezone}
-              />
-            ) : null}
-            {venue.isOpenToPublic ? (
-              <ViewGap gap={3}>
-                <View>
-                  <Typo.BodyAccentXs>Adresse</Typo.BodyAccentXs>
-                  <Typo.Body>{venueAddress}</Typo.Body>
-                </View>
-                <Separator.Horizontal />
-                <CopyToClipboardButton
-                  wording="Copier l’adresse"
-                  textToCopy={`${venueName}, ${venueAddress}`}
-                  onCopy={() => analytics.logCopyAddress({ venueId: venue.id, from: 'venue' })}
-                  snackBarMessage="L’adresse a bien été copiée."
+    <React.Fragment>
+      <TopContainer hasVolunteer={hasVolunteer}>
+        <VenueBanner
+          bannerUrl={bannerUrl}
+          bannerCredit={bannerCredit}
+          bannerIsFromGoogle={bannerIsFromGoogle}
+          handleImagePress={onPressBannerImage}
+        />
+        <MarginContainer>
+          <ViewGap gap={4}>
+            <GroupTags tags={venueTags} />
+            <ViewGap gap={1}>
+              <VenueTitle
+                accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`}
+                adjustsFontSizeToFit>
+                {venueName}
+              </VenueTitle>
+              {isDynamicOpeningHoursDisplayed ? (
+                <OpeningHoursStatus
+                  currentDate={currentDate}
+                  openingHours={venue.openingHours}
+                  timezone={venue.timezone}
                 />
-                <SeeItineraryButton
-                  externalNav={{
-                    url: getGoogleMapsItineraryUrl(venueAddress),
-                    address: venueAddress,
-                  }}
-                  onPress={() =>
-                    analytics.logConsultItinerary({ venueId: venue.id, from: 'venue' })
-                  }
-                />
-              </ViewGap>
-            ) : null}
+              ) : null}
+              {venue.isOpenToPublic ? (
+                <ViewGap gap={3}>
+                  <View>
+                    <Typo.BodyAccentXs>Adresse</Typo.BodyAccentXs>
+                    <Typo.Body>{venueAddress}</Typo.Body>
+                  </View>
+                  <Separator.Horizontal />
+                  <CopyToClipboardButton
+                    wording="Copier l’adresse"
+                    textToCopy={`${venueName}, ${venueAddress}`}
+                    onCopy={() => analytics.logCopyAddress({ venueId: venue.id, from: 'venue' })}
+                    snackBarMessage="L’adresse a bien été copiée."
+                  />
+                  <SeeItineraryButton
+                    externalNav={{
+                      url: getGoogleMapsItineraryUrl(venueAddress),
+                      address: venueAddress,
+                    }}
+                    onPress={() =>
+                      analytics.logConsultItinerary({ venueId: venue.id, from: 'venue' })
+                    }
+                  />
+                </ViewGap>
+              ) : null}
+            </ViewGap>
           </ViewGap>
-        </ViewGap>
-      </MarginContainer>
-    </TopContainer>
+        </MarginContainer>
+      </TopContainer>
+      {hasVolunteer ? (
+        <VolunteeringContainer gap={4}>
+          <CardWrapper>
+            {enableVolunteerNewTag ? (
+              <TagContainer>
+                <Tag variant={TagVariant.NEW} label="Nouveau" />
+              </TagContainer>
+            ) : null}
+            <EditorialCard
+              height={
+                theme.isDesktopViewport ? VOLUNTEER_LARGE_CARD_HEIGHT : VOLUNTEER_SMALL_CARD_HEIGHT
+              }
+              width={width}
+              isFocus={focusProps.isFocus}
+              editorialCardInfo={editorialCardInfo}
+              accessibilityLabel={`Devenir bénévole pour ${venue.name} - Ouvre JeVeuxAider.gouv.fr | Devenez bénévole dans une association en quelques clics | La plateforme publique du bénévolat par la Réserve Civique`}
+              onFocus={focusProps.onFocus}
+              onBlur={focusProps.onBlur}
+              onPress={onPressVolunteeringCard}
+            />
+          </CardWrapper>
+          {enableVolunteerFeedback ? (
+            <StyledFeedBack
+              storageKey="volunteering_feedback"
+              likeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
+              dislikeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
+              title="Le bénévolat sur le pass t’intéresse t-il&nbsp;?"
+              onLogReaction={handleOnLogFeedback}
+            />
+          ) : null}
+        </VolunteeringContainer>
+      ) : null}
+    </React.Fragment>
   )
 }
 
-const TopContainer = styled.View(({ theme }) => {
+const TopContainer = styled.View<{ hasVolunteer?: boolean }>(({ theme, hasVolunteer }) => {
   const isLargeScreen = theme.isDesktopViewport || theme.isTabletViewport
   return {
     flexDirection: isLargeScreen ? 'row' : 'column',
     marginTop: isLargeScreen ? theme.designSystem.size.spacing.xxl : 0,
-    marginHorizontal: isLargeScreen ? getSpacing(18) : 0,
-    marginBottom: isLargeScreen
-      ? theme.designSystem.size.spacing.xxxl
-      : theme.designSystem.size.spacing.xl,
+    marginHorizontal: isLargeScreen ? theme.designSystem.size.spacing.xl : 0,
+    marginBottom:
+      isLargeScreen && !hasVolunteer
+        ? theme.designSystem.size.spacing.xxxl
+        : theme.designSystem.size.spacing.xl,
   }
 })
 
@@ -132,3 +218,24 @@ const getVenue = (venue: Omit<VenueResponse, 'isVirtual'>): VenueBlockVenue => {
     coordinates: {},
   }
 }
+
+const CardWrapper = styled.View({
+  position: 'relative',
+})
+
+const TagContainer = styled.View(({ theme }) => ({
+  position: 'absolute',
+  top: theme.designSystem.size.spacing.l,
+  left: theme.designSystem.size.spacing.xxxl,
+  zIndex: 2,
+  pointerEvents: 'none',
+}))
+
+const VolunteeringContainer = styled(ViewGap)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
+
+const StyledFeedBack = styled(FeedBack)(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+  width: theme.isDesktopViewport ? '50%' : undefined,
+}))

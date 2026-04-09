@@ -19,11 +19,7 @@ exports[`EndedBookings should render correctly 1`] = `
     }
   }
   ListEmptyComponent={<NoBookingsView />}
-  ListHeaderComponent={
-    <Styled(View)
-      numberOfSpaces={6}
-    />
-  }
+  ListHeaderComponent={<Styled(View) />}
   contentContainerStyle={
     {
       "flexGrow": 1,
@@ -98,7 +94,6 @@ exports[`EndedBookings should render correctly 1`] = `
       onLayout={[Function]}
     >
       <View
-        numberOfSpaces={6}
         style={
           {
             "height": 24,

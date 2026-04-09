@@ -21,17 +21,10 @@ appId: ${MAESTRO_APP_ID}
 
 - runFlow:
     when:
-      visible: "Activer la géolocalisation"
+      visible: "Paramètres de localisation"
     commands:
-    - tapOn: "Activer la géolocalisation"
-    - tapOn: "Autorisations"
-    - tapOn: "Position"
-    - tapOn: "Autoriser seulement si l'appli est utilisée"
-    - pressKey: back
-    - pressKey: back
-    - pressKey: back
+    - tapOn: "Fermer la modale"
 
-- tapOn: ".*Proximité géographique.*"
 - tapOn: "Valider"
 
 - assertVisible: "3 favoris"

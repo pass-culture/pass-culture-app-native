@@ -19,6 +19,7 @@ import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
+import { ChangePhoneNumber } from 'features/profile/pages/ChangePhoneNumber/ChangePhoneNumber'
 import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
 import { Chatbot } from 'features/profile/pages/Chatbot/Chatbot'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
@@ -77,7 +78,7 @@ const profileScreens: ProfileRouteConfig[] = [
   },
   {
     name: 'Achievements',
-    component: Achievements,
+    component: withAuthProtection(Achievements),
     options: { title: 'Mes succès' },
   },
   {
@@ -158,7 +159,7 @@ const profileScreens: ProfileRouteConfig[] = [
   },
   {
     name: 'ChangeEmail',
-    component: ChangeEmail,
+    component: withAuthProtection(ChangeEmail),
     options: { title: 'Modification de l’e-mail' },
   },
   {
@@ -183,8 +184,13 @@ const profileScreens: ProfileRouteConfig[] = [
   },
   {
     name: 'ChangePassword',
-    component: ChangePassword,
+    component: withAuthProtection(ChangePassword),
     options: { title: 'Modification du mot de passe' },
+  },
+  {
+    name: 'ChangePhoneNumber',
+    component: withAuthProtection(ChangePhoneNumber),
+    options: { title: 'Modification du numéro de téléphone' },
   },
   {
     name: 'SuspendAccountConfirmation',
@@ -198,7 +204,7 @@ const profileScreens: ProfileRouteConfig[] = [
   },
   {
     name: 'ConfirmChangeEmail',
-    component: ConfirmChangeEmail,
+    component: withAuthProtection(ConfirmChangeEmail),
     options: { title: 'Confirmation de changement d’email ' },
   },
   {

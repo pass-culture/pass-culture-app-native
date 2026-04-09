@@ -5,7 +5,8 @@ import { useForm } from 'react-hook-form'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
-import { SSOButton } from 'features/auth/components/SSOButton/SSOButton'
+import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
+import { SSOButtonGoogle } from 'features/auth/components/SSOButton/SSOButtonGoogle'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
 import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
 import { StepperOrigin, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -35,7 +36,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
   onDefaultEmailSignup,
 }) => {
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
-  const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
+  const enableAppleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO)
   const { designSystem } = useTheme()
   const { control, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {
@@ -102,14 +103,13 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         isLoading={false}
         disabled={disabled}
       />
-      {enableGoogleSSO ? (
-        <SSOViewGap gap={4}>
-          <SeparatorWithText label="ou" />
-          <SSOButton type="signup" onSignInFailure={onSSOSignInFailure} />
-        </SSOViewGap>
-      ) : (
-        <EmptySpace />
-      )}
+
+      <SSOViewGap gap={4}>
+        <SeparatorWithText label="ou" />
+        <SSOButtonGoogle type="signup" onSignInFailure={onSSOSignInFailure} />
+        {enableAppleSSO ? <SSOButtonApple type="signup" /> : null}
+      </SSOViewGap>
+
       <AuthenticationButtonContainer>
         <AuthenticationButton
           type="login"
@@ -135,7 +135,4 @@ const AuthenticationButtonContainer = styled.View(({ theme }) => ({
 }))
 const EmailInputContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xxl,
-}))
-const EmptySpace = styled.View(({ theme }) => ({
-  height: theme.designSystem.size.spacing.xxl,
 }))

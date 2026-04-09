@@ -30,6 +30,7 @@ exports[`<Venue /> should match snapshot 1`] = `
   >
     <View>
       <View
+        hasVolunteer={false}
         style={
           {
             "flexDirection": "column",
@@ -784,10 +785,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
               >
                 <View
-                  gap={2}
                   style={
                     {
-                      "gap": 8,
                       "marginHorizontal": 24,
                       "marginTop": 40,
                     }
@@ -801,6 +800,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 19,
                         "lineHeight": 30.4,
+                        "marginBottom": 8,
                       }
                     }
                   >
@@ -1154,7 +1154,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                           <View
                             style={
                               {
-                                "marginHorizontal": 24,
+                                "flexShrink": 1,
+                                "marginLeft": 24,
+                                "marginRight": 24,
                               }
                             }
                             testID="playlistTitle"
@@ -3460,12 +3462,55 @@ d’options
   <View
     style={
       {
+        "backgroundColor": "#ffffff",
         "bottom": 0,
         "position": "absolute",
         "width": "100%",
       }
     }
   >
+    <BVLinearGradient
+      bottomViewHeight={0}
+      collapsable={false}
+      colors={
+        [
+          16777215,
+          4294967295,
+        ]
+      }
+      endPoint={
+        {
+          "x": 0.5,
+          "y": 1,
+        }
+      }
+      locations={
+        [
+          0,
+          1,
+        ]
+      }
+      pointerEvents="none"
+      startPoint={
+        {
+          "x": 0.5,
+          "y": 0,
+        }
+      }
+      style={
+        [
+          {
+            "bottom": "100%",
+            "height": 120,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+          },
+          {},
+          {},
+        ]
+      }
+    />
     <View
       style={
         {
@@ -3652,6 +3697,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
   >
     <View>
       <View
+        hasVolunteer={false}
         style={
           {
             "flexDirection": "column",
@@ -4406,10 +4452,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                 }
               >
                 <View
-                  gap={2}
                   style={
                     {
-                      "gap": 8,
                       "marginHorizontal": 24,
                       "marginTop": 40,
                     }
@@ -4423,6 +4467,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 19,
                         "lineHeight": 30.4,
+                        "marginBottom": 8,
                       }
                     }
                   >
@@ -4776,7 +4821,9 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           <View
                             style={
                               {
-                                "marginHorizontal": 24,
+                                "flexShrink": 1,
+                                "marginLeft": 24,
+                                "marginRight": 24,
                               }
                             }
                             testID="playlistTitle"
@@ -7082,12 +7129,55 @@ d’options
   <View
     style={
       {
+        "backgroundColor": "#ffffff",
         "bottom": 0,
         "position": "absolute",
         "width": "100%",
       }
     }
   >
+    <BVLinearGradient
+      bottomViewHeight={0}
+      collapsable={false}
+      colors={
+        [
+          16777215,
+          4294967295,
+        ]
+      }
+      endPoint={
+        {
+          "x": 0.5,
+          "y": 1,
+        }
+      }
+      locations={
+        [
+          0,
+          1,
+        ]
+      }
+      pointerEvents="none"
+      startPoint={
+        {
+          "x": 0.5,
+          "y": 0,
+        }
+      }
+      style={
+        [
+          {
+            "bottom": "100%",
+            "height": 120,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+          },
+          {},
+          {},
+        ]
+      }
+    />
     <View
       style={
         {
@@ -7274,6 +7364,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
   >
     <View>
       <View
+        hasVolunteer={false}
         style={
           {
             "flexDirection": "column",
@@ -8557,421 +8648,1362 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       Accessibilité
                     </Text>
                     <View
-                      accessibilityRole="list"
-                      style={
-                        {
-                          "flexDirection": "row",
-                          "gap": 0,
-                          "justifyContent": "space-between",
-                          "overflow": "visible",
-                          "paddingLeft": 0,
-                          "width": "100%",
-                        }
-                      }
-                      testID="BasicAccessibilityInfo"
+                      style={{}}
                     >
                       <View
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                            },
-                            {
-                              "maxWidth": 72,
-                            },
-                          ]
-                        }
+                        style={{}}
                       >
                         <View
-                          gap={4}
                           style={
                             {
                               "alignItems": "center",
-                              "gap": 16,
+                              "flexDirection": "row",
                             }
                           }
-                          testID="accessibilityBadgeContainer"
                         >
                           <View
-                            accessibilityHidden={true}
                             style={
-                              {
-                                "alignItems": "center",
-                                "borderBottomLeftRadius": 8,
-                                "borderBottomRightRadius": 8,
-                                "borderColor": "#90949d",
-                                "borderTopLeftRadius": 8,
-                                "borderTopRightRadius": 8,
-                                "borderWidth": 1,
-                                "height": 48,
-                                "width": 48,
-                              }
+                              [
+                                {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                  "justifyContent": "space-between",
+                                  "marginRight": 8,
+                                  "paddingHorizontal": 24,
+                                  "paddingVertical": 24,
+                                },
+                                {
+                                  "paddingHorizontal": 0,
+                                  "paddingVertical": 16,
+                                },
+                              ]
                             }
                           >
                             <View
+                              accessibilityHidden={true}
                               style={
                                 {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
-                            <View
-                              fill="#161617"
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
-                            <View
-                              style={
-                                {
-                                  "bottom": -8,
-                                  "position": "absolute",
+                                  "alignItems": "center",
+                                  "borderBottomLeftRadius": 8,
+                                  "borderBottomRightRadius": 8,
+                                  "borderColor": "#90949d",
+                                  "borderTopLeftRadius": 8,
+                                  "borderTopRightRadius": 8,
+                                  "borderWidth": 1,
+                                  "height": 48,
+                                  "justifyContent": "center",
+                                  "width": 48,
                                 }
                               }
                             >
                               <View
-                                height={16}
-                                testID="valid-icon"
-                                width={16}
+                                fill="#161617"
+                                height={24}
+                                width={24}
                               >
                                 <Text>
-                                  valid-icon-SVG-Mock
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
+                              <View
+                                style={
+                                  {
+                                    "bottom": -8,
+                                    "position": "absolute",
+                                  }
+                                }
+                              >
+                                <View
+                                  height={16}
+                                  testID="invalid-icon"
+                                  width={16}
+                                >
+                                  <Text>
+                                    invalid-icon-SVG-Mock
+                                  </Text>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                          <View
+                            accessibilityLabel="Handicap auditif: Non accessible - Accordéon - Développer l’accordéon"
+                            accessibilityRole="button"
+                            accessibilityState={
+                              {
+                                "busy": undefined,
+                                "checked": undefined,
+                                "disabled": undefined,
+                                "expanded": false,
+                                "selected": undefined,
+                              }
+                            }
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            collapsable={false}
+                            focusable={true}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              {
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "opacity": 1,
+                                "userSelect": "auto",
+                              }
+                            }
+                            testID="Handicap auditif: Non accessible - Accordéon - Développer l’accordéon"
+                          >
+                            <View
+                              nativeID="testUuidV4"
+                              style={
+                                [
+                                  {
+                                    "alignItems": "center",
+                                    "flexDirection": "row",
+                                    "justifyContent": "space-between",
+                                    "paddingHorizontal": 24,
+                                    "paddingVertical": 24,
+                                  },
+                                  {
+                                    "paddingHorizontal": 0,
+                                    "paddingVertical": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                accessibilityRole="header"
+                                style={
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  }
+                                }
+                              >
+                                Handicap auditif
+                              </Text>
+                              <View
+                                collapsable={false}
+                                style={
+                                  {
+                                    "marginLeft": 8,
+                                    "transform": [
+                                      {
+                                        "rotateZ": "1.5707963267948966rad",
+                                      },
+                                    ],
+                                  }
+                                }
+                                testID="accordionArrow"
+                              >
+                                <View
+                                  height={20}
+                                  width={20}
+                                >
+                                  <Text>
+                                    undefined-SVG-Mock
+                                  </Text>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          collapsable={false}
+                          style={
+                            {
+                              "height": 0,
+                              "overflow": "hidden",
+                            }
+                          }
+                          testID="accordionBody"
+                        >
+                          <View
+                            accessibilityLabelledBy="testUuidV4"
+                            hidden={true}
+                            nativeID="testUuidV4"
+                            onLayout={[Function]}
+                            style={
+                              [
+                                {
+                                  "bottom": 0,
+                                  "display": "none",
+                                  "paddingBottom": 24,
+                                  "paddingHorizontal": 24,
+                                  "paddingTop": 0,
+                                  "position": "absolute",
+                                  "width": "100%",
+                                },
+                                {
+                                  "paddingBottom": 16,
+                                  "paddingHorizontal": 0,
+                                },
+                              ]
+                            }
+                            testID="accordionBodyContainer"
+                          >
+                            <View
+                              gap={3}
+                              style={
+                                {
+                                  "gap": 12,
+                                }
+                              }
+                            >
+                              <View
+                                accessibilityLabel="Équipement sourd & malentendant: Boucle à induction magnétique portative,Autre système non renseigné"
+                              >
+                                <View
+                                  style={
+                                    {
+                                      "marginBottom": 8,
+                                    }
+                                  }
+                                >
+                                  <Text
+                                    accessibilityHidden={true}
+                                    style={
+                                      {
+                                        "color": "#161617",
+                                        "fontFamily": "Montserrat-Medium",
+                                        "fontSize": 12,
+                                        "lineHeight": 19.2,
+                                      }
+                                    }
+                                  >
+                                    Équipement sourd & malentendant
+                                  </Text>
+                                </View>
+                                <Text
+                                  accessibilityHidden={true}
+                                  style={
+                                    {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Medium",
+                                      "fontSize": 16,
+                                      "lineHeight": 25.6,
+                                    }
+                                  }
+                                >
+                                  Boucle à induction magnétique portative
+                                </Text>
+                                <Text
+                                  accessibilityHidden={true}
+                                  style={
+                                    {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Medium",
+                                      "fontSize": 16,
+                                      "lineHeight": 25.6,
+                                    }
+                                  }
+                                >
+                                  Autre système non renseigné
                                 </Text>
                               </View>
                             </View>
                           </View>
-                          <Text
-                            accessibilityLabel="Handicap visuel - Accessible"
+                        </View>
+                        <View
+                          style={
+                            {
+                              "backgroundColor": "#f1f1f4",
+                              "height": 1,
+                              "width": "100%",
+                            }
+                          }
+                          testID="horizontal-separator"
+                        />
+                        <View
+                          style={
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                            }
+                          }
+                        >
+                          <View
                             style={
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                                "paddingHorizontal": 1,
-                                "textAlign": "center",
-                              }
+                              [
+                                {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                  "justifyContent": "space-between",
+                                  "marginRight": 8,
+                                  "paddingHorizontal": 24,
+                                  "paddingVertical": 24,
+                                },
+                                {
+                                  "paddingHorizontal": 0,
+                                  "paddingVertical": 16,
+                                },
+                              ]
                             }
                           >
-                            Handicap visuel
-                          </Text>
+                            <View
+                              accessibilityHidden={true}
+                              style={
+                                {
+                                  "alignItems": "center",
+                                  "borderBottomLeftRadius": 8,
+                                  "borderBottomRightRadius": 8,
+                                  "borderColor": "#90949d",
+                                  "borderTopLeftRadius": 8,
+                                  "borderTopRightRadius": 8,
+                                  "borderWidth": 1,
+                                  "height": 48,
+                                  "justifyContent": "center",
+                                  "width": 48,
+                                }
+                              }
+                            >
+                              <View
+                                fill="#161617"
+                                height={24}
+                                width={24}
+                              >
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
+                              <View
+                                style={
+                                  {
+                                    "bottom": -8,
+                                    "position": "absolute",
+                                  }
+                                }
+                              >
+                                <View
+                                  height={16}
+                                  testID="valid-icon"
+                                  width={16}
+                                >
+                                  <Text>
+                                    valid-icon-SVG-Mock
+                                  </Text>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                          <View
+                            accessibilityLabel="Handicap psychique ou cognitif: Accessible - Accordéon - Développer l’accordéon"
+                            accessibilityRole="button"
+                            accessibilityState={
+                              {
+                                "busy": undefined,
+                                "checked": undefined,
+                                "disabled": undefined,
+                                "expanded": false,
+                                "selected": undefined,
+                              }
+                            }
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            collapsable={false}
+                            focusable={true}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              {
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "opacity": 1,
+                                "userSelect": "auto",
+                              }
+                            }
+                            testID="Handicap psychique ou cognitif: Accessible - Accordéon - Développer l’accordéon"
+                          >
+                            <View
+                              nativeID="testUuidV4"
+                              style={
+                                [
+                                  {
+                                    "alignItems": "center",
+                                    "flexDirection": "row",
+                                    "justifyContent": "space-between",
+                                    "paddingHorizontal": 24,
+                                    "paddingVertical": 24,
+                                  },
+                                  {
+                                    "paddingHorizontal": 0,
+                                    "paddingVertical": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                accessibilityRole="header"
+                                style={
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  }
+                                }
+                              >
+                                Handicap psychique ou cognitif
+                              </Text>
+                              <View
+                                collapsable={false}
+                                style={
+                                  {
+                                    "marginLeft": 8,
+                                    "transform": [
+                                      {
+                                        "rotateZ": "1.5707963267948966rad",
+                                      },
+                                    ],
+                                  }
+                                }
+                                testID="accordionArrow"
+                              >
+                                <View
+                                  height={20}
+                                  width={20}
+                                >
+                                  <Text>
+                                    undefined-SVG-Mock
+                                  </Text>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          collapsable={false}
+                          style={
+                            {
+                              "height": 0,
+                              "overflow": "hidden",
+                            }
+                          }
+                          testID="accordionBody"
+                        >
+                          <View
+                            accessibilityLabelledBy="testUuidV4"
+                            hidden={true}
+                            nativeID="testUuidV4"
+                            onLayout={[Function]}
+                            style={
+                              [
+                                {
+                                  "bottom": 0,
+                                  "display": "none",
+                                  "paddingBottom": 24,
+                                  "paddingHorizontal": 24,
+                                  "paddingTop": 0,
+                                  "position": "absolute",
+                                  "width": "100%",
+                                },
+                                {
+                                  "paddingBottom": 16,
+                                  "paddingHorizontal": 0,
+                                },
+                              ]
+                            }
+                            testID="accordionBodyContainer"
+                          >
+                            <View
+                              gap={3}
+                              style={
+                                {
+                                  "gap": 12,
+                                }
+                              }
+                            >
+                              <View
+                                accessibilityLabel="Personnel: Personnel formé"
+                              >
+                                <View
+                                  style={
+                                    {
+                                      "marginBottom": 8,
+                                    }
+                                  }
+                                >
+                                  <Text
+                                    accessibilityHidden={true}
+                                    style={
+                                      {
+                                        "color": "#161617",
+                                        "fontFamily": "Montserrat-Medium",
+                                        "fontSize": 12,
+                                        "lineHeight": 19.2,
+                                      }
+                                    }
+                                  >
+                                    Personnel
+                                  </Text>
+                                </View>
+                                <Text
+                                  accessibilityHidden={true}
+                                  style={
+                                    {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Medium",
+                                      "fontSize": 16,
+                                      "lineHeight": 25.6,
+                                    }
+                                  }
+                                >
+                                  Personnel formé
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          style={
+                            {
+                              "backgroundColor": "#f1f1f4",
+                              "height": 1,
+                              "width": "100%",
+                            }
+                          }
+                          testID="horizontal-separator"
+                        />
+                        <View
+                          style={
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              [
+                                {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                  "justifyContent": "space-between",
+                                  "marginRight": 8,
+                                  "paddingHorizontal": 24,
+                                  "paddingVertical": 24,
+                                },
+                                {
+                                  "paddingHorizontal": 0,
+                                  "paddingVertical": 16,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              accessibilityHidden={true}
+                              style={
+                                {
+                                  "alignItems": "center",
+                                  "borderBottomLeftRadius": 8,
+                                  "borderBottomRightRadius": 8,
+                                  "borderColor": "#90949d",
+                                  "borderTopLeftRadius": 8,
+                                  "borderTopRightRadius": 8,
+                                  "borderWidth": 1,
+                                  "height": 48,
+                                  "justifyContent": "center",
+                                  "width": 48,
+                                }
+                              }
+                            >
+                              <View
+                                fill="#161617"
+                                height={24}
+                                width={24}
+                              >
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
+                              <View
+                                style={
+                                  {
+                                    "bottom": -8,
+                                    "position": "absolute",
+                                  }
+                                }
+                              >
+                                <View
+                                  height={16}
+                                  testID="invalid-icon"
+                                  width={16}
+                                >
+                                  <Text>
+                                    invalid-icon-SVG-Mock
+                                  </Text>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                          <View
+                            accessibilityLabel="Handicap moteur: Non accessible - Accordéon - Développer l’accordéon"
+                            accessibilityRole="button"
+                            accessibilityState={
+                              {
+                                "busy": undefined,
+                                "checked": undefined,
+                                "disabled": undefined,
+                                "expanded": false,
+                                "selected": undefined,
+                              }
+                            }
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            collapsable={false}
+                            focusable={true}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              {
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "opacity": 1,
+                                "userSelect": "auto",
+                              }
+                            }
+                            testID="Handicap moteur: Non accessible - Accordéon - Développer l’accordéon"
+                          >
+                            <View
+                              nativeID="testUuidV4"
+                              style={
+                                [
+                                  {
+                                    "alignItems": "center",
+                                    "flexDirection": "row",
+                                    "justifyContent": "space-between",
+                                    "paddingHorizontal": 24,
+                                    "paddingVertical": 24,
+                                  },
+                                  {
+                                    "paddingHorizontal": 0,
+                                    "paddingVertical": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                accessibilityRole="header"
+                                style={
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  }
+                                }
+                              >
+                                Handicap moteur
+                              </Text>
+                              <View
+                                collapsable={false}
+                                style={
+                                  {
+                                    "marginLeft": 8,
+                                    "transform": [
+                                      {
+                                        "rotateZ": "1.5707963267948966rad",
+                                      },
+                                    ],
+                                  }
+                                }
+                                testID="accordionArrow"
+                              >
+                                <View
+                                  height={20}
+                                  width={20}
+                                >
+                                  <Text>
+                                    undefined-SVG-Mock
+                                  </Text>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          collapsable={false}
+                          style={
+                            {
+                              "height": 0,
+                              "overflow": "hidden",
+                            }
+                          }
+                          testID="accordionBody"
+                        >
+                          <View
+                            accessibilityLabelledBy="testUuidV4"
+                            hidden={true}
+                            nativeID="testUuidV4"
+                            onLayout={[Function]}
+                            style={
+                              [
+                                {
+                                  "bottom": 0,
+                                  "display": "none",
+                                  "paddingBottom": 24,
+                                  "paddingHorizontal": 24,
+                                  "paddingTop": 0,
+                                  "position": "absolute",
+                                  "width": "100%",
+                                },
+                                {
+                                  "paddingBottom": 16,
+                                  "paddingHorizontal": 0,
+                                },
+                              ]
+                            }
+                            testID="accordionBodyContainer"
+                          >
+                            <View
+                              gap={3}
+                              style={
+                                {
+                                  "gap": 12,
+                                }
+                              }
+                            >
+                              <View
+                                accessibilityLabel="Sanitaire: Sanitaire non adapté"
+                              >
+                                <View
+                                  style={
+                                    {
+                                      "marginBottom": 8,
+                                    }
+                                  }
+                                >
+                                  <Text
+                                    accessibilityHidden={true}
+                                    style={
+                                      {
+                                        "color": "#161617",
+                                        "fontFamily": "Montserrat-Medium",
+                                        "fontSize": 12,
+                                        "lineHeight": 19.2,
+                                      }
+                                    }
+                                  >
+                                    Sanitaire
+                                  </Text>
+                                </View>
+                                <Text
+                                  accessibilityHidden={true}
+                                  style={
+                                    {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Medium",
+                                      "fontSize": 16,
+                                      "lineHeight": 25.6,
+                                    }
+                                  }
+                                >
+                                  Sanitaire non adapté
+                                </Text>
+                              </View>
+                              <View
+                                accessibilityLabel="Accès exterieur: Non renseigné"
+                              >
+                                <View
+                                  style={
+                                    {
+                                      "marginBottom": 8,
+                                    }
+                                  }
+                                >
+                                  <Text
+                                    accessibilityHidden={true}
+                                    style={
+                                      {
+                                        "color": "#161617",
+                                        "fontFamily": "Montserrat-Medium",
+                                        "fontSize": 12,
+                                        "lineHeight": 19.2,
+                                      }
+                                    }
+                                  >
+                                    Accès exterieur
+                                  </Text>
+                                </View>
+                                <Text
+                                  accessibilityHidden={true}
+                                  style={
+                                    {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Medium",
+                                      "fontSize": 16,
+                                      "lineHeight": 25.6,
+                                    }
+                                  }
+                                >
+                                  Non renseigné
+                                </Text>
+                              </View>
+                              <View
+                                accessibilityLabel="Entrée du bâtiment: Non renseigné"
+                              >
+                                <View
+                                  style={
+                                    {
+                                      "marginBottom": 8,
+                                    }
+                                  }
+                                >
+                                  <Text
+                                    accessibilityHidden={true}
+                                    style={
+                                      {
+                                        "color": "#161617",
+                                        "fontFamily": "Montserrat-Medium",
+                                        "fontSize": 12,
+                                        "lineHeight": 19.2,
+                                      }
+                                    }
+                                  >
+                                    Entrée du bâtiment
+                                  </Text>
+                                </View>
+                                <Text
+                                  accessibilityHidden={true}
+                                  style={
+                                    {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Medium",
+                                      "fontSize": 16,
+                                      "lineHeight": 25.6,
+                                    }
+                                  }
+                                >
+                                  Non renseigné
+                                </Text>
+                              </View>
+                              <View
+                                accessibilityLabel="Stationnement: Pas de stationnement adapté à proximité"
+                              >
+                                <View
+                                  style={
+                                    {
+                                      "marginBottom": 8,
+                                    }
+                                  }
+                                >
+                                  <Text
+                                    accessibilityHidden={true}
+                                    style={
+                                      {
+                                        "color": "#161617",
+                                        "fontFamily": "Montserrat-Medium",
+                                        "fontSize": 12,
+                                        "lineHeight": 19.2,
+                                      }
+                                    }
+                                  >
+                                    Stationnement
+                                  </Text>
+                                </View>
+                                <Text
+                                  accessibilityHidden={true}
+                                  style={
+                                    {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Medium",
+                                      "fontSize": 16,
+                                      "lineHeight": 25.6,
+                                    }
+                                  }
+                                >
+                                  Pas de stationnement adapté à proximité
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          style={
+                            {
+                              "backgroundColor": "#f1f1f4",
+                              "height": 1,
+                              "width": "100%",
+                            }
+                          }
+                          testID="horizontal-separator"
+                        />
+                        <View
+                          style={
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              [
+                                {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                  "justifyContent": "space-between",
+                                  "marginRight": 8,
+                                  "paddingHorizontal": 24,
+                                  "paddingVertical": 24,
+                                },
+                                {
+                                  "paddingHorizontal": 0,
+                                  "paddingVertical": 16,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              accessibilityHidden={true}
+                              style={
+                                {
+                                  "alignItems": "center",
+                                  "borderBottomLeftRadius": 8,
+                                  "borderBottomRightRadius": 8,
+                                  "borderColor": "#90949d",
+                                  "borderTopLeftRadius": 8,
+                                  "borderTopRightRadius": 8,
+                                  "borderWidth": 1,
+                                  "height": 48,
+                                  "justifyContent": "center",
+                                  "width": 48,
+                                }
+                              }
+                            >
+                              <View
+                                fill="#161617"
+                                height={24}
+                                width={24}
+                              >
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
+                              <View
+                                style={
+                                  {
+                                    "bottom": -8,
+                                    "position": "absolute",
+                                  }
+                                }
+                              >
+                                <View
+                                  height={16}
+                                  testID="invalid-icon"
+                                  width={16}
+                                >
+                                  <Text>
+                                    invalid-icon-SVG-Mock
+                                  </Text>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                          <View
+                            accessibilityLabel="Handicap visuel: Non accessible - Accordéon - Développer l’accordéon"
+                            accessibilityRole="button"
+                            accessibilityState={
+                              {
+                                "busy": undefined,
+                                "checked": undefined,
+                                "disabled": undefined,
+                                "expanded": false,
+                                "selected": undefined,
+                              }
+                            }
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            collapsable={false}
+                            focusable={true}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              {
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "opacity": 1,
+                                "userSelect": "auto",
+                              }
+                            }
+                            testID="Handicap visuel: Non accessible - Accordéon - Développer l’accordéon"
+                          >
+                            <View
+                              nativeID="testUuidV4"
+                              style={
+                                [
+                                  {
+                                    "alignItems": "center",
+                                    "flexDirection": "row",
+                                    "justifyContent": "space-between",
+                                    "paddingHorizontal": 24,
+                                    "paddingVertical": 24,
+                                  },
+                                  {
+                                    "paddingHorizontal": 0,
+                                    "paddingVertical": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                accessibilityRole="header"
+                                style={
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  }
+                                }
+                              >
+                                Handicap visuel
+                              </Text>
+                              <View
+                                collapsable={false}
+                                style={
+                                  {
+                                    "marginLeft": 8,
+                                    "transform": [
+                                      {
+                                        "rotateZ": "1.5707963267948966rad",
+                                      },
+                                    ],
+                                  }
+                                }
+                                testID="accordionArrow"
+                              >
+                                <View
+                                  height={20}
+                                  width={20}
+                                >
+                                  <Text>
+                                    undefined-SVG-Mock
+                                  </Text>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          collapsable={false}
+                          style={
+                            {
+                              "height": 0,
+                              "overflow": "hidden",
+                            }
+                          }
+                          testID="accordionBody"
+                        >
+                          <View
+                            accessibilityLabelledBy="testUuidV4"
+                            hidden={true}
+                            nativeID="testUuidV4"
+                            onLayout={[Function]}
+                            style={
+                              [
+                                {
+                                  "bottom": 0,
+                                  "display": "none",
+                                  "paddingBottom": 24,
+                                  "paddingHorizontal": 24,
+                                  "paddingTop": 0,
+                                  "position": "absolute",
+                                  "width": "100%",
+                                },
+                                {
+                                  "paddingBottom": 16,
+                                  "paddingHorizontal": 0,
+                                },
+                              ]
+                            }
+                            testID="accordionBodyContainer"
+                          >
+                            <View
+                              gap={3}
+                              style={
+                                {
+                                  "gap": 12,
+                                }
+                              }
+                            >
+                              <View
+                                accessibilityLabel="Balise sonore: Non renseigné"
+                              >
+                                <View
+                                  style={
+                                    {
+                                      "marginBottom": 8,
+                                    }
+                                  }
+                                >
+                                  <Text
+                                    accessibilityHidden={true}
+                                    style={
+                                      {
+                                        "color": "#161617",
+                                        "fontFamily": "Montserrat-Medium",
+                                        "fontSize": 12,
+                                        "lineHeight": 19.2,
+                                      }
+                                    }
+                                  >
+                                    Balise sonore
+                                  </Text>
+                                </View>
+                                <Text
+                                  accessibilityHidden={true}
+                                  style={
+                                    {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Medium",
+                                      "fontSize": 16,
+                                      "lineHeight": 25.6,
+                                    }
+                                  }
+                                >
+                                  Non renseigné
+                                </Text>
+                              </View>
+                              <View
+                                accessibilityLabel="Audiodescription: Non renseigné"
+                              >
+                                <View
+                                  style={
+                                    {
+                                      "marginBottom": 8,
+                                    }
+                                  }
+                                >
+                                  <Text
+                                    accessibilityHidden={true}
+                                    style={
+                                      {
+                                        "color": "#161617",
+                                        "fontFamily": "Montserrat-Medium",
+                                        "fontSize": 12,
+                                        "lineHeight": 19.2,
+                                      }
+                                    }
+                                  >
+                                    Audiodescription
+                                  </Text>
+                                </View>
+                                <Text
+                                  accessibilityHidden={true}
+                                  style={
+                                    {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Medium",
+                                      "fontSize": 16,
+                                      "lineHeight": 25.6,
+                                    }
+                                  }
+                                >
+                                  Non renseigné
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
                         </View>
                       </View>
                       <View
                         style={
-                          [
-                            {
-                              "display": "flex",
-                            },
-                            {
-                              "maxWidth": 72,
-                            },
-                          ]
+                          {
+                            "marginBottom": 8,
+                            "paddingTop": 8,
+                          }
                         }
                       >
                         <View
-                          gap={4}
+                          background="#f3edff"
                           style={
                             {
-                              "alignItems": "center",
-                              "gap": 16,
+                              "alignItems": "flex-start",
+                              "backgroundColor": "#f3edff",
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                              "flexDirection": "row",
+                              "gap": 12,
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
                             }
                           }
-                          testID="accessibilityBadgeContainer"
                         >
                           <View
-                            accessibilityHidden={true}
+                            fill="#320096"
+                            height={24}
+                            width={24}
+                          >
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
+                          </View>
+                          <View
+                            accessibilityLabel="Tu peux retrouver des informations supplémentaires sur l’accessibilité de ce lieu sur le site d’acceslibre."
+                            accessibilityRole="none"
                             style={
                               {
-                                "alignItems": "center",
-                                "borderBottomLeftRadius": 8,
-                                "borderBottomRightRadius": 8,
-                                "borderColor": "#90949d",
-                                "borderTopLeftRadius": 8,
-                                "borderTopRightRadius": 8,
-                                "borderWidth": 1,
-                                "height": 48,
-                                "width": 48,
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "gap": 4,
                               }
                             }
                           >
-                            <View
+                            <Text
                               style={
                                 {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 14,
+                                  "lineHeight": 22.4,
                                 }
                               }
-                            />
-                            <View
-                              fill="#161617"
-                              height={24}
-                              width={24}
                             >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
+                              Tu peux retrouver des informations supplémentaires sur l’accessibilité de ce lieu sur le site d’acceslibre.
+                            </Text>
                             <View
+                              gap={3}
                               style={
                                 {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
-                            <View
-                              style={
-                                {
-                                  "bottom": -8,
-                                  "position": "absolute",
+                                  "alignItems": "flex-start",
+                                  "gap": 12,
+                                  "marginRight": 16,
+                                  "marginTop": 8,
                                 }
                               }
                             >
                               <View
-                                height={16}
-                                testID="invalid-icon"
-                                width={16}
+                                accessibilityLabel="Lien externe - Voir plus d’infos sur l’accessibilité du lieu"
+                                accessibilityRole="link"
+                                accessibilityState={
+                                  {
+                                    "busy": undefined,
+                                    "checked": undefined,
+                                    "disabled": undefined,
+                                    "expanded": undefined,
+                                    "selected": undefined,
+                                  }
+                                }
+                                accessibilityValue={
+                                  {
+                                    "max": undefined,
+                                    "min": undefined,
+                                    "now": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                                accessible={true}
+                                collapsable={false}
+                                focusable={true}
+                                onClick={[Function]}
+                                onResponderGrant={[Function]}
+                                onResponderMove={[Function]}
+                                onResponderRelease={[Function]}
+                                onResponderTerminate={[Function]}
+                                onResponderTerminationRequest={[Function]}
+                                onStartShouldSetResponder={[Function]}
+                                style={
+                                  {
+                                    "alignItems": "flex-start",
+                                    "cursor": "pointer",
+                                    "flexDirection": "row",
+                                    "opacity": 1,
+                                  }
+                                }
                               >
-                                <Text>
-                                  invalid-icon-SVG-Mock
+                                <View
+                                  style={
+                                    {
+                                      "marginRight": 8,
+                                      "marginTop": 2,
+                                    }
+                                  }
+                                >
+                                  <View
+                                    accessibilityLabel="Nouvelle fenêtre"
+                                    height={16}
+                                    width={16}
+                                  >
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
+                                  </View>
+                                </View>
+                                <Text
+                                  style={
+                                    {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-SemiBold",
+                                      "fontSize": 12,
+                                      "lineHeight": 19.2,
+                                    }
+                                  }
+                                >
+                                  Voir plus d’infos sur l’accessibilité du lieu
                                 </Text>
                               </View>
                             </View>
                           </View>
-                          <Text
-                            accessibilityLabel="Handicap psychique ou cognitif - Non accessible"
-                            style={
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                                "paddingHorizontal": 1,
-                                "textAlign": "center",
-                              }
-                            }
-                          >
-                            Handicap psychique ou cognitif
-                          </Text>
-                        </View>
-                      </View>
-                      <View
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                            },
-                            {
-                              "maxWidth": 72,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          gap={4}
-                          style={
-                            {
-                              "alignItems": "center",
-                              "gap": 16,
-                            }
-                          }
-                          testID="accessibilityBadgeContainer"
-                        >
-                          <View
-                            accessibilityHidden={true}
-                            style={
-                              {
-                                "alignItems": "center",
-                                "borderBottomLeftRadius": 8,
-                                "borderBottomRightRadius": 8,
-                                "borderColor": "#90949d",
-                                "borderTopLeftRadius": 8,
-                                "borderTopRightRadius": 8,
-                                "borderWidth": 1,
-                                "height": 48,
-                                "width": 48,
-                              }
-                            }
-                          >
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
-                            <View
-                              fill="#161617"
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
-                            <View
-                              style={
-                                {
-                                  "bottom": -8,
-                                  "position": "absolute",
-                                }
-                              }
-                            >
-                              <View
-                                height={16}
-                                testID="invalid-icon"
-                                width={16}
-                              >
-                                <Text>
-                                  invalid-icon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                          <Text
-                            accessibilityLabel="Handicap moteur - Non accessible"
-                            style={
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                                "paddingHorizontal": 1,
-                                "textAlign": "center",
-                              }
-                            }
-                          >
-                            Handicap moteur
-                          </Text>
-                        </View>
-                      </View>
-                      <View
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                            },
-                            {
-                              "maxWidth": 72,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          gap={4}
-                          style={
-                            {
-                              "alignItems": "center",
-                              "gap": 16,
-                            }
-                          }
-                          testID="accessibilityBadgeContainer"
-                        >
-                          <View
-                            accessibilityHidden={true}
-                            style={
-                              {
-                                "alignItems": "center",
-                                "borderBottomLeftRadius": 8,
-                                "borderBottomRightRadius": 8,
-                                "borderColor": "#90949d",
-                                "borderTopLeftRadius": 8,
-                                "borderTopRightRadius": 8,
-                                "borderWidth": 1,
-                                "height": 48,
-                                "width": 48,
-                              }
-                            }
-                          >
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
-                            <View
-                              fill="#161617"
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              style={
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                }
-                              }
-                            />
-                            <View
-                              style={
-                                {
-                                  "bottom": -8,
-                                  "position": "absolute",
-                                }
-                              }
-                            >
-                              <View
-                                height={16}
-                                testID="invalid-icon"
-                                width={16}
-                              >
-                                <Text>
-                                  invalid-icon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                          <Text
-                            accessibilityLabel="Handicap auditif - Non accessible"
-                            style={
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                                "paddingHorizontal": 1,
-                                "textAlign": "center",
-                              }
-                            }
-                          >
-                            Handicap auditif
-                          </Text>
                         </View>
                       </View>
                     </View>
@@ -10451,12 +11483,55 @@ d’options
   <View
     style={
       {
+        "backgroundColor": "#ffffff",
         "bottom": 0,
         "position": "absolute",
         "width": "100%",
       }
     }
   >
+    <BVLinearGradient
+      bottomViewHeight={0}
+      collapsable={false}
+      colors={
+        [
+          16777215,
+          4294967295,
+        ]
+      }
+      endPoint={
+        {
+          "x": 0.5,
+          "y": 1,
+        }
+      }
+      locations={
+        [
+          0,
+          1,
+        ]
+      }
+      pointerEvents="none"
+      startPoint={
+        {
+          "x": 0.5,
+          "y": 0,
+        }
+      }
+      style={
+        [
+          {
+            "bottom": "100%",
+            "height": 120,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+          },
+          {},
+          {},
+        ]
+      }
+    />
     <View
       style={
         {

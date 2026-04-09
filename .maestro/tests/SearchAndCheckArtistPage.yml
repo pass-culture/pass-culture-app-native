@@ -1,5 +1,4 @@
 appId: ${MAESTRO_APP_ID}
-jsengine: graaljs
 tags:
   - local
   - nightlyIOS
@@ -15,8 +14,7 @@ onFlowStart:
 - runFlow: subFolder/links/DeepLinksToHome.yml
 
 - runFlow: subFolder/commons/GoToSearchFromTabBar.yml
-- tapOn: 'Catégorie Livres'
-- tapOn: 'BD & comics'
+- runFlow: subFolder/search/NavigateToBookSubCategory.yml
 - runFlow: subFolder/search/CheckArtistPage.yml
 
 - runFlow: subFolder/commons/StopApp.yml

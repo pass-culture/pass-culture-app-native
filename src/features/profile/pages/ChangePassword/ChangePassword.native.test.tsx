@@ -33,7 +33,7 @@ describe('ChangePassword', () => {
   it('should render correctly', async () => {
     renderChangePassword()
 
-    await screen.findByText('Mot de passe')
+    await screen.findByText('Modifier mon mot de passe')
 
     expect(screen).toMatchSnapshot()
   })
@@ -56,18 +56,6 @@ describe('ChangePassword', () => {
     const continueButton = screen.getByTestId('Enregistrer les modifications')
 
     expect(continueButton).toBeEnabled()
-  })
-
-  it('should redirect to Home if user has no password', async () => {
-    mockAuthContextWithUser({
-      ...beneficiaryUser,
-      hasPassword: false,
-    })
-    render(reactQueryProviderHOC(<ChangePassword />))
-
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Home' })
-    })
   })
 
   it('should display the matching error when the passwords dont match', async () => {

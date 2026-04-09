@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
-import { getDetailedAccessibilityInfo } from 'shared/accessibility/getDetailedAccessibilityInfo'
+import { getDetailedAccessibilityInfo } from 'shared/accessibility/helpers/getDetailedAccessibilityInfo'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -23,7 +23,7 @@ export const CheatcodesScreenAccesLibre = () => {
 
   const onPress = () => {
     const parsedId = parseInt(value, 10)
-    if (!isNaN(parsedId)) {
+    if (!Number.isNaN(parsedId)) {
       setVenueId(parsedId)
     }
   }

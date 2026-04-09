@@ -8,7 +8,7 @@ import { FlatList, FlatListProps, ListRenderItemInfo } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
 import { Variant } from 'ui/designSystem/RadioButton/types'
 import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
@@ -91,14 +91,15 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
   const renderRadioButton = useCallback(
     (item: RadioButtonGroupOption, index: number) => {
       const isSelected = value === item.label
+      const isOptionDisabled = item.disabled ?? disabled
       return (
         <RadioButton
           key={item.key}
           label={item.label}
-          disabled={disabled}
+          disabled={isOptionDisabled}
           error={error}
           value={value}
-          setValue={disabled || isSelected ? () => undefined : handleSetValue}
+          setValue={isOptionDisabled || isSelected ? () => undefined : handleSetValue}
           variant={variant}
           description={item.description}
           collapsed={item.collapsed}

@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { EmailSentGeneric } from 'features/auth/components/EmailSentGeneric'
+import { SetContainer } from 'features/auth/pages/signup/SetContainer'
 import { EmailResendModal } from 'features/auth/pages/signup/SignupConfirmationEmailSent/EmailResendModal'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
@@ -36,7 +37,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ email })
   )
 
   return (
-    <React.Fragment>
+    <SetContainer>
       <EmailSentGeneric
         title="Confirme ton adresse e-mail"
         email={email}
@@ -45,7 +46,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ email })
         additionalCTA={additionalCTA}
       />
       <EmailResendModal email={email} visible={visible} onDismiss={hideModal} />
-    </React.Fragment>
+    </SetContainer>
   )
 }
 const ButtonWrapper = styled.View({

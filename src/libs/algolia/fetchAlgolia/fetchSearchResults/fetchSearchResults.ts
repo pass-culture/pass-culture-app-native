@@ -1,6 +1,7 @@
 import { Hit, SearchResponse } from 'algoliasearch/lite'
 
 import { DisabilitiesProperties } from 'features/accessibility/types'
+import { VENUES_FACETS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
@@ -79,6 +80,15 @@ export const fetchSearchResults = async ({
       ...buildHitsPerPage(parameters.hitsPerPage),
       ...(aroundPrecision && { aroundPrecision }),
     },
+    // Venues not open to public
+    {
+      indexName: env.ALGOLIA_VENUES_INDEX_EXPERIMENTAL,
+      query: parameters.query,
+      facetFilters: [[`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:false`]],
+      page: 0,
+      hitsPerPage: parameters.query ? 1 : 0,
+      clickAnalytics: true,
+    },
     // Venues
     {
       indexName: currentVenuesIndex,
@@ -118,14 +128,31 @@ export const fetchSearchResults = async ({
     },
   ]
 
+  const defaultResponse = {
+    offersResponse: getDefaultReponse<Offer>(),
+    venueNotOpenToPublic: getDefaultReponse<AlgoliaVenue>(),
+    venuesResponse: getDefaultReponse<AlgoliaVenue>(),
+    duplicatedOffersResponse: getDefaultReponse<Offer>(),
+    offerArtistsResponse: getDefaultReponse<Offer>(),
+    redirectUrl: undefined,
+  }
+
   try {
-    const [offersResponse, venuesResponse, duplicatedOffersResponse, offerArtistsResponse] =
-      (await multipleQueries<Offer | AlgoliaVenue>(queries)) as [
-        SearchResponse<Offer>,
-        SearchResponse<AlgoliaVenue>,
-        SearchResponse<Offer>,
-        SearchResponse<Offer>,
-      ]
+    const [
+      offersResponse,
+      venueNotOpenToPublic,
+      venuesResponse,
+      duplicatedOffersResponse,
+      offerArtistsResponse,
+    ] = (await multipleQueries<Offer | AlgoliaVenue>(queries)) as [
+      SearchResponse<Offer>,
+      SearchResponse<AlgoliaVenue>,
+      SearchResponse<AlgoliaVenue>,
+      SearchResponse<Offer>,
+      SearchResponse<Offer>,
+    ]
+
+    if (!offersResponse) return defaultResponse
 
     if (storeQueryID) storeQueryID(offersResponse.queryID)
     const { renderingContent } = offersResponse
@@ -133,6 +160,7 @@ export const fetchSearchResults = async ({
 
     return {
       offersResponse,
+      venueNotOpenToPublic,
       venuesResponse,
       duplicatedOffersResponse,
       offerArtistsResponse,
@@ -140,12 +168,6 @@ export const fetchSearchResults = async ({
     }
   } catch (error) {
     captureAlgoliaError(error)
-    return {
-      offersResponse: getDefaultReponse<Offer>(),
-      venuesResponse: getDefaultReponse<AlgoliaVenue>(),
-      offerArtistsResponse: getDefaultReponse<Offer>(),
-      duplicatedOffersResponse: getDefaultReponse<Offer>(),
-      redirectUrl: undefined,
-    }
+    return defaultResponse
   }
 }

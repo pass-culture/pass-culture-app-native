@@ -18,17 +18,20 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   offer,
   searchGroupList,
   subcategory,
-  chronicles,
-  chronicleVariantInfo,
+  clubAdvices,
+  proAdvices,
+  adviceVariantInfo,
   defaultReaction,
   onReactionButtonPress,
-  onShowChroniclesWritersModal,
+  onShowClubAdviceWritersModal,
   headlineOffersCount,
   hasVideoCookiesConsent,
   onVideoConsentPress,
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
   HeaderComponent,
+  CTAsComponent,
+  proAdvicesCount,
 }) => {
   const { visible, showModal, hideModal } = useModal(false)
   const headerHeight = useGetHeaderHeight()
@@ -73,8 +76,10 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           offer={offer}
           searchGroupList={searchGroupList}
           subcategory={subcategory}
-          chronicles={chronicles}
-          chronicleVariantInfo={chronicleVariantInfo}
+          clubAdvices={clubAdvices}
+          proAdvices={proAdvices}
+          proAdvicesCount={proAdvicesCount}
+          adviceVariantInfo={adviceVariantInfo}
           onOfferPreviewPress={handlePreviewPress}
           isVideoSectionEnabled={isVideoSectionEnabled}
           BodyWrapper={BodyWrapper}
@@ -82,12 +87,13 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           onReactionButtonPress={onReactionButtonPress}
           headlineOffersCount={headlineOffersCount}
           onLayout={onLayout}
-          onShowChroniclesWritersModal={onShowChroniclesWritersModal}
+          onShowClubAdviceWritersModal={onShowClubAdviceWritersModal}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
           onVideoConsentPress={onVideoConsentPress}
           isMultiArtistsEnabled={isMultiArtistsEnabled}
           onShowOfferArtistsModal={onShowOfferArtistsModal}
-          HeaderComponent={HeaderComponent}>
+          HeaderComponent={HeaderComponent}
+          CTAsComponent={CTAsComponent}>
           {comingSoonFooterHeight ? (
             <ComingSoonFooterOffset height={comingSoonFooterHeight} />
           ) : null}

@@ -5,18 +5,19 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-      - tapOn:
-          text: 'Livre'
-          index: 0
+    - tapOn:
+        text: 'Livre'
+        index: 0
 
 - runFlow:
     when:
       platform: iOS
     commands:
-      - extractTextWithAI:
-          query: "Le titre exacte d'une des offres Livre visible dans les résultats de recherche"
-          outputVariable: 'offerResult'
-      - tapOn: .*${offerResult}.*
+    - scroll
+    - extractTextWithAI:
+        query: "Le titre exacte d'une des offres Livre visible dans les résultats de recherche"
+        outputVariable: 'offerResult'
+    - tapOn: .*${offerResult}.*
 
 - waitForAnimationToEnd
 
@@ -24,13 +25,13 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-      - tapOn: 'Réserver l’offre'
+    - tapOn: 'Réserver l’offre'
 
 - runFlow:
     when:
       platform: iOS
     commands:
-      - tapOn: ${output.button.ios.booking}
+    - tapOn: ${output.button.ios.booking}
 
 - assertVisible: 'Détails de la réservation'
 - tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire'
@@ -38,13 +39,13 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-      - scrollUntilVisible:
-          element: 'Confirmer la réservation'
+    - scrollUntilVisible:
+        element: 'Confirmer la réservation'
 - runFlow:
     when:
       platform: iOS
     commands:
-      - scroll
+    - scroll
 
 - tapOn:
     text: '.*Confirmer la réservation.*'
@@ -56,22 +57,23 @@ appId: ${MAESTRO_APP_ID}
       platform: iOS
       visible: 'Plus tard'
     commands:
-      - tapOn: 'Plus tard'
+    - tapOn: 'Plus tard'
 
-- runFlow:
-    when:
-      platform: iOS
-    commands:
-      - tapOn:
-          text: 'Voir ma réservation'
+- tapOn: 'Voir ma réservation'
+
+- scrollUntilVisible:
+    element: 'Annuler ma réservation'
+- tapOn: 'Annuler ma réservation'
 
 - runFlow:
     when:
       platform: Android
     commands:
-      - tapOn: 'Voir ma réservation'
+    - tapOn: 'Annuler ma réservation'
 
-- scrollUntilVisible:
-    element: 'Annuler ma réservation'
-- tapOn: 'Annuler ma réservation'
-- tapOn: 'Annuler ma réservation'
+- runFlow: # iOS has an accessibility issue with the "Annuler ma réservation" button, so we need to tap on it with coordinates
+    when:
+      platform: iOS
+    commands:
+    - tapOn:
+        point: 50%,87%

@@ -33,9 +33,11 @@ export const useAlgoliaSimilarOffersQuery = (
       const offers = getSimilarOrRecoOffersInOrder(ids, hits)
       return (offers as AlgoliaOffer[])
         .filter(filterOfferHitWithImage)
-        .map(transformHits) as Offer[]
+        .map((offer) => transformHits(offer)) as Offer[]
     }
 
-    return (hits as AlgoliaOffer[]).filter(filterOfferHitWithImage).map(transformHits) as Offer[]
+    return (hits as AlgoliaOffer[])
+      .filter(filterOfferHitWithImage)
+      .map((offer) => transformHits(offer)) as Offer[]
   }, [hits, ids, shouldPreserveIdsOrder, transformHits])
 }

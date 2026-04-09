@@ -4,13 +4,14 @@
 
 src/features/accessibility/                          @pass-culture/jeunes-conversion
 src/features/achievements/                           @pass-culture/jeunes-activation
+src/features/advices/                                @pass-culture/jeunes-decouverte
 src/features/artist/                                 @pass-culture/jeunes-decouverte
 src/features/auth/                                   @pass-culture/jeunes-activation
 src/features/birthdayNotifications/                  @pass-culture/jeunes-conversion
 src/features/bonification/                           @pass-culture/jeunes-activation
 src/features/bookings/                               @pass-culture/jeunes-conversion
 src/features/bookOffer/                              @pass-culture/jeunes-conversion
-src/features/chronicle/                              @pass-culture/jeunes-decouverte
+src/features/clubAdvices/                            @pass-culture/jeunes-decouverte
 src/features/cookies/                                @pass-culture/jeunes-activation
 src/features/culturalSurvey/                         @pass-culture/jeunes-activation
 src/features/deeplinks/                              @pass-culture/jeunes-decouverte
@@ -26,6 +27,7 @@ src/features/maintenance/                            @pass-culture/jeunes-activa
 src/features/notifications/                          @pass-culture/jeunes-activation
 src/features/offer/                                  @pass-culture/jeunes-decouverte
 src/features/onboarding/                             @pass-culture/jeunes-activation
+src/features/proAdvices/                             @pass-culture/jeunes-decouverte
 src/features/profile/                                @pass-culture/jeunes-activation
 src/features/reactions/                              @pass-culture/jeunes-decouverte
 src/features/remoteBanners/                          @pass-culture/jeunes-activation

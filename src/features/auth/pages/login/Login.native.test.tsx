@@ -11,7 +11,6 @@ import { SignInResponseFailure } from 'features/auth/types'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
@@ -36,7 +35,7 @@ jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/monitoring/services')
 jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('features/navigation/helpers/navigateToHome')
-jest.mock('features/navigation/helpers/usePreviousRoute')
+jest.mock('features/navigation/helpers/usePreviousRouteName')
 const mockResetSearch = jest.fn()
 const mockIdentityCheckDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
@@ -47,8 +46,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 
 const captureMonitoringError = jest.spyOn(monitoringErrorsModule, 'captureMonitoringError')
-
-const mockUsePreviousRoute = usePreviousRoute as jest.Mock
 
 const apiPostFavoriteSpy = jest.spyOn(API.api, 'postNativeV1MeFavorites')
 
@@ -73,7 +70,7 @@ setSettingsMock({ patchSettingsWith: { isRecaptchaEnabled: false } })
 
 describe('<Login/>', () => {
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
+    setFeatureFlags([])
     mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
@@ -82,7 +79,6 @@ describe('<Login/>', () => {
     mockMeApiCall({
       showEligibleCard: false,
     } as UserProfileResponseWithoutSurvey)
-    mockUsePreviousRoute.mockReturnValue(null)
   })
 
   afterEach(async () => {
@@ -234,8 +230,7 @@ describe('<Login/>', () => {
     expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
   })
 
-  it('should redirect to home WHEN signin is successful with WIP_ENABLE_GOOGLE_SSO', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
+  it('should redirect to home WHEN signin is successful with GOOGLE_SSO', async () => {
     mockMeApiCall({
       showEligibleCard: false,
     } as UserProfileResponseWithoutSurvey)
@@ -524,6 +519,50 @@ describe('<Login/>', () => {
     await screen.findByText('Connecte-toi')
 
     expect(screen.queryByTestId('snackbar-error')).not.toBeOnTheScreen()
+  })
+
+  describe('Apple SSO', () => {
+    it('should display Apple SSO button when Apple SSO feature flag is enabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+      renderLogin()
+
+      expect(await screen.findByText('Se connecter avec Apple')).toBeOnTheScreen()
+    })
+
+    it('should not display Apple SSO button when Apple SSO feature flag is disabled', async () => {
+      renderLogin()
+
+      await screen.findByText('Connecte-toi')
+
+      expect(screen.queryByText('Se connecter avec Apple')).not.toBeOnTheScreen()
+    })
+
+    it('should display both SSO buttons when apple sso feature flags is enabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+      renderLogin()
+
+      expect(await screen.findByTestId('Se connecter avec Google')).toBeOnTheScreen()
+      expect(screen.getByText('Se connecter avec Apple')).toBeOnTheScreen()
+    })
+
+    it('should always display separator', async () => {
+      renderLogin()
+
+      expect(await screen.findByText('ou')).toBeOnTheScreen()
+    })
+
+    it('should display sso identifier forgotten when APPLE SSO is enabled', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+      renderLogin()
+
+      expect(await screen.findByText('Je ne me souviens pas de mes identifiants')).toBeOnTheScreen()
+    })
+
+    it('should display sso identifier forgotten', async () => {
+      renderLogin()
+
+      expect(await screen.findByText('Je ne me souviens pas de mes identifiants')).toBeOnTheScreen()
+    })
   })
 
   describe('Login comes from adding an offer to favorite', () => {

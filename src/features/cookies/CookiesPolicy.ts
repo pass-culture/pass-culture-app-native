@@ -32,7 +32,7 @@ export const COOKIES_BY_CATEGORY: Record<CookieCategoriesEnum, Cookies> = {
     CookieNameEnum.UBBLE,
   ],
   [CookieCategoriesEnum.video]: [CookieNameEnum.VIDEO_PLAYBACK],
-  [CookieCategoriesEnum.marketing]: [CookieNameEnum.APPSFLYER],
+  [CookieCategoriesEnum.marketing]: [CookieNameEnum.ADJUST],
 }
 
 export const ALL_OPTIONAL_COOKIES = [

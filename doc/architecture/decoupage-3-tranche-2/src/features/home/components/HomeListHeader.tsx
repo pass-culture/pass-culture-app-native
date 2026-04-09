@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react'
 import { View } from 'react-native';
-import { Spacer, PageContent, VideoCarouselModule } from 'src/features/home/pages/GenericHome';
-import { HomepageModule } from 'features/home/types';
+import { PageContent, VideoCarouselModule } from 'src/features/home/pages/GenericHome'
+import { HomepageModule } from 'features/home/types'
 
 type HomeListHeaderProps = {
   Header: React.JSX.Element;
@@ -21,7 +21,6 @@ export const HomeListHeader: FunctionComponent<HomeListHeaderProps> = ({
   return (
     <View testID="listHeader">
       {Header}
-      <Spacer.Column numberOfSpaces={6} />
       {shouldDisplayVideoInHeader && videoCarouselModules[0] ? (
         <VideoCarouselModule
           index={0}

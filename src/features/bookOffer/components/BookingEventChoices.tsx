@@ -4,9 +4,9 @@ import styled from 'styled-components/native'
 import { OfferStockResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookDateChoice } from 'features/bookOffer/components/BookDateChoice'
-import { BookDuoChoice } from 'features/bookOffer/components/BookDuoChoice'
 import { BookHourChoice } from 'features/bookOffer/components/BookHourChoice'
 import { BookPricesChoice } from 'features/bookOffer/components/BookPricesChoice'
+import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { getStockWithCategory } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
@@ -48,7 +48,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
       ) : null}
       {step >= Step.DUO ? (
         <Wrapper>
-          <BookDuoChoice />
+          <DuoChoiceSelector label="Nombre de places" labelVariant="title3" />
         </Wrapper>
       ) : null}
     </Container>

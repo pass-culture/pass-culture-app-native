@@ -13,7 +13,6 @@ import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { InternalStep } from 'ui/components/InternalStep/InternalStep'
 import { StepVariant } from 'ui/components/VerticalStepper/types'
 import { Warning } from 'ui/svg/icons/Warning'
-import { Spacer } from 'ui/theme'
 
 type Age = 15 | 16 | 17 | 18
 
@@ -47,7 +46,7 @@ export const CreditTimeline = ({ stepperProps, age, testID }: Props) => {
   ])
 
   return (
-    <Container testID={testID}>
+    <MainContainer testID={testID}>
       {stepperProps.map((props, index) => {
         const isLast = index === stepperProps.length - 1
         const isFirst = index === 0
@@ -59,9 +58,7 @@ export const CreditTimeline = ({ stepperProps, age, testID }: Props) => {
               variant={StepVariant.future}
               isLast={isLast}
               iconComponent={iconComponent}>
-              <Spacer.Column numberOfSpaces={2} />
-              {props.children}
-              <Spacer.Column numberOfSpaces={2} />
+              <Container>{props.children}</Container>
             </InternalStep>
           )
         }
@@ -75,9 +72,9 @@ export const CreditTimeline = ({ stepperProps, age, testID }: Props) => {
               variant={StepVariant.complete}
               isFirst={isFirst}
               iconComponent={iconComponent}>
-              <Spacer.Column numberOfSpaces={2} />
-              <CreditBlock creditStatus={CreditStatus.GONE}>{props.children}</CreditBlock>
-              <Spacer.Column numberOfSpaces={2} />
+              <Container>
+                <CreditBlock creditStatus={CreditStatus.GONE}>{props.children}</CreditBlock>
+              </Container>
             </InternalStep>
           )
         }
@@ -91,28 +88,30 @@ export const CreditTimeline = ({ stepperProps, age, testID }: Props) => {
             iconComponent={getStepperIconFromCreditStatus(creditStatus)}
             isFirst={isFirst}
             isLast={isLast}>
-            <Spacer.Column numberOfSpaces={2} />
-            <AgeCreditBlock
-              creditStatus={creditStatus}
-              age={props.creditStep}
-              onPress={() => analytics.logTrySelectDeposit(age)}>
-              <OnboardingCreditBlockTitle
+            <Container>
+              <AgeCreditBlock
+                creditStatus={creditStatus}
                 age={props.creditStep}
-                userAge={age}
-                deposit={depositsByAge.get(props.creditStep) ?? ''}
-              />
-              {props.children}
-            </AgeCreditBlock>
-
-            <Spacer.Column numberOfSpaces={2} />
+                onPress={() => analytics.logTrySelectDeposit(age)}>
+                <OnboardingCreditBlockTitle
+                  age={props.creditStep}
+                  userAge={age}
+                  deposit={depositsByAge.get(props.creditStep) ?? ''}
+                />
+                {props.children}
+              </AgeCreditBlock>
+            </Container>
           </InternalStep>
         )
       })}
-    </Container>
+    </MainContainer>
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.s,
+}))
+const MainContainer = styled.View({
   flexGrow: 1,
   flexDirection: 'column',
 })

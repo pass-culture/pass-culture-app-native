@@ -9,6 +9,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
+import { BugReportButton } from 'features/profile/components/Buttons/BugReportButton/BugReportButton'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
@@ -27,7 +28,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
-import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { getAge } from 'shared/user/getAge'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -48,6 +49,7 @@ import { useVersion } from 'ui/hooks/useVersion'
 import { Page } from 'ui/pages/Page'
 import { Bell } from 'ui/svg/icons/Bell'
 import { Bulb } from 'ui/svg/icons/Bulb'
+import { ChatbotAI } from 'ui/svg/icons/ChatbotAI'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
@@ -58,7 +60,7 @@ import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { Trophy } from 'ui/svg/icons/Trophy'
 import { ArtMaterial } from 'ui/svg/icons/venueAndCategories/ArtMaterial'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 const isWeb = Platform.OS === 'web'
@@ -76,9 +78,7 @@ const OnlineProfile: React.FC = () => {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.PROFILE)
   const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
-  const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
   const enableProfileV2 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PROFILE_V2)
-  const enableDebugSection = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION)
   const enableChatbot = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CHATBOT)
 
   const { dispatch: favoritesDispatch } = useFavoritesState()
@@ -204,12 +204,8 @@ const OnlineProfile: React.FC = () => {
         testID="profile-scrollview">
         <ScrollViewContentContainer>
           <View accessibilityRole={AccessibilityRole.MAIN}>
-            <ProfileHeader
-              featureFlags={{ disableActivation, enablePassForAll, enableProfileV2 }}
-              user={user}
-            />
+            <ProfileHeader featureFlags={{ disableActivation, enableProfileV2 }} user={user} />
             <ProfileContainer>
-              <Spacer.Column numberOfSpaces={4} />
               {isLoggedIn ? (
                 <Section title="Profil">
                   <VerticalUl>
@@ -293,7 +289,7 @@ const OnlineProfile: React.FC = () => {
                         title="Poser une question"
                         type="navigable"
                         navigateTo={getProfilePropConfig('Chatbot')}
-                        icon={LifeBuoy}
+                        icon={ChatbotAI}
                       />
                     </Li>
                   ) : null}
@@ -317,6 +313,9 @@ const OnlineProfile: React.FC = () => {
                       externalNav={{ url: env.FAQ_LINK }}
                       icon={ExternalSite}
                     />
+                  </Li>
+                  <Li>
+                    <BugReportButton />
                   </Li>
                 </VerticalUl>
               </Section>
@@ -360,21 +359,21 @@ const OnlineProfile: React.FC = () => {
               </Section>
               {isWeb ? null : (
                 <Section title="Partager le pass Culture">
-                  <Spacer.Column numberOfSpaces={4} />
-                  <BannerWithBackground
-                    backgroundSource={SHARE_APP_BANNER_IMAGE_SOURCE}
-                    onPress={onShareBannerPress}
-                    accessibilityRole={AccessibilityRole.BUTTON}
-                    accessibilityLabel={getComputedAccessibilityLabel(
-                      shareBannerTitle,
-                      shareBannerDescription
-                    )}>
-                    <ShareAppContainer gap={1}>
-                      <StyledButtonText>{shareBannerTitle}</StyledButtonText>
-                      <StyledBody>{shareBannerDescription}</StyledBody>
-                    </ShareAppContainer>
-                  </BannerWithBackground>
-                  <Spacer.Column numberOfSpaces={4} />
+                  <BannerContainer>
+                    <BannerWithBackground
+                      backgroundSource={SHARE_APP_BANNER_IMAGE_SOURCE}
+                      onPress={onShareBannerPress}
+                      accessibilityRole={AccessibilityRole.BUTTON}
+                      accessibilityLabel={getComputedAccessibilityLabel(
+                        shareBannerTitle,
+                        shareBannerDescription
+                      )}>
+                      <ShareAppContainer gap={1}>
+                        <StyledButtonText>{shareBannerTitle}</StyledButtonText>
+                        <StyledBody>{shareBannerDescription}</StyledBody>
+                      </ShareAppContainer>
+                    </BannerWithBackground>
+                  </BannerContainer>
                 </Section>
               )}
               <Section title="Suivre le pass Culture">
@@ -382,14 +381,15 @@ const OnlineProfile: React.FC = () => {
               </Section>
               {isLoggedIn ? (
                 <Section>
-                  <Spacer.Column numberOfSpaces={4} />
-                  <SectionRow
-                    title="Déconnexion"
-                    onPress={signOut}
-                    type="clickable"
-                    icon={SignOut}
-                    iconSize={SECTION_ROW_ICON_SIZE}
-                  />
+                  <SectionRowContainer>
+                    <SectionRow
+                      title="Déconnexion"
+                      onPress={signOut}
+                      type="clickable"
+                      icon={SignOut}
+                      iconSize={SECTION_ROW_ICON_SIZE}
+                    />
+                  </SectionRowContainer>
                 </Section>
               ) : null}
               <Section>
@@ -397,20 +397,18 @@ const OnlineProfile: React.FC = () => {
                   {version}
                   {isWeb ? `-${String(env.COMMIT_HASH)}` : ''}
                 </Version>
-                {enableDebugSection ? (
-                  <DebugButtonContainer>
-                    <ButtonContainerFlexStart>
-                      <InternalTouchableLink
-                        as={Button}
-                        size="small"
-                        variant="tertiary"
-                        color="neutral"
-                        wording="Débuggage"
-                        navigateTo={getProfilePropConfig('DebugScreen')}
-                      />
-                    </ButtonContainerFlexStart>
-                  </DebugButtonContainer>
-                ) : null}
+                <DebugButtonContainer>
+                  <ButtonContainerFlexStart>
+                    <InternalTouchableLink
+                      as={Button}
+                      size="small"
+                      variant="tertiary"
+                      color="neutral"
+                      wording="Débuggage"
+                      navigateTo={getProfilePropConfig('DebugScreen')}
+                    />
+                  </ButtonContainerFlexStart>
+                </DebugButtonContainer>
               </Section>
             </ProfileContainer>
           </View>
@@ -430,10 +428,19 @@ export function ProfileV1() {
   return <OfflinePage />
 }
 
+const SectionRowContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
+
+const BannerContainer = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
+}))
+
 const ProfileContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
   flexDirection: 'column',
   paddingHorizontal: theme.contentPage.marginHorizontal,
+  marginTop: theme.designSystem.size.spacing.l,
 }))
 
 const ScrollViewContentContainer = styled.View({

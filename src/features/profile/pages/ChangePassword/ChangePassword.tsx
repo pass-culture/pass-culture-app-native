@@ -6,9 +6,7 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ApiError } from 'api/ApiError'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useChangePasswordMutation } from 'features/auth/queries/useChangePasswordMutation'
-import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { changePasswordSchema } from 'features/profile/pages/ChangePassword/schema/changePasswordSchema'
@@ -36,7 +34,6 @@ export function ChangePassword() {
   }
   const { navigate } = useNavigation<UseNavigationType>()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
-  const { user, isUserLoading } = useAuthContext()
 
   useForHeightKeyboardEvents(setKeyboardHeight)
 
@@ -111,14 +108,9 @@ export function ChangePassword() {
 
   useEnterKeyAction(onEnterKeyAction)
 
-  if (!isUserLoading && !user?.hasPassword) {
-    navigateToHome()
-    return null
-  }
-
   return (
     <PageWithHeader
-      title="Mot de passe"
+      title="Modifier mon mot de passe"
       scrollViewProps={{
         keyboardShouldPersistTaps: 'handled',
       }}
@@ -167,6 +159,7 @@ export function ChangePassword() {
 const Container = styled.View<{ paddingBottom: number }>(({ paddingBottom, theme }) => ({
   paddingBottom,
   marginBottom: theme.designSystem.size.spacing.xl,
+  flex: theme.isDesktopViewport ? undefined : 1,
 }))
 
 const OldPasswordContainer = styled.View(({ theme }) => ({

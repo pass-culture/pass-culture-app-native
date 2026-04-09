@@ -1,9 +1,10 @@
-import { EligibilityType, QFBonificationStatus, UserProfileResponse } from 'api/gen'
+import { DepositType, EligibilityType, QFBonificationStatus, UserProfileResponse } from 'api/gen'
+import { logUserEligibilityTypeFallback } from 'features/profile/helpers/logUserEligibilityTypeFallback'
 import { getAge } from 'shared/user/getAge'
 
 import { getEligibilityType, UserEligibilityType } from './getEligibilityType'
-
 jest.mock('shared/user/getAge')
+jest.mock('features/profile/helpers/logUserEligibilityTypeFallback')
 
 const mockedGetAge = getAge as jest.Mock
 
@@ -21,13 +22,23 @@ describe('getEligibilityType', () => {
     mockedGetAge.mockReturnValue(18)
   })
 
-  it('should return NOT_ELIGIBLE by default', () => {
-    const result = getEligibilityType(buildUser())
+  describe('NOT ELIGIBLE', () => {
+    it('should return NOT_ELIGIBLE by default', () => {
+      const result = getEligibilityType(buildUser())
 
-    expect(result).toBe(UserEligibilityType.NOT_ELIGIBLE)
+      expect(result).toBe(UserEligibilityType.NOT_ELIGIBLE)
+    })
+
+    it('should log fallback when eligibility type is not eligible', () => {
+      const result = getEligibilityType(buildUser())
+
+      expect(result).toBe(UserEligibilityType.NOT_ELIGIBLE)
+
+      expect(logUserEligibilityTypeFallback).toHaveBeenCalledTimes(1)
+    })
   })
 
-  describe('V2', () => {
+  describe('ELIGIBLE V2', () => {
     it('should return ELIGIBLE_CREDIT_V2_18', () => {
       const result = getEligibilityType(buildUser({ eligibility: EligibilityType['age-18'] }))
 
@@ -35,7 +46,7 @@ describe('getEligibilityType', () => {
     })
   })
 
-  describe('V3', () => {
+  describe('ELIGIBLE V3', () => {
     it('should return ELIGIBLE_CREDIT_V3_15', () => {
       mockedGetAge.mockReturnValueOnce(15)
       const result = getEligibilityType(buildUser({ eligibility: EligibilityType.free }))
@@ -65,12 +76,14 @@ describe('getEligibilityType', () => {
     })
   })
 
-  describe('BONUS', () => {
+  describe('ELIGIBLE BONUS', () => {
     it('should override everything', () => {
       const result = getEligibilityType(
         buildUser({
           eligibility: EligibilityType.free,
           qfBonificationStatus: QFBonificationStatus.eligible,
+          depositType: DepositType.GRANT_17_18,
+          isEligibleForBeneficiaryUpgrade: false,
         })
       )
 

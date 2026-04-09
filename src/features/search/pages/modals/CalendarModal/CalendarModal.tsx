@@ -1,11 +1,9 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import colorAlpha from 'color-alpha'
-import { addMonths, addYears, format } from 'date-fns'
+import { addMonths, addYears, format, parse } from 'date-fns'
 import React, { FunctionComponent, useCallback, useMemo, useRef } from 'react'
 import { SetValueConfig, useForm } from 'react-hook-form'
 import { View } from 'react-native'
 import { CalendarList, DateData, LocaleConfig } from 'react-native-calendars'
-import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -24,7 +22,6 @@ import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months
 import { FilterButtonList, FilterButtonListItem } from 'ui/components/FilterButtonList'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing } from 'ui/theme'
 
 export type CalendarModalProps = {
   title: string
@@ -221,7 +218,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
       setValueWithValidation('selectedFilterMode', undefined)
     }
 
-    const selectedDate = new Date(date.dateString)
+    const selectedDate = parse(date.dateString, 'yyyy-MM-dd', new Date())
 
     if (!selectedStartDate || selectedEndDate || selectedDate < selectedStartDate) {
       setValueWithValidation('selectedStartDate', selectedDate)
@@ -256,16 +253,13 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
       rightIcon={Close}
       onRightIconPress={closeModal}
       fixedModalBottom={
-        <React.Fragment>
-          <Gradient />
-          <SearchFixedModalBottom
-            onSearchPress={onSubmit}
-            onResetPress={onResetPress}
-            isSearchDisabled={disabled}
-            filterBehaviour={filterBehaviour}
-            isResetDisabled={hasDefaultValues}
-          />
-        </React.Fragment>
+        <SearchFixedModalBottom
+          onSearchPress={onSubmit}
+          onResetPress={onResetPress}
+          isSearchDisabled={disabled}
+          filterBehaviour={filterBehaviour}
+          isResetDisabled={hasDefaultValues}
+        />
       }
       scrollEnabled={false}>
       <View>
@@ -327,21 +321,3 @@ const StyledCalendarList = styled(CalendarList).attrs<{ customProps?: { marginTo
     marginTop: customProps?.marginTop,
   })
 )``
-
-const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
-  colors: [
-    colorAlpha(theme.designSystem.color.background.default, 0),
-    colorAlpha(theme.designSystem.color.background.default, 0.5),
-    theme.designSystem.color.background.default,
-  ],
-  locations: [0, 0.5, 1],
-  start: { x: 0, y: 0 },
-  end: { x: 0, y: 1 },
-}))(({ theme }) => ({
-  position: 'absolute',
-  bottom: theme.designSystem.size.spacing.xxxl,
-  left: 0,
-  right: 0,
-  height: getSpacing(23),
-  zIndex: 1,
-}))

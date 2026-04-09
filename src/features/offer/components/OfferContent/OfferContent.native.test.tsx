@@ -15,6 +15,8 @@ import {
   SubcategoryIdEnum,
   SubcategoryIdEnumv2,
 } from 'api/gen'
+import { adviceVariantInfoFixture } from 'features/advices/fixtures/adviceVariantInfo.fixture'
+import { offerProAdvicesCardDataFixture } from 'features/advices/fixtures/offerProAdvices.fixture'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState } from 'features/cookies/enums'
 import * as Cookies from 'features/cookies/helpers/useCookies'
@@ -22,9 +24,8 @@ import { ConsentStatus } from 'features/cookies/types'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import * as useFavorite from 'features/favorites/hooks/useFavorite'
 import * as useGoBack from 'features/navigation/useGoBack'
-import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
+import { advicePreviewToAdviceCardData } from 'features/offer/adapters/advicePreviewToAdviceCardData'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
-import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
@@ -639,8 +640,8 @@ describe('<OfferContent />', () => {
       })
     })
 
-    describe('Chronicles section', () => {
-      it('should not display chronicles section when there are no chronicles', async () => {
+    describe('Club advices section', () => {
+      it('should not display club advices section when there are no club advices', async () => {
         renderOfferContent({
           offer: {
             ...offerResponseSnap,
@@ -662,14 +663,14 @@ describe('<OfferContent />', () => {
         expect(await screen.findByText('Lire les 3 avis')).toBeOnTheScreen()
       })
 
-      it('should navigate to chronicles page when pressing "Lire les X avis" button', async () => {
+      it('should navigate to club advices page when pressing "Lire les X avis" button', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
 
         await user.press(await screen.findByText('Lire les 3 avis'))
 
-        expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', {
+        expect(mockNavigate).toHaveBeenNthCalledWith(1, 'ClubAdvices', {
           offerId: 116656,
           from: 'chronicles',
         })
@@ -689,7 +690,7 @@ describe('<OfferContent />', () => {
         })
       })
 
-      it('should navigate to chronicles page with anchor on the selected chronicle when pressing "Voir plus" button on a card', async () => {
+      it('should navigate to club advices page with anchor on the selected advice when pressing "Voir plus" button on a card', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
@@ -703,9 +704,9 @@ describe('<OfferContent />', () => {
         const seeMoreButton = screen.getByLabelText(`Voir plus à propos de ${authorLabel}`)
         await user.press(seeMoreButton)
 
-        expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', {
+        expect(mockNavigate).toHaveBeenNthCalledWith(1, 'ClubAdvices', {
           offerId: 116656,
-          chronicleId: 1,
+          adviceId: 1,
           from: 'chronicles',
         })
       })
@@ -730,19 +731,60 @@ describe('<OfferContent />', () => {
         })
       })
 
-      it('should register chronicles-section anchor when chronicles are present', async () => {
+      it('should register club-advice-section anchor when club advices are present', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
 
-        const anchorView = await screen.findByTestId('chronicles-section-anchor')
+        const anchorView = await screen.findByTestId('club-advice-section-anchor')
 
         act(() => {
           anchorView.props.onLayout()
         })
 
         await waitFor(() => {
-          expect(mockRegisterAnchor).toHaveBeenCalledWith('chronicles-section', expect.any(Object))
+          expect(mockRegisterAnchor).toHaveBeenCalledWith('club-advice-section', expect.any(Object))
+        })
+      })
+    })
+
+    describe('Pro advices section', () => {
+      it('should display "Lire les X avis des pros" button', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+          proAdvices: [...offerProAdvicesCardDataFixture],
+        })
+
+        expect(await screen.findByText('Lire les 2 avis des pros')).toBeOnTheScreen()
+      })
+
+      it('should navigate to offer pro advices page when pressing "Lire les X avis des pros" button', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+          proAdvices: [...offerProAdvicesCardDataFixture],
+        })
+
+        await user.press(await screen.findByText('Lire les 2 avis des pros'))
+
+        expect(mockNavigate).toHaveBeenNthCalledWith(1, 'ProAdvicesOffer', {
+          offerId: 116656,
+        })
+      })
+
+      it('should register pro-advice-section anchor when pro advices are present', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+          proAdvices: [...offerProAdvicesCardDataFixture],
+        })
+
+        const anchorView = await screen.findByTestId('pro-advice-section-anchor')
+
+        act(() => {
+          anchorView.props.onLayout()
+        })
+
+        await waitFor(() => {
+          expect(mockRegisterAnchor).toHaveBeenCalledWith('pro-advice-section', expect.any(Object))
         })
       })
     })
@@ -849,12 +891,12 @@ function renderOfferContent({
   offer = offerResponseSnap,
   subcategory = mockSubcategory,
   isDesktopViewport,
-  chronicles,
+  clubAdvices,
+  proAdvices,
 }: RenderOfferContentType) {
   const subtitle = 'Membre du Book Club'
-  const chroniclesData =
-    chronicles ||
-    offer.chronicles.map((data) => chroniclePreviewToChronicalCardData(data, subtitle))
+  const clubAdvicesData =
+    clubAdvices || offer.chronicles.map((data) => advicePreviewToAdviceCardData(data, subtitle))
   render(
     reactQueryProviderHOC(
       <NavigationContainer>
@@ -862,9 +904,10 @@ function renderOfferContent({
           offer={offer}
           searchGroupList={subcategoriesDataTest.searchGroups}
           subcategory={subcategory}
-          chronicles={chroniclesData}
-          chronicleVariantInfo={chronicleVariantInfoFixture}
-          onShowChroniclesWritersModal={jest.fn()}
+          clubAdvices={clubAdvicesData}
+          proAdvices={proAdvices}
+          adviceVariantInfo={adviceVariantInfoFixture}
+          onShowClubAdviceWritersModal={jest.fn()}
           hasVideoCookiesConsent
           onVideoConsentPress={jest.fn()}
           onShowOfferArtistsModal={jest.fn()}

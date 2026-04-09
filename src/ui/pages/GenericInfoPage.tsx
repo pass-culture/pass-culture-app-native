@@ -1,21 +1,22 @@
 import React, { FunctionComponent, PropsWithChildren, ReactNode } from 'react'
-import { AccessibilityRole } from 'react-native'
+import { AccessibilityRole, ScrollView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
+import {
+  useMobileFontScaleToDisplay,
+  useWebZoomToDisplay,
+} from 'shared/accessibility/helpers/zoomHelpers'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
 import { AnimationObject, LottieColoringMode } from 'ui/animations/type'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import { getGenericInfoPageButtons } from 'ui/pages/helpers/getGenericInfoPageButtons'
 import { Page } from 'ui/pages/Page'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'
@@ -101,14 +102,24 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   animationTargetLayerNames,
   animationTargetShapeNames,
 }) => {
-  const { isDesktopViewport, designSystem } = useTheme()
+  const { designSystem } = useTheme()
   const isLandscape = useIsLandscape()
 
   const headerHeight = useGetHeaderHeight()
   const { top } = useSafeAreaInsets()
   const shouldDisplayHeader = withGoBack || withSkipAction
   const placeholderHeight = shouldDisplayHeader ? headerHeight : top
-  const onPressAccessibilityRole = accessibilityRoleInternalNavigation()
+  const marginVertical = useMobileFontScaleToDisplay({
+    default: 0,
+    at200PercentZoom: getSpacing(25),
+  })
+  const buttons = getGenericInfoPageButtons({ buttonPrimary, buttonSecondary, buttonTertiary })
+
+  const flexMobile = useMobileFontScaleToDisplay({
+    default: undefined,
+    at200PercentZoom: 0,
+  })
+  const flexWeb = useWebZoomToDisplay({ default: 1, at200PercentZoom: undefined })
 
   return (
     <Page>
@@ -116,205 +127,69 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
         shouldDisplayBackButton={withGoBack}
         RightButton={<SkipButton withSkipAction={withSkipAction} />}
       />
-
-      <Container>
+      <StyledScrollView showsVerticalScrollIndicator={false}>
         {isLandscape ? null : <Placeholder height={placeholderHeight} />}
 
-        <Spacer.Flex flex={1} />
+        <ContainerFlex flexValue={flexWeb}>
+          <ContainerWithCenteredContent marginVertical={marginVertical} flexValue={flexWeb}>
+            <IllustrationContainer animation={!!animation}>
+              {IllustrationComponent ? (
+                <IllustrationComponent
+                  size={illustrationSizes.fullPage}
+                  color={designSystem.color.icon.brandPrimary}
+                />
+              ) : null}
+              {animation ? (
+                <ThemedStyledLottieView
+                  source={animation}
+                  width="100%"
+                  height="100%"
+                  coloringMode={animationColoringMode}
+                  targetShapeNames={animationTargetShapeNames}
+                  targetLayerNames={animationTargetLayerNames}
+                />
+              ) : null}
+            </IllustrationContainer>
+            <TextContainer gap={4} flex={flexMobile}>
+              <StyledTitle2 {...getHeadingAttrs(1)}>{title}</StyledTitle2>
+              {subtitle ? <StyledBody {...getHeadingAttrs(2)}>{subtitle}</StyledBody> : null}
+            </TextContainer>
 
-        <IllustrationContainer animation={!!animation}>
-          {IllustrationComponent ? (
-            <IllustrationComponent
-              size={illustrationSizes.fullPage}
-              color={designSystem.color.icon.brandPrimary}
-            />
-          ) : null}
-          {animation ? (
-            <ThemedStyledLottieView
-              source={animation}
-              width="100%"
-              height="100%"
-              coloringMode={animationColoringMode}
-              targetShapeNames={animationTargetShapeNames}
-              targetLayerNames={animationTargetLayerNames}
-            />
-          ) : null}
-        </IllustrationContainer>
+            {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}
+          </ContainerWithCenteredContent>
 
-        <TextContainer gap={4}>
-          <StyledTitle2 {...getHeadingAttrs(1)}>{title}</StyledTitle2>
-          {subtitle ? <StyledBody {...getHeadingAttrs(2)}>{subtitle}</StyledBody> : null}
-        </TextContainer>
-
-        {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}
-
-        {isDesktopViewport ? null : <Spacer.Flex flex={1} />}
-
-        <ButtonContainer gap={4} isLandscape={isLandscape}>
-          {buttonsSurtitle}
-          {buttonPrimary.onPress ? (
-            <Button
-              fullWidth
-              color="brand"
-              key={1}
-              wording={buttonPrimary.wording}
-              onPress={buttonPrimary.onPress}
-              isLoading={buttonPrimary.isLoading}
-              disabled={buttonPrimary.disabled}
-              icon={buttonPrimary.icon}
-              accessibilityLabel={buttonPrimary.accessibilityLabel}
-              accessibilityRole={buttonPrimary.accessibilityRole ?? onPressAccessibilityRole}
-            />
-          ) : null}
-
-          {buttonPrimary.navigateTo ? (
-            <InternalTouchableLink
-              key={1}
-              as={Button}
-              color="brand"
-              fullWidth
-              wording={buttonPrimary.wording}
-              navigateTo={buttonPrimary.navigateTo}
-              onBeforeNavigate={buttonPrimary.onBeforeNavigate}
-              onAfterNavigate={buttonPrimary.onAfterNavigate}
-              isLoading={buttonPrimary.isLoading}
-              disabled={buttonPrimary.disabled}
-              icon={buttonPrimary.icon}
-              accessibilityLabel={buttonPrimary.accessibilityLabel}
-            />
-          ) : null}
-
-          {buttonPrimary.externalNav ? (
-            <ExternalTouchableLink
-              key={1}
-              as={Button}
-              color="brand"
-              fullWidth
-              wording={buttonPrimary.wording}
-              externalNav={buttonPrimary.externalNav}
-              onBeforeNavigate={buttonPrimary.onBeforeNavigate}
-              onAfterNavigate={buttonPrimary.onAfterNavigate}
-              isLoading={buttonPrimary.isLoading}
-              disabled={buttonPrimary.disabled}
-              icon={ExternalSiteFilled}
-              accessibilityLabel={buttonPrimary.accessibilityLabel}
-            />
-          ) : null}
-
-          {buttonSecondary?.onPress ? (
-            <Button
-              fullWidth
-              key={2}
-              variant="secondary"
-              color="neutral"
-              wording={buttonSecondary.wording}
-              onPress={buttonSecondary.onPress}
-              isLoading={buttonSecondary.isLoading}
-              disabled={buttonSecondary.disabled}
-              icon={buttonSecondary.icon}
-              accessibilityLabel={buttonSecondary.accessibilityLabel}
-              accessibilityRole={buttonSecondary.accessibilityRole ?? onPressAccessibilityRole}
-            />
-          ) : null}
-
-          {buttonSecondary?.navigateTo ? (
-            <InternalTouchableLink
-              key={2}
-              as={Button}
-              fullWidth
-              variant="secondary"
-              wording={buttonSecondary.wording}
-              navigateTo={buttonSecondary.navigateTo}
-              onBeforeNavigate={buttonSecondary.onBeforeNavigate}
-              onAfterNavigate={buttonSecondary.onAfterNavigate}
-              isLoading={buttonSecondary.isLoading}
-              disabled={buttonSecondary.disabled}
-              icon={buttonSecondary.icon}
-              accessibilityLabel={buttonSecondary.accessibilityLabel}
-            />
-          ) : null}
-
-          {buttonSecondary?.externalNav ? (
-            <ExternalTouchableLink
-              key={2}
-              as={Button}
-              fullWidth
-              variant="secondary"
-              wording={buttonSecondary.wording}
-              externalNav={buttonSecondary.externalNav}
-              onBeforeNavigate={buttonSecondary.onBeforeNavigate}
-              onAfterNavigate={buttonSecondary.onAfterNavigate}
-              isLoading={buttonSecondary.isLoading}
-              disabled={buttonSecondary.disabled}
-              icon={ExternalSiteFilled}
-              accessibilityLabel={buttonSecondary.accessibilityLabel}
-            />
-          ) : null}
-
-          {buttonTertiary?.onPress ? (
-            <Button
-              variant="tertiary"
-              color="neutral"
-              key={buttonTertiary ? 3 : 2}
-              wording={buttonTertiary.wording}
-              onPress={buttonTertiary.onPress}
-              isLoading={buttonTertiary.isLoading}
-              disabled={buttonTertiary.disabled}
-              icon={buttonTertiary.icon}
-              accessibilityLabel={buttonTertiary.accessibilityLabel}
-              accessibilityRole={buttonTertiary.accessibilityRole ?? onPressAccessibilityRole}
-            />
-          ) : null}
-
-          {buttonTertiary?.navigateTo ? (
-            <InternalTouchableLink
-              key={buttonTertiary ? 3 : 2}
-              as={Button}
-              variant="tertiary"
-              color="neutral"
-              wording={buttonTertiary.wording}
-              navigateTo={buttonTertiary.navigateTo}
-              onBeforeNavigate={buttonTertiary.onBeforeNavigate}
-              onAfterNavigate={buttonTertiary.onAfterNavigate}
-              isLoading={buttonTertiary.isLoading}
-              disabled={buttonTertiary.disabled}
-              icon={buttonTertiary.icon}
-              accessibilityLabel={buttonTertiary.accessibilityLabel}
-            />
-          ) : null}
-
-          {buttonTertiary?.externalNav ? (
-            <ExternalTouchableLink
-              key={buttonTertiary ? 3 : 2}
-              as={Button}
-              variant="tertiary"
-              color="neutral"
-              wording={buttonTertiary.wording}
-              externalNav={buttonTertiary.externalNav}
-              onBeforeNavigate={buttonTertiary.onBeforeNavigate}
-              onAfterNavigate={buttonTertiary.onAfterNavigate}
-              isLoading={buttonTertiary.isLoading}
-              disabled={buttonTertiary.disabled}
-              icon={ExternalSiteFilled}
-              accessibilityLabel={buttonTertiary.accessibilityLabel}
-            />
-          ) : null}
-        </ButtonContainer>
-        {isDesktopViewport ? <Spacer.Flex flex={1} /> : null}
+          <ButtonContainer gap={4} isLandscape={isLandscape}>
+            {buttonsSurtitle}
+            {buttons}
+          </ButtonContainer>
+        </ContainerFlex>
         <Spacer.BottomScreen />
-      </Container>
+      </StyledScrollView>
     </Page>
   )
 }
 
-const Container = styled.ScrollView.attrs({
-  showsVerticalScrollIndicator: false,
-  contentContainerStyle: { flexGrow: 1, justifyContent: 'space-between' },
-})(({ theme }) => ({
-  flex: 1,
-  paddingHorizontal: theme.contentPage.marginHorizontal,
-  paddingVertical: theme.contentPage.marginVertical,
+const ContainerFlex = styled.View<{ flexValue?: number }>(({ theme, flexValue }) => ({
+  justifyContent: theme.isDesktopViewport ? 'center' : 'space-between',
+  ...(flexValue !== undefined && { flex: flexValue }),
 }))
+
+const ContainerWithCenteredContent = styled.View<{ marginVertical: number; flexValue?: number }>(
+  ({ marginVertical, theme, flexValue }) => ({
+    justifyContent: 'center',
+    ...(flexValue !== undefined && { flex: flexValue }),
+    marginVertical,
+    marginTop: theme.designSystem.size.spacing.s,
+  })
+)
+const StyledScrollView = styled(ScrollView).attrs(({ theme }) => ({
+  contentContainerStyle: {
+    flexGrow: 1,
+    justifyContent: 'space-between',
+    paddingHorizontal: theme.contentPage.marginHorizontal,
+    paddingVertical: theme.contentPage.marginVertical,
+  },
+}))``
 
 const Header = styled(PageHeaderWithoutPlaceholder)({
   borderBottomWidth: 0,
@@ -331,9 +206,9 @@ const IllustrationContainer = styled.View<{ animation: boolean }>(({ animation, 
   ...(animation && { height: '30%' }),
 }))
 
-const TextContainer = styled(ViewGap)(({ theme }) => ({
+const TextContainer = styled(ViewGap)<{ flex?: number }>(({ flex }) => ({
   alignItems: 'center',
-  marginBottom: theme.designSystem.size.spacing.xl,
+  flex,
 }))
 
 const StyledTitle2 = styled(Typo.Title2)({

@@ -2,848 +2,857 @@
 
 exports[`<SetBirthday /> should render correctly 1`] = `
 <View
+  marginTop={0}
   style={
     {
-      "maxWidth": 500,
-      "width": "100%",
+      "marginTop": 0,
     }
   }
 >
-  <Text
-    accessibilityRole="header"
-    style={
-      {
-        "color": "#161617",
-        "fontFamily": "Montserrat-Bold",
-        "fontSize": 19,
-        "lineHeight": 30.4,
-      }
-    }
-  >
-    Renseigne ta date de naissance
-  </Text>
   <View
     style={
       {
-        "alignItems": "center",
-        "marginVertical": 16,
+        "maxWidth": 500,
         "width": "100%",
       }
     }
   >
+    <Text
+      accessibilityRole="header"
+      style={
+        {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 19,
+          "lineHeight": 30.4,
+        }
+      }
+    >
+      Renseigne ta date de naissance
+    </Text>
     <View
       style={
         {
-          "marginBottom": 40,
+          "alignItems": "center",
+          "marginVertical": 16,
           "width": "100%",
         }
       }
     >
       <View
-        background="#f3edff"
         style={
           {
-            "alignItems": "flex-start",
-            "backgroundColor": "#f3edff",
-            "borderBottomLeftRadius": 8,
-            "borderBottomRightRadius": 8,
-            "borderTopLeftRadius": 8,
-            "borderTopRightRadius": 8,
-            "flexDirection": "row",
-            "gap": 12,
-            "paddingBottom": 16,
-            "paddingLeft": 16,
-            "paddingRight": 16,
-            "paddingTop": 16,
+            "marginBottom": 40,
+            "width": "100%",
           }
         }
       >
         <View
-          height={24}
-          width={24}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-        <View
-          accessibilityLabel="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
-          accessibilityRole="none"
+          background="#f3edff"
           style={
             {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "gap": 4,
+              "alignItems": "flex-start",
+              "backgroundColor": "#f3edff",
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "flexDirection": "row",
+              "gap": 12,
+              "paddingBottom": 16,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 16,
             }
           }
         >
-          <Text
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
+            accessibilityRole="none"
             style={
               {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 14,
-                "lineHeight": 22.4,
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "gap": 4,
               }
             }
           >
-            Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
-          </Text>
+            <Text
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 14,
+                  "lineHeight": 22.4,
+                }
+              }
+            >
+              Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
+            </Text>
+          </View>
         </View>
       </View>
-    </View>
-    <View
-      accessibilityLabel="Date de naissance - 1er décembre 2006"
-      accessible={true}
-      gap={2}
-      style={
-        {
-          "alignItems": "flex-start",
-          "display": "flex",
-          "flexDirection": "column",
-          "gap": 8,
-          "maxWidth": 500,
-          "width": "100%",
-        }
-      }
-    >
       <View
-        style={
-          {
-            "alignItems": "flex-end",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
-          }
-        }
-      >
-        <Text
-          htmlFor="testUuidV4"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Date de naissance
-        </Text>
-      </View>
-      <View
-        height="small"
-        isDisabled={false}
-        isError={false}
-        isFocus={false}
-        style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomLeftRadius": 24,
-            "borderBottomRightRadius": 24,
-            "borderColor": "#90949d",
-            "borderStyle": "solid",
-            "borderTopLeftRadius": 24,
-            "borderTopRightRadius": 24,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "height": 40,
-            "paddingBottom": 0,
-            "paddingLeft": 17,
-            "paddingRight": 17,
-            "paddingTop": 0,
-            "width": "100%",
-          }
-        }
-        testID="styled-input-container"
-      >
-        <Text
-          nativeID="testUuidV4"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          1er décembre 2006
-        </Text>
-      </View>
-    </View>
-    <RNDatePicker
-      appTheme={
-        {
-          "activeOpacity": 0.7,
-          "appBarHeight": 64,
-          "appContentWidth": 960,
-          "borderRadius": {
-            "button": 24,
-            "checkbox": 4,
-            "radioButton": 20,
-            "radius": 8,
-            "tile": 12,
-          },
-          "breakpoints": {
-            "lg": 1024,
-            "md": 960,
-            "sm": 576,
-            "xl": 1200,
-            "xs": 358,
-            "xxl": 1400,
-            "xxs": 320,
-          },
-          "buttons": {
-            "buttonHeights": {
-              "extraSmall": 32,
-              "inline": 16,
-              "small": 40,
-              "tall": 48,
-            },
-            "linearGradient": {
-              "iconSize": 24,
-            },
-            "maxWidth": 500,
-            "primary": {
-              "iconSize": 24,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "primaryBlack": {
-              "iconSize": 24,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "primaryWhite": {
-              "iconSize": 24,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "quaternaryBlack": {
-              "iconSize": 16,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 4,
-            },
-            "quaternaryGrey": {
-              "iconSize": 16,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 4,
-            },
-            "quaternaryNeutralInfo": {
-              "iconSize": 16,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 4,
-            },
-            "quaternaryPrimary": {
-              "iconSize": 16,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 4,
-            },
-            "quaternarySecondary": {
-              "iconSize": 16,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 4,
-            },
-            "roundedButton": {
-              "size": 40,
-            },
-            "scrollButton": {
-              "borderWidth": 1,
-              "size": 40,
-            },
-            "secondary": {
-              "borderWidth": 2,
-              "iconSize": 24,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "secondaryBlack": {
-              "borderWidth": 2,
-              "iconSize": 20,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "secondaryWhite": {
-              "borderWidth": 2,
-              "iconSize": 24,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "tertiary": {
-              "iconSize": 20,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "tertiaryBlack": {
-              "iconSize": 20,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "tertiaryNeutralInfo": {
-              "iconSize": 20,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "tertiarySecondary": {
-              "iconSize": 20,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "tertiaryWhite": {
-              "iconSize": 20,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-          },
-          "checkbox": {
-            "border": {
-              "size": 2,
-            },
-            "size": 20,
-          },
-          "colorScheme": "light",
-          "colors": {
-            "aquamarineLight": "#DBFFEA",
-            "black": "#161617",
-            "coral": "#F8733D",
-            "coralLight": "#FFDECC",
-            "deepPinkLight": "#FFD7E9",
-            "goldLight100": "#FFF5D8",
-            "greyDark": "#696A6F",
-            "greyMedium": "#CBCDD2",
-            "lilacLight": "#EAE3FF",
-            "primary": "#eb0055",
-            "primaryDark": "#c10046",
-            "secondaryDark": "#25026C",
-            "skyBlue": "#20C5E9",
-            "skyBlueLight": "#D6F8FF",
-            "white": "#ffffff",
-          },
-          "contentPage": {
-            "bottom": {
-              "offsetTopHeightDesktopTablet": 40,
-            },
-            "marginHorizontal": 24,
-            "marginVertical": 24,
-            "maxWidth": 500,
-            "mediumWidth": 320,
-          },
-          "controlComponent": {
-            "size": 24,
-          },
-          "designSystem": {
-            "color": {
-              "background": {
-                "bookclub": "#dcf3f8",
-                "brandPrimary": "#6123df",
-                "brandPrimaryHover": "#320096",
-                "brandPrimarySelected": "#f3edff",
-                "brandSecondary": "#320096",
-                "brandSecondaryHover": "#25026c",
-                "cineclub": "#ffe0ea",
-                "danger": "#a20121",
-                "dangerHover": "#700118",
-                "dangerSubtle": "#fce1e6",
-                "decorative01": "#ffeae2",
-                "decorative02": "#dcf3f8",
-                "decorative03": "#94f0d6",
-                "decorative04": "#c1a3ff",
-                "decorative05": "#ffa5c0",
-                "default": "#ffffff",
-                "disabled": "#f1f1f4",
-                "error": "#fce1e6",
-                "gradientMaximum": "#ffffff",
-                "gradientMiddle": "#ffffff7a",
-                "gradientMinimum": "#ffffff00",
-                "headline": "#f3edff",
-                "hover": "#f1f1f4",
-                "info": "#f3edff",
-                "inverted": "#161617",
-                "locked": "#ffffff",
-                "lockedBrandPrimary": "#6123df",
-                "lockedBrandSecondary": "#320096",
-                "lockedInverted": "#161617",
-                "overlay": "#23232329",
-                "proEdito": "#ffeae2",
-                "shadowOverlay": "#23232329",
-                "skeletonGradient01": "#cbcdd2",
-                "skeletonGradient02": "#f1f1f4",
-                "subtle": "#f1f1f4",
-                "success": "#b9ecd0",
-                "warning": "#fbebb2",
-              },
-              "border": {
-                "brandPrimary": "#6123df",
-                "brandPrimaryHover": "#320096",
-                "brandSecondary": "#320096",
-                "brandSecondaryHover": "#25026c",
-                "danger": "#a20121",
-                "dangerHover": "#700118",
-                "decorative01": "#d63d00",
-                "decorative02": "#14a0be",
-                "decorative03": "#0e8474",
-                "decorative04": "#320096",
-                "decorative05": "#eb0055",
-                "default": "#90949d",
-                "disabled": "#cbcdd2",
-                "error": "#a20121",
-                "focused": "#161617",
-                "inverted": "#ffffff",
-                "selected": "#161617",
-                "subtle": "#cbcdd2",
-                "success": "#15884f",
-              },
-              "icon": {
-                "bookclub": "#14a0be",
-                "brandPrimary": "#6123df",
-                "brandPrimaryHover": "#320096",
-                "brandSecondary": "#320096",
-                "brandSecondaryHover": "#25026c",
-                "cineclub": "#cb0659",
-                "danger": "#a20121",
-                "dangerHover": "#700118",
-                "default": "#161617",
-                "disabled": "#696a6f",
-                "error": "#a20121",
-                "headline": "#6123df",
-                "info": "#320096",
-                "inverted": "#ffffff",
-                "locked": "#161617",
-                "lockedInverted": "#ffffff",
-                "proEdito": "#d63d00",
-                "subtle": "#696a6f",
-                "success": "#15884f",
-                "warning": "#e1a605",
-              },
-              "outline": {
-                "default": "#161617",
-                "error": "#a20121",
-                "inverted": "#ffffff",
-              },
-              "text": {
-                "brandPrimary": "#6123df",
-                "brandPrimaryHover": "#320096",
-                "brandSecondary": "#320096",
-                "brandSecondaryHover": "#25026c",
-                "danger": "#a20121",
-                "dangerHover": "#700118",
-                "default": "#161617",
-                "disabled": "#696a6f",
-                "error": "#a20121",
-                "inverted": "#ffffff",
-                "locked": "#161617",
-                "lockedInverted": "#ffffff",
-                "subtle": "#696a6f",
-                "success": "#15884f",
-                "warning": "#664900",
-              },
-            },
-            "separator": {
-              "color": {
-                "default": "#90949d",
-                "subtle": "#cbcdd2",
-              },
-            },
-            "size": {
-              "borderRadius": {
-                "l": 16,
-                "m": 8,
-                "pill": 999,
-                "s": 4,
-                "xl": 24,
-                "xxl": 32,
-              },
-              "spacing": {
-                "l": 16,
-                "m": 12,
-                "s": 8,
-                "xl": 24,
-                "xs": 4,
-                "xxl": 32,
-                "xxs": 2,
-                "xxxl": 40,
-                "xxxxl": 48,
-              },
-            },
-            "typography": {
-              "body": {
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": "16px",
-                "lineHeight": "25.6px",
-              },
-              "bodyAccent": {
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": "16px",
-                "lineHeight": "25.6px",
-              },
-              "bodyAccentS": {
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": "14px",
-                "lineHeight": "22.4px",
-              },
-              "bodyAccentXs": {
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": "12px",
-                "lineHeight": "19.2px",
-              },
-              "bodyItalic": {
-                "fontFamily": "Montserrat",
-                "fontSize": "16px",
-                "fontStyle": "italic",
-                "fontWeight": "500",
-                "lineHeight": "25.6px",
-              },
-              "bodyItalicAccent": {
-                "fontFamily": "Montserrat",
-                "fontSize": "16px",
-                "fontStyle": "italic",
-                "fontWeight": "600",
-                "lineHeight": "25.6px",
-              },
-              "bodyS": {
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": "14px",
-                "lineHeight": "22.4px",
-              },
-              "bodyXs": {
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": "12px",
-                "lineHeight": "19.2px",
-              },
-              "button": {
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": "16px",
-                "lineHeight": "22px",
-              },
-              "buttonS": {
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": "14px",
-                "lineHeight": "14px",
-              },
-              "title1": {
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": "28px",
-                "lineHeight": "44.8px",
-              },
-              "title2": {
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": "21px",
-                "lineHeight": "33.6px",
-              },
-              "title3": {
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": "19px",
-                "lineHeight": "30.4px",
-              },
-              "title4": {
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": "17px",
-                "lineHeight": "27.2px",
-              },
-            },
-          },
-          "fontFamily": {
-            "black": "Montserrat-Black",
-            "bold": "Montserrat-Bold",
-            "boldItalic": "Montserrat-BoldItalic",
-            "italic": "Montserrat-Italic",
-            "medium": "Montserrat-Medium",
-            "regular": "Montserrat-Regular",
-            "semiBold": "Montserrat-SemiBold",
-          },
-          "forms": {
-            "maxWidth": 500,
-          },
-          "home": {
-            "spaceBetweenModules": 24,
-          },
-          "icons": {
-            "sizes": {
-              "button": 22,
-              "buttonSmall": 14,
-              "extraSmall": 16,
-              "small": 24,
-              "smaller": 20,
-              "standard": 32,
-            },
-          },
-          "illustrations": {
-            "sizes": {
-              "fullPage": 200,
-              "medium": 140,
-              "small": 100,
-            },
-          },
-          "image": {
-            "square": {
-              "sizes": {
-                "large": {
-                  "borderRadius": 8,
-                  "height": 120,
-                  "width": 120,
-                },
-                "medium": {
-                  "borderRadius": 4,
-                  "height": 80,
-                  "width": 80,
-                },
-                "small": {
-                  "borderRadius": 4,
-                  "height": 40,
-                  "width": 40,
-                },
-              },
-            },
-          },
-          "inputs": {
-            "height": {
-              "regular": 48,
-              "small": 40,
-              "tall": 94,
-            },
-          },
-          "isDesktopViewport": false,
-          "isMobileViewport": true,
-          "isNative": true,
-          "isSmallScreen": false,
-          "isTabletViewport": false,
-          "isTouch": true,
-          "minScreenHeight": 568,
-          "modal": {
-            "desktopMaxWidth": 520,
-            "spacing": {
-              "16": "SM",
-              "24": "MD",
-              "32": "LG",
-              "LG": 32,
-              "MD": 24,
-              "SM": 16,
-            },
-          },
-          "navTopHeight": 80,
-          "outline": {
-            "offSet": 2,
-            "style": "solid",
-            "width": 2,
-          },
-          "radioButton": {
-            "border": {
-              "size": 2,
-            },
-            "innerDotSize": 10,
-            "size": 20,
-          },
-          "showTabBar": true,
-          "slider": {
-            "markerSize": 36,
-            "trackHeight": 16,
-          },
-          "tabBar": {
-            "fontSize": 10,
-            "height": 64,
-            "heightV2": 66,
-            "iconSize": 28,
-            "labelMinScreenWidth": 375,
-            "showLabels": true,
-          },
-          "ticket": {
-            "maxWidth": 300,
-            "minHeight": 192,
-            "qrCodeSize": 170,
-            "sizeRatio": 0.755,
-          },
-          "tiles": {
-            "borderRadius": 4,
-            "maxCaptionHeight": {
-              "offer": 72,
-              "offerTile": 128,
-              "venue": 72,
-              "videoModuleOffer": 56,
-            },
-            "sizes": {
-              "large": {
-                "height": 144,
-                "width": 96,
-              },
-              "medium": {
-                "height": 112,
-                "width": 80,
-              },
-              "small": {
-                "height": 96,
-                "width": 64,
-              },
-              "tall": {
-                "height": 120,
-                "width": 80,
-              },
-              "xLarge": {
-                "height": 220,
-                "width": 146,
-              },
-            },
-          },
-          "zIndex": {
-            "background": -1,
-            "bottomSheet": 60,
-            "cheatCodeButton": 50,
-            "favoritePastilleContent": 1,
-            "floatingButton": 1,
-            "header": 1,
-            "headerNav": 2,
-            "homeOfferCoverIcons": 1,
-            "locationWidget": 2,
-            "modalHeader": 1,
-            "playlistsButton": 1,
-            "progressbar": 1,
-            "progressbarIcon": 2,
-            "snackbar": 50,
-            "tabBar": 2,
-          },
-        }
-      }
-      buttonColor="#000000"
-      cancelText="Cancel"
-      confirmText="Confirm"
-      date="2006-12-01T00:00:00.000Z"
-      dividerColor="#000000"
-      locale="fr-FR"
-      maximumDate="2006-12-31T00:00:00.000Z"
-      minimumDate="1900-01-01T00:00:00.000Z"
-      minuteInterval={1}
-      mode="date"
-      onChange={[Function]}
-      onDateChange={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          {
-            "height": 216,
-            "width": 310,
-          },
-          {
-            "marginTop": 24,
-          },
-        ]
-      }
-      testID="date-picker-spinner-native"
-      textColor="#000000"
-      theme="light"
-      timeZoneOffsetInMinutes=""
-      title="Select date"
-    />
-    <View
-      style={
-        {
-          "paddingTop": 40,
-          "width": "100%",
-        }
-      }
-    >
-      <View
-        accessibilityLabel="Continuer"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": true,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
+        accessibilityLabel="Date de naissance - 1er décembre 2006"
         accessible={true}
-        focusable={false}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+        gap={2}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "alignSelf": "center",
-                "backgroundColor": "#f1f1f4",
-                "borderBottomLeftRadius": 8,
-                "borderBottomRightRadius": 8,
-                "borderColor": "#cbcdd2",
-                "borderStyle": "solid",
-                "borderTopLeftRadius": 8,
-                "borderTopRightRadius": 8,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "paddingBottom": 8,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 8,
-                "width": "100%",
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "alignItems": "flex-start",
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": 8,
+            "maxWidth": 500,
+            "width": "100%",
+          }
         }
-        testID="Continuer"
       >
         <View
-          fullWidth={true}
-          gap={8}
-          hasIcon={false}
-          isMultiline={false}
           style={
             {
-              "alignItems": "center",
-              "columnGap": 8,
+              "alignItems": "flex-end",
               "flexDirection": "row",
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "width": "100%",
             }
           }
         >
           <Text
+            htmlFor="testUuidV4"
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                },
-                {
-                  "color": "#696a6f",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "maxWidth": "100%",
-                  "minWidth": 0,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
             }
           >
-            Continuer
+            Date de naissance
           </Text>
+        </View>
+        <View
+          height="small"
+          isDisabled={false}
+          isError={false}
+          isFocus={false}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderBottomLeftRadius": 24,
+              "borderBottomRightRadius": 24,
+              "borderColor": "#90949d",
+              "borderStyle": "solid",
+              "borderTopLeftRadius": 24,
+              "borderTopRightRadius": 24,
+              "borderWidth": 2,
+              "flexDirection": "row",
+              "height": 40,
+              "paddingBottom": 0,
+              "paddingLeft": 17,
+              "paddingRight": 17,
+              "paddingTop": 0,
+              "width": "100%",
+            }
+          }
+          testID="styled-input-container"
+        >
+          <Text
+            nativeID="testUuidV4"
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
+            }
+          >
+            1er décembre 2006
+          </Text>
+        </View>
+      </View>
+      <RNDatePicker
+        appTheme={
+          {
+            "activeOpacity": 0.7,
+            "appBarHeight": 64,
+            "appContentWidth": 960,
+            "borderRadius": {
+              "button": 24,
+              "checkbox": 4,
+              "radioButton": 20,
+              "radius": 8,
+              "tile": 12,
+            },
+            "breakpoints": {
+              "lg": 1024,
+              "md": 960,
+              "sm": 576,
+              "xl": 1200,
+              "xs": 358,
+              "xxl": 1400,
+              "xxs": 320,
+            },
+            "buttons": {
+              "buttonHeights": {
+                "extraSmall": 32,
+                "inline": 16,
+                "small": 40,
+                "tall": 48,
+              },
+              "linearGradient": {
+                "iconSize": 24,
+              },
+              "maxWidth": 500,
+              "primary": {
+                "iconSize": 24,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "primaryBlack": {
+                "iconSize": 24,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "primaryWhite": {
+                "iconSize": 24,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "quaternaryBlack": {
+                "iconSize": 16,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 4,
+              },
+              "quaternaryGrey": {
+                "iconSize": 16,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 4,
+              },
+              "quaternaryNeutralInfo": {
+                "iconSize": 16,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 4,
+              },
+              "quaternaryPrimary": {
+                "iconSize": 16,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 4,
+              },
+              "quaternarySecondary": {
+                "iconSize": 16,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 4,
+              },
+              "roundedButton": {
+                "size": 40,
+              },
+              "scrollButton": {
+                "borderWidth": 1,
+                "size": 40,
+              },
+              "secondary": {
+                "borderWidth": 2,
+                "iconSize": 24,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "secondaryBlack": {
+                "borderWidth": 2,
+                "iconSize": 20,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "secondaryWhite": {
+                "borderWidth": 2,
+                "iconSize": 24,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "tertiary": {
+                "iconSize": 20,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "tertiaryBlack": {
+                "iconSize": 20,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "tertiaryNeutralInfo": {
+                "iconSize": 20,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "tertiarySecondary": {
+                "iconSize": 20,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "tertiaryWhite": {
+                "iconSize": 20,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+            },
+            "checkbox": {
+              "border": {
+                "size": 2,
+              },
+              "size": 20,
+            },
+            "colorScheme": "light",
+            "colors": {
+              "aquamarineLight": "#DBFFEA",
+              "black": "#161617",
+              "coral": "#F8733D",
+              "coralLight": "#FFDECC",
+              "deepPinkLight": "#FFD7E9",
+              "goldLight100": "#FFF5D8",
+              "greyDark": "#696A6F",
+              "greyMedium": "#CBCDD2",
+              "lilacLight": "#EAE3FF",
+              "primary": "#eb0055",
+              "primaryDark": "#c10046",
+              "secondaryDark": "#25026C",
+              "skyBlue": "#20C5E9",
+              "skyBlueLight": "#D6F8FF",
+              "white": "#ffffff",
+            },
+            "contentPage": {
+              "bottom": {
+                "offsetTopHeightDesktopTablet": 40,
+              },
+              "marginHorizontal": 24,
+              "marginVertical": 24,
+              "maxWidth": 500,
+              "mediumWidth": 320,
+            },
+            "controlComponent": {
+              "size": 24,
+            },
+            "designSystem": {
+              "color": {
+                "background": {
+                  "bookclub": "#dcf3f8",
+                  "brandPrimary": "#6123df",
+                  "brandPrimaryHover": "#320096",
+                  "brandPrimarySelected": "#f3edff",
+                  "brandSecondary": "#320096",
+                  "brandSecondaryHover": "#25026c",
+                  "cineclub": "#ffe0ea",
+                  "danger": "#a20121",
+                  "dangerHover": "#700118",
+                  "dangerSubtle": "#fce1e6",
+                  "decorative01": "#ffeae2",
+                  "decorative02": "#dcf3f8",
+                  "decorative03": "#94f0d6",
+                  "decorative04": "#c1a3ff",
+                  "decorative05": "#ffa5c0",
+                  "default": "#ffffff",
+                  "disabled": "#f1f1f4",
+                  "error": "#fce1e6",
+                  "gradientMaximum": "#ffffff",
+                  "gradientMiddle": "#ffffff7a",
+                  "gradientMinimum": "#ffffff00",
+                  "headline": "#f3edff",
+                  "hover": "#f1f1f4",
+                  "info": "#f3edff",
+                  "inverted": "#161617",
+                  "locked": "#ffffff",
+                  "lockedBrandPrimary": "#6123df",
+                  "lockedBrandSecondary": "#320096",
+                  "lockedInverted": "#161617",
+                  "overlay": "#23232329",
+                  "proEdito": "#ffeae2",
+                  "shadowOverlay": "#23232329",
+                  "skeletonGradient01": "#cbcdd2",
+                  "skeletonGradient02": "#f1f1f4",
+                  "subtle": "#f1f1f4",
+                  "success": "#b9ecd0",
+                  "warning": "#fbebb2",
+                },
+                "border": {
+                  "brandPrimary": "#6123df",
+                  "brandPrimaryHover": "#320096",
+                  "brandSecondary": "#320096",
+                  "brandSecondaryHover": "#25026c",
+                  "danger": "#a20121",
+                  "dangerHover": "#700118",
+                  "decorative01": "#d63d00",
+                  "decorative02": "#14a0be",
+                  "decorative03": "#0e8474",
+                  "decorative04": "#320096",
+                  "decorative05": "#eb0055",
+                  "default": "#90949d",
+                  "disabled": "#cbcdd2",
+                  "error": "#a20121",
+                  "focused": "#161617",
+                  "inverted": "#ffffff",
+                  "selected": "#161617",
+                  "subtle": "#cbcdd2",
+                  "success": "#15884f",
+                },
+                "icon": {
+                  "bookclub": "#14a0be",
+                  "brandPrimary": "#6123df",
+                  "brandPrimaryHover": "#320096",
+                  "brandSecondary": "#320096",
+                  "brandSecondaryHover": "#25026c",
+                  "cineclub": "#cb0659",
+                  "danger": "#a20121",
+                  "dangerHover": "#700118",
+                  "default": "#161617",
+                  "disabled": "#696a6f",
+                  "error": "#a20121",
+                  "headline": "#6123df",
+                  "info": "#320096",
+                  "inverted": "#ffffff",
+                  "locked": "#161617",
+                  "lockedInverted": "#ffffff",
+                  "proEdito": "#d63d00",
+                  "subtle": "#696a6f",
+                  "success": "#15884f",
+                  "warning": "#e1a605",
+                },
+                "outline": {
+                  "default": "#161617",
+                  "error": "#a20121",
+                  "inverted": "#ffffff",
+                },
+                "text": {
+                  "brandPrimary": "#6123df",
+                  "brandPrimaryHover": "#320096",
+                  "brandSecondary": "#320096",
+                  "brandSecondaryHover": "#25026c",
+                  "danger": "#a20121",
+                  "dangerHover": "#700118",
+                  "default": "#161617",
+                  "disabled": "#696a6f",
+                  "error": "#a20121",
+                  "inverted": "#ffffff",
+                  "locked": "#161617",
+                  "lockedInverted": "#ffffff",
+                  "subtle": "#696a6f",
+                  "success": "#15884f",
+                  "warning": "#664900",
+                },
+              },
+              "separator": {
+                "color": {
+                  "default": "#90949d",
+                  "subtle": "#cbcdd2",
+                },
+              },
+              "size": {
+                "borderRadius": {
+                  "l": 16,
+                  "m": 8,
+                  "pill": 999,
+                  "s": 4,
+                  "xl": 24,
+                  "xxl": 32,
+                },
+                "spacing": {
+                  "l": 16,
+                  "m": 12,
+                  "s": 8,
+                  "xl": 24,
+                  "xs": 4,
+                  "xxl": 32,
+                  "xxs": 2,
+                  "xxxl": 40,
+                  "xxxxl": 48,
+                },
+              },
+              "typography": {
+                "body": {
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": "16px",
+                  "lineHeight": "25.6px",
+                },
+                "bodyAccent": {
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "16px",
+                  "lineHeight": "25.6px",
+                },
+                "bodyAccentS": {
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "14px",
+                  "lineHeight": "22.4px",
+                },
+                "bodyAccentXs": {
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "12px",
+                  "lineHeight": "19.2px",
+                },
+                "bodyItalic": {
+                  "fontFamily": "Montserrat",
+                  "fontSize": "16px",
+                  "fontStyle": "italic",
+                  "fontWeight": "500",
+                  "lineHeight": "25.6px",
+                },
+                "bodyItalicAccent": {
+                  "fontFamily": "Montserrat",
+                  "fontSize": "16px",
+                  "fontStyle": "italic",
+                  "fontWeight": "600",
+                  "lineHeight": "25.6px",
+                },
+                "bodyS": {
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": "14px",
+                  "lineHeight": "22.4px",
+                },
+                "bodyXs": {
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": "12px",
+                  "lineHeight": "19.2px",
+                },
+                "button": {
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "16px",
+                  "lineHeight": "22px",
+                },
+                "buttonS": {
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "14px",
+                  "lineHeight": "14px",
+                },
+                "title1": {
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "28px",
+                  "lineHeight": "44.8px",
+                },
+                "title2": {
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "21px",
+                  "lineHeight": "33.6px",
+                },
+                "title3": {
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "19px",
+                  "lineHeight": "30.4px",
+                },
+                "title4": {
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "17px",
+                  "lineHeight": "27.2px",
+                },
+              },
+            },
+            "fontFamily": {
+              "black": "Montserrat-Black",
+              "bold": "Montserrat-Bold",
+              "boldItalic": "Montserrat-BoldItalic",
+              "italic": "Montserrat-Italic",
+              "medium": "Montserrat-Medium",
+              "regular": "Montserrat-Regular",
+              "semiBold": "Montserrat-SemiBold",
+            },
+            "forms": {
+              "maxWidth": 500,
+            },
+            "home": {
+              "spaceBetweenModules": 24,
+            },
+            "icons": {
+              "sizes": {
+                "button": 22,
+                "buttonSmall": 14,
+                "extraSmall": 16,
+                "small": 24,
+                "smaller": 20,
+                "standard": 32,
+              },
+            },
+            "illustrations": {
+              "sizes": {
+                "fullPage": 200,
+                "medium": 140,
+                "small": 100,
+              },
+            },
+            "image": {
+              "square": {
+                "sizes": {
+                  "large": {
+                    "borderRadius": 8,
+                    "height": 120,
+                    "width": 120,
+                  },
+                  "medium": {
+                    "borderRadius": 4,
+                    "height": 80,
+                    "width": 80,
+                  },
+                  "small": {
+                    "borderRadius": 4,
+                    "height": 40,
+                    "width": 40,
+                  },
+                },
+              },
+            },
+            "inputs": {
+              "height": {
+                "regular": 48,
+                "small": 40,
+                "tall": 94,
+              },
+            },
+            "isDesktopViewport": false,
+            "isMobileViewport": true,
+            "isNative": true,
+            "isSmallScreen": false,
+            "isTabletViewport": false,
+            "isTouch": true,
+            "minScreenHeight": 568,
+            "modal": {
+              "desktopMaxWidth": 520,
+              "spacing": {
+                "16": "SM",
+                "24": "MD",
+                "32": "LG",
+                "LG": 32,
+                "MD": 24,
+                "SM": 16,
+              },
+            },
+            "navTopHeight": 80,
+            "outline": {
+              "offSet": 2,
+              "style": "solid",
+              "width": 2,
+            },
+            "radioButton": {
+              "border": {
+                "size": 2,
+              },
+              "innerDotSize": 10,
+              "size": 20,
+            },
+            "showTabBar": true,
+            "slider": {
+              "markerSize": 36,
+              "trackHeight": 16,
+            },
+            "tabBar": {
+              "fontSize": 10,
+              "height": 64,
+              "heightV2": 66,
+              "iconSize": 28,
+              "labelMinScreenWidth": 375,
+              "showLabels": true,
+            },
+            "ticket": {
+              "maxWidth": 300,
+              "minHeight": 192,
+              "qrCodeSize": 170,
+              "sizeRatio": 0.755,
+            },
+            "tiles": {
+              "borderRadius": 4,
+              "maxCaptionHeight": {
+                "offer": 72,
+                "offerTile": 128,
+                "venue": 72,
+                "videoModuleOffer": 56,
+              },
+              "sizes": {
+                "large": {
+                  "height": 144,
+                  "width": 96,
+                },
+                "medium": {
+                  "height": 112,
+                  "width": 80,
+                },
+                "small": {
+                  "height": 96,
+                  "width": 64,
+                },
+                "tall": {
+                  "height": 120,
+                  "width": 80,
+                },
+                "xLarge": {
+                  "height": 220,
+                  "width": 146,
+                },
+              },
+            },
+            "zIndex": {
+              "background": -1,
+              "bottomSheet": 60,
+              "cheatCodeButton": 50,
+              "favoritePastilleContent": 1,
+              "floatingButton": 1,
+              "header": 1,
+              "headerNav": 2,
+              "homeOfferCoverIcons": 1,
+              "locationWidget": 2,
+              "modalHeader": 1,
+              "playlistsButton": 1,
+              "progressbar": 1,
+              "progressbarIcon": 2,
+              "snackbar": 50,
+              "tabBar": 2,
+            },
+          }
+        }
+        buttonColor="#000000"
+        cancelText="Cancel"
+        confirmText="Confirm"
+        date="2006-12-01T00:00:00.000Z"
+        dividerColor="#000000"
+        locale="fr-FR"
+        maximumDate="2006-12-31T00:00:00.000Z"
+        minimumDate="1900-01-01T00:00:00.000Z"
+        minuteInterval={1}
+        mode="date"
+        onChange={[Function]}
+        onDateChange={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            {
+              "height": 216,
+              "width": 310,
+            },
+            {
+              "marginTop": 24,
+            },
+          ]
+        }
+        testID="date-picker-spinner-native"
+        textColor="#000000"
+        theme="light"
+        timeZoneOffsetInMinutes=""
+        title="Select date"
+      />
+      <View
+        style={
+          {
+            "paddingTop": 40,
+            "width": "100%",
+          }
+        }
+      >
+        <View
+          accessibilityLabel="Continuer"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": true,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "alignSelf": "center",
+                  "backgroundColor": "#f1f1f4",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#cbcdd2",
+                  "borderStyle": "solid",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
+                  "width": "100%",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Continuer"
+        >
+          <View
+            fullWidth={true}
+            gap={8}
+            hasIcon={false}
+            isMultiline={false}
+            style={
+              {
+                "alignItems": "center",
+                "columnGap": 8,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
+              }
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#696a6f",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Continuer
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -853,870 +862,879 @@ exports[`<SetBirthday /> should render correctly 1`] = `
 
 exports[`<SetBirthday /> should render correctly when account creation token and email are in route params 1`] = `
 <View
+  marginTop={0}
   style={
     {
-      "maxWidth": 500,
-      "width": "100%",
+      "marginTop": 0,
     }
   }
 >
-  <Text
-    accessibilityRole="header"
-    style={
-      {
-        "color": "#161617",
-        "fontFamily": "Montserrat-Bold",
-        "fontSize": 19,
-        "lineHeight": 30.4,
-      }
-    }
-  >
-    Termine ton inscription
-  </Text>
   <View
     style={
       {
-        "marginTop": 16,
-      }
-    }
-  >
-    <Text
-      style={
-        {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 16,
-          "lineHeight": 25.6,
-        }
-      }
-    >
-      Ton compte Google “
-      user@gmail.com
-      ” n’est pas lié à un compte existant. Pour continuer, tu peux créer un compte.
-    </Text>
-  </View>
-  <View
-    style={
-      {
-        "alignItems": "center",
-        "marginVertical": 16,
+        "maxWidth": 500,
         "width": "100%",
       }
     }
   >
+    <Text
+      accessibilityRole="header"
+      style={
+        {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 19,
+          "lineHeight": 30.4,
+        }
+      }
+    >
+      Termine ton inscription
+    </Text>
     <View
       style={
         {
-          "marginBottom": 40,
+          "marginTop": 16,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          }
+        }
+      >
+        Ton compte Google “
+        user@gmail.com
+        ” n’est pas lié à un compte existant. Pour continuer, tu peux créer un compte.
+      </Text>
+    </View>
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "marginVertical": 16,
           "width": "100%",
         }
       }
     >
       <View
-        background="#f3edff"
         style={
           {
-            "alignItems": "flex-start",
-            "backgroundColor": "#f3edff",
-            "borderBottomLeftRadius": 8,
-            "borderBottomRightRadius": 8,
-            "borderTopLeftRadius": 8,
-            "borderTopRightRadius": 8,
-            "flexDirection": "row",
-            "gap": 12,
-            "paddingBottom": 16,
-            "paddingLeft": 16,
-            "paddingRight": 16,
-            "paddingTop": 16,
+            "marginBottom": 40,
+            "width": "100%",
           }
         }
       >
         <View
-          height={24}
-          width={24}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-        <View
-          accessibilityLabel="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
-          accessibilityRole="none"
+          background="#f3edff"
           style={
             {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "gap": 4,
+              "alignItems": "flex-start",
+              "backgroundColor": "#f3edff",
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "flexDirection": "row",
+              "gap": 12,
+              "paddingBottom": 16,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 16,
             }
           }
         >
-          <Text
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
+            accessibilityRole="none"
             style={
               {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 14,
-                "lineHeight": 22.4,
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "gap": 4,
               }
             }
           >
-            Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
-          </Text>
+            <Text
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 14,
+                  "lineHeight": 22.4,
+                }
+              }
+            >
+              Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
+            </Text>
+          </View>
         </View>
       </View>
-    </View>
-    <View
-      accessibilityLabel="Date de naissance - 1er décembre 2006"
-      accessible={true}
-      gap={2}
-      style={
-        {
-          "alignItems": "flex-start",
-          "display": "flex",
-          "flexDirection": "column",
-          "gap": 8,
-          "maxWidth": 500,
-          "width": "100%",
-        }
-      }
-    >
       <View
-        style={
-          {
-            "alignItems": "flex-end",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
-          }
-        }
-      >
-        <Text
-          htmlFor="testUuidV4"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          Date de naissance
-        </Text>
-      </View>
-      <View
-        height="small"
-        isDisabled={false}
-        isError={false}
-        isFocus={false}
-        style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomLeftRadius": 24,
-            "borderBottomRightRadius": 24,
-            "borderColor": "#90949d",
-            "borderStyle": "solid",
-            "borderTopLeftRadius": 24,
-            "borderTopRightRadius": 24,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "height": 40,
-            "paddingBottom": 0,
-            "paddingLeft": 17,
-            "paddingRight": 17,
-            "paddingTop": 0,
-            "width": "100%",
-          }
-        }
-        testID="styled-input-container"
-      >
-        <Text
-          nativeID="testUuidV4"
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            }
-          }
-        >
-          1er décembre 2006
-        </Text>
-      </View>
-    </View>
-    <RNDatePicker
-      appTheme={
-        {
-          "activeOpacity": 0.7,
-          "appBarHeight": 64,
-          "appContentWidth": 960,
-          "borderRadius": {
-            "button": 24,
-            "checkbox": 4,
-            "radioButton": 20,
-            "radius": 8,
-            "tile": 12,
-          },
-          "breakpoints": {
-            "lg": 1024,
-            "md": 960,
-            "sm": 576,
-            "xl": 1200,
-            "xs": 358,
-            "xxl": 1400,
-            "xxs": 320,
-          },
-          "buttons": {
-            "buttonHeights": {
-              "extraSmall": 32,
-              "inline": 16,
-              "small": 40,
-              "tall": 48,
-            },
-            "linearGradient": {
-              "iconSize": 24,
-            },
-            "maxWidth": 500,
-            "primary": {
-              "iconSize": 24,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "primaryBlack": {
-              "iconSize": 24,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "primaryWhite": {
-              "iconSize": 24,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "quaternaryBlack": {
-              "iconSize": 16,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 4,
-            },
-            "quaternaryGrey": {
-              "iconSize": 16,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 4,
-            },
-            "quaternaryNeutralInfo": {
-              "iconSize": 16,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 4,
-            },
-            "quaternaryPrimary": {
-              "iconSize": 16,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 4,
-            },
-            "quaternarySecondary": {
-              "iconSize": 16,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 4,
-            },
-            "roundedButton": {
-              "size": 40,
-            },
-            "scrollButton": {
-              "borderWidth": 1,
-              "size": 40,
-            },
-            "secondary": {
-              "borderWidth": 2,
-              "iconSize": 24,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "secondaryBlack": {
-              "borderWidth": 2,
-              "iconSize": 20,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "secondaryWhite": {
-              "borderWidth": 2,
-              "iconSize": 24,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "tertiary": {
-              "iconSize": 20,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "tertiaryBlack": {
-              "iconSize": 20,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "tertiaryNeutralInfo": {
-              "iconSize": 20,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "tertiarySecondary": {
-              "iconSize": 20,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-            "tertiaryWhite": {
-              "iconSize": 20,
-              "marginLeft": 0,
-              "marginLeftWithIcon": 8,
-            },
-          },
-          "checkbox": {
-            "border": {
-              "size": 2,
-            },
-            "size": 20,
-          },
-          "colorScheme": "light",
-          "colors": {
-            "aquamarineLight": "#DBFFEA",
-            "black": "#161617",
-            "coral": "#F8733D",
-            "coralLight": "#FFDECC",
-            "deepPinkLight": "#FFD7E9",
-            "goldLight100": "#FFF5D8",
-            "greyDark": "#696A6F",
-            "greyMedium": "#CBCDD2",
-            "lilacLight": "#EAE3FF",
-            "primary": "#eb0055",
-            "primaryDark": "#c10046",
-            "secondaryDark": "#25026C",
-            "skyBlue": "#20C5E9",
-            "skyBlueLight": "#D6F8FF",
-            "white": "#ffffff",
-          },
-          "contentPage": {
-            "bottom": {
-              "offsetTopHeightDesktopTablet": 40,
-            },
-            "marginHorizontal": 24,
-            "marginVertical": 24,
-            "maxWidth": 500,
-            "mediumWidth": 320,
-          },
-          "controlComponent": {
-            "size": 24,
-          },
-          "designSystem": {
-            "color": {
-              "background": {
-                "bookclub": "#dcf3f8",
-                "brandPrimary": "#6123df",
-                "brandPrimaryHover": "#320096",
-                "brandPrimarySelected": "#f3edff",
-                "brandSecondary": "#320096",
-                "brandSecondaryHover": "#25026c",
-                "cineclub": "#ffe0ea",
-                "danger": "#a20121",
-                "dangerHover": "#700118",
-                "dangerSubtle": "#fce1e6",
-                "decorative01": "#ffeae2",
-                "decorative02": "#dcf3f8",
-                "decorative03": "#94f0d6",
-                "decorative04": "#c1a3ff",
-                "decorative05": "#ffa5c0",
-                "default": "#ffffff",
-                "disabled": "#f1f1f4",
-                "error": "#fce1e6",
-                "gradientMaximum": "#ffffff",
-                "gradientMiddle": "#ffffff7a",
-                "gradientMinimum": "#ffffff00",
-                "headline": "#f3edff",
-                "hover": "#f1f1f4",
-                "info": "#f3edff",
-                "inverted": "#161617",
-                "locked": "#ffffff",
-                "lockedBrandPrimary": "#6123df",
-                "lockedBrandSecondary": "#320096",
-                "lockedInverted": "#161617",
-                "overlay": "#23232329",
-                "proEdito": "#ffeae2",
-                "shadowOverlay": "#23232329",
-                "skeletonGradient01": "#cbcdd2",
-                "skeletonGradient02": "#f1f1f4",
-                "subtle": "#f1f1f4",
-                "success": "#b9ecd0",
-                "warning": "#fbebb2",
-              },
-              "border": {
-                "brandPrimary": "#6123df",
-                "brandPrimaryHover": "#320096",
-                "brandSecondary": "#320096",
-                "brandSecondaryHover": "#25026c",
-                "danger": "#a20121",
-                "dangerHover": "#700118",
-                "decorative01": "#d63d00",
-                "decorative02": "#14a0be",
-                "decorative03": "#0e8474",
-                "decorative04": "#320096",
-                "decorative05": "#eb0055",
-                "default": "#90949d",
-                "disabled": "#cbcdd2",
-                "error": "#a20121",
-                "focused": "#161617",
-                "inverted": "#ffffff",
-                "selected": "#161617",
-                "subtle": "#cbcdd2",
-                "success": "#15884f",
-              },
-              "icon": {
-                "bookclub": "#14a0be",
-                "brandPrimary": "#6123df",
-                "brandPrimaryHover": "#320096",
-                "brandSecondary": "#320096",
-                "brandSecondaryHover": "#25026c",
-                "cineclub": "#cb0659",
-                "danger": "#a20121",
-                "dangerHover": "#700118",
-                "default": "#161617",
-                "disabled": "#696a6f",
-                "error": "#a20121",
-                "headline": "#6123df",
-                "info": "#320096",
-                "inverted": "#ffffff",
-                "locked": "#161617",
-                "lockedInverted": "#ffffff",
-                "proEdito": "#d63d00",
-                "subtle": "#696a6f",
-                "success": "#15884f",
-                "warning": "#e1a605",
-              },
-              "outline": {
-                "default": "#161617",
-                "error": "#a20121",
-                "inverted": "#ffffff",
-              },
-              "text": {
-                "brandPrimary": "#6123df",
-                "brandPrimaryHover": "#320096",
-                "brandSecondary": "#320096",
-                "brandSecondaryHover": "#25026c",
-                "danger": "#a20121",
-                "dangerHover": "#700118",
-                "default": "#161617",
-                "disabled": "#696a6f",
-                "error": "#a20121",
-                "inverted": "#ffffff",
-                "locked": "#161617",
-                "lockedInverted": "#ffffff",
-                "subtle": "#696a6f",
-                "success": "#15884f",
-                "warning": "#664900",
-              },
-            },
-            "separator": {
-              "color": {
-                "default": "#90949d",
-                "subtle": "#cbcdd2",
-              },
-            },
-            "size": {
-              "borderRadius": {
-                "l": 16,
-                "m": 8,
-                "pill": 999,
-                "s": 4,
-                "xl": 24,
-                "xxl": 32,
-              },
-              "spacing": {
-                "l": 16,
-                "m": 12,
-                "s": 8,
-                "xl": 24,
-                "xs": 4,
-                "xxl": 32,
-                "xxs": 2,
-                "xxxl": 40,
-                "xxxxl": 48,
-              },
-            },
-            "typography": {
-              "body": {
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": "16px",
-                "lineHeight": "25.6px",
-              },
-              "bodyAccent": {
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": "16px",
-                "lineHeight": "25.6px",
-              },
-              "bodyAccentS": {
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": "14px",
-                "lineHeight": "22.4px",
-              },
-              "bodyAccentXs": {
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": "12px",
-                "lineHeight": "19.2px",
-              },
-              "bodyItalic": {
-                "fontFamily": "Montserrat",
-                "fontSize": "16px",
-                "fontStyle": "italic",
-                "fontWeight": "500",
-                "lineHeight": "25.6px",
-              },
-              "bodyItalicAccent": {
-                "fontFamily": "Montserrat",
-                "fontSize": "16px",
-                "fontStyle": "italic",
-                "fontWeight": "600",
-                "lineHeight": "25.6px",
-              },
-              "bodyS": {
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": "14px",
-                "lineHeight": "22.4px",
-              },
-              "bodyXs": {
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": "12px",
-                "lineHeight": "19.2px",
-              },
-              "button": {
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": "16px",
-                "lineHeight": "22px",
-              },
-              "buttonS": {
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": "14px",
-                "lineHeight": "14px",
-              },
-              "title1": {
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": "28px",
-                "lineHeight": "44.8px",
-              },
-              "title2": {
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": "21px",
-                "lineHeight": "33.6px",
-              },
-              "title3": {
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": "19px",
-                "lineHeight": "30.4px",
-              },
-              "title4": {
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": "17px",
-                "lineHeight": "27.2px",
-              },
-            },
-          },
-          "fontFamily": {
-            "black": "Montserrat-Black",
-            "bold": "Montserrat-Bold",
-            "boldItalic": "Montserrat-BoldItalic",
-            "italic": "Montserrat-Italic",
-            "medium": "Montserrat-Medium",
-            "regular": "Montserrat-Regular",
-            "semiBold": "Montserrat-SemiBold",
-          },
-          "forms": {
-            "maxWidth": 500,
-          },
-          "home": {
-            "spaceBetweenModules": 24,
-          },
-          "icons": {
-            "sizes": {
-              "button": 22,
-              "buttonSmall": 14,
-              "extraSmall": 16,
-              "small": 24,
-              "smaller": 20,
-              "standard": 32,
-            },
-          },
-          "illustrations": {
-            "sizes": {
-              "fullPage": 200,
-              "medium": 140,
-              "small": 100,
-            },
-          },
-          "image": {
-            "square": {
-              "sizes": {
-                "large": {
-                  "borderRadius": 8,
-                  "height": 120,
-                  "width": 120,
-                },
-                "medium": {
-                  "borderRadius": 4,
-                  "height": 80,
-                  "width": 80,
-                },
-                "small": {
-                  "borderRadius": 4,
-                  "height": 40,
-                  "width": 40,
-                },
-              },
-            },
-          },
-          "inputs": {
-            "height": {
-              "regular": 48,
-              "small": 40,
-              "tall": 94,
-            },
-          },
-          "isDesktopViewport": false,
-          "isMobileViewport": true,
-          "isNative": true,
-          "isSmallScreen": false,
-          "isTabletViewport": false,
-          "isTouch": true,
-          "minScreenHeight": 568,
-          "modal": {
-            "desktopMaxWidth": 520,
-            "spacing": {
-              "16": "SM",
-              "24": "MD",
-              "32": "LG",
-              "LG": 32,
-              "MD": 24,
-              "SM": 16,
-            },
-          },
-          "navTopHeight": 80,
-          "outline": {
-            "offSet": 2,
-            "style": "solid",
-            "width": 2,
-          },
-          "radioButton": {
-            "border": {
-              "size": 2,
-            },
-            "innerDotSize": 10,
-            "size": 20,
-          },
-          "showTabBar": true,
-          "slider": {
-            "markerSize": 36,
-            "trackHeight": 16,
-          },
-          "tabBar": {
-            "fontSize": 10,
-            "height": 64,
-            "heightV2": 66,
-            "iconSize": 28,
-            "labelMinScreenWidth": 375,
-            "showLabels": true,
-          },
-          "ticket": {
-            "maxWidth": 300,
-            "minHeight": 192,
-            "qrCodeSize": 170,
-            "sizeRatio": 0.755,
-          },
-          "tiles": {
-            "borderRadius": 4,
-            "maxCaptionHeight": {
-              "offer": 72,
-              "offerTile": 128,
-              "venue": 72,
-              "videoModuleOffer": 56,
-            },
-            "sizes": {
-              "large": {
-                "height": 144,
-                "width": 96,
-              },
-              "medium": {
-                "height": 112,
-                "width": 80,
-              },
-              "small": {
-                "height": 96,
-                "width": 64,
-              },
-              "tall": {
-                "height": 120,
-                "width": 80,
-              },
-              "xLarge": {
-                "height": 220,
-                "width": 146,
-              },
-            },
-          },
-          "zIndex": {
-            "background": -1,
-            "bottomSheet": 60,
-            "cheatCodeButton": 50,
-            "favoritePastilleContent": 1,
-            "floatingButton": 1,
-            "header": 1,
-            "headerNav": 2,
-            "homeOfferCoverIcons": 1,
-            "locationWidget": 2,
-            "modalHeader": 1,
-            "playlistsButton": 1,
-            "progressbar": 1,
-            "progressbarIcon": 2,
-            "snackbar": 50,
-            "tabBar": 2,
-          },
-        }
-      }
-      buttonColor="#000000"
-      cancelText="Cancel"
-      confirmText="Confirm"
-      date="2006-12-01T00:00:00.000Z"
-      dividerColor="#000000"
-      locale="fr-FR"
-      maximumDate="2006-12-31T00:00:00.000Z"
-      minimumDate="1900-01-01T00:00:00.000Z"
-      minuteInterval={1}
-      mode="date"
-      onChange={[Function]}
-      onDateChange={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          {
-            "height": 216,
-            "width": 310,
-          },
-          {
-            "marginTop": 24,
-          },
-        ]
-      }
-      testID="date-picker-spinner-native"
-      textColor="#000000"
-      theme="light"
-      timeZoneOffsetInMinutes=""
-      title="Select date"
-    />
-    <View
-      style={
-        {
-          "paddingTop": 40,
-          "width": "100%",
-        }
-      }
-    >
-      <View
-        accessibilityLabel="Continuer"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": true,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
+        accessibilityLabel="Date de naissance - 1er décembre 2006"
         accessible={true}
-        focusable={false}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+        gap={2}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "alignSelf": "center",
-                "backgroundColor": "#f1f1f4",
-                "borderBottomLeftRadius": 8,
-                "borderBottomRightRadius": 8,
-                "borderColor": "#cbcdd2",
-                "borderStyle": "solid",
-                "borderTopLeftRadius": 8,
-                "borderTopRightRadius": 8,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "paddingBottom": 8,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 8,
-                "width": "100%",
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "alignItems": "flex-start",
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": 8,
+            "maxWidth": 500,
+            "width": "100%",
+          }
         }
-        testID="Continuer"
       >
         <View
-          fullWidth={true}
-          gap={8}
-          hasIcon={false}
-          isMultiline={false}
           style={
             {
-              "alignItems": "center",
-              "columnGap": 8,
+              "alignItems": "flex-end",
               "flexDirection": "row",
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "width": "100%",
             }
           }
         >
           <Text
+            htmlFor="testUuidV4"
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 22,
-                },
-                {
-                  "color": "#696a6f",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "maxWidth": "100%",
-                  "minWidth": 0,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
             }
           >
-            Continuer
+            Date de naissance
           </Text>
+        </View>
+        <View
+          height="small"
+          isDisabled={false}
+          isError={false}
+          isFocus={false}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderBottomLeftRadius": 24,
+              "borderBottomRightRadius": 24,
+              "borderColor": "#90949d",
+              "borderStyle": "solid",
+              "borderTopLeftRadius": 24,
+              "borderTopRightRadius": 24,
+              "borderWidth": 2,
+              "flexDirection": "row",
+              "height": 40,
+              "paddingBottom": 0,
+              "paddingLeft": 17,
+              "paddingRight": 17,
+              "paddingTop": 0,
+              "width": "100%",
+            }
+          }
+          testID="styled-input-container"
+        >
+          <Text
+            nativeID="testUuidV4"
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
+            }
+          >
+            1er décembre 2006
+          </Text>
+        </View>
+      </View>
+      <RNDatePicker
+        appTheme={
+          {
+            "activeOpacity": 0.7,
+            "appBarHeight": 64,
+            "appContentWidth": 960,
+            "borderRadius": {
+              "button": 24,
+              "checkbox": 4,
+              "radioButton": 20,
+              "radius": 8,
+              "tile": 12,
+            },
+            "breakpoints": {
+              "lg": 1024,
+              "md": 960,
+              "sm": 576,
+              "xl": 1200,
+              "xs": 358,
+              "xxl": 1400,
+              "xxs": 320,
+            },
+            "buttons": {
+              "buttonHeights": {
+                "extraSmall": 32,
+                "inline": 16,
+                "small": 40,
+                "tall": 48,
+              },
+              "linearGradient": {
+                "iconSize": 24,
+              },
+              "maxWidth": 500,
+              "primary": {
+                "iconSize": 24,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "primaryBlack": {
+                "iconSize": 24,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "primaryWhite": {
+                "iconSize": 24,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "quaternaryBlack": {
+                "iconSize": 16,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 4,
+              },
+              "quaternaryGrey": {
+                "iconSize": 16,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 4,
+              },
+              "quaternaryNeutralInfo": {
+                "iconSize": 16,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 4,
+              },
+              "quaternaryPrimary": {
+                "iconSize": 16,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 4,
+              },
+              "quaternarySecondary": {
+                "iconSize": 16,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 4,
+              },
+              "roundedButton": {
+                "size": 40,
+              },
+              "scrollButton": {
+                "borderWidth": 1,
+                "size": 40,
+              },
+              "secondary": {
+                "borderWidth": 2,
+                "iconSize": 24,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "secondaryBlack": {
+                "borderWidth": 2,
+                "iconSize": 20,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "secondaryWhite": {
+                "borderWidth": 2,
+                "iconSize": 24,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "tertiary": {
+                "iconSize": 20,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "tertiaryBlack": {
+                "iconSize": 20,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "tertiaryNeutralInfo": {
+                "iconSize": 20,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "tertiarySecondary": {
+                "iconSize": 20,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+              "tertiaryWhite": {
+                "iconSize": 20,
+                "marginLeft": 0,
+                "marginLeftWithIcon": 8,
+              },
+            },
+            "checkbox": {
+              "border": {
+                "size": 2,
+              },
+              "size": 20,
+            },
+            "colorScheme": "light",
+            "colors": {
+              "aquamarineLight": "#DBFFEA",
+              "black": "#161617",
+              "coral": "#F8733D",
+              "coralLight": "#FFDECC",
+              "deepPinkLight": "#FFD7E9",
+              "goldLight100": "#FFF5D8",
+              "greyDark": "#696A6F",
+              "greyMedium": "#CBCDD2",
+              "lilacLight": "#EAE3FF",
+              "primary": "#eb0055",
+              "primaryDark": "#c10046",
+              "secondaryDark": "#25026C",
+              "skyBlue": "#20C5E9",
+              "skyBlueLight": "#D6F8FF",
+              "white": "#ffffff",
+            },
+            "contentPage": {
+              "bottom": {
+                "offsetTopHeightDesktopTablet": 40,
+              },
+              "marginHorizontal": 24,
+              "marginVertical": 24,
+              "maxWidth": 500,
+              "mediumWidth": 320,
+            },
+            "controlComponent": {
+              "size": 24,
+            },
+            "designSystem": {
+              "color": {
+                "background": {
+                  "bookclub": "#dcf3f8",
+                  "brandPrimary": "#6123df",
+                  "brandPrimaryHover": "#320096",
+                  "brandPrimarySelected": "#f3edff",
+                  "brandSecondary": "#320096",
+                  "brandSecondaryHover": "#25026c",
+                  "cineclub": "#ffe0ea",
+                  "danger": "#a20121",
+                  "dangerHover": "#700118",
+                  "dangerSubtle": "#fce1e6",
+                  "decorative01": "#ffeae2",
+                  "decorative02": "#dcf3f8",
+                  "decorative03": "#94f0d6",
+                  "decorative04": "#c1a3ff",
+                  "decorative05": "#ffa5c0",
+                  "default": "#ffffff",
+                  "disabled": "#f1f1f4",
+                  "error": "#fce1e6",
+                  "gradientMaximum": "#ffffff",
+                  "gradientMiddle": "#ffffff7a",
+                  "gradientMinimum": "#ffffff00",
+                  "headline": "#f3edff",
+                  "hover": "#f1f1f4",
+                  "info": "#f3edff",
+                  "inverted": "#161617",
+                  "locked": "#ffffff",
+                  "lockedBrandPrimary": "#6123df",
+                  "lockedBrandSecondary": "#320096",
+                  "lockedInverted": "#161617",
+                  "overlay": "#23232329",
+                  "proEdito": "#ffeae2",
+                  "shadowOverlay": "#23232329",
+                  "skeletonGradient01": "#cbcdd2",
+                  "skeletonGradient02": "#f1f1f4",
+                  "subtle": "#f1f1f4",
+                  "success": "#b9ecd0",
+                  "warning": "#fbebb2",
+                },
+                "border": {
+                  "brandPrimary": "#6123df",
+                  "brandPrimaryHover": "#320096",
+                  "brandSecondary": "#320096",
+                  "brandSecondaryHover": "#25026c",
+                  "danger": "#a20121",
+                  "dangerHover": "#700118",
+                  "decorative01": "#d63d00",
+                  "decorative02": "#14a0be",
+                  "decorative03": "#0e8474",
+                  "decorative04": "#320096",
+                  "decorative05": "#eb0055",
+                  "default": "#90949d",
+                  "disabled": "#cbcdd2",
+                  "error": "#a20121",
+                  "focused": "#161617",
+                  "inverted": "#ffffff",
+                  "selected": "#161617",
+                  "subtle": "#cbcdd2",
+                  "success": "#15884f",
+                },
+                "icon": {
+                  "bookclub": "#14a0be",
+                  "brandPrimary": "#6123df",
+                  "brandPrimaryHover": "#320096",
+                  "brandSecondary": "#320096",
+                  "brandSecondaryHover": "#25026c",
+                  "cineclub": "#cb0659",
+                  "danger": "#a20121",
+                  "dangerHover": "#700118",
+                  "default": "#161617",
+                  "disabled": "#696a6f",
+                  "error": "#a20121",
+                  "headline": "#6123df",
+                  "info": "#320096",
+                  "inverted": "#ffffff",
+                  "locked": "#161617",
+                  "lockedInverted": "#ffffff",
+                  "proEdito": "#d63d00",
+                  "subtle": "#696a6f",
+                  "success": "#15884f",
+                  "warning": "#e1a605",
+                },
+                "outline": {
+                  "default": "#161617",
+                  "error": "#a20121",
+                  "inverted": "#ffffff",
+                },
+                "text": {
+                  "brandPrimary": "#6123df",
+                  "brandPrimaryHover": "#320096",
+                  "brandSecondary": "#320096",
+                  "brandSecondaryHover": "#25026c",
+                  "danger": "#a20121",
+                  "dangerHover": "#700118",
+                  "default": "#161617",
+                  "disabled": "#696a6f",
+                  "error": "#a20121",
+                  "inverted": "#ffffff",
+                  "locked": "#161617",
+                  "lockedInverted": "#ffffff",
+                  "subtle": "#696a6f",
+                  "success": "#15884f",
+                  "warning": "#664900",
+                },
+              },
+              "separator": {
+                "color": {
+                  "default": "#90949d",
+                  "subtle": "#cbcdd2",
+                },
+              },
+              "size": {
+                "borderRadius": {
+                  "l": 16,
+                  "m": 8,
+                  "pill": 999,
+                  "s": 4,
+                  "xl": 24,
+                  "xxl": 32,
+                },
+                "spacing": {
+                  "l": 16,
+                  "m": 12,
+                  "s": 8,
+                  "xl": 24,
+                  "xs": 4,
+                  "xxl": 32,
+                  "xxs": 2,
+                  "xxxl": 40,
+                  "xxxxl": 48,
+                },
+              },
+              "typography": {
+                "body": {
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": "16px",
+                  "lineHeight": "25.6px",
+                },
+                "bodyAccent": {
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "16px",
+                  "lineHeight": "25.6px",
+                },
+                "bodyAccentS": {
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "14px",
+                  "lineHeight": "22.4px",
+                },
+                "bodyAccentXs": {
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "12px",
+                  "lineHeight": "19.2px",
+                },
+                "bodyItalic": {
+                  "fontFamily": "Montserrat",
+                  "fontSize": "16px",
+                  "fontStyle": "italic",
+                  "fontWeight": "500",
+                  "lineHeight": "25.6px",
+                },
+                "bodyItalicAccent": {
+                  "fontFamily": "Montserrat",
+                  "fontSize": "16px",
+                  "fontStyle": "italic",
+                  "fontWeight": "600",
+                  "lineHeight": "25.6px",
+                },
+                "bodyS": {
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": "14px",
+                  "lineHeight": "22.4px",
+                },
+                "bodyXs": {
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": "12px",
+                  "lineHeight": "19.2px",
+                },
+                "button": {
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "16px",
+                  "lineHeight": "22px",
+                },
+                "buttonS": {
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "14px",
+                  "lineHeight": "14px",
+                },
+                "title1": {
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "28px",
+                  "lineHeight": "44.8px",
+                },
+                "title2": {
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "21px",
+                  "lineHeight": "33.6px",
+                },
+                "title3": {
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "19px",
+                  "lineHeight": "30.4px",
+                },
+                "title4": {
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "17px",
+                  "lineHeight": "27.2px",
+                },
+              },
+            },
+            "fontFamily": {
+              "black": "Montserrat-Black",
+              "bold": "Montserrat-Bold",
+              "boldItalic": "Montserrat-BoldItalic",
+              "italic": "Montserrat-Italic",
+              "medium": "Montserrat-Medium",
+              "regular": "Montserrat-Regular",
+              "semiBold": "Montserrat-SemiBold",
+            },
+            "forms": {
+              "maxWidth": 500,
+            },
+            "home": {
+              "spaceBetweenModules": 24,
+            },
+            "icons": {
+              "sizes": {
+                "button": 22,
+                "buttonSmall": 14,
+                "extraSmall": 16,
+                "small": 24,
+                "smaller": 20,
+                "standard": 32,
+              },
+            },
+            "illustrations": {
+              "sizes": {
+                "fullPage": 200,
+                "medium": 140,
+                "small": 100,
+              },
+            },
+            "image": {
+              "square": {
+                "sizes": {
+                  "large": {
+                    "borderRadius": 8,
+                    "height": 120,
+                    "width": 120,
+                  },
+                  "medium": {
+                    "borderRadius": 4,
+                    "height": 80,
+                    "width": 80,
+                  },
+                  "small": {
+                    "borderRadius": 4,
+                    "height": 40,
+                    "width": 40,
+                  },
+                },
+              },
+            },
+            "inputs": {
+              "height": {
+                "regular": 48,
+                "small": 40,
+                "tall": 94,
+              },
+            },
+            "isDesktopViewport": false,
+            "isMobileViewport": true,
+            "isNative": true,
+            "isSmallScreen": false,
+            "isTabletViewport": false,
+            "isTouch": true,
+            "minScreenHeight": 568,
+            "modal": {
+              "desktopMaxWidth": 520,
+              "spacing": {
+                "16": "SM",
+                "24": "MD",
+                "32": "LG",
+                "LG": 32,
+                "MD": 24,
+                "SM": 16,
+              },
+            },
+            "navTopHeight": 80,
+            "outline": {
+              "offSet": 2,
+              "style": "solid",
+              "width": 2,
+            },
+            "radioButton": {
+              "border": {
+                "size": 2,
+              },
+              "innerDotSize": 10,
+              "size": 20,
+            },
+            "showTabBar": true,
+            "slider": {
+              "markerSize": 36,
+              "trackHeight": 16,
+            },
+            "tabBar": {
+              "fontSize": 10,
+              "height": 64,
+              "heightV2": 66,
+              "iconSize": 28,
+              "labelMinScreenWidth": 375,
+              "showLabels": true,
+            },
+            "ticket": {
+              "maxWidth": 300,
+              "minHeight": 192,
+              "qrCodeSize": 170,
+              "sizeRatio": 0.755,
+            },
+            "tiles": {
+              "borderRadius": 4,
+              "maxCaptionHeight": {
+                "offer": 72,
+                "offerTile": 128,
+                "venue": 72,
+                "videoModuleOffer": 56,
+              },
+              "sizes": {
+                "large": {
+                  "height": 144,
+                  "width": 96,
+                },
+                "medium": {
+                  "height": 112,
+                  "width": 80,
+                },
+                "small": {
+                  "height": 96,
+                  "width": 64,
+                },
+                "tall": {
+                  "height": 120,
+                  "width": 80,
+                },
+                "xLarge": {
+                  "height": 220,
+                  "width": 146,
+                },
+              },
+            },
+            "zIndex": {
+              "background": -1,
+              "bottomSheet": 60,
+              "cheatCodeButton": 50,
+              "favoritePastilleContent": 1,
+              "floatingButton": 1,
+              "header": 1,
+              "headerNav": 2,
+              "homeOfferCoverIcons": 1,
+              "locationWidget": 2,
+              "modalHeader": 1,
+              "playlistsButton": 1,
+              "progressbar": 1,
+              "progressbarIcon": 2,
+              "snackbar": 50,
+              "tabBar": 2,
+            },
+          }
+        }
+        buttonColor="#000000"
+        cancelText="Cancel"
+        confirmText="Confirm"
+        date="2006-12-01T00:00:00.000Z"
+        dividerColor="#000000"
+        locale="fr-FR"
+        maximumDate="2006-12-31T00:00:00.000Z"
+        minimumDate="1900-01-01T00:00:00.000Z"
+        minuteInterval={1}
+        mode="date"
+        onChange={[Function]}
+        onDateChange={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            {
+              "height": 216,
+              "width": 310,
+            },
+            {
+              "marginTop": 24,
+            },
+          ]
+        }
+        testID="date-picker-spinner-native"
+        textColor="#000000"
+        theme="light"
+        timeZoneOffsetInMinutes=""
+        title="Select date"
+      />
+      <View
+        style={
+          {
+            "paddingTop": 40,
+            "width": "100%",
+          }
+        }
+      >
+        <View
+          accessibilityLabel="Continuer"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": true,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "alignSelf": "center",
+                  "backgroundColor": "#f1f1f4",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#cbcdd2",
+                  "borderStyle": "solid",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
+                  "width": "100%",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Continuer"
+        >
+          <View
+            fullWidth={true}
+            gap={8}
+            hasIcon={false}
+            isMultiline={false}
+            style={
+              {
+                "alignItems": "center",
+                "columnGap": 8,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
+              }
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 22,
+                  },
+                  {
+                    "color": "#696a6f",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "maxWidth": "100%",
+                    "minWidth": 0,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Continuer
+            </Text>
+          </View>
         </View>
       </View>
     </View>

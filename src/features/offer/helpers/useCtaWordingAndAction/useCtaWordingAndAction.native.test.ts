@@ -89,7 +89,6 @@ describe('getCtaWordingAndAction', () => {
         offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 0 }] }),
         subcategory: buildSubcategory({}),
         storedProfileInfos: undefined,
-        featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
       })
 
       expect(result).toEqual({
@@ -117,7 +116,6 @@ describe('getCtaWordingAndAction', () => {
           address: '1 rue du Test',
           status: ActivityIdEnum.STUDENT,
         },
-        featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
       })
 
       expect(result).toEqual({
@@ -139,7 +137,6 @@ describe('getCtaWordingAndAction', () => {
         user: { ...beneficiaryUser, eligibility: EligibilityType.free },
         offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 0 }] }),
         subcategory: buildSubcategory({}),
-        featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
       })
 
       expect(result).toEqual({
@@ -156,7 +153,6 @@ describe('getCtaWordingAndAction', () => {
         user: { ...nonBeneficiaryUser, eligibility: EligibilityType.free },
         offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 2000 }] }),
         subcategory: buildSubcategory({}),
-        featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
       })
 
       expect(result).toEqual({
@@ -172,7 +168,6 @@ describe('getCtaWordingAndAction', () => {
         user: { ...beneficiaryUser, eligibility: EligibilityType.free },
         offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 2000 }] }),
         subcategory: buildSubcategory({}),
-        featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
       })
 
       expect(result).toEqual({

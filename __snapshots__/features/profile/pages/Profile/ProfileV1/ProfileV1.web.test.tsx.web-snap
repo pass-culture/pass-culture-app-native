@@ -192,15 +192,8 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-marginBottom-1peese0 r-marginInline-14mg64r r-marginTop-14gqq1x"
-            >
-              <div
-                class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                dir="ltr"
-              >
-                Tu as 17 ou 18 ans ?
-              </div>
-            </div>
+              class="css-view-175oi2r r-height-1472mwg"
+            />
             <div
               class="css-view-175oi2r r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderColor-w7parf r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-borderWidth-rs99b7 r-marginBottom-5oul0u r-marginInline-14mg64r r-minWidth-68jxh1 r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt"
             >
@@ -211,10 +204,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18 ans ?
               </div>
               <div
-                class="css-view-175oi2r r-height-z80fyv"
-              />
-              <div
-                class="css-view-175oi2r r-flexDirection-18u37iz"
+                class="css-view-175oi2r r-flexDirection-18u37iz r-marginTop-11c0sde"
               >
                 <button
                   aria-label="Créer un compte"
@@ -272,11 +262,8 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-paddingInline-cxgwc0"
+              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-marginTop-1wzrnnt r-paddingInline-cxgwc0"
             >
-              <div
-                class="css-view-175oi2r r-height-10ptun7"
-              />
               <div
                 class="css-view-175oi2r r-paddingTop-tskmnb"
               >
@@ -598,6 +585,64 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                             dir="ltr"
                           >
                             Chercher une info
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj"
+                    role="listitem"
+                  >
+                    <a
+                      aria-label="Nouvelle fenêtre : Signaler un bug"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                      data-testid="Nouvelle fenêtre : Signaler un bug"
+                      href="https://aide.passculture.app/hc/fr/requests/new?ticket_form_id=20669662761500&tf_20669850863388=motif_signaler_un_bug&tf_description=%3Ch4%3EVOTRE%20MESSAGE%C2%A0%3A%3C%2Fh4%3E%3Ch4%3ENE%20PAS%20EFFACER%20LES%20INFORMATIONS%20TECHNIQUES%20CI-DESSOUS%C2%A0%3A%3C%2Fh4%3EApp%20version%C2%A0%3A%20Version%C2%A01.10.5-13371337%3Cbr%3EDevice%20font%20scale%C2%A0%3A%201%3Cbr%3EDevice%20ID%C2%A0%3A%20testUuidV4%3Cbr%3EDevice%20model%C2%A0%3A%20WebKit%3Cbr%3EDevice%20OS%C2%A0%3A%20unknown%3Cbr%3EDevice%20resolution%C2%A0%3A%200x0%3Cbr%3EDevice%20zoom%C2%A0%3A%20100%25%3Cbr%3EUser%20CreditType%C2%A0%3A%20Non%20renseign%C3%A9%3Cbr%3EUser%20EligibilityType%C2%A0%3A%20Non%20renseign%C3%A9%3Cbr%3EUser%20ID%C2%A0%3A%20Non%20renseign%C3%A9%3Cbr%3EUser%20StatusType%C2%A0%3A%20Non%20renseign%C3%A9"
+                      role="link"
+                      style="transition-duration: 0s;"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                      >
+                        <div
+                          class="css-view-175oi2r r-marginRight-1kb76zh"
+                        >
+                          <div
+                            aria-label="Nouvelle fenêtre"
+                            class="css-view-175oi2r"
+                          >
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Signaler un bug
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-alignItems-obd0qt"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                            data-testid="section-row-navigable-icon"
+                          >
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              section-row-navigable-icon-SVG-Mock
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -984,6 +1029,33 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 >
                   Version 1.10.5
                   -13371337
+                </div>
+                <div
+                  class="css-view-175oi2r r-marginBottom-1ifxtd0"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignSelf-k200y"
+                  >
+                    <button
+                      aria-label="Débuggage"
+                      class="c4"
+                      data-testid="Débuggage"
+                      tabindex="0"
+                      type="button"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
+                      >
+                        <div
+                          class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                          dir="ltr"
+                          style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                        >
+                          Débuggage
+                        </div>
+                      </div>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1408,15 +1480,8 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-marginBottom-1peese0 r-marginInline-14mg64r r-marginTop-14gqq1x"
-            >
-              <div
-                class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                dir="ltr"
-              >
-                Tu as 17 ou 18 ans ?
-              </div>
-            </div>
+              class="css-view-175oi2r r-height-1472mwg"
+            />
             <div
               class="css-view-175oi2r r-backgroundColor-14lw9ot r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderColor-w7parf r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-borderWidth-rs99b7 r-marginBottom-5oul0u r-marginInline-14mg64r r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt"
             >
@@ -1427,10 +1492,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18 ans ?
               </div>
               <div
-                class="css-view-175oi2r r-height-z80fyv"
-              />
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-marginTop-11c0sde"
               >
                 <button
                   aria-label="Créer un compte"
@@ -1452,7 +1514,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                   </div>
                 </button>
                 <div
-                  class="css-view-175oi2r r-height-z80fyv"
+                  class="css-view-175oi2r r-height-1472mwg"
                 />
                 <div
                   class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-gap-9aw3ui r-justifyContent-1777fci"
@@ -1488,11 +1550,8 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-paddingInline-cxgwc0"
+              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-marginTop-1wzrnnt r-paddingInline-cxgwc0"
             >
-              <div
-                class="css-view-175oi2r r-height-10ptun7"
-              />
               <div
                 class="css-view-175oi2r r-paddingTop-tskmnb"
               >
@@ -1814,6 +1873,64 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                             dir="ltr"
                           >
                             Chercher une info
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj"
+                    role="listitem"
+                  >
+                    <a
+                      aria-label="Nouvelle fenêtre : Signaler un bug"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                      data-testid="Nouvelle fenêtre : Signaler un bug"
+                      href="https://aide.passculture.app/hc/fr/requests/new?ticket_form_id=20669662761500&tf_20669850863388=motif_signaler_un_bug&tf_description=%3Ch4%3EVOTRE%20MESSAGE%C2%A0%3A%3C%2Fh4%3E%3Ch4%3ENE%20PAS%20EFFACER%20LES%20INFORMATIONS%20TECHNIQUES%20CI-DESSOUS%C2%A0%3A%3C%2Fh4%3EApp%20version%C2%A0%3A%20Version%C2%A01.10.5-13371337%3Cbr%3EDevice%20font%20scale%C2%A0%3A%201%3Cbr%3EDevice%20ID%C2%A0%3A%20testUuidV4%3Cbr%3EDevice%20model%C2%A0%3A%20WebKit%3Cbr%3EDevice%20OS%C2%A0%3A%20unknown%3Cbr%3EDevice%20resolution%C2%A0%3A%200x0%3Cbr%3EDevice%20zoom%C2%A0%3A%20100%25%3Cbr%3EUser%20CreditType%C2%A0%3A%20Non%20renseign%C3%A9%3Cbr%3EUser%20EligibilityType%C2%A0%3A%20Non%20renseign%C3%A9%3Cbr%3EUser%20ID%C2%A0%3A%20Non%20renseign%C3%A9%3Cbr%3EUser%20StatusType%C2%A0%3A%20Non%20renseign%C3%A9"
+                      role="link"
+                      style="transition-duration: 0s;"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                      >
+                        <div
+                          class="css-view-175oi2r r-marginRight-1kb76zh"
+                        >
+                          <div
+                            aria-label="Nouvelle fenêtre"
+                            class="css-view-175oi2r"
+                          >
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Signaler un bug
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-alignItems-obd0qt"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                            data-testid="section-row-navigable-icon"
+                          >
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              section-row-navigable-icon-SVG-Mock
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -2200,6 +2317,33 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 >
                   Version 1.10.5
                   -13371337
+                </div>
+                <div
+                  class="css-view-175oi2r r-marginBottom-1ifxtd0"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignSelf-k200y"
+                  >
+                    <button
+                      aria-label="Débuggage"
+                      class="c4"
+                      data-testid="Débuggage"
+                      tabindex="0"
+                      type="button"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
+                      >
+                        <div
+                          class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                          dir="ltr"
+                          style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                        >
+                          Débuggage
+                        </div>
+                      </div>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

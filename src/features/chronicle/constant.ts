@@ -1,1 +1,0 @@
-export const CHRONICLE_CARD_WIDTH = 327

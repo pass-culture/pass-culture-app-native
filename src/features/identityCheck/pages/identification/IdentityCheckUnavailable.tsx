@@ -9,7 +9,6 @@ import { analytics } from 'libs/analytics/provider'
 import { useModal } from 'ui/components/modals/useModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { HappyFaceWithTear } from 'ui/svg/icons/HappyFaceWithTear'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Typo } from 'ui/theme'
@@ -30,7 +29,7 @@ export function IdentityCheckUnavailable() {
       title="Victime de notre succès&nbsp;!"
       buttonPrimary={
         params?.withDMS
-          ? { wording: 'Transmettre un dossier', onPress: showDMSModal, icon: ExternalSite }
+          ? { wording: 'Transmettre un dossier', onPress: showDMSModal }
           : { wording: 'Retourner à l’accueil', navigateTo: navigateToHomeConfig }
       }
       buttonTertiary={

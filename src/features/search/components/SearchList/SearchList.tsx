@@ -7,6 +7,7 @@ import {
   convertAlgoliaVenue2AlgoliaVenueOfferListItem,
   getReconciledVenues,
 } from 'features/search/helpers/searchList/getReconciledVenues'
+import { removeGeolocFromVenue } from 'features/search/helpers/searchList/removeGeolocFromVenue'
 import { SearchListProps } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -34,6 +35,8 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
       shouldDisplayGridList,
       onViewableItemsChanged,
       onViewableVenuePlaylistItemsChanged,
+      enableAIFakeDoor,
+      onPressAIFakeDoorBanner,
     },
     ref
   ) => {
@@ -41,6 +44,10 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
     const isEnabledVenuesFromOfferIndex = useFeatureFlag(
       RemoteStoreFeatureFlags.ENABLE_VENUES_FROM_OFFER_INDEX
     )
+
+    const venues = hits.venueNotOpenToPublic[0]
+      ? [removeGeolocFromVenue(hits.venueNotOpenToPublic[0]), ...hits.venues]
+      : hits.venues
 
     return (
       <FlashList
@@ -52,16 +59,19 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
         ListHeaderComponent={
           <SearchListHeader
             nbHits={nbHits}
+            hasOfferHits={hits.offers.length > 0}
             userData={userData}
             venues={
               isEnabledVenuesFromOfferIndex
-                ? getReconciledVenues(hits.offers, hits.venues)
-                : hits.venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)
+                ? getReconciledVenues(hits.offers, venues)
+                : venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)
             }
             artistSection={artistSection}
             venuesUserData={venuesUserData}
             shouldDisplayGridList={shouldDisplayGridList}
             onViewableVenuePlaylistItemsChanged={onViewableVenuePlaylistItemsChanged}
+            enableAIFakeDoor={enableAIFakeDoor}
+            onPressAIFakeDoorBanner={onPressAIFakeDoorBanner}
           />
         }
         ItemSeparatorComponent={isGridLayout ? undefined : LineSeparator}

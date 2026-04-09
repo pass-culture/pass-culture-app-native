@@ -262,7 +262,7 @@ exports[`RecommendedPaths should render correctly 1`] = `
             {
               "flexDirection": "column",
               "flexGrow": 1,
-              "paddingBottom": 0,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 65,
             }
@@ -293,18 +293,11 @@ exports[`RecommendedPaths should render correctly 1`] = `
               En particulier, l’obtention du crédit pass Culture peut se faire selon trois méthodes en fonction de sa situation :
             </Text>
             <View
-              numberOfSpaces={5}
-              style={
-                {
-                  "height": 20,
-                }
-              }
-            />
-            <View
               accessibilityRole="list"
               style={
                 {
                   "flexDirection": "column",
+                  "marginVertical": 24,
                   "paddingLeft": 0,
                 }
               }
@@ -493,14 +486,6 @@ exports[`RecommendedPaths should render correctly 1`] = `
                 </View>
               </View>
             </View>
-            <View
-              numberOfSpaces={5}
-              style={
-                {
-                  "height": 20,
-                }
-              }
-            />
             <Text
               style={
                 {

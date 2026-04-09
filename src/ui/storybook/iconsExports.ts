@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { CineClubCertification } from 'ui/svg/CineClubCertification'
 import { Again } from 'ui/svg/icons/Again'
+import { AISearch } from 'ui/svg/icons/AISearch'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { ArrowLeftNew } from 'ui/svg/icons/ArrowLeftNew'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
@@ -18,6 +19,7 @@ import { CakeOneCandle } from 'ui/svg/icons/CakeOneCandle'
 import { CakeTwoCandles } from 'ui/svg/icons/CakeTwoCandles'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { CalendarS } from 'ui/svg/icons/CalendarS'
+import { ChatbotAI } from 'ui/svg/icons/ChatbotAI'
 import { Check } from 'ui/svg/icons/Check'
 import { CheckboxMarkChecked } from 'ui/svg/icons/CheckboxMarkChecked'
 import { CheckboxMarkIndeterminate } from 'ui/svg/icons/CheckboxMarkIndeterminate'
@@ -157,6 +159,7 @@ export const SocialNetworkIcons = {
 }
 
 export const SecondaryAndBiggerIcons = {
+  AISearch,
   ArrowAgain,
   ArrowLeftNew,
   ArrowNext,
@@ -172,6 +175,7 @@ export const SecondaryAndBiggerIcons = {
   CakeTwoCandles,
   Calendar,
   CalendarS,
+  ChatbotAI,
   Check,
   CheckFilled,
   Clock,

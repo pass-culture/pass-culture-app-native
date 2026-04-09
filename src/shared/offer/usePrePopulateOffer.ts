@@ -43,7 +43,7 @@ const mergeOfferData =
     chronicles: [],
     isHeadline: false,
     artists: [],
-    ...(prevData ?? {}),
+    ...prevData,
   })
 
 export const usePrePopulateOffer = () => {

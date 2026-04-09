@@ -1,8 +1,6 @@
 /* eslint-disable local-rules/no-euro-usage */
 import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags as featureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { getCurrencyFromParam } from 'shared/currency/getCurrencyParam'
@@ -18,9 +16,6 @@ type CurrencyDisplayFormat = 'short' | 'full'
 export const useGetCurrencyToDisplay = (
   displayFormat: CurrencyDisplayFormat = 'short'
 ): Currency => {
-  const enablePacificFrancCurrency = useFeatureFlag(featureFlags.ENABLE_PACIFIC_FRANC_CURRENCY)
-  const disablePacificFrancCurrency = !enablePacificFrancCurrency
-
   const { user } = useAuthContext()
   const { selectedPlace, selectedLocationMode } = useLocation()
 
@@ -30,8 +25,6 @@ export const useGetCurrencyToDisplay = (
   const currencyParam = getCurrencyFromParam()
   if (currencyParam === CurrencyEnum.EUR) return Currency.EURO
   if (currencyParam === CurrencyEnum.XPF) return pacificFrancCurrency
-
-  if (disablePacificFrancCurrency) return Currency.EURO
 
   const isEverywhereLocationMode = selectedLocationMode === LocationMode.EVERYWHERE
   const isNotNewCaledonianLocationSelected = selectedPlace?.info !== 'Nouvelle-Calédonie'

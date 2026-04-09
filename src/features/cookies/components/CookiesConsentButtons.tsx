@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Button } from 'ui/designSystem/Button/Button'
-import { Spacer } from 'ui/theme'
 
 interface Props {
   onPressAcceptAll: () => void
@@ -25,7 +24,6 @@ export const CookiesConsentButtons = ({
         <Button wording="Tout accepter" onPress={onPressAcceptAll} fullWidth />
       </Row>
     </Container>
-    <Spacer.Column numberOfSpaces={4} />
     <Button
       variant="secondary"
       wording="Choisir les cookies"
@@ -39,6 +37,7 @@ const Container = styled.View(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
   flexDirection: theme.appContentWidth > theme.breakpoints.xs ? 'row' : 'column-reverse',
   width: '100%',
+  marginBottom: theme.designSystem.size.spacing.l,
 }))
 
 const ButtonSpacer = styled.View(({ theme }) => ({

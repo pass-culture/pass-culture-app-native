@@ -19,6 +19,7 @@ exports[`Stepper navigation should render correctly 1`] = `
       {
         "alignSelf": "center",
         "flexGrow": 1,
+        "justifyContent": "space-between",
         "maxWidth": 500,
         "paddingBottom": 40,
         "paddingHorizontal": 24,
@@ -29,1051 +30,1041 @@ exports[`Stepper navigation should render correctly 1`] = `
   >
     <View>
       <View
-        customHeight={16}
-        enable={true}
         style={
           {
-            "height": 16,
-          }
-        }
-      />
-      <View
-        numberOfSpaces={4}
-        style={
-          {
-            "height": 16,
-          }
-        }
-      />
-      <Text
-        accessibilityRole="header"
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 28,
-            "lineHeight": 44.8,
-          }
-        }
-      >
-        Vas-y
-      </Text>
-      <View
-        numberOfSpaces={2}
-        style={
-          {
-            "height": 8,
-          }
-        }
-      />
-      <View
-        numberOfSpaces={2}
-        style={
-          {
-            "height": 8,
-          }
-        }
-      />
-      <Text
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          }
-        }
-      >
-        Débloque ton crédit
-      </Text>
-      <View
-        numberOfSpaces={8}
-        style={
-          {
-            "height": 32,
-          }
-        }
-      />
-      <View
-        numberOfSpaces={2}
-        style={
-          {
-            "height": 8,
-          }
-        }
-      />
-      <View
-        accessibilityRole="list"
-        style={
-          {
-            "flexDirection": "column",
-            "paddingLeft": 0,
+            "width": "100%",
           }
         }
       >
         <View
+          customHeight={16}
+          enable={true}
           style={
             {
-              "display": "flex",
+              "height": 16,
+            }
+          }
+        />
+        <View
+          style={
+            {
+              "marginTop": 16,
             }
           }
         >
-          <View
+          <Text
+            accessibilityRole="header"
             style={
               {
-                "flexDirection": "row",
-                "flexGrow": 1,
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 28,
+                "lineHeight": 44.8,
               }
             }
           >
-            <View>
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "minWidth": 32,
-                    "overflow": "hidden",
-                  }
-                }
-                testID="vertical-stepper-complete"
-              >
-                <View
-                  isFirst={true}
-                  isLast={false}
-                  style={
-                    {
-                      "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 4,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "width": 2,
-                    }
-                  }
-                  testID="top-line"
-                />
-                <View
-                  addMoreSpacingToIcons={false}
-                  shouldHaveNoSpacing={false}
-                  style={
-                    {
-                      "marginVertical": 2,
-                    }
-                  }
-                >
-                  <View
-                    fill="none"
-                    height={32}
-                    testID="icon"
-                    width={32}
-                  >
-                    <Text>
-                      icon-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  isFirst={true}
-                  isLast={false}
-                  style={
-                    {
-                      "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 4,
-                      "borderTopLeftRadius": 4,
-                      "borderTopRightRadius": 4,
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "opacity": 1,
-                      "width": 2,
-                    }
-                  }
-                  testID="bottom-line"
-                />
-              </View>
-            </View>
-            <View
-              style={
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "marginHorizontal": 8,
-                }
-              }
-            >
-              <View
-                accessibilityLabel="Numéro de téléphone - complété"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": true,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={false}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {},
-                      {
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "width": "100%",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Numéro de téléphone - complété"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "marginTop": 8,
-                      },
-                      {
-                        "borderColor": "#cbcdd2",
-                        "borderWidth": 2,
-                        "minHeight": 88,
-                        "paddingRight": 16,
-                        "paddingVertical": 16,
-                        "width": "98%",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "paddingBottom": 16,
-                        "paddingLeft": 16,
-                        "paddingRight": 16,
-                        "paddingTop": 16,
-                      }
-                    }
-                  >
-                    <View
-                      height={32}
-                      testID="BicolorSmartphone"
-                      width={32}
-                    >
-                      <Text>
-                        BicolorSmartphone-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    style={
-                      {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "paddingRight": 16,
-                      }
-                    }
-                  >
-                    <Text
-                      stepState="completed"
-                      style={
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        }
-                      }
-                    >
-                      Numéro de téléphone
-                    </Text>
-                  </View>
-                </View>
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  {
-                    "height": 8,
-                  }
-                }
-              />
-            </View>
-          </View>
+            Vas-y
+          </Text>
         </View>
         <View
           style={
             {
-              "display": "flex",
+              "marginVertical": 8,
             }
           }
         >
           <View
             style={
               {
-                "flexDirection": "row",
-                "flexGrow": 1,
+                "marginBottom": 32,
+                "marginTop": 8,
               }
             }
           >
-            <View>
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "minWidth": 32,
-                    "overflow": "hidden",
-                  }
+            <Text
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                 }
-                testID="vertical-stepper-in_progress"
-              >
+              }
+            >
+              Débloque ton crédit
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="list"
+          style={
+            {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "display": "flex",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                }
+              }
+            >
+              <View>
                 <View
-                  isFirst={false}
-                  isLast={false}
                   style={
                     {
-                      "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 4,
-                      "borderTopLeftRadius": 0,
-                      "borderTopRightRadius": 0,
+                      "alignItems": "center",
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
-                      "width": 2,
+                      "minWidth": 32,
+                      "overflow": "hidden",
                     }
                   }
-                  testID="top-line"
-                />
-                <View
-                  addMoreSpacingToIcons={false}
-                  shouldHaveNoSpacing={false}
-                  style={
-                    {
-                      "marginVertical": 2,
-                    }
-                  }
+                  testID="vertical-stepper-complete"
                 >
                   <View
+                    isFirst={true}
+                    isLast={false}
                     style={
                       {
-                        "backgroundColor": "#161617",
-                        "borderBottomLeftRadius": 6,
-                        "borderBottomRightRadius": 6,
-                        "borderColor": "#ffffff",
-                        "borderTopLeftRadius": 6,
-                        "borderTopRightRadius": 6,
-                        "borderWidth": 2,
-                        "height": 12,
-                        "marginHorizontal": 4,
-                        "width": 12,
+                        "backgroundColor": "#90949d",
+                        "borderBottomLeftRadius": 4,
+                        "borderBottomRightRadius": 4,
+                        "borderTopLeftRadius": 2,
+                        "borderTopRightRadius": 2,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "width": 2,
                       }
                     }
-                    testID="icon"
+                    testID="top-line"
                   />
-                </View>
-                <View
-                  onLayout={[Function]}
-                  style={
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "height": 0,
-                    }
-                  }
-                >
                   <View
+                    addMoreSpacingToIcons={false}
+                    shouldHaveNoSpacing={false}
                     style={
                       {
+                        "marginVertical": 2,
+                      }
+                    }
+                  >
+                    <View
+                      fill="none"
+                      height={32}
+                      testID="icon"
+                      width={32}
+                    >
+                      <Text>
+                        icon-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    isFirst={true}
+                    isLast={false}
+                    style={
+                      {
+                        "backgroundColor": "#90949d",
+                        "borderBottomLeftRadius": 4,
+                        "borderBottomRightRadius": 4,
+                        "borderTopLeftRadius": 4,
+                        "borderTopRightRadius": 4,
+                        "flexBasis": 0,
                         "flexGrow": 1,
-                        "justifyContent": "space-between",
+                        "flexShrink": 1,
+                        "opacity": 1,
+                        "width": 2,
                       }
                     }
                     testID="bottom-line"
                   />
                 </View>
               </View>
-            </View>
-            <View
-              style={
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "marginHorizontal": 8,
-                }
-              }
-            >
-              <View
-                accessibilityLabel="Identification - non complété"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {},
-                      {
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "width": "100%",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Identification - non complété"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "borderColor": "#90949d",
-                        "borderRadius": 8,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "padding": 16,
-                        "width": "100%",
-                      },
-                      {
-                        "borderColor": "#90949d",
-                        "minHeight": 92,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "alignContent": "center",
-                        "marginRight": 16,
-                      }
-                    }
-                  >
-                    <View
-                      height={32}
-                      width={32}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    style={
-                      {
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginRight": 16,
-                        "textAlign": "start",
-                      }
-                    }
-                  >
-                    <Text
-                      stepState="current"
-                      style={
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        }
-                      }
-                    >
-                      Identification
-                    </Text>
-                    <Text
-                      stepState="current"
-                      style={
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        }
-                      }
-                    >
-                      Confirme tes informations
-                    </Text>
-                  </View>
-                  <View>
-                    <View
-                      height={24}
-                      width={24}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  {
-                    "height": 8,
-                  }
-                }
-              />
-            </View>
-          </View>
-        </View>
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-                "flexGrow": 1,
-              }
-            }
-          >
-            <View>
               <View
                 style={
                   {
-                    "alignItems": "center",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "minWidth": 32,
-                    "overflow": "hidden",
+                    "marginHorizontal": 8,
                   }
                 }
-                testID="vertical-stepper-future"
               >
                 <View
-                  onLayout={[Function]}
-                  style={
+                  accessibilityLabel="Numéro de téléphone - complété"
+                  accessibilityRole="button"
+                  accessibilityState={
                     {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "height": 0,
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": true,
+                      "expanded": undefined,
+                      "selected": undefined,
                     }
                   }
-                >
-                  <View
-                    style={
-                      {
-                        "flexGrow": 1,
-                        "justifyContent": "space-between",
-                      }
-                    }
-                    testID="top-line"
-                  />
-                </View>
-                <View
-                  addMoreSpacingToIcons={false}
-                  shouldHaveNoSpacing={false}
-                  style={
+                  accessibilityValue={
                     {
-                      "marginVertical": 2,
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
                   }
-                >
-                  <View
-                    style={
-                      {
-                        "backgroundColor": "#90949d",
-                        "borderBottomLeftRadius": 6,
-                        "borderBottomRightRadius": 6,
-                        "borderColor": "#ffffff",
-                        "borderTopLeftRadius": 6,
-                        "borderTopRightRadius": 6,
-                        "borderWidth": 2,
-                        "height": 12,
-                        "marginHorizontal": 4,
-                        "width": 12,
-                      }
-                    }
-                    testID="icon"
-                  />
-                </View>
-                <View
-                  onLayout={[Function]}
-                  style={
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "height": 0,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexGrow": 1,
-                        "justifyContent": "space-between",
-                      }
-                    }
-                    testID="bottom-line"
-                  />
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "marginHorizontal": 8,
-                }
-              }
-            >
-              <View
-                accessibilityLabel="Profil - non complété"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": true,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={false}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {},
-                      {
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "width": "100%",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Profil - non complété"
-              >
-                <View
+                  accessible={true}
+                  focusable={false}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
                   style={
                     [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {},
+                        {
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "width": "100%",
+                        },
+                      ],
                       {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "marginTop": 8,
-                      },
-                      {
-                        "borderColor": "#cbcdd2",
-                        "minHeight": 88,
-                        "paddingRight": 16,
-                        "paddingVertical": 16,
-                        "width": "98%",
+                        "opacity": 1,
                       },
                     ]
                   }
+                  testID="Numéro de téléphone - complété"
                 >
                   <View
                     style={
-                      {
-                        "paddingBottom": 16,
-                        "paddingLeft": 16,
-                        "paddingRight": 16,
-                        "paddingTop": 16,
-                      }
+                      [
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "marginTop": 8,
+                        },
+                        {
+                          "borderColor": "#cbcdd2",
+                          "borderWidth": 2,
+                          "minHeight": 88,
+                          "paddingRight": 16,
+                          "paddingVertical": 16,
+                          "width": "98%",
+                        },
+                      ]
                     }
                   >
                     <View
-                      height={32}
-                      testID="BicolorProfile"
-                      width={32}
-                    >
-                      <Text>
-                        BicolorProfile-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    style={
-                      {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "paddingRight": 16,
-                      }
-                    }
-                  >
-                    <Text
-                      stepState="disabled"
                       style={
                         {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                         }
                       }
                     >
-                      Profil
-                    </Text>
+                      <View
+                        height={32}
+                        testID="BicolorSmartphone"
+                        width={32}
+                      >
+                        <Text>
+                          BicolorSmartphone-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      style={
+                        {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "paddingRight": 16,
+                        }
+                      }
+                    >
+                      <Text
+                        stepState="completed"
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
+                      >
+                        Numéro de téléphone
+                      </Text>
+                    </View>
                   </View>
                 </View>
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  {
-                    "height": 8,
-                  }
-                }
-              />
-            </View>
-          </View>
-        </View>
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-                "flexGrow": 1,
-              }
-            }
-          >
-            <View>
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "minWidth": 32,
-                    "overflow": "hidden",
-                  }
-                }
-                testID="vertical-stepper-future"
-              >
                 <View
-                  onLayout={[Function]}
                   style={
                     {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "height": 0,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexGrow": 1,
-                        "justifyContent": "space-between",
-                      }
-                    }
-                    testID="top-line"
-                  />
-                </View>
-                <View
-                  addMoreSpacingToIcons={false}
-                  shouldHaveNoSpacing={false}
-                  style={
-                    {
-                      "marginVertical": 2,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "backgroundColor": "#90949d",
-                        "borderBottomLeftRadius": 6,
-                        "borderBottomRightRadius": 6,
-                        "borderColor": "#ffffff",
-                        "borderTopLeftRadius": 6,
-                        "borderTopRightRadius": 6,
-                        "borderWidth": 2,
-                        "height": 12,
-                        "marginHorizontal": 4,
-                        "width": 12,
-                      }
-                    }
-                    testID="icon"
-                  />
-                </View>
-                <View
-                  isLast={true}
-                  style={
-                    {
-                      "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 4,
-                      "borderTopLeftRadius": 4,
-                      "borderTopRightRadius": 4,
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "opacity": 0,
-                      "width": 2,
+                      "height": 8,
                     }
                   }
                 />
               </View>
             </View>
+          </View>
+          <View
+            style={
+              {
+                "display": "flex",
+              }
+            }
+          >
             <View
               style={
                 {
-                  "flexBasis": 0,
+                  "flexDirection": "row",
                   "flexGrow": 1,
-                  "flexShrink": 1,
-                  "marginHorizontal": 8,
                 }
               }
             >
-              <View
-                accessibilityLabel="Confirmation - non complété"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": true,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={false}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {},
-                      {
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "width": "100%",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Confirmation - non complété"
-              >
+              <View>
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "marginTop": 8,
-                      },
-                      {
-                        "borderColor": "#cbcdd2",
-                        "minHeight": 88,
-                        "paddingRight": 16,
-                        "paddingVertical": 16,
-                        "width": "98%",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "minWidth": 32,
+                      "overflow": "hidden",
+                    }
                   }
+                  testID="vertical-stepper-in_progress"
                 >
                   <View
+                    isFirst={false}
+                    isLast={false}
                     style={
                       {
-                        "paddingBottom": 16,
-                        "paddingLeft": 16,
-                        "paddingRight": 16,
-                        "paddingTop": 16,
+                        "backgroundColor": "#90949d",
+                        "borderBottomLeftRadius": 4,
+                        "borderBottomRightRadius": 4,
+                        "borderTopLeftRadius": 0,
+                        "borderTopRightRadius": 0,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "width": 2,
+                      }
+                    }
+                    testID="top-line"
+                  />
+                  <View
+                    addMoreSpacingToIcons={false}
+                    shouldHaveNoSpacing={false}
+                    style={
+                      {
+                        "marginVertical": 2,
                       }
                     }
                   >
                     <View
-                      height={32}
-                      testID="BicolorProfile"
-                      width={32}
-                    >
-                      <Text>
-                        BicolorProfile-SVG-Mock
-                      </Text>
-                    </View>
+                      style={
+                        {
+                          "backgroundColor": "#161617",
+                          "borderBottomLeftRadius": 6,
+                          "borderBottomRightRadius": 6,
+                          "borderColor": "#ffffff",
+                          "borderTopLeftRadius": 6,
+                          "borderTopRightRadius": 6,
+                          "borderWidth": 2,
+                          "height": 12,
+                          "marginHorizontal": 4,
+                          "width": 12,
+                        }
+                      }
+                      testID="icon"
+                    />
                   </View>
                   <View
+                    onLayout={[Function]}
                     style={
                       {
                         "flexBasis": 0,
-                        "flexDirection": "column",
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "paddingRight": 16,
+                        "height": 0,
                       }
                     }
                   >
-                    <Text
-                      stepState="disabled"
+                    <View
                       style={
                         {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
+                          "flexGrow": 1,
+                          "justifyContent": "space-between",
+                        }
+                      }
+                      testID="bottom-line"
+                    />
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginHorizontal": 8,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Identification - non complété"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {},
+                        {
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "width": "100%",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Identification - non complété"
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "borderColor": "#90949d",
+                          "borderRadius": 8,
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "padding": 16,
+                          "width": "100%",
+                        },
+                        {
+                          "borderColor": "#90949d",
+                          "minHeight": 92,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "alignContent": "center",
+                          "marginRight": 16,
                         }
                       }
                     >
-                      Confirmation
-                    </Text>
+                      <View
+                        height={32}
+                        width={32}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      style={
+                        {
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                          "textAlign": "start",
+                        }
+                      }
+                    >
+                      <Text
+                        stepState="current"
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
+                      >
+                        Identification
+                      </Text>
+                      <Text
+                        stepState="current"
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          }
+                        }
+                      >
+                        Confirme tes informations
+                      </Text>
+                    </View>
+                    <View>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "height": 8,
+                    }
+                  }
+                />
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "display": "flex",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                }
+              }
+            >
+              <View>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "minWidth": 32,
+                      "overflow": "hidden",
+                    }
+                  }
+                  testID="vertical-stepper-future"
+                >
+                  <View
+                    onLayout={[Function]}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "height": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "flexGrow": 1,
+                          "justifyContent": "space-between",
+                        }
+                      }
+                      testID="top-line"
+                    />
+                  </View>
+                  <View
+                    addMoreSpacingToIcons={false}
+                    shouldHaveNoSpacing={false}
+                    style={
+                      {
+                        "marginVertical": 2,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "backgroundColor": "#90949d",
+                          "borderBottomLeftRadius": 6,
+                          "borderBottomRightRadius": 6,
+                          "borderColor": "#ffffff",
+                          "borderTopLeftRadius": 6,
+                          "borderTopRightRadius": 6,
+                          "borderWidth": 2,
+                          "height": 12,
+                          "marginHorizontal": 4,
+                          "width": 12,
+                        }
+                      }
+                      testID="icon"
+                    />
+                  </View>
+                  <View
+                    onLayout={[Function]}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "height": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "flexGrow": 1,
+                          "justifyContent": "space-between",
+                        }
+                      }
+                      testID="bottom-line"
+                    />
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginHorizontal": 8,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Profil - non complété"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": true,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={false}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {},
+                        {
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "width": "100%",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Profil - non complété"
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "marginTop": 8,
+                        },
+                        {
+                          "borderColor": "#cbcdd2",
+                          "minHeight": 88,
+                          "paddingRight": 16,
+                          "paddingVertical": 16,
+                          "width": "98%",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
+                        }
+                      }
+                    >
+                      <View
+                        height={32}
+                        testID="BicolorProfile"
+                        width={32}
+                      >
+                        <Text>
+                          BicolorProfile-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      style={
+                        {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "paddingRight": 16,
+                        }
+                      }
+                    >
+                      <Text
+                        stepState="disabled"
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
+                      >
+                        Profil
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "height": 8,
+                    }
+                  }
+                />
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "display": "flex",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                }
+              }
+            >
+              <View>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "minWidth": 32,
+                      "overflow": "hidden",
+                    }
+                  }
+                  testID="vertical-stepper-future"
+                >
+                  <View
+                    onLayout={[Function]}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "height": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "flexGrow": 1,
+                          "justifyContent": "space-between",
+                        }
+                      }
+                      testID="top-line"
+                    />
+                  </View>
+                  <View
+                    addMoreSpacingToIcons={false}
+                    shouldHaveNoSpacing={false}
+                    style={
+                      {
+                        "marginVertical": 2,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "backgroundColor": "#90949d",
+                          "borderBottomLeftRadius": 6,
+                          "borderBottomRightRadius": 6,
+                          "borderColor": "#ffffff",
+                          "borderTopLeftRadius": 6,
+                          "borderTopRightRadius": 6,
+                          "borderWidth": 2,
+                          "height": 12,
+                          "marginHorizontal": 4,
+                          "width": 12,
+                        }
+                      }
+                      testID="icon"
+                    />
+                  </View>
+                  <View
+                    isLast={true}
+                    style={
+                      {
+                        "backgroundColor": "#90949d",
+                        "borderBottomLeftRadius": 4,
+                        "borderBottomRightRadius": 4,
+                        "borderTopLeftRadius": 4,
+                        "borderTopRightRadius": 4,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "opacity": 0,
+                        "width": 2,
+                      }
+                    }
+                  />
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginHorizontal": 8,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Confirmation - non complété"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": true,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={false}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {},
+                        {
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "width": "100%",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Confirmation - non complété"
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "marginTop": 8,
+                        },
+                        {
+                          "borderColor": "#cbcdd2",
+                          "minHeight": 88,
+                          "paddingRight": 16,
+                          "paddingVertical": 16,
+                          "width": "98%",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
+                        }
+                      }
+                    >
+                      <View
+                        height={32}
+                        testID="BicolorProfile"
+                        width={32}
+                      >
+                        <Text>
+                          BicolorProfile-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      style={
+                        {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "paddingRight": 16,
+                        }
+                      }
+                    >
+                      <Text
+                        stepState="disabled"
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
+                      >
+                        Confirmation
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -1081,16 +1072,6 @@ exports[`Stepper navigation should render correctly 1`] = `
           </View>
         </View>
       </View>
-      <View
-        flex={1}
-        style={
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          }
-        }
-      />
       <View
         style={
           {

@@ -8,7 +8,7 @@ import { Typo } from 'ui/theme'
 import {
   getAccessibilityCategoryAndIcon,
   HandicapCategory,
-} from '../../../shared/accessibility/getAccessibilityCategoryAndIcon'
+} from '../../../shared/accessibility/helpers/getAccessibilityCategoryAndIcon'
 
 interface Props {
   handicap: HandicapCategory

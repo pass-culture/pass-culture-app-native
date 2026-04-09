@@ -5,11 +5,9 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import * as copyToClipboardModule from 'libs/copyToClipboard/copyToClipboard'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { DebugScreen } from './DebugScreen'
-
-const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/auth/context/AuthContext')
@@ -33,6 +31,7 @@ jest.mock('libs/environment/env', () => ({
   env: { COMMIT_HASH: 'abcdef', SUPPORT_EMAIL_ADDRESS: 'support@example.com' },
 }))
 
+const mockOpenUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 const mockCopyToClipboard = jest.spyOn(copyToClipboardModule, 'copyToClipboard')
 
 jest.useFakeTimers()
@@ -46,43 +45,28 @@ describe('DebugScreen', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  it('should open Zendesk url when clicking on "Contacter le support" button', async () => {
+    render(<DebugScreen />)
+    const assistanceButton = screen.getByText('Contacter le support')
+    await userEvent.press(assistanceButton)
+
+    expect(mockOpenUrl).toHaveBeenCalledWith(
+      expect.stringContaining('https://aide.passculture.app/hc/fr/requests/new'),
+      undefined,
+      true
+    )
+  })
+
   it('should call copyToClipboard when press "Copier dans le presse-papier" button', async () => {
     render(<DebugScreen />)
-    await enterDescription()
     const copyButton = screen.getByLabelText('Copier dans le presse-papier')
     await userEvent.press(copyButton)
 
     expect(mockCopyToClipboard).toHaveBeenCalledTimes(1)
   })
 
-  it('should contain the correct informations when press "Envoyer mon bug au support" button', async () => {
-    render(<DebugScreen />)
-    await enterDescription()
-
-    const supportButton = screen.getByText('Envoyer mon bug au support')
-    await userEvent.press(supportButton)
-
-    const decodedUrl = decodeURI(openUrl.mock.calls[0]?.[0] as string)
-
-    expect(decodedUrl).toContain('mailto:support@example.com?subject=Informations de débuggage')
-    expect(decodedUrl).toContain('Bonjour, voici les informations de débuggage')
-    expect(decodedUrl).toContain('App version : 1.2.3')
-    expect(decodedUrl).toContain('Device ID : device-id')
-    expect(decodedUrl).toContain('Device model : iPhone 13')
-    expect(decodedUrl).toContain('Device OS : iOS')
-    expect(decodedUrl).toContain('Device resolution : 1080x1920')
-    expect(decodedUrl).toContain('User ID : 1234')
-    expect(decodedUrl).toContain('User CreditType : CREDIT_V3_18')
-    expect(decodedUrl).toContain('User StatusType : BENEFICIARY')
-    expect(decodedUrl).toContain('User EligibilityType : ELIGIBLE_CREDIT_V3_18')
-    expect(decodedUrl).toContain('Device font scale : 1.5')
-    expect(decodedUrl).toContain('Device zoom : Non renseigné')
-    expect(decodedUrl).toContain("J'ai un problème avec la carte")
-  })
-
   it('should log ClickCopyDebugInfo event when press "Copier dans le press-papier" button', async () => {
     render(<DebugScreen />)
-    await enterDescription()
 
     const copyButton = screen.getByLabelText('Copier dans le presse-papier')
     await userEvent.press(copyButton)
@@ -91,31 +75,4 @@ describe('DebugScreen', () => {
       expect(analytics.logClickCopyDebugInfo).toHaveBeenNthCalledWith(1, 1234)
     })
   })
-
-  it('should log ClickMailDebugInfo event when press "Envoyer mon bug au support" button', async () => {
-    render(<DebugScreen />)
-    await enterDescription()
-
-    const copyButton = screen.getByText('Envoyer mon bug au support')
-    await userEvent.press(copyButton)
-
-    expect(analytics.logClickMailDebugInfo).toHaveBeenNthCalledWith(1, 1234)
-  })
-
-  it('should log HasClickedContactForm event when press "Contacter le support" button', async () => {
-    render(<DebugScreen />)
-
-    const contactSupportButton = screen.getByText('Contacter le support')
-
-    await userEvent.press(contactSupportButton)
-
-    expect(analytics.logHasClickedContactForm).toHaveBeenNthCalledWith(1, 'DebugScreen')
-  })
 })
-
-const enterDescription = async () => {
-  const textBox = screen.getByTestId('problem-description-input')
-  await act(async () => {
-    fireEvent.changeText(textBox, "J'ai un problème avec la carte")
-  })
-}

@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing } from 'ui/theme'

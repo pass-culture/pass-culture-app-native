@@ -6,6 +6,7 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -26,16 +27,14 @@ export const IdentityCheckDMS = () => {
       title="Identification"
       scrollChildren={
         <Container>
-          <Spacer.Column numberOfSpaces={5} />
-          <IdCardWithMagnifyingGlass />
-          <Spacer.Column numberOfSpaces={5} />
-          <CenteredTitle title="Créer un dossier sur le site Démarche Numérique" />
-          <Spacer.Column numberOfSpaces={5} />
-          <StyledBody>
-            La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site
-            Démarche Numérique afin d’obtenir ton pass Culture.
-          </StyledBody>
-
+          <StyledViewGap gap={5}>
+            <IdCardWithMagnifyingGlass />
+            <CenteredTitle title="Créer un dossier sur le site Démarche Numérique" />
+            <StyledBody>
+              La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le
+              site Démarche Numérique afin d’obtenir ton pass Culture.
+            </StyledBody>
+          </StyledViewGap>
           <ButtonContainer>
             <ExternalTouchableLink
               as={Button}
@@ -67,6 +66,10 @@ export const IdentityCheckDMS = () => {
     />
   )
 }
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  alignItems: 'center',
+  marginTop: theme.designSystem.size.spacing.xl,
+}))
 
 const IdCardWithMagnifyingGlass = styled(InitialIdCardWithMagnifyingGlass).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,

@@ -31,9 +31,8 @@ appId: ${MAESTRO_APP_ID}
       - tapOn:
           text: 'Informations légales'
 
-- tapOn:
-    id: 'Charte de protection des données personnelles'
-- 'waitForAnimationToEnd'
+- tapOn: 'Charte des données personnelles'
+- waitForAnimationToEnd
 - runFlow:
     when:
       platform: Android

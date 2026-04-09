@@ -136,7 +136,7 @@ export function createMappingTree(data: SubcategoriesResponseModelv2) {
               nativeCategoriesResult[nativeCategory.name] = {
                 label: nativeCategory.value ?? 'Tout',
                 position: nativeCategory.positions?.[searchGroup.name],
-                ...(getNativeCategoryGenreTypes(data, nativeCategory) || {}),
+                ...getNativeCategoryGenreTypes(data, nativeCategory),
               }
 
               return nativeCategoriesResult
@@ -170,7 +170,7 @@ export function getKeyFromStringLabel(input?: string | null): string | null {
     .replaceAll('&', 'ET')
     .replaceAll('-', '_')
     .replaceAll(',', '')
-    .replace(/ /g, '_')
+    .replaceAll(' ', '_')
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .replaceAll(/[\u0300-\u036f]/g, '')
 }

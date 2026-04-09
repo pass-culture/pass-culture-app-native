@@ -132,7 +132,7 @@ export const useSubmitChangeAddress = () => {
   const hasNonEmptyQuery = query.trim().length > 0
   const isValidAndNotEmpty = isValid && hasNonEmptyQuery
 
-  const isValidAddress = isAddressValid(query)
+  const isValidAddress = selectedAddress !== null || isAddressValid(query)
   const label = idCheckAddressAutocompletion
     ? 'Recherche et sélectionne ton adresse'
     : 'Entre ton adresse'

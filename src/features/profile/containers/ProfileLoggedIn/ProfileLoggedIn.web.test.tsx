@@ -32,7 +32,6 @@ const renderProfileLoggedIn = async ({ user }: { user: typeof beneficiaryUser })
     reactQueryProviderHOC(
       <ProfileLoggedIn
         featureFlags={{
-          enablePassForAll: true,
           enableProfileV2: true,
           disableActivation: false,
         }}

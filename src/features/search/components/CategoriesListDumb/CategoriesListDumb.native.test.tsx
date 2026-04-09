@@ -48,12 +48,13 @@ const initialProps: ComponentProps<typeof CategoriesListDumb> = {
   hideVenueMapLocationModal: jest.fn(),
   shouldDisplayVenueMap: false,
   isMapWithoutPositionAndNotLocated: false,
+  onPressAIFakeDoorBanner: jest.fn(),
 }
 
 describe('CategoriesListDumb', () => {
   beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP]))
 
-  it('should not display venue map block when shouldDisplayVenueMap and isMapWithoutPositionAndNotLocated are false', async () => {
+  it('should not display venue map block when shouldDisplayVenueMap and isMapWithoutPositionAndNotLocated are false', () => {
     render(
       <CategoriesListDumb
         {...initialProps}
@@ -69,15 +70,27 @@ describe('CategoriesListDumb', () => {
     { isMapWithoutPositionAndNotLocated: true, shouldDisplayVenueMap: true },
     { isMapWithoutPositionAndNotLocated: false, shouldDisplayVenueMap: true },
     { isMapWithoutPositionAndNotLocated: true, shouldDisplayVenueMap: false },
-  ])('should display venue map block', async (props) => {
+  ])('should display venue map block', (props) => {
     render(<CategoriesListDumb {...initialProps} {...props} />)
 
     expect(screen.getByText('Explore la carte')).toBeOnTheScreen()
   })
 
-  it('should display categories', async () => {
+  it('should display categories', () => {
     render(<CategoriesListDumb {...initialProps} />)
 
     expect(screen.getByText('Cinéma'.toUpperCase())).toBeOnTheScreen()
+  })
+
+  it('should display AI fake door banner when enableAIFakeDoor FF activated', () => {
+    render(<CategoriesListDumb {...initialProps} enableAIFakeDoor />)
+
+    expect(screen.getByText('Utilise notre IA pass Culture')).toBeOnTheScreen()
+  })
+
+  it('should not display AI fake door banner when enableAIFakeDoor FF deactivated', () => {
+    render(<CategoriesListDumb {...initialProps} />)
+
+    expect(screen.queryByText('Utilise notre IA pass Culture')).not.toBeOnTheScreen()
   })
 })

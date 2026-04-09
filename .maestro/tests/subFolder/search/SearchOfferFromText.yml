@@ -34,19 +34,7 @@ appId: ${MAESTRO_APP_ID}
       text: 'Les lieux culturels près de toi'
     direction: UP
 
-- runFlow:
-    when:
-      platform: Android
-    commands:
-      - tapOn:
-          text: 'One piece.*'
-          index: 1
-
-- runFlow:
-    when:
-      platform: iOS
-    commands:
-      - assertWithAI:
-          assertion: Verify that search results are displayed and all visible results are related to 'One Piece' manga or anime content. Each result should clearly indicate it's a book or digital content about One Piece, with titles or descriptions containing relevant terms like 'One Piece'
-      - tapOn:
-          point: 50%,72%
+- extractTextWithAI:
+    query: "Le titre exacte d'une des offres One Piece visible dans les résultats de recherche"
+    outputVariable: 'physicalOfferTitle'
+- tapOn: .*${physicalOfferTitle}.*

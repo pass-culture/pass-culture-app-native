@@ -1,15 +1,12 @@
-import { format } from 'date-fns'
 import mockdate from 'mockdate'
 
 import { replace } from '__mocks__/@react-navigation/native'
 import { EligibilityType } from 'api/gen'
-import { CURRENT_DATE, SIXTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
+import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import * as Login from 'features/auth/helpers/useLoginRoutine'
 import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { nonBeneficiaryUser } from 'fixtures/user'
-import { CampaignEvents, campaignTracker } from 'libs/campaign/campaign'
-// eslint-disable-next-line no-restricted-imports
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
@@ -20,7 +17,6 @@ jest.useFakeTimers()
 
 mockdate.set(CURRENT_DATE)
 
-jest.mock('libs/campaign/campaign')
 jest.mock('features/auth/helpers/useLoginRoutine')
 const loginRoutine = jest.fn()
 const mockUseLoginRoutine = Login.useLoginRoutine as jest.Mock
@@ -148,46 +144,6 @@ describe('useLoginAndRedirect', () => {
     jest.advanceTimersByTime(2000)
 
     expect(replace).toHaveBeenCalledWith('AccountCreated')
-  })
-
-  describe('AppsFlyer events', () => {
-    it('should log event when account creation is completed', async () => {
-      mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', nonBeneficiaryUser)
-      await loginAndRedirect()
-
-      expect(campaignTracker.logEvent).toHaveBeenNthCalledWith(
-        1,
-        CampaignEvents.COMPLETE_REGISTRATION,
-        {
-          af_firebase_pseudo_id: 'firebase_pseudo_id',
-          af_user_id: nonBeneficiaryUser.id,
-        }
-      )
-    })
-
-    it('should log af_underage_user event when user is underage', async () => {
-      mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
-        ...nonBeneficiaryUser,
-        birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
-      })
-      await loginAndRedirect()
-
-      expect(campaignTracker.logEvent).toHaveBeenNthCalledWith(2, CampaignEvents.UNDERAGE_USER, {
-        af_firebase_pseudo_id: 'firebase_pseudo_id',
-        af_user_id: nonBeneficiaryUser.id,
-        af_user_age: 16,
-      })
-    })
-
-    it('should not log af_underage_user event when user is not underage', async () => {
-      mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
-        ...nonBeneficiaryUser,
-        birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
-      })
-      await loginAndRedirect()
-
-      expect(campaignTracker.logEvent).not.toHaveBeenCalledWith(CampaignEvents.UNDERAGE_USER)
-    })
   })
 })
 

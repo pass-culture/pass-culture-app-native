@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { TrendBlock, TrendNavigationProps } from 'features/home/types'
-import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Typo, getSpacing } from 'ui/theme'
 
@@ -15,7 +15,7 @@ const DESKTOP_BUTTON_SIZE = getSpacing(20)
 const MOBILE_BUTTON_SIZE = getSpacing(14)
 
 export const Trend = ({ image, title, ...rest }: TrendProps) => {
-  const numberOfLines = useFontScaleValue<number>({ default: 2, at200PercentZoom: 3 })
+  const numberOfLines = useMobileFontScaleToDisplay<number>({ default: 2, at200PercentZoom: 3 })
 
   return (
     <Item key={title} accessibilityLabel={title} {...rest}>

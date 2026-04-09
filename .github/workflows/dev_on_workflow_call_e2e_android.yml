@@ -87,6 +87,8 @@ jobs:
             ROBIN_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-robin-api-key
             MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
             MAESTRO_CLOUD_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-maestro-cloud-api-key
+            MAESTRO_E2E_API_KEY:passculture-metier-ehp/pcapi-staging_e2e_api_key
+            MAESTRO_E2E_ENDPOINT:passculture-metier-ehp/pcapi-staging-e2e-endpoint
 
       - name: Create a directory for keystores
         run: mkdir --parents android/keystores/
@@ -165,3 +167,5 @@ jobs:
             MAESTRO_RUN_TRACKING_TESTS=false
             MAESTRO_RUN_CLOUD_COMMANDS=true
             MAESTRO_CLOUD_API_KEY=${{ steps.secrets.outputs.MAESTRO_CLOUD_API_KEY }}
+            MAESTRO_E2E_API_KEY=${{ steps.secrets.outputs.MAESTRO_E2E_API_KEY }}
+            MAESTRO_E2E_ENDPOINT=${{ steps.secrets.outputs.MAESTRO_E2E_ENDPOINT }}

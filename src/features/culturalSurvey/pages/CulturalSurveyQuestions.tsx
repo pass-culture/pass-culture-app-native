@@ -17,17 +17,16 @@ import { useCulturalSurveyProgress } from 'features/culturalSurvey/helpers/useCu
 import { useGetNextQuestion } from 'features/culturalSurvey/helpers/useGetNextQuestion'
 import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/queries/useCulturalSurveyAnswersMutation'
 import { useCulturalSurveyQuestionsQuery } from 'features/culturalSurvey/queries/useCulturalSurveyQuestionsQuery'
-import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
+import { Gradient } from 'ui/components/Gradient'
 import { Button } from 'ui/designSystem/Button/Button'
 import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
 import { CheckboxGroupOption } from 'ui/designSystem/CheckboxGroup/types'
@@ -36,11 +35,8 @@ import { Page } from 'ui/pages/Page'
 import { Spacer } from 'ui/theme'
 
 export function CulturalSurveyQuestions() {
-  const enableCulturalSurveyMandatory = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY
-  )
-
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
+  const [isAtBottom, setIsAtBottom] = useState(false)
 
   const { push, reset } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'CulturalSurveyQuestions'>>()
@@ -74,36 +70,19 @@ export function CulturalSurveyQuestions() {
   const onSuccess = async () => {
     await refetchUser()
     dispatch({ type: 'FLUSH_ANSWERS' })
-    performReset()
-  }
-
-  const performReset = () => {
-    if (enableCulturalSurveyMandatory) {
-      reset({
-        index: 1,
-        routes: [
-          {
-            name: 'SubscriptionStackNavigator',
-            state: { routes: [{ name: 'Stepper' }] },
-          },
-          {
-            name: 'SubscriptionStackNavigator',
-            state: { routes: [{ name: 'CulturalSurveyThanks' }] },
-          },
-        ],
-      })
-    } else {
-      reset({
-        index: 1,
-        routes: [
-          { name: navigateToHomeConfig.screen },
-          {
-            name: 'SubscriptionStackNavigator',
-            state: { routes: [{ name: 'CulturalSurveyThanks' }] },
-          },
-        ],
-      })
-    }
+    reset({
+      index: 1,
+      routes: [
+        {
+          name: 'SubscriptionStackNavigator',
+          state: { routes: [{ name: 'Stepper' }] },
+        },
+        {
+          name: 'SubscriptionStackNavigator',
+          state: { routes: [{ name: 'CulturalSurveyThanks' }] },
+        },
+      ],
+    })
   }
 
   const onError = (error: unknown) => {
@@ -182,7 +161,9 @@ export function CulturalSurveyQuestions() {
   const pageSubtitle = 'Tu peux sélectionner une ou plusieurs réponses.'
 
   function onScroll({ nativeEvent }: { nativeEvent: NativeScrollEvent }) {
-    if (isCloseToBottom(nativeEvent)) logCulturalSurveyScrolledToBottom()
+    const closeToBottom = isCloseToBottom(nativeEvent)
+    setIsAtBottom(closeToBottom)
+    if (closeToBottom) logCulturalSurveyScrolledToBottom()
   }
 
   const checkboxOptions: CheckboxGroupOption<CulturalSurveyAnswerEnum>[] =
@@ -214,13 +195,11 @@ export function CulturalSurveyQuestions() {
   return (
     <Page>
       <Spacer.TopScreen />
-
       <CulturalSurveyPageHeader
         progress={culturalSurveyProgress}
         title={mapQuestionIdToPageTitle(culturalSurveyQuestion.id)}
         onGoBack={onGoBack}
       />
-
       <ChildrenScrollView
         bottomChildrenViewHeight={bottomChildrenViewHeight}
         onScroll={onScroll}
@@ -237,6 +216,7 @@ export function CulturalSurveyQuestions() {
         />
       </ChildrenScrollView>
 
+      {isAtBottom ? null : <Gradient bottomViewHeight={bottomChildrenViewHeight} />}
       <FixedBottomChildrenView onLayout={onFixedBottomChildrenViewLayout}>
         <Button
           fullWidth
@@ -278,6 +258,7 @@ const FixedBottomChildrenView = styled(View)(({ theme }) => ({
   bottom: 0,
   left: 0,
   right: 0,
+  backgroundColor: theme.designSystem.color.background.default,
   paddingBottom: theme.designSystem.size.spacing.xl,
   paddingTop: theme.designSystem.size.spacing.m,
   paddingHorizontal: theme.contentPage.marginHorizontal,

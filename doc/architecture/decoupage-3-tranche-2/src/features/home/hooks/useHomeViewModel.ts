@@ -1,13 +1,11 @@
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { NativeScrollEvent, NativeSyntheticEvent, useWindowDimensions, View } from 'react-native';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { HomepageModule, isOffersModule, isVenuesModule, isVideoCarouselModule, ThematicHeader } from 'features/home/types';
+import { HomepageModule, isVideoCarouselModule, ThematicHeader } from 'features/home/types';
 import { enrichModulesWithData } from 'features/home/helpers/enrichModulesWithData';
 import { isCloseToBottom } from 'libs/analytics';
 import { useTrackAllModulesSeen } from './useTrackAllModulesSeen';
 import { shouldDisplayVideoCarouselInHeader } from 'features/home/helpers/shouldDisplayVideoCarouselInHeader';
-import { Spinner } from 'ui/components/Spinner';
-import { PageContent, Spacer, VideoCarouselModule } from 'src/features/home/pages/GenericHome';
 import { fetchHomepageModules } from 'src/features/home/api/fetchHomepageModules';
 import { HomeListHeaderComponentProps } from 'src/features/home/components/HomeListHeaderComponent';
 

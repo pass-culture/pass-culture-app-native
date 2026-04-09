@@ -31,6 +31,7 @@ import { CheatcodesNavigationGenericPages } from 'cheatcodes/pages/others/Cheatc
 import { CheatcodesNavigationNotScreensPages } from 'cheatcodes/pages/others/CheatcodesNavigationNotScreensPages'
 import { CheatcodesNavigationSignUp } from 'cheatcodes/pages/others/CheatcodesNavigationSignUp'
 import { CheatcodesScreenAccesLibre } from 'cheatcodes/pages/others/CheatcodesScreenAccesLibre'
+import { CheatcodesScreenPageHeaderWithoutPlaceholder } from 'cheatcodes/pages/others/CheatcodesScreenCheatcodesScreenPageHeaderWithoutPlaceholder'
 import { CheatcodesScreenDebugInformations } from 'cheatcodes/pages/others/CheatcodesScreenDebugInformations'
 import { CheatcodesScreenFeatureFlags } from 'cheatcodes/pages/others/CheatcodesScreenFeatureFlags'
 import { CheatcodesScreenGenericErrorPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericErrorPage'
@@ -226,6 +227,10 @@ const routes: CheatcodesStackRoute[] = [
   {
     name: 'CheatcodesScreenNotEligibleEduConnect',
     component: CheatcodesScreenNotEligibleEduConnect,
+  },
+  {
+    name: 'CheatcodesScreenPageHeaderWithoutPlaceholder',
+    component: CheatcodesScreenPageHeaderWithoutPlaceholder,
   },
 ]
 

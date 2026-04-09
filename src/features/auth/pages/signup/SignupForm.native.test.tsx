@@ -23,7 +23,6 @@ import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -40,7 +39,6 @@ import {
 
 import { SignupForm } from './SignupForm'
 
-jest.mock('libs/campaign/campaign')
 jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -410,8 +408,6 @@ describe('Signup Form', () => {
           password: 'user@AZERTY123',
           birthdate: '2003-12-01',
           token: 'dummyToken',
-          appsFlyerPlatform: 'ios',
-          appsFlyerUserId: 'uniqueCustomerId',
           firebasePseudoId: 'firebase_pseudo_id',
           trustedDevice: {
             deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
@@ -473,7 +469,6 @@ describe('Signup Form', () => {
         responseOptions: { data: { oauthStateToken: 'oauth_state_token' } },
         requestOptions: { persist: true },
       })
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
     })
 
     it('should sign in when sso button is clicked and sso account already exists', async () => {
@@ -630,8 +625,6 @@ describe('Signup Form', () => {
           marketingEmailSubscription: false,
           birthdate: '2003-12-01',
           token: 'dummyToken',
-          appsFlyerPlatform: 'ios',
-          appsFlyerUserId: 'uniqueCustomerId',
           firebasePseudoId: 'firebase_pseudo_id',
           trustedDevice: {
             deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
@@ -799,8 +792,6 @@ describe('Signup Form', () => {
           marketingEmailSubscription: false,
           birthdate: '2003-12-01',
           token: 'dummyToken',
-          appsFlyerPlatform: 'ios',
-          appsFlyerUserId: 'uniqueCustomerId',
           firebasePseudoId: 'firebase_pseudo_id',
           trustedDevice: {
             deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',

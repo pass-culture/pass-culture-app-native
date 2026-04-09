@@ -7,7 +7,7 @@ type ScreensRequiringParsing = Extract<
   | 'AfterSignupEmailValidationBuffer'
   | 'BookingDetails'
   | 'BookingConfirmation'
-  | 'Chronicles'
+  | 'ClubAdvices'
   | 'Home'
   | 'Login'
   | 'Offer'
@@ -24,6 +24,8 @@ type ScreensRequiringParsing = Extract<
   | 'SearchLanding'
   | 'SearchResults'
   | 'ThematicSearch'
+  | 'ProAdvicesOffer'
+  | 'ProAdvicesVenue'
 >
 
 type ParamsList = Required<AllNavParamList>
@@ -97,9 +99,9 @@ export const screenParamsParser: ParamsParsers = {
     bookingId: Number,
     apiRecoParams: identityFn,
   },
-  Chronicles: {
+  ClubAdvices: {
     offerId: Number,
-    chronicleId: Number,
+    adviceId: Number,
     from: identityFn,
   },
   Login: {
@@ -170,6 +172,14 @@ export const screenParamsParser: ParamsParsers = {
     moduleItemId: identityFn,
     latitude: identityFn,
     longitude: identityFn,
+  },
+  ProAdvicesOffer: {
+    offerId: Number,
+    venueId: Number,
+  },
+  ProAdvicesVenue: {
+    venueId: Number,
+    offerId: Number,
   },
 }
 

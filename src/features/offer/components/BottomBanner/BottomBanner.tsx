@@ -38,6 +38,7 @@ const Container = styled(ViewGap)<{ paddingBottom: number; paddingVertical: numb
     alignItems: 'center',
     backgroundColor: theme.designSystem.color.background.default,
     paddingBottom,
+    marginTop: theme.designSystem.size.spacing.l,
   })
 )
 

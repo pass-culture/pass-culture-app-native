@@ -1,0 +1,22 @@
+import React from 'react'
+
+import { GeneralPublicBanner } from 'features/profile/components/Banners/GeneralPublicBanner/GeneralPublicBanner'
+import { getProfileHeaderTitle } from 'features/profile/helpers/getProfileHeaderTitle'
+import { ProfileFeatureFlagsProps } from 'features/profile/types'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { PageHeader } from 'ui/components/headers/PageHeader'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+
+type Props = { user: UserProfileResponseWithoutSurvey } & ProfileFeatureFlagsProps
+
+export const LoggedInGeneralPublicHeader = ({ user, featureFlags }: Props) => {
+  const { firstName, lastName } = user
+  const title = getProfileHeaderTitle({ firstName, lastName })
+
+  return (
+    <ViewGap gap={6} testID="logged-in-general-public-header">
+      <PageHeader title={title} featureFlags={featureFlags} numberOfLines={3} />
+      <GeneralPublicBanner user={user} featureFlags={featureFlags} />
+    </ViewGap>
+  )
+}

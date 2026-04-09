@@ -5,6 +5,8 @@ import {
 } from 'features/offerRefacto/helpers'
 import { BatchEvent } from 'libs/react-native-batch'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('getBatchEventForSubcategory', () => {
   it('should return the correct BatchEvent for a given subcategory', () => {
     const batchEvent = getBatchEventForSubcategory(SubcategoryIdEnumv2.SEANCE_CINE)

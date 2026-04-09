@@ -6,11 +6,11 @@ import { useIsUserUnderageBeneficiary } from 'features/profile/helpers/useIsUser
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
 type BeneficiaryCeilingsProps = {
-  domainsCredit: DomainsCredit
+  domainsCredit?: DomainsCredit | null
 }
 
 export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps) {
@@ -18,12 +18,11 @@ export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps)
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
-  if (isUserUnderageBeneficiary || domainsCredit.all.remaining === 0) return null
+  if (isUserUnderageBeneficiary || !domainsCredit || domainsCredit.all.remaining === 0) return null
   return (
     <React.Fragment>
       {domainsCredit.digital ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={6} />
+        <Container>
           <Typo.Body testID="domains-credit-digital">
             dont
             {SPACE}
@@ -37,11 +36,15 @@ export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps)
             {SPACE}
             en offres numériques.
           </Typo.Body>
-        </React.Fragment>
+        </Container>
       ) : null}
     </React.Fragment>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  paddingTop: theme.designSystem.size.spacing.xl,
+}))
 
 const BodySecondary = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,

@@ -1,8 +1,9 @@
 import React, { ComponentProps } from 'react'
 
-import { chroniclesSnap } from 'features/chronicle/fixtures/chroniclesSnap'
+import { advicesFixture } from 'features/advices/fixtures/advices.fixture'
+import { adviceVariantInfoFixture } from 'features/advices/fixtures/adviceVariantInfo.fixture'
+import { offerProAdvicesCardDataFixture } from 'features/advices/fixtures/offerProAdvices.fixture'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
-import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
@@ -18,162 +19,146 @@ const mockScrollToAnchor = jest.fn()
 const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
 
 describe('<OfferReactionSection />', () => {
-  describe('When FF is enabled', () => {
-    beforeEach(() => {
-      mockIsSuccess = true
-      mockScrollToAnchor.mockClear()
-      useScrollToAnchorSpy.mockReturnValue(mockScrollToAnchor)
-    })
+  beforeEach(() => {
+    mockIsSuccess = true
+    mockScrollToAnchor.mockClear()
+    useScrollToAnchorSpy.mockReturnValue(mockScrollToAnchor)
+  })
 
-    it('should display likes information when other users have reacted to the offer', async () => {
+  describe('Likes information', () => {
+    it('should display information when other users have reacted to the offer', async () => {
       renderOfferReactionSection({ likesCount: 1 })
 
       expect(await screen.findByText('1 j’aime')).toBeOnTheScreen()
     })
 
-    it('should not display likes information when not exists', () => {
-      renderOfferReactionSection({ chroniclesCount: 1 })
+    it('should not display information when not exists', () => {
+      renderOfferReactionSection({ clubAdvicesCount: 1 })
 
       expect(screen.queryByTestId('likesCounterIcon')).not.toBeOnTheScreen()
     })
+  })
 
-    it('should display chronicles information when exist', async () => {
+  describe('Club advices information', () => {
+    it('should display information when exist', async () => {
       renderOfferReactionSection({
-        chroniclesCount: 3,
-        chronicles: [chroniclesSnap[0], chroniclesSnap[1], chroniclesSnap[2]],
+        clubAdvicesCount: 3,
+        clubAdvices: [advicesFixture[0], advicesFixture[1], advicesFixture[2]],
       })
 
       expect(await screen.findByText('3 avis book club')).toBeOnTheScreen()
     })
 
-    it('should display headline offers count when exist', async () => {
+    it('should scroll to advices section when clicking on published advices counter', async () => {
+      const user = userEvent.setup()
+      renderOfferReactionSection({
+        clubAdvices: [advicesFixture[0], advicesFixture[1]],
+        clubAdvicesCount: 2,
+      })
+
+      const advicesCounter = screen.getByTestId('clubAdvicesCounter')
+      await user.press(advicesCounter)
+
+      expect(mockScrollToAnchor).toHaveBeenCalledWith('club-advice-section')
+    })
+  })
+
+  describe('Pro advices information', () => {
+    it('should display information when exist', async () => {
+      renderOfferReactionSection({
+        proAdvicesCount: 2,
+        proAdvices: [...offerProAdvicesCardDataFixture],
+      })
+
+      expect(await screen.findByText('2 avis des pros')).toBeOnTheScreen()
+    })
+
+    it('should scroll to advices section when clicking on published advices counter', async () => {
+      const user = userEvent.setup()
+      renderOfferReactionSection({
+        proAdvices: [...offerProAdvicesCardDataFixture],
+        proAdvicesCount: 2,
+      })
+
+      const advicesCounter = screen.getByTestId('proAdvicesCounter')
+      await user.press(advicesCounter)
+
+      expect(mockScrollToAnchor).toHaveBeenCalledWith('pro-advice-section')
+    })
+
+    it('should display new tag when wipProReviewsNewTag FF activated', async () => {
+      renderOfferReactionSection({
+        proAdvices: [...offerProAdvicesCardDataFixture],
+        proAdvicesCount: 2,
+        enableProReviewNewTag: true,
+      })
+
+      await screen.findByText('2 avis des pros')
+
+      expect(screen.getByText('Nouveau')).toBeOnTheScreen()
+    })
+
+    it('should not display new tag when wipProReviewsNewTag FF deactivated', async () => {
+      renderOfferReactionSection({
+        proAdvices: [...offerProAdvicesCardDataFixture],
+        proAdvicesCount: 2,
+        enableProReviewNewTag: false,
+      })
+
+      await screen.findByText('2 avis des pros')
+
+      expect(screen.queryByText('Nouveau')).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('Headline offers information', () => {
+    it('should display information when exist', async () => {
       renderOfferReactionSection({ headlineOffersCount: 3 })
 
       expect(await screen.findByText('Recommandé par 3 lieux culturels')).toBeOnTheScreen()
       expect(screen.getByTestId('headlineOffersCounterIcon')).toBeOnTheScreen()
     })
 
-    it('should not display headline offers count when not exists', () => {
+    it('should not display information when not exists', () => {
       renderOfferReactionSection({ likesCount: 3 })
 
       expect(screen.queryByTestId('headlineOffersCounterIcon')).not.toBeOnTheScreen()
     })
+  })
 
-    it('should display nothing when there are not chronicles, likes information and headline offers count', async () => {
-      renderOfferReactionSection({})
+  it('should display nothing when there are not advices, likes information and headline offers count', async () => {
+    renderOfferReactionSection({})
 
-      expect(screen.queryByTestId('likesCounterIcon')).not.toBeOnTheScreen()
-      expect(screen.queryByTestId('headlineOffersCounterIcon')).not.toBeOnTheScreen()
-    })
-
-    it('should display labelReaction when there are only unpublished chronicles', async () => {
-      renderOfferReactionSection({
-        chronicles: [],
-        chroniclesCount: 10,
-        chronicleVariantInfo: {
-          ...chronicleVariantInfoFixture,
-          labelReaction: 'Book-club',
-        },
-      })
-
-      expect(await screen.findByText('Recommandé par le Book-club')).toBeOnTheScreen()
-    })
-
-    it('should not display anything when there are no chronicles at all', () => {
-      renderOfferReactionSection({
-        chroniclesCount: 0,
-        chronicles: [],
-        chronicleVariantInfo: {
-          ...chronicleVariantInfoFixture,
-          labelReaction: 'Book-club',
-        },
-      })
-
-      expect(screen.queryByText(/Recommandé par/)).not.toBeOnTheScreen()
-    })
-
-    it('should display the number of published chronicles when there is at least one published offer', async () => {
-      render(
-        reactQueryProviderHOC(
-          <OfferReactionSection
-            chroniclesCount={4}
-            chronicles={chroniclesSnap}
-            chronicleVariantInfo={chronicleVariantInfoFixture}
-          />
-        )
-      )
-
-      expect(await screen.findByText('4 avis book club')).toBeOnTheScreen()
-    })
-
-    it('should display published chronicles count when there is at least one published chronicle', async () => {
-      renderOfferReactionSection({
-        chronicles: [chroniclesSnap[0], chroniclesSnap[1]],
-        chroniclesCount: 5,
-        chronicleVariantInfo: {
-          ...chronicleVariantInfoFixture,
-          labelReaction: 'book club',
-        },
-      })
-
-      expect(await screen.findByText('5 avis book club')).toBeOnTheScreen()
-    })
-
-    it('should scroll to chronicles section when clicking on published chronicles counter', async () => {
-      const user = userEvent.setup()
-      renderOfferReactionSection({
-        chronicles: [chroniclesSnap[0], chroniclesSnap[1]],
-        chroniclesCount: 2,
-      })
-
-      const chroniclesCounter = screen.getByTestId('chroniclesCounter')
-      await user.press(chroniclesCounter)
-
-      expect(mockScrollToAnchor).toHaveBeenCalledWith('chronicles-section')
-    })
-
-    it('should not be clickable when there are only unpublished chronicles', async () => {
-      renderOfferReactionSection({
-        chronicles: [],
-        chroniclesCount: 5,
-        chronicleVariantInfo: {
-          ...chronicleVariantInfoFixture,
-          labelReaction: 'Book Club',
-        },
-      })
-
-      expect(await screen.findByText('Recommandé par le Book Club')).toBeOnTheScreen()
-      expect(screen.queryByTestId('chroniclesCounter')).not.toBeOnTheScreen()
-    })
-
-    it('should not render clickable element when there are no chronicles', () => {
-      renderOfferReactionSection({
-        chroniclesCount: 0,
-        chronicles: [],
-      })
-
-      expect(screen.queryByTestId('chroniclesCounter')).not.toBeOnTheScreen()
-    })
+    expect(screen.queryByTestId('likesCounterIcon')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('headlineOffersCounter')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('clubAdvicesCounter')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('proAdvicesCounter')).not.toBeOnTheScreen()
   })
 })
 
 type RenderOfferReactionSectionType = Partial<ComponentProps<typeof OfferReactionSection>>
 
 function renderOfferReactionSection({
-  chroniclesCount = 0,
+  clubAdvicesCount = 0,
   likesCount = 0,
   headlineOffersCount = 0,
-  chronicles,
-  chronicleVariantInfo = chronicleVariantInfoFixture,
+  clubAdvices,
+  adviceVariantInfo = adviceVariantInfoFixture,
+  proAdvicesCount = 0,
+  proAdvices,
+  enableProReviewNewTag,
 }: RenderOfferReactionSectionType) {
   render(
     reactQueryProviderHOC(
       <OfferReactionSection
-        chroniclesCount={chroniclesCount}
+        clubAdvicesCount={clubAdvicesCount}
         likesCount={likesCount}
         headlineOffersCount={headlineOffersCount}
-        chronicles={chronicles}
-        chronicleVariantInfo={chronicleVariantInfo}
+        clubAdvices={clubAdvices}
+        adviceVariantInfo={adviceVariantInfo}
+        proAdvices={proAdvices}
+        proAdvicesCount={proAdvicesCount}
+        enableProReviewNewTag={enableProReviewNewTag}
       />
     )
   )

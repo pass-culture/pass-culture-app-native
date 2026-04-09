@@ -7,8 +7,6 @@ import { useCulturalSurveyContext } from 'features/culturalSurvey/context/Cultur
 import { useGetCulturalSurveyContent } from 'features/culturalSurvey/helpers/useGetCulturalSurveyContent'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -25,12 +23,9 @@ const FAQTouchableLinkProps = {
 }
 
 export const CulturalSurveyIntro = (): React.JSX.Element => {
-  const enableCulturalSurveyMandatory = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY
-  )
   const { questionsToDisplay: initialQuestions } = useCulturalSurveyContext()
 
-  const { intro } = useGetCulturalSurveyContent(enableCulturalSurveyMandatory)
+  const { intro } = useGetCulturalSurveyContent()
 
   return (
     <GenericInfoPage

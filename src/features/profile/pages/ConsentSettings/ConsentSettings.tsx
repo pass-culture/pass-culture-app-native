@@ -12,7 +12,6 @@ import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { getCookiesChoiceByCategory } from 'features/cookies/helpers/getCookiesChoiceByCategory'
 import { getCookiesChoiceFromCategories } from 'features/cookies/helpers/getCookiesChoiceFromCategories'
-import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -118,7 +117,6 @@ export const ConsentSettings = () => {
     hideModal()
     const { accepted, refused } = getCookiesChoiceFromCategories(currentCookieChoices)
     await setCookiesConsent({ mandatory: COOKIES_BY_CATEGORY.essential, accepted, refused })
-    startTrackingAcceptedCookies(accepted)
     void analytics.logHasMadeAChoiceForCookies({
       from: 'ConsentSettings',
       type: currentCookieChoices,

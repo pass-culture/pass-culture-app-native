@@ -1,16 +1,25 @@
-// eslint-disable-next-line local-rules/no-theme-from-theme
-import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 
-const MARGIN = theme.designSystem.size.spacing.xl
-const GUTTER = getSpacing(4)
 const MIN_WIDTH = getSpacing(32)
 
-export const getGridTileRatio = (screenWidth: number) => {
-  const maxScreenWidth = Math.min(screenWidth, theme.breakpoints.lg)
-  const nbrOfTilesToDisplay = Math.floor((maxScreenWidth - 2 * MARGIN) / (MIN_WIDTH + GUTTER))
+export const getGridTileRatio = ({
+  screenWidth,
+  margin,
+  gutter,
+  breakpoint,
+}: {
+  screenWidth: number
+  margin?: number
+  gutter?: number
+  breakpoint: number
+}) => {
+  const maxScreenWidth = Math.min(screenWidth, breakpoint)
+  const nbrOfTilesToDisplay = Math.floor(
+    (maxScreenWidth - 2 * (margin ?? 0)) / (MIN_WIDTH + (gutter ?? 0))
+  )
   const tileWidth =
-    (maxScreenWidth - 2 * MARGIN - (nbrOfTilesToDisplay - 1) * GUTTER) / nbrOfTilesToDisplay
+    (maxScreenWidth - 2 * (margin ?? 0) - (nbrOfTilesToDisplay - 1) * (gutter ?? 0)) /
+    nbrOfTilesToDisplay
 
   return { tileWidth, nbrOfTilesToDisplay }
 }

@@ -5,8 +5,6 @@ import { CategoryIdEnum, NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/g
 import * as MovieCalendarContext from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { NEXT_SCREENING_WORDING } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { computedTheme } from 'tests/computedTheme'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -49,7 +47,6 @@ jest.useFakeTimers()
 
 describe('CineBlock', () => {
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     jest.spyOn(MovieCalendarContext, 'useMovieCalendar').mockReturnValue({
       selectedDate: mockSelectedDate,
       goToDate: mockGoToDate,
