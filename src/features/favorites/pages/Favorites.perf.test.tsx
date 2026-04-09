@@ -7,8 +7,6 @@ import { Favorites } from 'features/favorites/pages/Favorites'
 import { simulateBackend } from 'features/favorites/tests/simulateBackend'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
@@ -41,7 +39,6 @@ jest.mock('libs/network/NetInfoWrapper')
 
 describe('<Favorites />', () => {
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
   })
 

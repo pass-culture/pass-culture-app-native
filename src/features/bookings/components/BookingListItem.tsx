@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Image } from 'libs/resizing-image-on-demand/Image'
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { CutoutVertical } from 'ui/svg/CutoutVertical'
 import { StrokeVertical } from 'ui/svg/StrokeVertical'
 import { Typo, getSpacing } from 'ui/theme'
@@ -27,8 +27,11 @@ export const BookingListItem: FC<BookingListItemProp> = ({
   children,
 }) => {
   const { designSystem } = useTheme()
-  const titleNumberOfLines = useFontScaleValue({ default: 2, at200PercentZoom: undefined })
-  const subtitleNumberOfLines = useFontScaleValue({
+  const titleNumberOfLines = useMobileFontScaleToDisplay({
+    default: 2,
+    at200PercentZoom: undefined,
+  })
+  const subtitleNumberOfLines = useMobileFontScaleToDisplay({
     default: 1,
     at200PercentZoom: undefined,
   })

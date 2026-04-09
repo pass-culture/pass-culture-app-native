@@ -8,7 +8,6 @@ type OfferNavigation = NativeStackNavigationProp<RootStackParamList, 'Offer'>
 
 type Params = {
   isBookingFreeOffer: boolean
-  enableBookingFreeOfferFifteenSixteen: boolean
   storedFreeOfferId?: number | null
   reset: OfferNavigation['reset']
 }
@@ -45,16 +44,10 @@ function handleStandardProfileSuccess({
 }
 
 export function handlePostProfileSuccess(params: SuccessParams) {
-  const {
-    isBookingFreeOffer,
-    enableBookingFreeOfferFifteenSixteen,
-    reset,
-    storedFreeOfferId,
-    navigateForwardToStepper,
-    refetchUser,
-  } = params
+  const { isBookingFreeOffer, reset, storedFreeOfferId, navigateForwardToStepper, refetchUser } =
+    params
 
-  if (isBookingFreeOffer && enableBookingFreeOfferFifteenSixteen) {
+  if (isBookingFreeOffer) {
     handleFreeOfferProfileSuccess({ storedFreeOfferId, reset })
   } else {
     handleStandardProfileSuccess({ navigateForwardToStepper })
@@ -94,10 +87,9 @@ function handleFreeOfferProfileError({
 }
 
 export function handlePostProfileError(params: Params) {
-  const { isBookingFreeOffer, enableBookingFreeOfferFifteenSixteen, reset, storedFreeOfferId } =
-    params
+  const { isBookingFreeOffer, reset, storedFreeOfferId } = params
 
-  if (isBookingFreeOffer && enableBookingFreeOfferFifteenSixteen) {
+  if (isBookingFreeOffer) {
     handleFreeOfferProfileError({ storedFreeOfferId, reset })
   } else {
     showErrorSnackBar('Une erreur est survenue lors de la mise à jour de ton profil')

@@ -28,7 +28,6 @@ const mockUseGetStepperInfoQuery = useGetStepperInfoQuery as jest.Mock
 const mockUseFeatureFlagOptionsQuery = useFeatureFlagOptionsQuery as jest.Mock
 
 const featureFlags = {
-  enablePassForAll: false,
   enableProfileV2: false,
   disableActivation: false,
 }

@@ -10,9 +10,6 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
-import { getSpacing } from 'ui/theme'
-
-const ADVICE_THUMBNAIL_HEIGHT = getSpacing(18)
 
 export type AdviceCardProps = PropsWithChildren<
   AdviceCardData & {
@@ -20,6 +17,7 @@ export type AdviceCardProps = PropsWithChildren<
     shouldTruncate?: boolean
     icon?: ReactNode
     tag?: ReactNode
+    thumbnailHeight?: number
   }
 >
 
@@ -38,6 +36,7 @@ export const AdviceCard: FunctionComponent<AdviceCardProps> = ({
   shouldTruncate = false,
   headerNavigateTo,
   headerAccessibilityLabel,
+  thumbnailHeight,
 }) => {
   const theme = useTheme()
 
@@ -45,9 +44,15 @@ export const AdviceCard: FunctionComponent<AdviceCardProps> = ({
     <InfoHeader
       title={title}
       subtitle={subtitle}
-      thumbnailComponent={image ? <Thumbnail url={image} testID="AdviceCardThumbnail" /> : icon}
+      thumbnailComponent={
+        image ? (
+          <Thumbnail url={image} testID="AdviceCardThumbnail" height={thumbnailHeight} />
+        ) : (
+          icon
+        )
+      }
       defaultThumbnailSize={theme.designSystem.size.spacing.xxxxl}
-      defaultThumbnailHeight={ADVICE_THUMBNAIL_HEIGHT}
+      defaultThumbnailHeight={thumbnailHeight ?? theme.designSystem.size.spacing.xxxxl}
       rightComponent={
         headerNavigateTo ? (
           <RightFilled size={theme.icons.sizes.extraSmall} testID="RightFilled" />
@@ -89,9 +94,9 @@ const Container = styled(ViewGap)<{ width?: number }>(({ theme, width }) => ({
   backgroundColor: theme.designSystem.color.background.default,
 }))
 
-const Thumbnail = styled(Image)(({ theme }) => ({
+const Thumbnail = styled(Image)<{ height?: number }>(({ theme, height }) => ({
   borderRadius: theme.designSystem.size.borderRadius.s,
-  height: getSpacing(18),
+  height: height ?? theme.designSystem.size.spacing.xxxxl,
   width: theme.designSystem.size.spacing.xxxxl,
   borderColor: theme.designSystem.color.border.subtle,
   borderWidth: 1,

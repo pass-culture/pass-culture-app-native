@@ -1,5 +1,6 @@
 import React, { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { useWindowDimensions } from 'react-native'
+import { styled } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getBusinessUrl } from 'features/home/components/modules/business/helpers/getBusinessUrl'
@@ -89,7 +90,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
   const accessibilityLabel = getComputedAccessibilityLabel(date, title, subtitle, callToAction)
 
   return (
-    <EditorialCard
+    <StyledEditorialCard
       height={FIXED_SIZE}
       width={width}
       isFocus={focusProps.isFocus}
@@ -103,3 +104,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 }
 
 export const BusinessModule = memo(UnmemoizedBusinessModule)
+
+const StyledEditorialCard = styled(EditorialCard)(({ theme }) => ({
+  marginBottom: theme.home.spaceBetweenModules,
+}))

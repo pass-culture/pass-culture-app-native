@@ -1,5 +1,6 @@
 import { useFocusEffect, useIsFocused } from '@react-navigation/native'
 import { FlashListRef } from '@shopify/flash-list'
+import { SearchResponse } from 'algoliasearch'
 import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { FlatList, Platform, useWindowDimensions, ViewToken } from 'react-native'
@@ -7,6 +8,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
+import { usePreviousRouteName } from 'features/navigation/helpers/usePreviousRouteName'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
@@ -20,7 +22,7 @@ import { getStringifySearchStateWithoutLocation } from 'features/search/helpers/
 import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateToSearchFilter/useNavigateToSearchFilter'
 import { usePrevious } from 'features/search/helpers/usePrevious'
 import { useGridListLayout } from 'features/search/store/gridListLayoutStore'
-import { GridListLayout, VenuesUserData } from 'features/search/types'
+import { GridListLayout, SearchListProps, SearchView, VenuesUserData } from 'features/search/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { Venue } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
@@ -72,19 +74,13 @@ export type SearchResultsContentProps = {
   onSearchResultsRefresh: () => void
   hits: SearchOfferHits
   nbHits: number
-  isLoading?: boolean
-  isFetching?: boolean
-  isFetchingNextPage?: boolean
-  userData: unknown
+  isLoading: boolean
+  isRefetching: boolean
+  userData: SearchResponse<Offer[]>['userData']
   venuesUserData: VenuesUserData
   offerVenues: Venue[]
   onPressAIFakeDoorBanner: () => void
-  onViewableItemsChanged?: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
+  onViewableItemsChanged?: SearchListProps['onViewableVenuePlaylistItemsChanged']
   enableAIFakeDoor?: boolean
 }
 
@@ -95,14 +91,14 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   hits,
   nbHits,
   isLoading,
-  isFetching,
-  isFetchingNextPage,
+  isRefetching,
   userData,
   venuesUserData,
   offerVenues,
   enableAIFakeDoor,
   onPressAIFakeDoorBanner,
 }) => {
+  const previousRouteName = usePreviousRouteName()
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const { listRef: searchListRef, handleViewableItemsChanged } = useViewableItemsTracker<
     FlashListRef<Offer>
@@ -120,8 +116,8 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const { searchState } = useSearch()
   const { navigateToSearchFilter } = useNavigateToSearchFilter()
 
-  const showSkeleton = useIsFalseWithDelay(!!isLoading, ANIMATION_DURATION)
-  const isRefreshing = useIsFalseWithDelay(!!isFetching, ANIMATION_DURATION)
+  const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
+  const isRefreshing = useIsFalseWithDelay(isRefetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
   const { geolocPosition, selectedLocationMode, setSelectedLocationMode, selectedPlace, setPlace } =
     useLocation()
@@ -186,12 +182,17 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const previousIsLoading = usePrevious(isLoading)
   useEffect(() => {
     if (previousIsLoading && !isLoading) {
-      void analytics.logPerformSearch(searchState, disabilities, nbHits, 'SearchResults')
+      void analytics.logPerformSearch(
+        searchState,
+        disabilities,
+        nbHits,
+        previousRouteName === SearchView.Thematic ? previousRouteName : SearchView.Results
+      )
       if (nbHits === 0) {
         void analytics.logNoSearchResult(searchState.query, searchState.searchId)
       }
     }
-  }, [isLoading, nbHits, previousIsLoading, searchState, disabilities])
+  }, [isLoading, nbHits, previousIsLoading, previousRouteName, searchState, disabilities])
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
@@ -336,7 +337,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     [Tab.SEARCHLIST]: (
       <SearchList
         ref={searchListRef}
-        isFetchingNextPage={!!isFetchingNextPage}
         hits={hits}
         nbHits={nbHits}
         renderItem={renderItem}

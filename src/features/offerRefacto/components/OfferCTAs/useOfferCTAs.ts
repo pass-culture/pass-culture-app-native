@@ -30,8 +30,6 @@ import {
 import { CTAContext, FavoriteCTAProps, OfferCTAsViewModel } from 'features/offerRefacto/types'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { Subcategory } from 'libs/subcategories/types'
 import { useBookingsQuery, useEndedBookingFromOfferIdQuery } from 'queries/bookings'
@@ -74,9 +72,7 @@ export const useOfferCTAs = ({
     ? JSON.parse(route.params.apiRecoParams)
     : undefined
 
-  const enableBookingFreeOfferFifteenSixteen = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
-  )
+  const enableBookingFreeOfferFifteenSixteen = true
   const {
     data: { showAccessScreeningButton },
   } = useRemoteConfigQuery()
@@ -156,7 +152,6 @@ export const useOfferCTAs = ({
 
   const ctaConfig = getCTAWordingAndAction({
     context,
-    enableBookingFreeOfferFifteenSixteen,
     userStatus,
     hasEnoughCredit: hasEnoughCreditData.hasEnoughCredit,
     isLoggedIn,

@@ -7,7 +7,6 @@ import { Bell } from 'ui/svg/icons/Bell'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
-import { NoPhone } from 'ui/svg/icons/NoPhone'
 import { Profile } from 'ui/svg/icons/Profile'
 
 export const loggedInNonBeneficiaryContentConfig = ({
@@ -17,6 +16,7 @@ export const loggedInNonBeneficiaryContentConfig = ({
   HelpButton,
   LocationButton,
   SocialNetwork,
+  BugReportButton,
 }: LoggedInContentParams): LoggedInContentConfig[] => [
   {
     section: 'Profil',
@@ -40,7 +40,7 @@ export const loggedInNonBeneficiaryContentConfig = ({
       { component: ChatbotButton, key: 'ChatbotButton' },
       { component: HelpButton, key: 'HelpButton' },
       { title: 'Chercher une info', externalNav: { url: env.ACCESSIBILITY_PLAN } },
-      { title: 'Signaler un bug', screen: 'DebugScreen', icon: NoPhone },
+      { component: BugReportButton, key: 'BugReportButton' },
     ],
   },
   {

@@ -67,7 +67,7 @@ const MOCK_MOVIE_OFFER = {
   }),
 }
 
-const mockSelectedDate = new Date('2024-05-08')
+const mockSelectedDate = new Date(MOCK_TIMESTAMP)
 const mockDisplayCalendar = jest.fn()
 const mockGoToDate = jest.fn()
 jest.spyOn(MovieCalendarContext, 'useMovieCalendar').mockReturnValue({
@@ -154,7 +154,7 @@ describe('MovieOfferTile', () => {
     const venueOffers = { ...VENUE_OFFERS_MOCK, hits: [venueOffersHit] }
 
     renderMovieOfferTile({ movieOffer: MOCK_MOVIE_OFFER, venueOffers })
-    const eventCard = await screen.findByLabelText('12h50 - VO - 5,70 €')
+    const eventCard = await screen.findByLabelText(/\d{2}h50 - VO - 5,70\s€/)
     await user.press(eventCard)
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(

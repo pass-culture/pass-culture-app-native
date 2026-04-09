@@ -146,7 +146,6 @@ export type CTAWordingAndAction = {
 
 export type GetCTAWordingAndActionProps = {
   context: CTAContext
-  enableBookingFreeOfferFifteenSixteen: boolean
   userStatus: YoungStatusResponse
   hasEnoughCredit: boolean
   isLoggedIn: boolean

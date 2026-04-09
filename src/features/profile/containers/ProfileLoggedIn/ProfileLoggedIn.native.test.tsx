@@ -27,7 +27,6 @@ jest.useFakeTimers()
 
 setFeatureFlags([
   RemoteStoreFeatureFlags.ENABLE_PROFILE_V2,
-  RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL,
   RemoteStoreFeatureFlags.DISABLE_ACTIVATION,
 ])
 
@@ -53,7 +52,6 @@ const renderProfileLoggedIn = async ({ user }: { user: typeof beneficiaryUser })
     reactQueryProviderHOC(
       <ProfileLoggedIn
         featureFlags={{
-          enablePassForAll: true,
           enableProfileV2: true,
           disableActivation: false,
         }}

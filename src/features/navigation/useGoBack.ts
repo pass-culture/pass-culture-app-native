@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { Platform } from 'react-native'
 
-import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
+import { usePreviousRouteName } from 'features/navigation/helpers/usePreviousRouteName'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 
 /**
@@ -16,11 +16,11 @@ export function useGoBack<RouteName extends keyof RootStackParamList>(
     : [RouteName] | [RouteName, RootStackParamList[RouteName]]
 ) {
   const { canGoBack, goBack, popTo } = useNavigation<UseNavigationType>()
-  const previousRoute = usePreviousRoute()
+  const previousRoute = usePreviousRouteName()
 
   function customGoBack() {
     const can = canGoBack()
-    if (typeof previousRoute?.name !== 'undefined' && can) {
+    if (previousRoute && can) {
       goBack()
     } else if (can && Platform.OS === 'web') {
       window.history.back()

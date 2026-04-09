@@ -13,6 +13,7 @@ describe('VenueAdvicesSection', () => {
         nbAdvices={2}
         venue={venueDataTest}
         onShowWritersModal={jest.fn()}
+        onFeedbackLog={jest.fn()}
       />
     )
 
@@ -27,6 +28,7 @@ describe('VenueAdvicesSection', () => {
         nbAdvices={2}
         venue={venueDataTest}
         onShowWritersModal={jest.fn()}
+        onFeedbackLog={jest.fn()}
       />,
       { theme: { isDesktopViewport: true } }
     )

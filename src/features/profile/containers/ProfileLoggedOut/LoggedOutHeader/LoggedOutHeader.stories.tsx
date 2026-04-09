@@ -16,7 +16,6 @@ const variantConfig: Variants<typeof LoggedOutHeader> = [
     label: 'LoggedOutHeader',
     props: {
       featureFlags: {
-        enablePassForAll: true,
         enableProfileV2: true,
         disableActivation: false,
       },

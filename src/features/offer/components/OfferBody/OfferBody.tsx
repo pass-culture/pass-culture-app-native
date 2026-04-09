@@ -24,11 +24,7 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import {
-  formatPrice,
-  getDisplayedPrice,
-  getIfPricesShouldBeFixed,
-} from 'libs/parsers/getDisplayedPrice'
+import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Subcategory } from 'libs/subcategories/types'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
@@ -49,10 +45,12 @@ type Props = {
   onVideoConsentPress: () => void
   onShowOfferArtistsModal: (artists: OfferArtist[]) => void
   likesCount?: number
-  advicesCount?: number | null
+  clubAdvicesCount?: number | null
+  proAdvicesCount?: number
   distance?: string | null
   headlineOffersCount?: number
-  advices?: AdviceCardData[]
+  clubAdvices?: AdviceCardData[]
+  proAdvices?: AdviceCardData[]
   isVideoSectionEnabled?: boolean
   hasVideoCookiesConsent?: boolean
   isMultiArtistsEnabled?: boolean
@@ -63,11 +61,13 @@ export const OfferBody: FunctionComponent<Props> = ({
   subcategory,
   children,
   likesCount,
-  advicesCount,
+  clubAdvicesCount,
+  proAdvicesCount,
   distance,
   headlineOffersCount,
   adviceVariantInfo,
-  advices,
+  clubAdvices,
+  proAdvices,
   isVideoSectionEnabled,
   hasVideoCookiesConsent,
   isMultiArtistsEnabled,
@@ -84,6 +84,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   }, [isVideoSectionEnabled, params])
 
   const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
+  const enableProReviewNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -99,7 +100,6 @@ export const OfferBody: FunctionComponent<Props> = ({
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isFixed: getIfPricesShouldBeFixed(offer.subcategoryId),
       isDuo: !!(offer.isDuo && user?.isBeneficiary),
     }),
     { fractionDigits: 2 }
@@ -191,10 +191,13 @@ export const OfferBody: FunctionComponent<Props> = ({
 
         <OfferReactionSection
           likesCount={likesCount}
-          advicesCount={advicesCount}
+          clubAdvicesCount={clubAdvicesCount}
           headlineOffersCount={headlineOffersCount}
           adviceVariantInfo={adviceVariantInfo}
-          advices={advices}
+          clubAdvices={clubAdvices}
+          proAdvicesCount={proAdvicesCount}
+          proAdvices={proAdvices}
+          enableProReviewNewTag={enableProReviewNewTag}
         />
 
         <GroupWithSeparator

@@ -23,7 +23,6 @@ import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -470,7 +469,6 @@ describe('Signup Form', () => {
         responseOptions: { data: { oauthStateToken: 'oauth_state_token' } },
         requestOptions: { persist: true },
       })
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
     })
 
     it('should sign in when sso button is clicked and sso account already exists', async () => {

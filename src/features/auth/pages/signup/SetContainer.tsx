@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 
 export const SetContainer: FunctionComponent<{ children: React.ReactNode }> = ({ children }) => {
   const { designSystem } = useTheme()
-  const marginTop = useFontScaleValue({
+  const marginTop = useMobileFontScaleToDisplay({
     default: 0,
     at200PercentZoom: designSystem.size.spacing.xxxl,
   })

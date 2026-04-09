@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { customEaseInOut, DURATION_IN_MS } from 'features/onboarding/helpers/animationProps'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
 import { Page } from 'ui/pages/Page'
 import { Spacer, Typo } from 'ui/theme'
@@ -35,7 +35,7 @@ export const TutorialPage: FunctionComponent<Props> = ({
   onGoBack,
   children,
 }) => {
-  const numberOfLines = useFontScaleValue({ default: 3, at200PercentZoom: 5 })
+  const numberOfLines = useMobileFontScaleToDisplay({ default: 3, at200PercentZoom: 5 })
 
   return (
     <Page>

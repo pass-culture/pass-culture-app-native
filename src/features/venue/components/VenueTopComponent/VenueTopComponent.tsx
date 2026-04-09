@@ -9,12 +9,14 @@ type Props = {
   venue: Omit<VenueResponse, 'isVirtual'>
   enableVolunteer?: boolean
   enableVolunteerNewTag?: boolean
+  enableVolunteerFeedback?: boolean
 }
 
 export const VenueTopComponent: React.FunctionComponent<Props> = ({
   venue,
   enableVolunteer,
   enableVolunteerNewTag,
+  enableVolunteerFeedback,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -28,6 +30,7 @@ export const VenueTopComponent: React.FunctionComponent<Props> = ({
       onPressBannerImage={handleImagePress}
       enableVolunteer={enableVolunteer}
       enableVolunteerNewTag={enableVolunteerNewTag}
+      enableVolunteerFeedback={enableVolunteerFeedback}
     />
   )
 }

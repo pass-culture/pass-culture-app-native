@@ -1,12 +1,6 @@
 import { convertToMinutes } from 'features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
 describe('convertToMinutes', () => {
-  beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
-  })
-
   it.each`
     time      | expected
     ${''}     | ${0}

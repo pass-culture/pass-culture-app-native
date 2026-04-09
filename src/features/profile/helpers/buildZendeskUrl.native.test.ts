@@ -112,11 +112,9 @@ describe('buildZendeskUrl', () => {
         user: beneficiaryUser,
         deviceInfo,
         version,
-        description: 'Le bouton plante',
       })
 
-      const description =
-        '<h4>VOTRE MESSAGE\u00a0:</h4>Le bouton plante' + technicalHeader + debugData
+      const description = '<h4>VOTRE MESSAGE\u00a0:</h4>' + technicalHeader + debugData
 
       expect(url).toBe(
         BASE_URL +

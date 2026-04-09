@@ -2,7 +2,7 @@ import React, { FunctionComponent, PropsWithChildren, ReactNode } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { ThumbnailPlaceholder } from 'ui/components/InfoHeader/ThumbnailPlaceHolder'
 import { Typo } from 'ui/theme'
 
@@ -28,8 +28,14 @@ export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({
   style,
   defaultThumbnailHeight,
 }) => {
-  const titleNumberOfLines = useFontScaleValue({ default: 1, at200PercentZoom: undefined })
-  const subtitleNumberOfLines = useFontScaleValue({ default: 2, at200PercentZoom: undefined })
+  const titleNumberOfLines = useMobileFontScaleToDisplay({
+    default: 1,
+    at200PercentZoom: undefined,
+  })
+  const subtitleNumberOfLines = useMobileFontScaleToDisplay({
+    default: 2,
+    at200PercentZoom: undefined,
+  })
 
   const subtitleComponent = title ? (
     <Subtitle testID="subtitileWithTitle" numberOfLines={subtitleNumberOfLines}>

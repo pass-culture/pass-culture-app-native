@@ -181,6 +181,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                   "top": "auto",
                 },
                 {
+                  "justifyContent": "flex-end",
                   "margin": "auto",
                 },
               ],
@@ -221,7 +222,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
             "borderTopRightRadius": 16,
             "flexDirection": "column",
             "height": 1318,
-            "justifyContent": "center",
+            "justifyContent": "flex-start",
             "maxHeight": 1334,
             "maxWidth": 960,
             "paddingBottom": 32,

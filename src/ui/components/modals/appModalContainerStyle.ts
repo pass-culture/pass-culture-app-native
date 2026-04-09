@@ -19,7 +19,7 @@ export const appModalContainerStyle = ({
     borderTopRightRadius: theme.designSystem.size.borderRadius.l,
     borderTopLeftRadius: theme.designSystem.size.borderRadius.l,
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     width: '100%',
     height,
     ...(noPadding

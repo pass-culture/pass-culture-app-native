@@ -56,6 +56,7 @@ import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFilte
 import { OfferPageBridge } from 'features/offer/bridge/OfferPageBridge'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { OfferVideoPreview } from 'features/offer/pages/OfferVideoPreview/OfferVideoPreview'
+import { ProAdvicesOffer } from 'features/proAdvices/pages/ProAdvicesOffer'
 import { ProAdvicesVenue } from 'features/proAdvices/pages/ProAdvicesVenue'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { MandatoryUpdatePersonalData } from 'features/profile/pages/MandatoryUpdatePersonalData/MandatoryUpdatePersonalData'
@@ -340,6 +341,11 @@ const rootScreens: RouteConfig[] = [
     // This screen is the RootNavigator (and not SubscriptionStackNavigator with the other Bonification screens) so we can return it from useInitialScreen (the hook doesn't handle setting nested screens as initial screens)
     name: 'BonificationGranted',
     component: withAuthProtection(BonificationGranted),
+  },
+  {
+    name: 'ProAdvicesOffer',
+    component: ProAdvicesOffer,
+    options: { title: 'Avis du pro' },
   },
   {
     name: 'ProAdvicesVenue',

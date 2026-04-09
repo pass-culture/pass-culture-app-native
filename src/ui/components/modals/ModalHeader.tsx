@@ -3,7 +3,7 @@ import { LayoutChangeEvent, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 // eslint-disable-next-line no-restricted-imports
 import { ModalSpacing } from 'ui/components/modals/enum'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -39,7 +39,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
       testID: 'rightIcon',
     }))``
   const { top } = useSafeAreaInsets()
-  const marginTop = useFontScaleValue({ default: 0, at200PercentZoom: top })
+  const marginTop = useMobileFontScaleToDisplay({ default: 0, at200PercentZoom: top })
 
   return (
     <Container

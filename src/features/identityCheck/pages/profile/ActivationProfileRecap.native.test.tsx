@@ -13,7 +13,6 @@ import { statusActions } from 'features/identityCheck/pages/profile/store/status
 import * as usePostProfileMutation from 'features/identityCheck/queries/usePostProfileMutation'
 import { freeOfferIdActions } from 'features/offer/store/freeOfferIdStore'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -123,7 +122,6 @@ describe('<ActivationProfileRecap />', () => {
   it('should navigate to error screen if posting profile fails', async () => {
     mockUseMutationError({ content: {}, name: 'ApiError', statusCode: 400, message: 'erreur' })
     useRoute.mockReturnValueOnce({ params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } })
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
     prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
 
     await user.press(screen.getByText('Confirmer'))
@@ -140,7 +138,6 @@ describe('<ActivationProfileRecap />', () => {
 
   describe('booking free offer 15-16 years', () => {
     beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
       useRoute.mockReturnValueOnce({ params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } })
     })
 
@@ -150,16 +147,7 @@ describe('<ActivationProfileRecap />', () => {
       expect(await screen.findByText('Informations personnelles')).toBeTruthy()
     })
 
-    it('should not navigate to Offer screen if booking free offer and offer ID exists but FF ENABLE_BOOKING_FREE_OFFER_15_16 is disable', async () => {
-      setFeatureFlags()
-      prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
-
-      await user.press(screen.getByText('Confirmer'))
-
-      expect(reset).not.toHaveBeenCalled()
-    })
-
-    it('should navigate to Offer screen if booking free offer and offer ID exists when FF ENABLE_BOOKING_FREE_OFFER_15_16 is enable', async () => {
+    it('should navigate to Offer screen if booking free offer and offer ID exists', async () => {
       prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
 
       await user.press(screen.getByText('Confirmer'))
@@ -169,16 +157,7 @@ describe('<ActivationProfileRecap />', () => {
       })
     })
 
-    it('should not navigate to Offer screen when booking free offer but no offer ID is stored with FF ENABLE_BOOKING_FREE_OFFER_15_16 is disable', async () => {
-      setFeatureFlags()
-      prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerIdNull)
-
-      await user.press(screen.getByText('Confirmer'))
-
-      expect(reset).not.toHaveBeenCalled()
-    })
-
-    it('should navigate to error screen when booking free offer but no offer ID is stored with FF ENABLE_BOOKING_FREE_OFFER_15_16 is enable', async () => {
+    it('should navigate to error screen when booking free offer but no offer ID is stored', async () => {
       prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerIdNull)
 
       await user.press(screen.getByText('Confirmer'))

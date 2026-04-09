@@ -37,14 +37,12 @@ export const getExternalUrlCTA = (
 
 export const getFreeOfferCTA = (
   offer: OfferResponse,
-  enableBookingFreeOfferFifteenSixteen: boolean,
   userStatus: YoungStatusResponse,
   subcategory: SubcategoryResponseModelv2,
   user?: UserProfileResponseWithoutSurvey,
   alreadyBookedOfferId?: number
 ): CTAType | undefined => {
   const isUserFreeStatus = user?.eligibility === EligibilityType.free
-  const isEligibleFreeOffer15To16 = enableBookingFreeOfferFifteenSixteen && isUserFreeStatus
 
   if (isFreeDigitalOffer(offer) && userStatus?.statusType !== YoungStatusType.non_eligible) {
     if (subcategory.isEvent) return alreadyBookedOfferId ? 'SEE_BOOKING' : 'BOOK_OFFER'
@@ -53,7 +51,7 @@ export const getFreeOfferCTA = (
 
   const isProfileIncomplete = getIsProfileIncomplete(user)
   if (isFreeOffer(offer)) {
-    if (isEligibleFreeOffer15To16 && isProfileIncomplete) {
+    if (isUserFreeStatus && isProfileIncomplete) {
       return 'INCOMPLETE_PROFILE'
     }
     if (!isProfileIncomplete) {
@@ -124,7 +122,6 @@ export const getExpirationSoldOutCTA = (
 
 export const getCTAWordingAndAction = ({
   context,
-  enableBookingFreeOfferFifteenSixteen,
   userStatus,
   hasEnoughCredit,
   isLoggedIn,
@@ -148,20 +145,12 @@ export const getCTAWordingAndAction = ({
 
   // 3. User 15/16 years old (no bookings for paid offers)
   const isUserFreeStatus = user?.eligibility === EligibilityType.free
-  const isEligibleFreeOffer15To16 = enableBookingFreeOfferFifteenSixteen && isUserFreeStatus
-  if (isEligibleFreeOffer15To16 && !isFreeOffer(offer)) {
+  if (isUserFreeStatus && !isFreeOffer(offer)) {
     return getCTAProps('USER_15_16', context)
   }
 
   // 4. Free offers and specific status
-  const freeOfferCTA = getFreeOfferCTA(
-    offer,
-    enableBookingFreeOfferFifteenSixteen,
-    userStatus,
-    subcategory,
-    user,
-    alreadyBookedOfferId
-  )
+  const freeOfferCTA = getFreeOfferCTA(offer, userStatus, subcategory, user, alreadyBookedOfferId)
   if (freeOfferCTA) {
     return getCTAProps(freeOfferCTA, context)
   }

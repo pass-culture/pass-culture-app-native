@@ -3,7 +3,7 @@ import { SearchResponse } from 'algoliasearch/lite'
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { useRoute } from '__mocks__/@react-navigation/native'
 import {
   Activity,
   OffersStocksResponseV2,
@@ -32,6 +32,7 @@ import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.c
 import { Network } from 'libs/share/types'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Offer } from 'shared/offer/types'
+import * as ABSegmentModule from 'shared/useABSegment/useABSegment'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
@@ -91,6 +92,7 @@ mockUseGTLPlaylists.mockReturnValue({
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
+const useABSegmentSpy = jest.spyOn(ABSegmentModule, 'useABSegment')
 
 const mockUseDeviceInfo = jest.fn().mockReturnValue({
   deviceId: 'device-id',
@@ -181,27 +183,18 @@ describe('<Venue />', () => {
       ).toBeOnTheScreen()
     })
 
-    it('should navigate on thematic home when pressing "Voir tous les avis des pros" button', async () => {
-      renderVenue(venueId)
-
-      await user.press(await screen.findByText('Qui écrit les avis des pros ?'))
-
-      await user.press(await screen.findByText('Voir tous les avis des pros', { hidden: true }))
-
-      expect(navigate).toHaveBeenCalledWith('ThematicHome', {
-        from: 'venue',
-        homeId: '4mlVpAZySUZO6eHazWKZeV',
-      })
-    })
-
     it('should display advices section when AB testing segment is A', async () => {
+      useABSegmentSpy.mockReturnValueOnce('A')
       renderVenue(venueId)
 
       expect(await screen.findByText(`Les avis par “${venueDataTest.name}”`)).toBeOnTheScreen()
     })
 
-    it.skip('should not display advices section when AB testing segment is B', () => {
+    it('should not display advices section when AB testing segment is B', async () => {
+      useABSegmentSpy.mockReturnValueOnce('B')
       renderVenue(venueId)
+
+      await screen.findByText('À la une')
 
       expect(screen.queryByText(`Les avis par “${venueDataTest.name}”`)).not.toBeOnTheScreen()
     })

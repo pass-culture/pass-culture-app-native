@@ -32,10 +32,12 @@ import { Form } from 'ui/components/Form'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { InputError } from 'ui/components/inputs/InputError'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Key } from 'ui/svg/icons/Key'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -50,7 +52,6 @@ type Props = {
 
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.LOGIN)
-  const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
   const enableAppleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO)
   const { data: isRecaptchaEnabled } = useIsRecaptchaEnabled()
   const { params } = useRoute<UseRouteType<'Login'>>()
@@ -255,15 +256,22 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
                 onPress={handleSubmit(onSubmit)}
                 disabled={shouldDisableLoginButton}
               />
-              {enableGoogleSSO || enableAppleSSO ? (
-                <StyledViewGap gap={4}>
-                  <SeparatorWithText label="ou" />
-                  {enableGoogleSSO ? <SSOButtonBase type="login" onSuccess={signIn} /> : null}
-                  {enableAppleSSO ? <SSOButtonApple type="login" /> : null}
-                </StyledViewGap>
-              ) : (
-                <NoSSOSpace />
-              )}
+              <StyledViewGap gap={4}>
+                <SeparatorWithText label="ou" />
+                <SSOButtonBase type="login" onSuccess={signIn} />
+                {enableAppleSSO ? <SSOButtonApple type="login" /> : null}
+                <ExternalTouchableLink
+                  as={Button}
+                  variant="tertiary"
+                  size="small"
+                  color="neutral"
+                  icon={ExternalSiteFilled}
+                  wording="Je ne me souviens pas de mes identifiants"
+                  externalNav={{
+                    url: 'https://aide.passculture.app/hc/fr/articles/25838501009308--Jeunes-Tu-as-perdu-tes-identifiants-de-connexion-que-faire',
+                  }}
+                />
+              </StyledViewGap>
             </Form.MaxWidth>
             <SignUpButton type="signup" onAdditionalPress={onLogSignUpAnalytics} />
           </React.Fragment>
@@ -299,5 +307,3 @@ const StyledViewGap = styled(ViewGap)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
   marginBottom: theme.designSystem.size.spacing.xxxl,
 }))
-
-const NoSSOSpace = styled.View(({ theme }) => ({ height: theme.designSystem.size.spacing.xxl }))

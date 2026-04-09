@@ -18,8 +18,6 @@ import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SuggestedCity } from 'libs/place/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -27,10 +25,6 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Again } from 'ui/svg/icons/Again'
 
 export const ProfileInformationValidationCreate = () => {
-  const enableBookingFreeOfferFifteenSixteen = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
-  )
-
   const { refetchUser, user } = useAuthContext()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
 
@@ -88,7 +82,6 @@ export const ProfileInformationValidationCreate = () => {
     onSuccess: () =>
       handlePostProfileSuccess({
         isBookingFreeOffer,
-        enableBookingFreeOfferFifteenSixteen,
         storedFreeOfferId,
         navigateForwardToStepper,
         reset,
@@ -97,7 +90,6 @@ export const ProfileInformationValidationCreate = () => {
     onError: () =>
       handlePostProfileError({
         isBookingFreeOffer,
-        enableBookingFreeOfferFifteenSixteen,
         storedFreeOfferId,
         reset,
       }),

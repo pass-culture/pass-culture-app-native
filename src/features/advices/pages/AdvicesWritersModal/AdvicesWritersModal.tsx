@@ -9,7 +9,7 @@ import { Typo } from 'ui/theme'
 type Props = {
   isVisible: boolean
   closeModal: VoidFunction
-  onShowRecoButtonPress: VoidFunction
+  onButtonPress: VoidFunction
   modalWording: string
   buttonWording: string
 }
@@ -17,7 +17,7 @@ type Props = {
 export const AdvicesWritersModal: FunctionComponent<Props> = ({
   isVisible,
   closeModal,
-  onShowRecoButtonPress,
+  onButtonPress,
   modalWording,
   buttonWording,
 }) => {
@@ -32,7 +32,7 @@ export const AdvicesWritersModal: FunctionComponent<Props> = ({
       <ViewGap gap={6}>
         <Typo.Body>{modalWording}</Typo.Body>
 
-        <Button wording={buttonWording} onPress={onShowRecoButtonPress} color="brand" />
+        <Button wording={buttonWording} onPress={onButtonPress} color="brand" />
       </ViewGap>
     </AppModal>
   )

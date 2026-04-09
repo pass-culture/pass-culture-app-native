@@ -30,7 +30,7 @@ const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
 })
 
 describe('<ProfileTutorialAgeInformationCredit />', () => {
-  beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY]))
+  beforeEach(() => setFeatureFlags([]))
 
   describe('with bonification disabled', () => {
     it('should render correctly', () => {
@@ -113,10 +113,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
 
 describe('bonification step', () => {
   beforeEach(() => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY,
-      RemoteStoreFeatureFlags.ENABLE_BONIFICATION,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BONIFICATION])
   })
 
   it('should show step to connected users', () => {

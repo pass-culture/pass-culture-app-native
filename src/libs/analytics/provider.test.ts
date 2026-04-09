@@ -1,4 +1,6 @@
 // eslint-disable-next-line no-restricted-imports
+import { resetDedupCache } from 'libs/analytics/eventDeduplication'
+// eslint-disable-next-line no-restricted-imports
 import { analytics } from 'libs/analytics/provider'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
@@ -16,6 +18,7 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('analyticsProvider - logEvent', () => {
   afterEach(() => {
     storage.clear('location_type')
+    resetDedupCache()
   })
 
   describe('with firebase', () => {
@@ -68,6 +71,38 @@ describe('analyticsProvider - logEvent', () => {
       expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith({
         locationType: 'undefined',
       })
+    })
+  })
+
+  describe('deduplication', () => {
+    it('should not send the same event twice within the dedup window', async () => {
+      await analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, EVENT_PARAMS)
+      await analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, EVENT_PARAMS)
+
+      expect(firebaseAnalytics.logEvent).toHaveBeenCalledTimes(1)
+    })
+
+    it('should send events with different params', async () => {
+      await analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, { param: 1 })
+      await analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, { param: 2 })
+
+      expect(firebaseAnalytics.logEvent).toHaveBeenCalledTimes(2)
+    })
+
+    it('should not send the same screen view twice within the dedup window', async () => {
+      analytics.logScreenView(SCREEN_NAME)
+      analytics.logScreenView(SCREEN_NAME)
+      await act(() => {})
+
+      expect(firebaseAnalytics.logScreenView).toHaveBeenCalledTimes(1)
+    })
+
+    it('should send different screen views', async () => {
+      analytics.logScreenView('Home')
+      analytics.logScreenView('Offer')
+      await act(() => {})
+
+      expect(firebaseAnalytics.logScreenView).toHaveBeenCalledTimes(2)
     })
   })
 })

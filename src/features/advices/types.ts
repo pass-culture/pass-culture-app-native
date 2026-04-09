@@ -48,4 +48,5 @@ export type AdviceCardListProps = Pick<
   shouldTruncate?: boolean
   cardIcon?: ReactNode
   tag?: ReactNode
+  thumbnailHeight?: number
 }

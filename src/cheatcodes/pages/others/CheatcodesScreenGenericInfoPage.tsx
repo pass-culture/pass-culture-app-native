@@ -18,9 +18,9 @@ export const CheatcodesScreenGenericInfoPage = () => {
       withGoBack
       withSkipAction={navigateToCheatcodesNavigationGenericPages}
       illustration={MaintenanceCone}
-      title="Title"
-      subtitle="Subtitle"
-      buttonsSurtitle={<StyledBodyXs>Attention&nbsp;: ceci est un surtitre</StyledBodyXs>}
+      title="Un titre qui devrait passer sur deux lignes si besoin"
+      subtitle="Un sous-titre qui devrait passer sur deux lignes si besoin"
+      buttonsSurtitle={<StyledBodyXs>Attention&nbsp;: ceci est un surtitre de bouton</StyledBodyXs>}
       buttonPrimary={{
         wording: 'ButtonPrimary',
         navigateTo: {
@@ -42,7 +42,10 @@ export const CheatcodesScreenGenericInfoPage = () => {
         },
         icon: PlainArrowPrevious,
       }}>
-      <Typo.Body>Children...</Typo.Body>
+      <Typo.Body>
+        Ceci est le texte enfant qui devrait être vraiment très long et passer sur plusieurs lignes
+        si besoin.
+      </Typo.Body>
     </GenericInfoPage>
   )
 }

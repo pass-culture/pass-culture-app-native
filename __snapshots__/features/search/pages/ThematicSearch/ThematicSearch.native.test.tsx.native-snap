@@ -1709,7 +1709,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   <View
                     style={
                       {
-                        "marginHorizontal": 24,
+                        "flexShrink": 1,
+                        "marginLeft": 24,
+                        "marginRight": 24,
                       }
                     }
                     testID="playlistTitle"

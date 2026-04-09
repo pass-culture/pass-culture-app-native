@@ -7,11 +7,7 @@ import { getExclusivityAccessibilityLabel } from 'features/home/helpers/getExclu
 import { getDistance } from 'libs/location/getDistance'
 import { useLocation } from 'libs/location/location'
 import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
-import {
-  formatPrice,
-  getDisplayedPrice,
-  getIfPricesShouldBeFixed,
-} from 'libs/parsers/getDisplayedPrice'
+import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -41,7 +37,6 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight, com
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isFixed: getIfPricesShouldBeFixed(attachedOffer.subcategoryId),
       isDuo: !!(attachedOffer.isDuo && user?.isBeneficiary),
     })
   )

@@ -227,6 +227,7 @@ export type VenuesModuleParameters = {
   hitsPerPage: number
   isGeolocated?: boolean
   aroundRadius?: number
+  hasVolunteering?: boolean
 }
 
 export type ModuleData = {

@@ -17,7 +17,7 @@ export default meta
 
 const depositExpirationDate = '2023-02-16T17:16:04.735235'
 
-const featureFlags = { enablePassForAll: false, disableActivation: false }
+const featureFlags = { disableActivation: false }
 
 const variantConfig: Variants<typeof CreditHeader> = [
   {

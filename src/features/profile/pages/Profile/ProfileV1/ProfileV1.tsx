@@ -9,6 +9,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
+import { BugReportButton } from 'features/profile/components/Buttons/BugReportButton/BugReportButton'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
@@ -55,7 +56,6 @@ import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
-import { NoPhone } from 'ui/svg/icons/NoPhone'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { Trophy } from 'ui/svg/icons/Trophy'
@@ -78,9 +78,7 @@ const OnlineProfile: React.FC = () => {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.PROFILE)
   const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
-  const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
   const enableProfileV2 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PROFILE_V2)
-  const enableDebugSection = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION)
   const enableChatbot = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CHATBOT)
 
   const { dispatch: favoritesDispatch } = useFavoritesState()
@@ -206,10 +204,7 @@ const OnlineProfile: React.FC = () => {
         testID="profile-scrollview">
         <ScrollViewContentContainer>
           <View accessibilityRole={AccessibilityRole.MAIN}>
-            <ProfileHeader
-              featureFlags={{ disableActivation, enablePassForAll, enableProfileV2 }}
-              user={user}
-            />
+            <ProfileHeader featureFlags={{ disableActivation, enableProfileV2 }} user={user} />
             <ProfileContainer>
               {isLoggedIn ? (
                 <Section title="Profil">
@@ -320,12 +315,7 @@ const OnlineProfile: React.FC = () => {
                     />
                   </Li>
                   <Li>
-                    <Row
-                      title="Signaler un bug"
-                      type="clickable"
-                      navigateTo={getProfilePropConfig('DebugScreen')}
-                      icon={NoPhone}
-                    />
+                    <BugReportButton />
                   </Li>
                 </VerticalUl>
               </Section>
@@ -407,20 +397,18 @@ const OnlineProfile: React.FC = () => {
                   {version}
                   {isWeb ? `-${String(env.COMMIT_HASH)}` : ''}
                 </Version>
-                {enableDebugSection ? (
-                  <DebugButtonContainer>
-                    <ButtonContainerFlexStart>
-                      <InternalTouchableLink
-                        as={Button}
-                        size="small"
-                        variant="tertiary"
-                        color="neutral"
-                        wording="Débuggage"
-                        navigateTo={getProfilePropConfig('DebugScreen')}
-                      />
-                    </ButtonContainerFlexStart>
-                  </DebugButtonContainer>
-                ) : null}
+                <DebugButtonContainer>
+                  <ButtonContainerFlexStart>
+                    <InternalTouchableLink
+                      as={Button}
+                      size="small"
+                      variant="tertiary"
+                      color="neutral"
+                      wording="Débuggage"
+                      navigateTo={getProfilePropConfig('DebugScreen')}
+                    />
+                  </ButtonContainerFlexStart>
+                </DebugButtonContainer>
               </Section>
             </ProfileContainer>
           </View>

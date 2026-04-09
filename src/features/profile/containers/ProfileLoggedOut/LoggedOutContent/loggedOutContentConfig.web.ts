@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { SectionItem } from 'features/profile/helpers/createProfileContent'
 import { env } from 'libs/environment/env'
 import { Bell } from 'ui/svg/icons/Bell'
@@ -7,7 +5,6 @@ import { Bulb } from 'ui/svg/icons/Bulb'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
-import { NoPhone } from 'ui/svg/icons/NoPhone'
 
 type LoggedOutContentConfig = {
   section: string
@@ -22,6 +19,8 @@ type LoggedOutContentParams = {
   LocationButton: React.ReactNode
 } & {
   SocialNetwork: React.ReactNode
+} & {
+  BugReportButton: React.ReactNode
 }
 
 export const loggedOutContentConfig = ({
@@ -29,6 +28,7 @@ export const loggedOutContentConfig = ({
   HelpButton,
   LocationButton,
   SocialNetwork,
+  BugReportButton,
 }: LoggedOutContentParams): LoggedOutContentConfig[] => [
   {
     section: 'Paramètres',
@@ -47,7 +47,7 @@ export const loggedOutContentConfig = ({
     items: [
       { component: HelpButton, key: 'HelpButton' },
       { title: 'Chercher une info', externalNav: { url: env.ACCESSIBILITY_PLAN } },
-      { title: 'Signaler un bug', screen: 'DebugScreen', icon: NoPhone },
+      { component: BugReportButton, key: 'BugReportButton' },
     ],
   },
   {

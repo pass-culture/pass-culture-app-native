@@ -120,6 +120,7 @@ exports[`<AppModal /> on big screen 1`] = `
                 "top": 0,
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -164,7 +165,7 @@ exports[`<AppModal /> on big screen 1`] = `
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxWidth": 520,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -254,6 +255,7 @@ exports[`<AppModal /> on big screen 1`] = `
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -411,6 +413,7 @@ exports[`<AppModal /> on small screen 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -449,7 +452,7 @@ exports[`<AppModal /> on small screen 1`] = `
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 400,
           "paddingBottom": 32,
@@ -540,6 +543,7 @@ exports[`<AppModal /> on small screen 1`] = `
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -651,6 +655,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -689,7 +694,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -780,6 +785,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -937,6 +943,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -975,7 +982,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -1066,6 +1073,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -1223,6 +1231,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -1261,7 +1270,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -1352,6 +1361,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -1509,6 +1519,7 @@ exports[`<AppModal /> with left icon render 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -1547,7 +1558,7 @@ exports[`<AppModal /> with left icon render 1`] = `
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -1747,6 +1758,7 @@ exports[`<AppModal /> with left icon render 1`] = `
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -1904,6 +1916,7 @@ exports[`<AppModal /> with minimal props 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -1942,7 +1955,7 @@ exports[`<AppModal /> with minimal props 1`] = `
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -2033,6 +2046,7 @@ exports[`<AppModal /> with minimal props 1`] = `
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -2190,6 +2204,7 @@ exports[`<AppModal /> with right icon render 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -2228,7 +2243,7 @@ exports[`<AppModal /> with right icon render 1`] = `
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -2429,6 +2444,7 @@ exports[`<AppModal /> with right icon render 1`] = `
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {
@@ -2586,6 +2602,7 @@ exports[`<AppModal /> without children 1`] = `
                 "top": "auto",
               },
               {
+                "justifyContent": "flex-end",
                 "margin": "auto",
               },
             ],
@@ -2624,7 +2641,7 @@ exports[`<AppModal /> without children 1`] = `
           "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 432,
-          "justifyContent": "center",
+          "justifyContent": "flex-start",
           "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
@@ -2715,6 +2732,7 @@ exports[`<AppModal /> without children 1`] = `
       />
       <View
         backdropColor="#23232329"
+        marginBottom={48}
         paddingBottom={8}
         style={
           {

@@ -111,12 +111,10 @@ export const buildZendeskUrlForFraud = ({
 
 export const buildZendeskUrlForDebug = ({
   user,
-  description,
   deviceInfo,
   version,
 }: {
   user?: UserProfileResponseWithoutSurvey
-  description?: string
   deviceInfo?: DeviceInformation
   version?: string
 }) =>
@@ -125,7 +123,7 @@ export const buildZendeskUrlForDebug = ({
     firstName: user?.firstName,
     reason: 'motif_signaler_un_bug',
     account: user?.email,
-    description: getDescription({ description, user, deviceInfo, version }),
+    description: getDescription({ user, deviceInfo, version }),
     birthDate: user?.birthDate,
   })
 

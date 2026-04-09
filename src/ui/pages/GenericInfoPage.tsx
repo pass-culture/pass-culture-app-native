@@ -1,9 +1,12 @@
 import React, { FunctionComponent, PropsWithChildren, ReactNode } from 'react'
-import { AccessibilityRole } from 'react-native'
+import { AccessibilityRole, ScrollView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import {
+  useMobileFontScaleToDisplay,
+  useWebZoomToDisplay,
+} from 'shared/accessibility/helpers/zoomHelpers'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
@@ -106,8 +109,17 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   const { top } = useSafeAreaInsets()
   const shouldDisplayHeader = withGoBack || withSkipAction
   const placeholderHeight = shouldDisplayHeader ? headerHeight : top
-  const marginVertical = useFontScaleValue({ default: 0, at200PercentZoom: getSpacing(25) })
+  const marginVertical = useMobileFontScaleToDisplay({
+    default: 0,
+    at200PercentZoom: getSpacing(25),
+  })
   const buttons = getGenericInfoPageButtons({ buttonPrimary, buttonSecondary, buttonTertiary })
+
+  const flexMobile = useMobileFontScaleToDisplay({
+    default: undefined,
+    at200PercentZoom: 0,
+  })
+  const flexWeb = useWebZoomToDisplay({ default: 1, at200PercentZoom: undefined })
 
   return (
     <Page>
@@ -115,12 +127,11 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
         shouldDisplayBackButton={withGoBack}
         RightButton={<SkipButton withSkipAction={withSkipAction} />}
       />
-
-      <Container>
+      <StyledScrollView showsVerticalScrollIndicator={false}>
         {isLandscape ? null : <Placeholder height={placeholderHeight} />}
 
-        <ContainerFlex>
-          <ContainerWithCenteredContent marginVertical={marginVertical}>
+        <ContainerFlex flexValue={flexWeb}>
+          <ContainerWithCenteredContent marginVertical={marginVertical} flexValue={flexWeb}>
             <IllustrationContainer animation={!!animation}>
               {IllustrationComponent ? (
                 <IllustrationComponent
@@ -139,8 +150,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
                 />
               ) : null}
             </IllustrationContainer>
-
-            <TextContainer gap={4}>
+            <TextContainer gap={4} flex={flexMobile}>
               <StyledTitle2 {...getHeadingAttrs(1)}>{title}</StyledTitle2>
               {subtitle ? <StyledBody {...getHeadingAttrs(2)}>{subtitle}</StyledBody> : null}
             </TextContainer>
@@ -154,33 +164,32 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
           </ButtonContainer>
         </ContainerFlex>
         <Spacer.BottomScreen />
-      </Container>
+      </StyledScrollView>
     </Page>
   )
 }
 
-const ContainerFlex = styled.View(({ theme }) => ({
+const ContainerFlex = styled.View<{ flexValue?: number }>(({ theme, flexValue }) => ({
   justifyContent: theme.isDesktopViewport ? 'center' : 'space-between',
-  flex: 1,
+  ...(flexValue !== undefined && { flex: flexValue }),
 }))
 
-const ContainerWithCenteredContent = styled.View<{ marginVertical: number }>(
-  ({ marginVertical, theme }) => ({
+const ContainerWithCenteredContent = styled.View<{ marginVertical: number; flexValue?: number }>(
+  ({ marginVertical, theme, flexValue }) => ({
     justifyContent: 'center',
-    flex: 1,
+    ...(flexValue !== undefined && { flex: flexValue }),
     marginVertical,
     marginTop: theme.designSystem.size.spacing.s,
   })
 )
-
-const Container = styled.ScrollView.attrs({
-  showsVerticalScrollIndicator: false,
-  contentContainerStyle: { flexGrow: 1, justifyContent: 'space-between' },
-})(({ theme }) => ({
-  flex: 1,
-  paddingHorizontal: theme.contentPage.marginHorizontal,
-  paddingVertical: theme.contentPage.marginVertical,
-}))
+const StyledScrollView = styled(ScrollView).attrs(({ theme }) => ({
+  contentContainerStyle: {
+    flexGrow: 1,
+    justifyContent: 'space-between',
+    paddingHorizontal: theme.contentPage.marginHorizontal,
+    paddingVertical: theme.contentPage.marginVertical,
+  },
+}))``
 
 const Header = styled(PageHeaderWithoutPlaceholder)({
   borderBottomWidth: 0,
@@ -197,10 +206,9 @@ const IllustrationContainer = styled.View<{ animation: boolean }>(({ animation, 
   ...(animation && { height: '30%' }),
 }))
 
-const TextContainer = styled(ViewGap)(({ theme }) => ({
+const TextContainer = styled(ViewGap)<{ flex?: number }>(({ flex }) => ({
   alignItems: 'center',
-  marginBottom: theme.designSystem.size.spacing.xl,
-  flex: 0,
+  flex,
 }))
 
 const StyledTitle2 = styled(Typo.Title2)({

@@ -7,8 +7,6 @@ import * as logClickOnProductAPI from 'libs/algolia/analytics/logClickOnOffer'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { UserProps } from 'libs/location/getDistance'
 import { LocationMode, Position } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
@@ -90,7 +88,6 @@ jest.useFakeTimers()
 
 describe('HorizontalOfferTile component', () => {
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
   })
 
@@ -309,6 +306,55 @@ describe('HorizontalOfferTile component', () => {
         await screen.findByText('La nuit des temps')
 
         expect(screen.getByText('à 111 km')).toBeOnTheScreen()
+      })
+    })
+
+    describe('price display', () => {
+      it('should display a single price', async () => {
+        const offerWithSinglePrice = {
+          ...mockOffer,
+          offer: { ...mockOffer.offer, prices: [1500] },
+        }
+        renderHorizontalOfferTile({ ...defaultProps, offer: offerWithSinglePrice })
+
+        expect(await screen.findByText('15 €')).toBeOnTheScreen()
+      })
+
+      it('should display "Dès" prefix for multiple prices', async () => {
+        const offerWithMultiplePrices = {
+          ...mockOffer,
+          offer: {
+            ...mockOffer.offer,
+            prices: [1000, 2000, 3000],
+            subcategoryId: SubcategoryIdEnum.CONCERT,
+          },
+        }
+        renderHorizontalOfferTile({ ...defaultProps, offer: offerWithMultiplePrices })
+
+        expect(await screen.findByText('Dès 10 €')).toBeOnTheScreen()
+      })
+
+      it('should display "Gratuit" for free offers', async () => {
+        const freeOffer = {
+          ...mockOffer,
+          offer: { ...mockOffer.offer, prices: [0] },
+        }
+        renderHorizontalOfferTile({ ...defaultProps, offer: freeOffer })
+
+        expect(await screen.findByText('Gratuit')).toBeOnTheScreen()
+      })
+
+      it('should not display price when shouldDisplayPrice is false', async () => {
+        render(
+          reactQueryProviderHOC(
+            <HorizontalOfferTile {...defaultProps} shouldDisplayPrice={false} />
+          )
+        )
+
+        await screen.findByText('La nuit des temps')
+
+        expect(screen.queryByText('0,28 €')).not.toBeOnTheScreen()
+        expect(screen.queryByText('Gratuit')).not.toBeOnTheScreen()
       })
     })
 

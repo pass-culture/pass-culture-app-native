@@ -128,10 +128,7 @@ describe('<ProfileV1 />', () => {
   })
 
   beforeEach(() => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION,
-      RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL,
-    ])
+    setFeatureFlags([])
     mockServer.getApi<SubscriptionStepperResponseV2>(
       '/v2/subscription/stepper',
       subscriptionStepperFixture
@@ -314,11 +311,7 @@ describe('<ProfileV1 />', () => {
     it('should show the "Nouveau" tag on Apparence and hide it after click when FF enabled', async () => {
       asyncStorageGetItemSpy.mockResolvedValueOnce(null)
       asyncStorageSetItemSpy.mockResolvedValueOnce()
-      setFeatureFlags([
-        RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION,
-        RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL,
-        RemoteStoreFeatureFlags.DARK_MODE_GTM,
-      ])
+      setFeatureFlags([RemoteStoreFeatureFlags.DARK_MODE_GTM])
 
       renderProfile()
 

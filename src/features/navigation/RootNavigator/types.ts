@@ -198,10 +198,14 @@ type ClubAdvicesParams = {
   from?: Referrals
 }
 
+type ProAdvicesOfferParams = {
+  offerId: number
+  venueId?: number
+}
+
 type ProAdvicesVenueParams = {
   venueId: number
   offerId?: number
-  from?: Referrals
 }
 
 /**
@@ -259,6 +263,7 @@ export type RootStackParamList = {
   OnboardingStackNavigator?: NavigatorScreenParams<OnboardingStackParamList>
   OnboardingSubscription: undefined
   PageNotFound: undefined
+  ProAdvicesOffer: ProAdvicesOfferParams
   ProAdvicesVenue: ProAdvicesVenueParams
   Profile: undefined
   ProfileStackNavigator?: NavigatorScreenParams<ProfileStackParamList>

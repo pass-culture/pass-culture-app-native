@@ -59,6 +59,7 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
         ListHeaderComponent={
           <SearchListHeader
             nbHits={nbHits}
+            hasOfferHits={hits.offers.length > 0}
             userData={userData}
             venues={
               isEnabledVenuesFromOfferIndex

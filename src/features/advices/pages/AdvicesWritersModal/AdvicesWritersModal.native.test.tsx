@@ -4,13 +4,13 @@ import { adviceVariantInfoFixture } from 'features/advices/fixtures/adviceVarian
 import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
 import { render, screen } from 'tests/utils'
 
-describe('<ChroniclesWritersModal/>', () => {
+describe('<AdvicesWritersModal/>', () => {
   it('should render correctly', () => {
     render(
       <AdvicesWritersModal
         isVisible
         closeModal={jest.fn}
-        onShowRecoButtonPress={jest.fn()}
+        onButtonPress={jest.fn()}
         modalWording={adviceVariantInfoFixture.modalWording}
         buttonWording={adviceVariantInfoFixture.buttonWording}
       />

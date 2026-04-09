@@ -125,7 +125,7 @@ describe('<HomeBanner/>', () => {
 
   describe('user is logged in', () => {
     it('should display activation banner with Unlock icon when banner api call return activation banner', async () => {
-      mockSubscriptionStepper()
+      mockSubscriptionStepperWithoutNextStep()
       mockBannerFromBackend({
         banner: {
           name: BannerName.activation_banner,
@@ -141,7 +141,7 @@ describe('<HomeBanner/>', () => {
     })
 
     it('should display activation banner with ArrowAgain icon when banner api call return retry_identity_check_banner', async () => {
-      mockSubscriptionStepper()
+      mockSubscriptionStepperWithoutNextStep()
       mockBannerFromBackend({
         banner: {
           name: BannerName.retry_identity_check_banner,
@@ -157,7 +157,7 @@ describe('<HomeBanner/>', () => {
     })
 
     it('should display activation banner with BirthdayCake icon when banner api call return transition_17_18_banner', async () => {
-      mockSubscriptionStepper()
+      mockSubscriptionStepperWithoutNextStep()
       mockBannerFromBackend({
         banner: {
           name: BannerName.transition_17_18_banner,
@@ -279,4 +279,11 @@ const mockSubscriptionStepper = () => {
     '/v2/subscription/stepper',
     subscriptionStepperFixture
   )
+}
+
+const mockSubscriptionStepperWithoutNextStep = () => {
+  mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
+    ...subscriptionStepperFixture,
+    nextSubscriptionStep: null,
+  })
 }

@@ -1,9 +1,10 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { UseQueryResult } from '@tanstack/react-query'
 import mockdate from 'mockdate'
 import React, { ComponentProps, createRef } from 'react'
 import { ScrollView } from 'react-native'
 
-import { push } from '__mocks__/@react-navigation/native'
+import { navigate, push } from '__mocks__/@react-navigation/native'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import { mockLabelMapping, mockMapping } from 'features/headlineOffer/fixtures/mockMapping'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
@@ -24,7 +25,7 @@ import { LocationMode } from 'libs/location/types'
 import * as useVenueOffersQueryAPI from 'queries/venue/useVenueOffersQuery'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
 const venueId = venueDataTest.id
@@ -73,6 +74,14 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const mockOnLayoutWithButton = {
+  nativeEvent: {
+    layout: {
+      height: 157,
+    },
+  },
+}
 
 const user = userEvent.setup()
 
@@ -226,13 +235,119 @@ describe('<VenueOffers />', () => {
     })
   })
 
-  it('should display advices section when venue has advices', async () => {
-    renderVenueOffers({
-      advicesCardData: [...proAdvicesCardDataFixture],
-      nbAdvices: 2,
+  describe('When venue has advices', () => {
+    it('should display advices section', async () => {
+      renderVenueOffers({
+        advicesCardData: [...proAdvicesCardDataFixture],
+        nbAdvices: 2,
+      })
+
+      expect(await screen.findByText(`Les avis par “${venueDataTest.name}”`)).toBeOnTheScreen()
     })
 
-    expect(await screen.findByText(`Les avis par “${venueDataTest.name}”`)).toBeOnTheScreen()
+    it('should navigate to venue pro advices page when pressing all advices button', async () => {
+      renderVenueOffers({
+        advicesCardData: [...proAdvicesCardDataFixture],
+        nbAdvices: 2,
+      })
+
+      await user.press(screen.getByText('Lire les 2 avis'))
+
+      expect(navigate).toHaveBeenCalledWith('ProAdvicesVenue', { venueId: venueDataTest.id })
+    })
+
+    it('should trigger ConsultAdvice log when pressing all advices button', async () => {
+      renderVenueOffers({
+        advicesCardData: [...proAdvicesCardDataFixture],
+        nbAdvices: 2,
+      })
+
+      await user.press(screen.getByText('Lire les 2 avis'))
+
+      expect(analytics.logConsultAdvice).toHaveBeenNthCalledWith(1, {
+        from: 'venue',
+        venueId: venueDataTest.id.toString(),
+        adviceType: 'pro',
+        originDetails: 'Lire les x avis',
+      })
+    })
+
+    it('should navigate to venue pro advices page when pressing see more button on advice', async () => {
+      renderVenueOffers({
+        advicesCardData: [...proAdvicesCardDataFixture],
+        nbAdvices: 2,
+      })
+
+      const description = screen.getAllByTestId('description')[0]
+
+      await act(async () => {
+        description?.props.onLayout(mockOnLayoutWithButton)
+      })
+
+      await user.press(screen.getByText('Voir plus'))
+
+      expect(navigate).toHaveBeenCalledWith('ProAdvicesVenue', {
+        venueId: venueDataTest.id,
+        offerId: proAdvicesCardDataFixture[0].id,
+      })
+    })
+
+    it('should trigger ConsultAdvice log when pressing see more button on advice', async () => {
+      renderVenueOffers({
+        advicesCardData: [...proAdvicesCardDataFixture],
+        nbAdvices: 2,
+      })
+
+      const description = screen.getAllByTestId('description')[0]
+
+      await act(async () => {
+        description?.props.onLayout(mockOnLayoutWithButton)
+      })
+
+      await user.press(screen.getByText('Voir plus'))
+
+      expect(analytics.logConsultAdvice).toHaveBeenNthCalledWith(1, {
+        from: 'venue',
+        venueId: venueDataTest.id.toString(),
+        adviceType: 'pro',
+        originDetails: 'Les avis des pros',
+        offerId: proAdvicesCardDataFixture[0].id.toString(),
+      })
+    })
+
+    it('should trigger FeatureFeedbackClicked log with yes answer when answering yes to feedback quiz', async () => {
+      await AsyncStorage.removeItem('venue_advices_feedback')
+      renderVenueOffers({
+        advicesCardData: [...proAdvicesCardDataFixture],
+        nbAdvices: 2,
+      })
+
+      await user.press(screen.getByText('Oui'))
+
+      expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
+        featureName: 'pro_advices',
+        feedbackResponse: 'Oui',
+        from: 'venue',
+        venueId: venueDataTest.id.toString(),
+      })
+    })
+
+    it('should trigger FeatureFeedbackClicked log with no answer when answering no to feedback quiz', async () => {
+      await AsyncStorage.removeItem('venue_advices_feedback')
+      renderVenueOffers({
+        advicesCardData: [...proAdvicesCardDataFixture],
+        nbAdvices: 2,
+      })
+
+      await user.press(screen.getByText('Non'))
+
+      expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
+        featureName: 'pro_advices',
+        feedbackResponse: 'Non',
+        from: 'venue',
+        venueId: venueDataTest.id.toString(),
+      })
+    })
   })
 })
 

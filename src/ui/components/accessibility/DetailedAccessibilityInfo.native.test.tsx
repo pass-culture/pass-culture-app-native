@@ -48,9 +48,10 @@ describe('DetailedAccessibilityInfo', () => {
     await user.press(accesLibreLink)
 
     await waitFor(() =>
-      expect(analytics.logAccessibilityBannerClicked).toHaveBeenCalledWith(
-        venueDataTest.externalAccessibilityId
-      )
+      expect(analytics.logAccessibilityBannerClicked).toHaveBeenCalledWith({
+        acceslibreId: venueDataTest.externalAccessibilityId,
+        action: 'view_info',
+      })
     )
   })
 
@@ -66,7 +67,10 @@ describe('DetailedAccessibilityInfo', () => {
     await user.press(accesLibreLink)
 
     await waitFor(() =>
-      expect(analytics.logAccessibilityBannerClicked).toHaveBeenCalledWith(undefined)
+      expect(analytics.logAccessibilityBannerClicked).toHaveBeenCalledWith({
+        acceslibreId: undefined,
+        action: 'view_info',
+      })
     )
   })
 

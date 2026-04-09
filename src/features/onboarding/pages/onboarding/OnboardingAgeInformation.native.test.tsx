@@ -9,8 +9,6 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { CreditStatus } from 'features/onboarding/enums'
 import { OnboardingAgeInformation } from 'features/onboarding/pages/onboarding/OnboardingAgeInformation'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
@@ -32,10 +30,6 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('OnboardingAgeInformation', () => {
-  beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
-  })
-
   it('should navigate to Home and send log when route.params are undefined', () => {
     renderOnboardingAgeInformation(undefined)
 

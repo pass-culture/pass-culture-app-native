@@ -42,8 +42,6 @@ import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiar
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { useBookingsQuery, useEndedBookingFromOfferIdQuery } from 'queries/bookings'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
@@ -85,7 +83,6 @@ type Props = {
   apiRecoParams?: RecommendationApiParams
   playlistType?: PlaylistType
   storedProfileInfos?: ValidStoredProfileInfos
-  featureFlags: { enableBookingFreeOfferFifteenSixteen: boolean }
 }
 
 export type ICTAWordingAndAction = {
@@ -120,7 +117,6 @@ export const getCtaWordingAndAction = ({
   apiRecoParams,
   playlistType,
   storedProfileInfos,
-  featureFlags,
 }: Props): ICTAWordingAndAction | undefined => {
   const { externalTicketOfficeUrl, subcategoryId } = offer
 
@@ -128,14 +124,12 @@ export const getCtaWordingAndAction = ({
   const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
   const isMovieScreeningOffer = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
 
-  const enableBookingFreeOfferFifteenSixteen = featureFlags.enableBookingFreeOfferFifteenSixteen
   const { hasEnoughCredit, message: hasEnoughCreditMessage } = hasEnoughCreditData
 
   const isUserFreeStatus = user?.eligibility === EligibilityType.free
   const isFreeOffer = getIsFreeOffer(offer)
   const isNotFreeOffer = !isFreeOffer
   const isProfileIncomplete = getIsProfileIncomplete(user)
-  const isEligibleFreeOffer15To16 = enableBookingFreeOfferFifteenSixteen && isUserFreeStatus
   const userWithNotEnoughCredit =
     userStatus.statusType == YoungStatusType.beneficiary && !hasEnoughCredit
   const isExBeneficiary = user && isUserExBeneficiary(user)
@@ -166,7 +160,7 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (isEligibleFreeOffer15To16 && isNotFreeOffer) {
+  if (isUserFreeStatus && isNotFreeOffer) {
     return {
       wording: 'Réserver l’offre',
       isDisabled: true,
@@ -221,7 +215,7 @@ export const getCtaWordingAndAction = ({
   }
 
   if (isFreeOffer) {
-    if (isEligibleFreeOffer15To16 && isProfileIncomplete) {
+    if (isUserFreeStatus && isProfileIncomplete) {
       return {
         wording: 'Réserver l’offre',
         isDisabled: false,
@@ -408,10 +402,6 @@ export const getCtaWordingAndAction = ({
 }
 
 export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) => {
-  const enableBookingFreeOfferFifteenSixteen = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
-  )
-
   const storedProfileInfos = useStoredProfileInfos()
 
   const { offer, from, searchId, subcategory } = props
@@ -439,12 +429,11 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     const isUserFreeStatus = user?.eligibility === EligibilityType.free
     const isFreeOffer = getIsFreeOffer(offer)
     const isProfileIncomplete = getIsProfileIncomplete(user)
-    const isEligibleFreeOffer15To16 = enableBookingFreeOfferFifteenSixteen && isUserFreeStatus
 
-    if (isLoggedIn && isEligibleFreeOffer15To16 && isProfileIncomplete && isFreeOffer) {
+    if (isLoggedIn && isUserFreeStatus && isProfileIncomplete && isFreeOffer) {
       freeOfferIdActions.setFreeOfferId(offer.id)
     }
-  }, [isLoggedIn, enableBookingFreeOfferFifteenSixteen, user, offer])
+  }, [isLoggedIn, user, offer])
 
   async function redirectToBookingAction(response: BookOfferResponse) {
     const bookings = await getBookings()
@@ -507,7 +496,6 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     isDepositExpired,
     apiRecoParams,
     playlistType,
-    featureFlags: { enableBookingFreeOfferFifteenSixteen },
     storedProfileInfos,
   })
 }

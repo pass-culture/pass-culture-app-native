@@ -3,7 +3,7 @@ import React from 'react'
 import { SEARCH_STACK_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/SearchStackNavigator/searchStackNavigationOptions'
 import { SearchStackNavigatorBase } from 'features/navigation/SearchStackNavigator/SearchStackNavigatorBase'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
-import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
+import { SearchResultsContainer } from 'features/search/pages/SearchResults/SearchResultsContainer'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
 import { SearchView } from 'features/search/types'
 
@@ -15,7 +15,7 @@ type SearchRouteConfig = {
 
 const searchScreens: SearchRouteConfig[] = [
   { name: SearchView.Landing, component: SearchLanding },
-  { name: SearchView.Results, component: SearchResults },
+  { name: SearchView.Results, component: SearchResultsContainer },
   { name: SearchView.Thematic, component: ThematicSearch },
 ]
 

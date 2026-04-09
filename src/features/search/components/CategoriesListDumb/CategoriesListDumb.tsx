@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { ListCategoryButtonProps } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { CategoryButton } from 'shared/categoryButton/CategoryButton'
 import { AIFakeDoorBanner } from 'ui/components/ModuleBanner/AIFakeDoorBanner'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -42,7 +42,7 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
 }) => {
   const { designSystem } = useTheme()
 
-  const mobileMinWidth = useFontScaleValue({
+  const mobileMinWidth = useMobileFontScaleToDisplay({
     default: MOBILE_MIN_WIDTH,
     at200PercentZoom: MOBILE_MIN_WIDTH_WHEN_FONT_ZOOMED,
   })

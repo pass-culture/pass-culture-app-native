@@ -1,4 +1,5 @@
 import React, { FunctionComponent, memo } from 'react'
+import { StyleProp, ViewStyle } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
@@ -29,6 +30,7 @@ type Props = {
   onFocus: () => void
   onBlur: () => void
   onPress: () => void
+  style?: StyleProp<ViewStyle>
 }
 
 const FULL_HEIGHT = { height: '100%' }
@@ -43,6 +45,7 @@ const EditorialCardComponent: FunctionComponent<Props> = ({
   onFocus,
   onBlur,
   onPress,
+  style,
 }) => {
   const { imageURL, url, date, title, subtitle, callToAction } = editorialCardInfo
   const isDisabled = !url
@@ -98,7 +101,8 @@ const EditorialCardComponent: FunctionComponent<Props> = ({
       accessibilityLabel={accessibilityLabel}
       onMouseDown={(e) => e.preventDefault()}
       disabled={isDisabled}
-      height={height}>
+      height={height}
+      style={style}>
       {isLargeScreen ? (
         <FlexRow>
           <ColumnLargeScreen>{renderInfos()}</ColumnLargeScreen>
@@ -153,7 +157,6 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{
     flexWrap: 'wrap',
     overflow: 'hidden',
     marginHorizontal: MAIN_MARGIN,
-    marginBottom: theme.home.spaceBetweenModules,
     borderWidth: isDarkMode ? 1 : undefined,
     borderColor: isDarkMode ? theme.designSystem.color.border.subtle : undefined,
     ...customFocusOutline({ theme, isFocus }),

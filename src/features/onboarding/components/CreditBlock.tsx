@@ -6,7 +6,7 @@ import { CreditStatus } from 'features/onboarding/enums'
 import { customEaseInOut, DURATION_IN_MS } from 'features/onboarding/helpers/animationProps'
 import { getTagVariantFromCreditStatus } from 'features/onboarding/helpers/getTagVariantFromCreditStatus'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { TouchableWithoutFeedback } from 'ui/components/touchable/TouchableWithoutFeedback'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 
@@ -38,7 +38,7 @@ export const CreditBlock = ({ creditStatus, animated, onPress, children }: Props
     : {}
 
   const tag = <Tag label={creditStatus} variant={getTagVariantFromCreditStatus(creditStatus)} />
-  const tagWithContainer = useFontScaleValue({
+  const tagWithContainer = useMobileFontScaleToDisplay({
     default: <TagContainer>{tag}</TagContainer>,
     at200PercentZoom: <ZoomedTagContainer>{tag}</ZoomedTagContainer>,
   })

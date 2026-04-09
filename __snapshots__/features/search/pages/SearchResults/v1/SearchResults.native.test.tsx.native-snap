@@ -1,0 +1,2190 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`<SearchResults/> should render SearchResults 1`] = `
+<View
+  isLandscape={false}
+  style={
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "marginLeft": 0,
+      "marginRight": 0,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "marginBottom": 16,
+        }
+      }
+    >
+      <View
+        customHeight={16}
+        enable={true}
+        style={
+          {
+            "height": 16,
+          }
+        }
+      />
+      <View
+        style={
+          {
+            "marginTop": 24,
+            "paddingHorizontal": 24,
+            "zIndex": 1,
+          }
+        }
+      >
+        <View
+          collapsable={false}
+          entering={[Function]}
+          exiting={[Function]}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {},
+            }
+          }
+          jestInlineStyle={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "paddingBottom": 16,
+            }
+          }
+          nativeID="0"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "paddingBottom": 16,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 40,
+              }
+            }
+          >
+            <View
+              accessibilityLabel="Revenir en arrière"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
+                      "width": "auto",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Revenir en arrière"
+            >
+              <View
+                gap={0}
+                hasIcon={true}
+                isMultiline={false}
+                style={
+                  {
+                    "alignItems": "center",
+                    "columnGap": 0,
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <View
+                  collapsable={false}
+                  jestAnimatedProps={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestAnimatedStyle={
+                    {
+                      "value": {},
+                    }
+                  }
+                  jestInlineStyle={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                  nativeID="1"
+                  style={
+                    [
+                      {
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={22}
+                    width={22}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "space-between",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                }
+              }
+              testID="SearchHeaderTitleContainer"
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "flex-start",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "flex-start",
+                    }
+                  }
+                >
+                  <Text
+                    accessibilityRole="header"
+                    htmlFor="testUuidV4"
+                    small={false}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        },
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 28,
+                          "lineHeight": 44.8,
+                        },
+                      ]
+                    }
+                  >
+                    Rechercher
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "flex-end",
+              "flexDirection": "row",
+              "gap": 8,
+              "width": "100%",
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "flexDirection": "row",
+                  "width": "100%",
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "flex-end",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    }
+                  }
+                >
+                  <View
+                    collapsable={false}
+                    jestAnimatedProps={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestAnimatedStyle={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestInlineStyle={
+                      {
+                        "flexBasis": 0,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      }
+                    }
+                    layout={
+                      LinearTransition {
+                        "build": [Function],
+                        "durationV": 250,
+                        "randomizeDelay": false,
+                        "reduceMotionV": "system",
+                      }
+                    }
+                    nativeID="2"
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "alignItems": "flex-start",
+                          "width": "100%",
+                        }
+                      }
+                    >
+                      <View>
+                        <View
+                          accessibilityElementsHidden={true}
+                          importantForAccessibility="no"
+                          style={
+                            {
+                              "alignItems": "flex-end",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            }
+                          }
+                        >
+                          <View>
+                            <Text
+                              style={
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 16,
+                                  "lineHeight": 25.6,
+                                }
+                              }
+                            >
+                              Rechercher dans le catalogue
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        isDisabled={false}
+                        isError={false}
+                        isFocused={false}
+                        isHover={false}
+                        size="small"
+                        style={
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderColor": "#90949d",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "height": 40,
+                            "marginTop": 4,
+                            "paddingBottom": 0,
+                            "paddingLeft": 9,
+                            "paddingRight": 9,
+                            "paddingTop": 0,
+                            "width": "100%",
+                          }
+                        }
+                        testID="styled-input-container"
+                      >
+                        <View
+                          style={
+                            {
+                              "flexShrink": 0,
+                              "marginRight": 8,
+                            }
+                          }
+                        >
+                          <View
+                            height={24}
+                            width={24}
+                          >
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
+                          </View>
+                        </View>
+                        <TextInput
+                          accessibilityLabel="Champs de texte - Rechercher dans le catalogue"
+                          accessibilityRequired={false}
+                          editable={true}
+                          isEmpty={true}
+                          multiline={false}
+                          nativeID="searchInput"
+                          onBlur={[Function]}
+                          onChangeText={[Function]}
+                          onFocus={[Function]}
+                          onSubmitEditing={[Function]}
+                          placeholder=""
+                          placeholderTextColor="#696a6f"
+                          returnKeyType="search"
+                          style={
+                            {
+                              "color": "#161617",
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat",
+                              "fontSize": 16,
+                              "fontStyle": "italic",
+                              "fontWeight": "500",
+                              "height": "100%",
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                            }
+                          }
+                          testID="searchInput"
+                          textAlignVertical="center"
+                          value=""
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <Text
+                nativeID="testUuidV4"
+                style={
+                  {
+                    "display": "none",
+                  }
+                }
+              >
+                Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="Voir tous les filtres : 3 filtres actifs"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {},
+                  {
+                    "display": "flex",
+                    "height": 40,
+                    "width": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Voir tous les filtres : 3 filtres actifs"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "borderBottomLeftRadius": 24,
+                  "borderBottomRightRadius": 24,
+                  "borderColor": "#90949d",
+                  "borderTopLeftRadius": 24,
+                  "borderTopRightRadius": 24,
+                  "borderWidth": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "width": 40,
+                }
+              }
+            >
+              <View
+                fill="#161617"
+                height={16}
+                width={16}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "alignSelf": "center",
+                    "backgroundColor": "#6123df",
+                    "borderBottomLeftRadius": 16,
+                    "borderBottomRightRadius": 16,
+                    "borderColor": "#ffffff",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 16,
+                    "borderTopRightRadius": 16,
+                    "borderWidth": 2,
+                  },
+                  {
+                    "backgroundColor": "#161617",
+                    "bottom": 0,
+                    "position": "absolute",
+                    "right": 0,
+                  },
+                ]
+              }
+              testID="searchFilterBadge"
+            >
+              <View
+                BADGE_SIZE={16}
+                style={
+                  {
+                    "minHeight": 16,
+                    "minWidth": 16,
+                    "paddingHorizontal": 2,
+                  }
+                }
+              >
+                <Text
+                  BADGE_SIZE={16}
+                  style={
+                    {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  3
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
+      }
+      testID="searchResults"
+    >
+      <View
+        collapsable={false}
+        onLayout={[Function]}
+        style={
+          {
+            "flex": 1,
+            "overflow": "hidden",
+          }
+        }
+      >
+        <RCTScrollView
+          contentContainerStyle={
+            {
+              "paddingBottom": 104,
+            }
+          }
+          keyExtractor={[Function]}
+          keyboardDismissMode="on-drag"
+          keyboardShouldPersistTaps="handled"
+          maintainVisibleContentPosition={
+            {
+              "minIndexForVisible": 0,
+            }
+          }
+          onEndReached={[Function]}
+          onScroll={[Function]}
+          onViewableItemsChanged={[Function]}
+          refreshControl={
+            <RefreshControlMock
+              onRefresh={
+                [MockFunction] {
+                  "calls": [
+                    [],
+                  ],
+                  "results": [
+                    {
+                      "type": "return",
+                      "value": Promise {},
+                    },
+                  ],
+                }
+              }
+              refreshing={false}
+            />
+          }
+          scrollEnabled={true}
+          scrollEventThrottle={0.0001}
+          testID="searchResultsFlashlist"
+        >
+          <RCTRefreshControl />
+          <View>
+            <View
+              style={
+                {
+                  "height": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 1000000,
+                }
+              }
+            />
+            <View>
+              <View
+                testID="searchListHeader"
+              >
+                <View
+                  style={
+                    {
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginHorizontal": 24,
+                      }
+                    }
+                  >
+                    <Text
+                      accessibilityRole="header"
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 19,
+                          "lineHeight": 30.4,
+                          "marginTop": 16,
+                        }
+                      }
+                    >
+                      Les offres
+                    </Text>
+                    <View
+                      accessibilityRole="none"
+                      style={
+                        {
+                          "marginBottom": 16,
+                          "marginTop": 4,
+                        }
+                      }
+                    >
+                      <Text
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
+                      >
+                        4 résultats
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "height": 0,
+                  "width": undefined,
+                }
+              }
+            />
+            <View
+              style={
+                {
+                  "height": 0,
+                  "marginLeft": undefined,
+                  "marginTop": 0,
+                  "opacity": 1,
+                  "width": undefined,
+                }
+              }
+            >
+              <View
+                index={0}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "column",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Offre "La nuit des temps", de la catégorie "Livre", à une distance de 900+ km,  prix 28 €. "
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {},
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                          "outlineOffset": 0,
+                        },
+                        {
+                          "marginHorizontal": 24,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Offre "La nuit des temps", de la catégorie "Livre", à une distance de 900+ km,  prix 28 €. "
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        },
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      size="small"
+                      style={
+                        {
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "height": 96,
+                          "width": 64,
+                        }
+                      }
+                      withShadow={true}
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            {
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "height": 96,
+                              "width": 64,
+                            },
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          size="small"
+                          source={
+                            {
+                              "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                        />
+                      </View>
+                    </View>
+                    <View
+                      alignItems="center"
+                      flex={1}
+                      flexDirection="row"
+                      gap={16}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "gap": 16,
+                        }
+                      }
+                      testID="horizontal_offer_tile"
+                    >
+                      <View
+                        flex={1}
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          La nuit des temps
+                        </Text>
+                        <Text
+                          ellipsizeMode="tail"
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          testID="native-category-value"
+                        >
+                          Livre
+                        </Text>
+                        <View
+                          gap={1}
+                          style={
+                            {
+                              "flexDirection": "row",
+                              "gap": 4,
+                            }
+                          }
+                        >
+                          <Text
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                              }
+                            }
+                          >
+                            28 €
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        backgroundColor="#f1f1f4"
+                        isZoomed={true}
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "alignSelf": "flex-start",
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "flexDirection": "row",
+                              "maxWidth": "100%",
+                              "paddingHorizontal": 8,
+                              "paddingVertical": 4,
+                            },
+                            {
+                              "backgroundColor": "#f1f1f4",
+                            },
+                          ]
+                        }
+                        testID="distance_tag"
+                      >
+                        <Text
+                          isZoomed={true}
+                          style={
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            }
+                          }
+                        >
+                          à 900+ km
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  leadingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 48.94374,
+                        "lng": 2.48171,
+                      },
+                      "artists": [
+                        {
+                          "id": "1",
+                          "name": "Artist 1",
+                        },
+                      ],
+                      "objectID": "102280",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": false,
+                        "isDuo": false,
+                        "name": "La nuit des temps",
+                        "prices": [
+                          2800,
+                        ],
+                        "subcategoryId": "LIVRE_PAPIER",
+                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
+                      },
+                      "venue": {
+                        "activity": "BOOKSTORE",
+                        "address": "1 rue de la paix",
+                        "city": "Paris",
+                        "id": 1,
+                        "isPermanent": true,
+                        "name": "Lieu 1",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 1",
+                      },
+                    }
+                  }
+                  style={
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 2,
+                      "marginHorizontal": 24,
+                      "marginVertical": 16,
+                    }
+                  }
+                  trailingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 48.91265,
+                        "lng": 2.4513,
+                      },
+                      "artists": [
+                        {
+                          "id": "2",
+                          "name": "Artist 2",
+                        },
+                        {
+                          "id": "3",
+                          "name": "Artist 3",
+                        },
+                      ],
+                      "objectID": "102272",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": false,
+                        "isDuo": false,
+                        "name": "I want something more",
+                        "prices": [
+                          2300,
+                        ],
+                        "subcategoryId": "CONCERT",
+                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDKQ",
+                      },
+                      "venue": {
+                        "activity": "PERFORMANCE_HALL",
+                        "address": "2 rue de la paix",
+                        "city": "Paris",
+                        "id": 2,
+                        "isPermanent": true,
+                        "name": "Lieu 2",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 2",
+                      },
+                    }
+                  }
+                />
+              </View>
+              <View
+                index={1}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "column",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Offre "I want something more", de la catégorie "Concert", à une distance de 900+ km,  prix 23 €. "
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {},
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                          "outlineOffset": 0,
+                        },
+                        {
+                          "marginHorizontal": 24,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Offre "I want something more", de la catégorie "Concert", à une distance de 900+ km,  prix 23 €. "
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        },
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      size="small"
+                      style={
+                        {
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "height": 96,
+                          "width": 64,
+                        }
+                      }
+                      withShadow={true}
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            {
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "height": 96,
+                              "width": 64,
+                            },
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          size="small"
+                          source={
+                            {
+                              "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDKQ",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                        />
+                      </View>
+                    </View>
+                    <View
+                      alignItems="center"
+                      flex={1}
+                      flexDirection="row"
+                      gap={16}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "gap": 16,
+                        }
+                      }
+                      testID="horizontal_offer_tile"
+                    >
+                      <View
+                        flex={1}
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          I want something more
+                        </Text>
+                        <Text
+                          ellipsizeMode="tail"
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          testID="native-category-value"
+                        >
+                          Concert
+                        </Text>
+                        <View
+                          gap={1}
+                          style={
+                            {
+                              "flexDirection": "row",
+                              "gap": 4,
+                            }
+                          }
+                        >
+                          <Text
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                              }
+                            }
+                          >
+                            23 €
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        backgroundColor="#f1f1f4"
+                        isZoomed={true}
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "alignSelf": "flex-start",
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "flexDirection": "row",
+                              "maxWidth": "100%",
+                              "paddingHorizontal": 8,
+                              "paddingVertical": 4,
+                            },
+                            {
+                              "backgroundColor": "#f1f1f4",
+                            },
+                          ]
+                        }
+                        testID="distance_tag"
+                      >
+                        <Text
+                          isZoomed={true}
+                          style={
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            }
+                          }
+                        >
+                          à 900+ km
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  leadingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 48.91265,
+                        "lng": 2.4513,
+                      },
+                      "artists": [
+                        {
+                          "id": "2",
+                          "name": "Artist 2",
+                        },
+                        {
+                          "id": "3",
+                          "name": "Artist 3",
+                        },
+                      ],
+                      "objectID": "102272",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": false,
+                        "isDuo": false,
+                        "name": "I want something more",
+                        "prices": [
+                          2300,
+                        ],
+                        "subcategoryId": "CONCERT",
+                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDKQ",
+                      },
+                      "venue": {
+                        "activity": "PERFORMANCE_HALL",
+                        "address": "2 rue de la paix",
+                        "city": "Paris",
+                        "id": 2,
+                        "isPermanent": true,
+                        "name": "Lieu 2",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 2",
+                      },
+                    }
+                  }
+                  style={
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 2,
+                      "marginHorizontal": 24,
+                      "marginVertical": 16,
+                    }
+                  }
+                  trailingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 4.90339,
+                        "lng": -52.31663,
+                      },
+                      "objectID": "102249",
+                      "offer": {
+                        "dates": [
+                          1605643200,
+                        ],
+                        "isDigital": false,
+                        "isDuo": true,
+                        "name": "Un lit sous une rivière",
+                        "prices": [
+                          3400,
+                        ],
+                        "subcategoryId": "CONCERT",
+                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
+                      },
+                      "venue": {
+                        "activity": "PERFORMANCE_HALL",
+                        "address": "3 rue de la paix",
+                        "city": "Paris",
+                        "id": 3,
+                        "isPermanent": true,
+                        "name": "Lieu 3",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 3",
+                      },
+                    }
+                  }
+                />
+              </View>
+              <View
+                index={2}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "column",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Offre "Un lit sous une rivière", de la catégorie "Concert", à une distance de 49 km,  prix 34 €. Possibilité de réserver 2 places."
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {},
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                          "outlineOffset": 0,
+                        },
+                        {
+                          "marginHorizontal": 24,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Offre "Un lit sous une rivière", de la catégorie "Concert", à une distance de 49 km,  prix 34 €. Possibilité de réserver 2 places."
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        },
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      size="small"
+                      style={
+                        {
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "height": 96,
+                          "width": 64,
+                        }
+                      }
+                      withShadow={true}
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            {
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "height": 96,
+                              "width": 64,
+                            },
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          size="small"
+                          source={
+                            {
+                              "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                        />
+                      </View>
+                    </View>
+                    <View
+                      alignItems="center"
+                      flex={1}
+                      flexDirection="row"
+                      gap={16}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "gap": 16,
+                        }
+                      }
+                      testID="horizontal_offer_tile"
+                    >
+                      <View
+                        flex={1}
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Un lit sous une rivière
+                        </Text>
+                        <Text
+                          ellipsizeMode="tail"
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          testID="native-category-value"
+                        >
+                          Concert
+                        </Text>
+                        <View
+                          gap={1}
+                          style={
+                            {
+                              "flexDirection": "row",
+                              "gap": 4,
+                            }
+                          }
+                        >
+                          <Text
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                              }
+                            }
+                          >
+                            34 €
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        backgroundColor="#f1f1f4"
+                        isZoomed={true}
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "alignSelf": "flex-start",
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "flexDirection": "row",
+                              "maxWidth": "100%",
+                              "paddingHorizontal": 8,
+                              "paddingVertical": 4,
+                            },
+                            {
+                              "backgroundColor": "#f1f1f4",
+                            },
+                          ]
+                        }
+                        testID="distance_tag"
+                      >
+                        <Text
+                          isZoomed={true}
+                          style={
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            }
+                          }
+                        >
+                          à 49 km
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  leadingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 4.90339,
+                        "lng": -52.31663,
+                      },
+                      "objectID": "102249",
+                      "offer": {
+                        "dates": [
+                          1605643200,
+                        ],
+                        "isDigital": false,
+                        "isDuo": true,
+                        "name": "Un lit sous une rivière",
+                        "prices": [
+                          3400,
+                        ],
+                        "subcategoryId": "CONCERT",
+                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
+                      },
+                      "venue": {
+                        "activity": "PERFORMANCE_HALL",
+                        "address": "3 rue de la paix",
+                        "city": "Paris",
+                        "id": 3,
+                        "isPermanent": true,
+                        "name": "Lieu 3",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 3",
+                      },
+                    }
+                  }
+                  style={
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 2,
+                      "marginHorizontal": 24,
+                      "marginVertical": 16,
+                    }
+                  }
+                  trailingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 4.90339,
+                        "lng": -52.31663,
+                      },
+                      "artists": [
+                        {
+                          "id": "4",
+                          "name": "Artist 4",
+                        },
+                        {
+                          "id": "5",
+                          "name": "Artist 4",
+                        },
+                      ],
+                      "objectID": "102310",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": false,
+                        "isDuo": false,
+                        "name": "I want something more",
+                        "prices": [
+                          2800,
+                        ],
+                        "subcategoryId": "CONCERT",
+                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ",
+                      },
+                      "venue": {
+                        "address": "4 rue de la paix",
+                        "city": "Paris",
+                        "id": 4,
+                        "isPermanent": true,
+                        "name": "Lieu 4",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 4",
+                      },
+                    }
+                  }
+                />
+              </View>
+              <View
+                index={3}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "column",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Offre "I want something more", de la catégorie "Concert", à une distance de 49 km,  prix 28 €. "
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {},
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                          "outlineOffset": 0,
+                        },
+                        {
+                          "marginHorizontal": 24,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Offre "I want something more", de la catégorie "Concert", à une distance de 49 km,  prix 28 €. "
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        },
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      size="small"
+                      style={
+                        {
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "height": 96,
+                          "width": 64,
+                        }
+                      }
+                      withShadow={true}
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            {
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "height": 96,
+                              "width": 64,
+                            },
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          size="small"
+                          source={
+                            {
+                              "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                        />
+                      </View>
+                    </View>
+                    <View
+                      alignItems="center"
+                      flex={1}
+                      flexDirection="row"
+                      gap={16}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "gap": 16,
+                        }
+                      }
+                      testID="horizontal_offer_tile"
+                    >
+                      <View
+                        flex={1}
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          I want something more
+                        </Text>
+                        <Text
+                          ellipsizeMode="tail"
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          testID="native-category-value"
+                        >
+                          Concert
+                        </Text>
+                        <View
+                          gap={1}
+                          style={
+                            {
+                              "flexDirection": "row",
+                              "gap": 4,
+                            }
+                          }
+                        >
+                          <Text
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                              }
+                            }
+                          >
+                            28 €
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        backgroundColor="#f1f1f4"
+                        isZoomed={true}
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "alignSelf": "flex-start",
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "flexDirection": "row",
+                              "maxWidth": "100%",
+                              "paddingHorizontal": 8,
+                              "paddingVertical": 4,
+                            },
+                            {
+                              "backgroundColor": "#f1f1f4",
+                            },
+                          ]
+                        }
+                        testID="distance_tag"
+                      >
+                        <Text
+                          isZoomed={true}
+                          style={
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            }
+                          }
+                        >
+                          à 49 km
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </RCTScrollView>
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "alignSelf": "center",
+          "bottom": 88,
+          "position": "absolute",
+          "right": 24,
+          "zIndex": 1,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "opacity": 0,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="Revenir en haut"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": true,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "overflow": "hidden",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Revenir en haut"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#320096",
+                "borderBottomLeftRadius": 24,
+                "borderBottomRightRadius": 24,
+                "borderTopLeftRadius": 24,
+                "borderTopRightRadius": 24,
+                "height": 40,
+                "justifyContent": "center",
+                "overflow": "hidden",
+                "width": 40,
+              }
+            }
+          >
+            <View
+              fill="#ffffff"
+              height={24}
+              width={24}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        customHeight={8}
+        enable={true}
+        style={
+          {
+            "height": 8,
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

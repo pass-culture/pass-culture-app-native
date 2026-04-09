@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
+import { usePreviousRouteName } from 'features/navigation/helpers/usePreviousRouteName'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -31,6 +31,7 @@ import { Typo } from 'ui/theme'
 
 interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
+  hasOfferHits?: boolean
   userData: SearchResponse<Offer[]>['userData']
   venues?: AlgoliaVenueOfferListItem[]
   venuesUserData: VenuesUserData
@@ -48,6 +49,7 @@ interface SearchListHeaderProps extends ScrollViewProps {
 
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   nbHits,
+  hasOfferHits = true,
   userData,
   venues,
   venuesUserData,
@@ -78,14 +80,14 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     isLocated
   )
 
-  const previousRoute = usePreviousRoute()
+  const previousRouteName = usePreviousRouteName()
 
   const selectedGridListLayout = useGridListLayout()
 
   const offerTitle = `Les offres${shouldDisplayAccessibilityContent ? ' dans des lieux accessibles' : ''}`
 
   const shouldDisplayVenuesPlaylist =
-    !venue && !!venues?.length && previousRoute?.name !== SearchView.Thematic
+    !venue && !!venues?.length && previousRouteName !== SearchView.Thematic
 
   const onPress = () => {
     void analytics.logActivateGeolocfromSearchResults()
@@ -158,18 +160,20 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
           </ObservedPlaylist>
         </IOScrollView>
       ) : null}
-      <HeaderSectionContainer>
-        <TitleContainer>
-          <Title>{offerTitle}</Title>
-          <NumberOfResults nbHits={nbHits} />
-        </TitleContainer>
-        {shouldDisplayGridList ? (
-          <GridListMenu testID="grid-list-menu">
-            <ListLayoutButton {...getLayoutButtonProps(GridListLayout.LIST)} />
-            <GridLayoutButton {...getLayoutButtonProps(GridListLayout.GRID)} />
-          </GridListMenu>
-        ) : null}
-      </HeaderSectionContainer>
+      {hasOfferHits ? (
+        <HeaderSectionContainer>
+          <TitleContainer>
+            <Title>{offerTitle}</Title>
+            <NumberOfResults nbHits={nbHits} />
+          </TitleContainer>
+          {shouldDisplayGridList ? (
+            <GridListMenu testID="grid-list-menu">
+              <ListLayoutButton {...getLayoutButtonProps(GridListLayout.LIST)} />
+              <GridLayoutButton {...getLayoutButtonProps(GridListLayout.GRID)} />
+            </GridListMenu>
+          ) : null}
+        </HeaderSectionContainer>
+      ) : null}
     </View>
   )
 }

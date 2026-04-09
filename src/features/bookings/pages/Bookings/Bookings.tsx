@@ -24,7 +24,7 @@ import {
   useBookingsByStatusQuery,
   useBookingsV2WithConvertedTimezoneQuery,
 } from 'queries/bookings/useBookingsQuery'
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -115,7 +115,7 @@ export const Bookings = () => {
   }
 
   const shouldDisplayPastille = numberOfReactableBookings > 0
-  const numberOfLines = useFontScaleValue({ default: 1, at200PercentZoom: 3 })
+  const numberOfLines = useMobileFontScaleToDisplay({ default: 1, at200PercentZoom: 3 })
 
   return (
     <Container gap={6}>

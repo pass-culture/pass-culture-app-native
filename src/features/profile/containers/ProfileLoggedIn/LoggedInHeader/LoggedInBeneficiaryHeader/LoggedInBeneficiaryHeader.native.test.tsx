@@ -18,7 +18,6 @@ const mockedGetAge = getAge as jest.Mock
 const mockAge = (age: number) => mockedGetAge.mockReturnValue(age)
 
 const featureFlags = {
-  enablePassForAll: false,
   disableActivation: false,
   enableProfileV2: true,
 }

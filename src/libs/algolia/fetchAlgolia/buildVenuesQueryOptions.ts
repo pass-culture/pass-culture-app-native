@@ -11,7 +11,7 @@ export const buildVenuesQueryOptions = (
   params: VenuesModuleParameters,
   buildLocationParameterParams: BuildLocationParameterParams
 ) => {
-  const { tags = [], activities = [] } = params
+  const { tags = [], activities = [], hasVolunteering } = params
 
   const facetFilters: FiltersArray = []
 
@@ -23,6 +23,11 @@ export const buildVenuesQueryOptions = (
   if (activities.length) {
     const activitiesPredicate = buildActivitiesPredicate(activities.map(getActivityFacetFilters))
     facetFilters.push(activitiesPredicate)
+  }
+
+  if (hasVolunteering) {
+    const hasVolunteeringPredicate = [`${VENUES_FACETS_ENUM.VENUE_HAS_VOLUNTEERING}:true`]
+    facetFilters.push(hasVolunteeringPredicate)
   }
 
   // We want to show on home page only venues that have at least one offer that is searchable in algolia

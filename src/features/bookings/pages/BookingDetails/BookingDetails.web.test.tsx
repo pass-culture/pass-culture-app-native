@@ -45,7 +45,6 @@ describe('BookingDetails', () => {
   useRoute.mockImplementation(() => ({ params: { id: 456 } }))
 
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 

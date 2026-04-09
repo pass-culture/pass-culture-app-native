@@ -58,4 +58,13 @@ describe('buildVenuesQueryOptions', () => {
       facetFilters: [['activity:BOOKSTORE', 'activity:RECORD_STORE'], ...defaultFacetFilters],
     })
   })
+
+  it('should filter venue having volunteering if provided', () => {
+    const params = { ...defaultParams, hasVolunteering: true }
+    const options = buildVenuesQueryOptions(params, defaultBuildLocationParameterParams)
+
+    expect(options).toEqual({
+      facetFilters: [['has_volunteering_url:true'], ...defaultFacetFilters],
+    })
+  })
 })

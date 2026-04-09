@@ -3,7 +3,6 @@ import { useShouldShowAchievementSuccessModal } from 'features/achievements/hook
 import { ModalDisplayState } from 'features/home/components/helpers/getBookingsReactionHelpers'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { renderHook } from 'tests/utils'
 
@@ -39,16 +38,6 @@ describe('useShouldShowAchievementSuccessModal', () => {
     const { result } = renderHook(useShouldShowAchievementSuccessModal)
 
     expect(result.current.shouldShowAchievementSuccessModal).toEqual(ModalDisplayState.PENDING)
-  })
-
-  it('should return shouldNotShow when FF disabled', () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_ACHIEVEMENTS_SUCCESS_MODAL])
-    mockAuthContextWithUser({ ...beneficiaryUser, achievements })
-    const { result } = renderHook(useShouldShowAchievementSuccessModal)
-
-    expect(result.current.shouldShowAchievementSuccessModal).toEqual(
-      ModalDisplayState.SHOULD_NOT_SHOW
-    )
   })
 
   it('should return an empty array if there are no achievements to show to the user', () => {

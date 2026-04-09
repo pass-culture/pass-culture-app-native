@@ -14,11 +14,7 @@ import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { getDistance } from 'libs/location/getDistance'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
-import {
-  formatPrice,
-  getDisplayedPrice,
-  getIfPricesShouldBeFixed,
-} from 'libs/parsers/getDisplayedPrice'
+import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
@@ -41,7 +37,7 @@ interface Props extends Partial<HorizontalTileProps> {
   onPress?: () => void
   analyticsParams: OfferAnalyticsParams
   style?: StyleProp<ViewStyle>
-  price?: string
+  shouldDisplayPrice?: boolean
   withRightArrow?: boolean
 }
 
@@ -51,7 +47,7 @@ export const HorizontalOfferTile = ({
   onPress,
   style,
   subtitles,
-  price,
+  shouldDisplayPrice = true,
   withRightArrow,
   ...horizontalTileProps
 }: Props) => {
@@ -107,7 +103,6 @@ export const HorizontalOfferTile = ({
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isFixed: getIfPricesShouldBeFixed(subcategoryId),
       isDuo: !!(isDuo && user?.isBeneficiary),
     })
   )
@@ -154,6 +149,7 @@ export const HorizontalOfferTile = ({
   })
 
   const interactionTagLabel = getInteractionTagLabel(interactionTag)
+
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offerDetails,
     categoryLabel: appLabel,
@@ -199,10 +195,10 @@ export const HorizontalOfferTile = ({
                 </Body>
               ))}
             <PriceAndComingSoonTagContainer gap={1}>
-              {price ? <Typo.BodyAccentS>{price}</Typo.BodyAccentS> : null}
+              {shouldDisplayPrice ? <Typo.BodyAccentS>{formattedPrice}</Typo.BodyAccentS> : null}
               {interactionTag ? (
                 <React.Fragment>
-                  {price ? <Typo.BodyAccentS>{'\u2022'}</Typo.BodyAccentS> : null}
+                  {shouldDisplayPrice ? <Typo.BodyAccentS>{'\u2022'}</Typo.BodyAccentS> : null}
                   {interactionTag}
                 </React.Fragment>
               ) : null}

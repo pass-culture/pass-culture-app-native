@@ -29,6 +29,7 @@ export const AdviceCardList = forwardRef<Partial<FlatList<AdviceCardData>>, Advi
       shouldTruncate,
       cardIcon,
       tag,
+      thumbnailHeight,
     },
     ref
   ) {
@@ -102,6 +103,7 @@ export const AdviceCardList = forwardRef<Partial<FlatList<AdviceCardData>>, Advi
           shouldTruncate={shouldTruncate}
           cardIcon={cardIcon}
           tag={tag}
+          thumbnailHeight={thumbnailHeight}
         />
       </View>
     )

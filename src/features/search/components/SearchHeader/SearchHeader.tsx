@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FC } from 'react'
+import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -27,7 +27,7 @@ type Props = {
   shouldDisplayHeader?: boolean
 }
 
-export const SearchHeader: FC<Props> = ({
+export const SearchHeader = ({
   searchInputID,
   addSearchHistory,
   searchInHistory,
@@ -37,7 +37,8 @@ export const SearchHeader: FC<Props> = ({
   offerCategories,
   withFilterButton = false,
   shouldDisplayHeader = true,
-}: Props) => {
+  children,
+}: PropsWithChildren<Props>) => {
   const { goBack } = useNavigation()
   const { dispatch, searchState } = useSearch()
 
@@ -91,6 +92,7 @@ export const SearchHeader: FC<Props> = ({
             />
           ) : null}
         </Container>
+        {children}
       </HeaderContainer>
     </React.Fragment>
   )

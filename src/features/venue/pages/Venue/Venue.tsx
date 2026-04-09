@@ -1,4 +1,4 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
 import { View, ViewToken } from 'react-native'
 import Animated, { Layout } from 'react-native-reanimated'
@@ -9,9 +9,9 @@ import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/
 import { useVenueProAdvicesQuery } from 'features/advices/queries/useVenueProAdvicesQuery'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
-import { proAdvicesToAdviceCardData } from 'features/proAdvices/adapters/proAdvicesToAdviceCardData/proAdvicesToAdviceCardData'
+import { venueProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/venueProAdvicesToAdviceCardData/venueProAdvicesToAdviceCardData'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchInVenueModal } from 'features/search/pages/modals/SearchInVenueModal/SearchInVenueModal'
@@ -41,8 +41,8 @@ import {
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -52,7 +52,6 @@ const VENUE_CTA_HEIGHT_IN_SPACES = 6 + 10 + 6
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenueQuery(params.id)
-  const { navigate } = useNavigation<UseNavigationType>()
 
   const pageTracking = usePageTracking({
     pageName: 'Venue',
@@ -84,6 +83,9 @@ export const Venue: FunctionComponent = () => {
   const enableNewTagProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
   const enableVolunteer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER)
   const enableVolunteerNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_NEW_TAG)
+  const enableVolunteerFeedback = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK
+  )
   const {
     visible: searchInVenueModalVisible,
     hideModal: hideSearchInVenueModal,
@@ -98,6 +100,7 @@ export const Venue: FunctionComponent = () => {
   const isUserUnderage = useIsUserUnderage()
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const transformHits = useTransformOfferHits()
+  const segment = useABSegment(['A', 'B'])
 
   const { data: gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylistsQuery({
     venue,
@@ -127,7 +130,7 @@ export const Venue: FunctionComponent = () => {
 
   const { data: advices } = useVenueProAdvicesQuery({
     venueId: params.id,
-    enableProAdvices,
+    enableProAdvices: enableProAdvices && segment === 'A',
   })
   const nbAdvices = advices?.nbResults ?? 0
 
@@ -146,9 +149,6 @@ export const Venue: FunctionComponent = () => {
   const labelMapping = useCategoryHomeLabelMapping()
   const enableVenueCalendar = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VENUE_CALENDAR)
   const shouldDisplayVenueCalendar = enableVenueCalendar && venueOffers?.hits.length === 1
-  const enableAccesLibre = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE)
-  // To facilitate QA for the moment segment hardcoded (after => useABSegment(['A', 'B']))
-  const segment = 'A'
 
   const headlineOfferData = offerToHeadlineOfferData({
     offer: venueOffers?.headlineOffer,
@@ -173,19 +173,13 @@ export const Venue: FunctionComponent = () => {
     venue?.activity !== Activity.CINEMA &&
     ((venueOffers && venueOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0))
 
-  const handleOnShowRecoButtonPress = () => {
-    hideAdvicesWritersModal()
-    runAfterInteractionsMobile(() => {
-      navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'venue' })
-    })
-  }
-
   const VenueContentChildren = venue ? (
     <React.Fragment>
       <VenueTopComponent
         venue={venue}
         enableVolunteer={enableVolunteer}
         enableVolunteerNewTag={enableVolunteerNewTag}
+        enableVolunteerFeedback={enableVolunteerFeedback}
       />
       <ViewGap gap={isDesktopViewport ? 10 : 6}>
         <Animated.View layout={Layout.duration(200)}>
@@ -196,12 +190,11 @@ export const Venue: FunctionComponent = () => {
             venueArtists={venueArtists}
             headlineOfferData={headlineOfferData}
             arePlaylistsLoading={arePlaylistsLoading}
-            enableAccesLibre={enableAccesLibre}
             shouldDisplayVenueCalendar={shouldDisplayVenueCalendar}
             onViewableItemsChanged={handleViewableItemsChanged}
             advicesCardData={
               segment === 'A'
-                ? proAdvicesToAdviceCardData(
+                ? venueProAdvicesToAdviceCardData(
                     getAdvicesWithoutHeadline(advices?.proAdvices, headlineOfferData?.id)
                   )
                 : undefined
@@ -220,9 +213,9 @@ export const Venue: FunctionComponent = () => {
           <AdvicesWritersModal
             closeModal={hideAdvicesWritersModal}
             isVisible={advicesWritersModalVisible}
-            onShowRecoButtonPress={handleOnShowRecoButtonPress}
+            onButtonPress={hideAdvicesWritersModal}
             modalWording={`Les avis des pros sont rédigés par nos partenaires culturels du pass\u00a0: libraires, disquaires, organisateurs de spectacles...\nCes experts partagent leurs coups de coeur pour t‘aider à découvrir des oeuvres qui pourraient te plaire.`}
-            buttonWording="Voir tous les avis des pros"
+            buttonWording="Fermer"
           />
         </View>
       ) : null}

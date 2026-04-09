@@ -13,12 +13,12 @@ appId: team.passculture.app.staging
 
 - runFlow:
     when:
-      visible: "Les offres"
+      visible: "Les artistes"
     commands:
     - assertVisible: ".*résultats"
 
 - runFlow:
     when:
-      notVisible: "Les offres"
+      notVisible: "Les artistes"
     commands:
     - assertVisible: "Pas de résultat"

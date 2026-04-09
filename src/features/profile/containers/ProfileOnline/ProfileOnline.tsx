@@ -32,7 +32,6 @@ export const ProfileOnline = () => {
 
   const featureFlags = {
     disableActivation: useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION),
-    enablePassForAll: useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL),
     enableProfileV2: useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PROFILE_V2),
   }
 

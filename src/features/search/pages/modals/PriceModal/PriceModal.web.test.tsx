@@ -2,8 +2,6 @@ import React from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { PriceModal } from './PriceModal'
@@ -19,10 +17,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 describe('<PriceModal/>', () => {
-  beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
-  })
-
   it('should display mobile header modal if mobile viewport', async () => {
     render(
       <PriceModal

@@ -19,6 +19,7 @@ describe('VenueAdvicesSection', () => {
         nbAdvices={2}
         venue={venueDataTest}
         onShowWritersModal={jest.fn()}
+        onFeedbackLog={jest.fn()}
       />
     )
 
@@ -32,6 +33,7 @@ describe('VenueAdvicesSection', () => {
         nbAdvices={2}
         venue={venueDataTest}
         onShowWritersModal={jest.fn()}
+        onFeedbackLog={jest.fn()}
       />
     )
 
@@ -46,6 +48,7 @@ describe('VenueAdvicesSection', () => {
         venue={venueDataTest}
         enableNewTagProAdvices
         onShowWritersModal={jest.fn()}
+        onFeedbackLog={jest.fn()}
       />
     )
 
@@ -59,6 +62,7 @@ describe('VenueAdvicesSection', () => {
         nbAdvices={2}
         venue={venueDataTest}
         onShowWritersModal={jest.fn()}
+        onFeedbackLog={jest.fn()}
       />
     )
 

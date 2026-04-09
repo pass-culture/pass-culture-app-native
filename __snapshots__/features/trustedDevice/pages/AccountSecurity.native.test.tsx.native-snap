@@ -89,18 +89,12 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
       {
         "flexGrow": 1,
         "justifyContent": "space-between",
-      }
-    }
-    showsVerticalScrollIndicator={false}
-    style={
-      {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
+    showsVerticalScrollIndicator={false}
+    style={{}}
   >
     <View>
       <View
@@ -112,6 +106,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
         }
       />
       <View
+        flexValue={1}
         style={
           {
             "flexBasis": 0,
@@ -122,6 +117,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
         }
       >
         <View
+          flexValue={1}
           marginVertical={0}
           style={
             {
@@ -158,11 +154,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
             style={
               {
                 "alignItems": "center",
-                "flexBasis": 0,
-                "flexGrow": 0,
-                "flexShrink": 1,
                 "gap": 16,
-                "marginBottom": 24,
               }
             }
           >
@@ -794,18 +786,12 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
       {
         "flexGrow": 1,
         "justifyContent": "space-between",
-      }
-    }
-    showsVerticalScrollIndicator={false}
-    style={
-      {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
+    showsVerticalScrollIndicator={false}
+    style={{}}
   >
     <View>
       <View
@@ -817,6 +803,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
         }
       />
       <View
+        flexValue={1}
         style={
           {
             "flexBasis": 0,
@@ -827,6 +814,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
         }
       >
         <View
+          flexValue={1}
           marginVertical={0}
           style={
             {
@@ -863,11 +851,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
             style={
               {
                 "alignItems": "center",
-                "flexBasis": 0,
-                "flexGrow": 0,
-                "flexShrink": 1,
                 "gap": 16,
-                "marginBottom": 24,
               }
             }
           >
@@ -1397,18 +1381,12 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
       {
         "flexGrow": 1,
         "justifyContent": "space-between",
-      }
-    }
-    showsVerticalScrollIndicator={false}
-    style={
-      {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
+    showsVerticalScrollIndicator={false}
+    style={{}}
   >
     <View>
       <View
@@ -1420,6 +1398,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
         }
       />
       <View
+        flexValue={1}
         style={
           {
             "flexBasis": 0,
@@ -1430,6 +1409,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
         }
       >
         <View
+          flexValue={1}
           marginVertical={0}
           style={
             {
@@ -1466,11 +1446,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
             style={
               {
                 "alignItems": "center",
-                "flexBasis": 0,
-                "flexGrow": 0,
-                "flexShrink": 1,
                 "gap": 16,
-                "marginBottom": 24,
               }
             }
           >

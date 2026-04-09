@@ -40,6 +40,7 @@ export const AdviceCardListBase = forwardRef<
     shouldTruncate,
     cardIcon,
     tag,
+    thumbnailHeight,
   },
   ref
 ) {
@@ -81,7 +82,8 @@ export const AdviceCardListBase = forwardRef<
           tagProps={item.tagProps}
           image={item.image}
           headerNavigateTo={item.headerNavigateTo}
-          headerAccessibilityLabel={item.headerAccessibilityLabel}>
+          headerAccessibilityLabel={item.headerAccessibilityLabel}
+          thumbnailHeight={thumbnailHeight}>
           {onSeeMoreButtonPress ? (
             <View>
               <Button
@@ -99,7 +101,7 @@ export const AdviceCardListBase = forwardRef<
         </AdviceCard>
       )
     },
-    [cardIcon, tag, cardWidth, shouldTruncate, onSeeMoreButtonPress]
+    [cardIcon, tag, cardWidth, shouldTruncate, thumbnailHeight, onSeeMoreButtonPress]
   )
 
   return (

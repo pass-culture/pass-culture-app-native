@@ -2,7 +2,7 @@ import React, { forwardRef, ReactNode, useState } from 'react'
 import { LayoutChangeEvent, Platform, ScrollView, ScrollViewProps, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useFontScaleValue } from 'shared/accessibility/helpers/useFontScaleValue'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { Gradient } from 'ui/components/Gradient'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
@@ -52,7 +52,7 @@ export const PageWithHeader = forwardRef<ScrollView, Props>((props, ref) => {
     setMeasuredHeaderHeight(height)
   }
 
-  const paddingHeaderHeight = useFontScaleValue({
+  const paddingHeaderHeight = useMobileFontScaleToDisplay({
     default: headerHeight,
     at200PercentZoom: measuredHeaderHeight,
   })

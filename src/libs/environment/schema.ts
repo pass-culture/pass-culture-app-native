@@ -1,6 +1,7 @@
 import * as yup from 'yup'
 
 export const EnvironmentSchema = yup.object({
+  ACCES_LIBRE_URL: yup.string().required(),
   ACCESSIBILITY_PLAN: yup.string().required(),
   ACCESSIBILITY: yup.string().required(),
   ADJUST_APP_TOKEN: yup.string().required(),

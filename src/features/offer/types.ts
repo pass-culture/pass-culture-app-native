@@ -93,7 +93,8 @@ export type OfferContentProps = {
   subcategory: Subcategory
   onShowClubAdviceWritersModal: () => void
   onShowOfferArtistsModal: (artists: OfferArtist[]) => void
-  advices?: AdviceCardData[]
+  clubAdvices?: AdviceCardData[]
+  proAdvices?: AdviceCardData[]
   headlineOffersCount?: number
   defaultReaction?: ReactionTypeEnum | null
   onReactionButtonPress?: () => void
@@ -103,6 +104,7 @@ export type OfferContentProps = {
   isMultiArtistsEnabled?: boolean
   HeaderComponent?: ComponentType<OfferHeaderComponentProps>
   CTAsComponent?: ComponentType<OfferCTAsComponentProps>
+  proAdvicesCount?: number
 }
 
 export type OfferImageContainerDimensions = {
@@ -119,4 +121,10 @@ export type OfferImageContainerDimensions = {
 export type Duration = {
   label: string
   accessibilityLabel: string
+}
+
+export type AdvicesStatus = {
+  total: number
+  hasPublished: boolean
+  hasUnpublished: boolean
 }
