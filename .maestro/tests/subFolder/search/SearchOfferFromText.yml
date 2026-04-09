@@ -35,6 +35,6 @@ appId: ${MAESTRO_APP_ID}
     direction: UP
 
 - extractTextWithAI:
-    query: "Le titre exacte d'une des offres One Piece visible dans les résultats de recherche"
+    query: "Le titre exacte d'une des offres One Piece non-cropé visible dans les résultats de recherche"
     outputVariable: 'physicalOfferTitle'
 - tapOn: .*${physicalOfferTitle}.*
