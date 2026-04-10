@@ -5,12 +5,13 @@ import json
 import collections
 
 
-def remove_resolution_from_lock(dependency):
+def remove_resolution_from_lock(dependency, manifest):
     remove_lines = False
-    with open("yarn.lock", 'r') as yarn_file:
-        with open("yarn_curated.lock", "w") as curated_yarn_file:
+    curated_manifest = manifest + '.curated'
+    line_dep = f'"{dependency}@npm:'
+    with open(manifest, 'r') as yarn_file:
+        with open(curated_manifest, "w") as curated_yarn_file:
             for line in yarn_file:
-                line_dep = f'"{dependency}@npm:'
                 dep = line.find(line_dep)
                 if dep != -1:
                     remove_lines = True
@@ -19,11 +20,22 @@ def remove_resolution_from_lock(dependency):
                 if not remove_lines:
                     curated_yarn_file.write(line)
     
-    os.replace("yarn_curated.lock", "yarn.lock")
+    os.replace(curated_manifest, manifest)
 
-def set_resolution(dependency, version_min, version_max, target_version):
-    with open('package.json') as package_file:
-        with open('package_curated.json', "w") as package_curated_file:
+def set_resolution(dependency, min_version, max_version, target_version, package_json):
+    print('\n----------------------------------------')
+    print('------ Fixing Dependency version -------')
+    print('----------------------------------------')
+    print(f'           name    {dependency}        ')
+    print(f'    min version    {min_version}       ')
+    print(f'    max version    {max_version}       ')
+    print(f' target version    {target_version}    ')
+    print(f'        package    {package_json}      ')
+    print('----------------------------------------\n')
+
+    curated_package_json = package_json + '.curated'
+    with open(package_json) as package_file:
+        with open(curated_package_json, "w") as package_curated_file:
             package_data = json.load(package_file)
             resolutions = package_data["resolutions"]
             remove_dep = False
@@ -35,14 +47,41 @@ def set_resolution(dependency, version_min, version_max, target_version):
                         remove_dep = k
             if remove_dep:
                 resolutions.pop(remove_dep, None)
-            resolutions[f"{dependency}@{version_min}, {version_max}"] = target_version 
+
+            if not min_version:
+                resolutions[f"{dependency}@{max_version}"] = target_version
+            else:
+                resolutions[f"{dependency}@{min_version}, {max_version}"] = target_version
+
             ordered_resolutions = collections.OrderedDict(sorted(resolutions.items()))
             package_curated_data = package_data
             package_curated_data["resolutions"] = ordered_resolutions
             json.dump(package_curated_data, package_curated_file, indent=2)
 
-    os.replace("package_curated.json", "package.json")
-        
+    os.replace(curated_package_json, package_json)
+
+def set_resolutions(dependencies_data, manifest, package_json):
+    n_patch_max = 0
+    for dependency_data in dependencies_data:
+        if n_patch_max >= 100:
+            break
+
+        dependency = dependency_data["security_vulnerability"]
+        name = dependency["package"]["name"]
+        vulnerable_version_range = dependency["vulnerable_version_range"]
+        versions = vulnerable_version_range.split(',')
+        if len(versions) == 2:
+            vmin = versions[0].strip()
+            vmax = versions[1].strip()
+        else:
+            vmax = vulnerable_version_range
+            vmin = None
+        vtarget = "^" + dependency["first_patched_version"]["identifier"].lstrip('^').lstrip('~')
+
+        remove_resolution_from_lock(name, manifest)
+        set_resolution(name, vmin, vmax, vtarget, package_json)
+        n_patch_max += 1
+
 def run_yarn():
     subprocess.run(["yarn"], shell = True)
 
@@ -62,25 +101,47 @@ def commit_modifications(branch):
 def push_modifications(branch):
     subprocess.run([f"git push origin {branch}"], shell = True)
 
+def get_dependabot_alerts(manifest):
+    """
+        Needs gh cli to be able to run
+    """
+    return subprocess.run(['gh', 
+                           'api', 
+                           '-H', 
+                           'Accept: application/vnd.github+json', 
+                           '-H', 
+                           'X-GitHub-Api-Version: 2026-03-10', 
+                           f'/repos/pass-culture/pass-culture-app-native/dependabot/alerts?state=open&manifest={manifest}'
+                           ], stdout=subprocess.PIPE)
+
 
 if __name__ == "__main__":
-    # Get arguments
     parser = argparse.ArgumentParser(description='Fix a dependency resolution in package.json and yarn.lock')
-    parser.add_argument('--dep', type=str, help='Dependency name')
-    parser.add_argument('--vmin', type=str, help='Min Version')
-    parser.add_argument('--vmax', type=str, help='Max Version')
-    parser.add_argument('--vtarget', type=str, help='Target version')
-    parser.add_argument('--branch', type=str, help='Branch to create', nargs='?')
+    parser.add_argument('-dep', type=str, help='Dependency name', nargs='?')
+    parser.add_argument('-vmin', type=str, help='Min Version', nargs='?')
+    parser.add_argument('-vmax', type=str, help='Max Version', nargs='?')
+    parser.add_argument('-vt', type=str, help='Target version', nargs='?')
+    parser.add_argument('-br', type=str, help='Branch to create', nargs='?')
+    parser.add_argument('-bot', type=bool, help='Recover dependabot alerts and treat them (max: 100 - pagination)', nargs='?')
+    parser.add_argument('-man', type=str, help='The manifest to filter from (ex. yarn.lock, server/yarn.lock etc ...)', nargs='?')
     args = parser.parse_args()
 
-    branch = args.branch
+    branch = args.br
     if branch:
         pull_master()
         create_git_branch(branch)
 
-    # Fix the resolution
-    remove_resolution_from_lock(args.dep)
-    set_resolution(args.dep, args.vmin, args.vmax, args.vtarget)
+    dependabot = args.bot
+    manifest = args.man or 'yarn.lock'
+    package_json = os.path.join(os.path.dirname(manifest), 'package.json')
+    if dependabot:
+        dependabot_alerts = get_dependabot_alerts(manifest)
+        dependabot_alerts_json = json.loads(dependabot_alerts.stdout)
+        set_resolutions(dependabot_alerts_json, manifest, package_json)
+    else:
+        remove_resolution_from_lock(args.dep, manifest)
+        set_resolution(args.dep, args.vmin, args.vmax, args.vt, package_json)
+    
     run_yarn()
 
     if branch:
