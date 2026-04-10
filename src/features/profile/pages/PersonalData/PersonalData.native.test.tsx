@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, popTo } from '__mocks__/@react-navigation/native'
 import { UpdateEmailTokenExpiration } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
@@ -213,6 +213,17 @@ describe('PersonalData', () => {
     render(reactQueryProviderHOC(<PersonalData />))
 
     expect(await screen.findByText('Numéro de téléphone')).toBeOnTheScreen()
+  })
+
+  it('should go to profile tab when pressing back arrow', async () => {
+    render(reactQueryProviderHOC(<PersonalData />))
+
+    await user.press(screen.getByTestId('Revenir en arrière'))
+
+    expect(popTo).toHaveBeenCalledWith('TabNavigator', {
+      screen: 'Profile',
+      params: undefined,
+    })
   })
 
   it('should  not display phone number section when user has none', async () => {

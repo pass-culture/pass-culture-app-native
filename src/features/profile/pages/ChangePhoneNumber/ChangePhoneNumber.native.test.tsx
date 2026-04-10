@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { replace } from '__mocks__/@react-navigation/native'
 import { ChangePhoneNumber } from 'features/profile/pages/ChangePhoneNumber/ChangePhoneNumber'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
@@ -112,7 +112,7 @@ describe('ChangePhoneNumber', () => {
     })
     await user.press(screen.getByTestId('Continuer'))
 
-    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', { screen: 'PersonalData' })
+    expect(replace).toHaveBeenCalledWith('ProfileStackNavigator', { screen: 'PersonalData' })
   })
 
   it('should call analytics when the phone number is updated', async () => {
