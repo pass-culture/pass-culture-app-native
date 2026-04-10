@@ -18,10 +18,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Enable Corepack (Yarn 3.x)
+      - name: Enable Corepack (Yarn 4.x)
         run: |
           corepack enable
-          corepack prepare yarn@3.6.4 --activate
+          corepack prepare yarn@4.13.0 --activate
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
