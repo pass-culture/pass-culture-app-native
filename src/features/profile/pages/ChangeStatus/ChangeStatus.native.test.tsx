@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useRoute, reset, navigate } from '__mocks__/@react-navigation/native'
+import { useRoute, reset, replace } from '__mocks__/@react-navigation/native'
 import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
@@ -126,7 +126,7 @@ describe('<ChangeStatus/>', () => {
       await user.press(screen.getByText('Employé'))
       await user.press(screen.getByText('Valider mes informations'))
 
-      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+      expect(replace).toHaveBeenCalledWith('ProfileStackNavigator', {
         screen: 'PersonalData',
         params: undefined,
       })

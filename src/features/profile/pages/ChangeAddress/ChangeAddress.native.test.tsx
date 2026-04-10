@@ -1,7 +1,7 @@
 import { FeatureCollection, Point } from 'geojson'
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute, replace } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { ChangeAddress } from 'features/profile/pages/ChangeAddress/ChangeAddress'
@@ -95,7 +95,7 @@ describe('<SetAddress/>', () => {
       await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
       await user.press(screen.getByText('Valider mon adresse'))
 
-      expect(navigate).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
+      expect(replace).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
         params: undefined,
         screen: 'PersonalData',
       })

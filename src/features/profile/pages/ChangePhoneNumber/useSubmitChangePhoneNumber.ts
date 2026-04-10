@@ -30,7 +30,7 @@ const getCountryIdFromPhoneNumber = (phoneNumber: string): string => {
 
 export const useSubmitChangePhoneNumber = () => {
   const { user } = useAuthContext()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { replace } = useNavigation<UseNavigationType>()
   const phoneNumber = user?.phoneNumber ? getLastNineDigits(user.phoneNumber) : ''
   const countryId = user?.phoneNumber
     ? getCountryIdFromPhoneNumber(user.phoneNumber)
@@ -49,9 +49,9 @@ export const useSubmitChangePhoneNumber = () => {
   })
   const { mutate: patchProfile, isPending } = usePatchProfileMutation({
     onSuccess: () => {
-      navigate(...getProfileHookConfig('PersonalData'))
+      replace(...getProfileHookConfig('PersonalData'))
       showSuccessSnackBar('Ton numéro de téléphone a bien été modifié\u00a0!')
-      analytics.logHasChangedPhoneNumber()
+      void analytics.logHasChangedPhoneNumber()
     },
     onError: () => {
       showErrorSnackBar('Une erreur est survenue')
