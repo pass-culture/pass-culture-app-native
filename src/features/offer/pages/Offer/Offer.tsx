@@ -151,10 +151,13 @@ export function Offer() {
 
   const subcategory = subcategoriesMapping[offer?.subcategoryId]
   const adviceVariantInfo = clubAdviceVariant[subcategory.id]
+  const hasClubAdviceVariant = !!adviceVariantInfo
 
-  const clubAdvices = offer?.chronicles?.map((value) =>
-    advicePreviewToAdviceCardData(value, adviceVariantInfo.subtitleItem)
-  )
+  const clubAdvices = hasClubAdviceVariant
+    ? offer?.chronicles?.map((value) =>
+        advicePreviewToAdviceCardData(value, adviceVariantInfo.subtitleItem)
+      )
+    : undefined
 
   const shouldFetchSearchVenueOffers = isMultiVenueCompatibleOffer(offer)
   const headlineOffersCount = shouldFetchSearchVenueOffers ? data?.headlineOffersCount : undefined
@@ -178,7 +181,7 @@ export function Offer() {
           bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
         />
 
-        {adviceVariantInfo ? (
+        {hasClubAdviceVariant ? (
           <AdvicesWritersModal
             closeModal={hideChroniclesWritersModal}
             isVisible={chroniclesWritersModalVisible}

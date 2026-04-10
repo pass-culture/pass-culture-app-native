@@ -358,7 +358,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             </OfferBody>
           </BodyWrapper>
 
-          {clubAdvices?.length ? (
+          {clubAdvices?.length && adviceVariantInfo ? (
             <AdviceSectionWithAnchor
               anchorName={AnchorNames.CLUB_ADVICE_SECTION}
               sectionId="club-advice-section"
