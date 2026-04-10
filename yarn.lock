@@ -11376,7 +11376,7 @@ __metadata:
     type-fest: ^4.15.0
     typescript: 5.0.4
     uuid: ^8.3.2
-    vite: 8.0.3
+    vite: 8.0.5
     vite-bundle-analyzer: ^1.3.6
     vite-plugin-html: ^3.2.2
     yup: ^0.32.11
@@ -26864,9 +26864,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:8.0.3":
-  version: 8.0.3
-  resolution: "vite@npm:8.0.3"
+"vite@npm:8.0.5":
+  version: 8.0.5
+  resolution: "vite@npm:8.0.5"
   dependencies:
     fsevents: ~2.3.3
     lightningcss: ^1.32.0
@@ -26877,7 +26877,7 @@ __metadata:
   peerDependencies:
     "@types/node": ^20.19.0 || >=22.12.0
     "@vitejs/devtools": ^0.1.0
-    esbuild: ^0.27.0
+    esbuild: ^0.27.0 || ^0.28.0
     jiti: ">=1.21.0"
     less: ^4.0.0
     sass: ^1.70.0
@@ -26917,7 +26917,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: eedc812f6c2e32b58a334023c5be23a0404e4a6b4dbdf6993d0f9bdf158151a224bdd3426d5cb39744524ee8096be158fcf735c3572e8fcad835667e37b9719d
+  checksum: a926028a5e6b5aaa47bdfdd1d689b53d937369afeb07e4a689ac073d83ee61bba8e854ed208756475ebecdb6df4ae7dda4cea71caad5234dfea8bcdec4de98e1
   languageName: node
   linkType: hard
 
