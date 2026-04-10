@@ -21,7 +21,7 @@ type Props = {
   likesCount?: number
   clubAdvicesCount?: number | null
   headlineOffersCount?: number
-  adviceVariantInfo: AdviceVariantInfo
+  adviceVariantInfo?: AdviceVariantInfo
   clubAdvices?: AdviceCardData[]
   proAdvicesCount?: number
   proAdvices?: AdviceCardData[]
@@ -42,23 +42,29 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
 
   const clubAdvicesStatus: AdvicesStatus = getAdvicesStatus(clubAdvicesCount, clubAdvices?.length)
   const proAdvicesStatus: AdvicesStatus = getAdvicesStatus(proAdvicesCount, proAdvices?.length)
+  const hasClubAdvices =
+    !!adviceVariantInfo && (clubAdvicesStatus.hasPublished || clubAdvicesStatus.hasUnpublished)
+  const hasProAdvices = proAdvicesStatus.hasPublished || proAdvicesStatus.hasUnpublished
+  const hasLikes = !!likesCount
+  const hasHeadlineOffers = !!headlineOffersCount
 
-  const likesCounterElement = likesCount ? (
+  const likesCounterElement = hasLikes ? (
     <LikesInfoCounter text={formatLikesCounter(likesCount)} />
   ) : null
 
-  const clubAdvicesCounterElement = (
-    <OfferAdvicesCounter
-      testID="clubAdvicesCounter"
-      publishedText={`${clubAdvicesStatus.total} avis ${adviceVariantInfo.labelReaction}`}
-      unpublishedText={`Recommandé par le ${adviceVariantInfo.labelReaction}`}
-      icon={adviceVariantInfo.SmallIcon}
-      advicesStatus={clubAdvicesStatus}
-      onPress={() => scrollToAnchor(AnchorNames.CLUB_ADVICE_SECTION)}
-    />
-  )
+  const clubAdvicesCounterElement =
+    hasClubAdvices && adviceVariantInfo ? (
+      <OfferAdvicesCounter
+        testID="clubAdvicesCounter"
+        publishedText={`${clubAdvicesStatus.total} avis ${adviceVariantInfo.labelReaction}`}
+        unpublishedText={`Recommandé par le ${adviceVariantInfo.labelReaction}`}
+        icon={adviceVariantInfo.SmallIcon}
+        advicesStatus={clubAdvicesStatus}
+        onPress={() => scrollToAnchor(AnchorNames.CLUB_ADVICE_SECTION)}
+      />
+    ) : null
 
-  const proAdvicesCounterElement = (
+  const proAdvicesCounterElement = hasProAdvices ? (
     <ProAdvicesCounterContainer gap={2}>
       <OfferAdvicesCounter
         testID="proAdvicesCounter"
@@ -74,25 +80,17 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
         </TagContainer>
       ) : null}
     </ProAdvicesCounterContainer>
-  )
+  ) : null
 
-  const headlineOffersCounterElement = headlineOffersCount ? (
+  const headlineOffersCounterElement = hasHeadlineOffers ? (
     <HeadlineOffersCount text={getRecommendationText(headlineOffersCount)} />
   ) : null
 
-  if (
-    !(
-      likesCounterElement ||
-      clubAdvicesCounterElement ||
-      headlineOffersCounterElement ||
-      proAdvicesCounterElement
-    )
-  )
-    return null
+  if (!(hasLikes || hasClubAdvices || hasHeadlineOffers || hasProAdvices)) return null
 
   return (
     <ViewGap gap={4}>
-      {likesCounterElement || clubAdvicesCounterElement || proAdvicesCounterElement ? (
+      {hasLikes || hasClubAdvices || hasProAdvices ? (
         <InfosCounterContainer gap={2}>
           {likesCounterElement}
           {clubAdvicesCounterElement}
