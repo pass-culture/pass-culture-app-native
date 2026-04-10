@@ -5,8 +5,8 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { DepositType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
 import { PriceInputController } from 'features/search/components/PriceInputController/PriceInputController'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
@@ -98,7 +98,9 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 
   const isLimitCreditSearchDefaultValue = Number(searchState?.maxPrice) === formatAvailableCredit
   const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
-  const depositTypeIsNotGrantFree = user?.depositType !== DepositType.GRANT_FREE
+  const depositTypeIsNotGrantFree =
+    user?.creditType !== UserCreditType.CREDIT_V3_15 &&
+    user?.creditType !== UserCreditType.CREDIT_V3_16
 
   const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false
 

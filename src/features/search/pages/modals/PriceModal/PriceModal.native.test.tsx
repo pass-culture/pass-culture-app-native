@@ -1,8 +1,9 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { DepositType, EligibilityType } from 'api/gen'
+import { EligibilityType } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
+import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
@@ -87,7 +88,7 @@ describe('<PriceModal/>', () => {
         user: {
           ...beneficiaryUser,
           eligibility: EligibilityType['free'],
-          depositType: DepositType.GRANT_FREE,
+          creditType: UserCreditType.CREDIT_V3_16,
         },
         isLoggedIn: true,
       }))

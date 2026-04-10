@@ -1,8 +1,9 @@
 import React, { FunctionComponent, useMemo } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { DepositType, EligibilityType } from 'api/gen'
+import { EligibilityType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
@@ -34,7 +35,8 @@ export const HomeHeader: FunctionComponent = function () {
         !user ||
         !user.isBeneficiary ||
         user.eligibility === EligibilityType.free ||
-        user.depositType === DepositType.GRANT_FREE ||
+        user?.creditType === UserCreditType.CREDIT_V3_15 ||
+        user?.creditType === UserCreditType.CREDIT_V3_16 ||
         (!user.isBeneficiary && user.isEligibleForBeneficiaryUpgrade)
 
       if (shouldSeeDefaultSubtitle) return 'Toute la culture à portée de main'

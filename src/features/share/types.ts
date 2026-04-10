@@ -20,7 +20,7 @@ export enum ShareAppModalType {
 // Delete this type once needsToFillCulturalSurvey is no longer in UserProfileResponseWithoutSurvey of api.gen
 export type UserProfileResponseWithoutSurvey = Omit<
   UserProfileResponse,
-  'needsToFillCulturalSurvey'
+  'needsToFillCulturalSurvey' | 'depositType'
 > & {
   statusType: UserStatusType
   creditType: UserCreditType

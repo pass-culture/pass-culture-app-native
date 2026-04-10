@@ -3,7 +3,6 @@ import { format } from 'date-fns'
 import {
   ActivityIdEnum,
   CurrencyEnum,
-  DepositType,
   EligibilityType,
   QFBonificationStatus,
   UserRole,
@@ -56,7 +55,6 @@ export const beneficiaryUser: UserProfileResponseWithoutSurvey = {
   roles: [UserRole.BENEFICIARY],
   isEligibleForBeneficiaryUpgrade: false,
   status: { statusType: YoungStatusType.beneficiary },
-  depositType: DepositType.GRANT_17_18,
   eligibility: EligibilityType['age-17-18'],
   depositActivationDate: '2021-11-19T11:00:00Z',
   eligibilityEndDatetime: '2023-11-19T11:00:00Z',
@@ -88,6 +86,6 @@ export const exBeneficiaryUser: UserProfileResponseWithoutSurvey = {
   ...beneficiaryUser,
   depositExpirationDate: '2020-01-01T03:04:05',
   statusType: UserStatusType.EX_BENEFICIARY,
-  creditType: UserCreditType.CREDIT_EMPTY,
+  creditType: UserCreditType.CREDIT_EXPIRED,
   eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
 }
