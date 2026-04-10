@@ -97,6 +97,18 @@ describe('<SetAddress/>', () => {
     })
   })
 
+  it('should display selected suggestion in input', async () => {
+    renderSetAddress()
+
+    const input = screen.getByTestId('Entrée pour l’adresse')
+    fireEvent.changeText(input, QUERY_ADDRESS)
+
+    const selectedSuggestion = mockedSuggestedPlaces.features[1].properties.name
+    await user.press(await screen.findByText(selectedSuggestion))
+
+    expect(screen.getByTestId('Entrée pour l’adresse').props.value).toBe(selectedSuggestion)
+  })
+
   it('should save address in local storage when clicking on "Continuer"', async () => {
     renderSetAddress()
 

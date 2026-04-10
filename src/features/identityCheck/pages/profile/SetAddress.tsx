@@ -85,6 +85,8 @@ export const SetAddress = () => {
 
   const onAddressSelection = (address: string) => {
     setSelectedAddress(address)
+    setQuery(address)
+    debouncedSetQuery(address)
     Keyboard.dismiss()
   }
 
@@ -94,7 +96,7 @@ export const SetAddress = () => {
     debouncedSetQuery('')
   }
 
-  const isValidAddress = isAddressValid(query)
+  const isValidAddress = selectedAddress !== null || isAddressValid(query)
 
   const enabled = query.trim().length > 0
 
