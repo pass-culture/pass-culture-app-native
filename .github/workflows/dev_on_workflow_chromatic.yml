@@ -30,6 +30,8 @@ jobs:
           git fetch --all
       - name: Install dependencies
         run: yarn install
+      - name: Install Playwright Browsers
+        run: npx playwright install chromium
       - name: Build Storybook 🔧
         run: yarn build-storybook --stats-json --output-dir "$BUILD_DIR"
       - name: Publish to Chromatic 🚀
