@@ -19,6 +19,7 @@ export const useAccountSuspendTokenValidationQuery = (
     queryFn: async () => {
       try {
         await api.getNativeV1AccountSuspendTokenValidationtoken(token)
+
         return AccountSecurityStatus.VALID_TOKEN
       } catch (error) {
         if (error instanceof ApiError && error.statusCode === 400)

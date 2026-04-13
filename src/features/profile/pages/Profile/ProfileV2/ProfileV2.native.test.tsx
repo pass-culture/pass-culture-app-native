@@ -2,6 +2,7 @@ import React from 'react'
 
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { ProfileV2 } from 'features/profile/pages/Profile/ProfileV2/ProfileV2'
+import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -10,6 +11,11 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
+jest.mock('libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery', () => ({
+  useFeatureFlagOptionsQuery: jest.fn(),
+}))
+
+const mockUseFeatureFlagOptionsQuery = useFeatureFlagOptionsQuery as jest.Mock
 
 const mockFavoritesState = initialFavoritesState
 jest.mock('features/favorites/context/FavoritesWrapper', () => ({
@@ -17,7 +23,12 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
 }))
 
 describe('<ProfileV2/>', () => {
+  beforeAll(() =>
+    mockUseFeatureFlagOptionsQuery.mockReturnValue({ options: { message: 'désactivé' } })
+  )
+
   it('should display ProfileOnline when user is connected to internet', async () => {
+    mockUseFeatureFlagOptionsQuery.mockReturnValueOnce({ options: { message: 'désactivé' } })
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true, isInternetReachable: true })
     render(reactQueryProviderHOC(<ProfileV2 />))
 
@@ -26,6 +37,7 @@ describe('<ProfileV2/>', () => {
 
   it('should display ProfileOffline when user is not connected to internet', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false, isInternetReachable: true })
+    mockUseFeatureFlagOptionsQuery.mockReturnValueOnce({ options: { message: 'désactivé' } })
     render(reactQueryProviderHOC(<ProfileV2 />))
 
     expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()

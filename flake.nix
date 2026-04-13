@@ -4,7 +4,7 @@
   # we use https://www.nixhub.io/ to find the exact version that we are looking for
   # then we pin this version in the Nix flake
   inputs.nixpkgs_nodejs.url =
-    "github:nixos/nixpkgs?rev=0d59e0290eefe0f12512043842d7096c4070f30e"; # contains nodejs 20.19.5
+    "github:nixos/nixpkgs?rev=6ebfbc38bdc6b22822a6f991f2d922306f33cfb"; # contains nodejs 25.9.0
   inputs.nixpkgs_ruby.url =
     "github:nixos/nixpkgs?rev=0343e3415784b2cd9c68924294794f7dbee12ab3"; # contains ruby 2.7.5
   inputs.nixpkgs_gitleaks.url =
