@@ -1,7 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 
-import { api } from 'api/api'
 import { AccountState } from 'api/gen'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { SignInResponseFailure } from 'features/auth/types'
@@ -116,6 +115,14 @@ export const AppleSSOCallback = () => {
       return
     }
 
+    // Validate that the state returned by Apple matches the original token (CSRF protection)
+    if (appleState !== context.oauthStateToken) {
+      clearAppleSSOContext()
+      showErrorSnackBar('Une erreur est survenue avec Apple, veuillez réessayer.')
+      navigateBack()
+      return
+    }
+
     // Set guards SYNCHRONOUSLY before any async work:
     // - hasSignedIn prevents re-execution within the same mount
     // - clearAppleSSOContext invalidates sessionStorage so subsequent mounts see null
@@ -124,11 +131,9 @@ export const AppleSSOCallback = () => {
 
     const doSignIn = async () => {
       try {
-        const { oauthStateToken } = await api.getNativeV1OauthState()
-
         const response = await signInAsync({
           authorizationCode: code,
-          oauthStateToken,
+          oauthStateToken: context.oauthStateToken,
           provider: 'apple' as const,
         })
 

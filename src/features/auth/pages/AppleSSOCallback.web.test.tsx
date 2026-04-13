@@ -1,13 +1,13 @@
 import { waitFor } from '@testing-library/react'
 import React from 'react'
 
-import { api } from 'api/api'
 import { AccountState } from 'api/gen'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { SignInResponseFailure } from 'features/auth/types'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import * as appleSSOContextModule from 'libs/react-native-apple-sso/appleSSOContext'
 import { render } from 'tests/utils/web'
+import * as snackBarModule from 'ui/designSystem/Snackbar/snackBar.store'
 
 import { AppleSSOCallback } from './AppleSSOCallback'
 
@@ -39,49 +39,38 @@ const mockClearAppleSSOContext = jest.mocked(
   (appleSSOContextModule as unknown as { clearAppleSSOContext: jest.Mock }).clearAppleSSOContext
 )
 
-const mockGetNativeV1OauthState = jest.spyOn(api, 'getNativeV1OauthState')
-
 /** Retrieve the onFailure callback passed to useSignInMutation */
 const getOnFailure = (): ((error: SignInResponseFailure) => void) => {
   const lastCall = mockUseSignInMutation.mock.calls.at(-1)
   return lastCall?.[0]?.onFailure as (error: SignInResponseFailure) => void
 }
 
+const VALID_STATE = 'valid-state-token'
+
 describe('AppleSSOCallback (web)', () => {
   beforeEach(() => {
     jest.clearAllMocks()
-    mockLoadAppleSSOContext.mockReturnValue({ type: 'login' })
-    mockGetNativeV1OauthState.mockResolvedValue({ oauthStateToken: 'fresh-state-token' })
+    mockLoadAppleSSOContext.mockReturnValue({ type: 'login', oauthStateToken: VALID_STATE })
     mockSignInAsync.mockResolvedValue({ accountState: AccountState.ACTIVE })
     mockRouteParams = {}
   })
 
-  it('should call signInAsync with code and a fresh state token', async () => {
-    mockRouteParams = { code: 'apple-code', state: 'original-state' }
+  it('should call signInAsync with code and the original state token from context', async () => {
+    mockRouteParams = { code: 'apple-code', state: VALID_STATE }
 
     render(<AppleSSOCallback />)
 
     await waitFor(() => {
       expect(mockSignInAsync).toHaveBeenCalledWith({
         authorizationCode: 'apple-code',
-        oauthStateToken: 'fresh-state-token',
+        oauthStateToken: VALID_STATE,
         provider: 'apple',
       })
     })
   })
 
-  it('should request a fresh state token before calling signIn', async () => {
-    mockRouteParams = { code: 'apple-code', state: 'original-state' }
-
-    render(<AppleSSOCallback />)
-
-    await waitFor(() => {
-      expect(mockGetNativeV1OauthState).toHaveBeenCalledTimes(1)
-    })
-  })
-
   it('should clear SSO context when signIn is called', async () => {
-    mockRouteParams = { code: 'apple-code', state: 'oauth-state' }
+    mockRouteParams = { code: 'apple-code', state: VALID_STATE }
 
     render(<AppleSSOCallback />)
 
@@ -91,7 +80,7 @@ describe('AppleSSOCallback (web)', () => {
   })
 
   it('should pass doNotNavigateOnSigninSuccess to useSignInMutation', () => {
-    mockRouteParams = { code: 'apple-code', state: 'oauth-state' }
+    mockRouteParams = { code: 'apple-code', state: VALID_STATE }
 
     render(<AppleSSOCallback />)
 
@@ -100,10 +89,24 @@ describe('AppleSSOCallback (web)', () => {
     )
   })
 
+  describe('CSRF validation', () => {
+    it('should navigate back when state does not match the original token', () => {
+      const showErrorSpy = jest.spyOn(snackBarModule, 'showErrorSnackBar')
+      mockRouteParams = { code: 'apple-code', state: 'tampered-state' }
+
+      render(<AppleSSOCallback />)
+
+      expect(mockSignInAsync).not.toHaveBeenCalled()
+      expect(mockClearAppleSSOContext).toHaveBeenCalledTimes(1)
+      expect(mockResetFromRef).toHaveBeenCalledWith('Login', undefined)
+      expect(showErrorSpy).toHaveBeenCalled()
+    })
+  })
+
   describe('success navigation', () => {
     it('should reset navigation to TabNavigator when accountState is ACTIVE', async () => {
       mockSignInAsync.mockResolvedValue({ accountState: AccountState.ACTIVE })
-      mockRouteParams = { code: 'apple-code', state: 'oauth-state' }
+      mockRouteParams = { code: 'apple-code', state: VALID_STATE }
 
       render(<AppleSSOCallback />)
 
@@ -114,7 +117,7 @@ describe('AppleSSOCallback (web)', () => {
 
     it('should reset navigation to AccountStatusScreenHandler when accountState is INACTIVE', async () => {
       mockSignInAsync.mockResolvedValue({ accountState: AccountState.INACTIVE })
-      mockRouteParams = { code: 'apple-code', state: 'oauth-state' }
+      mockRouteParams = { code: 'apple-code', state: VALID_STATE }
 
       render(<AppleSSOCallback />)
 
@@ -146,6 +149,7 @@ describe('AppleSSOCallback (web)', () => {
       mockLoadAppleSSOContext.mockReturnValueOnce({
         type: 'signup',
         params: { from: StepperOrigin.SIGNUP },
+        oauthStateToken: VALID_STATE,
       })
       mockRouteParams = { error: 'access_denied' }
 
@@ -155,7 +159,7 @@ describe('AppleSSOCallback (web)', () => {
     })
 
     it('should reset to Login when no code is present', () => {
-      mockRouteParams = { state: 'oauth-state' }
+      mockRouteParams = { state: VALID_STATE }
 
       render(<AppleSSOCallback />)
 
@@ -175,7 +179,7 @@ describe('AppleSSOCallback (web)', () => {
 
   it('should do nothing when context is null (sign-in already in progress from previous mount)', () => {
     mockLoadAppleSSOContext.mockReturnValueOnce(null)
-    mockRouteParams = { code: 'apple-code', state: 'oauth-state' }
+    mockRouteParams = { code: 'apple-code', state: VALID_STATE }
 
     render(<AppleSSOCallback />)
 
@@ -183,22 +187,10 @@ describe('AppleSSOCallback (web)', () => {
     expect(mockSignInAsync).not.toHaveBeenCalled()
   })
 
-  it('should not navigate when fresh state token request fails (handled by catch)', async () => {
-    mockGetNativeV1OauthState.mockRejectedValueOnce(new Error('Network error'))
-    mockRouteParams = { code: 'apple-code', state: 'oauth-state' }
-
-    render(<AppleSSOCallback />)
-
-    await waitFor(() => {
-      expect(mockSignInAsync).not.toHaveBeenCalled()
-      expect(mockClearAppleSSOContext).toHaveBeenCalledTimes(1)
-    })
-  })
-
   describe('handleFailure (SSO_EMAIL_NOT_FOUND)', () => {
     it('should reset to SignupForm with from LOGIN when context type is login', () => {
-      mockLoadAppleSSOContext.mockReturnValueOnce({ type: 'login' })
-      mockRouteParams = { code: 'apple-code', state: 'oauth-state' }
+      mockLoadAppleSSOContext.mockReturnValueOnce({ type: 'login', oauthStateToken: VALID_STATE })
+      mockRouteParams = { code: 'apple-code', state: VALID_STATE }
 
       render(<AppleSSOCallback />)
 
@@ -223,8 +215,8 @@ describe('AppleSSOCallback (web)', () => {
     })
 
     it('should reset to SignupForm with from SIGNUP when context type is signup', () => {
-      mockLoadAppleSSOContext.mockReturnValueOnce({ type: 'signup' })
-      mockRouteParams = { code: 'apple-code', state: 'oauth-state' }
+      mockLoadAppleSSOContext.mockReturnValueOnce({ type: 'signup', oauthStateToken: VALID_STATE })
+      mockRouteParams = { code: 'apple-code', state: VALID_STATE }
 
       render(<AppleSSOCallback />)
 

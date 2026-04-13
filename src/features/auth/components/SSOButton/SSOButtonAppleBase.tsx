@@ -45,7 +45,8 @@ export const SSOButtonAppleBase: FC<Props> = ({ type, onSuccess, params }) => {
   }
 
   const handleLogin = async () => {
-    saveAppleSSOContext({ type, params })
+    // oauthStateToken will be set by loginToApple() after fetching it from the backend
+    saveAppleSSOContext({ type, params, oauthStateToken: '' })
     return loginToApple({
       onSuccess: ({ code, state }) => {
         onSuccess?.({ authorizationCode: code, oauthStateToken: state, provider: 'apple' })
