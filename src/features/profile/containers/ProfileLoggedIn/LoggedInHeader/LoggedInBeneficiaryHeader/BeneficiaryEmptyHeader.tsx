@@ -12,7 +12,7 @@ import { getHeaderSubtitleProps } from 'features/profile/helpers/getHeaderSubtit
 import { getIsDepositExpired } from 'features/profile/helpers/getIsDepositExpired'
 import { getProfileHeaderTitle } from 'features/profile/helpers/getProfileHeaderTitle'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { getAge } from 'shared/user/getAge'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
@@ -20,7 +20,7 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 
-type Props = { user: UserProfileResponseWithoutSurvey } & ProfileFeatureFlagsProps
+type Props = { user: UserProfile } & ProfileFeatureFlagsProps
 
 export const BeneficiaryEmptyHeader = ({ user, featureFlags }: Props) => {
   const { data: remoteConfigData } = useRemoteConfigQuery()

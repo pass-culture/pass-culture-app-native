@@ -5,7 +5,7 @@ import { AuthWrapper } from 'features/auth/context/AuthWrapper'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { Favorites } from 'features/favorites/pages/Favorites'
 import { simulateBackend } from 'features/favorites/tests/simulateBackend'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
 import { storage } from 'libs/storage'
@@ -39,7 +39,7 @@ jest.mock('libs/network/NetInfoWrapper')
 
 describe('<Favorites />', () => {
   beforeEach(() => {
-    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
+    mockServer.getApi<UserProfile>('/v1/me', beneficiaryUser)
   })
 
   it('Performance test for Favorites page', async () => {

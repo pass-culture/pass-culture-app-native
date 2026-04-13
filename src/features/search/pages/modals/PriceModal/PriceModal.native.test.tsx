@@ -1,8 +1,9 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { DepositType, EligibilityType } from 'api/gen'
+import { EligibilityType } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
+import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
@@ -81,19 +82,19 @@ describe('<PriceModal/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  describe('user with grant free deposite type (15-16 yo)', () => {
+  describe('user with grant free credit type is CREDIT_V3_16', () => {
     beforeEach(() => {
       mockedUseAuthContext.mockImplementation(() => ({
         user: {
           ...beneficiaryUser,
           eligibility: EligibilityType['free'],
-          depositType: DepositType.GRANT_FREE,
+          creditType: UserCreditType.CREDIT_V3_16,
         },
         isLoggedIn: true,
       }))
     })
 
-    it('should not display banner when user deposite type is grant free', async () => {
+    it('should not display banner when user credit type is CREDIT_V3_16', async () => {
       renderSearchPrice()
       await screen.findByLabelText('Rechercher')
 

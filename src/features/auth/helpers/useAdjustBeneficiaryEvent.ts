@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { Adjust } from 'libs/adjust/adjust'
 import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import { storage } from 'libs/storage'
 import { getAge } from 'shared/user/getAge'
 
-export const useAdjustBeneficiaryEvent = (user?: UserProfileResponseWithoutSurvey) => {
+export const useAdjustBeneficiaryEvent = (user?: UserProfile) => {
   useEffect(() => {
     if (user?.isBeneficiary) {
       // beneficiary events will be logged only once so we prefer check that Adjust is enabled to avoid losing the event

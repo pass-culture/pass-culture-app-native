@@ -10,7 +10,7 @@ import { BookingNotFound } from 'features/bookings/pages/BookingNotFound/Booking
 import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
 import { convertBookingResponseDateToTimezone } from 'features/bookings/queries/selectors/convertBookingsDatesToTimezone'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
@@ -93,7 +93,7 @@ const BookingDetailsContainer = ({
   user,
 }: {
   bookingId: number
-  user: UserProfileResponseWithoutSurvey | undefined
+  user: UserProfile | undefined
 }) => {
   const {
     data: booking,

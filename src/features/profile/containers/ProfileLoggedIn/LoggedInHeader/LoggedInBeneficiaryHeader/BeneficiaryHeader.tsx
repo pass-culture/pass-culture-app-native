@@ -12,12 +12,12 @@ import { getHeaderSubtitleProps } from 'features/profile/helpers/getHeaderSubtit
 import { getIsDepositExpired } from 'features/profile/helpers/getIsDepositExpired'
 import { getProfileHeaderTitle } from 'features/profile/helpers/getProfileHeaderTitle'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
-type Props = { user: UserProfileResponseWithoutSurvey } & ProfileFeatureFlagsProps
+type Props = { user: UserProfile } & ProfileFeatureFlagsProps
 
 export const BeneficiaryHeader = ({ user, featureFlags }: Props) => {
   const { firstName, lastName, domainsCredit, depositExpirationDate, eligibility, birthDate } = user

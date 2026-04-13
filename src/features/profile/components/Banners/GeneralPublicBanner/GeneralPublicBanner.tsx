@@ -3,12 +3,12 @@ import React from 'react'
 import { ActivationBanner } from 'features/profile/components/Banners/ActivationBanner/ActivationBanner'
 import { YoungerBanner } from 'features/profile/components/Banners/GeneralPublicBanner/YoungerBanner'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 
 export const GeneralPublicBanner = ({
   user,
   featureFlags,
-}: { user: UserProfileResponseWithoutSurvey } & ProfileFeatureFlagsProps) => {
+}: { user: UserProfile } & ProfileFeatureFlagsProps) => {
   if (!user) return null
 
   const { eligibilityStartDatetime, subscriptionMessage } = user

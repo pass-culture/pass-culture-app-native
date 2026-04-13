@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { EmailReceived } from 'features/bookings/components/Ticket/TicketBottomPart/EmailWithdrawal/EmailReceived'
 import { EmailWillBeSend } from 'features/bookings/components/Ticket/TicketBottomPart/EmailWithdrawal/EmailWillBeSend'
 import { TicketVisual } from 'features/bookings/components/Ticket/TicketBottomPart/TicketVisual'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { getSpacing } from 'ui/theme'
 
@@ -12,7 +12,7 @@ type Props = {
   hasEmailBeenSent: boolean
   withdrawalDelay?: number | null
   isDuo: boolean
-  userEmail: UserProfileResponseWithoutSurvey['email']
+  userEmail: UserProfile['email']
 }
 
 export const EmailWithdrawal = ({ hasEmailBeenSent, withdrawalDelay, isDuo, userEmail }: Props) => {

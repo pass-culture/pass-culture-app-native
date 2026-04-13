@@ -1,4 +1,4 @@
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
@@ -12,7 +12,7 @@ export const getRefundRule = ({
   totalAmount: number
   currency: Currency
   euroToPacificFrancRate: number
-  user?: UserProfileResponseWithoutSurvey
+  user?: UserProfile
 }) => {
   const price = convertCentsToEuros(totalAmount)
   if (price > 0 && user) {

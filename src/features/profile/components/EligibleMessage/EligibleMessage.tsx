@@ -5,10 +5,10 @@ import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { formatDateToLastUpdatedAtMessage } from 'features/profile/helpers/formatDateToLastUpdatedAtMessage'
 import { getEligibilityEndDatetime } from 'features/profile/helpers/getEligibilityEndDatetime'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 
 type EligibleMessageProps = {
-  eligibilityEndDatetime?: UserProfileResponseWithoutSurvey['eligibilityEndDatetime']
+  eligibilityEndDatetime?: UserProfile['eligibilityEndDatetime']
   updatedAt?: SubscriptionMessageV2['updatedAt']
 } & ProfileFeatureFlagsProps
 

@@ -1,5 +1,5 @@
 import { ActivityIdEnum } from 'api/gen'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 
 import { getIsProfileIncomplete } from './getIsProfileIncomplete'
 
@@ -9,7 +9,7 @@ describe('getIsProfileIncomplete', () => {
   })
 
   it('returns true if one required field is missing', () => {
-    const userMissingCity: Partial<UserProfileResponseWithoutSurvey> = {
+    const userMissingCity: Partial<UserProfile> = {
       firstName: 'Jean',
       lastName: 'Dupont',
       postalCode: '75001',
@@ -17,11 +17,11 @@ describe('getIsProfileIncomplete', () => {
       activityId: ActivityIdEnum.STUDENT,
     }
 
-    expect(getIsProfileIncomplete(userMissingCity as UserProfileResponseWithoutSurvey)).toBe(true)
+    expect(getIsProfileIncomplete(userMissingCity as UserProfile)).toBe(true)
   })
 
   it('returns false if all required fields are present', () => {
-    const completeUser: Partial<UserProfileResponseWithoutSurvey> = {
+    const completeUser: Partial<UserProfile> = {
       firstName: 'Marie',
       lastName: 'Curie',
       postalCode: '75005',
@@ -29,11 +29,11 @@ describe('getIsProfileIncomplete', () => {
       activityId: ActivityIdEnum.EMPLOYEE,
     }
 
-    expect(getIsProfileIncomplete(completeUser as UserProfileResponseWithoutSurvey)).toBe(false)
+    expect(getIsProfileIncomplete(completeUser as UserProfile)).toBe(false)
   })
 
   it('returns true if multiple fields are missing', () => {
-    const userMissingFields: Partial<UserProfileResponseWithoutSurvey> = {
+    const userMissingFields: Partial<UserProfile> = {
       firstName: null,
       lastName: undefined,
       postalCode: '13000',
@@ -41,11 +41,11 @@ describe('getIsProfileIncomplete', () => {
       activityId: ActivityIdEnum.EMPLOYEE,
     }
 
-    expect(getIsProfileIncomplete(userMissingFields as UserProfileResponseWithoutSurvey)).toBe(true)
+    expect(getIsProfileIncomplete(userMissingFields as UserProfile)).toBe(true)
   })
 
   it('returns true if one required field is empty string', () => {
-    const completeUser: Partial<UserProfileResponseWithoutSurvey> = {
+    const completeUser: Partial<UserProfile> = {
       firstName: '',
       lastName: 'Curie',
       postalCode: '75005',
@@ -53,6 +53,6 @@ describe('getIsProfileIncomplete', () => {
       activityId: ActivityIdEnum.EMPLOYEE,
     }
 
-    expect(getIsProfileIncomplete(completeUser as UserProfileResponseWithoutSurvey)).toBe(true)
+    expect(getIsProfileIncomplete(completeUser as UserProfile)).toBe(true)
   })
 })

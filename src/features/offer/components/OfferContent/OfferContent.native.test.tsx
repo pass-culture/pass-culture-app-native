@@ -29,7 +29,7 @@ import { CineContentCTAID } from 'features/offer/components/OfferCine/CineConten
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import {
@@ -249,7 +249,7 @@ describe('<OfferContent />', () => {
     })
 
     it('should remove favorite when press on favorite', async () => {
-      mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfileResponseWithoutSurvey)
+      mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfile)
       renderOfferContent({})
       const button = await screen.findByLabelText('Retirer des favoris')
       await user.press(button)
@@ -259,7 +259,7 @@ describe('<OfferContent />', () => {
 
     it('should display snackbar when remove favorite fails', async () => {
       spyApiDeleteFavorite.mockRejectedValueOnce({ status: 400 })
-      mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfileResponseWithoutSurvey)
+      mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfile)
       renderOfferContent({})
       const button = await screen.findByLabelText('Retirer des favoris')
       await user.press(button)

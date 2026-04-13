@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 
 import { DomainsCredit } from 'api/gen'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { nonBeneficiaryUser } from 'fixtures/user'
 
 import { hasOngoingCredit } from './useAvailableCredit'
@@ -44,7 +44,7 @@ describe('useAvailableCredit', () => {
         domainsCreditAllRemaining: DomainsCredit
         expected: boolean
       }) => {
-        const mockedUser: UserProfileResponseWithoutSurvey = {
+        const mockedUser: UserProfile = {
           ...nonBeneficiaryUser,
           depositExpirationDate: depositExpirationDate,
           domainsCredit: domainsCreditAllRemaining,

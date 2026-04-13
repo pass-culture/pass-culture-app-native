@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { AlreadyChangedEmailDisclaimer } from 'features/profile/components/Disclaimers/AlreadyChangedEmailDisclaimer'
 import { ChangeEmailDisclaimer } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimer'
 import { useChangeEmailMutation } from 'features/profile/queries/useChangeEmailMutation'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { Form } from 'ui/components/Form'
 import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
 import { Banner } from 'ui/designSystem/Banner/Banner'
@@ -17,7 +17,7 @@ export function ChangeEmailContent({
   user,
 }: {
   hasCurrentEmailChange: boolean
-  user: UserProfileResponseWithoutSurvey | undefined
+  user: UserProfile | undefined
 }) {
   const { changeEmail, isLoading } = useChangeEmailMutation()
 

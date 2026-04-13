@@ -2,8 +2,9 @@ import { NavigationContainer } from '@react-navigation/native'
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { BannerName, BannerResponse, DepositType, EligibilityType } from 'api/gen'
-import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
+import { BannerName, BannerResponse, EligibilityType } from 'api/gen'
+import { UserCreditType } from 'features/auth/helpers/getCreditType'
+import { beneficiaryUser, exBeneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationLabel } from 'libs/location/types'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
@@ -29,11 +30,7 @@ describe('HomeHeader', () => {
   })
 
   it('ex beneficiary users should see subtitle: Ton crédit est expiré', async () => {
-    mockAuthContextWithUser({
-      ...beneficiaryUser,
-      eligibility: EligibilityType['age-18'],
-      isEligibleForBeneficiaryUpgrade: false,
-    })
+    mockAuthContextWithUser(exBeneficiaryUser)
 
     const credit = { amount: 5, isExpired: true }
     mockUseAvailableCredit.mockReturnValueOnce(credit)
@@ -77,11 +74,11 @@ describe('HomeHeader', () => {
     expect(await screen.findByText('Toute la culture à portée de main')).toBeOnTheScreen()
   })
 
-  it('should display "Toute la culture à portée de main" when user deposit type is GRANT_FREE', async () => {
+  it('should display "Toute la culture à portée de main" when user credit type is CREDIT_V3_15', async () => {
     mockAuthContextWithUser({
       ...beneficiaryUser,
       eligibility: EligibilityType['age-17-18'],
-      depositType: DepositType.GRANT_FREE,
+      creditType: UserCreditType.CREDIT_V3_15,
       isEligibleForBeneficiaryUpgrade: false,
     })
 

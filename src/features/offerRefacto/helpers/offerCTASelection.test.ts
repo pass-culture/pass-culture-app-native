@@ -16,7 +16,7 @@ import { DEFAULT_CTA_WORDING } from 'features/offerRefacto/constants'
 import { CTAContextFixture } from 'features/offerRefacto/fixtures/CTAContext.fixture'
 import { getCTAWordingAndAction } from 'features/offerRefacto/helpers'
 import { CTAContext } from 'features/offerRefacto/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { beneficiaryUser, exBeneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { OfferModal } from 'shared/offer/enums'
 
@@ -50,7 +50,7 @@ describe('getCTAWordingAndAction', () => {
     isLoggedIn?: boolean
     subcategory?: Partial<SubcategoryResponseModelv2>
     isEndedUsedBooking?: boolean
-    user?: Partial<UserProfileResponseWithoutSurvey>
+    user?: Partial<UserProfile>
     offer?: Partial<OfferResponse>
   }
 

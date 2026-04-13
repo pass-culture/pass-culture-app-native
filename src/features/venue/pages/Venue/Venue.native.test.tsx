@@ -15,7 +15,7 @@ import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylis
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import * as useOfferCTAContextModule from 'features/offer/components/OfferContent/OfferCTAProvider'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import {
   VenueMoviesOffersResponseSnap,
@@ -120,7 +120,7 @@ describe('<Venue />', () => {
     setFeatureFlags()
     getItemSpy.mockReset()
     mockServer.postApi<OffersStocksResponseV2>('/v2/offers/stocks', {})
-    mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', {})
+    mockServer.patchApi<UserProfile>('/v1/profile', {})
     mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v2/venue/${venueId}`, {
       ...venueDataTest,
       isOpenToPublic: true,

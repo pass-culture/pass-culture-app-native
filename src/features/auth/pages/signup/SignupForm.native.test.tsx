@@ -19,7 +19,7 @@ import { SignInResponseFailure } from 'features/auth/types'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import * as useGoBack from 'features/navigation/useGoBack'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -479,7 +479,7 @@ describe('Signup Form', () => {
         refreshToken: 'refreshToken',
         accountState: AccountState.ACTIVE,
       })
-      mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
+      mockServer.getApi<UserProfile>('/v1/me', beneficiaryUser)
 
       await renderSignupForm()
       await screen.findByText('Inscription')

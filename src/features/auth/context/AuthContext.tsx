@@ -1,13 +1,13 @@
 import { QueryObserverResult } from '@tanstack/react-query'
 import React, { useContext } from 'react'
 
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 
 export interface IAuthContext {
   isLoggedIn: boolean
   setIsLoggedIn: (isLoggedIn: boolean) => void
-  user?: UserProfileResponseWithoutSurvey
-  refetchUser: () => Promise<QueryObserverResult<UserProfileResponseWithoutSurvey, unknown>>
+  user?: UserProfile
+  refetchUser: () => Promise<QueryObserverResult<UserProfile, unknown>>
   isUserLoading: boolean
 }
 
@@ -15,7 +15,7 @@ export const AuthContext = React.createContext<IAuthContext>({
   isLoggedIn: false,
   setIsLoggedIn: () => undefined,
   user: undefined,
-  refetchUser: async () => ({}) as QueryObserverResult<UserProfileResponseWithoutSurvey>,
+  refetchUser: async () => ({}) as QueryObserverResult<UserProfile>,
   isUserLoading: false,
 })
 

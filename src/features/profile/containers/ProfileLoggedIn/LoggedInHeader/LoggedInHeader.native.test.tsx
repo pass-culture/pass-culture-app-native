@@ -2,7 +2,7 @@ import React from 'react'
 
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { beneficiaryUser, nonBeneficiaryUser, exBeneficiaryUser } from 'fixtures/user'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -61,6 +61,6 @@ describe('LoggedInHeader', () => {
   })
 })
 
-const renderLoggedInHeader = ({ user }: { user: UserProfileResponseWithoutSurvey }) => {
+const renderLoggedInHeader = ({ user }: { user: UserProfile }) => {
   render(reactQueryProviderHOC(<LoggedInHeader featureFlags={featureFlags} user={user} />))
 }
