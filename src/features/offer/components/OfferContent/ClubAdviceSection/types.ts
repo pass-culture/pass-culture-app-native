@@ -12,6 +12,8 @@ export type ClubAdviceSectionProps = {
   onShowClubAdviceWritersModal: () => void
   onBeforeNavigate?: () => void
   onSeeMoreButtonPress?: (chronicleId: number) => void
+  displayAllAdvicesButton?: boolean
+  showSectionTag?: boolean
   style?: StyleProp<ViewStyle>
 }
 

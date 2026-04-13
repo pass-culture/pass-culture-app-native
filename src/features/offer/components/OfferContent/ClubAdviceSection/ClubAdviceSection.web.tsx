@@ -25,9 +25,11 @@ export const ClubAdviceSection = (props: ClubAdviceSectionProps) => {
     style,
     onSeeMoreButtonPress,
     onShowClubAdviceWritersModal,
+    displayAllAdvicesButton,
+    showSectionTag,
   } = props
 
-  const shouldDisplayAllReviewsButton = data.length > 1
+  const shouldDisplayAllReviewsButton = displayAllAdvicesButton ?? data.length > 1
 
   return (
     <React.Fragment>
@@ -38,6 +40,9 @@ export const ClubAdviceSection = (props: ClubAdviceSectionProps) => {
               <StyledTitle3 withBorderRight={shouldDisplayAllReviewsButton} {...getHeadingAttrs(3)}>
                 {variantInfo.titleSection}
               </StyledTitle3>
+              {showSectionTag && variantInfo.sectionTag ? (
+                <TagContainer>{variantInfo.sectionTag}</TagContainer>
+              ) : null}
               {shouldDisplayAllReviewsButton ? (
                 <SeeAllReviewsContainer>
                   <InternalTouchableLink
@@ -108,6 +113,11 @@ const StyledTitle3 = styled(Typo.Title3)<{ withBorderRight: boolean }>(
       : undefined),
   })
 )
+
+const TagContainer = styled.View(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.s,
+  flexShrink: 0,
+}))
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

@@ -37,11 +37,8 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('ProAdvicesVenue', () => {
-  beforeAll(() => {
-    useRoute.mockReturnValue({ params: { venueId: venueDataTest.id } })
-  })
-
   beforeEach(() => {
+    useRoute.mockReturnValue({ params: { venueId: venueDataTest.id } })
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE])
     mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(
       `/v2/venue/${venueDataTest.id}`,
@@ -77,7 +74,7 @@ describe('ProAdvicesVenue', () => {
     ).toBeOnTheScreen()
   })
 
-  it('should close the modal when pressing "Fermer" button in advices writers modal', async () => {
+  it('should close the modal when pressing "Voir tous les avis des pros" button in advices writers modal', async () => {
     const mockHideModal = jest.fn()
     jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
       visible: true,
@@ -87,13 +84,13 @@ describe('ProAdvicesVenue', () => {
     })
     render(reactQueryProviderHOC(<ProAdvicesVenue />))
 
-    await user.press(await screen.findByText('Fermer'))
+    await user.press(await screen.findByText('Voir tous les avis des pros'))
 
     expect(mockHideModal).toHaveBeenCalledTimes(1)
   })
 
   describe('When offer id defined', () => {
-    beforeAll(() => {
+    beforeEach(() => {
       useRoute.mockReturnValue({ params: { venueId: venueDataTest.id, offerId: 1 } })
     })
 
