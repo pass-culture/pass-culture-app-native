@@ -50,6 +50,7 @@ type Props = Pick<FlatListProps<unknown>, 'onViewableItemsChanged'> & {
   itemSeparatorSize?: number
   horizontalMargin?: number
   contentContainerStyle?: StyleProp<ViewStyle>
+  withMargins?: boolean
 }
 
 const isWeb = Platform.OS === 'web' ? true : undefined
@@ -80,6 +81,7 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
     itemSeparatorSize = designSystem.size.spacing.l,
     horizontalMargin = designSystem.size.spacing.xl,
     contentContainerStyle,
+    withMargins = true,
   } = props
 
   const { isTouch, tiles } = useTheme()
@@ -147,8 +149,8 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
     [itemSeparatorSize]
   )
   const MemoizedHorizontalMargin = useMemo(
-    () => styled(HorizontalMargin).attrs({ width: horizontalMargin })``,
-    [horizontalMargin]
+    () => styled(HorizontalMargin).attrs({ width: withMargins ? horizontalMargin : 0 })``,
+    [horizontalMargin, withMargins]
   )
 
   const maxCaptionHeight =
@@ -224,8 +226,10 @@ const FlatListContainer = styled.View<{ minHeight?: number }>(({ minHeight }) =>
   minHeight,
 }))
 
-const HorizontalMargin = styled.View<{ width: number }>(({ width }) => ({
-  width,
-}))
+const HorizontalMargin = styled.View<{ width: number; withMargins: boolean }>(
+  ({ width, withMargins }) => ({
+    width: withMargins ? width : 0,
+  })
+)
 
 const ItemSeparatorComponent = styled.View<{ width: number }>(({ width }) => ({ width }))

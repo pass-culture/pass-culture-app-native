@@ -8,22 +8,26 @@ import { v4 as uuidv4 } from 'uuid'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
-import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
-import { SearchResultsContent } from 'features/search/components/SearchResultsContent/SearchResultsContent'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { useSync } from 'features/search/helpers/useSync/useSync'
 import { SearchTab } from 'features/search/pages/SearchResults/v2/components/SearchTab'
+import { SearchResultsContent } from 'features/search/pages/SearchResults/v2/SearchResultsContent'
+import { getSearchListContent } from 'features/search/pages/SearchResults/v2/utils'
 import { selectSearchArtists } from 'features/search/queries/useSearchArtists/selectors/selectSearchArtists'
 import { useSearchArtistsQuery } from 'features/search/queries/useSearchArtists/useSearchArtistsQuery'
 import { selectSearchOffers } from 'features/search/queries/useSearchOffersQuery/selectors/selectSearchOffers'
-import { SearchFilter } from 'features/search/queries/useSearchOffersQuery/types'
+import {
+  SearchFilter,
+  SelectSearchOffersParams,
+} from 'features/search/queries/useSearchOffersQuery/types'
 import { useSearchOffersQuery } from 'features/search/queries/useSearchOffersQuery/useSearchOffersQuery'
 import { selectSearchVenues } from 'features/search/queries/useSearchVenuesQuery/selectors/selectSearchVenues'
 import { useSearchVenuesQuery } from 'features/search/queries/useSearchVenuesQuery/useSearchVenuesQuery'
+import { SearchOfferHits } from 'features/search/types'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
@@ -35,7 +39,6 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { AIFakeDoorModal } from 'shared/AIFakeDoorModal/AIFakeDoorModal'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
-import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
 
@@ -47,7 +50,8 @@ export const SearchResults = () => {
   const currentRoute = routes?.at(-1)?.name
   useSync(currentRoute === 'SearchResults')
   const [searchIdGenerated] = useState(uuidv4)
-  const [selectedFilter, setSelectedFilter] = useState<SearchFilter | null>(null)
+  const [selectedFilter, setSelectedFilter] =
+    useState<SelectSearchOffersParams['selectedFilter']>(null)
 
   const netInfo = useNetInfoContext()
   const { isFocusOnSuggestions, searchState, dispatch } = useSearch()
@@ -89,20 +93,32 @@ export const SearchResults = () => {
 
   const transformHits = useTransformOfferHits()
 
-  const { data: artists, isLoading: isArtistsQueryLoading } = useSearchArtistsQuery(queryParams, {
+  const {
+    data: artists,
+    isLoading: isArtistsQueryLoading,
+    isFetching: isArtistsQueryFetching,
+    isSuccess: isArtistsQuerySuccess,
+  } = useSearchArtistsQuery(queryParams, {
     select: (data) => selectSearchArtists(data, selectedFilter),
   })
   const {
     data: offers,
     hasNextPage,
     fetchNextPage,
+    isFetching: isOffersQueryFetching,
     refetch,
-    isRefetching,
+    isRefetching: isOffersQueryRefetching,
     isLoading: isOffersQueryLoading,
+    isSuccess: isOffersQuerySuccess,
   } = useSearchOffersQuery(queryParams, {
     select: (data) => selectSearchOffers({ data, transformHits, selectedFilter }),
   })
-  const { data: venues, isLoading: isVenuesQueryLoading } = useSearchVenuesQuery(queryParams, {
+  const {
+    data: venues,
+    isLoading: isVenuesQueryLoading,
+    isFetching: isVenuesQueryFetching,
+    isSuccess: isVenuesQuerySuccess,
+  } = useSearchVenuesQuery(queryParams, {
     select: (data) => selectSearchVenues(data, selectedFilter),
   })
 
@@ -160,9 +176,20 @@ export const SearchResults = () => {
   }
 
   const handlePressFilter = (filter: SearchFilter) =>
-    setSelectedFilter((prev) => (prev === filter ? null : filter))
+    setSelectedFilter((prev) => {
+      return prev === filter ? null : filter
+    })
 
   const searchResultHits = isArtistInSearchActive ? hits : { ...hits, artists: [] }
+
+  const searchListContent = getSearchListContent({
+    disabilities,
+    selectedFilter,
+    selectedLocationMode,
+    venuesPlaylistTitle: venues?.venuesUserData?.[0]?.venue_playlist_title,
+    hits: searchResultHits,
+    nbHits: offers?.nbHits ?? hits.offers.length,
+  })
 
   if (!netInfo.isConnected) {
     return <OfflinePage />
@@ -170,50 +197,52 @@ export const SearchResults = () => {
 
   return (
     <Page>
-      <Form.Flex>
-        <InstantSearch
-          searchClient={getSearchClient}
-          indexName={suggestionsIndex}
-          insights={{ insightsClient: AlgoliaSearchInsights }}>
-          <Configure hitsPerPage={5} clickAnalytics />
-          <Container>
-            <SearchHeader
-              searchInputID={searchInputID}
-              addSearchHistory={addToHistory}
-              searchInHistory={setQueryHistoryMemoized}
-              withFilterButton={!isFocusOnSuggestions}
-              withArrow
-              shouldDisplayHeader={!isFocusOnSuggestions}>
-              <SearchTab selectedFilter={selectedFilter} onFilterPress={handlePressFilter} />
-            </SearchHeader>
-          </Container>
-          {isFocusOnSuggestions ? (
-            <SearchSuggestions
-              queryHistory={queryHistory}
-              addToHistory={addToHistory}
-              removeFromHistory={removeFromHistory}
-              filteredHistory={filteredHistory}
-              enableAIFakeDoor={enableAIFakeDoor}
-              onPressAIButton={() => handleAIFakeDoorPress('searchAutoComplete')}
-            />
-          ) : (
-            <SearchResultsContent
-              hits={searchResultHits}
-              onEndReached={handleEndReached}
-              onSearchResultsRefresh={() => refetch()}
-              nbHits={offers?.nbHits ?? 0}
-              isLoading={isArtistsQueryLoading && isOffersQueryLoading && isVenuesQueryLoading}
-              isRefetching={isRefetching}
-              userData={offers?.userData}
-              venuesUserData={venues?.venuesUserData ?? undefined}
-              offerVenues={offers?.offerVenues ?? []}
-              onViewableItemsChanged={handleViewableItemsChanged}
-              enableAIFakeDoor={enableAIFakeDoor}
-              onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('search')}
-            />
-          )}
-        </InstantSearch>
-      </Form.Flex>
+      <InstantSearch
+        searchClient={getSearchClient}
+        indexName={suggestionsIndex}
+        insights={{ insightsClient: AlgoliaSearchInsights }}>
+        <Configure hitsPerPage={5} clickAnalytics />
+        <Container>
+          <SearchHeader
+            searchInputID={searchInputID}
+            addSearchHistory={addToHistory}
+            searchInHistory={setQueryHistoryMemoized}
+            withFilterButton={!isFocusOnSuggestions}
+            withArrow
+            shouldDisplayHeader={!isFocusOnSuggestions}>
+            <SearchTab selectedFilter={selectedFilter} onFilterPress={handlePressFilter} />
+          </SearchHeader>
+        </Container>
+        {isFocusOnSuggestions ? (
+          <SearchSuggestions
+            queryHistory={queryHistory}
+            addToHistory={addToHistory}
+            removeFromHistory={removeFromHistory}
+            filteredHistory={filteredHistory}
+            enableAIFakeDoor={enableAIFakeDoor}
+            onPressAIButton={() => handleAIFakeDoorPress('searchAutoComplete')}
+          />
+        ) : (
+          <SearchResultsContent
+            onEndReached={handleEndReached}
+            onSearchResultsRefresh={() => refetch()}
+            nbHits={offers?.nbHits ?? hits.offers.length}
+            searchListContent={searchListContent}
+            isFetching={isArtistsQueryFetching && isOffersQueryFetching && isVenuesQueryFetching}
+            isLoading={isArtistsQueryLoading && isOffersQueryLoading && isVenuesQueryLoading}
+            isRefetching={isOffersQueryRefetching}
+            isSuccess={isArtistsQuerySuccess && isOffersQuerySuccess && isVenuesQuerySuccess}
+            userData={offers?.userData}
+            venuesUserData={venues?.venuesUserData ?? undefined}
+            onViewableItemsChanged={handleViewableItemsChanged}
+            enableAIFakeDoor={enableAIFakeDoor}
+            onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('search')}
+            disabilities={disabilities}
+            selectedFilter={selectedFilter}
+          />
+        )}
+      </InstantSearch>
+
       {enableAIFakeDoor ? (
         <AIFakeDoorModal
           close={hideModal}

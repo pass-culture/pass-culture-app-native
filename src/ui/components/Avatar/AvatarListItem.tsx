@@ -8,12 +8,12 @@ import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
-
 export type AvatarListItemProps = {
-  id: number
+  id: number | string
   name: string
   onItemPress: (id: string, name: string) => void
   image?: string
+  isFullWidth?: boolean
 } & AvatarProps
 
 export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
@@ -22,18 +22,17 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
   name,
   size,
   onItemPress,
+  isFullWidth = false,
   ...props
 }) => {
   return (
     <InternalTouchableLink
       navigateTo={{
         screen: 'Artist',
-        params: {
-          id,
-        },
+        params: { id: id.toString() },
       }}
       onBeforeNavigate={() => onItemPress(id.toString(), name)}>
-      <StyledView gap={2}>
+      <StyledView gap={2} isFullWidth={isFullWidth}>
         <Avatar size={size} {...props}>
           {image ? (
             <StyledImage
@@ -46,7 +45,7 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
           )}
         </Avatar>
 
-        <ArtistName numberOfLines={2} maxWidth={size ?? 0}>
+        <ArtistName numberOfLines={2} maxWidth={size ?? 0} isFullWidth={isFullWidth}>
           {name}
         </ArtistName>
       </StyledView>
@@ -54,14 +53,16 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
   )
 }
 
-const StyledView = styled(ViewGap)(({ theme }) => ({
-  flexDirection: 'column',
-  paddingVertical: theme.designSystem.size.spacing.s,
-}))
+const ArtistName = styled(Typo.BodyAccentS)<{ maxWidth: number; isFullWidth: boolean }>(
+  ({ maxWidth, isFullWidth }) => ({
+    textAlign: 'center',
+    maxWidth: isFullWidth ? '100%' : maxWidth,
+  })
+)
 
-const ArtistName = styled(Typo.BodyAccentS)<{ maxWidth: number }>(({ maxWidth }) => ({
-  textAlign: 'center',
-  maxWidth,
+const StyledView = styled(ViewGap)<{ isFullWidth: boolean }>(({ theme, isFullWidth }) => ({
+  flexDirection: isFullWidth ? 'row' : 'column',
+  paddingVertical: theme.designSystem.size.spacing.s,
 }))
 
 const StyledImage = styled(FastImage)({

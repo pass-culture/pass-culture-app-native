@@ -1,16 +1,18 @@
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
+import {
+  SEARCH_FILTERS,
+  SearchFilter,
+  SelectSearchOffersParams,
+} from 'features/search/queries/useSearchOffersQuery/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Checkmark } from 'ui/svg/icons/Checkmark'
 import { Typo } from 'ui/theme'
 
-const SEARCH_FILTERS = ['Offres', 'Lieux', 'Artistes'] as const
-type SearchFilter = (typeof SEARCH_FILTERS)[number]
-
 type Props = {
-  selectedFilter: SearchFilter | null
+  selectedFilter: SelectSearchOffersParams['selectedFilter']
   onFilterPress: (filter: SearchFilter) => void
 }
 

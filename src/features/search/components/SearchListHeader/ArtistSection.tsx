@@ -12,22 +12,32 @@ const TITLE = 'Les artistes'
 
 type ArtistSectionProps = {
   artists: Artist[]
-  onItemPress: (artistId: string, artistName: string) => void
   style?: StyleProp<ViewStyle>
+  onArtistPlaylistItemPress: (id: string, name: string) => void
+  withMargins?: boolean
 }
 
-export const ArtistSection = ({ artists, onItemPress, style }: ArtistSectionProps) => {
+export const ArtistSection = ({
+  artists,
+  style,
+  onArtistPlaylistItemPress,
+  withMargins = true,
+}: ArtistSectionProps) => {
   return (
     <View style={style}>
-      <Container>
+      <Container withMargins={withMargins}>
         <Typo.Title3>{TITLE}</Typo.Title3>
         <NumberOfResults nbHits={artists.length} />
       </Container>
-      <AvatarList data={artists} avatarConfig={{ size: AVATAR_MEDIUM }} onItemPress={onItemPress} />
+      <AvatarList
+        data={artists}
+        avatarConfig={{ size: AVATAR_MEDIUM }}
+        onItemPress={onArtistPlaylistItemPress}
+      />
     </View>
   )
 }
 
-const Container = styled(View)(({ theme }) => ({
-  marginHorizontal: theme.designSystem.size.spacing.xl,
+const Container = styled(View)<{ withMargins: boolean }>(({ theme, withMargins }) => ({
+  marginHorizontal: withMargins ? theme.designSystem.size.spacing.xl : 0,
 }))
