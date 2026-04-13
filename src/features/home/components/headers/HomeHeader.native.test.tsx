@@ -2,8 +2,9 @@ import { NavigationContainer } from '@react-navigation/native'
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { BannerName, BannerResponse, EligibilityType } from 'api/gen'
+import { BannerName, BannerResponse } from 'api/gen'
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { beneficiaryUser, exBeneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationLabel } from 'libs/location/types'
@@ -44,7 +45,7 @@ describe('HomeHeader', () => {
   it('beneficiary users should see subtitle: Tu as 56 € sur ton pass', async () => {
     mockAuthContextWithUser({
       ...beneficiaryUser,
-      eligibility: EligibilityType['age-18'],
+      eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V2_18,
       isEligibleForBeneficiaryUpgrade: false,
     })
 
@@ -60,7 +61,7 @@ describe('HomeHeader', () => {
   it('should display "Toute la culture à portée de main" when user is eligible to free offer', async () => {
     mockAuthContextWithUser({
       ...beneficiaryUser,
-      eligibility: EligibilityType.free,
+      eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
       isEligibleForBeneficiaryUpgrade: false,
     })
 
@@ -77,9 +78,8 @@ describe('HomeHeader', () => {
   it('should display "Toute la culture à portée de main" when user credit type is CREDIT_V3_15', async () => {
     mockAuthContextWithUser({
       ...beneficiaryUser,
-      eligibility: EligibilityType['age-17-18'],
       creditType: UserCreditType.CREDIT_V3_15,
-      isEligibleForBeneficiaryUpgrade: false,
+      eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_17,
     })
 
     const credit = { amount: 0, isExpired: false }

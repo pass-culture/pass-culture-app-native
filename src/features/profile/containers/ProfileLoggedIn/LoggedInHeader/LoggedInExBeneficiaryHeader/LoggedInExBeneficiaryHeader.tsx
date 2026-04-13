@@ -16,7 +16,7 @@ type Props = {
 } & ProfileFeatureFlagsProps
 
 export const LoggedInExBeneficiaryHeader = ({ user, featureFlags, remoteConfigData }: Props) => {
-  const { firstName, lastName, domainsCredit, depositExpirationDate, eligibility, statusType } =
+  const { firstName, lastName, domainsCredit, depositExpirationDate, eligibilityType, statusType } =
     user
   const headerTitle = getProfileHeaderTitle({ firstName, lastName })
   const isCreditEmpty = domainsCredit?.all.remaining === 0
@@ -25,8 +25,8 @@ export const LoggedInExBeneficiaryHeader = ({ user, featureFlags, remoteConfigDa
     isCreditEmpty,
     isDepositExpired,
     depositExpirationDate,
-    eligibility,
     statusType,
+    eligibilityType,
   })
 
   return (

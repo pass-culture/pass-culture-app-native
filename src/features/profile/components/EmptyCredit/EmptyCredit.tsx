@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { EligibilityType } from 'api/gen'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { HighlightedBody } from 'features/profile/components/HighlightedBody/HighlightedBody'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
@@ -12,10 +12,10 @@ import { Typo } from 'ui/theme'
 
 export const EmptyCredit = ({
   age,
-  eligibility,
+  eligibilityType,
 }: {
   age: number
-  eligibility?: EligibilityType | null
+  eligibilityType?: UserEligibilityType | null
 }) => {
   const {
     data: { homeEntryIdFreeOffers },
@@ -33,7 +33,9 @@ export const EmptyCredit = ({
 
   const ageToShowCreditV3 = age === 17 ? 17 : 16
 
-  const isUserFreeStatus = eligibility === EligibilityType.free
+  const isUserFreeStatus =
+    eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_16 ||
+    eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_15
   const nextCreditIntroText = isUserFreeStatus
     ? 'Tu pourras débloquer ton prochain crédit de '
     : 'Ton prochain crédit de '

@@ -1,4 +1,5 @@
-import { EligibilityType, OfferResponse, OfferStockResponse } from 'api/gen'
+import { OfferResponse, OfferStockResponse } from 'api/gen'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { UserProfile } from 'features/share/types'
 import { formatFullAddress } from 'shared/address/addressFormatter'
@@ -33,7 +34,9 @@ export function getBookingDetails({
     euroToPacificFrancRate
   )
 
-  const isNotUserFreeStatus = user?.eligibility !== EligibilityType.free
+  const isNotUserFreeStatus =
+    user?.eligibilityType !== UserEligibilityType.ELIGIBLE_CREDIT_V3_16 &&
+    user?.eligibilityType !== UserEligibilityType.ELIGIBLE_CREDIT_V3_15
 
   const isStockBookable = !(isUserUnderage && selectedStock?.isForbiddenToUnderage)
 

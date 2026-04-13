@@ -1,7 +1,8 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { BannerName, BannerResponse, EligibilityType, SubscriptionStepperResponseV2 } from 'api/gen'
+import { BannerName, BannerResponse, SubscriptionStepperResponseV2 } from 'api/gen'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
@@ -118,7 +119,7 @@ describe('ProfileHeader', () => {
       user: {
         ...beneficiaryUser,
         isEligibleForBeneficiaryUpgrade: true,
-        eligibility: EligibilityType['age-18'],
+        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V2_18,
       },
     })
 

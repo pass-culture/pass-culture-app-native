@@ -20,7 +20,7 @@ export enum ShareAppModalType {
 // Delete this type once omited objects are no longer in UserProfileResponse of api.gen
 export type UserProfile = Omit<
   UserProfileResponse,
-  'needsToFillCulturalSurvey' | 'depositType' | 'isBeneficiary' | 'status'
+  'needsToFillCulturalSurvey' | 'depositType' | 'isBeneficiary' | 'status' | 'eligibility'
 > & {
   subscriptionStatus?: SubscriptionStatus | null
   statusType: UserStatusType

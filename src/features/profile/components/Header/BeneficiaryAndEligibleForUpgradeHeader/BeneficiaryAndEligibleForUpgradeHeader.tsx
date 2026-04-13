@@ -1,7 +1,8 @@
 import React, { memo } from 'react'
 import { View } from 'react-native'
 
-import { DomainsCredit, EligibilityType } from 'api/gen'
+import { DomainsCredit } from 'api/gen'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { NonBeneficiaryBanner } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
@@ -14,7 +15,7 @@ type CreditHeaderProps = {
   age?: number
   domainsCredit?: DomainsCredit | null
   depositExpirationDate?: string
-  eligibility?: EligibilityType | null
+  eligibilityType?: UserEligibilityType | null
   eligibilityStartDatetime?: string
   eligibilityEndDatetime?: string
   statusType: UserStatusType | null
@@ -29,8 +30,8 @@ const BeneficiaryAndEligibleForUpgradeHeaderComponent = ({
   depositExpirationDate,
   eligibilityStartDatetime,
   eligibilityEndDatetime,
-  eligibility,
   statusType,
+  eligibilityType,
 }: CreditHeaderProps) => (
   <ViewGap gap={3}>
     <View>
@@ -40,7 +41,7 @@ const BeneficiaryAndEligibleForUpgradeHeaderComponent = ({
         age={age}
         domainsCredit={domainsCredit}
         depositExpirationDate={depositExpirationDate ?? undefined}
-        eligibility={eligibility}
+        eligibilityType={eligibilityType}
         featureFlags={featureFlags}
         statusType={statusType}
       />

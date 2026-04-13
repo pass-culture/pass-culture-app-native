@@ -1,12 +1,17 @@
 import mockdate from 'mockdate'
 
 import { replace } from '__mocks__/@react-navigation/native'
-import { EligibilityType } from 'api/gen'
+import { EligibilityType, UserProfileResponse } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import * as Login from 'features/auth/helpers/useLoginRoutine'
 import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { UserProfile } from 'features/share/types'
-import { nonBeneficiaryUser } from 'fixtures/user'
+import {
+  beneficiaryUserFromAPI,
+  eligibleUserFromAPI,
+  nonBeneficiaryUser,
+  nonBeneficiaryUserFromAPI,
+} from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
@@ -53,10 +58,8 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to AccountCreated when isEligibleForBeneficiaryUpgrade is false', async () => {
-    mockServer.getApi<UserProfile>('/v1/me', {
-      ...nonBeneficiaryUser,
-      email: 'email@domain.ext',
-      firstName: 'Jean',
+    mockServer.getApi<UserProfileResponse>('/v1/me', {
+      ...nonBeneficiaryUserFromAPI,
       eligibility: EligibilityType['age-18'],
       isEligibleForBeneficiaryUpgrade: false,
     })
@@ -70,10 +73,8 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to AccountCreated when isEligibleForBeneficiaryUpgrade and user is 15 or 16 yo', async () => {
-    mockServer.getApi<UserProfile>('/v1/me', {
-      ...nonBeneficiaryUser,
-      email: 'email@domain.ext',
-      firstName: 'Jean',
+    mockServer.getApi<UserProfileResponse>('/v1/me', {
+      ...nonBeneficiaryUserFromAPI,
       eligibility: EligibilityType['free'],
       isEligibleForBeneficiaryUpgrade: true,
     })
@@ -87,10 +88,8 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to Verify Eligibility when isEligibleForBeneficiaryUpgrade and user is 17 or 18 yo', async () => {
-    mockServer.getApi<UserProfile>('/v1/me', {
-      ...nonBeneficiaryUser,
-      email: 'email@domain.ext',
-      firstName: 'Jean',
+    mockServer.getApi<UserProfileResponse>('/v1/me', {
+      ...eligibleUserFromAPI,
       eligibility: EligibilityType['age-17-18'],
       isEligibleForBeneficiaryUpgrade: true,
     })
@@ -104,10 +103,8 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to AccountCreated when not isEligibleForBeneficiaryUpgrade and user is not future eligible', async () => {
-    mockServer.getApi<UserProfile>('/v1/me', {
-      ...nonBeneficiaryUser,
-      email: 'email@domain.ext',
-      firstName: 'Jean',
+    mockServer.getApi<UserProfileResponse>('/v1/me', {
+      ...beneficiaryUserFromAPI,
       isEligibleForBeneficiaryUpgrade: false,
       eligibilityStartDatetime: '2019-12-01T00:00:00Z',
     })
@@ -119,10 +116,8 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to NotYetUnderageEligibility when not isEligibleForBeneficiaryUpgrade and user is future eligible', async () => {
-    mockServer.getApi<UserProfile>('/v1/me', {
-      ...nonBeneficiaryUser,
-      email: 'email@domain.ext',
-      firstName: 'Jean',
+    mockServer.getApi<UserProfileResponse>('/v1/me', {
+      ...beneficiaryUserFromAPI,
       isEligibleForBeneficiaryUpgrade: false,
       eligibilityStartDatetime: '2021-12-01T00:00:00Z',
     })

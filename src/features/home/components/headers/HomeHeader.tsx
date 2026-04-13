@@ -1,13 +1,13 @@
 import React, { FunctionComponent, useMemo } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { EligibilityType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
   isCurrentOrFormerBeneficiary,
   isCurrentBeneficiary,
 } from 'features/auth/helpers/checkStatusType'
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
@@ -38,11 +38,11 @@ export const HomeHeader: FunctionComponent = function () {
         !isLoggedIn ||
         !user ||
         !isCurrentOrFormerBeneficiary(user) ||
-        user.eligibility === EligibilityType.free ||
         user?.creditType === UserCreditType.CREDIT_V3_15 ||
         user?.creditType === UserCreditType.CREDIT_V3_16 ||
+        user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_16 ||
+        user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_15 ||
         (!isCurrentBeneficiary(user) && user.isEligibleForBeneficiaryUpgrade)
-
       if (shouldSeeDefaultSubtitle) return 'Toute la culture à portée de main'
 
       const shouldSeeBeneficiarySubtitle =

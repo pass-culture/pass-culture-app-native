@@ -7,7 +7,6 @@ import {
   BookingReponse,
   BookOfferRequest,
   BookOfferResponse,
-  EligibilityType,
   FavoriteOfferResponse,
   OfferResponse,
   RecommendationApiParams,
@@ -21,6 +20,7 @@ import {
   isNonEligible,
   isEligible,
 } from 'features/auth/helpers/checkStatusType'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
 import {
   useStoredProfileInfos,
@@ -126,7 +126,9 @@ export const getCtaWordingAndAction = ({
 
   const { hasEnoughCredit, message: hasEnoughCreditMessage } = hasEnoughCreditData
 
-  const isUserFreeStatus = user?.eligibility === EligibilityType.free
+  const isUserFreeStatus =
+    user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_16 ||
+    user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_15
   const isFreeOffer = getIsFreeOffer(offer)
   const isNotFreeOffer = !isFreeOffer
   const isProfileIncomplete = getIsProfileIncomplete(user)
@@ -429,7 +431,9 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
   const { refetch: getBookings } = useBookingsQuery()
 
   useEffect(() => {
-    const isUserFreeStatus = user?.eligibility === EligibilityType.free
+    const isUserFreeStatus =
+      user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_16 ||
+      user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_15
     const isFreeOffer = getIsFreeOffer(offer)
     const isProfileIncomplete = getIsProfileIncomplete(user)
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { EligibilityType } from 'api/gen'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { EmptyCredit } from 'features/profile/components/EmptyCredit/EmptyCredit'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
@@ -66,7 +66,7 @@ describe('<EmptyCredit />', () => {
   })
 
   it('should use free user phrasing when eligibility is free', () => {
-    render(<EmptyCredit age={15} eligibility={EligibilityType.free} />)
+    render(<EmptyCredit age={15} eligibilityType={UserEligibilityType.ELIGIBLE_CREDIT_V3_16} />)
 
     expect(screen.getByText(/Tu pourras débloquer ton prochain crédit de/)).toBeOnTheScreen()
     expect(screen.getByText(/à 17 ans/)).toBeOnTheScreen()

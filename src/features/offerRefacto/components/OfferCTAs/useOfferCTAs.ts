@@ -2,8 +2,9 @@ import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/nativ
 import { useCallback, useEffect } from 'react'
 import { useTheme } from 'styled-components/native'
 
-import { BookOfferResponse, EligibilityType, OfferResponse } from 'api/gen'
+import { BookOfferResponse, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
 import { useStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
 import { openUrl } from 'features/navigation/helpers/openUrl'
@@ -189,7 +190,9 @@ export const useOfferCTAs = ({
 
   // 6. Effects
   useEffect(() => {
-    const isUserFreeStatus = user?.eligibility === EligibilityType.free
+    const isUserFreeStatus =
+      user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_16 ||
+      user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_15
     const isProfileIncomplete = getIsProfileIncomplete(user)
     const isEligibleFreeOffer15To16 = enableBookingFreeOfferFifteenSixteen && isUserFreeStatus
 
