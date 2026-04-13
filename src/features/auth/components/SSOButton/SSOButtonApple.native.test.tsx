@@ -4,9 +4,8 @@ import React from 'react'
 import DeviceInfo from 'react-native-device-info'
 
 import * as API from 'api/api'
-import { AccountState, OauthStateResponse, SigninResponse } from 'api/gen'
+import { AccountState, OauthStateResponse, SigninResponse, UserProfileResponse } from 'api/gen'
 import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -64,7 +63,10 @@ describe('<SSOButtonApple />', () => {
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
     })
-    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
+    mockServer.getApi<UserProfileResponse>('/v1/me', {
+      ...beneficiaryUser,
+      needsToFillCulturalSurvey: false,
+    } as UserProfileResponse)
 
     renderSSOButton()
 
@@ -131,7 +133,10 @@ describe('<SSOButtonApple />', () => {
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
     })
-    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
+    mockServer.getApi<UserProfileResponse>('/v1/me', {
+      ...beneficiaryUser,
+      needsToFillCulturalSurvey: false,
+    } as UserProfileResponse)
 
     renderSSOButton()
 
@@ -146,7 +151,10 @@ describe('<SSOButtonApple />', () => {
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
     })
-    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
+    mockServer.getApi<UserProfileResponse>('/v1/me', {
+      ...beneficiaryUser,
+      needsToFillCulturalSurvey: false,
+    } as UserProfileResponse)
 
     renderSSOButton('login')
 

@@ -47,7 +47,7 @@ describe('loginToApple (web)', () => {
   })
 
   it('should save the oauthStateToken in the SSO context before redirecting', async () => {
-    mockLoadAppleSSOContext.mockReturnValue({ type: 'signup', oauthStateToken: '' })
+    mockLoadAppleSSOContext.mockReturnValueOnce({ type: 'signup', oauthStateToken: '' })
 
     await loginToApple({ onSuccess, onError })
 

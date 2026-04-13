@@ -13,11 +13,7 @@ type Props = {
   doNotNavigateOnSigninSuccess?: boolean
 }
 
-export const SSOButtonApple = ({
-  type,
-  onSignInFailure,
-  doNotNavigateOnSigninSuccess,
-}: Props) => {
+export const SSOButtonApple = ({ type, onSignInFailure, doNotNavigateOnSigninSuccess }: Props) => {
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const isSignupButton = type === 'signup'
   const { mutate: signIn } = useSignInMutation({

@@ -99,13 +99,15 @@ describe('AppleSSOCallback (web)', () => {
       expect(mockSignInAsync).not.toHaveBeenCalled()
       expect(mockClearAppleSSOContext).toHaveBeenCalledTimes(1)
       expect(mockResetFromRef).toHaveBeenCalledWith('Login', undefined)
-      expect(showErrorSpy).toHaveBeenCalled()
+      expect(showErrorSpy).toHaveBeenCalledWith(
+        'Une erreur est survenue avec Apple, veuillez réessayer.'
+      )
     })
   })
 
   describe('success navigation', () => {
     it('should reset navigation to TabNavigator when accountState is ACTIVE', async () => {
-      mockSignInAsync.mockResolvedValue({ accountState: AccountState.ACTIVE })
+      mockSignInAsync.mockResolvedValueOnce({ accountState: AccountState.ACTIVE })
       mockRouteParams = { code: 'apple-code', state: VALID_STATE }
 
       render(<AppleSSOCallback />)
@@ -116,7 +118,7 @@ describe('AppleSSOCallback (web)', () => {
     })
 
     it('should reset navigation to AccountStatusScreenHandler when accountState is INACTIVE', async () => {
-      mockSignInAsync.mockResolvedValue({ accountState: AccountState.INACTIVE })
+      mockSignInAsync.mockResolvedValueOnce({ accountState: AccountState.INACTIVE })
       mockRouteParams = { code: 'apple-code', state: VALID_STATE }
 
       render(<AppleSSOCallback />)
