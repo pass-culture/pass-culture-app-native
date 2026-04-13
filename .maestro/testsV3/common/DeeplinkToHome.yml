@@ -1,0 +1,18 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow:
+    when:
+        platform: Android
+    commands:
+    - openLink:
+        link: ${output.links.staging.android.home}
+        autoVerify: true
+- runFlow:
+    when:
+        platform: iOS
+    commands:
+    - openLink:
+        link: ${output.links.staging.ios.home}
+        autoVerify: true
+- runFlow: ../common/AcceptCookies.yml
+- assertVisible: "Bienvenue\_!"
