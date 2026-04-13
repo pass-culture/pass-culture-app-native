@@ -1,10 +1,6 @@
-import {
-  EligibilityType,
-  OfferResponse,
-  SubcategoryIdEnum,
-  SubcategoryResponseModelv2,
-} from 'api/gen'
+import { OfferResponse, SubcategoryIdEnum, SubcategoryResponseModelv2 } from 'api/gen'
 import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { getIsProfileIncomplete } from 'features/offer/helpers/getIsProfileIncomplete/getIsProfileIncomplete'
 import { isFreeDigitalOffer, isFreeOffer } from 'features/offerRefacto/helpers'
@@ -39,7 +35,9 @@ export const getFreeOfferCTA = (
   user?: UserProfile,
   alreadyBookedOfferId?: number
 ): CTAType | undefined => {
-  const isUserFreeStatus = user?.eligibility === EligibilityType.free
+  const isUserFreeStatus =
+    user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_16 ||
+    user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_15
 
   if (isFreeDigitalOffer(offer) && user?.statusType !== UserStatusType.GENERAL_PUBLIC) {
     if (subcategory.isEvent) return alreadyBookedOfferId ? 'SEE_BOOKING' : 'BOOK_OFFER'
@@ -138,7 +136,9 @@ export const getCTAWordingAndAction = ({
   }
 
   // 3. User 15/16 years old (no bookings for paid offers)
-  const isUserFreeStatus = user?.eligibility === EligibilityType.free
+  const isUserFreeStatus =
+    user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_16 ||
+    user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_15
   if (isUserFreeStatus && !isFreeOffer(offer)) {
     return getCTAProps('USER_15_16', context)
   }

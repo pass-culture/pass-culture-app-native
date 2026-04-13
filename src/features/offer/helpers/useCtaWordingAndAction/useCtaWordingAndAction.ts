@@ -6,7 +6,6 @@ import {
   BookingResponse,
   BookOfferRequest,
   BookOfferResponse,
-  EligibilityType,
   FavoriteOfferResponse,
   OfferResponse,
   RecommendationApiParams,
@@ -20,6 +19,7 @@ import {
   isEligible,
   isCurrentBeneficiary,
 } from 'features/auth/helpers/checkStatusType'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { useOngoingOrEndedBookingQueryV2 } from 'features/bookings/queries'
 import {
   useStoredProfileInfos,
@@ -126,7 +126,9 @@ export const getCtaWordingAndAction = ({
 
   const { hasEnoughCredit, message: hasEnoughCreditMessage } = hasEnoughCreditData
 
-  const isUserFreeStatus = user?.eligibility === EligibilityType.free
+  const isUserFreeStatus =
+    user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_16 ||
+    user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_15
   const isFreeOffer = getIsFreeOffer(offer)
   const isNotFreeOffer = !isFreeOffer
   const isProfileIncomplete = getIsProfileIncomplete(user)
