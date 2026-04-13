@@ -47,7 +47,7 @@ export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
-      analytics.logModuleDisplayedOnHomepage({
+      void analytics.logModuleDisplayedOnHomepage({
         moduleId: props.id,
         moduleType: ContentTypes.VIDEO,
         index: props.index,

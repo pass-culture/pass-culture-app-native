@@ -17,11 +17,11 @@ import { PlaylistType } from 'features/offer/enums'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
 import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 
-export type ItemDimensions = { width: number; height: number }
+type ItemDimensions = { width: number; height: number }
 
 type RenderHeaderItem = ((itemDimensions: ItemDimensions) => React.ReactElement<any>) | undefined
 
-export type RenderFooterItem =
+type RenderFooterItem =
   | ((itemDimensions: ItemDimensions) => React.ReactElement<any> | null)
   | undefined
 

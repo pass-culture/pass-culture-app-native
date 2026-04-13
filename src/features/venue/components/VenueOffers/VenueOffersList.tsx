@@ -25,8 +25,7 @@ import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { AvatarList } from 'ui/components/Avatar/AvatarList'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
-import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
-import { SeeMore } from 'ui/components/SeeMore'
+import { CustomListRenderItem } from 'ui/components/Playlist'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, LENGTH_M, RATIO_HOME_IMAGE, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -74,7 +73,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   const shouldDisplayArtistsPlaylist = artistsPlaylistEnabled && artists.length > 0
   const shouldDisplayAdvicesSection = advicesCardData && advicesCardData.length > 0 && nbAdvices > 0
 
-  const onPressSeeMore = () => analytics.logVenueSeeMoreClicked(venue.id)
+  const onBeforeNavigate = () => analytics.logVenueSeeMoreClicked(venue.id)
 
   const onPressAdviceCardSeeMore = (offerId: number) => {
     void analytics.logConsultAdvice({
@@ -106,14 +105,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
     })
   }
 
-  const renderFooter: RenderFooterItem = ({ width, height }: { width: number; height: number }) => (
-    <SeeMore
-      width={width}
-      height={height}
-      navigateTo={searchNavigationConfig}
-      onPress={() => analytics.logVenueSeeMoreClicked(venue.id)}
-    />
-  )
   const renderItem: CustomListRenderItem<Offer> = ({ item, width, height }) => {
     const timestampsInMillis = item.offer.dates && getTimeStampInMillis(item.offer.dates)
     const tag = renderInteractionTag({
@@ -197,15 +188,12 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
             data={hits}
             itemHeight={LENGTH_M}
             itemWidth={LENGTH_M * RATIO_HOME_IMAGE}
-            onPressSeeMore={onPressSeeMore}
+            seeAllButton={{ navigateToSearchPlaylist: searchNavigationConfig, onBeforeNavigate }}
             renderItem={renderItem}
-            titleSeeMoreLink={searchNavigationConfig}
-            renderFooter={renderFooter}
             keyExtractor={keyExtractor}
             FlatListComponent={FlatList}
             playlistRef={listRef}
             onViewableItemsChanged={handleViewableItemsChanged}
-            forceNativeSeeMore
           />
         )}
       </ObservedPlaylist>

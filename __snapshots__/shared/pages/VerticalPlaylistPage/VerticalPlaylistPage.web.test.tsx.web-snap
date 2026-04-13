@@ -1,0 +1,338 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`<VerticalPlaylistPage /> should render correctly 1`] = `
+.c0 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:focus-visible {
+  outline-color: #161617;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c0:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+<div>
+  <div
+    class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginLeft-11wrixw r-marginRight-61z16t"
+  >
+    <header
+      class="css-view-175oi2r r-backgroundColor-14lw9ot r-borderBottomColor-1nwnxgm r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
+      role="banner"
+    >
+      <div
+        class="css-view-175oi2r r-height-10ptun7"
+      />
+      <div
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-minHeight-1pl7oy7 r-paddingInline-cxgwc0 r-width-13qz1uu"
+      >
+        <div
+          class="css-view-175oi2r r-alignItems-1habvwh r-justifyContent-1h0z5md r-marginLeft-11wrixw r-marginRight-1kb76zh r-minWidth-vkv6oe"
+          data-testid="back-button-container"
+        >
+          <button
+            aria-label="Revenir en arrière"
+            class="c0"
+            data-testid="Revenir en arrière"
+            tabindex="0"
+            type="button"
+          >
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1wjczhr r-flexDirection-18u37iz"
+            >
+              <div
+                class="css-view-175oi2r"
+                id="0"
+                style="flex-shrink: 0;"
+              >
+                <div
+                  class="css-view-175oi2r"
+                >
+                  <div
+                    class="css-text-146c3p1"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div
+          class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-17s6mgv r-marginLeft-1jkjb r-marginRight-61z16t r-minWidth-vkv6oe"
+          data-testid="close-button-container"
+        />
+      </div>
+    </header>
+    <div
+      class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
+    >
+      <div
+        class="css-view-175oi2r"
+        style="padding: 24px 24px 24px 24px;"
+      >
+        <div
+          class="css-view-175oi2r"
+        >
+          <div
+            class="css-view-175oi2r r-height-17lwhjb"
+          />
+          <h1
+            aria-level="1"
+            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1a2aj48 r-lineHeight-758dxi"
+            dir="ltr"
+            role="heading"
+          >
+            Module title
+          </h1>
+          <div
+            class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginBottom-6gpygo"
+            dir="ltr"
+          >
+            Module subtitle
+          </div>
+          <div
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginBottom-6gpygo r-marginTop-1wzrnnt"
+          >
+            <div
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            >
+              <div
+                class="css-view-175oi2r r-marginBottom-1ifxtd0 r-marginTop-14gqq1x"
+                role="status"
+              >
+                <div
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                  dir="ltr"
+                >
+                  3 résultats
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-175oi2r"
+        >
+          <div
+            aria-label="Offre "La nuit des temps", de la catégorie "Livre",   prix 0,28 €. "
+            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-outlineOffset-2fw26j"
+            data-testid="Offre "La nuit des temps", de la catégorie "Livre",   prix 0,28 €. "
+            role="link"
+            style="transition-duration: 0s;"
+            tabindex="0"
+          >
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            >
+              <div
+                class="css-view-175oi2r r-backgroundColor-14lw9ot r-borderBottomLeftRadius-6t5ypu r-borderBottomRightRadius-1dpl46z r-borderTopLeftRadius-kicko2 r-borderTopRightRadius-notknq r-height-1njcn02 r-width-7a29px"
+              />
+              <div
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-f4gmv6"
+                data-testid="horizontal_offer_tile"
+              >
+                <div
+                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                  >
+                    <div
+                      class="css-view-175oi2r r-flexShrink-1wbh5a2"
+                    >
+                      <div
+                        class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                        dir="ltr"
+                      >
+                        La nuit des temps
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                    data-testid="native-category-value"
+                    dir="ltr"
+                  >
+                    Livre
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-flexDirection-18u37iz r-gap-9aw3ui"
+                  >
+                    <div
+                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-kmu5yi"
+                      dir="ltr"
+                    >
+                      0,28 €
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-epq5cr r-marginBlock-12kyg2d r-marginInline-14mg64r"
+          />
+        </div>
+        <div
+          class="css-view-175oi2r"
+        >
+          <div
+            aria-label="Offre "I want something more", de la catégorie "Concert",   prix 0,23 €. "
+            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-outlineOffset-2fw26j"
+            data-testid="Offre "I want something more", de la catégorie "Concert",   prix 0,23 €. "
+            role="link"
+            style="transition-duration: 0s;"
+            tabindex="0"
+          >
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            >
+              <div
+                class="css-view-175oi2r r-backgroundColor-14lw9ot r-borderBottomLeftRadius-6t5ypu r-borderBottomRightRadius-1dpl46z r-borderTopLeftRadius-kicko2 r-borderTopRightRadius-notknq r-height-1njcn02 r-width-7a29px"
+              />
+              <div
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-f4gmv6"
+                data-testid="horizontal_offer_tile"
+              >
+                <div
+                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                  >
+                    <div
+                      class="css-view-175oi2r r-flexShrink-1wbh5a2"
+                    >
+                      <div
+                        class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                        dir="ltr"
+                      >
+                        I want something more
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                    data-testid="native-category-value"
+                    dir="ltr"
+                  >
+                    Concert
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-flexDirection-18u37iz r-gap-9aw3ui"
+                  >
+                    <div
+                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-kmu5yi"
+                      dir="ltr"
+                    >
+                      0,23 €
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-epq5cr r-marginBlock-12kyg2d r-marginInline-14mg64r"
+          />
+        </div>
+        <div
+          class="css-view-175oi2r"
+        >
+          <div
+            aria-label="Offre "Un lit sous une rivière", de la catégorie "Concert",   prix 0,34 €. Possibilité de réserver 2 places."
+            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-outlineOffset-2fw26j"
+            data-testid="Offre "Un lit sous une rivière", de la catégorie "Concert",   prix 0,34 €. Possibilité de réserver 2 places."
+            role="link"
+            style="transition-duration: 0s;"
+            tabindex="0"
+          >
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            >
+              <div
+                class="css-view-175oi2r r-backgroundColor-14lw9ot r-borderBottomLeftRadius-6t5ypu r-borderBottomRightRadius-1dpl46z r-borderTopLeftRadius-kicko2 r-borderTopRightRadius-notknq r-height-1njcn02 r-width-7a29px"
+              />
+              <div
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-f4gmv6"
+                data-testid="horizontal_offer_tile"
+              >
+                <div
+                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                  >
+                    <div
+                      class="css-view-175oi2r r-flexShrink-1wbh5a2"
+                    >
+                      <div
+                        class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                        dir="ltr"
+                      >
+                        Un lit sous une rivière
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                    data-testid="native-category-value"
+                    dir="ltr"
+                  >
+                    Concert
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-flexDirection-18u37iz r-gap-9aw3ui"
+                  >
+                    <div
+                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-kmu5yi"
+                      dir="ltr"
+                    >
+                      0,34 €
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-175oi2r"
+        >
+          <div
+            class="css-view-175oi2r r-height-3da1kt"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

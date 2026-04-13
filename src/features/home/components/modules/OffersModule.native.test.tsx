@@ -2,8 +2,8 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
-import { push } from '__mocks__/@react-navigation/native'
-import { OffersModuleParameters } from 'features/home/types'
+import { navigate } from '__mocks__/@react-navigation/native'
+import { OffersModuleParameters, HomepageModuleType } from 'features/home/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
@@ -88,42 +88,23 @@ describe('OffersModule', () => {
     expect(screen.queryByText('Un lit sous une rivière')).not.toBeOnTheScreen()
   })
 
-  it('should trigger navigate with correct params when we click on See More', async () => {
+  it('should navigate to vertical playlist when we click on "Tout voir"', async () => {
     renderOffersModule({
       data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
     })
 
-    await user.press(screen.getByText('En voir plus'))
+    await user.press(screen.getByText('Tout voir'))
 
-    expect(push).toHaveBeenCalledWith('TabNavigator', {
-      screen: 'SearchStackNavigator',
-      params: {
-        screen: 'SearchResults',
-        params: {
-          beginningDatetime: undefined,
-          date: null,
-          endingDatetime: undefined,
-          hitsPerPage: 20,
-          isDigital: false,
-          locationParams: {
-            aroundMeRadius: 'all',
-            aroundPlaceRadius: 'all',
-            selectedLocationMode: 'EVERYWHERE',
-            userLocation: undefined,
-          },
-          minBookingsThreshold: 0,
-          offerCategories: [],
-          offerGenreTypes: [],
-          offerIsDuo: false,
-          offerSubcategories: [],
-          priceRange: [0, 300],
-          query: '',
-          tags: [],
-          timeRange: null,
-          offerGtlLabel: undefined,
-          offerGtlLevel: undefined,
-          offerNativeCategories: [],
-          allocineIdList: [],
+    expect(navigate).toHaveBeenCalledWith('VerticalPlaylistPage', {
+      module: {
+        id: 'fakeModuleId',
+        title: 'Module title',
+        type: HomepageModuleType.OffersModule,
+        offersModuleParameters: [{}],
+        displayParameters: {
+          layout: 'one-item-medium',
+          minOffers: 0,
+          title: 'Module title',
         },
       },
     })
@@ -182,14 +163,15 @@ describe('OffersModule', () => {
       expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
     })
 
-    it('should trigger logEvent "SeeMoreHasBeenClicked" when we click on See More', async () => {
+    it('should trigger analytics when we click on "Tout voir" button', async () => {
       renderOffersModule({
         data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
       })
 
-      await user.press(screen.getByText('En voir plus'))
+      await user.press(screen.getByText('Tout voir'))
 
-      expect(analytics.logClickSeeMore).toHaveBeenCalledWith({
+      expect(analytics.logClickSeeAll).toHaveBeenCalledWith({
+        type: 'offers',
         moduleId: 'fakeModuleId',
         moduleName: 'Module title',
       })

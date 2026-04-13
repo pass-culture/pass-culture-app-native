@@ -9,6 +9,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BookingsTab } from 'features/bookings/enum'
+import { OffersModule } from 'features/home/types'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
 import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
@@ -299,6 +300,7 @@ export type RootStackParamList = {
   _DeeplinkOnlyVenuePreviewCarousel2: VenuePreviewCarouselParams
   _DeeplinkOnlyVenuePreviewCarousel3: VenuePreviewCarouselParams
   VerifyEligibility: undefined
+  VerticalPlaylistPage: { module: OffersModule }
 } & TrustedDeviceRootStackParamList
 
 export type AllNavParamList = RootStackParamList &
