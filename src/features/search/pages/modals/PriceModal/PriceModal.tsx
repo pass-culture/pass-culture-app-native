@@ -98,9 +98,8 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 
   const isLimitCreditSearchDefaultValue = Number(searchState?.maxPrice) === formatAvailableCredit
   const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
-  const depositTypeIsNotGrantFree =
-    user?.creditType !== UserCreditType.CREDIT_V3_15 &&
-    user?.creditType !== UserCreditType.CREDIT_V3_16
+  const GRANT_FREE_TYPES = [UserCreditType.CREDIT_V3_15, UserCreditType.CREDIT_V3_16]
+  const creditTypeIsNotGrantFree = user && !GRANT_FREE_TYPES.includes(user.creditType)
 
   const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false
 
@@ -309,7 +308,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
       }>
       <FormContainer isKeyboardOpen={isKeyboardOpen}>
         <Form.MaxWidth>
-          {isLoggedInAndBeneficiary && depositTypeIsNotGrantFree ? (
+          {isLoggedInAndBeneficiary && creditTypeIsNotGrantFree ? (
             <Container>
               <Banner label={bannerTitle} Icon={Error} testID="creditBanner" />
             </Container>

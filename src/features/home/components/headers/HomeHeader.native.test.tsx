@@ -74,7 +74,7 @@ describe('HomeHeader', () => {
     expect(await screen.findByText('Toute la culture à portée de main')).toBeOnTheScreen()
   })
 
-  it('should display "Toute la culture à portée de main" when user deposit type is GRANT_FREE', async () => {
+  it('should display "Toute la culture à portée de main" when user credit type is CREDIT_V3_15', async () => {
     mockAuthContextWithUser({
       ...beneficiaryUser,
       eligibility: EligibilityType['age-17-18'],

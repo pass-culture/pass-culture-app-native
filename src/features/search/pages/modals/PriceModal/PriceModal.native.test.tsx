@@ -82,7 +82,7 @@ describe('<PriceModal/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  describe('user with grant free deposite type (15-16 yo)', () => {
+  describe('user with grant free credit type is CREDIT_V3_16', () => {
     beforeEach(() => {
       mockedUseAuthContext.mockImplementation(() => ({
         user: {
@@ -94,7 +94,7 @@ describe('<PriceModal/>', () => {
       }))
     })
 
-    it('should not display banner when user deposite type is grant free', async () => {
+    it('should not display banner when user credit type is CREDIT_V3_16', async () => {
       renderSearchPrice()
       await screen.findByLabelText('Rechercher')
 
