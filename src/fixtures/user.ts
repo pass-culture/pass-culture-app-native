@@ -7,6 +7,8 @@ import {
   QFBonificationStatus,
   UserRole,
   YoungStatusType,
+  UserProfileResponse,
+  DepositType,
 } from 'api/gen'
 import { EIGHTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
@@ -88,4 +90,16 @@ export const exBeneficiaryUser: UserProfileResponseWithoutSurvey = {
   statusType: UserStatusType.EX_BENEFICIARY,
   creditType: UserCreditType.CREDIT_EXPIRED,
   eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
+}
+
+export const beneficiaryUserFromApi: UserProfileResponse = {
+  ...beneficiaryUser,
+  needsToFillCulturalSurvey: false,
+  depositType: DepositType.GRANT_17_18,
+}
+
+export const nonBeneficiaryUserFromApi: UserProfileResponse = {
+  ...nonBeneficiaryUser,
+  needsToFillCulturalSurvey: false,
+  depositType: undefined,
 }
