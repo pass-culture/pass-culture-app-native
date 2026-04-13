@@ -6,7 +6,7 @@ import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subs
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { beneficiaryUser, exBeneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
@@ -133,5 +133,5 @@ const renderProfileHeader = ({
   user,
 }: {
   featureFlags: ProfileFeatureFlagsProps['featureFlags']
-  user?: UserProfileResponseWithoutSurvey
+  user?: UserProfile
 }) => render(reactQueryProviderHOC(<ProfileHeader featureFlags={featureFlags} user={user} />))

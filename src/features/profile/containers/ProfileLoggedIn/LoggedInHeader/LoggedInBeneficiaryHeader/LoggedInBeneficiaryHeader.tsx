@@ -9,11 +9,11 @@ import { BeneficiaryFreeHeader } from 'features/profile/containers/ProfileLogged
 import { BeneficiaryHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInBeneficiaryHeader/BeneficiaryHeader'
 import { logHeaderFallback } from 'features/profile/helpers/logHeaderFallback'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 type Props = {
-  user: UserProfileResponseWithoutSurvey
+  user: UserProfile
   bonificationInfos: {
     enableBonification: boolean
     onCloseBanner: () => void

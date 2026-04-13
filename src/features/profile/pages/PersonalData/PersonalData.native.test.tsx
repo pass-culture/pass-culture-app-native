@@ -5,7 +5,7 @@ import { UpdateEmailTokenExpiration } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/fixtures'
@@ -30,7 +30,7 @@ const user = userEvent.setup()
 
 jest.useFakeTimers()
 
-const mockedUser: UserProfileResponseWithoutSurvey = {
+const mockedUser: UserProfile = {
   ...beneficiaryUser,
   firstName: 'Rosa',
   lastName: 'Bonheur',

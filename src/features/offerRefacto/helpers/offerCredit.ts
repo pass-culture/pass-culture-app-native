@@ -1,7 +1,7 @@
 import { FavoriteOfferResponse, OfferResponse } from 'api/gen'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { HasEnoughCreditType } from 'features/offerRefacto/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { RoundUnit, convertEuroToPacificFranc } from 'shared/currency/convertEuroToPacificFranc'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
@@ -9,7 +9,7 @@ import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 export const hasEnoughCredit = (
   domains: OfferResponse['expenseDomains'] | FavoriteOfferResponse['expenseDomains'],
   price: number | FavoriteOfferResponse['price'] | FavoriteOfferResponse['startPrice'],
-  domainsCredit: UserProfileResponseWithoutSurvey['domainsCredit']
+  domainsCredit: UserProfile['domainsCredit']
 ): boolean => {
   if (!price) return true
   if (!domainsCredit) return false
@@ -38,7 +38,7 @@ type CheckHasEnoughCreditType = {
   offer: Pick<OfferResponse, 'stocks' | 'expenseDomains'>
   currency: Currency
   euroToPacificFrancRate: number
-  user?: UserProfileResponseWithoutSurvey
+  user?: UserProfile
 }
 
 export const checkHasEnoughCredit = ({
@@ -66,7 +66,7 @@ export const checkHasEnoughCredit = ({
     RoundUnit.UNITS
   )
 
-  const userDomaineCreditInPacificFranc: UserProfileResponseWithoutSurvey['domainsCredit'] = {
+  const userDomaineCreditInPacificFranc: UserProfile['domainsCredit'] = {
     all: convertDomainCreditToPacificFranc(user.domainsCredit.all, euroToPacificFrancRate),
   }
 
@@ -91,7 +91,7 @@ export const checkHasEnoughCredit = ({
 
 export const getMinRemainingCreditForOffer = (
   expenseDomains: OfferResponse['expenseDomains'],
-  domainsCredit: UserProfileResponseWithoutSurvey['domainsCredit']
+  domainsCredit: UserProfile['domainsCredit']
 ): number => {
   if (!domainsCredit) return 0
 

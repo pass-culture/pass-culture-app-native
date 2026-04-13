@@ -1,9 +1,9 @@
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { getAvailableCredit } from 'shared/user/useAvailableCredit'
 
 import { isUserUnderageBeneficiary } from './isUserUnderageBeneficiary'
 
-export function isUserExBeneficiary(user: UserProfileResponseWithoutSurvey): boolean {
+export function isUserExBeneficiary(user: UserProfile): boolean {
   const credit = getAvailableCredit(user)
   const isExBeneficiary = user.isBeneficiary && credit.isExpired
   const isExUnderageBeneficiary = isUserUnderageBeneficiary(user) && credit.isExpired

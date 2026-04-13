@@ -4,7 +4,7 @@ import { openInbox } from 'react-native-email-link'
 import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailable'
 import { getEmailReceivedWithdrawalMessage } from 'features/bookings/components/Ticket/TicketBottomPart/EmailWithdrawal/getEmailReceivedWithdrawalMessage'
 import { TicketText } from 'features/bookings/components/Ticket/TicketBottomPart/TicketText'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { Button } from 'ui/designSystem/Button/Button'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 
@@ -15,7 +15,7 @@ export const EmailReceived = ({
 }: {
   isEventDay: boolean
   isDuo: boolean
-  userEmail: UserProfileResponseWithoutSurvey['email']
+  userEmail: UserProfile['email']
 }) => {
   const emailMessage = getEmailReceivedWithdrawalMessage({ isEventDay, isDuo, userEmail })
   const isMailAppAvailable = useIsMailAppAvailable()

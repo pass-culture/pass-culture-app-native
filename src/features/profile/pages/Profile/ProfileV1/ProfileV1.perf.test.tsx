@@ -3,7 +3,7 @@ import React from 'react'
 import * as jwt from '__mocks__/jwt-decode'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
 import { ProfileV1 } from 'features/profile/pages/Profile/ProfileV1/ProfileV1'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
@@ -17,7 +17,7 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('react-native/src/private/animated/NativeAnimatedHelper')
 
 // We mock server instead of hooks to test the real behavior of the component.
-mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
+mockServer.getApi<UserProfile>('/v1/me', beneficiaryUser)
 
 jest.mock('features/favorites/context/FavoritesWrapper')
 

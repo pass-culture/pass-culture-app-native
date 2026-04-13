@@ -18,9 +18,9 @@ import {
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 
-export const nonBeneficiaryUser: UserProfileResponseWithoutSurvey = {
+export const nonBeneficiaryUser: UserProfile = {
   qfBonificationStatus: QFBonificationStatus.not_eligible,
   bookedOffers: {},
   domainsCredit: {
@@ -50,7 +50,7 @@ export const nonBeneficiaryUser: UserProfileResponseWithoutSurvey = {
   eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
 }
 
-export const beneficiaryUser: UserProfileResponseWithoutSurvey = {
+export const beneficiaryUser: UserProfile = {
   ...nonBeneficiaryUser,
   domainsCredit: {
     all: { initial: 300_00, remaining: 250_00 },
@@ -76,7 +76,7 @@ export const beneficiaryUser: UserProfileResponseWithoutSurvey = {
   eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
 }
 
-export const underageBeneficiaryUser: UserProfileResponseWithoutSurvey = {
+export const underageBeneficiaryUser: UserProfile = {
   ...beneficiaryUser,
   isBeneficiary: false,
   roles: [UserRole.UNDERAGE_BENEFICIARY],
@@ -87,7 +87,7 @@ export const underageBeneficiaryUser: UserProfileResponseWithoutSurvey = {
   eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
 }
 
-export const exBeneficiaryUser: UserProfileResponseWithoutSurvey = {
+export const exBeneficiaryUser: UserProfile = {
   ...beneficiaryUser,
   depositExpirationDate: '2020-01-01T03:04:05',
   statusType: UserStatusType.EX_BENEFICIARY,
@@ -144,7 +144,7 @@ export const nonBeneficiaryUserFromAPI: UserProfileResponse = {
   needsToFillCulturalSurvey: false,
 }
 
-export const nonBeneficiaryUserV2: UserProfileResponseWithoutSurvey = {
+export const nonBeneficiaryUserV2: UserProfile = {
   ...baseNonBeneficiaryUser,
   statusType: UserStatusType.GENERAL_PUBLIC,
   creditType: UserCreditType.CREDIT_EMPTY,
@@ -175,7 +175,7 @@ export const beneficiaryUserFromAPI: UserProfileResponse = {
   needsToFillCulturalSurvey: false,
 }
 
-export const beneficiaryUserV2: UserProfileResponseWithoutSurvey = {
+export const beneficiaryUserV2: UserProfile = {
   ...baseBeneficiaryUser,
   statusType: UserStatusType.BENEFICIARY,
   creditType: UserCreditType.CREDIT_V3_18,

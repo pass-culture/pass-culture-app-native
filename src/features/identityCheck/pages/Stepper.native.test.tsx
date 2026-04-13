@@ -11,7 +11,7 @@ import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperI
 import { Stepper } from 'features/identityCheck/pages/Stepper'
 import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
@@ -34,7 +34,7 @@ jest.mock('features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep', 
   })),
 }))
 
-let mockUserProfileData: Partial<UserProfileResponseWithoutSurvey> = {
+let mockUserProfileData: Partial<UserProfile> = {
   email: 'christophe.dupont@example.com',
   firstName: 'Christophe',
   lastName: 'Dupont',

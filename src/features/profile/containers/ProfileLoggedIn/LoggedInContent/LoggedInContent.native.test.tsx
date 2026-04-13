@@ -3,7 +3,7 @@ import React from 'react'
 import { YoungStatusType } from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { getShouldDisplayHelpButton } from 'features/profile/helpers/getShouldDisplayHelpButton'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -76,7 +76,7 @@ describe('LoggedInContent', () => {
 
     it('should display ChatbotButton when feature flag is enabled and user is eligible', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CHATBOT])
-      const eligibleUser: UserProfileResponseWithoutSurvey = {
+      const eligibleUser: UserProfile = {
         ...nonBeneficiaryUser,
         status: { statusType: YoungStatusType.eligible },
       }
@@ -88,7 +88,7 @@ describe('LoggedInContent', () => {
 
     it('should display ChatbotButton when feature flag is enabled and user is ex_beneficiary', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CHATBOT])
-      const exBeneficiary: UserProfileResponseWithoutSurvey = {
+      const exBeneficiary: UserProfile = {
         ...beneficiaryUser,
         status: { statusType: YoungStatusType.ex_beneficiary },
       }

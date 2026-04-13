@@ -17,11 +17,8 @@ export enum ShareAppModalType {
   ON_BOOKING_SUCCESS = 'ON_BOOKING_SUCCESS',
 }
 
-// Delete this type once needsToFillCulturalSurvey is no longer in UserProfileResponseWithoutSurvey of api.gen
-export type UserProfileResponseWithoutSurvey = Omit<
-  UserProfileResponse,
-  'needsToFillCulturalSurvey' | 'depositType'
-> & {
+// Delete this type once omited objects are no longer in UserProfileResponse of api.gen
+export type UserProfile = Omit<UserProfileResponse, 'needsToFillCulturalSurvey' | 'depositType'> & {
   statusType: UserStatusType
   creditType: UserCreditType
   eligibilityType: UserEligibilityType

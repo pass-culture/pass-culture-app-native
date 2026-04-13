@@ -12,7 +12,7 @@ import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteO
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
 import { analytics } from 'libs/analytics/provider'
 // eslint-disable-next-line no-restricted-imports
@@ -78,7 +78,7 @@ describe('<Login/>', () => {
     simulateSignin200(AccountState.ACTIVE)
     mockMeApiCall({
       showEligibleCard: false,
-    } as UserProfileResponseWithoutSurvey)
+    } as UserProfile)
   })
 
   afterEach(async () => {
@@ -233,7 +233,7 @@ describe('<Login/>', () => {
   it('should redirect to home WHEN signin is successful with GOOGLE_SSO', async () => {
     mockMeApiCall({
       showEligibleCard: false,
-    } as UserProfileResponseWithoutSurvey)
+    } as UserProfile)
     renderLogin()
 
     await fillInputs()
@@ -246,7 +246,7 @@ describe('<Login/>', () => {
     storage.saveObject('has_seen_eligible_card', true)
     mockMeApiCall({
       showEligibleCard: true,
-    } as UserProfileResponseWithoutSurvey)
+    } as UserProfile)
     renderLogin()
 
     await fillInputs()
@@ -258,7 +258,7 @@ describe('<Login/>', () => {
   it('should redirect to EighteenBirthday WHEN signin is successful and user has not seen eligible card and needs to see it', async () => {
     mockMeApiCall({
       showEligibleCard: true,
-    } as UserProfileResponseWithoutSurvey)
+    } as UserProfile)
     renderLogin()
 
     await fillInputs()
@@ -271,7 +271,7 @@ describe('<Login/>', () => {
     mockMeApiCall({
       showEligibleCard: true,
       recreditAmountToShow: 3000,
-    } as UserProfileResponseWithoutSurvey)
+    } as UserProfile)
     renderLogin()
 
     await fillInputs()
@@ -284,7 +284,7 @@ describe('<Login/>', () => {
     mockMeApiCall({
       showEligibleCard: true,
       recreditAmountToShow: null,
-    } as UserProfileResponseWithoutSurvey)
+    } as UserProfile)
     renderLogin()
 
     await fillInputs()
@@ -829,8 +829,8 @@ function renderLogin() {
   )
 }
 
-function mockMeApiCall(response: UserProfileResponseWithoutSurvey) {
-  mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', response)
+function mockMeApiCall(response: UserProfile) {
+  mockServer.getApi<UserProfile>('/v1/me', response)
 }
 
 function simulateSignin200(accountState: AccountState) {

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Platform } from 'react-native'
 
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { SubscriptionAnalyticsParams, SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics/provider'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
@@ -11,7 +11,7 @@ import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 type AnalyticsInfos = { venueId: string; homeId?: never } | { homeId: string; venueId?: never }
 
 export type Props = {
-  user?: UserProfileResponseWithoutSurvey
+  user?: UserProfile
   onUpdateSubscriptionSuccess: (thematic: SubscriptionTheme) => Promise<void>
   thematic?: SubscriptionTheme | null
 } & AnalyticsInfos

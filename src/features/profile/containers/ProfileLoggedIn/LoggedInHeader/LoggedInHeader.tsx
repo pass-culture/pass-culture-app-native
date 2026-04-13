@@ -8,13 +8,13 @@ import { LoggedInEligibleHeader } from 'features/profile/containers/ProfileLogge
 import { LoggedInExBeneficiaryHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInExBeneficiaryHeader/LoggedInExBeneficiaryHeader'
 import { LoggedInGeneralPublicHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInGeneralPublicHeader/LoggedInGeneralPublicHeader'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 
-type Props = { user: UserProfileResponseWithoutSurvey } & ProfileFeatureFlagsProps
+type Props = { user: UserProfile } & ProfileFeatureFlagsProps
 
 export const LoggedInHeader = ({ user, featureFlags }: Props) => {
   const { data: remoteConfigData } = useRemoteConfigQuery()

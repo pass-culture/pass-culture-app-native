@@ -8,11 +8,11 @@ import { EligibleFreeHeader } from 'features/profile/containers/ProfileLoggedIn/
 import { EligibleHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInEligibleHeader/EligibleHeader'
 import { logHeaderFallback } from 'features/profile/helpers/logHeaderFallback'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 
 type Props = {
-  user: UserProfileResponseWithoutSurvey
+  user: UserProfile
   subscriptionInfos?: SubscriptionStepperResponseV2
 } & ProfileFeatureFlagsProps
 

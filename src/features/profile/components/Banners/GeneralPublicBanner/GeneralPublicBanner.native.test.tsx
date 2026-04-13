@@ -1,7 +1,7 @@
 import React from 'react'
 import { Linking } from 'react-native'
 
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { underageBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -35,7 +35,7 @@ describe('GeneralPublicBanner', () => {
     render(
       reactQueryProviderHOC(
         <GeneralPublicBanner
-          user={undefined as unknown as UserProfileResponseWithoutSurvey}
+          user={undefined as unknown as UserProfile}
           featureFlags={featureFlags}
         />
       )

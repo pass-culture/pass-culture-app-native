@@ -22,7 +22,7 @@ import { ValidStoredProfileInfos } from 'features/identityCheck/pages/helpers/us
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { MovieScreeningUserData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { PlaylistType } from 'features/offer/enums'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { EmptyResponse } from 'libs/fetch'
 import { ShareContent } from 'libs/share/types'
 import { OfferModal } from 'shared/offer/enums'
@@ -151,5 +151,5 @@ export type GetCTAWordingAndActionProps = {
   isLoggedIn: boolean
   subcategory: SubcategoryResponseModelv2
   isEndedUsedBooking?: boolean
-  user?: UserProfileResponseWithoutSurvey
+  user?: UserProfile
 }
