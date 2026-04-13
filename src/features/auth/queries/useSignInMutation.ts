@@ -41,7 +41,8 @@ export const useSignInMutation = ({
   return useMutation({
     mutationFn: async (body: LoginRequest) => {
       const requestBody = { ...body, deviceInfo }
-      if (isOAuthLoginRequest(requestBody)) {
+      const isOAuth = isOAuthLoginRequest(requestBody)
+      if (isOAuth) {
         const { provider, ...oauthBody } = requestBody
         return api.postNativeV1OauthssoProviderAuthorize(oauthBody, provider)
       }

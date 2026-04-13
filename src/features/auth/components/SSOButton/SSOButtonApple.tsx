@@ -10,17 +10,23 @@ import { SSOButtonAppleBase } from './SSOButtonAppleBase'
 type Props = {
   type: 'signup' | 'login'
   onSignInFailure?: (error: SignInResponseFailure) => void
+  doNotNavigateOnSigninSuccess?: boolean
 }
 
-export const SSOButtonApple = ({ type, onSignInFailure }: Props) => {
+export const SSOButtonApple = ({
+  type,
+  onSignInFailure,
+  doNotNavigateOnSigninSuccess,
+}: Props) => {
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const isSignupButton = type === 'signup'
   const { mutate: signIn } = useSignInMutation({
     params,
+    doNotNavigateOnSigninSuccess,
     onFailure: (error) => onSignInFailure?.(error),
     analyticsType: isSignupButton ? 'SSO_signup' : 'SSO_login',
     analyticsMethod: isSignupButton ? 'fromSignup' : 'fromLogin',
   })
 
-  return <SSOButtonAppleBase type={type} onSuccess={signIn} />
+  return <SSOButtonAppleBase type={type} onSuccess={signIn} params={params} />
 }

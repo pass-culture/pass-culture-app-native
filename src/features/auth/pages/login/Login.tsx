@@ -6,7 +6,7 @@ import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
-import { SSOButtonAppleBase } from 'features/auth/components/SSOButton/SSOButtonAppleBase'
+import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
 import { SSOButtonGoogleBase } from 'features/auth/components/SSOButton/SSOButtonGoogleBase'
 import { loginSchema } from 'features/auth/pages/login/schema/loginSchema'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
@@ -261,7 +261,13 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
               <StyledViewGap gap={4}>
                 <SeparatorWithText label="ou" />
                 <SSOButtonGoogleBase type="login" onSuccess={signIn} />
-                {enableAppleSSO ? <SSOButtonAppleBase type="login" onSuccess={signIn} /> : null}
+                {enableAppleSSO ? (
+                  <SSOButtonApple
+                    type="login"
+                    onSignInFailure={handleSigninFailure}
+                    doNotNavigateOnSigninSuccess={props.doNotNavigateOnSigninSuccess}
+                  />
+                ) : null}
                 <ExternalTouchableLink
                   as={Button}
                   variant="tertiary"

@@ -43,7 +43,6 @@ describe('loginToApple', () => {
     expect(mockedApi.getNativeV1OauthState).toHaveBeenCalledWith()
     expect(mockedAppleAuth.performRequest).toHaveBeenCalledWith({
       requestedOperation: appleAuth.Operation.LOGIN,
-      requestedScopes: [appleAuth.Scope.FULL_NAME, appleAuth.Scope.EMAIL],
     })
     expect(onSuccess).toHaveBeenCalledWith({ code: mockAuthCode, state: mockState })
     expect(onError).not.toHaveBeenCalled()

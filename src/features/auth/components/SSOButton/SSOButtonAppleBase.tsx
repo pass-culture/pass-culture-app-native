@@ -1,10 +1,12 @@
 import React, { FC } from 'react'
 import { Platform } from 'react-native'
 
+import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { LogTypeEnum } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
+import { saveAppleSSOContext } from 'libs/react-native-apple-sso/appleSSOContext'
 import { loginToApple } from 'libs/react-native-apple-sso/loginToApple'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -13,7 +15,8 @@ import { Apple } from 'ui/svg/icons/socialNetwork/Apple'
 
 type Props = {
   type: 'signup' | 'login'
-  onSuccess: ({
+  // Used on native — called with auth result after Apple SDK returns
+  onSuccess?: ({
     authorizationCode,
     oauthStateToken,
     provider,
@@ -22,9 +25,11 @@ type Props = {
     oauthStateToken: string
     provider: 'apple'
   }) => void
+  // Used on web — saved to sessionStorage before redirect to Apple
+  params?: RootStackParamList['Login' | 'SignupForm']
 }
 
-export const SSOButtonAppleBase: FC<Props> = ({ type, onSuccess }) => {
+export const SSOButtonAppleBase: FC<Props> = ({ type, onSuccess, params }) => {
   const { logType } = useLogTypeFromRemoteConfig()
 
   if (Platform.OS === 'android') return null
@@ -40,9 +45,10 @@ export const SSOButtonAppleBase: FC<Props> = ({ type, onSuccess }) => {
   }
 
   const handleLogin = async () => {
+    saveAppleSSOContext({ type, params })
     return loginToApple({
       onSuccess: ({ code, state }) => {
-        onSuccess({ authorizationCode: code, oauthStateToken: state, provider: 'apple' })
+        onSuccess?.({ authorizationCode: code, oauthStateToken: state, provider: 'apple' })
       },
       onError,
     })
