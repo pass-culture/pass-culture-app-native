@@ -2,6 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { BannerName, BannerResponse, SubscriptionStepperResponseV2 } from 'api/gen'
+import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
@@ -113,12 +114,12 @@ describe('ProfileHeader', () => {
     expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
   })
 
-  it('should display the BeneficiaryAndEligibleForUpgradeHeader Header if user is beneficiary and isEligibleForBeneficiaryUpgrade and eligibility is 18 yo', async () => {
+  it('should display the BeneficiaryAndEligibleForUpgradeHeader Header if user has no credit and eligibility is 18 yo', async () => {
     renderProfileHeader({
       featureFlags: { disableActivation: false, enableProfileV2: false },
       user: {
         ...beneficiaryUser,
-        isEligibleForBeneficiaryUpgrade: true,
+        creditType: UserCreditType.CREDIT_UNKNOWN,
         eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V2_18,
       },
     })

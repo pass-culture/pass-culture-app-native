@@ -1,5 +1,6 @@
 import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { getShouldDisplayActivationFlow } from 'features/auth/helpers/getShouldDisplayActivationFlow'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
@@ -13,8 +14,13 @@ export function useOverrideCreditActivationAmount() {
   const amount = useGetDepositAmountsByAge(user?.birthDate)
 
   const nextSubscriptionStepEnable = !!subscription?.nextSubscriptionStep
-  const isEligibleForBeneficiaryUpgrade = !!user?.isEligibleForBeneficiaryUpgrade
-  const isActivationProcessEnable = nextSubscriptionStepEnable || isEligibleForBeneficiaryUpgrade
+  const shouldDisplayActivationFlow =
+    user &&
+    getShouldDisplayActivationFlow({
+      eligibilityType: user?.eligibilityType,
+      creditType: user?.creditType,
+    })
+  const isActivationProcessEnable = nextSubscriptionStepEnable || shouldDisplayActivationFlow
 
   const isUserLocated = selectedLocationMode !== LocationMode.EVERYWHERE
   const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF

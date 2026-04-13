@@ -5,6 +5,7 @@ import { CheatMenuButton } from 'cheatcodes/components/CheatMenuButton'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
+import { getShouldDisplayActivationFlow } from 'features/auth/helpers/getShouldDisplayActivationFlow'
 import { BeneficiaryAndEligibleForUpgradeHeader } from 'features/profile/components/Header/BeneficiaryAndEligibleForUpgradeHeader/BeneficiaryAndEligibleForUpgradeHeader'
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
@@ -22,13 +23,20 @@ export function ProfileHeader(props: ProfileHeaderProps) {
   const { isLoggedIn } = useAuthContext()
 
   const ProfileHeader = useMemo(() => {
+    const shouldDisplayActivationFlow =
+      user &&
+      getShouldDisplayActivationFlow({
+        eligibilityType: user?.eligibilityType,
+        creditType: user?.creditType,
+      })
+
     if (!isLoggedIn || !user) {
       return <LoggedOutHeader featureFlags={featureFlags} />
     }
 
     if (
       isCurrentOrFormerBeneficiary(user) &&
-      user.isEligibleForBeneficiaryUpgrade &&
+      shouldDisplayActivationFlow &&
       user.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V2_18
     ) {
       return (
@@ -47,7 +55,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
       )
     }
 
-    if (!isCurrentOrFormerBeneficiary(user) || user.isEligibleForBeneficiaryUpgrade) {
+    if (!isCurrentOrFormerBeneficiary(user) || shouldDisplayActivationFlow) {
       return (
         <NonBeneficiaryHeader
           featureFlags={featureFlags}

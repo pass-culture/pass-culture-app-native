@@ -46,7 +46,7 @@ describe('HomeHeader', () => {
     mockAuthContextWithUser({
       ...beneficiaryUser,
       eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V2_18,
-      isEligibleForBeneficiaryUpgrade: false,
+      creditType: UserCreditType.CREDIT_V2_18,
     })
 
     const credit = { amount: 5600, isExpired: false }
@@ -62,7 +62,7 @@ describe('HomeHeader', () => {
     mockAuthContextWithUser({
       ...beneficiaryUser,
       eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
-      isEligibleForBeneficiaryUpgrade: false,
+      creditType: UserCreditType.CREDIT_V3_16,
     })
 
     const credit = { amount: 0, isExpired: false }
