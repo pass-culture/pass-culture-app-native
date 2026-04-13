@@ -17,7 +17,6 @@ const sanitizeUser = (user: UserProfileResponse): UserProfileResponseWithoutSurv
   } = user
 
   const { statusType, creditType, eligibilityType } = getUserProfileState(user)
-
   return {
     ...rest,
     statusType,

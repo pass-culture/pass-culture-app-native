@@ -6,7 +6,7 @@ import * as jwt from '__mocks__/jwt-decode'
 import { UserProfileResponse } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import * as NavigationRef from 'features/navigation/navigationRef'
-import { beneficiaryUser, nonBeneficiaryUserFromApi, beneficiaryUserFromApi } from 'fixtures/user'
+import { beneficiaryUserFromAPI, beneficiaryUserV2, nonBeneficiaryUserFromAPI } from 'fixtures/user'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { decodedTokenWithRemainingLifetime, tokenRemainingLifetimeInMs } from 'libs/jwt/fixtures'
@@ -55,7 +55,7 @@ describe('AuthContext', () => {
 
   describe('useAuthContext', () => {
     beforeEach(() => {
-      mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUserFromApi)
+      mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUserFromAPI)
     })
 
     it('should not return user when logged in but no internet connection', async () => {
@@ -73,11 +73,11 @@ describe('AuthContext', () => {
       await storage.saveString('access_token', 'access_token')
       await saveRefreshToken('token')
 
-      mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUserFromApi)
+      mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUserFromAPI)
 
       const result = renderUseAuthContext()
 
-      await waitFor(() => expect(result.current.user).toEqual(beneficiaryUser))
+      await waitFor(() => expect(result.current.user).toEqual(beneficiaryUserV2))
     })
 
     it('should return undefined user when logged out (no token)', async () => {

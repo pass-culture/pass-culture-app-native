@@ -3,14 +3,18 @@ import { format } from 'date-fns'
 import {
   ActivityIdEnum,
   CurrencyEnum,
+  DepositType,
   EligibilityType,
   QFBonificationStatus,
+  UserProfileResponse,
   UserRole,
   YoungStatusType,
-  UserProfileResponse,
-  DepositType,
 } from 'api/gen'
-import { EIGHTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
+import {
+  EIGHTEEN_AGE_DATE,
+  FOURTEEN_AGE_DATE,
+  SIXTEEN_AGE_DATE,
+} from 'features/auth/fixtures/fixtures'
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
@@ -57,7 +61,6 @@ export const beneficiaryUser: UserProfileResponseWithoutSurvey = {
   roles: [UserRole.BENEFICIARY],
   isEligibleForBeneficiaryUpgrade: false,
   status: { statusType: YoungStatusType.beneficiary },
-  eligibility: EligibilityType['age-17-18'],
   depositActivationDate: '2021-11-19T11:00:00Z',
   eligibilityEndDatetime: '2023-11-19T11:00:00Z',
   depositExpirationDate: '2050-11-19T11:00:00Z',
@@ -88,18 +91,103 @@ export const exBeneficiaryUser: UserProfileResponseWithoutSurvey = {
   ...beneficiaryUser,
   depositExpirationDate: '2020-01-01T03:04:05',
   statusType: UserStatusType.EX_BENEFICIARY,
-  creditType: UserCreditType.CREDIT_EXPIRED,
+  creditType: UserCreditType.CREDIT_EMPTY,
   eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
 }
 
-export const beneficiaryUserFromApi: UserProfileResponse = {
-  ...beneficiaryUser,
+const baseNonBeneficiaryUser = {
+  achievements: [],
+  activityId: ActivityIdEnum.HIGH_SCHOOL_STUDENT,
+  birthDate: format(FOURTEEN_AGE_DATE, 'yyyy-MM-dd'),
+  bookedOffers: {},
+  city: 'Paris',
+  currency: CurrencyEnum.EUR,
+  depositActivationDate: '2021-11-19T11:00:00Z',
+  depositExpirationDate: '2050-11-19T11:00:00Z',
+  domainsCredit: {
+    all: { initial: 0, remaining: 0 },
+    physical: { initial: 0, remaining: 0 },
+    digital: { initial: 0, remaining: 0 },
+  },
+  eligibility: EligibilityType.underage,
+  eligibilityEndDatetime: null,
+  eligibilityStartDatetime: null,
+  email: 'email@domain.ext',
+  firstDepositActivationDate: null,
+  firstName: 'Jeanne',
+  hasPassword: true,
+  hasProfileExpired: false,
+  id: 1234,
+  isBeneficiary: false,
+  isEligibleForBeneficiaryUpgrade: false,
+  lastName: 'Dupond',
+  phoneNumber: '+33639980123',
+  postalCode: '75001',
+  qfBonificationStatus: QFBonificationStatus.not_eligible,
+  recreditAmountToShow: null,
+  recreditTypeToShow: null,
+  remainingBonusAttempts: null,
+  requiresIdCheck: false,
+  roles: [UserRole.UNDERAGE_BENEFICIARY],
+  showEligibleCard: false,
+  status: { statusType: YoungStatusType.eligible },
+  street: '10 rue du Bonheur',
+  subscriptionMessage: null,
+  subscriptions: {
+    marketingEmail: true,
+    marketingPush: true,
+  },
+}
+export const nonBeneficiaryUserFromAPI: UserProfileResponse = {
+  ...baseNonBeneficiaryUser,
+  depositType: undefined,
   needsToFillCulturalSurvey: false,
-  depositType: DepositType.GRANT_17_18,
 }
 
-export const nonBeneficiaryUserFromApi: UserProfileResponse = {
-  ...nonBeneficiaryUser,
+export const nonBeneficiaryUserV2: UserProfileResponseWithoutSurvey = {
+  ...baseNonBeneficiaryUser,
+  statusType: UserStatusType.GENERAL_PUBLIC,
+  creditType: UserCreditType.CREDIT_EMPTY,
+  eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
+}
+
+export const baseBeneficiaryUser = {
+  ...baseNonBeneficiaryUser,
+  activityId: ActivityIdEnum.STUDENT,
+  birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
+  depositActivationDate: '2021-11-19T11:00:00Z',
+  depositExpirationDate: '2050-11-19T11:00:00Z',
+  domainsCredit: {
+    all: { initial: 300_00, remaining: 250_00 },
+    physical: { initial: 300_00, remaining: 100_00 },
+    digital: { initial: 300_00, remaining: 200_00 },
+  },
+  eligibility: EligibilityType['age-17-18'],
+  eligibilityEndDatetime: '2023-11-19T11:00:00Z',
+  firstName: 'Jean',
+  isBeneficiary: true,
+  roles: [UserRole.BENEFICIARY],
+  status: { statusType: YoungStatusType.beneficiary },
+}
+export const beneficiaryUserFromAPI: UserProfileResponse = {
+  ...baseBeneficiaryUser,
+  depositType: DepositType.GRANT_17_18,
   needsToFillCulturalSurvey: false,
-  depositType: undefined,
+}
+
+export const beneficiaryUserV2: UserProfileResponseWithoutSurvey = {
+  ...baseBeneficiaryUser,
+  statusType: UserStatusType.BENEFICIARY,
+  creditType: UserCreditType.CREDIT_V3_18,
+  eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
+}
+
+export const eligibleUserFromAPI: UserProfileResponse = {
+  ...nonBeneficiaryUserFromAPI,
+  activityId: ActivityIdEnum.HIGH_SCHOOL_STUDENT,
+  birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
+  eligibility: EligibilityType.free,
+  roles: [UserRole.FREE_BENEFICIARY],
+  showEligibleCard: false,
+  status: { statusType: YoungStatusType.eligible },
 }
