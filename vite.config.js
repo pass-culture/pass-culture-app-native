@@ -53,7 +53,7 @@ export default ({ mode }) => {
       },
     },
   }
-  const shouldUploadSourcemaps = process.env.UPLOAD_SOURCEMAPS_TO_SENTRY // Set to true in CI
+  const shouldUploadSourcemaps = process.env.UPLOAD_SOURCEMAPS_TO_SENTRY === 'true' // Set to true in CI
 
   return defineConfig({
     define: {
