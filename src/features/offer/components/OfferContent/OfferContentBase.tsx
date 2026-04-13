@@ -44,6 +44,7 @@ import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTrack
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { OfferContentProps } from 'features/offer/types'
+import { FeedBack } from 'features/reactions/components/FeedBack'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -277,6 +278,9 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     navigate('ProAdvicesOffer', { offerId: offer.id })
   }
 
+  // The feedback analytics will be added in the next ticket.
+  const handleOnProAdvicesFeedbackLog = useCallback(() => undefined, [])
+
   const offerCtaButton = (
     <OfferCTAButton
       offer={offer}
@@ -413,6 +417,15 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
                 onShowClubAdviceWritersModal={showProAdvicesWritersModal}
                 displayAllAdvicesButton={(proAdvicesCount ?? proAdvices.length) > 1}
                 showSectionTag={enableNewTagProAdvices}
+                feedback={
+                  <FeedBack
+                    storageKey="offer_pro_advices_feedback"
+                    likeQuiz="https://passculture.qualtrics.com/jfe/form/SV_eW1XQ60mF3KAMdg"
+                    dislikeQuiz="https://passculture.qualtrics.com/jfe/form/SV_d1niW3WPCivA6wK"
+                    title={'Trouves-tu ces avis utiles\u00a0?'}
+                    onLogReaction={handleOnProAdvicesFeedbackLog}
+                  />
+                }
               />
             </AdviceSectionWithAnchor>
           ) : null}

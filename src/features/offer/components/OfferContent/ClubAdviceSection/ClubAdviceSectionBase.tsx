@@ -21,6 +21,7 @@ export const ClubAdviceSectionBase = ({
   onShowClubAdviceWritersModal,
   displayAllAdvicesButton,
   showSectionTag,
+  feedback,
   style,
 }: ClubAdviceSectionProps) => {
   const shouldDisplayAllAdvicesButton = displayAllAdvicesButton ?? data.length > 1
@@ -71,6 +72,11 @@ export const ClubAdviceSectionBase = ({
           />
         </ClubButtonContainer>
       </Gutter>
+      {feedback ? (
+        <Gutter>
+          <FeedbackContainer>{feedback}</FeedbackContainer>
+        </Gutter>
+      ) : null}
     </View>
   )
 }
@@ -105,4 +111,8 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
 
 const ClubButtonContainer = styled.View<{ withMarginTop: boolean }>(({ theme, withMarginTop }) => ({
   marginTop: withMarginTop ? theme.designSystem.size.spacing.l : undefined,
+}))
+
+const FeedbackContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
 }))

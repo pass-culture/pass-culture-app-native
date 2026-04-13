@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 
 import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
@@ -14,6 +15,7 @@ export type ClubAdviceSectionProps = {
   onSeeMoreButtonPress?: (chronicleId: number) => void
   displayAllAdvicesButton?: boolean
   showSectionTag?: boolean
+  feedback?: ReactNode
   style?: StyleProp<ViewStyle>
 }
 

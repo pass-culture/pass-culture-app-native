@@ -27,6 +27,7 @@ export const ClubAdviceSection = (props: ClubAdviceSectionProps) => {
     onShowClubAdviceWritersModal,
     displayAllAdvicesButton,
     showSectionTag,
+    feedback,
   } = props
 
   const shouldDisplayAllReviewsButton = displayAllAdvicesButton ?? data.length > 1
@@ -79,6 +80,7 @@ export const ClubAdviceSection = (props: ClubAdviceSectionProps) => {
               size="small"
             />
           </ClubButtonContainer>
+          {feedback ? <FeedbackContainer>{feedback}</FeedbackContainer> : null}
         </View>
       ) : (
         <ClubAdviceSectionBase {...props} />
@@ -132,4 +134,10 @@ const SeeAllReviewsContainer = styled.View(({ theme }) => ({
 const ClubButtonContainer = styled.View(({ theme }) => ({
   marginLeft: theme.designSystem.size.spacing.xl,
   alignSelf: 'flex-start',
+}))
+
+const FeedbackContainer = styled.View(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.xl,
+  marginTop: theme.designSystem.size.spacing.l,
+  width: theme.isDesktopViewport ? '50%' : '100%',
 }))

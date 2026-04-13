@@ -761,6 +761,16 @@ describe('<OfferContent />', () => {
         expect(screen.getByText('Lire les 2 avis')).toBeOnTheScreen()
       })
 
+      it('should display pro advices feedback', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+          clubAdvices: [],
+          proAdvices: [...offerProAdvicesCardDataFixture],
+        })
+
+        expect(await screen.findByText('Trouves-tu ces avis utiles\u00a0?')).toBeOnTheScreen()
+      })
+
       it('should display all pro advices button with total count when preview has only one advice', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
