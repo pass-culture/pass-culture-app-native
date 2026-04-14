@@ -1886,7 +1886,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
   </RCTScrollView>
   <BVLinearGradient
     bottomViewHeight={0}
-    collapsable={false}
     colors={
       [
         16777215,

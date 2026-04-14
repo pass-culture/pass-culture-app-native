@@ -41,7 +41,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -51,23 +50,35 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "black",
-        "bottom": 0,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "width": 750,
-      }
+      [
+        [
+          {
+            "backgroundColor": "black",
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
+        ],
+        {},
+        {
+          "opacity": 0,
+        },
+      ]
     }
   />
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}
@@ -83,22 +94,47 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      {
-        "alignItems": "center",
-        "bottom": 0,
-        "flex": 1,
-        "justifyContent": "flex-end",
-        "left": 0,
-        "margin": "auto",
-        "position": "absolute",
-        "right": 0,
-        "top": "auto",
-        "transform": [
-          {
-            "translateY": 1334,
-          },
+      [
+        [
+          {},
+          [
+            {
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
+            },
+            {
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "auto",
+              },
+              {
+                "justifyContent": "flex-end",
+                "margin": "auto",
+              },
+            ],
+          ],
         ],
-      }
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
+      ]
     }
     supportedOrientations={
       [
@@ -690,7 +726,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -700,23 +735,35 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "black",
-        "bottom": 0,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "width": 750,
-      }
+      [
+        [
+          {
+            "backgroundColor": "black",
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
+        ],
+        {},
+        {
+          "opacity": 0,
+        },
+      ]
     }
   />
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}
@@ -732,22 +779,47 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      {
-        "alignItems": "center",
-        "bottom": 0,
-        "flex": 1,
-        "justifyContent": "flex-end",
-        "left": 0,
-        "margin": "auto",
-        "position": "absolute",
-        "right": 0,
-        "top": "auto",
-        "transform": [
-          {
-            "translateY": 1334,
-          },
+      [
+        [
+          {},
+          [
+            {
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
+            },
+            {
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "auto",
+              },
+              {
+                "justifyContent": "flex-end",
+                "margin": "auto",
+              },
+            ],
+          ],
         ],
-      }
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
+      ]
     }
     supportedOrientations={
       [
@@ -1339,7 +1411,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -1349,23 +1420,35 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "black",
-        "bottom": 0,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "width": 750,
-      }
+      [
+        [
+          {
+            "backgroundColor": "black",
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
+        ],
+        {},
+        {
+          "opacity": 0,
+        },
+      ]
     }
   />
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}
@@ -1381,22 +1464,47 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      {
-        "alignItems": "center",
-        "bottom": 0,
-        "flex": 1,
-        "justifyContent": "flex-end",
-        "left": 0,
-        "margin": "auto",
-        "position": "absolute",
-        "right": 0,
-        "top": "auto",
-        "transform": [
-          {
-            "translateY": 1334,
-          },
+      [
+        [
+          {},
+          [
+            {
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
+            },
+            {
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "auto",
+              },
+              {
+                "justifyContent": "flex-end",
+                "margin": "auto",
+              },
+            ],
+          ],
         ],
-      }
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
+      ]
     }
     supportedOrientations={
       [
@@ -1988,7 +2096,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -1998,23 +2105,35 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "black",
-        "bottom": 0,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "width": 750,
-      }
+      [
+        [
+          {
+            "backgroundColor": "black",
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
+        ],
+        {},
+        {
+          "opacity": 0,
+        },
+      ]
     }
   />
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}
@@ -2030,22 +2149,47 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      {
-        "alignItems": "center",
-        "bottom": 0,
-        "flex": 1,
-        "justifyContent": "flex-end",
-        "left": 0,
-        "margin": "auto",
-        "position": "absolute",
-        "right": 0,
-        "top": "auto",
-        "transform": [
-          {
-            "translateY": 1334,
-          },
+      [
+        [
+          {},
+          [
+            {
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
+            },
+            {
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "auto",
+              },
+              {
+                "justifyContent": "flex-end",
+                "margin": "auto",
+              },
+            ],
+          ],
         ],
-      }
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
+      ]
     }
     supportedOrientations={
       [
@@ -2637,7 +2781,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -2647,23 +2790,35 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "black",
-        "bottom": 0,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "width": 750,
-      }
+      [
+        [
+          {
+            "backgroundColor": "black",
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
+        ],
+        {},
+        {
+          "opacity": 0,
+        },
+      ]
     }
   />
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}
@@ -2679,22 +2834,47 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      {
-        "alignItems": "center",
-        "bottom": 0,
-        "flex": 1,
-        "justifyContent": "flex-end",
-        "left": 0,
-        "margin": "auto",
-        "position": "absolute",
-        "right": 0,
-        "top": "auto",
-        "transform": [
-          {
-            "translateY": 1334,
-          },
+      [
+        [
+          {},
+          [
+            {
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
+            },
+            {
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "auto",
+              },
+              {
+                "justifyContent": "flex-end",
+                "margin": "auto",
+              },
+            ],
+          ],
         ],
-      }
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
+      ]
     }
     supportedOrientations={
       [
@@ -3286,7 +3466,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -3296,23 +3475,35 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "black",
-        "bottom": 0,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "width": 750,
-      }
+      [
+        [
+          {
+            "backgroundColor": "black",
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
+        ],
+        {},
+        {
+          "opacity": 0,
+        },
+      ]
     }
   />
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}
@@ -3328,22 +3519,47 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      {
-        "alignItems": "center",
-        "bottom": 0,
-        "flex": 1,
-        "justifyContent": "flex-end",
-        "left": 0,
-        "margin": "auto",
-        "position": "absolute",
-        "right": 0,
-        "top": "auto",
-        "transform": [
-          {
-            "translateY": 1334,
-          },
+      [
+        [
+          {},
+          [
+            {
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
+            },
+            {
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "auto",
+              },
+              {
+                "justifyContent": "flex-end",
+                "margin": "auto",
+              },
+            ],
+          ],
         ],
-      }
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
+      ]
     }
     supportedOrientations={
       [

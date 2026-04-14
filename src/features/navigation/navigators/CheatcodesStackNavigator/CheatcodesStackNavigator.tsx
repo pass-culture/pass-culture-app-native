@@ -26,6 +26,7 @@ import { CheatcodesNavigationShare } from 'cheatcodes/pages/features/share/Cheat
 import { CheatcodesNavigationSubscription } from 'cheatcodes/pages/features/subscription/CheatcodesNavigationSubscription'
 import { CheatcodesNavigationTrustedDevice } from 'cheatcodes/pages/features/trustedDevice/CheatcodesNavigationTrustedDevice'
 import { CheatcodesScreenTrustedDeviceInfos } from 'cheatcodes/pages/features/trustedDevice/CheatcodesScreenTrustedDeviceInfos'
+import { CheatcodesScreenABTest } from 'cheatcodes/pages/others/CheatcodesABTest/CheatcodesScreenABTest'
 import { CheatcodesNavigationAccountManagement } from 'cheatcodes/pages/others/CheatcodesNavigationAccountManagement'
 import { CheatcodesNavigationErrors } from 'cheatcodes/pages/others/CheatcodesNavigationErrors'
 import { CheatcodesNavigationGenericPages } from 'cheatcodes/pages/others/CheatcodesNavigationGenericPages'
@@ -310,6 +311,12 @@ const cheatcodesStackNavigatorPathDefinition = {
       screen: CheatcodesScreenPageHeaderWithoutPlaceholder,
       linking: {
         path: 'cheatcodes/other/page-header-without-placeholder',
+      },
+    },
+    CheatcodesScreenABTest: {
+      screen: CheatcodesScreenABTest,
+      linking: {
+        path: 'cheatcodes/other/ab-test',
       },
     },
   },

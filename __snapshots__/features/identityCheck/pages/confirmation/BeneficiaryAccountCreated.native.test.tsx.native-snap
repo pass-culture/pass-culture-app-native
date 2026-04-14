@@ -262,7 +262,6 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
                   <View
                     backgroundColor="#6123df"
                     barWidth={0}
-                    collapsable={false}
                     isAnimated={true}
                     onLayout={[Function]}
                     progress={1}
@@ -707,7 +706,6 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
                   <View
                     backgroundColor="#6123df"
                     barWidth={0}
-                    collapsable={false}
                     isAnimated={true}
                     onLayout={[Function]}
                     progress={1}

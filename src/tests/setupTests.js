@@ -6,16 +6,8 @@ import '@testing-library/jest-native/extend-expect'
 import { TextEncoder } from 'util'
 
 import { toHaveNoViolations } from 'jest-axe'
-import { setUpTests } from 'react-native-reanimated'
-import { configure } from 'reassure'
 
 import { queryCache, mutationCache } from './reactQueryProviderHOC'
-
-// Include this section for mocking react-native-reanimated
-setUpTests()
-
-// Configuration for performance tests
-configure({ testingLibrary: 'react-native' })
 
 global.expect.extend(toHaveNoViolations)
 global.TextEncoder = TextEncoder

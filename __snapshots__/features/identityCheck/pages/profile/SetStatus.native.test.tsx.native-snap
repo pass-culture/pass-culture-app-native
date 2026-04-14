@@ -1914,7 +1914,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
     </View>
     <BVLinearGradient
       bottomViewHeight={0}
-      collapsable={false}
       colors={
         [
           16777215,

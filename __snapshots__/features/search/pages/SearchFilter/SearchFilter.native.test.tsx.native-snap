@@ -968,7 +968,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         </RCTScrollView>
         <BVLinearGradient
           bottomViewHeight={0}
-          collapsable={false}
           colors={
             [
               16777215,

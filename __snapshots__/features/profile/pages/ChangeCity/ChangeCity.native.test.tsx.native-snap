@@ -570,7 +570,6 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
         </RCTScrollView>
         <BVLinearGradient
           bottomViewHeight={0}
-          collapsable={false}
           colors={
             [
               16777215,
@@ -1309,7 +1308,6 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
         </RCTScrollView>
         <BVLinearGradient
           bottomViewHeight={0}
-          collapsable={false}
           colors={
             [
               16777215,
@@ -2048,7 +2046,6 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
         </RCTScrollView>
         <BVLinearGradient
           bottomViewHeight={0}
-          collapsable={false}
           colors={
             [
               16777215,
