@@ -9,6 +9,7 @@ import { AdvicesHeader } from 'features/advices/components/AdvicesHeader/Advices
 import { AdvicesWebMetaHeader } from 'features/advices/components/AdvicesWebMetaHeader/AdvicesWebMetaHeader'
 import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
 import { AdviceCardData } from 'features/advices/types'
+import { PRO_ADVICE_VARIANT_CONFIG } from 'features/clubAdvices/constants'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
@@ -64,7 +65,7 @@ export const ProAdvicesBase: FunctionComponent<Props> = ({
           headerComponent={
             <AdviceCardListHeader
               title={`${advices.length} avis des pros`}
-              buttonWording="Qui écrit les avis des pros&nbsp;?"
+              buttonWording={PRO_ADVICE_VARIANT_CONFIG.modalTitle}
               onPressMoreInfo={showModal}
             />
           }
@@ -92,8 +93,8 @@ export const ProAdvicesBase: FunctionComponent<Props> = ({
         closeModal={hideModal}
         isVisible={visible}
         onButtonPress={hideModal}
-        modalWording={`Les avis des pros sont rédigés par nos partenaires culturels du pass\u00a0: libraires, disquaires, organisateurs de spectacles...\nCes experts partagent leurs coups de coeur pour t‘aider à découvrir des oeuvres qui pourraient te plaire.`}
-        buttonWording="Fermer"
+        modalWording={PRO_ADVICE_VARIANT_CONFIG.modalWording}
+        buttonWording={PRO_ADVICE_VARIANT_CONFIG.buttonWording}
       />
     </React.Fragment>
   )

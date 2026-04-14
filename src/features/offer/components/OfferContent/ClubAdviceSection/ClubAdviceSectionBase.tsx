@@ -19,14 +19,22 @@ export const ClubAdviceSectionBase = ({
   onBeforeNavigate,
   onSeeMoreButtonPress,
   onShowClubAdviceWritersModal,
+  displayAllAdvicesButton,
+  showSectionTag,
+  feedback,
   style,
 }: ClubAdviceSectionProps) => {
-  const shouldDisplayAllAdvicesButton = data.length > 1
+  const shouldDisplayAllAdvicesButton = displayAllAdvicesButton ?? data.length > 1
 
   return (
     <View style={style}>
       <Gutter>
-        <Typo.Title3 {...getHeadingAttrs(3)}>{variantInfo.titleSection}</Typo.Title3>
+        <Row>
+          <StyledTitle3 {...getHeadingAttrs(3)}>{variantInfo.titleSection}</StyledTitle3>
+          {showSectionTag && variantInfo.sectionTag ? (
+            <TagContainer>{variantInfo.sectionTag}</TagContainer>
+          ) : null}
+        </Row>
         {variantInfo.subtitleSection ? (
           <StyledBodyAccentXs>{variantInfo.subtitleSection}</StyledBodyAccentXs>
         ) : null}
@@ -64,6 +72,11 @@ export const ClubAdviceSectionBase = ({
           />
         </ClubButtonContainer>
       </Gutter>
+      {feedback ? (
+        <Gutter>
+          <FeedbackContainer>{feedback}</FeedbackContainer>
+        </Gutter>
+      ) : null}
     </View>
   )
 }
@@ -81,10 +94,25 @@ const Gutter = styled.View(({ theme }) => ({
   paddingHorizontal: theme.contentPage.marginHorizontal,
 }))
 
+const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
+
+const StyledTitle3 = styled(Typo.Title3)({
+  flexShrink: 1,
+})
+
+const TagContainer = styled.View(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.s,
+  flexShrink: 0,
+}))
+
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
 const ClubButtonContainer = styled.View<{ withMarginTop: boolean }>(({ theme, withMarginTop }) => ({
   marginTop: withMarginTop ? theme.designSystem.size.spacing.l : undefined,
+}))
+
+const FeedbackContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
 }))

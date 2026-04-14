@@ -22,7 +22,9 @@ import { IOScrollView as IntersectionObserverScrollView } from 'react-native-int
 import styled, { useTheme } from 'styled-components/native'
 
 import { OfferArtist, OfferResponse, ReactionTypeEnum, RecommendationApiParams } from 'api/gen'
+import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
 import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
+import { PRO_ADVICE_VARIANT_CONFIG } from 'features/clubAdvices/constants'
 import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
@@ -42,8 +44,11 @@ import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTrack
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { OfferContentProps } from 'features/offer/types'
+import { FeedBack } from 'features/reactions/components/FeedBack'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { getDistance } from 'libs/location/getDistance'
 import { useLocation } from 'libs/location/location'
@@ -57,9 +62,8 @@ import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
+import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 type OfferContentBaseProps = OfferContentProps &
@@ -110,6 +114,12 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
 }) => {
   const HeaderToRender = HeaderComponent || OfferHeader
   const theme = useTheme()
+  const enableNewTagProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
+  const {
+    visible: proAdvicesWritersModalVisible,
+    showModal: showProAdvicesWritersModal,
+    hideModal: hideProAdvicesWritersModal,
+  } = useModal(false)
 
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Offer'>>()
@@ -259,6 +269,18 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     })
   }
 
+  const handleOnSeeMoreProAdvicePress = (venueId: number) => {
+    navigate('ProAdvicesOffer', { offerId: offer.id, venueId })
+  }
+
+  const handleOnPressAllProAdvicesFromModal = () => {
+    hideProAdvicesWritersModal()
+    navigate('ProAdvicesOffer', { offerId: offer.id })
+  }
+
+  // The feedback analytics will be added in the next ticket.
+  const handleOnProAdvicesFeedbackLog = useCallback(() => undefined, [])
+
   const offerCtaButton = (
     <OfferCTAButton
       offer={offer}
@@ -383,16 +405,28 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               anchorName={AnchorNames.PRO_ADVICE_SECTION}
               sectionId="pro-advice-section"
               anchorSectionId="pro-advice-section-anchor">
-              <Gutter>
-                <InternalTouchableLink
-                  as={Button}
-                  wording={`Lire les ${proAdvices.length} avis des pros`}
-                  navigateTo={{ screen: 'ProAdvicesOffer', params: { offerId: offer.id } }}
-                  variant="secondary"
-                  color="neutral"
-                  size="small"
-                />
-              </Gutter>
+              <ClubAdviceSection
+                ctaLabel={`Lire les ${proAdvicesCount ?? proAdvices.length} avis`}
+                variantInfo={PRO_ADVICE_VARIANT_CONFIG}
+                data={proAdvices}
+                navigateTo={{
+                  screen: 'ProAdvicesOffer',
+                  params: { offerId: offer.id },
+                }}
+                onSeeMoreButtonPress={handleOnSeeMoreProAdvicePress}
+                onShowClubAdviceWritersModal={showProAdvicesWritersModal}
+                displayAllAdvicesButton={(proAdvicesCount ?? proAdvices.length) > 1}
+                showSectionTag={enableNewTagProAdvices}
+                feedback={
+                  <FeedBack
+                    storageKey="offer_pro_advices_feedback"
+                    likeQuiz="https://passculture.qualtrics.com/jfe/form/SV_eW1XQ60mF3KAMdg"
+                    dislikeQuiz="https://passculture.qualtrics.com/jfe/form/SV_d1niW3WPCivA6wK"
+                    title={'Trouves-tu ces avis utiles\u00a0?'}
+                    onLogReaction={handleOnProAdvicesFeedbackLog}
+                  />
+                }
+              />
             </AdviceSectionWithAnchor>
           ) : null}
           <StyledSectionWithDivider
@@ -414,6 +448,15 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
         </IntersectionObserverScrollView>
         {theme.isMobileViewport ? <FooterContainer>{OfferCTAsComponent}</FooterContainer> : null}
       </AnchorProvider>
+      {proAdvices?.length ? (
+        <AdvicesWritersModal
+          closeModal={hideProAdvicesWritersModal}
+          isVisible={proAdvicesWritersModalVisible}
+          onButtonPress={handleOnPressAllProAdvicesFromModal}
+          modalWording={PRO_ADVICE_VARIANT_CONFIG.modalWording}
+          buttonWording={PRO_ADVICE_VARIANT_CONFIG.buttonWording}
+        />
+      ) : null}
     </Container>
   )
 }
@@ -430,8 +473,4 @@ const FooterContainer = styled.View(({ theme }) => ({
 
 const StyledSectionWithDivider = styled(SectionWithDivider)(({ theme }) => ({
   paddingBottom: theme.designSystem.size.spacing.xxl,
-}))
-
-const Gutter = styled.View(({ theme }) => ({
-  paddingHorizontal: theme.contentPage.marginHorizontal,
 }))
