@@ -1,0 +1,25 @@
+appId: ${MAESTRO_APP_ID}
+onFlowStart:
+  - runScript: ../common/DeepLink.js
+  - runScript:
+      file: ../common/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: 18
+---
+- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/StopApp.yml
+- runFlow: ../common/DeeplinkBeneficiaryUser.yml
+
+- assertVisible: 'Profil'
+- copyTextFrom:
+    childOf: '.*€'
+
+- evalScript: ${output.amountProfil = maestro.copiedText}
+- tapOn:
+    text: 'Accueil.*'
+    index: 0
+- assertVisible: 'Tu as ${output.amountProfil} sur ton pass'
+
+- runFlow: ../common/StopApp.yml
