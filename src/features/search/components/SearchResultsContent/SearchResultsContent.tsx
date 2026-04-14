@@ -310,15 +310,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     hideVenueMapLocationModal()
   }
 
-  const handleOnArtistPlaylistItemPress = (artistId: string, artistName: string) => {
-    void analytics.logConsultArtist({
-      artistId,
-      artistName,
-      searchId: searchState.searchId,
-      from: 'search',
-    })
-  }
-
   if (showSkeleton) return <SearchResultsPlaceHolder />
 
   const numberOfResults =
@@ -358,7 +349,8 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
           hits.artists.length ? (
             <StyledArtistSection
               artists={hits.artists}
-              onArtistPlaylistItemPress={handleOnArtistPlaylistItemPress}
+              searchId={searchState.searchId}
+              withMargins
             />
           ) : undefined
         }

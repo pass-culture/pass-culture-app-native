@@ -149,8 +149,8 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
     [itemSeparatorSize]
   )
   const MemoizedHorizontalMargin = useMemo(
-    () => styled(HorizontalMargin).attrs({ width: withMargins ? horizontalMargin : 0 })``,
-    [horizontalMargin, withMargins]
+    () => styled(HorizontalMargin).attrs({ width: horizontalMargin })``,
+    [horizontalMargin]
   )
 
   const maxCaptionHeight =
@@ -206,7 +206,7 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
         updateCellsBatchingPeriod={100}
         getItemLayout={getItemLayout}
         ItemSeparatorComponent={MemoizedItemSeparatorComponent}
-        ListHeaderComponent={MemoizedHorizontalMargin}
+        ListHeaderComponent={<HorizontalMargin width={withMargins ? horizontalMargin : 0} />}
         ListFooterComponent={MemoizedHorizontalMargin}
         onEndReached={onEndReached}
         onEndReachedThreshold={0.2}
@@ -226,10 +226,8 @@ const FlatListContainer = styled.View<{ minHeight?: number }>(({ minHeight }) =>
   minHeight,
 }))
 
-const HorizontalMargin = styled.View<{ width: number; withMargins: boolean }>(
-  ({ width, withMargins }) => ({
-    width: withMargins ? width : 0,
-  })
-)
+const HorizontalMargin = styled.View<{ width: number }>(({ width }) => ({
+  width,
+}))
 
 const ItemSeparatorComponent = styled.View<{ width: number }>(({ width }) => ({ width }))

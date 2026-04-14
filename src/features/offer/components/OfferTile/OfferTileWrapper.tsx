@@ -21,10 +21,11 @@ type Props = Omit<
   item: Offer
   hasSmallLayout?: boolean
   containerWidth?: number
+  withCenterAlign?: boolean
 }
 
 export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Props) {
-  const { item, hasSmallLayout } = props
+  const { item, hasSmallLayout, withCenterAlign } = props
   const theme = useTheme()
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -72,6 +73,7 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
       price={formattedPrice}
       interactionTag={tag}
       {...props}
+      withCenterAlign={withCenterAlign}
     />
   )
 })

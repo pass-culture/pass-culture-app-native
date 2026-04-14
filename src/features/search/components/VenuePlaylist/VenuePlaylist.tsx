@@ -172,7 +172,7 @@ export const VenuePlaylist: React.FC<Props> = ({
           contentContainerStyle={withMargins && { paddingHorizontal: designSystem.size.spacing.xl }}
           ref={playlistRef}
           onViewableItemsChanged={onViewableItemsChanged}
-          withMargins={withMargins}
+          withMargins={false}
         />
       </Container>
       {shouldDisplaySeparator ? <StyledSeparator testID="venue-playlist-separator" /> : null}

@@ -197,7 +197,15 @@ export type SearchOfferHits = {
   duplicatedOffers: Offer[]
 }
 
-export type SearchResultItem =
-  | { type: 'offer'; data: Offer }
-  | { type: 'artist'; data: Artist }
-  | { type: 'venue'; data: AlgoliaVenue }
+export type SearchResultOffer = { type: 'offer'; data: Offer }
+export type SearchResultArtist = { type: 'artist'; data: Artist }
+export type SearchResultVenue = { type: 'venue'; data: AlgoliaVenue }
+
+export type SearchResultItem = SearchResultOffer | SearchResultArtist | SearchResultVenue
+
+export type SearchListContent = {
+  title: string
+  items: SearchResultItem[]
+  nbHits: number
+  hits: SearchOfferHits
+}

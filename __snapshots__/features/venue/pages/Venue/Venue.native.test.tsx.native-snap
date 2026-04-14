@@ -1399,23 +1399,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                             }
                           }
                           ListHeaderComponent={
-                            {
-                              "$$typeof": Symbol(react.forward_ref),
-                              "attrs": [
-                                {
-                                  "width": 24,
-                                },
-                              ],
-                              "inlineStyle": e {
-                                "rules": [
-                                  [Function],
-                                ],
-                              },
-                              "render": [Function],
-                              "shouldForwardProp": undefined,
-                              "styledComponentId": true,
-                              "target": [Function],
-                            }
+                            <Styled(View)
+                              width={24}
+                            />
                           }
                           collapsable={false}
                           data={
@@ -1577,8 +1563,14 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
-                                style={{}}
+                                style={
+                                  {
+                                    "alignItems": "center",
+                                    "width": "auto",
+                                  }
+                                }
                                 testID="OfferTile"
+                                withCenterAlign={true}
                               >
                                 <View
                                   accessibilityLabel="Offre "Titane - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
@@ -1779,8 +1771,14 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
-                                style={{}}
+                                style={
+                                  {
+                                    "alignItems": "center",
+                                    "width": "auto",
+                                  }
+                                }
                                 testID="OfferTile"
+                                withCenterAlign={true}
                               >
                                 <View
                                   accessibilityLabel="Offre "Bac Nord - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
@@ -1981,8 +1979,14 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
-                                style={{}}
+                                style={
+                                  {
+                                    "alignItems": "center",
+                                    "width": "auto",
+                                  }
+                                }
                                 testID="OfferTile"
+                                withCenterAlign={true}
                               >
                                 <View
                                   accessibilityLabel="Offre "Black Widow - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
@@ -4898,23 +4902,9 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             }
                           }
                           ListHeaderComponent={
-                            {
-                              "$$typeof": Symbol(react.forward_ref),
-                              "attrs": [
-                                {
-                                  "width": 24,
-                                },
-                              ],
-                              "inlineStyle": e {
-                                "rules": [
-                                  [Function],
-                                ],
-                              },
-                              "render": [Function],
-                              "shouldForwardProp": undefined,
-                              "styledComponentId": true,
-                              "target": [Function],
-                            }
+                            <Styled(View)
+                              width={24}
+                            />
                           }
                           collapsable={false}
                           data={
@@ -5076,8 +5066,14 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
-                                style={{}}
+                                style={
+                                  {
+                                    "alignItems": "center",
+                                    "width": "auto",
+                                  }
+                                }
                                 testID="OfferTile"
+                                withCenterAlign={true}
                               >
                                 <View
                                   accessibilityLabel="Offre "Titane - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
@@ -5278,8 +5274,14 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
-                                style={{}}
+                                style={
+                                  {
+                                    "alignItems": "center",
+                                    "width": "auto",
+                                  }
+                                }
                                 testID="OfferTile"
+                                withCenterAlign={true}
                               >
                                 <View
                                   accessibilityLabel="Offre "Bac Nord - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
@@ -5480,8 +5482,14 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
-                                style={{}}
+                                style={
+                                  {
+                                    "alignItems": "center",
+                                    "width": "auto",
+                                  }
+                                }
                                 testID="OfferTile"
+                                withCenterAlign={true}
                               >
                                 <View
                                   accessibilityLabel="Offre "Black Widow - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."

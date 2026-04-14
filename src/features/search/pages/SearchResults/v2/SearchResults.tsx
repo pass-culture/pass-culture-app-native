@@ -183,10 +183,7 @@ export const SearchResults = () => {
   const searchResultHits = isArtistInSearchActive ? hits : { ...hits, artists: [] }
 
   const searchListContent = getSearchListContent({
-    disabilities,
     selectedFilter,
-    selectedLocationMode,
-    venuesPlaylistTitle: venues?.venuesUserData?.[0]?.venue_playlist_title,
     hits: searchResultHits,
     nbHits: offers?.nbHits ?? hits.offers.length,
   })

@@ -50,6 +50,7 @@ export interface OfferTileProps {
   navigationMethod?: NavigationMethod
   interactionTag?: ReactNode
   containerWidth?: number
+  withCenterAlign?: boolean
 }
 
 export type FavoriteProps = {
