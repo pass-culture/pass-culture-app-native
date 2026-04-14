@@ -26,6 +26,7 @@ import { CheatcodesNavigationShare } from 'cheatcodes/pages/features/share/Cheat
 import { CheatcodesNavigationSubscription } from 'cheatcodes/pages/features/subscription/CheatcodesNavigationSubscription'
 import { CheatcodesNavigationTrustedDevice } from 'cheatcodes/pages/features/trustedDevice/CheatcodesNavigationTrustedDevice'
 import { CheatcodesScreenTrustedDeviceInfos } from 'cheatcodes/pages/features/trustedDevice/CheatcodesScreenTrustedDeviceInfos'
+import { CheatcodesScreenABTest } from 'cheatcodes/pages/others/CheatcodesABTest/CheatcodesScreenABTest'
 import { CheatcodesNavigationAccountManagement } from 'cheatcodes/pages/others/CheatcodesNavigationAccountManagement'
 import { CheatcodesNavigationErrors } from 'cheatcodes/pages/others/CheatcodesNavigationErrors'
 import { CheatcodesNavigationGenericPages } from 'cheatcodes/pages/others/CheatcodesNavigationGenericPages'
@@ -34,6 +35,7 @@ import { CheatcodesNavigationSignUp } from 'cheatcodes/pages/others/CheatcodesNa
 import { CheatcodesScreenAccesLibre } from 'cheatcodes/pages/others/CheatcodesScreenAccesLibre'
 import { CheatcodesScreenPageHeaderWithoutPlaceholder } from 'cheatcodes/pages/others/CheatcodesScreenCheatcodesScreenPageHeaderWithoutPlaceholder'
 import { CheatcodesScreenDebugInformations } from 'cheatcodes/pages/others/CheatcodesScreenDebugInformations'
+import { CheatcodesScreenDirectIdAccess } from 'cheatcodes/pages/others/CheatcodesScreenDirectIdAccess'
 import { CheatcodesScreenFeatureFlags } from 'cheatcodes/pages/others/CheatcodesScreenFeatureFlags'
 import { CheatcodesScreenGenericErrorPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericErrorPage'
 import { CheatcodesScreenGenericInfoPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericInfoPage'
@@ -310,6 +312,18 @@ const cheatcodesStackNavigatorPathDefinition = {
       screen: CheatcodesScreenPageHeaderWithoutPlaceholder,
       linking: {
         path: 'cheatcodes/other/page-header-without-placeholder',
+      },
+    },
+    CheatcodesScreenABTest: {
+      screen: CheatcodesScreenABTest,
+      linking: {
+        path: 'cheatcodes/other/ab-test',
+      },
+    },
+    CheatcodesScreenDirectIdAccess: {
+      screen: CheatcodesScreenDirectIdAccess,
+      linking: {
+        path: 'cheatcodes/other/direct-id-access',
       },
     },
   },

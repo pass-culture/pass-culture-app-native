@@ -17,8 +17,8 @@ import {
   useReviewInAppCheatcodeState,
 } from 'cheatcodes/pages/features/reviewInApp/useReviewInAppCheatcodeState'
 import { CheatcodeCategory } from 'cheatcodes/types'
-import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ReviewTriggerSource } from 'libs/reviewInApp/types'
 import { useReviewInApp } from 'libs/reviewInApp/useReviewInApp'

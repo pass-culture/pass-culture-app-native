@@ -16,6 +16,7 @@ import { CulturalSurveyThanks } from 'features/culturalSurvey/pages/CulturalSurv
 import { FAQWebview } from 'features/culturalSurvey/pages/FAQWebview'
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
+import { FreeBeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/FreeBeneficiaryAccountCreated'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
 import { DisableActivation } from 'features/identityCheck/pages/DisableActivation'
 import { DMSIntroduction } from 'features/identityCheck/pages/identification/dms/DMSIntroduction'
@@ -43,24 +44,28 @@ import { SetProfileBookingError } from 'features/identityCheck/pages/profile/Set
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { Stepper } from 'features/identityCheck/pages/Stepper'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/navigators/RootNavigator/navigationOptions'
+import { useIsSignedIn } from 'features/navigation/navigators/TabNavigator/TabStackNavigator'
 
 const subscriptionStackNavigatorDefinition = {
   screenOptions: ROOT_NAVIGATOR_SCREEN_OPTIONS,
   screens: {
     CulturalSurveyIntro: {
       screen: CulturalSurveyIntro,
+      if: useIsSignedIn,
       linking: {
         path: 'questionnaire-pratiques-initiales/introduction',
       },
     },
     CulturalSurveyQuestions: {
       screen: CulturalSurveyQuestions,
+      if: useIsSignedIn,
       linking: {
         path: 'questionnaire-pratiques-initiales/questions',
       },
     },
     CulturalSurveyThanks: {
       screen: CulturalSurveyThanks,
+      if: useIsSignedIn,
       linking: {
         path: 'questionnaire-pratiques-initiales/merci',
       },
@@ -73,6 +78,7 @@ const subscriptionStackNavigatorDefinition = {
     },
     Stepper: {
       screen: Stepper,
+      if: useIsSignedIn,
       linking: {
         path: 'verification-identite',
       },
@@ -85,54 +91,63 @@ const subscriptionStackNavigatorDefinition = {
     },
     SetPhoneNumberWithoutValidation: {
       screen: SetPhoneNumberWithoutValidation,
+      if: useIsSignedIn,
       linking: {
         path: 'creation-compte/telephone-sans-validation',
       },
     },
     SetName: {
       screen: SetName,
+      if: useIsSignedIn,
       linking: {
         path: 'creation-profil/nom-prenom',
       },
     },
     SetCity: {
       screen: SetCity,
+      if: useIsSignedIn,
       linking: {
         path: 'creation-profil/ville',
       },
     },
     SetAddress: {
       screen: SetAddress,
+      if: useIsSignedIn,
       linking: {
         path: 'creation-profil/adresse',
       },
     },
     SetStatus: {
       screen: SetStatus,
+      if: useIsSignedIn,
       linking: {
         path: 'verification-identite/profil/statut',
       },
     },
     ActivationProfileRecap: {
       screen: ActivationProfileRecap,
+      if: useIsSignedIn,
       linking: {
         path: 'verification-identite/profil/recapitulatif',
       },
     },
     SetProfileBookingError: {
       screen: SetProfileBookingError,
+      if: useIsSignedIn,
       linking: {
         path: 'verification-identite/profil/statut/erreur',
       },
     },
     ProfileInformationValidationCreate: {
       screen: ProfileInformationValidationCreate,
+      if: useIsSignedIn,
       linking: {
         path: 'verification-identite/profil/validation-informations',
       },
     },
     UbbleWebview: {
       screen: UbbleWebview,
+      if: useIsSignedIn,
       linking: {
         path: 'identification/verification-manuelle-piece-identite',
       },
@@ -151,12 +166,14 @@ const subscriptionStackNavigatorDefinition = {
     },
     IdentityCheckEnd: {
       screen: IdentityCheckEnd,
+      if: useIsSignedIn,
       linking: {
         path: 'verification-identite/fin',
       },
     },
     IdentityCheckUnavailable: {
       screen: IdentityCheckUnavailable,
+      if: useIsSignedIn,
       linking: {
         path: 'verification-identite/verification-indisponible',
       },
@@ -181,20 +198,30 @@ const subscriptionStackNavigatorDefinition = {
     },
     IdentityCheckHonor: {
       screen: IdentityCheckHonor,
+      if: useIsSignedIn,
       linking: {
         path: 'confirmation',
       },
     },
     BeneficiaryRequestSent: {
       screen: BeneficiaryRequestSent,
+      if: useIsSignedIn,
       linking: {
         path: 'demande-beneficiaire-envoyee',
       },
     },
     BeneficiaryAccountCreated: {
       screen: BeneficiaryAccountCreated,
+      if: useIsSignedIn,
       linking: {
         path: 'creation-compte/confirmation-beneficiaire',
+      },
+    },
+    FreeBeneficiaryAccountCreated: {
+      screen: FreeBeneficiaryAccountCreated,
+      if: useIsSignedIn,
+      linking: {
+        path: 'creation-compte/confirmation-beneficiaire-gratuit',
       },
     },
     EduConnectErrors: {
@@ -241,54 +268,63 @@ const subscriptionStackNavigatorDefinition = {
     },
     BonificationExplanations: {
       screen: BonificationExplanations,
+      if: useIsSignedIn,
       linking: {
         path: 'bonification/explications',
       },
     },
     BonificationRequiredInformation: {
       screen: BonificationRequiredInformation,
+      if: useIsSignedIn,
       linking: {
         path: 'bonification/informations-requises',
       },
     },
     BonificationNames: {
       screen: BonificationNames,
+      if: useIsSignedIn,
       linking: {
         path: 'bonification/noms',
       },
     },
     BonificationTitle: {
       screen: BonificationTitle,
+      if: useIsSignedIn,
       linking: {
         path: 'bonification/civilite',
       },
     },
     BonificationBirthDate: {
       screen: BonificationBirthDate,
+      if: useIsSignedIn,
       linking: {
         path: 'bonification/date-de-naissance',
       },
     },
     BonificationBirthPlace: {
       screen: BonificationBirthPlace,
+      if: useIsSignedIn,
       linking: {
         path: 'bonification/lieu-de-naissance',
       },
     },
     BonificationRecap: {
       screen: BonificationRecap,
+      if: useIsSignedIn,
       linking: {
         path: 'bonification/resume',
       },
     },
     BonificationError: {
       screen: BonificationError,
+      if: useIsSignedIn,
       linking: {
         path: 'bonification/erreur',
       },
     },
     BonificationRefused: {
       screen: BonificationRefused,
+      if: useIsSignedIn,
       linking: {
         path: 'bonification/refuse',
       },

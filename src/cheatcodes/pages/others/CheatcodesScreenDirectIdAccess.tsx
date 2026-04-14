@@ -10,8 +10,8 @@ import {
   DirectIdEntityKey,
   isDirectIdValueValid,
 } from 'cheatcodes/helpers/directIdAccessConfig'
-import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { Button } from 'ui/designSystem/Button/Button'
