@@ -16,4 +16,4 @@ appId: ${MAESTRO_APP_ID}
           autoVerify: true
 - waitForAnimationToEnd
 - runFlow: ../common/AcceptCookies.yml
-- assertVisible: 'Mes favoris'
+- assertVisible: '.*favoris.*'

@@ -1,0 +1,62 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - auth
+onFlowStart:
+  - runScript: ../common/DeepLink.js
+  - runScript:
+      file: ../common/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: 18
+---
+- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/StopApp.yml
+- runFlow: ../common/DeepLinksToFavorites.yml
+
+- tapOn: 'Se connecter'
+
+- runFlow:
+    when:
+      visible: 'Inscription'
+    commands:
+      - pressKey: back
+
+- tapOn:
+    id: 'Entrée pour l’email'
+- evalScript: '${console.log(output.userEmail)}'
+- inputText: ${output.userEmail}
+- tapOn:
+    id: 'Mot de passe'
+- inputText: ${MAESTRO_PASSWORD}
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - hideKeyboard
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: 'Connecte-toi' # Pour fermer le clavier iOS
+- tapOn: 'Se connecter'
+
+- waitForAnimationToEnd
+
+- runFlow: # Si apparition de l'écran de crédit (félicitations 18 ans)
+    when:
+      visible: ".*Bonne nouvelle.*"
+    commands:
+      - tapOn: ".*Continuer.*"
+
+- runFlow:
+    when:
+      visible: 'Plus tard'
+    commands:
+      - tapOn: 'Plus tard'
+
+- runFlow: # Si apparition de la modale de partage
+    when:
+      visible: 'Partager l’appli'
+    commands:
+      - tapOn: 'Non merci'

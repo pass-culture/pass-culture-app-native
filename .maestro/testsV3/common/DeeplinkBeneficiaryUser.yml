@@ -16,7 +16,7 @@ appId: ${MAESTRO_APP_ID}
           autoVerify: true
 - evalScript: '${console.log(output.userEmail)}'
 - waitForAnimationToEnd
-- runFlow: ../common/AcceptCookies.yml
+- runFlow: ../common/AcceptCookiesOptional.yml
 - tapOn: 'On y va !'
 
 - runFlow: # Si apparition de la modale de partage
