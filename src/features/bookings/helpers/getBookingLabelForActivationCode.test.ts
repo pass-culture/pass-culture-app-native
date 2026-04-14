@@ -1,12 +1,15 @@
-import { bookingsSnap } from 'features/bookings/fixtures'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { getBookingLabelForActivationCode } from 'features/bookings/helpers'
 import { Booking } from 'features/bookings/types'
 
 describe('getBookingLabelForActivationCode', () => {
   it('should display the date in the label', () => {
     const booking = {
-      ...bookingsSnap.ongoing_bookings[0],
-      activationCode: { expirationDate: '2021-03-15T23:01:37.925926' },
+      ...bookingsSnapV2.ongoingBookings[0],
+      ticket: {
+        ...bookingsSnapV2.ongoingBookings[0].ticket,
+        activationCode: { code: 'Code', expirationDate: '2021-03-15T23:01:37.925926' },
+      },
     } as unknown as Booking
 
     const label = getBookingLabelForActivationCode(booking)
@@ -18,8 +21,11 @@ describe('getBookingLabelForActivationCode', () => {
     'should only display "A activer"',
     (activationCodeField) => {
       const booking = {
-        ...bookingsSnap.ongoing_bookings[0],
-        ...activationCodeField,
+        ...bookingsSnapV2.ongoingBookings[0],
+        ticket: {
+          ...bookingsSnapV2.ongoingBookings[0].ticket,
+          activationCode: activationCodeField,
+        },
       } as unknown as Booking
       const label = getBookingLabelForActivationCode(booking)
 

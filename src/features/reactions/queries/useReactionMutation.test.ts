@@ -1,7 +1,7 @@
 import { QueryClient } from '@tanstack/react-query'
 
 import { ReactionTypeEnum } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { useReactionMutation } from 'features/reactions/queries/useReactionMutation'
 import { QueryKeys } from 'libs/queryKeys'
 import { mockServer } from 'tests/mswServer'
@@ -14,13 +14,7 @@ const mockShowErrorSnackBar = jest.spyOn(snackBarStoreModule, 'showErrorSnackBar
 jest.mock('libs/jwt/jwt')
 
 const setup = (queryClient: QueryClient) => {
-  queryClient.setQueryData([QueryKeys.BOOKINGS], bookingsSnap)
-
-  const bookingsV2Snap = {
-    endedBookings: bookingsSnap.ended_bookings,
-    ongoingBookings: bookingsSnap.ongoing_bookings,
-  }
-  queryClient.setQueryData([QueryKeys.BOOKINGSV2], bookingsV2Snap)
+  queryClient.setQueryData([QueryKeys.BOOKINGSV2], bookingsSnapV2)
 }
 
 describe('useReactionMutation', () => {
@@ -55,7 +49,6 @@ describe('useReactionMutation', () => {
 
     await waitFor(() => {
       expect(result.current.isSuccess).toBeTruthy()
-      expect(queryCache.find({ queryKey: [QueryKeys.BOOKINGS] })?.state.isInvalidated).toBeTruthy()
       expect(
         queryCache.find({ queryKey: [QueryKeys.BOOKINGSV2] })?.state.isInvalidated
       ).toBeTruthy()
@@ -70,7 +63,6 @@ describe('useReactionMutation', () => {
 
     await waitFor(() => {
       expect(result.current.isError).toBeTruthy()
-      expect(queryCache.find({ queryKey: [QueryKeys.BOOKINGS] })?.state.isInvalidated).toBeTruthy()
       expect(
         queryCache.find({ queryKey: [QueryKeys.BOOKINGSV2] })?.state.isInvalidated
       ).toBeTruthy()

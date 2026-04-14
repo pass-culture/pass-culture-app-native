@@ -51,7 +51,6 @@ function handleBatchProfileReset() {
 
 // List of keys that are accessible only when logged in to clean when logging out
 export const LoggedInQueryKeys: QueryKeys[] = [
-  QueryKeys.BOOKINGS,
   QueryKeys.CULTURAL_SURVEY_QUESTIONS,
   QueryKeys.FAVORITES,
   QueryKeys.FAVORITES_COUNT,

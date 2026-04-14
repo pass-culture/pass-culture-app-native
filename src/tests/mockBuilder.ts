@@ -5,10 +5,8 @@ import {
   BookingListItemOfferResponse,
   BookingListItemResponse,
   BookingListItemStockResponse,
-  BookingOfferResponse,
   BookingOfferResponseAddressV2,
   BookingOfferResponseV2,
-  BookingReponse,
   BookingResponse,
   BookingStockResponseV2,
   BookingVenueResponse,
@@ -17,7 +15,7 @@ import {
   OfferVenueResponse,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { bookingsSnap, bookingsSnapV2 } from 'features/bookings/fixtures'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import {
   endedBookingsV2ListSnap,
   ongoingBookingsV2ListSnap,
@@ -105,12 +103,10 @@ export const mockBuilder = {
   bookingListItemStockResponse: createMockBuilder<BookingListItemStockResponse>(
     defaultBookingListItemStockResponse
   ),
-  bookingOfferResponse: createMockBuilder<BookingOfferResponse>(mockedBookingOfferResponse),
   bookingOfferResponseAddressV2: createMockBuilder<BookingOfferResponseAddressV2>(
     mockedBookingOfferResponseAddressV2
   ),
   bookingOfferResponseV2: createMockBuilder<BookingOfferResponseV2>(mockedBookingOfferResponseV2),
-  bookingResponseV1: createMockBuilder<BookingReponse>(bookingsSnap.ongoing_bookings[0]),
   bookingResponseV2: createMockBuilder<BookingResponse>(bookingsSnapV2.ongoingBookings[0]),
   bookingStockResponseV2: createMockBuilder<BookingStockResponseV2>(mockedBookingStockResponseV2),
   bookingVenueResponse: createMockBuilder<BookingVenueResponse>(mockedBookingOfferResponse.venue),

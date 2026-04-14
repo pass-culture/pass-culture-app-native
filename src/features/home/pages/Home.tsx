@@ -19,7 +19,7 @@ import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { getAppVersion } from 'libs/packageJson'
 import { BatchProfile } from 'libs/react-native-batch'
-import { useBookingsQueryV2 } from 'queries/bookings'
+import { useBookingsV2Query } from 'queries/bookings'
 import { useModal } from 'ui/components/modals/useModal'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
@@ -45,7 +45,7 @@ export const Home: FunctionComponent = () => {
     userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
-  const { data: bookings, isLoading: isBookingsLoading } = useBookingsQueryV2(isLoggedIn)
+  const { data: bookings, isLoading: isBookingsLoading } = useBookingsV2Query(isLoggedIn)
 
   const { achievementsToShow, bookingsEligibleToReaction, modalToShow } = useWhichModalToShow(
     bookings,

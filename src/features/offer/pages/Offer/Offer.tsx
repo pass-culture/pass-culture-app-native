@@ -26,7 +26,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { useSubcategoriesMapping } from 'libs/subcategories/mappings'
-import { useEndedBookingFromOfferIdQuery } from 'queries/bookings'
+import { useEndedBookingFromOfferIdQueryV2 } from 'queries/bookings'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
@@ -81,7 +81,7 @@ export function Offer() {
     hideModal: hideOfferArtistsModal,
     showModal: showOfferArtistsModal,
   } = useModal(false)
-  const { data: booking } = useEndedBookingFromOfferIdQuery(
+  const { data: booking } = useEndedBookingFromOfferIdQueryV2(
     offer?.id ?? -1,
     isLoggedIn && !!offer?.id
   )

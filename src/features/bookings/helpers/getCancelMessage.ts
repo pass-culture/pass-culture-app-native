@@ -1,11 +1,11 @@
-import { BookingReponse } from 'api/gen'
+import { BookingResponse } from 'api/gen'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { UserProfile } from 'features/share/types'
 import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 type Arguments = {
-  confirmationDate: BookingReponse['confirmationDate']
+  confirmationDate: BookingResponse['confirmationDate']
   expirationDate: string
   isDigitalBookingWithoutExpirationDate: boolean
   isFreeOfferToArchive: boolean

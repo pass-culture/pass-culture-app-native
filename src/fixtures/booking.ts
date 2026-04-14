@@ -2,10 +2,11 @@ import {
   BookingOfferResponse,
   BookingOfferResponseAddressV2,
   BookingOfferResponseV2,
-  BookingReponse,
+  BookingResponse,
   BookingStockResponseV2,
-  BookingsResponse,
   SubcategoryIdEnum,
+  TicketDisplayEnum,
+  WithdrawalTypeEnum,
 } from 'api/gen'
 
 export const mockedBookingOfferResponse: BookingOfferResponse = {
@@ -93,25 +94,17 @@ export const mockedBookingStockResponseV2: BookingStockResponseV2 = {
   },
 }
 
-export const mockedBookingApi: BookingReponse = {
+export const mockedBookingV2Api: BookingResponse = {
   id: 123,
   quantity: 3,
   totalAmount: 4,
   canReact: true,
   enablePopUpReaction: true,
-  stock: {
-    id: 431,
-    offer: mockedBookingOfferResponse,
-    price: 400,
-    priceCategoryLabel: 'Cat 4',
-    features: ['VOSTFR', '3D', 'IMAX'],
+  stock: mockedBookingStockResponseV2,
+  ticket: {
+    token: { data: 'bookingToken' },
+    display: TicketDisplayEnum.voucher,
+    withdrawal: { type: WithdrawalTypeEnum.on_site },
   },
-  token: 'bookingToken',
   dateCreated: '',
-}
-
-export const mockedBookingsResponse: BookingsResponse = {
-  ongoing_bookings: [mockedBookingApi],
-  ended_bookings: [{ ...mockedBookingApi, id: 321 }],
-  hasBookingsAfter18: false,
 }

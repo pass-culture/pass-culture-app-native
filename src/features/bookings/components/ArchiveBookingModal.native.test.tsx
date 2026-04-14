@@ -11,9 +11,6 @@ import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/jwt/jwt')
 
-jest.mock('libs/react-query/usePersistQuery', () => ({
-  usePersistQuery: jest.requireActual('@tanstack/react-query').useQuery,
-}))
 const onDismiss = jest.fn()
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({

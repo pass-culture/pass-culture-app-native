@@ -1,7 +1,13 @@
 import React, { createRef } from 'react'
 import { ScrollView } from 'react-native'
 
-import { OffersStocksResponseV2, SubcategoriesResponseModelv2, SubcategoryIdEnum } from 'api/gen'
+import {
+  BookingsResponseV2,
+  OffersStocksResponseV2,
+  SubcategoriesResponseModelv2,
+  SubcategoryIdEnum,
+} from 'api/gen'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import * as MovieCalendarContext from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
@@ -15,6 +21,7 @@ import { render, screen } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/jwt/jwt')
 
 const MOCK_TIMESTAMP = '2024-05-08T12:50:00Z'
 const MOCK_DATE = new Date(MOCK_TIMESTAMP)
@@ -69,6 +76,7 @@ describe('VenueMovies', () => {
     setFeatureFlags()
     mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, offersStocksResponseSnap)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', bookingsSnapV2)
   })
 
   afterAll(() => jest.useRealTimers())

@@ -2,13 +2,13 @@ import { QueryObserverResult, UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
 
 import {
-  BookingsResponse,
+  BookingsResponseV2,
   CategoryIdEnum,
   NativeCategoryIdEnumv2,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { useAvailableReactionQuery } from 'features/reactions/queries/useAvailableReactionQuery'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as bookingsAPI from 'queries/bookings/useBookingsQuery'
@@ -70,7 +70,7 @@ describe('Bookings', () => {
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = renderBookings(bookingsSnap)
+      const { container } = renderBookings(bookingsSnapV2)
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)
@@ -81,11 +81,11 @@ describe('Bookings', () => {
   })
 })
 
-const renderBookings = (bookings: BookingsResponse) => {
+const renderBookings = (bookings: BookingsResponseV2) => {
   jest
-    .spyOn(bookingsAPI, 'useBookingsQueryV1')
+    .spyOn(bookingsAPI, 'useBookingsV2Query')
     .mockReturnValue({ data: bookings, isFetching: false } as QueryObserverResult<
-      BookingsResponse,
+      BookingsResponseV2,
       Error
     >)
 

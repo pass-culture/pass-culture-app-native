@@ -1,4 +1,4 @@
-import { BookingReponse } from 'api/gen'
+import { BookingResponse } from 'api/gen'
 import { BookingsStatus } from 'features/bookings/enum'
 import { Valid } from 'ui/svg/icons/Valid'
 import { Wrong } from 'ui/svg/icons/Wrong'
@@ -12,7 +12,7 @@ export type BookingProperties = {
   hasActivationCode?: boolean
 }
 
-export type Booking = BookingReponse
+export type Booking = BookingResponse
 
 export type BookingsStatusValue = `${BookingsStatus}Bookings`
 

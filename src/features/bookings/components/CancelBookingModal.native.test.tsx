@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { BookingReponse } from 'api/gen'
+import { BookingResponse } from 'api/gen'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
-import { bookingsSnap } from 'features/bookings/fixtures'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { beneficiaryUser, nonBeneficiaryUser as exBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
@@ -30,7 +30,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-const booking = bookingsSnap.ongoing_bookings[0]
+const booking = bookingsSnapV2.ongoingBookings[0]
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -122,7 +122,7 @@ describe('<CancelBookingModal />', () => {
   })
 
   it('should navigate to bookings and show error snackbar if cancel booking request fails', async () => {
-    const booking = bookingsSnap.ongoing_bookings[0]
+    const booking = bookingsSnapV2.ongoingBookings[0]
     const response = {
       code: 'ALREADY_USED',
       message: 'La réservation a déjà été utilisée.',
@@ -144,7 +144,7 @@ describe('<CancelBookingModal />', () => {
   })
 })
 
-const renderCancelBookingModal = (booking: BookingReponse) => {
+const renderCancelBookingModal = (booking: BookingResponse) => {
   render(
     reactQueryProviderHOC(
       <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />

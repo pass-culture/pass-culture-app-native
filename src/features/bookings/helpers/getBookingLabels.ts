@@ -1,4 +1,4 @@
-import { BookingStockResponse, WithdrawalTypeEnum } from 'api/gen'
+import { BookingStockResponseV2, WithdrawalTypeEnum } from 'api/gen'
 import {
   getEventOnSiteWithdrawLabel,
   getLocationLabel,
@@ -118,8 +118,8 @@ const getHourLabel = (booking: Booking, properties: BookingProperties): string =
 
 const getWithdrawLabel = (booking: Booking, properties: BookingProperties): string => {
   if (properties.isEvent)
-    return booking.stock.offer.withdrawalType === WithdrawalTypeEnum.on_site
-      ? getEventOnSiteWithdrawLabel(booking.stock)
+    return booking.ticket?.withdrawal?.type === WithdrawalTypeEnum.on_site
+      ? getEventOnSiteWithdrawLabel(booking)
       : getEventWithdrawLabel(booking.stock)
 
   if (properties.isPhysical) return getPhysicalWithdrawLabel(booking.expirationDate)
@@ -134,7 +134,7 @@ const getPhysicalWithdrawLabel = (expiration: string | null | undefined): string
   return ''
 }
 
-const getEventWithdrawLabel = (stock: BookingStockResponse): string => {
+const getEventWithdrawLabel = (stock: BookingStockResponseV2): string => {
   if (!stock.beginningDatetime) return ''
   if (isToday(new Date(stock.beginningDatetime))) return 'Aujourd’hui'
   if (isTomorrow(new Date(stock.beginningDatetime))) return 'Demain'

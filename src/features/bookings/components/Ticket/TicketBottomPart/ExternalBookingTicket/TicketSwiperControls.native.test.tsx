@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { TicketSwiperControls } from 'features/bookings/components/OldBookingDetails/Ticket/TicketSwiperControls'
+import { TicketSwiperControls } from 'features/bookings/components/Ticket/TicketBottomPart/ExternalBookingTicket/TicketSwiperControls'
 import { render, screen } from 'tests/utils'
 
 const props = {

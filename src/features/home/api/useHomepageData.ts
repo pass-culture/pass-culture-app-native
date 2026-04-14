@@ -7,7 +7,7 @@ import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { isUserFreeBeneficiaryOrEligible } from 'features/profile/helpers/isUserFreeBeneficiaryOrEligible'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
-import { useUserHasBookingsQuery } from 'queries/bookings'
+import { useUserHasBookingsQueryV2 } from 'queries/bookings'
 
 enum HomepageType {
   GENERAL,
@@ -82,7 +82,7 @@ export const getHomepageId = (
 
 export const useHomepageData = (): Homepage => {
   const { isLoggedIn, user } = useAuthContext()
-  const userHasBookings = useUserHasBookingsQuery()
+  const { data: userHasBookings } = useUserHasBookingsQueryV2(false)
   const onboardingRole = useUserRoleFromOnboarding()
   const { data: remoteConfig } = useRemoteConfigQuery()
   const homepageId = getHomepageId(
@@ -90,7 +90,7 @@ export const useHomepageData = (): Homepage => {
       isLoggedIn: isLoggedIn && !!user,
       isFreeBeneficiaryOrEligible: isUserFreeBeneficiaryOrEligible(user),
       isBeneficiary: isUserBeneficiary(user),
-      hasBookings: userHasBookings,
+      hasBookings: !!userHasBookings,
       onboardingRole,
     },
     remoteConfig
