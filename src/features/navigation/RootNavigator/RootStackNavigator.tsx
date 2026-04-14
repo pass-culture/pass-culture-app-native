@@ -74,6 +74,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
 import { VerticalPlaylistPage } from 'shared/pages/VerticalPlaylistPage/VerticalPlaylistPage'
+import { VerticalPlaylistPage2 } from 'shared/pages/VerticalPlaylistPage/VerticalPlaylistPage2'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
@@ -356,6 +357,11 @@ const rootScreens: RouteConfig[] = [
   {
     name: 'VerticalPlaylistPage',
     component: VerticalPlaylistPage,
+    options: { title: 'Liste de lecture verticale' },
+  },
+  {
+    name: 'VerticalPlaylistPage2',
+    component: VerticalPlaylistPage2,
     options: { title: 'Liste de lecture verticale' },
   },
 ]

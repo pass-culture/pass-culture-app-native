@@ -409,4 +409,8 @@ export const rootStackNavigatorPathConfig = {
     path: 'playlist-verticale',
     parse: screenParamsParser['VerticalPlaylistPage'],
   },
+  VerticalPlaylistPage2: {
+    path: 'playlist-verticale-2',
+    parse: screenParamsParser['VerticalPlaylistPage2'],
+  },
 }

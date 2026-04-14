@@ -19,6 +19,7 @@ import { LENGTH_M, RATIO_HOME_IMAGE, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const cinemaCTAButtonName = 'Accéder aux séances'
+const playlistTitle = 'Les autres offres'
 
 const keyExtractor = (item: Offer) => item.objectID
 
@@ -43,6 +44,11 @@ export const VenueMovies: React.FC<{
     (offer) => offer.offer.subcategoryId !== SubcategoryIdEnum.SEANCE_CINE
   )
 
+  const navigateToVerticalPlaylist = {
+    screen: 'VerticalPlaylistPage2' as const,
+    params: { venueId: venueOffers.hits[0]?.venue?.id, playlistTitle: playlistTitle },
+  }
+
   return (
     <Container>
       <Anchor name={AnchorNames.VENUE_CINE_AVAILABILITIES}>
@@ -60,7 +66,7 @@ export const VenueMovies: React.FC<{
           <PassPlaylistContainer>
             <PassPlaylist
               testID="offersModuleList"
-              title="Les autres offres"
+              title={playlistTitle}
               data={nonMovieScreeningOffers}
               itemHeight={LENGTH_M}
               itemWidth={LENGTH_M * RATIO_HOME_IMAGE}
@@ -76,6 +82,12 @@ export const VenueMovies: React.FC<{
                 />
               )}
               keyExtractor={keyExtractor}
+              seeAllButton={{
+                navigateToVerticalPlaylist,
+                onBeforeNavigate: () => {
+                  // analytics si besoin
+                },
+              }}
             />
           </PassPlaylistContainer>
         </SectionWithDivider>
