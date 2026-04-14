@@ -1,13 +1,13 @@
 import { openInbox } from 'react-native-email-link'
 
-import { SubscriptionMessage } from 'api/gen'
+import { SubscriptionMessageV2 } from 'api/gen'
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/helpers/matchSubscriptionMessageIconToSvg'
 import { shouldOpenInbox as checkShouldOpenInbox } from 'features/profile/helpers/shouldOpenInbox'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 
 export const getCallToActionLinkForSubscriptionMessage = (
-  subscriptionMessage: SubscriptionMessage,
+  subscriptionMessage: SubscriptionMessageV2,
   isMailAppAvailable: boolean
 ) => {
   const callToAction = subscriptionMessage.callToAction

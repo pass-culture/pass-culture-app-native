@@ -2,7 +2,7 @@ import React from 'react'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
-import { SubscriptionMessage } from 'api/gen'
+import { SubscriptionMessageV2 } from 'api/gen'
 import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailable'
 import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { formatDateToLastUpdatedAtMessage } from 'features/profile/helpers/formatDateToLastUpdatedAtMessage'
@@ -15,7 +15,7 @@ import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 
 const getCallToActionLink = (
-  subscriptionMessage: SubscriptionMessage,
+  subscriptionMessage: SubscriptionMessageV2,
   isMailAppAvailable: boolean
 ) => {
   const { callToActionTitle, callToActionLink, callToActionIcon } =
@@ -46,7 +46,7 @@ const getCallToActionLink = (
 
 type SubscriptionMessageBadgeProps = {
   disableActivation: boolean
-  subscriptionMessage: SubscriptionMessage
+  subscriptionMessage: SubscriptionMessageV2
   remoteActivationBannerOptions: Record<string, unknown>
 }
 

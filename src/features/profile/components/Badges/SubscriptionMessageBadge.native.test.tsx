@@ -1,7 +1,7 @@
 import React from 'react'
 import { openInbox } from 'react-native-email-link'
 
-import { SubscriptionMessage } from 'api/gen'
+import { SubscriptionMessageV2 } from 'api/gen'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import {
   RemoteBannerRedirectionType,
@@ -68,7 +68,7 @@ describe('<SubscriptionMessageBadge />', () => {
   })
 })
 
-const renderSubscriptionMessageBadge = (subscriptionMessage: SubscriptionMessage) =>
+const renderSubscriptionMessageBadge = (subscriptionMessage: SubscriptionMessageV2) =>
   render(
     <SubscriptionMessageBadge
       disableActivation={false}

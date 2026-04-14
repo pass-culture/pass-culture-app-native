@@ -1490,22 +1490,43 @@ export enum CallToActionIcon {
 }
 /**
  * @export
- * @interface CallToActionMessage
+ * @interface CallToActionMessageV2
  */
-export interface CallToActionMessage {
+export interface CallToActionMessageV2 {
   /**
    * @type {CallToActionIcon}
-   * @memberof CallToActionMessage
+   * @memberof CallToActionMessageV2
    */
   callToActionIcon?: CallToActionIcon | null
   /**
    * @type {string}
-   * @memberof CallToActionMessage
+   * @memberof CallToActionMessageV2
    */
   callToActionLink?: string | null
   /**
    * @type {string}
-   * @memberof CallToActionMessage
+   * @memberof CallToActionMessageV2
+   */
+  callToActionTitle?: string | null
+}
+/**
+ * @export
+ * @interface CallToActionMessageV3
+ */
+export interface CallToActionMessageV3 {
+  /**
+   * @type {CallToActionIcon}
+   * @memberof CallToActionMessageV3
+   */
+  callToActionIcon?: CallToActionIcon | null
+  /**
+   * @type {string}
+   * @memberof CallToActionMessageV3
+   */
+  callToActionLink?: string | null
+  /**
+   * @type {string}
+   * @memberof CallToActionMessageV3
    */
   callToActionTitle?: string | null
 }
@@ -3781,6 +3802,11 @@ export interface ProfileUpdateRequest {
    * @type {string}
    * @memberof ProfileUpdateRequest
    */
+  phoneNumber?: string | null
+  /**
+   * @type {string}
+   * @memberof ProfileUpdateRequest
+   */
   postalCode: string
   /**
    * @type {SchoolTypesIdEnum}
@@ -4503,40 +4529,14 @@ export interface SubcategoryResponseModelv2 {
 }
 /**
  * @export
- * @interface SubscriptionMessage
- */
-export interface SubscriptionMessage {
-  /**
-   * @type {CallToActionMessage}
-   * @memberof SubscriptionMessage
-   */
-  callToAction?: CallToActionMessage | null
-  /**
-   * @type {PopOverIcon}
-   * @memberof SubscriptionMessage
-   */
-  popOverIcon?: PopOverIcon | null
-  /**
-   * @type {string}
-   * @memberof SubscriptionMessage
-   */
-  updatedAt?: string | null
-  /**
-   * @type {string}
-   * @memberof SubscriptionMessage
-   */
-  userMessage: string
-}
-/**
- * @export
  * @interface SubscriptionMessageV2
  */
 export interface SubscriptionMessageV2 {
   /**
-   * @type {CallToActionMessage}
+   * @type {CallToActionMessageV2}
    * @memberof SubscriptionMessageV2
    */
-  callToAction?: CallToActionMessage | null
+  callToAction?: CallToActionMessageV2 | null
   /**
    * @type {string}
    * @memberof SubscriptionMessageV2
@@ -4555,6 +4555,37 @@ export interface SubscriptionMessageV2 {
   /**
    * @type {string}
    * @memberof SubscriptionMessageV2
+   */
+  userMessage: string
+}
+/**
+ * @export
+ * @interface SubscriptionMessageV3
+ */
+export interface SubscriptionMessageV3 {
+  /**
+   * @type {CallToActionMessageV3}
+   * @memberof SubscriptionMessageV3
+   */
+  callToAction?: CallToActionMessageV3 | null
+  /**
+   * @type {string}
+   * @memberof SubscriptionMessageV3
+   */
+  messageSummary?: string | null
+  /**
+   * @type {PopOverIcon}
+   * @memberof SubscriptionMessageV3
+   */
+  popOverIcon?: PopOverIcon | null
+  /**
+   * @type {string}
+   * @memberof SubscriptionMessageV3
+   */
+  updatedAt?: string | null
+  /**
+   * @type {string}
+   * @memberof SubscriptionMessageV3
    */
   userMessage: string
 }
@@ -4594,27 +4625,53 @@ export enum SubscriptionStepCompletionState {
 }
 /**
  * @export
- * @interface SubscriptionStepDetailsResponse
+ * @interface SubscriptionStepDetailsResponseV2
  */
-export interface SubscriptionStepDetailsResponse {
+export interface SubscriptionStepDetailsResponseV2 {
   /**
    * @type {SubscriptionStepCompletionState}
-   * @memberof SubscriptionStepDetailsResponse
+   * @memberof SubscriptionStepDetailsResponseV2
    */
   completionState: SubscriptionStepCompletionState
   /**
    * @type {SubscriptionStep}
-   * @memberof SubscriptionStepDetailsResponse
+   * @memberof SubscriptionStepDetailsResponseV2
    */
   name: SubscriptionStep
   /**
    * @type {string}
-   * @memberof SubscriptionStepDetailsResponse
+   * @memberof SubscriptionStepDetailsResponseV2
    */
   subtitle?: string | null
   /**
    * @type {SubscriptionStepTitle}
-   * @memberof SubscriptionStepDetailsResponse
+   * @memberof SubscriptionStepDetailsResponseV2
+   */
+  title: SubscriptionStepTitle
+}
+/**
+ * @export
+ * @interface SubscriptionStepDetailsResponseV3
+ */
+export interface SubscriptionStepDetailsResponseV3 {
+  /**
+   * @type {SubscriptionStepCompletionState}
+   * @memberof SubscriptionStepDetailsResponseV3
+   */
+  completionState: SubscriptionStepCompletionState
+  /**
+   * @type {SubscriptionStep}
+   * @memberof SubscriptionStepDetailsResponseV3
+   */
+  name: SubscriptionStep
+  /**
+   * @type {string}
+   * @memberof SubscriptionStepDetailsResponseV3
+   */
+  subtitle?: string | null
+  /**
+   * @type {SubscriptionStepTitle}
+   * @memberof SubscriptionStepDetailsResponseV3
    */
   title: SubscriptionStepTitle
 }
@@ -4660,10 +4717,10 @@ export interface SubscriptionStepperResponseV2 {
    */
   subscriptionMessage?: SubscriptionMessageV2 | null
   /**
-   * @type {Array<SubscriptionStepDetailsResponse>}
+   * @type {Array<SubscriptionStepDetailsResponseV2>}
    * @memberof SubscriptionStepperResponseV2
    */
-  subscriptionStepsToDisplay: Array<SubscriptionStepDetailsResponse>
+  subscriptionStepsToDisplay: Array<SubscriptionStepDetailsResponseV2>
   /**
    * @type {string}
    * @memberof SubscriptionStepperResponseV2
@@ -4672,6 +4729,52 @@ export interface SubscriptionStepperResponseV2 {
   /**
    * @type {string}
    * @memberof SubscriptionStepperResponseV2
+   */
+  title: string
+}
+/**
+ * @export
+ * @interface SubscriptionStepperResponseV3
+ */
+export interface SubscriptionStepperResponseV3 {
+  /**
+   * @type {Array<IdentityCheckMethod>}
+   * @memberof SubscriptionStepperResponseV3
+   */
+  allowedIdentityCheckMethods: Array<IdentityCheckMethod>
+  /**
+   * @type {boolean}
+   * @memberof SubscriptionStepperResponseV3
+   */
+  hasIdentityCheckPending: boolean
+  /**
+   * @type {MaintenancePageType}
+   * @memberof SubscriptionStepperResponseV3
+   */
+  maintenancePageType?: MaintenancePageType | null
+  /**
+   * @type {SubscriptionStep}
+   * @memberof SubscriptionStepperResponseV3
+   */
+  nextSubscriptionStep?: SubscriptionStep | null
+  /**
+   * @type {SubscriptionMessageV3}
+   * @memberof SubscriptionStepperResponseV3
+   */
+  subscriptionMessage?: SubscriptionMessageV3 | null
+  /**
+   * @type {Array<SubscriptionStepDetailsResponseV3>}
+   * @memberof SubscriptionStepperResponseV3
+   */
+  subscriptionStepsToDisplay: Array<SubscriptionStepDetailsResponseV3>
+  /**
+   * @type {string}
+   * @memberof SubscriptionStepperResponseV3
+   */
+  subtitle?: string | null
+  /**
+   * @type {string}
+   * @memberof SubscriptionStepperResponseV3
    */
   title: string
 }
@@ -5000,7 +5103,7 @@ export interface UserProfileResponse {
    * @type {SubscriptionMessage}
    * @memberof UserProfileResponse
    */
-  subscriptionMessage?: SubscriptionMessage | null
+  subscriptionMessage?: SubscriptionMessageV2 | null
   /**
    * @type {NotificationSubscriptions}
    * @memberof UserProfileResponse
@@ -6334,6 +6437,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         encodeURIComponent(String(offer_id))
       )
       let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_subscription_stepper <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV3SubscriptionStepper(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v3/subscription/stepper`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -7941,6 +8062,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary get_subscription_stepper <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV3SubscriptionStepper(options?: any): Promise<SubscriptionStepperResponseV3> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV3SubscriptionStepper(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary patch_user_profile <PATCH>
      * @param {UserProfilePatchRequest} body 
      * @param {*} [options] Override http request option.
@@ -8878,6 +9010,17 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV3OfferofferId(offer_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV3OfferofferId(offer_id, options)
+  }
+  /**
+    * 
+    * @summary get_subscription_stepper <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV3SubscriptionStepper(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV3SubscriptionStepper(options)
   }
   /**
     * 

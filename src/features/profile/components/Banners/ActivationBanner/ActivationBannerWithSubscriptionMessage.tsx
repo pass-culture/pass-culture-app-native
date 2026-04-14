@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { PopOverIcon, SubscriptionMessage, SubscriptionStepperResponseV2 } from 'api/gen'
+import { PopOverIcon, SubscriptionMessageV2, SubscriptionStepperResponseV2 } from 'api/gen'
 import { getCallToActionLinkForSubscriptionMessage } from 'features/profile/helpers/getCallToActionLinkForSubscriptionMessage'
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/helpers/matchSubscriptionMessageIconToSvg'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 
-const defaultSubscriptionMessage: SubscriptionMessage = {
+const defaultSubscriptionMessage: SubscriptionMessageV2 = {
   userMessage: 'Une demande est en cours de traitement',
   popOverIcon: PopOverIcon.INFO,
   callToAction: undefined,
