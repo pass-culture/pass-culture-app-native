@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { NavigationContainer } from '@react-navigation/native'
 import { addDays } from 'date-fns'
 import mockdate from 'mockdate'
@@ -796,6 +797,25 @@ describe('<OfferContent />', () => {
         })
       })
 
+      it('should trigger ConsultAdvice log when pressing "Lire les X avis" button', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+          clubAdvices: [],
+          proAdvices: [offerProAdvicesCardDataFixture[0]],
+          proAdvicesCount: 4,
+        })
+
+        await user.press(await screen.findByText('Lire les 4 avis'))
+
+        expect(analytics.logConsultAdvice).toHaveBeenNthCalledWith(1, {
+          from: 'offer',
+          offerId: offerResponseSnap.id.toString(),
+          venueId: offerResponseSnap.venue.id.toString(),
+          adviceType: 'pro',
+          originDetails: 'Lire les 4 avis',
+        })
+      })
+
       it('should navigate to selected pro advice when pressing "Voir plus"', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
@@ -814,6 +834,30 @@ describe('<OfferContent />', () => {
         expect(mockNavigate).toHaveBeenNthCalledWith(1, 'ProAdvicesOffer', {
           offerId: 116656,
           venueId: 1,
+        })
+      })
+
+      it('should trigger ConsultAdvice log when pressing "Voir plus" on pro advice card', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+          clubAdvices: [],
+          proAdvices: [...offerProAdvicesCardDataFixture],
+        })
+
+        const descriptions = await screen.findAllByTestId('description')
+
+        await act(async () => {
+          descriptions[0]?.props.onLayout(mockOnLayoutWithButton)
+        })
+
+        await user.press(screen.getByLabelText('Voir plus à propos de The Best Place'))
+
+        expect(analytics.logConsultAdvice).toHaveBeenNthCalledWith(1, {
+          from: 'offer',
+          offerId: offerResponseSnap.id.toString(),
+          venueId: offerProAdvicesCardDataFixture[0].id.toString(),
+          adviceType: 'pro',
+          originDetails: 'Les avis des pros',
         })
       })
 
@@ -862,6 +906,57 @@ describe('<OfferContent />', () => {
         await waitFor(() => {
           expect(mockRegisterAnchor).toHaveBeenCalledWith('pro-advice-section', expect.any(Object))
         })
+      })
+
+      it('should trigger FeatureFeedbackClicked log with yes answer when answering yes to feedback quiz', async () => {
+        await AsyncStorage.removeItem('offer_pro_advices_feedback')
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+          clubAdvices: [],
+          proAdvices: [...offerProAdvicesCardDataFixture],
+        })
+
+        await user.press(await screen.findByText('Oui'))
+
+        expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
+          featureName: 'avis des pros',
+          feedbackResponse: 'Oui',
+          from: 'offer',
+          offerId: offerResponseSnap.id.toString(),
+          venueId: offerResponseSnap.venue.id.toString(),
+        })
+      })
+
+      it('should trigger FeatureFeedbackClicked log with no answer when answering no to feedback quiz', async () => {
+        await AsyncStorage.removeItem('offer_pro_advices_feedback')
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+          clubAdvices: [],
+          proAdvices: [...offerProAdvicesCardDataFixture],
+        })
+
+        await user.press(await screen.findByText('Non'))
+
+        expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
+          featureName: 'avis des pros',
+          feedbackResponse: 'Non',
+          from: 'offer',
+          offerId: offerResponseSnap.id.toString(),
+          venueId: offerResponseSnap.venue.id.toString(),
+        })
+      })
+
+      it('should not trigger pro advice logs when pro advices section is hidden', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+          clubAdvices: [],
+          proAdvices: [],
+        })
+
+        await screen.findByText('Passe le bon plan\u00a0!')
+
+        expect(analytics.logConsultAdvice).not.toHaveBeenCalled()
+        expect(analytics.logFeatureFeedbackClicked).not.toHaveBeenCalled()
       })
     })
 
