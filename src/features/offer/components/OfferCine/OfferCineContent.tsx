@@ -12,12 +12,6 @@ import {
 import { CineBlock } from 'features/offer/components/OfferCine/CineBlock'
 import { CineBlockSkeleton } from 'features/offer/components/OfferCine/CineBlockSkeleton'
 import {
-  INITIAL_LIST_SIZE,
-  expandList,
-  getListToDisplay,
-  hasReachedEnd,
-} from 'features/offer/helpers/expandableList'
-import {
   getDaysWithNoScreenings,
   useGetVenuesByDay,
 } from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
@@ -31,26 +25,27 @@ type Props = {
   onSeeVenuePress?: VoidFunction
 }
 
+const INITIAL_LIST_SIZE = 6
+const LIST_INCREMENT = 3
+
 export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress }) => {
   const { data: offers, isLoading } = useOffersStocksFromOfferQuery(offer)
   const { selectedDate, dates } = useMovieCalendar()
   const { movieOffers, hasStocksOnlyAfter15Days } = useGetVenuesByDay(selectedDate, offers.offers)
-
-  const [displayedLen, setDisplayedLen] = useState(INITIAL_LIST_SIZE)
+  const [listSize, setListSize] = useState(INITIAL_LIST_SIZE)
+  const expandList = () => setListSize(Math.min(movieOffers.length, listSize + LIST_INCREMENT))
 
   const disabledDates = getDaysWithNoScreenings(offers.offers, dates)
 
   useDisplayCalendar(!hasStocksOnlyAfter15Days)
   useDisableCalendarDates(disabledDates)
 
-  useEffect(() => {
-    setDisplayedLen(INITIAL_LIST_SIZE)
-  }, [selectedDate])
+  useEffect(() => setListSize(INITIAL_LIST_SIZE), [selectedDate])
 
   return (
     <View>
       <ExpandingFlatList
-        data={getListToDisplay(movieOffers, displayedLen)}
+        data={movieOffers.slice(0, listSize)}
         isLoading={isLoading}
         skeletonListLength={3}
         renderSkeleton={() => <CineBlockSkeleton />}
@@ -59,17 +54,16 @@ export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress }) => {
             offer={item.offer}
             onSeeVenuePress={onSeeVenuePress}
             nextDate={item.nextDate}
-            withDivider
           />
         )}
       />
-      {hasReachedEnd(movieOffers, displayedLen) ? null : (
+      {movieOffers.length <= listSize ? null : (
         <SeeMoreContainer>
           <Text>Aucune séance ne te correspond&nbsp;?</Text>
           <Button
             icon={PlainMore}
             wording="Afficher plus de cinémas"
-            onPress={() => setDisplayedLen(expandList(movieOffers, displayedLen))}
+            onPress={expandList}
             variant="secondary"
             color="neutral"
             fullWidth

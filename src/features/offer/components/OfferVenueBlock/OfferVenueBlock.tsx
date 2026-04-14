@@ -20,14 +20,14 @@ type Props = {
   offer: OfferResponse
   isOfferAtSameAddressAsVenue: boolean
   onChangeVenuePress?: VoidFunction
-  onSeeVenuePress?: VoidFunction
+  onVenuePress: VoidFunction
   onSeeItineraryPress?: VoidFunction
   distance?: string | null
 }
 
 export function OfferVenueBlock({
   onChangeVenuePress,
-  onSeeVenuePress,
+  onVenuePress,
   onSeeItineraryPress,
   title,
   offer,
@@ -55,11 +55,11 @@ export function OfferVenueBlock({
         <VenueBlock
           venueId={venueBlockVenue.id}
           distance={distance}
-          hasVenuePage={!!onSeeVenuePress && !isOfferAddressDifferent}
-          onSeeVenuePress={onSeeVenuePress}
+          hasVenuePage={!isOfferAddressDifferent}
+          onVenuePress={onVenuePress}
           title={isOfferAddressDifferent ? addressLabel : venueName}
           subtitle={venueAddress}
-          venueImageUrl={isOfferAddressDifferent ? '' : venueImageUrl}
+          venueImageUrl={isOfferAddressDifferent ? undefined : venueImageUrl}
           isOfferAtSameAddressAsVenue={isOfferAtSameAddressAsVenue}
         />
 

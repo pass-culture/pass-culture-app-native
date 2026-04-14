@@ -14,7 +14,7 @@ type Props = {
   venueImageUrl?: string
   title?: string
   subtitle?: string
-  onSeeVenuePress?: VoidFunction
+  onVenuePress: VoidFunction
   distance?: string | null
   thumbnailSize?: number
   hasVenuePage?: boolean
@@ -28,7 +28,7 @@ export const VenueBlock: FunctionComponent<Props> = ({
   venueImageUrl = '',
   title,
   subtitle,
-  onSeeVenuePress,
+  onVenuePress,
   distance,
   thumbnailSize,
   hasVenuePage,
@@ -57,7 +57,7 @@ export const VenueBlock: FunctionComponent<Props> = ({
       {isClickableVenueLink ? (
         <VenueRowLinkContainer
           navigateTo={{ screen: 'Venue', params: { id: venueId } }}
-          onBeforeNavigate={onSeeVenuePress}
+          onBeforeNavigate={onVenuePress}
           accessibilityLabel={computedAccessibilityLabel}
           accessibilityRole={accessibilityRoleInternalNavigation()}>
           {renderVenueHeader(true)}

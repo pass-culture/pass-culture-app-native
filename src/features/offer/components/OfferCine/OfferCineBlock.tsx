@@ -19,14 +19,13 @@ import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
-  title: string
   offer: OfferResponse
-  onSeeVenuePress?: VoidFunction
+  onVenuePress?: VoidFunction
 }
 
 const cinemaCTAButtonName = 'Accéder aux séances'
 
-export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => {
+export const OfferCineBlock: FC<Props> = ({ onVenuePress: onSeeVenuePress, offer }) => {
   const theme = useTheme()
   const route = useRoute<UseRouteType<'ClubAdvices'>>()
   const from = route.params?.from
@@ -58,7 +57,7 @@ export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => 
             showButton(!inView)
           }}>
           <TitleContainer>
-            <Typo.Title3 {...getHeadingAttrs(2)}>{title}</Typo.Title3>
+            <Typo.Title3 {...getHeadingAttrs(2)}>Trouve ta séance</Typo.Title3>
           </TitleContainer>
         </InView>
       </Anchor>

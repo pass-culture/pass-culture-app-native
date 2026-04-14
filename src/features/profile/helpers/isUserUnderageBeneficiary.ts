@@ -5,6 +5,5 @@ export function isUserUnderageBeneficiary(
   user: UserProfileResponseWithoutSurvey | undefined
 ): boolean {
   if (!user) return false
-  const hasUserUnderageRole = user.roles?.find((role) => role === UserRole.UNDERAGE_BENEFICIARY)
-  return !!hasUserUnderageRole
+  return user.roles?.some((role) => role === UserRole.UNDERAGE_BENEFICIARY)
 }

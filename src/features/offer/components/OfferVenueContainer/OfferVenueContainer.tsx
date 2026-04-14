@@ -5,13 +5,11 @@ import { OfferResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferVenueBlock } from 'features/offer/components/OfferVenueBlock/OfferVenueBlock'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
-import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueSelectionHeaderMessage'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location/location'
-import { Subcategory } from 'libs/subcategories/types'
 import { useSearchVenueOffersInfiniteQuery } from 'queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -21,8 +19,7 @@ const ANIMATION_DURATION = 500 //ms
 
 type Props = {
   offer: OfferResponse
-  subcategory: Subcategory
-  handleOnSeeVenuePress?: VoidFunction
+  handleOnVenuePress: VoidFunction
   isOfferAtSameAddressAsVenue: boolean
   distance?: string | null
 }
@@ -30,26 +27,22 @@ type Props = {
 export const OfferVenueContainer: FC<Props> = ({
   offer,
   distance,
-  subcategory,
-  handleOnSeeVenuePress,
+  handleOnVenuePress,
   isOfferAtSameAddressAsVenue,
 }) => {
-  const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, subcategory.isEvent)
+  const venueSectionTitle = offer.isEvent ? 'Lieu de l’évènement' : 'Lieu de retrait'
 
-  const handleBeforeNavigateToItinerary = async () => {
-    await analytics.logConsultItinerary({ offerId: offer.id, from: 'offer' })
-  }
+  const handleBeforeNavigateToItinerary = () =>
+    analytics.logConsultItinerary({ offerId: offer.id, from: 'offer' })
 
-  const onShowChangeVenueModal = async () => {
+  const onShowChangeVenueModal = () => {
     showChangeVenueModal()
-    await analytics.logMultivenueOptionDisplayed(offer.id)
+    analytics.logMultivenueOptionDisplayed(offer.id)
   }
 
   const shouldDisplaySeeItineraryButton = Boolean(
     offer.venue.address && offer.venue.postalCode && offer.venue.city
   )
-
-  const canSeeVenue = offer.venue.isPermanent
 
   const { selectedLocationMode, place, userLocation } = useLocation()
 
@@ -124,7 +117,7 @@ export const OfferVenueContainer: FC<Props> = ({
         title={venueSectionTitle}
         offer={offer}
         onChangeVenuePress={shouldDisplayChangeVenueButton ? onShowChangeVenueModal : undefined}
-        onSeeVenuePress={canSeeVenue ? handleOnSeeVenuePress : undefined}
+        onVenuePress={handleOnVenuePress}
         onSeeItineraryPress={
           shouldDisplaySeeItineraryButton ? handleBeforeNavigateToItinerary : undefined
         }

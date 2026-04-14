@@ -7,7 +7,6 @@ import { Activity, OfferResponse, SubcategoryIdEnum, VenueResponse } from 'api/g
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferCineBlock } from 'features/offer/components/OfferCine/OfferCineBlock'
 import { OfferVenueContainer } from 'features/offer/components/OfferVenueContainer/OfferVenueContainer'
-import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { analytics } from 'libs/analytics/provider'
 import { QueryKeys } from 'libs/queryKeys'
 import { Subcategory } from 'libs/subcategories/types'
@@ -50,34 +49,23 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
   const { navigate } = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
 
-  const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, subcategory.isEvent)
-
-  const isOfferAMovieScreening = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
-  const canSeeVenue = offer.venue.isPermanent
-
-  const handleOnSeeVenuePress = canSeeVenue
-    ? async () => {
-        // We pre-populate the query-cache with the data from the search result for a smooth transition
-        queryClient.setQueryData([QueryKeys.VENUE, offer.venue.id], mergeVenueData(offer.venue))
-        await analytics.logConsultVenue({ venueId: offer.venue.id.toString(), from: 'offer' })
-        navigate('Venue', { id: offer.venue.id })
-      }
-    : undefined
+  const onVenuePress = () => {
+    // We pre-populate the query-cache with the data from the search result for a smooth transition
+    queryClient.setQueryData([QueryKeys.VENUE, offer.venue.id], mergeVenueData(offer.venue))
+    analytics.logConsultVenue({ venueId: offer.venue.id.toString(), from: 'offer' })
+    navigate('Venue', { id: offer.venue.id })
+  }
 
   return (
     <OfferPlaceWrapper isDigital={offer.isDigital}>
-      {isOfferAMovieScreening ? (
-        <OfferCineBlock
-          title={venueSectionTitle}
-          offer={offer}
-          onSeeVenuePress={handleOnSeeVenuePress}
-        />
+      {offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE ? (
+        <OfferCineBlock offer={offer} onVenuePress={onVenuePress} />
       ) : (
         <OfferVenueContainer
           offer={offer}
           distance={distance}
           subcategory={subcategory}
-          handleOnSeeVenuePress={handleOnSeeVenuePress}
+          handleOnVenuePress={onVenuePress}
           isOfferAtSameAddressAsVenue={isOfferAtSameAddressAsVenue}
         />
       )}

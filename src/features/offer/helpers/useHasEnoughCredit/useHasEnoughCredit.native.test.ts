@@ -10,7 +10,7 @@ import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
 
-import { useHasEnoughCredit } from './useHasEnoughCredit'
+import { getUserHasEnoughCredit } from './useHasEnoughCredit'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
 
@@ -103,6 +103,6 @@ describe('useHasEnoughCredit', () => {
 })
 
 const renderUseHasEnoughCredit = (offer?: Pick<OfferResponse, 'stocks' | 'expenseDomains'>) =>
-  renderHook(() => useHasEnoughCredit(offer), {
+  renderHook(() => getUserHasEnoughCredit(offer), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

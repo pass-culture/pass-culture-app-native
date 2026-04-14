@@ -2,7 +2,13 @@ import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/nativ
 import { useCallback, useEffect } from 'react'
 import { useTheme } from 'styled-components/native'
 
-import { BookOfferResponse, EligibilityType, OfferResponse, YoungStatusType } from 'api/gen'
+import {
+  BookOfferResponse,
+  CurrencyEnum,
+  EligibilityType,
+  OfferResponse,
+  YoungStatusType,
+} from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
 import { useStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
@@ -15,7 +21,7 @@ import {
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
 import { getIsProfileIncomplete } from 'features/offer/helpers/getIsProfileIncomplete/getIsProfileIncomplete'
-import { useHasEnoughCredit } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
+import { getUserHasEnoughCredit } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { selectReminderByOfferId } from 'features/offer/queries/selectors/selectReminderByOfferId'
 import { useAddReminderMutation } from 'features/offer/queries/useAddReminderMutation'
 import { useDeleteReminderMutation } from 'features/offer/queries/useDeleteReminderMutation'
@@ -37,6 +43,8 @@ import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
+import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 
 type UseOfferCTAsParams = {
   offer: OfferResponse
@@ -86,7 +94,15 @@ export const useOfferCTAs = ({
     getBookingOfferId(offerId, bookedOffers) ?? 0
   )
   const { data: reminder } = useGetRemindersQuery((data) => selectReminderByOfferId(data, offer.id))
-  const hasEnoughCreditData = useHasEnoughCredit(offer)
+  const currency =
+    user?.currency === CurrencyEnum.XPF ? Currency.PACIFIC_FRANC_SHORT : Currency.EURO
+  const price = getOfferPrice(offer.stocks)
+  const hasEnoughCreditData = getUserHasEnoughCredit(
+    currency,
+    price,
+    offer.expenseDomains,
+    user?.domainsCredit
+  )
   const storedProfileInfos = useStoredProfileInfos()
 
   // 3. Mutations (Booking & Reminders)

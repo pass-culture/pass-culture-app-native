@@ -5,11 +5,9 @@ import { formatFullAddress } from 'shared/address/addressFormatter'
 export const getVenueBlock = ({
   venue,
   offerAddress,
-  onCopy,
 }: {
   venue: VenueBlockVenue
   offerAddress?: VenueBlockAddress
-  onCopy?: () => void
 }) => {
   const venueName = offerAddress?.label || venue.name
   const street = offerAddress?.street || venue?.address
@@ -22,7 +20,6 @@ export const getVenueBlock = ({
     copyToClipboard({
       textToCopy: address,
       snackBarMessage: 'L’adresse a bien été copiée',
-      onCopy,
     })
 
   return {

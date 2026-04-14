@@ -1,78 +1,69 @@
-import { OfferResponse } from 'api/gen'
+import { Credit, DomainsCredit, ExpenseDomain } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
-import { hasEnoughCredit } from 'features/offer/helpers/useHasEnoughCredit/hasEnoughCredit'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
-import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { RoundUnit, convertEuroToPacificFranc } from 'shared/currency/convertEuroToPacificFranc'
-import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 export type HasEnoughCredit =
   | { hasEnoughCredit: true; message?: never }
   | { hasEnoughCredit: false; message?: string }
 
-const message =
-  'En raison des conversions monétaires, ton crédit disponible ne couvre pas le prix total.'
+const euroCentsToXPF = (amount: number) =>
+  convertEuroToPacificFranc(convertCentsToEuros(amount), RoundUnit.UNITS)
 
-function convertDomainCreditToPacificFranc(
-  credit: { initial: number; remaining: number },
-  rate: number
-) {
+const convertCreditToXPF = (credit: Credit): Credit => {
   return {
-    initial: convertEuroToPacificFranc(convertCentsToEuros(credit.initial), rate, RoundUnit.UNITS),
-    remaining: convertEuroToPacificFranc(
-      convertCentsToEuros(credit.remaining),
-      rate,
-      RoundUnit.UNITS
-    ),
+    initial: euroCentsToXPF(credit.initial),
+    remaining: euroCentsToXPF(credit.remaining),
   }
 }
 
-export const useHasEnoughCredit = (
-  offer?: Pick<OfferResponse, 'stocks' | 'expenseDomains'>
+export const hasEnoughCredit = (
+  domains: ExpenseDomain[],
+  price: number,
+  domainsCredit: DomainsCredit
+): boolean => {
+  if (!price) return true
+  if (!domainsCredit) return false
+  return domains.every((domain) => {
+    const credit = domainsCredit[domain]
+    if (!credit) return true
+    return price <= credit.remaining
+  })
+}
+
+export const getUserHasEnoughCredit = (
+  currency: Currency,
+  price: number,
+  offerExpenseDomains: ExpenseDomain[],
+  userDomainsCredit?: DomainsCredit | null
 ): HasEnoughCredit => {
-  const { user } = useAuthContext()
-  const currency = useGetCurrencyToDisplay()
-  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
+  if (!userDomainsCredit) return { hasEnoughCredit: false }
 
-  // If the offer, user, or userDomaineCredit is not available, we return false
-  if (!offer || !user?.domainsCredit) return { hasEnoughCredit: false }
-
-  const priceInEuroCents = getOfferPrice(offer.stocks)
-  const hasEnoughCreditInEuro = hasEnoughCredit(
-    offer.expenseDomains,
-    priceInEuroCents,
-    user.domainsCredit
-  )
-
-  // If the currency is Euro, we only check the Euro credit
+  const hasEnoughCreditInEuro = hasEnoughCredit(offerExpenseDomains, price, userDomainsCredit)
   if (currency === Currency.EURO) return { hasEnoughCredit: hasEnoughCreditInEuro }
 
-  const priceInPacificFranc = convertEuroToPacificFranc(
-    convertCentsToEuros(priceInEuroCents),
-    euroToPacificFrancRate,
-    RoundUnit.UNITS
-  )
-
-  const userDomaineCreditInPacificFranc: UserProfileResponseWithoutSurvey['domainsCredit'] = {
-    all: convertDomainCreditToPacificFranc(user.domainsCredit.all, euroToPacificFrancRate),
+  const userDomaineCreditInXPF: DomainsCredit = {
+    all: convertCreditToXPF(userDomainsCredit.all),
   }
-
-  const hasEnoughCreditInPacificFranc = hasEnoughCredit(
-    offer.expenseDomains,
-    priceInPacificFranc,
-    userDomaineCreditInPacificFranc
+  const hasEnoughCreditInXPF = hasEnoughCredit(
+    offerExpenseDomains,
+    euroCentsToXPF(price),
+    userDomaineCreditInXPF
   )
 
   // If the user has enough credit in Euro but not in Pacific Franc, we return false with a message
-  if (!hasEnoughCreditInEuro && hasEnoughCreditInPacificFranc) {
-    return { hasEnoughCredit: false, message: message }
+  if (!hasEnoughCreditInEuro && hasEnoughCreditInXPF) {
+    return {
+      hasEnoughCredit: false,
+      message:
+        'En raison des conversions monétaires, ton crédit disponible ne couvre pas le prix total.',
+    }
   }
 
   // If the user has enough credit in Pacific Franc, we return true
-  return { hasEnoughCredit: hasEnoughCreditInEuro }
+  return { hasEnoughCredit: hasEnoughCreditInXPF }
 }
 
 export const useCreditForOffer = (offerId: number | undefined): number => {

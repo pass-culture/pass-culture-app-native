@@ -18,14 +18,12 @@ export type CineBlockProps = {
   offer: OfferResponse
   onSeeVenuePress?: VoidFunction
   nextDate?: Date
-  withDivider?: boolean
 }
 
 export const CineBlock: FunctionComponent<CineBlockProps> = ({
   offer,
   onSeeVenuePress,
   nextDate,
-  withDivider,
 }) => {
   const { selectedDate, goToDate } = useMovieCalendar()
 
@@ -61,7 +59,7 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
           venueId={venueBlockVenue.id}
           title={venueName}
           subtitle={venueAddress}
-          onSeeVenuePress={onSeeVenuePress}
+          onVenuePress={onSeeVenuePress}
           venueImageUrl={venueBlockVenue.bannerUrl ?? undefined}
           distance={distance}
           hasVenuePage={!!onSeeVenuePress && !isOfferAddressDifferent}
@@ -84,7 +82,7 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
           {CTAOfferModal}
         </React.Fragment>
       </CineBlockContainer>
-      {withDivider ? <Divider testID="divider" /> : null}
+      <Divider testID="divider" />
     </React.Fragment>
   )
 }

@@ -268,7 +268,7 @@ describe('<OfferVenueBlock />', () => {
         isOfferAtSameAddressAsVenue
         title="Lieu de retrait"
         offer={offerResponseSnap}
-        onSeeVenuePress={jest.fn()}
+        onVenuePress={jest.fn()}
       />
     )
 
@@ -288,7 +288,7 @@ describe('<OfferVenueBlock />', () => {
         isOfferAtSameAddressAsVenue={false}
         title="Lieu de retrait"
         offer={offerResponseSnap}
-        onSeeVenuePress={jest.fn()}
+        onVenuePress={jest.fn()}
       />
     )
 
@@ -302,7 +302,7 @@ describe('<OfferVenueBlock />', () => {
         isOfferAtSameAddressAsVenue
         title="Lieu de retrait"
         offer={offerResponseSnap}
-        onSeeVenuePress={onSeeVenuePress}
+        onVenuePress={onSeeVenuePress}
       />
     )
 
@@ -325,7 +325,7 @@ describe('<OfferVenueBlock />', () => {
         isOfferAtSameAddressAsVenue={false}
         title="Lieu de retrait"
         offer={offerResponseSnap}
-        onSeeVenuePress={onSeeVenuePress}
+        onVenuePress={onSeeVenuePress}
       />
     )
 
@@ -384,7 +384,7 @@ describe('<OfferVenueBlock />', () => {
           ...offerResponseSnap,
           address: { ...offerResponseSnap.address, label: 'PATHE PARNASSE' },
         }}
-        onSeeVenuePress={jest.fn()}
+        onVenuePress={jest.fn()}
       />
     )
 
@@ -407,7 +407,7 @@ describe('<OfferVenueBlock />', () => {
           ...offerResponseSnap,
           address: { ...offerResponseSnap.address, label: '' },
         }}
-        onSeeVenuePress={jest.fn()}
+        onVenuePress={jest.fn()}
       />
     )
 
@@ -427,7 +427,7 @@ describe('<OfferVenueBlock />', () => {
         isOfferAtSameAddressAsVenue={false}
         title="Lieu de retrait"
         offer={offerResponseSnap}
-        onSeeVenuePress={jest.fn()}
+        onVenuePress={jest.fn()}
       />
     )
 
