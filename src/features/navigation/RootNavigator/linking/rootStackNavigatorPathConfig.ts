@@ -408,8 +408,12 @@ export const rootStackNavigatorPathConfig = {
     path: 'avis-du-pro/lieu/:venueId/:offerId',
     parse: screenParamsParser['ProAdvicesVenue'],
   },
-  VerticalPlaylistPage: {
-    path: 'playlist-verticale',
-    parse: screenParamsParser['VerticalPlaylistPage'],
+  VerticalPlaylistOffersFromModule: {
+    path: 'liste-de-lecture-verticale-offres',
+    parse: screenParamsParser['VerticalPlaylistOffersFromModule'],
+  },
+  VerticalPlaylistOffersFromVenue: {
+    path: 'liste-de-lecture-verticale-offres-lieux',
+    parse: screenParamsParser['VerticalPlaylistOffersFromVenue'],
   },
 }

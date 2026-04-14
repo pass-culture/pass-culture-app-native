@@ -22,5 +22,6 @@ export const SeeAllInVerticalPlaylistButton = ({
     accessibilityLabel={accessibilityLabel}
     wording="Tout voir"
     variant="tertiary"
+    size="small"
   />
 )
