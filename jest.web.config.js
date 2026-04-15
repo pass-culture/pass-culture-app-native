@@ -9,7 +9,7 @@ module.exports = {
   snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-web.js',
   setupFiles: [...base.setupFiles, '<rootDir>/jest/jest.web.setup.ts'],
   setupFilesAfterEnv: [...base.setupFilesAfterEnv, '<rootDir>/jest/jest.web.setupAfterEnv.ts'],
-  testMatch: ['**/*(?<!.(?:native|ios|android|perf)).(?:test|spec).[jt]s?(x)'],
+  testMatch: ['**/*(?<!.(?:native|ios|android)).(?:test|spec).[jt]s?(x)'],
   moduleFileExtensions: ['web.tsx', 'web.ts', 'web.js', 'web.jsx', ...base.moduleFileExtensions],
   moduleNameMapper: {
     ...base.moduleNameMapper,

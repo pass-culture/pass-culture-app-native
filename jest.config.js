@@ -63,7 +63,7 @@ module.exports = {
       ].join('|') +
       ').+\\.(js|jsx|mjs|cjs|ts|tsx)$',
   ],
-  testMatch: ['**/*(?<!.(web|perf)).(?:test|spec).[jt]s?(x)'],
+  testMatch: ['**/*(?<!.(web)).(?:test|spec).[jt]s?(x)'],
   testPathIgnorePatterns: [
     '\\.snap$',
     '\\.native-snap$',
