@@ -21,6 +21,7 @@ const noThemeFromTheme = require('./eslint-custom-rules/no-theme-from-theme')
 const noTsExpectError = require('./eslint-custom-rules/no-ts-expect-error')
 const noUselessHook = require('./eslint-custom-rules/no-useless-hook')
 const mockPathExists = require('./eslint-custom-rules/mock-path-exists')
+const noDottedTestFilenameWithoutRender = require('./eslint-custom-rules/no-dotted-test-filename-without-render')
 
 module.exports = {
   'apostrophe-in-text': apostropheInText,
@@ -46,4 +47,5 @@ module.exports = {
   'no-ts-expect-error': noTsExpectError,
   'no-useless-hook': noUselessHook,
   'mock-path-exists': mockPathExists,
+  'no-dotted-test-filename-without-render': noDottedTestFilenameWithoutRender,
 }
