@@ -36,7 +36,7 @@ const respondWith = async (
   statusText?: string,
   headers?: HeadersInit
 ): Promise<Response> => {
-  return new Response(JSON.stringify(body), {
+  return new Response(status === 204 ? null : JSON.stringify(body), {
     headers: {
       'content-type': 'application/json',
       ...headers,
