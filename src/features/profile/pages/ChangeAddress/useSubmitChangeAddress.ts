@@ -1,4 +1,4 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { CommonActions, useNavigation, useRoute } from '@react-navigation/native'
 import { debounce } from 'lodash'
 import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -42,7 +42,7 @@ export const useSubmitChangeAddress = () => {
   const storedAddress = useAddress()
   const initialCity = storedAddress === null ? '' : (storedAddress ?? user?.street ?? '')
 
-  const { navigate, replace } = useNavigation<UseNavigationType>()
+  const { navigate, dispatch } = useNavigation<UseNavigationType>()
 
   const {
     control,
@@ -103,12 +103,26 @@ export const useSubmitChangeAddress = () => {
     debouncedSetQuery('')
   }
 
+  const removePrecedentScreen = () => {
+    dispatch((state) => {
+      const routesToDelete = new Set(['ChangeAddress', 'ChangeCity'])
+      const routes = state.routes.filter((r) => !routesToDelete.has(r.name))
+
+      return CommonActions.reset({
+        ...state,
+        routes,
+        index: routes.length - 1,
+      })
+    })
+  }
+
   const { mutate: patchProfile } = usePatchProfileMutation({
     onSuccess: async (_, variables) => {
       if (isMandatoryUpdatePersonalData) {
         navigate(...getProfileHookConfig('ChangeStatus', { type }))
       } else {
-        replace(...getProfileHookConfig('PersonalData'))
+        navigate(...getProfileHookConfig('PersonalData'))
+        removePrecedentScreen()
         showSuccessSnackBar('Ton adresse de résidence a bien été modifiée\u00a0!')
       }
       await analytics.logUpdateAddress({
