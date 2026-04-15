@@ -65,10 +65,10 @@ jobs:
           restore-keys: |
             v1-yarn-test-web-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-      - run: yarn test:unit:web:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+      - run: yarn test:web:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
   yarn_test_native:
-    name: 'Run native unit tests'
+    name: 'Run native tests'
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     strategy:
@@ -105,7 +105,7 @@ jobs:
           key: v1-yarn-test-native-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-test-native-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn test:unit:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+      - run: yarn test:native:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
       - run: mv coverage/coverage-final.json coverage/${{matrix.shard}}.json
 
       - name: Cache the coverage report
@@ -118,6 +118,47 @@ jobs:
           restore-keys: |
             v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
           key: v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
+
+  yarn_test_unit:
+    name: 'Run unit tests'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
+    steps:
+      - name: Enable Corepack
+        run: corepack enable
+      - uses: actions/checkout@v4
+      - name: 'OpenID Connect Authentication'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
+      - name: Cache the node_modules
+        id: yarn-modules-cache
+        uses: pass-culture-github-actions/cache@v1.0.0
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
+          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
+      - uses: pass-culture-github-actions/cache@v1.0.0
+        with:
+          path: .jest/cache
+          key: v1-yarn-test-unit-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-test-unit-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
+      - run: yarn test:unit:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
   report-coverage:
     runs-on: ubuntu-24.04
@@ -250,7 +291,7 @@ jobs:
         run: cd server && yarn install && cd ..
       - name: Run proxy unit tests
         # the test https://github.com/pass-culture/pass-culture-app-native/blob/64e47e0bd8887e80fa20b6d7df00e110d77fd22e/server/src/middlewares/tests/webAppProxyMiddleware.test.ts#L275 fails sometimes, we suppose the backend doesn't respond sometimes
-        run: cd server && (yarn test:unit:ci || yarn test:unit:ci || yarn test:unit:ci) && cd ..
+        run: cd server && (yarn test:native:ci || yarn test:native:ci || yarn test:native:ci) && cd ..
       - name: Get secrets for SonarCloud
         id: 'sonar_secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v3'

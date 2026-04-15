@@ -9,7 +9,7 @@ module.exports = {
   snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-web.js',
   setupFiles: [...base.setupFiles, '<rootDir>/jest/jest.web.setup.ts'],
   setupFilesAfterEnv: [...base.setupFilesAfterEnv, '<rootDir>/jest/jest.web.setupAfterEnv.ts'],
-  testMatch: ['**/*(?<!.(?:native|ios|android|perf)).(?:test|spec).[jt]s?(x)'],
+  testMatch: ['**/*.web.test.tsx', '**/*.web.test.ts'],
   moduleFileExtensions: ['web.tsx', 'web.ts', 'web.js', 'web.jsx', ...base.moduleFileExtensions],
   moduleNameMapper: {
     ...base.moduleNameMapper,
@@ -19,7 +19,6 @@ module.exports = {
     '\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/__mocks__/fileMock.ts',
     '\\.(css|less)$': '<rootDir>/__mocks__/fileMock.ts',
-
     // temporary mock things until implemented
     '@d11/react-native-fast-image': '<rootDir>/__mocks__/fragmentMock.ts',
   },
