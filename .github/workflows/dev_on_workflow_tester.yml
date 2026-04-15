@@ -68,7 +68,7 @@ jobs:
       - run: yarn test:web:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
   yarn_test_native:
-    name: 'Run native unit tests'
+    name: 'Run native tests'
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     strategy:
@@ -118,6 +118,47 @@ jobs:
           restore-keys: |
             v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
           key: v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
+
+  yarn_test_unit:
+    name: 'Run unit tests'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
+    steps:
+      - name: Enable Corepack
+        run: corepack enable
+      - uses: actions/checkout@v4
+      - name: 'OpenID Connect Authentication'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
+      - name: Cache the node_modules
+        id: yarn-modules-cache
+        uses: pass-culture-github-actions/cache@v1.0.0
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
+          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
+      - uses: pass-culture-github-actions/cache@v1.0.0
+        with:
+          path: .jest/cache
+          key: v1-yarn-test-unit-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-test-unit-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
+      - run: yarn test:unit:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
   report-coverage:
     runs-on: ubuntu-24.04

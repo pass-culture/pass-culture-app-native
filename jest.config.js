@@ -33,13 +33,17 @@ module.exports = {
     '^ui(.*)$': '<rootDir>/src/ui$1',
     '^algoliasearch/lite$': '<rootDir>/__mocks__/algoliasearch.ts',
   },
-  snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-native.js',
   setupFiles: [
     '<rootDir>/jest/jest.setup.ts',
     'react-native-gesture-handler/jestSetup.js',
     '@react-native-google-signin/google-signin/jest/build/setup.js',
   ],
   setupFilesAfterEnv: ['./src/tests/setupTests.js'],
+  testPathIgnorePatterns: [
+    '\\.snap$',
+    '<rootDir>/node_modules/',
+    '<rootDir>/server/',
+  ],
   transform: {
     '^.+\\.(js|jsx|ts|tsx|mjs)$': 'babel-jest',
   },
@@ -63,29 +67,20 @@ module.exports = {
       ].join('|') +
       ').+\\.(js|jsx|mjs|cjs|ts|tsx)$',
   ],
-  testMatch: ['**/*(?<!.(web|perf)).test.tsx'],
-  testPathIgnorePatterns: [
-    '\\.snap$',
-    '\\.native-snap$',
-    '\\.web-snap$',
-    '<rootDir>/node_modules/',
-    '<rootDir>/server/',
-    '\\.test\\.ts$'
-  ],
   cacheDirectory: '.jest/cache',
   clearMocks: true,
+  coveragePathIgnorePatterns: [
+    '\\.test\\.ts$',
+    '\\.web\\.test',
+    '/node_modules/',
+    '/src/environment',
+  ],
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
     'eslint-custom-rules/*.{js,jsx,ts,tsx}',
     '!src/**/*.web.{js,jsx,ts,tsx}',
     ...excludeCollectCoverageFrom,
   ],
-  coveragePathIgnorePatterns: [
-    '\\.test\\.ts$', 
-    '\\.web\\.test',
-    '/node_modules/', 
-    '/src/environment'
-  ],  
   coverageReporters: process.env.CI === 'true' ? ['json'] : ['text'],
   collectCoverage: false,
   // TODO(PC-20887): Investigate how to avoid timeouts in CI without increasing default timeout
