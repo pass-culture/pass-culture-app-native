@@ -65,7 +65,7 @@ jobs:
           restore-keys: |
             v1-yarn-test-web-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-      - run: yarn test:unit:web:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+      - run: yarn test:web:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
   yarn_test_native:
     name: 'Run native unit tests'
@@ -105,7 +105,7 @@ jobs:
           key: v1-yarn-test-native-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-test-native-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn test:unit:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+      - run: yarn test:native:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
       - run: mv coverage/coverage-final.json coverage/${{matrix.shard}}.json
 
       - name: Cache the coverage report
@@ -250,7 +250,7 @@ jobs:
         run: cd server && yarn install && cd ..
       - name: Run proxy unit tests
         # the test https://github.com/pass-culture/pass-culture-app-native/blob/64e47e0bd8887e80fa20b6d7df00e110d77fd22e/server/src/middlewares/tests/webAppProxyMiddleware.test.ts#L275 fails sometimes, we suppose the backend doesn't respond sometimes
-        run: cd server && (yarn test:unit:ci || yarn test:unit:ci || yarn test:unit:ci) && cd ..
+        run: cd server && (yarn test:native:ci || yarn test:native:ci || yarn test:native:ci) && cd ..
       - name: Get secrets for SonarCloud
         id: 'sonar_secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v3'
