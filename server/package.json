@@ -28,11 +28,11 @@
     "deploy:production": "cat .env.production > .env && sed -i.back -e '/web-proxy-production/! s/web-proxy/web-proxy-production/g' app.yaml && yarn deploy",
     "dev": "ENV=testing node-dev src/index.ts",
     "start": "node build/src/index.js",
-    "test": "yarn test:lint && yarn test:types && yarn test:unit",
+    "test": "yarn test:lint && yarn test:types && yarn test:native",
     "test:lint": "eslint . --ext .js,.ts --cache",
     "test:types": "tsc --noEmit",
-    "test:unit": "TZ=UTC JEST=true jest --forceExit",
-    "test:unit:ci": "yarn test:unit --maxWorkers=2 --logHeapUsage --coverage",
+    "test:native": "TZ=UTC JEST=true jest --forceExit",
+    "test:native:ci": "yarn test:native --maxWorkers=2 --logHeapUsage --coverage",
     "watch": "tsc --watch"
   },
   "dependencies": {
