@@ -63,13 +63,14 @@ module.exports = {
       ].join('|') +
       ').+\\.(js|jsx|mjs|cjs|ts|tsx)$',
   ],
-  testMatch: ['**/*(?<!.(web|perf)).(?:test|spec).[jt]s?(x)'],
+  testMatch: ['**/*(?<!.(web|perf)).test.tsx'],
   testPathIgnorePatterns: [
     '\\.snap$',
     '\\.native-snap$',
     '\\.web-snap$',
     '<rootDir>/node_modules/',
     '<rootDir>/server/',
+    '\\.test\\.ts$'
   ],
   cacheDirectory: '.jest/cache',
   clearMocks: true,
@@ -79,7 +80,12 @@ module.exports = {
     '!src/**/*.web.{js,jsx,ts,tsx}',
     ...excludeCollectCoverageFrom,
   ],
-  coveragePathIgnorePatterns: ['\\.web\\.(test|spec)', '/node_modules/', '/src/environment'],
+  coveragePathIgnorePatterns: [
+    '\\.test\\.ts$', 
+    '\\.web\\.test',
+    '/node_modules/', 
+    '/src/environment'
+  ],  
   coverageReporters: process.env.CI === 'true' ? ['json'] : ['text'],
   collectCoverage: false,
   // TODO(PC-20887): Investigate how to avoid timeouts in CI without increasing default timeout
