@@ -37,7 +37,7 @@ export const OfferArtists: FunctionComponent<Props> = ({
         const isLineClickable = artistLinkEnabled && (hasSeveralArtists || hasArtistId)
 
         const artistsText = (
-          <Container gap={2}>
+          <Container gap={2} key={line.artists[0]?.id}>
             <Prefix>{line.prefix}</Prefix>
             <ArtistText
               allowFontScaling={false}
