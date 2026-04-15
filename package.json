@@ -68,8 +68,6 @@
     "test:lint:archi": "ESLINT_SCOPE=archi eslint . --ext .js,.ts,.tsx,.mjs --cache",
     "test:lint:cleancode": "ESLINT_SCOPE=cleancode eslint . --ext .js,.ts,.tsx,.mjs --cache",
     "test:lint:changed": "./scripts/lint_changed.sh",
-    "test:perf": "NODE_ENV=performance NODE_OPTIONS='--no-experimental-fetch' TEST_RUNNER_ARGS='--runInBand --testMatch \"<rootDir>/**/*.perf.test.tsx\"' yarn reassure",
-    "test:perf:update": "yarn test:perf --baseline",
     "test:storybook:accessibility": "TZ=UTC axe-storybook --storybook-address http://localhost:6006",
     "test:types": "tsc",
     "test:unit": "TZ=UTC JEST=true node --no-experimental-fetch --no-compilation-cache --expose-gc ./node_modules/.bin/jest --forceExit --logHeapUsage",
