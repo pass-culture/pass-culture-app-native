@@ -9,6 +9,7 @@ import {
   useAccessibilityFiltersContext,
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { isCurrentlyBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import Section from 'features/search/components/sections'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -100,11 +101,11 @@ export const SearchFilter: React.FC = () => {
   }, [dispatch, getLocationFilter, setDisabilities, logReinitializeFilters])
 
   const hasDuoOfferToggle = useMemo(() => {
-    const isBeneficiary = !!user?.isBeneficiary
+    const isBeneficiary = !!isCurrentlyBeneficiary(user)
     const hasRemainingCredit = !!user?.domainsCredit?.all?.remaining
 
     return isBeneficiary && hasRemainingCredit
-  }, [user?.isBeneficiary, user?.domainsCredit?.all?.remaining])
+  }, [user])
 
   const onClose = isMobileViewport ? onGoBack : undefined
   return (

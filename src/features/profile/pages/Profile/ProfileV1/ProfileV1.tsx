@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { isAndWasBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
@@ -100,7 +101,7 @@ const OnlineProfile: React.FC = () => {
     permissionState === GeolocPermissionState.GRANTED
   )
 
-  const shouldDisplayTutorial = !user?.isBeneficiary
+  const shouldDisplayTutorial = !isAndWasBeneficiary(user)
   const [hasSeenAppearanceTag, setHasSeenAppearanceTag] = useState<boolean | null>(null)
 
   useEffect(() => {
@@ -182,7 +183,7 @@ const OnlineProfile: React.FC = () => {
     shareApp('profile_banner')
   }, [])
 
-  const shouldShowAchievementsSection = user?.isBeneficiary
+  const shouldShowAchievementsSection = isAndWasBeneficiary(user)
 
   const userStatusType = user?.status?.statusType
   const isEligibleForChatbot = !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.has(userStatusType)

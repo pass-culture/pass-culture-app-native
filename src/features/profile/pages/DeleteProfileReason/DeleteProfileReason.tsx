@@ -3,6 +3,7 @@ import { FlatList, Platform, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { isCurrentlyBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -77,7 +78,7 @@ const reasonButtons = (canDelete: boolean): ReasonButton[] => [
 export function DeleteProfileReason() {
   const { user } = useAuthContext()
   const userIsDefinedAndAbove21 = user?.birthDate && getAge(user?.birthDate) >= 21
-  const canDeleteProfile = !user?.isBeneficiary || userIsDefinedAndAbove21
+  const canDeleteProfile = (!!user && !isCurrentlyBeneficiary(user)) || userIsDefinedAndAbove21
   const reasons = reasonButtons(!!canDeleteProfile)
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
   const theme = useTheme()

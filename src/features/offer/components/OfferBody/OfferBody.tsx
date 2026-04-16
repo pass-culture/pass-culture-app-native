@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { CategoryIdEnum, OfferArtist, OfferResponse } from 'api/gen'
 import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { isCurrentlyBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
@@ -100,7 +101,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isDuo: !!(offer.isDuo && user?.isBeneficiary),
+      isDuo: !!(offer.isDuo && isCurrentlyBeneficiary(user)),
     }),
     { fractionDigits: 2 }
   )

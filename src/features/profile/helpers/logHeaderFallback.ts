@@ -16,7 +16,6 @@ export const logHeaderFallback = ({ user, headerType }: LogHeaderFallbackParams)
       creditType: user.creditType,
       statusType: user.statusType,
       status: user.status,
-      isBeneficiary: user.isBeneficiary,
       headerType,
     },
   })

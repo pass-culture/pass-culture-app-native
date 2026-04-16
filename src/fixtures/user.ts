@@ -31,7 +31,6 @@ export const nonBeneficiaryUser: UserProfile = {
   birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
   email: 'email@domain.ext',
   hasPassword: true,
-  isBeneficiary: false,
   requiresIdCheck: false,
   roles: [],
   showEligibleCard: false,
@@ -57,7 +56,6 @@ export const beneficiaryUser: UserProfile = {
     physical: { initial: 300_00, remaining: 100_00 },
     digital: { initial: 300_00, remaining: 200_00 },
   },
-  isBeneficiary: true,
   roles: [UserRole.BENEFICIARY],
   isEligibleForBeneficiaryUpgrade: false,
   status: { statusType: YoungStatusType.beneficiary },
@@ -78,7 +76,6 @@ export const beneficiaryUser: UserProfile = {
 
 export const underageBeneficiaryUser: UserProfile = {
   ...beneficiaryUser,
-  isBeneficiary: false,
   roles: [UserRole.UNDERAGE_BENEFICIARY],
   isEligibleForBeneficiaryUpgrade: false,
   status: { statusType: YoungStatusType.eligible },
@@ -128,7 +125,7 @@ const baseNonBeneficiaryUser = {
   recreditTypeToShow: null,
   remainingBonusAttempts: null,
   requiresIdCheck: false,
-  roles: [UserRole.UNDERAGE_BENEFICIARY],
+  roles: [],
   showEligibleCard: false,
   status: { statusType: YoungStatusType.eligible },
   street: '10 rue du Bonheur',
@@ -182,12 +179,25 @@ export const beneficiaryUserV2: UserProfile = {
   eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
 }
 
-export const eligibleUserFromAPI: UserProfileResponse = {
-  ...nonBeneficiaryUserFromAPI,
+export const baseEligibleUser = {
+  ...baseNonBeneficiaryUser,
   activityId: ActivityIdEnum.HIGH_SCHOOL_STUDENT,
   birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
   eligibility: EligibilityType.free,
   roles: [UserRole.FREE_BENEFICIARY],
   showEligibleCard: false,
   status: { statusType: YoungStatusType.eligible },
+}
+
+export const eligibleUserFromAPI: UserProfileResponse = {
+  ...baseEligibleUser,
+  depositType: DepositType.GRANT_FREE,
+  needsToFillCulturalSurvey: false,
+}
+
+export const eligibleUserV2: UserProfile = {
+  ...baseEligibleUser,
+  statusType: UserStatusType.ELIGIBLE,
+  creditType: UserCreditType.CREDIT_V3_16,
+  eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
 }

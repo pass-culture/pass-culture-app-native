@@ -6,6 +6,7 @@ import {
   YoungStatusResponse,
   YoungStatusType,
 } from 'api/gen'
+import { isAndWasBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { getIsProfileIncomplete } from 'features/offer/helpers/getIsProfileIncomplete/getIsProfileIncomplete'
 import { isFreeDigitalOffer, isFreeOffer } from 'features/offerRefacto/helpers'
 import { getCTAProps } from 'features/offerRefacto/helpers/offerCTAContent'
@@ -70,7 +71,6 @@ export const getEligibilityBookingCTA = (
   isEndedUsedBooking?: boolean,
   alreadyBookedOfferId?: number
 ): CTAType | undefined => {
-  const isBeneficiary = user?.isBeneficiary
   if (userStatus.statusType === YoungStatusType.non_eligible && !offer.externalTicketOfficeUrl) {
     return 'INELIGIBLE'
   }
@@ -79,7 +79,7 @@ export const getEligibilityBookingCTA = (
     return 'ENDED_USED_BOOKING'
   }
 
-  if (userStatus.statusType === YoungStatusType.eligible && !isBeneficiary) {
+  if (userStatus.statusType === YoungStatusType.eligible && !isAndWasBeneficiary(user)) {
     return 'SUBSCRIPTION_STATUS'
   }
 
@@ -171,7 +171,7 @@ export const getCTAWordingAndAction = ({
   const restrictedOfferCTA = getRestrictedOfferCTA(
     offer,
     isUnderageBeneficiary,
-    user?.isBeneficiary
+    isAndWasBeneficiary(user)
   )
   if (restrictedOfferCTA) {
     return getCTAProps(restrictedOfferCTA, context)
