@@ -6,7 +6,11 @@ import { render, screen } from 'tests/utils'
 
 describe('ExternalBookingTicket', () => {
   it('should display hidden ticket when data is empty', async () => {
-    renderExternalBookingTicket({ data: [], beginningDateTime: '2025-07-21T20:00:00' })
+    renderExternalBookingTicket({
+      data: [],
+      beginningDateTime: '2025-07-21T20:00:00',
+      hideTicket: true,
+    })
 
     expect(
       await screen.findByText('Ton billet sera disponible ici le 19 juillet 2025 à 22h00')
@@ -17,6 +21,7 @@ describe('ExternalBookingTicket', () => {
     renderExternalBookingTicket({
       data: [{ barcode: '1234', seat: 'B2' }],
       beginningDateTime: undefined,
+      hideTicket: false,
     })
 
     expect(await screen.findByText('RÉF 1234')).toBeOnTheScreen()
@@ -30,6 +35,7 @@ describe('ExternalBookingTicket', () => {
         { barcode: '999', seat: 'A02' },
       ],
       beginningDateTime: undefined,
+      hideTicket: false,
     })
 
     expect(await screen.findByText('RÉF 1234')).toBeOnTheScreen()
@@ -43,6 +49,7 @@ describe('ExternalBookingTicket', () => {
       data: [],
       beginningDateTime: '2025-07-21T20:00:00',
       isDuo: true,
+      hideTicket: true,
     })
 
     expect(
@@ -58,6 +65,7 @@ describe('ExternalBookingTicket', () => {
       ],
       beginningDateTime: undefined,
       isDuo: true,
+      hideTicket: false,
     })
 
     expect(
@@ -70,6 +78,7 @@ describe('ExternalBookingTicket', () => {
       data: [{ barcode: '1234', seat: 'B2' }],
       beginningDateTime: undefined,
       isDuo: false,
+      hideTicket: false,
     })
 
     expect(
@@ -82,12 +91,19 @@ const renderExternalBookingTicket = ({
   data,
   beginningDateTime,
   isDuo = false,
+  hideTicket = false,
 }: {
   data: ExternalBookingDataResponseV2[]
   beginningDateTime: string | undefined
   isDuo?: boolean
+  hideTicket: boolean
 }) => {
   return render(
-    <ExternalBookingTicket data={data} beginningDatetime={beginningDateTime} isDuo={isDuo} />
+    <ExternalBookingTicket
+      data={data}
+      beginningDatetime={beginningDateTime}
+      isDuo={isDuo}
+      hideTicket={hideTicket}
+    />
   )
 }

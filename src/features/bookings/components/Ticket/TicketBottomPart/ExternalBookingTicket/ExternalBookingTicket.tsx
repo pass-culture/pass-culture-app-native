@@ -16,21 +16,23 @@ type props = {
   beginningDatetime: string | undefined
   timezone?: string
   isDuo: boolean
+  hideTicket: boolean
 }
 
-export const ExternalBookingTicket = ({ data, beginningDatetime, timezone, isDuo }: props) => {
+export const ExternalBookingTicket = ({
+  data,
+  beginningDatetime,
+  timezone,
+  isDuo,
+  hideTicket,
+}: props) => {
   const { day, time } = getHiddenQRCodeTextInfos(beginningDatetime, 48, timezone)
   const hiddenTicketText = `${isDuo ? 'Tes billets seront disponibles' : 'Ton billet sera disponible'} ici le ${day} à ${time}`
   const visibleTicketText = `Présente ${isDuo ? 'ces billets' : 'ce billet'} pour accéder à l’évènement.`
 
   return (
     <StyledViewGap gap={4} testID="external-booking-ticket-container">
-      {data?.length ? (
-        <React.Fragment>
-          <TicketSwiper data={data} />
-          <TicketText>{visibleTicketText}</TicketText>
-        </React.Fragment>
-      ) : (
+      {hideTicket ? (
         <React.Fragment>
           <DashedContainer>
             <BlurredQrCodeContainer>
@@ -41,6 +43,11 @@ export const ExternalBookingTicket = ({ data, beginningDatetime, timezone, isDuo
             </BlurredQrCodeContainer>
           </DashedContainer>
           <TicketText>{hiddenTicketText}</TicketText>
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
+          <TicketSwiper data={data} />
+          <TicketText>{visibleTicketText}</TicketText>
         </React.Fragment>
       )}
     </StyledViewGap>

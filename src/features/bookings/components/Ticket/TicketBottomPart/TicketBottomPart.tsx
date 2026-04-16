@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SubcategoryIdEnum, TicketResponse } from 'api/gen'
+import { SubcategoryIdEnum, TicketDisplayEnum, TicketResponse } from 'api/gen'
 import { CinemaBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/CinemaBookingTicket/CinemaBookingTicket'
 import { DigitalTicket } from 'features/bookings/components/Ticket/TicketBottomPart/DigitalTicket'
 import { EmailWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/EmailWithdrawal/EmailWithdrawal'
@@ -8,12 +8,10 @@ import { ExternalBookingTicket } from 'features/bookings/components/Ticket/Ticke
 import { NoTicket } from 'features/bookings/components/Ticket/TicketBottomPart/NoTicket/NoTicket'
 import { OnSiteWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/OnSiteWithdrawal/OnSiteWithdrawal'
 import { PhysicalGoodBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/PhysicalGoodBookingTicket/PhysicalGoodBookingTicket'
-import { getTicketVariant } from 'features/bookings/helpers/getTicketVariant'
 import { UserProfile } from 'features/share/types'
 
 type TicketBottomPartProps = {
   isDuo: boolean
-  isDigital: boolean
   isEvent: boolean
   userEmail: UserProfile['email']
   ticket: TicketResponse
@@ -27,7 +25,6 @@ type TicketBottomPartProps = {
 
 export const TicketBottomPart = ({
   isDuo,
-  isDigital,
   isEvent,
   userEmail,
   ticket,
@@ -38,53 +35,87 @@ export const TicketBottomPart = ({
   subcategoryId,
   onBeforeNavigate,
 }: TicketBottomPartProps) => {
-  const result = getTicketVariant(ticket, isDigital, isEvent, completedUrl)
-
-  switch (result.variant) {
-    case 'no_ticket':
-      return <NoTicket />
-    case 'email_withdrawal':
+  switch (ticket.display) {
+    // Billet envoyé par email
+    case TicketDisplayEnum.email_sent:
       return (
         <EmailWithdrawal
           isDuo={isDuo}
-          withdrawalDelay={result.withdrawalDelay}
-          hasEmailBeenSent={result.hasEmailBeenSent}
+          withdrawalDelay={ticket.withdrawal.delay}
+          hasEmailBeenSent
           userEmail={userEmail}
         />
       )
-    case 'digital_activation':
-    case 'digital_token':
+    // Billet envoyé par email à venir avec délai d'envoi
+    case TicketDisplayEnum.email_will_be_sent:
+      return (
+        <EmailWithdrawal
+          isDuo={isDuo}
+          withdrawalDelay={ticket.withdrawal.delay}
+          hasEmailBeenSent={false}
+          userEmail={userEmail}
+        />
+      )
+    // Lien d'activation en ligne avec ou sans code d'activation
+    case TicketDisplayEnum.online_code:
       return (
         <DigitalTicket
-          code={result.code}
-          completedUrl={result.completedUrl}
+          code={ticket.activationCode?.code ?? ticket.token?.data ?? ''}
+          completedUrl={completedUrl ?? ''}
           offerId={offerId}
           subcategoryId={subcategoryId}
           onBeforeNavigate={onBeforeNavigate}
         />
       )
-    case 'external_booking':
+    // Billet externe avec QR code visible
+    case TicketDisplayEnum.external_ticket:
       return (
         <ExternalBookingTicket
-          data={result.data}
+          data={ticket.externalBooking?.data ?? undefined}
           beginningDatetime={beginningDateTime}
           isDuo={isDuo}
+          hideTicket={false}
         />
       )
-    case 'cinema':
-      return <CinemaBookingTicket voucher={result.voucher} token={result.token} />
-    case 'physical_good':
+    // Billet externe avec QR code non visible
+    case TicketDisplayEnum.hidden_external_ticket:
+      return (
+        <ExternalBookingTicket
+          data={ticket.externalBooking?.data ?? undefined}
+          beginningDatetime={beginningDateTime}
+          isDuo={isDuo}
+          hideTicket
+        />
+      )
+    // Contremarque de retrait pour un bien physique
+    case TicketDisplayEnum.voucher:
       return (
         <PhysicalGoodBookingTicket
-          voucherData={result.voucherData}
-          tokenData={result.tokenData}
+          voucherData={ticket.voucher?.data ?? ''}
+          tokenData={ticket.token?.data ?? ''}
           expirationDate={expirationDate}
         />
       )
-    case 'on_site_withdrawal':
+    // Contremarque de retrait pour un billet de cinéma
+    case TicketDisplayEnum.cinema_voucher:
       return (
-        <OnSiteWithdrawal token={result.token} isDuo={isDuo} shouldShowExchangeMessage={isEvent} />
+        <CinemaBookingTicket
+          voucher={ticket.voucher?.data ?? ''}
+          token={ticket.token?.data ?? undefined}
+        />
       )
+    // Contremarque de retrait pour un billet d'événement physique sur place
+    case TicketDisplayEnum.ticket:
+      return (
+        <OnSiteWithdrawal
+          token={ticket.token?.data ?? ''}
+          isDuo={isDuo}
+          shouldShowExchangeMessage={isEvent}
+        />
+      )
+    // Pas de billet nécessaire à présenter pour accéder à l'événement (Musique Live uniquement)
+    case TicketDisplayEnum.no_ticket:
+      return <NoTicket />
     default:
       return null
   }
