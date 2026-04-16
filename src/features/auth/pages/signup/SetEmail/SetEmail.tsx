@@ -67,10 +67,14 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
     (errorResponse: SignInResponseFailure) => {
       if (errorResponse.content?.code === 'SSO_EMAIL_NOT_FOUND') {
         onSSOEmailNotFoundError()
-        goToNextStep({ accountCreationToken: errorResponse.content.accountCreationToken })
+        goToNextStep({
+          accountCreationToken: errorResponse.content.accountCreationToken,
+          ssoProvider: errorResponse.provider,
+        })
       } else {
+        const providerName = errorResponse.provider === 'apple' ? 'Apple' : 'Google'
         showErrorSnackBar(
-          'Ton compte Google semble ne pas être valide. Pour pouvoir t’inscrire, confirme d’abord ton adresse e-mail Google.'
+          `Ton compte ${providerName} semble ne pas être valide. Pour pouvoir t\u2019inscrire, confirme d\u2019abord ton adresse e-mail ${providerName}.`
         )
       }
     },
@@ -107,7 +111,9 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
       <SSOViewGap gap={4}>
         <SeparatorWithText label="ou" />
         <SSOButtonGoogle type="signup" onSignInFailure={onSSOSignInFailure} />
-        {enableAppleSSO ? <SSOButtonApple type="signup" /> : null}
+        {enableAppleSSO ? (
+          <SSOButtonApple type="signup" onSignInFailure={onSSOSignInFailure} />
+        ) : null}
       </SSOViewGap>
 
       <AuthenticationButtonContainer>

@@ -258,6 +258,9 @@ export const rootStackNavigatorPathConfig = {
   _DeeplinkOnlyRecreditBirthdayNotification1: {
     path: 'recredit-birthday',
   },
+  AppleSSOCallback: {
+    path: 'oauth/apple/callback',
+  },
   PageNotFound: {
     path: '*',
   },

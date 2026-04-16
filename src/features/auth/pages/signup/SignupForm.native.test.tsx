@@ -46,12 +46,12 @@ const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 
 const apiSignUpSpy = jest.spyOn(api, 'postNativeV1Account')
-const apiSSOSignUpSpy = jest.spyOn(api, 'postNativeV1OauthGoogleAccount')
+const apiSSOSignUpSpy = jest.spyOn(api, 'postNativeV1OauthssoProviderAccount')
 
 const loginAndRedirectMock = jest.fn()
 jest.spyOn(LoginAndRedirectAPI, 'useLoginAndRedirect').mockReturnValue(loginAndRedirectMock)
 
-const apiPostGoogleAuthorize = jest.spyOn(api, 'postNativeV1OauthGoogleAuthorize')
+const apiPostOAuthAuthorize = jest.spyOn(api, 'postNativeV1OauthssoProviderAuthorize')
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
@@ -486,18 +486,21 @@ describe('Signup Form', () => {
 
       await pressSSOButton()
 
-      expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
-        authorizationCode: 'mockServerAuthCode',
-        oauthStateToken: 'oauth_state_token',
-        deviceInfo: {
-          deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-          os: 'iOS',
-          source: 'iPhone 13',
-          resolution: '750x1334',
-          screenZoomLevel: undefined,
-          fontScale: -1,
+      expect(apiPostOAuthAuthorize).toHaveBeenCalledWith(
+        {
+          authorizationCode: 'mockServerAuthCode',
+          oauthStateToken: 'oauth_state_token',
+          deviceInfo: {
+            deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+            os: 'iOS',
+            source: 'iPhone 13',
+            resolution: '750x1334',
+            screenZoomLevel: undefined,
+            fontScale: -1,
+          },
         },
-      })
+        'google'
+      )
     })
 
     it('should go to next step when sso button is clicked and sso account does not exist', async () => {
@@ -635,6 +638,7 @@ describe('Signup Form', () => {
             fontScale: -1,
           },
         },
+        'google',
         { credentials: 'omit' }
       )
     })
@@ -696,6 +700,7 @@ describe('Signup Form', () => {
           accountCreationToken: 'accountCreationToken',
           email: 'user@gmail.com',
           from: StepperOrigin.LOGIN,
+          ssoProvider: 'google',
         },
       })
       mockServer.postApi<SigninResponse>('/v1/oauth/google/account', {
@@ -736,7 +741,11 @@ describe('Signup Form', () => {
     it('should directly go to birthday step when account creation token is in route params', async () => {
       // eslint-disable-next-line local-rules/independent-mocks
       useRoute.mockReturnValue({
-        params: { accountCreationToken: 'accountCreationToken', email: 'user@gmail.com' },
+        params: {
+          accountCreationToken: 'accountCreationToken',
+          email: 'user@gmail.com',
+          ssoProvider: 'google',
+        },
       })
 
       await renderSignupForm()
@@ -751,6 +760,7 @@ describe('Signup Form', () => {
           accountCreationToken: 'accountCreationToken',
           email: 'user@gmail.com',
           from: StepperOrigin.LOGIN,
+          ssoProvider: 'google',
         },
       })
       getModelSpy.mockReturnValueOnce('iPhone 13') // first call in useSignIn
@@ -802,6 +812,7 @@ describe('Signup Form', () => {
             fontScale: -1,
           },
         },
+        'google',
         { credentials: 'omit' }
       )
     })
@@ -857,6 +868,7 @@ describe('Signup Form', () => {
             accountCreationToken: 'accountCreationToken',
             email: 'user@gmail.com',
             from: StepperOrigin.LOGIN,
+            ssoProvider: 'google',
           },
         })
 

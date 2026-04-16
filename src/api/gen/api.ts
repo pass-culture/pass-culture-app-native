@@ -2358,60 +2358,60 @@ export interface GetRemindersResponse {
 }
 /**
  * @export
- * @interface GoogleAccountRequest
+ * @interface OAuthSigninRequest
  */
-export interface GoogleAccountRequest {
+export interface OAuthSigninRequest {
   /**
    * @type {string}
-   * @memberof GoogleAccountRequest
-   */
-  accountCreationToken: string
-  /**
-   * @type {string}
-   * @memberof GoogleAccountRequest
-   */
-  birthdate: string
-  /**
-   * @type {string}
-   * @memberof GoogleAccountRequest
-   */
-  firebasePseudoId?: string | null
-  /**
-   * @type {boolean}
-   * @memberof GoogleAccountRequest
-   */
-  marketingEmailSubscription?: boolean | null
-  /**
-   * @type {string}
-   * @memberof GoogleAccountRequest
-   */
-  token: string
-  /**
-   * @type {TrustedDevice}
-   * @memberof GoogleAccountRequest
-   */
-  trustedDevice?: TrustedDevice | null
-}
-/**
- * @export
- * @interface GoogleSigninRequest
- */
-export interface GoogleSigninRequest {
-  /**
-   * @type {string}
-   * @memberof GoogleSigninRequest
+   * @memberof OAuthSigninRequest
    */
   authorizationCode: string
   /**
    * @type {TrustedDevice}
-   * @memberof GoogleSigninRequest
+   * @memberof OAuthSigninRequest
    */
   deviceInfo?: TrustedDevice | null
   /**
    * @type {string}
-   * @memberof GoogleSigninRequest
+   * @memberof OAuthSigninRequest
    */
   oauthStateToken: string
+}
+/**
+ * @export
+ * @interface SSOAccountRequest
+ */
+export interface SSOAccountRequest {
+  /**
+   * @type {string}
+   * @memberof SSOAccountRequest
+   */
+  accountCreationToken: string
+  /**
+   * @type {string}
+   * @memberof SSOAccountRequest
+   */
+  birthdate: string
+  /**
+   * @type {string}
+   * @memberof SSOAccountRequest
+   */
+  firebasePseudoId?: string | null
+  /**
+   * @type {boolean}
+   * @memberof SSOAccountRequest
+   */
+  marketingEmailSubscription?: boolean | null
+  /**
+   * @type {string}
+   * @memberof SSOAccountRequest
+   */
+  token: string
+  /**
+   * @type {TrustedDevice}
+   * @memberof SSOAccountRequest
+   */
+  trustedDevice?: TrustedDevice | null
 }
 /**
  * @export
@@ -6797,26 +6797,37 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary create_account_with_google_sso <POST>
-     * @param {GoogleAccountRequest} body 
+     * @summary create_account_with_sso <POST>
+     * @param {SSOAccountRequest} body
+     * @param {string} sso_provider
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async postNativeV1OauthGoogleAccount(body: GoogleAccountRequest, options: any = {}): Promise<FetchArgs> {
+    async postNativeV1OauthssoProviderAccount(body: SSOAccountRequest, sso_provider: string, options: any = {}): Promise<FetchArgs> {
       // verify required parameter 'body' is not null or undefined
       if (body === null || body === undefined) {
         throw new RequiredError(
           'body',
-          'Required parameter body was null or undefined when calling postNativeV1OauthGoogleAccount.'
+          'Required parameter body was null or undefined when calling postNativeV1OauthssoProviderAccount.'
         )
       }
-      let pathname = `/native/v1/oauth/google/account`
+      // verify required parameter 'sso_provider' is not null or undefined
+      if (sso_provider === null || sso_provider === undefined) {
+        throw new RequiredError(
+          'sso_provider',
+          'Required parameter sso_provider was null or undefined when calling postNativeV1OauthssoProviderAccount.'
+        )
+      }
+      let pathname = `/native/v1/oauth/{sso_provider}/account`.replace(
+        `{${'sso_provider'}}`,
+        encodeURIComponent(String(sso_provider))
+      )
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization = (<any>"GoogleAccountRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      const needsSerialization = (<any>"SSOAccountRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: pathname,
@@ -6824,26 +6835,37 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary google_auth <POST>
-     * @param {GoogleSigninRequest} body 
+     * @summary sso_authorize <POST>
+     * @param {OAuthSigninRequest} body
+     * @param {string} sso_provider
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async postNativeV1OauthGoogleAuthorize(body: GoogleSigninRequest, options: any = {}): Promise<FetchArgs> {
+    async postNativeV1OauthssoProviderAuthorize(body: OAuthSigninRequest, sso_provider: string, options: any = {}): Promise<FetchArgs> {
       // verify required parameter 'body' is not null or undefined
       if (body === null || body === undefined) {
         throw new RequiredError(
           'body',
-          'Required parameter body was null or undefined when calling postNativeV1OauthGoogleAuthorize.'
+          'Required parameter body was null or undefined when calling postNativeV1OauthssoProviderAuthorize.'
         )
       }
-      let pathname = `/native/v1/oauth/google/authorize`
+      // verify required parameter 'sso_provider' is not null or undefined
+      if (sso_provider === null || sso_provider === undefined) {
+        throw new RequiredError(
+          'sso_provider',
+          'Required parameter sso_provider was null or undefined when calling postNativeV1OauthssoProviderAuthorize.'
+        )
+      }
+      let pathname = `/native/v1/oauth/{sso_provider}/authorize`.replace(
+        `{${'sso_provider'}}`,
+        encodeURIComponent(String(sso_provider))
+      )
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization = (<any>"GoogleSigninRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      const needsSerialization = (<any>"OAuthSigninRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: pathname,
@@ -8119,26 +8141,28 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
-     * @summary create_account_with_google_sso <POST>
-     * @param {GoogleAccountRequest} body 
+     *
+     * @summary create_account_with_sso <POST>
+     * @param {SSOAccountRequest} body
+     * @param {string} sso_provider
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async postNativeV1OauthGoogleAccount(body: GoogleAccountRequest, options?: any): Promise<SigninResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1OauthGoogleAccount(body, options)
+    async postNativeV1OauthssoProviderAccount(body: SSOAccountRequest, sso_provider: string, options?: any): Promise<SigninResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1OauthssoProviderAccount(body, sso_provider, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
-     * @summary google_auth <POST>
-     * @param {GoogleSigninRequest} body 
+     *
+     * @summary sso_authorize <POST>
+     * @param {OAuthSigninRequest} body
+     * @param {string} sso_provider
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async postNativeV1OauthGoogleAuthorize(body: GoogleSigninRequest, options?: any): Promise<SigninResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1OauthGoogleAuthorize(body, options)
+    async postNativeV1OauthssoProviderAuthorize(body: OAuthSigninRequest, sso_provider: string, options?: any): Promise<SigninResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1OauthssoProviderAuthorize(body, sso_provider, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -9057,28 +9081,30 @@ export class DefaultApi extends BaseAPI {
     return DefaultApiFp(this, configuration).postNativeV1MeReminders(body, options)
   }
   /**
-    * 
-    * @summary create_account_with_google_sso <POST>
-    * @param {GoogleAccountRequest} body 
+    *
+    * @summary create_account_with_sso <POST>
+    * @param {SSOAccountRequest} body
+    * @param {string} sso_provider
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
     * @memberof DefaultApi
     */
-  public async postNativeV1OauthGoogleAccount(body: GoogleAccountRequest, options?: any) {
+  public async postNativeV1OauthssoProviderAccount(body: SSOAccountRequest, sso_provider: string, options?: any) {
     const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).postNativeV1OauthGoogleAccount(body, options)
+    return DefaultApiFp(this, configuration).postNativeV1OauthssoProviderAccount(body, sso_provider, options)
   }
   /**
-    * 
-    * @summary google_auth <POST>
-    * @param {GoogleSigninRequest} body 
+    *
+    * @summary sso_authorize <POST>
+    * @param {OAuthSigninRequest} body
+    * @param {string} sso_provider
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
     * @memberof DefaultApi
     */
-  public async postNativeV1OauthGoogleAuthorize(body: GoogleSigninRequest, options?: any) {
+  public async postNativeV1OauthssoProviderAuthorize(body: OAuthSigninRequest, sso_provider: string, options?: any) {
     const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).postNativeV1OauthGoogleAuthorize(body, options)
+    return DefaultApiFp(this, configuration).postNativeV1OauthssoProviderAuthorize(body, sso_provider, options)
   }
   /**
     * 

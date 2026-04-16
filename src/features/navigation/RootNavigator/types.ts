@@ -173,6 +173,7 @@ type SignupFormParams =
       email?: string
       offerId?: number
       from: StepperOrigin
+      ssoProvider?: 'google' | 'apple'
       stepIndex?: number
     }
   | undefined
@@ -262,6 +263,7 @@ export type RootStackParamList = {
   _DeeplinkOnlyOfferPreview3: OfferPreviewParams
   OfferVideoPreview: OfferVideoPreviewParams
   OnboardingStackNavigator?: NavigatorScreenParams<OnboardingStackParamList>
+  AppleSSOCallback: { code?: string; state?: string; error?: string } | undefined
   OnboardingSubscription: undefined
   PageNotFound: undefined
   ProAdvicesOffer: ProAdvicesOfferParams

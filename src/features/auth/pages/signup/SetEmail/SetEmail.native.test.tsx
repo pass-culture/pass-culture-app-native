@@ -290,6 +290,7 @@ describe('<SetEmail />', () => {
       expect(defaultProps.onSSOEmailNotFoundError).toHaveBeenCalledTimes(1)
       expect(defaultProps.goToNextStep).toHaveBeenCalledWith({
         accountCreationToken: 'accountCreationToken',
+        ssoProvider: 'google',
       })
     })
 

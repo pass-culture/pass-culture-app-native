@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { Artist } from 'features/artist/pages/Artist'
 import { ArtistWebview } from 'features/artist/pages/ArtistWebview'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { AppleSSOCallback } from 'features/auth/pages/AppleSSOCallback'
 import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
 import { ResetPasswordEmailSent } from 'features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent'
@@ -95,6 +96,11 @@ type RouteConfig = {
 }
 
 const rootScreens: RouteConfig[] = [
+  {
+    name: 'AppleSSOCallback',
+    component: AppleSSOCallback,
+    options: { title: 'Apple Sign In' },
+  },
   {
     name: 'PageNotFound',
     component: PageNotFound,

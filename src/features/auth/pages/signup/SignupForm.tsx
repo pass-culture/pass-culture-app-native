@@ -8,7 +8,7 @@ import { PreValidationSignupStep } from 'features/auth/enums'
 import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { QuitSignupModal } from 'features/auth/pages/signup/QuitSignupModal/QuitSignupModal'
 import { useAppSignupMutation } from 'features/auth/queries/signup/useAppSignupMutation'
-import { useGoogleSignupMutation } from 'features/auth/queries/signup/useGoogleSignupMutation'
+import { useSSOSignupMutation } from 'features/auth/queries/signup/useSSOSignupMutation'
 import { DEFAULT_STEP_CONFIG, SSO_STEP_CONFIG } from 'features/auth/stepConfig'
 import { SignupData } from 'features/auth/types'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
@@ -29,7 +29,6 @@ import { Helmet } from 'ui/web/global/Helmet'
 export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ currentStep = 0 }) => {
   const trustedDevice = useDeviceInfo()
 
-  const { mutateAsync: googleSignup } = useGoogleSignupMutation()
   const { mutateAsync: appSignup } = useAppSignupMutation()
   const loginAndRedirect = useLoginAndRedirect()
 
@@ -97,9 +96,9 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
 
   useEffect(() => {
     if (accountCreationToken && isFirstStep) {
-      goToNextStep({ accountCreationToken })
+      goToNextStep({ accountCreationToken, ssoProvider: params?.ssoProvider })
     }
-  }, [accountCreationToken, goToNextStep, isFirstStep])
+  }, [accountCreationToken, goToNextStep, isFirstStep, params?.ssoProvider])
 
   useEffect(() => {
     if (params?.from && stepConfig?.name) {
@@ -129,6 +128,8 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
     birthdate: '',
   })
 
+  const { mutateAsync: ssoSignup } = useSSOSignupMutation(signupData.ssoProvider)
+
   const onSSOEmailNotFoundError = useCallback(() => setIsSSOSubscription(true), [])
   const onDefaultEmailSignup = useCallback(() => {
     setSignupData((previousSignupData) => ({
@@ -149,8 +150,14 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
       }
 
       if (commonParams.accountCreationToken) {
-        const { accountCreationToken, email: _email, password: _password, ...rest } = commonParams
-        const { accessToken, refreshToken } = await googleSignup({
+        const {
+          accountCreationToken,
+          email: _email,
+          password: _password,
+          ssoProvider: _ssoProvider,
+          ...rest
+        } = commonParams
+        const { accessToken, refreshToken } = await ssoSignup({
           ...rest,
           accountCreationToken,
         })
