@@ -331,7 +331,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
             )}
           />
           <StyledSeparator />
-          {isLoggedInAndBeneficiary ? (
+          {isLoggedInAndBeneficiary && creditTypeIsNotGrantFreeOrEmpty ? (
             <Controller
               control={control}
               name="isLimitCreditSearch"
