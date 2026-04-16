@@ -1154,31 +1154,27 @@ exports[`<Venue /> should match snapshot 1`] = `
                           <View
                             style={
                               {
+                                "flexBasis": 0,
+                                "flexGrow": 1,
                                 "flexShrink": 1,
-                                "marginLeft": 24,
-                                "marginRight": 24,
                               }
                             }
-                            testID="playlistTitle"
-                            withMargin={true}
                           >
-                            <Text
-                              accessibilityLabel="Toutes les offres"
-                              accessibilityRole="header"
-                              numberOfLines={2}
+                            <View
                               style={
                                 {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Bold",
-                                  "fontSize": 19,
-                                  "lineHeight": 30.4,
+                                  "flexShrink": 1,
+                                  "marginLeft": 24,
+                                  "marginRight": 24,
                                 }
                               }
+                              testID="playlistTitle"
+                              withMargin={true}
                             >
                               <Text
-                                accessibilityElementsHidden={true}
+                                accessibilityLabel="Toutes les offres"
                                 accessibilityRole="header"
-                                importantForAccessibility="no"
+                                numberOfLines={2}
                                 style={
                                   {
                                     "color": "#161617",
@@ -1188,144 +1184,165 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   }
                                 }
                               >
-                                Toutes les offres
+                                <Text
+                                  accessibilityElementsHidden={true}
+                                  accessibilityRole="header"
+                                  importantForAccessibility="no"
+                                  style={
+                                    {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 19,
+                                      "lineHeight": 30.4,
+                                    }
+                                  }
+                                >
+                                  Toutes les offres
+                                </Text>
                               </Text>
-                            </Text>
+                            </View>
                           </View>
                           <View
                             style={
                               {
-                                "alignSelf": "center",
-                                "backgroundColor": "#f1f1f4",
-                                "height": 24,
-                                "marginHorizontal": 16,
-                                "width": 1,
-                              }
-                            }
-                          />
-                          <View
-                            accessibilityLabel="Voir plus d’offres de la sélection Toutes les offres"
-                            accessibilityRole="button"
-                            accessibilityState={
-                              {
-                                "busy": undefined,
-                                "checked": undefined,
-                                "disabled": false,
-                                "expanded": undefined,
-                                "selected": undefined,
-                              }
-                            }
-                            accessibilityValue={
-                              {
-                                "max": undefined,
-                                "min": undefined,
-                                "now": undefined,
-                                "text": undefined,
-                              }
-                            }
-                            accessible={true}
-                            collapsable={false}
-                            focusable={true}
-                            onClick={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
-                            style={
-                              {
-                                "alignItems": "center",
-                                "backgroundColor": "transparent",
-                                "borderBottomLeftRadius": 8,
-                                "borderBottomRightRadius": 8,
-                                "borderTopLeftRadius": 8,
-                                "borderTopRightRadius": 8,
-                                "borderWidth": 0,
-                                "flexDirection": "row",
                                 "justifyContent": "center",
-                                "opacity": 1,
-                                "paddingBottom": 0,
-                                "paddingLeft": 0,
-                                "paddingRight": 0,
-                                "paddingTop": 0,
-                                "userSelect": "auto",
-                                "width": "auto",
+                                "marginRight": 24,
                               }
                             }
-                            testID="Voir plus d’offres de la sélection Toutes les offres"
                           >
                             <View
-                              gap={8}
-                              hasIcon={true}
-                              isMultiline={false}
                               style={
                                 {
                                   "alignItems": "center",
-                                  "columnGap": 8,
                                   "flexDirection": "row",
                                 }
                               }
                             >
                               <View
+                                accessibilityLabel="Tout voir pour la sélection Toutes les offres"
+                                accessibilityRole="button"
+                                accessibilityState={
+                                  {
+                                    "busy": undefined,
+                                    "checked": undefined,
+                                    "disabled": false,
+                                    "expanded": undefined,
+                                    "selected": undefined,
+                                  }
+                                }
+                                accessibilityValue={
+                                  {
+                                    "max": undefined,
+                                    "min": undefined,
+                                    "now": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                                accessible={true}
                                 collapsable={false}
-                                jestAnimatedProps={
-                                  {
-                                    "value": {},
-                                  }
-                                }
-                                jestAnimatedStyle={
-                                  {
-                                    "value": {},
-                                  }
-                                }
-                                jestInlineStyle={
-                                  {
-                                    "flexShrink": 0,
-                                  }
-                                }
-                                nativeID="3"
+                                focusable={true}
+                                onClick={[Function]}
+                                onResponderGrant={[Function]}
+                                onResponderMove={[Function]}
+                                onResponderRelease={[Function]}
+                                onResponderTerminate={[Function]}
+                                onResponderTerminationRequest={[Function]}
+                                onStartShouldSetResponder={[Function]}
                                 style={
-                                  [
-                                    {
-                                      "flexShrink": 0,
-                                    },
-                                  ]
+                                  {
+                                    "alignItems": "center",
+                                    "backgroundColor": "transparent",
+                                    "borderBottomLeftRadius": 8,
+                                    "borderBottomRightRadius": 8,
+                                    "borderTopLeftRadius": 8,
+                                    "borderTopRightRadius": 8,
+                                    "borderWidth": 0,
+                                    "flexDirection": "row",
+                                    "justifyContent": "center",
+                                    "opacity": 1,
+                                    "paddingBottom": 0,
+                                    "paddingLeft": 0,
+                                    "paddingRight": 0,
+                                    "paddingTop": 0,
+                                    "userSelect": "auto",
+                                    "width": "auto",
+                                  }
                                 }
+                                testID="Tout voir pour la sélection Toutes les offres"
                               >
                                 <View
-                                  fill="none"
-                                  height={22}
-                                  width={22}
+                                  gap={8}
+                                  hasIcon={true}
+                                  isMultiline={false}
+                                  style={
+                                    {
+                                      "alignItems": "center",
+                                      "columnGap": 8,
+                                      "flexDirection": "row",
+                                    }
+                                  }
                                 >
-                                  <Text>
-                                    undefined-SVG-Mock
+                                  <View
+                                    collapsable={false}
+                                    jestAnimatedProps={
+                                      {
+                                        "value": {},
+                                      }
+                                    }
+                                    jestAnimatedStyle={
+                                      {
+                                        "value": {},
+                                      }
+                                    }
+                                    jestInlineStyle={
+                                      {
+                                        "flexShrink": 0,
+                                      }
+                                    }
+                                    nativeID="3"
+                                    style={
+                                      [
+                                        {
+                                          "flexShrink": 0,
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <View
+                                      fill="none"
+                                      height={22}
+                                      width={22}
+                                    >
+                                      <Text>
+                                        undefined-SVG-Mock
+                                      </Text>
+                                    </View>
+                                  </View>
+                                  <Text
+                                    style={
+                                      [
+                                        {
+                                          "color": "#161617",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 16,
+                                          "lineHeight": 22,
+                                        },
+                                        {
+                                          "color": "#161617",
+                                          "flexBasis": undefined,
+                                          "flexGrow": undefined,
+                                          "flexShrink": 1,
+                                          "maxWidth": "100%",
+                                          "minWidth": 0,
+                                          "textAlign": undefined,
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    Tout voir
                                   </Text>
                                 </View>
                               </View>
-                              <Text
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 16,
-                                      "lineHeight": 22,
-                                    },
-                                    {
-                                      "color": "#161617",
-                                      "flexBasis": undefined,
-                                      "flexGrow": undefined,
-                                      "flexShrink": 1,
-                                      "maxWidth": "100%",
-                                      "minWidth": 0,
-                                      "textAlign": undefined,
-                                    },
-                                  ]
-                                }
-                              >
-                                Voir tout
-                              </Text>
                             </View>
                           </View>
                         </View>
@@ -1474,9 +1491,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                                 },
                                 "venue": {},
-                              },
-                              {
-                                "dataFooter": true,
                               },
                             ]
                           }
@@ -2114,191 +2128,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   </View>
                                 </View>
                               </View>
-                              <View
-                                highlighted={false}
-                                leadingItem={
-                                  {
-                                    "_geoloc": {
-                                      "lat": 47.8898,
-                                      "lng": -2.83593,
-                                    },
-                                    "objectID": "223339",
-                                    "offer": {
-                                      "dates": [
-                                        1629312300,
-                                        1629485100,
-                                        1629657900,
-                                      ],
-                                      "isDigital": false,
-                                      "isDuo": true,
-                                      "name": "Black Widow - VF",
-                                      "prices": [
-                                        0,
-                                        0,
-                                        0,
-                                      ],
-                                      "subcategoryId": "CINE_PLEIN_AIR",
-                                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
-                                    },
-                                    "venue": {},
-                                  }
-                                }
-                                style={
-                                  {
-                                    "width": 16,
-                                  }
-                                }
-                                width={16}
-                              />
-                            </View>
-                            <View
-                              onFocusCapture={[Function]}
-                              style={
-                                [
-                                  {
-                                    "flexDirection": "row",
-                                  },
-                                  null,
-                                ]
-                              }
-                            >
-                              <View
-                                height={240}
-                                style={
-                                  {
-                                    "alignItems": "center",
-                                    "height": 240,
-                                    "justifyContent": "center",
-                                    "width": 160,
-                                  }
-                                }
-                                width={160}
-                              >
-                                <View
-                                  accessibilityLabel="En voir plus"
-                                  accessibilityRole="button"
-                                  accessibilityState={
-                                    {
-                                      "busy": undefined,
-                                      "checked": undefined,
-                                      "disabled": false,
-                                      "expanded": undefined,
-                                      "selected": undefined,
-                                    }
-                                  }
-                                  accessibilityValue={
-                                    {
-                                      "max": undefined,
-                                      "min": undefined,
-                                      "now": undefined,
-                                      "text": undefined,
-                                    }
-                                  }
-                                  accessible={true}
-                                  collapsable={false}
-                                  focusable={true}
-                                  onClick={[Function]}
-                                  onResponderGrant={[Function]}
-                                  onResponderMove={[Function]}
-                                  onResponderRelease={[Function]}
-                                  onResponderTerminate={[Function]}
-                                  onResponderTerminationRequest={[Function]}
-                                  onStartShouldSetResponder={[Function]}
-                                  style={
-                                    {
-                                      "alignItems": "center",
-                                      "backgroundColor": "transparent",
-                                      "borderBottomLeftRadius": 8,
-                                      "borderBottomRightRadius": 8,
-                                      "borderTopLeftRadius": 8,
-                                      "borderTopRightRadius": 8,
-                                      "borderWidth": 0,
-                                      "flexDirection": "row",
-                                      "justifyContent": "center",
-                                      "opacity": 1,
-                                      "paddingBottom": 0,
-                                      "paddingLeft": 0,
-                                      "paddingRight": 0,
-                                      "paddingTop": 0,
-                                      "userSelect": "auto",
-                                      "width": "auto",
-                                    }
-                                  }
-                                  testID="En voir plus"
-                                >
-                                  <View
-                                    gap={8}
-                                    hasIcon={true}
-                                    isMultiline={false}
-                                    style={
-                                      {
-                                        "alignItems": "center",
-                                        "columnGap": 8,
-                                        "flexDirection": "row",
-                                      }
-                                    }
-                                  >
-                                    <Text
-                                      style={
-                                        [
-                                          {
-                                            "color": "#161617",
-                                            "fontFamily": "Montserrat-SemiBold",
-                                            "fontSize": 16,
-                                            "lineHeight": 22,
-                                          },
-                                          {
-                                            "color": "#161617",
-                                            "flexBasis": undefined,
-                                            "flexGrow": undefined,
-                                            "flexShrink": 1,
-                                            "maxWidth": "100%",
-                                            "minWidth": 0,
-                                            "textAlign": undefined,
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      En voir plus
-                                    </Text>
-                                    <View
-                                      collapsable={false}
-                                      jestAnimatedProps={
-                                        {
-                                          "value": {},
-                                        }
-                                      }
-                                      jestAnimatedStyle={
-                                        {
-                                          "value": {},
-                                        }
-                                      }
-                                      jestInlineStyle={
-                                        {
-                                          "flexShrink": 0,
-                                        }
-                                      }
-                                      nativeID="4"
-                                      style={
-                                        [
-                                          {
-                                            "flexShrink": 0,
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      <View
-                                        height={22}
-                                        width={22}
-                                      >
-                                        <Text>
-                                          undefined-SVG-Mock
-                                        </Text>
-                                      </View>
-                                    </View>
-                                  </View>
-                                </View>
-                              </View>
                             </View>
                             <View
                               onLayout={[Function]}
@@ -2524,7 +2353,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             },
                           ]
                         }
-                        nativeID="5"
+                        nativeID="4"
                         style={
                           [
                             {
@@ -3295,7 +3124,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="6"
+            nativeID="5"
             style={
               [
                 {
@@ -3437,7 +3266,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="7"
+            nativeID="6"
             style={
               [
                 {
@@ -3609,7 +3438,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="8"
+            nativeID="7"
             style={
               [
                 {
@@ -4004,7 +3833,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             "flexShrink": 0,
                           }
                         }
-                        nativeID="21"
+                        nativeID="19"
                         style={
                           [
                             {
@@ -4136,7 +3965,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             "flexShrink": 0,
                           }
                         }
-                        nativeID="22"
+                        nativeID="20"
                         style={
                           [
                             {
@@ -4214,7 +4043,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               "reduceMotionV": "system",
             }
           }
-          nativeID="23"
+          nativeID="21"
         >
           <View
             gap={6}
@@ -4821,31 +4650,27 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           <View
                             style={
                               {
+                                "flexBasis": 0,
+                                "flexGrow": 1,
                                 "flexShrink": 1,
-                                "marginLeft": 24,
-                                "marginRight": 24,
                               }
                             }
-                            testID="playlistTitle"
-                            withMargin={true}
                           >
-                            <Text
-                              accessibilityLabel="Toutes les offres"
-                              accessibilityRole="header"
-                              numberOfLines={2}
+                            <View
                               style={
                                 {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Bold",
-                                  "fontSize": 19,
-                                  "lineHeight": 30.4,
+                                  "flexShrink": 1,
+                                  "marginLeft": 24,
+                                  "marginRight": 24,
                                 }
                               }
+                              testID="playlistTitle"
+                              withMargin={true}
                             >
                               <Text
-                                accessibilityElementsHidden={true}
+                                accessibilityLabel="Toutes les offres"
                                 accessibilityRole="header"
-                                importantForAccessibility="no"
+                                numberOfLines={2}
                                 style={
                                   {
                                     "color": "#161617",
@@ -4855,144 +4680,165 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   }
                                 }
                               >
-                                Toutes les offres
+                                <Text
+                                  accessibilityElementsHidden={true}
+                                  accessibilityRole="header"
+                                  importantForAccessibility="no"
+                                  style={
+                                    {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 19,
+                                      "lineHeight": 30.4,
+                                    }
+                                  }
+                                >
+                                  Toutes les offres
+                                </Text>
                               </Text>
-                            </Text>
+                            </View>
                           </View>
                           <View
                             style={
                               {
-                                "alignSelf": "center",
-                                "backgroundColor": "#f1f1f4",
-                                "height": 24,
-                                "marginHorizontal": 16,
-                                "width": 1,
-                              }
-                            }
-                          />
-                          <View
-                            accessibilityLabel="Voir plus d’offres de la sélection Toutes les offres"
-                            accessibilityRole="button"
-                            accessibilityState={
-                              {
-                                "busy": undefined,
-                                "checked": undefined,
-                                "disabled": false,
-                                "expanded": undefined,
-                                "selected": undefined,
-                              }
-                            }
-                            accessibilityValue={
-                              {
-                                "max": undefined,
-                                "min": undefined,
-                                "now": undefined,
-                                "text": undefined,
-                              }
-                            }
-                            accessible={true}
-                            collapsable={false}
-                            focusable={true}
-                            onClick={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
-                            style={
-                              {
-                                "alignItems": "center",
-                                "backgroundColor": "transparent",
-                                "borderBottomLeftRadius": 8,
-                                "borderBottomRightRadius": 8,
-                                "borderTopLeftRadius": 8,
-                                "borderTopRightRadius": 8,
-                                "borderWidth": 0,
-                                "flexDirection": "row",
                                 "justifyContent": "center",
-                                "opacity": 1,
-                                "paddingBottom": 0,
-                                "paddingLeft": 0,
-                                "paddingRight": 0,
-                                "paddingTop": 0,
-                                "userSelect": "auto",
-                                "width": "auto",
+                                "marginRight": 24,
                               }
                             }
-                            testID="Voir plus d’offres de la sélection Toutes les offres"
                           >
                             <View
-                              gap={8}
-                              hasIcon={true}
-                              isMultiline={false}
                               style={
                                 {
                                   "alignItems": "center",
-                                  "columnGap": 8,
                                   "flexDirection": "row",
                                 }
                               }
                             >
                               <View
+                                accessibilityLabel="Tout voir pour la sélection Toutes les offres"
+                                accessibilityRole="button"
+                                accessibilityState={
+                                  {
+                                    "busy": undefined,
+                                    "checked": undefined,
+                                    "disabled": false,
+                                    "expanded": undefined,
+                                    "selected": undefined,
+                                  }
+                                }
+                                accessibilityValue={
+                                  {
+                                    "max": undefined,
+                                    "min": undefined,
+                                    "now": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                                accessible={true}
                                 collapsable={false}
-                                jestAnimatedProps={
-                                  {
-                                    "value": {},
-                                  }
-                                }
-                                jestAnimatedStyle={
-                                  {
-                                    "value": {},
-                                  }
-                                }
-                                jestInlineStyle={
-                                  {
-                                    "flexShrink": 0,
-                                  }
-                                }
-                                nativeID="24"
+                                focusable={true}
+                                onClick={[Function]}
+                                onResponderGrant={[Function]}
+                                onResponderMove={[Function]}
+                                onResponderRelease={[Function]}
+                                onResponderTerminate={[Function]}
+                                onResponderTerminationRequest={[Function]}
+                                onStartShouldSetResponder={[Function]}
                                 style={
-                                  [
-                                    {
-                                      "flexShrink": 0,
-                                    },
-                                  ]
+                                  {
+                                    "alignItems": "center",
+                                    "backgroundColor": "transparent",
+                                    "borderBottomLeftRadius": 8,
+                                    "borderBottomRightRadius": 8,
+                                    "borderTopLeftRadius": 8,
+                                    "borderTopRightRadius": 8,
+                                    "borderWidth": 0,
+                                    "flexDirection": "row",
+                                    "justifyContent": "center",
+                                    "opacity": 1,
+                                    "paddingBottom": 0,
+                                    "paddingLeft": 0,
+                                    "paddingRight": 0,
+                                    "paddingTop": 0,
+                                    "userSelect": "auto",
+                                    "width": "auto",
+                                  }
                                 }
+                                testID="Tout voir pour la sélection Toutes les offres"
                               >
                                 <View
-                                  fill="none"
-                                  height={22}
-                                  width={22}
+                                  gap={8}
+                                  hasIcon={true}
+                                  isMultiline={false}
+                                  style={
+                                    {
+                                      "alignItems": "center",
+                                      "columnGap": 8,
+                                      "flexDirection": "row",
+                                    }
+                                  }
                                 >
-                                  <Text>
-                                    undefined-SVG-Mock
+                                  <View
+                                    collapsable={false}
+                                    jestAnimatedProps={
+                                      {
+                                        "value": {},
+                                      }
+                                    }
+                                    jestAnimatedStyle={
+                                      {
+                                        "value": {},
+                                      }
+                                    }
+                                    jestInlineStyle={
+                                      {
+                                        "flexShrink": 0,
+                                      }
+                                    }
+                                    nativeID="22"
+                                    style={
+                                      [
+                                        {
+                                          "flexShrink": 0,
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <View
+                                      fill="none"
+                                      height={22}
+                                      width={22}
+                                    >
+                                      <Text>
+                                        undefined-SVG-Mock
+                                      </Text>
+                                    </View>
+                                  </View>
+                                  <Text
+                                    style={
+                                      [
+                                        {
+                                          "color": "#161617",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 16,
+                                          "lineHeight": 22,
+                                        },
+                                        {
+                                          "color": "#161617",
+                                          "flexBasis": undefined,
+                                          "flexGrow": undefined,
+                                          "flexShrink": 1,
+                                          "maxWidth": "100%",
+                                          "minWidth": 0,
+                                          "textAlign": undefined,
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    Tout voir
                                   </Text>
                                 </View>
                               </View>
-                              <Text
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 16,
-                                      "lineHeight": 22,
-                                    },
-                                    {
-                                      "color": "#161617",
-                                      "flexBasis": undefined,
-                                      "flexGrow": undefined,
-                                      "flexShrink": 1,
-                                      "maxWidth": "100%",
-                                      "minWidth": 0,
-                                      "textAlign": undefined,
-                                    },
-                                  ]
-                                }
-                              >
-                                Voir tout
-                              </Text>
                             </View>
                           </View>
                         </View>
@@ -5141,9 +4987,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                                 },
                                 "venue": {},
-                              },
-                              {
-                                "dataFooter": true,
                               },
                             ]
                           }
@@ -5781,191 +5624,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   </View>
                                 </View>
                               </View>
-                              <View
-                                highlighted={false}
-                                leadingItem={
-                                  {
-                                    "_geoloc": {
-                                      "lat": 47.8898,
-                                      "lng": -2.83593,
-                                    },
-                                    "objectID": "223339",
-                                    "offer": {
-                                      "dates": [
-                                        1629312300,
-                                        1629485100,
-                                        1629657900,
-                                      ],
-                                      "isDigital": false,
-                                      "isDuo": true,
-                                      "name": "Black Widow - VF",
-                                      "prices": [
-                                        0,
-                                        0,
-                                        0,
-                                      ],
-                                      "subcategoryId": "CINE_PLEIN_AIR",
-                                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
-                                    },
-                                    "venue": {},
-                                  }
-                                }
-                                style={
-                                  {
-                                    "width": 16,
-                                  }
-                                }
-                                width={16}
-                              />
-                            </View>
-                            <View
-                              onFocusCapture={[Function]}
-                              style={
-                                [
-                                  {
-                                    "flexDirection": "row",
-                                  },
-                                  null,
-                                ]
-                              }
-                            >
-                              <View
-                                height={240}
-                                style={
-                                  {
-                                    "alignItems": "center",
-                                    "height": 240,
-                                    "justifyContent": "center",
-                                    "width": 160,
-                                  }
-                                }
-                                width={160}
-                              >
-                                <View
-                                  accessibilityLabel="En voir plus"
-                                  accessibilityRole="button"
-                                  accessibilityState={
-                                    {
-                                      "busy": undefined,
-                                      "checked": undefined,
-                                      "disabled": false,
-                                      "expanded": undefined,
-                                      "selected": undefined,
-                                    }
-                                  }
-                                  accessibilityValue={
-                                    {
-                                      "max": undefined,
-                                      "min": undefined,
-                                      "now": undefined,
-                                      "text": undefined,
-                                    }
-                                  }
-                                  accessible={true}
-                                  collapsable={false}
-                                  focusable={true}
-                                  onClick={[Function]}
-                                  onResponderGrant={[Function]}
-                                  onResponderMove={[Function]}
-                                  onResponderRelease={[Function]}
-                                  onResponderTerminate={[Function]}
-                                  onResponderTerminationRequest={[Function]}
-                                  onStartShouldSetResponder={[Function]}
-                                  style={
-                                    {
-                                      "alignItems": "center",
-                                      "backgroundColor": "transparent",
-                                      "borderBottomLeftRadius": 8,
-                                      "borderBottomRightRadius": 8,
-                                      "borderTopLeftRadius": 8,
-                                      "borderTopRightRadius": 8,
-                                      "borderWidth": 0,
-                                      "flexDirection": "row",
-                                      "justifyContent": "center",
-                                      "opacity": 1,
-                                      "paddingBottom": 0,
-                                      "paddingLeft": 0,
-                                      "paddingRight": 0,
-                                      "paddingTop": 0,
-                                      "userSelect": "auto",
-                                      "width": "auto",
-                                    }
-                                  }
-                                  testID="En voir plus"
-                                >
-                                  <View
-                                    gap={8}
-                                    hasIcon={true}
-                                    isMultiline={false}
-                                    style={
-                                      {
-                                        "alignItems": "center",
-                                        "columnGap": 8,
-                                        "flexDirection": "row",
-                                      }
-                                    }
-                                  >
-                                    <Text
-                                      style={
-                                        [
-                                          {
-                                            "color": "#161617",
-                                            "fontFamily": "Montserrat-SemiBold",
-                                            "fontSize": 16,
-                                            "lineHeight": 22,
-                                          },
-                                          {
-                                            "color": "#161617",
-                                            "flexBasis": undefined,
-                                            "flexGrow": undefined,
-                                            "flexShrink": 1,
-                                            "maxWidth": "100%",
-                                            "minWidth": 0,
-                                            "textAlign": undefined,
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      En voir plus
-                                    </Text>
-                                    <View
-                                      collapsable={false}
-                                      jestAnimatedProps={
-                                        {
-                                          "value": {},
-                                        }
-                                      }
-                                      jestAnimatedStyle={
-                                        {
-                                          "value": {},
-                                        }
-                                      }
-                                      jestInlineStyle={
-                                        {
-                                          "flexShrink": 0,
-                                        }
-                                      }
-                                      nativeID="25"
-                                      style={
-                                        [
-                                          {
-                                            "flexShrink": 0,
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      <View
-                                        height={22}
-                                        width={22}
-                                      >
-                                        <Text>
-                                          undefined-SVG-Mock
-                                        </Text>
-                                      </View>
-                                    </View>
-                                  </View>
-                                </View>
-                              </View>
                             </View>
                             <View
                               onLayout={[Function]}
@@ -6191,7 +5849,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             },
                           ]
                         }
-                        nativeID="26"
+                        nativeID="23"
                         style={
                           [
                             {
@@ -6962,7 +6620,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="27"
+            nativeID="24"
             style={
               [
                 {
@@ -7104,7 +6762,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="28"
+            nativeID="25"
             style={
               [
                 {
@@ -7276,7 +6934,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="29"
+            nativeID="26"
             style={
               [
                 {
@@ -7671,7 +7329,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "flexShrink": 0,
                           }
                         }
-                        nativeID="9"
+                        nativeID="8"
                         style={
                           [
                             {
@@ -7803,7 +7461,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "flexShrink": 0,
                           }
                         }
-                        nativeID="10"
+                        nativeID="9"
                         style={
                           [
                             {
@@ -7881,7 +7539,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               "reduceMotionV": "system",
             }
           }
-          nativeID="11"
+          nativeID="10"
         >
           <View
             gap={6}
@@ -8323,7 +7981,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "flexShrink": 0,
                               }
                             }
-                            nativeID="18"
+                            nativeID="16"
                             style={
                               [
                                 {
@@ -8447,7 +8105,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "flexShrink": 0,
                               }
                             }
-                            nativeID="19"
+                            nativeID="17"
                             style={
                               [
                                 {
@@ -8571,7 +8229,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "flexShrink": 0,
                               }
                             }
-                            nativeID="20"
+                            nativeID="18"
                             style={
                               [
                                 {
@@ -10545,7 +10203,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             },
                           ]
                         }
-                        nativeID="14"
+                        nativeID="12"
                         style={
                           [
                             {
@@ -11316,7 +10974,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="15"
+            nativeID="13"
             style={
               [
                 {
@@ -11458,7 +11116,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="16"
+            nativeID="14"
             style={
               [
                 {
@@ -11630,7 +11288,7 @@ d’options
                 "flexShrink": 0,
               }
             }
-            nativeID="17"
+            nativeID="15"
             style={
               [
                 {

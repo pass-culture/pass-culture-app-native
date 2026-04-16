@@ -191,12 +191,13 @@ export const logEventAnalytics = {
   logClickMailDebugInfo: (userId?: number) => {
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_MAIL_DEBUG_INFO }, { userId })
   },
-  logClickSeeMore: (params: {
+  logClickSeeAll: (params: {
+    type: 'offers' | 'venues' | 'artists'
     moduleName: string
     moduleId: string
-    from?: Referrals
     homeEntryId?: string
-  }) => analytics.logEvent({ firebase: AnalyticsEvent.SEE_MORE_CLICKED }, params),
+    from?: Referrals
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.SEE_ALL_CLICKED }, params),
   logClickSocialNetwork: (network: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_SOCIAL_NETWORK }, { network }),
   logClickVolunteerCTA: (params: { from: Referrals; venueId: string }) =>

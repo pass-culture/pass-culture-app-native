@@ -17,7 +17,7 @@ import { loggedInNonBeneficiaryContentConfig } from 'features/profile/containers
 import { getShouldDisplayHelpButton } from 'features/profile/helpers/getShouldDisplayHelpButton'
 import { useAppearanceTag } from 'features/profile/helpers/useAppearanceTag'
 import { useGeolocationSwitch } from 'features/profile/helpers/useGeolocationSwitch'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
@@ -29,7 +29,7 @@ const CHATBOT_ELIGIBLE_STATUSES = new Set<YoungStatusType>([
   YoungStatusType.ex_beneficiary,
 ])
 
-type Props = { user: UserProfileResponseWithoutSurvey | undefined }
+type Props = { user: UserProfile | undefined }
 
 export const LoggedInContent = ({ user }: Props) => {
   const { data: remoteConfig } = useRemoteConfigQuery()

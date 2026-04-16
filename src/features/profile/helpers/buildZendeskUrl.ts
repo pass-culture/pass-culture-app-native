@@ -1,6 +1,6 @@
 import { Platform } from 'react-native'
 
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { DeviceInformation } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { env } from 'libs/environment/env'
 import { LINE_BREAK } from 'ui/theme/constants'
@@ -55,7 +55,7 @@ const getDebugData = ({
   deviceInfo,
   version,
 }: {
-  user?: UserProfileResponseWithoutSurvey
+  user?: UserProfile
   deviceInfo?: DeviceInformation
   version?: string
 }) => {
@@ -94,7 +94,7 @@ export const buildZendeskUrlForFraud = ({
   version,
   description,
 }: {
-  user?: UserProfileResponseWithoutSurvey
+  user?: UserProfile
   deviceInfo?: DeviceInformation
   version?: string
   description?: string
@@ -114,7 +114,7 @@ export const buildZendeskUrlForDebug = ({
   deviceInfo,
   version,
 }: {
-  user?: UserProfileResponseWithoutSurvey
+  user?: UserProfile
   deviceInfo?: DeviceInformation
   version?: string
 }) =>
@@ -134,7 +134,7 @@ const getDescription = ({
   version,
 }: {
   description?: string
-  user?: UserProfileResponseWithoutSurvey
+  user?: UserProfile
   deviceInfo?: DeviceInformation
   version?: string
 }) =>

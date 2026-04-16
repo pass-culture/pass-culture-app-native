@@ -25,7 +25,7 @@ export const useSubmitChangeCity = () => {
   const { setCity } = cityActions
   const { resetAddress } = addressActions
 
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigate, replace } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'ChangeCity'>>()
   const type = params?.type
 
@@ -44,15 +44,15 @@ export const useSubmitChangeCity = () => {
   })
 
   const { mutate: patchProfile, isPending } = usePatchProfileMutation({
-    onSuccess: (_, variables) => {
+    onSuccess: async (_, variables) => {
       if (isFromProfileUpdateFlow) {
         navigate(...getProfileHookConfig('ChangeAddress', { type }))
       } else {
-        navigate(...getProfileHookConfig('PersonalData'))
+        replace(...getProfileHookConfig('PersonalData'))
         showSuccessSnackBar('Ta ville de résidence a bien été modifiée\u00a0!')
       }
 
-      analytics.logUpdatePostalCode({
+      await analytics.logUpdatePostalCode({
         newCity: variables.city ?? '',
         oldCity: user?.city ?? '',
         newPostalCode: variables.postalCode ?? '',

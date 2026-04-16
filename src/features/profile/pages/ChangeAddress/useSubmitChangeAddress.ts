@@ -42,7 +42,7 @@ export const useSubmitChangeAddress = () => {
   const storedAddress = useAddress()
   const initialCity = storedAddress === null ? '' : (storedAddress ?? user?.street ?? '')
 
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigate, replace } = useNavigation<UseNavigationType>()
 
   const {
     control,
@@ -108,7 +108,7 @@ export const useSubmitChangeAddress = () => {
       if (isMandatoryUpdatePersonalData) {
         navigate(...getProfileHookConfig('ChangeStatus', { type }))
       } else {
-        navigate(...getProfileHookConfig('PersonalData'))
+        replace(...getProfileHookConfig('PersonalData'))
         showSuccessSnackBar('Ton adresse de résidence a bien été modifiée\u00a0!')
       }
       await analytics.logUpdateAddress({

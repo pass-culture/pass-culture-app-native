@@ -8,9 +8,10 @@ import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoModuleProps } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { analytics } from 'libs/analytics/provider'
 import { Offer } from 'shared/offer/types'
 import { ColorsType } from 'theme/types'
-import { SeeMoreWithEye } from 'ui/components/SeeMoreWithEye'
+import { SeeAllInModalButton } from 'ui/components/SeeAllButton/SeeAllInModalButton'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Play } from 'ui/svg/icons/Play'
@@ -29,9 +30,19 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
   const hasOnlyTwoOffers = props.offers.length === 2
   const nbOfSeparators = hasOnlyTwoOffers ? 1 : 2
 
+  const onBeforeNavigate = () => {
+    void analytics.logClickSeeAll({ type: 'offers', moduleId: props.id, moduleName: props.title })
+  }
+
   function renderTitleSeeMore() {
     return showSeeMore && props.isMultiOffer ? (
-      <SeeMoreWithEye title={props.videoTitle} onPressSeeMore={props.showVideoModal} />
+      <SeeAllInModalButton
+        title={props.videoTitle}
+        onPress={() => {
+          onBeforeNavigate()
+          props.showVideoModal()
+        }}
+      />
     ) : null
   }
 

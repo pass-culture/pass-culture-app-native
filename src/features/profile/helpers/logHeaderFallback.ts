@@ -1,9 +1,9 @@
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 
 type LogHeaderFallbackParams = {
-  user: UserProfileResponseWithoutSurvey
+  user: UserProfile
   headerType: UserStatusType
 }
 

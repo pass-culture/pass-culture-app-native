@@ -1,5 +1,5 @@
 import { EligibilityType, UserRole } from 'api/gen/api'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 
 import { isUserFreeBeneficiaryOrEligible } from './isUserFreeBeneficiaryOrEligible'
 
@@ -16,7 +16,7 @@ describe('isUserFreeBeneficiaryOrEligible', () => {
     ${{ eligibility: EligibilityType.underage, roles: undefined }}                   | ${false}
   `(
     'should return $expected for $user.eligibility user and $user.roles roles',
-    ({ user, expected }: { user?: UserProfileResponseWithoutSurvey; expected: boolean }) => {
+    ({ user, expected }: { user?: UserProfile; expected: boolean }) => {
       expect(isUserFreeBeneficiaryOrEligible(user)).toEqual(expected)
     }
   )

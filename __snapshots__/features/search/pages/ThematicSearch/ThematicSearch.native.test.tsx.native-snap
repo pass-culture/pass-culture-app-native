@@ -1709,31 +1709,27 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   <View
                     style={
                       {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
                         "flexShrink": 1,
-                        "marginLeft": 24,
-                        "marginRight": 24,
                       }
                     }
-                    testID="playlistTitle"
-                    withMargin={true}
                   >
-                    <Text
-                      accessibilityLabel="GTL playlist"
-                      accessibilityRole="header"
-                      numberOfLines={2}
+                    <View
                       style={
                         {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 19,
-                          "lineHeight": 30.4,
+                          "flexShrink": 1,
+                          "marginLeft": 24,
+                          "marginRight": 24,
                         }
                       }
+                      testID="playlistTitle"
+                      withMargin={true}
                     >
                       <Text
-                        accessibilityElementsHidden={true}
+                        accessibilityLabel="GTL playlist"
                         accessibilityRole="header"
-                        importantForAccessibility="no"
+                        numberOfLines={2}
                         style={
                           {
                             "color": "#161617",
@@ -1743,10 +1739,32 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           }
                         }
                       >
-                        GTL playlist
+                        <Text
+                          accessibilityElementsHidden={true}
+                          accessibilityRole="header"
+                          importantForAccessibility="no"
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 19,
+                              "lineHeight": 30.4,
+                            }
+                          }
+                        >
+                          GTL playlist
+                        </Text>
                       </Text>
-                    </Text>
+                    </View>
                   </View>
+                  <View
+                    style={
+                      {
+                        "justifyContent": "center",
+                        "marginRight": 24,
+                      }
+                    }
+                  />
                 </View>
               </View>
               <View

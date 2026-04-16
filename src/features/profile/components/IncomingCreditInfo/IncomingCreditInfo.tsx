@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { HighlightedBody } from 'features/profile/components/HighlightedBody/HighlightedBody'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { getAge } from 'shared/user/getAge'
 import { Typo } from 'ui/theme'
 
 type Props = {
-  birthDate: UserProfileResponseWithoutSurvey['birthDate'] | null
+  birthDate: UserProfile['birthDate'] | null
   seventeenYearsOldDeposit: string
   eighteenYearsOldDeposit: string
 }

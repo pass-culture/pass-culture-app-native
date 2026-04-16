@@ -258,6 +258,9 @@ export const rootStackNavigatorPathConfig = {
   _DeeplinkOnlyRecreditBirthdayNotification1: {
     path: 'recredit-birthday',
   },
+  AppleSSOCallback: {
+    path: 'oauth/apple/callback',
+  },
   PageNotFound: {
     path: '*',
   },
@@ -404,5 +407,9 @@ export const rootStackNavigatorPathConfig = {
   ProAdvicesVenue: {
     path: 'avis-du-pro/lieu/:venueId/:offerId',
     parse: screenParamsParser['ProAdvicesVenue'],
+  },
+  VerticalPlaylistPage: {
+    path: 'playlist-verticale',
+    parse: screenParamsParser['VerticalPlaylistPage'],
   },
 }

@@ -1,5 +1,4 @@
 import { EligibilityType } from 'api/gen/api'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 
-export const isUserUnderage = (user?: UserProfileResponseWithoutSurvey) =>
-  user?.eligibility === EligibilityType.underage
+export const isUserUnderage = (user?: UserProfile) => user?.eligibility === EligibilityType.underage

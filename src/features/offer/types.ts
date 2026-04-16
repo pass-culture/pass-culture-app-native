@@ -89,7 +89,7 @@ type OfferCTAsComponentProps = {
 export type OfferContentProps = {
   offer: OfferResponse
   searchGroupList: SearchGroupResponseModelv2[]
-  adviceVariantInfo: AdviceVariantInfo
+  adviceVariantInfo?: AdviceVariantInfo
   subcategory: Subcategory
   onShowClubAdviceWritersModal: () => void
   onShowOfferArtistsModal: (artists: OfferArtist[]) => void

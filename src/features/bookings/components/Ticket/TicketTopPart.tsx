@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { BookingOfferResponseV2 } from 'api/gen'
 import { LinkToOffer } from 'features/bookings/components/LinkToOffer'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { BookFilled } from 'ui/svg/icons/BookFilled'
@@ -16,7 +16,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type TicketTopPartProps = {
   title: string
-  user: UserProfileResponseWithoutSurvey
+  user: UserProfile
   hour?: string
   day?: string
   isDuo?: boolean

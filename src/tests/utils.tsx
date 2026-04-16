@@ -5,9 +5,8 @@
 // eslint-disable-next-line no-restricted-imports
 import { render, renderAsync, waitFor } from '@testing-library/react-native'
 import deepmerge from 'deepmerge'
-import React, { PropsWithChildren, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import { act, ReactTestInstance } from 'react-test-renderer'
-import { measureRenders, MeasureRendersOptions } from 'reassure'
 import { ThemeProvider as ThemeProviderWeb, DefaultTheme } from 'styled-components'
 import { ThemeProvider } from 'styled-components/native'
 
@@ -89,28 +88,11 @@ function customRenderAsync(ui: React.ReactElement<any>, options?: CustomRenderOp
   })
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function customMeasurePerformance(ui: React.ReactElement<any>, options?: MeasureRendersOptions) {
-  const { wrapper, ...restOfOptions } = options || {}
-  const Wrapper = wrapper as React.ComponentType<PropsWithChildren>
-  return measureRenders(ui, {
-    wrapper: Wrapper
-      ? ({ children }) => (
-          <DefaultWrapper>
-            <Wrapper>{children}</Wrapper>
-          </DefaultWrapper>
-        )
-      : ({ children }) => <DefaultWrapper>{children}</DefaultWrapper>,
-    ...restOfOptions,
-  })
-}
-
 // eslint-disable-next-line no-restricted-imports
 export * from '@testing-library/react-native'
 
 export { customRender as render }
 export { customRenderAsync as renderAsync }
-export { customMeasurePerformance as measurePerformance }
 
 export const middleScrollEvent = {
   nativeEvent: {

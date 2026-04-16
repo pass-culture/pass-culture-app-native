@@ -9,13 +9,13 @@ import { NoTicket } from 'features/bookings/components/Ticket/TicketBottomPart/N
 import { OnSiteWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/OnSiteWithdrawal/OnSiteWithdrawal'
 import { PhysicalGoodBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/PhysicalGoodBookingTicket/PhysicalGoodBookingTicket'
 import { getTicketVariant } from 'features/bookings/helpers/getTicketVariant'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 
 type TicketBottomPartProps = {
   isDuo: boolean
   isDigital: boolean
   isEvent: boolean
-  userEmail: UserProfileResponseWithoutSurvey['email']
+  userEmail: UserProfile['email']
   ticket: TicketResponse
   expirationDate?: string
   beginningDateTime?: string

@@ -7,7 +7,7 @@ import { api } from 'api/api'
 import { ValidateEmailResponse } from 'api/gen'
 import * as LoginAndRedirectAPI from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import * as datesLib from 'libs/dates'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -57,7 +57,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
     })
 
     it('should login and redirect use on email validation success', async () => {
-      mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', nonBeneficiaryUser)
+      mockServer.getApi<UserProfile>('/v1/me', nonBeneficiaryUser)
 
       renderPage()
 
@@ -92,7 +92,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   describe('when timestamp is expired', () => {
     beforeEach(() => {
-      mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
+      mockServer.getApi<UserProfile>('/v1/me', {
         ...nonBeneficiaryUser,
         email: 'email@domain.ext',
         firstName: 'Jean',
@@ -120,7 +120,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   describe('Email validation API call', () => {
     beforeEach(() => {
-      mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
+      mockServer.getApi<UserProfile>('/v1/me', {
         ...nonBeneficiaryUser,
         email: 'email@domain.ext',
         firstName: 'Jean',

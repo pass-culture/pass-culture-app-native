@@ -4,13 +4,13 @@ import { EmptyCredit } from 'features/profile/components/EmptyCredit/EmptyCredit
 import { ContainerHeader } from 'features/profile/components/Header/Container/ContainerHeader'
 import { getProfileHeaderTitle } from 'features/profile/helpers/getProfileHeaderTitle'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { getAge } from 'shared/user/getAge'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 type Props = {
-  user: UserProfileResponseWithoutSurvey
+  user: UserProfile
   defaultAge: 15 | 16
 } & ProfileFeatureFlagsProps
 

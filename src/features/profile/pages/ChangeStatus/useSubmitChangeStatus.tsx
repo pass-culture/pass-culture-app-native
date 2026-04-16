@@ -28,7 +28,7 @@ export const useSubmitChangeStatus = () => {
     : 'Ton statut a bien été modifié\u00a0!'
 
   const { user } = useAuthContext()
-  const { navigate, reset } = useNavigation<UseNavigationType>()
+  const { replace, reset } = useNavigation<UseNavigationType>()
   const storedStatus = useStatus()
   const [navigatorName, screenConfig] = getProfileHookConfig('UpdatePersonalDataConfirmation')
 
@@ -43,7 +43,7 @@ export const useSubmitChangeStatus = () => {
           ],
         })
       } else {
-        navigate(...getProfileHookConfig('PersonalData'))
+        replace(...getProfileHookConfig('PersonalData'))
         showSuccessSnackBar(successSnackBarMessage)
       }
       await analytics.logUpdateStatus({

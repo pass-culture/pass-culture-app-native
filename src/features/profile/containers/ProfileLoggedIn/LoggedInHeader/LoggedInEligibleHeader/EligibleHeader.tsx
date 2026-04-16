@@ -5,12 +5,12 @@ import { ActivationBanner } from 'features/profile/components/Banners/Activation
 import { EligibleMessage } from 'features/profile/components/EligibleMessage/EligibleMessage'
 import { getProfileHeaderTitle } from 'features/profile/helpers/getProfileHeaderTitle'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 type Props = {
-  user: UserProfileResponseWithoutSurvey
+  user: UserProfile
   subscriptionInfos?: SubscriptionStepperResponseV2
 } & ProfileFeatureFlagsProps
 

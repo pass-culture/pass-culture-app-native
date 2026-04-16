@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -140,7 +140,7 @@ describe('LoggedInBeneficiaryHeader', () => {
   })
 })
 
-const renderLoggedInBeneficiaryHeader = (user: UserProfileResponseWithoutSurvey) =>
+const renderLoggedInBeneficiaryHeader = (user: UserProfile) =>
   render(
     reactQueryProviderHOC(
       <LoggedInBeneficiaryHeader

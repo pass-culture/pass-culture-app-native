@@ -13,12 +13,12 @@ import { loggedOutContentConfig } from 'features/profile/containers/ProfileLogge
 import { getShouldDisplayHelpButton } from 'features/profile/helpers/getShouldDisplayHelpButton'
 import { useAppearanceTag } from 'features/profile/helpers/useAppearanceTag'
 import { useGeolocationSwitch } from 'features/profile/helpers/useGeolocationSwitch'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/LocationWrapper'
 
-type Props = { user: UserProfileResponseWithoutSurvey | undefined }
+type Props = { user: UserProfile | undefined }
 
 export const LoggedOutContent = ({ user }: Props) => {
   const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)

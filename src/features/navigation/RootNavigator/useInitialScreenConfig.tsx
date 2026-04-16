@@ -5,7 +5,7 @@ import { RecreditType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { performanceMonitoringStoreActions } from 'features/home/pages/helpers/usePerformanceMonitoringStore'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
@@ -38,7 +38,7 @@ async function getInitialScreen({
   user,
 }: {
   isLoggedIn: boolean
-  user?: UserProfileResponseWithoutSurvey
+  user?: UserProfile
 }): Promise<RootScreenNames> {
   if (isLoggedIn && user) {
     try {

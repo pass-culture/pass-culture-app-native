@@ -22,7 +22,7 @@
       in {
         devShells.default = pkgs.mkShellNoCC {
           packages = [
-            pkgs_nodejs.nodejs # needed to install NodeJS dependencies, run scripts...
+            pkgs_nodejs.nodejs_20 # needed to install NodeJS dependencies, run scripts...
             pkgs_ruby.ruby # needed to run FastLane and to install iOS dependencies
             pkgs.jdk17 # needed by Android
             pkgs.jq # needed by some scripts run in the pipeline

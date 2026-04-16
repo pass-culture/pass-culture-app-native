@@ -1,10 +1,10 @@
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { computeCredit } from 'features/profile/helpers/computeCredit'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 
 export type Credit = { amount: number; isExpired: boolean }
 
-export const hasOngoingCredit = (user: UserProfileResponseWithoutSurvey) => {
+export const hasOngoingCredit = (user: UserProfile) => {
   const hasRemainingCredit = !!user.domainsCredit?.all.remaining
   const hasDepositExpired = user.depositExpirationDate
     ? new Date(user.depositExpirationDate) >= new Date()
@@ -12,7 +12,7 @@ export const hasOngoingCredit = (user: UserProfileResponseWithoutSurvey) => {
   return hasRemainingCredit && hasDepositExpired
 }
 
-export const getAvailableCredit = (user: UserProfileResponseWithoutSurvey): Credit => {
+export const getAvailableCredit = (user: UserProfile): Credit => {
   return {
     amount: computeCredit(user.domainsCredit),
     isExpired: !hasOngoingCredit(user),

@@ -1,4 +1,4 @@
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 export const getEmailReceivedWithdrawalMessage = ({
@@ -8,7 +8,7 @@ export const getEmailReceivedWithdrawalMessage = ({
 }: {
   isEventDay: boolean
   isDuo: boolean
-  userEmail: UserProfileResponseWithoutSurvey['email']
+  userEmail: UserProfile['email']
 }) => {
   const startTextEventDay =
     'C’est aujourd’hui\u00a0!' +

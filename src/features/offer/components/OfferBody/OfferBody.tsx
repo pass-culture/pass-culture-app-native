@@ -41,7 +41,7 @@ type Props = {
   offer: OfferResponse
   subcategory: Subcategory
   children: ReactNode
-  adviceVariantInfo: AdviceVariantInfo
+  adviceVariantInfo?: AdviceVariantInfo
   onVideoConsentPress: () => void
   onShowOfferArtistsModal: (artists: OfferArtist[]) => void
   likesCount?: number

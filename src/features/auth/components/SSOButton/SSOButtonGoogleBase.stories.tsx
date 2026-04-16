@@ -6,11 +6,11 @@ import React from 'react'
 import { env } from 'libs/environment/fixtures'
 import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
-import { SSOButtonBase } from './SSOButtonBase'
+import { SSOButtonGoogleBase } from './SSOButtonGoogleBase'
 
-const meta: Meta<typeof SSOButtonBase> = {
+const meta: Meta<typeof SSOButtonGoogleBase> = {
   title: 'Features/auth/SSOButton',
-  component: SSOButtonBase,
+  component: SSOButtonGoogleBase,
   decorators: [
     (Story) => (
       // @ts-expect-error - type incompatibility with React 19
@@ -27,7 +27,7 @@ const meta: Meta<typeof SSOButtonBase> = {
 }
 export default meta
 
-const variantConfig: Variants<typeof SSOButtonBase> = [
+const variantConfig: Variants<typeof SSOButtonGoogleBase> = [
   {
     label: 'SSOButton Login',
     props: { type: 'login' },
@@ -38,9 +38,13 @@ const variantConfig: Variants<typeof SSOButtonBase> = [
   },
 ]
 
-export const Template: VariantsStory<typeof SSOButtonBase> = {
+export const Template: VariantsStory<typeof SSOButtonGoogleBase> = {
   name: 'SSOButton',
   render: (props) => (
-    <VariantsTemplate variants={variantConfig} Component={SSOButtonBase} defaultProps={props} />
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={SSOButtonGoogleBase}
+      defaultProps={props}
+    />
   ),
 }

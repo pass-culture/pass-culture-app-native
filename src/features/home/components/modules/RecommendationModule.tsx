@@ -5,6 +5,7 @@ import { useTheme } from 'styled-components'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
 import { RecommendedOffersModule } from 'features/home/types'
+import { getSearchPropConfig } from 'features/navigation/SearchStackNavigator/getSearchPropConfig'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
@@ -56,9 +57,13 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     analytics.logAllTilesSeen({ moduleName, numberOfTiles: nbOffers, ...recommendationApiParams })
   )
 
+  const searchParams = { hitsPerPage: 20 }
+  const searchTabConfig = getSearchPropConfig('SearchResults', searchParams)
+  const onBeforeNavigate = () => analytics.logClickSeeAll({ type: 'offers', moduleName, moduleId })
+
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
-      analytics.logModuleDisplayedOnHomepage({
+      void analytics.logModuleDisplayedOnHomepage({
         call_id: recommendationApiParams?.call_id,
         moduleId,
         moduleType: ContentTypes.RECOMMENDATION,
@@ -93,6 +98,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)
 
   if (!shouldModuleBeDisplayed) return null
+
   return (
     <ObservedPlaylist onViewableItemsChanged={handleOnViewableItemsChanged}>
       {({ listRef, handleViewableItemsChanged }) => (
@@ -110,6 +116,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
           onViewableItemsChanged={handleViewableItemsChanged}
           withMargin
           contentContainerStyle={{ paddingHorizontal: designSystem.size.spacing.xl }}
+          seeAllButton={{ navigateToSearchPlaylist: searchTabConfig, onBeforeNavigate }}
         />
       )}
     </ObservedPlaylist>

@@ -16,7 +16,7 @@ import {
   computeHeaderImageHeight,
 } from 'features/bookings/helpers/computeHeaderImageHeight'
 import { BookingProperties } from 'features/bookings/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import { useFunctionOnce } from 'libs/hooks'
@@ -38,7 +38,7 @@ export const BookingDetailsContent = ({
   properties: BookingProperties
   booking: BookingResponse
   mapping: SubcategoriesMapping
-  user: UserProfileResponseWithoutSurvey
+  user: UserProfile
 }) => {
   const { isDesktopViewport, designSystem } = useTheme()
   const { height: windowHeight } = useWindowDimensions()

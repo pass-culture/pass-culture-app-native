@@ -10,7 +10,7 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
 import { getDistance } from 'libs/location/getDistance'
@@ -39,7 +39,7 @@ import { getSpacing, Typo } from 'ui/theme'
 interface Props {
   favorite: FavoriteResponse
   onInAppBooking: (bookedOffer: FavoriteOfferResponse) => void
-  user: UserProfileResponseWithoutSurvey
+  user: UserProfile
 }
 
 const SPACER_BETWEEN_IMAGE_AND_CONTENT = 4

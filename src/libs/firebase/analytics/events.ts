@@ -164,7 +164,7 @@ export enum AnalyticsEvent {
   SCREEN_VIEW = 'screen_view',
   SCREENSHOT = 'Screenshot',
   SEARCH_SCROLL_TO_PAGE = 'SearchScrollToPage',
-  SEE_MORE_CLICKED = 'SeeMoreClicked',
+  SEE_ALL_CLICKED = 'SeeAllClicked',
   SEE_MY_BOOKING = 'SeeMyBooking',
   SELECT_AGE = 'SelectAge',
   SELECT_DELETION_REASON = 'SelectDeletionReason',

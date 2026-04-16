@@ -1,12 +1,11 @@
 import { FlashList } from '@shopify/flash-list'
-import React, { ComponentProps, Ref, useCallback } from 'react'
+import React, { ComponentProps, Ref } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import { FlatList, FlatList as RNGHFlatList } from 'react-native-gesture-handler'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
-import { Playlist, RenderFooterItem } from 'ui/components/Playlist'
-import { SeeMore } from 'ui/components/SeeMore'
+import { Playlist } from 'ui/components/Playlist'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Tag } from 'ui/designSystem/Tag/Tag'
@@ -14,7 +13,7 @@ import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-import { SeeMoreWithEye } from './SeeMoreWithEye'
+import { SeeAllButton } from './SeeAllButton/SeeAllButton'
 
 type Props = Pick<
   ComponentProps<typeof Playlist>,
@@ -32,29 +31,29 @@ type Props = Pick<
   noMarginBottom?: boolean
   title: string
   subtitle?: string
-  onPressSeeMore?: () => void
-  renderFooter?: RenderFooterItem
-  titleSeeMoreLink?: InternalNavigationProps['navigateTo']
   playlistRef?: Ref<FlatList>
   FlatListComponent?: typeof FlashList | typeof RNGHFlatList
   withMargin?: boolean
   contentContainerStyle?: StyleProp<ViewStyle>
-  forceNativeSeeMore?: boolean
   showNewTag?: boolean
+  seeAllButton?: {
+    navigateToVerticalPlaylist?: InternalNavigationProps['navigateTo']
+    navigateToSearchPlaylist?: InternalNavigationProps['navigateTo']
+    onBeforeNavigate: () => void
+    hideSeeAllButton?: boolean
+  }
 }
 
 export const PassPlaylist = ({
   title,
   subtitle,
-  onPressSeeMore,
   onEndReached,
   onViewableItemsChanged,
-  titleSeeMoreLink,
+  seeAllButton,
   data,
   itemHeight,
   itemWidth,
   renderItem,
-  renderFooter,
   playlistType,
   tileType,
   keyExtractor,
@@ -64,47 +63,24 @@ export const PassPlaylist = ({
   FlatListComponent,
   withMargin = true,
   contentContainerStyle,
-  forceNativeSeeMore,
   showNewTag,
   ...props
 }: Props) => {
-  const { isTouch } = useTheme()
-
-  const showTitleSeeMore = !!onPressSeeMore && (!isTouch || !!forceNativeSeeMore)
-  const showFooterSeeMore = !!onPressSeeMore && isTouch
-
-  type SizeProps = {
-    width: number
-    height: number
-  }
-
-  const defaultRenderFooter: RenderFooterItem = useCallback(
-    ({ width, height }: SizeProps) => (
-      <SeeMore width={width} height={height} onPress={onPressSeeMore as () => void} />
-    ),
-    [onPressSeeMore]
-  )
-
-  function renderTitleSeeMore() {
-    return showTitleSeeMore && !!titleSeeMoreLink && !!onPressSeeMore ? (
-      <SeeMoreWithEye
-        title={title}
-        titleSeeMoreLink={titleSeeMoreLink}
-        onPressSeeMore={onPressSeeMore}
-      />
-    ) : null
-  }
   return (
     <StyledViewGap gap={4} noMarginBottom={noMarginBottom} {...props}>
       <ViewGap gap={1}>
         <StyledView>
-          <AccessibleTitle
-            withMargin={withMargin}
-            TitleComponent={TitleLevel2}
-            title={title}
-            withTag={showNewTag}
-          />
-          {renderTitleSeeMore()}
+          <TitleContainer>
+            <AccessibleTitle
+              withMargin={withMargin}
+              TitleComponent={TitleLevel2}
+              title={title}
+              withTag={showNewTag}
+            />
+          </TitleContainer>
+          <SeeAllButtonContainer>
+            <SeeAllButton playlistTitle={title} seeAllButton={seeAllButton} />
+          </SeeAllButtonContainer>
           {showNewTag ? (
             <TagContainer>
               <Tag label="Nouveau" variant={TagVariant.NEW} />
@@ -120,7 +96,6 @@ export const PassPlaylist = ({
         itemWidth={itemWidth}
         scrollButtonOffsetY={itemHeight / 2}
         renderItem={renderItem}
-        renderFooter={showFooterSeeMore ? renderFooter || defaultRenderFooter : undefined}
         keyExtractor={keyExtractor}
         onEndReached={onEndReached}
         playlistType={playlistType}
@@ -160,4 +135,13 @@ const TagContainer = styled.View(({ theme }) => ({
   marginRight: theme.designSystem.size.spacing.xl,
   flexShrink: 0,
   justifyContent: 'center',
+}))
+
+const SeeAllButtonContainer = styled.View(({ theme }) => ({
+  marginRight: theme.contentPage.marginHorizontal,
+  justifyContent: 'center',
+}))
+
+const TitleContainer = styled.View(({ theme }) => ({
+  flex: theme.isDesktopViewport ? undefined : 1,
 }))

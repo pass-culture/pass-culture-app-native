@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
-import { SSOButtonBase } from 'features/auth/components/SSOButton/SSOButtonBase'
+import { SSOButtonGoogleBase } from 'features/auth/components/SSOButton/SSOButtonGoogleBase'
 import { loginSchema } from 'features/auth/pages/login/schema/loginSchema'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { SignInResponseFailure } from 'features/auth/types'
@@ -98,6 +98,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           accountCreationToken: response.content?.accountCreationToken,
           email: response.content?.email,
           from: StepperOrigin.LOGIN,
+          ssoProvider: response.provider,
         })
       } else if (
         failureCode &&
@@ -108,8 +109,9 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           'SSO_EMAIL_NOT_VALIDATED',
         ].includes(failureCode)
       ) {
+        const providerName = response.provider === 'apple' ? 'Apple' : 'Google'
         showErrorSnackBar(
-          'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.'
+          `Ton compte ${providerName} semble ne pas être valide. Pour pouvoir te connecter, confirme d\u2019abord ton adresse e-mail ${providerName}.`
         )
       } else if (failureCode === 'EMAIL_NOT_VALIDATED') {
         const email = getValues('email')?.trim()
@@ -258,8 +260,14 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
               />
               <StyledViewGap gap={4}>
                 <SeparatorWithText label="ou" />
-                <SSOButtonBase type="login" onSuccess={signIn} />
-                {enableAppleSSO ? <SSOButtonApple type="login" /> : null}
+                <SSOButtonGoogleBase type="login" onSuccess={signIn} />
+                {enableAppleSSO ? (
+                  <SSOButtonApple
+                    type="login"
+                    onSignInFailure={handleSigninFailure}
+                    doNotNavigateOnSigninSuccess={props.doNotNavigateOnSigninSuccess}
+                  />
+                ) : null}
                 <ExternalTouchableLink
                   as={Button}
                   variant="tertiary"

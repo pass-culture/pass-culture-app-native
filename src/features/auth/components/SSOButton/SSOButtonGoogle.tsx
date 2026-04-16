@@ -5,7 +5,7 @@ import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { SignInResponseFailure } from 'features/auth/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 
-import { SSOButtonBase } from './SSOButtonBase'
+import { SSOButtonGoogleBase } from './SSOButtonGoogleBase'
 
 type Props = {
   type: 'signup' | 'login'
@@ -22,5 +22,5 @@ export const SSOButtonGoogle = ({ type, onSignInFailure }: Props) => {
     analyticsMethod: isSignupButton ? 'fromSignup' : 'fromLogin',
   })
 
-  return <SSOButtonBase type={type} onSuccess={signIn} />
+  return <SSOButtonGoogleBase type={type} onSuccess={signIn} />
 }

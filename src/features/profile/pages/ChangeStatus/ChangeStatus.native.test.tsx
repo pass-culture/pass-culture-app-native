@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useRoute, reset, navigate } from '__mocks__/@react-navigation/native'
+import { useRoute, reset, replace } from '__mocks__/@react-navigation/native'
 import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
@@ -10,7 +10,7 @@ import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
@@ -108,7 +108,7 @@ describe('<ChangeStatus/>', () => {
 
     it('should send analytics event when success', async () => {
       renderChangedStatus()
-      mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
+      mockServer.patchApi<UserProfile>('/v1/profile', beneficiaryUser)
 
       await user.press(screen.getByText('Employé'))
       await user.press(screen.getByText('Valider mes informations'))
@@ -121,12 +121,12 @@ describe('<ChangeStatus/>', () => {
 
     it('should navigate to PersonalData when press "Valider mes informations"', async () => {
       renderChangedStatus()
-      mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
+      mockServer.patchApi<UserProfile>('/v1/profile', beneficiaryUser)
 
       await user.press(screen.getByText('Employé'))
       await user.press(screen.getByText('Valider mes informations'))
 
-      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+      expect(replace).toHaveBeenCalledWith('ProfileStackNavigator', {
         screen: 'PersonalData',
         params: undefined,
       })
@@ -134,7 +134,7 @@ describe('<ChangeStatus/>', () => {
 
     it('should show snackbar on success when clicking on "Valider mes informations"', async () => {
       renderChangedStatus()
-      mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
+      mockServer.patchApi<UserProfile>('/v1/profile', beneficiaryUser)
 
       await user.press(screen.getByText('Employé'))
       await user.press(screen.getByText('Valider mes informations'))
@@ -163,7 +163,7 @@ describe('<ChangeStatus/>', () => {
 
     it('should navigate and reset to UpdatePersonalDataConfirmation when press "Valider mes informations"', async () => {
       renderChangedStatus()
-      mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
+      mockServer.patchApi<UserProfile>('/v1/profile', beneficiaryUser)
 
       await user.press(screen.getByText('Employé'))
       await user.press(screen.getByText('Valider mes informations'))
@@ -185,7 +185,7 @@ describe('<ChangeStatus/>', () => {
 
     it('should not show snackbar on success when clicking on "Valider mes informations"', async () => {
       renderChangedStatus()
-      mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
+      mockServer.patchApi<UserProfile>('/v1/profile', beneficiaryUser)
 
       await user.press(screen.getByText('Employé'))
       await user.press(screen.getByText('Valider mes informations'))

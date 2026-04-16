@@ -5,7 +5,7 @@ import { EligibilityType } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import * as Login from 'features/auth/helpers/useLoginRoutine'
 import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -32,7 +32,7 @@ describe('useLoginAndRedirect', () => {
 
   it('should login user', async () => {
     mockUseLoginRoutine.mockReturnValueOnce(loginRoutine)
-    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', nonBeneficiaryUser)
+    mockServer.getApi<UserProfile>('/v1/me', nonBeneficiaryUser)
 
     await loginAndRedirect()
 
@@ -41,7 +41,7 @@ describe('useLoginAndRedirect', () => {
 
   it('should redirect to DisableActivation when disableActivation is true', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_ACTIVATION])
-    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', nonBeneficiaryUser)
+    mockServer.getApi<UserProfile>('/v1/me', nonBeneficiaryUser)
     await loginAndRedirect()
 
     jest.advanceTimersByTime(2000)
@@ -53,7 +53,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to AccountCreated when isEligibleForBeneficiaryUpgrade is false', async () => {
-    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
+    mockServer.getApi<UserProfile>('/v1/me', {
       ...nonBeneficiaryUser,
       email: 'email@domain.ext',
       firstName: 'Jean',
@@ -70,7 +70,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to AccountCreated when isEligibleForBeneficiaryUpgrade and user is 15 or 16 yo', async () => {
-    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
+    mockServer.getApi<UserProfile>('/v1/me', {
       ...nonBeneficiaryUser,
       email: 'email@domain.ext',
       firstName: 'Jean',
@@ -87,7 +87,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to Verify Eligibility when isEligibleForBeneficiaryUpgrade and user is 17 or 18 yo', async () => {
-    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
+    mockServer.getApi<UserProfile>('/v1/me', {
       ...nonBeneficiaryUser,
       email: 'email@domain.ext',
       firstName: 'Jean',
@@ -104,7 +104,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to AccountCreated when not isEligibleForBeneficiaryUpgrade and user is not future eligible', async () => {
-    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
+    mockServer.getApi<UserProfile>('/v1/me', {
       ...nonBeneficiaryUser,
       email: 'email@domain.ext',
       firstName: 'Jean',
@@ -119,7 +119,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to NotYetUnderageEligibility when not isEligibleForBeneficiaryUpgrade and user is future eligible', async () => {
-    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
+    mockServer.getApi<UserProfile>('/v1/me', {
       ...nonBeneficiaryUser,
       email: 'email@domain.ext',
       firstName: 'Jean',
@@ -136,7 +136,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to AccountCreated on error', async () => {
-    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
+    mockServer.getApi<UserProfile>('/v1/me', {
       responseOptions: { statusCode: 404 },
     })
     await loginAndRedirect()

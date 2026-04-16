@@ -5,6 +5,7 @@ import { useTheme } from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
 import {
+  HomepageModuleType,
   ModuleData,
   OffersModule as OffersModuleType,
   RecommendedOffersModule,
@@ -20,8 +21,7 @@ import { useLocation } from 'libs/location/location'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
-import { CustomListRenderItem, ItemDimensions, RenderFooterItem } from 'ui/components/Playlist'
-import { SeeMore } from 'ui/components/SeeMore'
+import { CustomListRenderItem } from 'ui/components/Playlist'
 
 export type OffersModuleProps = {
   offersModuleParameters: OffersModuleType['offersModuleParameters']
@@ -59,10 +59,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     user?.id
   )
 
-  const { playlistItems, nbPlaylistResults } = data ?? {
-    playlistItems: [],
-    nbPlaylistResults: 0,
-  }
+  const { playlistItems } = data ?? { playlistItems: [] }
 
   const [parameters = { title: '', hitsPerPage: 0 }] = offersModuleParameters
   // When we navigate to the search page, we want to show 20 results per page,
@@ -86,17 +83,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     })
   )
 
-  const showSeeMore =
-    nbPlaylistResults &&
-    playlistItems.length < nbPlaylistResults &&
-    !(parameters?.tags ?? parameters?.beginningDatetime ?? parameters?.endingDatetime)
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const onPressSeeMore = showSeeMore
-    ? () => {
-        analytics.logClickSeeMore({ moduleName, moduleId })
-      }
-    : undefined
+  const onBeforeNavigate = () => analytics.logClickSeeAll({ type: 'offers', moduleName, moduleId })
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item, width, height }) => {
@@ -118,20 +105,6 @@ export const OffersModule = (props: OffersModuleProps) => {
   )
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)
-
-  const renderFooter: RenderFooterItem = useCallback(
-    ({ width, height }: ItemDimensions) => {
-      return showSeeMore ? (
-        <SeeMore
-          navigateTo={{ ...searchTabConfig, withPush: true }}
-          width={width}
-          height={height}
-          onPress={onPressSeeMore as () => void}
-        />
-      ) : null
-    },
-    [onPressSeeMore, showSeeMore, searchTabConfig]
-  )
 
   const hybridPlaylistItems = useMemo(
     () => [...playlistItems, ...recommandationOffers],
@@ -178,6 +151,24 @@ export const OffersModule = (props: OffersModuleProps) => {
 
   if (!shouldModuleBeDisplayed) return null
 
+  const hideSeeAllButton =
+    (displayParameters.layout === 'three-items' && offersToDisplay.length <= 3) ||
+    (displayParameters.layout === 'two-items' && offersToDisplay.length <= 2) ||
+    (displayParameters.layout === 'one-item-medium' && offersToDisplay.length <= 1)
+
+  const navigateToVerticalPlaylist = {
+    screen: 'VerticalPlaylistPage' as const,
+    params: {
+      module: {
+        id: moduleId,
+        type: HomepageModuleType.OffersModule,
+        title: moduleName,
+        offersModuleParameters,
+        displayParameters,
+      },
+    },
+  }
+
   return (
     <ObservedPlaylist onViewableItemsChanged={onViewableItemsChanged}>
       {({ listRef, handleViewableItemsChanged }) => (
@@ -187,15 +178,18 @@ export const OffersModule = (props: OffersModuleProps) => {
           data={offersToDisplay}
           itemHeight={itemHeight}
           itemWidth={itemWidth}
-          onPressSeeMore={onPressSeeMore}
-          titleSeeMoreLink={{ ...searchTabConfig }}
           renderItem={renderItem}
-          renderFooter={renderFooter}
           keyExtractor={keyExtractor}
           onEndReached={logHasSeenAllTilesOnce}
           playlistRef={listRef}
           onViewableItemsChanged={handleViewableItemsChanged}
           contentContainerStyle={{ paddingHorizontal: designSystem.size.spacing.xl }}
+          seeAllButton={{
+            navigateToVerticalPlaylist,
+            navigateToSearchPlaylist: searchTabConfig,
+            onBeforeNavigate,
+            hideSeeAllButton,
+          }}
         />
       )}
     </ObservedPlaylist>

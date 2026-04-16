@@ -12,7 +12,7 @@ import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteO
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
 import { analytics } from 'libs/analytics/provider'
 // eslint-disable-next-line no-restricted-imports
@@ -50,7 +50,7 @@ const captureMonitoringError = jest.spyOn(monitoringErrorsModule, 'captureMonito
 const apiPostFavoriteSpy = jest.spyOn(API.api, 'postNativeV1MeFavorites')
 
 const apiSignInSpy = jest.spyOn(API.api, 'postNativeV1Signin')
-const apiPostGoogleAuthorize = jest.spyOn(API.api, 'postNativeV1OauthGoogleAuthorize')
+const apiPostOAuthAuthorize = jest.spyOn(API.api, 'postNativeV1OauthssoProviderAuthorize')
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 
@@ -78,7 +78,7 @@ describe('<Login/>', () => {
     simulateSignin200(AccountState.ACTIVE)
     mockMeApiCall({
       showEligibleCard: false,
-    } as UserProfileResponseWithoutSurvey)
+    } as UserProfile)
   })
 
   afterEach(async () => {
@@ -132,18 +132,21 @@ describe('<Login/>', () => {
 
     await user.press(await screen.findByTestId('Se connecter avec Google'))
 
-    expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
-      authorizationCode: 'mockServerAuthCode',
-      oauthStateToken: 'oauth_state_token',
-      deviceInfo: {
-        deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-        os: 'iOS',
-        source: 'iPhone 13',
-        resolution: '750x1334',
-        screenZoomLevel: undefined,
-        fontScale: -1,
+    expect(apiPostOAuthAuthorize).toHaveBeenCalledWith(
+      {
+        authorizationCode: 'mockServerAuthCode',
+        oauthStateToken: 'oauth_state_token',
+        deviceInfo: {
+          deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          os: 'iOS',
+          source: 'iPhone 13',
+          resolution: '750x1334',
+          screenZoomLevel: undefined,
+          fontScale: -1,
+        },
       },
-    })
+      'google'
+    )
   })
 
   it('should show snackbar when SSO login fails because account is invalid', async () => {
@@ -189,6 +192,7 @@ describe('<Login/>', () => {
       accountCreationToken: 'accountCreationToken',
       email: 'user@gmail.com',
       from: StepperOrigin.LOGIN,
+      ssoProvider: 'google',
     })
   })
 
@@ -233,7 +237,7 @@ describe('<Login/>', () => {
   it('should redirect to home WHEN signin is successful with GOOGLE_SSO', async () => {
     mockMeApiCall({
       showEligibleCard: false,
-    } as UserProfileResponseWithoutSurvey)
+    } as UserProfile)
     renderLogin()
 
     await fillInputs()
@@ -246,7 +250,7 @@ describe('<Login/>', () => {
     storage.saveObject('has_seen_eligible_card', true)
     mockMeApiCall({
       showEligibleCard: true,
-    } as UserProfileResponseWithoutSurvey)
+    } as UserProfile)
     renderLogin()
 
     await fillInputs()
@@ -258,7 +262,7 @@ describe('<Login/>', () => {
   it('should redirect to EighteenBirthday WHEN signin is successful and user has not seen eligible card and needs to see it', async () => {
     mockMeApiCall({
       showEligibleCard: true,
-    } as UserProfileResponseWithoutSurvey)
+    } as UserProfile)
     renderLogin()
 
     await fillInputs()
@@ -271,7 +275,7 @@ describe('<Login/>', () => {
     mockMeApiCall({
       showEligibleCard: true,
       recreditAmountToShow: 3000,
-    } as UserProfileResponseWithoutSurvey)
+    } as UserProfile)
     renderLogin()
 
     await fillInputs()
@@ -284,7 +288,7 @@ describe('<Login/>', () => {
     mockMeApiCall({
       showEligibleCard: true,
       recreditAmountToShow: null,
-    } as UserProfileResponseWithoutSurvey)
+    } as UserProfile)
     renderLogin()
 
     await fillInputs()
@@ -829,8 +833,8 @@ function renderLogin() {
   )
 }
 
-function mockMeApiCall(response: UserProfileResponseWithoutSurvey) {
-  mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', response)
+function mockMeApiCall(response: UserProfile) {
+  mockServer.getApi<UserProfile>('/v1/me', response)
 }
 
 function simulateSignin200(accountState: AccountState) {

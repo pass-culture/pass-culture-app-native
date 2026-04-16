@@ -15,13 +15,13 @@ import {
   GetCTAWordingAndActionProps,
 } from 'features/offerRefacto/types'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 
 export const getExternalUrlCTA = (
   offer: OfferResponse,
   hasEnoughCredit: boolean,
   userStatus: YoungStatusResponse,
-  user?: UserProfileResponseWithoutSurvey
+  user?: UserProfile
 ): CTAType | undefined => {
   const isExBeneficiary = user && isUserExBeneficiary(user)
   const userWithoutEnoughCredit =
@@ -39,7 +39,7 @@ export const getFreeOfferCTA = (
   offer: OfferResponse,
   userStatus: YoungStatusResponse,
   subcategory: SubcategoryResponseModelv2,
-  user?: UserProfileResponseWithoutSurvey,
+  user?: UserProfile,
   alreadyBookedOfferId?: number
 ): CTAType | undefined => {
   const isUserFreeStatus = user?.eligibility === EligibilityType.free
@@ -66,7 +66,7 @@ export const getFreeOfferCTA = (
 export const getEligibilityBookingCTA = (
   offer: OfferResponse,
   userStatus: YoungStatusResponse,
-  user?: UserProfileResponseWithoutSurvey,
+  user?: UserProfile,
   isEndedUsedBooking?: boolean,
   alreadyBookedOfferId?: number
 ): CTAType | undefined => {
@@ -106,7 +106,7 @@ export const getRestrictedOfferCTA = (
 
 export const getExpirationSoldOutCTA = (
   offer: OfferResponse,
-  user?: UserProfileResponseWithoutSurvey
+  user?: UserProfile
 ): CTAType | undefined => {
   const isDepositExpired = user?.depositExpirationDate
     ? new Date(user?.depositExpirationDate) < new Date()

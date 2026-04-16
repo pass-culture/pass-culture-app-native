@@ -6,7 +6,7 @@ import DeviceInfo from 'react-native-device-info'
 import * as API from 'api/api'
 import { AccountState, OauthStateResponse, SigninResponse } from 'api/gen'
 import { SSOButtonGoogle } from 'features/auth/components/SSOButton/SSOButtonGoogle'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
@@ -28,7 +28,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 jest.mock('libs/network/NetInfoWrapper')
 
-const apiPostGoogleAuthorize = jest.spyOn(API.api, 'postNativeV1OauthGoogleAuthorize')
+const apiPostOAuthAuthorize = jest.spyOn(API.api, 'postNativeV1OauthssoProviderAuthorize')
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 const onSignInFailureSpy = jest.fn()
@@ -62,24 +62,27 @@ describe('<SSOButton />', () => {
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
     })
-    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
+    mockServer.getApi<UserProfile>('/v1/me', beneficiaryUser)
 
     renderSSOButton()
 
     await user.press(await screen.findByTestId('S’inscrire avec Google'))
 
-    expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
-      authorizationCode: 'mockServerAuthCode',
-      oauthStateToken: 'oauth_state_token',
-      deviceInfo: {
-        deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-        os: 'iOS',
-        source: 'iPhone 13',
-        resolution: '750x1334',
-        screenZoomLevel: undefined,
-        fontScale: -1,
+    expect(apiPostOAuthAuthorize).toHaveBeenCalledWith(
+      {
+        authorizationCode: 'mockServerAuthCode',
+        oauthStateToken: 'oauth_state_token',
+        deviceInfo: {
+          deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          os: 'iOS',
+          source: 'iPhone 13',
+          resolution: '750x1334',
+          screenZoomLevel: undefined,
+          fontScale: -1,
+        },
       },
-    })
+      'google'
+    )
   })
 
   it('should call onSignInFailure when signin fails', async () => {
@@ -93,6 +96,7 @@ describe('<SSOButton />', () => {
     expect(onSignInFailureSpy).toHaveBeenCalledWith({
       isSuccess: false,
       content: { code: 'NETWORK_REQUEST_FAILED', general: [] },
+      provider: 'google',
     })
   })
 
@@ -128,7 +132,7 @@ describe('<SSOButton />', () => {
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
     })
-    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
+    mockServer.getApi<UserProfile>('/v1/me', beneficiaryUser)
 
     renderSSOButton()
 
@@ -143,7 +147,7 @@ describe('<SSOButton />', () => {
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
     })
-    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
+    mockServer.getApi<UserProfile>('/v1/me', beneficiaryUser)
 
     renderSSOButton('login')
 

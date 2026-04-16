@@ -1,30 +1,28 @@
-import React, { FC } from 'react'
-import { Platform } from 'react-native'
+import { useRoute } from '@react-navigation/native'
+import React from 'react'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { Button } from 'ui/designSystem/Button/Button'
-import { Apple } from 'ui/svg/icons/socialNetwork/Apple'
+import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
+import { SignInResponseFailure } from 'features/auth/types'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
+
+import { SSOButtonAppleBase } from './SSOButtonAppleBase'
 
 type Props = {
   type: 'signup' | 'login'
+  onSignInFailure?: (error: SignInResponseFailure) => void
+  doNotNavigateOnSigninSuccess?: boolean
 }
 
-export const SSOButtonApple: FC<Props> = ({ type }) => {
-  if (Platform.OS === 'android') return null
+export const SSOButtonApple = ({ type, onSignInFailure, doNotNavigateOnSigninSuccess }: Props) => {
+  const { params } = useRoute<UseRouteType<'SignupForm'>>()
+  const isSignupButton = type === 'signup'
+  const { mutate: signIn } = useSignInMutation({
+    params,
+    doNotNavigateOnSigninSuccess,
+    onFailure: (error) => onSignInFailure?.(error),
+    analyticsType: isSignupButton ? 'SSO_signup' : 'SSO_login',
+    analyticsMethod: isSignupButton ? 'fromSignup' : 'fromLogin',
+  })
 
-  const wording = `${type === 'login' ? 'Se connecter' : 'S\u2019inscrire'} avec Apple`
-
-  return (
-    <Button
-      accessibilityRole={AccessibilityRole.BUTTON}
-      wording={wording}
-      icon={Apple}
-      // TODO(PC-39896): implement Apple SSO sign-in handler
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onPress={() => {}}
-      variant="primary"
-      fullWidth
-      color="neutral"
-    />
-  )
+  return <SSOButtonAppleBase type={type} onSuccess={signIn} params={params} />
 }

@@ -40,7 +40,7 @@ import {
 import { freeOfferIdActions } from 'features/offer/store/freeOfferIdStore'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { Subcategory } from 'libs/subcategories/types'
 import { useBookingsQuery, useEndedBookingFromOfferIdQuery } from 'queries/bookings'
@@ -59,12 +59,12 @@ type UseGetCtaWordingAndActionProps = {
 
 const getIsBookedOffer = (
   offerId: FavoriteOfferResponse['id'],
-  bookedOffersIds: UserProfileResponseWithoutSurvey['bookedOffers'] = {}
+  bookedOffersIds: UserProfile['bookedOffers'] = {}
 ): boolean => bookedOffersIds[offerId] !== undefined
 
 type Props = {
   isLoggedIn: boolean
-  user?: UserProfileResponseWithoutSurvey
+  user?: UserProfile
   userStatus: YoungStatusResponse
   isBeneficiary: boolean
   offer: OfferResponse
@@ -97,7 +97,6 @@ export type ICTAWordingAndAction = {
   movieScreeningUserData?: MovieScreeningUserData
 }
 
-// Follow logic of https://www.notion.so/Modalit-s-d-affichage-du-CTA-de-r-servation-dbd30de46c674f3f9ca9f37ce8333241
 export const getCtaWordingAndAction = ({
   isLoggedIn,
   user,

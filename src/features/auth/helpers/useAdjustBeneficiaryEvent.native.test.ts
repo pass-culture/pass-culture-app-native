@@ -3,7 +3,7 @@ import mockdate from 'mockdate'
 
 import { CURRENT_DATE, SIXTEEN_AGE_DATE, EIGHTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { useAdjustBeneficiaryEvent } from 'features/auth/helpers/useAdjustBeneficiaryEvent'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { Adjust } from 'libs/adjust/adjust'
 import { AdjustEvents } from 'libs/adjust/adjustEvents'
@@ -203,11 +203,8 @@ describe('useAdjustBeneficiaryEvent', () => {
   })
 })
 
-const renderUseAdjustBeneficiaryEvent = (initialUser: UserProfileResponseWithoutSurvey) => {
-  return renderHook(
-    ({ user }: { user: UserProfileResponseWithoutSurvey }) => useAdjustBeneficiaryEvent(user),
-    {
-      initialProps: { user: initialUser },
-    }
-  )
+const renderUseAdjustBeneficiaryEvent = (initialUser: UserProfile) => {
+  return renderHook(({ user }: { user: UserProfile }) => useAdjustBeneficiaryEvent(user), {
+    initialProps: { user: initialUser },
+  })
 }

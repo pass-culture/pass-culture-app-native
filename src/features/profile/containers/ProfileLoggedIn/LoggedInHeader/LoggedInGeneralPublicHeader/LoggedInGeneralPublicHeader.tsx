@@ -3,11 +3,11 @@ import React from 'react'
 import { GeneralPublicBanner } from 'features/profile/components/Banners/GeneralPublicBanner/GeneralPublicBanner'
 import { getProfileHeaderTitle } from 'features/profile/helpers/getProfileHeaderTitle'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
-type Props = { user: UserProfileResponseWithoutSurvey } & ProfileFeatureFlagsProps
+type Props = { user: UserProfile } & ProfileFeatureFlagsProps
 
 export const LoggedInGeneralPublicHeader = ({ user, featureFlags }: Props) => {
   const { firstName, lastName } = user

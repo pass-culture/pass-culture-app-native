@@ -5,7 +5,7 @@ import { BookingsListResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
 import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
 import { endedBookingsV2ListSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useGoBack from 'features/navigation/useGoBack'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -54,7 +54,7 @@ jest.useFakeTimers()
 describe('EndedBookings', () => {
   beforeEach(() => {
     setFeatureFlags()
-    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
+    mockServer.getApi<UserProfile>('/v1/me', beneficiaryUser)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockServer.getApi('/v1/reaction/available', availableReactionsSnap)
   })

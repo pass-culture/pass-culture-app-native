@@ -6,10 +6,10 @@ import { LoggedOutButton } from 'features/profile/components/Buttons/LoggedOutBu
 import { LoggedInContent } from 'features/profile/containers/ProfileLoggedIn/LoggedInContent/LoggedInContent'
 import { LoggedInHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInHeader'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { Separator } from 'ui/components/Separator'
 
-type Props = { user: UserProfileResponseWithoutSurvey } & ProfileFeatureFlagsProps
+type Props = { user: UserProfile } & ProfileFeatureFlagsProps
 
 export const ProfileLoggedIn: React.FC<Props> = ({ featureFlags, user }) => {
   const signOut = useLogoutRoutine()

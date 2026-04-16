@@ -13,7 +13,7 @@ import {
 } from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { favoriteResponseSnap as favorite } from 'features/favorites/fixtures/favoriteResponseSnap'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -28,14 +28,14 @@ import { Favorite } from './Favorite'
 
 const credit: Credit = { amount: 100, isExpired: false }
 
-const userProfile: UserProfileResponseWithoutSurvey = {
+const userProfile: UserProfile = {
   isBeneficiary: true,
   bookedOffers: {},
   domainsCredit: { [ExpenseDomain.all]: { initial: 500, remaining: 300 } },
   status: {
     statusType: YoungStatusType.beneficiary,
   },
-} as UserProfileResponseWithoutSurvey
+} as UserProfile
 const onInAppBooking = jest.fn()
 
 const mockFavoritesState = initialFavoritesState
@@ -242,7 +242,7 @@ const DEFAULT_PROPS = {
 
 type RenderFavoriteParams = {
   favorite?: FavoriteResponse
-  user?: UserProfileResponseWithoutSurvey
+  user?: UserProfile
 }
 
 function renderFavorite(props: RenderFavoriteParams = DEFAULT_PROPS) {

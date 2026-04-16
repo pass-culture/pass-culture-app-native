@@ -4,9 +4,9 @@ import { View } from 'react-native'
 import { LoggedOutContent } from 'features/profile/containers/ProfileLoggedOut/LoggedOutContent/LoggedOutContent'
 import { LoggedOutHeader } from 'features/profile/containers/ProfileLoggedOut/LoggedOutHeader/LoggedOutHeader'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 
-type Props = { user?: UserProfileResponseWithoutSurvey } & ProfileFeatureFlagsProps
+type Props = { user?: UserProfile } & ProfileFeatureFlagsProps
 
 export const ProfileLoggedOut = ({ featureFlags, user }: Props) => (
   <View testID="profile-logged-out">

@@ -9,11 +9,11 @@ import { CreditHeader } from 'features/profile/components/Header/CreditHeader/Cr
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { LoggedOutHeader } from 'features/profile/containers/ProfileLoggedOut/LoggedOutHeader/LoggedOutHeader'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 import { getAge } from 'shared/user/getAge'
 
 type ProfileHeaderProps = {
-  user?: UserProfileResponseWithoutSurvey
+  user?: UserProfile
 } & ProfileFeatureFlagsProps
 
 export function ProfileHeader(props: ProfileHeaderProps) {

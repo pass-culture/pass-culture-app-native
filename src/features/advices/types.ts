@@ -26,6 +26,7 @@ export type AdviceVariantInfo = {
   modalWording: string
   SmallIcon?: React.ReactNode
   tag?: React.ReactNode
+  sectionTag?: React.ReactNode
   buttonWording: string
 }
 

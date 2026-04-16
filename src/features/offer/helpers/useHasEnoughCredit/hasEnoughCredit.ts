@@ -1,10 +1,10 @@
 import { FavoriteOfferResponse, OfferResponse } from 'api/gen'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { UserProfile } from 'features/share/types'
 
 export const hasEnoughCredit = (
   domains: OfferResponse['expenseDomains'] | FavoriteOfferResponse['expenseDomains'],
   price: number | FavoriteOfferResponse['price'] | FavoriteOfferResponse['startPrice'],
-  domainsCredit: UserProfileResponseWithoutSurvey['domainsCredit']
+  domainsCredit: UserProfile['domainsCredit']
 ): boolean => {
   if (!price) return true
   if (!domainsCredit) return false
