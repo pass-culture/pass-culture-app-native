@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate, replace, useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
@@ -74,7 +74,7 @@ describe('ChangeCity', () => {
       await user.press(await screen.findByText(city.nom))
       await user.press(await screen.findByText('Valider ma ville de résidence'))
 
-      expect(replace).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
+      expect(navigate).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
         params: undefined,
         screen: 'PersonalData',
       })
