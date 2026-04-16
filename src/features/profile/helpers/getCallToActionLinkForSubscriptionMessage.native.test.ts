@@ -1,6 +1,6 @@
 import { openInbox } from 'react-native-email-link'
 
-import { CallToActionIcon, SubscriptionMessage } from 'api/gen'
+import { CallToActionIcon, SubscriptionMessageV2 } from 'api/gen'
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/helpers/matchSubscriptionMessageIconToSvg'
 import { shouldOpenInbox } from 'features/profile/helpers/shouldOpenInbox'
 
@@ -23,7 +23,7 @@ describe('getCallToActionLinkForSubscriptionMessage', () => {
   })
 
   it('returns empty array if callToAction is missing', () => {
-    const subscriptionMessage = {} as SubscriptionMessage
+    const subscriptionMessage = {} as SubscriptionMessageV2
 
     const result = getCallToActionLinkForSubscriptionMessage(subscriptionMessage, true)
 
