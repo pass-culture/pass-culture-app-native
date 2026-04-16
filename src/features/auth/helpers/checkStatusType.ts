@@ -17,3 +17,20 @@ export const isCurrentlyBeneficiary = (user?: UserProfile) => {
     user.statusType === UserStatusType.ELIGIBLE_AND_BENEFICIARY
   )
 }
+
+export const isEligible = (user?: UserProfile) => {
+  if (!user) return false
+  return (
+    user?.statusType === UserStatusType.ELIGIBLE ||
+    user?.statusType === UserStatusType.ELIGIBLE_AND_BENEFICIARY
+  )
+}
+
+export const isNonEligible = (user?: UserProfile) => {
+  if (!user) return false
+  return (
+    user?.statusType === UserStatusType.GENERAL_PUBLIC ||
+    user?.statusType === UserStatusType.UNKNOWN ||
+    user?.statusType === UserStatusType.SUSPENDED
+  )
+}

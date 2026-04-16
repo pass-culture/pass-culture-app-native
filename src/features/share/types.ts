@@ -1,4 +1,4 @@
-import { UserProfileResponse } from 'api/gen'
+import { SubscriptionStatus, UserProfileResponse } from 'api/gen'
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
@@ -22,6 +22,7 @@ export type UserProfile = Omit<
   UserProfileResponse,
   'needsToFillCulturalSurvey' | 'depositType' | 'isBeneficiary'
 > & {
+  subscriptionStatus?: SubscriptionStatus | null
   statusType: UserStatusType
   creditType: UserCreditType
   eligibilityType: UserEligibilityType
