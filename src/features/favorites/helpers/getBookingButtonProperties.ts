@@ -1,4 +1,5 @@
 import { FavoriteOfferResponse, YoungStatusType } from 'api/gen'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { getBeneficiaryBookingButtonProps } from 'features/favorites/helpers/getBeneficiaryBookingButtonProps'
 import { getEligibleBookingButtonProps } from 'features/favorites/helpers/getEligibleBookingButtonProps'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
@@ -51,8 +52,7 @@ export const getBookingButtonProperties = (
     return getEligibleBookingButtonProps(userStatus, props.offer.id)
   }
 
-  const isExBeneficiary = !props.user.isBeneficiary
-  if (isExBeneficiary) {
+  if (props.user.statusType === UserStatusType.EX_BENEFICIARY) {
     if (!props.offer.isReleased || props.offer.isExpired || props.offer.isSoldOut) {
       return
     }
