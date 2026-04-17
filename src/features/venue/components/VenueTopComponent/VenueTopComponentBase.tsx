@@ -85,7 +85,9 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   const onPressVolunteeringCard = async () => {
     if (venue.volunteeringUrl) {
       await analytics.logClickVolunteerCTA({ from: 'venue', venueId: venue.id.toString() })
-      await openUrl(venue.volunteeringUrl)
+      await openUrl(
+        `${venue.volunteeringUrl}?utm_source=pass-culture&utm_medium=app&utm_campaign=orga_non_inscrite`
+      )
     }
   }
 

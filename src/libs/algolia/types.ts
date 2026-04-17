@@ -39,6 +39,7 @@ export type HitOffer = {
   chroniclesCount?: number
   headlineCount?: number
   tags?: string[]
+  proAdvicesCount?: number
 }
 
 export type AlgoliaOfferWithArtistAndEan = AlgoliaOffer<

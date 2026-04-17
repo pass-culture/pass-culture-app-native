@@ -25,7 +25,7 @@ export const useSubmitChangeCity = () => {
   const { setCity } = cityActions
   const { resetAddress } = addressActions
 
-  const { navigate, replace } = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'ChangeCity'>>()
   const type = params?.type
 
@@ -48,7 +48,7 @@ export const useSubmitChangeCity = () => {
       if (isFromProfileUpdateFlow) {
         navigate(...getProfileHookConfig('ChangeAddress', { type }))
       } else {
-        replace(...getProfileHookConfig('PersonalData'))
+        navigate(...getProfileHookConfig('PersonalData'))
         showSuccessSnackBar('Ta ville de résidence a bien été modifiée\u00a0!')
       }
 

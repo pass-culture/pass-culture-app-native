@@ -58,10 +58,11 @@ export const OfferPlaylistItem = ({
     const tag = renderInteractionTag({
       theme,
       likesCount: item.offer.likes,
-      advicesCount: item.offer.chroniclesCount,
+      clubAdvicesCount: item.offer.chroniclesCount,
       hasSmallLayout,
       isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
       subcategoryId: item.offer.subcategoryId,
+      proAdvicesCount: item.offer.proAdvicesCount,
     })
     return (
       <OfferTile

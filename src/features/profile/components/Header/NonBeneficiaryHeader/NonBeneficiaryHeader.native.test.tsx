@@ -4,7 +4,7 @@ import React from 'react'
 import {
   BannerName,
   BannerResponse,
-  SubscriptionMessage,
+  SubscriptionMessageV2,
   SubscriptionStepperResponseV2,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -31,7 +31,7 @@ const mockedSubscriptionMessage = {
   popOverIcon: 'FILE',
   updatedAt: '2021-10-25T13:24Z',
   userMessage: 'Dossier déposé, nous sommes en train de le traiter',
-} as SubscriptionMessage
+} as SubscriptionMessageV2
 
 const today = '2021-03-30T00:00:00Z'
 mockdate.set(new Date(today))

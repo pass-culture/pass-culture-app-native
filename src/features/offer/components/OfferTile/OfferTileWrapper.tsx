@@ -51,10 +51,11 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
   const tag = renderInteractionTag({
     theme,
     likesCount: likes,
-    advicesCount: chroniclesCount,
+    clubAdvicesCount: chroniclesCount,
     hasSmallLayout,
     isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
     subcategoryId: item.offer.subcategoryId,
+    proAdvicesCount: item.offer.proAdvicesCount,
   })
 
   return (

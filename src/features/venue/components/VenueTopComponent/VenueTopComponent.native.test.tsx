@@ -196,7 +196,9 @@ describe('<VenueTopComponent />', () => {
 
       await user.press(screen.getByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`))
 
-      expect(mockOpenUrl).toHaveBeenCalledWith('url')
+      expect(mockOpenUrl).toHaveBeenCalledWith(
+        'url?utm_source=pass-culture&utm_medium=app&utm_campaign=orga_non_inscrite'
+      )
     })
 
     it('should trigger ClickVolunteerCTA log when venue has volunteering url and pressing volunteer card', async () => {
