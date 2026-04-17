@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`<VerticalPlaylistPage /> should render correctly 1`] = `
+exports[`<VerticalPlaylistOffersPage /> should render correctly 1`] = `
 <View
   isLandscape={false}
   style={
@@ -206,14 +206,14 @@ exports[`<VerticalPlaylistPage /> should render correctly 1`] = `
         <Styled(Text)
           accessibilityRole="header"
         >
-          Module title
+          My title
         </Styled(Text)>
         <Styled(Styled(Text))>
-          Module subtitle
+          My subtitle
         </Styled(Styled(Text))>
         <Styled(View)>
           <Styled(View)>
-            <NumberOfResults
+            <NumberOfOffers
               nbHits={3}
             />
           </Styled(View)>
@@ -384,7 +384,7 @@ exports[`<VerticalPlaylistPage /> should render correctly 1`] = `
             }
           }
         >
-          Module title
+          My title
         </Text>
         <Text
           style={
@@ -397,12 +397,11 @@ exports[`<VerticalPlaylistPage /> should render correctly 1`] = `
             }
           }
         >
-          Module subtitle
+          My subtitle
         </Text>
         <View
           style={
             {
-              "alignItems": "center",
               "flexDirection": "row",
               "justifyContent": "space-between",
               "marginBottom": 12,
@@ -416,6 +415,7 @@ exports[`<VerticalPlaylistPage /> should render correctly 1`] = `
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
+                "justifyContent": "center",
               }
             }
           >
@@ -438,7 +438,7 @@ exports[`<VerticalPlaylistPage /> should render correctly 1`] = `
                   }
                 }
               >
-                3 résultats
+                3 offres
               </Text>
             </View>
           </View>

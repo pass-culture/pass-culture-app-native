@@ -59,7 +59,8 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
 
   const searchParams = { hitsPerPage: 20 }
   const searchTabConfig = getSearchPropConfig('SearchResults', searchParams)
-  const onBeforeNavigate = () => analytics.logClickSeeAll({ type: 'offers', moduleName, moduleId })
+  const onBeforeNavigate = () =>
+    analytics.logClickSeeAll({ type: 'offers', moduleName, moduleId, from: 'home' })
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {

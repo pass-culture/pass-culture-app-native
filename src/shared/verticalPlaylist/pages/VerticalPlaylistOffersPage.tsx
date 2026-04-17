@@ -1,15 +1,13 @@
-import { useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
-import { useWindowDimensions, FlatList, Platform } from 'react-native'
+import { FlatList, Platform, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { Referrals } from 'features/navigation/RootNavigator/types'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
-import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
+import { NumberOfOffers } from 'features/search/components/NumberOfOffers/NumberOfOffers'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
-import { gridListLayoutActions, useGridListLayout } from 'features/search/store/gridListLayoutStore'
+import { useGridListLayout, gridListLayoutActions } from 'features/search/store/gridListLayoutStore'
 import { GridListLayout } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
@@ -20,30 +18,40 @@ import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWi
 import { LineSeparator } from 'ui/components/LineSeparator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Page } from 'ui/pages/Page'
-import { RATIO_HOME_IMAGE, Typo, Spacer } from 'ui/theme'
+import { RATIO_HOME_IMAGE, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const isWeb = Platform.OS === 'web'
 const numColumns = 2
 
-export const VerticalPlaylistPage = () => {
+type Props = {
+  title: string
+  subtitle?: string
+  items: Offer[]
+  searchId?: string
+  searchQuery: string
+  analyticsFrom: Referrals
+}
+
+export const VerticalPlaylistOffersPage = ({
+  title,
+  subtitle,
+  items,
+  searchId,
+  searchQuery,
+  analyticsFrom,
+}: Props) => {
   const headerHeight = useGetHeaderHeight()
+  const { width } = useWindowDimensions()
   const { searchState } = useSearch()
   const { designSystem, breakpoints, contentPage, isMobileViewport } = useTheme()
-  const { width } = useWindowDimensions()
-  const { params } = useRoute<UseRouteType<'VerticalPlaylistPage'>>()
-  const { module } = params
 
-  const playlistTitle = module.displayParameters?.title
-  const playlistSubtitle = module.displayParameters?.subtitle
-
-  const items = (useGetOffersDataQuery([module])[0]?.playlistItems ?? []) as Offer[]
-
-  const nbHits = items.length
   const selectedGridListLayout = useGridListLayout()
 
   const canUseGrid = isMobileViewport && !isWeb
   const isGridLayout = canUseGrid && selectedGridListLayout === GridListLayout.GRID
+
+  const nbHits = items.length
 
   const onGridListButtonPress = (layout: GridListLayout) => {
     if (!canUseGrid) return
@@ -69,52 +77,55 @@ export const VerticalPlaylistPage = () => {
       isGridLayout ? (
         <OfferTileWrapper
           item={item}
-          analyticsFrom="verticalplaylistpage"
+          analyticsFrom={analyticsFrom}
           height={tileWidth / RATIO_HOME_IMAGE}
           width={tileWidth}
-          searchId={searchState.searchId}
+          searchId={searchId}
           containerWidth={width / nbrOfTilesToDisplay - contentPage.marginHorizontal}
         />
       ) : (
         <HorizontalOfferTile
           offer={item}
           analyticsParams={{
-            query: searchState.query,
+            query: searchQuery ?? searchState.query,
             index,
-            searchId: searchState.searchId,
-            from: 'verticalplaylistpage',
+            searchId,
+            from: analyticsFrom,
           }}
         />
       ),
     [
       isGridLayout,
       tileWidth,
-      searchState.searchId,
-      searchState.query,
       width,
       nbrOfTilesToDisplay,
       contentPage.marginHorizontal,
+      searchId,
+      searchQuery,
+      searchState.query,
+      analyticsFrom,
     ]
   )
 
   return (
     <Page>
       <PageHeaderWithoutPlaceholder />
+
       <FlatList
         data={items}
         keyExtractor={(item) => item.objectID}
-        key={isGridLayout ? 'grid_playlist' : 'list_playlist'}
+        key={isGridLayout ? 'grid' : 'list'}
         renderItem={renderItem}
         numColumns={isGridLayout ? numColumns : undefined}
         ItemSeparatorComponent={isGridLayout ? GridSeparator : LineSeparator}
         ListHeaderComponent={
           <React.Fragment>
             <Placeholder height={headerHeight} />
-            <Typo.Title2 {...getHeadingAttrs(1)}>{playlistTitle}</Typo.Title2>
-            {playlistSubtitle ? <StyledSubtitle>{playlistSubtitle}</StyledSubtitle> : null}
-            <HeaderSectionContainer>
+            <Typo.Title2 {...getHeadingAttrs(1)}>{title}</Typo.Title2>
+            {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
+            <HeaderRow>
               <TitleContainer>
-                <NumberOfResults nbHits={nbHits} />
+                <NumberOfOffers nbHits={nbHits} />
               </TitleContainer>
               {canUseGrid ? (
                 <GridListMenu>
@@ -122,7 +133,7 @@ export const VerticalPlaylistPage = () => {
                   <GridLayoutButton {...getLayoutButtonProps(GridListLayout.GRID)} />
                 </GridListMenu>
               ) : null}
-            </HeaderSectionContainer>
+            </HeaderRow>
           </React.Fragment>
         }
         ListFooterComponent={<Spacer.BottomScreen />}
@@ -135,27 +146,22 @@ export const VerticalPlaylistPage = () => {
   )
 }
 
+const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.m,
+  color: theme.designSystem.color.text.subtle,
+}))
+
+const HeaderRow = styled.View(({ theme }) => ({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.m,
+}))
+
 const GridListMenu = styled.View(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'flex-end',
   marginBottom: theme.designSystem.size.spacing.m,
-}))
-
-const HeaderSectionContainer = styled.View(({ theme }) => ({
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  marginBottom: theme.designSystem.size.spacing.m,
-  marginTop: theme.designSystem.size.spacing.l,
-}))
-
-const TitleContainer = styled.View({
-  flex: 1,
-})
-
-const StyledSubtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.m,
-  color: theme.designSystem.color.text.subtle,
 }))
 
 const GridSeparator = styled.View(({ theme }) => ({
@@ -165,3 +171,8 @@ const GridSeparator = styled.View(({ theme }) => ({
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
 }))
+
+const TitleContainer = styled.View({
+  flex: 1,
+  justifyContent: 'center',
+})

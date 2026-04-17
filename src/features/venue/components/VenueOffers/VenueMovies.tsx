@@ -9,6 +9,7 @@ import { MoviesScreeningCalendar } from 'features/offer/components/MoviesScreeni
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { VenueOffers } from 'features/venue/types'
+import { analytics } from 'libs/analytics/provider'
 import { Offer } from 'shared/offer/types'
 import { Anchor } from 'ui/components/anchor/Anchor'
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
@@ -19,6 +20,7 @@ import { LENGTH_M, RATIO_HOME_IMAGE, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const cinemaCTAButtonName = 'Accéder aux séances'
+const playlistTitle = 'Les autres offres'
 
 const keyExtractor = (item: Offer) => item.objectID
 
@@ -43,6 +45,19 @@ export const VenueMovies: React.FC<{
     (offer) => offer.offer.subcategoryId !== SubcategoryIdEnum.SEANCE_CINE
   )
 
+  const navigateToVerticalPlaylist = {
+    screen: 'VerticalPlaylistOffersFromVenue' as const,
+    params: { venueId: venueOffers.hits[0]?.venue?.id, playlistTitle: playlistTitle },
+  }
+
+  const onBeforeNavigate = () =>
+    analytics.logClickSeeAll({
+      type: 'offers',
+      moduleName: playlistTitle,
+      moduleId: nonMovieScreeningOffers?.[0]?.objectID,
+      from: 'venue',
+    })
+
   return (
     <Container>
       <Anchor name={AnchorNames.VENUE_CINE_AVAILABILITIES}>
@@ -60,7 +75,7 @@ export const VenueMovies: React.FC<{
           <PassPlaylistContainer>
             <PassPlaylist
               testID="offersModuleList"
-              title="Les autres offres"
+              title={playlistTitle}
               data={nonMovieScreeningOffers}
               itemHeight={LENGTH_M}
               itemWidth={LENGTH_M * RATIO_HOME_IMAGE}
@@ -76,6 +91,7 @@ export const VenueMovies: React.FC<{
                 />
               )}
               keyExtractor={keyExtractor}
+              seeAllButton={{ navigateToVerticalPlaylist, onBeforeNavigate }}
             />
           </PassPlaylistContainer>
         </SectionWithDivider>
