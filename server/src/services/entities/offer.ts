@@ -77,4 +77,5 @@ export const OFFER: EntityType<OfferData> = {
       return `${DEEPLINK_PROTOCOL}${href}${subPath}`
     },
   },
+  PATH: 'native/v3/offer',
 }

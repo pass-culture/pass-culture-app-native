@@ -68,4 +68,5 @@ export const VENUE: EntityType<VenueData> = {
       return `${DEEPLINK_PROTOCOL}${href}${subPath}`
     },
   },
+  PATH: 'native/v2/venue',
 }
