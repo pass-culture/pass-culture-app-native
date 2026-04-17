@@ -1,6 +1,7 @@
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
+import { UserProfile } from 'features/share/types'
 
 const activationFlowByEligibility: Partial<
   Record<UserEligibilityType, ReadonlyArray<UserCreditType>>
@@ -44,15 +45,9 @@ const statusAllowedForEmptyCredit = new Set<UserStatusType>([
   UserStatusType.ELIGIBLE_AND_BENEFICIARY,
 ])
 
-export const getShouldDisplayActivationFlow = ({
-  eligibilityType,
-  creditType,
-  statusType,
-}: {
-  eligibilityType: UserEligibilityType
-  creditType: UserCreditType
-  statusType?: UserStatusType
-}) => {
+export const getShouldDisplayActivationFlow = (user?: UserProfile | undefined) => {
+  if (!user) return false
+  const { creditType, statusType, eligibilityType } = user
   if (creditType === UserCreditType.CREDIT_EMPTY) {
     return statusType ? statusAllowedForEmptyCredit.has(statusType) : false
   }

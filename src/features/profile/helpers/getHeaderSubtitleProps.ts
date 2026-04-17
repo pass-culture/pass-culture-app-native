@@ -1,4 +1,5 @@
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
+import { getIsUserEligible } from 'features/auth/helpers/getIsUserEligible'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
 
@@ -22,9 +23,7 @@ export const getHeaderSubtitleProps = ({
   eligibilityType,
   statusType,
 }: Props): Output => {
-  const isUserFreeStatus =
-    eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_16 ||
-    eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_15
+  const isUserFreeStatus = getIsUserEligible(eligibilityType)
   const getCreditEmptySubtitle = () => {
     if (isUserFreeStatus) return undefined
     return statusType === UserStatusType.EX_BENEFICIARY

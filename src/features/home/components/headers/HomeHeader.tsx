@@ -7,7 +7,7 @@ import {
   isCurrentBeneficiary,
 } from 'features/auth/helpers/checkStatusType'
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
-import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
+import { getIsUserEligible } from 'features/auth/helpers/getIsUserEligible'
 import { getShouldDisplayActivationFlow } from 'features/auth/helpers/getShouldDisplayActivationFlow'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
@@ -34,12 +34,7 @@ export const HomeHeader: FunctionComponent = function () {
     const welcomeTitle =
       user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
 
-    const shouldDisplayActivationFlow =
-      user &&
-      getShouldDisplayActivationFlow({
-        eligibilityType: user?.eligibilityType,
-        creditType: user?.creditType,
-      })
+    const shouldDisplayActivationFlow = user && getShouldDisplayActivationFlow(user)
 
     const getSubtitle = () => {
       const shouldSeeDefaultSubtitle =
@@ -48,8 +43,7 @@ export const HomeHeader: FunctionComponent = function () {
         !isCurrentOrFormerBeneficiary(user) ||
         user?.creditType === UserCreditType.CREDIT_V3_15 ||
         user?.creditType === UserCreditType.CREDIT_V3_16 ||
-        user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_16 ||
-        user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_15 ||
+        getIsUserEligible(user?.eligibilityType) ||
         (!isCurrentBeneficiary(user) && shouldDisplayActivationFlow)
       if (shouldSeeDefaultSubtitle) return 'Toute la culture à portée de main'
 

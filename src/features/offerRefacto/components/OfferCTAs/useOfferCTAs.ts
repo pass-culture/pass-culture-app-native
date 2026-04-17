@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components/native'
 
 import { BookOfferResponse, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
+import { getIsUserEligible } from 'features/auth/helpers/getIsUserEligible'
 import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
 import { useStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
 import { openUrl } from 'features/navigation/helpers/openUrl'
@@ -190,9 +190,7 @@ export const useOfferCTAs = ({
 
   // 6. Effects
   useEffect(() => {
-    const isUserFreeStatus =
-      user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_16 ||
-      user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_15
+    const isUserFreeStatus = getIsUserEligible(user?.eligibilityType)
     const isProfileIncomplete = getIsProfileIncomplete(user)
     const isEligibleFreeOffer15To16 = enableBookingFreeOfferFifteenSixteen && isUserFreeStatus
 

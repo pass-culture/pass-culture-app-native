@@ -23,13 +23,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
   const { isLoggedIn } = useAuthContext()
 
   const ProfileHeader = useMemo(() => {
-    const shouldDisplayActivationFlow =
-      user &&
-      getShouldDisplayActivationFlow({
-        eligibilityType: user?.eligibilityType,
-        creditType: user?.creditType,
-      })
-
+    const shouldDisplayActivationFlow = getShouldDisplayActivationFlow(user)
     if (!isLoggedIn || !user) {
       return <LoggedOutHeader featureFlags={featureFlags} />
     }
