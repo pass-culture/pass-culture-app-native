@@ -35,28 +35,18 @@ export const TicketBottomPart = ({
   onBeforeNavigate,
 }: TicketBottomPartProps) => {
   switch (ticket.display) {
-    // Ticket sent by email
-    case TicketDisplayEnum.email_sent:
+    case TicketDisplayEnum.email_sent: // Ticket sent by email
+    case TicketDisplayEnum.email_will_be_sent: // Ticket to be sent by email with a sending delay
       return (
         <EmailWithdrawal
           isDuo={isDuo}
           withdrawalDelay={ticket.withdrawal.delay}
-          hasEmailBeenSent
+          hasEmailBeenSent={ticket.display === TicketDisplayEnum.email_sent}
           userEmail={userEmail}
         />
       )
-    // Ticket to be sent by email with a sending delay
-    case TicketDisplayEnum.email_will_be_sent:
-      return (
-        <EmailWithdrawal
-          isDuo={isDuo}
-          withdrawalDelay={ticket.withdrawal.delay}
-          hasEmailBeenSent={false}
-          userEmail={userEmail}
-        />
-      )
-    // Online activation link with or without activation code
-    case TicketDisplayEnum.online_code:
+
+    case TicketDisplayEnum.online_code: // Online activation link with or without activation code
       return (
         <DigitalTicket
           code={ticket.activationCode?.code ?? ticket.token?.data ?? ''}
@@ -66,16 +56,16 @@ export const TicketBottomPart = ({
           onBeforeNavigate={onBeforeNavigate}
         />
       )
-    // External ticket with visible or hidden QR code
-    case TicketDisplayEnum.external_ticket:
+
+    case TicketDisplayEnum.external_ticket: // External ticket with visible or hidden QR code
       return (
         <ExternalBookingTicket data={ticket.externalBooking?.data ?? undefined} isDuo={isDuo} />
       )
-    // External ticket with hidden QR code
-    case TicketDisplayEnum.hidden_external_ticket:
+
+    case TicketDisplayEnum.hidden_external_ticket: // External ticket with hidden QR code
       return <HiddenExternalBookingTicket beginningDatetime={beginningDateTime} isDuo={isDuo} />
-    // Voucher for a physical good
-    case TicketDisplayEnum.voucher:
+
+    case TicketDisplayEnum.voucher: // Voucher for a physical good
       return (
         <PhysicalGoodBookingTicket
           voucherData={ticket.voucher?.data ?? ''}
@@ -83,19 +73,19 @@ export const TicketBottomPart = ({
           expirationDate={expirationDate}
         />
       )
-    // Voucher for a cinema ticket
-    case TicketDisplayEnum.cinema_voucher:
+
+    case TicketDisplayEnum.cinema_voucher: // Voucher for a cinema ticket
       return (
         <CinemaBookingTicket
           voucher={ticket.voucher?.data ?? ''}
           token={ticket.token?.data ?? undefined}
         />
       )
-    // On-site withdrawal for a physical event ticket
-    case TicketDisplayEnum.ticket:
+
+    case TicketDisplayEnum.ticket: // On-site withdrawal for a physical event ticket
       return <OnSiteWithdrawal token={ticket.token?.data ?? ''} isDuo={isDuo} />
-    // No ticket required to access the event (Live Music only)
-    case TicketDisplayEnum.no_ticket:
+
+    case TicketDisplayEnum.no_ticket: // No ticket required to access the event (Live Music only)
       return <NoTicket />
     default:
       return null
