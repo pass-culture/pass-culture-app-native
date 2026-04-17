@@ -1,5 +1,5 @@
-import { FavoriteOfferResponse, YoungStatusType } from 'api/gen'
-import { UserStatusType } from 'features/auth/helpers/getStatusType'
+import { FavoriteOfferResponse } from 'api/gen'
+import { isEligible } from 'features/auth/helpers/checkStatusType'
 import { getBeneficiaryBookingButtonProps } from 'features/favorites/helpers/getBeneficiaryBookingButtonProps'
 import { getEligibleBookingButtonProps } from 'features/favorites/helpers/getEligibleBookingButtonProps'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
@@ -47,16 +47,8 @@ export const getBookingButtonProperties = (
     onPress: () => props.onInAppBooking(props.offer),
   }
 
-  const userStatus = props.user.status
-  if (userStatus?.statusType === YoungStatusType.eligible) {
-    return getEligibleBookingButtonProps(userStatus, props.offer.id)
-  }
-
-  if (props.user.statusType === UserStatusType.EX_BENEFICIARY) {
-    if (!props.offer.isReleased || props.offer.isExpired || props.offer.isSoldOut) {
-      return
-    }
-    return getBookExternallyButtonProps(props.offer)
+  if (isEligible(props.user)) {
+    return getEligibleBookingButtonProps(props.user.subscriptionStatus, props.offer.id)
   }
 
   if (isUserExBeneficiary(props.user)) {

@@ -6,7 +6,7 @@ import DeviceInfo from 'react-native-device-info'
 import * as API from 'api/api'
 import { AccountState, OauthStateResponse, SigninResponse, UserProfileResponse } from 'api/gen'
 import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
-import { beneficiaryUser } from 'fixtures/user'
+import { beneficiaryUserFromAPI } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -64,8 +64,7 @@ describe('<SSOButtonApple />', () => {
       accountState: AccountState.ACTIVE,
     })
     mockServer.getApi<UserProfileResponse>('/v1/me', {
-      ...beneficiaryUser,
-      needsToFillCulturalSurvey: false,
+      ...beneficiaryUserFromAPI,
     } as UserProfileResponse)
 
     renderSSOButton()
@@ -134,8 +133,7 @@ describe('<SSOButtonApple />', () => {
       accountState: AccountState.ACTIVE,
     })
     mockServer.getApi<UserProfileResponse>('/v1/me', {
-      ...beneficiaryUser,
-      needsToFillCulturalSurvey: false,
+      ...beneficiaryUserFromAPI,
     } as UserProfileResponse)
 
     renderSSOButton()
@@ -152,8 +150,7 @@ describe('<SSOButtonApple />', () => {
       accountState: AccountState.ACTIVE,
     })
     mockServer.getApi<UserProfileResponse>('/v1/me', {
-      ...beneficiaryUser,
-      needsToFillCulturalSurvey: false,
+      ...beneficiaryUserFromAPI,
     } as UserProfileResponse)
 
     renderSSOButton('login')

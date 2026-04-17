@@ -1,9 +1,8 @@
-import { YoungStatusType } from 'api/gen'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import * as getBeneficiaryBookingButtonPropsAPI from 'features/favorites/helpers/getBeneficiaryBookingButtonProps'
 import { getBookingButtonProperties } from 'features/favorites/helpers/getBookingButtonProperties'
 import * as getEligibleBookingButtonPropsAPI from 'features/favorites/helpers/getEligibleBookingButtonProps'
-import { beneficiaryUser, exBeneficiaryUser, nonBeneficiaryUserV2 } from 'fixtures/user'
+import { beneficiaryUserV2, eligibleUserV2, exBeneficiaryUserV2 } from 'fixtures/user'
 import { getAvailableCredit } from 'shared/user/useAvailableCredit'
 
 const getEligibleBookingButtonPropsSpy = jest.spyOn(
@@ -21,7 +20,6 @@ const mockGetAvailableCredit = getAvailableCredit as jest.MockedFunction<typeof 
 
 const favoriteOffer = favoriteOfferResponseSnap
 const mockOnInAppBooking = jest.fn()
-const user = beneficiaryUser
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -31,7 +29,7 @@ describe('getBookingButtonProperties', () => {
       getBookingButtonProperties({
         offer: favoriteOffer,
         onInAppBooking: mockOnInAppBooking,
-        user: { ...user, status: { statusType: YoungStatusType.eligible } },
+        user: eligibleUserV2,
       })
 
       expect(getEligibleBookingButtonPropsSpy).toHaveBeenCalledTimes(1)
@@ -48,7 +46,7 @@ describe('getBookingButtonProperties', () => {
       getBookingButtonProperties({
         offer: favoriteOffer,
         onInAppBooking: mockOnInAppBooking,
-        user,
+        user: beneficiaryUserV2,
       })
 
       expect(getBeneficiaryBookingButtonPropsSpy).toHaveBeenCalledTimes(1)
@@ -65,32 +63,13 @@ describe('getBookingButtonProperties', () => {
       const buttonProps = getBookingButtonProperties({
         offer: favoriteOffer,
         onInAppBooking: mockOnInAppBooking,
-        user: { ...user, bookedOffers: { [favoriteOffer.id]: 1 } },
+        user: { ...beneficiaryUserV2, bookedOffers: { [favoriteOffer.id]: 1 } },
       })
 
       expect(buttonProps).toEqual({
         wording: 'Offre réservée',
         disabled: true,
       })
-    })
-  })
-
-  it('should return external link when offer has external url and user is ex-beneficiary', () => {
-    const buttonProps = getBookingButtonProperties({
-      offer: { ...favoriteOffer, price: 200, externalTicketOfficeUrl: 'http://toto.com' },
-      onInAppBooking: mockOnInAppBooking,
-      user: exBeneficiaryUser,
-    })
-
-    expect(buttonProps?.wording).toEqual('Réserver')
-    expect(buttonProps?.accessibilityLabel).toEqual('Réserver l’offre Spectacle de test')
-    expect(buttonProps?.externalNav).toEqual({
-      url: 'http://toto.com',
-      params: {
-        analyticsData: {
-          offerId: 10000,
-        },
-      },
     })
   })
 
@@ -103,7 +82,7 @@ describe('getBookingButtonProperties', () => {
     const buttonProps = getBookingButtonProperties({
       offer: { ...favoriteOffer, ...offerStatus },
       onInAppBooking: mockOnInAppBooking,
-      user,
+      user: beneficiaryUserV2,
     })
 
     expect(buttonProps).toBe(undefined)
@@ -113,7 +92,7 @@ describe('getBookingButtonProperties', () => {
     const buttonProps = getBookingButtonProperties({
       offer: { ...favoriteOffer, price: 0 },
       onInAppBooking: mockOnInAppBooking,
-      user,
+      user: beneficiaryUserV2,
     })
 
     expect(buttonProps?.wording).toEqual('Réserver')
@@ -125,7 +104,7 @@ describe('getBookingButtonProperties', () => {
     const buttonProps = getBookingButtonProperties({
       offer: { ...favoriteOffer, price: 200, externalTicketOfficeUrl: 'http://toto.com' },
       onInAppBooking: mockOnInAppBooking,
-      user,
+      user: beneficiaryUserV2,
     })
 
     expect(buttonProps?.wording).toEqual('Réserver')
@@ -141,7 +120,7 @@ describe('getBookingButtonProperties', () => {
   })
 })
 
-describe('when user is not beneficiary', () => {
+describe('when user is ex-beneficiary', () => {
   it.each`
     offerStatus
     ${{ isReleased: false }}
@@ -151,9 +130,28 @@ describe('when user is not beneficiary', () => {
     const buttonProps = getBookingButtonProperties({
       offer: { ...favoriteOffer, ...offerStatus },
       onInAppBooking: mockOnInAppBooking,
-      user: nonBeneficiaryUserV2,
+      user: exBeneficiaryUserV2,
     })
 
     expect(buttonProps).toBe(undefined)
+  })
+
+  it('should return external link when offer has external url and user is ex-beneficiary', () => {
+    const buttonProps = getBookingButtonProperties({
+      offer: { ...favoriteOffer, price: 200, externalTicketOfficeUrl: 'http://toto.com' },
+      onInAppBooking: mockOnInAppBooking,
+      user: exBeneficiaryUserV2,
+    })
+
+    expect(buttonProps?.wording).toEqual('Réserver')
+    expect(buttonProps?.accessibilityLabel).toEqual('Réserver l’offre Spectacle de test')
+    expect(buttonProps?.externalNav).toEqual({
+      url: 'http://toto.com',
+      params: {
+        analyticsData: {
+          offerId: 10000,
+        },
+      },
+    })
   })
 })
