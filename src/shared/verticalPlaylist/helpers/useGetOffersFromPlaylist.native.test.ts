@@ -2,7 +2,7 @@ import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQue
 import { OffersModule } from 'features/home/types'
 import { renderHook } from 'tests/utils'
 
-import { useOffersFromModulePlaylistData } from './useOffersFromModulePlaylistData'
+import { useGetOffersFromPlaylist } from './useGetOffersFromPlaylist'
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ searchState: { query: 'test-query', searchId: 'search-id' } }),
@@ -22,13 +22,13 @@ const mockModule = {
   },
 } as OffersModule
 
-describe('useOffersFromModulePlaylistData', () => {
+describe('useGetOffersFromPlaylist', () => {
   it('should return items from query', () => {
     mockUseGetOffersDataQuery.mockReturnValueOnce([
       { playlistItems: [{ objectID: '1' }, { objectID: '2' }] },
     ])
 
-    const { result } = renderHook(() => useOffersFromModulePlaylistData({ module: mockModule }))
+    const { result } = renderHook(() => useGetOffersFromPlaylist({ ...mockModule }))
 
     expect(result.current.items).toHaveLength(2)
   })
@@ -36,7 +36,7 @@ describe('useOffersFromModulePlaylistData', () => {
   it('should return correct metadata', () => {
     mockUseGetOffersDataQuery.mockReturnValueOnce([{ playlistItems: [] }])
 
-    const { result } = renderHook(() => useOffersFromModulePlaylistData({ module: mockModule }))
+    const { result } = renderHook(() => useGetOffersFromPlaylist({ ...mockModule }))
 
     expect(result.current.title).toBe('Module title')
     expect(result.current.subtitle).toBe('Module subtitle')
@@ -47,7 +47,7 @@ describe('useOffersFromModulePlaylistData', () => {
   it('should return empty items when no data', () => {
     mockUseGetOffersDataQuery.mockReturnValueOnce(undefined)
 
-    const { result } = renderHook(() => useOffersFromModulePlaylistData({ module: mockModule }))
+    const { result } = renderHook(() => useGetOffersFromPlaylist({ ...mockModule }))
 
     expect(result.current.items).toEqual([])
   })

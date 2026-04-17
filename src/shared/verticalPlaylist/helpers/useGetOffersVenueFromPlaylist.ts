@@ -6,15 +6,13 @@ import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useLocation } from 'libs/location/location'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
+import { OffersVenue, VerticalPlaylistData } from 'shared/verticalPlaylist/types'
 
-type Props = {
-  venueId: number
-  playlistTitle: string
-}
-
-export const useOffersFromVenuePlaylistData = ({ venueId, playlistTitle }: Props) => {
+export const useGetOffersVenueFromPlaylist = ({
+  venueId,
+  playlistTitle,
+}: OffersVenue): VerticalPlaylistData => {
   const { searchState } = useSearch()
-
   const { userLocation, selectedLocationMode } = useLocation()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
@@ -38,7 +36,6 @@ export const useOffersFromVenuePlaylistData = ({ venueId, playlistTitle }: Props
   return {
     items,
     title: playlistTitle,
-    subtitle: undefined,
     searchId: searchState.searchId,
     searchQuery: searchState.query,
   }

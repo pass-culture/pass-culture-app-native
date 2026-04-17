@@ -1,6 +1,6 @@
 import { renderHook } from 'tests/utils'
 
-import { useOffersFromVenuePlaylistData } from './useOffersFromVenuePlaylistData'
+import { useGetOffersVenueFromPlaylist } from './useGetOffersVenueFromPlaylist'
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ searchState: { query: 'test', searchId: 'search-id' } }),
@@ -11,10 +11,10 @@ jest.mock('queries/venue/useVenueOffersQuery')
 
 const fakeVenueId = 1234
 
-describe('useOffersFromVenuePlaylistData', () => {
+describe('useGetOffersVenueFromPlaylist', () => {
   it('should filter out SEANCE_CINE offers', () => {
     const { result } = renderHook(() =>
-      useOffersFromVenuePlaylistData({ venueId: fakeVenueId, playlistTitle: 'Playlist title' })
+      useGetOffersVenueFromPlaylist({ venueId: fakeVenueId, playlistTitle: 'Playlist title' })
     )
 
     expect(result.current.items).toHaveLength(3)
@@ -22,7 +22,7 @@ describe('useOffersFromVenuePlaylistData', () => {
 
   it('should return correct metadata', () => {
     const { result } = renderHook(() =>
-      useOffersFromVenuePlaylistData({ venueId: fakeVenueId, playlistTitle: 'Playlist title' })
+      useGetOffersVenueFromPlaylist({ venueId: fakeVenueId, playlistTitle: 'Playlist title' })
     )
 
     expect(result.current.title).toBe('Playlist title')

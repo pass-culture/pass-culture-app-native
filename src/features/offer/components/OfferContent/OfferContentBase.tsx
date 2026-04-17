@@ -38,6 +38,7 @@ import { OfferImageContainer } from 'features/offer/components/OfferImageContain
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
+import { PlaylistType } from 'features/offer/enums'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
@@ -58,6 +59,7 @@ import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMu
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { ImageWithCredit } from 'shared/types'
+import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
@@ -223,7 +225,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     onSuccess: () => {
       if (typeof offer.id === 'number' && params) {
         const { from, moduleName, moduleId, searchId, playlistType } = params
-        analytics.logHasAddedOfferToFavorites({
+        void analytics.logHasAddedOfferToFavorites({
           from: getIsAComingSoonOffer(offer.bookingAllowedDatetime) ? 'comingSoonOffer' : from,
           offerId: offer.id,
           moduleName,
@@ -353,6 +355,28 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     </OfferContentCTAs>
   )
 
+  const navigateToVerticalPlaylist = (type: PlaylistType) => ({
+    screen: 'VerticalPlaylistOffers' as const,
+    params: {
+      type: VerticalPlaylist.SimilarOffers,
+      module: { offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList, type },
+    },
+  })
+
+  const onBeforeNavigate = (type) => {
+    const moduleName =
+      type === PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS
+        ? 'Dans la même catégorie'
+        : 'Ça peut aussi te plaire'
+
+    void analytics.logClickSeeAll({
+      type: 'offers',
+      moduleName: moduleName,
+      moduleId: offer.id.toString(),
+      from: 'offer',
+    })
+  }
+
   return (
     <Container>
       <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
@@ -475,6 +499,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
             apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
             onViewableItemsChanged={handleViewableItemsChanged}
+            seeAllButton={{ navigateToVerticalPlaylist, onBeforeNavigate }}
           />
           {children}
         </IntersectionObserverScrollView>

@@ -11,7 +11,7 @@ import { useSimilarOffersQuery } from 'features/offer/queries/useSimilarOffersQu
 import { Position, useLocation } from 'libs/location/location'
 import { Offer } from 'shared/offer/types'
 
-type Props = {
+type OfferPlaylistProps = {
   offer: OfferResponse
   offerSearchGroup: SearchGroupNameEnumv2
   searchGroupList: SearchGroupResponseModelv2[]
@@ -28,7 +28,7 @@ export const useOfferPlaylist = ({
   offer,
   offerSearchGroup,
   searchGroupList,
-}: Props): UseOfferPlaylistType => {
+}: OfferPlaylistProps): UseOfferPlaylistType => {
   const { userLocation } = useLocation()
   const isFocused = useIsFocused()
 

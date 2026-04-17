@@ -29,11 +29,11 @@ type Props = {
   subtitle?: string
   items: Offer[]
   searchId?: string
-  searchQuery: string
+  searchQuery?: string
   analyticsFrom: Referrals
 }
 
-export const VerticalPlaylistOffersPage = ({
+export const VerticalPlaylistOffersView = ({
   title,
   subtitle,
   items,

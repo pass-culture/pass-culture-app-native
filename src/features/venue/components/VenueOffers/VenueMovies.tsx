@@ -11,6 +11,7 @@ import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileW
 import { VenueOffers } from 'features/venue/types'
 import { analytics } from 'libs/analytics/provider'
 import { Offer } from 'shared/offer/types'
+import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { Anchor } from 'ui/components/anchor/Anchor'
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
@@ -46,8 +47,12 @@ export const VenueMovies: React.FC<{
   )
 
   const navigateToVerticalPlaylist = {
-    screen: 'VerticalPlaylistOffersFromVenue' as const,
-    params: { venueId: venueOffers.hits[0]?.venue?.id, playlistTitle: playlistTitle },
+    screen: 'VerticalPlaylistOffers' as const,
+    params: {
+      type: VerticalPlaylist.VenueOffers,
+      venueId: venueOffers.hits[0]?.venue?.id,
+      playlistTitle: playlistTitle,
+    },
   }
 
   const onBeforeNavigate = () =>
