@@ -5,7 +5,6 @@ export interface EnvConfig {
 export interface Environment {
   __DEV__: boolean
   ENV: string
-  REGION: string
   APP_PUBLIC_URL: string
   APP_BUCKET_URL: string
   API_BASE_URL: string
