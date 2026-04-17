@@ -12,7 +12,8 @@ type InteractionTagParams = {
   theme: DefaultTheme
   subcategoryId: SubcategoryIdEnum
   likesCount?: number
-  advicesCount?: number
+  clubAdvicesCount?: number
+  proAdvicesCount?: number
   hasSmallLayout?: boolean
   isComingSoonOffer?: boolean
 }
@@ -26,7 +27,8 @@ export const renderInteractionTag = (params: InteractionTagParams): ReactNode | 
 
 export const getTagProps = ({
   likesCount = 0,
-  advicesCount = 0,
+  clubAdvicesCount = 0,
+  proAdvicesCount = 0,
   hasSmallLayout,
   isComingSoonOffer,
   subcategoryId,
@@ -39,16 +41,23 @@ export const getTagProps = ({
     }
   }
 
-  if (advicesCount > 0) {
+  if (clubAdvicesCount > 0) {
     if (isBookClubSubcategory(subcategoryId)) {
       return {
-        label: hasSmallLayout ? `${advicesCount} avis` : `${advicesCount} avis book club`,
+        label: hasSmallLayout ? `${clubAdvicesCount} avis` : `${clubAdvicesCount} avis book club`,
         variant: TagVariant.BOOKCLUB,
       }
     }
     return {
-      label: hasSmallLayout ? `${advicesCount} avis` : `${advicesCount} avis ciné club`,
+      label: hasSmallLayout ? `${clubAdvicesCount} avis` : `${clubAdvicesCount} avis ciné club`,
       variant: TagVariant.CINECLUB,
+    }
+  }
+
+  if (proAdvicesCount > 0) {
+    return {
+      label: hasSmallLayout ? `${proAdvicesCount} avis` : `${proAdvicesCount} avis des pros`,
+      variant: TagVariant.PROEDITO,
     }
   }
 
