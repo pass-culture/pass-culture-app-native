@@ -141,7 +141,6 @@ export const Ticket = ({
           isDuo={properties.isDuo ?? false}
           ticket={ticket}
           userEmail={user?.email}
-          isEvent={properties.isEvent ?? false}
           expirationDate={expirationDateFormated({ prefix: `avant le ` })}
           beginningDateTime={booking.stock.beginningDatetime ?? undefined}
           completedUrl={booking.completedUrl ?? undefined}

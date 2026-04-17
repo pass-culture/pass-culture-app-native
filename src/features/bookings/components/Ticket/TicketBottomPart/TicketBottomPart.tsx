@@ -12,7 +12,6 @@ import { UserProfile } from 'features/share/types'
 
 type TicketBottomPartProps = {
   isDuo: boolean
-  isEvent: boolean
   userEmail: UserProfile['email']
   ticket: TicketResponse
   expirationDate?: string
@@ -25,7 +24,6 @@ type TicketBottomPartProps = {
 
 export const TicketBottomPart = ({
   isDuo,
-  isEvent,
   userEmail,
   ticket,
   expirationDate,

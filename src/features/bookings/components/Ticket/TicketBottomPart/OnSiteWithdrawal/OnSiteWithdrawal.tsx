@@ -11,12 +11,10 @@ import { Typo, getSpacing } from 'ui/theme'
 export const OnSiteWithdrawal = ({
   token,
   isDuo,
-  shouldShowExchangeMessage,
   withdrawalDelay,
 }: {
   token: string
   isDuo: boolean
-  shouldShowExchangeMessage: boolean
   withdrawalDelay?: number | null
 }) => {
   const delay = withdrawalDelay ? getDelayMessage(withdrawalDelay) : null
@@ -26,9 +24,7 @@ export const OnSiteWithdrawal = ({
   return (
     <StyledViewGap gap={4} testID="on-site-withdrawal-container">
       <QRCodeContainer>
-        {shouldShowExchangeMessage ? (
-          <StyledText>{'À échanger contre le billet.'}</StyledText>
-        ) : null}
+        <StyledText>{'À échanger contre le billet.'}</StyledText>
         <QrCode qrCode={token} />
       </QRCodeContainer>
       <TicketCode code={token} text={text} />
