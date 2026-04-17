@@ -14,12 +14,7 @@ export function useOverrideCreditActivationAmount() {
   const amount = useGetDepositAmountsByAge(user?.birthDate)
 
   const nextSubscriptionStepEnable = !!subscription?.nextSubscriptionStep
-  const shouldDisplayActivationFlow =
-    user &&
-    getShouldDisplayActivationFlow({
-      eligibilityType: user?.eligibilityType,
-      creditType: user?.creditType,
-    })
+  const shouldDisplayActivationFlow = getShouldDisplayActivationFlow(user)
   const isActivationProcessEnable = nextSubscriptionStepEnable || shouldDisplayActivationFlow
 
   const isUserLocated = selectedLocationMode !== LocationMode.EVERYWHERE

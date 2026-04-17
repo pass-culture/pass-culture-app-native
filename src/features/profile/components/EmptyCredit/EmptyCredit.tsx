@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
+import { getIsUserEligible } from 'features/auth/helpers/getIsUserEligible'
 import { HighlightedBody } from 'features/profile/components/HighlightedBody/HighlightedBody'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
@@ -33,9 +34,7 @@ export const EmptyCredit = ({
 
   const ageToShowCreditV3 = age === 17 ? 17 : 16
 
-  const isUserFreeStatus =
-    eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_16 ||
-    eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_15
+  const isUserFreeStatus = getIsUserEligible(eligibilityType)
   const nextCreditIntroText = isUserFreeStatus
     ? 'Tu pourras débloquer ton prochain crédit de '
     : 'Ton prochain crédit de '

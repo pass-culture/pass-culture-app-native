@@ -30,6 +30,8 @@ export const nonBeneficiaryUser: UserProfile = {
   },
   birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
   email: 'email@domain.ext',
+  firstName: 'Jean',
+  lastName: 'Dupond',
   hasPassword: true,
   requiresIdCheck: false,
   roles: [],
