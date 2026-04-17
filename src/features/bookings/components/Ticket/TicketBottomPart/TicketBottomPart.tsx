@@ -34,7 +34,7 @@ export const TicketBottomPart = ({
   onBeforeNavigate,
 }: TicketBottomPartProps) => {
   switch (ticket.display) {
-    // Billet envoyé par email
+    // Ticket sent by email
     case TicketDisplayEnum.email_sent:
       return (
         <EmailWithdrawal
@@ -44,7 +44,7 @@ export const TicketBottomPart = ({
           userEmail={userEmail}
         />
       )
-    // Billet envoyé par email à venir avec délai d'envoi
+    // Ticket to be sent by email with a sending delay
     case TicketDisplayEnum.email_will_be_sent:
       return (
         <EmailWithdrawal
@@ -54,7 +54,7 @@ export const TicketBottomPart = ({
           userEmail={userEmail}
         />
       )
-    // Lien d'activation en ligne avec ou sans code d'activation
+    // Online activation link with or without activation code
     case TicketDisplayEnum.online_code:
       return (
         <DigitalTicket
@@ -65,7 +65,7 @@ export const TicketBottomPart = ({
           onBeforeNavigate={onBeforeNavigate}
         />
       )
-    // Billet externe avec QR code visible
+    // External ticket with visible or hidden QR code
     case TicketDisplayEnum.external_ticket:
       return (
         <ExternalBookingTicket
@@ -75,17 +75,9 @@ export const TicketBottomPart = ({
           hideTicket={false}
         />
       )
-    // Billet externe avec QR code non visible
+    // External ticket with hidden QR code
     case TicketDisplayEnum.hidden_external_ticket:
-      return (
-        <ExternalBookingTicket
-          data={ticket.externalBooking?.data ?? undefined}
-          beginningDatetime={beginningDateTime}
-          isDuo={isDuo}
-          hideTicket
-        />
-      )
-    // Contremarque de retrait pour un bien physique
+    // Voucher for a physical good
     case TicketDisplayEnum.voucher:
       return (
         <PhysicalGoodBookingTicket
@@ -94,7 +86,7 @@ export const TicketBottomPart = ({
           expirationDate={expirationDate}
         />
       )
-    // Contremarque de retrait pour un billet de cinéma
+    // Voucher for a cinema ticket
     case TicketDisplayEnum.cinema_voucher:
       return (
         <CinemaBookingTicket
@@ -102,16 +94,10 @@ export const TicketBottomPart = ({
           token={ticket.token?.data ?? undefined}
         />
       )
-    // Contremarque de retrait pour un billet d'événement physique sur place
+    // On-site withdrawal for a physical event ticket
     case TicketDisplayEnum.ticket:
-      return (
-        <OnSiteWithdrawal
-          token={ticket.token?.data ?? ''}
-          isDuo={isDuo}
-          shouldShowExchangeMessage={isEvent}
-        />
-      )
-    // Pas de billet nécessaire à présenter pour accéder à l'événement (Musique Live uniquement)
+      return <OnSiteWithdrawal token={ticket.token?.data ?? ''} isDuo={isDuo} />
+    // No ticket required to access the event (Live Music only)
     case TicketDisplayEnum.no_ticket:
       return <NoTicket />
     default:
