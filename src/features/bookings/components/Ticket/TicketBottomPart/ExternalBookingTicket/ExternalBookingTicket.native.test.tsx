@@ -5,18 +5,6 @@ import { ExternalBookingTicket } from 'features/bookings/components/Ticket/Ticke
 import { render, screen } from 'tests/utils'
 
 describe('ExternalBookingTicket', () => {
-  it('should display hidden ticket when data is empty', async () => {
-    renderExternalBookingTicket({
-      data: [],
-      beginningDateTime: '2025-07-21T20:00:00',
-      hideTicket: true,
-    })
-
-    expect(
-      await screen.findByText('Ton billet sera disponible ici le 19 juillet 2025 à 22h00')
-    ).toBeOnTheScreen()
-  })
-
   it('should display ticket when data is present', async () => {
     renderExternalBookingTicket({
       data: [{ barcode: '1234', seat: 'B2' }],
@@ -44,20 +32,7 @@ describe('ExternalBookingTicket', () => {
     expect(await screen.findByText('Siège A02')).toBeOnTheScreen()
   })
 
-  it('should display text plural when multiple external bookings and qr code are still hidden', async () => {
-    renderExternalBookingTicket({
-      data: [],
-      beginningDateTime: '2025-07-21T20:00:00',
-      isDuo: true,
-      hideTicket: true,
-    })
-
-    expect(
-      await screen.findByText('Tes billets seront disponibles ici le 19 juillet 2025 à 22h00')
-    ).toBeOnTheScreen()
-  })
-
-  it('should display text plural when multiple external bookings and qr code are visible', async () => {
+  it('should display text plural when multiple external bookings', async () => {
     renderExternalBookingTicket({
       data: [
         { barcode: '1234', seat: 'B2' },
@@ -73,7 +48,7 @@ describe('ExternalBookingTicket', () => {
     ).toBeOnTheScreen()
   })
 
-  it('should display text singular when single external bookings and qr code is visible', async () => {
+  it('should display text singular when single external bookings', async () => {
     renderExternalBookingTicket({
       data: [{ barcode: '1234', seat: 'B2' }],
       beginningDateTime: undefined,
@@ -89,21 +64,12 @@ describe('ExternalBookingTicket', () => {
 
 const renderExternalBookingTicket = ({
   data,
-  beginningDateTime,
   isDuo = false,
-  hideTicket = false,
 }: {
   data: ExternalBookingDataResponseV2[]
   beginningDateTime: string | undefined
   isDuo?: boolean
   hideTicket: boolean
 }) => {
-  return render(
-    <ExternalBookingTicket
-      data={data}
-      beginningDatetime={beginningDateTime}
-      isDuo={isDuo}
-      hideTicket={hideTicket}
-    />
-  )
+  return render(<ExternalBookingTicket data={data} isDuo={isDuo} />)
 }

@@ -5,6 +5,7 @@ import { CinemaBookingTicket } from 'features/bookings/components/Ticket/TicketB
 import { DigitalTicket } from 'features/bookings/components/Ticket/TicketBottomPart/DigitalTicket'
 import { EmailWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/EmailWithdrawal/EmailWithdrawal'
 import { ExternalBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/ExternalBookingTicket'
+import { HiddenExternalBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/ExternalBookingTicket/HiddenExternalBookingTicket'
 import { NoTicket } from 'features/bookings/components/Ticket/TicketBottomPart/NoTicket/NoTicket'
 import { OnSiteWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/OnSiteWithdrawal/OnSiteWithdrawal'
 import { PhysicalGoodBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/PhysicalGoodBookingTicket/PhysicalGoodBookingTicket'
@@ -68,15 +69,11 @@ export const TicketBottomPart = ({
     // External ticket with visible or hidden QR code
     case TicketDisplayEnum.external_ticket:
       return (
-        <ExternalBookingTicket
-          data={ticket.externalBooking?.data ?? undefined}
-          beginningDatetime={beginningDateTime}
-          isDuo={isDuo}
-          hideTicket={false}
-        />
+        <ExternalBookingTicket data={ticket.externalBooking?.data ?? undefined} isDuo={isDuo} />
       )
     // External ticket with hidden QR code
     case TicketDisplayEnum.hidden_external_ticket:
+      return <HiddenExternalBookingTicket beginningDatetime={beginningDateTime} isDuo={isDuo} />
     // Voucher for a physical good
     case TicketDisplayEnum.voucher:
       return (
