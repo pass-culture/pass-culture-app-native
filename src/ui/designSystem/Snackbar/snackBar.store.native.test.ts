@@ -4,6 +4,7 @@
  */
 
 import {
+  EXIT_THRESHOLD_IN_MS,
   LONG_TEXT_ANIMATION_DURATION_IN_MS,
   LONG_TEXT_CHARACTER_LENGTH,
   SHORT_TEXT_ANIMATION_DURATION_IN_MS,
@@ -54,7 +55,7 @@ describe('SnackBarStore', () => {
 
       expect(snackbars).toHaveLength(1)
 
-      jest.advanceTimersByTime(SHORT_TEXT_ANIMATION_DURATION_IN_MS)
+      jest.advanceTimersByTime(SHORT_TEXT_ANIMATION_DURATION_IN_MS + EXIT_THRESHOLD_IN_MS)
 
       expect(getSnackbars()).toHaveLength(0)
     })
