@@ -1,4 +1,6 @@
 appId: ${MAESTRO_APP_ID}
+tags :
+    - profile
 onFlowStart:
   - runScript: ../common/DeepLink.js
   - runScript:
@@ -11,6 +13,7 @@ onFlowStart:
 - runFlow: ../common/LaunchApp.yml
 - runFlow: ../common/StopApp.yml
 - runFlow: ../common/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/GoToProfileFromTabBar.yml
 
 - assertVisible: 'Profil'
 - copyTextFrom:

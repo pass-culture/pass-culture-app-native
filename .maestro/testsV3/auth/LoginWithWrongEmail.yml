@@ -6,7 +6,7 @@ onFlowStart:
 ---
 - runFlow: ../common/LaunchApp.yml
 - runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeepLinksToProfile.yml
+- runFlow: ../common/DeeplinkToProfile.yml
 
 - tapOn: 'Se connecter'
 

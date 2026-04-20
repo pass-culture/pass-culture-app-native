@@ -2,3 +2,5 @@ flows:
   - tutorial/*
   - cookies/*
   - auth/*
+  - signup/*
+  - profile/*
