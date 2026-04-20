@@ -2,6 +2,7 @@ import React from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { isCurrentBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
@@ -47,7 +48,7 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isDuo: !!(isDuo && user?.isBeneficiary),
+      isDuo: !!(isDuo && isCurrentBeneficiary(user)),
     })
   )
 

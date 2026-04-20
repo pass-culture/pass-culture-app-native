@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { EligibilityType } from 'api/gen'
 import { CheatMenuButton } from 'cheatcodes/components/CheatMenuButton'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { BeneficiaryAndEligibleForUpgradeHeader } from 'features/profile/components/Header/BeneficiaryAndEligibleForUpgradeHeader/BeneficiaryAndEligibleForUpgradeHeader'
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
@@ -26,7 +27,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
     }
 
     if (
-      user.isBeneficiary &&
+      isCurrentOrFormerBeneficiary(user) &&
       user.isEligibleForBeneficiaryUpgrade &&
       user.eligibility === EligibilityType['age-18']
     ) {
@@ -46,7 +47,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
       )
     }
 
-    if (!user.isBeneficiary || user.isEligibleForBeneficiaryUpgrade) {
+    if (!isCurrentOrFormerBeneficiary(user) || user.isEligibleForBeneficiaryUpgrade) {
       return (
         <NonBeneficiaryHeader
           featureFlags={featureFlags}

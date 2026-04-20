@@ -1,23 +1,23 @@
 import { useEffect } from 'react'
 
-import { YoungStatusType } from 'api/gen'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 
 interface Args {
   isLoggedIn: boolean
-  userStatus?: YoungStatusType
+  userStatusType?: UserStatusType
   showOnboardingSubscriptionModal: () => void
 }
 
 export const useOnboardingSubscriptionModal = ({
   isLoggedIn,
-  userStatus,
+  userStatusType,
   showOnboardingSubscriptionModal,
 }: Args) => {
   useEffect(() => {
     const displaySubscriptionModal = async () => {
-      if (!isLoggedIn || userStatus === YoungStatusType.non_eligible) return
+      if (!isLoggedIn || userStatusType === UserStatusType.GENERAL_PUBLIC) return
 
       if (await storage.readObject<boolean>('has_seen_onboarding_subscription')) return
 
@@ -30,5 +30,5 @@ export const useOnboardingSubscriptionModal = ({
     }
     displaySubscriptionModal()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn, userStatus])
+  }, [isLoggedIn, userStatusType])
 }

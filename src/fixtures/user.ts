@@ -31,7 +31,6 @@ export const nonBeneficiaryUser: UserProfile = {
   birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
   email: 'email@domain.ext',
   hasPassword: true,
-  isBeneficiary: false,
   requiresIdCheck: false,
   roles: [],
   showEligibleCard: false,
@@ -41,7 +40,6 @@ export const nonBeneficiaryUser: UserProfile = {
     marketingEmail: true,
     marketingPush: true,
   },
-  status: { statusType: YoungStatusType.non_eligible },
   currency: CurrencyEnum.EUR,
   achievements: [],
   hasProfileExpired: false,
@@ -57,10 +55,8 @@ export const beneficiaryUser: UserProfile = {
     physical: { initial: 300_00, remaining: 100_00 },
     digital: { initial: 300_00, remaining: 200_00 },
   },
-  isBeneficiary: true,
   roles: [UserRole.BENEFICIARY],
   isEligibleForBeneficiaryUpgrade: false,
-  status: { statusType: YoungStatusType.beneficiary },
   depositActivationDate: '2021-11-19T11:00:00Z',
   eligibilityEndDatetime: '2023-11-19T11:00:00Z',
   depositExpirationDate: '2050-11-19T11:00:00Z',
@@ -78,10 +74,8 @@ export const beneficiaryUser: UserProfile = {
 
 export const underageBeneficiaryUser: UserProfile = {
   ...beneficiaryUser,
-  isBeneficiary: false,
   roles: [UserRole.UNDERAGE_BENEFICIARY],
   isEligibleForBeneficiaryUpgrade: false,
-  status: { statusType: YoungStatusType.eligible },
   statusType: UserStatusType.GENERAL_PUBLIC,
   creditType: UserCreditType.CREDIT_EMPTY,
   eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
@@ -128,7 +122,7 @@ const baseNonBeneficiaryUser = {
   recreditTypeToShow: null,
   remainingBonusAttempts: null,
   requiresIdCheck: false,
-  roles: [UserRole.UNDERAGE_BENEFICIARY],
+  roles: [],
   showEligibleCard: false,
   status: { statusType: YoungStatusType.eligible },
   street: '10 rue du Bonheur',
@@ -182,12 +176,39 @@ export const beneficiaryUserV2: UserProfile = {
   eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
 }
 
-export const eligibleUserFromAPI: UserProfileResponse = {
-  ...nonBeneficiaryUserFromAPI,
+export const baseEligibleUser = {
+  ...baseNonBeneficiaryUser,
   activityId: ActivityIdEnum.HIGH_SCHOOL_STUDENT,
   birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
   eligibility: EligibilityType.free,
   roles: [UserRole.FREE_BENEFICIARY],
   showEligibleCard: false,
   status: { statusType: YoungStatusType.eligible },
+}
+
+export const eligibleUserFromAPI: UserProfileResponse = {
+  ...baseEligibleUser,
+  depositType: DepositType.GRANT_FREE,
+  needsToFillCulturalSurvey: false,
+}
+
+export const eligibleUserV2: UserProfile = {
+  ...baseEligibleUser,
+  statusType: UserStatusType.ELIGIBLE,
+  creditType: UserCreditType.CREDIT_V3_16,
+  eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
+}
+
+export const exBeneficiaryUserFromAPI: UserProfileResponse = {
+  ...baseEligibleUser,
+  depositType: DepositType.GRANT_18,
+  needsToFillCulturalSurvey: false,
+}
+
+export const exBeneficiaryUserV2: UserProfile = {
+  ...baseEligibleUser,
+  depositExpirationDate: '2020-01-01T03:04:05',
+  statusType: UserStatusType.EX_BENEFICIARY,
+  creditType: UserCreditType.CREDIT_EXPIRED,
+  eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
 }
