@@ -1,18 +1,24 @@
+import { UserRole } from 'api/gen'
 import { UserProfile } from 'features/share/types'
-import { beneficiaryUser, nonBeneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
+import { beneficiaryUserV2, eligibleUserV2, nonBeneficiaryUserV2 } from 'fixtures/user'
 import { getAvailableCredit } from 'shared/user/useAvailableCredit'
 
 import { isUserExBeneficiary } from './isUserExBeneficiary'
 
 jest.mock('shared/user/useAvailableCredit')
 
+const underageBeneficiaryUser: UserProfile = {
+  ...eligibleUserV2,
+  roles: [UserRole.UNDERAGE_BENEFICIARY],
+}
+
 describe('isUserExBeneficiary', () => {
   it.each`
     user                       | isCreditExpired | expected
-    ${nonBeneficiaryUser}      | ${false}        | ${false}
-    ${nonBeneficiaryUser}      | ${true}         | ${false}
-    ${beneficiaryUser}         | ${false}        | ${false}
-    ${beneficiaryUser}         | ${true}         | ${true}
+    ${nonBeneficiaryUserV2}    | ${false}        | ${false}
+    ${nonBeneficiaryUserV2}    | ${true}         | ${false}
+    ${beneficiaryUserV2}       | ${false}        | ${false}
+    ${beneficiaryUserV2}       | ${true}         | ${true}
     ${underageBeneficiaryUser} | ${false}        | ${false}
     ${underageBeneficiaryUser} | ${true}         | ${true}
   `(
