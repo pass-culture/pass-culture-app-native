@@ -1,7 +1,7 @@
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { UserProfile } from 'features/share/types'
 
-export const isAndWasBeneficiary = (user?: UserProfile) => {
+export const isCurrentOrFormerBeneficiary = (user?: UserProfile) => {
   if (!user) return false
   return (
     user.statusType === UserStatusType.BENEFICIARY ||
@@ -10,7 +10,7 @@ export const isAndWasBeneficiary = (user?: UserProfile) => {
   )
 }
 
-export const isCurrentlyBeneficiary = (user?: UserProfile) => {
+export const isCurrentBeneficiary = (user?: UserProfile) => {
   if (!user) return false
   return (
     user.statusType === UserStatusType.BENEFICIARY ||

@@ -4,7 +4,7 @@ import {
   SubcategoryIdEnum,
   SubcategoryResponseModelv2,
 } from 'api/gen'
-import { isAndWasBeneficiary } from 'features/auth/helpers/checkStatusType'
+import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { getIsProfileIncomplete } from 'features/offer/helpers/getIsProfileIncomplete/getIsProfileIncomplete'
 import { isFreeDigitalOffer, isFreeOffer } from 'features/offerRefacto/helpers'
@@ -74,7 +74,7 @@ export const getEligibilityBookingCTA = (
     return 'ENDED_USED_BOOKING'
   }
 
-  if (user?.statusType === UserStatusType.ELIGIBLE && !isAndWasBeneficiary(user)) {
+  if (user?.statusType === UserStatusType.ELIGIBLE && !isCurrentOrFormerBeneficiary(user)) {
     return 'SUBSCRIPTION_STATUS'
   }
 
@@ -164,7 +164,7 @@ export const getCTAWordingAndAction = ({
   const restrictedOfferCTA = getRestrictedOfferCTA(
     offer,
     isUnderageBeneficiary,
-    isAndWasBeneficiary(user)
+    isCurrentOrFormerBeneficiary(user)
   )
   if (restrictedOfferCTA) {
     return getCTAProps(restrictedOfferCTA, context)

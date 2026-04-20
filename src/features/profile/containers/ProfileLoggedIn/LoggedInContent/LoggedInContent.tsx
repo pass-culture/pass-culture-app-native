@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import { isAndWasBeneficiary } from 'features/auth/helpers/checkStatusType'
+import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AppearanceButton } from 'features/profile/components/AppearanceButton/AppearanceButton'
 import { BugReportButton } from 'features/profile/components/Buttons/BugReportButton/BugReportButton'
@@ -66,7 +66,7 @@ export const LoggedInContent = ({ user }: Props) => {
     BugReportButton: <BugReportButton />,
   }
 
-  const isBeneficiary = isAndWasBeneficiary(user)
+  const isBeneficiary = isCurrentOrFormerBeneficiary(user)
 
   const testID = isBeneficiary
     ? 'logged-in-beneficiary-content'

@@ -16,8 +16,8 @@ import {
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
-  isAndWasBeneficiary,
-  isCurrentlyBeneficiary,
+  isCurrentOrFormerBeneficiary,
+  isCurrentBeneficiary,
   isEligible,
   isNonEligible,
 } from 'features/auth/helpers/checkStatusType'
@@ -130,7 +130,7 @@ export const getCtaWordingAndAction = ({
   const isFreeOffer = getIsFreeOffer(offer)
   const isNotFreeOffer = !isFreeOffer
   const isProfileIncomplete = getIsProfileIncomplete(user)
-  const userWithNotEnoughCredit = isCurrentlyBeneficiary(user) && !hasEnoughCredit
+  const userWithNotEnoughCredit = isCurrentBeneficiary(user) && !hasEnoughCredit
   const isExBeneficiary = user && isUserExBeneficiary(user)
   const shouldBeRedirectedToExternalUrl =
     externalTicketOfficeUrl && (userWithNotEnoughCredit || isExBeneficiary)
@@ -277,7 +277,7 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (isEligible(user) && !isAndWasBeneficiary(user)) {
+  if (isEligible(user) && !isCurrentOrFormerBeneficiary(user)) {
     const common = {
       wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
       isDisabled: false,
@@ -317,7 +317,7 @@ export const getCtaWordingAndAction = ({
   const isOfferCategoryNotBookableByUser = isUnderageBeneficiary && offer.isForbiddenToUnderage
   if (
     !isLoggedIn ||
-    !isAndWasBeneficiary(user) ||
+    !isCurrentOrFormerBeneficiary(user) ||
     offer.isEducational ||
     isOfferCategoryNotBookableByUser
   ) {

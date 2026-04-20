@@ -5,7 +5,7 @@ import { NativeScrollEvent, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { isAndWasBeneficiary } from 'features/auth/helpers/checkStatusType'
+import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
@@ -95,7 +95,7 @@ const OnlineProfile: React.FC = () => {
     permissionState === GeolocPermissionState.GRANTED
   )
 
-  const shouldDisplayTutorial = !isAndWasBeneficiary(user)
+  const shouldDisplayTutorial = !isCurrentOrFormerBeneficiary(user)
   const [hasSeenAppearanceTag, setHasSeenAppearanceTag] = useState<boolean | null>(null)
 
   useEffect(() => {
@@ -177,7 +177,7 @@ const OnlineProfile: React.FC = () => {
     shareApp('profile_banner')
   }, [])
 
-  const shouldShowAchievementsSection = isAndWasBeneficiary(user)
+  const shouldShowAchievementsSection = isCurrentOrFormerBeneficiary(user)
 
   const isEligibleForChatbot = !!user?.statusType && CHATBOT_ELIGIBLE_STATUSES.has(user?.statusType)
   const shouldDisplayChatbot = enableChatbot && isEligibleForChatbot

@@ -1,4 +1,4 @@
-import { isCurrentlyBeneficiary } from 'features/auth/helpers/checkStatusType'
+import { isCurrentBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { UserProfile } from 'features/share/types'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
@@ -23,7 +23,7 @@ export const getRefundRule = ({
       return `Les ${price} ne seront pas recrédités sur ton pass Culture car il est expiré.`
     }
 
-    if (isCurrentlyBeneficiary(user)) {
+    if (isCurrentBeneficiary(user)) {
       return `${price} seront recrédités sur ton pass Culture.`
     }
   }

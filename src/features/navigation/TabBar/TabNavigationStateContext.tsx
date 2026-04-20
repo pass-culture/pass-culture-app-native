@@ -1,7 +1,7 @@
 import React, { createContext, useContext, memo, useState, useMemo, PropsWithChildren } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { isAndWasBeneficiary } from 'features/auth/helpers/checkStatusType'
+import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
 
 import { getShouldDisplayTab } from './helpers'
 import { TabNavigationStateType, TabStateRoute } from './TabStackNavigatorTypes'
@@ -52,7 +52,7 @@ export const TabNavigationStateProvider: React.FC<PropsWithChildren> = memo(
 
     const shouldDisplayTab = getShouldDisplayTab({
       isLoggedIn,
-      isBeneficiary: !!isAndWasBeneficiary(user),
+      isBeneficiary: !!isCurrentOrFormerBeneficiary(user),
     })
 
     const [tabNavigationState, setTabNavigationState] = useState<TabNavigationStateType>(

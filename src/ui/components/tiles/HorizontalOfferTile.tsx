@@ -4,7 +4,7 @@ import { FlexStyle, StyleProp, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { isCurrentlyBeneficiary } from 'features/auth/helpers/checkStatusType'
+import { isCurrentBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { getInteractionTagLabel } from 'features/offer/components/InteractionTag/getInteractionTagLabel'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
@@ -104,7 +104,7 @@ export const HorizontalOfferTile = ({
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isDuo: !!(isDuo && user && isCurrentlyBeneficiary(user)),
+      isDuo: !!(isDuo && user && isCurrentBeneficiary(user)),
     })
   )
 

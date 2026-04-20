@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { isCurrentlyBeneficiary } from 'features/auth/helpers/checkStatusType'
+import { isCurrentBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
 import { PriceInputController } from 'features/search/components/PriceInputController/PriceInputController'
@@ -99,7 +99,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 
   const isLimitCreditSearchDefaultValue = Number(searchState?.maxPrice) === formatAvailableCredit
 
-  const isLoggedInAndBeneficiary = isLoggedIn && isCurrentlyBeneficiary(user)
+  const isLoggedInAndBeneficiary = isLoggedIn && isCurrentBeneficiary(user)
   const GRANT_FREE_OR_EMPTY_TYPES = [
     UserCreditType.CREDIT_V3_15,
     UserCreditType.CREDIT_V3_16,
@@ -107,7 +107,6 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   ]
   const creditTypeIsNotGrantFreeOrEmpty =
     user && !GRANT_FREE_OR_EMPTY_TYPES.includes(user.creditType)
-
   const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false
 
   const { modal } = useTheme()
