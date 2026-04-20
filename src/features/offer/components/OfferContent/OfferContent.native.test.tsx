@@ -919,7 +919,7 @@ describe('<OfferContent />', () => {
         await user.press(await screen.findByText('Oui'))
 
         expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
-          featureName: 'avis des pros',
+          featureName: 'pro_advices',
           feedbackResponse: 'Oui',
           from: 'offer',
           offerId: offerResponseSnap.id.toString(),
@@ -938,7 +938,7 @@ describe('<OfferContent />', () => {
         await user.press(await screen.findByText('Non'))
 
         expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
-          featureName: 'avis des pros',
+          featureName: 'pro_advices',
           feedbackResponse: 'Non',
           from: 'offer',
           offerId: offerResponseSnap.id.toString(),

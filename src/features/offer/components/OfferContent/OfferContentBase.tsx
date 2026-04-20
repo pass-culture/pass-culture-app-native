@@ -302,7 +302,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     (type: ReactionTypeEnum) => {
       const feedbackResponse = type === ReactionTypeEnum.LIKE ? 'Oui' : 'Non'
       void analytics.logFeatureFeedbackClicked({
-        featureName: 'avis des pros',
+        featureName: 'pro_advices',
         feedbackResponse,
         from: 'offer',
         offerId: offer.id.toString(),
