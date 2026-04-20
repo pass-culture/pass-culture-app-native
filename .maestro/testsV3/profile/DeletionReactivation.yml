@@ -1,0 +1,68 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - profile
+onFlowStart:
+  - runScript: ../common/DeepLink.js
+  - runScript:
+      file: ../common/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: 18
+---
+- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/StopApp.yml
+- runFlow: ../common/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/GoToProfileFromTabBar.yml
+
+- tapOn: 'Informations personnelles'
+
+- assertVisible: 'Prénom et nom'
+- assertVisible: 'Adresse e-mail'
+- assertVisible: 'Numéro de téléphone'
+- assertVisible: 'Mot de passe'
+- scrollUntilVisible:
+    element: 'Supprimer mon compte'
+- tapOn: 'Supprimer mon compte'
+
+- repeat:
+    while:
+      notVisible: "Pourquoi souhaites-tu supprimer ton compte\_?"
+    commands:
+    - doubleTapOn: 'Supprimer mon compte'
+- assertVisible: "Pourquoi souhaites-tu supprimer ton compte\_?"
+
+- tapOn: "J’aimerais créer un compte avec une adresse e-mail différente"
+
+- assertVisible: "Modifie ton adresse e-mail sur ce compte"
+- tapOn: "J’ai compris"
+- assertVisible: "Modifier mon e-mail"
+- assertVisible: "Valider la demande de modification de mon e-mail"
+- tapOn: "Revenir en arrière"
+
+- tapOn: "Je n’utilise plus l’application"
+- runFlow: ../common/DeletionNotAllowed.yml
+
+- tapOn: "Je n’ai plus de crédit ou très peu de crédit restant"
+- runFlow: ../common/DeletionNotAllowed.yml
+
+- tapOn: "Je souhaite supprimer mes données personnelles"
+- runFlow: ../common/DeletionNotAllowed.yml
+
+- scrollUntilVisible:
+    element: "Autre"
+
+- tapOn: "Je pense que quelqu’un d’autre a accès à mon compte"
+- assertVisible: "Sécurise ton compte"
+- assertVisible: "Suspendre mon compte"
+- assertVisible: "Ne pas sécuriser mon compte"
+- tapOn: "Revenir en arrière"
+- scrollUntilVisible: 
+    element: "Autre"
+
+- tapOn: "Autre"
+- assertVisible: "Contacte le support"
+- assertVisible: "Contacter le support"
+- tapOn: "Retourner au profil"
+
+- runFlow: ../common/StopApp.yml

@@ -1,0 +1,33 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - profile
+onFlowStart:
+  - runScript: ../common/DeepLink.js
+  - runScript:
+      file: ../common/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: 18
+---
+- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/StopApp.yml
+- runFlow: ../common/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/GoToProfileFromTabBar.yml
+
+- scrollUntilVisible:
+    element:
+      text: 'Autres'
+- runFlow:
+    when:
+      visible: 'Poser une question'
+    commands:
+      - tapOn: 'Poser une question'
+      - assertVisible: 'Assistant virtuel du pass culture'
+
+      - runFlow:
+          file: ../common/TapOnBack.yml
+
+      - assertVisible: 'Poser une question'
+
+- runFlow: ../common/StopApp.yml
