@@ -138,7 +138,10 @@ describe('<SSOButton />', () => {
 
     await user.press(await screen.findByTestId('S’inscrire avec Google'))
 
-    expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromSignup', type: 'SSO_signup' })
+    expect(analytics.logLogin).toHaveBeenCalledWith({
+      method: 'fromSignupGoogle',
+      type: 'SSO_signup',
+    })
   })
 
   it('should log analytics when logging in with sso from login', async () => {
@@ -153,7 +156,10 @@ describe('<SSOButton />', () => {
 
     await user.press(await screen.findByTestId('Se connecter avec Google'))
 
-    expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: 'SSO_login' })
+    expect(analytics.logLogin).toHaveBeenCalledWith({
+      method: 'fromLoginGoogle',
+      type: 'SSO_login',
+    })
   })
 
   describe('When shouldLogInfo remote config is false', () => {

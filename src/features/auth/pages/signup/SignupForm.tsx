@@ -16,6 +16,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
+import { getSSOLoginMethod } from 'libs/analytics/logEventAnalytics'
 import { analytics } from 'libs/analytics/provider'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -161,7 +162,24 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
           ...rest,
           accountCreationToken,
         })
-        await loginAndRedirect({ accessToken, refreshToken }, stepperAnalyticsType)
+        const ssoProvider = signupData.ssoProvider
+        if (!ssoProvider) {
+          eventMonitoring.captureException(
+            new Error('SSO signup finalization without ssoProvider'),
+            { extra: { stepperAnalyticsType } }
+          )
+          return
+        }
+        await loginAndRedirect(
+          { accessToken, refreshToken },
+          {
+            method: getSSOLoginMethod(
+              ssoProvider,
+              stepperAnalyticsType === 'SSO_login' ? 'login' : 'signup'
+            ),
+            analyticsType: stepperAnalyticsType,
+          }
+        )
       } else {
         await appSignup(commonParams)
         syncStepIndexWithNavigation(numberOfSteps - 1)

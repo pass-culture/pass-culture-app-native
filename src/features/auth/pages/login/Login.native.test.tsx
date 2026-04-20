@@ -477,7 +477,7 @@ describe('<Login/>', () => {
     await fillInputs()
     await user.press(screen.getByText('Se connecter'))
 
-    expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: undefined })
+    expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: 'email_login' })
   })
 
   it('should log analytics when signing in with SSO', async () => {
@@ -491,7 +491,10 @@ describe('<Login/>', () => {
 
     await user.press(await screen.findByTestId('Se connecter avec Google'))
 
-    expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: 'SSO_login' })
+    expect(analytics.logLogin).toHaveBeenCalledWith({
+      method: 'fromLoginGoogle',
+      type: 'SSO_login',
+    })
   })
 
   it('should display forced login help message when the query param is given', async () => {

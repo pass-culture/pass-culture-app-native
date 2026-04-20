@@ -14,7 +14,7 @@ import {
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
-import { LoginRoutineMethod, SSOType } from 'libs/analytics/logEventAnalytics'
+import { getSSOLoginMethod, LoginRoutineMethod, LoginType } from 'libs/analytics/logEventAnalytics'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
@@ -30,7 +30,7 @@ export const useSignInMutation = ({
   params: RootStackParamList['Login' | 'SignupForm']
   doNotNavigateOnSigninSuccess?: boolean
   analyticsMethod?: LoginRoutineMethod
-  analyticsType?: SSOType
+  analyticsType?: LoginType
   onFailure: (error: SignInResponseFailure) => void
   setErrorMessage?: (message: string) => void
 }) => {
@@ -50,8 +50,13 @@ export const useSignInMutation = ({
     },
 
     onSuccess: async (response, body) => {
-      const loginAnalyticsType = isOAuthLoginRequest(body) ? 'SSO_login' : undefined
-      await loginRoutine(response, analyticsMethod, analyticsType || loginAnalyticsType)
+      const isOAuth = isOAuthLoginRequest(body)
+      const loginAnalyticsType: LoginType = isOAuth ? 'SSO_login' : 'email_login'
+      const ssoKind = analyticsMethod === 'fromSignup' ? 'signup' : 'login'
+      const resolvedMethod: LoginRoutineMethod = isOAuth
+        ? getSSOLoginMethod(body.provider, ssoKind)
+        : analyticsMethod
+      await loginRoutine(response, resolvedMethod, analyticsType || loginAnalyticsType)
       onSuccess(response.accountState)
     },
 
