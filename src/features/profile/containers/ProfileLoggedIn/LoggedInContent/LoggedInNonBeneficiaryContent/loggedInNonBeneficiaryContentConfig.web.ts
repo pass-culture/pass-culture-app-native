@@ -4,6 +4,7 @@ import {
 } from 'features/profile/containers/ProfileLoggedIn/LoggedInContent/types'
 import { env } from 'libs/environment/env'
 import { Bell } from 'ui/svg/icons/Bell'
+import { Bulb } from 'ui/svg/icons/Bulb'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
@@ -12,7 +13,6 @@ import { Profile } from 'ui/svg/icons/Profile'
 export const loggedInNonBeneficiaryContentConfig = ({
   AppearanceButton,
   ChatbotButton,
-  FeedbackInAppButton,
   HelpButton,
   LocationButton,
   SocialNetwork,
@@ -49,7 +49,7 @@ export const loggedInNonBeneficiaryContentConfig = ({
       { title: 'Confidentialité', screen: 'ConsentSettings', icon: Confidentiality },
       { title: 'Accessibilité', screen: 'Accessibility', icon: HandicapMental },
       { title: 'Informations légales', screen: 'LegalNotices', icon: LegalNotices },
-      { component: FeedbackInAppButton, key: 'FeedbackInAppButton' },
+      { title: 'Faire une suggestion', screen: 'FeedbackInApp', icon: Bulb },
     ],
   },
   {

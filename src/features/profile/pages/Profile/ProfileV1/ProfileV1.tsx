@@ -4,8 +4,8 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
@@ -13,6 +13,7 @@ import { BugReportButton } from 'features/profile/components/Buttons/BugReportBu
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
+import { CHATBOT_ELIGIBLE_STATUSES } from 'features/profile/helpers/chatbotEligibleStatuses'
 import { SHARE_APP_BANNER_IMAGE_SOURCE } from 'features/share/components/shareAppBannerImage'
 import { shareApp } from 'features/share/helpers/shareApp'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -21,7 +22,6 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { GeolocPermissionState, useLocation } from 'libs/location/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -68,12 +68,6 @@ const isWeb = Platform.OS === 'web'
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 const DARK_MODE_GTM_APPEARANCE_TAG_KEY = 'darkModeGtmAppearanceTagSeen'
 
-const CHATBOT_ELIGIBLE_STATUSES = new Set<YoungStatusType>([
-  YoungStatusType.eligible,
-  YoungStatusType.beneficiary,
-  YoungStatusType.ex_beneficiary,
-])
-
 const OnlineProfile: React.FC = () => {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.PROFILE)
   const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
@@ -88,9 +82,6 @@ const OnlineProfile: React.FC = () => {
   const scrollViewRef = useRef<ScrollView | null>(null)
   const userAge = getAge(user?.birthDate)
   const {
-    data: { displayInAppFeedback },
-  } = useRemoteConfigQuery()
-  const {
     geolocPositionError,
     permissionState,
     requestGeolocPermission,
@@ -100,7 +91,7 @@ const OnlineProfile: React.FC = () => {
     permissionState === GeolocPermissionState.GRANTED
   )
 
-  const shouldDisplayTutorial = !user?.isBeneficiary
+  const shouldDisplayTutorial = !isCurrentOrFormerBeneficiary(user)
   const [hasSeenAppearanceTag, setHasSeenAppearanceTag] = useState<boolean | null>(null)
 
   useEffect(() => {
@@ -182,10 +173,9 @@ const OnlineProfile: React.FC = () => {
     shareApp('profile_banner')
   }, [])
 
-  const shouldShowAchievementsSection = user?.isBeneficiary
+  const shouldShowAchievementsSection = isCurrentOrFormerBeneficiary(user)
 
-  const userStatusType = user?.status?.statusType
-  const isEligibleForChatbot = !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.has(userStatusType)
+  const isEligibleForChatbot = !!user?.statusType && CHATBOT_ELIGIBLE_STATUSES.has(user?.statusType)
   const shouldDisplayChatbot = enableChatbot && isEligibleForChatbot
 
   const shareBannerTitle = 'Partage le pass Culture'
@@ -345,16 +335,14 @@ const OnlineProfile: React.FC = () => {
                       icon={LegalNotices}
                     />
                   </Li>
-                  {displayInAppFeedback ? (
-                    <Li>
-                      <Row
-                        title="Faire une suggestion"
-                        type="navigable"
-                        navigateTo={getProfilePropConfig('FeedbackInApp')}
-                        icon={Bulb}
-                      />
-                    </Li>
-                  ) : null}
+                  <Li>
+                    <Row
+                      title="Faire une suggestion"
+                      type="navigable"
+                      icon={Bulb}
+                      navigateTo={getProfilePropConfig('FeedbackInApp')}
+                    />
+                  </Li>
                 </VerticalUl>
               </Section>
               {isWeb ? null : (

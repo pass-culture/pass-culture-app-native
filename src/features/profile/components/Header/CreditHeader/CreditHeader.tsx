@@ -3,6 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { DomainsCredit, EligibilityType } from 'api/gen/api'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { BonificationBanner } from 'features/bonification/components/BonificationBanner'
 import { getShouldShowBonificationBanner } from 'features/bonification/getShouldShowBonificationBanner'
 import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
@@ -35,6 +36,7 @@ export type CreditHeaderProps = {
   domainsCredit?: DomainsCredit | null
   depositExpirationDate?: string
   eligibility?: EligibilityType | null
+  statusType: UserStatusType | null
 } & ProfileFeatureFlagsProps
 
 export function CreditHeader({
@@ -44,6 +46,7 @@ export function CreditHeader({
   domainsCredit,
   depositExpirationDate,
   eligibility,
+  statusType,
   featureFlags,
 }: CreditHeaderProps) {
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
@@ -87,6 +90,7 @@ export function CreditHeader({
     isDepositExpired,
     depositExpirationDate,
     eligibility,
+    statusType,
   })
 
   const isExpiredOrCreditEmptyWithNoUpcomingCredit =

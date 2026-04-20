@@ -4,7 +4,6 @@ import { SubscriptionTheme } from 'features/subscription/types'
 export type CustomRemoteConfig = {
   aroundPrecision: Record<'from' | 'value', number>[] | number
   artistPageSubcategories: Record<'subcategories', SubcategoryIdEnum[]>
-  displayInAppFeedback: boolean
   displayMandatoryUpdatePersonalData: boolean
   homeEntryIdBeneficiary: string
   homeEntryIdFreeBeneficiary: string

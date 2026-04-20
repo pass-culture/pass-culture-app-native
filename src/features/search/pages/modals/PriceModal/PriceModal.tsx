@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { isCurrentBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
 import { PriceInputController } from 'features/search/components/PriceInputController/PriceInputController'
@@ -97,10 +98,15 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   const searchPriceSchema = priceSchema({ initialCredit: formatInitialCredit, currency })
 
   const isLimitCreditSearchDefaultValue = Number(searchState?.maxPrice) === formatAvailableCredit
-  const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
-  const GRANT_FREE_TYPES = [UserCreditType.CREDIT_V3_15, UserCreditType.CREDIT_V3_16]
-  const creditTypeIsNotGrantFree = user && !GRANT_FREE_TYPES.includes(user.creditType)
 
+  const isLoggedInAndBeneficiary = isLoggedIn && isCurrentBeneficiary(user)
+  const GRANT_FREE_OR_EMPTY_TYPES = [
+    UserCreditType.CREDIT_V3_15,
+    UserCreditType.CREDIT_V3_16,
+    UserCreditType.CREDIT_EMPTY,
+  ]
+  const creditTypeIsNotGrantFreeOrEmpty =
+    user && !GRANT_FREE_OR_EMPTY_TYPES.includes(user.creditType)
   const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false
 
   const { modal } = useTheme()
@@ -312,7 +318,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
       }>
       <FormContainer isKeyboardOpen={isKeyboardOpen}>
         <Form.MaxWidth>
-          {isLoggedInAndBeneficiary && creditTypeIsNotGrantFree ? (
+          {isLoggedInAndBeneficiary && creditTypeIsNotGrantFreeOrEmpty ? (
             <Container>
               <Banner label={bannerTitle} Icon={Error} testID="creditBanner" />
             </Container>
@@ -330,7 +336,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
             )}
           />
           <StyledSeparator />
-          {isLoggedInAndBeneficiary ? (
+          {isLoggedInAndBeneficiary && creditTypeIsNotGrantFreeOrEmpty ? (
             <Controller
               control={control}
               name="isLimitCreditSearch"
