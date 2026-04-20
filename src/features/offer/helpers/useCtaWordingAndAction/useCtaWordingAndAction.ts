@@ -18,8 +18,8 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
   isCurrentOrFormerBeneficiary,
   isCurrentBeneficiary,
-  isEligible,
   isNonEligible,
+  isEligible,
 } from 'features/auth/helpers/checkStatusType'
 import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
 import {
@@ -166,8 +166,8 @@ export const getCtaWordingAndAction = ({
       bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
     }
   }
-
-  if (isFreeDigitalOffer && !isNonEligible(user)) {
+  const isUserEligible = !isNonEligible(user)
+  if (isFreeDigitalOffer && isUserEligible) {
     if (subcategory.isEvent) {
       if (!isAlreadyBookedOffer) {
         return {
