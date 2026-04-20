@@ -20,7 +20,15 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 type Props = { user: UserProfile } & ProfileFeatureFlagsProps
 
 export const BeneficiaryHeader = ({ user, featureFlags }: Props) => {
-  const { firstName, lastName, domainsCredit, depositExpirationDate, eligibility, birthDate } = user
+  const {
+    firstName,
+    lastName,
+    domainsCredit,
+    depositExpirationDate,
+    eligibility,
+    birthDate,
+    statusType,
+  } = user
   const title = getProfileHeaderTitle({ firstName, lastName })
   const depositAmount = useDepositAmountsByAge()
   const isCreditEmpty = domainsCredit?.all.remaining === 0
@@ -30,6 +38,7 @@ export const BeneficiaryHeader = ({ user, featureFlags }: Props) => {
     isDepositExpired,
     depositExpirationDate,
     eligibility,
+    statusType,
   })
 
   return (

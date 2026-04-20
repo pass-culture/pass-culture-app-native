@@ -28,7 +28,15 @@ export const LoggedInEligibleAndBeneficiaryHeader = ({
   user,
   depositAmount,
 }: Props) => {
-  const { firstName, lastName, depositExpirationDate, domainsCredit, eligibility, birthDate } = user
+  const {
+    firstName,
+    lastName,
+    depositExpirationDate,
+    domainsCredit,
+    eligibility,
+    birthDate,
+    statusType,
+  } = user
   const title = getProfileHeaderTitle({ firstName, lastName })
   const isCreditEmpty = domainsCredit?.all.remaining === 0
   const isDepositExpired = getIsDepositExpired({ depositExpirationDate })
@@ -37,6 +45,7 @@ export const LoggedInEligibleAndBeneficiaryHeader = ({
     isDepositExpired,
     depositExpirationDate,
     eligibility,
+    statusType,
   })
 
   return (

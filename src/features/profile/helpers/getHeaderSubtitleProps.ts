@@ -1,4 +1,5 @@
 import { EligibilityType } from 'api/gen'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
 
 type Props = {
@@ -6,6 +7,7 @@ type Props = {
   isDepositExpired: boolean
   depositExpirationDate?: string | null
   eligibility?: EligibilityType | null
+  statusType?: UserStatusType | null
 }
 
 type Output = {
@@ -18,10 +20,16 @@ export const getHeaderSubtitleProps = ({
   isDepositExpired,
   depositExpirationDate,
   eligibility,
+  statusType,
 }: Props): Output => {
   const isUserFreeStatus = eligibility === EligibilityType.free
-  const creditEmptySubtitle = isUserFreeStatus ? undefined : 'Tu as dépensé tout ton crédit'
-  if (isCreditEmpty) return { startSubtitle: creditEmptySubtitle }
+  const getCreditEmptySubtitle = () => {
+    if (isUserFreeStatus) return undefined
+    return statusType === UserStatusType.EX_BENEFICIARY
+      ? 'Ton crédit est expiré'
+      : 'Tu as dépensé tout ton crédit'
+  }
+  if (isCreditEmpty) return { startSubtitle: getCreditEmptySubtitle() }
 
   const displayedExpirationDate = depositExpirationDate
     ? formatToSlashedFrenchDate(setDateOneDayEarlier(depositExpirationDate))

@@ -41,6 +41,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
           domainsCredit={user.domainsCredit}
           depositExpirationDate={user.depositExpirationDate ?? undefined}
           eligibility={user.eligibility}
+          statusType={user.statusType}
         />
       )
     }
@@ -65,6 +66,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
           depositExpirationDate={user.depositExpirationDate ?? undefined}
           eligibility={user.eligibility}
           featureFlags={featureFlags}
+          statusType={user.statusType}
         />
       </CreditHeaderContainer>
     )
