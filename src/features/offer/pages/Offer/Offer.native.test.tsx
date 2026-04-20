@@ -3,9 +3,11 @@ import { ReactTestInstance } from 'react-test-renderer'
 import {
   BookingsResponse,
   GetRemindersResponse,
+  OfferProAdvices,
   PaginatedFavoritesResponse,
   SubcategoriesResponseModelv2,
 } from 'api/gen'
+import { offerProAdvicesFixture } from 'features/advices/fixtures/offerProAdvices.fixture'
 import { mockArtists } from 'features/artist/fixtures/mockArtist'
 import { bookingsSnap } from 'features/bookings/fixtures'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
@@ -21,6 +23,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import * as useArtistResultsAPI from 'queries/offer/useArtistResultsQuery'
+import * as ABSegmentModule from 'shared/useABSegment/useABSegment'
 import { mockServer } from 'tests/mswServer'
 import { screen, userEvent, waitFor } from 'tests/utils'
 import * as useModal from 'ui/components/modals/useModal'
@@ -90,6 +93,7 @@ const defaultUseCookies = {
   loadCookiesConsent: jest.fn(),
 }
 const mockUseCookies = jest.spyOn(Cookies, 'useCookies').mockReturnValue(defaultUseCookies)
+const useABSegmentSpy = jest.spyOn(ABSegmentModule, 'useABSegment')
 
 describe('<Offer />', () => {
   const user = userEvent.setup()
@@ -252,6 +256,37 @@ describe('<Offer />', () => {
       categoryName: 'CINEMA',
       from: 'offer',
       offerId: '116656',
+    })
+  })
+
+  describe('pro advices AB test', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_OFFER])
+      useABSegmentSpy.mockReturnValue('A')
+      mockServer.getApi<OfferProAdvices>(`/v1/offer/${offerResponseSnap.id}/advices`, {
+        proAdvices: [...offerProAdvicesFixture.proAdvices],
+        nbResults: offerProAdvicesFixture.nbResults,
+      })
+    })
+
+    it('should display pro advices section when AB testing segment is A', async () => {
+      renderOfferPage({ mockOffer: offerResponseSnap })
+
+      expect(await screen.findByText('Les avis des pros')).toBeOnTheScreen()
+    })
+
+    describe('when AB testing segment is B', () => {
+      beforeEach(() => {
+        useABSegmentSpy.mockReturnValue('B')
+      })
+
+      it('should not display pro advices section', async () => {
+        renderOfferPage({ mockOffer: offerResponseSnap })
+
+        await screen.findByTestId('offerv2-container')
+
+        expect(screen.queryByText('Les avis des pros')).not.toBeOnTheScreen()
+      })
     })
   })
 
