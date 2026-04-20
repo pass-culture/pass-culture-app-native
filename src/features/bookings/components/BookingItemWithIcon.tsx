@@ -10,6 +10,7 @@ export const Item: React.FC<{
   subtext?: string
   testID?: string
 }> = ({ Icon, message, subtext = '', testID }) => {
+  const hasSubtext = subtext.trim().length > 0
   const { designSystem, icons } = useTheme()
   return (
     <Row testID={testID}>
@@ -17,7 +18,7 @@ export const Item: React.FC<{
         <Icon color={designSystem.color.icon.subtle} size={icons.sizes.small} />
       </IconWrapper>
       {typeof message === 'string' ? <Typo.BodyAccentXs>{message}</Typo.BodyAccentXs> : message}
-      <StyledBodyAccentXs>{subtext}</StyledBodyAccentXs>
+      {hasSubtext ? <StyledBodyAccentXs>{subtext}</StyledBodyAccentXs> : null}
     </Row>
   )
 }
