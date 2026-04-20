@@ -1,6 +1,6 @@
 import { OfferResponse, SubcategoryIdEnum, SubcategoryResponseModelv2 } from 'api/gen'
 import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
-import { getIsUserEligible } from 'features/auth/helpers/getIsUserEligible'
+import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligible'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { getIsProfileIncomplete } from 'features/offer/helpers/getIsProfileIncomplete/getIsProfileIncomplete'
 import { isFreeDigitalOffer, isFreeOffer } from 'features/offerRefacto/helpers'
@@ -42,7 +42,7 @@ export const getFreeOfferCTA = (
 
   const isProfileIncomplete = getIsProfileIncomplete(user)
   if (isFreeOffer(offer)) {
-    if (getIsUserEligible(user?.eligibilityType) && isProfileIncomplete) {
+    if (getIsUserEligibleFree(user?.eligibilityType) && isProfileIncomplete) {
       return 'INCOMPLETE_PROFILE'
     }
     if (!isProfileIncomplete) {
@@ -132,7 +132,7 @@ export const getCTAWordingAndAction = ({
   }
 
   // 3. User 15/16 years old (no bookings for paid offers)
-  if (getIsUserEligible(user?.eligibilityType) && !isFreeOffer(offer)) {
+  if (getIsUserEligibleFree(user?.eligibilityType) && !isFreeOffer(offer)) {
     return getCTAProps('USER_15_16', context)
   }
 

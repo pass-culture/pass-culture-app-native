@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getIsUserEligible } from 'features/auth/helpers/getIsUserEligible'
+import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligible'
 import { FreeHomeButton } from 'features/profile/components/Buttons/FreeHomeButton/FreeHomeButton'
 import { HelpButton } from 'features/profile/components/Buttons/HelpButton/HelpButton'
 import { GreySeparatorWithBorderDefaultColor } from 'features/profile/components/GreySeparatorWithBorderDefaultColor/GreySeparatorWithBorderDefaultColor'
@@ -45,7 +45,7 @@ export const BeneficiaryEmptyHeader = ({ user, featureFlags }: Props) => {
     17: eighteenYearsOldDeposit,
   }
 
-  const isUserFreeStatus = getIsUserEligible(user?.eligibilityType)
+  const isUserFreeStatus = getIsUserEligibleFree(user?.eligibilityType)
 
   const nextCreditIntroText = isUserFreeStatus
     ? 'Tu pourras débloquer ton prochain crédit de '

@@ -125,7 +125,6 @@ describe('ProfileHeader', () => {
       featureFlags: { disableActivation: false, enableProfileV2: false },
       user: {
         ...nonBeneficiaryUserV2,
-        isBeneficiary: true,
         statusType: UserStatusType.ELIGIBLE_AND_BENEFICIARY,
         creditType: UserCreditType.CREDIT_EMPTY,
         eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V2_18,

@@ -2,7 +2,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getIsUserEligible } from 'features/auth/helpers/getIsUserEligible'
+import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligible'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
@@ -70,7 +70,7 @@ export function BookingConfirmation() {
     euroToPacificFrancRate
   )
 
-  const amountLeftText = getIsUserEligible(user?.eligibilityType)
+  const amountLeftText = getIsUserEligibleFree(user?.eligibilityType)
     ? ''
     : `Il te reste encore ${amountLeftWithCurrency} à dépenser sur le pass Culture.${LINE_BREAK}`
 
