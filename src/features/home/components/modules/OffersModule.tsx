@@ -83,7 +83,8 @@ export const OffersModule = (props: OffersModuleProps) => {
     })
   )
 
-  const onBeforeNavigate = () => analytics.logClickSeeAll({ type: 'offers', moduleName, moduleId })
+  const onBeforeNavigate = () =>
+    analytics.logClickSeeAll({ type: 'offers', moduleName, moduleId, from: 'home' })
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item, width, height }) => {
@@ -157,7 +158,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     (displayParameters.layout === 'one-item-medium' && offersToDisplay.length <= 1)
 
   const navigateToVerticalPlaylist = {
-    screen: 'VerticalPlaylistPage' as const,
+    screen: 'VerticalPlaylistOffersFromModule' as const,
     params: {
       module: {
         id: moduleId,

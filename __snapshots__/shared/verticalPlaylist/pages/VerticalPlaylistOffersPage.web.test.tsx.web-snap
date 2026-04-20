@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`<VerticalPlaylistPage /> should render correctly 1`] = `
+exports[`<VerticalPlaylistOffersPage /> should render correctly 1`] = `
 .c0 {
   flex-direction: row;
   align-items: center;
@@ -110,19 +110,19 @@ exports[`<VerticalPlaylistPage /> should render correctly 1`] = `
             dir="ltr"
             role="heading"
           >
-            Module title
+            My title
           </h1>
           <div
             class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginBottom-6gpygo"
             dir="ltr"
           >
-            Module subtitle
+            My subtitle
           </div>
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginBottom-6gpygo r-marginTop-1wzrnnt"
+            class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginBottom-6gpygo r-marginTop-1wzrnnt"
           >
             <div
-              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci"
             >
               <div
                 class="css-view-175oi2r r-marginBottom-1ifxtd0 r-marginTop-14gqq1x"
@@ -132,7 +132,7 @@ exports[`<VerticalPlaylistPage /> should render correctly 1`] = `
                   class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                   dir="ltr"
                 >
-                  3 résultats
+                  3 offres
                 </div>
               </div>
             </div>

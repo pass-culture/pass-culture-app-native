@@ -95,7 +95,7 @@ describe('OffersModule', () => {
 
     await user.press(screen.getByText('Tout voir'))
 
-    expect(navigate).toHaveBeenCalledWith('VerticalPlaylistPage', {
+    expect(navigate).toHaveBeenCalledWith('VerticalPlaylistOffersFromModule', {
       module: {
         id: 'fakeModuleId',
         title: 'Module title',
@@ -171,6 +171,7 @@ describe('OffersModule', () => {
       await user.press(screen.getByText('Tout voir'))
 
       expect(analytics.logClickSeeAll).toHaveBeenCalledWith({
+        from: 'home',
         type: 'offers',
         moduleId: 'fakeModuleId',
         moduleName: 'Module title',

@@ -21,6 +21,7 @@ const defaultState: State = { snackbars: {} }
 export const SHORT_TEXT_ANIMATION_DURATION_IN_MS = 5000
 export const LONG_TEXT_ANIMATION_DURATION_IN_MS = 10000
 export const LONG_TEXT_CHARACTER_LENGTH = 120
+export const EXIT_THRESHOLD_IN_MS = 100 // keep snackbar a bit longer than the progress bar to avoid the progress bar animation after unmount
 
 const getAnimationDuration = (label: string) =>
   label.length < LONG_TEXT_CHARACTER_LENGTH
@@ -50,7 +51,7 @@ export const snackBarStore = createStore({
       const timeout = setTimeout(() => {
         snackBarStore.actions.close(id)
         clearTimeout(timeout)
-      }, animationDuration)
+      }, animationDuration + EXIT_THRESHOLD_IN_MS)
     },
     close: (id: string) => {
       set((state) => {

@@ -104,6 +104,36 @@ describe('<PriceModal/>', () => {
     })
   })
 
+  describe('user with grant free credit type is CREDIT_EMPTY', () => {
+    beforeEach(() => {
+      mockedUseAuthContext.mockImplementation(() => ({
+        user: {
+          ...beneficiaryUser,
+          creditType: UserCreditType.CREDIT_EMPTY,
+        },
+        isLoggedIn: true,
+      }))
+    })
+
+    it('should not display banner when user credit type is CREDIT_EMPTY', async () => {
+      renderSearchPrice()
+      await screen.findByLabelText('Rechercher')
+
+      const creditBanner = screen.queryByTestId('creditBanner')
+
+      expect(creditBanner).not.toBeOnTheScreen()
+    })
+
+    it("should not display toggle 'Limiter la recherche à mon crédit' when user credit type is CREDIT_EMPTY", async () => {
+      renderSearchPrice()
+      await screen.findByLabelText('Rechercher')
+
+      const limitCreditSearchToggle = screen.queryByText('Limiter la recherche à mon crédit')
+
+      expect(limitCreditSearchToggle).not.toBeOnTheScreen()
+    })
+  })
+
   describe('without previous value in the search state', () => {
     it('should reset minimum price when pressing reset button', async () => {
       renderSearchPrice()

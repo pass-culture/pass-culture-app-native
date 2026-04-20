@@ -31,7 +31,12 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
   const nbOfSeparators = hasOnlyTwoOffers ? 1 : 2
 
   const onBeforeNavigate = () => {
-    void analytics.logClickSeeAll({ type: 'offers', moduleId: props.id, moduleName: props.title })
+    void analytics.logClickSeeAll({
+      type: 'offers',
+      moduleId: props.id,
+      moduleName: props.title,
+      from: 'home',
+    })
   }
 
   function renderTitleSeeMore() {

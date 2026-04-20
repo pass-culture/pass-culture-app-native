@@ -194,7 +194,7 @@ export const logEventAnalytics = {
   logClickSeeAll: (params: {
     type: 'offers' | 'venues' | 'artists'
     moduleName: string
-    moduleId: string
+    moduleId?: string
     homeEntryId?: string
     from?: Referrals
   }) => analytics.logEvent({ firebase: AnalyticsEvent.SEE_ALL_CLICKED }, params),
