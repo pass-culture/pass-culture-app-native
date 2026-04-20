@@ -111,8 +111,12 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   function search(values: PriceModalFormData) {
     const transformedValues = {
       ...values,
-      minPrice: values.minPrice ? String(Number(values.minPrice) * conversionRate) : '',
-      maxPrice: values.maxPrice ? String(Number(values.maxPrice) * conversionRate) : '',
+      minPrice: values.minPrice
+        ? String(Number(values.minPrice.replace(',', '.')) * conversionRate)
+        : '',
+      maxPrice: values.maxPrice
+        ? String(Number(values.maxPrice.replace(',', '.')) * conversionRate)
+        : '',
     }
 
     const offerIsFree =
