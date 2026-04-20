@@ -5,6 +5,7 @@ import { styled, useTheme } from 'styled-components/native'
 import { OfferResponse, SubcategoryResponseModelv2 } from 'api/gen'
 import { AdvicesOfferInfo } from 'features/advices/components/AdvicesOfferInfo/AdvicesOfferInfo.web'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { isCurrentBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { isBookClubSubcategory } from 'features/clubAdvices/helpers/isBookClubSubcategory'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
@@ -43,7 +44,7 @@ export const AdvicesOfferColumn: FunctionComponent<Props> = ({
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isDuo: !!(offer?.isDuo && user?.isBeneficiary),
+      isDuo: !!(offer?.isDuo && isCurrentBeneficiary(user)),
     }),
     {
       fractionDigits: 2,

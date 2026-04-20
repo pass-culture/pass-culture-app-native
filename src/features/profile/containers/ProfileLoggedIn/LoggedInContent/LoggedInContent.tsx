@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import { YoungStatusType } from 'api/gen'
+import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AppearanceButton } from 'features/profile/components/AppearanceButton/AppearanceButton'
 import { BugReportButton } from 'features/profile/components/Buttons/BugReportButton/BugReportButton'
@@ -13,6 +13,7 @@ import { ShareBanner } from 'features/profile/components/ShareBanner/ShareBanner
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
 import { loggedInBeneficiaryContentConfig } from 'features/profile/containers/ProfileLoggedIn/LoggedInContent/LoggedInBeneficiaryContent/loggedInBeneficiaryContentConfig'
 import { loggedInNonBeneficiaryContentConfig } from 'features/profile/containers/ProfileLoggedIn/LoggedInContent/LoggedInNonBeneficiaryContent/loggedInNonBeneficiaryContentConfig'
+import { CHATBOT_ELIGIBLE_STATUSES } from 'features/profile/helpers/chatbotEligibleStatuses'
 import { getShouldDisplayHelpButton } from 'features/profile/helpers/getShouldDisplayHelpButton'
 import { useAppearanceTag } from 'features/profile/helpers/useAppearanceTag'
 import { useGeolocationSwitch } from 'features/profile/helpers/useGeolocationSwitch'
@@ -21,12 +22,6 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/LocationWrapper'
 
-const CHATBOT_ELIGIBLE_STATUSES = new Set<YoungStatusType>([
-  YoungStatusType.eligible,
-  YoungStatusType.beneficiary,
-  YoungStatusType.ex_beneficiary,
-])
-
 type Props = { user: UserProfile | undefined }
 
 export const LoggedInContent = ({ user }: Props) => {
@@ -34,8 +29,7 @@ export const LoggedInContent = ({ user }: Props) => {
   const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
   const shouldDisplayHelpButton = getShouldDisplayHelpButton({ user })
 
-  const userStatusType = user?.status?.statusType
-  const isEligibleForChatbot = !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.has(userStatusType)
+  const isEligibleForChatbot = !!user?.statusType && CHATBOT_ELIGIBLE_STATUSES.has(user?.statusType)
   const shouldDisplayChatbotButton = isChatbotFeatureEnabled && isEligibleForChatbot
 
   const { hasSeenAppearanceTag, markAppearanceTagSeen } = useAppearanceTag(enableDarkModeGtm)
@@ -66,7 +60,7 @@ export const LoggedInContent = ({ user }: Props) => {
     BugReportButton: <BugReportButton />,
   }
 
-  const isBeneficiary = user?.isBeneficiary
+  const isBeneficiary = isCurrentOrFormerBeneficiary(user)
 
   const testID = isBeneficiary
     ? 'logged-in-beneficiary-content'
