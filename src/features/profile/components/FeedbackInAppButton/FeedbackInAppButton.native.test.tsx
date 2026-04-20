@@ -15,20 +15,8 @@ describe('FeedbackInAppButton', () => {
     jest.clearAllMocks()
   })
 
-  it('should render the button when displayInAppFeedback is true', () => {
-    render(<FeedbackInAppButton displayInAppFeedback />)
-
-    expect(screen.getByText('Faire une suggestion')).toBeTruthy()
-  })
-
-  it('should not render the button when displayInAppFeedback is false', () => {
-    render(<FeedbackInAppButton displayInAppFeedback={false} />)
-
-    expect(screen.queryByText('Faire une suggestion')).toBeNull()
-  })
-
   it('should navigate when "Faire une suggestion" button is clicked', async () => {
-    render(<FeedbackInAppButton displayInAppFeedback />)
+    render(<FeedbackInAppButton />)
 
     const legalNoticesButton = screen.getByText('Faire une suggestion')
     await user.press(legalNoticesButton)

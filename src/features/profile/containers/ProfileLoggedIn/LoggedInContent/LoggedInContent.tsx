@@ -2,14 +2,15 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { YoungStatusType } from 'api/gen'
+import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AppearanceButton } from 'features/profile/components/AppearanceButton/AppearanceButton'
 import { BugReportButton } from 'features/profile/components/Buttons/BugReportButton/BugReportButton'
 import { ChatbotButton } from 'features/profile/components/Buttons/ChatbotButton/ChatbotButton'
 import { HelpButtonRow } from 'features/profile/components/Buttons/HelpButton/HelpButtonRow'
 import { LocationButton } from 'features/profile/components/Buttons/LocationButton/LocationButton'
-import { FeedbackInAppButton } from 'features/profile/components/FeedbackInAppButton/FeedbackInAppButton'
 import { ProfileContentLayout } from 'features/profile/components/ProfileContentLayout/ProfileContentLayout'
+import { StyledSectionRow } from 'features/profile/components/SectionRowWithPaddingVertical/SectionRowWithPaddingVertical'
 import { ShareBanner } from 'features/profile/components/ShareBanner/ShareBanner'
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
 import { loggedInBeneficiaryContentConfig } from 'features/profile/containers/ProfileLoggedIn/LoggedInContent/LoggedInBeneficiaryContent/loggedInBeneficiaryContentConfig'
@@ -20,8 +21,8 @@ import { useGeolocationSwitch } from 'features/profile/helpers/useGeolocationSwi
 import { UserProfile } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location/LocationWrapper'
+import { Bulb } from 'ui/svg/icons/Bulb'
 
 const CHATBOT_ELIGIBLE_STATUSES = new Set<YoungStatusType>([
   YoungStatusType.eligible,
@@ -32,7 +33,6 @@ const CHATBOT_ELIGIBLE_STATUSES = new Set<YoungStatusType>([
 type Props = { user: UserProfile | undefined }
 
 export const LoggedInContent = ({ user }: Props) => {
-  const { data: remoteConfig } = useRemoteConfigQuery()
   const isChatbotFeatureEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CHATBOT)
   const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
   const shouldDisplayHelpButton = getShouldDisplayHelpButton({ user })
@@ -64,7 +64,12 @@ export const LoggedInContent = ({ user }: Props) => {
       />
     ),
     FeedbackInAppButton: (
-      <FeedbackInAppButton displayInAppFeedback={remoteConfig.displayInAppFeedback} />
+      <StyledSectionRow
+        title="Faire une suggestion"
+        type="navigable"
+        icon={Bulb}
+        navigateTo={getProfilePropConfig('FeedbackInApp')}
+      />
     ),
     HelpButton: shouldDisplayHelpButton ? <HelpButtonRow birthDate={user?.birthDate} /> : null,
     ShareBanner: <ShareBanner />,

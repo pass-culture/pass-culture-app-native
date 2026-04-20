@@ -4,15 +4,13 @@ import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/
 import { StyledSectionRow } from 'features/profile/components/SectionRowWithPaddingVertical/SectionRowWithPaddingVertical'
 import { Bulb } from 'ui/svg/icons/Bulb'
 
-type Props = { displayInAppFeedback: boolean }
-
-export const FeedbackInAppButton = ({ displayInAppFeedback }: Props) => {
-  return displayInAppFeedback ? (
+export const FeedbackInAppButton = () => {
+  return (
     <StyledSectionRow
       title="Faire une suggestion"
       type="navigable"
       icon={Bulb}
       navigateTo={getProfilePropConfig('FeedbackInApp')}
     />
-  ) : null
+  )
 }

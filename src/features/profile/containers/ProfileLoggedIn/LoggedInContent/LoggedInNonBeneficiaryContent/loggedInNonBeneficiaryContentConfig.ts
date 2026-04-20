@@ -58,6 +58,10 @@ export const loggedInNonBeneficiaryContentConfig = ({
     items: [{ component: ShareBanner, key: 'ShareBanner' }],
   },
   {
+    section: 'Faire une suggestion',
+    items: [{ component: FeedbackInAppButton, key: 'FeedbackInAppButton' }],
+  },
+  {
     section: 'Suivre le pass Culture',
     items: [{ component: SocialNetwork, key: 'SocialNetwork' }],
   },

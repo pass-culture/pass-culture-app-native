@@ -122,7 +122,6 @@ describe('<ProfileV1 />', () => {
       ...remoteConfigResponseFixture,
       data: {
         ...DEFAULT_REMOTE_CONFIG,
-        displayInAppFeedback: true,
       },
     })
   })

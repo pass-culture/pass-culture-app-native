@@ -53,6 +53,10 @@ export const loggedInNonBeneficiaryContentConfig = ({
     ],
   },
   {
+    section: 'Faire une suggestion',
+    items: [{ component: FeedbackInAppButton, key: 'FeedbackInAppButton' }],
+  },
+  {
     section: 'Suivre le pass Culture',
     items: [{ component: SocialNetwork, key: 'SocialNetwork' }],
   },
