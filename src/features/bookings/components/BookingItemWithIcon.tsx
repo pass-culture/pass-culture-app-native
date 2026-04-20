@@ -17,7 +17,7 @@ export const Item: React.FC<{
         <Icon color={designSystem.color.icon.subtle} size={icons.sizes.small} />
       </IconWrapper>
       {typeof message === 'string' ? <Typo.BodyAccentXs>{message}</Typo.BodyAccentXs> : message}
-      <StyledBodyAccentXs>{subtext}</StyledBodyAccentXs>
+      {subtext ? <StyledBodyAccentXs>{subtext}</StyledBodyAccentXs> : null}
     </Row>
   )
 }
