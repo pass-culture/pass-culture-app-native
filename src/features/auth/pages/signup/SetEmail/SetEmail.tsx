@@ -7,6 +7,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
 import { SSOButtonGoogle } from 'features/auth/components/SSOButton/SSOButtonGoogle'
+import { getSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
 import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
 import { StepperOrigin, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -65,17 +66,22 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
 
   const onSSOSignInFailure = useCallback(
     (errorResponse: SignInResponseFailure) => {
-      if (errorResponse.content?.code === 'SSO_EMAIL_NOT_FOUND') {
+      const { content, provider, statusCode } = errorResponse
+      const failureCode = content?.code
+      if (content?.code === 'SSO_EMAIL_NOT_FOUND') {
         onSSOEmailNotFoundError()
         goToNextStep({
-          accountCreationToken: errorResponse.content.accountCreationToken,
-          ssoProvider: errorResponse.provider,
+          accountCreationToken: content.accountCreationToken,
+          ssoProvider: provider,
         })
+      } else if (failureCode === 'SSO_ERROR') {
+        showErrorSnackBar(getSSOErrorMessage(provider, 'signup'))
+      } else if (failureCode === 'NETWORK_REQUEST_FAILED') {
+        showErrorSnackBar('Erreur réseau. Tu peux réessayer une fois la connexion réétablie.')
+      } else if (statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS') {
+        showErrorSnackBar('Nombre de tentatives dépassé. Réessaye dans 1 minute.')
       } else {
-        const providerName = errorResponse.provider === 'apple' ? 'Apple' : 'Google'
-        showErrorSnackBar(
-          `Ton compte ${providerName} semble ne pas être valide. Pour pouvoir t\u2019inscrire, confirme d\u2019abord ton adresse e-mail ${providerName}.`
-        )
+        showErrorSnackBar(getSSOErrorMessage(provider, 'signup'))
       }
     },
     [goToNextStep, onSSOEmailNotFoundError]
