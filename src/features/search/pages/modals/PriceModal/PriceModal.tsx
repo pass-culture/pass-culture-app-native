@@ -98,8 +98,13 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 
   const isLimitCreditSearchDefaultValue = Number(searchState?.maxPrice) === formatAvailableCredit
   const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
-  const GRANT_FREE_TYPES = [UserCreditType.CREDIT_V3_15, UserCreditType.CREDIT_V3_16]
-  const creditTypeIsNotGrantFree = user && !GRANT_FREE_TYPES.includes(user.creditType)
+  const GRANT_FREE_OR_EMPTY_TYPES = [
+    UserCreditType.CREDIT_V3_15,
+    UserCreditType.CREDIT_V3_16,
+    UserCreditType.CREDIT_EMPTY,
+  ]
+  const creditTypeIsNotGrantFreeOrEmpty =
+    user && !GRANT_FREE_OR_EMPTY_TYPES.includes(user.creditType)
 
   const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false
 
@@ -308,7 +313,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
       }>
       <FormContainer isKeyboardOpen={isKeyboardOpen}>
         <Form.MaxWidth>
-          {isLoggedInAndBeneficiary && creditTypeIsNotGrantFree ? (
+          {isLoggedInAndBeneficiary && creditTypeIsNotGrantFreeOrEmpty ? (
             <Container>
               <Banner label={bannerTitle} Icon={Error} testID="creditBanner" />
             </Container>
@@ -326,7 +331,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
             )}
           />
           <StyledSeparator />
-          {isLoggedInAndBeneficiary ? (
+          {isLoggedInAndBeneficiary && creditTypeIsNotGrantFreeOrEmpty ? (
             <Controller
               control={control}
               name="isLimitCreditSearch"
