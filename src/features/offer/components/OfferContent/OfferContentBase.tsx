@@ -269,8 +269,28 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     })
   }
 
+  const proAdvicesTotalCount = proAdvicesCount ?? proAdvices?.length ?? 0
+  const proAdvicesCtaLabel = `Lire les ${proAdvicesTotalCount} avis`
+
   const handleOnSeeMoreProAdvicePress = (venueId: number) => {
+    void analytics.logConsultAdvice({
+      from: 'offer',
+      offerId: offer.id.toString(),
+      venueId: venueId.toString(),
+      originDetails: PRO_ADVICE_VARIANT_CONFIG.titleSection,
+      adviceType: 'pro',
+    })
     navigate('ProAdvicesOffer', { offerId: offer.id, venueId })
+  }
+
+  const handleOnPressAllProAdvicesButton = () => {
+    void analytics.logConsultAdvice({
+      from: 'offer',
+      offerId: offer.id.toString(),
+      venueId: venue.id.toString(),
+      originDetails: proAdvicesCtaLabel,
+      adviceType: 'pro',
+    })
   }
 
   const handleOnPressAllProAdvicesFromModal = () => {
@@ -278,8 +298,19 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     navigate('ProAdvicesOffer', { offerId: offer.id })
   }
 
-  // The feedback analytics will be added in the next ticket.
-  const handleOnProAdvicesFeedbackLog = useCallback(() => undefined, [])
+  const handleOnProAdvicesFeedbackLog = useCallback(
+    (type: ReactionTypeEnum) => {
+      const feedbackResponse = type === ReactionTypeEnum.LIKE ? 'Oui' : 'Non'
+      void analytics.logFeatureFeedbackClicked({
+        featureName: 'pro_advices',
+        feedbackResponse,
+        from: 'offer',
+        offerId: offer.id.toString(),
+        venueId: venue.id.toString(),
+      })
+    },
+    [offer.id, venue.id]
+  )
 
   const offerCtaButton = (
     <OfferCTAButton
@@ -406,16 +437,17 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               sectionId="pro-advice-section"
               anchorSectionId="pro-advice-section-anchor">
               <ClubAdviceSection
-                ctaLabel={`Lire les ${proAdvicesCount ?? proAdvices.length} avis`}
+                ctaLabel={proAdvicesCtaLabel}
                 variantInfo={PRO_ADVICE_VARIANT_CONFIG}
                 data={proAdvices}
                 navigateTo={{
                   screen: 'ProAdvicesOffer',
                   params: { offerId: offer.id },
                 }}
+                onBeforeNavigate={handleOnPressAllProAdvicesButton}
                 onSeeMoreButtonPress={handleOnSeeMoreProAdvicePress}
                 onShowClubAdviceWritersModal={showProAdvicesWritersModal}
-                displayAllAdvicesButton={(proAdvicesCount ?? proAdvices.length) > 1}
+                displayAllAdvicesButton={proAdvicesTotalCount > 1}
                 showSectionTag={enableNewTagProAdvices}
                 feedback={
                   <FeedBack
