@@ -1,0 +1,42 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - search
+  - refacto
+onFlowStart:
+  - runScript: ../common/DeepLink.js
+---
+- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/StopApp.yml
+- runFlow: ../common/DeeplinkToHome.yml
+
+- runFlow: ../common/GoToSearchFromTabBar.yml
+- runFlow: ../common/GoToSearchFromTabBar.yml
+
+- assertVisible: 'Rechercher'
+
+- runFlow:
+    when:
+      visible: 'Ma position'
+    commands:
+      - tapOn: 'Ma position'
+      - tapOn: 'Localisation – Liste - Élément 3 sur 3 - France entière.*'
+
+- tapOn: '.*Cinéma.*'
+- tapOn: "Films à l'affiche"
+
+- tapOn: 'Voir tous les filtres : 1 filtre actif'
+- assertVisible: "Filtre - Catégorie - Films à l'affiche"
+
+- tapOn: '.*Catégorie.*'
+- assertVisible: "Films à l'affiche"
+- tapOn: 'Réinitialiser'
+
+- tapOn: 'Appliquer le filtre'
+- assertVisible: "Filtre - Catégorie - Toutes les catégories"
+- tapOn: 'Rechercher'
+
+- assertVisible: "Voir tous les filtres"
+
+
+
+- runFlow: ../common/StopApp.yml

@@ -1,0 +1,96 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - search
+onFlowStart:
+  - runScript: ../common/DeepLink.js
+---
+- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/StopApp.yml
+- runFlow: ../common/DeeplinkToHome.yml
+
+- runFlow: ../common/GoToSearchFromTabBar.yml
+
+- assertVisible: 'Rechercher'
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - scrollUntilVisible:
+          element:
+            text: 'Catégorie livre.*'
+      - tapOn: 'Catégorie livre.*'
+      - tapOn: 'Romans & littérature'
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - scrollUntilVisible:
+          element:
+            text: 'LIVRES'
+      - tapOn: 'LIVRES'
+      - tapOn: 'Romans & littérature'
+
+- runFlow:
+    when:
+      visible: 'Ma position'
+    commands:
+      - tapOn: 'Ma position'
+      - tapOn: 'Localisation – Liste - Élément 3 sur 3 - France entière.*'
+
+- tapOn: 'Voir tous les filtres : 1 filtre actif'
+- tapOn: '.*Catégorie.*'
+
+- tapOn: '.*Romance.*'
+- tapOn: 'Appliquer le filtre'
+- tapOn: 'Rechercher'
+
+- swipe:
+    from:
+      text: Les offres
+    direction: UP
+
+- scroll
+- extractTextWithAI:
+    query: "Le titre exacte d'une des offres Livre visible dans les résultats de recherche"
+    outputVariable: 'offerResult'
+- tapOn: .*${offerResult}.*
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn:
+          id: offerBodyImage
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn: "Voir l'illustration en plein écran"
+
+- runFlow:
+    when:
+      visible: 'Illustration 1 sur 2'
+    commands:
+      - assertVisible:
+          text: Illustration 1 sur 2
+      - swipe:
+          direction: LEFT
+      - assertVisible:
+          text: Illustration 2 sur 2
+      - swipe:
+          direction: RIGHT
+
+- runFlow:
+    when:
+      notVisible: 'Illustration 1 sur 2'
+    commands:
+      - assertVisible:
+          text: Illustration 1 sur 1
+
+- tapOn: Revenir en arrière
+- tapOn: Revenir en arrière
+
+- runFlow: ../common/StopApp.yml
