@@ -2,6 +2,7 @@ import { OfferResponse, SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from
 import { OffersModule } from 'features/home/types'
 import { PlaylistType } from 'features/offer/enums'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
+import { Artist } from 'features/venue/types'
 import { Offer } from 'shared/offer/types'
 import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 
@@ -23,10 +24,17 @@ export type VerticalPlaylistSource =
   | { type: VerticalPlaylist.VenueOffers; module: OffersVenue }
   | { type: VerticalPlaylist.ThematicSearchOffers; module: ThematicSearchPlaylistData }
 
-export type VerticalPlaylistData = {
+export type VerticalPlaylistOffersData = {
   items: Offer[]
   title: string
   subtitle?: string
   searchId?: string
   searchQuery?: string
+}
+
+export type VerticalPlaylistArtistsData = {
+  items: Artist[]
+  nbItems: number
+  title: string
+  subtitle?: string
 }

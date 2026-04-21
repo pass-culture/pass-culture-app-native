@@ -6,16 +6,21 @@ import { plural } from 'libs/plural'
 import { Typo } from 'ui/theme'
 
 interface Props {
-  nbHits: number
+  nbItems: number
+  type?: 'results' | 'offers' | 'artists' | 'venues'
 }
 
-export const NumberOfOffers: React.FC<Props> = ({ nbHits }) => {
-  const numberOfResults = plural(nbHits, {
-    singular: '# offre',
-    plural: '# offres',
-  })
+const LABELS = {
+  results: { singular: '# résultat', plural: '# résultats' },
+  offers: { singular: '# offre', plural: '# offres' },
+  artists: { singular: '# artiste', plural: '# artistes' },
+  venues: { singular: '# lieu', plural: '# lieux' },
+}
 
-  if (!nbHits) return null
+export const NumberOfItems: React.FC<Props> = ({ nbItems, type = 'results' }) => {
+  if (!nbItems) return null
+
+  const numberOfResults = plural(nbItems, LABELS[type])
 
   return (
     <Container accessibilityRole={AccessibilityRole.STATUS}>

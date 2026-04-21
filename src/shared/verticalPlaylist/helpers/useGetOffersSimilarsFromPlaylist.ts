@@ -1,7 +1,7 @@
 import { PlaylistType } from 'features/offer/enums'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { SimilarOfferPlaylist } from 'shared/offer/types'
-import { OffersSimilars, VerticalPlaylistData } from 'shared/verticalPlaylist/types'
+import { OffersSimilars, VerticalPlaylistOffersData } from 'shared/verticalPlaylist/types'
 
 type SimilarOfferPlaylistWithHits = Omit<SimilarOfferPlaylist, 'handleChangePlaylistDisplay'> & {
   nbHits?: number
@@ -12,7 +12,7 @@ export const useGetOffersSimilarsFromPlaylist = ({
   offerSearchGroup,
   searchGroupList,
   type,
-}: OffersSimilars): VerticalPlaylistData => {
+}: OffersSimilars): VerticalPlaylistOffersData => {
   const { sameCategorySimilarOffers, otherCategoriesSimilarOffers } = useOfferPlaylist({
     offer,
     offerSearchGroup,

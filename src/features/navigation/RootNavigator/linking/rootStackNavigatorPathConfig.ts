@@ -412,6 +412,10 @@ export const rootStackNavigatorPathConfig = {
     path: 'liste-de-lecture-verticale-offres',
     parse: screenParamsParser['VerticalPlaylistOffers'],
   },
+  VerticalPlaylistArtists: {
+    path: 'liste-de-lecture-verticale-artistes',
+    parse: screenParamsParser['VerticalPlaylistArtists'],
+  },
   VideoModulePage: {
     path: 'module-video/:moduleId',
     parse: screenParamsParser['VideoModulePage'],

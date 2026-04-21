@@ -500,7 +500,11 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
             apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
             onViewableItemsChanged={handleViewableItemsChanged}
-            seeAllButton={{ navigateToVerticalPlaylist, onBeforeNavigate }}
+            seeAllButton={{
+              navigateToVerticalPlaylist,
+              onBeforeNavigate,
+              hideSearchSeeAll: true,
+            }}
             proAdvicesSegment={proAdvicesSegment}
           />
           {children}

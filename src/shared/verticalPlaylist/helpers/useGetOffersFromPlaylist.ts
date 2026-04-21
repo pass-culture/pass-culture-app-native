@@ -3,7 +3,7 @@ import { OffersModule } from 'features/home/types'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { VenueHit } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
-import { VerticalPlaylistData } from 'shared/verticalPlaylist/types'
+import { VerticalPlaylistOffersData } from 'shared/verticalPlaylist/types'
 
 const isOfferModule = (items: Offer[] | VenueHit[]): items is Offer[] => {
   const firstItem = items[0]
@@ -20,7 +20,7 @@ export const useGetOffersFromPlaylist = ({
   displayParameters,
   data,
   recommendationParameters,
-}: OffersModule): VerticalPlaylistData => {
+}: OffersModule): VerticalPlaylistOffersData => {
   const modules = [
     { type, id, title, offersModuleParameters, displayParameters, data, recommendationParameters },
   ]

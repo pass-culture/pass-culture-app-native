@@ -39,7 +39,8 @@ export type OfferPlaylistListProps = {
   seeAllButton: {
     navigateToVerticalPlaylist: (type: PlaylistType) => InternalNavigationProps['navigateTo']
     onBeforeNavigate: (type: PlaylistType) => void
-    hideSeeAllButton?: boolean
+    hidePlaylistSeeAll?: boolean
+    hideSearchSeeAll?: boolean
   }
   proAdvicesSegment?: string
 }
@@ -138,7 +139,8 @@ export function OfferPlaylistList({
 
         const navigateToVerticalPlaylist = seeAllButton.navigateToVerticalPlaylist(playlist.type)
         const onBeforeNavigate = () => seeAllButton.onBeforeNavigate(playlist.type)
-        const hideSeeAllButton = seeAllButton.hideSeeAllButton
+        const hidePlaylistSeeAll = seeAllButton.hidePlaylistSeeAll
+        const hideSearchSeeAll = seeAllButton.hideSearchSeeAll
 
         return (
           <ObservedPlaylist
@@ -171,7 +173,12 @@ export function OfferPlaylistList({
                 playlistRef={listRef}
                 FlatListComponent={FlatList}
                 keyExtractor={keyExtractor}
-                seeAllButton={{ navigateToVerticalPlaylist, onBeforeNavigate, hideSeeAllButton }}
+                seeAllButton={{
+                  navigateToVerticalPlaylist,
+                  onBeforeNavigate,
+                  hidePlaylistSeeAll,
+                  hideSearchSeeAll,
+                }}
               />
             )}
           </ObservedPlaylist>

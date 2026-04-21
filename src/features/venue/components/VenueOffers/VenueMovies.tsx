@@ -96,7 +96,11 @@ export const VenueMovies: React.FC<{
                 />
               )}
               keyExtractor={keyExtractor}
-              seeAllButton={{ navigateToVerticalPlaylist, onBeforeNavigate }}
+              seeAllButton={{
+                onBeforeNavigate,
+                navigateToVerticalPlaylist,
+                hideSearchSeeAll: true,
+              }}
             />
           </PassPlaylistContainer>
         </SectionWithDivider>
