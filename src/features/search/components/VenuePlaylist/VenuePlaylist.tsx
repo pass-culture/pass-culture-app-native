@@ -46,6 +46,7 @@ type Props = {
     viewableItems: ViewToken<unknown>[]
     changed: ViewToken<unknown>[]
   }) => void
+  withMargins?: boolean
 }
 
 const renderVenueItem = (
@@ -86,6 +87,7 @@ export const VenuePlaylist: React.FC<Props> = ({
   style,
   playlistRef,
   onViewableItemsChanged,
+  withMargins = true,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const {
@@ -138,7 +140,7 @@ export const VenuePlaylist: React.FC<Props> = ({
   return (
     <React.Fragment>
       <Container style={style}>
-        <HeaderPlaylistContainer>
+        <HeaderPlaylistContainer withMargins={withMargins}>
           <Typo.Title3 numberOfLines={isWeb ? 1 : undefined}>{venuePlaylistTitle}</Typo.Title3>
           {shouldDisplaySeeOnMapButton ? (
             <ButtonContainer>
@@ -167,9 +169,10 @@ export const VenuePlaylist: React.FC<Props> = ({
           keyExtractor={keyExtractor}
           testID="search-venue-list"
           onEndReached={logAllTilesSeenOnce}
-          contentContainerStyle={{ paddingHorizontal: designSystem.size.spacing.xl }}
+          contentContainerStyle={withMargins && { paddingHorizontal: designSystem.size.spacing.xl }}
           ref={playlistRef}
           onViewableItemsChanged={onViewableItemsChanged}
+          withMargins={false}
         />
       </Container>
       {shouldDisplaySeparator ? <StyledSeparator testID="venue-playlist-separator" /> : null}
@@ -186,8 +189,8 @@ const Container = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xxl,
 }))
 
-const HeaderPlaylistContainer = styled.View(({ theme }) => ({
-  marginLeft: theme.designSystem.size.spacing.xl,
+const HeaderPlaylistContainer = styled.View<{ withMargins: boolean }>(({ theme, withMargins }) => ({
+  marginLeft: withMargins ? theme.designSystem.size.spacing.xl : 0,
 }))
 
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({

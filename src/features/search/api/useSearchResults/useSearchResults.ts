@@ -7,8 +7,8 @@ import { useMemo } from 'react'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { SearchState } from 'features/search/types'
-import { Artist, Venue } from 'features/venue/types'
+import { SearchOfferHits, SearchState } from 'features/search/types'
+import { Venue } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { isGeolocValid } from 'features/venueMap/helpers/isGeolocValid'
 import { removeSelectedVenue, setVenues } from 'features/venueMap/store/venueMapStore'
@@ -32,14 +32,6 @@ type SearchOfferResponse = {
   venues: Pick<SearchResponse<AlgoliaVenue>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
   duplicatedOffers: Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
   offerArtists: Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
-}
-
-export type SearchOfferHits = {
-  offers: Offer[]
-  venueNotOpenToPublic: AlgoliaVenue[]
-  venues: AlgoliaVenue[]
-  artists: Artist[]
-  duplicatedOffers: Offer[]
 }
 
 export const useSearchInfiniteQuery = (searchState: SearchState) => {
