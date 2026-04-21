@@ -1,79 +1,83 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useNavigation, useRoute } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
-import { isApiError } from 'api/apiHelpers'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CountryPicker } from 'features/identityCheck/components/countryPicker/CountryPicker'
-import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
-import { invalidateStepperInfoQueries } from 'features/identityCheck/pages/helpers/invalidateStepperQueries'
-import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { findCountry } from 'features/identityCheck/pages/phoneValidation/helpers/findCountry'
-import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
 import {
   PhoneNumberFormValues,
   phoneNumberSchema,
 } from 'features/identityCheck/pages/phoneValidation/helpers/phoneNumberSchema'
-import { IdentityCheckStep } from 'features/identityCheck/types'
-import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
+import {
+  phoneNumberActions,
+  usePhoneNumber,
+} from 'features/identityCheck/pages/profile/store/phoneNumberStore'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { SubscriptionStackParamList } from 'features/navigation/navigators/SubscriptionStackNavigator/types'
 import { METROPOLITAN_FRANCE } from 'shared/countries/constants'
+import {
+  getCountryIdFromPhoneNumber,
+  getNationalNumber,
+} from 'shared/phoneNumber/helperPhoneNumber'
 import { Form } from 'ui/components/Form'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Button } from 'ui/designSystem/Button/Button'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const SetPhoneNumberWithoutValidation = () => {
-  const { dispatch, phoneValidation } = useSubscriptionContext()
-  const { control, handleSubmit, getValues, setError, formState } = useForm<PhoneNumberFormValues>({
+export const SetPhoneNumber = () => {
+  const { params } = useRoute<UseRouteType<'SetPhoneNumber'>>()
+  const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
+  const { user } = useAuthContext()
+  const { setPhoneNumber: setStoredPhoneNumber } = phoneNumberActions
+  const storedPhoneNumber = usePhoneNumber()
+  const { navigate } = useNavigation<NativeStackNavigationProp<SubscriptionStackParamList>>()
+
+  const getUserPhoneNumber = () => {
+    if (user?.phoneNumber) {
+      return getNationalNumber(user.phoneNumber)
+    } else if (storedPhoneNumber?.phoneNumber) {
+      return getNationalNumber(storedPhoneNumber.phoneNumber)
+    } else {
+      return ''
+    }
+  }
+  const getUserCountryId = () => {
+    if (user?.phoneNumber) {
+      return getCountryIdFromPhoneNumber(user.phoneNumber)
+    } else if (storedPhoneNumber?.countryId) {
+      return storedPhoneNumber.countryId
+    } else {
+      return METROPOLITAN_FRANCE.id
+    }
+  }
+
+  const { control, handleSubmit, formState } = useForm<PhoneNumberFormValues>({
     resolver: yupResolver(phoneNumberSchema),
     defaultValues: {
-      phoneNumber: phoneValidation?.phoneNumber,
-      countryId: phoneValidation?.country.countryCode ?? METROPOLITAN_FRANCE.id,
+      phoneNumber: getUserPhoneNumber(),
+      countryId: getUserCountryId(),
     },
     mode: 'onChange',
   })
 
-  const { navigateForwardToStepper } = useNavigateForwardToStepper()
-  const saveStep = useSaveStep()
-  const { mutate: patchProfile } = usePatchProfileMutation({
-    onSuccess: () => {
-      const { phoneNumber, countryId } = getValues()
-      const country = findCountry(countryId)
-      if (!country) return
+  const disabled = !formState.isValid
 
-      dispatch({
-        type: 'SET_PHONE_NUMBER',
-        payload: {
-          phoneNumber,
-          country: {
-            countryCode: country.id,
-            callingCode: country.callingCode,
-          },
-        },
-      })
-      saveStep(IdentityCheckStep.PHONE_VALIDATION)
-      invalidateStepperInfoQueries()
-      navigateForwardToStepper()
-    },
-    onError: (error) => {
-      isApiError(error) && setError('phoneNumber', { message: error.message })
-    },
-  })
-
-  const onSubmit = async ({ phoneNumber, countryId }: PhoneNumberFormValues) => {
-    const country = findCountry(countryId)
-    if (!country) {
-      return
-    }
-    const phoneNumberWithPrefix = formatPhoneNumberWithPrefix(phoneNumber, country.callingCode)
-    patchProfile({ phoneNumber: phoneNumberWithPrefix })
+  async function submitPhoneNumber({ phoneNumber, countryId }: PhoneNumberFormValues) {
+    if (disabled) return
+    setStoredPhoneNumber({ phoneNumber, countryId })
+    navigate('SetStatus', { type })
   }
 
-  const submit = handleSubmit(onSubmit)
+  useEnterKeyAction(disabled ? undefined : () => handleSubmit(submitPhoneNumber))
 
   return (
     <PageWithHeader
@@ -95,10 +99,9 @@ export const SetPhoneNumberWithoutValidation = () => {
                     autoCapitalize="none"
                     keyboardType="number-pad"
                     label="Numéro de téléphone"
-                    description="0639980123"
+                    description="Exemple&nbsp;: +33639980123"
                     value={field.value}
                     onChangeText={field.onChange}
-                    onSubmitEditing={submit}
                     accessibilityHint={fieldState.error?.message}
                     leftComponent={
                       <Controller
@@ -131,7 +134,7 @@ export const SetPhoneNumberWithoutValidation = () => {
           disabled={!formState.isValid}
           wording="Continuer"
           accessibilityLabel="Continuer vers l’étape suivante"
-          onPress={submit}
+          onPress={handleSubmit(submitPhoneNumber)}
         />
       }
     />

@@ -56,7 +56,6 @@ export enum QueryKeys {
   SIMILAR_OFFERS_IDS = 'similarOffersIds',
   STEPPER_INFO = 'stepperInfo',
   SUBCATEGORIES = 'subcategories',
-  SUBSCRIPTION_PROFILE_INFO = 'subscriptionProfileInfo',
   USER_PROFILE = 'userProfile',
   VENUE = 'venue',
   VENUE_PRO_ADVICES = 'venueProAdvices',

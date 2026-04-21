@@ -4,14 +4,18 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
+import { shouldProvidePhoneNumber } from 'features/identityCheck/pages/profile/utils'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useAddressesQuery } from 'libs/place/queries/useAddressesQuery'
 import { useIdCheckAddressAutocompletion } from 'queries/settings/useSettings'
@@ -37,6 +41,7 @@ export const SetAddress = () => {
   const origin = params?.origin
   const freeOfferId = params?.freeOfferId
 
+  const { user } = useAuthContext()
   const identityCheckAndRecapExistingDataConfig = {
     headerTitle: 'Profil',
     title: 'Quelle est ton adresse\u00a0?',
@@ -51,23 +56,28 @@ export const SetAddress = () => {
   }
 
   const { data: idCheckAddressAutocompletion } = useIdCheckAddressAutocompletion()
+  const phoneNumberInProfileStepper = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_PHONE_NUMBER_IN_PROFILE_STEPPER
+  )
   const storedAddress = useAddress()
+  const defaultAddress = user?.street ?? storedAddress
   const storedCity = useCity()
   const { setAddress: setStoreAddress } = addressActions
   const { navigate } = useNavigation<UseNavigationType>()
-  const [query, setQuery] = useState<string>(storedAddress ?? '')
+  const [query, setQuery] = useState<string>(defaultAddress ?? '')
   const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
-  const [selectedAddress, setSelectedAddress] = useState<string | null>(storedAddress ?? null)
+  const [selectedAddress, setSelectedAddress] = useState<string | null>(defaultAddress ?? null)
   const debouncedSetQuery = useRef(debounce(setDebouncedQuery, 500)).current
-
+  const defaultCity = user?.city ?? storedCity?.name
+  const defaultPostalCode = user?.postalCode ?? storedCity?.postalCode
   const {
     data: addresses = [],
     isLoading,
     isError,
   } = useAddressesQuery({
     query: debouncedQuery,
-    cityCode: storedCity?.code ?? '',
-    postalCode: storedCity?.postalCode ?? '',
+    cityCode: defaultCity ?? '',
+    postalCode: defaultPostalCode ?? '',
     enabled: !!idCheckAddressAutocompletion && debouncedQuery.length > 0,
     limit: 10,
   })
@@ -118,9 +128,17 @@ export const SetAddress = () => {
   const submitAddress = async () => {
     if (!enabled) return
     setStoreAddress(selectedAddress ?? query)
-    navigate(...getSubscriptionHookConfig('SetStatus', getStatusNavigationParams()))
+    if (phoneNumberInProfileStepper && shouldProvidePhoneNumber(user)) {
+      navigate(...getSubscriptionHookConfig('SetPhoneNumber', { type }))
+    } else {
+      navigate(...getSubscriptionHookConfig('SetStatus', getStatusNavigationParams()))
+    }
   }
 
+  const accessibilityLabel =
+    phoneNumberInProfileStepper && shouldProvidePhoneNumber(user)
+      ? 'Continuer vers le numéro de téléphone'
+      : 'Continuer vers le statut'
   const errorMessage =
     'Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces.'
 
@@ -168,7 +186,7 @@ export const SetAddress = () => {
           type="submit"
           onPress={submitAddress}
           wording="Continuer"
-          accessibilityLabel="Continuer vers le statut"
+          accessibilityLabel={accessibilityLabel}
           disabled={!enabled}
         />
       }

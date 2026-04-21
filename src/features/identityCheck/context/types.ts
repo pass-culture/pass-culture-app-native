@@ -23,6 +23,7 @@ export interface SubscriptionState {
     address: string | null
     city: SuggestedCity | null
     name: Name | null
+    phoneNumber?: string | null
     status: ActivityIdEnum | null
     hasSchoolTypes: boolean
     schoolType: SchoolTypesIdEnum | null

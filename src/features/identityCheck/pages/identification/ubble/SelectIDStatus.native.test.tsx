@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate, replace } from '__mocks__/@react-navigation/native'
 import { IdentificationSessionResponse } from 'api/gen'
 import { SelectIDStatus } from 'features/identityCheck/pages/identification/ubble/SelectIDStatus'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -19,6 +20,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('SelectIDStatus', () => {
+  beforeEach(() => {
+    setFeatureFlags([])
+  })
+
   it('should render SelectIDStatus page correctly', () => {
     render(reactQueryProviderHOC(<SelectIDStatus />))
 

@@ -1,4 +1,4 @@
-import { COUNTRIES } from 'features/identityCheck/components/countryPicker/constants'
+import { WHITELISTED_COUNTRIES } from 'shared/countries/constants'
 
 export const findCountry = (countryId: string) =>
-  COUNTRIES.find((country) => country.id === countryId)
+  WHITELISTED_COUNTRIES.find((country) => country.id === countryId)

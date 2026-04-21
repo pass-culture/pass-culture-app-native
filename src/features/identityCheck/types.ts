@@ -11,21 +11,11 @@ export enum DeprecatedIdentityCheckStep {
 }
 
 export enum IdentityCheckStep {
-  PHONE_VALIDATION = 'phone-validation',
   PROFILE = 'profile-completion',
   IDENTIFICATION = 'identity-check',
   CONFIRMATION = 'honor-statement',
+  PHONE_VALIDATION = 'phone-validation',
   END = 'end',
-}
-
-export interface RehydrationProfile {
-  activity: string
-  address: string
-  city: string
-  firstName: string
-  lastName: string
-  postalCode: string
-  schoolType: string
 }
 
 export type SubscriptionScreen = keyof SubscriptionStackParamList

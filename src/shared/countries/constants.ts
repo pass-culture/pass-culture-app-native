@@ -6,7 +6,7 @@ export const METROPOLITAN_FRANCE: Country = {
   name: 'France',
 }
 
-export const COUNTRIES: Country[] = [
+export const WHITELISTED_COUNTRIES: Country[] = [
   METROPOLITAN_FRANCE,
   {
     id: 'MQ',
