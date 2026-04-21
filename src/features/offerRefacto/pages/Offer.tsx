@@ -138,7 +138,7 @@ export function Offer() {
     latitude: userLocation?.latitude,
     longitude: userLocation?.longitude,
     select: ({ proAdvices, nbResults }) => ({
-      list: offerProAdvicesToAdviceCardData(proAdvices),
+      list: offerProAdvicesToAdviceCardData(proAdvices, offerId),
       nbResults,
     }),
   })

@@ -275,6 +275,26 @@ describe('<Offer />', () => {
       expect(await screen.findByText('Les avis des pros')).toBeOnTheScreen()
     })
 
+    it('should trigger ConsultVenue log when pressing pro advice card header', async () => {
+      renderOfferPage({ mockOffer: offerResponseSnap })
+
+      await screen.findByText('Les avis des pros')
+
+      const cardHeader = screen.getByLabelText('Voir le lieu The Best Place')
+
+      if (cardHeader) {
+        await user.press(cardHeader)
+      }
+
+      expect(analytics.logConsultVenue).toHaveBeenCalledWith({
+        adviceType: 'pro',
+        from: 'offer',
+        offerId: '116656',
+        originDetail: 'Les avis des pros',
+        venueId: '1',
+      })
+    })
+
     describe('when AB testing segment is B', () => {
       beforeEach(() => {
         useABSegmentSpy.mockReturnValue('B')
