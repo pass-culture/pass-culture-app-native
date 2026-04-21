@@ -10,6 +10,7 @@ import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperI
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
 
 const mockIdentityCheckState = mockState
@@ -150,7 +151,7 @@ describe('useStepperInfo', () => {
   })
 
   describe('phone validation step', () => {
-    it('should have firstScreen to "SetPhoneNumberWithoutValidation"', () => {
+    it('should have firstScreen to "SetPhoneNumberWithoutValidation"when feature flag WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is disabled', () => {
       mockUseGetStepperInfo.mockReturnValueOnce({
         data: {
           subscriptionStepsToDisplay:
@@ -164,6 +165,22 @@ describe('useStepperInfo', () => {
       )
 
       expect(phoneValidationStep?.firstScreen).toEqual('SetPhoneNumberWithoutValidation')
+    })
+
+    it('should have firstScreen to "Profile" when feature flag WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is enabled', () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_PHONE_NUMBER_IN_PROFILE_STEPPER])
+
+      mockUseGetStepperInfo.mockReturnValueOnce({
+        data: {
+          subscriptionStepsToDisplay:
+            mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
+        },
+      })
+
+      const { stepsDetails } = useStepperInfo()
+      const profileStep = stepsDetails.find((step) => step.name === IdentityCheckStep.PROFILE)
+
+      expect(profileStep?.firstScreen).toEqual('ProfileInformationValidationCreate')
     })
   })
 

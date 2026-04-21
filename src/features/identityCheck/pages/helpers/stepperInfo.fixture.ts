@@ -4,6 +4,7 @@ import {
   SubscriptionStepCompletionState,
   SubscriptionStepperResponseV2,
   SubscriptionStepTitle,
+  SubscriptionStepperResponseV3,
 } from 'api/gen'
 
 export const SubscriptionStepperResponseFixture: SubscriptionStepperResponseV2 = {
@@ -61,3 +62,35 @@ export const SubscriptionStepperResponseWithPhoneValidationFixture: Subscription
       },
     ],
   }
+export const SubscriptionStepperResponseV3Fixture: SubscriptionStepperResponseV3 = {
+  title: 'Titre Stepper',
+  subtitle: 'Sous titre Stepper',
+  subscriptionStepsToDisplay: [
+    {
+      name: SubscriptionStep['profile-completion'],
+      completionState: SubscriptionStepCompletionState.completed,
+      title: SubscriptionStepTitle['Profil'],
+      subtitle: 'Sous-titre Profil',
+    },
+    {
+      name: SubscriptionStep['identity-check'],
+      completionState: SubscriptionStepCompletionState.current,
+      title: SubscriptionStepTitle['Identification'],
+      subtitle: 'Sous-titre Identification',
+    },
+    {
+      name: SubscriptionStep['honor-statement'],
+      completionState: SubscriptionStepCompletionState.disabled,
+      title: SubscriptionStepTitle['Confirmation'],
+      subtitle: 'Sous-titre Confirmation',
+    },
+    {
+      name: SubscriptionStep['maintenance'],
+      completionState: SubscriptionStepCompletionState.disabled,
+      title: SubscriptionStepTitle['Confirmation'],
+      subtitle: 'Maintenance',
+    },
+  ],
+  allowedIdentityCheckMethods: [IdentityCheckMethod.ubble, IdentityCheckMethod.educonnect],
+  hasIdentityCheckPending: false,
+}
