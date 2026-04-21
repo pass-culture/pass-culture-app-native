@@ -1,10 +1,11 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components/native'
 
-import { EligibilityType } from 'api/gen'
 import { CheatMenuButton } from 'cheatcodes/components/CheatMenuButton'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
+import { getShouldDisplayActivationFlow } from 'features/auth/helpers/getShouldDisplayActivationFlow'
 import { BeneficiaryAndEligibleForUpgradeHeader } from 'features/profile/components/Header/BeneficiaryAndEligibleForUpgradeHeader/BeneficiaryAndEligibleForUpgradeHeader'
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
@@ -22,14 +23,15 @@ export function ProfileHeader(props: ProfileHeaderProps) {
   const { isLoggedIn } = useAuthContext()
 
   const ProfileHeader = useMemo(() => {
+    const shouldDisplayActivationFlow = getShouldDisplayActivationFlow(user)
     if (!isLoggedIn || !user) {
       return <LoggedOutHeader featureFlags={featureFlags} />
     }
 
     if (
       isCurrentOrFormerBeneficiary(user) &&
-      user.isEligibleForBeneficiaryUpgrade &&
-      user.eligibility === EligibilityType['age-18']
+      shouldDisplayActivationFlow &&
+      user.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V2_18
     ) {
       return (
         <BeneficiaryAndEligibleForUpgradeHeader
@@ -41,13 +43,13 @@ export function ProfileHeader(props: ProfileHeaderProps) {
           age={getAge(user.birthDate)}
           domainsCredit={user.domainsCredit}
           depositExpirationDate={user.depositExpirationDate ?? undefined}
-          eligibility={user.eligibility}
           statusType={user.statusType}
+          eligibilityType={user.eligibilityType}
         />
       )
     }
 
-    if (!isCurrentOrFormerBeneficiary(user) || user.isEligibleForBeneficiaryUpgrade) {
+    if (!isCurrentOrFormerBeneficiary(user) || shouldDisplayActivationFlow) {
       return (
         <NonBeneficiaryHeader
           featureFlags={featureFlags}
@@ -65,7 +67,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
           age={getAge(user.birthDate)}
           domainsCredit={user.domainsCredit}
           depositExpirationDate={user.depositExpirationDate ?? undefined}
-          eligibility={user.eligibility}
+          eligibilityType={user.eligibilityType}
           featureFlags={featureFlags}
           statusType={user.statusType}
         />

@@ -3,7 +3,7 @@ import { Share } from 'react-native'
 
 import { reset, useRoute } from '__mocks__/@react-navigation/native'
 import reactNativeInAppReview from '__mocks__/react-native-in-app-review'
-import { EligibilityType } from 'api/gen'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
@@ -83,7 +83,7 @@ describe('<BookingConfirmation />', () => {
   it('should not display correct amount left text when free user status', async () => {
     mockAuthContextWithUser({
       ...beneficiaryUser,
-      eligibility: EligibilityType.free,
+      eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
     })
 
     render(<BookingConfirmation />)

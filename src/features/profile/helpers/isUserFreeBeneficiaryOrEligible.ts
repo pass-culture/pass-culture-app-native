@@ -1,8 +1,9 @@
-import { EligibilityType, UserRole } from 'api/gen/api'
+import { UserRole } from 'api/gen/api'
+import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligible'
 import { UserProfile } from 'features/share/types'
 
 export const isUserFreeBeneficiaryOrEligible = (user?: UserProfile) => {
-  const userEligibility = user?.eligibility === EligibilityType.free
+  const userEligibilityFreeStatus = getIsUserEligibleFree(user?.eligibilityType)
   const userBeneficiaryRole = user?.roles?.find((role) => role === UserRole.FREE_BENEFICIARY)
-  return userEligibility || !!userBeneficiaryRole
+  return userEligibilityFreeStatus || !!userBeneficiaryRole
 }

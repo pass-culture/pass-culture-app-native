@@ -1,13 +1,14 @@
 import React, { FunctionComponent, useMemo } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { EligibilityType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
   isCurrentOrFormerBeneficiary,
   isCurrentBeneficiary,
 } from 'features/auth/helpers/checkStatusType'
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
+import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligible'
+import { getShouldDisplayActivationFlow } from 'features/auth/helpers/getShouldDisplayActivationFlow'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
@@ -33,16 +34,17 @@ export const HomeHeader: FunctionComponent = function () {
     const welcomeTitle =
       user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
 
+    const shouldDisplayActivationFlow = user && getShouldDisplayActivationFlow(user)
+
     const getSubtitle = () => {
       const shouldSeeDefaultSubtitle =
         !isLoggedIn ||
         !user ||
         !isCurrentOrFormerBeneficiary(user) ||
-        user.eligibility === EligibilityType.free ||
         user?.creditType === UserCreditType.CREDIT_V3_15 ||
         user?.creditType === UserCreditType.CREDIT_V3_16 ||
-        (!isCurrentBeneficiary(user) && user.isEligibleForBeneficiaryUpgrade)
-
+        getIsUserEligibleFree(user?.eligibilityType) ||
+        (!isCurrentBeneficiary(user) && shouldDisplayActivationFlow)
       if (shouldSeeDefaultSubtitle) return 'Toute la culture à portée de main'
 
       const shouldSeeBeneficiarySubtitle =

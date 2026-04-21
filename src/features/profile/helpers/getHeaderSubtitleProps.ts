@@ -1,4 +1,5 @@
-import { EligibilityType } from 'api/gen'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
+import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligible'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
 
@@ -6,8 +7,8 @@ type Props = {
   isCreditEmpty: boolean
   isDepositExpired: boolean
   depositExpirationDate?: string | null
-  eligibility?: EligibilityType | null
   statusType?: UserStatusType | null
+  eligibilityType?: UserEligibilityType | null
 }
 
 type Output = {
@@ -19,10 +20,10 @@ export const getHeaderSubtitleProps = ({
   isCreditEmpty,
   isDepositExpired,
   depositExpirationDate,
-  eligibility,
+  eligibilityType,
   statusType,
 }: Props): Output => {
-  const isUserFreeStatus = eligibility === EligibilityType.free
+  const isUserFreeStatus = getIsUserEligibleFree(eligibilityType)
   const getCreditEmptySubtitle = () => {
     if (isUserFreeStatus) return undefined
     return statusType === UserStatusType.EX_BENEFICIARY
