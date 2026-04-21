@@ -14,6 +14,7 @@ export type AdviceCardData = {
   image?: string | null
   headerNavigateTo?: InternalNavigationProps['navigateTo']
   headerAccessibilityLabel?: string
+  onCardHeaderPress?: () => void
 }
 
 export type AdviceVariantInfo = {
