@@ -195,7 +195,10 @@ export const Venue: FunctionComponent = () => {
             advicesCardData={
               segment === 'A'
                 ? venueProAdvicesToAdviceCardData(
-                    getAdvicesWithoutHeadline(advices?.proAdvices, headlineOfferData?.id)
+                    getAdvicesWithoutHeadline(
+                      advices?.proAdvices.slice(0, 5),
+                      headlineOfferData?.id
+                    )
                   )
                 : undefined
             }
