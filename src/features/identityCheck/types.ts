@@ -18,16 +18,6 @@ export enum IdentityCheckStep {
   END = 'end',
 }
 
-export interface RehydrationProfile {
-  activity: string
-  address: string
-  city: string
-  firstName: string
-  lastName: string
-  postalCode: string
-  schoolType: string
-}
-
 export type SubscriptionScreen = keyof SubscriptionStackParamList
 
 export type StepConfig = Pick<StepDetails, 'icon'> & {

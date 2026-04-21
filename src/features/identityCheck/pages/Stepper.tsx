@@ -7,7 +7,6 @@ import { MaintenancePageType, SubscriptionStep } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useShowDisableActivation } from 'features/forceUpdate/helpers/useShowDisableActivation'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals/QuitIdentityCheckModal'
-import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useRehydrateProfile'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -48,7 +47,6 @@ export const Stepper = () => {
 
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { refetchUser } = useAuthContext()
-  useRehydrateProfile()
 
   const { visible, showModal: showQuitIdentityCheckModal, hideModal } = useModal(false)
 
