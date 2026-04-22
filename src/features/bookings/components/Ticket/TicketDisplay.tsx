@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC, ReactNode } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -6,56 +6,60 @@ import { CutoutHorizontal } from 'ui/svg/CutoutHorizontal'
 import { Stroke } from 'ui/svg/Stroke'
 
 type TicketContentProps = {
-  bottomContent: React.JSX.Element
-  topContent: React.JSX.Element
-  infoBanner?: React.JSX.Element
+  bottomContent: ReactNode
+  topContent: ReactNode
+  infoBanner?: ReactNode
   display: 'punched' | 'full'
   onTopBlockLayout?: (height: number) => void
 }
 
-export const TicketDisplay = ({
+export const TicketDisplay: FC<TicketContentProps> = ({
   infoBanner,
   bottomContent,
   topContent,
   display,
   onTopBlockLayout,
-}: TicketContentProps) => {
+}) => {
   const { designSystem } = useTheme()
 
   const backgroundColor = designSystem.color.background.default
   const borderColor = designSystem.color.border.subtle
 
-  return display === 'punched' ? (
-    <View testID="ticket-punched">
-      <TopBlock
-        onLayout={(e) => {
-          const { height } = e.nativeEvent.layout
-          onTopBlockLayout?.(height)
-        }}>
-        {topContent}
-      </TopBlock>
-      <MiddleBlock>
-        <CutoutHorizontal
-          orientation="left"
-          backgroundColor={backgroundColor}
-          color={borderColor}
-        />
-        <ContainerStrokedLine>
-          <Stroke color={borderColor} size="100%" />
-        </ContainerStrokedLine>
-        <CutoutHorizontal
-          orientation="right"
-          backgroundColor={backgroundColor}
-          color={borderColor}
-        />
-      </MiddleBlock>
+  if (display === 'punched') {
+    return (
+      <View testID="ticket-punched">
+        <TopBlock
+          onLayout={(e) => {
+            const { height } = e.nativeEvent.layout
+            onTopBlockLayout?.(height)
+          }}>
+          {topContent}
+        </TopBlock>
+        <MiddleBlock>
+          <CutoutHorizontal
+            orientation="left"
+            backgroundColor={backgroundColor}
+            color={borderColor}
+          />
+          <ContainerStrokedLine>
+            <Stroke color={borderColor} size="100%" />
+          </ContainerStrokedLine>
+          <CutoutHorizontal
+            orientation="right"
+            backgroundColor={backgroundColor}
+            color={borderColor}
+          />
+        </MiddleBlock>
 
-      <BottomBlock>
-        {infoBanner}
-        {bottomContent}
-      </BottomBlock>
-    </View>
-  ) : (
+        <BottomBlock>
+          {infoBanner}
+          {bottomContent}
+        </BottomBlock>
+      </View>
+    )
+  }
+
+  return (
     <FullBlock testID="ticket-full">
       <View
         onLayout={(e) => {

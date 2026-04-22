@@ -200,31 +200,37 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
       <Container>
         <Typo.Title4 {...getHeadingAttrs(2)}>Informations</Typo.Title4>{' '}
       </Container>
-      <BookingInformations />
-      <Container>
-        <Separator />
-      </Container>
-      <VenueTitleContainer>
-        <VenueTitleText>{venueSectionTitle}</VenueTitleText>
-        {shouldDisplayOtherVenuesAvailableButton ? (
-          <EditButton
-            wording="Modifier"
-            accessibilityLabel={`Modifier ${venueSectionTitle}`}
-            onPress={showModal}
-          />
-        ) : null}
-      </VenueTitleContainer>
-      <ItemContainer>
-        <Item
-          Icon={LocationBuilding}
-          message={
-            <VenueContainer>
-              <Typo.BodyAccentXs testID="venueName">{venueName}</Typo.BodyAccentXs>
-              <VenueAddress testID="venueAddress">{venueFullAddress}</VenueAddress>
-            </VenueContainer>
-          }
-        />
-      </ItemContainer>
+      <BookingInformationsContainer>
+        <BookingInformations />
+      </BookingInformationsContainer>
+      {offer?.isDigital ? null : (
+        <React.Fragment>
+          <Separator />
+          <VenueAddressContainer>
+            <VenueTitleContainer>
+              <VenueTitleText>{venueSectionTitle}</VenueTitleText>
+              {shouldDisplayOtherVenuesAvailableButton ? (
+                <EditButton
+                  wording="Modifier"
+                  accessibilityLabel={`Modifier ${venueSectionTitle}`}
+                  onPress={showModal}
+                />
+              ) : null}
+            </VenueTitleContainer>
+            <ItemContainer>
+              <Item
+                Icon={LocationBuilding}
+                message={
+                  <VenueContainer>
+                    <Typo.BodyAccentXs testID="venueName">{venueName}</Typo.BodyAccentXs>
+                    <VenueAddress testID="venueAddress">{venueFullAddress}</VenueAddress>
+                  </VenueContainer>
+                }
+              />
+            </ItemContainer>
+          </VenueAddressContainer>
+        </React.Fragment>
+      )}
       {isFreeOfferToArchive ? null : (
         <React.Fragment>
           <Separator />
@@ -297,6 +303,15 @@ const ButtonContainer = styled.View({
 const Container = styled.View(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.xl,
 }))
+
+const BookingInformationsContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
+
+const VenueAddressContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+}))
+
 const MainContainer = styled.View({ width: '100%' })
 
 const Separator = styled.View(({ theme }) => ({
