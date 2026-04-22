@@ -3,8 +3,11 @@ import React from 'react'
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import * as ABSegmentModule from 'shared/useABSegment/useABSegment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
+
+const useABSegmentSpy = jest.spyOn(ABSegmentModule, 'useABSegment')
 
 describe('ArtistPlaylist', () => {
   beforeEach(() => {
@@ -74,5 +77,49 @@ describe('ArtistPlaylist', () => {
     await screen.findByLabelText('Toutes ses offres disponibles')
 
     expect(screen.getAllByText('Livre')[1]).toBeOnTheScreen()
+  })
+
+  it('should display pro advices tag when defined and pro advices AB testing segment is A', async () => {
+    useABSegmentSpy.mockReturnValueOnce('A')
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={[
+            {
+              ...mockedAlgoliaOffersWithSameArtistResponse[0],
+              offer: { ...mockedAlgoliaOffersWithSameArtistResponse[0].offer, proAdvicesCount: 1 },
+            },
+          ]}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
+    )
+
+    await screen.findByLabelText('Toutes ses offres disponibles')
+
+    expect(screen.getByText('1 avis')).toBeOnTheScreen()
+  })
+
+  it('should not display pro advices tag when defined and pro advices AB testing segment is B', async () => {
+    useABSegmentSpy.mockReturnValueOnce('B')
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={[
+            {
+              ...mockedAlgoliaOffersWithSameArtistResponse[0],
+              offer: { ...mockedAlgoliaOffersWithSameArtistResponse[0].offer, proAdvicesCount: 1 },
+            },
+          ]}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
+    )
+
+    await screen.findByLabelText('Toutes ses offres disponibles')
+
+    expect(screen.queryByText('1 avis')).not.toBeOnTheScreen()
   })
 })

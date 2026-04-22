@@ -16,6 +16,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 
 type ArtistPlaylistProps = {
@@ -44,6 +45,7 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
   const labelMapping = useSubcategoryOfferLabelMapping()
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('three-items')
   const isFocused = useIsFocused()
+  const proAdvicesSegment = useABSegment(['A', 'B'])
 
   const handleArtistOffersViewableItemsChanged = useCallback(
     (items: Pick<ViewToken, 'key' | 'index'>[]) => {
@@ -73,6 +75,7 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
             hasSmallLayout: true,
             priceDisplay: (item: Offer) =>
               getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
+            proAdvicesSegment,
           })}
           itemWidth={itemWidth}
           itemHeight={itemHeight}

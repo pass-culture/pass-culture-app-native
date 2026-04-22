@@ -112,6 +112,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   HeaderComponent,
   CTAsComponent,
   proAdvicesCount,
+  proAdvicesSegment,
   children,
 }) => {
   const HeaderToRender = HeaderComponent || OfferHeader
@@ -500,6 +501,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
             onViewableItemsChanged={handleViewableItemsChanged}
             seeAllButton={{ navigateToVerticalPlaylist, onBeforeNavigate }}
+            proAdvicesSegment={proAdvicesSegment}
           />
           {children}
         </IntersectionObserverScrollView>
