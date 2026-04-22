@@ -1,9 +1,8 @@
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { DomainsCredit } from 'api/gen/api'
+import { DomainsCredit, EligibilityType } from 'api/gen/api'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { BonificationBanner } from 'features/bonification/components/BonificationBanner'
 import { getShouldShowBonificationBanner } from 'features/bonification/getShouldShowBonificationBanner'
@@ -36,8 +35,8 @@ export type CreditHeaderProps = {
   age?: number
   domainsCredit?: DomainsCredit | null
   depositExpirationDate?: string
+  eligibility?: EligibilityType | null
   statusType: UserStatusType | null
-  eligibilityType?: UserEligibilityType | null
 } & ProfileFeatureFlagsProps
 
 export function CreditHeader({
@@ -46,8 +45,8 @@ export function CreditHeader({
   age,
   domainsCredit,
   depositExpirationDate,
+  eligibility,
   statusType,
-  eligibilityType,
   featureFlags,
 }: CreditHeaderProps) {
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
@@ -90,8 +89,8 @@ export function CreditHeader({
     isCreditEmpty,
     isDepositExpired,
     depositExpirationDate,
+    eligibility,
     statusType,
-    eligibilityType,
   })
 
   const isExpiredOrCreditEmptyWithNoUpcomingCredit =
@@ -148,7 +147,7 @@ export function CreditHeader({
                 </Typo.Body>
               </ViewWithMarginTop>
             ) : null}
-            {isCreditEmpty ? <EmptyCredit age={age} eligibilityType={eligibilityType} /> : null}
+            {isCreditEmpty ? <EmptyCredit age={age} eligibility={eligibility} /> : null}
             <ViewWithMarginTop top={1}>
               <CreditExplanation isDepositExpired={isDepositExpired} age={age} />
             </ViewWithMarginTop>

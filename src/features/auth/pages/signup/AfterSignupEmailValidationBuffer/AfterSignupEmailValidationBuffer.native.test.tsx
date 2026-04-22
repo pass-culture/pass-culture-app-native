@@ -5,8 +5,6 @@ import DeviceInfo from 'react-native-device-info'
 import { navigate, replace, useRoute } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { ValidateEmailResponse } from 'api/gen'
-import { UserCreditType } from 'features/auth/helpers/getCreditType'
-import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import * as LoginAndRedirectAPI from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { UserProfile } from 'features/share/types'
@@ -98,8 +96,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         ...nonBeneficiaryUser,
         email: 'email@domain.ext',
         firstName: 'Jean',
-        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
-        creditType: UserCreditType.CREDIT_V3_18,
+        isEligibleForBeneficiaryUpgrade: false,
         eligibilityStartDatetime: '2019-12-01T00:00:00Z',
       })
       mockServer.postApi('/v1/validate_email', {})
@@ -127,8 +124,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         ...nonBeneficiaryUser,
         email: 'email@domain.ext',
         firstName: 'Jean',
-        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
-        creditType: UserCreditType.CREDIT_V3_18,
+        isEligibleForBeneficiaryUpgrade: false,
         eligibilityStartDatetime: '2019-12-01T00:00:00Z',
       })
       mockServer.postApi('/v1/validate_email', {})

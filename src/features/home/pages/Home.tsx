@@ -42,7 +42,7 @@ export const Home: FunctionComponent = () => {
   } = useModal(false)
   useOnboardingSubscriptionModal({
     isLoggedIn,
-    userStatusType: user?.statusType,
+    userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
   const { data: bookings, isLoading: isBookingsLoading } = useBookingsQueryV2(isLoggedIn)

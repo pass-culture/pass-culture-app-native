@@ -3,7 +3,6 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { isCurrentBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { PlaylistCardOffer } from 'features/offer/components/OfferTile/PlaylistCardOffer'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
@@ -46,7 +45,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isDuo: !!(isDuo && isCurrentBeneficiary(user)),
+      isDuo: !!(isDuo && user?.isBeneficiary),
     })
   )
 

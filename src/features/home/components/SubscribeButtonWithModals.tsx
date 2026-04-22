@@ -1,8 +1,8 @@
 import React from 'react'
 import { View } from 'react-native'
 
+import { YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { SubscriptionSuccessModal } from 'features/subscription/components/modals/SubscriptionSuccessModal'
 import { UnsubscribingConfirmationModal } from 'features/subscription/components/modals/UnsubscribingConfirmationModal'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
@@ -91,7 +91,7 @@ export const SubscribeButtonWithModals = ({ homeId, size }: Props) => {
     }
   }
 
-  if (!thematic || user?.statusType === UserStatusType.GENERAL_PUBLIC) return null
+  if (!thematic || user?.status?.statusType === YoungStatusType.non_eligible) return null
 
   return (
     <View>
