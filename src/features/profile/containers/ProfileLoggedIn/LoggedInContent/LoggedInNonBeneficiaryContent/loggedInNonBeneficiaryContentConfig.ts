@@ -29,7 +29,7 @@ export const loggedInNonBeneficiaryContentConfig = ({
       { component: LocationButton, key: 'LocationButton' },
       { component: AppearanceButton, key: 'AppearanceButton' },
       {
-        title: 'Notifications et thèmes et suivis',
+        title: 'Notifications et thèmes suivis',
         screen: 'NotificationsSettings',
         icon: Bell,
       },
