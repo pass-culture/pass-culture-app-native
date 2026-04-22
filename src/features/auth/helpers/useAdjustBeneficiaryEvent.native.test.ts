@@ -4,7 +4,7 @@ import mockdate from 'mockdate'
 import { CURRENT_DATE, SIXTEEN_AGE_DATE, EIGHTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { useAdjustBeneficiaryEvent } from 'features/auth/helpers/useAdjustBeneficiaryEvent'
 import { UserProfile } from 'features/share/types'
-import { beneficiaryUserV2, nonBeneficiaryUserV2 } from 'fixtures/user'
+import { beneficiaryUser } from 'fixtures/user'
 import { Adjust } from 'libs/adjust/adjust'
 import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import { storage } from 'libs/storage'
@@ -26,7 +26,7 @@ describe('useAdjustBeneficiaryEvent', () => {
   })
 
   it('should log beneficiary event and save beneficiary event sent in storage when user is beneficiary', async () => {
-    renderUseAdjustBeneficiaryEvent(beneficiaryUserV2)
+    renderUseAdjustBeneficiaryEvent(beneficiaryUser)
 
     await waitFor(async () => {
       expect(Adjust.logEvent).toHaveBeenNthCalledWith(1, AdjustEvents.COMPLETE_BENEFICIARY)
@@ -40,7 +40,10 @@ describe('useAdjustBeneficiaryEvent', () => {
   })
 
   it('should not log beneficiary event and not save beneficiary event sent in storage when user is not beneficiary', async () => {
-    renderUseAdjustBeneficiaryEvent(nonBeneficiaryUserV2)
+    renderUseAdjustBeneficiaryEvent({
+      ...beneficiaryUser,
+      isBeneficiary: false,
+    })
 
     // force to wait that all useEffect are called to check that event is not logged after
     await act(async () => {})
@@ -56,7 +59,7 @@ describe('useAdjustBeneficiaryEvent', () => {
 
   it('should log underage beneficiary event when user is beneficiary and is underage', async () => {
     renderUseAdjustBeneficiaryEvent({
-      ...beneficiaryUserV2,
+      ...beneficiaryUser,
       birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
     })
 
@@ -67,7 +70,7 @@ describe('useAdjustBeneficiaryEvent', () => {
 
   it('should not log underage beneficiary event when user is beneficiary and is not underage', async () => {
     renderUseAdjustBeneficiaryEvent({
-      ...beneficiaryUserV2,
+      ...beneficiaryUser,
       birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
     })
 
@@ -79,7 +82,7 @@ describe('useAdjustBeneficiaryEvent', () => {
 
   it('should log beneficiary 18 event when user is beneficiary and is 18 or older', async () => {
     renderUseAdjustBeneficiaryEvent({
-      ...beneficiaryUserV2,
+      ...beneficiaryUser,
       birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
     })
 
@@ -90,7 +93,7 @@ describe('useAdjustBeneficiaryEvent', () => {
 
   it('should not log beneficiary 18 event when user is beneficiary and is not 18 or older', async () => {
     renderUseAdjustBeneficiaryEvent({
-      ...beneficiaryUserV2,
+      ...beneficiaryUser,
       birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
     })
 
@@ -102,7 +105,8 @@ describe('useAdjustBeneficiaryEvent', () => {
 
   it('should log beneficiary event when user becomes beneficiary', async () => {
     const { rerender } = renderUseAdjustBeneficiaryEvent({
-      ...nonBeneficiaryUserV2,
+      ...beneficiaryUser,
+      isBeneficiary: false,
     })
 
     // force to wait that all useEffect are called to check that event is not logged after
@@ -112,7 +116,8 @@ describe('useAdjustBeneficiaryEvent', () => {
 
     rerender({
       user: {
-        ...beneficiaryUserV2,
+        ...beneficiaryUser,
+        isBeneficiary: true,
       },
     })
 
@@ -123,7 +128,7 @@ describe('useAdjustBeneficiaryEvent', () => {
 
   it('should not log beneficiary event twice', async () => {
     const { rerender } = renderUseAdjustBeneficiaryEvent({
-      ...beneficiaryUserV2,
+      ...beneficiaryUser,
       birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
     })
 
@@ -136,7 +141,7 @@ describe('useAdjustBeneficiaryEvent', () => {
     // With new user birthdate to force useEffect to rerun
     rerender({
       user: {
-        ...beneficiaryUserV2,
+        ...beneficiaryUser,
         birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
       },
     })
@@ -148,7 +153,7 @@ describe('useAdjustBeneficiaryEvent', () => {
   })
 
   it('should log beneficiary event if Adjust is initialized', async () => {
-    renderUseAdjustBeneficiaryEvent(beneficiaryUserV2)
+    renderUseAdjustBeneficiaryEvent(beneficiaryUser)
 
     await waitFor(() => {
       expect(Adjust.logEvent).toHaveBeenCalledTimes(2)
@@ -160,7 +165,7 @@ describe('useAdjustBeneficiaryEvent', () => {
       callback(false)
     })
 
-    renderUseAdjustBeneficiaryEvent(beneficiaryUserV2)
+    renderUseAdjustBeneficiaryEvent(beneficiaryUser)
 
     // force to wait that all useEffect are called to check that event is not logged after
     await act(async () => {})
@@ -173,7 +178,7 @@ describe('useAdjustBeneficiaryEvent', () => {
       callback(false)
     })
 
-    const { rerender } = renderUseAdjustBeneficiaryEvent(beneficiaryUserV2)
+    const { rerender } = renderUseAdjustBeneficiaryEvent(beneficiaryUser)
 
     // force to wait that all useEffect are called to check that event is not logged after
     await act(async () => {})
@@ -187,7 +192,7 @@ describe('useAdjustBeneficiaryEvent', () => {
     // With new user birthdate to force useEffect to rerun
     rerender({
       user: {
-        ...beneficiaryUserV2,
+        ...beneficiaryUser,
         birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
       },
     })

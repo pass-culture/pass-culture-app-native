@@ -13,14 +13,10 @@ import {
   RecommendationApiParams,
   SubcategoryIdEnum,
   SubscriptionStatus,
+  YoungStatusResponse,
+  YoungStatusType,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import {
-  isCurrentOrFormerBeneficiary,
-  isCurrentBeneficiary,
-  isNonEligible,
-  isEligible,
-} from 'features/auth/helpers/checkStatusType'
 import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
 import {
   useStoredProfileInfos,
@@ -69,6 +65,8 @@ const getIsBookedOffer = (
 type Props = {
   isLoggedIn: boolean
   user?: UserProfile
+  userStatus: YoungStatusResponse
+  isBeneficiary: boolean
   offer: OfferResponse
   subcategory: Subcategory
   hasEnoughCreditData: HasEnoughCredit
@@ -99,10 +97,11 @@ export type ICTAWordingAndAction = {
   movieScreeningUserData?: MovieScreeningUserData
 }
 
-// Follow logic of https://www.notion.so/Modalit-s-d-affichage-du-CTA-de-r-servation-dbd30de46c674f3f9ca9f37ce8333241
 export const getCtaWordingAndAction = ({
   isLoggedIn,
   user,
+  userStatus,
+  isBeneficiary,
   offer,
   subcategory,
   hasEnoughCreditData,
@@ -130,7 +129,8 @@ export const getCtaWordingAndAction = ({
   const isFreeOffer = getIsFreeOffer(offer)
   const isNotFreeOffer = !isFreeOffer
   const isProfileIncomplete = getIsProfileIncomplete(user)
-  const userWithNotEnoughCredit = isCurrentBeneficiary(user) && !hasEnoughCredit
+  const userWithNotEnoughCredit =
+    userStatus.statusType == YoungStatusType.beneficiary && !hasEnoughCredit
   const isExBeneficiary = user && isUserExBeneficiary(user)
   const shouldBeRedirectedToExternalUrl =
     externalTicketOfficeUrl && (userWithNotEnoughCredit || isExBeneficiary)
@@ -166,8 +166,8 @@ export const getCtaWordingAndAction = ({
       bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
     }
   }
-  const isUserEligible = !isNonEligible(user)
-  if (isFreeDigitalOffer && isUserEligible) {
+
+  if (isFreeDigitalOffer && userStatus?.statusType !== YoungStatusType.non_eligible) {
     if (subcategory.isEvent) {
       if (!isAlreadyBookedOffer) {
         return {
@@ -242,22 +242,8 @@ export const getCtaWordingAndAction = ({
       }
     }
   }
-  if (isAlreadyBookedOffer) {
-    return {
-      wording: 'Voir ma réservation',
-      isDisabled: false,
-      navigateTo: {
-        screen: 'BookingDetails',
-        params: { id: user?.bookedOffers[offer.id] },
-        fromRef: true,
-      },
-      onPress: () => analytics.logViewedBookingPage({ offerId: offer.id, from: 'offer' }),
-      bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
-      movieScreeningUserData: { hasBookedOffer: true, bookings: booking as BookingReponse },
-    }
-  }
 
-  if (isNonEligible(user) && !externalTicketOfficeUrl) {
+  if (userStatus.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
     return {
       wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
       bottomBannerText: BottomBannerTextEnum.NOT_ELIGIBLE,
@@ -277,12 +263,12 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (isEligible(user) && !isCurrentOrFormerBeneficiary(user)) {
+  if (userStatus.statusType === YoungStatusType.eligible && !isBeneficiary) {
     const common = {
       wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
       isDisabled: false,
     }
-    switch (user?.subscriptionStatus) {
+    switch (userStatus.subscriptionStatus) {
       case SubscriptionStatus.has_to_complete_subscription:
         return {
           ...common,
@@ -313,14 +299,24 @@ export const getCtaWordingAndAction = ({
     }
   }
 
+  if (isAlreadyBookedOffer) {
+    return {
+      wording: 'Voir ma réservation',
+      isDisabled: false,
+      navigateTo: {
+        screen: 'BookingDetails',
+        params: { id: user?.bookedOffers[offer.id] },
+        fromRef: true,
+      },
+      onPress: () => analytics.logViewedBookingPage({ offerId: offer.id, from: 'offer' }),
+      bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
+      movieScreeningUserData: { hasBookedOffer: true, bookings: booking as BookingReponse },
+    }
+  }
+
   // Non beneficiary or educational offer or unavailable offer for user
   const isOfferCategoryNotBookableByUser = isUnderageBeneficiary && offer.isForbiddenToUnderage
-  if (
-    !isLoggedIn ||
-    !isCurrentOrFormerBeneficiary(user) ||
-    offer.isEducational ||
-    isOfferCategoryNotBookableByUser
-  ) {
+  if (!isLoggedIn || !isBeneficiary || offer.isEducational || isOfferCategoryNotBookableByUser) {
     if (!externalTicketOfficeUrl) return { wording: undefined }
 
     return {
@@ -468,7 +464,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
       showErrorSnackBar(message)
     },
   })
-  const { bookedOffers = {} } = user ?? {}
+  const { isBeneficiary = false, bookedOffers = {}, status } = user ?? {}
   const { data: booking } = useOngoingOrEndedBookingQuery(
     getBookingOfferId(offerId, bookedOffers) ?? 0
   )
@@ -480,9 +476,12 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
    */
   if (isLoggedIn === null || user === null || !offer.venue.id) return
 
+  const userStatus = status?.statusType ? status : { statusType: YoungStatusType.non_eligible }
   return getCtaWordingAndAction({
     isLoggedIn,
     user,
+    userStatus,
+    isBeneficiary,
     offer,
     subcategory,
     hasEnoughCreditData: hasEnoughCredit,

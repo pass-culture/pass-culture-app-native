@@ -15,6 +15,7 @@ import {
   RecommendationApiParams,
   SubcategoryResponseModelv2,
   SubscriptionStatus,
+  YoungStatusResponse,
 } from 'api/gen'
 import { FavoriteMutationContext } from 'features/favorites/queries/types'
 import { ValidStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
@@ -145,6 +146,7 @@ export type CTAWordingAndAction = {
 
 export type GetCTAWordingAndActionProps = {
   context: CTAContext
+  userStatus: YoungStatusResponse
   hasEnoughCredit: boolean
   isLoggedIn: boolean
   subcategory: SubcategoryResponseModelv2

@@ -8,29 +8,26 @@ const subscriptionTracker = {
   [SubscriptionStatus.has_subscription_issues]: analytics.logConsultErrorApplicationModal,
 }
 
-export const getEligibleBookingButtonProps = (
-  subscriptionStatus: YoungStatusResponse['subscriptionStatus'],
-  offerId: number
-) => {
+export const getEligibleBookingButtonProps = (userStatus: YoungStatusResponse, offerId: number) => {
   const common = {
     wording: 'Réserver',
     disabled: false,
   }
-  if (subscriptionStatus === SubscriptionStatus.has_to_complete_subscription) {
+  if (userStatus.subscriptionStatus === SubscriptionStatus.has_to_complete_subscription) {
     return {
       onPress: () => subscriptionTracker[SubscriptionStatus.has_to_complete_subscription](offerId),
       ...common,
       modalToDisplay: OfferModal.FINISH_SUBSCRIPTION,
     }
   }
-  if (subscriptionStatus === SubscriptionStatus.has_subscription_pending) {
+  if (userStatus.subscriptionStatus === SubscriptionStatus.has_subscription_pending) {
     return {
       onPress: () => subscriptionTracker[SubscriptionStatus.has_subscription_pending](offerId),
       ...common,
       modalToDisplay: OfferModal.APPLICATION_PROCESSING,
     }
   }
-  if (subscriptionStatus === SubscriptionStatus.has_subscription_issues) {
+  if (userStatus.subscriptionStatus === SubscriptionStatus.has_subscription_issues) {
     return {
       onPress: () => subscriptionTracker[SubscriptionStatus.has_subscription_issues](offerId),
       ...common,

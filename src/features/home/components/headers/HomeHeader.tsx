@@ -3,10 +3,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { EligibilityType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import {
-  isCurrentOrFormerBeneficiary,
-  isCurrentBeneficiary,
-} from 'features/auth/helpers/checkStatusType'
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
@@ -37,16 +33,16 @@ export const HomeHeader: FunctionComponent = function () {
       const shouldSeeDefaultSubtitle =
         !isLoggedIn ||
         !user ||
-        !isCurrentOrFormerBeneficiary(user) ||
+        !user.isBeneficiary ||
         user.eligibility === EligibilityType.free ||
         user?.creditType === UserCreditType.CREDIT_V3_15 ||
         user?.creditType === UserCreditType.CREDIT_V3_16 ||
-        (!isCurrentBeneficiary(user) && user.isEligibleForBeneficiaryUpgrade)
+        (!user.isBeneficiary && user.isEligibleForBeneficiaryUpgrade)
 
       if (shouldSeeDefaultSubtitle) return 'Toute la culture à portée de main'
 
       const shouldSeeBeneficiarySubtitle =
-        isCurrentBeneficiary(user) && !!availableCredit && !availableCredit.isExpired
+        user.isBeneficiary && !!availableCredit && !availableCredit.isExpired
       if (shouldSeeBeneficiarySubtitle) {
         const credit = formatCurrencyFromCents(
           availableCredit.amount,

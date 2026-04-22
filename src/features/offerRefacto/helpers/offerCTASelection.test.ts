@@ -6,9 +6,9 @@ import {
   SubcategoryIdEnum,
   SubcategoryResponseModelv2,
   SubscriptionStatus,
+  YoungStatusResponse,
   YoungStatusType,
 } from 'api/gen'
-import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { BottomBannerTextEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -17,13 +17,7 @@ import { CTAContextFixture } from 'features/offerRefacto/fixtures/CTAContext.fix
 import { getCTAWordingAndAction } from 'features/offerRefacto/helpers'
 import { CTAContext } from 'features/offerRefacto/types'
 import { UserProfile } from 'features/share/types'
-import {
-  beneficiaryUser,
-  beneficiaryUserV2,
-  exBeneficiaryUser,
-  nonBeneficiaryUser,
-  nonBeneficiaryUserV2,
-} from 'fixtures/user'
+import { beneficiaryUser, exBeneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { OfferModal } from 'shared/offer/enums'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -43,7 +37,6 @@ describe('getCTAWordingAndAction', () => {
     enableBookingFreeOfferFifteenSixteen: true,
     userStatus: { statusType: YoungStatusType.beneficiary },
     hasEnoughCredit: true,
-    statusType: UserStatusType.BENEFICIARY,
     isLoggedIn: true,
     subcategory: mockSubcategory,
     isEndedUsedBooking: false,
@@ -52,6 +45,7 @@ describe('getCTAWordingAndAction', () => {
 
   type BuildGetCTAWordingAndActionType = {
     context?: Partial<CTAContext>
+    userStatus?: Partial<YoungStatusResponse>
     hasEnoughCredit?: boolean
     isLoggedIn?: boolean
     subcategory?: Partial<SubcategoryResponseModelv2>
@@ -65,6 +59,7 @@ describe('getCTAWordingAndAction', () => {
       context,
       offer,
       user,
+      userStatus,
       subcategory,
       hasEnoughCredit = defaultProps.hasEnoughCredit,
       isLoggedIn = defaultProps.isLoggedIn,
@@ -77,6 +72,7 @@ describe('getCTAWordingAndAction', () => {
       hasEnoughCredit,
       isEndedUsedBooking,
       user: { ...defaultProps.user, ...user },
+      userStatus: { ...defaultProps.userStatus, ...userStatus },
       subcategory: { ...defaultProps.subcategory, ...subcategory },
       context: {
         ...defaultProps.context,
@@ -150,8 +146,8 @@ describe('getCTAWordingAndAction', () => {
       it('should return digital offer CTA', () => {
         const result = getCTAWordingAndAction(
           buildGetCTAWordingAndAction({
-            user: beneficiaryUserV2,
             subcategory: { isEvent: false },
+            userStatus: { statusType: YoungStatusType.beneficiary },
             offer: { isDigital: true, stocks: [{ ...offerResponseSnap.stocks[0], price: 0 }] },
           })
         )
@@ -169,7 +165,7 @@ describe('getCTAWordingAndAction', () => {
       it('should return see booking CTA if offer already booked', () => {
         const result = getCTAWordingAndAction(
           buildGetCTAWordingAndAction({
-            user: beneficiaryUserV2,
+            userStatus: { statusType: YoungStatusType.beneficiary },
             offer: { isDigital: true, stocks: [{ ...offerResponseSnap.stocks[0], price: 0 }] },
             context: { alreadyBookedOfferId: 1 },
           })
@@ -188,7 +184,7 @@ describe('getCTAWordingAndAction', () => {
       it('should return book offer CTA if offer not booked', () => {
         const result = getCTAWordingAndAction(
           buildGetCTAWordingAndAction({
-            user: beneficiaryUserV2,
+            userStatus: { statusType: YoungStatusType.beneficiary },
             offer: { isDigital: true, stocks: [{ ...offerResponseSnap.stocks[0], price: 0 }] },
           })
         )
@@ -244,8 +240,8 @@ describe('getCTAWordingAndAction', () => {
   it('should return ineligible props and offer has no external url', () => {
     const result = getCTAWordingAndAction(
       buildGetCTAWordingAndAction({
-        user: { ...nonBeneficiaryUser, statusType: UserStatusType.GENERAL_PUBLIC },
         offer: { externalTicketOfficeUrl: undefined },
+        userStatus: { statusType: YoungStatusType.non_eligible },
       })
     )
 
@@ -276,8 +272,9 @@ describe('getCTAWordingAndAction', () => {
   it('should return subscription status props when user eligible and not beneficiary', () => {
     const result = getCTAWordingAndAction(
       buildGetCTAWordingAndAction({
-        user: { ...nonBeneficiaryUserV2, statusType: UserStatusType.ELIGIBLE },
+        user: nonBeneficiaryUser,
         context: { subscriptionStatus: SubscriptionStatus.has_to_complete_subscription },
+        userStatus: { statusType: YoungStatusType.eligible },
       })
     )
 
@@ -326,43 +323,24 @@ describe('getCTAWordingAndAction', () => {
     it('should return undefined wording when user is not a beneficiary and no external URL', () => {
       const result = getCTAWordingAndAction(
         buildGetCTAWordingAndAction({
-          user: { ...nonBeneficiaryUserV2, statusType: UserStatusType.UNKNOWN },
-          offer: { isEducational: true, externalTicketOfficeUrl: undefined },
+          user: nonBeneficiaryUser,
+          offer: { externalTicketOfficeUrl: undefined },
         })
       )
 
       expect(result).toEqual({})
     })
 
-    it('should return disable cta and banner when user is not a beneficiary and no external URL', () => {
+    it('should return undefined wording when offer is forbidden to underage and user is underage beneficiary', () => {
       const result = getCTAWordingAndAction(
         buildGetCTAWordingAndAction({
-          user: nonBeneficiaryUserV2,
-          offer: { externalTicketOfficeUrl: undefined },
+          context: { isUnderageBeneficiary: true },
+          offer: { isForbiddenToUnderage: true, externalTicketOfficeUrl: undefined },
         })
       )
 
-      expect(result).toEqual({
-        movieScreeningUserData: {
-          isUserEligible: false,
-        },
-        isDisabled: true,
-        wording: 'Réserver l’offre',
-        bottomBannerText:
-          'Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture.',
-      })
+      expect(result).toEqual({})
     })
-  })
-
-  it('should return undefined wording when offer is forbidden to underage and user is underage beneficiary', () => {
-    const result = getCTAWordingAndAction(
-      buildGetCTAWordingAndAction({
-        context: { isUnderageBeneficiary: true },
-        offer: { isForbiddenToUnderage: true, externalTicketOfficeUrl: undefined },
-      })
-    )
-
-    expect(result).toEqual({})
   })
 
   it('should return external url CTA for educational offer if external URL is provided', () => {
@@ -433,7 +411,6 @@ describe('getCTAWordingAndAction', () => {
       it('should return book event offer CTA when subcategory is an event', () => {
         const result = getCTAWordingAndAction(
           buildGetCTAWordingAndAction({
-            user: beneficiaryUserV2,
             subcategory: { isEvent: true },
             offer: { isSoldOut: false, isReleased: true, isExpired: false },
             hasEnoughCredit: true,
@@ -453,7 +430,6 @@ describe('getCTAWordingAndAction', () => {
       it('should return book offer CTA when subcategory is NOT an event', () => {
         const result = getCTAWordingAndAction(
           buildGetCTAWordingAndAction({
-            user: beneficiaryUserV2,
             hasEnoughCredit: true,
             subcategory: { isEvent: false },
             offer: { isSoldOut: false, isReleased: true, isExpired: false },
@@ -473,7 +449,6 @@ describe('getCTAWordingAndAction', () => {
     it('should return insufficient credit CTA when user has insufficient credit', () => {
       const result = getCTAWordingAndAction(
         buildGetCTAWordingAndAction({
-          user: beneficiaryUserV2,
           hasEnoughCredit: false,
           subcategory: { isEvent: true },
           offer: { isSoldOut: false, isReleased: true, isExpired: false },
