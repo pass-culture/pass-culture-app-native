@@ -1,21 +1,13 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { BannerName, BannerResponse, SubscriptionStepperResponseV2 } from 'api/gen'
-import { UserCreditType } from 'features/auth/helpers/getCreditType'
-import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
-import { UserStatusType } from 'features/auth/helpers/getStatusType'
+import { BannerName, BannerResponse, EligibilityType, SubscriptionStepperResponseV2 } from 'api/gen'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { UserProfile } from 'features/share/types'
-import {
-  beneficiaryUser,
-  exBeneficiaryUser,
-  nonBeneficiaryUser,
-  nonBeneficiaryUserV2,
-} from 'fixtures/user'
+import { beneficiaryUser, exBeneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -120,19 +112,18 @@ describe('ProfileHeader', () => {
     expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
   })
 
-  it('should display the BeneficiaryAndEligibleForUpgradeHeader Header if user  eligibility is 18 yo', async () => {
+  it('should display the BeneficiaryAndEligibleForUpgradeHeader Header if user is beneficiary and isEligibleForBeneficiaryUpgrade and eligibility is 18 yo', async () => {
     renderProfileHeader({
       featureFlags: { disableActivation: false, enableProfileV2: false },
       user: {
-        ...nonBeneficiaryUserV2,
-        statusType: UserStatusType.ELIGIBLE_AND_BENEFICIARY,
-        creditType: UserCreditType.CREDIT_EMPTY,
-        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V2_18,
+        ...beneficiaryUser,
+        isEligibleForBeneficiaryUpgrade: true,
+        eligibility: EligibilityType['age-18'],
       },
     })
 
-    expect(await screen.findByText('Jeanne Dupond')).toBeOnTheScreen()
-    expect(await screen.findByText('Tu as dépensé tout ton crédit')).toBeOnTheScreen()
+    expect(await screen.findByText('Jean Dupond')).toBeOnTheScreen()
+    expect(await screen.findByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
     expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
   })
 })

@@ -1,7 +1,6 @@
 import React from 'react'
 
-import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
-import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
+import { EligibilityType, OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { BookingState, Step, initialBookingState } from 'features/bookOffer/context/reducer'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
@@ -724,7 +723,7 @@ describe('<BookingDetails />', () => {
   it('should not display deducted amount message when free user status', async () => {
     mockAuthContextWithUser({
       ...beneficiaryUser,
-      eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
+      eligibility: EligibilityType.free,
     })
 
     renderBookingDetails({

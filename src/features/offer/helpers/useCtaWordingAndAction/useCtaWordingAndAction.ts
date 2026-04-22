@@ -7,6 +7,7 @@ import {
   BookingReponse,
   BookOfferRequest,
   BookOfferResponse,
+  EligibilityType,
   FavoriteOfferResponse,
   OfferResponse,
   RecommendationApiParams,
@@ -20,7 +21,6 @@ import {
   isNonEligible,
   isEligible,
 } from 'features/auth/helpers/checkStatusType'
-import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligible'
 import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
 import {
   useStoredProfileInfos,
@@ -99,6 +99,7 @@ export type ICTAWordingAndAction = {
   movieScreeningUserData?: MovieScreeningUserData
 }
 
+// Follow logic of https://www.notion.so/Modalit-s-d-affichage-du-CTA-de-r-servation-dbd30de46c674f3f9ca9f37ce8333241
 export const getCtaWordingAndAction = ({
   isLoggedIn,
   user,
@@ -125,7 +126,7 @@ export const getCtaWordingAndAction = ({
 
   const { hasEnoughCredit, message: hasEnoughCreditMessage } = hasEnoughCreditData
 
-  const isUserFreeStatus = getIsUserEligibleFree(user?.eligibilityType)
+  const isUserFreeStatus = user?.eligibility === EligibilityType.free
   const isFreeOffer = getIsFreeOffer(offer)
   const isNotFreeOffer = !isFreeOffer
   const isProfileIncomplete = getIsProfileIncomplete(user)
@@ -428,7 +429,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
   const { refetch: getBookings } = useBookingsQuery()
 
   useEffect(() => {
-    const isUserFreeStatus = getIsUserEligibleFree(user?.eligibilityType)
+    const isUserFreeStatus = user?.eligibility === EligibilityType.free
     const isFreeOffer = getIsFreeOffer(offer)
     const isProfileIncomplete = getIsProfileIncomplete(user)
 

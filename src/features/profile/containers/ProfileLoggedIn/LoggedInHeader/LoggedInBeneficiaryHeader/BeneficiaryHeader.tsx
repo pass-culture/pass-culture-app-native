@@ -25,7 +25,7 @@ export const BeneficiaryHeader = ({ user, featureFlags }: Props) => {
     lastName,
     domainsCredit,
     depositExpirationDate,
-    eligibilityType,
+    eligibility,
     birthDate,
     statusType,
   } = user
@@ -37,7 +37,7 @@ export const BeneficiaryHeader = ({ user, featureFlags }: Props) => {
     isCreditEmpty,
     isDepositExpired,
     depositExpirationDate,
-    eligibilityType,
+    eligibility,
     statusType,
   })
 

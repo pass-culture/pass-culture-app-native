@@ -1,13 +1,13 @@
 import mockdate from 'mockdate'
 
 import {
+  EligibilityType,
   OfferResponse,
   SubcategoryIdEnum,
   SubcategoryResponseModelv2,
   SubscriptionStatus,
   YoungStatusType,
 } from 'api/gen'
-import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { BottomBannerTextEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
@@ -135,9 +135,7 @@ describe('getCTAWordingAndAction', () => {
 
   it('should use 15 16 CTA when offer is not free and user eligibility is free', () => {
     const result = getCTAWordingAndAction(
-      buildGetCTAWordingAndAction({
-        user: { eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16 },
-      })
+      buildGetCTAWordingAndAction({ user: { eligibility: EligibilityType.free } })
     )
 
     expect(result).toEqual({
@@ -210,10 +208,7 @@ describe('getCTAWordingAndAction', () => {
     it('should return incomplete profile CTA when user egilibility is free and profile incomplete', () => {
       const result = getCTAWordingAndAction(
         buildGetCTAWordingAndAction({
-          user: {
-            eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
-            firstName: undefined,
-          },
+          user: { eligibility: EligibilityType.free, firstName: undefined },
           offer: { stocks: [{ ...offerResponseSnap.stocks[0], price: 0 }] },
         })
       )
@@ -231,7 +226,7 @@ describe('getCTAWordingAndAction', () => {
     it('should return book offer CTA when user egilibility is free and profile complete', () => {
       const result = getCTAWordingAndAction(
         buildGetCTAWordingAndAction({
-          user: { eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16 },
+          user: { eligibility: EligibilityType.free },
           offer: { stocks: [{ ...offerResponseSnap.stocks[0], price: 0 }] },
         })
       )

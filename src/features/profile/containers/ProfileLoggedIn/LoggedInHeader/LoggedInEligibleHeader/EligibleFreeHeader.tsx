@@ -15,7 +15,7 @@ type Props = {
 } & ProfileFeatureFlagsProps
 
 export const EligibleFreeHeader = ({ featureFlags, user, defaultAge }: Props) => {
-  const { firstName, lastName, birthDate, eligibilityType } = user
+  const { firstName, lastName, birthDate, eligibility } = user
   const title = getProfileHeaderTitle({ firstName, lastName })
   const age = getAge(birthDate) ?? defaultAge
 
@@ -23,7 +23,7 @@ export const EligibleFreeHeader = ({ featureFlags, user, defaultAge }: Props) =>
     <ViewGap gap={6} testID="eligible-free-header">
       <PageHeader title={title} featureFlags={featureFlags} numberOfLines={3} />
       <ContainerHeader gap={0}>
-        <EmptyCredit age={age} eligibilityType={eligibilityType} />
+        <EmptyCredit age={age} eligibility={eligibility} />
       </ContainerHeader>
     </ViewGap>
   )
