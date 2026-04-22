@@ -689,7 +689,7 @@ describe('Signup Form', () => {
           accessToken: 'accessToken',
           refreshToken: 'refreshToken',
         },
-        'SSO_signup'
+        { method: 'fromSignupGoogle', analyticsType: 'SSO_signup' }
       )
     })
 
@@ -734,7 +734,7 @@ describe('Signup Form', () => {
           accessToken: 'accessToken',
           refreshToken: 'refreshToken',
         },
-        'SSO_login'
+        { method: 'fromLoginGoogle', analyticsType: 'SSO_login' }
       )
     })
 

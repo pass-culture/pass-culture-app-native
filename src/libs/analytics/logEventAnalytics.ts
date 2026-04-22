@@ -72,10 +72,26 @@ type OfferIdOrVenueId = { offerId: number; venueId?: never } | { venueId: number
 export type LoginRoutineMethod =
   | 'fromLogin'
   | 'fromSignup'
+  | 'fromLoginApple'
+  | 'fromSignupApple'
+  | 'fromLoginGoogle'
+  | 'fromSignupGoogle'
   | 'fromReinitializePassword'
   | 'fromConfirmChangeEmail'
 
-export type SSOType = 'SSO_login' | 'SSO_signup'
+type SSOType = 'SSO_login' | 'SSO_signup'
+type EmailType = 'email_login' | 'email_signup'
+export type LoginType = SSOType | EmailType
+
+type SSOProvider = 'apple' | 'google'
+
+export function getSSOLoginMethod(
+  provider: SSOProvider,
+  kind: 'login' | 'signup'
+): LoginRoutineMethod {
+  const suffix = provider === 'apple' ? 'Apple' : 'Google'
+  return `${kind === 'login' ? 'fromLogin' : 'fromSignup'}${suffix}` as LoginRoutineMethod
+}
 
 /* eslint sort-keys-fix/sort-keys-fix: "error" */
 export const logEventAnalytics = {
@@ -475,7 +491,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.IDENTITY_CHECK_SUCCESS }, params),
   logLocationToggle: (enabled: boolean) =>
     analytics.logEvent({ firebase: AnalyticsEvent.LOCATION_TOGGLE }, { enabled }),
-  logLogin: (params: { method: string; type?: SSOType }) =>
+  logLogin: (params: { method: LoginRoutineMethod; type?: LoginType }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.LOGIN }, params),
   logLoginClicked: (params: { from: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.LOGIN_CLICKED }, params),

@@ -142,7 +142,10 @@ describe('<SSOButtonApple />', () => {
 
     await user.press(await screen.findByTestId('S\u2019inscrire avec Apple'))
 
-    expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromSignup', type: 'SSO_signup' })
+    expect(analytics.logLogin).toHaveBeenCalledWith({
+      method: 'fromSignupApple',
+      type: 'SSO_signup',
+    })
   })
 
   it('should log analytics when logging in with sso from login', async () => {
@@ -160,7 +163,10 @@ describe('<SSOButtonApple />', () => {
 
     await user.press(await screen.findByTestId('Se connecter avec Apple'))
 
-    expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: 'SSO_login' })
+    expect(analytics.logLogin).toHaveBeenCalledWith({
+      method: 'fromLoginApple',
+      type: 'SSO_login',
+    })
   })
 
   describe('When shouldLogInfo remote config is false', () => {

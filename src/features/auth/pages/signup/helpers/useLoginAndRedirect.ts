@@ -6,7 +6,7 @@ import { AccountState, EligibilityType } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
-import { SSOType } from 'libs/analytics/logEventAnalytics'
+import { LoginRoutineMethod, LoginType } from 'libs/analytics/logEventAnalytics'
 // eslint-disable-next-line no-restricted-imports
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -24,11 +24,14 @@ export const useLoginAndRedirect = () => {
   const loginRoutine = useLoginRoutine()
 
   return useCallback(
-    async (props: { accessToken: string; refreshToken: string }, analyticsType?: SSOType) => {
+    async (
+      props: { accessToken: string; refreshToken: string },
+      options?: { method?: LoginRoutineMethod; analyticsType?: LoginType }
+    ) => {
       await loginRoutine(
         { ...props, accountState: AccountState.ACTIVE },
-        'fromSignup',
-        analyticsType
+        options?.method ?? 'fromSignup',
+        options?.analyticsType ?? 'email_signup'
       )
 
       try {

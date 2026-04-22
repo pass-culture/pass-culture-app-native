@@ -5,7 +5,7 @@ import { LoginRoutine, useLoginRoutine } from 'features/auth/helpers/useLoginRou
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { CookiesConsent } from 'features/cookies/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
-import { SSOType } from 'libs/analytics/logEventAnalytics'
+import { LoginType } from 'libs/analytics/logEventAnalytics'
 import { analytics } from 'libs/analytics/provider'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
@@ -153,7 +153,7 @@ const renderUseLoginRoutine = () => {
   })
 }
 
-function loginFunction(login: LoginRoutine, analyticsType?: SSOType): () => Promise<void> {
+function loginFunction(login: LoginRoutine, analyticsType?: LoginType): () => Promise<void> {
   return async () => {
     await login(
       {

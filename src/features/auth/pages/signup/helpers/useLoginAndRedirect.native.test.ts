@@ -39,6 +39,36 @@ describe('useLoginAndRedirect', () => {
     expect(loginRoutine).toHaveBeenCalledTimes(1)
   })
 
+  it('should call loginRoutine with fromSignup method and email_signup type by default (email signup)', async () => {
+    mockUseLoginRoutine.mockReturnValueOnce(loginRoutine)
+    mockServer.getApi<UserProfile>('/v1/me', nonBeneficiaryUser)
+
+    await loginAndRedirect()
+
+    expect(loginRoutine).toHaveBeenCalledWith(
+      expect.objectContaining({ accessToken: 'accessToken', refreshToken: 'refreshToken' }),
+      'fromSignup',
+      'email_signup'
+    )
+  })
+
+  it('should forward custom method and analyticsType when provided (SSO signup finalization)', async () => {
+    mockUseLoginRoutine.mockReturnValueOnce(loginRoutine)
+    mockServer.getApi<UserProfile>('/v1/me', nonBeneficiaryUser)
+
+    const { result } = renderUseLoginAndRedirect()
+    await result.current(
+      { accessToken: 'accessToken', refreshToken: 'refreshToken' },
+      { method: 'fromSignupGoogle', analyticsType: 'SSO_signup' }
+    )
+
+    expect(loginRoutine).toHaveBeenCalledWith(
+      expect.objectContaining({ accessToken: 'accessToken', refreshToken: 'refreshToken' }),
+      'fromSignupGoogle',
+      'SSO_signup'
+    )
+  })
+
   it('should redirect to DisableActivation when disableActivation is true', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_ACTIVATION])
     mockServer.getApi<UserProfile>('/v1/me', nonBeneficiaryUser)
