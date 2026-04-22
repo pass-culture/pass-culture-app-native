@@ -29,6 +29,11 @@ type FormValues = {
   marketingEmailSubscription: boolean
 }
 
+const SSO_ERROR_MESSAGES: Partial<Record<string, string>> = {
+  NETWORK_REQUEST_FAILED: 'Erreur réseau. Tu peux réessayer une fois la connexion réétablie.',
+  TOO_MANY_ATTEMPTS: 'Nombre de tentatives dépassé. Réessaye dans 1 minute.',
+}
+
 export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = ({
   goToNextStep,
   accessibilityLabelForNextStep,
@@ -67,22 +72,19 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
   const onSSOSignInFailure = useCallback(
     (errorResponse: SignInResponseFailure) => {
       const { content, provider, statusCode } = errorResponse
-      const failureCode = content?.code
       if (content?.code === 'SSO_EMAIL_NOT_FOUND') {
         onSSOEmailNotFoundError()
         goToNextStep({
           accountCreationToken: content.accountCreationToken,
           ssoProvider: provider,
         })
-      } else if (failureCode === 'SSO_ERROR') {
-        showErrorSnackBar(getSSOErrorMessage(provider, 'signup'))
-      } else if (failureCode === 'NETWORK_REQUEST_FAILED') {
-        showErrorSnackBar('Erreur réseau. Tu peux réessayer une fois la connexion réétablie.')
-      } else if (statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS') {
-        showErrorSnackBar('Nombre de tentatives dépassé. Réessaye dans 1 minute.')
-      } else {
-        showErrorSnackBar(getSSOErrorMessage(provider, 'signup'))
+        return
       }
+      const failureCode = content?.code
+      const isRateLimited = statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS'
+      const key = isRateLimited ? 'TOO_MANY_ATTEMPTS' : failureCode
+      const message = (key && SSO_ERROR_MESSAGES[key]) ?? getSSOErrorMessage(provider, 'signup')
+      showErrorSnackBar(message)
     },
     [goToNextStep, onSSOEmailNotFoundError]
   )
