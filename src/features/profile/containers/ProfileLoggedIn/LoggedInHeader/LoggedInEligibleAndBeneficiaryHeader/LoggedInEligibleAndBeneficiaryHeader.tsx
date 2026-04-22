@@ -33,7 +33,7 @@ export const LoggedInEligibleAndBeneficiaryHeader = ({
     lastName,
     depositExpirationDate,
     domainsCredit,
-    eligibilityType,
+    eligibility,
     birthDate,
     statusType,
   } = user
@@ -44,8 +44,8 @@ export const LoggedInEligibleAndBeneficiaryHeader = ({
     isCreditEmpty,
     isDepositExpired,
     depositExpirationDate,
+    eligibility,
     statusType,
-    eligibilityType,
   })
 
   return (

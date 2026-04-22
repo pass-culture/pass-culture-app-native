@@ -4,10 +4,16 @@ import { Share } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
-import { FavoriteResponse, SubcategoriesResponseModelv2, SubcategoryIdEnum } from 'api/gen'
+import {
+  ExpenseDomain,
+  FavoriteResponse,
+  SubcategoriesResponseModelv2,
+  SubcategoryIdEnum,
+  YoungStatusType,
+} from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { favoriteResponseSnap as favorite } from 'features/favorites/fixtures/favoriteResponseSnap'
-import { beneficiaryUserV2 } from 'fixtures/user'
+import { UserProfile } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -22,6 +28,14 @@ import { Favorite } from './Favorite'
 
 const credit: Credit = { amount: 100, isExpired: false }
 
+const userProfile: UserProfile = {
+  isBeneficiary: true,
+  bookedOffers: {},
+  domainsCredit: { [ExpenseDomain.all]: { initial: 500, remaining: 300 } },
+  status: {
+    statusType: YoungStatusType.beneficiary,
+  },
+} as UserProfile
 const onInAppBooking = jest.fn()
 
 const mockFavoritesState = initialFavoritesState
@@ -222,18 +236,20 @@ function simulateBackend(options: Options = DEFAULT_GET_FAVORITE_OPTIONS) {
 const DEFAULT_PROPS = {
   credit,
   favorite,
+  userProfile,
   onInAppBooking,
 }
 
 type RenderFavoriteParams = {
   favorite?: FavoriteResponse
+  user?: UserProfile
 }
 
 function renderFavorite(props: RenderFavoriteParams = DEFAULT_PROPS) {
-  const { favorite } = { ...DEFAULT_PROPS, ...props }
+  const { favorite, userProfile } = { ...DEFAULT_PROPS, ...props }
   return render(
     reactQueryProviderHOC(
-      <Favorite favorite={favorite} user={beneficiaryUserV2} onInAppBooking={onInAppBooking} />
+      <Favorite favorite={favorite} user={userProfile} onInAppBooking={onInAppBooking} />
     )
   )
 }

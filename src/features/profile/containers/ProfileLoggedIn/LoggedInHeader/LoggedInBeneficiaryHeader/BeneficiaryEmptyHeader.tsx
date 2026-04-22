@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligible'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { FreeHomeButton } from 'features/profile/components/Buttons/FreeHomeButton/FreeHomeButton'
 import { HelpButton } from 'features/profile/components/Buttons/HelpButton/HelpButton'
 import { GreySeparatorWithBorderDefaultColor } from 'features/profile/components/GreySeparatorWithBorderDefaultColor/GreySeparatorWithBorderDefaultColor'
@@ -31,6 +31,7 @@ export const BeneficiaryEmptyHeader = ({ user, featureFlags }: Props) => {
     eligibilityType,
     depositExpirationDate,
     domainsCredit,
+    eligibility,
     statusType,
   } = user
   const title = getProfileHeaderTitle({ firstName, lastName })
@@ -45,7 +46,9 @@ export const BeneficiaryEmptyHeader = ({ user, featureFlags }: Props) => {
     17: eighteenYearsOldDeposit,
   }
 
-  const isUserFreeStatus = getIsUserEligibleFree(user?.eligibilityType)
+  const isUserFreeStatus =
+    eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_15 ||
+    eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_16
 
   const nextCreditIntroText = isUserFreeStatus
     ? 'Tu pourras débloquer ton prochain crédit de '
@@ -60,8 +63,8 @@ export const BeneficiaryEmptyHeader = ({ user, featureFlags }: Props) => {
     isCreditEmpty,
     isDepositExpired,
     depositExpirationDate,
+    eligibility,
     statusType,
-    eligibilityType,
   })
 
   if (isEighteenYearsOldOrMore) {

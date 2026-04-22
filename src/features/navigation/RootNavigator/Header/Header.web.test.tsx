@@ -7,8 +7,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
-import { UserProfile } from 'features/share/types'
-import { beneficiaryUserV2, nonBeneficiaryUserV2 } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { screen } from 'tests/utils/web'
@@ -46,14 +44,14 @@ describe('Header', () => {
   })
 
   it('should render correctly', async () => {
-    renderHeader({ isLoggedIn: true, user: beneficiaryUserV2 })
+    renderHeader({ isLoggedIn: true, isBeneficiary: true })
 
     expect(await screen.findByText('Favoris')).toBeInTheDocument()
     expect(await screen.findByText('99+')).toBeInTheDocument()
   })
 
   it('should render Header without Bookings item for non-beneficiary and logged out users', () => {
-    renderHeader({ isLoggedIn: false, user: nonBeneficiaryUserV2 })
+    renderHeader({ isLoggedIn: false, isBeneficiary: false })
 
     expect(screen.getByText('Accueil')).toBeInTheDocument()
     expect(screen.getByText('Recherche')).toBeInTheDocument()
@@ -63,7 +61,7 @@ describe('Header', () => {
   })
 
   it('should render Header without Bookings item for non-beneficiary and logged in users', () => {
-    renderHeader({ isLoggedIn: false, user: nonBeneficiaryUserV2 })
+    renderHeader({ isLoggedIn: false, isBeneficiary: false })
 
     expect(screen.getByText('Accueil')).toBeInTheDocument()
     expect(screen.getByText('Recherche')).toBeInTheDocument()
@@ -73,7 +71,7 @@ describe('Header', () => {
   })
 
   it('should render Header for beneficiary and logged in users', () => {
-    renderHeader({ isLoggedIn: true, user: beneficiaryUserV2 })
+    renderHeader({ isLoggedIn: true, isBeneficiary: true })
 
     expect(screen.getByText('Accueil')).toBeInTheDocument()
     expect(screen.getByText('Recherche')).toBeInTheDocument()
@@ -83,7 +81,7 @@ describe('Header', () => {
   })
 
   it('should identify one tab as current page', () => {
-    renderHeader({ isLoggedIn: true, user: beneficiaryUserV2 })
+    renderHeader({ isLoggedIn: true, isBeneficiary: true })
 
     const tabs = [
       'Accueil',
@@ -101,10 +99,16 @@ describe('Header', () => {
   })
 })
 
-function renderHeader({ isLoggedIn, user }: { isLoggedIn: boolean; user: UserProfile }) {
+function renderHeader({
+  isLoggedIn,
+  isBeneficiary,
+}: {
+  isLoggedIn: boolean
+  isBeneficiary: boolean
+}) {
   mockedUseAuthContext.mockReturnValueOnce({
     isLoggedIn,
-    user,
+    user: { isBeneficiary },
   })
 
   return render(

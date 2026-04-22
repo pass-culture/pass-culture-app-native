@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 
-import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { UserProfile } from 'features/share/types'
 import { Adjust } from 'libs/adjust/adjust'
 import { AdjustEvents } from 'libs/adjust/adjustEvents'
@@ -9,7 +8,7 @@ import { getAge } from 'shared/user/getAge'
 
 export const useAdjustBeneficiaryEvent = (user?: UserProfile) => {
   useEffect(() => {
-    if (isCurrentOrFormerBeneficiary(user)) {
+    if (user?.isBeneficiary) {
       // beneficiary events will be logged only once so we prefer check that Adjust is enabled to avoid losing the event
       Adjust.isEnabled((isEnabled) => {
         if (isEnabled) {
@@ -31,5 +30,5 @@ export const useAdjustBeneficiaryEvent = (user?: UserProfile) => {
         }
       })
     }
-  }, [user])
+  }, [user?.isBeneficiary, user?.birthDate])
 }
