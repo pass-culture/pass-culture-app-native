@@ -113,7 +113,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
       clubAdvicesCount: item.offer.chroniclesCount,
       isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
       subcategoryId: item.offer.subcategoryId,
-      proAdvicesCount: item.offer.proAdvicesCount,
+      proAdvicesCount: shouldDisplayAdvicesSection ? item.offer.proAdvicesCount : undefined,
     })
 
     return (

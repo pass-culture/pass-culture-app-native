@@ -100,7 +100,7 @@ export const Venue: FunctionComponent = () => {
   const isUserUnderage = useIsUserUnderage()
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const transformHits = useTransformOfferHits()
-  const segment = useABSegment(['A', 'B'])
+  const proAdvicesSegment = useABSegment(['A', 'B'])
 
   const { data: gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylistsQuery({
     venue,
@@ -130,7 +130,7 @@ export const Venue: FunctionComponent = () => {
 
   const { data: advices } = useVenueProAdvicesQuery({
     venueId: params.id,
-    enableProAdvices: enableProAdvices && segment === 'A',
+    enableProAdvices: enableProAdvices && proAdvicesSegment === 'A',
   })
   const nbAdvices = advices?.nbResults ?? 0
 
@@ -160,7 +160,7 @@ export const Venue: FunctionComponent = () => {
       userLocation,
     },
     advice: getHeadlineAdvice(advices?.proAdvices, venueOffers?.headlineOffer?.objectID),
-    segment,
+    segment: proAdvicesSegment,
   })
 
   useEffect(() => {
@@ -193,7 +193,7 @@ export const Venue: FunctionComponent = () => {
             shouldDisplayVenueCalendar={shouldDisplayVenueCalendar}
             onViewableItemsChanged={handleViewableItemsChanged}
             advicesCardData={
-              segment === 'A'
+              proAdvicesSegment === 'A'
                 ? venueProAdvicesToAdviceCardData(
                     getAdvicesWithoutHeadline(
                       advices?.proAdvices.slice(0, 5),
