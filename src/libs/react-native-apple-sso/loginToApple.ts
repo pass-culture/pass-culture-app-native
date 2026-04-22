@@ -10,6 +10,7 @@ export const loginToApple = async ({ onSuccess, onError }: AppleLoginOptions) =>
 
     const appleResponse = await appleAuth.performRequest({
       requestedOperation: appleAuth.Operation.LOGIN,
+      requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
     })
 
     if (!appleResponse.authorizationCode) {
