@@ -72,6 +72,7 @@ export type EntityType<T> = {
     ['al:ios:url']: (entity: T, href: string, subPath: string) => string
     ['al:android:url']: (entity: T, href: string, subPath: string) => string
   }
+  PATH: string
 }
 
 export enum TwitterCard {
