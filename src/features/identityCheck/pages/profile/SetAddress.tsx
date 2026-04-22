@@ -4,6 +4,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
@@ -12,6 +14,8 @@ import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useAddressesQuery } from 'libs/place/queries/useAddressesQuery'
 import { useIdCheckAddressAutocompletion } from 'queries/settings/useSettings'
@@ -34,7 +38,7 @@ const exception = 'Failed to fetch data from API: https://data.geopf.fr/geocodag
 export const SetAddress = () => {
   const { params } = useRoute<UseRouteType<'SetAddress'>>()
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
-
+  const { user } = useAuthContext()
   const identityCheckAndRecapExistingDataConfig = {
     headerTitle: 'Profil',
     title: 'Quelle est ton adresse\u00a0?',
@@ -49,6 +53,9 @@ export const SetAddress = () => {
   }
 
   const { data: idCheckAddressAutocompletion } = useIdCheckAddressAutocompletion()
+  const phoneNumberInProfileStepper = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_PHONE_NUMBER_IN_PROFILE_STEPPER
+  )
   const storedAddress = useAddress()
   const storedCity = useCity()
   const { setAddress: setStoreAddress } = addressActions
@@ -109,7 +116,14 @@ export const SetAddress = () => {
   const submitAddress = async () => {
     if (!enabled) return
     setStoreAddress(selectedAddress ?? query)
-    navigate(...getSubscriptionHookConfig('SetStatus', { type }))
+    if (
+      phoneNumberInProfileStepper &&
+      user?.eligibilityType === UserEligibilityType.ELIGIBLE_CREDIT_V3_18
+    ) {
+      navigate(...getSubscriptionHookConfig('SetPhoneNumber', { type }))
+    } else {
+      navigate(...getSubscriptionHookConfig('SetStatus', { type }))
+    }
   }
 
   const errorMessage =
