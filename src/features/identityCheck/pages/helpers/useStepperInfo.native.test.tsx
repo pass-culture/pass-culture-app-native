@@ -167,7 +167,7 @@ describe('useStepperInfo', () => {
       expect(phoneValidationStep?.firstScreen).toEqual('SetPhoneNumberWithoutValidation')
     })
 
-    it('should have firstScreen to "Profile" when feature flag WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is enabled', () => {
+    it('should keep profile firstScreen to "SetName" when feature flag WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is enabled', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_PHONE_NUMBER_IN_PROFILE_STEPPER])
 
       mockUseGetStepperInfo.mockReturnValueOnce({
@@ -180,7 +180,7 @@ describe('useStepperInfo', () => {
       const { stepsDetails } = useStepperInfo()
       const profileStep = stepsDetails.find((step) => step.name === IdentityCheckStep.PROFILE)
 
-      expect(profileStep?.firstScreen).toEqual('ProfileInformationValidationCreate')
+      expect(profileStep?.firstScreen).toEqual('SetName')
     })
   })
 

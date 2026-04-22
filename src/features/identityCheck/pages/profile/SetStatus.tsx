@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 import * as yup from 'yup'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { statusActions, useStatus } from 'features/identityCheck/pages/profile/store/statusStore'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -21,9 +22,8 @@ const schema = yup.object().shape({
 export const SetStatus = () => {
   const { params } = useRoute<UseRouteType<'SetStatus'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
-
+  const { user } = useAuthContext()
   const identityCheckAndRecapExistingDataConfig = 'Profil'
   const pageConfigByType = {
     [ProfileTypes.IDENTITY_CHECK]: identityCheckAndRecapExistingDataConfig,
@@ -33,10 +33,9 @@ export const SetStatus = () => {
 
   const storedStatus = useStatus()
   const { setStatus: setStoreStatus } = statusActions
-
+  const defaultStatus = user?.activityId ?? storedStatus
   // isLoading from react-query is not support with mutateAsync
   const [isLoading, setIsLoading] = useState<boolean>(false)
-
   const titleID = uuidv4()
   const {
     control,
@@ -44,7 +43,7 @@ export const SetStatus = () => {
     watch,
     formState: { isValid: formIsValid },
   } = useForm<StatusForm>({
-    defaultValues: { selectedStatus: storedStatus ?? undefined },
+    defaultValues: { selectedStatus: defaultStatus ?? undefined },
     resolver: yupResolver(schema),
     mode: 'onChange',
   })

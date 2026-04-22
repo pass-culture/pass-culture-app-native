@@ -5,6 +5,7 @@ import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { setNameSchema } from 'features/identityCheck/pages/profile/schemas/setNameSchema'
 import { nameActions, useName } from 'features/identityCheck/pages/profile/store/nameStore'
@@ -29,7 +30,7 @@ type FormValues = {
 export const SetName = () => {
   const { params } = useRoute<UseRouteType<'SetName'>>()
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
-
+  const { user } = useAuthContext()
   const identityCheckAndRecapExistingDataConfig = {
     headerTitle: 'Profil',
     title: 'Comment t’appelles-tu\u00a0?',
@@ -53,10 +54,12 @@ export const SetName = () => {
   const { setName: setStoredName } = nameActions
   const { navigate } = useNavigation<NativeStackNavigationProp<SubscriptionStackParamList>>()
 
+  const defaultFirstName = user?.firstName ?? storedName?.firstName
+  const defaultLastName = user?.lastName ?? storedName?.lastName
   const { control, formState, handleSubmit } = useForm<FormValues>({
     defaultValues: {
-      firstName: storedName?.firstName ?? '',
-      lastName: storedName?.lastName ?? '',
+      firstName: defaultFirstName ?? '',
+      lastName: defaultLastName ?? '',
     },
     resolver: yupResolver(setNameSchema),
     mode: 'all',

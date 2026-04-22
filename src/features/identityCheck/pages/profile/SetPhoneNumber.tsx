@@ -4,6 +4,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker/constants'
 import { CountryPicker } from 'features/identityCheck/components/countryPicker/CountryPicker'
 import { findCountry } from 'features/identityCheck/pages/phoneValidation/helpers/findCountry'
@@ -15,6 +16,10 @@ import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { phoneNumberActions } from 'features/identityCheck/pages/profile/store/phoneNumberStore'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
+import {
+  getCountryIdFromPhoneNumber,
+  getLastNineDigits,
+} from 'features/profile/helpers/helperPhoneNumber'
 import { Form } from 'ui/components/Form'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
@@ -28,15 +33,19 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export const SetPhoneNumber = () => {
   const { params } = useRoute<UseRouteType<'SetPhoneNumber'>>()
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
-
+  const { user } = useAuthContext()
   const { setPhoneNumber: setStoredPhoneNumber } = phoneNumberActions
   const { navigate } = useNavigation<NativeStackNavigationProp<SubscriptionStackParamList>>()
+  const userPhoneNumber = user?.phoneNumber ? getLastNineDigits(user.phoneNumber) : ''
+  const userCountryId = user?.phoneNumber
+    ? getCountryIdFromPhoneNumber(user.phoneNumber)
+    : METROPOLITAN_FRANCE.id
 
   const { control, handleSubmit, formState } = useForm<PhoneNumberFormValues>({
     resolver: yupResolver(phoneNumberSchema),
     defaultValues: {
-      phoneNumber: undefined,
-      countryId: METROPOLITAN_FRANCE.id,
+      phoneNumber: userPhoneNumber ?? '',
+      countryId: userCountryId ?? METROPOLITAN_FRANCE.id,
     },
     mode: 'onChange',
   })

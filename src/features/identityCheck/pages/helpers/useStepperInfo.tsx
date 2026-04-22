@@ -46,10 +46,10 @@ export const useStepperInfo = (): StepperInfo => {
   const phoneNumberInProfileStepper = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_PHONE_NUMBER_IN_PROFILE_STEPPER
   )
+  const storedProfileInfos = useStoredProfileInfos()
 
   const { user } = useAuthContext()
   const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
-  const storedProfileInfos = useStoredProfileInfos()
 
   const { data } = useGetStepperInfoQuery()
   const { shouldBeOverriden: shouldCreditAmountBeOverriden, amount: overriddenCreditAmount } =
@@ -95,6 +95,16 @@ export const useStepperInfo = (): StepperInfo => {
   const shouldDisplayValidateYourInformation =
     userAlreadyGaveInfos && (isSecondStepProfileNotCompleted || isFirstStepProfileNotCompleted)
 
+  const getFirstScreenForProfileStep = () => {
+    if (phoneNumberInProfileStepper) return 'SetName'
+    return hasUserCompletedInfo ? 'ProfileInformationValidationCreate' : 'SetName'
+  }
+
+  const getFirstScreenTypeForProfileStep = () => {
+    if (phoneNumberInProfileStepper) return ProfileTypes.IDENTITY_CHECK
+    return hasUserCompletedInfo ? ProfileTypes.RECAP_EXISTING_DATA : ProfileTypes.IDENTITY_CHECK
+  }
+
   const stepsConfig: StepsDictionaryWithoutPhoneNumber = {
     [IdentityCheckStep.PROFILE]: {
       name: IdentityCheckStep.PROFILE,
@@ -104,10 +114,8 @@ export const useStepperInfo = (): StepperInfo => {
         completed: () => <IconStepDone Icon={Profile} testID="profile-step-done" />,
         retry: () => <IconStepRetry Icon={Profile} testID="profile-retry-step" />,
       },
-      firstScreen: hasUserCompletedInfo ? 'ProfileInformationValidationCreate' : 'SetName',
-      firstScreenType: hasUserCompletedInfo
-        ? ProfileTypes.RECAP_EXISTING_DATA
-        : ProfileTypes.IDENTITY_CHECK,
+      firstScreen: getFirstScreenForProfileStep(),
+      firstScreenType: getFirstScreenTypeForProfileStep(),
       subtitle: shouldDisplayValidateYourInformation ? 'Confirme tes informations' : undefined,
     },
     [IdentityCheckStep.IDENTIFICATION]: {

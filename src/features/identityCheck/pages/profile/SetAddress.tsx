@@ -57,22 +57,24 @@ export const SetAddress = () => {
     RemoteStoreFeatureFlags.WIP_PHONE_NUMBER_IN_PROFILE_STEPPER
   )
   const storedAddress = useAddress()
+  const defaultAddress = user?.street ?? storedAddress
   const storedCity = useCity()
   const { setAddress: setStoreAddress } = addressActions
   const { navigate } = useNavigation<UseNavigationType>()
-  const [query, setQuery] = useState<string>(storedAddress ?? '')
+  const [query, setQuery] = useState<string>(defaultAddress ?? '')
   const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
-  const [selectedAddress, setSelectedAddress] = useState<string | null>(storedAddress ?? null)
+  const [selectedAddress, setSelectedAddress] = useState<string | null>(defaultAddress ?? null)
   const debouncedSetQuery = useRef(debounce(setDebouncedQuery, 500)).current
-
+  const defaultCity = user?.city ?? storedCity?.name
+  const defaultPostalCode = user?.postalCode ?? storedCity?.postalCode
   const {
     data: addresses = [],
     isLoading,
     isError,
   } = useAddressesQuery({
     query: debouncedQuery,
-    cityCode: storedCity?.code ?? '',
-    postalCode: storedCity?.postalCode ?? '',
+    cityCode: defaultCity ?? '',
+    postalCode: defaultPostalCode ?? '',
     enabled: !!idCheckAddressAutocompletion && debouncedQuery.length > 0,
     limit: 10,
   })
