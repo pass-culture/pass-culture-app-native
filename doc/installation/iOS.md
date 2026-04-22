@@ -152,3 +152,25 @@ cd ios && rm -rf ./build && rm -rf ~/Library/Developer/Xcode/DerivedData/* && cd
 ```
 
 </details>
+
+<details>
+  <summary><strong>❌ error node iOS: hermes-engine.build/Script-xxx.sh: line 9: ....-nodejs-20.10.0/bin/node: No such file or directory</strong></summary>
+
+  After an update of the Node.js version you can have this issue when building on iOS (display error detail in xcode to see this): 
+```
+hermes-engine.build/Script-46EB2E00046900.sh: line 9: /nix/store/m8s1dj96nbackrk4gk1bsn8hlfcggg4b-nodejs-20.10.0/bin/node: No such file or directory
+```
+
+This happens because of this script `node_modules/react-native/scripts/cocoapods/utils.rb` that create the file `ios/.xcode.env.local` during the initial `pod install`.  
+This hardcodes the path to the node to use in that file and it is never deleted or modified. In our project, we have a properly configured `ios/.xcode.env` file, but the local file override it.
+
+#### Several solutions:
+
+- The safest, but requiring an action with each bump:  
+Delete the `ios/.xcode.env.local` file when node is updated so that it is not recreated with the new value as wanted by cocoapods.  
+- Delete the contents of `ios/.xcode.env.local`, which will fall back to `ios/.xcode.env` (fallback behavior that may change in future versions of RN), where the path to the node is dynamic and not hardcoded.
+- Copy the contents of `ios/.xcode.env` to `ios/.xcode.env.local`  
+
+</details>
+
+
