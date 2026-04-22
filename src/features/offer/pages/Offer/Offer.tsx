@@ -222,6 +222,7 @@ export function Offer() {
         isMultiArtistsEnabled={isMultiArtistsEnabled}
         onShowOfferArtistsModal={handleShowOfferArtistsModal}
         proAdvicesCount={proAdvices?.nbResults}
+        proAdvicesSegment={proAdvicesSegment}
       />
     </Page>
   )

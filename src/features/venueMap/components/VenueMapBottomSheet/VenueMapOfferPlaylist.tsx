@@ -14,6 +14,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { CustomListRenderItem, Playlist } from 'ui/components/Playlist'
 import { Button } from 'ui/designSystem/Button/Button'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
@@ -48,6 +49,7 @@ export const VenueMapOfferPlaylist = ({
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const isFocused = useIsFocused()
+  const proAdvicesSegment = useABSegment(['A', 'B'])
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item }) => {
@@ -58,7 +60,7 @@ export const VenueMapOfferPlaylist = ({
         hasSmallLayout: true,
         isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
         subcategoryId: item.offer.subcategoryId,
-        proAdvicesCount: item.offer.proAdvicesCount,
+        proAdvicesCount: proAdvicesSegment === 'A' ? item.offer.proAdvicesCount : undefined,
       })
       return (
         <OfferTile
@@ -78,7 +80,15 @@ export const VenueMapOfferPlaylist = ({
         />
       )
     },
-    [currency, euroToPacificFrancRate, labelMapping, mapping, playlistType, theme]
+    [
+      currency,
+      euroToPacificFrancRate,
+      labelMapping,
+      mapping,
+      playlistType,
+      proAdvicesSegment,
+      theme,
+    ]
   )
 
   const handleOfferPlaylistViewableItemsChanged = useCallback(

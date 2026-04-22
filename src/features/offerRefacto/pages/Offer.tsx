@@ -217,6 +217,7 @@ export function Offer() {
         HeaderComponent={RefactoOfferHeader}
         CTAsComponent={OfferCTAs}
         proAdvicesCount={proAdvices?.nbResults}
+        proAdvicesSegment={proAdvicesSegment}
       />
     </Page>
   )

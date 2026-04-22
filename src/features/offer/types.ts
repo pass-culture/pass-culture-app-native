@@ -106,6 +106,7 @@ export type OfferContentProps = {
   HeaderComponent?: ComponentType<OfferHeaderComponentProps>
   CTAsComponent?: ComponentType<OfferCTAsComponentProps>
   proAdvicesCount?: number
+  proAdvicesSegment?: string
 }
 
 export type OfferImageContainerDimensions = {

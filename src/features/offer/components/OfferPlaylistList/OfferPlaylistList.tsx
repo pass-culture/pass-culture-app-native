@@ -41,6 +41,7 @@ export type OfferPlaylistListProps = {
     onBeforeNavigate: (type: PlaylistType) => void
     hideSeeAllButton?: boolean
   }
+  proAdvicesSegment?: string
 }
 
 function isArrayNotEmpty<T>(data: T[] | undefined): data is T[] {
@@ -57,6 +58,7 @@ export function OfferPlaylistList({
   apiRecoParamsOtherCategories,
   onViewableItemsChanged,
   seeAllButton,
+  proAdvicesSegment,
 }: Readonly<OfferPlaylistListProps>) {
   const theme = useTheme()
   const isLandscape = useIsLandscape()
@@ -159,6 +161,7 @@ export function OfferPlaylistList({
                   priceDisplay: (item: Offer) =>
                     getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
                   theme,
+                  proAdvicesSegment,
                 })}
                 title={playlist.title}
                 playlistType={playlist.type}
