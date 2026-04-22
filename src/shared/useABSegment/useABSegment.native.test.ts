@@ -1,7 +1,9 @@
 import { beneficiaryUser } from 'fixtures/user'
+import { env } from 'libs/environment/env'
+import { abTestOverridesActions } from 'shared/useABSegment/abTestOverrideStore'
 import * as SegmentFromIdentifier from 'shared/useABSegment/getSegmentFromIdentifier'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
-import { renderHook } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 const mockUseAuthContext = jest.fn()
 jest.mock('features/auth/context/AuthContext', () => ({
@@ -23,6 +25,13 @@ jest.mock('features/trustedDevice/helpers/useDeviceInfo', () => ({
 const getSegmentFromIdentifierSpy = jest.spyOn(SegmentFromIdentifier, 'getSegmentFromIdentifier')
 
 describe('useABSegment', () => {
+  beforeEach(() => {
+    mockUseAuthContext.mockReturnValue({ user: undefined })
+    act(() => {
+      abTestOverridesActions.resetAll()
+    })
+  })
+
   it('should get AB segment from device id when user not logged in', () => {
     mockUseAuthContext.mockReturnValueOnce({ user: undefined })
     renderHook(() => useABSegment(['A', 'B']))
@@ -35,5 +44,48 @@ describe('useABSegment', () => {
     renderHook(() => useABSegment(['A', 'B']))
 
     expect(getSegmentFromIdentifierSpy).toHaveBeenNthCalledWith(1, ['A', 'B'], beneficiaryUser.id)
+  })
+
+  describe('with testId and overrides', () => {
+    it('should return the forced segment when an override is set and env is not production', () => {
+      act(() => {
+        abTestOverridesActions.setOverride('my-test', 'B')
+      })
+
+      const { result } = renderHook(() => useABSegment(['A', 'B'], 'my-test'))
+
+      expect(result.current).toBe('B')
+    })
+
+    it('should fall back to the deterministic segment when no override is set', () => {
+      const { result } = renderHook(() => useABSegment(['A', 'B'], 'my-test'))
+
+      expect(getSegmentFromIdentifierSpy).toHaveBeenLastCalledWith(['A', 'B'], 'device-id')
+      expect(['A', 'B']).toContain(result.current)
+    })
+
+    it('should fall back to the deterministic segment when the forced segment is not in the segments list', () => {
+      act(() => {
+        abTestOverridesActions.setOverride('my-test', 'Z')
+      })
+
+      renderHook(() => useABSegment(['A', 'B'], 'my-test'))
+
+      expect(getSegmentFromIdentifierSpy).toHaveBeenLastCalledWith(['A', 'B'], 'device-id')
+    })
+
+    it('should ignore the override in production', () => {
+      const originalEnv = env.ENV
+      env.ENV = 'production'
+      act(() => {
+        abTestOverridesActions.setOverride('my-test', 'B')
+      })
+
+      renderHook(() => useABSegment(['A', 'B'], 'my-test'))
+
+      expect(getSegmentFromIdentifierSpy).toHaveBeenLastCalledWith(['A', 'B'], 'device-id')
+
+      env.ENV = originalEnv
+    })
   })
 })

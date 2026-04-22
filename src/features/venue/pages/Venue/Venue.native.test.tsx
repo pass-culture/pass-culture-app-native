@@ -33,7 +33,7 @@ import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.c
 import { Network } from 'libs/share/types'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Offer } from 'shared/offer/types'
-import * as ABSegmentModule from 'shared/useABSegment/useABSegment'
+import { abTestOverridesActions } from 'shared/useABSegment/abTestOverrideStore'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
@@ -93,7 +93,6 @@ mockUseGTLPlaylists.mockReturnValue({
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
-const useABSegmentSpy = jest.spyOn(ABSegmentModule, 'useABSegment')
 
 const mockUseDeviceInfo = jest.fn().mockReturnValue({
   deviceId: 'device-id',
@@ -188,15 +187,19 @@ describe('<Venue />', () => {
       ).toBeOnTheScreen()
     })
 
+    afterEach(() => {
+      abTestOverridesActions.resetAll()
+    })
+
     it('should display advices section when AB testing segment is A', async () => {
-      useABSegmentSpy.mockReturnValueOnce('A')
+      abTestOverridesActions.setOverride('enableProReviewsVenueABTesting', 'A')
       renderVenue(venueId)
 
       expect(await screen.findByText(`Les avis par “${venueDataTest.name}”`)).toBeOnTheScreen()
     })
 
     it('should not display advices section when AB testing segment is B', async () => {
-      useABSegmentSpy.mockReturnValueOnce('B')
+      abTestOverridesActions.setOverride('enableProReviewsVenueABTesting', 'B')
       renderVenue(venueId)
 
       await screen.findByText('À la une')
