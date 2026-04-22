@@ -22,6 +22,7 @@ import { Offer, SimilarOfferPlaylist } from 'shared/offer/types'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 
 export type OfferPlaylistListProps = {
   offer: OfferResponse
@@ -35,6 +36,11 @@ export type OfferPlaylistListProps = {
     itemType: 'offer' | 'venue' | 'artist' | 'unknown',
     playlistIndex?: number
   ) => void
+  seeAllButton: {
+    navigateToVerticalPlaylist: (type: PlaylistType) => InternalNavigationProps['navigateTo']
+    onBeforeNavigate: (type: PlaylistType) => void
+    hideSeeAllButton?: boolean
+  }
 }
 
 function isArrayNotEmpty<T>(data: T[] | undefined): data is T[] {
@@ -50,6 +56,7 @@ export function OfferPlaylistList({
   otherCategoriesSimilarOffers,
   apiRecoParamsOtherCategories,
   onViewableItemsChanged,
+  seeAllButton,
 }: Readonly<OfferPlaylistListProps>) {
   const theme = useTheme()
   const isLandscape = useIsLandscape()
@@ -84,7 +91,7 @@ export function OfferPlaylistList({
     playlistType: PlaylistType,
     apiRecoParams?: RecommendationApiParams
   ) => {
-    analytics.logPlaylistHorizontalScroll(fromOfferId, playlistType, apiRecoParams)
+    void analytics.logPlaylistHorizontalScroll(fromOfferId, playlistType, apiRecoParams)
   }
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')
@@ -127,12 +134,16 @@ export function OfferPlaylistList({
       {similarOffersPlaylist.map((playlist, index) => {
         if (!isArrayNotEmpty(playlist.offers)) return null
 
+        const navigateToVerticalPlaylist = seeAllButton.navigateToVerticalPlaylist(playlist.type)
+        const onBeforeNavigate = () => seeAllButton.onBeforeNavigate(playlist.type)
+        const hideSeeAllButton = seeAllButton.hideSeeAllButton
+
         return (
           <ObservedPlaylist
             key={playlist.type}
             onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged(playlist.type, index)}
             onIntersectionChange={playlist.handleChangePlaylistDisplay}>
-            {({ listRef, handleViewableItemsChanged }) => (
+            {({ listRef }) => (
               <StyledPassPlaylist
                 data={playlist.offers ?? []}
                 itemWidth={itemWidth}
@@ -154,10 +165,10 @@ export function OfferPlaylistList({
                 onEndReached={() =>
                   trackingOnHorizontalScroll(playlist.type, playlist.apiRecoParams)
                 }
-                onViewableItemsChanged={handleViewableItemsChanged}
                 playlistRef={listRef}
                 FlatListComponent={FlatList}
                 keyExtractor={keyExtractor}
+                seeAllButton={{ navigateToVerticalPlaylist, onBeforeNavigate, hideSeeAllButton }}
               />
             )}
           </ObservedPlaylist>

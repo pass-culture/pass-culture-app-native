@@ -6,7 +6,7 @@ import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
-import { VerticalPlaylistOffersPage } from './VerticalPlaylistOffersPage'
+import { VerticalPlaylistOffersView } from './VerticalPlaylistOffersView'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -21,11 +21,11 @@ const mockHitsItems: Offer[] = [
   mockedAlgoliaResponse.hits[2],
 ]
 
-describe('<VerticalPlaylistOffersPage />', () => {
+describe('<VerticalPlaylistOffersView />', () => {
   it('should render correctly', async () => {
     const { container } = render(
       reactQueryProviderHOC(
-        <VerticalPlaylistOffersPage
+        <VerticalPlaylistOffersView
           title="My title"
           subtitle="My subtitle"
           items={mockHitsItems}
@@ -43,7 +43,7 @@ describe('<VerticalPlaylistOffersPage />', () => {
   it('should not have basic accessibility issues', async () => {
     const { container } = render(
       reactQueryProviderHOC(
-        <VerticalPlaylistOffersPage
+        <VerticalPlaylistOffersView
           title="My title"
           subtitle="My subtitle"
           items={mockHitsItems}

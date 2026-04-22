@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`<VerticalPlaylistOffersPage /> should render correctly 1`] = `
+exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
 <View
   isLandscape={false}
   style={

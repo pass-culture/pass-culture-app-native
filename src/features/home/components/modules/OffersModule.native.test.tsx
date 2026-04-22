@@ -12,6 +12,7 @@ import { ThemeProvider } from 'libs/styled'
 import { ColorScheme } from 'libs/styled/useColorScheme'
 import * as algoliaSimilarOffersAPI from 'queries/offer/useAlgoliaSimilarOffersQuery'
 import { Offer } from 'shared/offer/types'
+import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
@@ -95,7 +96,8 @@ describe('OffersModule', () => {
 
     await user.press(screen.getByText('Tout voir'))
 
-    expect(navigate).toHaveBeenCalledWith('VerticalPlaylistOffersFromModule', {
+    expect(navigate).toHaveBeenCalledWith('VerticalPlaylistOffers', {
+      type: VerticalPlaylist.ModuleOffers,
       module: {
         id: 'fakeModuleId',
         title: 'Module title',

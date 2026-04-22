@@ -12,11 +12,10 @@ export function AccessibilityDeclarationMobileIOS() {
       storeLink={{ url: `https://apps.apple.com/fr/app/pass-culture/id${env.IOS_APP_STORE_ID}` }}
       auditDate="16/04/2026"
       conformityEN="62,50%"
-      conformityRAAM="81,40%"
-      averageConformityRAAM="96,99%"
+      conformityRAAM="86,05%"
+      averageConformityRAAM="97,15%"
       nonAccessibleContent={[
         'Critère 3.5 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, une alternative\u00a0?',
-        'Critère 3.7 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, des sous-titres synchronisés\u00a0?',
         'Critère 5.1.a - a) Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance\u00a0?',
         'Critère 5.4 - Dans chaque écran, les messages de statut sont-ils correctement restitués par les technologies d’assistance\u00a0?',
         'Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins\u00a0?',

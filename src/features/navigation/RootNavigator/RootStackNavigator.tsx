@@ -74,8 +74,7 @@ import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
-import { VerticalPlaylistOffersFromModule } from 'shared/verticalPlaylist/pages/VerticalPlaylistOffersFromModule'
-import { VerticalPlaylistOffersFromVenue } from 'shared/verticalPlaylist/pages/VerticalPlaylistOffersFromVenue'
+import { VerticalPlaylistOffers } from 'shared/verticalPlaylist/pages/VerticalPlaylistOffers'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
@@ -361,13 +360,8 @@ const rootScreens: RouteConfig[] = [
     options: { title: 'Avis du pro' },
   },
   {
-    name: 'VerticalPlaylistOffersFromModule',
-    component: VerticalPlaylistOffersFromModule,
-    options: { title: 'Liste de lecture verticale' },
-  },
-  {
-    name: 'VerticalPlaylistOffersFromVenue',
-    component: VerticalPlaylistOffersFromVenue,
+    name: 'VerticalPlaylistOffers',
+    component: VerticalPlaylistOffers,
     options: { title: 'Liste de lecture verticale' },
   },
 ]
