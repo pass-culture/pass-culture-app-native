@@ -1051,7 +1051,7 @@ exports[`<ProfileLoggedIn /> should match snapshot 1`] = `
           }
         >
           <View
-            accessibilityLabel="Notifications et thèmes et suivis"
+            accessibilityLabel="Notifications et thèmes suivis"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -1086,7 +1086,7 @@ exports[`<ProfileLoggedIn /> should match snapshot 1`] = `
                 "userSelect": "auto",
               }
             }
-            testID="Notifications et thèmes et suivis"
+            testID="Notifications et thèmes suivis"
           >
             <View
               style={
@@ -1139,7 +1139,7 @@ exports[`<ProfileLoggedIn /> should match snapshot 1`] = `
                     }
                   }
                 >
-                  Notifications et thèmes et suivis
+                  Notifications et thèmes suivis
                 </Text>
               </View>
               <View
