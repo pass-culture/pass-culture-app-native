@@ -1,3 +1,5 @@
+import { AB_TESTS } from 'shared/useABSegment/abTests'
+
 export type ABTestSegment = string
 export type ABTestDefinition = {
   id: string
@@ -6,8 +8,13 @@ export type ABTestDefinition = {
 }
 export const AB_TESTS_REGISTRY: ABTestDefinition[] = [
   {
-    id: 'enableProReviewsVenueABTesting',
-    label: 'Pro reviews venue — enable pro reviews venue AB testing',
+    id: AB_TESTS.PRO_REVIEWS_ON_VENUE,
+    label: 'Avis des pros sur les pages lieu',
+    segments: ['A', 'B'],
+  },
+  {
+    id: AB_TESTS.PRO_REVIEWS_ON_OFFER,
+    label: 'Avis des pros sur les pages offres',
     segments: ['A', 'B'],
   },
 ]
