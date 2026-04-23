@@ -1,8 +1,9 @@
 // eslint-disable-next-line no-restricted-imports
 import { fetch as fetchNetInfo } from '@react-native-community/netinfo'
 
+import { getDeviceInfo } from 'features/trustedDevice/helpers/getDeviceInfo'
 import { computeTokenRemainingLifetimeInMs } from 'libs/jwt/jwt'
-import { clearRefreshToken, getRefreshToken } from 'libs/keychain/keychain'
+import { clearRefreshToken, getRefreshToken, saveRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { storage } from 'libs/storage'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
@@ -60,15 +61,18 @@ export const refreshAccessTokenWithRetriesOnError = async (
     await storage.clear('access_token')
     return { error: FAILED_TO_GET_REFRESH_TOKEN_ERROR }
   }
-
   try {
-    const response = await api.postNativeV1RefreshAccessToken({
-      headers: {
-        Authorization: `Bearer ${refreshToken}`,
-      },
-    })
+    const response = await api.postNativeV2RefreshAccessToken(
+      { deviceInfo: await getDeviceInfo() },
+      {
+        headers: {
+          Authorization: `Bearer ${refreshToken}`,
+        },
+      }
+    )
 
     await storage.saveString('access_token', response.accessToken)
+    await saveRefreshToken(response.refreshToken)
 
     return { result: response.accessToken }
   } catch (error) {
