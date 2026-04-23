@@ -13,13 +13,12 @@ import { Offers } from 'ui/svg/icons/Offers'
 
 export const VideoEndView: React.FC<{
   onPressReplay: () => void
-  onPressSeeOffer: () => void
   offer?: Offer
   style: StyleProp<ViewStyle>
   moduleId: string
   moduleName: string
   homeEntryId: string
-}> = ({ onPressReplay, offer, onPressSeeOffer, style, moduleId, moduleName, homeEntryId }) => {
+}> = ({ onPressReplay, offer, style, moduleId, moduleName, homeEntryId }) => {
   const prePopulateOffer = usePrePopulateOffer()
   const mapping = useCategoryIdMapping()
 
@@ -37,7 +36,6 @@ export const VideoEndView: React.FC<{
             <SeeOfferButtonContainer>
               <ButtonWithCaption
                 onPress={() => {
-                  onPressSeeOffer()
                   prePopulateOffer({
                     ...offer.offer,
                     offerId: +offer.objectID,

@@ -341,9 +341,8 @@ export interface VideoModuleProps extends VideoModule {
   shouldShowModal: boolean
   isMultiOffer: boolean
   analyticsParams: OfferAnalyticsParams
-  showVideoModal: () => void
-  hideVideoModal: () => void
   offers: Offer[]
+  onVideoPlaceholderPress: () => void
 }
 export type HighlightOfferModule = {
   type: HomepageModuleType.HighlightOfferModule

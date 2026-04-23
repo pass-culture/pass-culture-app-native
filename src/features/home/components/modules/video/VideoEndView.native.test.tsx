@@ -10,7 +10,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const mockReplay = jest.fn()
-const mockHideModal = jest.fn()
 const mockOffer = mockedAlgoliaResponse.hits[0]
 
 describe('VideoEndView', () => {
@@ -27,17 +26,6 @@ describe('VideoEndView', () => {
     fireEvent.press(replayButton)
 
     await waitFor(() => expect(mockReplay).toHaveBeenCalledTimes(1))
-  })
-
-  it('should hide modal page when pressing "Voir l’offre" button', async () => {
-    renderVideoEndView()
-
-    const seeOfferButton = await screen.findByText('Voir l’offre')
-    // userEvent.press is not working correctly
-    // eslint-disable-next-line local-rules/no-fireEvent
-    fireEvent.press(seeOfferButton)
-
-    await waitFor(() => expect(mockHideModal).toHaveBeenCalledTimes(1))
   })
 
   it('should log ConsultOffer when pressing "Voir l’offre" button', async () => {
@@ -67,7 +55,6 @@ const renderVideoEndView = async () => {
     <VideoEndView
       onPressReplay={mockReplay}
       offer={mockOffer}
-      onPressSeeOffer={mockHideModal}
       style={viewDimensions}
       moduleId="abcd"
       moduleName="salut à tous c’est lujipeka"
