@@ -1,10 +1,10 @@
-# v1.387.1
+# v1.388.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/favorites/{favorite_id}
 - /native/v1/me/reminders/{reminder_id}
 - /native/v1/account/suspend/token_validation/{token}
-Pathname not found for getNativeV1AccountSuspensionDate
+- /native/v1/account/suspension_date
 - /native/v1/account/suspension_status
 - /native/v1/artists/{artist_id}
 - /native/v1/banner
@@ -14,7 +14,7 @@ Pathname not found for getNativeV1AccountSuspensionDate
 - /native/v1/email_validation_remaining_resends/{email}
 - /native/v1/me
 - /native/v1/me/favorites
-- /native/v1/me/reminders
+Pathname not found for getNativeV1MeReminders
 - /native/v1/oauth/state
 - /native/v1/offer/{offer_id}/chronicles
 - /native/v1/offer/{offer_id}/advices
@@ -50,8 +50,8 @@ Pathname not found for getNativeV1AccountSuspensionDate
 - /native/v1/feedback
 - /native/v1/me/favorites
 - /native/v1/me/reminders
-- /native/v1/oauth/google/account
-- /native/v1/oauth/google/authorize
+- /native/v1/oauth/{sso_provider}/account
+- /native/v1/oauth/{sso_provider}/authorize
 - /native/v1/profile/email_update/cancel
 - /native/v1/reaction
 - /native/v1/recommendation/playlist
@@ -80,5 +80,6 @@ Pathname not found for getNativeV1AccountSuspensionDate
 - /native/v1/offer/{offer_id}
 - /native/v1/venue/{venue_id}
 - /native/v2/offer/{offer_id}
+- /native/v3/subscription/stepper
 - /native/v1/profile
 
