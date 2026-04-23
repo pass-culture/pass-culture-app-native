@@ -37,6 +37,7 @@ import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBound
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
+import { VideoModulePage } from 'features/home/pages/VideoModulePage'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
@@ -363,6 +364,11 @@ const rootScreens: RouteConfig[] = [
     name: 'VerticalPlaylistOffers',
     component: VerticalPlaylistOffers,
     options: { title: 'Liste de lecture verticale' },
+  },
+  {
+    name: 'VideoModulePage',
+    component: VideoModulePage,
+    options: { title: 'Vidéo' },
   },
 ]
 
