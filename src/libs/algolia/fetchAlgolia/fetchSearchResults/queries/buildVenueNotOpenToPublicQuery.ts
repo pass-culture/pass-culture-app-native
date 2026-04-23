@@ -11,5 +11,6 @@ export const buildVenueNotOpenToPublicQuery = ({ query }: buildVenueNotOpenToPub
   facetFilters: [[`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:false`]],
   page: 0,
   hitsPerPage: query ? 1 : 0,
+  analytics: true,
   clickAnalytics: true,
 })
