@@ -18,7 +18,7 @@ export const BugReportButton: FC = () => {
     <StyledSectionRow
       key="BugReportButton"
       title="Signaler un bug"
-      type="navigable"
+      type="clickable"
       externalNav={{ url }}
       icon={ExternalSite}
     />
