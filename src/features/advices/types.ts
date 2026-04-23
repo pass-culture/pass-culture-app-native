@@ -40,6 +40,10 @@ export type AdviceCardListProps = Pick<
   | 'onScroll'
   | 'onContentSizeChange'
   | 'onLayout'
+  | 'ListFooterComponent'
+  | 'initialNumToRender'
+  | 'maxToRenderPerBatch'
+  | 'removeClippedSubviews'
 > & {
   offset?: number
   cardWidth?: number
