@@ -148,10 +148,10 @@ export interface AccountRequest {
    */
   token: string
   /**
-   * @type {TrustedDevice}
+   * @type {DeviceInfoV2}
    * @memberof AccountRequest
    */
-  trustedDevice?: TrustedDevice | null
+  trustedDevice?: DeviceInfoV2 | null
 }
 /**
  * An enumeration.
@@ -1436,10 +1436,10 @@ export interface CategoryResponseModel {
  */
 export interface ChangeBeneficiaryEmailBody {
   /**
-   * @type {TrustedDevice}
+   * @type {DeviceInfoV2}
    * @memberof ChangeBeneficiaryEmailBody
    */
-  deviceInfo?: TrustedDevice | null
+  deviceInfo?: DeviceInfoV2 | null
   /**
    * @type {string}
    * @memberof ChangeBeneficiaryEmailBody
@@ -2224,10 +2224,10 @@ export interface OAuthSigninRequest {
    */
   authorizationCode: string
   /**
-   * @type {TrustedDevice}
+   * @type {DeviceInfoV2}
    * @memberof OAuthSigninRequest
    */
-  deviceInfo?: TrustedDevice | null
+  deviceInfo?: DeviceInfoV2 | null
   /**
    * @type {string}
    * @memberof OAuthSigninRequest
@@ -2265,10 +2265,10 @@ export interface SSOAccountRequest {
    */
   token: string
   /**
-   * @type {TrustedDevice}
+   * @type {DeviceInfoV2}
    * @memberof SSOAccountRequest
    */
-  trustedDevice?: TrustedDevice | null
+  trustedDevice?: DeviceInfoV2 | null
 }
 /**
  * @export
@@ -3857,10 +3857,10 @@ export interface ResendEmailValidationRequest {
  */
 export interface ResetPasswordRequest {
   /**
-   * @type {TrustedDevice}
+   * @type {DeviceInfoV2}
    * @memberof ResetPasswordRequest
    */
-  deviceInfo?: TrustedDevice | null
+  deviceInfo?: DeviceInfoV2 | null
   /**
    * @type {string}
    * @memberof ResetPasswordRequest
@@ -4065,10 +4065,10 @@ export interface ShowType {
  */
 export interface SigninRequest {
   /**
-   * @type {TrustedDevice}
+   * @type {DeviceInfoV2}
    * @memberof SigninRequest
    */
-  deviceInfo?: TrustedDevice | null
+  deviceInfo?: DeviceInfoV2 | null
   /**
    * @type {string}
    * @memberof SigninRequest
@@ -4761,27 +4761,7 @@ export interface TokenResponse {
    */
   data?: string | null
 }
-/**
- * @export
- * @interface TrustedDevice
- */
-export interface TrustedDevice {
-  /**
-   * @type {string}
-   * @memberof TrustedDevice
-   */
-  deviceId: string
-  /**
-   * @type {string}
-   * @memberof TrustedDevice
-   */
-  os?: string | null
-  /**
-   * @type {string}
-   * @memberof TrustedDevice
-   */
-  source?: string | null
-}
+
 /**
  * @export
  * @interface UpdateEmailTokenExpiration
@@ -5063,10 +5043,10 @@ export interface UserSuspensionStatusResponse {
  */
 export interface ValidateEmailRequest {
   /**
-   * @type {TrustedDevice}
+   * @type {DeviceInfoV2}
    * @memberof ValidateEmailRequest
    */
-  deviceInfo?: TrustedDevice | null
+  deviceInfo?: DeviceInfoV2 | null
   /**
    * @type {string}
    * @memberof ValidateEmailRequest
