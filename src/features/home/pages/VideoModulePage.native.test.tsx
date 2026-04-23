@@ -5,6 +5,7 @@ import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { VideoModulePage } from 'features/home/pages/VideoModulePage'
 import { useVideoOffersQuery } from 'features/home/queries/useVideoOffersQuery'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { analytics } from 'libs/analytics/provider'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
@@ -83,5 +84,58 @@ describe('VideoModulePage', () => {
     render(reactQueryProviderHOC(<VideoModulePage />))
 
     expect(screen.getByTestId('videoMonoOfferTile')).toBeOnTheScreen()
+  })
+
+  describe('should trigger hasDismissedModal log', () => {
+    it('When pressing header back button', async () => {
+      useRoute.mockReturnValueOnce({
+        params: mockParams,
+      })
+      mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [...offersFixture] })
+      render(reactQueryProviderHOC(<VideoModulePage />))
+
+      await user.press(await screen.findByLabelText('Revenir en arrière'))
+
+      expect(analytics.logHasDismissedModal).toHaveBeenCalledWith({
+        modalType: 'video',
+        moduleId: 'module-123',
+        seenDuration: 135,
+        videoDuration: 267,
+      })
+    })
+
+    it('When pressing offer in video multi offer list', async () => {
+      mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [...offersFixture] })
+      useRoute.mockReturnValueOnce({
+        params: { ...mockParams, isMultiOffer: true },
+      })
+      render(reactQueryProviderHOC(<VideoModulePage />))
+
+      await user.press(await screen.findByText('La nuit des temps'))
+
+      expect(analytics.logHasDismissedModal).toHaveBeenCalledWith({
+        modalType: 'video',
+        moduleId: 'module-123',
+        seenDuration: 135,
+        videoDuration: 267,
+      })
+    })
+
+    it('When pressing offer in video mono offer tile', async () => {
+      useRoute.mockReturnValueOnce({
+        params: mockParams,
+      })
+      mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [...offersFixture] })
+      render(reactQueryProviderHOC(<VideoModulePage />))
+
+      await user.press(await screen.findByText('La nuit des temps'))
+
+      expect(analytics.logHasDismissedModal).toHaveBeenCalledWith({
+        modalType: 'video',
+        moduleId: 'module-123',
+        seenDuration: 135,
+        videoDuration: 267,
+      })
+    })
   })
 })

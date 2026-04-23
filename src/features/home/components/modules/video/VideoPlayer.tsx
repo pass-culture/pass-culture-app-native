@@ -26,6 +26,7 @@ export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
   moduleName,
   homeEntryId,
   playerRef,
+  onPressSeeOffer,
 }) => {
   const { appBarHeight } = useTheme()
   const { top } = useSafeAreaInsets()
@@ -113,6 +114,7 @@ export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
           moduleId={moduleId}
           moduleName={moduleName}
           homeEntryId={homeEntryId}
+          onPressSeeOffer={onPressSeeOffer}
         />
       ) : null}
       {showErrorView ? (

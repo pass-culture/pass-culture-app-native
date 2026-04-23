@@ -17,10 +17,16 @@ type Props = {
   offer: Offer
   color: Color
   analyticsParams: OfferAnalyticsParams
+  onPressOffer?: () => void
   style?: StyleProp<ViewStyle>
 }
 
-export const VideoMonoOfferTile: FunctionComponent<Props> = ({ offer, analyticsParams, style }) => {
+export const VideoMonoOfferTile: FunctionComponent<Props> = ({
+  offer,
+  analyticsParams,
+  onPressOffer,
+  style,
+}) => {
   const mapping = useCategoryIdMapping()
   const prePopulateOffer = usePrePopulateOffer()
   const { isDesktopViewport } = useTheme()
@@ -34,6 +40,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({ offer, analyticsP
     style,
     navigateTo: { screen: 'Offer', params: { id: +offer.objectID } } as const,
     onBeforeNavigate: () => {
+      onPressOffer?.()
       prePopulateOffer({ ...offer.offer, offerId: +offer.objectID, categoryId })
       triggerConsultOfferLog({ offerId: +offer.objectID, ...analyticsParams })
     },

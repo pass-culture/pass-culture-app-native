@@ -11,7 +11,9 @@ import { useVideoOffersQuery } from 'features/home/queries/useVideoOffersQuery'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
+import { ContentTypes } from 'libs/contentful/types'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
@@ -58,6 +60,28 @@ export const VideoModulePage: FunctionComponent = () => {
     homeEntryId: homeEntryId,
   }
 
+  const handleLogHasDismissedModal = async () => {
+    const playerCurrentRef = playerRef.current
+    if (playerCurrentRef) {
+      const [videoDuration, elapsed] = await Promise.all([
+        playerCurrentRef.getDuration(),
+        playerCurrentRef.getCurrentTime(),
+      ])
+
+      void analytics.logHasDismissedModal({
+        moduleId,
+        modalType: ContentTypes.VIDEO,
+        videoDuration: Math.round(videoDuration),
+        seenDuration: Math.round(elapsed),
+      })
+    }
+  }
+
+  const onGoBackPress = async () => {
+    await handleLogHasDismissedModal()
+    goBack()
+  }
+
   const renderHeader = () => (
     <React.Fragment>
       <StyledTagContainer>
@@ -82,7 +106,12 @@ export const VideoModulePage: FunctionComponent = () => {
 
       {!isMultiOffer && offers[0] ? (
         <VideoMonoOfferTileContainer>
-          <VideoMonoOfferTile offer={offers[0]} color={color} analyticsParams={analyticsParams} />
+          <VideoMonoOfferTile
+            offer={offers[0]}
+            color={color}
+            analyticsParams={analyticsParams}
+            onPressOffer={handleLogHasDismissedModal}
+          />
         </VideoMonoOfferTileContainer>
       ) : null}
     </React.Fragment>
@@ -95,7 +124,7 @@ export const VideoModulePage: FunctionComponent = () => {
       {isWeb ? (
         <ContentHeader
           headerTitle={videoTitle}
-          onBackPress={goBack}
+          onBackPress={onGoBackPress}
           headerTransition={headerTransition}
         />
       ) : null}
@@ -107,6 +136,7 @@ export const VideoModulePage: FunctionComponent = () => {
         moduleName={moduleName}
         homeEntryId={homeEntryId}
         playerRef={playerRef}
+        onPressSeeOffer={handleLogHasDismissedModal}
       />
 
       <FlatList
@@ -115,7 +145,12 @@ export const VideoModulePage: FunctionComponent = () => {
         ListHeaderComponent={renderHeader}
         keyExtractor={(item) => item.objectID.toString()}
         renderItem={({ item }) => (
-          <HorizontalOfferTile key={item.objectID} offer={item} analyticsParams={analyticsParams} />
+          <HorizontalOfferTile
+            key={item.objectID}
+            offer={item}
+            analyticsParams={analyticsParams}
+            onPress={handleLogHasDismissedModal}
+          />
         )}
         onScroll={onScroll}
         scrollEventThrottle={16}
@@ -130,7 +165,7 @@ export const VideoModulePage: FunctionComponent = () => {
       {isWeb ? null : (
         <ContentHeader
           headerTitle={videoTitle}
-          onBackPress={goBack}
+          onBackPress={onGoBackPress}
           headerTransition={headerTransition}
         />
       )}

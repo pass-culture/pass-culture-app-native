@@ -14,4 +14,5 @@ export interface VideoPlayerProps {
   moduleId: string
   moduleName: string
   homeEntryId: string
+  onPressSeeOffer()
 }

@@ -59,6 +59,7 @@ const renderVideoEndView = async () => {
       moduleId="abcd"
       moduleName="salut à tous c’est lujipeka"
       homeEntryId="xyz"
+      onPressSeeOffer={jest.fn()}
     />,
     {
       wrapper: ({ children }) => reactQueryProviderHOC(children),

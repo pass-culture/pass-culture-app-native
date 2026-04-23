@@ -121,6 +121,7 @@ function renderVideoPlayer() {
         moduleName="lujipeka"
         homeEntryId="xyz"
         playerRef={mockRef}
+        onPressSeeOffer={jest.fn()}
       />
     )
   )
