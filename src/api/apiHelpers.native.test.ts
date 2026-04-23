@@ -16,7 +16,7 @@ import {
   isAPIExceptionNotCaptured,
   safeFetch,
 } from './apiHelpers'
-import { Configuration, DefaultApi, RefreshResponse } from './gen'
+import { Configuration, DefaultApi, RefreshResponseV2 } from './gen'
 import { removeRefreshedAccessToken } from './refreshAccessToken'
 
 jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
@@ -109,7 +109,7 @@ describe('[api] helpers', () => {
     })
 
     it('needs authentication response when refresh token fails', async () => {
-      mockServer.postApi<RefreshResponse>('/v1/refresh_access_token', {
+      mockServer.postApi<RefreshResponseV2>('/v2/refresh_access_token', {
         responseOptions: {
           statusCode: 400,
         },
@@ -276,9 +276,17 @@ describe('[api] helpers', () => {
 
       const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
 
+      const expectedBody = JSON.stringify({
+        deviceInfo: {
+          deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          os: 'unknown',
+          source: 'none',
+        },
+      })
+
       expect(mockFetch).toHaveBeenNthCalledWith(
         1,
-        env.API_BASE_URL + '/native/v1/refresh_access_token',
+        `${env.API_BASE_URL}/native/v2/refresh_access_token`,
         {
           headers: {
             Authorization: `Bearer ${password}`,
@@ -288,13 +296,14 @@ describe('[api] helpers', () => {
             platform: Platform.OS,
             'request-id': 'testUuidV4',
           },
+          body: expectedBody,
           credentials: 'omit',
           method: 'POST',
         }
       )
       expect(mockFetch).toHaveBeenNthCalledWith(
         2,
-        env.API_BASE_URL + '/native/v1/refresh_access_token',
+        `${env.API_BASE_URL}/native/v2/refresh_access_token`,
         {
           headers: {
             Authorization: `Bearer ${password}`,
@@ -304,6 +313,7 @@ describe('[api] helpers', () => {
             platform: Platform.OS,
             'request-id': 'testUuidV4',
           },
+          body: expectedBody,
           credentials: 'omit',
           method: 'POST',
         }
