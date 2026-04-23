@@ -13,7 +13,7 @@ import {
   StepperOrigin,
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
-import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
+import { getDeviceInfo } from 'features/trustedDevice/helpers/getDeviceInfo'
 import { getSSOLoginMethod, LoginRoutineMethod, LoginType } from 'libs/analytics/logEventAnalytics'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
@@ -36,17 +36,17 @@ export const useSignInMutation = ({
 }) => {
   const loginRoutine = useLoginRoutine()
   const onSuccess = useHandleSigninSuccess(params, doNotNavigateOnSigninSuccess, setErrorMessage)
-  const deviceInfo = useDeviceInfo()
 
   return useMutation({
     mutationFn: async (body: LoginRequest) => {
+      const deviceInfo = await getDeviceInfo()
       const requestBody = { ...body, deviceInfo }
       const isOAuth = isOAuthLoginRequest(requestBody)
       if (isOAuth) {
         const { provider, ...oauthBody } = requestBody
         return api.postNativeV1OauthssoProviderAuthorize(oauthBody, provider)
       }
-      return api.postNativeV1Signin(requestBody, { credentials: 'omit' })
+      return api.postNativeV2Signin(requestBody, { credentials: 'omit' })
     },
 
     onSuccess: async (response, body) => {

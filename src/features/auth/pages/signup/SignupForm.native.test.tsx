@@ -474,6 +474,8 @@ describe('Signup Form', () => {
     it('should sign in when sso button is clicked and sso account already exists', async () => {
       getModelSpy.mockReturnValueOnce('iPhone 13')
       getSystemNameSpy.mockReturnValueOnce('iOS')
+      getModelSpy.mockReturnValueOnce('iPhone 13')
+      getSystemNameSpy.mockReturnValueOnce('iOS')
       mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
         accessToken: 'accessToken',
         refreshToken: 'refreshToken',
@@ -494,9 +496,6 @@ describe('Signup Form', () => {
             deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
             os: 'iOS',
             source: 'iPhone 13',
-            resolution: '750x1334',
-            screenZoomLevel: undefined,
-            fontScale: -1,
           },
         },
         'google'
