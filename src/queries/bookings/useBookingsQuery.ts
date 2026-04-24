@@ -2,28 +2,15 @@ import { useQuery } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 import { BookingsResponseV2, BookingsListResponseV2 } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { convertBookingsResponseV2DatesToTimezone } from 'features/bookings/queries/selectors/convertBookingsDatesToTimezone'
 import { BookingsStatusValue } from 'features/bookings/types'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { CustomQueryOptions } from 'libs/react-query/types'
-import { usePersistQuery } from 'libs/react-query/usePersistQuery'
 
 // Arbitrary. Make sure the cache is invalidated after each booking
 const STALE_TIME_BOOKINGS = 5 * 60 * 1000
 
-export const useBookingsQueryV1 = (options = {}) => {
-  const { isLoggedIn } = useAuthContext()
-  const netInfo = useNetInfoContext()
-  return usePersistQuery([QueryKeys.BOOKINGS], () => api.getNativeV1Bookings(), {
-    enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable && isLoggedIn,
-    staleTime: STALE_TIME_BOOKINGS,
-    ...options,
-  })
-}
-
-export const useBookingsQuery = <TData = BookingsResponseV2>(
+export const useBookingsV2Query = <TData = BookingsResponseV2>(
   enabledQuery: boolean,
   select?: (data: BookingsResponseV2) => TData
 ) =>
@@ -51,6 +38,6 @@ export const useBookingsV2WithConvertedTimezoneQuery = <TSelect = BookingsListRe
   status: BookingsStatusValue,
   enabled = true
 ) =>
-  useBookingsQuery(enabled, (data) =>
+  useBookingsV2Query(enabled, (data) =>
     select(convertBookingsResponseV2DatesToTimezone(data), status)
   )

@@ -1,14 +1,14 @@
 import { ReactTestInstance } from 'react-test-renderer'
 
 import {
-  BookingsResponse,
+  BookingsResponseV2,
   GetRemindersResponse,
   OfferProAdvices,
   PaginatedFavoritesResponse,
   SubcategoriesResponseModelv2,
 } from 'api/gen'
 import { offerProAdvicesFixture } from 'features/advices/fixtures/offerProAdvices.fixture'
-import { bookingsSnap } from 'features/bookings/fixtures'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import * as Cookies from 'features/cookies/helpers/useCookies'
@@ -98,7 +98,7 @@ describe('<Offer />', () => {
   const user = userEvent.setup()
 
   beforeEach(() => {
-    mockServer.getApi<BookingsResponse>('/v1/bookings', {})
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', {})
     mockServer.getApi<PaginatedFavoritesResponse>('/v1/favorites', {})
     mockServer.getApi<PaginatedFavoritesResponse>('/v1/me/favorites', {})
     mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
@@ -128,14 +128,14 @@ describe('<Offer />', () => {
   })
 
   it('should display reaction button in header if offer is in ended bookings', async () => {
-    mockServer.getApi<BookingsResponse>('/v1/bookings', {
-      ongoing_bookings: [],
-      ended_bookings: [
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', {
+      ongoingBookings: [],
+      endedBookings: [
         {
-          ...bookingsSnap.ended_bookings[0],
+          ...bookingsSnapV2.endedBookings[0],
           stock: {
-            ...bookingsSnap.ended_bookings[0].stock,
-            offer: { ...bookingsSnap.ended_bookings[0].stock.offer, id: offerResponseSnap.id },
+            ...bookingsSnapV2.endedBookings[0].stock,
+            offer: { ...bookingsSnapV2.endedBookings[0].stock.offer, id: offerResponseSnap.id },
           },
         },
       ],
@@ -148,14 +148,14 @@ describe('<Offer />', () => {
   })
 
   it('should not display reaction button in header if booking has been cancelled', async () => {
-    mockServer.getApi<BookingsResponse>('/v1/bookings', {
-      ongoing_bookings: [],
-      ended_bookings: [
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', {
+      ongoingBookings: [],
+      endedBookings: [
         {
-          ...bookingsSnap.ended_bookings[1],
+          ...bookingsSnapV2.endedBookings[1],
           stock: {
-            ...bookingsSnap.ended_bookings[1].stock,
-            offer: { ...bookingsSnap.ended_bookings[1].stock.offer, id: offerResponseSnap.id },
+            ...bookingsSnapV2.endedBookings[1].stock,
+            offer: { ...bookingsSnapV2.endedBookings[1].stock.offer, id: offerResponseSnap.id },
           },
         },
       ],
@@ -182,14 +182,14 @@ describe('<Offer />', () => {
   })
 
   it('should open reaction modal when press on reaction button in header', async () => {
-    mockServer.getApi<BookingsResponse>('/v1/bookings', {
-      ongoing_bookings: [],
-      ended_bookings: [
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', {
+      ongoingBookings: [],
+      endedBookings: [
         {
-          ...bookingsSnap.ended_bookings[0],
+          ...bookingsSnapV2.endedBookings[0],
           stock: {
-            ...bookingsSnap.ended_bookings[0].stock,
-            offer: { ...bookingsSnap.ended_bookings[0].stock.offer, id: offerResponseSnap.id },
+            ...bookingsSnapV2.endedBookings[0].stock,
+            offer: { ...bookingsSnapV2.endedBookings[0].stock.offer, id: offerResponseSnap.id },
           },
         },
       ],

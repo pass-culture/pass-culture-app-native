@@ -16,7 +16,6 @@ export const useCancelBookingMutation = ({ onSuccess, onError }: Props) => {
     onSuccess: async () => {
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: [QueryKeys.USER_PROFILE] }),
-        queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGS] }),
         queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGSV2] }),
         queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGSLIST] }),
       ])

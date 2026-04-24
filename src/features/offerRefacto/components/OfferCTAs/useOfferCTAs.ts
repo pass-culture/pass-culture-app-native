@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components/native'
 
 import { BookOfferResponse, EligibilityType, OfferResponse, YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
+import { useOngoingOrEndedBookingQueryV2 } from 'features/bookings/queries'
 import { useStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import {
@@ -32,7 +32,7 @@ import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUndera
 import { analytics } from 'libs/analytics/provider'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { Subcategory } from 'libs/subcategories/types'
-import { useBookingsQuery, useEndedBookingFromOfferIdQuery } from 'queries/bookings'
+import { useBookingsV2Query, useEndedBookingFromOfferIdQueryV2 } from 'queries/bookings'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { useModal } from 'ui/components/modals/useModal'
@@ -72,17 +72,16 @@ export const useOfferCTAs = ({
     ? JSON.parse(route.params.apiRecoParams)
     : undefined
 
-  const enableBookingFreeOfferFifteenSixteen = true
   const {
     data: { showAccessScreeningButton },
   } = useRemoteConfigQuery()
   const { isButtonVisible: isCineButtonVisible } = useOfferCTA()
 
   // 2. Queries (Bookings, Reminders, Credits)
-  const { refetch: getBookings } = useBookingsQuery()
-  const { data: endedBooking } = useEndedBookingFromOfferIdQuery(offerId, false)
+  const { refetch: getBookings } = useBookingsV2Query(false)
+  const { data: endedBooking } = useEndedBookingFromOfferIdQueryV2(offerId, false)
   const { bookedOffers = {}, status } = user ?? {}
-  const { data: ongoingBooking } = useOngoingOrEndedBookingQuery(
+  const { data: ongoingBooking } = useOngoingOrEndedBookingQueryV2(
     getBookingOfferId(offerId, bookedOffers) ?? 0
   )
   const { data: reminder } = useGetRemindersQuery((data) => selectReminderByOfferId(data, offer.id))
@@ -93,7 +92,7 @@ export const useOfferCTAs = ({
   const redirectToBookingAction = useCallback(
     async (response: BookOfferResponse) => {
       const bookings = await getBookings()
-      const booking = bookings.data?.ongoing_bookings.find(
+      const booking = bookings.data?.ongoingBookings.find(
         (booking) => booking.id === response.bookingId
       )
       if (booking) void openUrl(booking.completedUrl ?? '')
@@ -193,12 +192,12 @@ export const useOfferCTAs = ({
   useEffect(() => {
     const isUserFreeStatus = user?.eligibility === EligibilityType.free
     const isProfileIncomplete = getIsProfileIncomplete(user)
-    const isEligibleFreeOffer15To16 = enableBookingFreeOfferFifteenSixteen && isUserFreeStatus
+    const isEligibleFreeOffer15To16 = isUserFreeStatus
 
     if (isLoggedIn && isEligibleFreeOffer15To16 && isProfileIncomplete && isFreeOffer(offer)) {
       freeOfferIdActions.setFreeOfferId(offer.id)
     }
-  }, [isLoggedIn, enableBookingFreeOfferFifteenSixteen, user, offer])
+  }, [isLoggedIn, user, offer])
 
   useFocusEffect(
     useCallback(() => {

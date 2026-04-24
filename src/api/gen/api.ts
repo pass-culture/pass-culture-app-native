@@ -582,22 +582,6 @@ export interface BookType {
   position: number
 }
 /**
- * @export
- * @interface BookingActivationCodeResponse
- */
-export interface BookingActivationCodeResponse {
-  /**
-   * @type {string}
-   * @memberof BookingActivationCodeResponse
-   */
-  code: string
-  /**
-   * @type {string}
-   * @memberof BookingActivationCodeResponse
-   */
-  expirationDate?: string | null
-}
-/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -1060,102 +1044,6 @@ export interface BookingOfferResponseV2 {
 }
 /**
  * @export
- * @interface BookingReponse
- */
-export interface BookingReponse {
-  /**
-   * @type {BookingActivationCodeResponse}
-   * @memberof BookingReponse
-   */
-  activationCode?: BookingActivationCodeResponse | null
-  /**
-   * @type {boolean}
-   * @memberof BookingReponse
-   */
-  canReact: boolean
-  /**
-   * @type {string}
-   * @memberof BookingReponse
-   */
-  cancellationDate?: string | null
-  /**
-   * @type {BookingCancellationReasons}
-   * @memberof BookingReponse
-   */
-  cancellationReason?: BookingCancellationReasons | null
-  /**
-   * @type {string}
-   * @memberof BookingReponse
-   */
-  completedUrl?: string | null
-  /**
-   * @type {string}
-   * @memberof BookingReponse
-   */
-  confirmationDate?: string | null
-  /**
-   * @type {string}
-   * @memberof BookingReponse
-   */
-  dateCreated: string
-  /**
-   * @type {string}
-   * @memberof BookingReponse
-   */
-  dateUsed?: string | null
-  /**
-   * @type {boolean}
-   * @memberof BookingReponse
-   */
-  enablePopUpReaction: boolean
-  /**
-   * @type {string}
-   * @memberof BookingReponse
-   */
-  expirationDate?: string | null
-  /**
-   * @type {Array<ExternalBookingResponse>}
-   * @memberof BookingReponse
-   */
-  externalBookings?: Array<ExternalBookingResponse> | null
-  /**
-   * @type {number}
-   * @memberof BookingReponse
-   */
-  id: number
-  /**
-   * @type {string}
-   * @memberof BookingReponse
-   */
-  qrCodeData?: string | null
-  /**
-   * @type {number}
-   * @memberof BookingReponse
-   */
-  quantity: number
-  /**
-   * @type {BookingStockResponse}
-   * @memberof BookingReponse
-   */
-  stock: BookingStockResponse
-  /**
-   * @type {string}
-   * @memberof BookingReponse
-   */
-  token?: string | null
-  /**
-   * @type {number}
-   * @memberof BookingReponse
-   */
-  totalAmount: number
-  /**
-   * @type {ReactionTypeEnum}
-   * @memberof BookingReponse
-   */
-  userReaction?: ReactionTypeEnum | null
-}
-/**
- * @export
  * @interface BookingResponse
  */
 export interface BookingResponse {
@@ -1239,42 +1127,6 @@ export interface BookingResponse {
    * @memberof BookingResponse
    */
   userReaction?: ReactionTypeEnum | null
-}
-/**
- * @export
- * @interface BookingStockResponse
- */
-export interface BookingStockResponse {
-  /**
-   * @type {string}
-   * @memberof BookingStockResponse
-   */
-  beginningDatetime?: string | null
-  /**
-   * @type {Array<string>}
-   * @memberof BookingStockResponse
-   */
-  features: Array<string>
-  /**
-   * @type {number}
-   * @memberof BookingStockResponse
-   */
-  id: number
-  /**
-   * @type {BookingOfferResponse}
-   * @memberof BookingStockResponse
-   */
-  offer: BookingOfferResponse
-  /**
-   * @type {number}
-   * @memberof BookingStockResponse
-   */
-  price: number
-  /**
-   * @type {string}
-   * @memberof BookingStockResponse
-   */
-  priceCategoryLabel?: string | null
 }
 /**
  * @export
@@ -1435,27 +1287,6 @@ export interface BookingsListResponseV2 {
    * @memberof BookingsListResponseV2
    */
   bookings: Array<BookingListItemResponse>
-}
-/**
- * @export
- * @interface BookingsResponse
- */
-export interface BookingsResponse {
-  /**
-   * @type {Array<BookingReponse>}
-   * @memberof BookingsResponse
-   */
-  ended_bookings: Array<BookingReponse>
-  /**
-   * @type {boolean}
-   * @memberof BookingsResponse
-   */
-  hasBookingsAfter18: boolean
-  /**
-   * @type {Array<BookingReponse>}
-   * @memberof BookingsResponse
-   */
-  ongoing_bookings: Array<BookingReponse>
 }
 /**
  * @export
@@ -2113,22 +1944,6 @@ export interface ExternalBookingDataResponseV2 {
   /**
    * @type {string}
    * @memberof ExternalBookingDataResponseV2
-   */
-  seat?: string | null
-}
-/**
- * @export
- * @interface ExternalBookingResponse
- */
-export interface ExternalBookingResponse {
-  /**
-   * @type {string}
-   * @memberof ExternalBookingResponse
-   */
-  barcode: string
-  /**
-   * @type {string}
-   * @memberof ExternalBookingResponse
    */
   seat?: string | null
 }
@@ -7707,17 +7522,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
-     * @summary get_bookings <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1Bookings(options?: any): Promise<BookingsResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1Bookings(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
      * @summary get_categories <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -8664,17 +8468,6 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1Banner(isGeolocated?: boolean, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1Banner(isGeolocated, options)
-  }
-  /**
-    * 
-    * @summary get_bookings <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1Bookings(options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1Bookings(options)
   }
   /**
     * 

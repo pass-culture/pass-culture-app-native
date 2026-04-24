@@ -1,6 +1,6 @@
 import { isSameDay, addDays, addHours, format } from 'date-fns'
 
-import { BookingStockResponse } from 'api/gen'
+import { BookingResponse } from 'api/gen'
 
 const ONE_DAY_IN_SECONDS = 60 * 60 * 24
 const TWO_DAYS_IN_SECONDS = 60 * 60 * 48
@@ -14,10 +14,10 @@ type GetEventOnSiteWithdrawLabelProperties = {
   eventDateMinus1Day: Date
 }
 
-export function getEventOnSiteWithdrawLabel(stock: BookingStockResponse): string {
-  if (!stock.beginningDatetime) return ''
+export function getEventOnSiteWithdrawLabel(booking: BookingResponse): string {
+  if (!booking?.stock.beginningDatetime) return ''
 
-  const properties = initGetEventOnSiteWithdrawLabelProperties(stock)
+  const properties = initGetEventOnSiteWithdrawLabelProperties(booking)
   if (!properties) return ''
 
   if (properties.now > properties.eventDate) return ''
@@ -37,15 +37,15 @@ export function getEventOnSiteWithdrawLabel(stock: BookingStockResponse): string
 }
 
 function initGetEventOnSiteWithdrawLabelProperties(
-  stock: BookingStockResponse
+  booking: BookingResponse
 ): GetEventOnSiteWithdrawLabelProperties | undefined {
-  if (!stock.beginningDatetime) return undefined
+  if (!booking?.stock?.beginningDatetime) return undefined
 
-  const eventDate = new Date(stock.beginningDatetime)
+  const eventDate = new Date(booking.stock.beginningDatetime)
   return {
     now: new Date(),
     eventDate,
-    withdrawalDelay: stock.offer.withdrawalDelay ?? 0,
+    withdrawalDelay: booking.ticket?.withdrawal?.delay ?? 0,
     eventDateMinus3Days: addDays(eventDate, -3),
     eventDateMinus2Days: addDays(eventDate, -2),
     eventDateMinus1Day: addDays(eventDate, -1),

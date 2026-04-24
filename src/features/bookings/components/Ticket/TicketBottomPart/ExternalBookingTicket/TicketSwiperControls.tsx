@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ControlComponent } from 'features/bookings/components/OldBookingDetails/Ticket/ControlComponent'
+import { ControlComponent } from 'features/bookings/components/Ticket/TicketBottomPart/ExternalBookingTicket/ControlComponent'
 import { StepDots } from 'ui/components/StepDots'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 

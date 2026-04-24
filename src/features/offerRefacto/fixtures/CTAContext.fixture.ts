@@ -1,3 +1,4 @@
+import { TicketDisplayEnum, WithdrawalTypeEnum } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { CTAContext } from 'features/offerRefacto/types'
 
@@ -17,8 +18,22 @@ export const CTAContextFixture = {
     stock: {
       features: [],
       id: offerResponseSnap.stocks[0].id,
-      offer: { ...offerResponseSnap, isPermanent: true },
+      isAutomaticallyUsed: false,
+      offer: {
+        id: offerResponseSnap.id,
+        isDigital: offerResponseSnap.isDigital,
+        isPermanent: true,
+        name: offerResponseSnap.name,
+        subcategoryId: offerResponseSnap.subcategoryId,
+        venue: { ...offerResponseSnap.venue, address: {} },
+      },
       price: 10,
+    },
+    ticket: {
+      display: TicketDisplayEnum.ticket,
+      withdrawal: {
+        type: WithdrawalTypeEnum.on_site,
+      },
     },
   },
 } satisfies CTAContext

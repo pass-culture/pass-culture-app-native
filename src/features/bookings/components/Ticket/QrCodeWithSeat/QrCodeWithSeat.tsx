@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { QrCode } from 'features/bookings/components/OldBookingDetails/TicketBody/QrCode/QrCode'
+import { QrCode } from 'features/bookings/components/Ticket/QrCode/QrCode'
 import { Typo } from 'ui/theme'
 
-export type QrCodeWithSeatProps = {
+type QrCodeWithSeatProps = {
   seatIndex?: string
   seat?: string
   barcode: string

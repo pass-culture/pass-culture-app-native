@@ -1,6 +1,6 @@
 import { QueryClient } from '@tanstack/react-query'
 
-import { BookingsResponse, BookOfferResponse } from 'api/gen'
+import { BookingsResponseV2, BookOfferResponse } from 'api/gen'
 import { Adjust } from 'libs/adjust/adjust'
 import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
@@ -22,7 +22,7 @@ jest.mock('libs/jwt/jwt')
 describe('useBookOfferMutation', () => {
   it('invalidates userProfile after successfully booking an offer', async () => {
     mockServer.postApi<BookOfferResponse>('/v1/bookings', {})
-    mockServer.getApi<BookingsResponse>('/v1/bookings', {})
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', {})
 
     const { result } = renderUseBookOfferMutation()
 

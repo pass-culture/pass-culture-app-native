@@ -33,7 +33,6 @@ describe('[hook] useCancelBookingMutation', () => {
 
     expect(onSuccess).toHaveBeenCalledTimes(1)
     expect(invalidateQueriesMock).toHaveBeenCalledWith({ queryKey: [QueryKeys.USER_PROFILE] })
-    expect(invalidateQueriesMock).toHaveBeenCalledWith({ queryKey: [QueryKeys.BOOKINGS] })
     expect(invalidateQueriesMock).toHaveBeenCalledWith({ queryKey: [QueryKeys.BOOKINGSV2] })
     expect(invalidateQueriesMock).toHaveBeenCalledWith({ queryKey: [QueryKeys.BOOKINGSLIST] })
   })

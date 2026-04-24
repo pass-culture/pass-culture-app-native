@@ -1,4 +1,4 @@
-import { BookingReponse } from 'api/gen'
+import { BookingResponse } from 'api/gen'
 
 export type MovieScreeningBookingData = {
   date: Date
@@ -13,5 +13,5 @@ export type MovieScreeningUserData = {
   isUserCreditExpired?: boolean
   hasEnoughCredit?: boolean
   hasBookedOffer?: boolean
-  bookings?: BookingReponse
+  bookings?: BookingResponse
 }

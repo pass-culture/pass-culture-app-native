@@ -167,9 +167,7 @@ describe('useOfferCTAs hook', () => {
     })
 
     it('should show auth modal on favorite press if user is logged out', () => {
-      mockUseAuthContext
-        .mockReturnValueOnce({ isLoggedIn: false })
-        .mockReturnValueOnce({ isLoggedIn: false })
+      mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false })
       const { result } = renderHook(
         () =>
           useOfferCTAs({

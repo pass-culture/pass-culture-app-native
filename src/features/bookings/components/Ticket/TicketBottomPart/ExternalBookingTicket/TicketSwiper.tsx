@@ -8,25 +8,35 @@ import {
 } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { QrCodeWithSeat } from 'features/bookings/components/OldBookingDetails/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
-import {
-  getTickets,
-  TicketsProps,
-} from 'features/bookings/components/Ticket/TicketBottomPart/ExternalBookingTicket/getTickets'
+import { ExternalBookingDataResponseV2 } from 'api/gen'
+import { QrCodeWithSeat } from 'features/bookings/components/Ticket/QrCodeWithSeat/QrCodeWithSeat'
 import { TicketSwiperControls } from 'features/bookings/components/Ticket/TicketBottomPart/ExternalBookingTicket/TicketSwiperControls'
 import { TicketText } from 'features/bookings/components/Ticket/TicketBottomPart/TicketText'
 import { getSpacing } from 'ui/theme'
 
 const SEPARATOR_VALUE = 0
 const INTERVAL = getSpacing(SEPARATOR_VALUE)
+const MAX_TICKETS_COUNT_ON_SCREEN = 2
 
-export const TicketSwiper = ({ data }: TicketsProps) => {
+const renderTicket = ({ seat, barcode }: ExternalBookingDataResponseV2) => {
+  return (
+    <React.Fragment key={barcode}>
+      <QrCodeWithSeat seat={seat || undefined} barcode={barcode} />
+      <TicketText>{`RÉF ${barcode}`}</TicketText>
+    </React.Fragment>
+  )
+}
+
+type TicketSwiperProps = {
+  data?: ExternalBookingDataResponseV2[]
+}
+
+export const TicketSwiper = ({ data }: TicketSwiperProps) => {
   const { isTouch, appContentWidth, ticket } = useTheme()
   const flatListRef = useRef<FlatList>(null)
-  const { tickets } = getTickets({ data })
   const [currentIndex, setCurrentIndex] = useState(1)
 
-  const NUMBER_OF_TICKETS = tickets.length ?? 0
+  const NUMBER_OF_TICKETS = data?.length ?? 0
   const TICKET_WIDTH = isTouch ? appContentWidth * ticket.sizeRatio : ticket.maxWidth
   const TICKET_SPACING = (appContentWidth - TICKET_WIDTH) / 2
 
@@ -68,15 +78,12 @@ export const TicketSwiper = ({ data }: TicketsProps) => {
   }
 
   return data?.length === 1 && data[0] ? (
-    <React.Fragment key={data[0].barcode}>
-      <QrCodeWithSeat seat={data[0].seat ?? undefined} barcode={data[0].barcode} />
-      <TicketText>{`RÉF ${data[0].barcode}`}</TicketText>
-    </React.Fragment>
+    renderTicket(data[0])
   ) : (
     <React.Fragment>
       <FlatList
         ref={flatListRef}
-        data={tickets}
+        data={(data || []).slice(0, MAX_TICKETS_COUNT_ON_SCREEN).map(renderTicket)}
         horizontal
         bounces={false}
         showsHorizontalScrollIndicator={false}
