@@ -154,7 +154,7 @@ describe('<Login/>', () => {
       responseOptions: {
         statusCode: 400,
         data: {
-          code: 'SSO_ACCOUNT_DELETED',
+          code: 'SSO_ERROR',
           general: [],
         },
       },
@@ -166,7 +166,30 @@ describe('<Login/>', () => {
 
     expect(
       screen.getByText(
-        'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.'
+        'La connexion avec ton compte Google est refusée. Contacte le support pour plus d’informations depuis le Profil.'
+      )
+    ).toBeOnTheScreen()
+  })
+
+  it('should show snackbar when Apple SSO login fails because account is invalid', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+    mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/apple/authorize', {
+      responseOptions: {
+        statusCode: 400,
+        data: {
+          code: 'SSO_ERROR',
+          general: [],
+        },
+      },
+    })
+
+    renderLogin()
+
+    await user.press(await screen.findByText('Se connecter avec Apple'))
+
+    expect(
+      screen.getByText(
+        'La connexion avec ton compte Apple est refusée. Contacte le support pour plus d’informations depuis le Profil.'
       )
     ).toBeOnTheScreen()
   })

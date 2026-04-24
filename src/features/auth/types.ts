@@ -11,10 +11,7 @@ export type SignInResponseFailure = {
           | 'EMAIL_NOT_VALIDATED'
           | 'NETWORK_REQUEST_FAILED'
           | 'TOO_MANY_ATTEMPTS'
-          | 'DUPLICATE_GOOGLE_ACCOUNT'
-          | 'SSO_ACCOUNT_DELETED'
-          | 'SSO_ACCOUNT_ANONYMIZED'
-          | 'SSO_EMAIL_NOT_VALIDATED'
+          | 'SSO_ERROR'
         general: string[]
       }
     | {
