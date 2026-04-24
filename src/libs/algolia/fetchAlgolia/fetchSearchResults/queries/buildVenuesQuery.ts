@@ -32,6 +32,7 @@ export const buildVenuesQuery = ({
       disabilitiesProperties,
       parameters.venue
     ),
+    analytics: true,
     clickAnalytics: true,
   }
 }

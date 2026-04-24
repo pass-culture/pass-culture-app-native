@@ -156,7 +156,7 @@ export const SearchSuggestions = ({
       <AutocompleteOffer addSearchHistory={addToHistory} offerCategories={offerCategories} />
       {shouldDisplayArtistsSuggestions ? (
         <Index indexName={env.ALGOLIA_ARTISTS_INDEX_NAME}>
-          <Configure hitsPerPage={5} clickAnalytics />
+          <Configure hitsPerPage={5} clickAnalytics analytics />
           <AutocompleteArtist onItemPress={onArtistPress} />
         </Index>
       ) : null}
@@ -164,6 +164,7 @@ export const SearchSuggestions = ({
         <Configure
           hitsPerPage={5}
           clickAnalytics
+          analytics
           aroundRadius="all"
           aroundLatLng={searchVenuePosition.aroundLatLng}
         />

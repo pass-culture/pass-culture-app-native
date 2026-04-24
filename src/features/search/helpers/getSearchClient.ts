@@ -11,7 +11,7 @@ const hasNoQuery = (request: SearchRequest): boolean => {
 
 export const getSearchClient: LiteClient = {
   ...client,
-  search(searchMethodParams, requestOptions) {
+  search(searchMethodParams, requestOptions?) {
     const requests = (
       Array.isArray(searchMethodParams) ? searchMethodParams : searchMethodParams.requests
     ) as SearchRequest[]
