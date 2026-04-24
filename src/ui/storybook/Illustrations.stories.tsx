@@ -2,12 +2,12 @@ import { StoryFn } from '@storybook/react-vite'
 import React from 'react'
 
 import { SearchCategoriesIllustrations } from 'features/search/enums'
+import { AssetGridTemplate as Illustrations } from 'ui/storybook/AssetGridTemplate'
 import {
   DetailedAchievementIllustrations,
   SimpleAchievementIllustrations,
   BasicsIllustrations,
 } from 'ui/storybook/illustrationsExports'
-import { SVGTemplate as Illustrations } from 'ui/storybook/SVGTemplate'
 
 export default {
   title: 'Fondations/Illustrations',

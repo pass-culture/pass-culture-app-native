@@ -1,39 +1,50 @@
+// eslint-disable-next-line no-restricted-imports
+import FastImage from '@d11/react-native-fast-image'
 import Clipboard from '@react-native-clipboard/clipboard'
-// eslint-disable-next-line import/no-extraneous-dependencies
 import React, { useMemo, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo, getSpacing } from 'ui/theme'
 
-interface SVGTemplateProps {
+interface AssetGridTemplateProps {
   title: string
-  icons: Record<string, React.ComponentType<AccessibleIcon>>
+  icons?: Record<string, React.ComponentType<AccessibleIcon>>
+  images?: Record<string, React.ComponentProps<typeof FastImage>['source']>
   isBicolor?: boolean
-  children?: never
   isIllustration?: boolean
 }
 
-export const SVGTemplate: React.FC<SVGTemplateProps> = ({
+export const AssetGridTemplate: React.FC<AssetGridTemplateProps> = ({
   title,
   icons,
+  images,
   isBicolor = false,
   isIllustration = false,
 }) => {
-  const [copiedIconName, setCopiedIconName] = useState<string | null>(null)
+  const [copiedAssetName, setCopiedAssetName] = useState<string | null>(null)
 
-  const sortedIcons = useMemo(() => {
-    return Object.entries(icons).sort(([iconName1], [iconName2]) => {
-      if (iconName1 < iconName2) return -1
-      else if (iconName1 > iconName2) return 1
+  const sortEntriesByName = <T,>(entries: [string, T][]) => {
+    return entries.sort(([name1], [name2]) => {
+      if (name1 < name2) return -1
+      else if (name1 > name2) return 1
       else return 0
     })
-  }, [icons])
+  }
 
-  const handleIconClick = (iconName: string) => {
-    Clipboard.setString(iconName)
-    setCopiedIconName(iconName)
-    setTimeout(() => setCopiedIconName(null), 1000)
+  const sortedIcons = useMemo(
+    () => (icons ? sortEntriesByName(Object.entries(icons)) : []),
+    [icons]
+  )
+  const sortedImages = useMemo(
+    () => (images ? sortEntriesByName(Object.entries(images)) : []),
+    [images]
+  )
+
+  const handleAssetClick = (assetName: string) => {
+    Clipboard.setString(assetName)
+    setCopiedAssetName(assetName)
+    setTimeout(() => setCopiedAssetName(null), 1000)
   }
 
   return (
@@ -41,23 +52,42 @@ export const SVGTemplate: React.FC<SVGTemplateProps> = ({
       <StyledTitle2>{title}</StyledTitle2>
       <GridContainer>
         {sortedIcons.map(([name, Icon]) => {
+          const isCopied = copiedAssetName === name
           const IconComponent = styled(Icon).attrs(({ theme }) => ({
             color: theme.designSystem.color.icon.default,
           }))``
           const IconComponentBicolor = styled(Icon).attrs(({ theme }) => ({
             color: theme.designSystem.color.icon.brandPrimary,
           }))``
-          const isCopied = copiedIconName === name
+
           return (
-            <IconWrapper
+            <AssetWrapper
               key={name}
-              onPress={() => handleIconClick(name)}
+              onPress={() => handleAssetClick(name)}
               isCopied={isCopied}
               isIllustration={isIllustration}>
               {isBicolor ? <IconComponentBicolor /> : <IconComponent />}
               {isCopied ? <StyledTitle4>Copié&nbsp;!</StyledTitle4> : null}
               <StyledBodyS numberOfLines={2}>{name}</StyledBodyS>
-            </IconWrapper>
+            </AssetWrapper>
+          )
+        })}
+        {sortedImages.map(([name, source]) => {
+          const isCopied = copiedAssetName === name
+
+          return (
+            <AssetWrapper
+              key={name}
+              onPress={() => handleAssetClick(name)}
+              isCopied={isCopied}
+              isIllustration={isIllustration}>
+              <StyledRasterImage
+                source={typeof source === 'string' ? { uri: source } : source}
+                resizeMode="contain"
+              />
+              {isCopied ? <StyledTitle4>Copié&nbsp;!</StyledTitle4> : null}
+              <StyledBodyS numberOfLines={2}>{name}</StyledBodyS>
+            </AssetWrapper>
           )
         })}
       </GridContainer>
@@ -75,7 +105,7 @@ const GridContainer = styled.View({
   justifyContent: 'flex-start',
 })
 
-const IconWrapper = styled.TouchableOpacity<{
+const AssetWrapper = styled.TouchableOpacity<{
   isCopied: boolean
   isIllustration: boolean
 }>(({ theme, isCopied, isIllustration }) => ({
@@ -105,3 +135,8 @@ const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
 const StyledBodyS = styled(Typo.BodyS)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.s,
 }))
+
+const StyledRasterImage = styled(FastImage)({
+  width: getSpacing(24),
+  height: getSpacing(24),
+})
