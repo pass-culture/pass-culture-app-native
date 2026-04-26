@@ -3,6 +3,7 @@ const { boundariesRule } = require('./eslint-custom-rules/boundaries-rule')
 
 const softRules = {
   cleancode: {
+    'local-rules/no-dotted-test-filename-without-render': 'warn',
     'local-rules/no-ts-expect-error': 'warn',
     'local-rules/no-get-spacing': 'warn',
     'local-rules/no-theme-colors': 'warn',
