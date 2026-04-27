@@ -7496,6 +7496,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"RefreshRequestV2" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
@@ -7512,7 +7513,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      */
     async postNativeV2Signin(body: SigninRequestV2, options: any = {}): Promise<FetchArgs> {
       // verify required parameter 'body' is not null or undefined
-      if (body == null) {
+      if (body === null || body === undefined) {
         throw new RequiredError(
           'body',
           'Required parameter body was null or undefined when calling postNativeV2Signin.'
@@ -7522,6 +7523,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"SigninRequestV2" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
