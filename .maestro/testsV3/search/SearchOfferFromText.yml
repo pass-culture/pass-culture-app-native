@@ -1,0 +1,52 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - search
+onFlowStart:
+  - runScript: ../common/DeepLink.js
+---
+- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/StopApp.yml
+- runFlow: ../common/DeeplinkToHome.yml
+
+- runFlow: ../common/GoToSearchFromTabBar.yml
+
+- assertVisible: 'Rechercher'
+
+- runFlow:
+    when:
+      visible: 'Ma position'
+    commands:
+      - tapOn: 'Ma position'
+      - tapOn: 'Localisation – Liste - Élément 3 sur 3 - France entière.*'
+
+- tapOn: 'Champs de texte - Rechercher dans le catalogue'
+
+- inputText: 'One piece'
+- pressKey: Enter
+
+- tapOn:
+    id: 'Voir tous les filtres'
+- tapOn: '.*Prix.*'
+- tapOn:
+    id: 'Entrée pour le prix maximum'
+- inputText: '50'
+- pressKey: Enter
+- tapOn: 'Appliquer le filtre'
+
+- tapOn: '.*Accessibilité.*'
+
+- tapOn: 'Appliquer le filtre'
+
+- tapOn: 'Rechercher'
+
+- swipe:
+    from:
+      text: '.*Les lieux culturels.*'
+    direction: UP
+
+- extractTextWithAI:
+    query: "Le titre exacte d'une des offres One Piece non-cropé visible dans les résultats de recherche"
+    outputVariable: 'physicalOfferTitle'
+- tapOn: .*${physicalOfferTitle}.*
+
+- runFlow: ../common/StopApp.yml

@@ -1,0 +1,14 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - booking
+onFlowStart:
+  - runScript: ../common/DeepLink.js
+---
+- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/StopApp.yml
+- runFlow: ../common/DeeplinkToProfile.yml
+
+- assertNotVisible:
+    id: 'Mes réservations'
+
+- runFlow: ../common/StopApp.yml
