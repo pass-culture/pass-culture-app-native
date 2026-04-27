@@ -74,27 +74,25 @@ export const HorizontalAdviceCardList = forwardRef<
 
   return (
     <View onLayout={onContainerLayout} style={style}>
-      <React.Fragment>
-        <ArrowWrapper>
-          {isStart ? null : (
-            <PlaylistArrowButton
-              direction="left"
-              onPress={handleScrollPrevious}
-              testID="advice-list-left-arrow"
-            />
-          )}
+      <ArrowWrapper>
+        {isStart ? null : (
+          <PlaylistArrowButton
+            direction="left"
+            onPress={handleScrollPrevious}
+            testID="advice-list-left-arrow"
+          />
+        )}
 
-          {isEnd ? null : (
-            <PlaylistArrowButton
-              direction="right"
-              onPress={handleScrollNext}
-              testID="advice-list-right-arrow"
-            />
-          )}
-        </ArrowWrapper>
-        {isDesktopViewport && !isEnd ? <GradientRight /> : null}
-        {isDesktopViewport && !isStart ? <GradientLeft /> : null}
-      </React.Fragment>
+        {isEnd ? null : (
+          <PlaylistArrowButton
+            direction="right"
+            onPress={handleScrollNext}
+            testID="advice-list-right-arrow"
+          />
+        )}
+      </ArrowWrapper>
+      {isDesktopViewport && !isEnd ? <GradientRight /> : null}
+      {isDesktopViewport && !isStart ? <GradientLeft /> : null}
 
       <AdviceCardListBase
         data={data}
