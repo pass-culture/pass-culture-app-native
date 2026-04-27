@@ -40,13 +40,13 @@ export const OfferArtists: FunctionComponent<Props> = ({
         const isLineClickable = artistLinkEnabled && (hasSeveralArtists || hasArtistId)
 
         const artistsText = (
-          <Container gap={2}>
+          <Container gap={2} key={lineKey}>
             <Prefix>{line.prefix}</Prefix>
             <ArtistText
               allowFontScaling={false}
               numberOfLines={2}
               {...getHeadingAttrs(1)}
-              {...accessibilityAndTestId(`Nom de l’artiste\u00a0: ${artistsLabel}`)}>
+              {...accessibilityAndTestId(`${line.prefix} ${artistsLabel}`)}>
               {artistsLabel}
             </ArtistText>
             {isLineClickable ? <StyledRightFilled testID="right-icon" /> : null}
@@ -70,7 +70,7 @@ export const OfferArtists: FunctionComponent<Props> = ({
           )
         }
 
-        return <React.Fragment key={lineKey}>{artistsText}</React.Fragment>
+        return artistsText
       })}
     </ViewGap>
   )
