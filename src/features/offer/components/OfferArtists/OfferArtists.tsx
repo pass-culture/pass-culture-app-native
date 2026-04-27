@@ -22,12 +22,15 @@ export const OfferArtists: FunctionComponent<Props> = ({
   onPressArtistLink,
 }) => {
   const artistLinkEnabled = !!onPressArtistLink
-  const artistsLines = artists.length === 1 ? [{ prefix: 'de', artists }] : getArtistsLines(artists)
+  const artistsLines = getArtistsLines(artists)
+
+  if (artistsLines.length === 0) return null
 
   return (
     <ViewGap gap={2}>
       {artistsLines.map((line) => {
         const artistsNames = line.artists.map((artist) => artist.name)
+        const lineKey = `${line.prefix}-${artistsNames.join('-')}`
         const artistsLabel = isMultiArtistsEnabled
           ? getArtistsButtonLabel(artistsNames)
           : artistsNames.join(', ')
@@ -37,7 +40,7 @@ export const OfferArtists: FunctionComponent<Props> = ({
         const isLineClickable = artistLinkEnabled && (hasSeveralArtists || hasArtistId)
 
         const artistsText = (
-          <Container gap={2} key={line.artists[0]?.id}>
+          <Container gap={2}>
             <Prefix>{line.prefix}</Prefix>
             <ArtistText
               allowFontScaling={false}
@@ -53,7 +56,7 @@ export const OfferArtists: FunctionComponent<Props> = ({
         if (isLineClickable) {
           return (
             <InternalTouchableLink
-              key={line.artists[0]?.id}
+              key={lineKey}
               navigateTo={{ screen: 'Artist' }}
               enableNavigate={false}
               onBeforeNavigate={() => onPressArtistLink(line.artists)}
@@ -67,7 +70,7 @@ export const OfferArtists: FunctionComponent<Props> = ({
           )
         }
 
-        return artistsText
+        return <React.Fragment key={lineKey}>{artistsText}</React.Fragment>
       })}
     </ViewGap>
   )
