@@ -67,7 +67,7 @@ jobs:
 
       # Auth GitHub App pour accéder aux alertes Dependabot
       - name: Authenticate through GitHub App
-        uses: actions/create-github-app-token@v2
+        uses: actions/create-github-app-token@v3
         id: github-app-token
         with:
           app-id: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
