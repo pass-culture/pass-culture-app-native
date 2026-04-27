@@ -18,7 +18,7 @@ onFlowStart:
 - scrollUntilVisible:
     element:
       text: 'Version.*'
-- tapOn: 'Instagram'
+- tapOn: '.*Instagram.*'
 - waitForAnimationToEnd
 
 - runFlow: # Si 1ere ouverture de chrome
@@ -42,9 +42,9 @@ onFlowStart:
       - tapOn: 'Revenir à pass Culture S'
       - scrollUntilVisible:
           element:
-            text: 'Instagram'
+            text: '.*Instagram.*'
 
-- tapOn: 'X'
+- tapOn: '.*X.*'
 - waitForAnimationToEnd
 - runFlow:
     when:
@@ -62,9 +62,9 @@ onFlowStart:
       - tapOn: 'Revenir à pass Culture S'
       - scrollUntilVisible:
           element:
-            text: 'Instagram'
+            text: '.*Instagram.*'
 
-- tapOn: 'Tiktok'
+- tapOn: '.*Tiktok.*'
 - waitForAnimationToEnd
 - runFlow:
     when:
@@ -81,7 +81,7 @@ onFlowStart:
       - tapOn: 'Revenir à pass Culture S'
       - scrollUntilVisible:
           element:
-            text: 'Instagram'
+            text: '.*Instagram.*'
 
 - runFlow: # Fallback si problème de retour
     when:
@@ -90,9 +90,9 @@ onFlowStart:
       - tapOn: 'Mon profil.*'
       - scrollUntilVisible:
           element:
-            text: 'Facebook'
+            text: '.*Facebook.*'
 
-- tapOn: 'Facebook'
+- tapOn: '.*Facebook.*'
 - waitForAnimationToEnd
 # - TODO: Investiguer la 429 à l'ouverture du lien externe
 # - tapOn: "Fermer"

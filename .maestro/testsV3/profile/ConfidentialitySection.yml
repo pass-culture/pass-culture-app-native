@@ -15,13 +15,9 @@ onFlowStart:
 - runFlow: ../common/DeeplinkBeneficiaryUser.yml
 - runFlow: ../common/GoToProfileFromTabBar.yml
 
-- runFlow:
-    when:
-      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
-    commands:
-      - scrollUntilVisible:
-          element:
-            text: 'Partage le pass Culture'
+- scrollUntilVisible:
+    element:
+      text: '.*Partage le pass Culture.*'
 - tapOn:
     text: 'Confidentialité'
 

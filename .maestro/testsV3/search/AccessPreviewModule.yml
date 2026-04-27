@@ -68,7 +68,7 @@ onFlowStart:
     when:
       platform: iOS
     commands:
-      - tapOn: "Voir l'illustration en plein écran"
+      - tapOn: "Voir l’illustration en plein écran"
 
 - runFlow:
     when:

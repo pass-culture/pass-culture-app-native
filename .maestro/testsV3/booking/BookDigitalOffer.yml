@@ -1,0 +1,73 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - booking
+onFlowStart:
+  - runScript: ../common/DeepLink.js
+  - runScript: ../common/Button.js
+  - runScript:
+      file: ../common/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: 18
+---
+- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/StopApp.yml
+- runFlow: ../common/DeeplinkBeneficiaryUser.yml
+
+- runFlow: ../common/GoToSearchFromTabBar.yml
+
+- assertVisible: 'Rechercher'
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - scrollUntilVisible:
+          element:
+            text: 'Catégorie Médias & presse'
+      - tapOn: 'Catégorie Médias & presse'
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - scrollUntilVisible:
+          element:
+            text: 'Médias & presse'
+      - tapOn: 'Médias & presse'
+
+- tapOn: 'Voir tous les filtres : 1 filtre actif'
+- tapOn: '.*Catégorie.*'
+
+- assertVisible: 'Médias & presse'
+- tapOn: '.*Presse en ligne.*'
+- tapOn: 'Appliquer le filtre'
+
+- tapOn: 'Rechercher'
+
+- assertVisible: 'Rechercher'
+- swipe:
+    from:
+      text: 'Les lieux culturels'
+    direction: UP
+- tapOn: 'Abonnement presse en ligne'
+
+- runFlow:
+    when:
+      visible: "Réserver l'offre"
+    commands:
+      - tapOn: "Réserver l'offre"
+
+- runFlow:
+    when:
+      visible: "Accéder à l'offre en ligne"
+    commands:
+      - assertVisible: "Accéder à l'offre en ligne"
+
+- runFlow:
+    when:
+      visible: 'Tu y es presque'
+    commands:
+      - assertVisible: 'Tu y es presque'
+
+- runFlow: ../common/StopApp.yml

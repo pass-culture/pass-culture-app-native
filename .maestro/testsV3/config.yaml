@@ -5,3 +5,4 @@ flows:
   - signup/*
   - profile/*
   - search/*
+  - booking/*
