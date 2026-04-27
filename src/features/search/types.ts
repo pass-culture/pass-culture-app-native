@@ -11,11 +11,10 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import { DisabilitiesProperties } from 'features/accessibility/types'
-import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { Venue } from 'features/venue/types'
+import { Artist, Venue } from 'features/venue/types'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
-import { SearchQueryParameters } from 'libs/algolia/types'
+import { AlgoliaVenue, SearchQueryParameters } from 'libs/algolia/types'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
@@ -188,4 +187,25 @@ export type FetchSearchResultsArgs = {
   isUserUnderage: boolean
   disabilitiesProperties: DisabilitiesProperties
   aroundPrecision?: CustomRemoteConfig['aroundPrecision']
+}
+
+export type SearchOfferHits = {
+  offers: Offer[]
+  venueNotOpenToPublic: AlgoliaVenue[]
+  venues: AlgoliaVenue[]
+  artists: Artist[]
+  duplicatedOffers: Offer[]
+}
+
+export type SearchResultOffer = { type: 'offer'; data: Offer }
+export type SearchResultArtist = { type: 'artist'; data: Artist }
+export type SearchResultVenue = { type: 'venue'; data: AlgoliaVenue }
+
+export type SearchResultItem = SearchResultOffer | SearchResultArtist | SearchResultVenue
+
+export type SearchListContent = {
+  title: string
+  items: SearchResultItem[]
+  nbHits: number
+  hits: SearchOfferHits
 }

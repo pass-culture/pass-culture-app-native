@@ -2,13 +2,13 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
-import { BookingsResponse, BookOfferRequest, BookOfferResponse } from 'api/gen'
+import { BookingsResponseV2, BookOfferRequest, BookOfferResponse } from 'api/gen'
 import { Adjust } from 'libs/adjust/adjust'
 import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import { QueryKeys } from 'libs/queryKeys'
 
 interface BookingMutationContext {
-  previousBookings: Array<BookingsResponse>
+  previousBookings: Array<BookingsResponseV2>
 }
 
 interface BookOffer {
@@ -28,7 +28,6 @@ export const useBookOfferMutation = ({ onSuccess, onError }: BookOffer) => {
     onSuccess: async (data: BookOfferResponse) => {
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: [QueryKeys.USER_PROFILE] }),
-        queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGS] }),
         queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGSV2] }),
         queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGSLIST] }),
       ])
@@ -37,7 +36,7 @@ export const useBookOfferMutation = ({ onSuccess, onError }: BookOffer) => {
     },
     onError: (error: Error | ApiError, { stockId, quantity }, context?: BookingMutationContext) => {
       if (context?.previousBookings) {
-        queryClient.setQueryData([QueryKeys.BOOKINGS], context.previousBookings)
+        queryClient.setQueryData([QueryKeys.BOOKINGSV2], context.previousBookings)
       }
       onError(error, { stockId, quantity }, context)
     },

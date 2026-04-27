@@ -2,6 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 
 import { AccountState } from 'api/gen'
+import { getSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { SignInResponseFailure } from 'features/auth/types'
 import { resetFromRef } from 'features/navigation/navigationRef'
@@ -63,17 +64,9 @@ export const AppleSSOCallback = () => {
           from: context?.type === 'signup' ? StepperOrigin.SIGNUP : StepperOrigin.LOGIN,
           ssoProvider: 'apple',
         })
-      } else if (
-        failureCode &&
-        [
-          'DUPLICATE_GOOGLE_ACCOUNT',
-          'SSO_ACCOUNT_DELETED',
-          'SSO_ACCOUNT_ANONYMIZED',
-          'SSO_EMAIL_NOT_VALIDATED',
-        ].includes(failureCode)
-      ) {
+      } else if (failureCode === 'SSO_ERROR') {
         showErrorSnackBar(
-          'Ton compte Apple semble ne pas être valide. Pour pouvoir te connecter, confirme d\u2019abord ton adresse e-mail Apple.'
+          getSSOErrorMessage('apple', context?.type === 'signup' ? 'signup' : 'login')
         )
         navigateBack()
       } else if (failureCode === 'NETWORK_REQUEST_FAILED') {

@@ -5,8 +5,8 @@ describe('getBookingProperties', () => {
   it('when an event booking is provided', () => {
     const booking = {
       stock: { offer: { isDigital: true, isPermanent: true } },
-      activationCode: null,
-    } as Booking
+      ticket: { activationCode: { code: null } },
+    } as unknown as Booking
 
     const isEvent = true
 
@@ -25,8 +25,8 @@ describe('getBookingProperties', () => {
   it('when a physical booking is provided', () => {
     const booking = {
       stock: { offer: { isDigital: true, isPermanent: true } },
-      activationCode: null,
-    } as Booking
+      ticket: { activationCode: { code: null } },
+    } as unknown as Booking
 
     const isEvent = false
 
@@ -45,7 +45,7 @@ describe('getBookingProperties', () => {
   it('when a booking with activation code is provided', () => {
     const booking = {
       stock: { offer: { isDigital: true, isPermanent: true } },
-      activationCode: { code: 'toto' },
+      ticket: { activationCode: { code: 'toto' } },
     } as Booking
 
     const isEvent = false

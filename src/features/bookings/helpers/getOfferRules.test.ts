@@ -1,9 +1,9 @@
-import { BookingsResponse, WithdrawalTypeEnum } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures'
+import { BookingsResponseV2, WithdrawalTypeEnum } from 'api/gen'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { getOfferRules } from 'features/bookings/helpers'
 
 describe('getOfferRules', () => {
-  const booking = bookingsSnap.ongoing_bookings[1]
+  const booking = bookingsSnapV2.ongoingBookings[1]
 
   it('should return the correct message when hasActivationCode is true', () => {
     const properties = {
@@ -58,11 +58,10 @@ describe('getOfferRules', () => {
       }
       const newBooking = {
         ...booking,
-        externalBookings: [],
-        stock: {
-          ...booking.stock,
-
-          offer: { ...booking.stock.offer, withdrawalType },
+        ticket: {
+          ...booking.ticket,
+          externalBooking: { data: [] },
+          withdrawal: { ...booking.ticket.withdrawal, type: withdrawalType },
         },
       }
 
@@ -85,11 +84,10 @@ describe('getOfferRules', () => {
       }
       const newBooking = {
         ...booking,
-        externalBookings: [],
-        stock: {
-          ...booking.stock,
-
-          offer: { ...booking.stock.offer, withdrawalType },
+        ticket: {
+          ...booking.ticket,
+          externalBooking: { data: [] },
+          withdrawal: { ...booking.ticket.withdrawal, type: withdrawalType },
         },
       }
 
@@ -100,8 +98,8 @@ describe('getOfferRules', () => {
   )
 
   it('should return the correct message if externalBookingsInfos.length === 1', () => {
-    const booking: BookingsResponse['ongoing_bookings'][number] = {
-      ...bookingsSnap.ongoing_bookings[1],
+    const booking: BookingsResponseV2['ongoingBookings'][number] = {
+      ...bookingsSnapV2.ongoingBookings[1],
     }
     const properties = {
       hasActivationCode: false,
@@ -109,8 +107,9 @@ describe('getOfferRules', () => {
       isPhysical: true,
       isEvent: false,
     }
-
-    booking.externalBookings = [{ barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' }]
+    booking.ticket.externalBooking = {
+      data: [{ barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' }],
+    }
     const offerRules = getOfferRules(properties, booking)
 
     expect(offerRules).toEqual(
@@ -126,10 +125,12 @@ describe('getOfferRules', () => {
       isEvent: true,
     }
 
-    booking.externalBookings = [
-      { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' },
-      { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A13' },
-    ]
+    booking.ticket.externalBooking = {
+      data: [
+        { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' },
+        { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A13' },
+      ],
+    }
     const offerRules = getOfferRules(properties, booking)
 
     expect(offerRules).toEqual(

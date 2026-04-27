@@ -28,5 +28,4 @@ const queriesToInvalidateOnUnsuspend: QueryKeys[] = [
   QueryKeys.NEXT_SUBSCRIPTION_STEP,
   QueryKeys.FAVORITES,
   QueryKeys.FAVORITES_COUNT,
-  QueryKeys.BOOKINGS,
 ]

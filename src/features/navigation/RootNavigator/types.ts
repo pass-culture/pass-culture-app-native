@@ -9,7 +9,6 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BookingsTab } from 'features/bookings/enum'
-import { OffersModule } from 'features/home/types'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
 import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
@@ -20,6 +19,7 @@ import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { SuggestedPlace } from 'libs/place/types'
+import { VerticalPlaylistSource } from 'shared/verticalPlaylist/types'
 
 import { TabParamList } from '../TabBar/TabStackNavigatorTypes'
 
@@ -302,8 +302,7 @@ export type RootStackParamList = {
   _DeeplinkOnlyVenuePreviewCarousel2: VenuePreviewCarouselParams
   _DeeplinkOnlyVenuePreviewCarousel3: VenuePreviewCarouselParams
   VerifyEligibility: undefined
-  VerticalPlaylistOffersFromModule: { module: OffersModule }
-  VerticalPlaylistOffersFromVenue: { venueId: number; playlistTitle: string }
+  VerticalPlaylistOffers: VerticalPlaylistSource
 } & TrustedDeviceRootStackParamList
 
 export type AllNavParamList = RootStackParamList &

@@ -38,6 +38,7 @@ import { OfferImageContainer } from 'features/offer/components/OfferImageContain
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
+import { PlaylistType } from 'features/offer/enums'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
@@ -58,6 +59,7 @@ import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMu
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { ImageWithCredit } from 'shared/types'
+import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
@@ -110,6 +112,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   HeaderComponent,
   CTAsComponent,
   proAdvicesCount,
+  proAdvicesSegment,
   children,
 }) => {
   const HeaderToRender = HeaderComponent || OfferHeader
@@ -223,7 +226,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     onSuccess: () => {
       if (typeof offer.id === 'number' && params) {
         const { from, moduleName, moduleId, searchId, playlistType } = params
-        analytics.logHasAddedOfferToFavorites({
+        void analytics.logHasAddedOfferToFavorites({
           from: getIsAComingSoonOffer(offer.bookingAllowedDatetime) ? 'comingSoonOffer' : from,
           offerId: offer.id,
           moduleName,
@@ -269,8 +272,28 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     })
   }
 
+  const proAdvicesTotalCount = proAdvicesCount ?? proAdvices?.length ?? 0
+  const proAdvicesCtaLabel = `Lire les ${proAdvicesTotalCount} avis`
+
   const handleOnSeeMoreProAdvicePress = (venueId: number) => {
+    void analytics.logConsultAdvice({
+      from: 'offer',
+      offerId: offer.id.toString(),
+      venueId: venueId.toString(),
+      originDetails: PRO_ADVICE_VARIANT_CONFIG.titleSection,
+      adviceType: 'pro',
+    })
     navigate('ProAdvicesOffer', { offerId: offer.id, venueId })
+  }
+
+  const handleOnPressAllProAdvicesButton = () => {
+    void analytics.logConsultAdvice({
+      from: 'offer',
+      offerId: offer.id.toString(),
+      venueId: venue.id.toString(),
+      originDetails: proAdvicesCtaLabel,
+      adviceType: 'pro',
+    })
   }
 
   const handleOnPressAllProAdvicesFromModal = () => {
@@ -278,8 +301,19 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     navigate('ProAdvicesOffer', { offerId: offer.id })
   }
 
-  // The feedback analytics will be added in the next ticket.
-  const handleOnProAdvicesFeedbackLog = useCallback(() => undefined, [])
+  const handleOnProAdvicesFeedbackLog = useCallback(
+    (type: ReactionTypeEnum) => {
+      const feedbackResponse = type === ReactionTypeEnum.LIKE ? 'Oui' : 'Non'
+      void analytics.logFeatureFeedbackClicked({
+        featureName: 'pro_advices',
+        feedbackResponse,
+        from: 'offer',
+        offerId: offer.id.toString(),
+        venueId: venue.id.toString(),
+      })
+    },
+    [offer.id, venue.id]
+  )
 
   const offerCtaButton = (
     <OfferCTAButton
@@ -321,6 +355,28 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
       {offerCtaButton}
     </OfferContentCTAs>
   )
+
+  const navigateToVerticalPlaylist = (type: PlaylistType) => ({
+    screen: 'VerticalPlaylistOffers' as const,
+    params: {
+      type: VerticalPlaylist.SimilarOffers,
+      module: { offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList, type },
+    },
+  })
+
+  const onBeforeNavigate = (type) => {
+    const moduleName =
+      type === PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS
+        ? 'Dans la même catégorie'
+        : 'Ça peut aussi te plaire'
+
+    void analytics.logClickSeeAll({
+      type: 'offers',
+      moduleName: moduleName,
+      moduleId: offer.id.toString(),
+      from: 'offer',
+    })
+  }
 
   return (
     <Container>
@@ -406,16 +462,17 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               sectionId="pro-advice-section"
               anchorSectionId="pro-advice-section-anchor">
               <ClubAdviceSection
-                ctaLabel={`Lire les ${proAdvicesCount ?? proAdvices.length} avis`}
+                ctaLabel={proAdvicesCtaLabel}
                 variantInfo={PRO_ADVICE_VARIANT_CONFIG}
                 data={proAdvices}
                 navigateTo={{
                   screen: 'ProAdvicesOffer',
                   params: { offerId: offer.id },
                 }}
+                onBeforeNavigate={handleOnPressAllProAdvicesButton}
                 onSeeMoreButtonPress={handleOnSeeMoreProAdvicePress}
                 onShowClubAdviceWritersModal={showProAdvicesWritersModal}
-                displayAllAdvicesButton={(proAdvicesCount ?? proAdvices.length) > 1}
+                displayAllAdvicesButton={proAdvicesTotalCount > 1}
                 showSectionTag={enableNewTagProAdvices}
                 feedback={
                   <FeedBack
@@ -443,6 +500,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
             apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
             onViewableItemsChanged={handleViewableItemsChanged}
+            seeAllButton={{ navigateToVerticalPlaylist, onBeforeNavigate }}
+            proAdvicesSegment={proAdvicesSegment}
           />
           {children}
         </IntersectionObserverScrollView>

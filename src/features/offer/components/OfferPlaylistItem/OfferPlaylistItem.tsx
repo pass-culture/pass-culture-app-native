@@ -30,6 +30,7 @@ type OfferPlaylistItemProps = {
   priceDisplay: (item: Offer) => string
   navigationMethod?: OfferTileProps['navigationMethod']
   hasSmallLayout?: boolean
+  proAdvicesSegment?: string
 }
 
 type RenderOfferPlaylistItemProps = {
@@ -50,6 +51,7 @@ export const OfferPlaylistItem = ({
   navigationMethod,
   priceDisplay,
   hasSmallLayout,
+  proAdvicesSegment,
 }: OfferPlaylistItemProps) => {
   return function RenderItem({ item, width, height, playlistType }: RenderOfferPlaylistItemProps) {
     const timestampsInMillis = item.offer.dates && getTimeStampInMillis(item.offer.dates)
@@ -62,7 +64,7 @@ export const OfferPlaylistItem = ({
       hasSmallLayout,
       isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
       subcategoryId: item.offer.subcategoryId,
-      proAdvicesCount: item.offer.proAdvicesCount,
+      proAdvicesCount: proAdvicesSegment === 'A' ? item.offer.proAdvicesCount : undefined,
     })
     return (
       <OfferTile

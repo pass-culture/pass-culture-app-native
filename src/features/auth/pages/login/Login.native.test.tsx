@@ -154,7 +154,7 @@ describe('<Login/>', () => {
       responseOptions: {
         statusCode: 400,
         data: {
-          code: 'SSO_ACCOUNT_DELETED',
+          code: 'SSO_ERROR',
           general: [],
         },
       },
@@ -166,7 +166,30 @@ describe('<Login/>', () => {
 
     expect(
       screen.getByText(
-        'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.'
+        'La connexion avec ton compte Google est refusée. Contacte le support pour plus d’informations depuis le Profil.'
+      )
+    ).toBeOnTheScreen()
+  })
+
+  it('should show snackbar when Apple SSO login fails because account is invalid', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+    mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/apple/authorize', {
+      responseOptions: {
+        statusCode: 400,
+        data: {
+          code: 'SSO_ERROR',
+          general: [],
+        },
+      },
+    })
+
+    renderLogin()
+
+    await user.press(await screen.findByText('Se connecter avec Apple'))
+
+    expect(
+      screen.getByText(
+        'La connexion avec ton compte Apple est refusée. Contacte le support pour plus d’informations depuis le Profil.'
       )
     ).toBeOnTheScreen()
   })
@@ -477,7 +500,7 @@ describe('<Login/>', () => {
     await fillInputs()
     await user.press(screen.getByText('Se connecter'))
 
-    expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: undefined })
+    expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: 'email_login' })
   })
 
   it('should log analytics when signing in with SSO', async () => {
@@ -491,7 +514,10 @@ describe('<Login/>', () => {
 
     await user.press(await screen.findByTestId('Se connecter avec Google'))
 
-    expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: 'SSO_login' })
+    expect(analytics.logLogin).toHaveBeenCalledWith({
+      method: 'fromLoginGoogle',
+      type: 'SSO_login',
+    })
   })
 
   it('should display forced login help message when the query param is given', async () => {

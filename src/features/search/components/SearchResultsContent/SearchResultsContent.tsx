@@ -11,7 +11,6 @@ import { VenueMapLocationModal } from 'features/location/components/VenueMapLoca
 import { usePreviousRouteName } from 'features/navigation/helpers/usePreviousRouteName'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { PlaylistType } from 'features/offer/enums'
-import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { NoSearchResult } from 'features/search/components/NoSearchResult/NoSearchResult'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
@@ -22,7 +21,13 @@ import { getStringifySearchStateWithoutLocation } from 'features/search/helpers/
 import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateToSearchFilter/useNavigateToSearchFilter'
 import { usePrevious } from 'features/search/helpers/usePrevious'
 import { useGridListLayout } from 'features/search/store/gridListLayoutStore'
-import { GridListLayout, SearchListProps, SearchView, VenuesUserData } from 'features/search/types'
+import {
+  GridListLayout,
+  SearchListProps,
+  SearchOfferHits,
+  SearchView,
+  VenuesUserData,
+} from 'features/search/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { Venue } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
@@ -305,15 +310,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     hideVenueMapLocationModal()
   }
 
-  const handleOnArtistPlaylistItemPress = (artistId: string, artistName: string) => {
-    void analytics.logConsultArtist({
-      artistId,
-      artistName,
-      searchId: searchState.searchId,
-      from: 'search',
-    })
-  }
-
   if (showSkeleton) return <SearchResultsPlaceHolder />
 
   const numberOfResults =
@@ -353,7 +349,8 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
           hits.artists.length ? (
             <StyledArtistSection
               artists={hits.artists}
-              onItemPress={handleOnArtistPlaylistItemPress}
+              searchId={searchState.searchId}
+              withMargins
             />
           ) : undefined
         }

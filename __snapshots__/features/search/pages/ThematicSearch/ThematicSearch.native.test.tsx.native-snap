@@ -1816,23 +1816,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     }
                   }
                   ListHeaderComponent={
-                    {
-                      "$$typeof": Symbol(react.forward_ref),
-                      "attrs": [
-                        {
-                          "width": 24,
-                        },
-                      ],
-                      "inlineStyle": e {
-                        "rules": [
-                          [Function],
-                        ],
-                      },
-                      "render": [Function],
-                      "shouldForwardProp": undefined,
-                      "styledComponentId": true,
-                      "target": [Function],
-                    }
+                    <Styled(View)
+                      width={24}
+                    />
                   }
                   collapsable={false}
                   data={
@@ -2592,8 +2578,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         accessibilityRole="header"
                         renderToHardwareTextureAndroid={true}
                         shouldRasterizeIOS={true}
-                        style={{}}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "width": "auto",
+                          }
+                        }
                         testID="OfferTile"
+                        withCenterAlign={true}
                       >
                         <View
                           accessibilityLabel="Offre "Mon abonnement bibliothèque", de la catégorie "Livre",   prix . "
@@ -2874,8 +2866,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         accessibilityRole="header"
                         renderToHardwareTextureAndroid={true}
                         shouldRasterizeIOS={true}
-                        style={{}}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "width": "auto",
+                          }
+                        }
                         testID="OfferTile"
+                        withCenterAlign={true}
                       >
                         <View
                           accessibilityLabel="Offre "Mon abonnement médiathèque", de la catégorie "Films",   prix . "
@@ -3156,8 +3154,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         accessibilityRole="header"
                         renderToHardwareTextureAndroid={true}
                         shouldRasterizeIOS={true}
-                        style={{}}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "width": "auto",
+                          }
+                        }
                         testID="OfferTile"
+                        withCenterAlign={true}
                       >
                         <View
                           accessibilityLabel="Offre "Mon abonnement livres numériques", de la catégorie "Livre",   prix . "
@@ -3438,8 +3442,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         accessibilityRole="header"
                         renderToHardwareTextureAndroid={true}
                         shouldRasterizeIOS={true}
-                        style={{}}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "width": "auto",
+                          }
+                        }
                         testID="OfferTile"
+                        withCenterAlign={true}
                       >
                         <View
                           accessibilityLabel="Offre "Mon abonnement ludothèque", de la catégorie "Jeux",   prix . "

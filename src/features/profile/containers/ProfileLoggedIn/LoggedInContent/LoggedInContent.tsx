@@ -8,7 +8,6 @@ import { BugReportButton } from 'features/profile/components/Buttons/BugReportBu
 import { ChatbotButton } from 'features/profile/components/Buttons/ChatbotButton/ChatbotButton'
 import { HelpButtonRow } from 'features/profile/components/Buttons/HelpButton/HelpButtonRow'
 import { LocationButton } from 'features/profile/components/Buttons/LocationButton/LocationButton'
-import { FeedbackInAppButton } from 'features/profile/components/FeedbackInAppButton/FeedbackInAppButton'
 import { ProfileContentLayout } from 'features/profile/components/ProfileContentLayout/ProfileContentLayout'
 import { ShareBanner } from 'features/profile/components/ShareBanner/ShareBanner'
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
@@ -20,7 +19,6 @@ import { useGeolocationSwitch } from 'features/profile/helpers/useGeolocationSwi
 import { UserProfile } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location/LocationWrapper'
 
 const CHATBOT_ELIGIBLE_STATUSES = new Set<YoungStatusType>([
@@ -32,7 +30,6 @@ const CHATBOT_ELIGIBLE_STATUSES = new Set<YoungStatusType>([
 type Props = { user: UserProfile | undefined }
 
 export const LoggedInContent = ({ user }: Props) => {
-  const { data: remoteConfig } = useRemoteConfigQuery()
   const isChatbotFeatureEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CHATBOT)
   const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
   const shouldDisplayHelpButton = getShouldDisplayHelpButton({ user })
@@ -62,9 +59,6 @@ export const LoggedInContent = ({ user }: Props) => {
         geolocPositionError={geolocPositionError}
         switchGeolocation={switchGeolocation}
       />
-    ),
-    FeedbackInAppButton: (
-      <FeedbackInAppButton displayInAppFeedback={remoteConfig.displayInAppFeedback} />
     ),
     HelpButton: shouldDisplayHelpButton ? <HelpButtonRow birthDate={user?.birthDate} /> : null,
     ShareBanner: <ShareBanner />,

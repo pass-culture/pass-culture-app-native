@@ -7,6 +7,7 @@ import { offerProAdvicesFixture } from 'features/advices/fixtures/offerProAdvice
 import * as useGoBack from 'features/navigation/useGoBack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { ProAdvicesOffer } from 'features/proAdvices/pages/ProAdvicesOffer'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
@@ -84,6 +85,26 @@ describe('ProAdvicesOffer', () => {
     await user.press(await screen.findByText('Voir tous les avis des pros'))
 
     expect(mockHideModal).toHaveBeenCalledTimes(1)
+  })
+
+  it('should trigger ConsultVenue log when pressing pro advice card header', async () => {
+    render(reactQueryProviderHOC(<ProAdvicesOffer />))
+
+    await screen.findByText('2 avis des pros')
+
+    const cardHeader = screen.getByLabelText('Voir le lieu The Best Place')
+
+    if (cardHeader) {
+      await user.press(cardHeader)
+    }
+
+    expect(analytics.logConsultVenue).toHaveBeenCalledWith({
+      adviceType: 'pro',
+      from: 'offer',
+      offerId: '116656',
+      originDetail: 'Les avis des pros',
+      venueId: '1',
+    })
   })
 
   describe('When venue id defined', () => {

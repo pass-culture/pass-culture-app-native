@@ -4,12 +4,10 @@ import { plural } from 'libs/plural'
 
 export function getOfferRules(properties: BookingProperties, booking?: Booking): string {
   const { hasActivationCode, isDigital, isPhysical, isEvent } = properties
-  const numberOfExternalBookings = booking?.externalBookings
-    ? booking.externalBookings.length
-    : undefined
+  const numberOfExternalBookings = booking?.ticket?.externalBooking?.data?.length
   const withdrawalTypeDisplay =
-    booking?.stock.offer.withdrawalType === WithdrawalTypeEnum.on_site ||
-    !booking?.stock.offer.withdrawalType
+    booking?.ticket?.withdrawal?.type === WithdrawalTypeEnum.on_site ||
+    !booking?.ticket?.withdrawal?.type
 
   if (hasActivationCode)
     return 'Ce code est ta preuve d’achat, il te permet d’accéder à ton offre\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'

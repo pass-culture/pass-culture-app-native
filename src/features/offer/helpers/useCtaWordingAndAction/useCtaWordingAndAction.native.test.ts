@@ -743,7 +743,7 @@ describe('getCtaWordingAndAction', () => {
     it('logs event logViewedBookingPage when we click CTA "Réserver l’offre" on free digital event already booked', () => {
       const offer = baseOffer
       const subcategory = buildSubcategory({ isEvent: true })
-      const booking = mockBuilder.bookingResponseV1({ id: offer.id })
+      const booking = mockBuilder.bookingResponseV2({ id: offer.id })
 
       const { onPress } =
         getCtaWordingAndAction({

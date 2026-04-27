@@ -20,7 +20,7 @@ export const ProAdvicesVenue: FunctionComponent = () => {
   const { data: advices } = useVenueProAdvicesQuery({
     venueId,
     enableProAdvices,
-    select: ({ proAdvices }) => venueProAdvicesToAdviceCardData(proAdvices),
+    select: ({ proAdvices }) => venueProAdvicesToAdviceCardData(proAdvices, venueId),
   })
   const nbAdvices = advices?.length ?? 0
 

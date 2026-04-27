@@ -1,6 +1,6 @@
 import { addDays, format, differenceInDays } from 'date-fns'
 
-import { BookingReponse } from 'api/gen'
+import { BookingResponse } from 'api/gen'
 import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { Booking } from 'features/bookings/types'
 
@@ -69,12 +69,9 @@ export const formattedExpirationDate = (dateCreated: string) => {
   return formattedExpirationDate
 }
 
-export const isDigitalBookingWithoutExpirationDate = (booking: BookingReponse) =>
+export const isDigitalBookingWithoutExpirationDate = (booking: BookingResponse) =>
   booking.stock.offer.isDigital && !booking.expirationDate
 
-export const isFreeBookingInSubcategories = (booking: BookingReponse) =>
+export const isFreeBookingInSubcategories = (booking: BookingResponse) =>
   booking.totalAmount === 0 &&
   FREE_OFFER_CATEGORIES_TO_ARCHIVE.includes(booking.stock.offer.subcategoryId)
-
-export const isEligibleBookingsForArchive = (booking: BookingReponse) =>
-  isDigitalBookingWithoutExpirationDate(booking) || isFreeBookingInSubcategories(booking)

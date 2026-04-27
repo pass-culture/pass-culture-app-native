@@ -44,7 +44,7 @@ import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMarkScreenInteractive } from 'performance/useMarkScreenInteractive'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
-import { usePageTracking, createViewableItemsHandler } from 'shared/tracking/usePageTracking'
+import { createViewableItemsHandler, usePageTracking } from 'shared/tracking/usePageTracking'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
@@ -66,7 +66,7 @@ type GenericHomeProps = {
   statusBar?: React.JSX.Element
 }
 
-const keyExtractor = (item: HomepageModule) => item.id
+const keyExtractor = (item: HomepageModule, index: number) => item.id + index
 
 const renderModule = (
   { item, index }: { item: HomepageModule; index: number },

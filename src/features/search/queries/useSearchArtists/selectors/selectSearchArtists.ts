@@ -1,12 +1,12 @@
 import { uniqBy } from 'lodash'
 
 import { FetchSearchArtistsResponse } from 'features/search/queries/useSearchArtists/types'
-import { SearchFilter } from 'features/search/queries/useSearchOffersQuery/types'
+import { SelectSearchOffersParams } from 'features/search/queries/useSearchOffersQuery/types'
 import { Artist } from 'features/venue/types'
 
 export const selectSearchArtists = (
   data: FetchSearchArtistsResponse,
-  selectedFilter: SearchFilter | null
+  selectedFilter: SelectSearchOffersParams['selectedFilter']
 ): Artist[] => {
   const isArtistsFilterActive = selectedFilter === null || selectedFilter === 'Artistes'
   if (!isArtistsFilterActive) return []

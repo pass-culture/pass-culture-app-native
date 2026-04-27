@@ -20,6 +20,7 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/location'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
+import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 
@@ -158,8 +159,9 @@ export const OffersModule = (props: OffersModuleProps) => {
     (displayParameters.layout === 'one-item-medium' && offersToDisplay.length <= 1)
 
   const navigateToVerticalPlaylist = {
-    screen: 'VerticalPlaylistOffersFromModule' as const,
+    screen: 'VerticalPlaylistOffers' as const,
     params: {
+      type: VerticalPlaylist.ModuleOffers,
       module: {
         id: moduleId,
         type: HomepageModuleType.OffersModule,

@@ -5,7 +5,6 @@ import { CustomRemoteConfig } from './remoteConfig.types'
 export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   aroundPrecision: 0,
   artistPageSubcategories: { subcategories: [] },
-  displayInAppFeedback: false,
   displayMandatoryUpdatePersonalData: false,
   homeEntryIdBeneficiary: '',
   homeEntryIdFreeBeneficiary: '',

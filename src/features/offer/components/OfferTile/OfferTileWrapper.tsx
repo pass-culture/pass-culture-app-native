@@ -12,6 +12,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getOfferDates } from 'shared/date/getOfferDates'
 import { Offer } from 'shared/offer/types'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 
 type Props = Omit<
   OfferTileProps,
@@ -20,10 +21,11 @@ type Props = Omit<
   item: Offer
   hasSmallLayout?: boolean
   containerWidth?: number
+  withCenterAlign?: boolean
 }
 
 export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Props) {
-  const { item, hasSmallLayout } = props
+  const { item, hasSmallLayout, withCenterAlign } = props
   const theme = useTheme()
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -32,6 +34,7 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
   const labelMapping = useCategoryHomeLabelMapping()
   const { subcategoryId, dates, releaseDate, isDuo, likes, chroniclesCount, name, thumbUrl } =
     item.offer
+  const proAdvicesSegment = useABSegment(['A', 'B'])
 
   const formattedDate = getOfferDates({
     subcategoryId,
@@ -55,7 +58,7 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
     hasSmallLayout,
     isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
     subcategoryId: item.offer.subcategoryId,
-    proAdvicesCount: item.offer.proAdvicesCount,
+    proAdvicesCount: proAdvicesSegment === 'A' ? item.offer.proAdvicesCount : undefined,
   })
 
   return (
@@ -71,6 +74,7 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
       price={formattedPrice}
       interactionTag={tag}
       {...props}
+      withCenterAlign={withCenterAlign}
     />
   )
 })

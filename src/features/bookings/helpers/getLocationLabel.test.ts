@@ -1,8 +1,8 @@
-import { bookingsSnap } from 'features/bookings/fixtures'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { getLocationLabel } from 'features/bookings/helpers'
 
 describe('getLocationLabel', () => {
-  const initialBooking = bookingsSnap.ongoing_bookings[1]
+  const initialBooking = bookingsSnapV2.ongoingBookings[1]
 
   it('should return empty string if permanent offer', () => {
     const properties = {
@@ -59,7 +59,7 @@ describe('getLocationLabel', () => {
     expect(offerRules).toEqual('Maison de la Brique, Drancy')
   })
 
-  it('should display the full adress when city is not specified in address', () => {
+  it('should display the full address when city is not specified in address', () => {
     const properties = {
       isPermanent: false,
       isDigital: false,
@@ -80,7 +80,7 @@ describe('getLocationLabel', () => {
     }
     const offerRules = getLocationLabel(booking.stock, properties)
 
-    expect(offerRules).toEqual('Maison de la Brique, Drancy')
+    expect(offerRules).toEqual('Maison de la Brique')
   })
 
   it('should display only the name of the venue when city not specified in address or venue', () => {

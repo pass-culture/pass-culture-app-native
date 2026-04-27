@@ -16,6 +16,6 @@ export const getBookingProperties = (booking: Booking, isEvent: boolean): Bookin
     isPhysical: !isEvent,
     isDigital: offer.isDigital,
     isPermanent: offer.isPermanent,
-    hasActivationCode: booking.activationCode != null,
+    hasActivationCode: booking.ticket?.activationCode?.code != null,
   }
 }

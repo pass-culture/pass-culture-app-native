@@ -32,6 +32,7 @@ export const BeneficiaryEmptyHeader = ({ user, featureFlags }: Props) => {
     depositExpirationDate,
     domainsCredit,
     eligibility,
+    statusType,
   } = user
   const title = getProfileHeaderTitle({ firstName, lastName })
   const isCreditEmpty = domainsCredit?.all.remaining === 0
@@ -63,6 +64,7 @@ export const BeneficiaryEmptyHeader = ({ user, featureFlags }: Props) => {
     isDepositExpired,
     depositExpirationDate,
     eligibility,
+    statusType,
   })
 
   if (isEighteenYearsOldOrMore) {

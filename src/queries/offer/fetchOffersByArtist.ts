@@ -23,6 +23,8 @@ export const fetchOffersByArtist = async ({ artistId, userLocation }: FetchOffer
     attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.ean', 'artists'],
     attributesToHighlight: [], // We disable highlighting because we don't need it
     aroundRadius: 'all',
+    clickAnalytics: true,
+    analytics: true,
     ...(userLocation
       ? { aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}` }
       : {}),

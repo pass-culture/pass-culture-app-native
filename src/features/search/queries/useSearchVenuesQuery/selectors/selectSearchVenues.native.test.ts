@@ -58,14 +58,13 @@ describe('selectSearchVenues', () => {
       expect(result.venues).toEqual([])
     })
 
-    it('should always return venuesUserData and venueNotOpenToPublic regardless of selectedFilter', () => {
+    it('should always return venuesUserData regardless of selectedFilter', () => {
       const filters = ['Offres', 'Lieux', 'Artistes', null] as const
 
       filters.forEach((selectedFilter) => {
         const result = selectSearchVenues(mockResponse, selectedFilter)
 
         expect(result.venuesUserData).toEqual([{ venue_playlist_title: 'venue playlist title' }])
-        expect(result.venueNotOpenToPublic).toEqual([mockVenueNotOpenToPublic])
       })
     })
   })

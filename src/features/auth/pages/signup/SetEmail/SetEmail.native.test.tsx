@@ -299,7 +299,7 @@ describe('<SetEmail />', () => {
         responseOptions: {
           statusCode: 400,
           data: {
-            code: 'SSO_ACCOUNT_DELETED',
+            code: 'SSO_ERROR',
             general: [],
           },
         },
@@ -314,7 +314,33 @@ describe('<SetEmail />', () => {
       expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
       expect(
         screen.getByText(
-          'Ton compte Google semble ne pas être valide. Pour pouvoir t’inscrire, confirme d’abord ton adresse e-mail Google.'
+          'L’inscription avec ce compte Google est refusée. Contacte le support pour plus d’informations depuis le Profil.'
+        )
+      ).toBeOnTheScreen()
+    })
+
+    it('should display snackbar when Apple SSO account is invalid', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/apple/authorize', {
+        responseOptions: {
+          statusCode: 400,
+          data: {
+            code: 'SSO_ERROR',
+            general: [],
+          },
+        },
+      })
+
+      renderSetEmail()
+
+      await screen.findByText('Crée-toi un compte')
+
+      await user.press(screen.getByText('S’inscrire avec Apple'))
+
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(
+        screen.getByText(
+          'L’inscription avec ce compte Apple est refusée. Contacte le support pour plus d’informations depuis le Profil.'
         )
       ).toBeOnTheScreen()
     })

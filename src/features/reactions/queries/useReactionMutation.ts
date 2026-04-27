@@ -3,14 +3,12 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { api } from 'api/api'
 import {
   BookingsListResponseV2,
-  BookingsResponse,
   BookingsResponseV2,
   OfferResponse,
   PostReactionRequest,
   ReactionTypeEnum,
 } from 'api/gen'
 import {
-  addReactionsToBookings,
   addReactionsToBookingsList,
   addReactionsToBookingsV2,
 } from 'features/reactions/helpers/addReactionsToBookings/addReactionsToBookings'
@@ -21,7 +19,7 @@ import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 export const useReactionMutation = () => {
   const queryClient = useQueryClient()
 
-  const BOOKING_KEYS = [QueryKeys.BOOKINGS, QueryKeys.BOOKINGSV2, QueryKeys.BOOKINGSLIST]
+  const BOOKING_KEYS = [QueryKeys.BOOKINGSV2, QueryKeys.BOOKINGSLIST]
 
   return useMutation({
     mutationFn: (reactionRequest: PostReactionRequest) => api.postNativeV1Reaction(reactionRequest),
@@ -35,7 +33,6 @@ export const useReactionMutation = () => {
 
       const previousData = {
         previousOfferData: queryClient.getQueryData([QueryKeys.OFFER, offerId]),
-        previousBookingsV1: queryClient.getQueryData([QueryKeys.BOOKINGS]),
         previousBookingsV2: queryClient.getQueryData([QueryKeys.BOOKINGSV2]),
         previousBookingsList: queryClient.getQueryData([QueryKeys.BOOKINGSLIST]),
       }
@@ -47,15 +44,6 @@ export const useReactionMutation = () => {
               reactionsCount: {
                 likes: updateLikesCounter(old.reactionsCount.likes, isLike),
               },
-            }
-          : old
-      )
-
-      queryClient.setQueryData<BookingsResponse | undefined>([QueryKeys.BOOKINGS], (old) =>
-        old
-          ? {
-              ...old,
-              ended_bookings: addReactionsToBookings(old.ended_bookings, reactionRequest.reactions),
             }
           : old
       )
@@ -86,7 +74,6 @@ export const useReactionMutation = () => {
     onError: (_error, reactionRequest, context) => {
       const offerId = reactionRequest.reactions[0]?.offerId
       queryClient.setQueryData([QueryKeys.OFFER, offerId], context?.previousOfferData)
-      queryClient.setQueryData([QueryKeys.BOOKINGS], context?.previousBookingsV1)
       queryClient.setQueryData([QueryKeys.BOOKINGSV2], context?.previousBookingsV2)
       queryClient.setQueryData([QueryKeys.BOOKINGSLIST], context?.previousBookingsList)
 

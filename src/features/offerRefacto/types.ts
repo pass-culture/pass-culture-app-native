@@ -7,7 +7,7 @@ import { ApiError } from 'api/ApiError'
 import {
   BookOfferRequest,
   BookOfferResponse,
-  BookingReponse,
+  BookingResponse,
   FavoriteRequest,
   FavoriteResponse,
   OfferArtist,
@@ -102,7 +102,7 @@ export type CTAContext = {
   offer: OfferResponse
   bookOffer: UseMutateFunction<BookOfferResponse, Error | ApiError, BookOfferRequest>
   isUnderageBeneficiary: boolean
-  booking?: BookingReponse | null
+  booking?: BookingResponse | null
   isBookingLoading?: boolean
   from?: Referrals
   searchId?: string

@@ -33,6 +33,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   onShowOfferArtistsModal,
   HeaderComponent,
   CTAsComponent,
+  proAdvicesSegment,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -70,7 +71,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         isMultiArtistsEnabled={isMultiArtistsEnabled}
         HeaderComponent={HeaderComponent}
         CTAsComponent={CTAsComponent}
-        proAdvicesCount={proAdvicesCount}>
+        proAdvicesCount={proAdvicesCount}
+        proAdvicesSegment={proAdvicesSegment}>
         {comingSoonFooterHeight ? (
           <ComingSoonFooterOffset
             testID="coming-soon-footer-offset"

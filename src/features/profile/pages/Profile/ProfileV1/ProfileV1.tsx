@@ -21,7 +21,6 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { GeolocPermissionState, useLocation } from 'libs/location/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -87,9 +86,6 @@ const OnlineProfile: React.FC = () => {
   const version = useVersion()
   const scrollViewRef = useRef<ScrollView | null>(null)
   const userAge = getAge(user?.birthDate)
-  const {
-    data: { displayInAppFeedback },
-  } = useRemoteConfigQuery()
   const {
     geolocPositionError,
     permissionState,
@@ -345,16 +341,14 @@ const OnlineProfile: React.FC = () => {
                       icon={LegalNotices}
                     />
                   </Li>
-                  {displayInAppFeedback ? (
-                    <Li>
-                      <Row
-                        title="Faire une suggestion"
-                        type="navigable"
-                        navigateTo={getProfilePropConfig('FeedbackInApp')}
-                        icon={Bulb}
-                      />
-                    </Li>
-                  ) : null}
+                  <Li>
+                    <Row
+                      title="Faire une suggestion"
+                      type="navigable"
+                      icon={Bulb}
+                      navigateTo={getProfilePropConfig('FeedbackInApp')}
+                    />
+                  </Li>
                 </VerticalUl>
               </Section>
               {isWeb ? null : (

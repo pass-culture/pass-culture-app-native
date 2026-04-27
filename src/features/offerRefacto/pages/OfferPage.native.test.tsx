@@ -1,12 +1,14 @@
 import { ReactTestInstance } from 'react-test-renderer'
 
 import {
-  BookingsResponse,
+  BookingsResponseV2,
   GetRemindersResponse,
+  OfferProAdvices,
   PaginatedFavoritesResponse,
   SubcategoriesResponseModelv2,
 } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures'
+import { offerProAdvicesFixture } from 'features/advices/fixtures/offerProAdvices.fixture'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import * as Cookies from 'features/cookies/helpers/useCookies'
@@ -20,6 +22,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import * as useArtistResultsAPI from 'queries/offer/useArtistResultsQuery'
+import * as ABSegmentModule from 'shared/useABSegment/useABSegment'
 import { mockServer } from 'tests/mswServer'
 import { screen, userEvent, waitFor } from 'tests/utils'
 import * as useModal from 'ui/components/modals/useModal'
@@ -89,12 +92,13 @@ const defaultUseCookies = {
   loadCookiesConsent: jest.fn(),
 }
 const mockUseCookies = jest.spyOn(Cookies, 'useCookies').mockReturnValue(defaultUseCookies)
+const useABSegmentSpy = jest.spyOn(ABSegmentModule, 'useABSegment')
 
 describe('<Offer />', () => {
   const user = userEvent.setup()
 
   beforeEach(() => {
-    mockServer.getApi<BookingsResponse>('/v1/bookings', {})
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', {})
     mockServer.getApi<PaginatedFavoritesResponse>('/v1/favorites', {})
     mockServer.getApi<PaginatedFavoritesResponse>('/v1/me/favorites', {})
     mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
@@ -124,14 +128,14 @@ describe('<Offer />', () => {
   })
 
   it('should display reaction button in header if offer is in ended bookings', async () => {
-    mockServer.getApi<BookingsResponse>('/v1/bookings', {
-      ongoing_bookings: [],
-      ended_bookings: [
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', {
+      ongoingBookings: [],
+      endedBookings: [
         {
-          ...bookingsSnap.ended_bookings[0],
+          ...bookingsSnapV2.endedBookings[0],
           stock: {
-            ...bookingsSnap.ended_bookings[0].stock,
-            offer: { ...bookingsSnap.ended_bookings[0].stock.offer, id: offerResponseSnap.id },
+            ...bookingsSnapV2.endedBookings[0].stock,
+            offer: { ...bookingsSnapV2.endedBookings[0].stock.offer, id: offerResponseSnap.id },
           },
         },
       ],
@@ -144,14 +148,14 @@ describe('<Offer />', () => {
   })
 
   it('should not display reaction button in header if booking has been cancelled', async () => {
-    mockServer.getApi<BookingsResponse>('/v1/bookings', {
-      ongoing_bookings: [],
-      ended_bookings: [
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', {
+      ongoingBookings: [],
+      endedBookings: [
         {
-          ...bookingsSnap.ended_bookings[1],
+          ...bookingsSnapV2.endedBookings[1],
           stock: {
-            ...bookingsSnap.ended_bookings[1].stock,
-            offer: { ...bookingsSnap.ended_bookings[1].stock.offer, id: offerResponseSnap.id },
+            ...bookingsSnapV2.endedBookings[1].stock,
+            offer: { ...bookingsSnapV2.endedBookings[1].stock.offer, id: offerResponseSnap.id },
           },
         },
       ],
@@ -178,14 +182,14 @@ describe('<Offer />', () => {
   })
 
   it('should open reaction modal when press on reaction button in header', async () => {
-    mockServer.getApi<BookingsResponse>('/v1/bookings', {
-      ongoing_bookings: [],
-      ended_bookings: [
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', {
+      ongoingBookings: [],
+      endedBookings: [
         {
-          ...bookingsSnap.ended_bookings[0],
+          ...bookingsSnapV2.endedBookings[0],
           stock: {
-            ...bookingsSnap.ended_bookings[0].stock,
-            offer: { ...bookingsSnap.ended_bookings[0].stock.offer, id: offerResponseSnap.id },
+            ...bookingsSnapV2.endedBookings[0].stock,
+            offer: { ...bookingsSnapV2.endedBookings[0].stock.offer, id: offerResponseSnap.id },
           },
         },
       ],
@@ -251,6 +255,57 @@ describe('<Offer />', () => {
       categoryName: 'CINEMA',
       from: 'offer',
       offerId: '116656',
+    })
+  })
+
+  describe('pro advices AB test', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_OFFER])
+      useABSegmentSpy.mockReturnValue('A')
+      mockServer.getApi<OfferProAdvices>(`/v1/offer/${offerResponseSnap.id}/advices`, {
+        proAdvices: [...offerProAdvicesFixture.proAdvices],
+        nbResults: offerProAdvicesFixture.nbResults,
+      })
+    })
+
+    it('should display pro advices section when AB testing segment is A', async () => {
+      renderOfferPage({ mockOffer: offerResponseSnap })
+
+      expect(await screen.findByText('Les avis des pros')).toBeOnTheScreen()
+    })
+
+    it('should trigger ConsultVenue log when pressing pro advice card header', async () => {
+      renderOfferPage({ mockOffer: offerResponseSnap })
+
+      await screen.findByText('Les avis des pros')
+
+      const cardHeader = screen.getByLabelText('Voir le lieu The Best Place')
+
+      if (cardHeader) {
+        await user.press(cardHeader)
+      }
+
+      expect(analytics.logConsultVenue).toHaveBeenCalledWith({
+        adviceType: 'pro',
+        from: 'offer',
+        offerId: '116656',
+        originDetail: 'Les avis des pros',
+        venueId: '1',
+      })
+    })
+
+    describe('when AB testing segment is B', () => {
+      beforeEach(() => {
+        useABSegmentSpy.mockReturnValue('B')
+      })
+
+      it('should not display pro advices section', async () => {
+        renderOfferPage({ mockOffer: offerResponseSnap })
+
+        await screen.findByTestId('offerv2-container')
+
+        expect(screen.queryByText('Les avis des pros')).not.toBeOnTheScreen()
+      })
     })
   })
 

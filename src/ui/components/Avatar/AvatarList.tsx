@@ -15,6 +15,7 @@ type AvatarListProps = {
   onItemPress: (id: string, name: string) => void
   onViewableItemsChanged?: ({ viewableItems }: { viewableItems: ViewToken[] }) => void
   listRef?: Ref<FlatList>
+  withMargins?: boolean
 }
 
 const AVATAR_DEFAULT_CONFIG = {
@@ -28,6 +29,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
   avatarConfig = {},
   listRef,
   onViewableItemsChanged,
+  withMargins,
 }) => {
   const mergedAvatarConfig = mergeWith(
     avatarConfig,
@@ -66,6 +68,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
       FlatListComponent={FlatList}
       ref={listRef}
       onViewableItemsChanged={handleViewableItemsChanged}
+      withMargins={withMargins}
     />
   )
 }

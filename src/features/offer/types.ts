@@ -50,6 +50,7 @@ export interface OfferTileProps {
   navigationMethod?: NavigationMethod
   interactionTag?: ReactNode
   containerWidth?: number
+  withCenterAlign?: boolean
 }
 
 export type FavoriteProps = {
@@ -105,6 +106,7 @@ export type OfferContentProps = {
   HeaderComponent?: ComponentType<OfferHeaderComponentProps>
   CTAsComponent?: ComponentType<OfferCTAsComponentProps>
   proAdvicesCount?: number
+  proAdvicesSegment?: string
 }
 
 export type OfferImageContainerDimensions = {

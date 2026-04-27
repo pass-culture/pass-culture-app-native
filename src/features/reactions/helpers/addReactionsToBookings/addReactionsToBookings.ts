@@ -1,5 +1,5 @@
 import {
-  BookingReponse,
+  BookingResponse,
   BookingsListResponseV2,
   BookingsResponseV2,
   PostOneReactionRequest,
@@ -7,9 +7,9 @@ import {
 
 // To Remove this V1 helper once Bookings V1 is fully deprecated and only Bookings V2 remains.
 export const addReactionsToBookings = (
-  endedBookings: BookingReponse[],
+  endedBookings: BookingResponse[],
   reactions: PostOneReactionRequest[]
-): BookingReponse[] => {
+): BookingResponse[] => {
   const offerIds = new Set(reactions.map((reaction) => reaction.offerId))
 
   return endedBookings.map((booking) =>

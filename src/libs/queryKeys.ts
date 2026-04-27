@@ -8,7 +8,6 @@ export enum QueryKeys {
   ARTIST = 'artist',
   ARTIST_PLAYLIST = 'artistPlaylist',
   AVAILABLE_REACTION = 'availableReaction',
-  BOOKINGS = 'bookings',
   BOOKINGSV2 = 'bookingsV2',
   BOOKINGSLIST = 'bookingsList',
   CINEMA_OFFERS = 'cinemaOffers',

@@ -7,6 +7,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
 import { SSOButtonGoogle } from 'features/auth/components/SSOButton/SSOButtonGoogle'
+import { getSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
 import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
 import { StepperOrigin, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -26,6 +27,11 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 type FormValues = {
   email: string
   marketingEmailSubscription: boolean
+}
+
+const SSO_ERROR_MESSAGES: Partial<Record<string, string>> = {
+  NETWORK_REQUEST_FAILED: 'Erreur réseau. Tu peux réessayer une fois la connexion réétablie.',
+  TOO_MANY_ATTEMPTS: 'Nombre de tentatives dépassé. Réessaye dans 1 minute.',
 }
 
 export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = ({
@@ -65,18 +71,20 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
 
   const onSSOSignInFailure = useCallback(
     (errorResponse: SignInResponseFailure) => {
-      if (errorResponse.content?.code === 'SSO_EMAIL_NOT_FOUND') {
+      const { content, provider, statusCode } = errorResponse
+      if (content?.code === 'SSO_EMAIL_NOT_FOUND') {
         onSSOEmailNotFoundError()
         goToNextStep({
-          accountCreationToken: errorResponse.content.accountCreationToken,
-          ssoProvider: errorResponse.provider,
+          accountCreationToken: content.accountCreationToken,
+          ssoProvider: provider,
         })
-      } else {
-        const providerName = errorResponse.provider === 'apple' ? 'Apple' : 'Google'
-        showErrorSnackBar(
-          `Ton compte ${providerName} semble ne pas être valide. Pour pouvoir t\u2019inscrire, confirme d\u2019abord ton adresse e-mail ${providerName}.`
-        )
+        return
       }
+      const failureCode = content?.code
+      const isRateLimited = statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS'
+      const key = isRateLimited ? 'TOO_MANY_ATTEMPTS' : failureCode
+      const message = (key && SSO_ERROR_MESSAGES[key]) ?? getSSOErrorMessage(provider, 'signup')
+      showErrorSnackBar(message)
     },
     [goToNextStep, onSSOEmailNotFoundError]
   )

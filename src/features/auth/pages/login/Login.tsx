@@ -8,6 +8,7 @@ import styled from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
 import { SSOButtonGoogleBase } from 'features/auth/components/SSOButton/SSOButtonGoogleBase'
+import { getSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
 import { loginSchema } from 'features/auth/pages/login/schema/loginSchema'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { SignInResponseFailure } from 'features/auth/types'
@@ -100,19 +101,8 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           from: StepperOrigin.LOGIN,
           ssoProvider: response.provider,
         })
-      } else if (
-        failureCode &&
-        [
-          'DUPLICATE_GOOGLE_ACCOUNT',
-          'SSO_ACCOUNT_DELETED',
-          'SSO_ACCOUNT_ANONYMIZED',
-          'SSO_EMAIL_NOT_VALIDATED',
-        ].includes(failureCode)
-      ) {
-        const providerName = response.provider === 'apple' ? 'Apple' : 'Google'
-        showErrorSnackBar(
-          `Ton compte ${providerName} semble ne pas être valide. Pour pouvoir te connecter, confirme d\u2019abord ton adresse e-mail ${providerName}.`
-        )
+      } else if (failureCode === 'SSO_ERROR') {
+        showErrorSnackBar(getSSOErrorMessage(response.provider, 'login'))
       } else if (failureCode === 'EMAIL_NOT_VALIDATED') {
         const email = getValues('email')?.trim()
         if (!email) {

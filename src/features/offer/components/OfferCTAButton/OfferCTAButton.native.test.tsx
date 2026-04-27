@@ -1,12 +1,12 @@
 import React, { ComponentProps } from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { BookingsResponse, BookOfferResponse, OfferResponse } from 'api/gen'
+import { BookingsResponseV2, BookOfferResponse, OfferResponse } from 'api/gen'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { mockSubcategory, mockSubcategoryNotEvent } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { mockedBookingApi } from 'fixtures/booking'
+import { mockedBookingV2Api } from 'fixtures/booking'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -77,7 +77,7 @@ describe('<OfferCTAButton />', () => {
   beforeEach(() => {
     mockAuthContextWithoutUser({ persist: true })
     setFeatureFlags()
-    mockServer.getApi<BookingsResponse>(`/v1/bookings`, {})
+    mockServer.getApi<BookingsResponseV2>(`/v2/bookings`, {})
     mockServer.getApi<OfferResponse>(`/v3/offer/${offerResponseSnap.id}`, {
       responseOptions: { data: offerResponseSnap },
     })
@@ -114,15 +114,19 @@ describe('<OfferCTAButton />', () => {
   })
 
   describe('When offer is digital and free and not already booked', () => {
-    const expectedResponse: BookingsResponse = {
-      ended_bookings: [],
+    const expectedResponse: BookingsResponseV2 = {
+      endedBookings: [],
       hasBookingsAfter18: false,
-      ongoing_bookings: [
+      ongoingBookings: [
         {
-          ...mockedBookingApi,
+          ...mockedBookingV2Api,
           stock: {
-            ...mockedBookingApi.stock,
-            offer: { ...mockedBookingApi.stock.offer, ...offerDigitalAndFree },
+            ...mockedBookingV2Api.stock,
+            price: 0,
+            features: [],
+            beginningDatetime: '2021-01-04T13:30:00',
+            id: 118929,
+            offer: { ...mockedBookingV2Api.stock.offer, isDigital: true },
           },
           dateUsed: '2023-02-14T10:10:08.800599Z',
           completedUrl: 'https://www.google.fr/',
@@ -133,7 +137,7 @@ describe('<OfferCTAButton />', () => {
     describe('When booking API response is success', () => {
       beforeEach(() => {
         mockServer.getApi<OfferResponse>(`/v3/offer/${offerResponseSnap.id}`, offerResponseSnap)
-        mockServer.getApi<BookingsResponse>('/v1/bookings', expectedResponse)
+        mockServer.getApi<BookingsResponseV2>('/v2/bookings', expectedResponse)
         mockServer.postApi<BookOfferResponse>(`/v1/bookings`, { bookingId: 123 })
       })
 
@@ -177,7 +181,7 @@ describe('<OfferCTAButton />', () => {
     describe('When booking API response is error', () => {
       beforeEach(() => {
         mockServer.getApi<OfferResponse>(`/v3/offer/${offerResponseSnap.id}`, offerResponseSnap)
-        mockServer.getApi<BookingsResponse>('/v1/bookings', {
+        mockServer.getApi<BookingsResponseV2>('/v2/bookings', {
           responseOptions: { data: expectedResponse },
         })
         mockServer.postApi<BookOfferResponse>(`/v1/bookings`, {
@@ -216,7 +220,7 @@ describe('<OfferCTAButton />', () => {
 
     it('should display an error message when pressing button to book the offer', async () => {
       mockServer.getApi<OfferResponse>(`/v3/offer/${offerResponseSnap.id}`, offerResponseSnap)
-      mockServer.getApi<BookingsResponse>('/v1/bookings', {
+      mockServer.getApi<BookingsResponseV2>('/v2/bookings', {
         responseOptions: { data: expectedResponse },
       })
       mockServer.postApi<BookOfferResponse>(`/v1/bookings`, {
@@ -241,15 +245,19 @@ describe('<OfferCTAButton />', () => {
   })
 
   describe('When offer is digital and free and already booked', () => {
-    const expectedResponse: BookingsResponse = {
-      ended_bookings: [],
+    const expectedResponse: BookingsResponseV2 = {
+      endedBookings: [],
       hasBookingsAfter18: false,
-      ongoing_bookings: [
+      ongoingBookings: [
         {
-          ...mockedBookingApi,
+          ...mockedBookingV2Api,
           stock: {
-            ...mockedBookingApi.stock,
-            offer: { ...mockedBookingApi.stock.offer, ...offerDigitalAndFree },
+            ...mockedBookingV2Api.stock,
+            price: 0,
+            features: [],
+            beginningDatetime: '2021-01-04T13:30:00',
+            id: 118929,
+            offer: { ...mockedBookingV2Api.stock.offer, isDigital: true },
           },
           dateUsed: '2023-02-14T10:10:08.800599Z',
           completedUrl: 'https://www.google.fr/',
@@ -258,7 +266,7 @@ describe('<OfferCTAButton />', () => {
     }
 
     it('should directly redirect to the offer when pressing offer access button', async () => {
-      mockServer.getApi<BookingsResponse>(`/v1/bookings`, expectedResponse)
+      mockServer.getApi<BookingsResponseV2>(`/v2/bookings`, expectedResponse)
       mockServer.getApi<OfferResponse>(`/v3/offer/${offerResponseSnap.id}`, offerResponseSnap)
       mockAuthContextWithUser(
         { ...beneficiaryUser, bookedOffers: { 116656: 123 } },
@@ -278,7 +286,7 @@ describe('<OfferCTAButton />', () => {
 
     describe('and is Event', () => {
       it('should not open bookings details modal when pressing offer access button', async () => {
-        mockServer.getApi<BookingsResponse>(`/v1/bookings`, expectedResponse)
+        mockServer.getApi<BookingsResponseV2>(`/v2/bookings`, expectedResponse)
         mockServer.getApi<OfferResponse>(`/v3/offer/${offerResponseSnap.id}`, offerResponseSnap)
         mockAuthContextWithUser(
           { ...beneficiaryUser, bookedOffers: { 116656: 123 } },

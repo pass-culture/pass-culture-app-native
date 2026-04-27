@@ -7,6 +7,7 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { ProAdvicesVenue } from 'features/proAdvices/pages/ProAdvicesVenue'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { venueProAdvicesFixture } from 'features/venue/fixtures/venueProAdvices.fixture'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
@@ -32,6 +33,10 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: mockGoBack,
   canGoBack: jest.fn(() => true),
 })
+
+jest.mock('libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog', () => ({
+  triggerConsultOfferLog: jest.fn(),
+}))
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -87,6 +92,26 @@ describe('ProAdvicesVenue', () => {
     await user.press(await screen.findByText('Voir tous les avis des pros'))
 
     expect(mockHideModal).toHaveBeenCalledTimes(1)
+  })
+
+  it('should trigger ConsultOffer log when pressing pro advice card header', async () => {
+    render(reactQueryProviderHOC(<ProAdvicesVenue />))
+
+    await screen.findByText('2 avis des pros')
+
+    const cardHeader = await screen.getAllByLabelText('Voir l‘offre American dream')[0]
+
+    if (cardHeader) {
+      await user.press(cardHeader)
+    }
+
+    expect(triggerConsultOfferLog).toHaveBeenCalledWith({
+      adviceType: 'pro',
+      from: 'venue',
+      offerId: 1,
+      originDetail: 'Les avis des pros',
+      venueId: 5543,
+    })
   })
 
   describe('When offer id defined', () => {

@@ -83,7 +83,8 @@ export const AdviceCardListBase = forwardRef<
           image={item.image}
           headerNavigateTo={item.headerNavigateTo}
           headerAccessibilityLabel={item.headerAccessibilityLabel}
-          thumbnailHeight={thumbnailHeight}>
+          thumbnailHeight={thumbnailHeight}
+          onCardHeaderPress={item.onCardHeaderPress}>
           {onSeeMoreButtonPress ? (
             <View>
               <Button

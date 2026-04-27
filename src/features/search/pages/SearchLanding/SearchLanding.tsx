@@ -62,7 +62,7 @@ export const SearchLanding = () => {
           searchClient={getSearchClient}
           indexName={suggestionsIndex}
           insights={{ insightsClient: AlgoliaSearchInsights }}>
-          <Configure hitsPerPage={5} clickAnalytics />
+          <Configure hitsPerPage={5} clickAnalytics analytics />
 
           <Container>
             <SearchHeader

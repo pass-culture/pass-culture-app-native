@@ -1,15 +1,15 @@
 import { flatten } from 'lodash'
 
-import { SearchFilter } from 'features/search/queries/useSearchOffersQuery/types'
+import { SelectSearchOffersParams } from 'features/search/queries/useSearchOffersQuery/types'
 import { mapAlgoliaVenueToAlgoliaVenueOfferListItem } from 'features/search/queries/useSearchVenuesQuery/helpers.ts/mapAlgoliaVenueToAlgoliaVenueOfferListItem'
 import { FetchSearchVenuesResponse } from 'features/search/queries/useSearchVenuesQuery/types'
 
 export const selectSearchVenues = (
   venues: FetchSearchVenuesResponse,
-  selectedFilter: SearchFilter | null
+  selectedFilter: SelectSearchOffersParams['selectedFilter']
 ) => {
-  const flattenVenues = flatten(venues.venuesResponse?.hits)
   const isVenuesFilterActive = selectedFilter === null || selectedFilter === 'Lieux'
+  const flattenVenues = flatten(venues.venuesResponse?.hits)
 
   return {
     algoliaVenues: isVenuesFilterActive ? flattenVenues : [],
@@ -17,6 +17,6 @@ export const selectSearchVenues = (
       ? flattenVenues.map((venue) => mapAlgoliaVenueToAlgoliaVenueOfferListItem(venue))
       : [],
     venuesUserData: venues.venuesResponse?.userData,
-    venueNotOpenToPublic: flatten(venues.venueNotOpenToPublic?.hits),
+    venueNotOpenToPublic: isVenuesFilterActive ? flatten(venues.venueNotOpenToPublic?.hits) : [],
   }
 }

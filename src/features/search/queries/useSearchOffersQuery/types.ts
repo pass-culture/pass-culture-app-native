@@ -7,7 +7,7 @@ import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferH
 import { AlgoliaOffer } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 
-const SEARCH_FILTERS = ['Offres', 'Lieux', 'Artistes'] as const
+export const SEARCH_FILTERS = ['Offres', 'Lieux', 'Artistes'] as const
 export type SearchFilter = (typeof SEARCH_FILTERS)[number]
 
 export type FetchSearchOffersResponse = {

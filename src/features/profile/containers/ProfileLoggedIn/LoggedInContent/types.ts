@@ -14,8 +14,6 @@ export type LoggedInContentParams = {
 } & {
   LocationButton: React.ReactNode
 } & {
-  FeedbackInAppButton: React.ReactNode
-} & {
   ShareBanner: React.ReactNode | null
 } & {
   SocialNetwork: React.ReactNode

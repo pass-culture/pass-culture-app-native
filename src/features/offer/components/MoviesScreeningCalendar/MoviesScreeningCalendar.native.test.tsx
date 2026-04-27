@@ -3,14 +3,14 @@ import React, { createRef } from 'react'
 import { ScrollView } from 'react-native'
 
 import {
-  BookingsResponse,
+  BookingsResponseV2,
   OfferResponse,
   OffersStocksResponseV2,
   RefreshResponse,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { MoviesScreeningCalendar } from 'features/offer/components/MoviesScreeningCalendar/MoviesScreeningCalendar'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
@@ -92,7 +92,7 @@ describe('MoviesScreeningCalendar', () => {
     })
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
     mockServer.postApi<RefreshResponse>('/v1/refresh_access_token', { accessToken: 'toto' })
-    mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', bookingsSnapV2)
   })
 
   it('should render MoviesScreeningCalendar correctly on mobile', async () => {

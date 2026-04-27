@@ -48,7 +48,7 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
       indexName={suggestionsIndex}
       future={{ preserveSharedStateOnUnmount: true }}
       insights={{ insightsClient: AlgoliaSearchInsights }}>
-      <Configure facetFilters={[facetFilters]} clickAnalytics hitsPerPage={5} />
+      <Configure facetFilters={[facetFilters]} clickAnalytics analytics hitsPerPage={5} />
       <SearchHeaderContainer>
         <SearchHeader
           title={title}

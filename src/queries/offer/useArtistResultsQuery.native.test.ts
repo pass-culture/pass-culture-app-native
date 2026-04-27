@@ -10,10 +10,6 @@ import { renderHook, waitFor } from 'tests/utils'
 import * as fetchOffersByArtist from './fetchOffersByArtist'
 import { parseDistance, useArtistResultsQuery } from './useArtistResultsQuery'
 
-jest.mock('libs/react-query/usePersistQuery', () => ({
-  usePersistQuery: jest.requireActual('@tanstack/react-query').useQuery,
-}))
-
 const fetchOffersByArtistSpy = jest
   .spyOn(fetchOffersByArtist, 'fetchOffersByArtist')
   .mockResolvedValue({

@@ -37,5 +37,9 @@
   },
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "nixEnvSelector.useFlakes": true,
-  "nixEnvSelector.nixFile": "${workspaceFolder}/flake.nix"
+  "nixEnvSelector.nixFile": "${workspaceFolder}/flake.nix",
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true
+  },
 }

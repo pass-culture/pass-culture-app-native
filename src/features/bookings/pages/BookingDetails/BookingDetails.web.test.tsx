@@ -3,13 +3,12 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import {
-  BookingReponse,
   BookingResponse,
   SubcategoriesResponseModelv2,
   TicketDisplayEnum,
   WithdrawalTypeEnum,
 } from 'api/gen'
-import { bookingsSnap, bookingsSnapV2 } from 'features/bookings/fixtures'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import * as ongoingOrEndedBookingAPI from 'features/bookings/queries/useOngoingOrEndedBookingQuery'
 import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
@@ -50,7 +49,7 @@ describe('BookingDetails', () => {
 
   describe('BookingDetails', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = renderBookingDetails(bookingsSnap.ongoing_bookings[0])
+      const { container } = renderBookingDetails(bookingsSnapV2.ongoingBookings[0])
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)
@@ -195,14 +194,14 @@ describe('BookingDetails', () => {
 })
 
 const renderBookingDetails = (booking: Booking) => {
-  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQueryV1').mockReturnValue({
+  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQueryV2').mockReturnValue({
     data: booking,
     isLoading: false,
     isFetching: false,
     isSuccess: true,
     isError: false,
     error: undefined,
-  } as unknown as UseQueryResult<BookingReponse | null>)
+  } as unknown as UseQueryResult<BookingResponse | null>)
   return render(reactQueryProviderHOC(<BookingDetails />))
 }
 

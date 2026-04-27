@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 
 import { ApiError } from 'api/ApiError'
 import {
-  BookingReponse,
+  BookingResponse,
   BookOfferRequest,
   BookOfferResponse,
   EligibilityType,
@@ -17,7 +17,7 @@ import {
   YoungStatusType,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
+import { useOngoingOrEndedBookingQueryV2 } from 'features/bookings/queries'
 import {
   useStoredProfileInfos,
   ValidStoredProfileInfos,
@@ -43,7 +43,7 @@ import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUndera
 import { UserProfile } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { Subcategory } from 'libs/subcategories/types'
-import { useBookingsQuery, useEndedBookingFromOfferIdQuery } from 'queries/bookings'
+import { useBookingsV2Query, useEndedBookingFromOfferIdQueryV2 } from 'queries/bookings'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
 import { OfferModal } from 'shared/offer/enums'
@@ -76,7 +76,7 @@ type Props = {
   isDisabled?: boolean
   bookOffer: UseMutateFunction<BookOfferResponse, Error | ApiError, BookOfferRequest>
   isBookingLoading: boolean
-  booking: BookingReponse | null | undefined
+  booking: BookingResponse | null | undefined
   from?: Referrals
   searchId?: string
   isDepositExpired?: boolean
@@ -130,7 +130,7 @@ export const getCtaWordingAndAction = ({
   const isNotFreeOffer = !isFreeOffer
   const isProfileIncomplete = getIsProfileIncomplete(user)
   const userWithNotEnoughCredit =
-    userStatus.statusType == YoungStatusType.beneficiary && !hasEnoughCredit
+    userStatus.statusType === YoungStatusType.beneficiary && !hasEnoughCredit
   const isExBeneficiary = user && isUserExBeneficiary(user)
   const shouldBeRedirectedToExternalUrl =
     externalTicketOfficeUrl && (userWithNotEnoughCredit || isExBeneficiary)
@@ -195,7 +195,7 @@ export const getCtaWordingAndAction = ({
         },
         onPress: () => analytics.logViewedBookingPage({ offerId: offer.id, from: 'offer' }),
         bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
-        movieScreeningUserData: { hasBookedOffer: true, bookings: booking as BookingReponse },
+        movieScreeningUserData: { hasBookedOffer: true, bookings: booking as BookingResponse },
       }
     }
     return {
@@ -259,7 +259,7 @@ export const getCtaWordingAndAction = ({
       isEndedUsedBooking,
       isDisabled: false,
       bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
-      movieScreeningUserData: { bookings: booking as BookingReponse },
+      movieScreeningUserData: { bookings: booking as BookingResponse },
     }
   }
 
@@ -310,7 +310,7 @@ export const getCtaWordingAndAction = ({
       },
       onPress: () => analytics.logViewedBookingPage({ offerId: offer.id, from: 'offer' }),
       bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
-      movieScreeningUserData: { hasBookedOffer: true, bookings: booking as BookingReponse },
+      movieScreeningUserData: { hasBookedOffer: true, bookings: booking as BookingResponse },
     }
   }
 
@@ -410,7 +410,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
 
   const hasEnoughCredit = useHasEnoughCredit(offer)
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
-  const { data: endedBooking } = useEndedBookingFromOfferIdQuery(offerId, false)
+  const { data: endedBooking } = useEndedBookingFromOfferIdQueryV2(offerId, false)
   const route = useRoute<UseRouteType<'Offer'>>()
   const apiRecoParams: RecommendationApiParams = route.params.apiRecoParams
     ? JSON.parse(route.params.apiRecoParams)
@@ -422,7 +422,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     ? new Date(user?.depositExpirationDate) < new Date()
     : false
 
-  const { refetch: getBookings } = useBookingsQuery()
+  const { refetch: getBookings } = useBookingsV2Query(true)
 
   useEffect(() => {
     const isUserFreeStatus = user?.eligibility === EligibilityType.free
@@ -437,7 +437,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
   async function redirectToBookingAction(response: BookOfferResponse) {
     const bookings = await getBookings()
 
-    const booking = bookings.data?.ongoing_bookings.find(
+    const booking = bookings.data?.ongoingBookings.find(
       (booking) => booking.id === response.bookingId
     )
 
@@ -465,7 +465,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     },
   })
   const { isBeneficiary = false, bookedOffers = {}, status } = user ?? {}
-  const { data: booking } = useOngoingOrEndedBookingQuery(
+  const { data: booking } = useOngoingOrEndedBookingQueryV2(
     getBookingOfferId(offerId, bookedOffers) ?? 0
   )
   /* check I have all information to calculate wording

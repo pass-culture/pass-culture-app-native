@@ -28,11 +28,12 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { useSubcategoriesMapping } from 'libs/subcategories/mappings'
-import { useEndedBookingFromOfferIdQuery } from 'queries/bookings'
+import { useEndedBookingFromOfferIdQueryV2 } from 'queries/bookings'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
 
@@ -45,6 +46,8 @@ export function Offer() {
 
   const isMultiArtistsEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_MULTI_ARTISTS)
   const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_OFFER)
+  const proAdvicesSegment = useABSegment(['A', 'B'])
+  const shouldDisplayProAdvices = enableProAdvices && proAdvicesSegment === 'A'
 
   const { isLoggedIn, user } = useAuthContext()
   const { userLocation } = useLocation()
@@ -80,7 +83,7 @@ export function Offer() {
     hideModal: hideOfferArtistsModal,
     showModal: showOfferArtistsModal,
   } = useModal(false)
-  const { data: booking } = useEndedBookingFromOfferIdQuery(
+  const { data: booking } = useEndedBookingFromOfferIdQueryV2(
     offer?.id ?? -1,
     isLoggedIn && !!offer?.id
   )
@@ -129,16 +132,17 @@ export function Offer() {
 
   const { data } = useFetchHeadlineOffersCountQuery(offer)
 
-  const { data: proAdvices } = useOfferProAdvicesQuery({
+  const { data: proAdvicesData } = useOfferProAdvicesQuery({
     offerId,
-    enableProAdvices,
+    enableProAdvices: shouldDisplayProAdvices,
     latitude: userLocation?.latitude,
     longitude: userLocation?.longitude,
     select: ({ proAdvices, nbResults }) => ({
-      list: offerProAdvicesToAdviceCardData(proAdvices),
+      list: offerProAdvicesToAdviceCardData(proAdvices, offerId),
       nbResults,
     }),
   })
+  const proAdvices = shouldDisplayProAdvices ? proAdvicesData : undefined
 
   if (!offer || !subcategories || !subcategoriesMapping?.[offer?.subcategoryId]) return null
 
@@ -213,6 +217,7 @@ export function Offer() {
         HeaderComponent={RefactoOfferHeader}
         CTAsComponent={OfferCTAs}
         proAdvicesCount={proAdvices?.nbResults}
+        proAdvicesSegment={proAdvicesSegment}
       />
     </Page>
   )

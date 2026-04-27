@@ -1,8 +1,8 @@
-import { BookingReponse, PostOneReactionRequest, ReactionTypeEnum } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures'
+import { BookingResponse, PostOneReactionRequest, ReactionTypeEnum } from 'api/gen'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { addReactionsToBookings } from 'features/reactions/helpers/addReactionsToBookings/addReactionsToBookings'
 
-const mockBookings: BookingReponse[] = [bookingsSnap.ended_bookings[0]]
+const mockBookings: BookingResponse[] = [bookingsSnapV2.endedBookings[0]]
 
 const mockReactions: PostOneReactionRequest[] = [
   { offerId: 147874, reactionType: ReactionTypeEnum.LIKE },

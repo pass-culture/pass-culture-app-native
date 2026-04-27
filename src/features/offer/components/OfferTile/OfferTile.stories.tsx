@@ -71,6 +71,10 @@ const variantConfig: Variants<typeof OfferTile> = [
 export const Template: VariantsStory<typeof OfferTile> = {
   name: 'OfferTile',
   render: (props) => (
-    <VariantsTemplate variants={variantConfig} Component={OfferTile} defaultProps={{ ...props }} />
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={OfferTile}
+      defaultProps={{ ...props, withCenterAlign: false }}
+    />
   ),
 }

@@ -11,26 +11,23 @@ import {
 
 export const server = setupServer(
   // offer
-  rest.get(
-    `${env.API_BASE_URL}/${env.API_BASE_PATH_NATIVE_V1}/offer/${OFFER_RESPONSE_SNAPSHOT.id}`,
-    (req, res, ctx) => res(ctx.status(200), ctx.json(OFFER_RESPONSE_SNAPSHOT))
+  rest.get(`${env.API_BASE_URL}/native/v3/offer/${OFFER_RESPONSE_SNAPSHOT.id}`, (req, res, ctx) =>
+    res(ctx.status(200), ctx.json(OFFER_RESPONSE_SNAPSHOT))
   ),
   // 404 offer
-  rest.get(`${env.API_BASE_URL}/${env.API_BASE_PATH_NATIVE_V1}/offer/0`, (req, res, ctx) =>
+  rest.get(`${env.API_BASE_URL}/native/v3/offer/0`, (req, res, ctx) =>
     res(ctx.status(200), ctx.json({}))
   ),
   // 502 offer
-  rest.get(`${env.API_BASE_URL}/${env.API_BASE_PATH_NATIVE_V1}/offer/502`, (req, res, ctx) =>
-    res(ctx.status(502))
-  ),
+  rest.get(`${env.API_BASE_URL}/native/v3/offer/502`, (req, res, ctx) => res(ctx.status(502))),
   // venue
   rest.get(
-    `${env.API_BASE_URL}/${env.API_BASE_PATH_NATIVE_V1}/venue/${VENUE_WITH_BANNER_RESPONSE_SNAPSHOT.id}`,
+    `${env.API_BASE_URL}/native/v2/venue/${VENUE_WITH_BANNER_RESPONSE_SNAPSHOT.id}`,
     (req, res, ctx) => res(ctx.status(200), ctx.json(VENUE_WITH_BANNER_RESPONSE_SNAPSHOT))
   ),
   // venue alternative
   rest.get(
-    `${env.API_BASE_URL}/${env.API_BASE_PATH_NATIVE_V1}/venue/${VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT.id}`,
+    `${env.API_BASE_URL}/native/v2/venue/${VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT.id}`,
     (req, res, ctx) => res(ctx.status(200), ctx.json(VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT))
   )
 )

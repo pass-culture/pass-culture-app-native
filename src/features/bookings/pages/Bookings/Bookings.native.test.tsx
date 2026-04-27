@@ -7,7 +7,7 @@ import {
   ReactionTypeEnum,
   SubcategoriesResponseModelv2,
 } from 'api/gen'
-import { bookingsSnapV2, emptyBookingsSnap } from 'features/bookings/fixtures'
+import { bookingsSnapV2, emptyBookingsSnapV2 } from 'features/bookings/fixtures'
 import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
 import {
   endedBookingsV2ListSnap,
@@ -101,7 +101,7 @@ describe('Bookings', () => {
   })
 
   it('should display the empty bookings dedicated view', async () => {
-    mockServer.getApi('/v2/bookings', emptyBookingsSnap)
+    mockServer.getApi('/v2/bookings', emptyBookingsSnapV2)
 
     renderBookings()
 

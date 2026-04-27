@@ -446,7 +446,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                     }
                   }
                 >
-                  83,72%
+                  86,05%
                 </Text>
                  au Référentiel d’Accessibilité des Applications Mobiles (RAAM 1.1). Le taux de conformité moyen des pages est de 
                 <Text
@@ -459,7 +459,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                     }
                   }
                 >
-                  96,52%
+                  96,68%
                 </Text>
                 .
               </Text>
@@ -484,7 +484,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                     }
                   }
                 >
-                  72,92%
+                  75,00%
                 </Text>
                  à la norme européenne EN 301 549 v.3.2.1.
               </Text>
@@ -555,7 +555,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Non conformité – Liste - Élément 1 sur 6 - Critère 3.5 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, une alternative ?"
+                  accessibilityLabel="Non conformité – Liste - Élément 1 sur 5 - Critère 3.5 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, une alternative ?"
                   accessible={true}
                   style={
                     {
@@ -610,62 +610,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Non conformité – Liste - Élément 2 sur 6 - Critère 3.7 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, des sous-titres synchronisés ?"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      Critère 3.7 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, des sous-titres synchronisés ?
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Non conformité – Liste - Élément 3 sur 6 - Critère 5.4 - Dans chaque écran, les messages de statut sont-ils correctement restitués par les technologies d’assistance ?"
+                  accessibilityLabel="Non conformité – Liste - Élément 2 sur 5 - Critère 5.4 - Dans chaque écran, les messages de statut sont-ils correctement restitués par les technologies d’assistance ?"
                   accessible={true}
                   style={
                     {
@@ -720,7 +665,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Non conformité – Liste - Élément 4 sur 6 - Critère 9.11 - Pour chaque formulaire qui modifie ou supprime des données, ou qui transmet des réponses à un test ou à un examen, ou dont la validation a des conséquences financières ou juridiques, les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur ?"
+                  accessibilityLabel="Non conformité – Liste - Élément 3 sur 5 - Critère 9.11 - Pour chaque formulaire qui modifie ou supprime des données, ou qui transmet des réponses à un test ou à un examen, ou dont la validation a des conséquences financières ou juridiques, les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur ?"
                   accessible={true}
                   style={
                     {
@@ -775,7 +720,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Non conformité – Liste - Élément 5 sur 6 - Critère 10.2 - Dans chaque écran, l’ordre de restitution par les technologies d’assistance est-il cohérent ?"
+                  accessibilityLabel="Non conformité – Liste - Élément 4 sur 5 - Critère 10.2 - Dans chaque écran, l’ordre de restitution par les technologies d’assistance est-il cohérent ?"
                   accessible={true}
                   style={
                     {
@@ -830,7 +775,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Non conformité – Liste - Élément 6 sur 6 - Critère 11.10 - Dans chaque écran, les fonctionnalités activables au moyen d’un geste complexe sont-elles activables au moyen d’un geste simple ?"
+                  accessibilityLabel="Non conformité – Liste - Élément 5 sur 5 - Critère 11.10 - Dans chaque écran, les fonctionnalités activables au moyen d’un geste complexe sont-elles activables au moyen d’un geste simple ?"
                   accessible={true}
                   style={
                     {

@@ -3,6 +3,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { DomainsCredit } from 'api/gen'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import {
   CreditHeader,
   CreditHeaderProps,
@@ -113,6 +114,17 @@ describe('CreditHeader', () => {
       })
     })
 
+    it('should display expired credit when user is ex beneficiary', () => {
+      mockdate.set(new Date(today))
+      renderCreditHeader({
+        domainsCredit: domains_exhausted_credit_v3,
+        age: 21,
+        statusType: UserStatusType.EX_BENEFICIARY,
+      })
+
+      expect(screen.getByText('Ton crédit est expiré')).toBeOnTheScreen()
+    })
+
     it('should display time left when credit expires soon', () => {
       mockdate.set(new Date(today))
       renderCreditHeader({ depositExpirationDate: tomorrow, age: 20 })
@@ -161,7 +173,7 @@ describe('CreditHeader', () => {
       expect(digitalCredit).not.toBeOnTheScreen()
     })
 
-    it.each([15, 16, 17, 18])(
+    it.each([15, 16, 17])(
       'should render correctly with exhausted credit for %s year-old',
       (age) => {
         renderCreditHeader({ domainsCredit: domains_exhausted_credit_v3, age })
@@ -219,6 +231,7 @@ const renderCreditHeader = (props?: Partial<CreditHeaderProps>) => {
       lastName="Bonheur"
       depositExpirationDate={dateInFuture}
       domainsCredit={domains_credit_v3}
+      statusType={UserStatusType.BENEFICIARY}
       featureFlags={{ enableProfileV2: false, disableActivation: false }}
       {...props}
     />

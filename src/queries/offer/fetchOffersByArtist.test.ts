@@ -37,6 +37,8 @@ describe('fetchOffersByArtist', () => {
         aroundRadius: 'all',
         attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.ean', 'artists'],
         attributesToHighlight: [],
+        clickAnalytics: true,
+        analytics: true,
       },
       {
         indexName: 'algoliaTopOffersIndexName',
@@ -48,6 +50,8 @@ describe('fetchOffersByArtist', () => {
         aroundRadius: 'all',
         attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.ean', 'artists'],
         attributesToHighlight: [],
+        clickAnalytics: true,
+        analytics: true,
       },
     ])
   })

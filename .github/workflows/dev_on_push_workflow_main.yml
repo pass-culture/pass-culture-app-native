@@ -84,11 +84,12 @@ jobs:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   yarn-tester:
-    needs: yarn-linter
+    needs: [yarn-linter, check-server-folder-changes]
     uses: ./.github/workflows/dev_on_workflow_tester.yml
     with:
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       HAS_BREAKING_CHANGE_LABEL: ${{ contains(github.event.pull_request.labels.*.name, 'breaking change') }}
+      HAS_PROXY_CHANGED: ${{ needs.check-server-folder-changes.outputs.folder_changed == 'true' }}
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
