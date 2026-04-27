@@ -54,6 +54,21 @@ describe('offerArtists', () => {
       role: ArtistType.author,
       id: '4',
     }
+    const mockFilmDirector: OfferArtist = {
+      name: 'Philippe Lacheau',
+      role: ArtistType.film_director,
+      id: '5',
+    }
+    const mockFilmActor1: OfferArtist = {
+      name: 'Élodie Fontan',
+      role: ArtistType.film_actor,
+      id: '6',
+    }
+    const mockFilmActor2: OfferArtist = {
+      name: 'Jamel Debbouze',
+      role: ArtistType.film_actor,
+      id: '7',
+    }
 
     it('should return empty array when no artists', () => {
       expect(getArtistsLines([])).toEqual([])
@@ -105,6 +120,27 @@ describe('offerArtists', () => {
         prefix: 'avec',
         artists: [mockPerformer1, mockPerformer2],
       })
+    })
+
+    it('should group cinema director with "de" prefix', () => {
+      const result = getArtistsLines([mockFilmDirector])
+
+      expect(result).toEqual([{ prefix: 'de', artists: [mockFilmDirector] }])
+    })
+
+    it('should group cinema actors with "avec" prefix', () => {
+      const result = getArtistsLines([mockFilmActor1, mockFilmActor2])
+
+      expect(result).toEqual([{ prefix: 'avec', artists: [mockFilmActor1, mockFilmActor2] }])
+    })
+
+    it('should order cinema directors before cinema actors', () => {
+      const result = getArtistsLines([mockFilmActor1, mockFilmDirector, mockFilmActor2])
+
+      expect(result).toEqual([
+        { prefix: 'de', artists: [mockFilmDirector] },
+        { prefix: 'avec', artists: [mockFilmActor1, mockFilmActor2] },
+      ])
     })
   })
 })

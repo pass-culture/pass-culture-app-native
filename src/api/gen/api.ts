@@ -351,6 +351,8 @@ export interface ArtistResponse {
  */
 export enum ArtistType {
   'author' = 'author',
+  'film_actor' = 'film_actor',
+  'film_director' = 'film_director',
   'performer' = 'performer',
   'stage_director' = 'stage_director',
 }
