@@ -3,7 +3,7 @@ import React, { FunctionComponent, useRef } from 'react'
 import { FlatList, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
+import { VideoModuleHeader } from 'features/home/components/modules/video/VideoModuleHeader'
 import { VideoPlayer } from 'features/home/components/modules/video/VideoPlayer'
 import { YoutubePlayerRef } from 'features/home/components/modules/video/YoutubePlayer/types'
 import { VideoModulePageMetaHeader } from 'features/home/components/VideoModulePageMetaHeader'
@@ -14,15 +14,11 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful/types'
-import { formatToFrenchDate } from 'libs/parsers/formatDates'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
-import { Tag } from 'ui/designSystem/Tag/Tag'
-import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Page } from 'ui/pages/Page'
-import { Typo } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
 
@@ -37,11 +33,6 @@ export const VideoModulePage: FunctionComponent = () => {
     eanList,
     youtubeVideoId,
     isMultiOffer,
-    videoTag,
-    videoPublicationDate,
-    videoDescription,
-    offerTitle,
-    color,
     videoTitle,
   } = params
   const { goBack } = useGoBack(...homeNavigationConfig)
@@ -82,41 +73,6 @@ export const VideoModulePage: FunctionComponent = () => {
     goBack()
   }
 
-  const renderHeader = () => (
-    <React.Fragment>
-      <StyledTagContainer>
-        <Tag label={videoTag} variant={TagVariant.DEFAULT} />
-      </StyledTagContainer>
-      <TitleContainer>
-        <Typo.Title3>{moduleName}</Typo.Title3>
-      </TitleContainer>
-      <StyledCaptionDate>{`Publiée le ${formatToFrenchDate(
-        new Date(videoPublicationDate)
-      )}`}</StyledCaptionDate>
-
-      {videoDescription ? (
-        <VideoDescriptionContainer>
-          <StyledBody>{videoDescription}</StyledBody>
-        </VideoDescriptionContainer>
-      ) : null}
-
-      <OfferTitleContainer>
-        <Typo.Title4>{offerTitle}</Typo.Title4>
-      </OfferTitleContainer>
-
-      {!isMultiOffer && offers[0] ? (
-        <VideoMonoOfferTileContainer>
-          <VideoMonoOfferTile
-            offer={offers[0]}
-            color={color}
-            analyticsParams={analyticsParams}
-            onPressOffer={handleLogHasDismissedModal}
-          />
-        </VideoMonoOfferTileContainer>
-      ) : null}
-    </React.Fragment>
-  )
-
   return (
     <Page>
       <VideoModulePageMetaHeader title={moduleName} />
@@ -142,7 +98,13 @@ export const VideoModulePage: FunctionComponent = () => {
       <FlatList
         ItemSeparatorComponent={ItemSeparatorComponent}
         data={isMultiOffer ? offers : []}
-        ListHeaderComponent={renderHeader}
+        ListHeaderComponent={
+          <VideoModuleHeader
+            analyticsParams={analyticsParams}
+            handleLogHasDismissedModal={handleLogHasDismissedModal}
+            offers={offers}
+          />
+        }
         keyExtractor={(item) => item.objectID.toString()}
         renderItem={({ item }) => (
           <HorizontalOfferTile
@@ -172,36 +134,6 @@ export const VideoModulePage: FunctionComponent = () => {
     </Page>
   )
 }
-
-const StyledTagContainer = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.l,
-  alignItems: 'flex-start',
-}))
-
-const StyledCaptionDate = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.designSystem.color.icon.subtle,
-}))
-
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.designSystem.color.text.subtle,
-}))
-
-const TitleContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.designSystem.size.spacing.s,
-}))
-
-const VideoDescriptionContainer = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.s,
-}))
-
-const OfferTitleContainer = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xl,
-  marginBottom: theme.designSystem.size.spacing.l,
-}))
-
-const VideoMonoOfferTileContainer = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xxl,
-}))
 
 const ItemSeparatorContainer = styled.View(({ theme }) => ({
   height: 2,

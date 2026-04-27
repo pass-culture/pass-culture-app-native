@@ -43,88 +43,83 @@ describe('VideoModulePage', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
-  it('should execute go back when pressing header back button', async () => {
-    useRoute.mockReturnValueOnce({
-      params: mockParams,
-    })
-    mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [...offersFixture] })
-    render(reactQueryProviderHOC(<VideoModulePage />))
-
-    await user.press(await screen.findByLabelText('Revenir en arrière'))
-
-    expect(mockGoBack).toHaveBeenCalledTimes(1)
-  })
-
-  it('should display video description when defined', () => {
-    useRoute.mockReturnValueOnce({
-      params: mockParams,
-    })
-    mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [...offersFixture] })
-    render(reactQueryProviderHOC(<VideoModulePage />))
-
-    expect(screen.getByText('Une description sympa')).toBeOnTheScreen()
-  })
-
-  it('should display video multi offer list when isMultiOffer is true', () => {
-    mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [...offersFixture] })
-    useRoute.mockReturnValueOnce({
-      params: { ...mockParams, isMultiOffer: true },
-    })
-    render(reactQueryProviderHOC(<VideoModulePage />))
-
-    expect(screen.getByText('La nuit des temps')).toBeOnTheScreen()
-    expect(screen.getByText('Un lit sous une rivière')).toBeOnTheScreen()
-  })
-
-  it('should display video mono offer tile when isMultiOffer is false and there are offers', () => {
-    useRoute.mockReturnValueOnce({
-      params: mockParams,
-    })
-    mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [...offersFixture] })
-    render(reactQueryProviderHOC(<VideoModulePage />))
-
-    expect(screen.getByTestId('videoMonoOfferTile')).toBeOnTheScreen()
-  })
-
-  describe('should trigger hasDismissedModal log', () => {
-    it('When pressing header back button', async () => {
-      useRoute.mockReturnValueOnce({
+  describe('When isMultiOffer is false', () => {
+    beforeEach(() => {
+      useRoute.mockReturnValue({
         params: mockParams,
       })
+    })
+
+    it('should execute go back when pressing header back button', async () => {
       mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [...offersFixture] })
       render(reactQueryProviderHOC(<VideoModulePage />))
 
       await user.press(await screen.findByLabelText('Revenir en arrière'))
 
-      expect(analytics.logHasDismissedModal).toHaveBeenCalledWith({
-        modalType: 'video',
-        moduleId: 'module-123',
-        seenDuration: 135,
-        videoDuration: 267,
-      })
+      expect(mockGoBack).toHaveBeenCalledTimes(1)
     })
 
-    it('When pressing offer in video multi offer list', async () => {
+    it('should display video description when defined', () => {
       mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [...offersFixture] })
-      useRoute.mockReturnValueOnce({
-        params: { ...mockParams, isMultiOffer: true },
-      })
       render(reactQueryProviderHOC(<VideoModulePage />))
 
-      await user.press(await screen.findByText('La nuit des temps'))
+      expect(screen.getByText('Une description sympa')).toBeOnTheScreen()
+    })
 
-      expect(analytics.logHasDismissedModal).toHaveBeenCalledWith({
-        modalType: 'video',
-        moduleId: 'module-123',
-        seenDuration: 135,
-        videoDuration: 267,
+    it('should display video mono offer tile when isMultiOffer is false and there are offers', () => {
+      mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [...offersFixture] })
+      render(reactQueryProviderHOC(<VideoModulePage />))
+
+      expect(screen.getByTestId('videoMonoOfferTile')).toBeOnTheScreen()
+    })
+
+    describe('should trigger hasDismissedModal log', () => {
+      it('When pressing header back button', async () => {
+        mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [...offersFixture] })
+        render(reactQueryProviderHOC(<VideoModulePage />))
+
+        await user.press(await screen.findByLabelText('Revenir en arrière'))
+
+        expect(analytics.logHasDismissedModal).toHaveBeenCalledWith({
+          modalType: 'video',
+          moduleId: 'module-123',
+          seenDuration: 135,
+          videoDuration: 267,
+        })
+      })
+
+      it('When pressing offer in video mono offer tile', async () => {
+        mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [...offersFixture] })
+        render(reactQueryProviderHOC(<VideoModulePage />))
+
+        await user.press(await screen.findByText('La nuit des temps'))
+
+        expect(analytics.logHasDismissedModal).toHaveBeenCalledWith({
+          modalType: 'video',
+          moduleId: 'module-123',
+          seenDuration: 135,
+          videoDuration: 267,
+        })
+      })
+    })
+  })
+
+  describe('When isMultiOffer is true', () => {
+    beforeEach(() => {
+      useRoute.mockReturnValue({
+        params: { ...mockParams, isMultiOffer: true },
       })
     })
 
-    it('When pressing offer in video mono offer tile', async () => {
-      useRoute.mockReturnValueOnce({
-        params: mockParams,
-      })
+    it('should display video multi offer list when isMultiOffer is true', () => {
+      mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [...offersFixture] })
+      render(reactQueryProviderHOC(<VideoModulePage />))
+
+      expect(screen.getByText('La nuit des temps')).toBeOnTheScreen()
+      expect(screen.getByText('Un lit sous une rivière')).toBeOnTheScreen()
+    })
+
+    it('should trigger hasDismissedModal log when pressing offer in video multi offer list', async () => {
       mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [...offersFixture] })
       render(reactQueryProviderHOC(<VideoModulePage />))
 
