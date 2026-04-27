@@ -31,7 +31,7 @@ const mockSearchState = {
 describe('Search Results V2', () => {
   beforeEach(jest.fn())
 
-  it('should display 3 search filter pastilles when `isFocusOnSuggestions` is false', () => {
+  it('should display search tabs when `isFocusOnSuggestions` is false', () => {
     getUseSearch()
 
     render(reactQueryProviderHOC(<SearchResultsV2 />))
@@ -41,7 +41,7 @@ describe('Search Results V2', () => {
     expect(screen.getByTestId('Lieux-search-filter')).toBeOnTheScreen()
   })
 
-  it('should not display search filter pastilles when `isFocusOnSuggestions` is true', () => {
+  it('should not display search tabs when `isFocusOnSuggestions` is true', () => {
     getUseSearch({ ...mockSearchState, isFocusOnSuggestions: true })
 
     render(reactQueryProviderHOC(<SearchResultsV2 />))

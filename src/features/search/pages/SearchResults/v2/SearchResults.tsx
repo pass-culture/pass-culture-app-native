@@ -69,7 +69,9 @@ export const SearchResults = () => {
   const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius, geolocPosition } =
     useLocation()
 
-  const isArtistInSearchActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE_IN_SEARCH)
+  const enableArtistInSearchActive = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_ARTIST_PAGE_IN_SEARCH
+  )
   const enableAIFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR)
 
   const { disabilities } = useAccessibilityFiltersContext()
@@ -100,8 +102,9 @@ export const SearchResults = () => {
     isFetching: isArtistsQueryFetching,
     isSuccess: isArtistsQuerySuccess,
   } = useSearchArtistsQuery(queryParams, {
-    select: (data) => selectSearchArtists(data, selectedFilter),
-    enabled: isArtistInSearchActive,
+    select: (data) => selectSearchArtists(data),
+    enabled:
+      enableArtistInSearchActive && (selectedFilter === null || selectedFilter === 'Artistes'),
   })
 
   const {
@@ -114,7 +117,8 @@ export const SearchResults = () => {
     isLoading: isOffersQueryLoading,
     isSuccess: isOffersQuerySuccess,
   } = useSearchOffersQuery(queryParams, {
-    select: (data) => selectSearchOffers({ data, transformHits, selectedFilter }),
+    select: (data) => selectSearchOffers({ data, transformHits }),
+    enabled: selectedFilter === null || selectedFilter === 'Offres',
   })
   const {
     data: venuesResponse,
@@ -122,7 +126,8 @@ export const SearchResults = () => {
     isFetching: isVenuesQueryFetching,
     isSuccess: isVenuesQuerySuccess,
   } = useSearchVenuesQuery(queryParams, {
-    select: (data) => selectSearchVenues(data, selectedFilter),
+    select: (data) => selectSearchVenues(data),
+    enabled: selectedFilter === null || selectedFilter === 'Lieux',
   })
 
   const algoliaVenues = venuesResponse?.algoliaVenues ?? []

@@ -29,31 +29,15 @@ const mockData = {
 } as unknown as FetchSearchArtistsResponse
 
 describe('selectSearchArtists', () => {
-  describe('selectedFilter', () => {
-    it('should return artists when selectedFilter is null', () => {
-      const result = selectSearchArtists(mockData, null)
+  it('should return artists', () => {
+    const result = selectSearchArtists(mockData)
 
-      expect(result).toHaveLength(2)
-    })
-
-    it('should return artists when selectedFilter is "Artistes"', () => {
-      const result = selectSearchArtists(mockData, 'Artistes')
-
-      expect(result).toHaveLength(2)
-    })
-
-    it('should return empty array when selectedFilter is "Offres"', () => {
-      expect(selectSearchArtists(mockData, 'Offres')).toEqual([])
-    })
-
-    it('should return empty array when selectedFilter is "Lieux"', () => {
-      expect(selectSearchArtists(mockData, 'Lieux')).toEqual([])
-    })
+    expect(result).toHaveLength(2)
   })
 
   describe('artists extraction', () => {
     it('should flatten and deduplicate artists across hits', () => {
-      const result = selectSearchArtists(mockData, null)
+      const result = selectSearchArtists(mockData)
 
       expect(result).toEqual([
         { id: 'artist-a', name: 'Artist A' },
@@ -71,7 +55,7 @@ describe('selectSearchArtists', () => {
         },
       } as unknown as FetchSearchArtistsResponse
 
-      expect(selectSearchArtists(emptyData, null)).toEqual([])
+      expect(selectSearchArtists(emptyData)).toEqual([])
     })
   })
 })
