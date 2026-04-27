@@ -38,9 +38,9 @@ export const VideoModuleHeader: FunctionComponent<Props> = ({
       <StyledTagContainer>
         <Tag label={videoTag} variant={TagVariant.DEFAULT} />
       </StyledTagContainer>
-      <TitleContainer>
-        <Typo.Title3>{moduleName}</Typo.Title3>
-      </TitleContainer>
+
+      <Typo.Title3>{moduleName}</Typo.Title3>
+
       <StyledCaptionDate>{`Publiée le ${formatToFrenchDate(
         new Date(videoPublicationDate)
       )}`}</StyledCaptionDate>
@@ -80,10 +80,6 @@ const StyledCaptionDate = styled(Typo.BodyAccentXs)(({ theme }) => ({
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
-}))
-
-const TitleContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.designSystem.size.spacing.s,
 }))
 
 const VideoDescriptionContainer = styled.View(({ theme }) => ({
