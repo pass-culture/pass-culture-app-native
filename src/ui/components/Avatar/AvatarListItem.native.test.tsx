@@ -8,13 +8,13 @@ describe('<AvatarListItem />', () => {
     render(<AvatarListItem id={1} name="Oda" image="url" onItemPress={jest.fn()} />)
 
     expect(screen.getByText('Oda')).toBeOnTheScreen()
-    expect(screen.getByLabelText('Avatar de lʼartiste Oda')).toBeOnTheScreen()
+    expect(screen.getByTestId('artistAvatar')).toBeOnTheScreen()
   })
 
   it('should display default image avatar', () => {
     render(<AvatarListItem id={1} name="Oda" onItemPress={jest.fn()} />)
 
-    expect(screen.queryByLabelText('Avatar de lʼartiste')).not.toBeOnTheScreen()
-    expect(screen.getByTestId('BicolorProfile')).toBeOnTheScreen()
+    expect(screen.queryByLabelText('Avatar de l’artiste')).not.toBeOnTheScreen()
+    expect(screen.getByTestId('defaultArtistAvatar')).toBeOnTheScreen()
   })
 })

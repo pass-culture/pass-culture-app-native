@@ -75,6 +75,7 @@ import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
+import { VerticalPlaylistArtists } from 'shared/verticalPlaylist/pages/VerticalPlaylistArtists'
 import { VerticalPlaylistOffers } from 'shared/verticalPlaylist/pages/VerticalPlaylistOffers'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
 import { LoadingPage } from 'ui/pages/LoadingPage'
@@ -363,6 +364,11 @@ const rootScreens: RouteConfig[] = [
   {
     name: 'VerticalPlaylistOffers',
     component: VerticalPlaylistOffers,
+    options: { title: 'Liste de lecture verticale' },
+  },
+  {
+    name: 'VerticalPlaylistArtists',
+    component: VerticalPlaylistArtists,
     options: { title: 'Liste de lecture verticale' },
   },
   {

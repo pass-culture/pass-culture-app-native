@@ -26,6 +26,7 @@ import { Offer } from 'shared/offer/types'
 import { AvatarList } from 'ui/components/Avatar/AvatarList'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
+import { SeeAllButton } from 'ui/components/SeeAllButton/SeeAllButton'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, LENGTH_M, RATIO_HOME_IMAGE, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -44,6 +45,8 @@ type VenueOffersListProps = VenueOffersProps & {
     playlistIndex?: number
   ) => void
 }
+
+const playlistTitle = 'Les artistes disponibles dans ce lieu'
 
 export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   venue,
@@ -179,6 +182,15 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
     [isFocused, onViewableItemsChanged]
   )
 
+  const onSeeAllBeforeNavigate = () => {
+    void analytics.logClickSeeAll({ type: 'artists', moduleName: playlistTitle, from: 'venue' })
+  }
+
+  const navigateToVerticalPlaylist = {
+    screen: 'VerticalPlaylistArtists' as const,
+    params: { title: playlistTitle, subtitle: undefined },
+  }
+
   return (
     <Container>
       <ObservedPlaylist onViewableItemsChanged={handleAllOffersViewableItemsChanged}>
@@ -189,7 +201,10 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
             data={hits}
             itemHeight={LENGTH_M}
             itemWidth={LENGTH_M * RATIO_HOME_IMAGE}
-            seeAllButton={{ navigateToSearchPlaylist: searchNavigationConfig, onBeforeNavigate }}
+            seeAllButton={{
+              navigateToSearchPlaylist: searchNavigationConfig,
+              onBeforeNavigate,
+            }}
             renderItem={renderItem}
             keyExtractor={keyExtractor}
             FlatListComponent={FlatList}
@@ -210,9 +225,22 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           onFeedbackLog={onFeedbackLog}
         />
       ) : null}
+
       {shouldDisplayArtistsPlaylist ? (
         <ArtistsPlaylistContainer gap={2}>
-          <ArtistsPlaylistTitleText>Les artistes disponibles dans ce lieu</ArtistsPlaylistTitleText>
+          <SeeAllButtonContainer gap={3}>
+            <TitleContainer>
+              <Typo.Title3 {...getHeadingAttrs(2)}>{playlistTitle}</Typo.Title3>
+            </TitleContainer>
+            <SeeAllButton
+              playlistTitle={playlistTitle}
+              data={{
+                onBeforeNavigate: onSeeAllBeforeNavigate,
+                navigateToVerticalPlaylist,
+                hideSearchSeeAll: true,
+              }}
+            />
+          </SeeAllButtonContainer>
           <ObservedPlaylist onViewableItemsChanged={handleArtistsViewableItemsChanged}>
             {({ listRef, handleViewableItemsChanged }) => (
               <AvatarList
@@ -254,12 +282,21 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   )
 }
 
-const Container = styled.View(({ theme }) => ({ marginTop: theme.designSystem.size.spacing.xl }))
+const Container = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+}))
 
 const ArtistsPlaylistContainer = styled(ViewGap)(({ theme }) => ({
   paddingBottom: Platform.OS === 'android' ? theme.designSystem.size.spacing.xxl : getSpacing(14),
 }))
 
-const ArtistsPlaylistTitleText = styled(Typo.Title3).attrs(getHeadingAttrs(2))(({ theme }) => ({
+const TitleContainer = styled.View({
+  flex: 1,
+})
+
+const SeeAllButtonContainer = styled(ViewGap)(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
 }))
