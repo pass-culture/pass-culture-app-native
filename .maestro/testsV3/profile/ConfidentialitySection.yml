@@ -16,8 +16,8 @@ onFlowStart:
 - runFlow: ../common/GoToProfileFromTabBar.yml
 
 - scrollUntilVisible:
-    element:
-      text: '.*Partage le pass Culture.*'
+    element: "Suivre le pass Culture"
+
 - tapOn:
     text: 'Confidentialité'
 

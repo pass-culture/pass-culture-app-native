@@ -29,15 +29,16 @@ onFlowStart:
       - tapOn: 'Non, merci'
       - pressKey: back
 
-- runFlow:
-    when:
-      platform: Android
-    file: ../common/TapOnBack.yml
+      - runFlow:
+          when:
+            platform: Android
+          commands:
+            - pressKey: back
 
-- runFlow:
-    when:
-      platform: iOS
-    commands:
-      - tapOn: 'Revenir à pass Culture S'
+      - runFlow:
+          when:
+            platform: iOS
+          commands:
+          - tapOn: 'Revenir à pass Culture S'
 
 - runFlow: ../common/StopApp.yml

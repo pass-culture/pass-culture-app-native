@@ -1,0 +1,9 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - launchApp:
+        appId: ${MAESTRO_APP_ID}
+        clearKeychain: true

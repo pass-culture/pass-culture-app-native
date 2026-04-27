@@ -32,8 +32,7 @@ onFlowStart:
     commands:
       - assertVisible:
           id: 'com.android.chrome:id/url_bar'
-      - runFlow:
-          file: ../common/TapOnBack.yml
+      - pressKey: back
 
 - runFlow:
     when:
@@ -52,8 +51,7 @@ onFlowStart:
     commands:
       - assertVisible:
           id: 'com.android.chrome:id/url_bar'
-      - runFlow:
-          file: ../common/TapOnBack.yml
+      - pressKey: back
 
 - runFlow:
     when:
@@ -94,11 +92,7 @@ onFlowStart:
 
 - tapOn: '.*Facebook.*'
 - waitForAnimationToEnd
-# - TODO: Investiguer la 429 à l'ouverture du lien externe
-# - tapOn: "Fermer"
-# - assertVisible:
-#     text: "Pass Culture"
-#     index: 1
+
 - runFlow:
     when:
       platform: Android

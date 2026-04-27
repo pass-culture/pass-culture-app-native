@@ -24,10 +24,17 @@ onFlowStart:
     commands:
       - tapOn: 'Poser une question'
       - assertVisible: 'Assistant virtuel du pass culture'
+      - runFlow:
+          when:
+            platform: Android
+          commands:
+            - pressKey: back
 
       - runFlow:
-          file: ../common/TapOnBack.yml
-
+          when:
+            platform: iOS
+          commands:
+          - tapOn: 'Revenir en arrière'
       - assertVisible: 'Poser une question'
 
 - runFlow: ../common/StopApp.yml

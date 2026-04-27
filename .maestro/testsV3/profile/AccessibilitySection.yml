@@ -31,13 +31,31 @@ onFlowStart:
 - assertVisible: 'Accessibilité'
 - assertVisible: "L'accessibilité au pass Culture"
 - runFlow:
-    file: ../common/TapOnBack.yml
+    when:
+      platform: iOS
+    commands:
+      - tapOn: 'Revenir à pass Culture S'
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - pressKey: back
 
 - tapOn: 'Nouvelle fenêtre : Schéma pluriannuel'
 - assertVisible: 'Schéma pluriannuel.*'
 - assertVisible: 'Introduction'
 - runFlow:
-    file: ../common/TapOnBack.yml
+    when:
+      platform: iOS
+    commands:
+    - tapOn: 'Revenir à pass Culture S'
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - pressKey: back
 
 - tapOn: "Déclaration d’accessibilité - Android"
 - assertVisible: "Déclaration d’accessibilité - Android"

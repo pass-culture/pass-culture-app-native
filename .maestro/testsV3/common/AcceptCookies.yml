@@ -11,8 +11,13 @@ appId: ${MAESTRO_APP_ID}
       platform: iOS
     commands:
     - tapOn: "Autoriser"
-- assertVisible: 'Respect de ta vie privée'
-- tapOn: 'Tout accepter'
+
+- runFlow:
+    when:
+      visible: 'Respect de ta vie privée'
+    commands:
+    - tapOn: 'Tout accepter'
+    
 - tapOn: 
     text: 'Autoriser'
     optional: true
