@@ -32,7 +32,7 @@ type Props = {
 export const SSOButtonAppleBase: FC<Props> = ({ type, onSuccess, params }) => {
   const { logType } = useLogTypeFromRemoteConfig()
 
-  if (Platform.OS === 'android') return null
+  if (Platform.OS === 'android' || Platform.OS === 'web') return null
 
   const onError = async (error: unknown) => {
     showErrorSnackBar('Une erreur est survenue, veuillez réessayer.')
