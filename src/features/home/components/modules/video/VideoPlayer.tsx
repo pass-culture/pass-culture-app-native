@@ -1,5 +1,6 @@
 import React, { RefObject, useCallback, useEffect, useState } from 'react'
 import { useWindowDimensions, AppState } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
 import {
@@ -21,12 +22,15 @@ interface VideoPlayerNativeProps extends VideoPlayerProps {
 export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
   youtubeVideoId,
   offer,
-  onPressSeeOffer,
   moduleId,
   moduleName,
   homeEntryId,
   playerRef,
+  onPressSeeOffer,
 }) => {
+  const { appBarHeight } = useTheme()
+  const { top } = useSafeAreaInsets()
+  const headerHeight = appBarHeight + top
   const [isPlaying, setIsPlaying] = useState(true)
   const [hasFinishPlaying, setHasFinishPlaying] = useState(false)
   const [showErrorView, setShowErrorView] = React.useState(false)
@@ -86,8 +90,8 @@ export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
 
   return (
     <React.Fragment>
-      <StyledVideoPlayerContainer>
-        <YoutubePlayer
+      <StyledVideoPlayerContainer marginTop={headerHeight}>
+        <StyledYoutubePlayer
           ref={playerRef}
           initialPlayerParams={{ modestbranding: true, rel: false }}
           height={playerHeight}
@@ -106,11 +110,11 @@ export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
         <VideoEndView
           onPressReplay={replayVideo}
           offer={offer}
-          onPressSeeOffer={onPressSeeOffer}
           style={{ height: playerHeight, width: playerWidth }}
           moduleId={moduleId}
           moduleName={moduleName}
           homeEntryId={homeEntryId}
+          onPressSeeOffer={onPressSeeOffer}
         />
       ) : null}
       {showErrorView ? (
@@ -120,9 +124,12 @@ export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
   )
 }
 
-const StyledVideoPlayerContainer = styled.View(({ theme }) => ({
+const StyledVideoPlayerContainer = styled.View<{ marginTop: number }>(({ theme, marginTop }) => ({
   backgroundColor: theme.designSystem.color.background.lockedInverted,
-  borderTopLeftRadius: theme.designSystem.size.borderRadius.l,
-  borderTopRightRadius: theme.designSystem.size.borderRadius.l,
   overflow: 'hidden',
+  marginTop,
 }))
+
+const StyledYoutubePlayer = styled(YoutubePlayer)({
+  alignSelf: 'center',
+})

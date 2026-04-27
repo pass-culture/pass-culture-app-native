@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
@@ -10,15 +11,6 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-
-const mockShowModal = jest.fn()
-jest.mock('ui/components/modals/useModal', () => ({
-  useModal: () => ({
-    visible: false,
-    showModal: mockShowModal,
-    hideModal: jest.fn(),
-  }),
-}))
 
 jest.mock('features/home/queries/useVideoOffersQuery')
 const mockUseVideoOffersQuery = useVideoOffersQuery as jest.Mock
@@ -41,7 +33,7 @@ describe('VideoModule', () => {
     expect(await screen.findByText(offerFixture.offer.name)).toBeOnTheScreen()
   })
 
-  it('should show modal when pressing video thumbnail', async () => {
+  it('should navigate to video module page when pressing video thumbnail', async () => {
     mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture] })
     renderVideoModule()
 
@@ -49,7 +41,25 @@ describe('VideoModule', () => {
 
     await user.press(button)
 
-    expect(mockShowModal).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenCalledWith('VideoModulePage', {
+      color: 'Aquamarine',
+      homeEntryId: 'abcd',
+      isMultiOffer: false,
+      moduleId: '4ZzxHKDN7BvBAxVR6hFbU6',
+      moduleName: 'Découvre Lujipeka',
+      offerIds: ['12345', '67890'],
+      offerTitle: 'Pour aller plus loin…',
+      offersModuleParameters: [
+        { hitsPerPage: 1, title: 'test music type' },
+        { hitsPerPage: 1, title: 'test music type' },
+      ],
+      videoDescription:
+        'Lujipeka répond à vos questions sur sa tournée, sa musique, ses inspirations et pleins d’autres questions&nbsp;!',
+      videoPublicationDate: '2023-06-16',
+      videoTag: 'FAQ',
+      videoTitle: 'Lujipeka répond à vos questions\u00a0!',
+      youtubeVideoId: 'qE7xwEZnFP0',
+    })
   })
 
   it('should log ModuleDisplayedOnHomePage event when seeing the module', async () => {

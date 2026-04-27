@@ -27,8 +27,6 @@ const mockAnalyticsParams: OfferAnalyticsParams = {
   isHeadline: false,
 }
 
-const hideModalMock = jest.fn()
-
 const user = userEvent.setup()
 jest.useFakeTimers()
 
@@ -78,7 +76,6 @@ function renderOfferVideoModule(offer?: Offer) {
     <VideoMonoOfferTile
       offer={offer ?? mockOffer}
       color={Color.Aquamarine}
-      hideModal={hideModalMock}
       analyticsParams={mockAnalyticsParams}
     />,
     {

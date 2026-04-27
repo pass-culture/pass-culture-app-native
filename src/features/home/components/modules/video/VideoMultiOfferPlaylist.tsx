@@ -9,15 +9,10 @@ import { CustomListRenderItem, Playlist } from 'ui/components/Playlist'
 
 type Props = {
   offers: Offer[]
-  hideModal: () => void
   analyticsParams: OfferAnalyticsParams
 }
 
-export const VideoMultiOfferPlaylist: FunctionComponent<Props> = ({
-  offers,
-  hideModal,
-  analyticsParams,
-}) => {
+export const VideoMultiOfferPlaylist: FunctionComponent<Props> = ({ offers, analyticsParams }) => {
   const { tiles, contentPage } = useTheme()
   const PLAYLIST_ITEM_HEIGHT = tiles.sizes.large.height + tiles.maxCaptionHeight.videoModuleOffer
   const PLAYLIST_ITEM_WIDTH = tiles.sizes.large.width
@@ -25,9 +20,7 @@ export const VideoMultiOfferPlaylist: FunctionComponent<Props> = ({
   const keyExtractor = (item: Offer) => item.objectID
 
   const renderItem: CustomListRenderItem<Offer> = ({ item }) => {
-    return (
-      <VideoMultiOfferTile offer={item} hideModal={hideModal} analyticsParams={analyticsParams} />
-    )
+    return <VideoMultiOfferTile offer={item} analyticsParams={analyticsParams} />
   }
 
   const offersToDisplay = slice(offers, 0, 10)

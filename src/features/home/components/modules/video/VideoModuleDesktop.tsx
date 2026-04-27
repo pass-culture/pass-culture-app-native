@@ -45,7 +45,7 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
         title={props.videoTitle}
         onPress={() => {
           onBeforeNavigate()
-          props.showVideoModal()
+          props.onVideoPlaceholderPress()
         }}
       />
     ) : null
@@ -57,7 +57,6 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
         <VideoMonoOfferTile
           offer={props.offers[0]}
           color={props.color}
-          hideModal={props.hideVideoModal}
           analyticsParams={props.analyticsParams}
         />
       </VideoMonoOfferTileWrapper>
@@ -86,7 +85,7 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
         </ColorCategoryBackgroundWrapper>
         <VideoOfferContainer isMultiOffer={props.isMultiOffer}>
           <StyledTouchableHighlight
-            onPress={props.showVideoModal}
+            onPress={props.onVideoPlaceholderPress}
             testID="video-thumbnail"
             accessibilityRole={AccessibilityRole.BUTTON}>
             <Thumbnail source={{ uri: props.videoThumbnail }}>
@@ -108,7 +107,6 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
                   <React.Fragment key={offer.objectID}>
                     <StyledHorizontalOfferTile
                       offer={offer}
-                      onPress={props.hideVideoModal}
                       analyticsParams={props.analyticsParams}
                     />
                     {index < nbOfSeparators ? (

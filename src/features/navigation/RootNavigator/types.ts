@@ -9,6 +9,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BookingsTab } from 'features/bookings/enum'
+import { Color, OffersModuleParameters } from 'features/home/types'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
 import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
@@ -210,6 +211,23 @@ type ProAdvicesVenueParams = {
   offerId?: number
 }
 
+type VideoModulePageParams = {
+  moduleId: string
+  moduleName: string
+  homeEntryId: string
+  offersModuleParameters: OffersModuleParameters[]
+  youtubeVideoId: string
+  isMultiOffer: boolean
+  videoTag: string
+  videoPublicationDate: string
+  videoDescription: string
+  offerTitle: string
+  color: Color
+  videoTitle: string
+  offerIds?: string[]
+  eanList?: string[]
+}
+
 /**
  * WARNING !
  * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
@@ -303,6 +321,7 @@ export type RootStackParamList = {
   _DeeplinkOnlyVenuePreviewCarousel3: VenuePreviewCarouselParams
   VerifyEligibility: undefined
   VerticalPlaylistOffers: VerticalPlaylistSource
+  VideoModulePage: VideoModulePageParams
 } & TrustedDeviceRootStackParamList
 
 export type AllNavParamList = RootStackParamList &

@@ -49,7 +49,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
       )}
       <View testID="mobile-video-module">
         <StyledTouchableHighlight
-          onPress={props.showVideoModal}
+          onPress={props.onVideoPlaceholderPress}
           testID="video-thumbnail"
           accessibilityRole={AccessibilityRole.BUTTON}>
           <Thumbnail source={{ uri: props.videoThumbnail }}>
@@ -75,7 +75,6 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
                 <VideoMonoOfferTile
                   offer={props.offers[0]}
                   color={props.color}
-                  hideModal={props.hideVideoModal}
                   analyticsParams={props.analyticsParams}
                 />
               </VideoMonoOfferTileWrapper>
@@ -84,7 +83,6 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
             <VideoOfferContainer>
               <VideoMultiOfferPlaylist
                 offers={props.offers}
-                hideModal={props.hideVideoModal}
                 analyticsParams={props.analyticsParams}
               />
             </VideoOfferContainer>

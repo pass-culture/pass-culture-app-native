@@ -11,7 +11,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 const mockOffer = mockedAlgoliaResponse.hits[0]
-const hideModalMock = jest.fn()
 
 const showErrorUseState = React.useState
 const mockUseState = jest.spyOn(React, 'useState')
@@ -118,11 +117,11 @@ function renderVideoPlayer() {
       <VideoPlayer
         youtubeVideoId={videoModuleFixture.youtubeVideoId}
         offer={mockOffer}
-        onPressSeeOffer={hideModalMock}
         moduleId="abcd"
         moduleName="lujipeka"
         homeEntryId="xyz"
         playerRef={mockRef}
+        onPressSeeOffer={jest.fn()}
       />
     )
   )
