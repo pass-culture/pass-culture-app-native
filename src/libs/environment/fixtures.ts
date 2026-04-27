@@ -7,6 +7,7 @@ export const env: Environment = {
   ADJUST_APP_TOKEN: 'adjustAppToken',
   ALGOLIA_APPLICATION_ID: 'algoliaAppId',
   ALGOLIA_ARTISTS_INDEX_NAME: 'algoliaArtistsIndexName',
+  ALGOLIA_CINE_CLUB_OFFERS_INDEX_NAME: 'algoliaCineClubOffersIndexName',
   ALGOLIA_MOST_LIKED_OFFERS_INDEX_NAME: 'algoliaMostLikedOffersIndexName',
   ALGOLIA_OFFERS_INDEX_NAME_B: 'algoliaOffersIndexNameB',
   ALGOLIA_OFFERS_INDEX_NAME: 'algoliaOffersIndexName',

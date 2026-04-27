@@ -78,4 +78,55 @@ describe('buildOffersModulesQueries', () => {
       }),
     ])
   })
+
+  it('should use the cine club offers index when isSortedByReleaseDate param is true', () => {
+    const parameters = {
+      ...searchQueryParametersFixture,
+      isSortedByReleaseDate: true,
+    }
+
+    const paramsListElement = {
+      offerParams: parameters,
+      locationParams: buildLocationParameterParams,
+    }
+
+    const paramsList: OffersPlaylistParameters[] = [[paramsListElement]]
+
+    const queries = buildOffersModulesQueries({
+      paramsList,
+      isUserUnderage,
+    })
+
+    expect(queries).toEqual([
+      expect.objectContaining({
+        indexName: 'algoliaCineClubOffersIndexName',
+      }),
+    ])
+  })
+
+  it('should prefer the cine club offers index over most liked when both flags are true', () => {
+    const parameters = {
+      ...searchQueryParametersFixture,
+      isSortedByLikes: true,
+      isSortedByReleaseDate: true,
+    }
+
+    const paramsListElement = {
+      offerParams: parameters,
+      locationParams: buildLocationParameterParams,
+    }
+
+    const paramsList: OffersPlaylistParameters[] = [[paramsListElement]]
+
+    const queries = buildOffersModulesQueries({
+      paramsList,
+      isUserUnderage,
+    })
+
+    expect(queries).toEqual([
+      expect.objectContaining({
+        indexName: 'algoliaCineClubOffersIndexName',
+      }),
+    ])
+  })
 })
