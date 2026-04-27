@@ -4,10 +4,10 @@ import { browserName } from 'react-device-detect'
 import { useWindowDimensions, PixelRatio, Platform } from 'react-native'
 import DeviceInfo from 'react-native-device-info'
 
-import { TrustedDevice } from 'api/gen'
+import { DeviceInfoV2 } from 'api/gen'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 
-export type DeviceInformation = TrustedDevice & {
+export type DeviceInformation = DeviceInfoV2 & {
   resolution: string
   fontScale: number
   screenZoomLevel?: number
