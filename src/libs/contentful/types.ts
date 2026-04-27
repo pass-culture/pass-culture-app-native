@@ -199,6 +199,7 @@ type VideoFields = {
   offerIds?: string[]
   eanList?: string[]
   additionalAlgoliaParameters?: AlgoliaParameters[]
+  transcription: string
 }
 
 type VenueMapBlockFields = {

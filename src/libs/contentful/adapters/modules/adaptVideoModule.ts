@@ -33,5 +33,6 @@ export const adaptVideoModule = (module: VideoContentModel): VideoModule | null 
     videoPublicationDate: module.fields.videoPublicationDate,
     offerIds: module.fields.offerIds,
     eanList: module.fields.eanList,
+    transcription: module.fields.transcription,
   }
 }

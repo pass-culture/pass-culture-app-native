@@ -333,6 +333,7 @@ export type VideoModule = {
   videoPublicationDate: string
   offerIds?: string[]
   eanList?: string[]
+  transcription: string
 }
 
 export interface VideoModuleProps extends VideoModule {

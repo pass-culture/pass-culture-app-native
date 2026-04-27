@@ -197,6 +197,7 @@ export const screenParamsParser: ParamsParsers = {
     videoTitle: identityFn,
     offerIds: identityFn,
     eanList: identityFn,
+    transcription: identityFn,
   },
 }
 
