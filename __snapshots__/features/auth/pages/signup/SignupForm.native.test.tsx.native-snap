@@ -2577,6 +2577,18 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                         "success": "#15884f",
                         "warning": "#e1a605",
                       },
+                      "illustration": {
+                        "information01": "#320096",
+                        "information02": "#6123df",
+                        "information03": "#c1a3ff",
+                        "information04": "#20c5e9",
+                        "information05": "#9be3f3",
+                        "negative01": "#f2497c",
+                        "negative02": "#ffa5c0",
+                        "pending01": "#f8733d",
+                        "positive01": "#27dca8",
+                        "positive02": "#94f0d6",
+                      },
                       "outline": {
                         "default": "#161617",
                         "error": "#a20121",
@@ -2614,6 +2626,22 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                         "s": 4,
                         "xl": 24,
                         "xxl": 32,
+                      },
+                      "icon": {
+                        "button": 22,
+                        "buttonS": 14,
+                        "l": 32,
+                        "m": 24,
+                        "s": 16,
+                      },
+                      "illustration": {
+                        "m": 200,
+                        "xl": 320,
+                        "xs": 72,
+                      },
+                      "image": {
+                        "m": 72,
+                        "s": 56,
                       },
                       "spacing": {
                         "l": 16,
