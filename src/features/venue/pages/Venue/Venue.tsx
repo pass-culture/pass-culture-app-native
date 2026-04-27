@@ -198,7 +198,8 @@ export const Venue: FunctionComponent = () => {
                     getAdvicesWithoutHeadline(
                       advices?.proAdvices.slice(0, 5),
                       headlineOfferData?.id
-                    )
+                    ),
+                    venue.id
                   )
                 : undefined
             }

@@ -299,6 +299,8 @@ export const logEventAnalytics = {
     homeEntryId?: string
     searchId?: string
     originDetail?: string
+    adviceType?: 'book_club' | 'cine_club' | 'pro'
+    offerId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE }, params),
   logConsultVenueMap: ({ from, searchId }: { from: Referrals; searchId?: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_MAP }, { from, searchId }),

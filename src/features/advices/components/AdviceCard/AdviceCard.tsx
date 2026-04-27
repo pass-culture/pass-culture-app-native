@@ -37,6 +37,7 @@ export const AdviceCard: FunctionComponent<AdviceCardProps> = ({
   headerNavigateTo,
   headerAccessibilityLabel,
   thumbnailHeight,
+  onCardHeaderPress,
 }) => {
   const theme = useTheme()
 
@@ -67,7 +68,8 @@ export const AdviceCard: FunctionComponent<AdviceCardProps> = ({
         <InternalTouchableLink
           navigateTo={headerNavigateTo}
           accessibilityLabel={headerAccessibilityLabel}
-          accessibilityRole={accessibilityRoleInternalNavigation()}>
+          accessibilityRole={accessibilityRoleInternalNavigation()}
+          onBeforeNavigate={() => onCardHeaderPress?.()}>
           {renderHeader()}
         </InternalTouchableLink>
       ) : (
