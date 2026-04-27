@@ -100,11 +100,7 @@ export const OldVenueContent: React.FunctionComponent<Props> = ({
         <VenueWebMetaHeader title={venue.name} description={venue.description} />
         <VenueHeaderWrapper
           header={<VenueHeader headerTransition={headerTransition} venue={venue} />}>
-          <ContentContainer
-            onScroll={handleScroll}
-            scrollEventThrottle={16}
-            bounces={false}
-            ref={scrollViewRef}>
+          <ContentContainer onScroll={handleScroll} scrollEventThrottle={16} ref={scrollViewRef}>
             {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
             {children}
           </ContentContainer>

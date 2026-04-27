@@ -103,7 +103,6 @@ export const VenueContent: React.FunctionComponent<Props> = ({
             leftNootch={isLandscape ? left : 0}
             onScroll={handleScroll}
             scrollEventThrottle={16}
-            bounces={false}
             ref={scrollViewRef}>
             {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
             {children}

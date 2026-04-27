@@ -12,7 +12,6 @@ exports[`<Venue /> should match snapshot 1`] = `
   }
 >
   <RCTScrollView
-    bounces={false}
     onContentSizeChange={[Function]}
     onLayout={[Function]}
     onScroll={[Function]}
@@ -3515,7 +3514,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
   }
 >
   <RCTScrollView
-    bounces={false}
     onContentSizeChange={[Function]}
     onLayout={[Function]}
     onScroll={[Function]}
@@ -7018,7 +7016,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
   }
 >
   <RCTScrollView
-    bounces={false}
     onContentSizeChange={[Function]}
     onLayout={[Function]}
     onScroll={[Function]}

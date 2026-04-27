@@ -98,8 +98,7 @@ export const BookingDetailsContent = ({
             logConsultWholeBooking()
           }
         }}
-        testID="BookingDetailsScrollView"
-        bounces={false}>
+        testID="BookingDetailsScrollView">
         <StyledHeaderWithImage
           imageHeight={headerImageHeight}
           imageUrl={offer.image?.url}

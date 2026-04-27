@@ -116,7 +116,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
 
       <ContentContainer
         scrollEventThrottle={16}
-        bounces={false}
         onScroll={onScroll}
         contentContainerStyle={{ paddingTop: headerHeight }}>
         <ViewGap gap={8}>

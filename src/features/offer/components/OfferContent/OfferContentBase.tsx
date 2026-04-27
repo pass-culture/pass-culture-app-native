@@ -403,7 +403,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           testID="offerv2-container"
           scrollEventThrottle={16}
           scrollIndicatorInsets={scrollIndicatorInsets}
-          bounces={false}
           ref={scrollViewRef}
           contentContainerStyle={contentContainerStyle}
           onScroll={handleScroll}>

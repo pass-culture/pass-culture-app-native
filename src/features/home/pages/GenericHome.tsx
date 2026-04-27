@@ -302,7 +302,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   return (
     <Container>
       {showSkeleton ? (
-        <ScrollView testID="homeScrollView" bounces={false} scrollEnabled={false}>
+        <ScrollView testID="homeScrollView" scrollEnabled={false}>
           {Header}
           <HomeBodyPlaceholder />
           <Spacer.TabBar />
