@@ -20,6 +20,7 @@ import { SubscriptionContextProvider } from 'features/identityCheck/context/Subs
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
+import { getDeviceInfo } from 'features/trustedDevice/helpers/getDeviceInfo'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { env } from 'libs/environment/env'
 import { AnalyticsInitializer } from 'libs/firebase/analytics/AnalyticsInitializer'
@@ -36,6 +37,7 @@ import { SplashScreenProvider } from 'libs/splashscreen/splashscreen'
 import { ThemeWrapper } from 'libs/styled/ThemeWrapper'
 import { useLaunchPerformanceObserver } from 'performance/useLaunchPerformanceObserver'
 import { useOrientationLocked } from 'shared/hook/useOrientationLocked'
+import { deviceInfoStoreActions, deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
 import { SnackBarWrapper } from 'ui/designSystem/Snackbar/SnackBarWrapper'
 
 LogBox.ignoreLogs([
@@ -46,6 +48,8 @@ LogBox.ignoreLogs([
   'Cannot update a component',
   'EventEmitter.removeListener',
 ])
+
+const existingDeviceInfo = deviceInfoStoreSelectors.selectDeviceInfo()
 
 const App: FunctionComponent = function () {
   useLaunchPerformanceObserver()
@@ -65,6 +69,12 @@ const App: FunctionComponent = function () {
       iosClientId: env.GOOGLE_IOS_CLIENT_ID,
       offlineAccess: true,
     })
+    const setDeviceInfo = async () => {
+      if (existingDeviceInfo) return
+      const deviceInfo = await getDeviceInfo()
+      return deviceInfoStoreActions.setDeviceInfo(deviceInfo)
+    }
+    void setDeviceInfo()
   }, [])
 
   return (
