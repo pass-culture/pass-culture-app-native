@@ -189,6 +189,7 @@ export type SearchQueryParameters = {
   objectIds?: string[]
   minLikes?: number
   isSortedByLikes?: boolean
+  isSortedByReleaseDate?: boolean
   isWithClub?: boolean
 }
 

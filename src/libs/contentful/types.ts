@@ -258,6 +258,7 @@ export interface SearchParametersFields {
   priceMax?: number
   isDuo?: boolean
   newestOnly?: boolean
+  isSortedByReleaseDate?: boolean
   hitsPerPage: number
   minBookingsThreshold?: number
   movieGenres?: MovieGenres

@@ -7,6 +7,7 @@ export const EnvironmentSchema = yup.object({
   ADJUST_APP_TOKEN: yup.string().required(),
   ALGOLIA_APPLICATION_ID: yup.string().required(),
   ALGOLIA_ARTISTS_INDEX_NAME: yup.string().required(),
+  ALGOLIA_CINE_CLUB_OFFERS_INDEX_NAME: yup.string().required(),
   ALGOLIA_MOST_LIKED_OFFERS_INDEX_NAME: yup.string().required(),
   ALGOLIA_OFFERS_INDEX_NAME_B: yup.string().required(),
   ALGOLIA_OFFERS_INDEX_NAME: yup.string().required(),
