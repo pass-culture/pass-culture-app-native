@@ -1,8 +1,9 @@
 flows:
-  - tutorial/*
+  - onboarding/*
   - cookies/*
   - auth/*
-  - signup/*
   - profile/*
   - search/*
   - booking/*
+  - artist/*
+  - offer/*
