@@ -24,6 +24,7 @@ export const SearchTab: FC<Props> = ({ selectedFilter, onFilterPress }) => {
 
         return (
           <StyledSearchFilterTab
+            testID={`${searchFilter}-search-filter`}
             key={searchFilter}
             isSelected={isCurrentSelected}
             onPress={() => onFilterPress(searchFilter)}>
