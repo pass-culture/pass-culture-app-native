@@ -105,13 +105,26 @@ yarn jest --coverage
 
 <details>
   <summary>📝 Update the API schema</summary>
-If the backend changes the api schema, you will need to update it:
 
-- pull the `swagger-codegen-cli-v3` image: `docker pull swaggerapi/swagger-codegen-cli-v3`
-- run: `yarn generate:api:client`
-- or run `yarn generate:api:client:silicon` on Apple Silicon chips
-
-If the file `src/api/gen/.swagger-codegen/VERSION` changes, make sure you locally have the desired version of `swagger-codegen-cli`, otherwise run `docker pull swaggerapi/swagger-codegen-cli-v3:3.0.24`
+- If you want to base on local backend changes, do this on backend. If not, skip this step.  
+```
+# Generate native_openapi.json with back changes 
+- flask generate_native_api_openapi_json  # without docker  
+- pc generate_native_api_openapi_json  # with docker   
+``` 
+- Run a local docker
+- copy `pass-culture-main/api/tests/files/native_openapi.json` to a new file `pass-culture-app-native/native_openapi.json`
+- In this new file replace `"openapi": "3.1.0"` by `"openapi": "3.0.0"`
+- In the file `scripts/generate:api:client:silicon.sh`, replace :  
+`https://backend.testing.passculture.team/native/openapi.json` by `/local/native_openapi.json `
+- In the file `scripts/generate:api:client:silicon.sh`, if 
+  - you don't have proxy : remove `--volume "$JAVA_HOME/lib/security/cacerts:/opt/java/openjdk/lib/security/cacerts” \`
+  - you have a proxy and nix (docker does not have access to nix env): 
+    - find your local `cacerts` and copy it to `pass-culture-app-native/cacerts`
+    - replace `$JAVA_HOME/lib/security/cacerts:"` by `$PWD/cacerts:` 
+  - you have a proxy but not nix, it might work directly.
+- run `yarn generate:api:client:silicon`  
+- Keep only the correct changes in the generated file. Be careful with the null types, which appear to have been modified recently. 
 
 </details>
 
