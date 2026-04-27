@@ -1,10 +1,10 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import { styled } from 'styled-components/native'
 
 import { SubcategoryIdEnumv2 } from 'api/gen'
 import { AdvicesOfferColumn } from 'features/advices/components/AdvicesOfferColumn/AdvicesOfferColumn.web'
-import { useOfferProAdvicesQuery } from 'features/advices/queries/useOfferProAdvicesQuery'
+import { useOfferProAdvicesInfiniteQuery } from 'features/advices/queries/useOfferProAdvicesInfiniteQuery'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { offerProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/offerProAdvicesToAdviceCardData/offerProAdvicesToAdviceCardData'
@@ -25,12 +25,16 @@ export const ProAdvicesOffer: FunctionComponent = () => {
 
   const { userLocation } = useLocation()
   const { data: offer } = useOfferQuery({ offerId })
-  const { data: advices } = useOfferProAdvicesQuery({
+  const {
+    data: advicesData,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useOfferProAdvicesInfiniteQuery({
     offerId,
     enableProAdvices,
     latitude: userLocation?.latitude,
     longitude: userLocation?.longitude,
-    select: ({ proAdvices }) => offerProAdvicesToAdviceCardData(proAdvices, offerId),
   })
 
   const { goBack } = useGoBack('Offer')
@@ -43,13 +47,32 @@ export const ProAdvicesOffer: FunctionComponent = () => {
     navigate('Offer', { id: offerId, from: 'chronicles' })
   }
 
+  const advices =
+    advicesData?.pages.flatMap(({ proAdvices }) =>
+      offerProAdvicesToAdviceCardData(proAdvices, offerId)
+    ) ?? []
+  const nbAdvices = advicesData?.pages[0]?.nbResults ?? advices.length
+
+  const handleEndReached = useCallback(() => {
+    if (hasNextPage && !isFetchingNextPage) {
+      void fetchNextPage()
+    }
+  }, [fetchNextPage, hasNextPage, isFetchingNextPage])
+
   if (!offer) return null
 
   const title = `Tous les avis sur “${offer.name}”`
 
   return (
     <Container>
-      <ProAdvicesBase title={title} advices={advices ?? []} goBack={goBack} id={venueId}>
+      <ProAdvicesBase
+        title={title}
+        advices={advices}
+        nbAdvices={nbAdvices}
+        goBack={goBack}
+        id={venueId}
+        onEndReached={handleEndReached}
+        isFetchingNextPage={isFetchingNextPage}>
         <AdvicesOfferColumn
           offer={offer}
           subcategoriesMapping={subcategoriesMapping}

@@ -33,6 +33,10 @@ export const AdviceCardListBase = forwardRef<
     snapToInterval,
     headerComponent,
     onContentSizeChange,
+    ListFooterComponent,
+    initialNumToRender,
+    maxToRenderPerBatch,
+    removeClippedSubviews,
     style,
     separatorSize = SEPARATOR_DEFAULT_VALUE,
     onSeeMoreButtonPress,
@@ -116,6 +120,10 @@ export const AdviceCardListBase = forwardRef<
       ItemSeparatorComponent={Separator}
       contentContainerStyle={contentContainerStyle}
       onContentSizeChange={onContentSizeChange}
+      ListFooterComponent={ListFooterComponent}
+      initialNumToRender={initialNumToRender}
+      maxToRenderPerBatch={maxToRenderPerBatch}
+      removeClippedSubviews={removeClippedSubviews}
       showsHorizontalScrollIndicator={false}
       onScroll={onScroll}
       scrollEventThrottle={100}
