@@ -82,6 +82,7 @@ export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {
         videoTitle: props.videoTitle,
         offerIds: props.offerIds,
         eanList: props.eanList,
+        transcription: props.transcription,
       })
     },
     offers,

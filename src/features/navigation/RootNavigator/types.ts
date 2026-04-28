@@ -226,6 +226,7 @@ type VideoModulePageParams = {
   videoTitle: string
   offerIds?: string[]
   eanList?: string[]
+  transcription: string
 }
 
 /**
