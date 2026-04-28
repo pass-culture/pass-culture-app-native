@@ -26,6 +26,8 @@ jobs:
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT }}
+          delegates: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT }}
+          token_format: access_token
       - name: List secrets from Secret Manager
-        run: gcloud secrets list --project ${{ vars.PROJECT_ID }}
+        run: gcloud secrets list --project ${{ steps.authenticate.outputs.project_id }}
 
