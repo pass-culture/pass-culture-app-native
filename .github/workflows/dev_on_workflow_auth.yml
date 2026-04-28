@@ -31,6 +31,9 @@ jobs:
       - name: Set up gcloud SDK
         uses: google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db # v3.0.1
 
+      - name: Check authenticated account
+        run: gcloud auth list
+
       - name: List secrets from Secret Manager
         run: gcloud secrets list --project ${{ vars.PROJECT_ID }}
 
