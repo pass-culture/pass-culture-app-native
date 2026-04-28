@@ -83,6 +83,17 @@ describe('VideoModulePage', () => {
       expect(await screen.findByText(mockTranscription)).toBeOnTheScreen()
     })
 
+    it('should trigger ClickSeeVideoTranscription log when pressing see transcription button', async () => {
+      render(reactQueryProviderHOC(<VideoModulePage />))
+
+      await user.press(await screen.findByText('Voir la transcription'))
+
+      expect(analytics.logClickSeeVideoTranscription).toHaveBeenCalledWith({
+        from: 'videoModal',
+        moduleId: 'module-123',
+      })
+    })
+
     describe('should trigger hasDismissedModal log', () => {
       it('When pressing header back button', async () => {
         render(reactQueryProviderHOC(<VideoModulePage />))
