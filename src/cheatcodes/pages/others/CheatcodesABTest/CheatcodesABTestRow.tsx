@@ -6,7 +6,7 @@ import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGr
 
 const AUTO_KEY = 'Par défaut'
 
-const CheatcodesABTestRow = ({
+export const CheatcodesABTestRow = ({
   item,
 }: {
   item: {
@@ -41,5 +41,3 @@ const CheatcodesABTestRow = ({
 const Row = styled.View(({ theme }) => ({
   paddingVertical: theme.designSystem.size.spacing.m,
 }))
-
-export default CheatcodesABTestRow

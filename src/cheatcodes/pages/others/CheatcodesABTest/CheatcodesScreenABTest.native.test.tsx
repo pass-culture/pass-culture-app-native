@@ -2,7 +2,7 @@ import React from 'react'
 
 import { abTestOverridesActions } from 'shared/useABSegment/abTestOverrideStore'
 import { AB_TESTS_REGISTRY } from 'shared/useABSegment/abTestRegistry'
-import { act, render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { CheatcodesScreenABTest } from './CheatcodesScreenABTest'
 
@@ -10,9 +10,7 @@ const user = userEvent.setup()
 
 describe('<CheatcodesScreenABTest/>', () => {
   beforeEach(() => {
-    act(() => {
-      abTestOverridesActions.resetAll()
-    })
+    abTestOverridesActions.resetAll()
   })
 
   it('should render the registry entries', () => {
@@ -36,9 +34,7 @@ describe('<CheatcodesScreenABTest/>', () => {
     if (!firstTest) return
     const firstSegment = firstTest.segments[0] ?? 'A'
 
-    act(() => {
-      abTestOverridesActions.setOverride(firstTest.id, firstSegment)
-    })
+    abTestOverridesActions.setOverride(firstTest.id, firstSegment)
 
     render(<CheatcodesScreenABTest />)
 
@@ -56,7 +52,9 @@ describe('<CheatcodesScreenABTest/>', () => {
 
     render(<CheatcodesScreenABTest />)
 
-    await user.press(screen.getByText(variantLabel))
+    const variantElement = screen.getAllByText(variantLabel)[0]
+    if (!variantElement) return
+    await user.press(variantElement)
 
     expect(
       screen.getByText(`1 test forcé — ${AB_TESTS_REGISTRY.length} au total`)
@@ -68,9 +66,7 @@ describe('<CheatcodesScreenABTest/>', () => {
     if (!firstTest) return
     const firstSegment = firstTest.segments[0] ?? 'A'
 
-    act(() => {
-      abTestOverridesActions.setOverride(firstTest.id, firstSegment)
-    })
+    abTestOverridesActions.setOverride(firstTest.id, firstSegment)
 
     render(<CheatcodesScreenABTest />)
     await user.press(screen.getByText('Tout réinitialiser'))

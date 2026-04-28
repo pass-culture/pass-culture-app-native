@@ -4,13 +4,11 @@ import {
   useOverride,
   useOverrides,
 } from 'shared/useABSegment/abTestOverrideStore'
-import { act, renderHook } from 'tests/utils'
+import { renderHook } from 'tests/utils'
 
 describe('abTestOverrideStore', () => {
   beforeEach(() => {
-    act(() => {
-      abTestOverridesActions.resetAll()
-    })
+    abTestOverridesActions.resetAll()
   })
 
   it('should return undefined when no override is set', () => {
@@ -20,9 +18,7 @@ describe('abTestOverrideStore', () => {
   })
 
   it('should set and read an override', () => {
-    act(() => {
-      abTestOverridesActions.setOverride('test-a', 'B')
-    })
+    abTestOverridesActions.setOverride('test-a', 'B')
 
     const { result } = renderHook(() => useOverride('test-a'))
 
@@ -30,10 +26,8 @@ describe('abTestOverrideStore', () => {
   })
 
   it('should overwrite an existing override', () => {
-    act(() => {
-      abTestOverridesActions.setOverride('test-a', 'A')
-      abTestOverridesActions.setOverride('test-a', 'B')
-    })
+    abTestOverridesActions.setOverride('test-a', 'A')
+    abTestOverridesActions.setOverride('test-a', 'B')
 
     const { result } = renderHook(() => useOverride('test-a'))
 
@@ -41,10 +35,8 @@ describe('abTestOverrideStore', () => {
   })
 
   it('should remove an override when segment is null', () => {
-    act(() => {
-      abTestOverridesActions.setOverride('test-a', 'A')
-      abTestOverridesActions.setOverride('test-a', null)
-    })
+    abTestOverridesActions.setOverride('test-a', 'A')
+    abTestOverridesActions.setOverride('test-a', null)
 
     const { result } = renderHook(() => useOverride('test-a'))
 
@@ -52,10 +44,8 @@ describe('abTestOverrideStore', () => {
   })
 
   it('should expose the total forced count', () => {
-    act(() => {
-      abTestOverridesActions.setOverride('test-a', 'A')
-      abTestOverridesActions.setOverride('test-b', 'B')
-    })
+    abTestOverridesActions.setOverride('test-a', 'A')
+    abTestOverridesActions.setOverride('test-b', 'B')
 
     const { result } = renderHook(() => useForcedCount())
 
@@ -63,11 +53,9 @@ describe('abTestOverrideStore', () => {
   })
 
   it('resetAll should clear every override', () => {
-    act(() => {
-      abTestOverridesActions.setOverride('test-a', 'A')
-      abTestOverridesActions.setOverride('test-b', 'B')
-      abTestOverridesActions.resetAll()
-    })
+    abTestOverridesActions.setOverride('test-a', 'A')
+    abTestOverridesActions.setOverride('test-b', 'B')
+    abTestOverridesActions.resetAll()
 
     const { result } = renderHook(() => useOverrides())
 

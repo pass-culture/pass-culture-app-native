@@ -1,10 +1,9 @@
 import { AB_TESTS } from 'shared/useABSegment/abTests'
 
-export type ABTestSegment = string
 export type ABTestDefinition = {
   id: string
   label: string
-  segments: ABTestSegment[]
+  segments: string[]
 }
 export const AB_TESTS_REGISTRY: ABTestDefinition[] = [
   {

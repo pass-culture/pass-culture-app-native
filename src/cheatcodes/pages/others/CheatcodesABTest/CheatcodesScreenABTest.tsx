@@ -3,7 +3,7 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import CheatcodesABTestRow from 'cheatcodes/pages/others/CheatcodesABTest/CheatcodesABTestRow'
+import { CheatcodesABTestRow } from 'cheatcodes/pages/others/CheatcodesABTest/CheatcodesABTestRow'
 import { CheatcodeHeaderABTest } from 'cheatcodes/pages/others/CheatcodesABTest/CheatcodesHeaderABTest'
 import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'

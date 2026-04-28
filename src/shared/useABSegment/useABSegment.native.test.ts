@@ -2,7 +2,7 @@ import { env } from 'libs/environment/env'
 import { abTestOverridesActions } from 'shared/useABSegment/abTestOverrideStore'
 import * as SegmentFromIdentifier from 'shared/useABSegment/getSegmentFromIdentifier'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
-import { act, renderHook } from 'tests/utils'
+import { renderHook } from 'tests/utils'
 
 const mockUseAuthContext = jest.fn()
 jest.mock('features/auth/context/AuthContext', () => ({
@@ -39,15 +39,11 @@ const getSegmentFromIdentifierSpy = jest.spyOn(SegmentFromIdentifier, 'getSegmen
 describe('useABSegment', () => {
   beforeEach(() => {
     mockUseAuthContext.mockReturnValue({ user: undefined })
-    act(() => {
-      abTestOverridesActions.resetAll()
-    })
+    abTestOverridesActions.resetAll()
   })
 
   it('should return the forced segment when an override is set and env is not production', () => {
-    act(() => {
-      abTestOverridesActions.setOverride('my-test', 'B')
-    })
+    abTestOverridesActions.setOverride('my-test', 'B')
 
     const { result } = renderHook(() => useABSegment('my-test'))
 
@@ -62,9 +58,7 @@ describe('useABSegment', () => {
   })
 
   it('should fall back to the deterministic segment when the forced segment is not in the segments list', () => {
-    act(() => {
-      abTestOverridesActions.setOverride('my-test', 'Z')
-    })
+    abTestOverridesActions.setOverride('my-test', 'Z')
 
     renderHook(() => useABSegment('my-test'))
 
@@ -74,9 +68,7 @@ describe('useABSegment', () => {
   it('should ignore the override in production', () => {
     const originalEnv = env.ENV
     env.ENV = 'production'
-    act(() => {
-      abTestOverridesActions.setOverride('my-test', 'B')
-    })
+    abTestOverridesActions.setOverride('my-test', 'B')
 
     renderHook(() => useABSegment('my-test'))
 
