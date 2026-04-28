@@ -22,15 +22,10 @@ import { getSpacing } from 'ui/theme'
 
 type Props = {
   offer: Offer
-  hideModal: () => void
   analyticsParams: OfferAnalyticsParams
 }
 
-export const VideoMultiOfferTile: FunctionComponent<Props> = ({
-  offer,
-  hideModal,
-  analyticsParams,
-}) => {
+export const VideoMultiOfferTile: FunctionComponent<Props> = ({ offer, analyticsParams }) => {
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -74,7 +69,6 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
         accessibilityRole={accessibilityRoleInternalNavigation()}
         accessibilityLabel={accessibilityLabel}
         onBeforeNavigate={() => {
-          hideModal()
           prePopulateOffer({ ...offer.offer, offerId: +offer.objectID, categoryId })
           triggerConsultOfferLog({ offerId: +offer.objectID, ...analyticsParams })
         }}

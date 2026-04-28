@@ -249,6 +249,35 @@ describe('adaptOffersPlaylistParameters', () => {
     })
   })
 
+  it('should return algolia parameters when sort by release date is provided', () => {
+    const parameters = {
+      isSortedByReleaseDate: true,
+    } as OffersModuleParameters
+
+    const result = adaptOffersPlaylistParameters(
+      parameters,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
+
+    expect(result).toStrictEqual({
+      ...defaultSearchParameters,
+      isSortedByReleaseDate: true,
+    })
+  })
+
+  it('should not include isSortedByReleaseDate when not provided', () => {
+    const parameters = {} as OffersModuleParameters
+
+    const result = adaptOffersPlaylistParameters(
+      parameters,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
+
+    expect(result).not.toHaveProperty('isSortedByReleaseDate')
+  })
+
   it('should return algolia parameters for offers only with chronicles param provided', () => {
     const parameters = {
       isWithClub: true,

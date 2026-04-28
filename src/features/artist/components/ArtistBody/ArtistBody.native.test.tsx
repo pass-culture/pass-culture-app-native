@@ -99,7 +99,7 @@ describe('<ArtistBody />', () => {
       )
     )
     await waitFor(() => {
-      expect(screen.getByLabelText('artist avatar')).toBeOnTheScreen()
+      expect(screen.getByTestId('artistAvatar')).toBeOnTheScreen()
     })
   })
 

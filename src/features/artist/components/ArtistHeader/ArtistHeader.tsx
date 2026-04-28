@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ArtistHeaderWrapper } from 'features/artist/components/ArtistHeader/ArtistHeaderWrapper'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Avatar } from 'ui/components/Avatar/Avatar'
 import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
@@ -19,13 +18,9 @@ export const ArtistHeader = ({ avatarImage, name }: ArtistHeaderProps) => {
     <ArtistHeaderWrapper gap={4}>
       <Avatar size={AVATAR_LARGE}>
         {avatarImage ? (
-          <StyledImage
-            url={avatarImage}
-            accessibilityRole={AccessibilityRole.IMAGE}
-            accessibilityLabel="artist avatar"
-          />
+          <StyledImage url={avatarImage} testID="artistAvatar" />
         ) : (
-          <DefaultAvatar />
+          <DefaultAvatar testID="defaultArtistAvatar" />
         )}
       </Avatar>
       <Typo.Title1>{name}</Typo.Title1>

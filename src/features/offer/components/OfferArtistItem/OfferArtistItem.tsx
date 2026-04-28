@@ -3,7 +3,6 @@ import { View } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { OfferArtist } from 'api/gen'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Avatar } from 'ui/components/Avatar/Avatar'
 import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
@@ -34,13 +33,9 @@ export const OfferArtistItem: FunctionComponent<Props> = ({
     <Container gap={2}>
       <Avatar>
         {artistHasPage && artist.image ? (
-          <StyledImage
-            url={artist.image}
-            accessibilityRole={AccessibilityRole.IMAGE}
-            accessibilityLabel="artist avatar"
-          />
+          <StyledImage url={artist.image} testID="artistAvatar" />
         ) : (
-          <DefaultAvatar testID="defaultAvatar" />
+          <DefaultAvatar testID="defaultArtistAvatar" />
         )}
       </Avatar>
       <SubContainer>

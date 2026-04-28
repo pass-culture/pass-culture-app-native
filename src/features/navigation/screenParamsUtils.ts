@@ -26,6 +26,7 @@ type ScreensRequiringParsing = Extract<
   | 'ThematicSearch'
   | 'ProAdvicesOffer'
   | 'ProAdvicesVenue'
+  | 'VideoModulePage'
 >
 
 type ParamsList = Required<AllNavParamList>
@@ -180,6 +181,23 @@ export const screenParamsParser: ParamsParsers = {
   ProAdvicesVenue: {
     venueId: Number,
     offerId: Number,
+  },
+  VideoModulePage: {
+    moduleId: identityFn,
+    moduleName: identityFn,
+    homeEntryId: identityFn,
+    offersModuleParameters: identityFn,
+    youtubeVideoId: identityFn,
+    isMultiOffer: identityFn,
+    videoTag: identityFn,
+    videoPublicationDate: identityFn,
+    videoDescription: identityFn,
+    offerTitle: identityFn,
+    color: identityFn,
+    videoTitle: identityFn,
+    offerIds: identityFn,
+    eanList: identityFn,
+    transcription: identityFn,
   },
 }
 

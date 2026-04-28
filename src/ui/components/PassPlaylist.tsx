@@ -40,7 +40,8 @@ type Props = Pick<
     navigateToVerticalPlaylist?: InternalNavigationProps['navigateTo']
     navigateToSearchPlaylist?: InternalNavigationProps['navigateTo']
     onBeforeNavigate: () => void
-    hideSeeAllButton?: boolean
+    hidePlaylistSeeAll?: boolean
+    hideSearchSeeAll?: boolean
   }
 }
 
@@ -79,7 +80,7 @@ export const PassPlaylist = ({
             />
           </TitleContainer>
           <SeeAllButtonContainer>
-            <SeeAllButton playlistTitle={title} seeAllButton={seeAllButton} />
+            <SeeAllButton playlistTitle={title} data={seeAllButton} />
           </SeeAllButtonContainer>
           {showNewTag ? (
             <TagContainer>

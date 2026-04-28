@@ -1,22 +1,26 @@
 import React from 'react'
+import { Platform } from 'react-native'
 
 import { SeeAllButtonWrapper } from 'ui/components/SeeAllButton/SeeAllButtonWrapper'
 import { SeeAllInSearchButton } from 'ui/components/SeeAllButton/SeeAllInSearchButton'
 import { SeeAllInVerticalPlaylistButton } from 'ui/components/SeeAllButton/SeeAllInVerticalPlaylistButton'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 
+const isWeb = Platform.OS === 'web'
+
 type Props = {
   playlistTitle: string
-  seeAllButton?: {
+  data?: {
     onBeforeNavigate: () => void
     navigateToSearchPlaylist?: InternalNavigationProps['navigateTo']
     navigateToVerticalPlaylist?: InternalNavigationProps['navigateTo']
-    hideSeeAllButton?: boolean
+    hidePlaylistSeeAll?: boolean
+    hideSearchSeeAll?: boolean
   }
 }
 
-export const SeeAllButton = ({ playlistTitle, seeAllButton }: Props) => {
-  const noSeeAllButton = !seeAllButton
+export const SeeAllButton = ({ playlistTitle, data }: Props) => {
+  const noSeeAllButton = !data
   const accessibilityLabel = `Tout voir pour la sélection ${playlistTitle}`
 
   if (noSeeAllButton) return null
@@ -24,16 +28,18 @@ export const SeeAllButton = ({ playlistTitle, seeAllButton }: Props) => {
   const {
     navigateToSearchPlaylist,
     navigateToVerticalPlaylist,
-    hideSeeAllButton,
+    hidePlaylistSeeAll = false,
+    hideSearchSeeAll = false,
     onBeforeNavigate,
-  } = seeAllButton
+  } = data
 
   const noNavigationToAnyPlaylist = !navigateToSearchPlaylist && !navigateToVerticalPlaylist
-  const showSeeAllButton = !hideSeeAllButton
+  const showSeeAllInVerticalButton = !hidePlaylistSeeAll && !isWeb
+  const showSeeAllInSearchButton = !hideSearchSeeAll
 
   if (noNavigationToAnyPlaylist) return null
 
-  if (navigateToVerticalPlaylist && showSeeAllButton) {
+  if (navigateToVerticalPlaylist && showSeeAllInVerticalButton) {
     return (
       <SeeAllButtonWrapper>
         <SeeAllInVerticalPlaylistButton
@@ -45,7 +51,7 @@ export const SeeAllButton = ({ playlistTitle, seeAllButton }: Props) => {
     )
   }
 
-  if (navigateToSearchPlaylist) {
+  if (navigateToSearchPlaylist && showSeeAllInSearchButton) {
     return (
       <SeeAllButtonWrapper>
         <SeeAllInSearchButton

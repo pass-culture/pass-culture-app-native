@@ -14,7 +14,6 @@ import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialN
 import { loggedInBeneficiaryContentConfig } from 'features/profile/containers/ProfileLoggedIn/LoggedInContent/LoggedInBeneficiaryContent/loggedInBeneficiaryContentConfig'
 import { loggedInNonBeneficiaryContentConfig } from 'features/profile/containers/ProfileLoggedIn/LoggedInContent/LoggedInNonBeneficiaryContent/loggedInNonBeneficiaryContentConfig'
 import { getShouldDisplayHelpButton } from 'features/profile/helpers/getShouldDisplayHelpButton'
-import { useAppearanceTag } from 'features/profile/helpers/useAppearanceTag'
 import { useGeolocationSwitch } from 'features/profile/helpers/useGeolocationSwitch'
 import { UserProfile } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -31,28 +30,19 @@ type Props = { user: UserProfile | undefined }
 
 export const LoggedInContent = ({ user }: Props) => {
   const isChatbotFeatureEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CHATBOT)
-  const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
   const shouldDisplayHelpButton = getShouldDisplayHelpButton({ user })
 
   const userStatusType = user?.status?.statusType
   const isEligibleForChatbot = !!userStatusType && CHATBOT_ELIGIBLE_STATUSES.has(userStatusType)
   const shouldDisplayChatbotButton = isChatbotFeatureEnabled && isEligibleForChatbot
 
-  const { hasSeenAppearanceTag, markAppearanceTagSeen } = useAppearanceTag(enableDarkModeGtm)
   const { isGeolocSwitchActive, switchGeolocation } = useGeolocationSwitch()
   const { navigate } = useNavigation<UseNavigationType>()
   const { geolocPositionError } = useLocation()
 
   const sharedConfig = {
     ChatbotButton: shouldDisplayChatbotButton ? <ChatbotButton /> : null,
-    AppearanceButton: (
-      <AppearanceButton
-        navigate={navigate}
-        enableDarkModeGtm={enableDarkModeGtm}
-        hasSeenAppearanceTag={hasSeenAppearanceTag}
-        markAppearanceTagSeen={markAppearanceTagSeen}
-      />
-    ),
+    AppearanceButton: <AppearanceButton navigate={navigate} />,
     LocationButton: (
       <LocationButton
         isGeolocSwitchActive={isGeolocSwitchActive}

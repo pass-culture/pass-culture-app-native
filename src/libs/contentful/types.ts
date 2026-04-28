@@ -199,6 +199,7 @@ type VideoFields = {
   offerIds?: string[]
   eanList?: string[]
   additionalAlgoliaParameters?: AlgoliaParameters[]
+  transcription: string
 }
 
 type VenueMapBlockFields = {
@@ -258,6 +259,7 @@ export interface SearchParametersFields {
   priceMax?: number
   isDuo?: boolean
   newestOnly?: boolean
+  isSortedByReleaseDate?: boolean
   hitsPerPage: number
   minBookingsThreshold?: number
   movieGenres?: MovieGenres

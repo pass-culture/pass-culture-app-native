@@ -1,8 +1,8 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 
 import { OFFER_ADVICE_THUMBNAIL_HEIGHT } from 'features/advices/constants'
-import { useVenueProAdvicesQuery } from 'features/advices/queries/useVenueProAdvicesQuery'
+import { useVenueProAdvicesInfiniteQuery } from 'features/advices/queries/useVenueProAdvicesInfiniteQuery'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { venueProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/venueProAdvicesToAdviceCardData/venueProAdvicesToAdviceCardData'
@@ -17,12 +17,26 @@ export const ProAdvicesVenue: FunctionComponent = () => {
   const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE)
 
   const { data: venue } = useVenueQuery(venueId)
-  const { data: advices } = useVenueProAdvicesQuery({
+  const {
+    data: advicesData,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useVenueProAdvicesInfiniteQuery({
     venueId,
     enableProAdvices,
-    select: ({ proAdvices }) => venueProAdvicesToAdviceCardData(proAdvices, venueId),
   })
-  const nbAdvices = advices?.length ?? 0
+  const advices =
+    advicesData?.pages.flatMap(({ proAdvices }) =>
+      venueProAdvicesToAdviceCardData(proAdvices, venueId)
+    ) ?? []
+  const nbAdvices = advicesData?.pages[0]?.nbResults ?? advices.length
+
+  const handleEndReached = useCallback(() => {
+    if (hasNextPage && !isFetchingNextPage) {
+      void fetchNextPage()
+    }
+  }, [fetchNextPage, hasNextPage, isFetchingNextPage])
 
   const { goBack } = useGoBack('Venue')
 
@@ -33,9 +47,12 @@ export const ProAdvicesVenue: FunctionComponent = () => {
   return (
     <ProAdvicesBase
       title={title}
-      advices={advices ?? []}
+      advices={advices}
+      nbAdvices={nbAdvices}
       goBack={goBack}
       id={offerId}
+      onEndReached={handleEndReached}
+      isFetchingNextPage={isFetchingNextPage}
       thumbnailHeight={OFFER_ADVICE_THUMBNAIL_HEIGHT}
     />
   )

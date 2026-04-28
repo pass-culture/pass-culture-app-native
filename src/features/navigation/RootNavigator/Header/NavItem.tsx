@@ -1,19 +1,13 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/menu'
-import { TabBarBadge } from 'features/navigation/TabBar/TabBarBadge'
 import { TabRouteName } from 'features/navigation/TabBar/TabStackNavigatorTypes'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
-
-const DARK_MODE_BADGE_STORAGE_KEY = 'darkModeGtmProfileBadgeSeen'
 
 interface NavItemInterface {
   isSelected?: boolean
@@ -32,48 +26,7 @@ export const NavItem: React.FC<NavItemInterface> = ({
   badgeValue,
   onBeforeNavigate,
 }) => {
-  const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
-  const [hasSeenProfileBadge, setHasSeenProfileBadge] = useState<boolean | null>(null)
-  const isMounted = useRef(true)
-
-  useEffect(() => {
-    isMounted.current = true
-
-    const fetchBadgeState = async () => {
-      if (!enableDarkModeGtm || tabName !== 'Profile') {
-        setHasSeenProfileBadge(null)
-        return
-      }
-      const stored = await AsyncStorage.getItem(DARK_MODE_BADGE_STORAGE_KEY)
-      if (!isMounted.current) return
-      setHasSeenProfileBadge(stored === 'true')
-    }
-
-    fetchBadgeState()
-    return () => {
-      isMounted.current = false
-    }
-  }, [enableDarkModeGtm, tabName])
-
-  const markBadgeAsSeen = useCallback(() => {
-    if (tabName !== 'Profile' || !enableDarkModeGtm) return
-    setHasSeenProfileBadge(true)
-    AsyncStorage.setItem(DARK_MODE_BADGE_STORAGE_KEY, 'true').catch(() => null)
-  }, [enableDarkModeGtm, tabName])
-
-  const showProfileBadge =
-    enableDarkModeGtm && tabName === 'Profile' && hasSeenProfileBadge === false
-
-  const handleBeforeNavigate = useCallback(() => {
-    markBadgeAsSeen()
-    onBeforeNavigate?.()
-  }, [markBadgeAsSeen, onBeforeNavigate])
-
-  const accessibilityLabel = useMemo(() => {
-    const base = menu[tabName].accessibilityLabel ?? menu[tabName].displayName
-    if (showProfileBadge) return `${base} - nouvelle fonctionnalité disponible`
-    return base
-  }, [tabName, showProfileBadge])
+  const accessibilityLabel = menu[tabName].accessibilityLabel ?? menu[tabName].displayName
 
   return (
     <StyledTouchableLink
@@ -82,12 +35,11 @@ export const NavItem: React.FC<NavItemInterface> = ({
       activeOpacity={1}
       on
       testID={`${tabName} tab`}
-      onBeforeNavigate={handleBeforeNavigate}
+      onBeforeNavigate={onBeforeNavigate}
       accessibilityCurrent={isSelected ? 'page' : undefined}
       accessibilityLabel={accessibilityLabel}>
       <IconWrapper>
         <StyledIcon as={BicolorIcon} selected={isSelected} badgeValue={badgeValue} />
-        {showProfileBadge ? <TabBarBadge /> : null}
       </IconWrapper>
       <Title isSelected={isSelected}>{menu[tabName].displayName}</Title>
     </StyledTouchableLink>

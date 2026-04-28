@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { ArtistType } from 'api/gen'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -15,6 +16,7 @@ const mockMultiArtists = [
   { id: '2', name: 'Zoe Saldana' },
   { id: '3', name: 'Sigourney Weaver' },
 ]
+const mockFilmActor = { id: '4', name: 'Jamel Debbouze', role: ArtistType.film_actor }
 
 describe('<OfferArtists />', () => {
   it('should display artists', () => {
@@ -99,5 +101,11 @@ describe('<OfferArtists />', () => {
     render(<OfferArtists artists={[mockArtist]} />)
 
     expect(screen.getByText('de')).toBeOnTheScreen()
+  })
+
+  it('should use "avec" prefix if there is only one film actor', () => {
+    render(<OfferArtists artists={[mockFilmActor]} />)
+
+    expect(screen.getByText('avec')).toBeOnTheScreen()
   })
 })

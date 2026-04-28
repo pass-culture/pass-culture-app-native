@@ -14,7 +14,7 @@ type Props = {
   properties: BookingProperties
   offerFullAddress?: string
   venue: BookingVenueResponseV2
-  address?: VenueBlockAddress
+  address?: VenueBlockAddress | null
   thumbnailSize: number
   onSeeVenuePress?: VoidFunction
   addressLabel?: string

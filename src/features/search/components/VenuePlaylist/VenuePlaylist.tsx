@@ -9,7 +9,6 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
-import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getActivitiesFromSearchGroup } from 'features/search/helpers/getActivitiesFromSearchGroup/getActivitiesFromSearchGroup'
@@ -21,6 +20,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
+import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { useModal } from 'ui/components/modals/useModal'
 import { Playlist } from 'ui/components/Playlist'
 import { Separator } from 'ui/components/Separator'
@@ -153,7 +153,7 @@ export const VenuePlaylist: React.FC<Props> = ({
               />
             </ButtonContainer>
           ) : (
-            <NumberOfResults nbHits={venues?.length ?? 0} />
+            <NumberOfItems nbItems={venues?.length ?? 0} />
           )}
         </HeaderPlaylistContainer>
         <Playlist

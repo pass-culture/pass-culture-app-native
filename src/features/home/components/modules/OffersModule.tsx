@@ -153,11 +153,6 @@ export const OffersModule = (props: OffersModuleProps) => {
 
   if (!shouldModuleBeDisplayed) return null
 
-  const hideSeeAllButton =
-    (displayParameters.layout === 'three-items' && offersToDisplay.length <= 3) ||
-    (displayParameters.layout === 'two-items' && offersToDisplay.length <= 2) ||
-    (displayParameters.layout === 'one-item-medium' && offersToDisplay.length <= 1)
-
   const navigateToVerticalPlaylist = {
     screen: 'VerticalPlaylistOffers' as const,
     params: {
@@ -188,10 +183,9 @@ export const OffersModule = (props: OffersModuleProps) => {
           onViewableItemsChanged={handleViewableItemsChanged}
           contentContainerStyle={{ paddingHorizontal: designSystem.size.spacing.xl }}
           seeAllButton={{
+            onBeforeNavigate,
             navigateToVerticalPlaylist,
             navigateToSearchPlaylist: searchTabConfig,
-            onBeforeNavigate,
-            hideSeeAllButton,
           }}
         />
       )}

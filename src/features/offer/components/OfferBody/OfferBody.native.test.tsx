@@ -2,6 +2,7 @@ import * as reactNavigation from '@react-navigation/native'
 import React, { ComponentProps } from 'react'
 
 import {
+  ArtistType,
   CategoryIdEnum,
   HomepageLabelNameEnumv2,
   NativeCategoryIdEnumv2,
@@ -166,6 +167,68 @@ describe('<OfferBody />', () => {
     })
 
     expect(await screen.findByText('Marion Cotillard, Leonardo DiCaprio')).toBeOnTheScreen()
+  })
+
+  it('should display cinema director before cinema actors', async () => {
+    const offer: OfferResponse = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
+      artists: [
+        { id: '2', name: 'Élodie Fontan', role: ArtistType.film_actor },
+        { id: '1', name: 'Philippe Lacheau', role: ArtistType.film_director },
+        { id: '3', name: 'Jamel Debbouze', role: ArtistType.film_actor },
+      ],
+    }
+
+    renderOfferBody({ offer })
+
+    expect(await screen.findByText('de')).toBeOnTheScreen()
+    expect(screen.getByText('Philippe Lacheau')).toBeOnTheScreen()
+    expect(screen.getByText('avec')).toBeOnTheScreen()
+    expect(screen.getByText('Élodie Fontan, Jamel Debbouze')).toBeOnTheScreen()
+  })
+
+  it('should display only cinema director when there is no actor', async () => {
+    const offer: OfferResponse = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
+      artists: [{ id: '1', name: 'Philippe Lacheau', role: ArtistType.film_director }],
+    }
+
+    renderOfferBody({ offer })
+
+    expect(await screen.findByText('de')).toBeOnTheScreen()
+    expect(screen.getByText('Philippe Lacheau')).toBeOnTheScreen()
+    expect(screen.queryByText('avec')).not.toBeOnTheScreen()
+  })
+
+  it('should display only cinema actors when there is no director', async () => {
+    const offer: OfferResponse = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
+      artists: [
+        { id: '2', name: 'Élodie Fontan', role: ArtistType.film_actor },
+        { id: '3', name: 'Jamel Debbouze', role: ArtistType.film_actor },
+      ],
+    }
+
+    renderOfferBody({ offer })
+
+    expect(await screen.findByText('avec')).toBeOnTheScreen()
+    expect(screen.getByText('Élodie Fontan, Jamel Debbouze')).toBeOnTheScreen()
+    expect(screen.queryByText('de')).not.toBeOnTheScreen()
+  })
+
+  it('should expose an accessibility label with the cinema prefix', async () => {
+    const offer: OfferResponse = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
+      artists: [{ name: 'Philippe Lacheau', role: ArtistType.film_director }],
+    }
+
+    renderOfferBody({ offer })
+
+    expect(await screen.findByLabelText('de Philippe Lacheau')).toBeOnTheScreen()
   })
 
   it('should not display artists when array is empty', () => {

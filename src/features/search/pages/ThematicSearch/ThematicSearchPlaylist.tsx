@@ -61,7 +61,11 @@ export function ThematicSearchPlaylist({
       FlatListComponent={FlatList}
       playlistRef={playlistRef}
       onViewableItemsChanged={onViewableItemsChanged}
-      seeAllButton={{ navigateToVerticalPlaylist, onBeforeNavigate }}
+      seeAllButton={{
+        onBeforeNavigate,
+        navigateToVerticalPlaylist,
+        hideSearchSeeAll: true,
+      }}
     />
   )
 }

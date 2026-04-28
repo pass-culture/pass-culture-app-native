@@ -8,7 +8,6 @@ import styled from 'styled-components/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { usePreviousRouteName } from 'features/navigation/helpers/usePreviousRouteName'
-import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
@@ -20,6 +19,7 @@ import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
+import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { GridLayoutButton } from 'ui/components/buttons/GridLayoutButton'
@@ -164,7 +164,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
         <HeaderSectionContainer>
           <TitleContainer>
             <Title>{offerTitle}</Title>
-            <NumberOfResults nbHits={nbHits} />
+            <NumberOfItems nbItems={nbHits} />
           </TitleContainer>
           {shouldDisplayGridList ? (
             <GridListMenu testID="grid-list-menu">

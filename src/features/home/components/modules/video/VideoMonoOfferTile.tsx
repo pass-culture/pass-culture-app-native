@@ -16,15 +16,15 @@ import { getSpacing } from 'ui/theme'
 type Props = {
   offer: Offer
   color: Color
-  hideModal: () => void
   analyticsParams: OfferAnalyticsParams
+  onPressOffer?: () => void
   style?: StyleProp<ViewStyle>
 }
 
 export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   offer,
-  hideModal,
   analyticsParams,
+  onPressOffer,
   style,
 }) => {
   const mapping = useCategoryIdMapping()
@@ -40,7 +40,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
     style,
     navigateTo: { screen: 'Offer', params: { id: +offer.objectID } } as const,
     onBeforeNavigate: () => {
-      hideModal()
+      onPressOffer?.()
       prePopulateOffer({ ...offer.offer, offerId: +offer.objectID, categoryId })
       triggerConsultOfferLog({ offerId: +offer.objectID, ...analyticsParams })
     },

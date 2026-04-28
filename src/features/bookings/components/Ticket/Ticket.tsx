@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
-import { BookingOfferResponseAddress, BookingResponse, TicketResponse } from 'api/gen'
+import { BookingResponse, TicketResponse } from 'api/gen'
 import { TicketBottomPart } from 'features/bookings/components/Ticket/TicketBottomPart/TicketBottomPart'
 import { TicketDisplay } from 'features/bookings/components/Ticket/TicketDisplay'
 import { TicketTopPart } from 'features/bookings/components/Ticket/TicketTopPart'
@@ -12,7 +12,6 @@ import { getTicketVariant } from 'features/bookings/helpers/getTicketVariant'
 import { useArchiveBookingMutation } from 'features/bookings/queries'
 import { BookingProperties } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { VenueBlockAddress } from 'features/offer/components/OfferVenueBlock/type'
 import { VenueBlockWithItinerary } from 'features/offer/components/OfferVenueBlock/VenueBlockWithItinerary'
 import { getAddress } from 'features/offer/helpers/getVenueBlockProps'
 import { UserProfile } from 'features/share/types'
@@ -109,6 +108,8 @@ export const Ticket = ({
     />
   )
 
+  const displayVenueAddress = !offer.isDigital
+
   return (
     <TicketDisplay
       onTopBlockLayout={setTopBlockHeight}
@@ -130,7 +131,7 @@ export const Ticket = ({
               properties={properties}
               offerFullAddress={offerFullAddress}
               venue={booking.stock.offer.venue}
-              address={getVenueBlockAddress(booking.stock.offer.address)}
+              address={displayVenueAddress ? booking.stock.offer.address : undefined}
               offerId={offer.id}
               thumbnailSize={VENUE_THUMBNAIL_SIZE}
               addressLabel={venueBlockAddress?.label ?? undefined}
@@ -157,10 +158,4 @@ export const Ticket = ({
       infoBanner={properties.isDigital ? undefined : infoBanner}
     />
   )
-}
-
-const getVenueBlockAddress = (
-  address: BookingOfferResponseAddress | null | undefined
-): VenueBlockAddress | undefined => {
-  return address ?? undefined
 }

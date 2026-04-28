@@ -37,6 +37,7 @@ import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBound
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
+import { VideoModulePage } from 'features/home/pages/VideoModulePage'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
@@ -74,6 +75,7 @@ import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
+import { VerticalPlaylistArtists } from 'shared/verticalPlaylist/pages/VerticalPlaylistArtists'
 import { VerticalPlaylistOffers } from 'shared/verticalPlaylist/pages/VerticalPlaylistOffers'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
 import { LoadingPage } from 'ui/pages/LoadingPage'
@@ -363,6 +365,16 @@ const rootScreens: RouteConfig[] = [
     name: 'VerticalPlaylistOffers',
     component: VerticalPlaylistOffers,
     options: { title: 'Liste de lecture verticale' },
+  },
+  {
+    name: 'VerticalPlaylistArtists',
+    component: VerticalPlaylistArtists,
+    options: { title: 'Liste de lecture verticale' },
+  },
+  {
+    name: 'VideoModulePage',
+    component: VideoModulePage,
+    options: { title: 'Vidéo' },
   },
 ]
 

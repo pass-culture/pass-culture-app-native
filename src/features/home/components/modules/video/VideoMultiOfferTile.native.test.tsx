@@ -24,8 +24,6 @@ const mockAnalyticsParams: OfferAnalyticsParams = {
   isHeadline: false,
 }
 
-const hideModalMock = jest.fn()
-
 jest.mock('libs/firebase/analytics/analytics')
 
 const user = userEvent.setup()
@@ -59,14 +57,7 @@ describe('VideoMultiOfferTile', () => {
 })
 
 function renderMultiOfferTile() {
-  render(
-    <VideoMultiOfferTile
-      offer={mockOffer}
-      hideModal={hideModalMock}
-      analyticsParams={mockAnalyticsParams}
-    />,
-    {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    }
-  )
+  render(<VideoMultiOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />, {
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
 }

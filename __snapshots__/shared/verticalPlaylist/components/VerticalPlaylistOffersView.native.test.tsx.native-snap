@@ -213,8 +213,9 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
         </Styled(Styled(Text))>
         <Styled(View)>
           <Styled(View)>
-            <NumberOfOffers
-              nbHits={3}
+            <NumberOfItems
+              nbItems={3}
+              type="offers"
             />
           </Styled(View)>
           <Styled(View)>
@@ -412,9 +413,6 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
           <View
             style={
               {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
                 "justifyContent": "center",
               }
             }
@@ -895,7 +893,6 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
             {
               "backgroundColor": "#f1f1f4",
               "height": 2,
-              "marginHorizontal": 24,
               "marginVertical": 16,
             }
           }
@@ -1164,7 +1161,6 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
             {
               "backgroundColor": "#f1f1f4",
               "height": 2,
-              "marginHorizontal": 24,
               "marginVertical": 16,
             }
           }

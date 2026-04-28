@@ -4,18 +4,18 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
-import { NumberOfOffers } from 'features/search/components/NumberOfOffers/NumberOfOffers'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
 import { useGridListLayout, gridListLayoutActions } from 'features/search/store/gridListLayoutStore'
 import { GridListLayout } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
+import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { Offer } from 'shared/offer/types'
+import { LineSeparator } from 'shared/verticalPlaylist/components/LineSeparator'
 import { GridLayoutButton } from 'ui/components/buttons/GridLayoutButton'
 import { ListLayoutButton } from 'ui/components/buttons/ListLayoutButton'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { LineSeparator } from 'ui/components/LineSeparator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Page } from 'ui/pages/Page'
 import { RATIO_HOME_IMAGE, Spacer, Typo } from 'ui/theme'
@@ -110,7 +110,6 @@ export const VerticalPlaylistOffersView = ({
   return (
     <Page>
       <PageHeaderWithoutPlaceholder />
-
       <FlatList
         data={items}
         keyExtractor={(item) => item.objectID}
@@ -125,7 +124,7 @@ export const VerticalPlaylistOffersView = ({
             {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
             <HeaderRow>
               <TitleContainer>
-                <NumberOfOffers nbHits={nbHits} />
+                <NumberOfItems nbItems={nbHits} type="offers" />
               </TitleContainer>
               {canUseGrid ? (
                 <GridListMenu>
@@ -173,6 +172,5 @@ const Placeholder = styled.View<{ height: number }>(({ height }) => ({
 }))
 
 const TitleContainer = styled.View({
-  flex: 1,
   justifyContent: 'center',
 })

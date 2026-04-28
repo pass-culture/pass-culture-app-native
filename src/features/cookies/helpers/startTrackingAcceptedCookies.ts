@@ -4,6 +4,7 @@ import { Cookies } from 'features/cookies/types'
 import { Adjust } from 'libs/adjust/adjust'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { Batch, BatchPush } from 'libs/react-native-batch'
+import { logAppThemeStatus } from 'libs/styled/logAppThemeStatus'
 
 const cookiesNameEnumUTM =
   CookieNameEnum.TRAFFIC_CAMPAIGN &&
@@ -19,6 +20,13 @@ export const generateUTMKeys = [
   'campaign_date',
 ]
 
+let hasLoggedAppThemeStatus = false
+
+// This method is only for tests, to be able to test the AppThemeStatus log multiple times in the same test suite
+export const resetHasLoggedAppThemeStatusForTests = () => {
+  hasLoggedAppThemeStatus = false
+}
+
 export const startTrackingAcceptedCookies = (
   acceptedCookies: Cookies,
   calledBecauseOfNewConsents: boolean
@@ -27,6 +35,11 @@ export const startTrackingAcceptedCookies = (
   acceptedGoogleAnalytics
     ? firebaseAnalytics.enableCollection()
     : firebaseAnalytics.disableCollection()
+
+  if (acceptedGoogleAnalytics && !hasLoggedAppThemeStatus) {
+    hasLoggedAppThemeStatus = true
+    void logAppThemeStatus()
+  }
 
   const acceptedAdjust = acceptedCookies.includes(CookieNameEnum.ADJUST)
   acceptedAdjust ? Adjust.initOrEnable(calledBecauseOfNewConsents) : Adjust.disable()

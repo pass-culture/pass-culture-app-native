@@ -4,7 +4,6 @@ import { ScrollViewProps, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { gridListLayoutActions, useGridListLayout } from 'features/search/store/gridListLayoutStore'
 import { GridListLayout } from 'features/search/types'
@@ -12,6 +11,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location/location'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
+import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { Offer } from 'shared/offer/types'
 import { GridLayoutButton } from 'ui/components/buttons/GridLayoutButton'
 import { ListLayoutButton } from 'ui/components/buttons/ListLayoutButton'
@@ -104,7 +104,7 @@ export const SearchResultsListHeader: React.FC<SearchListHeaderProps> = ({
         <HeaderSectionContainer>
           <TitleContainer>
             <Title>{title}</Title>
-            <NumberOfResults nbHits={nbHits} />
+            <NumberOfItems nbItems={nbHits} />
           </TitleContainer>
           {shouldDisplayGridList ? (
             <GridListMenu testID="grid-list-menu">

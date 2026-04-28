@@ -5,7 +5,6 @@ import { styled } from 'styled-components/native'
 import { theme } from 'theme'
 import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileFilled } from 'ui/svg/icons/ProfileFilled'
 import { Typo } from 'ui/theme'
 import { AVATAR_LARGE, AVATAR_MEDIUM, AVATAR_SMALL, AVATAR_XSMALL } from 'ui/theme/constants'
@@ -63,11 +62,7 @@ const variantConfig: Variants<typeof Avatar> = [
     label: 'Avatar with custom images',
     props: {
       size: AVATAR_LARGE,
-      children: (
-        <DefaultAvatar>
-          <Profile size={35} color={theme.designSystem.color.icon.lockedInverted} />
-        </DefaultAvatar>
-      ),
+      children: <DefaultAvatar />,
     },
   },
   {

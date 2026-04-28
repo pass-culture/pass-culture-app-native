@@ -27,7 +27,7 @@ describe('OfferArtistItem', () => {
         />
       )
 
-      expect(screen.getByLabelText('artist avatar')).toBeOnTheScreen()
+      expect(screen.getByTestId('artistAvatar')).toBeOnTheScreen()
     })
 
     it('should display default avatar when artist image not defined', () => {
@@ -39,7 +39,7 @@ describe('OfferArtistItem', () => {
         />
       )
 
-      expect(screen.getByTestId('defaultAvatar')).toBeOnTheScreen()
+      expect(screen.getByTestId('defaultArtistAvatar')).toBeOnTheScreen()
     })
 
     it('should display chevron icon', () => {
@@ -73,8 +73,8 @@ describe('OfferArtistItem', () => {
     it('should always display default avatar even if image is provided', () => {
       render(<OfferArtistItem artist={mockArtistWithoutId} />)
 
-      expect(screen.getByTestId('defaultAvatar')).toBeOnTheScreen()
-      expect(screen.queryByLabelText('artist avatar')).not.toBeOnTheScreen()
+      expect(screen.getByTestId('defaultArtistAvatar')).toBeOnTheScreen()
+      expect(screen.queryByTestId('artistAvatar')).not.toBeOnTheScreen()
     })
 
     it('should display artist name', () => {

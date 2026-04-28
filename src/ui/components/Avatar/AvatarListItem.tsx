@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Avatar, AvatarProps } from 'ui/components/Avatar/Avatar'
 import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
@@ -27,24 +26,17 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
 }) => {
   return (
     <InternalTouchableLink
-      navigateTo={{
-        screen: 'Artist',
-        params: { id: id.toString() },
-      }}
+      accessibilityLabel={name}
+      navigateTo={{ screen: 'Artist', params: { id: id.toString() } }}
       onBeforeNavigate={() => onItemPress(id.toString(), name)}>
       <StyledView gap={2} isFullWidth={isFullWidth}>
         <Avatar size={size} {...props}>
           {image ? (
-            <StyledImage
-              url={image}
-              accessibilityRole={AccessibilityRole.IMAGE}
-              accessibilityLabel={`Avatar de lʼartiste ${name}`}
-            />
+            <StyledImage url={image} testID="artistAvatar" />
           ) : (
-            <DefaultAvatar />
+            <DefaultAvatar testID="defaultArtistAvatar" />
           )}
         </Avatar>
-
         <ArtistName numberOfLines={2} maxWidth={size ?? 0} isFullWidth={isFullWidth}>
           {name}
         </ArtistName>

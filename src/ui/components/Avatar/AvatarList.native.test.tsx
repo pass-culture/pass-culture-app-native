@@ -13,7 +13,7 @@ const avatarsData = [
 
 const user = userEvent.setup()
 
-describe('<AvatarsList />', () => {
+describe('<AvatarList />', () => {
   jest.useFakeTimers()
 
   it('should display all items in the list', () => {
@@ -53,14 +53,13 @@ describe('<AvatarsList />', () => {
   it('should display custom images for avatars', () => {
     render(<AvatarList data={avatarsData} onItemPress={jest.fn()} />)
 
-    expect(screen.getByLabelText('Avatar de lʼartiste Oda')).toBeOnTheScreen()
-    expect(screen.getByLabelText('Avatar de lʼartiste MMMM')).toBeOnTheScreen()
+    expect(screen.getAllByTestId('artistAvatar')).toHaveLength(2)
   })
 
   it('should handle missing images gracefully', () => {
     render(<AvatarList data={avatarsData} onItemPress={jest.fn()} />)
 
-    expect(screen.getByTestId('BicolorProfile')).toBeOnTheScreen()
+    expect(screen.getByTestId('defaultArtistAvatar')).toBeOnTheScreen()
   })
 
   it('should navigate to the artist when clicking on avatar tile', async () => {
@@ -68,8 +67,6 @@ describe('<AvatarsList />', () => {
 
     await user.press(screen.getByText('Oda'))
 
-    expect(navigate).toHaveBeenCalledWith('Artist', {
-      id: '1',
-    })
+    expect(navigate).toHaveBeenCalledWith('Artist', { id: '1' })
   })
 })

@@ -4,11 +4,13 @@ import { CookieNameEnum } from 'features/cookies/enums'
 import { removeGeneratedStorageKey } from 'features/cookies/helpers/removeGeneratedStorageKey'
 import {
   generateUTMKeys,
+  resetHasLoggedAppThemeStatusForTests,
   startTrackingAcceptedCookies,
 } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { Adjust } from 'libs/adjust/adjust'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { Batch, BatchPush } from 'libs/react-native-batch'
+import { logAppThemeStatus } from 'libs/styled/logAppThemeStatus'
 
 jest.mock('features/cookies/helpers/removeGeneratedStorageKey')
 const mockRemoveGeneratedStorageKey = removeGeneratedStorageKey as jest.Mock
@@ -17,11 +19,38 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('libs/adjust/adjust')
 
+jest.mock('libs/styled/logAppThemeStatus')
+const mockLogAppThemeStatus = logAppThemeStatus as jest.Mock
+
 describe('startTrackingAcceptedCookies', () => {
+  beforeEach(() => {
+    resetHasLoggedAppThemeStatusForTests()
+    mockLogAppThemeStatus.mockClear()
+  })
+
   it('should enable Google Analytics when Google Analytics cookies are accepted', () => {
     startTrackingAcceptedCookies([CookieNameEnum.GOOGLE_ANALYTICS], true)
 
     expect(firebaseAnalytics.enableCollection).toHaveBeenCalledTimes(1)
+  })
+
+  it('should log AppThemeStatus when Google Analytics cookies are accepted', () => {
+    startTrackingAcceptedCookies([CookieNameEnum.GOOGLE_ANALYTICS], false)
+
+    expect(mockLogAppThemeStatus).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not log AppThemeStatus when Google Analytics cookies are not accepted', () => {
+    startTrackingAcceptedCookies(COOKIES_BY_CATEGORY.essential, false)
+
+    expect(mockLogAppThemeStatus).not.toHaveBeenCalled()
+  })
+
+  it('should log AppThemeStatus only once across multiple calls in the same app lifecycle', () => {
+    startTrackingAcceptedCookies([CookieNameEnum.GOOGLE_ANALYTICS], false)
+    startTrackingAcceptedCookies([CookieNameEnum.GOOGLE_ANALYTICS], true)
+
+    expect(mockLogAppThemeStatus).toHaveBeenCalledTimes(1)
   })
 
   it('should disable Google Analytics when Google Analytics cookies are not accepted', () => {
