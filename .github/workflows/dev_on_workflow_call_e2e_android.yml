@@ -155,7 +155,7 @@ jobs:
           android-api-level: 34
           workspace: .maestro/tests/
           include-tags: ${{ inputs.test_tags }}
-          timeout: 180
+          async: true
           env: |
             MAESTRO_APP_ID=app.passculture.staging
             MAESTRO_PASSWORD=${{ steps.secrets.outputs.MAESTRO_PASSWORD }}

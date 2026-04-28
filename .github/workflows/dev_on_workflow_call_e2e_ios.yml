@@ -142,7 +142,7 @@ jobs:
           device-os: iOS-17-5
           device-model: iPhone-11
           include-tags: ${{ inputs.test_tags }}
-          timeout: 180
+          async: true
           env: |
             MAESTRO_APP_ID=app.passculture.staging
             MAESTRO_PASSWORD=${{ steps.secrets.outputs.MAESTRO_PASSWORD }}
