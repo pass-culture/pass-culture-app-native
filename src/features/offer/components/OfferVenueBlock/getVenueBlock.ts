@@ -8,7 +8,7 @@ export const getVenueBlock = ({
   onCopy,
 }: {
   venue: VenueBlockVenue
-  offerAddress?: VenueBlockAddress
+  offerAddress?: VenueBlockAddress | null
   onCopy?: () => void
 }) => {
   const venueName = offerAddress?.label || venue.name
