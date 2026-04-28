@@ -4,25 +4,30 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { selectSearchArtists } from 'features/search/queries/useSearchArtists/selectors/selectSearchArtists'
 import { useSearchArtistsQuery } from 'features/search/queries/useSearchArtists/useSearchArtistsQuery'
 import { getVenueOffersArtists } from 'features/venue/helpers/getVenueOffersArtists'
+import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
+import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { Artist } from 'features/venue/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location/LocationWrapper'
+import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { VerticalPlaylistArtistsData } from 'shared/verticalPlaylist/types'
 
 const NO_ARTISTS: Artist[] = []
 
 export const useGetArtistsFromPlaylist = ({ params }): VerticalPlaylistArtistsData => {
-  const { title, subtitle } = params
+  const { title, subtitle, venueId } = params
+  const isVenue = !!venueId
+
   const { searchState } = useSearch()
+
   const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius, geolocPosition } =
     useLocation()
 
   const { disabilities } = useAccessibilityFiltersContext()
+
   const isUserUnderage = useIsUserUnderage()
 
   const { data: remoteConfig } = useRemoteConfigQuery()
-  const artistsFromRemoteConfig = remoteConfig.artistPageSubcategories.subcategories
-  const { data: venueArtists } = getVenueOffersArtists(artistsFromRemoteConfig)
 
   const queryParams = {
     parameters: { page: 0, ...searchState },
@@ -38,15 +43,33 @@ export const useGetArtistsFromPlaylist = ({ params }): VerticalPlaylistArtistsDa
     isUserUnderage,
   }
 
+  const { data: venue } = useVenueQuery(venueId, { enabled: isVenue })
+
+  const venueSearchParams = useVenueSearchParameters(venue)
+  const { data: venueOffers } = useVenueOffersQuery({
+    venue: isVenue ? venue : undefined,
+    userLocation,
+    selectedLocationMode,
+    isUserUnderage,
+    venueSearchParams,
+    searchState: venueSearchParams,
+    transformHits: (hit) => hit,
+  })
+
+  const venueOffersHits = venueOffers?.hits
+  const artistsFromRemoteConfig = remoteConfig.artistPageSubcategories.subcategories
+  const { data: venueArtists } = venueId
+    ? getVenueOffersArtists(artistsFromRemoteConfig, venueOffersHits)
+    : { data: { artists: [] } }
+
   const query = useSearchArtistsQuery(queryParams, {
+    enabled: !venueId,
     select: (data) => selectSearchArtists(data, null),
   })
 
   const artistsFromVenue = venueArtists?.artists
-  const artistsFromSearch = query.data
-  const venueArtistsList = artistsFromVenue?.length ? artistsFromVenue : undefined
-  const searchArtistsList = artistsFromSearch
-  const items = venueArtistsList ?? searchArtistsList ?? NO_ARTISTS
+  const searchArtistsList = query.data
+  const items = venueId ? (artistsFromVenue ?? NO_ARTISTS) : (searchArtistsList ?? NO_ARTISTS)
   const nbItems = items.length
 
   return {
