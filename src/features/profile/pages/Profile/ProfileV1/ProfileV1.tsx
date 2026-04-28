@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, Platform, ScrollView, View } from 'react-native'
@@ -41,8 +40,6 @@ import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
-import { Tag } from 'ui/designSystem/Tag/Tag'
-import { TagVariant } from 'ui/designSystem/Tag/types'
 import { useDebounce } from 'ui/hooks/useDebounce'
 import { useVersion } from 'ui/hooks/useVersion'
 import { Page } from 'ui/pages/Page'
@@ -65,7 +62,6 @@ import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 const isWeb = Platform.OS === 'web'
 
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
-const DARK_MODE_GTM_APPEARANCE_TAG_KEY = 'darkModeGtmAppearanceTagSeen'
 
 const CHATBOT_ELIGIBLE_STATUSES = new Set<YoungStatusType>([
   YoungStatusType.eligible,
@@ -75,7 +71,6 @@ const CHATBOT_ELIGIBLE_STATUSES = new Set<YoungStatusType>([
 
 const OnlineProfile: React.FC = () => {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.PROFILE)
-  const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
   const enableProfileV2 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PROFILE_V2)
   const enableChatbot = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CHATBOT)
@@ -97,31 +92,6 @@ const OnlineProfile: React.FC = () => {
   )
 
   const shouldDisplayTutorial = !user?.isBeneficiary
-  const [hasSeenAppearanceTag, setHasSeenAppearanceTag] = useState<boolean | null>(null)
-
-  useEffect(() => {
-    let mounted = true
-
-    const fetchAppearanceTagState = async () => {
-      if (!enableDarkModeGtm) {
-        setHasSeenAppearanceTag(null)
-        return
-      }
-      const stored = await AsyncStorage.getItem(DARK_MODE_GTM_APPEARANCE_TAG_KEY)
-      if (!mounted) return
-      setHasSeenAppearanceTag(stored === 'true')
-    }
-
-    fetchAppearanceTagState()
-    return () => {
-      mounted = false
-    }
-  }, [enableDarkModeGtm])
-
-  const markAppearanceTagSeen = useCallback(() => {
-    setHasSeenAppearanceTag(true)
-    AsyncStorage.setItem(DARK_MODE_GTM_APPEARANCE_TAG_KEY, 'true').catch(() => null)
-  }, [])
 
   useFocusEffect(
     useCallback(() => {
@@ -187,9 +157,6 @@ const OnlineProfile: React.FC = () => {
   const shareBannerTitle = 'Partage le pass Culture'
   const shareBannerDescription = 'Recommande le bon plan à tes amis\u00a0!'
 
-  const tabLabel = 'Nouveau'
-  const accessibilityLabel = `Apparence - ${tabLabel}`
-
   return (
     <Page testID="profile-V1">
       <ScrollView
@@ -252,18 +219,6 @@ const OnlineProfile: React.FC = () => {
                       title="Apparence"
                       type="navigable"
                       navigateTo={getProfilePropConfig('Appearance')}
-                      accessibilityLabel={
-                        enableDarkModeGtm && !hasSeenAppearanceTag ? accessibilityLabel : undefined
-                      }
-                      renderTitle={(title) => (
-                        <TitleWithTag>
-                          <Typo.BodyAccent numberOfLines={2}>{title}</Typo.BodyAccent>
-                          {enableDarkModeGtm && !hasSeenAppearanceTag ? (
-                            <Tag label={tabLabel} variant={TagVariant.NEW} />
-                          ) : null}
-                        </TitleWithTag>
-                      )}
-                      onPress={markAppearanceTagSeen}
                       icon={ArtMaterial}
                     />
                   </Li>
@@ -444,13 +399,6 @@ const ScrollViewContentContainer = styled.View({
 
 const Row = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })(({ theme }) => ({
   paddingVertical: theme.designSystem.size.spacing.l,
-}))
-
-const TitleWithTag = styled.View(({ theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  marginRight: theme.designSystem.size.spacing.s,
 }))
 
 const ShareAppContainer = styled(ViewGap)(({ theme }) => ({

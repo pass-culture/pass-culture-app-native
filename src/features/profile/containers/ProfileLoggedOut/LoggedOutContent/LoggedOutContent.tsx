@@ -11,33 +11,21 @@ import { ShareBanner } from 'features/profile/components/ShareBanner/ShareBanner
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
 import { loggedOutContentConfig } from 'features/profile/containers/ProfileLoggedOut/LoggedOutContent/loggedOutContentConfig'
 import { getShouldDisplayHelpButton } from 'features/profile/helpers/getShouldDisplayHelpButton'
-import { useAppearanceTag } from 'features/profile/helpers/useAppearanceTag'
 import { useGeolocationSwitch } from 'features/profile/helpers/useGeolocationSwitch'
 import { UserProfile } from 'features/share/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/LocationWrapper'
 
 type Props = { user: UserProfile | undefined }
 
 export const LoggedOutContent = ({ user }: Props) => {
-  const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
   const shouldDisplayHelpButton = getShouldDisplayHelpButton({ user })
-  const { hasSeenAppearanceTag, markAppearanceTagSeen } = useAppearanceTag(enableDarkModeGtm)
   const { isGeolocSwitchActive, switchGeolocation } = useGeolocationSwitch()
   const { navigate } = useNavigation<UseNavigationType>()
   const { geolocPositionError } = useLocation()
 
   const config = loggedOutContentConfig({
     HelpButton: shouldDisplayHelpButton ? <HelpButtonRow birthDate={user?.birthDate} /> : null,
-    AppearanceButton: (
-      <AppearanceButton
-        navigate={navigate}
-        enableDarkModeGtm={enableDarkModeGtm}
-        hasSeenAppearanceTag={hasSeenAppearanceTag}
-        markAppearanceTagSeen={markAppearanceTagSeen}
-      />
-    ),
+    AppearanceButton: <AppearanceButton navigate={navigate} />,
     LocationButton: (
       <LocationButton
         isGeolocSwitchActive={isGeolocSwitchActive}

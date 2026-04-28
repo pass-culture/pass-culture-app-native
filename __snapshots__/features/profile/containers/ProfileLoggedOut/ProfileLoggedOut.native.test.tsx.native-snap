@@ -567,30 +567,19 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
                     }
                   }
                 >
-                  <View
+                  <Text
+                    numberOfLines={2}
                     style={
                       {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                        "marginRight": 8,
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       }
                     }
                   >
-                    <Text
-                      numberOfLines={2}
-                      style={
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        }
-                      }
-                    >
-                      Apparence
-                    </Text>
-                  </View>
+                    Apparence
+                  </Text>
                 </View>
                 <View
                   style={
