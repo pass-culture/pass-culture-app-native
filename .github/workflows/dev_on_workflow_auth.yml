@@ -32,5 +32,5 @@ jobs:
         uses: google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db # v3.0.1
 
       - name: List secrets from Secret Manager
-        run: gcloud secrets list --project ${{ vars.GCP_PROJECT_ID }}
+        run: gcloud secrets list --project ${{ vars.PROJECT_ID }}
 
