@@ -30,5 +30,5 @@ const renderCinemaBookingTicket = ({
   voucher: string
   token: string | null | undefined
 }) => {
-  return render(<CinemaBookingTicket voucher={voucher} token={token} />)
+  return render(<CinemaBookingTicket voucherData={voucher} tokenData={token} />)
 }

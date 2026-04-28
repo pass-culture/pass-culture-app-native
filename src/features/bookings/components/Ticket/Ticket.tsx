@@ -2,11 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
-import {
-  BookingResponse,
-  TicketResponse,
-  WithdrawalTypeEnum,
-} from 'api/gen'
+import { BookingResponse, TicketResponse, WithdrawalTypeEnum } from 'api/gen'
 import { TicketBottomPart } from 'features/bookings/components/Ticket/TicketBottomPart/TicketBottomPart'
 import { TicketDisplay } from 'features/bookings/components/Ticket/TicketDisplay'
 import { TicketTopPart } from 'features/bookings/components/Ticket/TicketTopPart'

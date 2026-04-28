@@ -1,15 +1,14 @@
 import React from 'react'
 
-import { ExternalBookingDataResponseV2 } from 'api/gen'
 import { ExternalBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/ExternalBookingTicket'
+import { ExternalBookingTicketProps } from 'features/bookings/components/Ticket/TicketBottomPart/ExternalBookingTicket/ExternalBookingTicket'
 import { render, screen } from 'tests/utils'
 
 describe('ExternalBookingTicket', () => {
   it('should display ticket when data is present', async () => {
     renderExternalBookingTicket({
       data: [{ barcode: '1234', seat: 'B2' }],
-      beginningDateTime: undefined,
-      hideTicket: false,
+      isDuo: false,
     })
 
     expect(await screen.findByText('RÉF 1234')).toBeOnTheScreen()
@@ -22,8 +21,7 @@ describe('ExternalBookingTicket', () => {
         { barcode: '1234', seat: 'B2' },
         { barcode: '999', seat: 'A02' },
       ],
-      beginningDateTime: undefined,
-      hideTicket: false,
+      isDuo: true,
     })
 
     expect(await screen.findByText('RÉF 1234')).toBeOnTheScreen()
@@ -38,9 +36,7 @@ describe('ExternalBookingTicket', () => {
         { barcode: '1234', seat: 'B2' },
         { barcode: '999', seat: 'A02' },
       ],
-      beginningDateTime: undefined,
       isDuo: true,
-      hideTicket: false,
     })
 
     expect(
@@ -51,9 +47,7 @@ describe('ExternalBookingTicket', () => {
   it('should display text singular when single external bookings', async () => {
     renderExternalBookingTicket({
       data: [{ barcode: '1234', seat: 'B2' }],
-      beginningDateTime: undefined,
       isDuo: false,
-      hideTicket: false,
     })
 
     expect(
@@ -62,14 +56,6 @@ describe('ExternalBookingTicket', () => {
   })
 })
 
-const renderExternalBookingTicket = ({
-  data,
-  isDuo = false,
-}: {
-  data: ExternalBookingDataResponseV2[]
-  beginningDateTime: string | undefined
-  isDuo?: boolean
-  hideTicket: boolean
-}) => {
+const renderExternalBookingTicket = ({ data, isDuo = false }: ExternalBookingTicketProps) => {
   return render(<ExternalBookingTicket data={data} isDuo={isDuo} />)
 }

@@ -7,13 +7,12 @@ import { TicketText } from 'features/bookings/components/Ticket/TicketBottomPart
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing } from 'ui/theme'
 
-type props = {
+export type ExternalBookingTicketProps = {
   data?: ExternalBookingDataResponseV2[]
-
   isDuo: boolean
 }
 
-export const ExternalBookingTicket = ({ data, isDuo }: props) => {
+export const ExternalBookingTicket = ({ data, isDuo }: ExternalBookingTicketProps) => {
   const visibleTicketText = `Présente ${isDuo ? 'ces billets' : 'ce billet'} pour accéder à l’évènement.`
 
   return (

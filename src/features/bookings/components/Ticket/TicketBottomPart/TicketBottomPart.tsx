@@ -77,8 +77,8 @@ export const TicketBottomPart = ({
     case TicketDisplayEnum.cinema_voucher: // Voucher for a cinema ticket
       return (
         <CinemaBookingTicket
-          voucher={ticket.voucher?.data ?? ''}
-          token={ticket.token?.data ?? undefined}
+          voucherData={ticket.voucher?.data ?? ''}
+          tokenData={ticket.token?.data ?? undefined}
         />
       )
 
