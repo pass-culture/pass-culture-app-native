@@ -214,6 +214,11 @@ export const logEventAnalytics = {
     homeEntryId?: string
     from?: Referrals
   }) => analytics.logEvent({ firebase: AnalyticsEvent.SEE_ALL_CLICKED }, params),
+  logClickSeeVideoTranscription: (params: {
+    from: Referrals
+    moduleId?: string
+    homeEntryId?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.CLICK_SEE_VIDEO_TRANSCRIPTION }, params),
   logClickSocialNetwork: (network: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_SOCIAL_NETWORK }, { network }),
   logClickVolunteerCTA: (params: { from: Referrals; venueId: string }) =>
