@@ -188,7 +188,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
 
   const navigateToVerticalPlaylist = {
     screen: 'VerticalPlaylistArtists' as const,
-    params: { title: playlistTitle, subtitle: undefined },
+    params: { title: playlistTitle, subtitle: undefined, venueId: venue.id },
   }
 
   return (

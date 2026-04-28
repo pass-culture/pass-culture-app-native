@@ -321,7 +321,7 @@ export type RootStackParamList = {
   _DeeplinkOnlyVenuePreviewCarousel2: VenuePreviewCarouselParams
   _DeeplinkOnlyVenuePreviewCarousel3: VenuePreviewCarouselParams
   VerifyEligibility: undefined
-  VerticalPlaylistArtists: { title: string; subtitle?: string }
+  VerticalPlaylistArtists: { title: string; subtitle?: string; venueId?: number }
   VerticalPlaylistOffers: VerticalPlaylistSource
   VideoModulePage: VideoModulePageParams
 } & TrustedDeviceRootStackParamList
