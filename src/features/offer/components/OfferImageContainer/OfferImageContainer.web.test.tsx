@@ -7,8 +7,6 @@ import { ConsentStatus } from 'features/cookies/types'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
 import { mockOfferImageDimensions } from 'features/offer/fixtures/offerImageDimensions'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
 
@@ -33,10 +31,6 @@ const defaultUseCookies = {
 jest.spyOn(Cookies, 'useCookies').mockReturnValue(defaultUseCookies)
 
 describe('<OfferImageContainer />', () => {
-  beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
-  })
-
   it('should display carousel with one image', async () => {
     render(
       reactQueryProviderHOC(

@@ -39,7 +39,6 @@ import {
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -999,14 +998,12 @@ describe('<OfferContent />', () => {
     })
 
     it('should display see video button when video data defined', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
       renderOfferContent({})
 
       expect(await screen.findByText('Voir la vidéo')).toBeOnTheScreen()
     })
 
     it('should navigate to OfferVideoPreview screen when pressing see video button', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
       useCookiesSpy.mockReturnValueOnce({
         ...defaultUseCookies,
         cookiesConsent: {
@@ -1026,8 +1023,6 @@ describe('<OfferContent />', () => {
     })
 
     it("should display info snack bar when press on 'Voir la vidéo' and we don't have consent to video cookies", async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
-
       renderOfferContent({})
 
       await user.press(screen.getByText('Voir la vidéo'))
@@ -1042,9 +1037,7 @@ describe('<OfferContent />', () => {
   })
 
   describe('Video section', () => {
-    it('should display video section when video FF activated', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
-
+    it('should display video section', async () => {
       renderOfferContent({})
 
       await screen.findByText('Réserver l’offre')
