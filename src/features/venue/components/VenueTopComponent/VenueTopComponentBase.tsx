@@ -35,7 +35,7 @@ type Props = {
 }
 
 const VOLUNTEER_SMALL_CARD_HEIGHT = getSpacing(56.25)
-const VOLUNTEER_LARGE_CARD_HEIGHT = getSpacing(65)
+const VOLUNTEER_LARGE_CARD_HEIGHT = getSpacing(73)
 
 export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   venue,
