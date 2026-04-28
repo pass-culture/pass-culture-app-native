@@ -15,6 +15,7 @@ const defaultConfig: KnipConfig = {
     'src/ui/svg/CutoutVertical.tsx', // TODO(PC-35897): remove
     'src/ui/svg/StrokeVertical.tsx', // TODO(PC-35897): remove
     'src/ui/designSystem/Snackbar/**', // TODO(PC-39606): remove
+    'src/ui/designSystem/illustrations/index.ts', // Deadcode: exported for future illustration consumers to remove when the ticket is done by conversion
     'src/libs/locationV2/**',
     'src/**/*.ios.*',
     '.storybook/**/*',
