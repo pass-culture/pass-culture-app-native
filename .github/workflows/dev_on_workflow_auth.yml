@@ -34,6 +34,14 @@ jobs:
       - name: Check authenticated account
         run: gcloud auth list
 
+      - name: Check authenticated account
+        run: |
+          gcloud auth list
+          echo "---"
+          curl -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+            https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT }}:generateAccessToken \
+            -d '{"scope":["https://www.googleapis.com/auth/cloud-platform"]}'
+
       - name: List secrets from Secret Manager
         run: gcloud secrets list --project ${{ vars.PROJECT_ID }}
 
