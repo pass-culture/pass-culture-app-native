@@ -25,10 +25,11 @@ import {
   getTypographyForSize,
 } from './Button.layout'
 import { ButtonLoadingIndicator } from './ButtonLoadingIndicator'
-import { ButtonColorValue, ButtonNativeProps, ButtonWebProps } from './types'
+import { ButtonColorValue, ButtonNativeProps, ButtonVariant, ButtonWebProps } from './types'
 
 type ButtonContainerProps = {
   content: React.ReactNode
+  variant: ButtonVariant
   accessibilityLabel: string
   accessibilityHint?: string
   accessibilityRole: AccessibilityRole
@@ -143,6 +144,7 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
 
   return renderContainer({
     content,
+    variant,
     accessibilityLabel: computedA11yLabel,
     accessibilityHint,
     accessibilityRole: resolvedAccessibilityRole,

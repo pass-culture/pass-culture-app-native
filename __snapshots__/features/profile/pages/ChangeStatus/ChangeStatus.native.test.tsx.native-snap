@@ -90,10 +90,6 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                 {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
                   "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
@@ -2171,10 +2167,6 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                 {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
                   "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
@@ -4252,10 +4244,6 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                 {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
                   "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",

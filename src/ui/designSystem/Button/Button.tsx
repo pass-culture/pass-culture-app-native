@@ -11,7 +11,7 @@ import { ColorsType } from 'theme/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 import { ButtonBase } from './ButtonBase'
-import { ButtonColorValue, ButtonNativeProps } from './types'
+import { ButtonColorValue, ButtonNativeProps, ButtonVariant } from './types'
 
 export const Button = (props: ButtonNativeProps) => {
   const { onPress, onLongPress } = props
@@ -34,6 +34,7 @@ export const Button = (props: ButtonNativeProps) => {
 }
 
 type ContainerStyleProps = {
+  variant: ButtonVariant
   backgroundColor?: ButtonColorValue
   borderColor?: ColorsType
   borderWidth?: number
@@ -51,11 +52,12 @@ const ButtonContainer = styled(TouchableOpacity)<ContainerStyleProps>(
     fullWidth,
     paddingVertical,
     paddingHorizontal,
+    variant,
   }) => ({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: theme.designSystem.size.borderRadius.m,
+    borderRadius: variant === 'tertiary' ? undefined : theme.designSystem.size.borderRadius.m,
     paddingTop: paddingVertical,
     paddingBottom: paddingVertical,
     paddingLeft: paddingHorizontal,

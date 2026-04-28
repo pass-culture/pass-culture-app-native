@@ -12,7 +12,7 @@ import { ColorsType } from 'theme/types'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 import { ButtonBase } from './ButtonBase'
-import { ButtonColorValue, ButtonWebProps } from './types'
+import { ButtonColorValue, ButtonVariant, ButtonWebProps } from './types'
 
 export const Button = (props: ButtonWebProps) => {
   const { testID, onPress, onLongPress, href, target, type = 'button' } = props
@@ -68,6 +68,7 @@ export const Button = (props: ButtonWebProps) => {
 }
 
 type ContainerStyleProps = {
+  variant: ButtonVariant
   backgroundColor?: ButtonColorValue
   borderColor?: ColorsType
   borderWidth?: number
@@ -84,11 +85,12 @@ const buttonContainerStyles = ({
   fullWidth,
   paddingVertical,
   paddingHorizontal,
+  variant,
 }: ContainerStyleProps & { theme: DefaultTheme }): CSSObject => ({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  borderRadius: theme.designSystem.size.borderRadius.m,
+  borderRadius: variant === 'tertiary' ? undefined : theme.designSystem.size.borderRadius.m,
   paddingTop: paddingVertical,
   paddingBottom: paddingVertical,
   paddingLeft: paddingHorizontal,
