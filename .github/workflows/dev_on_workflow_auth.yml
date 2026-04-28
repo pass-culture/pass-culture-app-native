@@ -26,4 +26,6 @@ jobs:
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT }}
+      - name: List secrets from Secret Manager
+        run: gcloud secrets list
 
