@@ -20,7 +20,7 @@ export const ArtistHeader = ({ avatarImage, name }: ArtistHeaderProps) => {
         {avatarImage ? (
           <StyledImage url={avatarImage} testID="artistAvatar" />
         ) : (
-          <DefaultAvatar testID="defaultArtistAvatar" />
+          <DefaultAvatar testID="defaultArtistAvatar" size={50} />
         )}
       </Avatar>
       <Typo.Title1>{name}</Typo.Title1>
