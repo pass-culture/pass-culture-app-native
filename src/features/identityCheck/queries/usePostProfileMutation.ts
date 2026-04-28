@@ -41,6 +41,7 @@ const getCompleteProfile = (profile: SubscriptionState['profile']): ProfileUpdat
       city: profile.city.name,
       firstName: profile.name.firstName,
       lastName: profile.name.lastName,
+      phoneNumber: profile.phoneNumber,
       postalCode: profile.city.postalCode,
       schoolTypeId: profile.schoolType,
     }

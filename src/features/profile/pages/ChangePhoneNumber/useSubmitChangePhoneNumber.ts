@@ -3,10 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useForm } from 'react-hook-form'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import {
-  COUNTRIES,
-  METROPOLITAN_FRANCE,
-} from 'features/identityCheck/components/countryPicker/constants'
+import { METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker/constants'
 import { findCountry } from 'features/identityCheck/pages/phoneValidation/helpers/findCountry'
 import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
 import {
@@ -15,26 +12,19 @@ import {
 } from 'features/identityCheck/pages/phoneValidation/helpers/phoneNumberSchema'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  getCountryIdFromPhoneNumber,
+  getLastNineDigits,
+} from 'features/profile/helpers/helperPhoneNumber'
 import { analytics } from 'libs/analytics/provider'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
-
-const getLastNineDigits = (phoneNumber: string) => phoneNumber.slice(-9)
-
-const getCountryIdFromPhoneNumber = (phoneNumber: string): string => {
-  const countryId = phoneNumber.slice(0, -9)
-  const cleanCode = countryId.replace(/^\+/, '')
-  const country = COUNTRIES.find((c) => c.callingCode === cleanCode)
-  return country?.id ?? METROPOLITAN_FRANCE.id
-}
 
 export const useSubmitChangePhoneNumber = () => {
   const { user } = useAuthContext()
   const { replace } = useNavigation<UseNavigationType>()
   const phoneNumber = user?.phoneNumber ? getLastNineDigits(user.phoneNumber) : ''
-  const countryId = user?.phoneNumber
-    ? getCountryIdFromPhoneNumber(user.phoneNumber)
-    : METROPOLITAN_FRANCE.id
+  const countryId = getCountryIdFromPhoneNumber(user?.phoneNumber) ?? METROPOLITAN_FRANCE.id
   const {
     control,
     formState: { isValid },

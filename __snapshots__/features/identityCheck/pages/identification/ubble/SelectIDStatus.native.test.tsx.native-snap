@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
+exports[`SelectIDStatus SelectIDStatus with feature flag WIP_PHONE_NUMBER_IN_PROFILE_STEPPER enabled should render SelectIDStatus page correctly 1`] = `
 <View
   isLandscape={false}
   style={
@@ -153,7 +153,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   "flexShrink": 0,
                 }
               }
-              nativeID="0"
+              nativeID="4"
               style={
                 [
                   {

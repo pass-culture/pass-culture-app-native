@@ -3,7 +3,6 @@ import React from 'react'
 
 import { SubscriptionStepperResponseV2 } from 'api/gen'
 import { stepsDetailsFixture } from 'features/identityCheck/pages/helpers/stepDetails.fixture'
-import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useRehydrateProfile'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
@@ -36,10 +35,6 @@ mockUseStepperInfo.mockReturnValue({
   title: 'Vas-y',
   subtitle: 'Débloque ton crédit',
 })
-
-jest.mock('features/identityCheck/pages/helpers/useRehydrateProfile')
-const mockUseRehydrateProfile = useRehydrateProfile as jest.Mock
-mockUseRehydrateProfile.mockImplementation(jest.fn())
 
 describe('<Stepper/>', () => {
   beforeEach(() => setFeatureFlags())

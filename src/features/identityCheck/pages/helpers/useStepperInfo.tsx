@@ -12,6 +12,8 @@ import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { ProfileType } from 'features/identityCheck/pages/profile/types'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { IdCard } from 'ui/svg/icons/IdCard'
@@ -28,13 +30,26 @@ type StepperInfo = {
 }
 
 type PartialIdentityCheckStep = Exclude<IdentityCheckStep, IdentityCheckStep.END>
+type PartialIdentityCheckStepWithoutPhoneNumber = Exclude<
+  IdentityCheckStep,
+  IdentityCheckStep.END | IdentityCheckStep.PHONE_VALIDATION
+>
+
 type StepsDictionary = Record<PartialIdentityCheckStep, StepConfig>
+type StepsDictionaryWithoutPhoneNumber = Record<
+  PartialIdentityCheckStepWithoutPhoneNumber,
+  StepConfig
+>
 
 // hook as it can be dynamic depending on subscription step
 export const useStepperInfo = (): StepperInfo => {
+  const phoneNumberInProfileStepper = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_PHONE_NUMBER_IN_PROFILE_STEPPER
+  )
+  const storedProfileInfos = useStoredProfileInfos()
+
   const { user } = useAuthContext()
   const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
-  const storedProfileInfos = useStoredProfileInfos()
 
   const { data } = useGetStepperInfoQuery()
   const { shouldBeOverriden: shouldCreditAmountBeOverriden, amount: overriddenCreditAmount } =
@@ -80,7 +95,17 @@ export const useStepperInfo = (): StepperInfo => {
   const shouldDisplayValidateYourInformation =
     userAlreadyGaveInfos && (isSecondStepProfileNotCompleted || isFirstStepProfileNotCompleted)
 
-  const stepsConfig: StepsDictionary = {
+  const getFirstScreenForProfileStep = () => {
+    if (phoneNumberInProfileStepper) return 'SetName'
+    return hasUserCompletedInfo ? 'ProfileInformationValidationCreate' : 'SetName'
+  }
+
+  const getFirstScreenTypeForProfileStep = () => {
+    if (phoneNumberInProfileStepper) return ProfileTypes.IDENTITY_CHECK
+    return hasUserCompletedInfo ? ProfileTypes.RECAP_EXISTING_DATA : ProfileTypes.IDENTITY_CHECK
+  }
+
+  const stepsConfig: StepsDictionaryWithoutPhoneNumber = {
     [IdentityCheckStep.PROFILE]: {
       name: IdentityCheckStep.PROFILE,
       icon: {
@@ -89,10 +114,8 @@ export const useStepperInfo = (): StepperInfo => {
         completed: () => <IconStepDone Icon={Profile} testID="profile-step-done" />,
         retry: () => <IconStepRetry Icon={Profile} testID="profile-retry-step" />,
       },
-      firstScreen: hasUserCompletedInfo ? 'ProfileInformationValidationCreate' : 'SetName',
-      firstScreenType: hasUserCompletedInfo
-        ? ProfileTypes.RECAP_EXISTING_DATA
-        : ProfileTypes.IDENTITY_CHECK,
+      firstScreen: getFirstScreenForProfileStep(),
+      firstScreenType: getFirstScreenTypeForProfileStep(),
       subtitle: shouldDisplayValidateYourInformation ? 'Confirme tes informations' : undefined,
     },
     [IdentityCheckStep.IDENTIFICATION]: {
@@ -122,6 +145,10 @@ export const useStepperInfo = (): StepperInfo => {
       firstScreen: 'CulturalSurveyIntro',
       firstScreenType: ProfileTypes.IDENTITY_CHECK,
     },
+  }
+
+  const stepConfigWithPhoneNumber: StepsDictionary = {
+    ...stepsConfig,
     [IdentityCheckStep.PHONE_VALIDATION]: {
       name: IdentityCheckStep.PHONE_VALIDATION,
       icon: {
@@ -136,11 +163,11 @@ export const useStepperInfo = (): StepperInfo => {
       firstScreenType: ProfileTypes.IDENTITY_CHECK,
     },
   }
-
+  const stepConfigToDisplay = phoneNumberInProfileStepper ? stepsConfig : stepConfigWithPhoneNumber
   const stepDetailsList = subscriptionStepsToDisplay
     ? subscriptionStepsToDisplay.map((step) => {
-        if (!isPartialIdentityCheckStep(step.name, stepsConfig)) return null
-        const currentStepConfig: StepConfig = stepsConfig[step.name]
+        if (!isPartialIdentityCheckStep(step.name, stepConfigToDisplay)) return null
+        const currentStepConfig: StepConfig = stepConfigToDisplay[step.name]
         const stepDetails: StepExtendedDetails = {
           name: currentStepConfig.name,
           title: step.title,
@@ -173,7 +200,7 @@ export const useStepperInfo = (): StepperInfo => {
 
 function isPartialIdentityCheckStep(
   stepName: string,
-  stepsConfig: StepsDictionary
+  stepsConfig: StepsDictionaryWithoutPhoneNumber | StepsDictionary
 ): stepName is PartialIdentityCheckStep {
   return stepName in stepsConfig
 }

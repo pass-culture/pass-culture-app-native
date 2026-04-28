@@ -14,7 +14,7 @@ import { PreValidationSignupStep } from 'features/auth/enums'
 import { STEP_LABEL, Step } from 'features/bookOffer/context/reducer'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { FavoriteSortBy } from 'features/favorites/types'
-import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
+import { DeprecatedIdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import {
   Referrals,
   StepperOrigin,
@@ -68,6 +68,7 @@ export type OfferAnalyticsData = {
 }
 
 type OfferIdOrVenueId = { offerId: number; venueId?: never } | { venueId: number; offerId?: never }
+type IdentityCheckStepName = StepConfig['name']
 
 export type LoginRoutineMethod =
   | 'fromLogin'
@@ -190,7 +191,7 @@ export const logEventAnalytics = {
     playlistType?: PlaylistType
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CLICK_BOOK_OFFER }, params),
   logClickCopyDebugInfo: (userId?: number) => {
-    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_COPY_DEBUG_INFO }, { userId })
+    void analytics.logEvent({ firebase: AnalyticsEvent.CLICK_COPY_DEBUG_INFO }, { userId })
   },
   logClickEmailOrganizer: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_EMAIL_ORGANIZER }),
@@ -205,7 +206,7 @@ export const logEventAnalytics = {
     userId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CLICK_INFO_REVIEW }, params),
   logClickMailDebugInfo: (userId?: number) => {
-    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_MAIL_DEBUG_INFO }, { userId })
+    void analytics.logEvent({ firebase: AnalyticsEvent.CLICK_MAIL_DEBUG_INFO }, { userId })
   },
   logClickSeeAll: (params: {
     type: 'offers' | 'venues' | 'artists'
@@ -484,7 +485,7 @@ export const logEventAnalytics = {
     reason: string | null
     errorType: string | null
   }) => analytics.logEvent({ firebase: AnalyticsEvent.IDENTITY_CHECK_ABORT }, params),
-  logIdentityCheckStep: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStep) =>
+  logIdentityCheckStep: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStepName) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.IDENTITY_CHECK_STEP },
       { nextStep, step: nextStep }
@@ -590,7 +591,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_AUTHENTICATION_MODAL }, { offerId }),
   logQuitFavoriteModalForSignIn: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_FAVORITE_MODAL_FOR_SIGN_IN }, { offerId }),
-  logQuitIdentityCheck: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStep) =>
+  logQuitIdentityCheck: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStepName) =>
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_IDENTITY_CHECK }, { nextStep }),
   logReinitializeFilters: (searchId?: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.REINITIALIZE_FILTERS }, { searchId }),
@@ -641,7 +642,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.START_DMS_TRANSMISSION }),
   logStepperDisplayed: (
     from: StepperOrigin,
-    step: IdentityCheckStep | PreValidationSignupStep | 'Login',
+    step: IdentityCheckStepName | PreValidationSignupStep | 'Login',
     type?: SSOType
   ) => analytics.logEvent({ firebase: AnalyticsEvent.STEPPER_DISPLAYED }, { from, step, type }),
   logSubscriptionUpdate: (params: SubscriptionAnalyticsParams) =>

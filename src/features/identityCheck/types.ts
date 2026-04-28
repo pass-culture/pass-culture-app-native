@@ -11,27 +11,24 @@ export enum DeprecatedIdentityCheckStep {
 }
 
 export enum IdentityCheckStep {
+  PROFILE = 'profile-completion',
+  IDENTIFICATION = 'identity-check',
+  CONFIRMATION = 'honor-statement',
   PHONE_VALIDATION = 'phone-validation',
+  END = 'end',
+}
+enum IdentityCheckStepWithPhoneNumber {
   PROFILE = 'profile-completion',
   IDENTIFICATION = 'identity-check',
   CONFIRMATION = 'honor-statement',
   END = 'end',
-}
-
-export interface RehydrationProfile {
-  activity: string
-  address: string
-  city: string
-  firstName: string
-  lastName: string
-  postalCode: string
-  schoolType: string
+  PHONE_VALIDATION = 'phone-validation',
 }
 
 export type SubscriptionScreen = keyof SubscriptionStackParamList
 
 export type StepConfig = Pick<StepDetails, 'icon'> & {
-  name: IdentityCheckStep
+  name: IdentityCheckStep | IdentityCheckStepWithPhoneNumber
   firstScreen: SubscriptionScreen
   firstScreenType: ProfileType
   subtitle?: string

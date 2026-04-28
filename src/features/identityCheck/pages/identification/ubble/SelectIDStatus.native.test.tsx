@@ -3,6 +3,8 @@ import React from 'react'
 import { navigate, replace } from '__mocks__/@react-navigation/native'
 import { IdentificationSessionResponse } from 'api/gen'
 import { SelectIDStatus } from 'features/identityCheck/pages/identification/ubble/SelectIDStatus'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -19,10 +21,8 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('SelectIDStatus', () => {
-  it('should render SelectIDStatus page correctly', () => {
-    render(reactQueryProviderHOC(<SelectIDStatus />))
-
-    expect(screen).toMatchSnapshot()
+  beforeEach(() => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_PHONE_NUMBER_IN_PROFILE_STEPPER])
   })
 
   it('should navigate to ubble webview when pressing "J’ai ma pièce d’identité en cours de validité" button', async () => {
@@ -85,6 +85,81 @@ describe('SelectIDStatus', () => {
     expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
       params: undefined,
       screen: 'ExpiredOrLostID',
+    })
+  })
+
+  describe('SelectIDStatus with feature flag WIP_PHONE_NUMBER_IN_PROFILE_STEPPER enabled', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_PHONE_NUMBER_IN_PROFILE_STEPPER])
+    })
+
+    it('should render SelectIDStatus page correctly', () => {
+      render(reactQueryProviderHOC(<SelectIDStatus />))
+
+      expect(screen).toMatchSnapshot()
+    })
+
+    it('should navigate to ubble webview when pressing "J’ai ma pièce d’identité en cours de validité" button', async () => {
+      const response: IdentificationSessionResponse = {
+        identificationUrl: 'https://id.ubble.ai/000',
+      }
+      mockServer.postApi('/v1/ubble_identification', response)
+
+      render(reactQueryProviderHOC(<SelectIDStatus />))
+
+      const button = screen.getByText('J’ai ma pièce d’identité en cours de validité')
+      await user.press(button)
+
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: { identificationUrl: response.identificationUrl },
+        screen: 'UbbleWebview',
+      })
+    })
+
+    it('should navigate to IdentityCheckPending when pressing "J’ai ma pièce d’identité en cours de validité" button and backend returns an error', async () => {
+      mockServer.postApi('/v1/ubble_identification', {
+        responseOptions: {
+          data: {
+            code: 'IDCHECK_ALREADY_PROCESSED',
+            message: 'Identity check already processed',
+          },
+          statusCode: 400,
+        },
+      })
+
+      render(reactQueryProviderHOC(<SelectIDStatus />))
+
+      const button = screen.getByText('J’ai ma pièce d’identité en cours de validité')
+      await user.press(button)
+
+      expect(replace).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: undefined,
+        screen: 'IdentityCheckPending',
+      })
+    })
+
+    it('should navigate to ComeBackLater when pressing "Je n’ai pas ma pièce d’identité originale" button', async () => {
+      render(reactQueryProviderHOC(<SelectIDStatus />))
+
+      const button = screen.getByText('Je n’ai pas ma pièce d’identité originale avec moi')
+      await user.press(button)
+
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: undefined,
+        screen: 'ComeBackLater',
+      })
+    })
+
+    it("should navigate to ExpiredOrLostID when pressing 'Ma pièce d'identité est expirée ou perdue' button", async () => {
+      render(reactQueryProviderHOC(<SelectIDStatus />))
+
+      const button = screen.getByText('Ma pièce d’identité est expirée ou perdue')
+      await user.press(button)
+
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: undefined,
+        screen: 'ExpiredOrLostID',
+      })
     })
   })
 })

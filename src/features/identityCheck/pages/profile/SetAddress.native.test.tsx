@@ -2,12 +2,17 @@ import { FeatureCollection, Point } from 'geojson'
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
+import { nonBeneficiaryUser } from 'fixtures/user'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 import { Properties } from 'libs/place/types'
 import { storage } from 'libs/storage'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
@@ -22,6 +27,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+jest.mock('features/auth/context/AuthContext')
+
 const user = userEvent.setup()
 jest.useFakeTimers()
 
@@ -30,7 +37,9 @@ useRoute.mockReturnValue({
 })
 
 describe('<SetAddress/>', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
+    mockAuthContextWithUser(nonBeneficiaryUser)
+    setFeatureFlags([])
     mockServer.universalGet<FeatureCollection<Point, Properties>>(
       'https://data.geopf.fr/geocodage/search',
       mockedSuggestedPlaces
@@ -122,6 +131,33 @@ describe('<SetAddress/>', () => {
       state: {
         address: mockedSuggestedPlaces.features[1].properties.name,
       },
+    })
+  })
+
+  describe('when ff phoneNumberInProfileStepper is enabled', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_PHONE_NUMBER_IN_PROFILE_STEPPER])
+    })
+
+    it('should navigate to SetPhoneNumber when clicking on "Continuer"', async () => {
+      mockAuthContextWithUser({
+        ...nonBeneficiaryUser,
+        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
+      })
+      renderSetAddress()
+
+      const input = screen.getByTestId('Entrée pour l’adresse')
+      fireEvent.changeText(input, QUERY_ADDRESS)
+
+      await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
+      await user.press(screen.getByText('Continuer'))
+
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SubscriptionStackNavigator', {
+        params: {
+          type: 'identityCheck',
+        },
+        screen: 'SetPhoneNumber',
+      })
     })
   })
 })

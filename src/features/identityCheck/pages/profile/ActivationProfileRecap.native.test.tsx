@@ -8,6 +8,7 @@ import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { addressActions } from 'features/identityCheck/pages/profile/store/addressStore'
 import { cityActions } from 'features/identityCheck/pages/profile/store/cityStore'
 import { nameActions } from 'features/identityCheck/pages/profile/store/nameStore'
+import { phoneNumberActions } from 'features/identityCheck/pages/profile/store/phoneNumberStore'
 import * as resetProfileStores from 'features/identityCheck/pages/profile/store/resetProfileStores'
 import { statusActions } from 'features/identityCheck/pages/profile/store/statusStore'
 import * as usePostProfileMutation from 'features/identityCheck/queries/usePostProfileMutation'
@@ -40,6 +41,7 @@ const cityName = 'Paris'
 const postalCode = '75011'
 const address = '1 rue du désespoir'
 const status = ActivityIdEnum.STUDENT
+const phoneNumber = '0601020304'
 const offerId = 1234
 const offerIdNull = null
 
@@ -64,13 +66,31 @@ describe('<ActivationProfileRecap />', () => {
   })
 
   it('should render correctly', () => {
-    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
+    prepareDataAndRender({
+      firstName,
+      lastName,
+      cityName,
+      postalCode,
+      address,
+      phoneNumber,
+      status,
+      offerId,
+    })
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should display user info correctly', () => {
-    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
+    prepareDataAndRender({
+      firstName,
+      lastName,
+      cityName,
+      postalCode,
+      address,
+      phoneNumber,
+      status,
+      offerId,
+    })
 
     expect(screen.getByText('DUPONT')).toBeTruthy()
     expect(screen.getByText('Jean')).toBeTruthy()
@@ -80,13 +100,31 @@ describe('<ActivationProfileRecap />', () => {
   })
 
   it('should display correct infos in identity check', async () => {
-    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
+    prepareDataAndRender({
+      firstName,
+      lastName,
+      cityName,
+      postalCode,
+      address,
+      phoneNumber,
+      status,
+      offerId,
+    })
 
     expect(await screen.findByText('Profil')).toBeTruthy()
   })
 
   it('should navigate to stepper on press "Confirmer"', async () => {
-    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
+    prepareDataAndRender({
+      firstName,
+      lastName,
+      cityName,
+      postalCode,
+      address,
+      phoneNumber,
+      status,
+      offerId,
+    })
 
     await user.press(screen.getByText('Confirmer'))
 
@@ -104,7 +142,16 @@ describe('<ActivationProfileRecap />', () => {
 
   it('should reset profile stores after submission succeeds', async () => {
     const resetStoresSpy = jest.spyOn(resetProfileStores, 'resetProfileStores')
-    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
+    prepareDataAndRender({
+      firstName,
+      lastName,
+      cityName,
+      postalCode,
+      address,
+      phoneNumber,
+      status,
+      offerId,
+    })
 
     await user.press(screen.getByText('Confirmer'))
 
@@ -112,7 +159,16 @@ describe('<ActivationProfileRecap />', () => {
   })
 
   it('should call refetchUser after submission succeeds', async () => {
-    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
+    prepareDataAndRender({
+      firstName,
+      lastName,
+      cityName,
+      postalCode,
+      address,
+      phoneNumber,
+      status,
+      offerId,
+    })
 
     await user.press(screen.getByText('Confirmer'))
 
@@ -122,7 +178,16 @@ describe('<ActivationProfileRecap />', () => {
   it('should navigate to error screen if posting profile fails', async () => {
     mockUseMutationError({ content: {}, name: 'ApiError', statusCode: 400, message: 'erreur' })
     useRoute.mockReturnValueOnce({ params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } })
-    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
+    prepareDataAndRender({
+      firstName,
+      lastName,
+      cityName,
+      postalCode,
+      address,
+      phoneNumber,
+      status,
+      offerId,
+    })
 
     await user.press(screen.getByText('Confirmer'))
 
@@ -142,13 +207,13 @@ describe('<ActivationProfileRecap />', () => {
     })
 
     it('should display correct infos in booking free offer 15-16 years', async () => {
-      prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
+      prepareDataAndRender({ firstName, lastName, cityName, postalCode, address, status, offerId })
 
-      expect(await screen.findByText('Informations personnelles')).toBeTruthy()
+      expect(await screen.findByText('Informations personnelles')).toBeOnTheScreen()
     })
 
     it('should navigate to Offer screen if booking free offer and offer ID exists', async () => {
-      prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
+      prepareDataAndRender({ firstName, lastName, cityName, postalCode, address, status, offerId })
 
       await user.press(screen.getByText('Confirmer'))
 
@@ -157,8 +222,22 @@ describe('<ActivationProfileRecap />', () => {
       })
     })
 
+    it('should not have phone number in recap', async () => {
+      prepareDataAndRender({ firstName, lastName, cityName, postalCode, address, status, offerId })
+
+      expect(screen.queryByText('Numéro de téléphone')).not.toBeOnTheScreen()
+    })
+
     it('should navigate to error screen when booking free offer but no offer ID is stored', async () => {
-      prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerIdNull)
+      prepareDataAndRender({
+        firstName,
+        lastName,
+        cityName,
+        postalCode,
+        address,
+        status,
+        offerId: offerIdNull,
+      })
 
       await user.press(screen.getByText('Confirmer'))
 
@@ -174,18 +253,39 @@ describe('<ActivationProfileRecap />', () => {
   })
 })
 
-function prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId) {
+function prepareDataAndRender({
+  firstName,
+  lastName,
+  cityName,
+  postalCode,
+  address,
+  phoneNumber,
+  status,
+  offerId,
+}: {
+  firstName: string
+  lastName: string
+  cityName: string
+  postalCode: string
+  address: string
+  phoneNumber?: string
+  status: ActivityIdEnum
+  offerId: number | null
+}) {
   const { setName } = nameActions
   const { setCity } = cityActions
   const { setAddress } = addressActions
   const { setStatus } = statusActions
-  const { setFreeOfferId } = freeOfferIdActions
+  const { setPhoneNumber } = phoneNumberActions
+  const { setFreeOfferId, resetFreeOfferId } = freeOfferIdActions
 
   setName({ firstName, lastName })
   setCity({ name: cityName, postalCode, code: 'PARIS_CODE', departementCode: '75' })
   setAddress(address)
   setStatus(status)
-  setFreeOfferId(offerId)
+  if (phoneNumber) setPhoneNumber({ phoneNumber, countryId: 'FR' })
+  if (offerId) setFreeOfferId(offerId)
+  else resetFreeOfferId()
 
   render(reactQueryProviderHOC(<ActivationProfileRecap />))
 }
