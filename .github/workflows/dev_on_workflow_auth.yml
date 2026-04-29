@@ -25,7 +25,6 @@ jobs:
       - name: Authentification to Google
         uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
         with:
-          # workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PROVIDER }}
           workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
           service_account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
 
@@ -37,4 +36,29 @@ jobs:
 
       - name: List secrets from Secret Manager
         run: gcloud secrets list --project ${{ vars.PROJECT_ID }}
+
+      - name: Create service account key
+        run: |
+          gcloud iam service-accounts keys create temporary-sa-key.json \
+            --iam-account=${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }} \
+            --project=${{ vars.PROJECT_ID }}
+
+      - name: Authenticate with service account key
+        run: |
+          gcloud auth activate-service-account \
+            --key-file=temporary-sa-key.json
+          gcloud auth list
+
+      - name: List secrets from Secret Manager (SA key)
+        run: gcloud secrets list --project ${{ vars.PROJECT_ID }}
+
+      - name: Delete service account key
+        if: always()
+        run: |
+          KEY_ID=$(jq -r .private_key_id temporary-sa-key.json)
+          gcloud iam service-accounts keys delete "$KEY_ID" \
+            --iam-account=${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }} \
+            --project=${{ vars.PROJECT_ID }} \
+            --quiet
+          rm -f temporary-sa-key.json
 
