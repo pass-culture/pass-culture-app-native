@@ -1,11 +1,16 @@
 // eslint-disable-next-line no-restricted-imports
 import React from 'react'
-import DeviceInfo from 'react-native-device-info'
 
 import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
-import { AccountState, FavoriteResponse, OauthStateResponse, SigninResponse } from 'api/gen'
+import {
+  AccountState,
+  FavoriteResponse,
+  OauthStateResponse,
+  SigninResponse,
+  SigninResponseV2,
+} from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { SignInResponseFailure } from 'features/auth/types'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
@@ -33,7 +38,15 @@ import { Login } from './Login'
 jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('libs/monitoring/services')
-jest.mock('libs/react-native-device-info/getDeviceId')
+jest.mock('libs/react-native-device-info/getDeviceId', () => ({
+  getDeviceId: jest.fn(() => 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a'),
+}))
+jest.mock('react-native-device-info', () => ({
+  getSystemName: jest.fn(() => 'iOS'),
+  getModel: jest.fn(() => 'iPhone 13'),
+  getBaseOs: jest.fn(() => Promise.resolve('iOS')),
+  isLandscape: jest.fn(() => false),
+}))
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/helpers/usePreviousRouteName')
 const mockResetSearch = jest.fn()
@@ -49,10 +62,8 @@ const captureMonitoringError = jest.spyOn(monitoringErrorsModule, 'captureMonito
 
 const apiPostFavoriteSpy = jest.spyOn(API.api, 'postNativeV1MeFavorites')
 
-const apiSignInSpy = jest.spyOn(API.api, 'postNativeV1Signin')
+const apiSignInSpy = jest.spyOn(API.api, 'postNativeV2Signin')
 const apiPostOAuthAuthorize = jest.spyOn(API.api, 'postNativeV1OauthssoProviderAuthorize')
-const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
-const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 
 jest.useFakeTimers()
 
@@ -94,8 +105,6 @@ describe('<Login/>', () => {
   })
 
   it('should sign in when "Se connecter" is clicked with device info', async () => {
-    getModelSpy.mockReturnValueOnce('iPhone 13')
-    getSystemNameSpy.mockReturnValueOnce('iOS')
     renderLogin()
     await screen.findByText('Connecte-toi')
 
@@ -110,9 +119,6 @@ describe('<Login/>', () => {
           deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
           os: 'iOS',
           source: 'iPhone 13',
-          resolution: '750x1334',
-          screenZoomLevel: undefined,
-          fontScale: -1,
         },
       },
       { credentials: 'omit' }
@@ -120,8 +126,6 @@ describe('<Login/>', () => {
   })
 
   it('should sign in when SSO button is clicked with device info', async () => {
-    getModelSpy.mockReturnValueOnce('iPhone 13')
-    getSystemNameSpy.mockReturnValueOnce('iOS')
     mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
@@ -140,9 +144,6 @@ describe('<Login/>', () => {
           deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
           os: 'iOS',
           source: 'iPhone 13',
-          resolution: '750x1334',
-          screenZoomLevel: undefined,
-          fontScale: -1,
         },
       },
       'google'
@@ -713,11 +714,8 @@ describe('<Login/>', () => {
           token: 'fakeToken',
           deviceInfo: {
             deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-            os: 'unknown',
-            source: 'none',
-            resolution: '750x1334',
-            screenZoomLevel: undefined,
-            fontScale: -1,
+            os: 'iOS',
+            source: 'iPhone 13',
           },
         },
         { credentials: 'omit' }
@@ -864,7 +862,7 @@ function mockMeApiCall(response: UserProfile) {
 }
 
 function simulateSignin200(accountState: AccountState) {
-  mockServer.postApi<SigninResponse>('/v1/signin', {
+  mockServer.postApi<SigninResponseV2>('/v2/signin', {
     accessToken: 'accessToken',
     refreshToken: 'refreshToken',
     accountState,
@@ -872,7 +870,7 @@ function simulateSignin200(accountState: AccountState) {
 }
 
 function simulateSigninWrongCredentials() {
-  mockServer.postApi('/v1/signin', {
+  mockServer.postApi('/v2/signin', {
     responseOptions: {
       statusCode: 400,
       data: {
@@ -883,7 +881,7 @@ function simulateSigninWrongCredentials() {
 }
 
 function simulateSigninRateLimitExceeded() {
-  mockServer.postApi('/v1/signin', {
+  mockServer.postApi('/v2/signin', {
     responseOptions: {
       statusCode: 429,
       data: {
@@ -894,7 +892,7 @@ function simulateSigninRateLimitExceeded() {
 }
 
 function simulateSigninEmailNotValidated() {
-  mockServer.postApi('/v1/signin', {
+  mockServer.postApi('/v2/signin', {
     responseOptions: {
       statusCode: 400,
       data: {
@@ -906,7 +904,7 @@ function simulateSigninEmailNotValidated() {
 }
 
 function simulateSigninNetworkFailure() {
-  mockServer.postApi('/v1/signin', {
+  mockServer.postApi('/v2/signin', {
     responseOptions: {
       data: {
         code: 'NETWORK_REQUEST_FAILED',

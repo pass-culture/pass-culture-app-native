@@ -47,6 +47,18 @@ describe('<ProfileV1 />', () => {
   })
 
   it('should render correctly on desktop', async () => {
+    const mockDeviceInfo = {
+      deviceId: 'desktop-device-id',
+      os: 'Windows 11',
+      source: 'Chrome / Windows',
+      resolution: '1920x1080',
+      fontScale: 1,
+      screenZoomLevel: 1,
+    }
+    jest.mock('features/trustedDevice/helpers/useDeviceInfo', () => ({
+      useDeviceInfo: () => mockDeviceInfo,
+    }))
+
     const { container } = render(reactQueryProviderHOC(<ProfileV1 />), {
       theme: { isDesktopViewport: true },
     })
@@ -57,6 +69,18 @@ describe('<ProfileV1 />', () => {
   })
 
   it('should render correctly on mobile browser', async () => {
+    const mockDeviceInfo = {
+      deviceId: 'mobile-device-id',
+      os: 'iOS 17',
+      source: 'iPhone 15',
+      resolution: '1170x2532',
+      fontScale: 1,
+      screenZoomLevel: 1.25,
+    }
+    jest.mock('features/trustedDevice/helpers/useDeviceInfo', () => ({
+      useDeviceInfo: () => mockDeviceInfo,
+    }))
+
     const { container } = render(reactQueryProviderHOC(<ProfileV1 />), {
       theme: { isDesktopViewport: false },
     })
