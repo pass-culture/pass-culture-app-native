@@ -4612,14 +4612,15 @@ export interface SuspendAccountForSuspiciousLoginRequest {
  * @enum {string}
  */
 export enum TicketDisplayEnum {
-  'no_ticket' = 'no_ticket',
+  'cinema_voucher' = 'cinema_voucher',
   'email_sent' = 'email_sent',
   'email_will_be_sent' = 'email_will_be_sent',
+  'external_ticket' = 'external_ticket',
+  'hidden_external_ticket' = 'hidden_external_ticket',
+  'no_ticket' = 'no_ticket',
   'online_code' = 'online_code',
-  'not_visible' = 'not_visible',
-  'qr_code' = 'qr_code',
-  'voucher' = 'voucher',
   'ticket' = 'ticket',
+  'voucher' = 'voucher',
 }
 /**
  * @export
