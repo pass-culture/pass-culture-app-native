@@ -188,7 +188,7 @@
     "search-insights": "^2.13.0",
     "styled-components": "^6.1.19",
     "supercluster": "^8.0.1",
-    "uuid": "^8.3.2",
+    "uuid": "^14.0.0",
     "yup": "^0.32.11",
     "zustand": "^4.5.7"
   },
