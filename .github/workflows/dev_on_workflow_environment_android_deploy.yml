@@ -83,6 +83,13 @@ jobs:
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Set up gcloud SDK
+        uses: google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db # v3.0.1
+      - name: Create service account key
+        run: |
+          gcloud iam service-accounts keys create app_distribution_credentials.json \
+            --iam-account=${{ secrets.GCP_EHP_SERVICE_ACCOUNT }} \
+            --project=${{ vars.PROJECT_ID }}
       - name: Get Secret
         id: 'secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v3'
@@ -95,16 +102,6 @@ jobs:
             ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-${{ inputs.ENV }}-keystore
             ANDROID_PLAYSTORE_SERVICE_ACCOUNT:passculture-metier-ehp/passculture-app-native-android-production-service-account
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
-      - name: Get Secret for App Distribution from Secret Manager (EHP only)
-        id: 'app_distribution_secret'
-        uses: 'google-github-actions/get-secretmanager-secrets@v3'
-        with:
-          secrets: |-
-            FIREBASE_TOKEN:passculture-metier-ehp/pc_native_${{ inputs.ENV }}_firebase_json
-        if: ${{ inputs.ENV != 'production' }}
-      - name: Export firebase secret to file
-        run: |
-          echo '${{steps.app_distribution_secret.outputs.FIREBASE_TOKEN}}' > app_distribution_credentials.json
       - name: 'Render Sentry Template'
         id: render_template
         uses: chuhlomin/render-template@v1.10
@@ -151,6 +148,15 @@ jobs:
         env:
           ENV: ${{ inputs.ENV }}
         run: source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "android" "$ENV"
+      - name: Delete service account key
+        if: always()
+        run: |
+          KEY_ID=$(jq -r .private_key_id app_distribution_credentials.json)
+          gcloud iam service-accounts keys delete "$KEY_ID" \
+            --iam-account=${{ secrets.GCP_EHP_SERVICE_ACCOUNT }} \
+            --project=${{ vars.PROJECT_ID }} \
+            --quiet
+          rm -f app_distribution_credentials.json
 
   slack_notify:
     runs-on: ubuntu-24.04

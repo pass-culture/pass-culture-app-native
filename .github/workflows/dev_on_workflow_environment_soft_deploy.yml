@@ -9,11 +9,6 @@ on:
       ENV:
         type: string
         required: true
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT:
-        required: true
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
-        required: true
 
 jobs:
   sentry_and_deploy:
@@ -45,8 +40,8 @@ jobs:
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          workload-identity-provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
+          service-account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
       - name: Yarn install
         run: yarn install
       - uses: ruby/setup-ruby@v1
@@ -55,8 +50,15 @@ jobs:
       - name: Authentification to Google
         uses: 'google-github-actions/auth@v2'
         with:
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
+          service_account: ${{ var.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
+      - name: Set up gcloud SDK
+        uses: google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db # v3.0.1
+      - name: Create service account key
+        run: |
+          gcloud iam service-accounts keys create firebase_credentials.json \
+            --iam-account=${{ var.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }} \
+            --project=${{ vars.PROJECT_ID }}
       - name: Get Secret
         id: 'secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v3'
@@ -65,16 +67,6 @@ jobs:
             ANDROID_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-android-${{ inputs.ENV }}-token
             IOS_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-ios-${{ inputs.ENV }}-token
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
-      - name: Get Secret for App Distribution from Secret Manager (EHP only)
-        id: 'firebase_secret'
-        uses: 'google-github-actions/get-secretmanager-secrets@v3'
-        with:
-          secrets: |-
-            FIREBASE_TOKEN:passculture-metier-ehp/pc_native_${{ inputs.ENV }}_firebase_json
-        if: ${{ inputs.ENV != 'production' }}
-      - name: Export firebase secret to file
-        run: |
-          echo '${{steps.firebase_secret.outputs.FIREBASE_TOKEN}}' > firebase_credentials.json
       - name: 'Render Sentry Template'
         id: render_template
         uses: chuhlomin/render-template@v1.10
@@ -99,6 +91,15 @@ jobs:
           LANG: en_US.UTF-8
           GOOGLE_APPLICATION_CREDENTIALS: ./firebase_credentials.json
           ENV: ${{ inputs.ENV }}
+      - name: Delete service account key
+        if: always()
+        run: |
+          KEY_ID=$(jq -r .private_key_id firebase_credentials.json)
+          gcloud iam service-accounts keys delete "$KEY_ID" \
+            --iam-account=${{ var.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }} \
+            --project=${{ vars.PROJECT_ID }} \
+            --quiet
+          rm -f firebase_credentials.json
 
   slack_notify:
     runs-on: ubuntu-24.04
@@ -109,8 +110,8 @@ jobs:
       - name: Connect to Secret Manager
         uses: 'google-github-actions/auth@v2'
         with:
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
+          service_account: ${{ var.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
       - name: Get secrets for Slack
         id: 'slack_secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v3'
