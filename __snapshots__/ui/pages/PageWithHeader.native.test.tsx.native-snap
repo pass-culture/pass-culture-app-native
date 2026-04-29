@@ -103,10 +103,6 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
                 {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
                   "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
@@ -468,10 +464,6 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
                 {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
                   "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",

@@ -103,10 +103,6 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                 {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
                   "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
@@ -841,10 +837,6 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                 {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
                   "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
@@ -1579,10 +1571,6 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                 {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
                   "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
