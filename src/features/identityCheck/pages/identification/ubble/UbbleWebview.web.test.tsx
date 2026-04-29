@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { IdentificationSessionResponse, SubscriptionStepperResponseV2 } from 'api/gen'
 import { SubscriptionStepperErrorResponseFixture } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { mockServer } from 'tests/mswServer'
@@ -28,5 +29,26 @@ describe('<UbbleWebview/>', () => {
         expect(results).toHaveNoViolations()
       })
     })
-  })
+  }),
+    describe('Identification URL', () => {
+      it('should redirect to Error page if', async () => {
+        mockServer.postApi<IdentificationSessionResponse>('/v1/ubble_identification', {
+          identificationUrl: "javascript:alert('hello')",
+        })
+
+        mockServer.getApi<SubscriptionStepperResponseV2>(
+          '/v2/subscription/stepper',
+          SubscriptionStepperErrorResponseFixture
+        )
+
+        render(reactQueryProviderHOC(<UbbleWebview />))
+
+        await act(async () => {
+          expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+            params: undefined,
+            screen: 'BonificationError',
+          })
+        })
+      })
+    })
 })

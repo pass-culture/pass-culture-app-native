@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
 import { REDIRECT_URL_UBBLE } from 'features/identityCheck/constants'
+import { isValidHttpsUrl } from 'features/identityCheck/pages/helpers/isValidUrl'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
@@ -28,36 +29,41 @@ interface AbortEvent {
 // If you get a double navigation bar on the web version at the end of the Ubble identity check it is potentially because of our mock. Please try the identity check without the mock before creating a ticket (using the XXXXXXX+ubble_test@XXXX.XX pattern for the mail used to register to bypass the age check).
 export const UbbleWebview: React.FC = () => {
   const { params } = useRoute<UseRouteType<'UbbleWebview'>>()
-  const identificationUrl = params?.identificationUrl
   const { navigate } = useNavigation<UseNavigationType>()
+  const identificationUrl = params?.identificationUrl
+  const urlValidation = isValidHttpsUrl(identificationUrl)
+
+  if (!urlValidation) navigate(...getSubscriptionHookConfig('BonificationError'))
 
   useEffect(() => {
-    window.onUbbleReady = () => {
-      const ubbleIDV = new Ubble.IDV(document.getElementById(ubbleIframeId), {
-        width: '100%',
-        height: '100%',
-        allowCamera: true,
-        identificationUrl,
-        events: {
-          onComplete({ redirectUrl }: CompleteEvent) {
-            void analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.ubble })
-            ubbleIDV.destroy()
-            if (redirectUrl.includes(REDIRECT_URL_UBBLE))
-              navigate(...getSubscriptionHookConfig('IdentityCheckEnd'))
+    if (urlValidation) {
+      window.onUbbleReady = () => {
+        const ubbleIDV = new Ubble.IDV(document.getElementById(ubbleIframeId), {
+          width: '100%',
+          height: '100%',
+          allowCamera: true,
+          identificationUrl,
+          events: {
+            onComplete({ redirectUrl }: CompleteEvent) {
+              void analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.ubble })
+              ubbleIDV.destroy()
+              if (redirectUrl.includes(REDIRECT_URL_UBBLE))
+                navigate(...getSubscriptionHookConfig('IdentityCheckEnd'))
+            },
+            onAbort({ redirectUrl, returnReason: reason }: AbortEvent) {
+              void analytics.logIdentityCheckAbort({
+                method: IdentityCheckMethod.ubble,
+                reason,
+                errorType: new URL(redirectUrl).searchParams.get('error_type') ?? null,
+              })
+              ubbleIDV.destroy()
+              navigateToHome()
+            },
           },
-          onAbort({ redirectUrl, returnReason: reason }: AbortEvent) {
-            void analytics.logIdentityCheckAbort({
-              method: IdentityCheckMethod.ubble,
-              reason,
-              errorType: new URL(redirectUrl).searchParams.get('error_type') ?? null,
-            })
-            ubbleIDV.destroy()
-            navigateToHome()
-          },
-        },
-      })
+        })
+      }
     }
-  }, [identificationUrl, navigate])
+  }, [identificationUrl, navigate, urlValidation])
 
   return (
     <React.Fragment>
