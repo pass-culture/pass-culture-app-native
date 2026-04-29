@@ -1,0 +1,6 @@
+appId: team.passculture.app.staging
+---
+- tapOn: 'Recherche'
+- assertVisible: 'Rechercher'
+- assertVisible: 'Rechercher dans le catalogue'
+- assertVisible: 'Parcours les catégories'

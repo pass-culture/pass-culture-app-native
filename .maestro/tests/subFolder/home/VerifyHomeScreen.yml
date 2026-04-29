@@ -2,3 +2,5 @@ appId: team.passculture.app.staging
 ---
 - assertVisible: "Bienvenue\_!"
 - assertVisible: 'Débloque ton crédit'
+- assertVisible: 'Home grand public'
+- assertVisible: 'Déconnecté + utilisateur non bénéficiaire'
