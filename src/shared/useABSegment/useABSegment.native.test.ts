@@ -1,4 +1,5 @@
 import { env } from 'libs/environment/env'
+import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
 import { abTestOverridesActions } from 'shared/useABSegment/abTestOverrideStore'
 import * as SegmentFromIdentifier from 'shared/useABSegment/getSegmentFromIdentifier'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
@@ -7,18 +8,6 @@ import { renderHook } from 'tests/utils'
 const mockUseAuthContext = jest.fn()
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: () => mockUseAuthContext(),
-}))
-
-const mockUseDeviceInfo = jest.fn().mockReturnValue({
-  deviceId: 'device-id',
-  os: 'iOS',
-  resolution: '1080x1920',
-  source: 'iPhone 13',
-  screenZoomLevel: undefined,
-  fontScale: 1.5,
-})
-jest.mock('features/trustedDevice/helpers/useDeviceInfo', () => ({
-  useDeviceInfo: () => mockUseDeviceInfo(),
 }))
 
 jest.mock('shared/useABSegment/abTestRegistry', () => ({
@@ -38,6 +27,11 @@ const getSegmentFromIdentifierSpy = jest.spyOn(SegmentFromIdentifier, 'getSegmen
 
 describe('useABSegment', () => {
   beforeEach(() => {
+    deviceInfoStoreActions.setDeviceInfo({
+      deviceId: 'device-id',
+      source: 'iPhone 13',
+      os: 'iOS',
+    })
     mockUseAuthContext.mockReturnValue({ user: undefined })
     abTestOverridesActions.resetAll()
   })

@@ -233,7 +233,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
             },
             {},
             {
-              "width": "20%",
+              "width": "0%",
             },
           ]
         }

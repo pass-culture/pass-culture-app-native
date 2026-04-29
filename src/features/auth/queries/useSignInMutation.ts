@@ -13,11 +13,11 @@ import {
   StepperOrigin,
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
-import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { getSSOLoginMethod, LoginRoutineMethod, LoginType } from 'libs/analytics/logEventAnalytics'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
+import { deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
 
 export const useSignInMutation = ({
   params,
@@ -36,11 +36,10 @@ export const useSignInMutation = ({
 }) => {
   const loginRoutine = useLoginRoutine()
   const onSuccess = useHandleSigninSuccess(params, doNotNavigateOnSigninSuccess, setErrorMessage)
-  const deviceInfo = useDeviceInfo()
 
   return useMutation({
     mutationFn: async (body: LoginRequest) => {
-      const requestBody = { ...body, deviceInfo }
+      const requestBody = { ...body, deviceInfo: deviceInfoStoreSelectors.selectDeviceInfo() }
       const isOAuth = isOAuthLoginRequest(requestBody)
       if (isOAuth) {
         const { provider, ...oauthBody } = requestBody

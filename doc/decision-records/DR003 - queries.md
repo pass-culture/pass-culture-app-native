@@ -10,7 +10,6 @@
 
 ## App State
 
-- useDeviceInfo => dans un hook pas stocké sur un Store
 - storage !! => stockage persisté de l'app
 - BookingWrapper => voir ce qu'on fait avec le contexte de booking & useBookingContext
 - useReviewInAppInformation => app state persisté à regarder
@@ -20,7 +19,6 @@
 - startTrackingAcceptedCookies et server state ?
 - startTracking
 - setMarketingParams => peut etre ?
-- useDeviceInfo
 
 ## De-hookification
 

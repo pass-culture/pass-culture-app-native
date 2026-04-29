@@ -1,5 +1,6 @@
 import React from 'react'
 
+import * as getDeviceInfo from 'features/trustedDevice/helpers/getDeviceInfo'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
 import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
@@ -51,6 +52,16 @@ describe('<App /> with mocked RootNavigator', () => {
         webClientId: 'GOOGLE_CLIENT_ID',
         offlineAccess: true,
       })
+    })
+  })
+
+  it('should fetch device info on launch', async () => {
+    const getDeviceInfoSpy = jest.spyOn(getDeviceInfo, 'getDeviceInfo')
+
+    renderApp()
+
+    await waitFor(() => {
+      expect(getDeviceInfoSpy).toHaveBeenCalledTimes(1)
     })
   })
 })

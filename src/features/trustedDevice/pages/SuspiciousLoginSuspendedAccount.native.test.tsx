@@ -15,6 +15,16 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const mockDeviceMetrics = {
+  resolution: '1080x1920',
+  screenZoomLevel: undefined,
+  fontScale: 1.5,
+}
+
+jest.mock('features/trustedDevice/helpers/useDeviceMetrics', () => ({
+  useDeviceMetrics: () => mockDeviceMetrics,
+}))
+
 const user = userEvent.setup()
 jest.useFakeTimers()
 

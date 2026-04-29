@@ -22,6 +22,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Position } from 'libs/location/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { Subcategory } from 'libs/subcategories/types'
+import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -68,16 +69,12 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-const mockUseDeviceInfo = jest.fn().mockReturnValue({
-  deviceId: 'device-id',
-  os: 'iOS',
-  resolution: '1080x1920',
-  source: 'iPhone 13',
-  screenZoomLevel: undefined,
-  fontScale: 1.5,
-})
-jest.mock('features/trustedDevice/helpers/useDeviceInfo', () => ({
-  useDeviceInfo: () => mockUseDeviceInfo(),
+jest.mock('features/trustedDevice/helpers/useDeviceMetrics', () => ({
+  useDeviceMetrics: () => ({
+    resolution: '1080x1920',
+    screenZoomLevel: undefined,
+    fontScale: 1.5,
+  }),
 }))
 
 const user = userEvent.setup()
@@ -88,6 +85,11 @@ describe('<OfferBody />', () => {
   beforeEach(() => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_PAGE])
+    deviceInfoStoreActions.setDeviceInfo({
+      deviceId: 'device-id',
+      source: 'iPhone 13',
+      os: 'iOS',
+    })
   })
 
   describe('Tags section', () => {

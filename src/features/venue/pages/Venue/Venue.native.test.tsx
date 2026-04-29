@@ -33,6 +33,7 @@ import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.c
 import { Network } from 'libs/share/types'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Offer } from 'shared/offer/types'
+import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
 import { abTestOverridesActions } from 'shared/useABSegment/abTestOverrideStore'
 import { AB_TESTS } from 'shared/useABSegment/abTests'
 import { mockServer } from 'tests/mswServer'
@@ -95,16 +96,12 @@ mockUseGTLPlaylists.mockReturnValue({
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
 
-const mockUseDeviceInfo = jest.fn().mockReturnValue({
-  deviceId: 'device-id',
-  os: 'iOS',
-  resolution: '1080x1920',
-  source: 'iPhone 13',
-  screenZoomLevel: undefined,
-  fontScale: 1.5,
-})
-jest.mock('features/trustedDevice/helpers/useDeviceInfo', () => ({
-  useDeviceInfo: () => mockUseDeviceInfo(),
+jest.mock('features/trustedDevice/helpers/useDeviceMetrics', () => ({
+  useDeviceMetrics: () => ({
+    resolution: '1080x1920',
+    screenZoomLevel: undefined,
+    fontScale: 1.5,
+  }),
 }))
 
 jest.mock('libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog', () => ({
@@ -129,6 +126,11 @@ describe('<Venue />', () => {
     mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v2/venue/${venueId}`, {
       ...venueDataTest,
       isOpenToPublic: true,
+    })
+    deviceInfoStoreActions.setDeviceInfo({
+      deviceId: 'device-id',
+      source: 'iPhone 13',
+      os: 'iOS',
     })
   })
 

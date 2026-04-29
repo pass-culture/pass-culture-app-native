@@ -4,7 +4,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { buildZendeskUrlForFraud } from 'features/profile/helpers/buildZendeskUrl'
-import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
+import { useDeviceMetrics } from 'features/trustedDevice/helpers/useDeviceMetrics'
 import { useVersion } from 'ui/hooks/useVersion'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -20,8 +20,8 @@ export const GenericSuspendedAccount: React.FC<Props> = ({
 }) => {
   const signOut = useLogoutRoutine()
   const { user } = useAuthContext()
-  const deviceInfo = useDeviceInfo()
   const version = useVersion()
+  const metrics = useDeviceMetrics()
 
   return (
     <GenericInfoPage
@@ -30,7 +30,7 @@ export const GenericSuspendedAccount: React.FC<Props> = ({
       buttonPrimary={{
         wording: 'Contacter le service fraude',
         onBeforeNavigate: onBeforeNavigateContactFraudTeam,
-        externalNav: { url: buildZendeskUrlForFraud({ user, deviceInfo, version }) },
+        externalNav: { url: buildZendeskUrlForFraud({ user, metrics, version }) },
       }}
       buttonTertiary={{
         wording: 'Retourner à l’accueil',

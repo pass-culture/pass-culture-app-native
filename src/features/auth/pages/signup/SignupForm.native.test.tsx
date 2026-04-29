@@ -1,6 +1,5 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import DeviceInfo from 'react-native-device-info'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
@@ -24,6 +23,7 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { eventMonitoring } from 'libs/monitoring/services'
+import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { setSettingsMock } from 'tests/settings/mockSettings'
@@ -39,11 +39,7 @@ import {
 
 import { SignupForm } from './SignupForm'
 
-jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('libs/network/NetInfoWrapper')
-
-const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
-const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 
 const apiSignUpSpy = jest.spyOn(api, 'postNativeV1Account')
 const apiSSOSignUpSpy = jest.spyOn(api, 'postNativeV1OauthssoProviderAccount')
@@ -129,6 +125,11 @@ describe('Signup Form', () => {
     )
     useRoute.mockReturnValue({ params: { from: StepperOrigin.HOME } })
     setFeatureFlags()
+    deviceInfoStoreActions.setDeviceInfo({
+      deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+      source: 'iPhone 13',
+      os: 'iOS',
+    })
   })
 
   describe('For each step', () => {
@@ -366,16 +367,8 @@ describe('Signup Form', () => {
   })
 
   describe('API', () => {
-    it('should create account when clicking on AcceptCgu button with trustedDevice', async () => {
+    it('should create account when clicking on AcceptCgu button with deviceInfo', async () => {
       simulateSignupSuccess()
-
-      // First call (useSignUp)
-      getModelSpy.mockReturnValueOnce('iPhone 13')
-      getSystemNameSpy.mockReturnValueOnce('iOS')
-
-      // Second call (useSignIn)
-      getModelSpy.mockReturnValueOnce('iPhone 13')
-      getSystemNameSpy.mockReturnValueOnce('iOS')
 
       await renderSignupForm()
 
@@ -413,9 +406,6 @@ describe('Signup Form', () => {
             deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
             os: 'iOS',
             source: 'iPhone 13',
-            resolution: '750x1334',
-            screenZoomLevel: undefined,
-            fontScale: -1,
           },
         },
         { credentials: 'omit' }
@@ -472,8 +462,6 @@ describe('Signup Form', () => {
     })
 
     it('should sign in when sso button is clicked and sso account already exists', async () => {
-      getModelSpy.mockReturnValueOnce('iPhone 13')
-      getSystemNameSpy.mockReturnValueOnce('iOS')
       mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
         accessToken: 'accessToken',
         refreshToken: 'refreshToken',
@@ -494,9 +482,6 @@ describe('Signup Form', () => {
             deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
             os: 'iOS',
             source: 'iPhone 13',
-            resolution: '750x1334',
-            screenZoomLevel: undefined,
-            fontScale: -1,
           },
         },
         'google'
@@ -580,10 +565,6 @@ describe('Signup Form', () => {
     })
 
     it('should create SSO account when clicking on AcceptCgu button', async () => {
-      getModelSpy.mockReturnValueOnce('iPhone 13') // first call in useSignIn
-      getSystemNameSpy.mockReturnValueOnce('iOS') // first call in useSignIn
-      getModelSpy.mockReturnValueOnce('iPhone 13') // second call in SignupForm
-      getSystemNameSpy.mockReturnValueOnce('iOS') // second call in SignupForm
       mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
         responseOptions: {
           statusCode: 401,
@@ -633,9 +614,6 @@ describe('Signup Form', () => {
             deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
             os: 'iOS',
             source: 'iPhone 13',
-            resolution: '750x1334',
-            screenZoomLevel: undefined,
-            fontScale: -1,
           },
         },
         'google',
@@ -763,10 +741,6 @@ describe('Signup Form', () => {
           ssoProvider: 'google',
         },
       })
-      getModelSpy.mockReturnValueOnce('iPhone 13') // first call in useSignIn
-      getSystemNameSpy.mockReturnValueOnce('iOS') // first call in useSignIn
-      getModelSpy.mockReturnValueOnce('iPhone 13') // second call in SignupForm
-      getSystemNameSpy.mockReturnValueOnce('iOS') // second call in SignupForm
       mockServer.postApi<SigninResponse>('/v1/oauth/google/account', {
         responseOptions: {
           statusCode: 200,
@@ -807,9 +781,6 @@ describe('Signup Form', () => {
             deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
             os: 'iOS',
             source: 'iPhone 13',
-            resolution: '750x1334',
-            screenZoomLevel: undefined,
-            fontScale: -1,
           },
         },
         'google',

@@ -1,13 +1,12 @@
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { env } from 'libs/environment/env'
+import { deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
 import { useOverride } from 'shared/useABSegment/abTestOverrideStore'
 import { getABTestById } from 'shared/useABSegment/abTestRegistry'
 import { getSegmentFromIdentifier } from 'shared/useABSegment/getSegmentFromIdentifier'
 
 export const useABSegment = <T>(testId: string) => {
   const { user } = useAuthContext()
-  const deviceInfo = useDeviceInfo()
 
   const testAB = getABTestById(testId)
 
@@ -21,6 +20,7 @@ export const useABSegment = <T>(testId: string) => {
     }
   }
 
+  const deviceInfo = deviceInfoStoreSelectors.selectDeviceInfo()
   const identifier = user?.id ?? deviceInfo?.deviceId
 
   return getSegmentFromIdentifier(segments, identifier)
