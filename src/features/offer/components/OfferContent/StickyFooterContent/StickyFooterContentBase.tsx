@@ -13,6 +13,7 @@ export type StickyFooterContentProps = {
   onPressFavoriteCTA: () => void
   onLayout?: (params: LayoutChangeEvent) => void
   favoriteAuthModal: ModalSettings
+  displayGradient?: boolean
 } & Partial<FavoriteProps>
 
 type StickyFooterContentBaseProps = StickyFooterContentProps & PropsWithChildren
@@ -20,10 +21,11 @@ type StickyFooterContentBaseProps = StickyFooterContentProps & PropsWithChildren
 export const StickyFooterContentBase: FC<StickyFooterContentBaseProps> = ({
   onLayout,
   children,
+  displayGradient,
   ...props
 }) => {
   return (
-    <StickyFooterWrapper onLayout={onLayout}>
+    <StickyFooterWrapper onLayout={onLayout} displayGradient={displayGradient}>
       <FavoritesCTA {...props} caption="Cette offre sera bientôt disponible" />
       {children}
     </StickyFooterWrapper>

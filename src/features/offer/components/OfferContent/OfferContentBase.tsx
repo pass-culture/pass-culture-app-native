@@ -347,9 +347,14 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
       trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
       favoriteCTAProps={favoriteButtonProps}
       onLayout={onLayout}
+      displayStickyGradient={!isBottomReached}
     />
   ) : (
-    <OfferContentCTAs offer={offer} onLayout={onLayout} {...favoriteButtonProps}>
+    <OfferContentCTAs
+      offer={offer}
+      onLayout={onLayout}
+      displayStickyGradient={!isBottomReached}
+      {...favoriteButtonProps}>
       {offerCtaButton}
     </OfferContentCTAs>
   )
