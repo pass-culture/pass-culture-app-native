@@ -31,22 +31,8 @@ jobs:
       - name: Set up gcloud SDK
         uses: google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db # v3.0.1
 
-      - name: Debug auth
-        run: |
-          echo "SA: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}"
-          echo "Provider: ${{ vars.WORKLOAD_IDENTITY_PROVIDER }}"
-          cat $GOOGLE_APPLICATION_CREDENTIALS
-
       - name: Check authenticated account
         run: gcloud auth list
-
-      - name: Check authenticated account
-        run: |
-          gcloud auth list
-          echo "---"
-          curl -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-            https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT }}:generateAccessToken \
-            -d '{"scope":["https://www.googleapis.com/auth/cloud-platform"]}'
 
       - name: List secrets from Secret Manager
         run: gcloud secrets list --project ${{ vars.PROJECT_ID }}
