@@ -9,8 +9,6 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
@@ -29,7 +27,6 @@ export const OfferVideoPreview: FunctionComponent = () => {
   const { width: viewportWidth } = useWindowDimensions()
   const videoHeight = Math.min(viewportWidth, MAX_WIDTH) * RATIO169
   const { data: offer } = useOfferQuery({ offerId: params.id })
-  const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
   const [playVideo, setPlayVideo] = useState(false)
 
   const handleOnPlayPress = useCallback(() => {
@@ -48,7 +45,7 @@ export const OfferVideoPreview: FunctionComponent = () => {
         onBackPress={goBack}
       />
 
-      {offer?.video?.id && isVideoSectionEnabled ? (
+      {offer?.video?.id ? (
         <YoutubePlayer
           title={offer.video.title ?? offer.name}
           videoId={offer.video.id}

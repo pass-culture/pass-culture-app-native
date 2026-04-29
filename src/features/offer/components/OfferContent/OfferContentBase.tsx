@@ -83,7 +83,6 @@ type OfferContentBaseProps = OfferContentProps &
     contentContainerStyle?: StyleProp<ViewStyle>
     onLayout?: (params: LayoutChangeEvent) => void
     adviceVariantInfo?: AdviceVariantInfo
-    isVideoSectionEnabled?: boolean
   }>
 
 const DELAY_BEFORE_CONSIDERING_PAGE_SEEN = 5000
@@ -101,7 +100,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   defaultReaction,
   onReactionButtonPress,
   onShowClubAdviceWritersModal,
-  isVideoSectionEnabled,
   BodyWrapper = React.Fragment,
   onLayout,
   userId,
@@ -425,7 +423,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               distance={distance}
               headlineOffersCount={headlineOffersCount}
               adviceVariantInfo={adviceVariantInfo}
-              isVideoSectionEnabled={isVideoSectionEnabled}
               hasVideoCookiesConsent={hasVideoCookiesConsent}
               onVideoConsentPress={onVideoConsentPress}
               isMultiArtistsEnabled={isMultiArtistsEnabled}

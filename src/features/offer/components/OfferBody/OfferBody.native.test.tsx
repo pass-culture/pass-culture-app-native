@@ -141,7 +141,7 @@ describe('<OfferBody />', () => {
     })
     renderOfferBody({ offer: offerResponseSnap })
 
-    await screen.findByText(offerResponseSnap.name)
+    await screen.findAllByText(offerResponseSnap.name)
 
     await waitFor(() =>
       expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(
@@ -269,7 +269,7 @@ describe('<OfferBody />', () => {
 
     renderOfferBody({ offer: offerFree })
 
-    await screen.findByText(offerFree.name)
+    await screen.findAllByText(offerFree.name)
 
     expect(screen.queryByText('5,00 €')).not.toBeOnTheScreen()
   })
@@ -300,7 +300,7 @@ describe('<OfferBody />', () => {
 
       renderOfferBody({ offer })
 
-      await screen.findByText(offer.name)
+      await screen.findAllByText(offer.name)
 
       expect(
         screen.queryByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
@@ -319,7 +319,7 @@ describe('<OfferBody />', () => {
       }
       renderOfferBody({ offer })
 
-      await screen.findByText(offer.name)
+      await screen.findAllByText(offer.name)
 
       expect(screen.queryByTestId('topSeparator')).not.toBeOnTheScreen()
     })
@@ -368,7 +368,7 @@ describe('<OfferBody />', () => {
         }
         renderOfferBody({ offer })
 
-        await screen.findByText(offer.name)
+        await screen.findAllByText(offer.name)
 
         expect(
           screen.queryByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
@@ -385,7 +385,7 @@ describe('<OfferBody />', () => {
         }
         renderOfferBody({ offer })
 
-        await screen.findByText(offer.name)
+        await screen.findAllByText(offer.name)
 
         expect(
           screen.queryByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
@@ -411,7 +411,7 @@ describe('<OfferBody />', () => {
         }
         renderOfferBody({ offer })
 
-        await screen.findByText(offer.name)
+        await screen.findAllByText(offer.name)
 
         expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
       })
@@ -421,7 +421,7 @@ describe('<OfferBody />', () => {
       it('should display venue section', async () => {
         renderOfferBody({})
 
-        await screen.findByText(offerResponseSnap.name)
+        await screen.findAllByText(offerResponseSnap.name)
 
         expect(screen.getByText('Copier l’adresse')).toBeOnTheScreen()
       })
@@ -436,7 +436,7 @@ describe('<OfferBody />', () => {
         mockPosition = null
         renderOfferBody({})
 
-        await screen.findByText(offerResponseSnap.name)
+        await screen.findAllByText(offerResponseSnap.name)
 
         expect(screen.queryByText('à 900+ km')).not.toBeOnTheScreen()
       })
@@ -460,7 +460,7 @@ describe('<OfferBody />', () => {
       }
       renderOfferBody({ offer })
 
-      await screen.findByText(offerResponseSnap.name)
+      await screen.findAllByText(offerResponseSnap.name)
 
       expect(screen.getByText('À propos')).toBeOnTheScreen()
     })
@@ -474,7 +474,7 @@ describe('<OfferBody />', () => {
       }
       renderOfferBody({ offer })
 
-      await screen.findByText(offerResponseSnap.name)
+      await screen.findAllByText(offerResponseSnap.name)
 
       expect(screen.queryByText('À propos')).not.toBeOnTheScreen()
     })
@@ -499,7 +499,7 @@ describe('<OfferBody />', () => {
     it('should display proposed section', async () => {
       renderOfferBody({ offer: offerWithDifferentAddress })
 
-      await screen.findByText(offerResponseSnap.name)
+      await screen.findAllByText(offerResponseSnap.name)
 
       expect(screen.getByText('Proposé par')).toBeOnTheScreen()
     })
@@ -507,7 +507,7 @@ describe('<OfferBody />', () => {
     it('should not display proposed section', async () => {
       renderOfferBody({})
 
-      await screen.findByText(offerResponseSnap.name)
+      await screen.findAllByText(offerResponseSnap.name)
 
       expect(screen.queryByText('Proposé par')).not.toBeOnTheScreen()
     })
@@ -703,7 +703,7 @@ describe('<OfferBody />', () => {
   })
 
   it('should redirect to cookies management when pressing manage cookies button', async () => {
-    renderOfferBody({ isVideoSectionEnabled: true })
+    renderOfferBody({})
 
     await user.press(await screen.findByText('Gérer mes cookies'))
 
@@ -722,7 +722,6 @@ describe('<OfferBody />', () => {
     subcategory = mockSubcategory,
     isDesktopViewport,
     distance,
-    isVideoSectionEnabled,
     hasVideoCookiesConsent,
     isMultiArtistsEnabled,
     onShowOfferArtistsModal = jest.fn(),
@@ -735,7 +734,6 @@ describe('<OfferBody />', () => {
           subcategory={subcategory}
           distance={distance}
           adviceVariantInfo={adviceVariantInfoFixture}
-          isVideoSectionEnabled={isVideoSectionEnabled}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
           onVideoConsentPress={jest.fn()}
           onShowOfferArtistsModal={onShowOfferArtistsModal}

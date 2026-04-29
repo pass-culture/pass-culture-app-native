@@ -4,8 +4,6 @@ import styled from 'styled-components/native'
 import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferContentProps } from 'features/offer/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { ImageWithCredit } from 'shared/types'
@@ -37,8 +35,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   const { visible, showModal, hideModal } = useModal(false)
   const headerHeight = useGetHeaderHeight()
   const [carouselDefaultIndex, setCarouselDefaultIndex] = useState(0)
-
-  const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
 
   const offerImages: ImageWithCredit[] = useMemo(
     () => (offer.images ? getImagesUrlsWithCredit<ImageWithCredit>(offer.images) : []),
@@ -82,7 +78,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           proAdvicesCount={proAdvicesCount}
           adviceVariantInfo={adviceVariantInfo}
           onOfferPreviewPress={handlePreviewPress}
-          isVideoSectionEnabled={isVideoSectionEnabled}
           BodyWrapper={BodyWrapper}
           defaultReaction={defaultReaction}
           onReactionButtonPress={onReactionButtonPress}

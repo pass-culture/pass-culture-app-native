@@ -8,8 +8,6 @@ import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferImageContainerDimensions } from 'features/offer/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ImageWithCredit } from 'shared/types'
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
@@ -40,12 +38,11 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   const { cookiesConsent } = useCookies()
   const { designSystem } = useTheme()
   const scrollToAnchor = useScrollToAnchor()
-  const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
   const hasConsent =
     cookiesConsent.state === ConsentState.HAS_CONSENT &&
     cookiesConsent.value.accepted.includes(CookieNameEnum.VIDEO_PLAYBACK)
 
-  const hasVideo = offer.video?.id && isVideoSectionEnabled
+  const hasVideo = offer.video?.id
 
   const handleVideoPress = () => {
     if (!hasConsent) {
