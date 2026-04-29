@@ -12,6 +12,15 @@ const mockShare = jest
 const offer = mockOffer
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('@react-navigation/native', () => {
+  const actual = jest.requireActual('@react-navigation/native')
+  return {
+    ...actual,
+    createPathConfigForStaticNavigation: jest.fn(() => ({})),
+    createNavigationContainerRef: jest.fn(),
+    createComponentForStaticNavigation: jest.fn(() => () => null),
+  }
+})
 
 describe('getShareOffer', () => {
   describe('should display share modal with data from offer', () => {

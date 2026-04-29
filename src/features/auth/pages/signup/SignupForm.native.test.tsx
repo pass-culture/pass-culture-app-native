@@ -17,7 +17,7 @@ import { CURRENT_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures
 import * as LoginAndRedirectAPI from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { SignInResponseFailure } from 'features/auth/types'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
@@ -671,7 +671,7 @@ describe('Signup Form', () => {
 
       await user.press(ssoButton)
 
-      const datePicker = screen.getByTestId('date-picker-spinner-native')
+      const datePicker = await screen.findByTestId('date-picker-spinner-native')
       await act(async () =>
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )

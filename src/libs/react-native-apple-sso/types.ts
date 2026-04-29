@@ -1,4 +1,4 @@
-import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 
 export type AppleLoginOptions = {
   onSuccess: ({ code, state }: { code: string; state: string }) => void

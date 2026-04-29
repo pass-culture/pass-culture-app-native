@@ -3,7 +3,7 @@ import React from 'react'
 import { openInbox } from 'react-native-email-link'
 
 import { goBack } from '__mocks__/@react-navigation/native'
-import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
+import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfilePropConfig'
 import { render, screen } from 'tests/utils'
 
 import { SectionRow } from './SectionRow'

@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { AppearanceButton } from 'features/profile/components/AppearanceButton/AppearanceButton'
 import { BugReportButton } from 'features/profile/components/Buttons/BugReportButton/BugReportButton'
 import { HelpButtonRow } from 'features/profile/components/Buttons/HelpButton/HelpButtonRow'

@@ -74,7 +74,6 @@ const App: FunctionComponent = function () {
           <SafeAreaProvider>
             <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
               <AnalyticsInitializer>
-                {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
                 <NetInfoWrapper>
                   <FirestoreNetworkObserver />
                   <AuthWrapper>

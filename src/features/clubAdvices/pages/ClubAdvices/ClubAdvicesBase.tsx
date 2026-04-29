@@ -12,7 +12,7 @@ import { AdvicesWebMetaHeader } from 'features/advices/components/AdvicesWebMeta
 import { OFFER_ADVICE_THUMBNAIL_HEIGHT } from 'features/advices/constants'
 import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
 import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'

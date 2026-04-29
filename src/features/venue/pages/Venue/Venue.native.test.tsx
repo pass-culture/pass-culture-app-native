@@ -12,7 +12,7 @@ import {
   VenueResponse,
 } from 'api/gen'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
-import { Referrals } from 'features/navigation/RootNavigator/types'
+import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import * as useOfferCTAContextModule from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { UserProfile } from 'features/share/types'

@@ -1,11 +1,8 @@
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import {
-  BonificationRefused,
-  BonificationRefusedType,
-  PAGE_CONFIG,
-} from 'features/bonification/pages/BonificationRefused'
+import { BonificationRefused, PAGE_CONFIG } from 'features/bonification/pages/BonificationRefused'
+import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { beneficiaryUser } from 'fixtures/user'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, screen, userEvent } from 'tests/utils'

@@ -12,7 +12,7 @@ import {
   RootStackParamList,
   StepperOrigin,
   UseNavigationType,
-} from 'features/navigation/RootNavigator/types'
+} from 'features/navigation/navigators/RootNavigator/types'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { getSSOLoginMethod, LoginRoutineMethod, LoginType } from 'libs/analytics/logEventAnalytics'
 import { analytics } from 'libs/analytics/provider'

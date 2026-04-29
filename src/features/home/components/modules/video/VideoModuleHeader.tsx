@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
 import { Offer } from 'shared/offer/types'

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { AccessibilityRowConfig } from 'features/profile/pages/Accessibility/Accessibility'
 import { SectionRow } from 'ui/components/SectionRow'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'

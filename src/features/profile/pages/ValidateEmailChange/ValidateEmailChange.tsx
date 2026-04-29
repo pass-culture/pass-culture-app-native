@@ -7,8 +7,11 @@ import { ApiError } from 'api/ApiError'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
-import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { ProfileStackParamList } from 'features/navigation/navigators/ProfileStackNavigator/types'
+import {
+  RootStackParamList,
+  StepperOrigin,
+} from 'features/navigation/navigators/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useEmailUpdateStatusQuery } from 'features/profile/queries/useEmailUpdateStatusQuery'
 import { eventMonitoring } from 'libs/monitoring/services'

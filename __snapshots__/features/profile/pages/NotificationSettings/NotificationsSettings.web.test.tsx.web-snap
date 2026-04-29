@@ -213,7 +213,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <label
                           class="c2"
-                          for="1"
+                          for="174"
                         >
                           <div
                             class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -233,7 +233,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                             aria-checked="false"
                             aria-disabled="true"
                             aria-label="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
-                            aria-labelledby="0"
+                            aria-labelledby="173"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
                             data-testid="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
                             role="switch"
@@ -262,7 +262,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           </div>
                           <input
                             hidden=""
-                            id="1"
+                            id="174"
                             readonly=""
                             type="checkbox"
                           />
@@ -295,7 +295,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         >
                           <label
                             class="c2"
-                            for="3"
+                            for="176"
                           >
                             <div
                               class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -315,7 +315,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                               aria-checked="false"
                               aria-disabled="true"
                               aria-label="Suivre tous les thèmes - Interrupteur à bascule - non coché"
-                              aria-labelledby="2"
+                              aria-labelledby="175"
                               class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
                               data-testid="Suivre tous les thèmes - Interrupteur à bascule - non coché"
                               role="switch"
@@ -344,7 +344,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                             </div>
                             <input
                               hidden=""
-                              id="3"
+                              id="176"
                               readonly=""
                               type="checkbox"
                             />
@@ -364,7 +364,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <label
                           class="c2"
-                          for="5"
+                          for="178"
                         >
                           <div
                             class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -384,7 +384,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                             aria-checked="false"
                             aria-disabled="true"
                             aria-label="Cinéma - Interrupteur à bascule - non coché"
-                            aria-labelledby="4"
+                            aria-labelledby="177"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
                             data-testid="Cinéma - Interrupteur à bascule - non coché"
                             role="switch"
@@ -413,7 +413,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           </div>
                           <input
                             hidden=""
-                            id="5"
+                            id="178"
                             readonly=""
                             type="checkbox"
                           />
@@ -432,7 +432,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <label
                           class="c2"
-                          for="7"
+                          for="180"
                         >
                           <div
                             class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -452,7 +452,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                             aria-checked="false"
                             aria-disabled="true"
                             aria-label="Lecture - Interrupteur à bascule - non coché"
-                            aria-labelledby="6"
+                            aria-labelledby="179"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
                             data-testid="Lecture - Interrupteur à bascule - non coché"
                             role="switch"
@@ -481,7 +481,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           </div>
                           <input
                             hidden=""
-                            id="7"
+                            id="180"
                             readonly=""
                             type="checkbox"
                           />
@@ -500,7 +500,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <label
                           class="c2"
-                          for="9"
+                          for="182"
                         >
                           <div
                             class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -520,7 +520,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                             aria-checked="false"
                             aria-disabled="true"
                             aria-label="Musique - Interrupteur à bascule - non coché"
-                            aria-labelledby="8"
+                            aria-labelledby="181"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
                             data-testid="Musique - Interrupteur à bascule - non coché"
                             role="switch"
@@ -549,7 +549,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           </div>
                           <input
                             hidden=""
-                            id="9"
+                            id="182"
                             readonly=""
                             type="checkbox"
                           />
@@ -568,7 +568,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <label
                           class="c2"
-                          for="11"
+                          for="184"
                         >
                           <div
                             class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -588,7 +588,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                             aria-checked="false"
                             aria-disabled="true"
                             aria-label="Spectacles - Interrupteur à bascule - non coché"
-                            aria-labelledby="10"
+                            aria-labelledby="183"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
                             data-testid="Spectacles - Interrupteur à bascule - non coché"
                             role="switch"
@@ -617,7 +617,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           </div>
                           <input
                             hidden=""
-                            id="11"
+                            id="184"
                             readonly=""
                             type="checkbox"
                           />
@@ -636,7 +636,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <label
                           class="c2"
-                          for="13"
+                          for="186"
                         >
                           <div
                             class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -656,7 +656,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                             aria-checked="false"
                             aria-disabled="true"
                             aria-label="Activités créatives - Interrupteur à bascule - non coché"
-                            aria-labelledby="12"
+                            aria-labelledby="185"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
                             data-testid="Activités créatives - Interrupteur à bascule - non coché"
                             role="switch"
@@ -685,7 +685,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           </div>
                           <input
                             hidden=""
-                            id="13"
+                            id="186"
                             readonly=""
                             type="checkbox"
                           />
@@ -704,7 +704,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <label
                           class="c2"
-                          for="15"
+                          for="188"
                         >
                           <div
                             class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -724,7 +724,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                             aria-checked="false"
                             aria-disabled="true"
                             aria-label="Visites et sorties - Interrupteur à bascule - non coché"
-                            aria-labelledby="14"
+                            aria-labelledby="187"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
                             data-testid="Visites et sorties - Interrupteur à bascule - non coché"
                             role="switch"
@@ -753,7 +753,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           </div>
                           <input
                             hidden=""
-                            id="15"
+                            id="188"
                             readonly=""
                             type="checkbox"
                           />

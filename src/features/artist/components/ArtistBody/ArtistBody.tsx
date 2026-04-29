@@ -9,7 +9,7 @@ import { ArtistHeader } from 'features/artist/components/ArtistHeader/ArtistHead
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
-import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
+import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareArtist } from 'features/share/helpers/getShareArtist'
 import { WebShareModal } from 'features/share/pages/WebShareModal'

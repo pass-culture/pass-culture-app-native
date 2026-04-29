@@ -36,6 +36,8 @@ let mockRouteParams = {}
 let beforeRemoveHandler
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
+  createComponentForStaticNavigation: jest.fn(() => () => null),
+  createPathConfigForStaticNavigation: jest.fn(() => ({})),
   useNavigation: () => ({
     navigate: jest.fn(),
     popTo: mockPopTo,

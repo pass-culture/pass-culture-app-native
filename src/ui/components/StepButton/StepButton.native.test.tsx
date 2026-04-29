@@ -2,7 +2,7 @@ import React from 'react'
 
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { IconStepRetry } from 'features/identityCheck/components/IconStepRetry'
-import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { render, screen } from 'tests/utils'
 import { theme } from 'theme'
 import { StepButton } from 'ui/components/StepButton/StepButton'

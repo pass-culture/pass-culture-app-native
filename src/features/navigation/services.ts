@@ -1,7 +1,7 @@
 import { NavigationState } from '@react-navigation/native'
 import { Platform } from 'react-native'
 
-import { getNestedNavigationFromState } from 'features/navigation/RootNavigator/linking/getNestedNavigationFromState'
+import { getNestedNavigationFromState } from 'features/navigation/navigators/RootNavigator/linking/getNestedNavigationFromState'
 import { sanitizeNavigationState } from 'features/navigation/sanitizeNavigationState'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'

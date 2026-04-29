@@ -3,7 +3,7 @@ import React from 'react'
 import { FlatList } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { HorizontalArtistTile } from 'shared/verticalPlaylist/components/HorizontalArtistTile'

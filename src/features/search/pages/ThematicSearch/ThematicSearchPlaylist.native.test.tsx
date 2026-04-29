@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
+import { Referrals, ScreenNames } from 'features/navigation/navigators/RootNavigator/types'
 import { ThematicSearchPlaylist } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylist'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
 import { analytics } from 'libs/analytics/provider'

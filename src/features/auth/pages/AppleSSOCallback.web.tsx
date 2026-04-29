@@ -10,7 +10,7 @@ import {
   RootStackParamList,
   StepperOrigin,
   UseRouteType,
-} from 'features/navigation/RootNavigator/types'
+} from 'features/navigation/navigators/RootNavigator/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 import {
   clearAppleSSOContext,
