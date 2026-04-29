@@ -89,23 +89,21 @@ export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
   )
 
   return (
-    <React.Fragment>
-      <StyledVideoPlayerContainer marginTop={headerHeight}>
-        <StyledYoutubePlayer
-          ref={playerRef}
-          initialPlayerParams={{ modestbranding: true, rel: false }}
-          height={playerHeight}
-          width={playerWidth}
-          play={isPlaying}
-          noThumbnail
-          onReady={playVideo}
-          videoId={youtubeVideoId}
-          onChangeState={onChangeState}
-          onError={() => {
-            setShowErrorView(true)
-          }}
-        />
-      </StyledVideoPlayerContainer>
+    <StyledVideoPlayerContainer marginTop={headerHeight}>
+      <StyledYoutubePlayer
+        ref={playerRef}
+        initialPlayerParams={{ controls: false, rel: false, iv_load_policy: 3 }}
+        height={playerHeight}
+        width={playerWidth}
+        play={isPlaying}
+        noThumbnail
+        onReady={playVideo}
+        videoId={youtubeVideoId}
+        onChangeState={onChangeState}
+        onError={() => {
+          setShowErrorView(true)
+        }}
+      />
       {hasFinishPlaying ? (
         <VideoEndView
           onPressReplay={replayVideo}
@@ -120,7 +118,7 @@ export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
       {showErrorView ? (
         <VideoErrorView style={{ height: playerHeight, width: playerWidth }} />
       ) : null}
-    </React.Fragment>
+    </StyledVideoPlayerContainer>
   )
 }
 

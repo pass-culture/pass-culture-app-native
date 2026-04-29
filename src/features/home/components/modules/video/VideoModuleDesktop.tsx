@@ -87,7 +87,8 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
           <StyledTouchableHighlight
             onPress={props.onVideoPlaceholderPress}
             testID="video-thumbnail"
-            accessibilityRole={AccessibilityRole.BUTTON}>
+            accessibilityRole={AccessibilityRole.BUTTON}
+            accessibilityLabel={`Ouvrir la page et lire la vidéo ${props.videoTitle}. Transcription disponible.`}>
             <Thumbnail source={{ uri: props.videoThumbnail }}>
               <BlackView />
               <TextContainer>
