@@ -49,12 +49,12 @@ const ArtistName = styled(Typo.BodyAccentS)<{ maxWidth: number; isFullWidth: boo
   ({ maxWidth, isFullWidth }) => ({
     textAlign: 'center',
     maxWidth: isFullWidth ? '100%' : maxWidth,
+    alignSelf: isFullWidth ? 'center' : 'self-start',
   })
 )
 
-const StyledView = styled(ViewGap)<{ isFullWidth: boolean }>(({ theme, isFullWidth }) => ({
+const StyledView = styled(ViewGap)<{ isFullWidth: boolean }>(({ isFullWidth }) => ({
   flexDirection: isFullWidth ? 'row' : 'column',
-  paddingVertical: theme.designSystem.size.spacing.s,
 }))
 
 const StyledImage = styled(FastImage)({

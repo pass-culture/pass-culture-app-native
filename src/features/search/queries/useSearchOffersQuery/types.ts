@@ -33,5 +33,5 @@ export type SelectedSearchOffers = {
 export type SelectSearchOffersParams = {
   data: InfiniteData<FetchSearchOffersResponse>
   transformHits: ReturnType<typeof useTransformOfferHits>
-  selectedFilter: SearchFilter | null
+  selectedFilter?: SearchFilter | null
 }

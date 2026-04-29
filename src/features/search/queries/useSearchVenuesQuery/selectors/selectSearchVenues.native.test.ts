@@ -25,60 +25,29 @@ const emptyResponse: FetchSearchVenuesResponse = {
 }
 
 describe('selectSearchVenues', () => {
-  describe('selectedFilter', () => {
-    it('should return venues when selectedFilter is null', () => {
-      const result = selectSearchVenues(mockResponse, null)
+  it('should return venues', () => {
+    const result = selectSearchVenues(mockResponse)
 
-      expect(result.algoliaVenues).toEqual([mockVenueOpen])
-      expect(result.venues).toEqual([
-        expect.objectContaining({ objectID: 'v1', name: 'Venue Open' }),
-      ])
-    })
+    expect(result.algoliaVenues).toEqual([mockVenueOpen])
+    expect(result.venues).toEqual([expect.objectContaining({ objectID: 'v1', name: 'Venue Open' })])
+  })
 
-    it('should return venues when selectedFilter is "Lieux"', () => {
-      const result = selectSearchVenues(mockResponse, 'Lieux')
+  it('should always return venuesUserData', () => {
+    const result = selectSearchVenues(mockResponse)
 
-      expect(result.algoliaVenues).toEqual([mockVenueOpen])
-      expect(result.venues).toEqual([
-        expect.objectContaining({ objectID: 'v1', name: 'Venue Open' }),
-      ])
-    })
-
-    it('should return empty venues when selectedFilter is "Offres"', () => {
-      const result = selectSearchVenues(mockResponse, 'Offres')
-
-      expect(result.algoliaVenues).toEqual([])
-      expect(result.venues).toEqual([])
-    })
-
-    it('should return empty venues when selectedFilter is "Artistes"', () => {
-      const result = selectSearchVenues(mockResponse, 'Artistes')
-
-      expect(result.algoliaVenues).toEqual([])
-      expect(result.venues).toEqual([])
-    })
-
-    it('should always return venuesUserData regardless of selectedFilter', () => {
-      const filters = ['Offres', 'Lieux', 'Artistes', null] as const
-
-      filters.forEach((selectedFilter) => {
-        const result = selectSearchVenues(mockResponse, selectedFilter)
-
-        expect(result.venuesUserData).toEqual([{ venue_playlist_title: 'venue playlist title' }])
-      })
-    })
+    expect(result.venuesUserData).toEqual([{ venue_playlist_title: 'venue playlist title' }])
   })
 
   describe('data mapping', () => {
     it('should map venue data correctly', () => {
-      const result = selectSearchVenues(mockResponse, null)
+      const result = selectSearchVenues(mockResponse)
 
       expect(result.venuesUserData).toEqual([{ venue_playlist_title: 'venue playlist title' }])
       expect(result.venueNotOpenToPublic).toEqual([mockVenueNotOpenToPublic])
     })
 
     it('should handle undefined or empty responses', () => {
-      const result = selectSearchVenues(emptyResponse, null)
+      const result = selectSearchVenues(emptyResponse)
 
       expect(result.algoliaVenues).toEqual([])
       expect(result.venues).toEqual([])

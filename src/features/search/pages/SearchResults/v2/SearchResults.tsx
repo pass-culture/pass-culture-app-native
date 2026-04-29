@@ -12,6 +12,7 @@ import { SearchHeader } from 'features/search/components/SearchHeader/SearchHead
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
+import { removeGeolocFromVenue } from 'features/search/helpers/searchList/removeGeolocFromVenue'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { useSync } from 'features/search/helpers/useSync/useSync'
 import { SearchTab } from 'features/search/pages/SearchResults/v2/components/SearchTab'
@@ -68,7 +69,9 @@ export const SearchResults = () => {
   const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius, geolocPosition } =
     useLocation()
 
-  const isArtistInSearchActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE_IN_SEARCH)
+  const enableArtistInSearchActive = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_ARTIST_PAGE_IN_SEARCH
+  )
   const enableAIFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR)
 
   const { disabilities } = useAccessibilityFiltersContext()
@@ -94,15 +97,18 @@ export const SearchResults = () => {
   const transformHits = useTransformOfferHits()
 
   const {
-    data: artists,
+    data: artistsResponse = [],
     isLoading: isArtistsQueryLoading,
     isFetching: isArtistsQueryFetching,
     isSuccess: isArtistsQuerySuccess,
   } = useSearchArtistsQuery(queryParams, {
-    select: (data) => selectSearchArtists(data, selectedFilter),
+    select: (data) => selectSearchArtists(data),
+    enabled:
+      enableArtistInSearchActive && (selectedFilter === null || selectedFilter === 'Artistes'),
   })
+
   const {
-    data: offers,
+    data: offersResponse,
     hasNextPage,
     fetchNextPage,
     isFetching: isOffersQueryFetching,
@@ -111,23 +117,32 @@ export const SearchResults = () => {
     isLoading: isOffersQueryLoading,
     isSuccess: isOffersQuerySuccess,
   } = useSearchOffersQuery(queryParams, {
-    select: (data) => selectSearchOffers({ data, transformHits, selectedFilter }),
+    select: (data) => selectSearchOffers({ data, transformHits }),
+    enabled: selectedFilter === null || selectedFilter === 'Offres',
   })
   const {
-    data: venues,
+    data: venuesResponse,
     isLoading: isVenuesQueryLoading,
     isFetching: isVenuesQueryFetching,
     isSuccess: isVenuesQuerySuccess,
   } = useSearchVenuesQuery(queryParams, {
-    select: (data) => selectSearchVenues(data, selectedFilter),
+    select: (data) => selectSearchVenues(data),
+    enabled: selectedFilter === null || selectedFilter === 'Lieux',
   })
 
+  const algoliaVenues = venuesResponse?.algoliaVenues ?? []
+  const venueNotOpenToPublic = venuesResponse?.venueNotOpenToPublic ?? []
+
+  const searchResultVenues = venueNotOpenToPublic[0]
+    ? [removeGeolocFromVenue(venueNotOpenToPublic[0]), ...algoliaVenues]
+    : algoliaVenues
+
   const hits: SearchOfferHits = {
-    artists: artists ?? [],
-    duplicatedOffers: offers?.duplicatedOffers ?? [],
-    offers: offers?.offers ?? [],
-    venues: venues?.algoliaVenues ?? [],
-    venueNotOpenToPublic: venues?.venueNotOpenToPublic ?? [],
+    artists: artistsResponse,
+    duplicatedOffers: offersResponse?.duplicatedOffers ?? [],
+    offers: offersResponse?.offers ?? [],
+    venues: searchResultVenues,
+    venueNotOpenToPublic,
   }
 
   const pageTracking = usePageTracking({
@@ -154,10 +169,10 @@ export const SearchResults = () => {
   }
 
   const handleEndReached = async () => {
-    if (!(offers && hasNextPage)) {
+    if (!(offersResponse && hasNextPage)) {
       return
     }
-    const page = offers.lastPage?.offersResponse.page ?? 0
+    const page = offersResponse.lastPage?.offersResponse.page ?? 0
 
     if (page > 0) {
       const currentSearchId = searchState.searchId ?? searchIdGenerated
@@ -180,12 +195,10 @@ export const SearchResults = () => {
       return prev === filter ? null : filter
     })
 
-  const searchResultHits = isArtistInSearchActive ? hits : { ...hits, artists: [] }
-
   const searchListContent = getSearchListContent({
     selectedFilter,
-    hits: searchResultHits,
-    nbHits: offers?.nbHits ?? hits.offers.length,
+    hits,
+    nbHits: offersResponse?.nbHits ?? hits.offers.length,
   })
 
   if (!netInfo.isConnected) {
@@ -207,7 +220,9 @@ export const SearchResults = () => {
             withFilterButton={!isFocusOnSuggestions}
             withArrow
             shouldDisplayHeader={!isFocusOnSuggestions}>
-            <SearchTab selectedFilter={selectedFilter} onFilterPress={handlePressFilter} />
+            {isFocusOnSuggestions ? null : (
+              <SearchTab selectedFilter={selectedFilter} onFilterPress={handlePressFilter} />
+            )}
           </SearchHeader>
         </Container>
         {isFocusOnSuggestions ? (
@@ -223,14 +238,13 @@ export const SearchResults = () => {
           <SearchResultsContent
             onEndReached={handleEndReached}
             onSearchResultsRefresh={() => refetch()}
-            nbHits={offers?.nbHits ?? hits.offers.length}
             searchListContent={searchListContent}
             isFetching={isArtistsQueryFetching && isOffersQueryFetching && isVenuesQueryFetching}
             isLoading={isArtistsQueryLoading && isOffersQueryLoading && isVenuesQueryLoading}
             isRefetching={isOffersQueryRefetching}
             isSuccess={isArtistsQuerySuccess && isOffersQuerySuccess && isVenuesQuerySuccess}
-            userData={offers?.userData}
-            venuesUserData={venues?.venuesUserData ?? undefined}
+            userData={offersResponse?.userData}
+            venuesUserData={venuesResponse?.venuesUserData ?? undefined}
             onViewableItemsChanged={handleViewableItemsChanged}
             enableAIFakeDoor={enableAIFakeDoor}
             onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('search')}
