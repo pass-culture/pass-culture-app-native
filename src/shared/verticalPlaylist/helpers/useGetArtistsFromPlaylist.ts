@@ -64,7 +64,7 @@ export const useGetArtistsFromPlaylist = ({ params }): VerticalPlaylistArtistsDa
 
   const query = useSearchArtistsQuery(queryParams, {
     enabled: !venueId,
-    select: (data) => selectSearchArtists(data, null),
+    select: (data) => selectSearchArtists(data),
   })
 
   const artistsFromVenue = venueArtists?.artists
