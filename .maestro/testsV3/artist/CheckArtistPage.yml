@@ -1,0 +1,27 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - artist
+onFlowStart:
+  - runScript: ../common/DeepLink.js
+  - runScript: ../common/Button.js
+---
+- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/StopApp.yml
+- runFlow: ../common/DeeplinkToHome.yml
+
+- runFlow: ../common/GoToSearchFromTabBar.yml
+
+- tapOn: 'Catégorie Livres'
+- tapOn: 'BD & comics'
+
+- assertVisible: 'Rechercher'
+- runFlow: ../common/SetEverywhere.yml
+- extractTextWithAI:
+    query: "Le nom exacte d'un artiste visible dans les résultats de recherche"
+    outputVariable: 'artistName'
+- tapOn: .*${artistName}.*
+- assertVisible: 'Ses oeuvres populaires'
+- scrollUntilVisible:
+    element: 'Toutes ses offres disponibles'
+
+- runFlow: ../common/StopApp.yml

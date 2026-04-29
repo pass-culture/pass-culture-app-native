@@ -1,0 +1,118 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - auth
+onFlowStart:
+  - runScript: ../common/DeepLink.js
+  - runScript: ../common/Button.js
+  - runScript:
+      file: ../common/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: 18
+---
+- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/StopApp.yml
+- runFlow: ../common/DeeplinkToHome.yml
+
+- runFlow: ../common/GoToSearchFromTabBar.yml
+
+- assertVisible: 'Rechercher'
+
+- runFlow:
+    when:
+      visible: 'Ma position'
+    commands:
+      - tapOn: 'Ma position'
+      - tapOn: 'Localisation – Liste - Élément 3 sur 3 - France entière.*'
+
+- tapOn: 'Champs de texte - Rechercher dans le catalogue'
+
+- inputText: 'One piece'
+- pressKey: Enter
+
+- swipe:
+    from:
+      text: '.*Les lieux culturels.*'
+    direction: UP
+
+- extractTextWithAI:
+    query: "Le titre exacte d'une des offres One Piece non-cropé visible dans les résultats de recherche"
+    outputVariable: 'physicalOfferTitle'
+- tapOn: .*${physicalOfferTitle}.*
+
+- waitForAnimationToEnd
+
+- assertVisible:
+    id: 'tagsContainer'
+
+- swipe:
+    from:
+      id: 'tagsContainer'
+    direction: UP
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - scrollUntilVisible:
+          element: "Envoyer par\nSMS"
+      - assertVisible: "Envoyer par\nSMS"
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - scrollUntilVisible:
+          element: 'Envoyer sur iMessage'
+      - assertVisible: 'Envoyer sur iMessage'
+
+- assertVisible:
+    text: 'Voir l’itinéraire'
+    optional: true
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn: 'Réserver l’offre'
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn: ${output.button.ios.booking}
+- assertVisible: 'Identifie-toi pour découvrir tout ce que la culture a en réserve pour toi.'
+
+- waitForAnimationToEnd
+
+- tapOn: 'Se connecter'
+
+- assertVisible: 'Connecte-toi'
+- tapOn:
+    id: 'Entrée pour l’email'
+- inputText: ${output.userEmail}
+- tapOn:
+    id: 'Mot de passe'
+- inputText: ${MAESTRO_PASSWORD}
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - hideKeyboard
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn: 'Connecte-toi' # Pour fermer le clavier iOS
+- tapOn: 'Se connecter' # Android
+
+- waitForAnimationToEnd
+
+- runFlow: # Si apparition du QPI
+    when:
+      visible: 'Prends 1 minute'
+    commands:
+      - tapOn: 'Plus tard'
+
+- runFlow: ../common/StopApp.yml

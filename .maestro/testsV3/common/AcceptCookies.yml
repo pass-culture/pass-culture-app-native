@@ -1,0 +1,23 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow:
+    when:
+      visible: "J’accède au pass Culture sans mettre à jour mon navigateur"
+    commands:
+    - tapOn: "J’accède au pass Culture sans mettre à jour mon navigateur"
+- runFlow:
+    when:
+      visible: 'Autorisez-vous.*'
+      platform: iOS
+    commands:
+    - tapOn: "Autoriser"
+
+- runFlow:
+    when:
+      visible: 'Respect de ta vie privée'
+    commands:
+    - tapOn: 'Tout accepter'
+    
+- tapOn: 
+    text: 'Autoriser'
+    optional: true

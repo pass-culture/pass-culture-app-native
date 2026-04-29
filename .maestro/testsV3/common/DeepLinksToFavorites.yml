@@ -1,0 +1,19 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - openLink:
+          link: ${output.links.staging.android.favorites}
+          autoVerify: true
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - openLink:
+          link: ${output.links.staging.ios.favorites}
+          autoVerify: true
+- waitForAnimationToEnd
+- runFlow: ../common/AcceptCookies.yml
+- assertVisible: '.*favoris.*'

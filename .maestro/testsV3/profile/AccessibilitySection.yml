@@ -1,0 +1,84 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - profile
+onFlowStart:
+  - runScript: ../common/DeepLink.js
+  - runScript:
+      file: ../common/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: 18
+---
+- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/StopApp.yml
+- runFlow: ../common/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/GoToProfileFromTabBar.yml
+
+- scrollUntilVisible:
+    element: 'Partager le pass Culture'
+- tapOn: 'Accessibilité'
+- assertVisible: 'Accessibilité'
+
+- tapOn: 'Plan du site'
+- assertVisible: 'Plan du site'
+- runFlow:
+    file: ../common/TapOnBack.yml
+
+- tapOn:
+    text: 'Nouvelle fenêtre : Les engagements du pass Culture'
+    index: 0
+- assertVisible: 'Accessibilité'
+- assertVisible: "L'accessibilité au pass Culture"
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn: 'Revenir à pass Culture S'
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - pressKey: back
+
+- tapOn: 'Nouvelle fenêtre : Schéma pluriannuel'
+- assertVisible: 'Schéma pluriannuel.*'
+- assertVisible: 'Introduction'
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: 'Revenir à pass Culture S'
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - pressKey: back
+
+- tapOn: "Déclaration d’accessibilité - Android"
+- assertVisible: "Déclaration d’accessibilité - Android"
+- runFlow:
+    file: ../common/TapOnBack.yml
+
+- tapOn: "Déclaration d’accessibilité - iOS"
+- assertVisible: "Déclaration d’accessibilité - iOS"
+- runFlow:
+    file: ../common/TapOnBack.yml
+
+- tapOn: "Déclaration d’accessibilité - web"
+- assertVisible: "Déclaration d’accessibilité web"
+- runFlow:
+    file: ../common/TapOnBack.yml
+
+- tapOn: 'Parcours recommandés - web'
+- assertVisible: 'Parcours recommandés web'
+
+- runFlow:
+    file: ../common/TapOnBack.yml
+
+- runFlow:
+    file: ../common/TapOnBack.yml
+
+- runFlow: ../common/StopApp.yml

@@ -1,0 +1,24 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - auth
+onFlowStart:
+  - runScript: ../common/DeepLink.js
+  - runScript:
+      file: ../common/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: 18
+---
+- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/StopApp.yml
+- runFlow: ../common/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/GoToProfileFromTabBar.yml
+
+- assertVisible: 'Profil'
+- scrollUntilVisible:
+    element:
+      text: 'République Française - Liberté Égalité Fraternité'
+- tapOn: 'Déconnexion'
+
+- assertVisible: "Créer un compte"

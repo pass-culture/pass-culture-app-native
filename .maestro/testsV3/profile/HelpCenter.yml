@@ -1,0 +1,44 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - profile
+onFlowStart:
+  - runScript: ../common/DeepLink.js
+  - runScript:
+      file: ../common/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: 18
+---
+- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/StopApp.yml
+- runFlow: ../common/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/GoToProfileFromTabBar.yml
+
+- scrollUntilVisible:
+    element:
+      text: 'Autres'
+- assertVisible: 'Aide'
+- tapOn: "Nouvelle fenêtre\_: Chercher une info"
+
+- runFlow: # Si 1ere ouverture de chrome
+    when:
+      visible: "Utiliser l'appli sans compte"
+    commands:
+      - tapOn: "Utiliser l'appli sans compte"
+      - tapOn: 'Non, merci'
+      - pressKey: back
+
+      - runFlow:
+          when:
+            platform: Android
+          commands:
+            - pressKey: back
+
+      - runFlow:
+          when:
+            platform: iOS
+          commands:
+          - tapOn: 'Revenir à pass Culture S'
+
+- runFlow: ../common/StopApp.yml

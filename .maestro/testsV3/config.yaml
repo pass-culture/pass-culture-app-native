@@ -1,0 +1,9 @@
+flows:
+  - onboarding/*
+  - cookies/*
+  - auth/*
+  - profile/*
+  - search/*
+  - booking/*
+  - artist/*
+  - offer/*

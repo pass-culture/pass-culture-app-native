@@ -1,0 +1,43 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - auth
+onFlowStart:
+  - runScript: ../common/DeepLink.js
+---
+- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/StopApp.yml
+- runFlow: ../common/DeeplinkToProfile.yml
+
+- tapOn: 'Se connecter'
+
+- assertVisible: 'Connecte-toi'
+- tapOn:
+    id: 'Afficher le mot de passe'
+- tapOn:
+    id: 'Entrée pour l’email'
+- inputRandomEmail
+- tapOn:
+    id: 'Mot de passe'
+- inputText: ${MAESTRO_PASSWORD}
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - hideKeyboard
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: 'Connecte-toi' # Pour fermer le clavier iOS
+- tapOn: 'Se connecter' # Android
+- assertVisible: '.*E-mail ou mot de passe incorrect.*'
+
+- tapOn: 'Revenir en arrière' # Permet de réinitialiser les forms
+
+- runFlow:
+    when:
+      visible: 'Plus tard'
+    commands:
+      - tapOn: 'Plus tard'
+
+- stopApp
