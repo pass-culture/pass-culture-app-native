@@ -49,8 +49,6 @@ LogBox.ignoreLogs([
   'EventEmitter.removeListener',
 ])
 
-const existingDeviceInfo = deviceInfoStoreSelectors.selectDeviceInfo()
-
 const App: FunctionComponent = function () {
   useLaunchPerformanceObserver()
 
@@ -70,6 +68,7 @@ const App: FunctionComponent = function () {
       offlineAccess: true,
     })
     const setDeviceInfo = async () => {
+      const existingDeviceInfo = deviceInfoStoreSelectors.selectDeviceInfo()
       if (existingDeviceInfo) return
       const deviceInfo = await getDeviceInfo()
       return deviceInfoStoreActions.setDeviceInfo(deviceInfo)

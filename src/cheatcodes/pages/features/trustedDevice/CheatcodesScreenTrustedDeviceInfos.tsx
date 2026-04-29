@@ -2,12 +2,11 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
+import { deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
 import { Typo } from 'ui/theme'
 
 export const CheatcodesScreenTrustedDeviceInfos = () => {
-  const deviceInfo = useDeviceInfo()
-
+  const deviceInfo = deviceInfoStoreSelectors.selectDeviceInfo()
   return (
     <CheatcodesTemplateScreen title="Trusted device debug infos" flexDirection="column">
       <StyledTitle3>Informations du device actuel</StyledTitle3>

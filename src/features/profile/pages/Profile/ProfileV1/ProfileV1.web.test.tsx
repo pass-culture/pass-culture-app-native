@@ -3,6 +3,7 @@ import React from 'react'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 import * as useVersion from 'ui/hooks/useVersion.web'
@@ -23,6 +24,11 @@ jest.spyOn(useVersion, 'useVersion').mockReturnValue('Version\u00A01.10.5')
 describe('<ProfileV1 />', () => {
   beforeEach(() => {
     setFeatureFlags()
+    deviceInfoStoreActions.setDeviceInfo({
+      deviceId: 'device-id',
+      source: 'iPhone 13',
+      os: 'iOS',
+    })
   })
 
   describe('Accessibility', () => {

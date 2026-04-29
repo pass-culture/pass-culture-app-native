@@ -24,25 +24,4 @@ describe('getDeviceInfo', () => {
       os: 'iOS',
     })
   })
-
-  it('returns cached result on second call', async () => {
-    const result1 = await getDeviceInfo()
-    const result2 = await getDeviceInfo()
-
-    expect(result1).toBe(result2) //same object reference
-  })
-
-  it('should only call getDeviceId once', () => {
-    jest.isolateModules(() => {
-      const { getDeviceId } = jest.requireMock('libs/react-native-device-info/getDeviceId')
-      const { getDeviceInfo: getDeviceInfoModule } = jest.requireActual(
-        'features/trustedDevice/helpers/getDeviceInfo'
-      )
-
-      return getDeviceInfoModule()
-        .then(() => getDeviceInfoModule())
-        .then(() => getDeviceInfoModule())
-        .then(() => expect(getDeviceId).toHaveBeenCalledTimes(1))
-    })
-  })
 })

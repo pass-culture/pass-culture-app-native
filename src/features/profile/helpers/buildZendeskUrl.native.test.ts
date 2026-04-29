@@ -1,5 +1,6 @@
-import { DeviceInformation } from 'features/trustedDevice/helpers/useDeviceInfo'
+import { DeviceMetrics } from 'features/trustedDevice/types'
 import { beneficiaryUser } from 'fixtures/user'
+import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
 
 import {
   ZENDESK_FORM_URLS,
@@ -12,6 +13,14 @@ const COMMIT_HASH = 'test-commit'
 process.env.COMMIT_HASH = COMMIT_HASH
 
 describe('buildZendeskUrl', () => {
+  beforeEach(() => {
+    deviceInfoStoreActions.setDeviceInfo({
+      deviceId: 'device-123',
+      source: 'iPhone 15',
+      os: 'iOS 17',
+    })
+  })
+
   describe('buildZendeskFormUrl', () => {
     it('should build URL with all fields', () => {
       const url = buildZendeskUrl({
@@ -53,14 +62,11 @@ describe('buildZendeskUrl', () => {
     })
   })
 
-  const deviceInfo = {
-    deviceId: 'device-123',
-    source: 'iPhone 15',
-    os: 'iOS 17',
+  const metrics: DeviceMetrics = {
     resolution: '1170x2532',
     fontScale: 1,
     screenZoomLevel: 1.25,
-  } as DeviceInformation
+  }
 
   const version = '1.300.0'
 
@@ -85,7 +91,7 @@ describe('buildZendeskUrl', () => {
     it('should build the complete fraud URL', () => {
       const url = buildZendeskUrlForFraud({
         user: beneficiaryUser,
-        deviceInfo,
+        metrics,
         version,
         description: 'Mon compte a été piraté',
       })
@@ -110,7 +116,7 @@ describe('buildZendeskUrl', () => {
     it('should build the complete debug URL', () => {
       const url = buildZendeskUrlForDebug({
         user: beneficiaryUser,
-        deviceInfo,
+        metrics,
         version,
       })
 

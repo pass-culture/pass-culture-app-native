@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { PixelRatio, Platform } from 'react-native'
 import DeviceInfo from 'react-native-device-info'
 
-import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
+import { useDeviceMetrics } from 'features/trustedDevice/helpers/useDeviceMetrics'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
@@ -65,8 +65,8 @@ export const useMobileFontScaleToDisplay = <T>({
 }
 
 export const useZoomInPercent = () => {
-  const deviceInfo = useDeviceInfo()
-  return deviceInfo?.screenZoomLevel ? Math.round(deviceInfo.screenZoomLevel * 100) / 2 : undefined
+  const metrics = useDeviceMetrics()
+  return metrics?.screenZoomLevel ? Math.round(metrics.screenZoomLevel * 100) / 2 : undefined
 }
 
 /**

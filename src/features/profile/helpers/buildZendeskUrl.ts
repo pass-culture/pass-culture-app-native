@@ -1,8 +1,9 @@
 import { Platform } from 'react-native'
 
 import { UserProfile } from 'features/share/types'
-import { DeviceInformation } from 'features/trustedDevice/helpers/useDeviceInfo'
+import { DeviceMetrics } from 'features/trustedDevice/types'
 import { env } from 'libs/environment/env'
+import { deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 export const ZENDESK_FORM_URLS =
@@ -52,19 +53,19 @@ export const buildZendeskUrl = (fields: ZendeskFieldValues): string => {
 
 const getDebugData = ({
   user,
-  deviceInfo,
+  metrics,
   version,
 }: {
   user?: UserProfile
-  deviceInfo?: DeviceInformation
+  metrics: DeviceMetrics
   version?: string
 }) => {
   const isWeb = Platform.OS === 'web'
 
   const webCommitHash = isWeb ? `-${String(env.COMMIT_HASH)}` : ''
-  const zoomInPercent = deviceInfo?.screenZoomLevel
-    ? `${Math.round(deviceInfo.screenZoomLevel * 100)}%`
-    : undefined
+  const deviceInfo = deviceInfoStoreSelectors.selectDeviceInfo()
+  const { screenZoomLevel, fontScale, resolution } = metrics
+  const zoomInPercent = screenZoomLevel ? `${Math.round(screenZoomLevel * 100)}%` : undefined
 
   const undefinedValue = 'Non renseigné'
 
@@ -73,10 +74,10 @@ const getDebugData = ({
     { label: 'Device ID', value: deviceInfo?.deviceId ?? undefinedValue },
     { label: 'Device model', value: deviceInfo?.source ?? undefinedValue },
     { label: 'Device OS', value: deviceInfo?.os ?? undefinedValue },
-    { label: 'Device resolution', value: deviceInfo?.resolution ?? undefinedValue },
+    { label: 'Device resolution', value: resolution ?? undefinedValue },
     { label: 'Device zoom', value: zoomInPercent ?? undefinedValue },
     { label: 'User ID', value: user?.id ?? undefinedValue },
-    { label: 'Device font scale', value: deviceInfo?.fontScale ?? undefinedValue },
+    { label: 'Device font scale', value: fontScale ?? undefinedValue },
     { label: 'User CreditType', value: user?.creditType ?? undefinedValue },
     { label: 'User StatusType', value: user?.statusType ?? undefinedValue },
     { label: 'User EligibilityType', value: user?.eligibilityType ?? undefinedValue },
@@ -90,12 +91,12 @@ const getDebugData = ({
 
 export const buildZendeskUrlForFraud = ({
   user,
-  deviceInfo,
+  metrics,
   version,
   description,
 }: {
   user?: UserProfile
-  deviceInfo?: DeviceInformation
+  metrics: DeviceMetrics
   version?: string
   description?: string
 }) =>
@@ -106,16 +107,16 @@ export const buildZendeskUrlForFraud = ({
     subReason: 'mon_compte_a_été_piraté',
     account: user?.email,
     birthDate: user?.birthDate,
-    description: getDescription({ description, user, deviceInfo, version }),
+    description: getDescription({ description, user, metrics, version }),
   })
 
 export const buildZendeskUrlForDebug = ({
   user,
-  deviceInfo,
+  metrics,
   version,
 }: {
   user?: UserProfile
-  deviceInfo?: DeviceInformation
+  metrics: DeviceMetrics
   version?: string
 }) =>
   buildZendeskUrl({
@@ -123,19 +124,19 @@ export const buildZendeskUrlForDebug = ({
     firstName: user?.firstName,
     reason: 'motif_signaler_un_bug',
     account: user?.email,
-    description: getDescription({ user, deviceInfo, version }),
+    description: getDescription({ user, metrics, version }),
     birthDate: user?.birthDate,
   })
 
 const getDescription = ({
   description = '',
   user,
-  deviceInfo,
+  metrics,
   version,
 }: {
   description?: string
   user?: UserProfile
-  deviceInfo?: DeviceInformation
+  metrics: DeviceMetrics
   version?: string
 }) =>
-  `<h4>VOTRE MESSAGE\u00a0:</h4>${description}<h4>NE PAS EFFACER LES INFORMATIONS TECHNIQUES CI-DESSOUS\u00a0:</h4>${getDebugData({ user, deviceInfo, version })}`
+  `<h4>VOTRE MESSAGE\u00a0:</h4>${description}<h4>NE PAS EFFACER LES INFORMATIONS TECHNIQUES CI-DESSOUS\u00a0:</h4>${getDebugData({ user, metrics, version })}`
