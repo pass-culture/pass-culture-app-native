@@ -7,10 +7,14 @@ import { Button } from 'ui/designSystem/Button/Button'
 
 export const CineContentCTAID = 'cine-content-cta'
 
-export const CineContentCTA: FC = () => {
+type Props = {
+  displayGradient?: boolean
+}
+
+export const CineContentCTA: FC<Props> = ({ displayGradient }) => {
   const { onPress, wording } = useOfferCTA()
   return (
-    <StickyBottomWrapper>
+    <StickyBottomWrapper displayGradient={displayGradient}>
       <CallToActionContainer testID={CineContentCTAID}>
         <Button wording={wording} onPress={onPress} />
       </CallToActionContainer>
