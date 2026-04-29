@@ -25,9 +25,9 @@ permissions:
 
 jobs:
   maestro-cloud:
-    name: 'Build & Test Android Staging'
+    name: 'Build Android staging and upload to Maestro Cloud'
     runs-on: ubuntu-latest-8-cores
-    timeout-minutes: 180
+    timeout-minutes: 60
     steps:
       - name: Free up disk space
         run: |

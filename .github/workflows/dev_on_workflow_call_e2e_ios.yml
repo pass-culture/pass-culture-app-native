@@ -26,9 +26,9 @@ permissions:
 
 jobs:
   build_e2e:
-    name: 'Build & Test iOS Staging'
+    name: 'Build iOS staging and upload to Maestro Cloud'
     runs-on: macos-26-xlarge
-    timeout-minutes: 180
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v6
