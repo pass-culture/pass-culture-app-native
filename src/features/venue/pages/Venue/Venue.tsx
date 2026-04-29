@@ -42,6 +42,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
+import { AB_TESTS } from 'shared/useABSegment/abTests'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -100,7 +101,7 @@ export const Venue: FunctionComponent = () => {
   const isUserUnderage = useIsUserUnderage()
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const transformHits = useTransformOfferHits()
-  const proAdvicesSegment = useABSegment(['A', 'B'])
+  const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_VENUE)
 
   const { data: gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylistsQuery({
     venue,

@@ -16,6 +16,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
+import { AB_TESTS } from 'shared/useABSegment/abTests'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 
@@ -45,7 +46,7 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
   const labelMapping = useSubcategoryOfferLabelMapping()
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('three-items')
   const isFocused = useIsFocused()
-  const proAdvicesSegment = useABSegment(['A', 'B'])
+  const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
 
   const handleArtistOffersViewableItemsChanged = useCallback(
     (items: Pick<ViewToken, 'key' | 'index'>[]) => {

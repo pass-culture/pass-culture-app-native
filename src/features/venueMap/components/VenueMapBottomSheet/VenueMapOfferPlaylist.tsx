@@ -14,6 +14,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
+import { AB_TESTS } from 'shared/useABSegment/abTests'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { CustomListRenderItem, Playlist } from 'ui/components/Playlist'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -49,7 +50,7 @@ export const VenueMapOfferPlaylist = ({
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const isFocused = useIsFocused()
-  const proAdvicesSegment = useABSegment(['A', 'B'])
+  const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item }) => {

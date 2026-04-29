@@ -12,6 +12,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getOfferDates } from 'shared/date/getOfferDates'
 import { Offer } from 'shared/offer/types'
+import { AB_TESTS } from 'shared/useABSegment/abTests'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
 
 type Props = Omit<
@@ -34,7 +35,7 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
   const labelMapping = useCategoryHomeLabelMapping()
   const { subcategoryId, dates, releaseDate, isDuo, likes, chroniclesCount, name, thumbUrl } =
     item.offer
-  const proAdvicesSegment = useABSegment(['A', 'B'])
+  const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
 
   const formattedDate = getOfferDates({
     subcategoryId,
