@@ -43,7 +43,8 @@ import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUndera
 import { UserProfile } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { Subcategory } from 'libs/subcategories/types'
-import { useBookingsV2Query, useEndedBookingFromOfferIdQueryV2 } from 'queries/bookings'
+import { useBookingsV2Query } from 'queries/bookings/useBookingsQuery'
+import { useEndedBookingFromOfferIdQueryV2 } from 'queries/bookings/useEndedBookingFromOfferIdQuery'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
 import { OfferModal } from 'shared/offer/enums'
@@ -410,7 +411,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
 
   const hasEnoughCredit = useHasEnoughCredit(offer)
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
-  const { data: endedBooking } = useEndedBookingFromOfferIdQueryV2(offerId, false)
+  const { data: endedBooking } = useEndedBookingFromOfferIdQueryV2(offerId)
   const route = useRoute<UseRouteType<'Offer'>>()
   const apiRecoParams: RecommendationApiParams = route.params.apiRecoParams
     ? JSON.parse(route.params.apiRecoParams)
@@ -422,7 +423,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     ? new Date(user?.depositExpirationDate) < new Date()
     : false
 
-  const { refetch: getBookings } = useBookingsV2Query(true)
+  const { refetch: getBookings } = useBookingsV2Query()
 
   useEffect(() => {
     const isUserFreeStatus = user?.eligibility === EligibilityType.free

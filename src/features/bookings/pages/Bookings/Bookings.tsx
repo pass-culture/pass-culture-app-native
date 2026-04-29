@@ -58,8 +58,7 @@ export const Bookings = () => {
   const useBookingsV2 = () =>
     useBookingsV2WithConvertedTimezoneQuery(
       convertBookingsResponseV2,
-      mapBookingsToActiveTab[activeTab],
-      true
+      mapBookingsToActiveTab[activeTab]
     )
 
   const useActiveBookingsQuery = enableNewBookings ? useBookingsByStatus : useBookingsV2
