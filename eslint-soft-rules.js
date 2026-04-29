@@ -9,6 +9,7 @@ const softRules = {
   },
   archi: {
     'boundaries/element-types': ['warn', boundariesRule],
+    'local-rules/query-hooks-must-return-use-query-result': 'warn',
   },
   reactRules: {
     'react-hooks/config': 'warn',
