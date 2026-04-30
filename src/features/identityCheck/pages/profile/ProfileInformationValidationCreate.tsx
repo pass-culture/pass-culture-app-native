@@ -31,6 +31,7 @@ export const ProfileInformationValidationCreate = () => {
   const { navigate, reset } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'ProfileInformationValidationCreate'>>()
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
+  const profileOrigin = params?.origin
   const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
 
   enum DataSources {
@@ -82,6 +83,7 @@ export const ProfileInformationValidationCreate = () => {
     onSuccess: () =>
       handlePostProfileSuccess({
         isBookingFreeOffer,
+        profileOrigin,
         storedFreeOfferId,
         navigateForwardToStepper,
         reset,
@@ -126,7 +128,13 @@ export const ProfileInformationValidationCreate = () => {
   }, [activityId, address, city, firstName, lastName, postProfile, postalCode, saveStep])
 
   const onSubmitProfile = () => submitProfileInfo()
-  const onChangeInformation = () => navigate(...getSubscriptionHookConfig('SetName', { type }))
+  const onChangeInformation = () =>
+    navigate(
+      ...getSubscriptionHookConfig(
+        'SetName',
+        profileOrigin ? { type, origin: profileOrigin } : { type }
+      )
+    )
 
   const cityLabel = city && postalCode ? `${city} ${postalCode}` : undefined
   const activityLabel = activityId ? getActivityLabel(activityId) : undefined

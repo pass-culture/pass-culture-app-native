@@ -10,16 +10,19 @@ import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import * as resetStores from 'features/identityCheck/pages/profile/store/resetProfileStores'
 import { useStatus } from 'features/identityCheck/pages/profile/store/statusStore'
+import { ProfileOrigin } from 'features/identityCheck/pages/profile/types'
 import * as usePostProfileMutation from 'features/identityCheck/queries/usePostProfileMutation'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
+import * as snackBarStore from 'ui/designSystem/Snackbar/snackBar.store'
 
 import { ProfileInformationValidationCreate } from './ProfileInformationValidationCreate'
 
 const usePostProfileMutationSpy = jest.spyOn(usePostProfileMutation, 'usePostProfileMutation')
+const mockShowSuccessSnackBar = jest.spyOn(snackBarStore, 'showSuccessSnackBar')
 
 const mockUseMutationError = (error?: ApiError) => {
   // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
@@ -74,6 +77,7 @@ jest.useFakeTimers()
 useRoute.mockReturnValue({
   params: {
     type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+    origin: ProfileOrigin.OFFER,
   },
 })
 
@@ -84,6 +88,7 @@ describe('ProfileInformationValidationCreate', () => {
     mockedUseCity.mockReturnValue(mockCity)
     mockedUseAddress.mockReturnValue(mockAddress)
     mockedUseStatus.mockReturnValue(mockStatus)
+    mockShowSuccessSnackBar.mockClear()
   })
 
   it('should render correctly', async () => {
@@ -108,6 +113,13 @@ describe('ProfileInformationValidationCreate', () => {
   })
 
   it('should navigate to Offer when press "Continuer"', async () => {
+    useRoute.mockReturnValueOnce({
+      params: {
+        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+        origin: ProfileOrigin.OFFER,
+      },
+    })
+
     renderProfileInformationValidation()
 
     await user.press(screen.getByText('Continuer'))
@@ -117,6 +129,10 @@ describe('ProfileInformationValidationCreate', () => {
         routes: [{ name: 'Offer', params: { id: mockOfferId } }],
       })
     })
+
+    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith(
+      'Tout est prêt, à toi les offres gratuites\u00a0!'
+    )
   })
 
   it('should navigate to SetName when press "Modifier mes informations"', async () => {
@@ -128,6 +144,7 @@ describe('ProfileInformationValidationCreate', () => {
       screen: 'SetName',
       params: {
         type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+        origin: ProfileOrigin.OFFER,
       },
     })
   })
@@ -167,6 +184,7 @@ describe('ProfileInformationValidationCreate', () => {
         },
       ],
     })
+    expect(mockShowSuccessSnackBar).not.toHaveBeenCalled()
   })
 
   it('should show data from auth context for "recapExistingData" screen variant', () => {

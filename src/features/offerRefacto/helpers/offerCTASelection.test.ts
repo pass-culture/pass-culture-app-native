@@ -217,7 +217,7 @@ describe('getCTAWordingAndAction', () => {
         wording: DEFAULT_CTA_WORDING,
         isDisabled: false,
         navigateTo: {
-          params: { params: { type: 'booking' }, screen: 'SetName' },
+          params: { params: { type: 'booking', origin: 'offer' }, screen: 'SetName' },
           screen: 'SubscriptionStackNavigator',
         },
       })

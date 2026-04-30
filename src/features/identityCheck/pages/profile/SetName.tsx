@@ -29,6 +29,7 @@ type FormValues = {
 export const SetName = () => {
   const { params } = useRoute<UseRouteType<'SetName'>>()
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
+  const origin = params?.origin
 
   const identityCheckAndRecapExistingDataConfig = {
     headerTitle: 'Profil',
@@ -68,7 +69,7 @@ export const SetName = () => {
   async function submitName({ firstName, lastName }: FormValues) {
     if (disabled) return
     setStoredName({ firstName, lastName })
-    navigate('SetCity', { type })
+    navigate('SetCity', origin ? { type, origin } : { type })
   }
 
   useEnterKeyAction(disabled ? undefined : () => handleSubmit(submitName))

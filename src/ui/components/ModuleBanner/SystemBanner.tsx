@@ -47,7 +47,12 @@ type Props = {
   accessibilityLabel?: string
   accessibilityRole?: AccessibilityRole
   analyticsParams: {
-    type: 'credit' | 'location' | 'remoteActivationBanner' | 'remoteGenericBanner'
+    type:
+      | 'credit'
+      | 'location'
+      | 'remoteActivationBanner'
+      | 'remoteGenericBanner'
+      | 'freeBeneficiaryBanner'
     from: 'home' | 'thematicHome' | 'offer' | 'profile' | 'search' | 'cheatcodes'
   }
   withBackground?: boolean

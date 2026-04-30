@@ -9,6 +9,7 @@ import { getShouldShowBonificationBanner } from 'features/bonification/getShould
 import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
+import { FreeBeneficiaryBanner } from 'features/home/components/FreeBeneficiaryBanner'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { ActivationDisabledBanner } from 'features/remoteBanners/banners/ActivationDisabledBanner'
@@ -88,7 +89,11 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
     },
     [navigate]
   )
-
+  const showFreeBeneficiaryBanner =
+    (user?.eligibilityType === 'ELIGIBLE_CREDIT_V2_16' ||
+      user?.eligibilityType === 'ELIGIBLE_CREDIT_V3_16' ||
+      user?.eligibilityType === 'ELIGIBLE_CREDIT_V3_15') &&
+    user.status.subscriptionStatus === 'has_to_complete_subscription'
   const renderSystemBanner = useCallback(
     (Icon: React.FunctionComponent<AccessibleIcon>, title: string, subtitle: string) => (
       <BannerContainer>
@@ -123,7 +128,13 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
         </BannerContainer>
       )
     }
-
+    if (showFreeBeneficiaryBanner) {
+      return (
+        <BannerContainer>
+          <FreeBeneficiaryBanner />
+        </BannerContainer>
+      )
+    }
     if (
       shouldRenderSystemBanner &&
       banner.name &&
@@ -150,6 +161,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
     disableActivation,
     remoteActivationBannerOptions,
     isLoggedIn,
+    showFreeBeneficiaryBanner,
     shouldRenderSystemBanner,
     banner.name,
     banner.title,

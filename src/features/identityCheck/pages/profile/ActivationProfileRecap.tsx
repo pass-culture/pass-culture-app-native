@@ -27,6 +27,7 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 export const ActivationProfileRecap = () => {
   const { params } = useRoute<UseRouteType<'ActivationProfileRecap'>>()
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
+  const profileOrigin = params?.origin
   const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
 
   const pageConfigByType = {
@@ -57,6 +58,7 @@ export const ActivationProfileRecap = () => {
     onSuccess: () =>
       handlePostProfileSuccess({
         isBookingFreeOffer,
+        profileOrigin,
         storedFreeOfferId,
         navigateForwardToStepper,
         reset,
@@ -87,7 +89,13 @@ export const ActivationProfileRecap = () => {
     setIsPending(false)
   }
 
-  const updateInformation = () => navigate(...getSubscriptionHookConfig('SetName', { type }))
+  const updateInformation = () =>
+    navigate(
+      ...getSubscriptionHookConfig(
+        'SetName',
+        profileOrigin ? { type, origin: profileOrigin } : { type }
+      )
+    )
 
   const noDataMessage = 'Information manquante'
   const recapData = [

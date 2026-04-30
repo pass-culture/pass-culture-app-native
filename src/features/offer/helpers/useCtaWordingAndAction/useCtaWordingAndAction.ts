@@ -27,6 +27,7 @@ import {
   ValidStoredProfileInfos,
 } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
+import { ProfileOrigin } from 'features/identityCheck/pages/profile/types'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { Referrals, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
@@ -204,7 +205,7 @@ export const getCtaWordingAndAction = ({
       isDisabled: isBookingLoading,
       onPress() {
         if (isAlreadyBookedOffer) {
-          openUrl(booking?.completedUrl ?? '')
+          void openUrl(booking?.completedUrl ?? '')
           return
         }
         if (offer.stocks[0]?.id) {
@@ -221,7 +222,10 @@ export const getCtaWordingAndAction = ({
         isDisabled: false,
         navigateTo: getSubscriptionPropConfig(
           storedProfileInfos ? 'ProfileInformationValidationCreate' : 'SetName',
-          { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 }
+          {
+            type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+            origin: ProfileOrigin.OFFER,
+          }
         ),
       }
     }

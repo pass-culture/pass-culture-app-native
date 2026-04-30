@@ -34,6 +34,7 @@ const exception = 'Failed to fetch data from API: https://data.geopf.fr/geocodag
 export const SetAddress = () => {
   const { params } = useRoute<UseRouteType<'SetAddress'>>()
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
+  const origin = params?.origin
 
   const identityCheckAndRecapExistingDataConfig = {
     headerTitle: 'Profil',
@@ -109,7 +110,7 @@ export const SetAddress = () => {
   const submitAddress = async () => {
     if (!enabled) return
     setStoreAddress(selectedAddress ?? query)
-    navigate(...getSubscriptionHookConfig('SetStatus', { type }))
+    navigate(...getSubscriptionHookConfig('SetStatus', origin ? { type, origin } : { type }))
   }
 
   const errorMessage =

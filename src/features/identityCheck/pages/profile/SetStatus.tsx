@@ -23,6 +23,7 @@ export const SetStatus = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
+  const origin = params?.origin
 
   const identityCheckAndRecapExistingDataConfig = 'Profil'
   const pageConfigByType = {
@@ -60,10 +61,12 @@ export const SetStatus = () => {
       if (!formValues.selectedStatus) return
       setIsLoading(true)
       setStoreStatus(formValues.selectedStatus)
-      navigate(...getSubscriptionHookConfig('ActivationProfileRecap', { type }))
+      navigate(
+        ...getSubscriptionHookConfig('ActivationProfileRecap', origin ? { type, origin } : { type })
+      )
       setIsLoading(false)
     },
-    [navigate, setStoreStatus, type]
+    [navigate, origin, setStoreStatus, type]
   )
 
   const headerHeight = useGetHeaderHeight()

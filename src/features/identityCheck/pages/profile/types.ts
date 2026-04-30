@@ -5,6 +5,12 @@ export type ProfileType =
   | ProfileTypes.IDENTITY_CHECK
   | ProfileTypes.RECAP_EXISTING_DATA
 
+export enum ProfileOrigin {
+  HOME_BANNER = 'homeBanner',
+  OFFER = 'offer',
+}
+
 export interface ProfileScreenType {
   type: ProfileType
+  origin?: ProfileOrigin
 }

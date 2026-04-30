@@ -1,14 +1,16 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 import { resetProfileStores } from 'features/identityCheck/pages/profile/store/resetProfileStores'
+import { ProfileOrigin } from 'features/identityCheck/pages/profile/types'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 type OfferNavigation = NativeStackNavigationProp<RootStackParamList, 'Offer'>
 
 type Params = {
   isBookingFreeOffer: boolean
   storedFreeOfferId?: number | null
+  profileOrigin?: ProfileOrigin
   reset: OfferNavigation['reset']
 }
 
@@ -19,22 +21,41 @@ type SuccessParams = Params & {
 
 function handleFreeOfferProfileSuccess({
   storedFreeOfferId,
+  profileOrigin,
   reset,
-}: Pick<SuccessParams, 'storedFreeOfferId' | 'reset'>) {
-  if (storedFreeOfferId) {
+}: Pick<SuccessParams, 'storedFreeOfferId' | 'profileOrigin' | 'reset'>) {
+  const isFromOffer = profileOrigin === ProfileOrigin.OFFER && !!storedFreeOfferId
+
+  if (isFromOffer) {
     reset({ routes: [{ name: 'Offer', params: { id: storedFreeOfferId } }] })
-  } else {
+    showSuccessSnackBar('Tout est prêt, à toi les offres gratuites\u00a0!')
+    return
+  }
+
+  if (profileOrigin === ProfileOrigin.HOME_BANNER) {
     reset({
       routes: [
         {
           name: 'SubscriptionStackNavigator',
           state: {
-            routes: [{ name: 'SetProfileBookingError' }],
+            routes: [{ name: 'FreeBeneficiaryAccountCreated' }],
           },
         },
       ],
     })
+    return
   }
+
+  reset({
+    routes: [
+      {
+        name: 'SubscriptionStackNavigator',
+        state: {
+          routes: [{ name: 'SetProfileBookingError' }],
+        },
+      },
+    ],
+  })
 }
 
 function handleStandardProfileSuccess({
@@ -44,11 +65,17 @@ function handleStandardProfileSuccess({
 }
 
 export function handlePostProfileSuccess(params: SuccessParams) {
-  const { isBookingFreeOffer, reset, storedFreeOfferId, navigateForwardToStepper, refetchUser } =
-    params
+  const {
+    isBookingFreeOffer,
+    reset,
+    profileOrigin,
+    storedFreeOfferId,
+    navigateForwardToStepper,
+    refetchUser,
+  } = params
 
   if (isBookingFreeOffer) {
-    handleFreeOfferProfileSuccess({ storedFreeOfferId, reset })
+    handleFreeOfferProfileSuccess({ storedFreeOfferId, profileOrigin, reset })
   } else {
     handleStandardProfileSuccess({ navigateForwardToStepper })
   }

@@ -2,10 +2,12 @@ import { addressActions } from 'features/identityCheck/pages/profile/store/addre
 import { cityActions } from 'features/identityCheck/pages/profile/store/cityStore'
 import { nameActions } from 'features/identityCheck/pages/profile/store/nameStore'
 import { statusActions } from 'features/identityCheck/pages/profile/store/statusStore'
+import { freeOfferIdActions } from 'features/offer/store/freeOfferIdStore'
 
 export const resetProfileStores = () => {
   nameActions.resetName()
   cityActions.resetCity()
   addressActions.resetAddress()
   statusActions.resetStatus()
+  freeOfferIdActions?.resetFreeOfferId?.()
 }

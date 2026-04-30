@@ -10,13 +10,16 @@ import { cityActions } from 'features/identityCheck/pages/profile/store/cityStor
 import { nameActions } from 'features/identityCheck/pages/profile/store/nameStore'
 import * as resetProfileStores from 'features/identityCheck/pages/profile/store/resetProfileStores'
 import { statusActions } from 'features/identityCheck/pages/profile/store/statusStore'
+import { ProfileOrigin } from 'features/identityCheck/pages/profile/types'
 import * as usePostProfileMutation from 'features/identityCheck/queries/usePostProfileMutation'
 import { freeOfferIdActions } from 'features/offer/store/freeOfferIdStore'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
+import * as snackBarStore from 'ui/designSystem/Snackbar/snackBar.store'
 
 const usePostProfileMutationSpy = jest.spyOn(usePostProfileMutation, 'usePostProfileMutation')
+const mockShowSuccessSnackBar = jest.spyOn(snackBarStore, 'showSuccessSnackBar')
 
 const mockUseMutationError = (error?: ApiError) => {
   // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
@@ -58,19 +61,22 @@ const user = userEvent.setup()
 
 describe('<ActivationProfileRecap />', () => {
   beforeEach(() => {
+    useRoute.mockReset()
+    useRoute.mockReturnValue({ params: { type: ProfileTypes.IDENTITY_CHECK } })
     resetProfileStores.resetProfileStores()
     setFeatureFlags()
     mockUseMutationSuccess()
+    mockShowSuccessSnackBar.mockClear()
   })
 
   it('should render correctly', () => {
-    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
+    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerIdNull)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should display user info correctly', () => {
-    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
+    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerIdNull)
 
     expect(screen.getByText('DUPONT')).toBeTruthy()
     expect(screen.getByText('Jean')).toBeTruthy()
@@ -80,13 +86,13 @@ describe('<ActivationProfileRecap />', () => {
   })
 
   it('should display correct infos in identity check', async () => {
-    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
+    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerIdNull)
 
     expect(await screen.findByText('Profil')).toBeTruthy()
   })
 
   it('should navigate to stepper on press "Confirmer"', async () => {
-    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
+    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerIdNull)
 
     await user.press(screen.getByText('Confirmer'))
 
@@ -104,7 +110,7 @@ describe('<ActivationProfileRecap />', () => {
 
   it('should reset profile stores after submission succeeds', async () => {
     const resetStoresSpy = jest.spyOn(resetProfileStores, 'resetProfileStores')
-    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
+    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerIdNull)
 
     await user.press(screen.getByText('Confirmer'))
 
@@ -112,7 +118,7 @@ describe('<ActivationProfileRecap />', () => {
   })
 
   it('should call refetchUser after submission succeeds', async () => {
-    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
+    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerIdNull)
 
     await user.press(screen.getByText('Confirmer'))
 
@@ -121,7 +127,12 @@ describe('<ActivationProfileRecap />', () => {
 
   it('should navigate to error screen if posting profile fails', async () => {
     mockUseMutationError({ content: {}, name: 'ApiError', statusCode: 400, message: 'erreur' })
-    useRoute.mockReturnValueOnce({ params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } })
+    useRoute.mockReturnValueOnce({
+      params: {
+        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+        origin: ProfileOrigin.OFFER,
+      },
+    })
     prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
 
     await user.press(screen.getByText('Confirmer'))
@@ -138,7 +149,12 @@ describe('<ActivationProfileRecap />', () => {
 
   describe('booking free offer 15-16 years', () => {
     beforeEach(() => {
-      useRoute.mockReturnValueOnce({ params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } })
+      useRoute.mockReturnValue({
+        params: {
+          type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+          origin: ProfileOrigin.OFFER,
+        },
+      })
     })
 
     it('should display correct infos in booking free offer 15-16 years', async () => {
@@ -147,13 +163,45 @@ describe('<ActivationProfileRecap />', () => {
       expect(await screen.findByText('Informations personnelles')).toBeTruthy()
     })
 
-    it('should navigate to Offer screen if booking free offer and offer ID exists', async () => {
+    it('should navigate to Offer screen when booking free offer and offer ID exists', async () => {
       prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
 
       await user.press(screen.getByText('Confirmer'))
 
       await waitFor(() => {
         expect(reset).toHaveBeenCalledWith({ routes: [{ name: 'Offer', params: { id: offerId } }] })
+      })
+    })
+
+    it('should show success snackbar when booking free offer and user is eligible and has not finished subscription', async () => {
+      prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
+
+      await user.press(screen.getByText('Confirmer'))
+
+      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith(
+        'Tout est prêt, à toi les offres gratuites\u00a0!'
+      )
+    })
+
+    it('should navigate to FreeBeneficiaryAccountCreated when coming from home user is eligible but has not finished subscription', async () => {
+      useRoute.mockReturnValueOnce({
+        params: {
+          type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+          origin: ProfileOrigin.HOME_BANNER,
+        },
+      })
+
+      prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerIdNull)
+
+      await user.press(screen.getByText('Confirmer'))
+
+      expect(reset).toHaveBeenCalledWith({
+        routes: [
+          {
+            name: 'SubscriptionStackNavigator',
+            state: { routes: [{ name: 'FreeBeneficiaryAccountCreated' }] },
+          },
+        ],
       })
     })
 
