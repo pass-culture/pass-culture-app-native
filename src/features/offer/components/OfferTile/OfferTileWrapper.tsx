@@ -6,6 +6,8 @@ import { renderInteractionTag } from 'features/offer/components/InteractionTag/I
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { OfferTileProps } from 'features/offer/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
@@ -36,6 +38,7 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
   const { subcategoryId, dates, releaseDate, isDuo, likes, chroniclesCount, name, thumbUrl } =
     item.offer
   const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
+  const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
 
   const formattedDate = getOfferDates({
     subcategoryId,
@@ -59,7 +62,8 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
     hasSmallLayout,
     isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
     subcategoryId: item.offer.subcategoryId,
-    proAdvicesCount: proAdvicesSegment === 'A' ? item.offer.proAdvicesCount : undefined,
+    proAdvicesCount:
+      enableProAdvicesTag && proAdvicesSegment === 'A' ? item.offer.proAdvicesCount : undefined,
   })
 
   return (

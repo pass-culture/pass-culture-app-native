@@ -13,6 +13,8 @@ import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/u
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
@@ -72,7 +74,7 @@ export function OfferPlaylistList({
 
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
-
+  const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
   const { logSameCategoryPlaylistVerticalScroll, logOtherCategoriesPlaylistVerticalScroll } =
     useLogPlaylist({
       offerId: offer.id,
@@ -164,6 +166,7 @@ export function OfferPlaylistList({
                     getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
                   theme,
                   proAdvicesSegment,
+                  enableProAdvicesTag,
                 })}
                 title={playlist.title}
                 playlistType={playlist.type}
