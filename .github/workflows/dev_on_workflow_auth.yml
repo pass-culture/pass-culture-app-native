@@ -34,23 +34,13 @@ jobs:
       - name: Check authenticated account
         run: gcloud auth list
 
-      - name: List secrets from Secret Manager
-        run: gcloud secrets list --project ${{ vars.PROJECT_ID }}
-
       - name: Create service account key
         run: |
           gcloud iam service-accounts keys create temporary-sa-key.json \
             --iam-account=${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }} \
             --project=${{ vars.PROJECT_ID }}
-
-      - name: Authenticate with service account key
-        run: |
-          gcloud auth activate-service-account \
-            --key-file=temporary-sa-key.json
-          gcloud auth list
-
-      - name: List secrets from Secret Manager (SA key)
-        run: gcloud secrets list --project ${{ vars.PROJECT_ID }}
+          SA_KEY_JSON=$(jq -c . temporary-sa-key.json)
+          echo "FIREBASE_SERVICE_ACCOUNT=$SA_KEY_JSON" >> "$GITHUB_OUTPUT"
 
       - name: Delete service account key
         if: always()
