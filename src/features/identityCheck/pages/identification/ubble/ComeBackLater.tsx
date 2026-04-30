@@ -2,6 +2,7 @@ import React, { FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { analytics } from 'libs/analytics/provider'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { IdCardInvalid } from 'ui/svg/icons/IdCardInvalid'
@@ -9,8 +10,15 @@ import { Typo } from 'ui/theme'
 
 export const ComeBackLater: FunctionComponent = () => {
   useEffect(() => {
-    BatchProfile.trackEvent(BatchEvent.screenViewComeBackLater)
+    void BatchProfile.trackEvent(BatchEvent.screenViewComeBackLater)
   }, [])
+
+  const onExitPress = () => {
+    void analytics.logHasExitedActivationFlow({
+      from: 'comebacklater',
+      origin_detail: 'IdentifyLater',
+    })
+  }
 
   return (
     <GenericInfoPage
@@ -20,6 +28,7 @@ export const ComeBackLater: FunctionComponent = () => {
       buttonPrimary={{
         wording: 'M’identifier plus tard',
         navigateTo: navigateToHomeConfig,
+        onBeforeNavigate: onExitPress,
       }}>
       <StyledText>
         <Typo.Body>Pour profiter du pass Culture, tu dois avoir </Typo.Body>

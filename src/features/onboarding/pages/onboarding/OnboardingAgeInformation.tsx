@@ -34,6 +34,10 @@ export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element | 
   }
 
   const onLaterPress = () => {
+    void analytics.logHasExitedActivationFlow({
+      from: 'onboardingageinformation',
+      origin_detail: 'FinishLater',
+    })
     navigateToHomeWithReset()
   }
 

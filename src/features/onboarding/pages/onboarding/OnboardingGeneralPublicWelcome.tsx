@@ -3,15 +3,28 @@ import React from 'react'
 import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
+import { analytics } from 'libs/analytics/__mocks__/provider'
+import { CTAexitActivationFlow } from 'libs/analytics/logEventAnalytics'
 import QpiThanks from 'ui/animations/qpi_thanks.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 
 export const OnboardingGeneralPublicWelcome = () => {
   const { navigateToHomeWithReset } = useNavigateToHomeWithReset()
 
+  const onExitPress = (origin_detail: CTAexitActivationFlow) =>
+    analytics.logHasExitedActivationFlow({
+      from: 'onboardinggeneralpublicwelcome',
+      origin_detail,
+    })
+
+  const skipAction = () => {
+    void onExitPress('Skip')
+    navigateToHomeWithReset()
+  }
+
   return (
     <GenericInfoPage
-      withSkipAction={navigateToHomeWithReset}
+      withSkipAction={skipAction}
       animation={QpiThanks}
       animationColoringMode="targeted"
       animationTargetShapeNames={['Fond 1', 'Gradient Fill 1']}
@@ -26,6 +39,7 @@ export const OnboardingGeneralPublicWelcome = () => {
         },
       }}
       buttonSecondary={{
+        onBeforeNavigate: () => onExitPress('AccessCatalog'),
         wording: 'Accéder au catalogue',
         navigateTo: {
           screen: homeNavigationConfig[0],

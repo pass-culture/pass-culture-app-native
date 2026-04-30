@@ -15,7 +15,7 @@ import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { getSSOLoginMethod } from 'libs/analytics/logEventAnalytics'
+import { getSSOLoginMethod, CTAexitActivationFlow } from 'libs/analytics/logEventAnalytics'
 import { analytics } from 'libs/analytics/provider'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -187,10 +187,25 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
     }
   }
 
+  const onExitPress = (origin_detail: CTAexitActivationFlow) =>
+    analytics.logHasExitedActivationFlow({
+      from: 'signupform',
+      origin_detail,
+    })
+
+  const closeSignup = () => {
+    onExitPress('Close')
+    navigateToHome()
+  }
+  const exitSignup = () => {
+    onExitPress('Exit')
+    showQuitSignupModal()
+  }
+
   const RightButton = isConfirmationEmailSentStep ? (
-    <RightButtonText onClose={navigateToHome} wording="Fermer" />
+    <RightButtonText onClose={closeSignup} wording="Fermer" />
   ) : (
-    <RightButtonText onClose={showQuitSignupModal} wording="Quitter" />
+    <RightButtonText onClose={exitSignup} wording="Quitter" />
   )
 
   return (
