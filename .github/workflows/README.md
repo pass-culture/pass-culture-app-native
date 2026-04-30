@@ -37,11 +37,3 @@ Ces workflows sont utilisés pour déployer le web sur les buckets GCP, et le pr
 | dev_on_workflow_update_jira_issues.yml     | Workflow | Automatically | [runs](https://github.com/pass-culture/pass-culture-app-native/actions/workflows/dev_on_workflow_update_jira_issues.yml) |
 | dev_on_workflow_web_deploy.yml             | Helper   | Automatically |                                                                                                                          |
 | dev_on_workflow_web_proxy_deploy.yml       | Helper   | Automatically |                                                                                                                          |
-
-
-export APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL=app-native-ci-testing@pc-native-testing.iam.gserviceaccount.com
-export PROJECT_ID=pc-native-testing
-# Add ttl of 30 minutes to avoid having too many keys in the service account
-gcloud iam service-accounts keys create temporary-sa-key.json \
-    --iam-account=$APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL \
-    --project=$PROJECT_ID
