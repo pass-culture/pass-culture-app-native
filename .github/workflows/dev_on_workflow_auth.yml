@@ -34,13 +34,8 @@ jobs:
       - name: Check authenticated account
         run: gcloud auth list
 
-      - name: Show old SA and list its IAM roles
-        run: |
-          echo "Old SA: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}"
-          gcloud projects get-iam-policy ${{ vars.PROJECT_ID }} \
-            --flatten="bindings[].members" \
-            --filter="bindings.members=serviceAccount:${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}" \
-            --format="table(bindings.role)"
+      - name: Show old SA name
+        run: echo "${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}" | base64
 
       - name: List secrets from Secret Manager
         run: gcloud secrets list --project ${{ vars.PROJECT_ID }}
