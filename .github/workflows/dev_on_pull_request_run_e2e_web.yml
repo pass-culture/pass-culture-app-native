@@ -5,7 +5,7 @@ on:
 
 permissions:
   contents: read
-  id-token: write
+  id-token: write  # required for OIDC
   pull-requests: write
 
 jobs:
@@ -13,11 +13,13 @@ jobs:
     name: 'Smoke test Staging Web'
     runs-on: ubuntu-24.04
     timeout-minutes: 60
+    environment: app-native-staging
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout ref
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: actions/setup-node@v6
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: .nvmrc
       - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
       - name: Enable Corepack
         run: corepack enable
@@ -31,17 +33,17 @@ jobs:
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           bucket: ${{ secrets.CACHE_BUCKET_NAME }}
-          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          workload-identity-provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
+          service-account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
 
       - name: Yarn install
         run: yarn install
 
       - name: Authentification to Google
-        uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
         with:
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
+          service_account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
 
       - name: Get secrets for Maestro
         id: maestro_secrets
