@@ -66,6 +66,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   const theme = useTheme()
   const { user } = useAuthContext()
   const artistsPlaylistEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_ARTISTS_PLAYLIST)
+  const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavigationConfig = useNavigateToSearchWithVenueOffers(venue)
   const { navigate } = useNavigation<UseNavigationType>()
@@ -116,7 +117,8 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
       clubAdvicesCount: item.offer.chroniclesCount,
       isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
       subcategoryId: item.offer.subcategoryId,
-      proAdvicesCount: shouldDisplayAdvicesSection ? item.offer.proAdvicesCount : undefined,
+      proAdvicesCount:
+        enableProAdvicesTag && shouldDisplayAdvicesSection ? item.offer.proAdvicesCount : undefined,
     })
 
     return (

@@ -8,6 +8,8 @@ import { renderInteractionTag } from 'features/offer/components/InteractionTag/I
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
@@ -51,6 +53,7 @@ export const VenueMapOfferPlaylist = ({
   const labelMapping = useCategoryHomeLabelMapping()
   const isFocused = useIsFocused()
   const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
+  const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item }) => {
@@ -61,7 +64,8 @@ export const VenueMapOfferPlaylist = ({
         hasSmallLayout: true,
         isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
         subcategoryId: item.offer.subcategoryId,
-        proAdvicesCount: proAdvicesSegment === 'A' ? item.offer.proAdvicesCount : undefined,
+        proAdvicesCount:
+          enableProAdvicesTag && proAdvicesSegment === 'A' ? item.offer.proAdvicesCount : undefined,
       })
       return (
         <OfferTile
@@ -83,6 +87,7 @@ export const VenueMapOfferPlaylist = ({
     },
     [
       currency,
+      enableProAdvicesTag,
       euroToPacificFrancRate,
       labelMapping,
       mapping,
