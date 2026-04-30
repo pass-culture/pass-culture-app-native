@@ -10,6 +10,7 @@ import { Offer } from 'shared/offer/types'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   analyticsParams: OfferAnalyticsParams
@@ -39,7 +40,7 @@ export const VideoModuleHeader: FunctionComponent<Props> = ({
         <Tag label={videoTag} variant={TagVariant.DEFAULT} />
       </StyledTagContainer>
 
-      <Typo.Title3>{moduleName}</Typo.Title3>
+      <Typo.Title3 {...getHeadingAttrs(1)}>{moduleName}</Typo.Title3>
 
       <StyledCaptionDate>{`Publiée le ${formatToFrenchDate(
         new Date(videoPublicationDate)
@@ -52,7 +53,7 @@ export const VideoModuleHeader: FunctionComponent<Props> = ({
       ) : null}
 
       <OfferTitleContainer>
-        <Typo.Title4>{offerTitle}</Typo.Title4>
+        <Typo.Title4 {...getHeadingAttrs(2)}>{offerTitle}</Typo.Title4>
       </OfferTitleContainer>
 
       {!isMultiOffer && offers[0] ? (
