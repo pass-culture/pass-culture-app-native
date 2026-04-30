@@ -1,4 +1,4 @@
-import { useIsFocused, useNavigation, useRoute } from '@react-navigation/native'
+import { useIsFocused, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import { Platform, ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
@@ -7,7 +7,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
@@ -44,6 +44,9 @@ type VenueOffersListProps = VenueOffersProps & {
     itemType: 'offer' | 'venue' | 'artist' | 'unknown',
     playlistIndex?: number
   ) => void
+  onPressAdviceCardSeeMore: (offerId: number) => void
+  onPressAllAdvicesButton: () => void
+  onFeedbackLog: (type: ReactionTypeEnum) => void
 }
 
 const playlistTitle = 'Les artistes disponibles dans ce lieu'
@@ -62,6 +65,9 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   nbAdvices,
   enableNewTagProAdvices,
   onShowWritersModal,
+  onPressAdviceCardSeeMore,
+  onPressAllAdvicesButton,
+  onFeedbackLog,
 }) => {
   const theme = useTheme()
   const { user } = useAuthContext()
@@ -69,7 +75,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavigationConfig = useNavigateToSearchWithVenueOffers(venue)
-  const { navigate } = useNavigation<UseNavigationType>()
   const isFocused = useIsFocused()
 
   const { hits = [] } = venueOffers ?? {}
@@ -78,36 +83,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   const shouldDisplayAdvicesSection = advicesCardData && advicesCardData.length > 0 && nbAdvices > 0
 
   const onBeforeNavigate = () => analytics.logVenueSeeMoreClicked(venue.id)
-
-  const onPressAdviceCardSeeMore = (offerId: number) => {
-    void analytics.logConsultAdvice({
-      from: 'venue',
-      offerId: offerId.toString(),
-      venueId: venue.id.toString(),
-      originDetails: 'Les avis des pros',
-      adviceType: 'pro',
-    })
-    navigate('ProAdvicesVenue', { venueId: venue.id, offerId })
-  }
-
-  const onPressAllAdvicesButton = () => {
-    void analytics.logConsultAdvice({
-      from: 'venue',
-      venueId: venue.id.toString(),
-      originDetails: 'Lire les x avis',
-      adviceType: 'pro',
-    })
-  }
-
-  const onFeedbackLog = (type: ReactionTypeEnum) => {
-    const feedbackResponse = type === ReactionTypeEnum.LIKE ? 'Oui' : 'Non'
-    void analytics.logFeatureFeedbackClicked({
-      featureName: 'pro_advices',
-      feedbackResponse,
-      from: 'venue',
-      venueId: venue.id.toString(),
-    })
-  }
 
   const renderItem: CustomListRenderItem<Offer> = ({ item, width, height }) => {
     const timestampsInMillis = item.offer.dates && getTimeStampInMillis(item.offer.dates)

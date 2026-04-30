@@ -1,18 +1,22 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ViewToken } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
+import { ReactionTypeEnum, SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { AdviceCardData } from 'features/advices/types'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { NoOfferPlaceholder } from 'features/venue/components/Placeholders/NoOfferPlaceholder'
+import { VenueAdvicesSection } from 'features/venue/components/VenueAdvicesSection/VenueAdvicesSection'
 import { VenueMovies } from 'features/venue/components/VenueOffers/VenueMovies'
 import { VenueOffersList } from 'features/venue/components/VenueOffers/VenueOffersList'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 import type { VenueOffers, VenueOffersArtists } from 'features/venue/types'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location/location'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
@@ -61,6 +65,7 @@ export function VenueOffers({
   enableNewTagProAdvices,
   onShowWritersModal,
 }: Readonly<VenueOffersProps>) {
+  const { navigate } = useNavigation<UseNavigationType>()
   const { userLocation, selectedLocationMode } = useLocation()
   const transformHits = useTransformOfferHits()
   const venueSearchParams = useVenueSearchParameters(venue)
@@ -75,6 +80,37 @@ export function VenueOffers({
     transformHits,
     venue,
   })
+  const shouldDisplayAdvicesSection = advicesCardData && advicesCardData.length > 0 && nbAdvices > 0
+
+  const onPressAdviceCardSeeMore = (offerId: number) => {
+    void analytics.logConsultAdvice({
+      from: 'venue',
+      offerId: offerId.toString(),
+      venueId: venue.id.toString(),
+      originDetails: 'Les avis des pros',
+      adviceType: 'pro',
+    })
+    navigate('ProAdvicesVenue', { venueId: venue.id, offerId })
+  }
+
+  const onPressAllAdvicesButton = () => {
+    void analytics.logConsultAdvice({
+      from: 'venue',
+      venueId: venue.id.toString(),
+      originDetails: 'Lire les x avis',
+      adviceType: 'pro',
+    })
+  }
+
+  const onFeedbackLog = (type: ReactionTypeEnum) => {
+    const feedbackResponse = type === ReactionTypeEnum.LIKE ? 'Oui' : 'Non'
+    void analytics.logFeatureFeedbackClicked({
+      featureName: 'pro_advices',
+      feedbackResponse,
+      from: 'venue',
+      venueId: venue.id.toString(),
+    })
+  }
 
   if (areVenueOffersLoading || arePlaylistsLoading) {
     return <LoadingState />
@@ -89,7 +125,23 @@ export function VenueOffers({
   )
 
   if (hasAMovieScreeningOffer) {
-    return <VenueMovies venueOffers={venueOffers} />
+    return (
+      <React.Fragment>
+        <VenueMovies venueOffers={venueOffers} />
+        {shouldDisplayAdvicesSection ? (
+          <VenueAdvicesSection
+            advicesCardData={advicesCardData}
+            nbAdvices={nbAdvices}
+            venue={venue}
+            onPressAdviceCardSeeMore={onPressAdviceCardSeeMore}
+            enableNewTagProAdvices={enableNewTagProAdvices}
+            onShowWritersModal={onShowWritersModal}
+            onPressAllAdvicesButton={onPressAllAdvicesButton}
+            onFeedbackLog={onFeedbackLog}
+          />
+        ) : null}
+      </React.Fragment>
+    )
   }
 
   return (
@@ -108,6 +160,9 @@ export function VenueOffers({
       nbAdvices={nbAdvices}
       enableNewTagProAdvices={enableNewTagProAdvices}
       onShowWritersModal={onShowWritersModal}
+      onPressAdviceCardSeeMore={onPressAdviceCardSeeMore}
+      onPressAllAdvicesButton={onPressAllAdvicesButton}
+      onFeedbackLog={onFeedbackLog}
     />
   )
 }
