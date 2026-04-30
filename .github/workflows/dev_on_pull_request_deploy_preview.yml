@@ -22,5 +22,5 @@ jobs:
       REF: '${{ github.ref }}'
       CACHE_BUCKET_NAME: 'passculture-metier-ehp'
     secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+      WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
+      SERVICE_ACCOUNT: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
