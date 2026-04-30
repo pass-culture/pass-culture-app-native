@@ -1,4 +1,4 @@
-import { onlineManager, useInfiniteQuery } from '@tanstack/react-query'
+import { useInfiniteQuery } from '@tanstack/react-query'
 import { SearchResponse } from 'algoliasearch/lite'
 import { uniqBy } from 'lodash'
 import flatten from 'lodash/flatten'
@@ -90,7 +90,6 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     // first page is 0
     initialPageParam: 0,
     getNextPageParam: ({ offers }) => getNextPageParam(offers),
-    enabled: onlineManager.isOnline(),
   })
 
   const hits: SearchOfferHits = useMemo(() => {
