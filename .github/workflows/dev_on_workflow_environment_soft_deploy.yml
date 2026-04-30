@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Enable Corepack
         run: corepack enable
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
@@ -48,7 +48,7 @@ jobs:
         with:
           bundler-cache: true
       - name: Authentification to Google
-        uses: 'google-github-actions/auth@v2'
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
         with:
           workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
           service_account: ${{ var.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
@@ -60,14 +60,14 @@ jobs:
             --iam-account=${{ var.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }} \
             --project=${{ vars.PROJECT_ID }}
       - name: Get Secret
-        id: 'secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v3'
+        id: secrets
+        uses: google-github-actions/get-secretmanager-secrets@v3
         with:
           secrets: |-
             ANDROID_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-android-${{ inputs.ENV }}-token
             IOS_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-ios-${{ inputs.ENV }}-token
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
-      - name: 'Render Sentry Template'
+      - name: Render Sentry Template
         id: render_template
         uses: chuhlomin/render-template@v1.10
         with:
@@ -108,13 +108,13 @@ jobs:
     needs: sentry_and_deploy
     steps:
       - name: Connect to Secret Manager
-        uses: 'google-github-actions/auth@v2'
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
         with:
           workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
           service_account: ${{ var.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
       - name: Get secrets for Slack
-        id: 'slack_secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v3'
+        id: slack_secrets
+        uses: google-github-actions/get-secretmanager-secrets@v3
         with:
           secrets: |-
             SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-ci-slack-bot-token
