@@ -34,9 +34,6 @@ jobs:
       - name: Check authenticated account
         run: gcloud auth list
 
-      - name: Show old SA name
-        run: echo "${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}" | base64
-
       - name: List secrets from Secret Manager
         run: gcloud secrets list --project ${{ vars.PROJECT_ID }}
 
