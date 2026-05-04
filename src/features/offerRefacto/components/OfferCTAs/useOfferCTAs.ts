@@ -32,7 +32,8 @@ import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUndera
 import { analytics } from 'libs/analytics/provider'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { Subcategory } from 'libs/subcategories/types'
-import { useBookingsV2Query, useEndedBookingFromOfferIdQueryV2 } from 'queries/bookings'
+import { useBookingsV2Query } from 'queries/bookings/useBookingsQuery'
+import { useEndedBookingFromOfferIdQueryV2 } from 'queries/bookings/useEndedBookingFromOfferIdQuery'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { useModal } from 'ui/components/modals/useModal'
@@ -78,8 +79,8 @@ export const useOfferCTAs = ({
   const { isButtonVisible: isCineButtonVisible } = useOfferCTA()
 
   // 2. Queries (Bookings, Reminders, Credits)
-  const { refetch: getBookings } = useBookingsV2Query(false)
-  const { data: endedBooking } = useEndedBookingFromOfferIdQueryV2(offerId, false)
+  const { refetch: getBookings } = useBookingsV2Query()
+  const { data: endedBooking } = useEndedBookingFromOfferIdQueryV2(offerId)
   const { bookedOffers = {}, status } = user ?? {}
   const { data: ongoingBooking } = useOngoingOrEndedBookingQueryV2(
     getBookingOfferId(offerId, bookedOffers) ?? 0

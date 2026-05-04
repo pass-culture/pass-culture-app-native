@@ -1,7 +1,7 @@
 import { BookingsResponseV2 } from 'api/gen'
 import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
-import { useEndedBookingFromOfferIdQueryV2 } from 'queries/bookings'
+import { useEndedBookingFromOfferIdQueryV2 } from 'queries/bookings/useEndedBookingFromOfferIdQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
