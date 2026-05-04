@@ -545,7 +545,6 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                       <View
                         style={
                           {
-                            "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
                           }
@@ -694,7 +693,6 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                       <View
                         style={
                           {
-                            "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
                           }
@@ -892,7 +890,6 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                       <View
                         style={
                           {
-                            "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
                           }
