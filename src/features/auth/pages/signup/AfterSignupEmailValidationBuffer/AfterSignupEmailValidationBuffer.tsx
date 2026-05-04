@@ -26,12 +26,7 @@ export function AfterSignupEmailValidationBuffer() {
   const deviceInfo = deviceInfoStoreSelectors.selectDeviceInfo()
 
   useEffect(() => {
-    if (
-      !params?.token ||
-      !deviceInfo?.deviceId ||
-      !params?.email ||
-      !params?.expiration_timestamp
-    ) {
+    if (!params?.token || !deviceInfo.deviceId || !params?.email || !params?.expiration_timestamp) {
       return
     }
 
