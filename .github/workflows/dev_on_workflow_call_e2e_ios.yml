@@ -26,9 +26,9 @@ permissions:
 
 jobs:
   build_e2e:
-    name: 'Build & Test iOS Staging'
-    runs-on: macos-26
-    timeout-minutes: 180
+    name: 'Build iOS staging and upload to Maestro Cloud'
+    runs-on: macos-26-xlarge
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v6
@@ -142,7 +142,7 @@ jobs:
           device-os: iOS-17-5
           device-model: iPhone-11
           include-tags: ${{ inputs.test_tags }}
-          timeout: 180
+          async: true
           env: |
             MAESTRO_APP_ID=app.passculture.staging
             MAESTRO_PASSWORD=${{ steps.secrets.outputs.MAESTRO_PASSWORD }}
