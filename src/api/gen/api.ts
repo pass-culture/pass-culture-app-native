@@ -7494,7 +7494,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV2RefreshAccessToken.'
         )
       }      
-      const pathname = `/native/v2/refresh_access_token`
+      let pathname = `/native/v2/refresh_access_token`
       const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -7521,7 +7521,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV2Signin.'
         )
       }      
-      const pathname = `/native/v2/signin`
+      let pathname = `/native/v2/signin`
       const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
