@@ -22,11 +22,6 @@ on:
       CACHE_BUCKET_NAME:
         type: string
         required: true
-    secrets:
-      WORKLOAD_IDENTITY_PROVIDER:
-        required: true
-      SERVICE_ACCOUNT:
-        required: true
 
 defaults:
   run:
@@ -37,6 +32,8 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     if: ${{ github.actor != 'dependabot[bot]' }}
+    environment:
+      name: app-native-testinng
     steps:
       - name: Enable Corepack
         run: corepack enable
@@ -57,14 +54,14 @@ jobs:
         uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
         with:
           export_environment_variables: true
-          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
+          service_account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
 
       - name: Create service account key
         id: create-sa-key
         run: |
           gcloud iam service-accounts keys create temporary-sa-key.json \
-            --iam-account=${{ secrets.SERVICE_ACCOUNT }} \
+            --iam-account=${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }} \
             --project=${{ steps.openid-auth.outputs.project_id }}
           SA_KEY_JSON=$(jq -c . temporary-sa-key.json)
           echo "FIREBASE_TOKEN=$SA_KEY_JSON" >> "$GITHUB_OUTPUT"
@@ -132,7 +129,7 @@ jobs:
         run: |
           KEY_ID=$(jq -r .private_key_id temporary-sa-key.json)
           gcloud iam service-accounts keys delete "$KEY_ID" \
-            --iam-account=${{ secrets.SERVICE_ACCOUNT }} \
+            --iam-account=${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }} \
             --project=${{ steps.openid-auth.outputs.project_id }} \
             --quiet
           rm -f temporary-sa-key.json
