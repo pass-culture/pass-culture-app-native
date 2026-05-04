@@ -1,5 +1,4 @@
 import { useScrollToTop } from '@react-navigation/native'
-import { without } from 'lodash'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   NativeScrollEvent,
@@ -20,16 +19,13 @@ import { useGetVenuesData } from 'features/home/api/useGetVenuesData'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { HomeModule } from 'features/home/components/modules/HomeModule'
-import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
 import { enrichModulesWithData } from 'features/home/helpers/enrichModulesWithData'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
 import {
   HomepageModule,
-  HomepageModuleType,
   isOffersModule,
   isVenuesModule,
-  isVideoCarouselModule,
   ModuleViewableItemsChangedHandler,
   ThematicHeader,
 } from 'features/home/types'
@@ -129,9 +125,6 @@ const buildModulesHandlingVideoCarouselPosition = (
   thematicHeader?: ThematicHeader
 ) => {
   if (thematicHeader) return modules
-  if (modules[0]?.type === HomepageModuleType.VideoCarouselModule) {
-    return without(modules, modules[0])
-  }
   return modules
 }
 
@@ -276,27 +269,15 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
 
   const modulesToDisplayHandlingVideoCarousel: HomepageModule[] =
     buildModulesHandlingVideoCarouselPosition(enrichedModules, thematicHeader)
-  const videoCarouselModules = enrichedModules.filter(isVideoCarouselModule)
-
-  const shouldDisplayVideoInHeader =
-    !thematicHeader && enrichedModules[0]?.type === HomepageModuleType.VideoCarouselModule
 
   const ListHeader = useMemo(
     () => (
       <View testID="listHeader">
         {Header}
-        {shouldDisplayVideoInHeader && videoCarouselModules[0] ? (
-          <VideoCarouselModule
-            index={0}
-            homeEntryId={homeId}
-            {...videoCarouselModules[0]}
-            autoplay
-          />
-        ) : null}
         <PageContent>{HomeBanner}</PageContent>
       </View>
     ),
-    [Header, shouldDisplayVideoInHeader, videoCarouselModules, homeId, HomeBanner]
+    [Header, HomeBanner]
   )
 
   return (

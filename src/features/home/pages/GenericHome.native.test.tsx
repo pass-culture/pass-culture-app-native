@@ -5,7 +5,6 @@ import { SubcategoriesResponseModelv2 } from 'api/gen'
 import * as showSkeletonAPI from 'features/home/api/useShowSkeleton'
 import {
   formattedVenuesModule,
-  formattedVideoCarouselModuleWithMultipleItems,
   highlightHeaderFixture,
 } from 'features/home/fixtures/homepage.fixture'
 import { GenericHome } from 'features/home/pages/GenericHome'
@@ -17,7 +16,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 // Removed: old tracking system import
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, waitFor, within } from 'tests/utils'
+import { act, render, screen, waitFor } from 'tests/utils'
 import { Typo } from 'ui/theme'
 const useShowSkeletonSpy = jest.spyOn(showSkeletonAPI, 'useShowSkeleton').mockReturnValue(false)
 
@@ -81,64 +80,6 @@ describe('GenericHome', () => {
       renderGenericHome({})
 
       expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
-    })
-  })
-
-  describe('VideoCarouselModule', () => {
-    describe('Home N-1', () => {
-      it('should not display video in header if videoCarouselModule is the first module given', async () => {
-        const modules = [formattedVideoCarouselModuleWithMultipleItems, formattedVenuesModule]
-
-        renderGenericHome({ modules, thematicHeader: highlightHeaderFixture.thematicHeader })
-
-        await waitFor(() => {
-          const listHeaderContainer = screen.getByTestId('listHeader')
-          const content = within(listHeaderContainer).queryByText('Les sorties du moment')
-
-          expect(content).not.toBeOnTheScreen()
-        })
-      })
-
-      it('should not display video in header if videoCarouselModule is not the first module given', async () => {
-        const modules = [formattedVenuesModule, formattedVideoCarouselModuleWithMultipleItems]
-
-        renderGenericHome({ modules, thematicHeader: highlightHeaderFixture.thematicHeader })
-
-        await waitFor(() => {
-          const listHeaderContainer = screen.getByTestId('listHeader')
-          const content = within(listHeaderContainer).queryByText('Les sorties du moment')
-
-          expect(content).not.toBeOnTheScreen()
-        })
-      })
-    })
-
-    describe('Home', () => {
-      it('should display video in header if videoCarouselModule is the first module given', async () => {
-        const modules = [formattedVideoCarouselModuleWithMultipleItems, formattedVenuesModule]
-
-        renderGenericHome({ modules })
-
-        await waitFor(() => {
-          const listHeaderContainer = screen.getByTestId('listHeader')
-          const content = within(listHeaderContainer).getByText('Les sorties du moment')
-
-          expect(content).toBeOnTheScreen()
-        })
-      })
-
-      it('should not display video in header if videoCarouselModule is not the first module given', async () => {
-        const modules = [formattedVenuesModule, formattedVideoCarouselModuleWithMultipleItems]
-
-        renderGenericHome({ modules })
-
-        await waitFor(() => {
-          const listHeaderContainer = screen.getByTestId('listHeader')
-          const content = within(listHeaderContainer).queryByText('Les sorties du moment')
-
-          expect(content).not.toBeOnTheScreen()
-        })
-      })
     })
   })
 })
