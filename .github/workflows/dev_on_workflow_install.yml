@@ -6,43 +6,40 @@ on:
       CACHE_BUCKET_NAME:
         type: string
         required: true
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT:
-        required: true
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
-        required: true
 
 jobs:
   yarn-install:
-    name: 'Install yarn dependencies'
+    name: Install yarn dependencies
     runs-on: ubuntu-24.04
     timeout-minutes: 60
+    environment:
+      name: app-native-testing
     steps:
       - name: Enable Corepack
         run: corepack enable
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v6
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: .nvmrc
       - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
       - name: Setup java
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
-          distribution: 'temurin'
+          java-version: 17
+          distribution: temurin
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
         with:
           cmdline-tools-version: 11076708 # correspond to cmdline-tools version 12.0
       - id: gcloud-auth
-        name: 'OpenID Connect Authentication'
-        uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
+        name: OpenID Connect Authentication
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
         with:
           cleanup_credentials: false
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v3'
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
+          service_account: ${{ secrets.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v3
       - name: Cache the node_modules
         id: yarn-modules-cache
         uses: pass-culture-github-actions/cache@v1.0.0
@@ -55,7 +52,7 @@ jobs:
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
           key-file-name: ${{ steps.gcloud-auth.outputs.credentials_file_path }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-      - name: 'Use the artifact registry'
+      - name: Use the artifact registry
         uses: pass-culture-github-actions/artifact-registry@v1.0.0
         with:
           secret-workload-identity-provider-artifact-registry: passculture-metier-ehp/passculture-main-gcp-workload-identity-provider
@@ -67,7 +64,7 @@ jobs:
         run: yarn install
 
   bundle-install:
-    name: 'Install runtime environment'
+    name: Install runtime environment
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
