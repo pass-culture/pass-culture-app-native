@@ -36,9 +36,6 @@ jobs:
   deploy_on_firebase:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
-    environment:
-      name: app-native-testing
-      deployment: true
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
       - name: Enable Corepack
@@ -64,6 +61,7 @@ jobs:
           service_account: ${{ secrets.SERVICE_ACCOUNT }}
 
       - name: Create service account key
+        id: create-sa-key
         run: |
           gcloud iam service-accounts keys create temporary-sa-key.json \
             --iam-account=${{ secrets.SERVICE_ACCOUNT }} \
