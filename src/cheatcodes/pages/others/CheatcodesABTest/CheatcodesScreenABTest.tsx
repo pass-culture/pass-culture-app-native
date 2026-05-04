@@ -17,7 +17,7 @@ export function CheatcodesScreenABTest(): React.JSX.Element {
   const total = AB_TESTS_REGISTRY.length
 
   return (
-    <CheatcodesTemplateScreen title="Cheatcodes AB Test" onGoBack={goBack}>
+    <CheatcodesTemplateScreen title="Cheatcodes AB Test" onGoBack={goBack} flexDirection="column">
       <CheatcodeHeaderABTest forcedCount={forcedCount} total={total} />
       <StyledSeparator />
       <FlatList
