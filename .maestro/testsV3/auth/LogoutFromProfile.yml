@@ -12,7 +12,7 @@ onFlowStart:
 ---
 - runFlow: ../common/LaunchApp.yml
 - runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/DeepLinkBeneficiaryUser.yml
 - runFlow: ../common/GoToProfileFromTabBar.yml
 
 - assertVisible: 'Profil'
@@ -21,4 +21,4 @@ onFlowStart:
       text: 'République Française - Liberté Égalité Fraternité'
 - tapOn: 'Déconnexion'
 
-- assertVisible: "Créer un compte"
+- assertVisible: 'Créer un compte'

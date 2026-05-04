@@ -3,11 +3,10 @@ tags:
   - artist
 onFlowStart:
   - runScript: ../common/DeepLink.js
-  - runScript: ../common/Button.js
 ---
 - runFlow: ../common/LaunchApp.yml
 - runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeeplinkToHome.yml
+- runFlow: ../common/DeepLinkToHome.yml
 
 - runFlow: ../common/GoToSearchFromTabBar.yml
 

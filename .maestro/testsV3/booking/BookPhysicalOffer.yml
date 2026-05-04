@@ -3,7 +3,6 @@ tags:
   - booking
 onFlowStart:
   - runScript: ../common/DeepLink.js
-  - runScript: ../common/Button.js
   - runScript:
       file: ../common/generateUser.js
       env:
@@ -13,7 +12,7 @@ onFlowStart:
 ---
 - runFlow: ../common/LaunchApp.yml
 - runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/DeepLinkBeneficiaryUser.yml
 
 - runFlow: ../common/GoToSearchFromTabBar.yml
 
@@ -89,7 +88,7 @@ onFlowStart:
     when:
       platform: iOS
     commands:
-      - tapOn: ${output.button.ios.booking}
+      - tapOn: 'Réserver l’offre'
 
 - assertVisible: 'Détails de la réservation'
 - tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire'

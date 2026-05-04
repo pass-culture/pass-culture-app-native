@@ -7,7 +7,7 @@ onFlowStart:
 ---
 - runFlow: ../common/LaunchApp.yml
 - runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeeplinkToHome.yml
+- runFlow: ../common/DeepLinkToHome.yml
 
 - runFlow: ../common/GoToSearchFromTabBar.yml
 - runFlow: ../common/GoToSearchFromTabBar.yml
@@ -32,11 +32,9 @@ onFlowStart:
 - tapOn: 'Réinitialiser'
 
 - tapOn: 'Appliquer le filtre'
-- assertVisible: "Filtre - Catégorie - Toutes les catégories"
+- assertVisible: 'Filtre - Catégorie - Toutes les catégories'
 - tapOn: 'Rechercher'
 
-- assertVisible: "Voir tous les filtres"
-
-
+- assertVisible: 'Voir tous les filtres'
 
 - runFlow: ../common/StopApp.yml

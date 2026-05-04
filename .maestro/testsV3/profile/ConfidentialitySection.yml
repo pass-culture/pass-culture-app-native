@@ -12,11 +12,11 @@ onFlowStart:
 ---
 - runFlow: ../common/LaunchApp.yml
 - runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/DeepLinkBeneficiaryUser.yml
 - runFlow: ../common/GoToProfileFromTabBar.yml
 
 - scrollUntilVisible:
-    element: "Suivre le pass Culture"
+    element: 'Suivre le pass Culture'
 
 - tapOn:
     text: 'Confidentialité'

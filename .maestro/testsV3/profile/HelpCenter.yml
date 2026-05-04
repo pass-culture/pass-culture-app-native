@@ -12,7 +12,7 @@ onFlowStart:
 ---
 - runFlow: ../common/LaunchApp.yml
 - runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/DeepLinkBeneficiaryUser.yml
 - runFlow: ../common/GoToProfileFromTabBar.yml
 
 - scrollUntilVisible:
@@ -39,6 +39,6 @@ onFlowStart:
           when:
             platform: iOS
           commands:
-          - tapOn: 'Revenir à pass Culture S'
+            - tapOn: 'Revenir à pass Culture S'
 
 - runFlow: ../common/StopApp.yml

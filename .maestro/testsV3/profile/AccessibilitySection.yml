@@ -12,7 +12,7 @@ onFlowStart:
 ---
 - runFlow: ../common/LaunchApp.yml
 - runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/DeepLinkBeneficiaryUser.yml
 - runFlow: ../common/GoToProfileFromTabBar.yml
 
 - scrollUntilVisible:
@@ -49,26 +49,26 @@ onFlowStart:
     when:
       platform: iOS
     commands:
-    - tapOn: 'Revenir à pass Culture S'
+      - tapOn: 'Revenir à pass Culture S'
 
 - runFlow:
     when:
       platform: Android
     commands:
-    - pressKey: back
+      - pressKey: back
 
-- tapOn: "Déclaration d’accessibilité - Android"
-- assertVisible: "Déclaration d’accessibilité - Android"
+- tapOn: 'Déclaration d’accessibilité - Android'
+- assertVisible: 'Déclaration d’accessibilité - Android'
 - runFlow:
     file: ../common/TapOnBack.yml
 
-- tapOn: "Déclaration d’accessibilité - iOS"
-- assertVisible: "Déclaration d’accessibilité - iOS"
+- tapOn: 'Déclaration d’accessibilité - iOS'
+- assertVisible: 'Déclaration d’accessibilité - iOS'
 - runFlow:
     file: ../common/TapOnBack.yml
 
-- tapOn: "Déclaration d’accessibilité - web"
-- assertVisible: "Déclaration d’accessibilité web"
+- tapOn: 'Déclaration d’accessibilité - web'
+- assertVisible: 'Déclaration d’accessibilité web'
 - runFlow:
     file: ../common/TapOnBack.yml
 

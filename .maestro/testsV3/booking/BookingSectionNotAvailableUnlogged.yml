@@ -6,7 +6,7 @@ onFlowStart:
 ---
 - runFlow: ../common/LaunchApp.yml
 - runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeeplinkToProfile.yml
+- runFlow: ../common/DeepLinkToProfile.yml
 
 - assertNotVisible:
     id: 'Mes réservations'

@@ -12,7 +12,7 @@ onFlowStart:
 ---
 - runFlow: ../common/LaunchApp.yml
 - runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeepLinksToFavorites.yml
+- runFlow: ../common/DeepLinkToFavorites.yml
 
 - tapOn: 'Se connecter'
 
@@ -33,21 +33,21 @@ onFlowStart:
     when:
       platform: Android
     commands:
-    - hideKeyboard
+      - hideKeyboard
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: 'Connecte-toi' # Pour fermer le clavier iOS
+      - tapOn: 'Connecte-toi' # Pour fermer le clavier iOS
 - tapOn: 'Se connecter'
 
 - waitForAnimationToEnd
 
 - runFlow: # Si apparition de l'écran de crédit (félicitations 18 ans)
     when:
-      visible: ".*Bonne nouvelle.*"
+      visible: '.*Bonne nouvelle.*'
     commands:
-      - tapOn: ".*Continuer.*"
+      - tapOn: '.*Continuer.*'
 
 - runFlow:
     when:
