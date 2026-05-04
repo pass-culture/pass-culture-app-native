@@ -47,6 +47,7 @@ jobs:
               Bonne journée ! 🌟`
             })
 
+
   e2e-tests-ios:
     if: ${{ startsWith(github.event.label.name, 'e2e') && (contains(github.event.label.name, 'iOS') || !contains(github.event.label.name, 'Android')) }}
     needs: notify_test_launch
