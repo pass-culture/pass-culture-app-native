@@ -17,9 +17,6 @@ jobs:
     uses: ./.github/workflows/dev_on_workflow_linter_ts.yml
     with:
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   yarn-tester:
     needs: yarn-linter
     uses: ./.github/workflows/dev_on_workflow_tester.yml
