@@ -3,6 +3,7 @@ import React from 'react'
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as ABSegmentModule from 'shared/useABSegment/useABSegment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
@@ -79,7 +80,8 @@ describe('ArtistPlaylist', () => {
     expect(screen.getAllByText('Livre')[1]).toBeOnTheScreen()
   })
 
-  it('should display pro advices tag when defined and pro advices AB testing segment is A', async () => {
+  it('should display pro advices tag when defined and pro advices AB testing segment is A and wipProReviewsPlaylist FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST])
     useABSegmentSpy.mockReturnValueOnce('A')
     render(
       reactQueryProviderHOC(
@@ -101,8 +103,31 @@ describe('ArtistPlaylist', () => {
     expect(screen.getByText('1 avis')).toBeOnTheScreen()
   })
 
-  it('should not display pro advices tag when defined and pro advices AB testing segment is B', async () => {
+  it('should not display pro advices tag when defined and pro advices AB testing segment is B and wipProReviewsPlaylist FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST])
     useABSegmentSpy.mockReturnValueOnce('B')
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={[
+            {
+              ...mockedAlgoliaOffersWithSameArtistResponse[0],
+              offer: { ...mockedAlgoliaOffersWithSameArtistResponse[0].offer, proAdvicesCount: 1 },
+            },
+          ]}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
+    )
+
+    await screen.findByLabelText('Toutes ses offres disponibles')
+
+    expect(screen.queryByText('1 avis')).not.toBeOnTheScreen()
+  })
+
+  it('should not display pro advices tag when defined and pro advices AB testing segment is A and wipProReviewsPlaylist FF deactivated', async () => {
+    useABSegmentSpy.mockReturnValueOnce('A')
     render(
       reactQueryProviderHOC(
         <ArtistPlaylist
