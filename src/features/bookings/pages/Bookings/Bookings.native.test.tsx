@@ -69,7 +69,7 @@ describe('Bookings', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     setFeatureFlags()
     mockServer.getApi<GetAvailableReactionsResponse>(
-      '/v1/reaction/available',
+      '/v2/reaction/available',
       availableReactionsSnap
     )
   })
