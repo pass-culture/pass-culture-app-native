@@ -10,7 +10,6 @@ import { adaptThematicHighlightModule } from 'libs/contentful/adapters/modules/a
 import { adaptTrendsModule } from 'libs/contentful/adapters/modules/adaptTrendsModule'
 import { adaptVenueMapModule } from 'libs/contentful/adapters/modules/adaptVenueMapModule'
 import { adaptVenuesModule } from 'libs/contentful/adapters/modules/adaptVenuesModule'
-import { adaptVideoCarouselModule } from 'libs/contentful/adapters/modules/adaptVideoCarouselModule'
 import { adaptVideoModule } from 'libs/contentful/adapters/modules/adaptVideoModule'
 import {
   HomepageNatifModule,
@@ -23,7 +22,6 @@ import {
   isTrendsContentModel,
   isVenueMapBlockContentModel,
   isVenuesContentModel,
-  isVideoCarouselContentModel,
   isVideoContentModel,
 } from 'libs/contentful/types'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -68,10 +66,6 @@ export const adaptHomepageNatifModules = (modules: HomepageNatifModule[]): Homep
 
       if (isVenueMapBlockContentModel(module)) {
         return adaptVenueMapModule(module)
-      }
-
-      if (isVideoCarouselContentModel(module)) {
-        return adaptVideoCarouselModule(module)
       }
 
       if (isTrendsContentModel(module)) {

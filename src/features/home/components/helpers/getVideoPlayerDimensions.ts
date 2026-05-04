@@ -1,7 +1,6 @@
 import { PixelRatio } from 'react-native'
 
 export const RATIO169 = 9 / 16
-export const RATIO710 = 10 / 7
 
 export const getVideoPlayerDimensions = ({
   isDesktopViewport,

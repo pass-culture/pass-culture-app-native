@@ -12,7 +12,6 @@ import {
   ThematicHighlightModule,
   TrendsModule,
   VenuesModule,
-  VideoCarouselModule,
 } from 'features/home/types'
 import { ContentTypes } from 'libs/contentful/types'
 
@@ -179,57 +178,6 @@ export const formattedCategoryListModule: CategoryListModule = {
         'https://images.ctfassets.net/2bg01iqy0isv/1IujqyX9w3ugcGGbKlolbp/d11cdb6d0dee5e6d3fb2b072031a01e7/i107848-eduquer-un-chaton.jpeg',
       homeEntryId: '6DCThxvbPFKAo04SVRZtwY',
       color: Color.SkyBlue,
-    },
-  ],
-}
-
-export const formattedVideoCarouselModule: VideoCarouselModule = {
-  id: '3wfVCUGOPYBIKggC0nkJW1',
-  type: HomepageModuleType.VideoCarouselModule,
-  title: 'Test carousel video',
-  color: Color.Lilac,
-  items: [
-    {
-      id: '7ihPsS7RcX0WuLtCAJCI69',
-      title: 'Une vidéo',
-      youtubeVideoId: 'NsFmOttIW9Y',
-      offerId: '1116',
-      homeEntryId: undefined,
-      tag: undefined,
-      thematicHomeSubtitle: undefined,
-      thematicHomeTag: undefined,
-      thematicHomeTitle: undefined,
-    },
-  ],
-}
-
-export const formattedVideoCarouselModuleWithMultipleItems: VideoCarouselModule = {
-  id: '3wfVCUGOPYBIKggC0nkJW1',
-  type: HomepageModuleType.VideoCarouselModule,
-  title: 'Test carousel video',
-  color: Color.Lilac,
-  items: [
-    {
-      id: '7ihPsS7RcX0WuLtCAJCI69',
-      title: 'Quinzaine du ciné',
-      youtubeVideoId: 'NsFmOttIW9Y',
-      offerId: undefined,
-      homeEntryId: '123456',
-      tag: undefined,
-      thematicHomeSubtitle: 'Les sorties du moment',
-      thematicHomeTag: 'Cinéma',
-      thematicHomeTitle: 'La quinzaine du ciné',
-    },
-    {
-      id: '7ihPsS7RcX0WuLtCAJCI69',
-      title: 'Une vidéo',
-      youtubeVideoId: 'NsFmOttIW9Y',
-      offerId: '1116',
-      homeEntryId: undefined,
-      tag: undefined,
-      thematicHomeSubtitle: undefined,
-      thematicHomeTag: undefined,
-      thematicHomeTitle: undefined,
     },
   ],
 }

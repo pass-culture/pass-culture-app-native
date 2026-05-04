@@ -18,7 +18,6 @@ export enum HomepageModuleType {
   'VideoModule' = 'VideoModule',
   'HighlightOfferModule' = 'HighlightOfferModule',
   'VenueMapModule' = 'VenueMapModule',
-  'VideoCarouselModule' = 'VideoCarouselModule',
 }
 
 export type HomepageTag = 'master' | 'usergrandpublic' | 'userunderage'
@@ -80,27 +79,6 @@ export type HomepageModule =
   | CategoryListModule
   | VideoModule
   | HighlightOfferModule
-  | VideoCarouselModule
-
-export type VideoCarouselModule = {
-  type: HomepageModuleType.VideoCarouselModule
-  id: string
-  title: string
-  color: Color
-  items: VideoCarouselItem[]
-}
-
-export type VideoCarouselItem = {
-  id: string
-  title: string
-  youtubeVideoId: string
-  offerId?: string
-  tag?: string
-  homeEntryId?: string
-  thematicHomeTitle?: string
-  thematicHomeTag?: string
-  thematicHomeSubtitle?: string
-}
 
 export type OffersModule = {
   type: HomepageModuleType.OffersModule
@@ -387,10 +365,6 @@ export type ModuleViewableItemsChangedHandler = ({
 
 export const isVenuesModule = (module: HomepageModule): module is VenuesModule => {
   return module.type === HomepageModuleType.VenuesModule
-}
-
-export const isVideoCarouselModule = (module: HomepageModule): module is VideoCarouselModule => {
-  return module.type === HomepageModuleType.VideoCarouselModule
 }
 
 export const isOffersModule = (module: HomepageModule): module is OffersModule => {
