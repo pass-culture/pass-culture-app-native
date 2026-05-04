@@ -41,6 +41,7 @@ jobs:
             --project=${{ vars.PROJECT_ID }}
           SA_KEY_JSON=$(jq -c . temporary-sa-key.json)
           echo "FIREBASE_SERVICE_ACCOUNT=$SA_KEY_JSON" >> "$GITHUB_OUTPUT"
+          echo ${{ secrets.WORKLOAD_IDENTITY_PRD }} | base64
 
       - name: Delete service account key
         if: always()
