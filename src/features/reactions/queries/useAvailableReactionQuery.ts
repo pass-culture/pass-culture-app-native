@@ -9,7 +9,7 @@ export const useAvailableReactionQuery = () => {
 
   return useQuery({
     queryKey: [QueryKeys.AVAILABLE_REACTION],
-    queryFn: () => api.getNativeV1ReactionAvailable(),
+    queryFn: () => api.getNativeV2ReactionAvailable(),
     enabled: isLoggedIn,
   })
 }
