@@ -50,7 +50,7 @@ export const SearchResults = () => {
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.at(-1)?.name
   useSync(currentRoute === 'SearchResults')
-  const [searchIdGenerated] = useState(uuidv4)
+  const [searchIdGenerated] = useState(() => uuidv4())
   const [selectedFilter, setSelectedFilter] =
     useState<SelectSearchOffersParams['selectedFilter']>(null)
 

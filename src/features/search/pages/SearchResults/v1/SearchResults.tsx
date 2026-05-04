@@ -38,7 +38,7 @@ export const SearchResults = () => {
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.at(-1)?.name
   useSync(currentRoute === 'SearchResults')
-  const [searchIdGenerated] = useState(uuidv4)
+  const [searchIdGenerated] = useState(() => uuidv4())
 
   const netInfo = useNetInfoContext()
   const { isFocusOnSuggestions, searchState, dispatch } = useSearch()

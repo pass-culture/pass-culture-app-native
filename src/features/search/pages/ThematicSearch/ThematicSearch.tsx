@@ -39,7 +39,7 @@ export const ThematicSearch: React.FC = () => {
   const isWeb = Platform.OS === 'web'
   const { disabilities } = useAccessibilityFiltersContext()
   const { selectedLocationMode } = useLocation()
-  const [fallbackSearchId] = useState(uuidv4)
+  const [fallbackSearchId] = useState(() => uuidv4())
   const currentSearchId = params?.searchId ?? fallbackSearchId
 
   const {

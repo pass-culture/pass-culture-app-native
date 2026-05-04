@@ -50,6 +50,7 @@ module.exports = {
       '|search-insights' +
       '|react-native-gesture-handler' +
       '|@react-navigation' +
+      '|uuid' +
       ')',
   ],
   coverageReporters: ['json'],
