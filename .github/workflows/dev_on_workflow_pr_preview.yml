@@ -57,15 +57,6 @@ jobs:
           workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
           service_account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
 
-      - name: Create service account key
-        id: create-sa-key
-        run: |
-          gcloud iam service-accounts keys create temporary-sa-key.json \
-            --iam-account=${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }} \
-            --project=${{ steps.openid-auth.outputs.project_id }}
-          SA_KEY_JSON=$(jq -c . temporary-sa-key.json)
-          echo "FIREBASE_TOKEN=$SA_KEY_JSON" >> "$GITHUB_OUTPUT"
-
       - name: Get Secret
         id: secrets
         uses: google-github-actions/get-secretmanager-secrets@v3
@@ -112,6 +103,15 @@ jobs:
           working_directory: .
           version: ${{ inputs.CHANNEL }}
           url_prefix: '~'
+
+      - name: Create service account key
+        id: create-sa-key
+        run: |
+          gcloud iam service-accounts keys create temporary-sa-key.json \
+            --iam-account=${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }} \
+            --project=${{ steps.openid-auth.outputs.project_id }}
+          SA_KEY_JSON=$(jq -c . temporary-sa-key.json)
+          echo "FIREBASE_TOKEN=$SA_KEY_JSON" >> "$GITHUB_OUTPUT"
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
