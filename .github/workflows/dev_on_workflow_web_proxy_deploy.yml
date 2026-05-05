@@ -9,18 +9,13 @@ on:
       CACHE_BUCKET_NAME:
         type: string
         required: true
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT:
-        required: true
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
-        required: true
-      GCP_PROD_SERVICE_ACCOUNT:
-      GCP_PROD_WORKLOAD_IDENTITY_PROVIDER:
 
 jobs:
   web_proxy_deploy:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
+    environment:
+      name: app-native-${{ inputs.ENV }}
     steps:
       - name: Enable Corepack
         run: corepack enable
@@ -38,8 +33,8 @@ jobs:
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
           cleanup_credentials: false
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
+          service_account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v3'
       - name: Cache the proxy node_modules
@@ -63,12 +58,12 @@ jobs:
         with:
           secrets: |-
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
-      - name: Switch to google prod account for prod
-        if: ${{ inputs.ENV == 'production' }}
-        uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
-        with:
-          workload_identity_provider: ${{ secrets.GCP_PROD_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_PROD_SERVICE_ACCOUNT }}
+#      - name: Switch to google prod account for prod
+#        if: ${{ inputs.ENV == 'production' }}
+#        uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
+#        with:
+#          workload_identity_provider: ${{ secrets.GCP_PROD_WORKLOAD_IDENTITY_PROVIDER }}
+#          service_account: ${{ secrets.GCP_PROD_SERVICE_ACCOUNT }}
 
       - name: Cleanup .yarn cache
         run: rm -rf server/.yarn/cache
@@ -94,8 +89,8 @@ jobs:
       - name: Connect to Secret Manager
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
+          service_account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
       - name: Get secrets for Slack
         id: 'slack_secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v3'
