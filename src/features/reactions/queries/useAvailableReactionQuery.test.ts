@@ -12,7 +12,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
 
 describe('useAvailableReaction', () => {
   beforeEach(() => {
-    mockServer.getApi('/v1/reaction/available', availableReactionsSnap)
+    mockServer.getApi('/v2/reaction/available', availableReactionsSnap)
   })
 
   it('should fetch available reactions correctly', async () => {
@@ -22,7 +22,7 @@ describe('useAvailableReaction', () => {
   })
 
   it('should return an empty object if API response is empty', async () => {
-    mockServer.getApi('/v1/reaction/available', {})
+    mockServer.getApi('/v2/reaction/available', {})
 
     const { result } = renderUseAvailableReaction()
 
@@ -30,7 +30,7 @@ describe('useAvailableReaction', () => {
   })
 
   it('should handle errors correctly', async () => {
-    mockServer.getApi('/v1/reaction/available', { responseOptions: { statusCode: 400, data: {} } })
+    mockServer.getApi('/v2/reaction/available', { responseOptions: { statusCode: 400, data: {} } })
 
     const { result } = renderUseAvailableReaction()
 
