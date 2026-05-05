@@ -35,7 +35,7 @@ jobs:
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
           workload-identity-provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
-          service-account: ${{ vars.APP_NATIVE_SERVICE_ACCOUNT_EMAIL }}
+          service-account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
       - run: yarn test:lint
 
@@ -61,6 +61,6 @@ jobs:
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
           workload-identity-provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
-          service-account: ${{ vars.APP_NATIVE_SERVICE_ACCOUNT_EMAIL }}
+          service-account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
       - run: yarn test:types
