@@ -79,11 +79,12 @@ export const useOfferCTAs = ({
   const { isButtonVisible: isCineButtonVisible } = useOfferCTA()
 
   // 2. Queries (Bookings, Reminders, Credits)
-  const { refetch: getBookings } = useBookingsV2Query()
-  const { data: endedBooking } = useEndedBookingFromOfferIdQueryV2(offerId)
+  const { refetch: getBookings } = useBookingsV2Query({ enabled: isLoggedIn })
+  const { data: endedBooking } = useEndedBookingFromOfferIdQueryV2(offerId, isLoggedIn)
   const { bookedOffers = {}, status } = user ?? {}
   const { data: ongoingBooking } = useOngoingOrEndedBookingQueryV2(
-    getBookingOfferId(offerId, bookedOffers) ?? 0
+    getBookingOfferId(offerId, bookedOffers) ?? 0,
+    isLoggedIn
   )
   const { data: reminder } = useGetRemindersQuery((data) => selectReminderByOfferId(data, offer.id))
   const hasEnoughCreditData = useHasEnoughCredit(offer)

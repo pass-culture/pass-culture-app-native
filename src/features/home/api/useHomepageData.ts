@@ -82,7 +82,7 @@ export const getHomepageId = (
 
 export const useHomepageData = (): Homepage => {
   const { isLoggedIn, user } = useAuthContext()
-  const { data: userHasBookings } = useUserHasBookingsQueryV2()
+  const { data: userHasBookings } = useUserHasBookingsQueryV2(isLoggedIn)
   const onboardingRole = useUserRoleFromOnboarding()
   const { data: remoteConfig } = useRemoteConfigQuery()
   const homepageId = getHomepageId(

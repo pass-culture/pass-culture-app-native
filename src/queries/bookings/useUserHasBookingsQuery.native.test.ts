@@ -15,7 +15,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
 describe('useUserHasBookingsQueryV2', () => {
   it('should return false if bookings do not exist', async () => {
     mockServer.getApi<BookingsResponseV2>('/v2/bookings', <BookingsResponseV2>{})
-    const { result } = renderHook(() => useUserHasBookingsQueryV2(), {
+    const { result } = renderHook(() => useUserHasBookingsQueryV2(true), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -26,7 +26,7 @@ describe('useUserHasBookingsQueryV2', () => {
 
   it('should return true if bookings exist', async () => {
     mockServer.getApi<BookingsResponseV2>('/v2/bookings', bookingsSnapV2)
-    const { result } = renderHook(() => useUserHasBookingsQueryV2(), {
+    const { result } = renderHook(() => useUserHasBookingsQueryV2(true), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 

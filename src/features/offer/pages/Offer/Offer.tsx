@@ -48,7 +48,7 @@ export function Offer() {
   const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
   const shouldDisplayProAdvices = enableProAdvices && proAdvicesSegment === 'A'
 
-  const { user } = useAuthContext()
+  const { user, isLoggedIn } = useAuthContext()
   const { userLocation } = useLocation()
   const { data: offer, isLoading } = useOfferQuery({
     offerId,
@@ -82,7 +82,10 @@ export function Offer() {
     hideModal: hideOfferArtistsModal,
     showModal: showOfferArtistsModal,
   } = useModal(false)
-  const { data: booking } = useEndedBookingFromOfferIdQueryV2(offer?.id ?? -1, !!offer?.id)
+  const { data: booking } = useEndedBookingFromOfferIdQueryV2(
+    offer?.id ?? -1,
+    !!offer?.id && isLoggedIn
+  )
   const { mutate: saveReaction } = useReactionMutation()
   const categoryId = offer?.subcategoryId
     ? subcategoriesMapping[offer?.subcategoryId]?.categoryId

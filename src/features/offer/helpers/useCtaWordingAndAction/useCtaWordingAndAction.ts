@@ -411,7 +411,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
 
   const hasEnoughCredit = useHasEnoughCredit(offer)
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
-  const { data: endedBooking } = useEndedBookingFromOfferIdQueryV2(offerId)
+  const { data: endedBooking } = useEndedBookingFromOfferIdQueryV2(offerId, isLoggedIn)
   const route = useRoute<UseRouteType<'Offer'>>()
   const apiRecoParams: RecommendationApiParams = route.params.apiRecoParams
     ? JSON.parse(route.params.apiRecoParams)
@@ -423,7 +423,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     ? new Date(user?.depositExpirationDate) < new Date()
     : false
 
-  const { refetch: getBookings } = useBookingsV2Query()
+  const { refetch: getBookings } = useBookingsV2Query({ enabled: isLoggedIn })
 
   useEffect(() => {
     const isUserFreeStatus = user?.eligibility === EligibilityType.free
@@ -467,7 +467,8 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
   })
   const { isBeneficiary = false, bookedOffers = {}, status } = user ?? {}
   const { data: booking } = useOngoingOrEndedBookingQueryV2(
-    getBookingOfferId(offerId, bookedOffers) ?? 0
+    getBookingOfferId(offerId, bookedOffers) ?? 0,
+    isLoggedIn
   )
   /* check I have all information to calculate wording
    * why: avoid flash on CTA wording

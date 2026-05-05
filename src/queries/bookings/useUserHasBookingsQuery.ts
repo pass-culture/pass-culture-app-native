@@ -6,5 +6,5 @@ const hasUserBookings = (bookings: BookingsResponseV2 | undefined) => {
   return ongoingBookings.length > 0 || endedBookings.length > 0
 }
 
-export const useUserHasBookingsQueryV2 = () =>
-  useBookingsV2Query({ select: (data) => hasUserBookings(data) })
+export const useUserHasBookingsQueryV2 = (enabled: boolean) =>
+  useBookingsV2Query({ select: (data) => hasUserBookings(data), enabled })
