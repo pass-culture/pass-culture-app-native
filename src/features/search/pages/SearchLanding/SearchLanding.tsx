@@ -20,6 +20,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { AIFakeDoorModal } from 'shared/AIFakeDoorModal/AIFakeDoorModal'
 import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
@@ -40,6 +41,7 @@ export const SearchLanding = () => {
   const { userLocation } = useLocation()
   const { user } = useAuthContext()
   const { visible, showModal, hideModal } = useModal(false)
+  const isZoomedAt200 = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
 
   const setQueryHistoryMemoized = useCallback(
     (query: string) => setQueryHistory(query),
@@ -55,6 +57,62 @@ export const SearchLanding = () => {
     return <OfflinePage />
   }
 
+  const searchHeader = (
+    <Container>
+      <SearchHeader
+        searchInputID={searchInputID}
+        shouldDisplaySubtitle
+        addSearchHistory={addToHistory}
+        searchInHistory={setQueryHistoryMemoized}
+      />
+    </Container>
+  )
+  const content = () => {
+    if (isFocusOnSuggestions) {
+      return (
+        <React.Fragment>
+          {isZoomedAt200 ? null : searchHeader}
+          <SearchSuggestions
+            queryHistory={queryHistory}
+            addToHistory={addToHistory}
+            removeFromHistory={removeFromHistory}
+            filteredHistory={filteredHistory}
+            shouldNavigateToSearchResults
+            enableAIFakeDoor={enableAIFakeDoor}
+            onPressAIButton={() => handleAIFakeDoorPress('searchAutoComplete')}
+          />
+        </React.Fragment>
+      )
+    } else
+      return (
+        <React.Fragment>
+          {isZoomedAt200 ? (
+            <LandingScrollView keyboardShouldPersistTaps="handled">
+              {searchHeader}
+              <CategoriesButtonsContainer>
+                <CategoriesList
+                  enableAIFakeDoor={enableAIFakeDoor}
+                  enableNewCategoryBlocks={enableNewCategoryBlocks}
+                  onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('searchLanding')}
+                />
+              </CategoriesButtonsContainer>
+            </LandingScrollView>
+          ) : (
+            <React.Fragment>
+              {searchHeader}
+              <CategoriesButtonsContainer>
+                <CategoriesList
+                  enableAIFakeDoor={enableAIFakeDoor}
+                  enableNewCategoryBlocks={enableNewCategoryBlocks}
+                  onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('searchLanding')}
+                />
+              </CategoriesButtonsContainer>
+            </React.Fragment>
+          )}
+        </React.Fragment>
+      )
+  }
+
   return (
     <Page>
       <Form.Flex>
@@ -65,34 +123,7 @@ export const SearchLanding = () => {
           insights={{ insightsClient: AlgoliaSearchInsights }}>
           <Configure hitsPerPage={5} clickAnalytics analytics />
 
-          <Container>
-            <SearchHeader
-              searchInputID={searchInputID}
-              shouldDisplaySubtitle
-              addSearchHistory={addToHistory}
-              searchInHistory={setQueryHistoryMemoized}
-            />
-          </Container>
-
-          {isFocusOnSuggestions ? (
-            <SearchSuggestions
-              queryHistory={queryHistory}
-              addToHistory={addToHistory}
-              removeFromHistory={removeFromHistory}
-              filteredHistory={filteredHistory}
-              shouldNavigateToSearchResults
-              enableAIFakeDoor={enableAIFakeDoor}
-              onPressAIButton={() => handleAIFakeDoorPress('searchAutoComplete')}
-            />
-          ) : (
-            <CategoriesButtonsContainer>
-              <CategoriesList
-                enableAIFakeDoor={enableAIFakeDoor}
-                enableNewCategoryBlocks={enableNewCategoryBlocks}
-                onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('searchLanding')}
-              />
-            </CategoriesButtonsContainer>
-          )}
+          {content()}
         </InstantSearch>
       </Form.Flex>
       {enableAIFakeDoor ? (
@@ -110,6 +141,11 @@ export const SearchLanding = () => {
 const CategoriesButtonsContainer = styled.View(({ theme }) => ({
   flex: 1,
   overflowY: 'auto',
+  ...(theme.isMobileViewport ? { marginBottom: theme.tabBar.height } : {}),
+}))
+
+const LandingScrollView = styled.ScrollView(({ theme }) => ({
+  flex: 1,
   ...(theme.isMobileViewport ? { marginBottom: theme.tabBar.height } : {}),
 }))
 

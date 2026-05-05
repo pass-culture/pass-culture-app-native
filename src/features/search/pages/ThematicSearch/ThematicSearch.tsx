@@ -23,6 +23,7 @@ import { getShouldDisplayGtlPlaylist } from 'features/venue/pages/Venue/getShoul
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
@@ -91,8 +92,9 @@ export const ThematicSearch: React.FC = () => {
     }
   }, [dispatch, isWeb, params?.offerCategories])
 
-  const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
+  const offerCategories = (params?.offerCategories ?? []) as SearchGroupNameEnumv2[]
   const offerCategory = offerCategories[0]
+  const isZoomedAt200 = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
 
   const shouldDisplayAccessibilityContent = Object.values(disabilities).filter(Boolean).length > 0
 
@@ -122,8 +124,6 @@ export const ThematicSearch: React.FC = () => {
     },
     [currentSearchId, handleTrackViewableItems, isFocused]
   )
-
-  if (!offerCategory) return null
 
   const playlistsComponent: Partial<Record<SearchGroupNameEnumv2, ReactNode>> = {
     [SearchGroupNameEnumv2.LIVRES]: (
@@ -163,38 +163,53 @@ export const ThematicSearch: React.FC = () => {
     ),
   }
 
-  const searchGroupWithGtlPlaylist = getShouldDisplayGtlPlaylist({
-    searchGroup: offerCategory,
-  })
-    ? offerCategory
-    : undefined
+  const searchGroupWithGtlPlaylist =
+    offerCategory && getShouldDisplayGtlPlaylist({ searchGroup: offerCategory })
+      ? offerCategory
+      : undefined
 
-  return (
+  const content = offerCategory ? (
+    <React.Fragment>
+      <SubcategoryButtonListWrapper offerCategory={offerCategory} />
+      {shouldDisplayVenuesPlaylist ? (
+        <ObservedPlaylist onViewableItemsChanged={handleVenuePlaylistViewableItemsChanged}>
+          {({ listRef, handleViewableItemsChanged }) => (
+            <VenuePlaylist
+              venuePlaylistTitle={venuePlaylistTitle}
+              venues={venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
+              isLocated={isLocated}
+              currentView={currentView}
+              offerCategory={offerCategory}
+              shouldDisplaySeparator={false}
+              searchGroup={searchGroupWithGtlPlaylist}
+              playlistRef={listRef}
+              onViewableItemsChanged={handleViewableItemsChanged}
+            />
+          )}
+        </ObservedPlaylist>
+      ) : null}
+      {playlistsComponent[offerCategory]}
+      <Spacer.TabBar />
+    </React.Fragment>
+  ) : null
+
+  const title = offerCategory ? titles[offerCategory] : ''
+
+  const thematicSearch = isZoomedAt200 ? (
     <Page>
-      <ThematicSearchBar offerCategories={offerCategories} title={titles[offerCategory]}>
-        <IntersectionObserverScrollView>
-          <SubcategoryButtonListWrapper offerCategory={offerCategory} />
-          {shouldDisplayVenuesPlaylist ? (
-            <ObservedPlaylist onViewableItemsChanged={handleVenuePlaylistViewableItemsChanged}>
-              {({ listRef, handleViewableItemsChanged }) => (
-                <VenuePlaylist
-                  venuePlaylistTitle={venuePlaylistTitle}
-                  venues={venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
-                  isLocated={isLocated}
-                  currentView={currentView}
-                  offerCategory={offerCategory}
-                  shouldDisplaySeparator={false}
-                  searchGroup={searchGroupWithGtlPlaylist}
-                  playlistRef={listRef}
-                  onViewableItemsChanged={handleViewableItemsChanged}
-                />
-              )}
-            </ObservedPlaylist>
-          ) : null}
-          {playlistsComponent[offerCategory]}
-          <Spacer.TabBar />
-        </IntersectionObserverScrollView>
+      <IntersectionObserverScrollView>
+        <ThematicSearchBar offerCategories={offerCategories} title={title}>
+          {content}
+        </ThematicSearchBar>
+      </IntersectionObserverScrollView>
+    </Page>
+  ) : (
+    <Page>
+      <ThematicSearchBar offerCategories={offerCategories} title={title}>
+        <IntersectionObserverScrollView>{content}</IntersectionObserverScrollView>
       </ThematicSearchBar>
     </Page>
   )
+
+  return thematicSearch
 }
