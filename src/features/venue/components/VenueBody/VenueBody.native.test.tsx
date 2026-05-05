@@ -134,7 +134,7 @@ describe('<VenueBody />', () => {
       venueId: venueDataTest.id,
       isHeadline: true,
       adviceType: 'pro',
-      originDetail: 'advice',
+      originDetails: 'advice',
     })
   })
 

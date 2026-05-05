@@ -28,7 +28,7 @@ export interface VenueTileProps {
   homeEntryId?: string
   width: number
   height: number
-  originDetail?: string
+  originDetails?: string
 }
 
 const mergeVenueData =
@@ -62,7 +62,7 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
       moduleName: props.moduleName,
       from: 'home',
       homeEntryId: props.homeEntryId,
-      originDetail: props.originDetail,
+      originDetails: props.originDetails,
     })
   }
 

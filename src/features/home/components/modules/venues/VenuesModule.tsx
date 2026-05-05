@@ -57,7 +57,7 @@ export const VenuesModule = ({
         venue={item}
         width={width}
         height={height}
-        originDetail={isExclusiveVolunteering ? 'volunteeringPlaylist' : undefined}
+        originDetails={isExclusiveVolunteering ? 'volunteeringPlaylist' : undefined}
       />
     ),
     [moduleName, moduleId, homeEntryId, isExclusiveVolunteering]
