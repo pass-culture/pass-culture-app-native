@@ -63,9 +63,6 @@ jobs:
           contains(github.event.label.name, ':squad-conversion') && 'squad-conversion' ||
           'nightlyIOS'
         }}
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
 
   e2e-tests-android:
     if: ${{ startsWith(github.event.label.name, 'e2e') && (contains(github.event.label.name, 'Android') || !contains(github.event.label.name, 'iOS')) }}
@@ -83,6 +80,3 @@ jobs:
           contains(github.event.label.name, ':squad-conversion') && 'squad-conversion' ||
           'nightlyAndroid'
         }}
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
