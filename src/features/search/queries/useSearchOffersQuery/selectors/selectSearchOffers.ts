@@ -13,17 +13,12 @@ import {
 export const selectSearchOffers = ({
   data,
   transformHits,
-  selectedFilter,
 }: SelectSearchOffersParams): SelectedSearchOffers => {
-  const isOffersFilterActive = selectedFilter === null || selectedFilter === 'Offres'
-
   const { pages } = data
   const [firstPage] = pages
 
-  const offers = isOffersFilterActive ? getFlattenHits(pages, transformHits, 'offersResponse') : []
-  const duplicatedOffers = isOffersFilterActive
-    ? getFlattenHits(pages, transformHits, 'duplicatedOffersResponse')
-    : []
+  const offers = getFlattenHits(pages, transformHits, 'offersResponse')
+  const duplicatedOffers = getFlattenHits(pages, transformHits, 'duplicatedOffersResponse')
 
   return {
     offers,

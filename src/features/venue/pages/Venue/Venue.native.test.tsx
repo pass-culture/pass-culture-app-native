@@ -33,7 +33,9 @@ import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.c
 import { Network } from 'libs/share/types'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Offer } from 'shared/offer/types'
-import * as ABSegmentModule from 'shared/useABSegment/useABSegment'
+import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
+import { abTestOverridesActions } from 'shared/useABSegment/abTestOverrideStore'
+import { AB_TESTS } from 'shared/useABSegment/abTests'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
@@ -93,18 +95,13 @@ mockUseGTLPlaylists.mockReturnValue({
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
-const useABSegmentSpy = jest.spyOn(ABSegmentModule, 'useABSegment')
 
-const mockUseDeviceInfo = jest.fn().mockReturnValue({
-  deviceId: 'device-id',
-  os: 'iOS',
-  resolution: '1080x1920',
-  source: 'iPhone 13',
-  screenZoomLevel: undefined,
-  fontScale: 1.5,
-})
-jest.mock('features/trustedDevice/helpers/useDeviceInfo', () => ({
-  useDeviceInfo: () => mockUseDeviceInfo(),
+jest.mock('features/trustedDevice/helpers/useDeviceMetrics', () => ({
+  useDeviceMetrics: () => ({
+    resolution: '1080x1920',
+    screenZoomLevel: undefined,
+    fontScale: 1.5,
+  }),
 }))
 
 jest.mock('libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog', () => ({
@@ -129,6 +126,11 @@ describe('<Venue />', () => {
     mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v2/venue/${venueId}`, {
       ...venueDataTest,
       isOpenToPublic: true,
+    })
+    deviceInfoStoreActions.setDeviceInfo({
+      deviceId: 'device-id',
+      source: 'iPhone 13',
+      os: 'iOS',
     })
   })
 
@@ -188,15 +190,19 @@ describe('<Venue />', () => {
       ).toBeOnTheScreen()
     })
 
+    afterEach(() => {
+      abTestOverridesActions.resetAll()
+    })
+
     it('should display advices section when AB testing segment is A', async () => {
-      useABSegmentSpy.mockReturnValueOnce('A')
+      abTestOverridesActions.setOverride(AB_TESTS.PRO_REVIEWS_ON_VENUE, 'A')
       renderVenue(venueId)
 
       expect(await screen.findByText(`Les avis par “${venueDataTest.name}”`)).toBeOnTheScreen()
     })
 
     it('should not display advices section when AB testing segment is B', async () => {
-      useABSegmentSpy.mockReturnValueOnce('B')
+      abTestOverridesActions.setOverride(AB_TESTS.PRO_REVIEWS_ON_VENUE, 'B')
       renderVenue(venueId)
 
       await screen.findByText('À la une')
@@ -205,7 +211,7 @@ describe('<Venue />', () => {
     })
 
     it('should trigger ConsultOffer log when pressing pro advice card header', async () => {
-      useABSegmentSpy.mockReturnValueOnce('A')
+      abTestOverridesActions.setOverride(AB_TESTS.PRO_REVIEWS_ON_VENUE, 'A')
       renderVenue(venueId)
 
       await screen.findByText(`Les avis par “${venueDataTest.name}”`)

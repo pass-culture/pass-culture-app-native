@@ -1,5 +1,4 @@
 import React from 'react'
-import DeviceInfo from 'react-native-device-info'
 
 import { replace, useRoute } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
@@ -9,13 +8,13 @@ import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import * as datesLib from 'libs/dates'
+import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, renderAsync, screen, userEvent, waitFor } from 'tests/utils'
 
 import { ReinitializePassword } from './ReinitializePassword'
 
-jest.mock('libs/react-native-device-info/getDeviceId')
 const ROUTE_PARAMS: {
   email: string
   token: string
@@ -36,9 +35,6 @@ mockLoginRoutine.mockImplementation(() => loginRoutine)
 
 const apiReinitializePasswordSpy = jest.spyOn(api, 'postNativeV1ResetPassword')
 
-jest.spyOn(DeviceInfo, 'getModel').mockReturnValue('iPhone 13')
-jest.spyOn(DeviceInfo, 'getSystemName').mockReturnValue('iOS')
-
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -54,6 +50,11 @@ const user = userEvent.setup()
 describe('ReinitializePassword Page', () => {
   beforeEach(() => {
     useRoute.mockReturnValue({ params: ROUTE_PARAMS })
+    deviceInfoStoreActions.setDeviceInfo({
+      deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+      source: 'iPhone 13',
+      os: 'iOS',
+    })
   })
 
   it('should match snapshot', async () => {
@@ -124,9 +125,6 @@ describe('ReinitializePassword Page', () => {
         deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
         os: 'iOS',
         source: 'iPhone 13',
-        resolution: '750x1334',
-        screenZoomLevel: undefined,
-        fontScale: -1,
       },
     })
   })

@@ -14,20 +14,17 @@ const mockOpenUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
 
-const mockDeviceInfo = {
-  deviceId: 'device-id',
-  os: 'iOS 17',
-  source: 'iPhone 15',
-  resolution: '1170x2532',
-  fontScale: 1,
-  screenZoomLevel: 1.25,
+const mockDeviceMetrics = {
+  resolution: '1080x1920',
+  screenZoomLevel: undefined,
+  fontScale: 1.5,
 }
 
-const mockVersion = '1.300.0'
-
-jest.mock('features/trustedDevice/helpers/useDeviceInfo', () => ({
-  useDeviceInfo: () => mockDeviceInfo,
+jest.mock('features/trustedDevice/helpers/useDeviceMetrics', () => ({
+  useDeviceMetrics: () => mockDeviceMetrics,
 }))
+
+const mockVersion = '1.300.0'
 
 jest.mock('ui/hooks/useVersion', () => ({
   useVersion: () => mockVersion,
@@ -75,7 +72,7 @@ describe('<SuspensionChoiceExpiredLink/>', () => {
     expect(mockOpenUrl).toHaveBeenCalledWith(
       buildZendeskUrlForFraud({
         user: beneficiaryUser,
-        deviceInfo: mockDeviceInfo,
+        metrics: mockDeviceMetrics,
         version: mockVersion,
       }),
       undefined,

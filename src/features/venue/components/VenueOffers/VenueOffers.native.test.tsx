@@ -182,6 +182,16 @@ describe('<VenueOffers />', () => {
 
       expect(await screen.findByText('Les films à l’affiche')).toBeOnTheScreen()
     })
+
+    it('should display advices section when there are advices', async () => {
+      renderVenueOffers({
+        venueOffers: venueMoviesOffersMock,
+        advicesCardData: [...proAdvicesCardDataFixture],
+        nbAdvices: 2,
+      })
+
+      expect(await screen.findByText(`Les avis par “${venueDataTest.name}”`)).toBeOnTheScreen()
+    })
   })
 
   describe('Artist playlist', () => {

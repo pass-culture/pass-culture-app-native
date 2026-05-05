@@ -1,6 +1,5 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import DeviceInfo from 'react-native-device-info'
 
 import { navigate, replace, useRoute } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
@@ -11,6 +10,7 @@ import { UserProfile } from 'features/share/types'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import * as datesLib from 'libs/dates'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, waitFor } from 'tests/utils'
@@ -19,12 +19,9 @@ import { AfterSignupEmailValidationBuffer } from './AfterSignupEmailValidationBu
 
 mockdate.set(new Date('2020-12-01T00:00:00Z'))
 
-jest.mock('libs/react-native-device-info/getDeviceId')
 const loginAndRedirectMock = jest.fn()
 jest.spyOn(LoginAndRedirectAPI, 'useLoginAndRedirect').mockReturnValue(loginAndRedirectMock)
 
-jest.spyOn(DeviceInfo, 'getModel').mockReturnValue('iPhone 13')
-jest.spyOn(DeviceInfo, 'getSystemName').mockReturnValue('iOS')
 const apiValidateEmailSpy = jest.spyOn(api, 'postNativeV1ValidateEmail')
 jest.useFakeTimers()
 
@@ -33,6 +30,14 @@ const renderPage = () => render(reactQueryProviderHOC(<AfterSignupEmailValidatio
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<AfterSignupEmailValidationBuffer />', () => {
+  beforeEach(() =>
+    deviceInfoStoreActions.setDeviceInfo({
+      deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+      source: 'iPhone 13',
+      os: 'iOS',
+    })
+  )
+
   beforeAll(() => {
     setFeatureFlags()
     useRoute.mockImplementation(() => ({
@@ -143,9 +148,6 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
           deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
           os: 'iOS',
           source: 'iPhone 13',
-          resolution: '750x1334',
-          screenZoomLevel: undefined,
-          fontScale: -1,
         },
         emailValidationToken: 'reerereskjlmkdlsf',
       })

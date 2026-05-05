@@ -6,7 +6,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 import { HorizontalArtistTile } from './HorizontalArtistTile'
 
 const meta: Meta<typeof HorizontalArtistTile> = {
-  title: 'HorizontalArtistTile',
+  title: 'ui/tiles/HorizontalArtistTile',
   component: HorizontalArtistTile,
 }
 export default meta

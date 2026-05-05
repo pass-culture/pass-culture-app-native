@@ -4,7 +4,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchResultArtist } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { AvatarListItem } from 'ui/components/Avatar/AvatarListItem'
-import { AVATAR_MEDIUM } from 'ui/theme/constants'
+import { AVATAR_SMALL } from 'ui/theme/constants'
 
 type SearchArtistItemWrapperProps = {
   item: SearchResultArtist
@@ -29,7 +29,7 @@ export const SearchArtistItemWrapper: FC<SearchArtistItemWrapperProps> = ({ item
       image={item.data.image}
       name={item.data.name}
       onItemPress={handleOnArtistPlaylistItemPress}
-      size={AVATAR_MEDIUM}
+      size={AVATAR_SMALL}
       isFullWidth
     />
   )

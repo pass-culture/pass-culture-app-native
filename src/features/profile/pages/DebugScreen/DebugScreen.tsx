@@ -4,12 +4,13 @@ import { styled } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { buildZendeskUrlForDebug } from 'features/profile/helpers/buildZendeskUrl'
-import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
+import { useDeviceMetrics } from 'features/trustedDevice/helpers/useDeviceMetrics'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { copyToClipboard } from 'libs/copyToClipboard/copyToClipboard'
 import { env } from 'libs/environment/env'
 import { useZoomInPercent } from 'shared/accessibility/helpers/zoomHelpers'
+import { deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
@@ -23,13 +24,15 @@ import { LINE_BREAK } from 'ui/theme/constants'
 const isWeb = Platform.OS === 'web'
 
 export const DebugScreen = () => {
-  const deviceInfo = useDeviceInfo()
   const { user } = useAuthContext()
   const version = useVersion()
   const webCommitHash = isWeb ? `-${String(env.COMMIT_HASH)}` : ''
   const fullVersion = `${version}${webCommitHash}`
+  const deviceInfo = deviceInfoStoreSelectors.selectDeviceInfo()
 
   const deviceZoom = useZoomInPercent()
+  const metrics = useDeviceMetrics()
+  const { resolution, fontScale } = metrics
 
   const undefinedValue = 'Non renseigné'
   const debugData = [
@@ -37,10 +40,10 @@ export const DebugScreen = () => {
     { label: 'Device ID', value: deviceInfo?.deviceId ?? undefinedValue },
     { label: 'Device model', value: deviceInfo?.source ?? undefinedValue },
     { label: 'Device OS', value: deviceInfo?.os ?? undefinedValue },
-    { label: 'Device resolution', value: deviceInfo?.resolution ?? undefinedValue },
+    { label: 'Device resolution', value: resolution ?? undefinedValue },
     { label: 'Device zoom', value: deviceZoom ? `${deviceZoom}%` : undefinedValue },
     { label: 'User ID', value: user?.id ?? undefinedValue },
-    { label: 'Device font scale', value: deviceInfo?.fontScale ?? undefinedValue },
+    { label: 'Device font scale', value: fontScale ?? undefinedValue },
     { label: 'User CreditType', value: user?.creditType ?? undefinedValue },
     { label: 'User StatusType', value: user?.statusType ?? undefinedValue },
     { label: 'User EligibilityType', value: user?.eligibilityType ?? undefinedValue },
@@ -52,7 +55,7 @@ export const DebugScreen = () => {
     .map((item) => `${item.label}\u00a0: ${String(item.value)}`)
     .join(LINE_BREAK)
 
-  const url = buildZendeskUrlForDebug({ user, deviceInfo, version })
+  const url = buildZendeskUrlForDebug({ user, metrics, version })
 
   const copy = () =>
     copyToClipboard({

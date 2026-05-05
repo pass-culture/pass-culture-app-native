@@ -4,6 +4,7 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import * as copyToClipboardModule from 'libs/copyToClipboard/copyToClipboard'
+import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -12,12 +13,9 @@ import { DebugScreen } from './DebugScreen'
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/auth/context/AuthContext')
 
-jest.mock('features/trustedDevice/helpers/useDeviceInfo', () => ({
-  useDeviceInfo: () => ({
-    deviceId: 'device-id',
-    os: 'iOS',
+jest.mock('features/trustedDevice/helpers/useDeviceMetrics', () => ({
+  useDeviceMetrics: () => ({
     resolution: '1080x1920',
-    source: 'iPhone 13',
     screenZoomLevel: undefined,
     fontScale: 1.5,
   }),
@@ -37,6 +35,14 @@ const mockCopyToClipboard = jest.spyOn(copyToClipboardModule, 'copyToClipboard')
 jest.useFakeTimers()
 
 describe('DebugScreen', () => {
+  beforeEach(() => {
+    deviceInfoStoreActions.setDeviceInfo({
+      deviceId: 'device-id',
+      source: 'iPhone 13',
+      os: 'iOS',
+    })
+  })
+
   mockAuthContextWithUser(beneficiaryUser)
 
   it('should render correctly', () => {

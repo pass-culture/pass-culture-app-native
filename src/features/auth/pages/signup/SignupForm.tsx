@@ -15,12 +15,12 @@ import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { getSSOLoginMethod } from 'libs/analytics/logEventAnalytics'
 import { analytics } from 'libs/analytics/provider'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
+import { deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { useModal } from 'ui/components/modals/useModal'
@@ -28,8 +28,6 @@ import { Page } from 'ui/pages/Page'
 import { Helmet } from 'ui/web/global/Helmet'
 
 export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ currentStep = 0 }) => {
-  const trustedDevice = useDeviceInfo()
-
   const { mutateAsync: appSignup } = useAppSignupMutation()
   const loginAndRedirect = useLoginAndRedirect()
 
@@ -146,7 +144,7 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
         ...signupData,
         marketingEmailSubscription,
         token,
-        trustedDevice,
+        trustedDevice: deviceInfoStoreSelectors.selectDeviceInfo(),
         firebasePseudoId: await firebaseAnalytics.getAppInstanceId(),
       }
 

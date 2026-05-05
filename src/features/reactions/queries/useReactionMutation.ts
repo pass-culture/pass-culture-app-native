@@ -22,7 +22,7 @@ export const useReactionMutation = () => {
   const BOOKING_KEYS = [QueryKeys.BOOKINGSV2, QueryKeys.BOOKINGSLIST]
 
   return useMutation({
-    mutationFn: (reactionRequest: PostReactionRequest) => api.postNativeV1Reaction(reactionRequest),
+    mutationFn: (reactionRequest: PostReactionRequest) => api.postNativeV2Reaction(reactionRequest),
 
     onMutate: async (reactionRequest: PostReactionRequest) => {
       const offerId = reactionRequest.reactions[0]?.offerId

@@ -13,10 +13,7 @@ import { NoSearchResult } from 'features/search/components/NoSearchResult/NoSear
 import { ArtistSection } from 'features/search/components/SearchListHeader/ArtistSection'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
-import {
-  convertAlgoliaVenue2AlgoliaVenueOfferListItem,
-  getReconciledVenues,
-} from 'features/search/helpers/searchList/getReconciledVenues'
+import { convertAlgoliaVenue2AlgoliaVenueOfferListItem } from 'features/search/helpers/searchList/getReconciledVenues'
 import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateToSearchFilter/useNavigateToSearchFilter'
 import { SearchArtistItemWrapper } from 'features/search/pages/SearchResults/v2/components/SearchArtistItemWrapper'
 import { SearchOfferItemWrapper } from 'features/search/pages/SearchResults/v2/components/SearchOfferItemWrapper'
@@ -50,7 +47,6 @@ import { Helmet } from 'ui/web/global/Helmet'
 type Props = {
   venuesUserData: VenuesUserData
   onViewableItemsChanged?: SearchListProps['onViewableVenuePlaylistItemsChanged']
-  nbHits: number
   isLoading: boolean
   isFetching: boolean
   isRefetching: boolean
@@ -82,7 +78,6 @@ const keyExtractor = (item: SearchResultItem) => {
 export const SearchResultsContent: FC<Props> = ({
   venuesUserData,
   onViewableItemsChanged,
-  nbHits,
   isLoading,
   isFetching,
   isRefetching,
@@ -96,6 +91,13 @@ export const SearchResultsContent: FC<Props> = ({
   disabilities,
   selectedFilter,
 }) => {
+  const {
+    hits: { artists, venues },
+    title,
+    nbHits,
+    items,
+  } = searchListContent
+
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
 
   const isFocused = useIsFocused()
@@ -143,10 +145,6 @@ export const SearchResultsContent: FC<Props> = ({
   const shouldDisplayGridList = enableGridList && !isWeb && isOffersContent
   const isGridLayout = shouldDisplayGridList && gridListLayout === GridListLayout.GRID
 
-  const isEnabledVenuesFromOfferIndex = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_VENUES_FROM_OFFER_INDEX
-  )
-
   useEffect(() => {
     if (isSuccess && !isFetching) {
       void analytics.logPerformSearch(
@@ -165,16 +163,11 @@ export const SearchResultsContent: FC<Props> = ({
   const shouldDisplayVenueSection =
     !selectedFilter && !searchState.venue && previousRouteName !== SearchView.Thematic
 
-  const shouldDisplayArtistSection = !selectedFilter && searchListContent?.hits?.artists?.length
+  const shouldDisplayArtistSection = !selectedFilter && artists?.length
 
-  const venues = isEnabledVenuesFromOfferIndex
-    ? getReconciledVenues(searchListContent.hits?.offers, searchListContent.hits?.venues)
-    : searchListContent.hits?.venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)
+  const totalHitsToDisplay = items.length + artists.length + venues.length
 
-  const totalHitsToDisplay =
-    searchListContent.items.length + searchListContent.hits?.artists.length + venues.length
-
-  if (!totalHitsToDisplay || (selectedFilter && !searchListContent.items.length)) {
+  if (!totalHitsToDisplay || (selectedFilter && !items.length)) {
     return (
       <NoSearchResult
         setSelectedLocationMode={setSelectedLocationMode}
@@ -200,18 +193,18 @@ export const SearchResultsContent: FC<Props> = ({
           ref={searchListRef}
           key={`${isGridLayout ? 'grid_search_results' : 'list_search_results'}_${selectedFilter || 'all'}`}
           testID="searchResultsFlashlist"
-          data={searchListContent.items}
+          data={items}
           keyExtractor={keyExtractor}
           getItemType={(item: SearchResultItem) => item.type}
           ListHeaderComponent={
             <SearchResultsListHeader
-              nbHits={searchListContent.nbHits}
-              title={searchListContent.title}
+              nbHits={nbHits}
+              title={title}
               userData={userData}
               venuesSection={
                 shouldDisplayVenueSection ? (
                   <VenueSection
-                    venues={venues}
+                    venues={venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
                     onViewableVenuePlaylistItemsChanged={onViewableItemsChanged}
                     withMargins={false}
                   />
@@ -220,7 +213,7 @@ export const SearchResultsContent: FC<Props> = ({
               artistSection={
                 shouldDisplayArtistSection ? (
                   <StyledArtistSection
-                    artists={searchListContent.hits?.artists}
+                    artists={artists}
                     searchId={searchState.searchId}
                     withMargins={false}
                   />

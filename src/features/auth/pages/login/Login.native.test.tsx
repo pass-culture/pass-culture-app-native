@@ -1,6 +1,5 @@
 // eslint-disable-next-line no-restricted-imports
 import React from 'react'
-import DeviceInfo from 'react-native-device-info'
 
 import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
@@ -22,6 +21,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as monitoringErrorsModule from 'libs/monitoring/errors'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
+import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { setSettingsMock } from 'tests/settings/mockSettings'
@@ -33,7 +33,6 @@ import { Login } from './Login'
 jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('libs/monitoring/services')
-jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/helpers/usePreviousRouteName')
 const mockResetSearch = jest.fn()
@@ -51,8 +50,6 @@ const apiPostFavoriteSpy = jest.spyOn(API.api, 'postNativeV1MeFavorites')
 
 const apiSignInSpy = jest.spyOn(API.api, 'postNativeV1Signin')
 const apiPostOAuthAuthorize = jest.spyOn(API.api, 'postNativeV1OauthssoProviderAuthorize')
-const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
-const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 
 jest.useFakeTimers()
 
@@ -79,6 +76,11 @@ describe('<Login/>', () => {
     mockMeApiCall({
       showEligibleCard: false,
     } as UserProfile)
+    deviceInfoStoreActions.setDeviceInfo({
+      deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+      source: 'iPhone 13',
+      os: 'iOS',
+    })
   })
 
   afterEach(async () => {
@@ -94,8 +96,6 @@ describe('<Login/>', () => {
   })
 
   it('should sign in when "Se connecter" is clicked with device info', async () => {
-    getModelSpy.mockReturnValueOnce('iPhone 13')
-    getSystemNameSpy.mockReturnValueOnce('iOS')
     renderLogin()
     await screen.findByText('Connecte-toi')
 
@@ -110,9 +110,6 @@ describe('<Login/>', () => {
           deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
           os: 'iOS',
           source: 'iPhone 13',
-          resolution: '750x1334',
-          screenZoomLevel: undefined,
-          fontScale: -1,
         },
       },
       { credentials: 'omit' }
@@ -120,8 +117,6 @@ describe('<Login/>', () => {
   })
 
   it('should sign in when SSO button is clicked with device info', async () => {
-    getModelSpy.mockReturnValueOnce('iPhone 13')
-    getSystemNameSpy.mockReturnValueOnce('iOS')
     mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
@@ -140,9 +135,6 @@ describe('<Login/>', () => {
           deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
           os: 'iOS',
           source: 'iPhone 13',
-          resolution: '750x1334',
-          screenZoomLevel: undefined,
-          fontScale: -1,
         },
       },
       'google'
@@ -713,11 +705,8 @@ describe('<Login/>', () => {
           token: 'fakeToken',
           deviceInfo: {
             deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-            os: 'unknown',
-            source: 'none',
-            resolution: '750x1334',
-            screenZoomLevel: undefined,
-            fontScale: -1,
+            os: 'iOS',
+            source: 'iPhone 13',
           },
         },
         { credentials: 'omit' }

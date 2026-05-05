@@ -4,8 +4,8 @@ import styled from 'styled-components/native'
 import { Artist } from 'features/venue/types'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Avatar } from 'ui/components/Avatar/Avatar'
+import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { Profile } from 'ui/svg/icons/Profile'
 import { Typo } from 'ui/theme'
 import { AVATAR_SMALL } from 'ui/theme/constants'
 
@@ -20,9 +20,7 @@ export const HorizontalArtistTile = ({ artist }: ArtistItemProps) => {
         {artist.image ? (
           <StyledImage url={artist.image} testID="artistAvatar" />
         ) : (
-          <DefaultAvatarContainer testID="defaultArtistAvatar">
-            <StyledProfile />
-          </DefaultAvatarContainer>
+          <DefaultAvatar testID="defaultArtistAvatar" />
         )}
       </Avatar>
       <TextContainer>
@@ -46,19 +44,3 @@ const StyledImage = styled(FastImage)({
   width: '100%',
   height: '100%',
 })
-
-const DefaultAvatarContainer = styled.View(({ theme }) => ({
-  backgroundColor: theme.designSystem.color.background.disabled,
-  width: '100%',
-  height: '100%',
-  alignItems: 'center',
-  justifyContent: 'center',
-  borderWidth: 1,
-  borderColor: theme.designSystem.color.border.subtle,
-  borderRadius: theme.designSystem.size.borderRadius.pill,
-}))
-
-const StyledProfile = styled(Profile).attrs(({ theme }) => ({
-  color: theme.designSystem.color.icon.subtle,
-  size: theme.icons.sizes.standard,
-}))``

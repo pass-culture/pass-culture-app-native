@@ -72,7 +72,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_OFFER_CHRONICLE_SECTION = 'wipOfferChronicleSection',
   WIP_OFFER_MULTI_ARTISTS = 'wipOfferMultiArtists',
   WIP_OFFER_REFACTO = 'wipOfferRefacto',
-  WIP_OFFER_VIDEO_SECTION = 'wipOfferVideoSection',
   WIP_PRO_REVIEWS_NEW_TAG = 'wipProReviewsNewTag',
   WIP_PRO_REVIEWS_OFFER = 'wipProReviewsOffer',
   WIP_PRO_REVIEWS_PLAYLIST = 'wipProReviewsPlaylist',

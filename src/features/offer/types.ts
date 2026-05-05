@@ -85,6 +85,7 @@ type OfferCTAsComponentProps = {
   favoriteCTAProps: FavoriteCTAProps
   fullScreen?: boolean
   onLayout?: (params: LayoutChangeEvent) => void
+  displayStickyGradient?: boolean
 }
 
 export type OfferContentProps = {

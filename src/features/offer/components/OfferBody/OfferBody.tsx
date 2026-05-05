@@ -51,7 +51,6 @@ type Props = {
   headlineOffersCount?: number
   clubAdvices?: AdviceCardData[]
   proAdvices?: AdviceCardData[]
-  isVideoSectionEnabled?: boolean
   hasVideoCookiesConsent?: boolean
   isMultiArtistsEnabled?: boolean
 }
@@ -68,7 +67,6 @@ export const OfferBody: FunctionComponent<Props> = ({
   adviceVariantInfo,
   clubAdvices,
   proAdvices,
-  isVideoSectionEnabled,
   hasVideoCookiesConsent,
   isMultiArtistsEnabled,
   onVideoConsentPress,
@@ -81,7 +79,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     if (params.from === 'deeplink') {
       triggerConsultOfferLog({ offerId: params.id, from: 'deeplink' })
     }
-  }, [isVideoSectionEnabled, params])
+  }, [params])
 
   const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
   const enableProReviewNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
@@ -224,7 +222,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         </MarginContainer>
       ) : null}
 
-      {offer.video?.id && isVideoSectionEnabled ? (
+      {offer.video?.id ? (
         <VideoSection
           videoId={offer.video.id}
           videoThumbnail={

@@ -59,9 +59,9 @@ const variantConfig: Variants<typeof Avatar> = [
     },
   },
   {
-    label: 'Avatar with custom images',
+    label: 'Default Avatar',
     props: {
-      size: AVATAR_LARGE,
+      size: AVATAR_SMALL,
       children: <DefaultAvatar />,
     },
   },

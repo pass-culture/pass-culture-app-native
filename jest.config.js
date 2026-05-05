@@ -60,6 +60,7 @@ module.exports = {
         'search-insights',
         '@d11/react-native-fast-image',
         '@gorhom/bottom-sheet',
+        'uuid',
       ].join('|') +
       ').+\\.(js|jsx|mjs|cjs|ts|tsx)$',
   ],

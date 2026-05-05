@@ -67,8 +67,14 @@ export const getContentPadding = ({
   }
 
   return {
-    vertical: variant === 'tertiary' ? 0 : theme.designSystem.size.spacing.s,
-    horizontal: variant === 'tertiary' ? 0 : theme.designSystem.size.spacing.m,
+    vertical:
+      variant === 'tertiary'
+        ? theme.designSystem.size.spacing.xxs
+        : theme.designSystem.size.spacing.s,
+    horizontal:
+      variant === 'tertiary'
+        ? theme.designSystem.size.spacing.xxs
+        : theme.designSystem.size.spacing.m,
   }
 }
 

@@ -6,7 +6,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useAccountSuspendForHackSuspicionMutation } from 'features/auth/queries/useAccountSuspendForHackSuspicionMutation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { buildZendeskUrlForFraud } from 'features/profile/helpers/buildZendeskUrl'
-import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
+import { useDeviceMetrics } from 'features/trustedDevice/helpers/useDeviceMetrics'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
@@ -26,8 +26,8 @@ import { SPACE } from 'ui/theme/constants'
 export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { user } = useAuthContext()
-  const deviceInfo = useDeviceInfo()
   const version = useVersion()
+  const metrics = useDeviceMetrics()
 
   const onPressContactFraudTeam = () => {
     analytics.logContactFraudTeam({ from: 'suspendaccountconfirmation' })
@@ -63,7 +63,7 @@ export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
         wording: 'Contacter le service fraude',
         icon: EmailFilled,
         onBeforeNavigate: onPressContactFraudTeam,
-        externalNav: { url: buildZendeskUrlForFraud({ user, deviceInfo, version }) },
+        externalNav: { url: buildZendeskUrlForFraud({ user, metrics, version }) },
       }}>
       <Typo.BodyAccent>{groupLabel}&nbsp;:</Typo.BodyAccent>
       <VerticalUl>

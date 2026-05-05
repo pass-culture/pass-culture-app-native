@@ -32,7 +32,7 @@ const makeData = (pages: FetchSearchOffersResponse[]): InfiniteData<FetchSearchO
 describe('selectSearchOffers', () => {
   it('should return all expected keys', () => {
     const data = makeData([makePage()])
-    const result = selectSearchOffers({ data, transformHits, selectedFilter: null })
+    const result = selectSearchOffers({ data, transformHits })
 
     expect(result).toEqual(
       expect.objectContaining({
@@ -58,54 +58,34 @@ describe('selectSearchOffers', () => {
     )
   })
 
-  describe('selectedFilter', () => {
-    const mockOffer: AlgoliaOffer<HitOffer> = {
-      objectID: '1',
-      offer: {
-        dates: [],
-        isDuo: false,
-        isDigital: false,
-        name: 'Bellatrix Tome 1',
-        prices: [14.95],
-        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-        thumbUrl: '',
-      },
-      venue: {
-        id: 1,
-        name: 'Lieu 1',
-        publicName: 'Lieu 1',
-        address: '1 rue de la paix',
-        postalCode: '75000',
-        city: 'Paris',
-        activity: 'BOOKSTORE',
-        isPermanent: true,
-      },
-      _geoloc: { lat: 48.94374, lng: 2.48171 },
-    }
-    const data = makeData([makePage({ hits: [mockOffer], nbHits: 1 }, { hits: [mockOffer] })])
+  const mockOffer: AlgoliaOffer<HitOffer> = {
+    objectID: '1',
+    offer: {
+      dates: [],
+      isDuo: false,
+      isDigital: false,
+      name: 'Bellatrix Tome 1',
+      prices: [14.95],
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      thumbUrl: '',
+    },
+    venue: {
+      id: 1,
+      name: 'Lieu 1',
+      publicName: 'Lieu 1',
+      address: '1 rue de la paix',
+      postalCode: '75000',
+      city: 'Paris',
+      activity: 'BOOKSTORE',
+      isPermanent: true,
+    },
+    _geoloc: { lat: 48.94374, lng: 2.48171 },
+  }
+  const data = makeData([makePage({ hits: [mockOffer], nbHits: 1 }, { hits: [mockOffer] })])
 
-    it('should return offers when selectedFilter is null', () => {
-      const result = selectSearchOffers({ data, transformHits, selectedFilter: null })
+  it('should return offers', () => {
+    const result = selectSearchOffers({ data, transformHits })
 
-      expect(result.offers).toHaveLength(1)
-    })
-
-    it('should return offers when selectedFilter is "Offres"', () => {
-      const result = selectSearchOffers({ data, transformHits, selectedFilter: 'Offres' })
-
-      expect(result.offers).toHaveLength(1)
-    })
-
-    it('should return empty offers when selectedFilter is "Lieux"', () => {
-      const result = selectSearchOffers({ data, transformHits, selectedFilter: 'Lieux' })
-
-      expect(result.offers).toHaveLength(0)
-    })
-
-    it('should return empty offers when selectedFilter is "Artistes"', () => {
-      const result = selectSearchOffers({ data, transformHits, selectedFilter: 'Artistes' })
-
-      expect(result.offers).toHaveLength(0)
-    })
+    expect(result.offers).toHaveLength(1)
   })
 })

@@ -19,7 +19,7 @@ const setup = (queryClient: QueryClient) => {
 
 describe('useReactionMutation', () => {
   it('should call reaction mutation function', async () => {
-    mockServer.postApi('/v1/reaction', { offerId: 1, reactionType: ReactionTypeEnum.LIKE })
+    mockServer.postApi('/v2/reaction', { offerId: 1, reactionType: ReactionTypeEnum.LIKE })
 
     const { result } = renderUseReactionMutation()
 
@@ -29,7 +29,7 @@ describe('useReactionMutation', () => {
   })
 
   it('should call reaction mutate function with error', async () => {
-    mockServer.postApi('/v1/reaction', { responseOptions: { statusCode: 400, data: {} } })
+    mockServer.postApi('/v2/reaction', { responseOptions: { statusCode: 400, data: {} } })
 
     const { result } = renderUseReactionMutation()
 
@@ -42,7 +42,7 @@ describe('useReactionMutation', () => {
   })
 
   it('should invalidate bookings queries on success', async () => {
-    mockServer.postApi('/v1/reaction', { offerId: 1, reactionType: ReactionTypeEnum.LIKE })
+    mockServer.postApi('/v2/reaction', { offerId: 1, reactionType: ReactionTypeEnum.LIKE })
     const { result } = renderUseReactionMutation()
 
     result.current.mutate({ reactions: [{ offerId: 1, reactionType: ReactionTypeEnum.LIKE }] })
@@ -56,7 +56,7 @@ describe('useReactionMutation', () => {
   })
 
   it('should invalidate bookings queries on error', async () => {
-    mockServer.postApi('/v1/reaction', { responseOptions: { statusCode: 400, data: {} } })
+    mockServer.postApi('/v2/reaction', { responseOptions: { statusCode: 400, data: {} } })
     const { result } = renderUseReactionMutation()
 
     result.current.mutate({ reactions: [{ offerId: 1, reactionType: ReactionTypeEnum.LIKE }] })

@@ -1,7 +1,7 @@
 {
   "name": "@pass-culture/web-proxy",
   "description": "Express proxy for pass-culture-app-native Web Application",
-  "version": "1.389.0",
+  "version": "1.390.0",
   "private": true,
   "main": "build/src/index.js",
   "author": {
@@ -83,13 +83,13 @@
     "handlebars": "^4.7.9",
     "lodash@<= 4.17.23": "^4.18.0",
     "minimatch@>= 9.0.0, < 9.0.6": "^9.0.6",
-    "path-to-regexp@< 0.1.12": "^0.1.12",
+    "path-to-regexp@0.1.10": "^0.1.13",
     "picomatch@< 2.3.2": "^2.3.2",
     "qs@< 6.14.1": "^6.14.1",
     "semver": "^7.5.2",
     "send@< 0.19.0": "^0.19.0",
     "tmp@<= 0.2.3": "^0.2.4",
-    "uuid@< 14.0.0": "^14.0.0"
+    "uuid": "^14.0.0"
   },
   "packageManager": "yarn@3.6.4"
 }

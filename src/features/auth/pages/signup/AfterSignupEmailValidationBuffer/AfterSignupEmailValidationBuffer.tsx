@@ -6,13 +6,12 @@ import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLogin
 import { useValidateEmailMutation } from 'features/auth/queries/useValidateEmailMutation'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
-import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { isTimestampExpired } from 'libs/dates'
+import { deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
 export function AfterSignupEmailValidationBuffer() {
-  const deviceInfo = useDeviceInfo()
   const { replace } = useNavigation<UseNavigationType>()
   const timeoutRef = useRef<number | undefined>(undefined)
   const delayedReplace: typeof replace = (...args) => {
@@ -23,6 +22,8 @@ export function AfterSignupEmailValidationBuffer() {
   const loginAndRedirect = useLoginAndRedirect()
 
   const { params } = useRoute<UseRouteType<'AfterSignupEmailValidationBuffer'>>()
+
+  const deviceInfo = deviceInfoStoreSelectors.selectDeviceInfo()
 
   useEffect(() => {
     if (
@@ -52,7 +53,6 @@ export function AfterSignupEmailValidationBuffer() {
       delayedReplace('SignupConfirmationExpiredLink', { email: params.email })
       return
     }
-
     validateEmail({
       emailValidationToken: params.token,
       deviceInfo,

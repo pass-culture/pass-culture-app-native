@@ -21,6 +21,7 @@ import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 export type Props = PropsWithChildren<{
   offer: OfferResponse
   onLayout?: (params: LayoutChangeEvent) => void
+  displayStickyGradient?: boolean
 }> &
   FavoriteProps
 
@@ -32,6 +33,7 @@ export const OfferContentCTAs: FC<Props> = ({
   isRemoveFavoriteLoading,
   favorite,
   onLayout,
+  displayStickyGradient,
   children,
 }) => {
   const { isLoggedIn } = useAuthContext()
@@ -89,7 +91,7 @@ export const OfferContentCTAs: FC<Props> = ({
 
   if (isMobileViewport) {
     if (showAccessScreeningButton && isButtonVisible) {
-      return <CineContentCTA />
+      return <CineContentCTA displayGradient={displayStickyGradient} />
     }
 
     if (isAComingSoonOffer) {
@@ -105,6 +107,7 @@ export const OfferContentCTAs: FC<Props> = ({
           favoriteAuthModal={favoriteAuthModal}
           reminderAuthModal={reminderAuthModal}
           onLayout={onLayout}
+          displayGradient={displayStickyGradient}
         />
       )
     }

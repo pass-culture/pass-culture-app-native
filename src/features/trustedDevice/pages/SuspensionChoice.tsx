@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { buildZendeskUrlForFraud } from 'features/profile/helpers/buildZendeskUrl'
-import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
+import { useDeviceMetrics } from 'features/trustedDevice/helpers/useDeviceMetrics'
 import { useSuspendForSuspiciousLoginMutation } from 'features/trustedDevice/queries/useSuspendForSuspiciousLoginMutation'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Adjust } from 'libs/adjust/adjust'
@@ -32,8 +32,8 @@ export const SuspensionChoice = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { logType } = useLogTypeFromRemoteConfig()
   const { user } = useAuthContext()
-  const deviceInfo = useDeviceInfo()
   const version = useVersion()
+  const metrics = useDeviceMetrics()
 
   const { mutate: suspendAccountForSuspiciousLogin, isPending } =
     useSuspendForSuspiciousLoginMutation({
@@ -81,7 +81,7 @@ export const SuspensionChoice = () => {
         icon: EmailFilled,
         wording: 'Contacter le service fraude',
         onBeforeNavigate: onPressContactFraudTeam,
-        externalNav: { url: buildZendeskUrlForFraud({ user, deviceInfo, version }) },
+        externalNav: { url: buildZendeskUrlForFraud({ user, metrics, version }) },
       }}>
       <Typo.BodyAccent>{groupLabel}&nbsp;:</Typo.BodyAccent>
       <VerticalUl>

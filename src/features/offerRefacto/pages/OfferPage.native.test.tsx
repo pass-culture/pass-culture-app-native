@@ -310,10 +310,6 @@ describe('<Offer />', () => {
   })
 
   describe('video section', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
-    })
-
     afterEach(() => {
       mockUseCookies.mockReset().mockReturnValue(defaultUseCookies)
     })
@@ -330,7 +326,6 @@ describe('<Offer />', () => {
       })
 
       it('should display video player when video cookies consented', async () => {
-        setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
         renderOfferPage({ mockOffer: offerResponseSnap })
 
         expect(await screen.findByText('Vidéo')).toBeOnTheScreen()
@@ -348,8 +343,6 @@ describe('<Offer />', () => {
       ]
 
       beforeEach(() => {
-        setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
-
         mockUseCookies.mockImplementation(() => ({
           ...defaultUseCookies,
           cookiesConsent: {

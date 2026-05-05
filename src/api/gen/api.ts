@@ -148,10 +148,10 @@ export interface AccountRequest {
    */
   token: string
   /**
-   * @type {TrustedDevice}
+   * @type {DeviceInfoV2}
    * @memberof AccountRequest
    */
-  trustedDevice?: TrustedDevice | null
+  trustedDevice?: DeviceInfoV2 | null
 }
 /**
  * An enumeration.
@@ -1438,10 +1438,10 @@ export interface CategoryResponseModel {
  */
 export interface ChangeBeneficiaryEmailBody {
   /**
-   * @type {TrustedDevice}
+   * @type {DeviceInfoV2}
    * @memberof ChangeBeneficiaryEmailBody
    */
-  deviceInfo?: TrustedDevice | null
+  deviceInfo?: DeviceInfoV2 | null
   /**
    * @type {string}
    * @memberof ChangeBeneficiaryEmailBody
@@ -1797,6 +1797,27 @@ export enum DepositType {
   'GRANT_FREE' = 'GRANT_FREE',
   'GRANT_15_17' = 'GRANT_15_17',
   'GRANT_18' = 'GRANT_18',
+}
+/**
+ * @export
+ * @interface DeviceInfoV2
+ */
+export interface DeviceInfoV2 {
+  /**
+   * @type {string}
+   * @memberof DeviceInfoV2
+   */
+  deviceId: string
+  /**
+   * @type {string}
+   * @memberof DeviceInfoV2
+   */
+  os?: string | null
+  /**
+   * @type {string}
+   * @memberof DeviceInfoV2
+   */
+  source?: string | null
 }
 /**
  * @export
@@ -2205,10 +2226,10 @@ export interface OAuthSigninRequest {
    */
   authorizationCode: string
   /**
-   * @type {TrustedDevice}
+   * @type {DeviceInfoV2}
    * @memberof OAuthSigninRequest
    */
-  deviceInfo?: TrustedDevice | null
+  deviceInfo?: DeviceInfoV2 | null
   /**
    * @type {string}
    * @memberof OAuthSigninRequest
@@ -2246,10 +2267,10 @@ export interface SSOAccountRequest {
    */
   token: string
   /**
-   * @type {TrustedDevice}
+   * @type {DeviceInfoV2}
    * @memberof SSOAccountRequest
    */
-  trustedDevice?: TrustedDevice | null
+  trustedDevice?: DeviceInfoV2 | null
 }
 /**
  * @export
@@ -3670,7 +3691,18 @@ export interface ReactionCount {
   likes: number
 }
 /**
- * An enumeration.
+ * @export
+ * @interface ReactionCountV2
+ */
+export interface ReactionCountV2 {
+  /**
+   * @type {number}
+   * @memberof ReactionCountV2
+   */
+  likes: number
+}
+/**
+ * 
  * @export
  * @enum {string}
  */
@@ -3742,6 +3774,17 @@ export enum RecreditType {
 }
 /**
  * @export
+ * @interface RefreshRequestV2
+ */
+export interface RefreshRequestV2 {
+  /**
+   * @type {DeviceInfoV2}
+   * @memberof RefreshRequestV2
+   */
+  deviceInfo: DeviceInfoV2
+}
+/**
+ * @export
  * @interface RefreshResponse
  */
 export interface RefreshResponse {
@@ -3750,6 +3793,22 @@ export interface RefreshResponse {
    * @memberof RefreshResponse
    */
   accessToken: string
+}
+/**
+ * @export
+ * @interface RefreshResponseV2
+ */
+export interface RefreshResponseV2 {
+  /**
+   * @type {string}
+   * @memberof RefreshResponseV2
+   */
+  accessToken: string
+  /**
+   * @type {string}
+   * @memberof RefreshResponseV2
+   */
+  refreshToken: string
 }
 /**
  * @export
@@ -3811,10 +3870,10 @@ export interface ResendEmailValidationRequest {
  */
 export interface ResetPasswordRequest {
   /**
-   * @type {TrustedDevice}
+   * @type {DeviceInfoV2}
    * @memberof ResetPasswordRequest
    */
-  deviceInfo?: TrustedDevice | null
+  deviceInfo?: DeviceInfoV2 | null
   /**
    * @type {string}
    * @memberof ResetPasswordRequest
@@ -4019,10 +4078,10 @@ export interface ShowType {
  */
 export interface SigninRequest {
   /**
-   * @type {TrustedDevice}
+   * @type {DeviceInfoV2}
    * @memberof SigninRequest
    */
-  deviceInfo?: TrustedDevice | null
+  deviceInfo?: DeviceInfoV2 | null
   /**
    * @type {string}
    * @memberof SigninRequest
@@ -4036,6 +4095,32 @@ export interface SigninRequest {
   /**
    * @type {string}
    * @memberof SigninRequest
+   */
+  token?: string | null
+}
+/**
+ * @export
+ * @interface SigninRequestV2
+ */
+export interface SigninRequestV2 {
+  /**
+   * @type {DeviceInfoV2}
+   * @memberof SigninRequestV2
+   */
+  deviceInfo: DeviceInfoV2
+  /**
+   * @type {string}
+   * @memberof SigninRequestV2
+   */
+  identifier: string
+  /**
+   * @type {string}
+   * @memberof SigninRequestV2
+   */
+  password: string
+  /**
+   * @type {string}
+   * @memberof SigninRequestV2
    */
   token?: string | null
 }
@@ -4057,6 +4142,27 @@ export interface SigninResponse {
   /**
    * @type {string}
    * @memberof SigninResponse
+   */
+  refreshToken: string
+}
+/**
+ * @export
+ * @interface SigninResponseV2
+ */
+export interface SigninResponseV2 {
+  /**
+   * @type {string}
+   * @memberof SigninResponseV2
+   */
+  accessToken: string
+  /**
+   * @type {AccountState}
+   * @memberof SigninResponseV2
+   */
+  accountState: AccountState
+  /**
+   * @type {string}
+   * @memberof SigninResponseV2
    */
   refreshToken: string
 }
@@ -4668,27 +4774,7 @@ export interface TokenResponse {
    */
   data?: string | null
 }
-/**
- * @export
- * @interface TrustedDevice
- */
-export interface TrustedDevice {
-  /**
-   * @type {string}
-   * @memberof TrustedDevice
-   */
-  deviceId: string
-  /**
-   * @type {string}
-   * @memberof TrustedDevice
-   */
-  os?: string | null
-  /**
-   * @type {string}
-   * @memberof TrustedDevice
-   */
-  source?: string | null
-}
+
 /**
  * @export
  * @interface UpdateEmailTokenExpiration
@@ -4970,10 +5056,10 @@ export interface UserSuspensionStatusResponse {
  */
 export interface ValidateEmailRequest {
   /**
-   * @type {TrustedDevice}
+   * @type {DeviceInfoV2}
    * @memberof ValidateEmailRequest
    */
-  deviceInfo?: TrustedDevice | null
+  deviceInfo?: DeviceInfoV2 | null
   /**
    * @type {string}
    * @memberof ValidateEmailRequest
@@ -5850,6 +5936,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     },
     /**
      * @summary get_available_reactions <GET>
+     * @deprecated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -6179,6 +6266,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      */
     async getNativeV2ProfileEmailUpdateStatus(options: any = {}): Promise<FetchArgs> {
       let pathname = `/native/v2/profile/email_update/status`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_available_reactions <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2ReactionAvailable(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v2/reaction/available`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6868,6 +6973,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     },
     /**
      * @summary post_reaction <POST>
+     * @deprecated
      * @param {PostReactionRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -7406,6 +7512,89 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary post_reaction <POST>
+     * @param {PostReactionRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2Reaction(body: PostReactionRequest, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'body' is not null or undefined
+      if (body === null || body === undefined) {
+        throw new RequiredError(
+          'body',
+          'Required parameter body was null or undefined when calling postNativeV2Reaction.'
+        )
+      }
+      let pathname = `/native/v2/reaction`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"PostReactionRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary refresh <POST>
+     * @param {RefreshRequestV2} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2RefreshAccessToken(body: RefreshRequestV2, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'body' is not null or undefined
+      if (body === null || body === undefined) {
+        throw new RequiredError(
+          'body',
+          'Required parameter body was null or undefined when calling postNativeV2RefreshAccessToken.'
+        )
+      }      
+      let pathname = `/native/v2/refresh_access_token`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"RefreshRequestV2" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    }, 
+    /**
+     * @summary signin <POST>
+     * @param {SigninRequestV2} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2Signin(body: SigninRequestV2, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'body' is not null or undefined
+      if (body === null || body === undefined) {
+        throw new RequiredError(
+          'body',
+          'Required parameter body was null or undefined when calling postNativeV2Signin.'
+        )
+      }      
+      let pathname = `/native/v2/signin`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"SigninRequestV2" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary validate_user_email <PUT>
      * @param {ChangeBeneficiaryEmailBody} body 
      * @param {*} [options] Override http request option.
@@ -7679,6 +7868,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     /**
      * 
      * @summary get_available_reactions <GET>
+     * @deprecated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -7828,6 +8018,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getNativeV2ProfileEmailUpdateStatus(options?: any): Promise<EmailUpdateStatusResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2ProfileEmailUpdateStatus(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_available_reactions <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2ReactionAvailable(options?: any): Promise<GetAvailableReactionsResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2ReactionAvailable(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -8131,6 +8332,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     /**
      * 
      * @summary post_reaction <POST>
+     * @deprecated
      * @param {PostReactionRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -8364,6 +8566,42 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async postNativeV2ProfileUpdateEmail(options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2ProfileUpdateEmail(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary post_reaction <POST>
+     * @param {PostReactionRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2Reaction(body: PostReactionRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2Reaction(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary refresh <POST>
+     * @param {RefreshRequestV2} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2RefreshAccessToken(body: RefreshRequestV2, options?: any): Promise<RefreshResponseV2> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2RefreshAccessToken(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary signin <POST>
+     * @param {SigninRequestV2} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2Signin(body: SigninRequestV2, options?: any): Promise<SigninResponseV2> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2Signin(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -8628,6 +8866,7 @@ export class DefaultApi extends BaseAPI {
   /**
     * 
     * @summary get_available_reactions <GET>
+    * @deprecated
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
     * @memberof DefaultApi
@@ -8770,6 +9009,17 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV2ProfileEmailUpdateStatus(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV2ProfileEmailUpdateStatus(options)
+  }
+  /**
+    * 
+    * @summary get_available_reactions <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV2ReactionAvailable(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV2ReactionAvailable(options)
   }
   /**
     * 
@@ -9071,6 +9321,7 @@ export class DefaultApi extends BaseAPI {
   /**
     * 
     * @summary post_reaction <POST>
+    * @deprecated
     * @param {PostReactionRequest} body 
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
@@ -9306,6 +9557,42 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV2ProfileUpdateEmail(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV2ProfileUpdateEmail(options)
+  }
+  /**
+    * 
+    * @summary post_reaction <POST>
+    * @param {PostReactionRequest} body 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV2Reaction(body: PostReactionRequest, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV2Reaction(body, options)
+  }
+  /**
+    * 
+    * @summary refresh <POST>
+    * @param {RefreshRequestV2} body 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV2RefreshAccessToken(body: RefreshRequestV2, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV2RefreshAccessToken(body, options)
+  }
+  /**
+    * 
+    * @summary signin <POST>
+    * @param {SigninRequestV2} body 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV2Signin(body: SigninRequestV2, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV2Signin(body, options)
   }
   /**
     * 

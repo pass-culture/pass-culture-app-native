@@ -6,8 +6,6 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferContentProps } from 'features/offer/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useLayout } from 'ui/hooks/useLayout'
 import { getSpacing } from 'ui/theme'
@@ -37,8 +35,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
-
   const handlePreviewPress = (defaultIndex = 0) => {
     if (!offer.images) return
     navigate('OfferPreview', { id: offer.id, defaultIndex })
@@ -53,7 +49,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         searchGroupList={searchGroupList}
         contentContainerStyle={CONTENT_CONTAINER_STYLE}
         onOfferPreviewPress={handlePreviewPress}
-        isVideoSectionEnabled={isVideoSectionEnabled}
         BodyWrapper={BodyWrapper}
         clubAdvices={clubAdvices}
         proAdvices={proAdvices}

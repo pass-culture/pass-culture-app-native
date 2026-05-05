@@ -1,13 +1,13 @@
 import { StoryFn } from '@storybook/react-vite'
 import React from 'react'
 
+import { AssetGridTemplate as Icons } from 'ui/storybook/AssetGridTemplate'
 import {
   SecondaryAndBiggerIcons,
   SocialNetworkIcons,
   TertiaryAndSmallerIcons,
   UnconventionalIcons,
 } from 'ui/storybook/iconsExports'
-import { SVGTemplate as Icons } from 'ui/storybook/SVGTemplate'
 import { activityIcons } from 'ui/svg/icons/exports/activityIcons'
 import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { culturalSurveyIcons } from 'ui/svg/icons/exports/culturalSurveyIcons'

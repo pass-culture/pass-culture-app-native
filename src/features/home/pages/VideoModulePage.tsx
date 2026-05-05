@@ -55,7 +55,7 @@ export const VideoModulePage: FunctionComponent = () => {
     moduleId,
     moduleName,
     from: 'videoModal',
-    homeEntryId: homeEntryId,
+    homeEntryId,
   }
 
   const handleLogHasDismissedModal = async () => {
@@ -78,6 +78,11 @@ export const VideoModulePage: FunctionComponent = () => {
   const onGoBackPress = async () => {
     await handleLogHasDismissedModal()
     goBack()
+  }
+
+  const handleTranscriptionButtonPress = () => {
+    void analytics.logClickSeeVideoTranscription({ from: 'videoModal', moduleId, homeEntryId })
+    showModal()
   }
 
   return (
@@ -111,7 +116,7 @@ export const VideoModulePage: FunctionComponent = () => {
             color="neutral"
             fullWidth={false}
             icon={PressFilled}
-            onPress={showModal}
+            onPress={handleTranscriptionButtonPress}
           />
         </TranscriptionButtonContainer>
 

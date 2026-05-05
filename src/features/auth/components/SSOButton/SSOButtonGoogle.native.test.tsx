@@ -1,7 +1,6 @@
 // eslint-disable-next-line no-restricted-imports
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin'
 import React from 'react'
-import DeviceInfo from 'react-native-device-info'
 
 import * as API from 'api/api'
 import { AccountState, OauthStateResponse, SigninResponse } from 'api/gen'
@@ -15,13 +14,13 @@ import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.c
 import { eventMonitoring } from 'libs/monitoring/services'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
+import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import * as snackBarStoreModule from 'ui/designSystem/Snackbar/snackBar.store'
 
 jest.mock('libs/monitoring/services')
-jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
 }))
@@ -29,8 +28,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 jest.mock('libs/network/NetInfoWrapper')
 
 const apiPostOAuthAuthorize = jest.spyOn(API.api, 'postNativeV1OauthssoProviderAuthorize')
-const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
-const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
+
 const onSignInFailureSpy = jest.fn()
 const showErrorSnackBarSpy = jest.spyOn(snackBarStoreModule, 'showErrorSnackBar')
 
@@ -52,11 +50,14 @@ describe('<SSOButton />', () => {
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
+    deviceInfoStoreActions.setDeviceInfo({
+      deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+      source: 'iPhone 13',
+      os: 'iOS',
+    })
   })
 
   it('should sign in with device info when sso button is clicked', async () => {
-    getModelSpy.mockReturnValueOnce('iPhone 13')
-    getSystemNameSpy.mockReturnValueOnce('iOS')
     mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
@@ -76,9 +77,6 @@ describe('<SSOButton />', () => {
           deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
           os: 'iOS',
           source: 'iPhone 13',
-          resolution: '750x1334',
-          screenZoomLevel: undefined,
-          fontScale: -1,
         },
       },
       'google'

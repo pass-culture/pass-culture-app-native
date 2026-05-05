@@ -1,17 +1,20 @@
 import React from 'react'
-import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { Profile } from 'ui/svg/icons/Profile'
 
-export const DefaultAvatar = styled(LinearGradient).attrs<{
+export const DefaultAvatar = styled.View.attrs<{
   colors?: string[]
-}>(({ theme, colors }) => ({
-  colors: colors || [
-    theme.designSystem.color.icon.brandPrimary,
-    theme.designSystem.color.icon.brandPrimary,
-  ],
-  useAngle: true,
-  angle: -30,
-  children: <Profile color={theme.designSystem.color.icon.lockedInverted} size={50} />,
-}))({ width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center' })
+  size?: number
+}>(({ theme, size = theme.designSystem.size.icon.m }) => ({
+  children: <Profile color={theme.designSystem.color.icon.subtle} size={size} />,
+}))(({ theme }) => ({
+  width: '100%',
+  height: '100%',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: theme.designSystem.color.background.subtle,
+  borderWidth: 1,
+  borderColor: theme.designSystem.color.border.subtle,
+  borderRadius: theme.designSystem.size.borderRadius.pill,
+}))

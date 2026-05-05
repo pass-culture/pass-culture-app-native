@@ -9,11 +9,11 @@ import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { useResetPasswordMutation } from 'features/auth/queries/useResetPasswordMutation'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics/provider'
 import { isTimestampExpired } from 'libs/dates'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { newPasswordSchema } from 'shared/forms/schemas/newPasswordSchema'
+import { deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
 import { Form } from 'ui/components/Form'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -37,7 +37,6 @@ export const ReinitializePassword = () => {
   const route = useRoute<UseRouteType<'ReinitializePassword'>>()
   const navigation = useNavigation<UseNavigationType>()
   const loginRoutine = useLoginRoutine()
-  const deviceInfo = useDeviceInfo()
 
   const [isTimestampExpirationVerified, setIsTimestampExpirationVerified] = useState(false)
   const {
@@ -93,18 +92,15 @@ export const ReinitializePassword = () => {
     },
   })
 
-  const submitPassword = useCallback(
-    ({ newPassword }: ReinitializePasswordFormData) => {
-      if (isValid) {
-        resetPassword({
-          newPassword,
-          resetPasswordToken: route.params.token,
-          deviceInfo,
-        })
-      }
-    },
-    [isValid, resetPassword, route.params.token, deviceInfo]
-  )
+  const submitPassword = ({ newPassword }: ReinitializePasswordFormData) => {
+    if (isValid) {
+      resetPassword({
+        newPassword,
+        resetPasswordToken: route.params.token,
+        deviceInfo: deviceInfoStoreSelectors.selectDeviceInfo(),
+      })
+    }
+  }
 
   if (!isTimestampExpirationVerified) {
     return <LoadingPage />

@@ -16,6 +16,7 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
+import { getDeviceInfo } from 'features/trustedDevice/helpers/getDeviceInfo'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { AppWebHead } from 'libs/appWebHead'
 import { env } from 'libs/environment/env'
@@ -27,6 +28,7 @@ import { StylesheetManagerWrapper } from 'libs/styled/StyleSheetManagerWrapper'
 import { ThemeWrapper } from 'libs/styled/ThemeWrapper'
 import 'reset-css'
 import 'resize-observer-polyfill/dist/ResizeObserver.global'
+import { deviceInfoStoreActions, deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
 import { SnackBarWrapper } from 'ui/designSystem/Snackbar/SnackBarWrapper'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate.web'
@@ -40,6 +42,13 @@ export function App() {
 
   useEffect(() => {
     initAlgoliaAnalytics()
+    const setDeviceInfo = async () => {
+      const existingDeviceInfo = deviceInfoStoreSelectors.selectDeviceInfo()
+      if (existingDeviceInfo) return
+      const deviceInfo = await getDeviceInfo()
+      return deviceInfoStoreActions.setDeviceInfo(deviceInfo)
+    }
+    void setDeviceInfo()
   }, [])
 
   // Unregister service workers (to make sure all sw cache is removed)

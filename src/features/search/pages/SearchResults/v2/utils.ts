@@ -1,4 +1,3 @@
-import { removeGeolocFromVenue } from 'features/search/helpers/searchList/removeGeolocFromVenue'
 import { SelectSearchOffersParams } from 'features/search/queries/useSearchOffersQuery/types'
 import { SearchListContent, SearchOfferHits, SearchResultItem } from 'features/search/types'
 import { plural } from 'libs/plural'
@@ -20,10 +19,6 @@ type Args = {
   nbHits: number
 }
 export const getSearchListContent = ({ selectedFilter, hits, nbHits }: Args): SearchListContent => {
-  const venues = hits.venueNotOpenToPublic[0]
-    ? [removeGeolocFromVenue(hits.venueNotOpenToPublic[0]), ...hits.venues]
-    : hits.venues
-
   let items: SearchResultItem[] = []
   let title = ''
   let hitsNumber = 0
@@ -31,8 +26,8 @@ export const getSearchListContent = ({ selectedFilter, hits, nbHits }: Args): Se
   switch (selectedFilter) {
     case 'Lieux':
       title = 'Les lieux culturels'
-      items = venues.map((venue) => ({ type: 'venue', data: venue }))
-      hitsNumber = venues.length
+      items = hits.venues.map((venue) => ({ type: 'venue', data: venue }))
+      hitsNumber = hits.venues.length
       break
     case 'Artistes':
       title = 'Les artistes'
@@ -50,6 +45,6 @@ export const getSearchListContent = ({ selectedFilter, hits, nbHits }: Args): Se
     items,
     title,
     nbHits: hitsNumber,
-    hits: { ...hits, venues },
+    hits,
   }
 }

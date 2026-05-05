@@ -36,6 +36,7 @@ export enum AnalyticsEvent {
   CLICK_FORCE_UPDATE = 'ClickForceUpdate',
   CLICK_INFO_REVIEW = 'ClickInfoReview',
   CLICK_MAIL_DEBUG_INFO = 'ClickMailDebugInfo',
+  CLICK_SEE_VIDEO_TRANSCRIPTION = 'ClickSeeVideoTranscription',
   CLICK_SOCIAL_NETWORK = 'ClickSocialNetwork',
   CLICK_VOLUNTEER_CTA = 'ClickVolunteerCTA',
   CLICK_WHATS_CLUB = 'ClickWhatsClub',

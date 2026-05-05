@@ -121,10 +121,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "alignItems": "center",
                     "backgroundColor": "transparent",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
                     "borderWidth": 0,
                     "flexDirection": "row",
                     "justifyContent": "center",

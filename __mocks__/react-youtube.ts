@@ -1,9 +1,7 @@
 import React, { ForwardedRef } from 'react'
 import YouTube, { YouTubeProps } from 'react-youtube'
 
-import { PlayerState } from 'features/home/components/modules/video/types'
-
-let mockState = PlayerState.UNSTARTED
+let mockState = 'unstarted'
 let mockError = false
 let mockPlayerStateData: number
 const YouTubePlayerMock = React.forwardRef(function Component(
@@ -57,7 +55,7 @@ const YouTubePlayerMock = React.forwardRef(function Component(
   return React.createElement(YouTube, props)
 })
 
-const setPlayerState = (playerState: PlayerState) => {
+const setPlayerState = (playerState: string) => {
   mockState = playerState
 }
 
@@ -70,7 +68,7 @@ const setPlayerStateData = (playerStateData: number) => {
 }
 
 const MockedYoutubePlayer = YouTubePlayerMock as typeof YouTubePlayerMock & {
-  setPlayerState: (playerState: PlayerState) => void
+  setPlayerState: (playerState: string) => void
   setPlayerStateData: (playerStateData: number) => void
   setError: (error: boolean) => void
   PlayerState: typeof YouTube.PlayerState
