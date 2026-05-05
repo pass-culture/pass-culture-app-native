@@ -23,7 +23,7 @@ jobs:
         id: yarn-modules-cache
         uses: pass-culture-github-actions/cache@v1.0.0
         with:
-          workload-identity-provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
+          workload-identity-provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
           service-account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |

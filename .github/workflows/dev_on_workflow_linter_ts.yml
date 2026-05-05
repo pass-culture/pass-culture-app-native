@@ -34,7 +34,7 @@ jobs:
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
-          workload-identity-provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
+          workload-identity-provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
           service-account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
       - run: yarn test:lint
@@ -60,7 +60,7 @@ jobs:
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
-          workload-identity-provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
+          workload-identity-provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
           service-account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
       - run: yarn test:types
