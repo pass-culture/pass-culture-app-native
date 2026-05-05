@@ -37,7 +37,7 @@ jobs:
         with:
           cleanup_credentials: false
           workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
-          service_account: ${{ secrets.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
+          service_account: ${{ secrets.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v3
       - name: Cache the node_modules

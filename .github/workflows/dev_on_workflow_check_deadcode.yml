@@ -24,7 +24,7 @@ jobs:
         uses: pass-culture-github-actions/cache@v1.0.0
         with:
           workload-identity-provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
-          service-account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
+          service-account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
             node_modules

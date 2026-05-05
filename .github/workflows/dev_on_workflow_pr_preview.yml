@@ -55,7 +55,7 @@ jobs:
         with:
           export_environment_variables: true
           workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
-          service_account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
+          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
 
       - name: Get Secret
         id: secrets
@@ -108,7 +108,7 @@ jobs:
         id: create-sa-key
         run: |
           gcloud iam service-accounts keys create temporary-sa-key.json \
-            --iam-account=${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }} \
+            --iam-account=${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }} \
             --project=${{ steps.openid-auth.outputs.project_id }}
           SA_KEY_JSON=$(jq -c . temporary-sa-key.json)
           echo "FIREBASE_TOKEN=$SA_KEY_JSON" >> "$GITHUB_OUTPUT"
@@ -129,7 +129,7 @@ jobs:
         run: |
           KEY_ID=$(jq -r .private_key_id temporary-sa-key.json)
           gcloud iam service-accounts keys delete "$KEY_ID" \
-            --iam-account=${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }} \
+            --iam-account=${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }} \
             --project=${{ steps.openid-auth.outputs.project_id }} \
             --quiet
           rm -f temporary-sa-key.json

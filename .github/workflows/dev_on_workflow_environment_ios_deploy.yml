@@ -53,7 +53,7 @@ jobs:
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           workload-identity-provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
-          service-account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
+          service-account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
       - name: Yarn install
         run: yarn install
       - uses: ruby/setup-ruby@v1
@@ -73,7 +73,7 @@ jobs:
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
           workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
-          service_account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
+          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
       - name: Get Secret from Secret Manager
         id: 'secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v3'
@@ -103,7 +103,7 @@ jobs:
         id: create-sa-key
         run: |
           gcloud iam service-accounts keys create temporary-sa-key.json \
-            --iam-account=${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }} \
+            --iam-account=${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }} \
             --project=${{ steps.openid-auth.outputs.project_id }}
 
       - name: Deploy hard ios for ${{ inputs.ENV }}
@@ -129,7 +129,7 @@ jobs:
         run: |
           KEY_ID=$(jq -r .private_key_id temporary-sa-key.json)
           gcloud iam service-accounts keys delete "$KEY_ID" \
-            --iam-account=${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }} \
+            --iam-account=${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }} \
             --project=${{ steps.openid-auth.outputs.project_id }} \
             --quiet
           rm -f temporary-sa-key.json
@@ -149,7 +149,7 @@ jobs:
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
           workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
-          service_account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
+          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
       - name: Get secrets for Slack
         id: 'slack_secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v3'

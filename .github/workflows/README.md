@@ -37,7 +37,3 @@ Ces workflows sont utilisés pour déployer le web sur les buckets GCP, et le pr
 | dev_on_workflow_update_jira_issues.yml     | Workflow | Automatically | [runs](https://github.com/pass-culture/pass-culture-app-native/actions/workflows/dev_on_workflow_update_jira_issues.yml) |
 | dev_on_workflow_web_deploy.yml             | Helper   | Automatically |                                                                                                                          |
 | dev_on_workflow_web_proxy_deploy.yml       | Helper   | Automatically |                                                                                                                          |
-
-
-## Buckets
-passculture-infra-prod-github-runner-cache

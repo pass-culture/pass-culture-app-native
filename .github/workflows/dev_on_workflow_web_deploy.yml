@@ -31,7 +31,7 @@ jobs:
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
           workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
-          service_account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
+          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
       - name: Cache the node_modules
         id: yarn-modules-cache
         uses: pass-culture-github-actions/cache@v1.0.0
@@ -49,7 +49,7 @@ jobs:
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
           workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
-          service_account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
+          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
       - name: Get Secret
         id: 'secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v3'
@@ -90,7 +90,7 @@ jobs:
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
           workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
-          service_account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
+          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
       - name: Get secrets for Slack
         id: 'slack_secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v3'
