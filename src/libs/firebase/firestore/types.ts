@@ -66,7 +66,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_VOLUNTEER_FEEDBACK = 'wipEnableVolunteerFeedback',
   WIP_ENABLE_VOLUNTEER_NEW_TAG = 'wipEnableVolunteerNewTag',
   WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE = 'wipFlingBottomSheetNavigateToVenue',
-  WIP_NEW_BOOKING_PAGE = 'wipNewBookingPage',
   WIP_NEW_BOOKINGS_ENDED_ONGOING = 'wipNewBookingsEndedOngoing',
   WIP_NEW_SEARCH_RESULTS_PAGE = 'wipNewSearchResultsPage',
   WIP_OFFER_CHRONICLE_SECTION = 'wipOfferChronicleSection',
