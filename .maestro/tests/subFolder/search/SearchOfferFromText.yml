@@ -29,10 +29,23 @@ appId: ${MAESTRO_APP_ID}
 
 - tapOn: 'Rechercher'
 
-- swipe:
-    from:
-      text: 'Les lieux culturels près de toi'
-    direction: UP
+- runFlow:
+    when:
+      visible: '.*Les lieux culturels.*'
+    commands:
+    - swipe:
+        from:
+          text: ".*Les lieux culturels.*"
+        direction: UP
+
+- runFlow:
+    when:
+      visible: '.*Les offres.*'
+    commands:
+    - swipe:
+        from:
+          text: ".*Les offres.*"
+        direction: UP
 
 - extractTextWithAI:
     query: "Le titre exacte d'une des offres One Piece le plus court visible dans les résultats de recherche"
