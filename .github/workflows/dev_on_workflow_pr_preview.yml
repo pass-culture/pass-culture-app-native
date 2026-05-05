@@ -33,7 +33,7 @@ jobs:
     timeout-minutes: 60
     if: ${{ github.actor != 'dependabot[bot]' }}
     environment:
-      name: app-native-testinng
+      name: app-native-${{ inputs.ENV }}
     steps:
       - name: Enable Corepack
         run: corepack enable
