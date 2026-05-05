@@ -194,9 +194,6 @@ jobs:
       ENV: integration
       BUCKET_NAME: passculture-metier-ehp-integration-decliweb
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-integration:
     needs:
       [
@@ -209,9 +206,6 @@ jobs:
     with:
       ENV: integration
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-production:
     needs: [yarn-tester]
     if: startsWith(github.ref, 'refs/tags/hotfix-prod') || startsWith(github.ref, 'refs/tags/prod-hard-deploy')
@@ -220,9 +214,6 @@ jobs:
       ENV: production
       BUCKET_NAME: passculture-metier-prod-production-decliweb
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-production:
     needs:
       [
@@ -235,11 +226,7 @@ jobs:
     with:
       ENV: production
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-      GCP_PROD_SERVICE_ACCOUNT: ${{ secrets.GCP_PROD_SERVICE_ACCOUNT }}
-      GCP_PROD_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_PROD_WORKLOAD_IDENTITY_PROVIDER }}
+  # TODO:
   update-jira-issues:
     if: github.ref == 'refs/heads/master'
     uses: ./.github/workflows/dev_on_workflow_update_jira_issues.yml
@@ -249,12 +236,6 @@ jobs:
   run-e2e-tests-android:
     needs: hard-deploy-android-staging
     uses: ./.github/workflows/dev_on_workflow_run_e2e_android.yml
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   run-e2e-tests-ios:
     needs: hard-deploy-ios-staging
     uses: ./.github/workflows/dev_on_workflow_call_e2e_ios.yml
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
