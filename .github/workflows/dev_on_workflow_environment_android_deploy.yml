@@ -15,6 +15,8 @@ jobs:
     name: Install runtime environment and dependencies Android deploy
     runs-on: ubuntu-24.04
     timeout-minutes: 60
+    environment:
+      name: app-native-${{ inputs.ENV }}
     steps:
       - name: Disk usage (for debugging purposes)
         run: df -h
@@ -90,6 +92,7 @@ jobs:
             ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-${{ inputs.ENV }}-keystore
             ANDROID_PLAYSTORE_SERVICE_ACCOUNT:passculture-metier-ehp/passculture-app-native-android-production-service-account
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
+      # TODO: Create service account key
       - name: Get Secret for App Distribution from Secret Manager (EHP only)
         id: app_distribution_secret
         uses: google-github-actions/get-secretmanager-secrets@v3
