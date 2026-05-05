@@ -209,9 +209,6 @@ jobs:
     with:
       upload_name_prefix: '[PR]'
       test_tags: 'nightlyAndroid'
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
 
   e2e-android:
     if: ${{ inputs.HAS_BREAKING_CHANGE_LABEL }}

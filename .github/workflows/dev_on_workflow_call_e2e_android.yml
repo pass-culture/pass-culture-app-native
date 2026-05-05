@@ -13,11 +13,6 @@ on:
         required: false
         type: string
         default: 'nightlyAndroid'
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT:
-        required: true
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
-        required: true
 
 permissions:
   contents: read
@@ -25,9 +20,11 @@ permissions:
 
 jobs:
   maestro-cloud:
-    name: 'Build Android staging and upload to Maestro Cloud'
+    name: Build Android staging and upload to Maestro Cloud
     runs-on: ubuntu-latest-8-cores
     timeout-minutes: 60
+    environment:
+      name: app-native-testing
     steps:
       - name: Free up disk space
         run: |
@@ -43,19 +40,22 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
 
-      - uses: actions/checkout@v4
+      - name: Checkout ref
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - uses: actions/setup-node@v6
+      - name: Setup node
+        uses: actions/setup-node@v6
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: .nvmrc
 
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
+      - name: Setup safe chain
+        uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
 
       - name: Setup java
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
-          distribution: 'temurin'
+          java-version: 17
+          distribution: temurin
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
@@ -65,19 +65,20 @@ jobs:
       - name: Yarn install
         run: yarn install
 
-      - uses: ruby/setup-ruby@v1
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
 
       - name: Authentification to Google
-        uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
         with:
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD  }}
+          service_account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
 
       - name: Get Secret
-        id: 'secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v3'
+        id: secrets
+        uses: google-github-actions/get-secretmanager-secrets@v3
         with:
           secrets: |-
             ANDROID_GOOGLE_SERVICES_JSON:passculture-metier-ehp/pc-native-android-google-service-staging

@@ -13,12 +13,6 @@ on:
         required: false
         type: string
         default: 'nightlyIOS'
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT:
-        required: true
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
-        required: true
-      CACHE_BUCKET_NAME:
 
 permissions:
   contents: read
@@ -26,18 +20,24 @@ permissions:
 
 jobs:
   build_e2e:
-    name: 'Build iOS staging and upload to Maestro Cloud'
+    name: Build iOS staging and upload to Maestro Cloud
     runs-on: macos-26-xlarge
     timeout-minutes: 60
+    environment:
+      name: app-native-testing
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v6
+      - name: Checkout ref
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Setup node
+        uses: actions/setup-node@v6
         with:
-          node-version-file: '.nvmrc'
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
+          node-version-file: .nvmrc
+      - name: Setup safe chain
+        uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
       - name: Enable Corepack
         run: corepack enable
-      - uses: pass-culture-github-actions/cache@v1.0.0
+      - name: Cache yarn modules
+        uses: pass-culture-github-actions/cache@v1.0.0
         id: yarn-modules-cache
         with:
           path: |
@@ -47,11 +47,12 @@ jobs:
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           bucket: ${{ secrets.CACHE_BUCKET_NAME }}
-          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          workload-identity-provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
+          service-account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
       - name: Yarn install
         run: yarn install
-      - uses: ruby/setup-ruby@v1
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
       - name: Select XCode version
@@ -65,13 +66,13 @@ jobs:
       - name: Install cocoapods
         run: cd ios/ && bundle exec pod install
       - name: Authentification to Google
-        uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
         with:
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
+          service_account: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
       - name: Get Secret from Secret Manager
-        id: 'secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v3'
+        id: secrets
+        uses: google-github-actions/get-secretmanager-secrets@v3
         with:
           secrets: |-
             FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD:passculture-metier-ehp/passculture-app-native-ios-fastlane-password
@@ -87,7 +88,7 @@ jobs:
             MAESTRO_CLOUD_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-maestro-cloud-api-key
             MAESTRO_E2E_API_KEY:passculture-metier-ehp/pcapi-staging_e2e_api_key
             MAESTRO_E2E_ENDPOINT:passculture-metier-ehp/pcapi-staging-e2e-endpoint
-      - name: 'Render Template'
+      - name: Render Template
         run: |
           cp templates_github_ci/.sentryclirc .sentryclirc
           echo "token=${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}" >> .sentryclirc
