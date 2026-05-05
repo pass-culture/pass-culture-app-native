@@ -2,11 +2,6 @@ name: '4 [on_workflow] Update jira issues'
 
 on:
   workflow_call:
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT:
-        required: true
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
-        required: true
 
 env:
   SAFE_TO_DEPLOY_FIELD: customfield_10086
