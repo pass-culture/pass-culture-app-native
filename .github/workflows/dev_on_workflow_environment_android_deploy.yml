@@ -92,17 +92,7 @@ jobs:
             ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-${{ inputs.ENV }}-keystore
             ANDROID_PLAYSTORE_SERVICE_ACCOUNT:passculture-metier-ehp/passculture-app-native-android-production-service-account
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
-      # TODO: Create service account key
-      - name: Get Secret for App Distribution from Secret Manager (EHP only)
-        id: app_distribution_secret
-        uses: google-github-actions/get-secretmanager-secrets@v3
-        with:
-          secrets: |-
-            FIREBASE_TOKEN:passculture-metier-ehp/pc_native_${{ inputs.ENV }}_firebase_json
-        if: ${{ inputs.ENV != 'production' }}
-      - name: Export firebase secret to file
-        run: |
-          echo '${{steps.app_distribution_secret.outputs.FIREBASE_TOKEN}}' > app_distribution_credentials.json
+
       - name: Render Sentry Template
         id: render_template
         uses: chuhlomin/render-template@v1.10
@@ -132,6 +122,14 @@ jobs:
         run: echo '${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
       - name: Setup android Google services config
         run: echo '${{ steps.secrets.outputs.ANDROID_PLAYSTORE_SERVICE_ACCOUNT }}' > fastlane/playStoreServiceAccount.json
+
+      - name: Create service account key
+        id: create-sa-key
+        run: |
+          gcloud iam service-accounts keys create temporary-sa-key.json \
+            --iam-account=${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }} \
+            --project=${{ steps.openid-auth.outputs.project_id }}
+
       - name: Deploy hard android for ${{ inputs.ENV }}
         run: |
           if [ "$ENV" != "production" ]; then
@@ -143,8 +141,19 @@ jobs:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
           ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
-          GOOGLE_APPLICATION_CREDENTIALS: ./app_distribution_credentials.json
+          GOOGLE_APPLICATION_CREDENTIALS: temporary-sa-key.json
           ENV: ${{ inputs.ENV }}
+
+      - name: Delete service account key
+        if: always()
+        run: |
+          KEY_ID=$(jq -r .private_key_id temporary-sa-key.json)
+          gcloud iam service-accounts keys delete "$KEY_ID" \
+            --iam-account=${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }} \
+            --project=${{ steps.openid-auth.outputs.project_id }} \
+            --quiet
+          rm -f temporary-sa-key.json
+
       - name: Create Sentry sourcemaps
         env:
           ENV: ${{ inputs.ENV }}
