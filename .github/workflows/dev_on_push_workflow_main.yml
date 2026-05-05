@@ -82,8 +82,6 @@ jobs:
       HAS_BREAKING_CHANGE_LABEL: ${{ contains(github.event.pull_request.labels.*.name, 'breaking change') }}
       HAS_PROXY_CHANGED: ${{ needs.check-server-folder-changes.outputs.folder_changed == 'true' }}
     secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
       PASSCULTURE_GITHUB_ACTION_APP_ID: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
       PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
   yarn-chromatic:
