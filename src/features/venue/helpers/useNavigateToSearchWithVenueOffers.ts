@@ -5,7 +5,7 @@ import { getSearchPropConfig } from 'features/navigation/SearchStackNavigator/ge
 import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 
-export const useNavigateToSearchWithVenueOffers = (venue: Omit<VenueResponse, 'isVirtual'>) => {
+export const useNavigateToSearchWithVenueOffers = (venue: VenueResponse) => {
   const venueSearchParams: SearchStackParamList['SearchResults'] = useVenueSearchParameters(venue)
   return useMemo(
     () => ({

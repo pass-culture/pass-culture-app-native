@@ -33,7 +33,7 @@ export interface VenueTileProps {
 
 const mergeVenueData =
   (venueHit: VenueHit) =>
-  (prevData: VenueResponse | undefined): Omit<VenueResponse, 'isVirtual'> => ({
+  (prevData: VenueResponse | undefined): VenueResponse => ({
     ...venueHit,
     timezone: '',
     ...prevData,

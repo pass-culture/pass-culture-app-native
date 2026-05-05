@@ -14,7 +14,7 @@ import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
-const defaultVenue: Omit<VenueResponse, 'isVirtual'> = {
+const defaultVenue: VenueResponse = {
   name: 'Une librairie',
   city: 'Jest',
   id: 123,
@@ -215,7 +215,7 @@ const renderUseGtlPlaylistsQuery = ({
   venue,
   searchGroupLabel,
 }: {
-  venue?: Omit<VenueResponse, 'isVirtual'>
+  venue?: VenueResponse
   searchGroupLabel?: ContentfulLabelCategories
 }) =>
   renderHook(

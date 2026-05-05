@@ -24,7 +24,7 @@ import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
 
 export interface VenueOffersProps {
-  venue: Omit<VenueResponse, 'isVirtual'>
+  venue: VenueResponse
   venueArtists?: VenueOffersArtists
   venueOffers?: VenueOffers
   playlists: GtlPlaylistData[]

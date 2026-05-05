@@ -1,6 +1,6 @@
 import { Activity, VenueResponse } from 'api/gen'
 
-export const venueDataTest: Omit<VenueResponse, 'isVirtual'> = {
+export const venueDataTest: VenueResponse = {
   accessibilityData: {
     isAccessibleAudioDisability: false,
     isAccessibleMentalDisability: false,
