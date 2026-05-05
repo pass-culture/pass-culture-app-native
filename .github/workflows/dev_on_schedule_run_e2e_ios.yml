@@ -13,5 +13,5 @@ jobs:
   e2e-tests-ios:
     uses: ./.github/workflows/dev_on_workflow_call_e2e_ios.yml
     secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+      GCP_EHP_SERVICE_ACCOUNT: ${{ vars.APP_NATIVE_CI_SERVICE_ACCOUNT_EMAIL }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.WORKLOAD_IDENTITY_PRD }}
