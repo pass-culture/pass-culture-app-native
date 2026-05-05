@@ -206,7 +206,7 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
         updateCellsBatchingPeriod={100}
         getItemLayout={getItemLayout}
         ItemSeparatorComponent={MemoizedItemSeparatorComponent}
-        ListHeaderComponent={<HorizontalMargin width={withMargins ? horizontalMargin : 0} />}
+        ListHeaderComponent={withMargins ? MemoizedHorizontalMargin : undefined}
         ListFooterComponent={MemoizedHorizontalMargin}
         onEndReached={onEndReached}
         onEndReachedThreshold={0.2}
