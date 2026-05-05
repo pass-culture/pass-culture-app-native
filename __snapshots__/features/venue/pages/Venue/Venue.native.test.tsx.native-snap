@@ -1384,9 +1384,23 @@ exports[`<Venue /> should match snapshot 1`] = `
                             }
                           }
                           ListHeaderComponent={
-                            <Styled(View)
-                              width={24}
-                            />
+                            {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": [
+                                {
+                                  "width": 24,
+                                },
+                              ],
+                              "inlineStyle": e {
+                                "rules": [
+                                  [Function],
+                                ],
+                              },
+                              "render": [Function],
+                              "shouldForwardProp": undefined,
+                              "styledComponentId": true,
+                              "target": [Function],
+                            }
                           }
                           collapsable={false}
                           data={
@@ -4872,9 +4886,23 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             }
                           }
                           ListHeaderComponent={
-                            <Styled(View)
-                              width={24}
-                            />
+                            {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": [
+                                {
+                                  "width": 24,
+                                },
+                              ],
+                              "inlineStyle": e {
+                                "rules": [
+                                  [Function],
+                                ],
+                              },
+                              "render": [Function],
+                              "shouldForwardProp": undefined,
+                              "styledComponentId": true,
+                              "target": [Function],
+                            }
                           }
                           collapsable={false}
                           data={
