@@ -10,18 +10,17 @@ import { CustomQueryOptions } from 'libs/react-query/types'
 // Arbitrary. Make sure the cache is invalidated after each booking
 const STALE_TIME_BOOKINGS = 5 * 60 * 1000
 
-export const useBookingsV2Query = <TData = BookingsResponseV2>(
-  enabledQuery: boolean,
-  select?: (data: BookingsResponseV2) => TData
-) =>
-  useQuery<BookingsResponseV2, Error, TData>({
+export const useBookingsV2Query = <TSelect = BookingsResponseV2>(
+  options?: CustomQueryOptions<BookingsResponseV2, TSelect>
+) => {
+  return useQuery({
+    ...options,
     queryKey: [QueryKeys.BOOKINGSV2],
     queryFn: () => api.getNativeV2Bookings(),
-    select,
-    enabled: enabledQuery,
     staleTime: STALE_TIME_BOOKINGS,
     meta: { persist: true },
   })
+}
 
 export const useBookingsByStatusQuery = <TSelect = BookingsListResponseV2>(
   status: 'ongoing' | 'ended',
@@ -35,9 +34,8 @@ export const useBookingsByStatusQuery = <TSelect = BookingsListResponseV2>(
 
 export const useBookingsV2WithConvertedTimezoneQuery = <TSelect = BookingsListResponseV2>(
   select: (data: BookingsResponseV2, status: BookingsStatusValue) => TSelect,
-  status: BookingsStatusValue,
-  enabled = true
+  status: BookingsStatusValue
 ) =>
-  useBookingsV2Query(enabled, (data) =>
-    select(convertBookingsResponseV2DatesToTimezone(data), status)
-  )
+  useBookingsV2Query({
+    select: (data) => select(convertBookingsResponseV2DatesToTimezone(data), status),
+  })
