@@ -65,7 +65,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
       void analytics.logModuleDisplayedOnHomepage({
-        call_id: recommendationApiParams?.call_id,
+        call_id: recommendationApiParams?.callId,
         moduleId,
         moduleType: ContentTypes.RECOMMENDATION,
         index,
@@ -93,7 +93,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   )
 
   const handleOnViewableItemsChanged = (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-    onViewableItemsChanged?.(items, recommendationApiParams?.call_id)
+    onViewableItemsChanged?.(items, recommendationApiParams?.callId)
   }
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)

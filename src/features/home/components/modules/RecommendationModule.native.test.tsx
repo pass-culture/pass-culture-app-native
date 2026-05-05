@@ -18,8 +18,8 @@ const displayParameters: DisplayParametersFields = {
 }
 
 const defaultRecommendationApiParams: RecommendationApiParams = {
-  call_id: '1',
-  reco_origin: 'unknown',
+  callId: '1',
+  recoOrigin: 'unknown',
 }
 
 const mockUseHomeRecommendedOffers = jest.fn().mockReturnValue({
