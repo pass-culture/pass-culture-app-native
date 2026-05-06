@@ -19,7 +19,7 @@ export interface GtlPlaylistProps {
   analyticsFrom: Referrals
   route: Extract<ScreenNames, 'Venue' | 'ThematicSearch'>
   playlist: GtlPlaylistData
-  venue?: Omit<VenueResponse, 'isVirtual'>
+  venue?: VenueResponse
   noMarginBottom?: boolean
   playlistRef?: Ref<FlatList>
   onViewableItemsChanged?: (info: { viewableItems: ViewToken<unknown>[] }) => void

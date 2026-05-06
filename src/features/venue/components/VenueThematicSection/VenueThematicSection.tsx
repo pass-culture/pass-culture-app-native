@@ -15,7 +15,7 @@ import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 interface Props {
-  venue: Omit<VenueResponse, 'isVirtual'>
+  venue: VenueResponse
 }
 
 export const VenueThematicSection: FunctionComponent<Props> = ({ venue }: Props) => {

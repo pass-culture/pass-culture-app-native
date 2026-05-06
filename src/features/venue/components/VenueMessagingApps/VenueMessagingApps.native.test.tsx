@@ -20,10 +20,7 @@ jest.useFakeTimers()
 
 describe('<VenueMessagingApps />', () => {
   beforeEach(() => {
-    mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(
-      `/v2/venue/${venueDataTest.id}`,
-      venueDataTest
-    )
+    mockServer.getApi<VenueResponse>(`/v2/venue/${venueDataTest.id}`, venueDataTest)
   })
 
   it('should share on instagram', async () => {

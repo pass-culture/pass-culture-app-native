@@ -27,7 +27,7 @@ import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
-  venue: Omit<VenueResponse, 'isVirtual'>
+  venue: VenueResponse
   onPressBannerImage?: () => void
   enableVolunteer?: boolean
   enableVolunteerNewTag?: boolean
@@ -212,7 +212,7 @@ const MarginContainer = styled.View(({ theme }) => ({
   justifyContent: 'center',
 }))
 
-const getVenue = (venue: Omit<VenueResponse, 'isVirtual'>): VenueBlockVenue => {
+const getVenue = (venue: VenueResponse): VenueBlockVenue => {
   return {
     ...venue,
     bannerUrl: venue.bannerUrl ?? undefined,

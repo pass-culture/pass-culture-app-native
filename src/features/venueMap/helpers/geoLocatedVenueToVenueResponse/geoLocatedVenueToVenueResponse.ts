@@ -3,7 +3,7 @@ import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types
 
 export const transformGeoLocatedVenueToVenueResponse = (
   data?: GeolocatedVenue | null
-): Omit<VenueResponse, 'isVirtual'> | undefined => {
+): VenueResponse | undefined => {
   if (data && data !== null) {
     const { venueId, label, _geoloc, isOpenToPublic, activity, isPermanent } = data
     return {

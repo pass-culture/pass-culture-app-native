@@ -39,7 +39,7 @@ describe('<VenueTopComponent />', () => {
   })
 
   it('should display venue type', async () => {
-    const culturalCenterVenue: Omit<VenueResponse, 'isVirtual'> = {
+    const culturalCenterVenue: VenueResponse = {
       ...venueOpenToPublic,
       activity: Activity.CULTURAL_CENTRE,
     }
@@ -54,7 +54,7 @@ describe('<VenueTopComponent />', () => {
       userLocation,
       hasGeolocPosition: true,
     } as ILocationContext)
-    const locatedVenue: Omit<VenueResponse, 'isVirtual'> = {
+    const locatedVenue: VenueResponse = {
       ...venueOpenToPublic,
       latitude: 30,
       longitude: 30,
@@ -69,7 +69,7 @@ describe('<VenueTopComponent />', () => {
     mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: false,
     } as ILocationContext)
-    const locatedVenue: Omit<VenueResponse, 'isVirtual'> = {
+    const locatedVenue: VenueResponse = {
       ...venueOpenToPublic,
       latitude: 30,
       longitude: 30,

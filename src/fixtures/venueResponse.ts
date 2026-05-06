@@ -15,4 +15,4 @@ export default {
   timezone: 'Europe/Paris',
   accessibilityData: {},
   activity: Activity.CINEMA,
-} satisfies Omit<VenueResponse, 'isVirtual'>
+} satisfies VenueResponse
