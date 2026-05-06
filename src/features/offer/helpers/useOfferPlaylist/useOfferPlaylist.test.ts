@@ -8,13 +8,13 @@ import { searchGroupsDataTest } from 'libs/subcategories/fixtures/subcategoriesR
 import { renderHook } from 'tests/utils'
 
 const apiRecoParams: RecommendationApiParams = {
-  call_id: '1',
+  callId: '1',
   filtered: true,
-  geo_located: false,
-  model_endpoint: 'default',
-  model_name: 'similar_offers_default_prod',
-  model_version: 'similar_offers_clicks_v2_1_prod_v_20230317T173445',
-  reco_origin: 'default',
+  geoLocated: false,
+  modelEndpoint: 'default',
+  modelName: 'similar_offers_default_prod',
+  modelVersion: 'similar_offers_clicks_v2_1_prod_v_20230317T173445',
+  recoOrigin: 'default',
 }
 
 const offer = offerResponseSnap

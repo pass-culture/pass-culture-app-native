@@ -3720,12 +3720,12 @@ export interface RecommendationApiParams {
    * @type {string | null}
    * @memberof RecommendationApiParams
    */
-  ab_test?: string | null
+  abTest?: string | null
   /**
    * @type {string | null}
    * @memberof RecommendationApiParams
    */
-  call_id?: string | null
+  callId?: string | null
   /**
    * @type {boolean | null}
    * @memberof RecommendationApiParams
@@ -3735,27 +3735,32 @@ export interface RecommendationApiParams {
    * @type {boolean | null}
    * @memberof RecommendationApiParams
    */
-  geo_located?: boolean | null
+  geoLocated?: boolean | null
   /**
    * @type {string | null}
    * @memberof RecommendationApiParams
    */
-  model_endpoint?: string | null
+  modelEndpoint?: string | null
   /**
    * @type {string | null}
    * @memberof RecommendationApiParams
    */
-  model_name?: string | null
+  modelName?: string | null
   /**
    * @type {string | null}
    * @memberof RecommendationApiParams
    */
-  model_version?: string | null
+  modelOrigin?: string | null
   /**
    * @type {string | null}
    * @memberof RecommendationApiParams
    */
-  reco_origin?: string | null
+  modelVersion?: string | null
+  /**
+   * @type {string | null}
+   * @memberof RecommendationApiParams
+   */
+  recoOrigin?: string | null
 }
 /**
  * An enumeration.
