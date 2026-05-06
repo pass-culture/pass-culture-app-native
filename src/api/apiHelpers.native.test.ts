@@ -290,6 +290,7 @@ describe('[api] helpers', () => {
         {
           headers: {
             Authorization: `Bearer ${password}`,
+            'Content-Type': 'application/json',
             'app-version': '1.10.5',
             'commit-hash': env.COMMIT_HASH,
             'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
@@ -307,6 +308,7 @@ describe('[api] helpers', () => {
         {
           headers: {
             Authorization: `Bearer ${password}`,
+            'Content-Type': 'application/json',
             'app-version': '1.10.5',
             'commit-hash': env.COMMIT_HASH,
             'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',

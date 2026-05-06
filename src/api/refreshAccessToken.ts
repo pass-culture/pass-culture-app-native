@@ -1,12 +1,12 @@
 // eslint-disable-next-line no-restricted-imports
 import { fetch as fetchNetInfo } from '@react-native-community/netinfo'
 
-import { getDeviceInfo } from 'features/trustedDevice/helpers/getDeviceInfo'
 import { computeTokenRemainingLifetimeInMs } from 'libs/jwt/jwt'
 import { clearRefreshToken, getRefreshToken, saveRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { storage } from 'libs/storage'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
+import { deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
 
 import { ApiError } from './ApiError'
 import { DefaultApi } from './gen'
@@ -63,7 +63,7 @@ export const refreshAccessTokenWithRetriesOnError = async (
   }
   try {
     const response = await api.postNativeV2RefreshAccessToken(
-      { deviceInfo: await getDeviceInfo() },
+      { deviceInfo: deviceInfoStoreSelectors.selectDeviceInfo() },
       {
         headers: {
           Authorization: `Bearer ${refreshToken}`,
