@@ -124,7 +124,7 @@ describe('VenuesModule component', () => {
         ).not.toBeOnTheScreen()
       })
 
-      it('should trigger ConsultVenue log with originDetail set to volunteeringPlaylist when pressing on a venue', async () => {
+      it('should trigger ConsultVenue log with originDetails set to volunteeringPlaylist when pressing on a venue', async () => {
         renderVenuesModule({
           displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
         })
@@ -142,7 +142,7 @@ describe('VenuesModule component', () => {
           moduleName: props.displayParameters.title,
           moduleId: props.moduleId,
           homeEntryId: props.homeEntryId,
-          originDetail: 'volunteeringPlaylist',
+          originDetails: 'volunteeringPlaylist',
         })
       })
     })
@@ -163,7 +163,7 @@ describe('VenuesModule component', () => {
         ).not.toBeOnTheScreen()
       })
 
-      it('should trigger ConsultVenue log without originDetail set to volunteeringPlaylist when pressing on a venue', async () => {
+      it('should trigger ConsultVenue log without originDetails set to volunteeringPlaylist when pressing on a venue', async () => {
         renderVenuesModule()
         const venues = screen.getAllByTestId(/Lieu/)
         const firstVenue = venues[0]

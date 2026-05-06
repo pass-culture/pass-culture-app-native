@@ -23,7 +23,7 @@ export function offerProAdvicesToAdviceCardData(
       onCardHeaderPress: () => {
         void analytics.logConsultVenue({
           from: 'offer',
-          originDetail: 'Les avis des pros',
+          originDetails: 'Les avis des pros',
           adviceType: 'pro',
           offerId: offerId.toString(),
           venueId: venueId.toString(),

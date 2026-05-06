@@ -44,5 +44,5 @@ export type ConsultOfferLogParams = {
   artistName?: string
   isHeadline?: boolean
   adviceType?: 'book_club' | 'cine_club' | 'pro'
-  originDetail?: string
+  originDetails?: string
 }

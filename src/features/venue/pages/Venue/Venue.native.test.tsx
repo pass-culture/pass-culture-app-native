@@ -226,7 +226,7 @@ describe('<Venue />', () => {
         adviceType: 'pro',
         from: 'venue',
         offerId: 1,
-        originDetail: 'Les avis des pros',
+        originDetails: 'Les avis des pros',
         venueId: 5543,
       })
     })
