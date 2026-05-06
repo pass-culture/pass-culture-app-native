@@ -53,5 +53,5 @@ const GoogleMessagesRoundSvg = ({ size, accessibilityLabel, testID }: Accessible
 }
 
 export const GoogleMessagesRound = styled(GoogleMessagesRoundSvg).attrs(({ size, theme }) => ({
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
 }))``

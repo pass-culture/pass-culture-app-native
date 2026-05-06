@@ -54,5 +54,5 @@ const TelegramSvg: React.FunctionComponent<AccessibleIcon> = ({
 }
 
 export const Telegram = styled(TelegramSvg).attrs(({ size, theme }) => ({
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
 }))``

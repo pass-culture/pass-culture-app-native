@@ -45,5 +45,5 @@ const AISearchSvg: React.FC<AccessibleIcon> = ({
 }
 
 export const AISearch = styled(AISearchSvg).attrs(({ size, theme }) => ({
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
 }))``

@@ -128,5 +128,5 @@ const UbbleSvg: React.FunctionComponent<AccessibleIcon> = ({
 }
 
 export const Ubble = styled(UbbleSvg).attrs(({ size, theme }) => ({
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
 }))``

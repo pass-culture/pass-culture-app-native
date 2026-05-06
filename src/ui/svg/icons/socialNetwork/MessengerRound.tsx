@@ -56,5 +56,5 @@ const MessengerRoundSvg = ({ color: _color, size, accessibilityLabel, testID }: 
 }
 
 export const MessengerRound = styled(MessengerRoundSvg).attrs(({ size, theme }) => ({
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
 }))``

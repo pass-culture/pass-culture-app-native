@@ -35,7 +35,7 @@ const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
 })
 
 const LocationIcon = styled(LocationPointer).attrs(({ theme }) => ({
-  size: theme.icons.sizes.standard,
+  size: theme.designSystem.size.icon.l,
   color: theme.designSystem.color.icon.subtle,
 }))``
 

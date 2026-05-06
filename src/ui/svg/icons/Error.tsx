@@ -27,5 +27,5 @@ const ErrorSvg: React.FunctionComponent<AccessibleIcon> = ({
 
 export const Error = styled(ErrorSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.designSystem.color.icon.default,
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
 }))``

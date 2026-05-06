@@ -32,5 +32,5 @@ const NotMemoizedProfile: React.FunctionComponent<AccessibleIcon & { transform?:
 
 export const Profile = styled(NotMemoizedProfile).attrs(({ size, color, theme }) => ({
   color: color ?? theme.designSystem.color.icon.default,
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
 }))``
