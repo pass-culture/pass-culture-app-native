@@ -6,6 +6,7 @@ import * as jwt from 'libs/jwt/jwt'
 import * as Keychain from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
 import * as PackageJson from 'libs/packageJson'
+import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
 import { mockServer } from 'tests/mswServer'
 
 import { ApiError } from './ApiError'
@@ -65,6 +66,14 @@ describe('[api] helpers', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
   const mockGetTokenStatus = jest.spyOn(jwt, 'getTokenStatus')
   const mockGetRefreshToken = jest.spyOn(Keychain, 'getRefreshToken')
+
+  beforeEach(() =>
+    deviceInfoStoreActions.setDeviceInfo({
+      deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+      source: 'iPhone 13',
+      os: 'iOS',
+    })
+  )
 
   afterEach(() => {
     mockFetch.mockReset()
@@ -279,8 +288,8 @@ describe('[api] helpers', () => {
       const expectedBody = JSON.stringify({
         deviceInfo: {
           deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-          os: 'unknown',
-          source: 'none',
+          source: 'iPhone 13',
+          os: 'iOS',
         },
       })
 
