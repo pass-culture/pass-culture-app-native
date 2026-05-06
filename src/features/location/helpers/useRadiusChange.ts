@@ -4,11 +4,15 @@ import { LocationState } from 'features/location/types'
 
 type Props = {
   visible: boolean
-} & LocationState
+  setTempAroundPlaceRadius: LocationState['setTempAroundPlaceRadius']
+  setTempAroundMeRadius: LocationState['setTempAroundMeRadius']
+}
 
-export const useRadiusChange = ({ visible, ...props }: Props) => {
-  const { setTempAroundPlaceRadius, setTempAroundMeRadius } = props
-
+export const useRadiusChange = ({
+  visible,
+  setTempAroundPlaceRadius,
+  setTempAroundMeRadius,
+}: Props) => {
   const onTempAroundRadiusPlaceValueChange = useCallback(
     (newValues: number[]) => {
       if (visible && newValues?.[0]) {

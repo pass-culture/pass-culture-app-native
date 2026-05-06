@@ -11,7 +11,7 @@ export const mockLocationState: LocationState = {
   setSelectedPlace: jest.fn(),
   onSetSelectedPlace: jest.fn(),
   onResetPlace: jest.fn(),
-  setPlaceGlobally: jest.fn(),
+  setPlace: jest.fn(),
   onModalHideRef: { current: jest.fn() },
   permissionState: GeolocPermissionState.GRANTED,
   requestGeolocPermission: jest.fn(),

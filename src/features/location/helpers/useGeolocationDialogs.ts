@@ -9,32 +9,36 @@ type Props = {
   dismissModal: () => void
   shouldOpenDirectlySettings?: boolean
   shouldDirectlyValidate?: boolean
-} & LocationState
+  setTempLocationMode: LocationState['setTempLocationMode']
+  setSelectedLocationMode: LocationState['setSelectedLocationMode']
+  permissionState: LocationState['permissionState']
+  setPlace: LocationState['setPlace']
+  onModalHideRef: LocationState['onModalHideRef']
+  showGeolocPermissionModal: LocationState['showGeolocPermissionModal']
+  requestGeolocPermission: LocationState['requestGeolocPermission']
+  hasGeolocPosition: LocationState['hasGeolocPosition']
+}
 
 export const useGeolocationDialogs = ({
   dismissModal,
   shouldOpenDirectlySettings,
   shouldDirectlyValidate,
-  ...props
+  setTempLocationMode,
+  setSelectedLocationMode,
+  permissionState,
+  setPlace,
+  onModalHideRef,
+  showGeolocPermissionModal,
+  requestGeolocPermission,
+  hasGeolocPosition,
 }: Props) => {
-  const {
-    setTempLocationMode,
-    setSelectedLocationMode,
-    permissionState,
-    setPlaceGlobally,
-    onModalHideRef,
-    showGeolocPermissionModal,
-    requestGeolocPermission,
-    hasGeolocPosition,
-  } = props
-
   const runGeolocationDialogs = useCallback(async () => {
     const selectGeoLocationMode = () => setTempLocationMode(LocationMode.AROUND_ME)
     const selectAroundMeMode = () => setSelectedLocationMode(LocationMode.AROUND_ME)
     const selectEverywhereMode = () => setSelectedLocationMode(LocationMode.EVERYWHERE)
 
     if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
-      setPlaceGlobally(null)
+      setPlace(null)
       selectEverywhereMode()
       if (shouldOpenDirectlySettings) {
         Linking.openSettings()
@@ -51,7 +55,7 @@ export const useGeolocationDialogs = ({
         [{ text: 'OK', onPress: selectEverywhereMode }]
       )
     } else if (permissionState === GeolocPermissionState.GRANTED && shouldDirectlyValidate) {
-      setPlaceGlobally(null)
+      setPlace(null)
       selectAroundMeMode()
     } else {
       await requestGeolocPermission({
@@ -63,7 +67,7 @@ export const useGeolocationDialogs = ({
     permissionState,
     setTempLocationMode,
     setSelectedLocationMode,
-    setPlaceGlobally,
+    setPlace,
     shouldOpenDirectlySettings,
     dismissModal,
     onModalHideRef,

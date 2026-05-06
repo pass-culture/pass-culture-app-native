@@ -10,6 +10,7 @@ import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { removeSelectedVenue } from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
+import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
 
 interface LocationModalProps {
@@ -24,13 +25,9 @@ export const VenueMapLocationModal = ({
   visible,
   dismissModal,
   shouldOpenMapInTab,
-  setTempLocationMode,
+  setTempLocationMode: setTempLocationModeProp,
   openedFrom,
 }: LocationModalProps) => {
-  const locationStateProps = useLocationState({
-    visible,
-  })
-  const { navigate } = useNavigation<UseNavigationType>()
   const {
     hasGeolocPosition,
     placeQuery,
@@ -38,16 +35,47 @@ export const VenueMapLocationModal = ({
     selectedPlace,
     setSelectedPlace,
     onResetPlace,
+    aroundMeRadius,
+    setSelectedLocationMode,
+    setAroundPlaceRadius,
+    setAroundMeRadius,
+    aroundPlaceRadius,
+    setPlace,
+    onSetSelectedPlace,
+    permissionState,
+    requestGeolocPermission,
+    showGeolocPermissionModal,
+  } = useLocation()
+
+  const {
     tempLocationMode,
     onModalHideRef,
     tempAroundPlaceRadius,
     tempAroundMeRadius,
-  } = locationStateProps
+    setTempAroundPlaceRadius,
+    setTempAroundMeRadius,
+    setTempLocationMode,
+  } = useLocationState({
+    visible,
+  })
+
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const locationSubmitProps = getLocationSubmit({
     dismissModal,
     from: 'venueMap',
-    ...locationStateProps,
+    tempLocationMode,
+    tempAroundPlaceRadius,
+    tempAroundMeRadius,
+    selectedPlace,
+    aroundMeRadius,
+    setSelectedLocationMode,
+    setPlace,
+    setTempAroundPlaceRadius,
+    setTempAroundMeRadius,
+    setAroundPlaceRadius,
+    setAroundMeRadius,
+    aroundPlaceRadius,
   })
   const { onSubmit, onClose } = locationSubmitProps
 
@@ -56,21 +84,30 @@ export const VenueMapLocationModal = ({
     onTempAroundMeRadiusValueChange,
   } = useRadiusChange({
     visible,
-    ...locationStateProps,
+    setTempAroundPlaceRadius,
+    setTempAroundMeRadius,
   })
-  const { onPlaceSelection: onSetSelectedPlace } = getPlaceSelection({
-    ...locationStateProps,
+  const { onPlaceSelection } = getPlaceSelection({
+    onSetSelectedPlace,
   })
   const { selectLocationMode } = useLocationMode({
     dismissModal,
     shouldOpenDirectlySettings: true,
-    ...locationStateProps,
-    ...locationSubmitProps,
+    setSelectedLocationMode,
+    setPlace,
+    onModalHideRef,
+    hasGeolocPosition,
+    tempLocationMode,
+    onSubmit,
+    permissionState,
+    requestGeolocPermission,
+    setTempLocationMode,
+    showGeolocPermissionModal,
   })
 
   const handleSubmit = () => {
     removeSelectedVenue()
-    setTempLocationMode?.(tempLocationMode)
+    setTempLocationModeProp?.(tempLocationMode)
     onSubmit()
     if (!shouldOpenMapInTab) {
       analytics.logConsultVenueMap({ from: openedFrom })
@@ -91,7 +128,7 @@ export const VenueMapLocationModal = ({
       setSelectedPlace={setSelectedPlace}
       placeQuery={placeQuery}
       setPlaceQuery={setPlaceQuery}
-      onSetSelectedPlace={onSetSelectedPlace}
+      onSetSelectedPlace={onPlaceSelection}
       onResetPlace={onResetPlace}
       shouldShowRadiusSlider
       isSubmitDisabled={!selectedPlace && tempLocationMode !== LocationMode.AROUND_ME}
