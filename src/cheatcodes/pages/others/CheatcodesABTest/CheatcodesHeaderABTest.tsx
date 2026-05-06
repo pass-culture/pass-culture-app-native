@@ -15,17 +15,21 @@ export const CheatcodeHeaderABTest = ({
 }) => {
   return (
     <HeaderRow gap={16}>
-      <Typo.BodyItalicAccent>
-        {forcedCount > 0
-          ? `${forcedCount} test${forcedCount > 1 ? 's' : ''} forcé${forcedCount > 1 ? 's' : ''} — ${total} au total`
-          : `Aucun forçage — ${total} au total`}
-      </Typo.BodyItalicAccent>
+      <TextWrapper>
+        <Typo.BodyItalicAccent>
+          {forcedCount > 0
+            ? `${forcedCount} test${forcedCount > 1 ? 's' : ''} forcé${forcedCount > 1 ? 's' : ''} — ${total} au total`
+            : `Aucun forçage — ${total} au total`}
+        </Typo.BodyItalicAccent>
+      </TextWrapper>
       {forcedCount > 0 ? (
-        <Button
-          variant="tertiary"
-          wording="Tout réinitialiser"
-          onPress={abTestOverridesActions.resetAll}
-        />
+        <ButtonContainer>
+          <Button
+            variant="tertiary"
+            wording="Tout réinitialiser"
+            onPress={abTestOverridesActions.resetAll}
+          />
+        </ButtonContainer>
       ) : null}
     </HeaderRow>
   )
@@ -35,3 +39,11 @@ const HeaderRow = styled(ViewGap)(() => ({
   flexDirection: 'row',
   justifyContent: 'space-between',
 }))
+
+const TextWrapper = styled.View({
+  flex: 1,
+})
+
+const ButtonContainer = styled.View({
+  flexShrink: 0,
+})

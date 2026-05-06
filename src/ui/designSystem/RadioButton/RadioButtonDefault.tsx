@@ -52,7 +52,7 @@ export const RadioButtonDefault = ({
       {...accessibleRadioProps({ checked: selected, label, accessibilityLabel })}>
       <ContentContainer>
         <RadioCircle radioState={radioState} variant="default" hoverProps={hoverProps} />
-        <RightBox radioState={radioState} label={label} hoverProps={hoverProps} />
+        <RightBox radioState={radioState} label={label} hoverProps={hoverProps} sizing={sizing} />
       </ContentContainer>
     </RadioButtonDefaultContainer>
   )
@@ -82,13 +82,14 @@ type RightBoxProps = {
   hoverProps: HoverProps
   radioState: RadioStateObject
   label: string
+  sizing?: SelectableSizing
   children?: React.JSX.Element | null
 }
 
-export const RightBox = ({ radioState, label, hoverProps, children }: RightBoxProps) => {
+export const RightBox = ({ radioState, label, hoverProps, sizing, children }: RightBoxProps) => {
   const Label = radioState.selected ? RadioLabelTextSelected : RadioLabelText
   return (
-    <RightBoxContainer>
+    <RightBoxContainer sizing={sizing}>
       <Label radioState={radioState} {...hoverProps}>
         {label}
       </Label>
@@ -103,7 +104,11 @@ export const ContentContainer = styled.View(({ theme }) => ({
   columnGap: theme.designSystem.size.spacing.m,
 }))
 
-const RightBoxContainer = styled.View({ flex: 1 })
+const RightBoxContainer = styled.View<{ sizing?: SelectableSizing }>(({ sizing }) => ({
+  flex: sizing === 'fill' ? 1 : undefined,
+  flexShrink: 1,
+  flexGrow: 1,
+}))
 
 type ContainerProps = {
   radioState: RadioStateObject
