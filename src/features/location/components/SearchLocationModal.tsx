@@ -7,6 +7,7 @@ import { useLocationMode } from 'features/location/helpers/useLocationMode'
 import { useLocationState } from 'features/location/helpers/useLocationState'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
 
 interface LocationModalProps {
@@ -16,9 +17,7 @@ interface LocationModalProps {
 
 export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProps) => {
   const { dispatch } = useSearch()
-  const locationStateProps = useLocationState({
-    visible,
-  })
+
   const {
     hasGeolocPosition,
     placeQuery,
@@ -26,33 +25,70 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
     selectedPlace,
     setSelectedPlace,
     onResetPlace,
+    setSelectedLocationMode,
+    setAroundPlaceRadius,
+    setAroundMeRadius,
+    aroundMeRadius,
+    setPlace,
+    aroundPlaceRadius,
+    onSetSelectedPlace,
+    permissionState,
+    showGeolocPermissionModal,
+    requestGeolocPermission,
+  } = useLocation()
+
+  const {
     tempLocationMode,
     onModalHideRef,
     tempAroundPlaceRadius,
     tempAroundMeRadius,
-  } = locationStateProps
+    setTempAroundMeRadius,
+    setTempAroundPlaceRadius,
+    setTempLocationMode,
+  } = useLocationState({
+    visible,
+  })
 
   const { onSubmit, onClose } = getLocationSubmit({
     dismissModal,
     from: 'search',
     dispatch,
-    ...locationStateProps,
+    tempLocationMode,
+    setSelectedLocationMode,
+    setPlace,
+    tempAroundPlaceRadius,
+    tempAroundMeRadius,
+    selectedPlace,
+    setAroundPlaceRadius,
+    setTempAroundMeRadius,
+    setAroundMeRadius,
+    setTempAroundPlaceRadius,
+    aroundMeRadius,
+    aroundPlaceRadius,
   })
   const {
     onTempAroundRadiusPlaceValueChange: onTempAroundPlaceRadiusValueChange,
     onTempAroundMeRadiusValueChange,
   } = useRadiusChange({
     visible,
-    ...locationStateProps,
+    setTempAroundPlaceRadius,
+    setTempAroundMeRadius,
   })
-  const { onPlaceSelection: onSetSelectedPlace } = getPlaceSelection({
-    ...locationStateProps,
+  const { onPlaceSelection } = getPlaceSelection({
+    onSetSelectedPlace,
   })
   const { selectLocationMode } = useLocationMode({
     dismissModal,
-    ...locationStateProps,
+    setTempLocationMode,
+    setSelectedLocationMode,
+    permissionState,
+    setPlace,
+    onModalHideRef,
+    showGeolocPermissionModal,
+    requestGeolocPermission,
+    hasGeolocPosition,
+    tempLocationMode,
     onSubmit,
-    onClose,
   })
   return (
     <LocationModal
@@ -67,7 +103,7 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
       setSelectedPlace={setSelectedPlace}
       placeQuery={placeQuery}
       setPlaceQuery={setPlaceQuery}
-      onSetSelectedPlace={onSetSelectedPlace}
+      onSetSelectedPlace={onPlaceSelection}
       onResetPlace={onResetPlace}
       shouldShowRadiusSlider
       tempAroundPlaceRadius={tempAroundPlaceRadius}

@@ -8,7 +8,19 @@ type Props = {
   dismissModal: () => void
   from: 'search' | 'venueMap'
   dispatch?: React.Dispatch<Action>
-} & LocationState
+  tempLocationMode: LocationState['tempLocationMode']
+  setSelectedLocationMode: LocationState['setSelectedLocationMode']
+  setPlace: LocationState['setPlace']
+  tempAroundPlaceRadius: number
+  tempAroundMeRadius: LocationState['tempAroundMeRadius']
+  selectedPlace: LocationState['selectedPlace']
+  setAroundPlaceRadius: LocationState['setAroundPlaceRadius']
+  setTempAroundMeRadius: LocationState['setTempAroundMeRadius']
+  setAroundMeRadius: LocationState['setAroundMeRadius']
+  setTempAroundPlaceRadius: LocationState['setTempAroundPlaceRadius']
+  aroundMeRadius: LocationState['aroundMeRadius']
+  aroundPlaceRadius: LocationState['aroundPlaceRadius']
+}
 
 export const getLocationSubmit = ({
   dismissModal,
@@ -16,7 +28,7 @@ export const getLocationSubmit = ({
   dispatch,
   tempLocationMode,
   setSelectedLocationMode,
-  setPlaceGlobally,
+  setPlace,
   tempAroundPlaceRadius,
   tempAroundMeRadius,
   selectedPlace,
@@ -33,7 +45,7 @@ export const getLocationSubmit = ({
     switch (chosenLocationMode) {
       case LocationMode.AROUND_PLACE:
         if (selectedPlace) {
-          setPlaceGlobally(selectedPlace)
+          setPlace(selectedPlace)
           setAroundPlaceRadius(tempAroundPlaceRadius)
           setTempAroundMeRadius(DEFAULT_RADIUS)
           if (dispatch) {
@@ -50,7 +62,7 @@ export const getLocationSubmit = ({
         break
 
       case LocationMode.AROUND_ME:
-        setPlaceGlobally(null)
+        setPlace(null)
         setAroundMeRadius(tempAroundMeRadius)
         setTempAroundPlaceRadius(DEFAULT_RADIUS)
         if (dispatch) {
@@ -62,7 +74,7 @@ export const getLocationSubmit = ({
         break
 
       case LocationMode.EVERYWHERE:
-        setPlaceGlobally(null)
+        setPlace(null)
         if (dispatch) {
           dispatch({
             type: 'SET_LOCATION_EVERYWHERE',

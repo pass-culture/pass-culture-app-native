@@ -7,7 +7,7 @@ import { SuggestedPlace } from 'libs/place/types'
 export type LocationState = {
   hasGeolocPosition: boolean
   place: SuggestedPlace | null
-  setPlaceGlobally: (place: SuggestedPlace | null) => void
+  setPlace: (place: SuggestedPlace | null) => void
   onModalHideRef: MutableRefObject<(() => void) | undefined>
   permissionState: GeolocPermissionState | undefined
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
