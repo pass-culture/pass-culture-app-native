@@ -52,4 +52,6 @@ const Container = styled.View({
 const LinkWrapper = styled.View({ flex: 0.85 })
 const IconWrapper = styled.View({ flex: 0.15 })
 
-const Share = styled(DefaultShare).attrs(({ theme }) => ({ size: theme.icons.sizes.small }))``
+const Share = styled(DefaultShare).attrs(({ theme }) => ({
+  size: theme.designSystem.size.icon.m,
+}))``

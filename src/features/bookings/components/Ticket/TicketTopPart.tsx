@@ -98,19 +98,19 @@ export const TicketTopPart = ({
 }
 
 const StyledProfileFilled = styled(ProfileFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))({})
 const StyledClockFilled = styled(ClockFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))({})
 const StyledCalendarS = styled(CalendarS).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))({})
 const StyledStock = styled(Stock).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))({})
 const StyledBook = styled(BookFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))({})
 
 const Row = styled.View(({ theme }) => ({

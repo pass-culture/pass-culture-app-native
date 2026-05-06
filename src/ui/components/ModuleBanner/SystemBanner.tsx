@@ -196,6 +196,6 @@ const DescriptionContainer = styled(ViewGap)(({ theme }) => ({
 }))
 
 const StyledArrowNextIcon = styled(ArrowNext).attrs(({ theme, color }) => ({
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
   color,
 }))``

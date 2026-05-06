@@ -128,7 +128,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
             onPress={customProps.rightButton.onPress}
             hitSlop={customProps.rightButton.hitSlop}
             onMouseDown={preventInputFocusOnMouseDown}>
-            <Icon size={theme.icons.sizes.small} />
+            <Icon size={theme.designSystem.size.icon.m} />
           </IconTouchableOpacity>
         ) : null}
       </TextInputContainer>

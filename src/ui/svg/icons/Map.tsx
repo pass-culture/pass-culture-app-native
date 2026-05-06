@@ -36,5 +36,5 @@ const MapSvg: React.FunctionComponent<AccessibleIcon> = ({
 
 export const Map = styled(MapSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.designSystem.color.icon.default,
-  size: size ?? theme.icons.sizes.small,
+  size: size ?? theme.designSystem.size.icon.m,
 }))``

@@ -76,10 +76,10 @@ export const SearchInput = forwardRef<RNTextInput, SearchInputBaseProps>(functio
 })
 
 const StyledSearchIcon = styled(Search).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))``
 
 const InvalidateIcon = styled(Invalidate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.subtle,
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))``

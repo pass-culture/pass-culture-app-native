@@ -141,9 +141,9 @@ export const Banner: FunctionComponent<Props> = ({
   return (
     <Container background={background} testID={testID}>
       {Icon ? (
-        <Icon color={iconColor} size={theme.icons.sizes.small} />
+        <Icon color={iconColor} size={theme.designSystem.size.icon.m} />
       ) : (
-        <InfoPlain color={iconColor} size={theme.icons.sizes.small} />
+        <InfoPlain color={iconColor} size={theme.designSystem.size.icon.m} />
       )}
       <TextContainer
         {...touchableProps}
@@ -208,7 +208,7 @@ export const Banner: FunctionComponent<Props> = ({
       ) : null}
       {onClose ? (
         <Touchable accessibilityLabel="Fermer la bannière" onPress={onClose}>
-          <CloseFilled size={theme.icons.sizes.small} />
+          <CloseFilled size={theme.designSystem.size.icon.m} />
         </Touchable>
       ) : null}
     </Container>
