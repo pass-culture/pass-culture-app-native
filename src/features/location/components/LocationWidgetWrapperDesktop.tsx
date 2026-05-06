@@ -38,7 +38,7 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
   children,
   screenOrigin,
 }) => {
-  const { icons } = useTheme()
+  const { designSystem } = useTheme()
   const {
     title: locationTitle,
     isWidgetHighlighted,
@@ -89,7 +89,7 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
         <NotShrunk>{locationIcon}</NotShrunk>
         <LocationTitle>{locationTitle}</LocationTitle>
         <NotShrunk>
-          <ArrowDown size={icons.sizes.extraSmall} />
+          <ArrowDown size={designSystem.size.icon.s} />
         </NotShrunk>
       </LocationButton>
       {children({ visible: locationModalVisible, dismissModal: hideLocationModal })}

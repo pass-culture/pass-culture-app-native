@@ -65,6 +65,6 @@ const StyledText = styled(Typo.Body)(({ theme }) => ({
 const ClockIconContainer = styled.View({ flexShrink: 0 })
 
 const ClockFilledIcon = styled(ClockFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
   color: theme.designSystem.color.icon.subtle,
 }))``

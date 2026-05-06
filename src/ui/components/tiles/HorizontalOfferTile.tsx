@@ -248,7 +248,7 @@ const OfferNameContainer = styled.View({
 })
 
 const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
   marginLeft: theme.designSystem.size.spacing.xs,
 }))({
   flexShrink: 0,

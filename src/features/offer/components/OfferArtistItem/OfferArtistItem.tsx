@@ -91,7 +91,7 @@ const LabelContainer = styled.View({
 })
 
 const StyledRightFilled = styled(RightFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))({
   flexShrink: 0,
 })

@@ -56,7 +56,7 @@ const RoundContainer = styled.View(({ theme }) => ({
 }))
 
 const StyledFilterIcon = styled(FilterIcon).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))``
 
 const FloatingBadge = styled(Badge)(({ theme }) => ({

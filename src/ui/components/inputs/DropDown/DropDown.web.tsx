@@ -81,7 +81,7 @@ const IconContainer = styled.div(({ theme }) => ({
   right: 0,
   top: 0,
   position: 'absolute',
-  width: `${theme.icons.sizes.extraSmall}px`,
+  width: `${theme.designSystem.size.icon.s}px`,
   pointerEvents: 'none',
 }))
 

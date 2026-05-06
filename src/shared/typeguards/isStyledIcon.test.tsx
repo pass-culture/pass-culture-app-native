@@ -6,7 +6,7 @@ import { isStyledIcon } from 'shared/typeguards/isStyledIcon'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 
 const StyledArrowRight = styled(ArrowRight).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))``
 
 describe('isStyledComponent', () => {

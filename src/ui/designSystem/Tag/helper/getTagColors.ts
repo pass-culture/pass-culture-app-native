@@ -27,6 +27,6 @@ export function getTagColors({
     backgroundColor: background[variantBackground[variant]],
     iconColor: icon[variantIconColor[variant]],
     labelColor: variantLabelColor[variant],
-    iconSize: theme.icons.sizes.extraSmall,
+    iconSize: theme.designSystem.size.icon.s,
   }
 }

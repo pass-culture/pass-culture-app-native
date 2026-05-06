@@ -200,7 +200,7 @@ const ErrorText = styled(Typo.BodyAccentS)(({ theme }) => ({
 
 const ErrorIcon = styled(ErrorFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.error,
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))({
   flexShrink: 0,
 })

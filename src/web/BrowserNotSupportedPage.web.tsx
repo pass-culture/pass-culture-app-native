@@ -120,7 +120,7 @@ const StyledTitle2 = styled(Typo.Title2)({
 
 const ValidateIcon = styled(Validate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.subtle,
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))``
 
 const TextContainer = styled(ViewGap)(({ theme }) => ({

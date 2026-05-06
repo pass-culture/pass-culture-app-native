@@ -29,7 +29,7 @@ const RightArrow = () => (
 )
 
 const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))({
   flexShrink: 0,
 })
