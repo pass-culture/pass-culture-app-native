@@ -37,9 +37,9 @@ export const DebugScreen = () => {
   const undefinedValue = 'Non renseigné'
   const debugData = [
     { label: 'App version', value: fullVersion },
-    { label: 'Device ID', value: deviceInfo?.deviceId ?? undefinedValue },
-    { label: 'Device model', value: deviceInfo?.source ?? undefinedValue },
-    { label: 'Device OS', value: deviceInfo?.os ?? undefinedValue },
+    { label: 'Device ID', value: deviceInfo.deviceId ?? undefinedValue },
+    { label: 'Device model', value: deviceInfo.source ?? undefinedValue },
+    { label: 'Device OS', value: deviceInfo.os ?? undefinedValue },
     { label: 'Device resolution', value: resolution ?? undefinedValue },
     { label: 'Device zoom', value: deviceZoom ? `${deviceZoom}%` : undefinedValue },
     { label: 'User ID', value: user?.id ?? undefinedValue },
