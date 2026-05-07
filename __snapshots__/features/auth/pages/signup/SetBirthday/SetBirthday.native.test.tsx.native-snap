@@ -559,6 +559,21 @@ exports[`<SetBirthday /> should render correctly 1`] = `
                   "fontSize": "14px",
                   "lineHeight": "14px",
                 },
+                "link": {
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "16px",
+                  "lineHeight": "25.6px",
+                },
+                "linkS": {
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "14px",
+                  "lineHeight": "22.4px",
+                },
+                "linkXs": {
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "12px",
+                  "lineHeight": "19.2px",
+                },
                 "title1": {
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": "28px",
@@ -1468,6 +1483,21 @@ exports[`<SetBirthday /> should render correctly when account creation token and
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": "14px",
                   "lineHeight": "14px",
+                },
+                "link": {
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "16px",
+                  "lineHeight": "25.6px",
+                },
+                "linkS": {
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "14px",
+                  "lineHeight": "22.4px",
+                },
+                "linkXs": {
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "12px",
+                  "lineHeight": "19.2px",
                 },
                 "title1": {
                   "fontFamily": "Montserrat-Bold",
