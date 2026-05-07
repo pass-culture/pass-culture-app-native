@@ -91,24 +91,15 @@ describe('BookHourChoice', () => {
   it('should display filtered stocks for selected Date', () => {
     render(<BookHourChoice />)
 
-    // firstStock corresponds to 2021-03-02 stock 20h
-    const firstStock = screen.queryAllByTestId('HourChoice148409-label')
-    // secondStock corresponds to 2021-03-17 stock
-    const secondStock = screen.queryAllByTestId('HourChoice148410-label')
-    // thirdStock corresponds to 2021-03-02 stock 10h
-    const thirdStock = screen.queryAllByTestId('HourChoice148411-label')
-
-    expect(firstStock).toHaveLength(1)
-    expect(secondStock).toHaveLength(0)
-    expect(thirdStock).toHaveLength(1)
+    expect(screen.getByText('20h00')).toBeOnTheScreen()
+    expect(screen.queryByText('21h00')).not.toBeOnTheScreen()
+    expect(screen.getByText('10h00')).toBeOnTheScreen()
   })
 
   it('should select an item when pressed', async () => {
     render(<BookHourChoice />)
 
-    // firstStock correspond to 2021-03-02 stock
-    const firstStock = screen.getByTestId('HourChoice148409-label')
-    await user.press(firstStock)
+    await user.press(screen.getByText('20h00'))
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 148409 })
   })
@@ -116,26 +107,17 @@ describe('BookHourChoice', () => {
   it('should pass formatted hour and price props', () => {
     render(<BookHourChoice />)
 
-    const firstHour = screen.getByTestId('HourChoice148409-label')
-    const firstPrice = screen.getByTestId('HourChoice148409-right-text')
-
-    expect(firstHour.props.children).toBe('20h00')
-    expect(firstPrice.props.children).toBe('24\u00a0€')
-
-    const secondHour = screen.getByTestId('HourChoice148411-label')
-    const secondPrice = screen.getByTestId('HourChoice148411-right-text')
-
-    expect(secondHour.props.children).toBe('10h00')
-    expect(secondPrice.props.children).toBe('épuisé')
+    expect(screen.getByText('20h00')).toBeOnTheScreen()
+    expect(screen.getByText('24\u00a0€')).toBeOnTheScreen()
+    expect(screen.getByText('10h00')).toBeOnTheScreen()
+    expect(screen.getByText('épuisé')).toBeOnTheScreen()
   })
 
   it("should show 'crédit insuffisant' if not enough credit", () => {
     mockCreditOffer = 0
     render(<BookHourChoice />)
 
-    expect(screen.getByTestId('HourChoice148409-right-text').props.children).toBe(
-      'crédit insuffisant'
-    )
+    expect(screen.getAllByText('crédit insuffisant')).toHaveLength(2)
   })
 })
 
@@ -169,17 +151,14 @@ describe('BookHourChoice when there are several stocks', () => {
   it('should display hour items with stock selection', () => {
     render(<BookHourChoice />)
 
-    expect(screen.getByTestId('HourChoice2023-04-01T18:00:00Z-label')).toBeOnTheScreen()
-    expect(screen.getByTestId('HourChoice2023-04-01T20:00:00Z-label')).toBeOnTheScreen()
+    expect(screen.getByText('18h00')).toBeOnTheScreen()
+    expect(screen.getByText('20h00')).toBeOnTheScreen()
   })
 
   it('should not display hour item with stock selection', () => {
     render(<BookHourChoice />)
 
-    expect(screen.queryByTestId('HourChoice18755-label')).not.toBeOnTheScreen()
-    expect(screen.queryByTestId('HourChoice18756-label')).not.toBeOnTheScreen()
-    expect(screen.queryByTestId('HourChoice18757-label')).not.toBeOnTheScreen()
-    expect(screen.queryByTestId('HourChoice18758-label')).not.toBeOnTheScreen()
+    expect(screen.queryByText('19h00')).not.toBeOnTheScreen()
   })
 
   it('should display "épuisé" when there are not stock bookable on hour item', () => {
@@ -295,7 +274,7 @@ describe('BookHourChoice when there is only one stock', () => {
   it('should display hour item with stock selection', () => {
     render(<BookHourChoice />)
 
-    expect(screen.getByTestId('HourChoice18758-label')).toBeOnTheScreen()
+    expect(screen.getByText('20h00')).toBeOnTheScreen()
   })
 
   it('should not display hour item without stock selection', () => {
@@ -306,7 +285,7 @@ describe('BookHourChoice when there is only one stock', () => {
 
   it('should select the stock when pressing an hour item', async () => {
     render(<BookHourChoice />)
-    await user.press(screen.getByTestId('HourChoice18758-label'))
+    await user.press(screen.getByText('20h00'))
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: stock1.id })
   })

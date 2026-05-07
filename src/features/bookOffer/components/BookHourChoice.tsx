@@ -1,118 +1,40 @@
 import React, { useMemo } from 'react'
 import { View } from 'react-native'
 
-import { OfferStockResponse, OfferVenueResponse } from 'api/gen'
-import { HourChoice } from 'features/bookOffer/components/HourChoice'
-import { Action, BookingState, Step } from 'features/bookOffer/context/reducer'
+import { OfferStockResponse } from 'api/gen'
+import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import {
   getSortedHoursFromDate,
   getStockSortedByPriceFromHour,
   getStockWithCategoryFromDate,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
+import { getFormattedHour } from 'features/bookOffer/helpers/getFormattedHour'
+import { getHourChoiceForMultiplePrices } from 'features/bookOffer/helpers/getHourChoiceForMultiplePrices'
+import { getHourChoiceForSingleStock } from 'features/bookOffer/helpers/getHourChoiceForSingleStock'
+import { getSelectedValue } from 'features/bookOffer/helpers/getSelectedValue'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatHour, formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
+import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const radioGroupLabel = 'Horaires'
 
-const getHourChoiceForMultiplePrices = (
-  stocks: OfferStockResponse[],
-  selectedDate: string | undefined,
-  bookingState: BookingState,
-  selectHour: (hour: string, stockFromHour: OfferStockResponse[]) => void,
-  offerCredit: number
-) => {
-  const sortedHoursFromDate = getSortedHoursFromDate(stocks, selectedDate)
-  const distinctHours: string[] = [...new Set(sortedHoursFromDate)]
-  return distinctHours.map((hour, index) => {
-    const filteredAvailableStocksFromHour = getStockSortedByPriceFromHour(stocks, hour)
-    const filteredAvailableStocksFromHourBookable = filteredAvailableStocksFromHour.filter(
-      (stock) => stock.isBookable
-    )
-    const stocksToGetMinPrice =
-      filteredAvailableStocksFromHourBookable.length > 0
-        ? filteredAvailableStocksFromHourBookable
-        : filteredAvailableStocksFromHour
-    const minPriceStock = stocksToGetMinPrice.reduce(
-      (acc, curr) => {
-        if (acc.price < curr.price) return acc
-        return curr
-      },
-      stocksToGetMinPrice[0] || { price: Infinity, features: [] }
-    )
-
-    const isBookable = filteredAvailableStocksFromHourBookable.length > 0
-    const hasSeveralPrices = filteredAvailableStocksFromHour.length > 1
-    return (
-      <HourChoice
-        radioGroupLabel={radioGroupLabel}
-        index={index}
-        key={hour}
-        price={minPriceStock.price}
-        hour={formatHour(hour).replace(':', 'h')}
-        selected={hour === bookingState.hour}
-        onPress={() => selectHour(hour, filteredAvailableStocksFromHour)}
-        testID={`HourChoice${hour}`}
-        isBookable={isBookable}
-        offerCredit={offerCredit}
-        hasSeveralPrices={hasSeveralPrices}
-        features={minPriceStock.features}
-      />
-    )
-  })
-}
-
-const getHourChoiceForSingleStock = (
-  stocks: OfferStockResponse[],
-  selectedDate: string | undefined,
-  venue: OfferVenueResponse | undefined,
-  bookingState: BookingState,
-  selectStock: (stockId: number) => void,
-  offerCredit: number,
-  dispatch: React.Dispatch<Action>
-) =>
-  stocks
-    .filter(({ beginningDatetime }) => {
-      if (beginningDatetime === undefined || beginningDatetime === null) return false
-      return selectedDate && beginningDatetime
-        ? formatToKeyDate(beginningDatetime) === selectedDate
-        : false
-    })
-    .sort(
-      (a, b) =>
-        //@ts-expect-error : stocks with no beginningDatetime was filtered
-        new Date(a.beginningDatetime).getTime() - new Date(b.beginningDatetime).getTime()
-    )
-    .map((stock, index) => (
-      <HourChoice
-        radioGroupLabel={radioGroupLabel}
-        index={index}
-        key={stock.id}
-        price={stock.price}
-        hour={formatHour(stock.beginningDatetime).replace(':', 'h')}
-        selected={stock.id === bookingState.stockId}
-        onPress={() => {
-          dispatch({ type: 'SELECT_HOUR', payload: stock.beginningDatetime ?? '' })
-          selectStock(stock.id)
-        }}
-        testID={`HourChoice${stock.id}`}
-        isBookable={stock.isBookable}
-        offerCredit={offerCredit}
-        features={stock.features}
-      />
-    ))
-
 export const BookHourChoice = () => {
   const { bookingState, dispatch } = useBookingContext()
-  const { isDuo, stocks = [], venue } = useBookingOfferQuery() ?? {}
+  const { isDuo, stocks = [] } = useBookingOfferQuery() ?? {}
   const bookingStock = useBookingStock()
   const offerCredit = useCreditForOffer(bookingState.offerId)
+  const currency = useGetCurrencyToDisplay()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
   const selectedDate = bookingState.date ? formatToKeyDate(bookingState.date) : undefined
   const hasPotentialPricesStep =
@@ -138,57 +60,79 @@ export const BookHourChoice = () => {
     dispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
   }
 
-  const filteredStocks = useMemo(
-    () => {
-      if (hasPotentialPricesStep) {
-        return getHourChoiceForMultiplePrices(
-          stocks,
-          selectedDate,
-          bookingState,
-          selectHour,
-          offerCredit
-        )
-      } else {
-        return getHourChoiceForSingleStock(
-          stocks,
-          selectedDate,
-          venue,
-          bookingState,
-          selectStock,
-          offerCredit,
-          dispatch
-        )
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [
-      stocks,
-      selectedDate,
-      bookingState.hour,
-      bookingState.stockId,
-      bookingState.quantity,
-      offerCredit,
-      hasPotentialPricesStep,
-    ]
-  )
+  const options: Array<RadioButtonGroupOption> = useMemo(() => {
+    if (hasPotentialPricesStep) {
+      return getHourChoiceForMultiplePrices(
+        stocks,
+        selectedDate,
+        offerCredit,
+        currency,
+        euroToPacificFrancRate
+      )
+    } else {
+      return getHourChoiceForSingleStock(
+        stocks,
+        selectedDate,
+        offerCredit,
+        currency,
+        euroToPacificFrancRate
+      )
+    }
+  }, [stocks, selectedDate, offerCredit, hasPotentialPricesStep, currency, euroToPacificFrancRate])
 
   const buttonTitle = bookingStock?.beginningDatetime
     ? formatHour(bookingStock.beginningDatetime)
     : ''
+  const selectedStock = stocks.find((stock) => stock.id === bookingState.stockId)
+  const selectedValue = getSelectedValue({
+    hasPotentialPricesStep,
+    selectedHour: bookingState.hour,
+    selectedStockBeginningDatetime: selectedStock?.beginningDatetime,
+  })
 
-  return (
+  const handleChange = (selectedLabel: string) => {
+    if (hasPotentialPricesStep) {
+      const sortedHoursFromDate = getSortedHoursFromDate(stocks, selectedDate)
+      const hour = [...new Set(sortedHoursFromDate)].find(
+        (hour) => getFormattedHour(hour) === selectedLabel
+      )
+      if (!hour) return
+      selectHour(hour, getStockSortedByPriceFromHour(stocks, hour))
+      return
+    }
+
+    const stock = stocks
+      .filter(({ beginningDatetime }) => {
+        if (!beginningDatetime) return false
+        return selectedDate ? formatToKeyDate(beginningDatetime) === selectedDate : false
+      })
+      .find(
+        (stock) =>
+          stock.beginningDatetime && getFormattedHour(stock.beginningDatetime) === selectedLabel
+      )
+    if (!stock) return
+    dispatch({ type: 'SELECT_HOUR', payload: stock.beginningDatetime ?? '' })
+    selectStock(stock.id)
+  }
+
+  return bookingState.step === Step.HOUR ? (
+    <View testID="HourStep">
+      <RadioButtonGroup
+        label={radioGroupLabel}
+        labelVariant="title3"
+        options={options}
+        value={selectedValue}
+        onChange={handleChange}
+        variant="detailed"
+        display="vertical"
+      />
+    </View>
+  ) : (
     <ViewGap gap={4}>
-      <Typo.Title3 {...getHeadingAttrs(3)} testID="HourStep">
-        {radioGroupLabel}
-      </Typo.Title3>
-
-      {bookingState.step === Step.HOUR ? (
-        <View>{filteredStocks}</View>
-      ) : (
-        <TouchableOpacity onPress={changeHour}>
-          <Typo.Button>{buttonTitle}</Typo.Button>
-        </TouchableOpacity>
-      )}
+      <Typo.Title3 {...getHeadingAttrs(3)}>{radioGroupLabel}</Typo.Title3>
+      <TouchableOpacity onPress={changeHour}>
+        <Typo.Button>{buttonTitle}</Typo.Button>
+      </TouchableOpacity>
     </ViewGap>
   )
 }
