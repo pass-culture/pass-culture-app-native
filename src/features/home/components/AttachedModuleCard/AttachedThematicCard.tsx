@@ -34,7 +34,7 @@ export const AttachedThematicCard = ({ title, subtitle, label, shouldFixHeight }
 }
 
 const ArrowRightIcon = styled(ArrowRight).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))({
   flexShrink: 0,
 })

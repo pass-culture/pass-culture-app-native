@@ -32,5 +32,5 @@ const StoreSvg: React.FunctionComponent<AccessibleIcon> = ({
 
 export const Store = styled(StoreSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.designSystem.color.icon.default,
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
 }))``

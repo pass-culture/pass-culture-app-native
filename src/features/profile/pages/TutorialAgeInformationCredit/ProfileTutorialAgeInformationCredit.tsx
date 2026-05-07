@@ -295,15 +295,15 @@ const Placeholder = styled.View<{ height: number }>(({ height }) => ({
 }))
 
 const SmallConfirmation = styled(Confirmation).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))``
 
 const SmallLock = styled(Lock).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))``
 
 const SmallClock = styled(Clock).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))``
 
 const GreyOffers = styled(Offers).attrs(({ theme }) => ({

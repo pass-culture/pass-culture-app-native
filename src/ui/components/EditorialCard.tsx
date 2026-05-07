@@ -230,7 +230,7 @@ const StyledButtonText = styled(Typo.BodyAccent)(({ theme }) => ({
 }))
 
 const ArrowRightIcon = styled(ArrowRight).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
   color: theme.designSystem.color.icon.lockedInverted,
 }))({
   flexShrink: 0,

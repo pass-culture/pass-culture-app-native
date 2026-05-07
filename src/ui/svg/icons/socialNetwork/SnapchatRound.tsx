@@ -28,5 +28,5 @@ const SnapchatRoundSvg = ({ color: _color, size, accessibilityLabel, testID }: A
 }
 
 export const SnapchatRound = styled(SnapchatRoundSvg).attrs(({ size, theme }) => ({
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
 }))``

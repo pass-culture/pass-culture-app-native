@@ -24,8 +24,8 @@ const AnimatedOngoingLock = () => {
       source={OnboardingUnlock}
       autoPlay
       loop={false}
-      width={theme.icons.sizes.standard}
-      height={theme.icons.sizes.standard}
+      width={theme.designSystem.size.icon.l}
+      height={theme.designSystem.size.icon.l}
       usePartialPlayback={false}
     />
   )

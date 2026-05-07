@@ -104,7 +104,8 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
   const typographyKey = getTypographyForSize(size)
   const LabelTypo = Typo[typographyKey]
 
-  const iconSize = size === 'small' ? theme.icons.sizes.buttonSmall : theme.icons.sizes.button
+  const iconSize =
+    size === 'small' ? theme.designSystem.size.icon.buttonS : theme.designSystem.size.icon.button
   const iconColor2 = theme.designSystem.color.icon.inverted
   const getPositionedIcon = (position: 'left' | 'right') =>
     iconPosition === position

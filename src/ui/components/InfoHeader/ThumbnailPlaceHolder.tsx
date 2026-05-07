@@ -18,7 +18,7 @@ const ThumbnailPlaceholderContainer = styled.View<{ height: number; width: numbe
 )
 
 const ThumbnailPlaceholderIcon = styled(All).attrs(({ theme }) => ({
-  size: theme.icons.sizes.standard,
+  size: theme.designSystem.size.icon.l,
 }))``
 
 type ThumbnailPlaceholderProps = ViewProps & {

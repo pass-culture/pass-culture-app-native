@@ -40,7 +40,7 @@ export const AddressOption = ({
 const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
   color2: theme.designSystem.color.icon.inverted,
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))``
 
 const Container = styled.View(({ theme }) => ({
@@ -64,8 +64,8 @@ const StyledBody = styled(Typo.Body)<{ selected: boolean }>(({ theme, selected }
 }))
 
 const IconContainer = styled.View(({ theme }) => ({
-  width: theme.icons.sizes.small,
-  height: theme.icons.sizes.small,
+  width: theme.designSystem.size.icon.m,
+  height: theme.designSystem.size.icon.m,
   alignItems: 'center',
   justifyContent: 'center',
   marginLeft: getSpacing(theme.isMobileViewport ? 2 : 6),

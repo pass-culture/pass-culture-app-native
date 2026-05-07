@@ -29,6 +29,6 @@ const StyledCaption = styled(Typo.BodyAccentXs)({
 
 const IconContainer = styled.View(({ theme }) => ({
   marginRight: theme.designSystem.size.spacing.s,
-  width: theme.icons.sizes.extraSmall,
-  height: theme.icons.sizes.extraSmall,
+  width: theme.designSystem.size.icon.s,
+  height: theme.designSystem.size.icon.s,
 }))

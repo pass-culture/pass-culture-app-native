@@ -282,8 +282,8 @@ export const TertiaryAndSmallerIcons = {
 }
 
 const LogoPassCulture = styled(PassCultureIcon).attrs(({ theme }) => ({
-  width: theme.icons.sizes.standard * 2,
-  height: theme.icons.sizes.standard,
+  width: theme.designSystem.size.icon.l * 2,
+  height: theme.designSystem.size.icon.l,
   color: theme.designSystem.color.icon.default,
 }))``
 

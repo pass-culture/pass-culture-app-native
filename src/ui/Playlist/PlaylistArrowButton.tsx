@@ -34,5 +34,5 @@ const BorderedScrollButtonForNotTouchDevice = styled(
 }))
 
 export const PlaylistArrowButton = styled(RawPlaylistArrowButton).attrs(({ theme, size }) => ({
-  size: size ?? theme.icons.sizes.small,
+  size: size ?? theme.designSystem.size.icon.m,
 }))({})

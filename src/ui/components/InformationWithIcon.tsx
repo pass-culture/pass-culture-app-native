@@ -11,7 +11,7 @@ export const InformationWithIcon: FunctionComponent<{
   subtitle?: string
 }> = ({ Icon, text, subtitle }) => {
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-    size: theme.icons.sizes.small,
+    size: theme.designSystem.size.icon.m,
     color: theme.designSystem.color.icon.brandPrimary,
   }))``
 

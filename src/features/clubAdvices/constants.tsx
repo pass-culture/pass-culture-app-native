@@ -13,7 +13,7 @@ const BookClubIcon = styled(BookClubCertification).attrs(({ theme }) => ({
 
 const SmallBookClubIcon = styled(BookClubCertification).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.bookclub,
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))``
 
 const CineClubIcon = styled(CineClubCertification).attrs(({ theme }) => ({
@@ -22,7 +22,7 @@ const CineClubIcon = styled(CineClubCertification).attrs(({ theme }) => ({
 
 const SmallCineClubIcon = styled(CineClubCertification).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.cineclub,
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))``
 
 export const BOOK_CLUB_SUBCATEGORIES = [

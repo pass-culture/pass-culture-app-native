@@ -31,5 +31,5 @@ const StarSvg: React.FunctionComponent<AccessibleIcon> = ({
 
 export const Star = styled(StarSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.designSystem.color.icon.default,
-  size: size ?? theme.icons.sizes.small,
+  size: size ?? theme.designSystem.size.icon.m,
 }))``

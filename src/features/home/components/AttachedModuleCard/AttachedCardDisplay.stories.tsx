@@ -22,7 +22,7 @@ const baseProps: ComponentProps<typeof AttachedCardDisplay> = {
   rightTagLabel: 'Gratuit',
 }
 const StyledArrowRight = styled(ArrowRight).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))({
   flexShrink: 0,
 })

@@ -11,7 +11,7 @@ import { AgeButton } from './AgeButton'
 
 const All = styled(InitialAll).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))``
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({

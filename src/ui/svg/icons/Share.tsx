@@ -32,6 +32,6 @@ const NotMemoizedBicolorShare: React.FC<AccessibleIcon> = ({
 export const Share = React.memo(
   styled(NotMemoizedBicolorShare).attrs(({ color, size, theme }) => ({
     color: color ?? theme.designSystem.color.icon.default,
-    size: size ?? theme.icons.sizes.standard,
+    size: size ?? theme.designSystem.size.icon.l,
   }))``
 )

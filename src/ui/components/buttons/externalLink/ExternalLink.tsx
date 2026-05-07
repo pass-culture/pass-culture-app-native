@@ -42,7 +42,7 @@ const ExternalSite = styled(DefaultExternalSite).attrs<{ primary?: boolean }>(
     color: primary
       ? theme.designSystem.color.icon.brandPrimary
       : theme.designSystem.color.icon.default,
-    size: theme.icons.sizes.extraSmall,
+    size: theme.designSystem.size.icon.s,
   })
 )<{ primary?: boolean }>``
 
