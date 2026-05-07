@@ -1,27 +1,29 @@
-import { LocationMode, Position } from 'libs/location/types'
+import { LocationMode } from 'libs/location/types'
 import { createStore } from 'libs/store/createStore'
 
-type Location = {
+export type LocationState = {
   locationMode: LocationMode
-  geolocPosition: Position
-  aroundMeRadius: number
-  aroundPlaceAddress: string
-  aroundPlaceRadius: number
+  configuration: {
+    [LocationMode.AROUND_ME]: { radius: number; coords: { lat: number; lng: number } }
+    [LocationMode.AROUND_PLACE]: { radius: number; address: string }
+    [LocationMode.EVERYWHERE]: Record<string, never>
+  }
 }
 
-const defaultState: Location = {
+const defaultState: LocationState = {
   locationMode: LocationMode.EVERYWHERE,
-  geolocPosition: undefined,
-  aroundMeRadius: 50,
-  aroundPlaceAddress: '',
-  aroundPlaceRadius: 50,
+  configuration: {
+    [LocationMode.AROUND_ME]: { radius: 50, coords: { lat: 0, lng: 0 } },
+    [LocationMode.AROUND_PLACE]: { radius: 50, address: '' },
+    [LocationMode.EVERYWHERE]: {},
+  },
 }
 
 const locationStore = createStore({
   name: 'location',
   defaultState,
   actions: (set) => ({
-    setState: (state: Partial<Location>) => set(state),
+    setState: (state: Partial<LocationState>) => set(state),
     resetState: () => set(defaultState),
   }),
   selectors: {
@@ -32,3 +34,4 @@ const locationStore = createStore({
 
 export const locationActions = locationStore.actions
 export const locationSelectors = locationStore.selectors
+export const { useStore: useLocationV2 } = locationStore.hooks
