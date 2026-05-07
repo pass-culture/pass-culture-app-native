@@ -52,7 +52,6 @@ export type ILocationContext = {
   setSelectedLocationMode: Dispatch<SetStateAction<LocationMode>>
   selectedPlace: SuggestedPlace | null
   setSelectedPlace: Dispatch<SetStateAction<SuggestedPlace | null>>
-  onSetSelectedPlace: (place: SuggestedPlace) => void
   onResetPlace: () => void
   placeQuery: string
   setPlaceQuery: Dispatch<SetStateAction<string>>

@@ -3,7 +3,6 @@ import React from 'react'
 
 import { LocationModal } from 'features/location/components/LocationModal'
 import { getLocationSubmit } from 'features/location/helpers/getLocationSubmit'
-import { getPlaceSelection } from 'features/location/helpers/getPlaceSelection'
 import { useLocationMode } from 'features/location/helpers/useLocationMode'
 import { useLocationState } from 'features/location/helpers/useLocationState'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
@@ -41,7 +40,6 @@ export const VenueMapLocationModal = ({
     setAroundMeRadius,
     aroundPlaceRadius,
     setPlace,
-    onSetSelectedPlace,
     permissionState,
     requestGeolocPermission,
     showGeolocPermissionModal,
@@ -87,9 +85,6 @@ export const VenueMapLocationModal = ({
     setTempAroundPlaceRadius,
     setTempAroundMeRadius,
   })
-  const { onPlaceSelection } = getPlaceSelection({
-    onSetSelectedPlace,
-  })
   const { selectLocationMode } = useLocationMode({
     dismissModal,
     shouldOpenDirectlySettings: true,
@@ -128,7 +123,6 @@ export const VenueMapLocationModal = ({
       setSelectedPlace={setSelectedPlace}
       placeQuery={placeQuery}
       setPlaceQuery={setPlaceQuery}
-      onSetSelectedPlace={onPlaceSelection}
       onResetPlace={onResetPlace}
       shouldShowRadiusSlider
       isSubmitDisabled={!selectedPlace && tempLocationMode !== LocationMode.AROUND_ME}

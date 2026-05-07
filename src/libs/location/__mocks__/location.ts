@@ -16,7 +16,6 @@ export const onPressGeolocPermissionModalButton = jest.fn()
 const setPlace = jest.fn()
 const setSelectedLocationMode = jest.fn()
 const onResetPlace = jest.fn()
-const onSetSelectedPlace = jest.fn()
 const setSelectedPlace = jest.fn()
 const setPlaceQuery = jest.fn()
 const setAroundPlaceRadius = jest.fn()
@@ -37,7 +36,6 @@ const locationContext: ILocationContext = {
   selectedLocationMode: LocationMode.AROUND_ME,
   setSelectedLocationMode,
   onResetPlace,
-  onSetSelectedPlace,
   selectedPlace: null,
   setSelectedPlace,
   placeQuery: '',

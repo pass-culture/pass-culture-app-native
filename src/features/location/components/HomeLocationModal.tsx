@@ -21,7 +21,6 @@ export const HomeLocationModal = ({ visible, dismissModal }: HomeLocationModalPr
     setPlace,
     onResetPlace,
     setSelectedLocationMode,
-    onSetSelectedPlace,
     permissionState,
     showGeolocPermissionModal,
     requestGeolocPermission,
@@ -70,7 +69,6 @@ export const HomeLocationModal = ({ visible, dismissModal }: HomeLocationModalPr
       setSelectedPlace={setSelectedPlace}
       placeQuery={placeQuery}
       setPlaceQuery={setPlaceQuery}
-      onSetSelectedPlace={onSetSelectedPlace}
       onResetPlace={onResetPlace}
       shouldShowRadiusSlider={false}
       isSubmitDisabled={!selectedPlace}
