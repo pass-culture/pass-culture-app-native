@@ -48,7 +48,7 @@ describe('<VenueTopComponent />', () => {
     expect(await screen.findByText('Centre culturel')).toBeOnTheScreen()
   })
 
-  it('should display distance between user and venue when geolocation is activated', async () => {
+  it('should display distance between user and venue when geolocation is activated and venue open to public', async () => {
     const userLocation = { latitude: 30, longitude: 30.1 }
     mockUseLocation.mockReturnValueOnce({
       userLocation,
@@ -63,6 +63,21 @@ describe('<VenueTopComponent />', () => {
     renderVenueTopComponent({ venue: locatedVenue })
 
     expect(await screen.findByText('À 10 km')).toBeOnTheScreen()
+  })
+
+  it('should not display cultural domains when specified if venue is open to public', async () => {
+    renderVenueTopComponent({
+      venue: {
+        ...venueOpenToPublic,
+        culturalDomains: [
+          { id: 1, name: 'Architecture' },
+          { id: 2, name: 'Arts numériques' },
+        ],
+      },
+    })
+
+    expect(screen.queryByText('Architecture')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Arts numériques')).not.toBeOnTheScreen()
   })
 
   it('should not display distance between user and venue when geolocation is not activated', async () => {
@@ -157,6 +172,40 @@ describe('<VenueTopComponent />', () => {
       render(<VenueTopComponent venue={{ ...venueDataTest, isOpenToPublic: false }} />)
 
       expect(screen.queryByText('1 boulevard Poissonnière, 75000 Paris')).not.toBeOnTheScreen()
+    })
+
+    it('should not display distance between user and venue when geolocation is activated', async () => {
+      const userLocation = { latitude: 30, longitude: 30.1 }
+      mockUseLocation.mockReturnValueOnce({
+        userLocation,
+        hasGeolocPosition: true,
+      } as ILocationContext)
+      const locatedVenue: VenueResponse = {
+        ...venueDataTest,
+        latitude: 30,
+        longitude: 30,
+        isOpenToPublic: false,
+      }
+
+      renderVenueTopComponent({ venue: locatedVenue })
+
+      expect(screen.queryByText('À 10 km')).not.toBeOnTheScreen()
+    })
+
+    it('should display cultural domains when specified', async () => {
+      renderVenueTopComponent({
+        venue: {
+          ...venueDataTest,
+          isOpenToPublic: false,
+          culturalDomains: [
+            { id: 1, name: 'Architecture' },
+            { id: 2, name: 'Arts numériques' },
+          ],
+        },
+      })
+
+      expect(await screen.findByText('Architecture')).toBeOnTheScreen()
+      expect(screen.getByText('Arts numériques')).toBeOnTheScreen()
     })
   })
 

@@ -9,13 +9,12 @@ import { VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
 import { FeedBack } from 'features/reactions/components/FeedBack'
 import { OpeningHoursStatus } from 'features/venue/components/OpeningHoursStatus/OpeningHoursStatus'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
+import { getVenueTopComponentTags } from 'features/venue/helpers/getVenueTopComponentTags'
 import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
-import { getDistance } from 'libs/location/getDistance'
 import { useLocation } from 'libs/location/location'
-import { MAP_ACTIVITY_TO_LABEL } from 'libs/parsers/activity'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
 import { EditorialCard, EditorialCardInfo } from 'ui/components/EditorialCard'
 import { Separator } from 'ui/components/Separator'
@@ -54,16 +53,12 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
 
   const { bannerUrl, bannerIsFromGoogle, bannerCredit } = venue
 
-  const distanceToVenue = getDistance(
-    { lat: venue.latitude, lng: venue.longitude },
-    { userLocation, selectedPlace, selectedLocationMode }
+  const venueTags: string[] = getVenueTopComponentTags(
+    venue,
+    userLocation,
+    selectedPlace,
+    selectedLocationMode
   )
-  const activityLabel = venue.activity ? MAP_ACTIVITY_TO_LABEL[venue.activity] : undefined
-
-  const venueTags: string[] = []
-  activityLabel && venueTags.push(activityLabel)
-  distanceToVenue && venueTags.push(`À ${distanceToVenue}`)
-
   const currentDate = new Date()
 
   const isDynamicOpeningHoursDisplayed = venue.openingHours && venue.isOpenToPublic
