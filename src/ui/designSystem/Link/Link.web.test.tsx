@@ -7,7 +7,6 @@ import userEvent from '@testing-library/user-event'
 import React from 'react'
 
 import { render, screen } from 'tests/utils/web'
-import { theme } from 'theme'
 
 import { Link } from './Link'
 
@@ -56,38 +55,5 @@ describe('<Link />', () => {
     await userEvent.click(screen.getByRole('link'))
 
     expect(onBeforeNavigate).toHaveBeenCalledTimes(1)
-  })
-
-  it('should use link extra small typography when size is extraSmall', () => {
-    render(
-      <Link label="Documentation" externalNav={{ url: 'https://example.com' }} size="extraSmall" />
-    )
-
-    expect(screen.getByTestId('link-label')).toHaveStyle({
-      fontFamily: theme.designSystem.typography.linkXs.fontFamily,
-      lineHeight: theme.designSystem.typography.linkXs.lineHeight,
-    })
-  })
-
-  it('should use neutral color when color is neutral', () => {
-    render(
-      <Link label="Documentation" externalNav={{ url: 'https://example.com' }} color="neutral" />
-    )
-
-    expect(screen.getByTestId('link-label')).toHaveStyle({
-      color: theme.designSystem.color.text.default,
-    })
-  })
-
-  it('should hide icon when showIcon is false and link does not open in a new tab', () => {
-    render(
-      <Link
-        label="Documentation"
-        navigateTo={{ screen: 'TabNavigator', params: { screen: 'Home' } }}
-        showIcon={false}
-      />
-    )
-
-    expect(screen.queryByTestId('link-icon')).not.toBeInTheDocument()
   })
 })

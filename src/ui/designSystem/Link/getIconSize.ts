@@ -8,9 +8,9 @@ import { DefaultTheme } from 'styled-components/native'
 import { LinkSize } from './types'
 
 const iconSizeByLinkSize = ({ theme }: { theme: DefaultTheme }): Record<LinkSize, number> => ({
-  default: theme.icons.sizes.smaller,
-  small: theme.icons.sizes.extraSmall,
-  extraSmall: theme.icons.sizes.extraSmall,
+  default: theme.designSystem.size.icon.m,
+  small: theme.designSystem.size.icon.s,
+  extraSmall: theme.designSystem.size.icon.s,
 })
 
 export const getIconSize = ({ size, theme }: { size: LinkSize; theme: DefaultTheme }) =>
