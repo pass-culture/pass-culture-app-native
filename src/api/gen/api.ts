@@ -1608,6 +1608,22 @@ export interface Credit {
 }
 /**
  * @export
+ * @interface CulturalDomainItem
+ */
+export interface CulturalDomainItem {
+  /**
+   * @type {number}
+   * @memberof CulturalDomainItem
+   */
+  id: number
+  /**
+   * @type {string}
+   * @memberof CulturalDomainItem
+   */
+  name: string
+}
+/**
+ * @export
  * @interface CulturalSurveyAnswer
  */
 export interface CulturalSurveyAnswer {
@@ -5263,6 +5279,11 @@ export interface VenueResponse {
    * @memberof VenueResponse
    */
   contact?: VenueContact | null
+  /**
+   * @type {Array<CulturalDomainItem> | null}
+   * @memberof VenueResponse
+   */
+  culturalDomains?: Array<CulturalDomainItem> | null
   /**
    * @type {string | null}
    * @memberof VenueResponse
