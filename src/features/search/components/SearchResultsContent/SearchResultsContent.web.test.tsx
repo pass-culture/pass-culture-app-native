@@ -55,6 +55,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     geolocPosition: mockPosition,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
+    onModalHideRef: { current: jest.fn() },
   }),
 }))
 
@@ -69,12 +70,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
-
-jest.mock('features/location/helpers/useLocationState', () => ({
-  useLocationState: () => ({
-    onModalHideRef: { current: jest.fn() },
-  }),
-}))
 
 jest.mock('features/venueMap/hook/useCenterOnLocation')
 const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock

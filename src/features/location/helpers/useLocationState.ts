@@ -33,7 +33,6 @@ export const useLocationState = ({ visible }: Props) => {
   }, [visible])
 
   return {
-    onModalHideRef,
     selectedLocationMode,
     tempAroundMeRadius,
     setTempAroundMeRadius,

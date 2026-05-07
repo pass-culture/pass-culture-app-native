@@ -1,12 +1,11 @@
-import React, { memo, useContext, useEffect, useMemo, useRef } from 'react'
+import React, { memo, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { analytics } from 'libs/analytics/provider'
 import { useSafeState } from 'libs/hooks'
 import { useGeolocation } from 'libs/location/geolocation/hook/useGeolocation'
-import { useAroundRadius } from 'libs/location/hooks/useAroundRadius'
-import { usePlace } from 'libs/location/hooks/usePlace'
 import { LocationMode, ILocationContext, Position } from 'libs/location/types'
+import { SuggestedPlace } from 'libs/place/types'
 import { storage } from 'libs/storage'
 
 import { GeolocationActivationModal } from './geolocation/components/GeolocationActivationModal'
@@ -62,17 +61,19 @@ export const LocationWrapper = memo(function LocationWrapper({
 
   const onModalHideRef = useRef<() => void>(() => null)
 
-  const {
-    place,
-    setPlace,
-    onResetPlace,
-    selectedPlace,
-    setSelectedPlace,
-    placeQuery,
-    setPlaceQuery,
-  } = usePlace()
-  const { aroundPlaceRadius, setAroundPlaceRadius, aroundMeRadius, setAroundMeRadius } =
-    useAroundRadius()
+  // app state
+  const [place, setPlace] = useState<SuggestedPlace | null>(null)
+  const [aroundPlaceRadius, setAroundPlaceRadius] = useState(DEFAULT_RADIUS)
+  const [aroundMeRadius, setAroundMeRadius] = useState(DEFAULT_RADIUS)
+
+  // modal state
+  const [placeQuery, setPlaceQuery] = useState('') // search input value
+  const [selectedPlace, setSelectedPlace] = useState<SuggestedPlace | null>(null) // selected suggested place
+
+  const onResetPlace = useCallback(() => {
+    setSelectedPlace(null)
+    setPlaceQuery('')
+  }, [])
 
   useEffect(() => {
     switch (true) {

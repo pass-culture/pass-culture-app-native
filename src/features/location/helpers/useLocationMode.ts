@@ -31,7 +31,6 @@ export const useLocationMode = ({
   requestGeolocPermission,
   hasGeolocPosition,
   onSubmit,
-  tempLocationMode,
 }: Props) => {
   const { runGeolocationDialogs } = useGeolocationDialogs({
     dismissModal,
@@ -73,5 +72,5 @@ export const useLocationMode = ({
     }
   }
 
-  return { tempLocationMode, setTempLocationMode, selectLocationMode }
+  return { selectLocationMode }
 }

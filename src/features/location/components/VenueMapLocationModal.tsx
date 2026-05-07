@@ -43,11 +43,11 @@ export const VenueMapLocationModal = ({
     permissionState,
     requestGeolocPermission,
     showGeolocPermissionModal,
+    onModalHideRef,
   } = useLocation()
 
   const {
     tempLocationMode,
-    onModalHideRef,
     tempAroundPlaceRadius,
     tempAroundMeRadius,
     setTempAroundPlaceRadius,
