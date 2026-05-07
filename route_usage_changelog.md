@@ -1,13 +1,13 @@
-# v1.390.0
+# v1.391.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/favorites/{favorite_id}
 - /native/v1/me/reminders/{reminder_id}
-Pathname not found for getNativeV1AccountSuspendTokenValidationtoken
+- /native/v1/account/suspend/token_validation/{token}
 - /native/v1/account/suspension_date
 - /native/v1/account/suspension_status
-Pathname not found for getNativeV1ArtistsartistId
-Pathname not found for getNativeV1Banner
+- /native/v1/artists/{artist_id}
+- /native/v1/banner
 - /native/v1/countries
 - /native/v1/cultural_survey/questions
 - /native/v1/email_validation_remaining_resends/{email}
@@ -18,7 +18,6 @@ Pathname not found for getNativeV1Banner
 - /native/v1/offer/{offer_id}/chronicles
 - /native/v1/offer/{offer_id}/advices
 - /native/v1/profile/token_expiration
-- /native/v1/reaction/available
 - /native/v1/recommendation/similar_offers/{offer_id}
 - /native/v1/settings
 - /native/v1/subcategories/v2
@@ -29,6 +28,7 @@ Pathname not found for getNativeV1Banner
 - /native/v2/bookings/{booking_id}
 - /native/v2/bookings/{status}
 - /native/v2/profile/email_update/status
+- /native/v2/reaction/available
 - /native/v2/subscription/stepper
 - /native/v2/venue/{venue_id}
 - /native/v3/offer/{offer_id}
@@ -52,7 +52,6 @@ Pathname not found for getNativeV1Banner
 - /native/v1/oauth/{sso_provider}/account
 - /native/v1/oauth/{sso_provider}/authorize
 - /native/v1/profile/email_update/cancel
-- /native/v1/reaction
 - /native/v1/recommendation/playlist
 - /native/v1/refresh_access_token
 - /native/v1/request_password_reset
@@ -72,16 +71,19 @@ Pathname not found for getNativeV1Banner
 - /native/v2/profile/email_update/new_email
 - /native/v2/profile/email_update/new_password
 - /native/v2/profile/update_email
+- /native/v2/reaction
 - /native/v1/profile/email_update/validate
 ## Unused routes:
 - /native/v1/bookings
 - /native/v1/categories
 - /native/v1/offerer/{offerer_id}/headline-offer
 - /native/v1/offer/{offer_id}
-- /native/v1/venue/{venue_id}
+- /native/v1/reaction/available
+Pathname not found for getNativeV1VenuevenueId
 - /native/v2/offer/{offer_id}
 - /native/v3/subscription/stepper
 - /native/v1/profile
+- /native/v1/reaction
 - /native/v2/refresh_access_token
 /native/v2/signin
 - /native/v2/signin
