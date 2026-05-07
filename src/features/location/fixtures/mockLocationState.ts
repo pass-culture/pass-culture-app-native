@@ -9,7 +9,6 @@ export const mockLocationState: LocationState = {
   setPlaceQuery: jest.fn(),
   selectedPlace: null,
   setSelectedPlace: jest.fn(),
-  onSetSelectedPlace: jest.fn(),
   onResetPlace: jest.fn(),
   setPlace: jest.fn(),
   onModalHideRef: { current: jest.fn() },

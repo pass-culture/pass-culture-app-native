@@ -12,16 +12,10 @@ export const usePlace = () => {
     setPlaceQuery('')
   }
 
-  const onSetSelectedPlace = (place: SuggestedPlace) => {
-    setSelectedPlace(place)
-    setPlaceQuery(place.label)
-  }
-
   return {
     place,
     setPlace,
     onResetPlace,
-    onSetSelectedPlace,
     selectedPlace,
     setSelectedPlace,
     placeQuery,
