@@ -29,7 +29,7 @@ describe('OnGoingBookingItem', () => {
   it('should navigate to the booking details page', async () => {
     renderOnGoingBookingItem(initialBooking)
 
-    const item = await screen.findByTestId(/Réservation de l’offre/)
+    const item = await screen.findByTestId(/Réservation en cours/)
     await userEvent.press(item)
 
     expect(navigate).toHaveBeenCalledWith('BookingDetails', { id: initialBooking.id })
@@ -38,7 +38,7 @@ describe('OnGoingBookingItem', () => {
   it('should log analytic logViewedBookingPage when click on CTA', async () => {
     renderOnGoingBookingItem(initialBooking)
 
-    const item = await screen.findByTestId(/Réservation de l’offre/)
+    const item = await screen.findByTestId(/Réservation en cours/)
     await userEvent.press(item)
 
     expect(analytics.logViewedBookingPage).toHaveBeenCalledWith({

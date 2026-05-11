@@ -115,7 +115,7 @@ exports[`EndedBookings should render correctly 1`] = `
         }
       >
         <View
-          accessibilityLabel="Réservation annulée de l’offre Harry Potter, le 15/03/2021"
+          accessibilityLabel="Réservation annulée - le 15/03/2021 - Harry Potter"
           accessibilityRole="button"
           accessibilityState={
             {
@@ -163,7 +163,7 @@ exports[`EndedBookings should render correctly 1`] = `
               },
             ]
           }
-          testID="Réservation annulée de l’offre Harry Potter, le 15/03/2021"
+          testID="Réservation annulée - le 15/03/2021 - Harry Potter"
         >
           <View
             gap={4}

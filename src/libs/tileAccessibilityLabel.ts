@@ -2,6 +2,7 @@ import { BookingProperties } from 'features/bookings/types'
 import { OfferTileProps } from 'features/offer/types'
 import { VenueHit } from 'libs/algolia/types'
 import { parseActivity } from 'libs/parsers/activity'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 
 type Offer = Pick<OfferTileProps, 'name' | 'categoryLabel' | 'price' | 'date' | 'isDuo'> & {
   distance?: string
@@ -14,6 +15,7 @@ type Booking = {
   date?: string
   dateUsed?: string
   cancellationDate?: string
+  venueName?: string
 }
 type TileContent = Offer | Venue | Booking
 export enum TileContentType {
@@ -45,17 +47,17 @@ function getVenueAccessibilityLabel(venue: Venue) {
 }
 
 function getBookingAccessibilityLabel(booking: Booking) {
-  const { name, properties, date, dateUsed, cancellationDate } = booking
-  const nameLabel = name ?? ''
-  const defaultBookingLabel = 'Réservation de l’offre'
-  let bookingLabel = dateUsed ? 'Réservation utilisée de l’offre' : defaultBookingLabel
-  bookingLabel = cancellationDate ? 'Réservation annulée de l’offre' : bookingLabel
-  const datePrefix = properties?.isEvent ? 'pour' : ''
-  const bookingDateLabel = date ? `${datePrefix} ${date}` : ''
-  const ongoingBookingDateLabel = properties?.isPermanent ? 'permanente' : bookingDateLabel
+  const { name, properties, date, dateUsed, cancellationDate, venueName } = booking
+  const bookingStatus = cancellationDate
+    ? 'Réservation annulée'
+    : dateUsed
+      ? 'Réservation utilisée'
+      : 'Réservation en cours'
+  const ongoingBookingDateLabel = properties?.isPermanent ? 'permanente' : date
   const labelDate = dateUsed ?? cancellationDate
   const usedBookingDateLabel = labelDate ? `le ${labelDate}` : undefined
-  return bookingLabel + ` ${nameLabel}, ${usedBookingDateLabel ?? ongoingBookingDateLabel}`
+  const bookingDate = usedBookingDateLabel ?? ongoingBookingDateLabel
+  return getComputedAccessibilityLabel(bookingStatus, bookingDate, name, venueName)
 }
 
 export function tileAccessibilityLabel(type: TileContentType, content: TileContent): string {
