@@ -46,7 +46,7 @@ describe('VenueTile component', () => {
   it('should navigate to the venue when clicking on the venue tile', async () => {
     renderVenueTile()
 
-    await user.press(screen.getByTestId(/Lieu/))
+    await user.press(screen.getByLabelText('Le Petit Rintintin 1 - Paris - 75000 - Cinéma'))
 
     expect(navigate).toHaveBeenCalledWith('Venue', { id: venue.id })
   })
@@ -54,7 +54,7 @@ describe('VenueTile component', () => {
   it('should log analytics event ConsultVenue when pressing on the venue tile', async () => {
     renderVenueTile()
 
-    await user.press(screen.getByTestId(/Lieu/))
+    await user.press(screen.getByLabelText('Le Petit Rintintin 1 - Paris - 75000 - Cinéma'))
 
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
       venueId: venue.id.toString(),
@@ -67,7 +67,7 @@ describe('VenueTile component', () => {
   it('should log analytics event ConsultVenue with homeEntryId when provided', async () => {
     renderVenueTile({ homeEntryId: 'abcd' })
 
-    await user.press(screen.getByTestId(/Lieu/))
+    await user.press(screen.getByLabelText('Le Petit Rintintin 1 - Paris - 75000 - Cinéma'))
 
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
       venueId: venue.id.toString(),

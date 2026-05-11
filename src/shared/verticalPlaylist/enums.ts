@@ -3,4 +3,5 @@ export enum VerticalPlaylist {
   SimilarOffers = 'similarOffers',
   ThematicSearchOffers = 'thematicSearchOffers',
   VenueOffers = 'venueOffers',
+  ModuleVenues = 'moduleVenues',
 }
