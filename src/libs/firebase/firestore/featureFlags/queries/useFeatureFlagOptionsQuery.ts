@@ -1,4 +1,4 @@
-import { onlineManager, useQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { getAllFeatureFlags } from 'libs/firebase/firestore/featureFlags/getAllFeatureFlags'
 import { FeatureFlagConfig, squads } from 'libs/firebase/firestore/featureFlags/types'
@@ -26,7 +26,6 @@ export const useFeatureFlagOptionsQuery = (
     queryKey: [QueryKeys.FEATURE_FLAGS],
     queryFn: getAllFeatureFlags,
     staleTime: 1000 * 60 * 60 * 24, // 24h (re-renders whole app because of usage of feature flag in the ThemeWrapper)
-    enabled: onlineManager.isOnline(),
   })
   const { logType } = useLogTypeFromRemoteConfig()
 
