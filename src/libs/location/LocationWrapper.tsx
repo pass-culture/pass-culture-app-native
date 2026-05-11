@@ -2,9 +2,9 @@ import React, { memo, useCallback, useContext, useEffect, useMemo, useRef, useSt
 
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { analytics } from 'libs/analytics/provider'
-import { useSafeState } from 'libs/hooks'
 import { useGeolocation } from 'libs/location/geolocation/hook/useGeolocation'
 import { LocationMode, ILocationContext, Position } from 'libs/location/types'
+import { locationActions, useLocationV2 } from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { storage } from 'libs/storage'
 
@@ -43,9 +43,9 @@ export const LocationWrapper = memo(function LocationWrapper({
 }: {
   children: React.JSX.Element
 }) {
-  const [selectedLocationMode, setSelectedLocationMode] = useSafeState<LocationMode>(
-    LocationMode.EVERYWHERE
-  )
+  const { locationMode: selectedLocationMode } = useLocationV2()
+  const setSelectedLocationMode = locationActions.setLocationMode
+
   const {
     geolocPosition,
     geolocPositionError,

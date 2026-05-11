@@ -25,13 +25,15 @@ const locationStore = createStore({
   actions: (set) => ({
     setState: (state: Partial<LocationState>) => set(state),
     resetState: () => set(defaultState),
+    setLocationMode: (locationMode: LocationMode) => set({ locationMode }),
   }),
   selectors: {
     selectState: () => (state) => state,
+    selectLocationMode: () => (state) => state.locationMode,
   },
   options: { persist: true },
 })
 
 export const locationActions = locationStore.actions
 export const locationSelectors = locationStore.selectors
-export const { useStore: useLocationV2 } = locationStore.hooks
+export const { useStore: useLocationV2, useLocationMode } = locationStore.hooks

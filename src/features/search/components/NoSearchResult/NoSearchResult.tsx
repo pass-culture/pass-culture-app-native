@@ -13,7 +13,7 @@ import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type NoSearchResultProps = {
-  setSelectedLocationMode: React.Dispatch<React.SetStateAction<LocationMode>>
+  setSelectedLocationMode: (locationMode: LocationMode) => void
   searchState: SearchState
   setPlace: (place: SuggestedPlace | null) => void
   navigateToSearchFilter: (searchState: SearchState) => void

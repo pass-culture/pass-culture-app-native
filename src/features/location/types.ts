@@ -13,7 +13,7 @@ export type LocationState = {
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
   showGeolocPermissionModal: () => void
   selectedLocationMode: LocationMode
-  setSelectedLocationMode: Dispatch<SetStateAction<LocationMode>>
+  setSelectedLocationMode: (locationMode: LocationMode) => void
   selectedPlace: SuggestedPlace | null
   setSelectedPlace: Dispatch<SetStateAction<SuggestedPlace | null>>
   onResetPlace: () => void
