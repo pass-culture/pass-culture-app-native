@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
@@ -78,24 +78,29 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   const { banner } = useActivationBanner()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const shouldRenderSystemBanner = banner.name ? bannersToRender.has(banner.name) : false
-
-  const systemBannerAnalyticsType =
-    banner.name === BannerName.geolocation_banner ? 'location' : 'credit'
-
   const onPressSystemBanner = useCallback(
     (from: StepperOrigin) => {
       navigate(...getSubscriptionHookConfig('Stepper', { from }))
     },
     [navigate]
   )
-  const showFreeBeneficiaryBanner =
-    (user?.eligibilityType === 'ELIGIBLE_CREDIT_V2_16' ||
-      user?.eligibilityType === 'ELIGIBLE_CREDIT_V3_16' ||
-      user?.eligibilityType === 'ELIGIBLE_CREDIT_V3_15') &&
-    user.status.subscriptionStatus === 'has_to_complete_subscription'
-  const renderSystemBanner = useCallback(
-    (Icon: React.FunctionComponent<AccessibleIcon>, title: string, subtitle: string) => (
+
+  const SystemBanner = (() => {
+    const shouldRenderSystemBanner = banner.name ? bannersToRender.has(banner.name) : false
+
+    const showFreeBeneficiaryBanner =
+      user &&
+      ['ELIGIBLE_CREDIT_V3_16', 'ELIGIBLE_CREDIT_V3_15'].includes(user?.eligibilityType) &&
+      user.status.subscriptionStatus === 'has_to_complete_subscription'
+
+    const systemBannerAnalyticsType =
+      banner.name === BannerName.geolocation_banner ? 'location' : 'credit'
+
+    const renderSystemBanner = (
+      Icon: React.FunctionComponent<AccessibleIcon>,
+      title: string,
+      subtitle: string
+    ) => (
       <BannerContainer>
         <GenericSystemBanner
           leftIcon={Icon}
@@ -105,11 +110,8 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
           analyticsParams={{ type: systemBannerAnalyticsType, from: 'home' }}
         />
       </BannerContainer>
-    ),
-    [systemBannerAnalyticsType, onPressSystemBanner]
-  )
+    )
 
-  const SystemBanner = useMemo(() => {
     if (disableActivation && remoteActivationBannerOptions) {
       return (
         <BannerContainer>
@@ -157,20 +159,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
     }
 
     return null
-  }, [
-    disableActivation,
-    remoteActivationBannerOptions,
-    isLoggedIn,
-    showFreeBeneficiaryBanner,
-    shouldRenderSystemBanner,
-    banner.name,
-    banner.title,
-    banner.text,
-    showBonificationBanner,
-    renderSystemBanner,
-    user?.qfBonificationStatus,
-    onCloseBanner,
-  ])
+  })()
 
   return (
     <React.Fragment>

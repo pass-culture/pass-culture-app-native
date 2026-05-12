@@ -166,7 +166,6 @@ const subscriptionScreens: SubscriptionRouteConfig[] = [
   {
     name: 'FreeBeneficiaryAccountCreated',
     component: withAuthProtection(FreeBeneficiaryAccountCreated),
-    options: { title: 'Compte bénéficiaire créé\u00a0!' },
   },
   {
     name: 'EduConnectErrors',

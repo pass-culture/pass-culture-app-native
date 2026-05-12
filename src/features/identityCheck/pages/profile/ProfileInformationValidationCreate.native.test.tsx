@@ -83,6 +83,13 @@ useRoute.mockReturnValue({
 
 describe('ProfileInformationValidationCreate', () => {
   beforeEach(() => {
+    useRoute.mockReset()
+    useRoute.mockReturnValue({
+      params: {
+        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+        origin: ProfileOrigin.OFFER,
+      },
+    })
     setFeatureFlags()
     mockedUseName.mockReturnValue(mockName)
     mockedUseCity.mockReturnValue(mockCity)
@@ -133,6 +140,37 @@ describe('ProfileInformationValidationCreate', () => {
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith(
       'Tout est prêt, à toi les offres gratuites\u00a0!'
     )
+  })
+
+  it('should navigate to FreeBeneficiaryAccountCreated when coming from home', async () => {
+    useRoute
+      .mockReturnValueOnce({
+        params: {
+          type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+          origin: ProfileOrigin.HOME_BANNER,
+        },
+      })
+      .mockReturnValueOnce({
+        params: {
+          type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+          origin: ProfileOrigin.HOME_BANNER,
+        },
+      })
+
+    renderProfileInformationValidation()
+
+    await user.press(screen.getByText('Continuer'))
+
+    await waitFor(() => {
+      expect(reset).toHaveBeenCalledWith({
+        routes: [
+          {
+            name: 'SubscriptionStackNavigator',
+            state: { routes: [{ name: 'FreeBeneficiaryAccountCreated' }] },
+          },
+        ],
+      })
+    })
   })
 
   it('should navigate to SetName when press "Modifier mes informations"', async () => {
