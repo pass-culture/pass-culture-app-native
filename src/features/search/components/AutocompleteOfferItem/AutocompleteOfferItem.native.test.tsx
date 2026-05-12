@@ -21,6 +21,7 @@ import {
   mockHitsWithDifferentCounts,
 } from 'features/search/fixtures/autocompleteHits'
 import { SearchState } from 'features/search/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -60,6 +61,7 @@ describe('AutocompleteOfferItem component', () => {
       venue,
       priceRange: [0, 20],
     }
+    setFeatureFlags()
   })
 
   it('should not display `CINEMA` searchGroup', async () => {

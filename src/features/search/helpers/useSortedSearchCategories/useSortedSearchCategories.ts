@@ -1,3 +1,4 @@
+import type { ImageSourcePropType } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -9,15 +10,17 @@ import { useHasAThematicPageList } from 'features/search/helpers/useHasAThematic
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { CategoryButtonProps } from 'shared/categoryButton/CategoryButton'
-import { BackgroundColorKey, BorderColorKey } from 'theme/types'
+import { BackgroundColorKey, BorderColorKey, IllustrationColorKey } from 'theme/types'
 
 export type MappingOutput = Pick<
   CategoryButtonProps,
   'label' | 'navigateTo' | 'onBeforeNavigate' | 'height' | 'style'
 > & {
   searchLandingPosition: number | undefined
-  fillColor: BackgroundColorKey
+  fillColor: BackgroundColorKey | IllustrationColorKey
   borderColor: BorderColorKey
+  imageSource?: ImageSourcePropType
+  labelParts?: readonly string[]
 }
 
 export type ListCategoryButtonProps = MappingOutput[]
@@ -61,6 +64,8 @@ export const useSortedSearchCategories = (): ListCategoryButtonProps => {
       searchLandingPosition: category.searchLandingPosition,
       borderColor: category.borderColor,
       fillColor: category.fillColor,
+      imageSource: category.illustration,
+      labelParts: 'labelParts' in category ? category.labelParts : undefined,
     }))
     .sort(categoriesSortPredicate)
 }

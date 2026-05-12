@@ -10,9 +10,14 @@ import { useModal } from 'ui/components/modals/useModal'
 type Props = {
   onPressAIFakeDoorBanner: () => void
   enableAIFakeDoor?: boolean
+  enableNewCategoryBlocks?: boolean
 }
 
-export const CategoriesList: FC<Props> = ({ enableAIFakeDoor, onPressAIFakeDoorBanner }) => {
+export const CategoriesList: FC<Props> = ({
+  enableAIFakeDoor,
+  enableNewCategoryBlocks,
+  onPressAIFakeDoorBanner,
+}) => {
   const isWeb = Platform.OS === 'web'
 
   const sortedCategories = useSortedSearchCategories()
@@ -37,6 +42,7 @@ export const CategoriesList: FC<Props> = ({ enableAIFakeDoor, onPressAIFakeDoorB
       hideVenueMapLocationModal={hideVenueMapLocationModal}
       enableAIFakeDoor={enableAIFakeDoor}
       onPressAIFakeDoorBanner={onPressAIFakeDoorBanner}
+      enableNewCategoryBlocks={enableNewCategoryBlocks}
     />
   )
 }
