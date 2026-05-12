@@ -24,9 +24,10 @@ export const HomeLocationModal = ({ visible, dismissModal }: HomeLocationModalPr
     permissionState,
     showGeolocPermissionModal,
     requestGeolocPermission,
+    onModalHideRef,
   } = useLocation()
 
-  const { onModalHideRef, tempLocationMode, setTempLocationMode } = useLocationState({
+  const { tempLocationMode, setTempLocationMode } = useLocationState({
     visible,
   })
 

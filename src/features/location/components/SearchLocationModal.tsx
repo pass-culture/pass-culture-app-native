@@ -33,11 +33,11 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
     permissionState,
     showGeolocPermissionModal,
     requestGeolocPermission,
+    onModalHideRef,
   } = useLocation()
 
   const {
     tempLocationMode,
-    onModalHideRef,
     tempAroundPlaceRadius,
     tempAroundMeRadius,
     setTempAroundMeRadius,

@@ -1,21 +1,21 @@
 import { LocationMode } from 'libs/location/types'
-import { locationActions, locationSelectors } from 'libs/locationV2/location.store'
+import { LocationState, locationActions, locationSelectors } from 'libs/locationV2/location.store'
 import { createStore } from 'libs/store/createStore'
 
-type LocationModal = {
+type LocationModalState = {
   visible: boolean
-  locationMode: LocationMode
-  aroundMeRadius: number
-  aroundPlaceAddress: string
-  aroundPlaceRadius: number
-}
+  addressInputValue: string
+} & LocationState
 
-const defaultState: LocationModal = {
+const defaultState: LocationModalState = {
   visible: false,
+  addressInputValue: '',
   locationMode: LocationMode.EVERYWHERE,
-  aroundMeRadius: 0,
-  aroundPlaceAddress: '',
-  aroundPlaceRadius: 0,
+  configuration: {
+    [LocationMode.AROUND_ME]: { radius: 50, coords: { lat: 0, lng: 0 } },
+    [LocationMode.AROUND_PLACE]: { radius: 50, address: '' },
+    [LocationMode.EVERYWHERE]: {},
+  },
 }
 
 const locationModalStore = createStore({
@@ -23,27 +23,31 @@ const locationModalStore = createStore({
   defaultState,
   actions: (set) => ({
     show: () => {
-      const state = locationSelectors.selectState()
-      set({ ...state, visible: true })
+      const locationState = locationSelectors.selectState()
+      set({ ...locationState, visible: true })
     },
     hide: () => set({ visible: false }),
     submit: () => {
       set((state) => {
+        const { locationMode, configuration } = state
         locationActions.setState({
-          locationMode: state.locationMode,
-          aroundMeRadius: state.aroundMeRadius,
-          aroundPlaceAddress: state.aroundPlaceAddress,
-          aroundPlaceRadius: state.aroundPlaceRadius,
+          locationMode,
+          configuration,
         })
         return { visible: false }
       })
     },
-    setAroundMe: () => set({ locationMode: LocationMode.AROUND_ME }),
-    setAroundMeRadius: (radius: number) => set({ aroundMeRadius: radius }),
-    setAroundPlace: () => set({ locationMode: LocationMode.AROUND_PLACE }),
-    setAroundPlaceAddress: (address: string) => set({ aroundPlaceAddress: address }),
-    setAroundPlaceRadius: (radius: number) => set({ aroundPlaceRadius: radius }),
-    setEverywhere: () => set({ locationMode: LocationMode.EVERYWHERE }),
+    setLocationMode: (locationMode: LocationMode) => set({ locationMode }),
+    updateConfig: (
+      mode: LocationMode,
+      data: Partial<LocationState['configuration'][LocationMode]>
+    ) =>
+      set((state) => ({
+        configuration: {
+          ...state.configuration,
+          [mode]: { ...state.configuration[mode], ...data },
+        },
+      })),
   }),
 })
 

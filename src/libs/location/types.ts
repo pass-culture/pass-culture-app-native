@@ -49,7 +49,7 @@ export type ILocationContext = {
   showGeolocPermissionModal: () => void
   onPressGeolocPermissionModalButton: () => void
   selectedLocationMode: LocationMode
-  setSelectedLocationMode: Dispatch<SetStateAction<LocationMode>>
+  setSelectedLocationMode: (locationMode: LocationMode) => void
   selectedPlace: SuggestedPlace | null
   setSelectedPlace: Dispatch<SetStateAction<SuggestedPlace | null>>
   onResetPlace: () => void
