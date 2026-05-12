@@ -93,6 +93,17 @@ export function getSSOLoginMethod(
   return `${kind === 'login' ? 'fromLogin' : 'fromSignup'}${suffix}` as LoginRoutineMethod
 }
 
+export type CTAexitActivationFlow =
+  | 'Skip'
+  | 'Exit'
+  | 'AccessCatalog'
+  | 'FinishLater'
+  | 'Quit'
+  | 'IdentifyLater'
+  | 'Login'
+  | 'Close'
+  | 'GoToDemarcheNumerique'
+
 /* eslint sort-keys-fix/sort-keys-fix: "error" */
 export const logEventAnalytics = {
   logAcceptNotifications: () =>
@@ -449,6 +460,17 @@ export const logEventAnalytics = {
     seenDuration: number
     videoDuration: number
   }) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_DISMISSED_MODAL }, params),
+  logHasExitedActivationFlow: ({
+    from,
+    origin_detail,
+  }: {
+    from: Referrals
+    origin_detail: CTAexitActivationFlow
+  }) =>
+    analytics.logEvent(
+      { firebase: AnalyticsEvent.HAS_EXITED_ACTIVATION_FLOW },
+      { from, origin_detail }
+    ),
   logHasMadeAChoiceForCookies: ({ from, type }: { from: string; type: CookiesChoiceByCategory }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.HAS_MADE_A_CHOICE_FOR_COOKIES },
