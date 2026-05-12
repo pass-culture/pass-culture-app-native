@@ -204,7 +204,6 @@ jobs:
     uses: ./.github/workflows/dev_on_workflow_call_e2e_android.yml
     with:
       upload_name_prefix: '[PR]'
-      test_tags: 'nightlyAndroid'
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
@@ -215,7 +214,6 @@ jobs:
     uses: ./.github/workflows/dev_on_workflow_call_e2e_ios.yml
     with:
       upload_name_prefix: '[PR]'
-      test_tags: 'nightlyIOS'
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}

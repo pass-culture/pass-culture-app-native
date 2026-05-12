@@ -9,10 +9,9 @@ on:
         type: string
         default: '[MES]'
       test_tags:
-        description: 'Tags to include in the test run (activation, decouverte, conversion, or nightlyIOS)'
+        description: 'Tags to include in the test run. If empty, all tests are run.'
         required: false
         type: string
-        default: 'nightlyIOS'
     secrets:
       GCP_EHP_SERVICE_ACCOUNT:
         required: true
@@ -139,7 +138,7 @@ jobs:
           project-id: proj_01javz1ncreqb9dcshv3y4da44
           app-file: ${{ steps.find_app.outputs.APP_PATH }}
           name: ${{ steps.generate_name.outputs.CUSTOM_NAME }}
-          workspace: .maestro/tests/
+          workspace: .maestro/testsV3/
           device-locale: fr_FR
           device-os: iOS-17-5
           device-model: iPhone-11
