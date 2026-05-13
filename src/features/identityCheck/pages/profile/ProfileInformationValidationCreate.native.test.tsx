@@ -33,9 +33,6 @@ const mockUseMutationError = (error?: ApiError) => {
 }
 
 const mockOfferId: number | null = 123456
-jest.mock('features/offer/store/freeOfferIdStore', () => ({
-  useFreeOfferId: () => mockOfferId,
-}))
 
 jest.mock('features/identityCheck/pages/profile/store/nameStore')
 const mockedUseName = useName as jest.Mock
@@ -78,6 +75,7 @@ useRoute.mockReturnValue({
   params: {
     type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
     origin: ProfileOrigin.OFFER,
+    freeOfferId: mockOfferId,
   },
 })
 
@@ -88,6 +86,7 @@ describe('ProfileInformationValidationCreate', () => {
       params: {
         type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
         origin: ProfileOrigin.OFFER,
+        freeOfferId: mockOfferId,
       },
     })
     setFeatureFlags()
@@ -124,6 +123,7 @@ describe('ProfileInformationValidationCreate', () => {
       params: {
         type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
         origin: ProfileOrigin.OFFER,
+        freeOfferId: mockOfferId,
       },
     })
 
@@ -148,12 +148,14 @@ describe('ProfileInformationValidationCreate', () => {
         params: {
           type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
           origin: ProfileOrigin.HOME_BANNER,
+          freeOfferId: mockOfferId,
         },
       })
       .mockReturnValueOnce({
         params: {
           type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
           origin: ProfileOrigin.HOME_BANNER,
+          freeOfferId: mockOfferId,
         },
       })
 
@@ -183,6 +185,7 @@ describe('ProfileInformationValidationCreate', () => {
       params: {
         type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
         origin: ProfileOrigin.OFFER,
+        freeOfferId: mockOfferId,
       },
     })
   })

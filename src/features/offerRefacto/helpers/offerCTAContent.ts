@@ -200,6 +200,7 @@ export const getCTAProps = (type: CTAType, context: CTAContext): CTAWordingAndAc
           {
             type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
             origin: ProfileOrigin.OFFER,
+            freeOfferId: offer.id,
           }
         ),
       }

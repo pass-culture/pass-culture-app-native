@@ -101,6 +101,7 @@ describe('getCtaWordingAndAction', () => {
             params: {
               type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
               origin: ProfileOrigin.OFFER,
+              freeOfferId: baseOffer.id,
             },
             screen: 'SetName',
           },
@@ -133,6 +134,7 @@ describe('getCtaWordingAndAction', () => {
             params: {
               type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
               origin: ProfileOrigin.OFFER,
+              freeOfferId: baseOffer.id,
             },
           },
         },

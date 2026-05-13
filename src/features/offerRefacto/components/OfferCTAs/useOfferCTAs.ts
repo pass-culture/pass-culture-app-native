@@ -1,8 +1,8 @@
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
-import { useCallback, useEffect } from 'react'
+import { useCallback } from 'react'
 import { useTheme } from 'styled-components/native'
 
-import { BookOfferResponse, EligibilityType, OfferResponse } from 'api/gen'
+import { BookOfferResponse, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useOngoingOrEndedBookingQueryV2 } from 'features/bookings/queries'
 import { useStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
@@ -14,18 +14,15 @@ import {
 } from 'features/navigation/RootNavigator/types'
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
-import { getIsProfileIncomplete } from 'features/offer/helpers/getIsProfileIncomplete/getIsProfileIncomplete'
 import { useHasEnoughCredit } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { selectReminderByOfferId } from 'features/offer/queries/selectors/selectReminderByOfferId'
 import { useAddReminderMutation } from 'features/offer/queries/useAddReminderMutation'
 import { useDeleteReminderMutation } from 'features/offer/queries/useDeleteReminderMutation'
 import { useGetRemindersQuery } from 'features/offer/queries/useGetRemindersQuery'
-import { freeOfferIdActions } from 'features/offer/store/freeOfferIdStore'
 import {
   getCTAWordingAndAction,
   getIsAComingSoonOffer,
   isFreeDigitalOffer,
-  isFreeOffer,
 } from 'features/offerRefacto/helpers'
 import { CTAContext, FavoriteCTAProps, OfferCTAsViewModel } from 'features/offerRefacto/types'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
@@ -189,16 +186,6 @@ export const useOfferCTAs = ({
   }, [addReminder, deleteReminder, isLoggedIn, offerId, reminder, reminderAuthModal])
 
   // 6. Effects
-  useEffect(() => {
-    const isUserFreeStatus = user?.eligibility === EligibilityType.free
-    const isProfileIncomplete = getIsProfileIncomplete(user)
-    const isEligibleFreeOffer15To16 = isUserFreeStatus
-
-    if (isLoggedIn && isEligibleFreeOffer15To16 && isProfileIncomplete && isFreeOffer(offer)) {
-      freeOfferIdActions.setFreeOfferId(offer.id)
-    }
-  }, [isLoggedIn, user, offer])
-
   useFocusEffect(
     useCallback(() => {
       trackEventHasSeenOfferOnce()

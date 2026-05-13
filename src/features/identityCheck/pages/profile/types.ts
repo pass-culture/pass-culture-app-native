@@ -13,4 +13,5 @@ export enum ProfileOrigin {
 export interface ProfileScreenType {
   type: ProfileType
   origin?: ProfileOrigin
+  freeOfferId?: number
 }

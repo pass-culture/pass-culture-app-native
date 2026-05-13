@@ -9,7 +9,7 @@ type OfferNavigation = NativeStackNavigationProp<RootStackParamList, 'Offer'>
 
 type Params = {
   isBookingFreeOffer: boolean
-  storedFreeOfferId?: number | null
+  freeOfferId?: number | null
   profileOrigin?: ProfileOrigin
   reset: OfferNavigation['reset']
 }
@@ -20,14 +20,14 @@ type SuccessParams = Params & {
 }
 
 function handleFreeOfferProfileSuccess({
-  storedFreeOfferId,
+  freeOfferId,
   profileOrigin,
   reset,
-}: Pick<SuccessParams, 'storedFreeOfferId' | 'profileOrigin' | 'reset'>) {
-  const isFromOffer = profileOrigin === ProfileOrigin.OFFER && !!storedFreeOfferId
+}: Pick<SuccessParams, 'freeOfferId' | 'profileOrigin' | 'reset'>) {
+  const isFromOffer = profileOrigin === ProfileOrigin.OFFER && !!freeOfferId
 
   if (isFromOffer) {
-    reset({ routes: [{ name: 'Offer', params: { id: storedFreeOfferId } }] })
+    reset({ routes: [{ name: 'Offer', params: { id: freeOfferId } }] })
     showSuccessSnackBar('Tout est prêt, à toi les offres gratuites\u00a0!')
     return
   }
@@ -69,13 +69,13 @@ export function handlePostProfileSuccess(params: SuccessParams) {
     isBookingFreeOffer,
     reset,
     profileOrigin,
-    storedFreeOfferId,
+    freeOfferId,
     navigateForwardToStepper,
     refetchUser,
   } = params
 
   if (isBookingFreeOffer) {
-    handleFreeOfferProfileSuccess({ storedFreeOfferId, profileOrigin, reset })
+    handleFreeOfferProfileSuccess({ freeOfferId, profileOrigin, reset })
   } else {
     handleStandardProfileSuccess({ navigateForwardToStepper })
   }
@@ -85,16 +85,16 @@ export function handlePostProfileSuccess(params: SuccessParams) {
 }
 
 function handleFreeOfferProfileError({
-  storedFreeOfferId,
+  freeOfferId,
   reset,
-}: Pick<Params, 'storedFreeOfferId' | 'reset'>) {
-  if (storedFreeOfferId) {
+}: Pick<Params, 'freeOfferId' | 'reset'>) {
+  if (freeOfferId) {
     reset({
       routes: [
         {
           name: 'SubscriptionStackNavigator',
           state: {
-            routes: [{ name: 'SetProfileBookingError', params: { offerId: storedFreeOfferId } }],
+            routes: [{ name: 'SetProfileBookingError', params: { offerId: freeOfferId } }],
           },
         },
       ],
@@ -114,10 +114,10 @@ function handleFreeOfferProfileError({
 }
 
 export function handlePostProfileError(params: Params) {
-  const { isBookingFreeOffer, reset, storedFreeOfferId } = params
+  const { isBookingFreeOffer, reset, freeOfferId } = params
 
   if (isBookingFreeOffer) {
-    handleFreeOfferProfileError({ storedFreeOfferId, reset })
+    handleFreeOfferProfileError({ freeOfferId, reset })
   } else {
     showErrorSnackBar('Une erreur est survenue lors de la mise à jour de ton profil')
   }

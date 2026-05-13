@@ -35,6 +35,7 @@ export const SetAddress = () => {
   const { params } = useRoute<UseRouteType<'SetAddress'>>()
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
   const origin = params?.origin
+  const freeOfferId = params?.freeOfferId
 
   const identityCheckAndRecapExistingDataConfig = {
     headerTitle: 'Profil',
@@ -107,10 +108,17 @@ export const SetAddress = () => {
 
   const hasError = !isValidAddress && query.length > 0
 
+  const getStatusNavigationParams = () => {
+    if (origin) {
+      return freeOfferId ? { type, origin, freeOfferId } : { type, origin }
+    }
+    return freeOfferId ? { type, freeOfferId } : { type }
+  }
+
   const submitAddress = async () => {
     if (!enabled) return
     setStoreAddress(selectedAddress ?? query)
-    navigate(...getSubscriptionHookConfig('SetStatus', origin ? { type, origin } : { type }))
+    navigate(...getSubscriptionHookConfig('SetStatus', getStatusNavigationParams()))
   }
 
   const errorMessage =

@@ -24,6 +24,7 @@ export const SetStatus = () => {
 
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
   const origin = params?.origin
+  const freeOfferId = params?.freeOfferId
 
   const identityCheckAndRecapExistingDataConfig = 'Profil'
   const pageConfigByType = {
@@ -62,11 +63,19 @@ export const SetStatus = () => {
       setIsLoading(true)
       setStoreStatus(formValues.selectedStatus)
       navigate(
-        ...getSubscriptionHookConfig('ActivationProfileRecap', origin ? { type, origin } : { type })
+        ...getSubscriptionHookConfig(
+          'ActivationProfileRecap',
+          (() => {
+            if (origin) {
+              return freeOfferId ? { type, origin, freeOfferId } : { type, origin }
+            }
+            return freeOfferId ? { type, freeOfferId } : { type }
+          })()
+        )
       )
       setIsLoading(false)
     },
-    [navigate, origin, setStoreStatus, type]
+    [freeOfferId, navigate, origin, setStoreStatus, type]
   )
 
   const headerHeight = useGetHeaderHeight()

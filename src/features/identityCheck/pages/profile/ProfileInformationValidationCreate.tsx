@@ -17,7 +17,6 @@ import { usePostProfileMutation } from 'features/identityCheck/queries/usePostPr
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
-import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
 import { SuggestedCity } from 'libs/place/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -59,7 +58,7 @@ export const ProfileInformationValidationCreate = () => {
 
   const storedProfileInfos = useStoredProfileInfos()
   const saveStep = useSaveStep()
-  const storedFreeOfferId = useFreeOfferId()
+  const freeOfferId = params?.freeOfferId
 
   const shouldGetDataFromLocalStorage =
     pageConfigByType[type].formDataSource === DataSources.LOCAL_STORAGE
@@ -84,7 +83,7 @@ export const ProfileInformationValidationCreate = () => {
       handlePostProfileSuccess({
         isBookingFreeOffer,
         profileOrigin,
-        storedFreeOfferId,
+        freeOfferId,
         navigateForwardToStepper,
         reset,
         refetchUser,
@@ -92,7 +91,7 @@ export const ProfileInformationValidationCreate = () => {
     onError: () =>
       handlePostProfileError({
         isBookingFreeOffer,
-        storedFreeOfferId,
+        freeOfferId,
         reset,
       }),
   })
@@ -128,13 +127,18 @@ export const ProfileInformationValidationCreate = () => {
   }, [activityId, address, city, firstName, lastName, postProfile, postalCode, saveStep])
 
   const onSubmitProfile = () => submitProfileInfo()
+
+  const getChangeInformationParams = () => {
+    if (profileOrigin) {
+      return freeOfferId
+        ? { type, origin: profileOrigin, freeOfferId }
+        : { type, origin: profileOrigin }
+    }
+    return freeOfferId ? { type, freeOfferId } : { type }
+  }
+
   const onChangeInformation = () =>
-    navigate(
-      ...getSubscriptionHookConfig(
-        'SetName',
-        profileOrigin ? { type, origin: profileOrigin } : { type }
-      )
-    )
+    navigate(...getSubscriptionHookConfig('SetName', getChangeInformationParams()))
 
   const cityLabel = city && postalCode ? `${city} ${postalCode}` : undefined
   const activityLabel = activityId ? getActivityLabel(activityId) : undefined
