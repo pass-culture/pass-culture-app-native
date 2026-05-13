@@ -1,5 +1,7 @@
 import { FeatureCollection, Point } from 'geojson'
 
+import { GeoCoordinates } from 'libs/location/types'
+
 // See https://geo.api.gouv.fr/adresse for more info
 
 export interface Properties {
@@ -24,10 +26,7 @@ export interface SuggestedPlace {
   label: string
   info: string
   type?: 'locality' | 'municipality' | 'housenumber' | 'street'
-  geolocation: {
-    longitude: number
-    latitude: number
-  } | null
+  geolocation: GeoCoordinates | null
 }
 export interface SuggestedCity {
   name: string

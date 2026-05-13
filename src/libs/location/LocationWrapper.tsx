@@ -62,9 +62,11 @@ export const LocationWrapper = memo(function LocationWrapper({
   const onModalHideRef = useRef<() => void>(() => null)
 
   // app state
-  const [place, setPlace] = useState<SuggestedPlace | null>(null)
-  const [aroundPlaceRadius, setAroundPlaceRadius] = useState(DEFAULT_RADIUS)
-  const [aroundMeRadius, setAroundMeRadius] = useState(DEFAULT_RADIUS)
+  const { place, radius: aroundPlaceRadius } = useLocationV2().configuration.AROUND_PLACE
+  const { setAroundPlacePlace: setPlace, setAroundPlaceRadius } = locationActions
+
+  const { radius: aroundMeRadius } = useLocationV2().configuration.AROUND_ME
+  const { setAroundMeRadius } = locationActions
 
   // modal state
   const [placeQuery, setPlaceQuery] = useState('') // search input value
