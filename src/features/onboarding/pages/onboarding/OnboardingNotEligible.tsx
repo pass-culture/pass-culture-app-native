@@ -3,7 +3,7 @@ import React from 'react'
 import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
-import { analytics } from 'libs/analytics/__mocks__/provider'
+import { analytics } from 'libs/analytics/provider'
 import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 
