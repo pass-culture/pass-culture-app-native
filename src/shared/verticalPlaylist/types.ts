@@ -3,6 +3,7 @@ import { OffersModule } from 'features/home/types'
 import { PlaylistType } from 'features/offer/enums'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
 import { Artist } from 'features/venue/types'
+import { VenueHit } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 
@@ -18,7 +19,7 @@ export type OffersVenue = {
   playlistTitle: string
 }
 
-export type VerticalPlaylistSource =
+export type VerticalPlaylistOffersSource =
   | { type: VerticalPlaylist.ModuleOffers; module: OffersModule }
   | { type: VerticalPlaylist.SimilarOffers; module: OffersSimilars }
   | { type: VerticalPlaylist.VenueOffers; module: OffersVenue }
@@ -37,4 +38,11 @@ export type VerticalPlaylistArtistsData = {
   nbItems: number
   title: string
   subtitle?: string
+}
+
+export type VerticalPlaylistVenuesData = {
+  items: VenueHit[]
+  title: string
+  subtitle?: string
+  nbItems: number
 }

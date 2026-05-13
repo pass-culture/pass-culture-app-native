@@ -9,7 +9,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BookingsTab } from 'features/bookings/enum'
-import { Color, OffersModuleParameters } from 'features/home/types'
+import { Color, OffersModuleParameters, VenuesModule } from 'features/home/types'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
 import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
@@ -20,7 +20,7 @@ import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { SuggestedPlace } from 'libs/place/types'
-import { VerticalPlaylistSource } from 'shared/verticalPlaylist/types'
+import { VerticalPlaylistOffersSource } from 'shared/verticalPlaylist/types'
 
 import { TabParamList } from '../TabBar/TabStackNavigatorTypes'
 
@@ -322,7 +322,8 @@ export type RootStackParamList = {
   _DeeplinkOnlyVenuePreviewCarousel3: VenuePreviewCarouselParams
   VerifyEligibility: undefined
   VerticalPlaylistArtists: { title: string; subtitle?: string; venueId?: number }
-  VerticalPlaylistOffers: VerticalPlaylistSource
+  VerticalPlaylistOffers: VerticalPlaylistOffersSource
+  VerticalPlaylistVenues: { module: VenuesModule }
   VideoModulePage: VideoModulePageParams
 } & TrustedDeviceRootStackParamList
 

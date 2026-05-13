@@ -85,7 +85,7 @@ describe('AttachedOfferCard', () => {
     mockUseLocation.mockReturnValueOnce(AROUND_ME_POSITION)
     render(<AttachedOfferCard offer={offer} />)
     const accessibilityLabel = screen.getByLabelText(
-      'Découvre l’offre exclusive "Un lit sous une rivière" de la catégorie "Concert". Date\u00a0: 17 novembre 2020. Prix\u00a0: 34 €. Distance : à 107 km.'
+      'Un lit sous une rivière - Concert - 17 novembre 2020 - 34 € - à 107 km'
     )
 
     expect(accessibilityLabel).toBeOnTheScreen()
