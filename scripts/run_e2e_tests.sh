@@ -77,8 +77,8 @@ else
 fi
 
 if [ "$platform" = "web" ]; then
-  if [[ "$rest_of_arguments" != *".maestro/tests/SmokeTestWeb.yaml"* ]]; then
-    rest_of_arguments=".maestro/tests/ $rest_of_arguments"
+  if [[ "$rest_of_arguments" != *".maestro/testsV3/web/SmokeTestWeb.yaml"* ]]; then
+    rest_of_arguments=".maestro/testsV3/ $rest_of_arguments"
   fi
 fi
 

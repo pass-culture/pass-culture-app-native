@@ -4,18 +4,16 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-      - tapOn: 'Rechercher des offres.*'
+      - tapOn: 'Mes favoris.*'
 
 - runFlow:
     when:
       platform: iOS
     commands:
-      - tapOn: 'Rechercher des offres.*'
+      - tapOn: 'Mes favoris.*'
 
 - runFlow:
     when:
       platform: Web
     commands:
-      - tapOn: 'Recherche'
-
-- waitForAnimationToEnd
+      - tapOn: 'Favoris'

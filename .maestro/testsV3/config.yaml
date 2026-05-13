@@ -7,3 +7,4 @@ flows:
   - booking/*
   - artist/*
   - offer/*
+  - web/*
