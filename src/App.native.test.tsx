@@ -4,6 +4,7 @@ import * as getDeviceInfo from 'features/trustedDevice/helpers/getDeviceInfo'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
 import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
+import * as migrateFromV1 from 'libs/reviewInApp/migrateFromV1'
 import { render, waitFor } from 'tests/utils'
 
 import { App } from './App'
@@ -62,6 +63,16 @@ describe('<App /> with mocked RootNavigator', () => {
 
     await waitFor(() => {
       expect(getDeviceInfoSpy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('should run the V1 store review migration on launch', async () => {
+    const runMigrationSpy = jest.spyOn(migrateFromV1, 'runMigrationFromV1')
+
+    renderApp()
+
+    await waitFor(() => {
+      expect(runMigrationSpy).toHaveBeenCalledTimes(1)
     })
   })
 })

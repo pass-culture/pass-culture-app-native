@@ -33,6 +33,7 @@ import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
 import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
+import { runMigrationFromV1 } from 'libs/reviewInApp/migrateFromV1'
 import { SplashScreenProvider } from 'libs/splashscreen/splashscreen'
 import { ThemeWrapper } from 'libs/styled/ThemeWrapper'
 import { useLaunchPerformanceObserver } from 'performance/useLaunchPerformanceObserver'
@@ -74,6 +75,7 @@ const App: FunctionComponent = function () {
       return deviceInfoStoreActions.setDeviceInfo(deviceInfo)
     }
     void setDeviceInfo()
+    void runMigrationFromV1().catch(eventMonitoring.captureException)
   }, [])
 
   return (
