@@ -204,14 +204,12 @@ describe('useAvailableCategories', () => {
         expect.objectContaining({
           icon: categoriesIcons.Conference,
           illustration: illustrations.mic,
-          labelParts: ['Concerts', 'et festivals'],
           facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
           borderColor: 'decorative01',
           fillColor: 'pending01',
         }),
         expect.objectContaining({
           icon: categoriesIcons.Palette,
-          labelParts: ['Arts et', 'Loisirs créatifs'],
           facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
           borderColor: 'decorative02',
           fillColor: 'information04',
@@ -219,28 +217,24 @@ describe('useAvailableCategories', () => {
         expect.objectContaining({
           icon: categoriesIcons.Museum,
           illustration: illustrations.vase,
-          labelParts: ['Musées et', 'visites culturelles'],
           facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
           borderColor: 'decorative01',
           fillColor: 'pending01',
         }),
         expect.objectContaining({
           icon: categoriesIcons.VideoGame,
-          labelParts: ['Jeux', 'et jeux vidéos'],
           facetFilter: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
           borderColor: 'brandPrimary',
           fillColor: 'information03',
         }),
         expect.objectContaining({
           icon: categoriesIcons.Press,
-          labelParts: ['Médias', 'et presse'],
           facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
           borderColor: 'decorative02',
           fillColor: 'information04',
         }),
         expect.objectContaining({
           icon: categoriesIcons.Microphone,
-          labelParts: ['Conférences', 'et rencontres'],
           facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
           borderColor: 'decorative03',
           fillColor: 'positive01',

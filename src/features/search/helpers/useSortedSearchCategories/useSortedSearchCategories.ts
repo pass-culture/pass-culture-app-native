@@ -5,6 +5,7 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { getSearchPropConfig } from 'features/navigation/SearchStackNavigator/getSearchPropConfig'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { isOnlyOnline } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { getCategoryLabelParts } from 'features/search/helpers/getCategoryLabelParts/getCategoryLabelParts'
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
 import { useHasAThematicPageList } from 'features/search/helpers/useHasAThematicPageList/useHasAThematicPageList'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
@@ -57,15 +58,19 @@ export const useSortedSearchCategories = (): ListCategoryButtonProps => {
     }) // we'd rather have it in url params but URL is not the only source of truth. When it is, this dispatch should be removed.
   }
   return categories
-    .map<MappingOutput>((category) => ({
-      label: searchGroupLabelMapping?.[category.facetFilter] || '',
-      navigateTo: navigateTo(category.facetFilter),
-      onBeforeNavigate: () => onBeforeNavigate(category.facetFilter),
-      searchLandingPosition: category.searchLandingPosition,
-      borderColor: category.borderColor,
-      fillColor: category.fillColor,
-      imageSource: category.illustration,
-      labelParts: 'labelParts' in category ? category.labelParts : undefined,
-    }))
+    .map<MappingOutput>((category) => {
+      const label = searchGroupLabelMapping?.[category.facetFilter] || ''
+
+      return {
+        label,
+        navigateTo: navigateTo(category.facetFilter),
+        onBeforeNavigate: () => onBeforeNavigate(category.facetFilter),
+        searchLandingPosition: category.searchLandingPosition,
+        borderColor: category.borderColor,
+        fillColor: category.fillColor,
+        imageSource: category.illustration,
+        labelParts: getCategoryLabelParts(label),
+      }
+    })
     .sort(categoriesSortPredicate)
 }

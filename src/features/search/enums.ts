@@ -64,7 +64,6 @@ export type CategoryCriteria = {
 export type NewCategoryCriteria = {
   icon: React.FC<AccessibleIcon>
   illustration: ImageSourcePropType
-  labelParts?: readonly string[]
   facetFilter: SearchGroupNameEnumv2
   searchLandingPosition: number
   filterModalPosition: number
@@ -91,7 +90,6 @@ type NewCategoryCriteriaWithNone = {
     ? {
         icon: React.FC<AccessibleIcon>
         illustration: undefined
-        labelParts: undefined
         facetFilter: SearchGroupNameEnumv2
         searchLandingPosition: undefined
         filterModalPosition: undefined
@@ -234,7 +232,6 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   [SearchGroupNameEnumv2.NONE]: {
     icon: categoriesIcons.All,
     illustration: undefined,
-    labelParts: undefined,
     facetFilter: SearchGroupNameEnumv2.NONE,
     searchLandingPosition: undefined,
     filterModalPosition: undefined,
@@ -253,7 +250,6 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: {
     icon: categoriesIcons.Conference,
     illustration: illustrations.mic,
-    labelParts: ['Concerts', 'et festivals'],
     facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
     searchLandingPosition: 1,
     filterModalPosition: 2,
@@ -272,7 +268,6 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: {
     icon: categoriesIcons.Cinema,
     illustration: illustrations.popcorn,
-    labelParts: ['Films, séries', 'et documentaires'],
     facetFilter: SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
     searchLandingPosition: 3,
     filterModalPosition: 4,
@@ -300,7 +295,6 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   [SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS]: {
     icon: categoriesIcons.Palette,
     illustration: illustrations.paintingPalette,
-    labelParts: ['Arts et', 'Loisirs créatifs'],
     facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
     searchLandingPosition: 6,
     filterModalPosition: 7,
@@ -319,7 +313,6 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   [SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES]: {
     icon: categoriesIcons.Museum,
     illustration: illustrations.vase,
-    labelParts: ['Musées et', 'visites culturelles'],
     facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
     searchLandingPosition: 8,
     filterModalPosition: 9,
@@ -329,7 +322,6 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS]: {
     icon: categoriesIcons.VideoGame,
     illustration: illustrations.videogame,
-    labelParts: ['Jeux', 'et jeux vidéos'],
     facetFilter: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
     searchLandingPosition: 9,
     filterModalPosition: 10,
@@ -339,7 +331,6 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   [SearchGroupNameEnumv2.MEDIA_PRESSE]: {
     icon: categoriesIcons.Press,
     illustration: illustrations.newspaper,
-    labelParts: ['Médias', 'et presse'],
     facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
     searchLandingPosition: 10,
     filterModalPosition: 11,
@@ -349,7 +340,6 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   [SearchGroupNameEnumv2.RENCONTRES_CONFERENCES]: {
     icon: categoriesIcons.Microphone,
     illustration: illustrations.notebook,
-    labelParts: ['Conférences', 'et rencontres'],
     facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
     searchLandingPosition: 12,
     filterModalPosition: 12,
@@ -359,7 +349,6 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE]: {
     icon: categoriesIcons.LiveEvent,
     illustration: illustrations.computer,
-    labelParts: ['Événements', 'en ligne'],
     searchLandingPosition: 13,
     filterModalPosition: 13,
     facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,

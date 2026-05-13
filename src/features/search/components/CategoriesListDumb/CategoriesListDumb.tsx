@@ -32,6 +32,7 @@ const DESKTOP_MIN_WIDTH = getSpacing(45.6)
 const MOBILE_MIN_WIDTH = '40%'
 const MOBILE_MIN_WIDTH_WHEN_FONT_ZOOMED = '100%'
 const MOBILE_MAX_WIDTH = '49%'
+const MOBILE_MAX_WIDTH_WHEN_FONT_ZOOMED = '100%'
 
 export const CategoriesListDumb: FunctionComponent<Props> = ({
   sortedCategories,
@@ -49,6 +50,10 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
   const mobileMinWidth = useMobileFontScaleToDisplay({
     default: MOBILE_MIN_WIDTH,
     at200PercentZoom: MOBILE_MIN_WIDTH_WHEN_FONT_ZOOMED,
+  })
+  const mobileMaxWidth = useMobileFontScaleToDisplay({
+    default: MOBILE_MAX_WIDTH,
+    at200PercentZoom: MOBILE_MAX_WIDTH_WHEN_FONT_ZOOMED,
   })
 
   return (
@@ -83,6 +88,7 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
               fillColor={designSystem.color.illustration[item.fillColor]}
               borderColor={designSystem.color.border[item.borderColor]}
               mobileMinWidth={mobileMinWidth}
+              mobileMaxWidth={mobileMaxWidth}
               height={NEW_CATEGORY_BUTTON_HEIGHT}
             />
           ) : (
@@ -92,6 +98,7 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
               fillColor={designSystem.color.background[item.fillColor]}
               borderColor={designSystem.color.border[item.borderColor]}
               mobileMinWidth={mobileMinWidth}
+              mobileMaxWidth={mobileMaxWidth}
               height={CATEGORY_BUTTON_HEIGHT}
             />
           )
@@ -107,25 +114,27 @@ const StyledScrollView = styled.ScrollView(({ theme }) => ({
   marginTop: theme.isMobileViewport ? 0 : theme.designSystem.size.spacing.s,
 }))
 
-const StyledCategoryButton = styled(CategoryButton)<{ mobileMinWidth: string }>(
-  ({ theme, mobileMinWidth }) => ({
-    flexGrow: 1,
-    flexShrink: 0,
-    flexBasis: 0,
-    minWidth: theme.isMobileViewport ? mobileMinWidth : DESKTOP_MIN_WIDTH,
-    maxWidth: theme.isMobileViewport ? MOBILE_MAX_WIDTH : DESKTOP_MAX_WIDTH,
-  })
-)
+const StyledCategoryButton = styled(CategoryButton)<{
+  mobileMinWidth: string
+  mobileMaxWidth: string
+}>(({ theme, mobileMinWidth, mobileMaxWidth }) => ({
+  flexGrow: 1,
+  flexShrink: 0,
+  flexBasis: 0,
+  minWidth: theme.isMobileViewport ? mobileMinWidth : DESKTOP_MIN_WIDTH,
+  maxWidth: theme.isMobileViewport ? mobileMaxWidth : DESKTOP_MAX_WIDTH,
+}))
 
-const StyledNewCategoryButton = styled(NewCategoryButton)<{ mobileMinWidth: string }>(
-  ({ theme, mobileMinWidth }) => ({
-    flexGrow: 1,
-    flexShrink: 0,
-    flexBasis: 0,
-    minWidth: theme.isMobileViewport ? mobileMinWidth : DESKTOP_MIN_WIDTH,
-    maxWidth: theme.isMobileViewport ? MOBILE_MAX_WIDTH : DESKTOP_MAX_WIDTH,
-  })
-)
+const StyledNewCategoryButton = styled(NewCategoryButton)<{
+  mobileMinWidth: string
+  mobileMaxWidth: string
+}>(({ theme, mobileMinWidth, mobileMaxWidth }) => ({
+  flexGrow: 1,
+  flexShrink: 0,
+  flexBasis: 0,
+  minWidth: theme.isMobileViewport ? mobileMinWidth : DESKTOP_MIN_WIDTH,
+  maxWidth: theme.isMobileViewport ? mobileMaxWidth : DESKTOP_MAX_WIDTH,
+}))
 
 const CategoriesButtonsContainer = styled.View(({ theme }) => ({
   width: '100%',

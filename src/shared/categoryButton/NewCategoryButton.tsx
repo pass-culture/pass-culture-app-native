@@ -39,7 +39,12 @@ export const NewCategoryButton: FunctionComponent<CategoryButtonProps> = ({
   imageSource,
   labelParts,
 }) => {
-  const labelPartsToDisplay = labelParts ?? [label]
+  const shouldUseAccessibleLayout = useMobileFontScaleToDisplay({
+    default: false,
+    at200PercentZoom: true,
+  })
+  const labelPartsToDisplay = shouldUseAccessibleLayout ? [label] : (labelParts ?? [label])
+  const imageSourceToDisplay = shouldUseAccessibleLayout ? undefined : imageSource
   const effectiveHeight = useMobileFontScaleToDisplay({
     default: height,
     at200PercentZoom: undefined,
@@ -60,14 +65,20 @@ export const NewCategoryButton: FunctionComponent<CategoryButtonProps> = ({
       borderColor={borderColor}
       style={style}
       height={effectiveHeight}>
-      <Container gap={2}>
-        <LabelContainer>
-          {labelPartsToDisplay.map((labelPart) => (
-            <Label key={labelPart}>{labelPart}</Label>
-          ))}
-        </LabelContainer>
-        {imageSource ? <CategoryIcon source={imageSource} /> : null}
-      </Container>
+      {shouldUseAccessibleLayout ? (
+        <AccessibleLabelContainer>
+          <Label>{label}</Label>
+        </AccessibleLabelContainer>
+      ) : (
+        <Container gap={2}>
+          <LabelContainer>
+            {labelPartsToDisplay.map((labelPart) => (
+              <Label key={labelPart}>{labelPart}</Label>
+            ))}
+          </LabelContainer>
+          {imageSourceToDisplay ? <CategoryIcon source={imageSourceToDisplay} /> : null}
+        </Container>
+      )}
     </TouchableContainer>
   )
 }
@@ -118,6 +129,12 @@ const LabelContainer = styled.View(({ theme }) => ({
   flex: 1,
   zIndex: 1,
   alignSelf: 'flex-end',
+}))
+
+const AccessibleLabelContainer = styled.View(({ theme }) => ({
+  padding: theme.designSystem.size.spacing.s,
+  width: '100%',
+  alignItems: 'flex-start',
 }))
 
 const Label = styled(Typo.BodyAccentS).attrs({ numberOfLines: 4 })(({ theme }) => ({

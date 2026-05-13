@@ -102,7 +102,7 @@ describe('CategoriesListDumb', () => {
             },
             borderColor: 'brandPrimary',
             fillColor: 'information03',
-            labelParts: ['Concerts', 'et festivals'],
+            labelParts: ['Concerts', '& festivals'],
             searchLandingPosition: undefined,
           },
         ]}
@@ -110,7 +110,7 @@ describe('CategoriesListDumb', () => {
     )
 
     expect(screen.getByText('Concerts')).toBeOnTheScreen()
-    expect(screen.getByText('et festivals')).toBeOnTheScreen()
+    expect(screen.getByText('& festivals')).toBeOnTheScreen()
   })
 
   it('should display new category blocks with label parts instead of raw label', () => {
@@ -133,17 +133,16 @@ describe('CategoriesListDumb', () => {
             },
             borderColor: 'decorative01',
             fillColor: 'pending01',
-            labelParts: ['Médias', 'et presse'],
+            labelParts: ['Médias', '& presse'],
             searchLandingPosition: undefined,
           },
         ]}
       />
     )
 
-    expect(screen.getByLabelText('Catégorie Médias et presse')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Catégorie Médias & presse')).toBeOnTheScreen()
     expect(screen.getByText('Médias')).toBeOnTheScreen()
-    expect(screen.getByText('et presse')).toBeOnTheScreen()
-    expect(screen.queryByText('Médias & presse')).not.toBeOnTheScreen()
+    expect(screen.getByText('& presse')).toBeOnTheScreen()
   })
 
   it('should display AI fake door banner when enableAIFakeDoor FF activated', () => {
