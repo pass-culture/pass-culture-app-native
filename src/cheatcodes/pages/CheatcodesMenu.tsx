@@ -157,6 +157,15 @@ export function CheatcodesMenu(): React.JSX.Element {
     },
     {
       id: uuidv4(),
+      title: 'Accès direct par ID 🎯',
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+        params: { screen: 'CheatcodesScreenDirectIdAccess' },
+      },
+      subscreens: [],
+    },
+    {
+      id: uuidv4(),
       title: 'Envoyer une erreur Sentry 📤',
       onPress: onPressSentry,
       subscreens: [],
