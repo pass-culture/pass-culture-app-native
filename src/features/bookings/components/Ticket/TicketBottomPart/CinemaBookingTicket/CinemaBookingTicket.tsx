@@ -7,10 +7,10 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing } from 'ui/theme'
 
 type props = {
-  voucher: string
-  token: string | null | undefined
+  voucherData: string
+  tokenData: string | null | undefined
 }
-export const CinemaBookingTicket = ({ voucher, token }: props) => {
+export const CinemaBookingTicket = ({ voucherData: voucher, tokenData: token }: props) => {
   if (voucher && token) {
     return (
       <StyledViewGap gap={4} testID="cinema-booking-ticket-container">
