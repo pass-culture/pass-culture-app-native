@@ -36,6 +36,7 @@ export const SearchLanding = () => {
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
   const enableAIFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR)
+  const enableNewCategoryBlocks = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_CATEGORY_BLOCKS)
   const { userLocation } = useLocation()
   const { user } = useAuthContext()
   const { visible, showModal, hideModal } = useModal(false)
@@ -87,6 +88,7 @@ export const SearchLanding = () => {
             <CategoriesButtonsContainer>
               <CategoriesList
                 enableAIFakeDoor={enableAIFakeDoor}
+                enableNewCategoryBlocks={enableNewCategoryBlocks}
                 onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('searchLanding')}
               />
             </CategoriesButtonsContainer>
