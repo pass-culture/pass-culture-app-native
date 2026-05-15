@@ -6,7 +6,7 @@
   inputs.nixpkgs_nodejs.url =
     "github:nixos/nixpkgs?rev=0d59e0290eefe0f12512043842d7096c4070f30e"; # contains nodejs 20.19.5
   inputs.nixpkgs_ruby.url =
-    "github:nixos/nixpkgs?rev=0343e3415784b2cd9c68924294794f7dbee12ab3"; # contains ruby 2.7.5
+    "github:nixos/nixpkgs?rev=c5dd43934613ae0f8ff37c59f61c507c2e8f980d"; # contains ruby 3.3.6
   inputs.nixpkgs_gitleaks.url =
     "github:nixos/nixpkgs?rev=01b6809f7f9d1183a2b3e081f0a1e6f8f415cb09"; # contains gitleaks 8.28.0
   inputs.flake-utils.url = "github:numtide/flake-utils";
