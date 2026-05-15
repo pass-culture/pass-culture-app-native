@@ -31,7 +31,7 @@ const locationStore = createStore({
     selectState: () => (state) => state,
     selectLocationMode: () => (state) => state.locationMode,
   },
-  options: { persist: true },
+  options: { persist: false },
 })
 
 export const locationActions = locationStore.actions
