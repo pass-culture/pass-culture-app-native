@@ -7909,10 +7909,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@protobufjs/codegen@npm:^2.0.4":
-  version: 2.0.4
-  resolution: "@protobufjs/codegen@npm:2.0.4"
-  checksum: 59240c850b1d3d0b56d8f8098dd04787dcaec5c5bd8de186fa548de86b86076e1c50e80144b90335e705a044edf5bc8b0998548474c2a10a98c7e004a1547e4b
+"@protobufjs/codegen@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "@protobufjs/codegen@npm:2.0.5"
+  checksum: b5f1e43b4b9432247297083e395982054b8ff0e3a6de550bffe12de16a22bd6e900f7820a3348ecbac95cbf78bbb6b71e268f64fdbbeda1f354846965baa01ca
   languageName: node
   linkType: hard
 
@@ -7947,6 +7947,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@protobufjs/inquire@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@protobufjs/inquire@npm:1.1.1"
+  checksum: 3395995a7642e5467b4bbf52d13aacd3b683724e22023c9f910375f6ab95d299bc544a6ba9e1497f4c8e6ea047830efa9e5eb4a4406c220aa6c66ac77e509c32
+  languageName: node
+  linkType: hard
+
 "@protobufjs/path@npm:^1.1.2":
   version: 1.1.2
   resolution: "@protobufjs/path@npm:1.1.2"
@@ -7961,10 +7968,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@protobufjs/utf8@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@protobufjs/utf8@npm:1.1.0"
-  checksum: f9bf3163d13aaa3b6f5e6fbf37a116e094ea021c0e1f2a7ccd0e12a29e2ce08dafba4e8b36e13f8ed7397e1591610ce880ed1289af4d66cf4ace8a36a9557278
+"@protobufjs/utf8@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@protobufjs/utf8@npm:1.1.1"
+  checksum: 9352cf54a92219bd7eac9791c62f4d9abc27381a4b8d639e76ca33edb4813e6905c17ea1f894f4730ea1c6e99e69dac4484a661d6715193d88e90c1775df9fe9
   languageName: node
   linkType: hard
 
@@ -9715,9 +9722,9 @@ __metadata:
   linkType: hard
 
 "@tootallnate/once@npm:2":
-  version: 2.0.0
-  resolution: "@tootallnate/once@npm:2.0.0"
-  checksum: ad87447820dd3f24825d2d947ebc03072b20a42bfc96cbafec16bff8bbda6c1a81fcb0be56d5b21968560c5359a0af4038a68ba150c3e1694fe4c109a063bed8
+  version: 2.0.1
+  resolution: "@tootallnate/once@npm:2.0.1"
+  checksum: 487b59b5adb8458dc13394a5aae997bf9705c51fa1e2396c50cd967019d06b273faba3c4d9e7895a996b9e9b055f1c55e53d822e54b3e9c298bcb4f6967cd0d5
   languageName: node
   linkType: hard
 
@@ -17428,9 +17435,9 @@ __metadata:
   linkType: hard
 
 "hono@npm:^4.11.4":
-  version: 4.12.14
-  resolution: "hono@npm:4.12.14"
-  checksum: 7e0d6913a7cc2b40b83371ee3e29f2d51ac367643fc9b4fe6f874217b71c8a5f10e606f0a13a4dc248d9a5fb712f71e4c27c93ffb526491595c7bd575b5e3a7a
+  version: 4.12.18
+  resolution: "hono@npm:4.12.18"
+  checksum: 8b1d82b9409229542e4ecc50641ce9dc88522a187615db387b114c3e352ff48a12b838b17bdbc8f8d1fd338dfee587b3a3df1955c6a92d62ec0405888ac6e89d
   languageName: node
   linkType: hard
 
@@ -22613,13 +22620,13 @@ __metadata:
   linkType: hard
 
 "postcss@npm:^8.5.8":
-  version: 8.5.9
-  resolution: "postcss@npm:8.5.9"
+  version: 8.5.14
+  resolution: "postcss@npm:8.5.14"
   dependencies:
     nanoid: ^3.3.11
     picocolors: ^1.1.1
     source-map-js: ^1.2.1
-  checksum: 0dcaa32d934fe97ad7b7da0113901f619258485c1906325ad7b873010ef09b83a6c2d52fe9e818c1c90eadcc9dc05870a9e34f34341696c7a07cfbb78b80946b
+  checksum: ec17d1519cd997b43aceb82bfa959f380085591269e286c53d5ba76eb1989525e7cde106a44f1565516fcbb50f206eb1858cc2cd5e5aaea3a8ee793886c8232c
   languageName: node
   linkType: hard
 
@@ -22875,22 +22882,22 @@ __metadata:
   linkType: hard
 
 "protobufjs@npm:^7.2.5, protobufjs@npm:^7.2.6, protobufjs@npm:^7.3.2, protobufjs@npm:^7.4.0, protobufjs@npm:^7.5.3":
-  version: 7.5.5
-  resolution: "protobufjs@npm:7.5.5"
+  version: 7.5.8
+  resolution: "protobufjs@npm:7.5.8"
   dependencies:
     "@protobufjs/aspromise": ^1.1.2
     "@protobufjs/base64": ^1.1.2
-    "@protobufjs/codegen": ^2.0.4
+    "@protobufjs/codegen": ^2.0.5
     "@protobufjs/eventemitter": ^1.1.0
     "@protobufjs/fetch": ^1.1.0
     "@protobufjs/float": ^1.0.2
-    "@protobufjs/inquire": ^1.1.0
+    "@protobufjs/inquire": ^1.1.1
     "@protobufjs/path": ^1.1.2
     "@protobufjs/pool": ^1.1.0
-    "@protobufjs/utf8": ^1.1.0
+    "@protobufjs/utf8": ^1.1.1
     "@types/node": ">=13.7.0"
     long: ^5.0.0
-  checksum: e316eb0df33a64398ce32056de37435d8ea7ef3e06dff32cda2a7156431c029fe2c120e390b7ff066de7632e996d6d5d0540fb606fef223a8480dff25bee6123
+  checksum: c224f390eba44a776788ccac35a605de8ce6d206a04cb2f15974411c797ace1c499cb7d8d8a64350ebcd485132e160ca565b8034bcd0e65b04fc9ca286a6690f
   languageName: node
   linkType: hard
 
