@@ -43,7 +43,7 @@ export type ILocationContext = {
   onModalHideRef: MutableRefObject<(() => void) | undefined>
   geolocPosition: Position
   geolocPositionError: GeolocationError | null
-  permissionState: GeolocPermissionState | undefined
+  permissionState: GeolocPermissionState | null
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
   triggerPositionUpdate: () => void
   showGeolocPermissionModal: () => void

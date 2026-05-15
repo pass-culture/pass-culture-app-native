@@ -1,8 +1,8 @@
 import { StoreApi, UseBoundStore } from 'zustand'
 
-export type AnyFunction = (...args: any[]) => any
+export type AnyFunction = (...args: never[]) => unknown
 
-export type CurriedAnyFunction<State> = (...args: any[]) => (state: State) => any
+export type CurriedAnyFunction<State> = (...args: never[]) => (state: State) => unknown
 type Options = {
   persist?: boolean
 }
@@ -31,11 +31,9 @@ export type SelectorsWithState<
 }
 
 export type HookSelectors<State, Selectors extends Record<string, CurriedAnyFunction<State>>> = {
-  [K in keyof Selectors as ReplaceSelectByUse<string & K>]: Selectors[K] extends (
-    ...args: infer P
-  ) => (state: State) => infer R
-    ? (...args: P) => R
-    : never
+  [K in keyof Selectors as ReplaceSelectByUse<string & K>]: (
+    ...args: Parameters<Selectors[K]>
+  ) => ReturnType<ReturnType<Selectors[K]>>
 }
 
 export type Store<

@@ -3,8 +3,14 @@ import React, { memo, useCallback, useContext, useEffect, useMemo, useRef, useSt
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { analytics } from 'libs/analytics/provider'
 import { useGeolocation } from 'libs/location/geolocation/hook/useGeolocation'
-import { LocationMode, ILocationContext, Position } from 'libs/location/types'
-import { locationActions, useLocationV2 } from 'libs/locationV2/location.store'
+import { LocationMode, ILocationContext } from 'libs/location/types'
+import {
+  locationActions,
+  useLocationConfiguration,
+  useLocationV2,
+  usePlace,
+  useUserLocation,
+} from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { storage } from 'libs/storage'
 
@@ -18,7 +24,7 @@ const LocationContext = React.createContext<ILocationContext>({
   onModalHideRef: { current: undefined },
   geolocPosition: undefined,
   geolocPositionError: null,
-  permissionState: undefined,
+  permissionState: null,
   requestGeolocPermission: async () => {},
   triggerPositionUpdate: () => null,
   showGeolocPermissionModal: () => null,
@@ -62,11 +68,11 @@ export const LocationWrapper = memo(function LocationWrapper({
   const onModalHideRef = useRef<() => void>(() => null)
 
   // app state
-  const { place, radius: aroundPlaceRadius } = useLocationV2().configuration.AROUND_PLACE
-  const { setAroundPlacePlace: setPlace, setAroundPlaceRadius } = locationActions
+  const { radius: aroundPlaceRadius } = useLocationConfiguration(LocationMode.AROUND_PLACE)
+  const place = usePlace()
+  const { setPlace, setAroundPlaceRadius, setAroundMeRadius } = locationActions
 
-  const { radius: aroundMeRadius } = useLocationV2().configuration.AROUND_ME
-  const { setAroundMeRadius } = locationActions
+  const { radius: aroundMeRadius } = useLocationConfiguration(LocationMode.AROUND_ME)
 
   // modal state
   const [placeQuery, setPlaceQuery] = useState('') // search input value
@@ -92,21 +98,7 @@ export const LocationWrapper = memo(function LocationWrapper({
     analytics.setEventLocationType()
   }, [hasGeolocPosition, place])
 
-  let userLocation: Position
-  switch (true) {
-    case selectedLocationMode === LocationMode.AROUND_PLACE:
-      userLocation = place?.geolocation
-      break
-    case selectedLocationMode === LocationMode.AROUND_ME:
-      userLocation = geolocPosition
-      break
-    case selectedLocationMode === LocationMode.EVERYWHERE:
-      userLocation = undefined
-      break
-    default:
-      userLocation = geolocPosition
-      break
-  }
+  const userLocation = useUserLocation()
 
   const value = useMemo(
     () => ({
