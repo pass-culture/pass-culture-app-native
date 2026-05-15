@@ -1,4 +1,4 @@
-# v1.391.0
+# v1.392.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/favorites/{favorite_id}
@@ -6,7 +6,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/account/suspend/token_validation/{token}
 - /native/v1/account/suspension_date
 - /native/v1/account/suspension_status
-- /native/v1/artists/{artist_id}
+Pathname not found for getNativeV1ArtistsartistId
 - /native/v1/banner
 - /native/v1/countries
 - /native/v1/cultural_survey/questions
@@ -53,14 +53,12 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/oauth/{sso_provider}/authorize
 - /native/v1/profile/email_update/cancel
 - /native/v1/recommendation/playlist
-- /native/v1/refresh_access_token
 - /native/v1/request_password_reset
 - /native/v1/resend_email_validation
 - /native/v1/reset_password
 - /native/v1/reset_recredit_amount_to_show
 - /native/v1/send_offer_link_by_push/{offer_id}
 - /native/v1/send_offer_webapp_link_by_email/{offer_id}
-- /native/v1/signin
 - /native/v1/subscription/bonus/quotient_familial
 - /native/v1/subscription/honor_statement
 - /native/v1/subscription/profile
@@ -72,6 +70,9 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v2/profile/email_update/new_password
 - /native/v2/profile/update_email
 - /native/v2/reaction
+- /native/v2/refresh_access_token
+/native/v2/signin
+- /native/v2/signin
 - /native/v1/profile/email_update/validate
 ## Unused routes:
 - /native/v1/bookings
@@ -79,12 +80,11 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/offerer/{offerer_id}/headline-offer
 - /native/v1/offer/{offer_id}
 - /native/v1/reaction/available
-Pathname not found for getNativeV1VenuevenueId
+- /native/v1/venue/{venue_id}
 - /native/v2/offer/{offer_id}
 - /native/v3/subscription/stepper
 - /native/v1/profile
 - /native/v1/reaction
-- /native/v2/refresh_access_token
-/native/v2/signin
-- /native/v2/signin
+- /native/v1/refresh_access_token
+- /native/v1/signin
 
