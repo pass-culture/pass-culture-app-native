@@ -78,7 +78,7 @@ export const LoginMethods = () => {
 
   const { mutate: signInGoogle } = useSignInMutation({
     params,
-    doNotNavigateOnSigninSuccess: false,
+    doNotNavigateOnSigninSuccess: true,
     onFailure: handleSigninFailure,
     analyticsType: 'SSO_login',
     analyticsMethod: 'fromLoginGoogle',
@@ -86,7 +86,7 @@ export const LoginMethods = () => {
 
   const { mutate: signInApple } = useSignInMutation({
     params,
-    doNotNavigateOnSigninSuccess: false,
+    doNotNavigateOnSigninSuccess: true,
     onFailure: handleSigninFailure,
     analyticsType: 'SSO_login',
     analyticsMethod: 'fromLoginApple',
