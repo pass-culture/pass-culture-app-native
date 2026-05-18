@@ -34,6 +34,6 @@ const SmartphoneSvg: React.FunctionComponent<AccessibleIcon & { transform?: stri
 
 export const Smartphone = styled(SmartphoneSvg).attrs(({ color, size, theme, opacity }) => ({
   color: color ?? theme.designSystem.color.icon.default,
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
   opacity: opacity ?? 1,
 }))``

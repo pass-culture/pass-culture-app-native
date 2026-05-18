@@ -15,7 +15,7 @@ import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.mock('queries/subcategories/useSubcategoriesQuery')
 
-const venue: Omit<VenueResponse, 'isVirtual'> = venueDataTest
+const venue: VenueResponse = venueDataTest
 
 const playlist = gtlPlaylistAlgoliaSnapshot[0] as GtlPlaylistData
 
@@ -195,7 +195,7 @@ function renderGtlPlaylist(
   gtlPlaylist: GtlPlaylistData,
   analyticsFrom: Referrals,
   route: Extract<ScreenNames, 'Venue' | 'ThematicSearch'>,
-  venue?: Omit<VenueResponse, 'isVirtual'>
+  venue?: VenueResponse
 ) {
   return render(
     reactQueryProviderHOC(

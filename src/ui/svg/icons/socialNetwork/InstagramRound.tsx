@@ -64,5 +64,5 @@ const InstagramRoundSvg = ({ color: _color, size, accessibilityLabel, testID }: 
 }
 
 export const InstagramRound = styled(InstagramRoundSvg).attrs(({ size, theme }) => ({
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
 }))``

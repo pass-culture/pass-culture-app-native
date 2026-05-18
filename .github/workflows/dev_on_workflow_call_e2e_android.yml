@@ -114,6 +114,8 @@ jobs:
       - name: Disable staging reCAPTCHA for E2E
         run: |
           yarn ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts staging false
+        env:
+          MAESTRO_E2E_API_KEY: ${{ steps.secrets.outputs.MAESTRO_E2E_API_KEY }}
 
       - name: Build android apk
         run: |

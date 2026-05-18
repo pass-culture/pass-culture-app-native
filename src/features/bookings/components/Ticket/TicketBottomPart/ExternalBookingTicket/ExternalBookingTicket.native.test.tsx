@@ -1,22 +1,14 @@
 import React from 'react'
 
-import { ExternalBookingDataResponseV2 } from 'api/gen'
 import { ExternalBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/ExternalBookingTicket'
+import { ExternalBookingTicketProps } from 'features/bookings/components/Ticket/TicketBottomPart/ExternalBookingTicket/ExternalBookingTicket'
 import { render, screen } from 'tests/utils'
 
 describe('ExternalBookingTicket', () => {
-  it('should display hidden ticket when data is empty', async () => {
-    renderExternalBookingTicket({ data: [], beginningDateTime: '2025-07-21T20:00:00' })
-
-    expect(
-      await screen.findByText('Ton billet sera disponible ici le 19 juillet 2025 à 22h00')
-    ).toBeOnTheScreen()
-  })
-
   it('should display ticket when data is present', async () => {
     renderExternalBookingTicket({
       data: [{ barcode: '1234', seat: 'B2' }],
-      beginningDateTime: undefined,
+      isDuo: false,
     })
 
     expect(await screen.findByText('RÉF 1234')).toBeOnTheScreen()
@@ -29,7 +21,7 @@ describe('ExternalBookingTicket', () => {
         { barcode: '1234', seat: 'B2' },
         { barcode: '999', seat: 'A02' },
       ],
-      beginningDateTime: undefined,
+      isDuo: true,
     })
 
     expect(await screen.findByText('RÉF 1234')).toBeOnTheScreen()
@@ -38,25 +30,12 @@ describe('ExternalBookingTicket', () => {
     expect(await screen.findByText('Siège A02')).toBeOnTheScreen()
   })
 
-  it('should display text plural when multiple external bookings and qr code are still hidden', async () => {
-    renderExternalBookingTicket({
-      data: [],
-      beginningDateTime: '2025-07-21T20:00:00',
-      isDuo: true,
-    })
-
-    expect(
-      await screen.findByText('Tes billets seront disponibles ici le 19 juillet 2025 à 22h00')
-    ).toBeOnTheScreen()
-  })
-
-  it('should display text plural when multiple external bookings and qr code are visible', async () => {
+  it('should display text plural when multiple external bookings', async () => {
     renderExternalBookingTicket({
       data: [
         { barcode: '1234', seat: 'B2' },
         { barcode: '999', seat: 'A02' },
       ],
-      beginningDateTime: undefined,
       isDuo: true,
     })
 
@@ -65,10 +44,9 @@ describe('ExternalBookingTicket', () => {
     ).toBeOnTheScreen()
   })
 
-  it('should display text singular when single external bookings and qr code is visible', async () => {
+  it('should display text singular when single external bookings', async () => {
     renderExternalBookingTicket({
       data: [{ barcode: '1234', seat: 'B2' }],
-      beginningDateTime: undefined,
       isDuo: false,
     })
 
@@ -78,16 +56,6 @@ describe('ExternalBookingTicket', () => {
   })
 })
 
-const renderExternalBookingTicket = ({
-  data,
-  beginningDateTime,
-  isDuo = false,
-}: {
-  data: ExternalBookingDataResponseV2[]
-  beginningDateTime: string | undefined
-  isDuo?: boolean
-}) => {
-  return render(
-    <ExternalBookingTicket data={data} beginningDatetime={beginningDateTime} isDuo={isDuo} />
-  )
+const renderExternalBookingTicket = ({ data, isDuo = false }: ExternalBookingTicketProps) => {
+  return render(<ExternalBookingTicket data={data} isDuo={isDuo} />)
 }

@@ -23,7 +23,7 @@ import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
-  venue: Omit<VenueResponse, 'isVirtual'>
+  venue: VenueResponse
   venueArtists?: VenueOffersArtists
   venueOffers?: VenueOffersType
   playlists: GtlPlaylistData[]
@@ -75,7 +75,7 @@ export const VenueBody: FunctionComponent<Props> = ({
       venueId: venue.id,
       isHeadline: true,
       adviceType: 'pro',
-      originDetail: 'advice',
+      originDetails: 'advice',
     })
   }
 

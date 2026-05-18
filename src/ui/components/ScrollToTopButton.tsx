@@ -42,5 +42,5 @@ const StyledView = styled.View(({ theme }) => ({
 
 const ScrollToTopIcon = styled(ScrollToTop).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.inverted,
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))``

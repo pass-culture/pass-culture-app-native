@@ -164,12 +164,12 @@ const OnSiteWithdrawalCaption = styled(WithdrawCaption)(({ theme }) => ({
 
 const Clock = styled(InitialClock).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))``
 
 const OfferEvent = styled(DefaultOfferEvent).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))``
 
 const ExpirationBookingContainer = styled.View({

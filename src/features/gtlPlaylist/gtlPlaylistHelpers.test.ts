@@ -13,7 +13,7 @@ import {
   getLabelFilter,
 } from './gtlPlaylistHelpers'
 
-const mockVenue: Omit<VenueResponse, 'isVirtual'> = {
+const mockVenue: VenueResponse = {
   name: 'Une librairie',
   city: 'Jest',
   id: 123,

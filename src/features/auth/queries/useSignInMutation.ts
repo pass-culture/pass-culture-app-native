@@ -45,7 +45,7 @@ export const useSignInMutation = ({
         const { provider, ...oauthBody } = requestBody
         return api.postNativeV1OauthssoProviderAuthorize(oauthBody, provider)
       }
-      return api.postNativeV1Signin(requestBody, { credentials: 'omit' })
+      return api.postNativeV2Signin(requestBody, { credentials: 'omit' })
     },
 
     onSuccess: async (response, body) => {

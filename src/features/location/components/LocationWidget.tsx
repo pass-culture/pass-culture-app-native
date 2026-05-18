@@ -10,6 +10,7 @@ import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationW
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
@@ -59,6 +60,8 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
     'Ouvrir la modale de localisation'
   )
 
+  const numberOfLines = useMobileFontScaleToDisplay({ default: 3, at200PercentZoom: 5 })
+
   return (
     <React.Fragment>
       <StyledTouchable
@@ -67,7 +70,7 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
         accessibilityLabel={computedAccessibilityLabel}
         {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}>
         <IconContainer isActive={isWidgetHighlighted}>{locationIcon}</IconContainer>
-        <StyledCaption numberOfLines={3}>{locationTitle}</StyledCaption>
+        <StyledCaption numberOfLines={numberOfLines}>{locationTitle}</StyledCaption>
       </StyledTouchable>
       {shouldShowHomeLocationModal ? (
         <HomeLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
@@ -122,10 +125,10 @@ const IconContainer = styled.View<{ isActive: boolean }>(({ theme, isActive }) =
 
 const LocationPointerFilled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))({})
 
 const LocationPointerNotFilled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.subtle,
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))({})

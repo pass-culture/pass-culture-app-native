@@ -10,7 +10,7 @@ function getVenueUrl(id: number, utmMedium: string) {
 }
 
 type Parameters = {
-  venue?: Omit<VenueResponse, 'isVirtual'>
+  venue?: VenueResponse
   utmMedium: string
 }
 

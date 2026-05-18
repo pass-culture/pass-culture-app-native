@@ -10,10 +10,6 @@ on:
         type: boolean
         required: false
         default: false
-      HAS_PROXY_CHANGED:
-        type: boolean
-        required: false
-        default: false
     secrets:
       PASSCULTURE_GITHUB_ACTION_APP_ID:
       PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY:
@@ -209,7 +205,6 @@ jobs:
       test_tags: 'nightlyIOS'
 
   yarn_test_proxy:
-    if: ${{ inputs.HAS_PROXY_CHANGED }}
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:

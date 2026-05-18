@@ -1812,9 +1812,23 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     }
                   }
                   ListHeaderComponent={
-                    <Styled(View)
-                      width={24}
-                    />
+                    {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": [
+                        {
+                          "width": 24,
+                        },
+                      ],
+                      "inlineStyle": e {
+                        "rules": [
+                          [Function],
+                        ],
+                      },
+                      "render": [Function],
+                      "shouldForwardProp": undefined,
+                      "styledComponentId": true,
+                      "target": [Function],
+                    }
                   }
                   collapsable={false}
                   data={
@@ -2584,7 +2598,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         withCenterAlign={true}
                       >
                         <View
-                          accessibilityLabel="Offre "Mon abonnement bibliothèque", de la catégorie "Livre",   prix . "
+                          accessibilityLabel="Livre - Mon abonnement bibliothèque"
                           accessibilityRole="button"
                           accessibilityValue={
                             {
@@ -2619,7 +2633,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               },
                             ]
                           }
-                          testID="Offre "Mon abonnement bibliothèque", de la catégorie "Livre",   prix . "
+                          testID="Livre - Mon abonnement bibliothèque"
                         >
                           <View
                             gap={2}
@@ -2872,7 +2886,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         withCenterAlign={true}
                       >
                         <View
-                          accessibilityLabel="Offre "Mon abonnement médiathèque", de la catégorie "Films",   prix . "
+                          accessibilityLabel="Films - Mon abonnement médiathèque"
                           accessibilityRole="button"
                           accessibilityValue={
                             {
@@ -2907,7 +2921,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               },
                             ]
                           }
-                          testID="Offre "Mon abonnement médiathèque", de la catégorie "Films",   prix . "
+                          testID="Films - Mon abonnement médiathèque"
                         >
                           <View
                             gap={2}
@@ -3160,7 +3174,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         withCenterAlign={true}
                       >
                         <View
-                          accessibilityLabel="Offre "Mon abonnement livres numériques", de la catégorie "Livre",   prix . "
+                          accessibilityLabel="Livre - Mon abonnement livres numériques"
                           accessibilityRole="button"
                           accessibilityValue={
                             {
@@ -3195,7 +3209,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               },
                             ]
                           }
-                          testID="Offre "Mon abonnement livres numériques", de la catégorie "Livre",   prix . "
+                          testID="Livre - Mon abonnement livres numériques"
                         >
                           <View
                             gap={2}
@@ -3448,7 +3462,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         withCenterAlign={true}
                       >
                         <View
-                          accessibilityLabel="Offre "Mon abonnement ludothèque", de la catégorie "Jeux",   prix . "
+                          accessibilityLabel="Jeux - Mon abonnement ludothèque"
                           accessibilityRole="button"
                           accessibilityValue={
                             {
@@ -3483,7 +3497,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               },
                             ]
                           }
-                          testID="Offre "Mon abonnement ludothèque", de la catégorie "Jeux",   prix . "
+                          testID="Jeux - Mon abonnement ludothèque"
                         >
                           <View
                             gap={2}

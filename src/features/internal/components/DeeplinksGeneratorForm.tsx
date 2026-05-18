@@ -394,7 +394,7 @@ const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
 
 const Warning = styled(WarningDefault).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.error,
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))``
 
 const TextInputContainer = styled.View(({ theme }) => ({

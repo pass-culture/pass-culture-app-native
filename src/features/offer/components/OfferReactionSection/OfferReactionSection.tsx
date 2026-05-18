@@ -109,7 +109,7 @@ const InfosCounterContainer = styled(ViewGap)({
 })
 
 const ThumbUpIcon = styled(ThumbUpFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
   color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
@@ -127,7 +127,7 @@ const HeadlineOffersCount = styled(InfoCounter).attrs<{ icon?: React.ReactNode }
 
 const SmallProEditoIcon = styled(ProEditoCertification).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.proEdito,
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))``
 
 const TagContainer = styled.View({

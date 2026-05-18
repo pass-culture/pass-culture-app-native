@@ -14,7 +14,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { OpeningHours } from '../OpeningHours/OpeningHours'
 
 type Props = {
-  venue: Omit<VenueResponse, 'isVirtual'>
+  venue: VenueResponse
 }
 
 export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {

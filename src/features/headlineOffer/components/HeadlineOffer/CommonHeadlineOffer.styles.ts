@@ -12,6 +12,6 @@ export const Title = styled(Typo.BodyAccent)(({ theme }) => ({
 }))
 
 export const ArrowRightIcon = styled(ArrowRight).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
   color: theme.designSystem.color.icon.lockedInverted,
 }))({})

@@ -33,7 +33,7 @@ export const FilterRow = ({
         color: shouldColorIcon
           ? theme.designSystem.color.icon.brandPrimary
           : theme.designSystem.color.icon.default,
-        size: theme.icons.sizes.small,
+        size: theme.designSystem.size.icon.m,
       }))``
     : undefined
 

@@ -4,7 +4,7 @@
  */
 
 import React, { FunctionComponent, useCallback } from 'react'
-import { Platform } from 'react-native'
+import { Platform, useWindowDimensions } from 'react-native'
 import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -97,6 +97,10 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
   const hoverProps = useHandleHover()
 
   const { designSystem, checkbox } = useTheme()
+  const { width } = useWindowDimensions()
+  const isSmallScreen = width <= 350
+  const isTagVariant = asset?.variant === 'tag'
+  const isTagStacked = isSmallScreen && isTagVariant
 
   const onToggle = useCallback(() => {
     onPress(!isChecked)
@@ -164,12 +168,17 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
             </StyledBodyAccentXs>
           ) : null}
         </RightBox>
-        {asset ? (
+        {asset && !isTagStacked ? (
           <BottomBox>
             <SelectableAsset {...asset} disable={isDisabled} />
           </BottomBox>
         ) : null}
       </ContentContainer>
+      {asset && isTagStacked ? (
+        <AssetStackedContainer>
+          <SelectableAsset {...asset} disable={isDisabled} />
+        </AssetStackedContainer>
+      ) : null}
       {collapsed ? <CollapsedContainer>{collapsed}</CollapsedContainer> : null}
     </CheckboxContainer>
   )
@@ -318,4 +327,9 @@ const BottomBox = styled.View({
 
 const CollapsedContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
+}))
+
+const AssetStackedContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xs,
+  marginLeft: theme.checkbox.size + theme.designSystem.size.spacing.m,
 }))

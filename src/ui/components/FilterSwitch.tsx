@@ -120,12 +120,12 @@ const StyledToggle = styled(Animated.View)<{ disabled: boolean; toggleSize: numb
 
 const Lock = styled(LockFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.disabled,
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))``
 
 const Check = styled(CheckFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.success,
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))``
 
 const propsAreEqual = (

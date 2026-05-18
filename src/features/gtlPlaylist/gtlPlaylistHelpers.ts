@@ -40,7 +40,7 @@ export const filterGtlPlaylistConfigByLabel = (
 
 export const getGtlPlaylistsParams = (
   filteredPlaylistConfig: GtlPlaylistRequest[],
-  venue: Omit<VenueResponse, 'isVirtual'> | undefined,
+  venue: VenueResponse | undefined,
   adaptPlaylistParameters: (parameters: OffersModuleParameters) => PlaylistOffersParams
 ): PlaylistOffersParams[] => {
   return filteredPlaylistConfig.map((config) => {

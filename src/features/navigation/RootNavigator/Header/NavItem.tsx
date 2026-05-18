@@ -50,7 +50,7 @@ const StyledIcon = styled(LogoDetailed).attrs<{ selected?: boolean }>(({ theme, 
   color: selected
     ? theme.designSystem.color.icon.brandPrimary
     : theme.designSystem.color.icon.disabled,
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
   thin: !selected,
 }))<{ selected?: boolean }>``
 

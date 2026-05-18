@@ -13,7 +13,7 @@ const meta: Meta<typeof SummaryInfo> = {
 export default meta
 
 const baseProps = {
-  Icon: <CalendarS size={theme.icons.sizes.small} />,
+  Icon: <CalendarS size={theme.designSystem.size.icon.m} />,
   title: 'Info name',
 }
 

@@ -1,4 +1,4 @@
-import { onlineManager, useQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { getAllFeatureFlags } from 'libs/firebase/firestore/featureFlags/getAllFeatureFlags'
 import { FeatureFlagConfig, squads } from 'libs/firebase/firestore/featureFlags/types'
@@ -33,7 +33,6 @@ export const useCheatcodesFeatureFlagQuery = () => {
     queryKey: ['FEATURE_FLAGS'],
     queryFn: getAllFeatureFlags,
     staleTime: 1000 * 30,
-    enabled: onlineManager.isOnline(),
   })
 
   if (!docSnapshot || isLoading || error) {

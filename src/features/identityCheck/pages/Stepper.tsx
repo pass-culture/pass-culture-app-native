@@ -88,6 +88,13 @@ export const Stepper = () => {
     }
   }, [params?.from, stepToComplete?.name])
 
+  const onExitPress = () => {
+    void analytics.logHasExitedActivationFlow({
+      from: 'stepper',
+      origin_detail: 'Quit',
+    })
+    showQuitIdentityCheckModal()
+  }
   const stepList = (
     <StepList currentStepIndex={currentStepIndex}>
       {steps.map((step, index) => (
@@ -128,7 +135,7 @@ export const Stepper = () => {
             color="neutral"
             icon={Invalidate}
             wording="Abandonner"
-            onPress={showQuitIdentityCheckModal}
+            onPress={onExitPress}
             accessibilityRole={AccessibilityRole.BUTTON}
           />
         </QuitButtonContainer>

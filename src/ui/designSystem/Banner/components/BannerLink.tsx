@@ -29,7 +29,7 @@ export function BannerLink({
   accessibilityLabel,
   accessibilityRole = AccessibilityRole.BUTTON,
 }: ButtonTextWithIconProps) {
-  const { icons } = useTheme()
+  const { designSystem } = useTheme()
 
   const accessibilityLabelLink = accessibilityRole === AccessibilityRole.LINK ? 'Lien externe' : ''
   const accessibilityWording = accessibilityLabel ?? wording
@@ -45,7 +45,7 @@ export function BannerLink({
       onPress={onPress}
       onLongPress={onLongPress}>
       <IconWrapper>
-        <Icon size={icons.sizes.extraSmall} />
+        <Icon size={designSystem.size.icon.s} />
       </IconWrapper>
       <Typo.BodyAccentXs>{wording}</Typo.BodyAccentXs>
     </InlineTouchable>

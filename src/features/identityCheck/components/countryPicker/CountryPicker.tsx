@@ -103,5 +103,5 @@ const CallingCodeText = styled(Typo.Body)(({ theme }) => ({
 }))
 
 const ArrowDown = styled(DefaultArrowDown).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))``

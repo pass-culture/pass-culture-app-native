@@ -27,6 +27,6 @@ const NotMemoizedLock: React.FC<AccessibleIcon> = ({ size, color, accessibilityL
 export const Lock = React.memo(
   styled(NotMemoizedLock).attrs(({ color, size, theme }) => ({
     color: color ?? theme.designSystem.color.icon.default,
-    size: size ?? theme.icons.sizes.standard,
+    size: size ?? theme.designSystem.size.icon.l,
   }))``
 )

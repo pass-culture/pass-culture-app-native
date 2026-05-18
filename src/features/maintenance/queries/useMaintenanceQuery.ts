@@ -1,4 +1,4 @@
-import { onlineManager, useQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { getMaintenance } from 'libs/firebase/firestore/getMaintenance/getMaintenance'
 import { MAINTENANCE, Maintenance, RemoteStoreMaintenance } from 'libs/firebase/firestore/types'
@@ -13,7 +13,6 @@ export const useMaintenanceQuery = (): Maintenance => {
     queryFn: getMaintenance,
     staleTime: 1000 * 30,
     gcTime: 1000 * 30,
-    enabled: onlineManager.isOnline(),
     select: (data: DocumentData) => {
       const maintenanceIsOn = data?.[RemoteStoreMaintenance.MAINTENANCE_IS_ON]
       const rawMessage = data?.[RemoteStoreMaintenance.MAINTENANCE_MESSAGE]

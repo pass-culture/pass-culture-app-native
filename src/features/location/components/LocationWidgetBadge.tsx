@@ -67,11 +67,11 @@ const Container = styled.View<{ highlighted: boolean }>(({ theme, highlighted })
 
 const LocationPointerHighlighted = styled(LocationPointer).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))({})
 
 const LocationPointerDefault = styled(LocationPointer).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
   color: theme.designSystem.color.icon.default,
 }))``
 

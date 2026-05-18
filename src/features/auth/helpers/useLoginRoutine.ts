@@ -1,4 +1,4 @@
-import { SigninResponse } from 'api/gen'
+import { SigninResponseV2 } from 'api/gen'
 import { scheduleAccessTokenRemoval } from 'api/refreshAccessToken'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useResetContexts } from 'features/auth/context/useResetContexts'
@@ -9,7 +9,7 @@ import { saveRefreshToken } from 'libs/keychain/keychain'
 import { storage } from 'libs/storage'
 
 export type LoginRoutine = (
-  response: SigninResponse,
+  response: SigninResponseV2,
   method: LoginRoutineMethod,
   analyticsType?: LoginType
 ) => Promise<void>
@@ -21,7 +21,7 @@ export function useLoginRoutine(): LoginRoutine {
 
   /**
    * Executes the minimal set of instructions required to proceed to the login
-   * @param {SigninResponse} response
+   * @param {SigninResponseV2} response
    * @param {LoginRoutineMethod} method The process that triggered the login routine
    */
 

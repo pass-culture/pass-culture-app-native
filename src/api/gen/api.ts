@@ -1608,6 +1608,22 @@ export interface Credit {
 }
 /**
  * @export
+ * @interface CulturalDomainItem
+ */
+export interface CulturalDomainItem {
+  /**
+   * @type {number}
+   * @memberof CulturalDomainItem
+   */
+  id: number
+  /**
+   * @type {string}
+   * @memberof CulturalDomainItem
+   */
+  name: string
+}
+/**
+ * @export
  * @interface CulturalSurveyAnswer
  */
 export interface CulturalSurveyAnswer {
@@ -3720,12 +3736,12 @@ export interface RecommendationApiParams {
    * @type {string | null}
    * @memberof RecommendationApiParams
    */
-  ab_test?: string | null
+  abTest?: string | null
   /**
    * @type {string | null}
    * @memberof RecommendationApiParams
    */
-  call_id?: string | null
+  callId?: string | null
   /**
    * @type {boolean | null}
    * @memberof RecommendationApiParams
@@ -3735,27 +3751,32 @@ export interface RecommendationApiParams {
    * @type {boolean | null}
    * @memberof RecommendationApiParams
    */
-  geo_located?: boolean | null
+  geoLocated?: boolean | null
   /**
    * @type {string | null}
    * @memberof RecommendationApiParams
    */
-  model_endpoint?: string | null
+  modelEndpoint?: string | null
   /**
    * @type {string | null}
    * @memberof RecommendationApiParams
    */
-  model_name?: string | null
+  modelName?: string | null
   /**
    * @type {string | null}
    * @memberof RecommendationApiParams
    */
-  model_version?: string | null
+  modelOrigin?: string | null
   /**
    * @type {string | null}
    * @memberof RecommendationApiParams
    */
-  reco_origin?: string | null
+  modelVersion?: string | null
+  /**
+   * @type {string | null}
+   * @memberof RecommendationApiParams
+   */
+  recoOrigin?: string | null
 }
 /**
  * An enumeration.
@@ -4718,14 +4739,15 @@ export interface SuspendAccountForSuspiciousLoginRequest {
  * @enum {string}
  */
 export enum TicketDisplayEnum {
-  'no_ticket' = 'no_ticket',
+  'cinema_voucher' = 'cinema_voucher',
   'email_sent' = 'email_sent',
   'email_will_be_sent' = 'email_will_be_sent',
+  'external_ticket' = 'external_ticket',
+  'hidden_external_ticket' = 'hidden_external_ticket',
+  'no_ticket' = 'no_ticket',
   'online_code' = 'online_code',
-  'not_visible' = 'not_visible',
-  'qr_code' = 'qr_code',
-  'voucher' = 'voucher',
   'ticket' = 'ticket',
+  'voucher' = 'voucher',
 }
 /**
  * @export
@@ -5258,6 +5280,11 @@ export interface VenueResponse {
    * @memberof VenueResponse
    */
   contact?: VenueContact | null
+  /**
+   * @type {Array<CulturalDomainItem> | null}
+   * @memberof VenueResponse
+   */
+  culturalDomains?: Array<CulturalDomainItem> | null
   /**
    * @type {string | null}
    * @memberof VenueResponse

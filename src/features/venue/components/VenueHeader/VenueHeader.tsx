@@ -14,7 +14,7 @@ import { Share } from 'ui/svg/icons/Share'
 
 interface Props {
   headerTransition: Animated.AnimatedInterpolation<string | number>
-  venue: Omit<VenueResponse, 'isVirtual'>
+  venue: VenueResponse
 }
 
 /**

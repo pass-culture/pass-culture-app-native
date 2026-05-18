@@ -30,7 +30,7 @@ export function venueProAdvicesToAdviceCardData(
       onCardHeaderPress: () => {
         triggerConsultOfferLog({
           from: 'venue',
-          originDetail: 'Les avis des pros',
+          originDetails: 'Les avis des pros',
           adviceType: 'pro',
           offerId,
           venueId,

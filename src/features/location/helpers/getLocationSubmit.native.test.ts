@@ -35,12 +35,12 @@ describe('getLocationSubmit', () => {
       )
     })
 
-    it('should call setPlaceGlobally with the selected place', () => {
+    it('should call setPlace with the selected place', () => {
       const result = getLocationSubmit(mockProps)
 
       result.onSubmit(LocationMode.AROUND_PLACE)
 
-      expect(mockProps.setPlaceGlobally).toHaveBeenNthCalledWith(1, mockPlaces[0])
+      expect(mockProps.setPlace).toHaveBeenNthCalledWith(1, mockPlaces[0])
     })
 
     it('should call setTempAroundMeRadius with the default radius', () => {
@@ -83,12 +83,12 @@ describe('getLocationSubmit', () => {
   })
 
   describe('When on onSubmit with location mode is AROUND_ME', () => {
-    it('should call setPlaceGlobally with null', () => {
+    it('should call setPlace with null', () => {
       const result = getLocationSubmit(mockProps)
 
       result.onSubmit(LocationMode.AROUND_ME)
 
-      expect(mockProps.setPlaceGlobally).toHaveBeenNthCalledWith(1, null)
+      expect(mockProps.setPlace).toHaveBeenNthCalledWith(1, null)
     })
 
     it('should call setAroundMeRadius with the selected radius', () => {
@@ -128,12 +128,12 @@ describe('getLocationSubmit', () => {
   })
 
   describe('When on onSubmit with location mode is EVERYWHERE', () => {
-    it('should call setPlaceGlobally with null', () => {
+    it('should call setPlace with null', () => {
       const result = getLocationSubmit(mockProps)
 
       result.onSubmit(LocationMode.EVERYWHERE)
 
-      expect(mockProps.setPlaceGlobally).toHaveBeenNthCalledWith(1, null)
+      expect(mockProps.setPlace).toHaveBeenNthCalledWith(1, null)
     })
 
     it('should call dispatch with SET_LOCATION_EVERYWHERE  when dispatch defined', () => {

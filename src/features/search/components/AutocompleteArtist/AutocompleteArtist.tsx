@@ -34,6 +34,6 @@ export function AutocompleteArtist({ onItemPress }: Props) {
 }
 
 const ProfileFilledIcon = styled(ProfileFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
   color: theme.designSystem.color.icon.subtle,
 }))``

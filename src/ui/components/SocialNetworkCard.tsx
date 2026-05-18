@@ -20,7 +20,7 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
   const name = capitalize(network)
 
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-    size: theme.icons.sizes.small,
+    size: theme.designSystem.size.icon.m,
   }))``
 
   const onBeforeNavigate = () => {

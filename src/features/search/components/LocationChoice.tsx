@@ -36,7 +36,7 @@ export const LocationChoice: React.FC<Props> = ({
     color: isSelected
       ? theme.designSystem.color.icon.brandPrimary
       : theme.designSystem.color.icon.brandSecondary,
-    size: theme.icons.sizes.small,
+    size: theme.designSystem.size.icon.m,
   }))``
 
   const containerRef = useRef(null)
@@ -112,9 +112,9 @@ const ButtonText = styled(Typo.BodyAccent)<{ isSelected: boolean }>(({ isSelecte
 
 const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))``
 
 const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))``

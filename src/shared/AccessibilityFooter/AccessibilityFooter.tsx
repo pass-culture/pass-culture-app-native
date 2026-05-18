@@ -36,7 +36,6 @@ export const AccessibilityFooter = ({ withHorizontalMargin = false }: Accessibil
             color="neutral"
             size="small"
             wording="Accessibilité&nbsp;: partiellement conforme"
-            numberOfLines={2}
           />
           <InternalTouchableLink
             navigateTo={getProfilePropConfig('SiteMapScreen')}
@@ -45,7 +44,6 @@ export const AccessibilityFooter = ({ withHorizontalMargin = false }: Accessibil
             color="neutral"
             size="small"
             wording="Plan du site"
-            numberOfLines={2}
           />
           <InternalTouchableLink
             navigateTo={getProfilePropConfig('LegalNotices')}
@@ -54,7 +52,6 @@ export const AccessibilityFooter = ({ withHorizontalMargin = false }: Accessibil
             color="neutral"
             size="small"
             wording="Informations légales"
-            numberOfLines={2}
           />
           <ExternalTouchableLink
             as={Button}
@@ -64,7 +61,6 @@ export const AccessibilityFooter = ({ withHorizontalMargin = false }: Accessibil
             wording="Conditions Générales d’Utilisation"
             externalNav={{ url: env.CGU_LINK }}
             icon={ExternalSiteFilled}
-            numberOfLines={2}
           />
           <ExternalTouchableLink
             as={Button}
@@ -74,7 +70,6 @@ export const AccessibilityFooter = ({ withHorizontalMargin = false }: Accessibil
             wording="Charte des données personnelles"
             externalNav={{ url: env.PRIVACY_POLICY_LINK }}
             icon={ExternalSiteFilled}
-            numberOfLines={2}
           />
           <ExternalTouchableLink
             as={Button}
@@ -84,7 +79,6 @@ export const AccessibilityFooter = ({ withHorizontalMargin = false }: Accessibil
             wording="Charte d’utilisation et de bonne conduite"
             externalNav={{ url: env.CODE_OF_CONDUCT_LINK }}
             icon={ExternalSiteFilled}
-            numberOfLines={2}
           />
         </LinksContainer>
         <LogoContainer>

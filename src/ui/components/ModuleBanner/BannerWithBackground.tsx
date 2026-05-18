@@ -52,11 +52,11 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
   const StyledRightIcon = rightIcon
     ? styled(rightIcon).attrs(({ theme }) => ({
         color: theme.designSystem.color.icon.lockedInverted,
-        size: theme.icons.sizes.small,
+        size: theme.designSystem.size.icon.m,
       }))``
     : styled(ArrowNext).attrs(({ theme }) => ({
         color: theme.designSystem.color.icon.lockedInverted,
-        size: theme.icons.sizes.small,
+        size: theme.designSystem.size.icon.m,
       }))``
 
   let TouchableComponent: React.ComponentType<

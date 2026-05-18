@@ -18,7 +18,7 @@ export const LayoutButton = ({ isSelected, Icon, onPress, layout }: LayoutButton
           color: isSelected
             ? theme.designSystem.color.icon.brandPrimary
             : theme.designSystem.color.icon.default,
-          size: theme.icons.sizes.extraSmall,
+          size: theme.designSystem.size.icon.s,
         }))``
       : null
   }, [Icon, isSelected])

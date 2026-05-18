@@ -86,7 +86,7 @@ export const bookingsSnapV2 = toMutable({
         },
         activationCode: null,
         externalBooking: null,
-        display: TicketDisplayEnum.qr_code,
+        display: TicketDisplayEnum.external_ticket,
       },
     },
     {
@@ -154,7 +154,7 @@ export const bookingsSnapV2 = toMutable({
         },
         activationCode: null,
         externalBooking: null,
-        display: TicketDisplayEnum.qr_code,
+        display: TicketDisplayEnum.external_ticket,
       },
     },
   ],
@@ -226,7 +226,7 @@ export const bookingsSnapV2 = toMutable({
         },
         activationCode: null,
         externalBooking: null,
-        display: TicketDisplayEnum.qr_code,
+        display: TicketDisplayEnum.external_ticket,
       },
     },
     {
@@ -297,7 +297,7 @@ export const bookingsSnapV2 = toMutable({
             { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A13' },
           ],
         },
-        display: TicketDisplayEnum.qr_code,
+        display: TicketDisplayEnum.external_ticket,
       },
     },
     {
@@ -355,7 +355,7 @@ export const bookingsSnapV2 = toMutable({
       },
       ticket: {
         voucher: null,
-        display: TicketDisplayEnum.qr_code,
+        display: TicketDisplayEnum.external_ticket,
         token: null,
         withdrawal: {
           details: 'How to withdraw, https://test.com',

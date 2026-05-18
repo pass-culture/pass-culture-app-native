@@ -9,7 +9,7 @@ Un exemple simple d'utilisation de `.attrs()` est notre façon d'utiliser les ic
 ```tsx
 const LocationPointerNotFilled = styled(LocationPointer).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.default,
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))``
 ```
 

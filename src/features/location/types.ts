@@ -7,16 +7,15 @@ import { SuggestedPlace } from 'libs/place/types'
 export type LocationState = {
   hasGeolocPosition: boolean
   place: SuggestedPlace | null
-  setPlaceGlobally: (place: SuggestedPlace | null) => void
+  setPlace: (place: SuggestedPlace | null) => void
   onModalHideRef: MutableRefObject<(() => void) | undefined>
   permissionState: GeolocPermissionState | undefined
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
   showGeolocPermissionModal: () => void
   selectedLocationMode: LocationMode
-  setSelectedLocationMode: Dispatch<SetStateAction<LocationMode>>
+  setSelectedLocationMode: (locationMode: LocationMode) => void
   selectedPlace: SuggestedPlace | null
   setSelectedPlace: Dispatch<SetStateAction<SuggestedPlace | null>>
-  onSetSelectedPlace: (place: SuggestedPlace) => void
   onResetPlace: () => void
   placeQuery: string
   setPlaceQuery: Dispatch<SetStateAction<string>>

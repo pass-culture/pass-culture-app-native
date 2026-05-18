@@ -27,7 +27,7 @@ describe('transformGeoLocatedVenueToVenueResponse', () => {
       isOpenToPublic: true,
       activity: Activity.BOOKSTORE,
       isPermanent: true,
-    } satisfies Omit<VenueResponse, 'isVirtual'>
+    } satisfies VenueResponse
 
     expect(transformGeoLocatedVenueToVenueResponse(geolocatedData)).toMatchObject(
       expectedVenueResponse

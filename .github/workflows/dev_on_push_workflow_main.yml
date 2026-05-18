@@ -75,12 +75,11 @@ jobs:
     with:
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
   yarn-tester:
-    needs: [yarn-linter, check-server-folder-changes]
+    needs: yarn-linter
     uses: ./.github/workflows/dev_on_workflow_tester.yml
     with:
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       HAS_BREAKING_CHANGE_LABEL: ${{ contains(github.event.pull_request.labels.*.name, 'breaking change') }}
-      HAS_PROXY_CHANGED: ${{ needs.check-server-folder-changes.outputs.folder_changed == 'true' }}
     secrets:
       PASSCULTURE_GITHUB_ACTION_APP_ID: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
       PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}

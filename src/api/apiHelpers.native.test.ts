@@ -6,6 +6,7 @@ import * as jwt from 'libs/jwt/jwt'
 import * as Keychain from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
 import * as PackageJson from 'libs/packageJson'
+import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
 import { mockServer } from 'tests/mswServer'
 
 import { ApiError } from './ApiError'
@@ -16,7 +17,7 @@ import {
   isAPIExceptionNotCaptured,
   safeFetch,
 } from './apiHelpers'
-import { Configuration, DefaultApi, RefreshResponse } from './gen'
+import { Configuration, DefaultApi, RefreshResponseV2 } from './gen'
 import { removeRefreshedAccessToken } from './refreshAccessToken'
 
 jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
@@ -66,6 +67,14 @@ describe('[api] helpers', () => {
   const mockGetTokenStatus = jest.spyOn(jwt, 'getTokenStatus')
   const mockGetRefreshToken = jest.spyOn(Keychain, 'getRefreshToken')
 
+  beforeEach(() =>
+    deviceInfoStoreActions.setDeviceInfo({
+      deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+      source: 'iPhone 13',
+      os: 'iOS',
+    })
+  )
+
   afterEach(() => {
     mockFetch.mockReset()
     removeRefreshedAccessToken()
@@ -109,7 +118,7 @@ describe('[api] helpers', () => {
     })
 
     it('needs authentication response when refresh token fails', async () => {
-      mockServer.postApi<RefreshResponse>('/v1/refresh_access_token', {
+      mockServer.postApi<RefreshResponseV2>('/v2/refresh_access_token', {
         responseOptions: {
           statusCode: 400,
         },
@@ -276,34 +285,46 @@ describe('[api] helpers', () => {
 
       const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
 
+      const expectedBody = JSON.stringify({
+        deviceInfo: {
+          deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          source: 'iPhone 13',
+          os: 'iOS',
+        },
+      })
+
       expect(mockFetch).toHaveBeenNthCalledWith(
         1,
-        env.API_BASE_URL + '/native/v1/refresh_access_token',
+        `${env.API_BASE_URL}/native/v2/refresh_access_token`,
         {
           headers: {
             Authorization: `Bearer ${password}`,
+            'Content-Type': 'application/json',
             'app-version': '1.10.5',
             'commit-hash': env.COMMIT_HASH,
             'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
             platform: Platform.OS,
             'request-id': 'testUuidV4',
           },
+          body: expectedBody,
           credentials: 'omit',
           method: 'POST',
         }
       )
       expect(mockFetch).toHaveBeenNthCalledWith(
         2,
-        env.API_BASE_URL + '/native/v1/refresh_access_token',
+        `${env.API_BASE_URL}/native/v2/refresh_access_token`,
         {
           headers: {
             Authorization: `Bearer ${password}`,
+            'Content-Type': 'application/json',
             'app-version': '1.10.5',
             'commit-hash': env.COMMIT_HASH,
             'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
             platform: Platform.OS,
             'request-id': 'testUuidV4',
           },
+          body: expectedBody,
           credentials: 'omit',
           method: 'POST',
         }

@@ -651,9 +651,9 @@ describe('getCtaWordingAndAction', () => {
 
   describe('CTA - Analytics', () => {
     const defaultApiRecoParams = {
-      call_id: '1',
-      reco_origin: 'unknown',
-      model_origin: 'default',
+      callId: '1',
+      recoOrigin: 'unknown',
+      modelOrigin: 'default',
     }
 
     const defaultPlaylistType = PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS

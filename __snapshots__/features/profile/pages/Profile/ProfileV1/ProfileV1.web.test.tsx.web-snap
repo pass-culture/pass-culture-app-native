@@ -1150,12 +1150,12 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                   type="button"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-flexWrap-1w6e6rj"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                   >
                     <div
-                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
-                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px;"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
                       Accessibilité : partiellement conforme
                     </div>
@@ -1169,12 +1169,12 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                   type="button"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-flexWrap-1w6e6rj"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                   >
                     <div
-                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
-                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px;"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
                       Plan du site
                     </div>
@@ -1188,12 +1188,12 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                   type="button"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-flexWrap-1w6e6rj"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                   >
                     <div
-                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
-                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px;"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
                       Informations légales
                     </div>
@@ -1228,7 +1228,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                       </div>
                     </div>
                     <div
-                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
                       style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
@@ -1265,7 +1265,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                       </div>
                     </div>
                     <div
-                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
                       style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
@@ -1302,7 +1302,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                       </div>
                     </div>
                     <div
-                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
                       style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
@@ -2491,12 +2491,12 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                   type="button"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-flexWrap-1w6e6rj"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                   >
                     <div
-                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
-                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px;"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
                       Accessibilité : partiellement conforme
                     </div>
@@ -2510,12 +2510,12 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                   type="button"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-flexWrap-1w6e6rj"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                   >
                     <div
-                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
-                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px;"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
                       Plan du site
                     </div>
@@ -2529,12 +2529,12 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                   type="button"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-flexWrap-1w6e6rj"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                   >
                     <div
-                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
-                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px;"
+                      style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
                       Informations légales
                     </div>
@@ -2569,7 +2569,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                       </div>
                     </div>
                     <div
-                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
                       style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
@@ -2606,7 +2606,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                       </div>
                     </div>
                     <div
-                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
                       style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >
@@ -2643,7 +2643,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                       </div>
                     </div>
                     <div
-                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
+                      class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-10jjcze"
                       dir="ltr"
                       style="color: rgb(22, 22, 23); max-width: 100%; min-width: 0px; flex-shrink: 1;"
                     >

@@ -30,6 +30,6 @@ function NoIdSvg({
 
 export const NoId = styled(NoIdSvg).attrs(({ color, size, opacity, theme }) => ({
   color: color ?? theme.designSystem.color.icon.default,
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
   opacity: opacity ?? 1,
 }))``

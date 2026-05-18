@@ -8,14 +8,17 @@ import { CalendarS } from 'ui/svg/icons/CalendarS'
 describe('<SummaryInfo />', () => {
   it('should display icon', () => {
     render(
-      <SummaryInfo Icon={<CalendarS size={theme.icons.sizes.small} testID="icon" />} title="Date" />
+      <SummaryInfo
+        Icon={<CalendarS size={theme.designSystem.size.icon.m} testID="icon" />}
+        title="Date"
+      />
     )
 
     expect(screen.getByTestId('icon')).toBeOnTheScreen()
   })
 
   it('should display title', () => {
-    render(<SummaryInfo Icon={<CalendarS size={theme.icons.sizes.small} />} title="Date" />)
+    render(<SummaryInfo Icon={<CalendarS size={theme.designSystem.size.icon.m} />} title="Date" />)
 
     expect(screen.getByText('Date')).toBeOnTheScreen()
   })
@@ -23,7 +26,7 @@ describe('<SummaryInfo />', () => {
   it('should display subtitle when it defined', () => {
     render(
       <SummaryInfo
-        Icon={<CalendarS size={theme.icons.sizes.small} />}
+        Icon={<CalendarS size={theme.designSystem.size.icon.m} />}
         title="Date"
         subtitle="Du 18 octobre 2023 au 27 janvier 2024"
       />
@@ -33,7 +36,7 @@ describe('<SummaryInfo />', () => {
   })
 
   it('should display bottom separator', () => {
-    render(<SummaryInfo Icon={<CalendarS size={theme.icons.sizes.small} />} title="Date" />)
+    render(<SummaryInfo Icon={<CalendarS size={theme.designSystem.size.icon.m} />} title="Date" />)
 
     expect(screen.getByTestId('bottomSeparator')).toBeOnTheScreen()
   })

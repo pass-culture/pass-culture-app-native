@@ -21,7 +21,7 @@ export type GtlPlaylistData = {
 
 export type UseGetOffersByGtlQueryArgs = {
   filteredGtlPlaylistsConfig: GtlPlaylistRequest[]
-  venue?: Omit<VenueResponse, 'isVirtual'>
+  venue?: VenueResponse
   searchIndex?: string
   userLocation: Position
   selectedLocationMode: LocationMode

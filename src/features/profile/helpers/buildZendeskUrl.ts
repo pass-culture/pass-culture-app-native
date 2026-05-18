@@ -71,9 +71,9 @@ const getDebugData = ({
 
   const debugData = [
     { label: 'App version', value: version ? `${version}${webCommitHash}` : undefinedValue },
-    { label: 'Device ID', value: deviceInfo?.deviceId ?? undefinedValue },
-    { label: 'Device model', value: deviceInfo?.source ?? undefinedValue },
-    { label: 'Device OS', value: deviceInfo?.os ?? undefinedValue },
+    { label: 'Device ID', value: deviceInfo.deviceId ?? undefinedValue },
+    { label: 'Device model', value: deviceInfo.source ?? undefinedValue },
+    { label: 'Device OS', value: deviceInfo.os ?? undefinedValue },
     { label: 'Device resolution', value: resolution ?? undefinedValue },
     { label: 'Device zoom', value: zoomInPercent ?? undefinedValue },
     { label: 'User ID', value: user?.id ?? undefinedValue },

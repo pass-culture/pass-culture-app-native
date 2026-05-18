@@ -1,7 +1,5 @@
 import React from 'react'
 import { View } from 'react-native'
-import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { OfferStockResponse } from 'api/gen'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
@@ -14,12 +12,8 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { Li } from 'ui/components/Li'
-import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
-import { VerticalUl } from 'ui/components/Ul'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
+import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
 
 type Props = {
   stocks: OfferStockResponse[]
@@ -31,7 +25,6 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
   const offerCredit = useCreditForOffer(bookingState.offerId)
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
-  const titleID = uuidv4()
   const selectedHour = bookingState.hour ?? ''
 
   const selectStock = (stockId: number) => {
@@ -43,34 +36,35 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
 
   const filteredStocks = getStockSortedByPriceFromHour(stocks, selectedHour)
   const radioGroupLabel = 'Prix'
+  const selectedStock = filteredStocks.find((stock) => stock.id === bookingState.stockId)
+  const options: Array<RadioButtonGroupOption> = filteredStocks.map((stock) => {
+    const priceWording = formatCurrencyFromCents(stock.price, currency, euroToPacificFrancRate)
+    const statusWording = getPriceWording(stock, offerCredit)
+    return {
+      key: stock.id.toString(),
+      label: stock.priceCategoryLabel ?? '',
+      description: [priceWording, statusWording].filter(Boolean).join(' - '),
+      disabled: stock.isSoldOut || stock.price > offerCredit,
+    }
+  })
+
+  const handleChange = (selectedLabel: string) => {
+    const stock = filteredStocks.find((stock) => stock.priceCategoryLabel === selectedLabel)
+    if (!stock) return
+    selectStock(stock.id)
+  }
 
   return (
-    <ViewGap gap={4}>
-      <Typo.Title3 {...getHeadingAttrs(3)} testID="PricesStep">
-        {radioGroupLabel}
-      </Typo.Title3>
-
-      <View accessibilityRole={AccessibilityRole.RADIOGROUP} accessibilityLabelledBy={titleID}>
-        <VerticalUl>
-          {filteredStocks.map((stock) => (
-            <StyledLi key={stock.id}>
-              <RadioSelector
-                radioGroupLabel={radioGroupLabel}
-                label={stock.priceCategoryLabel ?? ''}
-                onPress={() => selectStock(stock.id)}
-                checked={stock.id === bookingState.stockId}
-                disabled={stock.isSoldOut || stock.price > offerCredit}
-                description={getPriceWording(stock, offerCredit)}
-                rightText={formatCurrencyFromCents(stock.price, currency, euroToPacificFrancRate)}
-              />
-            </StyledLi>
-          ))}
-        </VerticalUl>
-      </View>
-    </ViewGap>
+    <View testID="PricesStep" accessibilityRole={AccessibilityRole.RADIOGROUP}>
+      <RadioButtonGroup
+        label={radioGroupLabel}
+        labelVariant="title3"
+        options={options}
+        value={selectedStock?.priceCategoryLabel ?? ''}
+        onChange={handleChange}
+        variant="detailed"
+        display="vertical"
+      />
+    </View>
   )
 }
-
-const StyledLi = styled(Li)(({ theme }) => ({
-  paddingBottom: theme.designSystem.size.spacing.s,
-}))

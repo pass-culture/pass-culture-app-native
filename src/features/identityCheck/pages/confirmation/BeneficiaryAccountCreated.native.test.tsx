@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { AccountState, RefreshRequestV2, SigninResponseV2 } from 'api/gen'
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
@@ -11,6 +12,7 @@ import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { BatchProfile } from 'libs/react-native-batch'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
 
@@ -40,6 +42,18 @@ describe('BeneficiaryAccountCreated', () => {
   beforeEach(() => {
     setFeatureFlags()
     mockAuthContextWithUser(underageBeneficiaryUser, { persist: true })
+    mockServer.postApi<SigninResponseV2>('/v2/signin', {
+      accessToken: 'accessToken',
+      refreshToken: 'refreshToken',
+      accountState: AccountState.ACTIVE,
+    })
+    mockServer.postApi<RefreshRequestV2>('/v2/refresh_access_token', {
+      deviceInfo: {
+        deviceId: 'id',
+        os: 'iOS',
+        source: 'unknown',
+      },
+    })
   })
 
   it('should render correctly for underage beneficiaries', async () => {

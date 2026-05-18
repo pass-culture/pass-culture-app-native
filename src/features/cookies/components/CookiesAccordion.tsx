@@ -87,7 +87,7 @@ const StyledView = styled.View<{ marginTop?: boolean; marginBottom?: boolean }>(
 const IconSpacer = styled.View(({ theme }) => {
   const SPACER_BETWEEN_ICON_AND_TEXT = theme.designSystem.size.spacing.xs
   return {
-    width: theme.icons.sizes.extraSmall + SPACER_BETWEEN_ICON_AND_TEXT,
+    width: theme.designSystem.size.icon.s + SPACER_BETWEEN_ICON_AND_TEXT,
   }
 })
 
@@ -96,7 +96,7 @@ const IconContainer = styled.View({
 })
 
 const StyledInfo = styled(InfoPlain).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
   color: theme.designSystem.color.icon.brandPrimary,
 }))``
 

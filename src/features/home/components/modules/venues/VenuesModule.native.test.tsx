@@ -14,6 +14,7 @@ import { render, screen, userEvent } from 'tests/utils'
 const props = {
   moduleId: 'fakemoduleid',
   displayParameters: { title: 'Module title', minOffers: 1 } as DisplayParametersFields,
+  venuesParameters: { title: 'Module title', hitsPerPage: 10, isGeolocated: false },
   search: [],
   homeEntryId: 'fakeEntryId',
   index: 1,
@@ -124,12 +125,12 @@ describe('VenuesModule component', () => {
         ).not.toBeOnTheScreen()
       })
 
-      it('should trigger ConsultVenue log with originDetail set to volunteeringPlaylist when pressing on a venue', async () => {
+      it('should trigger ConsultVenue log with originDetails set to volunteeringPlaylist when pressing on a venue', async () => {
         renderVenuesModule({
           displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
         })
 
-        const venues = screen.getAllByTestId(/Lieu/)
+        const venues = screen.getAllByLabelText('Le Petit Rintintin 1 - Paris - 75000 - Cinéma')
         const firstVenue = venues[0]
 
         if (firstVenue) {
@@ -142,7 +143,7 @@ describe('VenuesModule component', () => {
           moduleName: props.displayParameters.title,
           moduleId: props.moduleId,
           homeEntryId: props.homeEntryId,
-          originDetail: 'volunteeringPlaylist',
+          originDetails: 'volunteeringPlaylist',
         })
       })
     })
@@ -163,9 +164,9 @@ describe('VenuesModule component', () => {
         ).not.toBeOnTheScreen()
       })
 
-      it('should trigger ConsultVenue log without originDetail set to volunteeringPlaylist when pressing on a venue', async () => {
+      it('should trigger ConsultVenue log without originDetails set to volunteeringPlaylist when pressing on a venue', async () => {
         renderVenuesModule()
-        const venues = screen.getAllByTestId(/Lieu/)
+        const venues = screen.getAllByLabelText('Le Petit Rintintin 1 - Paris - 75000 - Cinéma')
         const firstVenue = venues[0]
 
         if (firstVenue) {

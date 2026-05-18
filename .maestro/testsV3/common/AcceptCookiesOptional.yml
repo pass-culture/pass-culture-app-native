@@ -1,0 +1,18 @@
+appId: ${MAESTRO_APP_ID}
+---
+- waitForAnimationToEnd
+
+- repeat:
+    while:
+      visible: "Respect de ta vie privée"
+    commands:
+      - tapOn:
+          text: 'Tout accepter'
+          optional: true
+
+- runFlow:
+    when:
+      visible: 'Autorisez-vous.*'
+      platform: iOS
+    commands:
+    - tapOn: "Autoriser"

@@ -24,19 +24,19 @@ const meta: Meta<typeof Tag> = {
 export default meta
 
 const StyledArrowRight = styled(ArrowRight).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))``
 
 const StyledClose = styled(CloseFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))``
 
 const StyledCheck = styled(CheckFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))``
 
 const StyledWait = styled(ClockFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))``
 
 const variantConfig: Variants<typeof Tag> = [

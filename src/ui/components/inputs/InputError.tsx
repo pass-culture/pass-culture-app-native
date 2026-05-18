@@ -34,7 +34,7 @@ export const InputError: FC<Props> = ({
             type="Error"
             icon={ErrorPlain}
             testIdSuffix="warn"
-            iconSize={theme.icons.sizes.extraSmall}
+            iconSize={theme.designSystem.size.icon.s}
             noFullWidth={centered}
           />
         </Container>

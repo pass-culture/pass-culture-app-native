@@ -27,7 +27,7 @@ describe('useGeolocationDialogs', () => {
 
       await result.current.runGeolocationDialogs()
 
-      expect(mockProps.setPlaceGlobally).toHaveBeenNthCalledWith(1, null)
+      expect(mockProps.setPlace).toHaveBeenNthCalledWith(1, null)
     })
 
     it('should select everywhere mode', async () => {
@@ -105,7 +105,7 @@ describe('useGeolocationDialogs', () => {
 
     await result.current.runGeolocationDialogs()
 
-    expect(mockProps.setPlaceGlobally).toHaveBeenNthCalledWith(1, null)
+    expect(mockProps.setPlace).toHaveBeenNthCalledWith(1, null)
   })
 
   it('should select around me mode when permission state is GRANTED and shouldDirectlyValidate is true', async () => {

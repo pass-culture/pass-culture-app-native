@@ -12,7 +12,7 @@ import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 
-export const ContactBlock: React.FC<{ venue: Omit<VenueResponse, 'isVirtual'> }> = ({ venue }) => {
+export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
   const { email, phoneNumber, website } = venue.contact || {}
 
   const onOpenUrlError = () => {

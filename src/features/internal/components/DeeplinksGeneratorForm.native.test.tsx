@@ -6,6 +6,7 @@ import {
   getDefaultScreenParams,
 } from 'features/internal/components/DeeplinksGeneratorForm'
 import { ScreensUsedByMarketing } from 'features/internal/config/deeplinksExportConfig'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationMode } from 'libs/location/types'
 import { fireEvent, render, screen, userEvent } from 'tests/utils'
 
@@ -25,6 +26,8 @@ const user = userEvent.setup()
 
 describe('<DeeplinksGeneratorForm />', () => {
   jest.useFakeTimers()
+
+  beforeEach(() => setFeatureFlags())
 
   it('should render deeplink generator form with marketing as default utm_gen', async () => {
     const onCreate = jest.fn()

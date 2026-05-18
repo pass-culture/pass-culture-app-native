@@ -37,5 +37,5 @@ const GoogleSvg: React.FunctionComponent<AccessibleIcon> = ({
 )
 
 export const Google = styled(GoogleSvg).attrs(({ size, theme }) => ({
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
 }))``

@@ -17,10 +17,7 @@ const spyApiGetVenue = jest.spyOn(api, 'getNativeV2VenuevenueId')
 
 describe('useVenueQuery', () => {
   it('should call API otherwise', async () => {
-    mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(
-      `/v2/venue/${venueDataTest.id}`,
-      venueDataTest
-    )
+    mockServer.getApi<VenueResponse>(`/v2/venue/${venueDataTest.id}`, venueDataTest)
     const { result } = renderHook(() => useVenueQuery(venueDataTest.id), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })

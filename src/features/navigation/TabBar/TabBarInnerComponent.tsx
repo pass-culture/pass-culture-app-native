@@ -17,7 +17,7 @@ export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
   badgeValue,
   showBadge,
 }) => {
-  const { icons } = useTheme()
+  const { icons, designSystem } = useTheme()
 
   const accessibilityLabel = menu[tabName].accessibilityLabel
 
@@ -28,7 +28,7 @@ export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
 
   const iconSize = useMobileFontScaleToDisplay({
     default: icons.sizes.small,
-    at200PercentZoom: icons.sizes.standard,
+    at200PercentZoom: designSystem.size.icon.l,
   })
 
   return (

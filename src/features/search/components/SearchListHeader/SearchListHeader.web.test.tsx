@@ -23,6 +23,7 @@ const mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(() => ({
   geolocPosition: mockPosition,
   selectedLocationMode: LocationMode.EVERYWHERE,
+  onModalHideRef: { current: jest.fn() },
 }))
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
@@ -44,12 +45,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
-
-jest.mock('features/location/helpers/useLocationState', () => ({
-  useLocationState: () => ({
-    onModalHideRef: { current: jest.fn() },
-  }),
-}))
 
 const mockData = PLACEHOLDER_DATA
 jest.mock('queries/subcategories/useSubcategoriesQuery', () => ({

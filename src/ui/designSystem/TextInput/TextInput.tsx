@@ -128,7 +128,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
             onPress={customProps.rightButton.onPress}
             hitSlop={customProps.rightButton.hitSlop}
             onMouseDown={preventInputFocusOnMouseDown}>
-            <Icon size={theme.icons.sizes.small} />
+            <Icon size={theme.designSystem.size.icon.m} />
           </IconTouchableOpacity>
         ) : null}
       </TextInputContainer>
@@ -200,7 +200,7 @@ const ErrorText = styled(Typo.BodyAccentS)(({ theme }) => ({
 
 const ErrorIcon = styled(ErrorFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.error,
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))({
   flexShrink: 0,
 })

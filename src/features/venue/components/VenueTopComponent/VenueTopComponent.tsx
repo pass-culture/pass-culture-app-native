@@ -6,7 +6,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { VenueTopComponentBase } from 'features/venue/components/VenueTopComponent/VenueTopComponentBase'
 
 type Props = {
-  venue: Omit<VenueResponse, 'isVirtual'>
+  venue: VenueResponse
   enableVolunteer?: boolean
   enableVolunteerNewTag?: boolean
   enableVolunteerFeedback?: boolean

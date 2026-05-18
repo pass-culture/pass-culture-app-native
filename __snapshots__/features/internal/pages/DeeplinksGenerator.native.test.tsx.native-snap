@@ -531,9 +531,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           variant="default"
                         />
                         <View
+                          sizing="hug"
                           style={
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             }
@@ -648,9 +648,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           variant="default"
                         />
                         <View
+                          sizing="hug"
                           style={
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             }
@@ -765,9 +765,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           variant="default"
                         />
                         <View
+                          sizing="hug"
                           style={
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             }
@@ -910,9 +910,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           />
                         </View>
                         <View
+                          sizing="hug"
                           style={
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             }
@@ -1027,9 +1027,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           variant="default"
                         />
                         <View
+                          sizing="hug"
                           style={
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             }
@@ -1144,9 +1144,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           variant="default"
                         />
                         <View
+                          sizing="hug"
                           style={
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             }
@@ -1261,9 +1261,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           variant="default"
                         />
                         <View
+                          sizing="hug"
                           style={
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             }
@@ -1378,9 +1378,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           variant="default"
                         />
                         <View
+                          sizing="hug"
                           style={
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             }
@@ -1495,9 +1495,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           variant="default"
                         />
                         <View
+                          sizing="hug"
                           style={
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             }
@@ -1612,9 +1612,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           variant="default"
                         />
                         <View
+                          sizing="hug"
                           style={
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             }

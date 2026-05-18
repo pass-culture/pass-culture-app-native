@@ -110,7 +110,6 @@ const everywhereUseLocation = {
   triggerPositionUpdate: jest.fn(),
   onPressGeolocPermissionModalButton: jest.fn(),
   onResetPlace: jest.fn(),
-  onSetSelectedPlace: jest.fn(),
   selectedPlace: null,
   setSelectedPlace: jest.fn(),
   placeQuery: '',
