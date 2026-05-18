@@ -15,7 +15,7 @@
     "url": "https://github.com/pass-culture/pass-culture-app-native.git"
   },
   "engines": {
-    "node": "20"
+    "node": ">=25.9"
   },
   "scripts": {
     "build": "tsc --build && cp package.json build",
