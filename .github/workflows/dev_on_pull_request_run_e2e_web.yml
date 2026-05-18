@@ -107,6 +107,8 @@ jobs:
   slack_notify:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
+    environment:
+      name: app-native-staging
     if: always()
     needs: run_e2e_web
     steps:
