@@ -1,6 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 tags:
   - auth
+  - fix
 onFlowStart:
   - runScript: ../common/DeepLink.js
   - runScript:
@@ -12,7 +13,7 @@ onFlowStart:
 ---
 - runFlow: ../common/LaunchApp.yml
 - runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeepLinkToHome.yml
+- runFlow: ../common/DeeplinkToHome.yml
 
 - runFlow: ../common/GoToSearchFromTabBar.yml
 
@@ -32,7 +33,7 @@ onFlowStart:
 
 - swipe:
     from:
-      text: '.*Les lieux culturels.*'
+      text: 'Les offres'
     direction: UP
 
 - extractTextWithAI:
