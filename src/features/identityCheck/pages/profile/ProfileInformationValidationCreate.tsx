@@ -31,6 +31,7 @@ export const ProfileInformationValidationCreate = () => {
   const { params } = useRoute<UseRouteType<'ProfileInformationValidationCreate'>>()
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
   const profileOrigin = params?.origin
+  const freeOfferId = params?.freeOfferId
   const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
 
   enum DataSources {
@@ -58,7 +59,6 @@ export const ProfileInformationValidationCreate = () => {
 
   const storedProfileInfos = useStoredProfileInfos()
   const saveStep = useSaveStep()
-  const freeOfferId = params?.freeOfferId
 
   const shouldGetDataFromLocalStorage =
     pageConfigByType[type].formDataSource === DataSources.LOCAL_STORAGE

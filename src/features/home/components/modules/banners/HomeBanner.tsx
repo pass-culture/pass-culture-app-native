@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React, { useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
@@ -58,11 +58,6 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
   const { hasClosedBonificationBanner, onCloseBanner } = useBonificationBannerVisibility()
   const { user } = useAuthContext()
-  const showBonificationBanner = getShouldShowBonificationBanner({
-    enableBonification,
-    hasClosedBonificationBanner,
-    qfBonificationStatus: user?.qfBonificationStatus,
-  })
 
   const { options: remoteActivationBannerOptions, isFeatureFlagActive: disableActivation } =
     useFeatureFlagOptionsQuery(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
@@ -78,23 +73,26 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   const { banner } = useActivationBanner()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const onPressSystemBanner = useCallback(
-    (from: StepperOrigin) => {
+  const SystemBanner = useMemo(() => {
+    const onPressSystemBanner = (from: StepperOrigin) => {
       navigate(...getSubscriptionHookConfig('Stepper', { from }))
-    },
-    [navigate]
-  )
+    }
 
-  const SystemBanner = (() => {
+    const showBonificationBanner = getShouldShowBonificationBanner({
+      enableBonification,
+      hasClosedBonificationBanner,
+      qfBonificationStatus: user?.qfBonificationStatus,
+    })
+
     const shouldRenderSystemBanner = banner.name ? bannersToRender.has(banner.name) : false
-
-    const showFreeBeneficiaryBanner =
-      user &&
-      ['ELIGIBLE_CREDIT_V3_16', 'ELIGIBLE_CREDIT_V3_15'].includes(user?.eligibilityType) &&
-      user.status.subscriptionStatus === 'has_to_complete_subscription'
-
     const systemBannerAnalyticsType =
       banner.name === BannerName.geolocation_banner ? 'location' : 'credit'
+
+    const showFreeBeneficiaryBanner =
+      (user?.eligibilityType === 'ELIGIBLE_CREDIT_V2_16' ||
+        user?.eligibilityType === 'ELIGIBLE_CREDIT_V3_16' ||
+        user?.eligibilityType === 'ELIGIBLE_CREDIT_V3_15') &&
+      user?.subscriptionStatus === 'has_to_complete_subscription'
 
     const renderSystemBanner = (
       Icon: React.FunctionComponent<AccessibleIcon>,
@@ -159,7 +157,21 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
     }
 
     return null
-  })()
+  }, [
+    enableBonification,
+    hasClosedBonificationBanner,
+    user?.qfBonificationStatus,
+    user?.eligibilityType,
+    user?.subscriptionStatus,
+    banner.name,
+    banner.title,
+    banner.text,
+    disableActivation,
+    remoteActivationBannerOptions,
+    isLoggedIn,
+    navigate,
+    onCloseBanner,
+  ])
 
   return (
     <React.Fragment>

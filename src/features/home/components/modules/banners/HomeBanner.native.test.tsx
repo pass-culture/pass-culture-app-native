@@ -7,7 +7,6 @@ import {
   QFBonificationStatus,
   SubscriptionStatus,
   SubscriptionStepperResponseV2,
-  YoungStatusType,
 } from 'api/gen'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
@@ -276,10 +275,7 @@ describe('<HomeBanner/>', () => {
           ...beneficiaryUser,
           statusType: UserStatusType.ELIGIBLE,
           eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
-          status: {
-            statusType: YoungStatusType.eligible,
-            subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
-          },
+          subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
         },
         { persist: true }
       )
