@@ -1,0 +1,11 @@
+url: https://app.staging.passculture.team/
+tags:
+  - nightlyWeb
+---
+- launchApp
+- extendedWaitUntil:
+    visible: 'Respect de ta vie privée'
+    timeout: 60000
+- runFlow: subFolder/cookies/AcceptCookies.yml
+- runFlow: subFolder/home/VerifyHomeScreen.yml
+- stopApp

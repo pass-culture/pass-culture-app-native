@@ -1,0 +1,9 @@
+url: https://app.staging.passculture.team/
+tags:
+  - nightlyWeb
+---
+- launchApp
+- runFlow: subFolder/cookies/AcceptCookies.yml
+- runFlow: subFolder/search/VerifySearchHome.yml
+- runFlow: subFolder/search/NavigateToMusicCategory.yml
+- stopApp
