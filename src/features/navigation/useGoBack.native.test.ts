@@ -56,7 +56,7 @@ describe('useGoBack()', () => {
 
     it('should call goBack if previous route exists and canGoBack = true', () => {
       mockCanGoBack = true
-      mockPreviousRouteName = 'Login'
+      mockPreviousRouteName = 'LoginMethods'
       const { result } = renderUseGoBack()
       result.current.goBack()
 

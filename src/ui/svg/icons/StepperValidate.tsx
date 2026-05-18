@@ -1,15 +1,11 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { Circle, Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
-type StepperValidateProps = AccessibleIcon & {
-  color2?: string
-}
-
-const StepperValidateSvg: React.FunctionComponent<StepperValidateProps> = ({
+const StepperValidateSvg: FunctionComponent<AccessibleIcon> = ({
   size,
   color,
   color2,

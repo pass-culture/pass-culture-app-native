@@ -103,13 +103,13 @@ describe('<AuthenticationModal />', () => {
     const signinButton = screen.getByText('Se connecter')
     await user.press(signinButton)
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'Login', {
+    expect(navigate).toHaveBeenNthCalledWith(1, 'LoginMethods', {
       offerId: OFFER_ID,
       from: StepperOrigin.BOOKING,
     })
   })
 
-  it('should go to Login from favorite with offerId', async () => {
+  it('should go to LoginMethods from favorite with offerId', async () => {
     render(
       <AuthenticationModal
         visible
@@ -122,7 +122,7 @@ describe('<AuthenticationModal />', () => {
     const signinButton = screen.getByText('Se connecter')
     await user.press(signinButton)
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'Login', {
+    expect(navigate).toHaveBeenNthCalledWith(1, 'LoginMethods', {
       offerId: OFFER_ID,
       from: StepperOrigin.FAVORITE,
     })

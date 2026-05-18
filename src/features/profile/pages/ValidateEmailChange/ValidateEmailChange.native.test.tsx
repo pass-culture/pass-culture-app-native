@@ -109,13 +109,13 @@ describe('ValidateEmailChange', () => {
     expect(mockSignOut).not.toHaveBeenCalled()
   })
 
-  it('should redirect to Login if submit is success', async () => {
+  it('should redirect to LoginMethods if submit is success', async () => {
     renderValidateEmailChange()
 
     await user.press(screen.getByText('Valider l’adresse e-mail'))
 
     expect(navigation.reset).toHaveBeenNthCalledWith(1, {
-      routes: [{ name: 'Login', params: { from: StepperOrigin.VALIDATE_EMAIL_CHANGE } }],
+      routes: [{ name: 'LoginMethods', params: { from: StepperOrigin.VALIDATE_EMAIL_CHANGE } }],
     })
   })
 

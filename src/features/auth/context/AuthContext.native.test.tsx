@@ -146,7 +146,7 @@ describe('AuthContext', () => {
       expect(result.current.isLoggedIn).toBe(false)
     })
 
-    it('should not navigate to login with the force display message when user has no refresh token', async () => {
+    it('should not navigate to LoginMethods with the force display message when user has no refresh token', async () => {
       await storage.saveString('access_token', 'access_token')
 
       renderUseAuthContext()
@@ -156,7 +156,7 @@ describe('AuthContext', () => {
       expect(navigateFromRefSpy).not.toHaveBeenCalled()
     })
 
-    it('should navigate to login with the force display message when the refresh token is expired', async () => {
+    it('should navigate to LoginMethods with the force display message when the refresh token is expired', async () => {
       await storage.saveString('access_token', 'access_token')
       await saveRefreshToken('token')
 
@@ -175,12 +175,12 @@ describe('AuthContext', () => {
         jest.advanceTimersByTime(tokenRemainingLifetimeInMs)
       })
 
-      expect(navigateFromRefSpy).toHaveBeenCalledWith('Login', {
+      expect(navigateFromRefSpy).toHaveBeenCalledWith('LoginMethods', {
         displayForcedLoginHelpMessage: true,
       })
     })
 
-    it('should navigate to login with the force display message when the refresh token expires during user session', async () => {
+    it('should navigate to LoginMethods with the force display message when the refresh token expires during user session', async () => {
       await storage.saveString('access_token', 'access_token')
       await saveRefreshToken('token')
 
@@ -193,7 +193,7 @@ describe('AuthContext', () => {
       })
 
       await waitFor(() =>
-        expect(navigateFromRefSpy).toHaveBeenCalledWith('Login', {
+        expect(navigateFromRefSpy).toHaveBeenCalledWith('LoginMethods', {
           displayForcedLoginHelpMessage: true,
         })
       )
@@ -222,7 +222,7 @@ describe('AuthContext', () => {
     })
 
     it('should log to Sentry when error occurs', async () => {
-      storage.saveString('access_token', 'access_token')
+      void storage.saveString('access_token', 'access_token')
       await saveRefreshToken('token')
       const error = new Error('Batch error')
       BatchProfile.identify.mockImplementationOnce(() => {

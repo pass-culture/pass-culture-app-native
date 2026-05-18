@@ -1,24 +1,34 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
-import { ColorsType } from 'theme/types'
 import { Separator } from 'ui/components/Separator'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 
 interface SeparatorWithTextProps {
   label: string
-  backgroundColor?: ColorsType
+  icon?: FunctionComponent<AccessibleIcon>
+  color?: 'neutral' | 'primary'
 }
 
 export const SeparatorWithText: FunctionComponent<SeparatorWithTextProps> = ({
   label,
-  backgroundColor,
+  icon: Icon,
+  color,
 }) => {
+  const { designSystem, icons } = useTheme()
+  const iconColor =
+    color === 'primary' ? designSystem.color.text.brandPrimary : designSystem.color.text.default
   return (
     <Container>
-      <StyledSeparator backgroundColor={backgroundColor} />
-      <StyledLabel>{label}</StyledLabel>
-      <StyledSeparator backgroundColor={backgroundColor} />
+      <StyledSeparator type="left" />
+      {Icon ? (
+        <IconContainer>
+          <Icon size={icons.sizes.extraSmall} color={iconColor} />
+        </IconContainer>
+      ) : null}
+      <StyledLabel color={color}>{label}</StyledLabel>
+      <StyledSeparator type="right" />
     </Container>
   )
 }
@@ -29,13 +39,24 @@ const Container = styled.View(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.xs,
 }))
 
-const StyledLabel = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  marginHorizontal: theme.designSystem.size.spacing.m,
-}))
-
-const StyledSeparator = styled(Separator.Horizontal)<{ backgroundColor?: ColorsType }>(
-  ({ theme, backgroundColor }) => ({
-    flex: 1,
-    backgroundColor: backgroundColor ?? theme.designSystem.separator.color.subtle,
+const StyledLabel = styled(Typo.BodyAccentS)<{ color?: 'neutral' | 'primary' }>(
+  ({ theme, color }) => ({
+    color:
+      color === 'primary'
+        ? theme.designSystem.color.text.brandPrimary
+        : theme.designSystem.color.text.default,
   })
 )
+
+const StyledSeparator = styled(Separator.Horizontal)<{ type?: 'left' | 'right' }>(
+  ({ theme, type }) => ({
+    flex: 1,
+    backgroundColor: theme.designSystem.separator.color.subtle,
+    marginRight: type === 'left' ? theme.designSystem.size.spacing.l : undefined,
+    marginLeft: type === 'right' ? theme.designSystem.size.spacing.l : undefined,
+  })
+)
+
+const IconContainer = styled.View(({ theme }) => ({
+  marginRight: theme.designSystem.size.spacing.xs,
+}))

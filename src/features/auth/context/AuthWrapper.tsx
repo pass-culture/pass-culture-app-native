@@ -17,7 +17,7 @@ const NAVIGATION_DELAY_FOR_EXPIRED_REFRESH_TOKEN_IN_MS = 1000
 const MAX_AVERAGE_SESSION_DURATION_IN_MS = 60 * 60 * 1000
 
 const navigateToLoginWithHelpMessage = () =>
-  navigateFromRef('Login', { displayForcedLoginHelpMessage: true })
+  navigateFromRef('LoginMethods', { displayForcedLoginHelpMessage: true })
 
 export const AuthWrapper = memo(function AuthWrapper({
   children,

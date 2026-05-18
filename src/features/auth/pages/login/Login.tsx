@@ -5,9 +5,6 @@ import { useForm } from 'react-hook-form'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
-import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
-import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
-import { SSOButtonGoogleBase } from 'features/auth/components/SSOButton/SSOButtonGoogleBase'
 import { getSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
 import { loginSchema } from 'features/auth/pages/login/schema/loginSchema'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
@@ -18,8 +15,6 @@ import {
   UseRouteType,
 } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSafeState } from 'libs/hooks'
 import { captureMonitoringError } from 'libs/monitoring/errors'
 import { ReCaptchaError, ReCaptchaInternalError } from 'libs/recaptcha/errors'
@@ -32,9 +27,7 @@ import { PasswordInputController } from 'shared/forms/controllers/PasswordInputC
 import { Form } from 'ui/components/Form'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { InputError } from 'ui/components/inputs/InputError'
-import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -53,7 +46,6 @@ type Props = {
 
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.LOGIN)
-  const enableAppleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO)
   const { data: isRecaptchaEnabled } = useIsRecaptchaEnabled()
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -77,7 +69,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
 
   useEffect(() => {
     if (params?.from) {
-      analytics.logStepperDisplayed(params.from, 'Login')
+      void analytics.logStepperDisplayed(params.from, 'Login')
     }
   }, [params?.from])
 
@@ -86,7 +78,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       showErrorSnackBar(
         'Pour sécuriser ton pass Culture, tu dois régulièrement confirmer tes identifiants.'
       )
-      analytics.logDisplayForcedLoginHelpMessage()
+      void analytics.logDisplayForcedLoginHelpMessage()
     }
   }, [params?.displayForcedLoginHelpMessage])
 
@@ -186,10 +178,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     navigate('ForgottenPassword')
   }, [navigate])
 
-  const onLogSignUpAnalytics = useCallback(() => {
-    analytics.logSignUpClicked({ from: 'login' })
-  }, [])
-
   const titlePage = 'Connecte-toi'
 
   return (
@@ -218,14 +206,24 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
                 numberOfSpacesTop={5}
                 centered
               />
-              <Container>
-                <EmailInputController
-                  label="Adresse e-mail"
-                  name="email"
-                  control={control}
-                  requiredIndicator="explicit"
+              <EmailInputController
+                label="Adresse e-mail"
+                name="email"
+                control={control}
+                requiredIndicator="explicit"
+              />
+              <ButtonContainer>
+                <ExternalTouchableLink
+                  as={Button}
+                  variant="tertiary"
+                  color="neutral"
+                  icon={StyledExternalSiteFilled}
+                  wording="Identifiants oubliés&nbsp;?"
+                  externalNav={{
+                    url: 'https://aide.passculture.app/hc/fr/articles/25838501009308--Jeunes-Tu-as-perdu-tes-identifiants-de-connexion-que-faire',
+                  }}
                 />
-              </Container>
+              </ButtonContainer>
               <PasswordInputController
                 name="password"
                 control={control}
@@ -248,30 +246,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
                 onPress={handleSubmit(onSubmit)}
                 disabled={shouldDisableLoginButton}
               />
-              <StyledViewGap gap={4}>
-                <SeparatorWithText label="ou" />
-                <SSOButtonGoogleBase type="login" onSuccess={signIn} />
-                {enableAppleSSO ? (
-                  <SSOButtonApple
-                    type="login"
-                    onSignInFailure={handleSigninFailure}
-                    doNotNavigateOnSigninSuccess={props.doNotNavigateOnSigninSuccess}
-                  />
-                ) : null}
-                <ExternalTouchableLink
-                  as={Button}
-                  variant="tertiary"
-                  size="small"
-                  color="neutral"
-                  icon={ExternalSiteFilled}
-                  wording="Je ne me souviens pas de mes identifiants"
-                  externalNav={{
-                    url: 'https://aide.passculture.app/hc/fr/articles/25838501009308--Jeunes-Tu-as-perdu-tes-identifiants-de-connexion-que-faire',
-                  }}
-                />
-              </StyledViewGap>
             </Form.MaxWidth>
-            <SignUpButton type="signup" onAdditionalPress={onLogSignUpAnalytics} />
           </React.Fragment>
         }
       />
@@ -284,24 +259,13 @@ const ButtonContainer = styled.View(({ theme }) => ({
   width: '100%',
   maxWidth: theme.buttons.maxWidth,
   marginTop: theme.designSystem.size.spacing.l,
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing.l,
 }))
 
-const Container = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xxl,
+const TitleContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,
 }))
 
-const SignUpButton = styled(AuthenticationButton).attrs(({ theme }) => ({
-  linkColor: theme.designSystem.color.text.brandSecondary,
-  type: 'signup',
+const StyledExternalSiteFilled = styled(ExternalSiteFilled).attrs(({ theme }) => ({
+  size: theme.icons.sizes.smaller,
 }))``
-
-const TitleContainer = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.s,
-}))
-
-const StyledViewGap = styled(ViewGap)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.l,
-  marginBottom: theme.designSystem.size.spacing.xxxl,
-}))
