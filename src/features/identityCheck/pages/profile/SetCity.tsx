@@ -31,6 +31,8 @@ export const cityResolver = object().shape({
 export const SetCity = () => {
   const { params } = useRoute<UseRouteType<'SetCity'>>()
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
+  const origin = params?.origin
+  const freeOfferId = params?.freeOfferId
 
   const identityCheckAndRecapExistingDataConfig = { headerTitle: 'Profil' }
   const pageConfigByType = {
@@ -52,9 +54,16 @@ export const SetCity = () => {
     defaultValues: { city: storedCity ?? undefined },
   })
 
+  const getAddressNavigationParams = () => {
+    if (origin) {
+      return freeOfferId ? { type, origin, freeOfferId } : { type, origin }
+    }
+    return freeOfferId ? { type, freeOfferId } : { type }
+  }
+
   const onSubmit = ({ city }: CityForm) => {
     setStoreCity(city)
-    navigate(...getSubscriptionHookConfig('SetAddress', { type }))
+    navigate(...getSubscriptionHookConfig('SetAddress', getAddressNavigationParams()))
   }
 
   return (

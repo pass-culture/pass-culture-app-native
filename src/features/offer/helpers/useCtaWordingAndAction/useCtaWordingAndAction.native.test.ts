@@ -11,6 +11,7 @@ import {
 } from 'api/gen'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
+import { ProfileOrigin } from 'features/identityCheck/pages/profile/types'
 import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
@@ -97,7 +98,11 @@ describe('getCtaWordingAndAction', () => {
         wording: 'Réserver l’offre',
         navigateTo: {
           params: {
-            params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+            params: {
+              type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+              origin: ProfileOrigin.OFFER,
+              freeOfferId: baseOffer.id,
+            },
             screen: 'SetName',
           },
           screen: 'SubscriptionStackNavigator',
@@ -126,7 +131,11 @@ describe('getCtaWordingAndAction', () => {
           screen: 'SubscriptionStackNavigator',
           params: {
             screen: 'ProfileInformationValidationCreate',
-            params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+            params: {
+              type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+              origin: ProfileOrigin.OFFER,
+              freeOfferId: baseOffer.id,
+            },
           },
         },
       })

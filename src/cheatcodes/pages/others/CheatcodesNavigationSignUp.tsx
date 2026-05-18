@@ -38,6 +38,11 @@ const signUpCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
+      title: 'FreeBeneficiaryAccountCreated',
+      navigationTarget: getSubscriptionPropConfig('FreeBeneficiaryAccountCreated'),
+    },
+    {
+      id: uuidv4(),
       title: 'SignupConfirmationExpiredLink',
       navigationTarget: {
         screen: 'SignupConfirmationExpiredLink',

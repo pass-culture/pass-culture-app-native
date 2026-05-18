@@ -55,6 +55,7 @@ export type SubscriptionStackParamList = {
   IdentityCheckHonor: undefined
   BeneficiaryRequestSent: undefined
   BeneficiaryAccountCreated: undefined
+  FreeBeneficiaryAccountCreated: undefined
   // Errors
   EduConnectErrors: { code?: string; logoutUrl?: string }
   EduConnectErrorsPage: { code?: string; logoutUrl?: string }

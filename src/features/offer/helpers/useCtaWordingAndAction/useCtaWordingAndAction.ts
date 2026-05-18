@@ -1,6 +1,5 @@
 import { useRoute } from '@react-navigation/native'
 import { UseMutateFunction } from '@tanstack/react-query'
-import { useEffect } from 'react'
 
 import { ApiError } from 'api/ApiError'
 import {
@@ -27,6 +26,7 @@ import {
   ValidStoredProfileInfos,
 } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
+import { ProfileOrigin } from 'features/identityCheck/pages/profile/types'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { Referrals, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
@@ -41,7 +41,6 @@ import {
   HasEnoughCredit,
   useHasEnoughCredit,
 } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
-import { freeOfferIdActions } from 'features/offer/store/freeOfferIdStore'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { UserProfile } from 'features/share/types'
@@ -204,7 +203,7 @@ export const getCtaWordingAndAction = ({
       isDisabled: isBookingLoading,
       onPress() {
         if (isAlreadyBookedOffer) {
-          openUrl(booking?.completedUrl ?? '')
+          void openUrl(booking?.completedUrl ?? '')
           return
         }
         if (offer.stocks[0]?.id) {
@@ -221,7 +220,11 @@ export const getCtaWordingAndAction = ({
         isDisabled: false,
         navigateTo: getSubscriptionPropConfig(
           storedProfileInfos ? 'ProfileInformationValidationCreate' : 'SetName',
-          { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 }
+          {
+            type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+            origin: ProfileOrigin.OFFER,
+            freeOfferId: offer.id,
+          }
         ),
       }
     }
@@ -443,16 +446,6 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     : false
 
   const { refetch: getBookings } = useBookingsV2Query({ enabled: isLoggedIn })
-
-  useEffect(() => {
-    const isUserFreeStatus = user?.eligibility === EligibilityType.free
-    const isFreeOffer = getIsFreeOffer(offer)
-    const isProfileIncomplete = getIsProfileIncomplete(user)
-
-    if (isLoggedIn && isUserFreeStatus && isProfileIncomplete && isFreeOffer) {
-      freeOfferIdActions.setFreeOfferId(offer.id)
-    }
-  }, [isLoggedIn, user, offer])
 
   async function redirectToBookingAction(response: BookOfferResponse) {
     const bookings = await getBookings()

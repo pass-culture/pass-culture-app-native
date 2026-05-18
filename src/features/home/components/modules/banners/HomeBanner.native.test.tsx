@@ -5,8 +5,11 @@ import {
   BannerName,
   BannerResponse,
   QFBonificationStatus,
+  SubscriptionStatus,
   SubscriptionStepperResponseV2,
 } from 'api/gen'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { beneficiaryUser } from 'fixtures/user'
@@ -256,6 +259,31 @@ describe('<HomeBanner/>', () => {
       renderHomeBanner({})
 
       expect(screen.queryByText('Bonus de 50\u00a0€')).not.toBeOnTheScreen()
+    })
+
+    it('should display FreeBeneficiaryBanner when user is eligible and has to complete subscription', async () => {
+      mockSubscriptionStepper()
+      mockBannerFromBackend({
+        banner: {
+          name: BannerName.activation_banner,
+          text: 'à dépenser sur l’application',
+          title: 'Débloque tes 1000\u00a0€',
+        },
+      })
+      mockAuthContextWithUser(
+        {
+          ...beneficiaryUser,
+          statusType: UserStatusType.ELIGIBLE,
+          eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
+          subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
+        },
+        { persist: true }
+      )
+
+      renderHomeBanner({})
+
+      expect(await screen.findByText('Profite d\u2019offres gratuites')).toBeOnTheScreen()
+      expect(screen.getByText('Complète ton profil pour y accéder.')).toBeOnTheScreen()
     })
   })
 })
