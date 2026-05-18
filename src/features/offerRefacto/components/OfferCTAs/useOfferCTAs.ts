@@ -2,7 +2,7 @@ import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/nativ
 import { useCallback, useEffect } from 'react'
 import { useTheme } from 'styled-components/native'
 
-import { BookOfferResponse, EligibilityType, OfferResponse, YoungStatusType } from 'api/gen'
+import { BookOfferResponse, EligibilityType, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useOngoingOrEndedBookingQueryV2 } from 'features/bookings/queries'
 import { useStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
@@ -81,7 +81,7 @@ export const useOfferCTAs = ({
   // 2. Queries (Bookings, Reminders, Credits)
   const { refetch: getBookings } = useBookingsV2Query({ enabled: isLoggedIn })
   const { data: endedBooking } = useEndedBookingFromOfferIdQueryV2(offerId, isLoggedIn)
-  const { bookedOffers = {}, status } = user ?? {}
+  const { bookedOffers = {} } = user ?? {}
   const { data: ongoingBooking } = useOngoingOrEndedBookingQueryV2(
     getBookingOfferId(offerId, bookedOffers) ?? 0,
     isLoggedIn
@@ -133,7 +133,6 @@ export const useOfferCTAs = ({
   })
 
   // 4. Logic & wording
-  const userStatus = status?.statusType ? status : { statusType: YoungStatusType.non_eligible }
 
   const context: CTAContext = {
     offer,
@@ -145,7 +144,7 @@ export const useOfferCTAs = ({
     searchId,
     apiRecoParams,
     playlistType,
-    subscriptionStatus: userStatus.subscriptionStatus,
+    subscriptionStatus: user?.subscriptionStatus,
     hasEnoughCreditMessage: hasEnoughCreditData.message,
     storedProfileInfos,
     alreadyBookedOfferId: user?.bookedOffers[offer.id],
@@ -153,7 +152,6 @@ export const useOfferCTAs = ({
 
   const ctaConfig = getCTAWordingAndAction({
     context,
-    userStatus,
     hasEnoughCredit: hasEnoughCreditData.hasEnoughCredit,
     isLoggedIn,
     subcategory,

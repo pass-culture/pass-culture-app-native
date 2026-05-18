@@ -6,7 +6,7 @@ import * as Auth from 'features/auth/context/AuthContext'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { UserProfile } from 'features/share/types'
-import { beneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, beneficiaryUserV2, nonBeneficiaryUserV2 } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/fixtures'
 import { mockServer } from 'tests/mswServer'
@@ -66,7 +66,7 @@ describe('PersonalData', () => {
   it('should display password section when user has a password', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
-      user: { ...mockedUser, hasPassword: true },
+      user: { ...nonBeneficiaryUserV2, hasPassword: true },
     })
     render(reactQueryProviderHOC(<PersonalData />))
 
@@ -76,7 +76,7 @@ describe('PersonalData', () => {
   it('should not display password section when user has no password', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
-      user: { ...mockedUser, hasPassword: false },
+      user: { ...nonBeneficiaryUserV2, hasPassword: false },
     })
     render(reactQueryProviderHOC(<PersonalData />))
 
@@ -86,7 +86,7 @@ describe('PersonalData', () => {
   it('should not display name section when first name and last name not provided', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
-      user: { ...mockedUser, firstName: null, lastName: null },
+      user: { ...nonBeneficiaryUserV2, firstName: null, lastName: null },
     })
     render(reactQueryProviderHOC(<PersonalData />))
     await screen.findByText('Informations personnelles')
@@ -97,7 +97,7 @@ describe('PersonalData', () => {
   it('should redirect to ChangeEmail when clicking on modify email button', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
-      user: { ...mockedUser, isBeneficiary: false },
+      user: beneficiaryUserV2,
     })
 
     render(reactQueryProviderHOC(<PersonalData />))
@@ -113,7 +113,7 @@ describe('PersonalData', () => {
   it('should redirect to ChangePassword when clicking on modify password button', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
-      user: { ...mockedUser, isBeneficiary: false },
+      user: nonBeneficiaryUserV2,
     })
 
     render(reactQueryProviderHOC(<PersonalData />))
@@ -129,7 +129,7 @@ describe('PersonalData', () => {
   it('should redirect to ChangeStatus when clicking on modify status button', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
-      user: { ...mockedUser, isBeneficiary: false },
+      user: nonBeneficiaryUserV2,
     })
 
     render(reactQueryProviderHOC(<PersonalData />))
@@ -158,7 +158,7 @@ describe('PersonalData', () => {
   it('should log analytics and redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
-      user: { ...mockedUser, isBeneficiary: false },
+      user: nonBeneficiaryUserV2,
     })
 
     render(reactQueryProviderHOC(<PersonalData />))
@@ -171,7 +171,7 @@ describe('PersonalData', () => {
   it('should  redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
-      user: { ...mockedUser, isBeneficiary: false },
+      user: nonBeneficiaryUserV2,
     })
 
     render(reactQueryProviderHOC(<PersonalData />))
@@ -187,7 +187,7 @@ describe('PersonalData', () => {
   it('should open FAQ link when clicking on "Comment gérer tes données personnelles ?" button', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
-      user: { ...mockedUser, isBeneficiary: false },
+      user: nonBeneficiaryUserV2,
     })
 
     render(reactQueryProviderHOC(<PersonalData />))
