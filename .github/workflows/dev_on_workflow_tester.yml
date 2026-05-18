@@ -67,6 +67,8 @@ jobs:
     name: 'Run native unit tests'
     runs-on: ubuntu-24.04
     timeout-minutes: 60
+    environment:
+      name: app-native-testing
     strategy:
       fail-fast: false
       matrix:
@@ -114,6 +116,8 @@ jobs:
   report-coverage:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
+    environment:
+      name: app-native-testing
     needs: yarn_test_native
     steps:
       - name: Enable Corepack
@@ -161,6 +165,8 @@ jobs:
   build-web:
     if: ${{ inputs.HAS_BREAKING_CHANGE_LABEL }}
     runs-on: ubuntu-latest
+    environment:
+      name: app-native-testing
     steps:
       - name: Enable Corepack
         run: corepack enable
@@ -207,6 +213,8 @@ jobs:
   yarn_test_proxy:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
+    environment:
+      name: app-native-testing
     steps:
       - name: Enable Corepack
         run: corepack enable
@@ -247,9 +255,12 @@ jobs:
           SONAR_TOKEN: ${{ steps.sonar_secrets.outputs.SONAR_TOKEN }}
         with:
           projectBaseDir: server
+
   slack_notify:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
+    environment:
+      name: app-native-testing
     if: ${{ always() && github.ref == 'refs/heads/master' }}
     needs:
       - yarn_test_native
