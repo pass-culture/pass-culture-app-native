@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { AutocompleteArtist } from 'features/search/components/AutocompleteArtist/AutocompleteArtist'
 import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/AutocompleteOffer'
 import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/AutocompleteVenue'

@@ -26,7 +26,7 @@ jest.spyOn(getShareOfferModule, 'getShareOffer').mockReturnValue({
   shareContent: mockShareContent,
 })
 
-jest.mock('features/navigation/SearchStackNavigator/getSearchHookConfig', () => ({
+jest.mock('features/navigation/navigators/SearchStackNavigator/getSearchHookConfig', () => ({
   getSearchHookConfig: jest.fn(() => ['SearchLanding', undefined]),
 }))
 

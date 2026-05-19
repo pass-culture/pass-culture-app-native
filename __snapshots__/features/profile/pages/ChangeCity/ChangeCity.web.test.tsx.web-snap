@@ -6,18 +6,6 @@ exports[`ChangeCity should render correctly 1`] = `
   max-width: 500px;
 }
 
-.c2 {
-  font-family: Montserrat-Medium;
-  font-size: 1rem;
-  line-height: 1.6rem;
-  color: #161617;
-  cursor: pointer;
-}
-
-.c3 {
-  width: 100%;
-}
-
 .c0 {
   flex-direction: row;
   align-items: center;
@@ -68,6 +56,18 @@ exports[`ChangeCity should render correctly 1`] = `
 
 .c4:disabled {
   cursor: initial;
+}
+
+.c2 {
+  font-family: Montserrat-Medium;
+  font-size: 1rem;
+  line-height: 1.6rem;
+  color: #161617;
+  cursor: pointer;
+}
+
+.c3 {
+  width: 100%;
 }
 
 <div>

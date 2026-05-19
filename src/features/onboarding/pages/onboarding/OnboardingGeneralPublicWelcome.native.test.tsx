@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate, reset, push } from '__mocks__/@react-navigation/native'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { userEvent, render, screen } from 'tests/utils'
 

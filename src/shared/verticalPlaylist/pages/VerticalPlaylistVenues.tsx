@@ -4,7 +4,7 @@ import { FlatList, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
 import { VenueHit } from 'libs/algolia/types'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'

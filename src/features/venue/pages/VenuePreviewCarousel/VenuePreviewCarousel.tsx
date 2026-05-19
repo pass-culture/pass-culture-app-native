@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { ImagesCarousel } from 'ui/components/ImagesCarousel/ImagesCarousel'

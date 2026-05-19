@@ -5,7 +5,7 @@ import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/Cheatcodes
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
-import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 
 const bookingsCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),

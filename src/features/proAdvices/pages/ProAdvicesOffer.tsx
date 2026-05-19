@@ -2,7 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 
 import { useOfferProAdvicesInfiniteQuery } from 'features/advices/queries/useOfferProAdvicesInfiniteQuery'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { offerProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/offerProAdvicesToAdviceCardData/offerProAdvicesToAdviceCardData'
 import { ProAdvicesBase } from 'features/proAdvices/pages/ProAdvicesBase'

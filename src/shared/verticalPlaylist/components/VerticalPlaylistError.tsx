@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Offers } from 'ui/svg/icons/Offers'
 import { LINE_BREAK } from 'ui/theme/constants'

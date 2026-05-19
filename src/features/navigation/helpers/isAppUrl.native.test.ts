@@ -1,7 +1,7 @@
 import { isAppUrl } from './isAppUrl'
 
 jest.mock('features/navigation/navigationRef')
-jest.mock('features/navigation/RootNavigator/linking/linking')
+jest.mock('features/navigation/navigators/RootNavigator/linking/linking')
 
 describe('isAppUrl', () => {
   it('should return false if url does not start with linking prefixes', () => {

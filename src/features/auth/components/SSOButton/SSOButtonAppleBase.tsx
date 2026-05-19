@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Platform } from 'react-native'
 
-import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { LogTypeEnum } from 'libs/monitoring/errors'

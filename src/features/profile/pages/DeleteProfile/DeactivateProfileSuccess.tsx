@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { useAccountUnsuspensionLimit } from 'queries/settings/useSettings'
 import { Emoji } from 'ui/components/Emoji'

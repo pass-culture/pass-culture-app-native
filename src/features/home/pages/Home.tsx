@@ -11,7 +11,7 @@ import { IncomingReactionModalContainer } from 'features/home/components/Incomin
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { ModalToShow, useWhichModalToShow } from 'features/home/helpers/useWhichModalToShow'
 import { GenericHome } from 'features/home/pages/GenericHome'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/useOnboardingSubscriptionModal'
 import { analytics } from 'libs/analytics/provider'

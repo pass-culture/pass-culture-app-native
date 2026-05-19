@@ -4,14 +4,14 @@ import * as getScreenFromDeeplinkModule from 'features/deeplinks/helpers/getScre
 import { DeeplinkParts } from 'features/deeplinks/types'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
+import { getScreenPath } from 'features/navigation/navigators/RootNavigator/linking/getScreenPath'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { act } from 'tests/utils'
 
 jest.mock('libs/monitoring/services')
 jest.mock('features/navigation/navigationRef')
-jest.mock('features/navigation/RootNavigator/linking/linking')
+jest.mock('features/navigation/navigators/RootNavigator/linking/linking')
 jest.mock('libs/firebase/analytics/analytics')
 
 const openURLSpy = jest.spyOn(Linking, 'openURL')

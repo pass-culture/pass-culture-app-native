@@ -3,7 +3,7 @@ import React, { ReactNode, forwardRef } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useGetHeaderHeightDS } from 'shared/header/useGetHeaderHeight'
 import { Button } from 'ui/designSystem/Button/Button'

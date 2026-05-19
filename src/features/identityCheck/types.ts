@@ -1,5 +1,5 @@
 import { ProfileType } from 'features/identityCheck/pages/profile/types'
-import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
+import { SubscriptionStackParamList } from 'features/navigation/navigators/SubscriptionStackNavigator/types'
 import { StepDetails } from 'ui/components/StepButton/types'
 
 export enum DeprecatedIdentityCheckStep {

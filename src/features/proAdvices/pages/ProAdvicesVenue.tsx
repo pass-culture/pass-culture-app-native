@@ -3,7 +3,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 
 import { OFFER_ADVICE_THUMBNAIL_HEIGHT } from 'features/advices/constants'
 import { useVenueProAdvicesInfiniteQuery } from 'features/advices/queries/useVenueProAdvicesInfiniteQuery'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { venueProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/venueProAdvicesToAdviceCardData/venueProAdvicesToAdviceCardData'
 import { ProAdvicesBase } from 'features/proAdvices/pages/ProAdvicesBase'

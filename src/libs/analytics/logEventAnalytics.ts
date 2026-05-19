@@ -19,8 +19,8 @@ import {
   Referrals,
   StepperOrigin,
   ThematicHomeParams,
-} from 'features/navigation/RootNavigator/types'
-import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
+} from 'features/navigation/navigators/RootNavigator/types'
+import { SearchStackRouteName } from 'features/navigation/navigators/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { NonEligible } from 'features/onboarding/enums'
 import { EligibleAges } from 'features/onboarding/types'
