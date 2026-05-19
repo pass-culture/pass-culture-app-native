@@ -1,4 +1,4 @@
-import { Dispatch, MutableRefObject, SetStateAction } from 'react'
+import { MutableRefObject } from 'react'
 
 import { SuggestedPlace } from 'libs/place/types'
 
@@ -43,7 +43,7 @@ export type ILocationContext = {
   onModalHideRef: MutableRefObject<(() => void) | undefined>
   geolocPosition: Position
   geolocPositionError: GeolocationError | null
-  permissionState: GeolocPermissionState | undefined
+  permissionState: GeolocPermissionState | null
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
   triggerPositionUpdate: () => void
   showGeolocPermissionModal: () => void
@@ -51,13 +51,13 @@ export type ILocationContext = {
   selectedLocationMode: LocationMode
   setSelectedLocationMode: (locationMode: LocationMode) => void
   selectedPlace: SuggestedPlace | null
-  setSelectedPlace: Dispatch<SetStateAction<SuggestedPlace | null>>
+  setSelectedPlace: (place: SuggestedPlace | null) => void
   onResetPlace: () => void
   placeQuery: string
-  setPlaceQuery: Dispatch<SetStateAction<string>>
+  setPlaceQuery: (placeQuery: string) => void
   aroundPlaceRadius: number
-  setAroundPlaceRadius: Dispatch<SetStateAction<number>>
+  setAroundPlaceRadius: (radius: number) => void
   aroundMeRadius: number
-  setAroundMeRadius: Dispatch<SetStateAction<number>>
+  setAroundMeRadius: (radius: number) => void
   userLocation: Position
 }
