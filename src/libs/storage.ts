@@ -16,6 +16,7 @@ export type StorageKey =
   | 'has_seen_push_notifications_modal_once'
   | 'has_seen_tutorials'
   | 'logged_in_session_count'
+  | 'offers_viewed_count'
   | 'PASSCULTURE_REFRESH_TOKEN'
   | 'profile-address'
   | 'profile-city'

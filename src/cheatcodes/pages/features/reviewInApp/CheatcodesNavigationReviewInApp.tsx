@@ -5,8 +5,11 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import {
+  incrementOffersViewed,
   replayMigrationFromV1,
   resetHistory,
+  resetOffersViewed,
+  seedOffersViewedAtThresholdMinusOne,
   seedPromptNow,
   seedPromptOutOfLock,
   seedQuotaSaturated,
@@ -20,7 +23,7 @@ import { CheatcodeCategory } from 'cheatcodes/types'
 import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { ReviewTriggerSource } from 'libs/reviewInApp/types'
+import { OFFERS_VIEWED_REVIEW_THRESHOLD, ReviewTriggerSource } from 'libs/reviewInApp/types'
 import { useReviewInApp } from 'libs/reviewInApp/useReviewInApp'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -117,6 +120,28 @@ export function CheatcodesNavigationReviewInApp(): React.JSX.Element {
       <StyledSeparator />
 
       <Section gap={2}>
+        <Typo.Title3>Compteur «&nbsp;offres consultées&nbsp;»</Typo.Title3>
+        <Typo.BodyAccentS>
+          Seuil&nbsp;: {OFFERS_VIEWED_REVIEW_THRESHOLD} consultations → trigger automatique sur la
+          page d’offre.
+        </Typo.BodyAccentS>
+        <Button
+          wording="Incrémenter d’1 (simuler une vue d’offre)"
+          onPress={wrap('Compteur +1', incrementOffersViewed)}
+        />
+        <Button
+          wording={`Placer le compteur à ${OFFERS_VIEWED_REVIEW_THRESHOLD - 1} (1 vue avant trigger)`}
+          onPress={wrap('Compteur au seuil-1', seedOffersViewedAtThresholdMinusOne)}
+        />
+        <Button
+          wording="Réinitialiser le compteur"
+          onPress={wrap('Compteur remis à 0', resetOffersViewed)}
+        />
+      </Section>
+
+      <StyledSeparator />
+
+      <Section gap={2}>
         <Typo.Title3>Déclencher manuellement</Typo.Title3>
         <Typo.BodyAccentS>
           Appelle requestReview(source) avec un délai de {TRIGGER_DELAY_MS}ms.
@@ -164,6 +189,13 @@ const StateBlock: React.FC<{ state: ReviewInAppCheatcodeState | null }> = ({ sta
       />
       <Row label="Dernier prompt" value={formatDate(state.lastPromptAt)} />
       <Row label="Verrou actif jusqu’à" value={formatDate(state.lockUntil)} />
+      <Row
+        label="Offres consultées (trigger offers_viewed)"
+        value={`${state.offersViewedCount} / ${state.offersViewedThreshold}`}
+        emphasis={
+          state.offersViewedCount >= state.offersViewedThreshold - 1 ? 'success' : undefined
+        }
+      />
       {state.history.length > 0 ? (
         <ViewGap gap={1}>
           <Typo.BodyAccentS>Timestamps&nbsp;:</Typo.BodyAccentS>
