@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest-8-cores
     timeout-minutes: 60
     environment:
-      name: app-native-testing
+      name: app-native-staging
     steps:
       - name: Free up disk space
         run: |

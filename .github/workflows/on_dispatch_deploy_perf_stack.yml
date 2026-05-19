@@ -22,6 +22,7 @@ jobs:
     uses: ./.github/workflows/dev_on_workflow_tester.yml
     with:
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+  # TODO: is perf environment still needed
   deploy-web-perf:
     needs: [yarn-tester]
     uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
@@ -29,6 +30,7 @@ jobs:
       ENV: perf
       BUCKET_NAME: passculture-metier-ehp-perf-decliweb
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+  # TODO: is perf environment still needed
   deploy-web-proxy-perf:
     needs: [yarn-tester]
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml

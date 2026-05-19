@@ -19,6 +19,8 @@ jobs:
     name: 'Run Flashlight Android Performance Test'
     runs-on: ubuntu-24.04
     timeout-minutes: 120
+    environment:
+      name: app-native-testing
     if: github.event_name == 'schedule' || contains(github.event.pull_request.labels.*.name, 'e2e perfs')
     steps:
       - uses: actions/checkout@v4
