@@ -31,7 +31,12 @@ describe('useReviewInApp', () => {
     await clearHistory()
     mockIsAvailable.mockReturnValue(true)
     mockRequestInAppReview.mockResolvedValue(true)
-    setFeatureFlags()
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_BOOKING,
+      RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_CREDIT,
+      RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_LIKE,
+      RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_OFFERS,
+    ])
     captureExceptionSpy.mockClear()
   })
 
@@ -86,6 +91,30 @@ describe('useReviewInApp', () => {
     jest.advanceTimersByTime(3000)
 
     expect(mockRequestInAppReview).not.toHaveBeenCalled()
+  })
+
+  it('does nothing when the per-source flag is off (booking_success)', async () => {
+    setFeatureFlags([])
+    const { result } = renderHook(useReviewInApp)
+
+    await act(async () => {
+      await result.current.requestReview('booking_success', { delayMs: 3000 })
+    })
+    jest.advanceTimersByTime(3000)
+
+    expect(mockRequestInAppReview).not.toHaveBeenCalled()
+  })
+
+  it('triggers when only WIP_REVIEW_TRIGGER_BOOKING is on', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_BOOKING])
+    const { result } = renderHook(useReviewInApp)
+
+    await act(async () => {
+      await result.current.requestReview('booking_success', { delayMs: 3000 })
+    })
+    jest.advanceTimersByTime(3000)
+
+    expect(mockRequestInAppReview).toHaveBeenCalledTimes(1)
   })
 
   it('does nothing when quota is reached (3 prompts within 365 days)', async () => {

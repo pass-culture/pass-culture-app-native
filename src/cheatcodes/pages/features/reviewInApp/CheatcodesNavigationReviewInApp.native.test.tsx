@@ -3,6 +3,7 @@ import InAppReview from 'react-native-in-app-review'
 
 import { CheatcodesNavigationReviewInApp } from 'cheatcodes/pages/features/reviewInApp/CheatcodesNavigationReviewInApp'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { clearHistory, readHistory } from 'libs/reviewInApp/reviewHistory'
 import { storage } from 'libs/storage'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
@@ -23,7 +24,12 @@ describe('<CheatcodesNavigationReviewInApp/>', () => {
     await storage.clear('first_time_review_has_been_requested')
     mockIsAvailable.mockReturnValue(true)
     mockRequestInAppReview.mockResolvedValue(true)
-    setFeatureFlags()
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_BOOKING,
+      RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_CREDIT,
+      RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_LIKE,
+      RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_OFFERS,
+    ])
   })
 
   it('renders the empty initial state', async () => {

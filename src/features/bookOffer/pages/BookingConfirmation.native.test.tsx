@@ -7,6 +7,7 @@ import { EligibilityType } from 'api/gen'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BatchProfile } from 'libs/react-native-batch'
 import { clearHistory } from 'libs/reviewInApp/reviewHistory'
 import { REVIEW_LOCK_DURATION_MS } from 'libs/reviewInApp/types'
@@ -48,7 +49,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<BookingConfirmation />', () => {
   beforeEach(async () => {
-    setFeatureFlags()
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_BOOKING])
     await clearHistory()
     useRoute.mockReturnValue({
       params: {
@@ -116,6 +117,17 @@ describe('<BookingConfirmation />', () => {
     it('should not call InAppReview Modal if isAvailable is true and rules are not respected', async () => {
       isAvailable.mockReturnValueOnce(true)
       await storage.saveObject('review_request_history', [Date.now() - REVIEW_LOCK_DURATION_MS + 1])
+
+      render(<BookingConfirmation />)
+      await act(async () => {})
+      jest.advanceTimersByTime(3000)
+
+      expect(requestInAppReview).not.toHaveBeenCalled()
+    })
+
+    it('should not call InAppReview Modal when WIP_REVIEW_TRIGGER_BOOKING is off', async () => {
+      setFeatureFlags([])
+      isAvailable.mockReturnValueOnce(true)
 
       render(<BookingConfirmation />)
       await act(async () => {})
