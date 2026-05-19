@@ -12,6 +12,8 @@ import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 export const VerticalPlaylistOffers = () => {
   const { params } = useRoute<UseRouteType<'VerticalPlaylistOffers'>>()
 
+  if (!params.module) return <VerticalPlaylistError />
+
   switch (params.type) {
     case VerticalPlaylist.ModuleOffers:
       return <VerticalPlaylistOffersModule module={params.module} />
