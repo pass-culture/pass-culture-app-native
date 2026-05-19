@@ -4,7 +4,7 @@ import { render, screen } from 'tests/utils/web'
 
 import { SeeAllButton } from './SeeAllButton'
 
-const accessibilityLabel = 'Tout voir pour la sélection Ma playlist'
+const accessibilityLabel = 'Voir tout pour la sélection Ma playlist'
 
 describe('<SeeAllButton />', () => {
   it('should not be displayed when no navigation targets are provided', () => {

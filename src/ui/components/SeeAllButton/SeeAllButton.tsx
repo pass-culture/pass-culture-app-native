@@ -21,7 +21,7 @@ type Props = {
 
 export const SeeAllButton = ({ playlistTitle, data }: Props) => {
   const noSeeAllButton = !data
-  const accessibilityLabel = `Tout voir pour la sélection ${playlistTitle}`
+  const accessibilityLabel = `Voir tout pour la sélection ${playlistTitle}`
 
   if (noSeeAllButton) return null
 

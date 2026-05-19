@@ -6,7 +6,7 @@ import { render, screen, userEvent } from 'tests/utils'
 import { SeeAllButton } from './SeeAllButton'
 
 const user = userEvent.setup()
-const accessibilityLabel = 'Tout voir pour la sélection Ma playlist'
+const accessibilityLabel = 'Voir tout pour la sélection Ma playlist'
 const baseProps = { playlistTitle: 'Ma playlist', data: { onBeforeNavigate: jest.fn() } }
 
 describe('<SeeAllButton />', () => {

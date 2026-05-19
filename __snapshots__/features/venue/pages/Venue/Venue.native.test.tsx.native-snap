@@ -1211,7 +1211,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               }
                             >
                               <View
-                                accessibilityLabel="Tout voir pour la sélection Toutes les offres"
+                                accessibilityLabel="Voir tout pour la sélection Toutes les offres"
                                 accessibilityRole="button"
                                 accessibilityState={
                                   {
@@ -1256,7 +1256,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     "width": "auto",
                                   }
                                 }
-                                testID="Tout voir pour la sélection Toutes les offres"
+                                testID="Voir tout pour la sélection Toutes les offres"
                               >
                                 <View
                                   gap={8}
@@ -1327,7 +1327,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       ]
                                     }
                                   >
-                                    Tout voir
+                                    Voir tout
                                   </Text>
                                 </View>
                               </View>
@@ -4713,7 +4713,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               }
                             >
                               <View
-                                accessibilityLabel="Tout voir pour la sélection Toutes les offres"
+                                accessibilityLabel="Voir tout pour la sélection Toutes les offres"
                                 accessibilityRole="button"
                                 accessibilityState={
                                   {
@@ -4758,7 +4758,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     "width": "auto",
                                   }
                                 }
-                                testID="Tout voir pour la sélection Toutes les offres"
+                                testID="Voir tout pour la sélection Toutes les offres"
                               >
                                 <View
                                   gap={8}
@@ -4829,7 +4829,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                       ]
                                     }
                                   >
-                                    Tout voir
+                                    Voir tout
                                   </Text>
                                 </View>
                               </View>
