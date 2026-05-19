@@ -38,13 +38,28 @@ type Props = Pick<
   withMargin?: boolean
   contentContainerStyle?: StyleProp<ViewStyle>
   showNewTag?: boolean
-  seeAllButton?: {
-    navigateToVerticalPlaylist?: InternalNavigationProps['navigateTo']
-    navigateToSearchPlaylist?: InternalNavigationProps['navigateTo']
-    onBeforeNavigate: () => void
-    hidePlaylistSeeAll?: boolean
-    hideSearchSeeAll?: boolean
-  }
+  seeAllButton:
+    | {
+        navigateToVerticalPlaylist: InternalNavigationProps['navigateTo']
+        navigateToSearchPlaylist: InternalNavigationProps['navigateTo']
+        onBeforeNavigate: () => void
+        hidePlaylistSeeAll?: boolean
+        hideSearchSeeAll?: boolean
+      }
+    | {
+        navigateToVerticalPlaylist: InternalNavigationProps['navigateTo']
+        navigateToSearchPlaylist?: never
+        onBeforeNavigate: () => void
+        hidePlaylistSeeAll?: boolean
+        hideSearchSeeAll?: boolean
+      }
+    | {
+        navigateToVerticalPlaylist?: never
+        navigateToSearchPlaylist: InternalNavigationProps['navigateTo']
+        onBeforeNavigate: () => void
+        hidePlaylistSeeAll?: boolean
+        hideSearchSeeAll?: boolean
+      }
 }
 
 export const PassPlaylist = ({
