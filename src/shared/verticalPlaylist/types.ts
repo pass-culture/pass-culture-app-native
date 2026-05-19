@@ -45,4 +45,5 @@ export type VerticalPlaylistVenuesData = {
   title: string
   subtitle?: string
   nbItems: number
+  hasDataError?: boolean
 }

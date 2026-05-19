@@ -363,7 +363,12 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     screen: 'VerticalPlaylistOffers' as const,
     params: {
       type: VerticalPlaylist.SimilarOffers,
-      module: { offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList, type },
+      module: {
+        offer,
+        offerSearchGroup: subcategory.searchGroupName,
+        searchGroupList,
+        type,
+      },
     },
   })
 
