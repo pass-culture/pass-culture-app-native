@@ -17,6 +17,7 @@ import { FAQWebview } from 'features/culturalSurvey/pages/FAQWebview'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
+import { FreeBeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/FreeBeneficiaryAccountCreated'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
 import { DisableActivation } from 'features/identityCheck/pages/DisableActivation'
 import { DMSIntroduction } from 'features/identityCheck/pages/identification/dms/DMSIntroduction'
@@ -161,6 +162,10 @@ const subscriptionScreens: SubscriptionRouteConfig[] = [
     name: 'BeneficiaryAccountCreated',
     component: withAuthProtection(BeneficiaryAccountCreated),
     options: { title: 'Compte bénéficiaire créé\u00a0!' },
+  },
+  {
+    name: 'FreeBeneficiaryAccountCreated',
+    component: withAuthProtection(FreeBeneficiaryAccountCreated),
   },
   {
     name: 'EduConnectErrors',

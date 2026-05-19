@@ -16,6 +16,7 @@ export type CheatcodesStackParamList = {
   CheatcodesNavigationOnboarding: undefined
   CheatcodesNavigationProfile: undefined
   CheatcodesNavigationProfileTutorial: undefined
+  CheatcodesNavigationReviewInApp: undefined
   CheatcodesNavigationShare: undefined
   CheatcodesNavigationSubscription: undefined
   CheatcodesNavigationTrustedDevice: undefined

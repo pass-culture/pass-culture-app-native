@@ -1,4 +1,21 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- tapOn: 'Rechercher des offres.*'
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn: 'Rechercher des offres.*'
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn: 'Rechercher des offres.*'
+
+- runFlow:
+    when:
+      platform: Web
+    commands:
+      - tapOn: 'Recherche'
+
 - waitForAnimationToEnd

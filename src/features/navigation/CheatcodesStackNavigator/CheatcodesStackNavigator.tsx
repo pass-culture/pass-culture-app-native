@@ -21,6 +21,7 @@ import { CheatcodesScreenMaintenance } from 'cheatcodes/pages/features/maintenan
 import { CheatcodesNavigationOnboarding } from 'cheatcodes/pages/features/onboarding/CheatcodesNavigationOnboarding'
 import { CheatcodesNavigationProfile } from 'cheatcodes/pages/features/profile/CheatcodesNavigationProfile'
 import { CheatcodesScreenRemoteBanners } from 'cheatcodes/pages/features/remoteBanners/CheatcodesScreenRemoteBanners'
+import { CheatcodesNavigationReviewInApp } from 'cheatcodes/pages/features/reviewInApp/CheatcodesNavigationReviewInApp'
 import { CheatcodesNavigationShare } from 'cheatcodes/pages/features/share/CheatcodesNavigationShare'
 import { CheatcodesNavigationSubscription } from 'cheatcodes/pages/features/subscription/CheatcodesNavigationSubscription'
 import { CheatcodesNavigationTrustedDevice } from 'cheatcodes/pages/features/trustedDevice/CheatcodesNavigationTrustedDevice'
@@ -144,6 +145,10 @@ const routes: CheatcodesStackRoute[] = [
   {
     name: 'CheatcodesNavigationBookings',
     component: CheatcodesNavigationBookings,
+  },
+  {
+    name: 'CheatcodesNavigationReviewInApp',
+    component: CheatcodesNavigationReviewInApp,
   },
   /**** OTHER ****/
   {

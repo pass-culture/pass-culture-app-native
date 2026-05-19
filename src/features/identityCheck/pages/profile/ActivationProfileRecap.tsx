@@ -19,7 +19,6 @@ import { usePostProfileMutation } from 'features/identityCheck/queries/usePostPr
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
-import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -27,6 +26,8 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 export const ActivationProfileRecap = () => {
   const { params } = useRoute<UseRouteType<'ActivationProfileRecap'>>()
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
+  const profileOrigin = params?.origin
+  const freeOfferId = params?.freeOfferId
   const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
 
   const pageConfigByType = {
@@ -41,7 +42,6 @@ export const ActivationProfileRecap = () => {
   const storedCity = useCity()
   const storedAddress = useAddress()
   const storedStatus = useStatus()
-  const storedFreeOfferId = useFreeOfferId()
 
   const hasMissingData =
     !storedName?.lastName ||
@@ -57,7 +57,8 @@ export const ActivationProfileRecap = () => {
     onSuccess: () =>
       handlePostProfileSuccess({
         isBookingFreeOffer,
-        storedFreeOfferId,
+        profileOrigin,
+        freeOfferId,
         navigateForwardToStepper,
         reset,
         refetchUser,
@@ -65,7 +66,7 @@ export const ActivationProfileRecap = () => {
     onError: () =>
       handlePostProfileError({
         isBookingFreeOffer,
-        storedFreeOfferId,
+        freeOfferId,
         reset,
       }),
   })
@@ -87,7 +88,20 @@ export const ActivationProfileRecap = () => {
     setIsPending(false)
   }
 
-  const updateInformation = () => navigate(...getSubscriptionHookConfig('SetName', { type }))
+  const updateInformation = () =>
+    navigate(
+      ...getSubscriptionHookConfig(
+        'SetName',
+        (() => {
+          if (profileOrigin) {
+            return freeOfferId
+              ? { type, origin: profileOrigin, freeOfferId }
+              : { type, origin: profileOrigin }
+          }
+          return freeOfferId ? { type, freeOfferId } : { type }
+        })()
+      )
+    )
 
   const noDataMessage = 'Information manquante'
   const recapData = [

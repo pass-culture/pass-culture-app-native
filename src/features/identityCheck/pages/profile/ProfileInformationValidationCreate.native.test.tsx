@@ -10,16 +10,19 @@ import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import * as resetStores from 'features/identityCheck/pages/profile/store/resetProfileStores'
 import { useStatus } from 'features/identityCheck/pages/profile/store/statusStore'
+import { ProfileOrigin } from 'features/identityCheck/pages/profile/types'
 import * as usePostProfileMutation from 'features/identityCheck/queries/usePostProfileMutation'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
+import * as snackBarStore from 'ui/designSystem/Snackbar/snackBar.store'
 
 import { ProfileInformationValidationCreate } from './ProfileInformationValidationCreate'
 
 const usePostProfileMutationSpy = jest.spyOn(usePostProfileMutation, 'usePostProfileMutation')
+const mockShowSuccessSnackBar = jest.spyOn(snackBarStore, 'showSuccessSnackBar')
 
 const mockUseMutationError = (error?: ApiError) => {
   // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
@@ -30,9 +33,6 @@ const mockUseMutationError = (error?: ApiError) => {
 }
 
 const mockOfferId: number | null = 123456
-jest.mock('features/offer/store/freeOfferIdStore', () => ({
-  useFreeOfferId: () => mockOfferId,
-}))
 
 jest.mock('features/identityCheck/pages/profile/store/nameStore')
 const mockedUseName = useName as jest.Mock
@@ -74,16 +74,27 @@ jest.useFakeTimers()
 useRoute.mockReturnValue({
   params: {
     type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+    origin: ProfileOrigin.OFFER,
+    freeOfferId: mockOfferId,
   },
 })
 
 describe('ProfileInformationValidationCreate', () => {
   beforeEach(() => {
+    useRoute.mockReset()
+    useRoute.mockReturnValue({
+      params: {
+        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+        origin: ProfileOrigin.OFFER,
+        freeOfferId: mockOfferId,
+      },
+    })
     setFeatureFlags()
     mockedUseName.mockReturnValue(mockName)
     mockedUseCity.mockReturnValue(mockCity)
     mockedUseAddress.mockReturnValue(mockAddress)
     mockedUseStatus.mockReturnValue(mockStatus)
+    mockShowSuccessSnackBar.mockClear()
   })
 
   it('should render correctly', async () => {
@@ -108,6 +119,14 @@ describe('ProfileInformationValidationCreate', () => {
   })
 
   it('should navigate to Offer when press "Continuer"', async () => {
+    useRoute.mockReturnValueOnce({
+      params: {
+        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+        origin: ProfileOrigin.OFFER,
+        freeOfferId: mockOfferId,
+      },
+    })
+
     renderProfileInformationValidation()
 
     await user.press(screen.getByText('Continuer'))
@@ -115,6 +134,43 @@ describe('ProfileInformationValidationCreate', () => {
     await waitFor(() => {
       expect(reset).toHaveBeenCalledWith({
         routes: [{ name: 'Offer', params: { id: mockOfferId } }],
+      })
+    })
+
+    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith(
+      'Tout est prêt, à toi les offres gratuites\u00a0!'
+    )
+  })
+
+  it('should navigate to FreeBeneficiaryAccountCreated when coming from home', async () => {
+    useRoute
+      .mockReturnValueOnce({
+        params: {
+          type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+          origin: ProfileOrigin.HOME_BANNER,
+          freeOfferId: mockOfferId,
+        },
+      })
+      .mockReturnValueOnce({
+        params: {
+          type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+          origin: ProfileOrigin.HOME_BANNER,
+          freeOfferId: mockOfferId,
+        },
+      })
+
+    renderProfileInformationValidation()
+
+    await user.press(screen.getByText('Continuer'))
+
+    await waitFor(() => {
+      expect(reset).toHaveBeenCalledWith({
+        routes: [
+          {
+            name: 'SubscriptionStackNavigator',
+            state: { routes: [{ name: 'FreeBeneficiaryAccountCreated' }] },
+          },
+        ],
       })
     })
   })
@@ -128,6 +184,8 @@ describe('ProfileInformationValidationCreate', () => {
       screen: 'SetName',
       params: {
         type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+        origin: ProfileOrigin.OFFER,
+        freeOfferId: mockOfferId,
       },
     })
   })
@@ -167,6 +225,7 @@ describe('ProfileInformationValidationCreate', () => {
         },
       ],
     })
+    expect(mockShowSuccessSnackBar).not.toHaveBeenCalled()
   })
 
   it('should show data from auth context for "recapExistingData" screen variant', () => {

@@ -1,5 +1,6 @@
 import { SubcategoryIdEnum, SubscriptionStatus } from 'api/gen'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
+import { ProfileOrigin } from 'features/identityCheck/pages/profile/types'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { BottomBannerTextEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
@@ -196,7 +197,11 @@ export const getCTAProps = (type: CTAType, context: CTAContext): CTAWordingAndAc
         isDisabled: false,
         navigateTo: getSubscriptionPropConfig(
           storedProfileInfos ? 'ProfileInformationValidationCreate' : 'SetName',
-          { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 }
+          {
+            type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+            origin: ProfileOrigin.OFFER,
+            freeOfferId: offer.id,
+          }
         ),
       }
     case 'INELIGIBLE':

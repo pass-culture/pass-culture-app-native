@@ -29,6 +29,8 @@ type FormValues = {
 export const SetName = () => {
   const { params } = useRoute<UseRouteType<'SetName'>>()
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
+  const origin = params?.origin
+  const freeOfferId = params?.freeOfferId
 
   const identityCheckAndRecapExistingDataConfig = {
     headerTitle: 'Profil',
@@ -65,10 +67,17 @@ export const SetName = () => {
 
   const disabled = !formState.isValid
 
+  const getCityNavigationParams = () => {
+    if (origin) {
+      return freeOfferId ? { type, origin, freeOfferId } : { type, origin }
+    }
+    return freeOfferId ? { type, freeOfferId } : { type }
+  }
+
   async function submitName({ firstName, lastName }: FormValues) {
     if (disabled) return
     setStoredName({ firstName, lastName })
-    navigate('SetCity', { type })
+    navigate('SetCity', getCityNavigationParams())
   }
 
   useEnterKeyAction(disabled ? undefined : () => handleSubmit(submitName))

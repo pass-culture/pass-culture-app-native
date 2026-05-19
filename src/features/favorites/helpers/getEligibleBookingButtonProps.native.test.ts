@@ -1,4 +1,4 @@
-import { SubscriptionStatus, YoungStatusType } from 'api/gen'
+import { SubscriptionStatus } from 'api/gen'
 import { getEligibleBookingButtonProps } from 'features/favorites/helpers/getEligibleBookingButtonProps'
 import { OfferModal } from 'shared/offer/enums'
 
@@ -11,13 +11,7 @@ describe('getEligibleBookingButtonProps', () => {
   `(
     'should return $expectedModalName modal and title "Réserver" when user as subscription status $subscriptionStatus',
     ({ subscriptionStatus, expectedModal }) => {
-      const buttonProps = getEligibleBookingButtonProps(
-        {
-          statusType: YoungStatusType.eligible,
-          subscriptionStatus,
-        },
-        1234
-      )
+      const buttonProps = getEligibleBookingButtonProps(subscriptionStatus, 1234)
 
       expect(buttonProps?.wording).toBe('Réserver')
       expect(buttonProps?.disabled).toBe(false)

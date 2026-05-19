@@ -1,6 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 tags:
   - booking
+  - fix
 onFlowStart:
   - runScript: ../common/DeepLink.js
   - runScript:
@@ -12,7 +13,7 @@ onFlowStart:
 ---
 - runFlow: ../common/LaunchApp.yml
 - runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeepLinkBeneficiaryUser.yml
+- runFlow: ../common/DeeplinkBeneficiaryUser.yml
 
 - runFlow: ../common/GoToSearchFromTabBar.yml
 
@@ -47,7 +48,7 @@ onFlowStart:
 - assertVisible: 'Rechercher'
 - swipe:
     from:
-      text: 'Les lieux culturels'
+      text: 'Les offres'
     direction: UP
 - tapOn: 'Abonnement presse en ligne'
 

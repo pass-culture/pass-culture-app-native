@@ -55,15 +55,15 @@ case "$target" in
 
   "cloud")
     if [ "$platform" = "ios" ]; then
-      TAGS="--include-tags nightlyIOS"
+      TAGS=""
     else
-      TAGS="--include-tags nightlyAndroid"
+      TAGS=""
     fi
     run_tracking_tests=false
     run_cloud_commands=true
     api_key=$(parse_env_variable ROBIN_API_KEY .maestro/.env.secret)
     project_id=$(parse_env_variable ROBIN_PROJECT_ID .maestro/.env.secret)
-    cloud_arguments="--api-key=$api_key --project-id=$project_id --flows .maestro/tests/ --device-locale fr_FR --android-api-level 34 --timeout 120 --ios-version 17"
+    cloud_arguments="--api-key=$api_key --project-id=$project_id --flows .maestro/testsV3/ --device-locale fr_FR --android-api-level 34 --timeout 120 --ios-version 17"
     ;;
 esac
 
@@ -77,8 +77,8 @@ else
 fi
 
 if [ "$platform" = "web" ]; then
-  if [[ "$rest_of_arguments" != *".maestro/tests/SmokeTestWeb.yaml"* ]]; then
-    rest_of_arguments=".maestro/tests/ $rest_of_arguments"
+  if [[ "$rest_of_arguments" != *".maestro/testsV3/web/SmokeTestWeb.yaml"* ]]; then
+    rest_of_arguments=".maestro/testsV3/ $rest_of_arguments"
   fi
 fi
 

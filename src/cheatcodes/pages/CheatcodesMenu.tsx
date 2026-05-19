@@ -16,6 +16,7 @@ import { cheatcodesNavigationIdentityCheckButtons } from 'cheatcodes/pages/featu
 import { cheatcodesNavigationInternalButtons } from 'cheatcodes/pages/features/internal/CheatcodesNavigationInternal'
 import { cheatcodesNavigationOnboardingButtons } from 'cheatcodes/pages/features/onboarding/CheatcodesNavigationOnboarding'
 import { cheatcodesNavigationProfileButtons } from 'cheatcodes/pages/features/profile/CheatcodesNavigationProfile'
+import { cheatcodesNavigationReviewInAppButtons } from 'cheatcodes/pages/features/reviewInApp/CheatcodesNavigationReviewInApp'
 import { cheatcodesNavigationSubscriptionButtons } from 'cheatcodes/pages/features/subscription/CheatcodesNavigationSubscription'
 import { cheatcodesNavigationTrustedDeviceButtons } from 'cheatcodes/pages/features/trustedDevice/CheatcodesNavigationTrustedDevice'
 import { cheatcodesNavigationAccountManagementButtons } from 'cheatcodes/pages/others/CheatcodesNavigationAccountManagement'
@@ -82,6 +83,7 @@ export function CheatcodesMenu(): React.JSX.Element {
     ...cheatcodesNavigationIdentityCheckButtons,
     ...cheatcodesNavigationInternalButtons,
     ...cheatcodesNavigationProfileButtons,
+    ...cheatcodesNavigationReviewInAppButtons,
     ...cheatcodesNavigationSubscriptionButtons,
     ...cheatcodesNavigationTrustedDeviceButtons,
     ...cheatcodesNavigationOnboardingButtons,

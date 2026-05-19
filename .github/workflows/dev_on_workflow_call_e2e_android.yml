@@ -9,10 +9,9 @@ on:
         type: string
         default: '[MES]'
       test_tags:
-        description: 'Tags to include in the test run (activation, decouverte, conversion, or nightlyAndroid)'
+        description: 'Tags to include in the test run. If empty, all tests are run.'
         required: false
         type: string
-        default: 'nightlyAndroid'
 
 permissions:
   contents: read
@@ -156,7 +155,7 @@ jobs:
           name: ${{ steps.generate_name.outputs.CUSTOM_NAME }}
           device-locale: fr_FR
           android-api-level: 34
-          workspace: .maestro/tests/
+          workspace: .maestro/testsV3/
           include-tags: ${{ inputs.test_tags }}
           async: true
           env: |

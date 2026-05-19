@@ -4,11 +4,14 @@ import { Share } from 'react-native'
 import { reset, useRoute } from '__mocks__/@react-navigation/native'
 import reactNativeInAppReview from '__mocks__/react-native-in-app-review'
 import { EligibilityType } from 'api/gen'
-import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BatchProfile } from 'libs/react-native-batch'
+import { clearHistory } from 'libs/reviewInApp/reviewHistory'
+import { REVIEW_LOCK_DURATION_MS } from 'libs/reviewInApp/types'
+import { storage } from 'libs/storage'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 import { LINE_BREAK } from 'ui/theme/constants'
@@ -25,18 +28,9 @@ jest.mock('shared/user/useAvailableCredit', () => ({
   useAvailableCredit: jest.fn(() => ({ isExpired: false, amount: 2000 })),
 }))
 
-jest.mock('features/bookOffer/helpers/useReviewInAppInformation', () => ({
-  useReviewInAppInformation: jest.fn(() => ({
-    shouldReviewBeRequested: true,
-    updateInformationWhenReviewHasBeenRequested: jest.fn(),
-  })),
-}))
-
 const share = jest
   .spyOn(Share, 'share')
   .mockResolvedValue({ action: Share.sharedAction, activityType: 'copy' })
-
-const useReviewInAppInformationMock = useReviewInAppInformation as jest.Mock
 
 const isAvailable = jest.spyOn(reactNativeInAppReview, 'isAvailable')
 const requestInAppReview = jest.spyOn(reactNativeInAppReview, 'RequestInAppReview')
@@ -54,8 +48,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<BookingConfirmation />', () => {
-  beforeEach(() => {
-    setFeatureFlags()
+  beforeEach(async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_BOOKING])
+    await clearHistory()
     useRoute.mockReturnValue({
       params: {
         offerId: mockOfferId,
@@ -98,31 +93,44 @@ describe('<BookingConfirmation />', () => {
   })
 
   describe('InAppReview', () => {
-    it('should call InAppReview Modal after 3 seconds if isAvailable and rules are respected', () => {
+    it('should call InAppReview Modal after 3 seconds if isAvailable and rules are respected', async () => {
       isAvailable.mockReturnValueOnce(true)
       requestInAppReview.mockResolvedValueOnce(true)
 
       render(<BookingConfirmation />)
+      await act(async () => {})
       jest.advanceTimersByTime(3000)
 
       expect(requestInAppReview).toHaveBeenCalledTimes(1)
     })
 
-    it('should not call InAppReview Modal if isAvailable is false', () => {
+    it('should not call InAppReview Modal if isAvailable is false', async () => {
       isAvailable.mockReturnValueOnce(false)
 
       render(<BookingConfirmation />)
+      await act(async () => {})
       jest.advanceTimersByTime(3000)
 
       expect(requestInAppReview).not.toHaveBeenCalled()
     })
 
-    it('should not call InAppReview Modal if isAvailable is true and rules are not respected', () => {
-      useReviewInAppInformationMock.mockReturnValueOnce(() => ({
-        shouldReviewBeRequested: false,
-      }))
+    it('should not call InAppReview Modal if isAvailable is true and rules are not respected', async () => {
+      isAvailable.mockReturnValueOnce(true)
+      await storage.saveObject('review_request_history', [Date.now() - REVIEW_LOCK_DURATION_MS + 1])
 
       render(<BookingConfirmation />)
+      await act(async () => {})
+      jest.advanceTimersByTime(3000)
+
+      expect(requestInAppReview).not.toHaveBeenCalled()
+    })
+
+    it('should not call InAppReview Modal when WIP_REVIEW_TRIGGER_BOOKING is off', async () => {
+      setFeatureFlags([])
+      isAvailable.mockReturnValueOnce(true)
+
+      render(<BookingConfirmation />)
+      await act(async () => {})
       jest.advanceTimersByTime(3000)
 
       expect(requestInAppReview).not.toHaveBeenCalled()

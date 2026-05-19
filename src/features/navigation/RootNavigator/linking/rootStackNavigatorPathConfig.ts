@@ -128,6 +128,9 @@ export const rootStackNavigatorPathConfig = {
       BeneficiaryAccountCreated: {
         path: 'creation-compte/confirmation-beneficiaire',
       },
+      FreeBeneficiaryAccountCreated: {
+        path: 'creation-compte/confirmation-beneficiaire-gratuit',
+      },
       EduConnectErrors: {
         path: 'educonnect/erreur',
       },
