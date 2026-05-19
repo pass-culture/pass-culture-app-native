@@ -135,9 +135,12 @@ export function CheatcodesNavigationReviewInApp(): React.JSX.Element {
 
       <Section gap={2}>
         <Typo.Title3>Feature flags</Typo.Title3>
-        <Typo.BodyAccentS>Concernés (présents et à venir)&nbsp;:</Typo.BodyAccentS>
+        <Typo.BodyAccentS>Concernés&nbsp;:</Typo.BodyAccentS>
         <Typo.Body>• WIP_DISABLE_STORE_REVIEW (kill switch global)</Typo.Body>
-        <Typo.Body>• WIP_REVIEW_TRIGGER_BOOKING / CREDIT / LIKE / OFFERS (à venir)</Typo.Body>
+        <Typo.Body>
+          • WIP_REVIEW_TRIGGER_BOOKING / CREDIT / LIKE / OFFERS (si OFF, la source correspondante ne
+          déclenche pas)
+        </Typo.Body>
         <Button wording="Ouvrir l’écran Feature Flags" onPress={goToFeatureFlags} />
       </Section>
     </CheatcodesTemplateScreen>
