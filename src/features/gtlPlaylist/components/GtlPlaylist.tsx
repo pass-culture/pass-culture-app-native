@@ -78,6 +78,7 @@ export function GtlPlaylist({
         renderItem={renderPassPlaylist}
         keyExtractor={(item: Hit<Offer>) => item.objectID}
         title={playlist.title}
+        nbItems={playlist.offers.hits.length}
         onEndReached={logHasSeenAllTilesOnce}
         noMarginBottom={noMarginBottom}
         FlatListComponent={FlatList}

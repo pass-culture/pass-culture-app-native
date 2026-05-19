@@ -5,6 +5,7 @@ import { FlatList, FlatList as RNGHFlatList } from 'react-native-gesture-handler
 import styled from 'styled-components/native'
 
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
+import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { Playlist } from 'ui/components/Playlist'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -31,6 +32,7 @@ type Props = Pick<
   noMarginBottom?: boolean
   title: string
   subtitle?: string
+  nbItems?: number
   playlistRef?: Ref<FlatList>
   FlatListComponent?: typeof FlashList | typeof RNGHFlatList
   withMargin?: boolean
@@ -48,6 +50,7 @@ type Props = Pick<
 export const PassPlaylist = ({
   title,
   subtitle,
+  nbItems,
   onEndReached,
   onViewableItemsChanged,
   seeAllButton,
@@ -89,6 +92,11 @@ export const PassPlaylist = ({
           ) : undefined}
         </StyledView>
         {subtitle ? <StyledSubtitle withMargin={withMargin}>{subtitle}</StyledSubtitle> : null}
+        {nbItems ? (
+          <NumberOfItemsContainer>
+            <NumberOfItems nbItems={nbItems} />
+          </NumberOfItemsContainer>
+        ) : null}
       </ViewGap>
       <Playlist
         testID="offersModuleList"
@@ -145,4 +153,8 @@ const SeeAllButtonContainer = styled.View(({ theme }) => ({
 
 const TitleContainer = styled.View(({ theme }) => ({
   flex: theme.isDesktopViewport ? undefined : 1,
+}))
+
+const NumberOfItemsContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
 }))
