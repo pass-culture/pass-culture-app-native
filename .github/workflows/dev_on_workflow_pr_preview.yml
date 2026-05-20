@@ -47,7 +47,7 @@ jobs:
           node-version-file: '.nvmrc'
       - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
 
-      - name: OpenID Connect Authentication
+      - name: 'OpenID Connect Authentication'
         id: 'openid-auth'
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
@@ -55,9 +55,9 @@ jobs:
           workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
           service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
 
-      - name: Get Secret
-        id: secrets
-        uses: google-github-actions/get-secretmanager-secrets@v3
+      - name: 'Get Secret'
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v3'
         with:
           secrets: |-
             SENTRY_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
@@ -111,7 +111,7 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         id: firebase-deploy
         with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: ${{ steps.create-sa-key.outputs.FIREBASE_TOKEN  }}
           expires: ${{ inputs.EXPIRES }}
           projectId: pc-native-${{ inputs.ENV }}
@@ -128,6 +128,6 @@ jobs:
             --quiet
           rm -f temporary-sa-key.json
 
-      - name: Firebase Deployment URL
+      - name: 'Firebase Deployment URL'
         run: |
           echo "::notice:: Firebase deployment is available at : ${{ steps.firebase-deploy.outputs.details_url }}"
