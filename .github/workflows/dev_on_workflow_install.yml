@@ -7,11 +7,11 @@ on:
         type: string
         required: true
 
-  secrets:
-    GCP_EHP_SERVICE_ACCOUNT:
-      required: true
-    GCP_EHP_WORKLOAD_IDENTITY_PRD:
-      required: true
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PRD:
+        required: true
 
 jobs:
   yarn-install:
