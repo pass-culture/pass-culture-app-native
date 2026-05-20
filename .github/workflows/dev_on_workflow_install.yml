@@ -10,7 +10,7 @@ on:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT:
         required: true
-      GCP_EHP_WORKLOAD_IDENTITY_PRD:
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
         required: true
 
 jobs:
@@ -40,7 +40,7 @@ jobs:
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
           cleanup_credentials: false
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PRD }}
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v3'
