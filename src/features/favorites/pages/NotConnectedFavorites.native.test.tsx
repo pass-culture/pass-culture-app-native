@@ -23,12 +23,12 @@ describe('NotConnectedFavorites component', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should navigate to SignupForm  when click on "Créer un compte"', async () => {
+  it('should navigate to SignupMethods  when click on "Créer un compte"', async () => {
     render(<NotConnectedFavorites />)
 
     await user.press(screen.getByText(`Créer un compte`))
 
-    expect(navigate).toHaveBeenCalledWith('SignupForm', { from: StepperOrigin.FAVORITE })
+    expect(navigate).toHaveBeenCalledWith('SignupMethods', { from: StepperOrigin.FAVORITE })
   })
 
   it('should log analytic "logSignUpFromFavorite" when click on "Créer un compte"', async () => {

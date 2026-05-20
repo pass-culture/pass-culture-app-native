@@ -30,13 +30,20 @@ import { StepperValidate } from 'ui/svg/icons/StepperValidate'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
+const DEFAULT_ERROR_MESSAGE = 'Erreur lors de la tentative de connexion'
+
+const SSO_ERROR_MESSAGES: Partial<Record<string, string>> = {
+  NETWORK_REQUEST_FAILED: 'Erreur réseau. Tu peux réessayer une fois la connexion réétablie.',
+  TOO_MANY_ATTEMPTS: 'Nombre de tentatives dépassé. Réessaye dans 1 minute.',
+}
+
 export const LoginMethods = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'LoginMethods'>>()
   const enableAppleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO)
 
   const onLogSignUpAnalytics = useCallback(() => {
-    void analytics.logSignUpClicked({ from: 'login' })
+    void analytics.logSignUpClicked({ from: 'loginMethods' })
   }, [])
 
   useEffect(() => {
@@ -54,7 +61,7 @@ export const LoginMethods = () => {
     }
   }, [params?.displayForcedLoginHelpMessage])
 
-  const handleSigninFailure = useCallback(
+  const onSSOSignInFailure = useCallback(
     (response: SignInResponseFailure) => {
       const failureCode = response.content?.code
 
@@ -62,7 +69,7 @@ export const LoginMethods = () => {
         return navigate('SignupForm', {
           accountCreationToken: response.content?.accountCreationToken,
           email: response.content?.email,
-          from: StepperOrigin.LOGIN,
+          from: StepperOrigin.LOGIN_METHODS,
           ssoProvider: response.provider,
         })
       }
@@ -71,23 +78,29 @@ export const LoginMethods = () => {
         return showErrorSnackBar(getSSOErrorMessage(response.provider, 'login'))
       }
 
-      showErrorSnackBar('Erreur lors de la tentative de connexion')
+      const isRateLimited = response.statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS'
+      const key = isRateLimited ? 'TOO_MANY_ATTEMPTS' : failureCode
+      const APIMessage = key && SSO_ERROR_MESSAGES[key]
+      const SSOMessage = getSSOErrorMessage(response.provider, 'signup')
+      const message = APIMessage ?? SSOMessage ?? DEFAULT_ERROR_MESSAGE
+
+      showErrorSnackBar(message)
     },
     [navigate]
   )
 
   const { mutate: signInGoogle } = useSignInMutation({
     params,
-    doNotNavigateOnSigninSuccess: true,
-    onFailure: handleSigninFailure,
+    doNotNavigateOnSigninSuccess: false,
+    onFailure: onSSOSignInFailure,
     analyticsType: 'SSO_login',
     analyticsMethod: 'fromLoginGoogle',
   })
 
   const { mutate: signInApple } = useSignInMutation({
     params,
-    doNotNavigateOnSigninSuccess: true,
-    onFailure: handleSigninFailure,
+    doNotNavigateOnSigninSuccess: false,
+    onFailure: onSSOSignInFailure,
     analyticsType: 'SSO_login',
     analyticsMethod: 'fromLoginApple',
   })

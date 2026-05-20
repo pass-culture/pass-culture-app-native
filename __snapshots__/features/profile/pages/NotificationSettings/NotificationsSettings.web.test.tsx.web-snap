@@ -213,7 +213,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <label
                           class="c2"
-                          for="177"
+                          for="178"
                         >
                           <div
                             class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -233,7 +233,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                             aria-checked="false"
                             aria-disabled="true"
                             aria-label="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
-                            aria-labelledby="176"
+                            aria-labelledby="177"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
                             data-testid="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
                             role="switch"
@@ -262,7 +262,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           </div>
                           <input
                             hidden=""
-                            id="177"
+                            id="178"
                             readonly=""
                             type="checkbox"
                           />
@@ -295,7 +295,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         >
                           <label
                             class="c2"
-                            for="179"
+                            for="180"
                           >
                             <div
                               class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -315,7 +315,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                               aria-checked="false"
                               aria-disabled="true"
                               aria-label="Suivre tous les thèmes - Interrupteur à bascule - non coché"
-                              aria-labelledby="178"
+                              aria-labelledby="179"
                               class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
                               data-testid="Suivre tous les thèmes - Interrupteur à bascule - non coché"
                               role="switch"
@@ -344,7 +344,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                             </div>
                             <input
                               hidden=""
-                              id="179"
+                              id="180"
                               readonly=""
                               type="checkbox"
                             />
@@ -364,7 +364,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <label
                           class="c2"
-                          for="181"
+                          for="182"
                         >
                           <div
                             class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -384,7 +384,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                             aria-checked="false"
                             aria-disabled="true"
                             aria-label="Cinéma - Interrupteur à bascule - non coché"
-                            aria-labelledby="180"
+                            aria-labelledby="181"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
                             data-testid="Cinéma - Interrupteur à bascule - non coché"
                             role="switch"
@@ -413,7 +413,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           </div>
                           <input
                             hidden=""
-                            id="181"
+                            id="182"
                             readonly=""
                             type="checkbox"
                           />
@@ -432,75 +432,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <label
                           class="c2"
-                          for="183"
-                        >
-                          <div
-                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                            dir="ltr"
-                          >
-                            Cinéma
-                          </div>
-                        </label>
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
-                      >
-                        <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-                        >
-                          <div
-                            aria-checked="false"
-                            aria-disabled="true"
-                            aria-label="Lecture - Interrupteur à bascule - non coché"
-                            aria-labelledby="182"
-                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                            data-testid="Cinéma - Interrupteur à bascule - non coché"
-                            role="switch"
-                            style="transition-duration: 0s;"
-                            tabindex="-1"
-                          >
-                            <div
-                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
-                            >
-                              <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
-                                style="transform: translateX(2px);"
-                              >
-                                <div
-                                  class="css-view-175oi2r"
-                                >
-                                  <div
-                                    class="css-text-146c3p1"
-                                    dir="ltr"
-                                  >
-                                    undefined-SVG-Mock
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <input
-                            hidden=""
-                            id="183"
-                            readonly=""
-                            type="checkbox"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-paddingBlock-w7s2jr"
-                  >
-                    <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
-                    >
-                      <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
-                      >
-                        <label
-                          class="c2"
-                          for="185"
+                          for="184"
                         >
                           <div
                             class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -519,8 +451,8 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           <div
                             aria-checked="false"
                             aria-disabled="true"
-                            aria-label="Musique - Interrupteur à bascule - non coché"
-                            aria-labelledby="184"
+                            aria-label="Lecture - Interrupteur à bascule - non coché"
+                            aria-labelledby="183"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
                             data-testid="Lecture - Interrupteur à bascule - non coché"
                             role="switch"
@@ -549,7 +481,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           </div>
                           <input
                             hidden=""
-                            id="185"
+                            id="184"
                             readonly=""
                             type="checkbox"
                           />
@@ -568,7 +500,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <label
                           class="c2"
-                          for="187"
+                          for="186"
                         >
                           <div
                             class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -587,8 +519,8 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           <div
                             aria-checked="false"
                             aria-disabled="true"
-                            aria-label="Spectacles - Interrupteur à bascule - non coché"
-                            aria-labelledby="186"
+                            aria-label="Musique - Interrupteur à bascule - non coché"
+                            aria-labelledby="185"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
                             data-testid="Musique - Interrupteur à bascule - non coché"
                             role="switch"
@@ -617,7 +549,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           </div>
                           <input
                             hidden=""
-                            id="187"
+                            id="186"
                             readonly=""
                             type="checkbox"
                           />
@@ -636,7 +568,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <label
                           class="c2"
-                          for="189"
+                          for="188"
                         >
                           <div
                             class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -655,8 +587,8 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           <div
                             aria-checked="false"
                             aria-disabled="true"
-                            aria-label="Activités créatives - Interrupteur à bascule - non coché"
-                            aria-labelledby="188"
+                            aria-label="Spectacles - Interrupteur à bascule - non coché"
+                            aria-labelledby="187"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
                             data-testid="Spectacles - Interrupteur à bascule - non coché"
                             role="switch"
@@ -685,7 +617,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           </div>
                           <input
                             hidden=""
-                            id="189"
+                            id="188"
                             readonly=""
                             type="checkbox"
                           />
@@ -704,7 +636,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <label
                           class="c2"
-                          for="191"
+                          for="190"
                         >
                           <div
                             class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -792,7 +724,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                             aria-checked="false"
                             aria-disabled="true"
                             aria-label="Visites et sorties - Interrupteur à bascule - non coché"
-                            aria-labelledby="190"
+                            aria-labelledby="191"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
                             data-testid="Visites et sorties - Interrupteur à bascule - non coché"
                             role="switch"
@@ -821,7 +753,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           </div>
                           <input
                             hidden=""
-                            id="191"
+                            id="192"
                             readonly=""
                             type="checkbox"
                           />

@@ -15,12 +15,12 @@ jest.useFakeTimers()
 describe('SignupBanner', () => {
   beforeEach(() => setFeatureFlags())
 
-  it('should redirect to signup form on press', async () => {
+  it('should redirect to SignupMethods on press', async () => {
     render(<SignupBanner />)
 
     await user.press(screen.getByText('Débloque ton crédit'))
 
-    expect(navigate).toHaveBeenCalledWith('SignupForm', { from: StepperOrigin.HOME })
+    expect(navigate).toHaveBeenCalledWith('SignupMethods', { from: StepperOrigin.HOME })
   })
 
   it('should log analytics on press', async () => {

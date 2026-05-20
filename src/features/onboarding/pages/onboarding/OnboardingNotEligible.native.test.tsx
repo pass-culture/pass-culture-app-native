@@ -20,13 +20,13 @@ describe('OnboardingNotEligible', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should navigate to SignupForm when pressing "Créer un compte"', async () => {
+  it('should navigate to SignupMethods when pressing "Créer un compte"', async () => {
     render(reactQueryProviderHOC(<OnboardingNotEligible />))
 
     const signupButton = screen.getByText('Créer un compte')
     await userEvent.press(signupButton)
 
-    expect(navigate).toHaveBeenCalledWith('SignupForm', {
+    expect(navigate).toHaveBeenCalledWith('SignupMethods', {
       from: StepperOrigin.ONBOARDING_NOT_ELIGIBLE,
     })
   })

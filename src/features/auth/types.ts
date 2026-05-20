@@ -36,7 +36,6 @@ export type PreValidationSignupNormalStepProps = {
   accessibilityLabelForNextStep?: string
   goToNextStep: (signupData: Partial<SignupData>) => void
   previousSignupData: Partial<SignupData>
-  onSSOEmailNotFoundError: () => void
   onDefaultEmailSignup: () => void
 }
 

@@ -35,7 +35,7 @@ export const AppleSSOCallback = () => {
 
   const navigateBack = useCallback(() => {
     if (context?.type === 'signup') {
-      resetFromRef('SignupForm', context.params as RootStackParamList['SignupForm'])
+      resetFromRef('SignupMethods', context.params as RootStackParamList['SignupMethods'])
     } else {
       resetFromRef('LoginMethods', context?.params as RootStackParamList['LoginMethods'])
     }
@@ -58,7 +58,7 @@ export const AppleSSOCallback = () => {
       )
 
       if (failureCode === 'SSO_EMAIL_NOT_FOUND') {
-        resetFromRef('SignupForm', {
+        resetFromRef('SignupMethods', {
           accountCreationToken: error.content?.accountCreationToken,
           email: error.content?.email,
           from: context?.type === 'signup' ? StepperOrigin.SIGNUP : StepperOrigin.LOGIN,

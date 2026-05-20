@@ -49,7 +49,7 @@ export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element | 
       wording="Créer un compte"
       onBeforeNavigate={onSignupPress}
       navigateTo={{
-        screen: 'SignupForm',
+        screen: 'SignupMethods',
         params: { from: StepperOrigin.TUTORIAL },
       }}
     />,
