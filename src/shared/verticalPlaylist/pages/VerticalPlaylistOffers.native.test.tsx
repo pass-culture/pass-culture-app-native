@@ -88,7 +88,7 @@ describe('VerticalPlaylistOffers', () => {
     expect(screen.getByText('Similar playlist')).toBeOnTheScreen()
   })
 
-  it('should render VerticalPlaylistThematicSearchOffers', () => {
+  it('should render VerticalPlaylistSearchOffers', () => {
     useRoute.mockReturnValueOnce({
       params: {
         type: VerticalPlaylist.ThematicSearchOffers,
