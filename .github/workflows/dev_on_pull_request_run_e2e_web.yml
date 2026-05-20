@@ -10,17 +10,14 @@ permissions:
 
 jobs:
   run_e2e_web:
-    name: Smoke test Staging Web
+    name: 'Smoke test Staging Web'
     runs-on: ubuntu-24.04
     timeout-minutes: 60
-    environment:
-      name: app-native-staging
     steps:
-      - name: Checkout ref
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v6
         with:
-          node-version-file: .nvmrc
+          node-version-file: '.nvmrc'
       - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
       - name: Enable Corepack
         run: corepack enable
@@ -34,17 +31,17 @@ jobs:
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           bucket: ${{ secrets.CACHE_BUCKET_NAME }}
-          workload-identity-provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
-          service-account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
 
       - name: Yarn install
         run: yarn install
 
       - name: Authentification to Google
-        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
+        uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
-          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
-          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
 
       - name: Get secrets for Maestro
         id: maestro_secrets
@@ -107,16 +104,14 @@ jobs:
   slack_notify:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
-    environment:
-      name: app-native-staging
     if: always()
     needs: run_e2e_web
     steps:
       - name: Connect to Secret Manager
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
-          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
-          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PRD }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Get secrets for Slack
         id: 'slack_secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v3'
