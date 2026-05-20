@@ -35,14 +35,9 @@ import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Key } from 'ui/svg/icons/Key'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-type LoginFormData = {
-  email: string
-  password: string
-}
 
-type Props = {
-  doNotNavigateOnSigninSuccess?: boolean
-}
+type LoginFormData = { email: string; password: string }
+type Props = { doNotNavigateOnSigninSuccess?: boolean }
 
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.LOGIN)
@@ -68,9 +63,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
 
   useEffect(() => {
-    if (params?.from) {
-      void analytics.logStepperDisplayed(params.from, 'Login')
-    }
+    if (params?.from) void analytics.logStepperDisplayed(params.from, 'Login')
   }, [params?.from])
 
   useEffect(() => {
@@ -178,8 +171,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     navigate('ForgottenPassword')
   }, [navigate])
 
-  const titlePage = 'Connecte-toi'
-
   return (
     <React.Fragment>
       {isRecaptchaEnabled ? (
@@ -197,7 +188,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         scrollChildren={
           <React.Fragment>
             <TitleContainer>
-              <Typo.Title3 {...getHeadingAttrs(2)}>{titlePage}</Typo.Title3>
+              <Typo.Title3 {...getHeadingAttrs(2)}>Connecte-toi</Typo.Title3>
             </TitleContainer>
             <Form.MaxWidth>
               <InputError
