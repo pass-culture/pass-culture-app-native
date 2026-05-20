@@ -37,11 +37,9 @@ jobs:
     steps:
       - name: Enable Corepack
         run: corepack enable
-
       - uses: actions/checkout@v4.2.1
         with:
           ref: ${{ inputs.REF }}
-
       - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
@@ -53,7 +51,6 @@ jobs:
           export_environment_variables: true
           workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
           service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
-
       - name: 'Get Secret'
         id: 'secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v3'
