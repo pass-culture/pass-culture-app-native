@@ -6,6 +6,11 @@ on:
       CACHE_BUCKET_NAME:
         type: string
         required: true
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
 
 concurrency:
   group: linter-${{ github.ref }}
@@ -15,8 +20,6 @@ jobs:
   yarn_lint:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
-    environment:
-      name: app-native-testing
     steps:
       - name: Enable Corepack
         run: corepack enable
@@ -34,8 +37,8 @@ jobs:
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
-          workload-identity-provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
-          service-account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
       - run: yarn test:lint
 
@@ -60,7 +63,7 @@ jobs:
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
-          workload-identity-provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
-          service-account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
       - run: yarn test:types
