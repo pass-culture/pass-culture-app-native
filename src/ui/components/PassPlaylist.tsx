@@ -82,7 +82,7 @@ export const PassPlaylist = ({
               withTag={showNewTag}
             />
           </TitleContainer>
-          <SeeAllButtonContainer>
+          <SeeAllButtonContainer withMargin={withMargin}>
             <SeeAllButton playlistTitle={title} data={seeAllButton} />
           </SeeAllButtonContainer>
           {showNewTag ? (
@@ -146,8 +146,8 @@ const TagContainer = styled.View(({ theme }) => ({
   justifyContent: 'center',
 }))
 
-const SeeAllButtonContainer = styled.View(({ theme }) => ({
-  marginRight: theme.contentPage.marginHorizontal,
+const SeeAllButtonContainer = styled.View<{ withMargin?: boolean }>(({ withMargin, theme }) => ({
+  marginRight: withMargin ? theme.contentPage.marginHorizontal : undefined,
   justifyContent: 'center',
 }))
 

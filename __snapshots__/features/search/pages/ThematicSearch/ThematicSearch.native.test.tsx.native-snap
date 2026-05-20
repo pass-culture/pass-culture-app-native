@@ -1760,6 +1760,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         "marginRight": 24,
                       }
                     }
+                    withMargin={true}
                   />
                 </View>
                 <View

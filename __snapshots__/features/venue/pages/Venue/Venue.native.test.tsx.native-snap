@@ -1201,6 +1201,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 "marginRight": 24,
                               }
                             }
+                            withMargin={true}
                           >
                             <View
                               style={
@@ -4703,6 +4704,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 "marginRight": 24,
                               }
                             }
+                            withMargin={true}
                           >
                             <View
                               style={
