@@ -11,6 +11,10 @@ on:
         required: false
         default: false
     secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
       PASSCULTURE_GITHUB_ACTION_APP_ID:
       PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY:
 
@@ -26,8 +30,6 @@ jobs:
     name: 'Run Web unit tests'
     runs-on: ubuntu-24.04
     timeout-minutes: 60
-    environment:
-      name: app-native-testing
     strategy:
       fail-fast: false
       matrix:
@@ -39,8 +41,8 @@ jobs:
       - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
-          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
-          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
@@ -53,13 +55,15 @@ jobs:
             node_modules
             ~/.cache/yarn
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
-          restore-keys: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
       - uses: pass-culture-github-actions/cache@v1.0.0
         with:
           path: .jest/cache
           key: v1-yarn-test-web-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: v1-yarn-test-web-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-test-web-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
       - run: yarn test:unit:web:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
@@ -67,8 +71,6 @@ jobs:
     name: 'Run native unit tests'
     runs-on: ubuntu-24.04
     timeout-minutes: 60
-    environment:
-      name: app-native-testing
     strategy:
       fail-fast: false
       matrix:
@@ -80,8 +82,8 @@ jobs:
       - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
-          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
-          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
@@ -94,13 +96,15 @@ jobs:
             node_modules
             ~/.cache/yarn
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
-          restore-keys: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
       - uses: pass-culture-github-actions/cache@v1.0.0
         with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: .jest/cache
           key: v1-yarn-test-native-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: v1-yarn-test-native-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-test-native-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - run: yarn test:unit:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
       - run: mv coverage/coverage-final.json coverage/${{matrix.shard}}.json
 
@@ -109,15 +113,15 @@ jobs:
         uses: pass-culture-github-actions/gcs-cache@v1.0.0
         with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-          path: coverage/${{ matrix.shard }}.json
-          restore-keys: v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
+          path: |
+            coverage/${{ matrix.shard }}.json
+          restore-keys: |
+            v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
           key: v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
 
   report-coverage:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
-    environment:
-      name: app-native-testing
     needs: yarn_test_native
     steps:
       - name: Enable Corepack
@@ -126,8 +130,8 @@ jobs:
       - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
-          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
-          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Get Secret
         id: 'sonar_secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v3'
@@ -165,8 +169,6 @@ jobs:
   build-web:
     if: ${{ inputs.HAS_BREAKING_CHANGE_LABEL }}
     runs-on: ubuntu-latest
-    environment:
-      name: app-native-testing
     steps:
       - name: Enable Corepack
         run: corepack enable
@@ -177,8 +179,8 @@ jobs:
       - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
-          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
-          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Cache the node_modules
         id: yarn-modules-cache
         uses: pass-culture-github-actions/cache@v1.0.0
@@ -188,11 +190,13 @@ jobs:
             node_modules
             ~/.cache/yarn
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Yarn install
         run: yarn install
       - name: 'Build web'
-        run: NODE_OPTIONS='--max-old-space-size=8192' yarn build
+        run: |
+          NODE_OPTIONS='--max-old-space-size=8192' yarn build
 
   e2e-android:
     if: ${{ inputs.HAS_BREAKING_CHANGE_LABEL }}
@@ -200,7 +204,6 @@ jobs:
     uses: ./.github/workflows/dev_on_workflow_call_e2e_android.yml
     with:
       upload_name_prefix: '[PR]'
-
   e2e-ios:
     if: ${{ inputs.HAS_BREAKING_CHANGE_LABEL }}
     needs: build-web
@@ -211,8 +214,6 @@ jobs:
   yarn_test_proxy:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
-    environment:
-      name: app-native-testing
     steps:
       - name: Enable Corepack
         run: corepack enable
@@ -223,8 +224,8 @@ jobs:
       - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
-          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
-          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Cache the proxy node_modules
         id: yarn-modules-cache-proxy
         uses: pass-culture-github-actions/cache@v1.0.0
@@ -234,7 +235,8 @@ jobs:
             node_modules
             ~/.cache/yarn
           key: v1-yarn-proxy-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: v1-yarn-proxy-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-proxy-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Install packages for proxy
         run: cd server && yarn install && cd ..
       - name: Run proxy unit tests
@@ -253,12 +255,9 @@ jobs:
           SONAR_TOKEN: ${{ steps.sonar_secrets.outputs.SONAR_TOKEN }}
         with:
           projectBaseDir: server
-
   slack_notify:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
-    environment:
-      name: app-native-testing
     if: ${{ always() && github.ref == 'refs/heads/master' }}
     needs:
       - yarn_test_native
@@ -268,8 +267,8 @@ jobs:
       - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
-          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
-          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Get secrets for Slack
         id: 'slack_secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v3'
