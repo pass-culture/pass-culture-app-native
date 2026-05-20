@@ -56,7 +56,7 @@ jobs:
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
           key-file-name: ${{ steps.gcloud-auth.outputs.credentials_file_path }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-      - name: Use the artifact registry
+      - name: 'Use the artifact registry'
         uses: pass-culture-github-actions/artifact-registry@v1.0.0
         with:
           secret-workload-identity-provider-artifact-registry: passculture-metier-ehp/passculture-main-gcp-workload-identity-provider
