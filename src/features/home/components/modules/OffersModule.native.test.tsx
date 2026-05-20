@@ -89,12 +89,12 @@ describe('OffersModule', () => {
     expect(screen.queryByText('Un lit sous une rivière')).not.toBeOnTheScreen()
   })
 
-  it('should navigate to vertical playlist when we click on "Tout voir"', async () => {
+  it('should navigate to vertical playlist when we click on "Voir tout"', async () => {
     renderOffersModule({
       data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
     })
 
-    await user.press(screen.getByText('Tout voir'))
+    await user.press(screen.getByText('Voir tout'))
 
     expect(navigate).toHaveBeenCalledWith('VerticalPlaylistOffers', {
       type: VerticalPlaylist.ModuleOffers,
@@ -165,12 +165,12 @@ describe('OffersModule', () => {
       expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
     })
 
-    it('should trigger analytics when we click on "Tout voir" button', async () => {
+    it('should trigger analytics when we click on "Voir tout" button', async () => {
       renderOffersModule({
         data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
       })
 
-      await user.press(screen.getByText('Tout voir'))
+      await user.press(screen.getByText('Voir tout'))
 
       expect(analytics.logClickSeeAll).toHaveBeenCalledWith({
         from: 'home',

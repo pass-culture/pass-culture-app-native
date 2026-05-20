@@ -21,9 +21,12 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
+import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { useModal } from 'ui/components/modals/useModal'
 import { Playlist } from 'ui/components/Playlist'
+import { SeeAllButton } from 'ui/components/SeeAllButton/SeeAllButton'
 import { Separator } from 'ui/components/Separator'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Map } from 'ui/svg/icons/Map'
 import { LENGTH_XS, LENGTH_XXS, Typo } from 'ui/theme'
@@ -131,17 +134,48 @@ export const VenuePlaylist: React.FC<Props> = ({
       return
     }
 
-    analytics.logConsultVenueMap({ from: 'searchPlaylist' })
+    void analytics.logConsultVenueMap({ from: 'searchPlaylist' })
     navigate('VenueMap')
   }
 
   const shouldDisplaySeeOnMapButton = enabledVenueMap && currentView === 'ThematicSearch' && !isWeb
 
+  const onBeforeNavigate = () => {
+    void analytics.logClickSeeAll({
+      type: 'venues',
+      moduleName: venuePlaylistTitle,
+      from: 'search',
+    })
+  }
+
+  const navigateToVerticalPlaylist = {
+    screen: 'VerticalPlaylistVenues' as const,
+    params: {
+      module: {
+        type: VerticalPlaylist.ThematicSearchVenues,
+        data: venues,
+        displayParameters: { title: venuePlaylistTitle, subtitle: undefined },
+      },
+    },
+  }
+
   return (
     <React.Fragment>
       <Container style={style}>
         <HeaderPlaylistContainer withMargins={withMargins}>
-          <Typo.Title3 numberOfLines={isWeb ? 1 : undefined}>{venuePlaylistTitle}</Typo.Title3>
+          <SeeAllButtonContainer gap={3} withMargins={withMargins}>
+            <TitleContainer>
+              <Typo.Title3 numberOfLines={isWeb ? 1 : undefined}>{venuePlaylistTitle}</Typo.Title3>
+            </TitleContainer>
+            <SeeAllButton
+              playlistTitle={venuePlaylistTitle}
+              data={{
+                onBeforeNavigate,
+                navigateToVerticalPlaylist,
+                hideSearchSeeAll: true,
+              }}
+            />
+          </SeeAllButtonContainer>
           {shouldDisplaySeeOnMapButton ? (
             <ButtonContainer>
               <Button
@@ -152,9 +186,8 @@ export const VenuePlaylist: React.FC<Props> = ({
                 onPress={handleSeeMapPress}
               />
             </ButtonContainer>
-          ) : (
-            <NumberOfItems nbItems={venues?.length ?? 0} />
-          )}
+          ) : null}
+          <NumberOfItems nbItems={venues?.length ?? 0} />
         </HeaderPlaylistContainer>
         <Playlist
           data={venues}
@@ -201,6 +234,19 @@ const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
 }))
 
 const ButtonContainer = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xs,
   alignSelf: 'flex-start',
+  marginTop: theme.designSystem.size.spacing.xs,
 }))
+
+const TitleContainer = styled.View({
+  flex: 1,
+})
+
+const SeeAllButtonContainer = styled(ViewGap)<{ withMargins: boolean }>(
+  ({ theme, withMargins }) => ({
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginRight: withMargins ? theme.designSystem.size.spacing.xl : 0,
+  })
+)

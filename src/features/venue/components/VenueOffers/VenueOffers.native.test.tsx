@@ -128,18 +128,18 @@ describe('<VenueOffers />', () => {
     ).toBeOnTheScreen()
   })
 
-  it('should display "Tout voir" button', async () => {
+  it('should display "Voir tout" button', async () => {
     renderVenueOffers({ playlists: [] })
 
     await screen.findByLabelText('Toutes les offres')
 
-    expect(screen.getByText('Tout voir')).toBeOnTheScreen()
+    expect(screen.getByText('Voir tout')).toBeOnTheScreen()
   })
 
-  it(`should go to search page with venue infos when clicking "Tout voir" button`, async () => {
+  it(`should go to search page with venue infos when clicking "Voir tout" button`, async () => {
     renderVenueOffers({ playlists: [] })
 
-    await user.press(screen.getByText('Tout voir'))
+    await user.press(screen.getByText('Voir tout'))
 
     expect(push).toHaveBeenCalledWith('TabNavigator', {
       screen: 'SearchStackNavigator',
@@ -158,10 +158,10 @@ describe('<VenueOffers />', () => {
     })
   })
 
-  it(`should log analytics event when clicking "Tout voir" button`, async () => {
+  it(`should log analytics event when clicking "Voir tout" button`, async () => {
     renderVenueOffers({ playlists: [] })
 
-    await user.press(screen.getByText('Tout voir'))
+    await user.press(screen.getByText('Voir tout'))
 
     expect(analytics.logVenueSeeMoreClicked).toHaveBeenNthCalledWith(1, venueId)
   })

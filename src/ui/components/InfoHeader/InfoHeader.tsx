@@ -28,21 +28,13 @@ export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({
   style,
   defaultThumbnailHeight,
 }) => {
-  const titleNumberOfLines = useMobileFontScaleToDisplay({
-    default: 1,
-    at200PercentZoom: undefined,
-  })
-  const subtitleNumberOfLines = useMobileFontScaleToDisplay({
-    default: 2,
-    at200PercentZoom: undefined,
-  })
-
+  const numberOfLines = useMobileFontScaleToDisplay({ default: 2, at200PercentZoom: undefined })
   const subtitleComponent = title ? (
-    <Subtitle testID="subtitileWithTitle" numberOfLines={subtitleNumberOfLines}>
+    <Subtitle testID="subtitileWithTitle" numberOfLines={numberOfLines}>
       {subtitle}
     </Subtitle>
   ) : (
-    <SubtitleWithoutTitle testID="subtitleWithoutTitle" numberOfLines={subtitleNumberOfLines}>
+    <SubtitleWithoutTitle testID="subtitleWithoutTitle" numberOfLines={numberOfLines}>
       {subtitle}
     </SubtitleWithoutTitle>
   )
@@ -61,7 +53,7 @@ export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({
         {children}
         {title ? (
           <TitleContainer testID="titleContainer">
-            <Title numberOfLines={titleNumberOfLines}>{title}</Title>
+            <Title numberOfLines={numberOfLines}>{title}</Title>
             {rightComponent || null}
           </TitleContainer>
         ) : null}

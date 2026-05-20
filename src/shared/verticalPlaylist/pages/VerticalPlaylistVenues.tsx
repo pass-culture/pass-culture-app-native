@@ -10,6 +10,7 @@ import { VenueHit } from 'libs/algolia/types'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
+import { VerticalPlaylistError } from 'shared/verticalPlaylist/components/VerticalPlaylistError'
 import { useGetVenuesFromPlaylist } from 'shared/verticalPlaylist/helpers/useGetVenuesFromPlaylist'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Page } from 'ui/pages/Page'
@@ -18,7 +19,10 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const VerticalPlaylistVenues = () => {
   const { params } = useRoute<UseRouteType<'VerticalPlaylistVenues'>>()
-  const { title, subtitle, items, nbItems } = useGetVenuesFromPlaylist(params.module)
+  const { title, subtitle, items, nbItems, hasDataError } = useGetVenuesFromPlaylist({
+    module: params.module,
+  })
+
   const headerHeight = useGetHeaderHeight()
   const { designSystem, breakpoints, tiles } = useTheme()
   const { width } = useWindowDimensions()
@@ -57,6 +61,8 @@ export const VerticalPlaylistVenues = () => {
     />
   )
 
+  if (hasDataError) return <VerticalPlaylistError />
+
   return (
     <Page>
       <PageHeaderWithoutPlaceholder />
@@ -64,7 +70,7 @@ export const VerticalPlaylistVenues = () => {
         numColumns={layout.numColumns}
         columnWrapperStyle={layout.columnWrapperStyle}
         data={items}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.name}
         key={layout.key}
         renderItem={renderItem}
         ItemSeparatorComponent={GridSeparator}

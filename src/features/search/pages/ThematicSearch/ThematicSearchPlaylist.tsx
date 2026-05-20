@@ -54,6 +54,7 @@ export function ThematicSearchPlaylist({
       data={playlist.offers.hits}
       itemWidth={PLAYLIST_ITEM_WIDTH}
       itemHeight={PLAYLIST_ITEM_HEIGHT}
+      nbItems={playlist.offers.hits.length}
       renderItem={renderPassPlaylist}
       keyExtractor={(item: Hit<Offer>) => item.objectID}
       title={playlist.title}

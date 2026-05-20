@@ -20,7 +20,7 @@ export const SeeAllInVerticalPlaylistButton = ({
     navigateTo={navigateTo}
     onBeforeNavigate={onBeforeNavigate}
     accessibilityLabel={accessibilityLabel}
-    wording="Tout voir"
+    wording="Voir tout"
     variant="tertiary"
     size="small"
   />
