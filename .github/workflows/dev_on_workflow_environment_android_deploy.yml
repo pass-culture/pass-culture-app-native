@@ -126,6 +126,9 @@ jobs:
 
       - name: Create service account key
         id: create-sa-key
+        env:
+            NATIVE_DEPLOYER_SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+            PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
         run: |
           gcloud iam service-accounts keys create temporary-sa-key.json \
             --iam-account=${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }} \
