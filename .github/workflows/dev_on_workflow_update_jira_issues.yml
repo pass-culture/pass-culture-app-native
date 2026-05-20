@@ -2,6 +2,11 @@ name: '4 [on_workflow] Update jira issues'
 
 on:
   workflow_call:
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
 
 env:
   SAFE_TO_DEPLOY_FIELD: customfield_10086
@@ -19,8 +24,6 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     continue-on-error: true
-    environment:
-      name: app-native-testing
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
@@ -42,8 +45,8 @@ jobs:
       - name: Authentification to Google
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
-          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
-          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
 
       - name: Get Secret
         id: 'secrets'
@@ -83,8 +86,6 @@ jobs:
   update-jira-issues:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
-    environment:
-      name: app-native-testing
     needs: issue-number
     if: needs.issue-number.outputs.status != null
     continue-on-error: true
@@ -103,8 +104,8 @@ jobs:
       - name: Authentification to Google
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
-          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
-          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
 
       - name: Get Secret
         id: 'secrets'
