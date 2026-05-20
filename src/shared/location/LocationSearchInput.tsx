@@ -9,9 +9,9 @@ import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 
 interface LocationSearchInputProps {
   selectedPlace: SuggestedPlace | null
-  setSelectedPlace: React.Dispatch<React.SetStateAction<SuggestedPlace | null>>
+  setSelectedPlace: (place: SuggestedPlace | null) => void
   placeQuery?: string
-  setPlaceQuery: React.Dispatch<React.SetStateAction<string>>
+  setPlaceQuery: (placeQuery: string) => void
   onResetPlace: () => void
 }
 

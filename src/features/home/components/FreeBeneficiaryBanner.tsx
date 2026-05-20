@@ -3,7 +3,7 @@ import React from 'react'
 import { useStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { ProfileOrigin } from 'features/identityCheck/pages/profile/types'
-import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { Offers } from 'ui/svg/icons/Offers'
 

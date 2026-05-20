@@ -10,13 +10,13 @@ type Props = {
 }
 
 export const SeeAllInModalButton = ({ title, onPress }: Props) => {
-  const accessibilityLabel = `Tout voir pour la sélection ${title}`
+  const accessibilityLabel = `Voir tout pour la sélection ${title}`
 
   return (
     <SeeAllButtonWrapper>
       <Button
         variant="tertiary"
-        wording="Tout voir"
+        wording="Voir tout"
         color="neutral"
         icon={EyeSophisticated}
         onPress={onPress}

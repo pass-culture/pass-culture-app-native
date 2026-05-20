@@ -9,7 +9,7 @@ import { clubAdvicesToAdviceCardData } from 'features/clubAdvices/adapters/clubA
 import { clubAdviceVariant } from 'features/clubAdvices/helpers/clubAdviceVariant'
 import { ClubAdvicesBase } from 'features/clubAdvices/pages/ClubAdvices/ClubAdvicesBase'
 import { useClubAdvicesQuery } from 'features/clubAdvices/queries/useClubAdvicesQuery'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'

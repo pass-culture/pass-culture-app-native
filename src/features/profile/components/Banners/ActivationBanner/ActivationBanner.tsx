@@ -4,8 +4,11 @@ import React from 'react'
 import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailable'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
-import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import {
+  StepperOrigin,
+  UseNavigationType,
+} from 'features/navigation/navigators/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { ActivationBannerDefault } from 'features/profile/components/Banners/ActivationBanner/ActivationBannerDefault'
 import { ActivationBannerPending } from 'features/profile/components/Banners/ActivationBanner/ActivationBannerPending'
 import { ActivationBannerWithSubscriptionMessage } from 'features/profile/components/Banners/ActivationBanner/ActivationBannerWithSubscriptionMessage'

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { CTAexitActivationFlow } from 'libs/analytics/logEventAnalytics'
 import { analytics } from 'libs/analytics/provider'

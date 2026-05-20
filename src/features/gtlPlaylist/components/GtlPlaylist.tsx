@@ -5,7 +5,7 @@ import { FlatList } from 'react-native-gesture-handler'
 
 import { VenueResponse } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
-import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
+import { Referrals, ScreenNames } from 'features/navigation/navigators/RootNavigator/types'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
@@ -13,6 +13,7 @@ import { useFunctionOnce } from 'libs/hooks'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { Offer } from 'shared/offer/types'
 import { useRenderPassPlaylist } from 'shared/renderPassPlaylist'
+import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 
 export interface GtlPlaylistProps {
@@ -66,6 +67,19 @@ export function GtlPlaylist({
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(playlist.layout)
 
+  const navigateToVerticalPlaylist = {
+    screen: 'VerticalPlaylistOffers' as const,
+    params: { type: VerticalPlaylist.GtlPlaylistOffers, module: playlist },
+  }
+
+  const onBeforeNavigate = () => {
+    void analytics.logClickSeeAll({
+      type: 'offers',
+      moduleName: playlist.title,
+      from: analyticsFrom,
+    })
+  }
+
   return (
     <IntersectionObserver
       onChange={handleLogModuleDisplayedScrolling}
@@ -78,11 +92,13 @@ export function GtlPlaylist({
         renderItem={renderPassPlaylist}
         keyExtractor={(item: Hit<Offer>) => item.objectID}
         title={playlist.title}
+        nbItems={playlist.offers.hits.length}
         onEndReached={logHasSeenAllTilesOnce}
         noMarginBottom={noMarginBottom}
         FlatListComponent={FlatList}
         playlistRef={playlistRef}
         onViewableItemsChanged={onViewableItemsChanged}
+        seeAllButton={{ onBeforeNavigate, navigateToVerticalPlaylist }}
       />
     </IntersectionObserver>
   )

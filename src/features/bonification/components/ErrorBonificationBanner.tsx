@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { BonificationRefusedType } from 'features/bonification/pages/BonificationRefused'
-import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
+import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
 import { WarningFilled } from 'ui/svg/icons/WarningFilled'

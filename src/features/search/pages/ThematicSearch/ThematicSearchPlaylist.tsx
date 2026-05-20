@@ -3,7 +3,7 @@ import React, { Ref } from 'react'
 import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
-import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
+import { Referrals, ScreenNames } from 'features/navigation/navigators/RootNavigator/types'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
 import { analytics } from 'libs/analytics/provider'
 import { Offer } from 'shared/offer/types'
@@ -54,6 +54,7 @@ export function ThematicSearchPlaylist({
       data={playlist.offers.hits}
       itemWidth={PLAYLIST_ITEM_WIDTH}
       itemHeight={PLAYLIST_ITEM_HEIGHT}
+      nbItems={playlist.offers.hits.length}
       renderItem={renderPassPlaylist}
       keyExtractor={(item: Hit<Offer>) => item.objectID}
       title={playlist.title}

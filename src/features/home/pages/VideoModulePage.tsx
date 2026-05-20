@@ -9,7 +9,7 @@ import { YoutubePlayerRef } from 'features/home/components/modules/video/Youtube
 import { VideoModulePageMetaHeader } from 'features/home/components/VideoModulePageMetaHeader'
 import { TranscriptionModal } from 'features/home/pages/TranscriptionModal'
 import { useVideoOffersQuery } from 'features/home/queries/useVideoOffersQuery'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'

@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { RATIO169 } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { YoutubePlayer } from 'features/home/components/modules/video/YoutubePlayer/YoutubePlayer'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { analytics } from 'libs/analytics/provider'

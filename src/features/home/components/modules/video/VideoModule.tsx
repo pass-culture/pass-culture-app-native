@@ -6,7 +6,7 @@ import { VideoModuleDesktop } from 'features/home/components/modules/video/Video
 import { VideoModuleMobile } from 'features/home/components/modules/video/VideoModuleMobile'
 import { useVideoOffersQuery } from 'features/home/queries/useVideoOffersQuery'
 import { VideoModuleProps, VideoModule as VideoModuleType } from 'features/home/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful/types'

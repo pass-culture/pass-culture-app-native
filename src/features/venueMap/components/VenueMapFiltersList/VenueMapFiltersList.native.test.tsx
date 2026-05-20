@@ -2,7 +2,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 
 import { Activity } from 'api/gen'
-import { VenueMapFiltersModalStackParamList } from 'features/navigation/VenueMapFiltersStackNavigator/types'
+import { VenueMapFiltersModalStackParamList } from 'features/navigation/navigators/VenueMapFiltersStackNavigator/types'
 import { VenueMapFiltersList } from 'features/venueMap/components/VenueMapFiltersList/VenueMapFiltersList'
 import { useVenuesFilter } from 'features/venueMap/store/venuesFilterStore'
 import { render, screen, userEvent } from 'tests/utils'

@@ -730,6 +730,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     </Text>
                     <View
                       accessibilityRole="none"
+                      noMargin={false}
                       style={
                         {
                           "marginBottom": 16,

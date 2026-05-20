@@ -84,5 +84,5 @@ export async function openUrl(
     return openAppUrl(url)
   }
 
-  openExternalUrl(url, { shouldLogEvent, fallbackUrl, analyticsData })
+  return openExternalUrl(url, { shouldLogEvent, fallbackUrl, analyticsData })
 }

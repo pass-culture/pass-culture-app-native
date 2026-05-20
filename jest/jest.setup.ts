@@ -4,6 +4,8 @@ import 'cross-fetch/polyfill'
 // @ts-ignore jest can have access to this file but typescript does not know it
 // We can see it
 import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-info-mock'
+// Include this line for mocking react-native-gesture-handler
+import 'react-native-gesture-handler/jestSetup'
 
 /* See the corresponding mocks in libs/analytics/__mocks__ */
 /* Tests passed but there is a console error in web files */

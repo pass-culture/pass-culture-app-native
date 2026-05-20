@@ -8,6 +8,7 @@ import { Typo } from 'ui/theme'
 interface Props {
   nbItems: number
   type?: 'results' | 'offers' | 'artists' | 'venues'
+  noMargin?: boolean
 }
 
 const LABELS = {
@@ -17,21 +18,21 @@ const LABELS = {
   venues: { singular: '# lieu', plural: '# lieux' },
 }
 
-export const NumberOfItems: React.FC<Props> = ({ nbItems, type = 'results' }) => {
+export const NumberOfItems: React.FC<Props> = ({ nbItems, type = 'results', noMargin = false }) => {
   if (!nbItems) return null
 
   const numberOfResults = plural(nbItems, LABELS[type])
 
   return (
-    <Container accessibilityRole={AccessibilityRole.STATUS}>
+    <Container accessibilityRole={AccessibilityRole.STATUS} noMargin={noMargin}>
       <Body>{numberOfResults}</Body>
     </Container>
   )
 }
 
-const Container = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xs,
-  marginBottom: theme.designSystem.size.spacing.l,
+const Container = styled.View<{ noMargin: boolean }>(({ theme, noMargin }) => ({
+  marginTop: noMargin ? 0 : theme.designSystem.size.spacing.xs,
+  marginBottom: noMargin ? 0 : theme.designSystem.size.spacing.l,
 }))
 
 const Body = styled(Typo.Body)(({ theme }) => ({

@@ -1,5 +1,10 @@
 import { LocationMode } from 'libs/location/types'
-import { LocationState, locationActions, locationSelectors } from 'libs/locationV2/location.store'
+import {
+  LocationState,
+  defaultLocationState,
+  locationActions,
+  locationSelectors,
+} from 'libs/locationV2/location.store'
 import { createStore } from 'libs/store/createStore'
 
 type LocationModalState = {
@@ -10,12 +15,7 @@ type LocationModalState = {
 const defaultState: LocationModalState = {
   visible: false,
   addressInputValue: '',
-  locationMode: LocationMode.EVERYWHERE,
-  configuration: {
-    [LocationMode.AROUND_ME]: { radius: 50, coords: { lat: 0, lng: 0 } },
-    [LocationMode.AROUND_PLACE]: { radius: 50, address: '' },
-    [LocationMode.EVERYWHERE]: {},
-  },
+  ...defaultLocationState,
 }
 
 const locationModalStore = createStore({
@@ -30,10 +30,8 @@ const locationModalStore = createStore({
     submit: () => {
       set((state) => {
         const { locationMode, configuration } = state
-        locationActions.setState({
-          locationMode,
-          configuration,
-        })
+        locationActions.setLocationMode(locationMode)
+        locationActions.setConfiguration(locationMode, configuration[locationMode])
         return { visible: false }
       })
     },

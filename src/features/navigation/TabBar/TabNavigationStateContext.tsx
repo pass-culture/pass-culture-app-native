@@ -3,8 +3,9 @@ import React, { createContext, useContext, memo, useState, useMemo, PropsWithChi
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
 
+import { TabNavigationStateType, TabStateRoute } from '../navigators/TabNavigator/types'
+
 import { getShouldDisplayTab } from './helpers'
-import { TabNavigationStateType, TabStateRoute } from './TabStackNavigatorTypes'
 
 export const DEFAULT_TAB_ROUTES: TabStateRoute[] = [
   { name: 'Home', key: 'home-initial', isSelected: true },

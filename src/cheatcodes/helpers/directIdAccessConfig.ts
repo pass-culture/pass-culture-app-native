@@ -1,5 +1,5 @@
 import { api } from 'api/api'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 
 export type DirectIdEntityKey = 'offer' | 'venue' | 'artist'
 

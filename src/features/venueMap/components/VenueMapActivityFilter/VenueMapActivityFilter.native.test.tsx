@@ -3,7 +3,7 @@ import React from 'react'
 
 import { popTo } from '__mocks__/@react-navigation/native'
 import { Activity } from 'api/gen'
-import { VenueMapFiltersModalStackParamList } from 'features/navigation/VenueMapFiltersStackNavigator/types'
+import { VenueMapFiltersModalStackParamList } from 'features/navigation/navigators/VenueMapFiltersStackNavigator/types'
 import { VenueMapActivityFilter } from 'features/venueMap/components/VenueMapActivityFilter/VenueMapActivityFilter'
 import { FILTERS_ACTIVITY_MAPPING } from 'features/venueMap/constant'
 import { useVenuesFilter, venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
