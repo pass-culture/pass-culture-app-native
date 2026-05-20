@@ -80,7 +80,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       const failureCode = response.content?.code
       setFocus('email')
       if (failureCode === 'SSO_EMAIL_NOT_FOUND') {
-        navigate('SignupForm', {
+        navigate('SignupMethods', {
           accountCreationToken: response.content?.accountCreationToken,
           email: response.content?.email,
           from: StepperOrigin.LOGIN,

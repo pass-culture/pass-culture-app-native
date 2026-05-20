@@ -182,7 +182,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   "params": {
                     "from": "Tutorial",
                   },
-                  "screen": "SignupForm",
+                  "screen": "SignupMethods",
                 }
               }
               onBeforeNavigate={[Function]}
@@ -1218,7 +1218,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   "params": {
                     "from": "Tutorial",
                   },
-                  "screen": "SignupForm",
+                  "screen": "SignupMethods",
                 }
               }
               onBeforeNavigate={[Function]}

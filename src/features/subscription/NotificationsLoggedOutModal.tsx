@@ -37,16 +37,16 @@ export const NotificationsLoggedOutModal: FunctionComponent<Props> = ({
           as={Button}
           fullWidth
           wording="Créer un compte"
-          navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.THEMATIC_HOME } }}
+          navigateTo={{ screen: 'SignupMethods', params: { from: StepperOrigin.THEMATIC_HOME } }}
           onBeforeNavigate={() => {
-            analytics.logSignUpClicked({ from })
+            void analytics.logSignUpClicked({ from })
             dismissModal()
           }}
         />
         <StyledAuthenticationButton
           type="login"
           onAdditionalPress={() => {
-            analytics.logLoginClicked({ from })
+            void analytics.logLoginClicked({ from })
             dismissModal()
           }}
           params={{ from: StepperOrigin.THEMATIC_HOME }}

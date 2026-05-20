@@ -34,7 +34,7 @@ export const OnboardingGeneralPublicWelcome = () => {
       buttonPrimary={{
         wording: 'Créer un compte',
         navigateTo: {
-          screen: 'SignupForm',
+          screen: 'SignupMethods',
           params: { from: StepperOrigin.ONBOARDING_GENERAL_PUBLIC_WELCOME },
         },
       }}

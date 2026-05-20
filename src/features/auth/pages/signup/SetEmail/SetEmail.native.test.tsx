@@ -1,12 +1,9 @@
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { OauthStateResponse } from 'api/gen'
-import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
-import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
+import { PreValidationSignupNormalStepProps } from 'features/auth/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
@@ -130,14 +127,6 @@ describe('<SetEmail />', () => {
     expect(screen.getByText(INCORRECT_EMAIL_MESSAGE, { hidden: true })).toBeOnTheScreen()
   })
 
-  it('should log analytics when clicking on "Se connecter" button', async () => {
-    renderSetEmail()
-
-    await user.press(screen.getByText('Se connecter'))
-
-    expect(analytics.logLoginClicked).toHaveBeenNthCalledWith(1, { from: 'SetEmail' })
-  })
-
   it('should display suggestion with a corrected email when the email is mistyped', async () => {
     renderSetEmail()
 
@@ -168,19 +157,6 @@ describe('<SetEmail />', () => {
     await user.press(screen.getByText('Appliquer la modification'))
 
     expect(analytics.logHasCorrectedEmail).toHaveBeenNthCalledWith(1, { from: 'setemail' })
-  })
-
-  it('should navigate to LoginMethods with provided offerId when clicking on "Se connecter" button', async () => {
-    const OFFER_ID = 1
-    useRoute.mockReturnValueOnce({ params: { offerId: OFFER_ID } })
-    renderSetEmail()
-
-    await user.press(screen.getByText('Se connecter'))
-
-    expect(navigate).toHaveBeenNthCalledWith(1, 'LoginMethods', {
-      from: StepperOrigin.SIGNUP,
-      offerId: OFFER_ID,
-    })
   })
 
   it('should set a default email if the user has already added his email', async () => {
@@ -227,130 +203,9 @@ describe('<SetEmail />', () => {
 
     expect(marketingEmailSubscriptionCheckbox.props.accessibilityState.checked).toBe(false)
   })
-
-  describe('SSO', () => {
-    it('should display Apple SSO button when Apple SSO feature flag is enabled', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
-
-      renderSetEmail()
-
-      expect(await screen.findByText('S\u2019inscrire avec Apple')).toBeOnTheScreen()
-    })
-
-    it('should not display Apple SSO button when Apple SSO feature flag is disabled', () => {
-      setFeatureFlags()
-
-      renderSetEmail()
-
-      expect(screen.queryByText('S\u2019inscrire avec Apple')).not.toBeOnTheScreen()
-    })
-
-    it('should display both SSO buttons when apple sso feature flags is enabled', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
-
-      renderSetEmail()
-
-      expect(await screen.findByText('S\u2019inscrire avec Google')).toBeOnTheScreen()
-      expect(screen.getByText('S\u2019inscrire avec Apple')).toBeOnTheScreen()
-    })
-
-    it('should display separator when only Apple SSO is enabled', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
-
-      renderSetEmail()
-
-      expect(await screen.findByText('ou')).toBeOnTheScreen()
-    })
-
-    it('should display google SSO button', async () => {
-      renderSetEmail()
-
-      expect(await screen.findByTestId('S’inscrire avec Google')).toBeOnTheScreen()
-    })
-
-    it('should go to next step when clicking SSO button and account does not already exist', async () => {
-      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
-        responseOptions: {
-          statusCode: 401,
-          data: {
-            code: 'SSO_EMAIL_NOT_FOUND',
-            accountCreationToken: 'accountCreationToken',
-            email: 'user@gmail.com',
-            general: [],
-          },
-        },
-      })
-
-      renderSetEmail()
-
-      await screen.findByText('Crée-toi un compte')
-
-      await user.press(screen.getByText('S’inscrire avec Google'))
-
-      expect(defaultProps.onSSOEmailNotFoundError).toHaveBeenCalledTimes(1)
-      expect(defaultProps.goToNextStep).toHaveBeenCalledWith({
-        accountCreationToken: 'accountCreationToken',
-        ssoProvider: 'google',
-      })
-    })
-
-    it('should display snackbar when SSO account is invalid', async () => {
-      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
-        responseOptions: {
-          statusCode: 400,
-          data: {
-            code: 'SSO_ERROR',
-            general: [],
-          },
-        },
-      })
-
-      renderSetEmail()
-
-      await screen.findByText('Crée-toi un compte')
-
-      await user.press(screen.getByText('S’inscrire avec Google'))
-
-      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
-      expect(
-        screen.getByText(
-          'L’inscription avec ce compte Google est refusée. Contacte le support pour plus d’informations depuis le Profil.'
-        )
-      ).toBeOnTheScreen()
-    })
-
-    it('should display snackbar when Apple SSO account is invalid', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
-      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/apple/authorize', {
-        responseOptions: {
-          statusCode: 400,
-          data: {
-            code: 'SSO_ERROR',
-            general: [],
-          },
-        },
-      })
-
-      renderSetEmail()
-
-      await screen.findByText('Crée-toi un compte')
-
-      await user.press(screen.getByText('S’inscrire avec Apple'))
-
-      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
-      expect(
-        screen.getByText(
-          'L’inscription avec ce compte Apple est refusée. Contacte le support pour plus d’informations depuis le Profil.'
-        )
-      ).toBeOnTheScreen()
-    })
-  })
 })
 
 const renderSetEmail = (props: PreValidationSignupNormalStepProps = defaultProps) => {
-  mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
-    oauthStateToken: 'oauth_state_token',
-  })
-
+  mockServer.getApi<OauthStateResponse>('/v1/oauth/state', { oauthStateToken: 'oauth_state_token' })
   render(reactQueryProviderHOC(<SetEmail {...props} />))
 }

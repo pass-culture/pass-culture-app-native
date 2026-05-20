@@ -1,49 +1,27 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import { useForm } from 'react-hook-form'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
-import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
-import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
-import { SSOButtonGoogle } from 'features/auth/components/SSOButton/SSOButtonGoogle'
-import { getSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
-import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
-import { StepperOrigin, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { PreValidationSignupNormalStepProps } from 'features/auth/types'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { CheckboxController } from 'shared/forms/controllers/CheckboxController'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { Form } from 'ui/components/Form'
-import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
-import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type FormValues = {
-  email: string
-  marketingEmailSubscription: boolean
-}
-
-const SSO_ERROR_MESSAGES: Partial<Record<string, string>> = {
-  NETWORK_REQUEST_FAILED: 'Erreur réseau. Tu peux réessayer une fois la connexion réétablie.',
-  TOO_MANY_ATTEMPTS: 'Nombre de tentatives dépassé. Réessaye dans 1 minute.',
-}
+type FormValues = { email: string; marketingEmailSubscription: boolean }
 
 export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = ({
   goToNextStep,
   accessibilityLabelForNextStep,
   previousSignupData,
-  onSSOEmailNotFoundError,
   onDefaultEmailSignup,
 }) => {
-  const { params } = useRoute<UseRouteType<'SignupForm'>>()
-  const enableAppleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO)
-  const { designSystem } = useTheme()
   const { control, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {
       email: previousSignupData.email,
@@ -52,10 +30,6 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
     resolver: yupResolver(setEmailSchema),
     mode: 'onSubmit',
   })
-
-  const onLogAnalytics = useCallback(() => {
-    analytics.logLoginClicked({ from: 'SetEmail' })
-  }, [])
 
   const goToNextStepCallback = useCallback(
     ({ email, marketingEmailSubscription }: FormValues) => {
@@ -66,41 +40,21 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
   )
 
   const onLogHasCorrectedEmail = useCallback(() => {
-    analytics.logHasCorrectedEmail({ from: 'setemail' })
+    void analytics.logHasCorrectedEmail({ from: 'setemail' })
   }, [])
 
-  const onSSOSignInFailure = useCallback(
-    (errorResponse: SignInResponseFailure) => {
-      const { content, provider, statusCode } = errorResponse
-      if (content?.code === 'SSO_EMAIL_NOT_FOUND') {
-        onSSOEmailNotFoundError()
-        goToNextStep({
-          accountCreationToken: content.accountCreationToken,
-          ssoProvider: provider,
-        })
-        return
-      }
-      const failureCode = content?.code
-      const isRateLimited = statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS'
-      const key = isRateLimited ? 'TOO_MANY_ATTEMPTS' : failureCode
-      const message = (key && SSO_ERROR_MESSAGES[key]) ?? getSSOErrorMessage(provider, 'signup')
-      showErrorSnackBar(message)
-    },
-    [goToNextStep, onSSOEmailNotFoundError]
-  )
   const disabled = watch('email').trim() === ''
+
   return (
     <Form.MaxWidth>
       <Typo.Title3 {...getHeadingAttrs(2)}>Crée-toi un compte</Typo.Title3>
-      <ControllersContainer>
-        <EmailInputContainer>
-          <EmailInputController
-            label="Adresse e-mail"
-            control={control}
-            name="email"
-            onSpellingHelpPress={onLogHasCorrectedEmail}
-          />
-        </EmailInputContainer>
+      <ControllersContainer gap={5}>
+        <EmailInputController
+          label="Adresse e-mail"
+          control={control}
+          name="email"
+          onSpellingHelpPress={onLogHasCorrectedEmail}
+        />
         <CheckboxController
           control={control}
           label="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
@@ -115,38 +69,10 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         isLoading={false}
         disabled={disabled}
       />
-
-      <SSOViewGap gap={4}>
-        <SeparatorWithText label="ou" />
-        <SSOButtonGoogle type="signup" onSignInFailure={onSSOSignInFailure} />
-        {enableAppleSSO ? (
-          <SSOButtonApple type="signup" onSignInFailure={onSSOSignInFailure} />
-        ) : null}
-      </SSOViewGap>
-
-      <AuthenticationButtonContainer>
-        <AuthenticationButton
-          type="login"
-          onAdditionalPress={onLogAnalytics}
-          linkColor={designSystem.color.text.brandSecondary}
-          params={{ from: StepperOrigin.SIGNUP, offerId: params?.offerId }}
-        />
-      </AuthenticationButtonContainer>
     </Form.MaxWidth>
   )
 }
 
-const SSOViewGap = styled(ViewGap)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.l,
-  marginBottom: theme.designSystem.size.spacing.xxxl,
-}))
-
-const ControllersContainer = styled.View(({ theme }) => ({
-  marginVertical: theme.designSystem.size.spacing.xxxl,
-}))
-const AuthenticationButtonContainer = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xl,
-}))
-const EmailInputContainer = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xxl,
+const ControllersContainer = styled(ViewGap)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
 }))

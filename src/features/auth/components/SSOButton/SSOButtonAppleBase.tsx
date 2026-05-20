@@ -26,7 +26,7 @@ type Props = {
     provider: 'apple'
   }) => void
   // Used on web - saved to sessionStorage before redirect to Apple
-  params?: RootStackParamList['Login' | 'SignupForm']
+  params?: RootStackParamList['LoginMethods' | 'SignupMethods']
 }
 
 export const SSOButtonAppleBase: FC<Props> = ({ type, onSuccess, params }) => {

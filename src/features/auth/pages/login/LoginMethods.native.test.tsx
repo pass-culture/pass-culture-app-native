@@ -88,6 +88,152 @@ describe('<LoginMethods/>', () => {
     )
   })
 
+  describe('forced login help message', () => {
+    it('should display forced login help snackbar', async () => {
+      useRoute.mockReturnValueOnce({
+        params: {
+          displayForcedLoginHelpMessage: true,
+        },
+      })
+
+      renderLogin()
+
+      expect(
+        await screen.findByText(
+          'Pour sécuriser ton pass Culture, tu dois régulièrement confirmer tes identifiants.'
+        )
+      ).toBeOnTheScreen()
+    })
+
+    it('should log analytics when forced login help message is displayed', async () => {
+      useRoute.mockReturnValueOnce({
+        params: {
+          displayForcedLoginHelpMessage: true,
+        },
+      })
+
+      renderLogin()
+
+      await screen.findByText(
+        'Pour sécuriser ton pass Culture, tu dois régulièrement confirmer tes identifiants.'
+      )
+
+      expect(analytics.logDisplayForcedLoginHelpMessage).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('generic SSO errors', () => {
+    it('should display rate limit snackbar when too many attempts error occurs with Google', async () => {
+      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
+        responseOptions: {
+          statusCode: 429,
+          data: { code: 'TOO_MANY_ATTEMPTS', general: [] },
+        },
+      })
+
+      renderLogin()
+
+      await user.press(await screen.findByTestId('Se connecter avec Google'))
+
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+
+      expect(
+        screen.getByText('Nombre de tentatives dépassé. Réessaye dans 1 minute.')
+      ).toBeOnTheScreen()
+    })
+
+    it('should display network error snackbar when network request failed', async () => {
+      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
+        responseOptions: {
+          statusCode: 500,
+          data: { code: 'NETWORK_REQUEST_FAILED', general: [] },
+        },
+      })
+
+      renderLogin()
+
+      await user.press(await screen.findByTestId('Se connecter avec Google'))
+
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+
+      expect(
+        screen.getByText('Erreur réseau. Tu peux réessayer une fois la connexion réétablie.')
+      ).toBeOnTheScreen()
+    })
+
+    it('should fallback to SSO error message when error code is unknown', async () => {
+      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
+        responseOptions: {
+          statusCode: 500,
+          data: {
+            code: 'UNKNOWN_ERROR',
+            general: [],
+          } as unknown as SignInResponseFailure['content'],
+        },
+      })
+
+      renderLogin()
+
+      await user.press(await screen.findByTestId('Se connecter avec Google'))
+
+      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+
+      expect(
+        screen.getByText(
+          'L’inscription avec ce compte Google est refusée. Contacte le support pour plus d’informations depuis le Profil.'
+        )
+      ).toBeOnTheScreen()
+    })
+  })
+
+  describe('Apple SSO analytics and navigation', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
+    })
+
+    it('should log analytics when signing in with Apple SSO', async () => {
+      mockServer.postApi<SigninResponse>('/v1/oauth/apple/authorize', {
+        accessToken: 'accessToken',
+        refreshToken: 'refreshToken',
+        accountState: AccountState.ACTIVE,
+      })
+
+      renderLogin()
+
+      await user.press(await screen.findByText('Se connecter avec Apple'))
+
+      expect(analytics.logLogin).toHaveBeenCalledWith({
+        method: 'fromLoginApple',
+        type: 'SSO_login',
+      })
+    })
+
+    it('should redirect to signup form when Apple SSO login fails because user does not exist', async () => {
+      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/apple/authorize', {
+        responseOptions: {
+          statusCode: 401,
+          data: {
+            code: 'SSO_EMAIL_NOT_FOUND',
+            general: [],
+            accountCreationToken: 'accountCreationToken',
+            email: 'user@icloud.com',
+          },
+        },
+      })
+
+      renderLogin()
+
+      await user.press(await screen.findByText('Se connecter avec Apple'))
+
+      expect(navigate).toHaveBeenCalledWith('SignupForm', {
+        accountCreationToken: 'accountCreationToken',
+        email: 'user@icloud.com',
+        from: StepperOrigin.LOGIN_METHODS,
+        ssoProvider: 'apple',
+      })
+    })
+  })
+
   describe('with Google SSO', () => {
     it('should sign in when SSO button is clicked with device info', async () => {
       mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
@@ -150,7 +296,7 @@ describe('<LoginMethods/>', () => {
       expect(navigate).toHaveBeenCalledWith('SignupForm', {
         accountCreationToken: 'accountCreationToken',
         email: 'user@gmail.com',
-        from: StepperOrigin.LOGIN,
+        from: StepperOrigin.LOGIN_METHODS,
         ssoProvider: 'google',
       })
     })
@@ -214,6 +360,26 @@ describe('<LoginMethods/>', () => {
       await user.press(screen.getByText('Continuer avec mon e-mail'))
 
       expect(navigate).toHaveBeenNthCalledWith(1, 'Login', {})
+    })
+  })
+
+  describe('signup CTA', () => {
+    it('should navigate to SignupForm when signup button is clicked', async () => {
+      renderLogin()
+
+      await user.press(screen.getByText('Créer un compte'))
+
+      expect(navigate).toHaveBeenCalledWith('SignupMethods', {})
+    })
+
+    it('should log analytics when signup button is clicked', async () => {
+      renderLogin()
+
+      await user.press(screen.getByText('Créer un compte'))
+
+      expect(analytics.logSignUpClicked).toHaveBeenCalledWith({
+        from: 'loginMethods',
+      })
     })
   })
 })

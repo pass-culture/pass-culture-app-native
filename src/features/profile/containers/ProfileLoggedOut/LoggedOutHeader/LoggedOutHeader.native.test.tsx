@@ -19,7 +19,7 @@ describe('LoggedOutHeader', () => {
     const signupButton = screen.getByText('Créer un compte')
     await user.press(signupButton)
 
-    expect(navigate).toHaveBeenCalledWith('SignupForm', {
+    expect(navigate).toHaveBeenCalledWith('SignupMethods', {
       from: StepperOrigin.PROFILE,
     })
   })

@@ -1,25 +1,16 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import { ReactTestInstance } from 'react-test-renderer'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
-import {
-  AccountState,
-  EmailValidationRemainingResendsResponse,
-  OauthStateResponse,
-  SigninResponse,
-} from 'api/gen'
+import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { PreValidationSignupStep } from 'features/auth/enums'
 import { CURRENT_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import * as LoginAndRedirectAPI from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
-import { SignInResponseFailure } from 'features/auth/types'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import * as useGoBack from 'features/navigation/useGoBack'
-import { UserProfile } from 'features/share/types'
-import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -27,27 +18,16 @@ import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { setSettingsMock } from 'tests/settings/mockSettings'
-import {
-  act,
-  fireEvent,
-  renderAsync,
-  screen,
-  userEvent,
-  waitFor,
-  waitForButtonToBePressable,
-} from 'tests/utils'
+import { act, fireEvent, renderAsync, screen, userEvent } from 'tests/utils'
 
 import { SignupForm } from './SignupForm'
 
 jest.mock('libs/network/NetInfoWrapper')
 
 const apiSignUpSpy = jest.spyOn(api, 'postNativeV1Account')
-const apiSSOSignUpSpy = jest.spyOn(api, 'postNativeV1OauthssoProviderAccount')
 
 const loginAndRedirectMock = jest.fn()
 jest.spyOn(LoginAndRedirectAPI, 'useLoginAndRedirect').mockReturnValue(loginAndRedirectMock)
-
-const apiPostOAuthAuthorize = jest.spyOn(api, 'postNativeV1OauthssoProviderAuthorize')
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
@@ -103,25 +83,18 @@ const gotoStep4 = async () => {
   )
 
   await user.press(screen.getByLabelText('Continuer vers l’étape CGU & Données'))
-
   await screen.findByLabelText('Étape 4 sur 5')
 }
 
 describe('Signup Form', () => {
-  beforeAll(() => {
-    jest.useFakeTimers({ legacyFakeTimers: true })
-  })
+  beforeAll(() => jest.useFakeTimers({ legacyFakeTimers: true }))
 
-  afterAll(() => {
-    jest.useRealTimers()
-  })
+  afterAll(() => jest.useRealTimers())
 
   beforeEach(() => {
     mockServer.getApi<EmailValidationRemainingResendsResponse>(
       '/v1/email_validation_remaining_resends/email%40gmail.com',
-      {
-        remainingResends: 3,
-      }
+      { remainingResends: 3 }
     )
     useRoute.mockReturnValue({ params: { from: StepperOrigin.HOME } })
     setFeatureFlags()
@@ -166,7 +139,6 @@ describe('Signup Form', () => {
       const emailInput = screen.getByTestId('Entrée pour l’email')
       await user.type(emailInput, 'email@gmail.com')
       await user.press(screen.getByText('Continuer'))
-
       await user.press(screen.getByText('Quitter'))
 
       expect(screen.getByText('Veux-tu abandonner l’inscription ?')).toBeOnTheScreen()
@@ -185,9 +157,7 @@ describe('Signup Form', () => {
       )
 
       await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
-
       await user.press(screen.getByText('S’inscrire'))
-
       await user.press(await screen.findByText('Fermer'))
 
       expect(navigate).toHaveBeenCalledWith(
@@ -214,11 +184,9 @@ describe('Signup Form', () => {
       await user.type(emailInput, 'email@gmail.com')
 
       const continueButton = screen.getByText('Continuer')
-
       await user.press(continueButton)
 
       const goBackButton = screen.getByTestId('Revenir en arrière')
-
       await user.press(goBackButton)
 
       const firstStepTitle = await screen.findByText('Crée-toi un compte')
@@ -243,13 +211,10 @@ describe('Signup Form', () => {
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )
       await user.press(screen.getByText('Continuer'))
-
       await user.press(
         screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
-
       await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
-
       await user.press(screen.getByText('S’inscrire'))
 
       expect(screen.queryByLabelText('Revenir en arrière')).not.toBeOnTheScreen()
@@ -273,13 +238,10 @@ describe('Signup Form', () => {
       fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
     )
     await user.press(screen.getByText('Continuer'))
-
     await user.press(
       screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
-
     await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
-
     await user.press(screen.getByText('S’inscrire'))
 
     expect(screen.getByText('Confirme ton adresse e-mail')).toBeOnTheScreen()
@@ -299,7 +261,6 @@ describe('Signup Form', () => {
 
       const emailInput = screen.getByTestId('Entrée pour l’email')
       await user.type(emailInput, 'email@gmail.com')
-
       await user.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
 
       expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
@@ -337,9 +298,7 @@ describe('Signup Form', () => {
       await user.press(
         screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
-
       await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
-
       await user.press(screen.getByText('S’inscrire'))
 
       expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
@@ -386,12 +345,10 @@ describe('Signup Form', () => {
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )
       await user.press(screen.getByLabelText('Continuer vers l’étape CGU & Données'))
-
       await user.press(
         screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
       await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
-
       await user.press(screen.getByText('S’inscrire'))
 
       expect(apiSignUpSpy).toHaveBeenCalledWith(
@@ -423,21 +380,16 @@ describe('Signup Form', () => {
 
       const passwordInput = screen.getByTestId('Mot de passe')
       await user.type(passwordInput, 'user@AZERTY123')
-
       await user.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
-
       const datePicker = screen.getByTestId('date-picker-spinner-native')
       await act(async () =>
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )
       await user.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
-
       await user.press(
         screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
-
       await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
-
       await user.press(screen.getByText('S’inscrire'))
 
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
@@ -445,444 +397,7 @@ describe('Signup Form', () => {
       )
     })
   })
-
-  describe('SSO', () => {
-    const signInFailureData: SignInResponseFailure['content'] = {
-      code: 'SSO_EMAIL_NOT_FOUND',
-      accountCreationToken: 'accountCreationToken',
-      email: 'user@gmail.com',
-      general: [],
-    }
-
-    beforeEach(() => {
-      mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
-        responseOptions: { data: { oauthStateToken: 'oauth_state_token' } },
-        requestOptions: { persist: true },
-      })
-    })
-
-    it('should sign in when sso button is clicked and sso account already exists', async () => {
-      mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
-        accessToken: 'accessToken',
-        refreshToken: 'refreshToken',
-        accountState: AccountState.ACTIVE,
-      })
-      mockServer.getApi<UserProfile>('/v1/me', beneficiaryUser)
-
-      await renderSignupForm()
-      await screen.findByText('Inscription')
-
-      await pressSSOButton()
-
-      expect(apiPostOAuthAuthorize).toHaveBeenCalledWith(
-        {
-          authorizationCode: 'mockServerAuthCode',
-          oauthStateToken: 'oauth_state_token',
-          deviceInfo: {
-            deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-            os: 'iOS',
-            source: 'iPhone 13',
-          },
-        },
-        'google'
-      )
-    })
-
-    it('should go to next step when sso button is clicked and sso account does not exist', async () => {
-      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
-        responseOptions: {
-          statusCode: 401,
-          data: signInFailureData,
-        },
-      })
-
-      await renderSignupForm()
-      await screen.findByText('Inscription')
-
-      await waitFor(() => pressSSOButton())
-
-      expect(screen.getByText('Renseigne ta date de naissance')).toBeOnTheScreen()
-    })
-
-    it('should go back to email step instead of password step when signing up with sso button', async () => {
-      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
-        responseOptions: {
-          statusCode: 401,
-          data: signInFailureData,
-        },
-      })
-      await renderSignupForm()
-
-      await user.press(await screen.findByTestId('S’inscrire avec Google'))
-
-      await user.press(screen.getByTestId('Revenir en arrière'))
-
-      expect(screen.getByText('Crée-toi un compte')).toBeOnTheScreen()
-    })
-
-    it('should display go back for last step', async () => {
-      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
-        responseOptions: {
-          statusCode: 401,
-          data: signInFailureData,
-        },
-      })
-
-      await renderSignupForm()
-      await screen.findByText('Inscription')
-
-      await waitFor(() => pressSSOButton())
-
-      const datePicker = screen.getByTestId('date-picker-spinner-native')
-      await act(async () =>
-        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
-      )
-      await user.press(screen.getByText('Continuer'))
-
-      expect(screen.getByText('S’inscrire')).toBeOnTheScreen()
-      expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
-    })
-
-    it('should reset isSSOSubscription state when choosing sso first then choosing default signup', async () => {
-      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
-        responseOptions: {
-          statusCode: 401,
-          data: signInFailureData,
-        },
-      })
-
-      await renderSignupForm()
-
-      await user.press(await screen.findByTestId('S’inscrire avec Google'))
-
-      await user.press(screen.getByTestId('Revenir en arrière'))
-
-      const emailInput = screen.getByTestId('Entrée pour l’email')
-      await user.type(emailInput, 'email@gmail.com')
-      await user.press(screen.getByText('Continuer'))
-
-      expect(screen.getByText('Choisis un mot de passe')).toBeOnTheScreen()
-    })
-
-    it('should create SSO account when clicking on AcceptCgu button', async () => {
-      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
-        responseOptions: {
-          statusCode: 401,
-          data: signInFailureData,
-        },
-      })
-      mockServer.postApi<SigninResponse>('/v1/oauth/google/account', {
-        responseOptions: {
-          statusCode: 200,
-          data: {
-            accessToken: 'accessToken',
-            refreshToken: 'refreshToken',
-            accountState: AccountState.ACTIVE,
-          },
-        },
-      })
-
-      await renderSignupForm()
-      await screen.findByText('Inscription')
-
-      await waitFor(() => pressSSOButton())
-
-      let datePicker: ReactTestInstance
-      await waitFor(async () => {
-        datePicker = await screen.findByTestId('date-picker-spinner-native')
-      })
-      await act(async () =>
-        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
-      )
-      await user.press(screen.getByText('Continuer'))
-      await user.press(
-        screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
-      )
-
-      await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
-
-      await user.press(screen.getByText('S’inscrire'))
-
-      expect(apiSSOSignUpSpy).toHaveBeenCalledWith(
-        {
-          accountCreationToken: 'accountCreationToken',
-          marketingEmailSubscription: false,
-          birthdate: '2003-12-01',
-          token: 'dummyToken',
-          firebasePseudoId: 'firebase_pseudo_id',
-          trustedDevice: {
-            deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-            os: 'iOS',
-            source: 'iPhone 13',
-          },
-        },
-        'google',
-        { credentials: 'omit' }
-      )
-    })
-
-    it('should login and redirect user on SSO signup success', async () => {
-      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
-        responseOptions: {
-          statusCode: 401,
-          data: signInFailureData,
-        },
-      })
-      mockServer.postApi<SigninResponse>('/v1/oauth/google/account', {
-        responseOptions: {
-          statusCode: 200,
-          data: {
-            accessToken: 'accessToken',
-            refreshToken: 'refreshToken',
-            accountState: AccountState.ACTIVE,
-          },
-        },
-      })
-
-      await renderSignupForm()
-
-      const ssoButton = await screen.findByTestId('S’inscrire avec Google')
-
-      await waitFor(async () => {
-        expect(ssoButton.props.focusable).toBeTruthy()
-      })
-
-      await user.press(ssoButton)
-
-      const datePicker = await screen.findByTestId('date-picker-spinner-native')
-      await act(async () =>
-        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
-      )
-      await user.press(screen.getByText('Continuer'))
-      await user.press(
-        screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
-      )
-
-      await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
-
-      await user.press(screen.getByText('S’inscrire'))
-
-      expect(loginAndRedirectMock).toHaveBeenCalledWith(
-        {
-          accessToken: 'accessToken',
-          refreshToken: 'refreshToken',
-        },
-        { method: 'fromSignupGoogle', analyticsType: 'SSO_signup' }
-      )
-    })
-
-    it('should login and redirect user on SSO signup success when coming from signup', async () => {
-      // eslint-disable-next-line local-rules/independent-mocks
-      useRoute.mockReturnValue({
-        params: {
-          accountCreationToken: 'accountCreationToken',
-          email: 'user@gmail.com',
-          from: StepperOrigin.LOGIN,
-          ssoProvider: 'google',
-        },
-      })
-      mockServer.postApi<SigninResponse>('/v1/oauth/google/account', {
-        responseOptions: {
-          statusCode: 200,
-          data: {
-            accessToken: 'accessToken',
-            refreshToken: 'refreshToken',
-            accountState: AccountState.ACTIVE,
-          },
-        },
-      })
-
-      await renderSignupForm()
-
-      const datePicker = screen.getByTestId('date-picker-spinner-native')
-      await act(async () =>
-        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
-      )
-      await user.press(screen.getByText('Continuer'))
-      await user.press(
-        screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
-      )
-
-      await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
-
-      await user.press(screen.getByText('S’inscrire'))
-
-      expect(loginAndRedirectMock).toHaveBeenCalledWith(
-        {
-          accessToken: 'accessToken',
-          refreshToken: 'refreshToken',
-        },
-        { method: 'fromLoginGoogle', analyticsType: 'SSO_login' }
-      )
-    })
-
-    it('should directly go to birthday step when account creation token is in route params', async () => {
-      // eslint-disable-next-line local-rules/independent-mocks
-      useRoute.mockReturnValue({
-        params: {
-          accountCreationToken: 'accountCreationToken',
-          email: 'user@gmail.com',
-          ssoProvider: 'google',
-        },
-      })
-
-      await renderSignupForm()
-
-      expect(await screen.findByText('Date de naissance')).toBeOnTheScreen()
-    })
-
-    it('should create SSO account when clicking on AcceptCgu button and coming from login', async () => {
-      // eslint-disable-next-line local-rules/independent-mocks
-      useRoute.mockReturnValue({
-        params: {
-          accountCreationToken: 'accountCreationToken',
-          email: 'user@gmail.com',
-          from: StepperOrigin.LOGIN,
-          ssoProvider: 'google',
-        },
-      })
-      mockServer.postApi<SigninResponse>('/v1/oauth/google/account', {
-        responseOptions: {
-          statusCode: 200,
-          data: {
-            accessToken: 'accessToken',
-            refreshToken: 'refreshToken',
-            accountState: AccountState.ACTIVE,
-          },
-        },
-      })
-
-      await renderSignupForm()
-
-      let datePicker: ReactTestInstance
-      await waitFor(async () => {
-        datePicker = await screen.findByTestId('date-picker-spinner-native')
-      })
-      await act(async () =>
-        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
-      )
-      await user.press(screen.getByText('Continuer'))
-      await user.press(
-        screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
-      )
-
-      await user.press(screen.getByText(/J’ai lu les chartes des données personnelles/))
-
-      await user.press(screen.getByText('S’inscrire'))
-
-      expect(apiSSOSignUpSpy).toHaveBeenCalledWith(
-        {
-          accountCreationToken: 'accountCreationToken',
-          marketingEmailSubscription: false,
-          birthdate: '2003-12-01',
-          token: 'dummyToken',
-          firebasePseudoId: 'firebase_pseudo_id',
-          trustedDevice: {
-            deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-            os: 'iOS',
-            source: 'iPhone 13',
-          },
-        },
-        'google',
-        { credentials: 'omit' }
-      )
-    })
-
-    describe('analytics', () => {
-      it('should trigger StepperDisplayed tracker with SSO_signup type when displaying step for sso subscription', async () => {
-        mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
-          responseOptions: {
-            statusCode: 401,
-            data: signInFailureData,
-          },
-        })
-
-        await renderSignupForm()
-
-        expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
-          1,
-          StepperOrigin.HOME,
-          PreValidationSignupStep.Email,
-          undefined
-        )
-
-        await waitFor(() => pressSSOButton())
-
-        expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
-          2,
-          StepperOrigin.HOME,
-          PreValidationSignupStep.Birthday,
-          'SSO_signup'
-        )
-
-        const datePicker = screen.getByTestId('date-picker-spinner-native')
-        await act(async () => {
-          fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
-        })
-
-        await user.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
-
-        await waitFor(() =>
-          expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
-            3,
-            StepperOrigin.HOME,
-            PreValidationSignupStep.CGU,
-            'SSO_signup'
-          )
-        )
-      })
-
-      it('should trigger StepperDisplayed tracker with SSO_login type when displaying step for sso subscription and coming from login', async () => {
-        // eslint-disable-next-line local-rules/independent-mocks
-        useRoute.mockReturnValue({
-          params: {
-            accountCreationToken: 'accountCreationToken',
-            email: 'user@gmail.com',
-            from: StepperOrigin.LOGIN,
-            ssoProvider: 'google',
-          },
-        })
-
-        await renderSignupForm()
-
-        expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
-          1,
-          StepperOrigin.LOGIN,
-          PreValidationSignupStep.Email,
-          'SSO_login'
-        )
-
-        expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
-          2,
-          StepperOrigin.LOGIN,
-          PreValidationSignupStep.Birthday,
-          'SSO_login'
-        )
-
-        const datePicker = screen.getByTestId('date-picker-spinner-native')
-        await act(async () => {
-          fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
-        })
-
-        await user.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
-
-        expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
-          3,
-          StepperOrigin.LOGIN,
-          PreValidationSignupStep.CGU,
-          'SSO_login'
-        )
-      })
-    })
-  })
 })
 
 const simulateSignupSuccess = () => mockServer.postApi('/v1/account', {})
-
 const renderSignupForm = () => renderAsync(reactQueryProviderHOC(<SignupForm />))
-
-const pressSSOButton = async () => {
-  const SSOButton = await screen.findByTestId('S’inscrire avec Google')
-  await waitForButtonToBePressable(SSOButton)
-  await user.press(SSOButton)
-}

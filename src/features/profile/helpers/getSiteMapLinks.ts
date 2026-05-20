@@ -52,7 +52,7 @@ export const getSiteMapLinks = (
     subPages: [
       {
         wording: 'Créer un compte',
-        navigateTo: { screen: 'SignupForm' },
+        navigateTo: { screen: 'SignupMethods' },
         isLoggedIn: false,
       },
       {

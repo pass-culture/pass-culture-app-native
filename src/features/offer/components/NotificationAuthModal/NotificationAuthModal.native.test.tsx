@@ -56,7 +56,7 @@ describe('NotificationAuthModal', () => {
       const button = screen.getByText('Créer un compte')
       await user.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('SignupForm', {
+      expect(navigate).toHaveBeenCalledWith('SignupMethods', {
         from: StepperOrigin.NOTIFICATION,
         offerId: OFFER_ID,
       })
