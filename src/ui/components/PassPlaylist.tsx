@@ -94,7 +94,7 @@ export const PassPlaylist = ({
         {subtitle ? <StyledSubtitle withMargin={withMargin}>{subtitle}</StyledSubtitle> : null}
         {nbItems ? (
           <NumberOfItemsContainer>
-            <NumberOfItems nbItems={nbItems} />
+            <NumberOfItems nbItems={nbItems} noMargin />
           </NumberOfItemsContainer>
         ) : null}
       </ViewGap>

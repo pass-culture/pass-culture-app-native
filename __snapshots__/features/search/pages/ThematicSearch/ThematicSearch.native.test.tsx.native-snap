@@ -1762,6 +1762,37 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     }
                   />
                 </View>
+                <View
+                  style={
+                    {
+                      "marginHorizontal": 24,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityRole="none"
+                    noMargin={true}
+                    style={
+                      {
+                        "marginBottom": 0,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
+                      }
+                    >
+                      6 résultats
+                    </Text>
+                  </View>
+                </View>
               </View>
               <View
                 onLayout={[Function]}
