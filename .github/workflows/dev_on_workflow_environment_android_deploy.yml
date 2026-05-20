@@ -129,7 +129,7 @@ jobs:
         run: |
           gcloud iam service-accounts keys create temporary-sa-key.json \
             --iam-account=${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }} \
-            --project=${{ steps.openid-auth.outputs.project_id }}
+            --project="$PROJECT_ID"
 
       - name: Deploy hard android for ${{ inputs.ENV }}
         run: |
