@@ -127,6 +127,20 @@ if [ "$target" == "test" ]; then
   start_mock_analytics_server_silently_in_the_background
 fi
 ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts "$env" false
+
+# Disable LogBox warning overlays during tests (requires Metro to be running for hot reload)
+if [[ "$platform" == "ios" || "$platform" == "android" ]]; then
+  APP_TSX="./src/App.tsx"
+  sed -i '' '/LogBox\.ignoreLogs(\[/i\
+LogBox.ignoreAllLogs()
+' "$APP_TSX"
+  cleanup_app_tsx() {
+    sed -i '' '/LogBox\.ignoreAllLogs()/d' "$APP_TSX"
+  }
+  trap cleanup_app_tsx EXIT INT TERM
+  sleep 3
+fi
+
 # shellcheck disable=SC2086
 maestro "$target" \
   --env MAESTRO_APP_ID="$app_id" \
