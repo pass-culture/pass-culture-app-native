@@ -156,7 +156,7 @@ jobs:
         run: |
           KEY_ID=$(jq -r .private_key_id temporary-sa-key.json)
           gcloud iam service-accounts keys delete "$KEY_ID" \
-            --iam-account=${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }} \
+            --iam-account="$NATIVE_DEPLOYER_SERVICE_ACCOUNT" \
             --project=${{ steps.openid-auth.outputs.project_id }} \
             --quiet
           rm -f temporary-sa-key.json
