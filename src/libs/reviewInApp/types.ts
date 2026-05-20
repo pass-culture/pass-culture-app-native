@@ -10,6 +10,8 @@ export const REVIEW_QUOTA_LIMIT = 3
 export const REVIEW_LOCK_DURATION_MS = 30 * 24 * 60 * 60 * 1000
 export const REVIEW_WINDOW_MS = 365 * 24 * 60 * 60 * 1000
 export const DEFAULT_DELAY_MS = 1000
+export const OFFERS_VIEWED_REVIEW_THRESHOLD = 10
+export const OFFERS_VIEWED_REVIEW_DELAY_MS = 2000
 
 export const REVIEW_TRIGGER_FEATURE_FLAGS: Record<ReviewTriggerSource, RemoteStoreFeatureFlags> = {
   booking_success: RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_BOOKING,
