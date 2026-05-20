@@ -21,7 +21,7 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   canGoBack: jest.fn(() => true),
 })
 
-jest.mock('features/navigation/SearchStackNavigator/getSearchHookConfig', () => ({
+jest.mock('features/navigation/navigators/SearchStackNavigator/getSearchHookConfig', () => ({
   getSearchHookConfig: jest.fn(() => ['SearchLanding', undefined]),
 }))
 

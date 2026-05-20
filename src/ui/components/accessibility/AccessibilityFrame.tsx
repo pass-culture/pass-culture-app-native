@@ -13,7 +13,7 @@ interface Props {
 export const AccessibilityFrame: React.FC<Props> = ({ Icon, isAccessible }) => {
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
     color: theme.designSystem.color.icon.default,
-    size: theme.icons.sizes.small,
+    size: theme.designSystem.size.icon.m,
   }))``
 
   return (
@@ -42,5 +42,5 @@ const ValidationContainer = styled.View(({ theme }) => ({
 }))
 
 const ValidationMark = styled(DefaultValidationMark).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))``

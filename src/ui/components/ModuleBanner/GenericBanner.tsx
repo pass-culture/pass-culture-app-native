@@ -35,7 +35,7 @@ export const GenericBanner: FunctionComponent<GenericBannerProps> = ({
 }
 
 const StyledArrowNextIcon = styled(ArrowNext).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
   color: theme.designSystem.color.icon.default,
 }))``
 

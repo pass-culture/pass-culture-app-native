@@ -299,7 +299,10 @@ describe('getCTAProps', () => {
         wording: DEFAULT_CTA_WORDING,
         isDisabled: false,
         navigateTo: {
-          params: { params: { type: 'booking' }, screen: 'SetName' },
+          params: {
+            params: { type: 'booking', origin: 'offer', freeOfferId: offerResponseSnap.id },
+            screen: 'SetName',
+          },
           screen: 'SubscriptionStackNavigator',
         },
       })
@@ -320,7 +323,10 @@ describe('getCTAProps', () => {
         wording: DEFAULT_CTA_WORDING,
         isDisabled: false,
         navigateTo: {
-          params: { params: { type: 'booking' }, screen: 'ProfileInformationValidationCreate' },
+          params: {
+            params: { type: 'booking', origin: 'offer', freeOfferId: offerResponseSnap.id },
+            screen: 'ProfileInformationValidationCreate',
+          },
           screen: 'SubscriptionStackNavigator',
         },
       })

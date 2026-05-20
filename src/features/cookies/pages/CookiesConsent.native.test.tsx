@@ -8,7 +8,7 @@ import * as SetMarketingParams from 'features/cookies/helpers/setMarketingParams
 import * as useCookiesModule from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { navigationRef } from 'features/navigation/navigationRef'
-import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -38,6 +38,7 @@ jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
   useNavigation: () => ({ navigate: jest.fn(), push: jest.fn() }),
   useFocusEffect: jest.fn(),
+  createComponentForStaticNavigation: () => () => null,
 }))
 
 jest.mock('features/navigation/navigationRef')

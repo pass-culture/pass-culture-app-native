@@ -6,8 +6,9 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { isCurrentBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
@@ -113,7 +114,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           currency,
           euroToPacificFrancRate,
           formatPrice({
-            isDuo: !!(item.offer.isDuo && user?.isBeneficiary),
+            isDuo: !!(item.offer.isDuo && isCurrentBeneficiary(user)),
           })
         )}
         venueId={venue?.id}

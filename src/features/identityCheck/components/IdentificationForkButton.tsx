@@ -20,7 +20,7 @@ export const IdentificationForkButton: FunctionComponent<IdentificationForkButto
   props
 ) => {
   const Icon = styled(props.icon).attrs(({ theme }) => ({
-    size: theme.icons.sizes.standard,
+    size: theme.designSystem.size.icon.l,
   }))``
 
   return (

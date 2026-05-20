@@ -112,6 +112,7 @@ export enum AnalyticsEvent {
   HAS_CORRECTED_EMAIL = 'HasCorrectedEmail',
   HAS_DISMISSED_APP_SHARING_MODAL = 'HasDismissedAppSharingModal',
   HAS_DISMISSED_MODAL = 'HasDismissedModal',
+  HAS_EXITED_ACTIVATION_FLOW = 'HasExitedActivationFlow',
   HAS_MADE_A_CHOICE_FOR_COOKIES = 'HasMadeAChoiceForCookies',
   HAS_OPENED_ACCESSIBILITY_ACCORDION = 'HasOpenedAccessibilityAccordion',
   HAS_OPENED_COOKIES_ACCORDION = 'HasOpenedCookiesAccordion',

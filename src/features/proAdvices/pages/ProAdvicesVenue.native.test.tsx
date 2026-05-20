@@ -45,10 +45,7 @@ describe('ProAdvicesVenue', () => {
   beforeEach(() => {
     useRoute.mockReturnValue({ params: { venueId: venueDataTest.id } })
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE])
-    mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(
-      `/v2/venue/${venueDataTest.id}`,
-      venueDataTest
-    )
+    mockServer.getApi<VenueResponse>(`/v2/venue/${venueDataTest.id}`, venueDataTest)
     mockServer.getApi<VenueProAdvices>(`/v1/venue/${venueDataTest.id}/advices`, {
       proAdvices: [...venueProAdvicesFixture.proAdvices],
       nbResults: venueProAdvicesFixture.nbResults,
@@ -109,7 +106,7 @@ describe('ProAdvicesVenue', () => {
       adviceType: 'pro',
       from: 'venue',
       offerId: 1,
-      originDetail: 'Les avis des pros',
+      originDetails: 'Les avis des pros',
       venueId: 5543,
     })
   })

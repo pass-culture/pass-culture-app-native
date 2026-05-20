@@ -8,7 +8,7 @@ import { AdviceCardData } from 'features/advices/types'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { HeadlineOffer } from 'features/headlineOffer/components/HeadlineOffer/HeadlineOffer'
 import { HeadlineOfferData } from 'features/headlineOffer/type'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
@@ -23,7 +23,7 @@ import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
-  venue: Omit<VenueResponse, 'isVirtual'>
+  venue: VenueResponse
   venueArtists?: VenueOffersArtists
   venueOffers?: VenueOffersType
   playlists: GtlPlaylistData[]
@@ -75,7 +75,7 @@ export const VenueBody: FunctionComponent<Props> = ({
       venueId: venue.id,
       isHeadline: true,
       adviceType: 'pro',
-      originDetail: 'advice',
+      originDetails: 'advice',
     })
   }
 

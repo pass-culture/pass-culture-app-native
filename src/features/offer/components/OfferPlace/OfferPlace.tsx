@@ -4,7 +4,7 @@ import React, { FC, ReactNode } from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { Activity, OfferResponse, SubcategoryIdEnum, VenueResponse } from 'api/gen'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferCineBlock } from 'features/offer/components/OfferCine/OfferCineBlock'
 import { OfferVenueContainer } from 'features/offer/components/OfferVenueContainer/OfferVenueContainer'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
@@ -28,7 +28,7 @@ type PartialVenue = Pick<
 
 const mergeVenueData =
   (venue: PartialVenue) =>
-  (prevData: VenueResponse | undefined): Omit<VenueResponse, 'isVirtual'> => ({
+  (prevData: VenueResponse | undefined): VenueResponse => ({
     id: venue.id,
     name: venue.name,
     // Info not available in OfferVenueResponse so we fallback to OTHER

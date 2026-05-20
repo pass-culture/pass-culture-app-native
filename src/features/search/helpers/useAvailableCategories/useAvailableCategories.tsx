@@ -1,14 +1,21 @@
-import { hasAThematicSearch } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
-import { CategoryCriteria } from 'features/search/enums'
-import { availableCategories } from 'features/search/helpers/availableCategories/availableCategories'
+import { hasAThematicSearch } from 'features/navigation/navigators/SearchStackNavigator/types'
+import { CategoryCriteria, NewCategoryCriteria } from 'features/search/enums'
+import {
+  availableCategories,
+  newAvailableCategories,
+} from 'features/search/helpers/availableCategories/availableCategories'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 
-export const useAvailableCategories = (): CategoryCriteria[] => {
+export const useAvailableCategories = (): CategoryCriteria[] | NewCategoryCriteria[] => {
   const { data } = useSubcategoriesQuery()
+  const enableNewCategoryBlocks = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_CATEGORY_BLOCKS)
+
   const searchGroupsEnum = data?.searchGroups.map((searchGroup) => searchGroup.name) ?? []
-  const categories = Object.values(availableCategories).filter((category) =>
-    searchGroupsEnum.includes(category.facetFilter)
-  )
+  const categories = Object.values(
+    enableNewCategoryBlocks ? newAvailableCategories : availableCategories
+  ).filter((category) => searchGroupsEnum.includes(category.facetFilter))
 
   return categories
 }

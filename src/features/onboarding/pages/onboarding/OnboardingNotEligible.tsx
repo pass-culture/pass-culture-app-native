@@ -1,14 +1,20 @@
 import React from 'react'
 
 import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
+import { analytics } from 'libs/analytics/provider'
 import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 
 export const OnboardingNotEligible = () => {
   const { navigateToHomeWithReset } = useNavigateToHomeWithReset()
 
+  const onExitPress = () =>
+    analytics.logHasExitedActivationFlow({
+      from: 'onboardingnoteligible',
+      origin_detail: 'AccessCatalog',
+    })
   return (
     <GenericInfoPage
       withSkipAction={navigateToHomeWithReset}
@@ -25,6 +31,7 @@ export const OnboardingNotEligible = () => {
         },
       }}
       buttonSecondary={{
+        onBeforeNavigate: onExitPress,
         wording: 'Accéder au catalogue',
         navigateTo: {
           screen: homeNavigationConfig[0],

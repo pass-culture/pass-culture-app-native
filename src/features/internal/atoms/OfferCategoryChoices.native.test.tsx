@@ -2,6 +2,7 @@ import React from 'react'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { OfferCategoryChoices } from 'features/internal/atoms/OfferCategoryChoices'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { userEvent, render, screen } from 'tests/utils'
 
@@ -16,8 +17,9 @@ const user = userEvent.setup()
 describe('<OfferCategoryChoices />', () => {
   jest.useFakeTimers()
 
-  afterEach(() => {
+  beforeEach(() => {
     mockData = PLACEHOLDER_DATA
+    setFeatureFlags()
   })
 
   it('should change selected category when toggling', async () => {

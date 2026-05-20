@@ -3,9 +3,9 @@ import {
   OfferResponse,
   SubcategoryIdEnum,
   SubcategoryResponseModelv2,
-  YoungStatusResponse,
-  YoungStatusType,
 } from 'api/gen'
+import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { getIsProfileIncomplete } from 'features/offer/helpers/getIsProfileIncomplete/getIsProfileIncomplete'
 import { isFreeDigitalOffer, isFreeOffer } from 'features/offerRefacto/helpers'
 import { getCTAProps } from 'features/offerRefacto/helpers/offerCTAContent'
@@ -20,12 +20,10 @@ import { UserProfile } from 'features/share/types'
 export const getExternalUrlCTA = (
   offer: OfferResponse,
   hasEnoughCredit: boolean,
-  userStatus: YoungStatusResponse,
   user?: UserProfile
 ): CTAType | undefined => {
   const isExBeneficiary = user && isUserExBeneficiary(user)
-  const userWithoutEnoughCredit =
-    userStatus.statusType == YoungStatusType.beneficiary && !hasEnoughCredit
+  const userWithoutEnoughCredit = user?.statusType == UserStatusType.BENEFICIARY && !hasEnoughCredit
   const shouldBeRedirectedToExternalUrl =
     offer.externalTicketOfficeUrl && (userWithoutEnoughCredit || isExBeneficiary)
   if (shouldBeRedirectedToExternalUrl) {
@@ -37,14 +35,13 @@ export const getExternalUrlCTA = (
 
 export const getFreeOfferCTA = (
   offer: OfferResponse,
-  userStatus: YoungStatusResponse,
   subcategory: SubcategoryResponseModelv2,
   user?: UserProfile,
   alreadyBookedOfferId?: number
 ): CTAType | undefined => {
   const isUserFreeStatus = user?.eligibility === EligibilityType.free
 
-  if (isFreeDigitalOffer(offer) && userStatus?.statusType !== YoungStatusType.non_eligible) {
+  if (isFreeDigitalOffer(offer) && user?.statusType !== UserStatusType.GENERAL_PUBLIC) {
     if (subcategory.isEvent) return alreadyBookedOfferId ? 'SEE_BOOKING' : 'BOOK_OFFER'
     return 'DIGITAL_OFFER'
   }
@@ -65,13 +62,11 @@ export const getFreeOfferCTA = (
 
 export const getEligibilityBookingCTA = (
   offer: OfferResponse,
-  userStatus: YoungStatusResponse,
   user?: UserProfile,
   isEndedUsedBooking?: boolean,
   alreadyBookedOfferId?: number
 ): CTAType | undefined => {
-  const isBeneficiary = user?.isBeneficiary
-  if (userStatus.statusType === YoungStatusType.non_eligible && !offer.externalTicketOfficeUrl) {
+  if (user?.statusType === UserStatusType.GENERAL_PUBLIC && !offer.externalTicketOfficeUrl) {
     return 'INELIGIBLE'
   }
 
@@ -79,7 +74,7 @@ export const getEligibilityBookingCTA = (
     return 'ENDED_USED_BOOKING'
   }
 
-  if (userStatus.statusType === YoungStatusType.eligible && !isBeneficiary) {
+  if (user?.statusType === UserStatusType.ELIGIBLE && !isCurrentOrFormerBeneficiary(user)) {
     return 'SUBSCRIPTION_STATUS'
   }
 
@@ -122,7 +117,6 @@ export const getExpirationSoldOutCTA = (
 
 export const getCTAWordingAndAction = ({
   context,
-  userStatus,
   hasEnoughCredit,
   isLoggedIn,
   subcategory,
@@ -138,7 +132,7 @@ export const getCTAWordingAndAction = ({
   }
 
   // 2. Redirection
-  const externalUrlCTA = getExternalUrlCTA(offer, hasEnoughCredit, userStatus, user)
+  const externalUrlCTA = getExternalUrlCTA(offer, hasEnoughCredit, user)
   if (externalUrlCTA) {
     return getCTAProps(externalUrlCTA, context)
   }
@@ -150,7 +144,7 @@ export const getCTAWordingAndAction = ({
   }
 
   // 4. Free offers and specific status
-  const freeOfferCTA = getFreeOfferCTA(offer, userStatus, subcategory, user, alreadyBookedOfferId)
+  const freeOfferCTA = getFreeOfferCTA(offer, subcategory, user, alreadyBookedOfferId)
   if (freeOfferCTA) {
     return getCTAProps(freeOfferCTA, context)
   }
@@ -158,7 +152,6 @@ export const getCTAWordingAndAction = ({
   // 5. Eligibility and reservation status
   const eligibilityBookingCTA = getEligibilityBookingCTA(
     offer,
-    userStatus,
     user,
     isEndedUsedBooking,
     alreadyBookedOfferId
@@ -171,7 +164,7 @@ export const getCTAWordingAndAction = ({
   const restrictedOfferCTA = getRestrictedOfferCTA(
     offer,
     isUnderageBeneficiary,
-    user?.isBeneficiary
+    isCurrentOrFormerBeneficiary(user)
   )
   if (restrictedOfferCTA) {
     return getCTAProps(restrictedOfferCTA, context)

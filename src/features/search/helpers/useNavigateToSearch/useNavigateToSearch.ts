@@ -2,7 +2,7 @@ import { StackActions, useNavigation } from '@react-navigation/native'
 
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { DisabilitiesProperties } from 'features/accessibility/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { SearchState } from 'features/search/types'
 
 export const useNavigateToSearch = (routeName) => {

@@ -1,6 +1,9 @@
+import type { ImageSourcePropType } from 'react-native'
+
 import { Activity, SearchGroupNameEnumv2 } from 'api/gen'
 import { MAP_ACTIVITY_TO_LABEL } from 'libs/parsers/activity'
-import { BackgroundColorKey, BorderColorKey } from 'theme/types'
+import { BackgroundColorKey, BorderColorKey, IllustrationColorKey } from 'theme/types'
+import { illustrations } from 'ui/designSystem/illustrations'
 import { ArtsCrafts } from 'ui/svg/icons/categories/ArtsCrafts'
 import { Books } from 'ui/svg/icons/categories/Books'
 import { CDVinylsOnlineMusic } from 'ui/svg/icons/categories/CDVinylsOnlineMusic'
@@ -58,6 +61,16 @@ export type CategoryCriteria = {
   borderColor: BorderColorKey
 }
 
+export type NewCategoryCriteria = {
+  icon: React.FC<AccessibleIcon>
+  illustration: ImageSourcePropType
+  facetFilter: SearchGroupNameEnumv2
+  searchLandingPosition: number
+  filterModalPosition: number
+  fillColor: IllustrationColorKey
+  borderColor: BorderColorKey
+}
+
 type CategoryCriteriaWithNone = {
   [category in SearchGroupNameEnumv2]: category extends SearchGroupNameEnumv2.NONE
     ? {
@@ -70,6 +83,20 @@ type CategoryCriteriaWithNone = {
         borderColor: undefined
       }
     : CategoryCriteria
+}
+
+type NewCategoryCriteriaWithNone = {
+  [category in SearchGroupNameEnumv2]: category extends SearchGroupNameEnumv2.NONE
+    ? {
+        icon: React.FC<AccessibleIcon>
+        illustration: undefined
+        facetFilter: SearchGroupNameEnumv2
+        searchLandingPosition: undefined
+        filterModalPosition: undefined
+        fillColor: undefined
+        borderColor: undefined
+      }
+    : NewCategoryCriteria
 }
 
 export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
@@ -198,6 +225,135 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
     borderColor: 'decorative02',
     fillColor: 'decorative02',
+  },
+}
+
+export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
+  [SearchGroupNameEnumv2.NONE]: {
+    icon: categoriesIcons.All,
+    illustration: undefined,
+    facetFilter: SearchGroupNameEnumv2.NONE,
+    searchLandingPosition: undefined,
+    filterModalPosition: undefined,
+    borderColor: undefined,
+    fillColor: undefined,
+  },
+  [SearchGroupNameEnumv2.CARTES_JEUNES]: {
+    icon: categoriesIcons.Card,
+    illustration: illustrations.passCard,
+    facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
+    searchLandingPosition: 11,
+    filterModalPosition: 1,
+    borderColor: 'decorative01',
+    fillColor: 'pending01',
+  },
+  [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: {
+    icon: categoriesIcons.Conference,
+    illustration: illustrations.mic,
+    facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
+    searchLandingPosition: 1,
+    filterModalPosition: 2,
+    borderColor: 'decorative01',
+    fillColor: 'pending01',
+  },
+  [SearchGroupNameEnumv2.CINEMA]: {
+    icon: categoriesIcons.Cinema,
+    illustration: illustrations.camera,
+    facetFilter: SearchGroupNameEnumv2.CINEMA,
+    searchLandingPosition: 2,
+    filterModalPosition: 3,
+    borderColor: 'decorative02',
+    fillColor: 'information04',
+  },
+  [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: {
+    icon: categoriesIcons.Cinema,
+    illustration: illustrations.popcorn,
+    facetFilter: SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
+    searchLandingPosition: 3,
+    filterModalPosition: 4,
+    borderColor: 'brandPrimary',
+    fillColor: 'information03',
+  },
+  [SearchGroupNameEnumv2.LIVRES]: {
+    icon: categoriesIcons.Book,
+    illustration: illustrations.book,
+    facetFilter: SearchGroupNameEnumv2.LIVRES,
+    searchLandingPosition: 4,
+    filterModalPosition: 5,
+    borderColor: 'decorative05',
+    fillColor: 'negative01',
+  },
+  [SearchGroupNameEnumv2.MUSIQUE]: {
+    icon: categoriesIcons.Disk,
+    illustration: illustrations.musicSheet,
+    facetFilter: SearchGroupNameEnumv2.MUSIQUE,
+    searchLandingPosition: 5,
+    filterModalPosition: 6,
+    borderColor: 'decorative03',
+    fillColor: 'positive01',
+  },
+  [SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS]: {
+    icon: categoriesIcons.Palette,
+    illustration: illustrations.paintingPalette,
+    facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
+    searchLandingPosition: 6,
+    filterModalPosition: 7,
+    borderColor: 'decorative02',
+    fillColor: 'information04',
+  },
+  [SearchGroupNameEnumv2.SPECTACLES]: {
+    icon: categoriesIcons.Show,
+    illustration: illustrations.spotlight,
+    facetFilter: SearchGroupNameEnumv2.SPECTACLES,
+    searchLandingPosition: 7,
+    filterModalPosition: 8,
+    borderColor: 'decorative05',
+    fillColor: 'negative01',
+  },
+  [SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES]: {
+    icon: categoriesIcons.Museum,
+    illustration: illustrations.vase,
+    facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
+    searchLandingPosition: 8,
+    filterModalPosition: 9,
+    borderColor: 'decorative01',
+    fillColor: 'pending01',
+  },
+  [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS]: {
+    icon: categoriesIcons.VideoGame,
+    illustration: illustrations.videogame,
+    facetFilter: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
+    searchLandingPosition: 9,
+    filterModalPosition: 10,
+    borderColor: 'brandPrimary',
+    fillColor: 'information03',
+  },
+  [SearchGroupNameEnumv2.MEDIA_PRESSE]: {
+    icon: categoriesIcons.Press,
+    illustration: illustrations.newspaper,
+    facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
+    searchLandingPosition: 10,
+    filterModalPosition: 11,
+    borderColor: 'decorative02',
+    fillColor: 'information04',
+  },
+  [SearchGroupNameEnumv2.RENCONTRES_CONFERENCES]: {
+    icon: categoriesIcons.Microphone,
+    illustration: illustrations.notebook,
+    facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
+    searchLandingPosition: 12,
+    filterModalPosition: 12,
+    borderColor: 'decorative03',
+    fillColor: 'positive01',
+  },
+  [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE]: {
+    icon: categoriesIcons.LiveEvent,
+    illustration: illustrations.computer,
+    searchLandingPosition: 13,
+    filterModalPosition: 13,
+    facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
+    borderColor: 'brandPrimary',
+    fillColor: 'information03',
   },
 }
 

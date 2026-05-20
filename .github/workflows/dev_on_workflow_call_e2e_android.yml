@@ -9,10 +9,9 @@ on:
         type: string
         default: '[MES]'
       test_tags:
-        description: 'Tags to include in the test run (activation, decouverte, conversion, or nightlyAndroid)'
+        description: 'Tags to include in the test run. If empty, all tests are run.'
         required: false
         type: string
-        default: 'nightlyAndroid'
     secrets:
       GCP_EHP_SERVICE_ACCOUNT:
         required: true
@@ -113,6 +112,8 @@ jobs:
       - name: Disable staging reCAPTCHA for E2E
         run: |
           yarn ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts staging false
+        env:
+          MAESTRO_E2E_API_KEY: ${{ steps.secrets.outputs.MAESTRO_E2E_API_KEY }}
 
       - name: Build android apk
         run: |
@@ -153,7 +154,7 @@ jobs:
           name: ${{ steps.generate_name.outputs.CUSTOM_NAME }}
           device-locale: fr_FR
           android-api-level: 34
-          workspace: .maestro/tests/
+          workspace: .maestro/testsV3/
           include-tags: ${{ inputs.test_tags }}
           async: true
           env: |

@@ -941,7 +941,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Contenus non soumis à l’obligation d’accessibilité – Liste - Élément 1 sur 2 - Les cartes Goggle Maps (motif : service externe)"
+                  accessibilityLabel="Contenus non soumis à l’obligation d’accessibilité – Liste - Élément 1 sur 3 - Les cartes Goggle Maps (motif : service externe)"
                   accessible={true}
                   style={
                     {
@@ -996,7 +996,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Contenus non soumis à l’obligation d’accessibilité – Liste - Élément 2 sur 2 - La vérification d’identité (webview d’un prestataire externe)"
+                  accessibilityLabel="Contenus non soumis à l’obligation d’accessibilité – Liste - Élément 2 sur 3 - La vérification d’identité (webview d’un prestataire externe)"
                   accessible={true}
                   style={
                     {
@@ -1047,6 +1047,61 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
                       }
                     >
                       La vérification d’identité (webview d’un prestataire externe)
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Contenus non soumis à l’obligation d’accessibilité – Liste - Élément 3 sur 3 - Les vidéos postées par les acteurs culturels dans les offres (motif : contenu dynamique provenant d’un tiers)"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Les vidéos postées par les acteurs culturels dans les offres (motif : contenu dynamique provenant d’un tiers)
                     </Text>
                   </View>
                 </View>

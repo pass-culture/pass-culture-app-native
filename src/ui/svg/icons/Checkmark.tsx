@@ -28,5 +28,5 @@ const CheckmarkSvg = ({
 
 export const Checkmark = styled(CheckmarkSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.designSystem.color.icon.default,
-  size: size ?? theme.icons.sizes.extraSmall,
+  size: size ?? theme.designSystem.size.icon.s,
 }))``

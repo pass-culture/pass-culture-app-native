@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { ReactionTypeEnum, SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { AdviceCardData } from 'features/advices/types'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { NoOfferPlaceholder } from 'features/venue/components/Placeholders/NoOfferPlaceholder'
@@ -24,7 +24,7 @@ import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
 
 export interface VenueOffersProps {
-  venue: Omit<VenueResponse, 'isVirtual'>
+  venue: VenueResponse
   venueArtists?: VenueOffersArtists
   venueOffers?: VenueOffers
   playlists: GtlPlaylistData[]

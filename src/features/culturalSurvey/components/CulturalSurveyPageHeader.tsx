@@ -70,7 +70,7 @@ const BarContainer = styled.View(({ theme }) => ({
 }))
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))``
 
 const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({

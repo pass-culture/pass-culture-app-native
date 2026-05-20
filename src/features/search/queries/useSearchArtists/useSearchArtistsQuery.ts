@@ -11,7 +11,6 @@ export const useSearchArtistsQuery = <TSelect = FetchSearchArtistsResponse>(
   options?: CustomQueryOptions<FetchSearchArtistsResponse, TSelect>
 ) => {
   const { buildLocationParameterParams, disabilitiesProperties, parameters } = params
-
   return useQuery({
     queryKey: [
       QueryKeys.SEARCH_RESULTS_ARTISTS,

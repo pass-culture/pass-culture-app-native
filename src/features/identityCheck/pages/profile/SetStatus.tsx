@@ -7,8 +7,8 @@ import * as yup from 'yup'
 
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { statusActions, useStatus } from 'features/identityCheck/pages/profile/store/statusStore'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 
@@ -23,6 +23,8 @@ export const SetStatus = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
+  const origin = params?.origin
+  const freeOfferId = params?.freeOfferId
 
   const identityCheckAndRecapExistingDataConfig = 'Profil'
   const pageConfigByType = {
@@ -60,10 +62,20 @@ export const SetStatus = () => {
       if (!formValues.selectedStatus) return
       setIsLoading(true)
       setStoreStatus(formValues.selectedStatus)
-      navigate(...getSubscriptionHookConfig('ActivationProfileRecap', { type }))
+      navigate(
+        ...getSubscriptionHookConfig(
+          'ActivationProfileRecap',
+          (() => {
+            if (origin) {
+              return freeOfferId ? { type, origin, freeOfferId } : { type, origin }
+            }
+            return freeOfferId ? { type, freeOfferId } : { type }
+          })()
+        )
+      )
       setIsLoading(false)
     },
-    [navigate, setStoreStatus, type]
+    [freeOfferId, navigate, origin, setStoreStatus, type]
   )
 
   const headerHeight = useGetHeaderHeight()

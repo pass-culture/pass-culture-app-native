@@ -1,0 +1,38 @@
+url: http://localhost:5173/
+tags:
+  - web
+---
+- launchApp
+- extendedWaitUntil:
+    visible: 'Respect de ta vie privée'
+    timeout: 60000
+
+- runFlow: ../common/AcceptCookies.yml
+
+- assertVisible: "Bienvenue\_!"
+- assertVisible: 'Débloque ton crédit'
+
+- runFlow: ../common/GoToSearchFromTabBar.yml
+- assertVisible: 'Parcours les catégories'
+- tapOn: 'CINÉMA'
+- assertVisible: 'Cinéma'
+- tapOn: "Films à l'affiche"
+- runFlow:
+    when:
+      visible: 'Les artistes'
+    commands:
+      - assertVisible: '.*résultats'
+- runFlow:
+    when:
+      notVisible: 'Les artistes'
+    commands:
+      - assertVisible: 'Pas de résultat'
+
+- runFlow: ../common/GoToFavoritesFromTabBar.yml
+- assertVisible: 'Identifie-toi pour retrouver tes favoris'
+- assertVisible: 'Créer un compte'
+- assertVisible: 'Se connecter'
+
+- runFlow: ../common/GoToProfileFromTabBar.yml
+
+- stopApp

@@ -3,7 +3,7 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CategoryIdEnum, HomepageLabelNameEnumv2, RecommendationApiParams } from 'api/gen'
-import { Referrals } from 'features/navigation/RootNavigator/types'
+import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
@@ -28,13 +28,13 @@ const OFFER_ID = 116656
 const searchId = uuidv4()
 
 const apiRecoParams: RecommendationApiParams = {
-  call_id: '1',
+  callId: '1',
   filtered: true,
-  geo_located: false,
-  model_endpoint: 'default',
-  model_name: 'similar_offers_default_prod',
-  model_version: 'similar_offers_clicks_v2_1_prod_v_20230317T173445',
-  reco_origin: 'default',
+  geoLocated: false,
+  modelEndpoint: 'default',
+  modelName: 'similar_offers_default_prod',
+  modelVersion: 'similar_offers_clicks_v2_1_prod_v_20230317T173445',
+  recoOrigin: 'default',
 }
 
 const props = {

@@ -374,6 +374,7 @@ describe('BookingDetails', () => {
             withdrawal: {},
             voucher: { data: 'test-voucher' },
             token: { data: 'test-token' },
+            display: TicketDisplayEnum.cinema_voucher,
           },
         })
         await screen.findAllByText(ongoingBookingV2.stock.offer.name)
@@ -403,6 +404,7 @@ describe('BookingDetails', () => {
               },
               voucher: null,
               withdrawal: {},
+              display: TicketDisplayEnum.online_code,
             },
             completedUrl: 'https://example.com',
           })
@@ -430,6 +432,7 @@ describe('BookingDetails', () => {
               activationCode: null,
               voucher: null,
               withdrawal: {},
+              display: TicketDisplayEnum.online_code,
             },
           })
           await screen.findAllByText(ongoingBookingV2.stock.offer.name)

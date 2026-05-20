@@ -1,0 +1,64 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - profile
+onFlowStart:
+  - runScript: ../common/DeepLink.js
+  - runScript:
+      file: ../common/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: 18
+---
+- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/StopApp.yml
+- runFlow: ../common/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/GoToProfileFromTabBar.yml
+
+- scrollUntilVisible:
+    element: 'Partager le pass Culture'
+
+- tapOn:
+    text: 'Informations légales'
+
+- assertVisible: 'Informations légales'
+- tapOn:
+    id: 'Conditions Générales d’Utilisation'
+- waitForAnimationToEnd
+
+- runFlow:
+    when:
+      platform: Android
+    file: ../common/DoubleTapOnBack.yml
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn: 'Revenir à pass Culture S'
+      - tapOn: 'Revenir en arrière'
+      - scrollUntilVisible:
+          element: 'Partager le pass Culture'
+
+- runFlow: # Fallback si problème de retour
+    when:
+      visible: 'Autres'
+    commands:
+      - tapOn:
+          text: 'Informations légales'
+
+- tapOn: 'Charte des données personnelles'
+- waitForAnimationToEnd
+- runFlow:
+    when:
+      platform: Android
+    file: ../common/DoubleTapOnBack.yml
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn: 'Revenir à pass Culture S'
+      - tapOn: 'Revenir en arrière'
+      - scrollUntilVisible:
+          element: 'Partager le pass Culture'
+
+- runFlow: ../common/StopApp.yml

@@ -5,8 +5,8 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
-import { getOnboardingPropConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingPropConfig'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { getOnboardingPropConfig } from 'features/navigation/navigators/OnboardingStackNavigator/getOnboardingPropConfig'
+import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { WELCOME_BACKGROUND_SOURCE } from 'features/onboarding/components/welcomeBackground'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
@@ -20,12 +20,16 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 const setHasSeenTutorials = () => storage.saveObject('has_seen_tutorials', true)
 
 const onStartPress = () => {
-  analytics.logOnboardingStarted({ type: 'start' })
+  void analytics.logOnboardingStarted({ type: 'start' })
   setHasSeenTutorials()
 }
 
 const onLoginPress = () => {
-  analytics.logOnboardingStarted({ type: 'login' })
+  void analytics.logOnboardingStarted({ type: 'login' })
+  void analytics.logHasExitedActivationFlow({
+    from: 'onboardingwelcome',
+    origin_detail: 'Login',
+  })
   setHasSeenTutorials()
 }
 

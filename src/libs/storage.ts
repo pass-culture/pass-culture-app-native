@@ -23,6 +23,8 @@ export type StorageKey =
   | 'profile-status'
   | 'phone_validation_code_asked_at'
   | 'react_navigation_persistence'
+  | 'review_request_history'
+  | 'review_v2_migration_done'
   | 'times_location_tooltip_has_been_displayed'
   | 'times_subscription_tooltip_has_been_displayed'
   | 'times_review_has_been_requested'

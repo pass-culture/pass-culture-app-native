@@ -10,7 +10,7 @@ import {
   OffersModule as OffersModuleType,
   RecommendedOffersModule,
 } from 'features/home/types'
-import { getSearchPropConfig } from 'features/navigation/SearchStackNavigator/getSearchPropConfig'
+import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { analytics } from 'libs/analytics/provider'
@@ -134,7 +134,7 @@ export const OffersModule = (props: OffersModuleProps) => {
         hybridModuleOffsetIndex: props.recommendationParameters
           ? hybridModuleOffsetIndex
           : undefined,
-        call_id: props.recommendationParameters ? recommendationApiParams?.call_id : undefined,
+        call_id: props.recommendationParameters ? recommendationApiParams?.callId : undefined,
         offers: (offersToDisplay as Offer[]).map((item) => item.objectID),
       })
     }
@@ -147,7 +147,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     offersToDisplay,
     playlistItems,
     props.recommendationParameters,
-    recommendationApiParams?.call_id,
+    recommendationApiParams?.callId,
     shouldModuleBeDisplayed,
   ])
 

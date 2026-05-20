@@ -82,6 +82,69 @@ describe('CategoriesListDumb', () => {
     expect(screen.getByText('Cinéma'.toUpperCase())).toBeOnTheScreen()
   })
 
+  it('should display new category blocks with split labels', () => {
+    render(
+      <CategoriesListDumb
+        {...initialProps}
+        enableNewCategoryBlocks
+        sortedCategories={[
+          {
+            label: 'Concerts & Festivals',
+            navigateTo: {
+              screen: 'TabNavigator',
+              params: {
+                screen: 'SearchStackNavigator',
+                params: {
+                  screen: 'ThematicSearch',
+                  params: { offerCategories: SearchGroupNameEnumv2.CONCERTS_FESTIVALS },
+                },
+              },
+            },
+            borderColor: 'brandPrimary',
+            fillColor: 'information03',
+            labelParts: ['Concerts', '& festivals'],
+            searchLandingPosition: undefined,
+          },
+        ]}
+      />
+    )
+
+    expect(screen.getByText('Concerts')).toBeOnTheScreen()
+    expect(screen.getByText('& festivals')).toBeOnTheScreen()
+  })
+
+  it('should display new category blocks with label parts instead of raw label', () => {
+    render(
+      <CategoriesListDumb
+        {...initialProps}
+        enableNewCategoryBlocks
+        sortedCategories={[
+          {
+            label: 'Médias & presse',
+            navigateTo: {
+              screen: 'TabNavigator',
+              params: {
+                screen: 'SearchStackNavigator',
+                params: {
+                  screen: 'SearchResults',
+                  params: { offerCategories: SearchGroupNameEnumv2.MEDIA_PRESSE },
+                },
+              },
+            },
+            borderColor: 'decorative01',
+            fillColor: 'pending01',
+            labelParts: ['Médias', '& presse'],
+            searchLandingPosition: undefined,
+          },
+        ]}
+      />
+    )
+
+    expect(screen.getByLabelText('Catégorie Médias & presse')).toBeOnTheScreen()
+    expect(screen.getByText('Médias')).toBeOnTheScreen()
+    expect(screen.getByText('& presse')).toBeOnTheScreen()
+  })
+
   it('should display AI fake door banner when enableAIFakeDoor FF activated', () => {
     render(<CategoriesListDumb {...initialProps} enableAIFakeDoor />)
 

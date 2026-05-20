@@ -33,6 +33,7 @@ import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
 import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
+import { runMigrationFromV1 } from 'libs/reviewInApp/migrateFromV1'
 import { SplashScreenProvider } from 'libs/splashscreen/splashscreen'
 import { ThemeWrapper } from 'libs/styled/ThemeWrapper'
 import { useLaunchPerformanceObserver } from 'performance/useLaunchPerformanceObserver'
@@ -69,11 +70,12 @@ const App: FunctionComponent = function () {
     })
     const setDeviceInfo = async () => {
       const existingDeviceInfo = deviceInfoStoreSelectors.selectDeviceInfo()
-      if (existingDeviceInfo) return
+      if (existingDeviceInfo.deviceId) return
       const deviceInfo = await getDeviceInfo()
       return deviceInfoStoreActions.setDeviceInfo(deviceInfo)
     }
     void setDeviceInfo()
+    void runMigrationFromV1().catch(eventMonitoring.captureException)
   }, [])
 
   return (
@@ -83,7 +85,6 @@ const App: FunctionComponent = function () {
           <SafeAreaProvider>
             <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
               <AnalyticsInitializer>
-                {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
                 <NetInfoWrapper>
                   <FirestoreNetworkObserver />
                   <AuthWrapper>

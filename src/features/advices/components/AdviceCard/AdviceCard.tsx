@@ -56,7 +56,7 @@ export const AdviceCard: FunctionComponent<AdviceCardProps> = ({
       defaultThumbnailHeight={thumbnailHeight ?? theme.designSystem.size.spacing.xxxxl}
       rightComponent={
         headerNavigateTo ? (
-          <RightFilled size={theme.icons.sizes.extraSmall} testID="RightFilled" />
+          <RightFilled size={theme.designSystem.size.icon.s} testID="RightFilled" />
         ) : null
       }
     />

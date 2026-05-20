@@ -35,6 +35,7 @@ export const getOngoingBookingItemProperties = ({
     name: booking.stock.offer.name,
     properties: bookingProperties,
     date: dateLabel,
+    venueName: booking.stock.offer.venue.name,
   })
 
   const onBeforeNavigate = async () => {

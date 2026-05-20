@@ -21,7 +21,7 @@ import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
 type Props = {
-  venue: Omit<VenueResponse, 'isVirtual'>
+  venue: VenueResponse
   isCTADisplayed?: boolean
   children: React.ReactNode
 }

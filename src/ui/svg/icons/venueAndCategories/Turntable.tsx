@@ -30,5 +30,5 @@ function TurntableSvg({
 
 export const Turntable = styled(TurntableSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.designSystem.color.icon.default,
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
 }))``

@@ -41,11 +41,6 @@ jest.mock('features/identityCheck/pages/profile/store/cityStore')
 jest.mock('features/identityCheck/pages/profile/store/addressStore')
 ;(useAddress as jest.Mock).mockReturnValue(profile.address)
 
-const mockOfferId: number | null = 123456
-jest.mock('features/offer/store/freeOfferIdStore', () => ({
-  useFreeOfferId: () => mockOfferId,
-}))
-
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({
     dispatch: jest.fn(),

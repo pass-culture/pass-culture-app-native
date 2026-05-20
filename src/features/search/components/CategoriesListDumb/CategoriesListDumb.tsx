@@ -6,6 +6,7 @@ import { ListCategoryButtonProps } from 'features/search/helpers/useSortedSearch
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { CategoryButton } from 'shared/categoryButton/CategoryButton'
+import { NewCategoryButton } from 'shared/categoryButton/NewCategoryButton'
 import { AIFakeDoorBanner } from 'ui/components/ModuleBanner/AIFakeDoorBanner'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -20,15 +21,18 @@ type Props = {
   hideVenueMapLocationModal: () => void
   onPressAIFakeDoorBanner: () => void
   enableAIFakeDoor?: boolean
+  enableNewCategoryBlocks?: boolean
   children?: never
 }
 
 const CATEGORY_BUTTON_HEIGHT = getSpacing(36)
+const NEW_CATEGORY_BUTTON_HEIGHT = getSpacing(26.5)
 const DESKTOP_MAX_WIDTH = getSpacing(37.33)
 const DESKTOP_MIN_WIDTH = getSpacing(45.6)
 const MOBILE_MIN_WIDTH = '40%'
 const MOBILE_MIN_WIDTH_WHEN_FONT_ZOOMED = '100%'
 const MOBILE_MAX_WIDTH = '49%'
+const MOBILE_MAX_WIDTH_WHEN_FONT_ZOOMED = '100%'
 
 export const CategoriesListDumb: FunctionComponent<Props> = ({
   sortedCategories,
@@ -38,6 +42,7 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
   venueMapLocationModalVisible,
   hideVenueMapLocationModal,
   enableAIFakeDoor,
+  enableNewCategoryBlocks,
   onPressAIFakeDoorBanner,
 }) => {
   const { designSystem } = useTheme()
@@ -45,6 +50,10 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
   const mobileMinWidth = useMobileFontScaleToDisplay({
     default: MOBILE_MIN_WIDTH,
     at200PercentZoom: MOBILE_MIN_WIDTH_WHEN_FONT_ZOOMED,
+  })
+  const mobileMaxWidth = useMobileFontScaleToDisplay({
+    default: MOBILE_MAX_WIDTH,
+    at200PercentZoom: MOBILE_MAX_WIDTH_WHEN_FONT_ZOOMED,
   })
 
   return (
@@ -72,13 +81,24 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
       <CategoriesTitleV2 />
       <CategoriesButtonsContainer>
         {sortedCategories.map((item) => {
-          return (
+          return enableNewCategoryBlocks ? (
+            <StyledNewCategoryButton
+              key={item.label}
+              {...item}
+              fillColor={designSystem.color.illustration[item.fillColor]}
+              borderColor={designSystem.color.border[item.borderColor]}
+              mobileMinWidth={mobileMinWidth}
+              mobileMaxWidth={mobileMaxWidth}
+              height={NEW_CATEGORY_BUTTON_HEIGHT}
+            />
+          ) : (
             <StyledCategoryButton
               key={item.label}
               {...item}
               fillColor={designSystem.color.background[item.fillColor]}
               borderColor={designSystem.color.border[item.borderColor]}
               mobileMinWidth={mobileMinWidth}
+              mobileMaxWidth={mobileMaxWidth}
               height={CATEGORY_BUTTON_HEIGHT}
             />
           )
@@ -94,15 +114,27 @@ const StyledScrollView = styled.ScrollView(({ theme }) => ({
   marginTop: theme.isMobileViewport ? 0 : theme.designSystem.size.spacing.s,
 }))
 
-const StyledCategoryButton = styled(CategoryButton)<{ mobileMinWidth: string }>(
-  ({ theme, mobileMinWidth }) => ({
-    flexGrow: 1,
-    flexShrink: 0,
-    flexBasis: 0,
-    minWidth: theme.isMobileViewport ? mobileMinWidth : DESKTOP_MIN_WIDTH,
-    maxWidth: theme.isMobileViewport ? MOBILE_MAX_WIDTH : DESKTOP_MAX_WIDTH,
-  })
-)
+const StyledCategoryButton = styled(CategoryButton)<{
+  mobileMinWidth: string
+  mobileMaxWidth: string
+}>(({ theme, mobileMinWidth, mobileMaxWidth }) => ({
+  flexGrow: 1,
+  flexShrink: 0,
+  flexBasis: 0,
+  minWidth: theme.isMobileViewport ? mobileMinWidth : DESKTOP_MIN_WIDTH,
+  maxWidth: theme.isMobileViewport ? mobileMaxWidth : DESKTOP_MAX_WIDTH,
+}))
+
+const StyledNewCategoryButton = styled(NewCategoryButton)<{
+  mobileMinWidth: string
+  mobileMaxWidth: string
+}>(({ theme, mobileMinWidth, mobileMaxWidth }) => ({
+  flexGrow: 1,
+  flexShrink: 0,
+  flexBasis: 0,
+  minWidth: theme.isMobileViewport ? mobileMinWidth : DESKTOP_MIN_WIDTH,
+  maxWidth: theme.isMobileViewport ? mobileMaxWidth : DESKTOP_MAX_WIDTH,
+}))
 
 const CategoriesButtonsContainer = styled.View(({ theme }) => ({
   width: '100%',

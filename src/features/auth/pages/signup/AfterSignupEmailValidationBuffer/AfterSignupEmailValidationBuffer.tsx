@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react'
 import { ValidateEmailResponse } from 'api/gen'
 import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { useValidateEmailMutation } from 'features/auth/queries/useValidateEmailMutation'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { isTimestampExpired } from 'libs/dates'
 import { deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
@@ -26,12 +26,7 @@ export function AfterSignupEmailValidationBuffer() {
   const deviceInfo = deviceInfoStoreSelectors.selectDeviceInfo()
 
   useEffect(() => {
-    if (
-      !params?.token ||
-      !deviceInfo?.deviceId ||
-      !params?.email ||
-      !params?.expiration_timestamp
-    ) {
+    if (!params?.token || !deviceInfo.deviceId || !params?.email || !params?.expiration_timestamp) {
       return
     }
 

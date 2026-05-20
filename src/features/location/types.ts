@@ -1,4 +1,4 @@
-import { MutableRefObject, Dispatch, SetStateAction } from 'react'
+import { MutableRefObject } from 'react'
 
 import { GeolocPermissionState } from 'libs/location/location'
 import { RequestGeolocPermissionParams, LocationMode } from 'libs/location/types'
@@ -7,29 +7,28 @@ import { SuggestedPlace } from 'libs/place/types'
 export type LocationState = {
   hasGeolocPosition: boolean
   place: SuggestedPlace | null
-  setPlaceGlobally: (place: SuggestedPlace | null) => void
+  setPlace: (place: SuggestedPlace | null) => void
   onModalHideRef: MutableRefObject<(() => void) | undefined>
-  permissionState: GeolocPermissionState | undefined
+  permissionState: GeolocPermissionState | null
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
   showGeolocPermissionModal: () => void
   selectedLocationMode: LocationMode
-  setSelectedLocationMode: Dispatch<SetStateAction<LocationMode>>
+  setSelectedLocationMode: (locationMode: LocationMode) => void
   selectedPlace: SuggestedPlace | null
-  setSelectedPlace: Dispatch<SetStateAction<SuggestedPlace | null>>
-  onSetSelectedPlace: (place: SuggestedPlace) => void
+  setSelectedPlace: (place: SuggestedPlace | null) => void
   onResetPlace: () => void
   placeQuery: string
-  setPlaceQuery: Dispatch<SetStateAction<string>>
+  setPlaceQuery: (placeQuery: string) => void
   aroundPlaceRadius: number
-  setAroundPlaceRadius: Dispatch<SetStateAction<number>>
+  setAroundPlaceRadius: (radius: number) => void
   aroundMeRadius: number
-  setAroundMeRadius: Dispatch<SetStateAction<number>>
+  setAroundMeRadius: (radius: number) => void
   tempAroundMeRadius: number
-  setTempAroundMeRadius: Dispatch<SetStateAction<number>>
+  setTempAroundMeRadius: (radius: number) => void
   tempAroundPlaceRadius: number
-  setTempAroundPlaceRadius: Dispatch<SetStateAction<number>>
+  setTempAroundPlaceRadius: (radius: number) => void
   tempLocationMode: LocationMode
-  setTempLocationMode: Dispatch<SetStateAction<LocationMode>>
+  setTempLocationMode: (locationMode: LocationMode) => void
 }
 
 export type LocationSubmit = {

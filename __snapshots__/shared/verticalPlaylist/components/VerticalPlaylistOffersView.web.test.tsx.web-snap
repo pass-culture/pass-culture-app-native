@@ -142,9 +142,9 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
           class="css-view-175oi2r"
         >
           <div
-            aria-label="Offre "La nuit des temps", de la catégorie "Livre",   prix 0,28 €. "
+            aria-label="Livre - La nuit des temps - 0,28 €"
             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-outlineOffset-2fw26j"
-            data-testid="Offre "La nuit des temps", de la catégorie "Livre",   prix 0,28 €. "
+            data-testid="Livre - La nuit des temps - 0,28 €"
             role="link"
             style="transition-duration: 0s;"
             tabindex="0"
@@ -205,9 +205,9 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
           class="css-view-175oi2r"
         >
           <div
-            aria-label="Offre "I want something more", de la catégorie "Concert",   prix 0,23 €. "
+            aria-label="Concert - I want something more - 0,23 €"
             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-outlineOffset-2fw26j"
-            data-testid="Offre "I want something more", de la catégorie "Concert",   prix 0,23 €. "
+            data-testid="Concert - I want something more - 0,23 €"
             role="link"
             style="transition-duration: 0s;"
             tabindex="0"
@@ -268,9 +268,9 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
           class="css-view-175oi2r"
         >
           <div
-            aria-label="Offre "Un lit sous une rivière", de la catégorie "Concert",   prix 0,34 €. Possibilité de réserver 2 places."
+            aria-label="Concert - Un lit sous une rivière - 0,34 € - Duo - Possibilité de réserver 2 places."
             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-outlineOffset-2fw26j"
-            data-testid="Offre "Un lit sous une rivière", de la catégorie "Concert",   prix 0,34 €. Possibilité de réserver 2 places."
+            data-testid="Concert - Un lit sous une rivière - 0,34 € - Duo - Possibilité de réserver 2 places."
             role="link"
             style="transition-duration: 0s;"
             tabindex="0"

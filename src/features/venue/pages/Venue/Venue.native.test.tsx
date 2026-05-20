@@ -12,7 +12,7 @@ import {
   VenueResponse,
 } from 'api/gen'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
-import { Referrals } from 'features/navigation/RootNavigator/types'
+import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import * as useOfferCTAContextModule from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { UserProfile } from 'features/share/types'
@@ -123,7 +123,7 @@ describe('<Venue />', () => {
     getItemSpy.mockReset()
     mockServer.postApi<OffersStocksResponseV2>('/v2/offers/stocks', {})
     mockServer.patchApi<UserProfile>('/v1/profile', {})
-    mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v2/venue/${venueId}`, {
+    mockServer.getApi<VenueResponse>(`/v2/venue/${venueId}`, {
       ...venueDataTest,
       isOpenToPublic: true,
     })
@@ -226,7 +226,7 @@ describe('<Venue />', () => {
         adviceType: 'pro',
         from: 'venue',
         offerId: 1,
-        originDetail: 'Les avis des pros',
+        originDetails: 'Les avis des pros',
         venueId: 5543,
       })
     })
@@ -263,7 +263,7 @@ describe('<Venue />', () => {
     it('should not display CTA if venueTypeCode is Movie', async () => {
       const mockedVenue = { ...venueDataTest, activity: Activity.CINEMA }
 
-      mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v2/venue/${venueId}`, mockedVenue)
+      mockServer.getApi<VenueResponse>(`/v2/venue/${venueId}`, mockedVenue)
 
       renderVenue(venueId)
 
@@ -350,7 +350,7 @@ describe('<Venue />', () => {
     beforeEach(() => {
       // Mock API Calls
       const mockedVenue = { ...venueDataTest, activity: Activity.CINEMA }
-      mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v2/venue/${venueId}`, mockedVenue)
+      mockServer.getApi<VenueResponse>(`/v2/venue/${venueId}`, mockedVenue)
       mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, {})
     })
 

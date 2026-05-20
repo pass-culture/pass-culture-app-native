@@ -12,7 +12,7 @@ import {
   RootStackParamList,
   StepperOrigin,
   UseNavigationType,
-} from 'features/navigation/RootNavigator/types'
+} from 'features/navigation/navigators/RootNavigator/types'
 import { getSSOLoginMethod, LoginRoutineMethod, LoginType } from 'libs/analytics/logEventAnalytics'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
@@ -45,7 +45,7 @@ export const useSignInMutation = ({
         const { provider, ...oauthBody } = requestBody
         return api.postNativeV1OauthssoProviderAuthorize(oauthBody, provider)
       }
-      return api.postNativeV1Signin(requestBody, { credentials: 'omit' })
+      return api.postNativeV2Signin(requestBody, { credentials: 'omit' })
     },
 
     onSuccess: async (response, body) => {

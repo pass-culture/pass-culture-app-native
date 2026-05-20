@@ -5,7 +5,7 @@ import { useTheme } from 'styled-components'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
 import { RecommendedOffersModule } from 'features/home/types'
-import { getSearchPropConfig } from 'features/navigation/SearchStackNavigator/getSearchPropConfig'
+import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
@@ -65,7 +65,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
       void analytics.logModuleDisplayedOnHomepage({
-        call_id: recommendationApiParams?.call_id,
+        call_id: recommendationApiParams?.callId,
         moduleId,
         moduleType: ContentTypes.RECOMMENDATION,
         index,
@@ -93,7 +93,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   )
 
   const handleOnViewableItemsChanged = (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-    onViewableItemsChanged?.(items, recommendationApiParams?.call_id)
+    onViewableItemsChanged?.(items, recommendationApiParams?.callId)
   }
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)

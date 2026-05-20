@@ -4,6 +4,7 @@ import { FlexStyle, StyleProp, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { isCurrentBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { getInteractionTagLabel } from 'features/offer/components/InteractionTag/getInteractionTagLabel'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
@@ -103,7 +104,7 @@ export const HorizontalOfferTile = ({
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isDuo: !!(isDuo && user?.isBeneficiary),
+      isDuo: !!(isDuo && user && isCurrentBeneficiary(user)),
     })
   )
 
@@ -248,7 +249,7 @@ const OfferNameContainer = styled.View({
 })
 
 const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
   marginLeft: theme.designSystem.size.spacing.xs,
 }))({
   flexShrink: 0,

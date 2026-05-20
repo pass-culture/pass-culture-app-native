@@ -29,13 +29,13 @@ const RightArrow = () => (
 )
 
 const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
+  size: theme.designSystem.size.icon.s,
 }))({
   flexShrink: 0,
 })
 
 const LocationIcon = styled(LocationPointer).attrs(({ theme }) => ({
-  size: theme.icons.sizes.standard,
+  size: theme.designSystem.size.icon.l,
   color: theme.designSystem.color.icon.subtle,
 }))``
 

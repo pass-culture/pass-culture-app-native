@@ -1201,6 +1201,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 "marginRight": 24,
                               }
                             }
+                            withMargin={true}
                           >
                             <View
                               style={
@@ -1211,7 +1212,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               }
                             >
                               <View
-                                accessibilityLabel="Tout voir pour la sélection Toutes les offres"
+                                accessibilityLabel="Voir tout pour la sélection Toutes les offres"
                                 accessibilityRole="button"
                                 accessibilityState={
                                   {
@@ -1256,7 +1257,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     "width": "auto",
                                   }
                                 }
-                                testID="Tout voir pour la sélection Toutes les offres"
+                                testID="Voir tout pour la sélection Toutes les offres"
                               >
                                 <View
                                   gap={8}
@@ -1327,7 +1328,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       ]
                                     }
                                   >
-                                    Tout voir
+                                    Voir tout
                                   </Text>
                                 </View>
                               </View>
@@ -1384,9 +1385,23 @@ exports[`<Venue /> should match snapshot 1`] = `
                             }
                           }
                           ListHeaderComponent={
-                            <Styled(View)
-                              width={24}
-                            />
+                            {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": [
+                                {
+                                  "width": 24,
+                                },
+                              ],
+                              "inlineStyle": e {
+                                "rules": [
+                                  [Function],
+                                ],
+                              },
+                              "render": [Function],
+                              "shouldForwardProp": undefined,
+                              "styledComponentId": true,
+                              "target": [Function],
+                            }
                           }
                           collapsable={false}
                           data={
@@ -1558,7 +1573,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 withCenterAlign={true}
                               >
                                 <View
-                                  accessibilityLabel="Offre "Titane - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                  accessibilityLabel="Cinéma - Titane - VF - Gratuit - Dès le 18 août - Duo - Possibilité de réserver 2 places."
                                   accessibilityRole="button"
                                   accessibilityValue={
                                     {
@@ -1593,7 +1608,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       },
                                     ]
                                   }
-                                  testID="Offre "Titane - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                  testID="Cinéma - Titane - VF - Gratuit - Dès le 18 août - Duo - Possibilité de réserver 2 places."
                                 >
                                   <View
                                     gap={2}
@@ -1766,7 +1781,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 withCenterAlign={true}
                               >
                                 <View
-                                  accessibilityLabel="Offre "Bac Nord - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                  accessibilityLabel="Cinéma - Bac Nord - VF - Gratuit - Dès le 18 août - Duo - Possibilité de réserver 2 places."
                                   accessibilityRole="button"
                                   accessibilityValue={
                                     {
@@ -1801,7 +1816,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       },
                                     ]
                                   }
-                                  testID="Offre "Bac Nord - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                  testID="Cinéma - Bac Nord - VF - Gratuit - Dès le 18 août - Duo - Possibilité de réserver 2 places."
                                 >
                                   <View
                                     gap={2}
@@ -1974,7 +1989,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 withCenterAlign={true}
                               >
                                 <View
-                                  accessibilityLabel="Offre "Black Widow - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                  accessibilityLabel="Cinéma - Black Widow - VF - Gratuit - Dès le 18 août - Duo - Possibilité de réserver 2 places."
                                   accessibilityRole="button"
                                   accessibilityValue={
                                     {
@@ -2009,7 +2024,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       },
                                     ]
                                   }
-                                  testID="Offre "Black Widow - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                  testID="Cinéma - Black Widow - VF - Gratuit - Dès le 18 août - Duo - Possibilité de réserver 2 places."
                                 >
                                   <View
                                     gap={2}
@@ -4689,6 +4704,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 "marginRight": 24,
                               }
                             }
+                            withMargin={true}
                           >
                             <View
                               style={
@@ -4699,7 +4715,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               }
                             >
                               <View
-                                accessibilityLabel="Tout voir pour la sélection Toutes les offres"
+                                accessibilityLabel="Voir tout pour la sélection Toutes les offres"
                                 accessibilityRole="button"
                                 accessibilityState={
                                   {
@@ -4744,7 +4760,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     "width": "auto",
                                   }
                                 }
-                                testID="Tout voir pour la sélection Toutes les offres"
+                                testID="Voir tout pour la sélection Toutes les offres"
                               >
                                 <View
                                   gap={8}
@@ -4815,7 +4831,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                       ]
                                     }
                                   >
-                                    Tout voir
+                                    Voir tout
                                   </Text>
                                 </View>
                               </View>
@@ -4872,9 +4888,23 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             }
                           }
                           ListHeaderComponent={
-                            <Styled(View)
-                              width={24}
-                            />
+                            {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": [
+                                {
+                                  "width": 24,
+                                },
+                              ],
+                              "inlineStyle": e {
+                                "rules": [
+                                  [Function],
+                                ],
+                              },
+                              "render": [Function],
+                              "shouldForwardProp": undefined,
+                              "styledComponentId": true,
+                              "target": [Function],
+                            }
                           }
                           collapsable={false}
                           data={
@@ -5046,7 +5076,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 withCenterAlign={true}
                               >
                                 <View
-                                  accessibilityLabel="Offre "Titane - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                  accessibilityLabel="Cinéma - Titane - VF - Gratuit - Dès le 18 août - Duo - Possibilité de réserver 2 places."
                                   accessibilityRole="button"
                                   accessibilityValue={
                                     {
@@ -5081,7 +5111,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                       },
                                     ]
                                   }
-                                  testID="Offre "Titane - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                  testID="Cinéma - Titane - VF - Gratuit - Dès le 18 août - Duo - Possibilité de réserver 2 places."
                                 >
                                   <View
                                     gap={2}
@@ -5254,7 +5284,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 withCenterAlign={true}
                               >
                                 <View
-                                  accessibilityLabel="Offre "Bac Nord - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                  accessibilityLabel="Cinéma - Bac Nord - VF - Gratuit - Dès le 18 août - Duo - Possibilité de réserver 2 places."
                                   accessibilityRole="button"
                                   accessibilityValue={
                                     {
@@ -5289,7 +5319,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                       },
                                     ]
                                   }
-                                  testID="Offre "Bac Nord - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                  testID="Cinéma - Bac Nord - VF - Gratuit - Dès le 18 août - Duo - Possibilité de réserver 2 places."
                                 >
                                   <View
                                     gap={2}
@@ -5462,7 +5492,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 withCenterAlign={true}
                               >
                                 <View
-                                  accessibilityLabel="Offre "Black Widow - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                  accessibilityLabel="Cinéma - Black Widow - VF - Gratuit - Dès le 18 août - Duo - Possibilité de réserver 2 places."
                                   accessibilityRole="button"
                                   accessibilityValue={
                                     {
@@ -5497,7 +5527,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                       },
                                     ]
                                   }
-                                  testID="Offre "Black Widow - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                  testID="Cinéma - Black Widow - VF - Gratuit - Dès le 18 août - Duo - Possibilité de réserver 2 places."
                                 >
                                   <View
                                     gap={2}

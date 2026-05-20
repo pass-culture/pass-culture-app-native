@@ -6,28 +6,45 @@ type Props = {
   dismissModal: () => void
   shouldOpenDirectlySettings?: boolean
   shouldDirectlyValidate?: boolean
-} & LocationState &
-  LocationSubmit
+  setTempLocationMode: LocationState['setTempLocationMode']
+  setSelectedLocationMode: LocationState['setSelectedLocationMode']
+  permissionState: LocationState['permissionState']
+  setPlace: LocationState['setPlace']
+  onModalHideRef: LocationState['onModalHideRef']
+  showGeolocPermissionModal: LocationState['showGeolocPermissionModal']
+  requestGeolocPermission: LocationState['requestGeolocPermission']
+  hasGeolocPosition: LocationState['hasGeolocPosition']
+  onSubmit: LocationSubmit['onSubmit']
+  tempLocationMode: LocationState['tempLocationMode']
+}
 
 export const useLocationMode = ({
   dismissModal,
   shouldOpenDirectlySettings,
   shouldDirectlyValidate,
-  ...props
+  setTempLocationMode,
+  setSelectedLocationMode,
+  permissionState,
+  setPlace,
+  onModalHideRef,
+  showGeolocPermissionModal,
+  requestGeolocPermission,
+  hasGeolocPosition,
+  onSubmit,
 }: Props) => {
   const { runGeolocationDialogs } = useGeolocationDialogs({
     dismissModal,
     shouldOpenDirectlySettings,
     shouldDirectlyValidate,
-    ...props,
-  })
-  const {
-    tempLocationMode,
     setTempLocationMode,
     setSelectedLocationMode,
-    setPlaceGlobally,
-    onSubmit,
-  } = props
+    permissionState,
+    setPlace,
+    onModalHideRef,
+    showGeolocPermissionModal,
+    requestGeolocPermission,
+    hasGeolocPosition,
+  })
 
   const selectLocationMode = (mode: LocationMode) => () => {
     switch (mode) {
@@ -42,7 +59,7 @@ export const useLocationMode = ({
         setTempLocationMode(LocationMode.EVERYWHERE)
         if (shouldDirectlyValidate) {
           setSelectedLocationMode(LocationMode.EVERYWHERE)
-          setPlaceGlobally(null)
+          setPlace(null)
           dismissModal()
         } else {
           onSubmit(LocationMode.EVERYWHERE)
@@ -55,5 +72,5 @@ export const useLocationMode = ({
     }
   }
 
-  return { tempLocationMode, setTempLocationMode, selectLocationMode }
+  return { selectLocationMode }
 }

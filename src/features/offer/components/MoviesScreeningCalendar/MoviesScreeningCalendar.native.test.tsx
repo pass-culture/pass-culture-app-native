@@ -6,7 +6,7 @@ import {
   BookingsResponseV2,
   OfferResponse,
   OffersStocksResponseV2,
-  RefreshResponse,
+  RefreshResponseV2,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
@@ -91,7 +91,10 @@ describe('MoviesScreeningCalendar', () => {
       ],
     })
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
-    mockServer.postApi<RefreshResponse>('/v1/refresh_access_token', { accessToken: 'toto' })
+    mockServer.postApi<RefreshResponseV2>('/v2/refresh_access_token', {
+      accessToken: 'toto',
+      refreshToken: '',
+    })
     mockServer.getApi<BookingsResponseV2>('/v2/bookings', bookingsSnapV2)
   })
 

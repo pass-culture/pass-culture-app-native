@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getOnboardingPropConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingPropConfig'
+import { getOnboardingPropConfig } from 'features/navigation/navigators/OnboardingStackNavigator/getOnboardingPropConfig'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { All as InitialAll } from 'ui/svg/icons/venueAndCategories/All'
 import { Typo } from 'ui/theme'
@@ -11,7 +11,7 @@ import { AgeButton } from './AgeButton'
 
 const All = styled(InitialAll).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
 }))``
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({

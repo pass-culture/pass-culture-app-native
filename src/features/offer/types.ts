@@ -12,7 +12,7 @@ import {
   SubcategoryIdEnum,
 } from 'api/gen'
 import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
-import { Referrals } from 'features/navigation/RootNavigator/types'
+import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { FavoriteCTAProps } from 'features/offerRefacto/types'
 import { AlgoliaGeoloc } from 'libs/algolia/types'

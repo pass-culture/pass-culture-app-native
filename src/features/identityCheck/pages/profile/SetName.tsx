@@ -8,8 +8,8 @@ import styled from 'styled-components/native'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { setNameSchema } from 'features/identityCheck/pages/profile/schemas/setNameSchema'
 import { nameActions, useName } from 'features/identityCheck/pages/profile/store/nameStore'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { SubscriptionStackParamList } from 'features/navigation/navigators/SubscriptionStackNavigator/types'
 import { Form } from 'ui/components/Form'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
@@ -29,6 +29,8 @@ type FormValues = {
 export const SetName = () => {
   const { params } = useRoute<UseRouteType<'SetName'>>()
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
+  const origin = params?.origin
+  const freeOfferId = params?.freeOfferId
 
   const identityCheckAndRecapExistingDataConfig = {
     headerTitle: 'Profil',
@@ -65,10 +67,17 @@ export const SetName = () => {
 
   const disabled = !formState.isValid
 
+  const getCityNavigationParams = () => {
+    if (origin) {
+      return freeOfferId ? { type, origin, freeOfferId } : { type, origin }
+    }
+    return freeOfferId ? { type, freeOfferId } : { type }
+  }
+
   async function submitName({ firstName, lastName }: FormValues) {
     if (disabled) return
     setStoredName({ firstName, lastName })
-    navigate('SetCity', { type })
+    navigate('SetCity', getCityNavigationParams())
   }
 
   useEnterKeyAction(disabled ? undefined : () => handleSubmit(submitName))

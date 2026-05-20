@@ -11,7 +11,7 @@ import { IncomingReactionModalContainer } from 'features/home/components/Incomin
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { ModalToShow, useWhichModalToShow } from 'features/home/helpers/useWhichModalToShow'
 import { GenericHome } from 'features/home/pages/GenericHome'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/useOnboardingSubscriptionModal'
 import { analytics } from 'libs/analytics/provider'
@@ -19,7 +19,7 @@ import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { getAppVersion } from 'libs/packageJson'
 import { BatchProfile } from 'libs/react-native-batch'
-import { useBookingsV2Query } from 'queries/bookings'
+import { useBookingsV2Query } from 'queries/bookings/useBookingsQuery'
 import { useModal } from 'ui/components/modals/useModal'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
@@ -42,10 +42,12 @@ export const Home: FunctionComponent = () => {
   } = useModal(false)
   useOnboardingSubscriptionModal({
     isLoggedIn,
-    userStatus: user?.status?.statusType,
+    userStatusType: user?.statusType,
     showOnboardingSubscriptionModal,
   })
-  const { data: bookings, isLoading: isBookingsLoading } = useBookingsV2Query(isLoggedIn)
+  const { data: bookings, isLoading: isBookingsLoading } = useBookingsV2Query({
+    enabled: isLoggedIn,
+  })
 
   const { achievementsToShow, bookingsEligibleToReaction, modalToShow } = useWhichModalToShow(
     bookings,

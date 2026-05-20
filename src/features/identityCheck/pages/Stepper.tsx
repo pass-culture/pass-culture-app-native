@@ -10,9 +10,9 @@ import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals
 import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useRehydrateProfile'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
-import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
@@ -88,6 +88,13 @@ export const Stepper = () => {
     }
   }, [params?.from, stepToComplete?.name])
 
+  const onExitPress = () => {
+    void analytics.logHasExitedActivationFlow({
+      from: 'stepper',
+      origin_detail: 'Quit',
+    })
+    showQuitIdentityCheckModal()
+  }
   const stepList = (
     <StepList currentStepIndex={currentStepIndex}>
       {steps.map((step, index) => (
@@ -128,7 +135,7 @@ export const Stepper = () => {
             color="neutral"
             icon={Invalidate}
             wording="Abandonner"
-            onPress={showQuitIdentityCheckModal}
+            onPress={onExitPress}
             accessibilityRole={AccessibilityRole.BUTTON}
           />
         </QuitButtonContainer>

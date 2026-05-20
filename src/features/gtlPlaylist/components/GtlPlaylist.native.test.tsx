@@ -6,7 +6,7 @@ import { VenueResponse } from 'api/gen'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
-import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
+import { Referrals, ScreenNames } from 'features/navigation/navigators/RootNavigator/types'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -15,7 +15,7 @@ import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.mock('queries/subcategories/useSubcategoriesQuery')
 
-const venue: Omit<VenueResponse, 'isVirtual'> = venueDataTest
+const venue: VenueResponse = venueDataTest
 
 const playlist = gtlPlaylistAlgoliaSnapshot[0] as GtlPlaylistData
 
@@ -195,7 +195,7 @@ function renderGtlPlaylist(
   gtlPlaylist: GtlPlaylistData,
   analyticsFrom: Referrals,
   route: Extract<ScreenNames, 'Venue' | 'ThematicSearch'>,
-  venue?: Omit<VenueResponse, 'isVirtual'>
+  venue?: VenueResponse
 ) {
   return render(
     reactQueryProviderHOC(

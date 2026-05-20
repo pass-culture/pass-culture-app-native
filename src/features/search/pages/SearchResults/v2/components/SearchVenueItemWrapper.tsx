@@ -7,8 +7,6 @@ import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
 import { SearchResultVenue } from 'features/search/types'
 import { MARGIN_DP } from 'ui/theme'
 
-const TILE_HEIGHT = 103.67
-
 type SearchVenueItemWrapper = {
   item: SearchResultVenue
   index: number
@@ -16,7 +14,7 @@ type SearchVenueItemWrapper = {
 
 export const SearchVenueItemWrapper: FC<SearchVenueItemWrapper> = ({ item, index }) => {
   const { width } = useWindowDimensions()
-  const { designSystem, breakpoints } = useTheme()
+  const { designSystem, breakpoints, tiles } = useTheme()
   const margin = designSystem.size.spacing.xl
   const gutter = designSystem.size.spacing.l
   const { tileWidth } = getGridTileRatio({
@@ -27,7 +25,12 @@ export const SearchVenueItemWrapper: FC<SearchVenueItemWrapper> = ({ item, index
   })
   return (
     <SearchVenueItemContainer>
-      <SearchVenueItem venue={item.data} height={TILE_HEIGHT} width={tileWidth} index={index} />
+      <SearchVenueItem
+        venue={item.data}
+        height={tiles.sizes.medium.height}
+        width={tileWidth}
+        index={index}
+      />
     </SearchVenueItemContainer>
   )
 }

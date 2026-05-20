@@ -3,8 +3,8 @@ import React from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
-import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { OnboardingStackParamList } from 'features/navigation/navigators/OnboardingStackNavigator/types'
+import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { OnboardingTimeline } from 'features/onboarding/components/OnboardingTimeline'
 import { TutorialPage } from 'features/profile/pages/Tutorial/TutorialPage'
 import { analytics } from 'libs/analytics/provider'
@@ -34,6 +34,10 @@ export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element | 
   }
 
   const onLaterPress = () => {
+    void analytics.logHasExitedActivationFlow({
+      from: 'onboardingageinformation',
+      origin_detail: 'FinishLater',
+    })
     navigateToHomeWithReset()
   }
 

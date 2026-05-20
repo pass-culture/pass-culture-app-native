@@ -44,7 +44,7 @@ export function App() {
     initAlgoliaAnalytics()
     const setDeviceInfo = async () => {
       const existingDeviceInfo = deviceInfoStoreSelectors.selectDeviceInfo()
-      if (existingDeviceInfo) return
+      if (existingDeviceInfo.deviceId) return
       const deviceInfo = await getDeviceInfo()
       return deviceInfoStoreActions.setDeviceInfo(deviceInfo)
     }

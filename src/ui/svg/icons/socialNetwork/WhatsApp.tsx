@@ -44,5 +44,5 @@ const WhatsAppSvg: React.FunctionComponent<AccessibleIcon> = ({
 }
 
 export const WhatsApp = styled(WhatsAppSvg).attrs(({ size, theme }) => ({
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
 }))``

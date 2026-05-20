@@ -19,8 +19,8 @@ import {
   Referrals,
   StepperOrigin,
   ThematicHomeParams,
-} from 'features/navigation/RootNavigator/types'
-import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
+} from 'features/navigation/navigators/RootNavigator/types'
+import { SearchStackRouteName } from 'features/navigation/navigators/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { NonEligible } from 'features/onboarding/enums'
 import { EligibleAges } from 'features/onboarding/types'
@@ -92,6 +92,17 @@ export function getSSOLoginMethod(
   const suffix = provider === 'apple' ? 'Apple' : 'Google'
   return `${kind === 'login' ? 'fromLogin' : 'fromSignup'}${suffix}` as LoginRoutineMethod
 }
+
+export type CTAexitActivationFlow =
+  | 'Skip'
+  | 'Exit'
+  | 'AccessCatalog'
+  | 'FinishLater'
+  | 'Quit'
+  | 'IdentifyLater'
+  | 'Login'
+  | 'Close'
+  | 'GoToDemarcheNumerique'
 
 /* eslint sort-keys-fix/sort-keys-fix: "error" */
 export const logEventAnalytics = {
@@ -303,7 +314,7 @@ export const logEventAnalytics = {
     moduleId?: string
     homeEntryId?: string
     searchId?: string
-    originDetail?: string
+    originDetails?: string
     adviceType?: 'book_club' | 'cine_club' | 'pro'
     offerId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE }, params),
@@ -449,6 +460,17 @@ export const logEventAnalytics = {
     seenDuration: number
     videoDuration: number
   }) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_DISMISSED_MODAL }, params),
+  logHasExitedActivationFlow: ({
+    from,
+    origin_detail,
+  }: {
+    from: Referrals
+    origin_detail: CTAexitActivationFlow
+  }) =>
+    analytics.logEvent(
+      { firebase: AnalyticsEvent.HAS_EXITED_ACTIVATION_FLOW },
+      { from, origin_detail }
+    ),
   logHasMadeAChoiceForCookies: ({ from, type }: { from: string; type: CookiesChoiceByCategory }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.HAS_MADE_A_CHOICE_FOR_COOKIES },
@@ -652,7 +674,12 @@ export const logEventAnalytics = {
   logSubscriptionUpdate: (params: SubscriptionAnalyticsParams) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SUBSCRIPTION_UPDATE }, params),
   logSystemBlockDisplayed: (params: {
-    type: 'credit' | 'location' | 'remoteActivationBanner' | 'remoteGenericBanner'
+    type:
+      | 'credit'
+      | 'location'
+      | 'remoteActivationBanner'
+      | 'remoteGenericBanner'
+      | 'freeBeneficiaryBanner'
     from: 'home' | 'thematicHome' | 'offer' | 'profile' | 'search' | 'cheatcodes'
   }) => analytics.logEvent({ firebase: AnalyticsEvent.SYSTEM_BLOCK_DISPLAYED }, params),
   logTrendsBlockClicked: (params: {

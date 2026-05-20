@@ -10,7 +10,7 @@ import { SSOButtonGoogle } from 'features/auth/components/SSOButton/SSOButtonGoo
 import { getSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
 import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
-import { StepperOrigin, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'

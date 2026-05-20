@@ -8,7 +8,7 @@ import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchP
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { Artist } from 'features/venue/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { useLocation } from 'libs/location/LocationWrapper'
+import { useLocation } from 'libs/location/location'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { VerticalPlaylistArtistsData } from 'shared/verticalPlaylist/types'
 

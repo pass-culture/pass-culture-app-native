@@ -44,6 +44,6 @@ const HeaderContainer = styledButton(Touchable)<{ top: number }>(({ theme, top }
 }))
 
 const StyledArrowPrevious = styled(ArrowPrevious).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
   color: theme.designSystem.color.icon.default,
 }))``

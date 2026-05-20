@@ -2826,18 +2826,16 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                 <View
                   gap={8}
                   hasIcon={false}
-                  isMultiline={true}
+                  isMultiline={false}
                   style={
                     {
                       "alignItems": "center",
                       "columnGap": 8,
                       "flexDirection": "row",
-                      "flexWrap": "wrap",
                     }
                   }
                 >
                   <Text
-                    numberOfLines={2}
                     style={
                       [
                         {
@@ -2848,8 +2846,8 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                         },
                         {
                           "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
+                          "flexBasis": undefined,
+                          "flexGrow": undefined,
                           "flexShrink": 1,
                           "maxWidth": "100%",
                           "minWidth": 0,
@@ -2920,18 +2918,16 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                 <View
                   gap={8}
                   hasIcon={false}
-                  isMultiline={true}
+                  isMultiline={false}
                   style={
                     {
                       "alignItems": "center",
                       "columnGap": 8,
                       "flexDirection": "row",
-                      "flexWrap": "wrap",
                     }
                   }
                 >
                   <Text
-                    numberOfLines={2}
                     style={
                       [
                         {
@@ -2942,8 +2938,8 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                         },
                         {
                           "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
+                          "flexBasis": undefined,
+                          "flexGrow": undefined,
                           "flexShrink": 1,
                           "maxWidth": "100%",
                           "minWidth": 0,
@@ -3014,18 +3010,16 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                 <View
                   gap={8}
                   hasIcon={false}
-                  isMultiline={true}
+                  isMultiline={false}
                   style={
                     {
                       "alignItems": "center",
                       "columnGap": 8,
                       "flexDirection": "row",
-                      "flexWrap": "wrap",
                     }
                   }
                 >
                   <Text
-                    numberOfLines={2}
                     style={
                       [
                         {
@@ -3036,8 +3030,8 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                         },
                         {
                           "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
+                          "flexBasis": undefined,
+                          "flexGrow": undefined,
                           "flexShrink": 1,
                           "maxWidth": "100%",
                           "minWidth": 0,
@@ -3108,7 +3102,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                 <View
                   gap={8}
                   hasIcon={true}
-                  isMultiline={true}
+                  isMultiline={false}
                   style={
                     {
                       "alignItems": "center",
@@ -3154,7 +3148,6 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                     </View>
                   </View>
                   <Text
-                    numberOfLines={2}
                     style={
                       [
                         {
@@ -3237,7 +3230,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                 <View
                   gap={8}
                   hasIcon={true}
-                  isMultiline={true}
+                  isMultiline={false}
                   style={
                     {
                       "alignItems": "center",
@@ -3283,7 +3276,6 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                     </View>
                   </View>
                   <Text
-                    numberOfLines={2}
                     style={
                       [
                         {
@@ -3366,7 +3358,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                 <View
                   gap={8}
                   hasIcon={true}
-                  isMultiline={true}
+                  isMultiline={false}
                   style={
                     {
                       "alignItems": "center",
@@ -3412,7 +3404,6 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                     </View>
                   </View>
                   <Text
-                    numberOfLines={2}
                     style={
                       [
                         {

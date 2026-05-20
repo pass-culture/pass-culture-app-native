@@ -2,34 +2,40 @@ import { useCallback, useEffect } from 'react'
 import { Linking } from 'react-native'
 
 import { useAppStateChange } from 'libs/appState'
-import { useSafeState } from 'libs/hooks'
 import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission'
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
-import { GeolocationError, Position, RequestGeolocPermissionParams } from 'libs/location/types'
-import { useModal } from 'ui/components/modals/useModal'
+import { GeolocationError, LocationMode, RequestGeolocPermissionParams } from 'libs/location/types'
+import {
+  locationActions,
+  useIsGeolocated,
+  useLocationConfiguration,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 
 export const useGeolocation = () => {
-  const [geolocPosition, setGeolocPosition] = useSafeState<Position>(undefined)
-  const [geolocPositionError, setGeolocPositionError] = useSafeState<GeolocationError | null>(null)
-  const [permissionState, setPermissionState] = useSafeState<GeolocPermissionState | undefined>(
-    undefined
-  )
-  const hasGeolocPosition = !!geolocPosition
-
   const {
-    visible: isGeolocPermissionModalVisible,
-    showModal: showGeolocPermissionModal,
-    hideModal: hideGeolocPermissionModal,
-  } = useModal(false)
+    permissionState,
+    geolocationError: geolocPositionError,
+    isPermissionModalVisible: isGeolocPermissionModalVisible,
+  } = useLocationV2()
+  const { geolocation: geolocPosition } = useLocationConfiguration(LocationMode.AROUND_ME)
+  const {
+    setGeolocPosition,
+    setGeolocationError: setGeolocPositionError,
+    setPermissionState,
+    showPermissionModal: showGeolocPermissionModal,
+    hidePermissionModal: hideGeolocPermissionModal,
+  } = locationActions
+  const hasGeolocPosition = useIsGeolocated()
 
   useEffect(() => {
     contextualCheckPermission()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const triggerPositionUpdate = useCallback(async () => {
+  const triggerPositionUpdate = async () => {
     try {
       const newPosition = await getGeolocPosition()
       setGeolocPosition(newPosition)
@@ -41,7 +47,7 @@ export const useGeolocation = () => {
       setGeolocPositionError(newPositionError?.cause ?? null)
       return null
     }
-  }, [setGeolocPosition, setGeolocPositionError])
+  }
 
   // this function is used to set OS permissions according to user choice on native geolocation popup
   const contextualRequestGeolocPermission = useCallback(
@@ -116,7 +122,7 @@ export const useGeolocation = () => {
   }
 }
 
-function isRejected(permission: GeolocPermissionState | undefined) {
+function isRejected(permission: GeolocPermissionState | null) {
   return (
     !permission ||
     permission === GeolocPermissionState.DENIED ||

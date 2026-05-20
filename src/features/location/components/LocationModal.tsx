@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
 import { LocationState } from 'features/location/types'
 import { LocationLabel, LocationMode } from 'libs/location/types'
-import { SuggestedPlace } from 'libs/place/types'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -28,7 +27,6 @@ type LocationModalProps = {
   setSelectedPlace: LocationState['setSelectedPlace']
   placeQuery: LocationState['placeQuery']
   setPlaceQuery: LocationState['setPlaceQuery']
-  onSetSelectedPlace: (place: SuggestedPlace) => void
   onResetPlace: LocationState['onResetPlace']
   shouldDisplayEverywhereSection: boolean
   isSubmitDisabled: boolean
@@ -70,7 +68,6 @@ export const LocationModal = ({
   setSelectedPlace,
   placeQuery,
   setPlaceQuery,
-  onSetSelectedPlace,
   onResetPlace,
   tempAroundPlaceRadius,
   onTempAroundPlaceRadiusValueChange,
@@ -125,7 +122,6 @@ export const LocationModal = ({
                 placeQuery={placeQuery}
                 setPlaceQuery={setPlaceQuery}
                 onResetPlace={onResetPlace}
-                onSetSelectedPlace={onSetSelectedPlace}
               />
               {shouldShowAroundPlaceRadiusSlider ? (
                 <SliderContainer>
@@ -160,7 +156,6 @@ export const LocationModal = ({
     placeQuery,
     setPlaceQuery,
     onResetPlace,
-    onSetSelectedPlace,
     shouldShowAroundPlaceRadiusSlider,
     tempAroundPlaceRadius,
     onTempAroundPlaceRadiusValueChange,

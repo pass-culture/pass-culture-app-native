@@ -208,13 +208,13 @@ describe('<HomeModule />', () => {
   it('should display RecommendationModule', async () => {
     const recommendedOffers: SimilarOffersResponse = {
       params: {
-        call_id: 'c2b19286-a4e9-4aef-9bab-3dcbbd631f0c',
+        callId: 'c2b19286-a4e9-4aef-9bab-3dcbbd631f0c',
         filtered: true,
-        geo_located: true,
-        model_endpoint: 'default',
-        model_name: 'similar_offers_default_prod',
-        model_version: 'similar_offers_clicks_v2_1_prod_v_20230428T220000',
-        reco_origin: 'default',
+        geoLocated: true,
+        modelEndpoint: 'default',
+        modelName: 'similar_offers_default_prod',
+        modelVersion: 'similar_offers_clicks_v2_1_prod_v_20230428T220000',
+        recoOrigin: 'default',
       },
       results: ['102280', '102272'],
     }

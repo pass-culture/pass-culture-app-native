@@ -28,12 +28,12 @@ export interface VenueTileProps {
   homeEntryId?: string
   width: number
   height: number
-  originDetail?: string
+  originDetails?: string
 }
 
 const mergeVenueData =
   (venueHit: VenueHit) =>
-  (prevData: VenueResponse | undefined): Omit<VenueResponse, 'isVirtual'> => ({
+  (prevData: VenueResponse | undefined): VenueResponse => ({
     ...venueHit,
     timezone: '',
     ...prevData,
@@ -62,7 +62,7 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
       moduleName: props.moduleName,
       from: 'home',
       homeEntryId: props.homeEntryId,
-      originDetail: props.originDetail,
+      originDetails: props.originDetails,
     })
   }
 

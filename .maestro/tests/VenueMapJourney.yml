@@ -18,6 +18,4 @@ tags:
 - runFlow: subFolder/venue/VerifyVenueMap.yml
 - runFlow: subFolder/cloud/commands/SetLocalizationToEverywhere.yml
 
-- runFlow: subFolder/venue/AccessVenueMapFromSearchResult.yml
-
 - runFlow: subFolder/commons/StopApp.yml

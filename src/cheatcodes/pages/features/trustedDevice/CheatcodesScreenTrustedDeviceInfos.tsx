@@ -10,9 +10,9 @@ export const CheatcodesScreenTrustedDeviceInfos = () => {
   return (
     <CheatcodesTemplateScreen title="Trusted device debug infos" flexDirection="column">
       <StyledTitle3>Informations du device actuel</StyledTitle3>
-      <Data title="Device ID" data={deviceInfo?.deviceId} />
-      <Data title="Device Model ou Browser" data={deviceInfo?.source} />
-      <Data title="Device OS" data={deviceInfo?.os} />
+      <Data title="Device ID" data={deviceInfo.deviceId} />
+      <Data title="Device Model ou Browser" data={deviceInfo.source} />
+      <Data title="Device OS" data={deviceInfo.os} />
     </CheatcodesTemplateScreen>
   )
 }

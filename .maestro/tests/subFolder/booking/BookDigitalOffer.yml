@@ -1,13 +1,25 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
-- swipe:
-    from:
-      text: 'Les lieux culturels'
-    direction: UP
-- tapOn:
-    text: "Abonnement presse en ligne"
-    index: 2
+- runFlow:
+    when:
+      visible: 'Les lieux culturels'
+    commands:
+    - swipe:
+        from:
+          text: "Les lieux culturels"
+        direction: UP
+
+- runFlow:
+    when:
+      visible: 'Les offres'
+    commands:
+    - swipe:
+        from:
+          text: "Les offres"
+        direction: UP
+
+- tapOn: "Abonnement presse en ligne"
 
 - runFlow:
     when:

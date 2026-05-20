@@ -1,13 +1,11 @@
 import { DeviceInfoV2 } from 'api/gen'
 import { createStore } from 'libs/store/createStore'
 
-type State =
-  | {
-      deviceInfo: DeviceInfoV2
-    }
-  | undefined
+type State = {
+  deviceInfo: DeviceInfoV2
+}
 
-const defaultState: State = undefined
+const defaultState: State = { deviceInfo: { deviceId: '', os: undefined, source: undefined } }
 
 const deviceInfoStore = createStore({
   name: 'device-info',
@@ -17,7 +15,7 @@ const deviceInfoStore = createStore({
     resetDeviceInfo: () => set(defaultState),
   }),
   selectors: {
-    selectDeviceInfo: () => (state: State) => state?.deviceInfo,
+    selectDeviceInfo: () => (state: State) => state.deviceInfo,
   },
   options: { persist: true },
 })

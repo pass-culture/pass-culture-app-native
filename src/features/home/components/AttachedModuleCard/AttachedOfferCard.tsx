@@ -1,15 +1,16 @@
 import React from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { isCurrentBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { AttachedCardDisplay } from 'features/home/components/AttachedModuleCard/AttachedCardDisplay'
 import { AttachedCardImage } from 'features/home/components/AttachedModuleCard/AttachedCardImage'
-import { getExclusivityAccessibilityLabel } from 'features/home/helpers/getExclusivityAccessibilityLabel'
 import { getDistance } from 'libs/location/getDistance'
 import { useLocation } from 'libs/location/location'
 import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
 
@@ -37,7 +38,7 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight, com
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isDuo: !!(attachedOffer.isDuo && user?.isBeneficiary),
+      isDuo: !!(attachedOffer.isDuo && isCurrentBeneficiary(user)),
     })
   )
   const distance = getDistance(
@@ -51,13 +52,13 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight, com
   if (price) details.push(price)
   if (!attachedOffer.name) return null
 
-  const accessibilityLabel = getExclusivityAccessibilityLabel({
-    offerName: attachedOffer.name,
-    offerCategory: categoryName,
-    offerDate: date,
-    offerPrice: price,
-    offerDistance: distanceLabel,
-  })
+  const accessibilityLabel = getComputedAccessibilityLabel(
+    attachedOffer.name,
+    categoryName,
+    date,
+    price,
+    distanceLabel
+  )
 
   return (
     <AttachedCardDisplay

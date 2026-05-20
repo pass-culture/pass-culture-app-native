@@ -21,7 +21,7 @@ export const useABSegment = <T>(testId: string) => {
   }
 
   const deviceInfo = deviceInfoStoreSelectors.selectDeviceInfo()
-  const identifier = user?.id ?? deviceInfo?.deviceId
+  const identifier = user?.id ?? deviceInfo.deviceId
 
   return getSegmentFromIdentifier(segments, identifier)
 }

@@ -5,7 +5,7 @@ import { FlatList } from 'react-native-gesture-handler'
 
 import { VenueResponse } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
-import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
+import { Referrals, ScreenNames } from 'features/navigation/navigators/RootNavigator/types'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
@@ -19,7 +19,7 @@ export interface GtlPlaylistProps {
   analyticsFrom: Referrals
   route: Extract<ScreenNames, 'Venue' | 'ThematicSearch'>
   playlist: GtlPlaylistData
-  venue?: Omit<VenueResponse, 'isVirtual'>
+  venue?: VenueResponse
   noMarginBottom?: boolean
   playlistRef?: Ref<FlatList>
   onViewableItemsChanged?: (info: { viewableItems: ViewToken<unknown>[] }) => void
@@ -78,6 +78,7 @@ export function GtlPlaylist({
         renderItem={renderPassPlaylist}
         keyExtractor={(item: Hit<Offer>) => item.objectID}
         title={playlist.title}
+        nbItems={playlist.offers.hits.length}
         onEndReached={logHasSeenAllTilesOnce}
         noMarginBottom={noMarginBottom}
         FlatListComponent={FlatList}

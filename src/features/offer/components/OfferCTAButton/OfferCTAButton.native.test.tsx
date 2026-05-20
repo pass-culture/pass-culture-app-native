@@ -66,13 +66,6 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 const user = userEvent.setup()
 
-jest.mock('features/offer/store/freeOfferIdStore', () => ({
-  freeOfferIdActions: {
-    resetFreeOfferId: jest.fn(),
-  },
-  useFreeOfferId: jest.fn(),
-}))
-
 describe('<OfferCTAButton />', () => {
   beforeEach(() => {
     mockAuthContextWithoutUser({ persist: true })

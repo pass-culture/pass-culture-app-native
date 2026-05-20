@@ -1,4 +1,5 @@
 import React from 'react'
+import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SuggestedPlaces } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedPlaces'
@@ -8,11 +9,10 @@ import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 
 interface LocationSearchInputProps {
   selectedPlace: SuggestedPlace | null
-  setSelectedPlace: React.Dispatch<React.SetStateAction<SuggestedPlace | null>>
+  setSelectedPlace: (place: SuggestedPlace | null) => void
   placeQuery?: string
-  setPlaceQuery: React.Dispatch<React.SetStateAction<string>>
+  setPlaceQuery: (placeQuery: string) => void
   onResetPlace: () => void
-  onSetSelectedPlace: (place: SuggestedPlace) => void
 }
 
 export const LocationSearchInput = ({
@@ -21,13 +21,18 @@ export const LocationSearchInput = ({
   placeQuery,
   setPlaceQuery,
   onResetPlace,
-  onSetSelectedPlace,
 }: LocationSearchInputProps) => {
   const debouncedPlaceQuery = useDebounceValue(placeQuery, 500)
 
-  const onChangePlace = (text: string) => {
+  const onChangeText = (text: string) => {
     setSelectedPlace(null)
     setPlaceQuery(text)
+  }
+
+  const onSetSelectedPlace = (place: SuggestedPlace) => {
+    setSelectedPlace(place)
+    setPlaceQuery(place.label)
+    Keyboard.dismiss()
   }
 
   const isQueryProvided = !!placeQuery && !!debouncedPlaceQuery
@@ -37,7 +42,7 @@ export const LocationSearchInput = ({
     <StyledView>
       <SearchInput
         label="Recherche une ville, une adresse..."
-        onChangeText={onChangePlace}
+        onChangeText={onChangeText}
         onClear={onResetPlace}
         value={placeQuery}
       />

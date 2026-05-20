@@ -63,5 +63,5 @@ const MarianneSvg: React.FunctionComponent<AccessibleIcon> = ({
 
 export const Marianne = styled(MarianneSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.designSystem.color.icon.lockedInverted,
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
 }))``

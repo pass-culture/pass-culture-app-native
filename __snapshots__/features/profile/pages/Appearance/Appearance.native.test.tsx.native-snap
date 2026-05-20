@@ -584,7 +584,6 @@ exports[`Appearance should render correctly 1`] = `
                         <View
                           style={
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             }
@@ -754,7 +753,6 @@ exports[`Appearance should render correctly 1`] = `
                         <View
                           style={
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             }
@@ -952,7 +950,6 @@ exports[`Appearance should render correctly 1`] = `
                         <View
                           style={
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             }

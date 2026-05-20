@@ -9,7 +9,6 @@ export const selectSearchVenues = (venues: FetchSearchVenuesResponse) => {
   return {
     algoliaVenues: flattenVenues,
     venues: flattenVenues.map((venue) => mapAlgoliaVenueToAlgoliaVenueOfferListItem(venue)),
-
     venuesUserData: venues.venuesResponse?.userData,
     venueNotOpenToPublic: flatten(venues.venueNotOpenToPublic?.hits),
   }

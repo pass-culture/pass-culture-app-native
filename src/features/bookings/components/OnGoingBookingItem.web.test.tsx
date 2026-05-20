@@ -18,7 +18,7 @@ describe('OnGoingBookingItem', () => {
   it('should navigate to the booking details page', async () => {
     render(<OnGoingBookingItem booking={booking} eligibleBookingsForArchive={[]} />)
 
-    const item = screen.getByTestId(/Réservation de l’offre/)
+    const item = screen.getByTestId(/Réservation en cours/)
     fireEvent.click(item)
 
     await waitFor(() => {

@@ -1,12 +1,17 @@
-import React, { memo, useContext, useEffect, useMemo, useRef } from 'react'
+import React, { memo, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { analytics } from 'libs/analytics/provider'
-import { useSafeState } from 'libs/hooks'
 import { useGeolocation } from 'libs/location/geolocation/hook/useGeolocation'
-import { useAroundRadius } from 'libs/location/hooks/useAroundRadius'
-import { usePlace } from 'libs/location/hooks/usePlace'
-import { LocationMode, ILocationContext, Position } from 'libs/location/types'
+import { LocationMode, ILocationContext } from 'libs/location/types'
+import {
+  locationActions,
+  useLocationConfiguration,
+  useLocationV2,
+  usePlace,
+  useUserLocation,
+} from 'libs/locationV2/location.store'
+import { SuggestedPlace } from 'libs/place/types'
 import { storage } from 'libs/storage'
 
 import { GeolocationActivationModal } from './geolocation/components/GeolocationActivationModal'
@@ -19,7 +24,7 @@ const LocationContext = React.createContext<ILocationContext>({
   onModalHideRef: { current: undefined },
   geolocPosition: undefined,
   geolocPositionError: null,
-  permissionState: undefined,
+  permissionState: null,
   requestGeolocPermission: async () => {},
   triggerPositionUpdate: () => null,
   showGeolocPermissionModal: () => null,
@@ -27,7 +32,6 @@ const LocationContext = React.createContext<ILocationContext>({
   selectedLocationMode: LocationMode.EVERYWHERE,
   setSelectedLocationMode: () => null,
   onResetPlace: () => null,
-  onSetSelectedPlace: () => null,
   selectedPlace: null,
   setSelectedPlace: () => null,
   placeQuery: '',
@@ -45,9 +49,9 @@ export const LocationWrapper = memo(function LocationWrapper({
 }: {
   children: React.JSX.Element
 }) {
-  const [selectedLocationMode, setSelectedLocationMode] = useSafeState<LocationMode>(
-    LocationMode.EVERYWHERE
-  )
+  const { locationMode: selectedLocationMode } = useLocationV2()
+  const setSelectedLocationMode = locationActions.setLocationMode
+
   const {
     geolocPosition,
     geolocPositionError,
@@ -63,18 +67,21 @@ export const LocationWrapper = memo(function LocationWrapper({
 
   const onModalHideRef = useRef<() => void>(() => null)
 
-  const {
-    place,
-    setPlace,
-    onResetPlace,
-    onSetSelectedPlace,
-    selectedPlace,
-    setSelectedPlace,
-    placeQuery,
-    setPlaceQuery,
-  } = usePlace()
-  const { aroundPlaceRadius, setAroundPlaceRadius, aroundMeRadius, setAroundMeRadius } =
-    useAroundRadius()
+  // app state
+  const { radius: aroundPlaceRadius } = useLocationConfiguration(LocationMode.AROUND_PLACE)
+  const place = usePlace()
+  const { setPlace, setAroundPlaceRadius, setAroundMeRadius } = locationActions
+
+  const { radius: aroundMeRadius } = useLocationConfiguration(LocationMode.AROUND_ME)
+
+  // modal state
+  const [placeQuery, setPlaceQuery] = useState('') // search input value
+  const [selectedPlace, setSelectedPlace] = useState<SuggestedPlace | null>(null) // selected suggested place
+
+  const onResetPlace = useCallback(() => {
+    setSelectedPlace(null)
+    setPlaceQuery('')
+  }, [])
 
   useEffect(() => {
     switch (true) {
@@ -91,21 +98,7 @@ export const LocationWrapper = memo(function LocationWrapper({
     analytics.setEventLocationType()
   }, [hasGeolocPosition, place])
 
-  let userLocation: Position
-  switch (true) {
-    case selectedLocationMode === LocationMode.AROUND_PLACE:
-      userLocation = place?.geolocation
-      break
-    case selectedLocationMode === LocationMode.AROUND_ME:
-      userLocation = geolocPosition
-      break
-    case selectedLocationMode === LocationMode.EVERYWHERE:
-      userLocation = undefined
-      break
-    default:
-      userLocation = geolocPosition
-      break
-  }
+  const userLocation = useUserLocation()
 
   const value = useMemo(
     () => ({
@@ -123,7 +116,6 @@ export const LocationWrapper = memo(function LocationWrapper({
       selectedLocationMode,
       setSelectedLocationMode,
       onResetPlace,
-      onSetSelectedPlace,
       selectedPlace,
       setSelectedPlace,
       placeQuery,
@@ -148,7 +140,6 @@ export const LocationWrapper = memo(function LocationWrapper({
       selectedLocationMode,
       setSelectedLocationMode,
       onResetPlace,
-      onSetSelectedPlace,
       selectedPlace,
       setSelectedPlace,
       placeQuery,

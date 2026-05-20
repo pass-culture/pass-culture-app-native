@@ -126,14 +126,14 @@ describe('VideoModule', () => {
     expect(multiOfferList).toBeOnTheScreen()
   })
 
-  it('should show "Tout voir" button when is multiples offers and more than three offers', async () => {
+  it('should show "Voir tout" button when is multiples offers and more than three offers', async () => {
     mockUseVideoOffersQuery.mockReturnValueOnce({
       offers: [offerFixture, offerFixture2, offerFixture3, offerFixture4],
     })
     renderVideoModule(true)
 
     const seeAllButton = screen.getByLabelText(
-      'Tout voir pour la sélection Lujipeka répond à vos questions !'
+      'Voir tout pour la sélection Lujipeka répond à vos questions !'
     )
 
     await screen.findByLabelText(`Média vidéo : ${videoModuleFixture.title}`)
@@ -141,14 +141,14 @@ describe('VideoModule', () => {
     expect(seeAllButton).toBeOnTheScreen()
   })
 
-  it('should not show "Tout voir" button when is multiples offers and less than three offers', async () => {
+  it('should not show "Voir tout" button when is multiples offers and less than three offers', async () => {
     mockUseVideoOffersQuery.mockReturnValueOnce({
       offers: [offerFixture, offerFixture2],
     })
     renderVideoModule(true)
 
     const seeAllButton = screen.queryByLabelText(
-      'Tout voir pour la sélection Lujipeka répond à vos questions !'
+      'Voir tout pour la sélection Lujipeka répond à vos questions !'
     )
 
     await screen.findByLabelText(`Média vidéo : ${videoModuleFixture.title}`)

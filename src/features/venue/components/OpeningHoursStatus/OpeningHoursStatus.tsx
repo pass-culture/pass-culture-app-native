@@ -73,7 +73,7 @@ const getIconColorFromState = (theme: DefaultTheme) => (state: OpeningHoursStatu
 const StyledClock = styled(ClockFilled).attrs<{ state: OpeningHoursStatusState }>(
   ({ theme, state }) => ({
     color: getIconColorFromState(theme)(state),
-    size: theme.icons.sizes.extraSmall,
+    size: theme.designSystem.size.icon.s,
   })
 )<{ state: OpeningHoursStatusState }>``
 

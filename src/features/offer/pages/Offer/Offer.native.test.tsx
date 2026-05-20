@@ -290,7 +290,7 @@ describe('<Offer />', () => {
         adviceType: 'pro',
         from: 'offer',
         offerId: '116656',
-        originDetail: 'Les avis des pros',
+        originDetails: 'Les avis des pros',
         venueId: '1',
       })
     })

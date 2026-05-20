@@ -24,13 +24,13 @@ export const VenueInfoHeader: FunctionComponent<VenueInfoHeaderProps> = ({
   imageURL,
   style,
 }) => {
-  const { icons } = useTheme()
+  const { designSystem } = useTheme()
   return (
     <InfoHeader
       title={title}
       subtitle={subtitle}
       rightComponent={
-        showArrow ? <RightFilled size={icons.sizes.extraSmall} testID="RightFilled" /> : null
+        showArrow ? <RightFilled size={designSystem.size.icon.s} testID="RightFilled" /> : null
       }
       thumbnailComponent={
         imageURL ? (
@@ -60,6 +60,6 @@ const VenueThumbnail = styled(Image)<{ height: number; width: number }>(
 )
 
 const LocationIcon = styled(LocationPointer).attrs(({ theme }) => ({
-  size: theme.icons.sizes.standard,
+  size: theme.designSystem.size.icon.l,
   color: theme.designSystem.color.icon.subtle,
 }))``

@@ -134,7 +134,7 @@ describe('<VenueBody />', () => {
       venueId: venueDataTest.id,
       isHeadline: true,
       adviceType: 'pro',
-      originDetail: 'advice',
+      originDetails: 'advice',
     })
   })
 
@@ -205,7 +205,7 @@ const renderVenueBody = ({
   arePlaylistsLoading = false,
   nbAdvices = 0,
 }: {
-  venue?: Omit<VenueResponse, 'isVirtual'>
+  venue?: VenueResponse
   headlineOfferData?: HeadlineOfferData
   playlists?: GtlPlaylistData[]
   arePlaylistsLoading?: boolean

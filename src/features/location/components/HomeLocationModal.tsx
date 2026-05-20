@@ -4,6 +4,7 @@ import { LocationModal } from 'features/location/components/LocationModal'
 import { useLocationMode } from 'features/location/helpers/useLocationMode'
 import { useLocationState } from 'features/location/helpers/useLocationState'
 import { analytics } from 'libs/analytics/provider'
+import { useLocation } from 'libs/location/LocationWrapper'
 
 interface HomeLocationModalProps {
   visible: boolean
@@ -11,12 +12,27 @@ interface HomeLocationModalProps {
 }
 
 export const HomeLocationModal = ({ visible, dismissModal }: HomeLocationModalProps) => {
-  const locationStateProps = useLocationState({
+  const {
+    hasGeolocPosition,
+    placeQuery,
+    setPlaceQuery,
+    selectedPlace,
+    setSelectedPlace,
+    setPlace,
+    onResetPlace,
+    setSelectedLocationMode,
+    permissionState,
+    showGeolocPermissionModal,
+    requestGeolocPermission,
+    onModalHideRef,
+  } = useLocation()
+
+  const { tempLocationMode, setTempLocationMode } = useLocationState({
     visible,
   })
 
   const onSubmit = () => {
-    setPlaceGlobally(selectedPlace)
+    setPlace(selectedPlace)
     setSelectedLocationMode(tempLocationMode)
     analytics.logUserSetLocation('home')
     dismissModal()
@@ -26,26 +42,19 @@ export const HomeLocationModal = ({ visible, dismissModal }: HomeLocationModalPr
     dismissModal()
   }
 
-  const {
-    hasGeolocPosition,
-    placeQuery,
-    setPlaceQuery,
-    selectedPlace,
-    setSelectedPlace,
-    onResetPlace,
-    tempLocationMode,
-    onModalHideRef,
-    setPlaceGlobally,
-    setSelectedLocationMode,
-    onSetSelectedPlace,
-  } = locationStateProps
-
   const { selectLocationMode } = useLocationMode({
     dismissModal,
-    onSubmit,
-    onClose,
     shouldDirectlyValidate: true,
-    ...locationStateProps,
+    hasGeolocPosition,
+    permissionState,
+    setTempLocationMode,
+    setSelectedLocationMode,
+    setPlace,
+    onModalHideRef,
+    showGeolocPermissionModal,
+    requestGeolocPermission,
+    tempLocationMode,
+    onSubmit,
   })
 
   return (
@@ -61,7 +70,6 @@ export const HomeLocationModal = ({ visible, dismissModal }: HomeLocationModalPr
       setSelectedPlace={setSelectedPlace}
       placeQuery={placeQuery}
       setPlaceQuery={setPlaceQuery}
-      onSetSelectedPlace={onSetSelectedPlace}
       onResetPlace={onResetPlace}
       shouldShowRadiusSlider={false}
       isSubmitDisabled={!selectedPlace}

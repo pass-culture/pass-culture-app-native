@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -10,8 +11,15 @@ import { Typo } from 'ui/theme'
 
 export const ExpiredOrLostID = (): React.JSX.Element => {
   useEffect(() => {
-    BatchProfile.trackEvent(BatchEvent.screenViewExpiredOrLostId)
+    void BatchProfile.trackEvent(BatchEvent.screenViewExpiredOrLostId)
   }, [])
+
+  const onExitPress = () => {
+    void analytics.logHasExitedActivationFlow({
+      from: 'expiredorlostid',
+      origin_detail: 'GoToDemarcheNumerique',
+    })
+  }
 
   return (
     <GenericInfoPage
@@ -21,6 +29,7 @@ export const ExpiredOrLostID = (): React.JSX.Element => {
       buttonPrimary={{
         wording: 'Aller sur demarche.numerique.gouv.fr',
         externalNav: { url: env.DMS_FRENCH_CITIZEN_URL },
+        onBeforeNavigate: onExitPress,
       }}>
       <ViewGap gap={6}>
         <StyledBody>

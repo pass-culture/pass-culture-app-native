@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
 
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { VerticalPlaylistError } from 'shared/verticalPlaylist/components/VerticalPlaylistError'
 import { VerticalPlaylistOffersModule } from 'shared/verticalPlaylist/components/VerticalPlaylistOffersModule'
 import { VerticalPlaylistSimilarsOffers } from 'shared/verticalPlaylist/components/VerticalPlaylistSimilarsOffers'
@@ -11,6 +11,8 @@ import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 
 export const VerticalPlaylistOffers = () => {
   const { params } = useRoute<UseRouteType<'VerticalPlaylistOffers'>>()
+
+  if (!params.module) return <VerticalPlaylistError />
 
   switch (params.type) {
     case VerticalPlaylist.ModuleOffers:

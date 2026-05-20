@@ -95,7 +95,7 @@ describe('<SearchVenueItem />', () => {
   it('should log to analytics', async () => {
     renderSearchVenueItem(mockAlgoliaVenue, searchId)
 
-    await user.press(screen.getByTestId(/Lieu/))
+    await user.press(screen.getByLabelText('UGC cinéma - Paris - 75000 - Cinéma'))
 
     expect(analytics.logConsultVenue).toHaveBeenCalledWith({
       venueId: mockAlgoliaVenue.objectID,
@@ -123,7 +123,7 @@ describe('<SearchVenueItem />', () => {
 
   it('should navigate to the venue when pressing a search venue item', async () => {
     renderSearchVenueItem(mockAlgoliaVenue, 'testUuidV4')
-    await user.press(screen.getByTestId(/Lieu/))
+    await user.press(screen.getByLabelText('UGC cinéma - Paris - 75000 - Cinéma'))
 
     expect(navigate).toHaveBeenCalledWith('Venue', {
       id: Number(mockAlgoliaVenue.objectID),

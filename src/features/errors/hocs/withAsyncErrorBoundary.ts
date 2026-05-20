@@ -4,8 +4,7 @@ import { withErrorBoundary } from 'react-error-boundary'
 import { AsyncErrorBoundary } from 'features/errors/pages/AsyncErrorBoundary'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function withAsyncErrorBoundary(component: ComponentType<any>) {
-  return withErrorBoundary(React.memo(component), {
+export const withAsyncErrorBoundary = (component: ComponentType<any>) =>
+  withErrorBoundary(React.memo(component), {
     FallbackComponent: AsyncErrorBoundary,
   })
-}

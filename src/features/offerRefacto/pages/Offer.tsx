@@ -9,7 +9,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { clubAdviceVariant } from 'features/clubAdvices/helpers/clubAdviceVariant'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import { useCookies } from 'features/cookies/helpers/useCookies'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { advicePreviewToAdviceCardData } from 'features/offer/adapters/advicePreviewToAdviceCardData'
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
 import { OfferContentPlaceholder } from 'features/offer/components/OfferContentPlaceholder/OfferContentPlaceholder'
@@ -28,7 +28,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { useSubcategoriesMapping } from 'libs/subcategories/mappings'
-import { useEndedBookingFromOfferIdQueryV2 } from 'queries/bookings'
+import { useEndedBookingFromOfferIdQueryV2 } from 'queries/bookings/useEndedBookingFromOfferIdQuery'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
@@ -50,7 +50,7 @@ export function Offer() {
   const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
   const shouldDisplayProAdvices = enableProAdvices && proAdvicesSegment === 'A'
 
-  const { isLoggedIn, user } = useAuthContext()
+  const { user } = useAuthContext()
   const { userLocation } = useLocation()
   const { data: offer, isLoading } = useOfferQuery({
     offerId,
@@ -84,10 +84,7 @@ export function Offer() {
     hideModal: hideOfferArtistsModal,
     showModal: showOfferArtistsModal,
   } = useModal(false)
-  const { data: booking } = useEndedBookingFromOfferIdQueryV2(
-    offer?.id ?? -1,
-    isLoggedIn && !!offer?.id
-  )
+  const { data: booking } = useEndedBookingFromOfferIdQueryV2(offer?.id ?? -1, !!offer?.id)
   const { mutate: saveReaction } = useReactionMutation()
   const categoryId = offer?.subcategoryId
     ? subcategoriesMapping[offer?.subcategoryId]?.categoryId

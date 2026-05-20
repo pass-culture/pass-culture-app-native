@@ -28,5 +28,5 @@ const VenueAccessibilitySVG = ({ color, size, accessibilityLabel, testID }: Acce
 
 export const VenueAccessibility = styled(VenueAccessibilitySVG).attrs(({ color, size, theme }) => ({
   color: color ?? theme.designSystem.color.icon.default,
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
 }))``

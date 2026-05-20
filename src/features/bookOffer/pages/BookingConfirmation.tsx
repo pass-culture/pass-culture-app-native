@@ -1,15 +1,15 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 
 import { EligibilityType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics/provider'
-import { useShowReview } from 'libs/hooks/useShowReview'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
+import { useReviewInApp } from 'libs/reviewInApp/useReviewInApp'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
@@ -60,7 +60,13 @@ export function BookingConfirmation() {
     showShareOfferModal()
   }, [params.offerId, shareOffer, showShareOfferModal])
 
-  useShowReview()
+  const { requestReview } = useReviewInApp()
+  useEffect(() => {
+    void requestReview('booking_success', { delayMs: 3000 })
+    // We only want to fire once on mount; requestReview is intentionally excluded
+    // to avoid re-triggering the prompt if the kill-switch feature flag toggles.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()

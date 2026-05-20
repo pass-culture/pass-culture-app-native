@@ -4,13 +4,19 @@ import React from 'react'
 import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
-import { AccountState, FavoriteResponse, OauthStateResponse, SigninResponse } from 'api/gen'
+import {
+  AccountState,
+  FavoriteResponse,
+  OauthStateResponse,
+  SigninResponse,
+  SigninResponseV2,
+} from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { SignInResponseFailure } from 'features/auth/types'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { UserProfile } from 'features/share/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
 import { analytics } from 'libs/analytics/provider'
@@ -48,7 +54,7 @@ const captureMonitoringError = jest.spyOn(monitoringErrorsModule, 'captureMonito
 
 const apiPostFavoriteSpy = jest.spyOn(API.api, 'postNativeV1MeFavorites')
 
-const apiSignInSpy = jest.spyOn(API.api, 'postNativeV1Signin')
+const apiSignInSpy = jest.spyOn(API.api, 'postNativeV2Signin')
 const apiPostOAuthAuthorize = jest.spyOn(API.api, 'postNativeV1OauthssoProviderAuthorize')
 
 jest.useFakeTimers()
@@ -853,7 +859,7 @@ function mockMeApiCall(response: UserProfile) {
 }
 
 function simulateSignin200(accountState: AccountState) {
-  mockServer.postApi<SigninResponse>('/v1/signin', {
+  mockServer.postApi<SigninResponseV2>('/v2/signin', {
     accessToken: 'accessToken',
     refreshToken: 'refreshToken',
     accountState,
@@ -861,7 +867,7 @@ function simulateSignin200(accountState: AccountState) {
 }
 
 function simulateSigninWrongCredentials() {
-  mockServer.postApi('/v1/signin', {
+  mockServer.postApi('/v2/signin', {
     responseOptions: {
       statusCode: 400,
       data: {
@@ -872,7 +878,7 @@ function simulateSigninWrongCredentials() {
 }
 
 function simulateSigninRateLimitExceeded() {
-  mockServer.postApi('/v1/signin', {
+  mockServer.postApi('/v2/signin', {
     responseOptions: {
       statusCode: 429,
       data: {
@@ -883,7 +889,7 @@ function simulateSigninRateLimitExceeded() {
 }
 
 function simulateSigninEmailNotValidated() {
-  mockServer.postApi('/v1/signin', {
+  mockServer.postApi('/v2/signin', {
     responseOptions: {
       statusCode: 400,
       data: {
@@ -895,7 +901,7 @@ function simulateSigninEmailNotValidated() {
 }
 
 function simulateSigninNetworkFailure() {
-  mockServer.postApi('/v1/signin', {
+  mockServer.postApi('/v2/signin', {
     responseOptions: {
       data: {
         code: 'NETWORK_REQUEST_FAILED',

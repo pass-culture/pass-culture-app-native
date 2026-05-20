@@ -3,10 +3,10 @@ import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
+import { TabInnerComponentProps } from 'features/navigation/navigators/TabNavigator/types'
 import { menu } from 'features/navigation/TabBar/menu'
 import { TabBarBadge } from 'features/navigation/TabBar/TabBarBadge'
 import { TabBarTitle } from 'features/navigation/TabBar/TabBarTitle'
-import { TabInnerComponentProps } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
 
@@ -17,7 +17,7 @@ export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
   badgeValue,
   showBadge,
 }) => {
-  const { icons } = useTheme()
+  const { icons, designSystem } = useTheme()
 
   const accessibilityLabel = menu[tabName].accessibilityLabel
 
@@ -28,7 +28,7 @@ export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
 
   const iconSize = useMobileFontScaleToDisplay({
     default: icons.sizes.small,
-    at200PercentZoom: icons.sizes.standard,
+    at200PercentZoom: designSystem.size.icon.l,
   })
 
   return (

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
+import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
@@ -127,13 +127,19 @@ export function AccessibilityDeclarationMobileBase({
                 text="Les cartes Goggle Maps (motif&nbsp;: service externe)"
                 groupLabel="Contenus non soumis à l’obligation d’accessibilité"
                 index={0}
-                total={2}
+                total={3}
               />
               <BulletListItem
                 text="La vérification d’identité (webview d’un prestataire externe)"
                 groupLabel="Contenus non soumis à l’obligation d’accessibilité"
                 index={1}
-                total={2}
+                total={3}
+              />
+              <BulletListItem
+                text="Les vidéos postées par les acteurs culturels dans les offres (motif&nbsp;: contenu dynamique provenant d’un tiers)"
+                groupLabel="Contenus non soumis à l’obligation d’accessibilité"
+                index={2}
+                total={3}
               />
             </VerticalUl>
           </ViewGap>

@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
@@ -9,8 +9,12 @@ import { getShouldShowBonificationBanner } from 'features/bonification/getShould
 import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
-import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { FreeBeneficiaryBanner } from 'features/home/components/FreeBeneficiaryBanner'
+import {
+  StepperOrigin,
+  UseNavigationType,
+} from 'features/navigation/navigators/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { ActivationDisabledBanner } from 'features/remoteBanners/banners/ActivationDisabledBanner'
 import { RemoteGenericBanner } from 'features/remoteBanners/banners/RemoteGenericBanner'
 import { TechnicalProblemBanner } from 'features/technicalProblemBanner/components/TechnicalProblemBanner'
@@ -57,11 +61,6 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
   const { hasClosedBonificationBanner, onCloseBanner } = useBonificationBannerVisibility()
   const { user } = useAuthContext()
-  const showBonificationBanner = getShouldShowBonificationBanner({
-    enableBonification,
-    hasClosedBonificationBanner,
-    qfBonificationStatus: user?.qfBonificationStatus,
-  })
 
   const { options: remoteActivationBannerOptions, isFeatureFlagActive: disableActivation } =
     useFeatureFlagOptionsQuery(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
@@ -77,20 +76,32 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   const { banner } = useActivationBanner()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const shouldRenderSystemBanner = banner.name ? bannersToRender.has(banner.name) : false
-
-  const systemBannerAnalyticsType =
-    banner.name === BannerName.geolocation_banner ? 'location' : 'credit'
-
-  const onPressSystemBanner = useCallback(
-    (from: StepperOrigin) => {
+  const SystemBanner = useMemo(() => {
+    const onPressSystemBanner = (from: StepperOrigin) => {
       navigate(...getSubscriptionHookConfig('Stepper', { from }))
-    },
-    [navigate]
-  )
+    }
 
-  const renderSystemBanner = useCallback(
-    (Icon: React.FunctionComponent<AccessibleIcon>, title: string, subtitle: string) => (
+    const showBonificationBanner = getShouldShowBonificationBanner({
+      enableBonification,
+      hasClosedBonificationBanner,
+      qfBonificationStatus: user?.qfBonificationStatus,
+    })
+
+    const shouldRenderSystemBanner = banner.name ? bannersToRender.has(banner.name) : false
+    const systemBannerAnalyticsType =
+      banner.name === BannerName.geolocation_banner ? 'location' : 'credit'
+
+    const showFreeBeneficiaryBanner =
+      (user?.eligibilityType === 'ELIGIBLE_CREDIT_V2_16' ||
+        user?.eligibilityType === 'ELIGIBLE_CREDIT_V3_16' ||
+        user?.eligibilityType === 'ELIGIBLE_CREDIT_V3_15') &&
+      user?.subscriptionStatus === 'has_to_complete_subscription'
+
+    const renderSystemBanner = (
+      Icon: React.FunctionComponent<AccessibleIcon>,
+      title: string,
+      subtitle: string
+    ) => (
       <BannerContainer>
         <GenericSystemBanner
           leftIcon={Icon}
@@ -100,11 +111,8 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
           analyticsParams={{ type: systemBannerAnalyticsType, from: 'home' }}
         />
       </BannerContainer>
-    ),
-    [systemBannerAnalyticsType, onPressSystemBanner]
-  )
+    )
 
-  const SystemBanner = useMemo(() => {
     if (disableActivation && remoteActivationBannerOptions) {
       return (
         <BannerContainer>
@@ -123,7 +131,13 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
         </BannerContainer>
       )
     }
-
+    if (showFreeBeneficiaryBanner) {
+      return (
+        <BannerContainer>
+          <FreeBeneficiaryBanner />
+        </BannerContainer>
+      )
+    }
     if (
       shouldRenderSystemBanner &&
       banner.name &&
@@ -147,16 +161,18 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
 
     return null
   }, [
-    disableActivation,
-    remoteActivationBannerOptions,
-    isLoggedIn,
-    shouldRenderSystemBanner,
+    enableBonification,
+    hasClosedBonificationBanner,
+    user?.qfBonificationStatus,
+    user?.eligibilityType,
+    user?.subscriptionStatus,
     banner.name,
     banner.title,
     banner.text,
-    showBonificationBanner,
-    renderSystemBanner,
-    user?.qfBonificationStatus,
+    disableActivation,
+    remoteActivationBannerOptions,
+    isLoggedIn,
+    navigate,
     onCloseBanner,
   ])
 

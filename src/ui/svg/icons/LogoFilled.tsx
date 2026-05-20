@@ -26,5 +26,5 @@ function LogoFilledSvg({ size, color, accessibilityLabel, testID }: AccessibleIc
 
 export const LogoFilled = styled(LogoFilledSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.designSystem.color.icon.default,
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.designSystem.size.icon.l,
 }))``

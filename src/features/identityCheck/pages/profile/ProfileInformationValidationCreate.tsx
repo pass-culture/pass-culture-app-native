@@ -15,9 +15,8 @@ import {
 } from 'features/identityCheck/queries/profileSubmissionHandlers'
 import { usePostProfileMutation } from 'features/identityCheck/queries/usePostProfileMutation'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
-import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { SuggestedCity } from 'libs/place/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -31,6 +30,8 @@ export const ProfileInformationValidationCreate = () => {
   const { navigate, reset } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'ProfileInformationValidationCreate'>>()
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
+  const profileOrigin = params?.origin
+  const freeOfferId = params?.freeOfferId
   const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
 
   enum DataSources {
@@ -58,7 +59,6 @@ export const ProfileInformationValidationCreate = () => {
 
   const storedProfileInfos = useStoredProfileInfos()
   const saveStep = useSaveStep()
-  const storedFreeOfferId = useFreeOfferId()
 
   const shouldGetDataFromLocalStorage =
     pageConfigByType[type].formDataSource === DataSources.LOCAL_STORAGE
@@ -82,7 +82,8 @@ export const ProfileInformationValidationCreate = () => {
     onSuccess: () =>
       handlePostProfileSuccess({
         isBookingFreeOffer,
-        storedFreeOfferId,
+        profileOrigin,
+        freeOfferId,
         navigateForwardToStepper,
         reset,
         refetchUser,
@@ -90,7 +91,7 @@ export const ProfileInformationValidationCreate = () => {
     onError: () =>
       handlePostProfileError({
         isBookingFreeOffer,
-        storedFreeOfferId,
+        freeOfferId,
         reset,
       }),
   })
@@ -126,7 +127,18 @@ export const ProfileInformationValidationCreate = () => {
   }, [activityId, address, city, firstName, lastName, postProfile, postalCode, saveStep])
 
   const onSubmitProfile = () => submitProfileInfo()
-  const onChangeInformation = () => navigate(...getSubscriptionHookConfig('SetName', { type }))
+
+  const getChangeInformationParams = () => {
+    if (profileOrigin) {
+      return freeOfferId
+        ? { type, origin: profileOrigin, freeOfferId }
+        : { type, origin: profileOrigin }
+    }
+    return freeOfferId ? { type, freeOfferId } : { type }
+  }
+
+  const onChangeInformation = () =>
+    navigate(...getSubscriptionHookConfig('SetName', getChangeInformationParams()))
 
   const cityLabel = city && postalCode ? `${city} ${postalCode}` : undefined
   const activityLabel = activityId ? getActivityLabel(activityId) : undefined

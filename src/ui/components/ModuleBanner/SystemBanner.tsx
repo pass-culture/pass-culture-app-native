@@ -47,7 +47,12 @@ type Props = {
   accessibilityLabel?: string
   accessibilityRole?: AccessibilityRole
   analyticsParams: {
-    type: 'credit' | 'location' | 'remoteActivationBanner' | 'remoteGenericBanner'
+    type:
+      | 'credit'
+      | 'location'
+      | 'remoteActivationBanner'
+      | 'remoteGenericBanner'
+      | 'freeBeneficiaryBanner'
     from: 'home' | 'thematicHome' | 'offer' | 'profile' | 'search' | 'cheatcodes'
   }
   withBackground?: boolean
@@ -92,7 +97,7 @@ export const SystemBanner: FunctionComponent<Props> = ({
   const StyledIcon = LeftIcon
     ? styled(LeftIcon).attrs(({ theme }) => ({
         color: iconColor,
-        size: theme.icons.sizes.standard,
+        size: theme.designSystem.size.icon.l,
       }))``
     : undefined
 
@@ -196,6 +201,6 @@ const DescriptionContainer = styled(ViewGap)(({ theme }) => ({
 }))
 
 const StyledArrowNextIcon = styled(ArrowNext).attrs(({ theme, color }) => ({
-  size: theme.icons.sizes.small,
+  size: theme.designSystem.size.icon.m,
   color,
 }))``

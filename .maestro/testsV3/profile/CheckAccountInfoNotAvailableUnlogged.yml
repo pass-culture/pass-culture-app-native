@@ -1,0 +1,15 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - profile
+onFlowStart:
+  - runScript: ../common/DeepLink.js
+---
+- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/StopApp.yml
+- runFlow: ../common/DeeplinkToProfile.yml
+
+- assertNotVisible:
+    text: 'Informations personnelles'
+    index: 1
+
+- runFlow: ../common/StopApp.yml
