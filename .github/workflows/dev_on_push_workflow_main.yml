@@ -158,7 +158,6 @@ jobs:
       ENV: testing
       BUCKET_NAME: passculture-metier-ehp-testing-decliweb
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-  # TODO: create github environment perf
   deploy-web-perf:
     needs: [soft-deploy-testing, hard-deploy-android-testing, hard-deploy-ios-testing]
     if: ${{ always() && contains(needs.*.result, 'success') && !contains(needs.*.result, 'failure') && github.ref == 'refs/heads/master'}}
@@ -236,7 +235,6 @@ jobs:
     with:
       ENV: production
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-  # TODO:
   update-jira-issues:
     if: github.ref == 'refs/heads/master'
     uses: ./.github/workflows/dev_on_workflow_update_jira_issues.yml
