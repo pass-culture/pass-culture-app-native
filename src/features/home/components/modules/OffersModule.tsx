@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo } from 'react'
-import { ViewToken } from 'react-native'
+import { Platform, ViewToken } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -23,6 +23,8 @@ import { Offer } from 'shared/offer/types'
 import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
+
+const isWeb = Platform.OS === 'web'
 
 export type OffersModuleProps = {
   offersModuleParameters: OffersModuleType['offersModuleParameters']
@@ -186,6 +188,7 @@ export const OffersModule = (props: OffersModuleProps) => {
             onBeforeNavigate,
             navigateToVerticalPlaylist,
             navigateToSearchPlaylist: searchTabConfig,
+            hideSearchSeeAll: isWeb,
           }}
         />
       )}
