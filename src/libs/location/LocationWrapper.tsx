@@ -2,10 +2,17 @@ import React, { memo, useCallback, useContext, useEffect, useMemo, useRef, useSt
 
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { analytics } from 'libs/analytics/provider'
-import { useGeolocation } from 'libs/location/geolocation/hook/useGeolocation'
+import { useAppStateChange } from 'libs/appState'
 import { LocationMode, ILocationContext } from 'libs/location/types'
 import {
+  contextualCheckPermission,
+  contextualRequestGeolocPermission,
+  onPressGeolocPermissionModalButton,
+  triggerPositionUpdate,
+} from 'libs/locationV2/location.methods'
+import {
   locationActions,
+  useIsGeolocated,
   useLocationConfiguration,
   useLocationV2,
   usePlace,
@@ -52,18 +59,17 @@ export const LocationWrapper = memo(function LocationWrapper({
   const { locationMode: selectedLocationMode } = useLocationV2()
   const setSelectedLocationMode = locationActions.setLocationMode
 
+  const hasGeolocPosition = useIsGeolocated()
   const {
-    geolocPosition,
-    geolocPositionError,
     permissionState,
-    hasGeolocPosition,
-    triggerPositionUpdate,
-    onPressGeolocPermissionModalButton,
-    isGeolocPermissionModalVisible,
-    showGeolocPermissionModal,
-    hideGeolocPermissionModal,
-    contextualRequestGeolocPermission,
-  } = useGeolocation()
+    geolocationError: geolocPositionError,
+    isPermissionModalVisible: isGeolocPermissionModalVisible,
+  } = useLocationV2()
+  const { geolocation: geolocPosition } = useLocationConfiguration(LocationMode.AROUND_ME)
+  const {
+    showPermissionModal: showGeolocPermissionModal,
+    hidePermissionModal: hideGeolocPermissionModal,
+  } = locationActions
 
   const onModalHideRef = useRef<() => void>(() => null)
 
@@ -84,15 +90,22 @@ export const LocationWrapper = memo(function LocationWrapper({
   }, [])
 
   useEffect(() => {
+    void contextualCheckPermission()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useAppStateChange(contextualCheckPermission, undefined, [])
+
+  useEffect(() => {
     switch (true) {
       case !!place:
-        storage.saveString('location_type', 'UserSpecificLocation')
+        void storage.saveString('location_type', 'UserSpecificLocation')
         break
       case hasGeolocPosition:
-        storage.saveString('location_type', 'UserGeolocation')
+        void storage.saveString('location_type', 'UserGeolocation')
         break
       default:
-        storage.clear('location_type')
+        void storage.clear('location_type')
         break
     }
     analytics.setEventLocationType()
@@ -131,9 +144,6 @@ export const LocationWrapper = memo(function LocationWrapper({
       geolocPositionError,
       permissionState,
       hasGeolocPosition,
-      contextualRequestGeolocPermission,
-      triggerPositionUpdate,
-      onPressGeolocPermissionModalButton,
       place,
       setPlace,
       showGeolocPermissionModal,

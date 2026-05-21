@@ -1,6 +1,15 @@
 import { MIGRATION_DONE_KEY, runMigrationFromV1 } from 'libs/reviewInApp/migrateFromV1'
+import {
+  incrementOffersViewedCount,
+  OFFERS_VIEWED_COUNT_STORAGE_KEY,
+  resetOffersViewedCount,
+} from 'libs/reviewInApp/offersViewedCounter'
 import { appendHistory, clearHistory, STORAGE_KEY } from 'libs/reviewInApp/reviewHistory'
-import { REVIEW_LOCK_DURATION_MS, REVIEW_QUOTA_LIMIT } from 'libs/reviewInApp/types'
+import {
+  OFFERS_VIEWED_REVIEW_THRESHOLD,
+  REVIEW_LOCK_DURATION_MS,
+  REVIEW_QUOTA_LIMIT,
+} from 'libs/reviewInApp/types'
 import { storage } from 'libs/storage'
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000
@@ -34,4 +43,16 @@ export const seedV1Data = async (): Promise<void> => {
 export const replayMigrationFromV1 = async (): Promise<void> => {
   await storage.clear(MIGRATION_DONE_KEY)
   await runMigrationFromV1()
+}
+
+export const incrementOffersViewed = async (): Promise<void> => {
+  await incrementOffersViewedCount()
+}
+
+export const resetOffersViewed = async (): Promise<void> => {
+  await resetOffersViewedCount()
+}
+
+export const seedOffersViewedAtThresholdMinusOne = async (): Promise<void> => {
+  await storage.saveObject(OFFERS_VIEWED_COUNT_STORAGE_KEY, OFFERS_VIEWED_REVIEW_THRESHOLD - 1)
 }

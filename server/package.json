@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.28.6",
-    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-env": "^7.25.3",
     "@babel/preset-typescript": "^7.27.1",
     "@happy-dom/jest-environment": "^20.8.9",
     "@swc/core": "^1.12.7",

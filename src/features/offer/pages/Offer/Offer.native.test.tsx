@@ -1,3 +1,4 @@
+import InAppReview from 'react-native-in-app-review'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import {
@@ -21,11 +22,18 @@ import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import {
+  OFFERS_VIEWED_COUNT_STORAGE_KEY,
+  readOffersViewedCount,
+} from 'libs/reviewInApp/offersViewedCounter'
+import { clearHistory } from 'libs/reviewInApp/reviewHistory'
+import { OFFERS_VIEWED_REVIEW_THRESHOLD } from 'libs/reviewInApp/types'
+import { storage } from 'libs/storage'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import * as useArtistResultsAPI from 'queries/offer/useArtistResultsQuery'
 import * as ABSegmentModule from 'shared/useABSegment/useABSegment'
 import { mockServer } from 'tests/mswServer'
-import { screen, userEvent, waitFor } from 'tests/utils'
+import { act, screen, userEvent, waitFor } from 'tests/utils'
 import * as useModal from 'ui/components/modals/useModal'
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -66,6 +74,10 @@ jest.spyOn(useModal, 'useModal').mockReturnValue({
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.useFakeTimers()
+
+jest.mock('react-native-in-app-review')
+const mockIsAvailable = InAppReview.isAvailable as jest.Mock
+const mockRequestInAppReview = InAppReview.RequestInAppReview as jest.Mock
 
 const mockUseAuthContext = jest.fn()
 jest.mock('features/auth/context/AuthContext', () => ({
@@ -393,6 +405,47 @@ describe('<Offer />', () => {
           accepted: [...acceptedWithoutVideo, CookieNameEnum.VIDEO_PLAYBACK],
           refused: [],
         })
+      })
+    })
+  })
+
+  describe('offers_viewed review trigger', () => {
+    beforeEach(async () => {
+      mockIsAvailable.mockReturnValue(true)
+      mockRequestInAppReview.mockResolvedValue(true)
+      await storage.clear(OFFERS_VIEWED_COUNT_STORAGE_KEY)
+      await clearHistory()
+    })
+
+    it('calls RequestInAppReview after 2s when the threshold is reached and the flag is on', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_OFFERS])
+      await storage.saveObject(OFFERS_VIEWED_COUNT_STORAGE_KEY, OFFERS_VIEWED_REVIEW_THRESHOLD - 1)
+
+      renderOfferPage({ mockOffer: offerResponseSnap })
+      await act(async () => {})
+      jest.advanceTimersByTime(2000)
+      await act(async () => {})
+
+      await waitFor(() => {
+        expect(mockRequestInAppReview).toHaveBeenCalledTimes(1)
+      })
+
+      expect(await readOffersViewedCount()).toBe(0)
+    })
+
+    it('does not call RequestInAppReview when the flag is off and preserves the counter', async () => {
+      setFeatureFlags([])
+      await storage.saveObject(OFFERS_VIEWED_COUNT_STORAGE_KEY, OFFERS_VIEWED_REVIEW_THRESHOLD - 1)
+
+      renderOfferPage({ mockOffer: offerResponseSnap })
+      await act(async () => {})
+      jest.advanceTimersByTime(2000)
+      await act(async () => {})
+
+      expect(mockRequestInAppReview).not.toHaveBeenCalled()
+
+      await waitFor(async () => {
+        expect(await readOffersViewedCount()).toBe(OFFERS_VIEWED_REVIEW_THRESHOLD)
       })
     })
   })

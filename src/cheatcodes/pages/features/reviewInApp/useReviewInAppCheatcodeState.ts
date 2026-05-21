@@ -3,8 +3,13 @@ import InAppReview from 'react-native-in-app-review'
 
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { readOffersViewedCount } from 'libs/reviewInApp/offersViewedCounter'
 import { canRequestReview, readHistory } from 'libs/reviewInApp/reviewHistory'
-import { REVIEW_LOCK_DURATION_MS, REVIEW_QUOTA_LIMIT } from 'libs/reviewInApp/types'
+import {
+  OFFERS_VIEWED_REVIEW_THRESHOLD,
+  REVIEW_LOCK_DURATION_MS,
+  REVIEW_QUOTA_LIMIT,
+} from 'libs/reviewInApp/types'
 
 export type ReviewInAppCheatcodeState = {
   isNativeAvailable: boolean
@@ -15,10 +20,13 @@ export type ReviewInAppCheatcodeState = {
   canRequest: boolean
   lastPromptAt: number | null
   lockUntil: number | null
+  offersViewedCount: number
+  offersViewedThreshold: number
 }
 
 const computeState = (
   history: number[],
+  offersViewedCount: number,
   isNativeAvailable: boolean,
   isKillSwitchOn: boolean,
   now: number
@@ -33,6 +41,8 @@ const computeState = (
     canRequest: !isKillSwitchOn && isNativeAvailable && canRequestReview(history, now),
     lastPromptAt,
     lockUntil: lastPromptAt === null ? null : lastPromptAt + REVIEW_LOCK_DURATION_MS,
+    offersViewedCount,
+    offersViewedThreshold: OFFERS_VIEWED_REVIEW_THRESHOLD,
   }
 }
 
@@ -45,8 +55,13 @@ export const useReviewInAppCheatcodeState = (): {
 
   const refresh = useCallback(async () => {
     const now = Date.now()
-    const history = await readHistory(now)
-    setState(computeState(history, InAppReview.isAvailable(), isKillSwitchOn, now))
+    const [history, offersViewedCount] = await Promise.all([
+      readHistory(now),
+      readOffersViewedCount(),
+    ])
+    setState(
+      computeState(history, offersViewedCount, InAppReview.isAvailable(), isKillSwitchOn, now)
+    )
   }, [isKillSwitchOn])
 
   useEffect(() => {

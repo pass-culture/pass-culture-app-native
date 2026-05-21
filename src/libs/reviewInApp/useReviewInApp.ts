@@ -47,16 +47,16 @@ export const useReviewInApp = () => {
   useAppStateChange(undefined, cancelPending, [])
 
   const requestReview = useCallback(
-    async (source: ReviewTriggerSource, options?: RequestReviewOptions): Promise<void> => {
-      if (!InAppReview.isAvailable()) return
-      if (disableStoreReview) return
-      if (!triggerEnabledBySource[source]) return
+    async (source: ReviewTriggerSource, options?: RequestReviewOptions): Promise<boolean> => {
+      if (!InAppReview.isAvailable()) return false
+      if (disableStoreReview) return false
+      if (!triggerEnabledBySource[source]) return false
 
-      if (inFlightRef.current) return
-      if (timeoutRef.current !== undefined) return
+      if (inFlightRef.current) return false
+      if (timeoutRef.current !== undefined) return false
 
       const history = await readHistory()
-      if (!canRequestReview(history, Date.now())) return
+      if (!canRequestReview(history, Date.now())) return false
 
       inFlightRef.current = true
       timeoutRef.current = setTimeout(() => {
@@ -70,6 +70,7 @@ export const useReviewInApp = () => {
             inFlightRef.current = false
           })
       }, options?.delayMs ?? DEFAULT_DELAY_MS)
+      return true
     },
     [disableStoreReview, triggerEnabledBySource]
   )
