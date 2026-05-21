@@ -75,36 +75,42 @@ jobs:
 
       - name: Create service account key
         id: create-sa-key
+        env:
+          SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
         run: |
           gcloud iam service-accounts keys create temporary-sa-key.json \
-            --iam-account=${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }} \
-            --project=${{ steps.openid-auth.outputs.project_id }}
+            --iam-account="${SERVICE_ACCOUNT}" \
+            --project="${PROJECT_ID}"
 
       - name: Deploy soft android for ${{ inputs.ENV }}
-        run: |
-          bundle exec fastlane android deploy ota: --env "$ENV"
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
           GOOGLE_APPLICATION_CREDENTIALS: temporary-sa-key.json
           ENV: ${{ inputs.ENV }}
+        run: |
+          bundle exec fastlane android deploy ota: --env "${ENV}"
 
       - name: Deploy soft ios App for ${{ inputs.ENV }}
-        run: |
-          bundle exec fastlane ios deploy ota: --env "$ENV"
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
           GOOGLE_APPLICATION_CREDENTIALS: temporary-sa-key.json
           ENV: ${{ inputs.ENV }}
+        run: |
+          bundle exec fastlane ios deploy ota: --env "${ENV}"
 
       - name: Delete service account key
         if: always()
+        env:
+          SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
         run: |
           KEY_ID=$(jq -r .private_key_id temporary-sa-key.json)
-          gcloud iam service-accounts keys delete "$KEY_ID" \
-            --iam-account=${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }} \
-            --project=${{ steps.openid-auth.outputs.project_id }} \
+          gcloud iam service-accounts keys delete "${KEY_ID}" \
+            --iam-account="${SERVICE_ACCOUNT}" \
+            --project="${PROJECT_ID}" \
             --quiet
           rm -f temporary-sa-key.json
 

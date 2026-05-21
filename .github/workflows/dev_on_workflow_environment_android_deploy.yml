@@ -127,36 +127,36 @@ jobs:
       - name: Create service account key
         id: create-sa-key
         env:
-            NATIVE_DEPLOYER_SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
-            PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
+          SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
         run: |
           gcloud iam service-accounts keys create temporary-sa-key.json \
-            --iam-account="${NATIVE_DEPLOYER_SERVICE_ACCOUNT}" \
+            --iam-account="${SERVICE_ACCOUNT}" \
             --project="${PROJECT_ID}"
 
       - name: Deploy hard android for ${{ inputs.ENV }}
-        run: |
-          if [ "${ENV}" != "production" ]; then
-            bundle exec fastlane android deploy firebase_token:"${TEMPORARY_CREDENTIALS}" --env "${ENV}" --verbose
-          else
-            bundle exec fastlane android deploy --env "${ENV}" --verbose
-          fi
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
           ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
           TEMPORARY_CREDENTIALS: temporary-sa-key.json
           ENV: ${{ inputs.ENV }}
+        run: |
+          if [ "${ENV}" != "production" ]; then
+            bundle exec fastlane android deploy firebase_token:"${TEMPORARY_CREDENTIALS}" --env "${ENV}" --verbose
+          else
+            bundle exec fastlane android deploy --env "${ENV}" --verbose
+          fi
 
       - name: Delete service account key
         if: always()
         env:
-            NATIVE_DEPLOYER_SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }} 
-            PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
+          SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
         run: |
           KEY_ID=$(jq -r .private_key_id temporary-sa-key.json)
-          gcloud iam service-accounts keys delete "$KEY_ID" \
-            --iam-account="${NATIVE_DEPLOYER_SERVICE_ACCOUNT}" \
+          gcloud iam service-accounts keys delete "${KEY_ID}" \
+            --iam-account="${SERVICE_ACCOUNT}" \
             --project="${PROJECT_ID}" \
             --quiet
           rm -f temporary-sa-key.json
