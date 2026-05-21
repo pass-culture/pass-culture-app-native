@@ -1,6 +1,7 @@
 import { addressActions } from 'features/identityCheck/pages/profile/store/addressStore'
 import { cityActions } from 'features/identityCheck/pages/profile/store/cityStore'
 import { nameActions } from 'features/identityCheck/pages/profile/store/nameStore'
+import { phoneNumberActions } from 'features/identityCheck/pages/profile/store/phoneNumberStore'
 import { statusActions } from 'features/identityCheck/pages/profile/store/statusStore'
 
 export const resetProfileStores = () => {
@@ -8,4 +9,5 @@ export const resetProfileStores = () => {
   cityActions.resetCity()
   addressActions.resetAddress()
   statusActions.resetStatus()
+  phoneNumberActions.resetPhoneNumber()
 }

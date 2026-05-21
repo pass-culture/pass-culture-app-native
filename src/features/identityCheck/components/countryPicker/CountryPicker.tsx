@@ -2,12 +2,12 @@ import React from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { COUNTRIES } from 'features/identityCheck/components/countryPicker/constants'
 import { CountryButton } from 'features/identityCheck/components/countryPicker/CountryButton'
 import { formatCallingCode } from 'features/identityCheck/components/countryPicker/formatCallingCode'
 import { Country } from 'features/identityCheck/components/countryPicker/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
+import { WHITELISTED_COUNTRIES } from 'shared/countries/constants'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
@@ -55,9 +55,9 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
         rightIconAccessibilityLabel="Fermer la modale de choix de l’indicatif téléphonique"
         rightIcon={Close}
         onRightIconPress={hideModal}>
-        {COUNTRIES.length > 0 ? (
+        {WHITELISTED_COUNTRIES.length > 0 ? (
           <View accessibilityRole={AccessibilityRole.RADIOGROUP}>
-            {COUNTRIES.map((country) => (
+            {WHITELISTED_COUNTRIES.map((country) => (
               <CountryButton
                 key={country.id}
                 country={country}

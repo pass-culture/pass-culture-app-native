@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker/constants'
 import { CountryPicker } from 'features/identityCheck/components/countryPicker/CountryPicker'
+import { METROPOLITAN_FRANCE } from 'shared/countries/constants'
 import { render, screen, userEvent } from 'tests/utils'
 
 const onSelectCountry = jest.fn()
