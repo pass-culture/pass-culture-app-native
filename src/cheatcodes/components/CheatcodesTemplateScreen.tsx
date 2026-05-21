@@ -10,20 +10,18 @@ import { Spacer } from 'ui/theme'
 type Props = PropsWithChildren<{
   title: string
   flexDirection?: 'row' | 'column'
-  onGoBack?: () => void
 }>
 
 export const CheatcodesTemplateScreen: React.FC<Props> = ({
   title,
   flexDirection = 'row',
   children,
-  onGoBack,
 }) => {
   const headerHeight = useGetHeaderHeight()
 
   return (
     <Page>
-      <PageHeaderWithoutPlaceholder title={title} onGoBack={onGoBack} />
+      <PageHeaderWithoutPlaceholder title={title} />
       <Placeholder height={headerHeight} />
       <ScrollView>
         <StyledContainer flexDirection={flexDirection}>{children}</StyledContainer>

@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
-import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { SubscriptionSuccessModal } from 'features/subscription/components/modals/SubscriptionSuccessModal'
 import { UnsubscribingConfirmationModal } from 'features/subscription/components/modals/UnsubscribingConfirmationModal'
@@ -42,8 +40,7 @@ export const cheatcodesNavigationSubscriptionButtons: CheatcodeCategory[] = [
   subscriptionCheatcodeCategory,
 ]
 
-export function CheatcodesNavigationSubscription(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
+export const CheatcodesNavigationSubscription: FC = () => {
   const [visibleModal, setVisibleModal] = useState<VisibleModal>(null)
 
   const visibleSubscreens = subscriptionCheatcodeCategory.subscreens.filter(
@@ -51,7 +48,7 @@ export function CheatcodesNavigationSubscription(): React.JSX.Element {
   )
 
   return (
-    <CheatcodesTemplateScreen title={subscriptionCheatcodeCategory.title} onGoBack={goBack}>
+    <CheatcodesTemplateScreen title={subscriptionCheatcodeCategory.title}>
       <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
 
       <LinkToCheatcodesScreen

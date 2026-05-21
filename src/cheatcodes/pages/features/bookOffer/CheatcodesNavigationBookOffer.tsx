@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
@@ -9,8 +9,7 @@ const bookOfferCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'BookOffer 🎫',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationBookOffer' },
+    screen: 'CheatcodesNavigationBookOffer',
   },
   subscreens: [
     {
@@ -28,7 +27,7 @@ export const cheatcodesNavigationBookOfferButtons: CheatcodeCategory[] = [
   bookOfferCheatcodeCategory,
 ]
 
-export function CheatcodesNavigationBookOffer(): React.JSX.Element {
+export const CheatcodesNavigationBookOffer: FC = () => {
   return (
     <CheatcodesTemplateScreen title={bookOfferCheatcodeCategory.title}>
       <CheatcodesSubscreensButtonList buttons={bookOfferCheatcodeCategory.subscreens} />

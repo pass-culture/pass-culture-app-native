@@ -1,12 +1,10 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
-import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfilePropConfig'
-import { useGoBack } from 'features/navigation/useGoBack'
 
 const accountManagementCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
@@ -91,12 +89,8 @@ export const cheatcodesNavigationAccountManagementButtons: CheatcodeCategory[] =
   accountManagementCheatcodeCategory,
 ]
 
-export function CheatcodesNavigationAccountManagement(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
-
-  return (
-    <CheatcodesTemplateScreen title={accountManagementCheatcodeCategory.title} onGoBack={goBack}>
-      <CheatcodesSubscreensButtonList buttons={accountManagementCheatcodeCategory.subscreens} />
-    </CheatcodesTemplateScreen>
-  )
-}
+export const CheatcodesNavigationAccountManagement: FC = () => (
+  <CheatcodesTemplateScreen title={accountManagementCheatcodeCategory.title}>
+    <CheatcodesSubscreensButtonList buttons={accountManagementCheatcodeCategory.subscreens} />
+  </CheatcodesTemplateScreen>
+)

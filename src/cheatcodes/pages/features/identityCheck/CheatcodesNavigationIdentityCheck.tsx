@@ -10,10 +10,8 @@ import { NotEligibleEduConnect } from 'features/identityCheck/pages/identificati
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
-import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring/errors'
 
@@ -21,8 +19,7 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'IdentityCheck 🎨',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationIdentityCheck' },
+    screen: 'CheatcodesNavigationIdentityCheck',
   },
   subscreens: [
     {
@@ -34,14 +31,13 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
       id: uuidv4(),
       title: 'NotEligibleEduConnect',
       navigationTarget: {
-        screen: 'CheatcodesStackNavigator',
-        params: { screen: 'CheatcodesScreenNotEligibleEduConnect' },
+        screen: 'CheatcodesScreenNotEligibleEduConnect',
       },
     },
     {
       id: uuidv4(),
       title: 'ComeBackLater',
-      navigationTarget: getSubscriptionPropConfig('ComeBackLater'),
+      navigationTarget: { screen: 'ComeBackLater' },
     },
     {
       id: uuidv4(),
@@ -207,8 +203,7 @@ export const cheatcodesNavigationIdentityCheckButtons: CheatcodeCategory[] = [
   identityCheckCheatcodeCategory,
 ]
 
-export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
+export const CheatcodesNavigationIdentityCheck = (): React.JSX.Element => {
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const [phoneValidationTipsModalVisible, setPhoneValidationTipsModalVisible] = useState(false)
   const { navigate } = useNavigation<UseNavigationType>()
@@ -225,7 +220,7 @@ export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
   )
 
   return (
-    <CheatcodesTemplateScreen title={identityCheckCheatcodeCategory.title} onGoBack={goBack}>
+    <CheatcodesTemplateScreen title={identityCheckCheatcodeCategory.title}>
       <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
 
       <LinkToCheatcodesScreen

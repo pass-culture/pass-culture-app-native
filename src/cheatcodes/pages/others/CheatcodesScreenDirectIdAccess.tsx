@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useMemo, useState } from 'react'
+import React, { FC, useMemo, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
@@ -10,9 +10,7 @@ import {
   DirectIdEntityKey,
   isDirectIdValueValid,
 } from 'cheatcodes/helpers/directIdAccessConfig'
-import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { Button } from 'ui/designSystem/Button/Button'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
@@ -21,8 +19,7 @@ import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 
 const TITLE = 'Accès direct par ID 🎯'
 
-export const CheatcodesScreenDirectIdAccess = (): React.JSX.Element => {
-  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
+export const CheatcodesScreenDirectIdAccess: FC = () => {
   const navigation = useNavigation<UseNavigationType>()
 
   const [selectedKey, setSelectedKey] = useState<DirectIdEntityKey>(DEFAULT_DIRECT_ID_ENTITY_KEY)
@@ -70,7 +67,7 @@ export const CheatcodesScreenDirectIdAccess = (): React.JSX.Element => {
   }
 
   return (
-    <CheatcodesTemplateScreen title={TITLE} onGoBack={goBack} flexDirection="column">
+    <CheatcodesTemplateScreen title={TITLE} flexDirection="column">
       <RadioButtonGroup
         label="Type d’entité"
         options={options}

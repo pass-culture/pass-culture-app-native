@@ -51,7 +51,7 @@ async function checkForAppUpdate() {
   }
 }
 
-export const CheatcodesScreenDebugInformations: FunctionComponent = function () {
+export const CheatcodesScreenDebugInformations: FunctionComponent = () => {
   const [batchInstallationId, setBatchInstallationId] = useState('none')
   const [userEmail, setUserEmail] = useState('')
   const [userId, setUserId] = useState<null | number>(null)

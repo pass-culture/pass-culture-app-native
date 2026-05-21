@@ -3,21 +3,17 @@ import {
   SubscriptionStackRouteName,
 } from 'features/navigation/navigators/SubscriptionStackNavigator/types'
 
-/**
- * The returned object can be passed to "navigateTo" props of in-house components
- */
-export function getSubscriptionPropConfig<Screen extends SubscriptionStackRouteName>(
-  screen: Screen,
-  params?: SubscriptionStackParamList[Screen]
-): {
+type SubscriptionPropNavigationConfig<Screen extends SubscriptionStackRouteName> = {
   screen: 'SubscriptionStackNavigator'
   params?: {
     screen: Screen
     params?: SubscriptionStackParamList[Screen]
   }
-} {
-  return {
-    screen: 'SubscriptionStackNavigator',
-    params: { screen, params },
-  }
 }
+export const getSubscriptionPropConfig = <Screen extends SubscriptionStackRouteName>(
+  screen: Screen,
+  params?: SubscriptionStackParamList[Screen]
+): SubscriptionPropNavigationConfig<Screen> => ({
+  screen: 'SubscriptionStackNavigator',
+  params: { screen, params },
+})

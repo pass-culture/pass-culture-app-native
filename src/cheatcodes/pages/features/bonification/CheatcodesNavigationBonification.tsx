@@ -1,13 +1,11 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
-import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
-import { useGoBack } from 'features/navigation/useGoBack'
 
 const bonificationCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
@@ -97,15 +95,13 @@ export const cheatcodesNavigationBonificationButtons: CheatcodeCategory[] = [
   bonificationCheatcodeCategory,
 ]
 
-export function CheatcodesNavigationBonification(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
-
+export const CheatcodesNavigationBonification: FC = () => {
   const visibleSubscreens = bonificationCheatcodeCategory.subscreens.filter(
     (subscreen) => !subscreen.showOnlyInSearch
   )
 
   return (
-    <CheatcodesTemplateScreen title={bonificationCheatcodeCategory.title} onGoBack={goBack}>
+    <CheatcodesTemplateScreen title={bonificationCheatcodeCategory.title}>
       <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
     </CheatcodesTemplateScreen>
   )

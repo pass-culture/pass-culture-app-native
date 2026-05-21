@@ -1,6 +1,6 @@
-import { createComponentForStaticNavigation } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
+import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/navigators/RootNavigator/navigationOptions'
 import { OnboardingAgeInformation } from 'features/onboarding/pages/onboarding/OnboardingAgeInformation'
 import { OnboardingAgeSelectionFork } from 'features/onboarding/pages/onboarding/OnboardingAgeSelectionFork'
 import { OnboardingGeneralPublicWelcome } from 'features/onboarding/pages/onboarding/OnboardingGeneralPublicWelcome'
@@ -9,6 +9,7 @@ import { OnboardingNotEligible } from 'features/onboarding/pages/onboarding/Onbo
 import { OnboardingWelcome } from 'features/onboarding/pages/onboarding/OnboardingWelcome'
 
 const onboardingStackNavigatorPathDefinition = {
+  screenOptions: ROOT_NAVIGATOR_SCREEN_OPTIONS,
   initialRouteName: 'OnboardingWelcome',
   screens: {
     OnboardingWelcome: {
@@ -60,6 +61,6 @@ export const OnboardingStackNavigator = createNativeStackNavigator(
   onboardingStackNavigatorPathDefinition
 )
 
-const OnboardingScreen = createComponentForStaticNavigation(OnboardingStackNavigator)
+const OnboardingScreen = OnboardingStackNavigator.getComponent()
 
 export default OnboardingScreen

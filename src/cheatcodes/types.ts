@@ -1,20 +1,27 @@
 import {
+  CheatcodesStackParamList,
+  CheatcodesStackRouteName,
+} from 'features/navigation/navigators/CheatcodesStackNavigator/types'
+import {
   RootScreenNames,
   RootStackParamList,
 } from 'features/navigation/navigators/RootNavigator/types'
-
-/**
- * A dedicated object for all navigation-related data.
- */
+import {
+  SubscriptionStackParamList,
+  SubscriptionStackRouteName,
+} from 'features/navigation/navigators/SubscriptionStackNavigator/types'
 type NavigationTarget = {
-  screen: RootScreenNames
-  params?: RootStackParamList[RootScreenNames]
+  screen: CheatcodesStackRouteName
+  params?: CheatcodesStackParamList[CheatcodesStackRouteName]
 }
 
-/**
- * Base properties shared by all cheatcode buttons.
- * The `id` is crucial for React keys.
- */
+type SubScreenNavigationTarget = {
+  screen: RootScreenNames | SubscriptionStackRouteName
+  params?:
+    | RootStackParamList[RootScreenNames]
+    | SubscriptionStackParamList[SubscriptionStackRouteName]
+}
+
 type BaseCheatcodeButton = {
   id: string
   title: string
@@ -22,43 +29,38 @@ type BaseCheatcodeButton = {
   disabled?: boolean
 }
 
-/**
- * A button that navigates to a screen.
- */
 type NavigationButton = BaseCheatcodeButton & {
   navigationTarget: NavigationTarget
-  onPress?: never // Ensures we don't mix navigation with custom actions
+  onPress?: never
 }
 
-/**
- * A button that performs a custom action.
- */
+type SubScreenNavigationButton = BaseCheatcodeButton & {
+  navigationTarget: SubScreenNavigationTarget
+  onPress?: never
+}
+
 type ActionButton = BaseCheatcodeButton & {
   onPress: () => void
   navigationTarget?: never // Ensures we don't mix actions with navigation
 }
 
-/**
- * A button that does nothing on its own but acts as a container.
- */
 type ContainerButton = BaseCheatcodeButton & {
   onPress?: never
   navigationTarget?: never
 }
 
-// A CheatcodeButton is one of the three types above.
-export type CheatcodeButton = NavigationButton | ActionButton | ContainerButton
+export type CheatcodeButton =
+  | NavigationButton
+  | ActionButton
+  | ContainerButton
+  | SubScreenNavigationButton
 
-/**
- * A category represents a top-level group in the cheatcodes menu,
- * containing a list of buttons or subscreens.
- */
 export type CheatcodeCategory = {
   id: string
   title: string
   subscreens: CheatcodeButton[]
 } & ( // A category can also be a tappable button itself
-  | { navigationTarget: NavigationTarget; onPress?: never }
+  | { navigationTarget: NavigationTarget | SubScreenNavigationTarget; onPress?: never }
   | { onPress: () => void; navigationTarget?: never }
   | { onPress?: never; navigationTarget?: never }
 )

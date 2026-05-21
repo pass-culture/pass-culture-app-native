@@ -1,11 +1,9 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
-import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
-import { useGoBack } from 'features/navigation/useGoBack'
 
 const genericPagesCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
@@ -70,12 +68,8 @@ export const cheatcodesNavigationGenericPagesButtons: CheatcodeCategory[] = [
   genericPagesCheatcodeCategory,
 ]
 
-export function CheatcodesNavigationGenericPages(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
-
-  return (
-    <CheatcodesTemplateScreen title={genericPagesCheatcodeCategory.title} onGoBack={goBack}>
-      <CheatcodesSubscreensButtonList buttons={genericPagesCheatcodeCategory.subscreens} />
-    </CheatcodesTemplateScreen>
-  )
-}
+export const CheatcodesNavigationGenericPages: FC = () => (
+  <CheatcodesTemplateScreen title={genericPagesCheatcodeCategory.title}>
+    <CheatcodesSubscreensButtonList buttons={genericPagesCheatcodeCategory.subscreens} />
+  </CheatcodesTemplateScreen>
+)

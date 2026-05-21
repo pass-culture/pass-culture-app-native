@@ -1,12 +1,10 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
-import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { getOnboardingPropConfig } from 'features/navigation/navigators/OnboardingStackNavigator/getOnboardingPropConfig'
-import { useGoBack } from 'features/navigation/useGoBack'
 
 const onboardingCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
@@ -58,12 +56,8 @@ export const cheatcodesNavigationOnboardingButtons: CheatcodeCategory[] = [
   onboardingCheatcodeCategory,
 ]
 
-export function CheatcodesNavigationOnboarding(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
-
-  return (
-    <CheatcodesTemplateScreen title={onboardingCheatcodeCategory.title} onGoBack={goBack}>
-      <CheatcodesSubscreensButtonList buttons={onboardingCheatcodeCategory.subscreens} />
-    </CheatcodesTemplateScreen>
-  )
-}
+export const CheatcodesNavigationOnboarding: FC = () => (
+  <CheatcodesTemplateScreen title={onboardingCheatcodeCategory.title}>
+    <CheatcodesSubscreensButtonList buttons={onboardingCheatcodeCategory.subscreens} />
+  </CheatcodesTemplateScreen>
+)

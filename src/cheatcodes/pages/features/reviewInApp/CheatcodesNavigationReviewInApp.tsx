@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -20,9 +20,7 @@ import {
   useReviewInAppCheatcodeState,
 } from 'cheatcodes/pages/features/reviewInApp/useReviewInAppCheatcodeState'
 import { CheatcodeCategory } from 'cheatcodes/types'
-import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { OFFERS_VIEWED_REVIEW_THRESHOLD, ReviewTriggerSource } from 'libs/reviewInApp/types'
 import { useReviewInApp } from 'libs/reviewInApp/useReviewInApp'
 import { Separator } from 'ui/components/Separator'
@@ -59,8 +57,7 @@ const formatDate = (timestamp: number | null): string => {
   return new Date(timestamp).toLocaleString()
 }
 
-export function CheatcodesNavigationReviewInApp(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
+export const CheatcodesNavigationReviewInApp: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { state, refresh } = useReviewInAppCheatcodeState()
   const { requestReview } = useReviewInApp()
@@ -81,10 +78,7 @@ export function CheatcodesNavigationReviewInApp(): React.JSX.Element {
   }
 
   return (
-    <CheatcodesTemplateScreen
-      title={reviewInAppCheatcodeCategory.title}
-      onGoBack={goBack}
-      flexDirection="column">
+    <CheatcodesTemplateScreen title={reviewInAppCheatcodeCategory.title} flexDirection="column">
       <Section gap={2}>
         <Typo.Title3>État actuel</Typo.Title3>
         <StateBlock state={state} />

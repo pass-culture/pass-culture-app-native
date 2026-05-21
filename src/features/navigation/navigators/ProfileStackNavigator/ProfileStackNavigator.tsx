@@ -1,4 +1,3 @@
-import { createComponentForStaticNavigation } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import Achievements from 'features/achievements/pages/Achievements'
@@ -315,6 +314,6 @@ const profileStackNavigatorPathDefinition = {
 
 export const ProfileStackNavigator = createNativeStackNavigator(profileStackNavigatorPathDefinition)
 
-const ProfileScreen = createComponentForStaticNavigation(ProfileStackNavigator)
+const ProfileScreen = ProfileStackNavigator.getComponent()
 
 export default ProfileScreen

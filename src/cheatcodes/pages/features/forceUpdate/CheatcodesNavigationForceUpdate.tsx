@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
@@ -6,8 +6,6 @@ import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTempla
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { ForceUpdateWithResetErrorBoundary } from 'features/forceUpdate/pages/ForceUpdateWithResetErrorBoundary'
-import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring/errors'
 
@@ -15,8 +13,7 @@ const forceUpdateCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'ForceUpdate 🆙',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationForceUpdate' },
+    screen: 'CheatcodesNavigationForceUpdate',
   },
   subscreens: [
     {
@@ -31,9 +28,7 @@ export const cheatcodesNavigationForceUpdateButtons: CheatcodeCategory[] = [
   forceUpdateCheatcodeCategory,
 ]
 
-export function CheatcodesNavigationForceUpdate(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
-
+export const CheatcodesNavigationForceUpdate: FC = () => {
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const { logType } = useLogTypeFromRemoteConfig()
   const onPressForceUpdate = () => {
@@ -52,7 +47,7 @@ export function CheatcodesNavigationForceUpdate(): React.JSX.Element {
   )
 
   return (
-    <CheatcodesTemplateScreen title={forceUpdateCheatcodeCategory.title} onGoBack={goBack}>
+    <CheatcodesTemplateScreen title={forceUpdateCheatcodeCategory.title}>
       <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
 
       <LinkToCheatcodesScreen

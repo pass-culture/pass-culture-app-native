@@ -1,13 +1,11 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
-import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfilePropConfig'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { useModal } from 'ui/components/modals/useModal'
 
@@ -128,8 +126,7 @@ const profileCheatcodeCategory: CheatcodeCategory = {
 
 export const cheatcodesNavigationProfileButtons: CheatcodeCategory[] = [profileCheatcodeCategory]
 
-export function CheatcodesNavigationProfile(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
+export const CheatcodesNavigationProfile: FC = () => {
   const {
     visible: expiredCreditModalVisible,
     showModal: showExpiredCreditModal,
@@ -141,7 +138,7 @@ export function CheatcodesNavigationProfile(): React.JSX.Element {
   )
 
   return (
-    <CheatcodesTemplateScreen title={profileCheatcodeCategory.title} onGoBack={goBack}>
+    <CheatcodesTemplateScreen title={profileCheatcodeCategory.title}>
       <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
 
       <LinkToCheatcodesScreen

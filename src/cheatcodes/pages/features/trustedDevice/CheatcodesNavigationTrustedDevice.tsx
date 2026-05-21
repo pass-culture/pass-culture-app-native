@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -7,9 +7,7 @@ import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/Cheatcodes
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
-import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -19,16 +17,15 @@ const trustedDeviceCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Trusted device 📱',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationTrustedDevice' },
+    screen: 'CheatcodesNavigationTrustedDevice',
+    params: undefined,
   },
   subscreens: [
     {
       id: uuidv4(),
       title: 'Infos sur l’appareil de confiance',
       navigationTarget: {
-        screen: 'CheatcodesStackNavigator',
-        params: { screen: 'CheatcodesScreenTrustedDeviceInfos' },
+        screen: 'CheatcodesScreenTrustedDeviceInfos',
       },
     },
     {
@@ -55,8 +52,7 @@ export const cheatcodesNavigationTrustedDeviceButtons: CheatcodeCategory[] = [
   trustedDeviceCheatcodeCategory,
 ]
 
-export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
+export const CheatcodesNavigationTrustedDevice: FC = () => {
   const [value, setValue] = useState('')
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -69,7 +65,7 @@ export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
   )
 
   return (
-    <CheatcodesTemplateScreen title={trustedDeviceCheatcodeCategory.title} onGoBack={goBack}>
+    <CheatcodesTemplateScreen title={trustedDeviceCheatcodeCategory.title}>
       <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
 
       <LinkToCheatcodesScreen

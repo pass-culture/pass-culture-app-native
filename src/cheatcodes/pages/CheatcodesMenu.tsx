@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -58,7 +58,7 @@ const filterAndSortCheatcodes = (
     .filter((category): category is CheatcodeCategory => category !== null)
     .sort((a, b) => a.title.localeCompare(b.title))
 
-export function CheatcodesMenu(): React.JSX.Element {
+export const CheatcodesMenu: FC = () => {
   const [searchValue, setSearchValue] = useState('')
   const resetSearch = () => setSearchValue('')
 
@@ -91,8 +91,8 @@ export function CheatcodesMenu(): React.JSX.Element {
       id: uuidv4(),
       title: 'RemoteBanners 🆒',
       navigationTarget: {
-        screen: 'CheatcodesStackNavigator',
-        params: { screen: 'CheatcodesScreenRemoteBanners' },
+        screen: 'CheatcodesScreenRemoteBanners',
+        params: undefined,
       },
       subscreens: [],
     },
@@ -100,8 +100,8 @@ export function CheatcodesMenu(): React.JSX.Element {
       id: uuidv4(),
       title: 'Share 🔗',
       navigationTarget: {
-        screen: 'CheatcodesStackNavigator',
-        params: { screen: 'CheatcodesNavigationShare' },
+        screen: 'CheatcodesNavigationShare',
+        params: undefined,
       },
       subscreens: [],
     },
@@ -109,8 +109,8 @@ export function CheatcodesMenu(): React.JSX.Element {
       id: uuidv4(),
       title: 'Maintenance 🔗',
       navigationTarget: {
-        screen: 'CheatcodesStackNavigator',
-        params: { screen: 'CheatcodesScreenMaintenance' },
+        screen: 'CheatcodesScreenMaintenance',
+        params: undefined,
       },
       subscreens: [],
     },
@@ -125,8 +125,7 @@ export function CheatcodesMenu(): React.JSX.Element {
       id: uuidv4(),
       title: 'AB Tests 🧪',
       navigationTarget: {
-        screen: 'CheatcodesStackNavigator',
-        params: { screen: 'CheatcodesABTest' },
+        screen: 'CheatcodesABTest',
       },
       subscreens: [],
     },
@@ -134,8 +133,7 @@ export function CheatcodesMenu(): React.JSX.Element {
       id: uuidv4(),
       title: 'Campagne MAJ données 🔥',
       navigationTarget: {
-        screen: 'CheatcodesStackNavigator',
-        params: { screen: 'CheatcodesScreenMandatoryUpdate' },
+        screen: 'CheatcodesScreenMandatoryUpdate',
       },
       subscreens: [],
     },
@@ -143,8 +141,7 @@ export function CheatcodesMenu(): React.JSX.Element {
       id: uuidv4(),
       title: 'AccesLibre 🌈',
       navigationTarget: {
-        screen: 'CheatcodesStackNavigator',
-        params: { screen: 'CheatcodesScreenAccesLibre' },
+        screen: 'CheatcodesScreenAccesLibre',
       },
       subscreens: [],
     },
@@ -152,8 +149,7 @@ export function CheatcodesMenu(): React.JSX.Element {
       id: uuidv4(),
       title: 'Debug informations 🪲',
       navigationTarget: {
-        screen: 'CheatcodesStackNavigator',
-        params: { screen: 'CheatcodesScreenDebugInformations' },
+        screen: 'CheatcodesScreenDebugInformations',
       },
       subscreens: [],
     },
@@ -161,8 +157,7 @@ export function CheatcodesMenu(): React.JSX.Element {
       id: uuidv4(),
       title: 'Accès direct par ID 🎯',
       navigationTarget: {
-        screen: 'CheatcodesStackNavigator',
-        params: { screen: 'CheatcodesScreenDirectIdAccess' },
+        screen: 'CheatcodesScreenDirectIdAccess',
       },
       subscreens: [],
     },
@@ -176,8 +171,7 @@ export function CheatcodesMenu(): React.JSX.Element {
       id: uuidv4(),
       title: 'Remote config 📊',
       navigationTarget: {
-        screen: 'CheatcodesStackNavigator',
-        params: { screen: 'CheatcodesScreenRemoteConfig' },
+        screen: 'CheatcodesScreenRemoteConfig',
       },
       subscreens: [],
     },
@@ -185,8 +179,7 @@ export function CheatcodesMenu(): React.JSX.Element {
       id: uuidv4(),
       title: 'Features flags 🏳️',
       navigationTarget: {
-        screen: 'CheatcodesStackNavigator',
-        params: { screen: 'CheatcodesScreenFeatureFlags' },
+        screen: 'CheatcodesScreenFeatureFlags',
       },
       subscreens: [],
     },
@@ -194,8 +187,7 @@ export function CheatcodesMenu(): React.JSX.Element {
       id: uuidv4(),
       title: 'Nouvelles Calédonie 🇳🇨',
       navigationTarget: {
-        screen: 'CheatcodesStackNavigator',
-        params: { screen: 'CheatcodesScreenNewCaledonia' },
+        screen: 'CheatcodesScreenNewCaledonia',
       },
       subscreens: [],
     },

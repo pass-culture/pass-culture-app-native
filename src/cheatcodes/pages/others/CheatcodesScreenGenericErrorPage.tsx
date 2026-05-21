@@ -1,8 +1,7 @@
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
-import { useGoBack } from 'features/navigation/useGoBack'
+import { useNavigation } from '__mocks__/@react-navigation/native'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { GenericErrorPage } from 'ui/pages/GenericErrorPage'
@@ -12,7 +11,7 @@ import { Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const CheatcodesScreenGenericErrorPage = () => {
-  const { goBack } = useGoBack(...homeNavigationConfig)
+  const { goBack } = useNavigation()
   const { top } = useCustomSafeInsets()
   const theme = useTheme()
   return (

@@ -1,4 +1,3 @@
-import { createComponentForStaticNavigation } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { CheatcodesMenu } from 'cheatcodes/pages/CheatcodesMenu'
@@ -52,6 +51,7 @@ const cheatcodesStackNavigatorPathDefinition = {
   screenOptions: {
     headerShown: false,
   },
+  initialRouteName: 'CheatcodesMenu',
   screens: {
     /**** MENU ****/
     CheatcodesMenu: {
@@ -333,6 +333,6 @@ export const CheatcodesStackNavigator = createNativeStackNavigator(
   cheatcodesStackNavigatorPathDefinition
 )
 
-const CheatcodesScreen = createComponentForStaticNavigation(CheatcodesStackNavigator)
+const CheatcodesScreen = CheatcodesStackNavigator.getComponent()
 
 export default CheatcodesScreen

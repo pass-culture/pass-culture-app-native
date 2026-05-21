@@ -1,16 +1,13 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { CheatcodeButton } from 'cheatcodes/types'
-import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 
-export function CheatcodesNavigationShare(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
+export const CheatcodesNavigationShare: FC = () => {
   const { showShareAppModal } = useShareAppContext()
 
   const actionButtons: CheatcodeButton[] = [
@@ -32,7 +29,7 @@ export function CheatcodesNavigationShare(): React.JSX.Element {
   ]
 
   return (
-    <CheatcodesTemplateScreen title="Share 🔗" onGoBack={goBack}>
+    <CheatcodesTemplateScreen title="Share 🔗">
       {actionButtons.map((button) => (
         <LinkToCheatcodesScreen key={button.id} button={button} variant="secondary" />
       ))}

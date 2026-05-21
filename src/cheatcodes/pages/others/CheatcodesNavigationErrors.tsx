@@ -1,4 +1,4 @@
-import React, { createElement, FunctionComponent, useState } from 'react'
+import React, { createElement, FC, useState } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -9,8 +9,6 @@ import { MAX_ASYNC_TEST_REQ_COUNT, useErrorAsyncQuery } from 'cheatcodes/queries
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { NoContentError } from 'features/home/pages/NoContentError'
 import { Maintenance } from 'features/maintenance/pages/Maintenance'
-import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring/errors'
 import { Typo } from 'ui/theme'
@@ -43,8 +41,7 @@ const MaintenanceScreenForCheatcode = () => (
   <Maintenance message="Some maintenance message that is set in Firestore" />
 )
 
-export const CheatcodesNavigationErrors: FunctionComponent = () => {
-  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
+export const CheatcodesNavigationErrors: FC = () => {
   const [renderedError, setRenderedError] = useState(undefined)
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
@@ -64,7 +61,7 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
   )
 
   return (
-    <CheatcodesTemplateScreen title={errorsCheatcodeCategory.title} onGoBack={goBack}>
+    <CheatcodesTemplateScreen title={errorsCheatcodeCategory.title}>
       <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
 
       <LinkToCheatcodesScreen

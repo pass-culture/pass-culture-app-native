@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
@@ -6,10 +6,8 @@ import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTempla
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { useSomeOfferIdQuery } from 'cheatcodes/queries/useSomeOfferIdQuery'
 import { CheatcodeCategory } from 'cheatcodes/types'
-import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { ApplicationProcessingModal } from 'shared/offer/components/ApplicationProcessingModal/ApplicationProcessingModal'
 import { AuthenticationModal } from 'shared/offer/components/AuthenticationModal/AuthenticationModal'
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
@@ -86,8 +84,7 @@ const signUpCheatcodeCategory: CheatcodeCategory = {
 
 export const cheatcodesNavigationSignUpButtons: CheatcodeCategory[] = [signUpCheatcodeCategory]
 
-export function CheatcodesNavigationSignUp(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
+export const CheatcodesNavigationSignUp: FC = () => {
   const offerId = useSomeOfferIdQuery()
   const [visibleModal, setVisibleModal] = useState<VisibleModal>(null)
 
@@ -96,7 +93,7 @@ export function CheatcodesNavigationSignUp(): React.JSX.Element {
   )
 
   return (
-    <CheatcodesTemplateScreen title={signUpCheatcodeCategory.title} onGoBack={goBack}>
+    <CheatcodesTemplateScreen title={signUpCheatcodeCategory.title}>
       <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
 
       <LinkToCheatcodesScreen
