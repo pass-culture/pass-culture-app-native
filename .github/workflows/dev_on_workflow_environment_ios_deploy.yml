@@ -119,11 +119,11 @@ jobs:
           MATCH_PASSWORD: ${{ steps.secrets.outputs.MATCH_PASSWORD }}
           MATCH_USERNAME: ${{ steps.secrets.outputs.MATCH_USERNAME }}
           MATCH_GIT_URL: ${{ steps.secrets.outputs.MATCH_GIT_URL }}
-          TEMPORARY_CREDENTIALS: temporary-sa-key.json
+          GOOGLE_APPLICATION_CREDENTIALS: temporary-sa-key.json
           ENV: ${{ inputs.ENV }}
         run: |
           if [ "${ENV}" != "production" ]; then
-            bundle exec fastlane ios deploy firebase_token:"${TEMPORARY_CREDENTIALS}" --env "${ENV}" --verbose
+            bundle exec fastlane ios deploy firebase_token:"${GOOGLE_APPLICATION_CREDENTIALS}" --env "${ENV}" --verbose
           else
             bundle exec fastlane ios deploy --env "${ENV}" --verbose
           fi

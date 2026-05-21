@@ -139,11 +139,11 @@ jobs:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
           ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
-          TEMPORARY_CREDENTIALS: temporary-sa-key.json
+          GOOGLE_APPLICATION_CREDENTIALS: temporary-sa-key.json
           ENV: ${{ inputs.ENV }}
         run: |
           if [ "${ENV}" != "production" ]; then
-            bundle exec fastlane android deploy firebase_token:"${TEMPORARY_CREDENTIALS}" --env "${ENV}" --verbose
+            bundle exec fastlane android deploy firebase_token:"${GOOGLE_APPLICATION_CREDENTIALS}" --env "${ENV}" --verbose
           else
             bundle exec fastlane android deploy --env "${ENV}" --verbose
           fi
