@@ -1,4 +1,4 @@
-import { StoreApi, UseBoundStore } from 'zustand'
+import { Mutate, StoreApi, UseBoundStore } from 'zustand'
 
 export type AnyFunction = (...args: never[]) => unknown
 
@@ -7,7 +7,9 @@ type Options = {
   persist?: boolean
 }
 type ReplaceSelectByUse<T extends string> = T extends `select${infer U}` ? `use${U}` : never
-type StoreType<State> = UseBoundStore<StoreApi<State>>
+type StoreType<State> = UseBoundStore<
+  Mutate<StoreApi<State>, [['zustand/subscribeWithSelector', never]]>
+>
 
 export type StoreConfig<
   State,

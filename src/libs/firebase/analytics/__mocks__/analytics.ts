@@ -1,4 +1,4 @@
-import { firebaseAnalytics as actualAnalytics } from '../analytics'
+import type { firebaseAnalytics as actualAnalytics } from '../analytics'
 
 export const firebaseAnalytics: typeof actualAnalytics = {
   disableCollection: jest.fn(),

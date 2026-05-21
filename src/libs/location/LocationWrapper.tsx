@@ -1,7 +1,6 @@
 import React, { memo, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 
 import { DEFAULT_RADIUS } from 'features/search/constants'
-import { analytics } from 'libs/analytics/provider'
 import { useAppStateChange } from 'libs/appState'
 import { LocationMode, ILocationContext } from 'libs/location/types'
 import {
@@ -19,7 +18,6 @@ import {
   useUserLocation,
 } from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
-import { storage } from 'libs/storage'
 
 import { GeolocationActivationModal } from './geolocation/components/GeolocationActivationModal'
 
@@ -95,21 +93,6 @@ export const LocationWrapper = memo(function LocationWrapper({
   }, [])
 
   useAppStateChange(contextualCheckPermission, undefined, [])
-
-  useEffect(() => {
-    switch (true) {
-      case !!place:
-        void storage.saveString('location_type', 'UserSpecificLocation')
-        break
-      case hasGeolocPosition:
-        void storage.saveString('location_type', 'UserGeolocation')
-        break
-      default:
-        void storage.clear('location_type')
-        break
-    }
-    analytics.setEventLocationType()
-  }, [hasGeolocPosition, place])
 
   const userLocation = useUserLocation()
 
