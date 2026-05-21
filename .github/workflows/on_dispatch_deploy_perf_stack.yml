@@ -31,7 +31,6 @@ jobs:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  # TODO: is perf environment still needed
   deploy-web-perf:
     needs: [yarn-tester]
     uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
@@ -39,7 +38,6 @@ jobs:
       ENV: perf
       BUCKET_NAME: passculture-metier-ehp-perf-decliweb
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-  # TODO: is perf environment still needed
   deploy-web-proxy-perf:
     needs: [yarn-tester]
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
