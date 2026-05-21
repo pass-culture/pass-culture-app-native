@@ -64,11 +64,11 @@ const rootStackNavigatorPathDefinition: PathConfigMap<RootStackParamList> = {
     parse: screenParamsParser.ReinitializePassword,
   },
   Login: {
-    path: 'connexion',
+    path: 'connexion/email',
     parse: screenParamsParser.Login,
   },
   LoginMethods: {
-    path: 'connexion-methodes',
+    path: 'connexion',
     parse: screenParamsParser.LoginMethods,
   },
   ReinitializePassword: {

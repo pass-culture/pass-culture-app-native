@@ -78,7 +78,7 @@ export const LoginMethods = () => {
 
   const { mutate: signInGoogle } = useSignInMutation({
     params,
-    doNotNavigateOnSigninSuccess: true,
+    doNotNavigateOnSigninSuccess: false,
     onFailure: handleSigninFailure,
     analyticsType: 'SSO_login',
     analyticsMethod: 'fromLoginGoogle',
@@ -86,7 +86,7 @@ export const LoginMethods = () => {
 
   const { mutate: signInApple } = useSignInMutation({
     params,
-    doNotNavigateOnSigninSuccess: true,
+    doNotNavigateOnSigninSuccess: false,
     onFailure: handleSigninFailure,
     analyticsType: 'SSO_login',
     analyticsMethod: 'fromLoginApple',
@@ -105,6 +105,7 @@ export const LoginMethods = () => {
           <Form.MaxWidth>
             <StyledViewGap gap={4}>
               <SSOButtonGoogleBase type="login" onSuccess={signInGoogle} />
+              {/* Web legacy: `params` was used for Apple SSO redirect context persistence. Web Apple SSO is currently disabled. Restore if re-enabled. */}
               {enableAppleSSO ? <SSOButtonAppleBase type="login" onSuccess={signInApple} /> : null}
               <ButtonContainer>
                 <ExternalTouchableLink
