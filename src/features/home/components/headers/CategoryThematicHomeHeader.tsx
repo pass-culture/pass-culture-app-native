@@ -6,6 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { CategoryThematicHeader } from 'features/home/types'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { HomeGradient } from 'ui/svg/HomeGradient'
 import { getSpacing, Typo } from 'ui/theme'
@@ -30,6 +31,14 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({ title, subtitle, color }
       : colorValue
   )
   const gradientWithAlpha = gradientColors.map((colorValue) => colorAlpha(colorValue, alpha))
+  const numberOfLinesTitle = useMobileFontScaleToDisplay({
+    default: 2,
+    at200PercentZoom: undefined,
+  })
+  const numberOfLinesSubtitle = useMobileFontScaleToDisplay({
+    default: 1,
+    at200PercentZoom: undefined,
+  })
 
   return (
     <Container testID="CategoryThematicHomeHeaderV2">
@@ -44,10 +53,10 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({ title, subtitle, color }
       )}
       <TextContainer>
         <Background>
-          <Typo.Title1 numberOfLines={2}>{title}</Typo.Title1>
+          <Typo.Title1 numberOfLines={numberOfLinesTitle}>{title}</Typo.Title1>
           {subtitle ? (
             <ViewGap gap={1}>
-              <Subtitle numberOfLines={1}>{subtitle}</Subtitle>
+              <Subtitle numberOfLines={numberOfLinesSubtitle}>{subtitle}</Subtitle>
             </ViewGap>
           ) : null}
         </Background>

@@ -154,6 +154,9 @@ exports[`ChatbotContainer should render webview correctly 1`] = `
       <View
         style={
           {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
             "flexShrink": 1,
           }
         }

@@ -1,10 +1,11 @@
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
-import { Animated } from 'react-native'
+import { Animated, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { CategoryThematicHeader } from 'features/home/types'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { HomeGradient } from 'ui/svg/HomeGradient'
 import { getSpacing, Typo } from 'ui/theme'
@@ -32,28 +33,53 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
       : colorValue
   )
 
-  return (
-    <Container>
-      <HomeGradient
-        colors={gradientColors}
-        testID="HomeGradient"
-        height={getSpacing(MOBILE_HEADER_HEIGHT)}
-      />
-      <TextContainer>
-        <AnimatedBackground style={{ transform: [{ translateY: gradientTranslation || 0 }] }}>
-          {subtitle ? (
-            <ViewGap gap={1}>
-              <Subtitle numberOfLines={1}>{subtitle}</Subtitle>
-            </ViewGap>
-          ) : null}
-          <Typo.Title1 numberOfLines={2}>{title}</Typo.Title1>
-        </AnimatedBackground>
-      </TextContainer>
-      <AnimatedBackgroundSubscribeButton
-        style={{ transform: [{ translateY: gradientTranslation || 0 }] }}
-      />
-    </Container>
-  )
+  const content = useMobileFontScaleToDisplay({
+    default: (
+      <Container>
+        <HomeGradient
+          colors={gradientColors}
+          testID="HomeGradient"
+          height={getSpacing(MOBILE_HEADER_HEIGHT)}
+        />
+        <TextContainer>
+          <AnimatedBackground style={{ transform: [{ translateY: gradientTranslation || 0 }] }}>
+            {subtitle ? (
+              <ViewGap gap={1}>
+                <Subtitle numberOfLines={1}>{subtitle}</Subtitle>
+              </ViewGap>
+            ) : null}
+            <Typo.Title1 numberOfLines={2}>{title}</Typo.Title1>
+          </AnimatedBackground>
+        </TextContainer>
+        <AnimatedBackgroundSubscribeButton
+          style={{ transform: [{ translateY: gradientTranslation || 0 }] }}
+        />
+      </Container>
+    ),
+    at200PercentZoom: (
+      <View>
+        <HomeGradient
+          colors={gradientColors}
+          testID="HomeGradient"
+          height={getSpacing(MOBILE_HEADER_HEIGHT)}
+        />
+        <View>
+          <AnimatedBackground style={{ transform: [{ translateY: gradientTranslation || 0 }] }}>
+            {subtitle ? (
+              <ViewGap gap={1}>
+                <Subtitle numberOfLines={1}>{subtitle}</Subtitle>
+              </ViewGap>
+            ) : null}
+          </AnimatedBackground>
+        </View>
+        <AnimatedBackgroundSubscribeButton
+          style={{ transform: [{ translateY: gradientTranslation || 0 }] }}
+        />
+      </View>
+    ),
+  })
+
+  return content
 }
 
 export const AnimatedCategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeaderProps> = ({

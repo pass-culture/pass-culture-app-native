@@ -160,7 +160,6 @@ exports[`NotificationAuthModal should match previous snapshot 1`] = `
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
-          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,

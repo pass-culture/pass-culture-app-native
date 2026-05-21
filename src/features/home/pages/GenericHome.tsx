@@ -60,6 +60,7 @@ type GenericHomeProps = {
   onScroll?: ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => void
   videoModuleId?: string
   statusBar?: React.JSX.Element
+  footer?: React.JSX.Element
 }
 
 const keyExtractor = (item: HomepageModule, index: number) => item.id + index
@@ -85,9 +86,11 @@ const renderModule = (
 const FooterComponent = ({
   hasShownAll,
   isLandscape,
+  footer,
 }: {
   hasShownAll: boolean
   isLandscape: boolean
+  footer?: React.JSX.Element
 }) => {
   if (hasShownAll && Platform.OS === 'web') {
     return (
@@ -107,6 +110,7 @@ const FooterComponent = ({
   }
   return (
     <SpacerTabBarContainer isLandscape={isLandscape}>
+      {footer}
       <Spacer.TabBar />
     </SpacerTabBarContainer>
   )
@@ -138,6 +142,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   onScroll: givenOnScroll,
   videoModuleId,
   statusBar,
+  footer,
 }) {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.HOME)
   useMarkScreenInteractive()
@@ -302,6 +307,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
             <FooterComponent
               hasShownAll={enrichedModules.length >= modules.length}
               isLandscape={isLandscape}
+              footer={footer}
             />
           }
           ListHeaderComponent={ListHeader}
@@ -339,10 +345,9 @@ export const GenericHome: FunctionComponent<GenericHomeProps> = (props) => {
   return <OfflinePage />
 }
 
-const HomeBodyLoadingContainer = styled.View<{ hide: boolean }>(({ hide, theme }) => ({
+const HomeBodyLoadingContainer = styled.View<{ hide: boolean }>(({ hide }) => ({
   height: hide ? 0 : '100%',
-  overflow: 'hidden',
-  marginVertical: theme.designSystem.size.spacing.xl,
+  flex: 1,
 }))
 
 const Container = styled(Page)({

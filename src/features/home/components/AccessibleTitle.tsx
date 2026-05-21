@@ -22,7 +22,7 @@ export const AccessibleTitle: React.FC<AccessibleTitleProps> = ({
   accessibilityLabel,
   withTag,
 }) => {
-  const numberOfLines = useMobileFontScaleToDisplay({ default: 2, at200PercentZoom: 3 })
+  const numberOfLines = useMobileFontScaleToDisplay({ default: 2, at200PercentZoom: undefined })
 
   const { titleText, titleEmoji } = separateTitleAndEmojis(title)
   const { titleText: accessibilityLabelTitleText } = separateTitleAndEmojis(

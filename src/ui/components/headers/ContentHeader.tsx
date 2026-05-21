@@ -3,6 +3,7 @@ import { Animated, Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -33,7 +34,10 @@ export const ContentHeader = ({
   const { top } = useSafeAreaInsets()
   const headerHeight = theme.appBarHeight + top
   const { containerStyle, blurContainerNative } = getAnimationState(theme, headerTransition)
-
+  const numberOfLinesTitle = useMobileFontScaleToDisplay({
+    default: 2,
+    at200PercentZoom: undefined,
+  })
   const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
   headerTransition.addListener((opacity) => setAriaHiddenTitle(opacity.value !== 1))
 
@@ -69,7 +73,8 @@ export const ContentHeader = ({
             style={{
               opacity: customHeaderTitleTransition ?? headerTransition,
             }} // Utilisation de l'interpolation effective
-            accessibilityHidden={ariaHiddenTitle}>
+            accessibilityHidden={ariaHiddenTitle}
+            numberOfLinesTitle={numberOfLinesTitle}>
             <Body>{headerTitle}</Body>
           </Title>
         </TitleContainer>
@@ -105,9 +110,11 @@ const TitleContainer = styled.View({
   justifyContent: 'center',
 })
 
-const Title = styled(Animated.Text).attrs({
-  numberOfLines: 2,
-})({
+const Title = styled(Animated.Text).attrs<{ numberOfLinesTitle?: number }>(
+  ({ numberOfLinesTitle }) => ({
+    numberOfLines: numberOfLinesTitle,
+  })
+)({
   flexShrink: 1,
   textAlign: 'center',
   ...(Platform.OS === 'web' ? { whiteSpace: 'pre-wrap' } : {}),

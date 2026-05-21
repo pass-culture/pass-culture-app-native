@@ -1299,6 +1299,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification disabled shou
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
+          numberOfLinesTitle={2}
           style={
             {
               "flexShrink": 1,
@@ -3278,6 +3279,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
+          numberOfLinesTitle={2}
           style={
             {
               "flexShrink": 1,

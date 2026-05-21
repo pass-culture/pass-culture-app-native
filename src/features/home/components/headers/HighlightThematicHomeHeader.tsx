@@ -7,6 +7,7 @@ import { BlackBackground } from 'features/home/components/headers/BlackBackgroun
 import { Introduction } from 'features/home/components/headers/highlightThematic/Introduction'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { HighlightThematicHeader } from 'features/home/types'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 import { getSpacing, Typo } from 'ui/theme'
@@ -31,7 +32,14 @@ export const HighlightThematicHomeHeader: FunctionComponent<HighligthThematicHea
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
 
   const shouldShowIntroduction = !!introductionTitle && !!introductionParagraph
-
+  const numberOfLinesTitle = useMobileFontScaleToDisplay({
+    default: 2,
+    at200PercentZoom: undefined,
+  })
+  const numberOfLinesSubtitle = useMobileFontScaleToDisplay({
+    default: 1,
+    at200PercentZoom: undefined,
+  })
   return (
     <React.Fragment>
       <ImageBackground source={{ uri: imageUrl }}>
@@ -41,8 +49,10 @@ export const HighlightThematicHomeHeader: FunctionComponent<HighligthThematicHea
         <TextContainer>
           <BlackGradient height={HEADER_BLACK_BACKGROUND_HEIGHT} />
           <BlackBackground>
-            {subtitle ? <Subtitle numberOfLines={1}>{subtitle}</Subtitle> : null}
-            <Title numberOfLines={2}>{title}</Title>
+            {subtitle ? (
+              <Subtitle numberOfLines={numberOfLinesSubtitle}>{subtitle}</Subtitle>
+            ) : null}
+            <Title numberOfLines={numberOfLinesTitle}>{title}</Title>
           </BlackBackground>
         </TextContainer>
       </ImageBackground>

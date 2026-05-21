@@ -15,7 +15,7 @@ import { ModalIconProps } from './types'
 type ModalHeaderProps = {
   title: string
   titleID?: string
-  numberOfLines?: number
+  numberOfLines?: number | null
   modalSpacing?: ModalSpacing
   onLayout?: (event: LayoutChangeEvent) => void
 } & ModalIconProps
@@ -60,7 +60,10 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
         ) : null}
       </HeaderActionContainer>
       <TitleContainer>
-        <Title numberOfLines={numberOfLines} nativeID={titleID} testID="modalHeaderTitle">
+        <Title
+          numberOfLines={numberOfLines ?? undefined}
+          nativeID={titleID}
+          testID="modalHeaderTitle">
           {title}
         </Title>
       </TitleContainer>

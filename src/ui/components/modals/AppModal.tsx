@@ -17,6 +17,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 // eslint-disable-next-line no-restricted-imports
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { appModalContainerStyle } from 'ui/components/modals/appModalContainerStyle'
@@ -34,7 +35,7 @@ type Props = {
   animationOutTiming?: number
   title: string
   visible: boolean
-  titleNumberOfLines?: number
+  titleNumberOfLines?: number | null
   shouldDisplayOverlay?: boolean
   scrollEnabled?: boolean
   onBackdropPress?: () => void
@@ -66,7 +67,6 @@ const styles = StyleSheet.create({
   modal: { margin: 'auto', justifyContent: isWeb ? 'center' : 'flex-end' },
 })
 
-const MAX_HEIGHT = 650
 const DESKTOP_FULLSCREEN_RATIO = 0.75
 
 export const AppModal: FunctionComponent<Props> = ({
@@ -233,6 +233,11 @@ export const AppModal: FunctionComponent<Props> = ({
     setFullscreenScrollViewRef,
   ])
 
+  const numberOfLines = useMobileFontScaleToDisplay({
+    default: titleNumberOfLines,
+    at200PercentZoom: null,
+  })
+
   return (
     <StyledModal
       accessibilityModal
@@ -271,7 +276,7 @@ export const AppModal: FunctionComponent<Props> = ({
           ) : (
             <ModalHeader
               title={title}
-              numberOfLines={titleNumberOfLines}
+              numberOfLines={numberOfLines}
               onLayout={updateHeaderHeight}
               titleID={titleId}
               modalSpacing={modalSpacing}
@@ -383,7 +388,7 @@ const ModalContainer = styled.View<ModalContainerProps>(
       theme,
       height,
       desktopConstraints,
-      maxHeight: maxHeight ?? MAX_HEIGHT,
+      maxHeight,
       noPadding,
       noPaddingBottom,
       isLandscape,

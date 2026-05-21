@@ -115,16 +115,16 @@ exports[`NotificationsSettings should render correctly 1`] = `
           </button>
         </div>
         <div
-          class="css-view-175oi2r r-flexShrink-1wbh5a2"
+          class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
         >
-          <h1
-            aria-level="1"
+          <h4
+            aria-level="4"
             class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
             dir="ltr"
             role="heading"
           >
             Suivi et notifications
-          </h1>
+          </h4>
         </div>
         <div
           class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-17s6mgv r-marginLeft-1jkjb r-marginRight-61z16t r-minWidth-vkv6oe"

@@ -80,6 +80,7 @@ export const SearchLanding = () => {
             shouldNavigateToSearchResults
             enableAIFakeDoor={enableAIFakeDoor}
             onPressAIButton={() => handleAIFakeDoorPress('searchAutoComplete')}
+            header={isZoomedAt200 ? searchHeader : undefined}
           />
         </React.Fragment>
       )

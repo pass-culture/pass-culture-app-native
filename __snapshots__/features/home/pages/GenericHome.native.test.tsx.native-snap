@@ -25,9 +25,10 @@ exports[`GenericHome With not displayed skeleton by default should display real 
     hide={false}
     style={
       {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
         "height": "100%",
-        "marginVertical": 24,
-        "overflow": "hidden",
       }
     }
   >
@@ -4308,9 +4309,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
     hide={true}
     style={
       {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
         "height": 0,
-        "marginVertical": 24,
-        "overflow": "hidden",
       }
     }
   >

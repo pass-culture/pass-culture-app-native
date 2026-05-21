@@ -5,12 +5,12 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { useGetHeaderHeightDS } from 'shared/header/useGetHeaderHeight'
 import { Button } from 'ui/designSystem/Button/Button'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
   title?: string
@@ -43,7 +43,10 @@ export const PageHeaderWithoutPlaceholder = forwardRef<View, Props>(
   ) => {
     const { goBack } = useNavigation<UseNavigationType>()
     const headerHeight = useGetHeaderHeightDS()
-
+    const numberOfLines = useMobileFontScaleToDisplay({
+      default: 2,
+      at200PercentZoom: undefined,
+    })
     return (
       <Header
         ref={ref}
@@ -68,7 +71,9 @@ export const PageHeaderWithoutPlaceholder = forwardRef<View, Props>(
 
           {title ? (
             <TitleContainer>
-              <Title nativeID={titleID}>{title}</Title>
+              <Title numberOfLines={numberOfLines} nativeID={titleID}>
+                {title}
+              </Title>
             </TitleContainer>
           ) : null}
 
@@ -96,13 +101,10 @@ const Header = styled(View)(({ theme }) => ({
   borderBottomWidth: 1,
 }))
 
-const TitleContainer = styled.View({
-  flexShrink: 1,
-})
+const TitleContainer = styled.View({ flex: 1, alignItems: 'center' })
 
-const Title = styled(Typo.Title4).attrs(() => ({
-  numberOfLines: 2,
-  ...getHeadingAttrs(1),
+const Title = styled(Typo.Title4).attrs<{ numberOfLines?: number }>(({ numberOfLines }) => ({
+  numberOfLines,
 }))({
   textAlign: 'center',
 })

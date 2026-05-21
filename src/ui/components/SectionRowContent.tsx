@@ -37,7 +37,7 @@ export const SectionRowContent = ({
 }: SectionRowContentProps) => {
   const titleNumberOfLines = useMobileFontScaleToDisplay({
     default: numberOfLines,
-    at200PercentZoom: 3,
+    at200PercentZoom: undefined,
   })
 
   const Title = renderTitle ? (
