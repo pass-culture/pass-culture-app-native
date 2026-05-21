@@ -92,8 +92,13 @@ const locationStore = createStore({
       setGeolocPosition: (geolocation: GeoCoordinates | null) =>
         setConfiguration(LocationMode.AROUND_ME, { geolocation }),
       setGeolocationError: (error: GeolocationError | null) => set({ geolocationError: error }),
-      setPermissionState: (permissionState: GeolocPermissionState | null) =>
-        set({ permissionState }),
+      setPermissionState: (permissionState: GeolocPermissionState | null) => {
+        if (isRejected(permissionState)) {
+          setConfiguration(LocationMode.AROUND_ME, { geolocation: null })
+          set({ geolocationError: null, locationMode: LocationMode.EVERYWHERE })
+        }
+        set({ permissionState })
+      },
       showPermissionModal: () => set({ isPermissionModalVisible: true }),
       hidePermissionModal: () => set({ isPermissionModalVisible: false }),
     }
@@ -115,6 +120,14 @@ const locationStore = createStore({
   },
   options: { persist: false },
 })
+
+function isRejected(permission: GeolocPermissionState | null) {
+  return (
+    !permission ||
+    permission === GeolocPermissionState.DENIED ||
+    permission === GeolocPermissionState.NEVER_ASK_AGAIN
+  )
+}
 
 export const locationActions = locationStore.actions
 export const locationSelectors = locationStore.selectors
