@@ -15,8 +15,7 @@ const profileCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Profile 🎨',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationProfile' },
+    screen: 'CheatcodesNavigationProfile',
   },
   subscreens: [
     {

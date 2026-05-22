@@ -19,8 +19,7 @@ const trustedDeviceCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Trusted device 📱',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationTrustedDevice' },
+    screen: 'CheatcodesNavigationTrustedDevice',
   },
   subscreens: [
     {

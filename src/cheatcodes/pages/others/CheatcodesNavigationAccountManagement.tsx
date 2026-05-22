@@ -12,8 +12,7 @@ const accountManagementCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Account Management ⚙️',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationAccountManagement' },
+    screen: 'CheatcodesNavigationAccountManagement',
   },
   subscreens: [
     {

@@ -21,8 +21,7 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'IdentityCheck 🎨',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationIdentityCheck' },
+    screen: 'CheatcodesNavigationIdentityCheck',
   },
   subscreens: [
     {

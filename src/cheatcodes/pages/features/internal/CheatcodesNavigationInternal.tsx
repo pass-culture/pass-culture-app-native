@@ -11,8 +11,7 @@ const internalCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Internal (Marketing) 🎯',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationInternal' },
+    screen: 'CheatcodesNavigationInternal',
   },
   subscreens: [
     {

@@ -1,3 +1,4 @@
+import { CheatcodesStackRouteName } from 'features/navigation/navigators/CheatcodesStackNavigator/types'
 import {
   RootScreenNames,
   RootStackParamList,
@@ -7,6 +8,10 @@ import {
  * A dedicated object for all navigation-related data.
  */
 type NavigationTarget = {
+  screen: CheatcodesStackRouteName
+}
+
+type SubscreenNavigationTarget = {
   screen: RootScreenNames
   params?: RootStackParamList[RootScreenNames]
 }
@@ -43,7 +48,7 @@ type ActionButton = BaseCheatcodeButton & {
  */
 type ContainerButton = BaseCheatcodeButton & {
   onPress?: never
-  navigationTarget?: never
+  navigationTarget?: SubscreenNavigationTarget
 }
 
 // A CheatcodeButton is one of the three types above.

@@ -11,8 +11,7 @@ const bookingsCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Bookings 🛍️',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationBookings' },
+    screen: 'CheatcodesNavigationBookings',
   },
   subscreens: [
     {

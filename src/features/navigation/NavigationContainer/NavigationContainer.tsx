@@ -1,4 +1,4 @@
-import { useReduxDevToolsExtension } from '@react-navigation/devtools'
+import { useLogger } from '@react-navigation/devtools'
 import {
   DefaultTheme,
   DocumentTitleOptions,
@@ -42,7 +42,7 @@ export const AppNavigationContainer = () => {
   const { hideSplashScreen } = useSplashScreenContext()
   const theme = useTheme()
 
-  useReduxDevToolsExtension(navigationRef)
+  useLogger(navigationRef)
 
   const [isNavReady, setIsNavReady] = useState(false)
   const [initialNavigationState, setInitialNavigationState] = useState<NavigationState>()

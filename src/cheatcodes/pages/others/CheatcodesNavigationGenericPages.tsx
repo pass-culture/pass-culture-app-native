@@ -11,8 +11,7 @@ const genericPagesCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Pages génériques 📄',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationGenericPages' },
+    screen: 'CheatcodesNavigationGenericPages',
   },
   subscreens: [
     {
