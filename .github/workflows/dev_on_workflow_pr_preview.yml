@@ -94,19 +94,27 @@ jobs:
 
       - name: Create service account key
         id: create-sa-key
+        env:
+          SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
         run: |
           gcloud iam service-accounts keys create temporary-sa-key.json \
-            --iam-account=${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }} \
-            --project=${{ steps.openid-auth.outputs.project_id }}
+            --iam-account=${SERVICE_ACCOUNT} \
+            --project=${PROJECT_ID}
           SA_KEY_JSON=$(jq -c . temporary-sa-key.json)
-          echo "FIREBASE_TOKEN=$SA_KEY_JSON" >> "$GITHUB_OUTPUT"
+          echo "FIREBASE_TOKEN=${SA_KEY_JSON}" >> "$GITHUB_OUTPUT"
+          SA_KEY_ID=$(jq -r .private_key_id temporary-sa-key.json)
+          echo "SA_KEY_ID=${SA_KEY_ID}" >> "$GITHUB_OUTPUT"
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         id: firebase-deploy
+        env:
+          FIREBASE_TOKEN: ${{ steps.create-sa-key.outputs.FIREBASE_TOKEN }}
+          PROJECT_ID: pc-native-${{ inputs.ENV }}
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: ${{ steps.create-sa-key.outputs.FIREBASE_TOKEN  }}
+          firebaseServiceAccount: ${FIREBASE_TOKEN}
           expires: ${{ inputs.EXPIRES }}
           projectId: pc-native-${{ inputs.ENV }}
           entryPoint: .
@@ -114,11 +122,14 @@ jobs:
 
       - name: Delete service account key
         if: always()
+        env:
+          SA_KEY_ID: ${{ steps.create-sa-key.outputs.SA_KEY_ID }}
+          SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
         run: |
-          KEY_ID=$(jq -r .private_key_id temporary-sa-key.json)
-          gcloud iam service-accounts keys delete "$KEY_ID" \
-            --iam-account=${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }} \
-            --project=${{ steps.openid-auth.outputs.project_id }} \
+          gcloud iam service-accounts keys delete "${SA_KEY_ID}" \
+            --iam-account=${SERVICE_ACCOUNT} \
+            --project=${PROJECT_ID} \
             --quiet
           rm -f temporary-sa-key.json
 
