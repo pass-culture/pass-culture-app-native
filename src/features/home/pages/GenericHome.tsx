@@ -92,8 +92,10 @@ const FooterComponent = ({
   if (hasShownAll && Platform.OS === 'web') {
     return (
       <React.Fragment>
-        <AccessibilityFooter withHorizontalMargin />
-        <Spacer.TabBar />
+        <FooterContainer>
+          <AccessibilityFooter withHorizontalMargin />
+          <Spacer.TabBar />
+        </FooterContainer>
       </React.Fragment>
     )
   }
