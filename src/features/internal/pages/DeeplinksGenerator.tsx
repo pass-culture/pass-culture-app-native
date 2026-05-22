@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { MOBILE_HEADER_HEIGHT } from 'features/home/components/headers/AnimatedCategoryThematicHomeHeader'
 import { DeeplinksGeneratorForm } from 'features/internal/components/DeeplinksGeneratorForm'
 import { DeeplinksHistory } from 'features/internal/components/DeeplinksHistory'
 import { DeeplinksResult } from 'features/internal/components/DeeplinksResult'
@@ -9,6 +10,7 @@ import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHe
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
+import { getSpacing } from 'ui/theme'
 
 const linksInitialState: Array<string> = []
 
@@ -46,23 +48,11 @@ export const DeeplinksGenerator = () => {
   const rehydratedHistory = useCallback((history: string[]) => {
     setLinks(history)
   }, [])
-  const content = (
-    <Row>
-      <Left>
-        <DeeplinksGeneratorForm onCreate={onGenerate} />
-      </Left>
-      <Right>
-        <DeeplinksResult result={result} />
-        <Divider />
-        <DeeplinksHistory
-          history={links}
-          keepHistory={keepHistory}
-          setKeepHistory={setKeepHistory}
-          rehydrateHistory={rehydratedHistory}
-        />
-      </Right>
-    </Row>
-  )
+
+  const Container = useMobileFontScaleToDisplay({
+    default: ContainerDefault,
+    at200PercentZoom: ContainerZoom,
+  })
 
   return (
     <Page>
@@ -70,10 +60,23 @@ export const DeeplinksGenerator = () => {
         title="Envie de tout envie de lien&nbsp;?"
         shouldDisplayBackButton
       />
-      {useMobileFontScaleToDisplay({
-        default: <Container>{content}</Container>,
-        at200PercentZoom: <Container200>{content}</Container200>,
-      })}
+      <Container>
+        <Row>
+          <Left>
+            <DeeplinksGeneratorForm onCreate={onGenerate} />
+          </Left>
+          <Right>
+            <DeeplinksResult result={result} />
+            <Divider />
+            <DeeplinksHistory
+              history={links}
+              keepHistory={keepHistory}
+              setKeepHistory={setKeepHistory}
+              rehydrateHistory={rehydratedHistory}
+            />
+          </Right>
+        </Row>
+      </Container>
     </Page>
   )
 }
@@ -96,15 +99,15 @@ const Right = styled.View({
   flex: 1,
 })
 
-const Container = styled.View(({ theme }) => ({
+const ContainerDefault = styled.View(({ theme }) => ({
   flex: 1,
   marginTop: theme.designSystem.size.spacing.xl,
   paddingTop: theme.designSystem.size.spacing.xl,
   paddingBottom: theme.designSystem.size.spacing.l,
 }))
-const Container200 = styled.ScrollView(({ theme }) => ({
+const ContainerZoom = styled.ScrollView(({ theme }) => ({
   flex: 1,
-  marginTop: theme.designSystem.size.spacing.xl,
+  marginTop: getSpacing(MOBILE_HEADER_HEIGHT),
   paddingTop: theme.designSystem.size.spacing.xl,
   paddingBottom: theme.designSystem.size.spacing.l,
 }))

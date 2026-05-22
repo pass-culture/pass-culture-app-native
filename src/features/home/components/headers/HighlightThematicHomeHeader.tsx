@@ -7,7 +7,7 @@ import { BlackBackground } from 'features/home/components/headers/BlackBackgroun
 import { Introduction } from 'features/home/components/headers/highlightThematic/Introduction'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { HighlightThematicHeader } from 'features/home/types'
-import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
+import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 import { getSpacing, Typo } from 'ui/theme'
@@ -32,14 +32,9 @@ export const HighlightThematicHomeHeader: FunctionComponent<HighligthThematicHea
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
 
   const shouldShowIntroduction = !!introductionTitle && !!introductionParagraph
-  const numberOfLinesTitle = useMobileFontScaleToDisplay({
-    default: 2,
-    at200PercentZoom: undefined,
-  })
-  const numberOfLinesSubtitle = useMobileFontScaleToDisplay({
-    default: 1,
-    at200PercentZoom: undefined,
-  })
+
+  const numberOfLinesTitle = useNumberOfLine(2)
+  const numberOfLinesSubtitle = useNumberOfLine(1)
   return (
     <React.Fragment>
       <ImageBackground source={{ uri: imageUrl }}>

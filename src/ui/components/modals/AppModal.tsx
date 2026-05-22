@@ -35,7 +35,7 @@ type Props = {
   animationOutTiming?: number
   title: string
   visible: boolean
-  titleNumberOfLines?: number | null
+  titleNumberOfLines?: number
   shouldDisplayOverlay?: boolean
   scrollEnabled?: boolean
   onBackdropPress?: () => void
@@ -235,7 +235,7 @@ export const AppModal: FunctionComponent<Props> = ({
 
   const numberOfLines = useMobileFontScaleToDisplay({
     default: titleNumberOfLines,
-    at200PercentZoom: null,
+    at200PercentZoom: undefined,
   })
 
   return (

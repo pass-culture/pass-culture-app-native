@@ -5,11 +5,12 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
+import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { useGetHeaderHeightDS } from 'shared/header/useGetHeaderHeight'
 import { Button } from 'ui/designSystem/Button/Button'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 // eslint-disable-next-line no-restricted-imports
 
 interface Props {
@@ -43,10 +44,7 @@ export const PageHeaderWithoutPlaceholder = forwardRef<View, Props>(
   ) => {
     const { goBack } = useNavigation<UseNavigationType>()
     const headerHeight = useGetHeaderHeightDS()
-    const numberOfLines = useMobileFontScaleToDisplay({
-      default: 2,
-      at200PercentZoom: undefined,
-    })
+    const numberOfLines = useNumberOfLine(2)
     return (
       <Header
         ref={ref}
@@ -105,6 +103,7 @@ const TitleContainer = styled.View({ flex: 1, alignItems: 'center' })
 
 const Title = styled(Typo.Title4).attrs<{ numberOfLines?: number }>(({ numberOfLines }) => ({
   numberOfLines,
+  ...getHeadingAttrs(1),
 }))({
   textAlign: 'center',
 })

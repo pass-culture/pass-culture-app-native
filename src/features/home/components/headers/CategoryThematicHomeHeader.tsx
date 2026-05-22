@@ -6,7 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { CategoryThematicHeader } from 'features/home/types'
-import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
+import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { HomeGradient } from 'ui/svg/HomeGradient'
 import { getSpacing, Typo } from 'ui/theme'
@@ -31,14 +31,8 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({ title, subtitle, color }
       : colorValue
   )
   const gradientWithAlpha = gradientColors.map((colorValue) => colorAlpha(colorValue, alpha))
-  const numberOfLinesTitle = useMobileFontScaleToDisplay({
-    default: 2,
-    at200PercentZoom: undefined,
-  })
-  const numberOfLinesSubtitle = useMobileFontScaleToDisplay({
-    default: 1,
-    at200PercentZoom: undefined,
-  })
+  const numberOfLinesTitle = useNumberOfLine(2)
+  const numberOfLinesSubtitle = useNumberOfLine(1)
 
   return (
     <Container testID="CategoryThematicHomeHeaderV2">

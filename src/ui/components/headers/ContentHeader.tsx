@@ -3,7 +3,7 @@ import { Animated, Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
+import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -34,10 +34,7 @@ export const ContentHeader = ({
   const { top } = useSafeAreaInsets()
   const headerHeight = theme.appBarHeight + top
   const { containerStyle, blurContainerNative } = getAnimationState(theme, headerTransition)
-  const numberOfLinesTitle = useMobileFontScaleToDisplay({
-    default: 2,
-    at200PercentZoom: undefined,
-  })
+  const numberOfLinesTitle = useNumberOfLine(2)
   const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
   headerTransition.addListener((opacity) => setAriaHiddenTitle(opacity.value !== 1))
 

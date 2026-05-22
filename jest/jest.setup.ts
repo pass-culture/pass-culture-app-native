@@ -38,6 +38,15 @@ jest.mock('react-native-orientation-locker')
 jest.mock('shared/accessibility/helpers/zoomHelpers', () => ({
   useMobileFontScale: () => ({ mobileFontScale: 1 }),
   useMobileFontScaleToDisplay: ({ default: at100PercentZoom }) => at100PercentZoom,
+  useNumberOfLine: (defaultValue: number) => defaultValue,
+  useNumberOfLinesForZoom: (defaultValue: number) => defaultValue,
+  useNumberOfLinesForZoomTitleSubtitle: (
+    titleDefaultValue: number,
+    subtitleDefaultValue: number
+  ) => ({
+    title: titleDefaultValue,
+    subtitle: subtitleDefaultValue,
+  }),
   useWebZoomToDisplay: ({ default: at100PercentZoom }) => at100PercentZoom,
   useZoomInPercent: () => 100,
 }))

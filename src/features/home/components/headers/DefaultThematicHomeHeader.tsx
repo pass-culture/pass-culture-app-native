@@ -3,7 +3,7 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useGetThematicHeaderHeight } from 'features/home/api/helpers/useGetThematicHeaderHeight'
-import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
+import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { Typo } from 'ui/theme'
 
 interface DefaultThematicHomeHeaderProps {
@@ -16,14 +16,9 @@ export const DefaultThematicHomeHeader: FunctionComponent<DefaultThematicHomeHea
   headerSubtitle,
 }) => {
   const headerHeight = useGetThematicHeaderHeight()
-  const numberOfLinesTitle = useMobileFontScaleToDisplay({
-    default: 2,
-    at200PercentZoom: undefined,
-  })
-  const numberOfLinesSubtitle = useMobileFontScaleToDisplay({
-    default: 1,
-    at200PercentZoom: undefined,
-  })
+
+  const numberOfLinesTitle = useNumberOfLine(2)
+  const numberOfLinesSubtitle = useNumberOfLine(1)
   return (
     <Container>
       {headerTitle ? (

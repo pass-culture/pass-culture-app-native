@@ -27,7 +27,7 @@ export const AppModalWithIllustration: FunctionComponent<Props> = ({
     <AppModal
       visible={visible}
       title={title}
-      titleNumberOfLines={useMobileFontScaleToDisplay({ default: 2, at200PercentZoom: null })}
+      titleNumberOfLines={useMobileFontScaleToDisplay({ default: 2, at200PercentZoom: undefined })}
       isFullscreen={useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })}
       rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}

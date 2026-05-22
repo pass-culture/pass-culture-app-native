@@ -1,11 +1,14 @@
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
-import { Animated, View } from 'react-native'
+import { Animated } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { CategoryThematicHeader } from 'features/home/types'
-import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
+import {
+  useMobileFontScaleToDisplay,
+  useNumberOfLine,
+} from 'shared/accessibility/helpers/zoomHelpers'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { HomeGradient } from 'ui/svg/HomeGradient'
 import { getSpacing, Typo } from 'ui/theme'
@@ -33,53 +36,37 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
       : colorValue
   )
 
-  const content = useMobileFontScaleToDisplay({
-    default: (
-      <Container>
-        <HomeGradient
-          colors={gradientColors}
-          testID="HomeGradient"
-          height={getSpacing(MOBILE_HEADER_HEIGHT)}
-        />
-        <TextContainer>
-          <AnimatedBackground style={{ transform: [{ translateY: gradientTranslation || 0 }] }}>
-            {subtitle ? (
-              <ViewGap gap={1}>
-                <Subtitle numberOfLines={1}>{subtitle}</Subtitle>
-              </ViewGap>
-            ) : null}
-            <Typo.Title1 numberOfLines={2}>{title}</Typo.Title1>
-          </AnimatedBackground>
-        </TextContainer>
-        <AnimatedBackgroundSubscribeButton
-          style={{ transform: [{ translateY: gradientTranslation || 0 }] }}
-        />
-      </Container>
-    ),
-    at200PercentZoom: (
-      <View>
-        <HomeGradient
-          colors={gradientColors}
-          testID="HomeGradient"
-          height={getSpacing(MOBILE_HEADER_HEIGHT)}
-        />
-        <View>
-          <AnimatedBackground style={{ transform: [{ translateY: gradientTranslation || 0 }] }}>
-            {subtitle ? (
-              <ViewGap gap={1}>
-                <Subtitle numberOfLines={1}>{subtitle}</Subtitle>
-              </ViewGap>
-            ) : null}
-          </AnimatedBackground>
-        </View>
-        <AnimatedBackgroundSubscribeButton
-          style={{ transform: [{ translateY: gradientTranslation || 0 }] }}
-        />
-      </View>
-    ),
+  const isZoomed = useMobileFontScaleToDisplay({
+    default: false,
+    at200PercentZoom: true,
   })
+  const Container = isZoomed ? ZoomContainer : DefaultContainer
+  const TextContainer = isZoomed ? ZoomTextContainer : DefaultTextContainer
+  const numberOfLinesTitle = useNumberOfLine(2)
+  const numberOfLinesSubtitle = useNumberOfLine(1)
 
-  return content
+  return (
+    <Container>
+      <HomeGradient
+        colors={gradientColors}
+        testID="HomeGradient"
+        height={getSpacing(MOBILE_HEADER_HEIGHT)}
+      />
+      <TextContainer>
+        <AnimatedBackground style={{ transform: [{ translateY: gradientTranslation || 0 }] }}>
+          {subtitle ? (
+            <ViewGap gap={1}>
+              <Subtitle numberOfLines={numberOfLinesSubtitle}>{subtitle}</Subtitle>
+            </ViewGap>
+          ) : null}
+          {isZoomed ? null : <Typo.Title1 numberOfLines={numberOfLinesTitle}>{title}</Typo.Title1>}
+        </AnimatedBackground>
+      </TextContainer>
+      <AnimatedBackgroundSubscribeButton
+        style={{ transform: [{ translateY: gradientTranslation || 0 }] }}
+      />
+    </Container>
+  )
 }
 
 export const AnimatedCategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeaderProps> = ({
@@ -98,7 +85,7 @@ export const AnimatedCategoryThematicHomeHeader: FunctionComponent<CategoryThema
   )
 }
 
-const Container = styled.View({
+const DefaultContainer = styled.View({
   position: 'absolute',
   top: 0,
   left: 0,
@@ -106,7 +93,10 @@ const Container = styled.View({
   height: getSpacing(MOBILE_HEADER_HEIGHT),
 })
 
-const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
+const ZoomContainer = styled.View({})
+const ZoomTextContainer = styled.View({})
+
+const DefaultTextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
 
 const SubscribeButtonContainer = styled.View(({ theme }) => ({
   position: 'absolute',

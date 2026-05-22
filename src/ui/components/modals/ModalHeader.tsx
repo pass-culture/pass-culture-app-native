@@ -3,7 +3,10 @@ import { LayoutChangeEvent, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
+import {
+  useMobileFontScaleToDisplay,
+  useNumberOfLine,
+} from 'shared/accessibility/helpers/zoomHelpers'
 // eslint-disable-next-line no-restricted-imports
 import { ModalSpacing } from 'ui/components/modals/enum'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -15,7 +18,7 @@ import { ModalIconProps } from './types'
 type ModalHeaderProps = {
   title: string
   titleID?: string
-  numberOfLines?: number | null
+  numberOfLines?: number
   modalSpacing?: ModalSpacing
   onLayout?: (event: LayoutChangeEvent) => void
 } & ModalIconProps
@@ -29,7 +32,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   rightIcon,
   rightIconAccessibilityLabel = 'Fermer la modale',
   onRightIconPress,
-  numberOfLines = 2,
+  numberOfLines,
   modalSpacing,
   onLayout,
 }) => {
@@ -40,6 +43,8 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
     }))``
   const { top } = useSafeAreaInsets()
   const marginTop = useMobileFontScaleToDisplay({ default: 0, at200PercentZoom: top })
+
+  const titleNumberOfLines = useNumberOfLine(numberOfLines ?? 2)
 
   return (
     <Container
@@ -60,10 +65,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
         ) : null}
       </HeaderActionContainer>
       <TitleContainer>
-        <Title
-          numberOfLines={numberOfLines ?? undefined}
-          nativeID={titleID}
-          testID="modalHeaderTitle">
+        <Title numberOfLines={titleNumberOfLines} nativeID={titleID} testID="modalHeaderTitle">
           {title}
         </Title>
       </TitleContainer>

@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { DeeplinkItem } from 'features/internal/atoms/DeeplinkItem'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
-import { Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 interface Props {
   result?: string
@@ -23,6 +23,7 @@ export const DeeplinksResult = ({ result }: Props) => {
   )
 
   return useMobileFontScaleToDisplay({
+    //to do
     default: (
       <Container>
         <StyledTitle4>Votre lien</StyledTitle4>
@@ -44,13 +45,12 @@ const Container = styled.ScrollView.attrs({
 })(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.s,
   paddingVertical: theme.designSystem.size.spacing.l,
-  maxHeight: 300,
+  maxHeight: getSpacing(75),
 }))
 
 const Container200 = styled.View(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.s,
   paddingVertical: theme.designSystem.size.spacing.l,
-  maxHeight: 300,
   flexGrow: 1,
 }))
 
