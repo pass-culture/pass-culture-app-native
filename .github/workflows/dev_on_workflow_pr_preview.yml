@@ -123,11 +123,11 @@ jobs:
       - name: Delete service account key
         if: always()
         env:
-          SA_KEY_ID: ${{ steps.create-sa-key.outputs.SA_KEY_ID }}
+          KEY_ID: ${{ steps.create-sa-key.outputs.SA_KEY_ID }}
           SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
           PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
         run: |
-          gcloud iam service-accounts keys delete "${SA_KEY_ID}" \
+          gcloud iam service-accounts keys delete "${KEY_ID}" \
             --iam-account=${SERVICE_ACCOUNT} \
             --project=${PROJECT_ID} \
             --quiet
