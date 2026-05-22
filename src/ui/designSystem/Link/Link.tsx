@@ -7,15 +7,11 @@ import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { ColorsType } from 'theme/types'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import {
-  ExternalTouchableLinkProps,
-  InternalTouchableLinkProps,
-} from 'ui/components/touchableLink/types'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 
 import { getIconSize } from './getIconSize'
+import { getLinkGap } from './getLinkGap'
 import { getLinkTextColor } from './getLinkTextColor'
 import { getLinkTypography } from './getLinkTypography'
 import { LinkProps, LinkSize } from './types'
@@ -24,54 +20,66 @@ export function Link({
   label,
   size = 'default',
   color = 'brand',
-  showIcon = true,
+  icon,
+  isExternal = false,
+  textColor,
   accessibilityLabel,
-  testID,
-  ...navigationProps
+  ...props
 }: LinkProps) {
   const theme = useTheme()
-  const isExternal = 'externalNav' in navigationProps
-  const textColor = getLinkTextColor({ color, theme })
+  const linkTextColor = textColor ?? getLinkTextColor({ color, theme })
+  const Icon = icon ?? (isExternal ? ExternalSiteFilled : undefined)
   const iconSize = getIconSize({ size, theme })
-  const computedAccessibilityLabel =
-    accessibilityLabel ?? (isExternal ? `Nouvelle fenêtre\u00a0: ${label}` : label)
-  const content = (
-    <Content>
-      {showIcon || isExternal ? (
-        <Icon color={textColor} size={iconSize} testID="link-icon" />
-      ) : null}
-      <StyledText testID="link-label" size={size} textColor={textColor}>
-        {label}
-      </StyledText>
-    </Content>
-  )
-
-  if (isExternal) {
-    return (
-      <StyledExternalTouchableLink
-        {...(navigationProps as ExternalTouchableLinkProps)}
-        accessibilityLabel={computedAccessibilityLabel}
-        testID={testID}>
-        {content}
-      </StyledExternalTouchableLink>
-    )
-  }
 
   return (
-    <StyledInternalTouchableLink
-      {...(navigationProps as InternalTouchableLinkProps)}
-      accessibilityLabel={computedAccessibilityLabel}
-      testID={testID}>
-      {content}
-    </StyledInternalTouchableLink>
+    <Container
+      {...props}
+      accessibilityLabel={accessibilityLabel ?? getAccessibilityLabel({ isExternal, label })}>
+      <Content size={size}>
+        {Icon ? (
+          <IconContainer iconSize={iconSize} size={size}>
+            <Icon color={linkTextColor} size={iconSize} testID="link-icon" />
+          </IconContainer>
+        ) : null}
+        <StyledText testID="link-label" size={size} textColor={linkTextColor}>
+          {label}
+        </StyledText>
+      </Content>
+    </Container>
   )
 }
 
-const Content = styled.View(({ theme }) => ({
+function getAccessibilityLabel({ isExternal, label }: { isExternal: boolean; label: string }) {
+  return isExternal ? `Nouvelle fenêtre\u00a0: ${label}` : label
+}
+
+const Container = styled(TouchableOpacity)({
+  flexShrink: 1,
+  maxWidth: '100%',
+  minWidth: 0,
+})
+
+const Content = styled.View<{ size: LinkSize }>(({ theme, size }) => ({
   flexDirection: 'row',
-  alignItems: 'center',
-  columnGap: theme.designSystem.size.spacing.s,
+  alignItems: 'flex-start',
+  columnGap: getLinkGap({ size, theme }),
+  flexShrink: 1,
+  maxWidth: '100%',
+  minWidth: 0,
 }))
+
+const IconContainer = styled.View<{
+  iconSize: number
+  size: LinkSize
+}>(({ theme, iconSize, size }) => {
+  const lineHeight = Number.parseFloat(
+    theme.designSystem.typography[getLinkTypography(size)].lineHeight
+  )
+
+  return {
+    paddingTop: Math.max((lineHeight - iconSize) / 2, 0),
+  }
+})
 
 const StyledText = styled.Text<{
   size: LinkSize
@@ -79,20 +87,7 @@ const StyledText = styled.Text<{
 }>(({ theme, size, textColor }) => ({
   ...theme.designSystem.typography[getLinkTypography(size)],
   color: textColor,
+  flexShrink: 1,
+  minWidth: 0,
   textDecorationLine: 'underline',
 }))
-
-const Icon = styled(ExternalSiteFilled).attrs<{ color: ColorsType; size: number }>(
-  ({ color, size }) => ({
-    color,
-    size,
-  })
-)``
-
-const StyledExternalTouchableLink = styled(ExternalTouchableLink)({
-  alignSelf: 'flex-start',
-})
-
-const StyledInternalTouchableLink = styled(InternalTouchableLink)({
-  alignSelf: 'flex-start',
-})

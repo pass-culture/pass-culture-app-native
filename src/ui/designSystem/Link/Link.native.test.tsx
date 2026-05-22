@@ -6,9 +6,11 @@
 import React from 'react'
 
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { render, screen, userEvent } from 'tests/utils'
 import { theme } from 'theme'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Connect } from 'ui/svg/icons/Connect'
 
 import { Link } from './Link'
 
@@ -19,22 +21,35 @@ jest.useFakeTimers()
 
 describe('<Link />', () => {
   it('should render an accessible link', () => {
-    render(<Link label="Documentation" externalNav={{ url: 'https://example.com' }} />)
+    render(
+      <ExternalTouchableLink
+        as={Link}
+        label="Documentation"
+        externalNav={{ url: 'https://example.com' }}
+        isExternal
+      />
+    )
 
-    expect(screen.getByRole(AccessibilityRole.LINK)).toBeOnTheScreen()
     expect(screen.getByLabelText('Nouvelle fenêtre\u00a0: Documentation')).toBeOnTheScreen()
   })
 
   it('should open href when pressed', async () => {
-    render(<Link label="Documentation" externalNav={{ url: 'https://example.com' }} />)
+    render(
+      <ExternalTouchableLink
+        as={Link}
+        label="Documentation"
+        externalNav={{ url: 'https://example.com' }}
+        isExternal
+      />
+    )
 
-    await user.press(screen.getByRole(AccessibilityRole.LINK))
+    await user.press(screen.getByText('Documentation'))
 
     expect(openUrl).toHaveBeenCalledWith('https://example.com', undefined, true)
   })
 
   it('should use link small typography when size is small', () => {
-    render(<Link label="Documentation" externalNav={{ url: 'https://example.com' }} size="small" />)
+    render(<Link label="Documentation" size="small" />)
 
     expect(screen.getByTestId('link-label')).toHaveStyle({
       fontFamily: theme.designSystem.typography.linkS.fontFamily,
@@ -44,9 +59,7 @@ describe('<Link />', () => {
   })
 
   it('should use link extra small typography when size is extraSmall', () => {
-    render(
-      <Link label="Documentation" externalNav={{ url: 'https://example.com' }} size="extraSmall" />
-    )
+    render(<Link label="Documentation" size="extraSmall" />)
 
     expect(screen.getByTestId('link-label')).toHaveStyle({
       fontFamily: theme.designSystem.typography.linkXs.fontFamily,
@@ -56,24 +69,29 @@ describe('<Link />', () => {
   })
 
   it('should use neutral color when color is neutral', () => {
-    render(
-      <Link label="Documentation" externalNav={{ url: 'https://example.com' }} color="neutral" />
-    )
+    render(<Link label="Documentation" color="neutral" />)
 
     expect(screen.getByTestId('link-label')).toHaveStyle({
       color: theme.designSystem.color.text.default,
     })
   })
 
-  it('should hide icon when showIcon is false and link does not open in a new tab', () => {
+  it('should render default external icon', () => {
+    render(<Link label="Documentation" isExternal />)
+
+    expect(screen.getByTestId('link-icon')).toBeOnTheScreen()
+  })
+
+  it('should render custom icon', () => {
     render(
-      <Link
+      <InternalTouchableLink
+        as={Link}
         label="Documentation"
         navigateTo={{ screen: 'TabNavigator', params: { screen: 'Home' } }}
-        showIcon={false}
+        icon={Connect}
       />
     )
 
-    expect(screen.queryByTestId('link-icon')).not.toBeOnTheScreen()
+    expect(screen.getByTestId('link-icon')).toBeOnTheScreen()
   })
 })

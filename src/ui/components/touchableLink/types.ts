@@ -5,6 +5,7 @@ import { UrlParamsProps } from 'features/navigation/helpers/openUrl'
 import { RootNavigateParams } from 'features/navigation/navigators/RootNavigator/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsType } from 'theme/types'
+import type { LinkBaseProps } from 'ui/designSystem/Link/types'
 
 export type InternalNavigationProps = {
   enableNavigate?: boolean // It is used by offline mode to prevent navigation
@@ -43,7 +44,8 @@ type TouchableLinkGenericProps = {
   highlight?: boolean // If true, uses TouchableHighlight instead of TouchableOpacity to render component
   hoverUnderlineColor?: ColorsType // Color to be used for underline effect on hover. Black if not specified
 } & Omit<TouchableOpacityProps, 'onPress'> &
-  AsProps
+  AsProps &
+  Partial<LinkBaseProps>
 
 export type ExternalTouchableLinkProps = TouchableLinkGenericProps & ExternalNavigationProps
 

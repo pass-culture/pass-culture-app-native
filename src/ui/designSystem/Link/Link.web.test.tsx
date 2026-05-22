@@ -7,6 +7,9 @@ import userEvent from '@testing-library/user-event'
 import React from 'react'
 
 import { render, screen } from 'tests/utils/web'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Connect } from 'ui/svg/icons/Connect'
 
 import { Link } from './Link'
 
@@ -14,7 +17,14 @@ jest.mock('features/navigation/helpers/openUrl')
 
 describe('<Link />', () => {
   it('should render an anchor with href', () => {
-    render(<Link label="Documentation" externalNav={{ url: 'https://example.com' }} />)
+    render(
+      <ExternalTouchableLink
+        as={Link}
+        label="Documentation"
+        externalNav={{ url: 'https://example.com' }}
+        isExternal
+      />
+    )
 
     expect(
       screen.getByRole('link', { name: 'Nouvelle fenêtre\u00a0: Documentation' })
@@ -22,7 +32,14 @@ describe('<Link />', () => {
   })
 
   it('should open external href in a new tab', () => {
-    render(<Link label="Documentation" externalNav={{ url: 'https://example.com' }} />)
+    render(
+      <ExternalTouchableLink
+        as={Link}
+        label="Documentation"
+        externalNav={{ url: 'https://example.com' }}
+        isExternal
+      />
+    )
 
     const link = screen.getByRole('link')
 
@@ -31,21 +48,11 @@ describe('<Link />', () => {
     expect(screen.getByTestId('link-icon')).toBeInTheDocument()
   })
 
-  it('should not open internal link in a new tab', () => {
-    render(
-      <Link
-        label="Documentation"
-        navigateTo={{ screen: 'TabNavigator', params: { screen: 'Home' } }}
-      />
-    )
-
-    expect(screen.getByRole('link')).not.toHaveAttribute('target')
-  })
-
   it('should call onBeforeNavigate when clicked', async () => {
     const onBeforeNavigate = jest.fn()
     render(
-      <Link
+      <ExternalTouchableLink
+        as={Link}
         label="Documentation"
         externalNav={{ url: 'https://example.com' }}
         onBeforeNavigate={onBeforeNavigate}
@@ -55,5 +62,30 @@ describe('<Link />', () => {
     await userEvent.click(screen.getByRole('link'))
 
     expect(onBeforeNavigate).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not open internal link in a new tab', () => {
+    render(
+      <InternalTouchableLink
+        as={Link}
+        label="Documentation"
+        navigateTo={{ screen: 'TabNavigator', params: { screen: 'Home' } }}
+      />
+    )
+
+    expect(screen.getByRole('link')).not.toHaveAttribute('target')
+  })
+
+  it('should render custom icon', () => {
+    render(
+      <InternalTouchableLink
+        as={Link}
+        label="Documentation"
+        navigateTo={{ screen: 'TabNavigator', params: { screen: 'Home' } }}
+        icon={Connect}
+      />
+    )
+
+    expect(screen.getByTestId('link-icon')).toBeInTheDocument()
   })
 })
