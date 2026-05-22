@@ -483,6 +483,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                           "backgroundColor": "transparent",
                           "borderWidth": 0,
                           "flexDirection": "row",
+                          "flexShrink": 0,
                           "justifyContent": "center",
                           "paddingBottom": 2,
                           "paddingLeft": 2,

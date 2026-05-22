@@ -1,6 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - tapOn: 'Se connecter'
+- tapOn: 'Continuer avec mon e-mail'
 
 - assertVisible: 'Connecte-toi'
 - tapOn:
@@ -13,12 +14,12 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - hideKeyboard
+      - hideKeyboard
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: 'Connecte-toi' # Pour fermer le clavier iOS
+      - tapOn: 'Connecte-toi' # Pour fermer le clavier iOS
 - tapOn: 'Se connecter' # Android
 
 - waitForAnimationToEnd

@@ -2,6 +2,7 @@ appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Mon profil'
 - tapOn: 'Se connecter'
+- tapOn: 'Continuer avec mon e-mail'
 
 - assertVisible: 'Connecte-toi'
 - tapOn:
@@ -14,12 +15,12 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - hideKeyboard
+      - hideKeyboard
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: 'Connecte-toi' # Pour fermer le clavier iOS
+      - tapOn: 'Connecte-toi' # Pour fermer le clavier iOS
 
 - tapOn:
     text: 'Se connecter' # Android
@@ -29,9 +30,9 @@ appId: ${MAESTRO_APP_ID}
 
 - runFlow: # Si apparition de l'écran de crédit (félicitations 18 ans)
     when:
-      visible: ".*Bonne nouvelle.*"
+      visible: '.*Bonne nouvelle.*'
     commands:
-      - tapOn: ".*Continuer.*"
+      - tapOn: '.*Continuer.*'
 
 - runFlow: # Si apparition de la modale de suivi des thèmes
     when:
