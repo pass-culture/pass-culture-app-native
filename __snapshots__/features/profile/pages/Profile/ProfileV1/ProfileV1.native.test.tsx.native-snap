@@ -92,6 +92,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                       "borderTopRightRadius": 8,
                       "borderWidth": 1,
                       "flexDirection": "row",
+                      "flexShrink": 0,
                       "justifyContent": "center",
                       "paddingBottom": 8,
                       "paddingLeft": 12,
@@ -2651,6 +2652,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                             "backgroundColor": "transparent",
                             "borderWidth": 0,
                             "flexDirection": "row",
+                            "flexShrink": 0,
                             "justifyContent": "center",
                             "paddingBottom": 2,
                             "paddingLeft": 2,
@@ -2769,663 +2771,717 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Accessibilité : partiellement conforme"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "paddingBottom": 2,
-                        "paddingLeft": 2,
-                        "paddingRight": 2,
-                        "paddingTop": 2,
-                        "width": "auto",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
+                  {
+                    "alignSelf": "flex-start",
+                  }
                 }
-                testID="Accessibilité : partiellement conforme"
               >
                 <View
-                  gap={8}
-                  hasIcon={false}
-                  isMultiline={false}
-                  style={
+                  accessibilityLabel="Accessibilité : partiellement conforme"
+                  accessibilityRole="button"
+                  accessibilityState={
                     {
-                      "alignItems": "center",
-                      "columnGap": 8,
-                      "flexDirection": "row",
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
                     }
                   }
-                >
-                  <Text
-                    style={
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
                       [
                         {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 14,
+                          "userSelect": "auto",
                         },
                         {
-                          "color": "#161617",
-                          "flexBasis": undefined,
-                          "flexGrow": undefined,
-                          "flexShrink": 1,
-                          "maxWidth": "100%",
-                          "minWidth": 0,
-                          "textAlign": undefined,
+                          "alignItems": "center",
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                          "justifyContent": "center",
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
+                          "width": "auto",
                         },
-                      ]
-                    }
-                  >
-                    Accessibilité : partiellement conforme
-                  </Text>
-                </View>
-              </View>
-              <View
-                accessibilityLabel="Plan du site"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
+                      ],
                       {
-                        "userSelect": "auto",
+                        "opacity": 1,
                       },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "paddingBottom": 2,
-                        "paddingLeft": 2,
-                        "paddingRight": 2,
-                        "paddingTop": 2,
-                        "width": "auto",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Plan du site"
-              >
-                <View
-                  gap={8}
-                  hasIcon={false}
-                  isMultiline={false}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "columnGap": 8,
-                      "flexDirection": "row",
-                    }
+                    ]
                   }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 14,
-                        },
-                        {
-                          "color": "#161617",
-                          "flexBasis": undefined,
-                          "flexGrow": undefined,
-                          "flexShrink": 1,
-                          "maxWidth": "100%",
-                          "minWidth": 0,
-                          "textAlign": undefined,
-                        },
-                      ]
-                    }
-                  >
-                    Plan du site
-                  </Text>
-                </View>
-              </View>
-              <View
-                accessibilityLabel="Informations légales"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "paddingBottom": 2,
-                        "paddingLeft": 2,
-                        "paddingRight": 2,
-                        "paddingTop": 2,
-                        "width": "auto",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Informations légales"
-              >
-                <View
-                  gap={8}
-                  hasIcon={false}
-                  isMultiline={false}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "columnGap": 8,
-                      "flexDirection": "row",
-                    }
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 14,
-                        },
-                        {
-                          "color": "#161617",
-                          "flexBasis": undefined,
-                          "flexGrow": undefined,
-                          "flexShrink": 1,
-                          "maxWidth": "100%",
-                          "minWidth": 0,
-                          "textAlign": undefined,
-                        },
-                      ]
-                    }
-                  >
-                    Informations légales
-                  </Text>
-                </View>
-              </View>
-              <View
-                accessibilityLabel="Conditions Générales d’Utilisation"
-                accessibilityRole="link"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "paddingBottom": 2,
-                        "paddingLeft": 2,
-                        "paddingRight": 2,
-                        "paddingTop": 2,
-                        "width": "auto",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Conditions Générales d’Utilisation"
-              >
-                <View
-                  gap={8}
-                  hasIcon={true}
-                  isMultiline={false}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "columnGap": 8,
-                      "flexDirection": "row",
-                    }
-                  }
+                  testID="Accessibilité : partiellement conforme"
                 >
                   <View
-                    collapsable={false}
-                    jestAnimatedProps={
-                      {
-                        "value": {},
-                      }
-                    }
-                    jestAnimatedStyle={
-                      {
-                        "value": {},
-                      }
-                    }
-                    jestInlineStyle={
-                      {
-                        "flexShrink": 0,
-                      }
-                    }
-                    nativeID="0"
+                    gap={8}
+                    hasIcon={false}
+                    isMultiline={false}
                     style={
+                      {
+                        "alignItems": "center",
+                        "columnGap": 8,
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 14,
+                            "lineHeight": 14,
+                          },
+                          {
+                            "color": "#161617",
+                            "flexBasis": undefined,
+                            "flexGrow": undefined,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": undefined,
+                          },
+                        ]
+                      }
+                    >
+                      Accessibilité : partiellement conforme
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "alignSelf": "flex-start",
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Plan du site"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
                       [
                         {
-                          "flexShrink": 0,
+                          "userSelect": "auto",
                         },
-                      ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                          "justifyContent": "center",
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
+                          "width": "auto",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Plan du site"
+                >
+                  <View
+                    gap={8}
+                    hasIcon={false}
+                    isMultiline={false}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "columnGap": 8,
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 14,
+                            "lineHeight": 14,
+                          },
+                          {
+                            "color": "#161617",
+                            "flexBasis": undefined,
+                            "flexGrow": undefined,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": undefined,
+                          },
+                        ]
+                      }
+                    >
+                      Plan du site
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "alignSelf": "flex-start",
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Informations légales"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                          "justifyContent": "center",
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
+                          "width": "auto",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Informations légales"
+                >
+                  <View
+                    gap={8}
+                    hasIcon={false}
+                    isMultiline={false}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "columnGap": 8,
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 14,
+                            "lineHeight": 14,
+                          },
+                          {
+                            "color": "#161617",
+                            "flexBasis": undefined,
+                            "flexGrow": undefined,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": undefined,
+                          },
+                        ]
+                      }
+                    >
+                      Informations légales
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "alignSelf": "flex-start",
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Conditions Générales d’Utilisation"
+                  accessibilityRole="link"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                          "justifyContent": "center",
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
+                          "width": "auto",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Conditions Générales d’Utilisation"
+                >
+                  <View
+                    gap={8}
+                    hasIcon={true}
+                    isMultiline={false}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "columnGap": 8,
+                        "flexDirection": "row",
+                      }
                     }
                   >
                     <View
-                      accessibilityLabel="Nouvelle fenêtre"
-                      height={14}
-                      width={14}
+                      collapsable={false}
+                      jestAnimatedProps={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestAnimatedStyle={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestInlineStyle={
+                        {
+                          "flexShrink": 0,
+                        }
+                      }
+                      nativeID="0"
+                      style={
+                        [
+                          {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        accessibilityLabel="Nouvelle fenêtre"
+                        height={14}
+                        width={14}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 14,
+                            "lineHeight": 14,
+                          },
+                          {
+                            "color": "#161617",
+                            "flexBasis": undefined,
+                            "flexGrow": undefined,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": undefined,
+                          },
+                        ]
+                      }
+                    >
+                      Conditions Générales d’Utilisation
+                    </Text>
                   </View>
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 14,
-                        },
-                        {
-                          "color": "#161617",
-                          "flexBasis": undefined,
-                          "flexGrow": undefined,
-                          "flexShrink": 1,
-                          "maxWidth": "100%",
-                          "minWidth": 0,
-                          "textAlign": undefined,
-                        },
-                      ]
-                    }
-                  >
-                    Conditions Générales d’Utilisation
-                  </Text>
                 </View>
               </View>
               <View
-                accessibilityLabel="Charte des données personnelles"
-                accessibilityRole="link"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "paddingBottom": 2,
-                        "paddingLeft": 2,
-                        "paddingRight": 2,
-                        "paddingTop": 2,
-                        "width": "auto",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
+                  {
+                    "alignSelf": "flex-start",
+                  }
                 }
-                testID="Charte des données personnelles"
               >
                 <View
-                  gap={8}
-                  hasIcon={true}
-                  isMultiline={false}
-                  style={
+                  accessibilityLabel="Charte des données personnelles"
+                  accessibilityRole="link"
+                  accessibilityState={
                     {
-                      "alignItems": "center",
-                      "columnGap": 8,
-                      "flexDirection": "row",
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
                     }
                   }
-                >
-                  <View
-                    collapsable={false}
-                    jestAnimatedProps={
-                      {
-                        "value": {},
-                      }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
-                    jestAnimatedStyle={
-                      {
-                        "value": {},
-                      }
-                    }
-                    jestInlineStyle={
-                      {
-                        "flexShrink": 0,
-                      }
-                    }
-                    nativeID="1"
-                    style={
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
                       [
                         {
-                          "flexShrink": 0,
+                          "userSelect": "auto",
                         },
-                      ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                          "justifyContent": "center",
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
+                          "width": "auto",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Charte des données personnelles"
+                >
+                  <View
+                    gap={8}
+                    hasIcon={true}
+                    isMultiline={false}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "columnGap": 8,
+                        "flexDirection": "row",
+                      }
                     }
                   >
                     <View
-                      accessibilityLabel="Nouvelle fenêtre"
-                      height={14}
-                      width={14}
+                      collapsable={false}
+                      jestAnimatedProps={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestAnimatedStyle={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestInlineStyle={
+                        {
+                          "flexShrink": 0,
+                        }
+                      }
+                      nativeID="1"
+                      style={
+                        [
+                          {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        accessibilityLabel="Nouvelle fenêtre"
+                        height={14}
+                        width={14}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 14,
+                            "lineHeight": 14,
+                          },
+                          {
+                            "color": "#161617",
+                            "flexBasis": undefined,
+                            "flexGrow": undefined,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": undefined,
+                          },
+                        ]
+                      }
+                    >
+                      Charte des données personnelles
+                    </Text>
                   </View>
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 14,
-                        },
-                        {
-                          "color": "#161617",
-                          "flexBasis": undefined,
-                          "flexGrow": undefined,
-                          "flexShrink": 1,
-                          "maxWidth": "100%",
-                          "minWidth": 0,
-                          "textAlign": undefined,
-                        },
-                      ]
-                    }
-                  >
-                    Charte des données personnelles
-                  </Text>
                 </View>
               </View>
               <View
-                accessibilityLabel="Charte d’utilisation et de bonne conduite"
-                accessibilityRole="link"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "paddingBottom": 2,
-                        "paddingLeft": 2,
-                        "paddingRight": 2,
-                        "paddingTop": 2,
-                        "width": "auto",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
+                  {
+                    "alignSelf": "flex-start",
+                  }
                 }
-                testID="Charte d’utilisation et de bonne conduite"
               >
                 <View
-                  gap={8}
-                  hasIcon={true}
-                  isMultiline={false}
-                  style={
+                  accessibilityLabel="Charte d’utilisation et de bonne conduite"
+                  accessibilityRole="link"
+                  accessibilityState={
                     {
-                      "alignItems": "center",
-                      "columnGap": 8,
-                      "flexDirection": "row",
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
                     }
                   }
-                >
-                  <View
-                    collapsable={false}
-                    jestAnimatedProps={
-                      {
-                        "value": {},
-                      }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
-                    jestAnimatedStyle={
-                      {
-                        "value": {},
-                      }
-                    }
-                    jestInlineStyle={
-                      {
-                        "flexShrink": 0,
-                      }
-                    }
-                    nativeID="2"
-                    style={
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
                       [
                         {
-                          "flexShrink": 0,
+                          "userSelect": "auto",
                         },
-                      ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                          "justifyContent": "center",
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
+                          "width": "auto",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Charte d’utilisation et de bonne conduite"
+                >
+                  <View
+                    gap={8}
+                    hasIcon={true}
+                    isMultiline={false}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "columnGap": 8,
+                        "flexDirection": "row",
+                      }
                     }
                   >
                     <View
-                      accessibilityLabel="Nouvelle fenêtre"
-                      height={14}
-                      width={14}
+                      collapsable={false}
+                      jestAnimatedProps={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestAnimatedStyle={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestInlineStyle={
+                        {
+                          "flexShrink": 0,
+                        }
+                      }
+                      nativeID="2"
+                      style={
+                        [
+                          {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        accessibilityLabel="Nouvelle fenêtre"
+                        height={14}
+                        width={14}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 14,
+                            "lineHeight": 14,
+                          },
+                          {
+                            "color": "#161617",
+                            "flexBasis": undefined,
+                            "flexGrow": undefined,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": undefined,
+                          },
+                        ]
+                      }
+                    >
+                      Charte d’utilisation et de bonne conduite
+                    </Text>
                   </View>
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 14,
-                        },
-                        {
-                          "color": "#161617",
-                          "flexBasis": undefined,
-                          "flexGrow": undefined,
-                          "flexShrink": 1,
-                          "maxWidth": "100%",
-                          "minWidth": 0,
-                          "textAlign": undefined,
-                        },
-                      ]
-                    }
-                  >
-                    Charte d’utilisation et de bonne conduite
-                  </Text>
                 </View>
               </View>
             </View>
