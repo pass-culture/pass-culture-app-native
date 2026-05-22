@@ -6,6 +6,8 @@ export type StorageKey =
   | 'adjust_beneficiary_event_sent'
   | 'campaign_date'
   | 'cookies'
+  | 'credit_review_eligible'
+  | 'credit_review_profile_started_at'
   | 'device_id'
   | 'first_time_review_has_been_requested'
   | 'has_seen_birthday_notification_card'

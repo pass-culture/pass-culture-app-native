@@ -3,6 +3,10 @@ import InAppReview from 'react-native-in-app-review'
 
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import {
+  CREDIT_REVIEW_ELIGIBLE_KEY,
+  PROFILE_STARTED_AT_KEY,
+} from 'libs/reviewInApp/creditReviewTrigger'
 import { readOffersViewedCount } from 'libs/reviewInApp/offersViewedCounter'
 import { canRequestReview, readHistory } from 'libs/reviewInApp/reviewHistory'
 import {
@@ -10,6 +14,7 @@ import {
   REVIEW_LOCK_DURATION_MS,
   REVIEW_QUOTA_LIMIT,
 } from 'libs/reviewInApp/types'
+import { storage } from 'libs/storage'
 
 export type ReviewInAppCheatcodeState = {
   isNativeAvailable: boolean
@@ -22,11 +27,15 @@ export type ReviewInAppCheatcodeState = {
   lockUntil: number | null
   offersViewedCount: number
   offersViewedThreshold: number
+  profileStartedAt: number | null
+  isCreditReviewEligible: boolean
 }
 
 const computeState = (
   history: number[],
   offersViewedCount: number,
+  profileStartedAt: number | null,
+  isCreditReviewEligible: boolean,
   isNativeAvailable: boolean,
   isKillSwitchOn: boolean,
   now: number
@@ -43,6 +52,8 @@ const computeState = (
     lockUntil: lastPromptAt === null ? null : lastPromptAt + REVIEW_LOCK_DURATION_MS,
     offersViewedCount,
     offersViewedThreshold: OFFERS_VIEWED_REVIEW_THRESHOLD,
+    profileStartedAt,
+    isCreditReviewEligible,
   }
 }
 
@@ -55,12 +66,22 @@ export const useReviewInAppCheatcodeState = (): {
 
   const refresh = useCallback(async () => {
     const now = Date.now()
-    const [history, offersViewedCount] = await Promise.all([
+    const [history, offersViewedCount, profileStartedAt, creditReviewEligible] = await Promise.all([
       readHistory(now),
       readOffersViewedCount(),
+      storage.readObject<number>(PROFILE_STARTED_AT_KEY),
+      storage.readObject<boolean>(CREDIT_REVIEW_ELIGIBLE_KEY),
     ])
     setState(
-      computeState(history, offersViewedCount, InAppReview.isAvailable(), isKillSwitchOn, now)
+      computeState(
+        history,
+        offersViewedCount,
+        typeof profileStartedAt === 'number' ? profileStartedAt : null,
+        creditReviewEligible === true,
+        InAppReview.isAvailable(),
+        isKillSwitchOn,
+        now
+      )
     )
   }, [isKillSwitchOn])
 

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -7,6 +7,7 @@ import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUndera
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
+import { evaluateCreditReviewEligibility } from 'libs/reviewInApp/creditReviewTrigger'
 import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { defaultCreditByAge } from 'shared/credits/defaultCreditByAge'
@@ -50,6 +51,12 @@ export function BeneficiaryAccountCreated() {
     showShareAppModal(ShareAppModalType.BENEFICIARY)
     resetRecreditAmountToShow()
   }, [resetRecreditAmountToShow, showShareAppModal])
+
+  // The credit has just been granted: evaluate "fast credit" eligibility (<= 24h
+  // since the profile journey started) so the Home can prompt for a store review.
+  useEffect(() => {
+    void evaluateCreditReviewEligibility()
+  }, [])
 
   useEnterKeyAction(navigateToHome)
 
