@@ -9,6 +9,8 @@ import { Dot } from 'ui/svg/icons/Dot'
 import { getSpacing, Typo } from 'ui/theme'
 
 type BulletListItemProps = {
+  accessibilityLabel?: string
+  childrenContainer?: 'text' | 'view'
   text?: string | React.ReactNode
   spacing?: number
   nestedListTexts?: (string | React.ReactNode)[]
@@ -25,10 +27,12 @@ export const BulletListItem: React.FC<BulletListItemProps> = ({
   groupLabel,
   accessibilityRole,
   children,
+  accessibilityLabel: customAccessibilityLabel,
+  childrenContainer = 'text',
 }) => {
   const nodes = [text, children].filter(Boolean)
   const baseText = <React.Fragment>{nodes}</React.Fragment>
-  const accessibilityLabel = extractTextFromReactNode(baseText)
+  const accessibilityLabel = customAccessibilityLabel ?? extractTextFromReactNode(baseText)
 
   return (
     <Li
@@ -41,10 +45,17 @@ export const BulletListItem: React.FC<BulletListItemProps> = ({
         <BulletContainer>
           <Bullet />
         </BulletContainer>
-        <ListText>
-          {text}
-          {children}
-        </ListText>
+        {childrenContainer === 'view' ? (
+          <ListContent>
+            {text}
+            {children}
+          </ListContent>
+        ) : (
+          <ListText>
+            {text}
+            {children}
+          </ListText>
+        )}
       </ItemContainer>
 
       {nestedListTexts ? (
@@ -106,6 +117,11 @@ const BulletContainer = styled.View(({ theme }) => ({
 }))
 
 const ListText = styled(Typo.Body)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.m,
+  flex: 1,
+}))
+
+const ListContent = styled.View(({ theme }) => ({
   marginLeft: theme.designSystem.size.spacing.m,
   flex: 1,
 }))

@@ -7,11 +7,11 @@ import {
 } from 'features/navigation/navigators/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ColorsType } from 'theme/types'
-import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Link } from 'ui/designSystem/Link/Link'
+import { TextWithLink } from 'ui/designSystem/TextWithLink/TextWithLink'
 import { Connect } from 'ui/svg/icons/Connect'
 import { ProfileFilled } from 'ui/svg/icons/ProfileFilled'
-import { Typo } from 'ui/theme'
 
 type LoginProps = {
   type: 'login'
@@ -47,37 +47,24 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
   const color = linkColor ?? designSystem.color.icon.brandPrimary
 
   return (
-    <AuthenticationContainer>
-      <StyledBody>{text}</StyledBody>
-      <ButtonContainer>
-        {isLogin ? <Connect color={color} /> : <ProfileFilled color={color} />}
+    <AuthenticationTextWithLink
+      beforeText={text}
+      linkLabel={wording}
+      icon={isLogin ? Connect : ProfileFilled}
+      textColor={color}
+      renderLink={(linkProps) => (
         <InternalTouchableLink
-          as={LinkInsideText}
+          as={Link}
           navigateTo={nextNavigation}
-          wording={wording}
-          color={color}
           onBeforeNavigate={onPress}
           accessibilityRole={AccessibilityRole.BUTTON}
+          {...linkProps}
         />
-      </ButtonContainer>
-    </AuthenticationContainer>
+      )}
+    />
   )
 }
 
-const ButtonContainer = styled.View(({ theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  gap: theme.designSystem.size.spacing.xs,
-}))
-
-const AuthenticationContainer = styled.View(({ theme }) => ({
-  alignItems: 'center',
-  flexDirection: 'row',
+const AuthenticationTextWithLink = styled(TextWithLink)({
   justifyContent: 'center',
-  gap: theme.designSystem.size.spacing.xs,
-  flexWrap: 'wrap',
-}))
-
-const StyledBody = styled(Typo.Body)({
-  textAlign: 'center',
 })

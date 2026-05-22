@@ -295,8 +295,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
-                  "marginBottom": 32,
-                  "marginTop": 16,
                 }
               }
             >
@@ -2215,38 +2213,162 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
             >
               On te redemandera bien sûr ton consentement si notre politique évolue.
             </Text>
-            <Text
+            <View
               style={
-                {
-                  "color": "#696a6f",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginBottom": 32,
-                  "marginTop": 16,
-                }
+                [
+                  {
+                    "alignItems": "center",
+                    "columnGap": 4,
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "rowGap": 0,
+                  },
+                  {
+                    "marginBottom": 32,
+                    "marginTop": 16,
+                  },
+                ]
               }
             >
-              Pour plus d’informations, nous t’invitons à consulter notre 
-               
               <Text
-                accessibilityLabel="politique de gestion des cookies, lien externe"
-                accessibilityRole="link"
-                onPress={[Function]}
+                color="subtle"
                 style={
                   {
-                    "color": "#6123df",
-                    "cursor": "pointer",
+                    "color": "#696a6f",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
-                    "textDecorationLine": "underline",
                   }
                 }
               >
-                politique de gestion des cookies
+                Pour plus d’informations, nous t’invitons à consulter
               </Text>
-            </Text>
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "columnGap": 4,
+                    "flexDirection": "row",
+                    "flexShrink": 1,
+                  }
+                }
+              >
+                <Text
+                  color="subtle"
+                  style={
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
+                  }
+                >
+                  notre
+                </Text>
+                <View
+                  accessibilityLabel="Nouvelle fenêtre : politique de gestion des cookies"
+                  accessibilityRole="link"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "flexShrink": 1,
+                          "maxWidth": "100%",
+                          "minWidth": 0,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Nouvelle fenêtre : politique de gestion des cookies"
+                >
+                  <View
+                    size="extraSmall"
+                    style={
+                      {
+                        "alignItems": "flex-start",
+                        "columnGap": 4,
+                        "flexDirection": "row",
+                        "flexShrink": 1,
+                        "maxWidth": "100%",
+                        "minWidth": 0,
+                      }
+                    }
+                  >
+                    <View
+                      iconSize={16}
+                      size="extraSmall"
+                      style={
+                        {
+                          "paddingTop": 1.5999999999999996,
+                        }
+                      }
+                    >
+                      <View
+                        accessibilityLabel="Nouvelle fenêtre"
+                        height={16}
+                        testID="link-icon"
+                        width={16}
+                      >
+                        <Text>
+                          link-icon-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      size="extraSmall"
+                      style={
+                        {
+                          "color": "#6123df",
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                          "minWidth": 0,
+                          "textDecorationLine": "underline",
+                        }
+                      }
+                      testID="link-label"
+                      textColor="#6123df"
+                    >
+                      politique de gestion des cookies
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
             <View
               accessibilityLabel="Enregistrer mes choix"
               accessibilityRole="button"

@@ -296,40 +296,172 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               >
                 Le pass Culture s’engage à rendre ses applications mobiles accessibles conformément à l’article 47 de la loi n° 2005-102 du 11 février 2005.
               </Text>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                La présente déclaration d’accessibilité s’applique à
-                 
+              <View>
                 <Text
-                  accessibilityLabel="l’application Android, lien externe"
-                  accessibilityRole="link"
-                  onPress={[Function]}
                   style={
                     {
-                      "color": "#6123df",
-                      "cursor": "pointer",
-                      "fontFamily": "Montserrat-SemiBold",
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
-                      "lineHeight": 22,
-                      "textDecorationLine": "underline",
+                      "lineHeight": 25.6,
                     }
                   }
                 >
-                  l’application Android
+                  La présente déclaration d’accessibilité
                 </Text>
-                 
-                version 
-                1.386.1
-                 du pass Culture.
-              </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "columnGap": 4,
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
+                      "rowGap": 0,
+                    }
+                  }
+                >
+                  <Text
+                    color="default"
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    s’applique à
+                  </Text>
+                  <View
+                    accessibilityLabel="Nouvelle fenêtre : l’application Android"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Nouvelle fenêtre : l’application Android"
+                  >
+                    <View
+                      size="default"
+                      style={
+                        {
+                          "alignItems": "flex-start",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                          "flexShrink": 1,
+                          "maxWidth": "100%",
+                          "minWidth": 0,
+                        }
+                      }
+                    >
+                      <View
+                        iconSize={24}
+                        size="default"
+                        style={
+                          {
+                            "paddingTop": 0.8000000000000007,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={24}
+                          testID="link-icon"
+                          width={24}
+                        >
+                          <Text>
+                            link-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        size="default"
+                        style={
+                          {
+                            "color": "#6123df",
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "minWidth": 0,
+                            "textDecorationLine": "underline",
+                          }
+                        }
+                        testID="link-label"
+                        textColor="#6123df"
+                      >
+                        l’application Android
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    color="default"
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    version
+                  </Text>
+                  <Text
+                    color="default"
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    1.386.1 du pass Culture.
+                  </Text>
+                </View>
+              </View>
             </View>
             <View
               style={
@@ -1563,36 +1695,146 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               >
                 Le pass Culture s’engage à prendre les moyens nécessaires afin de donner accès, dans un délai raisonnable, aux informations et fonctionnalités recherchées par la personne handicapée, que le contenu fasse l’objet d’une dérogation ou non.
               </Text>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter afin qu’une assistance puisse être apportée :
-                 
+              <View>
                 <Text
-                  accessibilityLabel="contacter le support, lien externe"
-                  accessibilityRole="link"
-                  onPress={[Function]}
                   style={
                     {
-                      "color": "#6123df",
-                      "cursor": "pointer",
-                      "fontFamily": "Montserrat-SemiBold",
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
-                      "lineHeight": 22,
-                      "textDecorationLine": "underline",
+                      "lineHeight": 25.6,
                     }
                   }
                 >
-                  contacter le support
+                  Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter afin qu’une assistance puisse
                 </Text>
-              </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "columnGap": 4,
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
+                      "rowGap": 0,
+                    }
+                  }
+                >
+                  <Text
+                    color="default"
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    être apportée :
+                  </Text>
+                  <View
+                    accessibilityLabel="Nouvelle fenêtre : contacter le support"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Nouvelle fenêtre : contacter le support"
+                  >
+                    <View
+                      size="default"
+                      style={
+                        {
+                          "alignItems": "flex-start",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                          "flexShrink": 1,
+                          "maxWidth": "100%",
+                          "minWidth": 0,
+                        }
+                      }
+                    >
+                      <View
+                        iconSize={24}
+                        size="default"
+                        style={
+                          {
+                            "paddingTop": 0.8000000000000007,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={24}
+                          testID="link-icon"
+                          width={24}
+                        >
+                          <Text>
+                            link-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        size="default"
+                        style={
+                          {
+                            "color": "#6123df",
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "minWidth": 0,
+                            "textDecorationLine": "underline",
+                          }
+                        }
+                        testID="link-label"
+                        textColor="#6123df"
+                      >
+                        contacter le support
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
             </View>
             <View
               style={
@@ -1645,66 +1887,258 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   }
                 }
               >
-                <Text
+                <View
                   style={
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "alignItems": "center",
+                      "columnGap": 4,
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
+                      "rowGap": 0,
                     }
                   }
                 >
-                  Écrire un message au
-                   
                   <Text
-                    accessibilityLabel="Défenseur des droits, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
+                    color="default"
                     style={
                       {
-                        "color": "#6123df",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-SemiBold",
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
-                        "lineHeight": 22,
-                        "textDecorationLine": "underline",
+                        "lineHeight": 25.6,
                       }
                     }
                   >
-                    Défenseur des droits
+                    Écrire un message au
                   </Text>
-                </Text>
-                <Text
+                  <View
+                    accessibilityLabel="Nouvelle fenêtre : Défenseur des droits"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Nouvelle fenêtre : Défenseur des droits"
+                  >
+                    <View
+                      size="default"
+                      style={
+                        {
+                          "alignItems": "flex-start",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                          "flexShrink": 1,
+                          "maxWidth": "100%",
+                          "minWidth": 0,
+                        }
+                      }
+                    >
+                      <View
+                        iconSize={24}
+                        size="default"
+                        style={
+                          {
+                            "paddingTop": 0.8000000000000007,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={24}
+                          testID="link-icon"
+                          width={24}
+                        >
+                          <Text>
+                            link-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        size="default"
+                        style={
+                          {
+                            "color": "#6123df",
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "minWidth": 0,
+                            "textDecorationLine": "underline",
+                          }
+                        }
+                        testID="link-label"
+                        textColor="#6123df"
+                      >
+                        Défenseur des droits
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
                   style={
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "alignItems": "center",
+                      "columnGap": 4,
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
+                      "rowGap": 0,
                     }
                   }
                 >
-                  Contacter le délégué du
-                   
                   <Text
-                    accessibilityLabel="Défenseur des droits dans votre région, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
+                    color="default"
                     style={
                       {
-                        "color": "#6123df",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-SemiBold",
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
-                        "lineHeight": 22,
-                        "textDecorationLine": "underline",
+                        "lineHeight": 25.6,
                       }
                     }
                   >
-                    Défenseur des droits dans votre région
+                    Contacter le délégué du
                   </Text>
-                </Text>
+                  <View
+                    accessibilityLabel="Nouvelle fenêtre : Défenseur des droits dans votre région"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Nouvelle fenêtre : Défenseur des droits dans votre région"
+                  >
+                    <View
+                      size="default"
+                      style={
+                        {
+                          "alignItems": "flex-start",
+                          "columnGap": 8,
+                          "flexDirection": "row",
+                          "flexShrink": 1,
+                          "maxWidth": "100%",
+                          "minWidth": 0,
+                        }
+                      }
+                    >
+                      <View
+                        iconSize={24}
+                        size="default"
+                        style={
+                          {
+                            "paddingTop": 0.8000000000000007,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={24}
+                          testID="link-icon"
+                          width={24}
+                        >
+                          <Text>
+                            link-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        size="default"
+                        style={
+                          {
+                            "color": "#6123df",
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "minWidth": 0,
+                            "textDecorationLine": "underline",
+                          }
+                        }
+                        testID="link-label"
+                        textColor="#6123df"
+                      >
+                        Défenseur des droits dans votre région
+                      </Text>
+                    </View>
+                  </View>
+                </View>
                 <Text
                   style={
                     {

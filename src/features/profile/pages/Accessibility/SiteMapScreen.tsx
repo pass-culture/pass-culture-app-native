@@ -9,7 +9,7 @@ import { getLineHeightPx } from 'libs/parsers/getLineHeightPx'
 import { Li } from 'ui/components/Li'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
-import { Button } from 'ui/designSystem/Button/Button'
+import { Link } from 'ui/designSystem/Link/Link'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Dot } from 'ui/svg/icons/Dot'
 
@@ -47,12 +47,12 @@ export function SiteMapScreen() {
                   </BulletContainer>
                   <ListText>
                     <InternalTouchableLink
-                      as={Button}
-                      variant="tertiary"
+                      as={Link}
+                      label={item.wording}
                       color="neutral"
-                      wording={item.wording}
+                      size="small"
                       navigateTo={item.navigateTo}
-                      justifyContent="flex-start"
+                      accessibilityRole={AccessibilityRole.BUTTON}
                     />
                   </ListText>
                 </ItemContainer>
@@ -73,12 +73,12 @@ export function SiteMapScreen() {
                   </BulletContainer>
                   <ListText>
                     <InternalTouchableLink
-                      as={Button}
-                      variant="tertiary"
+                      as={Link}
+                      label={subPage.wording}
                       color="neutral"
-                      wording={subPage.wording}
+                      size="small"
                       navigateTo={subPage.navigateTo}
-                      justifyContent="flex-start"
+                      accessibilityRole={AccessibilityRole.BUTTON}
                     />
                   </ListText>
                 </NestedItemContainer>

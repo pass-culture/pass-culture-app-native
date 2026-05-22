@@ -56,7 +56,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
   cursor: initial;
 }
 
-.c4 {
+.c6 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -77,36 +77,36 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
   box-sizing: border-box;
 }
 
-.c4:disabled {
+.c6:disabled {
+  cursor: initial;
+}
+
+.c7 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c7:disabled {
   cursor: initial;
 }
 
 .c5 {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-left: 2px;
-  padding-right: 2px;
-  width: auto;
-  max-width: 500px;
-  border-width: 0;
-  background-color: transparent;
-  cursor: pointer;
-  outline: none;
-  display: inline-flex;
-  overflow: hidden;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c5:disabled {
-  cursor: initial;
-}
-
-.c3 {
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
@@ -115,19 +115,34 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
 }
 
 .c2 {
-  border: none;
-  cursor: pointer;
-  outline: none;
-  box-sizing: border-box;
-  background-color: transparent;
+  align-items: center;
+  column-gap: 8px;
+  display: inline-flex;
+  flex-direction: row;
   width: fit-content;
-  margin: 0;
-  padding: 0;
-  text-decoration: underline;
+}
+
+.c2:hover span {
   color: #320096;
+}
+
+.c2:visited span {
+  color: #25026c;
+}
+
+.c3 {
+  align-items: center;
+  column-gap: 8px;
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.c4 {
+  color: #320096;
+  text-decoration: underline;
   font-family: Montserrat-SemiBold;
   font-size: 1rem;
-  line-height: 1.375rem;
+  line-height: 1.6rem;
 }
 
 <div>
@@ -229,35 +244,44 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                   class="css-view-175oi2r r-borderRightColor-q65h00 r-borderRightWidth-18p6if4 r-marginInline-14mg64r"
                 />
                 <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-gap-9aw3ui r-justifyContent-1777fci"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1kbdv8c r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-rowGap-rakygo r-justifyContent-1777fci"
                 >
                   <div
-                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                     dir="ltr"
                   >
                     Déjà un compte ?
                   </div>
-                  <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui"
+                  <a
+                    aria-label="Se connecter"
+                    class="c2"
+                    data-testid="Se connecter"
+                    href="#"
+                    title="Se connecter"
                   >
-                    <div
-                      class="css-view-175oi2r"
+                    <span
+                      class="c3"
                     >
                       <div
-                        class="css-text-146c3p1"
-                        dir="ltr"
+                        class="css-view-175oi2r"
+                        data-testid="link-icon"
                       >
-                        undefined-SVG-Mock
+                        <div
+                          class="css-text-146c3p1"
+                          dir="ltr"
+                        >
+                          link-icon-SVG-Mock
+                        </div>
                       </div>
-                    </div>
-                    <button
-                      class="c2"
-                      color="#320096"
-                      type="button"
-                    >
-                      Se connecter
-                    </button>
-                  </div>
+                      <span
+                        class="c4"
+                        color="brand"
+                        data-testid="link-label"
+                      >
+                        Se connecter
+                      </span>
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -303,7 +327,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                           </div>
                         </div>
                         <label
-                          class="c3"
+                          class="c5"
                           for="testUuidV4"
                         >
                           <div
@@ -1091,7 +1115,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                   >
                     <button
                       aria-label="Débuggage"
-                      class="c4"
+                      class="c6"
                       data-testid="Débuggage"
                       tabindex="0"
                       type="button"
@@ -1421,7 +1445,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
   cursor: initial;
 }
 
-.c4 {
+.c6 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -1442,36 +1466,36 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
   box-sizing: border-box;
 }
 
-.c4:disabled {
+.c6:disabled {
+  cursor: initial;
+}
+
+.c7 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c7:disabled {
   cursor: initial;
 }
 
 .c5 {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-left: 2px;
-  padding-right: 2px;
-  width: auto;
-  max-width: 500px;
-  border-width: 0;
-  background-color: transparent;
-  cursor: pointer;
-  outline: none;
-  display: inline-flex;
-  overflow: hidden;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c5:disabled {
-  cursor: initial;
-}
-
-.c3 {
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
@@ -1480,19 +1504,34 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
 }
 
 .c2 {
-  border: none;
-  cursor: pointer;
-  outline: none;
-  box-sizing: border-box;
-  background-color: transparent;
+  align-items: center;
+  column-gap: 8px;
+  display: inline-flex;
+  flex-direction: row;
   width: fit-content;
-  margin: 0;
-  padding: 0;
-  text-decoration: underline;
+}
+
+.c2:hover span {
   color: #320096;
+}
+
+.c2:visited span {
+  color: #25026c;
+}
+
+.c3 {
+  align-items: center;
+  column-gap: 8px;
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.c4 {
+  color: #320096;
+  text-decoration: underline;
   font-family: Montserrat-SemiBold;
   font-size: 1rem;
-  line-height: 1.375rem;
+  line-height: 1.6rem;
 }
 
 <div>
@@ -1594,35 +1633,44 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                   class="css-view-175oi2r r-height-1472mwg"
                 />
                 <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-gap-9aw3ui r-justifyContent-1777fci"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1kbdv8c r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-rowGap-rakygo r-justifyContent-1777fci"
                 >
                   <div
-                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                     dir="ltr"
                   >
                     Déjà un compte ?
                   </div>
-                  <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui"
+                  <a
+                    aria-label="Se connecter"
+                    class="c2"
+                    data-testid="Se connecter"
+                    href="#"
+                    title="Se connecter"
                   >
-                    <div
-                      class="css-view-175oi2r"
+                    <span
+                      class="c3"
                     >
                       <div
-                        class="css-text-146c3p1"
-                        dir="ltr"
+                        class="css-view-175oi2r"
+                        data-testid="link-icon"
                       >
-                        undefined-SVG-Mock
+                        <div
+                          class="css-text-146c3p1"
+                          dir="ltr"
+                        >
+                          link-icon-SVG-Mock
+                        </div>
                       </div>
-                    </div>
-                    <button
-                      class="c2"
-                      color="#320096"
-                      type="button"
-                    >
-                      Se connecter
-                    </button>
-                  </div>
+                      <span
+                        class="c4"
+                        color="brand"
+                        data-testid="link-label"
+                      >
+                        Se connecter
+                      </span>
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -1668,7 +1716,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                           </div>
                         </div>
                         <label
-                          class="c3"
+                          class="c5"
                           for="testUuidV4"
                         >
                           <div
@@ -2456,7 +2504,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                   >
                     <button
                       aria-label="Débuggage"
-                      class="c4"
+                      class="c6"
                       data-testid="Débuggage"
                       tabindex="0"
                       type="button"

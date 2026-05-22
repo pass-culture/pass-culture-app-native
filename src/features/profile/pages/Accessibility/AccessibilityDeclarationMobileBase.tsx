@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
@@ -7,11 +8,12 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Link } from 'ui/designSystem/Link/Link'
+import { TextWithLink } from 'ui/designSystem/TextWithLink/TextWithLink'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
@@ -58,16 +60,23 @@ export function AccessibilityDeclarationMobileBase({
               Le pass Culture s’engage à rendre ses applications mobiles accessibles conformément à
               l’article 47 de la loi n° 2005-102 du 11 février 2005.
             </Typo.Body>
-            <Typo.Body>
-              La présente déclaration d’accessibilité s’applique à{SPACE}
-              <ExternalTouchableLink
-                as={LinkInsideText}
-                wording={`l’application ${platformName}`}
-                externalNav={storeLink}
-                accessibilityRole={AccessibilityRole.LINK}
+            <View>
+              <Typo.Body>La présente déclaration d’accessibilité</Typo.Body>
+              <TextWithLink
+                beforeText="s’applique à"
+                linkLabel={`l’application ${platformName}`}
+                afterText={`version ${appVersion} du pass Culture.`}
+                size="small"
+                renderLink={(linkProps) => (
+                  <ExternalTouchableLink
+                    as={Link}
+                    externalNav={storeLink}
+                    isExternal
+                    {...linkProps}
+                  />
+                )}
               />
-              {SPACE}version {appVersion} du pass Culture.
-            </Typo.Body>
+            </View>
           </ViewGap>
           <StyledSeparator />
           <ViewGap gap={6}>
@@ -208,20 +217,30 @@ export function AccessibilityDeclarationMobileBase({
               un délai raisonnable, aux informations et fonctionnalités recherchées par la personne
               handicapée, que le contenu fasse l’objet d’une dérogation ou non.
             </Typo.Body>
-            <Typo.Body>
-              Le pass Culture invite les personnes qui rencontreraient des difficultés à la
-              contacter afin qu’une assistance puisse être apportée&nbsp;:{SPACE}
-              <ExternalTouchableLink
-                as={LinkInsideText}
-                wording="contacter le support"
-                externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
-                accessibilityRole={AccessibilityRole.LINK}
-                justifyContent="flex-start"
-                onBeforeNavigate={() =>
-                  analytics.logHasClickedContactForm('AccessibilityDeclaration')
-                }
+
+            <View>
+              <Typo.Body>
+                Le pass Culture invite les personnes qui rencontreraient des difficultés à la
+                contacter afin qu’une assistance puisse
+              </Typo.Body>
+              <TextWithLink
+                beforeText="être apportée&nbsp;:"
+                linkLabel="contacter le support"
+                size="small"
+                renderLink={(linkProps) => (
+                  <ExternalTouchableLink
+                    as={Link}
+                    externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
+                    accessibilityRole={AccessibilityRole.LINK}
+                    isExternal
+                    onBeforeNavigate={() =>
+                      analytics.logHasClickedContactForm('AccessibilityDeclaration')
+                    }
+                    {...linkProps}
+                  />
+                )}
               />
-            </Typo.Body>
+            </View>
           </ViewGap>
           <StyledSeparator />
           <ViewGap gap={6}>
@@ -233,24 +252,32 @@ export function AccessibilityDeclarationMobileBase({
               doléances ou une demande de saisine au Défenseur des droits.
             </Typo.Body>
             <ViewGap gap={3}>
-              <Typo.Body>
-                Écrire un message au{SPACE}
-                <ExternalTouchableLink
-                  as={LinkInsideText}
-                  wording="Défenseur des droits"
-                  externalNav={rightsDefenderUrl}
-                  accessibilityRole={AccessibilityRole.LINK}
-                />
-              </Typo.Body>
-              <Typo.Body>
-                Contacter le délégué du{SPACE}
-                <ExternalTouchableLink
-                  as={LinkInsideText}
-                  wording="Défenseur des droits dans votre région"
-                  externalNav={rightsDelegateUrl}
-                  accessibilityRole={AccessibilityRole.LINK}
-                />
-              </Typo.Body>
+              <TextWithLink
+                beforeText="Écrire un message au"
+                linkLabel="Défenseur des droits"
+                size="small"
+                renderLink={(linkProps) => (
+                  <ExternalTouchableLink
+                    as={Link}
+                    externalNav={rightsDefenderUrl}
+                    isExternal
+                    {...linkProps}
+                  />
+                )}
+              />
+              <TextWithLink
+                beforeText="Contacter le délégué du"
+                linkLabel="Défenseur des droits dans votre région"
+                size="small"
+                renderLink={(linkProps) => (
+                  <ExternalTouchableLink
+                    as={Link}
+                    externalNav={rightsDelegateUrl}
+                    isExternal
+                    {...linkProps}
+                  />
+                )}
+              />
               <Typo.Body>
                 Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des
                 droits Libre réponse 71120 75342 Paris CEDEX 07

@@ -12,16 +12,16 @@ import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
+import { Link } from 'ui/designSystem/Link/Link'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { TextWithLink } from 'ui/designSystem/TextWithLink/TextWithLink'
 import { useVersion } from 'ui/hooks/useVersion'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { UserError } from 'ui/svg/UserError'
 import { Typo } from 'ui/theme'
-import { SPACE } from 'ui/theme/constants'
 
 export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -71,16 +71,23 @@ export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
           groupLabel={groupLabel}
           index={0}
           total={3}
-          accessibilityRole={AccessibilityRole.LINK}>
-          <Typo.Body>
-            tes réservations seront annulées sauf pour certains cas précisés dans les{SPACE}
-            <ExternalTouchableLink
-              as={LinkInsideTextBlack}
-              wording="conditions générales d’utilisation"
-              externalNav={{ url: env.CGU_LINK }}
-              accessibilityRole={AccessibilityRole.LINK}
-            />
-          </Typo.Body>
+          accessibilityRole={AccessibilityRole.LINK}
+          accessibilityLabel="tes réservations seront annulées sauf pour certains cas précisés dans les conditions générales d’utilisation"
+          childrenContainer="view">
+          <TextWithLink
+            beforeText="tes réservations seront annulées sauf pour certains cas précisés dans les"
+            linkLabel="conditions générales d’utilisation"
+            keepLastWordWithLink
+            color="neutral"
+            renderLink={(linkProps) => (
+              <ExternalTouchableLink
+                as={Link}
+                externalNav={{ url: env.CGU_LINK }}
+                isExternal
+                {...linkProps}
+              />
+            )}
+          />
         </BulletListItem>
         <BulletListItem
           groupLabel={groupLabel}
@@ -103,10 +110,6 @@ export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
     </GenericInfoPage>
   )
 }
-
-const LinkInsideTextBlack = styled(LinkInsideText).attrs(({ theme }) => ({
-  color: theme.designSystem.color.text.default,
-}))``
 
 const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,

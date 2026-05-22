@@ -7,15 +7,16 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
-import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import { Link } from 'ui/designSystem/Link/Link'
+import { TextWithLink } from 'ui/designSystem/TextWithLink/TextWithLink'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
-import { LINE_BREAK, SPACE } from 'ui/theme/constants'
+import { LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function LegalNotices() {
@@ -31,17 +32,18 @@ export function LegalNotices() {
       scrollChildren={
         <Container gap={5}>
           <Typo.Title4 {...getHeadingAttrs(2)}>ÉDITEUR SAS pass Culture</Typo.Title4>
-          <Typo.Body>
-            Éditeur du site&nbsp;:
-            {SPACE}
-            <ExternalTouchableLink
-              as={LinkInsideText}
-              wording="https://passculture.app/accueil"
-              externalNav={{ url: 'https://passculture.app/accueil' }}
-              icon={ExternalSiteFilled}
-              accessibilityRole={AccessibilityRole.LINK}
-            />
-          </Typo.Body>
+          <TextWithLink
+            beforeText={'Éditeur du site\u00a0:'}
+            linkLabel="https://passculture.app/accueil"
+            renderLink={(linkProps) => (
+              <ExternalTouchableLink
+                as={Link}
+                externalNav={{ url: 'https://passculture.app/accueil' }}
+                isExternal
+                {...linkProps}
+              />
+            )}
+          />
           {/* eslint-disable-next-line local-rules/no-euro-usage */}
           <Typo.Body>
             Société par actions simplifiée au capital de 1&nbsp;000&nbsp;000&nbsp;€
@@ -58,15 +60,14 @@ export function LegalNotices() {
             Hébergeur&nbsp;: Google Cloud Platform
             {LINE_BREAK}8 Rue de Londres - 75009 Paris - France
           </Typo.Body>
-          <Typo.Body>
-            <ExternalTouchableLink
-              as={LinkInsideText}
-              wording="Contacter le support"
-              externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
-              accessibilityRole={AccessibilityRole.LINK}
-              onBeforeNavigate={() => analytics.logHasClickedContactForm('LegalNotices')}
-            />
-          </Typo.Body>
+          <ExternalTouchableLink
+            as={Link}
+            label="Contacter le support"
+            externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
+            accessibilityRole={AccessibilityRole.LINK}
+            isExternal
+            onBeforeNavigate={() => analytics.logHasClickedContactForm('LegalNotices')}
+          />
           <Separator.Horizontal />
           <ExternalTouchableLink
             as={Button}

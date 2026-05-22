@@ -5,9 +5,10 @@ import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStac
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
+import { Link } from 'ui/designSystem/Link/Link'
+import { TextWithLink } from 'ui/designSystem/TextWithLink/TextWithLink'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
@@ -46,14 +47,21 @@ export function RecommendedPaths() {
               groupLabel={groupLabel}
               index={2}
               total={3}
-              text="en remplissant un formulaire sur "
-              accessibilityRole={AccessibilityRole.LINK}>
-              <ExternalTouchableLink
-                as={LinkInsideText}
-                typography="BodyAccentXs"
-                wording="Démarche Numérique"
-                externalNav={{ url: 'https://demarche.numerique.gouv.fr/' }}
-                accessibilityRole={AccessibilityRole.LINK}
+              accessibilityRole={AccessibilityRole.LINK}
+              accessibilityLabel="en remplissant un formulaire sur Démarche Numérique"
+              childrenContainer="view">
+              <TextWithLink
+                beforeText="en remplissant un formulaire sur"
+                linkLabel="Démarche Numérique"
+                size="small"
+                renderLink={(linkProps) => (
+                  <ExternalTouchableLink
+                    as={Link}
+                    externalNav={{ url: 'https://demarche.numerique.gouv.fr/' }}
+                    isExternal
+                    {...linkProps}
+                  />
+                )}
               />
             </BulletListItem>
           </StyledVerticalUl>

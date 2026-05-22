@@ -22,7 +22,6 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
-import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -30,12 +29,13 @@ import { useModal } from 'ui/components/modals/useModal'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import { Link } from 'ui/designSystem/Link/Link'
 import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { TextWithLink } from 'ui/designSystem/TextWithLink/TextWithLink'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Close } from 'ui/svg/icons/Close'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Typo } from 'ui/theme'
-import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ConsentSettings = () => {
@@ -187,16 +187,22 @@ export const ConsentSettings = () => {
               <Typo.Body>
                 On te redemandera bien sûr ton consentement si notre politique évolue.
               </Typo.Body>
-              <StyledBodyAccentXs>
-                Pour plus d’informations, nous t’invitons à consulter notre {SPACE}
-                <ExternalTouchableLink
-                  as={LinkInsideText}
-                  wording="politique de gestion des cookies"
-                  externalNav={{ url: env.COOKIES_POLICY_LINK }}
-                  typography="BodyAccentXs"
-                  accessibilityRole={AccessibilityRole.LINK}
-                />
-              </StyledBodyAccentXs>
+              <StyledTextWithLink
+                beforeText="Pour plus d’informations, nous t’invitons à consulter notre"
+                linkLabel="politique de gestion des cookies"
+                size="extraSmall"
+                surroundingTextColor="subtle"
+                typography="BodyAccentXs"
+                keepLastWordWithLink
+                renderLink={(linkProps) => (
+                  <ExternalTouchableLink
+                    as={Link}
+                    externalNav={{ url: env.COOKIES_POLICY_LINK }}
+                    isExternal
+                    {...linkProps}
+                  />
+                )}
+              />
               <SaveButton
                 wording="Enregistrer mes choix"
                 accessibilityRole={AccessibilityRole.BUTTON}
@@ -240,8 +246,6 @@ const ModalDescription = styled(Typo.Body)({
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
-  marginTop: theme.designSystem.size.spacing.l,
-  marginBottom: theme.designSystem.size.spacing.xxl,
 }))
 
 const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
@@ -259,3 +263,8 @@ const SaveButton = styledButton(Button)(({ theme }) => ({
 const ModalContainer = styled(ViewGap)({
   alignItems: 'center',
 })
+
+const StyledTextWithLink = styled(TextWithLink)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
