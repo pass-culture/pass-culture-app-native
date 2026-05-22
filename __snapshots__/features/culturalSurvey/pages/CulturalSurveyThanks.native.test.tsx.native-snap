@@ -242,6 +242,7 @@ exports[`CulturalSurveyThanksPage page When FF is disabled should render the pag
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,

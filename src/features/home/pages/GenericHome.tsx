@@ -91,20 +91,18 @@ const FooterComponent = ({
 }) => {
   if (hasShownAll && Platform.OS === 'web') {
     return (
-      <React.Fragment>
+      <FooterContainer>
         <AccessibilityFooter withHorizontalMargin />
         <Spacer.TabBar />
-      </React.Fragment>
+      </FooterContainer>
     )
   }
   if (!hasShownAll) {
     return (
-      <React.Fragment>
-        <FooterContainer>
-          <Spinner testID="spinner" />
-        </FooterContainer>
+      <FooterContainer>
+        <Spinner testID="spinner" />
         <Spacer.TabBar />
-      </React.Fragment>
+      </FooterContainer>
     )
   }
   return (

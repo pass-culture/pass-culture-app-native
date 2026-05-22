@@ -68,5 +68,6 @@ const ButtonContainer = styled(TouchableOpacity)<ContainerStyleProps>(
     borderColor: borderColor,
     borderWidth: borderColor ? borderWidth : 0,
     backgroundColor: backgroundColor,
+    flexShrink: 0,
   })
 )
