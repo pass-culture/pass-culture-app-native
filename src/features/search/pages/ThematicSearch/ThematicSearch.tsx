@@ -26,6 +26,7 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
+import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
 import { Page } from 'ui/pages/Page'
 import { Spacer } from 'ui/theme'
@@ -42,7 +43,7 @@ export const ThematicSearch: React.FC = () => {
   const { selectedLocationMode } = useLocation()
   const [fallbackSearchId] = useState(() => uuidv4())
   const currentSearchId = params?.searchId ?? fallbackSearchId
-
+  const isLandscape = useIsLandscape()
   const {
     hits: { venues },
     venuesUserData,
@@ -195,21 +196,22 @@ export const ThematicSearch: React.FC = () => {
 
   const title = offerCategory ? titles[offerCategory] : ''
 
-  const thematicSearch = isZoomedAt200 ? (
-    <Page>
-      <IntersectionObserverScrollView>
+  const thematicSearch =
+    isZoomedAt200 || isLandscape ? (
+      <Page>
+        <IntersectionObserverScrollView>
+          <ThematicSearchBar offerCategories={offerCategories} title={title}>
+            {content}
+          </ThematicSearchBar>
+        </IntersectionObserverScrollView>
+      </Page>
+    ) : (
+      <Page>
         <ThematicSearchBar offerCategories={offerCategories} title={title}>
-          {content}
+          <IntersectionObserverScrollView>{content}</IntersectionObserverScrollView>
         </ThematicSearchBar>
-      </IntersectionObserverScrollView>
-    </Page>
-  ) : (
-    <Page>
-      <ThematicSearchBar offerCategories={offerCategories} title={title}>
-        <IntersectionObserverScrollView>{content}</IntersectionObserverScrollView>
-      </ThematicSearchBar>
-    </Page>
-  )
+      </Page>
+    )
 
   return thematicSearch
 }
