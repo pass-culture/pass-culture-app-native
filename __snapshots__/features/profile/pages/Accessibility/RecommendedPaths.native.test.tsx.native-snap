@@ -533,11 +533,11 @@ exports[`RecommendedPaths should render correctly 1`] = `
                         testID="Nouvelle fenêtre : Démarche Numérique"
                       >
                         <View
-                          size="default"
+                          size="small"
                           style={
                             {
                               "alignItems": "flex-start",
-                              "columnGap": 8,
+                              "columnGap": 4,
                               "flexDirection": "row",
                               "flexShrink": 1,
                               "maxWidth": "100%",
@@ -546,19 +546,19 @@ exports[`RecommendedPaths should render correctly 1`] = `
                           }
                         >
                           <View
-                            iconSize={24}
-                            size="default"
+                            iconSize={16}
+                            size="small"
                             style={
                               {
-                                "paddingTop": 0.8000000000000007,
+                                "paddingTop": 3.1999999999999993,
                               }
                             }
                           >
                             <View
                               accessibilityLabel="Nouvelle fenêtre"
-                              height={24}
+                              height={16}
                               testID="link-icon"
-                              width={24}
+                              width={16}
                             >
                               <Text>
                                 link-icon-SVG-Mock
@@ -566,14 +566,14 @@ exports[`RecommendedPaths should render correctly 1`] = `
                             </View>
                           </View>
                           <Text
-                            size="default"
+                            size="small"
                             style={
                               {
                                 "color": "#6123df",
                                 "flexShrink": 1,
                                 "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
                                 "minWidth": 0,
                                 "textDecorationLine": "underline",
                               }

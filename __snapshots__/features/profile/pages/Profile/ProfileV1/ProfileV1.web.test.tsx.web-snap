@@ -1171,7 +1171,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 >
                   <button
                     aria-label="Accessibilité : partiellement conforme"
-                    class="c4"
+                    class="c6"
                     data-testid="Accessibilité : partiellement conforme"
                     tabindex="0"
                     type="button"
@@ -1194,7 +1194,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 >
                   <button
                     aria-label="Plan du site"
-                    class="c4"
+                    class="c6"
                     data-testid="Plan du site"
                     tabindex="0"
                     type="button"
@@ -1217,7 +1217,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 >
                   <button
                     aria-label="Informations légales"
-                    class="c4"
+                    class="c6"
                     data-testid="Informations légales"
                     tabindex="0"
                     type="button"
@@ -1240,7 +1240,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 >
                   <a
                     aria-label="Conditions Générales d’Utilisation"
-                    class="c5"
+                    class="c7"
                     data-testid="Conditions Générales d’Utilisation"
                     href="https://passculture.cgu"
                     tabindex="0"
@@ -1281,7 +1281,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 >
                   <a
                     aria-label="Charte des données personnelles"
-                    class="c5"
+                    class="c7"
                     data-testid="Charte des données personnelles"
                     href="https://passculture.privacy"
                     tabindex="0"
@@ -1322,7 +1322,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 >
                   <a
                     aria-label="Charte d’utilisation et de bonne conduite"
-                    class="c5"
+                    class="c7"
                     data-testid="Charte d’utilisation et de bonne conduite"
                     href="https://passculture.code-of-conduct"
                     tabindex="0"
@@ -2560,7 +2560,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 >
                   <button
                     aria-label="Accessibilité : partiellement conforme"
-                    class="c4"
+                    class="c6"
                     data-testid="Accessibilité : partiellement conforme"
                     tabindex="0"
                     type="button"
@@ -2583,7 +2583,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 >
                   <button
                     aria-label="Plan du site"
-                    class="c4"
+                    class="c6"
                     data-testid="Plan du site"
                     tabindex="0"
                     type="button"
@@ -2606,7 +2606,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 >
                   <button
                     aria-label="Informations légales"
-                    class="c4"
+                    class="c6"
                     data-testid="Informations légales"
                     tabindex="0"
                     type="button"
@@ -2629,7 +2629,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 >
                   <a
                     aria-label="Conditions Générales d’Utilisation"
-                    class="c5"
+                    class="c7"
                     data-testid="Conditions Générales d’Utilisation"
                     href="https://passculture.cgu"
                     tabindex="0"
@@ -2670,7 +2670,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 >
                   <a
                     aria-label="Charte des données personnelles"
-                    class="c5"
+                    class="c7"
                     data-testid="Charte des données personnelles"
                     href="https://passculture.privacy"
                     tabindex="0"
@@ -2711,7 +2711,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 >
                   <a
                     aria-label="Charte d’utilisation et de bonne conduite"
-                    class="c5"
+                    class="c7"
                     data-testid="Charte d’utilisation et de bonne conduite"
                     href="https://passculture.code-of-conduct"
                     tabindex="0"
